@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 
 self::exec(
 	"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
-	" ('Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko', 'allow', 'New Trident Based Browsers')"
+	" ('Mozilla/% (%Trident%', 'allow', 'New Trident Based Browsers')"
 );
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);
