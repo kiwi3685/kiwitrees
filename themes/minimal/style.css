@@ -630,7 +630,7 @@ html[dir=rtl] #index_small_blocks {float:left;}
 #main_select,#available_select,#right_select {min-width:150px;}
 
 .user_welcome_block table, .gedcom_block_block table {margin:auto;}
-.user_welcome_block td, .gedcom_block_block td {width:33%;text-align:center;vertical-align:top;}
+.user_welcome_block td, .gedcom_block_block td {width:25%;text-align:center;vertical-align:top;}
 .user_welcome_block i, .gedcom_block_block i {background-image:none;width:0;height:0;}
 
 #link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
