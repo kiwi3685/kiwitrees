@@ -37,13 +37,32 @@ $this
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addInlineJavascript('activate_colorbox();')
 	->addInlineJavascript('jQuery.extend(jQuery.colorbox.settings, {width:"70%", height:"70%", transition:"none", slideshowStart:"'. WT_I18N::translate('Play').'", slideshowStop:"'. WT_I18N::translate('Stop').'"})') 
-
 	->addInlineJavascript('
+		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
-			title:	function(){
-					var img_title = jQuery(this).data("title");
-					return img_title;
-			}
+			maxWidth		:"95%",
+			maxHeight		:"95%",				
+			fixed			:false,
+			slideshow		:true,
+			slideshowAuto	:false,
+			slideshowSpeed	:5000,
+			slideshowStart	:"'.WT_I18N::translate('Play').'",
+			slideshowStop	:"'.WT_I18N::translate('Stop').'",
+			speed			:2000,
+			title			:function(){
+								var img_title = jQuery(this).data("title");
+								return img_title;
+							}
+		});
+		jQuery("body").on("click", "a.gallery", function(event) {		
+			// Add colorbox to pdf-files
+			jQuery("a[type^=application].gallery").colorbox({
+				rel			:"gallery",
+				innerWidth	:"60%",
+				innerHeight	:"90%",
+				iframe		:true,
+				photo		:false
+			});
 		});
 	');
 echo
@@ -51,30 +70,25 @@ echo
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta charset="UTF-8">',
-	'<title>', htmlspecialchars($title), '</title>',
+	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
+	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'css/colors.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL,  'css/',  $subColor,  '.css" type="text/css" media="all">';
+	'<link rel="stylesheet" href="', WT_THEME_URL,  'css/',  $subColor,  '.css" type="text/css">';
 
 if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
 	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';
-	$BROWSERTYPE = 'ipad';
-}
-
-switch ($BROWSERTYPE) {
-case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
-	break;
-case 'ipad':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
-	break;
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'ipad.css">';
+} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') || stristr($_SERVER['HTTP_USER_AGENT'], 'Trident')) {
+	// This is needed for all versions of IE, so we cannot use conditional comments.
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">';
 }
 
 // Additional css files required (Only if Lightbox installed)
 if (WT_USE_LIGHTBOX) {
-		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
+	echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
 
 echo
