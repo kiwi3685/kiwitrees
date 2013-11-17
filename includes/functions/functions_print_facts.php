@@ -929,7 +929,7 @@ function print_main_notes(WT_Event $fact, $level) {
 				$line1 = $n1match[1];
 				$text  = get_cont(1, $noterec);
 				// If Census assistant installed,
-				if ($fact->getTag()=='CENS' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				if (/*$fact->getTag()=='CENS' && */array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					$centitl  = str_replace('~~', '', $line1);
 					$centitl  = str_replace('<br>', '', $centitl);
 					$centitl  = "<a href=\"note.php?nid=$nid\">" . $centitl . '</a>';
