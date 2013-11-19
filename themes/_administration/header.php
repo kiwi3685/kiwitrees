@@ -38,6 +38,7 @@ $this
 				return img_title;
 			}
 		});
+		jQuery("textarea").autosize();
 	');
 echo
 	'<!DOCTYPE html>',

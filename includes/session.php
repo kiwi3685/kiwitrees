@@ -62,7 +62,6 @@ define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js')
 define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.4.2.js');
 define('WT_JQUERY_AUTOSIZE',	   WT_STATIC_URL.'js/jquery.autosize.js');
 
-
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR',  'themes/' );

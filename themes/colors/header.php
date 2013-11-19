@@ -63,6 +63,7 @@ $this
 				photo		:false
 			});
 		});
+		jQuery("textarea").autosize();
 	');
 echo
 	'<!DOCTYPE html>',
