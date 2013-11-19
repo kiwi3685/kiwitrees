@@ -54,6 +54,7 @@ function edit_field_inline_autocomplete($name, $value, $parameters = null, $cont
 		.editable(
 			"' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php",
 			{
+				submitdata: {csrf: WT_CSRF_TOKEN},
 				submit:	"&nbsp;&nbsp;' . /* I18N: button label */ WT_I18N::translate('save') . '&nbsp;&nbsp;",
 				style:"inherit",
 				placeholder: "'.WT_I18N::translate('click to edit').'",
