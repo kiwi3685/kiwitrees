@@ -1085,6 +1085,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	*/
 	var oldName = "";
 	var manualChange = false;
+	var IE = document.all?true:false;
 	function convertHidden(eid) {
 		var element = document.getElementById(eid);
 		if (element) {
