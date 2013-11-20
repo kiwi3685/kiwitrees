@@ -176,8 +176,8 @@ table#log_list {table-layout:fixed; width:100%}
 #log_list th {min-width:80px;white-space:nowrap;}
 #log_list th:nth-child(3) {width:50%;}
 #log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
- #log_list a {color:#0000ff;}
- #log_list a:hover, #log_list a:visited {color:#ff0000;}
+#log_list a {color:#0000ff;}
+#log_list a:hover, #log_list a:visited {color:#ff0000;}
  
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
@@ -422,7 +422,7 @@ table#gm_manage {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:s
 div.scrollableContainer{background:#fdf5e6;border:1px solid #888;color:#555;margin:10px auto;padding:32px 0;position:relative;width:954px;}
 div.scrollingArea{height:608px;overflow-x:auto;overflow-y:scroll;}
 table.gm_plac_edit thead {background:#fcefd7; border-bottom:2px solid #d3d3d3; left: 0;top: 0;position: absolute;width: 952px;}
-table.gm_plac_edit tfoot {background:#fcefd7; border-top:2px solid #d3d3d3; left: 0;bottom: 0;position: absolute;width: 952x;}
+table.gm_plac_edit tfoot {background:#fcefd7; border-top:2px solid #d3d3d3; left: 0;bottom: 0;position: absolute;width: 952px;}
 .col1 {width:300px;}
 .col2, .col3 {width:136px;}
 .col4 {width:120px;}
@@ -458,7 +458,7 @@ table#story_table {width:100%}
 
 /* Autocomplete styles */
 .ui-autocomplete-input {background-color:#eee8aa;}
-.ui-autocomplete {padding:0; border:1px solid black; background-color:#ffffff; z-index:99999;list-style-position:outside; list-style:none; margin:0;;max-height:200px;overflow-y:auto;}
+.ui-autocomplete {padding:0; border:1px solid black; background-color:#ffffff; z-index:99999; list-style-position:outside; list-style:none; margin:0; max-height:200px;overflow-y:auto;}
 .ui-autocomplete li {margin:0; padding:2px 5px; cursor:default; display:block; font:menu;font-size:12px; line-height:14px; overflow:hidden;}
 .ui-autocomplete-loading {background:#ffffff url(images/indicator.gif) right center no-repeat;}
 .ui-autocomplete li:nth-child(odd) {background-color:#eeeeee;}
