@@ -85,32 +85,14 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		return gicons[iconColor];
 	}
 
-	function category2color(category) {
-		var color = 'red';
-		switch(category) {
-		 	case 'theatre': color = '';
-				break;
-		 	case 'golf':	color = '_green';
-				break;
-		 	case 'info':	color = '_yellow';
-				break;
-		 	default:		color = '';
-				break;
-		}
-		return color;
-	}
-
-	gicons['theatre'] = getMarkerImage(category2color('theatre'));
-	gicons['golf'] = getMarkerImage(category2color('golf'));
-	gicons['info'] = getMarkerImage(category2color('info'));
-
 	var sv2_bear = null;
 	var sv2_elev = null;
 	var sv2_zoom = null;
 	var placer = null;
 
 	// A function to create the marker and set up the event window
-	function createMarker(i, latlng, event, html, category, placed, index, tab, address, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
+	function createMarker(i, latlng, event, html, placed, index, tab, address, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
+	
 		var contentString = '<div id="iwcontent">'+html+'<\/div>';
 
 		// Use flag icon (if defined) instead of regular marker icon
@@ -125,7 +107,6 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				new google.maps.Point(1, 45)	// Shadow anchor is base of flagpole
 			);
 		} else {
-			var icon_image = gicons[category];
 			var icon_shadow = iconShadow;
 		}
 
@@ -146,11 +127,10 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			zIndex: Math.round(latlng.lat()*-100000)<<5
 		});
 
-		// Store the tab, category and event info as marker properties
+		// Store the tab and event info as marker properties
 		marker.myindex = index;
 		marker.mytab = tab;
 		marker.myplaced = placed;
-		marker.mycategory = category;
 		marker.myevent = event;
 		marker.myaddress = address;
 		marker.mymedia = media;
@@ -217,21 +197,12 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					document.tabLayerSV.style.background = '#cccccc';
 					document.tabLayerSV.style.paddingBottom = '0px';
 					<?php } ?>
-			// Please leave (windmillway) ==========================================
-			//		document.tabLayerPH = eval('document.getElementById("PH")');
-			//		document.tabLayerPH.style.background = '#cccccc';
-			//		document.tabLayerPH.style.paddingBottom = '0px';
-			// =================================================================
 					document.panelLayer1 = eval('document.getElementById("pane1")');
 					document.panelLayer1.style.display = 'block';
 					<?php if ($STREETVIEW) { ?>
 					document.panelLayer2 = eval('document.getElementById("pane2")');
 					document.panelLayer2.style.display = 'none';
 					<?php } ?>
-			// Please leave (windmillway) ==========================================
-			//		document.panelLayer3 = eval('document.getElementById("pane3")');
-			//		document.panelLayer3.style.display = 'none';
-			// =================================================================
 				});
 
 				jQuery('#SV').click(function() {
@@ -243,21 +214,12 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					document.tabLayerSV.style.background = '#ffffff';
 					document.tabLayerSV.style.paddingBottom = '1px';
 					<?php } ?>
-			// Please leave (windmillway) ==========================================
-			//		document.tabLayerPH = eval('document.getElementById("PH")');
-			//		document.tabLayerPH.style.background = '#cccccc';
-			//		document.tabLayerPH.style.paddingBottom = '0px';
-			// =================================================================
 					document.panelLayer1 = eval('document.getElementById("pane1")');
 					document.panelLayer1.style.display = 'none';
 					<?php if ($STREETVIEW) { ?>
 					document.panelLayer2 = eval('document.getElementById("pane2")');
 					document.panelLayer2.style.display = 'block';
 					<?php } ?>
-			// Please leave (windmillway) ==========================================
-			//		document.panelLayer3 = eval('document.getElementById("pane3")');
-			//		document.panelLayer3.style.display = "none";
-			// =================================================================
 					var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
 					setTimeout(function() { panorama.setVisible(true); }, 100);
       				setTimeout(function() { panorama.setVisible(true); }, 500);
@@ -272,93 +234,21 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					document.tabLayerSV.style.background = '#cccccc';
 					document.tabLayerSV.style.paddingBottom = '0px';
 					<?php } ?>
-			// Please leave (windmillway) ==========================================
-			//		document.tabLayerPH = eval('document.getElementById("PH")');
-			//		document.tabLayerPH.style.background = '#ffffff';
-			//		document.tabLayerPH.style.paddingBottom = '1px';
-			// =================================================================
 					document.panelLayer1 = eval('document.getElementById("pane1")');
 					document.panelLayer1.style.display = 'none';
 					<?php if ($STREETVIEW) { ?>
 					document.panelLayer2 = eval('document.getElementById("pane2")');
 					document.panelLayer2.style.display = 'none';
 					<?php } ?>
-			// Please leave (windmillway) ==========================================
-			//		document.panelLayer3 = eval('document.getElementById("pane3")');
-			//		document.panelLayer3.style.display = 'block';
-			// =================================================================
 				});
 		  	});
 		});
-	}
-
-	// shows all markers of a particular category, and ensures the checkbox is checked
-	function show(category) {
-		for (var i=0; i<gmarkers.length; i++) {
-			if (gmarkers[i].mycategory == category) {
-				gmarkers[i].setVisible(true);
-			}
-		}
-		// close any info window for clarity
-		infowindow.close();
-	}
-
-	// hides all markers of a particular category, and ensures the checkbox is cleared
-	function hide(category) {
-		for (var i=0; i<gmarkers.length; i++) {
-			if (gmarkers[i].mycategory == category) {
-				gmarkers[i].setVisible(false);
-			}
-		}
-		// close the info window, in case its open on a marker that we just hid
-		infowindow.close();
-	}
-
-	// a checkbox has been clicked
-	function boxclick(box,category) {
-		if (box.checked) {
-			show(category);
-		} else {
-			hide(category);
-		}
-		// rebuild the side bar
-		makeSidebar();
-		loadMap();
 	}
 
 	// Opens Marker infowindow when corresponding Sidebar item is clicked
 	function myclick(i, index, tab) {
 		infowindow.close();
 		google.maps.event.trigger(gmarkers[i], 'click');
-	}
-
-	// rebuild sidebar (hidden item) when any marker's infowindow is closed
-	google.maps.event.addListener(infowindow, 'closeclick', function() {
-		makeSidebar();
-	});
-
-	// rebuilds the sidebar (hidden item) to match the markers currently displayed
-	function makeSidebar(x) {
-		var html = '';
-		//var tab = gmarkers.mytab;
-		for (var i=0; i<gmarkers.length; i++) {
-			if (gmarkers[i].getVisible()) {
-				// if (x==gmarkers[i].myindex) {
-				if (x==i ) {
-					html += '<a style="text-decoration:none; color:black; background:white; " href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
-				} else if (gmarkers[i].mycategory=='theatre') {
-					html += '<a style="text-decoration:none; color:red;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
-				} else if (gmarkers[i].mycategory=='golf') {
-					html += '<a style="text-decoration:none; color:green;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
-				} else if (gmarkers[i].mycategory=='info') {
-					html += '<a style="text-decoration:none; color:yellow;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
-				} else {
-					html += '<a style="text-decoration:none; color:black;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">'+ gmarkers[i].myevent + '<\/a><br>';
-				}
-			}
-		}
-		document.getElementById('side_bar').innerHTML = html;
-		x=null;
 	}
 
 	// Home control
@@ -421,8 +311,6 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		// Close any infowindow when map is clicked
 		google.maps.event.addListener(map, 'click', function() {
 			infowindow.close();
-			// rebuild sidebar (hidden item)
-			makeSidebar();
 		});
 
 		// Create the Home DIV and call the HomeControl() constructor in this DIV.
@@ -569,13 +457,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				media = media;
 			}
 
-			if (document.getElementById('golfbox').checked == false) {
-				var category = 'theatre';							// Category for future pedigree map use etc
-				var addr2 = locations[i][10];						// printable address for marker title
-			} else {
-				var category = 'golf';
-				var addr2 = locations[i][10];						// printable address for marker title
-			}
+			var addr2 = locations[i][10];
 
 			// If a fact with info or a persons name
 			var event_item ='';
@@ -630,22 +512,6 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						'<\/div>',
 						<?php } ?>
 
-					// To be used later === Do not delete
-					//	'<div id = "pane3">',
-					//		divhead,
-					//		'<div id = "pane3_text">',
-					//			'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px">',
-					//		'<\/div>',
-					//	'<\/div>',
-					//	'<div id = "pane4">',
-					//		divhead,
-					//		'<div id = "pane4_text">',
-					//			'<br>',
-					//			'<br> Spare Tab Content',
-					//			'<br>',
-					//		'<\/div>',
-					//	'<\/div>',
-
 					'<\/div>',
 				'<\/div>',
 			'<\/div>'
@@ -654,8 +520,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			// create the marker
 			var html = multitabs;
 			var zoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM; ?>;
-			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
-
+			var marker = createMarker(i, point, event, html, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
 			// if streetview coordinates are available, use them for marker,
 			// else use the place coordinates
 			if (sv_point && sv_point != "(0, 0)") {
