@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:15+1200\n"
-"PO-Revision-Date: 2013-11-22 12:39+1200\n"
+"POT-Creation-Date: 2013-11-26 11:59+1200\n"
+"PO-Revision-Date: 2013-11-26 12:09+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -216,7 +216,7 @@ msgstr "Werk het \"laatste wijziging\"-record niet bij"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -407,7 +407,7 @@ msgstr "Het bestand %s kon niet worden verwijderd."
 
 #: admin_media.php:286
 msgid "Create"
-msgstr ""
+msgstr "%s "
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
 #: admin_trees_manage.php:231 admin_users.php:181
@@ -1735,36 +1735,77 @@ msgstr "Uitvoeringsstatistieken"
 msgid "Facts for Individual records"
 msgstr "Feiten/gebeurtenissen voor persoonsrecords"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Alle feiten/gebeurtenissen"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Alle personen"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Unieke feiten/gebeurtenissen"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Unieke toe te voegen feiten/gebeurtenissen voor  personen"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Nieuw record feiten/gebeurtenissen"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "Feiten/gebeurtenissen voor nieuwe personen"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Snelle feiten/gebeurtenissen"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Snel toe te voegen feiten/gebeurtenissen van personen"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Feiten/gebeurtenissen voor gezinsrecords"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Snel toe te voegen feiten/gebeurtenissen voor gezinnen"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Unieke toe te voegen feiten/gebeurtenissen voor gezinnen"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Feiten/gebeurtenissen voor nieuwe gezinnen"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Snel toe te voegen feiten/gebeurtenissen voor gezinnen"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Feiten/gebeurtenissen voor Bronrecords"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Snel toe te voegen feiten/gebeurtenissen voor bronnen"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Unieke toe te voegen feiten/gebeurtenissen voor bronnen"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "Snel toe te voegen feiten/gebeurtenissen voor bronnen"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Feiten/gebeurtenissen voor Opslagplaatsrecords"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Snel toe te voegen feiten/gebeurtenissen voor opslagplaatsen"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Unieke feiten/gebeurtenissen voor opslagplaatsen"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "Snel toe te voegen feiten/gebeurtenissen voor opslagplaatsen"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2412,15 +2453,15 @@ msgstr "Fout"
 msgid "You do not have permission to view this page."
 msgstr "U heeft geen toestemming om deze pagina te zien."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Wijzig journaalingang/nieuwsartikel of voeg er een toe"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Titel:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Artikeltekst:"
 
@@ -3721,10 +3762,6 @@ msgstr ""
 "Deze optie bepaalt of de inhoud van een <i>Bron</i>-record automatisch wordt "
 "weergegeven op de persoons pagina, of niet."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Toe te voegen feiten/gebeurtenissen voor  gezinnen"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3738,10 +3775,6 @@ msgstr ""
 "noodzakelijk. Namen van feiten/gebeurtenissen in deze lijst moeten niet ook "
 "bij de <i>Unieke feiten/gebeurtenissen</i> van gezinnen staan."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Snel toe te voegen feiten/gebeurtenissen voor gezinnen"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3750,10 +3783,6 @@ msgstr ""
 "Dit is de korte lijst van GEDCOM-feiten/gebeurtenissen van een gezin die "
 "naast de volledige lijst verschijnt en deze kunnen worden toegevoegd met een "
 "enkele muisklik."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Unieke toe te voegen feiten/gebeurtenissen voor gezinnen"
 
 #: help_text.php:523
 msgid ""
@@ -3942,10 +3971,6 @@ msgstr ""
 "webtrees_data/) of relatief aan de installatiemap (b.v. ../../"
 "webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Feiten voor personen"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3959,10 +3984,6 @@ msgstr ""
 "Namen van feiten/gebeurtenissen die in deze lijst voorkomen mogen niet ook "
 "voorkomen bij de <i>Unieke feiten/gebeurtenissen</i> van persoonsrecords"
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Snel toe te voegen feiten/gebeurtenissen van personen"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3971,10 +3992,6 @@ msgstr ""
 "Dit is de korte lijst met GEDCOM-feiten/gebeurtenissen van een persoon die "
 "naast de volledige lijst voorkomt en deze kunnen worden toegevoegd met een "
 "enkele muisklik."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Unieke toe te voegen feiten/gebeurtenissen voor  personen"
 
 #: help_text.php:601
 msgid ""
@@ -4306,10 +4323,6 @@ msgstr ""
 "gegevens (vb. INDI, FAM) of de feiten (BIRT, MARR, DEAT) toevoegen. Deze "
 "optie bepaalt welke checkboxen standaard aangevinkt zijn."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Feiten/gebeurtenissen voor nieuwe personen"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4321,10 +4334,6 @@ msgstr ""
 "die lijst staat, worden velden voor geboortedatum en -plaats getoond in het "
 "formulier."
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Feiten/gebeurtenissen voor nieuwe gezinnen"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4335,10 +4344,6 @@ msgstr ""
 "die zal worden getoond bij het toevoegen van een nieuw gezin. Bijvoorbeeld: "
 "als MARR in de lijst staat dan zullen invoervelden voor huwelijksdatum en "
 "huwelijksplaats in het formulier worden getoond."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Toe te voegen feiten/gebeurtenissen voor opslagplaatsen"
 
 #: help_text.php:797
 msgid ""
@@ -4353,10 +4358,6 @@ msgstr ""
 "indien nodig. Namen van feiten/gebeurtennissen die in de lijst voorkomen "
 "mogen niet ook voorkomen bij de <i>Unieke feiten/gebeurtenissen</i> lijst."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "Snel toe te voegen feiten/gebeurtenissen voor opslagplaatsen"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4365,10 +4366,6 @@ msgstr ""
 "Dit is de korte lijst van GEDCOM-feiten/gebeurtenissen voor opslagplaatsen "
 "die naast de volledige lijst verschijnt en die kunnen worden toegevoegd met "
 "een enkele muisklik."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Unieke feiten/gebeurtenissen voor opslagplaatsen"
 
 #: help_text.php:807
 msgid ""
@@ -4611,10 +4608,6 @@ msgstr ""
 "er automatisch een nieuwe ID voor die bron aangemaakt. De bron-ID zal dit "
 "voorvoegsel hebben."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Toe te voegen feiten/gebeurtenissen voor bronnen"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4628,10 +4621,6 @@ msgstr ""
 "feiten/gebeurtenissen in deze lijst mogen niet ook voorkomen bij <i>Unieke "
 "feiten/gebeurtenissen</i> van bronnen."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "Snel toe te voegen feiten/gebeurtenissen voor bronnen"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4640,10 +4629,6 @@ msgstr ""
 "Dit is een korte lijst met GEDCOM-feiten/gebeurtenissen voor Bronnen, welke "
 "naast de volledige lijst verschijnt en die kunnen worden toegevoegd met een "
 "enkele muisklik."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Unieke toe te voegen feiten/gebeurtenissen voor bronnen"
 
 #: help_text.php:918
 msgid ""
@@ -9588,9 +9573,8 @@ msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%H:%i:%s"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -11049,15 +11033,15 @@ msgstr "Zimbabwe"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "Mijn stamboom"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "Jan /JANSEN/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Wijzig deze persoon en vervang de details door uw eigen."
 
@@ -16217,6 +16201,12 @@ msgstr "Tabbladen"
 msgid "Blocks"
 msgstr "Blokken"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " maar de details zijn onbekend"
+
+#~ msgid " in "
+#~ msgstr " in "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -16324,6 +16314,19 @@ msgstr "Blokken"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9de"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr ""
+#~ "Een rapport van feiten/gebeurtenissen die door een bepaalde bron worden "
+#~ "ondersteund."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3 formaat"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4 formaat"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -16448,6 +16451,9 @@ msgstr "Blokken"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Adoptie van een kleinzoon"
 
+#~ msgid "All facts"
+#~ msgstr "Alle feiten/gebeurtenissen"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "Ook bekend als"
@@ -16455,6 +16461,9 @@ msgstr "Blokken"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "Ook bekend als"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Voorouders van "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -16475,6 +16484,10 @@ msgstr "Blokken"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "april"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16596,6 +16609,9 @@ msgstr "Blokken"
 #~ msgid "Birth"
 #~ msgstr "Geboorte"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "Geboorteplaats bevat"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Geboorte van een kleindochter"
@@ -16619,6 +16635,9 @@ msgstr "Blokken"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Brit milah van een kleinzoon"
+
+#~ msgid "Brother"
+#~ msgstr "Broer"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16659,6 +16678,15 @@ msgstr "Blokken"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Koper"
+
+#~ msgid "Child of "
+#~ msgstr "Kind van "
+
+#~ msgid "Children of "
+#~ msgstr "Kinderen van "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Kies familieleden"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16710,6 +16738,12 @@ msgstr "Blokken"
 #~ msgid "Current Server Time:"
 #~ msgstr "Huidige systeemdatum/tijd:"
 
+#~ msgid "Daughter"
+#~ msgstr "Dochter"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Plaats van overlijden bevat"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Overlijden van een kleindochter"
@@ -16745,6 +16779,13 @@ msgstr "Blokken"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "december"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Afstammelingen van "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16798,6 +16839,15 @@ msgstr "Blokken"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "Dhu al-Qi'dah"
 
+#~ msgid "Differences"
+#~ msgstr "Verschillen"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Voorouders in rechte lijn"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Voorouders in directe lijn en hun gezinnen"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Download %s en pak de bestanden uit"
 
@@ -16833,6 +16883,15 @@ msgstr "Blokken"
 #~ msgid "Employer"
 #~ msgstr "Werkgever"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Eind van reeks wijzigingsdata"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Voer Gezins ID in"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Voer persoons-ID in"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Esf"
@@ -16852,6 +16911,15 @@ msgstr "Blokken"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Toe te voegen feiten/gebeurtenissen voor  gezinnen"
+
+#~ msgid "Family with husband"
+#~ msgstr "Gezin met echtgenoot"
+
+#~ msgid "Family with wife"
+#~ msgstr "Gezin met vrouw"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16909,6 +16977,9 @@ msgstr "Blokken"
 #~ msgid "Floréal"
 #~ msgstr "Floréal"
 
+#~ msgid "Font"
+#~ msgstr "Lettertype"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Pleegouder"
@@ -16961,6 +17032,9 @@ msgstr "Blokken"
 #~ msgid "Fructidor"
 #~ msgstr "Fructidor"
 
+#~ msgid "Generation "
+#~ msgstr "Generatie "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "Germinal"
@@ -16985,6 +17059,37 @@ msgstr "Blokken"
 #~ msgid "Guardian"
 #~ msgstr "Voogd"
 
+#~ msgid "He "
+#~ msgstr "Hij "
+
+#~ msgid "He died"
+#~ msgstr "Hij is overleden"
+
+#~ msgid "He married"
+#~ msgstr "Hij trouwde met"
+
+#~ msgid "He resided at"
+#~ msgstr "Hij woonde in"
+
+#~ msgid "He was born"
+#~ msgstr "Hij werd geboren"
+
+#~ msgid "He was buried"
+#~ msgstr "Hij is begraven"
+
+#~ msgid "He was christened"
+#~ msgstr "Hij is gedoopt"
+
+#~ msgid "He was cremated"
+#~ msgstr "Hij is gecremeerd"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Haar beroep was"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
@@ -17001,9 +17106,15 @@ msgstr "Blokken"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
 
+#~ msgid "His occupation was"
+#~ msgstr "Zijn beroep was"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "IJslands"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Feiten voor personen"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -17165,6 +17276,14 @@ msgstr "Blokken"
 #~ msgid "Kislev"
 #~ msgstr "Kislev"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal formaat"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter-formaat"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "Litouws"
@@ -17206,6 +17325,15 @@ msgstr "Blokken"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "maart"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Einde van reeks huwelijksdata"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Start van reeks huwelijksdata"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Huwelijksplaats bevat"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -17319,6 +17447,9 @@ msgstr "Blokken"
 #~ msgid "Name"
 #~ msgstr "Naam"
 
+#~ msgid "Name List"
+#~ msgstr "Namenlijst"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Nooit gehuwd"
@@ -17326,6 +17457,9 @@ msgstr "Blokken"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Nooit gehuwd"
+
+#~ msgid "New entry facts"
+#~ msgstr "Nieuw record feiten/gebeurtenissen"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -17435,6 +17569,9 @@ msgstr "Blokken"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Oriëntatie"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Eigenares"
@@ -17442,6 +17579,18 @@ msgstr "Blokken"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Eigenaar"
+
+#~ msgid "Page"
+#~ msgstr "Pagina"
+
+#~ msgid "Page size"
+#~ msgstr "Paginaformaat"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Ouders en kinderen"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Stamboom"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -17482,6 +17631,12 @@ msgstr "Blokken"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "Prairial"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Print standaard gebeurtenissen wanneer leeg?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Snelle feiten/gebeurtenissen"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17557,6 +17712,9 @@ msgstr "Blokken"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Ambtenaar bevolkingsregister"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Toe te voegen feiten/gebeurtenissen voor opslagplaatsen"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17681,6 +17839,30 @@ msgstr "Blokken"
 #~ msgid "Shawwal"
 #~ msgstr "Shawwal"
 
+#~ msgid "She "
+#~ msgstr "Zij "
+
+#~ msgid "She died"
+#~ msgstr "Zij is overleden"
+
+#~ msgid "She married"
+#~ msgstr "Zij trouwde met"
+
+#~ msgid "She resided at"
+#~ msgstr "Zij woonde in"
+
+#~ msgid "She was born"
+#~ msgstr "Zij werd geboren"
+
+#~ msgid "She was buried"
+#~ msgstr "Zij is begraven"
+
+#~ msgid "She was christened"
+#~ msgstr "Zij is gedoopt"
+
+#~ msgid "She was cremated"
+#~ msgstr "Zij is gecremeerd"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
@@ -17696,6 +17878,30 @@ msgstr "Blokken"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Kinderen van voorouders laten zien?"
+
+#~ msgid "Show notes?"
+#~ msgstr "Notities tonen?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Toon beroepen?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Toon uitstaande wijzigingen"
+
+#~ msgid "Show photos?"
+#~ msgstr "Foto's tonen?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Toon woonplaatsen?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Bronnen tonen?"
+
+#~ msgid "Sister"
+#~ msgstr "Zuster"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17721,9 +17927,27 @@ msgstr "Blokken"
 #~ msgid "Slave"
 #~ msgstr "Slaaf"
 
+#~ msgid "Son"
+#~ msgstr "Zoon"
+
+#~ msgid "Source add facts"
+#~ msgstr "Toe te voegen feiten/gebeurtenissen voor bronnen"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Bronnen voor de gebeurtenissen"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Spaans"
+
+#~ msgid "Spouse"
+#~ msgstr "Echtgeno(o)t(e)"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Huwelijkspartners en kinderen"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Start van reeks wijzigingsdata"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17816,6 +18040,18 @@ msgstr "Blokken"
 #~ msgid "Tishrei"
 #~ msgstr "Tishrei"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Totaal aantal geaccepteerde wijzigingen: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Totaal aantal personen"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Totaal uitstaande wijzigingen: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Unieke feiten/gebeurtenissen"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Onbekende"
@@ -17833,6 +18069,9 @@ msgstr "Blokken"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Upgrade naar webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Gebruik kleuren"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -18014,6 +18253,9 @@ msgstr "Blokken"
 #~ msgid "d."
 #~ msgstr "o."
 
+#~ msgid "daughter of"
+#~ msgstr "dochter van"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "schoondochter"
@@ -18033,6 +18275,14 @@ msgstr "Blokken"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "schoonouders van zoon"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "overleden"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "overleden"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -19155,6 +19405,14 @@ msgstr "Blokken"
 #~ msgstr "h."
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "getrouwd"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "getrouwd"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "aangenomen huwelijksnaam"
 
@@ -19498,6 +19756,9 @@ msgstr "Blokken"
 #~ msgid "sixth cousin"
 #~ msgstr "achterneef/achternicht 14e graad"
 
+#~ msgid "son of"
+#~ msgstr "zoon van"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "schoonzoon"
@@ -19698,6 +19959,14 @@ msgstr "Blokken"
 #~ msgid "unknown"
 #~ msgstr "onbekende"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "is geboren"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "is geboren"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19706,11 +19975,8 @@ msgstr "Blokken"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " maar de details zijn onbekend"
-
-#~ msgid " in "
-#~ msgstr " in "
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
 
 #~ msgid ""
 #~ "<b>GUID</b> in this context is an acronym for “Globally Unique ID”."
@@ -19885,25 +20151,12 @@ msgstr "Blokken"
 #~ "server) of een nieuwe aanmaken (als uw database gebruikersaccount "
 #~ "voldoende rechten heeft)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr ""
-#~ "Een rapport van feiten/gebeurtenissen die door een bepaalde bron worden "
-#~ "ondersteund."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "Een gebruiker kan zich niet aanmelden totdat zowel \"e-mail geverifieerd"
 #~ "\" en \"goedgekeurd door beheerder\" opties geselecteerd zijn ."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3 formaat"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4 formaat"
 
 #~ msgid "Access"
 #~ msgstr "Toegang"
@@ -20004,9 +20257,6 @@ msgstr "Blokken"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Leeftijd van ouders naast geboortedatum kind"
 
-#~ msgid "All individuals"
-#~ msgstr "Alle personen"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Sta wisselen van GEDCOM-bestand toe"
 
@@ -20023,18 +20273,11 @@ msgstr "Blokken"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Een onverwachte databasefout is opgetreden."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Voorouders van "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Ancestral File Nummer"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Weet u zeker dat u alle wijzigingen ongedaan wilt maken?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Beschikbare blokken"
@@ -20048,9 +20291,6 @@ msgstr "Blokken"
 #~ msgid "Binary data object"
 #~ msgstr "Binair data object"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Geboorteplaats bevat"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Geboorte- en overlijdensdetails op diagrammen"
 
@@ -20059,9 +20299,6 @@ msgstr "Blokken"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Begin van reeks geboortedata"
-
-#~ msgid "Brother"
-#~ msgstr "Broer"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Plaats begrafenis bevat"
@@ -20079,15 +20316,6 @@ msgstr "Blokken"
 
 #~ msgid "Change family members"
 #~ msgstr "Wijzig gezinsleden"
-
-#~ msgid "Child of "
-#~ msgstr "Kind van "
-
-#~ msgid "Children of "
-#~ msgstr "Kinderen van "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Kies familieleden"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -20230,12 +20458,6 @@ msgstr "Blokken"
 #~ msgid "Date of residence"
 #~ msgstr "Datum bewoning"
 
-#~ msgid "Daughter"
-#~ msgstr "Dochter"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Plaats van overlijden bevat"
-
 #~ msgid "Death date range end"
 #~ msgstr "Einde reeks overlijdensdata"
 
@@ -20244,13 +20466,6 @@ msgstr "Blokken"
 
 #~ msgid "Default theme"
 #~ msgstr "Standaard thema"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Afstammelingen van "
 
 #~ msgid "Descent steps"
 #~ msgstr "Afstammings stappen"
@@ -20270,15 +20485,6 @@ msgstr "Blokken"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Differences"
-#~ msgstr "Verschillen"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Voorouders in rechte lijn"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Voorouders in directe lijn en hun gezinnen"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Niet verzegelen, vorige verzegeling afgebroken"
@@ -20372,15 +20578,6 @@ msgstr "Blokken"
 
 #~ msgid "End year"
 #~ msgstr "Eind Jaar"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Eind van reeks wijzigingsdata"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Voer Gezins ID in"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Voer persoons-ID in"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20530,20 +20727,11 @@ msgstr "Blokken"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Stamboom-knipselwagen"
 
-#~ msgid "Family with husband"
-#~ msgstr "Gezin met echtgenoot"
-
-#~ msgid "Family with wife"
-#~ msgstr "Gezin met vrouw"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Vader's geboorteplaats - (Chapman formaat)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Vader's leeftijd"
-
-#~ msgid "Font"
-#~ msgstr "Lettertype"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20610,9 +20798,6 @@ msgstr "Blokken"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Generatie "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20634,30 +20819,6 @@ msgstr "Blokken"
 #~ "verificatie moet de beheerder de registratie goedkeuren voordat die "
 #~ "actief wordt."
 
-#~ msgid "He "
-#~ msgstr "Hij "
-
-#~ msgid "He died"
-#~ msgstr "Hij is overleden"
-
-#~ msgid "He married"
-#~ msgstr "Hij trouwde met"
-
-#~ msgid "He resided at"
-#~ msgstr "Hij woonde in"
-
-#~ msgid "He was born"
-#~ msgstr "Hij werd geboren"
-
-#~ msgid "He was buried"
-#~ msgstr "Hij is begraven"
-
-#~ msgid "He was christened"
-#~ msgstr "Hij is gedoopt"
-
-#~ msgid "He was cremated"
-#~ msgstr "Hij is gecremeerd"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Hallo %s …"
 
@@ -20666,13 +20827,6 @@ msgstr "Blokken"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Hallo Beheerder …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Haar beroep was"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20779,9 +20933,6 @@ msgstr "Blokken"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Verberg &amp; toon"
-
-#~ msgid "His occupation was"
-#~ msgstr "Zijn beroep was"
 
 #~ msgid "Hit count:"
 #~ msgstr "Bezoekersteller:"
@@ -21009,14 +21160,6 @@ msgstr "Blokken"
 #~ msgid "LDS temple"
 #~ msgstr "LDS Tempel"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal formaat"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter-formaat"
-
 #~ msgid "Link ID"
 #~ msgstr "koppeling-ID"
 
@@ -21057,15 +21200,6 @@ msgstr "Blokken"
 #~ msgid "Main section blocks"
 #~ msgstr "Blokken hoofdsectie"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Einde van reeks huwelijksdata"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Start van reeks huwelijksdata"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Huwelijksplaats bevat"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Huwelijksvoornemen"
 
@@ -21098,9 +21232,6 @@ msgstr "Blokken"
 
 #~ msgid "Move right"
 #~ msgstr "Verplaats naar rechts"
-
-#~ msgid "Name List"
-#~ msgstr "Namenlijst"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -21181,9 +21312,6 @@ msgstr "Blokken"
 #~ msgid "Online editing"
 #~ msgstr "Online wijzigen"
 
-#~ msgid "Orientation"
-#~ msgstr "Oriëntatie"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Andere map… voer in"
 
@@ -21213,20 +21341,8 @@ msgstr "Blokken"
 #~ "PHP instelling \"%1$s\" is uitgezet. Zonder dat, werken de volgende "
 #~ "kenmerken niet: %2$s. Vraag de beheerder van uw server dit in te schakelen"
 
-#~ msgid "Page"
-#~ msgstr "Pagina"
-
-#~ msgid "Page size"
-#~ msgstr "Paginaformaat"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Ouders en kinderen"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Ouders leeftijd"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Stamboom"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Plaats van LDS doop"
@@ -21310,9 +21426,6 @@ msgstr "Blokken"
 
 #~ msgid "President’s Office"
 #~ msgstr "Kantoor van de President"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Print standaard gebeurtenissen wanneer leeg?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21555,30 +21668,6 @@ msgstr "Blokken"
 #~ msgid "Sha’aban"
 #~ msgstr "Sha'aban"
 
-#~ msgid "She "
-#~ msgstr "Zij "
-
-#~ msgid "She died"
-#~ msgstr "Zij is overleden"
-
-#~ msgid "She married"
-#~ msgstr "Zij trouwde met"
-
-#~ msgid "She resided at"
-#~ msgstr "Zij woonde in"
-
-#~ msgid "She was born"
-#~ msgstr "Zij werd geboren"
-
-#~ msgid "She was buried"
-#~ msgstr "Zij is begraven"
-
-#~ msgid "She was christened"
-#~ msgstr "Zij is gedoopt"
-
-#~ msgid "She was cremated"
-#~ msgstr "Zij is gecremeerd"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21611,9 +21700,6 @@ msgstr "Blokken"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Toon alle plaatsen in een lijst"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Kinderen van voorouders laten zien?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Toon overleden personen"
@@ -21649,12 +21735,6 @@ msgstr "Blokken"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Toon personen, gestorven in de laatste 100 jaar."
 
-#~ msgid "Show notes?"
-#~ msgstr "Notities tonen?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Toon beroepen?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Alleen gebeurtenissen van levende personen tonen?"
 
@@ -21664,23 +21744,11 @@ msgstr "Blokken"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Personen, gebeurtenissen of alles tonen?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Toon uitstaande wijzigingen"
-
-#~ msgid "Show photos?"
-#~ msgstr "Foto's tonen?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Toon plaatsen in de hiërarchie"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Toon gerelateerde personen/gezinnen"
-
-#~ msgid "Show residences?"
-#~ msgstr "Toon woonplaatsen?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Bronnen tonen?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21698,14 +21766,8 @@ msgstr "Blokken"
 #~ "genoemd. Zij zijn personen, waarvan geen ouders zijn opgenomen in de "
 #~ "database."
 
-#~ msgid "Sister"
-#~ msgstr "Zuster"
-
 #~ msgid "Social security number"
 #~ msgstr "Social security number (USA)"
-
-#~ msgid "Son"
-#~ msgstr "Zoon"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21719,9 +21781,6 @@ msgstr "Blokken"
 #~ "bronvermelding kunnen ze worden gedeactiveerd als deze velden niet worden "
 #~ "gebruikt."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Bronnen voor de gebeurtenissen"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -21732,15 +21791,6 @@ msgstr "Blokken"
 #~ "kunnen worden in de database. Als <b>Ja</b> is ingesteld, kunnen "
 #~ "gebruikers de berichten lezen als ze aanmelden bij <b>webtrees</b>. Als "
 #~ "<b>Nee</b> is ingesteld worden de berichten alleen per e-mail verstuurd."
-
-#~ msgid "Spouse"
-#~ msgstr "Echtgeno(o)t(e)"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Huwelijkspartners en kinderen"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Start van reeks wijzigingsdata"
 
 #~ msgid "Surname option"
 #~ msgstr "Achternaamoptie"
@@ -22427,15 +22477,6 @@ msgstr "Blokken"
 #~ msgid "To source"
 #~ msgstr "Aan een bron"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Totaal aantal geaccepteerde wijzigingen: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Totaal aantal personen"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Totaal uitstaande wijzigingen: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -22469,9 +22510,6 @@ msgstr "Blokken"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Gebruik SMTP voor het versturen van externe mail"
-
-#~ msgid "Use colors"
-#~ msgstr "Gebruik kleuren"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22871,9 +22909,6 @@ msgstr "Blokken"
 #~ msgid "before %d"
 #~ msgstr "vóór %d"
 
-#~ msgid "daughter of"
-#~ msgstr "dochter van"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "schoonvader van zoon"
@@ -22885,14 +22920,6 @@ msgstr "Blokken"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "schoonouders van zoon"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "overleden"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "overleden"
 
 #~ msgid "from %d"
 #~ msgstr "vanaf %d"
@@ -22921,17 +22948,6 @@ msgstr "Blokken"
 #~ msgid "grandson’s wife"
 #~ msgstr "aangetrouwde kleindochter"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "getrouwd"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "getrouwd"
-
-#~ msgid "son of"
-#~ msgstr "zoon van"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "vader van schoonzoon"
@@ -22943,14 +22959,6 @@ msgstr "Blokken"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "ouders van schoonzoon"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "is geboren"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "is geboren"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees database moet op dezelfde server staan als die van PGV"

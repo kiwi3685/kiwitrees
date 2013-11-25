@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:15+1200\n"
-"PO-Revision-Date: 2013-11-22 12:41+1200\n"
+"POT-Creation-Date: 2013-11-26 11:59+1200\n"
+"PO-Revision-Date: 2013-11-26 12:07+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -218,7 +218,7 @@ msgstr "Neatnaujinti \"paskutinių pakeitimų\" įrašo"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1719,36 +1719,77 @@ msgstr "Vykdymo statistika"
 msgid "Facts for Individual records"
 msgstr "Faktai asmeniniams įrašams"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Visi faktai"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Visi asmenys"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Unikalūs faktai"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Unikalūs faktai apie asmenį"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Naujų faktų įrašas"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "Faktai naujiems asmenims"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Faktai trumpai"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Trumpai apie asmenį"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Faktai šeimos įrašams"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Trumpai apie šeimą"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Unikalūs faktai apie šeimą"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Faktai naujoms šeimoms"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Trumpai apie šeimą"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Faktai šaltinių įrašams"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Visi faktai"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr ""
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr ""
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Faktai saugyklos įrašams"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Saugykla turi:"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr ""
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2402,15 +2443,15 @@ msgstr "Klaida"
 msgid "You do not have permission to view this page."
 msgstr "Jūs neturite leidimo šio puslapio peržiūrai."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Pridėti/redaguoti žurnalo/naujienos įrašą"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Antraštė"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Įveskite tekstą:"
 
@@ -3570,10 +3611,6 @@ msgid ""
 "<i>Source</i> record on the Individual page."
 msgstr ""
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Šeima pridėjo faktus"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3582,10 +3619,6 @@ msgid ""
 "<i>Unique Family Facts</i> list."
 msgstr ""
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Trumpai apie šeimą"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3593,10 +3626,6 @@ msgid ""
 msgstr ""
 "Tai yra trumpas sąrašas GEDCOM šeimos faktų, kurie, atrodo yra šalia pilno "
 "sąrašo ir gali būti pridėti vienu paspaudimu."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Unikalūs faktai apie šeimą"
 
 #: help_text.php:523
 msgid ""
@@ -3727,10 +3756,6 @@ msgid ""
 "relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Asmuo pridėjo faktus"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3739,19 +3764,11 @@ msgid ""
 "the <i>Unique Individual Facts</i> list."
 msgstr ""
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Trumpai apie asmenį"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
 "full list and can be added with a single click."
 msgstr ""
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Unikalūs faktai apie asmenį"
 
 #: help_text.php:601
 msgid ""
@@ -3997,10 +4014,6 @@ msgid ""
 "which checkboxes are ticked by default."
 msgstr ""
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Faktai naujiems asmenims"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4008,19 +4021,11 @@ msgid ""
 "date and birth place will be shown on the form."
 msgstr ""
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Faktai naujoms šeimoms"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
 "adding a new family.  For example, if MARR is in the list, then fields for "
 "marriage date and marriage place will be shown on the form."
-msgstr ""
-
-#: help_text.php:796
-msgid "Repository add facts"
 msgstr ""
 
 #: help_text.php:797
@@ -4031,18 +4036,10 @@ msgid ""
 "the <i>Unique Repository Facts</i> list."
 msgstr ""
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr ""
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
 "full list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:806
-msgid "Unique repository facts"
 msgstr ""
 
 #: help_text.php:807
@@ -4208,10 +4205,6 @@ msgid ""
 "prefix."
 msgstr ""
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr ""
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4220,18 +4213,10 @@ msgid ""
 "<i>Unique Source Facts</i> list."
 msgstr ""
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr ""
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
 "list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:917
-msgid "Unique source facts"
 msgstr ""
 
 #: help_text.php:918
@@ -8679,9 +8664,8 @@ msgid "%j %F %Y"
 msgstr "%Y %F %j"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%g:%i:%s %a"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10152,15 +10136,15 @@ msgstr "Zimbabvė"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr ""
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "Vardenis /Pavardenis/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Redaguoti šį asmenį ir pakeisti esamus duomenis"
 
@@ -14614,7 +14598,7 @@ msgstr "Sąrašas įrašų, kurie buvo neseniai įkelti"
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "%s Paskutinės dienos pakeitimai"
+msgstr[0] "Paskutinės %s dienos pakeitimai"
 msgstr[1] "Paskutinių %s dienų pakeitimai"
 msgstr[2] "Paskutinių %s dienų pakeitimai"
 
@@ -14957,8 +14941,8 @@ msgstr "Dažniausi vardai"
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
 msgstr[0] "%s Dažniausiai vartojamas vardas"
-msgstr[1] "Dažniausiai vartojamas %s vardas"
-msgstr[2] "Dažniausiai vartojamas %s vardas"
+msgstr[1] "%s Dažniausiai vartojamas vardas"
+msgstr[2] "%s Dažniausiai vartojamas vardas"
 
 #: modules_v3/top10_givnnames/module.php:142
 #: modules_v3/top10_pageviews/module.php:135
@@ -15258,6 +15242,12 @@ msgstr "Kortelės"
 msgid "Blocks"
 msgstr "Blokai"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " bet detalės yra nežinomos"
+
+#~ msgid " in "
+#~ msgstr " į "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -15366,6 +15356,17 @@ msgstr "Blokai"
 #~ msgid "9th"
 #~ msgstr "9-tą"
 
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Faktai, kurie yra paremiami nurodytu šaltiniu."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
+
 #~ msgid "Accept or reject any pending changes."
 #~ msgstr "Priimti ar atmesti bet kokius laukiančius pakeitimus."
 
@@ -15449,6 +15450,10 @@ msgstr "Blokai"
 #~ msgid "April"
 #~ msgstr "Balandžio"
 
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
 #~ msgstr "Palydovė"
@@ -15513,6 +15518,9 @@ msgstr "Blokai"
 #~ msgid "Birth"
 #~ msgstr "Gimė"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "Gimimo vietos yra"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Anūkės gimimas"
@@ -15536,6 +15544,9 @@ msgstr "Blokai"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Anūko apipjaustymas"
+
+#~ msgid "Brother"
+#~ msgstr "Brolis"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Burial of a granddaughter"
@@ -15560,6 +15571,15 @@ msgstr "Blokai"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Pirkėjas"
+
+#~ msgid "Child of "
+#~ msgstr "vaikas "
+
+#~ msgid "Children of "
+#~ msgstr "vaikai "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Pasirinkite giminaičius"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -15603,6 +15623,9 @@ msgstr "Blokai"
 #~ msgid "Current Server Time:"
 #~ msgstr "Dabartinis sistemos laikas:"
 
+#~ msgid "Daughter"
+#~ msgstr "Dukra"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Anūkės mirtis"
@@ -15639,6 +15662,22 @@ msgstr "Blokai"
 #~ msgid "December"
 #~ msgstr "Gruodžio"
 
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Palikuonys "
+
+#~ msgid "Differences"
+#~ msgstr "Skirtumai"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Tiesioginė protėvių linija"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Tiesioginė protėvių ir jų šeimų linija"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Atsiųsti ir išskleisti %s failus."
 
@@ -15657,6 +15696,24 @@ msgstr "Blokai"
 #~ msgctxt "MALE"
 #~ msgid "Employer"
 #~ msgstr "Darbdavys"
+
+#~ msgid "Ending range of change dates"
+#~ msgstr "Užbaigiama sritis nuo datų pakeitimo"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Įveskite šeimos ID"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Įveskite asmens ID"
+
+#~ msgid "Family add facts"
+#~ msgstr "Šeima pridėjo faktus"
+
+#~ msgid "Family with husband"
+#~ msgstr "Šeima su vyru"
+
+#~ msgid "Family with wife"
+#~ msgstr "Šeima su žmona"
 
 #~ msgctxt "Abbreviation for February"
 #~ msgid "Feb"
@@ -15678,6 +15735,9 @@ msgstr "Blokai"
 #~ msgid "February"
 #~ msgstr "Vasario"
 
+#~ msgid "Font"
+#~ msgstr "Šriftas"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Globotinė"
@@ -15698,6 +15758,9 @@ msgstr "Blokai"
 #~ msgid "Friend"
 #~ msgstr "Draugas"
 
+#~ msgid "Generation "
+#~ msgstr "Karta "
+
 #~ msgctxt "FEMALE"
 #~ msgid "Guardian"
 #~ msgstr "Globėja"
@@ -15706,9 +15769,37 @@ msgstr "Blokai"
 #~ msgid "Guardian"
 #~ msgstr "Globėjas"
 
+#~ msgid "He "
+#~ msgstr "Jis "
+
+#~ msgid "He died"
+#~ msgstr "Jis mirė"
+
+#~ msgid "He married"
+#~ msgstr "Jis vedė"
+
+#~ msgid "He was born"
+#~ msgstr "Jis gimė"
+
+#~ msgid "He was buried"
+#~ msgstr "Jis buvo palaidotas"
+
+#~ msgid "He was christened"
+#~ msgstr "Jis buvo pakrikštytas"
+
+#~ msgid "He was cremated"
+#~ msgstr "Jis buvo kremuotas"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "Islandų"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Asmuo pridėjo faktus"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -15828,6 +15919,12 @@ msgstr "Blokai"
 #~ msgid "March"
 #~ msgstr "Kovo"
 
+#~ msgid "Marriage Date range end"
+#~ msgstr "Santuokos datos srities pabaiga"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Santuokos datos srities pradžia"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
 #~ msgstr "Anūkės vedybos"
@@ -15868,6 +15965,9 @@ msgstr "Blokai"
 #~ msgid "Name"
 #~ msgstr "Saugykla"
 
+#~ msgid "Name List"
+#~ msgstr "Vardų sąrašas"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Niekada nebuvo ištekėjusi"
@@ -15875,6 +15975,9 @@ msgstr "Blokai"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Niekada nebuvo vedes"
+
+#~ msgid "New entry facts"
+#~ msgstr "Naujų faktų įrašas"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Not married"
@@ -15932,6 +16035,9 @@ msgstr "Blokai"
 #~ msgid "October"
 #~ msgstr "Spalio"
 
+#~ msgid "Orientation"
+#~ msgstr "Orientacija"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Savininkė"
@@ -15940,6 +16046,18 @@ msgstr "Blokai"
 #~ msgid "Owner"
 #~ msgstr "Savininkas"
 
+#~ msgid "Page"
+#~ msgstr "Puslapis"
+
+#~ msgid "Page size"
+#~ msgstr "Puslapio dydis"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Tėvai, broliai ir seserys"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Kilmės diagrama"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Polish"
 #~ msgstr "Lenkų"
@@ -15947,6 +16065,9 @@ msgstr "Blokai"
 #~ msgctxt "Surname tradition"
 #~ msgid "Portuguese"
 #~ msgstr "Portugalų"
+
+#~ msgid "Quick facts"
+#~ msgstr "Faktai trumpai"
 
 #~ msgid "Recommendations"
 #~ msgstr "Rekomendacijos"
@@ -16002,6 +16123,51 @@ msgstr "Blokai"
 #~ msgid "Servant"
 #~ msgstr "Tarnautojas"
 
+#~ msgid "She "
+#~ msgstr "Ji "
+
+#~ msgid "She died"
+#~ msgstr "Ji mirė"
+
+#~ msgid "She married"
+#~ msgstr "Ji ištekėjo"
+
+#~ msgid "She was born"
+#~ msgstr "Ji gimė"
+
+#~ msgid "She was buried"
+#~ msgstr "Ji buvo palaidota"
+
+#~ msgid "She was christened"
+#~ msgstr "Ji buvo pakrikštyta"
+
+#~ msgid "She was cremated"
+#~ msgstr "Ji buvo kremuota"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Rodyti vaikams protėvius?"
+
+#~ msgid "Show notes?"
+#~ msgstr "Ar rodyti pastabas?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Ar rodyti profesijas?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Rodyti laukiančius pakeitimus"
+
+#~ msgid "Show photos?"
+#~ msgstr "Ar rodyti nuotraukas?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Rodyti gyvenamąsias vietas?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Ar rodyti šaltinius?"
+
+#~ msgid "Sister"
+#~ msgstr "Sesuo"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Slave"
 #~ msgstr "Vergė"
@@ -16010,9 +16176,24 @@ msgstr "Blokai"
 #~ msgid "Slave"
 #~ msgstr "Vergas"
 
+#~ msgid "Son"
+#~ msgstr "Sūnus"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Šaltiniai į įvykius"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Ispanų"
+
+#~ msgid "Spouse"
+#~ msgstr "Sutuoktinis"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Sutuoktiniai ir vaikai"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Pradedama sritis nuo datų pakeitimo"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -16020,6 +16201,18 @@ msgstr "Blokai"
 #~ msgstr ""
 #~ "Padarykite savo tinklapį nepasiekiamą, kol kopijuosite naujus failus. "
 #~ "Atlikite tai, sukurdami žiniatinklio serveryje laikiną %s failą."
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Viso priimtų pakeitimų: "
+
+#~ msgid "Total individuals"
+#~ msgstr "iš viso vardų"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Viso laukiančių pakeitimų: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Unikalūs faktai"
 
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
@@ -16038,6 +16231,9 @@ msgstr "Blokai"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Naujinti į webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Naudoti spalvas"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Ward"
@@ -16187,6 +16383,9 @@ msgstr "Blokai"
 #~ msgid "d."
 #~ msgstr "m."
 
+#~ msgid "daughter of"
+#~ msgstr "duktė"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "marti"
@@ -16206,6 +16405,14 @@ msgstr "Blokai"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "svotai - marčios tėvai"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "mirė"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "mirė"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -17496,6 +17703,14 @@ msgstr "Blokai"
 #~ msgstr "santuokoje"
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "ištekėjusi"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "vedė"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "pavardė po santuokos"
 
@@ -17839,6 +18054,9 @@ msgstr "Blokai"
 #~ msgid "sixth cousin"
 #~ msgstr "šeštos eilės pusbrolis/pusseserė"
 
+#~ msgid "son of"
+#~ msgstr "sūnus"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "žentas"
@@ -18039,6 +18257,14 @@ msgstr "Blokai"
 #~ msgid "unknown"
 #~ msgstr "nežinoma"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "gimė"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "gimė"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -18047,14 +18273,11 @@ msgstr "Blokai"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " bet detalės yra nežinomos"
-
-#~ msgid " in "
-#~ msgstr " į "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s’s %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s tris kartus pašalintas didėjimo tvarka"
@@ -18183,17 +18406,6 @@ msgstr "Blokai"
 #~ "arba sukurti naują (jei jūsų duomenų bazės vartotojo sąskaita turi tokias "
 #~ "teises)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Faktai, kurie yra paremiami nurodytu šaltiniu."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
-
 #~ msgid "Access"
 #~ msgstr "Prieiga"
 
@@ -18258,9 +18470,6 @@ msgstr "Blokai"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Tėvų amžius gimus vaikui"
 
-#~ msgid "All individuals"
-#~ msgstr "Visi asmenys"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Leisti GEDCOM perjungimą"
 
@@ -18284,10 +18493,6 @@ msgstr "Blokai"
 #~ "Ar jūs tikrai norite atšaukti visus paskutinius veiksmus padarytus šiam "
 #~ "GEDCOM?"
 
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
-
 #~ msgid "Available blocks"
 #~ msgstr "Galimi blokai"
 
@@ -18297,9 +18502,6 @@ msgstr "Blokai"
 #~ msgid "Best man"
 #~ msgstr "Pabrolys"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Gimimo vietos yra"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Gimimo ir mirties detalės diagramose"
 
@@ -18308,9 +18510,6 @@ msgstr "Blokai"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Gimimų laikotarpis prasideda"
-
-#~ msgid "Brother"
-#~ msgstr "Brolis"
 
 #~ msgid ""
 #~ "By default, the list shows only those places which can be found in your "
@@ -18324,15 +18523,6 @@ msgstr "Blokai"
 
 #~ msgid "Change family members"
 #~ msgstr "Keisti šeimos narius"
-
-#~ msgid "Child of "
-#~ msgstr "vaikas "
-
-#~ msgid "Children of "
-#~ msgstr "vaikai "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Pasirinkite giminaičius"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -18433,9 +18623,6 @@ msgstr "Blokai"
 #~ msgid "Date of residence"
 #~ msgstr "Būstinės įkūrimo data"
 
-#~ msgid "Daughter"
-#~ msgstr "Dukra"
-
 #~ msgid "Death date range end"
 #~ msgstr "mirčių laikotarpis baigiasi"
 
@@ -18445,24 +18632,8 @@ msgstr "Blokai"
 #~ msgid "Default theme"
 #~ msgstr "Numatyta tema"
 
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Palikuonys "
-
 #~ msgid "Descent steps"
 #~ msgstr "Sekantys žingsniai"
-
-#~ msgid "Differences"
-#~ msgstr "Skirtumai"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Tiesioginė protėvių linija"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Tiesioginė protėvių ir jų šeimų linija"
 
 #~ msgid "Do not send messages"
 #~ msgstr "Nesiūskite žinučių"
@@ -18481,15 +18652,6 @@ msgstr "Blokai"
 
 #~ msgid "End year"
 #~ msgstr "Pabaigos metai"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Užbaigiama sritis nuo datų pakeitimo"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Įveskite šeimos ID"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Įveskite asmens ID"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -18606,20 +18768,11 @@ msgstr "Blokai"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Šeimos medžio iškarpų krepšelis"
 
-#~ msgid "Family with husband"
-#~ msgstr "Šeima su vyru"
-
-#~ msgid "Family with wife"
-#~ msgstr "Šeima su žmona"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Tėvo gimtinė - (Chapman formatas)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Tėvo amžius"
-
-#~ msgid "Font"
-#~ msgstr "Šriftas"
 
 #~ msgid "Foster child"
 #~ msgstr "Įvaikis"
@@ -18639,30 +18792,6 @@ msgstr "Blokai"
 #~ msgid "Gedcom"
 #~ msgstr "Genealoginių Duomenų Ryšys (GEDCOM)"
 
-#~ msgid "Generation "
-#~ msgstr "Karta "
-
-#~ msgid "He "
-#~ msgstr "Jis "
-
-#~ msgid "He died"
-#~ msgstr "Jis mirė"
-
-#~ msgid "He married"
-#~ msgstr "Jis vedė"
-
-#~ msgid "He was born"
-#~ msgstr "Jis gimė"
-
-#~ msgid "He was buried"
-#~ msgstr "Jis buvo palaidotas"
-
-#~ msgid "He was christened"
-#~ msgstr "Jis buvo pakrikštytas"
-
-#~ msgid "He was cremated"
-#~ msgstr "Jis buvo kremuotas"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Sveiki %s …"
 
@@ -18671,10 +18800,6 @@ msgstr "Blokai"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Sveikas Administratoriau…"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
 
 #~ msgid ""
 #~ "Here you can choose between two types of displaying places names in "
@@ -18773,12 +18898,6 @@ msgstr "Blokai"
 #~ msgid "Main section blocks"
 #~ msgstr "Pagrindinis pasirinkimų blokas"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Santuokos datos srities pabaiga"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Santuokos datos srities pradžia"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Ketinimas vesti"
 
@@ -18811,9 +18930,6 @@ msgstr "Blokai"
 
 #~ msgid "Move right"
 #~ msgstr "Į dešinę"
-
-#~ msgid "Name List"
-#~ msgstr "Vardų sąrašas"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -18849,9 +18965,6 @@ msgstr "Blokai"
 #~ msgid "Online editing"
 #~ msgstr "Tiesioginis redagavimas"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientacija"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Kitas aplankas… Prašome suvesti"
 
@@ -18882,20 +18995,8 @@ msgstr "Blokai"
 #~ "%2$s . Prašome kreiptis į serverio administratorių, kad jis pakeistų PHP "
 #~ "nustatymus."
 
-#~ msgid "Page"
-#~ msgstr "Puslapis"
-
-#~ msgid "Page size"
-#~ msgstr "Puslapio dydis"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Tėvai, broliai ir seserys"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Tėvų amžius"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Kilmės diagrama"
 
 #~ msgid "Place of adoption"
 #~ msgstr "Įvaikinimo vieta"
@@ -19003,27 +19104,6 @@ msgstr "Blokai"
 #~ msgid "Shared notes found"
 #~ msgstr "Rastos bendrai naudojamos pastabos"
 
-#~ msgid "She "
-#~ msgstr "Ji "
-
-#~ msgid "She died"
-#~ msgstr "Ji mirė"
-
-#~ msgid "She married"
-#~ msgstr "Ji ištekėjo"
-
-#~ msgid "She was born"
-#~ msgstr "Ji gimė"
-
-#~ msgid "She was buried"
-#~ msgstr "Ji buvo palaidota"
-
-#~ msgid "She was christened"
-#~ msgstr "Ji buvo pakrikštyta"
-
-#~ msgid "She was cremated"
-#~ msgstr "Ji buvo kremuota"
-
 #~ msgid "Show acceptable use agreement on “Request new user account” page"
 #~ msgstr ""
 #~ "Rodyti svetainės naudojimosi susitarimo tekstą puslapyje \"Naujo "
@@ -19034,9 +19114,6 @@ msgstr "Blokai"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Rodyti visas vietoves saraše"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Rodyti vaikams protėvius?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Rodyti mirusius asmenis"
@@ -19072,12 +19149,6 @@ msgstr "Blokai"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Rodyti asmenis mirusius per paskutinius šimtą metų."
 
-#~ msgid "Show notes?"
-#~ msgstr "Ar rodyti pastabas?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Ar rodyti profesijas?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Rodyti tik gyvų žmonių duomenis?"
 
@@ -19087,23 +19158,11 @@ msgstr "Blokai"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Rodyti tik asmenis, įvykius ar viską?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Rodyti laukiančius pakeitimus"
-
-#~ msgid "Show photos?"
-#~ msgstr "Ar rodyti nuotraukas?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Rodyti vietoves herarchine tvarka"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Rodyti susijusius asmenis/šeimas"
-
-#~ msgid "Show residences?"
-#~ msgstr "Rodyti gyvenamąsias vietas?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Ar rodyti šaltinius?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -19121,26 +19180,8 @@ msgstr "Blokai"
 #~ "vadinami \"patriarchais\". Jie yra asmenys, kurie neturi tėvų registruotų "
 #~ "duomenų bazėje."
 
-#~ msgid "Sister"
-#~ msgstr "Sesuo"
-
 #~ msgid "Social security number"
 #~ msgstr "Socialinio draudimo pažymėjimo numeris"
-
-#~ msgid "Son"
-#~ msgstr "Sūnus"
-
-#~ msgid "Sources to the events"
-#~ msgstr "Šaltiniai į įvykius"
-
-#~ msgid "Spouse"
-#~ msgstr "Sutuoktinis"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Sutuoktiniai ir vaikai"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Pradedama sritis nuo datų pakeitimo"
 
 #~ msgid "Surname option"
 #~ msgstr "Nustatymai pavardėms"
@@ -19348,23 +19389,11 @@ msgstr "Blokai"
 #~ msgid "To source"
 #~ msgstr "Į šaltinį"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Viso priimtų pakeitimų: "
-
-#~ msgid "Total individuals"
-#~ msgstr "iš viso vardų"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Viso laukiančių pakeitimų: "
-
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Neatpažintas GEDCOM kodas"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Naudoti SMTP siųsti paštą į išorę"
-
-#~ msgid "Use colors"
-#~ msgstr "Naudoti spalvas"
 
 #~ msgid ""
 #~ "Use this field for storing an abbreviated version of a title.  This field "
@@ -19556,9 +19585,6 @@ msgstr "Blokai"
 #~ msgid "before %d"
 #~ msgstr "prieš %d"
 
-#~ msgid "daughter of"
-#~ msgstr "duktė"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "svotas - marčios tėvas"
@@ -19570,14 +19596,6 @@ msgstr "Blokai"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "svotai - marčios tėvai"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "mirė"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "mirė"
 
 #~ msgid "from %d"
 #~ msgstr "nuo %d"
@@ -19606,17 +19624,6 @@ msgstr "Blokai"
 #~ msgid "grandson’s wife"
 #~ msgstr "anūko žmona"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "ištekėjusi"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "vedė"
-
-#~ msgid "son of"
-#~ msgstr "sūnus"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "svotas"
@@ -19628,14 +19635,6 @@ msgstr "Blokai"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "svotai"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "gimė"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "gimė"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr ""

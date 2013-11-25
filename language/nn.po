@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:15+1200\n"
-"PO-Revision-Date: 2013-11-22 12:39+1200\n"
+"POT-Creation-Date: 2013-11-26 12:00+1200\n"
+"PO-Revision-Date: 2013-11-26 12:09+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: nb\n"
@@ -215,7 +215,7 @@ msgstr "Oppdater ikkje \"sist endra\"-posten"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1718,36 +1718,77 @@ msgstr "Utføringsstatistikk"
 msgid "Facts for Individual records"
 msgstr "Fakta for personregistreringar"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Alle fakta"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Alle personar"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Unike fakta"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Unike personfakta"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Fakta for nye registreringar"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "Fakta for nye personar"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Fakta for \"snøggregistrering\""
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Snøggfakta for peron"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Fakta for familieregistreringar"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Snøggfakta for familie"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Unike familiefakta"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Fakta for nye familier"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Snøggfakta for familie"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Fakta for kjelderegistreringar"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Snøggfakta for kjelder"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Unike kjeldefakta"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "Snøggfakta for kjelder"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Fakta for arkivregistreringar"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Snøggfakta for arkiv"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Unike arkivfakta"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "Snøggfakta for arkiv"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2396,15 +2437,15 @@ msgstr "Feil"
 msgid "You do not have permission to view this page."
 msgstr "Du har ikkje løyve til å sjå denne sida."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Legg til/endre journal/nyhende"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Tittel:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Tekst:"
 
@@ -3692,10 +3733,6 @@ msgstr ""
 "Dette valet fastset om du ønskjer å automatisk syne innhaldet i <i>Kjelder</"
 "i> på personsider."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Legg til familiefakta"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3708,10 +3745,6 @@ msgstr ""
 "eigendefinerte om naudsynt.  Faktanamn som er på denne lista kan ikkje "
 "samstundes vere på lista <i>Unike familiefakta</i>."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Snøggfakta for familie"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3719,10 +3752,6 @@ msgid ""
 msgstr ""
 "Dette er eit utval GEDCOM-fakta for familier som synast ved sia av den "
 "komplette lista og som kan leggjast til med eit enkelt tastetrykk."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Unike familiefakta"
 
 #: help_text.php:523
 msgid ""
@@ -3903,10 +3932,6 @@ msgstr ""
 "webtrees_data/) eller relativt til installasjonsmappa (t.d. ../../"
 "webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Personfakta"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3919,10 +3944,6 @@ msgstr ""
 "naudsynt.  Faktanamn i denne lista kan ikkje samstundes vere i lista over "
 "<i>Unike personfakta</i>."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Snøggfakta for peron"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3930,10 +3951,6 @@ msgid ""
 msgstr ""
 "Dette er eit utval av GEDCOM-fakta for personar som synast ved sia av den "
 "komplette lista  og som kan leggjast til med eit enkelt tastetrykk."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Unike personfakta"
 
 #: help_text.php:601
 msgid ""
@@ -4247,10 +4264,6 @@ msgstr ""
 "DEAT).  Dette alternativet avgjer kva avkrysningsbokser som skal vere "
 "avkryssa som standard."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Fakta for nye personar"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4261,10 +4274,6 @@ msgstr ""
 "synast når ein ny person vert lagt til. Til dømes, om BIRT er med på lista, "
 "vil felt for fødselsdato og fødestad verte synt på skjemaet."
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Fakta for nye familier"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4274,10 +4283,6 @@ msgstr ""
 "Dette er ei kommaseparert liste med GEDCOM-kodar for dei fakta som skal "
 "synast når ei ny familie vert lagt til. Til dømes, om MARR er med på lista, "
 "vil felt for bryllaupsdag og -stad verte synt på skjemaet."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Legg til fakta om arkiv"
 
 #: help_text.php:797
 msgid ""
@@ -4291,10 +4296,6 @@ msgstr ""
 "eigendefinerte om naudsynt. Faktanamn på denne lista kan ikkje samstundes "
 "vere på <i>Unike fakta for arkiv</i> lista."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "Snøggfakta for arkiv"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4302,10 +4303,6 @@ msgid ""
 msgstr ""
 "Dette er eit utval GEDCOM-fakta som synast ved sia av den komplette lista og "
 "som kan leggjast til med eit enkelt tastetrykk."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Unike arkivfakta"
 
 #: help_text.php:807
 msgid ""
@@ -4536,10 +4533,6 @@ msgstr ""
 "Når ei ny kjelde vert lagt til i <b>webtrees</b>, får den automatisk eit "
 "nytt ID-nummer. ID-nummeret får dette prefikset."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Kjeldefakta"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4552,10 +4545,6 @@ msgstr ""
 "eigendefinerte om naudsynt.  Faktanavn som er på denne lista kan ikkje "
 "samstundes vere på <i>Unike kjeldefakta</i>-listen."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "Snøggfakta for kjelder"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4563,10 +4552,6 @@ msgid ""
 msgstr ""
 "Dette er eit utval av GEDCOM-fakta for kjelder som synast ved sia av den "
 "komplette lista og som kan leggjast til med eit enkelt tastetrykk."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Unike kjeldefakta"
 
 #: help_text.php:918
 msgid ""
@@ -9402,9 +9387,8 @@ msgid "%j %F %Y"
 msgstr "%j. %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%H:%i:%s"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10863,15 +10847,15 @@ msgstr "Zimbabwe"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "Mitt familietre"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "Ole /Olsen/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Rediger denne personen og erstatt med eigne detaljar"
 
@@ -15984,6 +15968,12 @@ msgstr "Faner"
 msgid "Blocks"
 msgstr "Blokker"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " men detaljane er ukjende"
+
+#~ msgid " in "
+#~ msgstr " i "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -16091,6 +16081,17 @@ msgstr "Blokker"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Oversyn over fakta som stammar frå ei bestemd kjelde."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -16215,6 +16216,9 @@ msgstr "Blokker"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Adopsjon av ein soneson"
 
+#~ msgid "All facts"
+#~ msgstr "Alle fakta"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "Også kjend som"
@@ -16222,6 +16226,9 @@ msgstr "Blokker"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "Også kjend som"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Forfedrar til "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -16242,6 +16249,10 @@ msgstr "Blokker"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "april"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16355,6 +16366,9 @@ msgstr "Blokker"
 #~ msgid "Birth"
 #~ msgstr "Fødsel"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "Stad for fødsel inneheld"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Dotterdotter sin fødsel"
@@ -16378,6 +16392,9 @@ msgstr "Blokker"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Sonesons Brit Milah"
+
+#~ msgid "Brother"
+#~ msgstr "Bror"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16418,6 +16435,15 @@ msgstr "Blokker"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Kjøpar"
+
+#~ msgid "Child of "
+#~ msgstr "Barn av "
+
+#~ msgid "Children of "
+#~ msgstr "Born av "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Velg slektninger"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16468,6 +16494,12 @@ msgstr "Blokker"
 #~ msgid "Current Server Time:"
 #~ msgstr "Gjeldande systemtid:"
 
+#~ msgid "Daughter"
+#~ msgstr "Dotter"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Stad for dødsfall inneheld"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Dotterdotter sin død"
@@ -16503,6 +16535,13 @@ msgstr "Blokker"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "desember"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Etterkomarar av "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16556,6 +16595,15 @@ msgstr "Blokker"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "Dhu al-Qi'dah"
 
+#~ msgid "Differences"
+#~ msgstr "Ulikheiter"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Anar i direkte linje"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Anar i direkte linje og deira familier"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Last ned %s og pakk ut filene."
 
@@ -16591,6 +16639,15 @@ msgstr "Blokker"
 #~ msgid "Employer"
 #~ msgstr "Arbeidsgjevar"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Endringar til og med"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Tast inn ID på familie"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Angi Person ID"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Esf"
@@ -16610,6 +16667,15 @@ msgstr "Blokker"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Legg til familiefakta"
+
+#~ msgid "Family with husband"
+#~ msgstr "Familie med ektemann"
+
+#~ msgid "Family with wife"
+#~ msgstr "Familie med hustru"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16667,6 +16733,9 @@ msgstr "Blokker"
 #~ msgid "Floréal"
 #~ msgstr "Floréal"
 
+#~ msgid "Font"
+#~ msgstr "Skrifttype"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Fosterdotter"
@@ -16719,6 +16788,9 @@ msgstr "Blokker"
 #~ msgid "Fructidor"
 #~ msgstr "Fructidor"
 
+#~ msgid "Generation "
+#~ msgstr "Generasjon "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "Germinal"
@@ -16743,6 +16815,37 @@ msgstr "Blokker"
 #~ msgid "Guardian"
 #~ msgstr "Formyndar"
 
+#~ msgid "He "
+#~ msgstr "Han "
+
+#~ msgid "He died"
+#~ msgstr "Han døydde"
+
+#~ msgid "He married"
+#~ msgstr "Han gifta seg med"
+
+#~ msgid "He resided at"
+#~ msgstr "Han var busett i"
+
+#~ msgid "He was born"
+#~ msgstr "Han blei fødd"
+
+#~ msgid "He was buried"
+#~ msgstr "Han vart gravlagd"
+
+#~ msgid "He was christened"
+#~ msgstr "Han blei døypt"
+
+#~ msgid "He was cremated"
+#~ msgstr "Han vart kremert"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Hennar yrke var"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
@@ -16759,9 +16862,15 @@ msgstr "Blokker"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
 
+#~ msgid "His occupation was"
+#~ msgstr "Hans yrke var"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "Islandsk"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Personfakta"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16923,6 +17032,14 @@ msgstr "Blokker"
 #~ msgid "Kislev"
 #~ msgstr "Kislev"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "Litauisk"
@@ -16964,6 +17081,15 @@ msgstr "Blokker"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "mars"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Seinaste dato for vigsel"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Tidlegaste dato for vigsel"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Stad for vigsel inneheld"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -17077,6 +17203,9 @@ msgstr "Blokker"
 #~ msgid "Name"
 #~ msgstr "Namn"
 
+#~ msgid "Name List"
+#~ msgstr "Namneliste"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Aldri gift"
@@ -17084,6 +17213,9 @@ msgstr "Blokker"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Aldri gift"
+
+#~ msgid "New entry facts"
+#~ msgstr "Fakta for nye registreringar"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -17193,6 +17325,9 @@ msgstr "Blokker"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Orientering"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Eigar"
@@ -17200,6 +17335,18 @@ msgstr "Blokker"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Eigar"
+
+#~ msgid "Page"
+#~ msgstr "Side"
+
+#~ msgid "Page size"
+#~ msgstr "Sidestorleik"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Foreldre og sysken"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Anetre"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -17240,6 +17387,12 @@ msgstr "Blokker"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "Prairial"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Skriv ut grunnleggjande hendingar når dei er utan innhald?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Fakta for \"snøggregistrering\""
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17315,6 +17468,9 @@ msgstr "Blokker"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Sorenskrivar"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Legg til fakta om arkiv"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17439,6 +17595,30 @@ msgstr "Blokker"
 #~ msgid "Shawwal"
 #~ msgstr "Shawwal"
 
+#~ msgid "She "
+#~ msgstr "Ho "
+
+#~ msgid "She died"
+#~ msgstr "Ho døydde"
+
+#~ msgid "She married"
+#~ msgstr "Ho gifta seg med"
+
+#~ msgid "She resided at"
+#~ msgstr "Ho var busett i"
+
+#~ msgid "She was born"
+#~ msgstr "Ho blei fødd"
+
+#~ msgid "She was buried"
+#~ msgstr "Ho vart gravlagd"
+
+#~ msgid "She was christened"
+#~ msgstr "Ho blei døypt"
+
+#~ msgid "She was cremated"
+#~ msgstr "Ho vart kremert"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
@@ -17454,6 +17634,30 @@ msgstr "Blokker"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Syn born til forfedrar?"
+
+#~ msgid "Show notes?"
+#~ msgstr "Syne notatar?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Syn yrker?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Syn ventande endringar"
+
+#~ msgid "Show photos?"
+#~ msgstr "Syn bileter?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Syn bustader?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Syn kjelder?"
+
+#~ msgid "Sister"
+#~ msgstr "Syster"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17479,9 +17683,27 @@ msgstr "Blokker"
 #~ msgid "Slave"
 #~ msgstr "Slave"
 
+#~ msgid "Son"
+#~ msgstr "Son"
+
+#~ msgid "Source add facts"
+#~ msgstr "Kjeldefakta"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Kjelder for hendingar"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Spansk"
+
+#~ msgid "Spouse"
+#~ msgstr "Ektefelle"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Ektefeller og born"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Endringar frå og med"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17574,6 +17796,18 @@ msgstr "Blokker"
 #~ msgid "Tishrei"
 #~ msgstr "Tishrei"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Tal på godkjende endringar: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Tal på personar"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Ta på ventande endringar: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Unike fakta"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Ukjent"
@@ -17591,6 +17825,9 @@ msgstr "Blokker"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Oppgrader til webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Nytt fargar"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17772,6 +18009,9 @@ msgstr "Blokker"
 #~ msgid "d."
 #~ msgstr "d."
 
+#~ msgid "daughter of"
+#~ msgstr "dotter av"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "verdotter"
@@ -17791,6 +18031,14 @@ msgstr "Blokker"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "verdotters forelder"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "døydde"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "døydde"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -19085,6 +19333,14 @@ msgstr "Blokker"
 #~ msgstr "g."
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "ekta"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "ekta"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "namn som gift"
 
@@ -19428,6 +19684,9 @@ msgstr "Blokker"
 #~ msgid "sixth cousin"
 #~ msgstr "sjumenning"
 
+#~ msgid "son of"
+#~ msgstr "son av"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "verson"
@@ -19628,6 +19887,14 @@ msgstr "Blokker"
 #~ msgid "unknown"
 #~ msgstr "ukjend"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "blei fødd"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "blei fødd"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19636,14 +19903,11 @@ msgstr "Blokker"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " men detaljane er ukjende"
-
-#~ msgid " in "
-#~ msgstr " i "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$ss %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s tre generasjonar tilbake"
@@ -19831,23 +20095,12 @@ msgstr "Blokker"
 #~ "eksisterende database (oppretta av serveradministrator) eller opprette "
 #~ "ein ny (om din brukerkonto har rettar til dette)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Oversyn over fakta som stammar frå ei bestemd kjelde."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "Ein brukar kan ikkje logge inn før både \"E-post stadfesta\" og "
 #~ "\"Godkjend av administrator\" er kryssa av."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "Access"
 #~ msgstr "Tilgjenge"
@@ -19944,9 +20197,6 @@ msgstr "Blokker"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Foreldre sin alder ved sia av barnet sin fødselsdato"
 
-#~ msgid "All individuals"
-#~ msgstr "Alle personar"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Tillat byte mellom slektsdatabasar"
 
@@ -19962,19 +20212,12 @@ msgstr "Blokker"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Ein uventa databasefeil har oppstått."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Forfedrar til "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "AFN nummer"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr ""
 #~ "Er du viss på at du ønskjer å angre alle endringar for denne GEDCOM?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Tilgjengelege blokker"
@@ -19988,9 +20231,6 @@ msgstr "Blokker"
 #~ msgid "Binary data object"
 #~ msgstr "Binært dataobjekt"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Stad for fødsel inneheld"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Fødsel- og dødsdetaljar i diagram"
 
@@ -19999,9 +20239,6 @@ msgstr "Blokker"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Tidlegaste fødselssdato"
-
-#~ msgid "Brother"
-#~ msgstr "Bror"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Stad for gravlegging inneheld"
@@ -20020,15 +20257,6 @@ msgstr "Blokker"
 
 #~ msgid "Change family members"
 #~ msgstr "Byt familiemedlemer"
-
-#~ msgid "Child of "
-#~ msgstr "Barn av "
-
-#~ msgid "Children of "
-#~ msgstr "Born av "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Velg slektninger"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -20170,12 +20398,6 @@ msgstr "Blokker"
 #~ msgid "Date of residence"
 #~ msgstr "Dato for bustad"
 
-#~ msgid "Daughter"
-#~ msgstr "Dotter"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Stad for dødsfall inneheld"
-
 #~ msgid "Death date range end"
 #~ msgstr "Seinaste dødsdato"
 
@@ -20184,13 +20406,6 @@ msgstr "Blokker"
 
 #~ msgid "Default theme"
 #~ msgstr "Standard tema"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Etterkomarar av "
 
 #~ msgid "Descent steps"
 #~ msgstr "Etterkomarledd"
@@ -20210,15 +20425,6 @@ msgstr "Blokker"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Differences"
-#~ msgstr "Ulikheiter"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Anar i direkte linje"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Anar i direkte linje og deira familier"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Ikke besegl: forrige besegling er annullert (mormon)"
@@ -20311,15 +20517,6 @@ msgstr "Blokker"
 
 #~ msgid "End year"
 #~ msgstr "Slutt år"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Endringar til og med"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Tast inn ID på familie"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Angi Person ID"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20467,20 +20664,11 @@ msgstr "Blokker"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Utklippsmappe"
 
-#~ msgid "Family with husband"
-#~ msgstr "Familie med ektemann"
-
-#~ msgid "Family with wife"
-#~ msgstr "Familie med hustru"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Far sin fødestad (Chapman format)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Far sin alder"
-
-#~ msgid "Font"
-#~ msgstr "Skrifttype"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20545,9 +20733,6 @@ msgstr "Blokker"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Generasjon "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20570,30 +20755,6 @@ msgstr "Blokker"
 #~ "å stadfeste søknaden.<br>Søknaden må dernest godkjennast av ein "
 #~ "administrator før kontoen vert aktiveret."
 
-#~ msgid "He "
-#~ msgstr "Han "
-
-#~ msgid "He died"
-#~ msgstr "Han døydde"
-
-#~ msgid "He married"
-#~ msgstr "Han gifta seg med"
-
-#~ msgid "He resided at"
-#~ msgstr "Han var busett i"
-
-#~ msgid "He was born"
-#~ msgstr "Han blei fødd"
-
-#~ msgid "He was buried"
-#~ msgstr "Han vart gravlagd"
-
-#~ msgid "He was christened"
-#~ msgstr "Han blei døypt"
-
-#~ msgid "He was cremated"
-#~ msgstr "Han vart kremert"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Hei %s …"
 
@@ -20602,13 +20763,6 @@ msgstr "Blokker"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Hei administrator …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Hennar yrke var"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20713,9 +20867,6 @@ msgstr "Blokker"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Skjul &amp; syn"
-
-#~ msgid "His occupation was"
-#~ msgstr "Hans yrke var"
 
 #~ msgid "Hit count:"
 #~ msgstr "Tal på treff:"
@@ -20934,14 +21085,6 @@ msgstr "Blokker"
 #~ msgid "LDS temple"
 #~ msgstr "Mormon tempel"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "Lenke-ID"
 
@@ -20982,15 +21125,6 @@ msgstr "Blokker"
 #~ msgid "Main section blocks"
 #~ msgstr "Blokker i hovudseksjonen"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Seinaste dato for vigsel"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Tidlegaste dato for vigsel"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Stad for vigsel inneheld"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Ekteskaps-intensjon"
 
@@ -21023,9 +21157,6 @@ msgstr "Blokker"
 
 #~ msgid "Move right"
 #~ msgstr "Flytt til høgre"
-
-#~ msgid "Name List"
-#~ msgstr "Namneliste"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -21104,9 +21235,6 @@ msgstr "Blokker"
 #~ msgid "Online editing"
 #~ msgstr "Online redigering"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientering"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Anna mappe… skriv inn"
 
@@ -21136,20 +21264,8 @@ msgstr "Blokker"
 #~ "eigenskapar ikkje fungere: %2$s. Kontakt din serveradministrator for å få "
 #~ "den slått på."
 
-#~ msgid "Page"
-#~ msgstr "Side"
-
-#~ msgid "Page size"
-#~ msgstr "Sidestorleik"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Foreldre og sysken"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Forelder sin alder"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Anetre"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Stad for mormondåp"
@@ -21234,9 +21350,6 @@ msgstr "Blokker"
 
 #~ msgid "Port"
 #~ msgstr "Port"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Skriv ut grunnleggjande hendingar når dei er utan innhald?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21468,30 +21581,6 @@ msgstr "Blokker"
 #~ msgid "Sha’aban"
 #~ msgstr "Sha'aban"
 
-#~ msgid "She "
-#~ msgstr "Ho "
-
-#~ msgid "She died"
-#~ msgstr "Ho døydde"
-
-#~ msgid "She married"
-#~ msgstr "Ho gifta seg med"
-
-#~ msgid "She resided at"
-#~ msgstr "Ho var busett i"
-
-#~ msgid "She was born"
-#~ msgstr "Ho blei fødd"
-
-#~ msgid "She was buried"
-#~ msgstr "Ho vart gravlagd"
-
-#~ msgid "She was christened"
-#~ msgstr "Ho blei døypt"
-
-#~ msgid "She was cremated"
-#~ msgstr "Ho vart kremert"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21520,9 +21609,6 @@ msgstr "Blokker"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Syn alle stadnamn"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Syn born til forfedrar?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Syn avlidne personar"
@@ -21556,12 +21642,6 @@ msgstr "Blokker"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Syn personar som døydde innan dei siste 100 år."
 
-#~ msgid "Show notes?"
-#~ msgstr "Syne notatar?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Syn yrker?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Syn kun hendingar for nolevande personar"
 
@@ -21571,23 +21651,11 @@ msgstr "Blokker"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Syne kun personar, hendingar, eller alle?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Syn ventande endringar"
-
-#~ msgid "Show photos?"
-#~ msgstr "Syn bileter?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Syn stadnamn etter nivå"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Syn slekta personar/familier"
-
-#~ msgid "Show residences?"
-#~ msgstr "Syn bustader?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Syn kjelder?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21604,14 +21672,8 @@ msgstr "Blokker"
 #~ "Syn kun \"patriarkar\", dvs. personar eller par som ikkje har forfedrar "
 #~ "registrert i databasen."
 
-#~ msgid "Sister"
-#~ msgstr "Syster"
-
 #~ msgid "Social security number"
 #~ msgstr "Personnummer"
-
-#~ msgid "Son"
-#~ msgstr "Son"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21624,9 +21686,6 @@ msgstr "Blokker"
 #~ "hendinga vart registrert i kjelda.  Om du ikkje nyttar desse felta kan du "
 #~ "deaktivere dei når du opprettar nye kjeldertilvisingar."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Kjelder for hendingar"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -21637,15 +21696,6 @@ msgstr "Blokker"
 #~ "databasen. Om dette vert sett til <b>Ja</b>, vil meldingane vere "
 #~ "tilgjengelege for innlogga brukarar. Om sett til <b>Nei</b>, vert "
 #~ "meldingar kun sende som e-post."
-
-#~ msgid "Spouse"
-#~ msgstr "Ektefelle"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Ektefeller og born"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Endringar frå og med"
 
 #~ msgid "Surname option"
 #~ msgstr "Alternativ for etternamn"
@@ -22298,15 +22348,6 @@ msgstr "Blokker"
 #~ msgid "To source"
 #~ msgstr "Til kjelde"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Tal på godkjende endringar: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Tal på personar"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Ta på ventande endringar: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -22339,9 +22380,6 @@ msgstr "Blokker"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Nytt SMTP for å sende ekstern e-post"
-
-#~ msgid "Use colors"
-#~ msgstr "Nytt fargar"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22727,9 +22765,6 @@ msgstr "Blokker"
 #~ msgid "before %d"
 #~ msgstr "før %d"
 
-#~ msgid "daughter of"
-#~ msgstr "dotter av"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "verdotters far"
@@ -22741,14 +22776,6 @@ msgstr "Blokker"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "verdotters forelder"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "døydde"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "døydde"
 
 #~ msgid "from %d"
 #~ msgstr "frå %d"
@@ -22777,17 +22804,6 @@ msgstr "Blokker"
 #~ msgid "grandson’s wife"
 #~ msgstr "sonesons hustru"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "ekta"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "ekta"
-
-#~ msgid "son of"
-#~ msgstr "son av"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "versons far"
@@ -22799,14 +22815,6 @@ msgstr "Blokker"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "versons forelder"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "blei fødd"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "blei fødd"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr ""

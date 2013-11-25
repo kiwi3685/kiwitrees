@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:12+1200\n"
-"PO-Revision-Date: 2013-11-22 12:29+1200\n"
+"POT-Creation-Date: 2013-11-26 11:56+1200\n"
+"PO-Revision-Date: 2013-11-26 12:16+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -213,7 +213,7 @@ msgstr "No actualitzis el registre “últim canvi”"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1727,36 +1727,77 @@ msgstr "Estadístiques d'execució"
 msgid "Facts for Individual records"
 msgstr "Esdeveniments per registres Individuals"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Tots els esdeveniments"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Tothom"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Esdeveniments únics"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Esdevenimemts individuals únics"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
 msgstr "Esdeveniments per a noves persones"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Esdeveniments ràpids"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Esdeveniments personals ràpids"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Registres d'esdeveniments per famílies"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Esdeveniments familiars immediats"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Esdeveniments familiars únics"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Esdeviniments per a noves famílies"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Esdeveniments familiars immediats"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Registres d'esdeveniments per fonts"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Esdeveniments immediats de fonts"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Esdeveniments de fonts únics"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "Esdeveniments immediats de fonts"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Registres d'esdeveniments per Arxius"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Esdeveniments d'Arxiu immediats"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Esdeveniments únics d'arxiu"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "Esdeveniments d'Arxiu immediats"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2411,15 +2452,15 @@ msgstr "Error"
 msgid "You do not have permission to view this page."
 msgstr "No teniu permís per veure aquesta pàgina."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Afegiu/editeu entrades de l'Agenda"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Títol:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Entreu el text:"
 
@@ -3725,10 +3766,6 @@ msgstr ""
 "Aquesta opció controla si es mostra automàticament o no tot el contingut "
 "dels registres de <i>Fonts</i> a la pàgina Individual."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Afegiu esdeveniments familiars"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3741,10 +3778,6 @@ msgstr ""
 "personalitzar-los si cal. Els noms que apareixen aquí no han de figurar a la "
 "llista  <i>Esdeveniments familiars únics</i>."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Esdeveniments familiars immediats"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3752,10 +3785,6 @@ msgid ""
 msgstr ""
 "Aquesta és una breu llista d'esdeveniments familiars GEDCOM que surt al "
 "costat de la completa i que podeu afegir amb un simple clic."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Esdeveniments familiars únics"
 
 #: help_text.php:523
 msgid ""
@@ -3942,10 +3971,6 @@ msgstr ""
 "La ubicació de la carpeta es pot especificar de forma absoluta (p.e. /home/"
 "user_name/webtrees_data/) o relativa  (p.e. ../../webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Addició d'esdeveniments individuals"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3958,10 +3983,6 @@ msgstr ""
 "d'esdeveniments i fins i tot personalitzar-ne si cal. Els noms que surten "
 "aquí no han de figurar a la llista <i>Esdeveniments individuals únics</i>."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Esdeveniments personals ràpids"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3969,10 +3990,6 @@ msgid ""
 msgstr ""
 "Aquesta és una breu llista d'esdeveniments individuals que surt al costat de "
 "la completa i que poden afegir-se amb un simple clic."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Esdevenimemts individuals únics"
 
 #: help_text.php:601
 msgid ""
@@ -4297,10 +4314,6 @@ msgstr ""
 "registres (per exemple, INDI, FAM) o als esdeveniments (BIRT, MARR, DEAT). "
 "Aquesta opció controla les caselles que estan marcades per defecte."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Esdeveniments per a noves persones"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4311,10 +4324,6 @@ msgstr ""
 "es mostra quan s'afegeix una nova persona. Per exemple, si BIRT és a la "
 "llista,  es mostrarà al formulari els camps de data i indret de naixement."
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Esdeviniments per a noves famílies"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4324,10 +4333,6 @@ msgstr ""
 "És una llista separada per comes de les etiquetes d'esdeveniments GEDCOM que "
 "es mostra quan s'afegeix una nova família. Per exemple, si MARR és a la "
 "llista,  es mostrarà al formulari els camps de data i indret de casament."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Afegiu esdeveniments d'arxius"
 
 #: help_text.php:797
 msgid ""
@@ -4341,10 +4346,6 @@ msgstr ""
 "personalitzant-ne, si cal. El noms que apareguin a aquesta llista no han de "
 "sortir a la  <i>Esdeveniments d'arxiu únics</i>."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "Esdeveniments d'Arxiu immediats"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4352,10 +4353,6 @@ msgid ""
 msgstr ""
 "Aquesta és una breu llista d'esdeveniments GEDCOM d'arxiu que surt al costat "
 "de la complerta i que poden escollir-se amb un simple clic."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Esdeveniments únics d'arxiu"
 
 #: help_text.php:807
 msgid ""
@@ -4594,10 +4591,6 @@ msgstr ""
 "automàticament un nou ID per a aquesta nova font. L'ID de la font ha de "
 "tenir aquest prefix."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Afegiu esdeveniments de fonts"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4610,10 +4603,6 @@ msgstr ""
 "personalitzar-ne, si cal. Els noms d'esdeveniments que surtin en aquesta "
 "llista no han de sortir a la <i>Esdeveniments de fonts únics</i>."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "Esdeveniments immediats de fonts"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4621,10 +4610,6 @@ msgid ""
 msgstr ""
 "Aquesta és una llista breu d'esdeveniments de fonts del GEDCOM que surt al "
 "costat de la llista sencera i que poden escollir-se amb un simple clic."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Esdeveniments de fonts únics"
 
 #: help_text.php:918
 msgid ""
@@ -9541,9 +9526,8 @@ msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%g:%i:%s %a"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -11002,15 +10986,15 @@ msgstr "Zimbabwe"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "El meu arbre genealògic"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "John /DOE/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr ""
 "Editeu aquesta persona i substituiu llurs detalls amb els vostres propis"
@@ -16153,6 +16137,12 @@ msgstr "Pestanyes"
 msgid "Blocks"
 msgstr "Blocs"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " però en desconeixem els detalls"
+
+#~ msgid " in "
+#~ msgstr " a "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -16260,6 +16250,17 @@ msgstr "Blocs"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9è"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Un informe dels esdeveniments que sustenta una determinada font."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -16384,6 +16385,9 @@ msgstr "Blocs"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Adopció d'un nét"
 
+#~ msgid "All facts"
+#~ msgstr "Tots els esdeveniments"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "També conegut com"
@@ -16391,6 +16395,9 @@ msgstr "Blocs"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "També conegut com"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Avantpassats de "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -16411,6 +16418,10 @@ msgstr "Blocs"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "Abril"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16532,6 +16543,9 @@ msgstr "Blocs"
 #~ msgid "Birth"
 #~ msgstr "Nat/Nada"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "L'indret de naixement conté"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Naixement d'una néta"
@@ -16555,6 +16569,9 @@ msgstr "Blocs"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Circumcisió d'un nét"
+
+#~ msgid "Brother"
+#~ msgstr "Germà"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16595,6 +16612,15 @@ msgstr "Blocs"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Comprador"
+
+#~ msgid "Child of "
+#~ msgstr "Fill/a de "
+
+#~ msgid "Children of "
+#~ msgstr "Fills de "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Escolliu parents"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16646,6 +16672,12 @@ msgstr "Blocs"
 #~ msgid "Current Server Time:"
 #~ msgstr "Hora actual del servidor:"
 
+#~ msgid "Daughter"
+#~ msgstr "Filla"
+
+#~ msgid "Death Place contains"
+#~ msgstr "L'indret de defunció conté"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Defunció d'una néta"
@@ -16681,6 +16713,13 @@ msgstr "Blocs"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "Desembre"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Descendents de "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16734,6 +16773,15 @@ msgstr "Blocs"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "Dhu-l-qada"
 
+#~ msgid "Differences"
+#~ msgstr "Diferències"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Avantpassats per línia directa"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Línia d'avantpassats directes i les seves famílies"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Descarregueu %s i extraieu-ne els fitxers"
 
@@ -16769,6 +16817,15 @@ msgstr "Blocs"
 #~ msgid "Employer"
 #~ msgstr "Patrò"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Final del lapse de dates de canvi"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Entreu l'ID de la família"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Entreu l'ID de la persona"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Esf"
@@ -16788,6 +16845,15 @@ msgstr "Blocs"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Afegiu esdeveniments familiars"
+
+#~ msgid "Family with husband"
+#~ msgstr "Família amb el marit"
+
+#~ msgid "Family with wife"
+#~ msgstr "Família amb la dona"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16845,6 +16911,9 @@ msgstr "Blocs"
 #~ msgid "Floréal"
 #~ msgstr "Floral"
 
+#~ msgid "Font"
+#~ msgstr "Font dels caràcters"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Afillada"
@@ -16897,6 +16966,9 @@ msgstr "Blocs"
 #~ msgid "Fructidor"
 #~ msgstr "Fructidor"
 
+#~ msgid "Generation "
+#~ msgstr "Generació "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "Germinal"
@@ -16921,6 +16993,37 @@ msgstr "Blocs"
 #~ msgid "Guardian"
 #~ msgstr "Tutor"
 
+#~ msgid "He "
+#~ msgstr "Ell "
+
+#~ msgid "He died"
+#~ msgstr "Morí el"
+
+#~ msgid "He married"
+#~ msgstr "Catsat amb"
+
+#~ msgid "He resided at"
+#~ msgstr "Va viure a"
+
+#~ msgid "He was born"
+#~ msgstr "Nat el"
+
+#~ msgid "He was buried"
+#~ msgstr "Enterrat el"
+
+#~ msgid "He was christened"
+#~ msgstr "Varen batejar-lo"
+
+#~ msgid "He was cremated"
+#~ msgstr "Fou incinerat a"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvètica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Llur ofici era"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "Heixvan"
@@ -16937,9 +17040,15 @@ msgstr "Blocs"
 #~ msgid "Heshvan"
 #~ msgstr "Heixvan"
 
+#~ msgid "His occupation was"
+#~ msgstr "Llur ofici era"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "Islandesa"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Addició d'esdeveniments individuals"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -17101,6 +17210,14 @@ msgstr "Blocs"
 #~ msgid "Kislev"
 #~ msgstr "Quisleu"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "Lituanesa"
@@ -17142,6 +17259,15 @@ msgstr "Blocs"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "Març"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Final del lapse de data de casament"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Inici del lapse de data de casament"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "L'indret de casament conté"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -17255,6 +17381,9 @@ msgstr "Blocs"
 #~ msgid "Name"
 #~ msgstr "Nom"
 
+#~ msgid "Name List"
+#~ msgstr "Llistat de Noms"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Mai no s'ha casat"
@@ -17262,6 +17391,9 @@ msgstr "Blocs"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Mai casat"
+
+#~ msgid "New entry facts"
+#~ msgstr "Esdeveniments per a noves persones"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -17371,6 +17503,9 @@ msgstr "Blocs"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Orientació"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Propietària"
@@ -17378,6 +17513,18 @@ msgstr "Blocs"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Propietari"
+
+#~ msgid "Page"
+#~ msgstr "Pàgina"
+
+#~ msgid "Page size"
+#~ msgstr "Mida de la pàgina"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Pares i germans"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Arbre genealògic"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -17418,6 +17565,12 @@ msgstr "Blocs"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "Pradal"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Imprimir esdeveniments bàsics malgrat que estiguin en blanc?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Esdeveniments ràpids"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17493,6 +17646,9 @@ msgstr "Blocs"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Oficial del Registre"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Afegiu esdeveniments d'arxius"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17617,6 +17773,30 @@ msgstr "Blocs"
 #~ msgid "Shawwal"
 #~ msgstr "Xawwal"
 
+#~ msgid "She "
+#~ msgstr "Ella "
+
+#~ msgid "She died"
+#~ msgstr "Morí el"
+
+#~ msgid "She married"
+#~ msgstr "Casada amb"
+
+#~ msgid "She resided at"
+#~ msgstr "Va viure a"
+
+#~ msgid "She was born"
+#~ msgstr "Nada el"
+
+#~ msgid "She was buried"
+#~ msgstr "Enterrada el"
+
+#~ msgid "She was christened"
+#~ msgstr "Varen batejar-la"
+
+#~ msgid "She was cremated"
+#~ msgstr "Fou incinerada a"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "Xevat"
@@ -17632,6 +17812,30 @@ msgstr "Blocs"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "Xevat"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Mostrar els fills dels avantpassats?"
+
+#~ msgid "Show notes?"
+#~ msgstr "Incloure notes?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Mostrar oficis?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Mostra els canvis pendents"
+
+#~ msgid "Show photos?"
+#~ msgstr "Inclore fotografies?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Mostrar residències?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Incloure fonts?"
+
+#~ msgid "Sister"
+#~ msgstr "Germana"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17657,9 +17861,27 @@ msgstr "Blocs"
 #~ msgid "Slave"
 #~ msgstr "Esclau"
 
+#~ msgid "Son"
+#~ msgstr "Fill"
+
+#~ msgid "Source add facts"
+#~ msgstr "Afegiu esdeveniments de fonts"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Fonts del esdeveniments"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Espanyola"
+
+#~ msgid "Spouse"
+#~ msgstr "Cònjuge"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Cònjuges i fills"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Inici del  lapse de dates de canvi"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17752,6 +17974,18 @@ msgstr "Blocs"
 #~ msgid "Tishrei"
 #~ msgstr "Tixrí"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Total de canvis acceptats: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Nombre de persones"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Total mde canvis pendents: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Esdeveniments únics"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Desconegut"
@@ -17769,6 +18003,9 @@ msgstr "Blocs"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Actualització a webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "En color"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17950,6 +18187,9 @@ msgstr "Blocs"
 #~ msgid "d."
 #~ msgstr "†"
 
+#~ msgid "daughter of"
+#~ msgstr "filla de"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "nora"
@@ -17969,6 +18209,14 @@ msgstr "Blocs"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "consogre/a"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "difunta el"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "difunt el"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -19275,6 +19523,14 @@ msgstr "Blocs"
 #~ msgstr "8"
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "casada amb"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "casat amb"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "nom de casada"
 
@@ -19618,6 +19874,9 @@ msgstr "Blocs"
 #~ msgid "sixth cousin"
 #~ msgstr "cosí/na 6è/a"
 
+#~ msgid "son of"
+#~ msgstr "fill de"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "gendre"
@@ -19818,6 +20077,14 @@ msgstr "Blocs"
 #~ msgid "unknown"
 #~ msgstr "desconegut"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "nada el"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "nat el"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19826,14 +20093,11 @@ msgstr "Blocs"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " però en desconeixem els detalls"
-
-#~ msgid " in "
-#~ msgstr " a "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%2$s de %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "rebesoncle valencià %s-1è"
@@ -20026,23 +20290,12 @@ msgstr "Blocs"
 #~ "l'administració del servidor) o crear-ne una de nova (si el vostre compte "
 #~ "d'usuari de base de dades té atribucions per fer-ho)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Un informe dels esdeveniments que sustenta una determinada font."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "Un usuari no podrà iniciar cap sessió fins que tant el “correu electrònic "
 #~ "verificat” com “aprovat per l'administrador” estiguin seleccionats."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "Access"
 #~ msgstr "Accés"
@@ -20143,9 +20396,6 @@ msgstr "Blocs"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Edat dels pares a la data de naixement del fill"
 
-#~ msgid "All individuals"
-#~ msgstr "Tothom"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Permet passar d'un GEDCOM a un altre"
 
@@ -20162,18 +20412,11 @@ msgstr "Blocs"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Error inesperat de la base de dades."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Avantpassats de "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Número d'Ancestral File"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Esteu segur que cal desfer tots els canvis d'aquest GEDCOM?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Blocs disponibles"
@@ -20187,9 +20430,6 @@ msgstr "Blocs"
 #~ msgid "Binary data object"
 #~ msgstr "Objecte de dades binàries"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "L'indret de naixement conté"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Detalls de naixement i defunció als gràfics"
 
@@ -20198,9 +20438,6 @@ msgstr "Blocs"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Inici del lapse de dates de naixement"
-
-#~ msgid "Brother"
-#~ msgstr "Germà"
 
 #~ msgid "Burial place contains"
 #~ msgstr "L'indret d'enterrament conté"
@@ -20219,15 +20456,6 @@ msgstr "Blocs"
 
 #~ msgid "Change family members"
 #~ msgstr "Canvia membres de la família"
-
-#~ msgid "Child of "
-#~ msgstr "Fill/a de "
-
-#~ msgid "Children of "
-#~ msgstr "Fills de "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Escolliu parents"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -20369,12 +20597,6 @@ msgstr "Blocs"
 #~ msgid "Date of residence"
 #~ msgstr "Data de residència"
 
-#~ msgid "Daughter"
-#~ msgstr "Filla"
-
-#~ msgid "Death Place contains"
-#~ msgstr "L'indret de defunció conté"
-
 #~ msgid "Death date range end"
 #~ msgstr "Final del lapse de dades de defunció"
 
@@ -20383,13 +20605,6 @@ msgstr "Blocs"
 
 #~ msgid "Default theme"
 #~ msgstr "Presentació per defecte"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Descendents de "
 
 #~ msgid "Descent steps"
 #~ msgstr "Generacions de descendents"
@@ -20409,15 +20624,6 @@ msgstr "Blocs"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu-l-qada"
-
-#~ msgid "Differences"
-#~ msgstr "Diferències"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Avantpassats per línia directa"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Línia d'avantpassats directes i les seves famílies"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "No segellat, segellament previ cancel·lat"
@@ -20515,15 +20721,6 @@ msgstr "Blocs"
 
 #~ msgid "End year"
 #~ msgstr "Acabant l'any"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Final del lapse de dates de canvi"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Entreu l'ID de la família"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Entreu l'ID de la persona"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20669,20 +20866,11 @@ msgstr "Blocs"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Cistell genealògic"
 
-#~ msgid "Family with husband"
-#~ msgstr "Família amb el marit"
-
-#~ msgid "Family with wife"
-#~ msgstr "Família amb la dona"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Lloc de naixement del pare (format Chapman)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Edat del pare"
-
-#~ msgid "Font"
-#~ msgstr "Font dels caràcters"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20748,9 +20936,6 @@ msgstr "Blocs"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Generació "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20775,30 +20960,6 @@ msgstr "Blocs"
 #~ "verificació l'Administrador ho ha d'autoritzar abans que pugui disposar "
 #~ "d'accés."
 
-#~ msgid "He "
-#~ msgstr "Ell "
-
-#~ msgid "He died"
-#~ msgstr "Morí el"
-
-#~ msgid "He married"
-#~ msgstr "Catsat amb"
-
-#~ msgid "He resided at"
-#~ msgstr "Va viure a"
-
-#~ msgid "He was born"
-#~ msgstr "Nat el"
-
-#~ msgid "He was buried"
-#~ msgstr "Enterrat el"
-
-#~ msgid "He was christened"
-#~ msgstr "Varen batejar-lo"
-
-#~ msgid "He was cremated"
-#~ msgstr "Fou incinerat a"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Hola %s …"
 
@@ -20807,13 +20968,6 @@ msgstr "Blocs"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Hola Administrador …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvètica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Llur ofici era"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20918,9 +21072,6 @@ msgstr "Blocs"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Ocultar i mostrar"
-
-#~ msgid "His occupation was"
-#~ msgstr "Llur ofici era"
 
 #~ msgid "Hit count:"
 #~ msgstr "Compta-visites:"
@@ -21144,14 +21295,6 @@ msgstr "Blocs"
 #~ msgid "LDS temple"
 #~ msgstr "Temple mormó"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "ID a enllaçar"
 
@@ -21191,15 +21334,6 @@ msgstr "Blocs"
 #~ msgid "Main section blocks"
 #~ msgstr "Blocs de la Secció Principal"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Final del lapse de data de casament"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Inici del lapse de data de casament"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "L'indret de casament conté"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Petició de matrimoni"
 
@@ -21233,9 +21367,6 @@ msgstr "Blocs"
 
 #~ msgid "Move right"
 #~ msgstr "Mou a la dreta"
-
-#~ msgid "Name List"
-#~ msgstr "Llistat de Noms"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -21313,9 +21444,6 @@ msgstr "Blocs"
 #~ msgid "Online editing"
 #~ msgstr "Edició en línea"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientació"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Altres carpetes… entreu-les"
 
@@ -21345,20 +21473,8 @@ msgstr "Blocs"
 #~ "següents no funcionaran: %2$s.  Demaneu a l'administració del servidor "
 #~ "que l'activi."
 
-#~ msgid "Page"
-#~ msgstr "Pàgina"
-
-#~ msgid "Page size"
-#~ msgstr "Mida de la pàgina"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Pares i germans"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Edat del/la pare/mare"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Arbre genealògic"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Indret del bateig mormó"
@@ -21449,9 +21565,6 @@ msgstr "Blocs"
 
 #~ msgid "President’s Office"
 #~ msgstr "Oficina del President"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Imprimir esdeveniments bàsics malgrat que estiguin en blanc?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21685,30 +21798,6 @@ msgstr "Blocs"
 #~ msgid "Sha’aban"
 #~ msgstr "Xaban"
 
-#~ msgid "She "
-#~ msgstr "Ella "
-
-#~ msgid "She died"
-#~ msgstr "Morí el"
-
-#~ msgid "She married"
-#~ msgstr "Casada amb"
-
-#~ msgid "She resided at"
-#~ msgstr "Va viure a"
-
-#~ msgid "She was born"
-#~ msgstr "Nada el"
-
-#~ msgid "She was buried"
-#~ msgstr "Enterrada el"
-
-#~ msgid "She was christened"
-#~ msgstr "Varen batejar-la"
-
-#~ msgid "She was cremated"
-#~ msgstr "Fou incinerada a"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21743,9 +21832,6 @@ msgstr "Blocs"
 #~ msgid "Show all places in a list"
 #~ msgstr "Mostra tots els indrets en un únic llistat"
 
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Mostrar els fills dels avantpassats?"
-
 #~ msgid "Show dead individuals"
 #~ msgstr "Mostra les persones difuntes"
 
@@ -21778,12 +21864,6 @@ msgstr "Blocs"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Mostra gent morta els darrers 100 anys."
 
-#~ msgid "Show notes?"
-#~ msgstr "Incloure notes?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Mostrar oficis?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Mostrar solament esdeveniments relatius a persones vives?"
 
@@ -21793,23 +21873,11 @@ msgstr "Blocs"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Mostrar solament persones, esdeveniments o tot?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Mostra els canvis pendents"
-
-#~ msgid "Show photos?"
-#~ msgstr "Inclore fotografies?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Mostra els indrets jeràrquicament"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Mostra persones/famílies relacionades"
-
-#~ msgid "Show residences?"
-#~ msgstr "Mostrar residències?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Incloure fonts?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21827,14 +21895,8 @@ msgstr "Blocs"
 #~ "anomenar-se també «patriarques». Són persones sense pares enregistrats a "
 #~ "la base de dades."
 
-#~ msgid "Sister"
-#~ msgstr "Germana"
-
 #~ msgid "Social security number"
 #~ msgstr "Número Seguretat Social"
-
-#~ msgid "Son"
-#~ msgstr "Fill"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21847,9 +21909,6 @@ msgstr "Blocs"
 #~ "l'esdeveniment es va enregistrar a la font. Si no empreu aquests camps, "
 #~ "podeu inhabilitar-los quan creeu noves citacions de font."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Fonts del esdeveniments"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -21861,15 +21920,6 @@ msgstr "Blocs"
 #~ "podran recuperar els seus missatges quan accedeixin a <b>webtrees</b>. Si "
 #~ "s'estableix en <b>No</b> els missatges solament seran enviats per correu "
 #~ "electrònic."
-
-#~ msgid "Spouse"
-#~ msgstr "Cònjuge"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Cònjuges i fills"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Inici del  lapse de dates de canvi"
 
 #~ msgid "Surname option"
 #~ msgstr "Opció de cognoms"
@@ -22545,15 +22595,6 @@ msgstr "Blocs"
 #~ msgid "To source"
 #~ msgstr "a una font."
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Total de canvis acceptats: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Nombre de persones"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Total mde canvis pendents: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -22585,9 +22626,6 @@ msgstr "Blocs"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Emprar SMTP par a l'enviament del correu extern"
-
-#~ msgid "Use colors"
-#~ msgstr "En color"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22979,9 +23017,6 @@ msgstr "Blocs"
 #~ msgid "before %d"
 #~ msgstr "abans %d"
 
-#~ msgid "daughter of"
-#~ msgstr "filla de"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "consogre"
@@ -22993,14 +23028,6 @@ msgstr "Blocs"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "consogre/a"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "difunta el"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "difunt el"
 
 #~ msgid "from %d"
 #~ msgstr "des de %d"
@@ -23029,17 +23056,6 @@ msgstr "Blocs"
 #~ msgid "grandson’s wife"
 #~ msgstr "nét de l'esposa"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "casada amb"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "casat amb"
-
-#~ msgid "son of"
-#~ msgstr "fill de"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "consogre"
@@ -23051,14 +23067,6 @@ msgstr "Blocs"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "consogre/a"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "nada el"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "nat el"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr ""

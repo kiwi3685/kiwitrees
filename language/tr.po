@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-09 17:47+0000\n"
-"PO-Revision-Date: 2013-11-22 12:52+1200\n"
+"POT-Creation-Date: 2013-11-25 20:40+0000\n"
+"PO-Revision-Date: 2013-11-26 12:21+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: Adem GENÇ <tutastes@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -12,6 +12,32 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Generator: Poedit 1.5.7\n"
+
+#: modules_v3/ahnentafel_report/report.xml:158
+#: modules_v3/ahnentafel_report/report.xml:186
+#: modules_v3/ahnentafel_report/report.xml:281
+#: modules_v3/ahnentafel_report/report.xml:309
+#: modules_v3/ahnentafel_report/report.xml:334
+#: modules_v3/ahnentafel_report/report.xml:365
+msgid " but the details are unknown"
+msgstr " ancak detayları bilinmiyor"
+
+#: modules_v3/ahnentafel_report/report.xml:157
+#: modules_v3/ahnentafel_report/report.xml:185
+#: modules_v3/ahnentafel_report/report.xml:212
+#: modules_v3/ahnentafel_report/report.xml:280
+#: modules_v3/ahnentafel_report/report.xml:308
+#: modules_v3/ahnentafel_report/report.xml:333
+#: modules_v3/ahnentafel_report/report.xml:364
+#: modules_v3/descendancy_report/report.xml:125
+#: modules_v3/descendancy_report/report.xml:157
+#: modules_v3/descendancy_report/report.xml:314
+#: modules_v3/descendancy_report/report.xml:352
+#: modules_v3/descendancy_report/report.xml:383
+#: modules_v3/descendancy_report/report.xml:422
+#: modules_v3/descendancy_report/report.xml:453
+msgid " in "
+msgstr " içinde "
 
 #: statisticsplot.php:804
 msgid " per gender"
@@ -201,6 +227,16 @@ msgid_plural "%d years"
 msgstr[0] "%d yıl"
 msgstr[1] "%d yıl"
 
+#. I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
+#: library/WT/I18N.php:154
+msgid "%g:%i:%s %a"
+msgstr ""
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: library/WT/I18N.php:152
+msgid "%j %F %Y"
+msgstr "%d-%M-%Y"
+
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s"
@@ -230,12 +266,34 @@ msgid_plural "%s children"
 msgstr[0] "%s çocuk"
 msgstr[1] "%s çocuk"
 
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:353
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s gün"
+msgstr[1] "%s gün"
+
+#: library/WT/I18N.php:396
+#, php-format
+msgid "%s day ago"
+msgid_plural "%s days ago"
+msgstr[0] "%s gün önce"
+msgstr[1] "%s gün önce"
+
 #: library/WT/Stats.php:3093 library/WT/Stats.php:3097
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s torun"
 msgstr[1] "%s torun"
+
+#: library/WT/I18N.php:399
+#, php-format
+msgid "%s hour ago"
+msgid_plural "%s hours ago"
+msgstr[0] "%s saat önce"
+msgstr[1] "%s saat önce"
 
 #: modules_v3/googlemap/module.php:826
 #, php-format
@@ -259,6 +317,28 @@ msgid_plural "%s messages"
 msgstr[0] "%s mesajınız var"
 msgstr[1] "%s mesajınız var"
 
+#: library/WT/I18N.php:402
+#, php-format
+msgid "%s minute ago"
+msgid_plural "%s minutes ago"
+msgstr[0] "%s dakika önce"
+msgstr[1] "%s dakika önce"
+
+#. I18N: Part of an age string. e.g 5 years, 4 months and 3 days
+#: library/WT/I18N.php:345
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s ay"
+msgstr[1] "%s ay"
+
+#: library/WT/I18N.php:393
+#, php-format
+msgid "%s month ago"
+msgid_plural "%s months ago"
+msgstr[0] "%s ay önce"
+msgstr[1] "%s ay önce"
+
 #: statisticsplot.php:747
 #, php-format
 msgid "%s not implemented"
@@ -280,6 +360,13 @@ msgstr ""
 #, php-format
 msgid "%s places"
 msgstr ""
+
+#: library/WT/I18N.php:404
+#, php-format
+msgid "%s second ago"
+msgid_plural "%s seconds ago"
+msgstr[0] "%s saniye önce"
+msgstr[1] "%s saniye önce"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2106
@@ -305,11 +392,39 @@ msgstr ""
 msgid "%s twice removed descending"
 msgstr ""
 
+#. I18N: Part of an age string. e.g 7 weeks and 3 days
+#: library/WT/I18N.php:349
+#, php-format
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s hafta"
+msgstr[1] "%s hafta"
+
+#: library/WT/I18N.php:339
+#, php-format
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s yıl"
+msgstr[1] "%s yıl"
+
+#: library/WT/I18N.php:390
+#, php-format
+msgid "%s year ago"
+msgid_plural "%s years ago"
+msgstr[0] "%s yıl önce"
+msgstr[1] "%s yıl önce"
+
 #: calendar.php:560 includes/functions/functions_print_lists.php:1921
 #: modules_v3/yahrzeit/module.php:118
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s. yıl dönümü"
+
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
+#: library/WT/I18N.php:260
+#, php-format
+msgid "%s%%"
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:97
@@ -336,6 +451,50 @@ msgid "&plusmn;%d year"
 msgid_plural "&plusmn;%d years"
 msgstr[0] "&plusmn;%d yıl"
 msgstr[1] "&plusmn;%d yıl"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
+#: library/WT/I18N.php:368 library/WT/I18N.php:372
+#, php-format
+msgid "(aged %s)"
+msgstr "(%s yaşındaydı)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
+#: library/WT/I18N.php:362
+#, php-format
+msgid "(aged less than %s)"
+msgstr "(%s daha az yaşlı)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
+#: library/WT/I18N.php:365
+#, php-format
+msgid "(aged more than %s)"
+msgstr "(%s daha çok yaşlı)"
+
+#. I18N: %s is a placeholder for a number
+#: library/WT/I18N.php:474
+#, php-format
+msgid "(filtered from %s total entries)"
+msgstr "(toplam %s girişten filtrelendi)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in childhood)
+#: library/WT/I18N.php:333
+msgid "(in childhood)"
+msgstr "(çocuklukta)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (in infancy)
+#: library/WT/I18N.php:330
+msgid "(in infancy)"
+msgstr "(doğarken)"
+
+#. I18N: Description of an individual’s age at an event.  e.g Died 14 Jan 1900 (stillborn)
+#: library/WT/I18N.php:327
+msgid "(stillborn)"
+msgstr "(ölü doğdu)"
+
+#. I18N: This punctuation is used to separate lists of items.
+#: library/WT/I18N.php:173
+msgid ", "
+msgstr ""
 
 #: library/WT/Stats.php:4060
 msgctxt "CENTURY"
@@ -807,66 +966,82 @@ msgstr "%s webtrees sitede bir kullanıcı kaydolmuştur ve bekliyor."
 
 #. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:41
+#: modules_v3/pedigree_report/report.xml:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "Bir bireyin atalarının ağaç olarak biçimlendirilmiş bir rapor."
 
 #. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:41
+#: modules_v3/ahnentafel_report/report.xml:6
 msgid "A report of an individual’s ancestors, in a narrative style."
 msgstr "Bir anlatım tarzında bir bireyin atalarının raporunu verir."
 
 #. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:41
+#: modules_v3/descendancy_report/report.xml:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "Bir anlatım tarzında bir bireyin nesillerinin raporunu verir."
 
 #. I18N: Description of the “Individual” module
 #: modules_v3/individual_report/module.php:41
+#: modules_v3/individual_report/report.xml:5
 msgid "A report of an individual’s details."
 msgstr "Bir bireyin detaylı bir raporunu verir."
 
+#: modules_v3/fact_sources/report.xml:5
+msgid "A report of facts which are supported by a given source."
+msgstr ""
+"Belirli bir kaynak tarafından desteklenen olguların bir raporunu verir."
+
 #. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:41
+#: modules_v3/family_group_report/report.xml:5
 msgid "A report of family members and their details."
 msgstr "Aile üyeleri ve oların ayrıntılarını içeren bir rapor verir."
 
 #. I18N: Description of the “Deaths” module
-#: modules_v3/death_report/module.php:41
+#: modules_v3/death_report/module.php:41 modules_v3/death_report/report.xml:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "Belirli zaman içinde veya bir yerde ölen kişilerin bir raporunu verir."
 
 #. I18N: Description of the “Occupations” module
 #: modules_v3/occupation_report/module.php:41
+#: modules_v3/occupation_report/report.xml:5
 msgid "A report of individuals who had a given occupation."
 msgstr "Bireylerin belirli bir mesleği olanın bir raporunu verir."
 
 #. I18N: Description of the “Births” module
-#: modules_v3/birth_report/module.php:41
+#: modules_v3/birth_report/module.php:41 modules_v3/birth_report/report.xml:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "Belirli bir zaman veya yerde doğmuş kişilerin bir raporunu verir."
 
 #. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:41
+#: modules_v3/cemetery_report/report.xml:5
 msgid "A report of individuals who were buried in a given place."
 msgstr "Belirli bir yere gömülen bireylerin bir raporunu verir."
 
 #. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:41
+#: modules_v3/marriage_report/report.xml:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "Belli bir zamanda veya mekanda evlenen bireylerin bir raporunu verir."
 
 #. I18N: Description of the “Changes” module
 #: modules_v3/change_report/module.php:41
+#: modules_v3/change_report/report.xml:5
 msgid "A report of recent and pending changes."
 msgstr "Bekleyen değişikliklerin ve son zamanın bir raporunu verir."
 
 #. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:41
+#: modules_v3/individual_ext_report/report.xml:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "Bireyin yakından ilintili olan ailelerin bir raporunu verir."
 
 #. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:41
+#: modules_v3/relative_ext_report/report.xml:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "Bireyin yakından ilintili olan bireylerin bir raporunu verir."
 
@@ -877,13 +1052,14 @@ msgstr "Bir kaynak tarafından sağlanan bilgileri bir rapor."
 
 #. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:41
+#: modules_v3/missing_facts_report/report.xml:5
 msgid ""
 "A report of the information that is missing for an individual and their "
 "relatives."
 msgstr "Birey ve onların yakınları için eksik bilgilerin bir raporunu verir."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:41
+#: modules_v3/bdm_report/module.php:41 modules_v3/bdm_report/report.xml:5
 msgid "A report of vital records for a given date or place."
 msgstr ""
 "Belirli bir tarih veya yer için hayati yaşam kayıtların bir raporunu verir."
@@ -968,6 +1144,52 @@ msgstr ""
 #: includes/functions/functions_date.php:115
 msgid "A.M."
 msgstr "Ö.Ö."
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A3"
+msgstr ""
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "A4"
+msgstr ""
+
+#: library/WT/I18N.php:159
+msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
+msgstr "ALPHABET_lower=abcçdefgğhiıjklmnoöpqrsştuüvwxyz"
+
+#: library/WT/I18N.php:156
+msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+msgstr "ALPHABET_upper=ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZ"
 
 #: library/WT/Gedcom/Code/Temp.php:65
 msgid "Aba, Nigeria"
@@ -1771,15 +1993,24 @@ msgstr "Rumuz"
 msgid "Alive"
 msgstr "Yaşayan"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:225 famlist.php:70 famlist.php:76 famlist.php:82
 #: famlist.php:165 famlist.php:167 famlist.php:251 famlist.php:253
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
-#: indilist.php:167 indilist.php:251 indilist.php:253
-#: library/WT/Stats.php:3325 modules_v3/faq/module.php:186
+#: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
+#: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
 #: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
 #: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:8
 #: modules_v3/random_media/module.php:264
+#: modules_v3/relative_ext_report/report.xml:7
 #: modules_v3/user_messages/module.php:91
 msgid "All"
 msgstr "Tümü"
@@ -1921,6 +2152,7 @@ msgstr "Beklenmeyen bir veritabanı hatası oluştu."
 #: library/WT/Controller/Ancestry.php:83
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:106
 #: modules_v3/ahnentafel_report/module.php:35
+#: modules_v3/ahnentafel_report/report.xml:5
 msgid "Ancestors"
 msgstr "Atalara Doğru"
 
@@ -1928,6 +2160,10 @@ msgstr "Atalara Doğru"
 #: library/WT/Gedcom/Tag.php:124
 msgid "Ancestors interest"
 msgstr "Ecdat Nema"
+
+#: modules_v3/ahnentafel_report/report.xml:53
+msgid "Ancestors of "
+msgstr "Atalarına Doğru "
 
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:80
@@ -2109,6 +2345,25 @@ msgstr ""
 #: library/WT/Stats.php:3784
 msgid "Argentina"
 msgstr "Arjantin"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Arial"
+msgstr ""
 
 #: library/WT/Stats.php:3785
 msgid "Armenia"
@@ -2564,7 +2819,32 @@ msgid "Birmingham, Alabama"
 msgstr "Birmingham, Alabama"
 
 #. I18N: gedcom tag BIRT
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:140 modules_v3/bdm_report/report.xml:56
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:177
+#: modules_v3/family_group_report/report.xml:528
+#: modules_v3/family_group_report/report.xml:869
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:54
 msgid "Birth"
 msgstr "Doğum"
 
@@ -2582,6 +2862,18 @@ msgstr "Doğum"
 msgctxt "Pedigree"
 msgid "Birth"
 msgstr "Doğum"
+
+#: modules_v3/bdm_report/report.xml:9 modules_v3/birth_report/report.xml:9
+msgid "Birth Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
+msgid "Birth Date range start"
+msgstr ""
+
+#: modules_v3/birth_report/report.xml:7
+msgid "Birth Place contains"
+msgstr "Doğum Yeri içerenler"
 
 #: library/WT/Stats.php:1014 statistics.php:553
 msgid "Birth by country"
@@ -2665,7 +2957,8 @@ msgid "Birth:"
 msgstr "Doğum:"
 
 #. I18N: Name of a module/report
-#: modules_v3/birth_report/module.php:35
+#: modules_v3/birth_report/module.php:35 modules_v3/birth_report/report.xml:4
+#: modules_v3/birth_report/report.xml:29
 msgid "Births"
 msgstr "Doğumlar"
 
@@ -2830,6 +3123,11 @@ msgstr "İngiliz Vırgın Adası"
 msgid "British West Indies"
 msgstr "İngiliz Bati Hint Adaları"
 
+#: modules_v3/individual_ext_report/report.xml:311
+#: modules_v3/individual_report/report.xml:313
+msgid "Brother"
+msgstr "Erkek kardeş"
+
 #: library/WT/Date/French.php:71
 msgctxt "GENITIVE"
 msgid "Brumaire"
@@ -2863,9 +3161,15 @@ msgid "Bulgaria"
 msgstr "Bulgaristan"
 
 #. I18N: gedcom tag BURI
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:147 modules_v3/family_group_report/report.xml:346
+#: modules_v3/family_group_report/report.xml:697
+#: modules_v3/family_group_report/report.xml:1038
 msgid "Burial"
 msgstr "Defin"
+
+#: modules_v3/cemetery_report/report.xml:6
+msgid "Burial Place contains"
+msgstr ""
 
 #: library/WT/Gedcom/Tag.php:531
 msgid "Burial of a brother"
@@ -3147,11 +3451,13 @@ msgstr "Cayman Adaları"
 
 #. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:35
+#: modules_v3/cemetery_report/report.xml:4
+#: modules_v3/cemetery_report/report.xml:33
 msgid "Cemeteries"
 msgstr "Mezarlıklar"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:153 modules_v3/cemetery_report/report.xml:52
 msgid "Cemetery"
 msgstr "Mezar"
 
@@ -3229,6 +3535,8 @@ msgstr "Kullanıcı %2$s tarihinde %1$s değiştirdi"
 
 #. I18N: Name of a module/report
 #: admin_site_change.php:29 modules_v3/change_report/module.php:35
+#: modules_v3/change_report/report.xml:4
+#: modules_v3/change_report/report.xml:42
 msgid "Changes"
 msgstr "Değişenler"
 
@@ -3301,6 +3609,11 @@ msgstr "Chicago, Illinois"
 msgid "Child"
 msgstr "Çocuk"
 
+#: modules_v3/ahnentafel_report/report.xml:394
+#: modules_v3/descendancy_report/report.xml:479
+msgid "Child of "
+msgstr "Çocuğu "
+
 #. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:331
 #, php-format
@@ -3308,13 +3621,20 @@ msgid "Child of %s"
 msgstr "%s çocuğu"
 
 #: includes/functions/functions_print_lists.php:215
-#: includes/functions/functions_print_lists.php:637 statisticsplot.php:784
+#: includes/functions/functions_print_lists.php:637
+#: modules_v3/family_group_report/report.xml:753
+#: modules_v3/relative_ext_report/report.xml:121 statisticsplot.php:784
 msgid "Children"
 msgstr "Çocuklar"
 
 #: statistics.php:288
 msgid "Children in family"
 msgstr "Ailenin çocukları"
+
+#: modules_v3/ahnentafel_report/report.xml:397
+#: modules_v3/descendancy_report/report.xml:482
+msgid "Children of "
+msgstr "Çocukları "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:962
@@ -3355,6 +3675,12 @@ msgstr "Çin"
 msgid "Choose a report to run"
 msgstr "Çalıştırmak için bir rapor seçin"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Choose relatives"
+msgstr "Akrabaları seç"
+
 #: help_text.php:355
 msgid ""
 "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> "
@@ -3389,7 +3715,9 @@ msgid "Choose: "
 msgstr "Seçin: "
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:162
+#: library/WT/Gedcom/Tag.php:162 modules_v3/family_group_report/report.xml:201
+#: modules_v3/family_group_report/report.xml:552
+#: modules_v3/family_group_report/report.xml:893
 msgid "Christening"
 msgstr "Vaftiz etme"
 
@@ -3505,7 +3833,7 @@ msgctxt "MALE"
 msgid "Civil Registrar"
 msgstr "Nüfus Şefi"
 
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:255 modules_v3/fact_sources/report.xml:200
 msgid "Civil marriage"
 msgstr "Medeni Nikâh"
 
@@ -4116,7 +4444,10 @@ msgstr "Veritabanı kullanıcı adı"
 
 #. I18N: gedcom tag DATE
 #: edit_changes.php:173 help_text.php:177 help_text.php:207
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:183 modules_v3/bdm_report/report.xml:130
+#: modules_v3/bdm_report/report.xml:156 modules_v3/bdm_report/report.xml:190
+#: modules_v3/birth_report/report.xml:38 modules_v3/death_report/report.xml:44
+#: modules_v3/marriage_report/report.xml:44
 msgid "Date"
 msgstr "Tarih"
 
@@ -4295,6 +4626,12 @@ msgstr ""
 "Kısayollar bu kısaltmalar ve anahtar kelimeler alternatif olarak "
 "kullanılabilir."
 
+#: modules_v3/family_group_report/report.xml:798
+#: modules_v3/individual_ext_report/report.xml:554
+#: modules_v3/individual_report/report.xml:556
+msgid "Daughter"
+msgstr "Kız evlat"
+
 #. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:328
 #, php-format
@@ -4319,9 +4656,46 @@ msgid "Dead"
 msgstr "Ölü"
 
 #. I18N: gedcom tag DEAT
-#: library/WT/Gedcom/Tag.php:184
+#: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.xml:85
+#: modules_v3/change_report/report.xml:100
+#: modules_v3/family_group_report/report.xml:284
+#: modules_v3/family_group_report/report.xml:635
+#: modules_v3/family_group_report/report.xml:976
+#: modules_v3/individual_ext_report/report.xml:265
+#: modules_v3/individual_ext_report/report.xml:301
+#: modules_v3/individual_ext_report/report.xml:341
+#: modules_v3/individual_ext_report/report.xml:377
+#: modules_v3/individual_ext_report/report.xml:413
+#: modules_v3/individual_ext_report/report.xml:471
+#: modules_v3/individual_ext_report/report.xml:507
+#: modules_v3/individual_ext_report/report.xml:548
+#: modules_v3/individual_ext_report/report.xml:584
+#: modules_v3/individual_ext_report/report.xml:620
+#: modules_v3/individual_report/report.xml:267
+#: modules_v3/individual_report/report.xml:303
+#: modules_v3/individual_report/report.xml:343
+#: modules_v3/individual_report/report.xml:379
+#: modules_v3/individual_report/report.xml:415
+#: modules_v3/individual_report/report.xml:473
+#: modules_v3/individual_report/report.xml:509
+#: modules_v3/individual_report/report.xml:550
+#: modules_v3/individual_report/report.xml:586
+#: modules_v3/individual_report/report.xml:622
+#: modules_v3/relative_ext_report/report.xml:60
 msgid "Death"
 msgstr "Vefat"
+
+#: modules_v3/bdm_report/report.xml:11 modules_v3/death_report/report.xml:9
+msgid "Death Date range end"
+msgstr ""
+
+#: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
+msgid "Death Date range start"
+msgstr ""
+
+#: modules_v3/death_report/report.xml:7
+msgid "Death Place contains"
+msgstr "Ölüm Yeri içerecekler"
 
 #: library/WT/Stats.php:1031 statistics.php:561
 msgid "Death by country"
@@ -4459,7 +4833,8 @@ msgid "Death places"
 msgstr "Vefat yerleri"
 
 #. I18N: Name of a module/report
-#: modules_v3/death_report/module.php:35
+#: modules_v3/death_report/module.php:35 modules_v3/death_report/report.xml:4
+#: modules_v3/death_report/report.xml:30
 msgid "Deaths"
 msgstr "Vefatlar"
 
@@ -4553,6 +4928,25 @@ msgstr "Varsayılan en üst değer"
 msgid "Degree"
 msgstr "Derece"
 
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "DejaVu"
+msgstr ""
+
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
 #: admin_trees_manage.php:231 edit_interface.php:151
@@ -4643,6 +5037,10 @@ msgstr ""
 #: library/WT/MenuBar.php:105 modules_v3/charts/module.php:206
 #: modules_v3/descendancy/module.php:34
 #: modules_v3/descendancy_report/module.php:35
+#: modules_v3/descendancy_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
 msgid "Descendants"
 msgstr "Bireyin Nesilleri"
 
@@ -4650,6 +5048,10 @@ msgstr "Bireyin Nesilleri"
 #: library/WT/Gedcom/Tag.php:189
 msgid "Descendants interest"
 msgstr "Zürriyet Nema"
+
+#: modules_v3/descendancy_report/report.xml:40
+msgid "Descendants of "
+msgstr ""
 
 #. I18N: %s is an individual’s name
 #: descendancy.php:117 descendancy.php:123
@@ -4783,6 +5185,10 @@ msgstr "Çocukken öldü: muaf"
 msgid "Died as an infant: exempt"
 msgstr "Bebekken öldü: muaf"
 
+#: modules_v3/change_report/report.xml:58
+msgid "Differences"
+msgstr "Farklar"
+
 #: help_text.php:444
 msgid ""
 "Different calendar systems are used in different parts of the world, and "
@@ -4792,6 +5198,24 @@ msgid ""
 "familiar calendar.  If you regularly use two calendars, you can specify two "
 "conversions and dates will be converted to both the selected calendars."
 msgstr ""
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors"
+msgstr "Direk atalara doğru"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Direct line ancestors and their families"
+msgstr "Direk atalara doğru ve onların aileleri"
+
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
+#: library/WT/I18N.php:422
+#, php-format
+msgid "Display %s"
+msgstr "Göster %s"
 
 #: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
 msgid "Display Map Coordinates"
@@ -5231,6 +5655,10 @@ msgstr "IP adresinde bitir"
 msgid "End Year"
 msgstr "Bitiş Yılı"
 
+#: modules_v3/change_report/report.xml:7
+msgid "Ending range of change dates"
+msgstr "Değişen tarihlerin bitiş aralığı"
+
 #. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:98
 msgid "Endowment House"
@@ -5244,6 +5672,20 @@ msgstr "Nişanlanma"
 #: library/WT/Stats.php:3847
 msgid "England"
 msgstr "İngiltere"
+
+#: modules_v3/family_group_report/report.xml:7
+msgid "Enter Family ID"
+msgstr "Aile ID Gir"
+
+#: modules_v3/ahnentafel_report/report.xml:7
+#: modules_v3/descendancy_report/report.xml:6
+#: modules_v3/individual_ext_report/report.xml:6
+#: modules_v3/individual_report/report.xml:6
+#: modules_v3/missing_facts_report/report.xml:6
+#: modules_v3/pedigree_report/report.xml:6
+#: modules_v3/relative_ext_report/report.xml:6
+msgid "Enter Individual ID"
+msgstr "Birey ID Girin"
 
 #: addmedia.php:448 modules_v3/gedcom_favorites/module.php:180
 msgid "Enter a Person, Family, or Source ID"
@@ -5408,7 +5850,9 @@ msgid "Europe"
 msgstr "Arupa"
 
 #. I18N: gedcom tag EVEN
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:208 modules_v3/fact_sources/report.xml:68
+#: modules_v3/fact_sources/report.xml:155
+#: modules_v3/missing_facts_report/report.xml:53
 msgid "Event"
 msgstr "Hadise"
 
@@ -5615,6 +6059,8 @@ msgid "Fact or event"
 msgstr "Olgu veya hadise"
 
 #. I18N: Name of a module/tab on the individual page.
+#: modules_v3/individual_ext_report/report.xml:151
+#: modules_v3/individual_report/report.xml:146
 #: modules_v3/personal_facts/module.php:34
 #: modules_v3/random_media/module.php:264
 msgid "Facts and events"
@@ -5659,7 +6105,9 @@ msgstr "Falkland Adaları"
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
 #: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
-#: mediaviewer.php:135 modules_v3/gedcom_stats/module.php:101
+#: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
+#: modules_v3/fact_sources/report.xml:312
+#: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
@@ -5680,6 +6128,9 @@ msgstr "Kaynaklar ile aileler"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:928
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:935
 #: modules_v3/family_group_report/module.php:35
+#: modules_v3/family_group_report/report.xml:4
+#: modules_v3/family_group_report/report.xml:86
+#: modules_v3/family_group_report/report.xml:94
 #: modules_v3/family_nav/module.php:302
 msgid "Family"
 msgstr "Aile"
@@ -5797,8 +6248,14 @@ msgstr "Evlatlık ebeveynler ile aile"
 msgid "Family with foster parents"
 msgstr "Besleme ebeveynler ile aile"
 
+#: modules_v3/individual_ext_report/report.xml:433
+#: modules_v3/individual_report/report.xml:435
+msgid "Family with husband"
+msgstr "Koca ile aile"
+
 #: library/WT/Gedcom/Code/Pedi.php:89 library/WT/Gedcom/Code/Pedi.php:94
-#: library/WT/Person.php:996
+#: library/WT/Person.php:996 modules_v3/individual_ext_report/report.xml:229
+#: modules_v3/individual_report/report.xml:231
 msgid "Family with parents"
 msgstr "Ebeveynlerle Aile"
 
@@ -5820,6 +6277,11 @@ msgstr "Eş ile aile"
 #: modules_v3/gedcom_stats/module.php:351 modules_v3/html/module.php:247
 msgid "Family with the most children"
 msgstr "En çok çocuklu aile"
+
+#: modules_v3/individual_ext_report/report.xml:427
+#: modules_v3/individual_report/report.xml:429
+msgid "Family with wife"
+msgstr "Hanım ile aile"
 
 #: includes/functions/functions_print.php:102
 #: library/WT/Controller/Fanchart.php:55
@@ -5863,7 +6325,12 @@ msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Ferverdin"
 
-#: search_advanced.php:210
+#: modules_v3/bdm_report/report.xml:116
+#: modules_v3/family_group_report/report.xml:462
+#: modules_v3/family_group_report/report.xml:722
+#: modules_v3/individual_ext_report/report.xml:235
+#: modules_v3/individual_report/report.xml:237
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:210
 msgid "Father"
 msgstr "Baba"
 
@@ -5876,7 +6343,7 @@ msgid "Father's age"
 msgstr "Babanın yaşı"
 
 #. I18N: %s is the name of an individual’s father
-#: library/WT/Person.php:1634
+#: library/WT/Person.php:1638
 #, php-format
 msgid "Father: %s"
 msgstr "Baba: %s"
@@ -6010,7 +6477,7 @@ msgstr ""
 
 #: admin_site_change.php:273 admin_site_logs.php:240 find.php:188 find.php:203
 #: find.php:221 find.php:238 find.php:255 find.php:273 find.php:290
-#: find.php:481 modules_v3/random_media/module.php:300
+#: find.php:481 library/WT/I18N.php:480 modules_v3/random_media/module.php:300
 msgid "Filter"
 msgstr "Filtre"
 
@@ -6041,6 +6508,7 @@ msgstr "Bir havuz bul"
 
 #: admin_site_merge.php:295 admin_site_merge.php:316 find.php:91
 #: includes/functions/functions_print.php:1156
+#: modules_v3/fact_sources/report.xml:6
 msgid "Find a source"
 msgstr "Bir kaynak bul"
 
@@ -6119,6 +6587,24 @@ msgstr "Klasör"
 #: addmedia.php:530 admin_media_upload.php:212 help_text.php:1449
 msgid "Folder name on server"
 msgstr "Sunucudaki klasör adı"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgid "Font"
+msgstr "Yazı tipi"
 
 #: help_text.php:375
 msgid ""
@@ -6369,7 +6855,11 @@ msgid "Gambia"
 msgstr "Gambiya"
 
 #. I18N: gedcom tag SEX
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Tag.php:314 modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592
 msgid "Gender"
 msgstr "Cinsiyet"
 
@@ -6405,8 +6895,17 @@ msgstr "%s Tarafından Üretildi"
 msgid "Generation"
 msgstr "Nesil"
 
+#: modules_v3/ahnentafel_report/report.xml:76
+#: modules_v3/descendancy_report/report.xml:53
+msgid "Generation "
+msgstr "Nesil "
+
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
-#: hourglass.php:75 modules_v3/googlemap/module.php:676 pedigree.php:44
+#: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
+#: modules_v3/descendancy_report/report.xml:7
+#: modules_v3/googlemap/module.php:676
+#: modules_v3/individual_ext_report/report.xml:8
+#: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
 msgstr "Nesiller"
 
@@ -6667,6 +7166,40 @@ msgstr "Hamilton, Yeni Zelanda"
 msgid "Hartford, Connecticut"
 msgstr "Hartford, Connecticut"
 
+#: modules_v3/descendancy_report/report.xml:427
+msgid "He "
+msgstr "O "
+
+#: modules_v3/ahnentafel_report/report.xml:289
+msgid "He died"
+msgstr "o öldü"
+
+#: modules_v3/ahnentafel_report/report.xml:258
+#: modules_v3/descendancy_report/report.xml:172
+msgid "He married"
+msgstr "O evli"
+
+#: modules_v3/ahnentafel_report/report.xml:220
+msgid "He resided at"
+msgstr "o ikamet"
+
+#: modules_v3/descendancy_report/report.xml:400
+msgid "He was born"
+msgstr "O doğdu"
+
+#: modules_v3/ahnentafel_report/report.xml:345
+msgid "He was buried"
+msgstr "Defnedildi"
+
+#: modules_v3/ahnentafel_report/report.xml:164
+msgid "He was christened"
+msgstr "O vaftiz edildi"
+
+#: modules_v3/ahnentafel_report/report.xml:314
+#: modules_v3/ahnentafel_report/report.xml:341
+msgid "He was cremated"
+msgstr "o yakıldı"
+
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:645
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:728
@@ -6719,6 +7252,29 @@ msgstr "Yardım"
 #: library/WT/Gedcom/Code/Temp.php:110
 msgid "Helsinki, Finland"
 msgstr "Helsinki, Finlandiya"
+
+#: modules_v3/ahnentafel_report/report.xml:15
+#: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
+#: modules_v3/cemetery_report/report.xml:10
+#: modules_v3/change_report/report.xml:12
+#: modules_v3/death_report/report.xml:13
+#: modules_v3/descendancy_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:10
+#: modules_v3/family_group_report/report.xml:13
+#: modules_v3/individual_ext_report/report.xml:14
+#: modules_v3/individual_report/report.xml:11
+#: modules_v3/marriage_report/report.xml:12
+#: modules_v3/missing_facts_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:9
+#: modules_v3/pedigree_report/report.xml:9
+#: modules_v3/relative_ext_report/report.xml:10
+msgctxt "font name"
+msgid "Helvetica"
+msgstr ""
+
+#: modules_v3/ahnentafel_report/report.xml:194
+msgid "Her occupation was"
+msgstr "onun meşguliyeti"
 
 #: modules_v3/googlemap/help_text.php:71
 msgid ""
@@ -6877,6 +7433,8 @@ msgstr ""
 
 #. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:746
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
 msgid "Highlighted image"
 msgstr "Vurgulanan resim"
 
@@ -6884,6 +7442,10 @@ msgstr "Vurgulanan resim"
 #: help_text.php:227 library/WT/Date/Hijri.php:41
 msgid "Hijri"
 msgstr "Hicri"
+
+#: modules_v3/ahnentafel_report/report.xml:193
+msgid "His occupation was"
+msgstr "onun meşguliyeti"
 
 #: modules_v3/personal_facts/module.php:88
 msgid "Historical facts"
@@ -6949,6 +7511,16 @@ msgstr "Macaristan"
 
 #. I18N: gedcom tag HUSB
 #: edit_interface.php:543 library/WT/Gedcom/Tag.php:235
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+#: modules_v3/family_group_report/report.xml:142
+#: modules_v3/family_group_report/report.xml:1076
+#: modules_v3/individual_ext_report/report.xml:194
+#: modules_v3/individual_ext_report/report.xml:208
+#: modules_v3/individual_ext_report/report.xml:441
+#: modules_v3/individual_report/report.xml:189
+#: modules_v3/individual_report/report.xml:210
+#: modules_v3/individual_report/report.xml:443
 msgid "Husband"
 msgstr "Koca"
 
@@ -7333,6 +7905,8 @@ msgstr "Hindistan"
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
 #: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
 #: modules_v3/individual_report/module.php:35
+#: modules_v3/individual_report/report.xml:4
+#: modules_v3/individual_report/report.xml:85
 #: modules_v3/stories/module.php:247 modules_v3/stories/module.php:350
 #: modules_v3/stories/module.php:416 pedigree.php:43
 msgid "Individual"
@@ -7379,6 +7953,8 @@ msgstr "Birey kaydı"
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
 #: indilist.php:135 library/WT/Controller/Search.php:593
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
+#: modules_v3/fact_sources/report.xml:52
+#: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
 #: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
@@ -7837,7 +8413,8 @@ msgstr "LDS Eş Kapatma"
 msgid "Laie, Hawaii"
 msgstr "Laie, Hawaii"
 
-#: admin_trees_config.php:812 pedigree.php:61
+#: admin_trees_config.php:812 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Landscape"
 msgstr "Peyzaj"
 
@@ -7869,7 +8446,8 @@ msgid "Las Vegas, Nevada"
 msgstr "Las Vegas, Nevada"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:157 modules_v3/change_report/report.xml:64
+#: modules_v3/change_report/report.xml:106
 msgid "Last change"
 msgstr "Son değişiklik"
 
@@ -7951,6 +8529,25 @@ msgstr "Yapraklar"
 msgid "Lebanon"
 msgstr "Lübnan"
 
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Legal"
+msgstr ""
+
 #. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:244
 msgid "Legatee"
@@ -7963,6 +8560,25 @@ msgstr "Evlilik süresi"
 #: library/WT/Stats.php:3912
 msgid "Lesotho"
 msgstr "Lesotho"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgctxt "paper size"
+msgid "Letter"
+msgstr "Letter"
 
 #: modules_v3/googlemap/admin_places.php:175
 #: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
@@ -8077,6 +8693,7 @@ msgstr ""
 msgid "Loading data from GEDCOM: %.1f%%"
 msgstr "%.1f%% GEDCOM dan yükleniyor"
 
+#: library/WT/I18N.php:478 library/WT/I18N.php:479
 #: themes/clouds/templates/compactbox_template.php:54
 #: themes/clouds/templates/personbox_template.php:48
 #: themes/colors/templates/compactbox_template.php:54
@@ -8353,14 +8970,27 @@ msgid "March"
 msgstr "Mart"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:252 modules_v3/bdm_report/report.xml:76
+#: modules_v3/family_group_report/report.xml:372
 msgid "Marriage"
 msgstr "Evlilik"
+
+#: modules_v3/marriage_report/report.xml:9
+msgid "Marriage Date range end"
+msgstr "Evlilik Tarihinde bitir"
+
+#: modules_v3/marriage_report/report.xml:8
+msgid "Marriage Date range start"
+msgstr "Evlilik Tarihinden başla"
 
 #. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:744
 msgid "Marriage Intention"
 msgstr "Evlilik Niyeti"
+
+#: modules_v3/marriage_report/report.xml:7
+msgid "Marriage Place contains"
+msgstr "Evlilik Yeri içerenler"
 
 #. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:247
@@ -8505,6 +9135,8 @@ msgstr "Evlilik Tipi bilinmiyor"
 
 #. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:35
+#: modules_v3/marriage_report/report.xml:4
+#: modules_v3/marriage_report/report.xml:28
 msgid "Marriages"
 msgstr "Evlilikler"
 
@@ -8880,6 +9512,8 @@ msgstr "PHP geçici dizin eksik"
 
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:35
+#: modules_v3/missing_facts_report/report.xml:4
+#: modules_v3/missing_facts_report/report.xml:50
 msgid "Missing data"
 msgstr "Eksik veri"
 
@@ -9051,7 +9685,12 @@ msgstr "Çoğu site 3306 varsayılan değerini kullanmak üzere yapılandırılm
 msgid "Most viewed pages"
 msgstr "Ençok görüntülenen sayfalar"
 
-#: search_advanced.php:247
+#: modules_v3/bdm_report/report.xml:118
+#: modules_v3/family_group_report/report.xml:469
+#: modules_v3/family_group_report/report.xml:729
+#: modules_v3/individual_ext_report/report.xml:271
+#: modules_v3/individual_report/report.xml:273
+#: modules_v3/relative_ext_report/report.xml:63 search_advanced.php:247
 msgid "Mother"
 msgstr "Anne"
 
@@ -9064,7 +9703,7 @@ msgid "Mother's age"
 msgstr "Annenin yaşı"
 
 #. I18N: %s is the name of an individual’s mother
-#: library/WT/Person.php:1643
+#: library/WT/Person.php:1647
 #, php-format
 msgid "Mother: %s"
 msgstr "Anne: %s"
@@ -9184,6 +9823,20 @@ msgstr "Myanmar"
 #: library/WT/Stats.php:3326
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:119
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:571
+#: modules_v3/bdm_report/report.xml:6 modules_v3/bdm_report/report.xml:47
+#: modules_v3/birth_report/report.xml:6 modules_v3/birth_report/report.xml:34
+#: modules_v3/cemetery_report/report.xml:39
+#: modules_v3/change_report/report.xml:54
+#: modules_v3/change_report/report.xml:94 modules_v3/death_report/report.xml:6
+#: modules_v3/death_report/report.xml:36 modules_v3/fact_sources/report.xml:60
+#: modules_v3/fact_sources/report.xml:153
+#: modules_v3/fact_sources/report.xml:264
+#: modules_v3/fact_sources/report.xml:315
+#: modules_v3/marriage_report/report.xml:6
+#: modules_v3/marriage_report/report.xml:36
+#: modules_v3/missing_facts_report/report.xml:52
+#: modules_v3/occupation_report/report.xml:41
+#: modules_v3/relative_ext_report/report.xml:48
 msgid "Name"
 msgstr "Adı"
 
@@ -9196,6 +9849,11 @@ msgstr "Adı"
 #: modules_v3/clippings/module.php:278
 msgid "Name / Description"
 msgstr "Adı / Açıklama"
+
+#: modules_v3/cemetery_report/report.xml:8
+#: modules_v3/death_report/report.xml:11
+msgid "Name List"
+msgstr "Adı Listesi"
 
 #: find.php:184 find.php:199
 msgid "Name contains:"
@@ -9571,6 +10229,10 @@ msgstr ""
 msgid "No predefined text"
 msgstr "Önceden tanımlanmış metin yok"
 
+#: library/WT/I18N.php:471 library/WT/I18N.php:482
+msgid "No records to display"
+msgstr "Gösterilecek kayıt yok"
+
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
 #: library/WT/Controller/Search.php:700
@@ -9590,8 +10252,12 @@ msgstr "Gecesel"
 
 #: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
-#: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:592
-#: modules_v3/families/module.php:151 modules_v3/individuals/module.php:150
+#: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
+#: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
+#: modules_v3/families/module.php:151
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+#: modules_v3/individuals/module.php:150
 msgid "None"
 msgstr "Hiçbiri"
 
@@ -9664,6 +10330,10 @@ msgstr "Evli değil"
 #. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:484
 #: includes/functions/functions_print.php:560 library/WT/Gedcom/Tag.php:276
+#: modules_v3/cemetery_report/report.xml:62
+#: modules_v3/family_group_report/report.xml:480
+#: modules_v3/family_group_report/report.xml:741
+#: modules_v3/family_group_report/report.xml:1090
 msgid "Note"
 msgstr "Not"
 
@@ -9698,7 +10368,9 @@ msgstr ""
 #: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
-#: modules_v3/notes/module.php:34 source.php:106 statistics.php:339
+#: modules_v3/individual_ext_report/report.xml:221
+#: modules_v3/individual_report/report.xml:223 modules_v3/notes/module.php:34
+#: source.php:106 statistics.php:339
 msgid "Notes"
 msgstr "Notlar"
 
@@ -9820,6 +10492,8 @@ msgstr "Meslek"
 
 #. I18N: Name of a report
 #: modules_v3/occupation_report/module.php:35
+#: modules_v3/occupation_report/report.xml:4
+#: modules_v3/occupation_report/report.xml:35
 msgid "Occupations"
 msgstr "Meslekler"
 
@@ -10017,6 +10691,11 @@ msgstr "Buyruğu"
 msgid "Ordination"
 msgstr "Kutsanma"
 
+#: modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7
+msgid "Orientation"
+msgstr "Yönlendirme"
+
 #: library/WT/Gedcom/Code/Temp.php:150
 msgid "Orlando, Florida"
 msgstr "Orlando, Florida"
@@ -10128,10 +10807,45 @@ msgstr ""
 msgid "PHP time limit"
 msgstr "PHP zaman sınırı"
 
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_ext_report/report.xml:90
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/missing_facts_report/report.xml:51
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42
+msgid "Page"
+msgstr "Sayfa"
+
 #: medialist.php:216 medialist.php:339
 #, php-format
 msgid "Page %s of %s"
 msgstr "Safa %s toplam %s"
+
+#: modules_v3/ahnentafel_report/report.xml:14
+#: modules_v3/bdm_report/report.xml:13 modules_v3/birth_report/report.xml:11
+#: modules_v3/cemetery_report/report.xml:9
+#: modules_v3/change_report/report.xml:10
+#: modules_v3/death_report/report.xml:12
+#: modules_v3/descendancy_report/report.xml:9
+#: modules_v3/fact_sources/report.xml:9
+#: modules_v3/family_group_report/report.xml:12
+#: modules_v3/individual_ext_report/report.xml:13
+#: modules_v3/individual_report/report.xml:10
+#: modules_v3/marriage_report/report.xml:11
+#: modules_v3/missing_facts_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:8
+#: modules_v3/pedigree_report/report.xml:8
+#: modules_v3/relative_ext_report/report.xml:9
+msgid "Page size"
+msgstr "Sayfa boyutu"
 
 #: library/WT/Gedcom/Tag.php:917
 msgid "Painting"
@@ -10187,6 +10901,12 @@ msgstr "Ebeveynin yaşı"
 msgid "Parents"
 msgstr "Ebeveynler"
 
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Parents and siblings"
+msgstr "Kardeşler ve ebeveynler"
+
 #: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
 #: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
 #: login.php:220 login.php:449 modules_v3/login_block/module.php:81
@@ -10215,8 +10935,14 @@ msgstr "Şifreler en az 6 karakter içermelidir."
 #: library/WT/Controller/Fanchart.php:306
 #: library/WT/Controller/Pedigree.php:94 library/WT/MenuBar.php:104
 #: modules_v3/charts/module.php:205 modules_v3/pedigree_report/module.php:35
+#: modules_v3/pedigree_report/report.xml:4
+#: modules_v3/pedigree_report/report.xml:41
 msgid "Pedigree"
 msgstr "Soyağacı"
+
+#: modules_v3/pedigree_report/report.xml:737
+msgid "Pedigree Chart"
+msgstr "Soyağacı Çizelgesi"
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
@@ -10247,6 +10973,7 @@ msgstr "Bekleyen Değişiklikler bloku"
 
 #. I18N: Name of a module
 #: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
+#: modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
 #: themes/colors/header.php:97 themes/fab/header.php:79
@@ -10357,12 +11084,18 @@ msgstr "Pitcairn Adası"
 #. I18N: gedcom tag PLAC
 #: library/WT/Gedcom/Tag.php:290
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1136
+#: modules_v3/bdm_report/report.xml:7 modules_v3/bdm_report/report.xml:132
+#: modules_v3/bdm_report/report.xml:158 modules_v3/bdm_report/report.xml:192
+#: modules_v3/birth_report/report.xml:40
+#: modules_v3/cemetery_report/report.xml:58
+#: modules_v3/death_report/report.xml:48
 #: modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places.php:180
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591 search.php:169 search.php:182
+#: modules_v3/googlemap/module.php:1591
+#: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr "Yer"
 
@@ -10654,7 +11387,8 @@ msgstr "Portland, Oregon"
 msgid "Porto Alegre, Brazil"
 msgstr "Porto Alegre, Brezilya"
 
-#: admin_trees_config.php:813 pedigree.php:61
+#: admin_trees_config.php:813 modules_v3/change_report/report.xml:11
+#: modules_v3/pedigree_report/report.xml:7 pedigree.php:61
 msgid "Portrait"
 msgstr "Portre"
 
@@ -10761,6 +11495,10 @@ msgstr "Papaz"
 msgid "Primidi"
 msgstr ""
 
+#: modules_v3/family_group_report/report.xml:11
+msgid "Print basic events when blank?"
+msgstr "Boşluk olduğunda temel hadiseleri yazdır?"
+
 #: admin_trees_config.php:219
 msgid "Privacy"
 msgstr "Mahremiyet"
@@ -10783,7 +11521,7 @@ msgstr ""
 #: library/WT/Person.php:121 library/WT/Person.php:336
 #: library/WT/Person.php:359 library/WT/Person.php:382
 #: library/WT/Person.php:419 library/WT/Person.php:442
-#: library/WT/Person.php:1905 library/WT/Report/Base.php:1946
+#: library/WT/Person.php:1909 library/WT/Report/Base.php:1946
 #: library/WT/Repository.php:57 library/WT/Source.php:49
 #: library/WT/Stats.php:863 library/WT/Stats.php:1805
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:240
@@ -11041,7 +11779,8 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Son Yıllar (&lt; 100 yıl)"
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/recent_changes/module.php:36
+#: admin.php:244 modules_v3/change_report/report.xml:90
+#: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr "Son değişiklikler"
 
@@ -11114,7 +11853,7 @@ msgstr "Referans Numarası"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Kanada"
 
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:256 modules_v3/fact_sources/report.xml:203
 msgid "Registered partnership"
 msgstr "Kayıtlı Birliktelik"
 
@@ -11148,11 +11887,15 @@ msgstr ""
 
 #. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:35
+#: modules_v3/individual_ext_report/report.xml:4
+#: modules_v3/individual_ext_report/report.xml:89
 msgid "Related families"
 msgstr "İlintili aileler"
 
 #. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:35
+#: modules_v3/relative_ext_report/report.xml:4
+#: modules_v3/relative_ext_report/report.xml:41
 msgid "Related individuals"
 msgstr "İlintili bireyler"
 
@@ -11208,7 +11951,7 @@ msgstr "Din"
 msgid "Religious Institution"
 msgstr "Dini Kurum"
 
-#: library/WT/Gedcom/Tag.php:257
+#: library/WT/Gedcom/Tag.php:257 modules_v3/fact_sources/report.xml:197
 msgid "Religious marriage"
 msgstr "Dini Nikâh"
 
@@ -12125,6 +12868,40 @@ msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Şevval"
 
+#: modules_v3/descendancy_report/report.xml:357
+msgid "She "
+msgstr "Burada "
+
+#: modules_v3/ahnentafel_report/report.xml:290
+msgid "She died"
+msgstr "o öldü"
+
+#: modules_v3/ahnentafel_report/report.xml:259
+#: modules_v3/descendancy_report/report.xml:241
+msgid "She married"
+msgstr "Burada evlendi"
+
+#: modules_v3/ahnentafel_report/report.xml:221
+msgid "She resided at"
+msgstr "o ikamet"
+
+#: modules_v3/descendancy_report/report.xml:330
+msgid "She was born"
+msgstr "Burada doğmuş"
+
+#: modules_v3/ahnentafel_report/report.xml:346
+msgid "She was buried"
+msgstr "O gömüldü"
+
+#: modules_v3/ahnentafel_report/report.xml:165
+msgid "She was christened"
+msgstr "Burada vaftiz edildi"
+
+#: modules_v3/ahnentafel_report/report.xml:315
+#: modules_v3/ahnentafel_report/report.xml:342
+msgid "She was cremated"
+msgstr "o törenle yakıldı"
+
 #: library/WT/Date/Jewish.php:111
 msgctxt "GENITIVE"
 msgid "Shevat"
@@ -12237,6 +13014,10 @@ msgstr "Yaş İşaretleyici Göste?"
 msgid "Show chart details by default"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:13
+msgid "Show children of ancestors?"
+msgstr "Ataların çocuklarını göster?"
+
 #: library/WT/MenuBar.php:173 library/WT/MenuBar.php:193
 msgid "Show children on timeline chart"
 msgstr "Zaman çizgi çizelgesinde çocukları göster"
@@ -12330,6 +13111,17 @@ msgstr "İstatistik çizelgelerinde linkleri göster?"
 msgid "Show list of family trees"
 msgstr ""
 
+#: modules_v3/ahnentafel_report/report.xml:10
+#: modules_v3/family_group_report/report.xml:9
+#: modules_v3/individual_ext_report/report.xml:11
+#: modules_v3/individual_report/report.xml:8
+msgid "Show notes?"
+msgstr "Notları göster?"
+
+#: modules_v3/ahnentafel_report/report.xml:11
+msgid "Show occupations?"
+msgstr "Meslekleri göster?"
+
 #: help_text.php:1291 relationship.php:118
 msgid "Show oldest top"
 msgstr "En yaşlıları en üstte göster"
@@ -12373,6 +13165,10 @@ msgstr "Ebeveynleri göster"
 msgid "Show path"
 msgstr "Yolu göster"
 
+#: modules_v3/change_report/report.xml:9
+msgid "Show pending changes"
+msgstr "Bekleyen değişiklikleri göster"
+
 #: includes/functions/functions_print_lists.php:91
 #: includes/functions/functions_print_lists.php:496
 msgid "Show people who are alive or couples where both partners are alive."
@@ -12399,6 +13195,12 @@ msgstr "Son 100 yıldan önce doğmuş kişileri göster"
 msgid "Show persons born within the last 100 years."
 msgstr "Son 100 yıl içinde doğmuş kişileri göster."
 
+#: modules_v3/family_group_report/report.xml:10
+#: modules_v3/individual_ext_report/report.xml:12
+#: modules_v3/individual_report/report.xml:9
+msgid "Show photos?"
+msgstr "Fotoğrafları göster?"
+
 #: admin_trees_config.php:527 help_text.php:887
 msgid "Show private relationships"
 msgstr "Özel akrabalık bağı göster"
@@ -12419,6 +13221,10 @@ msgstr "Herhangi bir kullanıcıya atanmayan araştırma görevleri göster"
 msgid "Show research tasks that have a date in the future"
 msgstr "Gelecekteki bir tarihi araştırma görevleri göster"
 
+#: modules_v3/ahnentafel_report/report.xml:12
+msgid "Show residences?"
+msgstr "Konutları göster?"
+
 #: help_text.php:898
 msgid ""
 "Show runtime statistics and database queries at the bottom of every page."
@@ -12427,6 +13233,14 @@ msgstr ""
 #: modules_v3/random_media/module.php:377
 msgid "Show slide show controls?"
 msgstr "Slayt gösteri kontrolleri göster?"
+
+#: modules_v3/ahnentafel_report/report.xml:9
+#: modules_v3/descendancy_report/report.xml:8
+#: modules_v3/family_group_report/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:10
+#: modules_v3/individual_report/report.xml:7
+msgid "Show sources?"
+msgstr "Kaynakları göster?"
 
 #: familybook.php:76 help_text.php:1416 hourglass.php:91
 msgid "Show spouses"
@@ -12520,6 +13334,12 @@ msgstr ""
 "denebilir. Onlar veritabanında hiçbir ebeveynleri kayıtlı olmayan "
 "bireylerdir."
 
+#. I18N: %s are placeholders for numbers
+#: library/WT/I18N.php:472 library/WT/I18N.php:473
+#, php-format
+msgid "Showing %1$s to %2$s of %3$s"
+msgstr "Gösterilen %1$s den %2$s toplam %3$s"
+
 #: library/WT/Controller/Fanchart.php:337
 #: library/WT/Controller/Hourglass.php:407 pedigree.php:227
 msgid "Sibling"
@@ -12566,6 +13386,11 @@ msgstr ""
 #: library/WT/Stats.php:3980
 msgid "Singapore"
 msgstr "Singapur"
+
+#: modules_v3/individual_ext_report/report.xml:347
+#: modules_v3/individual_report/report.xml:349
+msgid "Sister"
+msgstr "Kız kardeş"
 
 #: admin_site_access.php:32 themes/_administration/header.php:97
 msgid "Site access rules"
@@ -12697,13 +13522,28 @@ msgid ""
 "example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
 
+#: modules_v3/family_group_report/report.xml:763
+#: modules_v3/individual_ext_report/report.xml:518
+#: modules_v3/individual_report/report.xml:520
+msgid "Son"
+msgstr "Oğlu"
+
 #. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:325
 #, php-format
 msgid "Son of %s"
 msgstr "%s oğlu"
 
-#: medialist.php:92 modules_v3/recent_changes/module.php:151
+#: medialist.php:92 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/recent_changes/module.php:151
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:148
 #: modules_v3/upcoming_events/module.php:160
 msgid "Sort order"
@@ -12724,7 +13564,12 @@ msgstr "Buna benzer"
 #. I18N: Name of a module/report
 #: includes/functions/functions_print_facts.php:467
 #: includes/functions/functions_print_facts.php:496 inverselink.php:134
-#: library/WT/Gedcom/Tag.php:320 modules_v3/fact_sources/module.php:35
+#: library/WT/Gedcom/Tag.php:320 modules_v3/bdm_report/report.xml:134
+#: modules_v3/bdm_report/report.xml:160 modules_v3/bdm_report/report.xml:194
+#: modules_v3/birth_report/report.xml:41 modules_v3/death_report/report.xml:52
+#: modules_v3/fact_sources/module.php:35 modules_v3/fact_sources/report.xml:4
+#: modules_v3/fact_sources/report.xml:41
+#: modules_v3/marriage_report/report.xml:52
 msgid "Source"
 msgstr "Kaynak"
 
@@ -12749,6 +13594,7 @@ msgid "Source contains:"
 msgstr "Kaynak içerkleri:"
 
 #: admin_trees_config.php:1255 help_text.php:781
+#: modules_v3/fact_sources/report.xml:7
 msgid "Source type"
 msgstr "Kaynak tipi"
 
@@ -12758,14 +13604,23 @@ msgstr "Kaynak tipi"
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
 #: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
-#: mediaviewer.php:138 modules_v3/gedcom_stats/module.php:104
+#: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
+#: modules_v3/descendancy_report/report.xml:612
+#: modules_v3/family_group_report/report.xml:1107
+#: modules_v3/gedcom_stats/module.php:104
 #: modules_v3/gedcom_stats/module.php:324 modules_v3/html/module.php:192
+#: modules_v3/individual_ext_report/report.xml:636
+#: modules_v3/individual_report/report.xml:636
 #: modules_v3/lightbox/functions/lightbox_print_media.php:369
 #: modules_v3/sources_tab/module.php:34 note.php:107 repo.php:94
 #: search.php:124 sourcelist.php:31 sourcelist.php:35 statistics.php:338
 #: statistics.php:375
 msgid "Sources"
 msgstr "Kaynaklar"
+
+#: modules_v3/missing_facts_report/report.xml:12
+msgid "Sources to the events"
+msgstr "Hadiseler için kaynaklar"
 
 #: library/WT/Stats.php:4036
 msgid "South Africa"
@@ -12800,6 +13655,10 @@ msgstr "Hız"
 msgid "Spokane, Washington"
 msgstr "Spokane, Washington"
 
+#: modules_v3/bdm_report/report.xml:167
+msgid "Spouse"
+msgstr "Eş"
+
 #: library/WT/Gedcom/Tag.php:216
 msgid "Spouse census date"
 msgstr "Eşin nüfus sayım tarihi"
@@ -12815,6 +13674,12 @@ msgstr "Eş Notu"
 #: includes/functions/functions_print_lists.php:1363
 msgid "Spouses"
 msgstr "Eşler"
+
+#: modules_v3/individual_ext_report/report.xml:7
+#: modules_v3/missing_facts_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:7
+msgid "Spouses and children"
+msgstr "Eşler ve çocuklar"
 
 #: library/WT/Stats.php:3911
 msgid "Sri Lanka"
@@ -12853,6 +13718,10 @@ msgstr "Ebeveynlerle başla"
 #: modules_v3/random_media/module.php:384
 msgid "Start slide show on page load?"
 msgstr "Slayt gösterisi sayfa yüklendiğinde başlat?"
+
+#: modules_v3/change_report/report.xml:6
+msgid "Starting range of change dates"
+msgstr "Değişen tarihlerin başlama aralığı"
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
@@ -13123,7 +13992,7 @@ msgid "Templates"
 msgstr "Şablonlar"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:329
+#: library/WT/Gedcom/Tag.php:329 modules_v3/individual_report/report.xml:205
 msgid "Temple"
 msgstr "Tapınak"
 
@@ -14968,6 +15837,10 @@ msgstr "Toplam soyadı"
 msgid "Toronto, Ontario, Canada"
 msgstr "Toronto, Ontario, Kanada"
 
+#: modules_v3/change_report/report.xml:125
+msgid "Total accepted changes: "
+msgstr "Toplam kabul edilen değişiklikler: "
+
 #: statistics.php:98
 msgid "Total births"
 msgstr "Toplam doğumlar"
@@ -14986,11 +15859,15 @@ msgstr "Toplam boşanmalar"
 
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:356 modules_v3/html/module.php:204
-#: statistics.php:351
+#: modules_v3/missing_facts_report/report.xml:599 statistics.php:351
 msgid "Total events"
 msgstr "Toplam hadise"
 
-#: library/WT/Stats.php:3059
+#: library/WT/Stats.php:3059 modules_v3/fact_sources/report.xml:246
+#: modules_v3/fact_sources/report.xml:250
+#: modules_v3/fact_sources/report.xml:348
+#: modules_v3/fact_sources/report.xml:352
+#: modules_v3/marriage_report/report.xml:112
 msgid "Total families"
 msgstr "Toplam aileler"
 
@@ -15006,6 +15883,19 @@ msgstr "Toplam kadınlar"
 #: statistics.php:178
 msgid "Total given names"
 msgstr "Toplam verilen adlar"
+
+#: modules_v3/bdm_report/report.xml:208 modules_v3/birth_report/report.xml:65
+#: modules_v3/cemetery_report/report.xml:86
+#: modules_v3/death_report/report.xml:98
+#: modules_v3/fact_sources/report.xml:140
+#: modules_v3/fact_sources/report.xml:144
+#: modules_v3/fact_sources/report.xml:303
+#: modules_v3/fact_sources/report.xml:307
+#: modules_v3/missing_facts_report/report.xml:598
+#: modules_v3/occupation_report/report.xml:92
+#: modules_v3/relative_ext_report/report.xml:146
+msgid "Total individuals"
+msgstr "Toplam bireyler"
 
 #: calendar.php:438 find.php:507 modules_v3/GEDFact_assistant/module.php:162
 #: statistics.php:75
@@ -15028,6 +15918,10 @@ msgstr "Toplam evlilikler"
 #: admin.php:164
 msgid "Total number of users"
 msgstr "Toplam kullanıcı"
+
+#: modules_v3/change_report/report.xml:85
+msgid "Total pending changes: "
+msgstr "Toplam bekleyen değişiklikler: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1709
@@ -15226,7 +16120,11 @@ msgstr "Bilinmiyor"
 #: calendar.php:586 includes/functions/functions_edit.php:1461
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
-#: timeline.php:264
+#: modules_v3/family_group_report/report.xml:833
+#: modules_v3/individual_ext_report/report.xml:383
+#: modules_v3/individual_ext_report/report.xml:590
+#: modules_v3/individual_report/report.xml:385
+#: modules_v3/individual_report/report.xml:592 timeline.php:264
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr "Bilinmiyor"
@@ -15362,6 +16260,11 @@ msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "Enaz %s karakter kullanın."
 msgstr[1] "Enaz %s karakter kullanın."
+
+#: modules_v3/family_group_report/report.xml:14
+#: modules_v3/individual_ext_report/report.xml:15
+msgid "Use colors"
+msgstr "Renkleri kullan"
 
 #: modules_v3/tree/class_treeview.php:74
 msgid "Use compact layout"
@@ -15716,9 +16619,15 @@ msgid "Visitor"
 msgstr "Ziyaretçi"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: modules_v3/bdm_report/module.php:35
+#: modules_v3/bdm_report/module.php:35 modules_v3/bdm_report/report.xml:4
+#: modules_v3/bdm_report/report.xml:32
 msgid "Vital records"
 msgstr "Yaşamsal kayıtlar"
+
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
+#: library/WT/I18N.php:162
+msgid "WEEK_START=0"
+msgstr "WEEK_START=1"
 
 #: library/WT/Stats.php:4032
 msgid "Wales"
@@ -16053,6 +16962,14 @@ msgstr "Üretilen tırnak önizlemelerin genişliği"
 
 #. I18N: gedcom tag WIFE
 #: edit_interface.php:541 library/WT/Gedcom/Tag.php:340
+#: modules_v3/family_group_report/report.xml:493
+#: modules_v3/family_group_report/report.xml:1067
+#: modules_v3/individual_ext_report/report.xml:197
+#: modules_v3/individual_ext_report/report.xml:211
+#: modules_v3/individual_ext_report/report.xml:477
+#: modules_v3/individual_report/report.xml:192
+#: modules_v3/individual_report/report.xml:213
+#: modules_v3/individual_report/report.xml:479
 msgid "Wife"
 msgstr "Hanım"
 
@@ -16641,6 +17558,13 @@ msgstr "Olarak da bilinir"
 #: library/WT/Controller/Ancestry.php:144 library/WT/Stats.php:2627
 #: library/WT/Stats.php:2652 library/WT/Stats.php:2663
 #: library/WT/Stats.php:2673 library/WT/Stats.php:3427 medialist.php:47
+#: modules_v3/ahnentafel_report/report.xml:400
+#: modules_v3/descendancy_report/report.xml:131
+#: modules_v3/descendancy_report/report.xml:229
+#: modules_v3/descendancy_report/report.xml:298
+#: modules_v3/descendancy_report/report.xml:362
+#: modules_v3/descendancy_report/report.xml:432
+#: modules_v3/descendancy_report/report.xml:485
 msgid "and"
 msgstr "ve"
 
@@ -16929,6 +17853,10 @@ msgstr "tarih dönemleri"
 msgid "daughter"
 msgstr "kızı"
 
+#: modules_v3/descendancy_report/report.xml:225
+msgid "daughter of"
+msgstr "kızı"
+
 #: includes/functions/functions.php:1238
 msgctxt "child's wife"
 msgid "daughter-in-law"
@@ -16968,6 +17896,18 @@ msgstr "Açılar"
 #: admin_site_access.php:110 admin_site_access.php:301
 msgid "deny"
 msgstr "reddet"
+
+#: modules_v3/descendancy_report/report.xml:137
+#: modules_v3/descendancy_report/report.xml:364
+msgctxt "FEMALE"
+msgid "died"
+msgstr "öldü"
+
+#: modules_v3/descendancy_report/report.xml:134
+#: modules_v3/descendancy_report/report.xml:434
+msgctxt "MALE"
+msgid "died"
+msgstr "öldü"
 
 #: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
 #: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
@@ -17063,7 +18003,7 @@ msgctxt "Abbreviation for fax number"
 msgid "f."
 msgstr "f."
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "facts"
 msgstr "olgular"
 
@@ -17143,6 +18083,11 @@ msgstr "beşinci kuzen"
 #: setup.php:164
 msgid "file upload capability"
 msgstr "dosya yükleme yeteneklilik"
+
+#. I18N: button label, first page
+#: library/WT/I18N.php:466
+msgid "first"
+msgstr "ilk"
 
 #: admin_trees_config.php:909
 msgctxt "Show the [first/last] [N] parts of a place name."
@@ -19050,6 +19995,11 @@ msgctxt "NOMINATIVE"
 msgid "jours complémentaires"
 msgstr ""
 
+#. I18N: button label, last page
+#: library/WT/I18N.php:467
+msgid "last"
+msgstr "son"
+
 #: admin_trees_config.php:910
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
@@ -19080,6 +20030,16 @@ msgstr "kızlık adı"
 #: library/WT/Stats.php:1749 library/WT/Stats.php:3607
 msgid "marriage"
 msgstr "evlilik"
+
+#: modules_v3/descendancy_report/report.xml:244
+msgctxt "FEMALE"
+msgid "married"
+msgstr "evli"
+
+#: modules_v3/descendancy_report/report.xml:175
+msgctxt "MALE"
+msgid "married"
+msgstr "evli"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:116
@@ -19223,7 +20183,8 @@ msgctxt "sister's child"
 msgid "nephew/niece"
 msgstr "erkek/kız yeğen"
 
-#: admin_pgv_to_wt.php:157 admin_site_merge.php:318
+#. I18N: button label, next page
+#: admin_pgv_to_wt.php:157 admin_site_merge.php:318 library/WT/I18N.php:468
 #: modules_v3/batch_update/admin_batch_update.php:98
 msgid "next"
 msgstr "sonraki"
@@ -19279,7 +20240,13 @@ msgstr "dokuzuncu kuzen"
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
 #: modules_v3/batch_update/admin_batch_update.php:339
-#: modules_v3/charts/module.php:215
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
+#: modules_v3/family_group_report/report.xml:250
+#: modules_v3/family_group_report/report.xml:421
+#: modules_v3/family_group_report/report.xml:601
+#: modules_v3/family_group_report/report.xml:942
+#: modules_v3/individual_ext_report/report.xml:180
+#: modules_v3/individual_report/report.xml:175
 msgid "no"
 msgstr "hayır"
 
@@ -19308,7 +20275,19 @@ msgstr "kuzey"
 msgid "numbers"
 msgstr "sayı"
 
-#: statisticsplot.php:816 statisticsplot.php:818 statisticsplot.php:820
+#: modules_v3/ahnentafel_report/report.xml:54
+#: modules_v3/bdm_report/report.xml:40 modules_v3/birth_report/report.xml:30
+#: modules_v3/cemetery_report/report.xml:34
+#: modules_v3/change_report/report.xml:43
+#: modules_v3/death_report/report.xml:31
+#: modules_v3/descendancy_report/report.xml:41
+#: modules_v3/fact_sources/report.xml:42
+#: modules_v3/family_group_report/report.xml:87
+#: modules_v3/individual_report/report.xml:86
+#: modules_v3/marriage_report/report.xml:29
+#: modules_v3/occupation_report/report.xml:36
+#: modules_v3/relative_ext_report/report.xml:42 statisticsplot.php:816
+#: statisticsplot.php:818 statisticsplot.php:820
 msgid "of"
 msgstr "toplam"
 
@@ -19395,7 +20374,8 @@ msgstr "bekliyor"
 msgid "percentage"
 msgstr "yüzde"
 
-#: modules_v3/batch_update/admin_batch_update.php:97
+#. I18N: button label, previous page
+#: library/WT/I18N.php:469 modules_v3/batch_update/admin_batch_update.php:97
 msgid "previous"
 msgstr "önceki"
 
@@ -19413,7 +20393,7 @@ msgstr "evlilikten sonra çeyrek"
 msgid "questionable evidence"
 msgstr "tartışmalı kanıt"
 
-#: admin_trees_config.php:1258
+#: admin_trees_config.php:1258 modules_v3/fact_sources/report.xml:7
 msgid "records"
 msgstr "kayıtlar"
 
@@ -19779,6 +20759,10 @@ msgstr "altıncı kuzen"
 msgid "son"
 msgstr "oğlu"
 
+#: modules_v3/descendancy_report/report.xml:294
+msgid "son of"
+msgstr "oğlu"
+
 #: includes/functions/functions.php:1235
 msgctxt "child's husband"
 msgid "son-in-law"
@@ -19810,23 +20794,32 @@ msgid "son/daughter-in-law"
 msgstr "damat/gelin"
 
 #. I18N: An option in a list-box
+#: modules_v3/change_report/report.xml:8
 #: modules_v3/todays_events/module.php:152
 #: modules_v3/upcoming_events/module.php:164
 msgid "sort by date"
 msgstr "tarihe göre sırala"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2044 reportengine.php:513
+#: edit_interface.php:2044 modules_v3/bdm_report/report.xml:12
+#: modules_v3/birth_report/report.xml:10 modules_v3/change_report/report.xml:8
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/occupation_report/report.xml:7
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
 msgid "sort by date of birth"
 msgstr "doğum tarihine göre sırala"
 
 #. I18N: An option in a list-box
-#: reportengine.php:515
+#: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
+#: modules_v3/death_report/report.xml:10
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
 msgid "sort by date of death"
 msgstr "ölüm tarihine sırala"
 
 #. I18N: An option in a list-box
-#: edit_interface.php:2420 reportengine.php:514
+#: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
+#: reportengine.php:514
 msgid "sort by date of marriage"
 msgstr "evlilik tarihine göre sırala"
 
@@ -19846,7 +20839,15 @@ msgid "sort by filename"
 msgstr "dosya adına göre sırala"
 
 #. I18N: An option in a list-box
+#: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
+#: modules_v3/cemetery_report/report.xml:7
+#: modules_v3/change_report/report.xml:8 modules_v3/death_report/report.xml:10
+#: modules_v3/fact_sources/report.xml:8
+#: modules_v3/individual_ext_report/report.xml:9
+#: modules_v3/marriage_report/report.xml:10
+#: modules_v3/occupation_report/report.xml:7
 #: modules_v3/recent_changes/module.php:154
+#: modules_v3/relative_ext_report/report.xml:8
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:163
 msgid "sort by name"
@@ -20255,6 +21256,23 @@ msgstr "bilinmeyen kişi"
 msgid "unreliable evidence"
 msgstr "güvenilmez kanıt"
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+#: library/WT/I18N.php:176
+msgid "utf8_unicode_ci"
+msgstr "utf8_unicode_ci"
+
+#: modules_v3/ahnentafel_report/report.xml:139
+#: modules_v3/descendancy_report/report.xml:105
+msgctxt "FEMALE"
+msgid "was born"
+msgstr "doğdu"
+
+#: modules_v3/ahnentafel_report/report.xml:138
+#: modules_v3/descendancy_report/report.xml:102
+msgctxt "MALE"
+msgid "was born"
+msgstr "doğdu"
+
 #: modules_v3/review_changes/module.php:86
 msgid "webtrees - Review changes"
 msgstr "webtrees - Değişiklikler önizleme"
@@ -20308,7 +21326,14 @@ msgstr "yıl"
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
 #: modules_v3/batch_update/admin_batch_update.php:340
-#: modules_v3/charts/module.php:216 modules_v3/relatives/module.php:206
+#: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
+#: modules_v3/family_group_report/report.xml:247
+#: modules_v3/family_group_report/report.xml:418
+#: modules_v3/family_group_report/report.xml:598
+#: modules_v3/family_group_report/report.xml:939
+#: modules_v3/individual_ext_report/report.xml:177
+#: modules_v3/individual_report/report.xml:172
+#: modules_v3/relatives/module.php:206
 msgid "yes"
 msgstr "evet"
 
@@ -20332,7 +21357,7 @@ msgid "younger sister"
 msgstr "küçük kız kardeş"
 
 #. I18N: Place a nickname in quotation marks
-#: library/WT/Person.php:1791
+#: library/WT/Person.php:1795
 #, php-format
 msgid "“%s”"
 msgstr "“%s”"
@@ -20357,94 +21382,11 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "Soyisimsiz"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " ancak detayları bilinmiyor"
-
-#~ msgid " in "
-#~ msgstr " içinde "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s’sının %2$s"
 
 #~ msgid "%H:%i:%s"
 #~ msgstr "%H:%i"
-
-#~ msgid "%j %F %Y"
-#~ msgstr "%d-%M-%Y"
-
-#~ msgid "%s day"
-#~ msgid_plural "%s days"
-#~ msgstr[0] "%s gün"
-#~ msgstr[1] "%s gün"
-
-#~ msgid "%s day ago"
-#~ msgid_plural "%s days ago"
-#~ msgstr[0] "%s gün önce"
-#~ msgstr[1] "%s gün önce"
-
-#~ msgid "%s hour ago"
-#~ msgid_plural "%s hours ago"
-#~ msgstr[0] "%s saat önce"
-#~ msgstr[1] "%s saat önce"
-
-#~ msgid "%s minute ago"
-#~ msgid_plural "%s minutes ago"
-#~ msgstr[0] "%s dakika önce"
-#~ msgstr[1] "%s dakika önce"
-
-#~ msgid "%s month"
-#~ msgid_plural "%s months"
-#~ msgstr[0] "%s ay"
-#~ msgstr[1] "%s ay"
-
-#~ msgid "%s month ago"
-#~ msgid_plural "%s months ago"
-#~ msgstr[0] "%s ay önce"
-#~ msgstr[1] "%s ay önce"
-
-#~ msgid "%s second ago"
-#~ msgid_plural "%s seconds ago"
-#~ msgstr[0] "%s saniye önce"
-#~ msgstr[1] "%s saniye önce"
-
-#~ msgid "%s week"
-#~ msgid_plural "%s weeks"
-#~ msgstr[0] "%s hafta"
-#~ msgstr[1] "%s hafta"
-
-#~ msgid "%s year"
-#~ msgid_plural "%s years"
-#~ msgstr[0] "%s yıl"
-#~ msgstr[1] "%s yıl"
-
-#~ msgid "%s year ago"
-#~ msgid_plural "%s years ago"
-#~ msgstr[0] "%s yıl önce"
-#~ msgstr[1] "%s yıl önce"
-
-#~ msgid "%s%%"
-#~ msgstr "%s%%"
-
-#~ msgid "(aged %s)"
-#~ msgstr "(%s yaşındaydı)"
-
-#~ msgid "(aged less than %s)"
-#~ msgstr "(%s daha az yaşlı)"
-
-#~ msgid "(aged more than %s)"
-#~ msgstr "(%s daha çok yaşlı)"
-
-#~ msgid "(filtered from %s total entries)"
-#~ msgstr "(toplam %s girişten filtrelendi)"
-
-#~ msgid "(in childhood)"
-#~ msgstr "(çocuklukta)"
-
-#~ msgid "(in infancy)"
-#~ msgstr "(doğarken)"
-
-#~ msgid "(stillborn)"
-#~ msgstr "(ölü doğdu)"
 
 #~ msgid ""
 #~ "<b>Please Note:</b> Private information of living individuals will only "
@@ -20569,16 +21511,6 @@ msgstr "Soyisimsiz"
 #~ "seçin veya yeni bir tane oluşturun (eğer veritabanı kullanıcı hesabınız "
 #~ "ayrıcalıklara sahip ise)"
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr ""
-#~ "Belirli bir kaynak tarafından desteklenen olguların bir raporunu verir."
-
-#~ msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-#~ msgstr "ALPHABET_lower=abcçdefgğhiıjklmnoöpqrsştuüvwxyz"
-
-#~ msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#~ msgstr "ALPHABET_upper=ABCÇDEFGĞHIİJKLMNOÖPQRSŞTUÜVWXYZ"
-
 #~ msgid "Access"
 #~ msgstr "Erişim"
 
@@ -20663,9 +21595,6 @@ msgstr "Soyisimsiz"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Beklenmeyen bir veritabanı hatası oluştu."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Atalarına Doğru "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Atalara İlişkin Dosya Numarası"
 
@@ -20685,9 +21614,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Binary data object"
 #~ msgstr "İkili Veri Öğesi"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Doğum Yeri içerenler"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Çizelgede Doğum ve Ölüm detayları"
 
@@ -20697,23 +21623,11 @@ msgstr "Soyisimsiz"
 #~ msgid "Birth date range start"
 #~ msgstr "Doğum Tarihinden başla"
 
-#~ msgid "Brother"
-#~ msgstr "Erkek kardeş"
-
 #~ msgid "Burial place contains"
 #~ msgstr "Mezar Yeri içeren"
 
 #~ msgid "Change family members"
 #~ msgstr "Aile Üyeleri Değiştir"
-
-#~ msgid "Child of "
-#~ msgstr "Çocuğu "
-
-#~ msgid "Children of "
-#~ msgstr "Çocukları "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Akrabaları seç"
 
 #~ msgid "Civil registrar"
 #~ msgstr "Nüfus Şefi"
@@ -20808,12 +21722,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Date of residence"
 #~ msgstr "İkamet Tarihi"
 
-#~ msgid "Daughter"
-#~ msgstr "Kız evlat"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Ölüm Yeri içerecekler"
-
 #~ msgid "Death date range end"
 #~ msgstr "Ölüm Tarihinde bitir"
 
@@ -20842,18 +21750,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Zilkade"
 
-#~ msgid "Differences"
-#~ msgstr "Farklar"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Direk atalara doğru"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Direk atalara doğru ve onların aileleri"
-
-#~ msgid "Display %s"
-#~ msgstr "Göster %s"
-
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Kapatma değil, önceki kapatma iptalı"
 
@@ -20877,15 +21773,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "End year"
 #~ msgstr "Bitiş Yılı"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Değişen tarihlerin bitiş aralığı"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Aile ID Gir"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Birey ID Girin"
 
 #~ msgid "Enter an individual, family, or source ID"
 #~ msgstr "Bir Kişi, Aile, yada Kaynak ID girin"
@@ -20951,20 +21838,11 @@ msgstr "Soyisimsiz"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Aile Ağacı Kupürleri Çizelgesi"
 
-#~ msgid "Family with husband"
-#~ msgstr "Koca ile aile"
-
-#~ msgid "Family with wife"
-#~ msgstr "Hanım ile aile"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Babanın Doğumyeri - (seyyar biçim)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Babanın yaşı"
-
-#~ msgid "Font"
-#~ msgstr "Yazı tipi"
 
 #~ msgid "Foster child"
 #~ msgstr "Evlatlık"
@@ -20984,33 +21862,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Nesil "
-
-#~ msgid "He "
-#~ msgstr "O "
-
-#~ msgid "He died"
-#~ msgstr "o öldü"
-
-#~ msgid "He married"
-#~ msgstr "O evli"
-
-#~ msgid "He resided at"
-#~ msgstr "o ikamet"
-
-#~ msgid "He was born"
-#~ msgstr "O doğdu"
-
-#~ msgid "He was buried"
-#~ msgstr "Defnedildi"
-
-#~ msgid "He was christened"
-#~ msgstr "O vaftiz edildi"
-
-#~ msgid "He was cremated"
-#~ msgstr "o yakıldı"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Merhaba %s …"
 
@@ -21020,14 +21871,8 @@ msgstr "Soyisimsiz"
 #~ msgid "Hello administrator…"
 #~ msgstr "Merhaba Yönetici…"
 
-#~ msgid "Her occupation was"
-#~ msgstr "onun meşguliyeti"
-
 #~ msgid "Hide &amp; show"
 #~ msgstr "Göster &amp; gizle"
-
-#~ msgid "His occupation was"
-#~ msgstr "onun meşguliyeti"
 
 #~ msgid "Hit count:"
 #~ msgstr "Sayaç:"
@@ -21091,10 +21936,6 @@ msgstr "Soyisimsiz"
 #~ msgid "LDS temple"
 #~ msgstr "LDS Tapınak"
 
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "Link ID"
 
@@ -21125,15 +21966,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "Main section blocks"
 #~ msgstr "Ana Bölüm Blokları"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "Evlilik Tarihinde bitir"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Evlilik Tarihinden başla"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Evlilik Yeri içerenler"
 
 #~ msgid "Marriage intention"
 #~ msgstr "Evlilik Niyeti"
@@ -21168,9 +22000,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Move right"
 #~ msgstr "Sağa taşı"
 
-#~ msgid "Name List"
-#~ msgstr "Adı Listesi"
-
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
 #~ msgstr[0] "Sonraki %s gün için yaşayan kişinin mevcut hadise yok."
@@ -21181,9 +22010,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "No events for living individuals exist for tomorrow."
 #~ msgstr "Yarın yaşayan insan için hadiseler mevcut değil."
-
-#~ msgid "No records to display"
-#~ msgstr "Gösterilecek kayıt yok"
 
 #~ msgid "No such ID exists in this GEDCOM file."
 #~ msgstr "Bu GEDCOM dosyada böyle mevcut ID yok."
@@ -21209,9 +22035,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "Online editing"
 #~ msgstr "Çevrimiçi düzenleme"
-
-#~ msgid "Orientation"
-#~ msgstr "Yönlendirme"
 
 #~ msgid "Other folder… please type in"
 #~ msgstr "Diğer dizin… lütfen yazın"
@@ -21240,20 +22063,8 @@ msgstr "Soyisimsiz"
 #~ "PHP ayarı \"%1$s\" devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: "
 #~ "%2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
 
-#~ msgid "Page"
-#~ msgstr "Sayfa"
-
-#~ msgid "Page size"
-#~ msgstr "Sayfa boyutu"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Kardeşler ve ebeveynler"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Ebeveynin yaşı"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Soyağacı Çizelgesi"
 
 #~ msgid "Place of LDS child sealing"
 #~ msgstr "LDS Kapatma Çocuğun Yeri"
@@ -21293,9 +22104,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "President’s Office"
 #~ msgstr "Başkanlık makamı"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Boşluk olduğunda temel hadiseleri yazdır?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21428,30 +22236,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Sha’aban"
 #~ msgstr "Şaban"
 
-#~ msgid "She "
-#~ msgstr "Burada "
-
-#~ msgid "She died"
-#~ msgstr "o öldü"
-
-#~ msgid "She married"
-#~ msgstr "Burada evlendi"
-
-#~ msgid "She resided at"
-#~ msgstr "o ikamet"
-
-#~ msgid "She was born"
-#~ msgstr "Burada doğmuş"
-
-#~ msgid "She was buried"
-#~ msgstr "O gömüldü"
-
-#~ msgid "She was christened"
-#~ msgstr "Burada vaftiz edildi"
-
-#~ msgid "She was cremated"
-#~ msgstr "o törenle yakıldı"
-
 #~ msgid "Show acceptable use agreement on “Request new user account” page"
 #~ msgstr "Kaydolma sayfasında kural şartlarını göster"
 
@@ -21460,9 +22244,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Bir Listede Tüm Yerleri Göster"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Ataların çocuklarını göster?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Ölü kişiyi göster"
@@ -21496,12 +22277,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Son 100 yıl içinde ölmüş kişileri göster."
 
-#~ msgid "Show notes?"
-#~ msgstr "Notları göster?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Meslekleri göster?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Sadece yaşayan insanların hadiselerini göster?"
 
@@ -21511,23 +22286,11 @@ msgstr "Soyisimsiz"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Sadece kişileri, hadiseleri, yada tümü göster?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Bekleyen değişiklikleri göster"
-
-#~ msgid "Show photos?"
-#~ msgstr "Fotoğrafları göster?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Hiyerarşide Yerleri Göster"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "İlişkili kişileri/aileleri göster"
-
-#~ msgid "Show residences?"
-#~ msgstr "Konutları göster?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Kaynakları göster?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21545,29 +22308,8 @@ msgstr "Soyisimsiz"
 #~ "denebilir. Onlar veritabanında hiçbir ebeveynleri kayıtlı olmayan "
 #~ "bireylerdir."
 
-#~ msgid "Showing %1$s to %2$s of %3$s"
-#~ msgstr "Gösterilen %1$s den %2$s toplam %3$s"
-
-#~ msgid "Sister"
-#~ msgstr "Kız kardeş"
-
 #~ msgid "Social security number"
 #~ msgstr "Sosyal Güvenlik Numara"
-
-#~ msgid "Son"
-#~ msgstr "Oğlu"
-
-#~ msgid "Sources to the events"
-#~ msgstr "Hadiseler için kaynaklar"
-
-#~ msgid "Spouse"
-#~ msgstr "Eş"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Eşler ve çocuklar"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Değişen tarihlerin başlama aralığı"
 
 #~ msgid "Surname option"
 #~ msgstr "Soyadı Seçeneği"
@@ -21662,23 +22404,11 @@ msgstr "Soyisimsiz"
 #~ msgid "To source"
 #~ msgstr "Kaynağa"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Toplam kabul edilen değişiklikler: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Toplam bireyler"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Toplam bekleyen değişiklikler: "
-
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Tanınmayan GEDCOM kodu"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Harici emailleri göndermek için SMTP kullan"
-
-#~ msgid "Use colors"
-#~ msgstr "Renkleri kullan"
 
 #~ msgid ""
 #~ "Use this page to change or remove family members.<br><br>For each member "
@@ -21744,9 +22474,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "Visitors"
 #~ msgstr "Ziyaretçiler"
-
-#~ msgid "WEEK_START=0"
-#~ msgstr "WEEK_START=1"
 
 #~ msgid ""
 #~ "We will now send a confirmation email to the address <b>%s</b>. You must "
@@ -21837,9 +22564,6 @@ msgstr "Soyisimsiz"
 #~ msgid "before %d"
 #~ msgstr "önce %d"
 
-#~ msgid "daughter of"
-#~ msgstr "kızı"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "oğlunun kayınpederi"
@@ -21851,17 +22575,6 @@ msgstr "Soyisimsiz"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "gelininin ebeveyni"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "öldü"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "öldü"
-
-#~ msgid "first"
-#~ msgstr "ilk"
 
 #~ msgid "from %d"
 #~ msgstr "%d yılından"
@@ -21890,20 +22603,6 @@ msgstr "Soyisimsiz"
 #~ msgid "grandson’s wife"
 #~ msgstr "oğlunun gelini"
 
-#~ msgid "last"
-#~ msgstr "son"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "evli"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "evli"
-
-#~ msgid "son of"
-#~ msgstr "oğlu"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "kızının kayınpederi"
@@ -21915,14 +22614,3 @@ msgstr "Soyisimsiz"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "kızının kayın ebeveyni"
-
-#~ msgid "utf8_unicode_ci"
-#~ msgstr "utf8_unicode_ci"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "doğdu"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "doğdu"

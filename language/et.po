@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:14+1200\n"
-"PO-Revision-Date: 2013-11-22 12:38+1200\n"
+"POT-Creation-Date: 2013-11-26 11:57+1200\n"
+"PO-Revision-Date: 2013-11-26 12:13+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: et\n"
@@ -210,7 +210,7 @@ msgstr "Ära uuenda viimast salvestust \" viimane muudatus\""
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1691,35 +1691,75 @@ msgstr ""
 msgid "Facts for Individual records"
 msgstr ""
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Kõik inimesed"
+
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
 msgstr ""
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
 msgstr ""
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr ""
-
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
 msgstr ""
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr ""
 
+#: admin_trees_config.php:1123 help_text.php:512
+msgid "All family facts"
+msgstr ""
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr ""
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr ""
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr ""
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr ""
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Kasuta kõiki allika tsiteerimise võimalusi"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr ""
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr ""
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
+msgstr ""
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Hoidla sisaldab:"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
 msgstr ""
 
 #: admin_trees_config.php:1213
@@ -2361,15 +2401,15 @@ msgstr ""
 msgid "You do not have permission to view this page."
 msgstr ""
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Lisa/Muuda päeviku/uudiste sissekannet"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Pealkiri"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Kande tekst:"
 
@@ -3481,10 +3521,6 @@ msgid ""
 "<i>Source</i> record on the Individual page."
 msgstr ""
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr ""
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3493,18 +3529,10 @@ msgid ""
 "<i>Unique Family Facts</i> list."
 msgstr ""
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr ""
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
 "list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:522
-msgid "Unique family facts"
 msgstr ""
 
 #: help_text.php:523
@@ -3631,10 +3659,6 @@ msgid ""
 "relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr ""
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3643,18 +3667,10 @@ msgid ""
 "the <i>Unique Individual Facts</i> list."
 msgstr ""
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr ""
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
 "full list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:600
-msgid "Unique individual facts"
 msgstr ""
 
 #: help_text.php:601
@@ -3900,10 +3916,6 @@ msgid ""
 "which checkboxes are ticked by default."
 msgstr ""
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr ""
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -3911,19 +3923,11 @@ msgid ""
 "date and birth place will be shown on the form."
 msgstr ""
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr ""
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
 "adding a new family.  For example, if MARR is in the list, then fields for "
 "marriage date and marriage place will be shown on the form."
-msgstr ""
-
-#: help_text.php:796
-msgid "Repository add facts"
 msgstr ""
 
 #: help_text.php:797
@@ -3934,18 +3938,10 @@ msgid ""
 "the <i>Unique Repository Facts</i> list."
 msgstr ""
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr ""
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
 "full list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:806
-msgid "Unique repository facts"
 msgstr ""
 
 #: help_text.php:807
@@ -4111,10 +4107,6 @@ msgid ""
 "prefix."
 msgstr ""
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr ""
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4123,18 +4115,10 @@ msgid ""
 "<i>Unique Source Facts</i> list."
 msgstr ""
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr ""
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
 "list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:917
-msgid "Unique source facts"
 msgstr ""
 
 #: help_text.php:918
@@ -8480,18 +8464,18 @@ msgid "(in childhood)"
 msgstr "(lapseeas)"
 
 #: library/WT/I18N.php:348
-#, fuzzy, php-format
+#, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] "%d aasta"
-msgstr[1] "%d aastat"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:354
-#, fuzzy, php-format
+#, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "%d kuu"
-msgstr[1] "%d kuud"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:358
 #, php-format
@@ -8523,18 +8507,18 @@ msgid "(aged %s)"
 msgstr "(vanuses %s)"
 
 #: library/WT/I18N.php:399
-#, fuzzy, php-format
+#, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] "%d aasta"
-msgstr[1] "%d aastat"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:402
-#, fuzzy, php-format
+#, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] "%d kuu"
-msgstr[1] "%d kuud"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:405
 #, php-format
@@ -8551,11 +8535,11 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: library/WT/I18N.php:411
-#, fuzzy, php-format
+#, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] "%s sõnum"
-msgstr[1] "%s sõnumid"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:413
 #, php-format
@@ -8565,9 +8549,9 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: library/WT/I18N.php:431
-#, fuzzy, php-format
+#, php-format
 msgid "Display %s"
-msgstr "Näita kõiki"
+msgstr ""
 
 #: library/WT/I18N.php:475
 msgid "first"
@@ -9899,15 +9883,15 @@ msgstr "Zimbabwe"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr ""
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr ""
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Muuda seda isikut ja asenda detailid enda omadega"
 
@@ -14922,6 +14906,15 @@ msgstr ""
 #~ msgid "Birth"
 #~ msgstr "Sünd"
 
+#~ msgid "Birth Date range end"
+#~ msgstr "Sünnid kuupäevani"
+
+#~ msgid "Birth Date range start"
+#~ msgstr "Sünnid alates kuupäevast"
+
+#~ msgid "Brother"
+#~ msgstr "Vend"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Buyer"
 #~ msgstr "Ostja"
@@ -14932,6 +14925,15 @@ msgstr ""
 
 #~ msgid "Current Server Time:"
 #~ msgstr "Praegune Serveriaeg:"
+
+#~ msgid "Daughter"
+#~ msgstr "Tütar"
+
+#~ msgid "Death Date range end"
+#~ msgstr "Surmad kuupäevani"
+
+#~ msgid "Death Date range start"
+#~ msgstr "Surmad alates kuupäevast"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "December"
@@ -14964,6 +14966,15 @@ msgstr ""
 #~ msgctxt "MALE"
 #~ msgid "Employer"
 #~ msgstr "Tööandja"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Sisesta isiku ID"
+
+#~ msgid "Family with husband"
+#~ msgstr "Perekond mehega"
+
+#~ msgid "Family with wife"
+#~ msgstr "Perekond naisega"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "February"
@@ -14992,6 +15003,12 @@ msgstr ""
 #~ msgctxt "MALE"
 #~ msgid "Friend"
 #~ msgstr "Sõber"
+
+#~ msgid "He "
+#~ msgstr "Tema "
+
+#~ msgid "He was born"
+#~ msgstr "Ta sündis"
 
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
@@ -15085,6 +15102,9 @@ msgstr ""
 #~ msgid "May"
 #~ msgstr "mai"
 
+#~ msgid "Name List"
+#~ msgstr "Nimede loend"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "November"
 #~ msgstr "november"
@@ -15116,6 +15136,9 @@ msgstr ""
 #~ msgctxt "NOMINATIVE"
 #~ msgid "October"
 #~ msgstr "oktoober"
+
+#~ msgid "Orientation"
+#~ msgstr "Paigutus"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
@@ -15124,6 +15147,15 @@ msgstr ""
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Omanik"
+
+#~ msgid "Page"
+#~ msgstr "Lk"
+
+#~ msgid "Page size"
+#~ msgstr "Lehekülje suurus"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Esivanemate puu"
 
 #~ msgctxt "Surname tradition"
 #~ msgid "Polish"
@@ -15165,6 +15197,18 @@ msgstr ""
 #~ msgid "Servant"
 #~ msgstr "Teenija"
 
+#~ msgid "She "
+#~ msgstr "Tema "
+
+#~ msgid "She was born"
+#~ msgstr "Ta sündis"
+
+#~ msgid "Show sources?"
+#~ msgstr "Näita allikaid?"
+
+#~ msgid "Sister"
+#~ msgstr "Õde"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Slave"
 #~ msgstr "Ori"
@@ -15173,9 +15217,18 @@ msgstr ""
 #~ msgid "Slave"
 #~ msgstr "Ori"
 
+#~ msgid "Son"
+#~ msgstr "Poeg"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Hispaania"
+
+#~ msgid "Spouse"
+#~ msgstr "Abikaasa"
+
+#~ msgid "Total individuals"
+#~ msgstr "Kokku isikuid"
 
 #~ msgctxt "FEMALE"
 #~ msgid "also known as"
@@ -15245,9 +15298,16 @@ msgstr ""
 #~ msgid "d."
 #~ msgstr "surn."
 
+#~ msgid "daughter of"
+#~ msgstr "tütar"
+
 #~ msgctxt "son's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "minia"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "surnud"
 
 #~ msgctxt "husband's father"
 #~ msgid "father-in-law"
@@ -15669,6 +15729,14 @@ msgstr ""
 #~ msgid "half-sister"
 #~ msgstr "poolõde"
 
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "abiellunud"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "abiellunud"
+
 #~ msgctxt "husband's mother"
 #~ msgid "mother-in-law"
 #~ msgstr "ämm"
@@ -15752,6 +15820,9 @@ msgstr ""
 #~ msgctxt "wife's sister"
 #~ msgid "sister-in-law"
 #~ msgstr "naiseõde"
+
+#~ msgid "son of"
+#~ msgstr "poeg"
 
 #~ msgctxt "daughter's husband"
 #~ msgid "son-in-law"
@@ -16029,9 +16100,6 @@ msgstr ""
 #~ msgid "Age at which to assume an individual is dead"
 #~ msgstr "Vanus mille korral eeldatakse et isik on surnud."
 
-#~ msgid "All individuals"
-#~ msgstr "Kõik inimesed"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Luba GEDCOMide vahetamine"
 
@@ -16054,20 +16122,11 @@ msgstr ""
 #~ msgid "Best man"
 #~ msgstr "Isamees"
 
-#~ msgid "Birth Date range end"
-#~ msgstr "Sünnid kuupäevani"
-
-#~ msgid "Birth Date range start"
-#~ msgstr "Sünnid alates kuupäevast"
-
 #~ msgid "Birth date range end"
 #~ msgstr "Sünnid kuupäevani"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Sünnid alates kuupäevast"
-
-#~ msgid "Brother"
-#~ msgstr "Vend"
 
 #~ msgid "Change family members"
 #~ msgstr "Muuda perekonna liikmeid"
@@ -16108,15 +16167,6 @@ msgstr ""
 #~ msgid "Date of adoption"
 #~ msgstr "Lapsendamise aeg"
 
-#~ msgid "Daughter"
-#~ msgstr "Tütar"
-
-#~ msgid "Death Date range end"
-#~ msgstr "Surmad kuupäevani"
-
-#~ msgid "Death Date range start"
-#~ msgstr "Surmad alates kuupäevast"
-
 #~ msgid "Death date range end"
 #~ msgstr "Surmad kuupäevani"
 
@@ -16146,9 +16196,6 @@ msgstr ""
 
 #~ msgid "End year"
 #~ msgstr "Lõpuaasta"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Sisesta isiku ID"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -16216,12 +16263,6 @@ msgstr ""
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Sugupuu väljalõigete korv"
 
-#~ msgid "Family with husband"
-#~ msgstr "Perekond mehega"
-
-#~ msgid "Family with wife"
-#~ msgstr "Perekond naisega"
-
 #~ msgid "Foster child"
 #~ msgstr "Kasulaps"
 
@@ -16239,12 +16280,6 @@ msgstr ""
 
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
-
-#~ msgid "He "
-#~ msgstr "Tema "
-
-#~ msgid "He was born"
-#~ msgstr "Ta sündis"
 
 #~ msgid "Hello %s…"
 #~ msgstr "Tere %s …"
@@ -16328,9 +16363,6 @@ msgstr ""
 #~ msgid "Move right"
 #~ msgstr "Liiguta paremale"
 
-#~ msgid "Name List"
-#~ msgstr "Nimede loend"
-
 #~ msgid "No events for living individuals exist for today."
 #~ msgstr "Täna ei ole sündmusi elavate inimeste kohta."
 
@@ -16353,9 +16385,6 @@ msgstr ""
 #~ msgid "On this day…"
 #~ msgstr "Sellel päeval …"
 
-#~ msgid "Orientation"
-#~ msgstr "Paigutus"
-
 #~ msgid ""
 #~ "PHP extension “%1$s” is disabled.  Without it, the following features "
 #~ "will not work: %2$s.  Please ask your server’s administrator to enable it."
@@ -16376,15 +16405,6 @@ msgstr ""
 #~ msgstr ""
 #~ "PHP säte \"%1$s\" on keelatud. Ilma selleta ei tööta järgmised "
 #~ "funktsioonid: %2$s. Palun lase oma serveri administraatoril see lubada."
-
-#~ msgid "Page"
-#~ msgstr "Lk"
-
-#~ msgid "Page size"
-#~ msgstr "Lehekülje suurus"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Esivanemate puu"
 
 #~ msgid "Place of adoption"
 #~ msgstr "Lapsendamise koht"
@@ -16431,12 +16451,6 @@ msgstr ""
 #~ msgid "Shared notes found"
 #~ msgstr "Jagatud Märkmeid leitud"
 
-#~ msgid "She "
-#~ msgstr "Tema "
-
-#~ msgid "She was born"
-#~ msgstr "Ta sündis"
-
 #~ msgid "Show age of parents next to child’s birthdate"
 #~ msgstr "Näita lapse sünnikuupäeva kõrval vanemate vanust"
 
@@ -16476,20 +16490,8 @@ msgstr ""
 #~ msgid "Show related individuals/families"
 #~ msgstr "Näita seotud isikuid/perekondi"
 
-#~ msgid "Show sources?"
-#~ msgstr "Näita allikaid?"
-
-#~ msgid "Sister"
-#~ msgstr "Õde"
-
 #~ msgid "Social security number"
 #~ msgstr "Isikukood"
-
-#~ msgid "Son"
-#~ msgstr "Poeg"
-
-#~ msgid "Spouse"
-#~ msgstr "Abikaasa"
 
 #~ msgid "Surname option"
 #~ msgstr "Perenime valik"
@@ -16567,9 +16569,6 @@ msgstr ""
 
 #~ msgid "To source"
 #~ msgstr "Allikale"
-
-#~ msgid "Total individuals"
-#~ msgstr "Kokku isikuid"
 
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Tundmatu GEDCOM kood"
@@ -16731,23 +16730,5 @@ msgstr ""
 #~ msgid "before %d"
 #~ msgstr "enne %d"
 
-#~ msgid "daughter of"
-#~ msgstr "tütar"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "surnud"
-
 #~ msgid "from %d"
 #~ msgstr "aastast %d"
-
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "abiellunud"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "abiellunud"
-
-#~ msgid "son of"
-#~ msgstr "poeg"

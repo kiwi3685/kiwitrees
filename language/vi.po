@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VIETNAMESE LANGUAGE\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:17+1200\n"
-"PO-Revision-Date: 2013-11-22 12:46+1200\n"
+"POT-Creation-Date: 2013-11-26 12:01+1200\n"
+"PO-Revision-Date: 2013-11-26 12:17+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: VN LANGUAGE <trande@gmail.com >\n"
 "Language: vi_VN\n"
@@ -212,7 +212,7 @@ msgstr "Không cập nhật bản ghi \"thay đổi gần đây nhất\""
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1707,36 +1707,77 @@ msgstr "Thống kê xử lý"
 msgid "Facts for Individual records"
 msgstr "Sự kiện cho bản ghi cá nhân"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Tất cả sự kiện"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Mọi Người"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Sự kiện duy nhất"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Sự kiện cá nhân không trùng lắp"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Sự kiện mới nhập"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "Sự kiện cho người mới"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Sự kiện nhanh"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Sự kiện cá nhân nhanh"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Sự kiện cho bản ghi gia đình"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Sự kiện gia đình"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Sự kiện gia đình không trùng lắp"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Sự kiện cho gia đình mới"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Sự kiện gia đình"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Sự kiện cho bản ghi nguồn"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Sự kiện nguồn nhanh"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Sự kiện nguồn không trùng lắp"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "Sự kiện nguồn nhanh"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Sự kiện cho bản ghi kho"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Sự kiện kho lưu trữ nhanh"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Kho sự kiện không trùng lắp"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "Sự kiện kho lưu trữ nhanh"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2386,15 +2427,15 @@ msgstr "Lỗi"
 msgid "You do not have permission to view this page."
 msgstr "Bạn không được xem trang này."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Thêm/Sửa  Tin Tức/Nhật Ký"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Đầu Đề"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Nội dung nhập khẩu:"
 
@@ -3664,10 +3705,6 @@ msgstr ""
 "Tùy chọn này kiểm sóat có hay không tự động hiện ra nội dung của bản ghi "
 "<i>Nguồn</i> ở trang cá nhân."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Thêm sự kiện gia đình"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3680,10 +3717,6 @@ msgstr ""
 "riêng nếu cần. Tên sự kiện  hiện tại đây không được hiện ở danh sách <i> Sự "
 "kiện gia đình không trùng lắp</i>"
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Sự kiện gia đình"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3691,10 +3724,6 @@ msgid ""
 msgstr ""
 "Đăy là danh sách sự kiện gia đình GEDCOM ngắn xuấ thiện kề bên danh sách đầy "
 "đủ và có thể thêm vào bằng cái nhấp."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Sự kiện gia đình không trùng lắp"
 
 #: help_text.php:523
 msgid ""
@@ -3871,10 +3900,6 @@ msgstr ""
 "Thư mục có thể ghi cụ thể đầy đủ (thí dụ,  /home/user_name/webtrees_data/) "
 "hay tương đối với thư mục cài đặt (thí dụ, ../../webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Thêm sự kiện cá nhân"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3887,10 +3912,6 @@ msgstr ""
 "kiện, ngay cả theo ý riêng theo mong muốn. Tên sự kiện hiện trên danh sách "
 "này không được hiện ở danh sách <i>Sự kiện cá nhân không trùng lắp</i>."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Sự kiện cá nhân nhanh"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3898,10 +3919,6 @@ msgid ""
 msgstr ""
 "Đây là danh sách ngắn các sự kiện cá nhân của GEDCOM xuất hiện ngay bên danh "
 "sách đầy đủ và có thể thêm vào bằng một cái nhấp."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Sự kiện cá nhân không trùng lắp"
 
 #: help_text.php:601
 msgid ""
@@ -4217,10 +4234,6 @@ msgstr ""
 "ghi (thí dụ INDI, FAM) hay sự kiện (BIRT, MARR, DEAT). Tùy chọn này kiểm "
 "soát hộp nào được kiểm mặc định."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Sự kiện cho người mới"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4231,10 +4244,6 @@ msgstr ""
 "mới. Thí dụ, nếu BIRT có trong danh sách, trường ngày sinh và nơi sinh sẽ "
 "hiện ở mẫu."
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Sự kiện cho gia đình mới"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4244,10 +4253,6 @@ msgstr ""
 "Đây là danh sách phân cách bằng dấu phẩy các thẻ sự kiện GEDCOM hiện khi "
 "thêm một gia đình mới. Thí dụ, nếu MARR có trên danh sách, thì các trường "
 "ngày kết hôn, nơi kết hôn sẽ hiện trên mẫu."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Sự kiện thêm vào kho"
 
 #: help_text.php:797
 msgid ""
@@ -4261,10 +4266,6 @@ msgstr ""
 "kiện vào, ngay cả sự kiện tùy ý mình khi cần. Tên sự kiện hiện ở danh sách "
 "này không được hiện ở danh sách <i>Kho sự kiện không trùng lắp</i>"
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "Sự kiện kho lưu trữ nhanh"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4272,10 +4273,6 @@ msgid ""
 msgstr ""
 "Đây là danh sách ngắn các sự kiện kho lưu trữ GEDCOM xuất hiện cạnh bên danh "
 "sách đủ và có thể thêm vào bằng cái nhấp chuột."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Kho sự kiện không trùng lắp"
 
 #: help_text.php:807
 msgid ""
@@ -4505,10 +4502,6 @@ msgstr ""
 "Khi bản ghi tài liệu mới được thêm trực tuyến ở <b>webtrees</b>, một ID mới "
 "cho nguồn đó sẽ được tạo ra tự động. ID nguồn sẽ mang tiền tố đó."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Sự kiện thêm nguồn"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4521,10 +4514,6 @@ msgstr ""
 "mang tính tùy thích. Tên sự kiện xuất hiện ở danh sách này cũng hiện ở danh "
 "sach <i>Sự kiện nguồn không trùng lắp</i>."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "Sự kiện nguồn nhanh"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4532,10 +4521,6 @@ msgid ""
 msgstr ""
 "Đây là sự kiện nguồn ngắn gọc hiện cạnh bên danh sách đầy đủ và có thể thêm "
 "vào bằng cái nhấp."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Sự kiện nguồn không trùng lắp"
 
 #: help_text.php:918
 msgid ""
@@ -9365,9 +9350,8 @@ msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%g:%i:%s %a"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10812,15 +10796,15 @@ msgstr "Zimbabve"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "Cây gia đình của tôi"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "John /DOE/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Sửa người này và thay thế chi tiết của họ bằng chi tiết của bạn"
 
@@ -15919,6 +15903,12 @@ msgstr "Thẻ"
 msgid "Blocks"
 msgstr "Khối"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " nhưng chi tiết không được biết"
+
+#~ msgid " in "
+#~ msgstr " tại "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -16026,6 +16016,17 @@ msgstr "Khối"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Một báo cáo về sự kiện hỗ trợ bởi một nguồn."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "khổ A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "khổ A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -16150,6 +16151,9 @@ msgstr "Khối"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Nhận cháu nuôi"
 
+#~ msgid "All facts"
+#~ msgstr "Tất cả sự kiện"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "Còn gọi là"
@@ -16157,6 +16161,9 @@ msgstr "Khối"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "Còn gọi là"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Tổ tiên của "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -16177,6 +16184,10 @@ msgstr "Khối"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "Tháng Tư"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Phông chữ arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16298,6 +16309,9 @@ msgstr "Khối"
 #~ msgid "Birth"
 #~ msgstr "Sinh"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "Nơi sinh chứa"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Sinh của cháu gái"
@@ -16321,6 +16335,9 @@ msgstr "Khối"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Lễ Brit Milah cho cháu"
+
+#~ msgid "Brother"
+#~ msgstr "Anh (Em) Trai"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16361,6 +16378,15 @@ msgstr "Khối"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Người mua"
+
+#~ msgid "Child of "
+#~ msgstr "Con trai của "
+
+#~ msgid "Children of "
+#~ msgstr "Là các con của "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Chọn bà con"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16412,6 +16438,12 @@ msgstr "Khối"
 #~ msgid "Current Server Time:"
 #~ msgstr "Ngày giờ trên máy:"
 
+#~ msgid "Daughter"
+#~ msgstr "Con gái"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Nơi mất chứa"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Chết của cháu gái"
@@ -16447,6 +16479,13 @@ msgstr "Khối"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "Tháng Mười Hai"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "Phông chữ DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Con cháu của "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16500,6 +16539,15 @@ msgstr "Khối"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "Dhu al-Qi'dah"
 
+#~ msgid "Differences"
+#~ msgstr "Các dị biệt"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Tổ tiên trực tiếp"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Tổ tiên trực tiếp và gia đình họ"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Tải %s và giải nén các tập tin."
 
@@ -16535,6 +16583,15 @@ msgstr "Khối"
 #~ msgid "Employer"
 #~ msgstr "Người chủ"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Chấm dứt khoảni thời gian thay đổi"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Nhập ID gia đình"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Nhập số ID cá nhân"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Est"
@@ -16554,6 +16611,15 @@ msgstr "Khối"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Tháng Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Thêm sự kiện gia đình"
+
+#~ msgid "Family with husband"
+#~ msgstr "Gia đình và chồng"
+
+#~ msgid "Family with wife"
+#~ msgstr "Gia đình có vợ"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16611,6 +16677,9 @@ msgstr "Khối"
 #~ msgid "Floréal"
 #~ msgstr "Floréal"
 
+#~ msgid "Font"
+#~ msgstr "Phông"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Cha/ mẹ kế"
@@ -16663,6 +16732,9 @@ msgstr "Khối"
 #~ msgid "Fructidor"
 #~ msgstr "Fructidor"
 
+#~ msgid "Generation "
+#~ msgstr "Thế hệ "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "Germinal"
@@ -16687,6 +16759,37 @@ msgstr "Khối"
 #~ msgid "Guardian"
 #~ msgstr "Người bảo hộ"
 
+#~ msgid "He "
+#~ msgstr "Ông "
+
+#~ msgid "He died"
+#~ msgstr "Ông mất"
+
+#~ msgid "He married"
+#~ msgstr "Ông kết hôn"
+
+#~ msgid "He resided at"
+#~ msgstr "Ông sống tại"
+
+#~ msgid "He was born"
+#~ msgstr "Ông sinh năm"
+
+#~ msgid "He was buried"
+#~ msgstr "Ông được chôn cất"
+
+#~ msgid "He was christened"
+#~ msgstr "Ông được rửa tội"
+
+#~ msgid "He was cremated"
+#~ msgstr "Ông được hỏa táng"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Phông chữ Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Nghề nghiệp của bà là"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
@@ -16703,9 +16806,15 @@ msgstr "Khối"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
 
+#~ msgid "His occupation was"
+#~ msgstr "Nghề của ông là"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "Icelandic"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Thêm sự kiện cá nhân"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16867,6 +16976,14 @@ msgstr "Khối"
 #~ msgid "Kislev"
 #~ msgstr "Kislev"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Khổ giấy legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Khổ giấy thư tín (letter)"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "Lituania"
@@ -16908,6 +17025,15 @@ msgstr "Khối"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "Tháng Ba"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Ngày kết hôn kết thúc"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Ngày kết hôn bắt đầu từ"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Địa điểm kết hôn chứa"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -17021,6 +17147,9 @@ msgstr "Khối"
 #~ msgid "Name"
 #~ msgstr "Tên"
 
+#~ msgid "Name List"
+#~ msgstr "Danh sách tên"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Không kết hôn"
@@ -17028,6 +17157,9 @@ msgstr "Khối"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Không kết hôn"
+
+#~ msgid "New entry facts"
+#~ msgstr "Sự kiện mới nhập"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -17137,6 +17269,9 @@ msgstr "Khối"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Phương Hướng"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Người chủ"
@@ -17144,6 +17279,18 @@ msgstr "Khối"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Chủ"
+
+#~ msgid "Page"
+#~ msgstr "Trang"
+
+#~ msgid "Page size"
+#~ msgstr "Khổ trang"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Cha mẹ và anh em"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Đồ Thị Dòng Giống"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -17184,6 +17331,12 @@ msgstr "Khối"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "Prairial"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "In các sự kiện chính khi khộng có gì?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Sự kiện nhanh"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17259,6 +17412,9 @@ msgstr "Khối"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Ủy viên hộ tịch"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Sự kiện thêm vào kho"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17383,6 +17539,30 @@ msgstr "Khối"
 #~ msgid "Shawwal"
 #~ msgstr "Shawwal"
 
+#~ msgid "She "
+#~ msgstr "Bà "
+
+#~ msgid "She died"
+#~ msgstr "Bà mất"
+
+#~ msgid "She married"
+#~ msgstr "Bà kết hôn"
+
+#~ msgid "She resided at"
+#~ msgstr "Bà sống tại"
+
+#~ msgid "She was born"
+#~ msgstr "Bà sinh năm"
+
+#~ msgid "She was buried"
+#~ msgstr "Bà được chôn"
+
+#~ msgid "She was christened"
+#~ msgstr "Bà được rửa tội"
+
+#~ msgid "She was cremated"
+#~ msgstr "Bà được hỏa táng"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
@@ -17398,6 +17578,30 @@ msgstr "Khối"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Hiện con cháu của tổ tiên?"
+
+#~ msgid "Show notes?"
+#~ msgstr "Hiện các chú thích?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Hiẹn các nghề nghiệp?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Hiện các thay đổi chờ duyệt"
+
+#~ msgid "Show photos?"
+#~ msgstr "Hiển thị hình?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Hiện nơi cư trú?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Hiện các nguồn tư liệu?"
+
+#~ msgid "Sister"
+#~ msgstr "Anh (Em) Gái"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17423,9 +17627,27 @@ msgstr "Khối"
 #~ msgid "Slave"
 #~ msgstr "Nô lệ"
 
+#~ msgid "Son"
+#~ msgstr "Con trai"
+
+#~ msgid "Source add facts"
+#~ msgstr "Sự kiện thêm nguồn"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Nguồn tài liệu của sự kiện"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Tây Ban Nha"
+
+#~ msgid "Spouse"
+#~ msgstr "Chồng/vợ"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Các bạn đời và con cái"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Bắt đầu khoản thời gian thay đổi"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17519,6 +17741,18 @@ msgstr "Khối"
 #~ msgid "Tishrei"
 #~ msgstr "Tishrei"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Tổng các thay đổi chấp thuận: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Tổng số người"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Tổng các thay đổi chờ xem xét: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Sự kiện duy nhất"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Không biết"
@@ -17536,6 +17770,9 @@ msgstr "Khối"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Nâng cấp webtree %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Dùng màu"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17717,6 +17954,9 @@ msgstr "Khối"
 #~ msgid "d."
 #~ msgstr "c."
 
+#~ msgid "daughter of"
+#~ msgstr "con gái của"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "dâu"
@@ -17736,6 +17976,14 @@ msgstr "Khối"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "cha mẹ con dâu"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "mất"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "mất"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -19042,6 +19290,14 @@ msgstr "Khối"
 #~ msgstr "k.h."
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "đã kết hôn"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "đã có gia đình"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "tên khi kết hôn"
 
@@ -19385,6 +19641,9 @@ msgstr "Khối"
 #~ msgid "sixth cousin"
 #~ msgstr "anh em họ 6 đời"
 
+#~ msgid "son of"
+#~ msgstr "con trai của"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "con rể"
@@ -19585,6 +19844,14 @@ msgstr "Khối"
 #~ msgid "unknown"
 #~ msgstr "không biết"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "sinh"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "sinh"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19593,14 +19860,11 @@ msgstr "Khối"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " nhưng chi tiết không được biết"
-
-#~ msgid " in "
-#~ msgstr " tại "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s’s %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%g:%i:%s %a"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s cách ba đời trên"
@@ -19786,23 +20050,12 @@ msgstr "Khối"
 #~ "đang có (tạo ra bởi người quản trị của máy chủ), hay tạo ra một CSDL mới "
 #~ "(nếu tài khoản người dùng CSDL có đủ quyền này)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Một báo cáo về sự kiện hỗ trợ bởi một nguồn."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "Môt người dùng không thể nào đăng nhập cho tới khi tùy chọn xác minh bằng "
 #~ "email và chấp thuận của quản trị được chọn."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "khổ A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "khổ A4"
 
 #~ msgid "Access"
 #~ msgstr "Truy cập"
@@ -19901,9 +20154,6 @@ msgstr "Khối"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Tuổi cha mẹ kế bên ngày sinh con"
 
-#~ msgid "All individuals"
-#~ msgstr "Mọi Người"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Cho phép chuyển file GEDCOM"
 
@@ -19920,18 +20170,11 @@ msgstr "Khối"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Có lỗi về CSDL bât ngờ xảy ra."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Tổ tiên của "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "File tổ tiên số"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Bạn có chắc muốn khôi phục mọi thay đổi cho file GEDCOM này không?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Phông chữ arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Khối Sẵn Có"
@@ -19945,9 +20188,6 @@ msgstr "Khối"
 #~ msgid "Binary data object"
 #~ msgstr "Đối tượng nhị phân"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Nơi sinh chứa"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Chi tiết sinh và mất trên biểu đồ"
 
@@ -19956,9 +20196,6 @@ msgstr "Khối"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Sinh khoảng thời gian từ"
-
-#~ msgid "Brother"
-#~ msgstr "Anh (Em) Trai"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Nơi chôn chứa"
@@ -19976,15 +20213,6 @@ msgstr "Khối"
 
 #~ msgid "Change family members"
 #~ msgstr "Thay đổi thành viên gia đình"
-
-#~ msgid "Child of "
-#~ msgstr "Con trai của "
-
-#~ msgid "Children of "
-#~ msgstr "Là các con của "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Chọn bà con"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -20124,12 +20352,6 @@ msgstr "Khối"
 #~ msgid "Date of residence"
 #~ msgstr "Ngày cư trú"
 
-#~ msgid "Daughter"
-#~ msgstr "Con gái"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Nơi mất chứa"
-
 #~ msgid "Death date range end"
 #~ msgstr "Mất khoảng thời gian kết thúc"
 
@@ -20138,13 +20360,6 @@ msgstr "Khối"
 
 #~ msgid "Default theme"
 #~ msgstr "Kiểu trình bày mặc định"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "Phông chữ DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Con cháu của "
 
 #~ msgid "Descent steps"
 #~ msgstr "Bước giảm dần"
@@ -20164,15 +20379,6 @@ msgstr "Khối"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Differences"
-#~ msgstr "Các dị biệt"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Tổ tiên trực tiếp"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Tổ tiên trực tiếp và gia đình họ"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Đừng niêm seal, lần niêm trước đã hủy bỏ"
@@ -20263,15 +20469,6 @@ msgstr "Khối"
 
 #~ msgid "End year"
 #~ msgstr "Năm kết thúc"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Chấm dứt khoảni thời gian thay đổi"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Nhập ID gia đình"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Nhập số ID cá nhân"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20416,20 +20613,11 @@ msgstr "Khối"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Giỏ Lấy Dữ Liệu Dòng Họ"
 
-#~ msgid "Family with husband"
-#~ msgstr "Gia đình và chồng"
-
-#~ msgid "Family with wife"
-#~ msgstr "Gia đình có vợ"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Nơi sinh của cha - (theo mẫu Chapman)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Tuổi cha"
-
-#~ msgid "Font"
-#~ msgstr "Phông"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20491,9 +20679,6 @@ msgstr "Khối"
 #~ msgid "Gedcom"
 #~ msgstr "GEDCOM"
 
-#~ msgid "Generation "
-#~ msgstr "Thế hệ "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20517,30 +20702,6 @@ msgstr "Khối"
 #~ "tra, quản trị viên có thể chấp thuận đăng ký trước khi tài khoản được "
 #~ "kích hoạt."
 
-#~ msgid "He "
-#~ msgstr "Ông "
-
-#~ msgid "He died"
-#~ msgstr "Ông mất"
-
-#~ msgid "He married"
-#~ msgstr "Ông kết hôn"
-
-#~ msgid "He resided at"
-#~ msgstr "Ông sống tại"
-
-#~ msgid "He was born"
-#~ msgstr "Ông sinh năm"
-
-#~ msgid "He was buried"
-#~ msgstr "Ông được chôn cất"
-
-#~ msgid "He was christened"
-#~ msgstr "Ông được rửa tội"
-
-#~ msgid "He was cremated"
-#~ msgstr "Ông được hỏa táng"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Chào %s …"
 
@@ -20549,13 +20710,6 @@ msgstr "Khối"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Xin chào quản trị…"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Phông chữ Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Nghề nghiệp của bà là"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20664,9 +20818,6 @@ msgstr "Khối"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Che &amp; hiện"
-
-#~ msgid "His occupation was"
-#~ msgstr "Nghề của ông là"
 
 #~ msgid "Hit count:"
 #~ msgstr "Tổng số viếng thăm:"
@@ -20886,14 +21037,6 @@ msgstr "Khối"
 #~ msgid "LDS temple"
 #~ msgstr "Đền LDS"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Khổ giấy legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Khổ giấy thư tín (letter)"
-
 #~ msgid "Link ID"
 #~ msgstr "ID liên kết"
 
@@ -20933,15 +21076,6 @@ msgstr "Khối"
 #~ msgid "Main section blocks"
 #~ msgstr "Phần Khối Chính"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Ngày kết hôn kết thúc"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Ngày kết hôn bắt đầu từ"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Địa điểm kết hôn chứa"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Ý định kết hôn"
 
@@ -20974,9 +21108,6 @@ msgstr "Khối"
 
 #~ msgid "Move right"
 #~ msgstr "Chuyển phải"
-
-#~ msgid "Name List"
-#~ msgstr "Danh sách tên"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -21051,9 +21182,6 @@ msgstr "Khối"
 #~ msgid "Online editing"
 #~ msgstr "Sửa trực tuyến"
 
-#~ msgid "Orientation"
-#~ msgstr "Phương Hướng"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Thư mục khác… xin nhập vào"
 
@@ -21084,20 +21212,8 @@ msgstr "Khối"
 #~ "tính năng sau đây không hoạt động: %2$s. Vui lòng yêu cầu quản trị máy "
 #~ "phục vụ kích hoạt nó."
 
-#~ msgid "Page"
-#~ msgstr "Trang"
-
-#~ msgid "Page size"
-#~ msgstr "Khổ trang"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Cha mẹ và anh em"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Tuổi cha mẹ"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Đồ Thị Dòng Giống"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Nơi rửa tội LDS"
@@ -21187,9 +21303,6 @@ msgstr "Khối"
 
 #~ msgid "President’s Office"
 #~ msgstr "President's Office"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "In các sự kiện chính khi khộng có gì?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21419,30 +21532,6 @@ msgstr "Khối"
 #~ msgid "Sha’aban"
 #~ msgstr "Sha'aban"
 
-#~ msgid "She "
-#~ msgstr "Bà "
-
-#~ msgid "She died"
-#~ msgstr "Bà mất"
-
-#~ msgid "She married"
-#~ msgstr "Bà kết hôn"
-
-#~ msgid "She resided at"
-#~ msgstr "Bà sống tại"
-
-#~ msgid "She was born"
-#~ msgstr "Bà sinh năm"
-
-#~ msgid "She was buried"
-#~ msgstr "Bà được chôn"
-
-#~ msgid "She was christened"
-#~ msgstr "Bà được rửa tội"
-
-#~ msgid "She was cremated"
-#~ msgstr "Bà được hỏa táng"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21472,9 +21561,6 @@ msgstr "Khối"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Xem tấtcCả những Nơi trong một Danh Sách"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Hiện con cháu của tổ tiên?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Hiện người đã mất"
@@ -21508,12 +21594,6 @@ msgstr "Khối"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Hiện những người chết trong 100 năm."
 
-#~ msgid "Show notes?"
-#~ msgstr "Hiện các chú thích?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Hiẹn các nghề nghiệp?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Chỉ hiện sự kiện của người sống?"
 
@@ -21523,23 +21603,11 @@ msgstr "Khối"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Chỉ hiển thị người, sự kiện hay tất cả?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Hiện các thay đổi chờ duyệt"
-
-#~ msgid "Show photos?"
-#~ msgstr "Hiển thị hình?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Hiển thị địa điểm theo thứ cấp"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Hiển thị các người/ gia đình liên quan"
-
-#~ msgid "Show residences?"
-#~ msgstr "Hiện nơi cư trú?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Hiện các nguồn tư liệu?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21556,14 +21624,8 @@ msgstr "Khối"
 #~ "Hiện vợ chồng \"gốc\" hay từng người. Những người này cũng được gọc là "
 #~ "\"trưởng tộc\". Họ là người mà ba mẹ đều không được ghi trong CSDL."
 
-#~ msgid "Sister"
-#~ msgstr "Anh (Em) Gái"
-
 #~ msgid "Social security number"
 #~ msgstr "Số ASXH"
-
-#~ msgid "Son"
-#~ msgstr "Con trai"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21576,9 +21638,6 @@ msgstr "Khối"
 #~ "nguồn. Nếu bạn không dùng trường này, bạn có thể không kích hoạt nó khi "
 #~ "tạo ra trích dẫn nguồn mới."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Nguồn tài liệu của sự kiện"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -21589,15 +21648,6 @@ msgstr "Khối"
 #~ "không. Nếu đặt là <b>Có</b> người dùng sẽ có thể nhận được email của họ "
 #~ "khi họ đăng nhập <b>webtrees</b>. Nếu đặt là <b>Không</b> thì email sẽ "
 #~ "không được gửi đi."
-
-#~ msgid "Spouse"
-#~ msgstr "Chồng/vợ"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Các bạn đời và con cái"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Bắt đầu khoản thời gian thay đổi"
 
 #~ msgid "Surname option"
 #~ msgstr "Tủy chọn về họ"
@@ -22251,15 +22301,6 @@ msgstr "Khối"
 #~ msgid "To source"
 #~ msgstr "Với Nguồn"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Tổng các thay đổi chấp thuận: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Tổng số người"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Tổng các thay đổi chờ xem xét: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -22291,9 +22332,6 @@ msgstr "Khối"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Dùng SMTP để gửi mail ra ngoài"
-
-#~ msgid "Use colors"
-#~ msgstr "Dùng màu"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22674,9 +22712,6 @@ msgstr "Khối"
 #~ msgid "before %d"
 #~ msgstr "trước %d"
 
-#~ msgid "daughter of"
-#~ msgstr "con gái của"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "cha con dâu"
@@ -22688,14 +22723,6 @@ msgstr "Khối"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "cha mẹ con dâu"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "mất"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "mất"
 
 #~ msgid "from %d"
 #~ msgstr "từ %d"
@@ -22724,17 +22751,6 @@ msgstr "Khối"
 #~ msgid "grandson’s wife"
 #~ msgstr "vợ cháu trai"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "đã kết hôn"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "đã có gia đình"
-
-#~ msgid "son of"
-#~ msgstr "con trai của"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "cha ruột của rể"
@@ -22746,14 +22762,6 @@ msgstr "Khối"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "cha mẹ của rể"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "sinh"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "sinh"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "CSDL webtrees phải có trên cùng máy chủ như của PGV"

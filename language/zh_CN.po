@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:17+1200\n"
-"PO-Revision-Date: 2013-11-22 12:46+1200\n"
+"POT-Creation-Date: 2013-11-26 12:01+1200\n"
+"PO-Revision-Date: 2013-11-26 12:17+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: zh\n"
@@ -210,7 +210,7 @@ msgstr "不更新“最后更改”记录"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1686,36 +1686,77 @@ msgstr "执行统计"
 msgid "Facts for Individual records"
 msgstr "个人事件"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "添加事件"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "所有人"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "独特事件"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "独特的个体事实件"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "新事件"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "新个人的事件"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "快速事件"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "快速个人事件"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "家庭事件"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "快速家庭事件"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "独特的家庭事件"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "新家庭的事件"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "快速家庭事件"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "资源事件"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "快速资源事件"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "独特的资源事件"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "快速资源事件"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "库事件"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "快速库事件"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "独特的库事件"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "快速库事件"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2354,15 +2395,15 @@ msgstr "错误"
 msgid "You do not have permission to view this page."
 msgstr "您没有权限浏览这个页面。"
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "添加日记或新闻"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "标题:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "输入文本:"
 
@@ -3548,10 +3589,6 @@ msgid ""
 "<i>Source</i> record on the Individual page."
 msgstr "这个选项控制是否在个人页面自动显示一个<i>资源</i>。"
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "添加家庭事件"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3563,19 +3600,11 @@ msgstr ""
 "甚至是定制的。事件的名字在这个列表，就不能同时出现在家庭事件<i>独特事件</i> "
 "列表。"
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "快速家庭事件"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
 "list and can be added with a single click."
 msgstr "简短GEDCOM家庭的事件表，完善旁边的列表，可以单击添加一个"
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "独特的家庭事件"
 
 #: help_text.php:523
 msgid ""
@@ -3732,10 +3761,6 @@ msgstr ""
 "文件夹可以全路径（例如/home/user_name/webtrees_data/）或相对的安装文件夹（例"
 "如./../ webtrees_data/）。"
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "添加个人事件"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3747,19 +3772,11 @@ msgstr ""
 "件名字，甚至必要的定制。在这个列表事件名字，就不能同时出现在个人事件<i>独特事"
 "件</i> 列表。"
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "快速个人事件"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
 "full list and can be added with a single click."
 msgstr "GEDCOM个体的事件出现在简短列表，完善可以单击添加一个。"
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "独特的个体事实件"
 
 #: help_text.php:601
 msgid ""
@@ -4038,10 +4055,6 @@ msgstr ""
 "这个选项控制，当添加新的亲人，你可以添加引用资源的记录 (e.g. INDI, FAM) 或事"
 "实 (BIRT, MARR, DEAT). 默认己有选中。"
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "新个人的事件"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4051,10 +4064,6 @@ msgstr ""
 "这是一个逗号分隔的GEDCOM事件标签，将添加一个新的人时显示。例如，如果 BIRT是在"
 "列表中，出生日期和出生地将显示在窗体。"
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "新家庭的事件"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4063,10 +4072,6 @@ msgid ""
 msgstr ""
 "这是一个逗号分隔的GEDCOM事件标签，将添加一个新的家庭的时候显示。例如，如果 "
 "MARR 是列表中的，然后结婚日期和结婚的地方将在窗体上显示。"
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "添加库事件"
 
 #: help_text.php:797
 msgid ""
@@ -4079,19 +4084,11 @@ msgstr ""
 "至是必要的定制。在这个列表事实的名字，就不能同时出现在库事件<i>独特事件</i> "
 "列表。"
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "快速库事件"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
 "full list and can be added with a single click."
 msgstr "这是GEDCOM库事件列表，旁显示完整的列表，单击可以添加一个"
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "独特的库事件"
 
 #: help_text.php:807
 msgid ""
@@ -4297,10 +4294,6 @@ msgstr ""
 "当一个新的资源的记录是<b>webtrees</b>在线添加，那么资源ID将自动生成。资源ID将"
 "有此前缀。"
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "添加资源事件"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4312,19 +4305,11 @@ msgstr ""
 "甚至是必要的定制。在这个列表事实的名字，不能同时出现在资源事件<i>独特事件</"
 "i> 列表。"
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "快速资源事件"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
 "list and can be added with a single click."
 msgstr "这是简短GEDCOM资源事件列表，完善旁边的列表，单击可以添加一个"
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "独特的资源事件"
 
 #: help_text.php:918
 msgid ""
@@ -8852,9 +8837,8 @@ msgid "%j %F %Y"
 msgstr "%Y年 %m月 %d日"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%H:%i:%s"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10299,15 +10283,15 @@ msgstr "津巴布韦"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "我的家谱"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "乔 /布洛格斯/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "编辑这个个体和用你自己的细节替换他们的"
 
@@ -14711,7 +14695,7 @@ msgstr "已更新的最近记录表。"
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "最后一天的变化 %s"
+msgstr[0] "最后一天的变化 %s "
 
 #: modules_v3/recent_changes/module.php:80
 #, php-format
@@ -15323,6 +15307,12 @@ msgstr "标签"
 msgid "Blocks"
 msgstr "区块"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " 但细节是未知的"
+
+#~ msgid " in "
+#~ msgstr " 在 "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d 代 %2$s"
@@ -15430,6 +15420,17 @@ msgstr "区块"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "九世纪"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "由一个给定的资源的事实报告"
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -15554,6 +15555,9 @@ msgstr "区块"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "养孙子"
 
+#~ msgid "All facts"
+#~ msgstr "添加事件"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "也称为"
@@ -15561,6 +15565,9 @@ msgstr "区块"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "也被称为"
+
+#~ msgid "Ancestors of "
+#~ msgstr "祖先 "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -15581,6 +15588,10 @@ msgstr "区块"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "四月"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "宋体"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -15702,6 +15713,9 @@ msgstr "区块"
 #~ msgid "Birth"
 #~ msgstr "出生"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "出生地包含"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "孙外女出生"
@@ -15725,6 +15739,9 @@ msgstr "区块"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "孙子的割礼"
+
+#~ msgid "Brother"
+#~ msgstr "兄弟"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -15765,6 +15782,15 @@ msgstr "区块"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "男买主"
+
+#~ msgid "Child of "
+#~ msgstr "孩子 "
+
+#~ msgid "Children of "
+#~ msgstr "孩子 "
+
+#~ msgid "Choose relatives"
+#~ msgstr "选择亲戚"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -15814,6 +15840,12 @@ msgstr "区块"
 #~ msgid "Current Server Time:"
 #~ msgstr "当前服务器时间:"
 
+#~ msgid "Daughter"
+#~ msgstr "女儿"
+
+#~ msgid "Death Place contains"
+#~ msgstr "死亡地包含"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "外孙女的去世"
@@ -15849,6 +15881,13 @@ msgstr "区块"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "十二月"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "既视"
+
+#~ msgid "Descendants of "
+#~ msgstr "后代 "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -15902,6 +15941,15 @@ msgstr "区块"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "第十一月"
 
+#~ msgid "Differences"
+#~ msgstr "日期差异"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "直系祖先"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "直接的祖先和他们的家庭"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "下载 %s 并提取文件。"
 
@@ -15937,6 +15985,15 @@ msgstr "区块"
 #~ msgid "Employer"
 #~ msgstr "男雇主"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "变更日期范围的结束"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "输入家庭ID"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "输入个人ID"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "第十二月"
@@ -15956,6 +16013,15 @@ msgstr "区块"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "第十二月"
+
+#~ msgid "Family add facts"
+#~ msgstr "添加家庭事件"
+
+#~ msgid "Family with husband"
+#~ msgstr "丈夫的家庭"
+
+#~ msgid "Family with wife"
+#~ msgstr "妻子的家庭"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16013,6 +16079,9 @@ msgstr "区块"
 #~ msgid "Floréal"
 #~ msgstr "第八月"
 
+#~ msgid "Font"
+#~ msgstr "字体"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "养育"
@@ -16065,6 +16134,9 @@ msgstr "区块"
 #~ msgid "Fructidor"
 #~ msgstr "第十二月"
 
+#~ msgid "Generation "
+#~ msgstr "代 "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "第七月"
@@ -16089,6 +16161,37 @@ msgstr "区块"
 #~ msgid "Guardian"
 #~ msgstr "男监护人"
 
+#~ msgid "He "
+#~ msgstr "他 "
+
+#~ msgid "He died"
+#~ msgstr "他去世了"
+
+#~ msgid "He married"
+#~ msgstr "他结婚了"
+
+#~ msgid "He resided at"
+#~ msgstr "他居住在"
+
+#~ msgid "He was born"
+#~ msgstr "他出生"
+
+#~ msgid "He was buried"
+#~ msgstr "他被葬"
+
+#~ msgid "He was christened"
+#~ msgstr "他被命名为"
+
+#~ msgid "He was cremated"
+#~ msgstr "他被火化"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "黑体"
+
+#~ msgid "Her occupation was"
+#~ msgstr "她的职业是"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "第二月"
@@ -16105,9 +16208,15 @@ msgstr "区块"
 #~ msgid "Heshvan"
 #~ msgstr "第二月"
 
+#~ msgid "His occupation was"
+#~ msgstr "他的职业是"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "冰岛"
+
+#~ msgid "Individual add facts"
+#~ msgstr "添加个人事件"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16269,6 +16378,14 @@ msgstr "区块"
 #~ msgid "Kislev"
 #~ msgstr "第三月"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "约定"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "纸张大小"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "立陶宛"
@@ -16308,6 +16425,15 @@ msgstr "区块"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "三月"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "婚姻结束日期范围"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "婚姻的日期范围开始"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "婚姻所含"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -16421,6 +16547,9 @@ msgstr "区块"
 #~ msgid "Name"
 #~ msgstr "名称"
 
+#~ msgid "Name List"
+#~ msgstr "名单"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "老姑娘"
@@ -16428,6 +16557,9 @@ msgstr "区块"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "光棍"
+
+#~ msgid "New entry facts"
+#~ msgstr "新事件"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -16537,6 +16669,9 @@ msgstr "区块"
 #~ msgid "Ordibehesht"
 #~ msgstr "第二月"
 
+#~ msgid "Orientation"
+#~ msgstr "方向"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "女业主"
@@ -16544,6 +16679,18 @@ msgstr "区块"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "男业主"
+
+#~ msgid "Page"
+#~ msgstr "页"
+
+#~ msgid "Page size"
+#~ msgstr "页面大小"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "父母和兄弟姐妹"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "家谱图"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -16584,6 +16731,12 @@ msgstr "区块"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "第九月"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "当空白时显示基本事件?"
+
+#~ msgid "Quick facts"
+#~ msgstr "快速事件"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -16659,6 +16812,9 @@ msgstr "区块"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "男登记官"
+
+#~ msgid "Repository add facts"
+#~ msgstr "添加库事件"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -16781,6 +16937,30 @@ msgstr "区块"
 #~ msgid "Shawwal"
 #~ msgstr "第十月"
 
+#~ msgid "She "
+#~ msgstr "她 "
+
+#~ msgid "She died"
+#~ msgstr "她去世了"
+
+#~ msgid "She married"
+#~ msgstr "她嫁给了"
+
+#~ msgid "She resided at"
+#~ msgstr "她居住在"
+
+#~ msgid "She was born"
+#~ msgstr "她出生"
+
+#~ msgid "She was buried"
+#~ msgstr "她被埋葬"
+
+#~ msgid "She was christened"
+#~ msgstr "她被命名为"
+
+#~ msgid "She was cremated"
+#~ msgstr "她被火化"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "第五月"
@@ -16796,6 +16976,30 @@ msgstr "区块"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "第五月"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "显示祖先的孩子？"
+
+#~ msgid "Show notes?"
+#~ msgstr "显示记事吗?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "显示职业吗?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "显示待定的更改"
+
+#~ msgid "Show photos?"
+#~ msgstr "显示照片吗?"
+
+#~ msgid "Show residences?"
+#~ msgstr "显示住宅？"
+
+#~ msgid "Show sources?"
+#~ msgstr "显示资源?"
+
+#~ msgid "Sister"
+#~ msgstr "姐妹"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -16821,9 +17025,27 @@ msgstr "区块"
 #~ msgid "Slave"
 #~ msgstr "男奴隶"
 
+#~ msgid "Son"
+#~ msgstr "儿子"
+
+#~ msgid "Source add facts"
+#~ msgstr "添加资源事件"
+
+#~ msgid "Sources to the events"
+#~ msgstr "为事件添加资源"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "西班牙"
+
+#~ msgid "Spouse"
+#~ msgstr "配偶"
+
+#~ msgid "Spouses and children"
+#~ msgstr "配偶和子女"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "变更日期范围的开始"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -16914,6 +17136,18 @@ msgstr "区块"
 #~ msgid "Tishrei"
 #~ msgstr "第一月"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "总接受变化： "
+
+#~ msgid "Total individuals"
+#~ msgstr "总个人"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "总待定更改: "
+
+#~ msgid "Unique facts"
+#~ msgstr "独特事件"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "未知"
@@ -16931,6 +17165,9 @@ msgstr "区块"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "升级到webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "使用颜色"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17112,6 +17349,9 @@ msgstr "区块"
 #~ msgid "d."
 #~ msgstr "死于："
 
+#~ msgid "daughter of"
+#~ msgstr "女儿"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "儿媳"
@@ -17131,6 +17371,14 @@ msgstr "区块"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "亲家"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "死亡"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "死亡"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -18437,6 +18685,14 @@ msgstr "区块"
 #~ msgstr "婚姻："
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "嫁了"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "娶了"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "婚后名字"
 
@@ -18780,6 +19036,9 @@ msgstr "区块"
 #~ msgid "sixth cousin"
 #~ msgstr "第六代堂（表）兄(妹)"
 
+#~ msgid "son of"
+#~ msgstr "儿子的"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "女婿"
@@ -18980,6 +19239,14 @@ msgstr "区块"
 #~ msgid "unknown"
 #~ msgstr "家庭未知"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "诞生"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "诞生"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "缺少名字"
@@ -18988,14 +19255,11 @@ msgstr "区块"
 #~ msgid "…"
 #~ msgstr "缺少姓氏"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " 但细节是未知的"
-
-#~ msgid " in "
-#~ msgstr " 在 "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s's %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "低三辈 %s"
@@ -19152,21 +19416,10 @@ msgstr "区块"
 #~ "数据库服务器可以存储许多不同的数据库。你需要选择一个现有的数据库（由服务器"
 #~ "管理员创建）或创建一个新的（如果你的数据库用户帐户具有足够的特权）。"
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "由一个给定的资源的事实报告"
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr "用户将无法登录除非“邮件验证”和“经管理员批准”的选项被选择。"
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "Access"
 #~ msgstr "允许"
@@ -19256,9 +19509,6 @@ msgstr "区块"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "在孩子的出生时父母年龄"
 
-#~ msgid "All individuals"
-#~ msgstr "所有人"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "可以换其它家谱"
 
@@ -19273,18 +19523,11 @@ msgstr "区块"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "数据库发生意外错误。"
 
-#~ msgid "Ancestors of "
-#~ msgstr "祖先 "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "祖先文件编号 (AFN)"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "确定你想撤消所有这GEDCOM变化？"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "宋体"
 
 #~ msgid "Available blocks"
 #~ msgstr "可用块"
@@ -19298,9 +19541,6 @@ msgstr "区块"
 #~ msgid "Binary data object"
 #~ msgstr "数码资料"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "出生地包含"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "图表上的出生和死亡的详情"
 
@@ -19309,9 +19549,6 @@ msgstr "区块"
 
 #~ msgid "Birth date range start"
 #~ msgstr "出生日期范围的开始"
-
-#~ msgid "Brother"
-#~ msgstr "兄弟"
 
 #~ msgid "Burial place contains"
 #~ msgstr "埋葬的地点包含"
@@ -19328,15 +19565,6 @@ msgstr "区块"
 
 #~ msgid "Change family members"
 #~ msgstr "改变家庭成员"
-
-#~ msgid "Child of "
-#~ msgstr "孩子 "
-
-#~ msgid "Children of "
-#~ msgstr "孩子 "
-
-#~ msgid "Choose relatives"
-#~ msgstr "选择亲戚"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -19470,12 +19698,6 @@ msgstr "区块"
 #~ msgid "Date of residence"
 #~ msgstr "居住日期"
 
-#~ msgid "Daughter"
-#~ msgstr "女儿"
-
-#~ msgid "Death Place contains"
-#~ msgstr "死亡地包含"
-
 #~ msgid "Death date range end"
 #~ msgstr "死亡日期范围的结束"
 
@@ -19484,13 +19706,6 @@ msgstr "区块"
 
 #~ msgid "Default theme"
 #~ msgstr "默认主题"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "既视"
-
-#~ msgid "Descendants of "
-#~ msgstr "后代 "
 
 #~ msgid "Descent steps"
 #~ msgstr "显示几代人的家庭"
@@ -19510,15 +19725,6 @@ msgstr "区块"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "第十一月"
-
-#~ msgid "Differences"
-#~ msgstr "日期差异"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "直系祖先"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "直接的祖先和他们的家庭"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "不密封,先前的密封取消"
@@ -19600,15 +19806,6 @@ msgstr "区块"
 
 #~ msgid "End year"
 #~ msgstr "结束年"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "变更日期范围的结束"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "输入家庭ID"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "输入个人ID"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -19738,20 +19935,11 @@ msgstr "区块"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "家谱收集箱功能"
 
-#~ msgid "Family with husband"
-#~ msgstr "丈夫的家庭"
-
-#~ msgid "Family with wife"
-#~ msgstr "妻子的家庭"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "父亲的出生地—(查普曼格式)"
 
 #~ msgid "Father’s age"
 #~ msgstr "父亲的年龄"
-
-#~ msgid "Font"
-#~ msgstr "字体"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -19809,9 +19997,6 @@ msgstr "区块"
 #~ msgid "Gedcom"
 #~ msgstr "家谱数据"
 
-#~ msgid "Generation "
-#~ msgstr "代 "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -19832,30 +20017,6 @@ msgstr "区块"
 #~ "消息带有一个代码来验证他申请的帐户。必须管理员核实后批准使他的账户它变得活"
 #~ "跃。"
 
-#~ msgid "He "
-#~ msgstr "他 "
-
-#~ msgid "He died"
-#~ msgstr "他去世了"
-
-#~ msgid "He married"
-#~ msgstr "他结婚了"
-
-#~ msgid "He resided at"
-#~ msgstr "他居住在"
-
-#~ msgid "He was born"
-#~ msgstr "他出生"
-
-#~ msgid "He was buried"
-#~ msgstr "他被葬"
-
-#~ msgid "He was christened"
-#~ msgstr "他被命名为"
-
-#~ msgid "He was cremated"
-#~ msgstr "他被火化"
-
 #~ msgid "Hello %s…"
 #~ msgstr "你好 %s …"
 
@@ -19864,13 +20025,6 @@ msgstr "区块"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "你好管理员……"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "黑体"
-
-#~ msgid "Her occupation was"
-#~ msgstr "她的职业是"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -19962,9 +20116,6 @@ msgstr "区块"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "隐藏/显示"
-
-#~ msgid "His occupation was"
-#~ msgstr "他的职业是"
 
 #~ msgid "Hit count:"
 #~ msgstr "访问次数:"
@@ -20152,14 +20303,6 @@ msgstr "区块"
 #~ msgid "LDS temple"
 #~ msgstr "LDS 寺庙"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "约定"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "纸张大小"
-
 #~ msgid "Link ID"
 #~ msgstr "链接ID"
 
@@ -20196,15 +20339,6 @@ msgstr "区块"
 #~ msgid "Main section blocks"
 #~ msgstr "主要部分"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "婚姻结束日期范围"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "婚姻的日期范围开始"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "婚姻所含"
-
 #~ msgid "Marriage intention"
 #~ msgstr "婚姻的意图"
 
@@ -20237,9 +20371,6 @@ msgstr "区块"
 
 #~ msgid "Move right"
 #~ msgstr "移到最右边"
-
-#~ msgid "Name List"
-#~ msgstr "名单"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -20306,9 +20437,6 @@ msgstr "区块"
 #~ msgid "Online editing"
 #~ msgstr "在线编辑"
 
-#~ msgid "Orientation"
-#~ msgstr "方向"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "其他文件夹…请输入"
 
@@ -20336,20 +20464,8 @@ msgstr "区块"
 #~ "PHP设置  \"%1$s \" 是禁用的。没有它,以下功能将不工作： %2$s. 请联系服务器"
 #~ "的管理员启用它。"
 
-#~ msgid "Page"
-#~ msgstr "页"
-
-#~ msgid "Page size"
-#~ msgstr "页面大小"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "父母和兄弟姐妹"
-
 #~ msgid "Parent’s age"
 #~ msgstr "父母的年龄"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "家谱图"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "LDS 洗礼的地点"
@@ -20431,9 +20547,6 @@ msgstr "区块"
 
 #~ msgid "President’s Office"
 #~ msgstr "总统办公室"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "当空白时显示基本事件?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -20646,30 +20759,6 @@ msgstr "区块"
 #~ msgid "Sha’aban"
 #~ msgstr "第八月"
 
-#~ msgid "She "
-#~ msgstr "她 "
-
-#~ msgid "She died"
-#~ msgstr "她去世了"
-
-#~ msgid "She married"
-#~ msgstr "她嫁给了"
-
-#~ msgid "She resided at"
-#~ msgstr "她居住在"
-
-#~ msgid "She was born"
-#~ msgstr "她出生"
-
-#~ msgid "She was buried"
-#~ msgstr "她被埋葬"
-
-#~ msgid "She was christened"
-#~ msgstr "她被命名为"
-
-#~ msgid "She was cremated"
-#~ msgstr "她被火化"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -20695,9 +20784,6 @@ msgstr "区块"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "在列表中显示所有的地方"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "显示祖先的孩子？"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "显示死者"
@@ -20731,12 +20817,6 @@ msgstr "区块"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "显示100年内去世的人。"
 
-#~ msgid "Show notes?"
-#~ msgstr "显示记事吗?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "显示职业吗?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "只显示现在活着人的事件？"
 
@@ -20746,23 +20826,11 @@ msgstr "区块"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "只显示个人,事件,还是所有?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "显示待定的更改"
-
-#~ msgid "Show photos?"
-#~ msgstr "显示照片吗?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "显示地方分布"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "显示相关人/家庭"
-
-#~ msgid "Show residences?"
-#~ msgstr "显示住宅？"
-
-#~ msgid "Show sources?"
-#~ msgstr "显示资源?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -20777,14 +20845,8 @@ msgstr "区块"
 #~ "显示«未录入父母的»夫妇或个人。这些人可能也被称为«族长»或是嫁入招入的人。他"
 #~ "们是那些没有父母记录在数据库中。"
 
-#~ msgid "Sister"
-#~ msgstr "姐妹"
-
 #~ msgid "Social security number"
 #~ msgstr "社会安全号码"
-
-#~ msgid "Son"
-#~ msgstr "儿子"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -20795,9 +20857,6 @@ msgstr "区块"
 #~ "被引用资源可能包括记录数据的不同数据(主、次等)字段。如果你不使用这些字段,"
 #~ "当创建新源引用时您可以禁用他们。"
 
-#~ msgid "Sources to the events"
-#~ msgstr "为事件添加资源"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -20807,15 +20866,6 @@ msgstr "区块"
 #~ "指定是否通过<b> webtrees </b>可以存储在数据库中发送的消息。如果设置为<b>是"
 #~ "</b>用户能够检索信息时，他们登录到<b> webtrees </b>。如果设置为<b>不</b>信"
 #~ "息只会发送电子邮件。"
-
-#~ msgid "Spouse"
-#~ msgstr "配偶"
-
-#~ msgid "Spouses and children"
-#~ msgstr "配偶和子女"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "变更日期范围的开始"
 
 #~ msgid "Surname option"
 #~ msgstr "姓选项"
@@ -21366,15 +21416,6 @@ msgstr "区块"
 #~ msgid "To source"
 #~ msgstr "对资源"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "总接受变化： "
-
-#~ msgid "Total individuals"
-#~ msgstr "总个人"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "总待定更改: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -21404,9 +21445,6 @@ msgstr "区块"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "使用SMTP发送外部邮件"
-
-#~ msgid "Use colors"
-#~ msgstr "使用颜色"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -21746,9 +21784,6 @@ msgstr "区块"
 #~ msgid "before %d"
 #~ msgstr "在 %d 年前"
 
-#~ msgid "daughter of"
-#~ msgstr "女儿"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "亲家公"
@@ -21760,14 +21795,6 @@ msgstr "区块"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "亲家"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "死亡"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "死亡"
 
 #~ msgid "from %d"
 #~ msgstr "从 %d 年"
@@ -21796,17 +21823,6 @@ msgstr "区块"
 #~ msgid "grandson’s wife"
 #~ msgstr "孙媳"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "嫁了"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "娶了"
-
-#~ msgid "son of"
-#~ msgstr "儿子的"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "亲家公"
@@ -21818,14 +21834,6 @@ msgstr "区块"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "亲"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "诞生"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "诞生"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees数据库和PGV的数据库必须在同一台服务器上"

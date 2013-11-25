@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:14+1200\n"
-"PO-Revision-Date: 2013-11-22 12:43+1200\n"
+"POT-Creation-Date: 2013-11-26 11:58+1200\n"
+"PO-Revision-Date: 2013-11-26 12:12+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -215,7 +215,7 @@ msgstr "Älä päivitä \"viimeisin muutos\" tietuetta"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1723,36 +1723,77 @@ msgstr "Suoritustilastot"
 msgid "Facts for Individual records"
 msgstr "Henkilötietueen tiedot"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Kaikki tiedot"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Kaikki henkilöt"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Yksilölliset tiedot"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Yksilölliset henkilötiedot"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Uuden henkilölisäyksen tiedot"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "Uuden henkilön tiedot"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Tiivistelmätiedot"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Henkilötietojen pikalista"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Perhetietueen tiedot"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Perhetietojen pikalista"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Yksilölliset perheen tietoaiheet"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Uuden perheen tiedot"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Perhetietojen pikalista"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Tietolähteen tiedot"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Lähdetietoaiheiden pikalista"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Yksilölliset lähdetiedot"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "Lähdetietoaiheiden pikalista"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Tietovaraston tiedot"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Pikavalinta tietovarastotiedot"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Yksilölliset tietovaraston tietoaiheet"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "Pikavalinta tietovarastotiedot"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2405,15 +2446,15 @@ msgstr "Virhe"
 msgid "You do not have permission to view this page."
 msgstr "Sinulla ei ole lupaa katsella tätä sivua."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Lisää/muokkaa päiväkirja/uutisartikkeli"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Otsikko:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Teksti:"
 
@@ -3693,10 +3734,6 @@ msgstr ""
 "Tällä valinnalla vaikutetaan siihen, näytetäänkö automaattisesti "
 "<i>Lähteitä</i> tekstit henkilön sivulla."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Perhe, lisää tietoaiheita"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3709,10 +3746,6 @@ msgstr ""
 "jopa itsetehtyjä. Tietoaiheet tässä luettelossa ei saa toistua  "
 "<I>Yksilölliset perhetiedot</ i> luettelossa."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Perhetietojen pikalista"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3720,10 +3753,6 @@ msgid ""
 msgstr ""
 "Tämä perhetietojen pikalista näkyy täyden listan vieressä ja siitä voi "
 "lisätä tiedon yhdellä klikkauksella."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Yksilölliset perheen tietoaiheet"
 
 #: help_text.php:523
 msgid ""
@@ -3908,10 +3937,6 @@ msgstr ""
 "Kansion voi määrittää kokonaisuudessaan (esim. /home/user_name/"
 "webtrees_data/) tai suhteessa asennuskansioon (esim. ../../webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Henkilö - lisää tietoaiheita"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3924,10 +3949,6 @@ msgstr ""
 "tietoaihetunnisteita, jopa itsetehtyjä. Tietoaihetunnisteet tässä "
 "luettelossa eivät saa toistua <i>Yksilölliset henkilötiedot</i> luettelossa."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Henkilötietojen pikalista"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3935,10 +3956,6 @@ msgid ""
 msgstr ""
 "Tämä on lyhennetty luettelo GEDCOM henkilön tietoja, joka näytetään "
 "täyslistan ohessa. Siitä voi lisätä tiedon yhdellä klikkauksella."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Yksilölliset henkilötiedot"
 
 #: help_text.php:601
 msgid ""
@@ -4263,10 +4280,6 @@ msgstr ""
 "(esim. INDI, FAM) tai muille tiedoille (BIRT, MARR, DEAT). Tällä ohjaat "
 "mitkä oletusvalinnat käytetään tiedon lisäämisessä."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Uuden henkilön tiedot"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4276,10 +4289,6 @@ msgstr ""
 "Tämä on pilkkumerkein \",\" erotettu lista GEDCOM tietotunnisteita (tag) "
 "joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) "
 "on listassa, myös syntymäpäivämäärä ja -paikka voidaan täyttää."
-
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Uuden perheen tiedot"
 
 #: help_text.php:792
 msgid ""
@@ -4291,10 +4300,6 @@ msgstr ""
 "näytetään lisättäessa uuden perheen tiedot. Esimerkiksi, jos MAR "
 "(avioliitto) on luettelossa, niin lisäksi esitetään avioliittopäivämäärä ja -"
 "paikka taytettäväksi."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Tietovarasto, lisää tietoaiheita"
 
 #: help_text.php:797
 msgid ""
@@ -4309,10 +4314,6 @@ msgstr ""
 "Tietotunnisteet tässä listassa eivät saa toistua <i>Yksilölliset "
 "tietovaraston tietotunnisteet</i> luettelossa."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "Pikavalinta tietovarastotiedot"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4321,10 +4322,6 @@ msgstr ""
 "Tämä on tiivistetty luetelo GEDCOM tietovaraston tietotunnisteista, joka "
 "näytetään koko luettelon ohessa. Klikattaessa voidaan pikavalintatapaisesti "
 "lisätä."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Yksilölliset tietovaraston tietoaiheet"
 
 #: help_text.php:807
 msgid ""
@@ -4554,10 +4551,6 @@ msgstr ""
 "Lisättäessä <b>webtrees</b> online-tilassa uuden lähdetiedon, luodaan "
 "automaattisesti ID:n lähdetiedolle. ID:n eteen lisätään tämä etuliite."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Lähdetieto, lisää tietoaiheita"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4570,10 +4563,6 @@ msgstr ""
 "poistamalla tiedon nimet, jopa muokatut. Luettelon tietoaiheet eivät saa "
 "toistua <i>Yksilöllisissä lähdetiedoissa</i>"
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "Lähdetietoaiheiden pikalista"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4581,10 +4570,6 @@ msgid ""
 msgstr ""
 "Tämä on lyhennetty luettelo GEDCOM lähdetiedoista, joka näkyy täysluettelon "
 "ohessa ja voidaan lisätä mukaan klikkauksella."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Yksilölliset lähdetiedot"
 
 #: help_text.php:918
 msgid ""
@@ -9422,9 +9407,8 @@ msgid "%j %F %Y"
 msgstr "%j. %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%H:%i:%s"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10883,15 +10867,15 @@ msgstr "Zimbabwe"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "Sukupuuni"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "Nimen esitystapa. Kauttamerkki / sukunimen edessä ja takana."
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Muokkaa henkilötiedot, korvaa sinun tiedoilla"
 
@@ -16011,6 +15995,12 @@ msgstr "Välilehdet"
 msgid "Blocks"
 msgstr "Lohkot"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " mutta yksityiskohdat ovat tuntemattomia"
+
+#~ msgid " in "
+#~ msgstr " paikassa "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -16118,6 +16108,17 @@ msgstr "Lohkot"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Raportti tiedoista, jotka ovat lähtöisin tietystä lähteestä."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -16242,6 +16243,9 @@ msgstr "Lohkot"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Pojanpojan adoptio"
 
+#~ msgid "All facts"
+#~ msgstr "Kaikki tiedot"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "Toiselta nimeltä"
@@ -16249,6 +16253,9 @@ msgstr "Lohkot"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "Toiselta nimeltä"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Esivanhemmat - "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -16269,6 +16276,10 @@ msgstr "Lohkot"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "huhtikuu"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16390,6 +16401,9 @@ msgstr "Lohkot"
 #~ msgid "Birth"
 #~ msgstr "Syntymä"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "Syntymäpaikassa on"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Tyttärentyttären syntymä"
@@ -16413,6 +16427,9 @@ msgstr "Lohkot"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Pojanpojan Brit mila"
+
+#~ msgid "Brother"
+#~ msgstr "Veli"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16453,6 +16470,15 @@ msgstr "Lohkot"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Ostaja"
+
+#~ msgid "Child of "
+#~ msgstr "Tämän henkilön lapsi: "
+
+#~ msgid "Children of "
+#~ msgstr "Seuraavien lasten vanhemmat: "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Valitse sukulaiset"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16504,6 +16530,12 @@ msgstr "Lohkot"
 #~ msgid "Current Server Time:"
 #~ msgstr "Aika palvelimessa:"
 
+#~ msgid "Daughter"
+#~ msgstr "Tytär"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Kuolinpaikka sisältää"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Tyttärentyttären kuolema"
@@ -16539,6 +16571,13 @@ msgstr "Lohkot"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "joulukuu"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Jälkeläiset - "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16592,6 +16631,15 @@ msgstr "Lohkot"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "dhul-qa`da"
 
+#~ msgid "Differences"
+#~ msgstr "Eroavuudet"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Suorat esivanhemmat"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Suorat esivanhemmat ja heidän perheensä"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Siirrä palvelimelta %s ja pura sen tiedostot."
 
@@ -16627,6 +16675,15 @@ msgstr "Lohkot"
 #~ msgid "Employer"
 #~ msgstr "Työnantaja"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Muutosten aikavälin loppu"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Anna perheen ID"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Syötä henkilö ID"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Esf"
@@ -16646,6 +16703,15 @@ msgstr "Lohkot"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Perhe, lisää tietoaiheita"
+
+#~ msgid "Family with husband"
+#~ msgstr "Perhe miehineen"
+
+#~ msgid "Family with wife"
+#~ msgstr "Perhe vaimoineen"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16703,6 +16769,9 @@ msgstr "Lohkot"
 #~ msgid "Floréal"
 #~ msgstr "Floréal"
 
+#~ msgid "Font"
+#~ msgstr "Kirjasinlaji"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Kasvatti"
@@ -16755,6 +16824,9 @@ msgstr "Lohkot"
 #~ msgid "Fructidor"
 #~ msgstr "Fructidor"
 
+#~ msgid "Generation "
+#~ msgstr "Sukupolvi "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "Germinal"
@@ -16779,6 +16851,37 @@ msgstr "Lohkot"
 #~ msgid "Guardian"
 #~ msgstr "Edunvalvoja"
 
+#~ msgid "He "
+#~ msgstr "Hän "
+
+#~ msgid "He died"
+#~ msgstr "Hän kuoli"
+
+#~ msgid "He married"
+#~ msgstr "Hänen vaimonsa oli"
+
+#~ msgid "He resided at"
+#~ msgstr "Hän asui"
+
+#~ msgid "He was born"
+#~ msgstr "Hän syntyi"
+
+#~ msgid "He was buried"
+#~ msgstr "Hänet on haudattu"
+
+#~ msgid "He was christened"
+#~ msgstr "Hänet kastettiin"
+
+#~ msgid "He was cremated"
+#~ msgstr "Hänet polttohaudattiin"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Hänen ammattinsa oli"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "chesvan-kuuta"
@@ -16795,9 +16898,15 @@ msgstr "Lohkot"
 #~ msgid "Heshvan"
 #~ msgstr "chesvan-kuu"
 
+#~ msgid "His occupation was"
+#~ msgstr "Hänen ammattinsa oli"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "Islannin sukunimen esitystapa"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Henkilö - lisää tietoaiheita"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16959,6 +17068,14 @@ msgstr "Lohkot"
 #~ msgid "Kislev"
 #~ msgstr "kislev-kuu"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "Liettuan sukunimen esitystapa"
@@ -17000,6 +17117,15 @@ msgstr "Lohkot"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "maaliskuu"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Avioitumisaikavälin loppu"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Avioitumisaikavälin alku"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Avioitumispaikka sisältää"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -17113,6 +17239,9 @@ msgstr "Lohkot"
 #~ msgid "Name"
 #~ msgstr "Nimi"
 
+#~ msgid "Name List"
+#~ msgstr "Nimiluettelo"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Ei koskaan naimisissa"
@@ -17120,6 +17249,9 @@ msgstr "Lohkot"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Ei koskaan naimisissa"
+
+#~ msgid "New entry facts"
+#~ msgstr "Uuden henkilölisäyksen tiedot"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -17229,6 +17361,9 @@ msgstr "Lohkot"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Sivun asento"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Omistaja"
@@ -17236,6 +17371,18 @@ msgstr "Lohkot"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Omistaja"
+
+#~ msgid "Page"
+#~ msgstr "Sivu"
+
+#~ msgid "Page size"
+#~ msgstr "Sivun koko"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Vanhemmat ja sisarukset"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Esivanhemmat-kaavio"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -17276,6 +17423,12 @@ msgstr "Lohkot"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "Prairial"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Tiivistelmätiedot"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17351,6 +17504,9 @@ msgstr "Lohkot"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Rekisteriviranomainen"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Tietovarasto, lisää tietoaiheita"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17475,6 +17631,30 @@ msgstr "Lohkot"
 #~ msgid "Shawwal"
 #~ msgstr "shawwal"
 
+#~ msgid "She "
+#~ msgstr "Hän "
+
+#~ msgid "She died"
+#~ msgstr "Hän kuoli"
+
+#~ msgid "She married"
+#~ msgstr "Hänen miehensä oli"
+
+#~ msgid "She resided at"
+#~ msgstr "Hän asui"
+
+#~ msgid "She was born"
+#~ msgstr "Hän syntyi"
+
+#~ msgid "She was buried"
+#~ msgstr "Hänet on haudattu"
+
+#~ msgid "She was christened"
+#~ msgstr "Hänet kastettiin"
+
+#~ msgid "She was cremated"
+#~ msgstr "Hänet polttohaudattiin"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "shvat-kuuta"
@@ -17490,6 +17670,30 @@ msgstr "Lohkot"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "shvat-kuu"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Näytä esipolvien lapset?"
+
+#~ msgid "Show notes?"
+#~ msgstr "Näytä lisätiedot?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Näytä ammatit?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Näytä vireillä olevat muutokset"
+
+#~ msgid "Show photos?"
+#~ msgstr "Näytä valokuvat?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Näytä asuinpaikat?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Näytä tietolähteet?"
+
+#~ msgid "Sister"
+#~ msgstr "Sisar"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17515,9 +17719,27 @@ msgstr "Lohkot"
 #~ msgid "Slave"
 #~ msgstr "Orja"
 
+#~ msgid "Son"
+#~ msgstr "Poika"
+
+#~ msgid "Source add facts"
+#~ msgstr "Lähdetieto, lisää tietoaiheita"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Tapahtumien lähdetiedot"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Espanjan sukunimen esitystapa"
+
+#~ msgid "Spouse"
+#~ msgstr "Puoliso"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Aviopuolisot ja lapset"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Muutosten aikavälin alku"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17610,6 +17832,18 @@ msgstr "Lohkot"
 #~ msgid "Tishrei"
 #~ msgstr "tishri-kuu"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Hyväksyttyjä muutoksia yhteensä: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Henkilöitä yhteensä"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Vireillä olevia muutoksia yhteensä: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Yksilölliset tiedot"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Vuosisata tuntematon"
@@ -17627,6 +17861,9 @@ msgstr "Lohkot"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Päivitä versioon webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Käytä värejä?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17808,6 +18045,9 @@ msgstr "Lohkot"
 #~ msgid "d."
 #~ msgstr "k."
 
+#~ msgid "daughter of"
+#~ msgstr "jonka vanhemmat olivat"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "pojanvaimo, miniä"
@@ -17827,6 +18067,14 @@ msgstr "Lohkot"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "miniän isä/äiti"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "kuoli"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "kuoli"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -19133,6 +19381,14 @@ msgstr "Lohkot"
 #~ msgstr "avio"
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "avioitui"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "avioitui"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "avionimi"
 
@@ -19476,6 +19732,9 @@ msgstr "Lohkot"
 #~ msgid "sixth cousin"
 #~ msgstr "6. serkku"
 
+#~ msgid "son of"
+#~ msgstr "jonka vanhemmat olivat"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "tyttärenmies, vävy"
@@ -19676,6 +19935,14 @@ msgstr "Lohkot"
 #~ msgid "unknown"
 #~ msgstr "perhe ei tiedossa"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "syntyi"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "syntyi"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19684,14 +19951,11 @@ msgstr "Lohkot"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " mutta yksityiskohdat ovat tuntemattomia"
-
-#~ msgid " in "
-#~ msgstr " paikassa "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s &rarr; %2$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%H:%i:%s"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s"
@@ -19882,23 +20146,12 @@ msgstr "Lohkot"
 #~ "olemassa oleva tietokanta (palvelinylläpitäjän luoma) tai luo itse uusi "
 #~ "(jos sinulla on riittävät oikeudet siihen)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Raportti tiedoista, jotka ovat lähtöisin tietystä lähteestä."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "Käyttäjä ei voi kirjautua sisään, ennen kuin sekä \"sähköpostiosoite on "
 #~ "varmistettu\" että \"ylläpitäjä on hyväksynyt\" asetukset on kuitattu."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "Access"
 #~ msgstr "Pääsy"
@@ -19995,9 +20248,6 @@ msgstr "Lohkot"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Vanhempien ikä lasten syntymäajan viereen"
 
-#~ msgid "All individuals"
-#~ msgstr "Kaikki henkilöt"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Salli GEDCOM:n vaihto"
 
@@ -20014,9 +20264,6 @@ msgstr "Lohkot"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Virhe tietokannassa."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Esivanhemmat - "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Ancestral file number (AFN)"
 
@@ -20024,10 +20271,6 @@ msgstr "Lohkot"
 #~ msgstr ""
 #~ "Oletko varma, että haluat peruuttaa kaikki tähän GEDCOM-tiedostoon "
 #~ "tekemäsi muutokset?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Käytettävissä olevat lohkot"
@@ -20041,9 +20284,6 @@ msgstr "Lohkot"
 #~ msgid "Binary data object"
 #~ msgstr "Binääridataobjekti"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Syntymäpaikassa on"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Syntymä- ja kuolematiedot kaavioissa"
 
@@ -20052,9 +20292,6 @@ msgstr "Lohkot"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Syntymän aikavälin alku"
-
-#~ msgid "Brother"
-#~ msgstr "Veli"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Hautaamispaika  sisältää"
@@ -20072,15 +20309,6 @@ msgstr "Lohkot"
 
 #~ msgid "Change family members"
 #~ msgstr "Muuta perheenjäseniä"
-
-#~ msgid "Child of "
-#~ msgstr "Tämän henkilön lapsi: "
-
-#~ msgid "Children of "
-#~ msgstr "Seuraavien lasten vanhemmat: "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Valitse sukulaiset"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -20220,12 +20448,6 @@ msgstr "Lohkot"
 #~ msgid "Date of residence"
 #~ msgstr "Asuinpaikan päivämäärä"
 
-#~ msgid "Daughter"
-#~ msgstr "Tytär"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Kuolinpaikka sisältää"
-
 #~ msgid "Death date range end"
 #~ msgstr "Kuolinaikavälin loppu"
 
@@ -20234,13 +20456,6 @@ msgstr "Lohkot"
 
 #~ msgid "Default theme"
 #~ msgstr "Oletusteema"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Jälkeläiset - "
 
 #~ msgid "Descent steps"
 #~ msgstr "Jälkipolvien lukumäärä"
@@ -20260,15 +20475,6 @@ msgstr "Lohkot"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "dhul-qa`da"
-
-#~ msgid "Differences"
-#~ msgstr "Eroavuudet"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Suorat esivanhemmat"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Suorat esivanhemmat ja heidän perheensä"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "(mormoni) Älä sinetöi: aiempi sinetöinti peruutettu"
@@ -20358,15 +20564,6 @@ msgstr "Lohkot"
 
 #~ msgid "End year"
 #~ msgstr "Lopetusvuosi"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Muutosten aikavälin loppu"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Anna perheen ID"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Syötä henkilö ID"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20510,20 +20707,11 @@ msgstr "Lohkot"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Sukupuun leikekori"
 
-#~ msgid "Family with husband"
-#~ msgstr "Perhe miehineen"
-
-#~ msgid "Family with wife"
-#~ msgstr "Perhe vaimoineen"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Isän syntymäpaikka (Chapman muodossa)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Isän ikä"
-
-#~ msgid "Font"
-#~ msgstr "Kirjasinlaji"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20586,9 +20774,6 @@ msgstr "Lohkot"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Sukupolvi "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20612,30 +20797,6 @@ msgstr "Lohkot"
 #~ "viesti, käyttäen avainta, ylläpitäjän on hyväksyttävä uusi käyttäjätili "
 #~ "ennen kuin se astuu voimaan."
 
-#~ msgid "He "
-#~ msgstr "Hän "
-
-#~ msgid "He died"
-#~ msgstr "Hän kuoli"
-
-#~ msgid "He married"
-#~ msgstr "Hänen vaimonsa oli"
-
-#~ msgid "He resided at"
-#~ msgstr "Hän asui"
-
-#~ msgid "He was born"
-#~ msgstr "Hän syntyi"
-
-#~ msgid "He was buried"
-#~ msgstr "Hänet on haudattu"
-
-#~ msgid "He was christened"
-#~ msgstr "Hänet kastettiin"
-
-#~ msgid "He was cremated"
-#~ msgstr "Hänet polttohaudattiin"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Hei %s…"
 
@@ -20644,13 +20805,6 @@ msgstr "Lohkot"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Hei hallinnoitsija…"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Hänen ammattinsa oli"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20755,9 +20909,6 @@ msgstr "Lohkot"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Piilota &amp; näytä"
-
-#~ msgid "His occupation was"
-#~ msgstr "Hänen ammattinsa oli"
 
 #~ msgid "Hit count:"
 #~ msgstr "Luettu laskuri"
@@ -20977,14 +21128,6 @@ msgstr "Lohkot"
 #~ msgid "LDS temple"
 #~ msgstr "Mormonitemppeli"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "Linkin ID"
 
@@ -21025,15 +21168,6 @@ msgstr "Lohkot"
 #~ msgid "Main section blocks"
 #~ msgstr "Pääosan lohkot"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Avioitumisaikavälin loppu"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Avioitumisaikavälin alku"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Avioitumispaikka sisältää"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Avioliittoaikomus"
 
@@ -21066,9 +21200,6 @@ msgstr "Lohkot"
 
 #~ msgid "Move right"
 #~ msgstr "Siirrä oikealle"
-
-#~ msgid "Name List"
-#~ msgstr "Nimiluettelo"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -21150,9 +21281,6 @@ msgstr "Lohkot"
 #~ msgid "Online editing"
 #~ msgstr "Online tietojen muokkaaminen"
 
-#~ msgid "Orientation"
-#~ msgstr "Sivun asento"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Toinen kansio… ole hyvä ja kirjoita"
 
@@ -21183,20 +21311,8 @@ msgstr "Lohkot"
 #~ "eivät onnistu: %2$s. Pyydä palvelimesi ylläpitäjää ottaamaan asetuksen "
 #~ "käyttöön."
 
-#~ msgid "Page"
-#~ msgstr "Sivu"
-
-#~ msgid "Page size"
-#~ msgstr "Sivun koko"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Vanhemmat ja sisarukset"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Vanhempien ikä"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Esivanhemmat-kaavio"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "LDS kasteen paikkakunta"
@@ -21286,9 +21402,6 @@ msgstr "Lohkot"
 
 #~ msgid "President’s Office"
 #~ msgstr "Presidentin toimisto (Mormoni)"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21518,30 +21631,6 @@ msgstr "Lohkot"
 #~ msgid "Sha’aban"
 #~ msgstr "sha`ban"
 
-#~ msgid "She "
-#~ msgstr "Hän "
-
-#~ msgid "She died"
-#~ msgstr "Hän kuoli"
-
-#~ msgid "She married"
-#~ msgstr "Hänen miehensä oli"
-
-#~ msgid "She resided at"
-#~ msgstr "Hän asui"
-
-#~ msgid "She was born"
-#~ msgstr "Hän syntyi"
-
-#~ msgid "She was buried"
-#~ msgstr "Hänet on haudattu"
-
-#~ msgid "She was christened"
-#~ msgstr "Hänet kastettiin"
-
-#~ msgid "She was cremated"
-#~ msgstr "Hänet polttohaudattiin"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21570,9 +21659,6 @@ msgstr "Lohkot"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Näytä kaikki paikat listassa"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Näytä esipolvien lapset?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Näytä kuolleet ihmiset"
@@ -21610,12 +21696,6 @@ msgstr "Lohkot"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Näytä viimeisten sadan vuoden aikana kuolleet henkilöt."
 
-#~ msgid "Show notes?"
-#~ msgstr "Näytä lisätiedot?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Näytä ammatit?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Näytä vain elossa olevien henkilöiden tapahtumat?"
 
@@ -21625,23 +21705,11 @@ msgstr "Lohkot"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Näytetäänkö ainoastaan henkilöt, tapahtumat vai kaikki?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Näytä vireillä olevat muutokset"
-
-#~ msgid "Show photos?"
-#~ msgstr "Näytä valokuvat?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Näytä paikat hierarkiana"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Näytä sukulaishenkilöt ja -perheet."
-
-#~ msgid "Show residences?"
-#~ msgstr "Näytä asuinpaikat?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Näytä tietolähteet?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21659,14 +21727,8 @@ msgstr "Lohkot"
 #~ "patriarkoiksi&raquo;. He ovat henkilöitä, joilla ei ole vanhempia "
 #~ "tietokannassa."
 
-#~ msgid "Sister"
-#~ msgstr "Sisar"
-
 #~ msgid "Social security number"
 #~ msgstr "Henkilötunnus"
-
-#~ msgid "Son"
-#~ msgstr "Poika"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21679,9 +21741,6 @@ msgstr "Lohkot"
 #~ "lähdetieto on saatu. Näitä lisäkenttiä voidaan poistaa käytöstä "
 #~ "kirjoitettaessa uusia lähdetietoviitteitä."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Tapahtumien lähdetiedot"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -21692,15 +21751,6 @@ msgstr "Lohkot"
 #~ "valitaan <b>Kyllä</b>, niin käyttäjä voi hakea viestejään kun on "
 #~ "kirjautunut<b>webtrees</b>iin. Kun valitaan <b>Ei</b>, niin viestit "
 #~ "ainoastaan lähetetään sähköpostina, ilman niiden tallentamista."
-
-#~ msgid "Spouse"
-#~ msgstr "Puoliso"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Aviopuolisot ja lapset"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Muutosten aikavälin alku"
 
 #~ msgid "Surname option"
 #~ msgstr "Sukunimioptio"
@@ -22352,15 +22402,6 @@ msgstr "Lohkot"
 #~ msgid "To source"
 #~ msgstr "lähteeseen"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Hyväksyttyjä muutoksia yhteensä: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Henkilöitä yhteensä"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Vireillä olevia muutoksia yhteensä: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -22392,9 +22433,6 @@ msgstr "Lohkot"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Käytä SMTP -protokollaan ulkoisten viestien lähettämiseen"
-
-#~ msgid "Use colors"
-#~ msgstr "Käytä värejä?"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22776,9 +22814,6 @@ msgstr "Lohkot"
 #~ msgid "before %d"
 #~ msgstr "ennen %d"
 
-#~ msgid "daughter of"
-#~ msgstr "jonka vanhemmat olivat"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "pojan vaimonisä / miniän isä"
@@ -22790,14 +22825,6 @@ msgstr "Lohkot"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "miniän isä/äiti"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "kuoli"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "kuoli"
 
 #~ msgid "from %d"
 #~ msgstr "%d lähtien"
@@ -22826,17 +22853,6 @@ msgstr "Lohkot"
 #~ msgid "grandson’s wife"
 #~ msgstr "pojanpojanvaimo"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "avioitui"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "avioitui"
-
-#~ msgid "son of"
-#~ msgstr "jonka vanhemmat olivat"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "tyttären miehenisä / tyttären appi"
@@ -22848,14 +22864,6 @@ msgstr "Lohkot"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "tyttären appi/anoppi"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "syntyi"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "syntyi"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees tietokannan ja PGV pitää olla samassa serverissa"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:13+1200\n"
-"PO-Revision-Date: 2013-11-22 12:44+1200\n"
+"POT-Creation-Date: 2013-11-26 11:57+1200\n"
+"PO-Revision-Date: 2013-11-26 12:14+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -218,7 +218,7 @@ msgstr "No actualizar el campo “último cambio”"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1742,36 +1742,77 @@ msgstr "Estadísticas de ejecución"
 msgid "Facts for Individual records"
 msgstr "Hechos para registros de personas"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Todos los hechos"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Todas las personas"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Hechos únicos"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Hechos agregables a las personas una única vez"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Hechos para entradas nuevas"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "Hechos para personas nuevas"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Hechos rápidos"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Hechos personales rápidos"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Hechos para registros de  las familias"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Hechos Rápidos de Familia"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Hechos agregables una sola vez a familias"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Hechos para nuevas familias"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Hechos Rápidos de Familia"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Hechos para las fuentes"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Hechos rápidos para fuentes"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Hechos agregables una sola vez a fuentes"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "Hechos rápidos para fuentes"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Hechos para los repositorios"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Hechos rápidos para repositorios"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Hechos agregables una sola vez a repositorios"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "Hechos rápidos para repositorios"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2424,15 +2465,15 @@ msgstr "Error"
 msgid "You do not have permission to view this page."
 msgstr "No tiene permiso para ver esta página."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Agregar/editar entradas a boletín/novedades"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Título:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Texto de la entrada:"
 
@@ -3743,10 +3784,6 @@ msgstr ""
 "Esta opción controla si se muestran automáticamente o no los datos de una "
 "<i>Fuente</i> en la página de una persona."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Hechos agregables a familias"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3760,10 +3797,6 @@ msgstr ""
 "aparezcan en esta lista no deben aparecer también en la lista <i>Hechos "
 "agregables una sola vez a familias</i>."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Hechos Rápidos de Familia"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3771,10 +3804,6 @@ msgid ""
 msgstr ""
 "Es la lista corta de hechos GEDCOM familiares que aparecen junto a la lista "
 "completa que pueden añadirse con un solo clic."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Hechos agregables una sola vez a familias"
 
 #: help_text.php:523
 msgid ""
@@ -3962,10 +3991,6 @@ msgstr ""
 "user_name/webtrees_data/) o relativa a la carpeta de instalación (por "
 "ejemplo, ../../webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Hechos agregables a las personas"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3979,10 +4004,6 @@ msgstr ""
 "que aparezcan en esta lista no deben aparecer también en la lista <i>Hechos "
 "agregables a las personas una única vez</i>."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Hechos personales rápidos"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3990,10 +4011,6 @@ msgid ""
 msgstr ""
 "Es la lista corta de hechos GEDCOM personales que aparecen junto a la lista "
 "completa y que pueden añadirse con un solo clic."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Hechos agregables a las personas una única vez"
 
 #: help_text.php:601
 msgid ""
@@ -4333,10 +4350,6 @@ msgstr ""
 "registros (p. ej. INDI, FAM) o a los hechos (BIRT, MARR, DEAT).  Esta opción "
 "controla qué casillas se marcan por omisión."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Hechos para personas nuevas"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4348,10 +4361,6 @@ msgstr ""
 "la lista, los campos para fecha y lugar de nacimiento se mostrarán siempre "
 "en el formulario.Hec"
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Hechos para nuevas familias"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4362,10 +4371,6 @@ msgstr ""
 "se mostrarán en agregar una nueva familia.  Por ejemplo, si MARR aparece en "
 "la lista, los campos para fecha y lugar de matrimonio se mostrarán siempre "
 "en el formulario."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Hechos agregables a repositorios"
 
 #: help_text.php:797
 msgid ""
@@ -4380,10 +4385,6 @@ msgstr ""
 "hechos que aparezcan en esta lista no deben aparecer también en la lista "
 "<i>Hechos agregables una sola vez a repositorios</i>."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "Hechos rápidos para repositorios"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4391,10 +4392,6 @@ msgid ""
 msgstr ""
 "Es la lista corta de hechos GEDCOM para repositorios que aparece junto a la "
 "lista completa y que pueden añadirse con un solo clic."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Hechos agregables una sola vez a repositorios"
 
 #: help_text.php:807
 msgid ""
@@ -4634,10 +4631,6 @@ msgstr ""
 "automáticamente un número ID para ella.  El ID de la fuente tendrá este "
 "prefijo."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Hechos agregables a fuentes"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4651,10 +4644,6 @@ msgstr ""
 "aparezcan en esta lista no deben aparecer también en la lista <i>Hechos "
 "agregables una sola vez a fuentes</i>."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "Hechos rápidos para fuentes"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4662,10 +4651,6 @@ msgid ""
 msgstr ""
 "Es la lista corta de hechos GEDCOM para las fuentes que aparece junto a la "
 "lista completa y que pueden añadirse con un solo clic."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Hechos agregables una sola vez a fuentes"
 
 #: help_text.php:918
 msgid ""
@@ -9623,9 +9608,8 @@ msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%G:%i:%s"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -11084,15 +11068,15 @@ msgstr "Zimbabue"
 msgid "%s BCE"
 msgstr "%s a.C."
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "Mi árbol genealógico"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "Ana María /Fulano/ de Tal"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Editar esta persona para reemplazar los detalles con los que quieres"
 
@@ -16263,6 +16247,12 @@ msgstr "Pestañas"
 msgid "Blocks"
 msgstr "Bloques"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " pero los detalles son desconocidos"
+
+#~ msgid " in "
+#~ msgstr " en "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%2$s %1$dª"
@@ -16370,6 +16360,17 @@ msgstr "Bloques"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9º"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Un informe de los hechos que se apoyan en una determinada fuente."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -16494,6 +16495,9 @@ msgstr "Bloques"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Adopción de un nieto"
 
+#~ msgid "All facts"
+#~ msgstr "Todos los hechos"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "También conocido como"
@@ -16501,6 +16505,9 @@ msgstr "Bloques"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "También conocido como"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Antepasados de "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -16521,6 +16528,10 @@ msgstr "Bloques"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "abril"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16642,6 +16653,9 @@ msgstr "Bloques"
 #~ msgid "Birth"
 #~ msgstr "Nacimiento"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "Lugar del nacimiento contiene"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Nacimiento de una nieta"
@@ -16665,6 +16679,9 @@ msgstr "Bloques"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Brit Milá de un nieto"
+
+#~ msgid "Brother"
+#~ msgstr "Hermano"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16705,6 +16722,15 @@ msgstr "Bloques"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Comprador"
+
+#~ msgid "Child of "
+#~ msgstr "Hijo de "
+
+#~ msgid "Children of "
+#~ msgstr "Hijos de "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Elige parientes"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16756,6 +16782,12 @@ msgstr "Bloques"
 #~ msgid "Current Server Time:"
 #~ msgstr "Hora actual del sistema:"
 
+#~ msgid "Daughter"
+#~ msgstr "Hija"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Lugar de defunción contiene"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Muerte de una nieta"
@@ -16791,6 +16823,13 @@ msgstr "Bloques"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "diciembre"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Descendientes de "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16844,6 +16883,15 @@ msgstr "Bloques"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "Zu I-Qa`da"
 
+#~ msgid "Differences"
+#~ msgstr "Diferencias"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Ascendientes en linea directa"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Antepasados de línea ​​directa y sus familias"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Descargar %s y extraer los archivos"
 
@@ -16879,6 +16927,15 @@ msgstr "Bloques"
 #~ msgid "Employer"
 #~ msgstr "Jefe"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Fechas de cambio a"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Ingrese ID Familia"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Introduzca el ID de la persona"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Esf"
@@ -16898,6 +16955,15 @@ msgstr "Bloques"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Hechos agregables a familias"
+
+#~ msgid "Family with husband"
+#~ msgstr "Familia con marido"
+
+#~ msgid "Family with wife"
+#~ msgstr "Familia con esposa"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16955,6 +17021,9 @@ msgstr "Bloques"
 #~ msgid "Floréal"
 #~ msgstr "floreal"
 
+#~ msgid "Font"
+#~ msgstr "Fuente"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Acogida"
@@ -17007,6 +17076,9 @@ msgstr "Bloques"
 #~ msgid "Fructidor"
 #~ msgstr "fructidor"
 
+#~ msgid "Generation "
+#~ msgstr "Generación "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "germinal"
@@ -17031,6 +17103,37 @@ msgstr "Bloques"
 #~ msgid "Guardian"
 #~ msgstr "Tutor"
 
+#~ msgid "He "
+#~ msgstr "Él "
+
+#~ msgid "He died"
+#~ msgstr "Murió"
+
+#~ msgid "He married"
+#~ msgstr "Se casó el"
+
+#~ msgid "He resided at"
+#~ msgstr "Vivió en"
+
+#~ msgid "He was born"
+#~ msgstr "Nació"
+
+#~ msgid "He was buried"
+#~ msgstr "Enterrado"
+
+#~ msgid "He was christened"
+#~ msgstr "Fue bautizado"
+
+#~ msgid "He was cremated"
+#~ msgstr "Incinerado"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvética"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Su ocupación era"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "jeshván"
@@ -17047,9 +17150,15 @@ msgstr "Bloques"
 #~ msgid "Heshvan"
 #~ msgstr "jeshván"
 
+#~ msgid "His occupation was"
+#~ msgstr "Su ocupación era"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "islandés"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Hechos agregables a las personas"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -17211,6 +17320,14 @@ msgstr "Bloques"
 #~ msgid "Kislev"
 #~ msgstr "kislev"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "US Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "US Letter"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "Lituano"
@@ -17252,6 +17369,15 @@ msgstr "Bloques"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "marzo"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Fechas de casamiento a"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Fechas de casamiento desde"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Lugar de matrimonio contiene"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -17365,6 +17491,9 @@ msgstr "Bloques"
 #~ msgid "Name"
 #~ msgstr "Nombre"
 
+#~ msgid "Name List"
+#~ msgstr "Lista de nombres"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Nunca se casó"
@@ -17372,6 +17501,9 @@ msgstr "Bloques"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Nunca se casó"
+
+#~ msgid "New entry facts"
+#~ msgstr "Hechos para entradas nuevas"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -17481,6 +17613,9 @@ msgstr "Bloques"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Orientación"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Dueño"
@@ -17488,6 +17623,18 @@ msgstr "Bloques"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Propietario"
+
+#~ msgid "Page"
+#~ msgstr "Página"
+
+#~ msgid "Page size"
+#~ msgstr "Tamaño de página"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Padres y hermanos"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Árbol de Ascendientes"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -17528,6 +17675,12 @@ msgstr "Bloques"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "pradeal"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Imprimir sucesos básicos cuando en blanco?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Hechos rápidos"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17603,6 +17756,9 @@ msgstr "Bloques"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Funcionario del Registro"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Hechos agregables a repositorios"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17727,6 +17883,30 @@ msgstr "Bloques"
 #~ msgid "Shawwal"
 #~ msgstr "Shawwal"
 
+#~ msgid "She "
+#~ msgstr "Ella "
+
+#~ msgid "She died"
+#~ msgstr "Murió"
+
+#~ msgid "She married"
+#~ msgstr "Se casó el"
+
+#~ msgid "She resided at"
+#~ msgstr "Vivió en"
+
+#~ msgid "She was born"
+#~ msgstr "Nació"
+
+#~ msgid "She was buried"
+#~ msgstr "Enterrada"
+
+#~ msgid "She was christened"
+#~ msgstr "Fue bautizada"
+
+#~ msgid "She was cremated"
+#~ msgstr "Incinerada"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "shevat"
@@ -17742,6 +17922,30 @@ msgstr "Bloques"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "shevat"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Mostrar a los niños de los antepasados​​?"
+
+#~ msgid "Show notes?"
+#~ msgstr "¿Mostrar notas?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "¿Mostrar occupaciones?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Mostrar cambios pendientes"
+
+#~ msgid "Show photos?"
+#~ msgstr "¿Mostrar fotos?"
+
+#~ msgid "Show residences?"
+#~ msgstr "¿Mostrar residencias?"
+
+#~ msgid "Show sources?"
+#~ msgstr "¿Mostrar fuentes?"
+
+#~ msgid "Sister"
+#~ msgstr "Hermana"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17767,9 +17971,27 @@ msgstr "Bloques"
 #~ msgid "Slave"
 #~ msgstr "Esclavo"
 
+#~ msgid "Son"
+#~ msgstr "Hijo"
+
+#~ msgid "Source add facts"
+#~ msgstr "Hechos agregables a fuentes"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Fuentes para los eventos"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "español"
+
+#~ msgid "Spouse"
+#~ msgstr "Cónyuge"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Cónyuges e hijos"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Fechas de cambio desde"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17863,6 +18085,18 @@ msgstr "Bloques"
 #~ msgid "Tishrei"
 #~ msgstr "tishrei"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Total de cambios aceptados: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Número de personas"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Cambios pendientes: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Hechos únicos"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Desconocido"
@@ -17880,6 +18114,9 @@ msgstr "Bloques"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Actualizar a webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Usar colores"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -18061,6 +18298,9 @@ msgstr "Bloques"
 #~ msgid "d."
 #~ msgstr "f."
 
+#~ msgid "daughter of"
+#~ msgstr "hija de"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "nuera"
@@ -18080,6 +18320,14 @@ msgstr "Bloques"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "consuegro"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "falleció"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "falleció"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -19386,6 +19634,14 @@ msgstr "Bloques"
 #~ msgstr "m."
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "casada"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "casado"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "nombre de casada"
 
@@ -19729,6 +19985,9 @@ msgstr "Bloques"
 #~ msgid "sixth cousin"
 #~ msgstr "primo sexto"
 
+#~ msgid "son of"
+#~ msgstr "hijo de"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "yerno"
@@ -19929,6 +20188,14 @@ msgstr "Bloques"
 #~ msgid "unknown"
 #~ msgstr "desconocido"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "nació"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "nació"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19937,14 +20204,11 @@ msgstr "Bloques"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " pero los detalles son desconocidos"
-
-#~ msgid " in "
-#~ msgstr " en "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%2$s de %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%G:%i:%s"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s three times removed ascending"
@@ -20143,23 +20407,12 @@ msgstr "Bloques"
 #~ "cuenta de usuario de la base de datos tiene los permisos necesarios para "
 #~ "ello)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Un informe de los hechos que se apoyan en una determinada fuente."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "Un usuario no podrá acceder hasta la «verificado de correo electrónico» "
 #~ "así como la «aprobado por un administrador» estén seleccionados."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "Access"
 #~ msgstr "Acceso"
@@ -20262,9 +20515,6 @@ msgstr "Bloques"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Mostrar la edad de los padres junto a la fecha de nacimiento"
 
-#~ msgid "All individuals"
-#~ msgstr "Todas las personas"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Permitir a los visitantes cambiar de GEDCOM"
 
@@ -20281,19 +20531,12 @@ msgstr "Bloques"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Error inesperado de la base de datos."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Antepasados de "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Número ID en Ancestral File"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr ""
 #~ "¿Está seguro de que quiere deshacer todos los cambios a este GEDCOM?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Bloques disponibles"
@@ -20307,9 +20550,6 @@ msgstr "Bloques"
 #~ msgid "Binary data object"
 #~ msgstr "Objeto de Datos Binarios"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Lugar del nacimiento contiene"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Mostrar detalles de nacimiento y muerte en los diagramas"
 
@@ -20318,9 +20558,6 @@ msgstr "Bloques"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Comienzo del rango de fechas de nacimiento"
-
-#~ msgid "Brother"
-#~ msgstr "Hermano"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Lugar del entierro contiene"
@@ -20338,15 +20575,6 @@ msgstr "Bloques"
 
 #~ msgid "Change family members"
 #~ msgstr "Modificar los miembros de la familia"
-
-#~ msgid "Child of "
-#~ msgstr "Hijo de "
-
-#~ msgid "Children of "
-#~ msgstr "Hijos de "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Elige parientes"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -20494,12 +20722,6 @@ msgstr "Bloques"
 #~ msgid "Date of residence"
 #~ msgstr "Fecha de la residencia"
 
-#~ msgid "Daughter"
-#~ msgstr "Hija"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Lugar de defunción contiene"
-
 #~ msgid "Death date range end"
 #~ msgstr "Fin del rango de fechas de defunción"
 
@@ -20508,13 +20730,6 @@ msgstr "Bloques"
 
 #~ msgid "Default theme"
 #~ msgstr "Tema por defecto"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Descendientes de "
 
 #~ msgid "Descent steps"
 #~ msgstr "Pasos de descendencia"
@@ -20534,15 +20749,6 @@ msgstr "Bloques"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Zu I-Qa`da"
-
-#~ msgid "Differences"
-#~ msgstr "Diferencias"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Ascendientes en linea directa"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Antepasados de línea ​​directa y sus familias"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "No sellar, sellamiento anterior cancelado"
@@ -20639,15 +20845,6 @@ msgstr "Bloques"
 
 #~ msgid "End year"
 #~ msgstr "Año final"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Fechas de cambio a"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Ingrese ID Familia"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Introduzca el ID de la persona"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20805,20 +21002,11 @@ msgstr "Bloques"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Carrito Genealógico"
 
-#~ msgid "Family with husband"
-#~ msgstr "Familia con marido"
-
-#~ msgid "Family with wife"
-#~ msgstr "Familia con esposa"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Lugar de nacimiento del padre (formato Chapman)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Edad del padre"
-
-#~ msgid "Font"
-#~ msgstr "Fuente"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20883,9 +21071,6 @@ msgstr "Bloques"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Generación "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20910,30 +21095,6 @@ msgstr "Bloques"
 #~ "para verificar su solicitud de cuenta.  Tras la verificación, el "
 #~ "administrador tendrá que aprobar el registro para que la cuenta se active."
 
-#~ msgid "He "
-#~ msgstr "Él "
-
-#~ msgid "He died"
-#~ msgstr "Murió"
-
-#~ msgid "He married"
-#~ msgstr "Se casó el"
-
-#~ msgid "He resided at"
-#~ msgstr "Vivió en"
-
-#~ msgid "He was born"
-#~ msgstr "Nació"
-
-#~ msgid "He was buried"
-#~ msgstr "Enterrado"
-
-#~ msgid "He was christened"
-#~ msgstr "Fue bautizado"
-
-#~ msgid "He was cremated"
-#~ msgstr "Incinerado"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Hola %s …"
 
@@ -20942,13 +21103,6 @@ msgstr "Bloques"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Hola Administrador …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvética"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Su ocupación era"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -21057,9 +21211,6 @@ msgstr "Bloques"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Ocultar y mostrar"
-
-#~ msgid "His occupation was"
-#~ msgstr "Su ocupación era"
 
 #~ msgid "Hit count:"
 #~ msgstr "Número de accesos:"
@@ -21288,14 +21439,6 @@ msgstr "Bloques"
 #~ msgid "LDS temple"
 #~ msgstr "Templo SUD"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "US Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "US Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "Vincular ID"
 
@@ -21337,15 +21480,6 @@ msgstr "Bloques"
 #~ msgid "Main section blocks"
 #~ msgstr "Bloques de la Sección Principal"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Fechas de casamiento a"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Fechas de casamiento desde"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Lugar de matrimonio contiene"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Proposición de matrimonio"
 
@@ -21386,9 +21520,6 @@ msgstr "Bloques"
 
 #~ msgid "Move right"
 #~ msgstr "Mover a la derecha"
-
-#~ msgid "Name List"
-#~ msgstr "Lista de nombres"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -21470,9 +21601,6 @@ msgstr "Bloques"
 #~ msgid "Online editing"
 #~ msgstr "Edición en línea"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientación"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Otra carpeta… por favor, introduzca su nombre"
 
@@ -21503,20 +21631,8 @@ msgstr "Bloques"
 #~ "llevar a cabo las siguientes funciones: : %2$s. Pídale al administrador "
 #~ "de su servidor que la active."
 
-#~ msgid "Page"
-#~ msgstr "Página"
-
-#~ msgid "Page size"
-#~ msgstr "Tamaño de página"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Padres y hermanos"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Edad del progenitor"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Árbol de Ascendientes"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Lugar del bautismo SUD"
@@ -21656,9 +21772,6 @@ msgstr "Bloques"
 
 #~ msgid "President’s Office"
 #~ msgstr "Oficina Presidencial"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Imprimir sucesos básicos cuando en blanco?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21899,30 +22012,6 @@ msgstr "Bloques"
 #~ msgid "Sha’aban"
 #~ msgstr "Sha `ban"
 
-#~ msgid "She "
-#~ msgstr "Ella "
-
-#~ msgid "She died"
-#~ msgstr "Murió"
-
-#~ msgid "She married"
-#~ msgstr "Se casó el"
-
-#~ msgid "She resided at"
-#~ msgstr "Vivió en"
-
-#~ msgid "She was born"
-#~ msgstr "Nació"
-
-#~ msgid "She was buried"
-#~ msgstr "Enterrada"
-
-#~ msgid "She was christened"
-#~ msgstr "Fue bautizada"
-
-#~ msgid "She was cremated"
-#~ msgstr "Incinerada"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21956,9 +22045,6 @@ msgstr "Bloques"
 #~ msgid "Show all places in a list"
 #~ msgstr "Mostrar todos los lugares en una lista"
 
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Mostrar a los niños de los antepasados​​?"
-
 #~ msgid "Show dead individuals"
 #~ msgstr "Ver fallecidos"
 
@@ -21991,12 +22077,6 @@ msgstr "Bloques"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Mostrar las personas que fallecieron en los últimos 100 años."
 
-#~ msgid "Show notes?"
-#~ msgstr "¿Mostrar notas?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "¿Mostrar occupaciones?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "¿Mostrar solamente eventos de personas vivas?"
 
@@ -22006,23 +22086,11 @@ msgstr "Bloques"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "¿Mostrar sólo personas, eventos o todo?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Mostrar cambios pendientes"
-
-#~ msgid "Show photos?"
-#~ msgstr "¿Mostrar fotos?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Mostrar lugares jerárquicamente"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Mostrar personas/familias relacionadas"
-
-#~ msgid "Show residences?"
-#~ msgstr "¿Mostrar residencias?"
-
-#~ msgid "Show sources?"
-#~ msgstr "¿Mostrar fuentes?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -22039,14 +22107,8 @@ msgstr "Bloques"
 #~ "Mostrar parejas o personas «raíz».  También se las conoce como "
 #~ "«patriarcas».  Son personas cuyos padres no constan en la base de datos."
 
-#~ msgid "Sister"
-#~ msgstr "Hermana"
-
 #~ msgid "Social security number"
 #~ msgstr "Número Seguridad Social"
-
-#~ msgid "Son"
-#~ msgstr "Hijo"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -22059,9 +22121,6 @@ msgstr "Bloques"
 #~ "en la fuente.  Si no usa estos campos, puede deshabilitarlos al crear "
 #~ "nuevas citas de fuentes"
 
-#~ msgid "Sources to the events"
-#~ msgstr "Fuentes para los eventos"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -22073,15 +22132,6 @@ msgstr "Bloques"
 #~ "podrán recuperar sus mensajes cuando se identifiquen a <b>webtrees</b>.  "
 #~ "Si se fija a <b>No</b>, los mensajes sólo se enviarán por correo "
 #~ "electrónico."
-
-#~ msgid "Spouse"
-#~ msgstr "Cónyuge"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Cónyuges e hijos"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Fechas de cambio desde"
 
 #~ msgid "Surname option"
 #~ msgstr "Opción de apellidos"
@@ -22764,15 +22814,6 @@ msgstr "Bloques"
 #~ msgid "To source"
 #~ msgstr "A fuente"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Total de cambios aceptados: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Número de personas"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Cambios pendientes: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -22804,9 +22845,6 @@ msgstr "Bloques"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Utilizar SMTP para enviar el correo externo"
-
-#~ msgid "Use colors"
-#~ msgstr "Usar colores"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -23209,9 +23247,6 @@ msgstr "Bloques"
 #~ msgid "before %d"
 #~ msgstr "antes de %d"
 
-#~ msgid "daughter of"
-#~ msgstr "hija de"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "consuegro"
@@ -23223,14 +23258,6 @@ msgstr "Bloques"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "consuegro"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "falleció"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "falleció"
 
 #~ msgid "estate name"
 #~ msgstr "nombre de finca"
@@ -23270,17 +23297,6 @@ msgstr "Bloques"
 #~ msgid "grandson’s wife"
 #~ msgstr "esposa del nieto"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "casada"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "casado"
-
-#~ msgid "son of"
-#~ msgstr "hijo de"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "consuegro"
@@ -23292,14 +23308,6 @@ msgstr "Bloques"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "consuegro"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "nació"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "nació"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr ""

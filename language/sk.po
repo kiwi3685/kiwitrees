@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:17+1200\n"
-"PO-Revision-Date: 2013-11-22 12:56+1200\n"
+"POT-Creation-Date: 2013-11-26 12:00+1200\n"
+"PO-Revision-Date: 2013-11-26 12:11+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: sk\n"
@@ -213,7 +213,7 @@ msgstr "Nezmeniť záznam o poslednej zmene."
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1719,36 +1719,77 @@ msgstr "Štatistiky vykonania"
 msgid "Facts for Individual records"
 msgstr "Fakty pre záznamy osôb"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Všetky fakty"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Všetci ľudia"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Unikátne fakty"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Unikátne osobné fakty"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Novo vložené fakty"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "Fakty pre novú osobu"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Rýchle fakty"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "Rýchle osobné fakty"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Fakty pre záznamy rodín"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Rýchle rodinné fakty"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Unikátne rodinné fakty"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "Fakty pre novú rodinu"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "Rýchle rodinné fakty"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Fakty pre záznamy zdrojov"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Rýchle fakty o zdrojoch"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Unikátne fakty o zdrojoch"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "Rýchle fakty o zdrojoch"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Fakty pre záznamy archívov"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Rýchle fakty archívov"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Unikátne fakty o archívoch"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "Rýchle fakty archívov"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2405,15 +2446,15 @@ msgstr "Chyba"
 msgid "You do not have permission to view this page."
 msgstr "Nemáte oprávnenie na prezeranie tejto stránky."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Pridať/upraviť denník/novinky"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Názov:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Vložte text:"
 
@@ -3683,10 +3724,6 @@ msgstr ""
 "Táto voľba určuje či bude alebo nebude automaticky zobrazený obsah záznamov  "
 "<i>Zdroje</i> na stránke osoby."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Fakty pridávané k rodinám"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3699,10 +3736,6 @@ msgstr ""
 "vytvorením vlastných. Názvy údajov, ktoré sa objavia v zozname, sa nesmú "
 "objaviť v zozname <i>Unikátnych rodinných faktov</i>."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "Rýchle rodinné fakty"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3710,10 +3743,6 @@ msgid ""
 msgstr ""
 "Toto je krátky zoznam GEDCOM-tagov pre fakty rodiny, ktoré sa zobrazujú "
 "vedľa plného zoznamu a môžu byť pridané jedným kliknutím."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Unikátne rodinné fakty"
 
 #: help_text.php:523
 msgid ""
@@ -3896,10 +3925,6 @@ msgstr ""
 "Priečinok môže byť zadaný buď úplne (napr. /home/user_name/webtrees_data/) "
 "alebo relatívne k inštalačnému priečinku (napr. ../../webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Fakty pridané k osobám"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3912,10 +3937,6 @@ msgstr ""
 "tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú "
 "objaviť v zozname <i>Unikátnych osobných faktov</i>."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "Rýchle osobné fakty"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3923,10 +3944,6 @@ msgid ""
 msgstr ""
 "Toto je krátky zoznam GEDCOM-tagov pre fakty osôb, ktoré sa zobrazujú vedľa "
 "plného zoznamu a môžu byť pridané jedným kliknutím."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Unikátne osobné fakty"
 
 #: help_text.php:601
 msgid ""
@@ -4240,10 +4257,6 @@ msgstr ""
 "záznamu (napr. INDI, FAM) alebo k faktu (BIRT, MARR, DEAT). Táto voľba "
 "kontroluje, ktoré políčka sú štandardne zaškrtnuté."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "Fakty pre novú osobu"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4254,10 +4267,6 @@ msgstr ""
 "pridávaní novej osoby. Napríklad ak je v zozname BIRT, tak sa vo formulári "
 "zobrazí pole pre zadanie dátumu narodenia a miesta narodenia."
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "Fakty pre novú rodinu"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4267,10 +4276,6 @@ msgstr ""
 "Toto je čiarkami oddelený zoznam GEDCOM-tagov, ktoré sa zobrazia pri "
 "pridávaní novej rodiny. Napríklad ak je v zozname MARR, tak sa vo formulári "
 "zobrazí pole pre dátum svadby a miesto svadby."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Fakty pridané k archívom"
 
 #: help_text.php:797
 msgid ""
@@ -4284,10 +4289,6 @@ msgstr ""
 "prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa zobrazia v "
 "zozname sa nesmú objaviť v zozname <i> Unikátne fakty archívov</i>."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "Rýchle fakty archívov"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4295,10 +4296,6 @@ msgid ""
 msgstr ""
 "Toto je krátký zoznam GEDCOM-tagov faktov pre archívy, ktoré sa zobrazujú "
 "vedľa plného zoznamu a môžu byť pridané jedným kliknutím."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Unikátne fakty o archívoch"
 
 #: help_text.php:807
 msgid ""
@@ -4528,10 +4525,6 @@ msgstr ""
 "Ak je pridaný online vo <b>webtrees</b> nový záznam zdroja, bude automaticky "
 "vytvorené nové ID. Toto ID zdroja bude mať nasledujúcu predponu."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Fakty pridávané k zdrojom"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4544,10 +4537,6 @@ msgstr ""
 "aj vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname, sa nesmie "
 "objaviť v zozname <i>Unikátnych faktov o zdrojoch</i>."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "Rýchle fakty o zdrojoch"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4555,10 +4544,6 @@ msgid ""
 msgstr ""
 "Toto je krátky zoznam GEDCOM-tagov faktov, ktoré sa objavia vedľa plného "
 "zoznamu a môžu byť pridané na jeden klik."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Unikátne fakty o zdrojoch"
 
 #: help_text.php:918
 msgid ""
@@ -9388,9 +9373,8 @@ msgid "%j %F %Y"
 msgstr "%j. %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%G:%i:%s"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10863,15 +10847,15 @@ msgstr "Zimbabwe"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "Môj rodokmeň"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "John /DOE/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Upraviť túto osobu a prepísať jej údaje vlastnými"
 
@@ -15331,7 +15315,7 @@ msgstr "Zoznam záznamov, ktoré boli nedávno zmenené."
 #, php-format
 msgid "Changes in the last day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "%s Zmenené za posledný deň"
+msgstr[0] "Zmenené za posledný %s deň"
 msgstr[1] "Zmenené za posledných %s dní"
 msgstr[2] "Zmenené za posledných %s dní"
 
@@ -15972,6 +15956,12 @@ msgstr "Záložky"
 msgid "Blocks"
 msgstr "Bloky"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " ale podrobnosti nie sú známe"
+
+#~ msgid " in "
+#~ msgstr " v lokalite "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -16079,6 +16069,17 @@ msgstr "Bloky"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Výpis faktov, ktoré sú v danom zdroji."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -16203,6 +16204,9 @@ msgstr "Bloky"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Adopcia vnuka"
 
+#~ msgid "All facts"
+#~ msgstr "Všetky fakty"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "Tiež známy(a) ako"
@@ -16210,6 +16214,9 @@ msgstr "Bloky"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "Tiež známy(a) ako"
+
+#~ msgid "Ancestors of "
+#~ msgstr "Predkovia "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -16230,6 +16237,10 @@ msgstr "Bloky"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "apríl"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16351,6 +16362,9 @@ msgstr "Bloky"
 #~ msgid "Birth"
 #~ msgstr "Narodenie"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "Miesto narodenia obsahuje"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Narodenie vnučky"
@@ -16374,6 +16388,9 @@ msgstr "Bloky"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Brit mila vnuka"
+
+#~ msgid "Brother"
+#~ msgstr "Brat"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16414,6 +16431,15 @@ msgstr "Bloky"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Kupujúci"
+
+#~ msgid "Child of "
+#~ msgstr "Dieťa "
+
+#~ msgid "Children of "
+#~ msgstr "Deti "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Zvoľte príbuzných"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16465,6 +16491,12 @@ msgstr "Bloky"
 #~ msgid "Current Server Time:"
 #~ msgstr "Aktuálny čas servera:"
 
+#~ msgid "Daughter"
+#~ msgstr "Dcéra"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Miesto úmrtia obsahuje"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Úmrtie vnučky"
@@ -16500,6 +16532,13 @@ msgstr "Bloky"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "december"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "Potomkovia "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16553,6 +16592,15 @@ msgstr "Bloky"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "Dhu al-Qi'dah"
 
+#~ msgid "Differences"
+#~ msgstr "Rozdiely"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Predkovia po priamej líni"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Predkovia po priamej línii a ich rodiny"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Načítať %s a rozbaliť súbory."
 
@@ -16588,6 +16636,15 @@ msgstr "Bloky"
 #~ msgid "Employer"
 #~ msgstr "Zamestnávateľ"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Konečný dátum rozsahu zmien"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "Vložte ID rodiny"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "Zadať ID osoby"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Esf"
@@ -16607,6 +16664,15 @@ msgstr "Bloky"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Fakty pridávané k rodinám"
+
+#~ msgid "Family with husband"
+#~ msgstr "Rodina s manželom"
+
+#~ msgid "Family with wife"
+#~ msgstr "Rodina s manželkou"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16664,6 +16730,9 @@ msgstr "Bloky"
 #~ msgid "Floréal"
 #~ msgstr "Floréal"
 
+#~ msgid "Font"
+#~ msgstr "Font"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Pestún"
@@ -16716,6 +16785,9 @@ msgstr "Bloky"
 #~ msgid "Fructidor"
 #~ msgstr "Fructidor"
 
+#~ msgid "Generation "
+#~ msgstr "Generácia "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "Germinal"
@@ -16740,6 +16812,37 @@ msgstr "Bloky"
 #~ msgid "Guardian"
 #~ msgstr "Poručník"
 
+#~ msgid "He "
+#~ msgstr "On "
+
+#~ msgid "He died"
+#~ msgstr "Zomrel"
+
+#~ msgid "He married"
+#~ msgstr "Jeho manželkou sa stala"
+
+#~ msgid "He resided at"
+#~ msgstr "Býval v lokalite"
+
+#~ msgid "He was born"
+#~ msgstr "Narodil sa"
+
+#~ msgid "He was buried"
+#~ msgstr "Bol pochovaný"
+
+#~ msgid "He was christened"
+#~ msgstr "Bol pokrstený"
+
+#~ msgid "He was cremated"
+#~ msgstr "Bol spopolnený"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Jej povolanie bolo"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
@@ -16756,9 +16859,15 @@ msgstr "Bloky"
 #~ msgid "Heshvan"
 #~ msgstr "Heshvan"
 
+#~ msgid "His occupation was"
+#~ msgstr "Jeho povolanie bolo"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "Islandská"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Fakty pridané k osobám"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16920,6 +17029,14 @@ msgstr "Bloky"
 #~ msgid "Kislev"
 #~ msgstr "Kislev"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "List"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "litovčina"
@@ -16959,6 +17076,15 @@ msgstr "Bloky"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "marec"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "Rozsah dátumu sobášov končí"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Rozsah dátumu sobášov začína"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Miesto sobáša obsahuje"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -17072,6 +17198,9 @@ msgstr "Bloky"
 #~ msgid "Name"
 #~ msgstr "Názov"
 
+#~ msgid "Name List"
+#~ msgstr "Zoznam mien"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Celý život slobodná/ý"
@@ -17079,6 +17208,9 @@ msgstr "Bloky"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Celý život slobodná/ý"
+
+#~ msgid "New entry facts"
+#~ msgstr "Novo vložené fakty"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -17188,6 +17320,9 @@ msgstr "Bloky"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Orientácia"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Vlastník"
@@ -17195,6 +17330,18 @@ msgstr "Bloky"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Vlastník"
+
+#~ msgid "Page"
+#~ msgstr "Strana"
+
+#~ msgid "Page size"
+#~ msgstr "Veľkosť stránky"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Rodičia a súrodenci"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Vývod"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -17235,6 +17382,12 @@ msgstr "Bloky"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "Prairial"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Tlačiť základné údaje, i keď sú prázdne?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Rýchle fakty"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17310,6 +17463,9 @@ msgstr "Bloky"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Matričný úradník"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Fakty pridané k archívom"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17432,6 +17588,30 @@ msgstr "Bloky"
 #~ msgid "Shawwal"
 #~ msgstr "Shawwal"
 
+#~ msgid "She "
+#~ msgstr "Ona "
+
+#~ msgid "She died"
+#~ msgstr "Zomrela"
+
+#~ msgid "She married"
+#~ msgstr "Jej manželom sa stal"
+
+#~ msgid "She resided at"
+#~ msgstr "Bývala v lokalite"
+
+#~ msgid "She was born"
+#~ msgstr "Narodila sa"
+
+#~ msgid "She was buried"
+#~ msgstr "Bola pochovaná"
+
+#~ msgid "She was christened"
+#~ msgstr "Bola pokrstená"
+
+#~ msgid "She was cremated"
+#~ msgstr "Bola spopolnená"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
@@ -17447,6 +17627,30 @@ msgstr "Bloky"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "Shevat"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Zobraziť deti predkov?"
+
+#~ msgid "Show notes?"
+#~ msgstr "Zobrazit poznámky?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Zobraziť povolanie?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Zobraziť čakajúce zmeny"
+
+#~ msgid "Show photos?"
+#~ msgstr "Zobraziť fotky?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Zobraziť sídlo?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Zobraziť zdroje?"
+
+#~ msgid "Sister"
+#~ msgstr "Sestra"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17472,9 +17676,27 @@ msgstr "Bloky"
 #~ msgid "Slave"
 #~ msgstr "Otrok"
 
+#~ msgid "Son"
+#~ msgstr "Syn"
+
+#~ msgid "Source add facts"
+#~ msgstr "Fakty pridávané k zdrojom"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Zdroje pre udalosti"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Španielske"
+
+#~ msgid "Spouse"
+#~ msgstr "Partner"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Partneri a deti"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Počiatočný dátum rozsahu zmien"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17567,6 +17789,18 @@ msgstr "Bloky"
 #~ msgid "Tishrei"
 #~ msgstr "Tishrei"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Počet priajých zmien: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Celkový počet osôb"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Počet čakajúcich zmien: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Unikátne fakty"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Neznámy"
@@ -17584,6 +17818,9 @@ msgstr "Bloky"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "Upgrade na webtrees verziu %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Použiť farby"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17765,6 +18002,9 @@ msgstr "Bloky"
 #~ msgid "d."
 #~ msgstr "†"
 
+#~ msgid "daughter of"
+#~ msgstr "dcéra"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "nevesta"
@@ -17784,6 +18024,14 @@ msgstr "Bloky"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "svat"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "zomrela"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "zomrel"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -19090,6 +19338,14 @@ msgstr "Bloky"
 #~ msgstr "manž."
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "vydatá"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "ženatý"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "priezvisko po sobáši"
 
@@ -19433,6 +19689,9 @@ msgstr "Bloky"
 #~ msgid "sixth cousin"
 #~ msgstr "bratranec/sesternica zo 6. kolena"
 
+#~ msgid "son of"
+#~ msgstr "syn"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "zať"
@@ -19633,6 +19892,14 @@ msgstr "Bloky"
 #~ msgid "unknown"
 #~ msgstr "neznáma"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "sa narodil"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "sa narodil"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19641,14 +19908,11 @@ msgstr "Bloky"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " ale podrobnosti nie sú známe"
-
-#~ msgid " in "
-#~ msgstr " v lokalite "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%2$s od %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%G:%i:%s"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s o tri generácie vyššie"
@@ -19837,9 +20101,6 @@ msgstr "Bloky"
 #~ "existujúcu databázu (vytvorenú správcom vášho serveru) alebo vytvorte "
 #~ "novú (ak má váš databázový účet dostatočné oprávnenia)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Výpis faktov, ktoré sú v danom zdroji."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
@@ -19847,14 +20108,6 @@ msgstr "Bloky"
 #~ "Užívateľ nebude schopný sa prihlásiť do tej doby, dokedy nebude jeho \\"
 #~ "\"email overený\\\" a \\\"schválený správcom\\\" (príslušné voľby "
 #~ "označené)."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "Access"
 #~ msgstr "Prístup"
@@ -19949,9 +20202,6 @@ msgstr "Bloky"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Zobraziť vek rodičov pri narodení detí"
 
-#~ msgid "All individuals"
-#~ msgstr "Všetci ľudia"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Povoliť prepínanie medzi GEDCOM súbormi"
 
@@ -19966,18 +20216,11 @@ msgstr "Bloky"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Objavila sa neočakávaná chyba databáze."
 
-#~ msgid "Ancestors of "
-#~ msgstr "Predkovia "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Číslo súboru predkov (AFN)"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Ste si istý, že chcete zrušiť všetky zmeny pre tento GEDCOM?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Použiteľné bloky"
@@ -19991,9 +20234,6 @@ msgstr "Bloky"
 #~ msgid "Binary data object"
 #~ msgstr "Binárny datový objekt"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "Miesto narodenia obsahuje"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Zobraziť podrobnosti o narodení a úmrtí vo vývode a rozrode"
 
@@ -20002,9 +20242,6 @@ msgstr "Bloky"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Rozsah dátumu narodenia začína"
-
-#~ msgid "Brother"
-#~ msgstr "Brat"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Miesto pohrebu obsahuje"
@@ -20022,15 +20259,6 @@ msgstr "Bloky"
 
 #~ msgid "Change family members"
 #~ msgstr "Zmeniť členov rodiny"
-
-#~ msgid "Child of "
-#~ msgstr "Dieťa "
-
-#~ msgid "Children of "
-#~ msgstr "Deti "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Zvoľte príbuzných"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -20170,12 +20398,6 @@ msgstr "Bloky"
 #~ msgid "Date of residence"
 #~ msgstr "Dátum bydliska"
 
-#~ msgid "Daughter"
-#~ msgstr "Dcéra"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Miesto úmrtia obsahuje"
-
 #~ msgid "Death date range end"
 #~ msgstr "Rozsah dátumu úmrtia končí"
 
@@ -20184,13 +20406,6 @@ msgstr "Bloky"
 
 #~ msgid "Default theme"
 #~ msgstr "Úvodná téma"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "Potomkovia "
 
 #~ msgid "Descent steps"
 #~ msgstr "Počet generácií potomkov"
@@ -20210,15 +20425,6 @@ msgstr "Bloky"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dhu al-Qi'dah"
-
-#~ msgid "Differences"
-#~ msgstr "Rozdiely"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Predkovia po priamej líni"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Predkovia po priamej línii a ich rodiny"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Do not seal, previous sealing cancelled (LDS)"
@@ -20309,15 +20515,6 @@ msgstr "Bloky"
 
 #~ msgid "End year"
 #~ msgstr "Konečný rok"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Konečný dátum rozsahu zmien"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "Vložte ID rodiny"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Zadať ID osoby"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20451,20 +20648,11 @@ msgstr "Bloky"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Schránka výstrižkov"
 
-#~ msgid "Family with husband"
-#~ msgstr "Rodina s manželom"
-
-#~ msgid "Family with wife"
-#~ msgstr "Rodina s manželkou"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Otcove miesto narodenia - (Chapman formát)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Vek otca"
-
-#~ msgid "Font"
-#~ msgstr "Font"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20527,9 +20715,6 @@ msgstr "Bloky"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "Generácia "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20552,30 +20737,6 @@ msgstr "Bloky"
 #~ "<br>Po overení bude musieť administrátor registráciu potvrdiť, aby bol "
 #~ "účet aktivovaný."
 
-#~ msgid "He "
-#~ msgstr "On "
-
-#~ msgid "He died"
-#~ msgstr "Zomrel"
-
-#~ msgid "He married"
-#~ msgstr "Jeho manželkou sa stala"
-
-#~ msgid "He resided at"
-#~ msgstr "Býval v lokalite"
-
-#~ msgid "He was born"
-#~ msgstr "Narodil sa"
-
-#~ msgid "He was buried"
-#~ msgstr "Bol pochovaný"
-
-#~ msgid "He was christened"
-#~ msgstr "Bol pokrstený"
-
-#~ msgid "He was cremated"
-#~ msgstr "Bol spopolnený"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Ahoj %s …"
 
@@ -20584,13 +20745,6 @@ msgstr "Bloky"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Ahoj administrátor …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Jej povolanie bolo"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20693,9 +20847,6 @@ msgstr "Bloky"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Ukryť &amp; zobraziť"
-
-#~ msgid "His occupation was"
-#~ msgstr "Jeho povolanie bolo"
 
 #~ msgid "Hit count:"
 #~ msgstr "Počet prístupov:"
@@ -20912,14 +21063,6 @@ msgstr "Bloky"
 #~ msgid "LDS temple"
 #~ msgstr "Chrám LDS (Temple)"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "List"
-
 #~ msgid "Link ID"
 #~ msgstr "ID odkazu"
 
@@ -20959,15 +21102,6 @@ msgstr "Bloky"
 #~ msgid "Main section blocks"
 #~ msgstr "Bloky hlavného oddielu"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Rozsah dátumu sobášov končí"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Rozsah dátumu sobášov začína"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Miesto sobáša obsahuje"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Oznámenie sobáša"
 
@@ -21000,9 +21134,6 @@ msgstr "Bloky"
 
 #~ msgid "Move right"
 #~ msgstr "Presunúť doprava"
-
-#~ msgid "Name List"
-#~ msgstr "Zoznam mien"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -21083,9 +21214,6 @@ msgstr "Bloky"
 #~ msgid "Online editing"
 #~ msgstr "Online editácia"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientácia"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Iný priečinok… prosím napíšte"
 
@@ -21116,20 +21244,8 @@ msgstr "Bloky"
 #~ "nasledujúce funkcie vám nebudú fungovať: %2$s. Prosím požiadajte svojho "
 #~ "správcu serveru o aktiváciu tohoto rozšírenia."
 
-#~ msgid "Page"
-#~ msgstr "Strana"
-
-#~ msgid "Page size"
-#~ msgstr "Veľkosť stránky"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Rodičia a súrodenci"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Vek rodičov"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Vývod"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "Miesto LDS krstu"
@@ -21213,9 +21329,6 @@ msgstr "Bloky"
 
 #~ msgid "President’s Office"
 #~ msgstr "President's Office"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Tlačiť základné údaje, i keď sú prázdne?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21443,30 +21556,6 @@ msgstr "Bloky"
 #~ msgid "Sha’aban"
 #~ msgstr "Sha'aban"
 
-#~ msgid "She "
-#~ msgstr "Ona "
-
-#~ msgid "She died"
-#~ msgstr "Zomrela"
-
-#~ msgid "She married"
-#~ msgstr "Jej manželom sa stal"
-
-#~ msgid "She resided at"
-#~ msgstr "Bývala v lokalite"
-
-#~ msgid "She was born"
-#~ msgstr "Narodila sa"
-
-#~ msgid "She was buried"
-#~ msgstr "Bola pochovaná"
-
-#~ msgid "She was christened"
-#~ msgstr "Bola pokrstená"
-
-#~ msgid "She was cremated"
-#~ msgstr "Bola spopolnená"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21495,9 +21584,6 @@ msgstr "Bloky"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Zobraziť všetky miesta zo zoznamu."
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Zobraziť deti predkov?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Zobraziť mená zomrelých osôb"
@@ -21531,12 +21617,6 @@ msgstr "Bloky"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Zobraziť osoby ktoré zomreli v priebehu posledných 100 rokov."
 
-#~ msgid "Show notes?"
-#~ msgstr "Zobrazit poznámky?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Zobraziť povolanie?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Zobraziť iba udalosti žijúcich osôb?"
 
@@ -21546,23 +21626,11 @@ msgstr "Bloky"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Zobraziť iba osoby a udalosti alebo všetko?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Zobraziť čakajúce zmeny"
-
-#~ msgid "Show photos?"
-#~ msgstr "Zobraziť fotky?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Zobraziť miesta hierarchicky"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Zobraziť príbuzné osoby / rodiny"
-
-#~ msgid "Show residences?"
-#~ msgstr "Zobraziť sídlo?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Zobraziť zdroje?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21580,14 +21648,8 @@ msgstr "Bloky"
 #~ "«patriarchami». Sú to osoby ktoré nemajú záznam o rodičoch v tejto "
 #~ "databázi."
 
-#~ msgid "Sister"
-#~ msgstr "Sestra"
-
 #~ msgid "Social security number"
 #~ msgstr "Social security number (USA)"
-
-#~ msgid "Son"
-#~ msgstr "Syn"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21600,9 +21662,6 @@ msgstr "Bloky"
 #~ "nepoužívate tieto polia, môžete ich deaktivovať, keď vytvárate nové "
 #~ "citácie zdrojov."
 
-#~ msgid "Sources to the events"
-#~ msgstr "Zdroje pre udalosti"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -21613,15 +21672,6 @@ msgstr "Bloky"
 #~ "Ak <b>Áno</b>, užívatelia budú schopný dohľadať svoje správy po "
 #~ "prihlásení do <b>webtrees</b>. Ak <b>Nie</b>, správy budú iba odoslané "
 #~ "mailom."
-
-#~ msgid "Spouse"
-#~ msgstr "Partner"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Partneri a deti"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Počiatočný dátum rozsahu zmien"
 
 #~ msgid "Surname option"
 #~ msgstr "Voľby priezvísk"
@@ -22262,15 +22312,6 @@ msgstr "Bloky"
 #~ msgid "To source"
 #~ msgstr "k zdroju"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Počet priajých zmien: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Celkový počet osôb"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Počet čakajúcich zmien: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -22302,9 +22343,6 @@ msgstr "Bloky"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "Použiť SMTP na posielanie externých e-mailov"
-
-#~ msgid "Use colors"
-#~ msgstr "Použiť farby"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22682,9 +22720,6 @@ msgstr "Bloky"
 #~ msgid "before %d"
 #~ msgstr "pred %d"
 
-#~ msgid "daughter of"
-#~ msgstr "dcéra"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "svat"
@@ -22696,14 +22731,6 @@ msgstr "Bloky"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "svat"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "zomrela"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "zomrel"
 
 #~ msgid "from %d"
 #~ msgstr "od %d"
@@ -22732,17 +22759,6 @@ msgstr "Bloky"
 #~ msgid "grandson’s wife"
 #~ msgstr "manželka vnuka"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "vydatá"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "ženatý"
-
-#~ msgid "son of"
-#~ msgstr "syn"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "svat"
@@ -22754,14 +22770,6 @@ msgstr "Bloky"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "svat"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "sa narodil"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "sa narodil"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees databáza musí byť na rovnakom serveri ako PGV"

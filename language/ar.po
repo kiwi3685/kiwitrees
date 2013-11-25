@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:10+1200\n"
-"PO-Revision-Date: 2013-11-22 12:46+1200\n"
+"POT-Creation-Date: 2013-11-26 11:54+1200\n"
+"PO-Revision-Date: 2013-11-26 12:17+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -213,7 +213,7 @@ msgstr "عدم تحديث سجل ”آخر تعديل“."
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1693,36 +1693,77 @@ msgstr "إحصائيات التنفيذ"
 msgid "Facts for Individual records"
 msgstr "معلومات للسجلات الفردية"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "كل المعلومات"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "الجميع"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "معلومات فريدة"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "معلومات فردية فريدة"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "معلومات إضافية للإدخال الجديد"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "معلومات للأفراد الجدد"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "معلومات موجزة"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "معلومات فردية موجزة"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "معلومات سجلات الأسر"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "معلومات أسرية موجزة"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "معلومات أسرية فريدة"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "معلومات للأسر الجديدة"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "معلومات أسرية موجزة"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "معلومات سجلات المصادر"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "معلومات مصادر مختزلة"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "معلومات مصادر فريدة"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "معلومات مصادر مختزلة"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "معلومات سجلات المستودع"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "معلومات مستودعات مختزلة"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "معلومات مستودعات فريدة"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "معلومات مستودعات مختزلة"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2371,15 +2412,15 @@ msgstr "خطأ"
 msgid "You do not have permission to view this page."
 msgstr "لا يوجد صلاحية للإطلاع هذه الصفحة."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "إضافة/تعديل نص ذكرى شخصية"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "المسمى:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "النص:"
 
@@ -3576,10 +3617,6 @@ msgid ""
 "<i>Source</i> record on the Individual page."
 msgstr "هذا الخيار للتحكم بإظهار محتوى <b>مصدر</b> تلقائياً في صفحة الفرد."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "إضافة معلومات أسرة"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3591,10 +3628,6 @@ msgstr ""
 "إزالة أسماء المعلومات حسب مواصفات علامات GEDCOM. المعلومات التي تظهر في هذه "
 "القائمة يجب أن لا تتكرر في قائمة <b>معلومات أسرية فريدة</b>."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "معلومات أسرية موجزة"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3602,10 +3635,6 @@ msgid ""
 msgstr ""
 "هذه قائمة مختصرة لقائمة معلومات الأسرة في GEDCOM والتي تظهر بالقرب من "
 "القائمة الكاملة ويمكن إضافة أي منها بنقرة واحدة عليها."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "معلومات أسرية فريدة"
 
 #: help_text.php:523
 msgid ""
@@ -3780,10 +3809,6 @@ msgstr ""
 "يتم تعيين المجلد اما بالمسار الكامل، مثال ( /home/user_name/webtrees_data/) "
 "أو إنتساباً إلى مسار مجلد التثبيت، مثال: (../../webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "إضافة معلومات للفرد"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3795,10 +3820,6 @@ msgstr ""
 "إزالة أسماء المعلومات حسب مواصفات علامات GEDCOM. المعلومات التي تظهر في هذه "
 "القائمة يجب أن لا تتكرر في قائمة <b>معلومات فردية فريدة</b>."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "معلومات فردية موجزة"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3806,10 +3827,6 @@ msgid ""
 msgstr ""
 "هذه قائمة مختصرة لقائمة معلومات الفرد في GEDCOM والتي تظهر بالقرب من القائمة "
 "الكاملة ويمكن إضافة أي منها بنقرة واحدة عليها."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "معلومات فردية فريدة"
 
 #: help_text.php:601
 msgid ""
@@ -4096,10 +4113,6 @@ msgid ""
 "which checkboxes are ticked by default."
 msgstr "عند إضافة أقرباء يمكن إضافة إقتباس من مصدر للسجلات أو المعلومات."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "معلومات للأفراد الجدد"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4110,10 +4123,6 @@ msgstr ""
 "BIRT في القائمة يعني أنه ستظهر خانات لإدخال تأريخ ومكان الميلاد في نموذج "
 "إضافة الفرد."
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "معلومات للأسر الجديدة"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4123,10 +4132,6 @@ msgstr ""
 "هذه قائمة لعلامات معلومات GEDCOM والتي ستظهر عند إضافة أسرة جديدة. مثلاً وضع "
 "MARR في القائمة يعني أنه ستظهر خانات لإدخال تأريخ ومكان ال.,h[ في نموذج "
 "إضافة الأسرة."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "إضافة معلومات المستودعات"
 
 #: help_text.php:797
 msgid ""
@@ -4139,10 +4144,6 @@ msgstr ""
 "إزالة أسماء المعلومات حسب مواصفات علامات GEDCOM. المعلومات التي تظهر في هذه "
 "القائمة يجب أن لا تتكرر في قائمة <b>معلومات مستودعات فريدة</b>."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "معلومات مستودعات مختزلة"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4150,10 +4151,6 @@ msgid ""
 msgstr ""
 "هذه قائمة مختصرة لقائمة معلومات المستودع في GEDCOM والتي تظهر بالقرب من "
 "القائمة الكاملة ويمكن إضافة أي منها بنقرة واحدة عليها."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "معلومات مستودعات فريدة"
 
 #: help_text.php:807
 msgid ""
@@ -4372,10 +4369,6 @@ msgstr ""
 "عندما تتم إضافة سجل مصدر جديد من الموقع يتم إنشاء معرف خاص به، وهذا ما سوف "
 "يستخدم كبادئة له."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "إضافة معلومات المصادر"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4387,10 +4380,6 @@ msgstr ""
 "إزالة أسماء المعلومات حسب مواصفات علامات GEDCOM. المعلومات التي تظهر في هذه "
 "القائمة يجب أن لا تتكرر في قائمة <b>معلومات مصادر فريدة</b>."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "معلومات مصادر مختزلة"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4398,10 +4387,6 @@ msgid ""
 msgstr ""
 "هذه قائمة مختصرة لقائمة معلومات المصدر في GEDCOM والتي تظهر بالقرب من "
 "القائمة الكاملة ويمكن إضافة أي منها بنقرة واحدة عليها."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "معلومات مصادر فريدة"
 
 #: help_text.php:918
 msgid ""
@@ -9105,9 +9090,8 @@ msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%h:%i:%s%A"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10622,15 +10606,15 @@ msgstr "زمبابوي"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "مشجر عائلتي"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "عنترة /العبسي/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "تعديل معلومات هذا الفرد وإستبدالها بتفاصيل أخرى"
 
@@ -15709,6 +15693,12 @@ msgstr "جداول"
 msgid "Blocks"
 msgstr "كتل"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " ولكن التفاصيل غير معروفة"
+
+#~ msgid " in "
+#~ msgstr " في "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -15816,6 +15806,17 @@ msgstr "كتل"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "الـ9"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "تقرير عن الحقائق التي لها مراجع من مصدر محدد."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "11x17"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "210x297 م.م."
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -15940,6 +15941,9 @@ msgstr "كتل"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "تبني إبن إبن"
 
+#~ msgid "All facts"
+#~ msgstr "كل المعلومات"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "إسم آخر تعرف  به"
@@ -15947,6 +15951,9 @@ msgstr "كتل"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "إسم آخر يعرف به"
+
+#~ msgid "Ancestors of "
+#~ msgstr "أسلاف "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -15967,6 +15974,10 @@ msgstr "كتل"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "أبريل"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16088,6 +16099,9 @@ msgstr "كتل"
 #~ msgid "Birth"
 #~ msgstr "ولادة"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "مكان الميلاد فيه:"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "ولادة بنت بنت"
@@ -16111,6 +16125,9 @@ msgstr "كتل"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "ختان إبن إبن"
+
+#~ msgid "Brother"
+#~ msgstr "أخ"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16151,6 +16168,15 @@ msgstr "كتل"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "مشتري"
+
+#~ msgid "Child of "
+#~ msgstr "ولد "
+
+#~ msgid "Children of "
+#~ msgstr "أولاد "
+
+#~ msgid "Choose relatives"
+#~ msgstr "إختر الأقرباء"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16201,6 +16227,12 @@ msgstr "كتل"
 #~ msgid "Current Server Time:"
 #~ msgstr "الوقت الآن لدى مزود الخدمة:"
 
+#~ msgid "Daughter"
+#~ msgstr "بنت"
+
+#~ msgid "Death Place contains"
+#~ msgstr "مكان الوفاة فيه:"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "وفاة بنت بنت"
@@ -16236,6 +16268,13 @@ msgstr "كتل"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "ديسمبر"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "أنسال "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16289,6 +16328,15 @@ msgstr "كتل"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "ذو القعدة"
 
+#~ msgid "Differences"
+#~ msgstr "إختلافات"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "أسلاف مباشرين"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "أسلاف مباشرين مع أسرهم"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "تنزيل %s و فك الملفات المظغوطة."
 
@@ -16324,6 +16372,15 @@ msgstr "كتل"
 #~ msgid "Employer"
 #~ msgstr "رب العمل"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "نهاية نطاق تأريخ التعديل"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "إدخال المعرف الخاص بالأسرة"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "إدخال المعرف الخاص بفرد"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "إسف"
@@ -16343,6 +16400,15 @@ msgstr "كتل"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "إسفند"
+
+#~ msgid "Family add facts"
+#~ msgstr "إضافة معلومات أسرة"
+
+#~ msgid "Family with husband"
+#~ msgstr "الأسرة مع الزوج"
+
+#~ msgid "Family with wife"
+#~ msgstr "الأسرة مع الزوجة"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16400,6 +16466,9 @@ msgstr "كتل"
 #~ msgid "Floréal"
 #~ msgstr "فلوريال"
 
+#~ msgid "Font"
+#~ msgstr "بنط الخط"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "كفالة"
@@ -16452,6 +16521,9 @@ msgstr "كتل"
 #~ msgid "Fructidor"
 #~ msgstr "فركتيدور"
 
+#~ msgid "Generation "
+#~ msgstr "جيل "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "جيرمينال"
@@ -16476,6 +16548,37 @@ msgstr "كتل"
 #~ msgid "Guardian"
 #~ msgstr "وصي"
 
+#~ msgid "He "
+#~ msgstr "هو "
+
+#~ msgid "He died"
+#~ msgstr "تُوفي"
+
+#~ msgid "He married"
+#~ msgstr "تزوج"
+
+#~ msgid "He resided at"
+#~ msgstr "أقام في"
+
+#~ msgid "He was born"
+#~ msgstr "وُلد"
+
+#~ msgid "He was buried"
+#~ msgstr "دُفن"
+
+#~ msgid "He was christened"
+#~ msgstr "نُصر"
+
+#~ msgid "He was cremated"
+#~ msgstr "أُحرق"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "وظيفتها كانت"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "حِشوان"
@@ -16492,9 +16595,15 @@ msgstr "كتل"
 #~ msgid "Heshvan"
 #~ msgstr "حِشوان"
 
+#~ msgid "His occupation was"
+#~ msgstr "وظيفته كانت"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "أيسلندي"
+
+#~ msgid "Individual add facts"
+#~ msgstr "إضافة معلومات للفرد"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16656,6 +16765,14 @@ msgstr "كتل"
 #~ msgid "Kislev"
 #~ msgstr "كِسلو"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "8.5x14 بوصة"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "8.5x11 بوصة"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "ليثواني"
@@ -16696,6 +16813,15 @@ msgstr "كتل"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "مارس"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "نهاية نطاق تأريخ الزواج"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "بداية نطاق تأريخ الزواج"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "مكان الزواج فيه:"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -16809,6 +16935,9 @@ msgstr "كتل"
 #~ msgid "Name"
 #~ msgstr "الإسم"
 
+#~ msgid "Name List"
+#~ msgstr "قائمة الأسماء"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "لم تتزوج"
@@ -16816,6 +16945,9 @@ msgstr "كتل"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "لم يتزوج"
+
+#~ msgid "New entry facts"
+#~ msgstr "معلومات إضافية للإدخال الجديد"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -16925,6 +17057,9 @@ msgstr "كتل"
 #~ msgid "Ordibehesht"
 #~ msgstr "ارديبهشت"
 
+#~ msgid "Orientation"
+#~ msgstr "تنسيق"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "مالكة"
@@ -16932,6 +17067,18 @@ msgstr "كتل"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "مالك"
+
+#~ msgid "Page"
+#~ msgstr "صفحة"
+
+#~ msgid "Page size"
+#~ msgstr "مقاس الصفحة"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "الوالدين والإخوة"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "مخطط نسب"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -16972,6 +17119,12 @@ msgstr "كتل"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "براريال"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "تضمبن الأحداث ولو لا يوجد عنها معلومات؟"
+
+#~ msgid "Quick facts"
+#~ msgstr "معلومات موجزة"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17047,6 +17200,9 @@ msgstr "كتل"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "ضابط سجلات"
+
+#~ msgid "Repository add facts"
+#~ msgstr "إضافة معلومات المستودعات"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17170,6 +17326,30 @@ msgstr "كتل"
 #~ msgid "Shawwal"
 #~ msgstr "شوّال"
 
+#~ msgid "She "
+#~ msgstr "هي "
+
+#~ msgid "She died"
+#~ msgstr "تُوفيت"
+
+#~ msgid "She married"
+#~ msgstr "تزوجت"
+
+#~ msgid "She resided at"
+#~ msgstr "أقامت في"
+
+#~ msgid "She was born"
+#~ msgstr "وُلدت"
+
+#~ msgid "She was buried"
+#~ msgstr "دُفنت"
+
+#~ msgid "She was christened"
+#~ msgstr "نُصرت"
+
+#~ msgid "She was cremated"
+#~ msgstr "أُحرقت"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "شباط"
@@ -17185,6 +17365,30 @@ msgstr "كتل"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "شباط"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "إظهار أولاد الأسلاف"
+
+#~ msgid "Show notes?"
+#~ msgstr "إظهار الملاحظات؟"
+
+#~ msgid "Show occupations?"
+#~ msgstr "إظهار الوظائف؟"
+
+#~ msgid "Show pending changes"
+#~ msgstr "إظهار التعديلات المعلقة"
+
+#~ msgid "Show photos?"
+#~ msgstr "إظهار الصور؟"
+
+#~ msgid "Show residences?"
+#~ msgstr "إظهار المساكن؟"
+
+#~ msgid "Show sources?"
+#~ msgstr "إظهار المصادر؟"
+
+#~ msgid "Sister"
+#~ msgstr "أخت"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17210,9 +17414,27 @@ msgstr "كتل"
 #~ msgid "Slave"
 #~ msgstr "عبد"
 
+#~ msgid "Son"
+#~ msgstr "إبن"
+
+#~ msgid "Source add facts"
+#~ msgstr "إضافة معلومات المصادر"
+
+#~ msgid "Sources to the events"
+#~ msgstr "مصادر للأحداث"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "إسباني"
+
+#~ msgid "Spouse"
+#~ msgstr "الزوج"
+
+#~ msgid "Spouses and children"
+#~ msgstr "الأزواج و الأولاد"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "بداية نطاق تأريخ التعديل"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17305,6 +17527,18 @@ msgstr "كتل"
 #~ msgid "Tishrei"
 #~ msgstr "تشرين"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "إجمالي التعديلات المقبولة: "
+
+#~ msgid "Total individuals"
+#~ msgstr "مجموع الأفراد"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "إجمالي التعديلات المعلقة: "
+
+#~ msgid "Unique facts"
+#~ msgstr "معلومات فريدة"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "غير معروف"
@@ -17322,6 +17556,9 @@ msgstr "كتل"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "تحديث إلى نسخة رقم %s"
+
+#~ msgid "Use colors"
+#~ msgstr "إستخدام الألوان"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17503,6 +17740,9 @@ msgstr "كتل"
 #~ msgid "d."
 #~ msgstr "ت."
 
+#~ msgid "daughter of"
+#~ msgstr "بنت"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "زوجة إبن"
@@ -17522,6 +17762,14 @@ msgstr "كتل"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "والد زوجة إبن"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "تُوفيت"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "تُوفي"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -18828,6 +19076,14 @@ msgstr "كتل"
 #~ msgstr "تز."
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "متزوجة"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "متزوج"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "إسمها ما بعد الزواج"
 
@@ -19171,6 +19427,9 @@ msgstr "كتل"
 #~ msgid "sixth cousin"
 #~ msgstr "حفيد سادس لسلف مشترك"
 
+#~ msgid "son of"
+#~ msgstr "إبن"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "زوج بنت"
@@ -19371,6 +19630,14 @@ msgstr "كتل"
 #~ msgid "unknown"
 #~ msgstr "غير معروفة"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "وُلدت"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "وُلد"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19379,14 +19646,11 @@ msgstr "كتل"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " ولكن التفاصيل غير معروفة"
-
-#~ msgid " in "
-#~ msgstr " في "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%2$s %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%h:%i:%s%A"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s بفارق ثلاثة أجيال علواً"
@@ -19571,23 +19835,12 @@ msgstr "كتل"
 #~ "(غالباً منشأة مسبقاً من قبل مدير الخادم) أو إنشاء قاعدة جديدة (إذا كانت "
 #~ "صلاحية الحساب في خادم قاعدة البيانات تتيح ذلك)"
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "تقرير عن الحقائق التي لها مراجع من مصدر محدد."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "لن يتمكن المستخدم من تسجيل الدخول إلا بعد أن تكون خيارات \"البريد "
 #~ "الإلكتروني مصادق\" و \"مقبول من المدير\" مؤشراً عليها."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "11x17"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "210x297 م.م."
 
 #~ msgid "Access"
 #~ msgstr "صلاحية النفاذ"
@@ -19682,9 +19935,6 @@ msgstr "كتل"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "عمر الوالدين بمحاذة عمر الفرد"
 
-#~ msgid "All individuals"
-#~ msgstr "الجميع"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "تمكين تبديل GEDCOM"
 
@@ -19699,18 +19949,11 @@ msgstr "كتل"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "لقد نتج خطأ غير متوقع في قاعدة البيانات."
 
-#~ msgid "Ancestors of "
-#~ msgstr "أسلاف "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "رقم ملف الأسلاف"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "هل أنت متأكد من رغبتك في التراجع عن كل التعديلات لهذا الـ GEDCOM؟"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "الكتل المتاحة"
@@ -19724,9 +19967,6 @@ msgstr "كتل"
 #~ msgid "Binary data object"
 #~ msgstr "كائن بيانات ثنائي"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "مكان الميلاد فيه:"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "تفاصيل الولادات والوفيات في المخططات"
 
@@ -19735,9 +19975,6 @@ msgstr "كتل"
 
 #~ msgid "Birth date range start"
 #~ msgstr "بداية نطاق تأريخ الميلاد"
-
-#~ msgid "Brother"
-#~ msgstr "أخ"
 
 #~ msgid "Burial place contains"
 #~ msgstr "مكان الدفن فيه:"
@@ -19753,15 +19990,6 @@ msgstr "كتل"
 
 #~ msgid "Change family members"
 #~ msgstr "تغيير أفراد الأسرة"
-
-#~ msgid "Child of "
-#~ msgstr "ولد "
-
-#~ msgid "Children of "
-#~ msgstr "أولاد "
-
-#~ msgid "Choose relatives"
-#~ msgstr "إختر الأقرباء"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -19897,12 +20125,6 @@ msgstr "كتل"
 #~ msgid "Date of residence"
 #~ msgstr "تاريخ الإقامة"
 
-#~ msgid "Daughter"
-#~ msgstr "بنت"
-
-#~ msgid "Death Place contains"
-#~ msgstr "مكان الوفاة فيه:"
-
 #~ msgid "Death date range end"
 #~ msgstr "نهاية نطاق تأريخ الوفاة"
 
@@ -19911,13 +20133,6 @@ msgstr "كتل"
 
 #~ msgid "Default theme"
 #~ msgstr "المظهر الإفتراضي"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "أنسال "
 
 #~ msgid "Descent steps"
 #~ msgstr "عدد أجيال الأنسال"
@@ -19937,15 +20152,6 @@ msgstr "كتل"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "ذو القعدة"
-
-#~ msgid "Differences"
-#~ msgstr "إختلافات"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "أسلاف مباشرين"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "أسلاف مباشرين مع أسرهم"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "لا تحكم، إحكام سابق ملغى"
@@ -20025,15 +20231,6 @@ msgstr "كتل"
 
 #~ msgid "End year"
 #~ msgstr "سنة النهاية"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "نهاية نطاق تأريخ التعديل"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "إدخال المعرف الخاص بالأسرة"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "إدخال المعرف الخاص بفرد"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20153,20 +20350,11 @@ msgstr "كتل"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "سلة مقتطفات المشجر"
 
-#~ msgid "Family with husband"
-#~ msgstr "الأسرة مع الزوج"
-
-#~ msgid "Family with wife"
-#~ msgstr "الأسرة مع الزوجة"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "مكان ميلاد الأب (صيغة شابمان)"
 
 #~ msgid "Father’s age"
 #~ msgstr "عمر الأب"
-
-#~ msgid "Font"
-#~ msgstr "بنط الخط"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20230,9 +20418,6 @@ msgstr "كتل"
 #~ msgid "Gedcom"
 #~ msgstr "GEDCOM"
 
-#~ msgid "Generation "
-#~ msgstr "جيل "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20254,30 +20439,6 @@ msgstr "كتل"
 #~ "رسالة إلكترونية لطالب التسجيل للمصادقة على الطلب. وبعد المصادقة يجب على "
 #~ "المدير الموافقة على التسجيل قبل أن يصبح مفعلاً."
 
-#~ msgid "He "
-#~ msgstr "هو "
-
-#~ msgid "He died"
-#~ msgstr "تُوفي"
-
-#~ msgid "He married"
-#~ msgstr "تزوج"
-
-#~ msgid "He resided at"
-#~ msgstr "أقام في"
-
-#~ msgid "He was born"
-#~ msgstr "وُلد"
-
-#~ msgid "He was buried"
-#~ msgstr "دُفن"
-
-#~ msgid "He was christened"
-#~ msgstr "نُصر"
-
-#~ msgid "He was cremated"
-#~ msgstr "أُحرق"
-
 #~ msgid "Hello %s…"
 #~ msgstr "مرحباً %s …"
 
@@ -20286,13 +20447,6 @@ msgstr "كتل"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "مرحباً يا مدير …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "وظيفتها كانت"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20390,9 +20544,6 @@ msgstr "كتل"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "إظهار و إخفاء"
-
-#~ msgid "His occupation was"
-#~ msgstr "وظيفته كانت"
 
 #~ msgid "Hit count:"
 #~ msgstr "عدد المشاهدات"
@@ -20585,14 +20736,6 @@ msgstr "كتل"
 #~ msgid "LDS temple"
 #~ msgstr "معبد قديسي اليوم الأخير"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "8.5x14 بوصة"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "8.5x11 بوصة"
-
 #~ msgid "Link ID"
 #~ msgstr "معرف الرابط الخاص"
 
@@ -20631,15 +20774,6 @@ msgstr "كتل"
 #~ msgid "Main section blocks"
 #~ msgstr "كتل القسم الرئيسي"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "نهاية نطاق تأريخ الزواج"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "بداية نطاق تأريخ الزواج"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "مكان الزواج فيه:"
-
 #~ msgid "Marriage intention"
 #~ msgstr "نية زواج"
 
@@ -20672,9 +20806,6 @@ msgstr "كتل"
 
 #~ msgid "Move right"
 #~ msgstr "إلى اليمين"
-
-#~ msgid "Name List"
-#~ msgstr "قائمة الأسماء"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -20759,9 +20890,6 @@ msgstr "كتل"
 #~ msgid "Online editing"
 #~ msgstr "التعديل عبر الشبكة"
 
-#~ msgid "Orientation"
-#~ msgstr "تنسيق"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "مجلد آخر … لطفاً أدخال"
 
@@ -20789,20 +20917,8 @@ msgstr "كتل"
 #~ "إعداد PHP \"%1$s\" غير مفعل. وبدون تفعيله المزايا التالية لن تعمل: %2$s. "
 #~ "لطفاً الطلب من مدير الموقع تفعيل ذلك."
 
-#~ msgid "Page"
-#~ msgstr "صفحة"
-
-#~ msgid "Page size"
-#~ msgstr "مقاس الصفحة"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "الوالدين والإخوة"
-
 #~ msgid "Parent’s age"
 #~ msgstr "عمر الوالدين"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "مخطط نسب"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "مكان معمودية LDS"
@@ -20875,9 +20991,6 @@ msgstr "كتل"
 
 #~ msgid "President’s Office"
 #~ msgstr "مكتب الرئيس"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "تضمبن الأحداث ولو لا يوجد عنها معلومات؟"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21109,30 +21222,6 @@ msgstr "كتل"
 #~ msgid "Sha’aban"
 #~ msgstr "شعبان"
 
-#~ msgid "She "
-#~ msgstr "هي "
-
-#~ msgid "She died"
-#~ msgstr "تُوفيت"
-
-#~ msgid "She married"
-#~ msgstr "تزوجت"
-
-#~ msgid "She resided at"
-#~ msgstr "أقامت في"
-
-#~ msgid "She was born"
-#~ msgstr "وُلدت"
-
-#~ msgid "She was buried"
-#~ msgstr "دُفنت"
-
-#~ msgid "She was christened"
-#~ msgstr "نُصرت"
-
-#~ msgid "She was cremated"
-#~ msgstr "أُحرقت"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21162,9 +21251,6 @@ msgstr "كتل"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "إظهار قائمة جميع الأماكن"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "إظهار أولاد الأسلاف"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "إظهار المتوفين"
@@ -21198,12 +21284,6 @@ msgstr "كتل"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "إظهار من توفي خلال المائة عاماً الماضية."
 
-#~ msgid "Show notes?"
-#~ msgstr "إظهار الملاحظات؟"
-
-#~ msgid "Show occupations?"
-#~ msgstr "إظهار الوظائف؟"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "إظهار أحداث الأحياء فقط؟"
 
@@ -21213,23 +21293,11 @@ msgstr "كتل"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "إظهار الأفراد أم الأحداث، أم الجميع؟"
 
-#~ msgid "Show pending changes"
-#~ msgstr "إظهار التعديلات المعلقة"
-
-#~ msgid "Show photos?"
-#~ msgstr "إظهار الصور؟"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "إظهار الأماكن هرمياً"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "إظهار أفراد وأسر ذات علاقة"
-
-#~ msgid "Show residences?"
-#~ msgstr "إظهار المساكن؟"
-
-#~ msgid "Show sources?"
-#~ msgstr "إظهار المصادر؟"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21242,14 +21310,8 @@ msgstr "كتل"
 #~ "in the database."
 #~ msgstr "إظهار الأفراد الذين لا يوجد لهم أسلاف في المشجر."
 
-#~ msgid "Sister"
-#~ msgstr "أخت"
-
 #~ msgid "Social security number"
 #~ msgstr "رقم الضمان الإجتماعي"
-
-#~ msgid "Son"
-#~ msgstr "إبن"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21259,9 +21321,6 @@ msgstr "كتل"
 #~ msgstr ""
 #~ "إقتباسات المصادر يمكن أن تحتوي على مدى جودة المعلومة فيها وكذلك التأريخ. "
 #~ "يمكن تعطيل هذا عند إنشاء إقتباس جديد."
-
-#~ msgid "Sources to the events"
-#~ msgstr "مصادر للأحداث"
 
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
@@ -21273,15 +21332,6 @@ msgstr "كتل"
 #~ "الموقع. إذا كان الخيار <B>نعم</B> سوف يتمكن المستخدم من إستعادة رسائله "
 #~ "عند الدخول إلى الموقع، بينما الخيار عند <B>لا</B> سترسل الرسائل بالبريد "
 #~ "الإلكتروني فقط."
-
-#~ msgid "Spouse"
-#~ msgstr "الزوج"
-
-#~ msgid "Spouses and children"
-#~ msgstr "الأزواج و الأولاد"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "بداية نطاق تأريخ التعديل"
 
 #~ msgid "Surname option"
 #~ msgstr "خيار إسم العائلة"
@@ -21856,15 +21906,6 @@ msgstr "كتل"
 #~ msgid "To source"
 #~ msgstr "إلى مصدر"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "إجمالي التعديلات المقبولة: "
-
-#~ msgid "Total individuals"
-#~ msgstr "مجموع الأفراد"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "إجمالي التعديلات المعلقة: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -21895,9 +21936,6 @@ msgstr "كتل"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "إستخدام خادم SMTP لإرسال البريد الخارجي."
-
-#~ msgid "Use colors"
-#~ msgstr "إستخدام الألوان"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22252,9 +22290,6 @@ msgstr "كتل"
 #~ msgid "before %d"
 #~ msgstr "قبل %d"
 
-#~ msgid "daughter of"
-#~ msgstr "بنت"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "أب زوجة إبن"
@@ -22266,14 +22301,6 @@ msgstr "كتل"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "والد زوجة إبن"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "تُوفيت"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "تُوفي"
 
 #~ msgid "from %d"
 #~ msgstr "من %d"
@@ -22302,17 +22329,6 @@ msgstr "كتل"
 #~ msgid "grandson’s wife"
 #~ msgstr "زوجة إبن إبن"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "متزوجة"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "متزوج"
-
-#~ msgid "son of"
-#~ msgstr "إبن"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "أب زوج بنت"
@@ -22324,14 +22340,6 @@ msgstr "كتل"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "والد زوج بنت"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "وُلدت"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "وُلد"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "يتوجب أن تكون قاعدة بيانات webtrees في نفس خادم PGV"

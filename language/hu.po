@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:15+1200\n"
-"PO-Revision-Date: 2013-11-22 12:41+1200\n"
+"POT-Creation-Date: 2013-11-26 11:59+1200\n"
+"PO-Revision-Date: 2013-11-26 12:15+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: hu\n"
@@ -213,7 +213,7 @@ msgstr "Ne frissítse az \"utolsó módosítás\" mezőt"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1722,36 +1722,77 @@ msgstr "Végrehajtási statisztikák"
 msgid "Facts for Individual records"
 msgstr "Változások az Egyének bejegyzésében"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Minden változás"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Az összes személy"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Egyedi változások"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "Személy egyedülálló tényei"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Új bejegyzés változásai"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr ""
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Gyors változások"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr ""
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Családi bejegyzések változásai"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Család egyedülálló tényei"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "Család egyedülálló tényei"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr ""
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr ""
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Forrásbejegyzések változásai"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Forrás egyedülálló tényei"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "Forrás egyedülálló tényei"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr ""
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Alapbejegyzések változásai"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Szervezet egyedülálló tényei"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "Szervezet egyedülálló tényei"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr ""
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2403,15 +2444,15 @@ msgstr "Hiba"
 msgid "You do not have permission to view this page."
 msgstr "Nincs kellő jogosultságod, hogy ezt az oldalt megjelenítsük."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Hírlap vagy hír hozzáadás/szerkesztése"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Cím:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Szövegbevitel:"
 
@@ -3570,10 +3611,6 @@ msgid ""
 "<i>Source</i> record on the Individual page."
 msgstr ""
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "Családhoz tények hozzáadása"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3587,19 +3624,11 @@ msgstr ""
 "listában láthatók, nem muszáj a  <i>Család egyedülálló tényei</i> listában "
 "is lennie."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr ""
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
 "list and can be added with a single click."
 msgstr ""
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "Család egyedülálló tényei"
 
 #: help_text.php:523
 msgid ""
@@ -3730,10 +3759,6 @@ msgid ""
 "relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "Személyhez tények hozzáadása"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3747,19 +3772,11 @@ msgstr ""
 "listában láthatók, nem muszáj a <i>Személy egyedülálló tényei</i> listában "
 "is lennie."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr ""
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
 "full list and can be added with a single click."
 msgstr ""
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "Személy egyedülálló tényei"
 
 #: help_text.php:601
 msgid ""
@@ -4016,19 +4033,11 @@ msgid ""
 "which checkboxes are ticked by default."
 msgstr ""
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr ""
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
 "adding a new person.  For example, if BIRT is in the list, fields for birth "
 "date and birth place will be shown on the form."
-msgstr ""
-
-#: help_text.php:791
-msgid "Facts for new families"
 msgstr ""
 
 #: help_text.php:792
@@ -4037,10 +4046,6 @@ msgid ""
 "adding a new family.  For example, if MARR is in the list, then fields for "
 "marriage date and marriage place will be shown on the form."
 msgstr ""
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "Szervezethez tények hozzáadása"
 
 #: help_text.php:797
 msgid ""
@@ -4055,19 +4060,11 @@ msgstr ""
 "ebben a listában láthatók, nem muszáj a <i>Szervezet egyedülálló tényei</i> "
 "listában is lennie."
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr ""
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
 "full list and can be added with a single click."
 msgstr ""
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "Szervezet egyedülálló tényei"
 
 #: help_text.php:807
 msgid ""
@@ -4243,10 +4240,6 @@ msgid ""
 "prefix."
 msgstr ""
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "Forráshoz tények hozzáadása"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4260,19 +4253,11 @@ msgstr ""
 "listában láthatók, nem muszáj a <i>Forrás egyedülálló tényei</i> listában is "
 "lennie."
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr ""
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
 "list and can be added with a single click."
 msgstr ""
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "Forrás egyedülálló tényei"
 
 #: help_text.php:918
 msgid ""
@@ -8747,18 +8732,18 @@ msgid "(in childhood)"
 msgstr "(gyermekkorban)"
 
 #: library/WT/I18N.php:348
-#, fuzzy, php-format
+#, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] "%d év"
-msgstr[1] "%d év"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:354
-#, fuzzy, php-format
+#, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "%d hónap"
-msgstr[1] "%d hónap"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:358
 #, php-format
@@ -8790,18 +8775,18 @@ msgid "(aged %s)"
 msgstr "(%s éves)"
 
 #: library/WT/I18N.php:399
-#, fuzzy, php-format
+#, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] "%d év"
-msgstr[1] "%d év"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:402
-#, fuzzy, php-format
+#, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] "%d hónap"
-msgstr[1] "%d hónap"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:405
 #, php-format
@@ -8818,18 +8803,18 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: library/WT/I18N.php:411
-#, fuzzy, php-format
+#, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] "%s üzenet"
-msgstr[1] "%s üzenet"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:413
-#, fuzzy, php-format
+#, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
-msgstr[0] "második %s"
-msgstr[1] "második %s"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:431
 #, php-format
@@ -10166,15 +10151,15 @@ msgstr "Zimbabwe"
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr ""
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "John /DOE/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "Módosítsa ezt a személyt és írja felül a saját adataival"
 
@@ -15247,6 +15232,12 @@ msgstr "Fülek"
 msgid "Blocks"
 msgstr "Tömbök"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " de a részletek ismeretlenek"
+
+#~ msgid " in "
+#~ msgstr " település: "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%1$d x %2$s"
@@ -15354,6 +15345,17 @@ msgstr "Tömbök"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "9."
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "Jelentés adott forrásból származó eseményekről."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -15478,6 +15480,9 @@ msgstr "Tömbök"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "Fiúunoka örökbefogadása"
 
+#~ msgid "All facts"
+#~ msgstr "Minden változás"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "Ismert mint"
@@ -15485,6 +15490,9 @@ msgstr "Tömbök"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "Ismert mint"
+
+#~ msgid "Ancestors of "
+#~ msgstr "A következő személy ősei: "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -15505,6 +15513,10 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "április"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "Arial"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -15626,6 +15638,15 @@ msgstr "Tömbök"
 #~ msgid "Birth"
 #~ msgstr "Született"
 
+#~ msgid "Birth Date range end"
+#~ msgstr "Születési dátumig"
+
+#~ msgid "Birth Date range start"
+#~ msgstr "Születési dátumtól"
+
+#~ msgid "Birth Place contains"
+#~ msgstr "A születés helye tartalmazza"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "Lányunoka születése"
@@ -15650,6 +15671,9 @@ msgstr "Tömbök"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "Unoka körülmetélése"
 
+#~ msgid "Brother"
+#~ msgstr "Fiútestvér"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
 #~ msgstr "Köd hava"
@@ -15665,6 +15689,9 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Brumaire"
 #~ msgstr "Köd hava"
+
+#~ msgid "Burial Place contains"
+#~ msgstr "A temetés helye tartalmazza"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Burial of a granddaughter"
@@ -15689,6 +15716,15 @@ msgstr "Tömbök"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "Vevő"
+
+#~ msgid "Child of "
+#~ msgstr "A következő gyermeke "
+
+#~ msgid "Children of "
+#~ msgstr "A következő gyermeke "
+
+#~ msgid "Choose relatives"
+#~ msgstr "Rokonok kiválasztása"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -15739,6 +15775,18 @@ msgstr "Tömbök"
 #~ msgid "Current Server Time:"
 #~ msgstr "Jelenlegi szerver idő:"
 
+#~ msgid "Daughter"
+#~ msgstr "Lánygyermek"
+
+#~ msgid "Death Date range end"
+#~ msgstr "Elhalálozási dátumig"
+
+#~ msgid "Death Date range start"
+#~ msgstr "Elhalálozási dátumtól"
+
+#~ msgid "Death Place contains"
+#~ msgstr "Az elhalálozás helye tartalmazza"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "Lányunoka halála"
@@ -15774,6 +15822,10 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "december"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -15827,6 +15879,15 @@ msgstr "Tömbök"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "Dsül kade"
 
+#~ msgid "Differences"
+#~ msgstr "Különbségek"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "Közvetlen leszármazottak"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "Közvetlen ősök és családjaik"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "%s letöltése és kicsomagolása."
 
@@ -15862,6 +15923,15 @@ msgstr "Tömbök"
 #~ msgid "Employer"
 #~ msgstr "Munkáltató"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "Módosítási dátumig"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "írja be a cslád azonosítóját"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "A személy azonosítója"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "Esf"
@@ -15881,6 +15951,15 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "Esfand"
+
+#~ msgid "Family add facts"
+#~ msgstr "Családhoz tények hozzáadása"
+
+#~ msgid "Family with husband"
+#~ msgstr "Család a férjel"
+
+#~ msgid "Family with wife"
+#~ msgstr "Család a feleséggel"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -15938,6 +16017,9 @@ msgstr "Tömbök"
 #~ msgid "Floréal"
 #~ msgstr "Virágzás hava"
 
+#~ msgid "Font"
+#~ msgstr "Betűkészlet"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "Fogadott"
@@ -15990,6 +16072,9 @@ msgstr "Tömbök"
 #~ msgid "Fructidor"
 #~ msgstr "Gyümölcs hava"
 
+#~ msgid "Generation "
+#~ msgstr "Generáció "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "Sarjadás hava"
@@ -16014,6 +16099,37 @@ msgstr "Tömbök"
 #~ msgid "Guardian"
 #~ msgstr "Gyám"
 
+#~ msgid "He "
+#~ msgstr "Ő "
+
+#~ msgid "He died"
+#~ msgstr "Elhunyt"
+
+#~ msgid "He married"
+#~ msgstr "Feleség:"
+
+#~ msgid "He resided at"
+#~ msgstr "Lakóhelye"
+
+#~ msgid "He was born"
+#~ msgstr "Született"
+
+#~ msgid "He was buried"
+#~ msgstr "El lett temetve"
+
+#~ msgid "He was christened"
+#~ msgstr "Meg lett keresztelve"
+
+#~ msgid "He was cremated"
+#~ msgstr "El lett hamvasztva"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "Helvetica"
+
+#~ msgid "Her occupation was"
+#~ msgstr "Foglalkozása"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "Hesván"
@@ -16030,9 +16146,15 @@ msgstr "Tömbök"
 #~ msgid "Heshvan"
 #~ msgstr "Hesván"
 
+#~ msgid "His occupation was"
+#~ msgstr "Foglalkozása"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "Izlandi"
+
+#~ msgid "Individual add facts"
+#~ msgstr "Személyhez tények hozzáadása"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16194,6 +16316,14 @@ msgstr "Tömbök"
 #~ msgid "Kislev"
 #~ msgstr "Kiszlév"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Levél"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "Litván"
@@ -16233,6 +16363,15 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "március"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "A házasság dátuma ez előtt legyen"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "A házasság dátuma ez után legyen"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "A házasság helye tartalmazza"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -16346,6 +16485,9 @@ msgstr "Tömbök"
 #~ msgid "Name"
 #~ msgstr "Név"
 
+#~ msgid "Name List"
+#~ msgstr "Név lista"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "Soha nem ment férjhez"
@@ -16353,6 +16495,9 @@ msgstr "Tömbök"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "Soha nem ment férjhez"
+
+#~ msgid "New entry facts"
+#~ msgstr "Új bejegyzés változásai"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -16462,6 +16607,9 @@ msgstr "Tömbök"
 #~ msgid "Ordibehesht"
 #~ msgstr "Ordibehesht"
 
+#~ msgid "Orientation"
+#~ msgstr "Orientáció"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "Tulajdonos"
@@ -16469,6 +16617,18 @@ msgstr "Tömbök"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "Tulajdonos"
+
+#~ msgid "Page"
+#~ msgstr "Oldal"
+
+#~ msgid "Page size"
+#~ msgstr "Papírméret"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "Szülők és testvérek"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Ősfa"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -16509,6 +16669,12 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "Rét hava"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "Jelenjenek meg az alap események amennyiben üresek?"
+
+#~ msgid "Quick facts"
+#~ msgstr "Gyors változások"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -16584,6 +16750,9 @@ msgstr "Tömbök"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "Hivatalnok"
+
+#~ msgid "Repository add facts"
+#~ msgstr "Szervezethez tények hozzáadása"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -16707,6 +16876,30 @@ msgstr "Tömbök"
 #~ msgid "Shawwal"
 #~ msgstr "Sevvál"
 
+#~ msgid "She "
+#~ msgstr "Ő "
+
+#~ msgid "She died"
+#~ msgstr "Elhunyt"
+
+#~ msgid "She married"
+#~ msgstr "Férj:"
+
+#~ msgid "She resided at"
+#~ msgstr "Tartózkodása helye"
+
+#~ msgid "She was born"
+#~ msgstr "Született"
+
+#~ msgid "She was buried"
+#~ msgstr "El lett temetve"
+
+#~ msgid "She was christened"
+#~ msgstr "Meg lett keresztelve"
+
+#~ msgid "She was cremated"
+#~ msgstr "El lett hamvasztva"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "Svát"
@@ -16722,6 +16915,30 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "Svát"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "Mutassa az elődök gyermekeit"
+
+#~ msgid "Show notes?"
+#~ msgstr "Mutassa a jegyzeteket?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Mutassa a foglalkozást?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "Mutassa a függő módosításokat"
+
+#~ msgid "Show photos?"
+#~ msgstr "Mutassa a képeket?"
+
+#~ msgid "Show residences?"
+#~ msgstr "Mutassa a lakhelyet?"
+
+#~ msgid "Show sources?"
+#~ msgstr "Mutassa a forrásokat?"
+
+#~ msgid "Sister"
+#~ msgstr "Lánytestvér"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -16747,9 +16964,27 @@ msgstr "Tömbök"
 #~ msgid "Slave"
 #~ msgstr "Szolga"
 
+#~ msgid "Son"
+#~ msgstr "Fiúgyermek"
+
+#~ msgid "Source add facts"
+#~ msgstr "Forráshoz tények hozzáadása"
+
+#~ msgid "Sources to the events"
+#~ msgstr "Esemény forrása"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "Spanyol"
+
+#~ msgid "Spouse"
+#~ msgstr "Házastárs"
+
+#~ msgid "Spouses and children"
+#~ msgstr "Házastársak és gyermekek"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "Módosítási dátumtól"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -16842,6 +17077,18 @@ msgstr "Tömbök"
 #~ msgid "Tishrei"
 #~ msgstr "Tisri"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "Összes elfogadott módosítás: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Személyek összesen"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "Összes függő módosítás: "
+
+#~ msgid "Unique facts"
+#~ msgstr "Egyedi változások"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "Ismeretlen"
@@ -16859,6 +17106,9 @@ msgstr "Tömbök"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "A webtrees frissítése: %s"
+
+#~ msgid "Use colors"
+#~ msgstr "Színek használata"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17008,6 +17258,9 @@ msgstr "Tömbök"
 #~ msgid "d."
 #~ msgstr "halál"
 
+#~ msgid "daughter of"
+#~ msgstr "a következő lánya"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "meny"
@@ -17027,6 +17280,14 @@ msgstr "Tömbök"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "Nász"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "elhunyt"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "elhunyt"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -18324,6 +18585,14 @@ msgstr "Tömbök"
 #~ msgid "m."
 #~ msgstr "házasság"
 
+#~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "házas"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "házas"
+
 #~ msgctxt "mother's father"
 #~ msgid "maternal grandfather"
 #~ msgstr "anyai nagyapa"
@@ -18451,6 +18720,10 @@ msgstr "Tömbök"
 #~ msgctxt "You should review the deletion and then accept or reject it."
 #~ msgid "reject"
 #~ msgstr "visszautasít"
+
+#~ msgctxt "FEMALE"
+#~ msgid "second %s"
+#~ msgstr "második %s"
 
 #~ msgctxt "MALE"
 #~ msgid "second %s"
@@ -18635,6 +18908,9 @@ msgstr "Tömbök"
 #~ msgctxt "MALE/FEMALE"
 #~ msgid "sixth cousin"
 #~ msgstr "hatod unokatestvér"
+
+#~ msgid "son of"
+#~ msgstr "a következő fia"
 
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
@@ -18836,6 +19112,14 @@ msgstr "Tömbök"
 #~ msgid "unknown"
 #~ msgstr "ismeretlen"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "született"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "született"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -18843,12 +19127,6 @@ msgstr "Tömbök"
 #~ msgctxt "Unknown surname"
 #~ msgid "…"
 #~ msgstr "…"
-
-#~ msgid " but the details are unknown"
-#~ msgstr " de a részletek ismeretlenek"
-
-#~ msgid " in "
-#~ msgstr " település: "
 
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%1$s %2$s"
@@ -18992,17 +19270,6 @@ msgstr "Tömbök"
 #~ "létezőt (a rendszergazda által létrehozottat) vagy hozzon létre egy újat "
 #~ "(ha az adatbázis felhasználói jogosultsága ezt megengedi)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "Jelentés adott forrásból származó eseményekről."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
-
 #~ msgid "Access"
 #~ msgstr "Hozzáfér"
 
@@ -19074,9 +19341,6 @@ msgstr "Tömbök"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Szülők kora kövesse a gyerek születési dátumát"
 
-#~ msgid "All individuals"
-#~ msgstr "Az összes személy"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "GEDCOM váltás engedélyezése"
 
@@ -19093,18 +19357,11 @@ msgstr "Tömbök"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "Váratlan adatbázis hiba történt."
 
-#~ msgid "Ancestors of "
-#~ msgstr "A következő személy ősei: "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "Ősök fájlszáma"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "Biztosan vissza von minden változtatást ebben a GEDCOM -ban?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "Arial"
 
 #~ msgid "Available blocks"
 #~ msgstr "Rendelkezésre álló Blokkok"
@@ -19118,15 +19375,6 @@ msgstr "Tömbök"
 #~ msgid "Binary data object"
 #~ msgstr "Bináris adatok"
 
-#~ msgid "Birth Date range end"
-#~ msgstr "Születési dátumig"
-
-#~ msgid "Birth Date range start"
-#~ msgstr "Születési dátumtól"
-
-#~ msgid "Birth Place contains"
-#~ msgstr "A születés helye tartalmazza"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "Születési és halálozási résztetek a táblázatokban"
 
@@ -19135,12 +19383,6 @@ msgstr "Tömbök"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Születési dátumtól"
-
-#~ msgid "Brother"
-#~ msgstr "Fiútestvér"
-
-#~ msgid "Burial Place contains"
-#~ msgstr "A temetés helye tartalmazza"
 
 #~ msgid "Burial place contains"
 #~ msgstr "A temetés helye tartalmazza"
@@ -19158,15 +19400,6 @@ msgstr "Tömbök"
 
 #~ msgid "Change family members"
 #~ msgstr "Családtagok változtatása"
-
-#~ msgid "Child of "
-#~ msgstr "A következő gyermeke "
-
-#~ msgid "Children of "
-#~ msgstr "A következő gyermeke "
-
-#~ msgid "Choose relatives"
-#~ msgstr "Rokonok kiválasztása"
 
 #~ msgid "Civil registrar"
 #~ msgstr "Anyakönyvvezető"
@@ -19264,18 +19497,6 @@ msgstr "Tömbök"
 #~ msgid "Date of ordination"
 #~ msgstr "Felszentelés dátuma"
 
-#~ msgid "Daughter"
-#~ msgstr "Lánygyermek"
-
-#~ msgid "Death Date range end"
-#~ msgstr "Elhalálozási dátumig"
-
-#~ msgid "Death Date range start"
-#~ msgstr "Elhalálozási dátumtól"
-
-#~ msgid "Death Place contains"
-#~ msgstr "Az elhalálozás helye tartalmazza"
-
 #~ msgid "Death date range end"
 #~ msgstr "Elhalálozási dátumig"
 
@@ -19284,10 +19505,6 @@ msgstr "Tömbök"
 
 #~ msgid "Default theme"
 #~ msgstr "Alapértelmezett stílus"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
 
 #~ msgid "Descent steps"
 #~ msgstr "Leszármazási lépések"
@@ -19307,15 +19524,6 @@ msgstr "Tömbök"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "Dsül kade"
-
-#~ msgid "Differences"
-#~ msgstr "Különbségek"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "Közvetlen leszármazottak"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "Közvetlen ősök és családjaik"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "Nem engedélyezett házasság"
@@ -19340,15 +19548,6 @@ msgstr "Tömbök"
 
 #~ msgid "End year"
 #~ msgstr "Utolsó év"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "Módosítási dátumig"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "írja be a cslád azonosítóját"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "A személy azonosítója"
 
 #~ msgid "Enter an individual, family, or source ID"
 #~ msgstr "Írjon be egy Személy, Család vagy Forrás azonosítóját"
@@ -19456,20 +19655,11 @@ msgstr "Tömbök"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "Családfa Metszési Kosara"
 
-#~ msgid "Family with husband"
-#~ msgstr "Család a férjel"
-
-#~ msgid "Family with wife"
-#~ msgstr "Család a feleséggel"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "Apa születési helye - (Chapman formátum)"
 
 #~ msgid "Father’s age"
 #~ msgstr "Apa kora"
-
-#~ msgid "Font"
-#~ msgstr "Betűkészlet"
 
 #~ msgid "Foster child"
 #~ msgstr "Örökbefogadott gyerek"
@@ -19488,9 +19678,6 @@ msgstr "Tömbök"
 
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
-
-#~ msgid "Generation "
-#~ msgstr "Generáció "
 
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
@@ -19515,30 +19702,6 @@ msgstr "Tömbök"
 #~ "regisztrációs szándékát. Az aktiváció előtt ezt szándékot az "
 #~ "adminisztrátornak is jóvá kell hagyni."
 
-#~ msgid "He "
-#~ msgstr "Ő "
-
-#~ msgid "He died"
-#~ msgstr "Elhunyt"
-
-#~ msgid "He married"
-#~ msgstr "Feleség:"
-
-#~ msgid "He resided at"
-#~ msgstr "Lakóhelye"
-
-#~ msgid "He was born"
-#~ msgstr "Született"
-
-#~ msgid "He was buried"
-#~ msgstr "El lett temetve"
-
-#~ msgid "He was christened"
-#~ msgstr "Meg lett keresztelve"
-
-#~ msgid "He was cremated"
-#~ msgstr "El lett hamvasztva"
-
 #~ msgid "Hello %s…"
 #~ msgstr "Kedves %s …"
 
@@ -19547,13 +19710,6 @@ msgstr "Tömbök"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "Kedves Adminisztrátor!"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "Helvetica"
-
-#~ msgid "Her occupation was"
-#~ msgstr "Foglalkozása"
 
 #~ msgid ""
 #~ "Here you can choose between two types of displaying places names in "
@@ -19567,9 +19723,6 @@ msgstr "Tömbök"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "Elrejt &amp; mutat"
-
-#~ msgid "His occupation was"
-#~ msgstr "Foglalkozása"
 
 #~ msgid "Hit count:"
 #~ msgstr "Számláló:"
@@ -19682,14 +19835,6 @@ msgstr "Tömbök"
 #~ msgid "LDS temple"
 #~ msgstr "UNSZ templom"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Levél"
-
 #~ msgid "Link this individual to an existing family as a child"
 #~ msgstr "Ezt a személyt hozzákapcsolni egy létező családhoz mint gyermek"
 
@@ -19713,15 +19858,6 @@ msgstr "Tömbök"
 
 #~ msgid "Main section blocks"
 #~ msgstr "Központi szekció blokkjai"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "A házasság dátuma ez előtt legyen"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "A házasság dátuma ez után legyen"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "A házasság helye tartalmazza"
 
 #~ msgid "Marriage intention"
 #~ msgstr "Házassági szándék"
@@ -19755,9 +19891,6 @@ msgstr "Tömbök"
 
 #~ msgid "Move right"
 #~ msgstr "Jobbra"
-
-#~ msgid "Name List"
-#~ msgstr "Név lista"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -19796,9 +19929,6 @@ msgstr "Tömbök"
 #~ msgid "Online editing"
 #~ msgstr "Online szerkesztés"
 
-#~ msgid "Orientation"
-#~ msgstr "Orientáció"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Más mappa … kérem írja be"
 
@@ -19830,20 +19960,8 @@ msgstr "Tömbök"
 #~ "funkció nem működik. Kérem szóljon a rendszergazdának, hogy engedélyezze "
 #~ "ezt."
 
-#~ msgid "Page"
-#~ msgstr "Oldal"
-
-#~ msgid "Page size"
-#~ msgstr "Papírméret"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "Szülők és testvérek"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Szülők életkora"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Ősfa"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "UNSZ-keresztség helye"
@@ -19880,9 +19998,6 @@ msgstr "Tömbök"
 
 #~ msgid "President’s Office"
 #~ msgstr "Egyházi vezető székhelye"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "Jelenjenek meg az alap események amennyiben üresek?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -20018,30 +20133,6 @@ msgstr "Tömbök"
 #~ msgid "Sha’aban"
 #~ msgstr "Sabán"
 
-#~ msgid "She "
-#~ msgstr "Ő "
-
-#~ msgid "She died"
-#~ msgstr "Elhunyt"
-
-#~ msgid "She married"
-#~ msgstr "Férj:"
-
-#~ msgid "She resided at"
-#~ msgstr "Tartózkodása helye"
-
-#~ msgid "She was born"
-#~ msgstr "Született"
-
-#~ msgid "She was buried"
-#~ msgstr "El lett temetve"
-
-#~ msgid "She was christened"
-#~ msgstr "Meg lett keresztelve"
-
-#~ msgid "She was cremated"
-#~ msgstr "El lett hamvasztva"
-
 #~ msgid "Show acceptable use agreement on “Request new user account” page"
 #~ msgstr ""
 #~ "Mutasson egy elfogadandó nyilatkozatot az Új felhasználói fiók igénylése "
@@ -20052,9 +20143,6 @@ msgstr "Tömbök"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "Az összes helyszín egy listában"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "Mutassa az elődök gyermekeit"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "Elhunyt személyekhez hozzáférhet"
@@ -20092,12 +20180,6 @@ msgstr "Tömbök"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Mutasd azokat a személyeket, akik az utolsó 100 évben hunytak el."
 
-#~ msgid "Show notes?"
-#~ msgstr "Mutassa a jegyzeteket?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "Mutassa a foglalkozást?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Csak az élők eseményeit mutasd?"
 
@@ -20107,23 +20189,11 @@ msgstr "Tömbök"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "Csak személyek mutatása, vagy eseményeké is, vagy mind?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "Mutassa a függő módosításokat"
-
-#~ msgid "Show photos?"
-#~ msgstr "Mutassa a képeket?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "A helyszínek hierarchiában"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "Mutassuk a kapcsolódó személyeket/családokat"
-
-#~ msgid "Show residences?"
-#~ msgstr "Mutassa a lakhelyet?"
-
-#~ msgid "Show sources?"
-#~ msgstr "Mutassa a forrásokat?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -20140,26 +20210,8 @@ msgstr "Tömbök"
 #~ "Mutasd a «gyökér» párokat vagy személyeket. Ezek az emberek «pátriárkák». "
 #~ "Ők azok, akiknek nincs szülő bejegyezve az adatbázisban."
 
-#~ msgid "Sister"
-#~ msgstr "Lánytestvér"
-
 #~ msgid "Social security number"
 #~ msgstr "Társadalombiztosítási azonosító"
-
-#~ msgid "Son"
-#~ msgstr "Fiúgyermek"
-
-#~ msgid "Sources to the events"
-#~ msgstr "Esemény forrása"
-
-#~ msgid "Spouse"
-#~ msgstr "Házastárs"
-
-#~ msgid "Spouses and children"
-#~ msgstr "Házastársak és gyermekek"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "Módosítási dátumtól"
 
 #~ msgid "Surname option"
 #~ msgstr "Családnév beállítások"
@@ -20428,20 +20480,8 @@ msgstr "Tömbök"
 #~ msgid "To source"
 #~ msgstr "Forráshoz"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "Összes elfogadott módosítás: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Személyek összesen"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "Összes függő módosítás: "
-
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Ismeretlen GEDCOM-kód"
-
-#~ msgid "Use colors"
-#~ msgstr "Színek használata"
 
 #~ msgid ""
 #~ "Use this page to change or remove family members.<br><br>For each member "
@@ -20637,9 +20677,6 @@ msgstr "Tömbök"
 #~ msgid "before %d"
 #~ msgstr "%d előtt"
 
-#~ msgid "daughter of"
-#~ msgstr "a következő lánya"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "Nász"
@@ -20651,14 +20688,6 @@ msgstr "Tömbök"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "Nász"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "elhunyt"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "elhunyt"
 
 #~ msgid "from %d"
 #~ msgstr "%d óta"
@@ -20687,17 +20716,6 @@ msgstr "Tömbök"
 #~ msgid "grandson’s wife"
 #~ msgstr "fiúunoka felesége"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "házas"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "házas"
-
-#~ msgid "son of"
-#~ msgstr "a következő fia"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "Nász"
@@ -20709,11 +20727,3 @@ msgstr "Tömbök"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "Nász"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "született"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "született"

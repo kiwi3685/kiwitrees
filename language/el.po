@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:13+1200\n"
-"PO-Revision-Date: 2013-11-22 12:44+1200\n"
+"POT-Creation-Date: 2013-11-26 11:57+1200\n"
+"PO-Revision-Date: 2013-11-26 12:15+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: el\n"
@@ -208,7 +208,7 @@ msgstr "Να μήν αλλάξει η εγγραφή \"Τελευταία Τρο
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1709,36 +1709,77 @@ msgstr "Στατιστικά χρήσης"
 msgid "Facts for Individual records"
 msgstr "Γεγονότα για εγγραφές ατόμων"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "Όλα τα γεγονότα"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "Όλα τα άτομα"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "Μοναδικά γεγονότα"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr ""
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "Νέα γεγονότα"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr ""
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "Γρήγορα γεγονότα"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr ""
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "Γεγονότα για οικ. εγγραφές"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "Όλα τα γεγονότα"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr ""
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr ""
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr ""
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "Γεγονότα για εγγραφές πηγών"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "Όλα τα γεγονότα"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr ""
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr ""
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "Γεγονότα για εγγραφές αποθετηρίων"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "Ο χώρος φύλαξης περιέχει:"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr ""
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2380,15 +2421,15 @@ msgstr "Σφάλμα"
 msgid "You do not have permission to view this page."
 msgstr ""
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "Προσθήκη/Επεξεργασία καταχώρησης Ημερολογίου/Νέων"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "Τίτλος:"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "Κείμενο καταχώρησης:"
 
@@ -3503,10 +3544,6 @@ msgid ""
 "<i>Source</i> record on the Individual page."
 msgstr ""
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr ""
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3515,18 +3552,10 @@ msgid ""
 "<i>Unique Family Facts</i> list."
 msgstr ""
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr ""
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
 "list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:522
-msgid "Unique family facts"
 msgstr ""
 
 #: help_text.php:523
@@ -3653,10 +3682,6 @@ msgid ""
 "relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr ""
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3665,18 +3690,10 @@ msgid ""
 "the <i>Unique Individual Facts</i> list."
 msgstr ""
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr ""
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
 "full list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:600
-msgid "Unique individual facts"
 msgstr ""
 
 #: help_text.php:601
@@ -3923,10 +3940,6 @@ msgid ""
 "which checkboxes are ticked by default."
 msgstr ""
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr ""
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -3934,19 +3947,11 @@ msgid ""
 "date and birth place will be shown on the form."
 msgstr ""
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr ""
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
 "adding a new family.  For example, if MARR is in the list, then fields for "
 "marriage date and marriage place will be shown on the form."
-msgstr ""
-
-#: help_text.php:796
-msgid "Repository add facts"
 msgstr ""
 
 #: help_text.php:797
@@ -3957,18 +3962,10 @@ msgid ""
 "the <i>Unique Repository Facts</i> list."
 msgstr ""
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr ""
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
 "full list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:806
-msgid "Unique repository facts"
 msgstr ""
 
 #: help_text.php:807
@@ -4138,10 +4135,6 @@ msgid ""
 "prefix."
 msgstr ""
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr ""
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4150,18 +4143,10 @@ msgid ""
 "<i>Unique Source Facts</i> list."
 msgstr ""
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr ""
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
 "list and can be added with a single click."
-msgstr ""
-
-#: help_text.php:917
-msgid "Unique source facts"
 msgstr ""
 
 #: help_text.php:918
@@ -8566,9 +8551,8 @@ msgid "%s%%"
 msgstr ""
 
 #: library/WT/I18N.php:336
-#, fuzzy
 msgid "(stillborn)"
-msgstr "Θνησιγενές"
+msgstr ""
 
 #: library/WT/I18N.php:339
 msgid "(in infancy)"
@@ -8600,16 +8584,16 @@ msgstr[0] "%s εβδομάδα"
 msgstr[1] "%s εβδομάδες"
 
 #: library/WT/I18N.php:362
-#, fuzzy, php-format
+#, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] "Πρίν %s ημέρα"
-msgstr[1] "Πρίν %s ημέρες"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:371
-#, fuzzy, php-format
+#, php-format
 msgid "(aged less than %s)"
-msgstr "λιγότερο από"
+msgstr ""
 
 #: library/WT/I18N.php:374
 #, php-format
@@ -8650,11 +8634,11 @@ msgstr[0] "Πρίν %s ώρα"
 msgstr[1] "Πρίν %s ώρες"
 
 #: library/WT/I18N.php:411
-#, fuzzy, php-format
+#, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] "Πρίν %s μήνα"
-msgstr[1] "Πριν %s μήνες"
+msgstr[0] ""
+msgstr[1] ""
 
 #: library/WT/I18N.php:413
 #, php-format
@@ -9998,15 +9982,15 @@ msgstr ""
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr ""
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr ""
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr ""
 
@@ -15035,6 +15019,9 @@ msgstr "Τμήματα"
 #~ msgid "%d x cousin"
 #~ msgstr "%d x ξαδέρφια"
 
+#~ msgid "Ancestors of "
+#~ msgstr "Πρόγονοι του(ης) "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "April"
 #~ msgstr "Απριλίου"
@@ -15067,8 +15054,14 @@ msgstr "Τμήματα"
 #~ msgid "August"
 #~ msgstr "Αύγουστος"
 
+#~ msgid "Brother"
+#~ msgstr "Αδελφός"
+
 #~ msgid "Current Server Time:"
 #~ msgstr "Ημ/νία Συστήματος"
+
+#~ msgid "Daughter"
+#~ msgstr "Θυγατέρα"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "December"
@@ -15089,6 +15082,9 @@ msgstr "Τμήματα"
 #~ msgid "Download %s and extract the files."
 #~ msgstr "Λήψη %s και εξαγωγή αρχείων."
 
+#~ msgid "Enter Individual ID"
+#~ msgstr "Εισαγωγή ID ατόμου"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "February"
 #~ msgstr "Φεβρουαρίου"
@@ -15104,6 +15100,12 @@ msgstr "Τμήματα"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "February"
 #~ msgstr "Φεβρουάριος"
+
+#~ msgid "Font"
+#~ msgstr "Γραμματοσειρά"
+
+#~ msgid "He was buried"
+#~ msgstr "Ενταφιάσθηκε"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "January"
@@ -15169,6 +15171,15 @@ msgstr "Τμήματα"
 #~ msgid "March"
 #~ msgstr "Μάρτιος"
 
+#~ msgid "Marriage Date range end"
+#~ msgstr "Ημ/νια Γάμου εώς"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "Ημ/νια Γάμου απο"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "Τοποθεσία Γάμου που περιέχει"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "May"
 #~ msgstr "Μαΐου"
@@ -15200,6 +15211,12 @@ msgstr "Τμήματα"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Muharram"
 #~ msgstr "Μουχάραμ"
+
+#~ msgid "Name List"
+#~ msgstr "Κατάλογος ονομάτων"
+
+#~ msgid "New entry facts"
+#~ msgstr "Νέα γεγονότα"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "November"
@@ -15233,6 +15250,21 @@ msgstr "Τμήματα"
 #~ msgid "October"
 #~ msgstr "Οκτώβριος"
 
+#~ msgid "Orientation"
+#~ msgstr "Προσανατολισμός"
+
+#~ msgid "Page"
+#~ msgstr "Σελίδα"
+
+#~ msgid "Page size"
+#~ msgstr "Μέγεθος σελίδας"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "Γενεαλογικό διάγραμμα"
+
+#~ msgid "Quick facts"
+#~ msgstr "Γρήγορα γεγονότα"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Ramadan"
 #~ msgstr "Ραμαζάνι"
@@ -15264,6 +15296,30 @@ msgstr "Τμήματα"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "September"
 #~ msgstr "Σεπτέμβριος"
+
+#~ msgid "She was buried"
+#~ msgstr "Ενταφιάστηκε"
+
+#~ msgid "Show occupations?"
+#~ msgstr "Εμφ. επαγγελμάτων;"
+
+#~ msgid "Sister"
+#~ msgstr "Αδελφή"
+
+#~ msgid "Son"
+#~ msgstr "Υιός"
+
+#~ msgid "Spouse"
+#~ msgstr "Σύζυγος"
+
+#~ msgid "Total accepted changes: "
+#~ msgstr "Σύνολο κατοχυρωμένων αλλαγών: "
+
+#~ msgid "Total individuals"
+#~ msgstr "Σύνολο ατόμων"
+
+#~ msgid "Unique facts"
+#~ msgstr "Μοναδικά γεγονότα"
 
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
@@ -16327,17 +16383,11 @@ msgstr "Τμήματα"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "Ηλικία γονέων δίπλα στην ημ/νία γεννήσεως παιδιού"
 
-#~ msgid "All individuals"
-#~ msgstr "Όλα τα άτομα"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "Να επιτρέπονται οι εναλλαγές GEDCOM"
 
 #~ msgid "Allow messages to be stored online"
 #~ msgstr "Αποθήκευση μηνυμάτων στην Βάση Δεδομένων"
-
-#~ msgid "Ancestors of "
-#~ msgstr "Πρόγονοι του(ης) "
 
 #~ msgid "Available blocks"
 #~ msgstr "Διαθέσιμα πλαίσια"
@@ -16356,9 +16406,6 @@ msgstr "Τμήματα"
 
 #~ msgid "Birth date range start"
 #~ msgstr "Ημ/νία γεννήσεως από"
-
-#~ msgid "Brother"
-#~ msgstr "Αδελφός"
 
 #~ msgid "Burial place contains"
 #~ msgstr "Σημείο ενταφιασμού που περιέχει"
@@ -16402,9 +16449,6 @@ msgstr "Τμήματα"
 #~ msgid "Custom event"
 #~ msgstr "Προσαρμοσμένο συμβάν"
 
-#~ msgid "Daughter"
-#~ msgstr "Θυγατέρα"
-
 #~ msgid "Death date range end"
 #~ msgstr "Ημ/νία θανάτου εώς"
 
@@ -16431,9 +16475,6 @@ msgstr "Τμήματα"
 
 #~ msgid "End year"
 #~ msgstr "Έτος τέλους"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "Εισαγωγή ID ατόμου"
 
 #~ msgid "Enter an individual, family, or source ID"
 #~ msgstr "Εισαγωγή ατόμου, οικογένειας ή ID πηγής"
@@ -16484,9 +16525,6 @@ msgstr "Τμήματα"
 #~ msgid "Father’s age"
 #~ msgstr "Ηλικία πατέρα"
 
-#~ msgid "Font"
-#~ msgstr "Γραμματοσειρά"
-
 #~ msgid "From email address"
 #~ msgstr "Όνομα αποστολέα"
 
@@ -16514,9 +16552,6 @@ msgstr "Τμήματα"
 #~ "site.<br><br>The visitor will receive an email message with the code to "
 #~ "verify the application.<br>After verification, the Administrator will "
 #~ "have to approve the registration before it becomes active."
-
-#~ msgid "He was buried"
-#~ msgstr "Ενταφιάσθηκε"
 
 #~ msgid "Hello %s…"
 #~ msgstr "Γεια σου %s …"
@@ -16600,15 +16635,6 @@ msgstr "Τμήματα"
 #~ msgid "Main section blocks"
 #~ msgstr "Πλαίσια κύριου τμήματος"
 
-#~ msgid "Marriage Date range end"
-#~ msgstr "Ημ/νια Γάμου εώς"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "Ημ/νια Γάμου απο"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "Τοποθεσία Γάμου που περιέχει"
-
 #~ msgid "Marriage intention"
 #~ msgstr "Πρόθεση γάμου"
 
@@ -16642,9 +16668,6 @@ msgstr "Τμήματα"
 #~ msgid "Move right"
 #~ msgstr "Μετακίνηση δεξιά"
 
-#~ msgid "Name List"
-#~ msgstr "Κατάλογος ονομάτων"
-
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
 #~ msgstr[0] "Χωρίς γεγονότα για εν ζωή άτομα η επόμενη %s ημέρα."
@@ -16670,26 +16693,14 @@ msgstr "Τμήματα"
 #~ msgid "On this day…"
 #~ msgstr "Σαν σήμερα, στην ιστορία μας…"
 
-#~ msgid "Orientation"
-#~ msgstr "Προσανατολισμός"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "Άλλος κατάλογος.. παρακαλώ εισάγετε"
 
 #~ msgid "Outgoing server (SMTP) name"
 #~ msgstr "Όνομα server (SMTP)"
 
-#~ msgid "Page"
-#~ msgstr "Σελίδα"
-
-#~ msgid "Page size"
-#~ msgstr "Μέγεθος σελίδας"
-
 #~ msgid "Parent’s age"
 #~ msgstr "Ηλικία γονέα"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "Γενεαλογικό διάγραμμα"
 
 #~ msgid "Recent years (&lt; 100 yrs)"
 #~ msgstr "Πρόσφατα έτη (&lt; 100 έτη)"
@@ -16741,9 +16752,6 @@ msgstr "Τμήματα"
 #~ msgid "Shared notes found"
 #~ msgstr "Κοινόχρηστες σημειώσεις βρέθηκαν"
 
-#~ msgid "She was buried"
-#~ msgstr "Ενταφιάστηκε"
-
 #~ msgid "Show acceptable use agreement on “Request new user account” page"
 #~ msgstr "Εμφάνιση \"Δικαιωμάτων Χρήσης\" σε αιτήματα νέων χρηστών"
 
@@ -16789,9 +16797,6 @@ msgstr "Τμήματα"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "Εμφάνιση ατόμων που πέθαναν μέσα στα τελευταία 100 χρόνια."
 
-#~ msgid "Show occupations?"
-#~ msgstr "Εμφ. επαγγελμάτων;"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "Εμφάνιση συμβάντων από ζωντανά άτομα μόνο;"
 
@@ -16823,17 +16828,8 @@ msgstr "Τμήματα"
 #~ "αποκαλεστούν «πατριάρχες». Είναι άτομα που δεν έχουν γονείς "
 #~ "καταχωρημένους στην βάση δεδομένων."
 
-#~ msgid "Sister"
-#~ msgstr "Αδελφή"
-
 #~ msgid "Social security number"
 #~ msgstr "Αριθμός κοινωνικής ασφάλισης"
-
-#~ msgid "Son"
-#~ msgstr "Υιός"
-
-#~ msgid "Spouse"
-#~ msgstr "Σύζυγος"
 
 #~ msgid ""
 #~ "The Favorites drop-down list shows the favorites that you have selected "
@@ -17019,12 +17015,6 @@ msgstr "Τμήματα"
 
 #~ msgid "To source"
 #~ msgstr "Προς πηγή"
-
-#~ msgid "Total accepted changes: "
-#~ msgstr "Σύνολο κατοχυρωμένων αλλαγών: "
-
-#~ msgid "Total individuals"
-#~ msgstr "Σύνολο ατόμων"
 
 #~ msgid "Unrecognized GEDCOM code"
 #~ msgstr "Μη αναγνωρίσιμος κώδικας GEDCOM"

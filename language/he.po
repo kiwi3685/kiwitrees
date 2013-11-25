@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fab\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-22 12:14+1200\n"
-"PO-Revision-Date: 2013-11-22 12:43+1200\n"
+"POT-Creation-Date: 2013-11-26 11:58+1200\n"
+"PO-Revision-Date: 2013-11-26 12:07+1200\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: he\n"
@@ -213,7 +213,7 @@ msgstr "על תעדכן את רשומת ”השינוי האחרון“"
 #: admin_module_menus.php:114 admin_module_reports.php:93
 #: admin_module_sidebar.php:113 admin_module_tabs.php:114
 #: admin_site_merge.php:165 admin_trees_config.php:1281
-#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:80
+#: admin_trees_manage.php:262 block_edit.php:58 editnews.php:72
 #: edituser.php:178 edit_interface.php:204 edit_interface.php:292
 #: edit_interface.php:359 edit_interface.php:509 edit_interface.php:576
 #: edit_interface.php:754 edit_interface.php:849 edit_interface.php:1023
@@ -1694,36 +1694,77 @@ msgstr "הצג סטטיסטיקות של העיבוד"
 msgid "Facts for Individual records"
 msgstr "עובדות על רשומות של אדם"
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
-msgstr "כל העובדות"
+#: admin_trees_config.php:1086 help_text.php:590
+#, fuzzy
+msgid "All individual facts"
+msgstr "כל האנשים"
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr "עובדות ייחודיות"
+#: admin_trees_config.php:1094 help_text.php:600
+msgid "Unique individual facts"
+msgstr "עובדות אישיות יחידות במינן"
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr "עובדות של הכנסת נתונים חדשה"
+#: admin_trees_config.php:1102 help_text.php:786
+msgid "Facts for new individuals"
+msgstr "עובדות לאדם חדש"
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr "עובדות מהירות"
+#: admin_trees_config.php:1110 help_text.php:595
+msgid "Quick individual facts"
+msgstr "עובדות אישיות מהירות"
 
 #: admin_trees_config.php:1118
 msgid "Facts for Family records"
 msgstr "עובדות על רשומות של משפחה"
 
+#: admin_trees_config.php:1123 help_text.php:512
+#, fuzzy
+msgid "All family facts"
+msgstr "עובדות משפחתיות מהירות"
+
+#: admin_trees_config.php:1131 help_text.php:522
+msgid "Unique family facts"
+msgstr "עובדות משפחתיות יחידות במינן"
+
+#: admin_trees_config.php:1139 help_text.php:791
+msgid "Facts for new families"
+msgstr "עובדות למשפחה חדשה"
+
+#: admin_trees_config.php:1147 help_text.php:517
+msgid "Quick family facts"
+msgstr "עובדות משפחתיות מהירות"
+
 #: admin_trees_config.php:1155
 msgid "Facts for Source records"
 msgstr "עובדות על רשומות המקור"
 
+#: admin_trees_config.php:1160 help_text.php:907
+#, fuzzy
+msgid "All source facts"
+msgstr "עובדות מהירות של מקורות"
+
+#: admin_trees_config.php:1168 help_text.php:917
+msgid "Unique source facts"
+msgstr "עובדות מקור יחידות במינן"
+
+#: admin_trees_config.php:1176 help_text.php:912
+msgid "Quick source facts"
+msgstr "עובדות מהירות של מקורות"
+
 #: admin_trees_config.php:1184
 msgid "Facts for Repository records"
 msgstr "עובדות על רשומות המאגר"
+
+#: admin_trees_config.php:1189 help_text.php:796
+#, fuzzy
+msgid "All repository facts"
+msgstr "עובדות מהירות של מאגר"
+
+#: admin_trees_config.php:1197 help_text.php:806
+msgid "Unique repository facts"
+msgstr "עובדות מאגר יחידות במינן"
+
+#: admin_trees_config.php:1205 help_text.php:801
+msgid "Quick repository facts"
+msgstr "עובדות מהירות של מאגר"
 
 #: admin_trees_config.php:1213
 msgid "Advanced fact settings"
@@ -2368,15 +2409,15 @@ msgstr "שגיאה"
 msgid "You do not have permission to view this page."
 msgstr "אין לך הרשאה לראות את העמוד הזה."
 
-#: editnews.php:33 editnews.php:47
+#: editnews.php:33 editnews.php:50
 msgid "Add/edit journal/news entry"
 msgstr "הוסף/ערוך כניסת יומן/חדשות"
 
-#: editnews.php:63
+#: editnews.php:66
 msgid "Title:"
 msgstr "כותרת/תאור"
 
-#: editnews.php:65
+#: editnews.php:68
 msgid "Entry Text:"
 msgstr "מלל הכניסה:"
 
@@ -3621,10 +3662,6 @@ msgstr ""
 "אפשרות זו קובעת אם להציג או לא להציג באופן אוטומטי תוכן של רשומת <i>מקור</i> "
 "בדף האישי."
 
-#: help_text.php:512
-msgid "Family add facts"
-msgstr "עובדות משפחתיות שניתן להוסיף"
-
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -3636,10 +3673,6 @@ msgstr ""
 "לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע "
 "ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות משפחתיות ייחודיות</i>."
 
-#: help_text.php:517
-msgid "Quick family facts"
-msgstr "עובדות משפחתיות מהירות"
-
 #: help_text.php:518
 msgid ""
 "This is the short list of GEDCOM family facts that appears next to the full "
@@ -3647,10 +3680,6 @@ msgid ""
 msgstr ""
 "זוהי רשימה קצרה של עובדות משפחת של קובץ GEDCOM שמופיעה לצד הרשימה המלאה "
 "וניתן להוסיף אותן בלחיצה אחת."
-
-#: help_text.php:522
-msgid "Unique family facts"
-msgstr "עובדות משפחתיות יחידות במינן"
 
 #: help_text.php:523
 msgid ""
@@ -3823,10 +3852,6 @@ msgstr ""
 "ניתן להגדיר את התיקייה במלואה (למשל /home/user_name/webtrees_data/) או ביחס "
 "לתיקית ההתקנה (למשל ../../webtrees_data/)."
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr "עובדות אישיות שניתן להוסיף"
-
 #: help_text.php:591
 msgid ""
 "This is the list of GEDCOM facts that your users can add to individuals.  "
@@ -3838,10 +3863,6 @@ msgstr ""
 "לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע "
 "ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות אישיות ייחודיות</i>."
 
-#: help_text.php:595
-msgid "Quick individual facts"
-msgstr "עובדות אישיות מהירות"
-
 #: help_text.php:596
 msgid ""
 "This is the short list of GEDCOM individual facts that appears next to the "
@@ -3849,10 +3870,6 @@ msgid ""
 msgstr ""
 "זוהי רשימה קצרה של עובדות אדם בקובץ GEDCOM שמופיעה לצד הרשימה המלאה וניתן "
 "להוסיף אותן בלחיצה אחת."
-
-#: help_text.php:600
-msgid "Unique individual facts"
-msgstr "עובדות אישיות יחידות במינן"
 
 #: help_text.php:601
 msgid ""
@@ -4156,10 +4173,6 @@ msgstr ""
 "או לעובדות (BIRT, MARR, DEAT). האפשרות הזו  משפיעה איזה תיבות יסומנו כברירת "
 "מחדל."
 
-#: help_text.php:786
-msgid "Facts for new individuals"
-msgstr "עובדות לאדם חדש"
-
 #: help_text.php:787
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4169,10 +4182,6 @@ msgstr ""
 "זוהי רשימה מופרדת בפסיקים של תגי עובדה של קובץ GEDCOM שיוצגו בעת הוספת אדם "
 "חדש. לדוגמה, אם BIRT הוא ברשימה, שדות לתאריך לידה ומקום לידה יוצגו בטופס."
 
-#: help_text.php:791
-msgid "Facts for new families"
-msgstr "עובדות למשפחה חדשה"
-
 #: help_text.php:792
 msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
@@ -4181,10 +4190,6 @@ msgid ""
 msgstr ""
 "זוהי רשימה מופרדת בפסיקים של תגי עובדה של קובץ GEDCOM שיוצגו בעת הוספת משפחה "
 "חדשה. לדוגמה, אם MARR הוא ברשימה, שדות לתאריך ומקום נשואין יוצגו בטופס."
-
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr "עובדות מאגר שניתן להוסיף"
 
 #: help_text.php:797
 msgid ""
@@ -4198,10 +4203,6 @@ msgstr ""
 "מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת "
 "<i>עובדות הייחודיות של המאגר</i>"
 
-#: help_text.php:801
-msgid "Quick repository facts"
-msgstr "עובדות מהירות של מאגר"
-
 #: help_text.php:802
 msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
@@ -4209,10 +4210,6 @@ msgid ""
 msgstr ""
 "זוהי רשימה קצרה של עובדות המאגרים של קובץ GEDCOM שמופיעה לצד הרשימה המלאה "
 "וניתן להוסיף אותן בלחיצה אחת."
-
-#: help_text.php:806
-msgid "Unique repository facts"
-msgstr "עובדות מאגר יחידות במינן"
 
 #: help_text.php:807
 msgid ""
@@ -4433,10 +4430,6 @@ msgstr ""
 "כאשר רושמים מקור חדש ב-<b>webtrees</b>, נוצר קוד זיהוי חדש למקור באופן "
 "אוטומטי. לקוד הזיהוי תהיה קידומת זו."
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr "עובדות מקור שניתן להוסיף"
-
 #: help_text.php:908
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
@@ -4448,10 +4441,6 @@ msgstr ""
 "לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע "
 "ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות ייחודיות של מקורות</i>"
 
-#: help_text.php:912
-msgid "Quick source facts"
-msgstr "עובדות מהירות של מקורות"
-
 #: help_text.php:913
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
@@ -4459,10 +4448,6 @@ msgid ""
 msgstr ""
 "זוהי רשימה קצרה של עובדות המקורות של קובץ GEDCOM שמופיעה לצד הרשימה המלאה "
 "וניתן להוסיף אותן בלחיצה אחת."
-
-#: help_text.php:917
-msgid "Unique source facts"
-msgstr "עובדות מקור יחידות במינן"
 
 #: help_text.php:918
 msgid ""
@@ -9157,9 +9142,8 @@ msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #: library/WT/I18N.php:163
-#, fuzzy
 msgid "%g:%i:%s %a"
-msgstr "%G:%i:%s"
+msgstr ""
 
 #: library/WT/I18N.php:165
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -10618,15 +10602,15 @@ msgstr "זימבבואה"
 msgid "%s BCE"
 msgstr "%s לפנה״ס"
 
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr "עץ המשפחה שלי"
 
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr "פלוני /אלמוני/"
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr "ערוך את האדם הזה והחלף פרטים שלהם עם שלך"
 
@@ -15689,6 +15673,12 @@ msgstr "לשוניות"
 msgid "Blocks"
 msgstr "בלוקים"
 
+#~ msgid " but the details are unknown"
+#~ msgstr " אבל הפרטים אינם ידועים"
+
+#~ msgid " in "
+#~ msgstr " ב- "
+
 #~ msgctxt "FEMALE"
 #~ msgid "%1$d x %2$s"
 #~ msgstr "%2$s מדרגה %1$d"
@@ -15796,6 +15786,17 @@ msgstr "בלוקים"
 #~ msgctxt "CENTURY"
 #~ msgid "9th"
 #~ msgstr "ה-9"
+
+#~ msgid "A report of facts which are supported by a given source."
+#~ msgstr "דו״ח של עובדות הנתמכות על ידי מקור מסוים."
+
+#~ msgctxt "paper size"
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgctxt "paper size"
+#~ msgid "A4"
+#~ msgstr "A4"
 
 #~ msgctxt "Abbreviation for Persian month: Aban"
 #~ msgid "Aban"
@@ -15920,6 +15921,9 @@ msgstr "בלוקים"
 #~ msgid "Adoption of a grandson"
 #~ msgstr "אימוץ נכד"
 
+#~ msgid "All facts"
+#~ msgstr "כל העובדות"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Also known as"
 #~ msgstr "מכונה"
@@ -15927,6 +15931,9 @@ msgstr "בלוקים"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "מכונה"
+
+#~ msgid "Ancestors of "
+#~ msgstr "האבות של "
 
 #~ msgctxt "Abbreviation for April"
 #~ msgid "Apr"
@@ -15947,6 +15954,10 @@ msgstr "בלוקים"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "April"
 #~ msgstr "אפריל"
+
+#~ msgctxt "font name"
+#~ msgid "Arial"
+#~ msgstr "אריאל"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Attendant"
@@ -16068,6 +16079,9 @@ msgstr "בלוקים"
 #~ msgid "Birth"
 #~ msgstr "לידה"
 
+#~ msgid "Birth Place contains"
+#~ msgstr "מקום הלידה כולל"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Birth of a granddaughter"
 #~ msgstr "לידת נכדה"
@@ -16091,6 +16105,9 @@ msgstr "בלוקים"
 #~ msgctxt "son's son"
 #~ msgid "Brit milah of a grandson"
 #~ msgstr "ברית מילה של נכד"
+
+#~ msgid "Brother"
+#~ msgstr "אח"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Brumaire"
@@ -16131,6 +16148,15 @@ msgstr "בלוקים"
 #~ msgctxt "MALE"
 #~ msgid "Buyer"
 #~ msgstr "קונה"
+
+#~ msgid "Child of "
+#~ msgstr "ילד/ה של "
+
+#~ msgid "Children of "
+#~ msgstr "ילדים של "
+
+#~ msgid "Choose relatives"
+#~ msgstr "בחר קרובים"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Christening of a granddaughter"
@@ -16180,6 +16206,12 @@ msgstr "בלוקים"
 #~ msgid "Current Server Time:"
 #~ msgstr "הזמן הנוכחי של השרת:"
 
+#~ msgid "Daughter"
+#~ msgstr "בת"
+
+#~ msgid "Death Place contains"
+#~ msgstr "מקום הפטירה כולל"
+
 #~ msgctxt "daughter's daughter"
 #~ msgid "Death of a granddaughter"
 #~ msgstr "פטירת נכדה"
@@ -16215,6 +16247,13 @@ msgstr "בלוקים"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "December"
 #~ msgstr "דצמבר"
+
+#~ msgctxt "font name"
+#~ msgid "DejaVu"
+#~ msgstr "DejaVu"
+
+#~ msgid "Descendants of "
+#~ msgstr "צאצאים של "
 
 #~ msgctxt "Abbreviation for Persian month: Dey"
 #~ msgid "Dey"
@@ -16268,6 +16307,15 @@ msgstr "בלוקים"
 #~ msgid "Dhu al-Qi'dah"
 #~ msgstr "ז'ו אל-קעדה"
 
+#~ msgid "Differences"
+#~ msgstr "הבדלים"
+
+#~ msgid "Direct line ancestors"
+#~ msgstr "אב-אבות בקו ישיר"
+
+#~ msgid "Direct line ancestors and their families"
+#~ msgstr "אב-אבות בקו ישיר ומשפחותיהם"
+
 #~ msgid "Download %s and extract the files."
 #~ msgstr "הורד %s וחלץ את הקבצים."
 
@@ -16303,6 +16351,15 @@ msgstr "בלוקים"
 #~ msgid "Employer"
 #~ msgstr "מעסיק"
 
+#~ msgid "Ending range of change dates"
+#~ msgstr "סוף התחום של תאריכי שינוי"
+
+#~ msgid "Enter Family ID"
+#~ msgstr "הכנס קוד זיהוי של המשפחה"
+
+#~ msgid "Enter Individual ID"
+#~ msgstr "הכנס קוד זיהוי אישי"
+
 #~ msgctxt "Abbreviation for Persian month: Esfand"
 #~ msgid "Esf"
 #~ msgstr "אספ'"
@@ -16322,6 +16379,15 @@ msgstr "בלוקים"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Esfand"
 #~ msgstr "אספנד"
+
+#~ msgid "Family add facts"
+#~ msgstr "עובדות משפחתיות שניתן להוסיף"
+
+#~ msgid "Family with husband"
+#~ msgstr "משפחה עם בעל"
+
+#~ msgid "Family with wife"
+#~ msgstr "משפחה עם אשה"
 
 #~ msgctxt "Abbreviation for Persian month: Farvardin"
 #~ msgid "Far"
@@ -16379,6 +16445,9 @@ msgstr "בלוקים"
 #~ msgid "Floréal"
 #~ msgstr "פלוראל"
 
+#~ msgid "Font"
+#~ msgstr "גופן"
+
 #~ msgctxt "Female pedigree"
 #~ msgid "Foster"
 #~ msgstr "אימוץ זמני"
@@ -16431,6 +16500,9 @@ msgstr "בלוקים"
 #~ msgid "Fructidor"
 #~ msgstr "פרוקטידור"
 
+#~ msgid "Generation "
+#~ msgstr "דור "
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Germinal"
 #~ msgstr "ז'רמינאל"
@@ -16455,6 +16527,37 @@ msgstr "בלוקים"
 #~ msgid "Guardian"
 #~ msgstr "אפוטרופוס"
 
+#~ msgid "He "
+#~ msgstr "הוא "
+
+#~ msgid "He died"
+#~ msgstr "הוא נפטר"
+
+#~ msgid "He married"
+#~ msgstr "הוא התחתן עם"
+
+#~ msgid "He resided at"
+#~ msgstr "הוא התגורר ב-"
+
+#~ msgid "He was born"
+#~ msgstr "הוא נולד"
+
+#~ msgid "He was buried"
+#~ msgstr "הוא נקבר"
+
+#~ msgid "He was christened"
+#~ msgstr "הוא הוטבל"
+
+#~ msgid "He was cremated"
+#~ msgstr "גופתו נשרפה"
+
+#~ msgctxt "font name"
+#~ msgid "Helvetica"
+#~ msgstr "הלווטיקה"
+
+#~ msgid "Her occupation was"
+#~ msgstr "העיסוק שלה היה"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Heshvan"
 #~ msgstr "בחשוון"
@@ -16471,9 +16574,15 @@ msgstr "בלוקים"
 #~ msgid "Heshvan"
 #~ msgstr "חשוון"
 
+#~ msgid "His occupation was"
+#~ msgstr "העיסוק שלו היה"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Icelandic"
 #~ msgstr "איסלנדית"
+
+#~ msgid "Individual add facts"
+#~ msgstr "עובדות אישיות שניתן להוסיף"
 
 #~ msgctxt "FEMALE"
 #~ msgid "Informant"
@@ -16635,6 +16744,14 @@ msgstr "בלוקים"
 #~ msgid "Kislev"
 #~ msgstr "כסלו"
 
+#~ msgctxt "paper size"
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgctxt "paper size"
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Lithuanian"
 #~ msgstr "ליטאית"
@@ -16675,6 +16792,15 @@ msgstr "בלוקים"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "March"
 #~ msgstr "מרץ"
+
+#~ msgid "Marriage Date range end"
+#~ msgstr "סיום תחום תאריכי נישואין"
+
+#~ msgid "Marriage Date range start"
+#~ msgstr "התחלת תחום תאריכי נישואין"
+
+#~ msgid "Marriage Place contains"
+#~ msgstr "מקום הנישואין מכיל"
 
 #~ msgctxt "daughter's daughter"
 #~ msgid "Marriage of a granddaughter"
@@ -16788,6 +16914,9 @@ msgstr "בלוקים"
 #~ msgid "Name"
 #~ msgstr "שם"
 
+#~ msgid "Name List"
+#~ msgstr "רשימת שמות"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Never married"
 #~ msgstr "רווקה"
@@ -16795,6 +16924,9 @@ msgstr "בלוקים"
 #~ msgctxt "MALE"
 #~ msgid "Never married"
 #~ msgstr "רווק"
+
+#~ msgid "New entry facts"
+#~ msgstr "עובדות של הכנסת נתונים חדשה"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Nissan"
@@ -16904,6 +17036,9 @@ msgstr "בלוקים"
 #~ msgid "Ordibehesht"
 #~ msgstr "אורדיבהשת"
 
+#~ msgid "Orientation"
+#~ msgstr "כוון"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Owner"
 #~ msgstr "בעלים"
@@ -16911,6 +17046,18 @@ msgstr "בלוקים"
 #~ msgctxt "MALE"
 #~ msgid "Owner"
 #~ msgstr "בעל"
+
+#~ msgid "Page"
+#~ msgstr "דף"
+
+#~ msgid "Page size"
+#~ msgstr "גודל הדף"
+
+#~ msgid "Parents and siblings"
+#~ msgstr "הורים ואחים"
+
+#~ msgid "Pedigree Chart"
+#~ msgstr "תרשים אילן יוחסין"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Pluviôse"
@@ -16951,6 +17098,12 @@ msgstr "בלוקים"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Prairial"
 #~ msgstr "פריריאל"
+
+#~ msgid "Print basic events when blank?"
+#~ msgstr "הדפס אירועים בסיסיים ריקים?"
+
+#~ msgid "Quick facts"
+#~ msgstr "עובדות מהירות"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi' al-awwal"
@@ -17026,6 +17179,9 @@ msgstr "בלוקים"
 #~ msgctxt "MALE"
 #~ msgid "Registry Officer"
 #~ msgstr "ממונה על רישום"
+
+#~ msgid "Repository add facts"
+#~ msgstr "עובדות מאגר שניתן להוסיף"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Safar"
@@ -17150,6 +17306,30 @@ msgstr "בלוקים"
 #~ msgid "Shawwal"
 #~ msgstr "שוואל"
 
+#~ msgid "She "
+#~ msgstr "היא "
+
+#~ msgid "She died"
+#~ msgstr "היא נפטרה"
+
+#~ msgid "She married"
+#~ msgstr "היא התחתנה עם"
+
+#~ msgid "She resided at"
+#~ msgstr "היא התגוררה ב-"
+
+#~ msgid "She was born"
+#~ msgstr "היא נולדה"
+
+#~ msgid "She was buried"
+#~ msgstr "היא נקברה"
+
+#~ msgid "She was christened"
+#~ msgstr "היא הוטבלה"
+
+#~ msgid "She was cremated"
+#~ msgstr "גופתה נשרפה"
+
 #~ msgctxt "GENITIVE"
 #~ msgid "Shevat"
 #~ msgstr "בשבט"
@@ -17165,6 +17345,30 @@ msgstr "בלוקים"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Shevat"
 #~ msgstr "שבט"
+
+#~ msgid "Show children of ancestors?"
+#~ msgstr "הצג ילדים של אבות?"
+
+#~ msgid "Show notes?"
+#~ msgstr "הצג הערות?"
+
+#~ msgid "Show occupations?"
+#~ msgstr "הצג עיסוקים?"
+
+#~ msgid "Show pending changes"
+#~ msgstr "הראה שינויים שממתינים לאישור"
+
+#~ msgid "Show photos?"
+#~ msgstr "הראה תמונות?"
+
+#~ msgid "Show residences?"
+#~ msgstr "הצג מגורים?"
+
+#~ msgid "Show sources?"
+#~ msgstr "הצג מקורות?"
+
+#~ msgid "Sister"
+#~ msgstr "אחות"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Sivan"
@@ -17190,9 +17394,27 @@ msgstr "בלוקים"
 #~ msgid "Slave"
 #~ msgstr "עבד"
 
+#~ msgid "Son"
+#~ msgstr "בן"
+
+#~ msgid "Source add facts"
+#~ msgstr "עובדות מקור שניתן להוסיף"
+
+#~ msgid "Sources to the events"
+#~ msgstr "מקורות לעובדות"
+
 #~ msgctxt "Surname tradition"
 #~ msgid "Spanish"
 #~ msgstr "ספרדית"
+
+#~ msgid "Spouse"
+#~ msgstr "בן/בת זוג"
+
+#~ msgid "Spouses and children"
+#~ msgstr "בן/בת זוג והילדים"
+
+#~ msgid "Starting range of change dates"
+#~ msgstr "תחילת התחום של תאריכי שינוי"
 
 #~ msgid ""
 #~ "Take your site offline while copying the new files.  Do this by "
@@ -17285,6 +17507,18 @@ msgstr "בלוקים"
 #~ msgid "Tishrei"
 #~ msgstr "תשרי"
 
+#~ msgid "Total accepted changes: "
+#~ msgstr "סה״כ שינויים שהתקבלו: "
+
+#~ msgid "Total individuals"
+#~ msgstr "סה״כ אנשים"
+
+#~ msgid "Total pending changes: "
+#~ msgstr "סה״כ שינויים שממתינים לאישור: "
+
+#~ msgid "Unique facts"
+#~ msgstr "עובדות ייחודיות"
+
 #~ msgctxt "unknown century"
 #~ msgid "Unknown"
 #~ msgstr "לא ידוע"
@@ -17302,6 +17536,9 @@ msgstr "בלוקים"
 
 #~ msgid "Upgrade to webtrees %s"
 #~ msgstr "שדרוג ל-webtrees %s"
+
+#~ msgid "Use colors"
+#~ msgstr "השתמש בצבעים"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Vendémiaire"
@@ -17483,6 +17720,9 @@ msgstr "בלוקים"
 #~ msgid "d."
 #~ msgstr "פ'"
 
+#~ msgid "daughter of"
+#~ msgstr "בת של"
+
 #~ msgctxt "child's wife"
 #~ msgid "daughter-in-law"
 #~ msgstr "כלה"
@@ -17502,6 +17742,14 @@ msgstr "בלוקים"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law's parent"
 #~ msgstr "מחותן/ת"
+
+#~ msgctxt "FEMALE"
+#~ msgid "died"
+#~ msgstr "נפטרה"
+
+#~ msgctxt "MALE"
+#~ msgid "died"
+#~ msgstr "נפטר"
 
 #~ msgctxt "Abbreviation for email address"
 #~ msgid "e."
@@ -18808,6 +19056,14 @@ msgstr "בלוקים"
 #~ msgstr "נ'"
 
 #~ msgctxt "FEMALE"
+#~ msgid "married"
+#~ msgstr "התחתנה"
+
+#~ msgctxt "MALE"
+#~ msgid "married"
+#~ msgstr "התחתן"
+
+#~ msgctxt "FEMALE"
 #~ msgid "married name"
 #~ msgstr "שם נישואין"
 
@@ -19151,6 +19407,9 @@ msgstr "בלוקים"
 #~ msgid "sixth cousin"
 #~ msgstr "דודן/דודנית מדרגה 6"
 
+#~ msgid "son of"
+#~ msgstr "בן של"
+
 #~ msgctxt "child's husband"
 #~ msgid "son-in-law"
 #~ msgstr "חתן"
@@ -19351,6 +19610,14 @@ msgstr "בלוקים"
 #~ msgid "unknown"
 #~ msgstr "לא ידוע"
 
+#~ msgctxt "FEMALE"
+#~ msgid "was born"
+#~ msgstr "נולדה"
+
+#~ msgctxt "MALE"
+#~ msgid "was born"
+#~ msgstr "נולד"
+
 #~ msgctxt "Unknown given name"
 #~ msgid "…"
 #~ msgstr "…"
@@ -19359,14 +19626,11 @@ msgstr "בלוקים"
 #~ msgid "…"
 #~ msgstr "…"
 
-#~ msgid " but the details are unknown"
-#~ msgstr " אבל הפרטים אינם ידועים"
-
-#~ msgid " in "
-#~ msgstr " ב- "
-
 #~ msgid "%1$s’s %2$s"
 #~ msgstr "%2$s של %1$s"
+
+#~ msgid "%H:%i:%s"
+#~ msgstr "%G:%i:%s"
 
 #~ msgid "%s three times removed ascending"
 #~ msgstr "%s מוזח/ת שלוש פעמים למעלה"
@@ -19539,23 +19803,12 @@ msgstr "בלוקים"
 #~ "(נוצר על ידי מנהל השרת שלך) או ליצור אחד חדש (אם משתמש שרת מאגר המידע שלך "
 #~ "בעל הרשאות מספיקות)."
 
-#~ msgid "A report of facts which are supported by a given source."
-#~ msgstr "דו״ח של עובדות הנתמכות על ידי מקור מסוים."
-
 #~ msgid ""
 #~ "A user will not be able to login until both the “email verified” and "
 #~ "“approved by administrator” options are selected."
 #~ msgstr ""
 #~ "משתמש לא יוכל להתחבר עד שאופציות ”דוא״ל אומת“ ו”אושר על ידי מנהל מערכת“ "
 #~ "יבחרו."
-
-#~ msgctxt "paper size"
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgctxt "paper size"
-#~ msgid "A4"
-#~ msgstr "A4"
 
 #~ msgid "Access"
 #~ msgstr "גישה"
@@ -19647,9 +19900,6 @@ msgstr "בלוקים"
 #~ msgid "Age of parents next to child’s birthdate"
 #~ msgstr "הראה את גיל ההורים ליד תאריך הלידה של הילד"
 
-#~ msgid "All individuals"
-#~ msgstr "כל האנשים"
-
 #~ msgid "Allow GEDCOM switching"
 #~ msgstr "הרשה מעבר בין GEDCOM-ים"
 
@@ -19664,18 +19914,11 @@ msgstr "בלוקים"
 #~ msgid "An unexpected database error occured."
 #~ msgstr "אירעה שגיאת מאגר מידע בלתי צפויה."
 
-#~ msgid "Ancestors of "
-#~ msgstr "האבות של "
-
 #~ msgid "Ancestral file number"
 #~ msgstr "מספר קובץ אב-אבות"
 
 #~ msgid "Are you sure you want to undo all of the changes for this GEDCOM?"
 #~ msgstr "האם אתה בטוח שתרצה לבטל את כל השינויים של ה-GEDCOM הזה?"
-
-#~ msgctxt "font name"
-#~ msgid "Arial"
-#~ msgstr "אריאל"
 
 #~ msgid "Available blocks"
 #~ msgstr "הבלוקים הזמינים"
@@ -19689,9 +19932,6 @@ msgstr "בלוקים"
 #~ msgid "Binary data object"
 #~ msgstr "אובייקט נתונים בינארי"
 
-#~ msgid "Birth Place contains"
-#~ msgstr "מקום הלידה כולל"
-
 #~ msgid "Birth and death details on charts"
 #~ msgstr "הראה נתוני לידה ופטירה בתרשימים"
 
@@ -19700,9 +19940,6 @@ msgstr "בלוקים"
 
 #~ msgid "Birth date range start"
 #~ msgstr "תחילת תחום תאריכי לידה"
-
-#~ msgid "Brother"
-#~ msgstr "אח"
 
 #~ msgid "Burial place contains"
 #~ msgstr "מקום קבורה כולל"
@@ -19719,15 +19956,6 @@ msgstr "בלוקים"
 
 #~ msgid "Change family members"
 #~ msgstr "שנה בני משפחה"
-
-#~ msgid "Child of "
-#~ msgstr "ילד/ה של "
-
-#~ msgid "Children of "
-#~ msgstr "ילדים של "
-
-#~ msgid "Choose relatives"
-#~ msgstr "בחר קרובים"
 
 #~ msgid ""
 #~ "Choose the thumbnail image that you want to upload.  Although thumbnails "
@@ -19869,12 +20097,6 @@ msgstr "בלוקים"
 #~ msgid "Date of residence"
 #~ msgstr "תאריך מגורים"
 
-#~ msgid "Daughter"
-#~ msgstr "בת"
-
-#~ msgid "Death Place contains"
-#~ msgstr "מקום הפטירה כולל"
-
 #~ msgid "Death date range end"
 #~ msgstr "סיום תחום תאריכי פטירה"
 
@@ -19883,13 +20105,6 @@ msgstr "בלוקים"
 
 #~ msgid "Default theme"
 #~ msgstr "עיצוב ברירת מחדל"
-
-#~ msgctxt "font name"
-#~ msgid "DejaVu"
-#~ msgstr "DejaVu"
-
-#~ msgid "Descendants of "
-#~ msgstr "צאצאים של "
 
 #~ msgid "Descent steps"
 #~ msgstr "רמות צאצאים"
@@ -19909,15 +20124,6 @@ msgstr "בלוקים"
 #~ msgctxt "NOMINATIVE"
 #~ msgid "Dhu al-Qi’dah"
 #~ msgstr "ז'ו אל-קעדה"
-
-#~ msgid "Differences"
-#~ msgstr "הבדלים"
-
-#~ msgid "Direct line ancestors"
-#~ msgstr "אב-אבות בקו ישיר"
-
-#~ msgid "Direct line ancestors and their families"
-#~ msgstr "אב-אבות בקו ישיר ומשפחותיהם"
 
 #~ msgid "Do not seal, previous sealing cancelled"
 #~ msgstr "אין לחותום, לפני שהחותמת הקודמת בוטלה"
@@ -20006,15 +20212,6 @@ msgstr "בלוקים"
 
 #~ msgid "End year"
 #~ msgstr "שנת סיום"
-
-#~ msgid "Ending range of change dates"
-#~ msgstr "סוף התחום של תאריכי שינוי"
-
-#~ msgid "Enter Family ID"
-#~ msgstr "הכנס קוד זיהוי של המשפחה"
-
-#~ msgid "Enter Individual ID"
-#~ msgstr "הכנס קוד זיהוי אישי"
 
 #~ msgid ""
 #~ "Enter a title for the item you are editing.  If this is a title for a "
@@ -20163,20 +20360,11 @@ msgstr "בלוקים"
 #~ msgid "Family tree clippings cart"
 #~ msgstr "עגלת גזירי עץ המשפחה"
 
-#~ msgid "Family with husband"
-#~ msgstr "משפחה עם בעל"
-
-#~ msgid "Family with wife"
-#~ msgstr "משפחה עם אשה"
-
 #~ msgid "Father’s Birthplace - (Chapman format)"
 #~ msgstr "מקום לידה של אב (בפורמט צ 'פמן)"
 
 #~ msgid "Father’s age"
 #~ msgstr "גיל האב"
-
-#~ msgid "Font"
-#~ msgstr "גופן"
 
 #~ msgid ""
 #~ "For LDS ordinances, this field records the temple where it was performed."
@@ -20237,9 +20425,6 @@ msgstr "בלוקים"
 #~ msgid "Gedcom"
 #~ msgstr "Gedcom"
 
-#~ msgid "Generation "
-#~ msgstr "דור "
-
 #~ msgid ""
 #~ "Gives users the option of selecting their own theme from a menu."
 #~ "<br><br>Even with this option set, the theme currently in effect may not "
@@ -20261,30 +20446,6 @@ msgstr "בלוקים"
 #~ "\"ל עם קוד לאימות בקשתו לחשבון. לאחר אימות, המנהל יצטרך לאשר את הרישום "
 #~ "לפני שהוא הופך לפעיל."
 
-#~ msgid "He "
-#~ msgstr "הוא "
-
-#~ msgid "He died"
-#~ msgstr "הוא נפטר"
-
-#~ msgid "He married"
-#~ msgstr "הוא התחתן עם"
-
-#~ msgid "He resided at"
-#~ msgstr "הוא התגורר ב-"
-
-#~ msgid "He was born"
-#~ msgstr "הוא נולד"
-
-#~ msgid "He was buried"
-#~ msgstr "הוא נקבר"
-
-#~ msgid "He was christened"
-#~ msgstr "הוא הוטבל"
-
-#~ msgid "He was cremated"
-#~ msgstr "גופתו נשרפה"
-
 #~ msgid "Hello %s…"
 #~ msgstr "שלום <span dir=\"ltr\">%s</span> …"
 
@@ -20293,13 +20454,6 @@ msgstr "בלוקים"
 
 #~ msgid "Hello administrator…"
 #~ msgstr "שלום מנהל המערכת …"
-
-#~ msgctxt "font name"
-#~ msgid "Helvetica"
-#~ msgstr "הלווטיקה"
-
-#~ msgid "Her occupation was"
-#~ msgstr "העיסוק שלה היה"
 
 #~ msgid ""
 #~ "Here you can add a fact to the record being edited.<br><br>First choose a "
@@ -20396,9 +20550,6 @@ msgstr "בלוקים"
 
 #~ msgid "Hide &amp; show"
 #~ msgstr "הסתר והראה"
-
-#~ msgid "His occupation was"
-#~ msgstr "העיסוק שלו היה"
 
 #~ msgid "Hit count:"
 #~ msgstr "ספירת פגיעות:"
@@ -20603,14 +20754,6 @@ msgstr "בלוקים"
 #~ msgid "LDS temple"
 #~ msgstr "מקדש מורמונים"
 
-#~ msgctxt "paper size"
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgctxt "paper size"
-#~ msgid "Letter"
-#~ msgstr "Letter"
-
 #~ msgid "Link ID"
 #~ msgstr "קוד זיהוי של קישור"
 
@@ -20647,15 +20790,6 @@ msgstr "בלוקים"
 
 #~ msgid "Main section blocks"
 #~ msgstr "הבלוקים הראשיים"
-
-#~ msgid "Marriage Date range end"
-#~ msgstr "סיום תחום תאריכי נישואין"
-
-#~ msgid "Marriage Date range start"
-#~ msgstr "התחלת תחום תאריכי נישואין"
-
-#~ msgid "Marriage Place contains"
-#~ msgstr "מקום הנישואין מכיל"
 
 #~ msgid "Marriage intention"
 #~ msgstr "כוונת נישואין"
@@ -20695,9 +20829,6 @@ msgstr "בלוקים"
 
 #~ msgid "Move right"
 #~ msgstr "העבר שמאלה"
-
-#~ msgid "Name List"
-#~ msgstr "רשימת שמות"
 
 #~ msgid "No events for living individuals exist for the next %s day."
 #~ msgid_plural "No events for living people exist for the next %s days."
@@ -20771,9 +20902,6 @@ msgstr "בלוקים"
 #~ msgid "Online editing"
 #~ msgstr "עריכה מקוונת"
 
-#~ msgid "Orientation"
-#~ msgstr "כוון"
-
 #~ msgid "Other folder… please type in"
 #~ msgstr "תיקייה אחרת… נא הקלד"
 
@@ -20801,20 +20929,8 @@ msgstr "בלוקים"
 #~ "הגדרת \"%1$s\" אינה פעילה ב-PHP. בלעדיה, התכונות הבאות לא תפעלנה: %2$s. "
 #~ "אנא בקש ממנהל השרת לאפשר הפעילות."
 
-#~ msgid "Page"
-#~ msgstr "דף"
-
-#~ msgid "Page size"
-#~ msgstr "גודל הדף"
-
-#~ msgid "Parents and siblings"
-#~ msgstr "הורים ואחים"
-
 #~ msgid "Parent’s age"
 #~ msgstr "גיל ההורה"
-
-#~ msgid "Pedigree Chart"
-#~ msgstr "תרשים אילן יוחסין"
 
 #~ msgid "Place of LDS baptism"
 #~ msgstr "מקום טבילת מורמונים"
@@ -20898,9 +21014,6 @@ msgstr "בלוקים"
 
 #~ msgid "President’s Office"
 #~ msgstr "משרד הנשיא"
-
-#~ msgid "Print basic events when blank?"
-#~ msgstr "הדפס אירועים בסיסיים ריקים?"
 
 #~ msgctxt "GENITIVE"
 #~ msgid "Rabi’ al-awwal"
@@ -21126,30 +21239,6 @@ msgstr "בלוקים"
 #~ msgid "Sha’aban"
 #~ msgstr "שעבאן"
 
-#~ msgid "She "
-#~ msgstr "היא "
-
-#~ msgid "She died"
-#~ msgstr "היא נפטרה"
-
-#~ msgid "She married"
-#~ msgstr "היא התחתנה עם"
-
-#~ msgid "She resided at"
-#~ msgstr "היא התגוררה ב-"
-
-#~ msgid "She was born"
-#~ msgstr "היא נולדה"
-
-#~ msgid "She was buried"
-#~ msgstr "היא נקברה"
-
-#~ msgid "She was christened"
-#~ msgstr "היא הוטבלה"
-
-#~ msgid "She was cremated"
-#~ msgstr "גופתה נשרפה"
-
 #~ msgid ""
 #~ "Should the GeoNames database be used to provide more suggestions for "
 #~ "place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames "
@@ -21177,9 +21266,6 @@ msgstr "בלוקים"
 
 #~ msgid "Show all places in a list"
 #~ msgstr "הראה את כל המקומות ברשימה"
-
-#~ msgid "Show children of ancestors?"
-#~ msgstr "הצג ילדים של אבות?"
 
 #~ msgid "Show dead individuals"
 #~ msgstr "הראה אנשים שנפטרו"
@@ -21213,12 +21299,6 @@ msgstr "בלוקים"
 #~ msgid "Show individuals who died within the last 100 years."
 #~ msgstr "הראה אנשים שנפטרו ב-100 השנים האחרונות."
 
-#~ msgid "Show notes?"
-#~ msgstr "הצג הערות?"
-
-#~ msgid "Show occupations?"
-#~ msgstr "הצג עיסוקים?"
-
 #~ msgid "Show only events of living individuals?"
 #~ msgstr "הצג רק אירועים של אנשים חיים?"
 
@@ -21228,23 +21308,11 @@ msgstr "בלוקים"
 #~ msgid "Show only individuals, events, or all?"
 #~ msgstr "הראה רק אנשים, אירועים, או הכול?"
 
-#~ msgid "Show pending changes"
-#~ msgstr "הראה שינויים שממתינים לאישור"
-
-#~ msgid "Show photos?"
-#~ msgstr "הראה תמונות?"
-
 #~ msgid "Show places in hierarchy"
 #~ msgstr "הראה מקומות בצורה היררכית"
 
 #~ msgid "Show related individuals/families"
 #~ msgstr "הראה אנשים/משפחות קשורים"
-
-#~ msgid "Show residences?"
-#~ msgstr "הצג מגורים?"
-
-#~ msgid "Show sources?"
-#~ msgstr "הצג מקורות?"
 
 #~ msgid ""
 #~ "Show “leaves” couples or individuals.  These are individuals who are "
@@ -21261,14 +21329,8 @@ msgstr "בלוקים"
 #~ "הראה זוגות או אנשי &laquo;שורשים&raquo; ניתן גם לכנות את האנשים הללו "
 #~ "&laquo;פטריארכים&raquo;.מדובר באנשים שהוריהם אינם במאגר הנתונים."
 
-#~ msgid "Sister"
-#~ msgstr "אחות"
-
 #~ msgid "Social security number"
 #~ msgstr "מספר מזהה"
-
-#~ msgid "Son"
-#~ msgstr "בן"
 
 #~ msgid ""
 #~ "Source citations can include fields to record the quality of the data "
@@ -21280,9 +21342,6 @@ msgstr "בלוקים"
 #~ "משני, וכו') ואת התאריך שבו האירוע נרשם במקור. אם אתה לא משתמש בשדות האלה, "
 #~ "ניתן לבטל אותם בעת יצירת מקורות של ציטוטים חדשים."
 
-#~ msgid "Sources to the events"
-#~ msgstr "מקורות לעובדות"
-
 #~ msgid ""
 #~ "Specifies whether messages sent through <b>webtrees</b> can be stored in "
 #~ "the database.  If set to <b>Yes</b> users will be able to retrieve their "
@@ -21292,15 +21351,6 @@ msgstr "בלוקים"
 #~ "מציין אם ניתן לאחסן הודעות שנשלחו דרך <b>webtrees</b> במסד הנתונים. ערך "
 #~ "<b>כן</b> מאפשר למשתמשים לאחזר את ההודעות שלהם כאשר הם נכנסים ל-"
 #~ "<b>webtrees</b>. ערך <b>לא</b> גורם לכך שהודעות תישלחנה רק בדואר אלקטרוני."
-
-#~ msgid "Spouse"
-#~ msgstr "בן/בת זוג"
-
-#~ msgid "Spouses and children"
-#~ msgstr "בן/בת זוג והילדים"
-
-#~ msgid "Starting range of change dates"
-#~ msgstr "תחילת התחום של תאריכי שינוי"
 
 #~ msgid "Surname option"
 #~ msgstr "אופצית שם משפחה"
@@ -21913,15 +21963,6 @@ msgstr "בלוקים"
 #~ msgid "To source"
 #~ msgstr "למקור"
 
-#~ msgid "Total accepted changes: "
-#~ msgstr "סה״כ שינויים שהתקבלו: "
-
-#~ msgid "Total individuals"
-#~ msgstr "סה״כ אנשים"
-
-#~ msgid "Total pending changes: "
-#~ msgstr "סה״כ שינויים שממתינים לאישור: "
-
 #~ msgid ""
 #~ "Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are "
 #~ "Internet data encryption protocols.<br><br>TLS 1.0, 1.1 and 1.2 are "
@@ -21952,9 +21993,6 @@ msgstr "בלוקים"
 
 #~ msgid "Use SMTP to send external mails"
 #~ msgstr "השתמש ב-SMTP למשלוח מיילים חיצוניים"
-
-#~ msgid "Use colors"
-#~ msgstr "השתמש בצבעים"
 
 #~ msgid ""
 #~ "Use name and password authentication to connect to the SMTP server."
@@ -22319,9 +22357,6 @@ msgstr "בלוקים"
 #~ msgid "before %d"
 #~ msgstr "לפני שנת %d"
 
-#~ msgid "daughter of"
-#~ msgstr "בת של"
-
 #~ msgctxt "son's wife's father"
 #~ msgid "daughter-in-law’s father"
 #~ msgstr "מחותן"
@@ -22333,14 +22368,6 @@ msgstr "בלוקים"
 #~ msgctxt "son's wife's parent"
 #~ msgid "daughter-in-law’s parent"
 #~ msgstr "מחותן/ת"
-
-#~ msgctxt "FEMALE"
-#~ msgid "died"
-#~ msgstr "נפטרה"
-
-#~ msgctxt "MALE"
-#~ msgid "died"
-#~ msgstr "נפטר"
 
 #~ msgid "estate name"
 #~ msgstr "שם חווה"
@@ -22380,17 +22407,6 @@ msgstr "בלוקים"
 #~ msgid "grandson’s wife"
 #~ msgstr "אישה של נכד"
 
-#~ msgctxt "FEMALE"
-#~ msgid "married"
-#~ msgstr "התחתנה"
-
-#~ msgctxt "MALE"
-#~ msgid "married"
-#~ msgstr "התחתן"
-
-#~ msgid "son of"
-#~ msgstr "בן של"
-
 #~ msgctxt "daughter's husband's father"
 #~ msgid "son-in-law’s father"
 #~ msgstr "מחותן"
@@ -22402,14 +22418,6 @@ msgstr "בלוקים"
 #~ msgctxt "daughter's husband's parent"
 #~ msgid "son-in-law’s parent"
 #~ msgstr "מחותן/ת"
-
-#~ msgctxt "FEMALE"
-#~ msgid "was born"
-#~ msgstr "נולדה"
-
-#~ msgctxt "MALE"
-#~ msgid "was born"
-#~ msgstr "נולד"
 
 #~ msgid "webtrees’ database must be on the same server as PGV’s"
 #~ msgstr "webtrees חייב להיות על אותו השרת כמו PGV"
