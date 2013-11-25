@@ -27,7 +27,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// $Id: db_schema_4_5.php 14590 2012-12-05 18:57:13Z greg $
+// $Id
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -35,7 +35,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 self::exec(
-	"DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name IN ('GM_PRE_POST_MODE_1', 'GM_PRE_POST_MODE_2', 'GM_PRE_POST_MODE_3', 'GM_PRE_POST_MODE_4', 'GM_PRE_POST_MODE_5', 'GM_PRE_POST_MODE_6', 'GM_PRE_POST_MODE_7', 'GM_PRE_POST_MODE_8', 'GM_PRE_POST_MODE_9', 'GM_PH_WHEEL', 'GM_PH_CONTROLS', 'GM_DISP_COUNT')"
+	"DELETE FROM `##module_setting` WHERE module_name='googlemap' AND setting_name IN (
+	'GM_API_KEY', 'GM_DEFAULT_TOP_VALUE', 'GM_DISP_COUNT', 'GM_MAX_NOF_LEVELS', 'GM_PH_CONTROLS', 'GM_PH_WHEEL', 'GM_PRE_POST_MODE_1', 'GM_PRE_POST_MODE_2', 'GM_PRE_POST_MODE_3', 'GM_PRE_POST_MODE_4', 'GM_PRE_POST_MODE_5', 'GM_PRE_POST_MODE_6', 'GM_PRE_POST_MODE_7', 'GM_PRE_POST_MODE_8', 'GM_PRE_POST_MODE_9')"
 );
 
 // Update the version to indicate success
