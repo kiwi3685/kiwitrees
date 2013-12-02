@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2013-11-25 20:40+0000\n"
-"PO-Revision-Date: 2013-11-26 12:16+1200\n"
+"PO-Revision-Date: 2013-11-30 17:22+0100\n"
 "Last-Translator: Kiwi <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -360,7 +360,7 @@ msgstr "%s ersten Grades absteigend"
 #: modules_v3/googlemap/admin_places.php:628
 #, php-format
 msgid "%s places"
-msgstr ""
+msgstr "%s Orte"
 
 #: library/WT/I18N.php:404
 #, php-format
@@ -1342,7 +1342,7 @@ msgstr "Accra, Ghana"
 
 #: modules_v3/googlemap/admin_places.php:619
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: library/WT/Date/Jewish.php:112
 msgctxt "GENITIVE"
@@ -1709,7 +1709,7 @@ msgstr "Hinzufügen zum Sammelbehälter"
 #: library/WT/Controller/Repository.php:113
 #: library/WT/Controller/Source.php:113 library/WT/MenuBar.php:530
 msgid "Add to favorites"
-msgstr "zu Favoriten hinzufügen"
+msgstr "Lesezeichen hinzufügen"
 
 #: admin_site_other.php:33 admin_site_other.php:39
 #: themes/_administration/header.php:116
@@ -2836,7 +2836,7 @@ msgstr "Barbados"
 
 #: modules_v3/googlemap/module.php:252
 msgid "Basic"
-msgstr "Russell"
+msgstr "Grundlagen"
 
 #. I18N: gedcom tag BASM
 #: library/WT/Gedcom/Tag.php:137
@@ -3440,6 +3440,14 @@ msgid ""
 "list, or just those that exist in the Google Maps table but not on your "
 "family trees."
 msgstr ""
+"Standardmäßig werden die \"aktiven\" Orte angezeigt, also Einträge im Google "
+"Maps Ortsverzeichnis, die mit Ortsangaben innerhalb der Stammbäume "
+"übereinstimmen. Es können auch weitere Ortseinträge existieren, die z.B. "
+"durch das Hochladen von geografischen Daten einer externen Datei entstanden "
+"sind. Optional können daher auch \"alle\" Einträge des Google Maps "
+"Ortsverzeichnisses angezeigt werden oder nur \"inaktive\" Orte, die zwar im "
+"Google Maps Ortsverzeichnis vorhanden sind, aber keine Entsprechung in den "
+"Stammbäumen haben."
 
 #: help_text.php:1417
 msgid ""
@@ -3532,7 +3540,7 @@ msgstr "Caracas, Venezuela"
 
 #: library/WT/Gedcom/Tag.php:903
 msgid "Card"
-msgstr "Karte"
+msgstr "Karteikarte"
 
 #: library/WT/Gedcom/Code/Temp.php:68
 msgid "Cardston, Alberta, Canada"
@@ -4606,7 +4614,7 @@ msgstr "gesendet:"
 
 #: admin_trees_config.php:1031 help_text.php:1406
 msgid "Date differences"
-msgstr "Datendifferenzen zeigen"
+msgstr "Zeitabstände"
 
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:483
 msgid "Date not known"
@@ -8308,7 +8316,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:623
 msgid "Inactive"
-msgstr ""
+msgstr "Inaktiv"
 
 #: modules_v3/googlemap/module.php:1506
 msgid "Include fully matched places: "
@@ -9101,7 +9109,7 @@ msgstr "Liste"
 #: modules_v3/googlemap/admin_places.php:611
 #: modules_v3/googlemap/help_text.php:85
 msgid "List places"
-msgstr ""
+msgstr "Orte auflisten"
 
 #: admin_trees_config.php:762 library/WT/MenuBar.php:286
 msgid "Lists"
@@ -9396,7 +9404,7 @@ msgstr ""
 #: library/WT/Gedcom/Tag.php:246 library/WT/Gedcom/Tag.php:912
 #: modules_v3/googlemap/module.php:262
 msgid "Map"
-msgstr "Karte"
+msgstr "Landkarte"
 
 #: library/WT/Date/Calendar.php:203
 msgctxt "Abbreviation for March"
@@ -9602,11 +9610,11 @@ msgstr "Ehen pro Jahrhundert"
 #. I18N: gedcom tag _MARNM
 #: library/WT/Gedcom/Tag.php:745
 msgid "Married Name"
-msgstr "Ehename"
+msgstr "Vollständiger Ehename"
 
 #: library/WT/Gedcom/Tag.php:747
 msgid "Married Surname"
-msgstr "Nachname nach der Ehe"
+msgstr "Ehename"
 
 #: library/WT/Stats.php:3923
 msgid "Marshall Islands"
@@ -10689,7 +10697,7 @@ msgstr "Keine Orte gefunden"
 
 #: modules_v3/googlemap/admin_places.php:567
 msgid "No places selected."
-msgstr ""
+msgstr "Keine Orte ausgewählt."
 
 #: admin_site_config.php:46
 msgid "No predefined text"
@@ -12928,6 +12936,8 @@ msgstr "Suchen und Ersetzen"
 msgid ""
 "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Text suchen und ersetzen durch einfache Suchfunktion oder erweiterten "
+"Mustervergleich."
 
 #: includes/session.php:577
 msgid "Search engine"
@@ -13642,7 +13652,7 @@ msgstr "Alters-Zeiger anzeigen?"
 #. I18N: A site configuration setting
 #: admin_trees_config.php:954 help_text.php:701
 msgid "Show chart details by default"
-msgstr ""
+msgstr "Einzelheiten in Diagrammen standardmäßig zeigen"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 msgid "Show children of ancestors?"
@@ -13690,12 +13700,12 @@ msgstr "Cousins und Cousinen zeigen"
 
 #: modules_v3/relatives/module.php:318
 msgid "Show date differences"
-msgstr "Datendifferenzen zeigen"
+msgstr "Zeitabstände anzeigen"
 
 #. I18N: label for yes/no option
 #: modules_v3/gedcom_stats/module.php:262
 msgid "Show date of last update?"
-msgstr "Zeige das datum der letzen Aktualisierung?"
+msgstr "Zeige das Datum der letzen Aktualisierung?"
 
 #: admin_trees_config.php:497 help_text.php:836
 msgid "Show dead people"
@@ -13893,7 +13903,7 @@ msgstr "Zeige den %2$s. %1$s Teil des Ortsnamens."
 
 #: modules_v3/html/module.php:319
 msgid "Show the date and time of update"
-msgstr "Zeige das Datum und die Zeit der Aktualisierung"
+msgstr "Zeige Datum und Uhrzeit der Aktualisierung"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of individuals"
@@ -14431,11 +14441,11 @@ msgstr "Stop"
 
 #: admin_trees_config.php:704
 msgid "Store watermarked full size images on server?"
-msgstr "Mit Wasserzeichen versehene Bilder auf dem Server bewahren"
+msgstr "Mit Wasserzeichen versehene Bilder auf dem Server speichern"
 
 #: admin_trees_config.php:712
 msgid "Store watermarked thumbnails on server?"
-msgstr "Mit Wasserzeichen versehene Miniaturbilder auf dem Server bewahren"
+msgstr "Mit Wasserzeichen versehene Miniaturbilder auf dem Server speichern"
 
 #. I18N: Name of a module
 #: modules_v3/stories/module.php:34 modules_v3/stories/module.php:411
@@ -15526,7 +15536,7 @@ msgstr ""
 
 #: library/WT/Filter.php:247
 msgid "This form has expired.  Try again."
-msgstr ""
+msgstr "Eingabeformular ist abgelaufen. Bitte nochmal versuchen."
 
 #: individual.php:93 library/WT/Controller/Chart.php:47
 msgid ""
@@ -15746,6 +15756,7 @@ msgstr ""
 msgid ""
 "This is the initial setting for the “show details” option on the charts."
 msgstr ""
+"Die Voreinstellung für die Option \"Einzelheiten zeigen\" in Diagrammen."
 
 #: help_text.php:513
 msgid ""
@@ -17264,11 +17275,11 @@ msgstr "Anstehende Ereignisse"
 #: modules_v3/batch_update/admin_batch_update.php:348
 #: modules_v3/batch_update/admin_batch_update.php:353
 msgid "Update"
-msgstr "Bearbeiten"
+msgstr "Aktualisieren"
 
 #: modules_v3/batch_update/admin_batch_update.php:349
 msgid "Update all"
-msgstr "Alles bearbeiten"
+msgstr "Alles aktualisieren"
 
 #: modules_v3/batch_update/admin_batch_update.php:337
 msgid "Update the CHAN record"
@@ -17804,6 +17815,9 @@ msgid ""
 "Watermarks can be slow to generate for large images.  Busy sites may prefer "
 "to generate them once and store the watermarked image on the server."
 msgstr ""
+"Das Erstellen der Wasserzeichen kann bei großen Bildern zeitraubend sein. "
+"Bei hoher Auslastung der Site kann es vorteilhafter sein, die Bilder "
+"einmalig mit Wasserzeichen zu versehen und auf dem Server zu speichern."
 
 #: login.php:359
 #, php-format
@@ -18029,6 +18043,8 @@ msgid ""
 "When this option is selected, webtrees will calculate the age differences "
 "between siblings, children, spouses, etc."
 msgstr ""
+"Wenn die Anzeige aktiviert ist, berechnet webtrees den Altersunterschied "
+"zwischen Geschwistern, Kindern, Ehepartnern etc."
 
 #: help_text.php:929
 msgid ""
@@ -18307,11 +18323,11 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:573
 msgid "You are about to remove multiple places."
-msgstr ""
+msgstr "Mehrere Ortseinträge werden gelöscht."
 
 #: modules_v3/googlemap/admin_places.php:570
 msgid "You are about to remove one place."
-msgstr ""
+msgstr "Ein Ortseintrag wird gelöscht."
 
 #: login.php:264 message.php:70
 msgid "You are not allowed to send messages that contain external links."
