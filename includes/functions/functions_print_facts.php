@@ -649,11 +649,11 @@ function print_main_sources(WT_Event $fact, $level) {
 	}
 
 	// -- find source for each fact
-	$ct = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
+	$ct = preg_match_all("/($level SOUR (.+))/", $factrec, $match, PREG_SET_ORDER);
 	$spos2 = 0;
 	for ($j=0; $j<$ct; $j++) {
-		$sid = $match[$j][1];
-		$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
+		$sid = trim($match[$j][2], '@');
+		$spos1 = strpos($factrec, $match[$j][1], $spos2);
 		$spos2 = strpos($factrec, "\n$level", $spos1);
 		if (!$spos2) $spos2 = strlen($factrec);
 		$srec = substr($factrec, $spos1, $spos2-$spos1);
@@ -686,8 +686,13 @@ function print_main_sources(WT_Event $fact, $level) {
 					}
 					echo WT_Gedcom_Tag::getLabel($factname, $parent), '</a>';
 					echo '<div class="editfacts">';
-					echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', $linenum);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-					echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
+					if (preg_match('/^@.+@$/', $match[$j][2])) {
+						// Inline sources can't be edited.  Attempting to save one will convert it
+						// into a link, and delete it.
+						// e.g. "1 SOUR my source" becomes "1 SOUR @my source@" which does not exist.
+						echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+						echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $fact_id, '\');" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
+					}
 					echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('$pid', $linenum, '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 				echo '</div>';
 			} else {
