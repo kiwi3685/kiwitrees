@@ -2315,6 +2315,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 	if ($FULL_SOURCES) {
 		$expected_subtags['SOUR'][]='QUAY';
 		$expected_subtags['DATA'][]='DATE';
+		$expected_subtags['SOUR'][]='OBJE';
 	}
 	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 		$expected_subtags['PLAC']=array_merge($match[1], $expected_subtags['PLAC']);
