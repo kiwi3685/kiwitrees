@@ -85,3 +85,6 @@ color:#707070;
 .subheaders {
 color:#707070;
 }
+#edit_interface-page [id^="QUAY"] .descriptionbox,
+#edit_interface-page [id^="DATE"] .descriptionbox,
+#edit_interface-page [id^="QUAY"] + [id*="OBJE"] .descriptionbox{background-color:#f0f2f5;color:inherit;}

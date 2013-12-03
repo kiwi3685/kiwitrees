@@ -46,7 +46,7 @@ color:#553e2f;}
 .ui-state-active a:link, .ui-state-active a:visited 
 {
 background-color:#93724f;
-color: #ffffff;
+color: #fff;
 }
 .ui-state-active, .ui-widget-content .ui-state-active {
     background: none repeat scroll 0 0 #93724f;
@@ -85,3 +85,6 @@ color:#553e2f;
 .subheaders {
 color:#494949;
 }
+#edit_interface-page [id^="QUAY"] .descriptionbox,
+#edit_interface-page [id^="DATE"] .descriptionbox,
+#edit_interface-page [id^="QUAY"] + [id*="OBJE"] .descriptionbox{background-color:#F4EAD1;color:inherit;}

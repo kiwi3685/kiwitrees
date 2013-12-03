@@ -29,12 +29,12 @@
 /* Header */
 #header {
 background:#03961e;
-color: #FFFFFF;
+color: #fff;
 }
 
 .title {
 text-decoration:none;
-color:#FFFFFF;}
+color:#fff;}
 
 /* Tbls and menus  */
 .descriptionbox, .descriptionbox a, .facts_label03,
@@ -46,7 +46,7 @@ color:#FFFFFF;}
 .ui-state-active a:link, .ui-state-active a:visited 
 {
 background-color:#04AF23;
-color: #ffffff;
+color: #fff;
 }
 .ui-state-active, .ui-widget-content .ui-state-active {
     background: none repeat scroll 0 0 #04AF23;
@@ -79,9 +79,13 @@ border:solid #03961e 2px;
 
 /* Light Text */
 .makeMenu li a {
-color:#FFFFFF;
+color:#fff;
 }
 
 .subheaders {
 color:#494949;
 }
+
+#edit_interface-page [id^="QUAY"] .descriptionbox,
+#edit_interface-page [id^="DATE"] .descriptionbox,
+#edit_interface-page [id^="QUAY"] + [id*="OBJE"] .descriptionbox{background-color:#E6FFC7;color:inherit;}
