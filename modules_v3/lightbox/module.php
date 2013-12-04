@@ -93,10 +93,12 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 		$html.='<td width="100%" valign="top" >';
 		ob_start();
 		lightbox_print_media($controller->record->getXref(), 0, true, 1); // map, painting, photo, tombstone)
-		lightbox_print_media($controller->record->getXref(), 0, true, 2); // card, certificate, document, magazine, manuscript, newspaper
+		lightbox_print_media($controller->record->getXref(), 0, true, 2); // card, certificate, document, newspaper
 		lightbox_print_media($controller->record->getXref(), 0, true, 3); // electronic, fiche, film
-		lightbox_print_media($controller->record->getXref(), 0, true, 4); // audio, book, coat, video, other
-		lightbox_print_media($controller->record->getXref(), 0, true, 5); // footnotes
+		lightbox_print_media($controller->record->getXref(), 0, true, 4); // book, magazine, manuscript
+		lightbox_print_media($controller->record->getXref(), 0, true, 5); // audio, video
+		lightbox_print_media($controller->record->getXref(), 0, true, 6); // coat of arms, other
+		lightbox_print_media($controller->record->getXref(), 0, true, 7); // not in DB
 		return
 			$html.
 			ob_get_clean().

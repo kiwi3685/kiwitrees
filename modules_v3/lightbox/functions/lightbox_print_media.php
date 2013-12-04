@@ -119,12 +119,10 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		break;
 	case 2:
 		$tt=WT_I18N::translate('Document');
-		$sqlmm.="AND (m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
+		$sqlmm.="AND (m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
 		$vars[]='%TYPE card%';
 		$vars[]='%TYPE certificate%';
 		$vars[]='%TYPE document%';
-		$vars[]='%TYPE magazine%';
-		$vars[]='%TYPE manuscript%';
 		$vars[]='%TYPE newspaper%';
 		break;
 	case 3:
@@ -135,16 +133,26 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		$vars[]='%TYPE film%';
 		break;
 	case 4:
-		$tt=WT_I18N::translate('Other');
-		$sqlmm.="AND (m_gedcom NOT LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
-		$vars[]='%TYPE %';
-		$vars[]='%TYPE coat%';
+		$tt=WT_I18N::translate('Stories and Writing');
+		$sqlmm.="AND (m_gedcom LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
+		$vars[]='%TYPE magazine%';
+		$vars[]='%TYPE manuscript%';
 		$vars[]='%TYPE book%';
-		$vars[]='%TYPE audio%';
-		$vars[]='%TYPE video%';
-		$vars[]='%TYPE other%';
 		break;
 	case 5:
+		$tt=WT_I18N::translate('Audio and Video');
+		$sqlmm.="AND (m_gedcom LIKE ? OR m_gedcom LIKE ?)";
+		$vars[]='%TYPE audio%';
+		$vars[]='%TYPE video%';
+		break;
+	case 6:
+		$tt=WT_I18N::translate('Other');
+		$sqlmm.="AND (m_gedcom NOT LIKE ? OR m_gedcom LIKE ? OR m_gedcom LIKE ?)";
+		$vars[]='%TYPE %';
+		$vars[]='%TYPE coat%';
+		$vars[]='%TYPE other%';
+		break;
+	case 7:
 	default:
 		$tt = WT_I18N::translate('Not in DB');
 		break;
@@ -160,8 +168,8 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	$numm = count($rows);
 
 	// Begin to Layout the Album Media Rows
-	if ($numm>0 || $kind==5) {
-		if ($kind!=5) {
+	if ($numm>0 || $kind==7) {
+		if ($kind!=7) {
 			echo '<table width="100%" class="facts_table"><tr>';
 			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
 			echo '<b>', $tt, '</b>';
@@ -184,7 +192,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 			//-- if there is a change to this media item then get the
 			//-- updated media item and show it
-			if (($newrec=find_updated_record($rowm['m_id'], $ged_id)) && $kind!=5  ) {
+			if (($newrec=find_updated_record($rowm['m_id'], $ged_id)) && $kind!=7  ) {
 				$row = array();
 				$row['m_id'] = $rowm['m_id'];
 				$row['m_file'] = $ged_id;
@@ -210,7 +218,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				}
 			}
 			foreach ($rows as $rtype => $rowm) {
-				if ($kind!=5) {
+				if ($kind!=7) {
 					$res = lightbox_print_media_row($rtype, $rowm, $pid);
 				}
 				$media_found = $media_found || $res;
@@ -229,8 +237,8 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		//-- We will print them too, and put any “Extra Items not in DB” into a new Row.
 
 		// Compare Items count in Database versus Item count in GEDCOM
-		if ($kind==5 && $ct+$ctf!=$numm) {
-			// If any items are left in $current_objes list for this individual, put them into $kind 5 (“Not in DB”) row
+		if ($kind==7 && $ct+$ctf!=$numm) {
+			// If any items are left in $current_objes list for this individual, put them into $kind 7 (“Not in DB”) row
 			echo '<table width="100%" class="facts_table"><tr>';
 			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
 			echo '<b>', $tt, '</b>';
@@ -262,9 +270,9 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			}
 		}
 		// No “Extra” Media Items ============================
-		if ($kind==5 && $ct+$ctf==$numm) {
+		if ($kind==7 && $ct+$ctf==$numm) {
 		// “Extra” Media Item in GEDCOM but NOT in DB ========
-		} else if ($kind==5 && $ct+$ctf!=$numm) {
+		} else if ($kind==7 && $ct+$ctf!=$numm) {
 			echo '</ul>';
 			echo '</div>';
 			echo '<div class="clearlist">';

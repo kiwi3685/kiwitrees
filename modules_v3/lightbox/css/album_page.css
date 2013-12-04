@@ -1,1 +1,54 @@
-#lightbox{margin-bottom:100px}#lightbox .descriptionbox span{margin:0 20px}.lb_notes:target,.lb_notes:target a{background-color:#ffc;color:#000}.prvpic{background-color:#999;border:1px;border-color:#000;border-style:solid;height:80px;margin-top:0;width:60px}.prvpic img{border:0;border-style:dotted;padding:0}.pic{border:0;border-color:#fff;border-style:solid;padding:0}.thumbcontainer{display:block;width:100%}#lb_icons{text-align:justify}#thumblist_1,#thumblist_2,#thumblist_3,#thumblist_4,#thumblist_5,#thumblist_1a,#thumblist_2a,#thumblist_3a,#thumblist_4a,#thumblist_5a{display:block;float:left;list-style-type:none}#thumblist_1 li,#thumblist_2 li,#thumblist_3 li,#thumblist_4 li,#thumblist_5 li,#thumblist_1a li,#thumblist_2a li,#thumblist_3a li,#thumblist_4a li,#thumblist_5a li{display:block;float:left;list-style-type:none;margin-right:5px;padding-bottom:0;padding-left:4px;padding-right:4px}li.li_norm{border:2px solid transparent;height:112px}li.li_new{border:2px solid #00f}li.li_old{border:2px solid red}#thumblist_1 a img,#thumblist_2 a img,#thumblist_3 a img,#thumblist_4 a img,#thumblist_5 a img,#thumblist_1a a img,#thumblist_2a a img,#thumblist_3a a img,#thumblist_4a a img,#thumblist_5a a img{border:1px;border-style:none;padding:1px;max-height:78px;max-width:100px;height:auto;width:auto}#thumblist_1 a:hover img,#thumblist_2 a:hover img,#thumblist_3 a:hover img,#thumblist_4 a:hover img,#thumblist_5 a:hover img,#thumblist_1a a:hover img,#thumblist_2a a:hover img,#thumblist_3a a:hover img,#thumblist_4a a:hover img,#thumblist_5a a:hover img{background-color:#bdb071;border:0;border-style:none;padding:1px}.clearlist:after{clear:both;content:".";display:block;height:0;visibility:hidden}#lightbox_content span{padding:10px}#lightbox_content span img{vertical-align:top}* html .clearfix{height:1%}#clearlist{display:block}html[dir='rtl'] #thumblist_1,html[dir='rtl'] #thumblist_2,html[dir='rtl'] #thumblist_3,html[dir='rtl'] #thumblist_4,html[dir='rtl'] #thumblist_5,html[dir='rtl'] #thumblist_1a,html[dir='rtl'] #thumblist_2a,html[dir='rtl'] #thumblist_3a,html[dir='rtl'] #thumblist_4a,html[dir='rtl'] #thumblist_5a{float:right}html[dir='rtl'] #thumblist_1 li,html[dir='rtl'] #thumblist_2 li,html[dir='rtl'] #thumblist_3 li,html[dir='rtl'] #thumblist_4 li,html[dir='rtl'] #thumblist_5 li,html[dir='rtl'] #thumblist_1a li,html[dir='rtl'] #thumblist_2a li,html[dir='rtl'] #thumblist_3a li,html[dir='rtl'] #thumblist_4a li,html[dir='rtl'] #thumblist_5a li{float:right;margin-left:5px}
+/**
+ * Lightbox Album module for webtrees
+ *
+ * Display media Items using Lightbox
+  *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2012 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2007 John Finlay and Others
+ *
+ * This program is free software;  you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation;  either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY;  without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program;  if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ * @version $Id: album_page.css 14885 2013-03-17 22:59:31Z nigel $
+ */
+ 
+/* lightbox_plus.css version 3.00  29/06/2007  */
+#lightbox{margin-bottom:100px;}
+#lightbox .descriptionbox span{margin:0 20px;}
+.lb_notes:target,.lb_notes:target a{background-color:#ffc; color:#000;}
+.prvpic{background-color:#999; border:1px; border-color:#000; border-style:solid; height:80px; margin-top:0; width:60px;}
+.prvpic img{border:0; border-style:dotted; padding:0;}
+.pic{border:0; border-color:#fff; border-style:solid; padding:0;}
+.thumbcontainer{display:block; width:100%;}
+#lb_icons{text-align:justify;}
+#thumblist_1,#thumblist_2,#thumblist_3,#thumblist_4,#thumblist_5,#thumblist_6,#thumblist_7,#thumblist_1a,#thumblist_2a,#thumblist_3a,#thumblist_4a,#thumblist_5a,#thumblist_6a,#thumblist_7a{display:block; float:left; list-style-type:none;}
+#thumblist_1 li,#thumblist_2 li,#thumblist_3 li,#thumblist_4 li,#thumblist_5 li,#thumblist_6 li,#thumblist_7 li,#thumblist_1a li,#thumblist_2a li,#thumblist_3a li,#thumblist_4a li,#thumblist_5a li,#thumblist_6a li,#thumblist_7a li{display:block; float:left; list-style-type:none; margin-right:5px; padding-bottom:0; padding-left:4px; padding-right:4px;}
+li.li_norm{border:2px solid transparent; height:112px;}
+li.li_new{border:2px solid #00f;}
+li.li_old{border:2px solid red;}
+#thumblist_1 a img,#thumblist_2 a img,#thumblist_3 a img,#thumblist_4 a img,#thumblist_5 a img,#thumblist_6 a img,#thumblist_7 a img,#thumblist_1a a img,#thumblist_2a a img,#thumblist_3a a img,#thumblist_4a a img,#thumblist_5a a img,#thumblist_6a a img,#thumblist_7a a img{border:1px; border-style:none; padding:1px;max-height:78px;max-width:100px;height:auto;width:auto;}
+#thumblist_1 a:hover img,#thumblist_2 a:hover img,#thumblist_3 a:hover img,#thumblist_4 a:hover img,#thumblist_5 a:hover img,#thumblist_6 a:hover img,#thumblist_7 a:hover img,#thumblist_1a a:hover img,#thumblist_2a a:hover img,#thumblist_3a a:hover img,#thumblist_4a a:hover img,#thumblist_5a a:hover img,#thumblist_6a a:hover img,#thumblist_7a a:hover img{background-color:#BDB071; border:0; border-style:none; padding:1px;}
+.clearlist:after{clear:both; content:"."; display:block; height:0; visibility:hidden;}
+#lightbox_content span {}
+#lightbox_content span img {vertical-align:top;}
+
+/* Hides from IE-mac \ */
+* html .clearfix{height:1%;}
+#clearlist{display:block;}
+/* RTL changes */
+html[dir='rtl'] #thumblist_1,html[dir='rtl'] #thumblist_2,html[dir='rtl'] #thumblist_3,html[dir='rtl'] #thumblist_4,html[dir='rtl'] #thumblist_5,html[dir='rtl'] #thumblist_6,html[dir='rtl'] #thumblist_7,html[dir='rtl'] #thumblist_1a,html[dir='rtl'] #thumblist_2a,html[dir='rtl'] #thumblist_3a,html[dir='rtl'] #thumblist_4a,html[dir='rtl'] #thumblist_5a,html[dir='rtl'] #thumblist_6a,html[dir='rtl'] #thumblist_7a{float:right;}
+html[dir='rtl'] #thumblist_1 li,html[dir='rtl'] #thumblist_2 li,html[dir='rtl'] #thumblist_3 li,html[dir='rtl'] #thumblist_4 li,html[dir='rtl'] #thumblist_5 li,html[dir='rtl'] #thumblist_6 li,html[dir='rtl'] #thumblist_7 li,html[dir='rtl'] #thumblist_1a li,html[dir='rtl'] #thumblist_2a li,html[dir='rtl'] #thumblist_3a li,html[dir='rtl'] #thumblist_4a li,html[dir='rtl'] #thumblist_5a li,html[dir='rtl'] #thumblist_6a li,html[dir='rtl'] #thumblist_7a li{float:right; margin-left:5px;}
