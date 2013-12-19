@@ -38,17 +38,14 @@ try {
 
 global $GOOGLEMAP_MAP_TYPE;
 $GOOGLEMAP_MAP_TYPE    = get_module_setting('googlemap', 'GM_MAP_TYPE',    'G_NORMAL_MAP');  // possible values: G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP or G_HYBRID_MAP.
-
 global $GOOGLEMAP_MIN_ZOOM;
 $GOOGLEMAP_MIN_ZOOM    = get_module_setting('googlemap', 'GM_MIN_ZOOM',    '2');  // min zoom level
 global $GOOGLEMAP_MAX_ZOOM;
 $GOOGLEMAP_MAX_ZOOM    = get_module_setting('googlemap', 'GM_MAX_ZOOM',    '20'); // max zoom level
-
 global $GOOGLEMAP_XSIZE;
 $GOOGLEMAP_XSIZE       = get_module_setting('googlemap', 'GM_XSIZE',       '600');      // X-size of Google map
 global $GOOGLEMAP_YSIZE;
 $GOOGLEMAP_YSIZE       = get_module_setting('googlemap', 'GM_YSIZE',       '400');      // Y-size of Google map
-
 global $GOOGLEMAP_PRECISION_0;
 $GOOGLEMAP_PRECISION_0 = get_module_setting('googlemap', 'GM_PRECISION_0', '0');  // Country level
 global $GOOGLEMAP_PRECISION_1;
@@ -56,12 +53,13 @@ $GOOGLEMAP_PRECISION_1 = get_module_setting('googlemap', 'GM_PRECISION_1', '1');
 global $GOOGLEMAP_PRECISION_2;
 $GOOGLEMAP_PRECISION_2 = get_module_setting('googlemap', 'GM_PRECISION_2', '2');  // City level
 global $GOOGLEMAP_PRECISION_3;
-$GOOGLEMAP_PRECISION_3 = get_module_setting('googlemap', 'GM_PRECISION_3', '3');  // Neighborhood level
+$GOOGLEMAP_PRECISION_3 = get_module_setting('googlemap', 'GM_PRECISION_3', '3');  // Neighbourhood level
 global $GOOGLEMAP_PRECISION_4;
 $GOOGLEMAP_PRECISION_4 = get_module_setting('googlemap', 'GM_PRECISION_4', '4');  // House level
 global $GOOGLEMAP_PRECISION_5;
-$GOOGLEMAP_PRECISION_5 = get_module_setting('googlemap', 'GM_PRECISION_5', '9');  // Max prcision level
-
+$GOOGLEMAP_PRECISION_5 = get_module_setting('googlemap', 'GM_PRECISION_5', '9');  // Max precision level
+global $GM_DEFAULT_TOP_VALUE;
+$GM_DEFAULT_TOP_VALUE = get_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', '');  // Default top level
 global $GOOGLEMAP_COORD;
 $GOOGLEMAP_COORD       = get_module_setting('googlemap', 'GM_COORD',             '0'); // Enable or disable Display Map Co-ordinates
 
