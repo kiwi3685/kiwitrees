@@ -492,23 +492,28 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
 				$elementID = $sid."-".(int)(microtime()*1000000);
+				$src_media = trim(get_gedcom_value('OBJE', '1', $source->getGedcomRecord()), '@');
 				if ($EXPAND_SOURCES) {
 					$plusminus='icon-minus';
 				} else {
 					$plusminus='icon-plus';
 				}
-				if ($lt>0) {
+				if ($lt>0 || $src_media) {
 					$data .= '<a href="#" onclick="return expand_layer(\''.$elementID.'\');"><i id="'.$elementID.'_img" class="'.$plusminus.'"></i></a> ';
 				}
 				$data .= WT_I18N::translate('Source').':</span> <span class="field">';
 				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';
-				$data .= '</span></div>';
-	
+				$data .= '</span>';
+				$data .= '</div>';
 				$data .= "<div id=\"$elementID\"";
 				if ($EXPAND_SOURCES) {
 					$data .= ' style="display:block"';
 				}
 				$data .= ' class="source_citations">';
+				// OBJE
+				if (!empty($src_media) && $nlevel > 2) {
+					$data .= print_source_media($src_media);
+				}
 				// PUBL
 				$text = get_gedcom_value('PUBL', '1', $source->getGedcomRecord());
 				if (!empty($text)) {
@@ -687,7 +692,7 @@ function print_main_sources(WT_Event $fact, $level) {
 				}
 			} else
 			if ($can_edit) {
-				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), '">';
+				echo '<a href="#" onclick="return edit_record(\'', $pid, '\'', $linenum, '\');" title="', WT_I18N::translate('Edit'), '">';
 					if ($SHOW_FACT_ICONS) {
 						if ($level==1) echo '<i class="icon-source"></i> ';
 					}
@@ -697,10 +702,10 @@ function print_main_sources(WT_Event $fact, $level) {
 						// Inline sources can't be edited.  Attempting to save one will convert it
 						// into a link, and delete it.
 						// e.g. "1 SOUR my source" becomes "1 SOUR @my source@" which does not exist.
-						echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-						echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $fact_id, '\');" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
+						echo '<div class="editlink"><a class="editicon" href="#" onclick="return edit_record(\'', $pid, '\', \'', $linenum, '\');" title="'. WT_I18N::translate('Edit') .'"><span class="link_text">'. WT_I18N::translate('Edit'). '</span></a></div>';
+						echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $linenum, '\');" title="'. WT_I18N::translate('Copy') .'"><span class="link_text">'. WT_I18N::translate('Copy'). '</span></a></div>';
 					}
-					echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('$pid', $linenum, '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+					echo '<div class="deletelink"><a class="deleteicon" href="#" onclick="return delete_fact(\'', $pid, '\', \'', $linenum, '\', \'\', \''. WT_I18N::translate('Are you sure you want to delete this fact?'). '\');" title="' .WT_I18N::translate('Delete').'"><span class="link_text">'.WT_I18N::translate('Delete').'</span></a></div>';
 				echo '</div>';
 			} else {
 				echo WT_Gedcom_Tag::getLabel($factname, $parent);
@@ -710,6 +715,11 @@ function print_main_sources(WT_Event $fact, $level) {
 			//echo "<td class=\"facts_value$styleadd\">";
 			if ($source) {
 				echo '<a href="', $source->getHtmlUrl(), '">', $source->getFullName(), '</a>';
+				// OBJE
+				$src_media = trim(get_gedcom_value('OBJE', '1', $source->getGedcomRecord()), '@');
+				if (!empty($src_media) && $nlevel > 2) {
+					echo print_source_media($src_media);
+				}
 				// PUBL
 				$text = get_gedcom_value('PUBL', '1', $source->getGedcomRecord());
 				if (!empty($text)) {
@@ -895,9 +905,9 @@ function print_main_notes(WT_Event $fact, $level) {
 				}
 				echo '</a>';
 				echo '<div class="editfacts">';
-				echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return edit_record('$pid', $linenum);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+				echo '<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid ,'\',\'' $linenum, '\');" href="#" title="'.WT_I18N::translate('Edit').'"><span class="link_text">'.WT_I18N::translate('Edit').'</span></a></div>';
 				echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
-				echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('$pid', $linenum, '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+				echo '<div class="deletelink"><a class="deleteicon" onclick="return delete_fact(\'', $pid, '\', ', $linenum, ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
 				echo '</div>';
 			}
 		} else {
@@ -1246,4 +1256,32 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	echo '</td></tr>';
 
 	return true;
+}
+
+/**
+ * print media attached to SOUR record on INDI tabs (Facts & Events, Sources)
+ * @param string $src_media the media object.
+ */
+function print_source_media($src_media) {
+	global $SEARCH_SPIDER;
+
+	$media=WT_Media::getInstance($src_media);
+	$html = '';
+	if ($media) {
+		if ($media->canDisplayDetails()) {
+			$html .= '<div class="media-display">
+				<div class="media-display-image">'.
+					$media->displayImage().'
+				</div>
+				<div class="media-display-title">';
+					if ($SEARCH_SPIDER) {
+						echo $media->getFullName();
+					} else {
+						$html .= '<a href="mediaviewer.php?mid='. $media->getXref(). '&amp;ged='. WT_GEDURL. '">'. $media->getFullName(). '</a>';
+					}
+				$html .= '</div>				
+			</div>';
+		}
+	}
+	return $html;
 }
