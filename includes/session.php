@@ -31,8 +31,8 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'kiwi-webtrees');
-define('WT_VERSION',         '1.4.4.2');
-define('WT_VERSION_RELEASE', 'dev'); // “dev”, “beta”, “rc1”, “”, etc.
+define('WT_VERSION',         '1.4.4.1');
+define('WT_VERSION_RELEASE', ''); // “dev”, “beta”, “rc1”, “”, etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
@@ -176,10 +176,11 @@ if (!ini_get('date.timezone')) {
 // TODO: we ought to generate this dynamically, but lots of code currently relies on this global
 $QUERY_STRING=isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
+$https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off';
 define('WT_SERVER_NAME',
-	(empty($_SERVER['HTTPS']) || !in_array($_SERVER['HTTPS'], array('1', 'on', 'On', 'ON')) ?  'http://' : 'https://').
-	(empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME']).
-	(empty($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT']==80 ? '' : ':'.$_SERVER['SERVER_PORT'])
+        ($https ?  'https://' : 'http://').
+        (empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME']).
+        (empty($_SERVER['SERVER_PORT']) || (!$https && $_SERVER['SERVER_PORT']==80) || ($https && $_SERVER['SERVER_PORT']==443) ? '' : ':'.$_SERVER['SERVER_PORT'])
 );
 
 // SCRIPT_NAME should always be correct, but is not always present.
