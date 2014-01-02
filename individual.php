@@ -251,7 +251,16 @@ foreach ($controller->tabs as $tab) {
 }
 echo
 	'</div>', // close #tabs
-	'</div>', //close indi_left
-	$sidebar_html,
-	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>',//clickable element to open/close sidebar
-	'<div style="clear:both;">&nbsp;</div></div>'; // close #main
+	'</div>'; //close indi_left
+
+if (WT_Module::getActiveSidebars()) {
+	echo $sidebar_html,
+	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>';//clickable element to open/close sidebar
+} else {
+	$controller
+		->addInlineJavascript('
+			hideSidebar(),
+			adjHeader();
+		');
+}
+echo '<div style="clear:both;">&nbsp;</div></div>'; // close #main
