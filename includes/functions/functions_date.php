@@ -116,7 +116,7 @@ function format_timestamp($time) {
 			} elseif ($t == '120000') {
 				$time_fmt = str_replace($match, /* I18N: time format “%A” - exactly 12:00:00 */ WT_I18N::translate('Noon'), $time_fmt);
 			} else {
-				$time_fmt = ($match, /* I18N: time format “%A” - between 12:00:01 and 23:59:59 */ WT_I18N::translate('P.M.'), $time_fmt);
+				$time_fmt = str_replace($match, /* I18N: time format “%A” - between 12:00:01 and 23:59:59 */ WT_I18N::translate('P.M.'), $time_fmt);
 			}
 				break;
 		default:
