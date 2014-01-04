@@ -27,7 +27,7 @@ html {overflow-y:scroll;}
 /* general styles */
 body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button {padding:1px 3px;}
-input, textarea, select {border: 1px solid grey;color:#000000; font:inherit; padding:0 3px;}
+input, textarea, select {border: 1px solid #808080;color:#000000; font:inherit; padding:0 3px;}
 button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {background:url(jquery-ui-1.10.3/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #f8f7f6; border:1px solid #cbc7bd; color:#654b24; font-weight:700; border-radius:3px; margin:0.3em;}
 button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(jquery-ui-1.10.3/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24; border:1px solid #654b24; color:#ffffff; font-weight:700; border-radius:3px;}
 fieldset {margin:8px 8px 4px 8px;}
@@ -370,11 +370,11 @@ html[dir=rtl] #batch_update2 th {text-align:right;}
 #batch_update2 td+td {text-align:left; border:2px inset #d3d3d3;}
 html[dir=rtl] #batch_update2 td+td {text-align:right;}
 #batch_update2 pre {margin:0; padding:5px;}
-.added_text {background:#808080; color:#ffffff; border:1px solid grey}
+.added_text {background:#808080; color:#ffffff; border:1px solid #808080}
 .deleted_text {text-decoration:line-through;}
 
 /* FAQ MODULE */
-table#faq_module, table#faq_module2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
+table#faq_module, table#faq_module2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:98%;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
 table#faq_edit  {border:1px solid; border-collapse:collapse;border-radius:5px; font-size:12px; margin-top:30px; padding:5px;}

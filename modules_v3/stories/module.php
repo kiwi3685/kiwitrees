@@ -95,7 +95,15 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Tab
 	public function getTabContent() {
-		global $controller;
+		global  $controller;
+		$controller->addInlineJavascript('
+			jQuery("#contents_list a").click(function(){
+				var id = jQuery(this).attr("id");
+				id = id.split("_");
+				jQuery("#story_contents div").hide();
+				jQuery("#story_contents #stories_"+id[1]).show();
+			});
+		');
 
 		$block_ids=
 			WT_DB::prepare(
@@ -111,20 +119,80 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			))->fetchOneColumn();
 
 		$html='';
+		$html.=
+			'<style>
+				#contents_list {
+					margin:auto auto 20px auto;
+					width:60%;
+				}
+				#story_contents div {
+					 display:none;
+				}
+				hr.stories_divider {
+					padding: 0;
+					border: none;
+					border-top: medium double #99c2ff;
+					color: #99c2ff;
+					text-align: center;
+					width: 80%;
+				}
+				hr.stories_divider:after {
+					content: "§";
+					display: inline-block;
+					position: relative; 
+					top: -0.7em;  
+					font-size: 1.5em;
+					padding: 0 0.25em;
+					background: white;
+				}
+			</style>';
+		$count_stories = 0;
 		foreach ($block_ids as $block_id) {
-			// Only show this block for certain languages
+			// check how many stories can be shown in a language
 			$languages=get_block_setting($block_id, 'languages');
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				$html.='<div class="news_title center">'.get_block_setting($block_id, 'title').'</div>';
-				$html.='<div>'.get_block_setting($block_id, 'story_body').'</div><br>';
-				if (WT_USER_CAN_EDIT) {
-					$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
-					$html.=WT_I18N::translate('Edit story').'</a></div><br>';
+				$count_stories ++;
+			}
+		}
+		if ($count_stories > 1) {
+			$html.='<h3 class="center">'.WT_I18N::translate('List of stories').'</h3>';
+			$html.='<ol id="contents_list">';
+			foreach ($block_ids as $block_id) {
+				$languages=get_block_setting($block_id, 'languages');
+				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+					$html.='<li style="padding:2px 8px;"><a href="#" id="title_'.$block_id.'">'.get_block_setting($block_id, 'title').'</a></li>';
+				}
+			}
+			$html.='</ol><hr class="stories_divider">';
+			$html.='<div id="story_contents">';		
+				foreach ($block_ids as $block_id) {
+					$languages=get_block_setting($block_id, 'languages');
+					if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+						$html.='<div id="stories_'.$block_id.'">';
+							$html.='<h4 class="news_title center">'.get_block_setting($block_id, 'title').'</h4>';
+							$html.='<p>'.get_block_setting($block_id, 'story_body').'</p>';
+							if (WT_USER_CAN_EDIT) {
+								$html.='<p><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
+								$html.=WT_I18N::translate('Edit story').'</a></p>';
+							}
+						$html.='<hr class="stories_divider"></div>';
+					}
+				}
+			$html.='</div>';
+		} else {
+			foreach ($block_ids as $block_id) {
+				$languages=get_block_setting($block_id, 'languages');
+				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+					$html.='<h4 class="news_title center">'.get_block_setting($block_id, 'title').'</h4>';
+					$html.='<p>'.get_block_setting($block_id, 'story_body').'</p>';
+					if (WT_USER_CAN_EDIT) {
+						$html.='<dp><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
+						$html.=WT_I18N::translate('Edit story').'</a></p>';
+					}
 				}
 			}
 		}
-		if (WT_USER_GEDCOM_ADMIN && !$html) {
-			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
+		if (WT_USER_GEDCOM_ADMIN) {
 			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'">';
 			$html.=WT_I18N::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br>';
 		}
@@ -232,7 +300,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<input type="hidden" name="save" value="1">';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
 				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '">';
-				echo '<table id="story_module">';
+				echo '<table id="faq_module">';
 				echo '<tr><th>';
 				echo WT_I18N::translate('Story title'), help_link('story_title', $this->getName());
 				echo '</th></tr><tr><td><textarea name="title" rows="1" cols="90" tabindex="2">', htmlspecialchars($title), '</textarea></td></tr>';
@@ -241,7 +309,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</th></tr><tr><td>';
 				echo '<textarea name="story_body" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($story_body), '</textarea>';
 				echo '</td></tr>';
-				echo '</table><table id="story_module2">';
+				echo '</table><table id="faq_module2">';
 				echo '<tr>';
 				echo '<th>', WT_I18N::translate('Individual'), '</th>';
 				echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
