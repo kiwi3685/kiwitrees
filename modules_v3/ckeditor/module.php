@@ -47,9 +47,13 @@ class ckeditor_WT_Module extends WT_Module {
 			// Need to specify the path before we load the libary
 			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
 			// Activate the editor
-			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {
-				skin : "moono",
-				allowedContent: true
-			});');
+			->addInlineJavascript('
+				jQuery(".html-edit").ckeditor(function(){}, {
+					skin : "moono",
+					allowedContent: true,
+					width: "100%",
+					height: "400px"
+				});
+			');
 	}
 }
