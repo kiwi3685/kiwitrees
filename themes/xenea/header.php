@@ -170,7 +170,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 				unset($menu_items, $menu);
 	echo
 		'</ul>',  // <ul id="main-menu">
-		'</div>', // <div id="topMenu">
+		'</div>'; // <div id="topMenu">
 }
 echo
         $javascript,

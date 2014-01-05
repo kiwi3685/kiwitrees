@@ -28,8 +28,8 @@
 html {overflow-y:scroll;}
 
 .submenu {
-	background-color:#eeeeee;
-	border:thin solid #aaaaaa;
+	background-color:#eee;
+	border:thin solid #aaa;
 }
 
 /* Thin grey borders around block-level elements */
@@ -159,7 +159,7 @@ html[dir=rtl] #header-title {
 }
 
 /* Block level objects, such as header, footer, etc. */
-.block {background-color:#eeeeee;clear:none;}
+.block {background-color:#eee;clear:none;}
 .blockheader {font-weight:bold;}
 .charts_block {overflow:auto;}
 #link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
@@ -205,8 +205,8 @@ width:100%;
 	position:absolute;
 	left:0;
 	top:1.1em;
-	background-color:#eeeeee;
-	border:thin solid #aaaaaa;
+	background-color:#eee;
+	border:thin solid #aaa;
 	z-index:999;
 }
 
@@ -246,7 +246,7 @@ html[dir=rtl] .makeMenu li ul li {
 }
 
 .makeMenu ul li a {
-	background-color:#eeeeee;
+	background-color:#eee;
 	padding:0 5px 5px 2px;
 	display:block;
 }
@@ -419,7 +419,7 @@ right:10px;
 
 .journal_box {
 	padding:3pt;
-	border:thin solid #aaaaaa;
+	border:thin solid #aaa;
 	overflow:visible;
 }
 
@@ -438,7 +438,7 @@ right:10px;
 }
 .ui-autocomplete {
 	padding:0;
-	border:thin solid #aaaaaa;
+	border:thin solid #aaa;
 	background-color:#fff;
 	z-index:99999;
 	list-style-position:outside;
@@ -460,7 +460,7 @@ right:10px;
 	background:#fff url(images/indicator.gif) right center no-repeat;
 }
 .ui-autocomplete li:nth-child(odd) {
-	background-color:#eeeeee;
+	background-color:#eee;
 }
 
 .ui-autocomplete a.ui-state-focus {
@@ -959,7 +959,7 @@ a.showit:hover > span {
 	width:70px;
 	text-align:center;
 	padding:2px;
-	border:thin solid #aaaaaa;
+	border:thin solid #aaa;
 	cursor:pointer;
 	float:left;
 	margin-left:2px;
@@ -1037,17 +1037,17 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
 .list_table_controls td {min-width:40px;text-align:center;}
 
 /* ============== medialist.php ======================= */
-#lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; float:left; list-style-type:none; margin:0 10px;}
-.lb-menu ul {list-style-type:none;}
-.lb-menu li {font-weight:normal; float:left; top:0;}
+.medialist_title {font-weight:900; margin:0 0 10px 0;}
+.lightbox-menu {margin: 0 10px;}
+.lb-menu {position:relative; float:left;}
+ul.lb-menu li:before {display:none;}
+ul.lb-menu li {border:none; font-weight:normal; padding:0;}
 .lb-menu > li ul {display:none;width:80px;}
 .lb-menu > li:hover  ul {display:block; top:36px;}
 .lb-menu a {display:block;}
 .lb-menu li a {padding-top:12px;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
 html[dir=rtl] .lb-menu {float:right;}
-html[dir=rtl] .lb-menu li {float:right;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
@@ -1345,7 +1345,7 @@ html[dir=rtl] .ui-dialog-titlebar-close                          {left:.3em;righ
 .even                          {background-color:#fff;}
 .css_right                          {float:left;}
 .fg-button                          {padding:2px 6px;}
-.fg-toolbar                          {background:#eeeeee;border-color:#a9a9a9;}
+.fg-toolbar                          {background:#eee;border-color:#a9a9a9;}
 .dataTables_paginate                            {float:left;margin:5px;}
 .dataTables_processing                          {float:left;margin:5px;}
 .dataTables_filter                           {float:right;margin:4px;}

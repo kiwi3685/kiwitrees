@@ -2,10 +2,10 @@
 // Displays a list of the media objects
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,22 +19,20 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// $Id$
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller->setPageTitle(WT_I18N::translate('Media objects'));
 
 $search = WT_Filter::get('search');
 $sortby = WT_Filter::get('sortby', 'file|title', 'title');
 if (!WT_USER_CAN_EDIT && !WT_USER_CAN_ACCEPT) {
-        $sortby='title';
+	$sortby='title';
 }
 $start          = WT_Filter::getInteger('start');
 $max            = WT_Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
@@ -83,7 +81,7 @@ $controller->pageHeader();
 			<td class="optionbox wrap width25">
 				<?php echo select_edit_control('folder', $folders, null, $folder); ?>
 			</td>
-			<?php	
+			<?php
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 				echo '<td class="descriptionbox wrap width25">';
 				echo WT_I18N::translate('Sort order');
@@ -173,197 +171,149 @@ if ($search) {
 		$ct = '0';
 	}
 
-	echo '<div align="center">', WT_I18N::translate('Media Objects found'), ' ', $ct, ' <br><br>';
+	echo '<div><p style="text-align:center">', WT_I18N::translate('Media Objects found'), ' ', $ct, '</p>';
 
   if ($ct>0) {
-	$currentPage = ((int) ($start / $max)) + 1;
-	$lastPage = (int) (($ct + $max - 1) / $max);
+		$currentPage = ((int) ($start / $max)) + 1;
+		$lastPage = (int) (($ct + $max - 1) / $max);
 
-	echo '<table class="list_table">';
-	// echo page back, page number, page forward controls
-	echo '<tr><td colspan="2">';
-	echo '<table class="list_table_controls">';
-	echo '<tr>';
-	echo '<td>';
-	if ($TEXT_DIRECTION=='ltr') {
-		if ($ct>$max) {
-			if ($currentPage > 1) {
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
-			}
-			if ($start>0) {
-				$newstart = $start-$max;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
-			}
-		}
-	} else {
-		if ($ct>$max) {
-			if ($currentPage < $lastPage) {
-				$lastStart = ((int) ($ct / $max)) * $max;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
-			}
-			if ($start+$max < $ct) {
-				$newstart = $start+$count;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
-			}
-		}
-	}
-	echo '</td>';
-	echo '<td>', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
-	echo '<td>';
-	if ($TEXT_DIRECTION=='ltr') {
-		if ($ct>$max) {
-			if ($start+$max < $ct) {
-				$newstart = $start+$count;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '"class="icon-rarrow"></a>';
-			}
-			if ($currentPage < $lastPage) {
-				$lastStart = ((int) ($ct / $max)) * $max;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
-			}
-		}
-	} else {
-		if ($ct>$max) {
-			if ($start>0) {
-				$newstart = $start-$max;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
-			}
-			if ($currentPage > 1) {
-				$lastStart = ((int) ($ct / $max)) * $max;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
-			}
-		}
-	}
-	echo '</td>';
-	echo '</tr></table></td></tr>';
+		echo '<table class="list_table width100">';
+		// Display controls twice - at the top and bottom of the table
+		foreach (array('thead', 'tfoot') as $tsection) {
+			echo '<', $tsection, '><tr><td colspan="2">';
 
-	echo '<tr>';
-	for ($i=$start, $n=0; $i<$start+$count; ++$i) {
-		$mediaobject = $medialist[$i];
-
-		if ($columns == '1') echo '<td class="list_value_wrap" width="80%">';
-		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
-
-		echo '<table><tr><td valign="top" style="white-space:normal;">';
-		echo $mediaobject->displayImage();
-		echo '</td><td class="list_value_wrap" style="border:none;" width="100%">';
-		if (WT_USER_CAN_EDIT) {
-			echo WT_Controller_Media::getMediaListMenu($mediaobject);
-		}
-		// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
-		if ($sortby=='title') {
-			echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
-			echo $mediaobject->getFullName();
-			echo '</a></b></p>';
-		} else {
-			echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
-			echo basename($mediaobject->getFilename());
-			echo '</a></b></p>';
-			echo WT_Gedcom_Tag::getLabelValue('TITL', $mediaobject->getFullName());
-		}
-		// Show file details
-		if ($mediaobject->isExternal()) {
-			echo WT_Gedcom_Tag::getLabelValue('URL', $mediaobject->getFilename());
-		} else {
-			if ($mediaobject->fileExists()) {
-				if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-					echo WT_Gedcom_Tag::getLabelValue('FILE', $mediaobject->getFilename());
-				}
-				echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaobject->mimeType());
-				echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
-				$imgsize = $mediaobject->getImageAttributes();
-				if ($imgsize['WxH']) {
-					echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+			echo '<table class="list_table_controls"><tr><td>';
+			if ($TEXT_DIRECTION=='ltr') {
+				if ($ct>$max) {
+					if ($currentPage > 1) {
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
+					}
+					if ($start>0) {
+						$newstart = $start-$max;
+						if ($start<0) $start = 0;
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
+					}
 				}
 			} else {
-				echo '<p class="ui-state-error">', /* I18N: %s is a filename */ WT_I18N::translate('The file “%s” does not exist.', $mediaobject->getFilename()), '</p>';
+				if ($ct>$max) {
+					if ($currentPage < $lastPage) {
+						$lastStart = ((int) ($ct / $max)) * $max;
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
+					}
+					if ($start+$max < $ct) {
+						$newstart = $start+$count;
+						if ($start<0) $start = 0;
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
+					}
+				}
 			}
-		}
-		echo '<br>';
-		echo '<div style="white-space: normal; width: 95%;">';
-		print_fact_sources($mediaobject->getGedcomRecord(), 1);
-		print_fact_notes($mediaobject->getGedcomRecord(), 1);
-		echo '</div>';
-		foreach ($mediaobject->fetchLinkedIndividuals() as $individual) {
-			echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' — ' . $individual->getFullname().'</a><br>';
-		}
-		foreach ($mediaobject->fetchLinkedFamilies() as $family) {
-			echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' — ' . $family->getFullname().'</a><br>';
-		}
-		foreach ($mediaobject->fetchLinkedSources() as $source) {
-			echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
-		}
-		echo '</td></tr></table>';
-		echo '</td>';
-		if ((++$n) % $columns == 0) {
-			echo '</tr><tr>';
-		}
-	} // end media loop
-	echo '</tr>';
-	// echo page back, page number, page forward controls
-	echo '<tr><td colspan="2">';
-	echo '<table class="list_table width100">';
-	echo '<tr>';
-	echo '<td class="width30">';
-	if ($TEXT_DIRECTION=='ltr') {
-		if ($ct>$max) {
-			if ($currentPage > 1) {
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
+			echo '</td>';
+			echo '<td>', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
+			echo '<td>';
+			if ($TEXT_DIRECTION=='ltr') {
+				if ($ct>$max) {
+					if ($start+$max < $ct) {
+						$newstart = $start+$count;
+						if ($start<0) $start = 0;
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
+					}
+					if ($currentPage < $lastPage) {
+						$lastStart = ((int) ($ct / $max)) * $max;
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
+					}
+				}
+			} else {
+				if ($ct>$max) {
+					if ($start>0) {
+						$newstart = $start-$max;
+						if ($start<0) $start = 0;
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
+					}
+					if ($currentPage > 1) {
+						$lastStart = ((int) ($ct / $max)) * $max;
+						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
+					}
+				}
 			}
-			if ($start>0) {
-				$newstart = $start-$max;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
-			}
+			echo '</td></tr></table>';
+
+			echo '</td></tr></', $tsection, '>';
 		}
-	} else {
-		if ($ct>$max) {
-			if ($currentPage < $lastPage) {
-				$lastStart = ((int) ($ct / $max)) * $max;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
+
+		echo '<tbody><tr>';
+		for ($i=$start, $n=0; $i<$start+$count; ++$i) {
+			$mediaobject = $medialist[$i];
+
+			if ($columns == '1') echo '<td class="list_value_wrap width80">';
+			if ($columns == '2') echo '<td class="list_value_wrap width50">';
+
+			echo '<table><tr><td style="vertical-align:top; white-space:normal;">';
+			echo $mediaobject->displayImage();
+			echo '</td><td class="list_value_wrap width100" style="border:none; padding-left:5px">';
+			// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
+			if ($sortby=='title') {
+				echo '<p class="medialist_title"><a href="', $mediaobject->getHtmlUrl(), '">';
+				echo $mediaobject->getFullName();
+				echo '</a></p>';
+			} else {
+				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
+				echo basename($mediaobject->getFilename());
+				echo '</a></b></p>';
+				echo WT_Gedcom_Tag::getLabelValue('TITL', $mediaobject->getFullName());
 			}
-			if ($start+$max < $ct) {
-				$newstart = $start+$count;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
+			// Show file details
+			if ($mediaobject->isExternal()) {
+				echo WT_Gedcom_Tag::getLabelValue('URL', $mediaobject->getFilename());
+			} else {
+				if ($mediaobject->fileExists()) {
+					if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+						echo WT_Gedcom_Tag::getLabelValue('FILE', $mediaobject->getFilename());
+					}
+					echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaobject->mimeType());
+					echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
+					$imgsize = $mediaobject->getImageAttributes();
+					if ($imgsize['WxH']) {
+						echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+					}
+				} else {
+					echo '<p class="ui-state-error">', /* I18N: %s is a filename */ WT_I18N::translate('The file “%s” does not exist.', $mediaobject->getFilename()), '</p>';
+				}
 			}
+			echo '<br>';
+			echo '<div style="white-space: normal; width: 95%;">';
+			echo print_fact_sources($mediaobject->getGedcomRecord(), 1);
+			echo print_fact_notes($mediaobject->getGedcomRecord(), 1);
+			echo '</div>';
+			foreach ($mediaobject->fetchLinkedIndividuals('OBJE') as $individual) {
+				echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
+			}
+			foreach ($mediaobject->fetchLinkedFamilies('OBJE') as $family) {
+				echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
+			}
+			foreach ($mediaobject->fetchLinkedSources('OBJE') as $source) {
+				echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
+			}
+			echo '</td>';
+			if (WT_USER_CAN_EDIT) {
+				echo '<td style="vertical-align:top; white-space:normal;">';
+					echo WT_Controller_Media::getMediaListMenu($mediaobject);
+				echo '</td>';
+			}
+			echo '</tr></table>';
+			echo '</td>';
+			if ((++$n) % $columns == 0) {
+				echo '</tr><tr>';
+			}
+		} // end media loop
+
+		// An odd number of media objects in two columns requires an empty cell
+		if ($columns == 2 && $n%2 == 1) {
+			echo '<td>&nbsp;</td>';
 		}
+
+		echo '</tr></tbody>';
+		echo '</table>';
 	}
-	echo '</td>';
-	echo '<td align="center">', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
-	echo '<td class="width30">';
-	if ($TEXT_DIRECTION=='ltr') {
-		if ($ct>$max) {
-			if ($start+$max < $ct) {
-				$newstart = $start+$count;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
-			}
-			if ($currentPage < $lastPage) {
-				$lastStart = ((int) ($ct / $max)) * $max;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
-			}
-		}
-	} else {
-		if ($ct>$max) {
-			if ($start>0) {
-				$newstart = $start-$max;
-				if ($start<0) $start = 0;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
-			}
-			if ($currentPage > 1) {
-				$lastStart = ((int) ($ct / $max)) * $max;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
-			}
-		}
-	}
-	echo '</td>';
-	echo '</tr></table></td></tr>';
-	echo '</table><br>';
-  }
   echo '</div>
-  </div>';// close medialist-page
+  </div>';
 }

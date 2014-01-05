@@ -76,8 +76,8 @@ $WT_IMAGES=array(
 $fanChart = array(
 	'font' => WT_ROOT.'includes/fonts/DejaVuSans.ttf',
 	'size' => '7px',
-	'color' => '#000000',
-	'bgColor' => '#eeeeee',
+	'color' => '#000',
+	'bgColor' => '#eee',
 	'bgMColor' => '#b1cff0',
 	'bgFColor' => '#e9daf1'
 );
