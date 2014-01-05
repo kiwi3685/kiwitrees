@@ -1,5 +1,5 @@
 # Chinese (Traditional) translation for webtrees
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Copyright (C) 2014 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the webtrees package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #

@@ -1,5 +1,5 @@
 # English (Canada) translation for webtrees
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Copyright (C) 2014 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the webtrees package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
