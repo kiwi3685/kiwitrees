@@ -1,8 +1,8 @@
 <?php
 // Footer for FAB theme
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
 // Derived from PhpGedView
 // Modifications Copyright (c) 2010 Greg Roach

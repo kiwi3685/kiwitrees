@@ -10,8 +10,8 @@
 // It shouldn't do anything that might take more than a few
 // seconds, for systems with low timeout values.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2011 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

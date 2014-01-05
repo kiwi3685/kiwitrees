@@ -3,12 +3,10 @@
 //
 // used by the SAX parser to generate reports from the XML report file.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2012 webtrees development team.
 //
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
-//
+// Derived from PhpGedView and webtrees
 // Modifications Copyright (c) 2010 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify

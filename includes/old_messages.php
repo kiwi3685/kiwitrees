@@ -10,8 +10,8 @@
 // updates to the latest translation file, will lose some previously
 // translated messages.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

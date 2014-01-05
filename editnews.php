@@ -3,8 +3,8 @@
 //
 // TODO: this needs to be part of the news module
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2005  PGV Development Team

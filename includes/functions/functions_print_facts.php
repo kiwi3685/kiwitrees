@@ -3,8 +3,8 @@
 //
 // Various printing functions used to print fact records
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -905,9 +905,9 @@ function print_main_notes(WT_Event $fact, $level) {
 				}
 				echo '</a>';
 				echo '<div class="editfacts">';
-				echo '<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid ,'\',\'' $linenum, '\');" href="#" title="'.WT_I18N::translate('Edit').'"><span class="link_text">'.WT_I18N::translate('Edit').'</span></a></div>';
+				echo '<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid ,'\',\'', $linenum, '\');" href="#" title="'.WT_I18N::translate('Edit').'"><span class="link_text">'.WT_I18N::translate('Edit').'</span></a></div>';
 				echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
-				echo '<div class="deletelink"><a class="deleteicon" onclick="return delete_fact(\'', $pid, '\', ', $linenum, ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
+				echo '<div class="deletelink"><a class="deleteicon" onclick="return delete_fact(\'', $pid, '\', ', $linenum, ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>';
 				echo '</div>';
 			}
 		} else {

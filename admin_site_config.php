@@ -1,8 +1,8 @@
 <?php
 // A form to edit site configuration.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -65,115 +65,91 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 			</li>
 		</ul>
 		<div id="site">
-			<table>
-				<tr>
-					<td>
-						<dl>
-							<dt><?php echo WT_I18N::translate('Data folder'), help_link('INDEX_DIRECTORY'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-INDEX_DIRECTORY', WT_Site::preference('INDEX_DIRECTORY'), $controller); ?></dd>
+			<dl>
+				<dt><?php echo WT_I18N::translate('Data folder'), help_link('INDEX_DIRECTORY'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-INDEX_DIRECTORY', WT_Site::preference('INDEX_DIRECTORY'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Memory limit'), help_link('MEMORY_LIMIT'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-MEMORY_LIMIT', WT_Site::preference('MEMORY_LIMIT'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Memory limit'), help_link('MEMORY_LIMIT'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-MEMORY_LIMIT', WT_Site::preference('MEMORY_LIMIT'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('PHP time limit'), help_link('MAX_EXECUTION_TIME'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-MAX_EXECUTION_TIME', WT_Site::preference('MAX_EXECUTION_TIME'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('PHP time limit'), help_link('MAX_EXECUTION_TIME'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-MAX_EXECUTION_TIME', WT_Site::preference('MAX_EXECUTION_TIME'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Allow visitors to request account registration'), help_link('USE_REGISTRATION_MODULE'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-USE_REGISTRATION_MODULE', WT_Site::preference('USE_REGISTRATION_MODULE'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Allow visitors to request account registration'), help_link('USE_REGISTRATION_MODULE'); ?></dt>
+				<dd><?php echo edit_field_yes_no_inline('site_setting-USE_REGISTRATION_MODULE', WT_Site::preference('USE_REGISTRATION_MODULE'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Require an administrator to approve new user registrations'), help_link('REQUIRE_ADMIN_AUTH_REGISTRATION'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Require an administrator to approve new user registrations'), help_link('REQUIRE_ADMIN_AUTH_REGISTRATION'); ?></dt>
+				<dd><?php echo edit_field_yes_no_inline('site_setting-REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Allow users to select their own theme'), help_link('ALLOW_USER_THEMES'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_USER_THEMES', WT_Site::preference('ALLOW_USER_THEMES'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Allow users to select their own theme'), help_link('ALLOW_USER_THEMES'); ?></dt>
+				<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_USER_THEMES', WT_Site::preference('ALLOW_USER_THEMES'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?></dt>
-							<dd><?php echo select_edit_control_inline('site_setting-THEME_DIR', array_flip(get_theme_names()), null, WT_Site::preference('THEME_DIR'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?></dt>
+				<dd><?php echo select_edit_control_inline('site_setting-THEME_DIR', array_flip(get_theme_names()), null, WT_Site::preference('THEME_DIR'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Show list of family trees'), help_link('ALLOW_CHANGE_GEDCOM'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_CHANGE_GEDCOM', WT_Site::preference('ALLOW_CHANGE_GEDCOM'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Show list of family trees'), help_link('ALLOW_CHANGE_GEDCOM'); ?></dt>
+				<dd><?php echo edit_field_yes_no_inline('site_setting-ALLOW_CHANGE_GEDCOM', WT_Site::preference('ALLOW_CHANGE_GEDCOM'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Session timeout'), help_link('SESSION_TIME'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-SESSION_TIME', WT_Site::preference('SESSION_TIME'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Session timeout'), help_link('SESSION_TIME'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-SESSION_TIME', WT_Site::preference('SESSION_TIME'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Website URL'), help_link('SERVER_URL'); ?></dt>
-							<dd><?php echo select_edit_control_inline('site_setting-SERVER_URL', array(WT_SERVER_NAME.WT_SCRIPT_PATH=>WT_SERVER_NAME.WT_SCRIPT_PATH), '', WT_Site::preference('SERVER_URL'), $controller); ?></dd>
-						</dl>
-					</td>
-				</tr>
-			</table>
+				<dt><?php echo WT_I18N::translate('Website URL'), help_link('SERVER_URL'); ?></dt>
+				<dd><?php echo select_edit_control_inline('site_setting-SERVER_URL', array(WT_SERVER_NAME.WT_SCRIPT_PATH=>WT_SERVER_NAME.WT_SCRIPT_PATH), '', WT_Site::preference('SERVER_URL'), $controller); ?></dd>
+			</dl>
 		</div>
 		<div id="mail">
-			<table>
-				<tr>
-					<td>
-						<dl>
-							<dt><?php echo WT_I18N::translate('Messages'), help_link('SMTP_ACTIVE'); ?></dt>
-							<dd><?php echo select_edit_control_inline('site_setting-SMTP_ACTIVE', $SMTP_ACTIVE_OPTIONS, null, WT_Site::preference('SMTP_ACTIVE'), $controller); ?></dd>
-							<dt><?php echo WT_I18N::translate('Sender name'), help_link('SMTP_FROM_NAME'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-SMTP_FROM_NAME', WT_Site::preference('SMTP_FROM_NAME'), $controller); ?></dd>
-						</dl>
-					</td>
-				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('SMTP mail server'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<dl>
-							<dt><?php echo WT_I18N::translate('Server name'), help_link('SMTP_HOST'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-SMTP_HOST', WT_Site::preference('SMTP_HOST'), $controller); ?></dd>
+			<dl>
+				<dt><?php echo WT_I18N::translate('Messages'), help_link('SMTP_ACTIVE'); ?></dt>
+				<dd><?php echo select_edit_control_inline('site_setting-SMTP_ACTIVE', $SMTP_ACTIVE_OPTIONS, null, WT_Site::preference('SMTP_ACTIVE'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Sender name'), help_link('SMTP_FROM_NAME'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-SMTP_FROM_NAME', WT_Site::preference('SMTP_FROM_NAME'), $controller); ?></dd>
+			</dl>
+			<h2>
+				<?php echo WT_I18N::translate('SMTP mail server'); ?>
+			</h2>
+			<dl>
+				<dt><?php echo WT_I18N::translate('Server name'), help_link('SMTP_HOST'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-SMTP_HOST', WT_Site::preference('SMTP_HOST'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Port number'), help_link('SMTP_PORT'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-SMTP_PORT', WT_Site::preference('SMTP_PORT'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Port number'), help_link('SMTP_PORT'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-SMTP_PORT', WT_Site::preference('SMTP_PORT'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Use password'), help_link('SMTP_AUTH'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-SMTP_AUTH', WT_Site::preference('SMTP_AUTH'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Use password'), help_link('SMTP_AUTH'); ?></dt>
+				<dd><?php echo edit_field_yes_no_inline('site_setting-SMTP_AUTH', WT_Site::preference('SMTP_AUTH'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Username'), help_link('SMTP_AUTH_USER'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-SMTP_AUTH_USER', WT_Site::preference('SMTP_AUTH_USER'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Username'), help_link('SMTP_AUTH_USER'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-SMTP_AUTH_USER', WT_Site::preference('SMTP_AUTH_USER'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Password'), help_link('SMTP_AUTH_PASS'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-SMTP_AUTH_PASS', '' /* Don't show password.  save.php has special code for this. */, $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Password'), help_link('SMTP_AUTH_PASS'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-SMTP_AUTH_PASS', '' /* Don't show password.  save.php has special code for this. */, $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Secure connection'), help_link('SMTP_SSL'); ?></dt>
-							<dd><?php echo select_edit_control_inline('site_setting-SMTP_SSL', $SMTP_SSL_OPTIONS, null, WT_Site::preference('SMTP_SSL'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Secure connection'), help_link('SMTP_SSL'); ?></dt>
+				<dd><?php echo select_edit_control_inline('site_setting-SMTP_SSL', $SMTP_SSL_OPTIONS, null, WT_Site::preference('SMTP_SSL'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Sending server name'), help_link('SMTP_HELO'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-SMTP_HELO', WT_Site::preference('SMTP_HELO'), $controller); ?></dd>
-						</dl>
-					</td>
-				</tr>
-			</table>
-			<p>
+				<dt><?php echo WT_I18N::translate('Sending server name'), help_link('SMTP_HELO'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-SMTP_HELO', WT_Site::preference('SMTP_HELO'), $controller); ?></dd>
+			</dl>
+			<p><em>
 				<?php echo WT_I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'); ?>
-			</p>
+			</em></p>
 		</div>
 		<div id="login">
-			<table>
-				<tr>
-					<td>
-						<dl>
-							<dt><?php echo WT_I18N::translate('Login URL'), help_link('LOGIN_URL'); ?></dt>
-							<dd><?php echo edit_field_inline('site_setting-LOGIN_URL', WT_Site::preference('LOGIN_URL'), $controller); ?></dd>
+			<dl>
+				<dt><?php echo WT_I18N::translate('Login URL'), help_link('LOGIN_URL'); ?></dt>
+				<dd><?php echo edit_field_inline('site_setting-LOGIN_URL', WT_Site::preference('LOGIN_URL'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_CUST_HEAD'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-WELCOME_TEXT_CUST_HEAD', WT_Site::preference('WELCOME_TEXT_CUST_HEAD'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_CUST_HEAD'); ?></dt>
+				<dd><?php echo edit_field_yes_no_inline('site_setting-WELCOME_TEXT_CUST_HEAD', WT_Site::preference('WELCOME_TEXT_CUST_HEAD'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?></dt>
-							<dd><?php echo select_edit_control_inline('site_setting-WELCOME_TEXT_AUTH_MODE', $WELCOME_TEXT_AUTH_MODE_OPTIONS, null, WT_Site::preference('WELCOME_TEXT_AUTH_MODE'), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?></dt>
+				<dd><?php echo select_edit_control_inline('site_setting-WELCOME_TEXT_AUTH_MODE', $WELCOME_TEXT_AUTH_MODE_OPTIONS, null, WT_Site::preference('WELCOME_TEXT_AUTH_MODE'), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?></dt>
-							<dd><?php echo edit_text_inline('site_setting-WELCOME_TEXT_AUTH_MODE_4', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), $controller); ?></dd>
+				<dt><?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?></dt>
+				<dd><?php echo edit_text_inline('site_setting-WELCOME_TEXT_AUTH_MODE_4', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), $controller); ?></dd>
 
-							<dt><?php echo WT_I18N::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?></dt>
-							<dd><?php echo edit_field_yes_no_inline('site_setting-SHOW_REGISTER_CAUTION', WT_Site::preference('SHOW_REGISTER_CAUTION'), $controller); ?></dd>
-						</dl>
-					</td>
-				</tr>
-			</table>
+				<dt><?php echo WT_I18N::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?></dt>
+				<dd><?php echo edit_field_yes_no_inline('site_setting-SHOW_REGISTER_CAUTION', WT_Site::preference('SHOW_REGISTER_CAUTION'), $controller); ?></dd>
+			</dl>
 		</div>
 	</div>
 </div>

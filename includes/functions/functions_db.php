@@ -1,8 +1,8 @@
 <?php
 // General functions to query the database.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.

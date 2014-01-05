@@ -4,13 +4,14 @@
 // number of persons -> periodes of 50 years from 1700-2000
 // age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
-// Derived from PhpGedView
+// Derived from PhpGedView and webtrees
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+// Copyright (C) 2010 to 2013  webtrees Development Team.  All rights reserved.
 //
-// This program is free software; you can redistribute it and/or modify
+// This is free software;you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
 // (at your option) any later version.

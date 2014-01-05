@@ -1,8 +1,8 @@
 <?php
 // Clouds theme
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView Cloudy theme
 // Original author w.a. bastein http://genealogy.bastein.biz

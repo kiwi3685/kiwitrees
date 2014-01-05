@@ -6,8 +6,8 @@
 // is used to allow SVN to reliably merge changes for users that have
 // customised their local copy of this file.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2014 kiwitrees.net
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 PGV Development Team.

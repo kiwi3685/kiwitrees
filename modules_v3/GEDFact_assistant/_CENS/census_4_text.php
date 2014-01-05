@@ -3,8 +3,8 @@
 //
 // Census Proposed Text Area File
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2010  PGV Development Team.  All rights reserved.

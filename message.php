@@ -1,8 +1,8 @@
 <?php
 // Send a message to a user in the system
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2007  John Finlay and Others

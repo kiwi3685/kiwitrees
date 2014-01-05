@@ -3,8 +3,8 @@
 //
 // Census and Souce Input Area File File
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// kiwi-webtrees: Web based Family History software
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2010  PGV Development Team.  All rights reserved.
@@ -564,7 +564,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
-		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'),' - ',WT_Filter::escapeJs($wholename) ' - ', WT_I18N::translate('Household'); ?>';
+		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'),' - ',WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>';
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
