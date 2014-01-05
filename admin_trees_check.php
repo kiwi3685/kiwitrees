@@ -124,7 +124,7 @@ $RECORD_LINKS=array(
 	'REPO'=>array('NOTE'),
 	'OBJE'=>array('NOTE'), // The spec also allows SOUR, but we treat this as a warning
 	'NOTE'=>array(), // The spec also allows SOUR, but we treat this as a warning
-	'SUBM'=>array('NOTE', 'OBJE')
+	'SUBM'=>array('NOTE', 'OBJE'),
 	'SUBN'=>array('SUBM'),
 );
 
