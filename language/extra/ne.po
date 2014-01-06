@@ -1,5 +1,5 @@
 # Nepali translation for webtrees
-# Copyright (C) 2014 Rosetta Contributors and Canonical Ltd 2012
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the webtrees package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
