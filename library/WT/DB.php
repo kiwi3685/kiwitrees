@@ -3,8 +3,8 @@
 // Class file for the database access.  Extend PHP's native PDO and
 // PDOStatement classes to provide database access with logging, etc.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (c) 2009-2010 Greg Roach

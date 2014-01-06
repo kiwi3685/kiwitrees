@@ -1,8 +1,8 @@
 <?php
 // UI for online updating of the GEDCOM config file.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2014 kiwitrees.net
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -200,7 +200,7 @@ case 'update':
 
 $controller
 	->pageHeader()
-	->addInlineJavascript('jQuery("#tabs").tabs().css({"display" : "inline-block", "width" : "99%"});')
+	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");')
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }');
 
 if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
@@ -857,7 +857,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 				</tr>
 				<tr>
-					<tdcolspan="2">
+					<td>
 						<input type="hidden" name="NEW_SHOW_RELATIVES_EVENTS" value="<?php echo $SHOW_RELATIVES_EVENTS; ?>">
 						<table id="relatives">
 							<?php

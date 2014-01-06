@@ -1,8 +1,8 @@
 <?php
 // Show help text in a popup window.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2014 kiwitrees.net
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // This file also serves as a database of fact and label descriptions,
 // allowing them to be discovered by xgettext, so we may use them dynamically

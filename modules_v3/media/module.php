@@ -1,8 +1,8 @@
 <?php
 // Classes and libraries for module system
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2014 kiwitrees.net
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay

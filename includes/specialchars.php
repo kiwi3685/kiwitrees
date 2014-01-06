@@ -19,8 +19,8 @@
 //
 // Other special characters are all listed at the bottom.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2007  PGV Development Team

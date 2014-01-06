@@ -1,8 +1,8 @@
 <?php
 // Batch Update plugin for phpGedView - fix spacing in names, particularly that before/after the surname slashes
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008 Greg Roach.  All rights reserved.

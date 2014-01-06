@@ -1,8 +1,8 @@
 <?php
 // Parses gedcom file and displays a list of the shared notes in the file.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2014 kiwitrees.net
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2009  PGV Development Team.  All rights reserved.

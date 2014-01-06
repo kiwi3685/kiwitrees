@@ -4,8 +4,8 @@
 // This file is included from the application help_text.php script.
 // It simply needs to set $title and $text for the help topic $help_topic
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

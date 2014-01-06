@@ -1,8 +1,8 @@
 <?php
 // Allow an admin user to download the backup file.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2014 kiwitrees.net
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2005  John Finlay and Others

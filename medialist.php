@@ -1,7 +1,7 @@
 <?php
 // Displays a list of the media objects
 //
-// kiwi-webtrees: Web based Family History software
+// webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView

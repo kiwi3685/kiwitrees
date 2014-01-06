@@ -11,8 +11,8 @@
 // It shouldn't do anything that might take more than a few
 // seconds, for systems with low timeout values.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 //
 // This program is free software; you can redistribute it and/or modify

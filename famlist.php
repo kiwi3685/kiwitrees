@@ -4,8 +4,8 @@
 // NOTE: indilist.php and famlist.php contain mostly identical code.
 // Updates to one file almost certainly need to be made to the other one as well.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2014 kiwitrees.net
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.

@@ -1,14 +1,13 @@
 <?php
 // Header for clouds theme
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
-// Derived from PhpGedView and webtrees
+// Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
-// Copyright (C) 2010 to 2013  webtrees Development Team.  All rights reserved.
 //
-// This is free software;you can redistribute it and/or modify
+// This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
 // (at your option) any later version.

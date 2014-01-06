@@ -1,8 +1,8 @@
 <?php
 // Date Functions that can be used by any page in webtrees
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.

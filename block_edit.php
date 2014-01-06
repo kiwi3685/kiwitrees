@@ -1,8 +1,8 @@
 <?php
 // Change the preferences for a block on the index pages.
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

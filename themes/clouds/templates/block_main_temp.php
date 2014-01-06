@@ -7,8 +7,8 @@
 // $class - the additional class of the block
 // $content - the content of the block
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010  PGV Development Team.  All rights reserved.

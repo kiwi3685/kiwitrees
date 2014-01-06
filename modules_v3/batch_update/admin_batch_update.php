@@ -1,8 +1,8 @@
 <?php
 // Batch update module
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2014 kiwitrees.net
+// webtrees: Web based Family History software
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008  PGV Development Team.  All rights reserved.

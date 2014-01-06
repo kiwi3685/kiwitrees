@@ -4,7 +4,7 @@
 // Note that the tests and error messages are not yet finalised.  Wait until the code has stabilised before
 // adding I18N.
 //
-// kiwi-webtrees: Web based Family History software
+// webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView

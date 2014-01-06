@@ -1,8 +1,8 @@
 <?php
 // MySQL queries on individual names
 //
-// kiwi-webtrees: Web based Family History software
-// Copyright (C) 2011 Greg Roach
+// webtrees: Web based Family History software
+// Copyright (C) 2014 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
