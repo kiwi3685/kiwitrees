@@ -4,8 +4,9 @@
 // kiwi-webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.
 //
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
+// Derived from PhpGedView and webtrees
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+// Copyright (C) 2010 to 2013  webtrees Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -301,7 +302,7 @@ if ($search) {
 			}
 			echo '</tr></table>';
 			echo '</td>';
-			if ((++$n) % $columns == 0) {
+			if ((++$n) % $columns == 0 && $n < $count) {
 				echo '</tr><tr>';
 			}
 		} // end media loop
