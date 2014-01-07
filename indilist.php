@@ -5,10 +5,10 @@
 // Updates to one file almost certainly need to be made to the other one as well.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2010  PGV Development Team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
