@@ -19,8 +19,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// $Id: webtrees-1.4.2.js 15097 2013-06-25 11:59:47Z greg $
 
 // Specifications for various types of popup edit window.
 // Choose positions to center in the smallest (1000x800) target screen

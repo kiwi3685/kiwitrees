@@ -20,8 +20,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// $Id: help_text.php 15290 2013-07-09 01:21:39Z nigel $
 
 if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
 	header('HTTP/1.0 403 Forbidden');
