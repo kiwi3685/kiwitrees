@@ -474,14 +474,14 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 		<!-- PRIVACY OPTIONS -->
 		<div id="privacy">
 			<table>
-				<tr>
+<!--				<tr>
 					<td>
 						<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
 					</td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td>
 						<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
