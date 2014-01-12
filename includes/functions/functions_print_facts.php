@@ -288,6 +288,12 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 
 	// Print the type of this fact/event
 	if ($type) {
+		if (preg_match("/_MARR/i", $fact->getTag())) {
+			$utype = strtoupper($type);
+			if ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS') {
+				$type = WT_Gedcom_Tag::getLabel('MARR_'.$utype);
+			}
+		}
 		// We don't have a translation for $type - but a custom translation might exist.
 		echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_I18N::translate(htmlspecialchars($type)));
 	}
