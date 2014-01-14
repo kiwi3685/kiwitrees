@@ -324,7 +324,9 @@ case 'createform':
 	}
 
 	init_calendar_popup();
-	$controller->addInlineJavascript('
+	$controller
+	->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}')
+	->addInlineJavascript('
 		function checkform(frm) {
 			if (frm.username.value=="") {
 				alert("'.WT_I18N::translate('You must enter a user name.').'");
