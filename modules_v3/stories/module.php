@@ -98,7 +98,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			jQuery("#contents_list a").click(function(){
 				var id = jQuery(this).attr("id");
 				id = id.split("_");
-				jQuery("#story_contents div").hide();
+				jQuery("#story_contents div.story").hide();
 				jQuery("#story_contents #stories_"+id[1]).show();
 			});
 		');
@@ -123,7 +123,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					margin:auto auto 20px auto;
 					width:60%;
 				}
-				#story_contents div {
+				#story_contents div.story {
 					 display:none;
 				}
 				hr.stories_divider {
@@ -166,7 +166,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				foreach ($block_ids as $block_id) {
 					$languages=get_block_setting($block_id, 'languages');
 					if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-						$html.='<div id="stories_'.$block_id.'">';
+						$html.='<div id="stories_'.$block_id.'" class="story">';
 							$html.='<h4 class="news_title center">'.get_block_setting($block_id, 'title').'</h4>';
 							$html.='<p>'.get_block_setting($block_id, 'story_body').'</p>';
 							if (WT_USER_CAN_EDIT) {
