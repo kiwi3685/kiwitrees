@@ -129,8 +129,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				hr.stories_divider {
 					padding: 0;
 					border: none;
-					border-top: medium double #99c2ff;
-					color: #99c2ff;
+					border-top: medium double;
 					text-align: center;
 					width: 80%;
 				}
