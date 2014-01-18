@@ -34,7 +34,7 @@ if ($view!='simple') {
 	echo '<div id="footer">';
 	echo contact_links();
 	echo '<p class="logo">';
-	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">webtrees<span>&trade;</span></a>';
+	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>';
 	echo '</p>';
 
 	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {

@@ -21,6 +21,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -74,8 +76,8 @@ $WT_IMAGES=array(
 $fanChart = array(
 	'font' => WT_ROOT.'includes/fonts/DejaVuSans.ttf',
 	'size' => '7px',
-	'color' => '#000',
-	'bgColor' => '#eee',
+	'color' => '#000000',
+	'bgColor' => '#eeeeee',
 	'bgMColor' => '#b1cff0',
 	'bgFColor' => '#e9daf1'
 );

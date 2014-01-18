@@ -2,10 +2,10 @@
 * Style for Xenea theme
 *
 * webtrees: Web based Family History software
-* Copyright (C) 2014 webtrees development team.
+* Copyright (C) 2013 webtrees development team.
 *
 * Derived from PhpGedView
-* Copyright (C) 2002 to 2010  PGV Development Team
+* Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,8 @@
 * You should have received a copy of the GNU General Public License
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+* $Id: style.css 15070 2013-06-20 23:30:30Z nigel $
 */
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
@@ -121,7 +123,7 @@ html[dir=rtl] #extra-menu.makeMenu li ul {left:0;right:auto;}
 #main-menu li:hover > ul   {display:block;position:absolute;top:0;left:100%;right:auto;margin-top:0;}
 #main-menu > li:hover > ul {left:0;right:auto;top:42px;}
 #main-menu a               {display:block;white-space:nowrap;overflow:hidden;}
-#main-menu ul              {position:absolute;display:none;background:#fff;border:thin solid #aaa;padding:0;z-index:99;}
+#main-menu ul              {position:absolute;display:none;background:#fff;border:thin solid #aaaaaa;padding:0;z-index:99;}
 #main-menu li a            {margin:auto;padding-top:22px;width:100%;}
 #main-menu li li a         {display:block;position:relative;float:left;font-size:11px;line-height:1.5;padding:0 10px 1px 5px;}
 
@@ -766,7 +768,7 @@ html[dir=rtl] .icon {
 
 .journal_box {
 	padding:3pt;
-	border:thin solid #aaa;
+	border:thin solid #aaaaaa;
 	overflow:visible;
 }
 
@@ -1441,7 +1443,7 @@ a.showit:hover > span {
 }
 
 .ui-autocomplete li:nth-child(odd) {
-	background-color:#eee;
+	background-color:#eeeeee;
 }
 
 .ui-autocomplete a.ui-state-focus {color:#ff0000;}
@@ -1553,21 +1555,21 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
 .list_table_controls td {min-width:40px;text-align:center;}
 
 /* ============== medialist.php ======================= */
-.medialist_title {font-weight:900; margin:0 0 10px 0;}
-.lightbox-menu {margin: 0 10px;}
-.lb-menu {position:relative; float:left;}
+#lightbox-menu {margin-bottom:60px;}
+.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
 .lb-menu ul {list-style-type:none;}
-ul.lb-menu li {border:none; font-weight:normal; padding:0; text-align:center;}
+.lb-menu li {font-weight:normal; float:left; top:0;}
 .lb-menu > li ul {display:none;width:80px;}
 .lb-menu > li:hover ul {display:block; top:36px;}
 .lb-menu a {display:block;}
 .lb-menu li a {padding-top:24px;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
 html[dir=rtl] .lb-menu {float:right;}
+html[dir=rtl] .lb-menu li {float:right;}
 
-li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
-li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
-li .lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
+li#lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
+li#lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
+li#lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
@@ -1812,11 +1814,11 @@ html[dir=rtl] dd .editlink, html[dir=rtl] dd .deletelink {float:left;}
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */
 #personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family-table .fact_NOTE, #family-table .fact_SOUR {margin:5px 3px 5px 0;clear:both;}
-.media-display-image {float:left;}
-.media-display-title {float:left;font-style:italic;margin:10px;}
+#media-display-image {float:left;}
+#media-display-title {float:left;font-style:italic;margin:10px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
-.ui-widget-content {color:#000;border-color:#999;}
+.ui-widget-content {color:#000;border-color:#999999;}
 .ui-widget-content a {color:#0000ff;}
 .ui-widget-content a:hover {color:#ff0000;}
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #c3dfff;background:#c3dfff;font-weight:normal;color:#000;outline:none;}
@@ -1913,12 +1915,12 @@ html[dir=rtl] .source-list th:last-child, html[dir=rtl] .note-list th:last-child
 #tabs {background-color:#fff;border-color:#dddddd;float:left;width:100%;overflow:visible;}
 #sidebar {border-color:#dddddd;display:none;margin:5px 2px 0 0;height:auto;}
 #sidebarAccordion, #sidebarAccordion2 {width:auto;}
-#sidebarAccordion h3, #sidebarAccordion2 h3 {height:30px;text-align:center;border-color:#999;}
+#sidebarAccordion h3, #sidebarAccordion2 h3 {height:30px;text-align:center;border-color:#999999;}
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
-#separator {display:block;background:#c3dfff url(images/indi_sprite.png) no-repeat -26px 100px;min-width:6px;max-width:10px;width:0.75%;border:1px solid #999;border-top-left-radius:3px;border-top-right-radius:3px;margin-top:5px;}
+#separator {display:block;background:#c3dfff url(images/indi_sprite.png) no-repeat -26px 100px;min-width:6px;max-width:10px;width:0.75%;border:1px solid #999999;border-top-left-radius:3px;border-top-right-radius:3px;margin-top:5px;}
 .use-sidebar #separator {background:#c3dfff url(images/indi_sprite.png) no-repeat -1px 100px;}
 
 html[dir=rtl] #indi_left {float:right;}

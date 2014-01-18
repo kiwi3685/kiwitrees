@@ -30,7 +30,6 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-include WT_THEME_URL. 'functions.php';
 
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
@@ -67,21 +66,6 @@ $this
 		
 		jQuery("textarea").autosize();
 		
-		jQuery("#lang-menu").each(function(){
-			jQuery(this).find("li").each(function(){	
-				jQuery(this).tooltip({
-					position: {
-						my: "center top-40",
-						at: "center center"
-					}
-				});	
-				jQuery(this).click(function(){
-					location.href = jQuery(this).find("a").attr("href");
-				});
-				jQuery(this).find("a.lang-active").removeClass().parent("li").addClass("lang-active");
-			});
-		});		
-
 	');
 echo
 	'<!DOCTYPE html>',
@@ -112,40 +96,27 @@ if ($view!='simple') {
 	echo
 		'<div id="fb-root"></div>',
 		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-		'<div id="topbar">';
-		if (get_module_setting('simpl_designer', 'SOCIAL_LINKS')==1) {
-			echo '
-				<div id="social" dir="auto">
-					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="20"></div>
-					<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-					<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-				</div>
-			';
-		}
-	echo
-		'<ul id="extra-menu" class="makeMenu">';
-			//added for uti-family only //
-			echo getLanguageFlags();
-			
-		$menu=WT_MenuBar::getFavoritesMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		$menu=WT_MenuBar::getThemeMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		$menu=WT_MenuBar::getLanguageMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		if (WT_USER_ID) {
-			echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
-		} else {
-			$class_name='login_block_WT_Module';
-			$module=new $class_name;
-			echo '<li><a href="#">', WT_I18N::translate('Login or Register'), '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
-		}
+		'<div id="topbar">
+		<ul id="extra-menu" class="makeMenu">';
+			$menu=WT_MenuBar::getFavoritesMenu();
+			if ($menu) {
+				echo $menu->getMenuAsList();
+			}
+			$menu=WT_MenuBar::getThemeMenu();
+			if ($menu) {
+				echo $menu->getMenuAsList();
+			}
+			$menu=WT_MenuBar::getLanguageMenu();
+			if ($menu) {
+				echo $menu->getMenuAsList();
+			}
+			if (WT_USER_ID) {
+				echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+			} else {
+				$class_name='login_block_WT_Module';
+				$module=new $class_name;
+				echo '<li><a href="#">', WT_I18N::translate('Login or Register'), '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
+			}
 	echo '</ul>
 		</div>
 		<div id="main_content">
@@ -167,7 +138,7 @@ if ($view!='simple') {
 		$menu_items[]=$menu;
 	}
 	echo
-		'<div id="topMenu">
+		'<div id="topMenu" class="ui-state-active">
 		<ul id="main-menu">';
 	foreach ($menu_items as $menu) {
 		if ($menu) {
@@ -186,29 +157,5 @@ if ($view!='simple') {
 		'</div>',
 		'</div>'; // <div id="topMenu">
 }
-//javascripts for social media links
-$this->addInlineJavaScript('
-	(function(d,s,id){
-	var js, fjs=d.getElementsByTagName(s)[0];
-	if(!d.getElementById(id)){
-	js=d.createElement(s);js.id=id;
-	js.src="//platform.twitter.com/widgets.js";
-	fjs.parentNode.insertBefore(js,fjs);
-	}}(document,"script","twitter-wjs"));
-
-	(function(d,s,id) {
-	var js, fjs=d.getElementsByTagName(s)[0];
-	if(!d.getElementById(id)){
-	js=d.createElement(s);js.id=id;
-	js.src="//connect.facebook.net/en_GB/all.js#xfbml=1";
-	fjs.parentNode.insertBefore(js,fjs);
-	}}(document,"script","facebook-jssdk"));
-	
-	(function(){
-    var po=document.createElement("script"); po.type="text/javascript"; po.async=true;
-    po.src="https://apis.google.com/js/plusone.js";
-    var s=document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po,s);
-	})();
-');
 // begin content section
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"

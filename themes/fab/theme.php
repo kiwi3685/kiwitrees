@@ -2,7 +2,7 @@
 // FAB theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Based on standard theme, which is Copyright (C) 2002 to 2010 PGV Development Team.
 //
@@ -60,8 +60,8 @@ $WT_IMAGES = array(
 $fanChart = array(
 	'font'     => WT_ROOT.'includes/fonts/DejaVuSans.ttf',
 	'size'     => '7px',
-	'color'    => '#000',
-	'bgColor'  => '#eee',
+	'color'    => '#000000',
+	'bgColor'  => '#eeeeee',
 	'bgMColor' => '#b1cff0',
 	'bgFColor' => '#e9daf1'
 );
