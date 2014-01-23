@@ -219,6 +219,7 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 			<li><a href="#layout-options"><span><?php echo WT_I18N::translate('Layout'); ?></span></a></li>
 			<li><a href="#hide-show"><span><?php echo WT_I18N::translate('Hide &amp; Show'); ?></span></a></li>
 			<li><a href="#edit-options"><span><?php echo WT_I18N::translate('Edit options'); ?></span></a></li>
+			<li><a href="#theme"><span><?php echo WT_I18N::translate('Theme'); ?></span></a></li>
 		</ul>
 		<!-- GENERAL -->
 		<div id="file-options">
@@ -436,39 +437,6 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?>
 					</td>
 				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('User options'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?>
-					</td>
-					<td>
-						<select name="NEW_THEME_DIR">
-							<?php
-								echo '<option value="">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
-								$current_themedir=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
-								foreach (get_theme_names() as $themename=>$themedir) {
-									echo '<option value="', $themedir, '"';
-									if ($themedir==$current_themedir) {
-										echo ' selected="selected"';
-									}
-									echo '>', $themename, '</option>';
-								}
-							?>
-						</select>
-					</td>
-				</tr>
 			</table>
 		</div>
 		<!-- PRIVACY OPTIONS -->
@@ -481,8 +449,8 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					<td>
 						<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
 					</td>
-				</tr>-->
-				<tr>
+				</tr>
+-->				<tr>
 					<td>
 						<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
 					</td>
@@ -1272,6 +1240,40 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN')); ?>
 				</td>
 			</tr>
+			</table>
+		</div>
+		<!-- THEME OPTIONS -->
+		<div id="theme">
+			<table>
+				<tr>
+					<td>
+						<?php echo $tree->tree_title_html, ' - ', WT_I18N::translate('Default Theme'), help_link('THEME'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php
+							$current_themedir = get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+							foreach (get_theme_names() as $themename=>$themedir) {
+								echo
+									'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
+											<img src="themes/', $themedir, '/images/screenshot_' ,$themename, '.png" alt="' ,$themename, ' title="' ,$themename, '">
+										<p>
+											<input type="radio" id="radio_' ,$themename, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
+											<label for="radio_' ,$themename, '">', $themename, '</label>
+										</p>
+									</div>';
+							}
+							echo
+								'<div ', ($current_themedir == '' ? 'class = "current_theme"' : 'class = "theme_box"'), '>
+									<p>
+										<input type="radio" id="radio_' ,$themename, '" name="NEW_THEME_DIR" value="" ', ($current_themedir == "" ? ' checked="checked"' : ''), '/>
+										<label for="radio_' ,$themename, '">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</label>
+									</p>
+								</div>';
+						?>
+				</td>
+				</tr>
 			</table>
 		</div>
 	</div>
