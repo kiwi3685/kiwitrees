@@ -2,7 +2,7 @@
  * Style for Admistration pages
  *
  * webtrees:Web based Family History software
- * Copyright (C) 2014 webtrees development team.
+ * Copyright (C) 2013 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * $Id: style.css 15295 2013-07-10 05:16:47Z nigel $
  */
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
@@ -27,18 +26,18 @@ html {overflow-y:scroll;}
 /* general styles */
 body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button {padding:1px 3px;}
-input, textarea, select {border: 1px solid #808080;color:#000; font:inherit; padding:0 3px;}
-button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {background:url(jquery-ui-1.10.3/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #f8f7f6; border:1px solid #cbc7bd; color:#654b24; font-weight:700; border-radius:3px; margin:0.3em;}
-button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(jquery-ui-1.10.3/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24; border:1px solid #654b24; color:#ffffff; font-weight:700; border-radius:3px;}
+/*input, textarea, select {border: 1px solid #808080;color:#000; font:inherit; padding:0 3px;}*/
+/*button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {background:url(jquery-ui-1.10.3/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #f8f7f6; border:1px solid #cbc7bd; color:#654b24; font-weight:700; border-radius:3px; margin:0.3em;}*/
+/*button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(jquery-ui-1.10.3/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654b24; border:1px solid #654b24; color:#ffffff; font-weight:700; border-radius:3px;}*/
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:top;}
 img {border:none; vertical-align:middle;}
-h3 {margin:0;}
+/*h3 {margin:0;}*/
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 td {vertical-align:top;}
 .icon {border:none; padding-left:0;padding-right:5pt;}
-.warning, .error, .red {font-weight:bold; color:#ff0000;}
-.accepted, a.accepted {font-weight:bold; color:#008000;}
+.warning, .error, .red {color:#ff0000;}
+.accepted, a.accepted {color:#00ff00;}
 .center {text-align:center;}
 .nowrap {white-space:nowrap;}
 .indent {padding-left:15px;}
@@ -49,7 +48,7 @@ html[dir=rtl] .indent {padding-right:15px;}
 
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
-.ui-widget-content a.current {color:#e17009; font-weight:bold;}
+.ui-widget-content a.current {color:#75abff; font-weight:bold;}
 .ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:#ff0000; cursor:pointer;}
 .ui-widget-header {padding:5px;}
 .ui-progressbar-value {height:60% !important; background:#d3d3d3 !important;}
@@ -61,13 +60,13 @@ html[dir=rtl] .ui-tabs .ui-tabs-nav li {float: right;}
 
 /* jEditable styling over-rides */
 .editable:hover {color:#ff0000; cursor:pointer;} /* both cursors needed for cross-browser support */
-.editable input, select {padding:0;}
+/*.editable input, select {padding:0;}*/
 .editable input {font-size:90%; height:18px !important;}
 .editable button {font-size:85%; padding:0;}
 
 /* jQuery.datatable styling over-rides */
-.odd {background-color:#ddffdd;}
-.even {background-color:#eeffee;}
+.odd {background-color:#b3d4fc; color:#000;}
+.even {background-color:#eeffee; color:#000;}
 .fg-button {padding:2px 6px;}
 .dataTables_paginate  {float:left;}
 .dataTables_processing {float:left;}
@@ -97,7 +96,7 @@ html[dir=rtl] #page_help {text-align:left;}
 #page_help a img {display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
-#admin_head {position:relative; height:70px; margin-bottom:10px; min-width:970px; z-index:1000;}
+#admin_head {position:relative; height:80px; margin-bottom:10px; min-width:970px; z-index:1000;}
 #title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
 #info {position:absolute; right:10px; bottom:0; text-align:right;}
 html[dir=rtl] #info {right:auto; left:10px; text-align:left;}
@@ -110,7 +109,7 @@ html[dir=rtl] #links li ul {left:auto; right:0;}
  html[dir=rtl] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
-.ui-widget-content a.lang-active {color:#008000;}
+.ui-widget-content a.lang-active {color:#00ff00;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content {min-height:580px;}
@@ -152,26 +151,26 @@ html[dir=rtl] #tree_stats td, html[dir=rtl] #recent td {padding:0 0 0 10px; text
 #tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em; min-height:140px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 #trees span, #recent2 span {text-decoration:underline;}
-#x h2, #x h3 {padding:0 25px;}
+/*#x h2, #x h3 {padding:0 25px;}*/
 
 /* SITE ACCESS */
 .ip_address span, .ua_string span, .raw_gedcom {direction:ltr;}
 
 /*SITE CONFIG */
-#site table, #mail table, #login table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
-#site-config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
-#site-config dl {float:left;margin:0 0 0 20px;line-height:25px;max-width: 600px;}
-#site-config dt {clear:left; float:left; min-width:170px; margin:0; padding:5px 5px 5px 0; border-bottom:1px solid #999; font-weight:bold;}
-#site-config dd {border-bottom:1px solid #999; margin-left:370px; min-width:370px; padding:5px;}
-html[dir=rtl] #site-config dl {float:right;margin:0 20px 0; max-width: 600px;}
+/*#site table, #mail table, #login table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}*/
+/*#site-config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}*/
+/*#site-config dl {float:left;margin:0 0 0 20px;line-height:25px;max-width: 600px;}*/
+#site-config dt {clear:left; float:left; min-width:500px; margin:0; padding:15px 0; border-bottom:1px solid;}
+#site-config dd {border-bottom:1px solid; margin-left:500px; min-width:370px; padding:15px;}
+html[dir=rtl] #site-config dl {float:right;margin:0 20px 0;}
 html[dir=rtl] #site-config dt {clear:right; float:right; padding:5px 0 5px 5px;}
-html[dir=rtl] #site-config dd {margin-right:370px;}
+html[dir=rtl] #site-config dd {}
 
 /*SITE LOGS & CHANGE LOGS*/
-table.site_logs, table.site_change {background:#fdf5e6; border-collapse:separate; border-spacing:0; border:1px inset #d9d6c4; margin:10px; padding:5px;}
-.site_logs td, .site_change td {text-align:center; vertical-align:middle;}
-input.log-date {text-align:center; width:70px;}
-input.log-filter {width:120px;}
+table.site_logs, table.site_change {margin:10px auto;}
+.site_logs td, .site_change td {padding:5px; text-align:center; vertical-align:middle;}
+input.log-date {text-align:center;}
+/*input.log-filter {width:120px;}*/
 table#log_list {table-layout:fixed; width:100%}
 #log_list th {min-width:80px;white-space:nowrap;}
 #log_list th:nth-child(3) {width:50%;}
@@ -218,48 +217,28 @@ html[dir=rtl] #merge3 th {text-align:right;}
 #other td {border-bottom:1px solid #d3d3d3; padding:5px 0;}
 
 /* CLEANUP */
-#cleanup {background:#fdf5e6; border:1px inset #d9d6c4; padding:5px 15px; display:inline-block;}
-#cleanup li {margin-bottom:5px;}
+/*#cleanup {background:#fdf5e6; border:1px inset #d9d6c4; padding:5px 15px; display:inline-block;}*/
+#cleanup li {list-style:none; margin-bottom:5px;}
 
 /* MANAGE FAMILY TREES */
-table.gedcom_table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; padding:5px; width:100%;}
-.gedcom_table th {font-weight:bold; font-size:105%; text-align:left; width:15%;}
+table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
+.gedcom_table th {font-size:105%; text-align:left; width:15%;}
 html[dir=rtl] .gedcom_table th {text-align:right;}
 .gedcom_table th+th {font-weight:normal; width:80%}
-table.gedcom_table2 {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:20px 0; width:100%;}
+table.gedcom_table2 {margin:20px 0; width:100%;}
 .gedcom_table2 th {font-weight:bold; font-size:105%; padding:5px; text-align:center;}
 .gedcom_table2 td {text-align:center;}
 
 /* FAMILY TREE CONFIG */
 #file-options, #privacy, #config-media, #layout-options, #hide-show, #edit-options {padding:10px;}
-#file-options table, #privacy table, #config-media table, #layout-options table, #hide-show table, #edit-options table {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
-#file-options td, #privacy td, #config-media td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid #d3d3d3;}
-#file-options th,
-#privacy th,
-#config-media th,
-#layout-options th,
-#hide-show th,
-#edit-options th,
-#site-config th {border-bottom:2px solid #d3d3d3; color:#008000; font-weight:bold; text-align:left;}
-html[dir=rtl] #file-options th,
-html[dir=rtl] #privacy th,
-html[dir=rtl] #config-media th,
-html[dir=rtl] #layout-options th,
-html[dir=rtl] #hide-show th,
-html[dir=rtl] #edit-options th {
-	text-align:right;
-}
-#relatives {margin-left:120px;}
-html[dir=rtl] #relatives {margin-right:120px;}
+#file-options table, #privacy table, #config-media table, #layout-options table, #hide-show table, #edit-options table {padding:5px; width:100%;}
+#file-options td, #privacy td, #config-media td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid; padding:5px 0;}
+#file-options th,#privacy th,#config-media th,#layout-options th,#hide-show th,#edit-options th {border-bottom:1px solid #fff; color:#00ff00; padding-top:20px;text-align:left;font-weight:normal;}
+html[dir=rtl] #file-options th,html[dir=rtl] #privacy th,html[dir=rtl] #config-media th,html[dir=rtl] #layout-options th,html[dir=rtl] #hide-show th,html[dir=rtl] #edit-options th {text-align:right;}
+#layout-options table#relatives {margin:0 50px;}
+/*html[dir=rtl] #relatives {margin-right:120px;}*/
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
 textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
-.current_theme, .theme_box {float:left; margin:10px; padding:10px; text-align:center;}
-.theme_box {border: 2px solid #ccc;}
-.current_theme {border:2px solid #ff0000;}
-/*.current_theme input, .theme_box input {border:none; display:block; margin:10px auto;}*/
-.current_theme p, .theme_box p {font-weight:bold; margin:0;}
-.current_theme input[type="radio"], .theme_box input[type="radio"] {cursor:pointer; height:20px; width:20px;}
-.current_theme input[type="radio"], .theme_box input[type="radio"], .current_theme label, .theme_box label {padding:10px; vertical-align:middle;}
 
 /* TREE DOWNLOAD */
 #tree-download {background:#fdf5e6; border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px;}
@@ -406,13 +385,13 @@ html[dir=rtl] .gm_edit_config td {padding:1px 50px 0 0;}
 #gm_advanced td {padding:0;}
 table#gm_levels {margin-left:20px;}
 html[dir=rtl] table#gm_levels {margin-right:20px;}
-.gm_levels th, .gm_prefix {color:#008000;}
+.gm_levels th, .gm_prefix {color:#00ff00;}
 #gm_level_titles th {text-align:center;}
 .gm_levels input {width:90%;}
 
 /* Geographic data */
 #gm_tabs {width:980px;}
-#gm_breadcrumb, #gm_breadcrumb a {color:#008000; font-weight:bold; }
+#gm_breadcrumb, #gm_breadcrumb a {color:#00ff00; font-weight:bold; }
 #gm_breadcrumb{float:right;margin-top:10px;text-align:right;width:50%}
 #gm_active {padding:5px; vertical-align:top;}
 html[dir=rtl] #gm_breadcrumb {float:left;text-align:left;}
@@ -499,7 +478,7 @@ a.icon-larrow:hover {background-position:-79px -34px; width:20px; height:20px;}
 .icon-rdarrow {background-position:-100px -124px; width:20px; height:20px;}
 a.icon-rarrow:hover {background-position:-10px -65px; width:20px; height:20px;}
 .icon-repository {background-position:-91px -180px; width:15px; height:15px;}
-.icon-resn-confidential {width:16px;height:16px;background-image:url("images/resn_confidential.png");}
+.icon-resn-confidential {width:24px;height:24px;background-image:url("images/resn_confidential.png");}
 .icon-resn-locked {width:16px;height:16px;background-image:url("images/resn_locked.png");}
 .icon-resn-none {width:16px;height:16px;background-image:url("images/resn_none.png");}
 .icon-resn-privacy {width:16px;height:16px;background-image:url("images/resn_privacy.png");}
@@ -510,6 +489,7 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-webtrees {background-position:2px -230px; width:240px;height:50px;}
 .icon-zoomin {background-position:-45px -34px; width:24px; height:24px;}
 .icon-zoomout {background-position:-79px 0; width:24px; height:24px;}
+
 
 [class^="icon-mime-"], [class*=" icon-mime-"] {display:inline-block;background-image:url(images/icon-mime-sprite.png);background-color:transparent;background-repeat:no-repeat;width:48px;height:48px;}
 /* Generic MIME types */
@@ -542,7 +522,8 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-mime-video-avi                     {background-position: -99px    0px;}
 .icon-mime-video-x-ms-wmv                {background-position: -50px -196px;}
 
-.icon-mask                {display:inline-block;background-image:url(images/icon_mask.png);background-color:transparent;background-repeat:no-repeat;width:16px;height:16px;cursor:pointer;}
+.icon-mask {display:inline-block;background-image:url(images/icon_mask.png);background-color:transparent;background-repeat:no-repeat;width:16px;height:16px;cursor:pointer;}
+.icon-kiwi-webtrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:200px; height:42px; margin:10px;}
 
 
 /* Styling for the jquery.colorbox gallery */
