@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- Copyright (C) 2013 Nigel Osborne and kiwtrees.net. All rights reserved. -->
+<html  lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simpl_add-ons ReadMe file</title>
+<script>
+addon	= "Simpl_grey";
+ver 	= "1.4.4.1";
+</script>
+<style type="text/css">
+	html {background-color: #fffff0;}
+	body {background-color: #fff; box-shadow: 5px 0 8px #ccc, -5px 0 8px #ccc; color: #444; font-family: sans-serif; font-size: 90%; line-height:1.5; margin:0 auto; padding:20px; width:80%;}
+	header {position: fixed; top: 0; width: 80%; background: #fff; margin: 0 auto;}
+	footer {background-color: #fffff0; font-size: 10px; padding:6px; border: 1px solid #ddd; opacity:0.75; overflow:auto;}
+	a {color: #4682B4; font-weight: normal; text-decoration: none;}
+	a:hover {color: #4682B4;}
+	a img {border:none;}
+	footer a {color:#555;}
+	img.left {float:left;}
+	h1 {font-size:1.9em;}
+	h2 {font-size:1.5em; color: #4682B4;}
+	h3 {font-size:1.1em;}
+	h4 {font-size:0.95em;}
+	ol {-webkit-margin-before:0; -webkit-padding-start: 0;}
+	ol li li{list-style-type:lower-alpha;}
+	ul {-webkit-padding-start:0; font-weight:900;}
+	li {line-height:150%; font-weight:normal; margin-left:40px;}
+	dl dt {font-weight: 900;}
+	textarea {background-color:#eee; width:95%; padding:10px; min-height:120px; outline:none; resize:none; overflow:auto;}
+	table {border-collapse:collapse;}
+	th, td {border:1px solid #555; padding:5px;}
+	tr td:first-child{white-space:nowrap;}
+	td img {margin:10px; width:450px;}
+	#content{margin-top:275px; min-height:500px; overflow: hidden; padding:20px 20px 20px 10px; text-align:justify;}
+	.back {color: #4682B4; float:right;}
+	.topbar{border-bottom:1px solid;text-align: right;line-height: 30px;}
+	.ex_img{border:1px solid grey; max-width:100%; margin: 20px auto; display: block;}
+	.note {font-style:italic;}
+	.highlight {color:#ff0000;font-weight:900;}
+	.trade {font-size:8px;vertical-align:top;}
+	span.pointer {color:#008b00; font-style:italic;}
+	#title{font-size: 1.9em; font-weight: normal; text-align: center; line-height: 30px; width: 80%;}
+	nav {background: #fff; border-bottom: 3px solid #4682B4; overflow: hidden; padding:0; margin:0; text-transform: uppercase;}
+	nav label {background:#ddd; border: 1px solid #ddd; border-bottom: 0; float:left; height:40px; line-height:40px; margin-left:1px; padding:0 20px; text-decoration:none;}
+	nav label:first-child {margin-left:0;}
+	nav label:hover {background: #fff url(readme_images/arrow_up.png) no-repeat center bottom; color:#4682B4;}
+	input {display:none;}
+	div.tab{display: none;}
+	#describe:checked ~ #content div#tab_describe,#require:checked ~ #content div#tab_require,#support:checked ~ #content div#tab_support,#install:checked ~ #content div#tab_install,
+	#setup:checked ~ #content div#tab_setup,#upgrading:checked ~ #content div#tab_upgrading,#faq:checked ~ #content div#tab_faq {display:block;}
+	#describe:checked ~ header label#label_describe,#require:checked ~ header label#label_require,#support:checked ~ header label#label_support,#install:checked ~ header label#label_install,#setup:checked ~ header label#label_setup,#upgrading:checked ~ header label#label_upgrading,#faq:checked ~ header label#label_faq {color: #4682B4; background: #ddd url(readme_images/arrow_up.png) no-repeat center bottom;}
+</style>
+</head>
+<body>
+<input type="radio" id="describe" name="tab" checked="checked">
+<input type="radio" id="require" name="tab">
+<input type="radio" id="support" name="tab">
+<input type="radio" id="install" name="tab">
+<input type="radio" id="setup" name="tab">
+<input type="radio" id="upgrading" name="tab">
+<input type="radio" id="faq" name="tab">
+<header>
+	<div class="topbar">Get other "Simpl" add-ons for kiwi-webtrees at <a href="http://kiwitrees.net/services/simpl-add-ons/" title="kiwitrees.net">kiwitrees.net</a></div>
+	<img class="left" src="readme_images/simpl_1.png" alt="simpl_logo">
+	<div id="title">
+		<h3>ReadMe file</h3>
+		<h2><script>document.write(addon);</script></h2>
+		<h4>for kiwi-webtrees</h4>
+	</div>
+	<nav>
+		<label for="describe" id="label_describe">Description</label>
+		<label for="require" id="label_require">Requirements</label>
+		<label for="install" id="label_install">Installation</label>
+		<label for="setup" id="label_setup">Setup</label>
+		<label for="upgrading" id="label_upgrading">Upgrading</label>
+		<label for="faq" id="label_faq">FAQs</label>
+		<label for="support" id="label_support">Support</label>
+	</nav>
+</header>
+<div id="content">
+	<!-- DESCRIPTION -->
+	<div class="tab" id="tab_describe">
+	<script>document.write(addon);</script> is the theme I use on my personal kiwi-webtrees site <a href="http://our-families.info" title="Our Families">Our Families.</a> It is unusual in having a fixed width, very few icons, and a totally unique (for kiwi-webtrees) menu structure. Its overall look is simple, and has some similarities to Apple's websites. 
+	</div>
+	<!-- REQUIREMENTS -->
+	<div class="tab" id="tab_require">
+	This module requires kiwi-webtrees version <script>document.write(ver);</script>.
+	</div>
+	<!-- SUPPORT -->
+	<div class="tab" id="tab_support">
+	Support for Simpl_add-ons is available only at the <a href="http://kiwitrees.net/forum/simpl_addons-support/" target="_blank" title="Kiwitrees forum pages">Kiwitrees forum pages.</a>
+	<p>Updates and bug-fixes will be announced on the <a href="http://kiwitrees.net/category/simpl_add-ons/" target="_blank" title="Simpl_add-ons blog pages">Simpl_add-ons blog pages</a>, and on <a href="https://twitter.com/@kiwi3685/" target="_blank" title="Follow me on Twitter">Twitter</a>.</p>
+	</div>
+	<!-- INSTALLATION -->
+	<div class="tab" id="tab_install">
+	Installation is simply a matter of unzipping the downloaded zip file and copying the unzipped "<span style="text-transform:lowercase;"><script>document.write(addon);</script></span>" folder directly into your kiwi-webtrees/themes/ folder.
+	<p>It will then appear as an option in the theme selection drop-down menu.</p>
+	</div>
+	<!-- SETUP -->
+	<div class="tab" id="tab_setup">
+	No additional setup is required unless you wish to make this the default site of your site, family tree, or user account. You can set these in the kiwi-webtrees administration pages Site configuration; Family trees<img src="readme_images/arrow_right.png" alt="arrow"><em>your family tree</em>; or any user account details.</div>
+	<!-- UPGRADING -->
+	<div class="tab" id="tab_upgrading">
+	To avoid any complication with possible file removals between versions, we recommend that you completely delete your old version of the theme before replacing it with this new one.
+	</div>
+	<!-- FAQs -->
+	<div class="tab" id="tab_faq">
+	This theme includes some text that is not part of standard kiwi-webtrees. That means it will not normally be translated from its default US_English. If you require translation of these items you will need to use kiwi-webtrees "Custom translation" feature described in the kiwi-webtrees WIKI here:<a href="http://wiki.webtrees.net/en/Custom_Translation" title="custom translation">Custom Translation</a>.
+	You might also want to change some existing kiwi-webtrees translations that are too long for the Simpl_grey menu design. For example, in webtrees 1.2.7 the menu item "FAQ" was translated in French to "Questions frequentes (FAQ)" which is too long to fit the space designed.
+	</div>
+</div>
+<footer>
+	<a href="http://www.kiwitrees.net">
+		<div style='float:left;'>
+			This add-on for kiwi-webtrees<span class="trade">&trade;</span> is provided by <b>kiwitrees</b><span class="trade">&trade;</span>
+		</div>
+		<div style='float:right;'>
+			<b>kiwitrees</b><span class="trade">&trade;</span> is a division of <b>Solution Associates Limited</b>
+		</div>
+	</a>
+</footer>
+</body>
+</html>

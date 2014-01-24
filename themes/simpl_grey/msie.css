@@ -1,0 +1,28 @@
+/* $Id: msie.css 12828 2011-11-20 15:43:11Z rob $ */
+
+form {
+	margin-top: 0px; margin-bottom: 0px;
+}
+
+.small_inner_block {
+	/*height: expression( this.scrollHeight > 159 ? "300px" : "auto" ); */
+}
+
+.normal_inner_block {
+	width: 100%;
+}
+
+/* 
+ * The following style definitions can be removed when IE supports the "opacity" 
+ * specification in place of its proprietary and non-standard method.
+ */
+.rela {
+	filter: alpha(opacity=67);
+}
+
+a.showit:hover > span {
+	filter: alpha(opacity=85);
+}
+
+.itr {height:30px;}
+.itr:hover .popup {top:20px;}
