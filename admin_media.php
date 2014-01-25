@@ -524,7 +524,7 @@ $controller
 		iCookieDuration: 300,
 		aoColumns: [
 			{},
-			{bSortable: false},
+			{bSortable: false, sClass: "center"},
 			{bSortable: ' . ($files=='unused' ? 'false' : 'true') . '}
 		]
 	});

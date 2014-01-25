@@ -198,7 +198,7 @@ case 'update':
 
 $controller
 	->pageHeader()
-	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");')
+	->addInlineJavascript('jQuery("#tabs").tabs();')
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }');
 
 if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)

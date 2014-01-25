@@ -202,7 +202,7 @@ $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addInlineJavascript('
-		var oTable=jQuery("#log_list").dataTable( {
+		var oTable=jQuery("#change_list").dataTable( {
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"bProcessing": true,
 			"bServerSide": true,
@@ -279,7 +279,7 @@ echo
 if ($action) {
 	echo
 		'<br>',
-		'<table id="log_list">',
+		'<table id="change_list">',
 			'<thead>',
 				'<tr>',
 					'<th>', WT_I18N::translate('Timestamp'), '</th>',

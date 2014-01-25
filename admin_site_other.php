@@ -33,14 +33,10 @@ $controller
 
 ?>
 <div id="other">
-	<p>
-		<?php echo WT_I18N::translate('Add unlinked records'); ?>
-	</p>
-	<p>
-		<form method="post" action="#" name="tree">
-			<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, ' onchange="tree.submit();"'); ?>
-		</form>
-	</p>
+	<h3><?php echo WT_I18N::translate('Add unlinked records'); ?></h3>
+	<form method="post" action="#" name="tree">
+		<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, ' onchange="tree.submit();"'); ?>
+	</form>
 	<table id="other">
 		<tr>
 			<td>
