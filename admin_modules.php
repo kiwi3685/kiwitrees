@@ -90,7 +90,7 @@ $controller
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"aaSorting": [[ 1, "asc" ]],
-			"iDisplayLength": 10,
+			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers",
 			"bStateSave": true,
 			"iCookieDuration": 180,

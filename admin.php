@@ -165,12 +165,6 @@ echo
 			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', $geds['title'], '</a></div></td><td>', $geds['number'], '</td></tr>';
 		}
 	echo '<tr><td>';
-	if ($warnusers == 0) {
-		echo WT_I18N::translate('Users with warnings');
-	} else {
-		echo '<a href="admin_users.php?action=listusers&amp;filter=warnings">', WT_I18N::translate('Users with warnings'), '</a>';
-	}
-	echo '</td><td>', $warnusers, '</td></tr><tr><td>';
 	if ($applusers == 0) {
 		echo WT_I18N::translate('Unverified by User');
 	} else {

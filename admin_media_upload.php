@@ -199,7 +199,7 @@ for ($i=1; $i<6; $i++) {
 		echo '</td>';
 		echo '<td>';
 		echo '<input name="filename', $i, '" type="text" size="40">';
-		if ($i==1) echo "<br><sub>", WT_I18N::translate('Do not change to keep original file name.'), "</sub>";
+		if ($i==1) echo "<sub>", WT_I18N::translate('Do not change to keep original file name.'), "</sub>";
 		echo '</td></tr>';
 	} else {
 		echo '<tr style="display:none;"><td><input type="hidden" name="filename', $i, '" value=""></td></tr>';
