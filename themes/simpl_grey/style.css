@@ -485,7 +485,7 @@ html[dir='rtl'] .dataTables_length{float:left}
 html[dir='rtl'] .DataTables_sort_wrapper{margin-right:20px}
 html[dir='rtl'] .DataTables_sort_wrapper span{left:auto; right:0; margin-right:-20px}
 .source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list {margin:10px auto; visibility:hidden; width:98%}
-.surname-list, .givn-list {margin:auto; visibility:hidden}
+.surname-list, .givn-list {margin:auto;}
 .indi-list .stats, .fam-list  .stats{margin:0 auto; width:auto}
 .source-list table, .note-list table, .repo-list table,.media-list table, .indi-list table, .fam-list table {width:100%}
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td, .fam-list td, .recent_changes_block td, .upcoming_events_block, .surname-list td{padding:2px 5px}
