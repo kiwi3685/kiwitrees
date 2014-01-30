@@ -47,7 +47,7 @@ echo
 	'<meta charset="UTF-8">',
 	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
 	'<meta name="robots" content="noindex,nofollow">',	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="icon" href="', WT_THEME_URL, 'images/kt.png" type="image/png">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
 	'<!--[if IE]>',

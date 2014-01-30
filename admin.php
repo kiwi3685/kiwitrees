@@ -159,7 +159,7 @@ echo
 	echo
 		'<table>',
 		'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
-		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
+		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=1">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
 		'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
 		foreach ($gedadmin as $ged_id=>$geds) {
 			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', $geds['title'], '</a></div></td><td>', $geds['number'], '</td></tr>';
