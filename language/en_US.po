@@ -5,18 +5,21 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2013-11-25 20:40+0000\n"
-"PO-Revision-Date: 2013-11-26 12:15+1200\n"
-"Last-Translator: Kiwi <admin@kiwitrees.net>\n"
-"Language-Team: English (United States) <en_US@li.org>\n"
+"Project-Id-Version: kiwi-webtrees\n"
+"Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
+"POT-Creation-Date: 2014-01-28 07:44+0000\n"
+"PO-Revision-Date: 2014-01-31 08:54+1200\n"
+"Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
+"Language-Team: English (United States)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: C:\\xampp\\htdocs\\kiwi-webtrees\n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: C:\\xampp\\htdocs\\kiwi-webtrees\n"
 
 #: modules_v3/ahnentafel_report/report.xml:158
 #: modules_v3/ahnentafel_report/report.xml:186
@@ -59,7 +62,7 @@ msgstr ""
 msgid "#%d"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:816
+#: modules_v3/googlemap/module.php:817
 #, php-format
 msgid ""
 "%1$d individual displayed, out of the normal total of %2$d, from %3$d "
@@ -71,7 +74,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
-#: modules_v3/googlemap/module.php:833
+#: modules_v3/googlemap/module.php:834
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
@@ -145,6 +148,14 @@ msgstr ""
 msgid "%1$s does not have a link back to %2$s."
 msgstr ""
 
+#. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
+#: admin_site_upgrade.php:364 admin_site_upgrade.php:439
+#, php-format
+msgid "%1$s file was extracted in %2$s seconds."
+msgid_plural "%1$s files were extracted in %2$s seconds."
+msgstr[0] ""
+msgstr[1] ""
+
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:184
 #, php-format
@@ -161,6 +172,12 @@ msgstr ""
 #: includes/functions/functions.php:2132
 #, php-format
 msgid "%1$s's %2$s"
+msgstr ""
+
+#. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
+#: admin_site_upgrade.php:310
+#, php-format
+msgid "%1$sKB were downloaded in %2$s seconds."
 msgstr ""
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
@@ -238,7 +255,7 @@ msgstr ""
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: library/WT/I18N.php:152
 msgid "%j %F %Y"
-msgstr "%F %j, %Y"
+msgstr ""
 
 #: includes/functions/functions.php:2162
 #, php-format
@@ -298,7 +315,7 @@ msgid_plural "%s hours ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules_v3/googlemap/module.php:826
+#: modules_v3/googlemap/module.php:827
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
@@ -442,7 +459,7 @@ msgid "%s&nbsp;CE"
 msgstr ""
 
 #. I18N: first/default option in a drop-down listbox
-#: modules_v3/googlemap/module.php:1480 modules_v3/googlemap/module.php:1496
+#: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
 #: modules_v3/user_messages/module.php:76
 msgid "&lt;select&gt;"
 msgstr ""
@@ -697,13 +714,13 @@ msgstr ""
 msgid "<b>webtrees</b> reply address"
 msgstr ""
 
-#: login.php:139
+#: login.php:155
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access is "
 "permitted to users who have an account and a password for this website."
 msgstr ""
 
-#: login.php:133
+#: login.php:149
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to <u>authorized</u> users only.<br /><br />If you "
@@ -714,7 +731,7 @@ msgid ""
 "message when your application has been approved."
 msgstr ""
 
-#: login.php:136
+#: login.php:152
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to <u>family members only</u>.<br /><br />If you have "
@@ -725,7 +742,7 @@ msgid ""
 "receive an email when your request is approved."
 msgstr ""
 
-#: login.php:130
+#: login.php:146
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to every visitor who has a user account.<br /><br /"
@@ -737,12 +754,12 @@ msgid ""
 msgstr ""
 
 #. I18N: default option in list of themes
-#: admin_trees_config.php:461 admin_users.php:205 admin_users.php:405
+#: admin_trees_config.php:461 admin_users.php:205 admin_users.php:413
 #: edituser.php:163
 msgid "<default theme>"
 msgstr ""
 
-#: login.php:379
+#: login.php:394
 msgid ""
 "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing "
 "and submitting this form, you agree:<ul><li>to protect the privacy of living "
@@ -869,23 +886,27 @@ msgid ""
 msgstr ""
 
 #. I18N: %s is a username
-#: login.php:240
+#: login.php:256
 #, php-format
 msgid ""
 "A new password has been created and emailed to %s.  You can change this "
 "password after you login."
 msgstr ""
 
-#: login.php:217
+#: login.php:233
 msgid "A new password was requested for your user name."
 msgstr ""
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:478
+#: login.php:493
 #, php-format
 msgid ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
 "address (%3$s)."
+msgstr ""
+
+#: admin.php:65 admin_site_upgrade.php:83
+msgid "A new version of webtrees is available."
 msgstr ""
 
 #. I18N: Description of the “Journal” module
@@ -894,7 +915,7 @@ msgid "A private area to record notes or keep a journal."
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:294
+#: login.php:310
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
 msgstr ""
@@ -1025,7 +1046,7 @@ msgstr ""
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:36
-msgid "A sidebar showing non-genealogical information about an indivdual."
+msgid "A sidebar showing non-genealogical information about an individual."
 msgstr ""
 
 #. I18N: Description of the “Descendants” module
@@ -1175,10 +1196,6 @@ msgstr ""
 msgid "Accept"
 msgstr ""
 
-#: admin.php:75
-msgid "Accept or reject any pending changes."
-msgstr ""
-
 #: admin_module_blocks.php:58 admin_module_menus.php:77
 #: admin_module_reports.php:58 admin_module_sidebar.php:77
 #: admin_module_tabs.php:77
@@ -1259,8 +1276,8 @@ msgstr ""
 
 #: admin_trees_config.php:582 edit_interface.php:2179
 #: includes/functions/functions_print.php:1031
-#: includes/functions/functions_print.php:1086 index_edit.php:293
-#: index_edit.php:311 lifespan.php:273
+#: includes/functions/functions_print.php:1086 index_edit.php:294
+#: index_edit.php:312 lifespan.php:273
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:101
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:185
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:187
@@ -1279,7 +1296,7 @@ msgstr ""
 msgid "Add %s to cart"
 msgstr ""
 
-#: modules_v3/faq/module.php:147 modules_v3/faq/module.php:361
+#: modules_v3/faq/module.php:147 modules_v3/faq/module.php:362
 msgid "Add FAQ item"
 msgstr ""
 
@@ -1327,8 +1344,8 @@ msgstr ""
 msgid "Add a new Journal entry"
 msgstr ""
 
-#: help_text.php:1136 includes/functions/functions_edit.php:1736
-#: includes/functions/functions_edit.php:1741
+#: help_text.php:1136 includes/functions/functions_edit.php:1692
+#: includes/functions/functions_edit.php:1697
 msgid "Add a new associate"
 msgstr ""
 
@@ -1354,8 +1371,8 @@ msgstr ""
 msgid "Add a new husband"
 msgstr ""
 
-#: includes/functions/functions_edit.php:1167
-#: includes/functions/functions_edit.php:1784
+#: includes/functions/functions_edit.php:1123
+#: includes/functions/functions_edit.php:1740
 #: library/WT/Controller/Family.php:231 modules_v3/lightbox/module.php:70
 #: modules_v3/lightbox/module.php:71 modules_v3/media/module.php:83
 #: repo.php:117 source.php:129
@@ -1368,7 +1385,7 @@ msgid "Add a new mother"
 msgstr ""
 
 #: help_text.php:1079 help_text.php:1146
-#: includes/functions/functions_edit.php:1760
+#: includes/functions/functions_edit.php:1716
 #: library/WT/Controller/Family.php:216 modules_v3/notes/module.php:95
 msgid "Add a new note"
 msgstr ""
@@ -1377,12 +1394,12 @@ msgstr ""
 msgid "Add a new parent"
 msgstr ""
 
-#: includes/functions/functions_edit.php:1795
+#: includes/functions/functions_edit.php:1751
 msgid "Add a new restriction"
 msgstr ""
 
 #: help_text.php:1085 help_text.php:1151
-#: includes/functions/functions_edit.php:1772
+#: includes/functions/functions_edit.php:1728
 #: library/WT/Controller/Family.php:223 modules_v3/notes/module.php:104
 msgid "Add a new shared note"
 msgstr ""
@@ -1392,7 +1409,7 @@ msgid "Add a new son or daughter"
 msgstr ""
 
 #: help_text.php:1091 help_text.php:1159
-#: includes/functions/functions_edit.php:1706
+#: includes/functions/functions_edit.php:1662
 #: library/WT/Controller/Family.php:241 modules_v3/sources_tab/module.php:81
 msgid "Add a new source citation"
 msgstr ""
@@ -1518,6 +1535,11 @@ msgstr ""
 msgid "Add story"
 msgstr ""
 
+#: admin_trees_download.php:131 modules_v3/clippings/module.php:221
+#: modules_v3/clippings/module.php:610
+msgid "Add the GEDCOM media path to filenames"
+msgstr ""
+
 #: modules_v3/clippings/module.php:110 modules_v3/clippings/module.php:535
 msgid "Add this person and his direct line ancestors."
 msgstr ""
@@ -1606,7 +1628,7 @@ msgstr ""
 msgid "Adelaide, Australia"
 msgstr ""
 
-#: admin_users.php:415
+#: admin_users.php:423
 msgid "Admin comments on user"
 msgstr ""
 
@@ -1615,7 +1637,7 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: admin_users.php:189 admin_users.php:363 help_text.php:1400
+#: admin_users.php:189 admin_users.php:371 help_text.php:1400
 msgid "Administrator"
 msgstr ""
 
@@ -1623,7 +1645,7 @@ msgstr ""
 msgid "Administrator account"
 msgstr ""
 
-#: admin.php:165
+#: admin.php:140
 msgid "Administrators"
 msgstr ""
 
@@ -1781,7 +1803,7 @@ msgstr ""
 msgid "Adult christening"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:253
+#: modules_v3/googlemap/module.php:254
 msgid "Advanced"
 msgstr ""
 
@@ -1816,7 +1838,7 @@ msgid ""
 "from a GEDCOM file."
 msgstr ""
 
-#: login.php:223
+#: login.php:239
 msgid ""
 "After you have logged in, select the «My Account» link under the «My Page» "
 "menu and fill in the password fields to change your password."
@@ -1924,10 +1946,10 @@ msgstr ""
 #: indilist.php:70 indilist.php:76 indilist.php:82 indilist.php:165
 #: indilist.php:167 indilist.php:251 indilist.php:253 library/WT/I18N.php:418
 #: library/WT/Stats.php:3325 modules_v3/ahnentafel_report/report.xml:8
-#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:186
-#: modules_v3/faq/module.php:374 modules_v3/googlemap/admin_places.php:615
+#: modules_v3/descendancy_report/report.xml:7 modules_v3/faq/module.php:187
+#: modules_v3/faq/module.php:375 modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:756
-#: modules_v3/googlemap/module.php:1481 modules_v3/googlemap/module.php:1497
+#: modules_v3/googlemap/module.php:1482 modules_v3/googlemap/module.php:1498
 #: modules_v3/individual_ext_report/report.xml:7
 #: modules_v3/individual_ext_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:12
@@ -1953,13 +1975,28 @@ msgstr ""
 msgid "All existing PGV users must have distinct email addresses"
 msgstr ""
 
-#: admin_trees_config.php:1086 admin_trees_config.php:1123
-#: admin_trees_config.php:1160 admin_trees_config.php:1189
-msgid "All facts"
+#: admin_trees_config.php:1123
+msgid "All family facts"
 msgstr ""
 
-#: login.php:385
+#: login.php:400
 msgid "All fields must be completed."
+msgstr ""
+
+#: admin_site_upgrade.php:394
+msgid "All files have read and write permission."
+msgstr ""
+
+#: admin_trees_config.php:1086 help_text.php:590
+msgid "All individual facts"
+msgstr ""
+
+#: admin_trees_config.php:1189 help_text.php:796
+msgid "All repository facts"
+msgstr ""
+
+#: admin_trees_config.php:1160 help_text.php:907
+msgid "All source facts"
 msgstr ""
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
@@ -1969,7 +2006,7 @@ msgid ""
 "HTML codes."
 msgstr ""
 
-#: admin_users.php:198 admin_users.php:386
+#: admin_users.php:198 admin_users.php:394
 msgid "Allow this user to edit his account information"
 msgstr ""
 
@@ -2049,8 +2086,13 @@ msgstr ""
 msgid "An edit menu for individuals, families, sources, etc."
 msgstr ""
 
-#: includes/functions/functions_edit.php:2241
-#: includes/functions/functions_edit.php:2250
+#: admin_site_upgrade.php:337 admin_site_upgrade.php:356
+#: admin_site_upgrade.php:366 admin_site_upgrade.php:441
+msgid "An error occurred when unzipping the file."
+msgstr ""
+
+#: includes/functions/functions_edit.php:2197
+#: includes/functions/functions_edit.php:2206
 msgid ""
 "An error occurred while creating the Edit form.  Another user may have "
 "changed this record since you previously viewed it."
@@ -2062,7 +2104,7 @@ msgid ""
 "An interactive tree, showing all the ancestors and descendants of a person."
 msgstr ""
 
-#: setup.php:944
+#: setup.php:945
 msgid "An unexpected database error occurred."
 msgstr ""
 
@@ -2129,7 +2171,7 @@ msgstr ""
 msgid "Annulment"
 msgstr ""
 
-#: modules_v3/faq/module.php:170
+#: modules_v3/faq/module.php:171
 msgid "Answer"
 msgstr ""
 
@@ -2169,11 +2211,11 @@ msgstr ""
 msgid "Approve all changes"
 msgstr ""
 
-#: admin_users.php:576
+#: admin_users.php:584
 msgid "Approved"
 msgstr ""
 
-#: admin_users.php:369
+#: admin_users.php:377
 msgid "Approved by administrator"
 msgstr ""
 
@@ -2208,7 +2250,7 @@ msgstr ""
 msgid "Aqua Marine"
 msgstr ""
 
-#: modules_v3/faq/module.php:398
+#: modules_v3/faq/module.php:399
 msgid "Are you sure you want to delete this FAQ entry?"
 msgstr ""
 
@@ -2240,7 +2282,7 @@ msgid "Are you sure you want to delete this story?"
 msgstr ""
 
 #: admin_media.php:290 admin_media.php:425 admin_site_access.php:114
-#: admin_trees_manage.php:231 admin_users.php:162
+#: admin_trees_manage.php:232 admin_users.php:162
 #: includes/functions/functions_print_lists.php:1028
 #: includes/functions/functions_print_lists.php:1129
 #: includes/functions/functions_print_lists.php:1221
@@ -2412,7 +2454,7 @@ msgstr ""
 msgid "Author of last change"
 msgstr ""
 
-#: admin_users.php:201 admin_users.php:381 help_text.php:1462
+#: admin_users.php:201 admin_users.php:389 help_text.php:1462
 msgid "Automatically approve changes made by this user"
 msgstr ""
 
@@ -2452,7 +2494,7 @@ msgctxt "NOMINATIVE"
 msgid "Av"
 msgstr ""
 
-#: index_edit.php:264
+#: index_edit.php:265
 msgid "Available Blocks"
 msgstr ""
 
@@ -2643,7 +2685,7 @@ msgstr ""
 msgid "Barbados"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:252
+#: modules_v3/googlemap/module.php:253
 msgid "Basic"
 msgstr ""
 
@@ -2663,12 +2705,12 @@ msgstr ""
 msgid "Baton Rouge, Louisiana"
 msgstr ""
 
-#: library/WT/Controller/Search.php:702
+#: library/WT/Controller/Search.php:687
 msgid "Be sure to select an option to search for."
 msgstr ""
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
-#: modules_v3/googlemap/placehierarchy.php:244
+#: modules_v3/googlemap/placehierarchy.php:240
 msgid "Bearing"
 msgstr ""
 
@@ -2870,7 +2912,7 @@ msgstr ""
 msgid "Birth places"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1265
+#: modules_v3/googlemap/module.php:1266
 msgid "Birth:"
 msgstr ""
 
@@ -3363,6 +3405,16 @@ msgstr ""
 msgid "Cause of death"
 msgstr ""
 
+#: admin_site_upgrade.php:202
+msgid ""
+"Caution: old modules may not work, or they may prevent webtrees from working."
+msgstr ""
+
+#: admin_site_upgrade.php:265
+msgid ""
+"Caution: old themes may not work, or they may prevent webtrees from working."
+msgstr ""
+
 #: library/WT/Stats.php:3835
 msgid "Cayman Islands"
 msgstr ""
@@ -3404,7 +3456,7 @@ msgstr ""
 msgid "Census transcript"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1359
+#: modules_v3/googlemap/module.php:1360
 msgid "Center map here"
 msgstr ""
 
@@ -3429,10 +3481,10 @@ msgstr ""
 msgid "Change Family Members"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:490 modules_v3/googlemap/module.php:493
-#: modules_v3/googlemap/module.php:496 modules_v3/googlemap/module.php:551
+#: modules_v3/googlemap/module.php:491 modules_v3/googlemap/module.php:494
+#: modules_v3/googlemap/module.php:497 modules_v3/googlemap/module.php:552
+#: modules_v3/googlemap/places_edit.php:326
 #: modules_v3/googlemap/places_edit.php:330
-#: modules_v3/googlemap/places_edit.php:334
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:387
 msgid "Change flag"
 msgstr ""
@@ -3498,8 +3550,27 @@ msgstr ""
 msgid "Check access rights on this directory."
 msgstr ""
 
+#: admin_site_upgrade.php:377
+msgid "Check file permissions…"
+msgstr ""
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:116
+msgid "Check for custom modules…"
+msgstr ""
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:218
+msgid "Check for custom themes…"
+msgstr ""
+
 #: admin_trees_check.php:36 themes/_administration/header.php:117
 msgid "Check for errors"
+msgstr ""
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:97
+msgid "Check for pending changes…"
 msgstr ""
 
 #: help_text.php:467 relationship.php:140
@@ -3728,8 +3799,8 @@ msgstr ""
 
 #. I18N: gedcom tag CITY
 #: library/WT/Gedcom/Tag.php:167 modules_v3/googlemap/admin_places.php:178
-#: modules_v3/googlemap/module.php:325
-#: modules_v3/googlemap/places_edit.php:290
+#: modules_v3/googlemap/module.php:326
+#: modules_v3/googlemap/places_edit.php:286
 msgid "City"
 msgstr ""
 
@@ -3783,23 +3854,19 @@ msgstr ""
 msgid "Click a row, then drag-and-drop to re-order media "
 msgstr ""
 
-#: admin_trees_manage.php:272
+#: admin_trees_manage.php:273
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr ""
 
-#: modules_v3/faq/module.php:283
+#: modules_v3/faq/module.php:284
 msgid "Click here to Add, Edit, or Delete"
-msgstr ""
-
-#: reportengine.php:131
-msgid "Click here to continue"
 msgstr ""
 
 #: individual.php:256
 msgid "Click here to open or close the sidebar"
 msgstr ""
 
-#: modules_v3/faq/module.php:280
+#: modules_v3/faq/module.php:281
 msgid "Click on a title to go straight to it, or scroll down to read them all"
 msgstr ""
 
@@ -3887,8 +3954,8 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: admin_users.php:210 help_text.php:1360 login.php:298 login.php:340
-#: login.php:412
+#: admin_users.php:210 help_text.php:1360 login.php:314 login.php:355
+#: login.php:427
 msgid "Comments"
 msgstr ""
 
@@ -3946,7 +4013,7 @@ msgstr ""
 msgid "Configure"
 msgstr ""
 
-#: admin_users.php:384 edituser.php:154 help_text.php:1301 login.php:407
+#: admin_users.php:392 edituser.php:154 help_text.php:1301 login.php:422
 msgid "Confirm password"
 msgstr ""
 
@@ -4016,9 +4083,15 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
-#: admin.php:79
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:417
+msgid "Copy files…"
+msgstr ""
+
+#: admin_site_upgrade.php:388
+#, php-format
 msgid ""
-"Copy the new files to the web server, replacing any that have the same name."
+"Copy these files to the folder %s, replacing any that have the same name."
 msgstr ""
 
 #. I18N: gedcom tag COPR
@@ -4045,17 +4118,17 @@ msgstr ""
 msgid "Cote d'Ivoire"
 msgstr ""
 
-#: login.php:550
+#: login.php:564
 msgid ""
 "Could not verify the information you entered.  Please try again or contact "
 "the site administrator for more information."
 msgstr ""
 
-#: admin.php:215 library/WT/Stats.php:3326
+#: admin.php:190 library/WT/Stats.php:3326
 msgid "Count"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:561
+#: modules_v3/googlemap/module.php:562
 msgid "Countries"
 msgstr ""
 
@@ -4063,9 +4136,9 @@ msgstr ""
 #: library/WT/Gedcom/Tag.php:180
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1037
 #: modules_v3/googlemap/admin_places.php:175
-#: modules_v3/googlemap/module.php:307 modules_v3/googlemap/module.php:378
-#: modules_v3/googlemap/module.php:1478 modules_v3/googlemap/module.php:1596
-#: modules_v3/googlemap/places_edit.php:286
+#: modules_v3/googlemap/module.php:308 modules_v3/googlemap/module.php:379
+#: modules_v3/googlemap/module.php:1479 modules_v3/googlemap/module.php:1597
+#: modules_v3/googlemap/places_edit.php:282
 msgid "Country"
 msgstr ""
 
@@ -4082,25 +4155,25 @@ msgid "Create"
 msgstr ""
 
 #: edit_interface.php:1102 edit_interface.php:1171
-#: includes/functions/functions_edit.php:1171
+#: includes/functions/functions_edit.php:1127
 msgid "Create Repository"
 msgstr ""
 
-#: admin_users.php:475
+#: admin_users.php:483
 msgid "Create User"
 msgstr ""
 
 #: edit_interface.php:814 edit_interface.php:860
-#: includes/functions/functions_edit.php:1175
+#: includes/functions/functions_edit.php:1131
 msgid "Create a new Shared Note"
 msgstr ""
 
 #: edit_interface.php:886 edit_interface.php:928
-#: includes/functions/functions_edit.php:1180
+#: includes/functions/functions_edit.php:1136
 msgid "Create a new Shared Note using Assistant"
 msgstr ""
 
-#: admin_trees_manage.php:247 help_text.php:1070
+#: admin_trees_manage.php:248 help_text.php:1070
 msgid "Create a new family tree"
 msgstr ""
 
@@ -4125,7 +4198,7 @@ msgstr ""
 
 #. I18N: A source that is not linked to any other record
 #: admin_site_other.php:64 edit_interface.php:668 edit_interface.php:765
-#: includes/functions/functions_edit.php:1188
+#: includes/functions/functions_edit.php:1144
 msgid "Create a new source"
 msgstr ""
 
@@ -4284,8 +4357,16 @@ msgstr ""
 msgid "Custom Event"
 msgstr ""
 
+#: admin_site_upgrade.php:190 admin_site_upgrade.php:193
+msgid "Custom module"
+msgstr ""
+
 #: find.php:482
 msgid "Custom tags"
+msgstr ""
+
+#: admin_site_upgrade.php:250 admin_site_upgrade.php:253
+msgid "Custom theme"
 msgstr ""
 
 #: admin_site_config.php:168 help_text.php:1042
@@ -4327,7 +4408,7 @@ msgstr ""
 msgid "Data folder"
 msgstr ""
 
-#: login.php:544
+#: login.php:558
 msgid "Data was not correct, please try again"
 msgstr ""
 
@@ -4509,7 +4590,7 @@ msgid ""
 "a unknown date within a possible range."
 msgstr ""
 
-#: admin_users.php:572
+#: admin_users.php:580
 msgid "Date registered"
 msgstr ""
 
@@ -4540,7 +4621,7 @@ msgstr ""
 msgid "Daughter of %s"
 msgstr ""
 
-#: admin.php:258 calendar.php:133 library/WT/MenuBar.php:376
+#: admin.php:233 calendar.php:133 library/WT/MenuBar.php:376
 msgid "Day"
 msgstr ""
 
@@ -4799,16 +4880,16 @@ msgstr ""
 msgid "Default chart"
 msgstr ""
 
-#: admin_trees_manage.php:245 help_text.php:1116
+#: admin_trees_manage.php:246 help_text.php:1116
 msgid "Default family tree"
 msgstr ""
 
-#: admin_trees_config.php:242 admin_users.php:225 admin_users.php:427
+#: admin_trees_config.php:242 admin_users.php:231 admin_users.php:435
 #: edituser.php:145 help_text.php:1121 modules_v3/gedcom_block/module.php:52
 msgid "Default individual"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:259
+#: modules_v3/googlemap/module.php:260
 msgid "Default map type"
 msgstr ""
 
@@ -4821,7 +4902,7 @@ msgstr ""
 msgid "Default pedigree generations"
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:43 modules_v3/googlemap/module.php:362
+#: modules_v3/googlemap/help_text.php:43 modules_v3/googlemap/module.php:363
 msgid "Default value for top-level"
 msgstr ""
 
@@ -4851,7 +4932,7 @@ msgstr ""
 
 #: admin_site_access.php:284 admin_site_change.php:275
 #: admin_site_clean.php:126 admin_site_logs.php:242 admin_trees_config.php:614
-#: admin_trees_manage.php:231 edit_interface.php:151
+#: admin_trees_manage.php:232 edit_interface.php:151
 #: includes/functions/functions_print_facts.php:170
 #: includes/functions/functions_print_facts.php:691
 #: includes/functions/functions_print_facts.php:888
@@ -4863,7 +4944,7 @@ msgstr ""
 #: library/WT/Controller/Individual.php:356
 #: library/WT/Controller/Media.php:127 library/WT/Controller/Note.php:105
 #: library/WT/Controller/Repository.php:105
-#: library/WT/Controller/Source.php:105 modules_v3/faq/module.php:398
+#: library/WT/Controller/Source.php:105 modules_v3/faq/module.php:399
 #: modules_v3/gedcom_news/module.php:123
 #: modules_v3/googlemap/admin_places.php:642
 #: modules_v3/googlemap/admin_places.php:700
@@ -4896,15 +4977,20 @@ msgstr ""
 msgid "Delete record"
 msgstr ""
 
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:466
+msgid "Delete temporary files…"
+msgstr ""
+
 #: admin_site_clean.php:90
 msgid "Deleted files:"
 msgstr ""
 
-#: admin_users.php:554
+#: admin_users.php:562
 msgid "Deleted user: "
 msgstr ""
 
-#: admin_trees_manage.php:197
+#: admin_trees_manage.php:198
 msgid "Deleting old genealogy data…"
 msgstr ""
 
@@ -4921,6 +5007,12 @@ msgstr ""
 
 #: library/WT/Gedcom/Code/Temp.php:95
 msgid "Denver, Colorado"
+msgstr ""
+
+#: admin_site_upgrade.php:84
+msgid ""
+"Depending on your server configuration, you may be able to upgrade "
+"automatically."
 msgstr ""
 
 #: help_text.php:1225
@@ -4975,11 +5067,11 @@ msgstr ""
 msgid "Description META tag"
 msgstr ""
 
-#: login.php:402
+#: login.php:417
 msgid "Desired password"
 msgstr ""
 
-#: login.php:397
+#: login.php:412
 msgid "Desired user name"
 msgstr ""
 
@@ -5110,13 +5202,21 @@ msgstr ""
 msgid "Direct line ancestors and their families"
 msgstr ""
 
+#: admin_site_upgrade.php:201
+msgid "Disable these modules"
+msgstr ""
+
+#: admin_site_upgrade.php:264
+msgid "Disable these themes"
+msgstr ""
+
 #. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:422
 #, php-format
 msgid "Display %s"
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:420
+#: modules_v3/googlemap/help_text.php:53 modules_v3/googlemap/module.php:421
 msgid "Display Map Coordinates"
 msgstr ""
 
@@ -5134,7 +5234,7 @@ msgstr ""
 msgid "Display and manage a user’s favorite pages."
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:92 modules_v3/googlemap/module.php:416
+#: modules_v3/googlemap/help_text.php:92 modules_v3/googlemap/module.php:417
 msgid "Display short placenames"
 msgstr ""
 
@@ -5182,6 +5282,7 @@ msgstr ""
 #: edit_interface.php:2468 help_text.php:1286
 #: includes/functions/functions_edit.php:932 includes/media_reorder.php:169
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:591
+#: modules_v3/batch_update/admin_batch_update.php:337
 msgid "Do not update the “last change” record"
 msgstr ""
 
@@ -5198,14 +5299,14 @@ msgstr ""
 msgid "Dominican Republic"
 msgstr ""
 
-#: admin_trees_manage.php:222 modules_v3/googlemap/admin_places.php:757
+#: admin_trees_manage.php:223 modules_v3/googlemap/admin_places.php:757
 msgid "Download"
 msgstr ""
 
-#. I18N: %s is a URL/link to a .ZIP file
-#: admin.php:73
+#. I18N: The system is about to [...]; %s is a URL.
+#: admin_site_upgrade.php:299
 #, php-format
-msgid "Download %s and extract the files."
+msgid "Download %s…"
 msgstr ""
 
 #: mediaviewer.php:106
@@ -5233,19 +5334,15 @@ msgstr ""
 msgid "Download geographic data"
 msgstr ""
 
-#: reportengine.php:274
-msgid "Download report"
-msgstr ""
-
 #: library/WT/Date/French.php:146
 msgid "Duodi"
 msgstr ""
 
-#: admin_users.php:258 edituser.php:61 login.php:261
+#: admin_users.php:264 edituser.php:61 login.php:277
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr ""
 
-#: admin_users.php:255 edituser.php:59 login.php:259
+#: admin_users.php:261 edituser.php:59 login.php:275
 msgid ""
 "Duplicate user name.  A user with that user name already exists.  Please "
 "choose another user name."
@@ -5334,7 +5431,7 @@ msgstr ""
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:302 library/WT/Controller/Media.php:81
 #: library/WT/Controller/Note.php:80 library/WT/Controller/Repository.php:80
-#: library/WT/Controller/Source.php:80 modules_v3/faq/module.php:395
+#: library/WT/Controller/Source.php:80 modules_v3/faq/module.php:396
 #: modules_v3/gedcom_news/module.php:122
 #: modules_v3/googlemap/admin_places.php:640
 #: modules_v3/googlemap/admin_places.php:675
@@ -5352,7 +5449,7 @@ msgstr ""
 msgid "Edit FAQ item"
 msgstr ""
 
-#: edit_interface.php:1037 includes/functions/functions_edit.php:1184
+#: edit_interface.php:1037 includes/functions/functions_edit.php:1140
 msgid "Edit Shared Note"
 msgstr ""
 
@@ -5372,7 +5469,7 @@ msgstr ""
 msgid "Edit media object"
 msgstr ""
 
-#: edit_interface.php:1840 includes/functions/functions_edit.php:1481
+#: edit_interface.php:1840 includes/functions/functions_edit.php:1437
 #: library/WT/Controller/Individual.php:189
 msgid "Edit name"
 msgstr ""
@@ -5405,7 +5502,7 @@ msgstr ""
 msgid "Edit story"
 msgstr ""
 
-#: library/WT/Tree.php:334
+#: library/WT/Tree.php:335
 msgid "Edit this individual and replace their details with your own"
 msgstr ""
 
@@ -5440,7 +5537,7 @@ msgid "Electronic"
 msgstr ""
 
 #. I18N: Angle of elevation (in degrees), for street-view mapping
-#: modules_v3/googlemap/placehierarchy.php:245
+#: modules_v3/googlemap/placehierarchy.php:241
 msgid "Elevation"
 msgstr ""
 
@@ -5464,12 +5561,12 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr ""
 
-#: admin_users.php:568
+#: admin_users.php:576
 msgid "Email"
 msgstr ""
 
-#: includes/authentication.php:237 includes/authentication.php:291
-#: login.php:297 message.php:131 modules_v3/user_messages/module.php:94
+#: includes/authentication.php:237 includes/authentication.php:290
+#: login.php:313 message.php:131 modules_v3/user_messages/module.php:94
 msgid "Email Address:"
 msgstr ""
 
@@ -5477,14 +5574,14 @@ msgstr ""
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
-#: admin_users.php:373 edituser.php:158 help_text.php:1209
+#: admin_users.php:381 edituser.php:158 help_text.php:1209
 #: library/WT/Gedcom/Tag.php:196 library/WT/Gedcom/Tag.php:197
-#: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:392
+#: library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:714 login.php:407
 #: setup.php:431
 msgid "Email address"
 msgstr ""
 
-#: admin_users.php:375
+#: admin_users.php:383
 msgid "Email verified"
 msgstr ""
 
@@ -5816,13 +5913,18 @@ msgid "Expand all"
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:413
+#: login.php:428
 msgid "Explain why you are requesting an account."
 msgstr ""
 
 #: admin_site_change.php:274 admin_site_logs.php:241
-#: admin_trees_manage.php:214
+#: admin_trees_manage.php:215
 msgid "Export"
+msgstr ""
+
+#. I18N: The system is about to [...]
+#: admin_site_upgrade.php:281
+msgid "Export all family trees to GEDCOM files…"
 msgstr ""
 
 #: help_text.php:1214
@@ -5854,15 +5956,15 @@ msgid "Eye color"
 msgstr ""
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
-#: modules_v3/faq/module.php:34 modules_v3/faq/module.php:434
+#: modules_v3/faq/module.php:34 modules_v3/faq/module.php:435
 msgid "FAQ"
 msgstr ""
 
-#: modules_v3/faq/help_text.php:41 modules_v3/faq/module.php:177
+#: modules_v3/faq/help_text.php:41 modules_v3/faq/module.php:178
 msgid "FAQ position"
 msgstr ""
 
-#: modules_v3/faq/help_text.php:46 modules_v3/faq/module.php:178
+#: modules_v3/faq/help_text.php:46 modules_v3/faq/module.php:179
 msgid "FAQ visibility"
 msgstr ""
 
@@ -5963,11 +6065,11 @@ msgstr ""
 msgid "Facts for Source records"
 msgstr ""
 
-#: help_text.php:791
+#: admin_trees_config.php:1139 help_text.php:791
 msgid "Facts for new families"
 msgstr ""
 
-#: help_text.php:786
+#: admin_trees_config.php:1102 help_text.php:786
 msgid "Facts for new individuals"
 msgstr ""
 
@@ -5980,17 +6082,17 @@ msgid "Falkland Islands"
 msgstr ""
 
 #. I18N: Name of a module
-#: admin.php:220 admin.php:260 ancestry.php:103 calendar.php:408
+#: admin.php:195 admin.php:235 ancestry.php:103 calendar.php:408
 #: descendancy.php:73 famlist.php:132 famlist.php:135
 #: includes/functions/functions_print_lists.php:948
 #: includes/functions/functions_print_lists.php:1084
 #: includes/functions/functions_print_lists.php:1276
-#: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:300
+#: library/WT/Controller/Search.php:579 library/WT/MenuBar.php:300
 #: mediaviewer.php:135 modules_v3/fact_sources/report.xml:150
 #: modules_v3/fact_sources/report.xml:312
 #: modules_v3/gedcom_stats/module.php:101
 #: modules_v3/gedcom_stats/module.php:316
-#: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:188
+#: modules_v3/googlemap/placehierarchy.php:301 modules_v3/html/module.php:188
 #: modules_v3/relatives/module.php:34 note.php:101 placelist.php:232
 #: search.php:119 source.php:100 statistics.php:56 statisticsplot.php:782
 msgid "Families"
@@ -6002,7 +6104,7 @@ msgstr ""
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
-#: edit_interface.php:479 includes/functions/functions_edit.php:1623
+#: edit_interface.php:479 includes/functions/functions_edit.php:1579
 #: inverselink.php:122 library/WT/Gedcom/Tag.php:212
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1464
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1471
@@ -6084,15 +6186,15 @@ msgid "Family of %s"
 msgstr ""
 
 #: admin_site_change.php:269 admin_site_change.php:293 admin_site_logs.php:236
-#: admin_site_logs.php:259 admin_trees_manage.php:182 admin_users.php:224
-#: admin_users.php:426 edit_changes.php:174
+#: admin_site_logs.php:259 admin_trees_manage.php:183 admin_users.php:230
+#: admin_users.php:434 edit_changes.php:174
 #: modules_v3/batch_update/admin_batch_update.php:63
-#: modules_v3/faq/module.php:354 modules_v3/googlemap/module.php:1476
+#: modules_v3/faq/module.php:355 modules_v3/googlemap/module.php:1477
 #: modules_v3/html/module.php:296 modules_v3/stories/module.php:338
 msgid "Family tree"
 msgstr ""
 
-#: admin_users.php:222 admin_users.php:420
+#: admin_users.php:228 admin_users.php:428
 msgid "Family tree access and settings"
 msgstr ""
 
@@ -6101,7 +6203,7 @@ msgid "Family tree configuration"
 msgstr ""
 
 #. I18N: %s is a filename
-#: admin_trees_export.php:111
+#: admin_site_upgrade.php:286 admin_trees_export.php:38
 #, php-format
 msgid "Family tree exported to %s."
 msgstr ""
@@ -6110,7 +6212,7 @@ msgstr ""
 msgid "Family tree title"
 msgstr ""
 
-#: admin.php:201 admin_trees_manage.php:30 search.php:221
+#: admin.php:176 admin_trees_manage.php:30 search.php:221
 #: themes/_administration/header.php:100 themes/_administration/header.php:102
 msgid "Family trees"
 msgstr ""
@@ -6277,7 +6379,7 @@ msgctxt "NOMINATIVE"
 msgid "February"
 msgstr ""
 
-#: calendar.php:582 includes/functions/functions_edit.php:1459
+#: calendar.php:582 includes/functions/functions_edit.php:1415
 #: library/WT/Controller/Individual.php:274
 #: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3325
 #: statisticsplot.php:802 timeline.php:262
@@ -6340,7 +6442,7 @@ msgstr ""
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr ""
 
-#: admin.php:111
+#: admin.php:86
 msgid ""
 "Files have been found from a previous version of webtrees.  Old files can "
 "sometimes be a security risk.  You should delete them."
@@ -6427,9 +6529,9 @@ msgid "Fix name slashes and spaces"
 msgstr ""
 
 #. I18N: The emblem of a country or region
-#: modules_v3/googlemap/module.php:411
-#: modules_v3/googlemap/places_edit.php:325
-#: modules_v3/googlemap/places_edit.php:333
+#: modules_v3/googlemap/module.php:412
+#: modules_v3/googlemap/places_edit.php:321
+#: modules_v3/googlemap/places_edit.php:329
 msgid "Flag"
 msgstr ""
 
@@ -6607,7 +6709,7 @@ msgstr ""
 msgid "French Southern Territories"
 msgstr ""
 
-#: modules_v3/faq/help_text.php:33 modules_v3/faq/module.php:278
+#: modules_v3/faq/help_text.php:33 modules_v3/faq/module.php:279
 msgid "Frequently asked questions"
 msgstr ""
 
@@ -6710,8 +6812,7 @@ msgid "GEDCOM files are stored in the %s folder."
 msgstr ""
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_config.php:636 admin_trees_download.php:131 help_text.php:542
-#: modules_v3/clippings/module.php:221 modules_v3/clippings/module.php:610
+#: admin_trees_config.php:636 help_text.php:542
 msgid "GEDCOM media path"
 msgstr ""
 
@@ -6752,7 +6853,7 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: library/WT/Controller/Search.php:240 library/WT/MenuBar.php:418
+#: library/WT/Controller/Search.php:225 library/WT/MenuBar.php:418
 #: search.php:246 search.php:250
 msgid "General search"
 msgstr ""
@@ -6780,7 +6881,7 @@ msgstr ""
 #: ancestry.php:112 descendancy.php:78 familybook.php:62 fanchart.php:68
 #: hourglass.php:75 modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
-#: modules_v3/googlemap/module.php:676
+#: modules_v3/googlemap/module.php:677
 #: modules_v3/individual_ext_report/report.xml:8
 #: modules_v3/missing_facts_report/report.xml:8 pedigree.php:44
 msgid "Generations"
@@ -6792,12 +6893,12 @@ msgid "Generations of ancestors"
 msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:204
-#: modules_v3/googlemap/module.php:131 modules_v3/googlemap/module.php:237
-#: modules_v3/googlemap/module.php:794 modules_v3/googlemap/module.php:1459
-#: modules_v3/googlemap/module.php:1592
+#: modules_v3/googlemap/module.php:132 modules_v3/googlemap/module.php:238
+#: modules_v3/googlemap/module.php:795 modules_v3/googlemap/module.php:1460
+#: modules_v3/googlemap/module.php:1593
 #: modules_v3/googlemap/placehierarchy.php:172
-#: modules_v3/googlemap/placehierarchy.php:368
-#: modules_v3/googlemap/places_edit.php:41
+#: modules_v3/googlemap/placehierarchy.php:364
+#: modules_v3/googlemap/places_edit.php:40
 msgid "Geographic data"
 msgstr ""
 
@@ -6903,24 +7004,25 @@ msgstr ""
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
 #: includes/functions/functions_print.php:939
 #: modules_v3/googlemap/admin_places.php:191
-#: modules_v3/googlemap/module.php:50 modules_v3/googlemap/module.php:192
-#: modules_v3/googlemap/module.php:1448
-#: modules_v3/googlemap/placehierarchy.php:232
+#: modules_v3/googlemap/module.php:50 modules_v3/googlemap/module.php:193
+#: modules_v3/googlemap/module.php:1449
+#: modules_v3/googlemap/wt_v3_street_view.php:295
+#: modules_v3/googlemap/wt_v3_street_view.php:355
 msgid "Google Maps™"
 msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:199
-#: modules_v3/googlemap/module.php:128 modules_v3/googlemap/module.php:164
-#: modules_v3/googlemap/module.php:232 modules_v3/googlemap/module.php:791
-#: modules_v3/googlemap/module.php:1455
+#: modules_v3/googlemap/module.php:129 modules_v3/googlemap/module.php:165
+#: modules_v3/googlemap/module.php:233 modules_v3/googlemap/module.php:792
+#: modules_v3/googlemap/module.php:1456
 #: modules_v3/googlemap/placehierarchy.php:170
 msgid "Google Maps™ preferences"
 msgstr ""
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: modules_v3/googlemap/module.php:270
-#: modules_v3/googlemap/placehierarchy.php:234
+#: modules_v3/googlemap/module.php:271
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:612
+#: modules_v3/googlemap/wt_v3_street_view.php:298
 msgid "Google Street View™"
 msgstr ""
 
@@ -7103,22 +7205,22 @@ msgid "Hebrew name"
 msgstr ""
 
 #. I18N: gedcom tag _HEIG
-#: library/WT/Gedcom/Tag.php:735 modules_v3/googlemap/module.php:278
-#: modules_v3/googlemap/module.php:402
+#: library/WT/Gedcom/Tag.php:735 modules_v3/googlemap/module.php:279
+#: modules_v3/googlemap/module.php:403
 msgid "Height"
 msgstr ""
 
-#: login.php:216 login.php:323
+#: login.php:232 login.php:338
 #, php-format
 msgid "Hello %s ..."
 msgstr ""
 
-#: login.php:357
+#: login.php:372
 #, php-format
 msgid "Hello %s ...<br />Thank you for your registration."
 msgstr ""
 
-#: login.php:292 login.php:476
+#: login.php:308 login.php:491
 msgid "Hello Administrator ..."
 msgstr ""
 
@@ -7271,7 +7373,7 @@ msgstr ""
 msgid "Hide &amp; Show"
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:104 modules_v3/googlemap/module.php:679
+#: modules_v3/googlemap/help_text.php:104 modules_v3/googlemap/module.php:680
 msgid "Hide flags"
 msgstr ""
 
@@ -7280,7 +7382,7 @@ msgstr ""
 msgid "Hide from everyone"
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:99 modules_v3/googlemap/module.php:682
+#: modules_v3/googlemap/help_text.php:99 modules_v3/googlemap/module.php:683
 msgid "Hide lines"
 msgstr ""
 
@@ -7300,7 +7402,7 @@ msgstr ""
 msgid "Highest population"
 msgstr ""
 
-#: index_edit.php:249 index_edit.php:334
+#: index_edit.php:250 index_edit.php:335
 msgid ""
 "Highlight a  block name and then click on one of the arrow icons to move "
 "that highlighted block in the indicated direction."
@@ -7366,8 +7468,8 @@ msgstr ""
 msgid "Hourglass chart of %s"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:341
-#: modules_v3/googlemap/places_edit.php:294
+#: modules_v3/googlemap/module.php:342
+#: modules_v3/googlemap/places_edit.php:290
 msgid "House"
 msgstr ""
 
@@ -7403,7 +7505,7 @@ msgstr ""
 msgid "Husband's age"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:264
+#: modules_v3/googlemap/module.php:265
 msgid "Hybrid"
 msgstr ""
 
@@ -7548,7 +7650,7 @@ msgid ""
 "forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
 
-#: login.php:341
+#: login.php:356
 msgid "If you didn't request an account, you can just delete this message."
 msgstr ""
 
@@ -7566,7 +7668,7 @@ msgid ""
 "window, and that's all."
 msgstr ""
 
-#: admin_trees_manage.php:170
+#: admin_trees_manage.php:171
 msgid ""
 "If you have created media objects in webtrees, and have edited your gedcom "
 "off-line using a program that deletes media objects, then check this box to "
@@ -7651,7 +7753,7 @@ msgstr ""
 msgid "Immigration"
 msgstr ""
 
-#: admin_trees_manage.php:218 modules_v3/googlemap/admin_places.php:730
+#: admin_trees_manage.php:219 modules_v3/googlemap/admin_places.php:730
 msgid "Import"
 msgstr ""
 
@@ -7732,7 +7834,7 @@ msgstr ""
 msgid "Inactive"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1506
+#: modules_v3/googlemap/module.php:1507
 msgid "Include fully matched places: "
 msgstr ""
 
@@ -7762,9 +7864,9 @@ msgstr ""
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
 #: ancestry.php:48 compact.php:42 descendancy.php:42 familybook.php:43
-#: fanchart.php:50 hourglass.php:50 includes/functions/functions_edit.php:1601
+#: fanchart.php:50 hourglass.php:50 includes/functions/functions_edit.php:1557
 #: inverselink.php:110 library/WT/Gedcom/Tag.php:240
-#: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:673
+#: modules_v3/charts/module.php:221 modules_v3/googlemap/module.php:674
 #: modules_v3/individual_report/module.php:35
 #: modules_v3/individual_report/report.xml:4
 #: modules_v3/individual_report/report.xml:85
@@ -7777,10 +7879,6 @@ msgstr ""
 msgid "Individual ID prefix"
 msgstr ""
 
-#: help_text.php:590
-msgid "Individual add facts"
-msgstr ""
-
 #: statistics.php:549
 msgid "Individual distribution"
 msgstr ""
@@ -7789,7 +7887,7 @@ msgstr ""
 msgid "Individual distribution chart"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1262
+#: modules_v3/googlemap/module.php:1263
 msgid "Individual information"
 msgstr ""
 
@@ -7802,23 +7900,23 @@ msgstr ""
 msgid "Individual pages"
 msgstr ""
 
-#: admin_users.php:226 admin_users.php:428 edituser.php:141 help_text.php:1204
+#: admin_users.php:232 admin_users.php:436 edituser.php:141 help_text.php:1204
 #: help_text.php:1365 help_text.php:1473
 msgid "Individual record"
 msgstr ""
 
-#: admin.php:217 admin.php:259 ancestry.php:97 calendar.php:407
+#: admin.php:192 admin.php:234 ancestry.php:97 calendar.php:407
 #: descendancy.php:68 includes/functions/functions_print_lists.php:946
 #: includes/functions/functions_print_lists.php:1082
 #: includes/functions/functions_print_lists.php:1274
 #: includes/functions/functions_print_lists.php:1365 indilist.php:132
-#: indilist.php:135 library/WT/Controller/Search.php:593
+#: indilist.php:135 library/WT/Controller/Search.php:578
 #: library/WT/MenuBar.php:298 mediaviewer.php:132
 #: modules_v3/fact_sources/report.xml:52
 #: modules_v3/fact_sources/report.xml:256
 #: modules_v3/gedcom_stats/module.php:93
 #: modules_v3/gedcom_stats/module.php:300
-#: modules_v3/googlemap/placehierarchy.php:305 modules_v3/html/module.php:172
+#: modules_v3/googlemap/placehierarchy.php:301 modules_v3/html/module.php:172
 #: modules_v3/random_media/module.php:264 note.php:98 placelist.php:229
 #: search.php:114 search.php:166 source.php:97 statistics.php:54
 #: statisticsplot.php:786
@@ -7857,7 +7955,7 @@ msgctxt "MALE"
 msgid "Informant"
 msgstr ""
 
-#: login.php:326
+#: login.php:341
 msgid "Information about the request is shown under the link below."
 msgstr ""
 
@@ -7942,6 +8040,11 @@ msgstr ""
 msgid "Israel"
 msgstr ""
 
+#: admin_site_upgrade.php:81 admin_site_upgrade.php:85
+msgid ""
+"It can take several minutes to download and install the upgrade.  Be patient."
+msgstr ""
+
 #: help_text.php:1435
 msgid ""
 "It is easier to manage your media files if you choose a consistent format "
@@ -8022,7 +8125,7 @@ msgid "Johannesburg, South Africa"
 msgstr ""
 
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
-#: library/WT/Tree.php:333
+#: library/WT/Tree.php:334
 msgid "John /DOE/"
 msgstr ""
 
@@ -8280,7 +8383,7 @@ msgid "Landscape"
 msgstr ""
 
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:237 admin_users.php:399 admin_users.php:570
+#: admin_trees_config.php:237 admin_users.php:407 admin_users.php:578
 #: edituser.php:156 help_text.php:610 library/WT/Gedcom/Tag.php:242
 #: library/WT/MenuBar.php:467
 msgid "Language"
@@ -8320,7 +8423,7 @@ msgstr ""
 msgid "Last event"
 msgstr ""
 
-#: admin_users.php:574
+#: admin_users.php:582
 msgid "Last logged in"
 msgstr ""
 
@@ -8356,7 +8459,7 @@ msgstr ""
 
 #. I18N: gedcom tag LATI
 #: library/WT/Gedcom/Tag.php:243 modules_v3/googlemap/admin_places.php:184
-#: modules_v3/googlemap/module.php:1605
+#: modules_v3/googlemap/module.php:1606
 msgid "Latitude"
 msgstr ""
 
@@ -8439,7 +8542,7 @@ msgid "Letter"
 msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:175
-#: modules_v3/googlemap/module.php:380 modules_v3/googlemap/module.php:1598
+#: modules_v3/googlemap/module.php:381 modules_v3/googlemap/module.php:1599
 msgid "Level"
 msgstr ""
 
@@ -8538,12 +8641,6 @@ msgstr ""
 msgid "Living People"
 msgstr ""
 
-#: admin.php:82
-msgid ""
-"Load all your family trees from disk, by using the \"import\" function for "
-"each one."
-msgstr ""
-
 #: import.php:79
 #, php-format
 msgid "Loading data from GEDCOM: %.1f%%"
@@ -8594,7 +8691,7 @@ msgstr ""
 
 #. I18N: Name of a module
 #: admin_site_config.php:64 includes/functions/functions_print.php:304
-#: login.php:113 login.php:164 modules_v3/login_block/module.php:34
+#: login.php:129 login.php:180 modules_v3/login_block/module.php:34
 #: modules_v3/login_block/module.php:66 modules_v3/login_block/module.php:86
 msgid "Login"
 msgstr ""
@@ -8635,7 +8732,7 @@ msgstr ""
 
 #. I18N: gedcom tag LONG
 #: library/WT/Gedcom/Tag.php:245 modules_v3/googlemap/admin_places.php:184
-#: modules_v3/googlemap/module.php:1605
+#: modules_v3/googlemap/module.php:1606
 msgid "Longitude"
 msgstr ""
 
@@ -8643,7 +8740,7 @@ msgstr ""
 msgid "Los Angeles, California"
 msgstr ""
 
-#: login.php:178 login.php:194 login.php:232
+#: login.php:194 login.php:210 login.php:248
 #: modules_v3/login_block/module.php:101
 msgid "Lost password request"
 msgstr ""
@@ -8705,12 +8802,8 @@ msgstr ""
 msgid "Mailto link"
 msgstr ""
 
-#: index_edit.php:261
+#: index_edit.php:262
 msgid "Main Section Blocks"
-msgstr ""
-
-#: admin.php:89
-msgid "Make a backup of your database before you start."
 msgstr ""
 
 #: library/WT/Stats.php:3936
@@ -8725,7 +8818,7 @@ msgstr ""
 msgid "Maldives"
 msgstr ""
 
-#: calendar.php:578 includes/functions/functions_edit.php:1457
+#: calendar.php:578 includes/functions/functions_edit.php:1413
 #: library/WT/Controller/Individual.php:265
 #: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3325
 #: statisticsplot.php:801 timeline.php:260
@@ -8762,7 +8855,7 @@ msgstr ""
 msgid "Manager"
 msgstr ""
 
-#: admin.php:166
+#: admin.php:141
 msgid "Managers"
 msgstr ""
 
@@ -8795,7 +8888,7 @@ msgstr ""
 
 #. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:246 library/WT/Gedcom/Tag.php:912
-#: modules_v3/googlemap/module.php:262
+#: modules_v3/googlemap/module.php:263
 msgid "Map"
 msgstr ""
 
@@ -9017,6 +9110,11 @@ msgstr ""
 msgid "Martinique"
 msgstr ""
 
+#. I18N: Pretend to be another user, by logging in as them
+#: admin_users.php:218
+msgid "Masquerade as this user"
+msgstr ""
+
 #: modules_v3/batch_update/plugins/search_replace.php:92
 msgid "Match the exact text, even if it occurs in the middle of a word."
 msgstr ""
@@ -9033,8 +9131,8 @@ msgstr ""
 msgid "Mauritius"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:349
-#: modules_v3/googlemap/places_edit.php:296
+#: modules_v3/googlemap/module.php:350
+#: modules_v3/googlemap/places_edit.php:292
 msgid "Max"
 msgstr ""
 
@@ -9148,7 +9246,7 @@ msgstr ""
 msgid "Media object"
 msgstr ""
 
-#: admin.php:229 admin.php:263
+#: admin.php:204 admin.php:238
 #: includes/functions/functions_print_lists.php:950
 #: includes/functions/functions_print_lists.php:1086
 #: library/WT/MenuBar.php:305 medialist.php:32
@@ -9429,7 +9527,7 @@ msgstr ""
 msgid "Montevideo, Uruguay"
 msgstr ""
 
-#: admin.php:258 calendar.php:149 library/WT/MenuBar.php:379
+#: admin.php:233 calendar.php:149 library/WT/MenuBar.php:379
 msgid "Month"
 msgstr ""
 
@@ -9581,15 +9679,15 @@ msgstr ""
 msgid "Move FAQ item up"
 msgstr ""
 
-#: index_edit.php:307
+#: index_edit.php:308
 msgid "Move Left"
 msgstr ""
 
-#: index_edit.php:289
+#: index_edit.php:290
 msgid "Move Right"
 msgstr ""
 
-#: index_edit.php:275 index_edit.php:327
+#: index_edit.php:276 index_edit.php:328
 msgid "Move down"
 msgstr ""
 
@@ -9597,7 +9695,7 @@ msgstr ""
 msgid "Move list entries"
 msgstr ""
 
-#: index_edit.php:273 index_edit.php:325
+#: index_edit.php:274 index_edit.php:326
 msgid "Move up"
 msgstr ""
 
@@ -9643,7 +9741,7 @@ msgid "My account"
 msgstr ""
 
 #. I18N: Default title for new family trees
-#: library/WT/Tree.php:318
+#: library/WT/Tree.php:319
 msgid "My family tree"
 msgstr ""
 
@@ -9791,8 +9889,8 @@ msgstr ""
 msgid "Navigator"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:333
-#: modules_v3/googlemap/places_edit.php:292
+#: modules_v3/googlemap/module.php:334
+#: modules_v3/googlemap/places_edit.php:288
 msgid "Neighborhood"
 msgstr ""
 
@@ -9849,18 +9947,14 @@ msgstr ""
 msgid "New data"
 msgstr ""
 
-#: admin_trees_config.php:1102 admin_trees_config.php:1139
-msgid "New entry facts"
-msgstr ""
-
 #. I18N: %s is a server name/URL
-#: login.php:311
+#: login.php:326
 #, php-format
 msgid "New registration at %s"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:501
+#: login.php:515
 #, php-format
 msgid "New user at %s"
 msgstr ""
@@ -9947,11 +10041,11 @@ msgctxt "NOMINATIVE"
 msgid "Nivôse"
 msgstr ""
 
-#: admin_users.php:464 includes/functions/functions_print_facts.php:269
+#: admin_users.php:472 includes/functions/functions_print_facts.php:269
 msgid "No"
 msgstr ""
 
-#: admin_trees_manage.php:164
+#: admin_trees_manage.php:165
 #, php-format
 msgid ""
 "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on "
@@ -9962,11 +10056,11 @@ msgstr ""
 msgid "No News articles have been submitted."
 msgstr ""
 
-#: includes/functions/functions_edit.php:1421
+#: includes/functions/functions_edit.php:1377
 msgid "No Temple - Living Ordinance"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:830
+#: modules_v3/googlemap/module.php:831
 msgid "No ancestors in the database."
 msgstr ""
 
@@ -9987,6 +10081,14 @@ msgstr ""
 
 #: help_text.php:1197
 msgid "No contact method"
+msgstr ""
+
+#: admin_site_upgrade.php:207
+msgid "No custom modules are enabled."
+msgstr ""
+
+#: admin_site_upgrade.php:270
+msgid "No custom themes are enabled."
 msgstr ""
 
 #: admin_trees_check.php:232
@@ -10052,7 +10154,7 @@ msgstr ""
 msgid "No logged-in and no anonymous users"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:160
+#: modules_v3/googlemap/module.php:161
 msgid "No map data for this person"
 msgstr ""
 
@@ -10087,10 +10189,14 @@ msgstr ""
 
 #: find.php:509 find.php:534 find.php:590 find.php:618 find.php:641
 #: find.php:664 find.php:687 library/WT/Controller/AdvancedSearch.php:534
-#: library/WT/Controller/Search.php:700
+#: library/WT/Controller/Search.php:685
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:187
 #: modules_v3/GEDFact_assistant/module.php:165 placelist.php:61
 msgid "No results found."
+msgstr ""
+
+#: admin_site_upgrade.php:67
+msgid "No upgrade information is available."
 msgstr ""
 
 #: library/WT/Stats.php:1097
@@ -10102,7 +10208,7 @@ msgstr ""
 msgid "Nocturnal"
 msgstr ""
 
-#: admin_trees_download.php:116 admin_users.php:450 famlist.php:115
+#: admin_trees_download.php:116 admin_users.php:458 famlist.php:115
 #: famlist.php:145 indilist.php:115 indilist.php:145 library/WT/Stats.php:758
 #: modules_v3/cemetery_report/report.xml:8 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:592 modules_v3/death_report/report.xml:11
@@ -10217,7 +10323,7 @@ msgid ""
 msgstr ""
 
 #. I18N: Name of a module
-#: admin.php:232 admin.php:264 library/WT/Controller/Search.php:596
+#: admin.php:207 admin.php:239 library/WT/Controller/Search.php:581
 #: mediaviewer.php:144
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1140
 #: modules_v3/individual_ext_report/report.xml:221
@@ -10232,7 +10338,7 @@ msgid ""
 "page."
 msgstr ""
 
-#: admin_users.php:537
+#: admin_users.php:545
 msgid "Nothing found to cleanup"
 msgstr ""
 
@@ -10307,7 +10413,7 @@ msgstr ""
 msgid "Number of marriages"
 msgstr ""
 
-#: admin_users.php:489
+#: admin_users.php:497
 msgid ""
 "Number of months since the last login for a user's account to be considered "
 "inactive: "
@@ -10393,7 +10499,7 @@ msgstr ""
 msgid "Old data"
 msgstr ""
 
-#: admin.php:109
+#: admin.php:84
 msgid "Old files found"
 msgstr ""
 
@@ -10482,11 +10588,11 @@ msgstr ""
 msgid "Oops!  webtrees was unable to create files in this folder."
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:48 modules_v3/googlemap/module.php:367
+#: modules_v3/googlemap/help_text.php:48 modules_v3/googlemap/module.php:368
 msgid "Optional prefixes and suffixes"
 msgstr ""
 
-#: admin_users.php:498 relationship.php:91
+#: admin_users.php:506 relationship.php:91
 msgid "Options:"
 msgstr ""
 
@@ -10744,14 +10850,14 @@ msgstr ""
 msgid "Parents and siblings"
 msgstr ""
 
-#: admin_site_config.php:138 admin_users.php:192 admin_users.php:379
-#: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:159
-#: login.php:220 login.php:449 modules_v3/login_block/module.php:81
+#: admin_site_config.php:138 admin_users.php:192 admin_users.php:387
+#: edituser.php:152 help_text.php:736 help_text.php:1296 login.php:175
+#: login.php:236 login.php:464 modules_v3/login_block/module.php:81
 #: setup.php:423
 msgid "Password"
 msgstr ""
 
-#: admin_users.php:261 edituser.php:110
+#: admin_users.php:267 edituser.php:110
 msgid "Passwords do not match."
 msgstr ""
 
@@ -10761,7 +10867,7 @@ msgid ""
 "“secret” is different to “SECRET”."
 msgstr ""
 
-#: admin_users.php:333 edituser.php:115
+#: admin_users.php:341 edituser.php:115
 msgid "Passwords must contain at least 6 characters."
 msgstr ""
 
@@ -10781,12 +10887,12 @@ msgstr ""
 
 #: includes/functions/functions_print.php:93
 #: library/WT/Controller/Fanchart.php:308 library/WT/MenuBar.php:123
-#: modules_v3/googlemap/module.php:1313
+#: modules_v3/googlemap/module.php:1314
 msgid "Pedigree map"
 msgstr ""
 
 #. I18N: %s is an individual’s name
-#: modules_v3/googlemap/module.php:656
+#: modules_v3/googlemap/module.php:657
 #, php-format
 msgid "Pedigree map of %s"
 msgstr ""
@@ -10807,11 +10913,11 @@ msgid "Pending Changes block"
 msgstr ""
 
 #. I18N: Name of a module
-#: edit_changes.php:33 edit_changes.php:53 help_text.php:1331
-#: modules_v3/change_report/report.xml:50
+#: admin_site_upgrade.php:103 edit_changes.php:33 edit_changes.php:53
+#: help_text.php:1331 modules_v3/change_report/report.xml:50
 #: modules_v3/review_changes/module.php:34
 #: themes/_administration/header.php:77 themes/clouds/header.php:123
-#: themes/colors/header.php:97 themes/fab/header.php:79
+#: themes/colors/header.php:96 themes/fab/header.php:79
 #: themes/minimal/header.php:81 themes/xenea/header.php:111
 msgid "Pending changes"
 msgstr ""
@@ -10881,7 +10987,7 @@ msgid "Phonetic place"
 msgstr ""
 
 #. I18N: search using “sounds like”, rather than exact spelling
-#: branches.php:64 library/WT/Controller/Search.php:244
+#: branches.php:64 library/WT/Controller/Search.php:229
 #: library/WT/MenuBar.php:421 search.php:241 search.php:247
 msgid "Phonetic search"
 msgstr ""
@@ -10929,14 +11035,14 @@ msgstr ""
 #: modules_v3/googlemap/admin_places.php:181
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
-#: modules_v3/googlemap/module.php:1591
+#: modules_v3/googlemap/module.php:1592
 #: modules_v3/marriage_report/report.xml:48 search.php:169 search.php:182
 msgid "Place"
 msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:209
-#: modules_v3/googlemap/module.php:134 modules_v3/googlemap/module.php:242
-#: modules_v3/googlemap/module.php:797 modules_v3/googlemap/module.php:1464
+#: modules_v3/googlemap/module.php:135 modules_v3/googlemap/module.php:243
+#: modules_v3/googlemap/module.php:798 modules_v3/googlemap/module.php:1465
 #: modules_v3/googlemap/placehierarchy.php:174
 msgid "Place Check"
 msgstr ""
@@ -10953,7 +11059,7 @@ msgstr ""
 msgid "Place counts before or after name?"
 msgstr ""
 
-#: library/WT/MenuBar.php:302 modules_v3/googlemap/module.php:254
+#: library/WT/MenuBar.php:302 modules_v3/googlemap/module.php:255
 #: placelist.php:42 placelist.php:44 placelist.php:149
 msgid "Place hierarchy"
 msgstr ""
@@ -11074,6 +11180,16 @@ msgstr ""
 msgid "Place of marriage banns"
 msgstr ""
 
+#: admin_site_upgrade.php:402
+#, php-format
+msgid "Place the site offline, by creating the file %s…"
+msgstr ""
+
+#: admin_site_upgrade.php:452
+#, php-format
+msgid "Place the site online, by deleting the file %s…"
+msgstr ""
+
 #: admin_trees_config.php:896 statistics.php:392
 msgid "Places"
 msgstr ""
@@ -11120,13 +11236,13 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-#: login.php:327
+#: login.php:342
 msgid ""
 "Please click on the following link and fill in the requested data to confirm "
 "your request and email address."
 msgstr ""
 
-#: login.php:222
+#: login.php:238
 msgid ""
 "Please click on the link below or paste it into your browser, login with the "
 "new password, and change it immediately to keep the integrity of your data "
@@ -11163,8 +11279,8 @@ msgid ""
 msgstr ""
 
 #: includes/functions/functions_edit.php:357
-#: includes/functions/functions_edit.php:2242
-#: includes/functions/functions_edit.php:2251
+#: includes/functions/functions_edit.php:2198
+#: includes/functions/functions_edit.php:2207
 msgid ""
 "Please reload the previous page to make sure you are working with the most "
 "recent record."
@@ -11226,7 +11342,7 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr ""
 
-#: modules_v3/faq/module.php:372
+#: modules_v3/faq/module.php:373
 msgid "Position item"
 msgstr ""
 
@@ -11255,11 +11371,11 @@ msgctxt "NOMINATIVE"
 msgid "Prairial"
 msgstr ""
 
-#: modules_v3/googlemap/places_edit.php:264
+#: modules_v3/googlemap/places_edit.php:260
 msgid "Precision"
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:38 modules_v3/googlemap/module.php:303
+#: modules_v3/googlemap/help_text.php:38 modules_v3/googlemap/module.php:304
 msgid "Precision of the latitude and longitude"
 msgstr ""
 
@@ -11278,11 +11394,11 @@ msgid ""
 "Predefined text that states only family members can request a user account"
 msgstr ""
 
-#: admin_users.php:195 admin_users.php:389 edituser.php:173 help_text.php:1182
+#: admin_users.php:195 admin_users.php:397 edituser.php:173 help_text.php:1182
 msgid "Preferred contact method"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:371
+#: modules_v3/googlemap/module.php:372
 msgid "Prefixes"
 msgstr ""
 
@@ -11373,7 +11489,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1078
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1133
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1182
-#: modules_v3/googlemap/module.php:745
+#: modules_v3/googlemap/module.php:746
 msgid "Private"
 msgstr ""
 
@@ -11417,28 +11533,23 @@ msgstr ""
 msgid "Quartidi"
 msgstr ""
 
-#: modules_v3/faq/module.php:167
+#: modules_v3/faq/module.php:168
 msgid "Question"
 msgstr ""
 
-#: admin_trees_config.php:1110 admin_trees_config.php:1147
-#: admin_trees_config.php:1176 admin_trees_config.php:1205
-msgid "Quick facts"
-msgstr ""
-
-#: help_text.php:517
+#: admin_trees_config.php:1147 help_text.php:517
 msgid "Quick family facts"
 msgstr ""
 
-#: help_text.php:595
+#: admin_trees_config.php:1110 help_text.php:595
 msgid "Quick individual facts"
 msgstr ""
 
-#: help_text.php:801
+#: admin_trees_config.php:1205 help_text.php:801
 msgid "Quick repository facts"
 msgstr ""
 
-#: help_text.php:912
+#: admin_trees_config.php:1176 help_text.php:912
 msgid "Quick source facts"
 msgstr ""
 
@@ -11588,8 +11699,8 @@ msgstr ""
 msgid "Re-order media"
 msgstr ""
 
-#: admin_users.php:361 admin_users.php:567 edituser.php:137 help_text.php:1355
-#: login.php:296 login.php:387
+#: admin_users.php:369 admin_users.php:575 edituser.php:137 help_text.php:1355
+#: login.php:312 login.php:402
 msgid "Real name"
 msgstr ""
 
@@ -11598,7 +11709,7 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr ""
 
 #. I18N: Name of a module
-#: admin.php:244 modules_v3/change_report/report.xml:90
+#: admin.php:219 modules_v3/change_report/report.xml:90
 #: modules_v3/recent_changes/module.php:36
 msgid "Recent changes"
 msgstr ""
@@ -11607,12 +11718,8 @@ msgstr ""
 msgid "Recife, Brazil"
 msgstr ""
 
-#: login.php:221
+#: login.php:237
 msgid "Recommendation:"
-msgstr ""
-
-#: admin.php:87
-msgid "Recommendations"
 msgstr ""
 
 #: admin_site_change.php:257 admin_site_change.php:289
@@ -11657,7 +11764,7 @@ msgstr ""
 msgid "Redlands, California"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:879
+#: modules_v3/googlemap/module.php:880
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:389
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:175
 msgid "Redraw map"
@@ -11694,11 +11801,9 @@ msgstr ""
 msgid "Regular expression"
 msgstr ""
 
+#. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: modules_v3/batch_update/plugins/search_replace.php:95
-msgid ""
-"Regular expressions are an advanced pattern matching technique.  See <a href="
-"\"http://php.net/manual/en/regexp.reference.php\" target=\"_new\">php.net/"
-"manual/en/regexp.reference.php</a> for futher details."
+msgid "Regular expressions are an advanced pattern matching technique."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -11781,7 +11886,7 @@ msgid "Remote server"
 msgstr ""
 
 #: edit_interface.php:2141 edit_interface.php:2156 edit_interface.php:2167
-#: edit_interface.php:2178 index_edit.php:291 index_edit.php:309
+#: edit_interface.php:2178 index_edit.php:292 index_edit.php:310
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:121
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:222
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
@@ -11800,9 +11905,9 @@ msgstr ""
 msgid "Remove duplicate links"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:490 modules_v3/googlemap/module.php:493
-#: modules_v3/googlemap/module.php:496
-#: modules_v3/googlemap/places_edit.php:335
+#: modules_v3/googlemap/module.php:491 modules_v3/googlemap/module.php:494
+#: modules_v3/googlemap/module.php:497
+#: modules_v3/googlemap/places_edit.php:331
 msgid "Remove flag"
 msgstr ""
 
@@ -11838,7 +11943,7 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
-#: admin.php:226 admin.php:262 library/WT/MenuBar.php:308 mediaviewer.php:141
+#: admin.php:201 admin.php:237 library/WT/MenuBar.php:308 mediaviewer.php:141
 #: modules_v3/gedcom_stats/module.php:110
 #: modules_v3/gedcom_stats/module.php:340 modules_v3/html/module.php:200
 #: repolist.php:31 repolist.php:35 statistics.php:340
@@ -11858,10 +11963,6 @@ msgstr ""
 msgid "Repository ID prefix"
 msgstr ""
 
-#: help_text.php:796
-msgid "Repository add facts"
-msgstr ""
-
 #: find.php:251
 msgid "Repository contains:"
 msgstr ""
@@ -11870,11 +11971,11 @@ msgstr ""
 msgid "Repository name"
 msgstr ""
 
-#: login.php:167 modules_v3/login_block/module.php:89
+#: login.php:183 modules_v3/login_block/module.php:89
 msgid "Request new password"
 msgstr ""
 
-#: login.php:170 login.php:252 modules_v3/gedcom_block/module.php:54
+#: login.php:186 login.php:268 modules_v3/gedcom_block/module.php:54
 #: modules_v3/login_block/module.php:92
 msgid "Request new user account"
 msgstr ""
@@ -11913,7 +12014,7 @@ msgstr ""
 
 #: includes/functions/functions_print_lists.php:99
 #: includes/functions/functions_print_lists.php:507 medialist.php:158
-#: modules_v3/googlemap/placehierarchy.php:233
+#: modules_v3/googlemap/wt_v3_street_view.php:356
 msgid "Reset"
 msgstr ""
 
@@ -11932,7 +12033,7 @@ msgstr ""
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr ""
 
-#: admin_users.php:228 admin_users.php:430 help_text.php:716
+#: admin_users.php:234 admin_users.php:438 help_text.php:716
 msgid "Restrict to immediate family"
 msgstr ""
 
@@ -11960,12 +12061,12 @@ msgstr ""
 msgid "Reunion"
 msgstr ""
 
-#: index_edit.php:267
+#: index_edit.php:268
 msgid "Right Section Blocks"
 msgstr ""
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:227 admin_users.php:429 help_text.php:1375
+#: admin_users.php:233 admin_users.php:437 help_text.php:1375
 #: library/WT/Gedcom/Tag.php:311
 msgid "Role"
 msgstr ""
@@ -11987,7 +12088,7 @@ msgstr ""
 msgid "Romanized title"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1234
+#: modules_v3/googlemap/module.php:1235
 msgid "Root"
 msgstr ""
 
@@ -12116,7 +12217,7 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:263
+#: modules_v3/googlemap/module.php:264
 msgid "Satellite"
 msgstr ""
 
@@ -12130,12 +12231,6 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:39
 msgid "Save"
-msgstr ""
-
-#: admin.php:76
-msgid ""
-"Save all your family trees to disk, by using the \"export\" function for "
-"each one."
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:195
@@ -12181,14 +12276,14 @@ msgstr ""
 #: modules_v3/families/module.php:143 modules_v3/individuals/module.php:143
 #: search.php:159 search.php:262 search.php:264 search.php:266
 #: search_advanced.php:295 themes/clouds/header.php:83
-#: themes/clouds/header.php:84 themes/colors/header.php:126
-#: themes/colors/header.php:127 themes/fab/header.php:100
+#: themes/clouds/header.php:84 themes/colors/header.php:125
+#: themes/colors/header.php:126 themes/fab/header.php:100
 #: themes/minimal/header.php:102 themes/webtrees/header.php:93
 #: themes/webtrees/header.php:94 themes/xenea/header.php:81
 msgid "Search"
 msgstr ""
 
-#: library/WT/Controller/Search.php:248 library/WT/MenuBar.php:428
+#: library/WT/Controller/Search.php:233 library/WT/MenuBar.php:428
 #: modules_v3/batch_update/plugins/search_replace.php:37 search.php:243
 #: search.php:253
 msgid "Search and replace"
@@ -12200,7 +12295,7 @@ msgid ""
 "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
 
-#: includes/session.php:577
+#: includes/session.php:578
 msgid "Search engine"
 msgstr ""
 
@@ -12216,11 +12311,11 @@ msgstr ""
 msgid "Search for People to add to Add Links list."
 msgstr ""
 
-#: modules_v3/googlemap/places_edit.php:258
+#: modules_v3/googlemap/places_edit.php:254
 msgid "Search globally"
 msgstr ""
 
-#: modules_v3/googlemap/places_edit.php:260
+#: modules_v3/googlemap/places_edit.php:256
 msgid "Search locally"
 msgstr ""
 
@@ -12241,11 +12336,17 @@ msgstr ""
 msgid "Secure connection"
 msgstr ""
 
+#. I18N: %s is a URL
+#: modules_v3/batch_update/plugins/search_replace.php:95
+#, php-format
+msgid "See %s for more information."
+msgstr ""
+
 #: edit_interface.php:730
 msgid "Select Events"
 msgstr ""
 
-#: includes/functions/functions_edit.php:1162 reportengine.php:253
+#: includes/functions/functions_edit.php:1118 reportengine.php:252
 msgid "Select a date"
 msgstr ""
 
@@ -12269,7 +12370,7 @@ msgstr ""
 msgid "Select chart type:"
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:75 modules_v3/googlemap/module.php:439
+#: modules_v3/googlemap/help_text.php:75 modules_v3/googlemap/module.php:440
 msgid "Select flag"
 msgstr ""
 
@@ -12337,7 +12438,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr ""
 
-#: login.php:457 message.php:142 modules_v3/user_messages/module.php:84
+#: login.php:472 message.php:142 modules_v3/user_messages/module.php:84
 msgid "Send"
 msgstr ""
 
@@ -13082,7 +13183,7 @@ msgid ""
 "service."
 msgstr ""
 
-#: modules_v3/faq/module.php:176 modules_v3/html/module.php:327
+#: modules_v3/faq/module.php:177 modules_v3/html/module.php:327
 #: modules_v3/stories/module.php:248
 msgid "Show this block for which languages?"
 msgstr ""
@@ -13205,7 +13306,7 @@ msgid "Sitemaps"
 msgstr ""
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
-#: modules_v3/sitemap/module.php:239
+#: modules_v3/sitemap/module.php:245
 msgid ""
 "Sitemaps are a way for webmasters to tell search engines about the pages on "
 "a website that are available for crawling.  All major search engines support "
@@ -13233,7 +13334,7 @@ msgctxt "NOMINATIVE"
 msgid "Sivan"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:274 modules_v3/googlemap/module.php:398
+#: modules_v3/googlemap/module.php:275 modules_v3/googlemap/module.php:399
 msgid "Size of map (in pixels)"
 msgstr ""
 
@@ -13372,10 +13473,6 @@ msgstr ""
 msgid "Source ID prefix"
 msgstr ""
 
-#: help_text.php:907
-msgid "Source add facts"
-msgstr ""
-
 #: help_text.php:533
 msgid ""
 "Source citations can include fields to record the quality of the data "
@@ -13394,11 +13491,11 @@ msgid "Source type"
 msgstr ""
 
 #. I18N: Name of a module
-#: admin.php:223 admin.php:261
+#: admin.php:198 admin.php:236
 #: includes/functions/functions_print_lists.php:1088
 #: includes/functions/functions_print_lists.php:1177
 #: includes/functions/functions_print_lists.php:1278
-#: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:311
+#: library/WT/Controller/Search.php:580 library/WT/MenuBar.php:311
 #: mediaviewer.php:138 modules_v3/ahnentafel_report/report.xml:480
 #: modules_v3/descendancy_report/report.xml:612
 #: modules_v3/family_group_report/report.xml:1107
@@ -13492,7 +13589,7 @@ msgstr ""
 msgid "St. Paul, Minnesota"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:410
+#: modules_v3/googlemap/module.php:411
 msgid "Standard"
 msgstr ""
 
@@ -13520,8 +13617,8 @@ msgstr ""
 
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:323 modules_v3/googlemap/admin_places.php:176
-#: modules_v3/googlemap/module.php:316
-#: modules_v3/googlemap/places_edit.php:288
+#: modules_v3/googlemap/module.php:317
+#: modules_v3/googlemap/places_edit.php:284
 msgid "State"
 msgstr ""
 
@@ -13588,7 +13685,7 @@ msgid "Story title"
 msgstr ""
 
 #. I18N: Part of a country, state/region/county
-#: modules_v3/googlemap/module.php:604 modules_v3/googlemap/module.php:1494
+#: modules_v3/googlemap/module.php:605 modules_v3/googlemap/module.php:1495
 msgid "Subdivision"
 msgstr ""
 
@@ -13615,7 +13712,7 @@ msgstr ""
 msgid "Sudan"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:372
+#: modules_v3/googlemap/module.php:373
 msgid "Suffixes"
 msgstr ""
 
@@ -13735,14 +13832,6 @@ msgstr ""
 msgid "Tajikistan"
 msgstr ""
 
-#. I18N: %s is a filename
-#: admin.php:90
-#, php-format
-msgid ""
-"Take your site offline while copying the new files.  Do this by temporarily "
-"creating a file %s on the web server."
-msgstr ""
-
 #: library/WT/Gedcom/Code/Temp.php:185
 msgid "Tampico, Mexico"
 msgstr ""
@@ -13789,7 +13878,7 @@ msgstr ""
 msgid "Temple"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:265
+#: modules_v3/googlemap/module.php:266
 msgid "Terrain"
 msgstr ""
 
@@ -13841,7 +13930,7 @@ msgid ""
 "comma."
 msgstr ""
 
-#: login.php:536
+#: login.php:550
 msgid ""
 "The Administrator has been informed.  As soon as he gives you permission to "
 "login, you can login with your user name and password."
@@ -13861,7 +13950,7 @@ msgid ""
 "<b>Download Now</b> link.  Follow the instructions and links.</li></ul>"
 msgstr ""
 
-#: modules_v3/faq/module.php:366
+#: modules_v3/faq/module.php:367
 msgid "The FAQ list is empty."
 msgstr ""
 
@@ -13909,7 +13998,7 @@ msgid "The changes to “%s” have been accepted."
 msgstr ""
 
 #. I18N: %s is the name of an individual, source or other record
-#: action.php:142
+#: action.php:156
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr ""
@@ -13920,7 +14009,7 @@ msgid ""
 "PGV admin username"
 msgstr ""
 
-#: login.php:513
+#: login.php:527
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr ""
@@ -13952,12 +14041,29 @@ msgstr ""
 msgid "The file %s already exists.  Use another filename."
 msgstr ""
 
-#: admin_media.php:62 admin_media.php:69
+#: admin_site_upgrade.php:406 admin_site_upgrade.php:436
+#, php-format
+msgid "The file %s could not be created."
+msgstr ""
+
+#: admin_media.php:62 admin_media.php:69 admin_site_upgrade.php:457
+#: admin_site_upgrade.php:477
 #, php-format
 msgid "The file %s could not be deleted."
 msgstr ""
 
-#: admin_media.php:60 admin_media.php:67
+#: admin_site_upgrade.php:384
+#, php-format
+msgid "The file %s could not be updated."
+msgstr ""
+
+#: admin_site_upgrade.php:408
+#, php-format
+msgid "The file %s was created."
+msgstr ""
+
+#: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:455
+#: admin_site_upgrade.php:475
 #, php-format
 msgid "The file %s was deleted."
 msgstr ""
@@ -13974,6 +14080,11 @@ msgstr ""
 msgid "The file “%s” does not exist."
 msgstr ""
 
+#: admin_site_upgrade.php:471
+#, php-format
+msgid "The folder %s could not be deleted."
+msgstr ""
+
 #: addmedia.php:114 addmedia.php:125 addmedia.php:137 addmedia.php:279
 #: addmedia.php:290 addmedia.php:302 admin_media_upload.php:63
 #: admin_media_upload.php:74 admin_media_upload.php:86
@@ -13987,6 +14098,11 @@ msgstr ""
 #: admin_trees_config.php:189
 #, php-format
 msgid "The folder %s was created."
+msgstr ""
+
+#: admin_site_upgrade.php:469
+#, php-format
+msgid "The folder %s was deleted."
 msgstr ""
 
 #: help_text.php:585
@@ -14019,8 +14135,8 @@ msgstr ""
 msgid "The following list shows typical requirements."
 msgstr ""
 
-#: includes/authentication.php:263 includes/authentication.php:270
-#: includes/authentication.php:308 includes/authentication.php:315
+#: includes/authentication.php:262 includes/authentication.php:269
+#: includes/authentication.php:306 includes/authentication.php:313
 msgid "The following message has been sent to your webtrees user account from "
 msgstr ""
 
@@ -14084,6 +14200,11 @@ msgstr ""
 msgid ""
 "The memory and CPU time requirements depend on the number of individuals in "
 "your family tree."
+msgstr ""
+
+#: admin_site_upgrade.php:387
+#, php-format
+msgid "The new files are currently located in the folder %s."
 msgstr ""
 
 #: help_text.php:1251
@@ -14171,7 +14292,11 @@ msgid ""
 "requiring a login.  The default is 7200, which is 2 hours."
 msgstr ""
 
-#: login.php:299
+#: admin_site_upgrade.php:483
+msgid "The upgrade is complete."
+msgstr ""
+
+#: login.php:315
 msgid ""
 "The user has been sent an e-mail with the information necessary to confirm "
 "the access request"
@@ -14201,14 +14326,14 @@ msgstr ""
 msgid "The version of %s is too old"
 msgstr ""
 
-#: setup.php:946
+#: setup.php:947
 msgid ""
 "The webtrees developers would be very interested to learn about this error.  "
 "If you contact them, they will help you resolve the problem."
 msgstr ""
 
 #: admin_modules.php:130 admin_modules.php:148 admin_users.php:204
-#: admin_users.php:402 edituser.php:160 help_text.php:981
+#: admin_users.php:410 edituser.php:160 help_text.php:981
 #: library/WT/MenuBar.php:449
 msgid "Theme"
 msgstr ""
@@ -14245,6 +14370,10 @@ msgstr ""
 
 #: modules_v3/media/module.php:75
 msgid "There are no media objects for this individual."
+msgstr ""
+
+#: admin_site_upgrade.php:107
+msgid "There are no pending changes."
 msgstr ""
 
 #: modules_v3/todo/module.php:131
@@ -14608,6 +14737,10 @@ msgid ""
 "This is the initial setting for the “show details” option on the charts."
 msgstr ""
 
+#: admin_site_upgrade.php:72
+msgid "This is the latest version of webtrees.  No upgrade is available."
+msgstr ""
+
 #: help_text.php:513
 msgid ""
 "This is the list of GEDCOM facts that your users can add to families.  You "
@@ -14780,7 +14913,7 @@ msgstr ""
 msgid "This media object is not linked to any other record."
 msgstr ""
 
-#: includes/authentication.php:242 includes/authentication.php:294
+#: includes/authentication.php:242 includes/authentication.php:293
 msgid "This message was sent while viewing the following URL: "
 msgstr ""
 
@@ -15038,7 +15171,7 @@ msgid ""
 "them permanent."
 msgstr ""
 
-#: modules_v3/googlemap/placehierarchy.php:366
+#: modules_v3/googlemap/placehierarchy.php:362
 msgid "This place has no coordinates"
 msgstr ""
 
@@ -15139,6 +15272,11 @@ msgid ""
 "source."
 msgstr ""
 
+#. I18N: http://en.wikipedia.org/wiki/Https
+#: admin_site_upgrade.php:317
+msgid "This server does not support secure downloads using HTTPS."
+msgstr ""
+
 #: setup.php:194
 #, php-format
 msgid ""
@@ -15156,6 +15294,10 @@ msgid ""
 "chart.  This list requires you to use fact tags as defined in the GEDCOM "
 "5.5.1 Standard.  For example, if you wanted the occupation to show up in the "
 "box, you would add \"OCCU\" to this field."
+msgstr ""
+
+#: admin_site_upgrade.php:41
+msgid "This site is being upgraded.  Try again in a few minutes."
 msgstr ""
 
 #: source.php:75
@@ -15238,7 +15380,7 @@ msgid ""
 "with data from another GEDCOM."
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1714
+#: modules_v3/googlemap/module.php:1715
 msgid ""
 "This will list all the places from the selected GEDCOM file. By default this "
 "will NOT INCLUDE places that are fully matched between the GEDCOM file and "
@@ -15393,10 +15535,22 @@ msgid ""
 "will contain a copy that you can then alter to suit your site's requirements."
 msgstr ""
 
+#: admin_site_upgrade.php:386
+msgid "To complete the upgrade, you should install the files manually."
+msgstr ""
+
 #: modules_v3/todo/help_text.php:36
 msgid ""
 "To create new research tasks, you must first add “research task” to the list "
 "of facts and events in the family tree’s preferences."
+msgstr ""
+
+#: admin_site_upgrade.php:389
+#, php-format
+msgid ""
+"To prevent visitors from accessing the site while you are in the middle of "
+"copying files, you can temporarily create a file %s on the server.  If it "
+"contains a message, it will be displayed to visitors."
 msgstr ""
 
 #. I18N: “Apache” is a software program.
@@ -15415,13 +15569,13 @@ msgid ""
 "archive</b> link."
 msgstr ""
 
-#: modules_v3/sitemap/module.php:264
+#: modules_v3/sitemap/module.php:270
 msgid ""
 "To tell search engines that sitemaps are available, you can use the "
 "following links."
 msgstr ""
 
-#: modules_v3/sitemap/module.php:260
+#: modules_v3/sitemap/module.php:266
 msgid ""
 "To tell search engines that sitemaps are available, you should add the "
 "following line to your robots.txt file."
@@ -15577,7 +15731,7 @@ msgstr ""
 msgid "Total marriages"
 msgstr ""
 
-#: admin.php:164
+#: admin.php:139
 msgid "Total number of users"
 msgstr ""
 
@@ -15586,7 +15740,7 @@ msgid "Total pending changes: "
 msgstr ""
 
 #. I18N: A count of places
-#: modules_v3/googlemap/module.php:1709
+#: modules_v3/googlemap/module.php:1710
 #, php-format
 msgid "Total places: %s"
 msgstr ""
@@ -15664,12 +15818,12 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:407
+#: modules_v3/googlemap/module.php:408
 msgid "Type of place markers in Place Hierarchy"
 msgstr ""
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:385 login.php:408
+#: admin_users.php:393 login.php:423
 msgid "Type the password again."
 msgstr ""
 
@@ -15703,6 +15857,10 @@ msgstr ""
 msgid "USSR"
 msgstr ""
 
+#: admin_site_upgrade.php:41
+msgid "UTC"
+msgstr ""
+
 #: library/WT/Stats.php:4017
 msgid "Uganda"
 msgstr ""
@@ -15718,7 +15876,7 @@ msgid ""
 msgstr ""
 
 #. I18N: %s is a filename
-#: admin_trees_export.php:113 admin_trees_export.php:116
+#: admin_site_upgrade.php:288 admin_trees_export.php:40
 #, php-format
 msgid "Unable to create %s.  Check the permissions."
 msgstr ""
@@ -15740,24 +15898,19 @@ msgstr ""
 msgid "Undo all changes"
 msgstr ""
 
-#: admin_trees_config.php:1094 admin_trees_config.php:1131
-#: admin_trees_config.php:1168 admin_trees_config.php:1197
-msgid "Unique facts"
-msgstr ""
-
-#: help_text.php:522
+#: admin_trees_config.php:1131 help_text.php:522
 msgid "Unique family facts"
 msgstr ""
 
-#: help_text.php:600
+#: admin_trees_config.php:1094 help_text.php:600
 msgid "Unique individual facts"
 msgstr ""
 
-#: help_text.php:806
+#: admin_trees_config.php:1197 help_text.php:806
 msgid "Unique repository facts"
 msgstr ""
 
-#: help_text.php:917
+#: admin_trees_config.php:1168 help_text.php:917
 msgid "Unique source facts"
 msgstr ""
 
@@ -15778,7 +15931,7 @@ msgctxt "unknown century"
 msgid "Unknown"
 msgstr ""
 
-#: calendar.php:586 includes/functions/functions_edit.php:1461
+#: calendar.php:586 includes/functions/functions_edit.php:1417
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286 library/WT/Stats.php:3325
 #: modules_v3/family_group_report/report.xml:833
@@ -15807,12 +15960,18 @@ msgstr ""
 msgid "Unused files"
 msgstr ""
 
-#: admin.php:184 admin.php:186
+#: admin.php:159 admin.php:161
 msgid "Unverified by Administrator"
 msgstr ""
 
-#: admin.php:178 admin.php:180
+#: admin.php:153 admin.php:155
 msgid "Unverified by User"
+msgstr ""
+
+#. I18N: The system is about to [...]; %s is a .ZIP file.
+#: admin_site_upgrade.php:328
+#, php-format
+msgid "Unzip %s to a temporary folder…"
 msgstr ""
 
 #. I18N: Name of a module
@@ -15829,16 +15988,13 @@ msgstr ""
 msgid "Update all"
 msgstr ""
 
-#: modules_v3/batch_update/admin_batch_update.php:337
-msgid "Update the CHAN record"
-msgstr ""
-
 #: admin_site_merge.php:177
 msgid "Updating linked record"
 msgstr ""
 
-#: admin.php:71
-msgid "Upgrade instructions"
+#. I18N: Ignore the warnings, and [...]
+#: admin_site_upgrade.php:202 admin_site_upgrade.php:265
+msgid "Upgrade anyway"
 msgstr ""
 
 #. I18N: %s is a version number
@@ -15847,13 +16003,17 @@ msgstr ""
 msgid "Upgrade the web-server to PHP %s or higher."
 msgstr ""
 
-#. I18N: %s is a version number
-#: admin.php:68
+#. I18N: %s is a version number, such as 1.2.3
+#: admin.php:65 admin_site_upgrade.php:86
 #, php-format
 msgid "Upgrade to webtrees %s"
 msgstr ""
 
-#: admin_media_upload.php:236 admin_trees_manage.php:226
+#: admin_site_upgrade.php:55
+msgid "Upgrade wizard"
+msgstr ""
+
+#: admin_media_upload.php:236 admin_trees_manage.php:227
 #: modules_v3/googlemap/admin_places.php:743
 msgid "Upload"
 msgstr ""
@@ -15890,7 +16050,7 @@ msgstr ""
 msgid "Use GeoNames database for autocomplete on places"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:394
+#: modules_v3/googlemap/module.php:395
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr ""
 
@@ -15913,7 +16073,7 @@ msgid ""
 msgstr ""
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:380 login.php:403
+#: admin_users.php:388 login.php:418
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -16013,11 +16173,11 @@ msgstr ""
 msgid "User administration"
 msgstr ""
 
-#: admin_users.php:520
+#: admin_users.php:528
 msgid "User didn't verify within 7 days."
 msgstr ""
 
-#: admin_users.php:530
+#: admin_users.php:538
 msgid "User not verified by administrator."
 msgstr ""
 
@@ -16025,11 +16185,11 @@ msgstr ""
 msgid "User options"
 msgstr ""
 
-#: login.php:437 login.php:443 login.php:507 login.php:511
+#: login.php:452 login.php:458 login.php:521 login.php:525
 msgid "User verification"
 msgstr ""
 
-#: admin_users.php:509
+#: admin_users.php:517
 msgid "User's account has been inactive too long: "
 msgstr ""
 
@@ -16038,14 +16198,14 @@ msgstr ""
 msgid "User-agent string"
 msgstr ""
 
-#: admin_site_config.php:135 admin_users.php:367 admin_users.php:566
-#: edituser.php:135 help_text.php:741 help_text.php:1494 login.php:154
-#: login.php:218 login.php:295 login.php:338 login.php:445
+#: admin_site_config.php:135 admin_users.php:375 admin_users.php:574
+#: edituser.php:135 help_text.php:741 help_text.php:1494 login.php:170
+#: login.php:234 login.php:311 login.php:353 login.php:460
 #: modules_v3/login_block/module.php:76 modules_v3/todo/module.php:99
 msgid "Username"
 msgstr ""
 
-#: login.php:180 modules_v3/login_block/module.php:103
+#: login.php:196 modules_v3/login_block/module.php:103
 msgid "Username or email address"
 msgstr ""
 
@@ -16061,19 +16221,19 @@ msgid ""
 "Usernames may not contain the following characters: &lt; &gt; \" %% { } ;"
 msgstr ""
 
-#: admin.php:124 themes/_administration/header.php:125
+#: admin.php:99 themes/_administration/header.php:125
 msgid "Users"
 msgstr ""
 
-#: admin.php:195
+#: admin.php:170
 msgid "Users Logged In"
 msgstr ""
 
-#: admin.php:172 admin.php:174
+#: admin.php:147 admin.php:149
 msgid "Users with warnings"
 msgstr ""
 
-#: admin.php:189
+#: admin.php:164
 msgid "Users' languages"
 msgstr ""
 
@@ -16144,11 +16304,11 @@ msgstr ""
 msgid "Veracruz, Mexico"
 msgstr ""
 
-#: login.php:339 login.php:453
+#: login.php:354 login.php:468
 msgid "Verification code:"
 msgstr ""
 
-#: admin_users.php:575
+#: admin_users.php:583
 msgid "Verified"
 msgstr ""
 
@@ -16172,7 +16332,7 @@ msgstr ""
 #. I18N: Submit button, on a form
 #: admin_media.php:431 ancestry.php:107 branches.php:63 compact.php:49
 #: descendancy.php:75 familybook.php:57 fanchart.php:63 hourglass.php:70
-#: modules_v3/googlemap/module.php:724 pedigree.php:47 relationship.php:155
+#: modules_v3/googlemap/module.php:725 pedigree.php:47 relationship.php:155
 msgid "View"
 msgstr ""
 
@@ -16212,7 +16372,7 @@ msgstr ""
 msgid "View Notes"
 msgstr ""
 
-#: medialist.php:294 modules_v3/googlemap/module.php:1263
+#: medialist.php:294 modules_v3/googlemap/module.php:1264
 #: modules_v3/random_media/module.php:181
 msgid "View Person"
 msgstr ""
@@ -16253,7 +16413,7 @@ msgstr ""
 msgid "Visible online"
 msgstr ""
 
-#: admin_users.php:207 admin_users.php:393 edituser.php:175
+#: admin_users.php:207 admin_users.php:401 edituser.php:175
 msgid "Visible to other users when online"
 msgstr ""
 
@@ -16316,7 +16476,7 @@ msgid ""
 "to generate them once and store the watermarked image on the server."
 msgstr ""
 
-#: login.php:359
+#: login.php:374
 #, php-format
 msgid ""
 "We will now send a confirmation email to the address <b>%s</b>. You must "
@@ -16329,7 +16489,7 @@ msgid ""
 "your user name and password."
 msgstr ""
 
-#: login.php:361
+#: login.php:376
 #, php-format
 msgid ""
 "We will now send a confirmation email to the address <b>%s</b>. You must "
@@ -16363,7 +16523,7 @@ msgstr ""
 msgid "Wednesday"
 msgstr ""
 
-#: admin.php:258
+#: admin.php:233
 msgid "Week"
 msgstr ""
 
@@ -16545,7 +16705,7 @@ msgstr ""
 msgid "Where is your PhpGedView installation?"
 msgstr ""
 
-#: modules_v3/sitemap/module.php:241
+#: modules_v3/sitemap/module.php:247
 msgid "Which family trees should be included in the sitemaps?"
 msgstr ""
 
@@ -16582,8 +16742,8 @@ msgstr ""
 msgid "Widower"
 msgstr ""
 
-#: fanchart.php:74 help_text.php:1230 modules_v3/googlemap/module.php:276
-#: modules_v3/googlemap/module.php:400
+#: fanchart.php:74 help_text.php:1230 modules_v3/googlemap/module.php:277
+#: modules_v3/googlemap/module.php:401
 msgid "Width"
 msgstr ""
 
@@ -16705,7 +16865,7 @@ msgid "Yemen"
 msgstr ""
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:325
+#: login.php:340
 #, php-format
 msgid ""
 "You (or someone claiming to be you) has requested an account at %1$s using "
@@ -16720,7 +16880,7 @@ msgstr ""
 msgid "You are about to remove one place."
 msgstr ""
 
-#: login.php:264 message.php:70
+#: login.php:280 message.php:70
 msgid "You are not allowed to send messages that contain external links."
 msgstr ""
 
@@ -16759,8 +16919,16 @@ msgid ""
 "beware of introducing incorrect information into your database."
 msgstr ""
 
-#: login.php:538
+#: login.php:552
 msgid "You can now login with your user name and password."
+msgstr ""
+
+#: admin_site_upgrade.php:201
+msgid "You can re-enable these modules after the upgrade."
+msgstr ""
+
+#: admin_site_upgrade.php:264
+msgid "You can re-enable these themes after the upgrade."
 msgstr ""
 
 #: help_text.php:641 help_text.php:680
@@ -16780,11 +16948,11 @@ msgstr ""
 msgid "You cannot login because your browser does not accept cookies."
 msgstr ""
 
-#: downloadbackup.php:36 includes/session.php:579
+#: downloadbackup.php:36 includes/session.php:580
 msgid "You do not have permission to view this page."
 msgstr ""
 
-#: login.php:482
+#: login.php:497
 msgid "You do not have to take any action; the user can now login."
 msgstr ""
 
@@ -16792,7 +16960,7 @@ msgstr ""
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr ""
 
-#: login.php:534
+#: login.php:548
 msgid "You have confirmed your request to become a registered user."
 msgstr ""
 
@@ -16825,7 +16993,7 @@ msgstr ""
 msgid "You must change this before you can continue."
 msgstr ""
 
-#: admin_users.php:328
+#: admin_users.php:336
 msgid "You must confirm the password."
 msgstr ""
 
@@ -16834,15 +17002,15 @@ msgstr ""
 msgid "You must enter a name"
 msgstr ""
 
-#: admin_users.php:318
+#: admin_users.php:326
 msgid "You must enter a password."
 msgstr ""
 
-#: admin_users.php:313 edituser.php:105
+#: admin_users.php:321 edituser.php:105
 msgid "You must enter a real name."
 msgstr ""
 
-#: admin_users.php:308 edituser.php:100
+#: admin_users.php:316 edituser.php:100
 msgid "You must enter a user name."
 msgstr ""
 
@@ -16850,7 +17018,7 @@ msgstr ""
 msgid "You must enter all the administrator account fields."
 msgstr ""
 
-#: admin_users.php:323
+#: admin_users.php:331
 msgid "You must enter an email address."
 msgstr ""
 
@@ -16872,7 +17040,7 @@ msgid ""
 "settings."
 msgstr ""
 
-#: admin_users.php:350
+#: admin_users.php:358
 msgid ""
 "You must specify an individual record before you can restrict the user to "
 "their immediate family."
@@ -16889,7 +17057,7 @@ msgid ""
 "password."
 msgstr ""
 
-#: login.php:480
+#: login.php:495
 msgid ""
 "You now need to review the account details, and set the “approved” status to "
 "“yes”."
@@ -16905,12 +17073,16 @@ msgid ""
 "php ."
 msgstr ""
 
-#: includes/authentication.php:251
+#: includes/authentication.php:250
 msgid "You sent the following message to a webtrees administrator:"
 msgstr ""
 
-#: includes/authentication.php:257
+#: includes/authentication.php:256
 msgid "You sent the following message to a webtrees user:"
+msgstr ""
+
+#: admin_site_upgrade.php:102
+msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
 
 #: help_text.php:1154
@@ -16920,8 +17092,20 @@ msgid ""
 "incorrectly."
 msgstr ""
 
+#: admin_site_upgrade.php:200
+msgid ""
+"You should consult the module’s author to confirm compatibility with this "
+"version of webtrees."
+msgstr ""
+
+#: admin_site_upgrade.php:263
+msgid ""
+"You should consult the theme’s author to confirm compatibility with this "
+"version of webtrees."
+msgstr ""
+
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
-#: login.php:265 message.php:71
+#: login.php:281 message.php:71
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr ""
@@ -16932,14 +17116,14 @@ msgid ""
 "correct."
 msgstr ""
 
-#: login.php:303
+#: login.php:319
 msgid ""
 "You will be informed by e-mail when this prospective user has confirmed the "
 "request.  After this, the user will be able to login without any action on "
 "your part."
 msgstr ""
 
-#: login.php:301
+#: login.php:317
 msgid ""
 "You will be informed by e-mail when this prospective user has confirmed the "
 "request.  You can then complete the process by activating the user name.  "
@@ -16950,7 +17134,7 @@ msgstr ""
 msgid "You will use this to login to webtrees."
 msgstr ""
 
-#: login.php:342
+#: login.php:357
 msgid ""
 "You won't get any more email from this site, because the account request "
 "will be deleted automatically after seven days."
@@ -16976,7 +17160,7 @@ msgstr ""
 msgid "Your Clippings Cart is empty."
 msgstr ""
 
-#: includes/authentication.php:237 includes/authentication.php:291
+#: includes/authentication.php:237 includes/authentication.php:290
 #: message.php:130
 msgid "Your Name:"
 msgstr ""
@@ -16986,7 +17170,7 @@ msgid "Your name"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:343
+#: login.php:358
 #, php-format
 msgid "Your registration at %s"
 msgstr ""
@@ -17027,26 +17211,26 @@ msgstr ""
 msgid "Zip clippings"
 msgstr ""
 
-#: modules_v3/googlemap/placehierarchy.php:246
+#: modules_v3/googlemap/placehierarchy.php:242
 msgid "Zoom"
 msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:185
 #: modules_v3/googlemap/admin_places.php:638
 #: modules_v3/googlemap/admin_places.php:696
-#: modules_v3/googlemap/places_edit.php:320
+#: modules_v3/googlemap/places_edit.php:316
 msgid "Zoom factor"
 msgstr ""
 
-#: modules_v3/googlemap/help_text.php:33 modules_v3/googlemap/module.php:283
+#: modules_v3/googlemap/help_text.php:33 modules_v3/googlemap/module.php:284
 msgid "Zoom factor of map"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1355 timeline.php:308
+#: modules_v3/googlemap/module.php:1356 timeline.php:308
 msgid "Zoom in"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1357
+#: modules_v3/googlemap/module.php:1358
 msgid "Zoom in here"
 msgstr ""
 
@@ -17054,15 +17238,15 @@ msgstr ""
 msgid "Zoom in/out on this box."
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1356 timeline.php:309
+#: modules_v3/googlemap/module.php:1357 timeline.php:309
 msgid "Zoom out"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1358
+#: modules_v3/googlemap/module.php:1359
 msgid "Zoom out here"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:1657
+#: modules_v3/googlemap/module.php:1658
 msgid "Zoom="
 msgstr ""
 
@@ -17219,7 +17403,7 @@ msgctxt "Abbreviation for birth"
 msgid "b."
 msgstr ""
 
-#: modules_v3/faq/module.php:314
+#: modules_v3/faq/module.php:315
 msgid "back to top"
 msgstr ""
 
@@ -17414,10 +17598,9 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:192
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:600
 #: modules_v3/GEDFact_assistant/module.php:137
-#: modules_v3/googlemap/module.php:631 modules_v3/googlemap/places_edit.php:86
-#: modules_v3/googlemap/places_edit.php:104
-#: modules_v3/googlemap/places_edit.php:124
-#: modules_v3/googlemap/places_edit.php:342
+#: modules_v3/googlemap/module.php:632 modules_v3/googlemap/places_edit.php:85
+#: modules_v3/googlemap/places_edit.php:103
+#: modules_v3/googlemap/places_edit.php:338
 msgid "close"
 msgstr ""
 
@@ -17427,9 +17610,10 @@ msgstr ""
 
 #. I18N: button label
 #: admin_pgv_to_wt.php:1062 admin_trees_download.php:140
-#: admin_trees_manage.php:171 admin_users.php:543 login.php:184 login.php:420
-#: modules_v3/login_block/module.php:107 setup.php:203 setup.php:227
-#: setup.php:296 setup.php:381 setup.php:437
+#: admin_trees_manage.php:172 admin_users.php:551 login.php:200 login.php:435
+#: modules_v3/login_block/module.php:107 reportengine.php:131
+#: reportengine.php:273 setup.php:203 setup.php:227 setup.php:296
+#: setup.php:381 setup.php:437
 msgid "continue"
 msgstr ""
 
@@ -17488,8 +17672,8 @@ msgid "death"
 msgstr ""
 
 #. I18N: Measure of latitude/longitude
-#: modules_v3/googlemap/places_edit.php:302
-#: modules_v3/googlemap/places_edit.php:312
+#: modules_v3/googlemap/places_edit.php:298
+#: modules_v3/googlemap/places_edit.php:308
 msgid "degrees"
 msgstr ""
 
@@ -17510,9 +17694,9 @@ msgctxt "MALE"
 msgid "died"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:312 modules_v3/googlemap/module.php:321
-#: modules_v3/googlemap/module.php:330 modules_v3/googlemap/module.php:338
-#: modules_v3/googlemap/module.php:346 modules_v3/googlemap/module.php:354
+#: modules_v3/googlemap/module.php:313 modules_v3/googlemap/module.php:322
+#: modules_v3/googlemap/module.php:331 modules_v3/googlemap/module.php:339
+#: modules_v3/googlemap/module.php:347 modules_v3/googlemap/module.php:355
 msgid "digits"
 msgstr ""
 
@@ -17525,7 +17709,7 @@ msgctxt "Abbreviation for email address"
 msgid "e."
 msgstr ""
 
-#: modules_v3/googlemap/places_edit.php:314
+#: modules_v3/googlemap/places_edit.php:310
 msgid "east"
 msgstr ""
 
@@ -19519,7 +19703,7 @@ msgstr ""
 #: admin_trees_config.php:973 admin_trees_config.php:981
 #: admin_trees_config.php:1002 admin_trees_config.php:1034
 #: admin_trees_config.php:1055 admin_trees_config.php:1063
-#: admin_trees_config.php:1071 modules_v3/googlemap/module.php:271
+#: admin_trees_config.php:1071 modules_v3/googlemap/module.php:272
 msgid "hide"
 msgstr ""
 
@@ -19659,6 +19843,11 @@ msgctxt "MALE"
 msgid "married name"
 msgstr ""
 
+#. I18N: verb: pretend to be someone else
+#: admin_users.php:219
+msgid "masquerade"
+msgstr ""
+
 #: includes/functions/functions.php:1264
 msgctxt "mother's father"
 msgid "maternal grandfather"
@@ -19679,7 +19868,7 @@ msgstr ""
 msgid "matrilineal"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:290
+#: modules_v3/googlemap/module.php:291
 msgid "maximum"
 msgstr ""
 
@@ -19697,7 +19886,7 @@ msgstr[1] ""
 msgid "midnight"
 msgstr ""
 
-#: modules_v3/googlemap/module.php:285
+#: modules_v3/googlemap/module.php:286
 msgid "minimum"
 msgstr ""
 
@@ -19835,12 +20024,12 @@ msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr ""
 
-#: admin_users.php:245 includes/functions/functions_edit.php:136
+#: admin_users.php:251 includes/functions/functions_edit.php:136
 #: includes/functions/functions_edit.php:143
-#: includes/functions/functions_edit.php:1452
+#: includes/functions/functions_edit.php:1408
 #: includes/functions/functions_print_facts.php:1228
 #: includes/functions/functions_print_lists.php:795 library/WT/Stats.php:3519
-#: modules_v3/batch_update/admin_batch_update.php:339
+#: modules_v3/batch_update/admin_batch_update.php:340
 #: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:215
 #: modules_v3/family_group_report/report.xml:250
 #: modules_v3/family_group_report/report.xml:421
@@ -19868,7 +20057,7 @@ msgstr ""
 msgid "noon"
 msgstr ""
 
-#: modules_v3/googlemap/places_edit.php:304
+#: modules_v3/googlemap/places_edit.php:300
 msgid "north"
 msgstr ""
 
@@ -20054,7 +20243,7 @@ msgstr ""
 #: addmedia.php:745 admin_module_blocks.php:93 admin_module_menus.php:114
 #: admin_module_reports.php:93 admin_module_sidebar.php:113
 #: admin_module_tabs.php:114 admin_modules.php:163 admin_site_merge.php:165
-#: admin_trees_config.php:1281 admin_trees_manage.php:262 block_edit.php:58
+#: admin_trees_config.php:1281 admin_trees_manage.php:263 block_edit.php:58
 #: edit_interface.php:204 edit_interface.php:292 edit_interface.php:359
 #: edit_interface.php:509 edit_interface.php:576 edit_interface.php:754
 #: edit_interface.php:849 edit_interface.php:1023 edit_interface.php:1091
@@ -20064,12 +20253,12 @@ msgstr ""
 #: includes/functions/functions_edit.php:50
 #: includes/functions/functions_edit.php:104
 #: includes/functions/functions_edit.php:951 includes/media_reorder.php:178
-#: index_edit.php:337
+#: index_edit.php:338
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:599
-#: modules_v3/faq/module.php:190 modules_v3/googlemap/module.php:427
-#: modules_v3/googlemap/module.php:630
-#: modules_v3/googlemap/placehierarchy.php:256
-#: modules_v3/googlemap/places_edit.php:341 modules_v3/sitemap/module.php:253
+#: modules_v3/faq/module.php:191 modules_v3/googlemap/module.php:428
+#: modules_v3/googlemap/module.php:631
+#: modules_v3/googlemap/placehierarchy.php:252
+#: modules_v3/googlemap/places_edit.php:337 modules_v3/sitemap/module.php:259
 #: modules_v3/stories/module.php:265
 msgid "save"
 msgstr ""
@@ -20257,7 +20446,7 @@ msgstr ""
 msgid "select none"
 msgstr ""
 
-#: includes/functions/functions.php:1134 modules_v3/googlemap/module.php:1250
+#: includes/functions/functions.php:1134 modules_v3/googlemap/module.php:1251
 msgid "self"
 msgstr ""
 
@@ -20281,8 +20470,8 @@ msgstr ""
 #: admin_trees_config.php:973 admin_trees_config.php:981
 #: admin_trees_config.php:1002 admin_trees_config.php:1034
 #: admin_trees_config.php:1055 admin_trees_config.php:1063
-#: admin_trees_config.php:1071 modules_v3/faq/module.php:358
-#: modules_v3/googlemap/module.php:271 modules_v3/stories/module.php:342
+#: admin_trees_config.php:1071 modules_v3/faq/module.php:359
+#: modules_v3/googlemap/module.php:272 modules_v3/stories/module.php:342
 msgid "show"
 msgstr ""
 
@@ -20407,20 +20596,20 @@ msgstr ""
 #: modules_v3/fact_sources/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/occupation_report/report.xml:7
-#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:513
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:512
 msgid "sort by date of birth"
 msgstr ""
 
 #. I18N: An option in a list-box
 #: modules_v3/bdm_report/report.xml:12 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
-#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:515
+#: modules_v3/relative_ext_report/report.xml:8 reportengine.php:514
 msgid "sort by date of death"
 msgstr ""
 
 #. I18N: An option in a list-box
 #: edit_interface.php:2420 modules_v3/marriage_report/report.xml:10
-#: reportengine.php:514
+#: reportengine.php:513
 msgid "sort by date of marriage"
 msgstr ""
 
@@ -20459,7 +20648,7 @@ msgstr ""
 msgid "sort by title"
 msgstr ""
 
-#: modules_v3/googlemap/places_edit.php:305
+#: modules_v3/googlemap/places_edit.php:301
 msgid "south"
 msgstr ""
 
@@ -20823,17 +21012,17 @@ msgstr ""
 #: modules_v3/googlemap/admin_places.php:595
 #: modules_v3/googlemap/admin_places.php:602
 #: modules_v3/googlemap/admin_places.php:657
-#: modules_v3/googlemap/module.php:1662
+#: modules_v3/googlemap/module.php:1663
 #: modules_v3/googlemap/placehierarchy.php:176
-#: modules_v3/googlemap/placehierarchy.php:334
-#: modules_v3/googlemap/placehierarchy.php:347
-#: modules_v3/googlemap/placehierarchy.php:349
-#: modules_v3/googlemap/placehierarchy.php:415
-#: modules_v3/googlemap/placehierarchy.php:428
-#: modules_v3/googlemap/placehierarchy.php:430
-#: modules_v3/googlemap/places_edit.php:178
-#: modules_v3/googlemap/places_edit.php:224
-#: modules_v3/googlemap/places_edit.php:227 placelist.php:125
+#: modules_v3/googlemap/placehierarchy.php:330
+#: modules_v3/googlemap/placehierarchy.php:343
+#: modules_v3/googlemap/placehierarchy.php:345
+#: modules_v3/googlemap/placehierarchy.php:411
+#: modules_v3/googlemap/placehierarchy.php:424
+#: modules_v3/googlemap/placehierarchy.php:426
+#: modules_v3/googlemap/places_edit.php:174
+#: modules_v3/googlemap/places_edit.php:220
+#: modules_v3/googlemap/places_edit.php:223 placelist.php:125
 msgid "unknown"
 msgstr ""
 
@@ -20876,8 +21065,8 @@ msgstr ""
 msgid "webtrees - Review changes"
 msgstr ""
 
-#: includes/authentication.php:247 includes/authentication.php:261
-#: includes/authentication.php:306 message.php:42
+#: includes/authentication.php:246 includes/authentication.php:260
+#: includes/authentication.php:304 message.php:42
 msgid "webtrees Message"
 msgstr ""
 
@@ -20903,7 +21092,7 @@ msgstr ""
 msgid "webtrees wiki"
 msgstr ""
 
-#: modules_v3/googlemap/places_edit.php:315
+#: modules_v3/googlemap/places_edit.php:311
 msgid "west"
 msgstr ""
 
@@ -20918,13 +21107,13 @@ msgstr ""
 
 #: branches.php:169 includes/functions/functions_edit.php:136
 #: includes/functions/functions_edit.php:143
-#: includes/functions/functions_edit.php:1417
-#: includes/functions/functions_edit.php:1449
+#: includes/functions/functions_edit.php:1373
+#: includes/functions/functions_edit.php:1405
 #: includes/functions/functions_print.php:867
 #: includes/functions/functions_print_facts.php:1225
 #: includes/functions/functions_print_lists.php:353
 #: includes/functions/functions_print_lists.php:793 library/WT/Stats.php:3518
-#: modules_v3/batch_update/admin_batch_update.php:340
+#: modules_v3/batch_update/admin_batch_update.php:339
 #: modules_v3/change_report/report.xml:9 modules_v3/charts/module.php:216
 #: modules_v3/family_group_report/report.xml:247
 #: modules_v3/family_group_report/report.xml:418
@@ -20979,6 +21168,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "%H:%i:%s"
-#~ msgstr "%g:%i:%s %a"
