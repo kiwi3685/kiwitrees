@@ -41,10 +41,11 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $foundlist;
 
-		$filter  =get_block_setting($block_id, 'filter',   'all');
-		$controls=get_block_setting($block_id, 'controls', true);
-		$start   =get_block_setting($block_id, 'start',    false) || safe_GET_bool('start');
-		$block   =get_block_setting($block_id, 'block',    true);
+		$filter  				=get_block_setting($block_id, 'filter',   'all');
+		$controls				=get_block_setting($block_id, 'controls', true);
+		$start   				=get_block_setting($block_id, 'start',    false) || WT_Filter::getBool('start');
+		$block   				=get_block_setting($block_id, 'block',    true);
+		$select_all_types   	=get_block_setting($block_id, 'select_all_types', 1);
 
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
@@ -117,7 +118,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$title='';
 		}
 		$title.=$this->getTitle();
-		
+
 		if ($random_media) {
 			$content = "<div id=\"random_picture_container$block_id\">";
 			if ($controls) {
@@ -217,8 +218,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
+
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'filter',             WT_Filter::post('filter', 'indi|event|all', 'all'));
+			set_block_setting($block_id, 'filter',             	WT_Filter::post('filter', 'indi|event|all', 'all'));
 			set_block_setting($block_id, 'controls',           WT_Filter::postBool('controls'));
 			set_block_setting($block_id, 'start',              WT_Filter::postBool('start'));
 			set_block_setting($block_id, 'filter_avi',         WT_Filter::postBool('filter_avi'));
@@ -237,31 +239,29 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'filter_card',        WT_Filter::postBool('filter_card'));
 			set_block_setting($block_id, 'filter_certificate', WT_Filter::postBool('filter_certificate'));
 			set_block_setting($block_id, 'filter_coat',        WT_Filter::postBool('filter_coat'));
-			set_block_setting($block_id, 'filter_document',    WT_Filter::postBool('filter_document'));
-			set_block_setting($block_id, 'filter_electronic',  WT_Filter::postBool('filter_electronic'));
-			set_block_setting($block_id, 'filter_fiche',       WT_Filter::postBool('filter_fiche'));
-			set_block_setting($block_id, 'filter_film',        WT_Filter::postBool('filter_film'));
-			set_block_setting($block_id, 'filter_magazine',    WT_Filter::postBool('filter_magazine'));
-			set_block_setting($block_id, 'filter_manuscript',  WT_Filter::postBool('filter_manuscript'));
-			set_block_setting($block_id, 'filter_map',         WT_Filter::postBool('filter_map'));
-			set_block_setting($block_id, 'filter_newspaper',   WT_Filter::postBool('filter_newspaper'));
-			set_block_setting($block_id, 'filter_other',       WT_Filter::postBool('filter_other'));
-			set_block_setting($block_id, 'filter_painting',    WT_Filter::postBool('filter_painting'));
-			set_block_setting($block_id, 'filter_photo',       WT_Filter::postBool('filter_photo'));
-			set_block_setting($block_id, 'filter_tombstone',   WT_Filter::postBool('filter_tombstone'));
-			set_block_setting($block_id, 'filter_video',       WT_Filter::postBool('filter_video'));
+			set_block_setting($block_id, 'filter_document',    		WT_Filter::postBool('filter_document'));
+			set_block_setting($block_id, 'filter_electronic',  		WT_Filter::postBool('filter_electronic'));
+			set_block_setting($block_id, 'filter_fiche',       		WT_Filter::postBool('filter_fiche'));
+			set_block_setting($block_id, 'filter_film',        		WT_Filter::postBool('filter_film'));
+			set_block_setting($block_id, 'filter_magazine',    		WT_Filter::postBool('filter_magazine'));
+			set_block_setting($block_id, 'filter_manuscript',  		WT_Filter::postBool('filter_manuscript'));
+			set_block_setting($block_id, 'filter_map',         		WT_Filter::postBool('filter_map'));
+			set_block_setting($block_id, 'filter_newspaper',   		WT_Filter::postBool('filter_newspaper'));
+			set_block_setting($block_id, 'filter_other',       		WT_Filter::postBool('filter_other'));
+			set_block_setting($block_id, 'filter_painting',   		WT_Filter::postBool('filter_painting'));
+			set_block_setting($block_id, 'filter_photo',       		WT_Filter::postBool('filter_photo'));
+			set_block_setting($block_id, 'filter_tombstone',   		WT_Filter::postBool('filter_tombstone'));
+			set_block_setting($block_id, 'filter_video',       		WT_Filter::postBool('filter_video'));
+			set_block_setting($block_id, 'select_all_types',		WT_Filter::postBool('select_all_types'));
 			exit;
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$filter=get_block_setting($block_id, 'filter', 'all');
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only persons, events, or all?');
-		echo '</td><td class="optionbox">';
-		echo select_edit_control('filter', array('indi'=>WT_I18N::translate('Individuals'), 'event'=>WT_I18N::translate('Facts and events'), 'all'=>WT_I18N::translate('All')), null, $filter, '');
-		echo '</td></tr>';
-
+		$filter 			= get_block_setting($block_id, 'filter', 'all');
+		$select_all_types 	= get_block_setting($block_id, 'select_all_types', 1);
+		$controls 			= get_block_setting($block_id, 'controls', true);
+		$start 				= get_block_setting($block_id, 'start', false);
 		$filters=array(
 			'avi'        =>get_block_setting($block_id, 'filter_avi', false),
 			'bmp'        =>get_block_setting($block_id, 'filter_bmp', true),
@@ -294,94 +294,127 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			'video'      =>get_block_setting($block_id, 'filter_video', false),
 		);
 
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Filter');
-?>
-	</td>
-		<td class="optionbox">
-			<center><b><?php echo WT_Gedcom_Tag::getLabel('FORM'); ?></b></center>
-			<table class="width100">
-				<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_avi"
-				<?php if ($filters['avi']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;avi&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_bmp"
-				<?php if ($filters['bmp']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;bmp&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_gif"
-				<?php if ($filters['gif']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;gif&nbsp;&nbsp;</td>
-				</tr>
-		<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_jpeg"
-				<?php if ($filters['jpeg']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;jpeg&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_mp3"
-				<?php if ($filters['mp3']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;mp3&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_ole"
-				<?php if ($filters['ole']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;ole&nbsp;&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_pcx"
-				<?php if ($filters['pcx']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;pcx&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_pdf"
-				<?php if ($filters['pdf']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;pdf&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_png"
-				<?php if ($filters['png']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;png&nbsp;&nbsp;</td>
-		</tr>
-		<tr>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_tiff"
-				<?php if ($filters['tiff']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;tiff&nbsp;&nbsp;</td>
-			<td class="width33"><input type="checkbox" value="yes"
-				name="filter_wav"
-				<?php if ($filters['wav']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
-					<td class="width33">&nbsp;</td>
-					<td class="width33">&nbsp;</td>
-				</tr>
-			</table>
-			<br>
-			<center><b><?php echo WT_Gedcom_Tag::getLabel('TYPE'); ?></b></center>
-			<table class="width100">
-				<tr>
-				<?php
-				//-- Build the list of checkboxes
-				$i = 0;
-				foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
-					$i++;
-					if ($i > 3) {
-						$i = 1;
-						echo "</tr><tr>";
-					}
-					echo "<td class=\"width33\"><input type=\"checkbox\" value=\"yes\" name=\"filter_".$typeName."\"";
-					if ($filters[$typeName]) echo " checked=\"checked\"";
-					echo ">&nbsp;&nbsp;".$typeValue."&nbsp;&nbsp;</td>";
+		$html = '
+			<script>
+				function toggle(source) {
+					checkboxes = document.getElementsByClassName("check");
+					for(var i=0, n=checkboxes.length;i<n;i++) {
+				    	checkboxes[i].checked = source.checked;
+				 	}
 				}
-				?>
-				</tr>
-			</table>
-	</td>
-	</tr>
+				function toggle2(source) {
+					checkboxes = document.getElementsByClassName("check2");
+					for(var i=0, n=checkboxes.length;i<n;i++) {
+				    	checkboxes[i].checked = source.checked;
+				 	}
+				}
+			</script>
+		';
 
-	<?php
-
-		$controls=get_block_setting($block_id, 'controls', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show slide show controls?');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('controls', $controls);
-		echo '</td></tr>';
-
-		$start=get_block_setting($block_id, 'start', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Start slide show on page load?');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('start', $start);
-		echo '</td></tr>';
+		$html .= '
+			<tr>
+				<td class="descriptionbox wrap width33">'.
+					WT_I18N::translate('Show only individuals, events, or all?').
+				'</td>
+				<td class="optionbox">'.
+					select_edit_control('filter', array('indi'=>WT_I18N::translate('Individuals'), 'event'=>WT_I18N::translate('Facts and events'), 'all'=>WT_I18N::translate('All')), null, $filter, '').
+				'</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width33">'. WT_I18N::translate('Filter'). '</td>
+				<td class="optionbox">
+					<h4 style="margin-bottom:0;">'. WT_Gedcom_Tag::getLabel('FORM'). '</h4>
+					<table class="width100">
+						<tr>
+							<td colspan="3" class="center">
+								<input id="toggle1" type="checkbox" onClick="toggle(this)" >&nbsp;&nbsp;' .WT_I18N::translate('Select all').
+							'</td>
+						</tr>
+						<tr>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_avi"';
+								if ($filters['avi']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;avi&nbsp;&nbsp;
+							</td>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_bmp"';
+								if ($filters['bmp']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;bmp&nbsp;&nbsp;
+							</td>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_gif"';
+								if ($filters['gif']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;gif&nbsp;&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_jpeg"';
+								if ($filters['jpeg']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;jpeg&nbsp;&nbsp;
+							</td>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_mp3"';
+								if ($filters['mp3']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;mp3&nbsp;&nbsp;
+							</td>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_ole"';
+								if ($filters['ole']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;ole&nbsp;&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_pcx"';
+								if ($filters['pcx']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;pcx&nbsp;&nbsp;
+							</td>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_pdf"';
+								if ($filters['pdf']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;pdf&nbsp;&nbsp;
+							</td>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_png"';
+								if ($filters['png']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;png&nbsp;&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_tiff"';
+								if ($filters['tiff']) $html .= ' checked="checked" ';$html .= '>&nbsp;&nbsp;tiff&nbsp;&nbsp;
+							</td>
+							<td class="width33"><input class="check" type="checkbox" value="yes" name="filter_wav"';
+								if ($filters['wav']) $html .= ' checked="checked" '; $html .= '>&nbsp;&nbsp;wav&nbsp;&nbsp;
+							</td>
+							<td class="width33">&nbsp;</td>
+						</tr>
+					</table>
+					<h4 style="margin-bottom:0;">'. WT_Gedcom_Tag::getLabel('TYPE'). '</h4>
+					<table class="width100" id="type_list">
+						<tr>
+							<td colspan="3" class="center">
+								<input type="checkbox" onClick="toggle2(this)" >&nbsp;&nbsp;' .WT_I18N::translate('Select all').
+							'</td>
+						</tr>
+						<tr>';
+						//-- Build the list of checkboxes
+						$i = 0;
+						foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
+							$i++;
+							if ($i > 3) {
+								$i = 1;
+								$html .= '</tr><tr>';
+							}
+							$html .= '<td class="width33"><input class="check2" type="checkbox" value="yes" name="filter_'. $typeName .'"';
+							if ($filters[$typeName]) $html .= ' checked="checked" ';
+							$html .= '>&nbsp;&nbsp;'. $typeValue .'&nbsp;&nbsp;</td>';
+						}
+						$html .= '</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width33">'.
+					WT_I18N::translate('Show slide show controls?').
+				'</td>
+				<td class="optionbox">'.
+					edit_field_yes_no('controls', $controls).
+				'</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width33">'.
+					WT_I18N::translate('Start slide show on page load?').
+				'</td><td class="optionbox">'.
+					edit_field_yes_no('start', $start).
+				'</td>
+			</tr>';
+		// output
+		ob_start();
+		$html .= ob_get_clean();
+		echo $html;
 	}
 }
