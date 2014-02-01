@@ -45,7 +45,6 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$controls				=get_block_setting($block_id, 'controls', true);
 		$start   				=get_block_setting($block_id, 'start',    false) || WT_Filter::getBool('start');
 		$block   				=get_block_setting($block_id, 'block',    true);
-		$select_all_types   	=get_block_setting($block_id, 'select_all_types', 1);
 
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
@@ -252,14 +251,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'filter_photo',       		WT_Filter::postBool('filter_photo'));
 			set_block_setting($block_id, 'filter_tombstone',   		WT_Filter::postBool('filter_tombstone'));
 			set_block_setting($block_id, 'filter_video',       		WT_Filter::postBool('filter_video'));
-			set_block_setting($block_id, 'select_all_types',		WT_Filter::postBool('select_all_types'));
 			exit;
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$filter 			= get_block_setting($block_id, 'filter', 'all');
-		$select_all_types 	= get_block_setting($block_id, 'select_all_types', 1);
 		$controls 			= get_block_setting($block_id, 'controls', true);
 		$start 				= get_block_setting($block_id, 'start', false);
 		$filters=array(
