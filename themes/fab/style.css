@@ -1725,3 +1725,8 @@ html[dir=rtl] #cboxNext {right:0;left:auto}
 html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+
+/* Styling for simpl_pages module */
+div#pages-container {margin:0 auto; overflow:hidden; padding:20px; width:96%;}
+#pages-container {font-size:110%; margin:0 auto;}
+#pages_tabs {font-size:100%; border-color: #ddd;}

@@ -1191,3 +1191,11 @@ html[dir=rtl] #cboxNext {right:0;left:auto}
 html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+
+/* Styling for simpl_pages module */
+li#menu-my_pages {background:url(../images/pages.png) no-repeat 50% 50%}
+li#menu-my_pages ul li {background:url(../images/pages-small.png) no-repeat left 0}
+html[dir=rtl] li#menu-my_pages ul li {background-position:right 0}
+li#menu-my_pages ul li#menu-my_pages-edit {background:url(../images/submenu_edit.png) no-repeat left 0}
+html[dir=rtl] #menu-my_pages ul li#menu-my_pages-edit {background-position:right 0}
+div#pages-container {margin:0 auto; overflow:hidden; padding:20px; width:96%;}

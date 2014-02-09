@@ -573,3 +573,16 @@ html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
 #sim_dup #duplicates_table a:active {color:#555;}
 #sim_dup .exact {display:inline;padding:1px;cursor:default;width:100px;}
 #sim_dup .exact input[type="text"] {margin:0;padding:1px 0;}
+
+/* Styling for simpl_pages module */
+#pages_module, table#pages_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
+#pages_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
+#pages_module2 th, #pages_module2 td {vertical-align:top; text-align:left;}
+#pages_edit  {border:1px solid; border-radius:5px;  margin-top:30px; padding:5px;}
+#pages_edit td {padding: 0 10px 10px 10px; vertical-align:top;}
+#pages_edit td p {margin:0;}
+.pages_edit_pos td {white-space:nowrap;}
+.pages_edit_pos td:first-child {width:80%;}
+.pages_edit_title {border-bottom: 1px solid; margin-bottom:10px;}
+.pages_edit_item {background: none repeat scroll 0 0 OldLace; border: 1px inset #D9D6C4; padding: 5px;}
+html[dir='rtl'] #pages_module2 th, html[dir='rtl'] #pages_module2 td {text-align:right;}

@@ -1086,3 +1086,8 @@ p.branches {display:inline}
 /* Tooltips (jquery-ui tooltips)  */
 .ui-tooltip {padding: 2px 4px;position: absolute;z-index: 9999;max-width: 300px;background-image:none;background-color: #fff;color:#232f49;font-size:9px;border: 1px solid #555}
 body .ui-tooltip {border-width: 2px}
+
+/* Styling for simpl_pages module */
+div#pages-container {width:96%;}
+#pages-container {font-size:110%; margin:0 auto;}
+#pages_tabs {font-size:100%;}
