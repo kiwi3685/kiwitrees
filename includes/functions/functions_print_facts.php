@@ -288,14 +288,16 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 
 	// Print the type of this fact/event
 	if ($type) {
-		if (preg_match("/_MARR/i", $fact->getTag())) {
-			$utype = strtoupper($type);
-			if ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS') {
-				$type = WT_Gedcom_Tag::getLabel('MARR_'.$utype);
-			}
+		$utype = strtoupper($type);
+		// Events of close relatives, e.g. _MARR_CHIL
+		if (substr($fact->getTag(), 0, 6) == '_MARR_' && ($utype == 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS')) {
+			// Translate MARR/TYPE using the code that supports MARR_CIVIL, etc. tags
+			$type = WT_Gedcom_Tag::getLabel('MARR_'.$utype);
+		} else {
+			// Allow (custom) translations for other types
+			$type = WT_I18N::translate($type);
 		}
-		// We don't have a translation for $type - but a custom translation might exist.
-		echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_I18N::translate(htmlspecialchars($type)));
+		echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_Filter::escapeHtml($type));
 	}
 
 	// Print the date of this fact/event
