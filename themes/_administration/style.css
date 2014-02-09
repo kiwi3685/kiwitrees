@@ -400,7 +400,7 @@ html[dir=rtl] .gm_plac_edit th {text-align:right;}
 #gm_manage td {border-bottom:1px solid #d3d3d3; vertical-align:middle;}
 #gm_active input {height: auto; vertical-align: top;}
 div.scrollableContainer{border:1px solid #888;color:#555;margin:10px auto;padding:32px 0;position:relative;}
-div.scrollingArea{height:608px;overflow-x:auto;overflow-y:scroll;}
+div.scrollingArea{background-color:#fff;height:608px;overflow-x:auto;overflow-y:scroll;}
 .gm_plac_edit thead {border-bottom:2px solid #d3d3d3; left: 0;top: 0;position: absolute;width: 952px;}
 .gm_plac_edit tfoot {border-top:2px solid #d3d3d3; left: 0;bottom: 0;position: absolute;width: 952px;}
 .col1 {width:300px;}
@@ -549,3 +549,27 @@ html[dir=rtl] #cboxNext {right:0;left:auto}
 html[dir=rtl] #cboxCurrent {right:auto;left:0}
 html[dir=rtl] #cboxClose {right:auto;left:0}
 html[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+
+/* Styling for simpl_duplicates module */
+#sim_dup .gm_check {overflow:hidden;}
+#sim_dup .gm_check label {white-space:nowrap; min-width: 150px; display: inline-block;}
+#sim_dup .gm_check div {margin:5px 0;}
+#sim_dup div.scrollableContainer {margin-top:10px;padding-top:48px;position:relative;width:1016px;}
+#sim_dup div.scrollingArea {background-color:#fff;height:650px;overflow-x:auto;overflow-y:scroll;}
+#sim_dup table {border-collapse:collapse;border-spacing:0;width:993px;}
+#sim_dup table thead {left:0;top:0;position:absolute;width:1014px;}
+#sim_dup td, #sim_dup th {border:1px solid #adadad;border-left:0;}
+#sim_dup th {border-top:0;font-weight:900;text-align:center;}
+#sim_dup th input {margin:0;text-align:center;white-space:normal;}
+#sim_dup th .col6{width:69px;}
+#sim_dup td:last-child, #sim_dup th:last-child{border-right:0;}
+#sim_dup .col1{padding:3px;width:220px;}
+#sim_dup .col2, #sim_dup .col4 {padding:3px;width:150px;}
+#sim_dup .col3, #sim_dup .col5 {padding:3px;width:190px;}				
+#sim_dup .col6 {text-align:center;width:45px;}
+#sim_dup #duplicates_table a:link {color:#07a;}
+#sim_dup #duplicates_table a:visited {color:#7fbbd4;}
+#sim_dup #duplicates_table a:hover {color:#f00;}
+#sim_dup #duplicates_table a:active {color:#555;}
+#sim_dup .exact {display:inline;padding:1px;cursor:default;width:100px;}
+#sim_dup .exact input[type="text"] {margin:0;padding:1px 0;}
