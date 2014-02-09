@@ -50,7 +50,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$this->show_spouse=safe_GET('show_spouse',   '1', '0');
 		$this->descent    =safe_GET_integer('descent',       0, 9, 5);
 		$this->generations=safe_GET_integer('generations',   2, $MAX_DESCENDANCY_GENERATIONS, 2);
-		$this->box_width  =safe_GET_integer('box_width',     50, 300, 100);
+		$this->box_width  =safe_GET_integer('box_width',     50, 300, 110);
 
 		// Box sizes are set globally in the theme.  Modify them here.
 		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight; 
