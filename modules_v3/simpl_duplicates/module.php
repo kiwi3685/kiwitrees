@@ -39,11 +39,6 @@ class simpl_duplicates_WT_Module extends WT_Module implements WT_Module_Config {
 		return /* I18N: Description of the "Facts and events" module */ WT_I18N::translate('A list of possibly duplicated individuals.');
 	}
 
-	// Implement WT_Module_Tab
-	public function defaultTabOrder() {
-		return 10;
-	}
-
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
 		return WT_PRIV_NONE; // access for managers & admins only.
