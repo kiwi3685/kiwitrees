@@ -1091,3 +1091,11 @@ body .ui-tooltip {border-width: 2px}
 div#pages-container {width:96%;}
 #pages-container {font-size:110%; margin:0 auto;}
 #pages_tabs {font-size:100%;}
+
+/* Styling for simpl_privacy module */
+#privacy_status{overflow:hidden;}
+#privacy_status dt{float:none;width:100%;}
+#privacy_status dd{font-size:80%;float:left;margin:0 0 0 20px;}
+#privacy_status dt span{float:right;}
+html[dir=\'rtl\'] #privacy_status dd{float:right;margin:0 20px 0 0;}
+html[dir=\'rtl\'] #privacy_status dt span{float: left;}

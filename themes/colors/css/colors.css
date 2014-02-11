@@ -1199,3 +1199,11 @@ html[dir=rtl] li#menu-my_pages ul li {background-position:right 0}
 li#menu-my_pages ul li#menu-my_pages-edit {background:url(../images/submenu_edit.png) no-repeat left 0}
 html[dir=rtl] #menu-my_pages ul li#menu-my_pages-edit {background-position:right 0}
 div#pages-container {margin:0 auto; overflow:hidden; padding:20px; width:96%;}
+
+/* Styling for simpl_privacy module */
+#privacy_status{overflow:hidden;}
+#privacy_status dt{float:none;width:100%;}
+#privacy_status dd{font-size:80%;float:left;margin:0 0 0 20px;}
+#privacy_status dt span{float:right;}
+html[dir=\'rtl\'] #privacy_status dd{float:right;margin:0 20px 0 0;}
+html[dir=\'rtl\'] #privacy_status dt span{float: left;}

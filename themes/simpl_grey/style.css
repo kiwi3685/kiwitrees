@@ -888,3 +888,11 @@ button#cboxNext{position:absolute; bottom:2px; left:30px; top:auto; right:auto; 
 button#cboxNext:hover{background-position:-352px -129px}
 button#cboxClose {position:absolute; bottom:2px; right:2px; left:auto; top:auto; background:url(images/silk-sprite.png) no-repeat -80px -144px; width:16px; height:16px; text-indent:-9999px}
 button#cboxClose:hover{background:url(images/silk-sprite.png) no-repeat -272px -80px}
+
+/* Styling for simpl_privacy module */
+#privacy_status{overflow:hidden;}
+#privacy_status dt{float:none;width:100%;}
+#privacy_status dd{font-size:80%;float:left;margin:0 0 0 20px;}
+#privacy_status dt span{float:right;}
+html[dir=\'rtl\'] #privacy_status dd{float:right;margin:0 20px 0 0;}
+html[dir=\'rtl\'] #privacy_status dt span{float: left;}
