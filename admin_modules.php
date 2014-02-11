@@ -119,7 +119,7 @@ $controller
 				<thead>
 					<tr>
 					<th><?php echo WT_I18N::translate('Enabled'); ?></th>
-					<th width="100px"><?php echo WT_I18N::translate('Module'); ?></th>
+					<th width="120px"><?php echo WT_I18N::translate('Module'); ?></th>
 					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Menu'); ?></th>
 					<th><?php echo WT_I18N::translate('Tab'); ?></th>
