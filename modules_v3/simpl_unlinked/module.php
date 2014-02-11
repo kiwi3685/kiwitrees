@@ -63,8 +63,6 @@ class simpl_unlinked_WT_Module extends WT_Module implements WT_Module_Config {
 		$action		= safe_GET('action');
 		$gedcom_id	= safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
 
-		print_r($action);
-		
 		if (!empty($WT_SESSION['unlinked_gedcom_id'])) {
 			$gedcom_id = $WT_SESSION['unlinked_gedcom_id'];
 		} else {
@@ -115,10 +113,8 @@ class simpl_unlinked_WT_Module extends WT_Module implements WT_Module_Config {
 				foreach ($rows as $row) {
 					$id = $row['i_id'];
 					$person = WT_Person::getInstance($id);
-//					$person = WT_Person::getSignificantIndividual($id);
 					$fullname =  $person->getFullName();
-//					$xref =  $controller->record->getXref();
-					echo '<p><a href="', $person->getHtmlUrl(), '" target="_blank">', $fullname, ' ', $id, '</p>';
+					echo '<p><a href="', $person->getHtmlUrl(), '" target="_blank">', $fullname, ' (', $id, ')</p>';
 				}
 			} else {
 				echo '<h4>', WT_I18N::translate('No unlinked individuals to display'), '</h4></div>';
