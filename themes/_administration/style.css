@@ -233,6 +233,7 @@ html[dir=rtl] #file-options th,html[dir=rtl] #privacy th,html[dir=rtl] #config-m
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
 textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 .current_theme, .theme_box {float:left; margin:10px; padding:10px; text-align:center;}
+#theme table {max-width: none;}
 .theme_box {border: 2px solid #ccc;}
 .current_theme {border:2px solid #ff0000;}
 .current_theme p, .theme_box p {font-weight:bold; margin:0;}
