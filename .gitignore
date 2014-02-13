@@ -1,4 +1,4 @@
 *.swp
 *.bak
 modules_v3/custom_js
-language/po_files/
+language\po_files
