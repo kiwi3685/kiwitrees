@@ -93,7 +93,11 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 				$blockId_list[] = $items->block_id;
 			}
 		}
-		$default_block = $blockId_list[0];
+		if( !empty( $blockId_list ) ) {
+			$default_block = $blockId_list[0];
+		} else {
+			$default_block = "";
+		}
 
 		if ($SEARCH_SPIDER) {
 			return null;
