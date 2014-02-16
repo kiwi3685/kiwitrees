@@ -243,7 +243,7 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 			"&lang=".WT_LOCALE.
 			"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
 			"&style=full".
-			"&username=kiwiwebtrees";
+			"&username=kiwiwebtrees"; // password qwertyuiop
 		// try to use curl when file_get_contents not allowed
 		if (ini_get('allow_url_fopen')) {
 			$json = file_get_contents($url);
