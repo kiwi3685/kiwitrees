@@ -1555,21 +1555,21 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
 .list_table_controls td {min-width:40px;text-align:center;}
 
 /* ============== medialist.php ======================= */
-.medialist_title {font-weight:900; margin:0 0 10px 0;}
-.lightbox-menu {margin: 0 10px;}
-.lb-menu {position:relative; float:left;}
-.lb-menu ul {list-style-type:none;}
-ul.lb-menu li {border:none; font-weight:normal; list-style-type:none; padding:0; text-align:center;}
-.lb-menu > li ul {display:none;width:80px;}
-.lb-menu > li:hover  ul {display:block; top:36px;}
-.lb-menu a {display:block;}
-.lb-menu li a {padding-top:24px; white-space:nowrap;}
-.lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir='rtl'] .lb-menu {float:right;}
+#medialist-page .medialist_title {font-weight:900; margin:0 0 10px 0;}
+#medialist-page .lightbox-menu {margin: 0 10px;}
+#medialist-page .lb-menu {position:relative; float:left;}
+#medialist-page .lb-menu ul {list-style-type:none;}
+#medialist-page ul.lb-menu li {border:none; font-weight:normal; list-style-type:none; padding:0; text-align:center;}
+#medialist-page .lb-menu > li ul {display:none;width:80px;}
+#medialist-page .lb-menu > li:hover  ul {display:block; top:36px;}
+#medialist-page .lb-menu a {display:block;}
+#medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
+#medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
+html[dir='rtl'] #medialist-page .lb-menu {float:right;}
 
-li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
-li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
-li .lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
+#medialist-page li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
+#medialist-page li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
+#medialist-page li .lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
@@ -2262,3 +2262,9 @@ div#pages-container {margin:0 auto; overflow:hidden; padding:20px; width:96%;}
 #privacy_status dt span{float:right;}
 html[dir=\'rtl\'] #privacy_status dd{float:right;margin:0 20px 0 0;}
 html[dir=\'rtl\'] #privacy_status dt span{float: left;}
+
+/* Styling for stories module */
+#contents_list {margin:auto auto 20px auto; width:60%;}
+#story_contents div.story {display:none;}
+hr.stories_divider {border:none; border-top:medium double; margin:auto; padding:0; text-align:center; width:80%;}
+hr.stories_divider:after {content:"§"; display:inline-block;position:relative; top:-0.7em; font-size:1.5em; padding:0 0.25em; background:white;}

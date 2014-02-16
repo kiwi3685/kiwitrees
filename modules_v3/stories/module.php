@@ -117,32 +117,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			))->fetchOneColumn();
 
 		$html='';
-		$html.=
-			'<style>
-				#contents_list {
-					margin:auto auto 20px auto;
-					width:60%;
-				}
-				#story_contents div.story {
-					 display:none;
-				}
-				hr.stories_divider {
-					padding: 0;
-					border: none;
-					border-top: medium double;
-					text-align: center;
-					width: 80%;
-				}
-				hr.stories_divider:after {
-					content: "§";
-					display: inline-block;
-					position: relative; 
-					top: -0.7em;  
-					font-size: 1.5em;
-					padding: 0 0.25em;
-					background: white;
-				}
-			</style>';
 		$count_stories = 0;
 		foreach ($block_ids as $block_id) {
 			// check how many stories can be shown in a language
