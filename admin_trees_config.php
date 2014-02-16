@@ -437,6 +437,19 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?>
 					</td>
 				</tr>
+				<tr>
+					<th colspan="2">
+						<?php echo WT_I18N::translate('User options'); ?>
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
+					</td>
+					<td>
+						<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')); ?>
+					</td>
+				</tr>				
 			</table>
 		</div>
 		<!-- PRIVACY OPTIONS -->
