@@ -229,7 +229,12 @@ echo
 	'</div>', // id=tree_stats
 	'</div>'; // id=trees
 
-$controller->addInlineJavascript('jQuery("#tree_stats").accordion({active:'.$accordion_element.', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
+$controller->addInlineJavascript('jQuery("#tree_stats").accordion({
+	active:'.$accordion_element.', 
+	icons:{ "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" },
+	collapsible: true
+	});'
+);
 
 echo
 	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
@@ -263,8 +268,8 @@ echo
 	'</div>'; //id = content_container
 
 $controller
-	->addInlineJavascript('jQuery("#changes").accordion({active:' . $accordion_element . ', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
-	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, heightStyle: "content"});')
+	->addInlineJavascript('jQuery("#changes").accordion({active:' . $accordion_element . ', icons:{ "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" }});')
+	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" }, heightStyle: "content"});')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");');
 
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
