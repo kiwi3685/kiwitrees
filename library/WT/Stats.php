@@ -4048,27 +4048,27 @@ class WT_Stats {
 			return str_replace(-$century, WT_Stats::_centuryName(-$century), /* I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */ WT_I18N::translate('%s BCE', WT_I18N::number(-$century)));
 		}
 		switch ($century) {
-		case 21: return strip_tags WT_I18N::translate_c('CENTURY', '21st');
-		case 20: return strip_tags WT_I18N::translate_c('CENTURY', '20th');
-		case 19: return strip_tags WT_I18N::translate_c('CENTURY', '19th');
-		case 18: return strip_tags WT_I18N::translate_c('CENTURY', '18th');
-		case 17: return strip_tags WT_I18N::translate_c('CENTURY', '17th');
-		case 16: return strip_tags WT_I18N::translate_c('CENTURY', '16th');
-		case 15: return strip_tags WT_I18N::translate_c('CENTURY', '15th');
-		case 14: return strip_tags WT_I18N::translate_c('CENTURY', '14th');
-		case 13: return strip_tags WT_I18N::translate_c('CENTURY', '13th');
-		case 12: return strip_tags WT_I18N::translate_c('CENTURY', '12th');
-		case 11: return strip_tags WT_I18N::translate_c('CENTURY', '11th');
-		case 10: return strip_tags WT_I18N::translate_c('CENTURY', '10th');
-		case  9: return strip_tags WT_I18N::translate_c('CENTURY', '9th');
-		case  8: return strip_tags WT_I18N::translate_c('CENTURY', '8th');
-		case  7: return strip_tags WT_I18N::translate_c('CENTURY', '7th');
-		case  6: return strip_tags WT_I18N::translate_c('CENTURY', '6th');
-		case  5: return strip_tags WT_I18N::translate_c('CENTURY', '5th');
-		case  4: return strip_tags WT_I18N::translate_c('CENTURY', '4th');
-		case  3: return strip_tags WT_I18N::translate_c('CENTURY', '3rd');
-		case  2: return strip_tags WT_I18N::translate_c('CENTURY', '2nd');
-		case  1: return strip_tags WT_I18N::translate_c('CENTURY', '1st');
+		case 21: return strip_tags (WT_I18N::translate_c('CENTURY', '21st'));
+		case 20: return strip_tags (WT_I18N::translate_c('CENTURY', '20th'));
+		case 19: return strip_tags (WT_I18N::translate_c('CENTURY', '19th'));
+		case 18: return strip_tags (WT_I18N::translate_c('CENTURY', '18th'));
+		case 17: return strip_tags (WT_I18N::translate_c('CENTURY', '17th'));
+		case 16: return strip_tags (WT_I18N::translate_c('CENTURY', '16th'));
+		case 15: return strip_tags (WT_I18N::translate_c('CENTURY', '15th'));
+		case 14: return strip_tags (WT_I18N::translate_c('CENTURY', '14th'));
+		case 13: return strip_tags (WT_I18N::translate_c('CENTURY', '13th'));
+		case 12: return strip_tags (WT_I18N::translate_c('CENTURY', '12th'));
+		case 11: return strip_tags (WT_I18N::translate_c('CENTURY', '11th'));
+		case 10: return strip_tags (WT_I18N::translate_c('CENTURY', '10th'));
+		case  9: return strip_tags (WT_I18N::translate_c('CENTURY', '9th'));
+		case  8: return strip_tags (WT_I18N::translate_c('CENTURY', '8th'));
+		case  7: return strip_tags (WT_I18N::translate_c('CENTURY', '7th'));
+		case  6: return strip_tags (WT_I18N::translate_c('CENTURY', '6th'));
+		case  5: return strip_tags (WT_I18N::translate_c('CENTURY', '5th'));
+		case  4: return strip_tags (WT_I18N::translate_c('CENTURY', '4th'));
+		case  3: return strip_tags (WT_I18N::translate_c('CENTURY', '3rd'));
+		case  2: return strip_tags (WT_I18N::translate_c('CENTURY', '2nd'));
+		case  1: return strip_tags (WT_I18N::translate_c('CENTURY', '1st'));
 		default: return ($century-1).'01-'.$century.'00';
 		}
 	}
