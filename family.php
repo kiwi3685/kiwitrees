@@ -89,23 +89,23 @@ echo '</script>';
 
 ?>
 <div id="family-page">
-<table align="center" width="95%">
+<table align="center">
 	<tr>
 		<td>
 			<p class="name_head"><?php echo $controller->record->getFullName(); ?></p>
 		</td>
 	</tr>
 </table>
-<table id="family-table" align="center" width="95%">
+<table id="family-table" align="center">
 	<tr valign="top">
 		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
 			<?php print_family_children($controller->record->getXref()); ?>
 		</td>
 		<td> <!--//parents pedigree chart and Family Details//-->
-			<table width="100%">
+			<table>
 				<tr>
-					<td class="subheaders" valign="top"><?php echo WT_I18N::translate('Parents'); ?></td>
-					<td class="subheaders" valign="top"><?php echo WT_I18N::translate('Grandparents'); ?></td>
+					<td class="subheaders" valign="top" width="100%"><?php echo WT_I18N::translate('Parents'); ?></td>
+					<td class="subheaders" valign="top" width="100%"><?php echo WT_I18N::translate('Grandparents'); ?></td>
 				</tr>
 				<tr>
 					<td colspan="2">

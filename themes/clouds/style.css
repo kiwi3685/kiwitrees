@@ -45,9 +45,8 @@ margin:10px;
 padding:10px;
 }
 
-* {
-margin:0;
-padding:0;
+td{
+	padding:0;
 }
 
 /* ================= Header Layout */
@@ -618,6 +617,7 @@ vertical-align:top;
 background-image:url(images/left1B.png);
 background-repeat:no-repeat;
 height:24px;
+padding:0;
 width:26px;
 }
 
@@ -626,12 +626,14 @@ background-image:url(images/left2.png);
 background-repeat:repeat-x;
 font-size:13px;
 font-weight:700;
+padding:0;
 }
 
 .blockh3 {
 background-image:url(images/left3.png);
 background-repeat:no-repeat;
 height:24px;
+padding:0;
 width:8px;
 }
 
@@ -902,6 +904,7 @@ font-size:12px;
 }
 
 .facts_table {
+padding:0;
 width:100%;
 }
 
