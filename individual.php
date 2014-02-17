@@ -160,7 +160,6 @@ $controller->addInlineJavascript('
 
 	jQuery("#header_accordion1").accordion({
 		active: 0,
-		icons: {"header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" },
 		heightStyle: "content",
 		collapsible: true
 	});

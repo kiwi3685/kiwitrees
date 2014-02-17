@@ -753,7 +753,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					active:' . $active . ',
 					heightStyle: "content",
 					collapsible: true,
-					icons:{ "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" }
 				});
 			');
 

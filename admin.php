@@ -26,6 +26,10 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
+	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
+	->addInlineJavascript('jQuery("#tree_stats").accordion();')
+	->addInlineJavascript('jQuery("#changes").accordion();')
+	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
 
@@ -57,37 +61,6 @@ echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
 	'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site.'), '</p>',
 	'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'), '</p>',
 	'</div>';
-
-// Accordion block for UPGRADE - only shown when upgrades are available
-//if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_version)<0) {
-//	echo
-//		'<h2><span class="warning">',
-//		/* I18N: %s is a version number */ WT_I18N::translate('Upgrade to webtrees %s', $latest_version),
-//		'</span></h2>',
-//		'<div>',
-//		'<h3>', WT_I18N::translate('Upgrade instructions'), '</h3>',
-//		'<ul>',
-//		'<li>', /* I18N: %s is a URL/link to a .ZIP file */ WT_I18N::translate('Download %s and extract the files.', '<a class="current" href="'.$download_url.'">'.basename($download_url).'</a>'), '</li>';
-//	if (version_compare(WT_VERSION, $earliest_version)<0) {
-//		echo '<li>', WT_I18N::translate('Accept or reject any pending changes.'), '</li>';
-//		echo '<li>', WT_I18N::translate('Save all your family trees to disk, by using the "export" function for each one.'), '</li>';
-//	}
-//
-//	echo '<li>', WT_I18N::translate('Copy the new files to the web server, replacing any that have the same name.'), '</li>';
-//
-//	if (version_compare(WT_VERSION, $earliest_version)<0) {
-//		echo '<li>', WT_I18N::translate('Load all your family trees from disk, by using the "import" function for each one.'), '</li>';
-//	}
-//
-//	echo
-//		'</ul>',
-//		'<h3>', WT_I18N::translate('Recommendations'), '</h3>',
-//		'<ul>',
-//		'<li>', WT_I18N::translate('Make a backup of your database before you start.'), '</li>',
-//		'<li>', /* I18N: %s is a filename */ WT_I18N::translate('Take your site offline while copying the new files.  Do this by temporarily creating a file %s on the web server.', '<tt style="white-space:nowrap">'.WT_ROOT.'data/offline.txt'.'</tt>'), '</li>',
-//		'</ul>',
-//		'</div>';
-//	}
 
 // Accordion block for DELETE OLD FILES - only shown when old files are found
 $old_files_found=false;
@@ -229,13 +202,6 @@ echo
 	'</div>', // id=tree_stats
 	'</div>'; // id=trees
 
-$controller->addInlineJavascript('jQuery("#tree_stats").accordion({
-	active:'.$accordion_element.', 
-	icons:{ "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" },
-	collapsible: true
-	});'
-);
-
 echo
 	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
 	'<div id="recent2">'; //id=recent
@@ -266,11 +232,6 @@ echo
 	'</div>', // id=recent
 	'</div>', //id = "x"
 	'</div>'; //id = content_container
-
-$controller
-	->addInlineJavascript('jQuery("#changes").accordion({active:' . $accordion_element . ', icons:{ "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" }});')
-	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" }, heightStyle: "content"});')
-	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");');
 
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
 // It was generated with the help of a command like this
