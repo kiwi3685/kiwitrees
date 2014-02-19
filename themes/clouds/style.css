@@ -3183,6 +3183,20 @@ html[dir=\'rtl\'] #privacy_status dt span{float: left;}
 
 /* Styling for stories module */
 #contents_list {margin:auto auto 20px auto; width:60%;}
+#contents_list ol {font-size:100%; list-style: disc;}
 #story_contents div.story {display:none;}
+#stories {padding:20px;}
 hr.stories_divider {border:none; border-top:medium double; margin:auto; padding:0; text-align:center; width:80%;}
 hr.stories_divider:after {content:"§"; display:inline-block;position:relative; top:-0.7em; font-size:1.5em; padding:0 0.25em; background:white;}
+/* story content - reset main styles to standard styling */
+#stories span, #stories h1, #stories h2, #stories h3, #stories h4, #stories h5, #stories h6, #stories p, #stories blockquote, #stories pre, 
+#stories a, #stories img, #stories strong, #stories sub, #stories sup, #stories b, #stories u, #stories i, #stories dl, #stories dt, #stories dd, #stories ol, #stories ul, #stories li,
+#stories fieldset, #stories form, #stories label, #stories legend, #stories table, #stories caption, #stories tbody, #stories tfoot, #stories thead, #stories tr, #stories th, #stories td
+ {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+ /* story content - set new main styles */
+#stories h1 {font-size: 1.75em; margin: .67em 0; text-align: center;}
+#stories h2 {font-size: 1.5em; margin: .75em 0;}
+#stories h3 {font-size: 1.17em; margin: .83em 0;}
+#stories h4, #stories p, #stories blockquote, #stories ul, #stories fieldset, #stories ol, #stories dl, #stories h5 {font-size: 1em; margin: 1.5em 0;}
+#stories h6 {font-size: .83em; margin: 1.67em 0;}
+#stories h1,#stories h2, #stories h3, #stories h4, #stories h5, #stories h6, #stories b, #stories strong{font-weight: bolder;}

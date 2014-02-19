@@ -140,8 +140,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					$languages=get_block_setting($block_id, 'languages');
 					if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 						$html.='<div id="stories_'.$block_id.'" class="story">';
-							$html.='<h4 class="news_title center">'.get_block_setting($block_id, 'title').'</h4>';
-							$html.='<p>'.get_block_setting($block_id, 'story_body').'</p>';
+							$html.='<h1>'.get_block_setting($block_id, 'title').'</h1>';
+							$html.='<div>'.get_block_setting($block_id, 'story_body').'</div>';
 							if (WT_USER_CAN_EDIT) {
 								$html.='<p><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
 								$html.=WT_I18N::translate('Edit story').'</a></p>';
@@ -154,8 +154,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($block_ids as $block_id) {
 				$languages=get_block_setting($block_id, 'languages');
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-					$html.='<h4 class="news_title center">'.get_block_setting($block_id, 'title').'</h4>';
-					$html.='<p>'.get_block_setting($block_id, 'story_body').'</p>';
+					$html.='<h1>'.get_block_setting($block_id, 'title').'</h1>';
+					$html.='<div>'.get_block_setting($block_id, 'story_body').'</div>';
 					if (WT_USER_CAN_EDIT) {
 						$html.='<dp><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
 						$html.=WT_I18N::translate('Edit story').'</a></p>';
