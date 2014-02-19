@@ -96,7 +96,8 @@ if ($view!='simple') {
 	echo
 		'<div id="fb-root"></div>',
 		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-		'<div id="topbar">
+		'<div id="main_content">
+		<div id="header">
 		<ul id="extra-menu" class="makeMenu">';
 			$menu=WT_MenuBar::getFavoritesMenu();
 			if ($menu) {
@@ -118,9 +119,6 @@ if ($view!='simple') {
 				echo '<li><a href="#">', WT_I18N::translate('Login or Register'), '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
 			}
 	echo '</ul>
-		</div>
-		<div id="main_content">
-		<div id="header">
 		<div class="title" dir="auto">', WT_TREE_TITLE, '</div>
 		</div>';
 		

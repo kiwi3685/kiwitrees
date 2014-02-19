@@ -55,7 +55,7 @@ html[dir='rtl'] #extra-menu li ul li {text-align:right;}
 html[dir='rtl'] #social {float:right;}
 
 /* ======= Header styles ========== */
-#header {height:48px;position:relative;margin:15px 0;}
+#header {height:48px;position:relative;margin:0 0 15px 0;}
 .title {clear: both;color:#555;font-family:inherit;font-size:48px;position: absolute;left:0;right:auto;}
 .header_search {float:right; margin:12px 10px 10px 10px;}
 .header_search input[type="search"] {font-size:16px;}
@@ -63,7 +63,7 @@ html[dir='rtl'] .title {left:auto;right:0;}
 html[dir='rtl'] .header_search {float:left;}
 
 /* ======= Main menu styles ========== */
-#topMenu {margin:auto;/*background: #a9adbc;*/border-bottom: 5px solid #555;height: 50px;}
+#topMenu {margin:auto; border-bottom: 5px solid #555;height: 50px;}
 #main-menu {padding:0;margin:0;list-style-type:none;line-height:50px; vertical-align: middle;text-transform:uppercase;}
 #main-menu li {float:left;margin:0 10px;position:relative;}
 #main-menu ul {line-height:12px;list-style:none;position:absolute;display:none;background:#ddd;border:thin solid #aaa;padding:0;z-index:999;}
@@ -135,6 +135,12 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 #my-page .blockheader {background: #a9adbc;font-size:16px;height:30px;border-bottom: 5px solid #555;overflow: hidden;padding: 15px 10px 10px;color: #555;text-transform:uppercase;}
 #my-page #index_small_blocks > div, #my-page #index_main_blocks > div, #my-page #index_full_blocks > div{background:#ddd;margin:6px 1%;height:300px;overflow:hidden}
 #my-page .blockcontent{padding:10px;}
+
+/* kiwi-webtrees user welcome block icons */
+.user_welcome_block .icon-mypage {background-image:url(images/large_menu_sprite.png);background-position:center -70px;width:110px;height:64px;text-align:center;}
+.user_welcome_block .icon-pedigree {background-image:url(images/large_menu_sprite.png);background-position:center -140px;width:110px;height:64px;text-align:center;}
+.user_welcome_block .icon-indis {background-image:url(images/large_menu_sprite.png);background-position:center -630px;width:110px;height:64px;text-align:center;}
+.user_welcome_block .icon-patriarch {background-image:url(images/large_menu_sprite.png);background-position:center -1105px;width:110px;height:64px;text-align:center;}
 
 .line1, .line2, .line3 {vertical-align:bottom;} 
 .line4 {vertical-align:middle;}
