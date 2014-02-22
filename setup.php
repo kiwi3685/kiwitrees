@@ -50,10 +50,10 @@ if (version_compare(PHP_VERSION, '5.2')<0) {
 		'<html lang="en" dir="ltr">',
 		'<head>',
 		'<meta charset="UTF-8">',
-		'<title>webtrees setup wizard</title>',
+		'<title>Kiwi-webtrees setup wizard</title>',
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
-		'<p><b>webtrees</b> requires PHP 5.2 or later.  PHP 5.3 is recommended.</p>';
+		'<p><b>Kiwi-webtrees</b> requires PHP 5.2 or later.  PHP 5.3 is recommended.</p>';
 	if (version_compare(PHP_VERSION, '5.0')<0) {
 		echo '<p>Many servers offer both PHP4 and PHP5.  You may be able to change your default to PHP5 using a control panel or a configuration setting.</p>';
 	}
@@ -100,7 +100,7 @@ echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
-	'<title>webtrees setup wizard</title>',
+	'<title>Kiwi-webtrees setup wizard</title>',
 	'<style type="text/css">
 		body {color: black; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
 		a {color: black; font-weight: normal; text-decoration: none;}
@@ -112,7 +112,7 @@ echo
 		.info {color: blue;}
 	</style>',
 	'</head><body>',
-	'<h1>', WT_I18N::translate('Setup wizard for <b>webtrees</b>'), '</h1>';
+	'<h1>', WT_I18N::translate('Setup wizard for <b>Kiwi-webtrees</b>'), '</h1>';
 
 echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
 echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
@@ -134,14 +134,14 @@ if (!isset($_POST['lang'])) {
 	$disable_functions=preg_split('/ *, */', ini_get('disable_functions'));
 	foreach (array('ini_set', 'parse_ini_file') as $function) {
 		if (in_array($function, $disable_functions)) {
-			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ WT_I18N::translate('%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it.', $function.'()'), '</p>';
+			echo '<p class="bad">', /* I18N: %s is a PHP function/module/setting */ WT_I18N::translate('%s is disabled on this server.  You cannot install Kiwi-webtrees until it is enabled.  Please ask your server’s administrator to enable it.', $function.'()'), '</p>';
 			$errors=true;
 		}
 	}
 	// Mandatory extensions
 	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="bad">', WT_I18N::translate('PHP extension "%s" is disabled.  You cannot install webtrees until this is enabled.  Please ask your server\'s administrator to enable it.', $extension), '</p>';
+			echo '<p class="bad">', WT_I18N::translate('PHP extension "%s" is disabled.  You cannot install Kiwi-webtrees until this is enabled.  Please ask your server\'s administrator to enable it.', $extension), '</p>';
 			$errors=true;
 		}
 	}
@@ -193,7 +193,7 @@ if (!isset($_POST['lang'])) {
 		'</p><p>',
 		WT_I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',
-		WT_I18N::translate('If your server\'s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server\'s administrator.'),
+		WT_I18N::translate('If your server\'s security policy permits it, you will be able to request increased memory or CPU time using the <b>Kiwi-webtrees</b> administration page.  Otherwise, you will need to contact your server\'s administrator.'),
 		'</p>';
 	if (!$errors) {
 		echo '<input type="hidden" name="maxcpu" value="', $maxcpu, '">';
@@ -219,7 +219,7 @@ $FAB = @file_get_contents(WT_DATA_DIR . 'test.txt');
 
 if ($FAB != 'FAB!') {
 	echo '<h2>', realpath(WT_DATA_DIR), '</h2>';
-	echo '<p class="bad">', WT_I18N::translate('Oops!  webtrees was unable to create files in this folder.'), '</p>';
+	echo '<p class="bad">', WT_I18N::translate('Oops!  Kiwi-webtrees was unable to create files in this folder.'), '</p>';
 	echo '<p>', WT_I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';
 	echo '<p>', WT_I18N::translate('You must change this before you can continue.'), '</p>';
 	echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
@@ -251,7 +251,7 @@ try {
 	WT_DB::exec("SET NAMES 'utf8'");
 	$row=WT_DB::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
 	if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
-		echo '<p class="bad">', WT_I18N::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
+		echo '<p class="bad">', WT_I18N::translate('This database is only running MySQL version %s.  You cannot install Kiwi-webtrees here.', $row->value), '</p>';
 	} else {
 		$db_version_ok=true;
 	}
@@ -269,7 +269,7 @@ try {
 if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 	echo
 		'<h2>', WT_I18N::translate('Connection to database server'), '</h2>',
-		'<p>', WT_I18N::translate('<b>webtrees</b> needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
+		'<p>', WT_I18N::translate('<b>Kiwi-webtrees</b> needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
 		'<p>', WT_I18N::translate('Your server\'s administrator will provide you with the connection details.'), '</p>',
 		'<fieldset><legend>', WT_I18N::translate('Database connection'), '</legend>',
 		'<table border="0"><tr><td>',
@@ -341,9 +341,9 @@ if ($DBNAME && $DBNAME==$_POST['dbname'] && $TBLPREFIX==$_POST['tblpfx']) {
 if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
-		// webtrees has a USER table
+		// Kiwi-webtrees has a USER table
 		$dummy=WT_DB::query("SELECT COUNT(*) FROM `##users`")->fetchOne();
-		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new Kiwi-webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
 		// Table not found?  Good!
@@ -352,9 +352,9 @@ if ($dbname_ok) {
 if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
-		// [We changed the column name in webtrees, so we can tell the difference!]
+		// [We changed the column name in Kiwi-webtrees, so we can tell the difference!]
 		$dummy=WT_DB::query("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
-		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new Kiwi-webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
 		// Table/column not found?  Good!
@@ -369,7 +369,7 @@ if (!$dbname_ok) {
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Database name'), '</td><td>',
 		'<input type="text" name="dbname" value="', htmlspecialchars($_POST['dbname']), '" autofocus></td><td>',
-		WT_I18N::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
+		WT_I18N::translate('This is case sensitive. If a database with this name does not already exist Kiwi-webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Table prefix'), '</td><td>',
 		'<input type="text" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '"></td><td>',
@@ -407,7 +407,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 	echo
 		'<h2>', WT_I18N::translate('System settings'), '</h2>',
 		'<h3>', WT_I18N::translate('Administrator account'), '</h3>',
-		'<p>', WT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password.'), '</p>',
+		'<p>', WT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this <b>Kiwi-webtrees</b> installation.  Please choose a strong password.'), '</p>',
 		'<fieldset><legend>', WT_I18N::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Your name'), '</td><td>',
@@ -416,7 +416,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Login ID'), '</td><td>',
 		'<input type="text" name="wtuser" value="', htmlspecialchars($_POST['wtuser']), '"></td><td>',
-		WT_I18N::translate('You will use this to login to webtrees.'),
+		WT_I18N::translate('You will use this to login to Kiwi-webtrees.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Password'), '</td><td>',
 		'<input type="password" name="wtpass" value="', htmlspecialchars($_POST['wtpass']), '"></td><td>',
@@ -932,7 +932,7 @@ try {
 
 	file_put_contents(WT_DATA_DIR . 'config.ini.php', $config_ini_php);
 
-	// Done - start using webtrees
+	// Done - start using Kiwi-webtrees
 	echo
 		'<script>document.location=document.location;</script>',
 		'</form></body></html>';
@@ -941,7 +941,7 @@ try {
 	echo
 		'<p class="bad">', WT_I18N::translate('An unexpected database error occurred.'), '</p>',
 		'<pre>', $ex->getMessage(), '</pre>',
-		'<p class="info">', WT_I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
+		'<p class="info">', WT_I18N::translate('The Kiwi-webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
 echo '</form>';
 echo '</body>';

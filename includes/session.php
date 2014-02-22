@@ -29,14 +29,14 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'kiwi-webtrees');
-define('WT_VERSION',         '2.0');
+define('WT_VERSION',         '2.0.1');
 define('WT_VERSION_RELEASE', ''); // “dev”, “beta”, “rc1”, “”, etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
 define('WT_WEBTREES_URL',    'http://kiwitrees.net/');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
-define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
+define('WT_TRANSLATORS_URL', 'http://kiwitrees.net/forums/forum/support-forum/translation/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
 // For example, http://my.cdn.com/webtrees-static-1.3.1/
