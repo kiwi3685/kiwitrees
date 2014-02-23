@@ -113,6 +113,9 @@ if ($view!='simple') {
 			}
 			if (WT_USER_ID) {
 				echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+				}
 			} else {
 				$class_name='login_block_WT_Module';
 				$module=new $class_name;
@@ -153,7 +156,8 @@ if ($view!='simple') {
 		'<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
 		'</form>',
 		'</div>',
-		'</div>'; // <div id="topMenu">
+		'</div>', // <div id="topMenu">
+		WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions
 }
 // begin content section
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"

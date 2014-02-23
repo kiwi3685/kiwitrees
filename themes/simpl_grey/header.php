@@ -136,7 +136,12 @@ if ($view!='simple') {
 				} else {
 					echo WT_TREE_TITLE, '<br>';
 				}
-			if (WT_USER_ID) echo '<span class="user">', WT_I18N::translate('Member:&nbsp;'), '<a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></span>';
+			if (WT_USER_ID) {
+				echo '<span class="user">', WT_I18N::translate('Member:&nbsp;'), '<a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></span>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <span><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></span>';
+				}
+			}
 		echo '</div>
 		<div class="pro_linedrop">
 			<ul class="select" dir="auto">
