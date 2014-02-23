@@ -130,7 +130,7 @@ function MM_showHideLayers() { //v6.0
   for (i=0; i<(args.length-3); i+=4) {
 	  if ((obj=document.getElementById(args[i])) !== null) {
     	if (obj.style) {
-	      div=obj;
+	      div=obj; // unused?
 	      obj=obj.style;
 	    }
 	    v=args[i+2];
@@ -141,7 +141,7 @@ function MM_showHideLayers() { //v6.0
 	    v=(v=='show')?'visible':(v=='hide')?'hidden':v;
     	obj.visibility=v;
     	if (args[i+1]=='followmouse') {
-	    	pobj = document.getElementById(args[i+3]);
+	    	var pobj = document.getElementById(args[i+3]);
 	    	if (pobj !== null) {
 		    	if (pobj.style.top!="auto" && args[i+3]!="relatives") {
 			    	obj.top=5+msY-parseInt(pobj.style.top)+'px';
@@ -150,10 +150,10 @@ function MM_showHideLayers() { //v6.0
 		    	}
 		    	else {
 			    	obj.top="auto";
-			    	pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
+			    	var pagewidth = document.documentElement.offsetWidth+document.documentElement.scrollLeft;
 			    	if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
 			    	if (msX > pagewidth-160) msX = msX-150-pobj.offsetLeft;
-			    	contentdiv = document.getElementById("content");
+			    	var contentdiv = document.getElementById("content");
 			    	msX = msX - contentdiv.offsetLeft;
 			    	if (textDirection=="ltr") obj.left=(5+msX)+'px';
 			    	obj.zIndex=1000;
@@ -725,7 +725,7 @@ function expandbox(boxid, bstyle) {
 		clength = jQuery(".compact_view").length;
 	}); 
 	
-	url = window.location.toString();
+	var url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
 	inbox2 = document.getElementById("inout2-"+boxid);
@@ -1213,7 +1213,7 @@ var monthLabels = [];
   			content += '><a href="#" onclick="return cal_dateClicked(\''+dateFieldId+'\', \''+dateDivId+'\', '+tdate.getFullYear()+', '+tdate.getMonth()+', '+tdate.getDate()+');">';
   			content += tdate.getDate();
   			content += '</a></td>';
-  			datemilli = tdate.getTime() + daymilli;
+  			var datemilli = tdate.getTime() + daymilli;
   			tdate = new Date(datemilli);
   		}
   		content += '</tr>';
