@@ -1143,7 +1143,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 function print_calendar_popup($id) {
 	return 
 		' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>'.
-		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white; z-index: 1000;"></div>';
+		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
 }
 
 function print_addnewmedia_link($element_id) {
