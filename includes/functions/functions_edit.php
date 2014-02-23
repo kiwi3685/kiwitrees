@@ -1207,7 +1207,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			// valid LATI or LONG according to Gedcom standard
 			// pos (+) : N or E
 			// neg (-) : S or W
-			txt=field.value.toUpperCase();
+			var txt=field.value.toUpperCase();
 			txt=txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
 			txt=txt.replace(/ /g, ':'); // N12 34 ==> N12.34
 			txt=txt.replace(/\+/g, ''); // +17.1234 ==> 17.1234
@@ -1223,7 +1223,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			// 0.5698W ==> W0.5698
 			txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
 			// 17.1234 ==> N17.1234
-			if (txt!='' && txt.charAt(0)!=neg && txt.charAt(0)!=pos) txt=pos+txt;
+			if (txt && txt.charAt(0)!=neg && txt.charAt(0)!=pos)
+				txt=pos+txt;
 			field.value = txt;
 		}
 		</script>
