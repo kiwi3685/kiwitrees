@@ -271,7 +271,7 @@ var show = false;
 		lastfamilybox="";
 	}
 
-	var timeouts = []];
+	var timeouts = [];
 	function family_box_timeout(boxid) {
 		timeouts[boxid] = setTimeout("hide_family_box('"+boxid+"')", 2500);
 	}
