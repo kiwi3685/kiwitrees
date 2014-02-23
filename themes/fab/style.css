@@ -1763,3 +1763,9 @@ hr.stories_divider:after {content:"§"; display:inline-block;position:relative; 
 #stories h4, #stories p, #stories blockquote, #stories ul, #stories fieldset, #stories ol, #stories dl, #stories h5 {font-size: 1em; margin: 1.5em 0;}
 #stories h6 {font-size: .83em; margin: 1.67em 0;}
 #stories h1,#stories h2, #stories h3, #stories h4, #stories h5, #stories h6, #stories b, #stories strong{font-weight: bolder;}
+
+/* Styling for simpl_research module */
+ul#research_status li {list-style-type:none; line-height:16px; padding:2px 0; margin-bottom:5px}
+ul#research_status li ul, ul#research_status li li:last-child {margin-bottom:0}
+ul#research_status span.ui-icon {display:inline-block;vertical-align:top}
+ul#research_status ul.sublinks {display:none}
