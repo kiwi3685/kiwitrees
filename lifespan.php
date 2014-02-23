@@ -244,7 +244,6 @@ $controller
 			}
 
 			var IE = document.all?true:false;
-			if (!IE) document.captureEvents(Event.MOUSEMOVE | Event.MOUSEUP)
 			document.onmousemove = getMouseXY;
 			document.onmouseup = releaseimage;
 			
