@@ -1264,71 +1264,55 @@ var monthLabels = [];
   	return false;
   }
 
-function findIndi(field, indiname, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	nameElement = indiname;
-	window.open('find.php?type=indi&ged='+ged, '_blank', find_window_specs);
-	return false;
+function findWindow(ged, type, pastefield, queryParams) {
+	queryParams = queryParams || {};
+	queryParams.type = type;
+	queryParams.ged = typeof ged === 'undefined' ? WT_GEDCOM : ged;
+	window.pastefield = pastefield;
+	window.open('find.php?' + jQuery.param(queryParams), '_blank', find_window_specs);	return false;
 }
 
+function findIndi(field, indiname, ged) {
+ 	window.nameElement = indiname;
+ 	return findWindow(ged, "indi", field);
+ }
+ 
 function findPlace(field, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	window.open('find.php?type=place&ged='+ged, '_blank', find_window_specs);
-	return false;
+	return findWindow(ged, "place", field);
 }
 
 function findFamily(field, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	window.open('find.php?type=fam&ged='+ged, '_blank', find_window_specs);
-	return false;
+	return findWindow(ged, "fam", field);
 }
 
 function findMedia(field, choose, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	if (!choose) choose="0all";
-	window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', find_window_specs);
-	return false;
+	return findWindow(ged, "media", field, {
+		"choose": choose || "0all"
+	});
 }
 
 function findSource(field, sourcename, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	nameElement = sourcename;
-	window.open('find.php?type=source&ged='+ged, '_blank', find_window_specs);
-	return false;
+	window.nameElement = sourcename;
+	return findWindow(ged, "source", field);
 }
 
 function findnote(field, notename, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	nameElement = notename;
-	window.open('find.php?type=note&ged='+ged, '_blank', find_window_specs);
-	return false;
+	window.nameElement = notename;
+	return findWindow(ged, "note", field);
 }
 
 function findRepository(field, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	window.open('find.php?type=repo&ged='+ged, '_blank', find_window_specs);
-	return false;
+	return findWindow(ged, "repo", field);
 }
 
 function findSpecialChar(field) {
-	pastefield = field;
-	window.open('find.php?type=specialchar', '_blank', find_window_specs);
-	return false;
+	return findWindow(undefined, "specialchar", field);
 }
 
 function findFact(field, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	pastefield = field;
-	tags = field.value;
-	window.open('find.php?type=facts&tags='+tags+'&ged='+ged, '_blank', find_window_specs);
-	return false;
+	return findWindow(ged, "facts", field, {
+ 		"tags": field.value
+ 	});
 }
 
 function ilinkitem(mediaid, type, ged) {
