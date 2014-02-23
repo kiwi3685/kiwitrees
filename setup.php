@@ -814,6 +814,7 @@ try {
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
+	
 	//WT_DB::exec(
 	//	"CREATE TABLE IF NOT EXISTS `##language` (".
 	//	" language_tag       VARCHAR(16)                      NOT NULL,".
@@ -851,6 +852,7 @@ try {
 		" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko)%', 'allow', 'WebKit-based browsers'),".
 		" ('Opera/% (%) Presto/% Version/%', 'allow', 'Presto-based browsers'),".
 		" ('Mozilla/% (compatible; MSIE %', 'allow', 'Trident-based browsers'),".
+		" ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer'),".
 		" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
 	);
 
