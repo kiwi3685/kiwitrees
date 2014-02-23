@@ -93,7 +93,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$controller = new WT_Controller_Page;
 		$controller
 			->requireAdminLogin()
-			->setPageTitle(WT_I18N::translate('Research Links'))
+			->setPageTitle(getSidebarTitle())
 			->pageHeader();
 
 		if (WT_Filter::postBool('save')) {
@@ -131,6 +131,13 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if ($SEARCH_SPIDER) {
 			return false;
 		} else {
+			$controller->addInlineJavascript('
+				jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
+				jQuery("#research_status a.mainlink").click(function(e){
+					e.preventDefault();
+					jQuery(this).parent().find(".sublinks").toggle();
+				});
+			');
 			$globalfacts=$controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
 			$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
