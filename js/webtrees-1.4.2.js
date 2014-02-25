@@ -300,44 +300,42 @@ var show = false;
  *        Field to paste a result into.
  */
 function edit_interface(params, windowspecs, pastefield) {
-  var features = windowspecs || edit_window_specs;
-  var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + WT_GEDCOM;
-  window.open(url, '_blank', features);
+	var features = windowspecs || edit_window_specs;
+	window.pastefield = pastefield;
+	var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + WT_GEDCOM;
+	window.open(url, '_blank', features);
+	return false;
 }
 
 function edit_record(pid, linenum) {
-  edit_interface({
+  return edit_interface({
     "action": "edit",
     "pid": pid,
     "linenum": linenum
   });
-  return false;
 }
 
 function edit_raw(pid) {
-  edit_interface({
+  return edit_interface({
     "action": "editraw",
     "pid": pid
   });
-  return false;
 }
 
 function edit_note(pid) {
-  edit_interface({
+  return edit_interface({
     "action": "editnote",
     "pid": pid,
     "linenum": 1
   });
-  return false;
 }
 
 function edit_source(pid) {
-  edit_interface({
+  return edit_interface({
     "action": "editsource",
     "pid": pid,
     "linenum": 1
   });
-  return false;
 }
 
 function add_record(pid, fact) {
@@ -347,7 +345,7 @@ function add_record(pid, fact) {
 		if (factvalue == "OBJE") {
 			window.open('addmedia.php?action=showmediaform&linkid='+pid+'&ged='+WT_GEDCOM, '_blank', edit_window_specs);
 		} else {
-			edit_interface({
+			return edit_interface({
 				"action": "add",
 				"pid": pid,
 				"fact": factvalue
@@ -371,15 +369,15 @@ function addClipboardRecord(pid, fact) {
 }
 
 function reorder_media(xref) {
-  edit_interface({
+  return edit_interface({
     "action": "reorder_media",
     "pid": xref
   }, mord_window_specs);
-  return false;
+
 }
 
 function add_new_record(pid, fact) {
-  edit_interface({
+  return edit_interface({
     "action": "add",
     "pid": pid,
     "fact": fact
@@ -388,133 +386,119 @@ function add_new_record(pid, fact) {
 }
 
 function addnewchild(famid, gender) {
-  edit_interface({
+  return edit_interface({
     "action": "addchild",
     "gender": gender,
     "famid": famid
   });
-  return false;
 }
 
 function addnewspouse(famid, famtag) {
-  edit_interface({
+  return edit_interface({
     "action": "addspouse",
     "famid": famid,
     "famtag": famtag
   });
-  return false;
 }
 
 function addopfchild(pid, gender) {
-  edit_interface({
+  return edit_interface({
     "action": "addopfchild",
     "pid": pid,
     "gender": gender
   });
-  return false;
 }
 
 function addspouse(pid, famtag) {
-  edit_interface({
+  return edit_interface({
     "action": "addspouse",
     "pid": pid,
     "famtag": famtag,
     "famid": "new"
   });
-  return false;
 }
 
 function linkspouse(pid, famtag) {
-  edit_interface({
+  return edit_interface({
     "action": "linkspouse",
     "pid": pid,
     "famtag": famtag,
     "famid": "new"
   });
-  return false;
 }
 
 function add_famc(pid) {
-  edit_interface({
+  return edit_interface({
     "action": "addfamlink",
     "pid": pid,
     "famtag": "CHIL"
   });
-  return false;
 }
 
 function add_fams(pid, famtag) {
-  edit_interface({
+  return edit_interface({
     "action": "addfamlink",
     "pid": pid,
     "famtag": famtag
   });
-  return false;
 }
 
 function edit_name(pid, linenum) {
-  edit_interface({
+  return edit_interface({
     "action": "editname",
     "pid": pid,
     "linenum": linenum
   });
-  return false;
 }
 
 function add_name(pid) {
-  edit_interface({
+  return edit_interface({
     "action": "addname",
     "pid": pid
   });
-  return false;
 }
 
 function addnewparent(pid, famtag) {
-  edit_interface({
+  return edit_interface({
     "action": "addnewparent",
     "pid": pid,
     "famtag": famtag,
     "famid": "new"
   });
-  return false;
 }
 
 function addnewparentfamily(pid, famtag, famid) {
-  edit_interface({
+  return edit_interface({
     "action": "addnewparent",
     "pid": pid,
     "famtag": famtag,
     "famid": famid
   });
-  return false;
 }
 
 function delete_fact(pid, linenum, mediaid, message) {
   if (confirm(message)) {
-    edit_interface({
+    return edit_interface({
       "action": "delete",
       "pid": pid,
       "linenum": linenum,
       "mediaid": mediaid
     });
   }
-  return false;
 }
 
 function reorder_children(famid) {
-  edit_interface({
+  return edit_interface({
     "action": "reorder_children",
     "pid": famid
   });
-  return false;
 }
 
 function reorder_families(pid) {
-  edit_interface({
+  return edit_interface({
     "action": "reorder_fams",
     "pid": pid
   });
-  return false;
 }
 
 function reply(username, subject) {
@@ -528,48 +512,39 @@ function delete_message(id) {
 }
 
 function change_family_members(famid) {
-  edit_interface({
+  return edit_interface({
     "action": "changefamily",
     "famid": famid
   });
-  return false;
 }
 
 function addnewsource(field) {
-	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewsource",
 		"pid": "newsour"
 	}, null, field);
-	return false;
 }
 
 function addnewrepository(field) {
-	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewrepository",
 		"pid": "newrepo"
 	}, null, field);
-	return false;
 }
 
 function addnewnote(field) {
-	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewnote",
 		"noteid": "newnote"
 	}, null, field);
-	return false;
 }
 
 function addnewnote_assisted(field, iid) {
-	pastefield=field;
-	edit_interface({
+	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
 		"pid": iid
 	}, assist_window_specs, field);
-	return false;
 }
 
 function addmedia_links(field, iid, iname) {
