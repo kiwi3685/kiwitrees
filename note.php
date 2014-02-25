@@ -78,7 +78,6 @@ $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('function edit_note() {var win04 = window.open("edit_interface.php?action=editnote&pid=' . $linkToID . '", "win04", edit_window_specs);if (window.focus) {win04.focus();}}')
 	->addInlineJavascript('jQuery("#note-tabs").tabs();')
 	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');
 
@@ -115,11 +114,11 @@ echo '<div id="note-tabs">
 		echo '<table class="facts_table">';
 			echo '<tr><td align="left" class="descriptionbox">';
 				if (WT_USER_CAN_EDIT) {
-					echo '<a href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '">';
+					echo '<a href="#" onclick="return edit_note(', $controller->record->getXref(), ')" title="', WT_I18N::translate('Edit'), '">';
 					echo '<i class="icon-note"></i>';
 					echo WT_I18N::translate('Shared note'), '</a>';
 					echo '<div class="editfacts">';
-					echo '<div class="editlink"><a class="editicon" href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
+					echo '<div class="editlink"><a class="editicon" href="#" onclick="edit_note(', $controller->record->getXref(), ')" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
 					echo '</div>';
 				} else { 
 					echo '<i class="icon-note"></i>';
