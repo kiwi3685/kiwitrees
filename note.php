@@ -114,11 +114,11 @@ echo '<div id="note-tabs">
 		echo '<table class="facts_table">';
 			echo '<tr><td align="left" class="descriptionbox">';
 				if (WT_USER_CAN_EDIT) {
-					echo '<a href="#" onclick="return edit_note(', $controller->record->getXref(), ')" title="', WT_I18N::translate('Edit'), '">';
+					echo '<a href="#" onclick="return edit_note(\'', $controller->record->getXref(), '\')" title="', WT_I18N::translate('Edit'), '">';
 					echo '<i class="icon-note"></i>';
 					echo WT_I18N::translate('Shared note'), '</a>';
 					echo '<div class="editfacts">';
-					echo '<div class="editlink"><a class="editicon" href="#" onclick="edit_note(', $controller->record->getXref(), ')" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
+					echo '<div class="editlink"><a class="editicon" href="#" onclick="return edit_note(\'', $controller->record->getXref(), '\')" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
 					echo '</div>';
 				} else { 
 					echo '<i class="icon-note"></i>';
