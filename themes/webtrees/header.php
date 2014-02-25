@@ -91,7 +91,7 @@ if ($view!='simple') {
 	global $WT_IMAGES;
 	echo
 		'<div id="header">',
-		'<div class="header_img"><img src="', WT_THEME_URL, 'images/webtrees.png" width="242" height="50" alt="', WT_WEBTREES, '"></div>',
+		'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
 		'<ul id="extra-menu" class="makeMenu">';
 	if (WT_USER_ID) {
 		echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
@@ -103,7 +103,6 @@ if ($view!='simple') {
 		WT_MenuBar::getThemeMenu(),
 		WT_MenuBar::getLanguageMenu(),
 		'</ul>',
-		'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
 		'<div class="header_search">',
 		'<form action="search.php" method="post">',
 		'<input type="hidden" name="action" value="general">',

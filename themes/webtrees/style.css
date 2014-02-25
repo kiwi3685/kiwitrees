@@ -228,13 +228,9 @@ html[dir=rtl] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
 .search_hit {background-color:#ffff00;}
 .search_item {font-weight:600;}
 
-.title {clear:both;font-size:20px;float:left;padding-left:10px;}
-html[dir=rtl] .title {float:right;padding-right:10px;}
-
-.header_img {float:left;}
-html[dir=rtl] .header_img {float:right;}
-
-.header_search {float:right;}
+.title {display:inline;float:left;font-size:36px;margin:10px;}
+html[dir=rtl] .title {float:right;}
+.header_search {clear:both; float:right;margin:-20px 10px;}
 html[dir=rtl] .header_search {float:left;}
 
 #flash-messages {clear:both;}
@@ -345,7 +341,7 @@ html[dir=rtl] dt {float:right;margin-right:auto;margin-left:10px;}
 .clearfloat {clear:both;}
 td.descriptionbox a {color:#fff;}/* this keeps the tag color the same when it is a link as when not */
 .place {padding-top:5px;}
-.logo {text-align:center;}
+.logo {font-weight:900;text-align:center;}
 
 #pending h2 {text-align:center;margin-bottom:20px;}
 #pending h3 {text-align:center;margin-top:20px;}
@@ -665,7 +661,7 @@ html[dir=rtl] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 #menu-theme li {text-align:left;} /* The theme menu is always LTR, even on RTL pages */
 
 /* ========= Login|Favorites|Theme|Language menu items ========== */
-#extra-menu {float:right;white-space:nowrap;margin:20px 10px 0 0;}
+#extra-menu {float:right;white-space:nowrap;margin:10px;}
 #extra-menu.makeMenu li ul {left:auto;right:0;}
 #extra-menu a {background:none;display:inline;}
 .makeMenu {font-weight:bold;}
@@ -677,7 +673,7 @@ html[dir=rtl] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 .makeMenu li:hover > ul {display:block;}
 .lang-active, .theme-active {color:#000066;font-weight:900;}
 
-html[dir=rtl] #extra-menu {float:left;margin:20px 0 0 10px;}
+html[dir=rtl] #extra-menu {float:left;}
 html[dir=rtl] #extra-menu.makeMenu li ul {left:0;right:auto;}
 html[dir=rtl] .makeMenu li ul {left:auto;right:0;}
 html[dir=rtl] .makeMenu li ul li {text-align:right;}
@@ -1017,7 +1013,6 @@ a.icon-uarrow:hover {width:20px;height:20px;background-image:url(images/uarrow2.
 a.icon-udarrow:hover {width:20px;height:20px;background-image:url(images/udarrow2.png);}
 .icon-user_add {width:20px;height:20px;background-image:url(images/user_add.png);}
 .icon-warning {width:17px;height:17px;background-image:url(images/warning.png);}
-.icon-webtrees {width:100px;height:21px;background-image:url(images/webtrees_s.png);}
 .icon-wiki {width:16px;height:16px;background-image:url(images/w_button.png);}
 .icon-zoomin {width:25px;height:25px;background-image:url(images/zoomin.png);}
 .icon-zoomout {width:25px;height:25px;background-image:url(images/zoomout.png);}
