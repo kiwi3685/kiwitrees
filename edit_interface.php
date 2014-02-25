@@ -1,4 +1,4 @@
-<?php
+openerpasteid<?php
 // PopUp Window to provide editing features.
 //
 // webtrees: Web based Family History software
@@ -58,46 +58,6 @@ $uploaded_files = array();
 
 $controller->addInlineJavascript('
 	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
-');
-
-$controller->addInlineJavascript('
-	function openerpasteid(id) {
-		if (window.opener.paste_id) {
-			window.opener.paste_id(id);
-		}
-		window.close();
-	}
-');
-
-$controller->addInlineJavascript('
-	function paste_id(value) {
-		pastefield.value = value;
-	}
-');
-
-$controller->addInlineJavascript('
-	function paste_char(value) {
-		if (document.selection) {
-			// IE
-			pastefield.focus();
-			sel = document.selection.createRange();
-			sel.text = value;
-		} else if (pastefield.selectionStart || pastefield.selectionStart == 0) {
-			// Mozilla/Chrome/Safari
-			pastefield.value =
-				pastefield.value.substring(0, pastefield.selectionStart) +
-				value +
-				pastefield.value.substring(pastefield.selectionEnd, pastefield.value.length);
-			pastefield.selectionStart = pastefield.selectionEnd = pastefield.selectionStart + value.length;
-		} else {
-			// Fallback? - just append
-			pastefield.value += value;
-		}
-
-		if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
-			updatewholename();
-		}
-	}
 ');
 
 //-- check if user has access to the gedcom record
@@ -2054,17 +2014,7 @@ case 'changefamily':
 	
 	$controller
 		->setPageTitle(WT_I18N::translate('Change Family Members'))
-		->pageHeader()
-		->addInlineJavascript('
-				function pastename(name) {
-					if (typeof(nameElement) != "undefined") {
-						nameElement.innerHTML = name;
-					}
-					if (typeof(remElement) != "undefined") {
-						remElement.style.display = "block";
-					}
-				}
-		');
+		->pageHeader();
 
 	echo '<div id="edit_interface-page">';
 	echo '<h4>', $controller->getPageTitle(), '</h4>';

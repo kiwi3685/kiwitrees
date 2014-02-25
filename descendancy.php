@@ -28,8 +28,7 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Descendancy();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 echo '<div id="descendancy-page"><h2>', $controller->getPageTitle(), '</h2>';
 echo '<form method="get" name="people" action="?">';

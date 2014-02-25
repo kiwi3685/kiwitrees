@@ -52,7 +52,6 @@ $person1=WT_Person::getInstance($pid1);
 $person2=WT_Person::getInstance($pid2);
 
 $controller
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 if ($person1 && $person1->canDisplayName() && $person2 && $person2->canDisplayName()) {	

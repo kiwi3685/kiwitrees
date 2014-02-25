@@ -653,9 +653,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$controller
 			->setPageTitle(/* I18N: %s is an individual’s name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()))
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-			->addInLineJavascript('var pastefield; function paste_id(value) {pastefield.value=value;}');
-
+			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 		echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		echo '<div id="pedigreemap-page">
 				<h2>', $controller->getPageTitle(), '</h2>';
