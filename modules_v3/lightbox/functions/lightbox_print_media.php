@@ -152,7 +152,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		break;
 	case 7:
 	default:
-		$tt = WT_I18N::translate('Not in DB');
+//		$tt = WT_I18N::translate('Not in DB');
 		break;
 	}
 
@@ -223,73 +223,14 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				$foundObjs[$rowm['m_id']]=true;
 			}
 		}
-
-		// TODO the following logic assumes that each media file is linked only
-		// once from each individual.  But if you are baptised and buried in
-		// the same church, and have a photo of it in both events, it fails.
-
-		// =====================================================================================
-		//-- Objects are removed from the $current_objes list as they are printed.
-		//-- Any “Extra” objects left in the list are new objects recently added to the gedcom
-		//-- but not yet accepted into the database.
-		//-- We will print them too, and put any “Extra Items not in DB” into a new Row.
-
-		// Compare Items count in Database versus Item count in GEDCOM
-		if ($kind==7 && $ct+$ctf!=$numm) {
-			// If any items are left in $current_objes list for this individual, put them into $kind 7 (“Not in DB”) row
-			echo '<table width="100%" class="facts_table"><tr>';
-			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
-			echo '<b>', $tt, '</b>';
-			echo '</td>';
-			echo '<td class="facts_value" >';
-			echo '<table class="facts_table" width="100%" cellpadding="0"><tr><td >';
-			echo '<div id="thumbcontainer', $kind, '">';
-			echo '<ul class="section" id="thumblist_', $kind, '">';
-			foreach ($current_objes as $media_id=>$value) {
-				while ($value>0) {
-					$objSubrec = array_pop($obje_links[$media_id]);
-					$row = array();
-					$newrec = find_gedcom_record($media_id, $ged_id, true);
-					$row['m_id'] = $media_id;
-					$row['m_file']=$ged_id;
-					$row['m_filename'] = get_gedcom_value("FILE", 1, $newrec);
-					$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
-					if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
-					$row['m_gedcom'] = $newrec;
-					$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
-					$ext = "";
-					if ($et>0) $ext = substr(trim($ematch[1]), 1);
-					$row['m_ext'] = $ext;
-					$row['pid'] = $pid;
-					$res = lightbox_print_media_row('new', $row, $pid);
-					$media_found = $media_found || $res;
-					$value--;
-				}
-			}
-		}
-		// No “Extra” Media Items ============================
-		if ($kind==7 && $ct+$ctf==$numm) {
-		// “Extra” Media Item in GEDCOM but NOT in DB ========
-		} else if ($kind==7 && $ct+$ctf!=$numm) {
-			echo '</ul>';
-			echo '</div>';
-			echo '<div class="clearlist">';
-			echo '</div>';
-			echo '</td></tr></table>';
-			echo '</td>';
-			echo '</tr>';
-			echo '</table>';
-		// Media Item in GEDCOM & in DB ======================
-		} else {
-			echo '</ul>';
-			echo '</div>';
-			echo '<div class="clearlist">';
-			echo '</div>';
-			echo '</td></tr></table>';
-			echo '</td>';
-			echo '</tr>';
-			echo '</table>';
-		}
+		echo '</ul>';
+		echo '</div>';
+		echo '<div class="clearlist">';
+		echo '</div>';
+		echo '</td></tr></table>';
+		echo '</td>';
+		echo '</tr>';
+		echo '</table>';
 	}
 	if ($media_found) return $is_media='YES';
 	else return $is_media='NO';
