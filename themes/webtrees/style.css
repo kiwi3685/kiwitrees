@@ -1174,3 +1174,16 @@ ul#research_status li {list-style-type:none; line-height:16px; padding:2px 0; ma
 ul#research_status li ul, ul#research_status li li:last-child {margin-bottom:0}
 ul#research_status span.ui-icon {display:inline-block;vertical-align:top}
 ul#research_status ul.sublinks {display:none}
+
+/* Styling for simpl_cousins module (cousins_tab) */
+#cousins_tab {width:98%;}
+#cousins_tab h3 {margin:10px 20px;}
+#cousins_tab h4 {font-size:16px;font-weight:900;margin:0 0 5px;text-align:center;}
+#cousins_tab h5 {margin:0;clear:both;padding:10px 0 2px 0;}
+#cousins_tab_content {border-spacing:10px;display:inline-table;margin:0 10px;overflow:hidden;padding:0;width:98%;}
+#cousins_tab .person_box, #cousins_tab .person_boxF, #cousins_tab .person_boxNN {clear:left;float:left;margin:1px 0;width:99%!important;}
+#cousins_f, #cousins_m {border:1px solid;border-radius:5px;display:table-cell;padding:10px;width:45%;}
+.cousins_name {}
+.cousins_lifespan, .cousins_pedi {font-size:9px;padding:3px 5px 5px 5px;}
+.cousins_counter {margin:0 3px;font-size:80%;}
+.cousins_counter:after {content:". ";}
