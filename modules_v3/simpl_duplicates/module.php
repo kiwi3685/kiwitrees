@@ -31,7 +31,7 @@ class simpl_duplicates_WT_Module extends WT_Module implements WT_Module_Config {
 
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/tab on the individual page. */ WT_I18N::translate('Simpl_duplicates');
+		return /* I18N: Name of a module/tab on the individual page. */ WT_I18N::translate('Find duplicates');
 	}
 
 	// Extend WT_Module

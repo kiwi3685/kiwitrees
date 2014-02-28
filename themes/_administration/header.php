@@ -24,7 +24,8 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
+ // List modules to be added to family tree section, by title
+$module_list =  array('Find unlinked individuals', 'Find duplicates');
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
@@ -117,11 +118,16 @@ foreach (WT_Tree::getAll() as $tree) {
 	}
 }
 echo
-	'<li><a ', (WT_SCRIPT_NAME=="admin_site_merge.php" ? 'class="current" ' : ''), 'href="admin_site_merge.php">',   WT_I18N::translate('Merge records'), '</a></li>',
-	'<li><a ', (WT_SCRIPT_NAME=="admin_site_other.php" ? 'class="current" ' : ''), 'href="admin_site_other.php">',   WT_I18N::translate('Add unlinked records'), '</a></li>',
-	'<li><a ', (WT_SCRIPT_NAME=="admin_trees_check.php" ? 'class="current" ' : ''), 'href="admin_trees_check.php">', WT_I18N::translate('Check for errors'), '</a></li>',
-	'<li><a ', (WT_SCRIPT_NAME=="admin_site_change.php" ? 'class="current" ' : ''), 'href="admin_site_change.php">', WT_I18N::translate('Changes log'),'</a></li>',
 	'<li><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'',  WT_I18N::translate('Set the default blocks for new family trees'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></li>',
+	'<li><a ', (WT_SCRIPT_NAME=="admin_trees_check.php" ? 'class="current" ' : ''), 'href="admin_trees_check.php">', WT_I18N::translate('Check for errors'), '</a></li>';
+	foreach (WT_Module::getActiveModules(true) as $module) {
+		if (($module instanceof WT_Module_Config) && (in_array($module, $module_list))) {
+			echo '<li><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></li>';
+		}
+	}
+	echo '<li><a ', (WT_SCRIPT_NAME=="admin_site_merge.php" ? 'class="current" ' : ''), 'href="admin_site_merge.php">',   WT_I18N::translate('Merge records'), '</a></li>',
+	'<li><a ', (WT_SCRIPT_NAME=="admin_site_other.php" ? 'class="current" ' : ''), 'href="admin_site_other.php">',   WT_I18N::translate('Add unlinked records'), '</a></li>',
+	'<li><a ', (WT_SCRIPT_NAME=="admin_site_change.php" ? 'class="current" ' : ''), 'href="admin_site_change.php">', WT_I18N::translate('Changes log'),'</a></li>',
 	'</ul></li>';
 
 if (WT_USER_IS_ADMIN) {
@@ -152,7 +158,7 @@ if (WT_USER_IS_ADMIN) {
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_reports.php" ? 'class="current" ' : ''), 'href="admin_module_reports.php">', WT_I18N::translate('Reports'), '</a></li>',
 		'</ul></li>';
 	foreach (WT_Module::getActiveModules(true) as $module) {
-		if ($module instanceof WT_Module_Config) {
+		if (($module instanceof WT_Module_Config) && (!in_array($module, $module_list))) {
 			echo '<li><span><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></span></li>';
 		}
 	}

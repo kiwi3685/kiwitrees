@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 class simpl_unlinked_WT_Module extends WT_Module implements WT_Module_Config {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Unlinked individuals');
+		return /* I18N: Name of a module */ WT_I18N::translate('Find unlinked individuals');
 	}
 
 	// Extend WT_Module
