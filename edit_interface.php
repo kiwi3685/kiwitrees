@@ -1,4 +1,4 @@
-openerpasteid<?php
+<?php
 // PopUp Window to provide editing features.
 //
 // webtrees: Web based Family History software
