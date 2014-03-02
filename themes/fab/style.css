@@ -1561,7 +1561,6 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(images/l
 .icon-lsltarrow            {width:48px;height:48px;background-image:url(images/lifespan-left.png);}
 .icon-lsrtarrow            {width:48px;height:48px;background-image:url(images/lifespan-right.png);}
 .icon-lsuparrow            {width:48px;height:48px;background-image:url(images/lifespan-up.png);}
-.icon-mapquest             {width:16px;height:16px;background-image:url(images/mapquest.png);}
 .icon-media                {width:24px;height:24px;background-image:url(images/media.png);}
 .icon-media-list           {width:24px;height:24px;background-image:url(images/media.png);}
 .icon-media-next           {width:20px;height:20px;background-image:url(images/rdarrow.png);}
@@ -1573,6 +1572,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(images/l
 .icon-mypage               {width:25px;height:25px;background-image:url(images/mypage.png);}
 .icon-note                 {width:16px;height:16px;background-image:url(images/notes.png);}
 .icon-note-list            {width:16px;height:16px;background-image:url(images/notes.png);}
+.icon-osm 				   {width:16px;height:16px;background-image:url(images/osm.png);}
 .icon-patriarch            {width:24px;height:24px;background-image:url(images/patriarch.png);}
 .icon-pedigree             {width:24px;height:24px;background-image:url(images/pedigree.png);}
 .icon-pin-in               {width:16px;height:16px;background-image:url(images/pin-in.png);}
@@ -1604,7 +1604,6 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/r
 .icon-slide_open           {width:20px;height:22px;background-image:url(images/open.png);}
 .icon-source               {width:24px;height:24px;background-image:url(images/source.png);}
 .icon-source-list          {width:24px;height:24px;background-image:url(images/source.png);}
-.icon-terraserver          {width:16px;height:16px;background-image:url(images/terraserver.png);}
 .icon-target               {width:15px;height:15px;background-image:url(images/buttons/target.png);}
 .icon-tree                 {width:24px;height:24px;background-image:url(images/gedcom.png);}
 .icon-uarrow               {width:20px;height:20px;background-image:url(images/uarrow.png);}

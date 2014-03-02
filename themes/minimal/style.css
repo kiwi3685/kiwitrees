@@ -1772,13 +1772,13 @@ a.icon-ldarrow:hover       {width:20px;height:20px;background-image:url(images/l
 .icon-lsltarrow            {width:48px;height:48px;background-image:url(images/lifespan-left.png);}
 .icon-lsrtarrow            {width:48px;height:48px;background-image:url(images/lifespan-right.png);}
 .icon-lsuparrow            {width:48px;height:48px;background-image:url(images/lifespan-up.png);}
-.icon-mapquest             {width:16px;height:16px;background-image:url(images/mapquest.png);}
 .icon-media-next           {width:20px;height:20px;background-image:url(images/rdarrow.png);}
 .icon-media-play           {width:20px;height:20px;background-image:url(images/rarrow.png);}
 .icon-media-prev           {width:20px;height:20px;background-image:url(images/ldarrow.png);}
 .icon-media-shuffle        {width:10px;height:10px;background-image:url(images/reorder.png);}
 .icon-media-stop           {width:16px;height:17px;background-image:url(images/stop.png);}
 .icon-minus                {width:11px;height:11px;background-image:url(images/minus.png);}
+.icon-osm 				   {width:16px;height:16px;background-image:url(images/osm.png);}
 .icon-pedigree             {width:24px;height:24px;background-image:url(images/pedigree.png);}
 .icon-plus                 {width:11px;height:11px;background-image:url(images/plus.png);}
 .icon-rarrow               {width:20px;height:20px;background-image:url(images/rarrow.png);}
@@ -1801,7 +1801,6 @@ a.icon-rdarrow:hover       {width:20px;height:20px;background-image:url(images/r
 .icon-sex_u_15x15          {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
 .icon-sex_u_9x9            {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
 .icon-target               {width:15px;height:15px;background-image:url(images/buttons/target.png);}
-.icon-terraserver          {width:16px;height:16px;background-image:url(images/terraserver.png);}
 .icon-uarrow               {width:20px;height:20px;background-image:url(images/uarrow.png);}
 a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/uarrow2.png);}
 .icon-udarrow              {width:20px;height:20px;background-image:url(images/udarrow.png);}

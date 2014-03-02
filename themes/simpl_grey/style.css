@@ -775,6 +775,10 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 .icon-wiki{width:16px;height:16px;background-position:-1102px -2px}
 .icon-loading-small {width:16px;height:16px;background-image:url(images/loading.gif)}
 .icon-loading-large {width:128px;height:15px;background-image:url(images/ajax-loader.gif)}
+.icon-osm {width:16px;height:16px;background-image:url(images/osm.png);}
+.icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
+.icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
+
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png)}
 .icon-silhouette-M {width:37px; height:50px; background-image:url(images/silhouette_male_small.png)}
