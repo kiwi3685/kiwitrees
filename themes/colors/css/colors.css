@@ -27,7 +27,7 @@
 
 /* Set defaults */
 
-body {font:12px tahoma, arial, helvetica, sans-serif;}
+body {font:12px tahoma, arial, helvetica, sans-serif;margin: 0;}
 legend,.details_label {font-weight:700;}
 a {color:#333333;text-decoration:none;}
 a:hover {color:#ff0000;text-decoration:none;}
