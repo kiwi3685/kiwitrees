@@ -418,7 +418,6 @@ html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap {text-align:right;}
 
 .name1,.name2 {font-weight:700;overflow:hidden;}
 a:hover .name1,a:hover .name2 {color:#ff0000;font-weight:700;}
-
 .nameZoom {font-size:14px;text-decoration:none;font-weight:700;overflow:hidden;}
 a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 
@@ -738,6 +737,7 @@ html[dir=rtl].field  .editlink, html[dir=rtl].field  .deletelink {float:left;}
 #indi_header h3.name_one {font-size:1.5em;overflow:hidden;position:relative;}
 #indi_header h3.person_box,#indi_header h3.person_boxF,#indi_header h3.person_boxNN {border:1px solid #999999;}
 
+
 #indi_mainimage {float:left;}
 #indi_mainimage a img {float:left;padding:0;}
 
@@ -745,6 +745,7 @@ html[dir=rtl].field  .editlink, html[dir=rtl].field  .deletelink {float:left;}
 .indi_name_details .name1 {font-weight:normal;}
 #indi_header a.warning {color:#ff0000;font-size:1em;}
 .indi_name_details dt:after {content:":";}
+.indi_name_details dl{margin:0;}
 
 #indi_note {margin:0 0 5px;}
 #indi_note .note_details {font-size:100%;}
