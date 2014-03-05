@@ -1232,14 +1232,16 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
 /* ============== medialist.php ======================= */
 #medialist-page #lightbox-menu {margin-bottom:60px;}
 #medialist-page .lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
-#medialist-page .lb-menu ul {list-style-type:none;}
+#medialist-page .lb-menu ul {list-style-type:none; z-index:999;}
 #medialist-page .lb-menu li {font-weight:normal; float:left; top:0;}
-#medialist-page .lb-menu > li ul {display:none;width:80px;}
-#medialist-page .lb-menu > li:hover  ul {display:block; top:36px;}
-#medialist-page .lb-menu a {display:block;}
+#medialist-page .lb-menu > li ul {background:#fff; display:none; left:0; right:auto; top:26px; margin:0;}
+#medialist-page .lb-menu > li:hover  ul {display:block;}
+#medialist-page .lb-menu a {display:block; padding: 0 8px}
+#medialist-page .lb-menu li li {text-align:left;}
 #medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
 html[dir=rtl] #medialist-page .lb-menu {float:right;}
 html[dir=rtl] #medialist-page .lb-menu li {float:right;}
+html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}

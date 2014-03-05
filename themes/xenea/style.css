@@ -792,12 +792,14 @@ html[dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
 #medialist-page .lb-menu {position:relative; float:left;}
 #medialist-page .lb-menu ul {list-style-type:none;}
 #medialist-page ul.lb-menu li {border:none; font-weight:normal; list-style-type:none; padding:0; text-align:center;}
-#medialist-page .lb-menu > li ul {display:none;width:80px;}
-#medialist-page .lb-menu > li:hover  ul {display:block; top:36px;}
+#medialist-page .lb-menu > li ul {display:none; left:0; right:auto; top:0; margin:0;}
+#medialist-page .lb-menu > li:hover  ul {display:block;}
 #medialist-page .lb-menu a {display:block;}
 #medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
+#medialist-page .lb-menu li li {text-align:left;}
 #medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
 html[dir='rtl'] #medialist-page .lb-menu {float:right;}
+html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 
 #medialist-page li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}

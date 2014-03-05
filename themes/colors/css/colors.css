@@ -352,25 +352,6 @@ html[dir=rtl] #relationship_chart {margin-right:10px;}
 .compact_view p {font-size:90%;margin:0;}
 .gedcom_table {border:1px solid #999999;margin:0;width:99%;}
 
-/* ============== medialist.php ======================= */
-#medialist-page .medialist_title {font-weight:900; margin:0 0 10px 0;}
-#medialist-page .lightbox-menu {margin: 0 10px;}
-#medialist-page .lb-menu {position:relative; float:left;}
-#medialist-page .lb-menu ul {list-style-type:none;}
-#medialist-page ul.lb-menu li {border:none; font-weight:normal; float:none; list-style-type:none; padding:0; text-align:center;}
-#medialist-page .lb-menu > li ul {display:none;width:80px;}
-#medialist-page .lb-menu > li:hover  ul {display:block; top:36px;}
-#medialist-page .lb-menu a {display:block;}
-#medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
-#medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
-#medialist-page .makeMenu li a {color:#333;}
-#medialist-page .makeMenu li:before {content: none;}
-html[dir='rtl'] #medialist-page .lb-menu {float:right;}
-
-#medialist-page li .lb-image_edit {background:url(../images/image_edit.png) no-repeat 50% 20%;}
-#medialist-page li .lb-image_link {background:url(../images/image_link.png) no-repeat 50% 20%;}
-#medialist-page li .lb-image_view {background:url(../images/image_view.png) no-repeat 50% 20%;}
-
 /* person boxes for charts */
 .person_box          {background:#ddddff;border:1px solid #aaaaaa;border-radius:3px;padding:3px;}
 .person_boxF         {background:#ffdddd;border:1px solid #aaaaaa;border-radius:3px;padding:3px;}
@@ -618,21 +599,25 @@ html[dir=rtl] .theme_form li ul li  {float:right;}
 #field_table select {min-width:100px;}
 
 /* ============== medialist.php ======================= */
-#lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
-.lb-menu ul {list-style-type:none;}
-.lb-menu li {font-weight:normal; float:left; top:0;}
-.lb-menu > li ul {display:none;width:80px;}
-.lb-menu > li:hover  ul {display:block; top:36px;}
-.lb-menu a {display:block;}
-.lb-menu li a {padding-top:24px;}
-.lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir=rtl] .lb-menu {float:right;}
-html[dir=rtl] .lb-menu li {float:right;}
+#medialist-page .medialist_title {font-weight:900; margin:0 0 10px 0;}
+#medialist-page .lightbox-menu {margin: 0 10px;}
+#medialist-page .lb-menu {position:relative; float:left; margin:0;}
+#medialist-page .lb-menu ul {list-style-type:none;}
+#medialist-page ul.lb-menu li {border:none; font-weight:normal; float:none; list-style-type:none; padding:0; text-align:center;}
+#medialist-page .lb-menu > li ul {display:none; left:0; right:auto; top:0; margin:0;}
+#medialist-page .lb-menu > li:hover ul {display:block;}
+#medialist-page .lb-menu a {display:block;}
+#medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
+#medialist-page .lb-menu li li {text-align:left;}
+#medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
+#medialist-page .makeMenu li a {color:#333;}
+#medialist-page .makeMenu li:before {content: none;}
+html[dir='rtl'] #medialist-page .lb-menu {float:right;}
+html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 
-li#lb-image_edit {background:url(../images/image_edit.png) no-repeat 50% 20%;}
-li#lb-image_link {background:url(../images/image_link.png) no-repeat 50% 20%;}
-li#lb-image_view {background:url(../images/image_view.png) no-repeat 50% 20%;}
+#medialist-page li .lb-image_edit {background:url(../images/image_edit.png) no-repeat 50% 20%;}
+#medialist-page li .lb-image_link {background:url(../images/image_link.png) no-repeat 50% 20%;}
+#medialist-page li .lb-image_view {background:url(../images/image_view.png) no-repeat 50% 20%;}
 
 /* login.php  */
 #login-register-page h2,#login-box,#register-box {text-align:center;}

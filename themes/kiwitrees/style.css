@@ -1,5 +1,37 @@
-/* stylesheet for uti-family theme */
-/* Based on simpl_designer, without variables */
+/*
+ * Standard kiwitrees style
+ *
+ * webtrees:Web based Family History software
+ * Copyright (C) 2010 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2009 PGV Development Team. All rights reserved.
+ *
+ * Copyright (c) 2014 www.kiwitrees.net & Nigel Osborne
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+*/
+
+/* select horizontal vs portrait display on family page */
+.family1 {display:block;}
+.family2 {display:none;}
+@media screen and (min-width: 1450px) {
+  .family1 {display:none;}
+  .family2 {display:block;}
+}
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
@@ -455,12 +487,14 @@ html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
 #medialist-page .lb-menu {position:relative; float:left;}
 #medialist-page .lb-menu ul {list-style-type:none;}
 #medialist-page ul.lb-menu li {border:none; font-weight:normal; list-style-type:none; padding:0; text-align:center;}
-#medialist-page .lb-menu > li ul {display:none;width:80px;}
-#medialist-page .lb-menu > li:hover  ul {display:block; top:36px;}
+#medialist-page .lb-menu > li ul {background:#fff; display:none; position:absolute; margin:0; padding:0; left:0; right:auto;}
+#medialist-page .lb-menu > li:hover ul {display:block;}
 #medialist-page .lb-menu a {display:block;}
 #medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
+#medialist-page .lb-menu li li {text-align:left;}
 #medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
 html[dir='rtl'] #medialist-page .lb-menu {float:right;}
+html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 
 #medialist-page li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
@@ -576,7 +610,7 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 .theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
 .theme_form li {list-style:none;visibility:hidden;}
 .theme_form li ul li {float:left;padding:10px;visibility:visible;}
-html[dir='rtl'] .theme_form li ul li  {float:right;}
+html[dir='rtl'] .theme_form li ul li {float:right;}
 
 /* ======= FAQ table styles ========== */
 table.faq {background-color:#e0e0e0;margin:5px 0 50px 5px;width:98%;}
@@ -1088,7 +1122,7 @@ p.branches {display:inline}
 #menu-language-vi {background-position: 0px -510px}
 #menu-language-zh_CN {background-position: 0px -525px}
 
-/* Tooltips (jquery-ui tooltips)  */
+/* Tooltips (jquery-ui tooltips) */
 .ui-tooltip {padding: 2px 4px;position: absolute;z-index: 9999;max-width: 300px;background-image:none;background-color: #fff;color:#232f49;font-size:9px;border: 1px solid #555}
 body .ui-tooltip {border-width: 2px}
 

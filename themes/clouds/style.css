@@ -358,9 +358,14 @@ border:thin solid #aaaaaa;
 display:none;
 left:10px;
 position:absolute;
-top:1.1em !important;
 z-index:999;
 }
+
+#menu-right .makeMenu li ul {
+top:1.1em;
+}
+
+
 .makeMenu li ul li {
 display:block;
 text-align:left;
@@ -810,20 +815,21 @@ width:99%;
 #medialist-page .lb-menu {position:relative; float:left;}
 #medialist-page .lb-menu ul {list-style-type:none;}
 #medialist-page ul.lb-menu li {border:none; font-weight:normal; float:none; list-style-type:none; padding:0; text-align:center;}
-#medialist-page .lb-menu > li ul {display:none;width:80px;}
-#medialist-page .lb-menu > li:hover  ul {display:block; top:36px;}
+#medialist-page .lb-menu > li ul {display:none; left:0; right:auto; top:0; margin:0;}
+#medialist-page .lb-menu > li:hover ul {display:block;}
 #medialist-page .lb-menu a {display:block;}
 #medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
+#medialist-page .lb-menu li li {text-align:left;}
 #medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
 #medialist-page .makeMenu li:before {content: none;}
 html[dir='rtl'] #medialist-page .lb-menu {float:right;}
+html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 
 #medialist-page li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
 
 /* person boxes are used in various charts */
-
 .person_box,.person_boxF,.person_boxNN {
 border:1px solid #aaaaaa;
 padding:3px;
@@ -881,7 +887,7 @@ text-align:left;
 vertical-align:top;
 }
 
-html[dir=rtl] .list_value,  html[dir=rtl] .list_value_wrap {text-align:right;}
+html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap {text-align:right;}
 
 .list_label,.list_value {
 white-space:nowrap;
@@ -1015,7 +1021,7 @@ color:#77aaff;
 font-weight:bold;
 }
 
-a:hover .name1,a:hover.name2,a:hover .nameZoom  {
+a:hover .name1,a:hover.name2,a:hover .nameZoom {
 color:#ff0000;
 font-weight:bold
 }
@@ -1277,7 +1283,7 @@ line-height:20pt;
 color:#555555;
 }
 
-input,button,textarea  {
+input,button,textarea {
 border-width:1px;
 border-color:#ffffff #000066 #000066 #ffffff;
 font-size: 12px;
@@ -1709,7 +1715,7 @@ overflow:visible !important;
 .person_box_template .style0 {padding: 2px;}
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
-.person_box_template  .details div {display:block;}
+.person_box_template .details div {display:block;}
 .person_box_template img {float:left;height:50px;width:auto;max-width:80px;margin:0 3px 0 0;}
 html[dir=rtl] .person_box_template img {float:right; margin:0 0 0 3px;}
 .person_box_template i[class^="icon-silhouette"] {float:left;}
@@ -1731,7 +1737,7 @@ min-height:40px;
 .theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
 .theme_form li {list-style:none;visibility:hidden;}
 .theme_form li ul li {float:left;padding:10px;visibility:visible;}
-html[dir=rtl] .theme_form li ul li  {float:right;}
+html[dir=rtl] .theme_form li ul li {float:right;}
 
 /* ======= Favourites block ========== */
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
@@ -1749,22 +1755,7 @@ html[dir=rtl] .theme_form li ul li  {float:right;}
 #branches-page p {
 margin:10px;
 }
-/* ============== medialist.php ======================= */
-#lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
-.lb-menu ul {list-style-type:none;}
-.lb-menu li {font-weight:normal; float:left; top:0;}
-.lb-menu > li ul {display:none;width:80px;}
-.lb-menu > li:hover  ul {display:block; top:36px;}
-.lb-menu a {display:block;}
-.lb-menu li a {padding-top:24px;}
-.lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir=rtl] .lb-menu {float:right;}
-html[dir=rtl] .lb-menu li {float:right;}
 
-li#lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
-li#lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
-li#lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
 /* ============== login.php ======================= */
 #login-form a:hover {
 color:red;

@@ -30,8 +30,17 @@
  * The pro_linedrop menu is based on ones available from http://www.cssmenus.co.uk
  *	  Copyright (c) 2009- Stu Nicholls. All rights reserved.
 */
+
+/* select horizontal vs portrait display on family page */
+.family1 {display:block;}
+.family2 {display:none;}
+@media screen and (min-width: 1500px) {
+  .family1 {display:none;}
+  .family2 {display:block;}
+}
+
 html{background:#ECECEC;margin:0;padding:0}
-body{color:#666;font-family:Trebuchet MS, sans-serif;font-size:100%;margin:0 auto;text-align:center;width:1060px}
+body{color:#666;font-family:Trebuchet MS, sans-serif;font-size:100%;margin:0 auto;text-align:center;width:80%}
 input:required:valid, textarea:required:valid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat}
 input:required:invalid, textarea:required:invalid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat}
 html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, html[dir="rtl"] input:required:invalid, html[dir="rtl"] textarea:required:invalid {background-position:left top}
@@ -59,7 +68,7 @@ a:hover img{background:none}
 .pro_linedrop .select a:hover b,.pro_linedrop .select li:hover a b{display:block;text-shadow:0 1px 0 #fff}
 .pro_linedrop .select li.line a:hover,.pro_linedrop .select li.line:hover .rt a{padding-right:.75em;text-align:right}
 .pro_linedrop .sub{display:none;list-style:none;margin:0 0 0 .25em;padding:0}
-.pro_linedrop .select :hover .sub{background:#D3D3D3;border-top:0;display:block;float:left;height:2.26em;left:0;position:absolute;text-align:left;top:2.5em;width:855px}
+.pro_linedrop .select :hover .sub{background:#D3D3D3;border-top:0;display:block;float:left;height:2.26em;left:0;position:absolute;text-align:left;top:2.5em;width:80%}
 .pro_linedrop .select :hover .sub li a{background:#D3D3D3;border-left:1px solid #fff;color:#696969;display:block;float:left;font-size:.69em;margin:0;padding:.75em 0 0 .63em;text-align:left;white-space:nowrap;width:123px}
 .pro_linedrop .select :hover .sub li a:hover,.pro_linedrop .select :hover .sub li:hover{color:#4682B4;position:relative;text-shadow:0 1px 0 #fff}
 .pro_linedrop .select :hover .sub :hover ul{background:#D3D3D3;border:1px solid #444;border-top:0;border-left:0;display:block;left:0;list-style:none;margin:0;padding:0;position:absolute;top:1.88em;width:130px}
@@ -593,15 +602,18 @@ html[dir='rtl'] .theme_form li ul li  {float:right;}
 .list_table_controls td {min-width:40px;text-align:center}
 #medialist-page .medialist_title {font-weight:900; margin:0 0 10px 0;}
 #medialist-page .lightbox-menu {margin: 0 10px;}
+#medialist-page .list_table td.list_value_wrap {border-width:0 1px 1px 0; border-style:solid;border-radius:5px;}
 #medialist-page .lb-menu {position:relative; float:left;}
 #medialist-page .lb-menu ul {list-style-type:none;}
 #medialist-page ul.lb-menu li {border:none; font-weight:normal; list-style-type:none; padding:0; text-align:center;}
-#medialist-page .lb-menu > li ul {display:none;width:80px;}
-#medialist-page .lb-menu > li:hover  ul {display:block; top:36px;}
+#medialist-page .lb-menu > li ul {background:#fff; border:1px solid; display:none; position:absolute; margin:0; padding:0; left:0; right:auto;}
+#medialist-page .lb-menu > li:hover  ul {display:block;}
 #medialist-page .lb-menu a {display:block;}
 #medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
+#medialist-page .lb-menu li li {text-align:left;}
 #medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
 html[dir='rtl'] #medialist-page .lb-menu {float:right;}
+html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 #medialist-page li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
