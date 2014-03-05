@@ -94,6 +94,7 @@ class WT_MenuBar {
 		}
 
 		$indi_xref=$controller->getSignificantIndividual()->getXref();
+		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 		$menu = new WT_Menu(WT_I18N::translate('Charts'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart');
 
@@ -219,10 +220,11 @@ class WT_MenuBar {
 			case 'relationship':
 				if ($indi_xref) {
 					// Pages focused on a specific person - from the person, to me
-					$pid1=WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;;
-					$pid2=$indi_xref;
-					if ($pid1==$pid2) {
-						$pid2='';
+					$pid1 = WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
+					if (!$pid1 && $PEDIGREE_ROOT_ID) $pid1 = $PEDIGREE_ROOT_ID;
+					$pid2 = $indi_xref;
+					if ($pid1 == $pid2) {
+						$pid2 = '';
 					}
 					$submenu = new WT_Menu(
 						WT_I18N::translate('Relationships'),
@@ -232,7 +234,7 @@ class WT_MenuBar {
 					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 						// Add a submenu showing relationship from this person to each of our favorites
 						foreach (user_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
-							if ($favorite['type']=='INDI' && $favorite['gedcom_id']==WT_GED_ID) {
+							if ($favorite['type']=='INDI' && $favorite['gedcom_id'] == WT_GED_ID) {
 								$person=WT_Person::getInstance($favorite['gid']);
 								if ($person instanceof WT_Person) {
 									$subsubmenu = new WT_Menu(
@@ -247,8 +249,8 @@ class WT_MenuBar {
 					}
 				} else {
 					// Regular pages - from me, to somebody
-					$pid1=WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
-					$pid2='';
+					$pid1 = WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
+					$pid2 = '';
 					$submenu = new WT_Menu(
 						WT_I18N::translate('Relationships'),
 						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
