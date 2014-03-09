@@ -411,11 +411,13 @@ html[dir='rtl'] #separator{background:#D3D3D3 url(images/indi_sprite.png) no-rep
 html[dir='rtl'] .use-sidebar #separator{background:#D3D3D3 url(images/indi_sprite.png) no-repeat -26px 100px}
 #sb_family_nav_content{margin-top:8px;overflow:hidden}
 .nav_content{font-size:.8em;padding:0;width:100%}
+.nav_content .facts_label {width:75px;}
+.famnav_title{font-weight: bold;display: block;padding: 5px 0;}
 .nav_content .facts_label{position:relative}
 .flyout2{color:#000;left:50px;margin-top:-30px;padding:3px;text-align:left;max-width:150px}
 .flyout3{width:150px;white-space:nowrap}
-.flyout4{color:#000;margin-left:0;margin-top:0;padding:3px;text-align:left}
-#flyout3,#flyout3 a,#phusb,#pwife,#shusb,#swife,#spouse{background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none}
+.flyout4{color:#000;font-weight:bold;margin-left:0;margin-top:0;padding:3px;text-align:left}
+#flyout3,#phusb,#pwife,#shusb,#swife,#spouse{display:block;background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none}
 html[dir='rtl'] .flyout{left:210px;text-align:right}
 html[dir='rtl'] .flyout2{right:40px;text-align:right}
 #sb_desc_content{font-size:.8em;margin-left:3px}
