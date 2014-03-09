@@ -188,7 +188,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		}
 	}
 
-	// Print the facts
+	// Print the facts (old version)
 	public function printFamilyFacts() {
 		global $linkToID;
 
@@ -241,4 +241,71 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 			echo '</td></tr>';
 		}
 	}
+
+	// Print the facts (horizontal option)
+	public function printFamilyFacts2() {
+		global $linkToID;
+
+		$linkToID = $this->record->getXref(); // -- Tell addmedia.php what to link to
+
+		/* Set width */
+		if (WT_USER_CAN_EDIT) {
+			$fam_width = '70%';
+		} else {
+			$fam_width = '100%';
+		}
+
+		$indifacts = $this->record->getFacts();
+		if ($indifacts) {
+			echo '<div style="display:inline-block;width:', $fam_width, ';"><table style="width:100%;">';
+			sort_facts($indifacts);
+			foreach ($indifacts as $fact) {
+				print_fact($fact, $this->record);
+			}
+			print_main_media($this->record->getXref());
+			echo '</table></div>';
+		} else {
+			echo '<tr><td class="messagebox" colspan="2">', WT_I18N::translate('No facts for this family.'), '</td></tr>';
+		}
+
+		if (WT_USER_CAN_EDIT) {
+			echo '<div style="display:inline-block;width:30%;vertical-align:top;"><table style="width:100%;">';
+			echo '<tr><th class="descriptionbox" colspan="2">', WT_I18N::translate('Add new family information'), '</th></tr>';
+			print_add_new_fact($this->record->getXref(), $indifacts, 'FAM');
+
+			echo '<tr><td class="descriptionbox">';
+			echo WT_Gedcom_Tag::getLabel('NOTE');
+			echo '</td><td class="optionbox">';
+			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','NOTE');\">", WT_I18N::translate('Add a new note'), '</a>';
+			echo help_link('add_note');
+			echo '</td></tr>';
+
+			echo '<tr><td class="descriptionbox">';
+			echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
+			echo '</td><td class="optionbox">';
+			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','SHARED_NOTE');\">", WT_I18N::translate('Add a new shared note'), '</a>';
+			echo help_link('add_shared_note');
+			echo '</td></tr>';
+
+			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+				echo '<tr><td class="descriptionbox">';
+				echo WT_Gedcom_Tag::getLabel('OBJE');
+				echo '</td><td class="optionbox">';
+				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid=".$this->record->getXref()."', '_blank', edit_window_specs); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
+				echo help_link('OBJE');
+				echo '<br>';
+				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid=".$this->record->getXref()."&amp;linkto=family', '_blank', find_window_specs); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
+				echo '</td></tr>';
+			}
+
+			echo '<tr><td class="descriptionbox">';
+			echo WT_Gedcom_Tag::getLabel('SOUR');
+			echo '</td><td class="optionbox">';
+			echo "<a href=\"#\" onclick=\"return add_new_record('".$this->record->getXref()."','SOUR');\">", WT_I18N::translate('Add a new source citation'), '</a>';
+			echo help_link('add_source');
+			echo '</td></tr>';
+			echo '</table></div>';
+		}
+	}
+
 }

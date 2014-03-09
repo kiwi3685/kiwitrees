@@ -29,7 +29,12 @@ require './includes/session.php';
 $controller=new WT_Controller_Family();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
-	$controller->pageHeader();
+	$controller->pageHeader()
+				->addInlineJavascript('
+					function show_gedcom_record() {
+						var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
+					}	
+				');
 	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
@@ -81,75 +86,102 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 $PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
 $show_full = '1';
 
-echo '<script>';
-echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
-echo '}';
-echo '</script>';
-
 ?>
-<div id="family-page">
-<table align="center">
-	<tr>
-		<td>
-			<p class="name_head"><?php echo $controller->record->getFullName(); ?></p>
-		</td>
-	</tr>
-</table>
-<table id="family-table" align="center">
-	<tr valign="top">
-		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
-			<?php print_family_children($controller->record->getXref()); ?>
-		</td>
-		<td> <!--//parents pedigree chart and Family Details//-->
-			<table>
-				<tr>
-					<td class="subheaders" valign="top" width="100%"><?php echo WT_I18N::translate('Parents'); ?></td>
-					<td class="subheaders" valign="top" width="100%"><?php echo WT_I18N::translate('Grandparents'); ?></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<table><tr><td> <!--//parents pedigree chart //-->
-						<?php
-						echo print_family_parents($controller->record->getXref());
-						if (WT_USER_CAN_EDIT) {
-							if ($controller->diff_record) {
-								$husb=$controller->diff_record->getHusband();
-							} else {
-								$husb=$controller->record->getHusband();
+<div id="family-page" class="family1">
+	<table align="center">
+		<tr>
+			<td>
+				<p class="name_head"><?php echo $controller->record->getFullName(); ?></p>
+			</td>
+		</tr>
+	</table>
+	<table id="family-table" align="center">
+		<tr valign="top">
+			<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
+				<?php print_family_children($controller->record->getXref()); ?>
+			</td>
+			<td> <!--//parents pedigree chart and Family Details//-->
+				<table>
+					<tr>
+						<td class="subheaders" valign="top" width="100%"><?php echo WT_I18N::translate('Parents'); ?></td>
+						<td class="subheaders" valign="top" width="100%"><?php echo WT_I18N::translate('Grandparents'); ?></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<table><tr><td> <!--//parents pedigree chart //-->
+							<?php
+							echo print_family_parents($controller->record->getXref());
+							if (WT_USER_CAN_EDIT) {
+								if ($controller->diff_record) {
+									$husb=$controller->diff_record->getHusband();
+								} else {
+									$husb=$controller->record->getHusband();
+								}
+								if (!$husb) {
+									echo '<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new father'), '</a><br>';
+								}
+								if ($controller->diff_record) {
+									$wife=$controller->diff_record->getWife();
+								} else {
+									$wife=$controller->record->getWife();
+								}
+								if (!$wife)  {
+									echo '<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new mother'), '</a><br>';
+								}
 							}
-							if (!$husb) {
-								echo '<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new father'), '</a><br>';
-							}
-							if ($controller->diff_record) {
-								$wife=$controller->diff_record->getWife();
-							} else {
-								$wife=$controller->record->getWife();
-							}
-							if (!$wife)  {
-								echo '<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new mother'), '</a><br>';
-							}
-						}
-						?>
-						</td></tr></table>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-					<span class="subheaders"><?php echo WT_I18N::translate('Family Group Information'); ?></span>
-						<?php
-							if ($controller->record->canDisplayDetails()) {
-								echo '<table class="facts_table">';
-								$controller->printFamilyFacts();
-								echo '</table>';
-							} else {
-								echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';
-							}
-						?>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-</div> <!-- Close <div id="family-page"> -->
+							?>
+							</td></tr></table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+						<span class="subheaders"><?php echo WT_I18N::translate('Family Group Information'); ?></span>
+							<?php
+								if ($controller->record->canDisplayDetails()) {
+									echo '<table class="facts_table">';
+									$controller->printFamilyFacts();
+									echo '</table>';
+								} else {
+									echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';
+								}
+							?>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+<?php
+echo '
+	<div id="family-page" class="family2" style="overflow:hidden;">
+		<h2 class="name_head" style="text-align:center;">', $controller->record->getFullName(), '</h2>
+		<div id="family_chart" style="border-bottom:1px solid; max-height:540px; overflow-y:auto;">', 
+				print_parents($controller->record->getXref());
+				if (WT_USER_CAN_EDIT) {
+					if ($controller->diff_record) {
+						$husb=$controller->diff_record->getHusband();
+					} else {
+						$husb=$controller->record->getHusband();
+					}
+					if ($controller->diff_record) {
+						$wife=$controller->diff_record->getWife();
+					} else {
+						$wife=$controller->record->getWife();
+					}
+				}
+			echo '<div id="children" style="clear:both;margin:auto;overflow:hidden;text-align:center;">',
+				print_children($controller->record->getXref()), '
+			</div>
+		</div>
+		<div id="fam_info">
+			<div class="subheaders">', WT_I18N::translate('Family Group Information'), '</div>';
+				if ($controller->record->canDisplayDetails()) {
+					echo '<div>';
+					$controller->printFamilyFacts2();
+					echo '</div>';
+				} else {
+					echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';
+				}
+		echo '</div>';
+

@@ -598,3 +598,257 @@ function print_cousins($famid, $personcount=1) {
 	}
 	echo '</td>';
 }
+
+/*
+ * display parents on family.php
+*/
+function print_parents($famid, $personcount=1) {
+	global $GEDCOM, $pbwidth, $pbheight;
+	$controller=new WT_Controller_Family();
+	$ged_id=get_id_from_gedcom($GEDCOM);
+	$family = WT_Family::getInstance($famid);
+	if (is_null($family)) return;
+	$husb = $family->getHusband();
+	if (is_null($husb)) $husb = new WT_Person('');
+	$wife = $family->getWife();
+	if (is_null($wife)) $wife = new WT_Person('');
+	// -- get the new record and parents if in editing show changes mode
+	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {
+		$newrec = find_gedcom_record($famid, $ged_id, true);
+		$newparents = find_parents_in_record($newrec);
+	}
+	echo '<div id="grandparents" style="text-align:center;">';
+		/* husband's parents */
+		$hfams = $husb->getChildFamilies();
+		$hparents = false;
+		$upfamid = "";
+		if ($hfams) {
+			echo '<div id="husb_parents" style="display:inline-block; margin:0 20px; text-align:center; vertical-align:top;">';
+				$hparents = false;
+				foreach ($hfams as $hfamily) {
+					$hparents = find_parents_in_record($hfamily->getGedcomRecord());
+					$upfamid = $hfamily->getXref();
+					break;
+				}
+				if (!empty($upfamid)) {
+					echo '<p style="text-align:center;">', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
+				}
+				if ($hparents) {
+					// husband's father
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">';
+					print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 1, 4, $personcount);
+					echo '</div>';
+				}
+				if ($hparents) {
+					// husband's mother
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">';
+						print_pedigree_person(WT_Person::getInstance($hparents['WIFE']), 1, 5, $personcount);
+					echo '</div>';
+				}
+				/* marriage details */
+				echo '<div style="text-align:center;">';
+					echo '<a href="', $hfamily->getHtmlUrl(), '" class="details1">';
+							$marriage = $hfamily->getMarriage();
+							if ($marriage->canShow()) {
+							$marriage->print_simple_fact();
+							}
+						echo '</a>';
+				echo '</div>';
+			echo '</div>';
+		} else {
+			echo '<div id="husb_parents" style="display:inline-block; margin:auto; text-align:center; vertical-align:top;">';
+					echo '<p style="height:20px; text-align:center;"></p>';
+					// husband's father
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">
+						  	  <div class="person_box" style="width:', $pbwidth, 'px; height:', $pbheight-12, 'px; line-height:', $pbheight-12, 'px;">
+						  </div>
+					</div>';
+					// husband's mother
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">
+						  	  <div class="person_box" style="width:', $pbwidth, 'px; height:', $pbheight-12, 'px; line-height:', $pbheight-12, 'px;">
+						  </div>
+					</div>';
+			echo '</div>';
+		}		
+		/* wife's parents */
+		$hfams = $wife->getChildFamilies();
+		$hparents = false;
+		$upfamid = "";
+		if ($hfams) {
+				$hparents = false;
+				foreach ($hfams as $hfamily) {
+					$hparents = find_parents_in_record($hfamily->getGedcomRecord());
+					$upfamid = $hfamily->getXref();
+					break;
+				}
+			echo '<div id="wife_parents" style="display:inline-block; margin:0 20px; text-align:center;">';
+				if (!empty($upfamid)) {
+					echo '<p style="text-align:center;">', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
+				}
+				if ($hparents) {
+					// wife's father
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">';
+					print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 1, 4, $personcount);
+					echo '</div>';
+				}
+				if ($hparents) {
+					// wife's mother
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">';
+						print_pedigree_person(WT_Person::getInstance($hparents['WIFE']), 1, 5, $personcount);
+					echo '</div>';
+				}
+				/* marriage details */
+				echo '<div style="text-align:center;">';
+					echo '<a href="', $hfamily->getHtmlUrl(), '" class="details1">';
+							$marriage = $hfamily->getMarriage();
+							if ($marriage->canShow()) {
+							$marriage->print_simple_fact();
+							}
+						echo '</a>';
+				echo '</div>';
+			echo '</div>';
+		} else {
+			echo '<div id="wife_parents" style="display:inline-block; margin:auto; text-align:center; vertical-align:top;">';
+					echo '<p style="height:20px; text-align:center;"></p>';
+					// wife's father
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">
+						  	  <div class="person_box" style="width:', $pbwidth, 'px; height:', $pbheight-12, 'px; line-height:', $pbheight-12, 'px;">
+						  </div>
+					</div>';
+					// wife's mother
+					echo '<div style="display:inline-block;margin:0 20px; text-align:left; vertical-align:top;">
+						  	  <div class="person_box" style="width:', $pbwidth, 'px; height:', $pbheight-12, 'px; line-height:', $pbheight-12, 'px;">
+						  </div>
+					</div>';
+			echo '</div>';			
+		}
+	echo '</div>';
+
+	/* parents */
+	echo '<div style="width:', $pbwidth * 2 +12, 'px; height:30px; border-left:3px solid; border-right:3px solid; margin:10px auto 0;"></div>';
+	echo '<div id="parents" style="background:#ddd; border:2px inset #ccc;margin:auto; padding:10px; width:', $pbwidth * 3 + 12, 'px;">';
+		/* husband */
+		if (isset($newparents) && $husb->getXref() != $newparents["HUSB"]) {
+			echo '<div class="facts_valueblue" style="display:inline-block; vertical-align:top;">';
+			print_pedigree_person(WT_Person::getInstance($newparents['HUSB']), 1, 2, $personcount);
+		} else {
+			echo '<div style="display:inline-block; vertical-align:top;">';
+			print_pedigree_person($husb, 1, 2, $personcount);
+		}
+		if (!$husb)  {
+			echo '<div style="display:inline-block; vertical-align:top;">
+				<div class="person_box" style="width:', $pbwidth-12, 'px; line-height:', $pbheight-14, 'px;">
+					<p style="margin:0; text-align:center"><a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new father'), '</a></p>
+				</div>';
+		}
+		echo '</div>';
+		/* marriage details */
+		echo '<div style="display:inline-block; padding:20px 10px; width:', $pbwidth, 'px; text-align:center; vertical-align:middle;">
+				<a href="', $family->getHtmlUrl(), '" class="details1">';
+					$marriage = $family->getMarriage();
+					if ($marriage->canShow()) {
+					$marriage->print_simple_fact();
+					}
+				echo '</a>';
+		echo '</div>';
+		/* wife */
+		if (isset($newparents) && $wife->getXref() != $newparents["WIFE"]) {
+			echo '<div class="facts_valueblue" style="display:inline-block; vertical-align:top;">';
+			print_pedigree_person(WT_Person::getInstance($newparents['WIFE']), 1, 3, $personcount);
+		} elseif ($wife->getXref()) {
+			echo '<div style="display:inline-block; vertical-align:top;">';
+			print_pedigree_person($wife, 1, 3, $personcount);
+		} else {
+			echo '<div style="display:inline-block; vertical-align:top;">
+				<div class="person_boxF" style="width:', $pbwidth-12, 'px; line-height:', $pbheight-14, 'px;">
+					<p style="margin:0; text-align:center"><a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new mother'), '</a></p>
+				</div>';
+		}
+		echo '</div>
+	</div>';
+	/* children */
+}
+
+/*
+ * display children on family.php
+*/
+function print_children($famid, $childid = "", $personcount="1") {
+	global $bwidth, $bheight, $pbwidth, $pbheight, $cbheight, $cbwidth,$WT_IMAGES, $GEDCOM;
+
+	$family=WT_Family::getInstance($famid);
+	$children=array();
+	foreach ($family->getChildren() as $child) {
+		$children[]=$child->getXref();
+	}
+	$numchil=$family->getNumberOfChildren();
+	echo '<div>
+			<div class="subheaders">';
+				if ($numchil==0) {
+					echo WT_I18N::translate('No children');
+				} else {
+					echo /* I18N: This is a title, so needs suitable capitalisation */ WT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
+				}
+			echo '</div>';
+		if (WT_USER_CAN_EDIT) {
+			echo '<div>
+				<a href="#" onclick="return addnewchild(\'$famid','\');">' . WT_I18N::translate('Add a child to this family') . '</a>
+				<a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>
+				<a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>
+			</div>';					
+		}
+	echo '</div>';
+
+	$newchildren = array();
+	$oldchildren = array();
+	if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+		$newrec = find_gedcom_record($famid, WT_GED_ID, true);
+		$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
+		if ($ct > 0) {
+			$oldchil = array();
+			for ($i = 0; $i < $ct; $i++) {
+				if (!in_array($match[$i][1], $children)) $newchildren[] = $match[$i][1];
+				else $oldchil[] = $match[$i][1];
+			}
+			foreach ($children as $indexval => $chil) {
+				if (!in_array($chil, $oldchil)) $oldchildren[] = $chil;
+			}
+			//-- if there are no old or new children then the children were reordered
+			if ((count($newchildren)==0) && (count($oldchildren)==0)) {
+				$children = array();
+				for ($i = 0; $i < $ct; $i++) {
+					$children[] = $match[$i][1];
+				}
+			}
+		}
+	}
+	if ((count($children) > 0) || (count($newchildren) > 0) || (count($oldchildren) > 0)) {
+			foreach ($children as $indexval => $chil) {
+				if (!in_array($chil, $oldchildren)) {
+					echo '<div style="display:inline-block;margin:20px;text-align:left; vertical-align:top;">'; 
+						print_pedigree_person(WT_Person::getInstance($chil), 1, 8, $personcount);
+					echo '</div>';
+					$personcount++;
+				}
+			}
+			foreach ($newchildren as $indexval => $chil) {
+				echo '<div style="display:inline-block;margin:20px;text-align:left; vertical-align:top;">'; 
+					print_pedigree_person(WT_Person::getInstance($chil), 1, 0, $personcount);
+					$personcount++;
+				echo '</div>';
+			}
+			foreach ($oldchildren as $indexval => $chil) {
+				echo '<div style="display:inline-block;margin:20px;text-align:left; vertical-align:top;">'; 
+					print_pedigree_person(WT_Person::getInstance($chil), 1, 0, $personcount);
+					$personcount++;
+				echo '</div>';
+			}
+		// message 'no children'
+	} else {
+		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
+			echo '<div><i class="icon-childless"></i> '.WT_I18N::translate('This family remained childless').'</div>';
+			echo '<div style="display:inline-block;margin:20px;text-align:left; vertical-align:top;">'; 
+				print_pedigree_person(WT_Person::getInstance($childid), 1, 0, $personcount);
+				$personcount++;
+		}
+	}
+}
