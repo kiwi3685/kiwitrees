@@ -46,7 +46,8 @@ a:focus {outline-style:none;}
 th {font-weight:100;}
 td {border-radius: 5px;}
 ul {padding:0 15px;margin:8px;}
-img {border:none; border-radius:5px;}
+img {border:none;}
+a.gallery img {border-radius:5px;}
 legend img {height:20px;vertical-align:middle;width:20px;}
 img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img {border:none;height:25px;vertical-align:middle;}
 input, button, textarea {border-top-color:#fff;border-left-color:#fff;border-right-color:#555;border-bottom-color:#555;border-width:1px;font-size:12px;}

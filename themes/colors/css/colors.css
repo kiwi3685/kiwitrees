@@ -45,8 +45,10 @@ hr {margin-top:5px;}
 th {font-weight:100;}
 select {border:1px solid #cccccc;}
 
-img {border:none;border-radius:5px;}
+img {border:none;}
 img.block {height:25px;}
+a.gallery img {border-radius:5px;}
+
 
 fieldset {margin:8px 8px 4px;padding:30px;text-align:left;}
 fieldset ol, fieldset li {margin:2px 0 0 5px;}
@@ -869,7 +871,7 @@ html[dir=rtl] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20p
 
 .search_hit {background:#ffff00;color:#000;}
 .search_item {font-weight:600;}
-.search-icon {height: 17px;vertical-align:top;}
+.search-icon {height:16px; vertical-align:text-bottom;}
 
 #firstfocus {font-size:12px;width:330px;}
 #search-result-tabs,#places-tabs {margin:auto;visibility:hidden;width:98%;}
