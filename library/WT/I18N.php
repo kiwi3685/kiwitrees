@@ -45,7 +45,7 @@ class WT_I18N {
 		// The translation libraries only work with a cache.
 		$cache_options=array('automatic_serialization'=>true);
 
-		if (ini_get('apc.enabled')) {
+		if (ini_get('apc.enabled') && function_exists('apc_fetch')) {
 			WT_I18N::$cache=Zend_Cache::factory('Core', 'Apc', $cache_options, array());
 		} else {
 			if (!is_dir(WT_DATA_DIR.'cache')) {
