@@ -45,7 +45,7 @@ hr {margin-top:5px;}
 th {font-weight:100;}
 select {border:1px solid #cccccc;}
 
-img {border:0 none;}
+img {border:none;border-radius:5px;}
 img.block {height:25px;}
 
 fieldset {margin:8px 8px 4px;padding:30px;text-align:left;}
