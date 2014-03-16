@@ -93,7 +93,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$controller = new WT_Controller_Page;
 		$controller
 			->requireAdminLogin()
-			->setPageTitle(getSidebarTitle())
+			->setPageTitle($this->getSidebarTitle())
 			->pageHeader();
 
 		if (WT_Filter::postBool('save')) {
@@ -138,18 +138,18 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 					jQuery(this).parent().find(".sublinks").toggle();
 				});
 			');
-			$globalfacts=$controller->getGlobalFacts();
+			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
 			$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
 			foreach ($this->getPluginList() as $plugin) {
+				if(array_key_exists($plugin->getName(), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[$plugin->getName()];
 				if(!isset($value)) $value = '1';
 				if($value == true) {
 					foreach ($globalfacts as $key=>$value) {
 						$fact = $value->getTag();
-						if ($fact=="NAME") {
+						if ($fact == "NAME") {
 							$primary = $this->getPrimaryName($value);
 							if($primary) {
-
 								// create plugin vars						
 								$givn 		= $primary['givn'];
 								$given		= explode(" ", $givn);
@@ -159,7 +159,6 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 								$surname	= $primary['surname'];
 								$fullname 	= $givn.' '.$surname;
 								$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : "";
-
 								$link = $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 								$sublinks = $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 							}
