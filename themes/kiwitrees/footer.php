@@ -1,5 +1,5 @@
 <?php
-// Footer for webtrees theme
+// Footer for kiwitrees theme
 //
 // kiwi-webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
