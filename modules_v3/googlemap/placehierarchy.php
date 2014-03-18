@@ -507,11 +507,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 					var iconImage = new google.maps.MarkerImage(icon.image,
 					new google.maps.Size(25, 15),
 					new google.maps.Point(0,0),
-					new google.maps.Point(1, 45));
+					new google.maps.Point(12, 15));
 					var iconShadow = new google.maps.MarkerImage("'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/flag_shadow.png",
 					new google.maps.Size(35, 45),
 					new google.maps.Point(0,0),
-					new google.maps.Point(1, 45));
+					new google.maps.Point(12, 15));
 				 } else {
 					var iconImage = new google.maps.MarkerImage(icon.image,
 					new google.maps.Size(20, 34),

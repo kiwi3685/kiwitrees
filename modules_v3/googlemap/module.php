@@ -1278,7 +1278,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								$js.= 'Marker1_0_flag.shadow = "'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/flag_shadow.png";';
 								$js.= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
 								$js.= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
-								$js.= 'Marker1_0_flag.iconAnchor = new google.maps.Point(1, 45);';
+								$js.= 'Marker1_0_flag.iconAnchor = new google.maps.Point(12, 15);';
 								$js.= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
 							}
 						}
