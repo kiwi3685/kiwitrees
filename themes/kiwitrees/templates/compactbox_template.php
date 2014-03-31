@@ -55,4 +55,3 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 		</div>';
 	// end of zoom view
 echo '</div>';
-?>

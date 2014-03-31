@@ -36,4 +36,3 @@ case 'review_changes':
 	$text.='</li></ul>';
 	break;
 }
-?>
