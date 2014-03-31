@@ -96,14 +96,6 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #iwcontent_edit a:hover {color:red;}
 .optionbox #gname{white-space:normal;}
 
-/* googlemap_style */
-#map_type {margin:0; padding:0; font-family:Arial; font-size:10px; list-style:none;}
-#map_type li {display:block; width:70px; text-align:center; padding:2px; border:1px solid black; cursor:pointer; float:left; margin-left:2px;}
-#map_type li.non_active {background:white; color:black; font-weight:normal;}
-#map_type li.active {background:gray; color:white; font-weight:bold;}
-#map_type li:hover {background:#ddd;}
-#googlemap_left {margin-top:-14px !important;}
-
 #side_bar .gallery img, .iwstyle .gallery img, .highlt_img .gallery img {float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:50px;}
 html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, html[dir="rtl"] .highlt_img .gallery img {float:right;margin:0 0 0 4px;}
 #side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U {float:left;}
