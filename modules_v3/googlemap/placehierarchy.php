@@ -271,13 +271,6 @@ function check_were_am_i($numls, $levelm) {
 	return $levelo;
 }
 
-function check_place($place_names, $place) {
-	if ($place == "Unknown") $place="";
-	if (in_array($place, $place_names)) {
-		return true;
-	}
-}
-
 function print_how_many_people($level, $parent) {
 	$stats = new WT_Stats(WT_GEDCOM);
 
