@@ -66,7 +66,7 @@ html[dir=rtl] input:required:valid, html[dir=rtl] textarea:required:valid, html[
 
 /* Title Line    */
 #header {height:49px;}
-span.title {float:left;font-size:24px; margin:16px 0px 3px 12px;}
+span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 html[dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
 
 /* Options Menu  */
@@ -98,7 +98,7 @@ html[dir=rtl] .makeMenu li ul li {text-align:right;}
 #main-menu li > ul {display:block;left:100%;right:auto;position:absolute;top:0;z-index:210;}
 #main-menu > li > a {height:37px;width:27px;}
 #main-menu > li > ul {left:0;right:auto;top:40px;}
-#main-menu a {display: block;text-decoration: none;padding: 0px 10px;margin: 0;white-space:nowrap;}
+#main-menu a {display: block;text-decoration: none;padding: 0 10px;margin: 0;white-space:nowrap;}
 #main-menu ul li:hover a, #main-menu li:hover li a {background: none;border: none;}
 #main-menu li:hover > ul {visibility:visible;opacity:1;-webkit-transition:visibility 0s linear 0s,opacity .2s linear 0s;-moz-transition:visibility 0s linear 0s,opacity .2s linear 0s;-o-transition:visibility 0s linear 0s,opacity .2s linear 0s;}
 
@@ -455,7 +455,7 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 
 .person0 {background:#ddddff;border:outset #999 1px;border-radius:3px;vertical-align:top;}
 .person1 {background:#aaffaa;border:outset #afa 1px;border-radius:3px;vertical-align:top;}
-.person2 {background:#ffaaaa;border:outset #faa 1px;border-width:1px;border-radius:3px;vertical-align:top;}
+.person2 {background:#ffaaaa;border:outset #faa 1px;border-radius:3px;vertical-align:top;}
 .person3 {background:#aaaadd;border:outset #55f 1px;border-radius:3px;vertical-align:top;}
 .person4 {background:#ff5555;border:outset #f55 1px;border-radius:3px;vertical-align:top;}
 .person5 {background:#55ff55;border:outset #5f5 1px;border-radius:3px;vertical-align:top;}
@@ -1102,21 +1102,21 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-mime-application-vnd-ms-excel      {background-position:-148px -196px;}
 .icon-mime-application-x-rar-compressed  {background-position: -50px  -98px;}
 .icon-mime-application-zip               {background-position: -50px -147px;}
-.icon-mime-application-x-shockwave-flash {background-position:-148px    0px;}
+.icon-mime-application-x-shockwave-flash {background-position:-148px    0;}
 .icon-mime-audio-mp3                     {background-position: -50px -245px;}
-.icon-mime-audio-mpeg                    {background-position: -50px    0px;}
+.icon-mime-audio-mpeg                    {background-position: -50px    0;}
 .icon-mime-audio-x-ms-wma                {background-position:  -1px -245px;}
 .icon-mime-audio-wav                     {background-position:  -1px  -98px;}
 .icon-mime-text-html                     {background-position: -99px -245px;}
 .icon-mime-text-x-gedcom                 {background-position: -50px  -49px;}
-.icon-mime-image-bmp                     {background-position: 197px    0px;}
+.icon-mime-image-bmp                     {background-position: 197px    0;}
 .icon-mime-image-gif                     {background-position:-197px  -49px;}
 .icon-mime-image-jpeg                    {background-position:  -1px -147px;}
 .icon-mime-image-png                     {background-position: -99px  -98px;}
 .icon-mime-image-svg                     {background-position:-197px -196px;}
 .icon-mime-image-tiff                    {background-position:-148px  -98px;}
 .icon-mime-video-quicktime               {background-position: -99px -147px;}
-.icon-mime-video-avi                     {background-position: -99px    0px;}
+.icon-mime-video-avi                     {background-position: -99px    0;}
 .icon-mime-video-x-ms-wmv                {background-position: -50px -196px;}
 
 /* Silhouettes on charts */
