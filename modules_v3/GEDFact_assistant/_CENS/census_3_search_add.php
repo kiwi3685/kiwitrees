@@ -30,13 +30,13 @@ if (!defined('WT_WEBTREES')) {
 ?>
 
 
-	<table id="navenclose" class="optionbox" width="100%">
+	<table id="navenclose" class="optionbox">
 		<?php
 
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
-			<td align="center" class="descriptionbox"><font size=1><?php echo WT_I18N::translate('Add people'); ?></font></td>
+			<td class="descriptionbox"><font size=1><?php echo WT_I18N::translate('Add people'); ?></font></td>
 		</tr>
 		<tr>
 			<td class="optionbox" >
@@ -62,7 +62,7 @@ if (!defined('WT_WEBTREES')) {
 			</td>
 		</tr>
 		<tr>
-			<td style="border: 0px solid transparent;">
+			<td>
 				<br>
 			</td>
 		</tr>
@@ -73,10 +73,10 @@ if (!defined('WT_WEBTREES')) {
 				?>
 
 				<tr>
-					<td align="center" style="border: 0px solid transparent;">
-						<table width="100%" class="fact_table" cellspacing="0" border="0">
+					<td>
+						<table class="fact_table" cellspacing="0" border="0">
 							<tr>
-								<td align="center" colspan=3 class="descriptionbox">
+								<td colspan=3 class="descriptionbox">
 								<font size=1>
 								<?php
 								// Header text with "Head" button =================================================
