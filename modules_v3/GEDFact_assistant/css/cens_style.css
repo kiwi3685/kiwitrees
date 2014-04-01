@@ -35,7 +35,7 @@
 .cens_text_header span:nth-of-type(1) {float:left;}
 .cens_text_header span:nth-of-type(3) {float:right;}
 .cens_text_header input[type="button"], .cens_text_header input[type="submit"]  {padding: 1px 5px;}
-textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
+textarea#NOTE {font-size: 12px;height:250px; width:97%; overflow:auto;}
 .cens_header_left {float:left; font-weight:bold;}
 .cens_header_right {float: right; width:50%;}
 .cens_sour_1 {width:100%; margin:0; padding:0;}
@@ -54,7 +54,8 @@ textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .rtlnav {position:absolute; top:-15px; right:40px;}
 .headimg {margin-top:-4px; border:0;}
 .headimg2 {height:17px;	border-style:none;margin:-3px;margin-left:0;}
-#edit_interface-page input#personid {width:160px;}
+#edit_interface-page .input#personid {width:160px;}
+#edit_interface-page .cens_sour_1>input {width:78%;}
 
 html[dir='rtl'] .cens_header {text-align:right;}
 html[dir='rtl'] .cens_container {float:right;}
