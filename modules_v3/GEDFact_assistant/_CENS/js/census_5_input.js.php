@@ -618,7 +618,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 	if (cyear!="choose") {
 		cyear=cyear;
 	} else {
-		alert ("You must choose a Census year first")
+		alert ("You must choose a Census year first");
 		return;
 	}
 
@@ -808,7 +808,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 			if (cyear!="choose") {
 				cyear=cyear;
 			} else {
-				alert ("You must choose a Census year first")
+				alert ("You must choose a Census year first");
 				return;
 			}
 			var diffage=(1901-cyear);
@@ -1331,7 +1331,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_bic.style.fontSize="10px";
 				txtInp_bic.style.border='0px';
 				txtInp_bic.innerHTML = '<a href="#" alt="'+TTEditBIC+'" title="'+TTEditBIC+'">'+HeaderBIC+'</a>';
-				txtInp_bic.setAttribute('id', '.b.'+HeaderBIC)
+				txtInp_bic.setAttribute('id', '.b.'+HeaderBIC);
 		// 53. Born outside England (SCO, IRE, WAL, FOReign ----------------------------
 			var txtInp_boe = document.createElement('div');
 				txtInp_boe.setAttribute('type', 'text');
@@ -1340,7 +1340,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txtInp_boe.style.fontSize="10px";
 				txtInp_boe.style.border='0px';
 				txtInp_boe.innerHTML = '<a href="#" alt="'+TTEditBOE+'" title="'+TTEditBOE+'">'+HeaderBOE+'</a>';
-				txtInp_boe.setAttribute('id', '.b.'+HeaderBOE)
+				txtInp_boe.setAttribute('id', '.b.'+HeaderBOE);
 		// 54. Fathers Birth Place_2 ---------------------------------------------
 			var txtInp_fbirthpl2 = document.createElement('div');
 				txtInp_fbirthpl2.setAttribute('type', 'text');
