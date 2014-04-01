@@ -169,7 +169,7 @@ div.faq_body{clear:both;padding:5px 20px;text-align:justify}
 :focus{-moz-outline-style:none}
 fieldset,.box{border:0;padding:.25em}
 button,input[type="submit"],input[type="reset"],input[type="button"]{background:ivory;border:1px outset #d3d3d3;border-radius:5px;margin:3px;padding:2px 5px;text-transform:capitalize}
-button:hover,input:hover[type="submit"],input:hover[type="reset"],input:hover[type="button"]{background:#D3D3D3;border-color:#D3D3D3;left:1px;position:relative;top:1px}
+button:hover,input:hover[type="submit"],input:hover[type="reset"],input:hover[type="button"]{background:#D3D3D3;border-color:#D3D3D3;}
 .formbut{border-radius:1em;background:#fff;border:1px solid #8a8a8a;height:18px;margin-top:3px;width:140px}
 .formbut input {border:none;color:#A9A9A9;font-size:11px;font-style:italic;vertical-align:top;margin-top:1px}
 .formbut .icon-magnifier{margin:0 2px}
