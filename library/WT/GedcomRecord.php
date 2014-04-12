@@ -455,7 +455,8 @@ class WT_GedcomRecord {
 	protected function _addName($type, $value, $gedrec) {
 		$this->_getAllNames[]=array(
 			'type'=>$type,
-			'sort'=>preg_replace('/([0-9]+)/e', 'substr("000000000\\1", -10)', $value),
+//			'sort'=>preg_replace('/([0-9]+)/e', 'substr("000000000\\1", -10)', $value),
+			'sort'=>preg_replace_callback('/([0-9]+)/', function($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
 			'full'=>'<span dir="auto">'.htmlspecialchars($value).'</span>',    // This is used for display
 			'fullNN'=>$value, // This goes into the database
 		);
