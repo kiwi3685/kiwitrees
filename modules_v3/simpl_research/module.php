@@ -159,8 +159,8 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 								$surname	= $primary['surname'];
 								$fullname 	= $givn.' '.$surname;
 								$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : "";
-								$link = $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
-								$sublinks = $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
+								$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
+								$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 							}
 						}
 					}
