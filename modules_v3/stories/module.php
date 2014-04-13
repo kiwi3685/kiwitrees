@@ -102,13 +102,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				jQuery("#story_contents #stories_"+id[1]).show();
 			});
 		');
-
 		$block_ids=
 			WT_DB::prepare(
 				"SELECT block_id".
 				" FROM `##block`".
 				" WHERE module_name=?".
-				" AND xref=?".
+				" AND xref LIKE CONCAT('%', ?, '%')".
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
@@ -209,7 +208,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function edit() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
-
 			if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 				$block_id=WT_Filter::postInteger('block_id');
 				if ($block_id) {
@@ -241,23 +239,31 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$block_id=safe_GET('block_id');
 
 				$controller=new WT_Controller_Page();
+				$controller->addInlineJavascript('
+					jQuery("#newField").click(function(){
+					    jQuery(".add_indi:last").clone().insertAfter(".indi_find:last");
+					    jQuery(".add_indi:last>input").attr("value", ""); 
+					})
+				');
+
 				if ($block_id) {
 					$controller->setPageTitle(WT_I18N::translate('Edit story'));
-					$title=get_block_setting($block_id, 'title');
-					$story_body=get_block_setting($block_id, 'story_body');
-					$gedcom_id=WT_DB::prepare(
+					$title = get_block_setting($block_id, 'title');
+					$story_body = get_block_setting($block_id, 'story_body');
+					$gedcom_id = WT_DB::prepare(
 						"SELECT gedcom_id FROM `##block` WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
-					$xref=WT_DB::prepare(
+					$xref = explode("|", WT_DB::prepare(
 						"SELECT xref FROM `##block` WHERE block_id=?"
-					)->execute(array($block_id))->fetchOne();
+					)->execute(array($block_id))->fetchOne());
 				} else {
 					$controller->setPageTitle(WT_I18N::translate('Add story'));
-					$title='';
-					$story_body='';
-					$gedcom_id=WT_GED_ID;
-					$xref=safe_GET('xref', WT_REGEX_XREF);
+					$title = '';
+					$story_body = '';
+					$gedcom_id = WT_GED_ID;
+					$xref = explode("|", safe_GET('xref', WT_REGEX_XREF));
 				}
+				$count_xref = count($xref);
 				$controller
 					->pageHeader()
 					->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
@@ -284,16 +290,24 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
 				echo '</tr>';
 				echo '<tr>';
-				echo '<td class="optionbox">';
-				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
-				echo print_findindi_link('pid');
-				if ($xref) {
-					$person=WT_Person::getInstance($xref);
-					if ($person) {
-						echo ' ', $person->format_list('span');
-					}
-				}
-				echo '</td>';
+				echo '
+					<td class="optionbox">';
+						for ($x=0; $x<=$count_xref-1; $x++) {
+							echo '<div class="indi_find">
+								<p class="add_indi">
+									<input type="text" name="xref" id="pid" size="4" value="'.$xref[$x].'">',
+									print_findindi_link('pid'),'
+								</p>';
+								if ($xref) {
+									$person=WT_Person::getInstance($xref[$x]);
+									if ($person) {
+										echo ' ', $person->format_list('span');
+									}
+								}
+							echo '</div>';
+						}
+						echo '<p><a href="#" id="newField" class="current">', WT_I18N::translate('Add another individual'), '</a></p>
+					</td>';
 				$languages=get_block_setting($block_id, 'languages');
 				echo '<td class="optionbox">';
 				echo edit_language_checkboxes('lang_', $languages);

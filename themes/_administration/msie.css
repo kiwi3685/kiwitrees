@@ -25,11 +25,11 @@ html[dir='rtl'] #admin_menu li ul {*margin:0 20px 0 0;}
 #edit-options th {
 	text-align:left;
 }
-html[dir=rtl] #file-options th,
-html[dir=rtl] #privacy th,
-html[dir=rtl] #config-media th,
-html[dir=rtl] #layout-options th,
-html[dir=rtl] #hide-show th,
-html[dir=rtl] #edit-options th {
+[dir=rtl] #file-options th,
+[dir=rtl] #privacy th,
+[dir=rtl] #config-media th,
+[dir=rtl] #layout-options th,
+[dir=rtl] #hide-show th,
+[dir=rtl] #edit-options th {
 	text-align:right;
 }
