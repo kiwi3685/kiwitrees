@@ -141,6 +141,8 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
 			$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
+			$link =  '';
+			$sublinks =  '';
 			foreach ($this->getPluginList() as $plugin) {
 				if(array_key_exists($plugin->getName(), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[$plugin->getName()];
 				if(!isset($value)) $value = '1';
