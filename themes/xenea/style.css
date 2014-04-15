@@ -855,7 +855,7 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow { width:450px;}
 #tabDefinedTags { width:430px;}
-#layDefinedTags { margin-left:auto; margin-right:auto; height:285px; overflow:auto; border:inset 2px buttonface;}
+#layDefinedTags { margin-left:auto; margin-right:auto; height:285px; overflow:auto;}
 #tabDefinedTags { border-collapse:collapse;}
 #tabDefinedTags th,#tabDefinedTags td { border:solid 1px #000; margin:0; padding:3px;}
 #tabDefinedTags tbody th { text-align:left; font-weight:bold;}
