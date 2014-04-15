@@ -792,6 +792,7 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 .icon-osm {width:16px;height:16px;background-image:url(images/osm.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
+.icon-button_findnote{width:16px;height:16px;background-image:url(images/findnote.png);}
 
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png)}

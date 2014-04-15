@@ -1183,6 +1183,7 @@ dd .editlink, dd .deletelink {float:right;}
 .icon-button_calendar      {width:19px;height:15px;background-image:url(images/buttons/calendar.png);}
 .icon-button_family        {width:14px;height:15px;background-image:url(images/buttons/family.png);}
 .icon-button_find_facts    {width:20px;height:20px;background-image:url(images/buttons/find_facts.png);}
+.icon-button_findnote	   {width:17px;height:15px;background-image:url(images/buttons/findnote.png);}
 .icon-button_head          {width:12px;height:18px;background-image:url(images/buttons/head.png);}
 .icon-button_indi          {width:11px;height:15px;background-image:url(images/buttons/indi.png);}
 .icon-button_keyboard      {width:30px;height:15px;background-image:url(images/buttons/keyboard.png);}
