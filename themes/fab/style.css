@@ -1328,7 +1328,7 @@ dd .editlink, dd .deletelink  {float:right;}
 .ui-state-highlight a {color:#ff0000;}
 
 [dir=rtl] .ui-tabs {direction:rtl;}
-[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 [dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 [dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 [dir=rtl] .ui-dialog-title {float:right;}

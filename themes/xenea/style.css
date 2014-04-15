@@ -94,7 +94,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 .makeMenu li:hover > ul {display:block;}
 .makeMenu li ul li a.lang-active, .makeMenu li ul li a.theme-active {color:#000066;font-weight:900;}
 
-[dir=rtl] li up li {text-align:right;}
+[dir=rtl] li ul li {text-align:right;}
 [dir=rtl] .makeMenu li ul {left:auto;right:0;}
 [dir=rtl] .makeMenu li ul li {text-align:right !important;}
 [dir=rtl] #extra-menu {text-align:left;}
