@@ -70,12 +70,19 @@ class simpl_unlinked_WT_Module extends WT_Module implements WT_Module_Config {
 		}
 
 		// the sql query used to identify unlinked indis
-		$sql = "
+/*		$sql = "
 			SELECT i_id
 				FROM `##individuals` 
 				 LEFT OUTER JOIN `##link` 
 				 ON (##individuals.i_id = ##link.l_to) 
 				 WHERE ##link.l_to IS NULL
+				 AND i_file = ".$gedcom_id."
+			";
+*/
+		$sql = "
+			SELECT i_id
+				FROM `##individuals` 
+				 WHERE i_gedcom NOT LIKE '%1 FAM%'
 				 AND i_file = ".$gedcom_id."
 			";
 
