@@ -33,6 +33,9 @@
   .family2 {display:block;}
 }
 
+/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
+html {overflow-y:scroll;}
+
 body {
 background-attachment:fixed;
 background-color:#c8e7ff;

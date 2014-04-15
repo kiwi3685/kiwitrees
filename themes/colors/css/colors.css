@@ -33,6 +33,9 @@
   .family2 {display:block;}
 }
 
+/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
+html {overflow-y:scroll;}
+
 /* Set defaults */
 body {font:12px tahoma, arial, helvetica, sans-serif;margin: 0;}
 legend,.details_label {font-weight:700;}
