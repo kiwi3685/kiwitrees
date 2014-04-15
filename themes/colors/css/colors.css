@@ -674,7 +674,7 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 /* FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {width:450px;}
 #tabDefinedTags {border-collapse:collapse;width:430px;}
-#layDefinedTags {border:inset 2px buttonface;height:285px;margin-left:auto;margin-right:auto;overflow:auto;}
+#layDefinedTags {height:285px;margin-left:auto;margin-right:auto;overflow:auto;}
 #tabDefinedTags th,#tabDefinedTags td {border:solid 1px #000;margin:0;padding:3px;}
 #tabDefinedTags tbody th {font-weight:700;text-align:left;}
 #tabDefinedTags tr.sel {background-color:#d1d9ef;color:#888888;}

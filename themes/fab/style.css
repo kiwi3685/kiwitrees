@@ -1152,7 +1152,6 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 	margin-right:auto;
 	height:285px;
 	overflow:auto;
-	border:inset 2px buttonface;
 }
 #tabDefinedTags {
 	border-collapse:collapse;
