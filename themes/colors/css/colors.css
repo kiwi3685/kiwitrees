@@ -512,14 +512,11 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 .lifespan_people {left:-10px;position:absolute;top:-60px;width:500px;z-index:1;}
 .lifespan_timeline {background:#fff;left:-10px;position:absolute;top:-65px;width:100%;z-index:2;}
 
-#map_nav {left:101%;position:relative;top:-484px;}
 #map_type {font-size:10px;list-style:none;margin:0;padding:0;}
 #map_type li {border:1px solid #000;cursor:pointer;display:block;float:left;margin-left:2px;padding:2px;text-align:center;width:70px;}
 #map_type li:hover {background:#dddddd;}
 #map_type li.active {background:#888888;color:#fff;font-weight:700;}
 #map_type li.non_active {background:#fff;color:#000;font-weight:400;}
-
-#tree_nav {left:90%;position:relative;top:-584px;z-index:100;}
 
 .ui-autocomplete-input {background:#eeeeaa;}
 
@@ -539,7 +536,6 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 .clearfloat {clear:both;}
 .execution_stats {padding:12px;text-align:center;}
 .gchart {border:1px solid #999999;}
-.iwstyle {width:360px;}
 .line1,.line2,.line3 {vertical-align:bottom;}
 .line4 {vertical-align:middle;}
 .line5 {vertical-align:top;}
