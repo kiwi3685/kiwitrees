@@ -509,12 +509,12 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 /* ======= Favourites block ========== */
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
 .user_favorites_block .person_box .details2, .user_favorites_block .person_boxF.details2, .user_favorites_block .person_boxNN.details2 {min-height:40px;}
-.user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
 .add_fav_head {font-weight:900;margin:5px 0;}
 .add_fav_head i {margin:0 5px 1px 5px;}
 .add_fav_ref label {display:inline-block;min-width:100px;}
 .add_fav_ref label:after {content:":";}
 .add_fav_ref input {margin:0 5px;}
+.action_header, .action_headerF, .action_headerNN {margin-bottom:3px;}
 
 /* ======= Who is online block ========== */
 .logged_in_list {margin:5px 0 0 0;padding:0;line-height:20px;}

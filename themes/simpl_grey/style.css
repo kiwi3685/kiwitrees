@@ -564,7 +564,6 @@ a.link:hover,a:hover .name1,a:hover .name2{color:#4682B4}
 .theme_form li {list-style:none;visibility:hidden;}
 .theme_form li ul li {float:left;padding:10px;visibility:visible;}
 html[dir='rtl'] .theme_form li ul li  {float:right;}
-.user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0}
 .add_fav_head {font-weight:900; margin:5px 0}
 .add_fav_head i {margin:0 5px 1px}
 .add_fav_ref label {display:inline-block; min-width:100px}
@@ -580,6 +579,7 @@ html[dir='rtl'] .theme_form li ul li  {float:right;}
 #pedigree_chart .person_box,#pedigree_chart .person_boxF,#pedigree_chart .person_boxNN,
 #relatives_content  .person_box > .person_box,#relatives_content .person_boxF  > .person_boxF,#relatives_content .person_boxNN  > .person_boxNN {  border:none;min-height:50px;overflow:visible !important}
 #relationship_chart .person_box,#relationship_chart .person_boxF,#relationship_chart .person_boxNN {overflow:visible !important}
+.action_header, .action_headerF, .action_headerNN {margin-bottom:3px;}
 .person_box_template .style1 {overflow:hidden}
 .person_box_template .style0 {padding:2px}
 .person_box_template .noprint { width:25px;height:50px; position:relative}

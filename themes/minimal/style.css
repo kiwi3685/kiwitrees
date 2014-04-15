@@ -1191,6 +1191,7 @@ dt {
 
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
 .user_favorites_block .person_box .details2, .user_favorites_block .person_boxF.details2, .user_favorites_block .person_boxNN.details2 {min-height:40px;}
+.action_header, .action_headerF, .action_headerNN {margin-bottom:3px;}
 
 /* ============= Statistics block ============ */
 .gedcom_stats_block table td {vertical-align:top;}
@@ -1204,7 +1205,6 @@ dt {
 [dir=rtl] .theme_form li ul li  {float:right;}
 
 /* ======= Favourites block ========== */
-.user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
 .add_fav_head {font-weight:900;margin:5px 0;}
 .add_fav_head i {margin:0 5px 1px 5px;}
 .add_fav_ref label {display:inline-block;min-width:100px;}
