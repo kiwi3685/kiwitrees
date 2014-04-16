@@ -37,11 +37,11 @@ class findmypastuk_plugin extends research_base_plugin {
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 
-		return $link = 'http://www.findmypast.co.uk/search/all-records/results?forename='
+		return $link = 'http://search.findmypast.co.uk/search/world-records?firstname='
 						.rawurlencode($givn)
-						.'&includeForenameVariants=true&_includeForenameVariants=on&surname='
+						.'&firstname_variants=true&lastname='
 						.rawurlencode($surname)
-						.'&_includeSurnameVariants=on&fromYear=&toYear=&Region=UK&Search=Search';
+						.'&lastname_variants=true';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
@@ -50,3 +50,4 @@ class findmypastuk_plugin extends research_base_plugin {
 
 
 }
+http://search.findmypast.co.uk/search/world-records?firstname=william&firstname_variants=true&lastname=wenman&lastname_variants=true
