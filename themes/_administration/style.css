@@ -134,7 +134,7 @@ text-indent: 5px;}
 #admin_footer .logo a {color:#555; font-size:20px; text-align:center; text-decoration:none;}
 #admin_footer .logo a:hover {color:#ff0000;}
 
-/* DASHBOARD BLOCKS
+/* DASHBOARD BLOCKS */
 #users {white-space:nowrap;}
 #users ul {list-style-type:none; padding:0; margin:0 0 0 20px;}
 [dir=rtl] #users ul {margin:0 20px 0 0;}
@@ -148,7 +148,7 @@ text-indent: 5px;}
 [dir=rtl] #tree_stats th, [dir=rtl] #recent th {padding:0 0 0 10px; text-align:right;}
 #tree_stats td, #recent2 td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
 [dir=rtl] #tree_stats td, [dir=rtl] #recent td {padding:0 0 0 10px; text-align:left;}
-#tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em; min-height:140px;}
+#tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em; min-height:180px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 #trees span, #recent2 span {text-decoration:underline;}
 
