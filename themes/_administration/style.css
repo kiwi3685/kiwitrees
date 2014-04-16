@@ -115,13 +115,15 @@ td {line-height:25px; vertical-align:middle;}
 /* SIDE MENU */
 #admin_menu {padding:10px 0 10px 5px;top:102px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2e6e9e; white-space:nowrap; overflow:hidden;}
 [dir=rtl] #admin_menu {top:92px; left:auto; right:10px; padding:10px 5px 10px 0; float:right;}
-#admin_menu ul {list-style:none outside none; margin:0 0 0 -40px;}
+#admin_menu ul {list-style:none; margin:0 0 0 -30px;}
 [dir=rtl] #admin_menu ul {margin:0 -40px 0 0;}
 #admin_menu li ul {margin:0 0 0 -25px;}
 [dir=rtl] #admin_menu li ul {margin:0 -25px 0 0;}
 #admin_menu li span {font-style:italic;}
-#admin_menu ul {list-style:none outside none;}
 #admin_menu ul li {padding-top: 2px;}
+#admin_menu ul li a {white-space: normal;
+margin-left:-5px;
+text-indent: 5px;}
 
 /* CONTENT */
 #admin_content {margin:0 0 0 220px; padding:10px;}
@@ -133,7 +135,6 @@ td {line-height:25px; vertical-align:middle;}
 #admin_footer .logo a:hover {color:#ff0000;}
 
 /* DASHBOARD BLOCKS
-#content_container {padding:5px; border:1px inset #d9d6c4; height:570px; overflow:auto;} */
 #users {white-space:nowrap;}
 #users ul {list-style-type:none; padding:0; margin:0 0 0 20px;}
 [dir=rtl] #users ul {margin:0 20px 0 0;}
