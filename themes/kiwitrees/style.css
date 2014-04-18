@@ -856,18 +856,19 @@ html[dir='rtl'] #edituser-table .value {margin:0 260px 0 0;}
 .icon-admin{width:15px;height:15px;background-image:url(images/admin.png);}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_addmedia{width:18px;height:16px;background-image:url(images/buttons/addmedia.png);vertical-align: middle;}
-.icon-button_addnote{width:17px;height:15px;background-image:url(images/buttons/addnote.png);}
+.icon-button_addnote{width:17px;height:20px;background-image:url(images/buttons/addnote.png);}
 .icon-button_addrepository{width:15px;height:15px;background-image:url(images/buttons/addrepository.png);}
 .icon-button_addsource{width:18px;height:16px;background-image:url(images/buttons/addsource.png);}
 .icon-button_calendar{width:19px;height:15px;background-image:url(images/buttons/calendar.png);vertical-align: middle;}
 .icon-button_family{width:14px;height:15px;background-image:url(images/buttons/family.png);}
 .icon-button_find_facts{width:20px;height:20px;background-image:url(images/buttons/find_facts.png);}
-.icon-button_findnote{width:17px;height:15px;background-image:url(images/buttons/findnote.png);}
+.icon-button_findnote{width:17px;height:20px;background-image:url(images/buttons/findnote.png);}
 .icon-button_head{width:12px;height:18px;background-image:url(images/buttons/head.png);}
 .icon-button_indi{width:11px;height:15px;background-image:url(images/buttons/indi.png);}
 .icon-button_keyboard{width:30px;height:15px;background-image:url(images/buttons/keyboard.png);vertical-align: middle;}
+.icon-button_linknote{width:17px;height:20px;background-image:url(images/buttons/linknote.png);}
 .icon-button_media{width:18px;height:16px;background-image:url(images/buttons/media.png);vertical-align: middle;}
-.icon-button_note{width:17px;height:15px;background-image:url(images/buttons/note.png);}
+.icon-button_note{width:17px;height:20px;background-image:url(images/buttons/note.png);}
 .icon-button_place{width:15px;height:15px;background-image:url(images/buttons/place.png);vertical-align: middle;}
 .icon-button_repository{width:15px;height:15px;background-image:url(images/buttons/repository.png);}
 .icon-button_source{width:18px;height:16px;background-image:url(images/buttons/source.png);}
@@ -951,6 +952,7 @@ a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2
 .icon-webtrees{width:100px;height:21px;background-image:url(images/webtrees_s.png);}
 .icon-wiki{width:16px;height:16px;background-image:url(images/w_button.png);}
 .icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
+.icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
 .icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
 
 /* Silhouettes on charts */
