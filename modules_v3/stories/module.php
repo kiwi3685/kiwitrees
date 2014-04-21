@@ -58,9 +58,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			break;
 		case 'remove_indi':
 			$indi  = safe_GET('indi_ref');
-			$block = safe_GET('block_id');
-			if ($indi && $block) {
-				self::removeIndi($indi, $block);
+			$block_id = safe_GET('block_id');
+			if ($indi && $block_id) {
+				self::removeIndi($indi, $block_id);
 			}
 			unset($_GET['action']);
 			break;
@@ -345,7 +345,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 													echo $person->format_list('span');
 													echo '
 														<p style="margin: 0;">
-															<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='.$xref.'&amp;block_id='.$block_id.'" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a>
+															<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref. '&amp;block_id='.$block_id. '" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a>
 														</p>
 														<hr style="margin-top: 0;"">
 													';
@@ -365,7 +365,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 														echo $person->format_list('span');
 														echo '
 															<p style="margin: 0;">
-																<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='.$xref[$x].'&amp;block_id='.$block_id.'" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a>
+																<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref[$x]. '&amp;block_id='. $block_id. '" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a>
 															</p>
 															<hr style="margin-top: 0;"">
 														';
@@ -635,11 +635,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		}
 	}
 
-	// Delete an individual linked to a story from the database
-	public static function removeIndi($indi, $block) {
-		return (bool)
-			WT_DB::prepare("DELETE FROM `##block_setting` WHERE block_id=? AND setting_name = `xref`")
-			->execute(array($indi, $block));
+	// Delete an individual linked to a story, from the database
+	private function removeIndi($indi, $block_id) {
+		$xref = explode(",", get_block_setting($block_id, 'xref'));
+		$xref = array_diff($xref, array($indi));
+		set_block_setting($block_id, 'xref', implode(',', $xref));
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH. 'module.php?mod='. $this->getName(). '&mod_action=admin_edit&block_id='. $block_id);
 	}
 
 	// Implement WT_Module_Menu
