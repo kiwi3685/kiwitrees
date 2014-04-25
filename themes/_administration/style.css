@@ -233,7 +233,7 @@ table.gedcom_table2 {margin:20px 0; width:100%;}
 #layout-options table#relatives {margin:0 50px;}
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
 textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
-.current_theme, .theme_box {float:left; margin:10px; padding:10px; text-align:center;}
+.current_theme, .theme_box {float:left; padding:1px; text-align:center;}
 #theme table {max-width: none;}
 .theme_box {border: 2px solid #ccc;}
 .current_theme {border:2px solid #ff0000;}
