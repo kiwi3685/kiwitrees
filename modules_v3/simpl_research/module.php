@@ -108,9 +108,9 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<input type="hidden" name="save" value="1">
 				<h3>'.WT_I18N::translate('Check the plugins you want to use in the sidebar').'</h3>';
 				foreach ($this->getPluginList() as $plugin) {
-					if (is_array($RESEARCH_PLUGINS) && (array_key_exists($plugin->getName(), $RESEARCH_PLUGINS))) $value = $RESEARCH_PLUGINS[$plugin->getName()];
+					if (is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
 					if(!isset($value)) $value = '1';
-					$html .= '<div class="field">'.two_state_checkbox('NEW_RESEARCH_PLUGINS['.$plugin->getName().']', $value).'<label>'.$plugin->getName().'</label></div>';
+					$html .= '<div class="field">'.two_state_checkbox('NEW_RESEARCH_PLUGINS['.get_class($plugin).']', $value).'<label>'.get_class($plugin).'</label></div>';
 				}
 				$html .= '
 					<div class="buttons">
@@ -144,7 +144,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$link =  '';
 			$sublinks =  '';
 			foreach ($this->getPluginList() as $plugin) {
-				if(array_key_exists($plugin->getName(), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[$plugin->getName()];
+				if(is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
 				if(!isset($value)) $value = '1';
 				if($value == true) {
 					foreach ($globalfacts as $key=>$value) {
@@ -153,29 +153,29 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 							$primary = $this->getPrimaryName($value);
 							if($primary) {
 								// create plugin vars						
-								$givn 		= $primary['givn'];
-								$given		= explode(" ", $givn);
-								$first		= $given[0];
-								$middle		= count($given) > 1 ? $given[1] : "";
-								$surn 		= $primary['surn'];
-								$surname	= $primary['surname'];
-								$fullname 	= $givn.' '.$surname;
-								$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : "";
+								$givn 		= $this->encode($primary['givn'], $plugin->encode_plus()); // all given names
+								$given		= explode(" ", $primary['givn']);
+								$first		= $given[0]; // first given name
+								$middle		= count($given) > 1 ? $given[1] : ""; // middle name (second given name)
+								$surn 		= $this->encode($primary['surn'], $plugin->encode_plus()); // surname without prefix
+								$surname	= $this->encode($primary['surname'], $plugin->encode_plus()); // full surname (with prefix)
+								$fullname 	= $plugin->encode_plus() ? $givn.'+'.$surname : $givn.'%20'.$surname; // full name
+								$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
 								$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 								$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 							}
 						}
 					}
 					if($sublinks) {
-						$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="mainlink" href="'.$link.'">'.$plugin->getName().'</a>';
+						$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="mainlink" href="'.htmlspecialchars($link).'">'.$plugin->getName().'</a>';
 						$html .= '<ul class="sublinks">';
 						foreach ($sublinks as $sublink) {
-							$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$sublink['link'].'" target="_blank">'.$sublink['title'].'</a></li>';
+							$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank">'.$sublink['title'].'</a></li>';
 						}
 						$html .= '</ul></li>';
 					}
 					else { // default
-						$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.$link.'" target="_blank">'.$plugin->getName().'</a></li>';
+						$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.htmlspecialchars($link).'" target="_blank">'.$plugin->getName().'</a></li>';
 					}
 				}
 			}
@@ -184,7 +184,12 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 	
-	// Scan the plugin folder for a list of plugins
+	private function encode($var, $plus) {
+		$var = rawurlencode($var);
+		return $plus ? str_replace("%20", "+", $var) : $var;
+	}
+
+ 	// Scan the plugin folder for a list of plugins
 	private function getPluginList() {
 		$array=array();
 		$dir=dirname(__FILE__).'/plugins/';

@@ -5,13 +5,13 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class voorouder_plugin extends research_base_plugin {
+class stamboomzoeker_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Voorouder.nl';
+		return 'Stamboomzoeker';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.voorouder.nl/genealogie/search.php?mybool=AND&nr=50&showdeath=yes&mylastname=' . $surname .'&lnqualify=equals&myfirstname=' . $givn .'&fnqualify=contains';
+		return $link = 'http://stamboomzoeker.nl/search.php?l=nl&fn=' . $givn . '&sn=' . $surname . '&m=1&bd1=0&bd2=2014&bp=&t=1&submit=Zoeken';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
@@ -19,6 +19,6 @@ class voorouder_plugin extends research_base_plugin {
 	}
 	
 	static function encode_plus() {
-		return false;	
+		return true;	
 	}
 }
