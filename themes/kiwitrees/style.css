@@ -148,7 +148,7 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 #main_select,#available_select,#right_select{min-width:150px;}
 .user_welcome_block table, .gedcom_block_block table{margin:auto;}
 .user_welcome_block td, .gedcom_block_block td{width:25%;text-align:center;vertical-align:top;}
-#link_change_blocks {background:#ddd;border:thin solid #aaa;clear:both;margin:0 auto;padding:10px 0;text-align:center;width:98%; font-size:12px;}
+#link_change_blocks {background:#ddd;border:thin solid #aaa;clear:both;margin:0 auto;padding:10px 0;text-align:center;font-size:12px;}
 #link_change_blocks  a{color:#232f49;}
 #link_change_blocks span {color:#232f49;padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
