@@ -861,23 +861,18 @@ case 'addnewnote_assisted':
 	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 	global $pid;
 
-	?>
-	<div class="center" style="width:100%;">
-		<?php
-		?>
-		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-			<input type="hidden" name="action" value="addnoteaction_assisted">
-			<input type="hidden" name="noteid" value="newnote">
-			<input id="pid_array" type="hidden" name="pid_array" value="none">
-			<input id="pid" type="hidden" name="pid" value=<?php echo $pid; ?>>
-			<?php
-				require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php';
-			?>
-		</form>
-	</div>
-	<div style="clear:both;"></div>
-	</div><!-- id="edit_interface-page" -->
-	<?php
+	echo '
+		<div class="center" style="width:100%;">
+			<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+				<input type="hidden" name="action" value="addnoteaction_assisted">
+				<input type="hidden" name="noteid" value="newnote">
+				<input id="pid_array" type="hidden" name="pid_array" value="none">
+				<input id="pid" type="hidden" name="pid" value=', $pid, '>',
+					require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php','
+			</form>
+		</div>
+		<div style="clear:both;"></div>
+		</div>';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
