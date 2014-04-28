@@ -58,7 +58,7 @@ if (!defined('WT_WEBTREES')) {
 		} else if (cenyear == 1890) { var cendate = new Date(1890, 5, 1);    // 01 JUN 1890
 		} else if (cenyear == 1900) { var cendate = new Date(1900, 5, 1);    // 01 JUN 1900
 		} else if (cenyear == 1910) { var cendate = new Date(1910, 3, 15);    // 15 APR 1910
-		} else if (cenyear == 1920) { var cendate = new Date(1920, , 1);    // 01 JAN 1920
+		} else if (cenyear == 1920) { var cendate = new Date(1920, 1, 1);    // 01 JAN 1920
 		} else if (cenyear == 1930) { var cendate = new Date(1930, 3, 1);    // 01 APR 1930
 		} else if (cenyear == 1940) { var cendate = new Date(1940, 3, 1);    // 01 APR 1940
 		// FR CENSUS DATES
