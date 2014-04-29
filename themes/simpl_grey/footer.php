@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 echo '</div>';// closing div id="content"
 if ($view!='simple') {
 	echo '<div id="footer" class="width99 center">';
-	echo contact_links();
+	if (contact_links() != '') echo contact_links();
 	//whoisonline
 	if (WT_USER_ID) {
 		echo '<div style="padding:5px;">';

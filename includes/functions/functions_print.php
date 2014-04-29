@@ -389,6 +389,10 @@ function contact_links($ged_id=WT_GED_ID) {
 		$contactLink = user_contact_link($contact_user_id);
 	}
 
+	if (!$contact_user_id && !$webmaster_user_id) {
+		return '';
+	}
+
 	if (!$supportLink && !$contactLink) {
 		return '';
 	}
@@ -396,18 +400,22 @@ function contact_links($ged_id=WT_GED_ID) {
 	if ($supportLink==$contactLink) {
 		return '<div class="contact_links">'.WT_I18N::translate('For technical support or genealogy questions, please contact').' '.$supportLink.'</div>';
 	} else {
-		$returnText = '<div class="contact_links">';
-		if ($supportLink) {
-			$returnText .= WT_I18N::translate('For technical support and information contact').' '.$supportLink;
-			if ($contactLink) {
-				$returnText .= '<br>';
-			}
+		if ($webmaster_user_id || $contact_user_id) {
+			$returnText = '<div class="contact_links">';
+				if ($supportLink && $webmaster_user_id) {
+					$returnText .= WT_I18N::translate('For technical support and information contact').' '.$supportLink;
+					if ($contactLink) {
+						$returnText .= '<br>';
+					}
+				}
+				if ($contactLink && $contact_user_id) {
+					$returnText .= WT_I18N::translate('For help with genealogy questions contact').' '.$contactLink;
+				}
+			$returnText .= '</div>';
+			return $returnText;
+		} else {
+			return '';
 		}
-		if ($contactLink) {
-			$returnText .= WT_I18N::translate('For help with genealogy questions contact').' '.$contactLink;
-		}
-		$returnText .= '</div>';
-		return $returnText;
 	}
 }
 

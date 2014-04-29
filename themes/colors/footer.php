@@ -32,7 +32,7 @@ echo '</div>'; // <div id="content">
 if ($view!='simple') {
 	echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
 	echo '<br>';
-	echo contact_links();
+	if (contact_links() != '') echo contact_links();
 	echo '<br>';
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" class="icon-webtrees" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '"></a>';

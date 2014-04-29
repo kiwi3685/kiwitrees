@@ -133,6 +133,7 @@ if ($view!='simple') {
 		WT_MenuBar::getListsMenu(),
 		WT_MenuBar::getCalendarMenu(),
 		WT_MenuBar::getReportsMenu(),
+		WT_MenuBar::getNewReportsMenu(),
 		WT_MenuBar::getSearchMenu(),
 	);
 	foreach (WT_MenuBar::getModuleMenus() as $menu) {

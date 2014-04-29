@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 echo '</div>'; // <div id="content">
 if ($view!='simple') {
 	echo '<div id="footer">';
-	echo contact_links();
+	if (contact_links() != '') echo contact_links();
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">kiwi-webtrees</a>';
 	echo '</p>';
