@@ -194,7 +194,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
-						<td class="list_value">
+						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked="checked"> <?php echo WT_I18N::translate('None'); ?><br>
 							<input type="radio" name="privatize_export" value="gedadmin"> <?php echo WT_I18N::translate('Manager'); ?><br>
 							<input type="radio" name="privatize_export" value="user"> <?php echo WT_I18N::translate('Member'); ?><br>
@@ -202,7 +202,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						</td></tr>
 					<?php } elseif (WT_USER_CAN_ACCESS) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
-						<td class="list_value">
+						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="user" checked="checked"> <?php echo WT_I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo WT_I18N::translate('Visitor'); ?>
 						</td></tr>
@@ -212,7 +212,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
-					<td class="list_value">
+					<td class="optionbox">
 						<input type="checkbox" name="conv_path" value="<?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?>">
 						<span dir="auto"><?php echo htmlspecialchars($GEDCOM_MEDIA_PATH); ?></span>
 					</td></tr>
@@ -278,13 +278,13 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						default:     $icon='icon-clippings'; break;
 						}
 						?>
-						<tr><td class="list_value">
+						<tr><td class="optionbox">
 							<i class="<?php echo $icon; ?>"></i>
 						<?php
 						echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
 						?>
 						</td>
-						<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>" class="icon-remove" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
+						<td class="optionbox center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>" class="icon-remove" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
 					</tr>
 					<?php
 					}
@@ -582,7 +582,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				'</td></tr>';
 		} elseif (WT_USER_CAN_ACCESS) {
 				'<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Apply privacy settings?').help_link('apply_privacy').'</td>'.
-				'<td class="list_value">'.
+				'<td class="optionbox">'.
 				'	<input type="radio" name="privatize_export" value="user" checked="checked"> '.WT_I18N::translate('Member').'<br>'.
 				'	<input type="radio" name="privatize_export" value="visitor"> '.WT_I18N::translate('Visitor').
 				'</td></tr>';
