@@ -97,6 +97,21 @@ if ($cal_date->d>$days_in_month && $action=='today')
 	$action='calendar';
 echo '<div id="calendar-page">';
 
+echo '<h2>';
+
+switch ($action) {
+case 'today':
+	echo WT_I18N::translate('On This Day ...').'&nbsp;'.$ged_date->Display(false);
+	break;
+case 'calendar':
+	echo WT_I18N::translate('In This Month ...').'&nbsp;'.$ged_date->Display(false, '%F %Y');
+	break;
+case 'year':
+	echo WT_I18N::translate('In This Year ...').'&nbsp;'.$ged_date->Display(false, '%Y');
+	break;
+}
+echo '</h2>';
+
 // Calendar form
 echo '<form name="dateform" method="get" action="calendar.php">';
 echo "<input type=\"hidden\" name=\"cal\" value=\"{$cal}\">";
@@ -108,23 +123,9 @@ echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\">";
 echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\">";
 echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\">";
 echo '<table class="facts_table width100">';
-echo '<tr><td class="facts_label" colspan="4"><h2>';
 
 // All further uses of $cal are to generate URLs
 $cal=rawurlencode($cal);
-
-switch ($action) {
-case 'today':
-	echo WT_I18N::translate('On This Day ...').'<br>'.$ged_date->Display(false);
-	break;
-case 'calendar':
-	echo WT_I18N::translate('In This Month ...').'<br>'.$ged_date->Display(false, '%F %Y');
-	break;
-case 'year':
-	echo WT_I18N::translate('In This Year ...').'<br>'.$ged_date->Display(false, '%Y');
-	break;
-}
-echo '</h2></td></tr>';
 
 // Day selector
 echo '<tr><td class="descriptionbox vmiddle">';
