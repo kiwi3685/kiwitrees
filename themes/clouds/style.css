@@ -2009,9 +2009,7 @@ background-color:#eeeeee;
 padding-top:5px;
 }
 
-.logo {
-text-align:center;
-}
+.logo {text-align:center; font-size:14px;}
 
 ul.clist {
 list-style-image:none;

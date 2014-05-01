@@ -542,7 +542,7 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 .line1,.line2,.line3 {vertical-align:bottom;}
 .line4 {vertical-align:middle;}
 .line5 {vertical-align:top;}
-.logo {text-align:center;}
+.logo {text-align:center; font-size:16px;}
 .messagebox {background:#dfeeff;border-radius:3px;}
 .nam a:hover {color:#ff0000;}
 .nav_content {padding:0;width:100%;}

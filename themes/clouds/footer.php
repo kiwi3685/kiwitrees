@@ -35,7 +35,7 @@ if ($view!='simple') {
 	if (contact_links() != '') echo contact_links();
 	echo '<br>';
 	echo '<p class="logo">';
-	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" class="icon-webtrees" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '"></a>';
+	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_I18N::translate('Powered by %s <sup>&trade;</sup>', WT_WEBTREES),'</a>';
 	echo '</p>';
 	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 		echo execution_stats();
