@@ -16,7 +16,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -24,27 +24,16 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class TreeView {
-	var $name;
-	var $allPartners;
+	private $name;
+	private $allPartners;
 
 	/**
 	* Treeview Constructor
-	* @param string $name the name of the TreeView object's instance
+	* @param string $name the name of the TreeView object’s instance
 	*/
 	function __construct($name='tree') {
 		$this->name = $name;
-
-		// Read if all partners must be shown or not
-		$allPartners = safe_GET('allPartners');
-		// if allPartners not specified in url, we try to read the cookie
-		if ($allPartners == '') {
-			if (isset($_COOKIE['allPartners']))
-				$allPartners = $_COOKIE['allPartners'];
-			else
-				$allPartners = 'true'; // That is now the default value
-		}
-		$allPartners = ($allPartners == 'true' ? true : false);
-		$this->allPartners = $allPartners;
+		$this->allPartners = WT_Filter::cookie('allPartners', 'true|false', 'true');
 	}
 
 	/**
@@ -61,16 +50,16 @@ class TreeView {
 			$rootPerson = new WT_Person('');
 		}
 		if (WT_SCRIPT_NAME == 'individual.php') {
-			$path = 'individual.php?pid='.$rootPerson->getXref().'&amp;ged='.$GEDCOM.'&allPartners='.($this->allPartners ? "false" : "true").'#tree';
+			$path = $rootPerson->getHtmlUrl();
 		} else {
-			$path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'&amp;allPartners='.($this->allPartners ? "false" : "true");
+			$path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $rootPerson->getXref();
 		}
 		$r = '<a name="tv_content"></a><div id="'.$this->name.'_out" class="tv_out">';
 
 		// Add the toolbar
 		$r.='<div id="tv_tools" class="noprint"><ul>'.
 			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'"></li>'.
-			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a class="icon-sfamily" href="'.$path.'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
+			'<li id="tvbAllPartners" class="tv_button' . ($this->allPartners === 'true' ? ' tvPressed' : '') . '"><a class="icon-sfamily" href="' . $path . '" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
 		// Hidden loading image
 		$r.='<li class="tv_button" id="'.$this->name.'_loading"><i class="icon-loading-small"></i></li></ul>';
 		$r.='</div><h2 id="tree-title">'.
@@ -79,7 +68,7 @@ class TreeView {
 		$parent = null;
 		$r.=$this->drawPerson($rootPerson, $generations, 0, $parent, '', true);
 		$r.='</div></div>'; // Close the tv_in and the tv_out div
-		return array($r, 'var '.$this->name.'Handler = new TreeViewHandler("'.$this->name.'", '.($this->allPartners ? 'true' : 'false').');');
+		return array($r, 'var ' . $this->name . 'Handler = new TreeViewHandler("' . $this->name.'");');
 	}
 
 	/**
@@ -135,12 +124,11 @@ class TreeView {
 
 	/**
 	* Return the details for a person
-	* @param Person $person the person to return the details for
 	*/
 	private function getPersonDetails($personGroup, $person, $family) {
 		$r = '<div class="tv'.$person->getSex().' tv_person_expanded">';
 		$r .= $this->getThumbnail($personGroup, $person);
-		$r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'" class="icon-button_indi tv_link tv_treelink"></a>';
+		$r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'" class="icon-button_indi tv_link tv_treelink"></a>';
 		$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
 		if ($family) {
 			$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'" class="icon-button_family tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a>'.$family->getMarriagePlace();
@@ -176,7 +164,7 @@ class TreeView {
 				}
 			}
 		}
-		$tc = count($children2draw);		
+		$tc = count($children2draw);
 		if ($tc) {
 			$f2load = implode(',', $f2load);
 			$nbc = 0;
@@ -216,7 +204,7 @@ class TreeView {
 		global $TEXT_DIRECTION;
 
 		if ($gen < 0 || empty($person)) {
-			return;
+			return '';
 		}
 		if (!empty($pfamily)) {
 			$partner = $pfamily->getSpouse($person);
@@ -237,12 +225,12 @@ class TreeView {
 			// draw children
 			$r.=$this->drawChildren($person->getSpouseFamilies(), $gen);
 		} else {
-			// draw the parent's lines
+			// draw the parent’s lines
 			$r .= $this->drawVerticalLine($order).$this->drawHorizontalLine();
 		}
 
 		/* draw the person. Do NOT add person or family id as an id, since a same person could appear more than once in the tree !!! */
-		// Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person's boxes, otherwise.
+		// Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
 		$r .= '<td'.($isRoot ? ' style="width:1px"' : '').'><div class="tv_box'.($isRoot ? ' rootPerson' : '').'" dir="'.$TEXT_DIRECTION.'" style="text-align: '.($TEXT_DIRECTION=="rtl" ? "right":"left").'; direction: '.$TEXT_DIRECTION.'" abbr="'.$person->getXref().'" onclick="'.$this->name.'Handler.expandBox(this, event);">';
 		$r .= $this->drawPersonName($person);
 		$fop = Array(); // $fop is fathers of partners
@@ -251,14 +239,14 @@ class TreeView {
 			$dashed = '';
 			foreach ($sfams as $famid=>$family) {
 				$p = $family->getSpouse($person);
-				if (!empty($p)) {
-					if (($p->equals($partner)) || $this->allPartners) {
+				if ($p) {
+					if (($p === $partner) || $this->allPartners === 'true') {
 						$pf = $p->getPrimaryChildFamily();
 						if (!empty($pf)) {
 							$fop[] = Array($pf->getHusband(), $pf);
 						}
 						$r .= $this->drawPersonName($p, $dashed);
-						if (!$this->allPartners) {
+						if ($this->allPartners !== 'true') {
 							break; // we can stop here the foreach loop
 						}
 						$dashed = 'dashed';
@@ -293,7 +281,7 @@ class TreeView {
 				$nb = count($fop);
 				foreach($fop as $p) {
 					$n++;
-					$u = ($unique ? 'c' : ($n == $nb || empty($p[1]) || !$this->allPartners ? 'b' : 'h'));
+					$u = ($unique ? 'c' : ($n == $nb || empty($p[1]) || $this->allPartners === 'true' ? 'h' : 'b'));
 					$r .= '<tr><td '.($gen == 0 ? ' abbr="p'.$p[1]->getXref().'@'.$u.'"' : '').'>'.$this->drawPerson($p[0], $gen-1, 1, $p[1], $u).'</td></tr>';
 				}
 			}
@@ -315,18 +303,18 @@ class TreeView {
 	* @param $dashed if = 'dashed' print dashed top border to separate multiple spuses
 	*/
 	private function drawPersonName($p, $dashed='') {
-		if ($this->allPartners) {
+		if ($this->allPartners === 'true') {
 			$f = $p->getPrimaryChildFamily();
 			if ($f) {
 				switch ($p->getSex()) {
 				case 'M':
-					$title=' title="'.strip_tags(/* I18N: e.g. â€œSon of [father name & mother name]â€ */ WT_I18N::translate('Son of %s', $f->getFullName())).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. “Son of [father name & mother name]” */ WT_I18N::translate('Son of %s', $f->getFullName())).'"';
 					break;
 				case 'F':
-					$title=' title="'.strip_tags(/* I18N: e.g. â€œDaughter of [father name & mother name]â€ */ WT_I18N::translate('Daughter of %s', $f->getFullName())).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. “Daughter of [father name & mother name]” */ WT_I18N::translate('Daughter of %s', $f->getFullName())).'"';
 					break;
 				case 'U':
-					$title=' title="'.strip_tags(/* I18N: e.g. â€œChild of [father name & mother name]â€ */ WT_I18N::translate('Child of %s', $f->getFullName())).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. “Child of [father name & mother name]” */ WT_I18N::translate('Child of %s', $f->getFullName())).'"';
 					break;
 				}
 			} else {

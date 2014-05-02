@@ -1,1 +1,344 @@
-function TreeViewHandler(d,f){this.treeview=jQuery("#"+d+"_in");this.loadingImage=jQuery("#"+d+"_loading");this.toolbox=jQuery("#tv_tools");this.buttons=jQuery(".tv_button:first",this.toolbox);this.zoom=100;this.boxWidth=180;this.boxExpandedWidth=250;this.cookieDays=360;this.ajaxUrl="module.php?mod=tree&instance="+d+"&allPartners="+(f?"true":"false")+"&mod_action=";this.container=this.treeview.parent();this.updating=this.auto_box_width=!1;this.overLevel=0;var e=this;"true"==readCookie("compact")&&e.compact();readCookie("allPartners")!=f&&createCookie("allPartners",f,this.cookieDays);e.treeview.draggable({cursor:"move",stop:function(){e.updateTree()}});e.toolbox.find("#tvbCompact").each(function(a,g){g.onclick=function(){e.compact()}});e.toolbox.find("#tvbOpen").each(function(a,h){var g=jQuery(h,e.toolbox);h.onclick=function(){g.addClass("tvPressed");e.setLoading();var c=jQuery.Event("click");e.treeview.find(".tv_box:not(.boxExpanded)").each(function(j,i){var b=jQuery(i,e.treeview).offset();b.left>=e.leftMin&&(b.left<=e.leftMax&&b.top>=e.topMin&&b.top<=e.topMax)&&e.expandBox(i,c)});g.removeClass("tvPressed");e.setComplete()}});e.toolbox.find("#tvbClose").each(function(a,h){var g=jQuery(h,e.toolbox);h.onclick=function(){g.addClass("tvPressed");e.setLoading();e.treeview.find(".tv_box.boxExpanded").each(function(i,c){jQuery(c).css("display","none").removeClass("boxExpanded").parent().find(".tv_box.collapsedContent").css("display","block")});g.removeClass("tvPressed");e.setComplete()}});e.centerOnRoot();return !1}TreeViewHandler.prototype.setLoading=function(){this.treeview.css("cursor","wait");this.loadingImage.css("display","block")};TreeViewHandler.prototype.setComplete=function(){this.treeview.css("cursor","move");this.loadingImage.css("display","none")};TreeViewHandler.prototype.getSize=function(){var a=this.container.parent(),d=a.offset();this.leftMin=d.left;this.leftMax=this.leftMin+a.innerWidth();this.topMin=d.top;this.topMax=this.topMin+a.innerHeight()};TreeViewHandler.prototype.updateTree=function(f,j){var g=this,i=[],h=[];this.getSize();g.treeview.find("td[abbr]").each(function(a,e){e=jQuery(e,g.treeview);var d=e.offset();d.left>=g.leftMin&&(d.left<=g.leftMax&&d.top>=g.topMin&&d.top<=g.topMax)&&(i.push(e.attr("abbr")),h.push(e))});0<i.length?(g.updating=!0,g.setLoading(),jQuery.ajax({url:g.ajaxUrl+"getPersons",dataType:"json",data:"q="+i.join(";"),success:function(a){for(var n=h.length,m=jQuery(".rootPerson",this.treeview),e=m.offset().left,l=0;l<n;l++){h[l].removeAttr("abbr").html(a[l])}g.treeview.offset({left:g.treeview.offset().left-m.offset().left+e});g.getSize()},complete:function(){g.treeview.find("td[abbr]").length&&g.updateTree(f,j);g.auto_box_width&&g.treeview.find(".tv_box").css("width","auto");g.updating=!0;!0==f&&g.centerOnRoot();j&&j.removeClass("tvPressed");g.setComplete();g.updating=!1},timeout:function(){j&&j.removeClass("tvPressed");g.updating=!1;g.setComplete()}})):(j&&j.removeClass("tvPressed"),g.setComplete());return !1};TreeViewHandler.prototype.compact=function(){var d=jQuery("#tvbCompact",this.toolbox);this.setLoading();if(this.auto_box_width){var f=this.boxWidth*(this.zoom/100)+"px",e=this.boxExpandedWidth*(this.zoom/100)+"px";this.treeview.find(".tv_box:not(boxExpanded)",this.treeview).css("width",f);this.treeview.find(".boxExpanded",this.treeview).css("width",e);this.auto_box_width=!1;readCookie("compact")&&createCookie("compact",!1,this.cookieDays);d.removeClass("tvPressed")}else{this.treeview.find(".tv_box").css("width","auto"),this.auto_box_width=!0,readCookie("compact")||createCookie("compact",!0,this.cookieDays),this.updating||this.updateTree(),d.addClass("tvPressed")}this.setComplete();return !1};TreeViewHandler.prototype.centerOnRoot=function(){this.loadingImage.css("display","block");var e=this.container,h=e.innerWidth()/2;if(isNaN(h)){return !1}var f=e.innerHeight()/2,g=jQuery(".rootPerson",this.treeview),h=e.offset().left+this.treeview.offset().left+h-g.offset().left-g.outerWidth()/2,e=e.offset().top+this.treeview.offset().top+f-g.offset().top-g.outerHeight()/2;this.treeview.offset({left:h,top:e});this.updating||this.updateTree(!0);return !1};TreeViewHandler.prototype.expandBox=function(i,p){if(jQuery(p.target).hasClass("tv_link")){return !1}i=jQuery(i,this.treeview);var j=i.parent(),o=i.attr("abbr"),n=this,m,k;if(j.hasClass("detailsLoaded")){k=j.find(".collapsedContent"),m=j.find(".tv_box:not(.collapsedContent)")}else{m=i;k=i.clone();j.append(k.addClass("collapsedContent").css("display","none"));var l=this.loadingImage.find("img").clone().addClass("tv_box_loading").css("display","block");i.prepend(l);n.updating=!0;n.setLoading();i.load(n.ajaxUrl+"getDetails&pid="+o,function(){"function"==typeof CB_Init&&CB_Init();i.css("width",n.boxExpandedWidth*(n.zoom/100)+"px");l.remove();j.addClass("detailsLoaded");n.setComplete();n.updating=!1})}i.hasClass("boxExpanded")?(m.css("display","none"),k.css("display","block"),i.removeClass("boxExpanded")):(m.css("display","block"),k.css("display","none"),m.addClass("boxExpanded"));this.getSize();return !1};function createCookie(e,h,f){if(f){var g=new Date;g.setTime(g.getTime()+86400000*f);f="; expires="+g.toGMTString()}else{f=""}document.cookie=e+"="+h+f+"; path=/"}function readCookie(e){e+="=";for(var h=document.cookie.split(";"),f=0;f<h.length;f++){for(var g=h[f];" "==g.charAt(0);){g=g.substring(1,g.length)}if(0==g.indexOf(e)){return g.substring(e.length,g.length)}}return null}function eraseCookie(a){createCookie(a,"",-1)};
+/**
+ * TreeViewHandler
+ *
+ * Copyright (C) 2014 webtrees development team
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+function TreeViewHandler(treeviewInstance) {
+	this.treeview = jQuery("#" + treeviewInstance + "_in");
+	this.loadingImage = jQuery("#" + treeviewInstance + "_loading");
+	this.toolbox = jQuery("#tv_tools");
+	this.buttons = jQuery(".tv_button:first", this.toolbox);
+	this.zoom = 100; // in percent
+	this.boxWidth = 180; // default family box width
+	this.boxExpandedWidth = 250; // default expanded family box width
+	this.cookieDays = 3; // lifetime of preferences memory, in days
+	this.ajaxUrl = "module.php?mod=tree&instance=" + treeviewInstance + 
+		"&mod_action=";
+
+	this.container = this.treeview.parent(); // Store the container element ("#" + treeviewInstance + "_out")
+	this.auto_box_width = false;
+	this.updating = false;
+	this.overLevel = 0; // internal var for handling submenus
+	
+	var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
+
+	// Restore user preferences
+	if (readCookie("compact") == "true") {
+		tv.compact();
+	}
+
+	// Define the draggables
+	tv.treeview.draggable({
+		cursor: "move",
+		stop: function(event, ui) {
+			tv.updateTree();
+		}
+	});
+	
+	// Add click handlers to buttons
+	tv.toolbox.find("#tvbCompact").each(function(index, tvCompact) {
+		tvCompact.onclick = function() {
+			tv.compact();
+		}
+	});
+	// If we click the "hide/show all partners" button, toggle the setting before reloading the page
+	tv.toolbox.find("#tvbAllPartners").each(function(index, tvAllPartners) {
+		tvAllPartners.onclick = function() {
+			createCookie("allPartners", readCookie("allPartners") === "true" ? "false" : "true", tv.cookieDays);
+		}
+	});
+	tv.toolbox.find("#tvbOpen").each(function(index, tvbOpen) {
+		var b = jQuery(tvbOpen, tv.toolbox);
+		tvbOpen.onclick = function() {
+			b.addClass("tvPressed");
+			tv.setLoading();
+			var e = jQuery.Event("click");
+			tv.treeview.find(".tv_box:not(.boxExpanded)").each(function(index, box){
+				var pos = jQuery(box, tv.treeview).offset();
+				if ((pos.left >= tv.leftMin) && (pos.left <= tv.leftMax) && (pos.top >= tv.topMin) && (pos.top <= tv.topMax)) {
+					tv.expandBox(box,e);
+				}
+			});
+			b.removeClass("tvPressed");
+			tv.setComplete();
+		}
+	});
+	tv.toolbox.find("#tvbClose").each(function(index, tvbClose) {
+		var b = jQuery(tvbClose,tv.toolbox );
+		tvbClose.onclick = function() {
+			b.addClass("tvPressed");
+			tv.setLoading();
+			tv.treeview.find(".tv_box.boxExpanded").each(function(index, box){
+				jQuery(box).css("display", "none").removeClass("boxExpanded").parent().find(".tv_box.collapsedContent").css("display", "block");
+			});
+			b.removeClass("tvPressed");
+			tv.setComplete();
+		}
+	});
+	
+	tv.centerOnRoot(); // fire ajax update if needed, which call setComplete() when all is loaded
+}
+/**
+ * Class TreeView setLoading method
+ */
+TreeViewHandler.prototype.setLoading = function() {
+	this.treeview.css("cursor", "wait");
+	this.loadingImage.css("display", "block");
+};
+/**
+ * Class TreeView setComplete  method
+ */
+TreeViewHandler.prototype.setComplete = function() {
+	this.treeview.css("cursor", "move");
+	this.loadingImage.css("display", "none");
+};
+
+/**
+ * Class TreeView getSize  method
+ * Store the viewport current size
+ */
+TreeViewHandler.prototype.getSize = function() {
+	var tv = this;
+	// retrieve the current container bounding box
+	var container = tv.container.parent();
+	var offset = container.offset();
+	tv.leftMin = offset.left;
+	tv.leftMax = tv.leftMin + container.innerWidth();
+	tv.topMin = offset.top;
+	tv.topMax = tv.topMin + container.innerHeight();
+	/*
+	var frm = jQuery("#tvTreeBorder");
+	tv.treeview.css("width", frm.width());
+	tv.treeview.css("height", frm.height());*/
+};
+
+/**
+ * Class TreeView updateTree  method
+ * Perform ajax requests to complete the tree after drag
+ * param boolean @center center on root person when done
+ */
+TreeViewHandler.prototype.updateTree = function(center, button) {
+	var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
+	var toLoad = new Array();
+	var elts = new Array();
+	this.getSize();
+
+	// check which td with datafld attribute are within the container bounding box
+	// and therefore need to be dynamically loaded
+	tv.treeview.find("td[abbr]").each(function(index, el) {
+		el = jQuery(el, tv.treeview);
+		var pos = el.offset();
+		if ((pos.left >= tv.leftMin) && (pos.left <= tv.leftMax) && (pos.top >= tv.topMin) && (pos.top <= tv.topMax)) {
+			toLoad.push(el.attr("abbr"));
+			elts.push(el);
+		}
+	});
+	// if some boxes need update, we perform an ajax request
+	if (toLoad.length > 0) {
+		tv.updating = true;
+		tv.setLoading();
+		jQuery.ajax({
+			url: tv.ajaxUrl + "getPersons",
+			dataType: "json",
+			data: "q=" + toLoad.join(";"),
+			success: function(ret) {
+				var nb = elts.length;
+				var rootEl = jQuery(".rootPerson", this.treeview);
+				var l = rootEl.offset().left;
+				for (var i=0;i<nb;i++) {
+					elts[i].removeAttr("abbr").html(ret[i]);
+				}
+				// repositionning
+				tv.treeview.offset({left: tv.treeview.offset().left - rootEl.offset().left +l});
+				// we now ajust the draggable treeview size to its content size
+				tv.getSize();
+			},
+			complete: function() {
+				if (tv.treeview.find("td[abbr]").length) {
+					tv.updateTree(center, button); // recursive call
+				}
+				// the added boxes need that in mode compact boxes
+				if (tv.auto_box_width) {
+					tv.treeview.find(".tv_box").css("width", "auto");
+				}
+				tv.updating = true; // avoid an unuseful recursive call when all requested persons are loaded
+				if (center) {
+					tv.centerOnRoot();
+				}
+				if (button) {
+					button.removeClass("tvPressed");
+				}
+				tv.setComplete();
+				tv.updating = false;
+			},
+			timeout: function() {
+				if (button) {
+					button.removeClass("tvPressed");
+				}
+				tv.updating = false;
+				tv.setComplete();
+			}
+		});
+	} else {
+		if (button) {
+			button.removeClass("tvPressed");
+		}
+		tv.setComplete();
+	}
+	return false;
+};
+
+/**
+ * Class TreeView compact method
+ */
+TreeViewHandler.prototype.compact = function() {
+	var tv = this;
+	var b = jQuery("#tvbCompact", tv.toolbox);
+	tv.setLoading();
+	if (!tv.auto_box_width) {
+		tv.treeview.find(".tv_box").css("width", "auto");
+		tv.auto_box_width = true;
+		if (!readCookie("compact")) {
+			createCookie("compact", true, tv.cookieDays);
+		}
+		if (!tv.updating) {
+			tv.updateTree();
+		}
+		b.addClass("tvPressed");
+	} else {
+		var w = tv.boxWidth * (tv.zoom / 100) + "px";
+		var ew = tv.boxExpandedWidth * (tv.zoom / 100) + "px";
+		tv.treeview.find(".tv_box:not(boxExpanded)", tv.treeview).css("width", w);
+		tv.treeview.find(".boxExpanded", tv.treeview).css("width", ew);
+		tv.auto_box_width = false;
+		if (readCookie("compact")) {
+			createCookie("compact", false, tv.cookieDays);
+		}
+		b.removeClass("tvPressed");
+	}
+	tv.setComplete();
+	return false;
+};
+
+/**
+ * Class TreeView centerOnRoot method
+ */
+TreeViewHandler.prototype.centerOnRoot = function() {
+	this.loadingImage.css("display", "block");
+	var tvc = this.container;
+	var tvcW = tvc.innerWidth() / 2;
+	if(isNaN(tvcW)) {
+		return false;
+	}
+	var tvcH = tvc.innerHeight() / 2;
+	var el = jQuery(".rootPerson", this.treeview);
+	var dLeft = tvc.offset().left + this.treeview.offset().left + tvcW - el.offset().left - el.outerWidth()/2;
+	var dTop = tvc.offset().top + this.treeview.offset().top + tvcH - el.offset().top - el.outerHeight()/2;
+	this.treeview.offset({left: dLeft, top: dTop});
+
+	if (!this.updating) {
+		this.updateTree(true);
+	}
+	return false;
+};
+
+/**
+ * Class TreeView expandBox method
+ * param string @box the person box element
+ * param string @event the call event
+ * param string @pid the person id
+ * 
+ * called ONLY for elements which have NOT the class tv_link to avoid unuseful requests to the server
+ */
+TreeViewHandler.prototype.expandBox = function(box, event) {
+	var t = jQuery(event.target);
+	if (t.hasClass("tv_link")) {
+		return false;
+	}
+
+	var box = jQuery(box, this.treeview);
+	var bc = box.parent(); // bc is Box Container
+	var pid = box.attr("abbr");
+	var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
+	var expanded;
+	var collapsed;
+	
+	if (bc.hasClass("detailsLoaded")) {
+		collapsed = bc.find(".collapsedContent");
+		expanded = bc.find(".tv_box:not(.collapsedContent)");
+	} else {
+		// Cache the box content as an hidden person's box in the box's parent element
+		expanded = box;
+		collapsed = box.clone();
+		bc.append(collapsed.addClass("collapsedContent").css("display", "none"));
+		// we add a waiting image at the right side of the box
+		// TODO : manage rtl (left side instead of right in rtl mode)
+		var loadingImage = this.loadingImage.find("img").clone().addClass("tv_box_loading").css("display", "block");
+		box.prepend(loadingImage);
+		tv.updating = true;
+		tv.setLoading();
+		// perform the Ajax request and load the result in the box
+		box.load(tv.ajaxUrl + "getDetails&pid=" + pid, function() {
+			// If Lightbox module is active, we reinitialize it for the new links
+			if (typeof CB_Init == "function") {
+				CB_Init();
+			}
+			box.css("width", tv.boxExpandedWidth * (tv.zoom / 100) + "px");
+			loadingImage.remove();
+			bc.addClass("detailsLoaded");
+			tv.setComplete();
+			tv.updating = false;
+		});
+	}
+	if (box.hasClass("boxExpanded")) {
+		expanded.css("display", "none");
+		collapsed.css("display", "block");
+		box.removeClass("boxExpanded");
+	} else {
+		expanded.css("display", "block");
+		collapsed.css("display", "none");
+		expanded.addClass("boxExpanded");
+	}
+	// we must ajust the draggable treeview size to its content size
+	this.getSize();
+	return false;
+};
+
+function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	} else {
+		var expires = "";
+	}
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+function readCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') {
+			c = c.substring(1,c.length);
+		}
+		if (c.indexOf(nameEQ) == 0) {
+			return c.substring(nameEQ.length,c.length);
+		}
+	}
+	return null;
+}
