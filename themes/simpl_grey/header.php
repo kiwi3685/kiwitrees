@@ -80,6 +80,10 @@ $this->addInlineJavaScript('
 	jQuery("#NPFX, input[name*=NPFX]").autocomplete({source: "'.WT_THEME_URL.'files/simpl_autocomplete.php?field=NPFX"});
 	jQuery("#NSFX, input[name*=NSFX]").autocomplete({source: "'.WT_THEME_URL.'files/simpl_autocomplete.php?field=NSFX"});
 ');
+
+global $ALL_CAPS;
+if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
+
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',

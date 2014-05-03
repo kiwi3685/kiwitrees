@@ -1445,3 +1445,7 @@ jQuery.extend($.ui.accordion.prototype.options, {
 	}
 });
 
+// Optionally apply all CAPS to surnames
+function all_caps() {
+	jQuery(".NAME .SURN").css("text-transform", "uppercase");
+}

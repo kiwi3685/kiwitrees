@@ -65,6 +65,10 @@ $this
 		});
 		jQuery("textarea").autosize();
 	');
+
+global $ALL_CAPS;
+if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
+
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
