@@ -548,7 +548,7 @@ a.link:hover,a:hover .name1,a:hover .name2{color:#4682B4}
 .name_tree_div li,.name_tree_div_visible li,#sb_clippings_content li{list-style:none;margin:0;padding:0}
 .ui-widget-content{border:none; border-bottom:1px solid lightGray}
 #header_accordion1 .ui-widget-content{border-bottom:1px solid darkgrey;border-right:1px solid darkgrey;border-left:1px solid darkgrey}
-.NAME .SURN{text-transform:uppercase}
+.NAME .SURN{text-transform:uppercase;}
 .source_citations .field{white-space:normal}
 .itr {line-height:1.5;position:absolute;text-align:center}
 .block .itr,#family-table .itr,#ancestry_chart .itr,#descendancy_chart .itr,#familybook_chart .itr,#familybook_chart_rtl .itr,#hourglass_chart .itr,#relatives_content .itr{position:relative;top:0}
@@ -702,7 +702,6 @@ form, button, input{display:none}
 #CB_All {display:none}
 }
 [class^="icon-"], [class*=" icon-"] {display:inline-block; background-image:url(images/icon_sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:middle}
-.icon-plus {height:16px;width:16px;background-position:0 0}
 .icon-darrow {height:16px;width:16px;background-position:-16px 0}
 a.icon-darrow:hover {height:16px;width:16px;background-position:-32px 0}
 .icon-ddarrow {height:16px;width:16px;background-position:-48px 0}
@@ -737,7 +736,6 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 .icon-reminder {height:16px;width:16px;background-position:-400px 0}
 .icon-target {height:16px;width:16px;background-position:-416px 0}
 .icon-clippings {height:16px;width:16px;background-position:-432px 0}
-.icon-minus {height:16px;width:16px;background-position:-448px 0}
 .icon-email {height:16px;width:16px;background-position:-464px 0;vertical-align:middle}
 .icon-warning {height:16px;width:16px;background-position:-480px 0}
 .icon-sex_f_15x15 {height:16px;width:16px;background-position:-496px 0}
@@ -790,6 +788,13 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_findnote{width:16px;height:16px;background-image:url(images/findnote.png);}
+
+.icon-plus {
+	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
+	height:16px;width:16px;background-position:-416px -128px} /* .ui-silk-control-play */
+.icon-minus {
+	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
+	height:16px;width:16px;background-position:-256px -128px} /* .ui-silk-control-eject */
 
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png)}
