@@ -85,6 +85,7 @@ case 'update':
 		safe_POST('NEW_CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
 		safe_POST('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
 	))));
+	set_gedcom_setting(WT_GED_ID, 'ALL_CAPS',                     safe_POST_bool('NEW_ALL_CAPS'));
 	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               safe_POST('NEW_CHART_BOX_TAGS'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_REMOVE')));
@@ -739,6 +740,14 @@ if (count(WT_Tree::getAll())==1) { //Removed because it doesn't work here for mu
 					</td>
 					<td>
 						<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE'); ?>" size="50" maxlength="255">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Display surnames in all CAPS'); ?>
+					</td>
+					<td>
+						<?php echo edit_field_yes_no('NEW_ALL_CAPS', get_gedcom_setting(WT_GED_ID, 'ALL_CAPS')); ?>
 					</td>
 				</tr>
 				<tr>
