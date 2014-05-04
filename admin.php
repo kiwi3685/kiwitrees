@@ -1392,6 +1392,8 @@ function old_paths() {
 		WT_ROOT.'themes/xenea/jquery-ui-1.10.0',
 		// Removed in kiwitrees 2.0.1
 		WT_ROOT.'modules_v3/simpl_research/plugins/findmypastuk.php',
+		// Removed in kiwitrees 2.0.2
+		WT_ROOT.'js/jquery-ui-1.10.2.js',
 
 	);
 }
