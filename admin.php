@@ -1393,8 +1393,9 @@ function old_paths() {
 		// Removed in kiwitrees 2.0.1
 		WT_ROOT.'modules_v3/simpl_research/plugins/findmypastuk.php',
 		// Removed in kiwitrees 2.0.2
-		WT_ROOT.'js/jquery-ui-1.10.2.js',
+		WT_ROOT.'js/jquery-1.10.2.js',
 		WT_ROOT.'js/webtrees-1.4.2.js',
+		WT_ROOT.'js/jquery-ui-1.10.3.js',
 
 	);
 }
