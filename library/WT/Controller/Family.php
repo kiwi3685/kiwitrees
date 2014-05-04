@@ -257,13 +257,16 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 		$indifacts = $this->record->getFacts();
 		if ($indifacts) {
-			echo '<div style="display:inline-block;width:', $fam_width, ';"><table style="width:100%;">';
-			sort_facts($indifacts);
-			foreach ($indifacts as $fact) {
-				print_fact($fact, $this->record);
-			}
-			print_main_media($this->record->getXref());
-			echo '</table></div>';
+			echo '
+				<div style="display:inline-block;width:', $fam_width, ';">
+					<table style="width:100%;">';
+					sort_facts($indifacts);
+					foreach ($indifacts as $fact) {
+						print_fact($fact, $this->record);
+					}
+					print_main_media($this->record->getXref());
+					echo '</table>
+				</div>';
 		} else {
 			echo '<tr><td class="messagebox" colspan="2">', WT_I18N::translate('No facts for this family.'), '</td></tr>';
 		}
@@ -271,7 +274,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			echo '<div style="display:inline-block;width:30%;vertical-align:top;"><table style="width:100%;">';
 			echo '<tr><th class="descriptionbox" colspan="2">', WT_I18N::translate('Add new family information'), '</th></tr>';
-			print_add_new_fact($this->record->getXref(), $indifacts, 'FAM');
+			print_add_new_fact2($this->record->getXref(), $indifacts, 'FAM');
 
 			echo '<tr><td class="descriptionbox">';
 			echo WT_Gedcom_Tag::getLabel('NOTE');
