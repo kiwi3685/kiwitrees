@@ -1096,6 +1096,105 @@ function print_add_new_fact($id, $usedfacts, $type) {
 }
 
 /**
+* Print a new fact box on details pages - VERSION 2
+* @param string $id the id of the person, family, source etc the fact will be added to
+* @param array $usedfacts an array of facts already used in this record
+* @param string $type the type of record INDI, FAM, SOUR etc
+*/
+function print_add_new_fact2($id, $usedfacts, $type) {
+	global $WT_SESSION;
+
+	// -- Add from clipboard
+	if ($WT_SESSION->clipboard) {
+		$newRow = true;
+		foreach (array_reverse($WT_SESSION->clipboard, true) as $key=>$fact) {
+			if ($fact["type"]==$type || $fact["type"]=='all') {
+				if ($newRow) {
+					$newRow = false;
+					echo '<tr><td class="descriptionbox">';
+					echo WT_I18N::translate('Add from clipboard'), '</td>';
+					echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="" onsubmit="return false;">';
+					echo '<select id="newClipboardFact" name="newClipboardFact">';
+				}
+				$fact_type=WT_Gedcom_Tag::getLabel($fact['fact']);
+				echo '<option value="clipboard_', $key, '">', $fact_type;
+				// TODO use the event class to store/parse the clipboard events
+				if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
+					$tmp=new WT_Date($match[1]);
+					echo '; ', $tmp->minDate()->Format('%Y');
+				}
+				if (preg_match('/^2 PLAC ([^,\n]+)/m', $fact['factrec'], $match)) {
+					echo '; ', $match[1];
+				}
+				echo '</option>';
+			}
+		}
+		if (!$newRow) {
+			echo '</select>';
+			echo '&nbsp;&nbsp;<input type="button" value="', WT_I18N::translate('Add'), "\" onclick=\"addClipboardRecord('$id', 'newClipboardFact');\"> ";
+			echo '</form></td></tr>', "\n";
+		}
+	}
+
+	// -- Add from pick list
+	switch ($type) {
+	case "INDI":
+		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		break;
+	case "FAM":
+		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'),     -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'),  -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'),   -1, PREG_SPLIT_NO_EMPTY);
+		break;
+	case "SOUR":
+		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		break;
+	case "NOTE":
+		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		break;
+	case "REPO":
+		$addfacts   =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD'),    -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts=preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts =preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK'),  -1, PREG_SPLIT_NO_EMPTY);
+		break;
+	default:
+		return;
+	}
+	$addfacts=array_merge(CheckFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
+	$quickfacts=array_intersect($quickfacts, $addfacts);
+	$translated_addfacts=array();
+	foreach ($addfacts as $addfact) {
+		$translated_addfacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
+	}
+	uasort($translated_addfacts, 'factsort');
+	echo '<tr><td class="descriptionbox">';
+	echo WT_I18N::translate('Fact or event');
+	echo help_link('add_facts'), '</td>';
+	echo '<td class="optionbox wrap">';
+	echo '<form method="get" name="newfactform" action="" onsubmit="return false;">';
+	echo '<select id="newfact2" name="newfact2">';
+	foreach ($translated_addfacts as $fact=>$fact_name) {
+		echo '<option value="', $fact, '">', $fact_name, '</option>';
+	}
+	if ($type == 'INDI' || $type == 'FAM') {
+		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
+	}
+	echo '</select>';
+	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\');">';
+	echo '<span class="quickfacts">';
+	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	echo '</span></form>';
+	echo '</td></tr>';
+}
+
+
+/**
 * javascript declaration for calendar popup
 *
 * @param none

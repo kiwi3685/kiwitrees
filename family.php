@@ -156,7 +156,7 @@ $show_full = '1';
 echo '
 	<div id="family-page" class="family2" style="overflow:hidden;">
 		<h2 class="name_head" style="text-align:center;">', $controller->record->getFullName(), '</h2>
-		<div id="family_chart" style="border-bottom:1px solid; max-height:540px; overflow-y:auto;">', 
+		<div id="family_chart" style="border-bottom:1px solid; max-height:540px; overflow-y:auto;">'; 
 				print_parents($controller->record->getXref());
 				if (WT_USER_CAN_EDIT) {
 					if ($controller->diff_record) {
