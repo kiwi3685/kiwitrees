@@ -1,9 +1,9 @@
 <?php
 // TreeView module class
 //
-// Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load 
+// Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
 //
-// Copyright (C) 2012 webtrees development team
+// Copyright (C) 2014 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,17 +17,17 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-class tree_WT_Module extends WT_Module implements WT_Module_Tab {	
-	var $headers; // CSS and script to include in the top of <head> section, before theme's CSS
+class tree_WT_Module extends WT_Module implements WT_Module_Tab {
+	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
-	
+
 	// Extend WT_Module. This title should be normalized when this module will be added officially
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Interactive tree');
@@ -35,9 +35,9 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of a person.');
+		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function defaultTabOrder() {
 		return 68;
@@ -47,9 +47,9 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getTabContent() {
 		global $controller;
 
-		require_once WT_MODULES_DIR.$this->getName().'/class_treeview.php';
+		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		$tv = new TreeView('tvTab');
-		list($html, $js) = $tv->drawViewport($controller->record->getXref(), 3);
+		list($html, $js) = $tv->drawViewport($controller->record, 3);
 		return
 			'<script src="' . $this->js() . '"></script>' .
 			'<script>' . $js . '</script>' .
@@ -59,13 +59,15 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
-			
+
 		return !$SEARCH_SPIDER;
 	}
+
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
 		return false;
 	}
+
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
 		return true;
@@ -77,12 +79,12 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		return
 			'<script>
 			if (document.createStyleSheet) {
-				document.createStyleSheet("'.$this->css().'"); // For Internet Explorer
+				document.createStyleSheet("' . $this->css() . '"); // For Internet Explorer
 			} else {
 				var newSheet=document.createElement("link");
     		newSheet.setAttribute("rel","stylesheet");
     		newSheet.setAttribute("type","text/css");
-   			newSheet.setAttribute("href","'.$this->css().'");
+   			newSheet.setAttribute("href","' . $this->css() . '");
 		    document.getElementsByTagName("head")[0].appendChild(newSheet);
 			}
 			</script>';
@@ -91,30 +93,28 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	// We define here actions to proceed when called, either by Ajax or not
 	public function modAction($mod_action) {
-		require_once WT_MODULES_DIR.$this->getName().'/class_treeview.php';
-		switch($mod_action) {
+		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
+		switch ($mod_action) {
 		case 'treeview':
-				global $controller;
-				$controller=new WT_Controller_Chart();
+			global $controller;
+			$controller = new WT_Controller_Chart();
+			$tv = new TreeView('tv');
+			ob_start();
 
-				$tvName = 'tv';
-				$tv = new TreeView('tv');
-				ob_start();
+			$person = $controller->getSignificantIndividual();
 
-				$person=$controller->getSignificantIndividual();
+			list($html, $js) = $tv->drawViewport($person, 4);
 
-				list($html, $js)=$tv->drawViewport($person->getXref(), 4);
-
-				$controller
-					->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()))
-					->pageHeader()
-					->addExternalJavascript($this->js())
-					->addInlineJavascript($js)
-					->addInlineJavascript('
+			$controller
+				->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()))
+				->pageHeader()
+				->addExternalJavascript($this->js())
+				->addInlineJavascript($js)
+				->addInlineJavascript('
 					if (document.createStyleSheet) {
-						document.createStyleSheet("'.$this->css().'"); // For Internet Explorer
+						document.createStyleSheet("' . $this->css() . '"); // For Internet Explorer
 					} else {
-						jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.$this->css().'">\');
+						jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="' . $this->css() . '">\');
 					}
 				');
 
@@ -130,10 +130,13 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$pid = safe_GET('pid');
-			$i   = safe_GET('instance');
-			$tv  = new TreeView($i);
-			echo $tv->getDetails($pid);
+			$pid = WT_Filter::get('pid', WT_REGEX_XREF);
+			$i = WT_Filter::get('instance');
+			$tv = new TreeView($i);
+			$individual = WT_Person::getInstance($pid);
+			if ($individual) {
+				echo $tv->getDetails($individual);
+			}
 			break;
 
 		case 'getPersons':
@@ -141,8 +144,8 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			//$controller->pageHeader();
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$q  = $_REQUEST['q'];
-			$i  = safe_GET('instance');
+			$q = WT_Filter::get('q');
+			$i = WT_Filter::get('instance');
 			$tv = new TreeView($i);
 			echo $tv->getPersons($q);
 			break;
@@ -154,10 +157,10 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	public function css() {
-		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css';
+		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/css/treeview.css';
 	}
-	
+
 	public function js() {
-		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js';
+		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}
 }
