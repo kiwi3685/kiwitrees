@@ -1397,6 +1397,7 @@ function old_paths() {
 		WT_ROOT.'js/webtrees-1.4.2.js',
 		WT_ROOT.'js/jquery-ui-1.10.3.js',
 		WT_ROOT.'js/jquery.wheelzoom-1.1.2.js',
+		WT_ROOT.'js/jquery.jeditable-1.7.1.js',
 
 	);
 }
