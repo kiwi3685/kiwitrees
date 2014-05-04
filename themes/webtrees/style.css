@@ -1135,7 +1135,7 @@ a.icon-udarrow:hover {width:20px;height:20px;background-image:url(images/udarrow
 [dir=rtl] #cboxNext {right:0;left:auto;}
 [dir=rtl] #cboxCurrent {right:auto;left:0;}
 [dir=rtl] #cboxClose {right:auto;left:0;}
-[dir=rtl] #cboxSlideshow {right:57px;left:0;}
+[dir=rtl] #cboxSlideshow {right:57px;left:auto;}
 
 /* Styling for simpl_pages module */
 li#menu-my_pages {background:url(images/pages.png) no-repeat 50% 50%}

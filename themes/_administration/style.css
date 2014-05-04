@@ -550,7 +550,7 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 [dir=rtl] #cboxNext {right:0;left:auto}
 [dir=rtl] #cboxCurrent {right:auto;left:0}
 [dir=rtl] #cboxClose {right:auto;left:0}
-[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+[dir=rtl] #cboxSlideshow {right:57px;left:auto; }
 
 /* Styling for simpl_duplicates module */
 #sim_dup .gm_check {overflow:hidden;}

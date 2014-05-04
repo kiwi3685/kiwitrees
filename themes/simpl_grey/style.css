@@ -110,7 +110,7 @@ li#menu#search li{margin-left:1em}
 #descendancy_chart li{list-style:url(images/spacer.png);margin:0 0 2px -15px;padding-bottom:0;padding-right:0;padding-top:0}
 #descendancy_chart_rtl ul{background-image:url(images/vline.png);background-position:right top;background-repeat:repeat-y;list-style:none;margin:0 .9375em 5px 0;padding-bottom:0;padding-left:0;padding-top:0}
 #relationship_chart {position:relative; left:0}
-html[dir='rtl'] #relationship_chart {left:auto; right:10px}
+[dir='rtl'] #relationship_chart {left:auto; right:10px}
 #ancestry_chart ul{background-image:url(images/vline.png);background-position:left top;background-repeat:repeat-y;list-style:none;margin:0 0 0 1.25em;padding-bottom:0;padding-right:0;padding-top:0}
 #ancestry_chart li{list-style:none;margin:0 0 2px -15px;padding-bottom:0;padding-right:0;padding-top:0}
 #ancestry_chart li table{margin:5px 0}
@@ -363,10 +363,10 @@ dt{float:left;font-weight:700;margin-right:10px}
 #indi_note .fact_SOUR{margin:3px 0}
 #indi_note .fact_SOUR a{font-size:100%}
 #indi_note .fact_NOTE,#indi_note .fact_SOUR {clear: both}
-html[dir='rtl'] #indi_header h3{padding:0 30px 0 10px;text-align:right}
-html[dir='rtl'] #indi_header h3 .header_age{float:left;padding:5px 5px 5px 0}
-html[dir='rtl'] #indi_note .fact_NOTE{float:right;margin:0 0 0 10px}
-html[dir='rtl'] .indi_table{clear:right}
+[dir='rtl'] #indi_header h3{padding:0 30px 0 10px;text-align:right}
+[dir='rtl'] #indi_header h3 .header_age{float:left;padding:5px 5px 5px 0}
+[dir='rtl'] #indi_note .fact_NOTE{float:right;margin:0 0 0 10px}
+[dir='rtl'] .indi_table{clear:right}
 .male_gender,.female_gender,.unknown_gender,.editicon,.copyicon,.deleteicon{background:url(images/indi_sprite.png) no-repeat left 0;display:block}
 .female_gender{background-position:-45px 0;height:24px;width:24px}
 .male_gender{background-position:-72px 2px;height:24px;width:24px}
@@ -375,7 +375,7 @@ html[dir='rtl'] .indi_table{clear:right}
 .copyicon{background-position:-70px -32px;height:16px;width:24px}
 .deleteicon{background-position:-100px -32px;height:16px;width:24px}
 .icon_arrow{background:url(images/small_menu_sprite.png) no-repeat left 0;background-position:90% -1166px;display:block}
-html[dir='rtl'] .icon_arrow{background-position:10% -1184px}
+[dir='rtl'] .icon_arrow{background-position:10% -1184px}
 .ui-tabs .ui-tabs-panel{margin-bottom:80px;padding:1em 0}
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
 .ui-tabs .ui-tabs-nav li a span {display:block; padding:.15em .35em;}
@@ -392,10 +392,10 @@ html[dir='rtl'] .icon_arrow{background-position:10% -1184px}
 .ui-sortable .noprint{display:none}
 .ui-button, .ui-button:link, .ui-button:visited, .ui-button:hover, .ui-button:active {left:1px}
 .ui-front{z-index:9999}
-html[dir='rtl'] .ui-tabs{direction:rtl}
-html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon{right:.5em}
-html[dir='rtl'] .ui-dialog-title{float:right}
-html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto}
+[dir='rtl'] .ui-tabs{direction:rtl}
+[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon{right:.5em}
+[dir='rtl'] .ui-dialog-title{float:right}
+[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto}
 #main{min-width:600px}
 #indi_left{float:left;width:98%}
 #tabs{float:left;overflow:auto;width:100%}
@@ -403,9 +403,9 @@ html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto}
 .use-sidebar #indi_left{width:73%}
 #separator{border-radius:3px;background:#D3D3D3 url(images/indi_sprite.png) no-repeat -26px 100px;border:1px solid #A9A9A9;display:block;float:right;max-width:10px;min-width:8px;width:.75%}
 .use-sidebar #separator{background:#D3D3D3 url(images/indi_sprite.png) no-repeat -1px 100px}
-html[dir='rtl'] #sidebar{margin:5px 0 0 2px}
-html[dir='rtl'] #separator{background:#D3D3D3 url(images/indi_sprite.png) no-repeat -1px 100px;float:left}
-html[dir='rtl'] .use-sidebar #separator{background:#D3D3D3 url(images/indi_sprite.png) no-repeat -26px 100px}
+[dir='rtl'] #sidebar{margin:5px 0 0 2px}
+[dir='rtl'] #separator{background:#D3D3D3 url(images/indi_sprite.png) no-repeat -1px 100px;float:left}
+[dir='rtl'] .use-sidebar #separator{background:#D3D3D3 url(images/indi_sprite.png) no-repeat -26px 100px}
 #sb_family_nav_content{margin-top:8px;overflow:hidden}
 .nav_content{font-size:.8em;padding:0;width:100%}
 .nav_content .facts_label {width:75px;}
@@ -415,13 +415,13 @@ html[dir='rtl'] .use-sidebar #separator{background:#D3D3D3 url(images/indi_sprit
 .flyout3{width:150px;white-space:nowrap}
 .flyout4{color:#000;font-weight:bold;margin-left:0;margin-top:0;padding:3px;text-align:left}
 #flyout3,#phusb,#pwife,#shusb,#swife,#spouse{display:block;background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none}
-html[dir='rtl'] .flyout{left:210px;text-align:right}
-html[dir='rtl'] .flyout2{right:40px;text-align:right}
+[dir='rtl'] .flyout{left:210px;text-align:right}
+[dir='rtl'] .flyout2{right:40px;text-align:right}
 #sb_desc_content{font-size:.8em;margin-left:3px}
 .sb_desc_indi_li{list-style-type:none}
 .desc_tree_div ul{margin-left:10px;margin-right:0;margin-top:0;padding:0}
-html[dir='rtl'] #sb_desc_content{margin-right:3px}
-html[dir='rtl'] .desc_tree_div ul{margin-left:0;margin-right:10px}
+[dir='rtl'] #sb_desc_content{margin-right:3px}
+[dir='rtl'] .desc_tree_div ul{margin-left:0;margin-right:10px}
 .sb_indi_surname_li,.sb_fam_surname_li{list-style-image:url(images/plus.png)}
 #sb_content_clippings{margin-top:5px;overflow:hidden}
 #sb_content_extra_info{font-size:80%;font-weight:700;margin-top:1px;overflow:hidden;padding:5px}
@@ -453,8 +453,8 @@ html[dir='rtl'] .desc_tree_div ul{margin-left:0;margin-right:10px}
 .pro_linedrop .select li.line a,a.link:link,a.link:active,a.link:visited{color:#696969}
 .pro_linedrop .select li.line a:hover,.pro_linedrop .select li.line:hover a,.pro_linedrop .select :hover .sub li:hover a,.pro_linedrop .select :hover .sub :hover ul li a:hover{color:#4682B4;text-shadow:0 1px 0 #fff}
 .pro_linedrop ul ul,.pro_linedrop .select :hover .sub :hover ul ul,.source_citations,a.showit > span,span.link_text,.desc_tree_div,.name_tree_div{display:none}
-.pro_linedrop .select :hover .rt li,.right_block2,.faq_top,.faq_edit,html[dir='rtl'] .editlink,html[dir='rtl'] .copylink,html[dir='rtl'] .deletelink,.field .editlink,.field .deletelink,.field .copylink,#header_accordion1,#sex,dd .editlink,dd .deletelink,html[dir='rtl'] #indi_header,html[dir='rtl'] #main_name,html[dir='rtl'] #indi_mainimage,html[dir='rtl'] #indi_mainimage a img,html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default,.use-sidebar.sidebar-at-right #sidebar,.sidebar-at-right #separator,html[dir='rtl'] #indi_left,html[dir='rtl'] #tabs{float:right}
-.pro_linedrop .select :hover ul.rt :hover ul li,.editlink,.copylink,.deletelink,.left_block2,html[dir='rtl'] .faq_top,html[dir='rtl'] .faq_edit,html[dir='rtl'].field .editlink,html[dir='rtl'].field .deletelink,#indi_mainimage,html[dir='rtl'] #header_accordion1,html[dir='rtl'] #dates,html[dir='rtl'] dd .editlink,html[dir='rtl'] dd .deletelink,html[dir='rtl'] #sex,html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar,html[dir='rtl'] .sidebar-at-right #separator,html[dir='rtl'] #sb_content_extra_info .editfacts{float:left}
+.pro_linedrop .select :hover .rt li,.right_block2,.faq_top,.faq_edit,[dir='rtl'] .editlink,[dir='rtl'] .copylink,[dir='rtl'] .deletelink,.field .editlink,.field .deletelink,.field .copylink,#header_accordion1,#sex,dd .editlink,dd .deletelink,[dir='rtl'] #indi_header,[dir='rtl'] #main_name,[dir='rtl'] #indi_mainimage,[dir='rtl'] #indi_mainimage a img,[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default,.use-sidebar.sidebar-at-right #sidebar,.sidebar-at-right #separator,[dir='rtl'] #indi_left,[dir='rtl'] #tabs{float:right}
+.pro_linedrop .select :hover ul.rt :hover ul li,.editlink,.copylink,.deletelink,.left_block2,[dir='rtl'] .faq_top,[dir='rtl'] .faq_edit,[dir='rtl'].field .editlink,[dir='rtl'].field .deletelink,#indi_mainimage,[dir='rtl'] #header_accordion1,[dir='rtl'] #dates,[dir='rtl'] dd .editlink,[dir='rtl'] dd .deletelink,[dir='rtl'] #sex,[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar,[dir='rtl'] .sidebar-at-right #separator,[dir='rtl'] #sb_content_extra_info .editfacts{float:left}
 #sb_desc_content ul,.name_tree_div ul,.name_tree_div_visible ul,#sb_clippings_content ul{margin:0;padding:0}
 #descendancy_chart_rtl li,#ancestry_chart_rtl li{list-style:url(images/spacer.gif);margin:0 -15px 2px 0;padding:0 2px 0 0}
 #tabdefinedtagsshow,#tabfilterandcustom,#tabaction{margin-left:auto;margin-right:auto}
@@ -484,14 +484,14 @@ pre{font-size:1.25em;white-space:pre-wrap}
 .dt-clear{clear:both}
 .DataTables_sort_wrapper{position:relative;margin:0 5px 0 20px}
 .DataTables_sort_wrapper span{left:0; margin-left:-20px; margin-top:-8px; position:absolute; top:50%}
-html[dir='rtl'] .css_right{float:right}
-html[dir='rtl'] .dataTables_paginate{float:right}
-html[dir='rtl'] .dataTables_processing{float:right}
-html[dir='rtl'] .dataTables_filter{float:left}
-html[dir='rtl'] .dataTables_info{float:right}
-html[dir='rtl'] .dataTables_length{float:left}
-html[dir='rtl'] .DataTables_sort_wrapper{margin-right:20px}
-html[dir='rtl'] .DataTables_sort_wrapper span{left:auto; right:0; margin-right:-20px}
+[dir='rtl'] .css_right{float:right}
+[dir='rtl'] .dataTables_paginate{float:right}
+[dir='rtl'] .dataTables_processing{float:right}
+[dir='rtl'] .dataTables_filter{float:left}
+[dir='rtl'] .dataTables_info{float:right}
+[dir='rtl'] .dataTables_length{float:left}
+[dir='rtl'] .DataTables_sort_wrapper{margin-right:20px}
+[dir='rtl'] .DataTables_sort_wrapper span{left:auto; right:0; margin-right:-20px}
 .source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list {margin:10px auto; visibility:hidden; width:98%}
 .surname-list, .givn-list {margin:auto;}
 .indi-list .stats, .fam-list  .stats{margin:0 auto; width:auto}
@@ -519,16 +519,16 @@ html[dir='rtl'] .DataTables_sort_wrapper span{left:auto; right:0; margin-right:-
 #search-result-tabs h3{text-align:center}
 #searchAccordion-indi,#searchAccordion-fam,#searchAccordion-source,#searchAccordion-note{margin:auto; width:99%}
 #place-hierarchy h2,#place-hierarchy h4{text-align:center}
-html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child{margin:0 1px 1px -2px}
-html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, html[dir='rtl'] .given, html[dir='rtl'] .parents, html[dir='rtl'] .charts, html[dir='rtl'] .reset{margin:0 0 0 6px}
-html[dir='rtl'] #source-return,html[dir='rtl'] #note-return,html[dir='rtl'] #repo-return{float:left}
+[dir='rtl'] .source-list th:last-child, [dir='rtl'] .note-list th:last-child, [dir='rtl'] .repo-list th:last-child{margin:0 1px 1px -2px}
+[dir='rtl'] .gender, [dir='rtl'] .aliveinyear, [dir='rtl'] .years, [dir='rtl'] .given, [dir='rtl'] .parents, [dir='rtl'] .charts, [dir='rtl'] .reset{margin:0 0 0 6px}
+[dir='rtl'] #source-return,[dir='rtl'] #note-return,[dir='rtl'] #repo-return{float:left}
 .blockhc{border-bottom:1px solid #c9c9c9;background-color:#d3d3d3;padding:1px 3px}
 .blockhc img{vertical-align:middle;margin-bottom:3px}
 #index_small_blocks .blockhc .help .icon,#index_small_blocks .blockhc .adminicon,#index_main_blocks .blockh2 .icon,#index_main_blocks .blockh2 .adminicon{position:relative;text-align:right;top:2px}
 #index_small_blocks .blockhc,#index_main_blocks .blockhc{background-color:#D3D3D3;overflow:hidden;padding:3px;white-space:nowrap}
 #index_main_blocks .name2,#index_main_blocks .details2{color:#696969;font-weight:400}
 #random_picture .blockheader .ltr,form,.ltr{text-align:left}
-#random_picture .blockheader .rtl,html[dir='rtl'] #flyout3,.rtl{text-align:right}
+#random_picture .blockheader .rtl,[dir='rtl'] #flyout3,.rtl{text-align:right}
 a.link:hover,a:hover .name1,a:hover .name2{color:#4682B4}
 .date,.notecell,.nowrap{white-space:nowrap}
 .person_box .date,.person_boxF .date,.person_boxNN .date{white-space:normal; font-weight:400}
@@ -560,7 +560,7 @@ a.link:hover,a:hover .name1,a:hover .name2{color:#4682B4}
 .theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
 .theme_form li {list-style:none;visibility:hidden;}
 .theme_form li ul li {float:left;padding:10px;visibility:visible;}
-html[dir='rtl'] .theme_form li ul li  {float:right;}
+[dir='rtl'] .theme_form li ul li  {float:right;}
 .add_fav_head {font-weight:900; margin:5px 0}
 .add_fav_head i {margin:0 5px 1px}
 .add_fav_ref label {display:inline-block; min-width:100px}
@@ -594,7 +594,7 @@ html[dir='rtl'] .theme_form li ul li  {float:right;}
 [ID^="vline"] {width:3px}
 .tdtop {vertical-align:top}
 .tdmid {vertical-align:middle}
-.tdbot, .tvertline {vertical-align:bottom}html[dir='rtl'] #familybook_chart{margin-right:10px}
+.tdbot, .tvertline {vertical-align:bottom}[dir='rtl'] #familybook_chart{margin-right:10px}
 #branches-page table,#medialist-page .list_table,#medialist-page .list_table_controls  {margin:0 auto}
 #medialist-page .list_table_controls  {width:100%}
 #medialist-page .list_table p{margin:0}
@@ -611,8 +611,8 @@ html[dir='rtl'] .theme_form li ul li  {float:right;}
 #medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
 #medialist-page .lb-menu li li {text-align:left;}
 #medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir='rtl'] #medialist-page .lb-menu {float:right;}
-html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
+[dir='rtl'] #medialist-page .lb-menu {float:right;}
+[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 #medialist-page li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_view {background:url(images/image_view.png) no-repeat 50% 20%;}
@@ -639,7 +639,7 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 #register-form textarea{vertical-align:top;width:230px}
 #register-form div#registration-submit{text-align:center}
 .login_block_block #login-form, .login_block_block #new_passwd_form{background:none;border:0;border-radius:0;float:none;margin:0;width:100%}
-html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[dir='rtl'] #register-form label, html[dir='rtl'] #verify-form  label{text-align:left}
+[dir='rtl'] #login-form label, [dir='rtl'] #new_passwd_form label, [dir='rtl'] #register-form label, [dir='rtl'] #verify-form  label{text-align:left}
 #reportengine-page table{margin:20px auto}
 #reportengine-page .report-type{overflow:hidden; margin:auto; width:200px}
 #reportengine-page .report-type div{float:left;margin:0 20px}
@@ -650,7 +650,7 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 .popup  li span {padding:0 5px}
 .popup  li ul, .popup  li ul li, .popup  li span span {padding:0}
 .itr:hover .popup {display:block; position:absolute; width:12em;right:0; z-index:9999}
-html[dir='rtl'] .itr:hover .popup {left:0; right:auto}
+[dir='rtl'] .itr:hover .popup {left:0; right:auto}
 .line1, .line2, .line3{vertical-align:bottom} 
 .line4{vertical-align:middle}
 .line5{vertical-align:top}
@@ -681,9 +681,9 @@ html[dir='rtl'] .itr:hover .popup {left:0; right:auto}
 #search-page #field_table .list_label{text-align:left; padding:5px}
 #search-page-table div:nth-of-type(2){border:0} 
 #search-page-table p{margin:0}
-html[dir='rtl'] #search-page-table .label{float:right}
-html[dir='rtl'] #search-page-table .value{margin:0 170px 0 0}
-html[dir='rtl'] #search-page #field_table .list_label{text-align:right}
+[dir='rtl'] #search-page-table .label{float:right}
+[dir='rtl'] #search-page-table .value{margin:0 170px 0 0}
+[dir='rtl'] #search-page #field_table .list_label{text-align:right}
 #edituser-page h2,#edituser_submit {margin:20px;text-align:center}
 #edituser-table {background-color:#d3d3d3;border:1px outset #d3d3d3;border-radius:5px;margin:20px auto 0;width:800px}
 #edituser-table .label{border-top:1px solid #ECECEC;float:left;font-weight:900;padding:5px 10px 0;width:240px;white-space:nowrap}
@@ -691,8 +691,8 @@ html[dir='rtl'] #search-page #field_table .list_label{text-align:right}
 #edituser-table div:nth-of-type(2){border:0} 
 #edituser-table .label span{margin:0 10px}
 #edituser-table select{margin:0}
-html[dir='rtl'] #edituser-table .label{float:right}
-html[dir='rtl'] #edituser-table .value {margin:0 260px 0 0}
+[dir='rtl'] #edituser-table .label{float:right}
+[dir='rtl'] #edituser-table .value {margin:0 260px 0 0}
 @media print{
 #backprint{	display:none}
 #header,#footer, .noprint{display:none !important}
@@ -869,8 +869,8 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 #save-cancel input{padding:2px 8px}
 #save-cancel .save {float:left;margin:5px}
 #save-cancel .cancel {float:right;margin:5px}
-html[dir='rtl'] #save-cancel .save {float:right}
-html[dir='rtl'] #save-cancel .cancel {float:left}
+[dir='rtl'] #save-cancel .save {float:right}
+[dir='rtl'] #save-cancel .cancel {float:left}
 
 /* Addmedia pop-ups*/
 #addmedia-page input[type="text"]{line-height:18px;margin:0 5px;width:300px}

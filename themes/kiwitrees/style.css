@@ -38,7 +38,7 @@ html {overflow-y:scroll;}
 body {color:#232f49;background-color:#DDD;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:16px;margin:0;}
 #body_simple{background-color:#fff;margin:0 0 40px 0;width:100%}
 fieldset {margin:8px 8px 4px 8px;text-align:left;}
-html[dir='rtl'] fieldset {text-align:right;}
+[dir='rtl'] fieldset {text-align:right;}
 legend {font-weight:bold;}
 a {color:#232f49;text-decoration:none;}
 a:hover {color:#009AFE;text-decoration:none;}
@@ -82,19 +82,19 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 .lang-active, .theme-active{color:#009AFE;font-weight:bold;}
 #menu-language li, #menu-theme li  {text-align:left;} /* The theme and language menus are always LTR, even on RTL pages */
 #login_popup .blockheader{display:none;}
-html[dir='rtl'] #extra-menu {float:left;}
-html[dir='rtl'] #extra-menu li {border-left:none;border-right:2px solid;}
-html[dir='rtl'] #extra-menu li ul {left:0;right:auto;}
-html[dir='rtl'] #extra-menu li ul li {text-align:right;}
-html[dir='rtl'] #social {float:right;}
+[dir='rtl'] #extra-menu {float:left;}
+[dir='rtl'] #extra-menu li {border-left:none;border-right:2px solid;}
+[dir='rtl'] #extra-menu li ul {left:0;right:auto;}
+[dir='rtl'] #extra-menu li ul li {text-align:right;}
+[dir='rtl'] #social {float:right;}
 
 /* ======= Header styles ========== */
 #header {height:48px;position:relative;margin:0 0 15px 0;}
 .title {clear: both;color:#555;font-family:inherit;font-size:48px;position: absolute;left:0;right:auto;}
 .header_search {float:right; margin:12px 10px 10px 10px;}
 .header_search input[type="search"] {font-size:16px;}
-html[dir='rtl'] .title {left:auto;right:0;}
-html[dir='rtl'] .header_search {float:left;}
+[dir='rtl'] .title {left:auto;right:0;}
+[dir='rtl'] .header_search {float:left;}
 
 /* ======= Main menu styles ========== */
 #topMenu {margin:auto; border-bottom: 5px solid #555;height: 50px;}
@@ -109,12 +109,12 @@ html[dir='rtl'] .header_search {float:left;}
 #main-menu li a {margin:0;width:100%;}
 #main-menu li a:hover{color:#009AFE;}
 #main-menu li li a {color:#232f49;display:block;position:relative;float:left;font-size:11px;padding:5px 0;}
-html[dir='rtl'] #topMenu {float:right;}
-html[dir='rtl'] #main-menu li {float:right;}
-html[dir='rtl'] #main-menu li:hover > ul {right:100%;left:auto;}
-html[dir='rtl'] #main-menu > li:hover > ul {left:auto;right:0;}
-html[dir='rtl'] #main-menu li li {text-align:right;}
-html[dir='rtl'] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
+[dir='rtl'] #topMenu {float:right;}
+[dir='rtl'] #main-menu li {float:right;}
+[dir='rtl'] #main-menu li:hover > ul {right:100%;left:auto;}
+[dir='rtl'] #main-menu > li:hover > ul {left:auto;right:0;}
+[dir='rtl'] #main-menu li li {text-align:right;}
+[dir='rtl'] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 
 /* ======= Footer styles ========== */
 #footer {clear:both;font-size:12px;padding-top:10px;text-align:center;}
@@ -135,8 +135,8 @@ html[dir='rtl'] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 #index_main_blocks {clear:none;width:66%;float:left;}
 #index_small_blocks {clear:none;width:33%;float:right;}
 #index_full_blocks {clear:none;width:100%;}
-html[dir='rtl'] #index_main_blocks {float:right;}
-html[dir='rtl'] #index_small_blocks {float:left;}
+[dir='rtl'] #index_main_blocks {float:right;}
+[dir='rtl'] #index_small_blocks {float:left;}
 
 .small_inner_block {max-height:200px;overflow:auto;}
 .normal_inner_block {}
@@ -299,13 +299,13 @@ html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 4px;}
 .tdmid {vertical-align:middle;}
 .tdbot, .tvertline {vertical-align:bottom;}
 
-html[dir='rtl'] #familybook_chart{margin-right:10px;}
+[dir='rtl'] #familybook_chart{margin-right:10px;}
 
 /*-- pedigree chart specific stylesheets --*/
 #pedigree-page table.list_table {margin:0 auto;width:500px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
 #pedigree_chart {position:relative;top:-200px;left:0;}
-html[dir='rtl'] #pedigree_chart {left:auto;right:10px;}
+[dir='rtl'] #pedigree_chart {left:auto;right:10px;}
 #pedigree_canvas {color:#555;position:absolute;top:200px;z-index:-1000;}
 #pedigree_chart #childarrow, #pedigree_chart #uparrow, #pedigree_chart .shadow {position:absolute;}
 #pedigree_chart #childbox {border:1px solid;background-color:white;padding:5px;position:absolute;visibility:hidden;}
@@ -314,15 +314,15 @@ html[dir='rtl'] #pedigree_chart {left:auto;right:10px;}
 #descendancy_chart{margin:20px;}
 #descendancy_chart ul {background-image:url(images/vline.png);background-repeat:repeat-y;background-position:left top;list-style:none;margin:0 0 5px 15px;padding-top:0;padding-right:0;padding-bottom:0;}
 #descendancy_chart li {list-style:none;margin:0 0 0 -15px;padding-top:0;padding-right:0;padding-bottom:0;}
-html[dir='rtl'] #descendancy_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
+[dir='rtl'] #descendancy_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart table div p {font-size:90%;margin:0;}
 #ancestry_chart ul {background-image:url(images/vline.png);background-repeat:repeat-y;background-position:left top;list-style:none;display:block;margin:0 0 0 15px;padding-top:0;padding-right:0;padding-bottom:0;}
 #ancestry_chart li {list-style:none;margin:0 0 2px -13px;padding-top:0;padding-right:0;padding-bottom:0;}
 #ancestry_chart li table {margin:5px 0;}
-html[dir='rtl'] #ancestry_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
-html[dir='rtl'] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
+[dir='rtl'] #ancestry_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
+[dir='rtl'] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
 
 #compact_chart, #fan_chart, #ancestry_chart, #familybook_chart, #hourglass_chart {margin:20px;}
 
@@ -489,8 +489,8 @@ html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
 #medialist-page .lb-menu li a {padding-top:24px; white-space:nowrap;}
 #medialist-page .lb-menu li li {text-align:left;}
 #medialist-page .lb-menu li li a {padding:1px 10px 1px 5px;}
-html[dir='rtl'] #medialist-page .lb-menu {float:right;}
-html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
+[dir='rtl'] #medialist-page .lb-menu {float:right;}
+[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 
 #medialist-page li .lb-image_edit {background:url(images/image_edit.png) no-repeat 50% 20%;}
 #medialist-page li .lb-image_link {background:url(images/image_link.png) no-repeat 50% 20%;}
@@ -517,8 +517,8 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 #register-form textarea {vertical-align:top;}
 #register-form div#registration-submit {text-align:center;}
 .login_block_block #login-form, .login_block_block #new_passwd_form{border:0;background:none;}
-html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[dir='rtl'] #register-form label, html[dir='rtl'] #verify-form label {text-align:left;}
-html[dir='rtl'] #register-form div, html[dir='rtl'] #verify-form div {text-align:left;}
+[dir='rtl'] #login-form label, [dir='rtl'] #new_passwd_form label, [dir='rtl'] #register-form label, [dir='rtl'] #verify-form label {text-align:left;}
+[dir='rtl'] #register-form div, [dir='rtl'] #verify-form div {text-align:left;}
 
 /* ============== reportengine.php ======================= */
 #reportengine-page table {margin:20px auto;}
@@ -534,7 +534,7 @@ html[dir='rtl'] #register-form div, html[dir='rtl'] #verify-form div {text-align
 .popup li span {padding:0 5px;}
 .popup li ul, .popup li ul li, .popup li span span {padding:0;}
 .itr:hover .popup {display:block;position:absolute;width:12em;right:0;z-index:9999;}
-html[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
+[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
 
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {width:450px;}
@@ -577,7 +577,7 @@ html[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
 #searchAccordion-indi, #searchAccordion-fam, #searchAccordion-source, #searchAccordion-note {margin:auto;width:99%;}
 #place-hierarchy h2, #place-hierarchy h4 {text-align:center;}
 
-html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
+[dir='rtl'] .source-list th:last-child, [dir='rtl'] .note-list th:last-child, [dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
 /* ======== Random picture block ====== */
 .random_media_block{height:250px;}
@@ -606,7 +606,7 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 .theme_form ul {margin:-10px auto;-webkit-padding-start:0;width:90%;overflow:hidden;}
 .theme_form li {list-style:none;visibility:hidden;}
 .theme_form li ul li {float:left;padding:10px;visibility:visible;}
-html[dir='rtl'] .theme_form li ul li {float:right;}
+[dir='rtl'] .theme_form li ul li {float:right;}
 
 /* ======= FAQ table styles ========== */
 table.faq {background-color:#e0e0e0;margin:5px 0 50px 5px;width:98%;}
@@ -617,8 +617,8 @@ div.faq_body {clear:both;padding:0 1em;}
 .faq_top {float:right;}
 .faq_edit {float:right;}
 
-html[dir='rtl'] .faq_top {float:left;}
-html[dir='rtl'] .faq_edit {float:left;}
+[dir='rtl'] .faq_top {float:left;}
+[dir='rtl'] .faq_edit {float:left;}
 
 
 
@@ -627,11 +627,11 @@ html[dir='rtl'] .faq_edit {float:left;}
 /* General use */
 .editfacts {clear:left;padding-top:15px;} /* a container for the following three links */
 .editlink, .copylink, .deletelink {float:left;}
-html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right;}
+[dir='rtl'] .editlink, [dir='rtl'] .copylink, [dir='rtl'] .deletelink {float:right;}
 span.link_text {display:none;}
 /* Indi header */
 .field .editlink, .field .deletelink, .field .copylink {float:right;}
-html[dir='rtl'].field .editlink, html[dir='rtl'].field .deletelink {float:left;}
+[dir='rtl'].field .editlink, [dir='rtl'].field .deletelink {float:left;}
 /* =========== end edit, copy, delete links ==================== */
 
 /* =========== Indi header ================== */
@@ -662,18 +662,18 @@ dd .editlink, dd .deletelink {float:right;}
 #indi_note .fact_SOUR {margin:3px 0;}
 #indi_note .fact_SOUR a {font-size:100%;}
 
-html[dir='rtl'] #indi_header {float:right;}
-html[dir='rtl'] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
-html[dir='rtl'] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
-html[dir='rtl'] #main_name {float:right;}
-html[dir='rtl'] #indi_mainimage {float:right;}
-html[dir='rtl'] #indi_mainimage a img {float:right;}
-html[dir='rtl'] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
-html[dir='rtl'] #header_accordion1 {float:left;}
-html[dir='rtl'] .indi_table {clear:right;}
-html[dir='rtl'] #sex {float:left;}
-html[dir='rtl'] #dates {float:left;}
-html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
+[dir='rtl'] #indi_header {float:right;}
+[dir='rtl'] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
+[dir='rtl'] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
+[dir='rtl'] #main_name {float:right;}
+[dir='rtl'] #indi_mainimage {float:right;}
+[dir='rtl'] #indi_mainimage a img {float:right;}
+[dir='rtl'] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
+[dir='rtl'] #header_accordion1 {float:left;}
+[dir='rtl'] .indi_table {clear:right;}
+[dir='rtl'] #sex {float:left;}
+[dir='rtl'] #dates {float:left;}
+[dir='rtl'] dd .editlink, [dir='rtl'] dd .deletelink {float:left;}
 
 /* General sprite */
 .male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block;background:url(images/general_sprite.png) no-repeat left 0;}
@@ -686,7 +686,7 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 .deleteicon {background-position:-100px -32px;width:24px;height:16px;}
 
 .icon_arrow {display:block;background:url(images/small_menu_sprite.png) no-repeat left 0;}
-.icon_arrow {background-position:90% -1166px;} html[dir='rtl'] .icon_arrow {background-position:10% -1184px;}
+.icon_arrow {background-position:90% -1166px;} [dir='rtl'] .icon_arrow {background-position:10% -1184px;}
 
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */
@@ -720,14 +720,14 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 .DataTables_sort_wrapper span {left:0;margin-left:-20px;margin-top:-8px;position:absolute;top:50%;}
 .dataTables_wrapper {margin-bottom:10px;}
 
-html[dir='rtl'] .css_right {float:right;}
-html[dir='rtl'] .dataTables_paginate {float:right;}
-html[dir='rtl'] .dataTables_processing {float:right;}
-html[dir='rtl'] .dataTables_filter {float:left;}
-html[dir='rtl'] .dataTables_info {float:right}
-html[dir='rtl'] .dataTables_length {float:left;}
-html[dir='rtl'] .DataTables_sort_wrapper {margin-right:20px;}
-html[dir='rtl'] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
+[dir='rtl'] .css_right {float:right;}
+[dir='rtl'] .dataTables_paginate {float:right;}
+[dir='rtl'] .dataTables_processing {float:right;}
+[dir='rtl'] .dataTables_filter {float:left;}
+[dir='rtl'] .dataTables_info {float:right}
+[dir='rtl'] .dataTables_length {float:left;}
+[dir='rtl'] .DataTables_sort_wrapper {margin-right:20px;}
+[dir='rtl'] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
 
 /* ========= Sidebar ============== */
 #main {min-width:600px;width:100%}
@@ -741,12 +741,12 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-2
 #separator {float:right;display:block;background:#ddd url(images/general_sprite.png) no-repeat -26px 100px;width:0.75%;min-width:6px;max-width:10px;border:1px solid #555;border-top-left-radius:3px;border-top-right-radius:3px;margin-top:5px;}
 .use-sidebar #separator {background:#ddd url(images/general_sprite.png) no-repeat -1px 100px;}
 
-html[dir='rtl'] #indi_left {float:right;}
-html[dir='rtl'] #tabs {float:right;}
-html[dir='rtl'] #sidebar {margin:5px 0 0 2px;}
-html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator {float:left;}
-html[dir='rtl'] #separator {float:left;background:#99c2ff url(images/general_sprite.png) no-repeat -1px 100px;}
-html[dir='rtl'] .use-sidebar #separator {background:#99c2ff url(images/general_sprite.png) no-repeat -26px 100px;}
+[dir='rtl'] #indi_left {float:right;}
+[dir='rtl'] #tabs {float:right;}
+[dir='rtl'] #sidebar {margin:5px 0 0 2px;}
+[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, [dir='rtl'] .sidebar-at-right #separator {float:left;}
+[dir='rtl'] #separator {float:left;background:#99c2ff url(images/general_sprite.png) no-repeat -1px 100px;}
+[dir='rtl'] .use-sidebar #separator {background:#99c2ff url(images/general_sprite.png) no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
 /* Family navigator */
@@ -762,9 +762,9 @@ html[dir='rtl'] .use-sidebar #separator {background:#99c2ff url(images/general_s
 .flyout3 {display:block;background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none;}
 .flyout4 {font-weight:bold;color:#000000;margin-left:0;margin-top:0;padding:3px;text-align:left;}
 
-html[dir='rtl'] .flyout {text-align:right;left:210px;}
-html[dir='rtl'] .flyout2 {text-align:right;right:40px;}
-html[dir='rtl'] .flyout3 {text-align:right;}
+[dir='rtl'] .flyout {text-align:right;left:210px;}
+[dir='rtl'] .flyout2 {text-align:right;right:40px;}
+[dir='rtl'] .flyout3 {text-align:right;}
 
 /* Descendancy */
 #sb_content_descendancy {margin-top:5px;}
@@ -774,8 +774,8 @@ html[dir='rtl'] .flyout3 {text-align:right;}
 .desc_tree_div {display:none;}
 .desc_tree_div ul {padding:0;margin-left:10px;margin-top:0;margin-right:0;}
 
-html[dir='rtl'] #sb_desc_content {margin-right:3px;}
-html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0;}
+[dir='rtl'] #sb_desc_content {margin-right:3px;}
+[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0;}
 
 /* Individuals, Families */
 #sb_content_individuals, #sb_content_families {margin-top:5px;}
@@ -797,7 +797,7 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0;}
 #sb_content_extra_info span a {display:inline;}
 #sb_content_extra_info #hitcounter {border-top:1px solid #b2c7d7;font-weight:bold;padding-top:5px;}
 
-html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
+[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 
 /* ============== find.php ======================= */
 #find-page h3, #find-page h4{margin:10px;text-align:center;}
@@ -825,8 +825,8 @@ html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 #search-page-table .label{border-top:1px solid #ccc;float:left;font-weight:bold;padding:5px 10px 0;width:150px;}
 #search-page-table .value {background-color:#DDD;border-top:1px solid #ccc;margin:0 0 0 170px;padding:5px;white-space:nowrap;}
 #search-page-table p {margin:0;}
-html[dir='rtl'] #search-page-table .label{float:right;}
-html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
+[dir='rtl'] #search-page-table .label{float:right;}
+[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 
 /* ============== edituser.php ======================= */
 #edituser-page h2, #edituser_submit {margin:20px;text-align:center;}
@@ -835,8 +835,8 @@ html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 #edituser-table .value {background-color:#DDD;border-top:1px solid #ccc;margin:0 0 0 260px;padding:5px;}
 #edituser-table .label span{margin:0 10px;}
 #edituser-table select{margin:0;}
-html[dir='rtl'] #edituser-table .label{float:right;}
-html[dir='rtl'] #edituser-table .value {margin:0 260px 0 0;}
+[dir='rtl'] #edituser-table .label{float:right;}
+[dir='rtl'] #edituser-table .value {margin:0 260px 0 0;}
 
 
 
@@ -1025,8 +1025,8 @@ a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2
 #save-cancel input{padding:2px 8px;}
 #save-cancel .save {float:left;margin:5px;}
 #save-cancel .cancel {float:right;margin:5px;}
-html[dir='rtl'] #save-cancel .save {float:right;}
-html[dir='rtl'] #save-cancel .cancel {float:left;}
+[dir='rtl'] #save-cancel .save {float:right;}
+[dir='rtl'] #save-cancel .cancel {float:left;}
 #edit_interface-page {margin-bottom:50px;}
 #edit_interface-page [id^="QUAY"] .descriptionbox,
 #edit_interface-page [id^="DATE"] .descriptionbox,
@@ -1061,11 +1061,11 @@ html[dir='rtl'] #save-cancel .cancel {float:left;}
 #cboxClose{position:absolute; bottom:0; right:0; background:url(images/controls.png) no-repeat -25px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
 #cboxClose:hover{background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
-html[dir='rtl'] #cboxPrevious{right:27px;left:auto}
-html[dir='rtl'] #cboxNext{right:0;left:auto}
-html[dir='rtl'] #cboxCurrent{right:auto;left:0}
-html[dir='rtl'] #cboxClose{right:auto;left:0}
-html[dir='rtl'] #cboxSlideshow{right:57px;left:0; }
+[dir='rtl'] #cboxPrevious{right:27px;left:auto}
+[dir='rtl'] #cboxNext{right:0;left:auto}
+[dir='rtl'] #cboxCurrent{right:auto;left:0}
+[dir='rtl'] #cboxClose{right:auto;left:0}
+[dir='rtl'] #cboxSlideshow{right:57px;left:auto; }
 
 /* simpl_branches */
 #branches-page h2{text-align:center}

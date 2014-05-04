@@ -1927,7 +1927,7 @@ a.icon-udarrow             {width:20px;height:20px;background-image:url(images/u
 [dir=rtl] #cboxNext {right:0;left:auto}
 [dir=rtl] #cboxCurrent {right:auto;left:0}
 [dir=rtl] #cboxClose {right:auto;left:0}
-[dir=rtl] #cboxSlideshow {right:57px;left:0; }
+[dir=rtl] #cboxSlideshow {right:57px;left:auto; }
 
 /* Styling for simpl_pages module */
 div#pages-container {width:96%;}
