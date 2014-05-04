@@ -48,14 +48,14 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery.js');//actually 1.11.1
-	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery-ui.js');//actually 1.10.4
+	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery.js');					// 1.11.1
+	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery-ui.js');				// 1.10.4
 }
 define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-1.4.15.js');
-define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie-1.4.0.js');
+define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie.js');			//1.4.1
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables-1.9.4.js');
-define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable.js');//actual 1.7.3
-define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom');//actually 2.0.0
+define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable.js');			// 1.7.3
+define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom');			// 2.0.0
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom-2.6.2.js');
 define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees-1.4.2.js');
 define('WT_JQUERY_AUTOSIZE',	   WT_STATIC_URL.'js/jquery.autosize.js');
