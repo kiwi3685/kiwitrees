@@ -55,7 +55,7 @@ define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox.js');			// 
 define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie.js');			// 1.4.1
 define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables.js');		// 1.10.0
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable.js');			// 1.7.3
-define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom');			// 2.0.0
+define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom.js');			// 2.0.0
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom.js');			// 2.6.2
 define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees.js');
 define('WT_JQUERY_AUTOSIZE',	   WT_STATIC_URL.'js/jquery.autosize.js');
