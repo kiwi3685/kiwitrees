@@ -1401,6 +1401,7 @@ function old_paths() {
 		WT_ROOT.'js/jquery.cookie-1.4.0.js',
 		WT_ROOT.'js/jquery.datatables-1.9.4.js',
 		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
+		WT_ROOT.'js/modernizr.custom-2.6.2.js',
 
 	);
 }
