@@ -192,16 +192,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 
 		$controller->addInlineJavascript('
-			function include_css(css_file) {
-				var html_doc = document.getElementsByTagName("head")[0];
-				var css = document.createElement("link");
-				css.setAttribute("rel", "stylesheet");
-				css.setAttribute("type", "text/css");
-				css.setAttribute("href", css_file);
-				html_doc.appendChild(css);
-			}
-			include_css("'.WT_MODULES_DIR.$this->getName().'/style.css");
-
 			var oTable=jQuery("#image_block").dataTable( {
 				sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				bProcessing: true,
