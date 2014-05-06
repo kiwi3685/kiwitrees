@@ -588,3 +588,29 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .pages_edit_title {border-bottom: 1px solid; margin-bottom:10px;}
 .pages_edit_item {background: none repeat scroll 0 0 OldLace; border: 1px inset #D9D6C4; padding: 5px;}
 html[dir='rtl'] #pages_module2 th, html[dir='rtl'] #pages_module2 td {text-align:right;}
+
+/* Styling for fancy_imagebar module */
+#fib_config #selectbar {width:50%;margin-bottom:20px}
+#fib_config #buttons{text-align:right}
+#fib_config #block_left {width:50%}
+#fib_config #block_right{float:left;margin-left:20px}
+#fib_config .left {float:left}
+#fib_config .selectbox {text-align:right}
+#fib_config #gedcom {margin-left:10px}
+#fib_config #image_block {width:100%}
+#fib_config .dataTables_scrollHead, #fib_config #image_block thead {display:none}
+#fib_config #image_block tbody {background-color:#EEFFEE;}
+#fib_config #image_block tr {background-color:#EEFFEE;float:left;padding-top:15px;text-align:center;width:20%}
+#fib_config #image_block td {width:20%}
+#fib_config .dataTables_length {text-align:right}
+#fib_config .field {padding-top:5px}
+#fib_config .no_images{display:none;padding-top:10px}
+#fib_config .label{display:inline-block;width:200px}
+#fib_config input {vertical-align:middle}
+#fib_config input[type="radio"] {vertical-align:top}
+#fib_config .clearfloat{clear:both}
+
+/* Styling for simpl_research module */
+#simpl_research_links {margin-bottom:20px; overflow:hidden;}
+#simpl_research_links .field {float:left; line-height:30px; width:25%;}
+#simpl_research_links .buttons {clear: both;}

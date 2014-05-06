@@ -106,13 +106,15 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			<h2>'.$controller->getPageTitle().'</h2>
 			<form method="post" name="configform" action="'.$this->getConfigLink().'">						
 				<input type="hidden" name="save" value="1">
-				<h3>'.WT_I18N::translate('Check the plugins you want to use in the sidebar').'</h3>';
-				foreach ($this->getPluginList() as $plugin) {
-					if (is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
-					if(!isset($value)) $value = '1';
-					$html .= '<div class="field">'.two_state_checkbox('NEW_RESEARCH_PLUGINS['.get_class($plugin).']', $value).'<label>'.get_class($plugin).'</label></div>';
-				}
+				<h3>'.WT_I18N::translate('Check the plugins you want to use in the sidebar').'</h3>
+				<div id="simpl_research_links">';
+					foreach ($this->getPluginList() as $plugin) {
+						if (is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
+						if(!isset($value)) $value = '1';
+						$html .= '<div class="field">'.two_state_checkbox('NEW_RESEARCH_PLUGINS['.get_class($plugin).']', $value).'<label>'.$plugin->getName().'</label></div>';
+					}
 				$html .= '
+					</div>
 					<div class="buttons">
 						<input type="submit" value="'.WT_I18N::translate('Save').'" />
 						<input type="reset" value="'.WT_I18N::translate('Reset').'" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default. Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';"/>
