@@ -1336,7 +1336,6 @@ function old_paths() {
 		WT_ROOT.'includes/functions/functions_media_reorder.php',
 		WT_ROOT.'js/jquery',
 		WT_ROOT.'js/jw_player',
-		WT_ROOT.'js/webtrees.js',
 		WT_ROOT.'media/MediaInfo.txt',
 		WT_ROOT.'media/thumbs/ThumbsInfo.txt',
 		WT_ROOT.'modules_v3/GEDFact_assistant/css/media_0_inverselink.css',
