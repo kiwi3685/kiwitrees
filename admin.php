@@ -1401,6 +1401,8 @@ function old_paths() {
 		WT_ROOT.'js/jquery.datatables-1.9.4.js',
 		WT_ROOT.'js/jquery.colorbox-1.4.15.js',
 		WT_ROOT.'js/modernizr.custom-2.6.2.js',
+		WT_ROOT.'modules_v3/fancy_imagebar/style.css',
+		WT_ROOT.'modules_v3/fancy_imagebar/README.md',
 	);
 }
 
