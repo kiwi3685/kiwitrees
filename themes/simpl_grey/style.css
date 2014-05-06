@@ -789,6 +789,10 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_findnote{width:16px;height:16px;background-image:url(images/findnote.png);}
 
+.icon-button_linknote {
+	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
+	height:16px;width:16px;background-position:-80px -368px} /* .ui-silk-report-link */
+
 .icon-plus {
 	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
 	height:16px;width:16px;background-position:-416px -128px} /* .ui-silk-control-play */
