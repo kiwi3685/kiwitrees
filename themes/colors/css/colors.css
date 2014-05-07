@@ -103,7 +103,7 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 #main-menu > li > ul {left:0;right:auto;top:40px;}
 #main-menu a {display: block;text-decoration: none;padding: 0 10px;margin: 0;white-space:nowrap;}
 #main-menu ul li:hover a, #main-menu li:hover li a {background: none;border: none;}
-#main-menu li:hover > ul {visibility:visible;opacity:1;-webkit-transition:visibility 0s linear 0s,opacity .2s linear 0s;-moz-transition:visibility 0s linear 0s,opacity .2s linear 0s;-o-transition:visibility 0s linear 0s,opacity .2s linear 0s;}
+#main-menu li:hover > ul {visibility:visible;opacity:1;}
 
 /* First row submenu style*/
 #main-menu > li > ul > li:first-child {text-indent:0px;min-width:100px;width:100%;
