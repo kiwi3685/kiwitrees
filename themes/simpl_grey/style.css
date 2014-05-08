@@ -942,6 +942,9 @@ hr.stories_divider:after {content:"§"; display:inline-block;position:relative; 
 #stories h4, #stories p, #stories blockquote, #stories ul, #stories fieldset, #stories ol, #stories dl, #stories h5 {font-size: 1em; margin: 1.5em 0;}
 #stories h6 {font-size: .83em; margin: 1.67em 0;}
 #stories h1,#stories h2, #stories h3, #stories h4, #stories h5, #stories h6, #stories b, #stories strong{font-weight: bolder;}
+#stories blockquote {font-style: italic; font-family: Georgia, Times, "Times New Roman", serif; padding: 2px 15px; border-style: solid; border-color: #ccc; border-width: 0 0 0 5px; text-align: justify; margin: 0 15px;
+font-size: 90%;}
+[dir="rtl"] #stories blockquote {border-width: 0 5px 0 0;}
 
 /* Styling for simpl_research module */
 #sb_content_simpl_research {padding:0;}
