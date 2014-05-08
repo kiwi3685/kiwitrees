@@ -249,9 +249,9 @@ $level2_tags=array(
 	'CALN'=>array(
 		'REPO',
 	),
-	'CEME'=>array( // CEME is NOT a valid 5.5.1 tag
-		'BURI',
-	),
+//	'CEME'=>array( // CEME is NOT a valid 5.5.1 tag
+//		'BURI',
+//	),
 	'RELA'=>array(
 		'ASSO',
 		'_ASSO',
