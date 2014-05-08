@@ -50,10 +50,6 @@ $this
 			title			:function(){
 								var img_title = jQuery(this).data("title");
 								return img_title;
-							},
-			scalePhotos		:function(){
-								if($(this).data("obje-type") === "photo") return true;
-								else return false;							
 							}
 		});
 		jQuery("body").on("click", "a.gallery", function(event) {		
