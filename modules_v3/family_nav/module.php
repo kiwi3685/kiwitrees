@@ -424,7 +424,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$wife = $family->getWife($person);
 					$children = $family->getChildren();
 
-					if ($natdad != 'yes') {
+					if (!$natdad) {
 						// Husband -----------------------
 						if ($husb || $children) {
 							if ($husb) {
@@ -437,7 +437,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						}
 					}
 
-					if ($natmom) {
+					if (!$natmom) {
 						// Wife ----------------------------
 						if ($wife || $children) {
 							if ($wife) {
