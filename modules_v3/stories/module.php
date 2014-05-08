@@ -167,15 +167,16 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 						if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 							$html .= '
 								<div id="stories_'.$block_id.'" class="story">
-									<h1>'.get_block_setting($block_id, 'title').'</h1>
-									<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>';
+									<h1>'.get_block_setting($block_id, 'title').'</h1>';
 									if (WT_USER_CAN_EDIT) {
 										$html .= '
-											<p>
-												<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 10px;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
+											<p style="margin:-36px 0 0 0;">
+												<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
 											</p>';
 									}
-									$html.= '<hr class="stories_divider">
+									$html .= '
+										<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>
+										<hr class="stories_divider">
 								</div>
 							';
 						}
@@ -186,15 +187,18 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$languages=get_block_setting($block_id, 'languages');
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 					$html .= '
-						<h1>'.get_block_setting($block_id, 'title').'</h1>
-						<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>';
-					if (WT_USER_CAN_EDIT) {
-						$html .= '
-							<p>
-								<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 10px;" class="icon-button_linknote">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
-							</p>
-						';
-					}
+						<div id="stories_'.$block_id.'" class="story">
+							<h1>'.get_block_setting($block_id, 'title').'</h1>';
+							if (WT_USER_CAN_EDIT) {
+								$html .= '
+									<p style="margin:-36px 0 0 0;>
+										<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
+									</p>
+								';
+							}
+							$html .= '
+								<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>
+						</div>';
 				}
 			}
 		}
@@ -449,9 +453,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 						select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM),
 						'<input type="submit" value="', WT_I18N::translate('show'), '">',
 					'</form>
-				</p>';
-			
-			echo '<form name="story_list" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">
+				</p>
+				<form name="story_list" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">
 					<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add story'), '</a></h3>';
 					if (count($stories)>0) {
 					echo '<table id="story_table">
@@ -488,9 +491,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 												}
 											}
 										echo '</td>
-										<td style="width:50px;" class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '"><div class="icon-edit">&nbsp;</div></a></td>
-										<td style="width:50px;" class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this story?'), '\');"><div class="icon-delete">&nbsp;</div></a></td>';
-										if ($new_xref) echo '<td style="width:50px;" class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=story_link&amp;block_id=', $story->block_id, '&amp;xref=', $new_xref, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to link to this story?'), '\');"><div class="icon-link">&nbsp;</div></a></td>';
+										<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '"><div class="icon-edit">&nbsp;</div></a></td>
+										<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this story?'), '\');"><div class="icon-delete">&nbsp;</div></a></td>';
+										if ($new_xref) echo '<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=story_link&amp;block_id=', $story->block_id, '&amp;xref=', $new_xref, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to link to this story?'), '\');"><div class="icon-link">&nbsp;</div></a></td>';
 									echo '</tr>';
 								$order++;
 							}
