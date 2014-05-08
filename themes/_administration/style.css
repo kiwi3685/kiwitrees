@@ -437,6 +437,13 @@ table#story_module, table#story_module2 {border:1px inset #d9d6c4; border-collap
 [dir=rtl] #story_module2 th, [dir=rtl] #story_module2 td {text-align:right;}
 table#story_table {width:100%}
 #story_table_wrapper {margin-top: 20px;}
+#story_table th {text-align:center;}
+#story_table th:first-of-type {text-align:left;}
+[dir="rtl"] #story_table th:first-of-type {text-align:right;}
+#story_table td {border:1px solid;}
+#story_table td:first-of-type {text-align:center; width:20px;}
+#story_table td:first-of-type input {font-size:90%; width:20px;}
+
 
 /* Autocomplete styles */
 .ui-autocomplete-input {background-color:#eee8aa;}

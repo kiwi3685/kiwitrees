@@ -450,16 +450,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 						'<input type="submit" value="', WT_I18N::translate('show'), '">',
 					'</form>
 				</p>';
-
-			echo '
-				<style>
-					#story_table th {text-align:center;}
-					#story_table th:first-of-type {text-align:left;}
-					[dir="rtl"] #story_table th:first-of-type {text-align:right;}
-					#story_table td {border:1px solid;}
-					#story_table td:first-of-type {text-align:center; width:20px;}
-					#story_table td:first-of-type input {font-size:90%; width:20px;}
-				</style>';
 			
 			echo '<form name="story_list" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">
 					<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add story'), '</a></h3>';
@@ -470,9 +460,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 								<th>', WT_I18N::translate('Order'), '</th>						
 								<th>', WT_I18N::translate('Story title'), '</th>
 								<th>', WT_I18N::translate('Individual'), '</th>
-								<th style="max-width:20px;">', WT_I18N::translate('Edit'), '</th>
-								<th style="max-width:20px;">', WT_I18N::translate('Delete'), '</th>';
-								if ($new_xref) echo '<th style="max-width:20px;">', WT_I18N::translate('Link'), '</th>';
+								<th class="maxwidth">', WT_I18N::translate('Edit'), '</th>
+								<th class="maxwidth">', WT_I18N::translate('Delete'), '</th>';
+								if ($new_xref) echo '<th class="maxwidth">', WT_I18N::translate('Link'), '</th>';
 							echo '</tr>
 						</thead>';
 					}
