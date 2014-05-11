@@ -770,7 +770,7 @@ dd .editlink, dd .deletelink {float:right;}
 .ui-widget-content {color:#555555;}
 
 [dir=rtl] .ui-tabs {direction:rtl;}
-[dir=rtl] ui-tabs .ui-tabs-nav li.ui-tabs-selected, [dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
+[dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-selected, [dir=rtl] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 [dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 [dir=rtl] .ui-dialog-title {float:right;}
 [dir=rtl] .ui-dialog-titlebar-close {left:.3em;right:auto;}
