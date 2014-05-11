@@ -198,17 +198,16 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<td width="',$bwidth,'">';
 		}
 		
-		if ($numkids==0) {
-			$numkids = 1;
-		}
+		if ($numkids == 0) $numkids = 1;
+
 		echo '<table><tr><td>';
 		if ($person) { 
 			print_pedigree_person($person);
-					echo '</td><td>',
-			 '<img class="line2" src="',$WT_IMAGES["hline"],'" width="7" height="3" alt="">';
+			echo '</td><td>
+				<img class="line2" src="',$WT_IMAGES["hline"],'" width="8" height="3" alt="">';
 		} else { // blank table spaces
-			echo '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
-				 '</td><td width="7">';
+			echo '<div style="width:',$bwidth+19 , 'px; height:' , $bheight+8 , 'px;"></div>
+				</td><td>';
 		}
 		//----- Print the spouse
 		if ($count==1 ) { 
@@ -233,9 +232,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				}
 			}
 		}
-		echo "</td></tr></table>";
-		echo '</td></tr>';
-		echo '</table>';
+		echo '</td></tr></table>
+			</td></tr>
+			</table>';
 		return $numkids;
 	}
 	
