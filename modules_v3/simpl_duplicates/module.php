@@ -59,7 +59,7 @@ class simpl_duplicates_WT_Module extends WT_Module implements WT_Module_Config {
 	}
 
 	private function config() {
-		require_once 'includes/functions/functions_edit.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		global $GEDCOM;
 		
 		$ged		= $GEDCOM;
