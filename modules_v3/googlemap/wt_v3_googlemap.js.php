@@ -290,7 +290,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 		// Create the map and mapOptions
 		var mapOptions = {
-			zoom: 7,
+	//		zoom: 7,
 			center: map_center,
 			mapTypeId: google.maps.MapTypeId.<?php echo $GOOGLEMAP_MAP_TYPE; ?>,					// ROADMAP, SATELLITE, HYBRID, TERRAIN
 			mapTypeControlOptions: {

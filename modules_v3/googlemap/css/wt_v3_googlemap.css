@@ -103,3 +103,7 @@ html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, h
 #side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U {float:left;}
 html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  {float:right;}
 #pedigreemap_chart {margin:20px;}
+
+.icon-config_maps {display:inline-block;vertical-align:middle;background-repeat:no-repeat;width:20px;height:20px;background-size:16px;background-image:url(../images/config_maps.png);}
+.icon-edit_maps {display:inline-block;vertical-align:middle;background-repeat:no-repeat;width:20px;height:20px;background-size:16px;background-image:url(../images/edit_maps.png);}
+.icon-check_maps {display:inline-block;vertical-align:middle;background-repeat:no-repeat;width:20px;height:20px;background-size:16px;background-image:url(../images/check_maps.png);}

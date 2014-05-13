@@ -409,71 +409,40 @@ function build_indiv_map($indifacts, $famids) {
 		$pid=$controller->record->getXref();
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
 		// Create the normal googlemap sidebar of events and children
-		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $GOOGLEMAP_YSIZE, 'px;"><table class="facts_table">';
-		$z=0;
+		echo '
+			<div  id="map_content" style="border:1px solid; overflow-x: hidden; overflow-y: auto; max-height: 300px; margin-top: 10px;">
+				<table class="facts_table">';
+					$z=0;
+					foreach($markers as $marker) {
+						echo '<tr>
+							<td class="facts_label">
+								<a href="#" onclick="myclick(', $z, ', ', $marker['index'], ', ', $marker['tabindex'], ')">', $marker['fact_label'], '</a>
+							</td>';
+							$z++;
+							echo '<td class="', $marker['class'], '" style="white-space:normal;">';
 
-		foreach($markers as $marker) {
-			echo '<tr>';
-			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="myclick(', $z, ', ', $marker['index'], ', ', $marker['tabindex'], ')">', $marker['fact_label'], '</a></td>';
-			$z++;
-			echo '<td class="', $marker['class'], '" style="white-space: normal">';
-			if (!empty($marker['info'])) {
-				echo '<span class="field">', $marker['info'], '</span><br>';
-			}
-			if (!empty($marker['name'])) {
-				$person=WT_Person::getInstance($marker['name']);
-				if ($person) {
-					echo '<a href="', $person->getHtmlUrl(), '">', $person->getFullName(), '</a>';
-				}
-				echo '<br>';
-			}
-			echo print_fact_place_map($marker['placerec']), '<br>';
-			if (!empty($marker['date'])) {
-				$date=new WT_Date($marker['date']);
-				echo $date->Display(true), '<br>';
-			}
-			echo '</td>';
-			echo '</tr>';
-		}
-		echo '</table></div><br>';
+								if (!empty($marker['info'])) {
+									echo '<span style="margin:0 10px; display:inline-block;">', $marker['info'], '</span>';
+								}
+								if (!empty($marker['name'])) {
+									$person=WT_Person::getInstance($marker['name']);
+									if ($person) {
+										echo '<span style="margin:0 10px; display:inline-block;"><a href="', $person->getHtmlUrl(), '">', $person->getFullName(), '</a></span>';
+									}
+								}
+								echo '<span  style="margin:0 10px; display:inline-block;">', print_fact_place_map($marker['placerec']), '</span>';
+								if (!empty($marker['date'])) {
+									$date=new WT_Date($marker['date']);
+									echo '<span style="margin:0 10px; display:inline-block;">', $date->Display(true), '</span>';
+								}
+
+							echo '</td>';
+						echo '</tr>';
+					}
+				echo '</table>
+			</div>
+		<br>';
 	} // end prepare markers array
 
-	// More V3 api stuff (not displayed now) but will be sorted later
-	?>
-	<table id="s_bar" style="display:none;">
-		<tr>
-			<td valign="top" style="padding-left:5px; width:360px; text-decoration:none; color:#4444ff; background:#aabbd8;">
-				<div id="side_bar"></div>
-			</td>
-			</tr>
-	</table>
-	<table style="display:none;">
-		<tr>
-			<td style="width: 360px; text-align:center;">
-				<form style="width: 360px;" id="form1" action="#">
-					<!-- Event Map:<input 	name= "radio1" type="checkbox" id="theatrebox" onclick="boxclick(this,'theatre')" checked> &nbsp; -->
-					Street View Only:<input name= "radio2" type="checkbox" id="golfbox" onclick="boxclick(this,'golf')"> &nbsp;
-					<!-- Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')"> -->
-
-					<?php
-					// Maybe for later use
-					/*
-					 Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')">
-					<b>Pedigree Map:</b><input id="sel2" name="select" type=radio>
-					&nbsp;&nbsp;
-					Parents: <input type="checkbox" id="parentsbox" onclick="boxclick(this,'gen1')"> &nbsp;&nbsp;
-					Grandparents: <input type="checkbox" id="gparentsbox" onclick="boxclick(this,'gen2')"> &nbsp;&nbsp;
-					Great Grandparents: <input type="checkbox" id="ggparentsbox" onclick="boxclick(this,'gen3')"><br>
-					*/
-					?>
-				</form>
-			</td>
-			<td style="width: 200px;">
-			</td>
-		</tr>
-	</table>
-	<?php
-	echo '<br>';
 	return $i;
 } // end build_indiv_map function
