@@ -284,6 +284,7 @@ html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 4px;}
 .helpcontent {margin-left:10px;margin-right:10px;}
 .helpcontent dt {clear:both;}
 
+#familybook-page {overflow-x:auto;}
 #familybook_chart {margin-left:10px; }
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}
 #familybook_chart td {margin:0; padding:0;}
