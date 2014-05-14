@@ -1,11 +1,11 @@
 <?php
-// List branches by surname
+// List branches by surname - modified to become simpl_branches.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
 
 define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
@@ -46,37 +47,56 @@ if ($surn) {
 }
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_JQUERY_TREEVIEW)
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addInlineJavaScript('
+	//	jQuery(document).ready(function() {						
+			jQuery("#branch-list").treeview({
+				collapsed: true,
+				animated: "slow",
+				control:"#treecontrol"
+			});
+			jQuery("#branch-list").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
+	//	});
+	');
 
-?>
-<div id="branches-page">
-<form name="surnlist" id="surnlist" action="?">
-	<table class="facts_table width50">
-		<tr>
-			<td class="descriptionbox">
-				<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></td>
-			<td class="optionbox">
-				<input type="text" name="surname" id="SURN" value="<?php echo htmlspecialchars($surn); ?>" dir="auto">
-				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>">
-				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-				<p><?php echo WT_I18N::translate('Phonetic search'); ?></p>
-				<p>
-					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo ' checked="checked"'; ?>>
-					<label for="soundex_std"><?php echo WT_I18N::translate('Russell'); ?></label>
-					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo ' checked="checked"'; ?>>
-					<label for="soundex_dm"><?php echo WT_I18N::translate('Daitch-Mokotoff'); ?></label>
-				</p>
-			</td>
-		</tr>
-	</table>
-</form>
-<?php
+echo '
+	<div id="branches-page">
+	<form name="surnlist" id="surnlist" action="?">
+		<table class="facts_table width50">
+			<tr>
+				<td class="descriptionbox">' ,
+					WT_Gedcom_Tag::getLabel('SURN'),
+				'</td>
+				<td class="optionbox">
+					<input type="text" name="surname" id="SURN" value="' ,htmlspecialchars($surn), '" dir="auto">
+					<input type="hidden" name="ged" id="ged" value="' ,$ged, '">
+					<input type="submit" value="' ,WT_I18N::translate('View'), '">
+					<p>' ,WT_I18N::translate('Phonetic search'), '</p>
+					<p>
+						<input type="checkbox" name="soundex_std" id="soundex_std" value="1" ';
+							if ($soundex_std) echo ' checked="checked"'; echo '>
+						<label for="soundex_std">' ,WT_I18N::translate('Russell'), '</label>
+						<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" ';
+							if ($soundex_dm) echo ' checked="checked"'; echo '>
+						<label for="soundex_dm">' ,WT_I18N::translate('Daitch-Mokotoff'), '</label>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</form>
+';
+
 //-- results
 if ($surn) {
-	echo '<fieldset><legend><i class="icon-patriarch"></i> ', $surn, '</legend>';
+	echo '<h2>', $controller->getPageTitle(), '</h2>
+	<div id="treecontrol"><a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a></div>
+	<div class="loading-image">&nbsp;</div>';
+
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
 	usort($indis, array('WT_Person', 'CompareBirtDate'));
-	echo '<ol>';
+	echo '<ul id="branch-list">';
 	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
 		// Don't show INDIs with parents in the list, as they will be shown twice.
@@ -89,8 +109,8 @@ if ($surn) {
 		}
 		print_fams($person);
 	}
-	echo '</ol>';
-	echo '</fieldset>';
+	echo '</ul>';
+
 }
 echo '</div>'; // close branches-page
 
@@ -171,11 +191,11 @@ function print_fams($person, $famid=null) {
 			' <a class="'.$class.'" href="'.$spouse->getHtmlUrl().'">'.$spouse->getFullName().'</a> '.$spouse->getLifeSpan().' '.$sosa2;
 		}
 		echo $txt;
-		echo '<ol>';
+		echo '<ul>';
 		foreach ($family->getChildren() as $c=>$child) {
 			print_fams($child, $family->getXref());
 		}
-		echo '</ol>';
+		echo '</ul>';
 	}
 	echo '</li>';
 }
