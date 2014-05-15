@@ -206,7 +206,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 	}
 
-+	/**
+	/**
 	 * Print empty box
 	 */
 	function printEmptyBox($bwidth, $bheight){
