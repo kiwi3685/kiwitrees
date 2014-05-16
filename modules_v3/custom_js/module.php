@@ -44,7 +44,12 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$controller
 				->requireAdminLogin()
 				->setPageTitle($this->getTitle())
-				->pageHeader();
+				->pageHeader()
+				->addInlineJavascript('
+				    function clearFields() {
+					    document.getElementById("new_js").value=""
+					}
+				');
 	
 			$action = safe_POST("action");
 
@@ -59,11 +64,10 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<h3>', WT_I18N::translate('Custom Javascript for Footer'), '</h3>
 						<form style="width:98%;" method="post" name="configform" action="', $this->getConfigLink(), '">
 							<input type="hidden" name="action" value="update">
-							<fieldset style="border:none;">
-								<textarea style="width:100%;" name="NEW_CJS_FOOTER">', $CJS_FOOTER, '</textarea>
-							</fieldset>
+							<textarea id="new_js" style="width:100%;" name="NEW_CJS_FOOTER">', $CJS_FOOTER, '</textarea>
 							<input type="submit" value="', WT_I18N::translate('save'), '">
-							<input type="reset" value="', WT_I18N::translate('clear'), '">
+							<input type="reset" value="', WT_I18N::translate('reset'), '">
+							<input type="button" onclick="clearFields()" value="', WT_I18N::translate('clear'), '">
 						</form>
 					</div>
 				';
