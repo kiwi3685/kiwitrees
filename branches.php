@@ -146,7 +146,7 @@ function print_fams($person, $famid=null) {
 	// current indi
 	echo '<li>';
 	$class = '';
-	$sosa = array_search($person->getXref(), $user_ancestors);
+	$sosa = array_search($person->getXref(), $user_ancestors, true);
 	if ($sosa) {
 		$class = 'search_hit';
 		$sosa = '<a target="_blank" dir="ltr" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
@@ -172,7 +172,7 @@ function print_fams($person, $famid=null) {
 		$spouse = $family->getSpouse($person);
 		if ($spouse) {
 			$class = '';
-			$sosa2 = array_search($spouse->getXref(), $user_ancestors);
+			$sosa2 = array_search($spouse->getXref(), $user_ancestors, true);
 			if ($sosa2) {
 				$class = 'search_hit';
 				$sosa2 = '<a target="_blank" dir="ltr" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
