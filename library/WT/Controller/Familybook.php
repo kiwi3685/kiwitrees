@@ -112,7 +112,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			if ($count < $this->dgenerations) {
 				//-- put all of the children in a common array
 				foreach ($sfamilies as $family) {
-					$famNum ++;
+					$famNum+;
 					$chs = $family->getChildren();
 					foreach ($chs as $c=>$child) $children[] = $child;
 				}
@@ -129,7 +129,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 						 '<td>';
 					 $person2=null;
 					 $kids = $this->print_descendency($person2, $count+1);
-					$numkids += $kids;
+					$numkids= $kids;
 					echo '</td>';
 					//Adjust for lines
 					if ($i==0) {
@@ -164,7 +164,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 						 '<td>';
 						 //recursive call to print descendents
 					$kids = $this->print_descendency($person2, $count+1);
-					$numkids += $kids;
+					$numkids= $kids;
 					echo '</td>';
 					//-- print the lines
 					$twidth = 7;
@@ -220,12 +220,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 							//-- shrink the box for the spouses
 							$tempw = $bwidth;
 							$temph = $bheight;
-							$bwidth -= 10;
-							$bheight -= 10;
+							$bwidth -= 5;
+							$bheight -= 5;
 							print_pedigree_person($spouse);
 							$bwidth = $tempw;
 							$bheight = $temph;
-							$numkids += 0.95;
+							$numkids= 0.95;
 							echo '</td><td></td>';
 						}
 					}
@@ -272,61 +272,85 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		
 		//Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
-			echo '<table>',
-				 '<tr>',
-				 '<td class="tdbot">',
-				 '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
-				 '<td>',
-				 '<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
-				 '<td>';
-			//-- print the father box
-			print_pedigree_person($family->getHusband());
-			echo '</td>';
-			if ($family->getHusband()) {
-				echo '<td>';
-				//-- recursively get the father's family
-				$this->print_person_pedigree($family->getHusband(), $count+1);
-				echo '</td>';
-			} else {
-				echo '<td>';
-				if ($count < $genoffset-1) {
-					echo '<table>';
-					for ($i = $count; $i < (pow(2, ($genoffset-1)-$count)/2)+2; $i++) { 
-						$this->printEmptyBox($bwidth, $bheight);
-						echo '</tr>';
-						$this->printEmptyBox($bwidth, $bheight);
-						echo '</tr>';
-					}
-					echo '</table>';
-				}
-			}
-			echo '</tr><tr>',
-				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
-				 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
-				 '<td>';
-			//-- print the mother box
-			print_pedigree_person($family->getWife());
-			echo '</td>';
-			if ($family->getWife()) {
-				echo '<td>';
-				//-- recursively print the mother's family
-				$this->print_person_pedigree($family->getWife(), $count+1);
-				echo '</td>';
-			} else {
-				echo '<td>';
-				if ($count<$genoffset-1) {
-					echo '<table>';
-					for ($i = $count; $i < (pow(2, ($genoffset-1)-$count)/2)+2; $i++) { 
-						$this->printEmptyBox($bwidth, $bheight);
-						echo '</tr>';
-						$this->printEmptyBox($bwidth, $bheight);
-						echo '</tr>';
-					}
-					echo '</table>';				
-				}
-			}
-			echo '</tr>',
-				 '</table>';
+			echo '
+				<table>',
+					'<tr>',
+						'<td class="tdbot">';
+							//Determine line height for two spouces 
+							$sfamilies=$person->getSpouseFamilies();
+							$famcount = 0;
+							if ($this->show_spouse) {
+								foreach ($sfamilies as $family) {
+									$famcount++;
+								}
+							}
+							$savlh=$lh;
+							if ($famcount>1) {
+								if ($genoffset==2) {
+									if ($this->show_full==1) {
+										$lh = $lh+39*$this->box_width / 100;
+									} else {
+										$lh = $lh+25;
+									}
+								}
+							}
+							echo '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh-1,'" alt="">
+						</td>',
+						'<td>',
+							'<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt="">
+						</td>',
+						'<td>';
+							$lh = $savlh;
+							//-- print the father box
+							print_pedigree_person($family->getHusband());
+						echo '</td>';
+						if ($family->getHusband()) {
+							echo '<td>';
+								//-- recursively get the father's family
+								$this->print_person_pedigree($family->getHusband(), $count+1);
+							echo '</td>';
+						} else {
+							echo '<td>';
+							if ($count < $genoffset-1) {
+								echo '<table>';
+									for ($i = $count; $i < (pow(2, ($genoffset-1)-$count)/2)+2; $i++) { 
+										$this->printEmptyBox($bwidth, $bheight);
+										echo '</tr>';
+											$this->printEmptyBox($bwidth, $bheight);
+										echo '</tr>';
+									}
+								echo '</table>';
+							}
+						}
+					echo '</tr>
+					<tr>',
+						 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+						 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
+						 '<td>';
+							//-- print the mother box
+							print_pedigree_person($family->getWife());
+						echo '</td>';
+						if ($family->getWife()) {
+							echo '<td>';
+							//-- recursively print the mother's family
+							$this->print_person_pedigree($family->getWife(), $count+1);
+							echo '</td>';
+						} else {
+							echo '<td>';
+							if ($count<$genoffset-1) {
+								echo '<table>';
+									for ($i = $count; $i < (pow(2, ($genoffset-1)-$count)/2)+2; $i++) { 
+										$this->printEmptyBox($bwidth, $bheight);
+										echo '</tr>';
+										$this->printEmptyBox($bwidth, $bheight);
+										echo '</tr>';
+									}
+								echo '</table>';				
+							}
+						}
+					echo '</tr>',
+				'</table>
+			';
 			break;
 		}
 	}
