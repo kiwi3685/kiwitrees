@@ -177,8 +177,8 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 /* ======== Random media block ====== */
 .random_media_block {height:200px;}
 [id^="random_media_container"] {text-align: center;}
-.slides_content a.gallery img {max-height:150px;}
-.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
+.random_media_content a.gallery img {max-height:150px;}
+.random_media_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 
 /* Pending edits */
 .change_new, .nameblue {

@@ -303,8 +303,8 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 /* ======== Random media block ====== */
 .random_media_block {height:200px;}
 [id^="random_media_container"] {text-align: center;}
-.slides_content a.gallery img {max-height:150px;}
-.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
+.random_media_content a.gallery img {max-height:150px;}
+.random_media_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 
 #link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}

@@ -215,8 +215,8 @@ button:hover,input:hover[type="submit"],input:hover[type="reset"],input:hover[ty
 #facts,#relatives{max-width:100%;width:100%}
 .random_media_block {height:200px;}
 [id^="random_media_container"] {text-align: center;}
-.slides_content a.gallery img {max-height:150px;}
-.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
+.random_media_content a.gallery img {max-height:150px;}
+.random_media_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 .todo_block, .charts_block, .todays_events_block, .recent_changes_block, .upcoming_events_block{max-height:300px}
 a{color:#4682B4;text-decoration:none}
 .topheader{color:#696969;margin:0;white-space:nowrap}

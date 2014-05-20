@@ -167,8 +167,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 
 				$content .= '
-					<div class="slides_content">
-						<div class="slides_title"><a href="'.$random_media->getHtmlUrl().'" title="'. strip_tags($random_media->getFullName()) .'">'. $random_media->getFullName() .'</a></div>
+					<div class="random_media_content">
+						<div class="random_media_title"><a href="'.$random_media->getHtmlUrl().'" title="'. strip_tags($random_media->getFullName()) .'">'. $random_media->getFullName() .'</a></div>
 						' .$random_media->displayImage(). '
 					</div>
 			</div>';
