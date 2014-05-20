@@ -168,18 +168,17 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* Block level objects, such as header, footer, etc. */
 .block {background-color:#eeeeee;clear:none;}
-.blockheader {font-weight:bold;}
+.blockheader {font-weight:bold; line-height:30px; vertical-align: top;}
 .charts_block {overflow:auto;}
 #link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
-#random_picture {
-	text-align:center;
-}
-#random_picture_box {
-width:100%;
-}
+/* ======== Random media block ====== */
+.random_media_block {height:200px;}
+[id^="random_media_container"] {text-align: center;}
+.slides_content a.gallery img {max-height:150px;}
+.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 
 /* Pending edits */
 .change_new, .nameblue {

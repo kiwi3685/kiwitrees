@@ -603,7 +603,7 @@ table.center {
 	border-right:solid #555555 1px;
 }
 
-.blockheader {font-weight:bold;}
+.blockheader {font-weight:900; line-height:25px; padding:0 5px; vertical-align: top;}
 
 img.block {
 	border:none;
@@ -641,16 +641,15 @@ img.block {
 .user_welcome_block td, .gedcom_block_block td {width:25%;text-align:center;vertical-align:top;}
 .user_welcome_block i, .gedcom_block_block i {background-image:none;width:0;height:0;}
 
+/* ======== Random media block ====== */
+.random_media_block {height:200px;}
+[id^="random_media_container"] {text-align: center;}
+.slides_content a.gallery img {max-height:150px;}
+.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
+
 #link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
-
-#random_picture {
-	text-align:center;
-}
-#random_picture_box {
-width:100%;
-}
 
 #familybook_chart {margin-left:10px; }
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}

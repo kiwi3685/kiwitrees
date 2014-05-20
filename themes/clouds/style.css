@@ -574,12 +574,11 @@ color:#333333;
 [dir=rtl] #index_main_blocks {float:right;}
 [dir=rtl] #index_small_blocks {float:left;}
 
-#random_picture {
-text-align:center;
-}
-#random_picture_box {
-width:100%;
-}
+/* ======== Random media block ====== */
+.random_media_block {height:200px;}
+[id^="random_media_container"] {text-align: center;}
+.slides_content a.gallery img {max-height:150px;}
+.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 
 .small_inner_block {
 max-height:200px;

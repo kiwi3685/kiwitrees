@@ -510,9 +510,11 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
-/* ======== Random picture block ====== */
-#random_picture {text-align:center;}
-#random_picture_box {width:100%;}
+/* ======== Random media block ====== */
+.random_media_block {height:200px;}
+[id^="random_media_container"] {text-align: center;}
+.slides_content a.gallery img {max-height:150px;}
+.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 
 /* ======= Favourites block ========== */
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}

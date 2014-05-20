@@ -41,11 +41,40 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $foundlist;
 
-		$filter  				=get_block_setting($block_id, 'filter',   'all');
-		$controls				=get_block_setting($block_id, 'controls', true);
-		$start   				=get_block_setting($block_id, 'start',    false) || WT_Filter::getBool('start');
-		$block   				=get_block_setting($block_id, 'block',    true);
-
+		$filter			=get_block_setting($block_id, 'filter',   'all');
+		$controls		=get_block_setting($block_id, 'controls', true);
+		$start			=get_block_setting($block_id, 'start',    false) || WT_Filter::getBool('start');
+		if ($block_id == '') {
+			$start = 0;
+			$controls = 0;
+			$content = '';
+		} else {
+			$content = '
+				<script>
+					var play = false;
+					function togglePlay() {
+						if (play) {
+							play = false;
+							jQuery("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
+						} else {
+							play = true;
+							playSlideShow();
+							jQuery("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
+						}
+					};
+					function playSlideShow() {
+						if (play) {
+							window.setTimeout("reload_image()", 5000);
+						}
+					};
+					function reload_image() {
+						if (play) {
+							jQuery("#block_'. $block_id .'").load("index.php?ctype='. $ctype .'&action=ajax&block_id='. $block_id .'&start=1");
+						}
+					};
+				</script>
+			';
+		}
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
 		$all_media=WT_DB::prepare(
@@ -88,10 +117,10 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		))->fetchOneColumn();
 
 		// Keep looking through the media until a suitable one is found.
-		$random_media=null;
+		$random_media = null;
 		while ($all_media) {
-			$n=array_rand($all_media);
-			$media=WT_Media::getInstance($all_media[$n]);
+			$n = array_rand($all_media);
+			$media = WT_Media::getInstance($all_media[$n]);
 			if ($media->canDisplayDetails() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->fetchLinkedIndividuals() as $indi) {
@@ -101,7 +130,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 						$filter=='event' && strpos($indi->getGedcomRecord(), "\n2 OBJE @" . $media->getXref() . '@') !==false
 					) {
 						// Found one :-)
-						$random_media=$media;
+						$random_media = $media;
 						break 2;
 					}
 				}
@@ -109,90 +138,45 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			unset($all_media[$n]);
 		};
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
-		$title.=$this->getTitle();
+
+		if ($start) {
+			$title .= WT_I18N::translate('Slide Show');
+			$content .= '<script>togglePlay();</script>';
+		} else {
+			$title .= WT_I18N::translate('Random image');
+		}
 
 		if ($random_media) {
-			$content = "<div id=\"random_picture_container$block_id\">";
-			if ($controls) {
-				if ($start) {
-					$icon_class = 'icon-media-stop';
-				} else {
-					$icon_class = 'icon-media-play';
+			$content .= '<div id="random_media_container' .$block_id. '">';
+				if ($controls) {
+					if ($start) {
+						$icon_class = 'icon-media-stop';
+					} else {
+						$icon_class = 'icon-media-play';
+					}
+					$content .= '
+						<div dir="ltr" id="random_media_controls' . $block_id .'">
+							<a href="#" onclick="togglePlay(); return false;" id="play_stop" class="'.$icon_class.'" title="'.WT_I18N::translate('Play').'"'.WT_I18N::translate('Stop').'"></a>
+							<a href="#" onclick="jQuery(\'#block_'. $block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>
+						</div>';
 				}
-				$content .= '<div dir="ltr" class="center" id="random_picture_controls' . $block_id .'"><br>';
-				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
-				$content .= '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;" title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
-				$content .= '</div><script>
-					var play = false;
-						function togglePlay() {
-							if (play) {
-								play = false;
-								jQuery("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
-							}
-							else {
-								play = true;
-								playSlideShow();
-								jQuery("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
-							}
-						}
 
-						function playSlideShow() {
-							if (play) {
-								window.setTimeout("reload_image()", 6000);
-							}
-						}
-						function reload_image() {
-							if (play) {
-								jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1");
-							}
-						}
-					</script>';
-			}
-			if ($start) {
-				$content .= '<script>togglePlay();</script>';
-			}
-			$content .= '<div class="center" id="random_picture_content'.$block_id.'">';
-			$content .= '<table id="random_picture_box"><tr><td';
-
-			if ($block) {
-				$content .= ' class="details1"';
-			} else {
-				$content .= ' class="details2"';
-			}
-			$content .= ' >';
-			$content .= $random_media->displayImage();
-
-			if ($block) {
-				$content .= '<br>';
-			} else {
-				$content .= '</td><td class="details2">';
-			}
-			$content .= '<a href="'.$random_media->getHtmlUrl().'"><b>'. $random_media->getFullName() .'</b></a><br>';
-			foreach ($random_media->fetchLinkedIndividuals() as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View Person') . ' — ' . $individual->getFullname().'</a><br>';
-			}
-			foreach ($random_media->fetchLinkedFamilies() as $family) {
-				$content .= '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View Family') . ' — ' . $family->getFullname().'</a><br>';
-			}
-			foreach ($random_media->fetchLinkedSources() as $source) {
-				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View Source') . ' — ' . $source->getFullname().'</a><br>';
-			}
-			$content .= '<br><div class="indent">';
-			$content .= print_fact_notes($random_media->getGedcomRecord(), "1", false, true);
-			$content .= '</div>';
-			$content .= '</td></tr></table>';
-			$content .= '</div>'; // random_picture_content
-			$content .= '</div>'; // random_picture_container
+				$content .= '
+					<div class="slides_content">
+						<div class="slides_title"><a href="'.$random_media->getHtmlUrl().'" title="'. strip_tags($random_media->getFullName()) .'">'. $random_media->getFullName() .'</a></div>
+						' .$random_media->displayImage(). '
+					</div>
+			</div>';
 		} else {
 			$content = WT_I18N::translate('This family tree has no images to display.');
 		}
+		$id = $this->getName().$block_id;
+		$class = $this->getName().'_block';
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
@@ -219,46 +203,46 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'filter',             	WT_Filter::post('filter', 'indi|event|all', 'all'));
-			set_block_setting($block_id, 'controls',           WT_Filter::postBool('controls'));
-			set_block_setting($block_id, 'start',              WT_Filter::postBool('start'));
-			set_block_setting($block_id, 'filter_avi',         WT_Filter::postBool('filter_avi'));
-			set_block_setting($block_id, 'filter_bmp',         WT_Filter::postBool('filter_bmp'));
-			set_block_setting($block_id, 'filter_gif',         WT_Filter::postBool('filter_gif'));
-			set_block_setting($block_id, 'filter_jpeg',        WT_Filter::postBool('filter_jpeg'));
-			set_block_setting($block_id, 'filter_mp3',         WT_Filter::postBool('filter_mp3'));
-			set_block_setting($block_id, 'filter_ole',         WT_Filter::postBool('filter_ole'));
-			set_block_setting($block_id, 'filter_pcx',         WT_Filter::postBool('filter_pcx'));
-			set_block_setting($block_id, 'filter_pdf',         WT_Filter::postBool('filter_pdf'));
-			set_block_setting($block_id, 'filter_png',         WT_Filter::postBool('filter_png'));
-			set_block_setting($block_id, 'filter_tiff',        WT_Filter::postBool('filter_tiff'));
-			set_block_setting($block_id, 'filter_wav',         WT_Filter::postBool('filter_wav'));
-			set_block_setting($block_id, 'filter_audio',       WT_Filter::postBool('filter_audio'));
-			set_block_setting($block_id, 'filter_book',        WT_Filter::postBool('filter_book'));
-			set_block_setting($block_id, 'filter_card',        WT_Filter::postBool('filter_card'));
-			set_block_setting($block_id, 'filter_certificate', WT_Filter::postBool('filter_certificate'));
-			set_block_setting($block_id, 'filter_coat',        WT_Filter::postBool('filter_coat'));
-			set_block_setting($block_id, 'filter_document',    		WT_Filter::postBool('filter_document'));
-			set_block_setting($block_id, 'filter_electronic',  		WT_Filter::postBool('filter_electronic'));
-			set_block_setting($block_id, 'filter_fiche',       		WT_Filter::postBool('filter_fiche'));
-			set_block_setting($block_id, 'filter_film',        		WT_Filter::postBool('filter_film'));
-			set_block_setting($block_id, 'filter_magazine',    		WT_Filter::postBool('filter_magazine'));
-			set_block_setting($block_id, 'filter_manuscript',  		WT_Filter::postBool('filter_manuscript'));
-			set_block_setting($block_id, 'filter_map',         		WT_Filter::postBool('filter_map'));
-			set_block_setting($block_id, 'filter_newspaper',   		WT_Filter::postBool('filter_newspaper'));
-			set_block_setting($block_id, 'filter_other',       		WT_Filter::postBool('filter_other'));
-			set_block_setting($block_id, 'filter_painting',   		WT_Filter::postBool('filter_painting'));
-			set_block_setting($block_id, 'filter_photo',       		WT_Filter::postBool('filter_photo'));
-			set_block_setting($block_id, 'filter_tombstone',   		WT_Filter::postBool('filter_tombstone'));
-			set_block_setting($block_id, 'filter_video',       		WT_Filter::postBool('filter_video'));
+			set_block_setting($block_id, 'filter',					WT_Filter::post('filter', 'indi|event|all', 'all'));
+			set_block_setting($block_id, 'controls',				WT_Filter::postBool('controls'));
+			set_block_setting($block_id, 'start',					WT_Filter::postBool('start'));
+			set_block_setting($block_id, 'filter_avi',				WT_Filter::postBool('filter_avi'));
+			set_block_setting($block_id, 'filter_bmp',				WT_Filter::postBool('filter_bmp'));
+			set_block_setting($block_id, 'filter_gif',				WT_Filter::postBool('filter_gif'));
+			set_block_setting($block_id, 'filter_jpeg',				WT_Filter::postBool('filter_jpeg'));
+			set_block_setting($block_id, 'filter_mp3',				WT_Filter::postBool('filter_mp3'));
+			set_block_setting($block_id, 'filter_ole',				WT_Filter::postBool('filter_ole'));
+			set_block_setting($block_id, 'filter_pcx',				WT_Filter::postBool('filter_pcx'));
+			set_block_setting($block_id, 'filter_pdf',				WT_Filter::postBool('filter_pdf'));
+			set_block_setting($block_id, 'filter_png',				WT_Filter::postBool('filter_png'));
+			set_block_setting($block_id, 'filter_tiff',				WT_Filter::postBool('filter_tiff'));
+			set_block_setting($block_id, 'filter_wav',				WT_Filter::postBool('filter_wav'));
+			set_block_setting($block_id, 'filter_audio',			WT_Filter::postBool('filter_audio'));
+			set_block_setting($block_id, 'filter_book',				WT_Filter::postBool('filter_book'));
+			set_block_setting($block_id, 'filter_card',				WT_Filter::postBool('filter_card'));
+			set_block_setting($block_id, 'filter_certificate',		WT_Filter::postBool('filter_certificate'));
+			set_block_setting($block_id, 'filter_coat',				WT_Filter::postBool('filter_coat'));
+			set_block_setting($block_id, 'filter_document',			WT_Filter::postBool('filter_document'));
+			set_block_setting($block_id, 'filter_electronic',		WT_Filter::postBool('filter_electronic'));
+			set_block_setting($block_id, 'filter_fiche',			WT_Filter::postBool('filter_fiche'));
+			set_block_setting($block_id, 'filter_film',				WT_Filter::postBool('filter_film'));
+			set_block_setting($block_id, 'filter_magazine',			WT_Filter::postBool('filter_magazine'));
+			set_block_setting($block_id, 'filter_manuscript',		WT_Filter::postBool('filter_manuscript'));
+			set_block_setting($block_id, 'filter_map',				WT_Filter::postBool('filter_map'));
+			set_block_setting($block_id, 'filter_newspaper',		WT_Filter::postBool('filter_newspaper'));
+			set_block_setting($block_id, 'filter_other',			WT_Filter::postBool('filter_other'));
+			set_block_setting($block_id, 'filter_painting',			WT_Filter::postBool('filter_painting'));
+			set_block_setting($block_id, 'filter_photo',			WT_Filter::postBool('filter_photo'));
+			set_block_setting($block_id, 'filter_tombstone',		WT_Filter::postBool('filter_tombstone'));
+			set_block_setting($block_id, 'filter_video',			WT_Filter::postBool('filter_video'));
 			exit;
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$filter 			= get_block_setting($block_id, 'filter', 'all');
-		$controls 			= get_block_setting($block_id, 'controls', true);
-		$start 				= get_block_setting($block_id, 'start', false);
+		$filter		= get_block_setting($block_id, 'filter', 'all');
+		$controls	= get_block_setting($block_id, 'controls', true);
+		$start		= get_block_setting($block_id, 'start', false);
 		$filters=array(
 			'avi'        =>get_block_setting($block_id, 'filter_avi', false),
 			'bmp'        =>get_block_setting($block_id, 'filter_bmp', true),

@@ -213,9 +213,10 @@ button:hover,input:hover[type="submit"],input:hover[type="reset"],input:hover[ty
 .user_welcome_block table, .gedcom_block_block  table{margin:auto}
 .user_welcome_block td, .gedcom_block_block  td{width:25%;text-align:center;vertical-align:top}
 #facts,#relatives{max-width:100%;width:100%}
-#random_picture{height:100px}
-#random_picture_box{margin:0;padding:0;width:99%}
-#random_picture_box .details1{font-size:1.1em}
+.random_media_block {height:200px;}
+[id^="random_media_container"] {text-align: center;}
+.slides_content a.gallery img {max-height:150px;}
+.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 .todo_block, .charts_block, .todays_events_block, .recent_changes_block, .upcoming_events_block{max-height:300px}
 a{color:#4682B4;text-decoration:none}
 .topheader{color:#696969;margin:0;white-space:nowrap}

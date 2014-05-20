@@ -159,11 +159,10 @@ html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, h
 #home-page #index_main_blocks .blockheader {background:#fff;font-size:16px;}
 #home-page #index_small_blocks .blockheader {background: #a9adbc;font-size:16px;height:30px;border-bottom: 5px solid #555;overflow: hidden;padding: 15px 10px 10px;color: #555;text-transform:uppercase;}
 #home-page #index_full_blocks {clear:none;width:100%;}
-#home-page #index_small_blocks > div{background:#ddd;float:left;margin:6px 1%;width:31.33333%;height:250px;overflow-x:hidden;overflow-y:auto;}
+#home-page #index_small_blocks > div{background:#ddd;float:left;margin:6px 1%;width:31.33333%;height:280px;overflow-x:hidden;overflow-y:auto;}
 #home-page #index_main_blocks table {margin:auto;}
 #home-page .block  {border:0;}
 #home-page #index_small_blocks .blockcontent{padding:5px 10px;}
-#home-page div [id^="random_picture_controls"] br{display:none;}
 
 /* My page specific */
 #my-page .blockheader {background: #a9adbc;font-size:16px;height:30px;border-bottom: 5px solid #555;overflow: hidden;padding: 15px 10px 10px;color: #555;text-transform:uppercase;}
@@ -580,10 +579,10 @@ html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
 
 [dir='rtl'] .source-list th:last-child, [dir='rtl'] .note-list th:last-child, [dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
-/* ======== Random picture block ====== */
-.random_media_block{height:250px;}
-#random_picture {text-align:center;}
-#random_picture_box {width:100%;}
+/* ======== Random media block ====== */
+[id^="random_media_container"] {text-align: center;}
+.slides_content a.gallery img {max-height:150px;}
+.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
 
 /* ======= Favourites block ========== */
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
@@ -620,9 +619,6 @@ div.faq_body {clear:both;padding:0 1em;}
 
 [dir='rtl'] .faq_top {float:left;}
 [dir='rtl'] .faq_edit {float:left;}
-
-
-
 
 /* ========= Positioning edit, copy, delete links ============= */
 /* General use */
@@ -1139,8 +1135,8 @@ div#pages-container {width:96%;}
 #privacy_status dt{float:none;width:100%;}
 #privacy_status dd{font-size:80%;float:left;margin:0 0 0 20px;}
 #privacy_status dt span{float:right;}
-html[dir=\'rtl\'] #privacy_status dd{float:right;margin:0 20px 0 0;}
-html[dir=\'rtl\'] #privacy_status dt span{float: left;}
+[dir='rtl'] #privacy_status dd{float:right;margin:0 20px 0 0;}
+[dir='rtl'] #privacy_status dt span{float: left;}
 
 /* Styling for stories module */
 #contents_list {margin:auto auto 20px auto; width:60%;}

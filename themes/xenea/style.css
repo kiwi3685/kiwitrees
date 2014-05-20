@@ -491,13 +491,16 @@ img.block { border:none; height:20px; vertical-align:middle;}
 .user_welcome_block table, .gedcom_block_block table {margin:auto;}
 .user_welcome_block td, .gedcom_block_block td {width:25%;text-align:center;vertical-align:top;}
 
+/* ======== Random media block ====== */
+.random_media_block {height:200px;}
+[id^="random_media_container"] {text-align: center;}
+.slides_content a.gallery img {max-height:150px;}
+.slides_title {font-weight:900; line-height: 30px; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
+
 #link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
-#random_picture { text-align:center;}
-#random_picture_box {
-width:100%;}
 #familybook_chart {margin-left:10px; }
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}
 #familybook_chart td {margin:0; padding:0;}
