@@ -1200,7 +1200,8 @@ case 'update':
 	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
 
 	if (isset($pids_array) && $pids_array!="no_array") {
-		$cens_pids=explode(', ', $pids_array);
+		$cens_pids = explode(', ', $pids_array);
+		$cens_pids = array_diff($cens_pids, array("add"));
 	}
 
 	if (!isset($cens_pids)) {
