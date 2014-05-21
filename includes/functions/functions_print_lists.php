@@ -924,7 +924,7 @@ function format_sour_table($datalist) {
 					/* 10 #NOTE		*/ {"sType": "numeric", "bVisible": false},
 					/* 11 CHAN      */ {"iDataSort": 12, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 					/* 12 CHAN_sort */ {"bVisible": false},
-					/* 13 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+					/* 13 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -951,7 +951,10 @@ function format_sour_table($datalist) {
 	$html .= '<th>#NOTE</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
-	$html .= '<th>&nbsp;</th>';//delete
+	$html .='<th><div class="delete_src">
+				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'sources\');} else {return false;}">			
+				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
+			</div></th>';
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
@@ -1021,9 +1024,11 @@ function format_sour_table($datalist) {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
-		//-- Delete 
+		//-- Select & delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div class="delete_src">
+				<input type="checkbox" name="del_places[]" class="check" value="'.$source->getXref().'" title="'. WT_I18N::translate('Delete'). '">'.
+				'</div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1062,7 +1067,7 @@ function format_note_table($datalist) {
 				/*  8 #SOUR  	*/ {"sType": "numeric", "bVisible": false},
 				/*  9 CHAN      */ {"iDataSort": 10, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 				/* 10 CHAN_sort */ {"bVisible": false},
-				/* 11 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/* 11 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1087,7 +1092,10 @@ function format_note_table($datalist) {
 	$html .= '<th>#SOUR</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
-	$html .= '<th>&nbsp;</th>';//delete
+	$html .='<th><div class="delete_src">
+				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'notes\');} else {return false;}">			
+				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
+			</div></th>';
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
@@ -1122,11 +1130,13 @@ function format_note_table($datalist) {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
-		//-- Delete 
+		//-- Select & delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\''. $note->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div class="delete_src">
+				<input type="checkbox" name="del_places[]" class="check" value="'.$note->getXref().'" title="'. WT_I18N::translate('Delete'). '">'.
+				'</div></td>';
 		} else {
-			$html .= '<td></td>';
+			$html .= '<td>&nbsp;</td>';
 		}
 		$html .= '</tr>';
 	}
@@ -1157,7 +1167,7 @@ function format_repo_table($repos) {
 				/* 2 #SOUR		*/ {"sType": "numeric", "bVisible": false},
 				/* 3 CHAN		*/ {"iDataSort": 4, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 				/* 4 CHAN_sort	*/ {"bVisible": false},
-				/* 5 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/* 5 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1176,7 +1186,10 @@ function format_repo_table($repos) {
 	$html .= '<th>#SOUR</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
-	$html .= '<th>&nbsp;</th>';//delete
+	$html .='<th><div class="delete_src">
+				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'repos\');} else {return false;}">			
+				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
+			</div></th>';
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
@@ -1214,9 +1227,11 @@ function format_repo_table($repos) {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
-		//-- Delete 
+		//-- Select & delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\''. $repo->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div class="delete_src">
+				<input type="checkbox" name="del_places[]" class="check" value="'.$repo->getXref().'" title="'. WT_I18N::translate('Delete'). '">'.
+				'</div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}

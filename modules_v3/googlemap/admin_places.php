@@ -552,36 +552,6 @@ function add_place_location(placeid) {
 	return false;
 }
 
-function checkbox_delete() {
-	var i = 0, counter = 0, delete_list = [];
-	input_obj = document.getElementsByClassName("check"); 
-	for (i = 0; i < input_obj.length; i++) {
-		if (input_obj[i].checked === true) {
-			counter++;
-			delete_list.push(input_obj[i].value);
-		}
-	}
-	switch(counter) {
-		case 0:
-			var answer=confirm('<?php echo WT_I18N::translate('No places selected.');?>');
-		  break;
-		case 1:
-			var answer=confirm('<?php echo WT_I18N::translate('You are about to remove one place.');?>');
-			break;
-		default:
-			var answer=confirm('<?php echo WT_I18N::translate('You are about to remove multiple places.');?>' + ' (' + counter + ') ');
-	}
-	if (counter > 0) {
-		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + delete_list;
-	}
-}
-
-function toggle(source) {
-  checkboxes = document.getElementsByClassName("check");
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.checked;
-  }
-}
 </script>
 <?php
 $controller->addInlineJavascript('jQuery("#gm_tabs").tabs();');
@@ -646,8 +616,8 @@ echo '<div id="gm_tabs">
 							<th><div class="col5">', WT_I18N::translate('Icon'), '</div></th>
 							<th><div class="col6">', WT_I18N::translate('Edit'), '</div></th>
 							<th><div class="col7">
-								<input type="button" value="', WT_I18N::translate('Delete'), '" onclick="return checkbox_delete();">			
-								<input type="checkbox" onClick="toggle(this)" style="vertical-align:middle;">
+								<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'places\');} else {return false;}">			
+								<input type="checkbox" onClick="toggle_select(this)" style="vertical-align:middle;">
 							</div></th>
 						</tr>
 					</thead>
@@ -704,8 +674,8 @@ echo '<div id="gm_tabs">
 							<th><div class="col5">', WT_I18N::translate('Icon'), '</div></th>
 							<th><div class="col6">', WT_I18N::translate('Edit'), '</div></th>
 							<th><div class="col7">
-								<input type="button" value="', WT_I18N::translate('Delete'), '" onclick="return checkbox_delete();">			
-								<input type="checkbox" onClick="toggle(this)" style="vertical-align:middle;">
+								<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'places\');} else {return false;}">			
+								<input type="checkbox" onClick="toggle_select(this)" style="vertical-align:middle;">
 							</div></th>
 						</tr>
 					</tfoot>

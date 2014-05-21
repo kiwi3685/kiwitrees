@@ -1449,3 +1449,39 @@ jQuery.extend($.ui.accordion.prototype.options, {
 function all_caps() {
 	jQuery(".NAME .SURN").css("text-transform", "uppercase");
 }
+
+// Select all / no records in a list
+function toggle_select(source) {
+  checkboxes = document.getElementsByClassName("check");
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+	checkboxes[i].checked = source.checked;
+  }
+}
+
+// Delete multiple list items
+function checkbox_delete(type) {
+	var i = 0, counter = 0, delete_list = [];
+	input_obj = document.getElementsByClassName("check"); 
+	for (i = 0; i < input_obj.length; i++) {
+		if (input_obj[i].checked === true) {
+			counter++;
+			delete_list.push(input_obj[i].value);
+		}
+	}
+	for (i = 0; i < counter; i++) {
+		switch(type) {
+			case "sources":
+				jQuery.post("action.php",{action:"delete-source",xref:delete_list[i]},function(){location.reload();});
+		  	break;
+			case "notes":
+				jQuery.post("action.php",{action:"delete-note",xref:delete_list[i]},function(){location.reload();});
+		  	break;
+			case "repos":
+				jQuery.post("action.php",{action:"delete-repository",xref:delete_list[i]},function(){location.reload();});
+		  	break;
+			case "places":
+				window.location = location.pathname + '?mod=googlemap&mod_action=admin_places&action=DeleteRecord&deleteRecord=' + delete_list;
+		  	break;
+		 }
+	}
+}
