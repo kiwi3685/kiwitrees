@@ -97,10 +97,8 @@ if ($view!='simple') {echo '<body id="body">';
 
 // begin header section
 if ($view!='simple') {
-	echo
-		'<div id="fb-root"></div>',
-		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-		'<div id="main_content">
+	echo '
+		<div id="main_content">
 		<div id="header">
 		<ul id="extra-menu" class="makeMenu">';
 			$menu=WT_MenuBar::getFavoritesMenu();
