@@ -29,27 +29,6 @@ if (!defined('WT_WEBTREES')) {
 
 class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu {
 	
-	public function __construct() {
-		// Load any local user translations
-		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {
-			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo')) {
-				Zend_Registry::get('Zend_Translate')->addTranslation(
-					new Zend_Translate('gettext', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo', WT_LOCALE)
-				);
-			}
-			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php')) {
-				Zend_Registry::get('Zend_Translate')->addTranslation(
-					new Zend_Translate('array', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php', WT_LOCALE)
-				);
-			}
-			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv')) {
-				Zend_Registry::get('Zend_Translate')->addTranslation(
-					new Zend_Translate('csv', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv', WT_LOCALE)
-				);
-			}
-		}
-	}
-
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of the module */ WT_I18N::translate('Fancy Imagebar');
