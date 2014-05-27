@@ -1081,6 +1081,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '<td class="optionbox wrap">';
 	echo '<form method="get" name="newfactform" action="" onsubmit="return false;">';
 	echo '<select id="newfact" name="newfact">';
+	echo '<option value="" disabled selected>' . WT_I18N::translate('Select') . '</option>';
 	foreach ($translated_addfacts as $fact=>$fact_name) {
 		echo '<option value="', $fact, '">', $fact_name, '</option>';
 	}
@@ -1179,6 +1180,7 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 	echo '<td class="optionbox wrap">';
 	echo '<form method="get" name="newfactform" action="" onsubmit="return false;">';
 	echo '<select id="newfact2" name="newfact2">';
+	echo '<option value="" disabled selected>' . WT_I18N::translate('Select') . '</option>';
 	foreach ($translated_addfacts as $fact=>$fact_name) {
 		echo '<option value="', $fact, '">', $fact_name, '</option>';
 	}
