@@ -8,7 +8,7 @@
  * Copyright (C) 2013 webtrees development team.
  *
  * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,12 +17,12 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
 if (!defined('WT_WEBTREES')) {
@@ -81,7 +81,6 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		AddToLog($this->getTitle().' reset to default values', 'config');
 	}
 
-
 	// Implement WT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
@@ -97,7 +96,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			->pageHeader();
 
 		if (WT_Filter::postBool('save')) {
-			set_module_setting($this->getName(), 'RESEARCH_PLUGINS',  serialize(WT_Filter::post('NEW_RESEARCH_PLUGINS')));				
+			set_module_setting($this->getName(), 'RESEARCH_PLUGINS', serialize(WT_Filter::post('NEW_RESEARCH_PLUGINS')));				
 			AddToLog($this->getTitle().' config updated', 'config');
 		}			
 
@@ -143,8 +142,8 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
 			$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
-			$link =  '';
-			$sublinks =  '';
+			$link = '';
+			$sublinks = '';
 			foreach ($this->getPluginList() as $plugin) {
 				if(is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
 				if(!isset($value)) $value = '1';
@@ -226,4 +225,3 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 // Each plugin should extend the base_plugin class, and implement any functions included here
 class research_base_plugin {
 }
-
