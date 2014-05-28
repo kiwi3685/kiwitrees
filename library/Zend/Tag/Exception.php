@@ -14,15 +14,15 @@
  *
  * @category  Zend
  * @package   Zend_Tag
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd     New BSD License
- * @version   $Id: Exception.php 24593 2012-01-05 20:35:02Z matthew $
+ * @version   $Id$
  */
 
 /**
  * Zend_Exception
  */
-require_once 'Zend/Exception.php';
+// require_once 'Zend/Exception.php';
 
 /**
  * Exception class for Zend_Tag
@@ -30,7 +30,7 @@ require_once 'Zend/Exception.php';
  * @category  Zend
  * @package   Zend_Tag
  * @uses      Zend_Exception
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Tag_Exception extends Zend_Exception
