@@ -15,22 +15,22 @@
  * @category   Zend
  * @package    Zend_Mobile
  * @subpackage Zend_Mobile_Push
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
 
 /** Zend_Http_Client **/
-require_once 'Zend/Http/Client.php';
+// require_once 'Zend/Http/Client.php';
 
 /** Zend_Mobile_Push_Abstract **/
-require_once 'Zend/Mobile/Push/Abstract.php';
+// require_once 'Zend/Mobile/Push/Abstract.php';
 
 /** Zend_Mobile_Push_Message_Gcm **/
-require_once 'Zend/Mobile/Push/Message/Gcm.php';
+// require_once 'Zend/Mobile/Push/Message/Gcm.php';
 
 /** Zend_Mobile_Push_Response_Gcm **/
-require_once 'Zend/Mobile/Push/Response/Gcm.php';
+// require_once 'Zend/Mobile/Push/Response/Gcm.php';
 
 /**
  * GCM Push
@@ -38,7 +38,7 @@ require_once 'Zend/Mobile/Push/Response/Gcm.php';
  * @category   Zend
  * @package    Zend_Mobile
  * @subpackage Zend_Mobile_Push
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
@@ -136,14 +136,6 @@ class Zend_Mobile_Push_Gcm extends Zend_Mobile_Push_Abstract
         $client->setUri(self::SERVER_URI);
         $client->setHeaders('Authorization', 'key=' . $this->getApiKey());
 
-        $json = array('registration_ids' => $message->getToken());
-        if ($data = $message->getData()) {
-            $json['data'] = $data;
-        }
-        if ($id = $message->getId()) {
-            $json['id'] = $id;
-        }
-
         $response = $client->setRawData($message->toJson(), 'application/json')
                            ->request('POST');
         $this->close();
@@ -151,19 +143,19 @@ class Zend_Mobile_Push_Gcm extends Zend_Mobile_Push_Abstract
         switch ($response->getStatus())
         {
             case 500:
-                require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
+                // require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
                 throw new Zend_Mobile_Push_Exception_ServerUnavailable('The server encountered an internal error, try again');
                 break;
             case 503:
-                require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
+                // require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
                 throw new Zend_Mobile_Push_Exception_ServerUnavailable('The server was unavailable, check Retry-After header');
                 break;
             case 401:
-                require_once 'Zend/Mobile/Push/Exception/InvalidAuthToken.php';
+                // require_once 'Zend/Mobile/Push/Exception/InvalidAuthToken.php';
                 throw new Zend_Mobile_Push_Exception_InvalidAuthToken('There was an error authenticating the sender account');
                 break;
             case 400:
-                require_once 'Zend/Mobile/Push/Exception/InvalidPayload.php';
+                // require_once 'Zend/Mobile/Push/Exception/InvalidPayload.php';
                 throw new Zend_Mobile_Push_Exception_InvalidPayload('The request could not be parsed as JSON or contains invalid fields');
                 break;
         }
