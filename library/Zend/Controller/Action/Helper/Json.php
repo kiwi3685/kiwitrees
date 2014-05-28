@@ -15,15 +15,15 @@
  * @category   Zend
  * @package    Zend_Controller
  * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Json.php 24829 2012-05-30 12:31:39Z adamlundrigan $
+ * @version    $Id$
  */
 
 /**
  * @see Zend_Controller_Action_Helper_Abstract
  */
-require_once 'Zend/Controller/Action/Helper/Abstract.php';
+// require_once 'Zend/Controller/Action/Helper/Abstract.php';
 
 /**
  * Simplify AJAX context switching based on requested format
@@ -32,7 +32,7 @@ require_once 'Zend/Controller/Action/Helper/Abstract.php';
  * @category   Zend
  * @package    Zend_Controller
  * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Controller_Action_Helper_Json extends Zend_Controller_Action_Helper_Abstract
@@ -68,7 +68,7 @@ class Zend_Controller_Action_Helper_Json extends Zend_Controller_Action_Helper_A
         /**
          * @see Zend_View_Helper_Json
          */
-        require_once 'Zend/View/Helper/Json.php';
+        // require_once 'Zend/View/Helper/Json.php';
         $jsonHelper = new Zend_View_Helper_Json();
         $data = $jsonHelper->json($data, $keepLayouts, $encodeData);
 
@@ -76,7 +76,7 @@ class Zend_Controller_Action_Helper_Json extends Zend_Controller_Action_Helper_A
             /**
              * @see Zend_Controller_Action_HelperBroker
              */
-            require_once 'Zend/Controller/Action/HelperBroker.php';
+            // require_once 'Zend/Controller/Action/HelperBroker.php';
             Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer')->setNoRender(true);
         }
 

@@ -15,17 +15,17 @@
  * @category   Zend
  * @package    Zend_Cloud
  * @subpackage StorageService
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Cloud/AbstractFactory.php';
+// require_once 'Zend/Cloud/AbstractFactory.php';
 
 /**
  * @category   Zend
  * @package    Zend_Cloud
  * @subpackage StorageService
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Cloud_StorageService_Factory extends Zend_Cloud_AbstractFactory
@@ -56,11 +56,11 @@ class Zend_Cloud_StorageService_Factory extends Zend_Cloud_AbstractFactory
     {
         $adapter = parent::_getAdapter(self::STORAGE_ADAPTER_KEY, $options);
         if (!$adapter) {
-            require_once 'Zend/Cloud/StorageService/Exception.php';
+            // require_once 'Zend/Cloud/StorageService/Exception.php';
             throw new Zend_Cloud_StorageService_Exception('Class must be specified using the \'' .
             self::STORAGE_ADAPTER_KEY . '\' key');
         } elseif (!$adapter instanceof self::$_adapterInterface) {
-            require_once 'Zend/Cloud/StorageService/Exception.php';
+            // require_once 'Zend/Cloud/StorageService/Exception.php';
             throw new Zend_Cloud_StorageService_Exception(
                 'Adapter must implement \'' . self::$_adapterInterface . '\''
             );

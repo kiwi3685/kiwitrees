@@ -13,14 +13,14 @@
  * @category   Zend
  * @package    Zend_Cloud_StorageService
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Cloud/StorageService/Adapter.php';
-require_once 'Zend/Cloud/StorageService/Exception.php';
-require_once 'Zend/Service/Rackspace/Files.php';
-require_once 'Zend/Service/Rackspace/Exception.php';
+// require_once 'Zend/Cloud/StorageService/Adapter.php';
+// require_once 'Zend/Cloud/StorageService/Exception.php';
+// require_once 'Zend/Service/Rackspace/Files.php';
+// require_once 'Zend/Service/Rackspace/Exception.php';
 
 /**
  * Adapter for Rackspace cloud storage
@@ -28,7 +28,7 @@ require_once 'Zend/Service/Rackspace/Exception.php';
  * @category   Zend
  * @package    Zend_Cloud_StorageService
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Cloud_StorageService_Adapter_Rackspace
@@ -183,7 +183,7 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
      */
     public function renameItem($path, $name, $options = null)
     {
-        require_once 'Zend/Cloud/OperationNotAvailableException.php';
+        // require_once 'Zend/Cloud/OperationNotAvailableException.php';
         throw new Zend_Cloud_OperationNotAvailableException('Renaming not implemented');
     }
 

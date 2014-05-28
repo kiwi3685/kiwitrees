@@ -3,7 +3,7 @@
  * @category   Zend
  * @package    Zend_Cloud
  * @subpackage Infrastructure
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
@@ -12,7 +12,7 @@
  *
  * @package    Zend_Cloud
  * @subpackage Infrastructure
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Cloud_Infrastructure_Instance 
@@ -83,7 +83,7 @@ class Zend_Cloud_Infrastructure_Instance
     public function __construct($adapter, $data = null)
     {
         if (!($adapter instanceof Zend_Cloud_Infrastructure_Adapter)) {
-            require_once 'Zend/Cloud/Infrastructure/Exception.php';
+            // require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception("You must pass a Zend_Cloud_Infrastructure_Adapter instance");
         }
 
@@ -96,13 +96,13 @@ class Zend_Cloud_Infrastructure_Instance
         }
         
         if (empty($data) || !is_array($data)) {
-            require_once 'Zend/Cloud/Infrastructure/Exception.php';
+            // require_once 'Zend/Cloud/Infrastructure/Exception.php';
             throw new Zend_Cloud_Infrastructure_Exception("You must pass an array of parameters");
         }
 
         foreach ($this->attributeRequired as $key) {
             if (empty($data[$key])) {
-                require_once 'Zend/Cloud/Infrastructure/Exception.php';
+                // require_once 'Zend/Cloud/Infrastructure/Exception.php';
                 throw new Zend_Cloud_Infrastructure_Exception(sprintf(
                     'The param "%s" is a required param for %s', 
                     $key,

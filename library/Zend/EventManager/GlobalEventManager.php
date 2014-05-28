@@ -14,12 +14,12 @@
  *
  * @category   Zend
  * @package    Zend_EventManager
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/Stdlib/CallbackHandler.php';
-require_once 'Zend/Stdlib/PriorityQueue.php';
+// require_once 'Zend/Stdlib/CallbackHandler.php';
+// require_once 'Zend/Stdlib/PriorityQueue.php';
 
 /**
  * Event manager: notification system
@@ -29,7 +29,7 @@ require_once 'Zend/Stdlib/PriorityQueue.php';
  *
  * @category   Zend
  * @package    Zend_EventManager
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_EventManager_GlobalEventManager

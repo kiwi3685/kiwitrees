@@ -14,20 +14,20 @@
  *
  * @category   Zend
  * @package    Zend_EventManager
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-require_once 'Zend/EventManager/EventManager.php';
-require_once 'Zend/EventManager/SharedEventManager.php';
-require_once 'Zend/Stdlib/CallbackHandler.php';
+// require_once 'Zend/EventManager/EventManager.php';
+// require_once 'Zend/EventManager/SharedEventManager.php';
+// require_once 'Zend/Stdlib/CallbackHandler.php';
 
 /**
  * Static version of EventManager
  *
  * @category   Zend
  * @package    Zend_EventManager
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_EventManager_StaticEventManager extends Zend_EventManager_SharedEventManager
