@@ -535,13 +535,6 @@ class WT_GedcomRecord {
 						}
 					}
 					break;
-				case 'ka':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Geor') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
 					break;
 				case 'he':
 					foreach ($this->getAllNames() as $n=>$name) {
@@ -559,6 +552,13 @@ class WT_GedcomRecord {
 						}
 					}
 					break;
+				case 'ka':
+					foreach ($this->getAllNames() as $n=>$name) {
+						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Geor') {
+							$this->_getPrimaryName=$n;
+							break;
+						}
+					}
 				default:
 					foreach ($this->getAllNames() as $n=>$name) {
 						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Latn') {
