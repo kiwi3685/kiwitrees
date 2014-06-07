@@ -59,7 +59,7 @@ echo '<div id="x">';// div x - manages the accordion effect
 echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
 	'<div id="about">',
 	'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site.'), '</p>',
-	'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'), '</p>',
+	'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net</a>'), '</p>',
 	'</div>';
 
 // Accordion block for DELETE OLD FILES - only shown when old files are found
