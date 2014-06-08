@@ -1,7 +1,7 @@
 <?php
 // Header for webtrees administration theme
 //
-// kiwi-webtrees: Web based Family History software
+// kiwitrees: Web based Family History software
 // Copyright (C) 2014 kiwitrees.net
 //
 // This program is free software; you can redistribute it and/or modify
@@ -61,7 +61,7 @@ echo
 	'<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">',
-	'<i class="icon-kiwi-webtrees"></i>',
+	'<i class="icon-kiwitrees"></i>',
 	'<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>',
 	'<div id="links">',
 	'<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',

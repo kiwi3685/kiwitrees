@@ -3,7 +3,7 @@
 //
 // Copyright (C) 2013 Nigel Osborne and kiwtrees.net. All rights reserved.
 //
-// kiwi-webtrees: Web based Family History software
+// kiwitrees: Web based Family History software
 // Copyright (C) 2014 kiwitrees.net
 //
 // Derived from PhpGedView and webtrees

@@ -169,7 +169,7 @@ html[dir="rtl"] input:requi#ff0000:valid, html[dir="rtl"] textarea:requi#ff0000:
 #my-page #index_small_blocks > div, #my-page #index_main_blocks > div, #my-page #index_full_blocks > div{background:#ddd;margin:6px 1%;height:300px;overflow:hidden}
 #my-page .blockcontent{padding:10px;}
 
-/* kiwi-webtrees user welcome block icons */
+/* kiwitrees user welcome block icons */
 .user_welcome_block .icon-mypage {background-image:url(images/large_menu_sprite.png);background-position:center -70px; min-width:80px;height:64px;text-align:center;}
 .user_welcome_block .icon-pedigree {background-image:url(images/large_menu_sprite.png);background-position:center -140px; min-width:80px;height:64px;text-align:center;}
 .user_welcome_block .icon-indis {background-image:url(images/large_menu_sprite.png);background-position:center -630px; min-width:80px;height:64px;text-align:center;}

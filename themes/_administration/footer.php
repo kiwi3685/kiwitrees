@@ -1,7 +1,7 @@
 <?php
 // Footer for webtrees administration theme
 //
-// kiwi-webtrees: Web based Family History software
+// kiwitrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify

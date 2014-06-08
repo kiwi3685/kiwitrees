@@ -5,7 +5,7 @@
 // $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
 // $addname, $showid, $float
 //
-// kiwi-webtrees: Web based Family History software
+// kiwitrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView

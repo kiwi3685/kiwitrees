@@ -1,5 +1,5 @@
 <?php
-// Album module for kiwi-webtrees
+// Album module for kiwitrees
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2014 webtrees development team.

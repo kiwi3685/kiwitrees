@@ -547,7 +547,7 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-mime-video-x-ms-wmv        {background-position:-50px -196px;}
 
 .icon-mask {display:inline-block;background-image:url(images/icon_mask.png);background-color:transparent;background-repeat:no-repeat;width:16px;height:16px;cursor:pointer;}
-.icon-kiwi-webtrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:200px; height:42px; margin:10px;}
+.icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:200px; height:42px; margin:10px;}
 
 
 /* Styling for the jquery.colorbox gallery */

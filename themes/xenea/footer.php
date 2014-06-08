@@ -33,7 +33,7 @@ if ($view!='simple') {
 	echo '<div id="footer" class="', $TEXT_DIRECTION, ' width99 center">';
 	if (contact_links() != '') echo contact_links();
 	echo '<p class="logo">';
-	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">kiwi-webtrees</a>';
+	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">kiwitrees</a>';
 	echo '</p>';
 	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 		echo execution_stats();

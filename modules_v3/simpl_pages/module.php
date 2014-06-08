@@ -1,7 +1,7 @@
 <?php
 //	webtrees - simpl_pages module
 //
-// kiwi-webtrees: Web based Family History software
+// kiwitrees: Web based Family History software
 // Copyright (C) 2012-2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
