@@ -789,17 +789,28 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_findnote{width:16px;height:16px;background-image:url(images/findnote.png);}
-
+/* icons from silk-sprite */
 .icon-button_linknote {
 	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
 	height:16px;width:16px;background-position:-80px -368px} /* .ui-silk-report-link */
-
 .icon-plus {
 	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
 	height:16px;width:16px;background-position:-416px -128px} /* .ui-silk-control-play */
 .icon-minus {
 	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
 	height:16px;width:16px;background-position:-256px -128px} /* .ui-silk-control-eject */
+.icon-image_add {
+	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
+	height:16px;width:16px;background-position: -32px -240px; /* .ui-silk-image-add */
+}
+.icon-image_link {
+	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
+	height:16px;width:16px;background-position: -80px -240px; /* .ui-silk-image-link */
+}
+.icon-image_sort {
+	display:inline-block; background-image:url(images/silk-sprite.png);background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:top;
+	height:16px;width:16px;background-position: -16px -240px; /* .ui-silk-images */
+}
 
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png)}
@@ -980,3 +991,19 @@ ul#research_status ul.sublinks {display:none}
 .cousins_lifespan, .cousins_pedi {font-size:9px;padding:3px 5px 5px 5px;}
 .cousins_counter {margin:0 3px;font-size:80%;}
 .cousins_counter:after {content:". ";}
+
+/* Styling for album module */
+#album_content div.pic {width:122px; height:122px; overflow:hidden; display:table;}
+#album_content div.pic a {display:table-cell; vertical-align:middle; text-align:center;}
+#album_content div.pic a img {max-height:122px; max-width:122px;  width:auto; display:block; margin:0 auto;}
+#album_content div.album_norm {float:left; border:1px solid #808080; padding:5px; height:153px; margin:6px; box-shadow:2px 3px 10px #808080; border-radius:5px; position:relative;}
+#album_content div.album_new {float:left; border:2px solid #00f; padding:5px; height:153px;  margin:5px; box-shadow:2px 3px 10px #808080; border-radius:5px; position:relative;}
+#album_content div.album_old {float:left; border:2px solid #ff0000; padding:5px; height:153px;  margin:5px; box-shadow:2px 3px 10px #808080; border-radius:5px; position:relative;}
+#album_content div.descriptionbox {border: 1px solid #555; border-radius:5px; margin: 0 2px;}
+#album_content .submenu {border:none; height:auto !important; vertical-align:middle; height:20px; text-decoration:none; font-size:12px; background-color:#d3d3d3; white-space:nowrap; color:#444; width:122px; border:none; padding:0;}
+#album_content .submenuitem {height:auto; vertical-align:middle; text-decoration:none; background-color:#d3d3d3; white-space:nowrap; padding:2px;}
+#album_content .submenuitem a {display:block;}
+#album_content .submenuitem .submenuitem {min-width: 200px;}
+#album_content .submenuitem .submenuitem li {white-space:normal;}
+#album_content .album_media_title {width:122px; font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; border-top-left-radius:3px; padding:2px; margin-top:5px; background:#d3d3d3; color:#444; text-align:center; border-top-right-radius:3px;}
+[dir='rtl'] #album_content div.album_norm , [dir='rtl'] #album_content div.album_new, [dir='rtl'] #album_content div.album_old {float:right;}

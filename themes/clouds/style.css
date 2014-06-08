@@ -2969,6 +2969,7 @@ margin:0;
 .icon-button_head {width:12px;height:18px;background-image:url(images/buttons/head.png);}
 .icon-button_indi {width:11px;height:15px;background-image:url(images/buttons/indi.png);}
 .icon-button_keyboard {width:30px;height:15px;background-image:url(images/buttons/keyboard.png);}
+.icon-button_linknote{width:17px;height:15px;background-image:url(images/buttons/linknote.png);}
 .icon-button_media {width:18px;height:16px;background-image:url(images/buttons/media.png);}
 .icon-button_note {width:17px;height:15px;background-image:url(images/buttons/note.png);}
 .icon-button_place {width:15px;height:15px;background-image:url(images/buttons/place.png);}
@@ -2986,6 +2987,9 @@ a.icon-darrow:hover {width:20px;height:20px;background-image:url(images/darrow2.
 .icon-fam-list {width:22px;height:22px;background-image:url(images/sfamily.png);}
 .icon-googlemaps {width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-help {cursor:help;width:15px;height:15px;background-image:url(images/help.png);}
+.icon-image_add {width:16x;height:16px;background-image:url(images/image_add.png);}
+.icon-image_link{width:16px;height:16px;background-image:url(images/image_link.png);}
+.icon-image_sort{width:16px;height:16px;background-image:url(images/images.png);}
 .icon-indi-list {width:22px;height:22px;background-image:url(images/indis.png);}
 .icon-indis {width:22px;height:22px;background-image:url(images/indis.png);}
 .icon-larrow {width:20px;height:20px;background-image:url(images/larrow.png);}
@@ -3219,3 +3223,20 @@ ul#research_status ul.sublinks {display:none}
 .cousins_lifespan, .cousins_pedi {font-size:9px;padding:3px 5px 5px 5px;}
 .cousins_counter {margin:0 3px;font-size:80%;}
 .cousins_counter:after {content:". ";}
+
+/* Styling for album module */
+#album_content div.pic {width:122px; height:122px; overflow:hidden; display:table;}
+#album_content div.pic a {display:table-cell; vertical-align:middle; text-align:center;}
+#album_content div.pic a img {max-height:122px; max-width:122px;  width:auto; display:block; margin:0 auto;}
+#album_content div.album_norm {float:left; border: 1px solid #88bbff; padding:5px; height:153px; margin:6px; position:relative;}
+#album_content div.album_new {float:left; border:2px solid #00f; padding:5px; height:153px;  margin:5px; position:relative;}
+#album_content div.album_old {float:left; border:2px solid #ff0000; padding:5px; height:153px;  margin:5px; position:relative;}
+#album_content div.descriptionbox {padding:5px 0; margin:0 2px;}
+#album_content div.descriptionbox a {}
+#album_content .submenuitem .submenuitem {min-width: 200px;}
+#album_content .submenu {border:1px solid #88bbff !important; height:auto !important; vertical-align:middle; height:20px; text-decoration:none; font-size:12px; background-color:#edf7fd; white-space:nowrap; color:#444; width:122px; border:none; padding:0;}
+#album_content .submenuitem a {display:block;}
+#album_content .submenuitem .submenuitem li {white-space:normal;}
+#album_content .submenuitem {border:none; height:auto; vertical-align:middle; text-decoration:none; background-color:#edf7fd; white-space:nowrap; padding:2px; width:122px;}
+#album_content .album_media_title {width:122px; font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding:2px; margin-top:5px; color:#444; text-align:center;}
+[dir='rtl'] #album_content div.album_norm , [dir='rtl'] #album_content div.album_new, [dir='rtl'] #album_content div.album_old {float:right;}

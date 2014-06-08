@@ -160,7 +160,6 @@ text-indent:5px;}
 #site-config td {line-height:30px; padding:0 20px;}
 #site-config p {font-style:italic;}
 
-
 /*SITE LOGS & CHANGE LOGS*/
 .site_logs, .site_change {margin:10px auto;}
 .site_logs td, .site_change td {padding:5px; text-align:center; vertical-align:middle;}
@@ -331,11 +330,29 @@ table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding
 .modules_table .modules_table2 td {border:0;}
 .modules_table2 td+td {min-width:120px;}
 
-/* CONFIG ALBUM MODULE */
-table#album_config {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:10px 0;}
-#album_config td {border-bottom:1px solid #d3d3d3; padding:5px;}
-#album_config td+td {padding-left:20px;}
-#album_config p {font-size:95%; font-style:italic; font-weight:normal; margin:0 20px;}
+/* ALBUM MODULE */
+#album_config form {margin: 20px 0;}
+#album_config table, #album_config th, #album_config td {border:1px solid;}
+#album_config td {background-color:#d3d3d3; text-align:center;}
+#album_config th {background-color:#c9c9c9; min-width:130px; text-align:center;}
+#album_config td:first-child {background-color:#c9c9c9; min-width:100px; padding:0 5px; text-align:left; vertical-align:bottom; white-space:nowrap;}
+#album_config th input {vertical-align:middle; text-align:center;}
+#album_config th {text-align:center;}
+#album_config label {font-weight:900; font-size:110%; margin:5px 0; vertical-align:top;}
+#album_groups {float:left; width:400px; padding:5px 0;}
+#album_groups select {margin:0 10px;}
+#album_buttons {float:left; width:200px;}
+#album_options {clear:both; margin-top:15px;}
+#album_find {border-top:1px solid; margin-top:20px; padding: 10px;}
+#album_find th {background-color: #c9c9c9; font-weight:900; padding: 0 5px; text-align:center;}
+#album_find td {padding: 0 5px; text-align:left;}
+#album_find td:first-child {padding:3px; text-align:center;}
+#album_find td img {max-height:34px;}
+
+[dir=rtl] #album_groups, [dir=rtl] #album_buttons {float:right;}
+[dir=rtl] #album_config td:first-child {text-align:right;}
+[dir=rtl] #album_find td {text-align:right;}
+
 
 /* BATCH UPDATE MODULE */
 #batch_update {margin:10px 0; max-width:auto; padding:5px;}

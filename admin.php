@@ -1403,6 +1403,8 @@ function old_paths() {
 		WT_ROOT.'js/modernizr.custom-2.6.2.js',
 		WT_ROOT.'modules_v3/fancy_imagebar/style.css',
 		WT_ROOT.'modules_v3/fancy_imagebar/README.md',
+		WT_ROOT.'modules_v3/media',
+		WT_ROOT.'modules_v3/lightbox',
 	);
 }
 
