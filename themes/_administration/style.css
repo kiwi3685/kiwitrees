@@ -42,6 +42,7 @@ td {line-height:25px; vertical-align:middle;}
 .parentdeath {border:thin solid #ff0000; padding:1px;}
 .submenu {background-color:#eee; border:thin solid #aaa; padding:3px;}
 .rela {opacity :0.4;}
+.faq_link {float:right; padding:0 20px;}
 
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
@@ -240,6 +241,8 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 .current_theme input[type="radio"], .theme_box input[type="radio"] {cursor:pointer; height:20px; width:20px;}
 .current_theme input[type="radio"], .theme_box input[type="radio"], .current_theme label, .theme_box label {padding:10px; vertical-align:middle;}
 
+/* CHECK FOR ERRORS */
+#check_errors {min-height: inherit;}
 
 /* TREE DOWNLOAD */
 #tree-download {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px;}

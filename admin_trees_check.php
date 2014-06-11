@@ -36,7 +36,11 @@ $controller
 	->setPageTitle(WT_I18N::translate('Check for errors'))
 	->pageHeader();
 
-echo '<form method="get" action="', WT_SCRIPT_NAME, '">';
+echo '
+<div id="check_errors">
+<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/check-for-errors/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+<h2>' .$controller->getPageTitle(). '</h2>
+<form method="get" action="', WT_SCRIPT_NAME, '">';
 echo '<input type="hidden" name="go" value="1">';
 echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM);
 echo '<input type="submit" value="', $controller->getPageTitle(), '">';
@@ -132,7 +136,7 @@ $RECORD_LINKS=array(
 $errors=false;
 
 echo '<fieldset><legend>', WT_I18N::translate('Types of error'), '</legend>';
-echo '<p class="ui-state-error">',     WT_I18N::translate('This may cause a problem for webtrees.'),           '</p>';
+echo '<p class="ui-state-error">',     WT_I18N::translate('This may cause a problem for kiwitrees.'),           '</p>';
 echo '<p class="ui-state-highlight">', WT_I18N::translate('This may cause a problem for other applications.'), '</p>';
 echo '<p class="warning-bad-data">',   WT_I18N::translate('This may be a mistake in your data.'),              '</p>';
 echo '</fieldset>';
@@ -199,6 +203,8 @@ foreach ($all_links as $xref1=>$links) {
 		}
 	}
 }
+
+echo '</div>';
 
 function link_message($type1, $xref1, $type2, $xref2) {
 	return
