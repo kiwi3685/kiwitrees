@@ -267,7 +267,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		$html = '<div id="album_config">
 			<h2>' .$controller->getPageTitle(). '</h2>
 			<h3>' . WT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>
-
+			<a class="current" style="float:right;padding:0 20px;" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
 			<form method="post" name="album_form" action="'.$this->getConfigLink().'">
 				<input type="hidden" name="save" value="1">
 				<div id="album_groups">
