@@ -46,7 +46,9 @@ function getMenuAsCustomList($menu) {
 		return $menu->getMenuAsList();
 }
 
-$theme_name = "clouds"; // need double quotes, as file is scanned/parsed by script
+// Theme name - this needs double quotes, as file is scanned/parsed by script
+$theme_name = "clouds"; /* I18N: Name of a theme. */ WT_I18N::translate('clouds');
+
 $headerfile = WT_THEME_DIR . 'header.php';
 $footerfile = WT_THEME_DIR . 'footer.php';
 

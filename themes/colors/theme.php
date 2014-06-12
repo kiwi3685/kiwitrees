@@ -125,7 +125,9 @@ if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
 	$subColor='ash';
 }
 
-$theme_name = "colors"; // need double quotes, as file is scanned/parsed by script
+/ Theme name - this needs double quotes, as file is scanned/parsed by script
+$theme_name = "colors"; /* I18N: Name of a theme. */ WT_I18N::translate('colors');
+
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';
 

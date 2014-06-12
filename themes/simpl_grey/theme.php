@@ -35,7 +35,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$theme_name = "simpl_grey";//-- the name of this theme
+// Theme name - this needs double quotes, as file is scanned/parsed by script
+$theme_name = "simpl_grey"; /* I18N: Name of a theme. */ WT_I18N::translate('simpl_grey');
+
 $headerfile = WT_THEME_DIR.'header.php';
 $footerfile = WT_THEME_DIR.'footer.php';
 
