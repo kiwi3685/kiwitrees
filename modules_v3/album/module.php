@@ -205,7 +205,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 
 	private function config() {
 		require WT_ROOT.'includes/functions/functions_edit.php';
-		$controller = new WT_Controller_Page;
+		$controller = new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle($this->getTitle())
