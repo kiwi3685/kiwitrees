@@ -373,7 +373,7 @@ table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding
 .added_text {background:#808080; color:#ffffff; border:1px solid #808080}
 .deleted_text {text-decoration:line-through;}
 
-/* FAQ MODULE */
+/* FAQ MODULE (also used in config pages of other modules) */
 table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:98%;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
@@ -605,17 +605,14 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 #sim_dup .exact input[type="text"] {margin:0;padding:1px 0;}
 
 /* Styling for simpl_pages module */
-#pages_module, table#pages_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
-#pages_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
-#pages_module2 th, #pages_module2 td {vertical-align:top; text-align:left;}
-#pages_edit {border:1px solid; border-radius:5px; margin-top:30px; padding:5px;}
-#pages_edit td {padding:0 10px 10px 10px; vertical-align:top;}
-#pages_edit td p {margin:0;}
-.pages_edit_pos td {white-space:nowrap;}
-.pages_edit_pos td:first-child {width:80%;}
-.pages_edit_title {border-bottom:1px solid; margin-bottom:10px;}
-.pages_edit_item {background:none repeat scroll 0 0 OldLace; border:1px inset #D9D6C4; padding:5px;}
-html[dir='rtl'] #pages_module2 th, html[dir='rtl'] #pages_module2 td {text-align:right;}
+#simpl_pages #pages_module th, #simpl_pages #pages_module td {vertical-align:top; text-align:left;}
+#simpl_pages #pages_module th {min-width: 150px;}
+#simpl_pages #pages_tabs, #simpl_pages #pages_pages form {margin:20px auto;}
+#simpl_pages .label{line-height:25px;margin-top: 20px;}
+#simpl_pages .value input.long{width:500px; height:100px;}
+#simpl_pages .value2{}
+html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:right;}
+#cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
 /* Styling for fancy_imagebar module */
 #fib_config #selectbar {width:50%;margin-bottom:20px}
@@ -642,3 +639,20 @@ html[dir='rtl'] #pages_module2 th, html[dir='rtl'] #pages_module2 td {text-align
 #simpl_research_links {margin-bottom:20px; overflow:hidden;}
 #simpl_research_links .field {float:left; line-height:30px; width:25%;}
 #simpl_research_links .buttons {clear:both;}
+
+/* Styling for gallery module */
+#gallery_config #gallery_module th, #gallery_config #gallery_module td {vertical-align:top; text-align:left;}
+#gallery_config #gallery_module th {min-width: 150px;}
+#gallery_config #pages_tabs, #gallery_config #pages_pages form {margin:20px auto;}
+#gallery_config .label{line-height:25px; margin-top: 20px;}
+#gallery_config .value input.long{width:500px; height:100px;}
+#gallery_config .value2{}
+#gallery_config #gallery_theme {margin-bottom: 20px; overflow: hidden;}
+html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-align:right;}
+#kiwitrees-div, #flickr-div, #picasa-div {width:31%;margin:0 1%;border:1px solid;float:left;height:80px;}
+#kiwitrees-div p, #flickr-div p, #picasa-div p{margin:0;}
+#kiwitrees-div select{margin:0 5px;width:95%;}
+#gallery_config #gallery_theme div:nth-child(3) {margin: 0 20px;}
+.vis{margin:0;padding:5px;}
+.vis input{margin:3px;width:90%;}
+#cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
