@@ -18,9 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//
 //	Copyright (C) 2012 Nigel Osborne and kiwtrees.net. All rights reserved.
-//
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -214,7 +212,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 				ckeditor_WT_Module::enableEditor($controller);
 			}
 
-			echo '
+			echo '<div id="simpl_pages">
 				<form name="pages" method="post" action="#">
 					<input type="hidden" name="save" value="1">
 					<input type="hidden" name="block_id" value="', $block_id, '">
@@ -238,14 +236,14 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 							<td>', edit_field_access_level('pages_access', $items_access, 'tabindex="4"'), '</td>
 						</tr>
 					</table>
-					<table id="pages_module2">
+					<table id="pages_module">
 						<tr>
 							<th>', WT_I18N::translate('Show this pages for which languages?'), help_link('pages_language', $this->getName()), '</th>
 							<th>', WT_I18N::translate('Pages position'), help_link('pages_position', $this->getName()), '</th>
 							<th>', WT_I18N::translate('Pages visibility'), help_link('pages_visibility', $this->getName()), '</th>
 						</tr>
 						<tr>
-							<td>';	$languages=get_block_setting($block_id, 'languages'); echo edit_language_checkboxes('lang_', $languages), '</td>
+							<td>',	$languages=get_block_setting($block_id, 'languages'); echo edit_language_checkboxes('lang_', $languages), '</td>
 							<td><input type="text" name="block_order" size="3" tabindex="5" value="', $block_order, '"></td>
 							<td>', select_edit_control('gedcom_id', WT_Tree::getIdList(), '', $gedcom_id, 'tabindex="4"'),'</td>
 						</tr>
@@ -255,7 +253,8 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 						&nbsp;
 						<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="8">
 					</p>
-				</form>';
+				</form>
+			</div>';
 			exit;
 		}
 	}
@@ -396,8 +395,8 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			AddToLog('simpl_pages config updated', 'config');
 		}
 
-		$HEADER_TITLE			= get_module_setting('simpl_pages', 'HEADER_TITLE', 'Resources');
-		$HEADER_DESCRIPTION		= get_module_setting('simpl_pages', 'HEADER_DESCRIPTION', 'These are resources');
+		$HEADER_TITLE			= get_module_setting('simpl_pages', 'HEADER_TITLE', WT_I18N::translate('Resources'));
+		$HEADER_DESCRIPTION		= get_module_setting('simpl_pages', 'HEADER_DESCRIPTION', WT_I18N::translate('These are resources'));
 
 		$items=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS pages_title, bs2.setting_value AS pages_content".
@@ -419,20 +418,14 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			"SELECT MAX(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
-		echo
-			'<style>
-				#simpl_pages #pages_tabs, #simpl_pages #pages_pages form {margin:20px auto;}
-				#simpl_pages .label{line-height:25px;margin-top: 20px;}
-				#simpl_pages .value input.long{width:500px; height:100px;}
-				#simpl_pages .value2{}
-			</style>
-			<div id="simpl_pages">
-				<h3>', WT_I18N::translate('Settings for simpl_pages'), '</h3>
-				<div id="pages_tabs">
-					<ul>
-						<li><a href="#pages_summary"><span>', WT_I18N::translate('Summary'), '</span></a></li>
-						<li><a href="#pages_pages"><span>', WT_I18N::translate('Pages'), '</span></a></li>
-					</ul>
+		echo'<div id="simpl_pages">';
+//			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+			echo'<h2>' .$controller->getPageTitle(). '</h2>
+			<div id="pages_tabs">
+				<ul>
+					<li><a href="#pages_summary"><span>', WT_I18N::translate('Summary'), '</span></a></li>
+					<li><a href="#pages_pages"><span>', WT_I18N::translate('Pages'), '</span></a></li>
+				</ul>
 				<div id="pages_summary">
 					<form method="post" name="configform" action="module.php?mod=simpl_pages&mod_action=admin_config">
 					<input type="hidden" name="action" value="update">
@@ -453,59 +446,56 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 						<input type="submit" value="', WT_I18N::translate('show'), '">
 					</form>
 					<div class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><a class="ui-button-text" href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add page'), '</a></div>
-					<table id="faq_edit">';
-						if (empty($items)) {
-							echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('No pages have been created.'), '</td></tr></table>';
-						} else {
+					<table id="pages_module">';
+						if ($items) {
 							$trees=WT_Tree::getAll();
 							foreach ($items as $item) {
-								echo
-									'<tr class="faq_edit_pos">
-										<td>', 
-											WT_I18N::translate('Position item'), ': ', $item->block_order, ', ';
-											if ($item->gedcom_id==null) {
-												echo WT_I18N::translate('All');
-											} else {
-												echo $trees[$item->gedcom_id]->tree_title_html;
-											}
-										echo '</td>';
-										echo '<td>';
-											if ($item->block_order==$min_block_order) {
-												echo '&nbsp;';
-											} else {
-												echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $item->block_id, ' "class="icon-uarrow"></a>';
-											}
-										echo
-											'</td>
-											<td>';
-											if ($item->block_order==$max_block_order) {
-												echo '&nbsp;';
-											} else {
-												echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $item->block_id, ' "class="icon-darrow"></a>';
-											}
-										echo
-											'</td>
-											<td>
-												<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $item->block_id, '">', WT_I18N::translate('Edit'), '</a>';
-										echo
-											'</td>
-											<td>
-												<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $item->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this pages?'), '\');">', WT_I18N::translate('Delete'), '</a>';
-										echo
-											'</td>
-										</tr>';
-										echo '<tr>
-											<td colspan="5">
-												<div class="faq_edit_item">
-													<div class="faq_edit_title">', WT_I18N::translate($item->pages_title), '</div>
-													<div>', substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content), '</div>
-												</div>
-											</td>
-										</tr>';
-									}
-							echo '</table>';
-					}
-			echo '</div></div>';
+								echo'<tr class="faq_edit_pos">
+									<td>', 
+										WT_I18N::translate('Position item'), ': ', $item->block_order, ', ';
+										if ($item->gedcom_id==null) {
+											echo WT_I18N::translate('All');
+										} else {
+											echo $trees[$item->gedcom_id]->tree_title_html;
+										}
+									echo '</td>
+									<td>';
+										if ($item->block_order==$min_block_order) {
+											echo '&nbsp;';
+										} else {
+											echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $item->block_id, ' "class="icon-uarrow"></a>';
+										}
+									echo '</td>
+									<td>';
+										if ($item->block_order==$max_block_order) {
+											echo '&nbsp;';
+										} else {
+											echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $item->block_id, ' "class="icon-darrow"></a>';
+										}
+									echo '</td>
+									<td>
+										<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $item->block_id, '">', WT_I18N::translate('Edit'), '</a>
+									</td>
+									<td>
+										<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $item->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this pages?'), '\');">', WT_I18N::translate('Delete'), '</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="5">
+										<div class="faq_edit_item">
+											<div class="faq_edit_title">', WT_I18N::translate($item->pages_title), '</div>
+											<div>', substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content), '</div>
+										</div>
+									</td>
+								</tr>';
+							}
+						} else {
+							echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('No pages have been created.'), '</td></tr></table>';
+						}
+					echo '</table>';
+				echo '</div>
+			</div>
+		</div>';
 	}
 
 	// Return the list of pages
