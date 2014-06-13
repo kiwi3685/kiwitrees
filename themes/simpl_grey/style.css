@@ -1007,3 +1007,20 @@ ul#research_status ul.sublinks {display:none}
 #album_content .submenuitem .submenuitem li {white-space:normal;}
 #album_content .album_media_title {width:122px; font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; border-top-left-radius:3px; padding:2px; margin-top:5px; background:#d3d3d3; color:#444; text-align:center; border-top-right-radius:3px;}
 [dir='rtl'] #album_content div.album_norm , [dir='rtl'] #album_content div.album_new, [dir='rtl'] #album_content div.album_old {float:right;}
+
+/* Styling for gallery module */
+/* Gallery wrapper */
+#outer_gallery_container {overflow:hidden;}
+#gallery-page {width:90%; margin:0 auto;}
+#gallery-header {padding:0 2em 0 0;}
+#gallery-container {overflow:hidden; padding:20px 0;}
+#galleria{border: 1px solid;float:left;height:500px;margin-bottom:40px;padding-right:1px;}
+.galleria-layer{display:none!important;}
+.galleria-image iframe {width: 85%!important;height: 100%!important;margin: auto;display: block;}
+#links_bar {width:18%; float:right; margin-left:1%;}
+#links_bar h4 {margin: 0 0 10px 0; padding:0;}
+#links_bar .image_option {float:left;}
+#links_bar .image_option img {margin:5px;}
+#links_bar .image_links {clear:both;}
+#links_bar hr {clear: both;margin:5px 0 10px;}
+a#copy {clear:both;float:left; font-size:11px; font-style:italic; margin-top:-30px;}

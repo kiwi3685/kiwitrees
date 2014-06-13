@@ -395,7 +395,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	}
 
 	private function config() {
-		require WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Page;
 		$controller
 			->requireAdminLogin()
@@ -537,7 +537,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	private function getJavaScript($item_id) {
 		$theme = "azur";// alternatives: "classic", "simpl_galleria"
 		$plugin=get_block_setting($item_id, 'plugin');
-		$js='Galleria.loadTheme("'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/themes/'.$theme.'/galleria.'.$theme.'.js");';
+		$js='Galleria.loadTheme("'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/themes/'.$theme.'/galleria.'.$theme.'.min.js");';
 			switch ($plugin) {
 			case 'flickr':
 			$flickr_set = get_block_setting($item_id, 'gallery_folder_f');
@@ -577,6 +577,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					});
 				});
 				Galleria.run("#galleria", {
+					imageCrop: false,
 					_showCaption: false,
 					_locale: {
 						show_captions:		"'.WT_I18N::translate('Show descriptions').'",
@@ -735,10 +736,10 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					$gallery_links='';
 					if (WT_USER_CAN_EDIT) {
 						$gallery_links.='<div class="edit_links">';
-							$gallery_links.='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.WT_MODULES_DIR.$this->getName().'/'.WT_THEME_URL.'edit.png" title="'.WT_I18N::translate('Edit').'"></a></div>';
+							$gallery_links.='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.WT_THEME_URL.'images/edit.png" title="'.WT_I18N::translate('Edit').'"></a></div>';
 							if (WT_USER_GEDCOM_ADMIN) {
 								if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-									$gallery_links.='<div class="image_option"><a onclick="return ilinkitem(\''.$rowm['m_id'].'\', \'manage\')" href="#"><img src="'.WT_MODULES_DIR.$this->getName().'/'.WT_THEME_URL.'link.png" title="'.WT_I18N::translate('Manage links').'"></a></div>';
+									$gallery_links.='<div class="image_option"><a onclick="return ilinkitem(\''.$rowm['m_id'].'\', \'manage\')" href="#"><img src="'.WT_THEME_URL.'images/link.png" title="'.WT_I18N::translate('Manage links').'"></a></div>';
 								}
 							}
 						$gallery_links.='</div><hr>';// close .edit_links
