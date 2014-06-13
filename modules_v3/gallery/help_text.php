@@ -64,4 +64,17 @@ case 'gallery_source':
 	'<br><br>'.
 	'The module will add these references to the correct URLs to link to your Flickr or Picasa sites.');
 	break;
+
+case 'gallery_theme':
+	$title=WT_I18N::translate('Gallery themes');
+	$text=WT_I18N::translate('There are TWO types of theme in operation for this module.'.
+	'<br><br>'.
+	'The first is the standard kiwitrees theme (kiwitrees, clouds, colors, xenea etc). This controls the overall container for the gallery and the menu images in each of the kiwitrees themes. These are switched automatically when you change the main kiwitrees theme.'.
+	'<br><br>'.
+	'In addition, there is the Galleria theme that controls the actual image display area. This module includes three default themes for this, two supplied by Galleria (called "classic" and "azur"), and an alternative "simpl_galleria" one designed to compliment the colors of the blue-based themes such as webtrees, clouds and xenea. There are also other themes available <u>for purchase</u> from the Galleria website. Switch between the "Azur", "Classic" and "Simpl_galleria" by selecting them on the configuration page.'.
+	'<br><br>'.
+	'To add other Galleria themes, download them from their website (www.galleria.io/), and copy them to the /modules_v3/gallery/galleria/themes/ folder.'.
+	'<br>'.
+	'You should then add a 250px x 140px thumbnail image to suit in the /modules_v3/gallery/images folder, named to match the theme and of type png (like azur.png).');
+	break;
 }

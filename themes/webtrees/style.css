@@ -1238,7 +1238,7 @@ html[dir=rtl] li#menu-my_gallery ul li {background-position:right 0}
 li#menu-my_gallery ul li#menu-my_gallery-edit {background:url(images/submenu_edit.png) no-repeat left 0}
 html[dir=rtl] #menu-my_gallery ul li#menu-my_gallery-edit {background-position:right 0}
 /* Gallery styling */
-#outer_gallery_container {overflow:hidden;}
+#outer_gallery_container {overflow:hidden; padding:1em;}
 #gallery-page {width:80%; margin:0 auto;}
 #gallery-header {padding:0 2em 0 0;}
 #gallery-container {overflow:hidden; padding:20px 0;}

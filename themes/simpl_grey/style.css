@@ -1010,7 +1010,7 @@ ul#research_status ul.sublinks {display:none}
 
 /* Styling for gallery module */
 /* Gallery wrapper */
-#outer_gallery_container {overflow:hidden;}
+#outer_gallery_container {overflow:hidden; padding:1em;}
 #gallery-page {width:90%; margin:0 auto;}
 #gallery-header {padding:0 2em 0 0;}
 #gallery-container {overflow:hidden; padding:20px 0;}

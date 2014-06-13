@@ -246,7 +246,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						<tr><th>', WT_I18N::translate('Source'), help_link('gallery_source', $this->getName()), '</th></tr>
 						<tr><td>
 							<div id="kiwitrees-div">
-								<p style="text-align:center;border-bottom:1px solid;"><input id="kiwitrees-radio" type="radio" name="plugin" value="kiwitrees" ';
+								<p><input id="kiwitrees-radio" type="radio" name="plugin" value="kiwitrees" ';
 									if ($plugin=='kiwitrees') {
 										echo 'checked';
 									}
@@ -263,7 +263,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 								echo '</label>
 							</div>
 							<div id="flickr-div">
-								<p style="text-align:center;border-bottom:1px solid;"><input id="flickr-radio" type="radio" name="plugin" value="flickr"  ';
+								<p><input id="flickr-radio" type="radio" name="plugin" value="flickr"  ';
 									if ($plugin=='flickr') {
 										echo 'checked';
 									}
@@ -280,7 +280,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 								echo '</label>
 							</div>
 							<div id="picasa-div">
-								<p style="text-align:center;border-bottom:1px solid;"><input id="picasa-radio" type="radio" name="plugin" value="picasa"  ';
+								<p><input id="picasa-radio" type="radio" name="plugin" value="picasa"  ';
 									if ($plugin=='picasa') {
 										echo 'checked ';
 									}
@@ -419,7 +419,8 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		$HEADER_TITLE			= get_module_setting('gallery', 'HEADER_TITLE', WT_I18N::translate('Gallery'));
 		$HEADER_DESCRIPTION		= get_module_setting('gallery', 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
 		$current_themedir 		= get_module_setting('gallery', 'THEME_DIR', WT_I18N::translate('azur'));
-		$themename 				= array('classic', 'azur', 'simpl_galleria');
+//		$themename 				= array('classic', 'azur', 'simpl_galleria');
+		$themename = $this->galleria_theme_names();
 
 		$items=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS gallery_title, bs2.setting_value AS gallery_description".
@@ -687,7 +688,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			}
 		$html.=
 			'</ul>'.
-			'<div id="outer_gallery_container" style="padding: 1em;">';
+			'<div id="outer_gallery_container">';
 				foreach ($item_list as $item) {
 					$languages=get_block_setting($item->block_id, 'languages');
 					if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item_id==$item->block_id && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
@@ -786,4 +787,18 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		}
 		return $html;
 	}
+
+	// Get galleria themes list
+	private function galleria_theme_names() {
+		$themes = array();
+		$d = dir(WT_MODULES_DIR.$this->getName(). '/galleria/themes/');
+		while (false !== ($folder = $d->read())) {
+			if ($folder[0] != '.' && $folder[0] != '_' && is_dir(WT_MODULES_DIR.$this->getName(). '/galleria/themes/'.$folder)) {
+				$themes[] = $folder;
+			}
+		}
+		$d->close();
+		return $themes;
+	}
+
 }
