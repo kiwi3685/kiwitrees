@@ -862,7 +862,7 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 #edit_interface-page input[type="text"][id*="PAGE"],#edit_interface-page input[type="text"][id*="_UID"]{width:410px}
 #edit_interface-page input[type="text"][id*="SOUR"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"]{width:70px}
 #edit_interface-page input[type="text"][id*="REPO"]{width:300px}
-#edit_interface-page input[type="text"][id$="DATE"],#edit_interface-page input#personid {width:240px}
+#edit_interface-page input[type="text"][id$="DATE"],#edit_interface-page input#personid {width:200px}
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px}
 #edit_interface-page input[id*="TEXT"]{height:140px;width:440px} 
 #edit_interface-page input[id*="SOUR_TITL"]{width:240px!important} 

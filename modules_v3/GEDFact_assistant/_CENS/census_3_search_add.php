@@ -54,10 +54,8 @@ if (!defined('WT_WEBTREES')) {
 					}
 				</script>
 				<?php
-				echo "<input id=personid type=\"text\" size=\"20\" STYLE=\"color: #000000;\" value=\"\">";
-				echo "<a href=\"#\" onclick=\"findindi()\">" ;
-				echo "&nbsp;<font size=\"2\">&nbsp;".WT_I18N::translate('Search')."</font>";
-				echo '</a>';
+				echo '<input id=personid type="text" size="20" style="color: #000000;" value="">
+						<a href="#" onclick="findindi()">&nbsp;<span style="font-size:10px">&nbsp;' .WT_I18N::translate('Search'). '</span></a>';
 				?>
 			</td>
 		</tr>
