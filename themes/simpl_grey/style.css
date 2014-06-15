@@ -509,6 +509,7 @@ pre{font-size:1.25em;white-space:pre-wrap}
 #source-tabs,#note-tabs,#repo-tabs,#media-tabs{margin:auto; visibility:hidden}
 #source-return,#note-return,#repo-return{float:right; padding:5px 5px 0}
 #source-edit,#note-edit,#repo-edit,#media-edit{overflow-x:auto}
+#source-edit a em span {display:block}
 .media-list img{display:block;height:40px;margin:3px auto;width:auto}
 .indi-list td{color:#555}
 .indi-list .date{white-space:normal}
