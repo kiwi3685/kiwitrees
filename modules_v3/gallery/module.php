@@ -178,7 +178,6 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			$block_id=safe_GET('block_id');
 			$controller=new WT_Controller_Page();
 			if ($block_id) {
-				$controller->setPageTitle(WT_I18N::translate('Edit gallery'));
 				$item_title=get_block_setting($block_id, 'gallery_title');
 				$item_description=get_block_setting($block_id, 'gallery_description');
 				$item_folder_w=get_block_setting($block_id, 'gallery_folder_w');
@@ -193,7 +192,6 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					"SELECT gedcom_id FROM `##block` WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 			} else {
-				$controller->setPageTitle(WT_I18N::translate('Add gallery to gallery'));
 				$item_title='';
 				$item_description='';
 				$item_folder_w=$MEDIA_DIRECTORY;
@@ -301,8 +299,8 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					'<table id="gallery_module">
 						<tr>
 							<th>', WT_I18N::translate('Show this gallery for which languages?'), '</th>
-							<th>', WT_I18N::translate('Album position'), help_link('gallery_position', $this->getName()), '</th>
-							<th>', WT_I18N::translate('Album visibility'), help_link('gallery_visibility', $this->getName()), '</th>
+							<th>', WT_I18N::translate('Gallery position'), help_link('gallery_position', $this->getName()), '</th>
+							<th>', WT_I18N::translate('Gallery visibility'), help_link('gallery_visibility', $this->getName()), '</th>
 							<th>', WT_I18N::translate('Access level'), '</th>
 						</tr>
 						<tr>
@@ -483,7 +481,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM), '
 						<input type="submit" value="', WT_I18N::translate('show'), '">', '
 					</form>
-					<div class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><a class="ui-button-text" href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add gallery'), '</a></div>
+					<div class="add_gallery ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><a class="ui-button-text" href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add gallery'), '</a></div>
 					<table id="gallery_module">';
 						if ($items) {
 							$trees=WT_Tree::getAll();
@@ -780,7 +778,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				'</div>'.// close #page
 				'<div style="clear: both;"></div>';
 		} else {
-			$html.=WT_I18N::translate('Album is empty. Please choose other gallery.').
+			$html.=WT_I18N::translate('Gallery is empty. Please choose other gallery.').
 				'</div>'.// close #galleria
 				'</div>'.// close #page
 				'<div style="clear: both;"></div>';

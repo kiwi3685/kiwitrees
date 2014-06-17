@@ -641,6 +641,7 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #simpl_research_links .buttons {clear:both;}
 
 /* Styling for gallery module */
+#gallery_config #gallery_module {width:100%;}
 #gallery_config #gallery_module th, #gallery_config #gallery_module td {vertical-align:top; text-align:left;}
 #gallery_config #gallery_module th {min-width: 150px;}
 #gallery_config #pages_tabs, #gallery_config #pages_pages form {margin:20px auto;}
@@ -649,6 +650,7 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #gallery_config .value2{}
 #gallery_config #gallery_theme {margin-bottom: 20px; overflow: hidden;}
 html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-align:right;}
+#gallery_pages .add_gallery {margin:15px 0;}
 #kiwitrees-div, #flickr-div, #picasa-div {width:31%;margin:0 1%;border:1px solid;float:left;height:80px;}
 #kiwitrees-div p, #flickr-div p, #picasa-div p {border-bottom:1px solid; margin:0; text-align:center;}
 #kiwitrees-div select{margin:0 5px;width:95%;}
