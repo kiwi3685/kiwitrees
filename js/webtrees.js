@@ -1437,6 +1437,40 @@ function activate_colorbox(config) {
 	});
 }
 
+// Initialize autocomplete elements.
+function autocomplete(selector) {
+	if (typeof(selector) === "undefined") {
+		selector = "input[data-autocomplete-type]";
+	}
+
+	jQuery(selector).each(function() {
+		var type = $(this).data("autocomplete-type"); // What type of field
+		var ged  = $(this).data("autocomplete-ged");  // Which family tree
+
+		if (typeof(type) === "undefined") {
+			alert("Missing data-autocomplete-type attribute");
+		}
+
+		// Default to the current tree
+		if (typeof(ged) === "undefined") {
+			jQuery(this).data("autocomplete-ged", WT_GEDCOM);
+		}
+
+		var self=jQuery(this);
+		self.autocomplete({
+			// Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
+			source: function(request, response) {
+				jQuery.getJSON("autocomplete.php", {
+					field: self.data("autocomplete-type"),
+					ged:   self.data("autocomplete-ged"),
+					term:  request.term
+				}, response);
+			},
+			html: true
+		});
+	});
+}
+
 // Add LTR/RTL support for jQueryUI Accordions
 jQuery.extend($.ui.accordion.prototype.options, {
 	icons: {

@@ -28,7 +28,8 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Descendancy();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 echo '<div id="descendancy-page"><h2>', $controller->getPageTitle(), '</h2>';
 echo '<form method="get" name="people" action="?">';
@@ -38,7 +39,7 @@ echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';
 echo WT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox">';
-echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->rootid, '"> ';
+echo '<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="' .$controller->rootid. '">';
 echo print_findindi_link('rootid');
 echo '</td>';
 echo '<td class="descriptionbox">';

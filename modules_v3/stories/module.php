@@ -191,7 +191,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 							<h1>'.get_block_setting($block_id, 'title').'</h1>';
 							if (WT_USER_CAN_EDIT) {
 								$html .= '
-									<p style="margin:-36px 0 0 0;>
+									<p style="margin:-36px 0 0 0;">
 										<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
 									</p>
 								';
@@ -306,10 +306,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addInlineJavascript('autocomplete();');
+
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
 				}
+
 				echo '
 					<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">',
 						WT_Filter::getCsrf(), '
@@ -340,7 +343,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 									if (!$block_id) {
 										echo '<div class="indi_find">
 											<p class="add_indi">
-												<input type="text" name="xref[]" id="pid" size="4" value="', $xref, '">',
+												<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid" size="4" value="'.$xref.'">',
 												print_findindi_link('pid'),'
 											</p>';
 											if ($xref) {
@@ -360,7 +363,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 										for ($x = 0; $x < $count_xref; $x++) {
 											echo '<div class="indi_find">
 												<p class="add_indi">
-													<input type="text" name="xref[]" id="pid', $x, '" size="4" value="', $xref[$x], '">',
+													<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid', $x, '" size="4" value="'.$xref[$x].'">',
 													print_findindi_link('pid'.$x),'
 												</p>';
 												if ($xref) {

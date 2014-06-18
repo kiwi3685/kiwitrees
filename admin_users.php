@@ -320,9 +320,9 @@ $controller->pageHeader();
 
 switch ($action) {
 case 'createform':
-	if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-		$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
-	}
+	$controller
+		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addInlineJavascript('autocomplete();');
 
 	init_calendar_popup();
 	$controller
@@ -456,12 +456,11 @@ case 'createform':
 									//Pedigree root person
 									'<td>';
 										$varname='rootid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', htmlspecialchars(safe_POST_xref('gedcomid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
-									'</td>',						
+										echo '<input data-autocomplete-type="INDI" data-autocomplete-ged="' . $tree->tree_name_html . '" type="text" size="12" name="', $varname, '" id="', $varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('rootid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname, '', $tree->tree_name),
 									// GEDCOM INDI Record ID
 									'<td>';
 										$varname='gedcomid'.$tree->tree_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', htmlspecialchars(safe_POST_xref('rootid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
+										echo '<input data-autocomplete-type="INDI" data-autocomplete-ged="' . $tree->tree_name_html . '" type="text" size="12" name="',$varname, '" id="',$varname, '" value="', WT_Filter::escapeHtml(WT_Filter::post('gedcomid'.$tree->tree_id, WT_REGEX_XREF)), '"> ', print_findindi_link($varname, '', $tree->tree_name),
 									'</td>',
 									'<td>';
 										$varname='canedit'.$tree->tree_id;
@@ -606,15 +605,18 @@ default:
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
-		->addExternalJavascript(WT_SCRIPT_PATH.'js/autocomplete.js')
+		->addExternalJavascript(WT_SCRIPT_PATH . 'js/autocomplete.js')
 		->addInlineJavascript('
 			jQuery.editable.addInputType("autocomplete", {
 	    		element : jQuery.editable.types.text.element,
 	    		plugin : function(settings, original) {
-			        jQuery("input", this).autocomplete({
-			        	source: settings.autocomplete.url,
-			        	html: true
-			        });
+			        jQuery("input", this)
+			        	.autocomplete({
+				        	source: settings.autocomplete.url,
+				        	html: true
+				        })
+			        	.attr("data-autocomplete-type", "INDI")
+			        	.attr("data-autocomplete-ged", "' . $tree->tree_name_html . '")
 	    		}
 			});	
 			var oTable = jQuery("#list").dataTable({

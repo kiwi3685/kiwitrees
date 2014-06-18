@@ -28,7 +28,11 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Simple();
 $controller
 	->requireMemberLogin()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addInlineJavascript('
+		autocomplete();
+		var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
+');
 
 // TODO work out whether to use GET/POST for these
 // TODO decide what (if any) validation is required on these parameters
@@ -55,10 +59,6 @@ $pids_array_edit=safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
 $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
-
-$controller->addInlineJavascript('
-	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
-');
 
 //-- check if user has access to the gedcom record
 $edit = false;
@@ -435,7 +435,7 @@ case 'addfamlink':
 	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
 	echo '<table class="facts_table">';
 	echo '<tr><td class="facts_label">', WT_I18N::translate('Family'), '</td>';
-	echo '<td class="facts_value"><input type="text" id="famid" name="famid" size="8"> ';
+	echo '<td class="facts_value"><input data-autocomplete-type="FAM" type="text" id="famid" name="famid" size="8">';
 	echo print_findfamily_link('famid');
 	echo '</td></tr>';
 	if ($famtag=='CHIL') {
@@ -501,7 +501,7 @@ case 'linkspouse':
 		echo WT_I18N::translate('Husband');
 	}
 	echo '</td>';
-	echo '<td class="facts_value"><input id="spouseid" type="text" name="spid" size="8"> ';
+	echo '<td class="facts_value"><input data-autocomplete-type="INDI" id="spouseid" type="text" name="spid" size="8">';
 	echo print_findindi_link('spouseid');
 	echo '</td></tr>';
 	add_simple_tag("0 MARR Y");
@@ -647,7 +647,7 @@ case 'addnewsource':
 		<input type="hidden" name="pid" value="newsour">
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ABBR'); ?></td></tr>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
@@ -663,7 +663,7 @@ case 'addnewsource':
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PUBL'); ?></td>
 			<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php echo print_specialchar_link('PUBL'); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('REPO'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'), ' ', print_addnewrepository_link('REPO'); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'), ' ', print_addnewrepository_link('REPO'); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
 		<?php

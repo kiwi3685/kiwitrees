@@ -48,17 +48,16 @@ if ($surn) {
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_TREEVIEW)
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->addInlineJavaScript('
-	//	jQuery(document).ready(function() {						
-			jQuery("#branch-list").treeview({
-				collapsed: true,
-				animated: "slow",
-				control:"#treecontrol"
-			});
-			jQuery("#branch-list").css("visibility", "visible");
-			jQuery(".loading-image").css("display", "none");
-	//	});
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('
+		autocomplete();
+		jQuery("#branch-list").treeview({
+			collapsed: true,
+			animated: "slow",
+			control:"#treecontrol"
+		});
+		jQuery("#branch-list").css("visibility", "visible");
+		jQuery(".loading-image").css("display", "none");
 	');
 
 echo '
@@ -70,7 +69,7 @@ echo '
 					WT_Gedcom_Tag::getLabel('SURN'),
 				'</td>
 				<td class="optionbox">
-					<input type="text" name="surname" id="SURN" value="' ,htmlspecialchars($surn), '" dir="auto">
+					<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="' .WT_Filter::escapeHtml($surn). '" dir="auto">
 					<input type="hidden" name="ged" id="ged" value="' ,$ged, '">
 					<input type="submit" value="' ,WT_I18N::translate('View'), '">
 					<p>' ,WT_I18N::translate('Phonetic search'), '</p>

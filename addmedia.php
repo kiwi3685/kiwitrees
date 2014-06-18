@@ -42,6 +42,7 @@ $update_CHAN = !safe_POST_bool('preserve_last_changed');
 $controller = new WT_Controller_Simple();
 $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();')
 	->requireMemberLogin();
 	
 $disp = true;
@@ -425,7 +426,7 @@ echo '</td></tr>';
 if ($linktoid == 'new' || ($linktoid == '' && $action != 'update')) {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo WT_I18N::translate('Enter a Person, Family, or Source ID');
-	echo '</td><td class="optionbox wrap"><input type="text" name="gid" id="gid" size="6" value="">';
+	echo '</td><td class="optionbox wrap"><input type="text" data-autocomplete-type="IFS" name="linktoid" id="linktoid" size="6" value="">';
 	echo ' ', print_findindi_link('gid');
 	echo ' ', print_findfamily_link('gid');
 	echo ' ', print_findsource_link('gid');

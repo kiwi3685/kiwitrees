@@ -31,7 +31,9 @@ $exist_links = safe_REQUEST($_REQUEST, 'exist_links', WT_REGEX_UNSAFE);
 $gid = safe_GET_xref('gid');
 $update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE);
 
-$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+$controller
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 $paramok =  true;
 if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
@@ -160,7 +162,7 @@ if ($action == 'choose' && $paramok) {
 		echo '<b>', $record->getFullName(), '</b>';
 	}
 	echo '<table><tr><td>';
-		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\">";
+	echo '<input type="text" data-autocomplete-type="IFS" name="gid" id="gid" size="6" value="">';
 		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
 	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
 		echo '&nbsp;';

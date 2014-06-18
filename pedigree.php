@@ -28,7 +28,8 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Pedigree();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 
 echo '
 <div id="pedigree-page">
@@ -45,7 +46,9 @@ echo '
 			</tr>
 			<tr>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="'. $controller->rootid. '">'. print_findindi_link('rootid'). '</td>
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="' .$controller->rootid. '">'. 
+					print_findindi_link('rootid'). '
+				</td>
 				<td class="optionbox center">
 					<select name="PEDIGREE_GENERATIONS">';
 						for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {

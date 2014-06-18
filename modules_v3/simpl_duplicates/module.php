@@ -103,13 +103,15 @@ class simpl_duplicates_WT_Module extends WT_Module implements WT_Module_Config {
 			ORDER BY n_sort ASC";
 
 		$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Check for duplicates'))
 			->pageHeader()
 			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-			->addInlineJavaScript('
+			->addInlineJavascript('
+				autocomplete();
+				
 				// prevent more than two boxes from being checked
 				var checked = 0;
 				function addCheck(box) {
@@ -186,7 +188,7 @@ class simpl_duplicates_WT_Module extends WT_Module implements WT_Module_Config {
 					<div id="surnm">
 						<label for="SURN">', WT_I18N::translate('Surname'), '</label>
 								<div class="exact" title="', WT_I18N::translate('Match exactly'), '">
-								<input type="text" name="surname" id="SURN" value="', htmlspecialchars($surn), '" dir="auto">
+								<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="', htmlspecialchars($surn), '" dir="auto">
 								<input type="checkbox" name="exact_surn" value="1"';
 								if ($exact_surn) {
 									echo ' checked="checked"';
@@ -196,7 +198,7 @@ class simpl_duplicates_WT_Module extends WT_Module implements WT_Module_Config {
 					<div id="givnm">
 						<label for="GIVN">', WT_I18N::translate('Given name'), '</label>
 							<div class="exact" title="', WT_I18N::translate('Match exactly'), '">
-								<input type="text" name="given" id="GIVN" value="', htmlspecialchars($givn), '" dir="auto">
+								<input data-autocomplete-type="GIVN" type="text" name="given" id="GIVN" value="', htmlspecialchars($givn), '" dir="auto">
 								<input type="checkbox" name="exact_givn" value="1" title="', WT_I18N::translate('Match exactly'), '"';
 								if ($exact_givn) {
 									echo ' checked="checked"';
