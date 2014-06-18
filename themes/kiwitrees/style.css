@@ -102,19 +102,20 @@ html[dir="rtl"] input:requi#ff0000:valid, html[dir="rtl"] textarea:requi#ff0000:
 #main-menu li {float:left;margin:0 10px;position:relative;}
 #main-menu ul {line-height:12px;list-style:none;position:absolute;display:none;background:#ddd;border:thin solid #aaa;padding:0;z-index:999;}
 #main-menu ul ul {z-index:600;}
-#main-menu li li {clear:both;}
-#main-menu li:hover > ul {display:block;position:absolute;top:40px;left:0;right:auto;margin:0;}
+#main-menu li li {clear:both; width:100%;}
+#main-menu li:hover > ul {display:block;position:absolute;top:40px;left:50%;right:auto;margin:0;}
 #main-menu > li:hover > ul {left:0;right:auto;}
 #main-menu a {display:block;white-space:nowrap;overflow:hidden;}
 #main-menu li a {margin:0;width:100%;}
 #main-menu li a:hover{color:#009AFE;}
 #main-menu li li a {color:#232f49;display:block;position:relative;float:left;font-size:11px;padding:5px 0;}
-[dir='rtl'] #topMenu {float:right;}
+#main-menu li li:hover ul {left: 90%; top: 0; right: auto;}
 [dir='rtl'] #main-menu li {float:right;}
 [dir='rtl'] #main-menu li:hover > ul {right:100%;left:auto;}
 [dir='rtl'] #main-menu > li:hover > ul {left:auto;right:0;}
 [dir='rtl'] #main-menu li li {text-align:right;}
 [dir='rtl'] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
+[dir='rtl'] #main-menu li li:hover ul {right: 90%; left: auto;}
 
 /* ======= Footer styles ========== */
 #footer {clear:both;font-size:12px;padding-top:10px;text-align:center;}
@@ -828,7 +829,7 @@ dd .editlink, dd .deletelink {float:right;}
 /* ============== edituser.php ======================= */
 #edituser-page h2, #edituser_submit {margin:20px;text-align:center;}
 #edituser-table {background-color:#C9C9C9;border:1px outset #ccc;border-top:0;margin:20px auto 0;width:800px;}
-#edituser-table .label{border-top:1px solid #ccc;color:#ddd;float:left;font-weight:bold;padding:5px 10px 0;width:240px;white-space:nowrap;}
+#edituser-table .label{border-top:1px solid #fff;float:left;font-weight:bold;padding:5px 10px 0;width:240px;white-space:nowrap;}
 #edituser-table .value {background-color:#DDD;border-top:1px solid #ccc;margin:0 0 0 260px;padding:5px;}
 #edituser-table .label span{margin:0 10px;}
 #edituser-table select{margin:0;}
