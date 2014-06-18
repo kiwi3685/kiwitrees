@@ -624,7 +624,6 @@ function old_paths() {
 		WT_ROOT.'themes/webtrees/images/close.png',
 		WT_ROOT.'themes/webtrees/images/copy.png',
 		WT_ROOT.'themes/webtrees/images/delete.png',
-		WT_ROOT.'themes/webtrees/images/edit.png',
 		WT_ROOT.'themes/webtrees/images/jquery',
 		WT_ROOT.'themes/webtrees/images/open.png',
 		WT_ROOT.'themes/webtrees/images/pin-in.png',
