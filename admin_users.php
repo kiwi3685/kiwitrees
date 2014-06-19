@@ -617,6 +617,7 @@ default:
 				        })
 			        	.attr("data-autocomplete-type", "INDI")
 			        	.attr("data-autocomplete-ged", "' . $tree->tree_name_html . '")
+			        	.css("width", "50px")
 	    		}
 			});	
 			var oTable = jQuery("#list").dataTable({
