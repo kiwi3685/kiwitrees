@@ -417,7 +417,6 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		$HEADER_TITLE			= get_module_setting('gallery', 'HEADER_TITLE', WT_I18N::translate('Gallery'));
 		$HEADER_DESCRIPTION		= get_module_setting('gallery', 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
 		$current_themedir 		= get_module_setting('gallery', 'THEME_DIR', WT_I18N::translate('azur'));
-//		$themename 				= array('classic', 'azur', 'simpl_galleria');
 		$themename = $this->galleria_theme_names();
 
 		$items=WT_DB::prepare(
@@ -441,7 +440,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		)->execute(array($this->getName()))->fetchOne();
 
 		echo '<div id="gallery_config">
-			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/gallery/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+			<a class="current faq_link" href="http://kiwitrees.net/?p=2854" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
 			<h2>' .$controller->getPageTitle(). '</h2>
 			<div id="gallery_tabs">
 				<ul>
