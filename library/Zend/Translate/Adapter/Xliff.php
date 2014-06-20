@@ -14,28 +14,23 @@
  *
  * @category   Zend
  * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id$
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id: Xliff.php 24649 2012-02-26 03:37:54Z adamlundrigan $
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
 
 /** Zend_Locale */
-// require_once 'Zend/Locale.php';
+require_once 'Zend/Locale.php';
 
 /** Zend_Translate_Adapter */
-// require_once 'Zend/Translate/Adapter.php';
+require_once 'Zend/Translate/Adapter.php';
 
-/** @see Zend_Xml_Security */
-// require_once 'Zend/Xml/Security.php';
-
-/** @See Zend_Xml_Exception */
-// require_once 'Zend/Xml/Exception.php';
 
 /**
  * @category   Zend
  * @package    Zend_Translate
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Translate_Adapter_Xliff extends Zend_Translate_Adapter {
@@ -67,7 +62,7 @@ class Zend_Translate_Adapter_Xliff extends Zend_Translate_Adapter {
     {
         $this->_data = array();
         if (!is_readable($filename)) {
-            // require_once 'Zend/Translate/Exception.php';
+            require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception('Translation file \'' . $filename . '\' is not readable.');
         }
 
@@ -85,22 +80,13 @@ class Zend_Translate_Adapter_Xliff extends Zend_Translate_Adapter {
         xml_set_element_handler($this->_file, "_startElement", "_endElement");
         xml_set_character_data_handler($this->_file, "_contentElement");
 
-        try {
-            Zend_Xml_Security::scanFile($filename);
-        } catch (Zend_Xml_Exception $e) {
-            // require_once 'Zend/Translate/Exception.php';
-            throw new Zend_Translate_Exception(
-                $e->getMessage()
-            );
-        }
-
         if (!xml_parse($this->_file, file_get_contents($filename))) {
             $ex = sprintf('XML error: %s at line %d of file %s',
                           xml_error_string(xml_get_error_code($this->_file)),
                           xml_get_current_line_number($this->_file),
                           $filename);
             xml_parser_free($this->_file);
-            // require_once 'Zend/Translate/Exception.php';
+            require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception($ex);
         }
 

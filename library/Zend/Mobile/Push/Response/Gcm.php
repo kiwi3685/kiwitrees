@@ -15,7 +15,7 @@
  * @category   Zend
  * @package    Zend_Mobile
  * @subpackage Zend_Mobile_Push
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
@@ -26,7 +26,7 @@
  * @category   Zend
  * @package    Zend_Mobile
  * @subpackage Zend_Mobile_Push
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
@@ -91,7 +91,7 @@ class Zend_Mobile_Push_Response_Gcm
     {
         if ($responseString) {
             if (!$response = json_decode($responseString, true)) {
-                // require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
+                require_once 'Zend/Mobile/Push/Exception/ServerUnavailable.php';
                 throw new Zend_Mobile_Push_Exception_ServerUnavailable('The server gave us an invalid response, try again later');
             }
             $this->setResponse($response);

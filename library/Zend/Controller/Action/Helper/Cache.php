@@ -14,30 +14,30 @@
  *
  * @category   Zend
  * @package    Zend_Controller
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
+ * @version    $Id: Cache.php 24853 2012-05-31 23:19:27Z adamlundrigan $
  */
 
 /**
  * @see Zend_Controller_Action_Helper_Abstract
  */
-// require_once 'Zend/Controller/Action/Helper/Abstract.php';
+require_once 'Zend/Controller/Action/Helper/Abstract.php';
 
 /**
  * @see Zend_Controller_Action_Exception
  */
-// require_once 'Zend/Controller/Action/Exception.php';
+require_once 'Zend/Controller/Action/Exception.php';
 
 /**
  * @see Zend_Cache_Manager
  */
-// require_once 'Zend/Cache/Manager.php';
+require_once 'Zend/Cache/Manager.php';
 
 /**
  * @category   Zend
  * @package    Zend_Controller
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Controller_Action_Helper_Cache

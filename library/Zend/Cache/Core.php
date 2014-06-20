@@ -14,15 +14,15 @@
  *
  * @category   Zend
  * @package    Zend_Cache
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
+ * @version    $Id: Core.php 24989 2012-06-21 07:24:13Z mabe $
  */
 
 
 /**
  * @package    Zend_Cache
- * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Cache_Core
@@ -719,9 +719,9 @@ class Zend_Cache_Core
         }
 
         // Create a default logger to the standard output stream
-        // require_once 'Zend/Log.php';
-        // require_once 'Zend/Log/Writer/Stream.php';
-        // require_once 'Zend/Log/Filter/Priority.php';
+        require_once 'Zend/Log.php';
+        require_once 'Zend/Log/Writer/Stream.php';
+        require_once 'Zend/Log/Filter/Priority.php';
         $logger = new Zend_Log(new Zend_Log_Writer_Stream('php://output'));
         $logger->addFilter(new Zend_Log_Filter_Priority(Zend_Log::WARN, '<='));
         $this->_options['logger'] = $logger;
