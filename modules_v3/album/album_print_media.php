@@ -77,7 +77,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 		);
 
 		if (empty($ALBUM_OPTIONS))	{
-			$ALBUM_OPTIONS = array_combine(WT_Gedcom_Tag::getFileFormTypes(), $default_groups);
+			$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
 		}
 
 		$ged_id = get_id_from_gedcom($GEDCOM);
