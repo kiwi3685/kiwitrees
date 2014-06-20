@@ -752,7 +752,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					}
 					$media_links = htmlspecialchars($gallery_links);
 					if ($mime_type == 'application/pdf'){ 
-						$images.='<a href="'.$rawUrl.'"><img class="iframe" src="'.WT_STATIC_URL.$rawUrl.'" data-title="'.$mediaTitle.'" data-layer="'.$media_links.'" data-description="'.$media_notes.'"></a>';
+						$images.='<a href="'.$rawUrl.'"><img class="iframe" src="'.$thumbUrl.'" data-title="'.$mediaTitle.'" data-layer="'.$media_links.'" data-description="'.$media_notes.'"></a>';
 					} else {
 						$images.='<a href="'.$rawUrl.'"><img src="'.$thumbUrl.'" data-title="'.$mediaTitle.'" data-layer="'.$media_links.'" data-description="'.$media_notes.'"></a>';
 					}
