@@ -261,9 +261,9 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		);
 
 		if (empty($ALBUM_OPTIONS))	{
-			$ALBUM_OPTIONS = array_combine(WT_Gedcom_Tag::getFileFormTypes(), $default_groups);
+			$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
 		}
-
+print_r($ALBUM_OPTIONS);
 		$html = '<div id="album_config">
 			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
 			<h2>' .$controller->getPageTitle(). '</h2>
@@ -299,9 +299,10 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 							}
 						$html .= '</tr>';
 							foreach ($ALBUM_OPTIONS as $key=>$value) {
+								$translated_type = WT_Gedcom_Tag::getFileFormTypeValue($key);
 								$html .= '
 									<tr>
-										<td>' .$key. '</td>';
+										<td>' .$translated_type. '</td>';
 										for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
 											if (isset($ALBUM_TITLES[$i]) && $value == WT_I18N::translate($ALBUM_TITLES[$i])) {
 												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' .$key. ']" value="' .(isset($ALBUM_TITLES[$i]) ? WT_I18N::translate($ALBUM_TITLES[$i]) : ""). '" checked="checked"></td>';
