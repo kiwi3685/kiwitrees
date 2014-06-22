@@ -263,7 +263,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		if (empty($ALBUM_OPTIONS))	{
 			$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
 		}
-print_r($ALBUM_OPTIONS);
+
 		$html = '<div id="album_config">
 			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
 			<h2>' .$controller->getPageTitle(). '</h2>
