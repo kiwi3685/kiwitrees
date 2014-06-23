@@ -263,6 +263,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		"   WHEN 'hungarian'  THEN 'hu'".
 		"   WHEN 'swedish'    THEN 'sv'".
 		"   WHEN 'russian'    THEN 'ru'".
+		"   WHEN 'georgian'   THEN 'ka'".
 		"   ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
 		"  END".
 		"  ELSE setting_value".
@@ -324,6 +325,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		"  WHEN 'hungarian'  THEN 'hu'".
 		"  WHEN 'swedish'    THEN 'sv'".
 		"  WHEN 'russian'    THEN 'ru'".
+		"  WHEN 'georgian'   THEN 'ka'".
 		"  ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
 		"  END".
 		" WHEN 'theme' THEN".
@@ -453,6 +455,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			"  WHEN 'hungarian'  THEN 'hu'".
 			"  WHEN 'swedish'    THEN 'sv'".
 			"  WHEN 'russian'    THEN 'ru'".
+			"  WHEN 'georgian'   THEN 'ka'".
 			"  ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
 			" END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
@@ -697,6 +700,7 @@ foreach ($GEDCOMS as $GEDCOM=>$GED_DATA) {
 	case 'hungarian':  $stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'hu')); break;
 	case 'swedish':    $stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'sv')); break;
 	case 'russian':    $stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ru')); break;
+	case 'georgian':   $stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ka')); break;
 	default:           $stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en_US')); break;
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_ALIVE_AGE',                $MAX_ALIVE_AGE));
