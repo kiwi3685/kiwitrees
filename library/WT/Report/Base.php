@@ -456,7 +456,7 @@ class Element {
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
 			$t = strip_tags($t);
-			$t = unhtmlentities($t);
+			$t = htmlspecialchars_decode($t);
 		}
 		$this->text .= $t;
 
@@ -973,7 +973,7 @@ class Footnote extends Element {
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
 			$t = strip_tags($t);
-			$t = unhtmlentities($t);
+			$t = htmlspecialchars_decode($t);
 		}
 		$this->text .= $t;
 		return 0;
@@ -3003,14 +3003,20 @@ function ListSHandler($attrs) {
 			break;
 		case "individual":
 		case "family":
-			$sql_col_prefix=substr($listname, 0, 1)."_"; // i_ for individual, f_ for family, etc.
-			$sql_join=array();
-			$sql_where=array($sql_col_prefix."file=".WT_GED_ID);
-			$sql_order_by=array();
+			$sql_col_prefix = substr($listname, 0, 1)."_"; // i_ for individual, f_ for family, etc.
+			$sql_join		= array();
+			$sql_where		= array($sql_col_prefix."file=".WT_GED_ID);
+			$sql_order_by	= array();
 			foreach ($attrs as $attr=>$value) {
 				if ((strpos($attr, "filter")===0) && $value) {
 					// Substitute global vars
-					$value=preg_replace('/\$(\w+)/e', '$vars["\\1"]["id"]', $value);
+					$value = preg_replace_callback(
+						'/\$(\w+)/',
+						function ($matches) use ($vars) {
+							return $vars[$matches[1]]['id'];
+						},
+						$value
+					);
 					// Convert the various filters into SQL
 					if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 						$sql_join[]="JOIN `##dates` AS {$attr} ON ({$attr}.d_file={$sql_col_prefix}file AND {$attr}.d_gid={$sql_col_prefix}id)";

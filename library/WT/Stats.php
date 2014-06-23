@@ -2839,7 +2839,7 @@ class WT_Stats {
 					$per = round(100 * $row['tot'] / $tot, 0);
 				}
 				$chd .= self::_array_to_extended_encoding(array($per));
-				$chl[] = strip_tags(unhtmlentities($family->getFullName())).' - '.WT_I18N::number($row['tot']);
+				$chl[] = htmlspecialchars_decode(strip_tags($family->getFullName())).' - '.WT_I18N::number($row['tot']);
 			}
 		}
 		$chl = rawurlencode(join('|', $chl));

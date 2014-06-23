@@ -2,10 +2,10 @@
 //	Controller for the fan chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team
+// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,11 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 class WT_Controller_Fanchart extends WT_Controller_Chart {
 	// Variables for the view
 	public $fan_style      =null;
@@ -36,13 +31,13 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 	public function __construct() {
 		parent::__construct();
-		
+
 		$default_generations=get_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS');
 
 		// Extract the request parameters
-		$this->fan_style  =safe_GET_integer('fan_style',   2,  4,  3);
-		$this->fan_width  =safe_GET_integer('fan_width',   50, 300, 100);
-		$this->generations=safe_GET_integer('generations', 2, 9, $default_generations);
+		$this->fan_style   = WT_Filter::getInteger('fan_style',   2,  4,  3);
+		$this->fan_width   = WT_Filter::getInteger('fan_width',   50, 300, 100);
+		$this->generations = WT_Filter::getInteger('generations', 2, 9, $default_generations);
 
 		if ($this->root && $this->root->canDisplayName()) {
 			$this->setPageTitle(
@@ -70,28 +65,30 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	 * @return string $text output string
 	 */
 	public function split_align_text($data, $maxlen) {
-		global $RTLOrd;
+		$RTLOrd = array(215,216,217,218,219);
 
 		$lines = explode("\n", $data);
 		// more than 1 line : recursive calls
 		if (count($lines)>1) {
-			$text = "";
-			foreach ($lines as $indexval => $line) $text .= $this->split_align_text($line, $maxlen)."\n";
+			$text = '';
+			foreach ($lines as $line) {
+				$text .= $this->split_align_text($line, $maxlen)."\n";
+			}
 			return $text;
 		}
 		// process current line word by word
-		$split = explode(" ", $data);
-		$text = "";
-		$line = "";
+		$split = explode(' ', $data);
+		$text = '';
+		$line = '';
 		// do not split hebrew line
 
 		$found = false;
-		foreach ($RTLOrd as $indexval => $ord) {
+		foreach ($RTLOrd as $ord) {
 			if (strpos($data, chr($ord)) !== false) $found=true;
 		}
 		if ($found) $line=$data;
 		else
-		foreach ($split as $indexval => $word) {
+		foreach ($split as $word) {
 			$len = strlen($line);
 			//if (!empty($line) and ord($line{0})==215) $len/=2; // hebrew text
 			$wlen = strlen($word);
@@ -207,11 +204,18 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 			// draw each cell
 			while ($sosa >= $p2) {
-				$pid=$treeid[$sosa];
-				if ($pid) {
-					$person =WT_Person::getInstance($pid);
-					$name   =$person->getFullName();
-					$addname=$person->getAddName();
+				$pid = $treeid[$sosa];
+				$person = WT_Person::getInstance($pid);
+				if ($person) {
+					$name    = WT_Filter::unescapeHtml($person->getFullName());
+					$addname = WT_Filter::unescapeHtml($person->getAddName());
+
+					$text = reverseText($name);
+					if ($addname) {
+						$text .= "\n" . reverseText($addname);
+					}
+
+					$text .= "\n" . WT_Filter::unescapeHtml($person->getLifeSpan());
 
 					switch($person->getSex()) {
 					case 'M':
@@ -227,14 +231,6 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 					ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
-					$text = reverseText($name) . "\n";
-					if (!empty($addname)) $text .= reverseText($addname). "\n";
-
-					$text .= $person->getLifeSpan();
-
-					$text = unhtmlentities($text);
-					$text = strip_tags($text);
-	
 					// split and center text by lines
 					$wmax = (int)($angle*7/$fanChart['size']*$scale);
 					$wmax = min($wmax, 35*$scale);
@@ -321,9 +317,9 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 						$spouse=$family->getSpouse($person);
 						if ($spouse) {
 							$html.= '<br><a href="'.$spouse->getHtmlUrl().'" class="name1">'.$spouse->getFullName().'</a>';
-						}
-						foreach ($family->getChildren() as $child) {
-							$html.= '<br>&nbsp;&nbsp;<a href="'.$child->getHtmlUrl().'" class="name1">&lt; '.$child->getFullName().'</a>';
+							foreach ($family->getChildren() as $child) {
+								$html.= '<br>&nbsp;&nbsp;<a href="'.$child->getHtmlUrl().'" class="name1">&lt; '.$child->getFullName().'</a>';
+							}
 						}
 					}
 					// siblings
@@ -335,7 +331,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 							$html.= '<br><span class="name1">'.WT_I18N::translate('Sibling').'</span>';
 						}
 						foreach ($children as $sibling) {
-							if (!$sibling->equals($person)) {
+							if ($sibling !== $person) {
 								$html.= '<br>&nbsp;&nbsp;<a href="'.$sibling->getHtmlUrl().'" class="name1"> '.$sibling->getFullName().'</a>';
 							}
 						}
@@ -344,7 +340,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$html.= '</div>';
 					$imagemap .= " onclick=\"show_family_box('".$pid.".".$count."', 'relatives'); return false;\"";
 					$imagemap .= " onmouseout=\"family_box_timeout('".$pid.".".$count."'); return false;\"";
-					$imagemap .= " alt=\"".htmlspecialchars(strip_tags($name))."\" title=\"".htmlspecialchars(strip_tags($name))."\">";
+					$imagemap .= " alt=\"".WT_Filter::escapeHtml(strip_tags($name))."\" title=\"".WT_Filter::escapeHtml(strip_tags($name))."\">";
 				}
 				$deg1-=$angle;
 				$deg2-=$angle;
@@ -361,6 +357,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
 			return $html.$imagemap.'<p align="center"><img src="'.WT_SCRIPT_NAME.'?rootid='.$this->rootid.'&amp;fan_style='.$this->fan_style.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;img=1" width="'.$fanw.'" height="'.$fanh.'" alt="'.$image_title.'" title="'.$image_title.'" usemap="#fanmap"></p>';
 		case 'png':
+			header('Content-Type: image/png');
 			ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
 			ImagePng($image);
 			ImageDestroy($image);
