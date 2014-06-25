@@ -102,11 +102,22 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 
 		$html .= '<div style="width:100%; vertical-align:top;">';
 		ob_start();
+//		$counter = 0;
 		if ($ALBUM_GROUPS == 0) {
 			album_print_media($controller->record->getXref(), 0, true);
 		} else {
 			for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
+				ob_start();
 				album_print_media($controller->record->getXref(), 0, true, $i);
+				$print_row = ob_get_contents();
+				$check = strrpos($print_row, "class=\"pic\"");
+				if(!$check) {
+					ob_end_clean();
+//					$html .= $print_row;
+//					$counter = $check;
+				} else {
+					ob_end_flush();
+				}
 			}
 		}
 		return

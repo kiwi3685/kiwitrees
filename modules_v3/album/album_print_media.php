@@ -34,221 +34,216 @@ if (!defined('WT_WEBTREES')) {
  * @param boolean $related	Whether or not to grab media from related records
  */
 function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=false) {
-		global $GEDCOM;
-		global $res, $rowm;
-		global $rownum, $rownum1, $rownum2, $rownum3, $rownum4;
+	global $GEDCOM;
 
-		$ALBUM_GROUPS = get_module_setting('album', 'ALBUM_GROUPS');
-		$ALBUM_TITLES = unserialize(get_module_setting('album', 'ALBUM_TITLES'));
-		$ALBUM_OPTIONS = unserialize(get_module_setting('album', 'ALBUM_OPTIONS'));
+	$ALBUM_GROUPS = get_module_setting('album', 'ALBUM_GROUPS');
+	$ALBUM_TITLES = unserialize(get_module_setting('album', 'ALBUM_TITLES'));
+	$ALBUM_OPTIONS = unserialize(get_module_setting('album', 'ALBUM_OPTIONS'));
 
-		if (!isset($ALBUM_GROUPS)) {
-			$ALBUM_GROUPS = 4;
-		}
+	if (!isset($ALBUM_GROUPS)) {
+		$ALBUM_GROUPS = 4;
+	}
 
-		if (empty($ALBUM_TITLES)) {
-			$ALBUM_TITLES = array(
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Other')
-			);
-		}
-
-		$default_groups = array(
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Census'),
-				WT_I18N::translate('Documents'),
-				WT_I18N::translate('Other'),
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Photos'),
-				WT_I18N::translate('Other')
+	if (empty($ALBUM_TITLES)) {
+		$ALBUM_TITLES = array(
+			WT_I18N::translate('Photos'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Census'),
+			WT_I18N::translate('Other')
 		);
+	}
 
-		if (empty($ALBUM_OPTIONS))	{
-			$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
+	$default_groups = array(
+			WT_I18N::translate('Other'),
+			WT_I18N::translate('Other'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Other'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Census'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Census'),
+			WT_I18N::translate('Census'),
+			WT_I18N::translate('Documents'),
+			WT_I18N::translate('Other'),
+			WT_I18N::translate('Photos'),
+			WT_I18N::translate('Photos'),
+			WT_I18N::translate('Photos'),
+			WT_I18N::translate('Other')
+	);
+
+	if (empty($ALBUM_OPTIONS))	{
+		$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
+	}
+
+	$ged_id = get_id_from_gedcom($GEDCOM);
+	$person = WT_Person::getInstance($pid);
+	$ctf = 0;
+	if ($level > 0) {
+		$regexp = '/\n' . $level . ' OBJE @(.*)@/';
+	} else {
+		$regexp = '/\n\d OBJE @(.*)@/';
+	}
+	//-- find all of the related individuals
+	$ids = array($person->getXref());
+	if ($related) {
+		foreach ($person->getSpouseFamilies() as $family) {
+			$ids[] = $family->getXref();
+			$ctf += preg_match_all($regexp, $family->getGedcomRecord(), $match, PREG_SET_ORDER);
 		}
-
-		$ged_id = get_id_from_gedcom($GEDCOM);
-		$person = WT_Person::getInstance($pid);
-		$ctf = 0;
-		if ($level > 0) {
-			$regexp = '/\n' . $level . ' OBJE @(.*)@/';
+	}
+	//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+	$sort_current_objes = array();
+	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
+	for ($i = 0; $i < $sort_ct; $i++) {
+		if (!isset($sort_current_objes[$sort_match[$i][1]])) {
+			$sort_current_objes[$sort_match[$i][1]] = 1;
 		} else {
-			$regexp = '/\n\d OBJE @(.*)@/';
+			$sort_current_objes[$sort_match[$i][1]]++;
 		}
-		//-- find all of the related individuals
-		$ids = array($person->getXref());
-		if ($related) {
-			foreach ($person->getSpouseFamilies() as $family) {
-				$ids[] = $family->getXref();
-				$ctf += preg_match_all($regexp, $family->getGedcomRecord(), $match, PREG_SET_ORDER);
-			}
-		}
-		//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
-		$sort_current_objes = array();
-		$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
-		for ($i = 0; $i < $sort_ct; $i++) {
-			if (!isset($sort_current_objes[$sort_match[$i][1]])) {
-				$sort_current_objes[$sort_match[$i][1]] = 1;
-			} else {
-				$sort_current_objes[$sort_match[$i][1]]++;
-			}
-			$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
-		}
+		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
+	}
 
-		// create ORDER BY list from Gedcom sorted records list  ---------------------------
-		$orderbylist = ' ORDER BY '; // initialize
-		foreach ($sort_match as $id) {
-			$orderbylist .= "m_id='$id[1]' DESC, ";
+	// create ORDER BY list from Gedcom sorted records list  ---------------------------
+	$orderbylist = ' ORDER BY '; // initialize
+	foreach ($sort_match as $id) {
+		$orderbylist .= "m_id='$id[1]' DESC, ";
+	}
+	$orderbylist = rtrim($orderbylist, ', ');
+
+	//-- get a list of the current objects in the record
+	$current_objes = array();
+	$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
+	for ($i = 0; $i < $ct; $i++) {
+		if (!isset($current_objes[$match[$i][1]])) {
+			$current_objes[$match[$i][1]] = 1;
+		} else {
+			$current_objes[$match[$i][1]]++;
 		}
-		$orderbylist = rtrim($orderbylist, ', ');
+		$obje_links[$match[$i][1]][] = $match[$i][0];
+	}
 
-		//-- get a list of the current objects in the record
-		$current_objes = array();
-		$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
-		for ($i = 0; $i < $ct; $i++) {
-			if (!isset($current_objes[$match[$i][1]])) {
-				$current_objes[$match[$i][1]] = 1;
-			} else {
-				$current_objes[$match[$i][1]]++;
-			}
-			$obje_links[$match[$i][1]][] = $match[$i][0];
-		}
+	$media_found = false;
 
-		$media_found = false;
+	// Get the related media items
+	$sqlmm =
+		"SELECT DISTINCT m_id, m_ext, m_filename, m_titl, m_file, m_gedcom, l_from AS pid" .
+		" FROM `##media`" .
+		" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
+		" WHERE m_file=? AND l_from IN (";
+	$i=0;
+	$vars = array(WT_GED_ID);
+	foreach ($ids as $media_id) {
+		if ($i > 0) $sqlmm .= ", ";
+		$sqlmm .= "?";
+		$vars[] = $media_id;
+		$i++;
+	}
+	$sqlmm .= ')';
 
-		// Get the related media items
-		$sqlmm =
-			"SELECT DISTINCT m_id, m_ext, m_filename, m_titl, m_file, m_gedcom, l_from AS pid" .
-			" FROM `##media`" .
-			" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
-			" WHERE m_file=? AND l_from IN (";
-		$i=0;
-		$vars = array(WT_GED_ID);
-		foreach ($ids as $media_id) {
-			if ($i > 0) $sqlmm .= ", ";
-			$sqlmm .= "?";
-			$vars[] = $media_id;
-			$i++;
-		}
-		$sqlmm .= ')';
-
-		if ($ALBUM_GROUPS != 0) {
-			// Set type of media from call in album
-			for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
-				if ($i == $kind) {
-					$tt = WT_I18N::translate($ALBUM_TITLES[$i]);
-					$sqlmm .= " AND (";
-					foreach ($ALBUM_OPTIONS as $key=>$value) {
-						if ($value == WT_I18N::translate($ALBUM_TITLES[$i])) {
-							$sqlmm .= "m_gedcom LIKE '%TYPE " .strtolower($key). "%' OR ";
-						}
-						if (WT_I18N::translate($ALBUM_TITLES[$i]) == WT_I18N::translate('Other')) {
-							$sqlmm .= "m_gedcom NOT LIKE '%TYPE %' OR ";					
-						}
+	if ($ALBUM_GROUPS != 0) {
+		// Set type of media from call in album
+		for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
+			if ($i == $kind) {
+				$tt = WT_I18N::translate($ALBUM_TITLES[$i]);
+				$sqlmm .= " AND (";
+				foreach ($ALBUM_OPTIONS as $key=>$value) {
+					if ($value == WT_I18N::translate($ALBUM_TITLES[$i])) {
+						$sqlmm .= "m_gedcom LIKE '%TYPE " .strtolower($key). "%' OR ";
 					}
-					$sqlmm = rtrim($sqlmm, ' OR ');
-					$sqlmm .= ')';
+					if (WT_I18N::translate($ALBUM_TITLES[$i]) == WT_I18N::translate('Other')) {
+						$sqlmm .= "m_gedcom NOT LIKE '%TYPE %' OR ";					
+					}
 				}
+				$sqlmm = rtrim($sqlmm, ' OR ');
+				$sqlmm .= ')';
 			}
 		}
+	}
 
-		if ($sort_ct > 0) {
-			$sqlmm .= $orderbylist;
+	if ($sort_ct > 0) {
+		$sqlmm .= $orderbylist;
+	}
+
+	$rows = WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
+	$numm = count($rows);
+	$foundObjs = array();
+
+// Begin to Layout the Album Media Rows
+	if ($numm > 0) {
+		if ($ALBUM_GROUPS != 0) {
+			echo '<table class="facts_table">
+				<tr>
+					<td class="descriptionbox" style="width:120px; text-align:center; vertical-align:middle;">
+						<span style="font-weight:900;">', $tt,'</span>
+					</td>
+					<td class="optionbox">';
 		}
+					echo '<div id="thumbcontainer', $kind, '">';
+						// Start pulling media items into thumbcontainer div ==============================
+						foreach ($rows as $rowm) {
+							if (isset($foundObjs[$rowm['m_id']])) {
+								if (isset($current_objes[$rowm['m_id']])) {
+									$current_objes[$rowm['m_id']]--;
+								}
+								continue;
+							}
+							$rows=array();
 
-		$rows = WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
-		$numm = count($rows);
-		$foundObjs = array();
-
-	// Begin to Layout the Album Media Rows
-		if ($numm > 0) {
-			if ($ALBUM_GROUPS != 0) {
-				echo '<table class="facts_table">
-					<tr>
-						<td class="descriptionbox" style="width:120px; text-align:center; vertical-align:middle;">
-							<span style="font-weight:900;">', $tt, '</span>
-						</td>
-						<td class="optionbox">';
-			}
-						echo '<div id="thumbcontainer', $kind, '">';
-							// Start pulling media items into thumbcontainer div ==============================
-							foreach ($rows as $rowm) {
-								if (isset($foundObjs[$rowm['m_id']])) {
+							//-- if there is a change to this media item then get the
+							//-- updated media item and show it
+							if (($newrec=find_updated_record($rowm['m_id'], $ged_id))) {
+								$row = array();
+								$row['m_id'] = $rowm['m_id'];
+								$row['m_file'] = $ged_id;
+								$row['m_filename'] = get_gedcom_value('FILE', 1, $newrec);
+								$row['m_titl'] = get_gedcom_value('TITL', 1, $newrec);
+								if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value('FILE:TITL', 1, $newrec);
+								$row['m_gedcom'] = $newrec;
+								$et = preg_match('/\.(\w+)$/', $row['m_filename'], $ematch);
+								$ext = '';
+								if ($et > 0) $ext = $ematch[1];
+								$row['m_ext'] = $ext;
+								$row['pid'] = $pid;
+								$rows['new'] = $row;
+								$rows['old'] = $rowm;
+							} else {
+								if (!isset($current_objes[$rowm['m_id']]) && ($rowm['pid'] == $pid)) {
+									$rows['old'] = $rowm;
+								} else {
+									$rows['normal'] = $rowm;
 									if (isset($current_objes[$rowm['m_id']])) {
 										$current_objes[$rowm['m_id']]--;
 									}
-									continue;
-								}
-								$rows=array();
-
-								//-- if there is a change to this media item then get the
-								//-- updated media item and show it
-								if (($newrec=find_updated_record($rowm['m_id'], $ged_id))) {
-									$row = array();
-									$row['m_id'] = $rowm['m_id'];
-									$row['m_file'] = $ged_id;
-									$row['m_filename'] = get_gedcom_value('FILE', 1, $newrec);
-									$row['m_titl'] = get_gedcom_value('TITL', 1, $newrec);
-									if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value('FILE:TITL', 1, $newrec);
-									$row['m_gedcom'] = $newrec;
-									$et = preg_match('/\.(\w+)$/', $row['m_filename'], $ematch);
-									$ext = '';
-									if ($et > 0) $ext = $ematch[1];
-									$row['m_ext'] = $ext;
-									$row['pid'] = $pid;
-									$rows['new'] = $row;
-									$rows['old'] = $rowm;
-								} else {
-									if (!isset($current_objes[$rowm['m_id']]) && ($rowm['pid']==$pid)) {
-										$rows['old'] = $rowm;
-									} else {
-										$rows['normal'] = $rowm;
-										if (isset($current_objes[$rowm['m_id']])) {
-											$current_objes[$rowm['m_id']]--;
-										}
-									}
-								}
-								foreach ($rows as $rtype => $rowm) {
-									$res = album_print_media_row($rtype, $rowm, $pid);
-									$media_found = $media_found || $res;
-									$foundObjs[$rowm['m_id']]=true;
 								}
 							}
-						echo '</div>';
-			if ($ALBUM_GROUPS != 0)	 {
-					echo '</td>
-				</tr>
-				</table>';
-			}
+							foreach ($rows as $rtype => $rowm) {
+								$res = album_print_media_row($rtype, $rowm, $pid);
+								$media_found = $media_found || $res;
+								$foundObjs[$rowm['m_id']] = true;
+							}
+						}
+					echo '</div>';
+		if ($ALBUM_GROUPS != 0)	 {
+				echo '</td>
+			</tr>
+			</table>';
 		}
-
-	if ($media_found) return $is_media='YES';
-	else return $is_media='NO';
+	}
 }
 
 /**
  * print a media row in a table
  * @param string $rtype whether this is a 'new', 'old', or 'normal' media row... this is used to determine if the rows should be printed with an outline color
- * @param array $rowm        An array with the details about this media item
- * @param string $pid        The record id this media item was attached to
+ * @param array $rowm - An array with the details about this media item
+ * @param string $pid - The record id this media item was attached to
  */
 function album_print_media_row($rtype, $rowm, $pid) {
 	global $sort_i, $notes;
 
-	$media=WT_Media::getInstance($rowm['m_id']);
+	$media = WT_Media::getInstance($rowm['m_id']);
 
 	if ($media && !$media->canDisplayDetails()) {
 		// This media object is private;
