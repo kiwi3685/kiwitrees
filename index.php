@@ -90,57 +90,60 @@ if ($ctype=='user') {
 } else {
 	echo '<div id="home-page">';
 }	
-if ($blocks['main']) {
-	if ($blocks['side']) {
-		echo '<div id="index_main_blocks">';
-	} else {
-		echo '<div id="index_full_blocks">';
-	}
-	foreach ($blocks['main'] as $block_id=>$module_name) {
-		$class_name=$module_name.'_WT_Module';
-		$module=new $class_name;
-		if ($SEARCH_SPIDER || !$module->loadAjax()) {
-			// Load the block directly
-			$module->getBlock($block_id);
-		} else {
-			// Load the block asynchronously
-			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
-			$controller->addInlineJavascript(
-				'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
-			);
-		}
-	}
-	echo '</div>';
-}
-if ($blocks['side']) {
 	if ($blocks['main']) {
-		echo '<div id="index_small_blocks">';
-	} else {
-		echo '<div id="index_full_blocks">';
-	}
-	foreach ($blocks['side'] as $block_id=>$module_name) {
-		$class_name=$module_name.'_WT_Module';
-		$module=new $class_name;
-		if ($SEARCH_SPIDER || !$module->loadAjax()) {
-			// Load the block directly
-			$module->getBlock($block_id);
+		if ($blocks['side']) {
+			echo '<div id="index_main_blocks">';
 		} else {
-			// Load the block asynchronously
-			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
-			$controller->addInlineJavascript(
-				'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
-			);
+			echo '<div id="index_full_blocks">';
 		}
+		foreach ($blocks['main'] as $block_id=>$module_name) {
+			$class_name=$module_name.'_WT_Module';
+			$module=new $class_name;
+			if ($SEARCH_SPIDER || !$module->loadAjax()) {
+				// Load the block directly
+				$module->getBlock($block_id);
+			} else {
+				// Load the block asynchronously
+				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				$controller->addInlineJavascript(
+					'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
+				);
+			}
+		}
+		echo '</div>';
 	}
-	echo '</div>';
-}
+	if ($blocks['side']) {
+		if ($blocks['main']) {
+			echo '<div id="index_small_blocks">';
+		} else {
+			echo '<div id="index_full_blocks">';
+		}
+		foreach ($blocks['side'] as $block_id=>$module_name) {
+			$class_name=$module_name.'_WT_Module';
+			$module=new $class_name;
+			if ($SEARCH_SPIDER || !$module->loadAjax()) {
+				// Load the block directly
+				$module->getBlock($block_id);
+			} else {
+				// Load the block asynchronously
+				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				$controller->addInlineJavascript(
+					'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
+				);
+			}
+		}
+		echo '</div>';
+	}
 
-// link for changing blocks
-if (WT_USER_ID || $SHOW_COUNTER) {
-	echo '<div id="link_change_blocks">';
-		if ($ctype=='user') echo '<a href="index_edit.php?user_id='.WT_USER_ID.'" onclick="return modalDialog(\'index_edit.php?user_id='.WT_USER_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
-		if (WT_USER_GEDCOM_ADMIN && $ctype=='gedcom') echo '<a href="index_edit.php?gedcom_id='.WT_GED_ID.'" onclick="return modalDialog(\'index_edit.php?gedcom_id='.WT_GED_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
-		if ($SHOW_COUNTER) {echo '<span>'.WT_I18N::translate('Hit Count:').' '.$hitCount.'</span>';}
-	echo '</div>'; // <div id="link_change_blocks">
-}
-	echo '</div>'; // <div id="home-page">
+	// link for changing blocks
+	if (WT_USER_ID || $SHOW_COUNTER) {
+		echo '<div id="link_change_blocks">';
+			if ($ctype=='user') echo '<a href="index_edit.php?user_id='.WT_USER_ID.'" onclick="return modalDialog(\'index_edit.php?user_id='.WT_USER_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+			if (WT_USER_GEDCOM_ADMIN && $ctype=='gedcom') echo '<a href="index_edit.php?gedcom_id='.WT_GED_ID.'" onclick="return modalDialog(\'index_edit.php?gedcom_id='.WT_GED_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+			if ($SHOW_COUNTER) {echo '<span>'.WT_I18N::translate('Hit Count:').' '.$hitCount.'</span>';}
+		echo '</div>'; // <div id="link_change_blocks">
+	} else {
+		echo '<div class="clearfloat"></div>';
+	}
+	
+echo '</div>'; // <div id="home-page">
