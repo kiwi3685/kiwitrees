@@ -45,8 +45,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
 
-	if ($style != 2) $style=1;
 	if (empty($show_full)) $show_full = 0;
+	if ($style == 3) $show_full = 1;
 	if (empty($PEDIGREE_FULL_DETAILS)) $PEDIGREE_FULL_DETAILS = 0;
 
 	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
@@ -126,13 +126,21 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			}
 			$personlinks .= '</ul>';
 			// NOTE: Start div out-$pid.$personcount.$count
-			if ($style==1) $outBoxAdd .= " class=\"person_box$isF person_box_template style1\" style=\"width: ".$bwidth."px; height: ".$bheight."px; z-index:-1;\"";
-			else $outBoxAdd .= " class=\"person_box$isF person_box_template style0\"";
+			if ($style == 1) {
+				$outBoxAdd .= " class=\"person_box$isF person_box_template style1\" style=\"width: ".$bwidth."px; height: ".$bheight."px; z-index:-1;\"";
+			} elseif ($style == 3) {
+				$outBoxAdd .= " class=\"person_box$isF vertical_box_template style3\"";
+			} else {
+				$outBoxAdd .= " class=\"person_box$isF person_box_template style0\"";
+
+			}
 			// NOTE: Zoom
 			if (!$show_full) {
 				$outBoxAdd .= $mouseAction4;
 			} else {
-				$icons .= "<a href=\"#\"".$mouseAction4." id=\"iconz-$boxID\" class=\"icon-zoomin\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"></a>";
+				if ($style <> 3) {
+					$icons .= "<a href=\"#\"".$mouseAction4." id=\"iconz-$boxID\" class=\"icon-zoomin\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"></a>";
+				}
 				$icons .= '<div class="itr"><a href="#" class="icon-pedigree"></a><div class="popup">'.$personlinks.'</div></div>';
 			}
 		} else {
@@ -147,8 +155,10 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			}
 		}
 	} else {
-		if ($style==1) {
+		if ($style == 1) {
 			$outBoxAdd .= "class=\"person_box$isF person_box_template style1\" style=\"width: ".$bwidth."px; height: ".$bheight."px;\"";
+		} elseif ($style == 3) {
+			$outBoxAdd .= "class=\"person_box$isF vertical_box_template style3\"";
 		} else {
 			$outBoxAdd .= "class=\"person_box$isF person_box_template style0\"";
 		}
@@ -243,10 +253,14 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		}
 	}
 	// Output to template
-	if ($show_full) {
-	   require WT_THEME_DIR.'templates/personbox_template.php';
+	if ($style == 3) {
+	   require WT_THEME_DIR.'templates/verticalbox_template.php';
 	} else {
-	   require WT_THEME_DIR.'templates/compactbox_template.php';
+		if ($show_full) {
+		   require WT_THEME_DIR.'templates/personbox_template.php';
+		} else {
+		   require WT_THEME_DIR.'templates/compactbox_template.php';
+		}
 	}
 }
 

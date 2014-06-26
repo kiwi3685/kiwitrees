@@ -2,5 +2,6 @@
 *.bak
 *.po
 *.zip
+*.ged
 /themes/levy
 /themes/uti-family

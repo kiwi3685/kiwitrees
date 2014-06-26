@@ -37,7 +37,8 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 		<div class="name">
 			<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
 		</div>
-		<div style="height:20px; text-align:center;">', $person->getLifeSpan(), '</div>';
+		<div style="height:20px; text-align:center;">', $person->getLifeSpan(), '</div>
+	';
 	//	details for zoom view
 	echo '<div id="fontdef-',$boxID,'" class="details',$style,'">
 			<div class="exp_thumb">', $thumbnail, '</div>

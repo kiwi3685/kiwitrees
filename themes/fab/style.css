@@ -1825,3 +1825,43 @@ ul#research_status ul.sublinks {display:none}
 #links_bar .image_links {clear:both;}
 #links_bar hr {clear: both;margin:5px 0 10px;}
 a#copy {clear:both;float:left; font-size:11px; font-style:italic; margin-top:-30px;}
+
+/* Styling for family page (family.php) */
+#family-page {min-width:900px;}
+#family_chart {border-bottom:1px solid; font-size:11px;}
+#family_lines1 {width:35%; height:15px; border:2px solid #555; border-top:0; margin:5px auto 0;}
+#family_lines2 {width:50%; height:15px; border: 0; border-right:2px solid #555;}
+#family-page .compact_view {width:60px; margin:0 auto; height:60px; text-align:center;}
+#family-page .name {height:33px; margin:10px 0 0 0; text-align:center; text-overflow:ellipsis;}
+#children {clear:both; margin:auto; text-align:center; width:90%}
+#family-page #parents {margin:auto; padding:0 0 5px ; width:33%; text-align:center;}
+#husb_parents, #wife_parents {width:33%; min-width:300px; display:inline-block; margin:0 20px; text-align:center; vertical-align:top;}
+#husb_parents p, #wife_parents p {height:20px; margin:0; text-align:center;}
+#family_chart .fam_parent {display:inline-block; margin:0 20px; text-align:left; vertical-align:top;}
+#family_chart .fam_child {display:inline-block; margin:10px; text-align:left; vertical-align:top;}
+#family_chart .empty_parent {width:90px; height:120px; line-height:50px;}
+#family_chart .empty_parent a {display:block; line-height:20px; text-align:center; margin-top:40px;}
+#family_chart .empty_parent a span {display:block;}
+#family_chart #marriage_parents {text-align:center;}
+#family_chart .parent_husb, #family_chart .parent_wife {display:inline-block; margin:0 5%; vertical-align:top;}
+.vertical_box_template {width:90px; position:relative; box-shadow:none;}
+.vertical_box_template img {float:none; max-width:60px; height:60px; width:auto; }
+.vertical_box_template .vert_box_thumb {margin:0 auto; height:60px; text-align:center; width:60px;}
+.vertical_box_template .exp_thumb {border:1px solid; border-radius:5px;float:left; width:50px; height:60px; margin:5px; padding:3px; text-align:center;}
+.vertical_box_template .exp_thumb i {margin:auto; width:50px; height:60px;}
+.vertical_box_template [class^="icon-silhouette"] {background-position:50%;}
+.vertical_box_template .exp_thumb a img {width:auto; max-height:60px; height:auto; margin:auto;}
+#family-page [id^="out-"]:hover > [id^="fontdef-"] {display:block; z-index:9999; position:absolute; left:-85px; right:auto; top:0; border-radius:8px; box-shadow:0 0 10px 5px grey; width:250px; border:1px solid; background:ivory; min-height:100px;}
+#family-page [id^="fontdef-"] {display:none; text-align:left; padding:5px 5px 0 5px;}
+#family-page [id^="fontdef-"] .NAME {font-weight:900; font-size:110%; padding:5px 0; display:block;}
+#family-page [id^="fontdef-"] .icon {clear:both; margin-top:5px;}
+#family-page [id^="fontdef-"] .icon .itr {position:relative; width:20px; margin:auto;}
+#family-page [id^="fontdef-"] .icon .itr a {margin-top:5px;}
+#family-page [id^="fontdef-"] .icon .itr .popup {width:240px; margin-right:-110px;} 
+#family-page [id^="fontdef-"] .icon .itr .popup ul li a:nth-of-type(2) {text-decoration:underline;}
+#family-page [id^="fontdef-"] .icon .itr .popup ul li li {padding:0 15px;}
+#family-page [id^="fontdef-"] .icon .itr .popup ul span {padding:0;}
+[dir='rtl'] #family_lines2 {border: 0; border-left:2px solid #555;}
+[dir='rtl'] .vertical_box_template .exp_thumb {float:right;}
+[dir='rtl'] #family-page [id^="fontdef-"], [dir='rtl'] #family_chart .fam_child, [dir='rtl'] #family_chart .fam_parent {text-align:right;}
+[dir='rtl'] #family-page [id^="out-"]:hover > [id^="fontdef-"] {right:-85px; left:auto;}
