@@ -50,7 +50,10 @@ class ckeditor_WT_Module extends WT_Module {
 					skin : "moono",
 					allowedContent: true,
 					width: "100%",
-					height: "400px"
+					height: "400px",
+					extraPlugins: "slideshow",
+					filebrowserImageBrowseUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
+					filebrowserImageUploadUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images"
 				});
 			');
 	}

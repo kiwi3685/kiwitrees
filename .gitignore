@@ -3,5 +3,6 @@
 *.po
 *.zip
 *.ged
+/uploads
 /themes/levy
 /themes/uti-family
