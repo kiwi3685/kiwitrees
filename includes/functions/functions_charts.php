@@ -811,7 +811,7 @@ function print_children($famid, $childid = "", $personcount="1") {
 			echo '</div>';
 		if (WT_USER_CAN_EDIT) {
 			echo '<div>
-				<a href="#" onclick="return addnewchild(\'$famid','\');">' . WT_I18N::translate('Add a child to this family') . '</a>
+				<a href="#" onclick="return addnewchild(\'',$famid,'\');">' . WT_I18N::translate('Add a child to this family') . '</a>
 				<a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>
 				<a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>
 			</div>';					
