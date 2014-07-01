@@ -1431,13 +1431,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo edit_field_resn($element_name, $value);
 	} else if ($fact=='_PRIM') {
 		echo '<select id="', $element_id, '" name="', $element_name, '" >';
-		echo '<option value=""></option>';
-		echo '<option value="Y"';
-		if ($value=='Y') echo ' selected="selected"';
-		echo '>', WT_I18N::translate('yes'), '</option>';
 		echo '<option value="N"';
 		if ($value=='N') echo ' selected="selected"';
 		echo '>', WT_I18N::translate('no'), '</option>';
+		echo '<option value="Y"';
+		if ($value=='Y') echo ' selected="selected"';
+		echo '>', WT_I18N::translate('yes'), '</option>';
 		echo '</select>';
 	} else if ($fact=='SEX') {
 		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M"';
