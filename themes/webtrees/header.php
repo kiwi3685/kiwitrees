@@ -111,13 +111,6 @@ if ($view!='simple') {
 		'</div>',
 		'<div id="topMenu">',
 		'<ul id="main-menu">',
-		WT_MenuBar::getGedcomMenu(),
-		WT_MenuBar::getMyPageMenu(),
-		WT_MenuBar::getChartsMenu(),
-		WT_MenuBar::getListsMenu(),
-		WT_MenuBar::getCalendarMenu(),
-		WT_MenuBar::getReportsMenu(),
-		WT_MenuBar::getSearchMenu(),
 		implode('', WT_MenuBar::getModuleMenus()),
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">

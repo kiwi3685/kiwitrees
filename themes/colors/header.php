@@ -145,15 +145,6 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 
 	// Second Row menu and palette selection
 	// Menu
-	$menu_items=array(
-		WT_MenuBar::getGedcomMenu(), 
-		WT_MenuBar::getMyPageMenu(),
-		WT_MenuBar::getChartsMenu(),
-		WT_MenuBar::getListsMenu(),
-		WT_MenuBar::getCalendarMenu(),
-		WT_MenuBar::getReportsMenu(),
-		WT_MenuBar::getSearchMenu(),
-	);
 	foreach (WT_MenuBar::getModuleMenus() as $menu) {
 		$menu_items[]=$menu;
 	}

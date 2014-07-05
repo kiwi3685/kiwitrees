@@ -200,4 +200,16 @@ class WT_Menu {
 	function subCount() {
 		return count($this->submenus);
 	}
+
+	// Get the menu as a simple list - for accessible interfaces, search engines and CSS menus
+	function getTopMenuList() {
+		$html=$this->label;
+		if ($this->id) {
+			return '<li id="'.$this->id.'">'.$html.'</li>';
+		} else {
+			return '<li>'.$html.'</li>';
+		}
+
+	}
+
 }
