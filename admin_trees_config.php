@@ -369,11 +369,11 @@ $controller
 				<tr>
 					<?php
 					if (empty($WEBTREES_EMAIL)) {
-						$WEBTREES_EMAIL = "webtrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
+						$WEBTREES_EMAIL = "kiwitrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
 					}
 					?>
 					<td>
-						<?php echo WT_I18N::translate('webtrees reply address'), help_link('WEBTREES_EMAIL'); ?>
+						<?php echo WT_I18N::translate('kiwitrees reply address'), help_link('WEBTREES_EMAIL'); ?>
 					</td>
 					<td><input type="text" name="NEW_WEBTREES_EMAIL" value="<?php echo $WEBTREES_EMAIL; ?>" size="50" maxlength="255" dir="ltr"></td>
 				</tr>

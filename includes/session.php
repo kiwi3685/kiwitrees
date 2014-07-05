@@ -438,7 +438,7 @@ define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnu
 $WT_SESSION->GEDCOM=WT_GEDCOM;
 
 if (empty($WEBTREES_EMAIL)) {
-	$WEBTREES_EMAIL='webtrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
+	$WEBTREES_EMAIL='kiwitrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
@@ -518,7 +518,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// User cannot choose (or has not chosen) a theme.
 		// 1) gedcom setting
 		// 2) site setting
-		// 3) webtrees
+		// 3) kiwitrees
 		// 4) first one found
 		if (WT_GED_ID) {
 			$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
@@ -527,7 +527,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 			$THEME_DIR=WT_Site::preference('THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR='webtrees';
+			$THEME_DIR='kiwitrees';
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			list($THEME_DIR)=get_theme_names();
