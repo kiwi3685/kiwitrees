@@ -983,159 +983,159 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('
-	SURNAME_TRADITION="'.$SURNAME_TRADITION.'";
-	sextag="'.$sextag.'";
-	famtag="'.$famtag.'";
-	function trim(str) {
-		str=str.replace(/\s\s+/g, " ");
-		return str.replace(/(^\s+)|(\s+$)/g, "");
-	}
-
-	function lang_class(str) {
-		if (str.match(/[\u0370-\u03FF]/)) return "greek";
-		if (str.match(/[\u0400-\u04FF]/)) return "cyrillic";
-		if (str.match(/[\u0590-\u05FF]/)) return "hebrew";
-		if (str.match(/[\u0600-\u06FF]/)) return "arabic";
-		return "latin"; // No matched text implies latin :-)
-	}
-
-	// Generate a full name from the name components
-	function generate_name() {
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		if (SURNAME_TRADITION=="polish" && (sextag=="F" || famtag=="WIFE")) {
-			surn=surn.replace(/ski$/, "ska");
-			surn=surn.replace(/cki$/, "cka");
-			surn=surn.replace(/dzki$/, "dzka");
-			surn=surn.replace(/żki$/, "żka");
+		SURNAME_TRADITION="'.$SURNAME_TRADITION.'";
+		sextag="'.$sextag.'";
+		famtag="'.$famtag.'";
+		function trim(str) {
+			str=str.replace(/\s\s+/g, " ");
+			return str.replace(/(^\s+)|(\s+$)/g, "");
 		}
-		// Commas are used in the GIVN and SURN field to separate lists of surnames.
-		// For example, to differentiate the two Spanish surnames from an English
-		// double-barred name.
-		// Commas *may* be used in other fields, and will form part of the NAME.
-		if (WT_LOCALE=="vi" || WT_LOCALE=="hu") {
-			// Default format: /SURN/ GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+givn.replace(/ *, */g, " ")+" "+nsfx);
-		} else if (WT_LOCALE=="zh") {
-			// Default format: /SURN/GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/"+givn.replace(/ *, */g, " ")+" "+nsfx);
-		} else {
-			// Default format: GIVN /SURN/
-			return trim(npfx+" "+givn.replace(/ *, */g, " ")+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+nsfx);
-		}
-	}
 
-	// Update the NAME and _MARNM fields from the name components
-	// and also display the value in read-only "gedcom" format.
-	function updatewholename() {
-		// don’t update the name if the user manually changed it
-		if (manualChange) return;
-		// Update NAME field from components and display it
-		var frm =document.forms[0];
-		var npfx=frm.NPFX.value;
-		var givn=frm.GIVN.value;
-		var spfx=frm.SPFX.value;
-		var surn=frm.SURN.value;
-		var nsfx=frm.NSFX.value;
-		document.getElementById("NAME").value=generate_name();
-		document.getElementById("NAME_display").innerHTML=frm.NAME.value;
-		// Married names inherit some NSFX values, but not these
-		nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
-		// Update _MARNM field from _MARNM_SURN field and display it
-		// Be careful of mixing latin/hebrew/etc. character sets.
-		var ip=document.getElementsByTagName("input");
-		var marnm_id="";
-		var romn="";
-		var heb="";
-		for (var i=0; i<ip.length; i++) {
-			var val=ip[i].value;
-			if (ip[i].id.indexOf("_HEB")==0)
-				heb=val;
-			if (ip[i].id.indexOf("ROMN")==0)
-				romn=val;
-			if (ip[i].id.indexOf("_MARNM")==0) {
-				if (ip[i].id.indexOf("_MARNM_SURN")==0) {
-					var msurn="";
-					if (val!="") {
-						var lc=lang_class(document.getElementById(ip[i].id).value);
-						if (lang_class(frm.NAME.value)==lc)
-							msurn=trim(npfx+" "+givn+" /"+val+"/ "+nsfx);
-						else if (lc=="hebrew")
-							msurn=heb.replace(/\/.*\//, "/"+val+"/");
-						else if (lang_class(romn)==lc)
-							msurn=romn.replace(/\/.*\//, "/"+val+"/");
+		function lang_class(str) {
+			if (str.match(/[\u0370-\u03FF]/)) return "greek";
+			if (str.match(/[\u0400-\u04FF]/)) return "cyrillic";
+			if (str.match(/[\u0590-\u05FF]/)) return "hebrew";
+			if (str.match(/[\u0600-\u06FF]/)) return "arabic";
+			return "latin"; // No matched text implies latin :-)
+		}
+
+		// Generate a full name from the name components
+		function generate_name() {
+			var frm =document.forms[0];
+			var npfx=frm.NPFX.value;
+			var givn=frm.GIVN.value;
+			var spfx=frm.SPFX.value;
+			var surn=frm.SURN.value;
+			var nsfx=frm.NSFX.value;
+			if (SURNAME_TRADITION=="polish" && (sextag=="F" || famtag=="WIFE")) {
+				surn=surn.replace(/ski$/, "ska");
+				surn=surn.replace(/cki$/, "cka");
+				surn=surn.replace(/dzki$/, "dzka");
+				surn=surn.replace(/żki$/, "żka");
+			}
+			// Commas are used in the GIVN and SURN field to separate lists of surnames.
+			// For example, to differentiate the two Spanish surnames from an English
+			// double-barred name.
+			// Commas *may* be used in other fields, and will form part of the NAME.
+			if (WT_LOCALE=="vi" || WT_LOCALE=="hu") {
+				// Default format: /SURN/ GIVN
+				return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+givn.replace(/ *, */g, " ")+" "+nsfx);
+			} else if (WT_LOCALE=="zh") {
+				// Default format: /SURN/GIVN
+				return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/"+givn.replace(/ *, */g, " ")+" "+nsfx);
+			} else {
+				// Default format: GIVN /SURN/
+				return trim(npfx+" "+givn.replace(/ *, */g, " ")+" /"+trim(spfx+" "+surn).replace(/ *, */g, " ")+"/ "+nsfx);
+			}
+		}
+
+		// Update the NAME and _MARNM fields from the name components
+		// and also display the value in read-only "gedcom" format.
+		function updatewholename() {
+			// don’t update the name if the user manually changed it
+			if (manualChange) return;
+			// Update NAME field from components and display it
+			var frm =document.forms[0];
+			var npfx=frm.NPFX.value;
+			var givn=frm.GIVN.value;
+			var spfx=frm.SPFX.value;
+			var surn=frm.SURN.value;
+			var nsfx=frm.NSFX.value;
+			document.getElementById("NAME").value=generate_name();
+			document.getElementById("NAME_display").innerHTML=frm.NAME.value;
+			// Married names inherit some NSFX values, but not these
+			nsfx=nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
+			// Update _MARNM field from _MARNM_SURN field and display it
+			// Be careful of mixing latin/hebrew/etc. character sets.
+			var ip=document.getElementsByTagName("input");
+			var marnm_id="";
+			var romn="";
+			var heb="";
+			for (var i=0; i<ip.length; i++) {
+				var val=ip[i].value;
+				if (ip[i].id.indexOf("_HEB")==0)
+					heb=val;
+				if (ip[i].id.indexOf("ROMN")==0)
+					romn=val;
+				if (ip[i].id.indexOf("_MARNM")==0) {
+					if (ip[i].id.indexOf("_MARNM_SURN")==0) {
+						var msurn="";
+						if (val!="") {
+							var lc=lang_class(document.getElementById(ip[i].id).value);
+							if (lang_class(frm.NAME.value)==lc)
+								msurn=trim(npfx+" "+givn+" /"+val+"/ "+nsfx);
+							else if (lc=="hebrew")
+								msurn=heb.replace(/\/.*\//, "/"+val+"/");
+							else if (lang_class(romn)==lc)
+								msurn=romn.replace(/\/.*\//, "/"+val+"/");
+						}
+						document.getElementById(marnm_id).value=msurn;
+						document.getElementById(marnm_id+"_display").innerHTML=msurn;
+					} else {
+						marnm_id=ip[i].id;
 					}
-					document.getElementById(marnm_id).value=msurn;
-					document.getElementById(marnm_id+"_display").innerHTML=msurn;
-				} else {
-					marnm_id=ip[i].id;
 				}
 			}
 		}
-	}
 
-	// Toggle the name editor fields between
-	// <input type="hidden"> <span style="display:inline">
-	// <input type="text">   <span style="display:hidden">	var oldName = "";
-	var manualChange = false;
-	var IE = document.all?true:false;
-	function convertHidden(eid) {
-	var input1 = jQuery("#" + eid);
-	var input2 = jQuery("#" + eid + "_display");
-	// Note that IE does not allow us to change the type of an input, so we must create a new one.
-	if (input1.attr("type")=="hidden") {
-		input1.replaceWith(input1.clone().attr("type", "text"));
-		input2.hide();
-	} else {
-		input1.replaceWith(input1.clone().attr("type", "hidden"));
-		input2.show();
-		}
-	}
-
-	/**
-	* if the user manually changed the NAME field, then update the textual
-	* HTML representation of it
-	* If the value changed set manualChange to true so that changing
-	* the other fields doesn’t change the NAME line
-	*/
-	function updateTextName(eid) {
-		var element = document.getElementById(eid);
-		if (element) {
-			if (element.value!=oldName) manualChange = true;
-			var delement = document.getElementById(eid+"_display");
-			if (delement) {
-				delement.innerHTML = element.value;
+		// Toggle the name editor fields between
+		// <input type="hidden"> <span style="display:inline">
+		// <input type="text">   <span style="display:hidden">
+		var oldName = "";
+		var manualChange = false;
+		function convertHidden(eid) {
+		var input1 = jQuery("#" + eid);
+		var input2 = jQuery("#" + eid + "_display");
+		// Note that IE does not allow us to change the type of an input, so we must create a new one.
+		if (input1.attr("type")=="hidden") {
+			input1.replaceWith(input1.clone().attr("type", "text"));
+			input2.hide();
+		} else {
+			input1.replaceWith(input1.clone().attr("type", "hidden"));
+			input2.show();
 			}
 		}
-	}
 
-	function checkform() {
-		var ip=document.getElementsByTagName("input");
-		for (var i=0; i<ip.length; i++) {
-			// ADD slashes to _HEB and _AKA names
-			if (ip[i].id.indexOf("_AKA")==0 || ip[i].id.indexOf("_HEB")==0 || ip[i].id.indexOf("ROMN")==0)
-				if (ip[i].value.indexOf("/")<0 && ip[i].value!="")
-					ip[i].value=ip[i].value.replace(/([^\s]+)\s*$/, "/$1/");
-			// Blank out temporary _MARNM_SURN
-			if (ip[i].id.indexOf("_MARNM_SURN")==0)
-					ip[i].value="";
-			// Convert "xxx yyy" and "xxx y yyy" surnames to "xxx,yyy"
-			if ((SURNAME_TRADITION=="spanish" || "SURNAME_TRADITION"=="portuguese") && ip[i].id.indexOf("SURN")==0) {
-				ip[i].value=document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
+		/**
+		* if the user manually changed the NAME field, then update the textual
+		* HTML representation of it
+		* If the value changed set manualChange to true so that changing
+		* the other fields doesn’t change the NAME line
+		*/
+		function updateTextName(eid) {
+			var element = document.getElementById(eid);
+			if (element) {
+				if (element.value!=oldName) manualChange = true;
+				var delement = document.getElementById(eid+"_display");
+				if (delement) {
+					delement.innerHTML = element.value;
+				}
 			}
 		}
-		return true;
-	}
 
-	// If the name isn’t initially formed from the components in a standard way,
-	// then don’t automatically update it.
-	if (document.getElementById("NAME").value!=generate_name() && document.getElementById("NAME").value!="//") {
-		convertHidden("NAME");
-	}
+		function checkform() {
+			var ip=document.getElementsByTagName("input");
+			for (var i=0; i<ip.length; i++) {
+				// ADD slashes to _HEB and _AKA names
+				if (ip[i].id.indexOf("_AKA")==0 || ip[i].id.indexOf("_HEB")==0 || ip[i].id.indexOf("ROMN")==0)
+					if (ip[i].value.indexOf("/")<0 && ip[i].value!="")
+						ip[i].value=ip[i].value.replace(/([^\s]+)\s*$/, "/$1/");
+				// Blank out temporary _MARNM_SURN
+				if (ip[i].id.indexOf("_MARNM_SURN")==0)
+						ip[i].value="";
+				// Convert "xxx yyy" and "xxx y yyy" surnames to "xxx,yyy"
+				if ((SURNAME_TRADITION=="spanish" || "SURNAME_TRADITION"=="portuguese") && ip[i].id.indexOf("SURN")==0) {
+					ip[i].value=document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
+				}
+			}
+			return true;
+		}
+
+		// If the name isn’t initially formed from the components in a standard way,
+		// then don’t automatically update it.
+		if (document.getElementById("NAME").value!=generate_name() && document.getElementById("NAME").value!="//") {
+			convertHidden("NAME");
+		}
 	');
 }
 
