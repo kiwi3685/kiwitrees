@@ -279,7 +279,7 @@ return $wtLogo;
  * this function encodes a string in quoted_printable format
  * found at http://us3.php.net/bin2hex
  */
-function hex4email ($string,$charset) {
+function hex4email($string, $charset) {
 	//-- check if the string has extended characters in it
 	$str = utf8_decode($string);
 	//-- if the strings are the same no conversion is necessary
