@@ -43,7 +43,7 @@ a.gallery img {border-radius:5px;}
 legend img {height:20px;vertical-align:middle;width:20px;}
 img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img {border:none;height:25px;vertical-align:middle;}
 input, button, textarea {border-top-color:#fff;border-left-color:#fff;border-right-color:#555;border-bottom-color:#555;border-width:1px;font-size:12px;}
-input, textarea {padding:0 3px;}
+input, textarea {padding:3px;}
 textarea {border-style:inset;}
 input.image {width:17px;height:17px;border:none;padding:0;vertical-align:top;}
 select {border:1px solid #555;font-size:12px;margin:0 7px;padding:1px;}

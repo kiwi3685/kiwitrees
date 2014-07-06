@@ -57,4 +57,21 @@ class ckeditor_WT_Module extends WT_Module {
 				});
 			');
 	}
+	// Convert <textarea class="html-edit"> fields to CKEditor fields with bassic settings only for messsaging
+	public static function enableBasicEditor($controller) {
+		$controller
+			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
+			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
+			// Need to specify the path before we load the libary
+			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
+			// Activate the editor
+			->addInlineJavascript('
+				jQuery(".html-edit").ckeditor(function(){}, {
+					skin : "moono",
+					width: "100%",
+					height: "150px",
+					toolbar: [["Source", "-", "Bold", "Italic", "Underline", "-", "Cut", "Copy", "Paste", "PasteText", "-", "Font", "FontSize", "TextColor", "BGColor"]]
+				});
+			');
+	}
 }

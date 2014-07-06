@@ -111,6 +111,11 @@ case 'compose':
 			return true;
 		}
 	');
+		
+	if (array_key_exists('ckeditor', WT_Module::getActiveModules()) && WT_Site::preference('MAIL_FORMAT') == "1") {
+		ckeditor_WT_Module::enableBasicEditor($controller);
+	}
+
 	echo '<span class="subheaders">', WT_I18N::translate('Send Message'), '</span>';
 	echo $errors;
 
@@ -125,7 +130,7 @@ case 'compose':
 	}
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', htmlspecialchars($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', htmlspecialchars($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
+		echo '<td><input type="text" name="from_name" size="40" value="', htmlspecialchars($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', htmlspecialchars($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '</td></tr>';
 	}
 	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';
 	echo '<td>';
@@ -134,8 +139,8 @@ case 'compose':
 	echo '<input type="hidden" name="time" value="">';
 	echo '<input type="hidden" name="method" value="', $method, '">';
 	echo '<input type="hidden" name="url" value="', htmlspecialchars($url), '">';
-	echo '<input type="text" name="subject" size="50" value="', htmlspecialchars($subject), '"><br></td></tr>';
-	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '<br></td><td><textarea name="body" cols="50" rows="7">', htmlspecialchars($body), '</textarea><br></td></tr>';
+	echo '<input type="text" name="subject" size="80" value="', htmlspecialchars($subject), '"></td></tr>';
+	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '</td><td><textarea class="html-edit" name="body" cols="80" rows="7">', htmlspecialchars($body), '</textarea><br></td></tr>';
 	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '"></td></tr>';
 	echo '</table>';
 	echo '</form>';
@@ -143,7 +148,6 @@ case 'compose':
 		echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
 	}
 	echo
-		'<br><br><br><br>',  // TODO use margin-bottom instead of this
 		'<p id="save-cancel">',
 		'<input type="button" class="cancel" value="', WT_I18N::translate('close'), '" onclick="window.close();">',
 		'</p>';

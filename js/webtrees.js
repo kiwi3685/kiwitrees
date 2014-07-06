@@ -27,7 +27,7 @@ var indx_window_specs	='width=600,height=500,left=200,top=150,resizable=1,scroll
 var news_window_specs	='width=900,height=750,left=70, top=70, resizable=1,scrollbars=1'; // edit_news.php
 var help_window_specs	='width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
 var find_window_specs	='width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
-var mesg_window_specs	='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
+var mesg_window_specs	='width=800,height=650,left=250,top=100,resizable=1,scrollbars=1'; // message.php
 var chan_window_specs	='width=600,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var mord_window_specs	='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
 var assist_window_specs	='width=900,height=800,left=70,top=70,  resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant

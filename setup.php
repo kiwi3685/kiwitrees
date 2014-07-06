@@ -894,6 +894,7 @@ try {
 		"('SMTP_HOST',                       'localhost'),".
 		"('SMTP_PORT',                       '25'),".
 		"('SMTP_AUTH',                       '1'),".
+		"('MAIL_FORMAT',                     ''),".
 		"('SMTP_AUTH_USER',                  ''),".
 		"('SMTP_AUTH_PASS',                  ''),".
 		"('SMTP_SSL',                        'none'),".
