@@ -463,7 +463,7 @@ case 'CHART_BOX_TAGS':
 
 case 'CHECK_MARRIAGE_RELATIONS':
 	$title=WT_I18N::translate('Check relationships by marriage');
-	$text=WT_I18N::translate('When calculating relationships, this option controls whether <b>webtrees</b> will include spouses/partners as well as blood relatives.');
+	$text=WT_I18N::translate('When calculating relationships, this option controls whether kiwitrees will include spouses/partners as well as blood relatives.');
 	break;
 
 case 'COMMON_NAMES_ADD':
@@ -523,7 +523,7 @@ case 'FAM_FACTS_UNIQUE':
 
 case 'FAM_ID_PREFIX':
 	$title=WT_I18N::translate('Family ID prefix');
-	$text=WT_I18N::translate('When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix.');
+	$text=WT_I18N::translate('When a new family record is added online in kiwitrees, a new ID for that family will be generated automatically. The family ID will have this prefix.');
 	break;
 
 case 'FULL_SOURCES':
@@ -533,7 +533,7 @@ case 'FULL_SOURCES':
 
 case 'GEDCOM_ID_PREFIX':
 	$title=WT_I18N::translate('Individual ID prefix');
-	$text=WT_I18N::translate('When a new individual record is added online in <b>webtrees</b>, a new ID for that individual will be generated automatically. The individual ID will have this prefix.');
+	$text=WT_I18N::translate('When a new individual record is added online in kiwitrees, a new ID for that individual will be generated automatically. The individual ID will have this prefix.');
 	break;
 
 case 'GEDCOM_MEDIA_PATH':
@@ -552,12 +552,12 @@ case 'GEDCOM_MEDIA_PATH':
 
 case 'GENERATE_GUID':
 	$title=WT_I18N::translate('Automatically create globally unique IDs');
-	$text=WT_I18N::translate('<b>GUID</b> in this context is an acronym for «Globally Unique ID».<br /><br />GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same person no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br /><br />If you do not intend to share this GEDCOM with anyone else, you do not need to let <b>webtrees</b> create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.');
+	$text=WT_I18N::translate('<b>GUID</b> in this context is an acronym for «Globally Unique ID».<br /><br />GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same person no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br /><br />If you do not intend to share this GEDCOM with anyone else, you do not need to let kiwitrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.');
 	break;
 
 case 'HIDE_GEDCOM_ERRORS':
 	$title=WT_I18N::translate('GEDCOM errors');
-	$text=WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.');
+	$text=WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and kiwitrees understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.');
 	break;
 
 case 'HIDE_LIVE_PEOPLE':
@@ -660,7 +660,7 @@ case 'MEDIA_DIRECTORY':
 
 case 'MEDIA_ID_PREFIX':
 	$title=WT_I18N::translate('Media ID prefix');
-	$text=WT_I18N::translate('When a new media record is added online in <b>webtrees</b>, a new ID for that media will be generated automatically. The media ID will have this prefix.');
+	$text=WT_I18N::translate('When a new media record is added online in kiwitrees, a new ID for that media will be generated automatically. The media ID will have this prefix.');
 	break;
 
 case 'MEDIA_UPLOAD':
@@ -692,7 +692,7 @@ case 'META_TITLE':
 
 case 'NOTE_ID_PREFIX':
 	$title=WT_I18N::translate('Note ID prefix');
-	$text=WT_I18N::translate('When a new note record is added online in <b>webtrees</b>, a new ID for that note will be generated automatically. The note ID will have this prefix.');
+	$text=WT_I18N::translate('When a new note record is added online in kiwitrees, a new ID for that note will be generated automatically. The note ID will have this prefix.');
 	break;
 
 case 'PEDIGREE_FULL_DETAILS':
@@ -722,12 +722,17 @@ case 'RELATIONSHIP_PATH_LENGTH':
 
 case 'SESSION_TIME':
 	$title/* I18N: A site configuration setting */ =WT_I18N::translate('Session timeout');
-	$text=/* I18N: Help text for the “Session timeout” site configuration setting */ WT_I18N::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');
+	$text=/* I18N: Help text for the “Session timeout” site configuration setting */ WT_I18N::translate('The time in seconds that a kiwitrees session remains active before requiring a login.  The default is 7200, which is 2 hours.');
 	break;
 
 case 'SMTP_ACTIVE':
 	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Messages');
-	$text=/* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.');
+	$text=/* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('Kiwitrees needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.');
+	break;
+
+case 'MAIL_FORMAT':
+	$title=/* I18N: A site configuration setting */ WT_I18N::translate('Send mail in HTML format');
+	$text=/* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('By default kiwitrees sends emails in plain text format. Setting this option to \'yes\' will change that to the multipart format. This allows the use of HTML formatting, but also includes a plain text version for recipients that do not allow HTML formatted emails.');
 	break;
 
 case 'SMTP_AUTH_PASS':
@@ -771,8 +776,8 @@ case 'SMTP_SSL':
 	break;
 
 case 'WEBTREES_EMAIL':
-	$title=WT_I18N::translate('<b>webtrees</b> reply address');
-	$text=WT_I18N::translate('E-mail address to be used in the &laquo;From:&raquo; field of e-mails that <b>webtrees</b> creates automatically.<br /><br /><b>webtrees</b> can automatically create e-mails to notify administrators of changes that need to be reviewed.  <b>webtrees</b> also sends notification e-mails to users who have requested an account.<br /><br />Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message\'s &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.');
+	$title=WT_I18N::translate('Kiwitrees reply address');
+	$text=WT_I18N::translate('E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br /><br />Kiwitrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification e-mails to users who have requested an account.<br /><br />Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message\'s &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.');
 	break;
 
 case 'PREFER_LEVEL2_SOURCES':
@@ -807,7 +812,7 @@ case 'REPO_FACTS_UNIQUE':
 
 case 'REPO_ID_PREFIX':
 	$title=WT_I18N::translate('Repository ID prefix');
-	$text=WT_I18N::translate('When a new repository record is added online in <b>webtrees</b>, a new ID for that repository will be generated automatically. The repository ID will have this prefix.');
+	$text=WT_I18N::translate('When a new repository record is added online in kiwitrees, a new ID for that repository will be generated automatically. The repository ID will have this prefix.');
 	break;
 
 case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
@@ -898,7 +903,7 @@ case 'SHOW_STATS':
 
 case 'SOURCE_ID_PREFIX':
 	$title=WT_I18N::translate('Source ID prefix');
-	$text=WT_I18N::translate('When a new source record is added online in <b>webtrees</b>, a new ID for that source will be generated automatically.  The source ID will have this prefix.');
+	$text=WT_I18N::translate('When a new source record is added online in kiwitrees, a new ID for that source will be generated automatically.  The source ID will have this prefix.');
 	break;
 
 case 'SOUR_FACTS_ADD':
@@ -978,7 +983,7 @@ case 'SURNAME_TRADITION':
 case 'THEME':
 	$title=WT_I18N::translate('Theme');
 	$text=
-		/* I18N: Help text for the "Default Theme" site configuration setting */ WT_I18N::translate('You can change the appearance of <b>webtrees</b> using "themes".  Each theme has a different style, layout, color scheme, etc.').
+		/* I18N: Help text for the "Default Theme" site configuration setting */ WT_I18N::translate('You can change the appearance of kiwitrees using "themes".  Each theme has a different style, layout, color scheme, etc.').
 		'<br/><br/>'.
 		WT_I18N::translate('Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting "default theme" at user level will give the setting for the current GEDCOM.  Selecting "default theme" at GEDCOM level will give the site setting.');
 	break;
@@ -1048,7 +1053,7 @@ case 'WELCOME_TEXT_AUTH_MODE':
 
 case 'WORD_WRAPPED_NOTES':
 	$title=WT_I18N::translate('Add spaces where notes were wrapped');
-	$text=WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.');
+	$text=WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.');
 	break;
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -1061,7 +1066,7 @@ case 'add_facts':
 	$text.='<br/><br/>';
 	$text.='<b>'.WT_I18N::translate('Add from clipboard').'</b>';
 	$text.='<br/><br/>';
-	$text.=WT_I18N::translate('<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br /><br />You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br /><br />This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
+	$text.=WT_I18N::translate('Kiwitrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br /><br />You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br /><br />This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
 	break;
 
 case 'add_new_gedcom':
@@ -1178,19 +1183,19 @@ case 'edit_SOUR_EVEN':
 
 case 'edituser_contact_meth':
 	$title=WT_I18N::translate('Preferred contact method');
-	$text=WT_I18N::translate('<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you.');
+	$text=WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you.');
 	$text.='<br/><br/><dl><dt>';
 	$text.=WT_I18N::translate('Internal messaging');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br /><br />You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block.');
+	$text.=WT_I18N::translate('With this option, the kiwitrees internal messaging system will be used and no emails will be sent.<br /><br />You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('Internal messaging with emails');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br /><br />This is the default contact method.');
+	$text.=WT_I18N::translate('This option is like kiwitrees internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br /><br />This is the default contact method.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('Mailto link');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page.');
+	$text.=WT_I18N::translate('With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to kiwitrees will not be used at all, and there will never be any messages in the Message block on your personal My Page.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('No contact method');
 	$text.='</dt><dd>';
@@ -1282,7 +1287,7 @@ case 'next_path':
 
 case 'no_update_CHAN':
 	$title=WT_I18N::translate('Do not update the “last change” record');
-	$text=WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br /><br />When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag.');
+	$text=WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br /><br />When this option is selected, kiwitrees will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag.');
 	break;
 
 case 'oldest_top':
@@ -1301,8 +1306,8 @@ case 'password_confirm':
 	break;
 
 case 'PGV_WIZARD':
-	$title=WT_I18N::translate('PhpGedView to <b>webtrees</b> transfer wizard');
-	$text =WT_I18N::translate('The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other database information directly to your new <b>webtrees</b> database. The following requirements are necessary:');
+	$title=WT_I18N::translate('PhpGedView to kiwitrees transfer wizard');
+	$text =WT_I18N::translate('The PGV to kiwitrees wizard is an automated process to assist administrators make the move from a PGV installation to a new kiwitrees one. It will transfer all PGV GEDCOM and other database information directly to your new kiwitrees database. The following requirements are necessary:');
 	$text .= '<ul><li>';
 	$text .= WT_I18N::translate('webtrees database must be on the same server as PGV\'s');
 	$text .= '</li><li>';
@@ -1312,7 +1317,7 @@ case 'PGV_WIZARD':
 	$text .= '</li><li>';
 	$text .= WT_I18N::translate('You must export your latest GEDCOM data');
 	$text .= '</li><li>';
-	$text .= WT_I18N::translate('The current <b>webtrees</b> admin username must be the same as an existing PGV admin username');
+	$text .= WT_I18N::translate('The current kiwitrees admin username must be the same as an existing PGV admin username');
 	$text .= '</li><li>';
 	$text .= WT_I18N::translate('All existing PGV users must have distinct email addresses');
 	$text .= '</li></ul><p>';
@@ -1322,7 +1327,7 @@ case 'PGV_WIZARD':
 
 case 'phpinfo':
 	$title=WT_I18N::translate('PHP information');
-	$text=WT_I18N::translate('This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server\'s software, as it relates to PHP and <b>webtrees</b>, can be viewed.');
+	$text=WT_I18N::translate('This page provides extensive information about the server on which kiwitrees is being hosted.  Many configuration details about the server\'s software, as it relates to PHP and kiwitrees, can be viewed.');
 	break;
 
 case 'pending_changes':
@@ -1500,7 +1505,7 @@ case 'username':
 
 case 'utf8_ansi':
 	$title=WT_I18N::translate('Convert from UTF-8 to ANSI');
-	$text=WT_I18N::translate('For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br /><br />The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren\'t sure, consult the documentation of that program.<br /><br />Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program\'s method for handling these special characters by some other means.  Consult your program\'s manufacturer or author.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/UTF-8\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8.');
+	$text=WT_I18N::translate('For optimal display on the Internet, kiwitrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br /><br />The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren\'t sure, consult the documentation of that program.<br /><br />Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program\'s method for handling these special characters by some other means.  Consult your program\'s manufacturer or author.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/UTF-8\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8.');
 	break;
 
 case 'zip':
