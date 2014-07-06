@@ -148,11 +148,13 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 				if(is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
 				if(!isset($value)) $value = '1';
 				if($value == true) {
+					$name = false; // only use the first fact with a NAME tag.
 					foreach ($globalfacts as $key=>$value) {
 						$fact = $value->getTag();
-						if ($fact == "NAME") {
+						if ($fact == "NAME" && !$name) {
 							$primary = $this->getPrimaryName($value);
 							if($primary) {
+								$name = true;
 								// create plugin vars						
 								$givn 		= $this->encode($primary['givn'], $plugin->encode_plus()); // all given names
 								$given		= explode(" ", $primary['givn']);
