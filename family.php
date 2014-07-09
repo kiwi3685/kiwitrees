@@ -107,12 +107,11 @@ echo '
 				print_children($controller->record->getXref()), '
 			</div>
 		</div>
-		<hr>
 		<div id="fam_info">
 			<div class="subheaders">', WT_I18N::translate('Family Group Information'), '</div>';
 				if ($controller->record->canDisplayDetails()) {
 					echo '<div>';
-					$controller->printFamilyFacts2();
+					$controller->printFamilyFacts();
 					echo '</div>';
 				} else {
 					echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';

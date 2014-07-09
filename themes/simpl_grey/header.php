@@ -104,10 +104,7 @@ if ($view!='simple') {
 
 if ($view!='simple') {
 	//Prepare menu arrays
-	$home_menu=array(
-		$menu = WT_MenuBar::getGedcomMenu(),
-		$menu = WT_MenuBar::getMyPageMenu()
-	);
+	$home_menu=array("Home page", "My Page");
 	$view_menu=array(
 		$menu = WT_MenuBar::getChartsMenu(),
 		$menu = WT_MenuBar::getListsMenu(),
@@ -152,8 +149,8 @@ if ($view!='simple') {
 						}
 					echo '<span><b>', WT_I18N::translate('Home'), '</b></span></a>
 					<ul class="sub">';
-						foreach ($home_menu as $n=>$menu) {
-							if ($menu) {
+						foreach ($module_menu as $n=>$menu) {
+							if ($menu && in_array($home_menu, $menu)) {
 								$menu->title = '';							
 								echo $menu;
 							}

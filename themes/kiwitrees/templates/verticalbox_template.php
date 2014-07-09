@@ -45,8 +45,7 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 				<div id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname, '</div>
 			</a>
 			<div class="name',$style,'">',$genderImage,'</div>
-			<div>',$BirthDeath, '</div>
-			<hr>
+			<div>',$BirthDeath, '</div>		
 			<div class="icon">', $icons, '</div>
 		</div>';
 	// end of zoom view
