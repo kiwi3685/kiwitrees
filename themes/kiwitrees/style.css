@@ -159,7 +159,7 @@ input:requi#ff0000:invalid, textarea:requi#ff0000:invalid{background-image:url(d
 
 /* My page specific */
 #my-page .blockheader {background:#a9adbc;font-size:16px;height:30px;border-bottom:5px solid #555;overflow:hidden;padding:15px 10px 10px;color:#555;text-transform:uppercase;}
-#my-page #index_small_blocks > div, #my-page #index_main_blocks > div, #my-page #index_full_blocks > div{background:#ddd;margin:6px 1%;height:300px;overflow:hidden}
+#my-page #index_small_blocks > div, #my-page #index_main_blocks > div, #my-page #index_full_blocks > div{background:#ddd;margin:6px 1%;min-height:300px;overflow:hidden}
 #my-page .blockcontent{padding:10px;}
 
 /* kiwitrees user welcome block icons */
