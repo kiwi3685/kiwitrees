@@ -52,7 +52,7 @@ h2 {color:#006;font-weight:bold;font-size:18px;}
 h4 {color:#006;font-weight:bold;font-size:12px;}
 input:requi#ff0000:valid, textarea:requi#ff0000:valid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat;}
 input:requi#ff0000:invalid, textarea:requi#ff0000:invalid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
-html[dir="rtl"] input:requi#ff0000:valid, html[dir="rtl"] textarea:requi#ff0000:valid, html[dir="rtl"] input:requi#ff0000:invalid, html[dir="rtl"] textarea:requi#ff0000:invalid {background-position:left top;}
+[dir='rtl'] input:requi#ff0000:valid, [dir='rtl'] textarea:requi#ff0000:valid, [dir='rtl'] input:requi#ff0000:invalid, [dir='rtl'] textarea:requi#ff0000:invalid {background-position:left top;}
 
 /* ========= Top bar items ========== */
 #flash-messages {clear:both;}
@@ -239,7 +239,7 @@ a:hover .nameZoom {color:#f00;font-weight:bold;font-size:14px;}
 .image {height:150px;padding:5px;margin:2px;}
 .gender_image {margin:0 3px;border:none;vertical-align:middle;}
 .pedigree_image {float:left;margin:0 4px 0 0;max-height:50px;max-width:37px;}
-html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 4px;}
+[dir='rtl'] .pedigree_image {float:right;margin:0 0 0 4px;}
 .pedigree_form {width:45px;}
 .thumbnail {height:auto;padding:3px;}
 .icon {border:none;}
@@ -434,7 +434,7 @@ ul.clist {list-style-image:none;text-decoration:none;margin:0;}
 
 dl {margin:0;}
 dt {float:left;font-weight:bold;margin-right:10px;}
-html[dir="rtl"] dt {float:right;margin-right:auto;margin-left:10px;}
+[dir='rtl'] dt {float:right;margin-right:auto;margin-left:10px;}
 
 /* Find special characters */
 .largechars {font-family:monospace;font-size:200%;}
@@ -462,9 +462,9 @@ html[dir="rtl"] dt {float:right;margin-right:auto;margin-left:10px;}
 .person_box_template .chart_textbox {height:auto;overflow:hidden;}
 .person_box_template  .details div {display:block;}
 .person_box_template img {float:left;margin:0 4px 0 0;height:50px;width:auto;max-width:80px;}
-html[dir="rtl"] .person_box_template img {float:right;margin:0 0 0 4px;}
+[dir='rtl'] .person_box_template img {float:right;margin:0 0 0 4px;}
 .person_box_template i[class^="icon-silhouette"]{float:left;}
-html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right;}
+[dir='rtl'] .person_box_template i[class^="icon-silhouette"]{float:right;}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls {margin:0 auto;}
 #medialist-page .list_table, #medialist-page .list_table_controls {width:100%;}
@@ -1241,7 +1241,7 @@ a#copy {clear:both;float:left; font-size:11px; font-style:italic; margin-top:-30
 #family-page [id^="out-"]:hover > [id^="fontdef-"] {display:block; z-index:9999; position:absolute; left:-85px; right:auto; top:0; border-radius:8px; box-shadow:0 0 10px 5px grey; width:250px; border:1px solid; background:ivory; min-height:100px;}
 #family-page [id^="fontdef-"] {display:none; text-align:left; padding:5px 5px 0 5px;}
 #family-page [id^="fontdef-"] .NAME {font-weight:900; font-size:110%; padding:5px 0; display:block;}
-#family-page [id^="fontdef-"] .icon {clear:both; margin-top:5px;}
+#family-page [id^="fontdef-"] .icon {border-top:1px solid; clear:both; margin:5px;}
 #family-page [id^="fontdef-"] .icon .itr {position:relative; width:20px; margin:auto;}
 #family-page [id^="fontdef-"] .icon .itr a {margin-top:5px;}
 #family-page [id^="fontdef-"] .icon .itr .popup {width:240px; margin-right:-110px;} 

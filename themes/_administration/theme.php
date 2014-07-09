@@ -36,12 +36,12 @@ $headerfile = WT_THEME_DIR.'header.php';
 $footerfile = WT_THEME_DIR.'footer.php';
 
 //- main icons
-$WT_IMAGES=array(
+$WT_IMAGES = array(
 	// lightbox module uses this in manage media links, and also admin_media.php for delete folder.
 	'remove'         =>WT_THEME_URL.'images/delete.png',
 
 	// need different sizes before moving to CSS
-	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
-	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
-	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
+	'default_image_F' => WT_THEME_URL . 'images/silhouette_female.png',
+	'default_image_M' => WT_THEME_URL . 'images/silhouette_male.png',
+	'default_image_U' => WT_THEME_URL . 'images/silhouette_unknown.png',
 );
