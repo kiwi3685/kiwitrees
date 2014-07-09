@@ -55,9 +55,9 @@ $WT_IMAGES=array(
 	'search'         =>WT_THEME_URL.'images/search.png',
 
 	// need different sizes before moving to CSS
-//	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
-//	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
-//	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
+	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
+	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
+	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
 
 	// need to replace with a system based on mime-types
 	'media'          =>WT_THEME_URL.'images/media/image-jpeg.png',
