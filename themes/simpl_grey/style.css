@@ -378,6 +378,7 @@ dt{float:left;font-weight:700;margin-right:10px}
 .icon_arrow{background:url(images/small_menu_sprite.png) no-repeat left 0;background-position:90% -1166px;display:block}
 [dir='rtl'] .icon_arrow{background-position:10% -1184px}
 .ui-tabs .ui-tabs-panel{margin-bottom:80px;padding:1em 0}
+.ui-tabs .ui-tabs-nav {height: 25px;}
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
 .ui-tabs .ui-tabs-nav li a span {display:block; padding:.15em .35em;}
 .ui-accordion .ui-accordion-content{padding:5px}
