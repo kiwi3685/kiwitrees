@@ -2170,7 +2170,6 @@ msgstr "电子邮件验证"
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "至少个 %s 字符"
-msgstr[1] "至少个 %s 字符"
 
 #: admin_users.php:405 edituser.php:148 help_text.php:1299 login.php:405
 msgid "Confirm password"
@@ -3931,10 +3930,7 @@ msgid ""
 msgid_plural ""
 "Note: \"living\" is defined (if no death or burial is known) as ending %d "
 "years after birth or estimated birth."
-msgstr[0] ""
-"注:“活着”的定义是如果没有死亡和埋葬做为出生或估计出生后%d年后的结果。"
-msgstr[1] ""
-"注:“活着”的定义是如果没有死亡和埋葬做为出生或估计出生后%d年后的结果。"
+msgstr[0] "注:“活着”的定义是如果没有死亡和埋葬做为出生或估计出生后%d年后的结果。"
 
 #: help_text.php:569
 msgid ""
@@ -4057,7 +4053,6 @@ msgstr "在后代图中显示的最大数量的后代代数。"
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
 msgstr[0] "默认情况下，您的服务器允许脚本运行%s秒。"
-msgstr[1] "默认情况下，您的服务器允许脚本运行%s秒。"
 
 #: help_text.php:639 help_text.php:678
 msgid ""
@@ -8847,7 +8842,6 @@ msgstr "沒有孩子"
 msgid "%d Child"
 msgid_plural "%d Children"
 msgstr[0] "%d 孩子"
-msgstr[1] "%d 孩子"
 
 #: includes/functions/functions_charts.php:269
 #: includes/functions/functions_charts.php:794
@@ -8878,21 +8872,18 @@ msgstr "未出生"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s 年"
-msgstr[1] "%s 年"
 
 #: includes/functions/functions_date.php:55 library/WT/I18N.php:372
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s 月"
-msgstr[1] "%s 月"
 
 #: includes/functions/functions_date.php:57 library/WT/I18N.php:376
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "%s 周"
-msgstr[1] "%s 周"
 
 #: includes/functions/functions_date.php:59 library/WT/I18N.php:380
 #, php-format
@@ -17489,7 +17480,6 @@ msgstr "家庭文件"
 msgid "%2$s has %1$d first cousin recorded"
 msgid_plural "%2$s has %1$d first cousins recorded"
 msgstr[0] ""
-msgstr[1] ""
 
 #: modules_v3/cousins_tab/module.php:146
 #, fuzzy, php-format

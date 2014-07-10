@@ -17710,12 +17710,6 @@ msgstr ""
 msgid "Number of groups"
 msgstr "Número de generaciones:"
 
-#: modules_v3/album/module.php:290 modules_v3/fancy_imagebar/module.php:282
-msgid ""
-"The settings will be reset to default (for all trees). Are you sure you want "
-"to do this?"
-msgstr ""
-
 #: modules_v3/album/module.php:293
 msgid "Match groups to types"
 msgstr ""
@@ -18578,10 +18572,6 @@ msgstr ""
 #: modules_v3/faq/module.php:282
 msgid "Click here to Add, Edit, or Delete"
 msgstr "Haga clic aquí para agregar, editar, o borrar"
-
-#: modules_v3/faq/module.php:313
-msgid "back to top"
-msgstr "volver al principio"
 
 #: modules_v3/faq/module.php:365
 msgid "The FAQ list is empty."
@@ -23064,23 +23054,9 @@ msgstr "im Alter von %s Jahren"
 msgid "back to top"
 msgstr "Zum Seitenanfang"
 
-#: modules_v3\fancy_treeview/module.php:1440
-msgctxt "FEMALE"
-msgid "died"
-msgstr "starb"
-
-#: modules_v3\fancy_treeview/module.php:1440
-msgctxt "MALE"
-msgid "died"
-msgstr "starb"
-
 #: modules_v3\fancy_treeview/module.php:1195
 msgid "fifth"
 msgstr "fünfte"
-
-#: modules_v3\fancy_treeview/module.php:1191
-msgid "first"
-msgstr "erste"
 
 #: modules_v3\fancy_treeview/module.php:712
 #: modules_v3\fancy_treeview/module.php:715

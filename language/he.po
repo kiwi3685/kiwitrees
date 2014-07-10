@@ -17289,12 +17289,6 @@ msgstr ""
 msgid "Number of groups"
 msgstr "מספר דורות:"
 
-#: modules_v3/album/module.php:290 modules_v3/fancy_imagebar/module.php:282
-msgid ""
-"The settings will be reset to default (for all trees). Are you sure you want "
-"to do this?"
-msgstr ""
-
 #: modules_v3/album/module.php:293
 msgid "Match groups to types"
 msgstr ""
@@ -22537,27 +22531,9 @@ msgctxt "age in years"
 msgid "at the age of %s"
 msgstr "בגיל %s שנים"
 
-#: modules_v3\fancy_treeview/module.php:1091
-msgid "back to top"
-msgstr "חזרה למעלה"
-
-#: modules_v3\fancy_treeview/module.php:1440
-msgctxt "FEMALE"
-msgid "died"
-msgstr "נפטרה"
-
-#: modules_v3\fancy_treeview/module.php:1440
-msgctxt "MALE"
-msgid "died"
-msgstr "נפטר"
-
 #: modules_v3\fancy_treeview/module.php:1195
 msgid "fifth"
 msgstr "חמישית"
-
-#: modules_v3\fancy_treeview/module.php:1191
-msgid "first"
-msgstr "ראשונה"
 
 #: modules_v3\fancy_treeview/module.php:712
 #: modules_v3\fancy_treeview/module.php:715

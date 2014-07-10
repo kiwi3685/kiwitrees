@@ -17714,12 +17714,6 @@ msgstr ""
 msgid "Number of groups"
 msgstr "Aantal generaties:"
 
-#: modules_v3/album/module.php:290 modules_v3/fancy_imagebar/module.php:282
-msgid ""
-"The settings will be reset to default (for all trees). Are you sure you want "
-"to do this?"
-msgstr ""
-
 #: modules_v3/album/module.php:293
 msgid "Match groups to types"
 msgstr ""
@@ -22629,18 +22623,6 @@ msgstr "Plaats bevat"
 msgid "Descendants of "
 msgstr "Afstammelingen van %s"
 
-#: modules_v3/descendancy_report/report.bak:134
-#: modules_v3/descendancy_report/report.bak:434
-msgctxt "MALE"
-msgid "died"
-msgstr ""
-
-#: modules_v3/descendancy_report/report.bak:137
-#: modules_v3/descendancy_report/report.bak:364
-msgctxt "FEMALE"
-msgid "died"
-msgstr ""
-
 #: modules_v3/descendancy_report/report.bak:175
 #, fuzzy
 msgctxt "MALE"
@@ -23103,10 +23085,6 @@ msgctxt "age in years"
 msgid "at the age of %s"
 msgstr "op %s-jarige leeftijd"
 
-#: modules_v3\fancy_treeview/module.php:1091
-msgid "back to top"
-msgstr "terug naar boven"
-
 #: modules_v3\fancy_treeview/module.php:1440
 msgctxt "FEMALE"
 msgid "died"
@@ -23120,10 +23098,6 @@ msgstr "overleed"
 #: modules_v3\fancy_treeview/module.php:1195
 msgid "fifth"
 msgstr "vijfde"
-
-#: modules_v3\fancy_treeview/module.php:1191
-msgid "first"
-msgstr "eerste"
 
 #: modules_v3\fancy_treeview/module.php:712
 #: modules_v3\fancy_treeview/module.php:715

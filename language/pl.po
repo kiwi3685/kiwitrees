@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-06-17 16:46+1200\n"
-"PO-Revision-Date: 2014-06-17 16:46+1200\n"
+"PO-Revision-Date: 2014-07-10 12:14+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -17679,12 +17679,6 @@ msgstr ""
 msgid "Number of groups"
 msgstr "Liczba pokoleń:"
 
-#: modules_v3/album/module.php:290 modules_v3/fancy_imagebar/module.php:282
-msgid ""
-"The settings will be reset to default (for all trees). Are you sure you want "
-"to do this?"
-msgstr ""
-
 #: modules_v3/album/module.php:293
 msgid "Match groups to types"
 msgstr ""
@@ -22702,46 +22696,155 @@ msgid "Pedigree Chart"
 msgstr "Diagram rodowy"
 
 #: modules_v3\fancy_treeview/help_text.php:76
-msgid "<p>Currently the PDF option is only supported for LTR-languages. These are all languages in which the text is read from left to right. The PDF icon will be disabled when the user selects a RTL-language. In a RTL language the text is read from right to left.</p>"
-msgstr "<p>Obecnie opcja PDF obsługuje tylko języki używające zapisu od lewej do prawej strony. Ikona PDF będzie wyłączona gdy użytkownik wybierze język używający zapisu od prawej do lewej strony.</p>"
+msgid ""
+"<p>Currently the PDF option is only supported for LTR-languages. These are "
+"all languages in which the text is read from left to right. The PDF icon "
+"will be disabled when the user selects a RTL-language. In a RTL language the "
+"text is read from right to left.</p>"
+msgstr ""
+"<p>Obecnie opcja PDF obsługuje tylko języki używające zapisu od lewej do "
+"prawej strony. Ikona PDF będzie wyłączona gdy użytkownik wybierze język "
+"używający zapisu od prawej do lewej strony.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:72
-msgid "<p>Here you can choose to resize the default webtrees thumbnails especially for the Fancy Tree View pages. You can set a custom size in percentage or in pixels.</p><dl><dt>Size in percentage</dt><dd>The original thumbnails will be proportionally resized. This may result in a different width and height for each thumbnail.</dd><dt>Size in pixels</dt><dd>The longest side of the image will be resized to match the size in pixels. The other side will be resized proportionally.</dd><dt>Square thumbs</dt><dd>When you use a square thumbnail, all thumbnails will have the same width and height. In this case the thumbnails will be cropped.</dd></dl><p>If you untick the checkbox the default webtrees thumbnails will be used with the formats you have set on the tree configuration page.</p>"
-msgstr "<p>W tym miejscu można zmienić rozmiar miniaturek wykorzystywanych na stronach Ozdobnego widoku drzewa. Można ustawić własny rozmiar w procentach lub pikselach.</p><dl><dt>Rozmiar w procentach</dt><dd>Oryginalne miniaturki zostaną zmniejszone proporcjonalnie. W wyniku tego mogą być rózne szerokości i wysokości dla każdej miniaturki.</dd><dt>Rozmiar w pikselach</dt><dd>Najdłuższy bok obrazu będzie miał zmieniony rozmiar do tego podanego w pikselach. Drugi bok zostanie zmieniony proporcjonalnie.</dd><dt>Kwadratowe miniaturki</dt><dd>Gdy używane są kwadratowe miniaturki, wszystkie miniaturki mają taką samą szerokość i wysokość. W tym wypadku miniaturki zostaną przycięte.</dd></dl><p>Jeśli opcja nie będzie zaznaczona będą używane domyślne miniaturki w formacie ustawionym na stronie konfiguracji drzewa.</p>"
+msgid ""
+"<p>Here you can choose to resize the default webtrees thumbnails especially "
+"for the Fancy Tree View pages. You can set a custom size in percentage or in "
+"pixels.</p><dl><dt>Size in percentage</dt><dd>The original thumbnails will "
+"be proportionally resized. This may result in a different width and height "
+"for each thumbnail.</dd><dt>Size in pixels</dt><dd>The longest side of the "
+"image will be resized to match the size in pixels. The other side will be "
+"resized proportionally.</dd><dt>Square thumbs</dt><dd>When you use a square "
+"thumbnail, all thumbnails will have the same width and height. In this case "
+"the thumbnails will be cropped.</dd></dl><p>If you untick the checkbox the "
+"default webtrees thumbnails will be used with the formats you have set on "
+"the tree configuration page.</p>"
+msgstr ""
+"<p>W tym miejscu można zmienić rozmiar miniaturek wykorzystywanych na "
+"stronach Ozdobnego widoku drzewa. Można ustawić własny rozmiar w procentach "
+"lub pikselach.</p><dl><dt>Rozmiar w procentach</dt><dd>Oryginalne miniaturki "
+"zostaną zmniejszone proporcjonalnie. W wyniku tego mogą być rózne szerokości "
+"i wysokości dla każdej miniaturki.</dd><dt>Rozmiar w pikselach</"
+"dt><dd>Najdłuższy bok obrazu będzie miał zmieniony rozmiar do tego podanego "
+"w pikselach. Drugi bok zostanie zmieniony proporcjonalnie.</"
+"dd><dt>Kwadratowe miniaturki</dt><dd>Gdy używane są kwadratowe miniaturki, "
+"wszystkie miniaturki mają taką samą szerokość i wysokość. W tym wypadku "
+"miniaturki zostaną przycięte.</dd></dl><p>Jeśli opcja nie będzie zaznaczona "
+"będą używane domyślne miniaturki w formacie ustawionym na stronie "
+"konfiguracji drzewa.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:33
-msgid "<p>Here you can enter a surname. The script will automatically search for the oldest person with this surname.</p><p>This person will act as the root person for this family branch. Potential you can perform a phonetic search by placing a check mark in one or both phonetic algorithms.</p><p>After the search is complete, it is possible to change the ID of the root person. You can enter as much surnames as you like. There will be a menu-link and page created for each surname.</p><p>By dragging and dropping the table entries which will appear after you have set the first surname, you can sort the pages in any way you want.</p>"
-msgstr "<p>W tym miejscu można podać nazwisko. Program automatycznie wyszuka najstarszą osobą z danym nazwiskiem.</p><p>Ta osoba będzie traktowana jako probant dla tej gałęzi rodziny. Można przeprowadzić fonetyczne wyszukiwanie wybierając jeden lub oba algorytmy wyszukiwania fonetycznego.</p><p>Gdy wyszukiwanie jest zakończone możliwa jest zmiana identyfikatora probanta. Można wprowadzić dowolną liczbę nazwisk. Będzie dostępny odnośnik menu i utworzona strona dla każdego nazwiska.</p><p>Używając metody przeciągnij i upuść będzie można modyfikować kolejność w jakiej będą wyświetlane wprowadzone nazwiska.</p>"
+msgid ""
+"<p>Here you can enter a surname. The script will automatically search for "
+"the oldest person with this surname.</p><p>This person will act as the root "
+"person for this family branch. Potential you can perform a phonetic search "
+"by placing a check mark in one or both phonetic algorithms.</p><p>After the "
+"search is complete, it is possible to change the ID of the root person. You "
+"can enter as much surnames as you like. There will be a menu-link and page "
+"created for each surname.</p><p>By dragging and dropping the table entries "
+"which will appear after you have set the first surname, you can sort the "
+"pages in any way you want.</p>"
+msgstr ""
+"<p>W tym miejscu można podać nazwisko. Program automatycznie wyszuka "
+"najstarszą osobą z danym nazwiskiem.</p><p>Ta osoba będzie traktowana jako "
+"probant dla tej gałęzi rodziny. Można przeprowadzić fonetyczne wyszukiwanie "
+"wybierając jeden lub oba algorytmy wyszukiwania fonetycznego.</p><p>Gdy "
+"wyszukiwanie jest zakończone możliwa jest zmiana identyfikatora probanta. "
+"Można wprowadzić dowolną liczbę nazwisk. Będzie dostępny odnośnik menu i "
+"utworzona strona dla każdego nazwiska.</p><p>Używając metody przeciągnij i "
+"upuść będzie można modyfikować kolejność w jakiej będą wyświetlane "
+"wprowadzone nazwiska.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:67
 #, fuzzy
-msgid "<p>If you have ticked the “Show places” option but NOT the option to abbreviate placenames, you can set your own country here. Full places will be listed on the Fancy Tree View pages, but when a place includes the name of your own country, this name will be left out.</p><p>If you don’t select a country then all countries will be shown, including your own.</p>"
-msgstr "<p>Gdy ta opcja jest wybrana będzie można ustawić własny kraj. Będą wyświetlane pełne nazwy miejsc, ale gdy nazwa będzie zwierała ustawiną nazwę kraju, ta nazwa nie będzie wyświetlana.</p><p>Gdy nie będzie wybrany żaden kraj wszystkie miejsca będą wyświetlane w pełnej postaci.</p>"
+msgid ""
+"<p>If you have ticked the “Show places” option but NOT the option to "
+"abbreviate placenames, you can set your own country here. Full places will "
+"be listed on the Fancy Tree View pages, but when a place includes the name "
+"of your own country, this name will be left out.</p><p>If you don’t select a "
+"country then all countries will be shown, including your own.</p>"
+msgstr ""
+"<p>Gdy ta opcja jest wybrana będzie można ustawić własny kraj. Będą "
+"wyświetlane pełne nazwy miejsc, ale gdy nazwa będzie zwierała ustawiną nazwę "
+"kraju, ta nazwa nie będzie wyświetlana.</p><p>Gdy nie będzie wybrany żaden "
+"kraj wszystkie miejsca będą wyświetlane w pełnej postaci.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:63
-msgid "<p>If you have ticked the “Show places” option, you can choose to use the default Gedcom settings to abbreviate placenames. If you don’t set this option, full place names will be shown.</p>"
-msgstr "<p>Jeśli została wybrana opcja „Pokaż miejsca” będzie można użyć domyślnych ustawień drzewa odnoszących się do skracania nazw miejsc. Jeśli ta opcja nie zostanie ustawiona będą pokazane pełne nazwy miejsc.</p>"
+msgid ""
+"<p>If you have ticked the “Show places” option, you can choose to use the "
+"default Gedcom settings to abbreviate placenames. If you don’t set this "
+"option, full place names will be shown.</p>"
+msgstr ""
+"<p>Jeśli została wybrana opcja „Pokaż miejsca” będzie można użyć domyślnych "
+"ustawień drzewa odnoszących się do skracania nazw miejsc. Jeśli ta opcja nie "
+"zostanie ustawiona będą pokazane pełne nazwy miejsc.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:40
 #, php-format
-msgid "<p>The displayed surname is the surname used in the menu. It is possible to change the displayed surname to a more appropriate name.</p><p>If you click on the surname, an “edit”-field appears where you can change the surname. Click on the “save” button to save your input.</p><p>Note: this option is not available when the option “%s” is checked.</p>"
-msgstr "<p>Wyświetlane nazwisko jest nazwiskiem używanym w menu. Możliwe jest zmienienie nazwiska do bardziej pasującej nazwy.</p><p>Gdy zostanie kliknięte nazwisko, pojawi się pole edycji, w którym będzie można zmienić nazwisko. Należy kliknąć na przycisk „Zapisz” aby zapisać wprowadzone zmiany.</p><p>Uwaga: ta opcja jest niedostępna gdy jest zaznaczona opcja „%s”.</p>"
+msgid ""
+"<p>The displayed surname is the surname used in the menu. It is possible to "
+"change the displayed surname to a more appropriate name.</p><p>If you click "
+"on the surname, an “edit”-field appears where you can change the surname. "
+"Click on the “save” button to save your input.</p><p>Note: this option is "
+"not available when the option “%s” is checked.</p>"
+msgstr ""
+"<p>Wyświetlane nazwisko jest nazwiskiem używanym w menu. Możliwe jest "
+"zmienienie nazwiska do bardziej pasującej nazwy.</p><p>Gdy zostanie "
+"kliknięte nazwisko, pojawi się pole edycji, w którym będzie można zmienić "
+"nazwisko. Należy kliknąć na przycisk „Zapisz” aby zapisać wprowadzone zmiany."
+"</p><p>Uwaga: ta opcja jest niedostępna gdy jest zaznaczona opcja „%s”.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:46
-msgid "<p>This option is especially usefull for large trees. When you notice a slow page load, here you can set the number of generation blocks to load at once to a lower level.</p><p>Below the last generation block a button will appear to add the next set of generation blocks. The new blocks will be added to the blocks already loaded.</p><p>Clicking on a “follow” link in the last visible generation block, will also load the next set of generation blocks.</p>"
-msgstr "<p>Dana opcja jest szczególnie użyteczna w przypadku dużych drzew. Gdy zauważone zostanie wolne ładowanie strony, w tym miejscu można ustawić mniejszą liczbę bloków pokoleń ładowanych w jednej chwili.</p><p>Poniżej ostatniego pokolenia zostanie wyświetlony przycisk dodający kolejne bloki pokoleń. Nowe bloki będą dodawane do tych, które już są wyświetlone.</p><p>Kliknięcie na odnośnik „przejdź do” znajdujący się w ostatnim bloku również spowoduje załadowanie następnych bloków pokoleń.</p>"
+msgid ""
+"<p>This option is especially usefull for large trees. When you notice a slow "
+"page load, here you can set the number of generation blocks to load at once "
+"to a lower level.</p><p>Below the last generation block a button will appear "
+"to add the next set of generation blocks. The new blocks will be added to "
+"the blocks already loaded.</p><p>Clicking on a “follow” link in the last "
+"visible generation block, will also load the next set of generation blocks.</"
+"p>"
+msgstr ""
+"<p>Dana opcja jest szczególnie użyteczna w przypadku dużych drzew. Gdy "
+"zauważone zostanie wolne ładowanie strony, w tym miejscu można ustawić "
+"mniejszą liczbę bloków pokoleń ładowanych w jednej chwili.</p><p>Poniżej "
+"ostatniego pokolenia zostanie wyświetlony przycisk dodający kolejne bloki "
+"pokoleń. Nowe bloki będą dodawane do tych, które już są wyświetlone.</"
+"p><p>Kliknięcie na odnośnik „przejdź do” znajdujący się w ostatnim bloku "
+"również spowoduje załadowanie następnych bloków pokoleń.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:58
-msgid "<p>Turn this option on if you want to show single persons in the generation blocks. Single persons are persons without partner and children.</p><p>With this option turned on, every child of a family will be shown in a detailed way in the next generation block.</p>"
-msgstr "<p>Należy włączyć tą opcję aby pokazać osoby samotne w blokach pokoleń. Osoby samotne to osoby nie posiadające współmażonka i dzieci.</p><p>Gdy ta opcja jest włączona każde dziecko rodziny będzie pokazane szczegółowo w bloku następnego pokolenia.</p>"
+msgid ""
+"<p>Turn this option on if you want to show single persons in the generation "
+"blocks. Single persons are persons without partner and children.</p><p>With "
+"this option turned on, every child of a family will be shown in a detailed "
+"way in the next generation block.</p>"
+msgstr ""
+"<p>Należy włączyć tą opcję aby pokazać osoby samotne w blokach pokoleń. "
+"Osoby samotne to osoby nie posiadające współmażonka i dzieci.</p><p>Gdy ta "
+"opcja jest włączona każde dziecko rodziny będzie pokazane szczegółowo w "
+"bloku następnego pokolenia.</p>"
 
 #: modules_v3\fancy_treeview/help_text.php:52
-msgid "<p>With this option turned on, the script checks if a (married) couple has the same ancestors.</p><p>If a relationship between the partners is found, a text will appear between brackets after the spouses’ name to indicate the relationship.</p><p>Note: this option can cause slower page loading, especially on large trees. If you notice such a behavior, reduce the number of generation blocks to load at once (see the previous option).</p>"
-msgstr "<p>Gdy ta opcja jest włączona program sprawdzi czy małżonkowie posiadają wspólnych przodków.</p><p>Gdy pokrewieństwo pomiędzy małżonkami będzie znalezione zostanie wyświetlony pomiędzy imionami małżonków tekst w nawiasie oznaczający pokrewieństwo.</p><p>Uwaga: opcja ta powoduje wolniejsze ładowanie strony, szczególnie przy dużych drzewach. Gdy takie działanie zostanie zauważone należy zredukować liczbę bloków pokoleń ładowanych w danym momencie (poprzednia opcja).</p>"
+msgid ""
+"<p>With this option turned on, the script checks if a (married) couple has "
+"the same ancestors.</p><p>If a relationship between the partners is found, a "
+"text will appear between brackets after the spouses’ name to indicate the "
+"relationship.</p><p>Note: this option can cause slower page loading, "
+"especially on large trees. If you notice such a behavior, reduce the number "
+"of generation blocks to load at once (see the previous option).</p>"
+msgstr ""
+"<p>Gdy ta opcja jest włączona program sprawdzi czy małżonkowie posiadają "
+"wspólnych przodków.</p><p>Gdy pokrewieństwo pomiędzy małżonkami będzie "
+"znalezione zostanie wyświetlony pomiędzy imionami małżonków tekst w nawiasie "
+"oznaczający pokrewieństwo.</p><p>Uwaga: opcja ta powoduje wolniejsze "
+"ładowanie strony, szczególnie przy dużych drzewach. Gdy takie działanie "
+"zostanie zauważone należy zredukować liczbę bloków pokoleń ładowanych w "
+"danym momencie (poprzednia opcja).</p>"
 
 #. I18N: Description of the module
 #: modules_v3\fancy_treeview/module.php:58
-msgid "A Fancy overview of the descendants of one family(branch) in a narrative way"
+msgid ""
+"A Fancy overview of the descendants of one family(branch) in a narrative way"
 msgstr "Ozdobny widok potomków rodziny prezentowany w stylu narracyjnym"
 
 #: modules_v3\fancy_treeview/help_text.php:32
@@ -22778,7 +22881,7 @@ msgstr "Edytuj nazwisko (wyświetlane w menu)"
 #: modules_v3\fancy_treeview/module.php:373
 #, php-format
 msgid "Error: An individual with ID %s doesn’t exist in this tree."
-msgstr "Błąd: Osoba z danym identyfikatorem nie istniej w danym drzewie."
+msgstr "Błąd: Osoba z danym identyfikatorem %s nie istniej w danym drzewie."
 
 #: modules_v3\fancy_treeview/module.php:328
 msgid "Error: The root person belonging to this surname already exists"
@@ -22790,8 +22893,12 @@ msgstr "Błąd: Probant już istnieje"
 
 #: modules_v3\fancy_treeview/module.php:294
 #: modules_v3\fancy_treeview/module.php:364
-msgid "Error: The root person you are trying to add has no partner and/or children. It is not possible to set this individual as root person."
-msgstr "Błąd: Dany probant nie posiada małżonka i/lub dzieci. Nie ma możliwości ustawienia danej osoby jako probanta."
+msgid ""
+"Error: The root person you are trying to add has no partner and/or children. "
+"It is not possible to set this individual as root person."
+msgstr ""
+"Błąd: Dany probant nie posiada małżonka i/lub dzieci. Nie ma możliwości "
+"ustawienia danej osoby jako probanta."
 
 #: modules_v3\fancy_treeview/module.php:285
 msgid "Error: The surname you entered doesn’t exist in this tree."
@@ -22932,7 +23039,9 @@ msgid "The person with root id %s doesn’t exist anymore in this tree"
 msgstr "Błąd: Osoba z identyfikatorem %s nie istnieje w danym drzewie."
 
 #: modules_v3\fancy_treeview/module.php:673
-msgid "The settings will be reset to default (for all trees). Are you sure you want to do this?"
+msgid ""
+"The settings will be reset to default (for all trees). Are you sure you want "
+"to do this?"
 msgstr "Ustawienia zostaną zresetowane (dla wyszstkich drzew). Czy wykonać?"
 
 #: modules_v3\fancy_treeview/module.php:652
@@ -23002,27 +23111,9 @@ msgctxt "age in years"
 msgid "at the age of %s"
 msgstr "w wieku %s"
 
-#: modules_v3\fancy_treeview/module.php:1091
-msgid "back to top"
-msgstr "powrót do góry"
-
-#: modules_v3\fancy_treeview/module.php:1440
-msgctxt "FEMALE"
-msgid "died"
-msgstr "zmarła"
-
-#: modules_v3\fancy_treeview/module.php:1440
-msgctxt "MALE"
-msgid "died"
-msgstr "zmarł"
-
 #: modules_v3\fancy_treeview/module.php:1195
 msgid "fifth"
 msgstr "Piątym"
-
-#: modules_v3\fancy_treeview/module.php:1191
-msgid "first"
-msgstr "Pierwszym"
 
 #: modules_v3\fancy_treeview/module.php:712
 #: modules_v3\fancy_treeview/module.php:715
@@ -23137,8 +23228,18 @@ msgstr "urodził się"
 msgid "were divorced"
 msgstr "rozwiedli się"
 
-#~ msgid "<p>Here you can choose to use custom thumbnails especially for the Fancy Tree View pages. You can set a custom size and/or opt for square thumbnails.</p><p>If you untick the checkbox the default webtrees thumbnails will be used with the formats you set on the tree configuration page.</p>"
-#~ msgstr "<p>W tym miejscu można wybrać używanie zmienionych miniaturek na stronach Ozdobnego widoku drzewa. Można wybrać własny rozmiar oraz opcję kwadratowej miniaturki.</p><p>Jeśli opcja pozostanie niezaznaczona będą używane domyślne miniaturki, których format można ustawić na stronie konfiguracji drzewa genealogicznego.</p>"
+#~ msgid ""
+#~ "<p>Here you can choose to use custom thumbnails especially for the Fancy "
+#~ "Tree View pages. You can set a custom size and/or opt for square "
+#~ "thumbnails.</p><p>If you untick the checkbox the default webtrees "
+#~ "thumbnails will be used with the formats you set on the tree "
+#~ "configuration page.</p>"
+#~ msgstr ""
+#~ "<p>W tym miejscu można wybrać używanie zmienionych miniaturek na stronach "
+#~ "Ozdobnego widoku drzewa. Można wybrać własny rozmiar oraz opcję "
+#~ "kwadratowej miniaturki.</p><p>Jeśli opcja pozostanie niezaznaczona będą "
+#~ "używane domyślne miniaturki, których format można ustawić na stronie "
+#~ "konfiguracji drzewa genealogicznego.</p>"
 
 #, fuzzy
 #~ msgid "The pdf could not be generated."

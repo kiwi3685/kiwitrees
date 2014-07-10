@@ -18167,14 +18167,6 @@ msgstr ""
 "Die Einstellungen wurden geändert. Wenn Sie den Stammbaum wechseln, gehen "
 "die Änderungen verloren."
 
-#: modules_v3/fancy_imagebar/module.php:313
-msgid ""
-"The settings will be reset to default (for all trees). Are you sure you want "
-"to do this?"
-msgstr ""
-"Die Einstellungen aller Stammbäume werden auf die voreingestellten Werte "
-"zurückgesetzt. Wollen Sie dies wirklich?"
-
 #: modules_v3/fancy_imagebar/module.php:318
 msgid "Choose which images you want to show in the Fancy Imagebar"
 msgstr "Wählen Sie die Bilder, die Sie in der Fancy Imagebar anzeigen möchten"
@@ -18372,10 +18364,6 @@ msgstr ""
 #: modules_v3/faq/module.php:282
 msgid "Click here to Add, Edit, or Delete"
 msgstr "Hier klicken zum Hinzufügen, Ändern oder Löschen"
-
-#: modules_v3/faq/module.php:313
-msgid "back to top"
-msgstr "zurück nach oben"
 
 #: modules_v3/faq/module.php:365
 msgid "The FAQ list is empty."
@@ -21996,10 +21984,6 @@ msgstr "starb"
 #: modules_v3\fancy_treeview/module.php:1195
 msgid "fifth"
 msgstr "fünfte"
-
-#: modules_v3\fancy_treeview/module.php:1191
-msgid "first"
-msgstr "erste"
 
 #: modules_v3\fancy_treeview/module.php:712
 #: modules_v3\fancy_treeview/module.php:715
