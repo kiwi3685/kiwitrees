@@ -557,7 +557,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			$picasa_set = get_block_setting($item_id, 'gallery_folder_p');
 			$js.='
 				Galleria.run("#galleria", {
-					picasa: "usergallery:'.$picasa_set.'",
+					picasa: "useralbum:'.$picasa_set.'",
 					picasaOptions: {
 						sort: "date-posted-asc"
 					},
@@ -656,13 +656,16 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	// Start to show the gallery display with the parts common to all galleries
 	private function show() {
 		global $MEDIA_DIRECTORY, $controller;
-		$gallery_header_description = '';
+
+		$HEADER_TITLE			= get_module_setting('gallery', 'HEADER_TITLE', WT_I18N::translate('Gallery'));
+		$HEADER_DESCRIPTION		= get_module_setting('gallery', 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
+
 		$item_id=safe_GET('gallery_id');
 		$controller=new WT_Controller_Page();
 		$controller
-			->setPageTitle(WT_I18N::translate('Picture galleries'))
+			->setPageTitle($HEADER_TITLE)
 			->pageHeader()
-			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/galleria-1.3.5.min.js')
+			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/galleria-1.3.6.min.js')
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/flickr/galleria.flickr.min.js')
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/picasa/galleria.picasa.min.js')
 			->addInlineJavaScript($this->getJavaScript($item_id));
@@ -670,7 +673,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			'<div id="gallery-page">'.
 			'<div id="gallery-container">'.
 			'<h2>'.$controller->getPageTitle().'</h2>'.
-			$gallery_header_description.
+			$HEADER_DESCRIPTION.
 			'<div style="clear:both;"></div>'.
 			'<div id="gallery_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">'.
 			'<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
