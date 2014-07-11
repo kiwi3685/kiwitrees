@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-06-30 10:17+1200\n"
-"PO-Revision-Date: 2014-07-10 17:48+1200\n"
+"PO-Revision-Date: 2014-07-11 12:05+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
 "kiwitrees/language/en_GB/)\n"
@@ -10618,7 +10618,7 @@ msgstr "August"
 #: library/WT/Date/Calendar.php:156
 msgctxt "GENITIVE"
 msgid "September"
-msgstr "Member"
+msgstr "September"
 
 #: library/WT/Date/Calendar.php:157
 msgctxt "GENITIVE"
@@ -10628,12 +10628,12 @@ msgstr "October"
 #: library/WT/Date/Calendar.php:158
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "Member"
+msgstr "November"
 
 #: library/WT/Date/Calendar.php:159
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "Member"
+msgstr "December"
 
 #: library/WT/Date/Calendar.php:165
 msgctxt "LOCATIVE"
@@ -10678,7 +10678,7 @@ msgstr "August"
 #: library/WT/Date/Calendar.php:173
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr "Member"
+msgstr "September"
 
 #: library/WT/Date/Calendar.php:174
 msgctxt "LOCATIVE"
@@ -10688,12 +10688,12 @@ msgstr "October"
 #: library/WT/Date/Calendar.php:175
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "Member"
+msgstr "November"
 
 #: library/WT/Date/Calendar.php:176
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "Member"
+msgstr "December"
 
 #: library/WT/Date/Calendar.php:182
 msgctxt "INSTRUMENTAL"
@@ -10738,7 +10738,7 @@ msgstr "August"
 #: library/WT/Date/Calendar.php:190
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr "Member"
+msgstr "September"
 
 #: library/WT/Date/Calendar.php:191
 msgctxt "INSTRUMENTAL"
@@ -10748,12 +10748,12 @@ msgstr "October"
 #: library/WT/Date/Calendar.php:192
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr "Member"
+msgstr "November"
 
 #: library/WT/Date/Calendar.php:193
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr "Member"
+msgstr "December"
 
 #: library/WT/Date/Calendar.php:199
 msgctxt "Abbreviation for January"
