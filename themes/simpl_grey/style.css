@@ -337,6 +337,7 @@ a.showit:hover > span{background:#4f4f4f;border-bottom:2px solid #000;border-lef
 .gchart{border:1px solid #84beff}
 .execution_stats{color:blue;font-size:.75em;padding-top:1em;text-align:center}
 .tip_text{color:green;font-style:italic}
+.largechars {font-family:monospace;font-size:200%;}
 #facts_content dd{float:left;width:70%}
 #hitcounter{font-size:.9em;text-align:right;width:99%}
 .clearfloat{clear:both}
