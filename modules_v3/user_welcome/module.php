@@ -51,7 +51,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<td><a href="individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('My individual record').'</a></td>';
 		}
 		if (WT_USER_IS_ADMIN) {
-			$content .= '<td><a href="admin.php"><i class="icon-patriarch"></i><br>'.WT_I18N::translate('Administration').'</a></td>';
+			$content .= '<td><a href="admin.php"><i class="icon-admin"></i><br>'.WT_I18N::translate('Administration').'</a></td>';
 		}
 		$content .= '</tr>';
 		$content .= '</table>';
