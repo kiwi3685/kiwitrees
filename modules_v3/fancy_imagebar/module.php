@@ -250,14 +250,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 					jQuery(current).prop("selected", true);
 				}
 			});
-
-			// extra options for Sepia Tone
-			if(jQuery(".tone select").val == 0) jQuery(".sepia").show();
- 			else jQuery(".sepia").hide();
-			jQuery(".tone select").change(function() {
-				if(jQuery(this).val() == 0) jQuery(".sepia").fadeIn(500);
-				else jQuery(".sepia").fadeOut(500);
-			});
 		');
 
 		$html =
@@ -310,10 +302,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 					<div class="field tone">
 						<label class="label">'.WT_I18N::translate('Images Tone').':</label>'.
 						select_edit_control('NEW_FIB_OPTIONS[TONE]', array('Sepia', 'Black and White', 'Colors'), null, $this->options('tone')).'
-					</div>
-					<div class="field sepia">
-						<label class="label">'.WT_I18N::translate('Amount of sepia').':</label>
-						<input type="text" name="NEW_FIB_OPTIONS[SEPIA]" size="3" value="'.$this->options('sepia').'"/>&nbsp;'.WT_I18N::translate('Value between 0 and 100').'
 					</div>
 					<div class="field">
 						<label class="label">'.WT_I18N::translate('Cropped image size').':</label>
@@ -466,7 +454,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$srcImages = array_slice($newArray, 0, $fib_length);
 				$FancyImageBar = $this->CreateFancyImageBar($srcImages, $width, $height, $fib_length);
 				if($this->options('tone') == 0) {
-					$FancyImageBar = $this->FancyImageBarSepia($FancyImageBar, $this->options('sepia'));
+					$FancyImageBar = $this->FancyImageBarSepia($FancyImageBar, 50);
 				}
 				if($this->options('tone') == 1) {
 					$FancyImageBar = $this->FancyImageBarSepia($FancyImageBar, 0);
