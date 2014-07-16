@@ -304,7 +304,7 @@ class WT_Tree {
 		case 'pt-BR': set_gedcom_setting($tree_id, 'SURNAME_TRADITION', 'portuguese'); break;
 		default:      set_gedcom_setting($tree_id, 'SURNAME_TRADITION', 'paternal');   break;
 		}
-		set_gedcom_setting($tree_id, 'THEME_DIR',                    'webtrees');
+		set_gedcom_setting($tree_id, 'THEME_DIR',                    'kiwitrees');
 		set_gedcom_setting($tree_id, 'THUMBNAIL_WIDTH',              '100');
 		set_gedcom_setting($tree_id, 'USE_GEONAMES',                 false);
 		set_gedcom_setting($tree_id, 'USE_RIN',                      false);
