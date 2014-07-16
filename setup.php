@@ -236,7 +236,7 @@ if (!isset($_POST['dbport'])) $_POST['dbport']='3306';
 if (!isset($_POST['dbuser'])) $_POST['dbuser']='';
 if (!isset($_POST['dbpass'])) $_POST['dbpass']='';
 if (!isset($_POST['dbname'])) $_POST['dbname']='';
-if (!isset($_POST['tblpfx'])) $_POST['tblpfx']='wt_';
+if (!isset($_POST['tblpfx'])) $_POST['tblpfx']='kt_';
 
 define('WT_TBLPREFIX', $_POST['tblpfx']);
 try {
