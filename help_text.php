@@ -385,7 +385,7 @@ case 'TIME':
 
 case 'URL':
 	$title = WT_Gedcom_Tag::getLabel('URL');
-	$text = WT_I18N::translate('Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do not want to include a URL.');
+	$text = WT_I18N::translate('Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.kiwitrees.net/</b> Leave this field blank if you do not want to include a URL.');
 	break;
 
 case '_HEB':
