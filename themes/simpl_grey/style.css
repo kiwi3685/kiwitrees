@@ -414,7 +414,7 @@ dt{float:left;font-weight:700;margin-right:10px}
 .nav_content .facts_label {width:75px;}
 .famnav_title{font-weight: bold;display: block;padding: 5px 0;}
 .nav_content .facts_label{position:relative}
-.flyout2{color:#000;left:50px;margin-top:-30px;padding:3px;text-align:left;max-width:150px}
+.flyout2{color:#000;left:50px;margin-top:-30px;padding:3px;text-align:left;max-width:250px}
 .flyout3{width:150px;white-space:nowrap}
 .flyout4{color:#000;font-weight:bold;margin-left:0;margin-top:0;padding:3px;text-align:left}
 #flyout3,#phusb,#pwife,#shusb,#swife,#spouse{display:block;background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none}
