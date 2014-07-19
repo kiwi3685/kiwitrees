@@ -101,26 +101,12 @@ echo '<div id="repo-tabs">
 				print_fact($fact, $controller->record);
 			}
 
-			// Print media
-			print_main_media($controller->record->getXref());
-
 			// new fact link
 			if ($controller->record->canEdit()) {
 				print_add_new_fact($controller->record->getXref(), $repositoryfacts, 'REPO');
-				// new media
-				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-					echo '<tr><td class="descriptionbox">';
-					echo WT_Gedcom_Tag::getLabel('OBJE');
-					echo '</td><td class="optionbox">';
-					echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', WT_I18N::translate('Add a new media object'), '</a>';
-					echo help_link('OBJE');
-					echo '<br>';
-					echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=repository\', \'_blank\', find_window_specs); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
-					echo '</td></tr>';
-				}}
+			}
 		echo '</table>
 	</div>'; // close "repo-edit"
-
 
 	// Sources linked to this repository
 	if ($linked_sour) {
