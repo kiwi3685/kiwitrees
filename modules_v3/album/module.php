@@ -227,7 +227,6 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 			if (!empty($ALBUM_TITLES)) set_module_setting($this->getName(), 'ALBUM_TITLES', serialize($ALBUM_TITLES));				
 			if (!empty($ALBUM_OPTIONS)) set_module_setting($this->getName(), 'ALBUM_OPTIONS', serialize($ALBUM_OPTIONS));				
 		}
-
 		$SHOW_FIND = WT_Filter::post('show');
 		$HIDE_FIND = WT_Filter::post('hide');
 		$ALBUM_GROUPS = get_module_setting($this->getName(), 'ALBUM_GROUPS');
@@ -272,11 +271,17 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 			$ALBUM_OPTIONS = array_combine(array_keys(WT_Gedcom_Tag::getFileFormTypes()), $default_groups);
 		}
 
-		$html = '<div id="album_config">
-			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+		$html = '<div id="album_config">';
+			$html = '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
 			<h2>' .$controller->getPageTitle(). '</h2>
-			<h3>' . WT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>
-			<form method="post" name="album_form" action="'.$this->getConfigLink().'">
+			<h3>' . WT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>';
+			
+			// check for emty groups
+			foreach ($ALBUM_TITLES as $value) {
+				if(!in_array($value, $ALBUM_OPTIONS)) echo '<script>alert(\''.WT_I18N::translate('You can not have any empty group.').'\')</script>';
+			}
+
+			$html .= '<form method="post" name="album_form" action="'.$this->getConfigLink().'">
 				<input type="hidden" name="save" value="1">
 				<div id="album_groups">
 					<label for="NEW_ALBUM_GROUPS" class="label">'.WT_I18N::translate('Number of groups').'</label>'.
