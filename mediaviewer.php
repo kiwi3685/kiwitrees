@@ -77,9 +77,15 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('jQuery("#media-tabs").tabs();')
-	->addInlineJavascript('jQuery("#media-tabs").css("visibility", "visible");');
-
+	->addInlineJavascript('
+		jQuery("#media-tabs")
+			.tabs({
+				create: function(e, ui){
+					jQuery(e.target).css("visibility", "visible");
+				}
+			});
+	');
+  
 $linked_indi = $controller->record->fetchLinkedIndividuals();
 $linked_fam  = $controller->record->fetchLinkedFamilies();
 $linked_sour = $controller->record->fetchLinkedSources();
