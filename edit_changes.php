@@ -29,31 +29,28 @@ $controller=new WT_Controller_Simple();
 $controller
 	->requireAcceptLogin()
 	->setPageTitle(WT_I18N::translate('Pending changes'))
-	->pageHeader();
+	->pageHeader()
+	->addInlineJavascript('
+		function show_gedcom_record(xref) {
+			var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", edit_window_specs);
+		}
+		function show_diff(diffurl) {
+			window.opener.location = diffurl;
+			return false;
+		}
+	');
 
-$action   =safe_GET('action');
-$change_id=safe_GET('change_id');
-$index    =safe_GET('index');
-$ged      =safe_GET('ged');
+$action		=safe_GET('action');
+$change_id	=safe_GET('change_id');
+$index		=safe_GET('index');
+$ged		=safe_GET('ged');
 
-echo '<script>';
-?>
-	function show_gedcom_record(xref) {
-		var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", edit_window_specs);
-	}
-
-	function show_diff(diffurl) {
-		window.opener.location = diffurl;
-		return false;
-	}
-<?php
-echo '</script>';
 echo '<div id="pending"><h2>', WT_I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
 case 'undo':
-	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref     =WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id	= WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref		= WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Undo a change, and subsequent changes to the same record
 	WT_DB::prepare(
 		"UPDATE `##change`".
