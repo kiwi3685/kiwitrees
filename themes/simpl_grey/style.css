@@ -40,7 +40,7 @@
 }
 
 html{background:#ECECEC;margin:0;padding:0}
-body{color:#666;font-family:Trebuchet MS, sans-serif;font-size:100%;margin:0 auto;text-align:center;width:85%; min-width: 960px;}
+body{color:#444;font-family:Trebuchet MS, sans-serif;font-size:100%;margin:0 auto;text-align:center;width:85%; min-width: 960px;}
 input:required:valid, textarea:required:valid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat}
 input:required:invalid, textarea:required:invalid{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat}
 html[dir="rtl"] input:required:valid, html[dir="rtl"] textarea:required:valid, html[dir="rtl"] input:required:invalid, html[dir="rtl"] textarea:required:invalid {background-position:left top}
@@ -189,7 +189,7 @@ button:hover,input:hover[type="submit"],input:hover[type="reset"],input:hover[ty
 .small_inner_block{max-height:200px;overflow-x:auto;overflow-y:auto}
 .normal_inner_block{overflow:auto}
 .blockheader{margin:auto;table-layout:fixed;vertical-align:top;width:100%}
-.blockh2{color:#696969;font-weight:400;vertical-align:top}
+.blockh2{font-weight:400;vertical-align:top}
 .blockh3{background-color:#fffFF0;height:1.25em;width:1px}
 .blockcontent{margin:5px; overflow:auto}
 .blockcontent .list_table{border-spacing:0;border-right:0}
@@ -261,7 +261,7 @@ html[dir="rtl"] .pedigree_image{float:right;margin-left:2px}
 .cal_day{float:left;font-weight:700}
 .rtl_cal_day{color:blue;direction:rtl;float:right;font-weight:700}
 .helpcontent{font-size:12px;padding:10px 0;text-align:justify}
-.block{border:1px solid #D3D3D3;border-radius:5px 5px;color:#696969;margin:5px 0;vertical-align:top}
+.block{border:1px solid #D3D3D3;border-radius:5px 5px;margin:5px 0;vertical-align:top}
 #html16,#html41,#html42{border:0}
 .news_box{padding:3px}
 .news_title{color:#696969;font-size:1.1em;font-weight:700}
@@ -343,7 +343,7 @@ a.showit:hover > span{background:#4f4f4f;border-bottom:2px solid #000;border-lef
 .clearfloat{clear:both}
 dt{float:left;font-weight:700;margin-right:10px}
 #controls{border-bottom:1px solid;border-right:1px solid}
-.logo a{color:grey;font-weight:900;text-align:center}
+.logo a{color:#444;font-weight:900;text-align:center}
 .logo span{font-size:75%;vertical-align:top}
 #headermargin,#headerdiv,#bodydiv,#bodymargin{display:block;max-width:950px !important;overflow:auto;text-align:left}
 #indi_header{border:1px solid #A9A9A9;border-radius:3px;float:left;margin:0 0 10px;padding:10px;width:98%}
