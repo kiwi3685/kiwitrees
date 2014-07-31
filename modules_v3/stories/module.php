@@ -137,7 +137,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$count_stories ++;
 			}
 		}
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (WT_USER_GEDCOM_ADMIN) { // change to WT_USER_CAN_EDIT to allow editors to create first story.
 			$html .= '
 				<p style="border-bottom:thin solid #aaa; margin:-10px; padding-bottom:2px;">
 					<span><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'"><i style="margin: 0 3px 0 10px;" class="icon-button_addnote">&nbsp;</i>'. WT_I18N::translate('Add story').'</a></span>
@@ -343,7 +343,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 									if (!$block_id) {
 										echo '<div class="indi_find">
 											<p class="add_indi">
-												<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid" size="4" value="'.$xref.'">',
+												<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid" value="'.$xref.'">',
 												print_findindi_link('pid'),'
 											</p>';
 											if ($xref) {
@@ -363,7 +363,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 										for ($x = 0; $x < $count_xref; $x++) {
 											echo '<div class="indi_find">
 												<p class="add_indi">
-													<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid', $x, '" size="4" value="'.$xref[$x].'">',
+													<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid', $x, '" value="'.$xref[$x].'">',
 													print_findindi_link('pid'.$x),'
 												</p>';
 												if ($xref) {
@@ -402,7 +402,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function config() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_GEDCOM_ADMIN) {
-
 			$controller=new WT_Controller_Page();
 			$controller
 				->setPageTitle($this->getTitle())
