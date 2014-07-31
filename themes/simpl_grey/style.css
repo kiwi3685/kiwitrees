@@ -134,6 +134,8 @@ html[dir="rtl"] .person_box_template i[class^="icon-silhouette"]{float:right}
 .list_value{background-color:#fff;border:solid #D3D3D3 1px;max-width:700px;text-align:left;vertical-align:top;white-space:nowrap}
 .list_value_wrap{vertical-align:top;white-space:normal}
 .list_value_wrap_red{background-color:#fff;border:solid #D3D3D3 1px;color:red;vertical-align:top}
+.btn-group {display: inline-block; margin: 0 4px;}
+.btn-group button [class^="icon-sex"] {vertical-align:inherit;}
 #laydefinedtags{height:285px;margin-left:auto;margin-right:auto;overflow:auto}
 #laydefinedtags,#tabdefinedtagsshow{width:450px}
 #tabdefinedtags{border-collapse:collapse;width:430px}

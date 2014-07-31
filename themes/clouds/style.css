@@ -919,6 +919,9 @@ white-space:normal;
 font-size:12px;
 }
 
+.btn-group {display: inline-block; margin: 0 4px;}
+.btn-group button [class^="icon-sex"] {vertical-align:inherit;}
+
 .facts_table {
 padding:0;
 width:100%;

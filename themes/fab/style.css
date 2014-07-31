@@ -424,6 +424,9 @@ right:10px;
 	background-color:#ddd;
 }
 
+.btn-group {display: inline-block; margin: 0 4px;}
+.btn-group button [class^="icon-sex"] {vertical-align:inherit;}
+
 .journal_box {
 	padding:3pt;
 	border:thin solid #aaaaaa;

@@ -306,6 +306,9 @@ th { font-weight:100;}
 
 .list_item { font-size:12px;}
 
+.btn-group {display: inline-block; margin: 0 4px;}
+.btn-group button [class^="icon-sex"] {vertical-align:inherit;}
+
 .facts_table { width:99%;}
 
 .facts_label { color:#000066; background-color:#c3dfff; font-size:12px; padding:4px; width:20%; text-align:center;}

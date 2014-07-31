@@ -25,6 +25,8 @@
  *
 */
 
+@import url("font-awesome.css");
+
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
 body {color:#232f49;background-color:#DDD;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-size:16px;margin:0;}
@@ -134,14 +136,14 @@ input:requi#ff0000:invalid, textarea:requi#ff0000:invalid{background-image:url(d
 .small_inner_block {max-height:200px;overflow:auto;}
 .normal_inner_block {}
 .block, .block a {vertical-align:top;color:#232f49;}
-.blockheader i{padding:0 5px;}
+.blockheader i{padding:0 5px; float: right; font-size: 1em;}
 .blockcontent, .blockcontent a {font-size:12px;}
 .blockcontent .list_table {border-spacing:0;border:solid #555 1px;border-right:0;}
 .blockcontent .list_value, .blockcontent .list_value_wrap {border:0;border-top:solid #555 1px;border-right:solid #555 1px;}
 #main_select,#available_select,#right_select{min-width:150px;}
 .user_welcome_block table, .gedcom_block_block table{margin:auto;}
 .user_welcome_block td, .gedcom_block_block td{width:25%;text-align:center;vertical-align:top;}
-#link_change_blocks {background:#ddd; border:thin solid #aaa; clear:both; margin:0 auto; padding:10px 0; text-align:center; font-size:12px;}
+#link_change_blocks {background:#ddd; border:thin solid #aaa; clear:both; margin:0 14px; padding:10px 0; text-align:center; font-size:12px;}
 #link_change_blocks  a {color:#232f49;}
 #link_change_blocks span {color:#232f49; padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
@@ -162,11 +164,12 @@ input:requi#ff0000:invalid, textarea:requi#ff0000:invalid{background-image:url(d
 #my-page #index_small_blocks > div, #my-page #index_main_blocks > div, #my-page #index_full_blocks > div{background:#ddd;margin:6px 1%;min-height:300px;overflow:hidden}
 #my-page .blockcontent{padding:10px;}
 
-/* kiwitrees user welcome block icons */
-.user_welcome_block .icon-mypage {background-image:url(images/large_menu_sprite.png);background-position:center -70px; min-width:80px;height:64px;text-align:center;}
-.user_welcome_block .icon-pedigree {background-image:url(images/large_menu_sprite.png);background-position:center -140px; min-width:80px;height:64px;text-align:center;}
-.user_welcome_block .icon-indis {background-image:url(images/large_menu_sprite.png);background-position:center -630px; min-width:80px;height:64px;text-align:center;}
-.user_welcome_block .icon-patriarch {background-image:url(images/large_menu_sprite.png);background-position:center -1105px; min-width:80px;height:64px;text-align:center;}
+/* kiwitrees welcome block icons */
+.gedcom_block_block .icon-mypage {font-size: 4em; color:#555;}
+.gedcom_block_block .icon-pedigree {font-size: 4em; color:#555;}
+.gedcom_block_block .icon-indis {font-size: 4em; color:#555;}
+.gedcom_block_block .icon-user_add {font-size: 4em; color:#555;}
+.gedcom_block_block .icon-patriarch {background-image:url(images/large_menu_sprite.png);background-position:center -1105px; min-width:80px;height:64px;text-align:center;}
 
 .line1, .line2, .line3 {vertical-align:bottom;} 
 .line4 {vertical-align:middle;}
@@ -194,6 +197,8 @@ table.center {margin-left:auto;margin-right:auto;}
 .list_label, .list_value {white-space:nowrap;}
 .list_label_wrap, .list_value_wrap {white-space:normal;}
 .list_item {font-size:12px;}
+.btn-group {display: inline-block; margin: 0 4px;}
+.btn-group button [class^="icon-sex"] {vertical-align:inherit;}
 
 .facts_table {width:100%;}
 .facts_label {background:#dddddd url(images/ui-bg_highlight-soft_50_dddddd_1x100.png) 50% 50% repeat-x;border:1px solid #555;font-size:12px;padding:4px 4px 4px 4px;width:20%;text-align:center;}
@@ -354,7 +359,7 @@ a:hover .nameZoom {color:#f00;font-weight:bold;font-size:14px;}
 .vmiddle {vertical-align:middle}
 
 /* Colors */
-.#ff0000 {color:#f00;}
+.red {color:#f00;}
 .rela, .histo {opacity:0.67;}
 /* Width settings */
 .width10 {width:10%;}
@@ -693,8 +698,8 @@ dd .editlink, dd .deletelink {float:right;}
 .ui-accordion .ui-accordion-content {padding:10px;}
 
 /* jQuery.datatable styling general over-rides */
-.odd {background-color:#E7EEF3 ;}
-.even {background-color:#E6E6E6;}
+.odd {background-color:#fff ;}
+.even {background-color:#ccc;}
 .css_right {float:left;}
 .fg-button {padding:2px 6px;}
 .dataTables_paginate {float:left;margin-bottom:3px;}
@@ -849,7 +854,6 @@ dd .editlink, dd .deletelink {float:right;}
 /* Icons */
 [class^="icon-"],[class*=" icon-"]{display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
 .icon-add{width:14px;height:15px;background-image:url(images/add.png);}
-.icon-admin{width:15px;height:15px;background-image:url(images/admin.png);}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_addmedia{width:18px;height:16px;background-image:url(images/buttons/addmedia.png);vertical-align:middle;}
 .icon-button_addnote{width:17px;height:20px;background-image:url(images/buttons/addnote.png);}
@@ -883,12 +887,10 @@ a.icon-ddarrow:hover{width:20px;height:20px;background-image:url(images/ddarrow2
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:20px;height:20px;background-image:url(images/family.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
-.icon-help{cursor:help;margin:0 5px;width:15px;height:15px;background-image:url(images/help2.png);}
 .icon-image_add {width:16px;height:16px;background-image:url(images/image_add.png);}
 .icon-image_link{width:16px;height:16px;background-image:url(images/image_link.png);}
 .icon-image_sort{width:16px;height:16px;background-image:url(images/images.png);}
 .icon-indi-list{width:20px;height:20px;background-image:url(images/indis.png);}
-.icon-indis{width:20px;height:20px;background-image:url(images/indis.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}
 a.icon-larrow:hover{width:20px;height:20px;background-image:url(images/larrow2.png);}
 .icon-ldarrow{width:20px;height:20px;background-image:url(images/ldarrow.png);}
@@ -908,12 +910,10 @@ a.icon-ldarrow:hover{width:20px;height:20px;background-image:url(images/ldarrow2
 .icon-media-shuffle{width:10px;height:10px;background-image:url(images/reorder.png);}
 .icon-media-stop{width:20px;height:20px;background-image:url(images/stop.png);}
 .icon-minus{width:11px;height:11px;background-image:url(images/minus.png);}
-.icon-mypage{width:24px;height:24px;background-image:url(images/mypage.png);}
 .icon-note{width:20px;height:20px;background-image:url(images/notes.png);}
 .icon-note-list{width:20px;height:20px;background-image:url(images/notes.png);}
 .icon-osm {width:16px;height:16px;background-image:url(images/osm.png);}
 .icon-patriarch{width:20px;height:20px;background-image:url(images/patriarch.png);}
-.icon-pedigree{width:20px;height:20px;background-image:url(images/pedigree.png);}
 .icon-place{width:20px;height:20px;background-image:url(images/place.png);}
 .icon-plus{width:11px;height:11px;background-image:url(images/plus.png);}
 .icon-rarrow{width:20px;height:20px;background-image:url(images/rarrow.png);}
@@ -946,13 +946,20 @@ a.icon-rdarrow:hover{width:20px;height:20px;background-image:url(images/rdarrow2
 a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.png);}
 .icon-udarrow{width:20px;height:20px;background-image:url(images/udarrow.png);}
 a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2.png);}
-.icon-user_add{width:20px;height:20px;background-image:url(images/user_add.png);}
 .icon-warning{width:17px;height:17px;background-image:url(images/warning.png);}
 .icon-webtrees{width:100px;height:21px;background-image:url(images/webtrees_s.png);}
 .icon-wiki{width:16px;height:16px;background-image:url(images/w_button.png);}
-.icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
-.icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
-.icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
+
+/* font-awesome icons */
+.icon-admin		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit; cursor:pointer;}				/* fa-cogs */
+.icon-help		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit; cursor:help; margin:0 5px; }	/* fa-question-circle */
+.icon-mypage	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-university */
+.icon-pedigree	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-sitemap */
+.icon-indis		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-male */
+.icon-user_add	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-user */
+.icon-zoomin	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-search-plus */
+.icon-zoomout	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-search-minus */
+
 
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png);}
@@ -1252,3 +1259,15 @@ a#copy {clear:both;float:left; font-size:11px; font-style:italic; margin-top:-30
 [dir='rtl'] .vertical_box_template .exp_thumb {float:right;}
 [dir='rtl'] #family-page [id^="fontdef-"], [dir='rtl'] #family_chart .fam_child, [dir='rtl'] #family_chart .fam_parent {text-align:right;}
 [dir='rtl'] #family-page [id^="out-"]:hover > [id^="fontdef-"] {right:-85px; left:auto;}
+
+/* Styling for widgets */
+div.widget {width:430px; border:1px solid; margin:10px auto; overflow:hidden;}
+#widget-bar {z-index:999; position:absolute; display:none; margin:-16px 0 0 -10px; width:450px; min-height:200px; background-color:#ddd; box-shadow:5px 2px 5px #888; border-radius:0 10px 0 0; padding-bottom:10px;}
+#widget-bar .widget .blockheader {background:#a9adbc; font-size:1em; font-height:900; line-height:16px; border-bottom:2px solid #555; overflow:hidden; padding:2px 5px; color:#555; text-transform:uppercase;}
+#widget-bar .widget .blockheader span {font-size:1em;}
+.widget_quicklinks .icon-mypage	{font-size: 3em; color:#555;}
+.widget_quicklinks .icon-pedigree	{font-size: 3em; color:#555;}
+.widget_quicklinks .icon-indis {font-size: 3em; color:#555;}
+.widget_quicklinks .icon-patriarch {background-image:url(images/large_menu_sprite.png);background-position:center -1105px; min-width:80px;height:64px;text-align:center;}
+.widget_quicklinks .icon-admin {font-size: 3em; color:#555;}
+.widget_quicklinks td {width:25%;text-align:center;vertical-align:top;}

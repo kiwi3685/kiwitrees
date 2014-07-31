@@ -391,6 +391,9 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 
 [dir=rtl] .list_value, [dir=rtl] .list_value_wrap {text-align:right;}
 
+.btn-group {display: inline-block; margin: 0 4px;}
+.btn-group button [class^="icon-sex"] {vertical-align:inherit;}
+
 .tabs_table {max-width:98%;}
 
 .facts_table {padding:0; width:100%;}

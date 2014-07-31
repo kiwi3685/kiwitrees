@@ -90,6 +90,8 @@ table.center {margin-left:auto;margin-right:auto;}
 .list_label, .list_value {white-space:nowrap;}
 .list_label_wrap, .list_value_wrap {white-space:normal;}
 .list_item {font-size:12px;}
+.btn-group {display: inline-block; margin: 0 4px;}
+.btn-group button [class^="icon-sex"] {vertical-align:inherit;}
 
 .facts_table {width:100%;}
 .facts_label {background-color:#81a9cb;font-size:12px;padding:4px;width:20%;text-align:center;}
