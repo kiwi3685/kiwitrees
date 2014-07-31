@@ -90,12 +90,13 @@ default:
 			} else {
 				$WT_SESSION->timediff=0;
 			}
-			$WT_SESSION->locale   =get_user_setting($user_id, 'language');
-			$WT_SESSION->theme_dir=get_user_setting($user_id, 'theme');
+			$WT_SESSION->locale   	=get_user_setting($user_id, 'language');
+			$WT_SESSION->theme_dir	=get_user_setting($user_id, 'theme');
+			$WT_SESSION->gedcomid	=get_gedcomid($user_id, WT_GED_ID);
 
 			// If we’ve clicked login from the login page, we don’t want to go back there.
-			if (strpos($url, WT_SCRIPT_NAME)===0) {
-				$url='index.php';
+			if (strpos('index.php', $url)===0) {
+				$url = 'individual.php?pid='.$WT_SESSION->gedcomid.'&amp;ged='.WT_GEDURL;
 			}
 
 			// Redirect to the target URL
