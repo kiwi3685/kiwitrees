@@ -84,7 +84,7 @@ input:requi#ff0000:invalid, textarea:requi#ff0000:invalid{background-image:url(d
 
 /* ======= Header styles ========== */
 #header {height:48px;position:relative;margin:0 0 15px 0;}
-.title {clear:both;color:#555;font-family:inherit;font-size:48px;position:absolute;left:0;right:auto;}
+.title {clear:both;color:#555;font-family:inherit;margin-top:10px;position:absolute;left:0;right:auto;width:60%;}
 .header_search {float:right; margin:12px 10px 10px 10px;}
 .header_search input[type="search"] {font-size:16px;}
 [dir='rtl'] .title {left:auto;right:0;}
@@ -637,7 +637,7 @@ span.link_text {display:none;}
 #indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN {}
 #indi_header h3 .header_age {padding:5px 0 5px 5px;float:right;font-weight:normal;font-size:65%;}
 #indi_header h3 a {display:inline;}
-#indi_header a {color:#337;font-size:0.75em;font-weight:normal;}
+#indi_header a {color:#337;font-weight:normal;}
 #indi_header a:hover {color:#f00;}
 #main_name {float:left;font-size:2em;margin:10px;font-weight:bold;}
 #indi_mainimage {float:left;}
@@ -671,14 +671,12 @@ dd .editlink, dd .deletelink {float:right;}
 [dir='rtl'] dd .editlink, [dir='rtl'] dd .deletelink {float:left;}
 
 /* General sprite */
-.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block;background:url(images/general_sprite.png) no-repeat left 0;}
+.male_gender, .female_gender, .unknown_gender, .copyicon, {display:block;background:url(images/general_sprite.png) no-repeat left 0;}
 
 .female_gender {background-position:-45px 1px;width:24px;height:26px;}
 .male_gender {background-position:-72px 3px;width:24px;height:26px;}
 .unknown_gender {background-position:-100px 4px;width:24px;height:26px;}
-.editicon {background-position:-40px -32px;width:24px;height:16px;}
 .copyicon {background-position:-70px -32px;width:24px;height:16px;}
-.deleteicon {background-position:-100px -32px;width:24px;height:16px;}
 
 .icon_arrow {display:block;background:url(images/small_menu_sprite.png) no-repeat left 0;}
 .icon_arrow {background-position:90% -1166px;} [dir='rtl'] .icon_arrow {background-position:10% -1184px;}
@@ -856,7 +854,6 @@ dd .editlink, dd .deletelink {float:right;}
 .icon-add{width:14px;height:15px;background-image:url(images/add.png);}
 .icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_addmedia{width:18px;height:16px;background-image:url(images/buttons/addmedia.png);vertical-align:middle;}
-.icon-button_addnote{width:17px;height:20px;background-image:url(images/buttons/addnote.png);}
 .icon-button_addrepository{width:15px;height:15px;background-image:url(images/buttons/addrepository.png);}
 .icon-button_addsource{width:18px;height:16px;background-image:url(images/buttons/addsource.png);}
 .icon-button_calendar{width:19px;height:15px;background-image:url(images/buttons/calendar.png);vertical-align:middle;}
@@ -866,7 +863,6 @@ dd .editlink, dd .deletelink {float:right;}
 .icon-button_head{width:12px;height:18px;background-image:url(images/buttons/head.png);}
 .icon-button_indi{width:11px;height:15px;background-image:url(images/buttons/indi.png);}
 .icon-button_keyboard{width:30px;height:15px;background-image:url(images/buttons/keyboard.png);vertical-align:middle;}
-.icon-button_linknote{width:17px;height:20px;background-image:url(images/buttons/linknote.png);}
 .icon-button_media{width:18px;height:16px;background-image:url(images/buttons/media.png);vertical-align:middle;}
 .icon-button_note{width:17px;height:20px;background-image:url(images/buttons/note.png);}
 .icon-button_place{width:15px;height:15px;background-image:url(images/buttons/place.png);vertical-align:middle;}
@@ -951,15 +947,18 @@ a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2
 .icon-wiki{width:16px;height:16px;background-image:url(images/w_button.png);}
 
 /* font-awesome icons */
-.icon-admin		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit; cursor:pointer;}				/* fa-cogs */
-.icon-help		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit; cursor:help; margin:0 5px; }	/* fa-question-circle */
-.icon-mypage	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-university */
-.icon-pedigree	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-sitemap */
-.icon-indis		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-male */
-.icon-user_add	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-user */
-.icon-zoomin	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-search-plus */
-.icon-zoomout	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-search-minus */
-
+.icon-admin				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit; cursor:pointer;}				/* fa-cogs */
+.icon-help				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit; cursor:help; margin:0 5px;}	/* fa-question-circle */
+.icon-mypage			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-university */
+.icon-pedigree			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-sitemap */
+.icon-indis				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-male */
+.icon-user_add			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-user */
+.icon-zoomin			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-search-plus */
+.icon-zoomout			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; vertical-align: inherit;}								/* fa-search-minus */
+.icon-button_linknote	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;}		/* fa-link */
+.icon-button_addnote	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;}		/* fa-plus=square */
+.editicon 				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; margin: 0 5px;}										/* fa-edit */
+.deleteicon				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.5em; margin: 0 5px;}										/* fa-trash-o */
 
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png);}
@@ -1158,7 +1157,7 @@ hr.stories_divider:after {content:"§"; display:inline-block;position:relative; 
 #stories span, #stories h1, #stories h2, #stories h3, #stories h4, #stories h5, #stories h6, #stories p, #stories blockquote, #stories pre, 
 #stories a, #stories img, #stories strong, #stories sub, #stories sup, #stories b, #stories u, #stories i, #stories dl, #stories dt, #stories dd, #stories ol, #stories ul, #stories li,
 #stories fieldset, #stories form, #stories label, #stories legend, #stories table, #stories caption, #stories tbody, #stories tfoot, #stories thead, #stories tr, #stories th, #stories td
- {margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+ {margin:0;padding:0;border:0;vertical-align:baseline;}
  /* story content - set new main styles */
 #stories h1 {font-size:1.75em; margin:.67em 0; text-align:center;}
 #stories h2 {font-size:1.5em; margin:.75em 0;}

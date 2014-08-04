@@ -31,12 +31,15 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+define('WT_JQUERY_BIGTEXT',  WT_THEME_URL.'js/jquery-bigtext.js');
+
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
-	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
-	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
-	->addExternalJavascript(WT_JQUERY_AUTOSIZE)
-	->addInlineJavascript('
+	->addExternalJavascript (WT_JQUERY_COLORBOX_URL)
+	->addExternalJavascript (WT_JQUERY_WHEELZOOM_URL)
+	->addExternalJavascript (WT_JQUERY_AUTOSIZE)
+	->addExternalJavascript (WT_JQUERY_BIGTEXT)
+	->addInlineJavascript ('
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",
@@ -65,11 +68,23 @@ $this
 		});
 		
 		jQuery("textarea").autosize();
-		
+
+		jQuery("#widget-button a").click(function(){
+			$("#widget-bar").toggle();
+		});
+
+		jQuery("#bigtext span").bigText({
+			fontSizeFactor: 1,
+		    maximumFontSize: 48,
+		    limitingDimension: "both",
+		    verticalAlign: "top"
+		});
+
 	');
 
 global $ALL_CAPS;
 if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
+$ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
 echo
 	'<!DOCTYPE html>',
@@ -115,15 +130,18 @@ if ($view!='simple') {
 							echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 						}
 					} else {
-						$class_name='login_block_WT_Module';
-						$module=new $class_name;
+						$class_name = 'login_block_WT_Module';
+						$module = new $class_name;
 						echo '<li><a href="#">', WT_I18N::translate('Login or Register'), '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
 					}
 	echo 		'</ul>
-				<div class="title" dir="auto">', WT_TREE_TITLE, '</div>
+				<div id="bigtext" class="title" dir="auto">', WT_TREE_TITLE, '</div>
 			</div>
 			<div id="topMenu" class="ui-state-active">
 				<ul id="main-menu">';
+					if ($ctype != 'gedcom') {
+						echo '<li id="widget-button" style="margin: 0 0 0 3px;"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x fa-bars">&nbsp;</span></a></li>';
+					}
 					foreach (WT_MenuBar::getModuleMenus() as $menu) {
 						if ($menu) {
 							echo $menu->getMenuAsList();
@@ -143,3 +161,8 @@ if ($view!='simple') {
 }
 // begin content section
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
+
+// add widget bar inside content div for all ages except Home, and only for logged in users
+if ($ctype != 'gedcom') {
+	include_once 'widget-bar.php';
+}
