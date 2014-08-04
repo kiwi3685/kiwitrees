@@ -127,7 +127,10 @@ echo
 	}
 	echo '<li><a ', (WT_SCRIPT_NAME=="admin_site_merge.php" ? 'class="current" ' : ''), 'href="admin_site_merge.php">',   WT_I18N::translate('Merge records'), '</a></li>',
 	'<li><a ', (WT_SCRIPT_NAME=="admin_site_other.php" ? 'class="current" ' : ''), 'href="admin_site_other.php">',   WT_I18N::translate('Add unlinked records'), '</a></li>',
+	'<li><a ', (WT_SCRIPT_NAME=="admin_trees_merge.php" ? 'class="current" ' : ''), 'href="admin_trees_places.php">', WT_I18N::translate('Update place names'),'</a></li>',
 	'<li><a ', (WT_SCRIPT_NAME=="admin_site_change.php" ? 'class="current" ' : ''), 'href="admin_site_change.php">', WT_I18N::translate('Changes log'),'</a></li>',
+	'<li><a ', (WT_SCRIPT_NAME=="admin_trees_renumber.php" ? 'class="current" ' : ''), 'href="admin_trees_renumber.php">', WT_I18N::translate('Renumber family tree'),'</a></li>',
+	'<li><a ', (WT_SCRIPT_NAME=="admin_trees_merge.php" ? 'class="current" ' : ''), 'href="admin_trees_merge.php">', WT_I18N::translate('Merge trees'),'</a></li>',
 	'</ul></li>';
 
 if (WT_USER_IS_ADMIN) {
@@ -154,6 +157,7 @@ if (WT_USER_IS_ADMIN) {
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_menus.php"   ? 'class="current" ' : ''), 'href="admin_module_menus.php">',   WT_I18N::translate('Menus'  ), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_tabs.php"    ? 'class="current" ' : ''), 'href="admin_module_tabs.php">',    WT_I18N::translate('Tabs'   ), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_blocks.php"  ? 'class="current" ' : ''), 'href="admin_module_blocks.php">',  WT_I18N::translate('Blocks' ), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_module_widgets.php"  ? 'class="current" ' : ''), 'href="admin_module_widgets.php">',  WT_I18N::translate('Widgets' ), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_sidebar.php" ? 'class="current" ' : ''), 'href="admin_module_sidebar.php">', WT_I18N::translate('Sidebar'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_reports.php" ? 'class="current" ' : ''), 'href="admin_module_reports.php">', WT_I18N::translate('Reports'), '</a></li>',
 		'</ul></li>';
