@@ -89,10 +89,11 @@ if (WT_USER_IS_ADMIN && $old_files_found) {
 		'</ul>',
 		'</div>';
 }
+echo '</div>'; //id = content_container
 
 echo
-	'<h2>', WT_I18N::translate('Users'), '</h2>',
-	'<div id="users">'; //id = users
+	'<fieldset id="users">
+		<legend>', WT_I18N::translate('Users'), '</legend>';
 
 		foreach(get_all_users() as $user_id=>$user_name) {
 			$totusers = $totusers + 1;
@@ -159,11 +160,11 @@ echo
 		'<tr><td colspan="2">', WT_I18N::translate('Users Logged In'), '</td></tr>',
 		'<tr><td colspan="2"><div>', $stats->_usersLoggedIn('list'), '</div></td></tr>',
 		'</table>';
-echo '</div>'; // id = users
+echo '</fieldset>'; // id = users
 
 echo
-	'<h2>', WT_I18N::translate('Family trees'), '</h2>',
-	'<div id="trees">',// id=trees
+	'<fieldset id="trees">
+		<legend>', WT_I18N::translate('Family tree statistics'), '</legend>',
 	'<div id="tree_stats">';
 $n=0;
 foreach (WT_Tree::getAll() as $tree) {
@@ -176,7 +177,7 @@ foreach (WT_Tree::getAll() as $tree) {
 		'<h3>', $stats->gedcomTitle(), '</h3>',
 		'<div>',
 		'<table>',
-		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Count'), '</span></td></tr>',
+		'<tr><th>&nbsp;</th><th><span>', WT_I18N::translate('Count'), '</span></th></tr>',
 		'<tr><th><a href="indilist.php?ged=', $tree->tree_name_url, '">',
 		WT_I18N::translate('Individuals'), '</a></th><td>', $stats->totalIndividuals(),
 		'</td></tr>',
@@ -200,13 +201,12 @@ foreach (WT_Tree::getAll() as $tree) {
 }
 echo
 	'</div>', // id=tree_stats
-	'</div>'; // id=trees
+	'</fieldset>'; // id=trees
 
 echo
-	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
-	'<div id="recent2">'; //id=recent
-	echo
-	'<div id="changes">';
+	'<fieldset id="recent">
+		<legend>', WT_I18N::translate('Recent changes'), '</legend>
+		<div id="changes">';
 $n=0;
 foreach (WT_Tree::GetAll() as $tree) {
 	if ($tree->tree_id==WT_GED_ID) {
@@ -217,7 +217,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 		'<h3><span dir="auto">', $tree->tree_title_html, '</span></h3>',
 		'<div>',
 		'<table>',
-		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Day'), '</span></td><td><span>', WT_I18N::translate('Week'), '</span></td><td><span>', WT_I18N::translate('Month'), '</span></td></tr>',
+		'<tr><th>&nbsp;</th><th><span>', WT_I18N::translate('Day'), '</span></th><th><span>', WT_I18N::translate('Week'), '</span></th><th><span>', WT_I18N::translate('Month'), '</span></th></tr>',
 		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', WT_Query_Admin::countIndiChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countIndiChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countIndiChangesMonth($tree->tree_id), '</td></tr>',
 		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', WT_Query_Admin::countFamChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countFamChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countFamChangesMonth($tree->tree_id), '</td></tr>',
 		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>',  WT_Query_Admin::countSourChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countSourChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countSourChangesMonth($tree->tree_id), '</td></tr>',
@@ -229,9 +229,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 	}
 echo
 	'</div>', // id=changes
-	'</div>', // id=recent
-	'</div>', //id = "x"
-	'</div>'; //id = content_container
+	'</div>'; //id = "x"
 
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
 // It was generated with the help of a command like this

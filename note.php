@@ -124,7 +124,7 @@ echo '<div id="note-tabs">
 					echo '<i class="icon-note"></i>';
 					echo WT_I18N::translate('Shared note'), '</a>';
 					echo '<div class="editfacts">';
-					echo '<div class="editlink"><a class="editicon" href="#" onclick="return edit_note(\'', $controller->record->getXref(), '\')" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
+					echo '<div class="editlink"><a class="icon-edit" href="#" onclick="return edit_note(\'', $controller->record->getXref(), '\')" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
 					echo '</div>';
 				} else { 
 					echo '<i class="icon-note"></i>';

@@ -183,8 +183,8 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 		if ($this->record->canEdit() && !$event->getIsOld()) {
-			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"#\" onclick=\"return delete_fact('".$this->record->getXref()."', ".$linenum.", '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
-			echo "<div class=\"editlink\"><a href=\"#\" class=\"font9 editicon\" onclick=\"edit_name('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
+			echo "<div class=\"deletelink\"><a class=\"font9 icon-delete\" href=\"#\" onclick=\"return delete_fact('".$this->record->getXref()."', ".$linenum.", '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
+			echo "<div class=\"editlink\"><a href=\"#\" class=\"font9 icon-edit\" onclick=\"edit_name('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
 		echo '</dd>';
 		echo '</dl>';
@@ -752,7 +752,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				jQuery("#sidebarAccordion").accordion({
 					active:' . $active . ',
 					heightStyle: "content",
-					collapsible: true,
+					collapsible: true
 				});
 			');
 

@@ -19,6 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
+@import url("font-awesome.css");
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
@@ -32,6 +33,7 @@ img {border:none; vertical-align:middle;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 table {max-width:996px; border-collapse:collapse;}
 td {line-height:25px; vertical-align:middle;}
+i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 .icon {border:none; padding-left:0;padding-right:5pt;}
 .warning, .error, .red {color:#ff0000;}
 .accepted, a.accepted {color:#25a325;}
@@ -114,17 +116,11 @@ td {line-height:25px; vertical-align:middle;}
 #admin_content {min-width:750px;}
 
 /* SIDE MENU */
-#admin_menu {padding:10px 0 10px 5px;top:102px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2e6e9e; white-space:nowrap; overflow:hidden;}
+#admin_menu {padding:10px 5px;top:102px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2e6e9e; white-space:nowrap; overflow:hidden;}
+#admin_menu .ui-accordion .ui-accordion-content-active {padding:.5em;}
+#admin_menu div p {margin:8px 5px; font-size:12px; white-space:normal;}
+#admin_menu div p span {font-style:italic; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block; margin:0 0 0 5px;}
 [dir=rtl] #admin_menu {top:92px; left:auto; right:10px; padding:10px 5px 10px 0; float:right;}
-#admin_menu ul {list-style:none; margin:0 0 0 -30px;}
-[dir=rtl] #admin_menu ul {margin:0 -40px 0 0;}
-#admin_menu li ul {margin:0 0 0 -25px;}
-[dir=rtl] #admin_menu li ul {margin:0 -25px 0 0;}
-#admin_menu li span {font-style:italic;}
-#admin_menu ul li {padding-top:2px;}
-#admin_menu ul li a {white-space:normal;
-margin-left:-5px;
-text-indent:5px;}
 
 /* CONTENT */
 #admin_content {margin:0 0 0 220px; padding:10px;}
@@ -136,22 +132,24 @@ text-indent:5px;}
 #admin_footer .logo a:hover {color:#ff0000;}
 
 /* DASHBOARD BLOCKS */
-#users {white-space:nowrap;}
+fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%; white-space:nowrap;}
+fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
 #users ul {list-style-type:none; padding:0; margin:0 0 0 20px;}
-[dir=rtl] #users ul {margin:0 20px 0 0;}
 #users ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0 0; padding:0 0 0 14px;}
-[dir=rtl] #users ul li {padding:0 14px 0 0;}
 #users td {padding:0 10px 0 0;}
-[dir=rtl] #users td {padding:0 0 0 10px;}
 #users td div {font-style:italic; padding-left:20px;}
-[dir=rtl] #users td div {padding-right:20px;}
-#tree_stats th, #recent2 th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal;}
-[dir=rtl] #tree_stats th, [dir=rtl] #recent th {padding:0 0 0 10px; text-align:right;}
-#tree_stats td, #recent2 td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
-[dir=rtl] #tree_stats td, [dir=rtl] #recent td {padding:0 0 0 10px; text-align:left;}
-#tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em; min-height:180px;}
+#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
+#tree_stats td, #recent td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
+#tree_stats .ui-accordion-content, #recent .ui-accordion-content {padding:1em; min-height:180px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
-#trees span, #recent2 span {text-decoration:underline;}
+#trees span, #recent span {text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
+[dir=rtl] fieldset#users, [dir=rtl] fieldset#trees, [dir=rtl] fieldset#recent {float:right;}
+[dir=rtl] #users ul {margin:0 20px 0 0;}
+[dir=rtl] #users ul li {padding:0 14px 0 0;}
+[dir=rtl] #users td {padding:0 0 0 10px;}
+[dir=rtl] #users td div {padding-right:20px;}
+[dir=rtl] #tree_stats th, [dir=rtl] #recent th {padding:0 0 0 10px; text-align:right;}
+[dir=rtl] #tree_stats td, [dir=rtl] #recent td {padding:0 0 0 10px; text-align:left;}
 
 /* SITE ACCESS */
 .ip_address span, .ua_string span, .raw_gedcom {direction:ltr;}
@@ -346,7 +344,8 @@ table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding
 #album_groups select {margin:0 10px;}
 #album_buttons {float:left; width:200px;}
 #album_options {clear:both; margin-top:15px;}
-#album_find {border-top:1px solid; margin-top:20px; padding: 10px;}
+#album_options td, #album_options th input {text-align:center;}
+#album_options td:first-child {text-align: left; /* as backup */ text-align:start;}
 #album_find th {background-color: #c9c9c9; font-weight:900; padding: 0 5px; text-align:center;}
 #album_find td {padding: 0 5px; text-align:left;}
 #album_find td:first-child {padding:3px; text-align:center;}
@@ -489,7 +488,6 @@ table#story_table {width:100%}
 .icon-darrow {background-position:-40px -68px; width:20px; height:20px;}
 a.icon-darrow:hover {background-position:-40px -124px; width:20px; height:20px;}
 .icon-ddarrow {background-position:-70px -94px; width:20px; height:20px;}
-.icon-delete {background-position:-40px -154px; width:16px; height:16px;cursor:pointer;}
 .icon-delete-grey {background-position:-40px -98px; width:16px; height:16px;}
 .icon-edit {background-position:-109px -34px; width:18px; height:18px;}
 .icon-email {background-position:-10px -6px; width:25px; height:25px;}
@@ -551,6 +549,9 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 
 .icon-mask {display:inline-block;background-image:url(images/icon_mask.png);background-color:transparent;background-repeat:no-repeat;width:16px;height:16px;cursor:pointer;}
 .icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px;}
+
+/* font-awesome icons */
+.icon-delete	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}		/* fa-trash-o */
 
 
 /* Styling for the jquery.colorbox gallery */

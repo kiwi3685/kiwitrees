@@ -163,9 +163,9 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		echo
 			'<a onclick="return edit_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="#" title="', WT_I18N::translate('Edit'), '">',  $label,  '</a>',
 			'<div class="editfacts">',
-			'<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="#" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>',
-			'<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\''.$fact->getParentObject()->getType().'\',factgedcom:\''.rawurlencode($fact->getGedcomRecord()).'\'},function(){location.reload();})" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '</span></a></div>',
-			'<div class="deletelink"><a class="deleteicon" onclick="return delete_fact(\'', $pid, '\', ', $fact->getLineNumber(), ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
+			'<div class="editlink"><a class="icon-edit" onclick="return edit_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="#" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>',
+			'<div class="copylink"><a class="icon-copy" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\''.$fact->getParentObject()->getType().'\',factgedcom:\''.rawurlencode($fact->getGedcomRecord()).'\'},function(){location.reload();})" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '</span></a></div>',
+			'<div class="deletelink"><a class="icon-delete" onclick="return delete_fact(\'', $pid, '\', ', $fact->getLineNumber(), ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
 			'</div>';
 	} else {
 		echo $label;
@@ -708,10 +708,10 @@ function print_main_sources(WT_Event $fact, $level) {
 						// Inline sources can't be edited.  Attempting to save one will convert it
 						// into a link, and delete it.
 						// e.g. "1 SOUR my source" becomes "1 SOUR @my source@" which does not exist.
-						echo '<div class="editlink"><a class="editicon" href="#" onclick="return edit_record(\'', $pid, '\', \'', $linenum, '\');" title="'. WT_I18N::translate('Edit') .'"><span class="link_text">'. WT_I18N::translate('Edit'). '</span></a></div>';
-						echo '<div class="copylink"><a class="copyicon" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $linenum, '\');" title="'. WT_I18N::translate('Copy') .'"><span class="link_text">'. WT_I18N::translate('Copy'). '</span></a></div>';
+						echo '<div class="editlink"><a class="icon-edit" href="#" onclick="return edit_record(\'', $pid, '\', \'', $linenum, '\');" title="'. WT_I18N::translate('Edit') .'"><span class="link_text">'. WT_I18N::translate('Edit'). '</span></a></div>';
+						echo '<div class="copylink"><a class="icon-copy" href="#" onclick="return copy_fact(\'', $pid, '\', \'', $linenum, '\');" title="'. WT_I18N::translate('Copy') .'"><span class="link_text">'. WT_I18N::translate('Copy'). '</span></a></div>';
 					}
-					echo '<div class="deletelink"><a class="deleteicon" href="#" onclick="return delete_fact(\'', $pid, '\', \'', $linenum, '\', \'\', \''. WT_I18N::translate('Are you sure you want to delete this fact?'). '\');" title="' .WT_I18N::translate('Delete').'"><span class="link_text">'.WT_I18N::translate('Delete').'</span></a></div>';
+					echo '<div class="deletelink"><a class="icon-delete" href="#" onclick="return delete_fact(\'', $pid, '\', \'', $linenum, '\', \'\', \''. WT_I18N::translate('Are you sure you want to delete this fact?'). '\');" title="' .WT_I18N::translate('Delete').'"><span class="link_text">'.WT_I18N::translate('Delete').'</span></a></div>';
 				echo '</div>';
 			} else {
 				echo WT_Gedcom_Tag::getLabel($factname, $parent);
@@ -911,9 +911,9 @@ function print_main_notes(WT_Event $fact, $level) {
 				}
 				echo '</a>';
 				echo '<div class="editfacts">';
-				echo '<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid ,'\',\'', $linenum, '\');" href="#" title="'.WT_I18N::translate('Edit').'"><span class="link_text">'.WT_I18N::translate('Edit').'</span></a></div>';
-				echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
-				echo '<div class="deletelink"><a class="deleteicon" onclick="return delete_fact(\'', $pid, '\', ', $linenum, ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>';
+				echo '<div class="editlink"><a class="icon-edit" onclick="return edit_record(\'', $pid ,'\',\'', $linenum, '\');" href="#" title="'.WT_I18N::translate('Edit').'"><span class="link_text">'.WT_I18N::translate('Edit').'</span></a></div>';
+				echo '<div class="copylink"><a class="icon-copy" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\''.rawurlencode($factrec).'\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
+				echo '<div class="deletelink"><a class="icon-delete" onclick="return delete_fact(\'', $pid, '\', ', $linenum, ', \'\', \' ', WT_I18N::translate('Are you sure you want to delete this fact?'), '\');" href="#" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>';
 				echo '</div>';
 			}
 		} else {
@@ -1199,9 +1199,9 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	echo '<div class="editfacts">';
 	if ($mediaobject->canEdit()) {
 		echo '<a onclick="return window.open(\'addmedia.php?action=editmedia&amp;pid=', $mediaobject->getXref(), '\', \'_blank\', edit_window_specs);" href="#" title="', WT_I18N::translate('Edit'), '">';
-		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."', '_blank', edit_window_specs);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-		echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\'1 OBJE @'.$mediaobject->getXref().'@\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
-		echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_fact('", $rowm['pid'], "', 'OBJE', '".$mediaobject->getXref()."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+		echo "<div class=\"editlink\"><a class=\"icon-edit\" onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."', '_blank', edit_window_specs);\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+		echo '<div class="copylink"><a class="icon-copy" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\'1 OBJE @'.$mediaobject->getXref().'@\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
+		echo "<div class=\"deletelink\"><a class=\"icon-delete\" onclick=\"return delete_fact('", $rowm['pid'], "', 'OBJE', '".$mediaobject->getXref()."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 	}
 	echo '</div>';
 	echo '</td>';

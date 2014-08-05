@@ -964,13 +964,13 @@ dd .editlink, dd .deletelink {float:right;}
 [dir=rtl] dd .editlink, [dir=rtl] dd .deletelink {float:left;}
 
 /* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block;background:url(images/indi_sprite.png) no-repeat;}
+.male_gender, .female_gender, .unknown_gender, .icon-edit, .icon-copy, .icon-delete {display:block;background:url(images/indi_sprite.png) no-repeat;}
 .female_gender {background-position:-45px 3px;height:30px;width:24px;}
 .male_gender {background-position:-72px 3px;height:30px;width:24px;}
 .unknown_gender {background-position:-100px 4px;height:30px;width:24px;}
-.editicon {background-position:-40px -32px;height:16px;width:24px;}
-.copyicon {background-position:-70px -32px;height:16px;width:24px;}
-.deleteicon {background-position:-100px -32px;height:16px;width:24px;}
+.icon-edit {background-position:-40px -32px;height:16px;width:24px;}
+.icon-copy {background-position:-70px -32px;height:16px;width:24px;}
+.icon-delete {background-position:-100px -32px;height:16px;width:24px;}
 
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */

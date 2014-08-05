@@ -371,13 +371,13 @@ dt{float:left;font-weight:700;margin-right:10px}
 [dir='rtl'] #indi_header h3 .header_age{float:left;padding:5px 5px 5px 0}
 [dir='rtl'] #indi_note .fact_NOTE{float:right;margin:0 0 0 10px}
 [dir='rtl'] .indi_table{clear:right}
-.male_gender,.female_gender,.unknown_gender,.editicon,.copyicon,.deleteicon{background:url(images/indi_sprite.png) no-repeat left 0;display:block}
+.male_gender,.female_gender,.unknown_gender,.icon-edit,.icon-copy,.icon-delete{background:url(images/indi_sprite.png) no-repeat left 0;display:block}
 .female_gender{background-position:-45px 0;height:24px;width:24px}
 .male_gender{background-position:-72px 2px;height:24px;width:24px}
 .unknown_gender{background-position:-100px 1px;height:24px;width:24px}
-.editicon{background-position:-40px -32px;height:16px;width:24px}
-.copyicon{background-position:-70px -32px;height:16px;width:24px}
-.deleteicon{background-position:-100px -32px;height:16px;width:24px}
+.icon-edit{background-position:-40px -32px;height:16px;width:24px}
+.icon-copy{background-position:-70px -32px;height:16px;width:24px}
+.icon-delete{background-position:-100px -32px;height:16px;width:24px}
 .icon_arrow{background:url(images/small_menu_sprite.png) no-repeat left 0;background-position:90% -1166px;display:block}
 [dir='rtl'] .icon_arrow{background-position:10% -1184px}
 .ui-tabs .ui-tabs-panel{margin-bottom:80px;padding:1em 0}
