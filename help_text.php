@@ -777,7 +777,7 @@ case 'SMTP_SSL':
 
 case 'WEBTREES_EMAIL':
 	$title = WT_I18N::translate('Kiwitrees reply address');
-	$text = WT_I18N::translate('E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br><br>Kiwitrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message\'s &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.');
+	$text = WT_I18N::translate('E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br><br>Kiwitrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: kiwitrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message\'s &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.');
 	break;
 
 case 'PREFER_LEVEL2_SOURCES':
