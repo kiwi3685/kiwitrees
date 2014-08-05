@@ -59,7 +59,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 [dir=rtl] .ui-tabs .ui-tabs-nav li {float:right;}
 
 /* jEditable styling over-rides */
-.editable {background:white; border:1px inset #ccc; padding:2px 5px;}
+.editable {display:block; line-height:28px; padding:2px 5px;}
 .editable:hover {color:#ff0000; cursor:pointer;} /* both cursors needed for cross-browser support */
 
 /* jQuery.datatable styling over-rides */
@@ -492,7 +492,6 @@ a.icon-darrow:hover {background-position:-40px -124px; width:20px; height:20px;}
 .icon-edit {background-position:-109px -34px; width:18px; height:18px;}
 .icon-email {background-position:-10px -6px; width:25px; height:25px;}
 .icon-find-facts {background-position:-38px -180px; width:16px; height:16px;}
-.icon-help {background-position:-10px -181px; width:15px; height:15px;vertical-align:top; margin:0 5px;cursor:help;}
 .icon-larrow {background-position:-79px -64px; width:20px; height:20px;}
 a.icon-larrow:hover {background-position:-79px -34px; width:20px; height:20px;}
 .icon-ldarrow {background-position:-10px -95px; width:20px; height:20px;}
@@ -551,8 +550,8 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px;}
 
 /* font-awesome icons */
-.icon-delete	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}		/* fa-trash-o */
-
+.icon-delete	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-trash-o */
+.icon-help		{font-family: 'FontAwesome'; font-style:normal; font-size: 1em; vertical-align: top; cursor:help; margin:0 5px;}	/* fa-question-circle */
 
 /* Styling for the jquery.colorbox gallery */
 #colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
