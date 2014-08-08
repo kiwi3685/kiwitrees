@@ -45,7 +45,6 @@ $this
 			active:0,
 			heightStyle: "content",
 			collapsible: true,
-//			icons: {"header": "ui-icon-circle-arrow-e", "activeHeader": "ui-icon-circle-arrow-s"},
 			icons: false,
 			create: function(event, ui) {
 				//get index in cookie on accordion create event
