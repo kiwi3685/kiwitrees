@@ -37,8 +37,6 @@ html {overflow-y:scroll;}
 
 body { color:#000066; background-color:#fff; font:12px tahoma, arial, helvetica, sans-serif; margin:1px;}
 
-[dir=rtl] body {direction:rtl;text-align:right;}
-
 a {color:#0000ff;text-decoration:none;}
 a:hover {color:#ff0000;text-decoration:none;}
 a.link:link, a.link:active, a.link:visited {color:#fff;font-weight:bold;}
