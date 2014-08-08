@@ -410,7 +410,7 @@ function build_indiv_map($indifacts, $famids) {
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
 		// Create the normal googlemap sidebar of events and children
 		echo '
-			<div  id="map_content" style="border:1px solid; overflow-x: hidden; overflow-y: auto; max-height: 300px; margin-top: 10px;">
+			<div  id="map_content" style="border:1px solid; overflow-x: hidden; overflow-y: auto; margin-top: 10px;">
 				<table class="facts_table">';
 					$z=0;
 					foreach($markers as $marker) {
