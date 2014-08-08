@@ -202,8 +202,7 @@ table.center {margin-left:auto;margin-right:auto;}
 
 .facts_table {width:100%;}
 .facts_label {background:#dddddd url(images/ui-bg_highlight-soft_50_dddddd_1x100.png) 50% 50% repeat-x;border:1px solid #555;font-size:12px;padding:4px 4px 4px 4px;width:20%;text-align:center;}
-.facts_label02, .facts_label03 {border:1px solid #555;color:#fff;font-size:12px;padding:4px;text-align:center;font-weight:bold;}
-.facts_label02 {background-color:#c4c9e6;}
+.facts_label03 {border:1px solid #555;color:#fff;font-size:12px;padding:4px;text-align:center;font-weight:bold;}
 .facts_label03 {background-color:#eee;}
 .facts_value {background-color:#edf7fd;border:solid #555 1px;font-size:12px;padding:4px;}
 .facts_value02 {background-color:#edf7fd;border:solid #555 1px;font-size:12px;padding:5px;}

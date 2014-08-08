@@ -47,7 +47,7 @@ fieldset,
 .border1,
 .block,
 .descriptionbox,
-.facts_label, .facts_label02, .facts_label03, .facts_value,
+.facts_label, .facts_label03, .facts_value,
 .lifespan_outer,
 .list_label, .list_label_wrap, .list_value, .list_value_wrap,
 .messagebox,
@@ -403,7 +403,7 @@ right:10px;
 	vertical-align:top;
 	white-space:nowrap;
 }
-.facts_label, .facts_label02, .facts_label03 {
+.facts_label, .facts_label03 {
 	background-color:#cccccc;
 	width:20%;
 	text-align:center;
