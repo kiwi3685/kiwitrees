@@ -312,7 +312,6 @@ function login_link() {
 	} else {
 		return
 			'<a href="'.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()).'" class="link">'.
-//			'<a href="#" onclick="modalDialog(\''. WT_LOGIN_URL .'?url='.rawurlencode(get_query_url()) .'\', \''. WT_I18N::translate('Login') . '\');" '.$extra.' class="link">'.
 			WT_I18N::translate('Login').
 			'</a>';
 	}
