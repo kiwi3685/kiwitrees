@@ -27,7 +27,7 @@ $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
-	->addInlineJavascript('jQuery("#tree_stats").accordion();')
+	->addInlineJavascript('jQuery("#tree_stats").accordion({event: "click hoverintent"});')
 	->addInlineJavascript('jQuery("#changes").accordion();')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))

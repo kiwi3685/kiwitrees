@@ -94,9 +94,6 @@ $controller
 		}				
 	');
 
-global $GEDCOM;
-
-$ged		= $GEDCOM;
 $action		= safe_GET('action','go', '');
 $gedcom_id	= safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
 $surn		= safe_GET('surname', '[^<>&%{};]*');
@@ -134,9 +131,8 @@ $SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	
 echo '
 	<div id="sim_dup">
-		<h3>', WT_I18N::translate('A list of possibly duplicated individuals.'), '</h3>
-		<form method="get" name="duplicates_form" action="admin_trees_duplicates.php">
-		<input type="hidden" name="mod_action" value="admin_duplicates">
+		<h2>' .$controller->getPageTitle(). '</h2>
+		<form method="get" name="duplicates_form" action="', WT_SCRIPT_NAME, '">
 		<div class="gm_check">
 			<div id="famtree">
 				<label>', WT_I18N::translate('Family tree'), '</label>

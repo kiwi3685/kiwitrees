@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-07-11 16:08+1200\n"
-"PO-Revision-Date: 2014-08-12 14:09+1200\n"
+"PO-Revision-Date: 2014-08-12 15:58+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
 "kiwitrees/language/en_GB/)\n"
@@ -20511,7 +20511,7 @@ msgstr "Find duplicates"
 
 #: modules_v3/simpl_duplicates/module.php:39
 msgid "A list of possibly duplicated individuals."
-msgstr "Names of private individuals"
+msgstr "A list of possibly duplicated individuals."
 
 #: modules_v3/simpl_duplicates/module.php:109
 msgid "Check for duplicates"

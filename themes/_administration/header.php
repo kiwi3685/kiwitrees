@@ -42,6 +42,7 @@ $this
 		jQuery("textarea").autosize();
 		jQuery("#adminAccordion").accordion({
 			active:0,
+			event: "click hoverintent",
 			heightStyle: "content",
 			collapsible: true,
 			icons: false,
@@ -59,32 +60,33 @@ $this
 			},
 			active:parseInt(jQuery.cookie("saved_index"))
 		});
+		jQuery("#adminAccordion").css("visibility", "visible");
 	');
 
 echo
-	'<!DOCTYPE html>',
-	'<html ', WT_I18N::html_markup(), '>',
-	'<head>',
-	'<meta charset="UTF-8">',
-	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-	'<meta name="robots" content="noindex,nofollow">',	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'images/kt.png" type="image/png">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
-	'<!--[if IE]>',
-		'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
-	'<![endif]-->';
+	'<!DOCTYPE html>
+	<html ', WT_I18N::html_markup(), '>
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="robots" content="noindex,nofollow">',	'<title>', htmlspecialchars($title), '</title>
+	<link rel="icon" href="', WT_THEME_URL, 'images/kt.png" type="image/png">
+	<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">
+	<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">
+	<!--[if IE]>',
+			'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">
+	<![endif]-->';
 
 echo
 	$javascript,
-	'</head>',
-	'<body id="body">',
+	'</head>
+	<body id="body">',
 // Header
-	'<div id="admin_head" class="ui-widget-content">',
-	'<i class="icon-kiwitrees"></i>',
-	'<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>',
-	'<div id="links">',
-	'<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
+	'<div id="admin_head" class="ui-widget-content">
+	<i class="icon-kiwitrees"></i>
+	<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>
+	<div id="links">
+	<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
 	logout_link(),
 	'<span>';
 	$language_menu=WT_MenuBar::getLanguageMenu();
@@ -95,8 +97,8 @@ echo
 	if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 	echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 	}
-	echo '</div>',
-	'<div id="info">',
+	echo '</div>
+<div id="info">',
 	WT_WEBTREES, ' ', WT_VERSION_TEXT,
 	'<br>',
 	/* I18N: The local time on the server */
@@ -113,7 +115,7 @@ echo
 // Side menu
 echo '
 	<div id="admin_menu" class="ui-widget-content">
-		<div id="adminAccordion">
+		<div id="adminAccordion" style="visibility:hidden">
 			<h3 id="administration"><i class="fa fa-dashboard fa-fw"></i>', WT_I18N::translate('Dashboard'), '</h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin.php" ? 'class="current" ' : ''), 'href="admin.php">', WT_I18N::translate('Home'), '</a></p>
@@ -190,7 +192,7 @@ echo '
 			<h3 id="extras"><i class="fa fa-cogs fa-fw"></i>', WT_I18N::translate('Tools'), '</h3>
 			<div>';
 				foreach (WT_Module::getActiveModules(true) as $module) {
-					if (($module instanceof WT_Module_Config) && (!in_array($module, $module_list))) {
+					if ($module instanceof WT_Module_Config) {
 						echo '<p><span><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></span></p>';
 					}
 				}

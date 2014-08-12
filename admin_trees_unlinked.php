@@ -26,7 +26,7 @@
 //
 //$Id$
 
-define('WT_SCRIPT_NAME', 'admin_trees_duplicates.php');
+define('WT_SCRIPT_NAME', 'admin_trees_unlinked.php');
 
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
@@ -37,9 +37,6 @@ $controller
 	->setPageTitle(WT_I18N::translate('Find unlinked individuals'))
 	->pageHeader();
 
-global $GEDCOM;
-
-$ged		= $GEDCOM;
 $action		= safe_GET('action');
 $gedcom_id	= safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
 
@@ -53,10 +50,8 @@ $sql = "
 
 echo '
 	<div id="sim_unlinked">
-		<h3>',$this->getDescription(),'</h3>
-		<form method="get" name="unlinked_form" action="module.php">
-		<input type="hidden" name="mod" value="', $this->getName(), '">
-		<input type="hidden" name="mod_action" value="admin_unlinked">
+		<h2>' .$controller->getPageTitle(). '</h2>
+		<form method="get" name="unlinked_form" action="', WT_SCRIPT_NAME, '">
 		<div class="gm_check">
 			<div id="famtree">
 				<label>', WT_I18N::translate('Family tree'), '</label>
