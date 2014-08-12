@@ -48,10 +48,9 @@ $sql = "
 	 AND i_file = ".$gedcom_id."
 ";
 
-echo '
-	<div id="sim_unlinked">
-		<h2>' .$controller->getPageTitle(). '</h2>
-		<form method="get" name="unlinked_form" action="', WT_SCRIPT_NAME, '">
+echo '<div id="admin_unlinked">
+	<h2>' .$controller->getPageTitle(). '</h2>
+	<form method="get" name="unlinked_form" action="', WT_SCRIPT_NAME, '">
 		<div class="gm_check">
 			<div id="famtree">
 				<label>', WT_I18N::translate('Family tree'), '</label>
@@ -68,17 +67,18 @@ echo '
 			</div>
 		</div>
 	</form>';
-// START OUTPUT
-if ($action == 'View') {
-	$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
-	if ($rows) {
-		foreach ($rows as $row) {
-			$id = $row['i_id'];
-			$person = WT_Person::getInstance($id);
-			$fullname =  $person->getFullName();
-			echo '<p><a href="', $person->getHtmlUrl(), '" target="_blank">', $fullname, ' (', $id, ')</p>';
+	// START OUTPUT
+	if ($action == 'View') {
+		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+		if ($rows) {
+			foreach ($rows as $row) {
+				$id = $row['i_id'];
+				$person = WT_Person::getInstance($id);
+				$fullname =  $person->getFullName();
+				echo '<p><a href="', $person->getHtmlUrl(), '" target="_blank">', $fullname, ' (', $id, ')</p>';
+			}
+		} else {
+			echo '<h4>', WT_I18N::translate('No unlinked individuals to display'), '</h4></div>';
 		}
-	} else {
-		echo '<h4>', WT_I18N::translate('No unlinked individuals to display'), '</h4></div>';
 	}
-}
+echo '</div>';

@@ -28,19 +28,11 @@ $controller
 	->requireManagerLogin()
 	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
 	->addInlineJavascript('jQuery("#tree_stats").accordion({event: "click hoverintent"});')
-	->addInlineJavascript('jQuery("#changes").accordion();')
+	->addInlineJavascript('jQuery("#changes").accordion({event: "click hoverintent"});')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
 
-// Check for updates
-//$latest_version_txt=fetch_latest_version(); //Commented out to prevent needless checks for w1.5+
-//if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-//	list($latest_version, $earliest_version, $download_url)=explode('|', $latest_version_txt);
-//} else {
-	// Cannot determine the latest version
-//	$latest_version='';
-//}
 $stats=new WT_Stats(WT_GEDCOM);
 	$totusers  =0;       // Total number of users
 	$warnusers =0;       // Users with warning
@@ -58,8 +50,8 @@ echo '<div id="x">';// div x - manages the accordion effect
 
 echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
 	'<div id="about">',
-	'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site.'), '</p>',
-	'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net</a>'), '</p>',
+		'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>kiwitrees</b> site.'), '</p>',
+		'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net</a>'), '</p>',
 	'</div>';
 
 // Accordion block for DELETE OLD FILES - only shown when old files are found

@@ -83,34 +83,34 @@ echo
 	<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">
-	<i class="icon-kiwitrees"></i>
-	<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>
-	<div id="links">
-	<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
-	logout_link(),
-	'<span>';
-	$language_menu=WT_MenuBar::getLanguageMenu();
-		if ($language_menu) {
-			echo ' | ', $language_menu->getMenuAsList();
-		}
-	echo '</span>';
-	if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-	echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-	}
-	echo '</div>
-<div id="info">',
-	WT_WEBTREES, ' ', WT_VERSION_TEXT,
-	'<br>',
-	/* I18N: The local time on the server */
-	WT_I18N::translate('Server time'), ' —  ', format_timestamp(WT_SERVER_TIMESTAMP),
-	'<br>',
-	/* I18N: The local time on the client/browser */
-	WT_I18N::translate('Client time'), ' — ', format_timestamp(WT_CLIENT_TIMESTAMP),
-	'<br>',
-	/* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */
-	WT_I18N::translate('UTC'), ' — ', format_timestamp(WT_TIMESTAMP),
-	'</div>',	
-	'</div>';
+		<i class="icon-kiwitrees"></i>
+		<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>
+		<div id="links">
+			<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
+			logout_link(),
+			'<span>';
+			$language_menu=WT_MenuBar::getLanguageMenu();
+				if ($language_menu) {
+					echo ' | ', $language_menu->getMenuAsList();
+				}
+			echo '</span>';
+			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+			echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+			}
+echo'	</div>
+		<div id="info">',
+			WT_WEBTREES, ' ', WT_VERSION_TEXT,
+			'<br>',
+			/* I18N: The local time on the server */
+			WT_I18N::translate('Server time'), ' —  ', format_timestamp(WT_SERVER_TIMESTAMP),
+			'<br>',
+			/* I18N: The local time on the client/browser */
+			WT_I18N::translate('Client time'), ' — ', format_timestamp(WT_CLIENT_TIMESTAMP),
+			'<br>',
+			/* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */
+			WT_I18N::translate('UTC'), ' — ', format_timestamp(WT_TIMESTAMP),
+		'</div>',	
+	'</div>'; // close admin_head
 
 // Side menu
 echo '
@@ -201,4 +201,5 @@ echo '
 			</div>
 		</div>
 	</div>
-	<div id="admin_content" class="ui-widget-content">' , WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions;
+	<div id="admin_content" class="ui-widget-content">' , 
+		WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions;

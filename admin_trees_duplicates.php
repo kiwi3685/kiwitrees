@@ -117,7 +117,7 @@ $sql = "
 	} else {
 		$sql .= "AND n_givn LIKE '%".$givn."%' ";
 	}
-	if (!$married) {$sql .= "AND n_type NOT LIKE '_MARNM'";}
+	if (!$married) { $sql .= "AND n_type NOT LIKE '_MARNM'"; }
 	$sql .= "AND n_file = ".$gedcom_id."
 	AND n_full IN (
 		SELECT n_full
@@ -129,10 +129,9 @@ $sql = "
 
 $SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	
-echo '
-	<div id="sim_dup">
-		<h2>' .$controller->getPageTitle(). '</h2>
-		<form method="get" name="duplicates_form" action="', WT_SCRIPT_NAME, '">
+echo '<div id="admin_dup">
+	<h2>' .$controller->getPageTitle(). '</h2>
+	<form method="get" name="duplicates_form" action="', WT_SCRIPT_NAME, '">
 		<div class="gm_check">
 			<div id="famtree">
 				<label>', WT_I18N::translate('Family tree'), '</label>
@@ -201,124 +200,128 @@ echo '
 			</div>
 		</div>
 	</form>';
-// START OUTPUT
-if ($surn) {
-	$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
-	if ($rows) {
-		$name1 = '';
-		$name2 = '';
-		echo '<div class="scrollableContainer">
-			<div class="scrollingArea">
-			<table id="duplicates_table">
-				<thead>
-					<tr>
-						<th rowspan="2"><div class="col1">',WT_I18N::translate('Name'),'</div></th>
-						<th colspan="2">',WT_I18N::translate('Birth'),'</th>
-						<th colspan="2">',WT_I18N::translate('Death'),'</th>
-						<th rowspan="2">
-							<div class="col6"><input type="button" value="',WT_I18N::translate('Merge selected'),'" onclick="return checkbox_test();"></div>
-						</th>
-					</tr>
-					<tr>
-						<th><div class="col2">',WT_I18N::translate('Date'),'</div></th>
-						<th><div class="col3">',WT_I18N::translate('Place'),'</div></th>
-						<th><div class="col4">',WT_I18N::translate('Date'),'</div></th>
-						<th><div class="col5">',WT_I18N::translate('Place'),'</div></th>
-					</tr>
-				</thead>
-				<tbody>';
-		$i = 0;
-		foreach ($rows as $row) {
-			$i++;
-			$bdate = '';
-			$bplace = '';
-			$ddate = '';
-			$dplace = '';
-			$name1 = $row['n_full'];
-			if ($row['n_type'] == '_MARNM') {
-				$marr = '<span style="font-style:italic;font-size:80%;">('.WT_I18N::translate('Married name').')</span>';
-			} else {
-				$marr = '';
-			}
-			$id = $row['n_id'];
-			$person = WT_Person::getInstance($id);
-			if ($person->getSex() == $gender || $gender == 'A') {
-				// find birth/death dates
-				if ($birth_dates=$person->getAllBirthDates()) {
-					foreach ($birth_dates as $num=>$birth_date) {
-						if ($num) {$bdate .= '<br>';}
-						$bdate .= $birth_date->Display();
-					}
-				} else {
-					$birth_date=$person->getEstimatedBirthDate();
-					$birth_jd=$birth_date->JD();
-					if ($SHOW_EST_LIST_DATES) {
-						$bdate .= $birth_date->Display();
-					} else {
-						$bdate .= '&nbsp;';
-					}
-					$birth_dates[0]=new WT_Date('');
-				}
+	// START OUTPUT
+	if ($surn) {
+		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+		if ($rows) {
+			$name1 = '';
+			$name2 = '';
+			echo '<div class="scrollableContainer">
+				<div class="scrollingArea">
+					<table id="duplicates_table">
+						<thead>
+							<tr>
+								<th rowspan="2"><div class="col1">',WT_I18N::translate('Name'),'</div></th>
+								<th colspan="2">',WT_I18N::translate('Birth'),'</th>
+								<th colspan="2">',WT_I18N::translate('Death'),'</th>
+								<th rowspan="2">
+									<div class="col6"><input type="button" value="',WT_I18N::translate('Merge selected'),'" onclick="return checkbox_test();"></div>
+								</th>
+							</tr>
+							<tr>
+								<th><div class="col2">',WT_I18N::translate('Date'),'</div></th>
+								<th><div class="col3">',WT_I18N::translate('Place'),'</div></th>
+								<th><div class="col4">',WT_I18N::translate('Date'),'</div></th>
+								<th><div class="col5">',WT_I18N::translate('Place'),'</div></th>
+							</tr>
+						</thead>
+						<tbody>';
+							$i = 0;
+							foreach ($rows as $row) {
+								$i++;
+								$bdate = '';
+								$bplace = '';
+								$ddate = '';
+								$dplace = '';
+								$name1 = $row['n_full'];
+								if ($row['n_type'] == '_MARNM') {
+									$marr = '<span style="font-style:italic;font-size:80%;">('.WT_I18N::translate('Married name').')</span>';
+								} else {
+									$marr = '';
+								}
+								$id = $row['n_id'];
+								$person = WT_Person::getInstance($id);
+								if ($person->getSex() == $gender || $gender == 'A') {
+									// find birth/death dates
+									if ($birth_dates=$person->getAllBirthDates()) {
+										foreach ($birth_dates as $num=>$birth_date) {
+											if ($num) {$bdate .= '<br>';}
+											$bdate .= $birth_date->Display();
+										}
+									} else {
+										$birth_date=$person->getEstimatedBirthDate();
+										$birth_jd=$birth_date->JD();
+										if ($SHOW_EST_LIST_DATES) {
+											$bdate .= $birth_date->Display();
+										} else {
+											$bdate .= '&nbsp;';
+										}
+										$birth_dates[0]=new WT_Date('');
+									}
 
-				//find birth places
-				foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
-					$tmp=new WT_Place($birth_place, WT_GED_ID);
-					if ($n) {$bplace .= '<br>';}
-					$bplace .= $tmp->getShortName();
-				}
+									//find birth places
+									foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
+										$tmp=new WT_Place($birth_place, WT_GED_ID);
+										if ($n) {$bplace .= '<br>';}
+										$bplace .= $tmp->getShortName();
+									}
 
-				// find death dates
-				if ($death_dates=$person->getAllDeathDates()) {
-					foreach ($death_dates as $num=>$death_date) {
-						if ($num) {$ddate .= '<br>';}
-						$ddate .= $death_date->Display();
-					}
-				} else {
-					$death_date=$person->getEstimatedDeathDate();
-					$death_jd=$death_date->JD();
-					if ($SHOW_EST_LIST_DATES) {
-						$ddate .= $death_date->Display();
-					} else if ($person->isDead()) {
-						$ddate .= WT_I18N::translate('yes');
-					} else {
-						$ddate .= '&nbsp;';
-					}
-					$death_dates[0]=new WT_Date('');
-				}
-				
-				// find death places
-				foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
-					$tmp=new WT_Place($death_place, WT_GED_ID);
-					if ($n) {$dplace .= '<br>';}
-					$dplace .= $tmp->getShortName();
-				}
-				
-				//output result rows, grouping exact matches (on full name)
-				if ($name2 == $name1) {
-					echo '<tr>
-						<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name1. ' '. $marr. '</a></td>
-						<td><div class="col2">',$bdate,'</div></td>
-						<td><div class="col3">'. $bplace. '</div></td>
-						<td><div class="col4">',$ddate,'</div></td>
-						<td><div class="col5">'. $dplace. '</div></td>
-						<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
-						</tr>';
-				} else {
-					$name2 = $row['n_full'];
-					echo '<tr><td colspan="5" style="border:0;">&nbsp;</td></tr>
-						<tr>
-						<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name2. ' '. $marr. '</a></div></td>
-						<td><div class="col2">',$bdate,'</div></td>
-						<td><div class="col3">'. $bplace. '</div></td>
-						<td><div class="col4">',$ddate,'</div></td>
-						<td><div class="col5">'. $dplace. '</div></td>
-						<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
-						</tr>';
-				}
-			}
-		} 
-		echo '</tbody></table></div></div></div>';
-	} else {
-		echo '<h4>', WT_I18N::translate('No duplicates to display'), '</h4></div>';
+									// find death dates
+									if ($death_dates=$person->getAllDeathDates()) {
+										foreach ($death_dates as $num=>$death_date) {
+											if ($num) {$ddate .= '<br>';}
+											$ddate .= $death_date->Display();
+										}
+									} else {
+										$death_date=$person->getEstimatedDeathDate();
+										$death_jd=$death_date->JD();
+										if ($SHOW_EST_LIST_DATES) {
+											$ddate .= $death_date->Display();
+										} else if ($person->isDead()) {
+											$ddate .= WT_I18N::translate('yes');
+										} else {
+											$ddate .= '&nbsp;';
+										}
+										$death_dates[0]=new WT_Date('');
+									}
+									
+									// find death places
+									foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
+										$tmp=new WT_Place($death_place, WT_GED_ID);
+										if ($n) {$dplace .= '<br>';}
+										$dplace .= $tmp->getShortName();
+									}
+									
+									//output result rows, grouping exact matches (on full name)
+									if ($name2 == $name1) {
+										echo '<tr>
+											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name1. ' '. $marr. '</a></td>
+											<td><div class="col2">',$bdate,'</div></td>
+											<td><div class="col3">'. $bplace. '</div></td>
+											<td><div class="col4">',$ddate,'</div></td>
+											<td><div class="col5">'. $dplace. '</div></td>
+											<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
+											</tr>';
+									} else {
+										$name2 = $row['n_full'];
+										echo '<tr><td colspan="5" style="border:0;">&nbsp;</td></tr>
+											<tr>
+											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name2. ' '. $marr. '</a></div></td>
+											<td><div class="col2">',$bdate,'</div></td>
+											<td><div class="col3">'. $bplace. '</div></td>
+											<td><div class="col4">',$ddate,'</div></td>
+											<td><div class="col5">'. $dplace. '</div></td>
+											<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
+											</tr>';
+									}
+								}
+							} 
+						echo '</tbody>
+					</table>
+				</div>
+			</div>';
+		} else {
+			echo '<h4>', WT_I18N::translate('No duplicates to display'), '</h4>';
+		}
 	}
-}
+echo '</div>';
