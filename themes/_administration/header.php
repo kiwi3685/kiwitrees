@@ -24,8 +24,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
- // List modules to be added to family tree section, by title
-$module_list =  array('Find unlinked individuals', 'Find duplicates');
+
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
@@ -149,19 +148,15 @@ echo '		</div>
 			<h3 id="tree-tools"><i class="fa fa-wrench fa-fw"></i>', WT_I18N::translate('Family tree tools'), '</h3>
 			<div>
 				<p><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'',  WT_I18N::translate('Set the default blocks for new family trees'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_trees_check.php" ? 'class="current" ' : ''), 'href="admin_trees_check.php">', WT_I18N::translate('Check for errors'), '</a></p>';
-				foreach (WT_Module::getActiveModules(true) as $module) {
-					if (($module instanceof WT_Module_Config) && (in_array($module, $module_list))) {
-						echo '<p><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></p>';
-					}
-				}
-echo '
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_merge.php"     ? 'class="current" ' : ''), 'href="admin_site_merge.php">',    WT_I18N::translate('Merge records'			), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_other.php"     ? 'class="current" ' : ''), 'href="admin_site_other.php">',    WT_I18N::translate('Add unlinked records'	), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_trees_merge.php"    ? 'class="current" ' : ''), 'href="admin_trees_places.php">',  WT_I18N::translate('Update place names'		),'</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_change.php"    ? 'class="current" ' : ''), 'href="admin_site_change.php">',   WT_I18N::translate('Changes log'			),'</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_trees_renumber.php" ? 'class="current" ' : ''), 'href="admin_trees_renumber.php">',WT_I18N::translate('Renumber family tree'	),'</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_trees_merge.php"    ? 'class="current" ' : ''), 'href="admin_trees_merge.php">',   WT_I18N::translate('Merge trees'			),'</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_trees_check.php"		? 'class="current" ' : ''), 'href="admin_trees_check.php">',		WT_I18N::translate('Check for errors'			), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_site_merge.php"  		? 'class="current" ' : ''), 'href="admin_site_merge.php">',			WT_I18N::translate('Merge records'				), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_site_other.php"    	? 'class="current" ' : ''), 'href="admin_site_other.php">',			WT_I18N::translate('Add unlinked records'		), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_trees_places.php"   	? 'class="current" ' : ''), 'href="admin_trees_places.php">',		WT_I18N::translate('Update place names'			), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_site_change.php"    	? 'class="current" ' : ''), 'href="admin_site_change.php">',		WT_I18N::translate('Changes log'				), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_trees_renumber.php" 	? 'class="current" ' : ''), 'href="admin_trees_renumber.php">',		WT_I18N::translate('Renumber family tree'		), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_trees_merge.php"    	? 'class="current" ' : ''), 'href="admin_trees_merge.php">',		WT_I18N::translate('Merge trees'				), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_trees_duplicates.php"  ? 'class="current" ' : ''), 'href="admin_trees_duplicates.php">',	WT_I18N::translate('Find duplicate individuals'	), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_trees_unlinked.php"	? 'class="current" ' : ''), 'href="admin_trees_unlinked.php">',		WT_I18N::translate('Find unlinked individuals'	), '</a></p>
 			</div>';
 
 if (WT_USER_IS_ADMIN) {
@@ -192,7 +187,7 @@ echo '
 				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_reports.php" ? 'class="current" ' : ''), 'href="admin_module_reports.php">', WT_I18N::translate('Reports'	), '</a></span></p>
 			</div>
 
-			<h3 id="extras"><i class="fa fa-cogs fa-fw"></i>', WT_I18N::translate('Configure modules'), '</h3>
+			<h3 id="extras"><i class="fa fa-cogs fa-fw"></i>', WT_I18N::translate('Tools'), '</h3>
 			<div>';
 				foreach (WT_Module::getActiveModules(true) as $module) {
 					if (($module instanceof WT_Module_Config) && (!in_array($module, $module_list))) {

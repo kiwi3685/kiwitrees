@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-07-11 16:08+1200\n"
-"PO-Revision-Date: 2014-07-13 18:06+1200\n"
+"PO-Revision-Date: 2014-08-12 14:09+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
 "kiwitrees/language/en_GB/)\n"
@@ -1002,7 +1002,7 @@ msgstr "Messages"
 
 #: admin_site_config.php:116 help_text.php:734
 msgid "Send mail in HTML format"
-msgstr ""
+msgstr "Send mail in HTML format"
 
 #: admin_site_config.php:120 help_text.php:754
 msgid "Sender name"
@@ -1408,7 +1408,7 @@ msgstr "Contact Information"
 
 #: admin_trees_config.php:395
 msgid "kiwitrees reply address"
-msgstr ""
+msgstr "kiwitrees reply address"
 
 #: admin_trees_config.php:401 help_text.php:485
 msgid "Genealogy contact"
@@ -2056,58 +2056,63 @@ msgstr "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 
 #: admin_trees_merge.php:28
 msgid "Merge family trees"
-msgstr ""
+msgstr "Merge family trees"
 
 #: admin_trees_merge.php:70
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural ""
 "The two family trees have %1$s records which uses the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "The two family trees have %1$s record which uses the same “XREF”."
+msgstr[1] "The two family trees have %1$s records which uses the same “XREF”."
 
 #: admin_trees_merge.php:76
 msgid ""
 "You must renumber the records in one of the trees before you can merge them."
 msgstr ""
+"You must renumber the records in one of the trees before you can merge them."
 
 #: admin_trees_merge.php:158
 msgid "The family trees were merged successfully."
-msgstr ""
+msgstr "The family trees were merged successfully."
 
 #: admin_trees_merge.php:161
 msgid "Oops!  An unexpected database error occurred."
-msgstr ""
+msgstr "Oops!  An unexpected database error occurred."
 
 #: admin_trees_merge.php:172
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Copy all the records from %1$s into %2$s."
 
 #: admin_trees_renumber.php:28 themes/_administration/header.php:131
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Renumber family tree"
 
 #: admin_trees_renumber.php:241
 #, php-format
 msgid "The record %1$s was renamed to %2$s."
-msgstr ""
+msgstr "The record %1$s was renamed to %2$s."
 
 #: admin_trees_renumber.php:256
 msgid "The server’s time limit was reached."
-msgstr ""
+msgstr "The server’s time limit was reached."
 
 #: admin_trees_renumber.php:264
 msgid ""
 "In a family tree, each record has an internal reference number such as "
 "“F123” or \"R14\"."
 msgstr ""
+"In a family tree, each record has an internal reference number such as "
+"“F123” or \"R14\"."
 
 #: admin_trees_renumber.php:265
 msgid ""
 "You can renumber a family tree so that these reference numbers are unique "
 "across all family trees."
 msgstr ""
+"You can renumber a family tree so that these reference numbers are unique "
+"across all family trees."
 
 #: admin_trees_renumber.php:269
 #, php-format
@@ -2118,7 +2123,11 @@ msgid_plural ""
 "This family tree has %s records which use the same “XREF” as another family "
 "tree."
 msgstr[0] ""
+"This family tree has %s record which uses the same “XREF” as another family "
+"tree."
 msgstr[1] ""
+"This family tree has %s records which use the same “XREF” as another family "
+"tree."
 
 #: admin_trees_renumber.php:278
 msgid "You can renumber this family tree by clicking this start button."
@@ -2126,11 +2135,11 @@ msgstr ""
 
 #: admin_trees_renumber.php:279
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: admin_trees_renumber.php:282
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "Caution!  This may take a long time.  Be patient."
 
 #: admin_users.php:30 edituser.php:89
 msgid "User administration"
@@ -3359,6 +3368,8 @@ msgid ""
 "Enter the address into the field just as you would write it on an envelope."
 "<br><br>Leave this field blank if you do not want to include an address."
 msgstr ""
+"Enter the address into the field just as you would write it on an envelope."
+"<br><br>Leave this field blank if you do not want to include an address."
 
 #: help_text.php:55
 msgid ""
@@ -3367,6 +3378,10 @@ msgid ""
 "administered rites or events, or an organization responsible for creating "
 "and/or archiving records."
 msgstr ""
+"The organisation, institution, corporation, person, or other entity that has "
+"authority.<br><br>For example, an employer of a person, or a church that "
+"administered rites or events, or an organization responsible for creating "
+"and/or archiving records."
 
 #: help_text.php:60
 msgid ""
@@ -3465,6 +3480,9 @@ msgid ""
 "<b>name@hotmail.com</b>  Leave this field blank if you do not want to "
 "include an email address."
 msgstr ""
+"Enter the email address.<br><br>An example email address looks like this: "
+"<b>name@hotmail.com</b>  Leave this field blank if you do not want to "
+"include an email address."
 
 #: help_text.php:263
 msgid ""
@@ -3473,6 +3491,10 @@ msgid ""
 "number in Germany might be +49 25859 56 76 89 and a number in USA or Canada "
 "might be +1 888 555-1212."
 msgstr ""
+"Enter the FAX number including the country and area code.<br><br>Leave this "
+"field blank if you do not want to include a FAX number.  For example, a "
+"number in Germany might be +49 25859 56 76 89 and a number in USA or Canada "
+"might be +1 888 555-1212."
 
 #: help_text.php:268
 msgid ""
@@ -3613,6 +3635,10 @@ msgid ""
 "a number in Germany might be +49 25859 56 76 89 and a number in USA or "
 "Canada might be +1 888 555-1212."
 msgstr ""
+"Enter the phone number including the country and area code.<br><br>Leave "
+"this field blank if you do not want to include a phone number.  For example, "
+"a number in Germany might be +49 25859 56 76 89 and a number in USA or "
+"Canada might be +1 888 555-1212."
 
 #: help_text.php:330
 msgid ""
@@ -3637,6 +3663,26 @@ msgid ""
 "information like this: \", , Utah, USA\".  <br><br>You can use the <b>Find "
 "Place</b> link to help you find places that already exist in the database."
 msgstr ""
+"Places should be entered according to the standards for genealogy.  In "
+"genealogy, places are recorded with the most specific information about the "
+"place first and then working up to the least specific place last, using "
+"commas to separate the different place levels.  The level at which you "
+"record the place information should represent the levels of government or "
+"church where vital records for that place are kept.<br><br>For example, a "
+"place like Nottingham would be entered as \"Nottingham, Nottinghamshire, "
+"England\".<br><br>Let's examine each part of this place.  The first part, "
+"\"Nottingham,\" is the city or town where the event occurred.  In some "
+"countries, there may be municipalities or districts inside a city which are "
+"important to note.  In that case, they should come before the city.  The "
+"next part, \"Nottinghamshire,\" is the county, and \"England\" is the "
+"country.  It is important to note each place because genealogical records "
+"are kept by the governments of each level.<br><br>If a level of the place is "
+"unknown, you should leave a space between the commas.  Suppose, in the "
+"example above, you didn't know the county for Nottingham.  You should then "
+"record it like this: \"Nottingham, , England\".  Suppose you only know that "
+"a person was born in Nottinghamshire.  You would enter the information like "
+"this: \", , Nottinghamshire, England\".  <br><br>You can use the <b>Find "
+"Place</b> link to help you find places that already exist in the database."
 
 #: help_text.php:335
 msgid ""
@@ -3675,6 +3721,16 @@ msgid ""
 "to containing only characters based on the Latin alphabet.  This might be of "
 "use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"In many cultures it is customary to have a traditional name spelled in the "
+"traditional characters and also a romanised version of the name as it would "
+"be spelled or pronounced in languages based on the Latin alphabet, such as "
+"English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, "
+"Greek, Russian, Chinese, or Arabic to enter the name in the standard name "
+"fields, then you can use this field to enter the same name using the Latin "
+"alphabet.  Both versions of the name will appear in lists and charts."
+"<br><br>Although this field is labeled \"Romanised\", it is not restricted "
+"to containing only characters based on the Latin alphabet.  This might be of "
+"use with Japanese names, where three different alphabets may occur."
 
 #: help_text.php:353
 msgid ""
@@ -3690,6 +3746,9 @@ msgid ""
 "of the page.<br><br>Each shared note can be linked to more than one person, "
 "family, source, or event."
 msgstr ""
+"Shared Notes are free-form text and will appear in the Fact Details section "
+"of the page.<br><br>Each shared note can be linked to more than one person, "
+"family, source, or event."
 
 #: help_text.php:363
 msgid ""
@@ -3743,6 +3802,9 @@ msgid ""
 "like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do "
 "not want to include a URL."
 msgstr ""
+"Enter the URL address including the http://.<br><br>An example URL looks "
+"like this: <b>http://www.webtrees.net/</b> Leave this field blank if you do "
+"not want to include a URL."
 
 #: help_text.php:393
 msgid ""
@@ -3756,6 +3818,15 @@ msgid ""
 "<br><br>Although this field is labeled \"Hebrew\", it is not restricted to "
 "containing only Hebrew characters."
 msgstr ""
+"In many cultures it is customary to have a traditional name spelled in the "
+"traditional characters and also a romanised version of the name as it would "
+"be spelled or pronounced in languages based on the Latin alphabet, such as "
+"English.<br><br>If you prefer to use the Latin alphabet to enter the name in "
+"the standard name fields, then you can use this field to enter the same name "
+"in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or "
+"Chinese.  Both versions of the name will appear in lists and charts."
+"<br><br>Although this field is labeled \"Hebrew\", it is not restricted to "
+"containing only Hebrew characters."
 
 #: help_text.php:398
 msgid ""
@@ -3814,6 +3885,10 @@ msgid ""
 "a menu.  To be effective, this option requires the <b>Allow users to select "
 "their own theme</b> option to be set as well."
 msgstr ""
+"Gives users the option of selecting their own theme from a menu.<br><br>Even "
+"with this option set, the theme currently in effect may not provide for such "
+"a menu.  To be effective, this option requires the <b>Allow users to select "
+"their own theme</b> option to be set as well."
 
 #: help_text.php:432
 msgid "Gives users the option of selecting their own theme."
@@ -3885,6 +3960,8 @@ msgid ""
 "When calculating relationships, this option controls whether kiwitrees will "
 "include spouses/partners as well as blood relatives."
 msgstr ""
+"When calculating relationships, this option controls whether kiwitrees will "
+"include spouses/partners as well as blood relatives."
 
 #: help_text.php:471
 msgid ""
@@ -3993,6 +4070,8 @@ msgid ""
 "When a new family record is added online in kiwitrees, a new ID for that "
 "family will be generated automatically. The family ID will have this prefix."
 msgstr ""
+"When a new family record is added online in kiwitrees, a new ID for that "
+"family will be generated automatically. The family ID will have this prefix."
 
 #: help_text.php:531
 msgid ""
@@ -4012,6 +4091,9 @@ msgid ""
 "individual will be generated automatically. The individual ID will have this "
 "prefix."
 msgstr ""
+"When a new individual record is added online in kiwitrees, a new ID for that "
+"individual will be generated automatically. The individual ID will have this "
+"prefix."
 
 #: help_text.php:544
 msgid ""
@@ -4051,6 +4133,18 @@ msgid ""
 "GUIDs; however, doing so will do no harm other than increasing the size of "
 "your GEDCOM."
 msgstr ""
+"<b>GUID</b> in this context is an acronym for «Globally Unique ID»."
+"<br><br>GUIDs are intended to help identify each individual in a manner that "
+"is repeatable, so that central organizations such as the Family History "
+"Center of the LDS Church in Salt Lake City, or even compatible programs "
+"running on your own server, can determine whether they are dealing with the "
+"same person no matter where the GEDCOM originates.  The goal of the Family "
+"History Center is to have a central repository of genealogical data and "
+"expose it through web services. This will enable any program to access the "
+"data and update their data within it.<br><br>If you do not intend to share "
+"this GEDCOM with anyone else, you do not need to let kiwitrees create these "
+"GUIDs; however, doing so will do no harm other than increasing the size of "
+"your GEDCOM."
 
 #: help_text.php:560
 msgid ""
@@ -4058,6 +4152,9 @@ msgid ""
 "understands most of them.  When unrecognised tags are found, this option "
 "lets you choose whether to ignore them or display a warning message."
 msgstr ""
+"Many genealogy programs create GEDCOM files with custom tags, and kiwitrees "
+"understands most of them.  When unrecognised tags are found, this option "
+"lets you choose whether to ignore them or display a warning message."
 
 #: help_text.php:565
 msgid ""
@@ -4270,6 +4367,8 @@ msgid ""
 "When a new media record is added online in kiwitrees, a new ID for that "
 "media will be generated automatically. The media ID will have this prefix."
 msgstr ""
+"When a new media record is added online in kiwitrees, a new ID for that "
+"media will be generated automatically. The media ID will have this prefix."
 
 #: help_text.php:668
 msgid ""
@@ -4305,6 +4404,8 @@ msgid ""
 "When a new note record is added online in kiwitrees, a new ID for that note "
 "will be generated automatically. The note ID will have this prefix."
 msgstr ""
+"When a new note record is added online in kiwitrees, a new ID for that note "
+"will be generated automatically. The note ID will have this prefix."
 
 #: help_text.php:700
 msgid ""
@@ -4327,6 +4428,10 @@ msgid ""
 "this option doesn't conceal the gender. The option simply removes some "
 "duplicate information from the box."
 msgstr ""
+"This option controls whether or not to show the individual's gender icon on "
+"charts.<br><br>Since the gender is also indicated by the color of the box, "
+"this option doesn't conceal the gender. The option simply removes some "
+"duplicate information from the box."
 
 #: help_text.php:716
 msgid ""
@@ -4365,6 +4470,8 @@ msgid ""
 "The time in seconds that a kiwitrees session remains active before requiring "
 "a login.  The default is 7200, which is 2 hours."
 msgstr ""
+"The time in seconds that a kiwitrees session remains active before requiring "
+"a login.  The default is 7200, which is 2 hours."
 
 #: help_text.php:730
 msgid ""
@@ -4373,6 +4480,10 @@ msgid ""
 "facility (which is not always available) or an external SMTP (mail-relay) "
 "service, for which you will need to provide the connection details."
 msgstr ""
+"Kiwitrees needs to send emails, such as password reminders and site "
+"notifications.  To do this, it can use this server's built in PHP mail "
+"facility (which is not always available) or an external SMTP (mail-relay) "
+"service, for which you will need to provide the connection details."
 
 #: help_text.php:735
 msgid ""
@@ -4381,6 +4492,10 @@ msgid ""
 "HTML formatting, but also includes a plain text version for recipients that "
 "do not allow HTML formatted emails."
 msgstr ""
+"By default kiwitrees sends emails in plain text format. Setting this option "
+"to 'yes' will change that to the multipart format. This allows the use of "
+"HTML formatting, but also includes a plain text version for recipients that "
+"do not allow HTML formatted emails."
 
 #: help_text.php:740
 msgid "The password required for authentication with the SMTP server."
@@ -4428,7 +4543,7 @@ msgstr "Most servers do not use secure connections."
 
 #: help_text.php:779
 msgid "Kiwitrees reply address"
-msgstr ""
+msgstr "Kiwitrees reply address"
 
 #: help_text.php:780
 msgid ""
@@ -4444,6 +4559,17 @@ msgid ""
 "will not accept messages that are apparently from account <i>webtrees-"
 "noreply</i>."
 msgstr ""
+"E-mail address to be used in the &laquo;From:&raquo; field of emails that "
+"kiwitrees creates automatically.<br><br>Kiwitrees can automatically create e-"
+"mails to notify administrators of changes that need to be reviewed.  "
+"Kiwitrees also sends notification emails to users who have requested an "
+"account.<br><br>Usually, the &laquo;From:&raquo; field of these "
+"automatically created emails is something like <i>From: webtrees-"
+"noreply@yoursite</i> to show that no response to the email is required.  To "
+"guard against spam or other email abuse, some email systems require each "
+"message's &laquo;From:&raquo; field to reflect a valid email account and "
+"will not accept messages that are apparently from account <i>webtrees-"
+"noreply</i>."
 
 #: help_text.php:785
 msgid ""
@@ -4513,6 +4639,9 @@ msgid ""
 "repository will be generated automatically. The repository ID will have this "
 "prefix."
 msgstr ""
+"When a new repository record is added online in kiwitrees, a new ID for that "
+"repository will be generated automatically. The repository ID will have this "
+"prefix."
 
 #: help_text.php:820
 msgid ""
@@ -4524,6 +4653,13 @@ msgid ""
 "b> checkbox will be checked automatically when users verify their account, "
 "thus allowing an immediate login afterwards without admin intervention."
 msgstr ""
+"If the option <b>Allow visitors to request account registration</b> is "
+"enabled this setting controls whether the admin must approve the "
+"registration.<br><br>Setting this to <b>Yes</b> will require that all new "
+"users first verify themselves and then be approved by an admin before they "
+"can login.  With this setting on <b>No</b>, the <b>User approved by Admin</"
+"b> checkbox will be checked automatically when users verify their account, "
+"thus allowing an immediate login afterwards without admin intervention."
 
 #: help_text.php:825
 msgid ""
@@ -4617,6 +4753,15 @@ msgid ""
 "These are <i>level 2</i> Notes and Source references because the various "
 "Facts are at level 1."
 msgstr ""
+"This option controls whether Notes and Source references that are attached "
+"to Facts should be shown on the Notes and Sources tabs of the Individual "
+"page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and "
+"Source references that are attached directly to the individual's database "
+"record.  These are <i>level 1</i> Notes and Source references.<br><br>The "
+"<b>Yes</b> option causes these tabs to also show Notes and Source references "
+"that are part of the various Facts in the individual's database record.  "
+"These are <i>level 2</i> Notes and Source references because the various "
+"Facts are at level 1."
 
 #: help_text.php:870
 msgid ""
@@ -4636,6 +4781,9 @@ msgid ""
 "Media file to the local PC.<br><br>You may want to hide the download link "
 "for security reasons."
 msgstr ""
+"The Media Viewer can show a link which, when clicked, will download the "
+"Media file to the local PC.<br><br>You may want to hide the download link "
+"for security reasons."
 
 #: help_text.php:880
 msgid "Show age of parents next to child's birthdate"
@@ -4700,6 +4848,8 @@ msgid ""
 "When a new source record is added online in kiwitrees, a new ID for that "
 "source will be generated automatically.  The source ID will have this prefix."
 msgstr ""
+"When a new source record is added online in kiwitrees, a new ID for that "
+"source will be generated automatically.  The source ID will have this prefix."
 
 #: help_text.php:911
 msgid ""
@@ -4740,6 +4890,10 @@ msgid ""
 "<br><br>This option determines when sub-listing of surnames will occur.  To "
 "disable sub-listing completely, set this option to zero."
 msgstr ""
+"Long lists of persons with the same surname can be broken into smaller sub-"
+"lists according to the first letter of the individual's given name."
+"<br><br>This option determines when sub-listing of surnames will occur.  To "
+"disable sub-listing completely, set this option to zero."
 
 #: help_text.php:932
 msgid ""
@@ -4792,6 +4946,8 @@ msgid ""
 "You can change the appearance of kiwitrees using \"themes\".  Each theme has "
 "a different style, layout, color scheme, etc."
 msgstr ""
+"You can change the appearance of kiwitrees using \"themes\".  Each theme has "
+"a different style, layout, color scheme, etc."
 
 #: help_text.php:988
 msgid ""
@@ -4827,6 +4983,15 @@ msgid ""
 "accessible free of charge. It currently contains over 8,000,000 geographical "
 "names."
 msgstr ""
+"Should the GeoNames database be used to provide more suggestions for place "
+"names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database "
+"will be queried to supply suggestions for the place name being entered.  "
+"When set to <b>No</b>, only the current genealogical database will be "
+"searched.  As you enter more of the place name, the suggestion will become "
+"more precise.  This option can slow down data entry, particularly if your "
+"Internet connection is slow.<br><br>The GeoNames geographical database is "
+"accessible free of charge. It currently contains over 8,000,000 geographical "
+"names."
 
 #: help_text.php:1003
 msgid ""
@@ -4835,6 +5000,10 @@ msgid ""
 "his application for an account.  After verification, the Administrator will "
 "have to approve the registration before it becomes active."
 msgstr ""
+"Gives visitors the option of registering themselves for an account on the "
+"site.<br><br>The visitor will receive an email message with a code to verify "
+"his application for an account.  After verification, the Administrator will "
+"have to approve the registration before it becomes active."
 
 #: help_text.php:1007
 msgid "Use relationship privacy"
@@ -4849,6 +5018,12 @@ msgid ""
 "can override this option for individual users by editing the user's account "
 "details."
 msgstr ""
+"<b>No</b> means that authenticated users can see the details of all living "
+"people.  <b>Yes</b> means that users can only see the private information of "
+"living people they are related to.<br><br>This option sets the default for "
+"all users who have access to this genealogical database.  The Administrator "
+"can override this option for individual users by editing the user's account "
+"details."
 
 #: help_text.php:1013
 msgid ""
@@ -4869,6 +5044,10 @@ msgid ""
 "question.<p>This image might be used when the gender of the individual is "
 "unknown:</p>"
 msgstr ""
+"Use silhouette images when no highlighted image for that individual has been "
+"specified.  The images used are specific to the gender of the individual in "
+"question.<p>This image might be used when the gender of the individual is "
+"unknown:</p>"
 
 #: help_text.php:1026
 msgid ""
@@ -4907,6 +5086,12 @@ msgid ""
 "center><br>Access is permitted to users who have an account and a password "
 "for this website.<br></div>"
 msgstr ""
+"Choose to display a standard header for your custom Welcome text.  When your "
+"users change language, this header will appear in the new language."
+"<br><br>If set to <b>Yes</b>, the header will look like this:<div class="
+"\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></"
+"center><br>Access is permitted to users who have an account and a password "
+"for this website.<br></div>"
 
 #: help_text.php:1046
 msgid ""
@@ -4951,6 +5136,36 @@ msgid ""
 "your request for an account.  You will receive an email when your request is "
 "approved.</div></li></ul>"
 msgstr ""
+"Here you can choose text to appear on the login screen. You must determine "
+"which predefined text is most appropriate.<br><br>You can also choose to "
+"enter your own custom Welcome text.  Please refer to the Help text "
+"associated with the <b>Custom Welcome text</b> field for more information."
+"<br><br>The predefined texts are:<ul><li><b>Predefined text that states all "
+"users can request a user account:</b><div class=\"list_value_wrap"
+"\"><center><b>Welcome to this Genealogy website</b></center><br>Access to "
+"this site is permitted to every visitor who has a user account.<br><br>If "
+"you have a user account, you can login on this page.  If you don't have a "
+"user account, you can apply for one by clicking on the appropriate link "
+"below.<br><br>After verifying your application, the site administrator will "
+"activate your account.  You will receive an email when your application has "
+"been approved.</div><br/></li><li><b>Predefined text that states admin will "
+"decide on each request for a user account:</b><div class=\"list_value_wrap"
+"\"><center><b>Welcome to this Genealogy website</b></center><br>Access to "
+"this site is permitted to <u>authorized</u> users only.<br><br>If you have a "
+"user account you can login on this page.  If you don't have a user account, "
+"you can apply for one by clicking on the appropriate link below."
+"<br><br>After verifying your information, the administrator will either "
+"approve or decline your account application.  You will receive an email "
+"message when your application has been approved.</div><br/></"
+"li><li><b>Predefined text that states only family members can request a user "
+"account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this "
+"Genealogy website</b></center><br>Access to this site is permitted to "
+"<u>family members only</u>.<br><br>If you have a user account you can login "
+"on this page.  If you don't have a user account, you can apply for one by "
+"clicking on the appropriate link below.<br><br>After verifying the "
+"information you provide, the administrator will either approve or decline "
+"your request for an account.  You will receive an email when your request is "
+"approved.</div></li></ul>"
 
 #: help_text.php:1056
 msgid ""
@@ -4971,6 +5186,9 @@ msgid ""
 "fact from the drop-down list, then click the <b>Add</b> button.  All "
 "possible facts that you can add to the database are in that drop-down list."
 msgstr ""
+"Here you can add a fact to the record being edited.<br><br>First choose a "
+"fact from the drop-down list, then click the <b>Add</b> button.  All "
+"possible facts that you can add to the database are in that drop-down list."
 
 #: help_text.php:1069
 msgid ""
@@ -4985,6 +5203,16 @@ msgid ""
 "helpful when entering similar facts, such as census facts, for many "
 "individuals or families."
 msgstr ""
+"Kiwitrees allows you to copy up to 10 facts, with all their details, to a "
+"clipboard.  This clipboard is different from the Clippings Cart that you can "
+"use to export portions of your database.<br><br>You can select any of the "
+"facts from the clipboard and copy the selected fact to the Individual, "
+"Family, Media, Source, or Repository record currently being edited.  "
+"However, you cannot copy facts of dissimilar record types.  For example, you "
+"cannot copy a Marriage fact to a Source or an Individual record since the "
+"Marriage fact is associated only with Family records.<br><br>This is very "
+"helpful when entering similar facts, such as census facts, for many "
+"individuals or families."
 
 #: help_text.php:1075
 msgid ""
@@ -5017,6 +5245,10 @@ msgid ""
 "note.  When you are finished typing, just click the button below the box, "
 "close the window, and that's all."
 msgstr ""
+"If you have a note to add to this record, this is the place to do so."
+"<br><br>Just click the link, a window will open, and you can type your "
+"note.  When you are finished typing, just click the button below the box, "
+"close the window, and that's all."
 
 #: help_text.php:1088 help_text.php:1154
 #: includes/functions/functions_edit.php:1783
@@ -5048,6 +5280,11 @@ msgid ""
 "sources is an important part of genealogy because it allows other "
 "researchers to verify where you obtained your information."
 msgstr ""
+"Here you can add a source <b>Citation</b> to this record.<br><br>Just click "
+"the link, a window will open, and you can choose the source from the list "
+"(Find ID) or create a new source and then add the Citation.<br><br>Adding "
+"sources is an important part of genealogy because it allows other "
+"researchers to verify where you obtained your information."
 
 #: help_text.php:1099
 msgid "Year input box"
@@ -5071,6 +5308,21 @@ msgid ""
 "<b>16??</b> for all events from 1600 to 1699.<br><br/>Selecting a range of "
 "years will change the calendar to the year view.</dd></dl>"
 msgstr ""
+"This input box lets you change that year of the calendar.  Type a year into "
+"the box and press <b>Enter</b> to change the calendar to that year."
+"<br><br><b>Advanced features</b> for <b>View Year</b><dl><dt><b>More than "
+"one year</b></dt><dd>You can search for dates in a range of years."
+"<br><br>Year ranges are <u>inclusive</u>.  This means that the date range "
+"extends from 1 January of the first year of the range to 31 December of the "
+"last year mentioned.  Here are a few examples of year ranges:"
+"<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> "
+"for all events from 1972 to 1989.<br><b>1610-759</b> for all events from "
+"1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905."
+"<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the "
+"events in a given decade or century, you can use <b>?</b> in place of the "
+"final digits. For example, <b>197?</b> for all events from 1970 to 1979 or "
+"<b>16??</b> for all events from 1600 to 1699.<br><br/>Selecting a range of "
+"years will change the calendar to the year view.</dd></dl>"
 
 #: help_text.php:1105
 msgid ""
@@ -5102,6 +5354,17 @@ msgid ""
 "the same page.  The HTML block is a good example of why you might want to do "
 "this."
 msgstr ""
+"Use these buttons to move an entry from one list to another."
+"<br><br>Highlight the entry to be moved, and then click a button to move or "
+"copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and "
+"<b>&laquo;</b> buttons to move the highlighted entry from the leftmost to "
+"the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> "
+"buttons to move the highlighted entry between the Available Blocks list and "
+"the list to its right or left.<br><br>The entries in the Available Blocks "
+"list do not change, regardless of what you do with the Move Right and Move "
+"Left buttons.  This is so because the same block can appear several times on "
+"the same page.  The HTML block is a good example of why you might want to do "
+"this."
 
 #: help_text.php:1115
 msgid ""
@@ -20244,7 +20507,7 @@ msgstr "Reminder e-mail frequency (days)"
 
 #: modules_v3/simpl_duplicates/module.php:34
 msgid "Find duplicates"
-msgstr "Find a place"
+msgstr "Find duplicates"
 
 #: modules_v3/simpl_duplicates/module.php:39
 msgid "A list of possibly duplicated individuals."
@@ -20594,7 +20857,7 @@ msgstr ""
 #: modules_v3/simpl_unlinked/module.php:32
 #: modules_v3/simpl_unlinked/module.php:92
 msgid "Find unlinked individuals"
-msgstr "Find an individual"
+msgstr "Find unlinked individuals"
 
 #: modules_v3/simpl_unlinked/module.php:37
 msgid ""
