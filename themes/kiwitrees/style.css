@@ -958,6 +958,8 @@ a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2
 .icon-edit 				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-edit */
 .icon-delete			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-trash-o */
 .icon-copy				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-copy */
+.icon-widget			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-copy */
+.icon-widget-close		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px; color:red;}										/* fa-copy */
 
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png);}
