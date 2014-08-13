@@ -1395,6 +1395,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/media',
 		WT_ROOT.'modules_v3/lightbox',
 		// Removed in kiwitrees 3.0.0
+		WT_ROOT.'library/WT/Debug.php',
 		WT_ROOT.'modules_v3/simpl_duplicates',
 		WT_ROOT.'modules_v3/simpl_unlinked',
 	);

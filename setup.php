@@ -67,7 +67,6 @@ define('WT_WEBTREES',    'kiwitrees');
 require 'includes/authentication.php'; // for AddToLog()
 require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');
-define('WT_DEBUG_LANG',  false);
 define('WT_DEBUG_SQL',   false);
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
 define('WT_MODULES_DIR', 'modules_v3/');

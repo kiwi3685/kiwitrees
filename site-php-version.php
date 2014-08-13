@@ -28,7 +28,6 @@ define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
 define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
-define('WT_DEBUG_LANG', false); // The translation library needs this
 $WT_SESSION=new stdClass();
 $WT_SESSION->locale='';
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
