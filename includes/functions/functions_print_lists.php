@@ -701,7 +701,7 @@ function format_fam_table($datalist, $option='') {
 									<button
 										type="button"
 										data-filter-column="20"
-										data-filter-value="DIV"
+										data-filter-value="D"
 										class="ui-state-default"
 										title="' . WT_I18N::translate('Show divorced couples.').'"
 									>
