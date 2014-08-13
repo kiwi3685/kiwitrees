@@ -224,7 +224,8 @@
 .fa-check:before {
   content: "\f00c";
 }
-.fa-times:before {
+.fa-times:before,
+.icon-widget-close:before {
   content: "\f00d";
 }
 .fa-search-plus:before,
@@ -430,10 +431,12 @@
 .fa-eject:before {
   content: "\f052";
 }
-.fa-chevron-left:before {
+.fa-chevron-left:before,
+.icon-sidebar-open:before {
   content: "\f053";
 }
-.fa-chevron-right:before {
+.fa-chevron-right:before,
+.icon-sidebar-close:before {
   content: "\f054";
 }
 .fa-plus-circle:before {
@@ -743,7 +746,8 @@
 }
 .fa-navicon:before,
 .fa-reorder:before,
-.fa-bars:before {
+.fa-bars:before,
+.icon-widget:before {
   content: "\f0c9";
 }
 .fa-list-ul:before {
@@ -1382,7 +1386,8 @@
 .fa-reddit:before {
   content: "\f1a1";
 }
-.fa-reddit-square:before {
+.fa-reddit-square:before,
+.icon-mask:before {
   content: "\f1a2";
 }
 .fa-stumbleupon-circle:before {

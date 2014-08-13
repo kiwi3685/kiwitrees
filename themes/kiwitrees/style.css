@@ -726,13 +726,13 @@ span.link_text {display:none;}
 #main {min-width:600px;width:100%}
 #indi_left {float:left;width:98%;}
 #tabs {border-color:#ddd;float:left;width:100%;overflow:visible;}
-#sidebar {border-color:#ddd;display:none;margin:5px 2px 0 0;height:auto;}
+#sidebar {border-left:1px solid #555;display:none;margin:-15px 2px 0 0;height:auto; padding: 0 5px 5px 5px;}
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
-#separator {float:right;display:block;background:#ddd url(images/general_sprite.png) no-repeat -26px 100px;width:0.75%;min-width:6px;max-width:10px;border:1px solid #555;border-top-left-radius:3px;border-top-right-radius:3px;margin-top:5px;}
-.use-sidebar #separator {background:#ddd url(images/general_sprite.png) no-repeat -1px 100px;}
+#separator {float:right;display:block;background-color:#ddd;width:20px;height:20px !important; border:1px solid #555;border-top-left-radius:3px;border-bottom-left-radius:3px;margin-top:-15px; margin-right: -1px}
+.use-sidebar #separator {height:20px !important;}
 
 [dir='rtl'] #indi_left {float:right;}
 [dir='rtl'] #tabs {float:right;}
@@ -958,8 +958,10 @@ a.icon-udarrow:hover{width:20px;height:20px;background-image:url(images/udarrow2
 .icon-edit 				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-edit */
 .icon-delete			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-trash-o */
 .icon-copy				{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-copy */
-.icon-widget			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-copy */
-.icon-widget-close		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px; color:red;}										/* fa-copy */
+.icon-widget			{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-bars */
+.icon-widget-close		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px; color:red;}							/* fa-times */
+.icon-sidebar-close		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.25em; margin: 2px 5px;}										/* fa-chevron-left */
+.icon-sidebar-open		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.25em; margin: 2px 5px;}										/* fa-chevron-right */
 
 /* Silhouettes on charts */
 .icon-silhouette-F {width:37px; height:50px; background-image:url(images/silhouette_female_small.png);}

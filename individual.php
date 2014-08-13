@@ -125,12 +125,14 @@ $controller->addInlineJavascript('
 	function showSidebar(){
 		objMain.addClass("use-sidebar");
 		objSeparator.css("height", objBar.outerHeight() + "px");
+		jQuery("#separator i").switchClass( "icon-sidebar-open", "icon-sidebar-close" );
 		jQuery.cookie("hide-sb", null);
 	}
 	// Hide sidebar
 	function hideSidebar(){
 		objMain.removeClass("use-sidebar");
 		objSeparator.css("height", objTabs.outerHeight() + "px");
+		jQuery("#separator i").switchClass( "icon-sidebar-close", "icon-sidebar-open" );
 		jQuery.cookie("hide-sb", "1");
 	}
 	// Sidebar separator
@@ -251,7 +253,10 @@ echo
 
 if (WT_Module::getActiveSidebars()) {
 	echo $sidebar_html,
-	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>';//clickable element to open/close sidebar
+	//clickable element to open/close sidebar
+	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '">
+		<i class="icon-sidebar-close"></i>				
+	</a>';
 } else {
 	$controller
 		->addInlineJavascript('
