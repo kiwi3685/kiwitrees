@@ -3125,8 +3125,8 @@ span.link_text {
 #tabs {
 	border-color: #ddd;
 	float: left;
-	width: 100%;
 	overflow: visible;
+	width: 100%;
 }
 
 #sidebar {
@@ -3164,12 +3164,13 @@ span.link_text {
 	display: block;
 	float: right;
 	height: 20px !important;
-	margin: 0 -1px 0 0;
+	margin: 0 -13px 0 0;
 	width: 20px;
 }
 
 .use-sidebar #separator {
 	height: 20px !important;
+	margin: 0 -1px 0 0;
 }
 
 [dir='rtl'] #indi_left {
