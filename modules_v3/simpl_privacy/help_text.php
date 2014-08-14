@@ -35,7 +35,7 @@ case 'privacy_status':
 	$text.=WT_I18N::translate('The age at which a person is assumed to be dead is set at %s years.', $MAX_ALIVE_AGE);	
 	$text.='<br><br><dl id="privacy_status_help">';	
 	$text.=WT_I18N::translate('<dt>Dead</dt><dd>Used when a person is clearly marked as dead by the inclusion of a death record with a date or date range.</dd>');
-	$text.=WT_I18N::translate('<dt>Presumed dead</dt><dd>This is set when a person either has a death recorded but with no date, or has no death record but <b>webtrees</b> has calculated that the person can reasonably be expected to be dead.</dd>');
+	$text.=WT_I18N::translate('<dt>Presumed dead</dt><dd>This is set when a person either has a death recorded but with no date, or has no death record but <b>kiwitrees</b> has calculated that the person can reasonably be expected to be dead.</dd>');
 	$text.=WT_I18N::translate('<dt>Living</dt><dd>If there is no record of a death and no other related facts that imply death, then the person is assumed to be living.</dd>');	
 	$text.='</dl>';	
 	break;
