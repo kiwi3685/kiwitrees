@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-07-11 16:08+1200\n"
-"PO-Revision-Date: 2014-08-12 15:58+1200\n"
+"PO-Revision-Date: 2014-08-14 11:23+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
 "kiwitrees/language/en_GB/)\n"
@@ -2131,7 +2131,7 @@ msgstr[1] ""
 
 #: admin_trees_renumber.php:278
 msgid "You can renumber this family tree by clicking this start button."
-msgstr ""
+msgstr "You can renumber this family tree by clicking this start button."
 
 #: admin_trees_renumber.php:279
 msgid "Start"
@@ -5175,6 +5175,11 @@ msgid ""
 "the original GEDCOM during the import process. If you have already imported "
 "the file you will need to re-import it."
 msgstr ""
+"Some genealogy programs wrap notes at word boundaries while others wrap "
+"notes anywhere.  This can cause kiwitrees to run words together.  Setting "
+"this to <b>Yes</b> will add a space between words where they are wrapped in "
+"the original GEDCOM during the import process. If you have already imported "
+"the file you will need to re-import it."
 
 #: help_text.php:1064
 msgid "Add a fact"
@@ -5373,6 +5378,10 @@ msgid ""
 "<br><br>Highlight the entry to be moved, and then click a button to move "
 "that entry up or down."
 msgstr ""
+"Use these buttons to re-arrange the order of the entries within the list.  "
+"The blocks will be printed in the order in which they are listed."
+"<br><br>Highlight the entry to be moved, and then click a button to move "
+"that entry up or down."
 
 #: help_text.php:1120
 msgid ""
@@ -5413,6 +5422,14 @@ msgid ""
 "maximum allowed execution time, resulting in incompletely downloaded files.  "
 "The ZIP option should reduce the download time by 75 percent."
 msgstr ""
+"When you check this option, a copy of the GEDCOM file will be compressed "
+"into ZIP format before the download begins. This will reduce its size "
+"considerably, but you will need to use a compatible Unzip program (WinZIP, "
+"for example) to decompress the transmitted GEDCOM file before you can use it."
+"<br><br>This is a useful option for downloading large GEDCOM files.  There "
+"is a risk that the download time for the uncompressed file may exceed the "
+"maximum allowed execution time, resulting in incompletely downloaded files.  "
+"The ZIP option should reduce the download time by 75 percent."
 
 #: help_text.php:1139 includes/functions/functions_edit.php:1747
 #: includes/functions/functions_edit.php:1752
@@ -5439,6 +5456,9 @@ msgid ""
 "<br>Specific help will be found there.<br><br>When you click the \"Save\" "
 "button, the ID of the Shared Note will be pasted here."
 msgstr ""
+"Clicking the \"+\" icon will open the GEDFact Shared Note Assistant window."
+"<br>Specific help will be found there.<br><br>When you click the \"Save\" "
+"button, the ID of the Shared Note will be pasted here."
 
 #: help_text.php:1150
 msgid ""
@@ -5484,6 +5504,37 @@ msgid ""
 "which that shared note is currently linked.  New links that you establish "
 "after having made your change will also use the updated text.</div></li></ul>"
 msgstr ""
+"Shared notes, like regular notes, are free-form text.  Unlike regular notes, "
+"each shared note can be linked to more than one person, family, source, or "
+"fact.<br><br>By clicking the appropriate icon, you can establish a link to "
+"an existing shared note or create a new shared note and at the same time "
+"link to it.  If a link to an existing shared note has already been "
+"established, you can also edit that note's contents.<br><ul><li><b>Link to "
+"an existing shared note</b><div style=\"padding-left:20px;\">If you already "
+"know the ID number of the desired shared note, you can enter that number "
+"directly into the field.<br><br>When you click the <b>Find Shared Note</b> "
+"icon, you will be able to search the text of all existing shared notes and "
+"then choose one of them.  The ID number of the chosen note will be entered "
+"into the field automatically.<br><br>You must click the <b>Add</b> button to "
+"update the original record.</div><br></li><li><b>Create a new shared note</"
+"b><div style=\"padding-left:20px;\">When you click the <b>Create a new "
+"Shared Note</b> icon, a new window will open.  You can enter the text of the "
+"new note as you wish.  As with regular notes, you can enter URLs."
+"<br><br>When you click the <b>Save</b> button, you will see a message with "
+"the ID number of the newly created shared note.  You should click on this "
+"message to close the editing window and also copy that new ID number "
+"directly into the ID number field.  If you just close the window, the newly "
+"created ID number will not be copied automatically.<br><br>You must click "
+"the <b>Add</b> button to update the original record.</div><br></"
+"li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;"
+"\">When you click the <b>Edit Shared Note</b> icon, a new window will open.  "
+"You can change the text of the existing shared note as you wish.  As with "
+"regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> "
+"button, the text of the shared note will be updated.  You can close the "
+"window and then click the <b>Save</b> button again.<br><br>When you change "
+"the text of a shared note, your change will be reflected in all places to "
+"which that shared note is currently linked.  New links that you establish "
+"after having made your change will also use the updated text.</div></li></ul>"
 
 #: help_text.php:1157
 msgid ""
@@ -5505,6 +5556,13 @@ msgid ""
 "source.  In the Text field you would enter the text transcription from the "
 "source."
 msgstr ""
+"This section allows you to add a new source citation to the fact that you "
+"are currently editing.<br><br>In the Source field you enter the ID for the "
+"source.  Click the <b>Create a new source</b> link if you need to enter a "
+"new source.  In the Citation Details field you would enter the page number "
+"or other information that might help someone find the information in the "
+"source.  In the Text field you would enter the text transcription from the "
+"source."
 
 #: help_text.php:1169
 msgid ""
@@ -5541,6 +5599,21 @@ msgid ""
 "ol>Someone with Accept rights will have to authorize your changes to make "
 "them permanent."
 msgstr ""
+"This page will allow you to merge two GEDCOM records from the same GEDCOM "
+"file.<br><br>This is useful for people who have merged GEDCOMs and now have "
+"many people, families, and sources that are the same.<br><br>The page "
+"consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs "
+"<u>must</u> be of the same type.  You cannot merge an individual and a "
+"family or family and source, for example.<br>In the <b>Merge To ID:</b> "
+"field enter the ID of the record you want to be the new record after the "
+"merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the "
+"record whose information will be merged into the Merge To ID: record.  This "
+"record will be deleted after the Merge.</li><li>You select what facts you "
+"want to keep from the two records when they are merged.  Just click the "
+"checkboxes next to the ones you want to keep.</li><li>You inspect the "
+"results of the merge, just like with all other changes made online.</li></"
+"ol>Someone with Accept rights will have to authorize your changes to make "
+"them permanent."
 
 #: help_text.php:1181
 msgid ""
@@ -5556,6 +5629,17 @@ msgid ""
 "would be the source jurisdiction place if the events recorded took place not "
 "only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"Each source records specific events, generally for a given date range and "
+"for a place jurisdiction.  For example a Census records census events and "
+"church records record birth, marriage, and death events.<br><br>Select the "
+"events that are recorded by this source from the list of events provided. "
+"The date should be specified in a range format such as <i>FROM 1900 TO 1910</"
+"i>. The place jurisdiction is the name of the lowest jurisdiction that "
+"encompasses all lower-level places named in this source. For example, "
+"\"Oxford, Oxfordshire, England\" would be used as a source jurisdiction "
+"place for events occurring within the city of Oxford. \"Oxfordshire, England"
+"\" would be the source jurisdiction place if the events recorded took place "
+"not only in Oxford but also in other places in Oxfordshire."
 
 #: help_text.php:1186
 msgid ""
@@ -5564,6 +5648,10 @@ msgid ""
 "the method to be used to contact <u>you</u>.  Depending on site "
 "configuration, some of the listed methods may not be available to you."
 msgstr ""
+"Kiwitrees has several different contact methods.  The administrator "
+"determines which method will be used to contact him.  You have control over "
+"the method to be used to contact <u>you</u>.  Depending on site "
+"configuration, some of the listed methods may not be available to you."
 
 #: help_text.php:1188
 msgid "Internal messaging"
@@ -5579,6 +5667,13 @@ msgid ""
 "messages.  They will, however, show up as soon as you configure My Page to "
 "again have the Message block."
 msgstr ""
+"With this option, the kiwitrees internal messaging system will be used and "
+"no emails will be sent.<br><br>You will receive only <u>internal</u> "
+"messages from the other users.  When another site user sends you a message, "
+"that message will appear in the Message block on your personal My Page.  If "
+"you have removed this block from your My Page, you will not see any "
+"messages.  They will, however, show up as soon as you configure My Page to "
+"again have the Message block."
 
 #: help_text.php:1192 includes/functions/functions_edit.php:245
 #: includes/functions/functions_edit.php:256
@@ -5591,6 +5686,9 @@ msgid ""
 "extra, a copy of the message will also be sent to the email address you "
 "configured on your Account page.<br><br>This is the default contact method."
 msgstr ""
+"This option is like kiwitrees internal messaging, with one addition.  As an "
+"extra, a copy of the message will also be sent to the email address you "
+"configured on your Account page.<br><br>This is the default contact method."
 
 #: help_text.php:1196 includes/functions/functions_edit.php:247
 #: includes/functions/functions_edit.php:258
@@ -5604,6 +5702,10 @@ msgid ""
 "will not be used at all, and there will never be any messages in the Message "
 "block on your personal My Page."
 msgstr ""
+"With this option, you will only receive email messages at the address you "
+"configured on your Account page.  The messaging system internal to kiwitrees "
+"will not be used at all, and there will never be any messages in the Message "
+"block on your personal My Page."
 
 #: help_text.php:1200
 msgid "No contact method"
@@ -5696,6 +5798,13 @@ msgid ""
 "view.<br><br>Zeros entered here will disable the limit, causing all News "
 "articles to be shown."
 msgstr ""
+"Enter the limiting value here.<br><br>If you have opted to limit the News "
+"article display according to age, any article older than the number of days "
+"entered here will be hidden from view.  If you have opted to limit the News "
+"article display by number, only the specified number of recent articles, "
+"ordered by age, will be shown.  The remaining articles will be hidden from "
+"view.<br><br>Zeros entered here will disable the limit, causing all News "
+"articles to be shown."
 
 #: help_text.php:1248 modules_v3/gedcom_news/module.php:172
 msgid "Limit display by:"
@@ -5708,6 +5817,10 @@ msgid ""
 "limits should be applied or whether the limit should be according to the age "
 "of the article or according to the number of articles."
 msgstr ""
+"You can limit the number of News articles displayed, thereby reducing the "
+"height of the GEDCOM News block.<br><br>This option determines whether any "
+"limits should be applied or whether the limit should be according to the age "
+"of the article or according to the number of articles."
 
 #: help_text.php:1253 library/WT/Gedcom/Tag.php:326
 #: modules_v3/fancy_treeview/module.php:546
@@ -5737,6 +5850,12 @@ msgid ""
 "Information page of that person.<br><br>More help about adding Favorites is "
 "available in your personalized My Page."
 msgstr ""
+"The Favourites drop-down list shows the favourites that you have selected on "
+"your personalized My Page.  It also shows the favorites that the site "
+"administrator has selected for the currently active GEDCOM.  Clicking on one "
+"of the favourites entries will take you directly to the Individual "
+"Information page of that person.<br><br>More help about adding Favourites is "
+"available in your personalized My Page."
 
 #: help_text.php:1263
 msgid "Import family tree"
@@ -5780,6 +5899,13 @@ msgid ""
 "Chart</b> button.<br><br>You can also add people to the chart by searching "
 "for them by date range or locality."
 msgstr ""
+"On this chart you can display one or more persons along a horizontal "
+"timeline.  This chart allows you to see how the lives of different people "
+"overlapped.<br><br>You can add people to the chart individually or by family "
+"groups by their IDs.  The previous list will be remembered as you add more "
+"people to the chart.  You can clear the chart at any time with the <b>Clear "
+"Chart</b> button.<br><br>You can also add people to the chart by searching "
+"for them by date range or locality."
 
 #: help_text.php:1284
 msgid "Find next relationship path"
@@ -5806,6 +5932,14 @@ msgid ""
 "session.  With this option selected, Administrators also have the ability to "
 "modify or delete the information associated with the original CHAN tag."
 msgstr ""
+"Administrators sometimes need to clean up and correct the data submitted by "
+"users.  For example, they might need to correct the PLAC location to include "
+"the country.  When Administrators make such corrections, information about "
+"the original change is normally replaced.  This may not be desirable."
+"<br><br>When this option is selected, kiwitrees will retain the original "
+"Change information instead of replacing it with that of the current "
+"session.  With this option selected, Administrators also have the ability to "
+"modify or delete the information associated with the original CHAN tag."
 
 #: help_text.php:1294 relationship.php:116
 msgid "Show oldest top"
@@ -5833,7 +5967,7 @@ msgstr "Type your password again, to make sure you have typed it correctly."
 
 #: help_text.php:1309
 msgid "PhpGedView to kiwitrees transfer wizard"
-msgstr ""
+msgstr "PhpGedView to kiwitrees transfer wizard"
 
 #: help_text.php:1310
 msgid ""
@@ -5842,6 +5976,10 @@ msgid ""
 "transfer all PGV GEDCOM and other database information directly to your new "
 "kiwitrees database. The following requirements are necessary:"
 msgstr ""
+"The PGV to kiwitrees wizard is an automated process to assist administrators "
+"make the move from a PGV installation to a new kiwitrees one. It will "
+"transfer all PGV GEDCOM and other database information directly to your new "
+"kiwitrees database. The following requirements are necessary:"
 
 #: help_text.php:1312
 msgid "webtrees database must be on the same server as PGV's"
@@ -5864,6 +6002,8 @@ msgid ""
 "The current kiwitrees admin username must be the same as an existing PGV "
 "admin username"
 msgstr ""
+"The current kiwitrees admin username must be the same as an existing PGV "
+"admin username"
 
 #: help_text.php:1322
 msgid "All existing PGV users must have distinct email addresses"
@@ -5885,6 +6025,9 @@ msgid ""
 "is being hosted.  Many configuration details about the server's software, as "
 "it relates to PHP and kiwitrees, can be viewed."
 msgstr ""
+"This page provides extensive information about the server on which kiwitrees "
+"is being hosted.  Many configuration details about the server's software, as "
+"it relates to PHP and kiwitrees, can be viewed."
 
 #: help_text.php:1337
 msgid ""
@@ -6144,6 +6287,17 @@ msgid ""
 "etc.)<br><br>Leave this field blank to keep the original name of the file "
 "you have uploaded from your local computer."
 msgstr ""
+"The media file you are uploading can be, and probably should be, named "
+"differently on the server than it is on your local computer.  This is so "
+"because often the local file name has meaning to you but is much less "
+"meaningful to others visiting this site.  Consider also the possibility that "
+"you and someone else both try to upload different files called \"granny.jpg"
+"\".<br><br>In this field, you specify the new name of the file you are "
+"uploading.  The name you enter here will also be used to name the thumbnail, "
+"which can be uploaded separately or generated automatically.  You do not "
+"need to enter the file name extension (jpg, gif, pdf, doc, "
+"etc.)<br><br>Leave this field blank to keep the original name of the file "
+"you have uploaded from your local computer."
 
 #: help_text.php:1455
 msgid ""
@@ -6262,6 +6416,13 @@ msgid ""
 "visible to others, and you will also be able to see others who are "
 "configured to be visible."
 msgstr ""
+"This checkbox controls your visibility to other users while you're online.  "
+"It also controls your ability to see other online users who are configured "
+"to be visible.<br><br>When this box is unchecked, you will be completely "
+"invisible to others, and you will also not be able to see other online "
+"users.  When this box is checked, exactly the opposite is true.  You will be "
+"visible to others, and you will also be able to see others who are "
+"configured to be visible."
 
 #: help_text.php:1500
 msgid ""
@@ -6297,6 +6458,18 @@ msgid ""
 "target='_blank' title='Wikipedia article'><b>Wikipedia article</b></a> "
 "contains comprehensive information and links about UTF-8."
 msgstr ""
+"For optimal display on the Internet, kiwitrees uses the UTF-8 character "
+"set.  Some programs, Family Tree Maker for example, do not support importing "
+"GEDCOM files encoded in UTF-8.  Checking this box will convert the file from "
+"<b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends "
+"on the program you use to work with your downloaded GEDCOM file.  If you "
+"aren't sure, consult the documentation of that program.<br><br>Note that for "
+"special characters to remain unchanged, you will need to keep the file in "
+"UTF-8 and convert it to your program's method for handling these special "
+"characters by some other means.  Consult your program's manufacturer or "
+"author.<br><br>This <a href='http://en.wikipedia.org/wiki/UTF-8' "
+"target='_blank' title='Wikipedia article'><b>Wikipedia article</b></a> "
+"contains comprehensive information and links about UTF-8."
 
 #: help_text.php:1512
 msgid "Zip clippings"
@@ -18640,11 +18813,11 @@ msgstr "adopted"
 
 #: modules_v3/fancy_treeview/module.php:1225
 msgid "foster son of"
-msgstr ""
+msgstr "foster son of"
 
 #: modules_v3/fancy_treeview/module.php:1227
 msgid "adopted son of"
-msgstr ""
+msgstr "adopted son of"
 
 #: modules_v3/fancy_treeview/module.php:1229
 #: modules_v3/descendancy_report/report.bak:294
@@ -18653,11 +18826,11 @@ msgstr "son of"
 
 #: modules_v3/fancy_treeview/module.php:1234
 msgid "foster daughter of"
-msgstr ""
+msgstr "foster daughter of"
 
 #: modules_v3/fancy_treeview/module.php:1236
 msgid "adopted daughter of"
-msgstr ""
+msgstr "adopted daughter of"
 
 #: modules_v3/fancy_treeview/module.php:1238
 #: modules_v3/descendancy_report/report.bak:225
@@ -18667,11 +18840,11 @@ msgstr "daughter"
 #: modules_v3/fancy_treeview/module.php:1243
 msgctxt "MALE"
 msgid "foster child of"
-msgstr ""
+msgstr "foster child of"
 
 #: modules_v3/fancy_treeview/module.php:1245
 msgid "adopted child of"
-msgstr ""
+msgstr "adopted child of"
 
 #: modules_v3/fancy_treeview/module.php:1247
 msgid "child of"
@@ -20135,67 +20308,67 @@ msgstr "A report of individuals who were married in a given time or place."
 
 #: modules_v3/menu_calendar/module.php:32
 msgid "Calendar menu"
-msgstr ""
+msgstr "Calendar menu"
 
 #: modules_v3/menu_calendar/module.php:37
 msgid "The Calendar menu item"
-msgstr ""
+msgstr "The Calendar menu item"
 
 #: modules_v3/menu_charts/module.php:32
 msgid "Charts menu"
-msgstr ""
+msgstr "Charts menu"
 
 #: modules_v3/menu_charts/module.php:37
 msgid "The Charts menu item"
-msgstr ""
+msgstr "The Charts menu item"
 
 #: modules_v3/menu_favorites/module.php:32
 msgid "Favorites menu"
-msgstr ""
+msgstr "Favourites menu"
 
 #: modules_v3/menu_favorites/module.php:37
 msgid "The Favorites menu item"
-msgstr ""
+msgstr "The Favourites menu item"
 
 #: modules_v3/menu_homepage/module.php:32
 msgid "Home menu"
-msgstr ""
+msgstr "Home menu"
 
 #: modules_v3/menu_homepage/module.php:37
 msgid "The Home page menu item"
-msgstr ""
+msgstr "The Home page menu item"
 
 #: modules_v3/menu_lists/module.php:32
 msgid "Lists menu"
-msgstr ""
+msgstr "Lists menu"
 
 #: modules_v3/menu_lists/module.php:37
 msgid "The Lists menu item"
-msgstr ""
+msgstr "The Lists menu item"
 
 #: modules_v3/menu_mypage/module.php:32
 msgid "My Page menu"
-msgstr ""
+msgstr "My Page menu"
 
 #: modules_v3/menu_mypage/module.php:37
 msgid "The My page menu item"
-msgstr ""
+msgstr "The My page menu item"
 
 #: modules_v3/menu_reports/module.php:32
 msgid "Reports menu"
-msgstr ""
+msgstr "Reports menu"
 
 #: modules_v3/menu_reports/module.php:37
 msgid "The Reports menu item"
-msgstr ""
+msgstr "The Reports menu item"
 
 #: modules_v3/menu_search/module.php:32
 msgid "Search menu"
-msgstr ""
+msgstr "Search menu"
 
 #: modules_v3/menu_search/module.php:37
 msgid "The Search menu item"
-msgstr ""
+msgstr "The Search menu item"
 
 #: modules_v3/missing_facts_report/module.php:33
 #: modules_v3/missing_facts_report/report.bak:4
@@ -20237,11 +20410,11 @@ msgstr "A report of individuals who had a given occupation."
 
 #: modules_v3/openstreetmap/module.php:14
 msgid "OpenStreetMap"
-msgstr ""
+msgstr "OpenStreetMap"
 
 #: modules_v3/openstreetmap/module.php:19
 msgid "Show the location of places and events using OpenStreetMap (OSM)"
-msgstr ""
+msgstr "Show the location of places and events using OpenStreetMap (OSM)"
 
 #: modules_v3/page_menu/module.php:37
 msgid "An edit menu for individuals, families, sources, etc."
@@ -20507,11 +20680,11 @@ msgstr "Reminder e-mail frequency (days)"
 
 #: modules_v3/simpl_duplicates/module.php:34
 msgid "Find duplicates"
-msgstr "Find duplicates"
+msgstr "Find a place"
 
 #: modules_v3/simpl_duplicates/module.php:39
 msgid "A list of possibly duplicated individuals."
-msgstr "A list of possibly duplicated individuals."
+msgstr "Names of private individuals"
 
 #: modules_v3/simpl_duplicates/module.php:109
 msgid "Check for duplicates"
@@ -20707,7 +20880,7 @@ msgstr "The changes to ‘%s’ have been accepted."
 #: modules_v3/simpl_privacy/help_text.php:32
 #: modules_v3/simpl_privacy/module.php:32
 msgid "Privacy status"
-msgstr "Privacy options"
+msgstr "Privacy status"
 
 #: modules_v3/simpl_privacy/help_text.php:34
 msgid ""
@@ -20857,7 +21030,7 @@ msgstr ""
 #: modules_v3/simpl_unlinked/module.php:32
 #: modules_v3/simpl_unlinked/module.php:92
 msgid "Find unlinked individuals"
-msgstr "Find unlinked individuals"
+msgstr "Find an individual"
 
 #: modules_v3/simpl_unlinked/module.php:37
 msgid ""
@@ -22361,7 +22534,7 @@ msgstr "Changes log"
 
 #: themes/_administration/header.php:132
 msgid "Merge trees"
-msgstr ""
+msgstr "Merge trees"
 
 #: themes/_administration/header.php:141
 msgid "Add a new user"
