@@ -546,12 +546,13 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-mime-video-avi           {background-position:-99px  0;}
 .icon-mime-video-x-ms-wmv        {background-position:-50px -196px;}
 
-.icon-mask {display:inline-block;background-image:url(images/icon_mask.png);background-color:transparent;background-repeat:no-repeat;width:16px;height:16px;cursor:pointer;}
 .icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px;}
 
 /* font-awesome icons */
-.icon-delete	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}										/* fa-trash-o */
+.icon-delete	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}									/* fa-trash-o */
 .icon-help		{font-family: 'FontAwesome'; font-style:normal; font-size: 1em; vertical-align: top; cursor:help; margin:0 5px;}	/* fa-question-circle */
+.icon-mask		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.3em; cursor:help;}										/* fa-reddit-square */
+
 
 /* Styling for the jquery.colorbox gallery */
 #colorbox, #cboxOverlay, #cboxWrapper {position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}

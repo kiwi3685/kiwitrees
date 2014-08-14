@@ -435,10 +435,20 @@
 .icon-sidebar-open:before {
   content: "\f053";
 }
+
+[dir='rtl'] .icon-sidebar-close:before {
+  content: "\f053";
+}
+
 .fa-chevron-right:before,
 .icon-sidebar-close:before {
   content: "\f054";
 }
+
+[dir='rtl'] .icon-sidebar-open:before {
+  content: "\f054";
+}
+
 .fa-plus-circle:before {
   content: "\f055";
 }
