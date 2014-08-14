@@ -37,15 +37,14 @@ $controller
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-$ged=$GEDCOM;
-$gid1=safe_POST_xref('gid1');
-$gid2=safe_POST_xref('gid2');
-$action=safe_POST('action', WT_REGEX_ALPHA, 'choose');
-$ged2=safe_POST('ged2', WT_REGEX_NOSCRIPT, $GEDCOM);
-$keep1=safe_POST('keep1', WT_REGEX_UNSAFE);
-$keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
-if (empty($keep1)) $keep1=array();
-if (empty($keep2)) $keep2=array();
+$ged    = $GEDCOM;
+$gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);
+$gid2   = WT_Filter::post('gid2', WT_REGEX_XREF);
+$action = WT_Filter::post('action', 'choose|select|merge', 'choose');
+$ged1   = WT_Filter::post('ged1', null, $ged);
+$ged2   = WT_Filter::post('ged2', null, $ged);
+$keep1  = WT_Filter::postArray('keep1');
+$keep2  = WT_Filter::postArray('keep2');
 
 if ($action!='choose') {
 	if ($gid1==$gid2 && $GEDCOM==$ged2) {
@@ -277,12 +276,12 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
-		<input data-autocomplete-type="IFS" type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">
+		<input data-autocomplete-type="INDI" type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" autofocus="autofocus">
 		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>
 		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>
 		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>
 		</td></tr><tr><td>',
-		WT_I18N::translate('Merge From ID:'),
+		WT_I18N::translate('Merge from ID:'),
 		'</td><td>
 		<select name="ged2" tabindex="5" onchange="jQuery(\'#gid2\').data(\'autocomplete-ged\', jQuery(this).val());"';
 	if (count(WT_Tree::getAll())==1) {
@@ -298,7 +297,7 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
-		<input data-autocomplete-type="IFS" type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">
+		<input data-autocomplete-type="INDI" type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">
 		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>
 		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>
 		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>
