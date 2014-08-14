@@ -221,7 +221,8 @@
 .fa-th-list:before {
   content: "\f00b";
 }
-.fa-check:before {
+.fa-check:before,
+.icon-selected:before {
   content: "\f00c";
 }
 .fa-times:before,
@@ -721,7 +722,8 @@
   content: "\f0b2";
 }
 .fa-group:before,
-.fa-users:before {
+.fa-users:before,
+.icon-button_family:before {
   content: "\f0c0";
 }
 .fa-chain:before,
@@ -736,7 +738,8 @@
   content: "\f0c3";
 }
 .fa-cut:before,
-.fa-scissors:before {
+.fa-scissors:before,
+.icon-clippings:before {
   content: "\f0c4";
 }
 .fa-copy:before,
@@ -1303,7 +1306,8 @@
   content: "\f182";
 }
 .fa-male:before,
-.icon-indis:before {
+.icon-indis:before,
+.icon-button_indi:before {
   content: "\f183";
 }
 .fa-gittip:before {

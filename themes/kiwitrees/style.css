@@ -1253,6 +1253,7 @@ a:hover .nameZoom {
 }
 
 .helpcontent {
+	font-size: 80%;
 	margin-left: 10px;
 	margin-right: 10px;
 }
@@ -3603,18 +3604,19 @@ span.link_text {
 	}
 
 	#header,
-#footer,
-#topMenu,
-#sidebar,
-.noprint {
+	#footer,
+	#topMenu,
+	#sidebar,
+	.noprint {
 		display: none !important;
 	}
 
 	form,
-button,
-input {
-		display: none;
-	} /* buttons and input are used out of forms in sortable tables*/
+	button,
+	input {
+			display: none;
+		} /* buttons and input are used out of forms in sortable tables*/
+
 	.lifespan_outer {
 		position: relative;
 		width: auto;
@@ -3690,12 +3692,6 @@ input {
 	vertical-align: middle;
 }
 
-.icon-button_family {
-	width: 14px;
-	height: 15px;
-	background-image: url(images/buttons/family.png);
-}
-
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
@@ -3712,12 +3708,6 @@ input {
 	width: 12px;
 	height: 18px;
 	background-image: url(images/buttons/head.png);
-}
-
-.icon-button_indi {
-	width: 11px;
-	height: 15px;
-	background-image: url(images/buttons/indi.png);
 }
 
 .icon-button_keyboard {
@@ -3775,12 +3765,6 @@ input {
 	width: 16px;
 	height: 16px;
 	background-image: url(images/children.png);
-}
-
-.icon-clippings {
-	width: 22px;
-	height: 22px;
-	background-image: url(images/clippings.png);
 }
 
 .icon-darrow {
@@ -4107,12 +4091,6 @@ a.icon-rdarrow:hover {
 	background-image: url(images/search.png);
 }
 
-.icon-selected {
-	width: 12px;
-	height: 12px;
-	background-image: url(images/selected.png);
-}
-
 .icon-sex_f_15x15 {
 	width: 15px;
 	height: 15px;
@@ -4331,6 +4309,31 @@ a.icon-udarrow:hover {
 	font-size: 1.25em;
 	margin: 2px 5px;
 }
+.icon-clippings {	/* fa-scissors */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 1.25em;
+	vertical-align: middle;
+}
+
+.icon-button_indi {	/* fa-male */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 1.5em;
+}
+
+.icon-button_family {	/* fa-users */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 1.2em;
+}
+
+.icon-selected {
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 1.2em;
+}
+
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
@@ -5258,6 +5261,7 @@ hr.stories_divider:after {
 #stories strong,
 #stories sub,
 #stories sup,
+#stories cite,
 #stories b,
 #stories u,
 #stories i,
@@ -5326,6 +5330,16 @@ hr.stories_divider:after {
 #stories b,
 #stories strong {
 	font-weight: bolder;
+}
+
+#stories sup,
+#stories sup a {
+	font-size: 80%;
+	vertical-align: top;
+}
+
+#stories .footnotes {
+	font-size: 90%;
 }
 
 /* Styling for simpl_research module */

@@ -477,9 +477,7 @@ table#story_table {width:100%}
 [class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat; vertical-align:middle;}
 
 .icon-bullet {background-position:-66px -154px; width:16px; height:16px;}
-.icon-button_family {background-position:-112px 0; width:16px; height:16px;}
 .icon-button_find_facts {background-position:-38px -180px; width:16px; height:16px;}
-.icon-button_indi {background-position:-116px -180px; width:11px; height:16px;}
 .icon-button_media {background-position:-10px -154px; width:18px; height:16px;}
 .icon-button_note {background-position:-66px -180px; width:14px; height:16px;}
 .icon-button_source {background-position:-109px -62px; width:18px; height:16px;}
@@ -549,9 +547,12 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px;}
 
 /* font-awesome icons */
-.icon-delete	{font-family: 'FontAwesome'; font-style:normal; font-size: 1.4em; margin: 0 5px;}									/* fa-trash-o */
-.icon-help		{font-family: 'FontAwesome'; font-style:normal; font-size: 1em; vertical-align: top; cursor:help; margin:0 5px;}	/* fa-question-circle */
-.icon-mask		{font-family: 'FontAwesome'; font-style:normal; font-size: 1.3em; cursor:help;}										/* fa-reddit-square */
+.icon-delete		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;}									/* fa-trash-o */
+.icon-help			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; vertical-align: top; cursor:help; margin:0 5px;}	/* fa-question-circle */
+.icon-mask			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.3em; cursor:help;}									/* fa-reddit-square */
+.icon-button_indi	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; }												/* fa-male */
+.icon-button_family {font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; }												/* fa-users */
+
 
 
 /* Styling for the jquery.colorbox gallery */
