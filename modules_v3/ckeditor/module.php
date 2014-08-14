@@ -53,7 +53,8 @@ class ckeditor_WT_Module extends WT_Module {
 					height: "400px",
 					extraPlugins: "slideshow",
 					filebrowserImageBrowseUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
-					filebrowserImageUploadUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images"
+					filebrowserImageUploadUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
+					footnotesPrefix: "a"
 				});
 			');
 	}
