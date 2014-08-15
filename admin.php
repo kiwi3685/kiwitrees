@@ -1398,6 +1398,9 @@ function old_paths() {
 		WT_ROOT.'library/WT/Debug.php',
 		WT_ROOT.'modules_v3/simpl_duplicates',
 		WT_ROOT.'modules_v3/simpl_unlinked',
+		WT_ROOT.'themes/clouds',
+		WT_ROOT.'themes/fab',
+		WT_ROOT.'themes/minimal',
 	);
 }
 
