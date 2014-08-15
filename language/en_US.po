@@ -674,7 +674,7 @@ msgid "You need to login again, using your PhpGedView username and password."
 msgstr ""
 
 #: admin_pgv_to_wt.php:1068 admin_trees_download.php:138
-#: admin_trees_manage.php:170 admin_trees_merge.php:177 admin_users.php:563
+#: admin_trees_manage.php:170 admin_trees_append.php:177 admin_users.php:563
 #: login.php:182 login.php:418 modules_v3/login_block/module.php:105
 #: setup.php:201 setup.php:225 setup.php:294 setup.php:379 setup.php:435
 msgid "continue"
@@ -2012,11 +2012,11 @@ msgstr ""
 msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
 msgstr ""
 
-#: admin_trees_merge.php:28
-msgid "Merge family trees"
+#: admin_trees_append.php:28
+msgid "Combine family trees"
 msgstr ""
 
-#: admin_trees_merge.php:70
+#: admin_trees_append.php:70
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural ""
@@ -2024,20 +2024,20 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin_trees_merge.php:76
+#: admin_trees_append.php:76
 msgid ""
-"You must renumber the records in one of the trees before you can merge them."
+"You must renumber the records in one of the trees before you can combine them."
 msgstr ""
 
-#: admin_trees_merge.php:158
-msgid "The family trees were merged successfully."
+#: admin_trees_append.php:158
+msgid "The family trees were combined successfully."
 msgstr ""
 
-#: admin_trees_merge.php:161
+#: admin_trees_append.php:161
 msgid "Oops!  An unexpected database error occurred."
 msgstr ""
 
-#: admin_trees_merge.php:172
+#: admin_trees_append.php:172
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
 msgstr ""
