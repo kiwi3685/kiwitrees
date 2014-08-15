@@ -1074,7 +1074,7 @@ class WT_Person extends WT_GedcomRecord {
 				$this->indifacts[] = $event;
 			}
 		}
-		//-- add a new sex fact if one was not found
+		//-- Add a sex fact if one was not found
 		if (!$sexfound) {
 			$this->globalfacts[] = new WT_Event('1 SEX U', $this, 'new');
 		}

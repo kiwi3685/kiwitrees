@@ -1147,7 +1147,7 @@ function print_calendar_popup($id) {
 }
 
 function print_addnewmedia_link($element_id) {
-	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a new media object').'"></a>';
+	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a media object').'"></a>';
 }
 
 function print_addnewrepository_link($element_id) {
@@ -1172,7 +1172,7 @@ function print_addnewsource_link($element_id) {
 }
 
 /**
-* add a new tag input field
+* Add a tag input field
 *
 * called for each fact to be edited on a form.
 * Fact level=0 means a new empty form : data are POSTed by name
@@ -1714,7 +1714,7 @@ function print_add_layer($tag, $level=2) {
 
 	if ($tag=="SOUR") {
 		//-- Add new source to fact
-		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><i id=\"newsource_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new source citation'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><i id=\"newsource_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a source citation'), "</a>";
 		echo help_link('edit_add_SOUR');
 		echo "<br>";
 		echo "<div id=\"newsource\" style=\"display: none;\">";
@@ -1742,14 +1742,14 @@ function print_add_layer($tag, $level=2) {
 		echo "</table></div>";
 	}
 	if ($tag=="ASSO" || $tag=="ASSO2") {
-		//-- Add a new ASSOciate
+		//-- Add an associate
 		if ($tag=="ASSO") {
-			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), "</a>";
+			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add an associate'), "</a>";
 			echo help_link('edit_add_ASSO');
 			echo "<br>";
 			echo "<div id=\"newasso\" style=\"display: none;\">";
 		} else {
-			echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), "</a>";
+			echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add an associate'), "</a>";
 			echo help_link('edit_add_ASSO');
 			echo "<br>";
 			echo "<div id=\"newasso2\" style=\"display: none;\">";
@@ -1768,7 +1768,7 @@ function print_add_layer($tag, $level=2) {
 	if ($tag=="NOTE") {
 		//-- Retrieve existing note or add new note to fact
 		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new note'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a note'), "</a>";
 		echo help_link('edit_add_NOTE');
 		echo "<br>";
 		echo "<div id=\"newnote\" style=\"display: none;\">";
@@ -1780,7 +1780,7 @@ function print_add_layer($tag, $level=2) {
 	if ($tag=="SHARED_NOTE") {
 		//-- Retrieve existing shared note or add new shared note to fact
 		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new shared note'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a shared note'), "</a>";
 		echo help_link('edit_add_SHARED_NOTE');
 		echo "<br>";
 		echo "<div id=\"newshared_note\" style=\"display: none;\">";
@@ -1792,7 +1792,7 @@ function print_add_layer($tag, $level=2) {
 	}
 	if ($tag=="OBJE") {
 		//-- Add new obje to fact
-		echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new media object'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a media object'), "</a>";
 		echo help_link('OBJE');
 		echo "<br>";
 		echo "<div id=\"newobje\" style=\"display: none;\">";
@@ -1803,7 +1803,7 @@ function print_add_layer($tag, $level=2) {
 	if ($tag=="RESN") {
 		//-- Retrieve existing resn or add new resn to fact
 		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new restriction'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a restriction'), "</a>";
 		echo help_link('RESN');
 		echo "<br>";
 		echo "<div id=\"newresn\" style=\"display: none;\">";

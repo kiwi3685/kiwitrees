@@ -330,7 +330,7 @@ case 'addchild':
 	$family = WT_Family::getInstance($famid);
 
 	if ($family) {
-		$controller->setPageTitle($family->getFullName() . ' - ' . WT_I18N::translate('Add a new child'));
+		$controller->setPageTitle($family->getFullName() . ' - ' . WT_I18N::translate('Add a child'));
 	} else {
 		$controller->setPageTitle(WT_I18N::translate('Add an unlinked person'));
 	}
@@ -350,9 +350,9 @@ case 'addspouse':
 	$famid  = safe_GET('famid',  WT_REGEX_XREF);
 
 	if ($famtag=='WIFE') {
-		$controller->setPageTitle(WT_I18N::translate('Add a new wife'));
+		$controller->setPageTitle(WT_I18N::translate('Add a wife'));
 	} else {
-		$controller->setPageTitle(WT_I18N::translate('Add a new husband'));
+		$controller->setPageTitle(WT_I18N::translate('Add a husband'));
 	}
 	$controller->pageHeader();
 
@@ -380,9 +380,9 @@ case 'addnewparent':
 	}
 
 	if ($famtag=='WIFE') {
-		$controller->setPageTitle($name . WT_I18N::translate('Add a new mother'));
+		$controller->setPageTitle($name . WT_I18N::translate('Add a mother'));
 	} else {
-		$controller->setPageTitle($name . WT_I18N::translate('Add a new father'));
+		$controller->setPageTitle($name . WT_I18N::translate('Add a father'));
 	}
 	$controller->pageHeader();
 
@@ -1488,7 +1488,7 @@ case 'addchildaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addspouseaction':
 	$controller
-		->setPageTitle(WT_I18N::translate('Add a new spouse'))
+		->setPageTitle(WT_I18N::translate('Add a spouse'))
 		->pageHeader();
 
 	splitSOUR(); // separate SOUR record from the rest
@@ -1643,7 +1643,7 @@ case 'linkspouseaction':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewparentaction':
 	$controller
-		->setPageTitle(WT_I18N::translate('Add a new father'))
+		->setPageTitle(WT_I18N::translate('Add a father'))
 		->pageHeader();
 
 	splitSOUR(); // separate SOUR record from the rest

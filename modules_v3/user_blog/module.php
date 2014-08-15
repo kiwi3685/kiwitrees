@@ -93,7 +93,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "</div><br>";
 		}
 		if (WT_USER_ID) {
-			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', news_window_specs); return false;\">".WT_I18N::translate('Add a new Journal entry')."</a>";
+			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', news_window_specs); return false;\">".WT_I18N::translate('Add a Journal entry')."</a>";
 		}
 
 		if ($template) {

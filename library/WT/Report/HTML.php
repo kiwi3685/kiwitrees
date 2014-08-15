@@ -518,7 +518,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			foreach ($lines as $line) {
 				$wtext = utf8_wordwrap($line, $lw, "\n", true);
 				$wraptext .= $wtext;
-				// Add a new line as long as it's not the last line
+				// Add a line as long as it's not the last line
 				if ($lfct > 1) {
 					$wraptext.= "\n";
 				}
@@ -1234,7 +1234,7 @@ class TextHTML extends Text {
 					}
 					// Check the Line Feed counter
 					if ($lfct > 1) {
-						// Add a new line feed as long as it's not the last line
+						// Add a line feed as long as it's not the last line
 						$newtext.= "\n";
 						// Reset the line width
 						$lw = 0;
@@ -1394,7 +1394,7 @@ class FootnoteHTML extends Footnote {
 					}
 					// Check the Line Feed counter
 					if ($lfct > 1) {
-						// Add a new line feed as long as it's not the last line
+						// Add a line feed as long as it's not the last line
 						$newtext.= "\n";
 						// Reset the line width
 						$lw = 0;

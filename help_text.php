@@ -929,7 +929,7 @@ case 'SUBLIST_TRIGGER_I':
 case 'SURNAME_TRADITION':
 	$title = WT_I18N::translate('Surname tradition');
 	$text = 
-		WT_I18N::translate('When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition.').
+		WT_I18N::translate('When you Add a family member, a default surname can be provided.  This surname will depend on the local tradition.').
 		'<br><br><dl><dt>'.
 		/* I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname */
 		WT_I18N::translate('patrilineal').
@@ -1079,19 +1079,19 @@ case 'add_new_gedcom':
 
 case 'add_note':
 	// This is a general help text for multiple pages
-	$title = WT_I18N::translate('Add a new note');
+	$title = WT_I18N::translate('Add a note');
 	$text = WT_I18N::translate('If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that\'s all.');
 	break;
 
 case 'add_shared_note':
 	// This is a general help text for multiple pages
-	$title = WT_I18N::translate('Add a new shared note');
-	$text = WT_I18N::translate('When you click the <b>Add a new Shared Note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it.');
+	$title = WT_I18N::translate('Add a shared note');
+	$text = WT_I18N::translate('When you click the <b>Add a Shared Note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it.');
 	break;
 
 case 'add_source':
 	// This is a general help text for multiple pages
-	$title = WT_I18N::translate('Add a new source citation');
+	$title = WT_I18N::translate('Add a source citation');
 	$text = WT_I18N::translate('Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information.');
 	break;
 
@@ -1136,8 +1136,8 @@ case 'download_zipped':
 	break;
 
 case 'edit_add_ASSO':
-	$title = WT_I18N::translate('Add a new associate');
-	$text = WT_I18N::translate('Add a new Associate allows you to link a fact with an associated person in the site.  This is one way in which you might record that someone was the Godfather of another person.');
+	$title = WT_I18N::translate('Add an associate');
+	$text = WT_I18N::translate('Add an associate allows you to link a fact with an associated person in the site.  This is one way in which you might record that someone was the Godfather of another person.');
 	break;
 
 case 'edit_add_GEDFact_ASSISTED':
@@ -1146,12 +1146,12 @@ case 'edit_add_GEDFact_ASSISTED':
 	break;
 
 case 'edit_add_NOTE':
-	$title = WT_I18N::translate('Add a new note');
-	$text = WT_I18N::translate('This section allows you to add a new Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page.');
+	$title = WT_I18N::translate('Add a note');
+	$text = WT_I18N::translate('This section allows you to Add a Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page.');
 	break;
 
 case 'edit_add_SHARED_NOTE':
-	$title = WT_I18N::translate('Add a new shared note');
+	$title = WT_I18N::translate('Add a shared note');
 	$text = WT_I18N::translate('Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one person, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note\'s contents.<br><ul><li><b>Link to an existing shared note</b><div style="padding-left:20px;">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find Shared Note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style="padding-left:20px;">When you click the <b>Create a new Shared Note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style="padding-left:20px;">When you click the <b>Edit Shared Note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>');
 	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 		$text.='<p class="warning">'.WT_I18N::translate('You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly.').'</p>';
@@ -1159,8 +1159,8 @@ case 'edit_add_SHARED_NOTE':
 	break;
 
 case 'edit_add_SOUR':
-	$title = WT_I18N::translate('Add a new source citation');
-	$text = WT_I18N::translate('This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source.');
+	$title = WT_I18N::translate('Add a source citation');
+	$text = WT_I18N::translate('This section allows you to Add a source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source.');
 	break;
 
 case 'edit_edit_raw':

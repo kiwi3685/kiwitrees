@@ -86,9 +86,9 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 			//Show Album header Links
 			if (WT_USER_CAN_EDIT) {
 				$html.='<div class="descriptionbox rela">';
-				// Add a new media object
+				// Add a media object
 				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-					$html.='<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', edit_window_specs);return false;"><i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>' .WT_I18N::translate('Add a new media object'). '</a></span>';;
+					$html.='<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', edit_window_specs);return false;"><i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>' .WT_I18N::translate('Add a media object'). '</a></span>';;
 					// Link to an existing item
 					$html.='<span><a href="#" onclick="window.open(\'inverselink.php?linktoid='.$controller->record->getXref().'&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');"><i style="margin: 0 3px 0 10px;" class="icon-image_link">&nbsp;</i>' .WT_I18N::translate('Link to an existing media object'). '</a></span>';;
 				}

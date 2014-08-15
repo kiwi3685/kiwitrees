@@ -90,7 +90,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('NOTE'); ?></td>
 			<td class="facts_value">
 				<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;">
-					<?php echo WT_I18N::translate('Add a new note'); ?>
+					<?php echo WT_I18N::translate('Add a note'); ?>
 				</a>
 				<?php echo help_link('add_note'); ?>
 			</td>
@@ -99,7 +99,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			<td class="facts_label"><?php echo WT_Gedcom_Tag::getLabel('SHARED_NOTE'); ?></td>
 			<td class="facts_value">
 				<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;">
-					<?php echo WT_I18N::translate('Add a new shared note'); ?>
+					<?php echo WT_I18N::translate('Add a shared note'); ?>
 				</a>
 				<?php echo help_link('add_shared_note'); ?>
 			</td>

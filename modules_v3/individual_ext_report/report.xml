@@ -629,7 +629,7 @@
 		</Body>
 		<!-- if the sources were on, print the source citations as footnotes -->
 		<if condition="$source_exist==1">
-			<!-- add a new page -->
+			<!-- Add a page -->
 			<NewPage/>
 			<Body>
 				<TextBox newline="1">
