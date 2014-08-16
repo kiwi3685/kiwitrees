@@ -318,7 +318,8 @@
 .fa-tags:before {
   content: "\f02c";
 }
-.fa-book:before {
+.fa-book:before,
+.icon-button_source:before {
   content: "\f02d";
 }
 .fa-bookmark:before {
@@ -379,7 +380,8 @@
   content: "\f040";
 }
 .fa-map-marker:before,
-.icon-edit_maps:before {
+.icon-edit_maps:before,
+.icon-target:before {
   content: "\f041";
 }
 .fa-adjust:before {
@@ -504,7 +506,8 @@
 .fa-compress:before {
   content: "\f066";
 }
-.fa-plus:before {
+.fa-plus:before,
+.icon-button_addsource:before {
   content: "\f067";
 }
 .fa-minus:before {
@@ -538,7 +541,8 @@
 .fa-plane:before {
   content: "\f072";
 }
-.fa-calendar:before {
+.fa-calendar:before,
+.icon-button_calendar:before {
   content: "\f073";
 }
 .fa-random:before {
@@ -703,7 +707,8 @@
   content: "\f0ab";
 }
 .fa-globe:before,
-.icon-config_maps:before {
+.icon-config_maps:before,
+.icon-button_place:before {
   content: "\f0ac";
 }
 .fa-wrench:before {
@@ -1000,7 +1005,9 @@
 .fa-gamepad:before {
   content: "\f11b";
 }
-.fa-keyboard-o:before {
+.fa-keyboard-o:before,
+.icon-button_keyboard:before
+ {
   content: "\f11c";
 }
 .fa-flag-o:before {

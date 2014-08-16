@@ -192,24 +192,6 @@ textarea:requi#ff0000:invalid {
 	width: 100%;
 }
 
-#social {
-	float: left;
-	margin: 8px;
-}
-
-#social .fb-like span {
-	margin-bottom: 5px;
-}
-
-#social .twitter-share-button {
-	margin-bottom: 3px;
-}
-
-#social>div {
-	margin-left: 25px!important;
-	vertical-align: top!important;
-}
-
 #extra-menu {
 	float: right;
 	white-space: nowrap;
@@ -1294,7 +1276,7 @@ a:hover .nameZoom {
 	width: 7px;
 }
 
-[ID^="vline"] {
+[id^="vline"] {
 	width: 3px;
 }
 
@@ -2949,6 +2931,11 @@ span.link_text {
 	font-weight: normal;
 }
 
+/* ====Calendar pop up display ========= */
+div[id^="caldiv"] td {
+	border-radius:0;
+}
+
 .media-display {
 	width: 120px;
 	float: left;
@@ -3679,19 +3666,6 @@ span.link_text {
 	background-image: url(images/buttons/addrepository.png);
 }
 
-.icon-button_addsource {
-	width: 18px;
-	height: 16px;
-	background-image: url(images/buttons/addsource.png);
-}
-
-.icon-button_calendar {
-	width: 19px;
-	height: 15px;
-	background-image: url(images/buttons/calendar.png);
-	vertical-align: middle;
-}
-
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
@@ -3710,13 +3684,6 @@ span.link_text {
 	background-image: url(images/buttons/head.png);
 }
 
-.icon-button_keyboard {
-	width: 30px;
-	height: 15px;
-	background-image: url(images/buttons/keyboard.png);
-	vertical-align: middle;
-}
-
 .icon-button_media {
 	width: 18px;
 	height: 16px;
@@ -3730,23 +3697,10 @@ span.link_text {
 	background-image: url(images/buttons/note.png);
 }
 
-.icon-button_place {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/buttons/place.png);
-	vertical-align: middle;
-}
-
 .icon-button_repository {
 	width: 15px;
 	height: 15px;
 	background-image: url(images/buttons/repository.png);
-}
-
-.icon-button_source {
-	width: 18px;
-	height: 16px;
-	background-image: url(images/buttons/source.png);
 }
 
 .icon-cfamily {
@@ -4145,13 +4099,6 @@ a.icon-rdarrow:hover {
 	background-image: url(images/source.png);
 }
 
-.icon-target {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/buttons/target.png);
-	vertical-align: middle;
-}
-
 .icon-tree {
 	width: 20px;
 	height: 20px;
@@ -4327,13 +4274,48 @@ a.icon-udarrow:hover {
 	font-style: normal;
 	font-size: 1.2em;
 }
-
-.icon-selected {
+.icon-selected { /* fa-tick */
 	font-family: 'FontAwesome';
 	font-style: normal;
 	font-size: 1.2em;
 }
 
+.icon-button_addsource { /* fa-plus */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 2em;
+	margin: 0 .5em;
+}
+
+.icon-button_source { /* fa-book */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 2em;
+}
+
+.icon-button_keyboard { /* fa-icon-keyboard-o */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 2em;
+}
+
+.icon-button_place { /* fa-globe */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 2em;
+}
+
+.icon-target { /* fa-map-marker */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 2em;
+}
+
+.icon-button_calendar { /* fa-calendar */
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-size: 2em;
+}
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
