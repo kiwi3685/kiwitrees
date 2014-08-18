@@ -206,7 +206,10 @@
   content: "\f006";
 }
 .fa-user:before,
-.icon-user_add:before {
+.icon-user_add:before,
+.icon-sex_u_15x15:before,
+.icon-sex_u_9x9:before,
+.unknown_gender:before {
   content: "\f007";
 }
 .fa-film:before {
@@ -507,7 +510,9 @@
   content: "\f066";
 }
 .fa-plus:before,
-.icon-button_addsource:before {
+.icon-button_addsource:before,
+.icon-button_addnote:before,
+.icon-image_add:before {
   content: "\f067";
 }
 .fa-minus:before {
@@ -728,12 +733,14 @@
 }
 .fa-group:before,
 .fa-users:before,
-.icon-button_family:before {
+.icon-button_family:before,
+.icon-cfamily:before {
   content: "\f0c0";
 }
 .fa-chain:before,
 .fa-link:before,
-.icon-button_linknote:before {
+.icon-button_linknote:before,
+.icon-image_link:before {
   content: "\f0c1";
 }
 .fa-cloud:before {
@@ -924,8 +931,7 @@
 .fa-h-square:before {
   content: "\f0fd";
 }
-.fa-plus-square:before,
-.icon-button_addnote:before {
+.fa-plus-square:before {
   content: "\f0fe";
 }
 .fa-angle-double-left:before {
@@ -1207,7 +1213,8 @@
 .fa-file-text:before {
   content: "\f15c";
 }
-.fa-sort-alpha-asc:before {
+.fa-sort-alpha-asc:before,
+ .icon-image_sort:before {
   content: "\f15d";
 }
 .fa-sort-alpha-desc:before {
@@ -1309,12 +1316,18 @@
 .fa-trello:before {
   content: "\f181";
 }
-.fa-female:before {
+.fa-female:before,
+.icon-sex_f_15x15:before,
+.icon-sex_f_9x9:before,
+.female_gender:before {
   content: "\f182";
 }
 .fa-male:before,
 .icon-indis:before,
-.icon-button_indi:before {
+.icon-button_indi:before,
+.icon-sex_m_15x15:before,
+.icon-sex_m_9x9:before,
+.male_gender:before {
   content: "\f183";
 }
 .fa-gittip:before {
