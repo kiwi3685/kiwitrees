@@ -377,8 +377,6 @@ dt{float:left;font-weight:700;margin-right:10px}
 .icon-edit{background-position:-40px -32px;height:16px;width:24px}
 .icon-copy{background-position:-70px -32px;height:16px;width:24px}
 .icon-delete{background-position:-100px -32px;height:16px;width:24px}
-.icon_arrow{background:url(images/small_menu_sprite.png) no-repeat left 0;background-position:90% -1166px;display:block}
-[dir='rtl'] .icon_arrow{background-position:10% -1184px}
 .ui-tabs .ui-tabs-panel{margin-bottom:80px;padding:1em 0}
 .ui-tabs .ui-tabs-nav {height: 25px;}
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
