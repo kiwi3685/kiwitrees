@@ -612,7 +612,8 @@ function print_parents($famid, $personcount=1) {
 	if (is_null($husb)) $husb = new WT_Person('');
 	$wife = $family->getWife();
 	if (is_null($wife))	$wife = new WT_Person('');
-	// -- get the new record and parents if in editing show changes mode
+
+	// -- get the new record and parents if in editing show_changes mode
 	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {
 		$newrec = find_gedcom_record($famid, $ged_id, true);
 		$newparents = find_parents_in_record($newrec);
@@ -623,27 +624,41 @@ function print_parents($famid, $personcount=1) {
 		$hparents = false;
 		$upfamid = "";
 		if ($hfams) {
+			$hparents = false;
+			foreach ($hfams as $hfamily) {
+				$hparents = find_parents_in_record($hfamily->getGedcomRecord());
+				$upfamid = $hfamily->getXref();
+				break;
+			}
 			echo '<div id="husb_parents">';
-				$hparents = false;
-				foreach ($hfams as $hfamily) {
-					$hparents = find_parents_in_record($hfamily->getGedcomRecord());
-					$upfamid = $hfamily->getXref();
-					break;
-				}
 				if (!empty($upfamid)) {
 					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
 				}
-				if ($hparents) {
-					// husband's father
+				// husbants's father
+				$husb_father = WT_Person::getInstance($hparents['HUSB']);
+				if ($hparents && !empty($husb_father)) {
 					echo '<div class="fam_parent">';
 						print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 3, 4, $personcount);
 					echo '</div>';
+				} else {
+					echo '<div class="fam_parent">
+						  	<div class="person_box empty_parent">
+						 		<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						  	</div>
+					</div>';		
 				}
-				if ($hparents) {
-					// husband's mother
+				// husband's mother
+				$husb_mother = WT_Person::getInstance($hparents['WIFE']);
+				if ($hparents && !empty($husb_mother)) {
 					echo '<div class="fam_parent">';
-						print_pedigree_person(WT_Person::getInstance($hparents['WIFE']), 3, 5, $personcount);
+						print_pedigree_person($husb_mother, 3, 5, $personcount);
 					echo '</div>';
+				} else {
+					echo '<div class="fam_parent">
+						  	<div class="person_box empty_parent">
+						 		<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						  	</div>
+					</div>';		
 				}
 				/* marriage details */
 				echo '<div class="center">';
@@ -658,29 +673,28 @@ function print_parents($famid, $personcount=1) {
 		} else {
 			echo '<div id="husb_parents">';
 					echo '<p></p>';
-					// husband's father
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';
-					// husband's mother
+					</div>';		
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';
+					</div>';		
 			echo '</div>';
-		}		
+		}
+
 		/* wife's parents */
-		$hfams = $wife->getChildFamilies();
-		$hparents = false;
+		$wfams = $wife->getChildFamilies();
+		$wparents = false;
 		$upfamid = "";
-		if ($hfams) {
-				$hparents = false;
-				foreach ($hfams as $hfamily) {
-					$hparents = find_parents_in_record($hfamily->getGedcomRecord());
-					$upfamid = $hfamily->getXref();
+		if ($wfams) {
+				$wparents = false;
+				foreach ($wfams as $wfamily) {
+					$wparents = find_parents_in_record($wfamily->getGedcomRecord());
+					$upfamid = $wfamily->getXref();
 					break;
 				}
 			echo '<div id="wife_parents">';
@@ -688,34 +702,34 @@ function print_parents($famid, $personcount=1) {
 					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
 				}
 				// wife's father
-				$wife_father = WT_Person::getInstance($hparents['HUSB']);
-				if ($hparents && !empty($wife_father)) {
+				$wife_father = WT_Person::getInstance($wparents['HUSB']);
+				if ($wparents && !empty($wife_father)) {
 					echo '<div class="fam_parent">';
-						print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 3, 4, $personcount);
+						print_pedigree_person(WT_Person::getInstance($wparents['HUSB']), 3, 4, $personcount);
 					echo '</div>';
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';		
 				}
 				// wife's mother
-				$wife_mother = WT_Person::getInstance($hparents['WIFE']);
-				if ($hparents && !empty($wife_mother)) {
+				$wife_mother = WT_Person::getInstance($wparents['WIFE']);
+				if ($wparents && !empty($wife_mother)) {
 					echo '<div class="fam_parent">';
 						print_pedigree_person($wife_mother, 3, 5, $personcount);
 					echo '</div>';
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';		
 				}
 				/* marriage details */
 				echo '<div class="center">';
-					echo '<a href="', $hfamily->getHtmlUrl(), '" class="details1">';
+					echo '<a href="', $wfamily->getHtmlUrl(), '" class="details1">';
 							$marriage = $hfamily->getMarriage();
 							if ($marriage->canShow()) {
 							$marriage->print_simple_fact();
@@ -728,12 +742,12 @@ function print_parents($famid, $personcount=1) {
 					echo '<p></p>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';		
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
 					</div>';		
 			echo '</div>';
