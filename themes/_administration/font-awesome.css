@@ -413,10 +413,13 @@
 .fa-fast-backward:before {
   content: "\f049";
 }
-.fa-backward:before {
+.fa-backward:before,
+.icon-ldarrow:before,
+.icon-media-prev:before {
   content: "\f04a";
 }
-.fa-play:before {
+.fa-play:before,
+.icon-media-play:before {
   content: "\f04b";
 }
 .fa-pause:before {
@@ -425,7 +428,9 @@
 .fa-stop:before {
   content: "\f04d";
 }
-.fa-forward:before {
+.fa-forward:before,
+.icon-rdarrow:before,
+.icon-media-next:before {
   content: "\f04e";
 }
 .fa-fast-forward:before {
@@ -487,16 +492,20 @@
 .fa-ban:before {
   content: "\f05e";
 }
-.fa-arrow-left:before {
+.fa-arrow-left:before,
+.icon-larrow:before {
   content: "\f060";
 }
-.fa-arrow-right:before {
+.fa-arrow-right:before,
+.icon-rarrow:before {
   content: "\f061";
 }
-.fa-arrow-up:before {
+.fa-arrow-up:before,
+.icon-uarrow:before {
   content: "\f062";
 }
-.fa-arrow-down:before {
+.fa-arrow-down:before,
+.icon-darrow:before {
   content: "\f063";
 }
 .fa-mail-forward:before,
