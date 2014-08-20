@@ -581,7 +581,7 @@ default:
 		'<table id="list">',
 			'<thead>',
 				'<tr>',
-					'<th style="margin:0 -2px 1px 1px; padding:6px 0 5px;"> </th>',
+					'<th></th>',
 					'<th> user-id </th>',
 					'<th>', WT_I18N::translate('Username'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
