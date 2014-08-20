@@ -254,10 +254,13 @@
 .icon-delete:before {
   content: "\f014";
 }
-.fa-home:before {
+.fa-home:before,
+.icon-mypage:before, {
   content: "\f015";
 }
-.fa-file-o:before {
+.fa-file-o:before,
+[class^="icon-mime-"]:before,
+[class*=" icon-mime-"]:before {
   content: "\f016";
 }
 .fa-clock-o:before {
@@ -395,7 +398,8 @@
 }
 .fa-edit:before,
 .fa-pencil-square-o:before,
-.icon-edit:before {
+.icon-edit:before,
+.icon-button_find_facts:before {
   content: "\f044";
 }
 .fa-share-square-o:before {
@@ -489,7 +493,8 @@
 .fa-check-circle-o:before {
   content: "\f05d";
 }
-.fa-ban:before {
+.fa-ban:before,
+.icon-resn-confidential:before {
   content: "\f05e";
 }
 .fa-arrow-left:before,
@@ -601,7 +606,8 @@
 .fa-facebook-square:before {
   content: "\f082";
 }
-.fa-camera-retro:before {
+.fa-camera-retro:before,
+.icon-button_media:before {
   content: "\f083";
 }
 .fa-key:before {
@@ -714,10 +720,12 @@
 .fa-arrow-circle-right:before {
   content: "\f0a9";
 }
-.fa-arrow-circle-up:before {
+.fa-arrow-circle-up:before,
+.icon-close:before {
   content: "\f0aa";
 }
-.fa-arrow-circle-down:before {
+.fa-arrow-circle-down:before,
+.icon-open:before {
   content: "\f0ab";
 }
 .fa-globe:before,
@@ -916,7 +924,11 @@
 .fa-cutlery:before {
   content: "\f0f5";
 }
-.fa-file-text-o:before {
+.fa-file-text-o:before,
+.icon-button_findnote:before,
+[class^="icon-mime-text-"]:before,
+[class*=" icon-mime-text-"]:before,
+.icon-mime-text-x-gedcom:before {
   content: "\f0f6";
 }
 .fa-building-o:before {
@@ -1216,7 +1228,9 @@
 .fa-btc:before {
   content: "\f15a";
 }
-.fa-file:before {
+.fa-file:before,
+[class^="icon-mime-application-"]:before,
+[class*=" icon-mime-application-"]:before {
   content: "\f15b";
 }
 .fa-file-text:before {
@@ -1413,7 +1427,7 @@
 .fa-institution:before,
 .fa-bank:before,
 .fa-university:before,
-.icon-mypage:before {
+.icon-button_repository:before {
   content: "\f19c";
 }
 .fa-mortar-board:before,
@@ -1520,13 +1534,15 @@
 .fa-database:before {
   content: "\f1c0";
 }
-.fa-file-pdf-o:before {
+.fa-file-pdf-o:before,
+.icon-mime-application-pdf:before {
   content: "\f1c1";
 }
 .fa-file-word-o:before {
   content: "\f1c2";
 }
-.fa-file-excel-o:before {
+.fa-file-excel-o:before,
+.icon-mime-application-vnd-ms-excel:before {
   content: "\f1c3";
 }
 .fa-file-powerpoint-o:before {
@@ -1534,22 +1550,45 @@
 }
 .fa-file-photo-o:before,
 .fa-file-picture-o:before,
-.fa-file-image-o:before {
+.fa-file-image-o:before,
+[class^="icon-mime-image-"]:before,
+[class*=" icon-mime-image-"]:before,
+.icon-mime-image-bmp:before,
+.icon-mime-image-gif:before,
+.icon-mime-image-jpeg:before,
+.icon-mime-image-png:before,
+.icon-mime-image-svg:before,
+.icon-mime-image-tiff:before {
   content: "\f1c5";
 }
 .fa-file-zip-o:before,
-.fa-file-archive-o:before {
+.fa-file-archive-o:before,
+.icon-mime-application-zip:before,
+.icon-mime-application-x-rar-compressed:before {
   content: "\f1c6";
 }
 .fa-file-sound-o:before,
-.fa-file-audio-o:before {
+.fa-file-audio-o:before,
+[class^="icon-mime-audio-"]:before,
+[class*=" icon-mime-audio-"]:before, 
+.icon-mime-audio-mp3:before,
+.icon-mime-audio-mpeg:before,
+.icon-mime-audio-x-ms-wma:before,
+.icon-mime-audio-wav:before {
   content: "\f1c7";
 }
 .fa-file-movie-o:before,
-.fa-file-video-o:before {
+.fa-file-video-o:before,
+[class^="icon-mime-video-"]:before,
+[class*=" icon-mime-video-"]:before,
+.icon-mime-application-x-shockwave-flash:before,
+.icon-mime-video-quicktime:before,
+.icon-mime-video-avi:before,
+.icon-mime-video-x-ms-wmv:before {
   content: "\f1c8";
 }
-.fa-file-code-o:before {
+.fa-file-code-o:before,
+.icon-mime-text-html:before {
   content: "\f1c9";
 }
 .fa-vine:before {

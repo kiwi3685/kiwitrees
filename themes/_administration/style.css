@@ -59,7 +59,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 [dir=rtl] .ui-tabs .ui-tabs-nav li {float:right;}
 
 /* jEditable styling over-rides */
-.editable {display:block; line-height:28px; padding:2px 5px;}
+.editable {/*display:block; line-height:28px; padding:2px 5px;*/}
 .editable:hover {color:#ff0000; cursor:pointer;} /* both cursors needed for cross-browser support */
 
 /* jQuery.datatable styling over-rides */
@@ -73,6 +73,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
 .dataTables_wrapper th {white-space:nowrap;}
+.dataTables_wrapper th.icon-open:before, .dataTables_wrapper th.icon-close:before {visibility: hidden;}
 .dataTable {max-width:none;}
 
 .dt-clear {clear:both;}
@@ -253,7 +254,7 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 
 /* USER LIST */
 #list { width:100%}
-#list .editable {background:none;border:none;padding:auto;}
+#list .editable {background:none;border:none;}
 #list img {padding-left:15px; width:25px; vertical-align:middle;}
 [dir=rtl] #list img {padding-right:15px;}
 #access img {width:11px;}
@@ -266,12 +267,15 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 [dir=rtl] #list dd {margin-right:300px;}
 #access {float:left; margin-left:20px;}
 [dir=rtl] #access {float:right; margin-right:20px;}
-#access table {margin-bottom:20px;}
+#access table {border-collapse: initial; margin-bottom:20px;}
 #access th {background-color:#dcdcdc; text-align:center; padding:0; font-size:100%; min-width:150px;}
-#access td, #access td+td, #access td+td+td, #access td+td+td+td {background-color:#eceadf; padding:0;width:auto;}
+#access td {background-color:#eceadf; padding:0 5px;width:auto;}
 #access td+td+td+td {text-align:center;}
-td.details {background-color:#d1cfd0;border:2px solid #a19b9e;}
+td.details {padding: 10px;}
 td.details:hover {color:#000;}
+tr.odd  + tr td.details {background-color:#d3e7ff;}
+tr.even + tr td.details {background-color:#eeffee;}
+
 .icon-email {cursor:pointer;}
 #main_select,#available_select,#right_select {min-width:150px; min-height:128px;}
 #change_blocks .topbottombar {text-align:center;}
@@ -477,82 +481,78 @@ table#story_table {width:100%}
 [class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat; vertical-align:middle;}
 
 .icon-bullet {background-position:-66px -154px; width:16px; height:16px;}
-.icon-button_find_facts {background-position:-38px -180px; width:16px; height:16px;}
 .icon-button_media {background-position:-10px -154px; width:18px; height:16px;}
 .icon-button_note {background-position:-66px -180px; width:14px; height:16px;}
-.icon-button_source {background-position:-109px -62px; width:18px; height:16px;}
-.icon-button_repository {background-position:-91px -180px; width:15px; height:16px;}
-.icon-close {background-position:-82px -201px; margin-top:4px; width:16px; height:16px;}
-.icon-darrow {background-position:-40px -68px; width:20px; height:20px;}
-a.icon-darrow:hover {background-position:-40px -124px; width:20px; height:20px;}
-.icon-ddarrow {background-position:-70px -94px; width:20px; height:20px;}
 .icon-delete-grey {background-position:-40px -98px; width:16px; height:16px;}
 .icon-edit {background-position:-109px -34px; width:18px; height:18px;}
 .icon-email {background-position:-10px -6px; width:25px; height:25px;}
 .icon-find-facts {background-position:-38px -180px; width:16px; height:16px;}
-.icon-larrow {background-position:-79px -64px; width:20px; height:20px;}
-a.icon-larrow:hover {background-position:-79px -34px; width:20px; height:20px;}
-.icon-ldarrow {background-position:-10px -95px; width:20px; height:20px;}
 .icon-link{width:16px;height:16px;background-image:url(images/link.png);}
 .icon-media {background-position:-10px -155px; width:18px; height:16px;}
 .icon-note {background-position:-64px -180px; width:17px; height:15px;}
-.icon-open {background-position:-60px -201px; margin-top:4px; width:16px; height:16px;}
-.icon-rarrow {background-position:-10px -34px; width:20px; height:20px;}
-.icon-rdarrow {background-position:-100px -124px; width:20px; height:20px;}
-a.icon-rarrow:hover {background-position:-10px -65px; width:20px; height:20px;}
 .icon-repository {background-position:-91px -180px; width:15px; height:15px;}
-.icon-resn-confidential {width:24px;height:24px;background-image:url("images/resn_confidential.png");}
 .icon-resn-locked {width:16px;height:16px;background-image:url("images/resn_locked.png");}
 .icon-resn-none {width:16px;height:16px;background-image:url("images/resn_none.png");}
 .icon-resn-privacy {width:16px;height:16px;background-image:url("images/resn_privacy.png");}
-.icon-uarrow {background-position:-10px -125px; width:20px; height:20px;}
-a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
-.icon-udarrow {background-position:-70px -124px; width:20px; height:20px;}
 .icon-yes {background-position:-92px -154px; width:16px; height:16px; cursor: pointer;}
 .icon-webtrees {background-position:2px -230px; width:240px;height:50px;}
 .icon-zoomin {background-position:-45px -34px; width:24px; height:24px;}
 .icon-zoomout {background-position:-79px 0; width:24px; height:24px;}
 
-[class^="icon-mime-"], [class*=" icon-mime-"] {display:inline-block;background-image:url(images/icon-mime-sprite.png);background-color:transparent;background-repeat:no-repeat;width:48px;height:48px;}
-/* Generic MIME types */
-[class^="icon-mime-"],       [class*=" icon-mime-"]       {background-position:-99px -49px;}
-[class^="icon-mime-application-"], [class*=" icon-mime-application-"] {background-position:-99px -196px;}
-[class^="icon-mime-audio-"],    [class*=" icon-mime-audio-"]    {background-position:-197px -98px;}
-[class^="icon-mime-image-"],    [class*=" icon-mime-image-"]    {background-position:-148px -245px;}
-[class^="icon-mime-text-"],    [class*=" icon-mime-text-"]    {background-position:-197px -147px;}
-[class^="icon-mime-video-"],    [class*=" icon-mime-video-"]    {background-position:-148px -147px;}
-/* Specific MIME types */
-.icon-mime-application-pdf        {background-position:-1px -49px;}
-.icon-mime-application-msword      {background-position:-148px -49px;}
-.icon-mime-application-vnd-ms-excel   {background-position:-148px -196px;}
-.icon-mime-application-x-rar-compressed {background-position:-50px -98px;}
-.icon-mime-application-zip        {background-position:-50px -147px;}
-.icon-mime-application-x-shockwave-flash {background-position:-148px  0;}
-.icon-mime-audio-mp3           {background-position:-50px -245px;}
-.icon-mime-audio-mpeg          {background-position:-50px  0;}
-.icon-mime-audio-x-ms-wma        {background-position:-1px -245px;}
-.icon-mime-audio-wav           {background-position:-1px -98px;}
-.icon-mime-text-html           {background-position:-99px -245px;}
-.icon-mime-text-x-gedcom         {background-position:-50px -49px;}
-.icon-mime-image-bmp           {background-position:197px  0;}
-.icon-mime-image-gif           {background-position:-197px -49px;}
-.icon-mime-image-jpeg          {background-position:-1px -147px;}
-.icon-mime-image-png           {background-position:-99px -98px;}
-.icon-mime-image-svg           {background-position:-197px -196px;}
-.icon-mime-image-tiff          {background-position:-148px -98px;}
-.icon-mime-video-quicktime        {background-position:-99px -147px;}
-.icon-mime-video-avi           {background-position:-99px  0;}
-.icon-mime-video-x-ms-wmv        {background-position:-50px -196px;}
-
 .icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px;}
 
 /* font-awesome icons */
-.icon-delete		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;}									/* fa-trash-o */
-.icon-help			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; vertical-align: top; cursor:help; margin:0 5px;}	/* fa-question-circle */
-.icon-mask			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.3em; cursor:help;}									/* fa-reddit-square */
-.icon-button_indi	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; }												/* fa-male */
-.icon-button_family {font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; }												/* fa-users */
+.icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */
+.icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color: #000; cursor:help; margin:0 5px; vertical-align: top;} /* fa-question-circle */
+.icon-mask				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.3em; cursor:help;} /* fa-reddit-square */
+.icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; } /* fa-male */
+.icon-button_family 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; } /* fa-users */
+.icon-open				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell;} /* fa-arrow-circle-down */
+.icon-close				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell;} /* fa-arrow-circle-up */
+.icon-button_find_facts {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
+.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-book */
+.icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-bank */
+.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin-bottom: 5px;} /* fa-camera-retro */
+.icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-file-text-o */
+.icon-resn-confidential {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000;} /* fa-ban */
+.icon-darrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-down */ 
+.icon-larrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-left */ 
+.icon-rarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-right */ 
+.icon-uarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-up */ 
+.icon-ldarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-backward */ 
+.icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-forward */ 
 
+/* Generic MIME types */
+[class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */ 
+[class^="icon-mime-application-"], [class*=" icon-mime-application-"]	{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file */
+[class^="icon-mime-audio-"],    [class*=" icon-mime-audio-"]   			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+[class^="icon-mime-image-"],    [class*=" icon-mime-image-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+[class^="icon-mime-text-"],    [class*=" icon-mime-text-"]				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
+[class^="icon-mime-video-"],    [class*=" icon-mime-video-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+/* Specific MIME types */
+.icon-mime-application-pdf												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-pdf-o */
+.icon-mime-application-vnd-ms-excel										{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-excel-o */
+.icon-mime-application-x-rar-compressed									{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-zip-o */
+.icon-mime-application-zip												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-zip-o */
+.icon-mime-application-x-shockwave-flash								{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-movie-o */
+.icon-mime-audio-mp3													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-audio-mpeg													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-audio-x-ms-wma												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-audio-wav													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-text-html													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-code-o */
+.icon-mime-text-x-gedcom												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
+.icon-mime-image-bmp													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-gif													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-jpeg													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-png													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-svg													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-tiff													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-video-quicktime												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+.icon-mime-video-avi													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+.icon-mime-video-x-ms-wmv												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+
+
+.icon-open:hover, .icon-close:hover, .icon-delete:hover, .icon-help:hover, .icon-mask:hover {color:#ff0000; cursor: pointer;}
 
 
 /* Styling for the jquery.colorbox gallery */

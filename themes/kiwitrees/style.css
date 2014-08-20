@@ -4010,6 +4010,35 @@ a.icon-udarrow:hover {
 .icon-media-next		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */ 
 .icon-media-play		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-play */ 
 
+/* Generic MIME types */
+[class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */ 
+[class^="icon-mime-application-"], [class*=" icon-mime-application-"]	{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file */
+[class^="icon-mime-audio-"],    [class*=" icon-mime-audio-"]   			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+[class^="icon-mime-image-"],    [class*=" icon-mime-image-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+[class^="icon-mime-text-"],    [class*=" icon-mime-text-"]				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
+[class^="icon-mime-video-"],    [class*=" icon-mime-video-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+/* Specific MIME types */
+.icon-mime-application-pdf												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-pdf-o */
+.icon-mime-application-vnd-ms-excel										{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-excel-o */
+.icon-mime-application-x-rar-compressed									{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-zip-o */
+.icon-mime-application-zip												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-zip-o */
+.icon-mime-application-x-shockwave-flash								{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-movie-o */
+.icon-mime-audio-mp3													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-audio-mpeg													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-audio-x-ms-wma												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-audio-wav													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+.icon-mime-text-html													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-code-o */
+.icon-mime-text-x-gedcom												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
+.icon-mime-image-bmp													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-gif													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-jpeg													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-png													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-svg													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-image-tiff													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+.icon-mime-video-quicktime												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+.icon-mime-video-avi													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+.icon-mime-video-x-ms-wmv												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+
 
 /* Silhouettes on charts */
 .icon-silhouette-F {
@@ -4052,181 +4081,6 @@ a.icon-udarrow:hover {
 	background-image: url(images/silhouette_unknown.png);
 }
 
-[class^="icon-mime-"],
-[class*=" icon-mime-"] {
-	display: inline-block;
-	background-image: url(images/icon-mime-sprite.png);
-	background-color: transparent;
-	background-repeat: no-repeat;
-}
-/* Generic MIME types */
-[class^="icon-mime-"],[class*=" icon-mime-"] {
-	width: 48px;
-	height: 48px;
-	background-position: -99px -49px;
-}
-
-[class^="icon-mime-application-"],[class*=" icon-mime-application-"] {
-	width: 48px;
-	height: 48px;
-	background-position: -99px -196px;
-}
-
-[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"] {
-	width: 48px;
-	height: 48px;
-	background-position: -197px -98px;
-}
-
-[class^="icon-mime-image-"],[class*=" icon-mime-image-"] {
-	width: 48px;
-	height: 48px;
-	background-position: -148px -245px;
-}
-
-[class^="icon-mime-text-"],[class*=" icon-mime-text-"] {
-	width: 48px;
-	height: 48px;
-	background-position: -197px -147px;
-}
-
-[class^="icon-mime-video-"],[class*=" icon-mime-video-"] {
-	width: 48px;
-	height: 48px;
-	background-position: -148px -147px;
-}
-/* Specific MIME types */
-.icon-mime-application-pdf {
-	width: 48px;
-	height: 48px;
-	background-position: -1px -49px;
-}
-
-.icon-mime-application-doc {
-	width: 48px;
-	height: 48px;
-	background-position: -148px -49px;
-}
-
-.icon-mime-application-excel {
-	width: 48px;
-	height: 48px;
-	background-position: -148px -196px;
-}
-
-.icon-mime-application-rar {
-	width: 48px;
-	height: 48px;
-	background-position: -50px -98px;
-}
-
-.icon-mime-application-zip {
-	width: 48px;
-	height: 48px;
-	background-position: -50px -147px;
-}
-
-.icon-mime-application-dvi {
-	width: 48px;
-	height: 48px;
-	background-position: -1px -0px;
-}
-
-.icon-mime-application-shock-wave-flash {
-	width: 48px;
-	height: 48px;
-	background-position: -148px -0px;
-}
-
-.icon-mime-audio-mp3 {
-	width: 48px;
-	height: 48px;
-	background-position: -50px -245px;
-}
-
-.icon-mime-audio-mpeg {
-	width: 48px;
-	height: 48px;
-	background-position: -50px -0px;
-}
-
-.icon-mime-audio-ms-wma {
-	width: 48px;
-	height: 48px;
-	background-position: -1px -245px;
-}
-
-.icon-mime-audio-wav {
-	width: 48px;
-	height: 48px;
-	background-position: -1px -98px;
-}
-
-.icon-mime-text-html {
-	width: 48px;
-	height: 48px;
-	background-position: -99px -245px;
-}
-
-.icon-mime-text-gedcom {
-	width: 48px;
-	height: 48px;
-	background-position: -50px -49px;
-}
-
-.icon-mime-image-bmp {
-	width: 48px;
-	height: 48px;
-	background-position: -197px -0px;
-}
-
-.icon-mime-image-gif {
-	width: 48px;
-	height: 48px;
-	background-position: -197px -49px;
-}
-
-.icon-mime-image-jpeg {
-	width: 48px;
-	height: 48px;
-	background-position: -1px -147px;
-}
-
-.icon-mime-image-png {
-	width: 48px;
-	height: 48px;
-	background-position: -99px -98px;
-}
-
-.icon-mime-image-svg {
-	width: 48px;
-	height: 48px;
-	background-position: -197px -196px;
-}
-
-.icon-mime-image-tiff {
-	width: 48px;
-	height: 48px;
-	background-position: -148px -98px;
-}
-
-.icon-mime-video-quicktime {
-	width: 48px;
-	height: 48px;
-	background-position: -99px -147px;
-}
-
-.icon-mime-video-msvideo {
-	width: 48px;
-	height: 48px;
-	background-position: -99px -0px;
-}
-
-.icon-mime-video-ms-wmv {
-	width: 48px;
-	height: 48px;
-	background-position: -50px -196px;
-}
 
 /* Edit interface pop-ups*/
 #edit_interface-page h4 {

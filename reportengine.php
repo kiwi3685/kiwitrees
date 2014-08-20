@@ -267,11 +267,11 @@ elseif ($action=='setup') {
 		<td colspan="2" class="optionbox">
 		<div class="report-type">
 		<div>
-		<label for="PDF"><i class="icon-mime-application-pdf"></i></label>
+		<label for="PDF"><i class="icon-mime-application-pdf"></i><p>', WT_I18N::translate('PDF'), '</p></label>
 		<p><input type="radio" name="output" value="PDF" id="PDF" checked="checked"></p>
 		</div>
 		<div>
-		<label for="HTML"><i class="icon-mime-text-html"></i></label>
+		<label for="HTML"><i class="icon-mime-text-html"></i><p>', WT_I18N::translate('HTML'), '</p></label>
 		<p><input type="radio" name="output" id="HTML" value="HTML"></p>
 		</div>
 		</div>
