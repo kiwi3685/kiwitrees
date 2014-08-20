@@ -1302,7 +1302,7 @@ $controller
 							foreach (get_theme_names() as $themename=>$themedir) {
 								echo
 									'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
-											<img src="themes/', $themedir, '/images/screenshot_' ,$themename, '.png" alt="' ,$themename, ' title="' ,$themename, '">
+											<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
 										<p>
 											<input type="radio" id="radio_' ,$themename, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
 											<label for="radio_' ,$themename, '">', $themename, '</label>
