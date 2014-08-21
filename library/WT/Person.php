@@ -1873,6 +1873,11 @@ class WT_Person extends WT_GedcomRecord {
 		} else {
 			$char = ($bwidth/6.5);
 		}
+
+		if (WT_SCRIPT_NAME == 'family.php') {
+			$char = 30;
+		}
+
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
 			$givn = $tmp[$this->getPrimaryName()]['givn'];
