@@ -1540,6 +1540,14 @@ function get_user_from_gedcom_xref($ged_id, $xref) {
 		)->execute(array($ged_id, 'gedcomid', $xref))->fetchOne();
 }
 
+function get_gedcomid($user_id, $gedcom_id) {
+	return
+		WT_DB::prepare(
+			"SELECT SQL_CACHE setting_value FROM `##user_gedcom_setting`".
+			" WHERE user_id=? AND gedcom_id=? AND setting_name=?"
+		)->execute(array($user_id, $gedcom_id, 'gedcomid'))->fetchOne();
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Functions to access the WT_BLOCK table
 ////////////////////////////////////////////////////////////////////////////////

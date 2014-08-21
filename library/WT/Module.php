@@ -32,6 +32,14 @@ interface WT_Module_Block {
 	public function configureBlock($block_id);
 }
 
+interface WT_Module_Widget {
+	public function getWidget($widget_id);
+	public function defaultWidgetOrder();
+	public function loadAjax();
+	public function configureWidget($widget_id);
+}
+
+
 interface WT_Module_Chart {
 	public function getChart();
 }
@@ -140,7 +148,7 @@ abstract class WT_Module {
 			" FROM `##module`".
 			" JOIN `##module_privacy` USING (module_name)".
 			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?".
-			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
+			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order WHEN 'widget' THEN widget_order  ELSE 0 END, module_name"
 		)->execute(array($ged_id, $component, $access_level))->fetchOneColumn();
 		$array=array();
 		foreach ($module_names as $module_name) {
@@ -156,19 +164,27 @@ abstract class WT_Module {
 				)->execute(array($module_name));
 			}
 		}
-		if ($component!='menu' && $component!='sidebar' && $component!='tab') {
+		if ($component!='menu' && $component!='sidebar' && $component!='tab' && $component!='widget') {
 			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 		}
 		return $array;
 	}
 
-	// Get a list of all the active, authorised blocks
+	// Get a list of all the active, authorised Widgets
 	static public function getActiveBlocks($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $blocks=null;
 		if ($blocks===null) {
 			$blocks=self::getActiveModulesByComponent('block', $ged_id, $access_level);
 		}
 		return $blocks;
+	}
+
+	static public function getActiveWidgets($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+		static $widgets=null;
+		if ($widgets===null) {
+			$widgets=self::getActiveModulesByComponent('widget', $ged_id, $access_level);
+		}
+		return $widgets;
 	}
 
 	// Get a list of all the active, authorised charts
@@ -237,13 +253,14 @@ abstract class WT_Module {
 				$class=$file.'_WT_Module';
 				$module=new $class();
 				$modules[$module->getName()]=$module;
-				WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")
+				WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order, widget_order) VALUES (?, ?, ?, ?, ?, ?)")
 					->execute(array(
 						$module->getName(),
 						$status,
 						$module instanceof WT_Module_Menu    ? $module->defaultMenuOrder   () : null,
 						$module instanceof WT_Module_Sidebar ? $module->defaultSidebarOrder() : null,
-						$module instanceof WT_Module_Tab     ? $module->defaultTabOrder    () : null
+						$module instanceof WT_Module_Tab     ? $module->defaultTabOrder    () : null,
+						$module instanceof WT_Module_Widget  ? $module->defaultWidgetOrder () : null
 					));
 				// Set the default privcy for this module.  Note that this also sets it for the
 				// default family tree, with a gedcom_id of -1
@@ -272,6 +289,13 @@ abstract class WT_Module {
 					WT_DB::prepare(
 						"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)".
 						" SELECT ?, gedcom_id, 'block', ?".
+						" FROM `##gedcom`"
+					)->execute(array($module->getName(), $module->defaultAccessLevel()));
+				}
+				if ($module instanceof WT_Module_Widget) {
+					WT_DB::prepare(
+						"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)".
+						" SELECT ?, gedcom_id, 'widget', ?".
 						" FROM `##gedcom`"
 					)->execute(array($module->getName(), $module->defaultAccessLevel()));
 				}
@@ -323,6 +347,11 @@ abstract class WT_Module {
 			if ($module instanceof WT_Module_Block) {
 				WT_DB::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
+			if ($module instanceof WT_Module_Widget) {
+				WT_DB::prepare(
+					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'widget', ?)"
 				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 			}
 			if ($module instanceof WT_Module_Chart) {

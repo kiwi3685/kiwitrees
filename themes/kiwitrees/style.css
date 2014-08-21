@@ -65,7 +65,7 @@ a {
 }
 
 a:hover {
-	color: #009AFE;
+	color: #009afe;
 	text-decoration: none;
 }
 
@@ -194,6 +194,9 @@ textarea:requi#ff0000:invalid {
 
 #extra-menu {
 	float: right;
+	font-size: 13px;
+	font-weight:900;
+	text-transform: uppercase;
 	white-space: nowrap;
 }
 
@@ -204,15 +207,14 @@ textarea:requi#ff0000:invalid {
 }
 
 #extra-menu a:hover {
-	color: #009AFE;
+	color: #009afe;
 }
 
 #extra-menu li {
 	display: inline;
+	padding: 0 5px;
 	position: relative;
 	white-space: nowrap;
-	border-left: 2px solid;
-	padding: 0 5px;
 }
 
 #extra-menu li ul {
@@ -220,23 +222,18 @@ textarea:requi#ff0000:invalid {
 	right: 0;
 }
 
-#extra-menu li:first-child,
-#extra-menu li ul li {
-	border: none;
-}
-
 #extra-menu li ul,
 #login_link #login_popup {
+	background-color: #ddd;
+	border: thin solid #aaa;
 	color: #232f49;
 	display: none;
 	font-weight: normal;
-	position: absolute;
-	top: 15px;
-	background-color: #ddd;
-	border: thin solid #aaa;
 	list-style: none;
 	margin: 0;
-	padding: 1px;
+	padding: 1px 10px;
+	position: absolute;
+	top: 15px;
 	z-index: 999;
 }
 
@@ -253,11 +250,12 @@ textarea:requi#ff0000:invalid {
 
 #extra-menu li ul li a {
 	color: #232f49;
+	font-size: 11px;
 }
 
 .lang-active,
 .theme-active {
-	color: #009AFE;
+	color: #009afe;
 	font-weight: bold;
 }
 
@@ -265,6 +263,7 @@ textarea:requi#ff0000:invalid {
 #menu-theme li {
 	text-align: left;
 } /* The theme and language menus are always LTR, even on RTL pages */
+
 #login_popup .blockheader {
 	display: none;
 }
@@ -307,6 +306,7 @@ textarea:requi#ff0000:invalid {
 	left: 0;
 	right: auto;
 	width: 60%;
+	visibility: hidden;
 }
 
 .header_search {
@@ -395,7 +395,7 @@ textarea:requi#ff0000:invalid {
 }
 
 #main-menu li a:hover {
-	color: #009AFE;
+	color: #009afe;
 }
 
 #main-menu li li a {
@@ -474,7 +474,7 @@ textarea:requi#ff0000:invalid {
 }
 
 #footer .contact_links a {
-	color: #009AFE;
+	color: #009afe;
 }
 
 .hit-counter {
@@ -2663,12 +2663,14 @@ div.faq_body {
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
+
 /* General use */
-.editfacts {
+.editfacts { /* a container for the following three links */
 	clear: left;
 	overflow: hidden;
 	padding-top: 10px;
-} /* a container for the following three links */
+	font-weight: normal;
+} 
 .editlink,
 .copylink,
 .deletelink {
@@ -2684,6 +2686,7 @@ div.faq_body {
 span.link_text {
 	display: none;
 }
+
 /* Indi header */
 .field .editlink,
 .field .deletelink,
@@ -2781,7 +2784,7 @@ span.link_text {
 }
 
 #indi_header a.warning {
-	color: #009AFE;
+	color: #009afe;
 }
 
 #indi_note {
@@ -2941,7 +2944,7 @@ div[id^="caldiv"] td {
 }
 
 .ui-widget-content #outer_pages_container a {
-	color: #009AFE;
+	color: #009afe;
 }
 
 .ui-accordion .ui-accordion-content {
@@ -4010,6 +4013,9 @@ a.icon-udarrow:hover {
 .icon-media-next		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */ 
 .icon-media-play		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-play */ 
 
+#extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */ 
+#extra-menu > li:hover	{color: #009afe;}
+
 /* Generic MIME types */
 [class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */ 
 [class^="icon-mime-application-"], [class*=" icon-mime-application-"]	{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file */
@@ -4038,6 +4044,7 @@ a.icon-udarrow:hover {
 .icon-mime-video-quicktime												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
 .icon-mime-video-avi													{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
 .icon-mime-video-x-ms-wmv												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+
 
 
 /* Silhouettes on charts */
@@ -5414,7 +5421,7 @@ div.widget {
 	width: 450px;
 	min-height: 200px;
 	background-color: #ddd;
-	box-shadow: 5px 8px 8px -3px #888;
+	box-shadow: 5px 5px 8px 0 #888;
 	padding-bottom: 10px;
 }
 
@@ -5464,3 +5471,5 @@ div.widget {
 	vertical-align: top;
 	width: 25%;
 }
+
+

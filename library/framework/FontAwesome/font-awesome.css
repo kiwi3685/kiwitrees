@@ -209,7 +209,8 @@
 .icon-user_add:before,
 .icon-sex_u_15x15:before,
 .icon-sex_u_9x9:before,
-.unknown_gender:before {
+.unknown_gender:before,
+.icon-mypage:before {
   content: "\f007";
 }
 .fa-film:before {
@@ -254,8 +255,7 @@
 .icon-delete:before {
   content: "\f014";
 }
-.fa-home:before,
-.icon-mypage:before, {
+.fa-home:before {
   content: "\f015";
 }
 .fa-file-o:before,
@@ -976,7 +976,8 @@
 .fa-angle-up:before {
   content: "\f106";
 }
-.fa-angle-down:before {
+.fa-angle-down:before,
+#extra-menu > li:after {
   content: "\f107";
 }
 .fa-desktop:before {

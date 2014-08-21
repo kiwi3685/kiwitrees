@@ -102,9 +102,10 @@ $controller
 				{ sClass: "center" },
 				{ sClass: "center" },
 				{ sClass: "center" },
-				{ sClass: "center", bVisible: false }, // The WT_Module system does not yet include charts
 				{ sClass: "center" },
-				{ sClass: "center", bVisible: false } // The WT_Module system does not yet include themes
+				{ sClass: "center", bVisible: false },
+				{ sClass: "center" },
+				{ sClass: "center", bVisible: false }
 			]
 		});
 	');
@@ -125,6 +126,7 @@ $controller
 					<th><?php echo WT_I18N::translate('Tab'); ?></th>
 					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
 					<th><?php echo WT_I18N::translate('Block'); ?></th>
+					<th><?php echo WT_I18N::translate('Widget'); ?></th>
 					<th><?php echo WT_I18N::translate('Chart'); ?></th>
 					<th><?php echo WT_I18N::translate('Report'); ?></th>
 					<th><?php echo WT_I18N::translate('Theme'); ?></th>
@@ -143,6 +145,7 @@ $controller
 								'<td>', $module instanceof WT_Module_Tab     ? WT_I18N::translate('Tab') : '-', '</td>',
 								'<td>', $module instanceof WT_Module_Sidebar ? WT_I18N::translate('Sidebar') : '-', '</td>',
 								'<td>', $module instanceof WT_Module_Block   ? (($module->isUserBlock() ? '<div>'.WT_I18N::translate('My page').'</div>' : '').($module->isGedcomBlock() ? '<div>'.WT_I18N::translate('Home page').'</div>' : '')) : '-', '</td>',
+								'<td>', $module instanceof WT_Module_Widget  ? WT_I18N::translate('Widget') : '-', '</td>',
 								'<td>', $module instanceof WT_Module_Chart   ? WT_I18N::translate('Chart') : '-', '</td>',
 								'<td>', $module instanceof WT_Module_Report  ? WT_I18N::translate('Report') : '-', '</td>',
 								'<td>', $module instanceof WT_Module_Theme   ? WT_I18N::translate('Theme') : '-', '</td>',

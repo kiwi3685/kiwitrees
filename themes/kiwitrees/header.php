@@ -70,7 +70,11 @@ $this
 		jQuery("textarea").autosize();
 
 		jQuery("#widget-button a").click(function(){
-			$("#widget-bar").toggle();
+			jQuery("#widget-bar").toggle();
+		});
+
+		jQuery("#widget-button a").click(function(){
+			jQuery("#widget-button a span").toggleClass("icon-widget icon-widget-close");
 		});
 
 		jQuery("#bigtext span").bigText({
@@ -125,7 +129,10 @@ if ($view!='simple') {
 						echo $menu->getMenuAsList();
 					}
 					if (WT_USER_ID) {
-						echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+						$menu = WT_MenuBar::getMyAccountMenu();
+						if ($menu) {
+							echo $menu->getMenuAsList();
+						}
 						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 							echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 						}
@@ -140,10 +147,10 @@ if ($view!='simple') {
 			<div id="topMenu" class="ui-state-active">
 				<ul id="main-menu">';
 					if ($ctype != 'gedcom') {
-						echo '<li id="widget-button" style="margin: 0 0 0 3px;"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x fa-bars">&nbsp;</span></a></li>';
+						echo '<li id="widget-button" style="margin: 0 0 0 3px;"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
 					}
 					foreach (WT_MenuBar::getModuleMenus() as $menu) {
-						if ($menu) {
+						if (!strpos($menu, '>'.WT_I18N::translate('My page').'<')) {								
 							echo $menu->getMenuAsList();
 						}
 					}
