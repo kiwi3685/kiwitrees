@@ -730,7 +730,7 @@ function print_parents($famid, $personcount=1) {
 				/* marriage details */
 				echo '<div class="center">';
 					echo '<a href="', $wfamily->getHtmlUrl(), '" class="details1">';
-							$marriage = $hfamily->getMarriage();
+							$marriage = $wfamily->getMarriage();
 							if ($marriage->canShow()) {
 							$marriage->print_simple_fact();
 							}
