@@ -25,7 +25,7 @@
  *
 */
 
-@import url("../_administration/font-awesome.css");
+@import url("../../library/framework/FontAwesome/font-awesome.css");
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
@@ -3093,8 +3093,8 @@ div[id^="caldiv"] td {
 
 #sidebar {
 	background-color: #ddd;
+	border-bottom: 1px solid #aaa;
 	border-left: 1px solid #aaa;
-	box-shadow: -5px 8px 8px -3px #888;
 	display: none;
 	height: auto;
 	margin: -12px -12px 0 0;
@@ -5410,14 +5410,18 @@ div.widget {
 	z-index: 999;
 	position: absolute;
 	display: none;
-	margin: -16px 0 0 -10px;
+	margin: -12px 0 0 -12px;
 	width: 450px;
 	min-height: 200px;
 	background-color: #ddd;
-	box-shadow: 5px 2px 5px #888;
-	border-radius: 0 10px 0 0;
+	box-shadow: 5px 8px 8px -3px #888;
 	padding-bottom: 10px;
 }
+
+[dir='rtl'] #widget-bar {
+	margin: -12px -12px 0 0 ;
+	box-shadow: -5px 8px 8px -3px #888;
+}	
 
 #widget-bar .widget .blockheader {
 	background: #a9adbc;
