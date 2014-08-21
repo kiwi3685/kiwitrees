@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-07-11 16:08+1200\n"
-"PO-Revision-Date: 2014-08-15 09:35+1200\n"
+"PO-Revision-Date: 2014-08-21 17:36+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
 "kiwitrees/language/en_GB/)\n"
@@ -2068,9 +2068,11 @@ msgstr[1] "The two family trees have %1$s records which uses the same “XREF”
 
 #: admin_trees_append.php:76
 msgid ""
-"You must renumber the records in one of the trees before you can combine them."
+"You must renumber the records in one of the trees before you can combine "
+"them."
 msgstr ""
-"You must renumber the records in one of the trees before you can combine them."
+"You must renumber the records in one of the trees before you can combine "
+"them."
 
 #: admin_trees_append.php:158
 msgid "The family trees were combined successfully."
@@ -20450,7 +20452,7 @@ msgstr "Random images from the current family tree."
 
 #: modules_v3/random_media/module.php:148
 msgid "Slide Show"
-msgstr "Hide &amp; Show"
+msgstr "Slide Show"
 
 #: modules_v3/random_media/module.php:151
 msgid "Random image"
