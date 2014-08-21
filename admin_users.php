@@ -632,7 +632,7 @@ default:
 				"sPaginationType": "full_numbers",
 				"aaSorting": [[2,"asc"]],
 				"aoColumns": [
-					/* details           */ { bSortable:false, sClass:"icon-open" },
+					/* details           */ { bSortable:false, sClass:"icon-open center" },
 					/* user-id           */ { bVisible:false },
 					/* user_name         */ null,
 					/* real_name         */ null,
