@@ -3782,12 +3782,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/lifespan-up.png);
 }
 
-.icon-media {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/media.png);
-}
-
 .icon-media-list {
 	width: 20px;
 	height: 20px;
@@ -3798,12 +3792,6 @@ div[id^="caldiv"] td {
 	width: 10px;
 	height: 10px;
 	background-image: url(images/reorder.png);
-}
-
-.icon-media-stop {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/stop.png);
 }
 
 .icon-minus {
@@ -3852,12 +3840,6 @@ div[id^="caldiv"] td {
 	width: 15px;
 	height: 12px;
 	background-image: url(images/reminder.png);
-}
-
-.icon-remove {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/remove.png);
 }
 
 .icon-repo-list {
@@ -3912,12 +3894,6 @@ div[id^="caldiv"] td {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/family.png);
-}
-
-.icon-source {
-	width: 20px;
-	height: 20px;
-	background-image: url(images/source.png);
 }
 
 .icon-source-list {
@@ -4012,6 +3988,12 @@ a.icon-udarrow:hover {
 .icon-media-prev		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-backward */ 
 .icon-media-next		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */ 
 .icon-media-play		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-play */ 
+.icon-media-stop		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-pause */ 
+
+.icon-source			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-book */ 
+.icon-media				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-camera-retro */ 
+.icon-remove			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-times */ 
+
 
 #extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */ 
 #extra-menu > li:hover	{color: #009afe;}

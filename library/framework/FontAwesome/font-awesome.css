@@ -230,7 +230,8 @@
   content: "\f00c";
 }
 .fa-times:before,
-.icon-widget-close:before {
+.icon-widget-close:before,
+.icon-remove:before {
   content: "\f00d";
 }
 .fa-search-plus:before,
@@ -325,7 +326,8 @@
   content: "\f02c";
 }
 .fa-book:before,
-.icon-button_source:before {
+.icon-button_source:before,
+.icon-source:before {
   content: "\f02d";
 }
 .fa-bookmark:before {
@@ -426,7 +428,8 @@
 .icon-media-play:before {
   content: "\f04b";
 }
-.fa-pause:before {
+.fa-pause:before,
+.icon-media-stop:before {
   content: "\f04c";
 }
 .fa-stop:before {
@@ -607,7 +610,8 @@
   content: "\f082";
 }
 .fa-camera-retro:before,
-.icon-button_media:before {
+.icon-button_media:before,
+.icon-media:before {
   content: "\f083";
 }
 .fa-key:before {
