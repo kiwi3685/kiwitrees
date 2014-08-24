@@ -115,7 +115,7 @@ case 'load_rules':
 	// Total filtered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 	// Total unfiltered rows
-	$iTotalRecords=WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule<>'unknown'")->fetchColumn();
+	$iTotalRecords=WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule <> 'unknown'")->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
@@ -185,7 +185,7 @@ case 'load_unknown':
 	// Total filtered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 	// Total unfiltered rows
-	$iTotalRecords=WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule='unknown'")->fetchColumn();
+	$iTotalRecords=WT_DB::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule = 'unknown'")->fetchColumn();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
