@@ -1536,6 +1536,11 @@ a:hover .nameZoom {
 	vertical-align: top;
 	padding: 3px;
 }
+
+.descriptionbox label {
+	vertical-align: top;
+}
+
 /* Style for the optionbox */
 .optionbox {
 	border: solid #555 1px;
@@ -3716,12 +3721,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/edit_indi.png);
 }
 
-.icon-email {
-	width: 16px;
-	height: 16px;
-	background-image: url(images/email.png);
-}
-
 .icon-fam-list {
 	width: 20px;
 	height: 20px;
@@ -3794,12 +3793,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/reorder.png);
 }
 
-.icon-minus {
-	width: 11px;
-	height: 11px;
-	background-image: url(images/minus.png);
-}
-
 .icon-note {
 	width: 20px;
 	height: 20px;
@@ -3828,12 +3821,6 @@ div[id^="caldiv"] td {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/place.png);
-}
-
-.icon-plus {
-	width: 11px;
-	height: 11px;
-	background-image: url(images/plus.png);
 }
 
 .icon-reminder {
@@ -3920,17 +3907,6 @@ a.icon-udarrow:hover {
 	background-image: url(images/udarrow2.png);
 }
 
-.icon-warning {
-	width: 17px;
-	height: 17px;
-	background-image: url(images/warning.png);
-}
-
-.icon-webtrees {
-	width: 100px;
-	height: 21px;
-	background-image: url(images/webtrees_s.png);
-}
 
 .icon-wiki {
 	width: 16px;
@@ -3989,6 +3965,11 @@ a.icon-udarrow:hover {
 .icon-media-next		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */ 
 .icon-media-play		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-play */ 
 .icon-media-stop		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-pause */ 
+.icon-plus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-expand */ 
+.icon-minus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-compress */ 
+.icon-email				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-envelope-o */ 
+.icon-warning			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; color: #ff4500; margin: 0 5px 5px; vertical-align: middle;} /* fa-warning */ 
+
 
 .icon-source			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-book */ 
 .icon-media				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-camera-retro */ 

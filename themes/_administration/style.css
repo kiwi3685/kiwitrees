@@ -91,6 +91,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 	font-family:monospace;
 	font-size:200%;
 }
+
 /* Page Help links */
 #page_help {margin:-5px 0 15px; text-align:right;}
 [dir=rtl] #page_help {text-align:left;}
@@ -111,6 +112,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
 .ui-widget-content a.lang-active {color:#25a325;}
+.icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px; position: absolute;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content, #content_container {min-height:700px;}
@@ -276,7 +278,6 @@ td.details:hover {color:#000;}
 tr.odd  + tr td.details {background-color:#d3e7ff;}
 tr.even + tr td.details {background-color:#eeffee;}
 
-.icon-email {cursor:pointer;}
 #main_select,#available_select,#right_select {min-width:150px; min-height:128px;}
 #change_blocks .topbottombar {text-align:center;}
 
@@ -477,33 +478,9 @@ table#story_table {width:100%}
 .ui-autocomplete li:nth-child(odd) {background-color:#eee;}
 .ui-autocomplete a.ui-state-focus {color:#ff0000;}
 
-/* IMAGE SPRITE */
-[class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat; vertical-align:middle;}
-
-.icon-bullet {background-position:-66px -154px; width:16px; height:16px;}
-.icon-button_media {background-position:-10px -154px; width:18px; height:16px;}
-.icon-button_note {background-position:-66px -180px; width:14px; height:16px;}
-.icon-delete-grey {background-position:-40px -98px; width:16px; height:16px;}
-.icon-edit {background-position:-109px -34px; width:18px; height:18px;}
-.icon-email {background-position:-10px -6px; width:25px; height:25px;}
-.icon-find-facts {background-position:-38px -180px; width:16px; height:16px;}
-.icon-link{width:16px;height:16px;background-image:url(images/link.png);}
-.icon-media {background-position:-10px -155px; width:18px; height:16px;}
-.icon-note {background-position:-64px -180px; width:17px; height:15px;}
-.icon-repository {background-position:-91px -180px; width:15px; height:15px;}
-.icon-resn-locked {width:16px;height:16px;background-image:url("images/resn_locked.png");}
-.icon-resn-none {width:16px;height:16px;background-image:url("images/resn_none.png");}
-.icon-resn-privacy {width:16px;height:16px;background-image:url("images/resn_privacy.png");}
-.icon-yes {background-position:-92px -154px; width:16px; height:16px; cursor: pointer;}
-.icon-webtrees {background-position:2px -230px; width:240px;height:50px;}
-.icon-zoomin {background-position:-45px -34px; width:24px; height:24px;}
-.icon-zoomout {background-position:-79px 0; width:24px; height:24px;}
-
-.icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px;}
-
 /* font-awesome icons */
 .icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */
-.icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color: #000; cursor:help; margin:0 5px; vertical-align: top;} /* fa-question-circle */
+.icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color: #000; cursor:help; margin:0 5px;} /* fa-question-circle */
 .icon-mask				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.3em; cursor:help;} /* fa-reddit-square */
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; } /* fa-male */
 .icon-button_family 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; } /* fa-users */
@@ -521,6 +498,13 @@ table#story_table {width:100%}
 .icon-uarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-up */ 
 .icon-ldarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-backward */ 
 .icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-forward */ 
+.icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */ 
+.icon-delete-grey		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-times */ 
+.icon-email				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */ 
+.icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */ 
+.icon-yes				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-check */ 
+
+
 
 /* Generic MIME types */
 [class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */ 

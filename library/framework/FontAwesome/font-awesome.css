@@ -193,7 +193,8 @@
 .fa-search:before {
   content: "\f002";
 }
-.fa-envelope-o:before {
+.fa-envelope-o:before,
+.icon-email:before {
   content: "\f003";
 }
 .fa-heart:before {
@@ -226,12 +227,14 @@
   content: "\f00b";
 }
 .fa-check:before,
-.icon-selected:before {
+.icon-selected:before,
+.icon-yes:before {
   content: "\f00c";
 }
 .fa-times:before,
 .icon-widget-close:before,
-.icon-remove:before {
+.icon-remove:before,
+.icon-delete-grey:before {
   content: "\f00d";
 }
 .fa-search-plus:before,
@@ -520,10 +523,12 @@
 .fa-share:before {
   content: "\f064";
 }
-.fa-expand:before {
+.fa-expand:before,
+.icon-plus:before {
   content: "\f065";
 }
-.fa-compress:before {
+.fa-compress:before,
+.icon-minus:before {
   content: "\f066";
 }
 .fa-plus:before,
@@ -557,7 +562,8 @@
   content: "\f070";
 }
 .fa-warning:before,
-.fa-exclamation-triangle:before {
+.fa-exclamation-triangle:before,
+.icon-warning:before {
   content: "\f071";
 }
 .fa-plane:before {
@@ -761,7 +767,8 @@
 .fa-chain:before,
 .fa-link:before,
 .icon-button_linknote:before,
-.icon-image_link:before {
+.icon-image_link:before,
+.icon-link:before {
   content: "\f0c1";
 }
 .fa-cloud:before {
