@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-07-11 16:08+1200\n"
-"PO-Revision-Date: 2014-08-21 17:36+1200\n"
+"PO-Revision-Date: 2014-08-26 10:06+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
 "kiwitrees/language/en_GB/)\n"
@@ -18188,7 +18188,7 @@ msgstr "Cancel"
 
 #: modules_v3/cousins_tab/module.php:36
 msgid "Cousins"
-msgstr "second cousin"
+msgstr "Cousins"
 
 #: modules_v3/cousins_tab/module.php:41
 msgid "A tab showing cousins of an individual."
