@@ -392,10 +392,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				}
 				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '">', WT_I18N::translate('Edit'), '</a>';
-				echo help_link('edit_faq_item', $this->getName());
 				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this FAQ entry?'), '\');">', WT_I18N::translate('Delete'), '</a>';
-				echo help_link('delete_faq_item', $this->getName());
 				echo '</td></tr>';
 				// NOTE: Print the title text of the current item
 				echo '<tr><td colspan="5">';
