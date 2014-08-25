@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2014-07-11 16:08+1200\n"
-"PO-Revision-Date: 2014-08-26 10:06+1200\n"
+"PO-Revision-Date: 2014-08-26 10:51+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/"
 "kiwitrees/language/en_GB/)\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.8\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -19131,7 +19131,7 @@ msgstr "Are you sure you want to delete this FAQ entry?"
 
 #: modules_v3/gallery/help_text.php:30 modules_v3/gallery/module.php:302
 msgid "Gallery position"
-msgstr "Place of Emigration"
+msgstr "Gallery position"
 
 #: modules_v3/gallery/help_text.php:31
 msgid "This field controls the order in which the galleries are displayed."
@@ -19371,7 +19371,7 @@ msgstr "Select a date"
 
 #: modules_v3/gallery/module.php:483
 msgid "Add gallery"
-msgstr "My page"
+msgstr "Add gallery"
 
 #: modules_v3/gallery/module.php:516
 msgid "Are you sure you want to delete this gallery?"
@@ -20845,7 +20845,7 @@ msgstr "Show this pages for which languages?"
 
 #: modules_v3/simpl_pages/module.php:242
 msgid "Pages position"
-msgstr "Place of Emigration"
+msgstr "Pages position"
 
 #: modules_v3/simpl_pages/module.php:243
 msgid "Pages visibility"
@@ -21032,7 +21032,7 @@ msgstr ""
 #: modules_v3/simpl_unlinked/module.php:32
 #: modules_v3/simpl_unlinked/module.php:92
 msgid "Find unlinked individuals"
-msgstr "Find an individual"
+msgstr "Find unlinked individuals"
 
 #: modules_v3/simpl_unlinked/module.php:37
 msgid ""
