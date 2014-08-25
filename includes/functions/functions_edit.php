@@ -1517,6 +1517,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			case '_MARNM_SURN':
 				echo ' data-autocomplete-type="SURN"';
 				break;
+			case 'ASSO':
+				echo ' data-autocomplete-type="INDI"';
+				break;
+			case '_ASSO':
+				echo ' data-autocomplete-type="INDI"';
+				break;
 			}
 			echo '>';
 		}
