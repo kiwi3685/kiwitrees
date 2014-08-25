@@ -150,10 +150,10 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 				$tt = WT_I18N::translate($ALBUM_TITLES[$i]);
 				$sqlmm .= " AND (";
 				foreach ($ALBUM_OPTIONS as $key=>$value) {
-					if ($value == WT_I18N::translate($ALBUM_TITLES[$i])) {
+					if ($value == $tt) {
 						$sqlmm .= "m_gedcom LIKE '%TYPE " .strtolower($key). "%' OR ";
 					}
-					if (WT_I18N::translate($ALBUM_TITLES[$i]) == WT_I18N::translate('Other')) {
+					if ($tt == WT_I18N::translate('Other')) {
 						$sqlmm .= "m_gedcom NOT LIKE '%TYPE %' OR ";					
 					}
 				}
