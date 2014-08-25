@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Simpl_research links');
+		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Research links');
 	}
 
 	public function getSidebarTitle() {
