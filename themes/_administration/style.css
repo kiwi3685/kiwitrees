@@ -19,7 +19,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-@import url("../../library/framework/FontAwesome/font-awesome.css");
+@import url("../../library/framework/FontAwesome/css/WT_font-awesome.css");
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
@@ -138,7 +138,6 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%; white-space:nowrap;}
 fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
 #users ul {list-style-type:none; padding:0; margin:0 0 0 20px;}
-#users ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0 0; padding:0 0 0 14px;}
 #users td {padding:0 10px 0 0;}
 #users td div {font-style:italic; padding-left:20px;}
 #tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
@@ -504,15 +503,15 @@ table#story_table {width:100%}
 .icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */ 
 .icon-yes				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-check */ 
 
-
+#users ul li:before		{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; background: none; margin: 0 5px;} /* fa-circle */ 
 
 /* Generic MIME types */
-[class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */ 
+[class^="icon-mime-"], [class*=" icon-mime-"]       					{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */ 
 [class^="icon-mime-application-"], [class*=" icon-mime-application-"]	{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file */
-[class^="icon-mime-audio-"],    [class*=" icon-mime-audio-"]   			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
-[class^="icon-mime-image-"],    [class*=" icon-mime-image-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
-[class^="icon-mime-text-"],    [class*=" icon-mime-text-"]				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
-[class^="icon-mime-video-"],    [class*=" icon-mime-video-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+[class^="icon-mime-audio-"], [class*=" icon-mime-audio-"]   			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+[class^="icon-mime-image-"], [class*=" icon-mime-image-"]				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+[class^="icon-mime-text-"], [class*=" icon-mime-text-"]					{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
+[class^="icon-mime-video-"], [class*=" icon-mime-video-"]				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
 /* Specific MIME types */
 .icon-mime-application-pdf												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-pdf-o */
 .icon-mime-application-vnd-ms-excel										{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-excel-o */

@@ -85,9 +85,12 @@ echo
 	'<div id="admin_head" class="ui-widget-content">
 		<i class="icon-kiwitrees"></i>
 		<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>
-		<div id="links">
-			<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
-			logout_link(),
+		<div id="links">',
+			WT_MenuBar::getGedcomMenu(), '</a> | ';
+			if (WT_USER_GEDCOM_ID) {
+				echo '<a href="individual.php?pid=', WT_USER_GEDCOM_ID, '&amp;ged=', WT_GEDURL, '">', WT_I18N::translate('My individual record'), '</a> | ';
+			}
+			echo logout_link(),
 			'<span>';
 			$language_menu=WT_MenuBar::getLanguageMenu();
 				if ($language_menu) {

@@ -25,7 +25,7 @@
  *
 */
 
-@import url("../../library/framework/FontAwesome/font-awesome.css");
+@import url("../../library/framework/FontAwesome/css/WT_font-awesome.css");
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
@@ -34,7 +34,6 @@ html {
 
 body {
 	color: #232f49;
-	background-color: #DDD;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	margin: 0;
@@ -183,6 +182,14 @@ textarea:requi#ff0000:invalid {
 }
 
 /* ========= Top bar items ========== */
+
+#navbar {
+	background-color: #DDD;
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: 1030;
+}
 #flash-messages {
 	clear: both;
 }
@@ -301,9 +308,9 @@ textarea:requi#ff0000:invalid {
 	clear: both;
 	color: #555;
 	font-family: inherit;
-	margin-top: 10px;
-	position: absolute;
 	left: 0;
+	margin: 10px 10px 20px;
+	position: absolute;
 	right: auto;
 	width: 60%;
 	visibility: hidden;
@@ -483,17 +490,19 @@ textarea:requi#ff0000:invalid {
 
 /* ======= Content styles ========== */
 #main_content {
-	width: 96%;
+	background-color: #DDD;
 	margin: 0 auto;
 }
 
 #content {
+	width: 96%;
 	background-color: #fff;
 	clear: both;
 	font-size: 12px;
 	margin: 0 auto;
 	padding: 12px;
 	position: relative;
+	top: 130px;
 	z-index: 0;
 }
 
@@ -1127,12 +1136,12 @@ a:hover .nameZoom {
 }
 
 .age {
-	font-size: 9px;
 }
 
 .parentdeath {
-	border: thin solid #888;
-	padding: 1px;
+	border: 2px solid #ffa000;
+	padding: 0 1px;
+	border-radius: 8px;
 }
 
 .source_citations {
@@ -3757,30 +3766,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/loading.gif);
 }
 
-.icon-lsdnarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-down.png);
-}
-
-.icon-lsltarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-left.png);
-}
-
-.icon-lsrtarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-right.png);
-}
-
-.icon-lsuparrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-up.png);
-}
-
 .icon-media-list {
 	width: 20px;
 	height: 20px;
@@ -3914,6 +3899,7 @@ a.icon-udarrow:hover {
 	background-image: url(images/w_button.png);
 }
 
+
 /* font-awesome icons */
 .icon-admin				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit; cursor: pointer;} /* fa-cogs */ 
 .icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; cursor: help; margin: 0 5px;} /* fa-question-circle */ 
@@ -3933,7 +3919,7 @@ a.icon-udarrow:hover {
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */ 
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */ 
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */ 
-.icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em;} /* fa-male */ 
+.icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; margin: 0 5px;} /* fa-male */ 
 .icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */ 
 .icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */ 
 .icon-button_addsource	{font-family: 'FontAwesome'; font-style: normal; font-size: 2em; margin: 0 .5em;} /* fa-plus */ 
@@ -3946,12 +3932,12 @@ a.icon-udarrow:hover {
 .icon-image_link		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-link */ 
 .icon-image_sort		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-sort-alpha-asc */ 
 .icon-cfamily			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */ 
-.icon-sex_f_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;color:#800000 !important; } /* fa-male */ 
-.icon-sex_m_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;color:#00008b !important; } /* fa-male */ 
+.icon-sex_f_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#800000 !important;} /* fa-male */ 
+.icon-sex_m_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#00008b !important;} /* fa-male */ 
 .icon-sex_u_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-user */ 
-.icon-sex_f_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em;color:#800000 !important; } /* fa-female */ 
-.icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em;color:#00008b !important; } /* fa-male */ 
-.icon-sex_u_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em;} /* fa-user */ 
+.icon-sex_f_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#800000 !important; margin: 0 5px; vertical-align: middle;} /* fa-female */ 
+.icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#00008b !important; margin: 0 5px; vertical-align: middle;} /* fa-male */ 
+.icon-sex_u_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; margin: 0 5px; vertical-align: middle;} /* fa-user */ 
 .female_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#800000 !important; width: 24px;} /* fa-female */ 
 .male_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#00008b !important; width: 24px;} /* fa-male */ 
 .unknown_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; width: 24px;} /* fa-user */ 
@@ -3969,7 +3955,10 @@ a.icon-udarrow:hover {
 .icon-minus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-compress */ 
 .icon-email				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-envelope-o */ 
 .icon-warning			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; color: #ff4500; margin: 0 5px 5px; vertical-align: middle;} /* fa-warning */ 
-
+.icon-lsdnarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-down */ 
+.icon-lsltarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-left */ 
+.icon-lsrtarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-right */ 
+.icon-lsuparrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-up */ 
 
 .icon-source			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-book */ 
 .icon-media				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-camera-retro */ 
