@@ -506,6 +506,10 @@ textarea:requi#ff0000:invalid {
 	z-index: 0;
 }
 
+#body_simple #content {
+	top: auto;
+}
+
 /* ======= Block styles ========== */
 /* Default */
 #index_main_blocks {
