@@ -120,6 +120,9 @@ textarea {
 	font-size: 12px;
 }
 
+button {
+cursor: pointer;}
+
 input,
 textarea {
 	padding: 3px;
@@ -2414,7 +2417,6 @@ dt {
 .yahrzeit_block th,
 .surname-list th,
 .givn-list th {
-	cursor: pointer;
 	font-weight: 600;
 	padding: 2px 4px;
 	white-space: nowrap;
