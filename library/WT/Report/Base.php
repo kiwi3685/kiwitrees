@@ -1218,7 +1218,7 @@ function startElement($parser, $name, $attrs) {
 		$newattrs[$key] = $value;
 	}
 	$attrs = $newattrs;
-	if (($processFootnote)&&($processIfs==0 || $name=="if")&&($processGedcoms==0 || $name=="Gedcom")&&($processRepeats==0 || $name=="Facts" || $name=="RepeatTag")) {
+	if (($processFootnote) && ($processIfs==0 || $name=="if")&&($processGedcoms==0 || $name=="Gedcom")&&($processRepeats==0 || $name=="Facts" || $name=="RepeatTag")) {
 		if (isset($elementHandler[$name]['start'])) {
 			if ($elementHandler[$name]['start'] != "") {
 				call_user_func($elementHandler[$name]['start'], $attrs);

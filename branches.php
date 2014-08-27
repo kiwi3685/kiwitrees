@@ -124,7 +124,7 @@ function print_fams($person, $famid=null) {
 	global $surn, $soundex_std, $soundex_dm, $user_ancestors;
 	// select person name according to searched surname
 	$person_name = "";
-	foreach ($person->getAllNames() as $n=>$name) {
+	foreach ($person->getAllNames() as $name) {
 		list($surn1) = explode(",", $name['sort']);
 		if (
 			// one name is a substring of the other
