@@ -1261,7 +1261,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
   
 
 	// field value
-	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
+	$islink = (substr($value, 0, 1)=="@" && substr($value, 0, 2)!="@#");
 	if ($islink) {
 		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
 	} else { 
@@ -1364,7 +1364,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// tag level
 	if ($level>0) {
-		if ($fact=="TEXT" and $level>1) {
+		if ($fact=="TEXT" && $level>1) {
 			echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level-1, "\">";
 			echo "<input type=\"hidden\" name=\"islink[]\" value=\"0\">";
 			echo "<input type=\"hidden\" name=\"tag[]\" value=\"DATA\">";
@@ -1554,7 +1554,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			else echo "<option value=\"", $key, "\"";
 			$a=strtolower($key);
 			$b=strtolower($value);
-			if (@strpos($a, $b)!==false or @strpos($b, $a)!==false) echo " selected=\"selected\"";
+			if (@strpos($a, $b)!==false || @strpos($b, $a)!==false) echo " selected=\"selected\"";
 			$tmp="MARR_".strtoupper($key);
 			echo ">", WT_Gedcom_Tag::getLabel($tmp), "</option>";
 		}

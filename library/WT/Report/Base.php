@@ -2400,7 +2400,7 @@ function FactsEHandler() {
 
 		//-- read the xml from the file
 		$lines = file($report);
-		while (($lineoffset + $repeatBytes > 0) and (strpos($lines[$lineoffset + $repeatBytes], "<Facts ")) === false) {
+		while (($lineoffset + $repeatBytes > 0) && (strpos($lines[$lineoffset + $repeatBytes], "<Facts ")) === false) {
 			$lineoffset--;
 		}
 		$lineoffset++;
@@ -2426,7 +2426,7 @@ function FactsEHandler() {
 			$desc = "";
 			if (preg_match("/1 (\w+)(.*)/", $gedrec, $match)) {
 				$fact = $match[1];
-				if ($fact=="EVEN" or $fact=="FACT") {
+				if ($fact=="EVEN" || $fact=="FACT") {
 					$tmatch = array();
 					if (preg_match("/2 TYPE (.+)/", $gedrec, $tmatch)) {
 						$type = trim($tmatch[1]);
@@ -2796,10 +2796,10 @@ function HighlightedImageSHandler($attrs) {
 	if ($mediaobject) {
 		$attributes=$mediaobject->getImageAttributes('thumb');
 		if (in_array($attributes['ext'], array('GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM')) && $mediaobject->canDisplayDetails() && $mediaobject->fileExists('thumb')) {
-			if (($width>0) and ($height==0)) {
+			if (($width>0) && ($height==0)) {
 				$perc = $width / $attributes['adjW'];
 				$height= round($attributes['adjH']*$perc);
-			} elseif (($height>0) and ($width==0)) {
+			} elseif (($height>0) && ($width==0)) {
 				$perc = $height / $attributes['adjH'];
 				$width= round($attributes['adjW']*$perc);
 			} else {
@@ -2864,10 +2864,10 @@ function ImageSHandler($attrs) {
 			$mediaobject=WT_Media::getInstance($match[1], WT_GED_ID);
 			$attributes=$mediaobject->getImageAttributes('thumb');
 			if (in_array($attributes['ext'], array('GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM')) && $mediaobject->canDisplayDetails() && $mediaobject->fileExists('thumb')) {
-				if (($width>0) and ($height==0)) {
+				if (($width>0) && ($height==0)) {
 					$perc = $width / $attributes['adjW'];
 					$height= round($attributes['adjH']*$perc);
-				} elseif (($height>0) and ($width==0)) {
+				} elseif (($height>0) && ($width==0)) {
 					$perc = $height / $attributes['adjH'];
 					$width= round($attributes['adjW']*$perc);
 				} else {
@@ -2881,10 +2881,10 @@ function ImageSHandler($attrs) {
 	} else {
 		if (file_exists($file) && preg_match("/(jpg|jpeg|png|gif)$/i", $file)) {
 			$size = getimagesize($file);
-			if (($width>0) and ($height==0)) {
+			if (($width>0) && ($height==0)) {
 				$perc = $width / $size[0];
 				$height= round($size[1]*$perc);
-			} elseif (($height>0) and ($width==0)) {
+			} elseif (($height>0) && ($width==0)) {
 				$perc = $height / $size[1];
 				$width= round($size[0]*$perc);
 			} else {
@@ -3034,7 +3034,7 @@ function ListSHandler($attrs) {
 						unset($attrs[$attr]); // This filter has been fully processed
 					} elseif (($listname=="individual") && (preg_match('/^NAME CONTAINS (.*)$/', $value, $match))) {
 						// Do nothing, unless you have to
-						if (($match[1] != "") or ($sortby=="NAME")) {
+						if (($match[1] != "") || ($sortby=="NAME")) {
 							$sql_join[]="JOIN `##name` AS {$attr} ON (n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
 							// Search the DB only if there is any name supplied
 							if ($match[1] != "") {
@@ -3115,7 +3115,7 @@ function ListSHandler($attrs) {
 
 	$filters = array();
 	$filters2 = array();
-	if ((isset($attrs['filter1'])) and (count($list) > 0)) {
+	if ((isset($attrs['filter1'])) && (count($list) > 0)) {
 		foreach ($attrs as $key=>$value) {
 			if (preg_match("/filter(\d)/", $key)) {
 				$condition = $value;

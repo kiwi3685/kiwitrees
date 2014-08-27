@@ -707,7 +707,7 @@ class CellPDF extends Cell {
 		else $cX = $pdf->addMarginX($this->left);
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or ($this->width > $pdf->getRemainingWidthPDF())) {
+		if (($this->width == 0) || ($this->width > $pdf->getRemainingWidthPDF())) {
 			$this->width = $pdf->getRemainingWidthPDF();
 		}
 		// For current position
@@ -948,7 +948,7 @@ class TextBoxPDF extends TextBox {
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page width (margin)
-		if (($this->width == 0) or ($this->width > $pdf->getRemainingWidthPDF())) {
+		if (($this->width == 0) || ($this->width > $pdf->getRemainingWidthPDF())) {
 			$cW = $pdf->getRemainingWidthPDF();
 		} else {
 			$cW = $this->width;
@@ -1122,9 +1122,9 @@ class TextBoxPDF extends TextBox {
 		foreach ($this->elements as $element) {
 			if (is_object($element)) {
 				$element->render($pdf);
-			} elseif (is_string($element) and $element == "footnotetexts") {
+			} elseif (is_string($element) && $element == "footnotetexts") {
 				$pdf->Footnotes();
-			} elseif (is_string($element) and $element == "addpage") {
+			} elseif (is_string($element) && $element == "addpage") {
 				$pdf->newPage();
 			}
 		}
@@ -1239,7 +1239,7 @@ class TextPDF extends Text {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
 			$wrapWidthRemaining = (int)($this->wrapWidthRemaining);
-			if (($lw >= ($wrapWidthRemaining)) or ($lfct > 1)) {
+			if (($lw >= ($wrapWidthRemaining)) || ($lfct > 1)) {
 				$newtext = "";
 				$lines = explode("\n", $this->text);
 				// Go throught the text line by line
@@ -1392,7 +1392,7 @@ class FootnotePDF extends Footnote {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
 			$wrapWidthRemaining = (int)($this->wrapWidthRemaining);
-			if (($lw >= $wrapWidthRemaining) or ($lfct > 1)) {
+			if (($lw >= $wrapWidthRemaining) || ($lfct > 1)) {
 				$newtext = "";
 				$lines = explode("\n", $this->numText);
 				// Go throught the text line by line

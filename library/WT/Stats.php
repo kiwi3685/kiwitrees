@@ -104,7 +104,7 @@ class WT_Stats {
 		static $funcs;
 
 		// Retrive all class methods
-		isset($funcs) or $funcs = get_class_methods($this);
+		isset($funcs) || $funcs = get_class_methods($this);
 
 		// Extract all tags from the provided text
 		$ct = preg_match_all("/#([^#]+)(?=#)/", (string)$text, $match);
@@ -995,7 +995,7 @@ class WT_Stats {
 			$indis = WT_Query_Name::individuals(utf8_strtoupper($surname), '', '', false, false, WT_GED_ID);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcomRecord(), $matches)) {
-					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+					// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 					foreach ($matches[1] as $country) {
 						$country=trim($country);
 						if (array_key_exists($country, $country_to_iso3166)) {
@@ -1048,7 +1048,7 @@ class WT_Stats {
 			// Count how many families got marriage in each country
 			$surn_countries=array();
 			$m_countries=$this->_statsPlaces('FAM');
-			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+			// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($m_countries as $place) {
 				$country=trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
@@ -1066,7 +1066,7 @@ class WT_Stats {
 			// Count how many people are events in each country
 			$surn_countries=array();
 			$a_countries=$this->_statsPlaces('INDI');
-			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+			// kiwitrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($a_countries as $place) {
 				$country=trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
@@ -3415,7 +3415,7 @@ class WT_Stats {
 			}
 		}
 		$LoginUsers = count($loggedusers);
-		if (($LoginUsers == 0) and ($NumAnonymous == 0)) {
+		if (($LoginUsers == 0) && ($NumAnonymous == 0)) {
 			return WT_I18N::translate('No logged-in and no anonymous users');
 		}
 		if ($NumAnonymous > 0) {

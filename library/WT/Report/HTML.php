@@ -694,7 +694,7 @@ class CellHTML extends Cell {
 			}
 		}
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or $this->width > $html->getRemainingWidth()) {
+		if (($this->width == 0) || $this->width > $html->getRemainingWidth()) {
 			$this->width = $html->getRemainingWidth();
 		}
 		// We have to calculate a different width for the padding, counting on both side
@@ -945,7 +945,7 @@ class TextBoxHTML extends TextBox {
 		}
 
 		// Check the width if set to page wide OR set by xml to larger then page wide
-		if (($this->width == 0) or ($this->width > $html->getRemainingWidth())) {
+		if (($this->width == 0) || ($this->width > $html->getRemainingWidth())) {
 			$this->width = $html->getRemainingWidth();
 		}
 		// Setup the CellPadding
@@ -1198,7 +1198,7 @@ class TextHTML extends Text {
 		// If there is still remaining wrap width...
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
-			if (($lw >= $this->wrapWidthRemaining) or ($lfct > 1)) {
+			if (($lw >= $this->wrapWidthRemaining) || ($lfct > 1)) {
 				$newtext = "";
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
 				$lines = explode("\n", $this->text);
@@ -1358,7 +1358,7 @@ class FootnoteHTML extends Footnote {
 		// If there is still remaining wrap width...
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
-			if (($lw >= $this->wrapWidthRemaining) or ($lfct > 1)) {
+			if (($lw >= $this->wrapWidthRemaining) || ($lfct > 1)) {
 				$newtext = "";
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
 				$lines = explode("\n", $this->numText);
