@@ -86,50 +86,50 @@ $controller
 	->setPageTitle(WT_I18N::translate('Administration - place edit'))
 	->pageHeader();
 ?>
+<div id="places">
+	<h2>
+		<?php echo WT_I18N::translate('Update all the place names in a family tree'); ?>
+	</h2>
 
-<h2>
-	<?php echo WT_I18N::translate('Update all the place names in a family tree'); ?>
-</h2>
-
-<p>
-	<?php echo WT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
-</p>
-
-<form method="post">
-	<dl>
-		<dt><?php echo WT_I18N::translate('Family tree'); ?></dt>
-		<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, 'autofocus'); ?></dd>
-		<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
-		<dd><input name="search" id="search" type="text" size="30" value="<?= WT_Filter::escapeHtml($search) ?>" required></dd>
-		<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>
-		<dd><input name="replace" id="replace" type="text" size="30" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
-	</dl>
-	<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
-	<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
-</form>
-
-<p class="error">
-	<?php echo WT_I18N::translate('Caution! This may take a long time. Be patient.'); ?>
-</p>
-
-<?php if ($search && $replace) { ?>
-	<?php if ($changes) { ?>
 	<p>
-		<?php echo ($confirm) ? WT_I18N::translate('The following places were changed:') : WT_I18N::translate('The following places would be changed:'); ?>
+		<?php echo WT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
 	</p>
-	<ul>
-		<?php foreach ($changes as $old_place => $new_place) { ?>
-		<li>
-			<?php echo WT_Filter::escapeHtml($old_place); ?>
-			&rarr;
-			<?php echo WT_Filter::escapeHtml($new_place); ?>
-		</li>
+
+	<form method="post">
+		<dl>
+			<dt><?php echo WT_I18N::translate('Family tree'); ?></dt>
+			<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, 'autofocus'); ?></dd>
+			<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
+			<dd><input name="search" id="search" type="text" size="30" value="<?= WT_Filter::escapeHtml($search) ?>" required></dd>
+			<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>
+			<dd><input name="replace" id="replace" type="text" size="30" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
+		</dl>
+		<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
+		<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
+	</form>
+
+	<p class="error">
+		<?php echo WT_I18N::translate('Caution! This may take a long time. Be patient.'); ?>
+	</p>
+
+	<?php if ($search && $replace) { ?>
+		<?php if ($changes) { ?>
+		<p>
+			<?php echo ($confirm) ? WT_I18N::translate('The following places were changed:') : WT_I18N::translate('The following places would be changed:'); ?>
+		</p>
+		<ul>
+			<?php foreach ($changes as $old_place => $new_place) { ?>
+			<li>
+				<?php echo WT_Filter::escapeHtml($old_place); ?>
+				&rarr;
+				<?php echo WT_Filter::escapeHtml($new_place); ?>
+			</li>
+			<?php } ?>
+		</ul>
+		<?php } else { ?>
+		<p>
+			<?php echo WT_I18N::translate('No places were found.'); ?>
+		</p>
 		<?php } ?>
-	</ul>
-	<?php } else { ?>
-	<p>
-		<?php echo WT_I18N::translate('No places were found.'); ?>
-	</p>
 	<?php } ?>
-<?php } ?>
-
+</div>

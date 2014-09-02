@@ -27,6 +27,7 @@ html {overflow-y:scroll;}
 /* general styles */
 body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input {padding:0 5px;}
+input[type="submit"], input[type="reset"], input[type="button"] {padding: 5px 30px; margin: 0 20px;}
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:top;}
 img {border:none; vertical-align:middle;}
@@ -45,6 +46,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 .submenu {background-color:#eee; border:thin solid #aaa; padding:3px;}
 .rela {opacity :0.4;}
 .faq_link {float:right; padding:0 20px;}
+.clearfloat {clear:both}
 
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
@@ -213,6 +215,7 @@ table.sites {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:
 
 /* CLEANUP */
 #cleanup li {list-style:none; margin-bottom:5px;}
+#cleanup button[type="submit"] {padding: 5px 30px; margin: 0 20px;}
 
 /* MANAGE FAMILY TREES */
 table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
@@ -280,6 +283,11 @@ tr.even + tr td.details {background-color:#eeffee;}
 #main_select,#available_select,#right_select {min-width:150px; min-height:128px;}
 #change_blocks .topbottombar {text-align:center;}
 
+/* RENUMBER TREES */
+#renumber input[type="submit"] {padding: 5px 30px; margin: 0 20px;}
+.renum_list {float:left; width:25%;}
+
+
 /* USER ADD & EDIT */
 table#adduser {width:100%;}
 #adduser th {text-align:left; padding:30px 0 1px 3px;font-size:105%;}
@@ -305,7 +313,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #clean td {border-bottom:1px solid #d3d3d3; padding:3px;}
 #clean td p {font-weight:bold;}
 
-/* admin_media.php */
+/* MANAGE MEDIA */
 .media_items {max-width:100%; margin:0; width:100%;}
 .media_items td {background:#fff; border:1px inset #ccc; padding:10px;}
 .media_items td+td+td {vertical-align:middle;}
@@ -323,11 +331,14 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 .upload_media td {padding:5px 20px;}
 .upload_media sub {display:block; line-height:10px;}
 
+/* UPDATE PLACES */
+#places button[type="submit"] {padding: 5px 30px; margin: 0 20px;}
+
 /* MANAGE MODULES */
 #installed_table {width:100%;}
 #installed_table th {min-width:60px;}
 
-/* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS */
+/* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS, WIDGETS */
 table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding:5px; margin-bottom:10px;}
 .modules_table th {border-bottom:2px solid #d3d3d3; font-weight:bold; font-size:105%;}
 .modules_table td {border-bottom:2px solid #d3d3d3; padding:3px; min-width:120px;}
@@ -346,7 +357,7 @@ table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding
 #album_config label {font-weight:900; font-size:110%; margin:5px 0; vertical-align:top;}
 #album_groups {float:left; width:400px; padding:5px 0;}
 #album_groups select {margin:0 10px;}
-#album_buttons {float:left; width:200px;}
+#album_buttons {float:left;}
 #album_options {clear:both; margin-top:15px;}
 #album_options td, #album_options th input {text-align:center;}
 #album_options td:first-child {text-align: left; /* as backup */ text-align:start;}
@@ -600,7 +611,7 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
 /* Styling for fancy_imagebar module */
-#fib_config #selectbar {width:50%;margin-bottom:20px}
+#fib_config #selectbar {width:60%;margin-bottom:20px}
 #fib_config #buttons{text-align:right}
 #fib_config #block_left {width:50%}
 #fib_config #block_right{float:left;margin-left:20px}
@@ -618,7 +629,6 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #fib_config .label{display:inline-block;width:200px}
 #fib_config input {vertical-align:middle}
 #fib_config input[type="radio"] {vertical-align:top}
-#fib_config .clearfloat{clear:both}
 
 /* Styling for simpl_research module */
 #simpl_research_links {margin-bottom:20px; overflow:hidden;}
