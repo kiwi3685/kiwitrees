@@ -261,7 +261,7 @@ if (WT_Filter::get('go')) {
 	echo '<p>', WT_I18N::translate('You can renumber a family tree so that these reference numbers are unique across all family trees.') ,'</p>';
 }
 
-echo '<p>', WT_I18N::plural(
+echo '<p class="clearfloat">', WT_I18N::plural(
 	'This family tree has %s record which uses the same “XREF” as another family tree.',
 	'This family tree has %s records which use the same “XREF” as another family tree.',
 	count($xrefs), count($xrefs)
