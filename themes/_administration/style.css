@@ -598,6 +598,7 @@ table#story_table {width:100%}
 #admin_dup #duplicates_table a:hover {color:#f00;}
 #admin_dup #duplicates_table a:active {color:#555;}
 #admin_dup .exact {display:inline;padding:1px;cursor:default;width:100px;}
+#admin_dup input[type="button"] {margin:0;padding:0;}
 #admin_dup .exact input[type="text"] {margin:0;padding:1px 0;}
 
 /* Styling for simpl_pages module */
