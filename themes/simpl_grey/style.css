@@ -501,7 +501,7 @@ pre{font-size:1.25em;white-space:pre-wrap}
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td, .fam-list td, .recent_changes_block td, .upcoming_events_block, .surname-list td{padding:2px 5px}
 .surname-list  td{vertical-align:top}
 .givn-list td{padding:0 7px}
-.source-list th,.note-list th,.repo-list th,.media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th, .surname-list th{cursor:pointer; white-space:nowrap; padding:1px 4px;text-align:center}
+.source-list th,.note-list th,.repo-list th,.media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th, .surname-list th{cursor:pointer; white-space:nowrap; padding:5px;text-align:center}
 .givn-list th{cursor:pointer;white-space:nowrap;padding:2px;text-align:center}
 .source-list th:last-child,.note-list th:last-child,.repo-list th:last-child{margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px}
 .recent_changes_block th:first-child{width:15px}
