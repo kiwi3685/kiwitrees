@@ -117,7 +117,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 .icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px; position: absolute;}
 
 /* SIDE and CONTENT panels */
-#admin_menu, #admin_content, #content_container {min-height:700px;}
+#admin_menu, #admin_content, #content_container {min-height:700px; overflow: hidden;}
 #admin_content {min-width:750px;}
 
 /* SIDE MENU */
