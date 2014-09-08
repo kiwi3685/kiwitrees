@@ -158,7 +158,7 @@ echo '		</div>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_other.php"    	? 'class="current" ' : ''), 'href="admin_site_other.php">',			WT_I18N::translate('Add unlinked records'		), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_change.php"    	? 'class="current" ' : ''), 'href="admin_site_change.php">',		WT_I18N::translate('Changes log'				), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_trees_renumber.php" 	? 'class="current" ' : ''), 'href="admin_trees_renumber.php">',		WT_I18N::translate('Renumber family tree'		), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_trees_append.php"    	? 'class="current" ' : ''), 'href="admin_trees_append.php">',		WT_I18N::translate('Merge trees'				), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_trees_append.php"    	? 'class="current" ' : ''), 'href="admin_trees_append.php">',		WT_I18N::translate('newt_listbox_append_entry(listbox, text, data) trees'				), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_trees_places.php"   	? 'class="current" ' : ''), 'href="admin_trees_places.php">',		WT_I18N::translate('Update place names'			), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_trees_duplicates.php"  ? 'class="current" ' : ''), 'href="admin_trees_duplicates.php">',	WT_I18N::translate('Find duplicate individuals'	), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_trees_unlinked.php"	? 'class="current" ' : ''), 'href="admin_trees_unlinked.php">',		WT_I18N::translate('Find unlinked individuals'	), '</a></p>
