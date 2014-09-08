@@ -2394,6 +2394,78 @@ case 'reorder_fams_update':
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	break;
+
+////////////////////////////////////////////////////////////////////////////////
+case 'checkduplicates':
+	$gedcom_id	= safe_GET('ged', array_keys(WT_Tree::getAll()), WT_GED_ID);
+	$surn		= safe_GET('surname', '[^<>&%{};]*');
+	$givn		= safe_GET('given', '[^<>&%{};]*');
+	$html		= '';
+
+	// the sql query used to identify simple duplicates
+	$sql = "
+		SELECT n_id, n_full, n_surn, n_givn, n_type, n_sort
+		FROM `##name`
+		 WHERE n_surn LIKE '%".$surn."%'
+		 AND n_givn LIKE '%".$givn."%'
+		 AND n_file = ".$gedcom_id." ";
+	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+	$controller
+		->setPageTitle(WT_I18N::translate('Possible duplicates'))
+		->pageHeader();
+
+	$html = '
+		<div id="edit_interface-page">
+			<h4>'. $controller->getPageTitle() . '</h4>';
+
+			if ($rows) {
+				$i = 1;
+				$html .= '
+					<table class="facts_table">
+						<tr>
+							<th class="facts_label">' . WT_I18N::translate('Name') . '</th>
+							<th class="facts_label">' . WT_I18N::translate('Lifespan') . '</th>
+							<th class="facts_label">' . WT_I18N::translate('Birthplace') . '</th>
+						</tr>';
+				foreach ($rows as $row) {
+					$id = $row['n_id'];
+					$name = $row['n_full'];
+					$person = WT_Person::getInstance($id);
+					$lifespan	= $person->canDisplayDetails() ? '<span>' . $person->getLifeSpan()	. '</span>' : '';
+					$birthplace	= $person->getBirthPlace() ? '<span>' . $person->getBirthPlace() . '</span>' : '';
+
+					$html .= '
+							<tr>
+								<td class="facts_value"><a href="'. $person->getHtmlUrl() . '" target="_blank">' . $name . '</a></td>
+								<td class="facts_value">' . $lifespan .'</td>
+								<td class="facts_value">' . $birthplace .'</td>
+							</tr>';
+
+					if ($i == 10 ) {
+					$html .= '
+							<tr>
+								<td colspan="3" class="facts_value"><span class="warning">' . WT_I18N::translate('More than %s possible duplicates found.', $i) . '</span></td>
+							</tr>';
+						break;
+					}
+					$i++;
+				}
+				$html .= '</table>';
+			} else {
+				$html .= '<p>' . WT_I18N::translate('No duplicates found') . '</p>';
+				return;
+			}
+
+	$html .= '
+			<p id="save-cancel">
+				<input type="button" class="cancel" value="' . /* I18N: button label */ WT_I18N::translate('cancel'). '" onclick="window.close();">
+			</p>
+		</div>';
+
+	echo $html;
+	break;
+
 }
 
 // Keep the existing CHAN record when editing

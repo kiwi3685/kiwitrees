@@ -980,6 +980,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
 	}
 	echo '<input type="button" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('close'), '" onclick="window.close();">';
+	echo '<input type="submit" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('check'), '" onclick="check_duplicates();" title="', /* I18N: button hover title */ WT_I18N::translate('Check for possible duplicates'), '">';
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('
@@ -1128,7 +1129,6 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					ip[i].value=document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
 				}
 			}
-			return true;
 		}
 
 		// If the name isn’t initially formed from the components in a standard way,
@@ -1136,6 +1136,20 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		if (document.getElementById("NAME").value!=generate_name() && document.getElementById("NAME").value!="//") {
 			convertHidden("NAME");
 		}
+
+		// optional check for possible diplucate person
+		function check_duplicates(surname, given, ged) {
+			var frm  = document.forms[0];
+			var givn =frm.GIVN.value.split(/\s+/)[0]; // uses the first given name only
+			var surn = frm.SURN.value;
+			return edit_interface({
+				"action": "checkduplicates",
+				"surname": surn,
+				"given": givn,
+				"ged": ' . WT_GED_ID . '
+			});
+		}
+
 	');
 }
 

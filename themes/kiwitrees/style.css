@@ -112,11 +112,10 @@ img.block,
 input,
 button,
 textarea {
-	border-top-color: #fff;
-	border-left-color: #fff;
+	border: 1px solid #aaa;
 	border-right-color: #555;
 	border-bottom-color: #555;
-	border-width: 1px;
+	border-radius: 3px;
 	font-size: 12px;
 }
 
@@ -4165,26 +4164,27 @@ a.icon-udarrow:hover {
 }
 
 #save-cancel {
-	position: fixed;
-	bottom: 0;
-	width: 98%;
-	border: solid #555 1px;
-	margin: 0;
 	background: #ddd;
+	border-top: solid #aaa 3px;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	position: fixed;
+	width: 100%;
 }
 
 #save-cancel input {
-	padding: 2px 8px;
+	padding: 5px 10px;
 }
 
 #save-cancel .save {
 	float: left;
-	margin: 5px;
+	margin: 10px;
 }
 
 #save-cancel .cancel {
 	float: right;
-	margin: 5px;
+	margin: 10px;
 }
 
 [dir='rtl'] #save-cancel .save {
