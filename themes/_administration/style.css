@@ -74,6 +74,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 .dataTables_info {float:left; margin-top:5px; font-weight:normal;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+.dataTables_wrapper {margin-bottom: 10px;}
 .dataTables_wrapper th {white-space:nowrap;}
 .dataTables_wrapper th.icon-open:before, .dataTables_wrapper th.icon-close:before {visibility: hidden;}
 .dataTable {max-width:none;}
@@ -322,6 +323,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 .media_table { width:100%;}
 .media_table th {min-width:200px;}
 .media_table th+th {min-width:120px;}
+.media_table th+th+th+th {width:120px;}
 .media_table td {padding:5px; border:1px solid #ccc; vertical-align:top;}
 
 /* UPLOAD MEDIA */
@@ -337,6 +339,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 /* MANAGE MODULES */
 #installed_table {width:100%;}
 #installed_table th {min-width:60px;}
+.ui-widget-content a.error {color: #ff0000;}
 
 /* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS, WIDGETS */
 table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding:5px; margin-bottom:10px;}

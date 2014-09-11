@@ -157,6 +157,7 @@ case 'load_json':
 				media_file_info($media_folder, $media_path, $row['media_path']),
 				$media->displayImage(),
 				media_object_info($media),
+				WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
 			);
 		}
 		break;
@@ -182,6 +183,7 @@ case 'load_json':
 			$LIMIT = "";
 		}
 		$iSortingCols = safe_GET('iSortingCols');
+		echo $iSortingCols;
 		if ($iSortingCols) {
 			$ORDER_BY = " ORDER BY ";
 			for ($i=0; $i<$iSortingCols; ++$i) {
@@ -216,6 +218,7 @@ case 'load_json':
 			 	WT_Gedcom_Tag::getLabelValue('URL', $row['m_filename']),
 				$media->displayImage(),
 				media_object_info($media),
+				WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
 			);
 		}
 		break;
@@ -293,6 +296,7 @@ case 'load_json':
 				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
 				$img,
 				$create_form,
+				'',
 			);
 		}
 		break;
@@ -519,7 +523,8 @@ $controller
 		aoColumns: [
 			{},
 			{bSortable: false, sClass: "center"},
-			{bSortable: ' . ($files=='unused' ? 'false' : 'true') . '}
+			{bSortable: ' . ($files=='unused' ? 'false' : 'true') . '},
+			{bSortable: true}
 		]
 	});
 	');
@@ -592,6 +597,7 @@ $controller
 			<th><?php echo WT_I18N::translate('Media file'); ?></th>
 			<th><?php echo WT_I18N::translate('Media'); ?></th>
 			<th><?php echo WT_I18N::translate('Media object'); ?></th>
+			<th><?php echo WT_I18N::translate('Media type'); ?></th>
 		</tr>
 	</thead>
 	<tbody>
