@@ -140,7 +140,16 @@ if ($view!='simple') {
 						} else {
 							$class_name = 'login_block_WT_Module';
 							$module = new $class_name;
-							echo '<li><a href="#">', WT_I18N::translate('Login or Register'), '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
+//							echo '<li><a href="#">';
+//							if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
+//								WT_I18N::translate('Login or Register');
+//							} else {
+//								WT_I18N::translate('Login');
+//							}
+//							echo '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
+
+							echo '<li><a href="#">'. (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')) , '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
+
 						}
 		echo 		'</ul>
 					<div id="bigtext" class="title" dir="auto">', WT_TREE_TITLE, '</div>
@@ -148,7 +157,7 @@ if ($view!='simple') {
 				'<div id="topMenu" class="ui-state-active">
 					<ul id="main-menu">';
 						if ($ctype != 'gedcom') {
-							echo '<li id="widget-button" style="margin: 0 0 0 3px;"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
+							echo '<li id="widget-button"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
 						}
 						foreach (WT_MenuBar::getModuleMenus() as $menu) {
 							if (!strpos($menu, '>'.WT_I18N::translate('My page').'<')) {								
