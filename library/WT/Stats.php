@@ -257,6 +257,11 @@ class WT_Stats {
 		return $root;
 	}
 
+	function gedcomRootIDname() {
+		$root = WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
+		$root_name = $root->getFullName();
+		return $root_name;
+	}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Totals                                                                    //
