@@ -181,6 +181,6 @@ if ($view!='simple') {
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
 
 // add widget bar inside content div for all ages except Home, and only for logged in users
-if ($ctype != 'gedcom') {
+if ($ctype != 'gedcom' && $view != 'simple') {
 	include_once 'widget-bar.php';
 }
