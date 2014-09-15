@@ -681,3 +681,13 @@ html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-ali
 [dir=rtl] #fancy_treeview-config .edit_page_link select {margin-right: 20px;}
 [dir=rtl] #fancy_treeview-config .default_link {padding-right: 10px;}
 [dir=rtl] #fancy_treeview-config input[type="submit"] {margin-right: 0;}
+
+/* Styling for Extra menus module */
+#module_admin, #module_lang {background:#fdf5e6;border: 1px inset #d9d6c4;margin: 0 0 10px 0;padding: 5px;overflow:hidden;}
+#module_admin {float:left;width:450px;}
+#module_lang {float:left;margin:0 30px;}
+#module_lang label[for="languages"] {font-weight:700;}
+#module_admin label {float:left;clear:both;line-height:20px; margin-top:10px;}
+#module_admin input, #module_admin select {float:left;clear:both;height:25px;font-size:110%;}
+#module_save {clear:both;}
+html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_admin input, html[dir=rtl] #module_admin select, html[dir=rtl] #module_admin label {float:right;}

@@ -5391,7 +5391,7 @@ div.widget {
 #widget-bar .widget .blockheader {
 	background: #a9adbc;
 	font-size: 1em;
-	font-height: 900;
+	font-weight: 900;
 	line-height: 16px;
 	border-bottom: 2px solid #555;
 	overflow: hidden;
@@ -5430,4 +5430,6 @@ div.widget {
 	width: 25%;
 }
 
-
+#widget-button {
+	margin: 0 0 0 3px;
+}
