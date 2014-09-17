@@ -95,7 +95,7 @@ li#menu#search li{margin-left:1em}
 .copylink{background-position:0 0}
 .deletelink{background-position:0 -66px}
 #news_flash{border-radius:10px;border-color:#D3D3D3;border-style:solid;border-width:.3em 1px 1px .3em;margin:auto;padding:.5em;text-align:left;width:98%}
-#footer{clear:both;font-size:12px;margin:0 auto;text-align:center;width:99%}
+#footer{clear:both;font-size:12px;margin:20px auto;text-align:center;border-radius:10px;background:#fff;border:1px solid #d3d3d3;padding:5px 5px 3px;}
 .contact_links{margin:auto auto 1px;padding:1px}
 #stats{font-size:.56em}
 #pedigree-page table.list_table {margin:0 auto;width:500px}
@@ -344,6 +344,7 @@ a.showit:hover > span{background:#4f4f4f;border-bottom:2px solid #000;border-lef
 .clearfloat{clear:both}
 dt{float:left;font-weight:700;margin-right:10px}
 #controls{border-bottom:1px solid;border-right:1px solid}
+.logo {margin: 5px auto 10px;}
 .logo a{color:#444;font-weight:900;text-align:center}
 .logo span{font-size:75%;vertical-align:top}
 #headermargin,#headerdiv,#bodydiv,#bodymargin{display:block;max-width:950px !important;overflow:auto;text-align:left}
