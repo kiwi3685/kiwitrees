@@ -49,20 +49,44 @@ dl{margin:0}
 #header{height:5em;position:relative;width:100%;z-index:500}
 img#header{left:0;position:absolute;top:0;width:100%}
 #quicksearch{bottom:1.88em;position:absolute;right:2px}
-#title{bottom:.5em;font-size:.75em;font-weight:700;height:3em;position:absolute;right:.31em;text-align:right}
+#title{bottom:0;font-size:.75em;font-weight:700;height:3em;position:absolute;right:.31em;text-align:right}
 a:active,a:focus,input[type="image"], div:focus, div:active{outline:0}
 
-a.home img{border:1px solid;border-color:#aaa;display:block;margin:0 auto}
+a.home img{background-color: #ccc;border:1px solid;border-color:#aaa;display:block;margin:0 auto}
 a.home:hover img{border-color:#aaa #fff #fff #aaa;left:1px;position:relative;top:1px}
 a:hover img{background:none}
-.pro_linedrop{border-radius:.5em;background:transparent url(images/bar45.png) repeat scroll 0 0;height:2.5em;padding-left:.25em;position:relative;z-index:500}
-.pro_linedrop li{background:transparent url(images/vert_div.png) no-repeat 100% 40%;float:left}
+.pro_linedrop {
+	background: #fdfdfd; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fdfdfd 0%, #dfdfdf 3%, #dcdcdc 5%, #878787 97%, #9a9a9a 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(3%,#dfdfdf), color-stop(5%,#dcdcdc), color-stop(97%,#878787), color-stop(100%,#9a9a9a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fdfdfd 0%,#dfdfdf 3%,#dcdcdc 5%,#878787 97%,#9a9a9a 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fdfdfd 0%,#dfdfdf 3%,#dcdcdc 5%,#878787 97%,#9a9a9a 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fdfdfd 0%,#dfdfdf 3%,#dcdcdc 5%,#878787 97%,#9a9a9a 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fdfdfd 0%,#dfdfdf 3%,#dcdcdc 5%,#878787 97%,#9a9a9a 100%); /* W3C */
+	height:2.5em;
+	padding-left:.25em;
+	position:relative;
+	z-index:500;
+}
+.pro_linedrop li {
+	background:transparent url(images/vert_div.png) no-repeat 100% 40%;
+	float:left
+}
 .pro_linedrop li ul li{background:none}
 .pro_linedrop li.lrt{background:transparent url(images/vert_div.png) no-repeat 0 40%;float:right}
 .pro_linedrop li.lrtx{background:transparent}
 .pro_linedrop li.lrt2{background:transparent;float:right;height:1.5em;margin:.45em .6em 0 0;padding-left:1px}
 .pro_linedrop .select{list-style:none;margin:0;padding:0;white-space:nowrap}
-.pro_linedrop .select a{color:#fff;display:block;float:left;height:2.5em;line-height:1.19em;margin-right:1px;padding:1px 0 0;text-align:center;text-decoration:none;white-space:nowrap;width:90px}
+.pro_linedrop .select a {
+	color:#fff;
+	display:block;
+	float:left;
+	height:2.5em;
+	text-align:center;
+	text-decoration:none;
+	white-space:nowrap;
+	width:90px;
+}
 .pro_linedrop .select a b{display:block;font-size:.9em;padding:.63em .63em 0 0;text-shadow:0 -1px 0 #555}
 .pro_linedrop .select li:hover a{color:#4682B4;line-height:1.19em;text-shadow:0 1px 0 #fff}
 .pro_linedrop .select a:hover b,.pro_linedrop .select li:hover a b{display:block;text-shadow:0 1px 0 #fff}
@@ -76,7 +100,7 @@ a:hover img{background:none}
 .pro_linedrop .select :hover ul.rt :hover ul{left:0}
 .pro_linedrop .select :hover ul.rt :hover ul li a{padding-left:10px}
 .pro_linedrop .select :hover .sub :hover ul li:hover > ul{display:block;left:100%;position:absolute;right:auto;top:0}
-.lrt a.link:link,.lrt a.link:visited,.lrt a.link:active{color:#fff;font-size:.9em;font-weight:700;padding:.8em .5em 0 0;text-shadow:0 -1px 0 #555}
+.lrt a.link:link,.lrt a.link:visited,.lrt a.link:active{color:#fff;font-size:90%;font-weight:700;padding: 9px 0 0 0;text-shadow:0 -1px 0 #555}
 .lang-active, .theme-active{color:green!important}
 li#menu#search li{margin-left:1em}
 #stories_content{background:#fffFF0;padding:.63em;text-align:justify;z-index:2}
@@ -171,9 +195,8 @@ div.faq_body{clear:both;padding:5px 20px;text-align:justify}
 fieldset,.box{border:0;padding:.25em}
 button,input[type="submit"],input[type="reset"],input[type="button"]{background:ivory;border:1px outset #d3d3d3;border-radius:5px;margin:3px;padding:2px 5px;text-transform:capitalize}
 button:hover,input:hover[type="submit"],input:hover[type="reset"],input:hover[type="button"]{background:#D3D3D3;border-color:#D3D3D3;}
-.formbut{border-radius:1em;background:#fff;border:1px solid #8a8a8a;height:18px;margin-top:3px;width:140px}
-.formbut input {border:none;color:#A9A9A9;font-size:11px;font-style:italic;vertical-align:top;margin-top:1px}
-.formbut .icon-magnifier{margin:0 2px}
+.formbut{background:#fff;border:1px solid #8a8a8a;border-radius: 3px; height:22px;margin-top: 2px;overflow:hidden;width:160px}
+.formbut input {border:none;color:#A9A9A9;font-style:italic;line-height:18px;padding: 0 3px;width:130px;}
 #container{background:#FEFFEB}
 .name_head{font-size:1.25em;font-weight:700}
 .elderdate{color:#4682B4;font-size:90%}
@@ -750,7 +773,7 @@ a.icon-udarrow:hover {height:16px;width:16px;background-position:-1154px 0}
 .icon-sfamily {height:16px;width:16px;background-position:-528px 0}
 .icon-help {cursor:help;margin:0 5px 3px;height:16px;width:16px;background-position:-544px 0}
 .icon-button_keyboard {height:16px;width:16px;background-position:-576px 0}
-.icon-magnifier {height:16px;width:16px;background-position:-592px 2px;vertical-align:top;margin:0}
+.icon-magnifier {height:16px;width:16px;background-position:-592px 0}
 .icon-sex_m_15x15 {height:16px;width:16px;background-position:-608px 0}
 .icon-button_note {height:16px;width:16px;background-position:-624px 0}
 .icon-note {height:16px;width:16px;background-position:-624px 0}

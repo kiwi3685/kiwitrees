@@ -204,15 +204,17 @@ if ($view!='simple') {
 					}
 				}
 				// Search Box
-				echo '<li class="lrt2">';
-					echo
-					'<form action="search.php" method="post">',
-					'<input type="hidden" name="action" value="general">',
-					'<input type="hidden" name="topsearch" value="yes">',
-					'<div class="formbut"><i class="icon-magnifier"></i>',
-					'<input type="text" name="query" size="16" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-					'</div></form>';
-				echo '</li>';
+				echo '
+					<li class="lrt2">
+						<form action="search.php" method="post">
+							<input type="hidden" name="action" value="general">
+							<input type="hidden" name="topsearch" value="yes">
+							<div class="formbut">
+								<input type="text" name="query" placeholder="', WT_I18N::translate('Search'), '" dir="auto">
+								<i class="icon-magnifier"></i>
+							</div>
+						</form>
+					</li>';
 				// Login/Out
 				if (WT_USER_ID) {
 					echo '<li class="lrt"><span>', logout_link(), '</span></li>';
