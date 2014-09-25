@@ -569,7 +569,7 @@ div.faq_body {clear:both;padding:0 1em;}
 #main-menu li li a {display:block;position:relative;float:left;font-size:11px;line-height:1.5;padding:1px 10px 1px 5px;}
 
 /* Menu icons */
-#main-menu > li {background-image:url(images/large_menu_sprite.png);background-repeat:no-repeat;width:110px;height:64px;text-align:center;}
+#main-menu > li {background-image:url(images/large_menu_sprite.png);background-repeat:no-repeat;width:90px;height:64px;text-align:center;}
 #main-menu li li {background-image:url(images/small_menu_sprite.png);background-repeat:no-repeat;height:24px;left:auto;line-height:24px;text-align:left;text-indent:26px;width:100%;}
 
 /* Reverse left and right on RTL pages */

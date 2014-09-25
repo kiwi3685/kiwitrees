@@ -88,7 +88,7 @@ echo
 	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="icon" href="', WT_THEME_URL, 'images/simpl_favicon.png" type="image/png">',
 	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
 	'<!--[if IE]>',

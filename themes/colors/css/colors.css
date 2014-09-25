@@ -278,7 +278,7 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 .small_inner_block {max-height:200px;overflow:auto;}
 
 .block {border-radius:3px;color:#000;margin-bottom:5px;padding:1px;vertical-align:top;}
-.blockcontent {border:solid #999 1px;margin-bottom:10px;margin-left:auto;margin-right:2px;overflow:auto;padding:5px;}
+.blockcontent {border:solid #999 1px;margin-bottom:10px;margin-left:auto;margin-right:3px;overflow:auto;padding:5px;}
 .blockcontent p {font-size:13px;}
 .blockheader {width:100%;padding:0;margin:0;border-collapse:collapse;}
 
