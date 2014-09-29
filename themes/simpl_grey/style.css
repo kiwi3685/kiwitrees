@@ -371,7 +371,7 @@ dt{float:left;font-weight:700;margin-right:10px}
 .logo a{color:#444;font-weight:900;text-align:center}
 .logo span{font-size:75%;vertical-align:top}
 #headermargin,#headerdiv,#bodydiv,#bodymargin{display:block;max-width:950px !important;overflow:auto;text-align:left}
-#indi_header{border:1px solid #A9A9A9;border-radius:3px;float:left;margin:0 0 10px;padding:10px;width:98%}
+#indi_header{float:left;margin:0 0 10px;padding:10px;width:98%}
 #indi_header h3{color:#555;font-size:90%;font-weight:700;margin:0;padding:3px 10px 0 30px;text-align:left}
 #indi_header h3.name_one{font-size:1.15em;overflow:hidden;position:relative}
 #indi_header h3.person_box,#indi_header h3.person_boxF,#indi_header h3.person_boxNN{border:1px solid #A9A9A9;margin-bottom:1px}
