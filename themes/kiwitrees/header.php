@@ -135,24 +135,37 @@ if ($view!='simple') {
 								echo $menu->getMenuAsList();
 							}
 							if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-								echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+		echo 					'<li>
+									<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+										WT_I18N::translate('Pending changes'), '
+									</a>
+								</li>';
 							}
 						} else {
 							$class_name = 'login_block_WT_Module';
 							$module = new $class_name;
-//							echo '<li><a href="#">';
-//							if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
-//								WT_I18N::translate('Login or Register');
-//							} else {
-//								WT_I18N::translate('Login');
-//							}
-//							echo '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
-
-							echo '<li><a href="#">'. (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')) , '</a><ul id="login_popup"><li>', $module->getBlock('login_block'), '</li></ul></li>';
-
+		echo				'<li>
+								<a href="#">'.
+									(WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')) , '
+								</a>
+								<ul id="login_popup">
+									<li>',
+										$module->getBlock('login_block'), '
+									</li>
+								</ul>
+							</li>';
 						}
 		echo 		'</ul>
-					<div id="bigtext" class="title" dir="auto">', WT_TREE_TITLE, '</div>
+					<div id="bigtext" class="title" dir="auto">',
+						WT_TREE_TITLE, '
+					</div>
+					<div class="header_search">
+						<form action="search.php" method="post">
+							<input type="hidden" name="action" value="general">
+							<input type="hidden" name="topsearch" value="yes">
+							<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">
+						</form>
+					</div>
 				</div>', // <div id="header">
 				'<div id="topMenu" class="ui-state-active">
 					<ul id="main-menu">';
@@ -165,14 +178,7 @@ if ($view!='simple') {
 							}
 						}
 		echo
-					'</ul>',  // <ul id="main-menu">
-					'<div class="header_search">
-						<form action="search.php" method="post">
-							<input type="hidden" name="action" value="general">
-							<input type="hidden" name="topsearch" value="yes">
-							<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">
-						</form>
-					</div>
+					'</ul>
 				</div>', // <div id="topMenu">
 				WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 			'</div>'; // <div id="navbar">

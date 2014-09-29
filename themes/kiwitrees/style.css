@@ -319,8 +319,9 @@ textarea:requi#ff0000:invalid {
 }
 
 .header_search {
+	clear: both;
 	float: right;
-	margin: 12px 10px 10px 10px;
+	margin: 0 10px;
 }
 
 .header_search input[type="search"] {
