@@ -2370,24 +2370,33 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 
 // Generate a new XREF, unique across all family trees
 function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
-	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX;
+	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $NOTE_ID_PREFIX;;
 
 	switch ($type) {
-	case "INDI":
+	case 'INDI':
 		$prefix = $GEDCOM_ID_PREFIX;
 		break;
-	case "FAM":
+
+	case 'FAM':
 		$prefix = $FAM_ID_PREFIX;
 		break;
-	case "OBJE":
+
+	case 'OBJE'::
 		$prefix = $MEDIA_ID_PREFIX;
 		break;
-	case "SOUR":
+
+	case 'SOUR':
 		$prefix = $SOURCE_ID_PREFIX;
 		break;
-	case "REPO":
+
+	case 'REPO':
 		$prefix = $REPO_ID_PREFIX;
 		break;
+
+	case 'NOTE':
+		$prefix = $NOTE_ID_PREFIX;
+		break;
+
 	default:
 		$prefix = $type{0};
 		break;
