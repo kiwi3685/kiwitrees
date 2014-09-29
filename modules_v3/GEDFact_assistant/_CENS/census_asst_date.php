@@ -68,6 +68,17 @@
 		<option id="USA1810" class="USA" value="1810, 7, 06, USA">US 1810</option>
 		<option id="USA1800" class="USA" value="1800, 7, 04, USA">US 1800</option>
 		<option id="USA1790" class="USA" value="1790, 7, 02, USA">US 1790</option>
+		<option value=""></option> <!-- NOTE - Canadian dates included,here but templates for Canada not written -->
+		<option id="CA1851" class="CA" value="1851, 0, 12, CA">CA 1851</option>
+		<option id="CA1861" class="CA" value="1861, 0, 14, CA">CA 1861</option>
+		<option id="CA1871" class="CA" value="1871, 3, 02, CA">CA 1871</option>
+		<option id="CA1881" class="CA" value="1881, 3, 04, CA">CA 1881</option>
+		<option id="CA1891" class="CA" value="1891, 3, 06, CA">CA 1891</option>
+		<option id="CA1901" class="CA" value="1901, 2, 31, CA">CA 1901</option>
+		<option id="CA1906" class="CA" value="1906, 5, 24, CA">CA 1906</option>
+		<option id="CA1911" class="CA" value="1911, 5, 01, CA">CA 1911</option>
+		<option id="CA1916" class="CA" value="1916, 5, 01, CA">CA 1916</option>
+		<option id="CA1921" class="CA" value="1921, 5, 01, CA">CA 1921</option>
 		<option value=""></option>
 		<option id="FR1951" class="FR" value="1951, 0, 01, FR">FR 1951</option>
 		<option id="FR1946" class="FR" value="1946, 0, 01, FR">FR 1946</option>
@@ -85,8 +96,7 @@
 		<option id="FR1886" class="FR" value="1886, 0, 01, FR">FR 1886</option>
 		<option id="FR1881" class="FR" value="1881, 0, 01, FR">FR 1881</option>
 		<option id="FR1876" class="FR" value="1876, 0, 01, FR">FR 1876</option>
-		<option value=""></option>
-	</select>
+		<option value=""></option>	</select>
 
 	<input type="hidden" id="setctry" name="setctry" value="">
 	<input type="hidden" id="setyear" name="setyear" value="">
