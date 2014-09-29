@@ -123,7 +123,6 @@ function varSHandler($attrs) {
 
 	$var = $attrs["var"];
 	if (!empty($var)) {
-		$match = array();
 		$tfact = $fact;
 		if ($fact=="EVEN") {
 			$tfact = $type;

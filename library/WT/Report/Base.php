@@ -3265,7 +3265,9 @@ function ListSHandler($attrs) {
 			uasort($list, array("WT_GedcomRecord", "Compare"));
 			break;
 		case "CHAN":
-			uasort($list, array("WT_GedcomRecord", "CompareChanDate"));
+		uasort($list, function (WT_GedcomRecord $x, WT_GedcomRecord $y) {
+			return $y->lastChangeTimestamp(true) - $x->lastChangeTimestamp(true);
+		});
 			break;
 		case "BIRT:DATE":
 			uasort($list, array("WT_Person", "CompareBirtDate"));
