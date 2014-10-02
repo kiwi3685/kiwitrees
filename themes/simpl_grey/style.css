@@ -656,7 +656,7 @@ a.link:hover,a:hover .name1,a:hover .name2{color:#4682B4}
 #register-form,#verify-form{background-color:#d3d3d3; border-radius:5px;float:right;margin:30px 10px 0 0; padding: 10px 10px 0}
 #login-form div,#login-form div a,#new_passwd_form div,#register-form div,#verify-form div {margin:5px auto;text-align:center}
 #login-form label,#new_passwd_form label,#verify-form  label {text-align:right}
-#login-form label input,#new_passwd_form label input,#verify-form  input{width:140px;margin:0 10px}
+#login-form label input,#new_passwd_form label input,#verify-form  input{width:140px;margin:0 10px; padding:2px 5px;}
 #new_passwd_form{clear:right;float:right;margin-top:1px}
 #new_passwd_form h4,#register-form h4{font-weight:400;margin:5px;text-align:center}
 #verify-form{min-width:400px}
