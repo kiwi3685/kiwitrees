@@ -125,7 +125,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 #admin_menu {padding:10px 5px;top:102px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2e6e9e; white-space:nowrap; overflow:hidden;}
 #admin_menu .ui-accordion .ui-accordion-content-active {padding:.5em;}
 #admin_menu div p {margin:8px 5px; font-size:12px; white-space:normal;}
-#admin_menu div p span {font-style:italic; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block; margin:0 0 0 5px;}
+#admin_menu div p span {font-style:italic; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
 [dir=rtl] #admin_menu {top:92px; left:auto; right:10px; padding:10px 5px 10px 0; float:right;}
 
 /* CONTENT */
