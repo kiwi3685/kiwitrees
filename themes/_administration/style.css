@@ -351,17 +351,17 @@ table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding
 
 /* ALBUM MODULE */
 #album_config form {margin: 20px 0;}
-#album_config table, #album_config th, #album_config td {border:1px solid;}
+#album_config table, #album_config th, #album_config td {border:1px solid #fff; margin-top:5px;}
 #album_config td {background-color:#d3d3d3; text-align:center;}
 #album_config th {background-color:#c9c9c9; min-width:130px; text-align:center;}
 #album_config td:first-child {background-color:#c9c9c9; min-width:100px; padding:0 5px; text-align:left; vertical-align:bottom; white-space:nowrap;}
 #album_config th input {vertical-align:middle; text-align:center;}
 #album_config th {text-align:center;}
-#album_config label {font-weight:900; font-size:110%; margin:5px 0; vertical-align:top;}
+#album_config label {font-weight:900; font-size:110%; margin:5px 0;}
 #album_groups {float:left; width:400px; padding:5px 0;}
 #album_groups select {margin:0 10px;}
 #album_buttons {float:left;}
-#album_options {clear:both; margin-top:15px;}
+#album_options {clear:both; display:inline-block; margin-top:15px;}
 #album_options td, #album_options th input {text-align:center;}
 #album_options td:first-child {text-align: left; /* as backup */ text-align:start;}
 #album_find th {background-color: #c9c9c9; font-weight:900; padding: 0 5px; text-align:center;}

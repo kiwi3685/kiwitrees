@@ -272,7 +272,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		}
 
 		$html = '<div id="album_config">';
-			$html = '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
 			<h2>' .$controller->getPageTitle(). '</h2>
 			<h3>' . WT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>';
 			
