@@ -31,7 +31,7 @@ global $controller, $ctype;
 //$widgets=get_user_widgets(WT_USER_ID);
 
 $widgets = WT_Module::getActiveWidgets(WT_GED_ID, WT_PRIV_HIDE);
-//print_r($widgets);
+
 echo '
 	<div id="widget-bar">';
 		foreach ($widgets as $module_name=>$module) {
@@ -43,17 +43,12 @@ echo '
 				$module->getWidget($module_name);
 			} else {
 				// Load the widget asynchronously
-				echo '<div id="widget_', $module_name, '"><div class="loading-image">&nbsp;</div></div>';
+				echo '<div id="', $module_name, '"><div class="loading-image">&nbsp;</div></div>';
 				$controller->addInlineJavascript(
-					'jQuery("#widget_'.$module_name.'").load("index.php?ctype='.$ctype.'&action=ajax&module_name='.$module_name.'");'
+					'jQuery("#'.$module_name.'").load("index.php?ctype='.$ctype.'&action=ajax&module_name='.$module_name.'");'
 				);
 			}
 			echo '</div>';
 		}
-
-		// link for changing widgets
-		echo '<div id="link_change_widgets">';
-			if (WT_USER_ID) echo '<a href="index_edit.php?user_id='.WT_USER_ID.'" onclick="return modalDialog(\'index_edit.php?user_id='.WT_USER_ID.'\', \'', WT_I18N::translate('Change the widgets on this page'), '\');">', WT_I18N::translate('Change the widgets on this page'), '</a>';
-		echo '</div>';
 echo '</div>';
 	
