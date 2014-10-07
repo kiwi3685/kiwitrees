@@ -2381,7 +2381,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 		$prefix = $FAM_ID_PREFIX;
 		break;
 
-	case 'OBJE'::
+	case 'OBJE':
 		$prefix = $MEDIA_ID_PREFIX;
 		break;
 
