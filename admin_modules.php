@@ -154,10 +154,23 @@ $controller
 							// Module can't be found on disk?
 							// Don't delete it automatically.  It may be temporarily missing, after a re-installation, etc.
 							echo
-								'<tr class="error"><td>&nbsp;</td><td>', $module_name, '</td><td>',
-								'<a href="'.WT_SCRIPT_NAME.'?action=delete_module&amp;module_name='.$module_name.'">',
-								WT_I18N::translate('This module cannot be found.  Delete its configuration settings.'),
-								'</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+								'<tr>
+									<td>&nbsp;</td>
+									<td class="error">', $module_name, '</td>
+									<td>
+										<a class="error" href="'.WT_SCRIPT_NAME.'?action=delete_module&amp;module_name='.$module_name.'">',
+											WT_I18N::translate('This module cannot be found.  Delete its configuration settings.'),
+										'</a>
+									</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>';
 						}
 					}
 					?>
