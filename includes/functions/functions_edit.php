@@ -1527,6 +1527,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			case 'SOUR':
 				echo ' data-autocomplete-type="SOUR"';
 				break;
+			case 'PAGE':
+				echo ' data-autocomplete-type="SOUR_PAGE"';
+				break;
 			case 'SURN':
 			case '_MARNM_SURN':
 				echo ' data-autocomplete-type="SURN"';
