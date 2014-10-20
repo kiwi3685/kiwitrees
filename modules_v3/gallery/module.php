@@ -710,13 +710,14 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	// Print the gallery display
 	private function mediaDisplay($sub_folder, $item_id) {
 		global $MEDIA_DIRECTORY;
-		$plugin=get_block_setting($item_id, 'plugin');
-		$images=''; 
+		$plugin = get_block_setting($item_id, 'plugin');
+		$images = '';
+		$media_links = ''; 
 		// Get the related media items
 		$sub_folder=str_replace($MEDIA_DIRECTORY, "",$sub_folder);
 		$sql = "SELECT * FROM ##media WHERE m_filename LIKE '%" . $sub_folder . "%' ORDER BY m_filename";
-		$rows=WT_DB::prepare($sql)->execute()->fetchAll(PDO::FETCH_ASSOC);
-		if ($plugin=='kiwitrees') {
+		$rows = WT_DB::prepare($sql)->execute()->fetchAll(PDO::FETCH_ASSOC);
+		if ($plugin == 'kiwitrees') {
 			foreach ($rows as $rowm) {
 				// Get info on how to handle this media file
 				$media=WT_Media::getInstance($rowm['m_id']);
@@ -737,7 +738,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					$gallery_links='';
 					if (WT_USER_CAN_EDIT) {
 						$gallery_links.='<div class="edit_links">';
-							$gallery_links.='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.WT_THEME_URL.'images/edit.png" title="'.WT_I18N::translate('Edit').'"></a></div>';
+							$gallery_links .='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.WT_THEME_URL.'images/edit.png" title="'.WT_I18N::translate('Edit').'"></a></div>';
 							if (WT_USER_GEDCOM_ADMIN) {
 								if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 									$gallery_links.='<div class="image_option"><a onclick="return ilinkitem(\''.$rowm['m_id'].'\', \'manage\')" href="#"><img src="'.WT_THEME_URL.'images/link.png" title="'.WT_I18N::translate('Manage links').'"></a></div>';
@@ -746,43 +747,43 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						$gallery_links.='</div><hr>';// close .edit_links
 					}						
 					if ($links) {
-						$gallery_links .='<h4>'.WT_I18N::translate('Linked to:').'</h4>';
-						$gallery_links .='<div id="image_links">';
+						$gallery_links .= '<h4>'.WT_I18N::translate('Linked to:').'</h4>';
+						$gallery_links .= '<div id="image_links">';
 							foreach ($links as $record) {
 									$gallery_links .= '<a href="' . $record->getHtmlUrl() . '">' . $record->getFullname().'</a><br>';
 							}
-						$gallery_links.='</div>';
+						$gallery_links .= '</div>';
 					}
 					$media_links = htmlspecialchars($gallery_links);
 					if ($mime_type == 'application/pdf'){ 
-						$images.='<a href="'.$rawUrl.'"><img class="iframe" src="'.$thumbUrl.'" data-title="'.$mediaTitle.'" data-layer="'.$media_links.'" data-description="'.$media_notes.'"></a>';
+						$images .= '<a href="' . $rawUrl . '"><img class="iframe" src="' . $thumbUrl . '" data-title="' . $mediaTitle.'" data-layer="' . $media_links.'" data-description="' . $media_notes . '"></a>';
 					} else {
-						$images.='<a href="'.$rawUrl.'"><img src="'.$thumbUrl.'" data-title="'.$mediaTitle.'" data-layer="'.$media_links.'" data-description="'.$media_notes.'"></a>';
+						$images .= '<a href="' . $rawUrl . '"><img src="'.$thumbUrl.'" data-title="' .$mediaTitle . '" data-layer="' . $media_links . '" data-description="' . $media_notes . '"></a>';
 					}
 				}
 			}
 			if (WT_USER_CAN_ACCESS || $media_links != '') {
-				$html=
+				$html =
 					'<div id="links_bar"></div>'.
 					'<div id="galleria" style="width:80%;">';
 			} else {
-				$html=
+				$html =
 					'<div id="galleria" style="width:100%;">';
 			}
 		} else {
 			$html = '<div id="galleria" style="width:100%;">';
-			$images.='&nbsp;';
+			$images .= '&nbsp;';
 		}
 		if ($images) {
-			$html.=$images.
+			$html .= $images.
 				'</div>'.// close #galleria
 				'<a id="copy" href="http://galleria.io/" target="_blank">Display by Galleria</a>'.// gallery.io attribution
 				'</div>'.// close #page
 				'<div style="clear: both;"></div>';
 		} else {
-			$html.=WT_I18N::translate('Gallery is empty. Please choose other gallery.').
-				'</div>'.// close #galleria
-				'</div>'.// close #page
+			$html .= WT_I18N::translate('Gallery is empty. Please choose other gallery.').
+				'</div>'. // close #galleria
+				'</div>'. // close #page
 				'<div style="clear: both;"></div>';
 		}
 		return $html;
