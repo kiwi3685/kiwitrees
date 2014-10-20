@@ -204,7 +204,7 @@ textarea:requi#ff0000:invalid {
 #extra-menu {
 	float: right;
 	font-size: 13px;
-	font-weight:900;
+	font-weight: 600;
 	text-transform: uppercase;
 	white-space: nowrap;
 }
