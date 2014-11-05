@@ -96,8 +96,8 @@ case 'loadrows':
 	if ($sSearch) {
 		$WHERE.=
 			" AND (".
-			" user_name LIKE CONCAT(%, ?, %) OR " .
-			" real_name LIKE CONCAT(%, ?, %) OR " .
+			" user_name LIKE CONCAT('%', ?, '%') OR " .
+			" real_name LIKE CONCAT('%', ?, '%') OR " .
 			" email     LIKE CONCAT('%', ?, '%'))";
 		$ARGS=array($sSearch, $sSearch, $sSearch);
 	} else {
