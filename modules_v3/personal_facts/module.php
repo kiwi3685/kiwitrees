@@ -93,9 +93,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				print_fact($fact, $controller->record);
 			} else {
 				// Individual/reference facts (e.g. CHAN, IDNO, RFN, AFN, REFN, RIN, _UID) can be shown in the sidebar
-				if (!in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveSidebars())) {
+				if (!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact)) {
 					print_fact($fact, $controller->record);
 				}
+
 			}
 		}
 		//-- new fact link

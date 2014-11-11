@@ -47,29 +47,33 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
 		global $SHOW_COUNTER, $controller;
+
+		$indifacts = array();
+		// The individual’s own facts
+		foreach ($controller->record->getIndiFacts() as $fact) {
+			if (self::showFact($fact)) {
+				$indifacts[] = $fact;
+			}
+		}
 		
 		ob_start();
 		echo '<div>',
 			WT_I18N::translate('Internal reference '),
 			'<span>' .$controller->record->getXref(), '</span>
 		</div>';
-		$indifacts = $controller->getIndiFacts();
-		if (count($indifacts)==0) {
-			echo WT_I18N::translate('There are no Facts for this individual.');
+		if (!$indifacts) {
+			echo WT_I18N::translate('There are no facts for this individual.');
 		} else {
 			foreach ($indifacts as $fact) {
-				if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-					print_fact($fact, $controller->record);
-				}
+				print_fact($fact, $controller->record);
 			}
 		}
-		echo '<div id="hitcounter">';
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
-			//print indi counter only if displaying a non-private person
 			require WT_ROOT.'includes/hitcount.php';
-			echo WT_I18N::translate('Hit Count:'). ' '. $hitCount;
+			echo '<div id="hitcounter">';
+				echo WT_I18N::translate('Hit Count:'). ' '. $hitCount;
+			echo '</div>';// close #hitcounter
 		}
-		echo '</div>';// close #hitcounter
 		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}
 	
@@ -77,4 +81,22 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getSidebarAjaxContent() {
 		return '';
 	}
+
+	// Does this module display a particular fact
+	public static function showFact(WT_EVENT $fact) {
+		switch ($fact->getTag()) {
+		case 'AFN':
+		case 'CHAN':
+		case 'IDNO':
+		case 'REFN':
+		case 'RFN':
+		case 'RIN':
+		case 'SSN':
+		case '_UID':
+			return true;
+		default:
+			return false;
+		}
+	}
+
 }
