@@ -170,15 +170,15 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 						}
 					}
 					if($sublinks) {
-						$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="mainlink" href="'.htmlspecialchars($link).'">'.$plugin->getName().'</a>';
+						$html.='<li><a class="mainlink" href="'.htmlspecialchars($link).'"><span class="ui-icon ui-icon-triangle-1-e left"></span>'.$plugin->getName().'</a>';
 						$html .= '<ul class="sublinks">';
 						foreach ($sublinks as $sublink) {
-							$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank">'.$sublink['title'].'</a></li>';
+							$html.='<li><a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank"><span class="ui-icon ui-icon-triangle-1-e left"></span>'.$sublink['title'].'</a></li>';
 						}
 						$html .= '</ul></li>';
 					}
 					else { // default
-						$html.='<li><span class="ui-icon ui-icon-triangle-1-e left"></span><a class="research_link" href="'.htmlspecialchars($link).'" target="_blank">'.$plugin->getName().'</a></li>';
+						$html.='<li><a class="research_link" href="'.htmlspecialchars($link).'" target="_blank"><span class="ui-icon ui-icon-triangle-1-e left"></span>'.$plugin->getName().'</a></li>';
 					}
 				}
 			}
