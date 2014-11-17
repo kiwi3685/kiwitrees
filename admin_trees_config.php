@@ -24,13 +24,13 @@
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Family tree configuration'));
 
-require WT_ROOT.'includes/functions/functions_edit.php';
 
 $PRIVACY_CONSTANTS = array(
 	'none'         => WT_I18N::translate('Show to visitors'),
@@ -67,7 +67,7 @@ case 'add':
 		}
 		WT_DB::prepare(
 			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
-		)->execute(array(WT_GED_ID, WT_Filter::post_xref('xref'), WT_Filter::post('tag_type'), WT_Filter::post('resn')));
+		)->execute(array(WT_GED_ID, WT_Filter::post('xref'), WT_Filter::post('tag_type'), WT_Filter::post('resn')));
 	}
 	// Reload the page, so that the new privacy restrictions are reflected in the header
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
