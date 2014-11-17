@@ -277,7 +277,7 @@
 .fa-list-alt:before {
   content: "\f022";
 }
-.fa-lock:before {
+.fa-lock:before, .icon-resn-locked:before {
   content: "\f023";
 }
 .fa-flag:before {
@@ -987,7 +987,7 @@
 .fa-mobile:before {
   content: "\f10b";
 }
-.fa-circle-o:before {
+.fa-circle-o:before, .icon-resn-none:before {
   content: "\f10c";
 }
 .fa-quote-left:before {
@@ -1129,7 +1129,7 @@
 .fa-anchor:before {
   content: "\f13d";
 }
-.fa-unlock-alt:before {
+.fa-unlock-alt:before, .icon-resn-privacy:before {
   content: "\f13e";
 }
 .fa-bullseye:before {
