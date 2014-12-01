@@ -42,7 +42,7 @@ $this
 		jQuery("textarea").autosize();
 		jQuery("#adminAccordion").accordion({
 			active:0,
-			event: "click hoverintent",
+			event: "click",
 			heightStyle: "content",
 			collapsible: true,
 			icons: false,
