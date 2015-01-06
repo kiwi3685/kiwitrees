@@ -26,11 +26,13 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo '</div>'; // id="admin_content"
-echo '<div id="admin_footer">';
-	echo '<p class="logo">';
-	echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'</a>';
-	echo '</p>';
-	if (WT_DEBUG) {
-		echo execution_stats();
-	}
-echo '</div>'; // id="admin_footer"
+if ($view!='simple') {
+	echo '<div id="admin_footer">';
+		echo '<p class="logo">';
+		echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'</a>';
+		echo '</p>';
+		if (WT_DEBUG) {
+			echo execution_stats();
+		}
+	echo '</div>'; // id="admin_footer"
+}

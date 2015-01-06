@@ -99,9 +99,9 @@ msgstr "Um erro ocorreu durante o envio do seu arquivo."
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:190
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588
 #: modules_v3/GEDFact_assistant/module.php:135 modules_v3/album/module.php:324
-#: modules_v3/googlemap/module.php:612 modules_v3/googlemap/places_edit.php:83
-#: modules_v3/googlemap/places_edit.php:101
-#: modules_v3/googlemap/places_edit.php:336
+#: modules_v3/googlemap/module.php:612 modules_v3/googlemap/admin_places_edit.php:83
+#: modules_v3/googlemap/admin_places_edit.php:101
+#: modules_v3/googlemap/admin_places_edit.php:336
 msgid "close"
 msgstr "fechar"
 
@@ -232,7 +232,7 @@ msgstr "Não atualizar o registro \"última alteração\""
 #: modules_v3/gallery/module.php:473 modules_v3/googlemap/module.php:408
 #: modules_v3/googlemap/module.php:611
 #: modules_v3/googlemap/placehierarchy.php:251
-#: modules_v3/googlemap/places_edit.php:335
+#: modules_v3/googlemap/admin_places_edit.php:335
 #: modules_v3/simpl_pages/module.php:438 modules_v3/sitemap/module.php:257
 #: modules_v3/stories/module.php:389 modules_v3/stories/module.php:502
 msgid "save"
@@ -9832,9 +9832,9 @@ msgstr "Árvores genealógica de %s"
 #: modules_v3/googlemap/placehierarchy.php:403
 #: modules_v3/googlemap/placehierarchy.php:416
 #: modules_v3/googlemap/placehierarchy.php:418
-#: modules_v3/googlemap/places_edit.php:172
-#: modules_v3/googlemap/places_edit.php:218
-#: modules_v3/googlemap/places_edit.php:221 placelist.php:123
+#: modules_v3/googlemap/admin_places_edit.php:172
+#: modules_v3/googlemap/admin_places_edit.php:218
+#: modules_v3/googlemap/admin_places_edit.php:221 placelist.php:123
 msgid "unknown"
 msgstr "desconhecido"
 
@@ -12772,7 +12772,7 @@ msgstr "Cidadania"
 
 #: library/WT/Gedcom/Tag.php:165 modules_v3/googlemap/admin_places.php:176
 #: modules_v3/googlemap/module.php:306
-#: modules_v3/googlemap/places_edit.php:284
+#: modules_v3/googlemap/admin_places_edit.php:284
 msgid "City"
 msgstr "Cidade"
 
@@ -12825,7 +12825,7 @@ msgstr "Local da Cremação"
 #: modules_v3/googlemap/admin_places.php:173
 #: modules_v3/googlemap/module.php:288 modules_v3/googlemap/module.php:359
 #: modules_v3/googlemap/module.php:1453 modules_v3/googlemap/module.php:1571
-#: modules_v3/googlemap/places_edit.php:280
+#: modules_v3/googlemap/admin_places_edit.php:280
 msgid "Country"
 msgstr "País"
 
@@ -13344,7 +13344,7 @@ msgstr "Número do Seguro Social"
 
 #: library/WT/Gedcom/Tag.php:321 modules_v3/googlemap/admin_places.php:174
 #: modules_v3/googlemap/module.php:297
-#: modules_v3/googlemap/places_edit.php:282
+#: modules_v3/googlemap/admin_places_edit.php:282
 msgid "State"
 msgstr "Estado"
 
@@ -18263,7 +18263,7 @@ msgstr "Distrito"
 #: modules_v3/googlemap/admin_places.php:183
 #: modules_v3/googlemap/admin_places.php:615
 #: modules_v3/googlemap/admin_places.php:673
-#: modules_v3/googlemap/places_edit.php:314
+#: modules_v3/googlemap/admin_places_edit.php:314
 msgid "Zoom factor"
 msgstr "Fator de zoom"
 
@@ -18287,7 +18287,7 @@ msgstr "Preferências de Google Maps™"
 #: modules_v3/googlemap/module.php:1567
 #: modules_v3/googlemap/placehierarchy.php:170
 #: modules_v3/googlemap/placehierarchy.php:356
-#: modules_v3/googlemap/places_edit.php:38
+#: modules_v3/googlemap/admin_places_edit.php:38
 msgid "Geographic data"
 msgstr "Dados geográficos"
 
@@ -18608,17 +18608,17 @@ msgid "digits"
 msgstr "dígitos"
 
 #: modules_v3/googlemap/module.php:314
-#: modules_v3/googlemap/places_edit.php:286
+#: modules_v3/googlemap/admin_places_edit.php:286
 msgid "Neighborhood"
 msgstr "Vizinhança"
 
 #: modules_v3/googlemap/module.php:322
-#: modules_v3/googlemap/places_edit.php:288
+#: modules_v3/googlemap/admin_places_edit.php:288
 msgid "House"
 msgstr "Casa"
 
 #: modules_v3/googlemap/module.php:330
-#: modules_v3/googlemap/places_edit.php:290
+#: modules_v3/googlemap/admin_places_edit.php:290
 msgid "Max"
 msgstr "Máximo"
 
@@ -18643,22 +18643,22 @@ msgid "Standard"
 msgstr "Normal"
 
 #: modules_v3/googlemap/module.php:392
-#: modules_v3/googlemap/places_edit.php:319
-#: modules_v3/googlemap/places_edit.php:327
+#: modules_v3/googlemap/admin_places_edit.php:319
+#: modules_v3/googlemap/admin_places_edit.php:327
 msgid "Flag"
 msgstr "Bandeira"
 
 #: modules_v3/googlemap/module.php:471 modules_v3/googlemap/module.php:474
 #: modules_v3/googlemap/module.php:477 modules_v3/googlemap/module.php:532
-#: modules_v3/googlemap/places_edit.php:324
-#: modules_v3/googlemap/places_edit.php:328
+#: modules_v3/googlemap/admin_places_edit.php:324
+#: modules_v3/googlemap/admin_places_edit.php:328
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:385
 msgid "Change flag"
 msgstr "Alterar bandeira"
 
 #: modules_v3/googlemap/module.php:471 modules_v3/googlemap/module.php:474
 #: modules_v3/googlemap/module.php:477
-#: modules_v3/googlemap/places_edit.php:329
+#: modules_v3/googlemap/admin_places_edit.php:329
 msgid "Remove flag"
 msgstr "Remover bandeira"
 
@@ -18793,36 +18793,36 @@ msgstr "Zoom"
 msgid "This place has no coordinates"
 msgstr "Este local não tem coordenadas"
 
-#: modules_v3/googlemap/places_edit.php:252
+#: modules_v3/googlemap/admin_places_edit.php:252
 msgid "Search globally"
 msgstr "Pesquisar globalmente"
 
-#: modules_v3/googlemap/places_edit.php:254
+#: modules_v3/googlemap/admin_places_edit.php:254
 msgid "Search locally"
 msgstr "Pesquisar localmente"
 
-#: modules_v3/googlemap/places_edit.php:258
+#: modules_v3/googlemap/admin_places_edit.php:258
 msgid "Precision"
 msgstr "Precisão"
 
-#: modules_v3/googlemap/places_edit.php:296
-#: modules_v3/googlemap/places_edit.php:306
+#: modules_v3/googlemap/admin_places_edit.php:296
+#: modules_v3/googlemap/admin_places_edit.php:306
 msgid "degrees"
 msgstr "graus"
 
-#: modules_v3/googlemap/places_edit.php:298
+#: modules_v3/googlemap/admin_places_edit.php:298
 msgid "north"
 msgstr "norte"
 
-#: modules_v3/googlemap/places_edit.php:299
+#: modules_v3/googlemap/admin_places_edit.php:299
 msgid "south"
 msgstr "sul"
 
-#: modules_v3/googlemap/places_edit.php:308
+#: modules_v3/googlemap/admin_places_edit.php:308
 msgid "east"
 msgstr "leste"
 
-#: modules_v3/googlemap/places_edit.php:309
+#: modules_v3/googlemap/admin_places_edit.php:309
 msgid "west"
 msgstr "oeste"
 

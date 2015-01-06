@@ -105,6 +105,9 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 					<td><?php echo select_edit_control_inline('site_setting-SERVER_URL', array(WT_SERVER_NAME.WT_SCRIPT_PATH=>WT_SERVER_NAME.WT_SCRIPT_PATH), '', WT_Site::preference('SERVER_URL'), $controller); ?></td>
 				</tr>
 			</table>
+			<p>Your database size is currently <?php echo db_size(); ?> MB</p>
+			<p>Your files are currently using  <?php echo directory_size(); ?> MB</p>
+			<p>Total server space used is <?php echo db_Size() + directory_size(); ?> MB</p>
 		</div>
 		<div id="mail">
 			<table>

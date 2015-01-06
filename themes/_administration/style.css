@@ -26,6 +26,7 @@ html {overflow-y:scroll;}
 
 /* general styles */
 body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px; margin:10px; min-width:800px;}
+body#body_simple {min-width:0; margin:0;}
 input {padding:0 5px;}
 input[type="submit"], input[type="reset"], input[type="button"] {padding: 5px 30px; margin: 0 20px;}
 fieldset {margin:8px 8px 4px 8px;}
@@ -131,7 +132,38 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 /* CONTENT */
 #admin_content {margin:0 0 0 220px; padding:10px;}
 [dir=rtl] #admin_content {margin:0 220px 0 0;}
+#body_simple #admin_content {margin:0; min-width: 0; min-height: 0;}
+#save-cancel {
+	background: #ddd;
+	border-top: solid #aaa 3px;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	position: fixed;
+	width: 100%;
+}
 
+#save-cancel input {
+	padding: 5px 10px;
+}
+
+#save-cancel .save {
+	float: left;
+	margin: 10px;
+}
+
+#save-cancel .cancel {
+	float: right;
+	margin: 10px;
+}
+
+[dir='rtl'] #save-cancel .save {
+	float: right;
+}
+
+[dir='rtl'] #save-cancel .cancel {
+	float: left;
+}
 /* FOOTER */
 #admin_footer {text-align:center; width:100%; margin-top:30px;}
 #admin_footer .logo a {color:#555; font-size:20px; text-align:center; text-decoration:none;}
@@ -447,6 +479,7 @@ div.scrollingArea{background-color:#fff;height:608px;overflow-x:auto;overflow-y:
 .col4 {width:120px;}
 .col5, .col6 {text-align:center;width:55px;}
 .col7 {text-align:center; width:90px; white-space:nowrap;}
+.col7 input[type="button"] {padding: 0; margin: 0;}
 
 /* Place check */
 .gm_check {border:1px inset #d3d3d3; padding:5px;}
@@ -459,6 +492,11 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 .gm_check_details {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:10px 0; max-width:none; width:100%;}
 .gm_check_details th {border-right:1px solid #d3d3d3; border-left:1px solid #d3d3d3; border-bottom:2px solid #d3d3d3; border-top:0; font-size:95%; font-weight:bold; padding:2px; text-align:center;}
 .gm_check_details td {border:1px solid #d3d3d3; border-top:0; font-size:95%;}
+
+/* Admin_places_edit */
+#admin_content #map_pane {border: 2px inset;}
+#admin_content table {border-collapse:initial;}
+
 
 /* SITE MAP MODULE*/
 table#site_map {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px;}
@@ -500,6 +538,7 @@ table#story_table {width:100%}
 .icon-open				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell;} /* fa-arrow-circle-down */
 .icon-close				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell;} /* fa-arrow-circle-up */
 .icon-button_find_facts {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
+.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-keyboard-o */
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-book */
 .icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-bank */
 .icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin-bottom: 5px;} /* fa-camera-retro */

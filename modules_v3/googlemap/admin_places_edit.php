@@ -169,7 +169,7 @@ if ($action=="update") {
 
 	$success = false;
 
-	echo '<b>', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
+	echo '<h3>', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</h3>';
 }
 
 if ($action=='add') {
@@ -215,14 +215,18 @@ if ($action=='add') {
 	$show_marker = false;
 	$success = false;
 
-	if (!isset($place_name) || $place_name=="") echo '<b>', WT_I18N::translate('unknown');
-	else echo '<b>', $place_name;
-	if (count($where_am_i)>0)
-		echo ', ', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
-	echo '</b><br>';
+	if (!isset($place_name) || $place_name=="") {
+		echo '<h3>', WT_I18N::translate('unknown');
+	} else {
+		echo '<h3>', $place_name;
+		if (count( $where_am_i ) >0 ) {
+			echo ', ', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
+		}
+	}
+	echo '</h3>';
 }
 
-include_once 'wt_v3_admin_places_edit.js.php';
+include_once 'wt_v3_places_edit.js.php';
 $api='v3';
 
 ?>

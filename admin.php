@@ -27,8 +27,8 @@ $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
-	->addInlineJavascript('jQuery("#tree_stats").accordion({event: "click hoverintent"});')
-	->addInlineJavascript('jQuery("#changes").accordion({event: "click hoverintent"});')
+	->addInlineJavascript('jQuery("#tree_stats").accordion({event: "click"});') // add " hoverintent" to change from just click to hover
+	->addInlineJavascript('jQuery("#changes").accordion({event: "click"});')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
@@ -41,7 +41,7 @@ $stats=new WT_Stats(WT_GEDCOM);
 	$adminusers=0;       // Administrators
 	$userlang  =array(); // Array for user languages
 	$gedadmin  =array(); // Array for managers
-	
+
 // Display a series of "blocks" of general information, vary according to admin or manager.
 
 echo '<div id="content_container" style="visibility:hidden">';
@@ -53,6 +53,7 @@ echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
 		'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>kiwitrees</b> site.'), '</p>',
 		'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net</a>'), '</p>',
 	'</div>';
+
 
 // Accordion block for DELETE OLD FILES - only shown when old files are found
 $old_files_found=false;

@@ -52,7 +52,7 @@ case 'GOOGLEMAP_COORD':
 	$text=WT_I18N::translate('This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers.');
 	break;
 
-// Help texts for places_edit.php
+// Help texts for admin_places_edit.php
 
 case 'PLE_PRECISION':
 	$title=WT_I18N::translate('Enter precision');

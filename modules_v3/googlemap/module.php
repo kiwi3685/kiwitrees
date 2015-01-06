@@ -69,7 +69,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$this->admin_placecheck();
 			break;
 		case 'admin_places':
-		case 'places_edit':
+		case 'admin_places_edit':
 			// TODO: these files should be methods in this class
 			require WT_ROOT . WT_MODULES_DIR . 'googlemap/googlemap.php';
 			require WT_ROOT . WT_MODULES_DIR . 'googlemap/defaultconfig.php';
@@ -1552,12 +1552,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			?>
 			<script>
 			function edit_place_location(placeid) {
-				window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
+				window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
 				return false;
 			}
 
 			function add_place_location(placeid) {
-				window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
+				window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
 				return false;
 			}
 			</script>

@@ -79,9 +79,13 @@ echo
 
 echo
 	$javascript,
-	'</head>
-	<body id="body">',
+	'</head>';
+	if ($view!='simple') {echo '<body id="body">';
+	} else {echo '<body id="body_simple">';}
+	
 // Header
+	if ($view!='simple') {
+echo
 	'<div id="admin_head" class="ui-widget-content">
 		<i class="icon-kiwitrees"></i>
 		<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>
@@ -203,6 +207,8 @@ echo '
 echo '
 			</div>
 		</div>
-	</div>
+	</div>';
+	}
+echo '
 	<div id="admin_content" class="ui-widget-content">' , 
 		WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions;

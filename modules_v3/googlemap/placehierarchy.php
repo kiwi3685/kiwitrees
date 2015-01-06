@@ -192,7 +192,7 @@ function create_map($placelevels) {
 				var svbear = document.getElementById("sv_bearText").value.slice(0, -1);
 				var svelev = document.getElementById("sv_elevText").value.slice(0, -1);
 				var svzoom = document.getElementById("sv_zoomText").value;
-				win03 = window.open("module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid="+placeid+"&svlati="+svlati+"&svlong="+svlong+"&svbear="+svbear+"&svelev="+svelev+"&svzoom="+svzoom, "win03", indx_window_specs);	
+				win03 = window.open("module.php?mod=googlemap&mod_action=admin_places_edit&action=update_sv_params&placeid="+placeid+"&svlati="+svlati+"&svlong="+svlong+"&svbear="+svbear+"&svelev="+svelev+"&svzoom="+svzoom, "win03", indx_window_specs);	
 				if (window.focus) {win03.focus();}
 			}
 		');

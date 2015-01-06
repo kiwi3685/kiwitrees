@@ -441,7 +441,4 @@ if (!defined('WT_WEBTREES')) {
 	}
 </script>
 </head>
-<body onload="loadMap()" >
-<table><tr><td align="center">
-</td></tr></table>
-</body>
+<body onload="loadMap()"></body>

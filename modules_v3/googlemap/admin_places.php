@@ -42,7 +42,7 @@ if (!isset($status)) $status='active';
 // Input: place ID
 // Output: ordered array of id=>name values, starting with the Top Level
 // e.g. array(0=>'Top Level', 16=>'England', 19=>'London', 217=>'Westminster');
-// NB This function exists in both places.php and places_edit.php
+// NB This function exists in both places.php and admin_places_edit.php
 function place_id_to_hierarchy($id) {
 	$statement=
 		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
@@ -55,7 +55,7 @@ function place_id_to_hierarchy($id) {
 	return $arr;
 }
 
-// NB This function exists in both admin_places.php and places_edit.php
+// NB This function exists in both admin_places.php and admin_places_edit.php
 function getHighestIndex() {
 	return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne();
 }
@@ -543,12 +543,12 @@ function updateList(status) {
 }
 
 function edit_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
+	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
 	return false;
 }
 
 function add_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
+	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
 	return false;
 }
 
