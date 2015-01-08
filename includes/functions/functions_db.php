@@ -1643,7 +1643,7 @@ function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
 }
 
 //=================================
-// server sapce functions
+// server space functions
 //=================================
 function db_size () {
 	$sql = 'SHOW TABLE STATUS';  
