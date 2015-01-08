@@ -28,8 +28,6 @@
 global $controller, $ctype;
 
 //-- get the widgets list
-//$widgets=get_user_widgets(WT_USER_ID);
-
 $widgets = WT_Module::getActiveWidgets(WT_GED_ID, WT_PRIV_HIDE);
 
 echo '
@@ -38,8 +36,12 @@ echo '
 			$class_name = $module_name.'_WT_Module';
 			$module = new $class_name;
 			$widget = WT_DB::prepare(
-				"SELECT SQL_CACHE * FROM `##block` WHERE module_name=?"
+				"SELECT SQL_CACHE * FROM `##block` WHERE module_name = ?"
 			)->execute(array($module_name))->fetchOneRow();
+			if (!$widget) {
+				WT_DB::prepare("INSERT INTO `##block` module_name VALUES ?")
+					->execute(array($module_name));
+			}
 
 			echo '<div class="widget">';
 				if ($SEARCH_SPIDER || !$module->loadAjax()) {

@@ -2043,10 +2043,10 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 
 	// Print a final summary message about restricted/filtered facts
 	$summary = "";
-	if ($endjd==WT_CLIENT_JD) {
+	if ($endjd == WT_CLIENT_JD) {
 		// We're dealing with the Today's Events block
-		if ($output==0) {
-			if ($filter==0) {
+		if ($output == 0) {
+			if ($filter == 0) {
 				$summary = WT_I18N::translate('No events exist for today.');
 			} else {
 				$summary = WT_I18N::translate('No events for living people exist for today.');
@@ -2054,9 +2054,9 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		}
 	} else {
 		// We're dealing with the Upcoming Events block
-		if ($output==0) {
-			if ($filter==0) {
-				if ($endjd==$startjd) {
+		if ($output == 0) {
+			if ($filter == 0) {
+				if ($endjd == $startjd) {
 					$summary = WT_I18N::translate('No events exist for tomorrow.');
 				} else {
 					// I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”

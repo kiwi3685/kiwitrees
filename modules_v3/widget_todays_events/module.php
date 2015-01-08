@@ -26,15 +26,15 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
+class widget_todays_events_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Extend class WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Upcoming events');
+		return /* I18N: Name of a module */ WT_I18N::translate('On this day');
 	}
 
 	// Extend class WT_Module
-	public function getDescription() {
-		return /* I18N: Description of the “Upcoming events” module */ WT_I18N::translate('A list of the anniversaries that will occur in the near future.');
+	public /* I18N: Description of the “On This Day” module */ function getDescription() {
+		return WT_I18N::translate('A list of the anniversaries that occur today.');
 	}
 
 	// Implement class WT_Module_Widget
@@ -42,22 +42,20 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-		$days		= get_block_setting($widget_id, 'days',      7);
-		$filter		= get_block_setting($widget_id, 'filter',    true);
-		$onlyBDM	= get_block_setting($widget_id, 'onlyBDM',   false);
-		$infoStyle	= get_block_setting($widget_id, 'infoStyle', 'table');
-		$sortStyle	= get_block_setting($widget_id, 'sortStyle', 'alpha');
-		$widget		= get_block_setting($widget_id, 'widget',     true);
+		$filter		= get_block_setting($widget_id, 'filter',   true);
+		$onlyBDM	= get_block_setting($widget_id, 'onlyBDM',  true);
+		$infoStyle	= get_block_setting($widget_id, 'infoStyle','table');
+		$sortStyle	= get_block_setting($widget_id, 'sortStyle','alpha');
+		$widget		= get_block_setting($widget_id, 'widget',    true);
 		if ($cfg) {
-			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'widget') as $name) {
+			foreach (array('filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'widget') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name = $cfg[$name];
 				}
 			}
 		}
 
-		$startjd	= WT_CLIENT_JD+1;
-		$endjd		= WT_CLIENT_JD+$days;
+		$todayjd	= WT_CLIENT_JD;
 		$id			= $this->getName();
 		$class		= $this->getName();
 
@@ -70,15 +68,15 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		$content = '';
 		switch ($infoStyle) {
-		case "list":
+		case 'list':
 			// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
-			$content.=print_events_list($startjd, $endjd, $onlyBDM?'BIRT MARR DEAT':'', $filter, $sortStyle);
+			$content .= print_events_list($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			break;
-		case "table":
+		case 'table':
 			// Style 2: New format, tables, big text, etc.  Not too good on right side of page
 			ob_start();
-			$content.=print_events_table($startjd, $endjd, $onlyBDM?'BIRT MARR DEAT':'', $filter, $sortStyle);
-			$content.=ob_get_clean();
+			$content .= print_events_table($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+			$content .= ob_get_clean();
 			break;
 		}
 
@@ -96,14 +94,12 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement WT_Module_Widget
 	public function defaultWidgetOrder() {
-		return 10;
+		return 20;
 	}
-
 
 	// Implement class WT_Module_Widget
 	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($widget_id, 'days',      WT_Filter::postInteger('days', 1, 30, 7));
 			set_block_setting($widget_id, 'filter',    WT_Filter::postBool('filter'));
 			set_block_setting($widget_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
 			set_block_setting($widget_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
@@ -114,14 +110,6 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$days = get_block_setting($widget_id, 'days', 7);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Number of days to show');
-		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="days" size="2" value="', $days, '">';
-		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</em>';
-		echo '</td></tr>';
-
 		$filter = get_block_setting($widget_id, 'filter', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only events of living people?');
@@ -129,7 +117,7 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
 
-		$onlyBDM = get_block_setting($widget_id, 'onlyBDM', false);
+		$onlyBDM = get_block_setting($widget_id, 'onlyBDM', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only Births, Deaths, and Marriages?');
 		echo '</td><td class="optionbox">';
@@ -149,8 +137,8 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array(
 			/* I18N: An option in a list-box */ 'alpha'=>WT_I18N::translate('sort by name'),
-			/* I18N: An option in a list-box */ 'anniv'=>WT_I18N::translate('sort by date')
-		), null, $sortStyle, '');
+			/* I18N: An option in a list-box */ 'anniv'=>WT_I18N::translate('sort by date'
+		)), null, $sortStyle, '');
 		echo '</td></tr>';
 
 		$widget = get_block_setting($widget_id, 'widget', true);

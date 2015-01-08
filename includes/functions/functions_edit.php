@@ -215,13 +215,22 @@ function edit_language_checkboxes($field_prefix, $languages) {
 }
 
 // Print an edit control for access level
-function edit_field_access_level($name, $selected='', $extra='') {
-	$ACCESS_LEVEL=array(
-		WT_PRIV_PUBLIC=>WT_I18N::translate('Show to visitors'),
-		WT_PRIV_USER  =>WT_I18N::translate('Show to members'),
-		WT_PRIV_NONE  =>WT_I18N::translate('Show to managers'),
-		WT_PRIV_HIDE  =>WT_I18N::translate('Hide from everyone')
-	);
+function edit_field_access_level($name, $selected='', $extra='', $priv=false) {
+	if ($priv == false) {
+		$ACCESS_LEVEL=array(
+			WT_PRIV_PUBLIC=>WT_I18N::translate('Show to visitors'),
+			WT_PRIV_USER  =>WT_I18N::translate('Show to members'),
+			WT_PRIV_NONE  =>WT_I18N::translate('Show to managers'),
+			WT_PRIV_HIDE  =>WT_I18N::translate('Hide from everyone')
+		);
+	} else {
+		$ACCESS_LEVEL=array(
+			WT_PRIV_USER  =>WT_I18N::translate('Show to members'),
+			WT_PRIV_NONE  =>WT_I18N::translate('Show to managers'),
+			WT_PRIV_HIDE  =>WT_I18N::translate('Hide from everyone')
+		);
+
+	}
 	return select_edit_control($name, $ACCESS_LEVEL, null, $selected, $extra);
 }
 

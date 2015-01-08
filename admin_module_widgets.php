@@ -96,7 +96,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 										$access_level=$module->defaultAccessLevel();
 									}
 									echo '<tr><td>', $tree->tree_title_html, '</td><td>';
-									echo edit_field_access_level($varname, $access_level);
+									echo edit_field_access_level($varname, $access_level, '', true);
 								}
 								?>
 							</table>
