@@ -74,6 +74,6 @@ class widget_quicklinks_WT_Module extends WT_Module implements WT_Module_Widget 
 	}
 
 	// Implement class WT_Module_Widget
-	public function configureWidget($widget_id) {
+	public function configureBlock($widget_id) {
 	}
 }

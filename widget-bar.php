@@ -37,17 +37,21 @@ echo '
 		foreach ($widgets as $module_name=>$module) {
 			$class_name = $module_name.'_WT_Module';
 			$module = new $class_name;
+			$widget = WT_DB::prepare(
+				"SELECT SQL_CACHE * FROM `##block` WHERE module_name=?"
+			)->execute(array($module_name))->fetchOneRow();
+
 			echo '<div class="widget">';
-			if ($SEARCH_SPIDER || !$module->loadAjax()) {
-				// Load the widget directly
-				$module->getWidget($module_name);
-			} else {
-				// Load the widget asynchronously
-				echo '<div id="', $module_name, '"><div class="loading-image">&nbsp;</div></div>';
-				$controller->addInlineJavascript(
-					'jQuery("#'.$module_name.'").load("index.php?ctype='.$ctype.'&action=ajax&module_name='.$module_name.'");'
-				);
-			}
+				if ($SEARCH_SPIDER || !$module->loadAjax()) {
+					// Load the widget directly
+					$module->getWidget($widget->block_id);
+				} else {
+					// Load the widget asynchronously
+					echo '<div id="', $module_name, '"><div class="loading-image">&nbsp;</div></div>';
+					$controller->addInlineJavascript(
+						'jQuery("#'.$module_name.'").load("index.php?ctype='.$ctype.'&action=ajax&module_name='.$module_name.'");'
+					);
+				}
 			echo '</div>';
 		}
 echo '</div>';

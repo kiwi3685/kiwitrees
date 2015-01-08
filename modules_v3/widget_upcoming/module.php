@@ -39,16 +39,15 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement class WT_Module_Widget
 	public function getWidget($widget_id, $template=true, $cfg=null) {
-		global $ctype;
 
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-		$days     =get_module_setting($widget_id, 'days',      7);
-		$filter   =get_module_setting($widget_id, 'filter',    true);
-		$onlyBDM  =get_module_setting($widget_id, 'onlyBDM',   false);
-		$infoStyle=get_module_setting($widget_id, 'infoStyle', 'table');
-		$sortStyle=get_module_setting($widget_id, 'sortStyle', 'alpha');
-		$widget   =get_module_setting($widget_id, 'widget',     true);
+		$days		= get_block_setting($widget_id, 'days',      7);
+		$filter		= get_block_setting($widget_id, 'filter',    true);
+		$onlyBDM	= get_block_setting($widget_id, 'onlyBDM',   false);
+		$infoStyle	= get_block_setting($widget_id, 'infoStyle', 'table');
+		$sortStyle	= get_block_setting($widget_id, 'sortStyle', 'alpha');
+		$widget		= get_block_setting($widget_id, 'widget',     true);
 		if ($cfg) {
 			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'widget') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -63,8 +62,8 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		// Output starts here
 		$id		= $this->getName();
 		$class	= $this->getName();
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?widget_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
+		if (WT_USER_GEDCOM_ADMIN) {
+			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
@@ -85,7 +84,7 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		}
 
 		if ($template) {
-				require WT_THEME_DIR.'templates/widget_template.php';
+			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -93,7 +92,7 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement class WT_Module_Widget
 	public function loadAjax() {
-		return true;
+		return false;
 	}
 
 	// Implement WT_Module_Sidebar
@@ -103,20 +102,20 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 
 	// Implement class WT_Module_Widget
-	public function configureWidget($widget_id) {
+	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_module_setting($widget_id, 'days',      WT_Filter::postInteger('days', 1, 30, 7));
-			set_module_setting($widget_id, 'filter',    WT_Filter::postBool('filter'));
-			set_module_setting($widget_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
-			set_module_setting($widget_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_module_setting($widget_id, 'sortStyle', WT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			set_module_setting($widget_id, 'widget',    WT_Filter::postBool('widget'));
+			set_block_setting($widget_id, 'days',      WT_Filter::postInteger('days', 1, 30, 7));
+			set_block_setting($widget_id, 'filter',    WT_Filter::postBool('filter'));
+			set_block_setting($widget_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
+			set_block_setting($widget_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($widget_id, 'sortStyle', WT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+			set_block_setting($widget_id, 'widget',    WT_Filter::postBool('widget'));
 			exit;
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$days=get_module_setting($widget_id, 'days', 7);
+		$days = get_block_setting($widget_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
@@ -124,28 +123,28 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</em>';
 		echo '</td></tr>';
 
-		$filter=get_module_setting($widget_id, 'filter',     true);
+		$filter = get_block_setting($widget_id, 'filter',     true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only events of living people?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
 
-		$onlyBDM=get_module_setting($widget_id, 'onlyBDM',    false);
+		$onlyBDM = get_block_setting($widget_id, 'onlyBDM',    false);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only Births, Deaths, and Marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
-		$infoStyle=get_module_setting($widget_id, 'infoStyle', 'table');
+		$infoStyle = get_block_setting($widget_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
-		$sortStyle=get_module_setting($widget_id, 'sortStyle',  'alpha');
+		$sortStyle = get_block_setting($widget_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
@@ -155,7 +154,7 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 
-		$widget=get_module_setting($widget_id, 'widget', true);
+		$widget = get_block_setting($widget_id, 'widget', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when widget contents grow');
 		echo '</td><td class="optionbox">';

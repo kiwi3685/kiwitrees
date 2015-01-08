@@ -36,9 +36,8 @@ interface WT_Module_Widget {
 	public function getWidget($widget_id);
 	public function defaultWidgetOrder();
 	public function loadAjax();
-	public function configureWidget($widget_id);
+	public function configureBlock($widget_id);
 }
-
 
 interface WT_Module_Chart {
 	public function getChart();
