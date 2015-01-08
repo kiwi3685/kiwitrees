@@ -455,6 +455,7 @@ textarea:requi#ff0000:invalid {
 #footer {
 	clear: both;
 	font-size: 12px;
+	margin-top: 130px;
 	padding-top: 10px;
 	text-align: center;
 }
