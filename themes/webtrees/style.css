@@ -557,7 +557,7 @@ div.faq_body {clear:both;padding:0 1em;}
 #topMenu {border-top:2px solid #81A9CB;border-bottom:2px solid #81A9CB;float:left;margin:5px auto;padding:5px 0;position:relative;width:100%;}
 #main-menu {clear:both;position:relative;z-index:50;float:right;right:50%;}
 #main-menu,
-#main-menu ul {list-style-type:none;margin:0;padding:0;z-index:210;}
+#main-menu ul {list-style-type:none;margin:0;padding:0;z-index:100;}
 #main-menu ul ul {z-index:60;}
 #main-menu li {float:left;position:relative;left:50%;}
 #main-menu li li {clear:both;}
