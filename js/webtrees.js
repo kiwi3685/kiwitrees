@@ -1612,11 +1612,11 @@ jQuery.event.special.hoverintent = {
 	    } else {
 	      previousX = currentX;
 	      previousY = currentY;
-	      timeout = setTimeout( handler, 100 );
+	      timeout = setTimeout( handler, 500 );
 	    }
 	  }
 
-	  timeout = setTimeout( handler, 100 );
+	  timeout = setTimeout( handler, 500 );
 	  target.bind({
 	    mousemove: track,
 	    mouseout: clear
