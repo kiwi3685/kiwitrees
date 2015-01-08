@@ -63,7 +63,7 @@ class widget_todays_events_WT_Module extends WT_Module implements WT_Module_Widg
 		$class		= $this->getName();
 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?widget_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
+			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
@@ -72,11 +72,11 @@ class widget_todays_events_WT_Module extends WT_Module implements WT_Module_Widg
 		$content = '';
 		switch ($infoStyle) {
 		case 'list':
-			// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
+			// Output style 1: Old format, no visible tables, much smaller text.
 			$content .= print_events_list($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			break;
 		case 'table':
-			// Style 2: New format, tables, big text, etc.  Not too good on right side of page
+			// Style 2: New format, tables, big text, etc.
 			ob_start();
 			$content .= print_events_table($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			$content .= ob_get_clean();
