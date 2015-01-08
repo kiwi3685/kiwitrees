@@ -1641,3 +1641,28 @@ function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
 		->execute(array($xref_to, $xref_from, $ged_id))
 		->rowCount();
 }
+
+//=================================
+// server sapce functions
+//=================================
+function db_size () {
+	$sql = 'SHOW TABLE STATUS';  
+	$size = 0; 
+	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($rows as $row) {
+		$size += $row['data_length'] + $row['index_length']; 
+	}
+	$decimals = 0;  
+	$mbytes = number_format($size/(1024*1024), $decimals);
+	return $mbytes;
+}
+
+function directory_size() {
+    $total_size = 0;
+    foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_ROOT)) as $file){
+        $total_size += $file->getSize();
+    }
+   	$decimals = 0;  
+	$files = number_format($total_size/(1024*1024), $decimals);
+	return $files;
+}
