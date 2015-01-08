@@ -172,14 +172,58 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 /* DASHBOARD BLOCKS */
 fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%; white-space:nowrap;}
 fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
-#users ul {list-style-type:none; padding:0; margin:0 0 0 20px;}
-#users td {padding:0 10px 0 0;}
-#users td div {font-style:italic; padding-left:20px;}
+#users div#logged_in_users {font-size: 110%;}
+#users div#logged_in_users ul {list-style: none;}
 #tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
 #tree_stats td, #recent td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
-#tree_stats .ui-accordion-content, #recent .ui-accordion-content {padding:1em; min-height:180px;}
+#tree_stats .ui-accordion-content, #recent .ui-accordion-content {background: #c9c9c9; padding:1em; min-height:180px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 #trees span, #recent span {text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
+#tree_stats ul.admin_stats, #users ul.admin_stats {
+	background: #c9c9c9;
+	font-size: 110%;
+	line-height: 2;
+	list-style-type:none;
+	margin: 0;
+	overflow-x: hidden;
+	padding: 10px;
+}
+
+#tree_stats ul.admin_stats li, #users ul.admin_stats li {
+	overflow: hidden;
+}
+
+#tree_stats ul.admin_stats li:before, #users ul.admin_stats li:before {
+	float: left;
+	width: 0;
+	white-space: nowrap;
+	content: 
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . " 
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . ";
+	margin:0;
+}
+#tree_stats ul.admin_stats li span, #users ul.admin_stats li span {
+	padding-right: 0.33em;
+	background: #c9c9c9;
+	display: inline;
+}
+
+#tree_stats .inset, #users .inset {
+	padding: 0 0 0 20px;
+}
+
+#tree_stats .inset2, #users .inset2 {
+	padding: 0 0 0 40px;
+}
+
+#tree_stats ul.admin_stats li span:nth-of-type(3), #users ul.admin_stats li span:nth-of-type(3) {
+	float: right;
+	padding-left: 0.33em;
+	background: #c9c9c9;
+}
+
 [dir=rtl] fieldset#users, [dir=rtl] fieldset#trees, [dir=rtl] fieldset#recent {float:right;}
 [dir=rtl] #users ul {margin:0 20px 0 0;}
 [dir=rtl] #users ul li {padding:0 14px 0 0;}

@@ -84,117 +84,207 @@ if (WT_USER_IS_ADMIN && $old_files_found) {
 }
 echo '</div>'; //id = content_container
 
-echo
-	'<fieldset id="users">
-		<legend>', WT_I18N::translate('Users'), '</legend>';
 
-		foreach(get_all_users() as $user_id=>$user_name) {
-			$totusers = $totusers + 1;
-			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
-				$warnusers++;
+foreach(get_all_users() as $user_id=>$user_name) {
+	$totusers = $totusers + 1;
+	if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
+		$warnusers++;
+	}
+	if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
+		$nverusers++;
+	}
+	if (!get_user_setting($user_id, 'verified')) {
+		$applusers++;
+	}
+	if (get_user_setting($user_id, 'canadmin')) {
+		$adminusers++;
+	}
+	foreach (WT_Tree::getAll() as $tree) {
+		if ($tree->userPreference($user_id, 'canedit')=='admin') {
+			if (isset($gedadmin[$tree->tree_id])) {
+				$gedadmin[$tree->tree_id]["number"]++;
+			} else {
+				$gedadmin[$tree->tree_id]["number"] = 1;
+				$gedadmin[$tree->tree_id]["ged"] = $tree->tree_name;
+				$gedadmin[$tree->tree_id]["title"] = $tree->tree_title_html;
 			}
-			if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
-				$nverusers++;
-			}
-			if (!get_user_setting($user_id, 'verified')) {
-				$applusers++;
-			}
-			if (get_user_setting($user_id, 'canadmin')) {
-				$adminusers++;
-			}
-			foreach (WT_Tree::getAll() as $tree) {
-				if ($tree->userPreference($user_id, 'canedit')=='admin') {
-					if (isset($gedadmin[$tree->tree_id])) {
-						$gedadmin[$tree->tree_id]["number"]++;
-					} else {
-						$gedadmin[$tree->tree_id]["number"] = 1;
-						$gedadmin[$tree->tree_id]["ged"] = $tree->tree_name;
-						$gedadmin[$tree->tree_id]["title"] = $tree->tree_title_html;
-					}
-				}
-			}
-			if ($user_lang=get_user_setting($user_id, 'language')) {
-				if (isset($userlang[$user_lang]))
-					$userlang[$user_lang]["number"]++;
-				else {
-					$userlang[$user_lang]["langname"] = Zend_Locale::getTranslation($user_lang, 'language', WT_LOCALE);
-					$userlang[$user_lang]["number"] = 1;
-				}
-			}
-		}	
-
-	echo
-		'<table>',
-		'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
-		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=1">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
-		'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
-		foreach ($gedadmin as $ged_id=>$geds) {
-			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', $geds['title'], '</a></div></td><td>', $geds['number'], '</td></tr>';
 		}
-	echo '<tr><td>';
-	if ($applusers == 0) {
-		echo WT_I18N::translate('Unverified by User');
-	} else {
-		echo '<a href="admin_users.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
 	}
-	echo '</td><td>', $applusers, '</td></tr><tr><td>';
-	if ($nverusers == 0) {
-		echo WT_I18N::translate('Unverified by Administrator');
-	} else {
-		echo '<a href="admin_users.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
+	if ($user_lang=get_user_setting($user_id, 'language')) {
+		if (isset($userlang[$user_lang]))
+			$userlang[$user_lang]["number"]++;
+		else {
+			$userlang[$user_lang]["langname"] = Zend_Locale::getTranslation($user_lang, 'language', WT_LOCALE);
+			$userlang[$user_lang]["number"] = 1;
+		}
 	}
-	echo '</td><td>', $nverusers, '</td></tr>';
-	echo '<tr><td colspan="2">', WT_I18N::translate('Users\' languages'), '</td></tr>';
-	foreach ($userlang as $key=>$ulang) {
-		echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
-	}
-	echo
-		'</tr>',
-		'<tr><td colspan="2">', WT_I18N::translate('Users Logged In'), '</td></tr>',
-		'<tr><td colspan="2"><div>', $stats->_usersLoggedIn('list'), '</div></td></tr>',
-		'</table>';
-echo '</fieldset>'; // id = users
+}	
+
+echo '
+<fieldset id="users">
+	<legend>', WT_I18N::translate('Users'), '</legend>
+	<ul class="admin_stats">
+		<li>
+			<span>', WT_I18N::translate('Total number of users'), '</span>
+			<span class="filler">&nbsp;</span>
+			<span>', $totusers, '</span>
+		</li>
+		<li>
+			<span class="inset"><a href="admin_users.php?action=listusers&amp;filter=1">', WT_I18N::translate('Administrators'), '</a></span>
+			<span class="filler">&nbsp;</span>
+			<span>', $adminusers, '</span>
+		</li>
+		<li>
+			<span class="inset">', WT_I18N::translate('Managers'), '</span>
+			<span class="filler">&nbsp;</span>
+			<span>&nbsp;</span>
+		</li>';
+		foreach ($gedadmin as $ged_id=>$geds) {
+			echo '
+			<li>
+				<span class="inset2"><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', $geds['title'], '</a></span>
+				<span class="filler">&nbsp;</span>
+				<span>', $geds['number'], '</span>
+			</li>';
+		}
+		echo '
+		<li>
+			<span>';
+				if ($applusers == 0) {
+					echo WT_I18N::translate('Unverified by User');
+				} else {
+					echo '<a href="admin_users.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
+				}
+			echo '</span>
+			<span class="filler">&nbsp;</span>
+			<span>', $applusers, '</span>
+		</li>
+		<li>
+			<span>';
+				if ($nverusers == 0) {
+					echo WT_I18N::translate('Unverified by Administrator');
+				} else {
+					echo '<a href="admin_users.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
+				}
+			echo '</span>
+			<span class="filler">&nbsp;</span>
+			<span>', $nverusers, '</span>
+		</li>
+		<li>
+			<span>', WT_I18N::translate('Users\' languages'), '</span>
+			<span class="filler">&nbsp;</span>
+			<span>&nbsp;</span>
+		</li>';
+		foreach ($userlang as $key=>$ulang) {
+			echo '
+			<li>
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></span>
+				<span class="filler">&nbsp;</span>
+				<span>', $ulang['number'], '</span>
+			</li>';
+		}
+	echo '</ul>
+	<div id="logged_in_users">',
+		WT_I18N::translate('Users Logged In'), '
+		<div class="inset">',
+			$stats->_usersLoggedIn('list'), '
+		</div>
+	</div>
+</fieldset>'; // id = users
+
+function siteIndividuals() {
+	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals`")
+		->execute()
+		->fetchOne();
+	return	WT_I18N::number($count);
+}
+
+function siteMedia() {
+	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media`")
+		->execute()
+		->fetchOne();
+	return	WT_I18N::number($count);
+}
+
+$n = 0;
 
 echo
-	'<fieldset id="trees">
-		<legend>', WT_I18N::translate('Family tree statistics'), '</legend>',
+'<fieldset id="trees">
+	<legend>', WT_I18N::translate('Family tree statistics'), '</legend>',
 	'<div id="tree_stats">';
-$n=0;
-foreach (WT_Tree::getAll() as $tree) {
-	$stats = new WT_Stats($tree->tree_name);
-	if ($tree->tree_id==WT_GED_ID) {
-		$accordion_element=$n;
-	}
-	++$n;
-	echo
-		'<h3>', $stats->gedcomTitle(), '</h3>',
-		'<div>',
-		'<table>',
-		'<tr><th>&nbsp;</th><th><span>', WT_I18N::translate('Count'), '</span></th></tr>',
-		'<tr><th><a href="indilist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Individuals'), '</a></th><td>', $stats->totalIndividuals(),
-		'</td></tr>',
-		'<tr><th><a href="famlist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Families'), '</a></th><td>', $stats->totalFamilies(),
-		'</td></tr>',
-		'<tr><th><a href="sourcelist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Sources'), '</a></th><td>', $stats->totalSources(),
-		'</td></tr>',
-		'<tr><th><a href="repolist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Repositories'), '</a></th><td>', $stats->totalRepositories(),
-		'</td></tr>',
-		'<tr><th><a href="medialist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Media objects'), '</a></th><td>', $stats->totalMedia(),
-		'</td></tr>',
-		'<tr><th><a href="notelist.php?ged=', $tree->tree_name_url, '">',
-		WT_I18N::translate('Notes'), '</a></th><td>', $stats->totalNotes(),
-		'</td></tr>',
-		'</table>',
-		'</div>';
-}
-echo
-	'</div>', // id=tree_stats
-	'</fieldset>'; // id=trees
+
+		foreach (WT_Tree::getAll() as $tree) {
+			$stats = new WT_Stats($tree->tree_name);
+			if ($tree->tree_id==WT_GED_ID) {
+				$accordion_element=$n;
+			}
+			++$n;
+			echo '
+			<h3>', $stats->gedcomTitle(), '</h3>
+			<ul class="admin_stats">
+				<li>
+					<span><a href="indilist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Individuals'), '</a></span>
+					<span class="filler">&nbsp;</span>
+					<span>', $stats->totalIndividuals(),'</span>
+				</li>
+				<li>
+					<span><a href="famlist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Families'), '</a></span>
+					<span class="filler">&nbsp;</span>
+					<span>', $stats->totalFamilies(), '</span>
+				</li>
+				<li>
+					<span><a href="sourcelist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Sources'), '</a></span>
+					<span class="filler">&nbsp;</span>
+					<span>', $stats->totalSources(), '</span>
+				</li>
+				<li>
+					<span><a href="repolist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Repositories'), '</a></span>
+					<span class="filler">&nbsp;</span>
+					<span>', $stats->totalRepositories(), '</span>
+				</li>
+				<li>
+					<span><a href="medialist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Media objects'), '</a></span>
+					<span class="filler">&nbsp;</span>
+					<span>', $stats->totalMedia(), '</span>
+				</li>
+				<li>
+					<span><a href="notelist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Notes'), '</a></span>
+					<span class="filler">&nbsp;</span>
+					<span>', $stats->totalNotes(), '</span>
+				</li>
+			</ul>';
+		}
+		echo '
+		<h3>', WT_I18N::translate('All trees'), '</h3>
+		<ul class="admin_stats">
+			<li>
+				<span>', WT_I18N::translate('Individuals'), '</span>
+				<span class="filler">&nbsp;</span>
+				<span>', siteIndividuals(),'</span>
+			</li>
+			<li>
+				<span>', WT_I18N::translate('Media objects'), '</span>
+				<span class="filler">&nbsp;</span>
+				<span>', siteMedia(),'</span>
+			</li>
+			<li>
+				<span>Your database size is currently</span>
+				<span class="filler"></span>
+				<span>', WT_I18N::number(db_size()), ' MB</span>
+			</li>
+			<li>
+				<span>Your files are currently using</span>
+				<span class="filler"></span>
+				<span>', WT_I18N::number(directory_size()), ' MB</span>
+			</li>
+			<li>
+				<span>Total server space used is therefore</span>
+				<span class="filler"></span>
+				<span>', WT_I18N::number(db_Size() + directory_size()), ' MB</span>
+			</li>
+		</ul>
+	</div>', // id=tree_stats
+'</fieldset>'; // id=trees
 
 echo
 	'<fieldset id="recent">
