@@ -2,8 +2,11 @@
 // My page page allows a logged in user the abilty
 // to keep bookmarks, see a list of upcoming events, etc.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team

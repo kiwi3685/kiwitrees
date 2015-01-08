@@ -1,8 +1,11 @@
 <?php
 // Exports data from the database to a gedcom file
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
