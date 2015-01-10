@@ -538,9 +538,8 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 .gm_check_details td {border:1px solid #d3d3d3; border-top:0; font-size:95%;}
 
 /* Admin_places_edit */
-#admin_content #map_pane {border: 2px inset;}
-#admin_content table {border-collapse:initial;}
-
+#editplaces #map_pane {border: 2px inset;}
+#editplaces table {border-collapse:initial;}
 
 /* SITE MAP MODULE*/
 table#site_map {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px;}
