@@ -2582,6 +2582,7 @@ function ifSHandler($attrs) {
 				$level++;
 				$value = get_gedcom_value($id, $level, $gedrec);
 			}
+			$value = preg_replace("/^@(".WT_REGEX_XREF.")@$/", "$1", $value);
 			$value = "\"".addslashes($value)."\"";
 		}
 		$condition = str_replace("@$id", $value, $condition);
