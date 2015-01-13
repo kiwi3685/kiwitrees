@@ -1213,19 +1213,20 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 		$rows=WT_DB::prepare($sql)->fetchAll();
 		foreach ($rows as $row) {
 			if ($row->type=='INDI') {
-				$record=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+				$record=WT_Person::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			} else {
 				$record=WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			}
 			$anniv_date = new WT_Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 			foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
-				if ($fact->getDate() == $anniv_date) {
-					$fact->anniv = 0;
+				if (($fact->getDate()->MinDate() == $anniv_date->MinDate() || $fact->getDate()->MaxDate() == $anniv_date->MinDate()) && $fact->getTag() === $row->d_fact) {
+					$fact->anniv = $row->d_year === 0 ? 0 : $anniv->y - $row->d_year;
 					$found_facts[] = $fact;
 				}
 			}
 		}
 	}
+
 	return $found_facts;
 }
 
