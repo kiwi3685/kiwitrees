@@ -103,8 +103,6 @@ class widget_todo_WT_Module extends WT_Module implements WT_Module_Widget {
 		$content .= '<th>'.WT_Gedcom_Tag::getLabel('TEXT').'</th>';
 		$content .= '</tr></thead><tbody>';
 
-$content .= 'WT_CLIENT_JD = '.WT_CLIENT_JD;
-
 		$found = false;
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
 		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
