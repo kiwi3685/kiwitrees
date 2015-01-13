@@ -178,8 +178,8 @@ if ($controller->record->canDisplayDetails()) {
 	$globalfacts=$controller->getGlobalFacts();
 	echo '<div id="header_accordion1">'; // contain accordions for names
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
-	$bdate=$controller->record->getBirthDate();
-	$ddate=$controller->record->getDeathDate();
+	$bdate = $controller->record->getBirthDate();
+	$ddate = $controller->record->getDeathDate();
 	echo '<span class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age

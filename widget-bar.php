@@ -42,8 +42,10 @@ echo '
 				"SELECT SQL_CACHE * FROM `##block` WHERE module_name = ?"
 			)->execute(array($module_name))->fetchOneRow();
 			if (!$widget) {
-				WT_DB::prepare("INSERT INTO `##block` module_name VALUES ?")
+				WT_DB::prepare("INSERT INTO `##block` (module_name) VALUES (?)")
 					->execute(array($module_name));
+				$widget = WT_DB::prepare("SELECT SQL_CACHE * FROM `##block` WHERE module_name = ?")
+					->execute(array($module_name))->fetchOneRow();
 			}
 
 			echo '<div class="widget">';

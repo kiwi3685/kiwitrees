@@ -341,22 +341,20 @@ case 'calendar':
 			$tmp=$event['date']->MinDate();
 			if ($tmp->d>=1 && $tmp->y && $tmp->d<=$tmp->DaysInMonth()) {
 				$d=$jd-$cal_date->minJD+1;
-			else
+			} else {
 				$d=0;
+			}
 			$found_facts[$d][]=$event;
 		}
 	break;
 case 'year':
-	$cal_date->m=0;
-	$cal_date->SetJDfromYMD();
-	$found_facts=apply_filter(get_calendar_events($ged_date->MinJD(), $ged_date->MaxJD(), $events), $filterof, $filtersx);
-	// Eliminate duplictes (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
-	foreach ($found_facts as $key=>$value)
-		$found_facts[$key]=serialize($found_facts[$key]);
-	$found_facts=array_unique($found_facts);
-	foreach ($found_facts as $key=>$value)
-		$found_facts[$key]=unserialize($found_facts[$key]);
+	$cal_date->m = 0;
+	$cal_date->setJdFromYmd();
+	$found_facts = apply_filter(get_calendar_events($ged_date->MinJD(), $ged_date->MaxJD(), $events), $filterof, $filtersx);
+	// Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
+	$found_facts = array_unique($found_facts);
 	break;
+
 }
 
 // Group the facts by family/individual

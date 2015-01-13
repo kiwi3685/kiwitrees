@@ -510,7 +510,7 @@ $controller
 					<td>
 						<?php
 						echo
-							/* I18N: Extend privacy to dead people [who were] ... */ WT_I18N::translate(
+							/* I18N: ... Extend privacy to dead people [who were] ... */ WT_I18N::translate(
 								'born in the last %1$s years or died in the last %2$s years',
 								'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH').'" size="5" maxlength="3">',
 								'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH').'" size="5" maxlength="3">'
@@ -539,6 +539,7 @@ $controller
 					</td>
 					<td>
 						<input type="text" name="MAX_ALIVE_AGE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" maxlength="3">
+						<?php echo WT_I18N::translate('years'); ?>
 					</td>
 				</tr>
 			</table>

@@ -1192,10 +1192,7 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 
 	$found_facts=array();
 
-	// This where clause gives events that start/end/overlap the period
-	// e.g. 1914-1918 would show up on 1916
-	//$where="WHERE d_julianday1 <={$jd2} AND d_julianday2>={$jd1}";
-	// This where clause gives only events that start/end during the period
+	// Events that start or end during the period
 	$where="WHERE (d_julianday1>={$jd1} AND d_julianday1<={$jd2} OR d_julianday2>={$jd1} AND d_julianday2<={$jd2})";
 
 	// Restrict to certain types of fact
@@ -1210,45 +1207,21 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 	$where.=" AND d_file=".$ged_id;
 
 	// Now fetch these events
-	$ind_sql="SELECT d_gid, i_gedcom, 'INDI', d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
-	$fam_sql="SELECT d_gid, f_gedcom, 'FAM',  d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+	$ind_sql="SELECT d_gid AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, 'INDI' AS type, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+	$fam_sql="SELECT d_gid AS xref, f_file AS gedcom_id, f_gedcom AS gedcom, 'FAM'  AS type, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
 	foreach (array($ind_sql, $fam_sql) as $sql) {
-		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_NUM);
+		$rows=WT_DB::prepare($sql)->fetchAll();
 		foreach ($rows as $row) {
-			// Generate a regex to match the retrieved date - so we can find it in the original gedcom record.
-			// TODO having to go back to the original gedcom is inneficient and slow.
-			// We should store the level1 fact here (or somewhere)
-			if ($row[8]=='@#DJULIAN@') {
-				if ($row[6]<0) {
-					$year_regex=$row[6].' ?[Bb]\.? ?[Cc]\.\ ?';
-				} else {
-					$year_regex="({$row[6]}|".($row[6]-1)."\/".($row[6]%100).")";
-				}
+			if ($row->type=='INDI') {
+				$record=WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			} else {
-				$year_regex="0*".$row[6];
+				$record=WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			}
-			$ged_date_regex="/2 DATE.*(".($row[4]>0 ? "0?{$row[4]}\s*" : "").$row[5]."\s*".($row[6]!=0 ? $year_regex : "").")/i";
-			preg_match_all('/\n(1 ('.WT_REGEX_TAG.').*(\n[2-9] .*)*)/', $row[1], $matches);
-			foreach ($matches[1] as $factrec) {
-				if (preg_match('/^1 '.$row[7].'[ \n]/', $factrec) && preg_match($ged_date_regex, $factrec, $match)) {
-					$date=new WT_Date($match[1]);
-					if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
-						$plac=$match[1];
-					} else {
-						$plac='';
-					}
-					if (canDisplayFact($row[0], $ged_id, $factrec)) {
-						$found_facts[]=array(
-							'id'=>$row[0],
-							'objtype'=>$row[2],
-							'fact'=>$row[7],
-							'factrec'=>$factrec,
-							'jd'=>$jd1,
-							'anniv'=>0,
-							'date'=>$date,
-							'plac'=>$plac
-						);
-					}
+			$anniv_date = new WT_Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
+			foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
+				if ($fact->getDate() == $anniv_date) {
+					$fact->anniv = 0;
+					$found_facts[] = $fact;
 				}
 			}
 		}

@@ -102,9 +102,11 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= '<th>'.WT_Gedcom_Tag::getLabel('TEXT').'</th>';
 		$content .= '</tr></thead><tbody>';
 
-		$found=false;
-		$end_jd=$show_future ? 99999999 : WT_CLIENT_JD;
+		$found = false;
+		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
+
 		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
+//$content .= 'WT_GED_ID = '.WT_GED_ID;
 			$record=WT_GedcomRecord::getInstance($todo['id']);
 			if ($record && $record->canDisplayDetails()) {
 				$user_name = preg_match('/\n2 _WT_USER (.+)/', $todo['factrec'], $match) ? $match[1] : '';
@@ -130,6 +132,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= '</tbody></table>';
 		if (!$found) {
 			$content.='<p>'.WT_I18N::translate('There are no research tasks in this family tree.').'</p>';
+
 		}
 
 		if ($template) {
@@ -150,7 +153,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function isUserBlock() {
-		return true;
+		return false;
 	}
 
 	// Implement class WT_Module_Block
