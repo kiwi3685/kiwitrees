@@ -297,6 +297,11 @@ case 'SURN':
 		'</p>';
 	break;
 
+case '_MARNM_SURN':
+	$title = WT_Gedcom_Tag::getLabel('_MARNM_SURN');
+	$text = WT_I18N::translate('Use this field to add a married name. Enter the surname only. Each time a married name is added an extra Married Surname line will be created for subsequent additional married names.');
+	break;
+
 case 'NOTE':
 	$title = WT_Gedcom_Tag::getLabel('NOTE');
 	$text = WT_I18N::translate('Notes are free-form text and will appear in the Fact Details section of the page.');

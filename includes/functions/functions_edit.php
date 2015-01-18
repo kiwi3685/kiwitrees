@@ -1364,6 +1364,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case '_EMAIL':
 		case 'FAX':
 		case 'OBJE':
+		case '_MARNM_SURN':
 		case 'PAGE':
 		case 'PEDI':
 		case 'PHON':
