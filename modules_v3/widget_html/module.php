@@ -150,50 +150,60 @@ class widget_html_WT_Module extends WT_Module implements WT_Module_Widget {
 		$title=get_block_setting($widget_id, 'title');
 		$html=get_block_setting($widget_id, 'html');
 		// title
-		echo '<tr><td class="descriptionbox wrap">',
-			WT_Gedcom_Tag::getLabel('TITL'),
-			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '"></td></tr>';
+		echo '
+			<tr>
+				<td class="descriptionbox wrap">', WT_Gedcom_Tag::getLabel('TITL'), '</td>
+				<td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '"></td>
+			</tr>
+		';
 
 		// gedcom
 		$gedcom=get_block_setting($widget_id, 'gedcom');
 		if (count(WT_Tree::getAll()) > 1) {
 			if ($gedcom == '__current__') {$sel_current = ' selected="selected"';} else {$sel_current = '';}
 			if ($gedcom == '__default__') {$sel_default = ' selected="selected"';} else {$sel_default = '';}
-			echo '<tr><td class="descriptionbox wrap">',
-				WT_I18N::translate('Family tree'),
-				'</td><td class="optionbox">',
-				'<select name="gedcom">',
-				'<option value="__current__"', $sel_current, '>', WT_I18N::translate('Current'), '</option>',
-				'<option value="__default__"', $sel_default, '>', WT_I18N::translate('Default'), '</option>';
-			foreach (WT_Tree::getAll() as $tree) {
-				if ($tree->tree_name == $gedcom) {$sel = ' selected="selected"';} else {$sel = '';}
-				echo '<option value="', $tree->tree_name, '"', $sel, ' dir="auto">', $tree->tree_title_html, '</option>';
-			}
-			echo '</select></td></tr>';
+			echo '
+				<tr>
+					<td class="descriptionbox wrap">', WT_I18N::translate('Family tree'), '</td>
+					<td class="optionbox">
+						<select name="gedcom">
+							<option value="__current__"', $sel_current, '>', WT_I18N::translate('Current'), '</option>
+							<option value="__default__"', $sel_default, '>', WT_I18N::translate('Default'), '</option>';
+							foreach (WT_Tree::getAll() as $tree) {
+								if ($tree->tree_name == $gedcom) {$sel = ' selected="selected"';} else {$sel = '';}
+								echo '<option value="', $tree->tree_name, '"', $sel, ' dir="auto">', $tree->tree_title_html, '</option>';
+							}
+						echo '</select>
+					</td>
+				</tr>
+			';
 		}
 
 		// html
-		echo '<tr><td colspan="2" class="descriptionbox">',
-			WT_I18N::translate('Content'),
-			help_link('block_html_content', $this->getName()),
-			'</td></tr><tr>',
-			'<td colspan="2" class="optionbox">';
-		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', htmlspecialchars($html), '</textarea>';
-		echo '</td></tr>';
-
 		$show_timestamp=get_block_setting($widget_id, 'show_timestamp', false);
-		echo '<tr><td class="descriptionbox wrap">';
-		echo WT_I18N::translate('Show the date and time of update');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_timestamp', $show_timestamp);
-		echo '<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">';
-		echo '</td></tr>';
-
 		$languages=get_block_setting($widget_id, 'languages');
-		echo '<tr><td class="descriptionbox wrap">';
-		echo WT_I18N::translate('Show this block for which languages?');
-		echo '</td><td class="optionbox">';
-		echo edit_language_checkboxes('lang_', $languages);
-		echo '</td></tr>';
+		echo '
+			<tr>
+				<td colspan="2" class="descriptionbox">', WT_I18N::translate('Content'), help_link('block_html_content', $this->getName()), '</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="optionbox">
+					<textarea name="html" class="html-edit" rows="10" style="width:98%;">', htmlspecialchars($html), '</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap">', WT_I18N::translate('Show the date and time of update'), '</td>
+				<td class="optionbox">',
+					edit_field_yes_no('show_timestamp', $show_timestamp), '
+					<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap">', WT_I18N::translate('Show this block for which languages?'), '</td>
+				<td class="optionbox">',
+					edit_language_checkboxes('lang_', $languages), '
+				</td>
+			</tr>
+		';
 	}
 }
