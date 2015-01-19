@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
+class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Widget {
 	const DEFAULT_DAYS = 7;
 	const MAX_DAYS = 90;
 
@@ -45,15 +45,15 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype;
+	public function getWidget($widget_id, $template=true, $cfg=null) {
+
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-		$days = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date_desc');
-		$hide_empty = get_block_setting($block_id, 'hide_empty', false);
-		$block = get_block_setting($block_id, 'block', true);
+		$days		= get_block_setting($widget_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle	= get_block_setting($widget_id, 'infoStyle', 'table');
+		$sortStyle	= get_block_setting($widget_id, 'sortStyle', 'date_desc');
+		$hide_empty	= get_block_setting($widget_id, 'hide_empty', false);
+		$block		= get_block_setting($widget_id, 'block', true);
 		if ($cfg) {
 			foreach (array('days', 'infoStyle', 'show_parents', 'sortStyle', 'hide_empty', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -67,11 +67,12 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		if (!$found_facts && $hide_empty) {
 			return '';
 		}
-		// Print block header
-		$id = $this->getName() . $block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+
+		$id			= $this->getName();
+		$class		= $this->getName();
+
+		if (WT_USER_GEDCOM_ADMIN) {
+			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
@@ -80,7 +81,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '';
 		// Print block content
 		if (count($found_facts) == 0) {
-      $content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
+      		$content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
 		} else {
 			ob_start();
 			switch ($infoStyle) {
@@ -96,45 +97,37 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			if ($block) {
-				require WT_THEME_DIR . 'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR . 'templates/block_main_temp.php';
-			}
+			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
+
 	}
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
-		return true;
-	}
-
-	// Implement class WT_Module_Block
-	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
-	public function isGedcomBlock() {
-		return true;
+	// Implement WT_Module_Widget
+	public function defaultWidgetOrder() {
+		return 70;
 	}
 
 	// Implement class WT_Module_Block
-	public function configureBlock($block_id) {
+	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days',       WT_Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
-			set_block_setting($block_id, 'infoStyle',  WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'sortStyle',  WT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
-			set_block_setting($block_id, 'hide_empty', WT_Filter::postBool('hide_empty'));
-			set_block_setting($block_id, 'block',      WT_Filter::postBool('block'));
+			set_block_setting($widget_id, 'days',       WT_Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
+			set_block_setting($widget_id, 'infoStyle',  WT_Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($widget_id, 'sortStyle',  WT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
+			set_block_setting($widget_id, 'hide_empty', WT_Filter::postBool('hide_empty'));
+			set_block_setting($widget_id, 'block',      WT_Filter::postBool('block'));
 			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$days = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
+		$days = get_block_setting($widget_id, 'days', self::DEFAULT_DAYS);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
@@ -142,14 +135,14 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', self::MAX_DAYS, self::MAX_DAYS), '</em>';
 		echo '</td></tr>';
 
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
+		$infoStyle = get_block_setting($widget_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list' => WT_I18N::translate('list'), 'table' => WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date');
+		$sortStyle = get_block_setting($widget_id, 'sortStyle', 'date');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
@@ -160,14 +153,14 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 
-		$block = get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($widget_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 
-		$hide_empty = get_block_setting($block_id, 'hide_empty', true);
+		$hide_empty = get_block_setting($widget_id, 'hide_empty', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Should this block be hidden when it is empty?');
 		echo '</td><td class="optionbox">';
