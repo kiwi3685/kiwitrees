@@ -465,13 +465,12 @@ textarea:requi#ff0000:invalid {
 	color: #555;
 }
 
-.logo a {
-	text-align: center;
-	font-size: 20px;
+.logo, .logo a {
+	font-weight: 600;
 }
 
 .logo a span {
-	font-size: 10px;
+	font-size: 80%;
 	vertical-align: super;
 }
 
@@ -489,7 +488,7 @@ textarea:requi#ff0000:invalid {
 }
 
 .hit-counter {
-	font-weight: bold;
+	font-weight: 900;
 }
 
 /* ======= Content styles ========== */
