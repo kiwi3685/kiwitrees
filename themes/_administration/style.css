@@ -66,8 +66,8 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 .editable:hover {color:#ff0000; cursor:pointer;} /* both cursors needed for cross-browser support */
 
 /* jQuery.datatable styling over-rides */
-.odd {background-color:#d3e7ff; color:#000;}
-.even {background-color:#eeffee; color:#000;}
+.odd {background-color:#fff; color:#000;}
+.even {background-color:#eee; color:#000;}
 .fg-button {padding:2px 6px;}
 .dataTables_paginate {float:left;}
 .dataTables_processing {float:left; margin-top:5px; padding-left:5px;}
@@ -76,7 +76,9 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
 .dataTables_wrapper {margin-bottom: 10px;}
-.dataTables_wrapper th {white-space:nowrap;}
+.dataTables_wrapper table {border-collapse:initial;}
+.dataTables_wrapper th {height: 30px; white-space:nowrap;}
+.dataTables_wrapper td {padding: 0 3px;}
 .dataTables_wrapper th.icon-open:before, .dataTables_wrapper th.icon-close:before {visibility: hidden;}
 .dataTable {max-width:none;}
 
@@ -415,7 +417,10 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 /* MANAGE MODULES */
 #installed_table {width:100%;}
 #installed_table th {min-width:60px;}
+#installed_table a {white-space: nowrap;}
 .ui-widget-content a.error {color: #ff0000;}
+i.fa-cogs {font-size:1em;}
+
 
 /* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS, WIDGETS */
 table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding:5px; margin-bottom:10px;}
@@ -598,6 +603,7 @@ table#story_table {width:100%}
 .icon-email				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */ 
 .icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */ 
 .icon-yes				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-check */ 
+
 
 #users ul li:before		{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; background: none; margin: 0 5px;} /* fa-circle */ 
 

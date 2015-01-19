@@ -96,7 +96,7 @@ $controller
 			"iCookieDuration": 180,
 			"aoColumns" : [
 				{ bSortable: false, sClass: "center" },
-				null,
+				{ sType: "html"},
 				null,
 				{ sClass: "center" },
 				{ sClass: "center" },
@@ -138,18 +138,29 @@ $controller
 						if (array_key_exists($module_name, $modules)) {
 							$module=$modules[$module_name];
 							echo
-								'<tr><td>', two_state_checkbox('status-'.$module_name, $status=='enabled'), '</td>',
-								'<td>', $module->getTitle(), '</td>',
-								'<td>', $module->getDescription(), '</td>',
-								'<td>', $module instanceof WT_Module_Menu    ? WT_I18N::translate('Menu') : '-', '</td>',
-								'<td>', $module instanceof WT_Module_Tab     ? WT_I18N::translate('Tab') : '-', '</td>',
-								'<td>', $module instanceof WT_Module_Sidebar ? WT_I18N::translate('Sidebar') : '-', '</td>',
-								'<td>', $module instanceof WT_Module_Block   ? (($module->isUserBlock() ? '<div>'.WT_I18N::translate('My page').'</div>' : '').($module->isGedcomBlock() ? '<div>'.WT_I18N::translate('Home page').'</div>' : '')) : '-', '</td>',
-								'<td>', $module instanceof WT_Module_Widget  ? WT_I18N::translate('Widget') : '-', '</td>',
-								'<td>', $module instanceof WT_Module_Chart   ? WT_I18N::translate('Chart') : '-', '</td>',
-								'<td>', $module instanceof WT_Module_Report  ? WT_I18N::translate('Report') : '-', '</td>',
-								'<td>', $module instanceof WT_Module_Theme   ? WT_I18N::translate('Theme') : '-', '</td>',
-								'</tr>';
+								'<tr>
+									<td>', two_state_checkbox('status-'.$module_name, $status=='enabled'), '</td>
+									<td>'; 
+										if ($module instanceof WT_Module_Config) {
+											echo '<a href="', $module->getConfigLink(), '">';
+										}
+										echo $module->getTitle();
+										if ($module instanceof WT_Module_Config) {
+											echo ' <i class="fa fa-cogs"></i></a>';
+										}
+									echo '
+									</td>
+									<td>', $module->getDescription(), '</td>
+									<td>', $module instanceof WT_Module_Menu    ? WT_I18N::translate('Menu') : '-', '</td>
+									<td>', $module instanceof WT_Module_Tab     ? WT_I18N::translate('Tab') : '-', '</td>
+									<td>', $module instanceof WT_Module_Sidebar ? WT_I18N::translate('Sidebar') : '-', '</td>
+									<td>', $module instanceof WT_Module_Block   ? (($module->isUserBlock() ? '<div>'.WT_I18N::translate('My page').'</div>' : '').($module->isGedcomBlock() ? '<div>'.WT_I18N::translate('Home page').'</div>' : '')) : '-', '</td>
+									<td>', $module instanceof WT_Module_Widget  ? WT_I18N::translate('Widget') : '-', '</td>
+									<td>', $module instanceof WT_Module_Chart   ? WT_I18N::translate('Chart') : '-', '</td>
+									<td>', $module instanceof WT_Module_Report  ? WT_I18N::translate('Report') : '-', '</td>
+									<td>', $module instanceof WT_Module_Theme   ? WT_I18N::translate('Theme') : '-', '</td>
+								</tr>
+							';
 						} else {
 							// Module can't be found on disk?
 							// Don't delete it automatically.  It may be temporarily missing, after a re-installation, etc.
