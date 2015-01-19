@@ -222,7 +222,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function isUserBlock() {
-		return true;
+		return false;
 	}
 
 	// Implement class WT_Module_Block

@@ -40,7 +40,7 @@ class widget_html_WT_Module extends WT_Module implements WT_Module_Widget {
 		return /* I18N: Description of the “HTML” module */ WT_I18N::translate('Add your own text and graphics.');
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class WT_Module_Widget
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		global $ctype, $GEDCOM;
 
@@ -117,7 +117,7 @@ class widget_html_WT_Module extends WT_Module implements WT_Module_Widget {
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class WT_Module_Widget
 	public function loadAjax() {
 		return false;
 	}
@@ -127,7 +127,7 @@ class widget_html_WT_Module extends WT_Module implements WT_Module_Widget {
 		return 50;
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class WT_Module_Widget
 	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($widget_id, 'gedcom',         WT_Filter::post('gedcom'));

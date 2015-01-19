@@ -2648,7 +2648,7 @@ table.faq {
 }
 
 table.faq tr.odd td {
-	background-color: #e7eef3;
+	background-color: #fff;
 }
 
 div.faq_title {
@@ -5360,6 +5360,10 @@ div.widget {
 	overflow: hidden;
 }
 
+#widget-button {
+	margin: 0 0 0 3px;
+}
+
 #widget-bar {
 	z-index: 999;
 	position: absolute;
@@ -5396,6 +5400,11 @@ div.widget {
 #widget-bar .widget .small_inner_block {
 	max-height: 100%;
 }
+
+#widget-bar .widget .blockcontent {
+	padding: 0 5px;
+}
+
 .widget_quicklinks .icon-mypage,
 .widget_quicklinks .icon-pedigree,
 .widget_quicklinks .icon-indis {
@@ -5422,8 +5431,58 @@ div.widget {
 	width: 25%;
 }
 
-#widget-button {
-	margin: 0 0 0 3px;
+.widget_stats h3 {
+	margin: 3px 0;
+}
+
+.widget_stats div p {
+	margin: 3px 0 0 0
+}
+
+.widget_stats ul {
+	background: #fff;
+	border-radius: 5px;
+	line-height: 1.8;
+	list-style-type:none;
+	margin: 0;
+	overflow-x: hidden;
+	margin: 10px 0;
+}
+
+.widget_stats ul li {
+	overflow: hidden;
+}
+
+.widget_stats ul li:before {
+	float: left;
+	width: 0;
+	white-space: nowrap;
+	content: 
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . " 
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . ";
+	margin:0;
+}
+
+.widget_stats ul li span {
+	display: inline;
+}
+
+.widget_stats .inset {
+	background-color: #fff;
+}
+
+.widget_stats ul li span.stats_data {
+	background-color: #fff;
+	float: right;
+	padding-left: 0.33em;
+}
+
+.widget_stats ul li p.stats_record {
+	background-color: #CCC;
+	margin: 0 0 0 20px;
+	padding: 0 5px;
 }
 
 /* Styling for Fancy Image bar */
