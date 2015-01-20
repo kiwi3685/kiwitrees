@@ -48,12 +48,12 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery.js');					// 1.11.1
+	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery.min.js');				// 1.11.2
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery-ui.js');				// 1.10.4
 }
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox.js');			// 1.5.9
+define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-min.js');		// 1.5.14
 define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie.js');			// 1.4.1
-define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables.js');		// 1.10.0
+define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.datatables.min.js');	// 1.10.4
 define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable.js');			// 1.7.3
 define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom.js');			// 2.0.0
 define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom.js');			// 2.6.2
