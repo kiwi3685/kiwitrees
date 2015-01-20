@@ -45,7 +45,7 @@ define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1
 // Optionally, load major JS libraries from Google’s public CDN
 define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
+	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
 } else {
 	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery.min.js');				// 1.11.2
