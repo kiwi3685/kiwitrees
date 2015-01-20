@@ -45,12 +45,12 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-		$days		= get_block_setting($widget_id, 'days',      7);
-		$filter		= get_block_setting($widget_id, 'filter',    true);
-		$onlyBDM	= get_block_setting($widget_id, 'onlyBDM',   false);
-		$infoStyle	= get_block_setting($widget_id, 'infoStyle', 'table');
-		$sortStyle	= get_block_setting($widget_id, 'sortStyle', 'alpha');
-		$widget		= get_block_setting($widget_id, 'widget',     true);
+		$days		= get_block_setting($widget_id, 'days',			7);
+		$filter		= get_block_setting($widget_id, 'filter',		true);
+		$onlyBDM	= get_block_setting($widget_id, 'onlyBDM',		false);
+		$infoStyle	= get_block_setting($widget_id, 'infoStyle',	'table');
+		$sortStyle	= get_block_setting($widget_id, 'sortStyle',	'alpha');
+		$widget		= get_block_setting($widget_id, 'widget',		true);
 		if ($cfg) {
 			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'widget') as $name) {
 				if (array_key_exists($name, $cfg)) {
