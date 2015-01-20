@@ -2422,6 +2422,7 @@ dt {
 .surname-list th,
 .givn-list th {
 	font-weight: 600;
+	height: 25px;
 	padding: 2px 4px;
 	white-space: nowrap;
 }
@@ -2986,7 +2987,7 @@ div[id^="caldiv"] td {
 }
 
 .even {
-	background-color: #ccc;
+	background-color: #eee;
 }
 
 .css_right {
