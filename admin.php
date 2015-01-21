@@ -1502,6 +1502,8 @@ function old_paths() {
 		WT_ROOT.'js/jquery.colorbox.js',
 		WT_ROOT.'modules_v3/user_welcome',
 		WT_ROOT.'modules_v3/user_favorites',
+		WT_ROOT.'modules_v3/user_messages',
+		WT_ROOT.'modules_v3/user_blog',
 	);
 }
 
