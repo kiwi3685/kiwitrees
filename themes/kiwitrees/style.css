@@ -5424,7 +5424,7 @@ div.widget {
 	margin: 3px 0 0 0
 }
 
-.widget_stats ul {
+.widget_stats ul, .widget_pageviews ul {
 	background: #fff;
 	border-radius: 5px;
 	line-height: 1.8;
@@ -5434,11 +5434,11 @@ div.widget {
 	margin: 10px 0;
 }
 
-.widget_stats ul li {
+.widget_stats ul li, .widget_pageviews ul li {
 	overflow: hidden;
 }
 
-.widget_stats ul li:before {
+.widget_stats ul li:before, .widget_pageviews ul li:before {
 	float: left;
 	width: 0;
 	white-space: nowrap;
@@ -5450,15 +5450,15 @@ div.widget {
 	margin:0;
 }
 
-.widget_stats ul li span {
+.widget_stats ul li span, .widget_pageviews ul li span {
 	display: inline;
 }
 
-.widget_stats .inset {
+.widget_stats .inset, .widget_pageviews .inset {
 	background-color: #fff;
 }
 
-.widget_stats ul li span.stats_data {
+.widget_stats ul li span.stats_data, .widget_pageviews ul li span.stats_data {
 	background-color: #fff;
 	float: right;
 	padding-left: 0.33em;
