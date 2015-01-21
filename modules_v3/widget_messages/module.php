@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
+class widget_messages_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Extend class WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Messages');
@@ -38,7 +38,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getWidget($widget_id, $template=true, $cfg=null) {
 		global $ctype;
 
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
@@ -55,7 +55,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				deleteMessage($message_id);
 			}
 		}
-		$block=get_block_setting($block_id, 'block', true);
+		$block=get_block_setting($widget_id, 'block', true);
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -65,8 +65,8 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$messages = getUserMessages(WT_USER_ID);
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
+		$id=$this->getName();
+		$class=$this->getName();
 		$title=WT_I18N::plural('%s message', '%s messages',count($messages), WT_I18N::number(count($messages)));
 		$content='<form name="messageform" method="post" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
 		if (get_user_count()>1) {
@@ -123,11 +123,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$content.='</form>';
 
 		if ($template) {
-			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
-			}
+			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -138,26 +134,21 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
-	public function isUserBlock() {
-		return true;
+	// Implement WT_Module_Sidebar
+	public function defaultWidgetOrder() {
+		return 100;
 	}
 
 	// Implement class WT_Module_Block
-	public function isGedcomBlock() {
-		return false;
-	}
-
-	// Implement class WT_Module_Block
-	public function configureBlock($block_id) {
+	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'block',  WT_Filter::postBool('block'));
+			set_block_setting($widget_id, 'block',  WT_Filter::postBool('block'));
 			exit;
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$block=get_block_setting($block_id, 'block', true);
+		$block=get_block_setting($widget_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
