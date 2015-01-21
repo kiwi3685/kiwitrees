@@ -257,10 +257,6 @@ class widget_stats_WT_Module extends WT_Module implements WT_Module_Widget {
 			';
 		}
 
-
-
-
-
 		if ($template) {
 			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
