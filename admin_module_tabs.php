@@ -86,21 +86,26 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 					<td><input type="text" size="3" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName(); ?>">
 					</td>
 					<td>
-					<table class="modules_table2">
-						<?php
-						foreach (WT_Tree::getAll() as $tree) {
-							$varname = 'tabaccess-'.$module_name.'-'.$tree->tree_id;
-							$access_level=WT_DB::prepare(
-								"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='tab'"
-							)->execute(array($tree->tree_id, $module_name))->fetchOne();
-							if ($access_level===null) {
-								$access_level=$module->defaultAccessLevel();
+						<table class="modules_table2">
+							<?php
+							foreach (WT_Tree::getAll() as $tree) {
+								$varname = 'tabaccess-'.$module_name.'-'.$tree->tree_id;
+								$access_level=WT_DB::prepare(
+									"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='tab'"
+								)->execute(array($tree->tree_id, $module_name))->fetchOne();
+								if ($access_level===null) {
+									$access_level=$module->defaultAccessLevel();
+								}
+								$priv = $module->getAccessLevel();
+								echo '
+									<tr>
+										<td>', $tree->tree_title_html, '</td>
+										<td>', edit_field_access_level($varname, $access_level, '', $priv), '</td>
+									</tr>
+								';
 							}
-							echo '<tr><td>', $tree->tree_title_html, '</td><td>';
-							echo edit_field_access_level($varname, $access_level);
-						}
-						?>
-					</table>
+							?>
+						</table>
 					</td>
 				</tr>
 				<?php
