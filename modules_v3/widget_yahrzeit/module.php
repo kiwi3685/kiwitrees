@@ -222,7 +222,7 @@ class widget_yahrzeit_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement WT_Module_Widget
 	public function defaultWidgetOrder() {
-		return 60;
+		return 110;
 	}
 
 	// Implement class WT_Module_Block
