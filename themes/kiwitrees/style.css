@@ -3679,35 +3679,17 @@ div[id^="caldiv"] td {
 	background-image: url(images/buttons/find_facts.png);
 }
 
-.icon-button_findnote {
-	width: 17px;
-	height: 20px;
-	background-image: url(images/buttons/findnote.png);
-}
-
 .icon-button_head {
 	width: 12px;
 	height: 18px;
 	background-image: url(images/buttons/head.png);
 }
 
-.icon-button_media {
-	width: 18px;
-	height: 16px;
-	background-image: url(images/buttons/media.png);
-	vertical-align: middle;
-}
 
 .icon-button_note {
 	width: 17px;
 	height: 20px;
 	background-image: url(images/buttons/note.png);
-}
-
-.icon-button_repository {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/buttons/repository.png);
 }
 
 .icon-childless {
@@ -3918,8 +3900,11 @@ a.icon-udarrow:hover {
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 2em;} /* fa-book */ 
 .icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 2em;} /* fa-icon-keyboard-o */ 
 .icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: top;} /* fa-globe */ 
-.icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 2em;} /* fa-map-marker */ 
-.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: top;} /* fa-calendar */ 
+.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: top;} /* fa-calendar */
+.icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 2em; vertical-align: top;} /* fa-bank */
+.icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 2em;} /* fa-file-word-o */
+.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 2em;} /* fa-camera-retro */
+.icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 2em;} /* fa-map-marker */
 .icon-image_add			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-plus */ 
 .icon-image_link		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-link */ 
 .icon-image_sort		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-sort-alpha-asc */ 
