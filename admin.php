@@ -1500,6 +1500,8 @@ function old_paths() {
 		WT_ROOT.'js/jquery.js',
 		WT_ROOT.'js/jquery.datatables.js',
 		WT_ROOT.'js/jquery.colorbox.js',
+		WT_ROOT.'modules_v3/user_welcome',
+		WT_ROOT.'modules_v3/user_favorites',
 	);
 }
 
