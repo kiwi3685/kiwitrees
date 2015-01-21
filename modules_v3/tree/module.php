@@ -163,4 +163,10 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function js() {
 		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
 	}
+
+	// Implement WT_Module_Access
+	public function getAccessLevel() {
+		return false; // restrict access to members or above
+	}
+
 }

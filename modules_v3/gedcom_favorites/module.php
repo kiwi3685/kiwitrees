@@ -29,8 +29,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Note that the user favorites module simply extends this module, so ensure that the
-// logic works for both.
 class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {

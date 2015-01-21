@@ -348,4 +348,10 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		$html .= ob_get_clean();
 		echo $html;
 	}
+
+	// Implement WT_Module_Access
+	public function getAccessLevel() {
+		return false; // restrict access to members or above
+	}
+
 }

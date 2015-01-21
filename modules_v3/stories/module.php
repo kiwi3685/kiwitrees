@@ -662,4 +662,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		return "onclick=\"jQuery.cookie('indi-tab',$tabId);\"";
 	}
 
+	// Implement WT_Module_Access
+	public function getAccessLevel() {
+		return false; // restrict access to members or above
+	}
+
 }

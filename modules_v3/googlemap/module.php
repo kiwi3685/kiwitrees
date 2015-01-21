@@ -2016,4 +2016,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		</html>
 		<?php
 	}
+
+	// Implement WT_Module_Access
+	public function getAccessLevel() {
+		return false; // restrict access to members or above
+	}
 }

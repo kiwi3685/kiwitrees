@@ -50,6 +50,9 @@ interface WT_Module_Config {
 	public function getConfigLink();
 }
 
+interface WT_Module_Access {
+}
+
 interface WT_Module_Menu {
 	public function defaultMenuOrder();
 }
@@ -72,7 +75,7 @@ interface WT_Module_Tab {
 	public function canLoadAjax();
 	public function getPreLoadContent();
 	public function isGrayedOut();
-
+	public function getAccessLevel();
 }
 
 interface WT_Module_Theme {
