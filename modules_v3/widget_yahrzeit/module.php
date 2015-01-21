@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
+class widget_yahrzeit_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Extend class WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */ WT_I18N::translate('Yahrzeiten');
@@ -41,7 +41,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getWidget($block_id, $template=true, $cfg=null) {
 		global $ctype, $controller;
 
 		$days      = get_block_setting($block_id, 'days',       7);
@@ -60,9 +60,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		$startjd=WT_CLIENT_JD;
 		$endjd  =WT_CLIENT_JD+$days-1;
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+		$id=$this->getName();
+		$class=$this->getName();
+		if (WT_USER_GEDCOM_ADMIN) {
 			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
@@ -209,11 +209,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
-			}
+			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -224,14 +220,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		return true;
 	}
 
-	// Implement class WT_Module_Block
-	public function isUserBlock() {
-		return false;
-	}
-
-	// Implement class WT_Module_Block
-	public function isGedcomBlock() {
-		return true;
+	// Implement WT_Module_Widget
+	public function defaultWidgetOrder() {
+		return 60;
 	}
 
 	// Implement class WT_Module_Block
