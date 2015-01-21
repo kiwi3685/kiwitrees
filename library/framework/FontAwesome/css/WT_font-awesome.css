@@ -1532,7 +1532,8 @@
 .icon-mime-application-pdf:before {
   content: "\f1c1";
 }
-.fa-file-word-o:before {
+.fa-file-word-o:before,
+.icon-button_findnote:before {
   content: "\f1c2";
 }
 .fa-file-excel-o:before,
