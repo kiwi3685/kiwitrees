@@ -513,60 +513,22 @@ class WT_GedcomRecord {
 
 	// Which of the (possibly several) names of this record is the primary one.
 	public function getPrimaryName() {
-		if (is_null($this->_getPrimaryName)) {
+		static $language_script;
+
+		if ($language_script === null) {
+			$language_script = WT_I18N::languageScript(WT_LOCALE);
+		}
+
+		if ($this->_getPrimaryName === null) {
 			// Generally, the first name is the primary one....
 			$this->_getPrimaryName=0;
 			// ....except when the language/name use different character sets
-			if (count($this->getAllNames())>1) {
-				switch (WT_LOCALE) {
-				case 'el':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Grek') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
+			if (count($this->getAllNames()) > 1) {
+				foreach ($this->getAllNames() as $n => $name) {
+					if ($name['type'] !== '_MARNM' && WT_I18N::textScript($name['sort']) === $language_script) {
+						$this->_getPrimaryName = $n;
+						break;
 					}
-					break;
-				case 'ru':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Cyrl') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
-					break;
-				case 'he':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Hebr') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
-				case 'ar':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Arab') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
-				case 'ka':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Geor') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-				default:
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Latn') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
 				}
 			}
 		}
