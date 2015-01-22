@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
+class widget_givnnames_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Extend class WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module.  Top=Most common */ WT_I18N::translate('Top given names');
@@ -41,12 +41,12 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $TEXT_DIRECTION, $ctype, $controller;
+	public function getWidget($widget_id, $template=true, $cfg=null) {
+		global $TEXT_DIRECTION, $controller;
 
-		$num=get_block_setting($block_id, 'num', 10);
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
-		$block=get_block_setting($block_id, 'block', false);
+		$num=get_block_setting($widget_id, 'num', 10);
+		$infoStyle=get_block_setting($widget_id, 'infoStyle', 'table');
+		$block=get_block_setting($widget_id, 'block', false);
 		if ($cfg) {
 			foreach (array('num', 'infoStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -57,10 +57,10 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$stats=new WT_Stats(WT_GEDCOM);
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id=$this->getName();
+		$class=$this->getName();
+		if (WT_USER_GEDCOM_ADMIN) {
+			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
 			$title='';
 		}
@@ -75,7 +75,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
 		switch ($infoStyle) {
-		case "list": // Output style 1:  Simple list style.  Better suited to left side of page.
+		case "list": // Output style 1:  Simple list style.
 			if ($TEXT_DIRECTION=='ltr') $padding = 'padding-left: 15px';
 			else $padding = 'padding-right: 15px';
 			$params=array(1,$num,'rcount');
@@ -90,7 +90,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='<b>'.WT_I18N::translate('Males').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br>';
 			}
 			break;
-		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
+		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table.
 			$params=array(1,$num,'rcount');
 			$content.='<table style="margin:auto;">
 						<tr valign="top">
@@ -102,11 +102,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .=  "</div>";
 
 		if ($template) {
-			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
-			}
+			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -114,45 +110,40 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
-		return true;
-	}
-
-	// Implement class WT_Module_Block
-	public function isUserBlock() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
-	public function isGedcomBlock() {
-		return true;
+	// Implement WT_Module_Widget
+	public function defaultWidgetOrder() {
+		return 170;
 	}
 
 	// Implement class WT_Module_Block
-	public function configureBlock($block_id) {
+	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'num',       WT_Filter::postInteger('num', 1, 10000, 10));
-			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
+			set_block_setting($widget_id, 'num',       WT_Filter::postInteger('num', 1, 10000, 10));
+			set_block_setting($widget_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($widget_id, 'block',     WT_Filter::postBool('block'));
 			exit;
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$num=get_block_setting($block_id, 'num', 10);
+		$num=get_block_setting($widget_id, 'num', 10);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
 
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
+		$infoStyle=get_block_setting($widget_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
-		$block=get_block_setting($block_id, 'block', false);
+		$block=get_block_setting($widget_id, 'block', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
