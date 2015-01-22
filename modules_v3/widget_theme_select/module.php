@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
+class widget_theme_select_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Extend class WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Theme change');
@@ -38,37 +38,31 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		$title=$this->getTitle();
-		$menu=WT_MenuBar::getThemeMenu();
-		if ($menu) {
-			$content='<div class="center theme_form">'.WT_MenuBar::getThemeMenu().'</div><br>';
+	public function getWidget($widget_id, $template = true, $cfg = null) {
+		$id = $this->getName().$widget_id;
+		$class = $this->getName();
+		$title = $this->getTitle();
+		$menu = WT_MenuBar::getThemeMenu();
 
-			if ($template) {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
-			} else {
-				return $content;
-			}
+		if ($menu) {
+			$content = '<div class="center theme_form">'.WT_MenuBar::getThemeMenu().'</div><br>';
+		}
+
+		if ($template) {
+			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
-			return '';
+			return $content;
 		}
 	}
 
-	// Implement class WT_Module_Block
+	// Implement class WT_Module_Widget
 	public function loadAjax() {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
-	public function isUserBlock() {
-		return true;
-	}
-
-	// Implement class WT_Module_Block
-	public function isGedcomBlock() {
-		return true;
+	// Implement WT_Module_Widget
+	public function defaultWidgetOrder() {
+		return 130;
 	}
 
 	// Implement class WT_Module_Block
