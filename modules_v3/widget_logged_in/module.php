@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
+class widget_logged_in_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Extend class WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module. (A list of users who are online now) */ WT_I18N::translate('Who is online');
@@ -41,14 +41,14 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
+	public function getWidget($widget_id, $template=true, $cfg=null) {
+		$id=$this->getName();
+		$class=$this->getName();
 		$title=$this->getTitle();
 		$content = '<div>' . whoisonline() . '</div>';
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			require WT_THEME_DIR.'templates/widget_template.php';
 		} else {
 			return $content;
 		}
@@ -59,17 +59,12 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		return false;
 	}
 
-	// Implement class WT_Module_Block
-	public function isUserBlock() {
-		return false;
+	// Implement WT_Module_Widget
+	public function defaultWidgetOrder() {
+		return 150;
 	}
 
 	// Implement class WT_Module_Block
-	public function isGedcomBlock() {
-		return true;
-	}
-
-	// Implement class WT_Module_Block
-	public function configureBlock($block_id) {
+	public function configureBlock($widget_id) {
 	}
 }
