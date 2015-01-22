@@ -308,8 +308,6 @@ class widget_stats_WT_Module extends WT_Module implements WT_Module_Widget {
 		echo edit_field_yes_no('show_last_update', $show_last_update);
 		echo '</td></tr>';
 
-
-
 		$stat_indi           =get_block_setting($widget_id, 'stat_indi',            true);
 		$stat_fam            =get_block_setting($widget_id, 'stat_fam',             true);
 		$stat_sour           =get_block_setting($widget_id, 'stat_sour',            true);
