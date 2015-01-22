@@ -9,8 +9,11 @@
 // a couple of seconds.  When each block is loaded, we set its status
 // flag.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

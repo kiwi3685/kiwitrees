@@ -1,8 +1,11 @@
 /*
 // Inline styles for the Fancy ImageBar module
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 // Copyright (C) 2014 JustCarmen.
 //
 // This program is free software; you can redistribute it and/or modify

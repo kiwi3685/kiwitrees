@@ -1,8 +1,11 @@
 <?php
 // Album module for kiwitrees
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2009  PGV Development Team.  All rights reserved.

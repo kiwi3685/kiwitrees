@@ -11,8 +11,11 @@
 // It shouldn't do anything that might take more than a few
 // seconds, for systems with low timeout values.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2009 Greg Roach

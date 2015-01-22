@@ -2,8 +2,11 @@
 // Displays the details about a shared note record.  Also shows how many people and families
 // reference this shared note.
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2009 PGV Development Team.  All rights reserved.

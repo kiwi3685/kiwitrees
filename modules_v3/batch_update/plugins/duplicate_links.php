@@ -1,8 +1,11 @@
 <?php
 // Batch Update plugin for phpGedView - remove duplicate links in records
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2008 Greg Roach.  All rights reserved.

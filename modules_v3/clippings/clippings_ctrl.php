@@ -3,8 +3,11 @@
 //
 // NOTE THAT THIS IS NOT A PAGE CONTROLLER, AND DOES NOT EXTEND WT_CONTROLLER_BASE
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team

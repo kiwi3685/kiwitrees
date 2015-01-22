@@ -4,8 +4,11 @@
 // number of persons -> periodes of 50 years from 1700-2000
 // age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
 //
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team
