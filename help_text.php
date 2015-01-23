@@ -760,7 +760,7 @@ case 'SMTP_AUTH':
 
 case 'SMTP_FROM_NAME':
 	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Sender name');
-	$text = /* I18N: Help text for the “Sender name” site configuration setting */ WT_I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.');
+	$text = /* I18N: Help text for the “Sender name” site configuration setting */ WT_I18N::translate('This name is used in the “From” field, when sending automatic emails from this server. It must be a valid email address.');
 	break;
 
 case 'SMTP_HELO':
