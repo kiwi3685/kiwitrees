@@ -195,20 +195,6 @@ echo '
 	</div>
 </fieldset>'; // id = users
 
-function siteIndividuals() {
-	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals`")
-		->execute()
-		->fetchOne();
-	return	WT_I18N::number($count);
-}
-
-function siteMedia() {
-	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media`")
-		->execute()
-		->fetchOne();
-	return	WT_I18N::number($count);
-}
-
 $n = 0;
 
 echo
@@ -258,34 +244,6 @@ echo
 			</ul>';
 		}
 		echo '
-		<h3>', WT_I18N::translate('All trees'), '</h3>
-		<ul class="admin_stats">
-			<li>
-				<span>', WT_I18N::translate('Individuals'), '</span>
-				<span class="filler">&nbsp;</span>
-				<span>', siteIndividuals(),'</span>
-			</li>
-			<li>
-				<span>', WT_I18N::translate('Media objects'), '</span>
-				<span class="filler">&nbsp;</span>
-				<span>', siteMedia(),'</span>
-			</li>
-			<li>
-				<span>Your database size is currently</span>
-				<span class="filler"></span>
-				<span>', WT_I18N::number(db_size()), ' MB</span>
-			</li>
-			<li>
-				<span>Your files are currently using</span>
-				<span class="filler"></span>
-				<span>', WT_I18N::number(directory_size()), ' MB</span>
-			</li>
-			<li>
-				<span>Total server space used is therefore</span>
-				<span class="filler"></span>
-				<span>', WT_I18N::number(db_Size() + directory_size()), ' MB</span>
-			</li>
-		</ul>
 	</div>', // id=tree_stats
 '</fieldset>'; // id=trees
 

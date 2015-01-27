@@ -137,6 +137,7 @@ echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i>', WT_I18N::trans
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_info.php"    ? 'class="current" ' : ''), 'href="admin_site_info.php">',    WT_I18N::translate('PHP information'       ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_access.php"  ? 'class="current" ' : ''), 'href="admin_site_access.php">',  WT_I18N::translate('Site access rules'     ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_clean.php"   ? 'class="current" ' : ''), 'href="admin_site_clean.php">',   WT_I18N::translate('Clean up data folder'  ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_site_use.php"     ? 'class="current" ' : ''), 'href="admin_site_use.php">',     WT_I18N::translate('Server usage'		    ), '</a></p>
 			</div>';
 }
 

@@ -172,7 +172,7 @@ i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
 #admin_footer .logo a:hover {color:#ff0000;}
 
 /* DASHBOARD BLOCKS */
-fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%; white-space:nowrap;}
+fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%;}
 fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
 #users div#logged_in_users {font-size: 110%;}
 #users div#logged_in_users ul {list-style: none;}
@@ -182,7 +182,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 #trees span, #recent span {text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
 #tree_stats ul.admin_stats, #users ul.admin_stats {
-	background: #c9c9c9;
+	background-color: #c9c9c9;
 	font-size: 110%;
 	line-height: 2;
 	list-style-type:none;
@@ -208,7 +208,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 }
 #tree_stats ul.admin_stats li span, #users ul.admin_stats li span {
 	padding-right: 0.33em;
-	background: #c9c9c9;
+	background-color: #c9c9c9;
 	display: inline;
 }
 
@@ -223,7 +223,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #tree_stats ul.admin_stats li span:nth-of-type(3), #users ul.admin_stats li span:nth-of-type(3) {
 	float: right;
 	padding-left: 0.33em;
-	background: #c9c9c9;
+	background-color: #c9c9c9;
 }
 
 [dir=rtl] fieldset#users, [dir=rtl] fieldset#trees, [dir=rtl] fieldset#recent {float:right;}
@@ -241,6 +241,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #site-config tr {border-bottom:1px solid;}
 #site-config td {line-height:30px; padding:0 20px;}
 #site-config p {font-style:italic;}
+#site-config tr th.smtp {padding-top:50px;}
 
 /*SITE LOGS & CHANGE LOGS*/
 .site_logs, .site_change {margin:10px auto;}

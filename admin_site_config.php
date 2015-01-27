@@ -123,8 +123,9 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 					<td><?php echo WT_I18N::translate('Sender email'), help_link('SMTP_FROM_NAME'); ?></td>
 					<td><?php echo edit_field_inline('site_setting-SMTP_FROM_NAME', WT_Site::preference('SMTP_FROM_NAME'), $controller); ?></td>						
 				</tr>
+				<tr></tr>
 				<tr>
-					<th colspan="2">
+					<th colspan="2" class="smtp">
 						<?php echo WT_I18N::translate('SMTP mail server'); ?>
 					</th>
 				</tr>
