@@ -248,7 +248,7 @@ if (!defined('WT_WEBTREES')) {
 			echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
 				echo 'new google.maps.Size(35, 45),';	// Shadow size
 				echo 'new google.maps.Point(0,0),';		// Shadow origin
-				echo 'new google.maps.Point(1, 45)';	// Shadow anchor is base of flagpole				
+				echo 'new google.maps.Point(12, 15)';	// Shadow anchor is base of flagpole				
 			echo ');';
 			echo 'marker = new google.maps.Marker({';
 				echo 'icon: image,';

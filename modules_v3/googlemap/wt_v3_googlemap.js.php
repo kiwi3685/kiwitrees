@@ -105,7 +105,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/flag_shadow.png',
 				new google.maps.Size(35, 45),	// Shadow size
 				new google.maps.Point(0,0),		// Shadow origin
-				new google.maps.Point(1, 45)	// Shadow anchor is base of flagpole
+				new google.maps.Point(12, 15)	// Shadow anchor is base of flagpole
 			);
 		} else {
 			var icon_shadow = iconShadow;
