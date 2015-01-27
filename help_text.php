@@ -1474,12 +1474,6 @@ case 'useradmin_auto_accept':
 	$text = WT_I18N::translate('Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator\'s approval.');
 	break;
 
-
-case 'useradmin_editaccount':
-	$title = WT_I18N::translate('Edit account information');
-	$text = WT_I18N::translate('If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account.');
-	break;
-
 case 'useradmin_gedcomid':
 	$title = WT_I18N::translate('Individual record');
 	$text = WT_I18N::translate('The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty.');

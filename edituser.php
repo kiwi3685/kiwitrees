@@ -29,12 +29,6 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-// prevent users with editing account disabled from being able to edit their account
-if (!get_user_setting(WT_USER_ID, 'editaccount')) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-	exit;
-}
-
 // Valid values for form variables
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {

@@ -245,7 +245,7 @@ case 'user_setting':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && get_user_setting($id1, 'editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(WT_USER_IS_ADMIN || WT_USER_ID) && in_array($id2, array('language','visible_online','contact_method')))) {
 		fail();
 	}
 
@@ -271,7 +271,6 @@ case 'user_setting':
 		}
 		break;
 	case 'auto_accept':
-	case 'editaccount':
 	case 'verified':
 	case 'visibleonline':
 	case 'max_relation_path':

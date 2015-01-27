@@ -281,7 +281,6 @@ case 'register':
 			set_user_setting($user_id, 'reg_hashcode',      md5(uniqid(rand(), true)));
 			set_user_setting($user_id, 'contactmethod',     'messaging2');
 			set_user_setting($user_id, 'visibleonline',     1);
-			set_user_setting($user_id, 'editaccount',       1);
 			set_user_setting($user_id, 'auto_accept',       0);
 			set_user_setting($user_id, 'canadmin',          0);
 			set_user_setting($user_id, 'sessiontime',       0);

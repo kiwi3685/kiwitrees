@@ -58,19 +58,21 @@ class widget_quicklinks_WT_Module extends WT_Module implements WT_Module_Widget 
 //		}
 		$title	.= $this->getTitle();
 
-		$content= '<table><tr>';
-		if (get_user_setting(WT_USER_ID, 'editaccount')) {
-			$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
-		}
-		if (WT_USER_GEDCOM_ID) {
-			$content .= '<td><a href="pedigree.php?rootid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('My pedigree').'</a></td>';
-			$content .= '<td><a href="individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('My individual record').'</a></td>';
-		}
-		if (WT_USER_IS_ADMIN) {
-			$content .= '<td><a href="admin.php"><i class="icon-admin"></i><br>'.WT_I18N::translate('Administration').'</a></td>';
-		}
-		$content .= '</tr>';
-		$content .= '</table>';
+		$content= '
+			<table>
+				<tr>
+					<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
+					if (WT_USER_GEDCOM_ID) {
+						$content .= '
+							<td><a href="pedigree.php?rootid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('My pedigree').'</a></td>
+							<td><a href="individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('My individual record').'</a></td>';
+					}
+					if (WT_USER_IS_ADMIN) {
+						$content .= '<td><a href="admin.php"><i class="icon-admin"></i><br>'.WT_I18N::translate('Administration').'</a></td>';
+					}
+		$content .= '
+				</tr>
+			</table>';
 
 		if ($template) {
 			require WT_THEME_DIR.'templates/widget_template.php';

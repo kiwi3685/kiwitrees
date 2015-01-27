@@ -67,7 +67,6 @@ $new_comment       =safe_POST('new_comment',              WT_REGEX_UNSAFE);
 $new_auto_accept   =safe_POST_bool('new_auto_accept');
 $canadmin          =safe_POST_bool('canadmin');
 $visibleonline     =safe_POST_bool('visibleonline');
-$editaccount       =safe_POST_bool('editaccount');
 $verified          =safe_POST_bool('verified');
 $verified_by_admin =safe_POST_bool('verified_by_admin');
 
@@ -222,9 +221,6 @@ case 'load1row':
 	echo '<dt>', WT_I18N::translate('Preferred contact method'), '</dt>';
 	echo '<dd>', edit_field_contact_inline('user_setting-'.$user_id.'-contactmethod', get_user_setting($user_id, 'contactmethod')), '</dd>';
 
-	echo '<dt>', WT_I18N::translate('Allow this user to edit his account information'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-editaccount', get_user_setting($user_id, 'editaccount')), '</dd>';
-
 	echo '<dt>', WT_I18N::translate('Automatically approve changes made by this user'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', get_user_setting($user_id, 'auto_accept')), '</dd>';
 
@@ -299,7 +295,6 @@ case 'createuser':
 		set_user_setting($user_id, 'auto_accept',          $new_auto_accept);
 		set_user_setting($user_id, 'canadmin',             $canadmin);
 		set_user_setting($user_id, 'visibleonline',        $visibleonline);
-		set_user_setting($user_id, 'editaccount',          $editaccount);
 		set_user_setting($user_id, 'verified',             $verified);
 		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
 		foreach (WT_Tree::getAll() as $tree) {
@@ -406,8 +401,8 @@ case 'createform':
 			</tr>
 				<td>', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td>
 				<td><input type="password" name="pass2" style="width:95%;" value="', htmlspecialchars($pass2), '" required placeholder="', WT_I18N::translate('Type the password again.'), '" pattern="', WT_REGEX_PASSWORD, '"></td>
-				<td>', WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'), '</td>
-				<td><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
+				<td></td>
+				<td></td>
 			<tr>
 				<td>', WT_I18N::translate('Preferred contact method'), '</td>
 				<td>';

@@ -861,7 +861,6 @@ try {
 		" (1, 'language',          ?),".
 		" (1, 'verified',          ?),".
 		" (1, 'verified_by_admin', ?),".
-		" (1, 'editaccount',       ?),".
 		" (1, 'auto_accept',       ?),".
 		" (1, 'visibleonline',     ?)"
 	)->execute(array(
