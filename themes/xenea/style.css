@@ -100,7 +100,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* ======= Main menu items ========== */
 #topMenu                   {border-bottom:2px solid #0073cf;float:left;height:45px;margin-bottom:10px;padding:5px 0 10px 0;position:relative;width:100%;}
-#main-menu                 {clear:both;position:relative;z-index:50;float:right;right:50%;margin-top:5px;}
+#main-menu                 {position: absolute;z-index: 1000;right: 33%;margin-top: 5px;width: 100%;}
 #main-menu,
 #main-menu ul              {list-style-type:none;padding:0;}
 #main-menu ul ul           {z-index:60;}
@@ -115,8 +115,9 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* Menu icons */
 #main-menu > li { background-image:url(images/sprites-top-menu.png); background-repeat:no-repeat; width:80px; text-align:center; height:28px; line-height:28px; text-indent:0;}
-
 #main-menu li li { background-image:url(images/sprites-sub-menu.png); background-repeat:no-repeat; height:23px;left:auto; line-height:23px; text-align:left; text-indent:26px;width:100%}
+#main-menu > li#widget-button.icon-widget {background-image:url(images/icon-widget.png);}
+#main-menu > li#widget-button.icon-widget-close {background-image:url(images/icon-widget-close.png);}
 
 /* Reverse left and right on RTL pages */
 [dir=rtl] #topMenu {float:right;}
@@ -1540,3 +1541,137 @@ a#copy {clear:both;float:left; font-size:11px; font-style:italic; margin-top:-30
 [dir='rtl'] .vertical_box_template .exp_thumb {float:right;}
 [dir='rtl'] #family-page [id^="fontdef-"], [dir='rtl'] #family_chart .fam_child, [dir='rtl'] #family_chart .fam_parent {text-align:right;}
 [dir='rtl'] #family-page [id^="out-"]:hover > [id^="fontdef-"] {right:-85px; left:auto;}
+
+/* Styling for widgets */
+div.widget {
+	width: 430px;
+	margin: 10px auto;
+	overflow: hidden;
+}
+
+#widget-bar {
+	z-index: 999;
+	position: absolute;
+	display: none;
+	margin: -5px 0 0 -6px;
+	width: 450px;
+	min-height: 200px;
+	background-color: #fff;
+	box-shadow: 5px 5px 8px 0 #888;
+	padding-bottom: 10px;
+}
+
+[dir='rtl'] #widget-bar {
+	margin: -12px -12px 0 0 ;
+	box-shadow: -5px 8px 8px -3px #888;
+}	
+
+#widget-bar .widget .block {
+	margin: 0;
+	padding: 0;
+}
+
+#widget-bar .widget .blockheader {
+	background: #a9adbc;
+	font-size: 1em;
+	font-weight: 900;
+	line-height: 16px;
+	border-bottom: 2px solid #555;
+	overflow: hidden;
+	padding: 2px 5px;
+	color: #555;
+	text-transform: uppercase;
+}
+
+#widget-bar .widget .blockheader span {
+	font-size: 1em;
+}
+
+#widget-bar .widget .small_inner_block {
+	max-height: 100%;
+}
+
+#widget-bar .widget .blockcontent {
+	padding: 0 5px;
+}
+
+.widget_quicklinks .icon-mypage,
+.widget_quicklinks .icon-pedigree,
+.widget_quicklinks .icon-indis {
+	color: #555;
+	font-size: 3em;
+}
+
+.widget_quicklinks .icon-patriarch {
+	background-image: url(images/large_menu_sprite.png);
+	background-position: center -1105px;
+	height: 64px;
+	min-width: 80px;
+	text-align: center;
+}
+
+.widget_quicklinks .icon-admin {
+	color: #555;
+	font-size: 3em;
+}
+
+.widget_quicklinks td {
+	text-align: center;
+	vertical-align: top;
+	width: 25%;
+}
+
+.widget_stats h3 {
+	margin: 3px 0;
+}
+
+.widget_stats div p {
+	margin: 3px 0 0 0
+}
+
+.widget_stats ul, .widget_pageviews ul {
+	background: #fff;
+	border-radius: 5px;
+	line-height: 1.8;
+	list-style-type:none;
+	margin: 0;
+	overflow-x: hidden;
+	margin: 10px 0;
+}
+
+.widget_stats ul li, .widget_pageviews ul li {
+	overflow: hidden;
+}
+
+.widget_stats ul li:before, .widget_pageviews ul li:before {
+	float: left;
+	width: 0;
+	white-space: nowrap;
+	content: 
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . " 
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . ";
+	margin:0;
+}
+
+.widget_stats ul li span, .widget_pageviews ul li span {
+	display: inline;
+}
+
+.widget_stats .inset, .widget_pageviews .inset {
+	background-color: #fff;
+}
+
+.widget_stats ul li span.stats_data, .widget_pageviews ul li span.stats_data {
+	background-color: #fff;
+	float: right;
+	padding-left: 0.33em;
+}
+
+.widget_stats ul li p.stats_record {
+	background-color: #CCC;
+	margin: 0 0 0 20px;
+	padding: 0 5px;
+}
+/* ------------------ */
