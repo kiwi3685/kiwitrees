@@ -34,6 +34,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addExternalJavascript(WT_JQUERY_AUTOSIZE)
 	->addInlineJavascript('
+		widget_bar();
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",
@@ -65,6 +66,7 @@ $this
 
 global $ALL_CAPS;
 if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
+$ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
 echo
 	'<!DOCTYPE html>',
@@ -110,8 +112,17 @@ if ($view!='simple') {
 		'</form>',
 		'</div>',
 		'<div id="topMenu">',
-		'<ul id="main-menu">',
-		implode('', WT_MenuBar::getModuleMenus()),
+		'<ul id="main-menu">';
+			if ($ctype != 'gedcom') {
+				echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">', WT_I18N::translate('Widgets'), '</span></a></li>';
+			}
+//			implode('', WT_MenuBar::getModuleMenus()),
+			foreach (WT_MenuBar::getModuleMenus() as $menu) {
+				if (!strpos($menu, '>'.WT_I18N::translate('My page').'<')) {
+					echo $menu->getMenuAsList();
+				}
+			}
+	echo
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">
 		'</div>'; // <div id="header">
@@ -120,3 +131,8 @@ echo
 	$javascript,
 	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 	'<div id="content">';
+
+// add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
+if ($ctype != 'gedcom' && $view != 'simple') {
+	include_once 'widget-bar.php';
+}
