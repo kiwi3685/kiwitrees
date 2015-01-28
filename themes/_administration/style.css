@@ -36,6 +36,7 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 table {max-width:996px; border-collapse:collapse;}
 td {line-height:25px; vertical-align:middle;}
 i.fa {margin:0 5px; font-size:1.5em; vertical-align:middle;}
+button i.fa {margin: 0 0px; font-size: 1em;	vertical-align: initial;}
 .icon {border:none; padding-left:0;padding-right:5pt;}
 .warning, .error, .red {color:#ff0000;}
 .accepted, a.accepted {color:#25a325;}

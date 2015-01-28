@@ -408,7 +408,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</div>
 			</div>
 			<p>
-				<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+				<button class="btn btn-primary" type="submit">
+				<i class="fa fa-floppy-o"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
 			</p>
 		</form>
 		<?php
