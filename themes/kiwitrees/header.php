@@ -40,6 +40,7 @@ $this
 	->addExternalJavascript (WT_JQUERY_AUTOSIZE)
 	->addExternalJavascript (WT_JQUERY_BIGTEXT)
 	->addInlineJavascript ('
+		widget_bar();
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",
@@ -68,14 +69,6 @@ $this
 		});
 		
 		jQuery("textarea").autosize();
-
-		jQuery("#widget-button a").click(function(){
-			jQuery("#widget-bar").toggle();
-		});
-
-		jQuery("#widget-button a").click(function(){
-			jQuery("#widget-button a span").toggleClass("icon-widget icon-widget-close");
-		});
 
 		jQuery("#bigtext span").bigText({
 			fontSizeFactor: 1,
@@ -170,7 +163,7 @@ if ($view!='simple') {
 				'<div id="topMenu" class="ui-state-active">
 					<ul id="main-menu">';
 						if ($ctype != 'gedcom') {
-							echo '<li id="widget-button"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
+							echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
 						}
 						foreach (WT_MenuBar::getModuleMenus() as $menu) {
 							if (!strpos($menu, '>'.WT_I18N::translate('My page').'<')) {								

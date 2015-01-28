@@ -5346,7 +5346,7 @@ div.widget {
 }
 
 #widget-button {
-	margin: 0 0 0 3px;
+	margin: 14px 0 0 3px !important;
 }
 
 #widget-bar {
@@ -5485,48 +5485,47 @@ div.widget {
 	margin-top: 10px;
 }
 
-	.font-awesome-picker .c4 {
-		float: left;
-		width: 33.33%;
-		text-align: center;
-		padding: 0 5px;
+.font-awesome-picker .c4 {
+	float: left;
+	width: 33.33%;
+	text-align: center;
+	padding: 0 5px;
+}
+
+.font-awesome-picker .c4 div {
+	background: #eee;
+	border-radius: 6px;
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 10px 0;
+	font-size: 11px;
+	height: 81px;
+	cursor: pointer;
+}
+
+	.customize-control .font-awesome-picker .c4 div {
+		height: 65px;
 	}
 
-	.font-awesome-picker .c4 div {
-		background: #eee;
-		border-radius: 6px;
-		width: 100%;
-		margin-bottom: 10px;
-		padding: 10px 0;
-		font-size: 11px;
-		height: 81px;
-		cursor: pointer;
+	.font-awesome-picker .c4 div:hover {
+		background: #ddd;
 	}
 
-		.customize-control .font-awesome-picker .c4 div {
-			height: 65px;
-		}
+.font-awesome-picker i {
+	display: block;
+	font-size: 30px;
+	height: 45px;
+	line-height: 45px;
+}
 
-		.font-awesome-picker .c4 div:hover {
-			background: #ddd;
-		}
-
-	.font-awesome-picker i {
-		display: block;
-		font-size: 30px;
-		height: 45px;
-		line-height: 45px;
+	.font-awesome-picker .c4 div:hover i {
+		font-size: 40px;
 	}
 
-		.font-awesome-picker .c4 div:hover i {
-			font-size: 40px;
-		}
-
-	.font-awesome-picker .c4:nth-child(3n+1) {
-		clear: both;
-	}
-
-
+.font-awesome-picker .c4:nth-child(3n+1) {
+	clear: both;
+}
+/* ------------------ */
 
 /* Styling for Fancy Image bar */
 #fancy_imagebar {

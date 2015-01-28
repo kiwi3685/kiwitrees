@@ -1487,6 +1487,16 @@ function all_caps() {
 	jQuery(".NAME .SURN").css("text-transform", "uppercase");
 }
 
+function widget_bar() {
+	jQuery("#widget-button").click(function(){
+		jQuery("#widget-bar").toggle();
+	});
+
+	jQuery("#widget-button").click(function(){
+		jQuery("#widget-button").toggleClass("icon-widget icon-widget-close");
+	});
+}
+
 // Select all / no records in a list
 function toggle_select(source) {
   checkboxes = document.getElementsByClassName("check");
@@ -1560,6 +1570,7 @@ jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
 		}
 	}
 });
+
 
 /*
 * hoverIntent | Copyright 2011 Brian Cherne
