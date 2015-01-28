@@ -1305,7 +1305,6 @@ a#copy {clear:both;float:left; font-size:11px; font-style:italic; margin-top:-30
 /* Styling for widgets */
 div.widget {
 	width: 430px;
-	border: 1px solid;
 	margin: 10px auto;
 	overflow: hidden;
 }
