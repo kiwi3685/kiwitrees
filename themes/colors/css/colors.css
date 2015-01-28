@@ -145,7 +145,6 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 #menu-obje      {background-position:center -533px;}
 #menu-repo      {background-position:center -574px;}
 #menu-story     {background-position:center -616px;}
-#widget-button .icon-widget-close  {background-image:url(../images/icon-widget.png);}
 
 /* Submenu Icons */
 #menu-chart-ancestry        {background-position:left -208px;} [dir=rtl] #menu-chart-ancestry        {background-position:right -208px;}
@@ -1501,59 +1500,4 @@ div.widget {
 	padding: 0 5px;
 }
 
-.font-awesome-picker,
-.font-awesome-picker div {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.font-awesome-picker {
-	height: 300px;
-	overflow: scroll;
-	margin-left: -5px;
-	margin-right: -5px;
-	margin-top: 10px;
-}
-
-.font-awesome-picker .c4 {
-	float: left;
-	width: 33.33%;
-	text-align: center;
-	padding: 0 5px;
-}
-
-.font-awesome-picker .c4 div {
-	background: #eee;
-	border-radius: 6px;
-	width: 100%;
-	margin-bottom: 10px;
-	padding: 10px 0;
-	font-size: 11px;
-	height: 81px;
-	cursor: pointer;
-}
-
-.customize-control .font-awesome-picker .c4 div {
-	height: 65px;
-}
-
-.font-awesome-picker .c4 div:hover {
-	background: #ddd;
-}
-
-.font-awesome-picker i {
-	display: block;
-	font-size: 30px;
-	height: 45px;
-	line-height: 45px;
-}
-
-.font-awesome-picker .c4 div:hover i {
-	font-size: 40px;
-}
-
-.font-awesome-picker .c4:nth-child(3n+1) {
-	clear: both;
-}
 /* ------------------ */

@@ -5469,7 +5469,16 @@ div.widget {
 	margin: 0 0 0 20px;
 	padding: 0 5px;
 }
+/* ------------------ */
 
+
+/* Styling for Fancy Image bar */
+#fancy_imagebar {
+	position: relative;
+	top: 120px;
+}
+
+/* FOR FUTURE USE
 .font-awesome-picker,
 .font-awesome-picker div {
 	-moz-box-sizing: border-box;
@@ -5503,13 +5512,13 @@ div.widget {
 	cursor: pointer;
 }
 
-	.customize-control .font-awesome-picker .c4 div {
-		height: 65px;
-	}
+.customize-control .font-awesome-picker .c4 div {
+	height: 65px;
+}
 
-	.font-awesome-picker .c4 div:hover {
-		background: #ddd;
-	}
+.font-awesome-picker .c4 div:hover {
+	background: #ddd;
+}
 
 .font-awesome-picker i {
 	display: block;
@@ -5518,17 +5527,11 @@ div.widget {
 	line-height: 45px;
 }
 
-	.font-awesome-picker .c4 div:hover i {
-		font-size: 40px;
-	}
+.font-awesome-picker .c4 div:hover i {
+	font-size: 40px;
+}
 
 .font-awesome-picker .c4:nth-child(3n+1) {
 	clear: both;
 }
-/* ------------------ */
-
-/* Styling for Fancy Image bar */
-#fancy_imagebar {
-	position: relative;
-	top: 120px;
-}
+ */
