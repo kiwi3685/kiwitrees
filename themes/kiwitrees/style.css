@@ -1752,6 +1752,7 @@ a.showit:hover > span {
 }
 
 .tag_cloud a {
+	vertical-align: middle;
 	white-space: nowrap;
 }
 
