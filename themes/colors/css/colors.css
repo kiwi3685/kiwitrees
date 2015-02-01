@@ -1396,6 +1396,10 @@ div.widget {
 	box-shadow: -5px 8px 8px -3px #888;
 }	
 
+#widget-bar .widget .block {
+	margin: 0;
+}
+
 #widget-bar .widget .blockheader {
 	background: #a9adbc;
 	font-size: 1em;
@@ -1417,7 +1421,10 @@ div.widget {
 }
 
 #widget-bar .widget .blockcontent {
-	padding: 0 5px;
+	border:0;
+	margin:0;
+	overflow:auto;
+	padding:5px;}
 }
 
 .widget_quicklinks .icon-mypage,
