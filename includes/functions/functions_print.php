@@ -314,9 +314,7 @@ function login_link() {
 		return '';
 	} else {
 		return
-			'<a href="'.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()).'" class="link">'.
-			WT_I18N::translate('Login').
-			'</a>';
+			'<a href="' . WT_LOGIN_URL.'?url=' . rawurlencode(get_query_url()).'" class="link">'. WT_I18N::translate('Login') . '</a>';
 	}
 }
 

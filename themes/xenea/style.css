@@ -66,19 +66,20 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* Options Menu Layout */
 #optionsmenu { background:#84beff; background-image:url(images/barra.png); width:100%; color:#fff; font-weight:bold; font-size:11px; height:40px; z-index:100; position:relative;}
-
-#theme-menu {position:absolute; left:0;    right:auto; margin:11px;}
+#theme-menu {position:absolute; left:0; right:auto; margin:11px;}
 #fav-menu   {position:absolute; left:80px; right:auto; margin:11px;}
-#login-menu {position:absolute; left:0;    right:0;    margin:11px auto; width:300px;}
-#lang-menu  {position:absolute; left:auto; right:0;    margin:11px; text-align:right;}
-#lang-menu .makeMenu li ul {left:auto;right:0;}
+#login-menu {position:absolute; left:0; right:0; margin:11px auto; width:300px;}
+#lang-menu  {position:absolute; left:auto; right:0; margin:11px; text-align:right;}
+#lang-menu .makeMenu li ul {left:auto; right:0;}
 .lang-active, .theme-active {color:#000066; font-weight:900;}
 #optionsmenu li.divider:before {content: " - ";}
+#login-menu .link {color: #000; font-weight: normal;}
+#login-menu .link:hover {color: #ff0000;}
 
 /* LTR to RTL Translation */
 [dir=rtl] #theme-menu {left:auto; right:0;}
 [dir=rtl] #fav-menu   {left:auto; right:80px;}
-[dir=rtl] #lang-menu  {left:0;    right:auto; text-align:left;}
+[dir=rtl] #lang-menu  {left:0; right:auto; text-align:left;}
 [dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 
 .makeMenu li {display:inline;position:relative;white-space:nowrap;}
@@ -100,7 +101,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* ======= Main menu items ========== */
 #topMenu                   {border-bottom:2px solid #0073cf;float:left;height:45px;margin-bottom:10px;padding:5px 0 10px 0;position:relative;width:100%;}
-#main-menu                 {position: absolute;z-index: 1000;right: 33%;margin-top: 5px;width: 100%;}
+#main-menu                 {position: absolute; right: 33%; margin-top: 5px;width: 100%;}
 #main-menu,
 #main-menu ul              {list-style-type:none;padding:0;}
 #main-menu ul ul           {z-index:60;}
@@ -196,14 +197,6 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #menu-help-faq              {background-position:left -552px;} [dir=rtl] #menu-help-faq               {background-position:right -552px;}
 #menu-help-wiki             {background-position:left -575px;} [dir=rtl] #menu-help-wiki              {background-position:right -575px;}
 #menu-help-technical        {background-position:left -598px;} [dir=rtl] #menu-help-technical         {background-position:right -598px;}
-
-/* MyPage Icons */
-#menu-mypage                {background-position:left -598px;} [dir=rtl] #menu-mypage                 {background-position:right -598px;}
-#menu-myaccount             {background-position:left -598px;} [dir=rtl] #menu-myaccount              {background-position:right -598px;}
-#menu-mypedigree            {background-position:left -828px;} [dir=rtl] #menu-mypedigree             {background-position:right -828px;}
-#menu-myrecord              {background-position:left -460px;} [dir=rtl] #menu-myrecord               {background-position:right -460px;}
-#menu-admin                 {background-position:left -644px;} [dir=rtl] #menu-admin                  {background-position:right -644px;}
-#menu-tree li               {background-position:left -667px;} [dir=rtl] #menu-tree li                {background-position:right -667px;}
 
 /* Family Icons  */
 #menu-fam-addchil           {background-position:left -759px;} [dir=rtl] #menu-fam-addchil            {background-position:right -759px;}
