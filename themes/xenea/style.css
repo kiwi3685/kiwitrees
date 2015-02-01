@@ -101,7 +101,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* ======= Main menu items ========== */
 #topMenu                   {border-bottom:2px solid #0073cf;float:left;height:45px;margin-bottom:10px;padding:5px 0 10px 0;position:relative;width:100%;}
-#main-menu                 {position: absolute; right: 33%; margin-top: 5px;width: 100%;}
+#main-menu                 {clear:both;position:relative;z-index:50;float:right;right:50%;margin-top:5px;}
 #main-menu,
 #main-menu ul              {list-style-type:none;padding:0;}
 #main-menu ul ul           {z-index:60;}
