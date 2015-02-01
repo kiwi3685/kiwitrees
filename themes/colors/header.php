@@ -23,8 +23,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-//
-// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -108,34 +106,42 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	// Top row right 
 	echo 
 	'<ul class="makeMenu">';
-
-	if (WT_USER_ID) {
-		echo '<li><a href="edituser.php" class="link">', getUserFullName(WT_USER_ID), '</a></li><li>', logout_link(), '</li>';
-		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-			echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+		if (WT_USER_ID) {
+			$menu = WT_MenuBar::getMyAccountMenu();
+			if ($menu) {
+				echo $menu->getMenuAsList();
+			}
+			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+				echo '<li>
+					<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+						WT_I18N::translate('Pending changes'), '
+					</a>
+				</li>';
+			}
+		} else {
+			$class_name = 'login_block_WT_Module';
+			$module = new $class_name;
+			echo '<li><a href="#">' , WT_I18N::translate('Login') , '</a></li>';
 		}
-	} else {
-		echo '<li>', login_link(),'</li>';
-	}
-	$menu=WT_MenuBar::getFavoritesMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getLanguageMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getThemeMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-		$allow_color_dropdown=true;
-	} else {
-		$allow_color_dropdown=false;
-	}
-	if ($allow_color_dropdown) {
-		echo color_theme_dropdown();
-	}
-	global $WT_IMAGES;
+		$menu=WT_MenuBar::getFavoritesMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
+		}
+		$menu=WT_MenuBar::getLanguageMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
+		}
+		$menu=WT_MenuBar::getThemeMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
+			$allow_color_dropdown=true;
+		} else {
+			$allow_color_dropdown=false;
+		}
+		if ($allow_color_dropdown) {
+			echo color_theme_dropdown();
+		}
+		global $WT_IMAGES;
 	echo
 		'<li>',
 			'<form style="display:inline;" action="search.php" method="post">',

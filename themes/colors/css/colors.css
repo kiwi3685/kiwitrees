@@ -88,6 +88,8 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 .makeMenu ul li a:hover {color:#000;}
 .makeMenu li ul li:before,.makeMenu li:first-child:before {content:"";}
 .lang-active, .theme-active {font-weight:900;}
+#menu-mylogout a {margin:0; padding:0; text-align: left;}
+
 
 [dir=rtl] .makeMenu {display:block;float:left;margin:21px 0 0 10px;}
 [dir=rtl] .makeMenu li ul {left:auto;right:0;}
