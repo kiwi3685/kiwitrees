@@ -61,7 +61,7 @@ class widget_quicklinks_WT_Module extends WT_Module implements WT_Module_Widget 
 		$content= '
 			<table>
 				<tr>
-					<td><a href="edituser.php"><i class="icon-mypage"></i><br>'.WT_I18N::translate('My account').'</a></td>';
+					<td><a href="edituser.php"><i class="icon-myaccount"></i><br>'.WT_I18N::translate('My account').'</a></td>';
 					if (WT_USER_GEDCOM_ID) {
 						$content .= '
 							<td><a href="pedigree.php?rootid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('My pedigree').'</a></td>

@@ -314,7 +314,7 @@ function login_link() {
 		return '';
 	} else {
 		return
-			'<a href="' . WT_LOGIN_URL.'?url=' . rawurlencode(get_query_url()).'" class="link">'. WT_I18N::translate('Login') . '</a>';
+			'<a href="' . WT_LOGIN_URL.'?url=' . rawurlencode(get_query_url()).'">'. WT_I18N::translate('Login') . '</a>';
 	}
 }
 
@@ -325,7 +325,7 @@ function logout_link() {
 	if ($SEARCH_SPIDER) {
 		return '';
 	} else {
-		return '<a href="index.php?logout=1" class="link">' . WT_I18N::translate('Logout') . '</a>';
+		return '<a href="index.php?logout=1">' . WT_I18N::translate('Logout') . '</a>';
 	}
 }
 

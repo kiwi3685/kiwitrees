@@ -106,9 +106,7 @@ echo 					'<li>
 					</li>';
 				}
 			} else {
-				$class_name = 'login_block_WT_Module';
-				$module = new $class_name;
-echo			'<li><a href="#">' , WT_I18N::translate('Login') , '</a></li>';
+echo			'<li>', login_link(),'</li>';
 			}
 echo
 			WT_MenuBar::getFavoritesMenu(),

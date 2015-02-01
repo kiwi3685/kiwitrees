@@ -88,8 +88,6 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 .makeMenu ul li a:hover {color:#000;}
 .makeMenu li ul li:before,.makeMenu li:first-child:before {content:"";}
 .lang-active, .theme-active {font-weight:900;}
-#menu-mylogout a {margin:0; padding:0; text-align: left;}
-
 
 [dir=rtl] .makeMenu {display:block;float:left;margin:21px 0 0 10px;}
 [dir=rtl] .makeMenu li ul {left:auto;right:0;}
@@ -197,14 +195,6 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 #menu-help-faq              {background-position:left -624px;} [dir=rtl] #menu-help-faq              {background-position:right -624px;}
 #menu-help-wiki             {background-position:left -650px;} [dir=rtl] #menu-help-wiki             {background-position:right -650px;}
 #menu-help-technical        {background-position:left -676px;} [dir=rtl] #menu-help-technical        {background-position:right -676px;}
-
-/* MyPage Icons */
-#menu-mypage                {background-position:left -676px;} [dir=rtl] #menu-mypage                {background-position:right -676px;}
-#menu-myaccount             {background-position:left -676px;} [dir=rtl] #menu-myaccount             {background-position:right -676px;}
-#menu-mypedigree            {background-position:left -208px;} [dir=rtl] #menu-mypedigree            {background-position:right -208px;}
-#menu-myrecord              {background-position:left -520px;} [dir=rtl] #menu-myrecord              {background-position:right -520px;}
-#menu-admin                 {background-position:left -728px;} [dir=rtl] #menu-admin                 {background-position:right -728px;}
-#menu-tree li               {background-position:left -754px;} [dir=rtl] #menu-tree li               {background-position:right -754px;}
 
 /* Family Icons */
 #menu-fam-addchil           {background-position:left -858px;} [dir=rtl] #menu-fam-addchil           {background-position:right -858px;}
@@ -1072,7 +1062,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-media-shuffle        {width:10px;height:10px;background-image:url(../images/reorder.png);}
 .icon-media-stop           {width:20px;height:20px;background-image:url(../images/stop.png);}
 .icon-minus                {width:11px;height:11px;background-image:url(../images/minus.png);}
-.icon-mypage               {width:22px;height:25px;background-image:url(../images/mypage.png);}
+.icon-myaccount            {width:22px;height:25px;background-image:url(../images/mypage.png);}
 .icon-osm				   {width:16px;height:16px;background-image:url(../images/osm.png);}
 .icon-note                 {width:33px;height:35px;background-image:url(../images/notes.png);}
 .icon-note-list            {width:33px;height:35px;background-image:url(../images/notes.png);}
@@ -1429,7 +1419,7 @@ div.widget {
 	padding:5px;}
 }
 
-.widget_quicklinks .icon-mypage,
+.widget_quicklinks .icon-myaccount,
 .widget_quicklinks .icon-pedigree,
 .widget_quicklinks .icon-indis {
 	color: #555;

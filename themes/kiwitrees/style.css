@@ -562,6 +562,7 @@ textarea:requi#ff0000:invalid {
 .blockcontent,
 .blockcontent a {
 	font-size: 12px;
+	padding: 0;
 }
 
 .blockcontent .list_table {
@@ -619,10 +620,8 @@ textarea:requi#ff0000:invalid {
 /* Home page specific */
 #home-page #index_main_blocks {
 	background: #ddd;
-	height: 375px;
 	float: none;
 	width: 98%;
-	overflow: hidden;
 	margin: 6px auto;
 }
 
@@ -671,41 +670,15 @@ textarea:requi#ff0000:invalid {
 	border: 0;
 }
 
+#home-page .blockcontent {
+	padding: 10px;
+}
+
 #home-page #index_small_blocks .blockcontent {
 	padding: 5px 10px;
 }
 
-/* My page specific */
-#my-page .blockheader {
-	background: #a9adbc;
-	font-size: 16px;
-	height: 30px;
-	border-bottom: 5px solid #555;
-	overflow: hidden;
-	padding: 15px 10px 10px;
-	color: #555;
-	text-transform: uppercase;
-}
-
-#my-page #index_small_blocks > div,
-#my-page #index_main_blocks > div,
-#my-page #index_full_blocks > div {
-	background: #ddd;
-	margin: 6px 1%;
-	min-height: 300px;
-	overflow: hidden;
-}
-
-#my-page .blockcontent {
-	padding: 10px;
-}
-
 /* kiwitrees welcome block icons */
-.gedcom_block_block .icon-mypage {
-	font-size: 4em;
-	color: #555;
-}
-
 .gedcom_block_block .icon-pedigree {
 	font-size: 4em;
 	color: #555;
@@ -3877,7 +3850,7 @@ a.icon-udarrow:hover {
 /* font-awesome icons */
 .icon-admin				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit; cursor: pointer;} /* fa-cogs */ 
 .icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; cursor: help; margin: 0 5px;} /* fa-question-circle */ 
-.icon-mypage			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-university */ 
+.icon-myaccount			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-university */ 
 .icon-pedigree			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-sitemap */ 
 .icon-indis				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-male */ 
 .icon-user_add			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-user */ 
@@ -5390,7 +5363,7 @@ div.widget {
 	padding: 0 5px;
 }
 
-.widget_quicklinks .icon-mypage,
+.widget_quicklinks .icon-myaccount,
 .widget_quicklinks .icon-pedigree,
 .widget_quicklinks .icon-indis {
 	color: #555;

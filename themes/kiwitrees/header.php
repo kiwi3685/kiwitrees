@@ -128,7 +128,7 @@ if ($view!='simple') {
 								echo $menu->getMenuAsList();
 							}
 							if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-		echo 					'<li>
+								echo '<li>
 									<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
 										WT_I18N::translate('Pending changes'), '
 									</a>
@@ -137,7 +137,7 @@ if ($view!='simple') {
 						} else {
 							$class_name = 'login_block_WT_Module';
 							$module = new $class_name;
-		echo				'<li>
+							echo '<li>
 								<a href="#">'.
 									(WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')) , '
 								</a>

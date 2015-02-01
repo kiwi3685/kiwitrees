@@ -121,7 +121,7 @@ class WT_MenuBar {
 			$menu->addSubmenu($submenu);
 		}
 		//-- logout
-		$submenu = new WT_Menu(logout_link(), 'menu-logout');
+		$submenu = new WT_Menu(logout_link(), '', 'menu-logout');
 		$menu->addSubmenu($submenu);
 		
 		return $menu;
