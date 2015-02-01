@@ -30,8 +30,6 @@ $controller
 	->setPageTitle(WT_I18N::translate('Changes'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'library/php-diff/lib/Diff.php';
-require_once WT_ROOT.'library/php-diff/lib/Diff/Renderer/Html/SideBySide.php';
 
 $statuses=array(
 	''        =>'',
@@ -183,26 +181,10 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$aaData=WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($aaData as &$row) {
-
-		$a = explode("\n", htmlspecialchars($row[3]));
-		$b = explode("\n", htmlspecialchars($row[4]));
-
-		// Generate a side by side diff
-		$renderer = new Diff_Renderer_Html_SideBySide;
-
-		// Options for generating the diff
-		$options = array(
-			//'ignoreWhitespace' => true,
-			//'ignoreCase' => true,
-		);
-
-		// Initialize the diff class
-		$diff = new Diff($a, $b, $options);
-
 		$row[1]=WT_I18N::translate($row[1]);
 		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$row[6].'" target="_blank">'.$row[2].'</a>';
-		$row[3]=$diff->Render($renderer);
-		$row[4]='';
+		$row[3]='<pre>'.htmlspecialchars($row[3]).'</pre>';
+		$row[4]='<pre>'.htmlspecialchars($row[4]).'</pre>';
 	}
 	
 	// Total filtered/unfiltered rows
@@ -239,7 +221,7 @@ $controller
 			/* Status      */ {},
 			/* Record      */ {},
 			/* Old data    */ {"sClass":"raw_gedcom"},
-			/* New data    */ { bVisible:false },
+			/* New data    */ {"sClass":"raw_gedcom"},
 			/* User        */ {},
 			/* Family tree */ {}
 			]
@@ -278,7 +260,9 @@ echo
 				'<td>',
 					WT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', htmlspecialchars($oldged), '"> ',
 				'</td>',
-				'<td></td>',
+				'<td>',
+					WT_I18N::translate('New data'), '<br><input class="log-filter" name="newged" value="', htmlspecialchars($newged), '"> ',
+				'</td>',
 				'<td>',
 					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
 				'</td>',
@@ -304,8 +288,8 @@ if ($action) {
 					'<th>', WT_I18N::translate('Timestamp'), '</th>',
 					'<th>', WT_I18N::translate('Status'), '</th>',
 					'<th>', WT_I18N::translate('Record'), '</th>',
-					'<th>', WT_I18N::translate('GEDCOM Data'), '</th>',
-					'<th></th>',
+					'<th>', WT_I18N::translate('Old data'), '</th>',
+					'<th>', WT_I18N::translate('New data'), '</th>',
 					'<th>', WT_I18N::translate('User'), '</th>',
 					'<th>', WT_I18N::translate('Family tree'), '</th>',
 				'</tr>',

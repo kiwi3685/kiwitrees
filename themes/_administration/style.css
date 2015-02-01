@@ -250,13 +250,20 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 input.log-date {text-align:center;}
 #log_list, #change_list { table-layout:fixed; width:100%}
 #log_list th {min-width:80px;white-space:nowrap;}
-#log_list th:nth-child(3) {width:50%;}
-#change_list th {min-width:50px;white-space:nowrap;}
-#change_list th:nth-child(4), #change_list th:nth-child(5) {width:30%;}
+#log_list th:nth-child(3), #change_list th:nth-child(4) {width:50%;}
+#change_list th {vertical-align: top; white-space:nowrap;}
 #log_list td, #change_list td {vertical-align:top;}
 #log_list pre, #change_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap:break-word;-ms-word-break:break-all;word-break:break-all;-webkit-hyphens:auto;-moz-hyphens:auto; hyphens:auto;}
 #log_list a, #change_list a {color:#0000ff;}
 #log_list a:hover, #log_list a:visited, #change_list a:hover, #change_list a:visited {color:#ff0000;}
+/* CHANGE LOGS - phpdiff */
+.dataTables_wrapper table.DifferencesSideBySide {border-collapse:collapse; table-layout:fixed;}
+.dataTables_wrapper table.DifferencesSideBySide th {height: auto; padding: 0 3px; background-color: #c9c9c9; font-weight: normal; width: 5%;}
+.dataTables_wrapper table.DifferencesSideBySide td.Left {width: 45%;}
+#change_list tbody.ChangeReplace, #change_list tbody.ChangeInsert, #change_list tbody.ChangeDelete {background-color: yellow;}
+#change_list tbody.ChangeReplace ins, #change_list tbody.ChangeInsert ins, #change_list tbody.ChangeDelete ins {color: red; text-decoration: initial;}
+#change_list tbody.ChangeReplace del, #change_list tbody.ChangeInsert del, #change_list tbody.ChangeDelete del {color: blue; text-decoration: initial;}
+
  
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
