@@ -32,22 +32,20 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo '</div>'; // <div id="content">
+
 if ($view!='simple') {
-	echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
-	echo '<br>';
-	if (contact_links() != '') echo contact_links();
-	echo '<br>';
-	echo '<p class="logo">', 
-		WT_I18N::translate('Powered by '), '
-		<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>
-	</p>';
-	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
-		echo execution_stats();
-	}
-	if (exists_pending_change()) {
-		echo '<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;">';
-		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
-		echo '</a>';
-	}
+	echo '
+		<div id="footer" class="', $TEXT_DIRECTION, '">
+			<br>';
+			if (contact_links() != '') echo contact_links();
+	echo '
+			<br>
+			<p class="logo">', 
+				WT_I18N::translate('Powered by '), '
+				<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>
+			</p>';
+			if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
+				echo execution_stats();
+			}
 	echo '</div>'; // <div id="footer">
 }
