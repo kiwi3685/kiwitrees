@@ -93,30 +93,41 @@ if ($view!='simple') {
 		'<div id="header">',
 		'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
 		'<ul id="extra-menu" class="makeMenu">';
-	if (WT_USER_ID) {
-		echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
-	} else {
-		echo '<li>', login_link(), '</li> ';
-	}
-	echo
-		WT_MenuBar::getFavoritesMenu(),
-		WT_MenuBar::getThemeMenu(),
-		WT_MenuBar::getLanguageMenu(),
+			if (WT_USER_ID) {
+				$menu = WT_MenuBar::getMyAccountMenu();
+				if ($menu) {
+					echo $menu->getMenuAsList();
+				}
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+echo 					'<li>
+						<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+							WT_I18N::translate('Pending changes'), '
+						</a>
+					</li>';
+				}
+			} else {
+				$class_name = 'login_block_WT_Module';
+				$module = new $class_name;
+echo			'<li><a href="#">' , WT_I18N::translate('Login') , '</a></li>';
+			}
+echo
+			WT_MenuBar::getFavoritesMenu(),
+			WT_MenuBar::getThemeMenu(),
+			WT_MenuBar::getLanguageMenu(),
 		'</ul>',
 		'<div class="header_search">',
-		'<form action="search.php" method="post">',
-		'<input type="hidden" name="action" value="general">',
-		'<input type="hidden" name="topsearch" value="yes">',
-		'<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-		'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
-		'</form>',
+			'<form action="search.php" method="post">',
+				'<input type="hidden" name="action" value="general">',
+				'<input type="hidden" name="topsearch" value="yes">',
+				'<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+				'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
+			'</form>',
 		'</div>',
 		'<div id="topMenu">',
 		'<ul id="main-menu">';
 			if ($ctype != 'gedcom') {
 				echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">', WT_I18N::translate('Widgets'), '</span></a></li>';
 			}
-//			implode('', WT_MenuBar::getModuleMenus()),
 			foreach (WT_MenuBar::getModuleMenus() as $menu) {
 				if (!strpos($menu, '>'.WT_I18N::translate('My page').'<')) {
 					echo $menu->getMenuAsList();
