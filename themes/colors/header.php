@@ -165,8 +165,8 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 				echo '<li id="widget-button" class="icon-widget"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
 			}
 			foreach ($menu_items as $menu) {
-				if (!strpos($menu, '>'.WT_I18N::translate('My page').'<')) {								
-					echo getMenuAsCustomList($menu);
+				if ($menu) {
+					echo $menu->getMenuAsList();
 				}
 			}
 			unset($menu_items, $menu);

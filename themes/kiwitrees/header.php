@@ -166,7 +166,7 @@ if ($view!='simple') {
 							echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
 						}
 						foreach (WT_MenuBar::getModuleMenus() as $menu) {
-							if (!strpos($menu, '>'.WT_I18N::translate('My page').'<')) {
+							if ($menu) {
 								echo $menu->getMenuAsList();
 							}
 						}

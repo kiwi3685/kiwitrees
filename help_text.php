@@ -1195,7 +1195,7 @@ case 'edituser_contact_meth':
 	$text.='<br/><br/><dl><dt>';
 	$text.=WT_I18N::translate('Internal messaging');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, the kiwitrees internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block.');
+	$text.=WT_I18N::translate('With this option, the kiwitrees internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block if it is included among your widgts.  If you have removed this block from your widget bar, you will not see any messages.  They will, however, show up as soon as you configure the widget bar to again have the Message block.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('Internal messaging with emails');
 	$text.='</dt><dd>';
@@ -1203,7 +1203,7 @@ case 'edituser_contact_meth':
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('Mailto link');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to kiwitrees will not be used at all, and there will never be any messages in the Message block on your personal My Page.');
+	$text.=WT_I18N::translate('With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to kiwitrees will not be used at all, and there will never be any messages in the Message block on your widget bar.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('No contact method');
 	$text.='</dt><dd>';
@@ -1264,7 +1264,7 @@ case 'google_chart_surname':
 
 case 'header_favorites':
 	$title = WT_I18N::translate('Favorites');
-	$text = WT_I18N::translate('The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br><br>More help about adding Favorites is available in your personalized My Page.');
+	$text = WT_I18N::translate('The Favorites drop-down list shows the favorites that you have selected on your widget bar.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br><br>More help about adding Favorites is available in your widget bar.');
 	break;
 
 case 'import_gedcom':

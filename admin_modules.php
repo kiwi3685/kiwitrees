@@ -157,7 +157,7 @@ $controller
 									<td>', $module instanceof WT_Module_Menu    ? WT_I18N::translate('Menu') : '-', '</td>
 									<td>', $module instanceof WT_Module_Tab     ? WT_I18N::translate('Tab') : '-', '</td>
 									<td>', $module instanceof WT_Module_Sidebar ? WT_I18N::translate('Sidebar') : '-', '</td>
-									<td>', $module instanceof WT_Module_Block   ? (($module->isUserBlock() ? '<div>'.WT_I18N::translate('My page').'</div>' : '').($module->isGedcomBlock() ? '<div>'.WT_I18N::translate('Home page').'</div>' : '')) : '-', '</td>
+									<td>', $module instanceof WT_Module_Block   ? WT_I18N::translate('Home page') : '-', '</td>
 									<td>', $module instanceof WT_Module_Widget  ? WT_I18N::translate('Widget') : '-', '</td>
 									<td>', $module instanceof WT_Module_Chart   ? WT_I18N::translate('Chart') : '-', '</td>
 									<td>', $module instanceof WT_Module_Report  ? WT_I18N::translate('Report') : '-', '</td>

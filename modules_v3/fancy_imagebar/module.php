@@ -39,7 +39,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('An imagebar with small images on your home page and/or my page between header and content.');
+		return /* I18N: Description of the module */ WT_I18N::translate('An imagebar with small images on your home page between header and content.');
 	}
 
 	// Get module options
@@ -52,8 +52,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if (empty($FIB_OPTIONS) || (is_array($FIB_OPTIONS) && !array_key_exists($key, $FIB_OPTIONS))) {
 			$FIB_OPTIONS[$key] = array(
 				'IMAGES' 				=> '1', // All images
-				'HOMEPAGE'				=> '1',
-				'MYPAGE'				=> '1',
 				'RANDOM' 				=> '1',
 				'TONE'					=> '0',
 				'SEPIA' 				=> '30',
@@ -294,11 +292,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<h3>'.WT_I18N::translate('Options').':</h3>
 				<div id="options">
 					<div class="field">
-						<label class="label">'.WT_I18N::translate('Show Fancy Imagebar on').':</label>'.
-						two_state_checkbox('NEW_FIB_OPTIONS[HOMEPAGE]', $this->options('homepage')).WT_I18N::translate('Home page').
-						two_state_checkbox('NEW_FIB_OPTIONS[MYPAGE]', $this->options('mypage')).WT_I18N::translate('My page').'
-					</div>
-					<div class="field">
 						<label class="label">'.WT_I18N::translate('Random images').':</label>'.
 						 edit_field_yes_no('NEW_FIB_OPTIONS[RANDOM]', $this->options('random')).'
 					</div>
@@ -485,7 +478,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		if ($this->options('images') !== 0 && WT_SCRIPT_NAME === 'index.php') {
 			if ($SEARCH_SPIDER) return null;			
-			if ($ctype=='gedcom' && $this->options('homepage') == 1 || ($ctype=='user' && $this->options('mypage') == 1)) {
+			if ($ctype=='gedcom') {
 				
 				// add js file to set a few theme depending styles
 				$controller->addExternalJavascript(WT_MODULES_DIR.$this->getName().'/style.js');

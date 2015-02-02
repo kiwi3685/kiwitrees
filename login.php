@@ -222,7 +222,7 @@ case 'requestpw':
 		$mail_body .= WT_I18N::translate('Password') . ": " . $user_new_pw . "\r\n\r\n";
 		$mail_body .= WT_I18N::translate('Recommendation:') . "\r\n";
 		$mail_body .= WT_I18N::translate('Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure.') . "\r\n\r\n";
-		$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the «My Page» menu and fill in the password fields to change your password.') . "\r\n\r\n";
+		$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password.') . "\r\n\r\n";
 
 		if ($TEXT_DIRECTION=='rtl') {
 			$mail_body .= "<a href=\"".WT_SERVER_NAME.WT_SCRIPT_PATH."\">".WT_SERVER_NAME.WT_SCRIPT_PATH."</a>";

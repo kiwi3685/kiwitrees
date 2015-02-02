@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-02-02 11:11+1200\n"
-"PO-Revision-Date: 2015-02-02 11:12+1200\n"
+"POT-Creation-Date: 2015-02-02 14:56+1200\n"
+"PO-Revision-Date: 2015-02-02 14:56+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -224,7 +224,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:80
 #: includes/functions/functions_edit.php:134
 #: includes/functions/functions_edit.php:990 includes/media_reorder.php:179
-#: index_edit.php:339
+#: index_edit.php:338
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:592
 #: modules_v3/custom_js/module.php:72 modules_v3/faq/module.php:192
 #: modules_v3/gallery/module.php:479
@@ -237,7 +237,7 @@ msgstr ""
 msgid "save"
 msgstr ""
 
-#: admin.php:36 library/WT/MenuBar.php:84 library/WT/MenuBar.php:120
+#: admin.php:36 library/WT/MenuBar.php:81
 #: modules_v3/widget_quicklinks/module.php:71
 #: themes/_administration/header.php:91
 msgid "Administration"
@@ -307,7 +307,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1392
 #: includes/functions/functions_print_lists.php:1483 indilist.php:133
 #: indilist.php:136 library/WT/Controller/Search.php:570
-#: library/WT/MenuBar.php:339 mediaviewer.php:139
+#: library/WT/MenuBar.php:300 mediaviewer.php:139
 #: modules_v3/gedcom_stats/module.php:94
 #: modules_v3/gedcom_stats/module.php:301
 #: modules_v3/googlemap/placehierarchy.php:296 modules_v3/html/module.php:173
@@ -325,7 +325,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1051
 #: includes/functions/functions_print_lists.php:1192
 #: includes/functions/functions_print_lists.php:1394
-#: library/WT/Controller/Search.php:571 library/WT/MenuBar.php:341
+#: library/WT/Controller/Search.php:571 library/WT/MenuBar.php:302
 #: mediaviewer.php:142 modules_v3/gedcom_stats/module.php:102
 #: modules_v3/gedcom_stats/module.php:317
 #: modules_v3/googlemap/placehierarchy.php:296 modules_v3/html/module.php:189
@@ -341,7 +341,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1196
 #: includes/functions/functions_print_lists.php:1290
 #: includes/functions/functions_print_lists.php:1396
-#: library/WT/Controller/Search.php:572 library/WT/MenuBar.php:352
+#: library/WT/Controller/Search.php:572 library/WT/MenuBar.php:313
 #: mediaviewer.php:145 modules_v3/album/album_print_media.php:316
 #: modules_v3/gedcom_stats/module.php:105
 #: modules_v3/gedcom_stats/module.php:325 modules_v3/html/module.php:193
@@ -356,7 +356,7 @@ msgstr ""
 msgid "Sources"
 msgstr ""
 
-#: admin.php:230 admin.php:268 library/WT/MenuBar.php:349 mediaviewer.php:148
+#: admin.php:230 admin.php:268 library/WT/MenuBar.php:310 mediaviewer.php:148
 #: modules_v3/gedcom_stats/module.php:111
 #: modules_v3/gedcom_stats/module.php:341 modules_v3/html/module.php:201
 #: modules_v3/widget_stats/module.php:147
@@ -368,7 +368,7 @@ msgstr ""
 #: admin.php:235 admin.php:269 admin_site_use.php:62
 #: includes/functions/functions_print_lists.php:1053
 #: includes/functions/functions_print_lists.php:1194
-#: library/WT/MenuBar.php:346 medialist.php:34
+#: library/WT/MenuBar.php:307 medialist.php:34
 #: modules_v3/gedcom_stats/module.php:108
 #: modules_v3/gedcom_stats/module.php:333 modules_v3/html/module.php:197
 #: modules_v3/widget_stats/module.php:138
@@ -392,7 +392,7 @@ msgstr ""
 msgid "Recent changes"
 msgstr ""
 
-#: admin.php:264 calendar.php:135 library/WT/MenuBar.php:417
+#: admin.php:264 calendar.php:135 library/WT/MenuBar.php:378
 msgid "Day"
 msgstr ""
 
@@ -400,7 +400,7 @@ msgstr ""
 msgid "Week"
 msgstr ""
 
-#: admin.php:264 calendar.php:151 library/WT/MenuBar.php:420
+#: admin.php:264 calendar.php:151 library/WT/MenuBar.php:381
 msgid "Month"
 msgstr ""
 
@@ -481,7 +481,7 @@ msgstr ""
 #: admin_media.php:510 admin_media.php:601 admin_trees_config.php:231
 #: includes/functions/functions_print_lists.php:1390 inverselink.php:70
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:77
-#: themes/_administration/header.php:183
+#: themes/_administration/header.php:182
 msgid "Media"
 msgstr ""
 
@@ -532,7 +532,7 @@ msgid "Media type"
 msgstr ""
 
 #: admin_media_upload.php:35 admin_media_upload.php:180 help_text.php:1450
-#: themes/_administration/header.php:186
+#: themes/_administration/header.php:185
 msgid "Upload media files"
 msgstr ""
 
@@ -594,7 +594,7 @@ msgid "Report"
 msgstr ""
 
 #: admin_module_sidebar.php:75 admin_modules.php:130 admin_modules.php:159
-#: themes/_administration/header.php:196
+#: themes/_administration/header.php:195
 msgid "Sidebar"
 msgstr ""
 
@@ -619,20 +619,12 @@ msgid "Chart"
 msgstr ""
 
 #: admin_modules.php:135 admin_modules.php:164 admin_trees_config.php:235
-#: admin_users.php:227 admin_users.php:420 edituser.php:152 help_text.php:992
-#: library/WT/MenuBar.php:490
+#: admin_users.php:227 admin_users.php:417 edituser.php:152 help_text.php:992
+#: library/WT/MenuBar.php:451
 msgid "Theme"
 msgstr ""
 
-#: admin_modules.php:160 admin_users.php:236 library/WT/MenuBar.php:62
-#: library/WT/MenuBar.php:65 modules_v3/fancy_imagebar/module.php:299
-#: themes/colors/header.php:168 themes/kiwitrees/header.php:169
-#: themes/webtrees/header.php:130 themes/xenea/header.php:166
-msgid "My page"
-msgstr ""
-
 #: admin_modules.php:160 library/WT/MenuBar.php:36
-#: modules_v3/fancy_imagebar/module.php:298
 #: modules_v3/gedcom_block/module.php:35
 msgid "Home page"
 msgstr ""
@@ -696,7 +688,7 @@ msgid "You need to login again, using your PhpGedView username and password."
 msgstr ""
 
 #: admin_pgv_to_wt.php:1066 admin_trees_append.php:177
-#: admin_trees_download.php:141 admin_trees_manage.php:173 admin_users.php:560
+#: admin_trees_download.php:141 admin_trees_manage.php:173 admin_users.php:557
 #: login.php:186 login.php:421 modules_v3/login_block/module.php:108
 #: setup.php:204 setup.php:228 setup.php:297 setup.php:382 setup.php:438
 msgid "continue"
@@ -852,10 +844,10 @@ msgstr ""
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237
 #: admin_site_logs.php:260 admin_trees_duplicates.php:140
 #: admin_trees_manage.php:184 admin_trees_places.php:103
-#: admin_trees_unlinked.php:59 admin_users.php:247 admin_users.php:444
+#: admin_trees_unlinked.php:59 admin_users.php:244 admin_users.php:441
 #: edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:64
 #: modules_v3/extra_menus/module.php:362
-#: modules_v3/fancy_imagebar/module.php:264
+#: modules_v3/fancy_imagebar/module.php:262
 #: modules_v3/fancy_treeview/module.php:526 modules_v3/faq/module.php:356
 #: modules_v3/gallery/module.php:484 modules_v3/googlemap/module.php:1462
 #: modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:446
@@ -967,7 +959,7 @@ msgstr ""
 #: admin_site_config.php:65 includes/functions/functions_print.php:317
 #: login.php:115 login.php:166 modules_v3/login_block/module.php:35
 #: modules_v3/login_block/module.php:68 modules_v3/login_block/module.php:87
-#: themes/kiwitrees/header.php:142 themes/levy/header.php:119
+#: themes/kiwitrees/header.php:142
 msgid "Login"
 msgstr ""
 
@@ -1040,7 +1032,7 @@ msgstr ""
 msgid "Use password"
 msgstr ""
 
-#: admin_site_config.php:145 admin_users.php:385 admin_users.php:583
+#: admin_site_config.php:145 admin_users.php:382 admin_users.php:580
 #: edituser.php:127 help_text.php:752 help_text.php:1499 login.php:156
 #: login.php:220 login.php:296 login.php:339 login.php:446
 #: modules_v3/login_block/module.php:77 modules_v3/todo/module.php:100
@@ -1048,7 +1040,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: admin_site_config.php:149 admin_users.php:218 admin_users.php:397
+#: admin_site_config.php:149 admin_users.php:218 admin_users.php:394
 #: edituser.php:144 help_text.php:747 help_text.php:1307 login.php:161
 #: login.php:222 login.php:450 modules_v3/login_block/module.php:82
 #: setup.php:424
@@ -1396,13 +1388,13 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: admin_trees_config.php:257 admin_users.php:417 admin_users.php:587
+#: admin_trees_config.php:257 admin_users.php:414 admin_users.php:584
 #: edituser.php:148 help_text.php:616 library/WT/Gedcom/Tag.php:243
-#: library/WT/MenuBar.php:508 themes/uti-family/functions.php:11
+#: library/WT/MenuBar.php:469 themes/uti-family/functions.php:11
 msgid "Language"
 msgstr ""
 
-#: admin_trees_config.php:262 admin_users.php:248 admin_users.php:445
+#: admin_trees_config.php:262 admin_users.php:245 admin_users.php:442
 #: edituser.php:137 help_text.php:1132 modules_v3/gedcom_block/module.php:53
 msgid "Default individual"
 msgstr ""
@@ -1572,8 +1564,8 @@ msgstr ""
 #: includes/functions/functions_print.php:1050
 #: includes/functions/functions_print.php:1106
 #: includes/functions/functions_print.php:1149
-#: includes/functions/functions_print.php:1205 index_edit.php:295
-#: index_edit.php:313 library/WT/Controller/Individual.php:292
+#: includes/functions/functions_print.php:1205 index_edit.php:294
+#: index_edit.php:312 library/WT/Controller/Individual.php:292
 #: lifespan.php:272 modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:102
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:173
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
@@ -1660,7 +1652,7 @@ msgstr ""
 msgid "Display surnames in all CAPS"
 msgstr ""
 
-#: admin_trees_config.php:777 library/WT/MenuBar.php:327
+#: admin_trees_config.php:777 library/WT/MenuBar.php:288
 msgid "Lists"
 msgstr ""
 
@@ -1714,7 +1706,7 @@ msgid "The date and time of the last update"
 msgstr ""
 
 #: admin_trees_config.php:818 admin_trees_config.php:956
-#: library/WT/MenuBar.php:140 modules_v3/charts/help_text.php:34
+#: library/WT/MenuBar.php:101 modules_v3/charts/help_text.php:34
 #: modules_v3/charts/module.php:35
 msgid "Charts"
 msgstr ""
@@ -1998,7 +1990,7 @@ msgstr ""
 msgid "Use GeoNames database for autocomplete on places"
 msgstr ""
 
-#: admin_trees_config.php:1320 admin_users.php:228 admin_users.php:423
+#: admin_trees_config.php:1320 admin_users.php:228 admin_users.php:420
 #: edituser.php:155
 msgid "<default theme>"
 msgstr ""
@@ -2018,7 +2010,7 @@ msgstr ""
 msgid "Apply privacy settings?"
 msgstr ""
 
-#: admin_trees_download.php:117 admin_users.php:467 famlist.php:116
+#: admin_trees_download.php:117 admin_users.php:464 famlist.php:116
 #: famlist.php:146 indilist.php:116 indilist.php:146 library/WT/Stats.php:764
 #: modules_v3/clippings/module.php:202 modules_v3/clippings/module.php:582
 #: modules_v3/families/module.php:152 modules_v3/individuals/module.php:151
@@ -2460,19 +2452,19 @@ msgstr ""
 msgid "Are you sure you want to masquerade as “%s”?"
 msgstr ""
 
-#: admin_users.php:215 admin_users.php:381 help_text.php:1411
+#: admin_users.php:215 admin_users.php:378 help_text.php:1411
 msgid "Administrator"
 msgstr ""
 
-#: admin_users.php:221 admin_users.php:407 edituser.php:165 help_text.php:1193
+#: admin_users.php:221 admin_users.php:404 edituser.php:165 help_text.php:1193
 msgid "Preferred contact method"
 msgstr ""
 
-#: admin_users.php:224 admin_users.php:399 help_text.php:1473
+#: admin_users.php:224 admin_users.php:396 help_text.php:1473
 msgid "Automatically approve changes made by this user"
 msgstr ""
 
-#: admin_users.php:230 admin_users.php:411 edituser.php:167
+#: admin_users.php:230 admin_users.php:408 edituser.php:167
 msgid "Visible to other users when online"
 msgstr ""
 
@@ -2481,29 +2473,25 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: admin_users.php:237 index.php:137 index.php:138
-msgid "Change the blocks on this page"
-msgstr ""
-
-#: admin_users.php:245 admin_users.php:438
+#: admin_users.php:242 admin_users.php:435
 msgid "Family tree access and settings"
 msgstr ""
 
-#: admin_users.php:249 admin_users.php:446 edituser.php:133 help_text.php:1215
+#: admin_users.php:246 admin_users.php:443 edituser.php:133 help_text.php:1215
 #: help_text.php:1376 help_text.php:1478
 msgid "Individual record"
 msgstr ""
 
-#: admin_users.php:250 admin_users.php:447 help_text.php:1386
+#: admin_users.php:247 admin_users.php:444 help_text.php:1386
 #: library/WT/Gedcom/Tag.php:312
 msgid "Role"
 msgstr ""
 
-#: admin_users.php:251 admin_users.php:448 help_text.php:722
+#: admin_users.php:248 admin_users.php:445 help_text.php:722
 msgid "Restrict to immediate family"
 msgstr ""
 
-#: admin_users.php:266 includes/functions/functions_edit.php:166
+#: admin_users.php:263 includes/functions/functions_edit.php:166
 #: includes/functions/functions_edit.php:173
 #: includes/functions/functions_edit.php:1463
 #: includes/functions/functions_print_facts.php:1259
@@ -2519,144 +2507,144 @@ msgstr ""
 msgid "no"
 msgstr ""
 
-#: admin_users.php:276 edituser.php:54 login.php:261
+#: admin_users.php:273 edituser.php:54 login.php:261
 msgid ""
 "Duplicate user name.  A user with that user name already exists.  Please "
 "choose another user name."
 msgstr ""
 
-#: admin_users.php:279 edituser.php:56 login.php:263
+#: admin_users.php:276 edituser.php:56 login.php:263
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr ""
 
-#: admin_users.php:282 edituser.php:106
+#: admin_users.php:279 edituser.php:106
 msgid "Passwords do not match."
 msgstr ""
 
-#: admin_users.php:330 edituser.php:96
+#: admin_users.php:327 edituser.php:96
 msgid "You must enter a user name."
 msgstr ""
 
-#: admin_users.php:335 edituser.php:101
+#: admin_users.php:332 edituser.php:101
 msgid "You must enter a real name."
 msgstr ""
 
-#: admin_users.php:340
+#: admin_users.php:337
 msgid "You must enter a password."
 msgstr ""
 
-#: admin_users.php:345
+#: admin_users.php:342
 msgid "You must enter an email address."
 msgstr ""
 
-#: admin_users.php:350
+#: admin_users.php:347
 msgid "You must confirm the password."
 msgstr ""
 
-#: admin_users.php:355 edituser.php:111
+#: admin_users.php:352 edituser.php:111
 msgid "Passwords must contain at least 6 characters."
 msgstr ""
 
-#: admin_users.php:368
+#: admin_users.php:365
 msgid ""
 "You must specify an individual record before you can restrict the user to "
 "their immediate family."
 msgstr ""
 
-#: admin_users.php:379 admin_users.php:584 edituser.php:129 help_text.php:1366
+#: admin_users.php:376 admin_users.php:581 edituser.php:129 help_text.php:1366
 #: login.php:297 login.php:388
 msgid "Real name"
 msgstr ""
 
-#: admin_users.php:387
+#: admin_users.php:384
 msgid "Approved by administrator"
 msgstr ""
 
-#: admin_users.php:391 edituser.php:150 help_text.php:1220
+#: admin_users.php:388 edituser.php:150 help_text.php:1220
 #: library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198
 #: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:715 login.php:393
 #: setup.php:432
 msgid "Email address"
 msgstr ""
 
-#: admin_users.php:393
+#: admin_users.php:390
 msgid "Email verified"
 msgstr ""
 
-#: admin_users.php:398 login.php:404
+#: admin_users.php:395 login.php:404
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin_users.php:402 edituser.php:146 help_text.php:1312 login.php:408
+#: admin_users.php:399 edituser.php:146 help_text.php:1312 login.php:408
 msgid "Confirm password"
 msgstr ""
 
-#: admin_users.php:403 login.php:409
+#: admin_users.php:400 login.php:409
 msgid "Type the password again."
 msgstr ""
 
-#: admin_users.php:433
+#: admin_users.php:430
 msgid "Admin comments on user"
 msgstr ""
 
-#: admin_users.php:481 includes/functions/functions_print_facts.php:271
+#: admin_users.php:478 includes/functions/functions_print_facts.php:271
 msgid "No"
 msgstr ""
 
-#: admin_users.php:492
+#: admin_users.php:489
 msgid "Create User"
 msgstr ""
 
-#: admin_users.php:506
+#: admin_users.php:503
 msgid ""
 "Number of months since the last login for a user's account to be considered "
 "inactive: "
 msgstr ""
 
-#: admin_users.php:515 relationship.php:92
+#: admin_users.php:512 relationship.php:92
 msgid "Options:"
 msgstr ""
 
-#: admin_users.php:526
+#: admin_users.php:523
 msgid "User's account has been inactive too long: "
 msgstr ""
 
-#: admin_users.php:537
+#: admin_users.php:534
 msgid "User didn't verify within 7 days."
 msgstr ""
 
-#: admin_users.php:547
+#: admin_users.php:544
 msgid "User not verified by administrator."
 msgstr ""
 
-#: admin_users.php:554
+#: admin_users.php:551
 msgid "Nothing found to cleanup"
 msgstr ""
 
-#: admin_users.php:571
+#: admin_users.php:568
 msgid "Deleted user: "
 msgstr ""
 
-#: admin_users.php:585
+#: admin_users.php:582
 msgid "Email"
 msgstr ""
 
-#: admin_users.php:589
+#: admin_users.php:586
 msgid "Date registered"
 msgstr ""
 
-#: admin_users.php:591
+#: admin_users.php:588
 msgid "Last logged in"
 msgstr ""
 
-#: admin_users.php:592
+#: admin_users.php:589
 msgid "Verified"
 msgstr ""
 
-#: admin_users.php:593
+#: admin_users.php:590
 msgid "Approved"
 msgstr ""
 
@@ -2734,12 +2722,12 @@ msgstr ""
 msgid "Branches of the %s family"
 msgstr ""
 
-#: branches.php:46 library/WT/MenuBar.php:342
+#: branches.php:46 library/WT/MenuBar.php:303
 msgid "Branches"
 msgstr ""
 
 #: branches.php:75 library/WT/Controller/Search.php:230
-#: library/WT/MenuBar.php:462 search.php:236 search.php:242
+#: library/WT/MenuBar.php:423 search.php:236 search.php:242
 msgid "Phonetic search"
 msgstr ""
 
@@ -2786,7 +2774,7 @@ msgstr ""
 msgid "In This Year ..."
 msgstr ""
 
-#: calendar.php:168 library/WT/MenuBar.php:423
+#: calendar.php:168 library/WT/MenuBar.php:384
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1043
 #: search.php:179
 msgid "Year"
@@ -3281,7 +3269,7 @@ msgid ""
 msgstr ""
 
 #: edit_interface.php:2088 edit_interface.php:2103 edit_interface.php:2114
-#: edit_interface.php:2125 index_edit.php:293 index_edit.php:311
+#: edit_interface.php:2125 index_edit.php:292 index_edit.php:310
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:109
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:210
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:565
@@ -3346,7 +3334,7 @@ msgstr ""
 msgid "Entry Text:"
 msgstr ""
 
-#: edituser.php:122 library/WT/MenuBar.php:68 library/WT/MenuBar.php:104
+#: edituser.php:122 library/WT/MenuBar.php:65
 #: modules_v3/widget_quicklinks/module.php:64
 msgid "My account"
 msgstr ""
@@ -5222,10 +5210,10 @@ msgid ""
 "With this option, the kiwitrees internal messaging system will be used and "
 "no emails will be sent.<br><br>You will receive only <u>internal</u> "
 "messages from the other users.  When another site user sends you a message, "
-"that message will appear in the Message block on your personal My Page.  If "
-"you have removed this block from your My Page, you will not see any "
-"messages.  They will, however, show up as soon as you configure My Page to "
-"again have the Message block."
+"that message will appear in the Message block if it is included among your "
+"widgts.  If you have removed this block from your widget bar, you will not "
+"see any messages.  They will, however, show up as soon as you configure the "
+"widget bar to again have the Message block."
 msgstr ""
 
 #: help_text.php:1200 includes/functions/functions_edit.php:257
@@ -5250,7 +5238,7 @@ msgid ""
 "With this option, you will only receive email messages at the address you "
 "configured on your Account page.  The messaging system internal to kiwitrees "
 "will not be used at all, and there will never be any messages in the Message "
-"block on your personal My Page."
+"block on your widget bar."
 msgstr ""
 
 #: help_text.php:1208
@@ -5349,7 +5337,7 @@ msgid ""
 "you leave this field empty, the most common surname will be used."
 msgstr ""
 
-#: help_text.php:1266 library/WT/MenuBar.php:547
+#: help_text.php:1266 library/WT/MenuBar.php:508
 #: modules_v3/gedcom_favorites/module.php:35
 #: modules_v3/widget_favorites/module.php:35
 msgid "Favorites"
@@ -5358,11 +5346,11 @@ msgstr ""
 #: help_text.php:1267
 msgid ""
 "The Favorites drop-down list shows the favorites that you have selected on "
-"your personalized My Page.  It also shows the favorites that the site "
-"administrator has selected for the currently active GEDCOM.  Clicking on one "
-"of the favorites entries will take you directly to the Individual "
-"Information page of that person.<br><br>More help about adding Favorites is "
-"available in your personalized My Page."
+"your widget bar.  It also shows the favorites that the site administrator "
+"has selected for the currently active GEDCOM.  Clicking on one of the "
+"favorites entries will take you directly to the Individual Information page "
+"of that person.<br><br>More help about adding Favorites is available in your "
+"widget bar."
 msgstr ""
 
 #: help_text.php:1271
@@ -5388,7 +5376,7 @@ msgid ""
 msgstr ""
 
 #: help_text.php:1287 library/WT/Controller/Lifespan.php:77
-#: library/WT/MenuBar.php:151 lifespan.php:256
+#: library/WT/MenuBar.php:112 lifespan.php:256
 msgid "Lifespans"
 msgstr ""
 
@@ -8937,7 +8925,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:92
 #: library/WT/Controller/Fanchart.php:301
-#: library/WT/Controller/Pedigree.php:95 library/WT/MenuBar.php:144
+#: library/WT/Controller/Pedigree.php:95 library/WT/MenuBar.php:105
 #: modules_v3/charts/module.php:208 modules_v3/pedigree_report/module.php:36
 #: modules_v3/pedigree_report/report.bak:4
 #: modules_v3/pedigree_report/report.bak:41
@@ -8945,7 +8933,7 @@ msgid "Pedigree"
 msgstr ""
 
 #: includes/functions/functions_print.php:94
-#: library/WT/Controller/Fanchart.php:303 library/WT/MenuBar.php:163
+#: library/WT/Controller/Fanchart.php:303 library/WT/MenuBar.php:124
 #: modules_v3/googlemap/module.php:1299
 msgid "Pedigree map"
 msgstr ""
@@ -8958,7 +8946,7 @@ msgstr ""
 #: includes/functions/functions_print.php:99
 #: library/WT/Controller/Descendancy.php:102
 #: library/WT/Controller/Fanchart.php:308 library/WT/Gedcom/Tag.php:189
-#: library/WT/MenuBar.php:145 modules_v3/charts/module.php:209
+#: library/WT/MenuBar.php:106 modules_v3/charts/module.php:209
 #: modules_v3/descendancy/module.php:36
 #: modules_v3/descendancy_report/module.php:36
 #: modules_v3/descendancy_report/report.bak:4
@@ -8970,7 +8958,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:100
 #: library/WT/Controller/Ancestry.php:84
-#: library/WT/Controller/Fanchart.php:309 library/WT/MenuBar.php:146
+#: library/WT/Controller/Fanchart.php:309 library/WT/MenuBar.php:107
 #: modules_v3/ahnentafel_report/module.php:36
 #: modules_v3/ahnentafel_report/report.bak:5
 msgid "Ancestors"
@@ -8978,24 +8966,24 @@ msgstr ""
 
 #: includes/functions/functions_print.php:101
 #: library/WT/Controller/Compact.php:51 library/WT/Controller/Fanchart.php:310
-#: library/WT/MenuBar.php:147
+#: library/WT/MenuBar.php:108
 msgid "Compact tree"
 msgstr ""
 
 #: includes/functions/functions_print.php:103
 #: library/WT/Controller/Fanchart.php:51
-#: library/WT/Controller/Fanchart.php:311 library/WT/MenuBar.php:156
+#: library/WT/Controller/Fanchart.php:311 library/WT/MenuBar.php:117
 msgid "Fan chart"
 msgstr ""
 
 #: includes/functions/functions_print.php:105
-#: library/WT/Controller/Fanchart.php:312 library/WT/MenuBar.php:148
+#: library/WT/Controller/Fanchart.php:312 library/WT/MenuBar.php:109
 #: modules_v3/charts/module.php:210
 msgid "Hourglass chart"
 msgstr ""
 
 #: includes/functions/functions_print.php:107
-#: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:160
+#: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:121
 #: modules_v3/charts/module.php:211 modules_v3/tree/module.php:33
 msgid "Interactive tree"
 msgstr ""
@@ -9073,8 +9061,8 @@ msgid "webtrees wiki"
 msgstr ""
 
 #: includes/functions/functions_print.php:690
-#: includes/functions/functions_print_lists.php:351 library/WT/MenuBar.php:152
-#: library/WT/MenuBar.php:271 library/WT/MenuBar.php:296 relationship.php:74
+#: includes/functions/functions_print_lists.php:351 library/WT/MenuBar.php:113
+#: library/WT/MenuBar.php:232 library/WT/MenuBar.php:257 relationship.php:74
 #: relationship.php:89
 msgid "Relationships"
 msgstr ""
@@ -9441,7 +9429,7 @@ msgid "Age in year of marriage"
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:1055
-#: library/WT/MenuBar.php:355 notelist.php:32 notelist.php:36 search.php:124
+#: library/WT/MenuBar.php:316 notelist.php:32 notelist.php:36 search.php:124
 msgid "Shared notes"
 msgstr ""
 
@@ -9507,41 +9495,45 @@ msgstr ""
 msgid "Search engine"
 msgstr ""
 
-#: index.php:139 modules_v3/extra_info/module.php:77
+#: index.php:134 index.php:135
+msgid "Change the blocks on this page"
+msgstr ""
+
+#: index.php:136 modules_v3/extra_info/module.php:77
 msgid "Hit Count:"
 msgstr ""
 
-#: index_edit.php:251 index_edit.php:336
+#: index_edit.php:250 index_edit.php:335
 msgid ""
 "Highlight a  block name and then click on one of the arrow icons to move "
 "that highlighted block in the indicated direction."
 msgstr ""
 
-#: index_edit.php:263
+#: index_edit.php:262
 msgid "Main Section Blocks"
 msgstr ""
 
-#: index_edit.php:266
+#: index_edit.php:265
 msgid "Available Blocks"
 msgstr ""
 
-#: index_edit.php:269
+#: index_edit.php:268
 msgid "Right Section Blocks"
 msgstr ""
 
-#: index_edit.php:275 index_edit.php:327
+#: index_edit.php:274 index_edit.php:326
 msgid "Move up"
 msgstr ""
 
-#: index_edit.php:277 index_edit.php:329
+#: index_edit.php:276 index_edit.php:328
 msgid "Move down"
 msgstr ""
 
-#: index_edit.php:291
+#: index_edit.php:290
 msgid "Move Right"
 msgstr ""
 
-#: index_edit.php:309
+#: index_edit.php:308
 msgid "Move Left"
 msgstr ""
 
@@ -9597,7 +9589,7 @@ msgstr ""
 msgid "Repository"
 msgstr ""
 
-#: library/WT/Controller/AdvancedSearch.php:41 library/WT/MenuBar.php:465
+#: library/WT/Controller/AdvancedSearch.php:41 library/WT/MenuBar.php:426
 #: search.php:236 search.php:243 search.php:246
 msgid "Advanced search"
 msgstr ""
@@ -9643,7 +9635,7 @@ msgstr ""
 #: library/WT/Controller/Individual.php:369
 #: library/WT/Controller/Media.php:136 library/WT/Controller/Note.php:114
 #: library/WT/Controller/Repository.php:114
-#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:571
+#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:532
 msgid "Add to favorites"
 msgstr ""
 
@@ -9660,7 +9652,7 @@ msgstr ""
 msgid "Family book of %s"
 msgstr ""
 
-#: library/WT/Controller/Familybook.php:76 library/WT/MenuBar.php:149
+#: library/WT/Controller/Familybook.php:76 library/WT/MenuBar.php:110
 msgid "Family book"
 msgstr ""
 
@@ -9842,12 +9834,12 @@ msgstr ""
 msgid "Edit repository"
 msgstr ""
 
-#: library/WT/Controller/Search.php:226 library/WT/MenuBar.php:459
+#: library/WT/Controller/Search.php:226 library/WT/MenuBar.php:420
 #: search.php:241 search.php:245
 msgid "General search"
 msgstr ""
 
-#: library/WT/Controller/Search.php:234 library/WT/MenuBar.php:469
+#: library/WT/Controller/Search.php:234 library/WT/MenuBar.php:430
 #: modules_v3/batch_update/plugins/search_replace.php:38 search.php:238
 #: search.php:248
 msgid "Search and replace"
@@ -9861,7 +9853,7 @@ msgstr ""
 msgid "Edit source"
 msgstr ""
 
-#: library/WT/Controller/Timeline.php:52 library/WT/MenuBar.php:150
+#: library/WT/Controller/Timeline.php:52 library/WT/MenuBar.php:111
 #: timeline.php:216
 msgid "Timeline"
 msgstr ""
@@ -14567,50 +14559,48 @@ msgstr ""
 msgid "Loading…"
 msgstr ""
 
-#: library/WT/MenuBar.php:73 library/WT/MenuBar.php:109
-#: modules_v3/widget_quicklinks/module.php:67
+#: library/WT/MenuBar.php:70 modules_v3/widget_quicklinks/module.php:67
 msgid "My pedigree"
 msgstr ""
 
-#: library/WT/MenuBar.php:79 library/WT/MenuBar.php:115
-#: modules_v3/widget_quicklinks/module.php:68
+#: library/WT/MenuBar.php:76 modules_v3/widget_quicklinks/module.php:68
 #: themes/_administration/header.php:95
 msgid "My individual record"
 msgstr ""
 
-#: library/WT/MenuBar.php:153 modules_v3/gedcom_stats/module.php:35
+#: library/WT/MenuBar.php:114 modules_v3/gedcom_stats/module.php:35
 #: modules_v3/html/module.php:164 modules_v3/widget_stats/module.php:35
 #: statistics.php:40 statistics.php:52
 msgid "Statistics"
 msgstr ""
 
-#: library/WT/MenuBar.php:212 library/WT/MenuBar.php:223
+#: library/WT/MenuBar.php:173 library/WT/MenuBar.php:184
 msgid "Show couple on timeline chart"
 msgstr ""
 
-#: library/WT/MenuBar.php:213 library/WT/MenuBar.php:233
+#: library/WT/MenuBar.php:174 library/WT/MenuBar.php:194
 msgid "Show children on timeline chart"
 msgstr ""
 
-#: library/WT/MenuBar.php:214 library/WT/MenuBar.php:243
+#: library/WT/MenuBar.php:175 library/WT/MenuBar.php:204
 msgid "Show family on timeline chart"
 msgstr ""
 
-#: library/WT/MenuBar.php:343 modules_v3/googlemap/module.php:238
+#: library/WT/MenuBar.php:304 modules_v3/googlemap/module.php:238
 #: placelist.php:43 placelist.php:45 placelist.php:150
 msgid "Place hierarchy"
 msgstr ""
 
-#: library/WT/MenuBar.php:415 modules_v3/widget_yahrzeit/module.php:257
+#: library/WT/MenuBar.php:376 modules_v3/widget_yahrzeit/module.php:257
 #: modules_v3/yahrzeit/module.php:266
 msgid "Calendar"
 msgstr ""
 
-#: library/WT/MenuBar.php:440 themes/_administration/header.php:197
+#: library/WT/MenuBar.php:401 themes/_administration/header.php:196
 msgid "Reports"
 msgstr ""
 
-#: library/WT/MenuBar.php:457 lifespan.php:302 medialist.php:157
+#: library/WT/MenuBar.php:418 lifespan.php:302 medialist.php:157
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:61
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:96
 #: modules_v3/descendancy/module.php:98 modules_v3/descendancy/module.php:131
@@ -16200,8 +16190,8 @@ msgstr ""
 
 #: login.php:225
 msgid ""
-"After you have logged in, select the «My Account» link under the «My Page» "
-"menu and fill in the password fields to change your password."
+"After you have logged in, select the «My Account» link under the your name "
+"in the menu and fill in the password fields to change your password."
 msgstr ""
 
 #: login.php:242
@@ -16454,7 +16444,7 @@ msgid "Columns per page"
 msgstr ""
 
 #: medialist.php:158 modules_v3/album/module.php:306
-#: modules_v3/fancy_imagebar/module.php:277
+#: modules_v3/fancy_imagebar/module.php:275
 #: modules_v3/fancy_treeview/module.php:655
 #: modules_v3/fancy_treeview/module.php:656
 #: modules_v3/googlemap/module.php:2008
@@ -16640,7 +16630,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:40
 #: modules_v3/album/module.php:305 modules_v3/extra_menus/module.php:263
-#: modules_v3/fancy_imagebar/module.php:276
+#: modules_v3/fancy_imagebar/module.php:274
 #: modules_v3/fancy_treeview/module.php:654 modules_v3/gallery/module.php:330
 #: modules_v3/simpl_pages/module.php:256
 #: modules_v3/simpl_research/module.php:117
@@ -16784,7 +16774,7 @@ msgstr ""
 msgid "Number of groups"
 msgstr ""
 
-#: modules_v3/album/module.php:306 modules_v3/fancy_imagebar/module.php:277
+#: modules_v3/album/module.php:306 modules_v3/fancy_imagebar/module.php:275
 #: modules_v3/fancy_treeview/module.php:657
 msgid ""
 "The settings will be reset to default (for all trees). Are you sure you want "
@@ -16988,15 +16978,13 @@ msgstr ""
 
 #: modules_v3/charts/help_text.php:35
 msgid ""
-"This block allows a pedigree, descendancy, or hourglass chart to appear on "
-"My Page or the Home Page.  Because of space limitations, the charts should "
-"be placed only on the left side of the page.<br /><br />When this block "
-"appears on the Home Page, the root person and the type of chart to be "
-"displayed are determined by the administrator.  When this block appears on "
-"the user's personalized My Page, these options are determined by the user."
-"<br /><br />The behavior of these charts is identical to their behavior when "
-"they are called up from the menus.  Click on the box of a person to see more "
-"details about them."
+"This block allows a pedigree, descendancy, or hourglass chart to appear the "
+"Home Page.  Because of space limitations, the charts should be placed only "
+"on the left side of the page or at full width.<br /><br />When this block "
+"appears the root person and the type of chart to be displayed are determined "
+"by the administrator.<br /><br />The behavior of these charts is identical "
+"to their behavior when they are called up from the menus.  Click on the box "
+"of a person to see more details about them."
 msgstr ""
 
 #: modules_v3/charts/module.php:40
@@ -17542,45 +17530,40 @@ msgstr ""
 
 #: modules_v3/fancy_imagebar/module.php:42
 msgid ""
-"An imagebar with small images on your home page and/or my page between "
-"header and content."
+"An imagebar with small images on your home page between header and content."
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:242
+#: modules_v3/fancy_imagebar/module.php:240
 msgid ""
 "The settings are changed. You will loose your changes if you switch trees."
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:282
+#: modules_v3/fancy_imagebar/module.php:280
 msgid "Choose which images you want to show in the Fancy Imagebar"
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:283 search.php:208
+#: modules_v3/fancy_imagebar/module.php:281 search.php:208
 msgid "select all"
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:288
+#: modules_v3/fancy_imagebar/module.php:286
 msgid "No images to display for this tree"
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:294
+#: modules_v3/fancy_imagebar/module.php:292
 #: modules_v3/googlemap/admin_places.php:565
 msgid "Options"
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:297
-msgid "Show Fancy Imagebar on"
-msgstr ""
-
-#: modules_v3/fancy_imagebar/module.php:302
+#: modules_v3/fancy_imagebar/module.php:295
 msgid "Random images"
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:306
+#: modules_v3/fancy_imagebar/module.php:299
 msgid "Images Tone"
 msgstr ""
 
-#: modules_v3/fancy_imagebar/module.php:310
+#: modules_v3/fancy_imagebar/module.php:303
 msgid "Cropped image size"
 msgstr ""
 
@@ -19370,14 +19353,6 @@ msgstr ""
 
 #: modules_v3/menu_lists/module.php:40
 msgid "The Lists menu item"
-msgstr ""
-
-#: modules_v3/menu_mypage/module.php:35
-msgid "My Page menu"
-msgstr ""
-
-#: modules_v3/menu_mypage/module.php:40
-msgid "The My page menu item"
 msgstr ""
 
 #: modules_v3/menu_reports/module.php:35
@@ -21410,7 +21385,7 @@ msgstr ""
 msgid "Set the default blocks for new family trees"
 msgstr ""
 
-#: themes/_administration/header.php:169 themes/_administration/header.php:180
+#: themes/_administration/header.php:169
 msgid "Set the default blocks"
 msgstr ""
 
@@ -21426,40 +21401,36 @@ msgstr ""
 msgid "Delete inactive users"
 msgstr ""
 
-#: themes/_administration/header.php:180
-msgid "Set the default blocks for new users"
-msgstr ""
-
-#: themes/_administration/header.php:185
+#: themes/_administration/header.php:184
 msgid "Manage media"
 msgstr ""
 
-#: themes/_administration/header.php:189
+#: themes/_administration/header.php:188
 msgid "Modules"
 msgstr ""
 
-#: themes/_administration/header.php:191
+#: themes/_administration/header.php:190
 msgid "Manage modules"
 msgstr ""
 
-#: themes/_administration/header.php:192
+#: themes/_administration/header.php:191
 msgid "Menus"
 msgstr ""
 
-#: themes/_administration/header.php:193
+#: themes/_administration/header.php:192
 msgid "Tabs"
 msgstr ""
 
-#: themes/_administration/header.php:194
+#: themes/_administration/header.php:193
 msgid "Blocks"
 msgstr ""
 
-#: themes/_administration/header.php:195 themes/webtrees/header.php:127
+#: themes/_administration/header.php:194 themes/webtrees/header.php:127
 #: themes/xenea/header.php:163
 msgid "Widgets"
 msgstr ""
 
-#: themes/_administration/header.php:200
+#: themes/_administration/header.php:199
 msgid "Tools"
 msgstr ""
 

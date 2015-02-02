@@ -1466,6 +1466,8 @@ function old_paths() {
 		WT_ROOT.'modules_v3/user_messages',
 		WT_ROOT.'modules_v3/user_blog',
 		WT_ROOT.'modules_v3/theme_select',
+		WT_ROOT.'modules_v3/menu_mypage',
+
 	);
 }
 

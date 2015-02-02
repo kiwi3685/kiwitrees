@@ -649,7 +649,6 @@ div.faq_body {clear:both;padding:0 1em;}
 #menu-list-repo             {background-position:left  -360px;} [dir=rtl] #menu-list-repo             {background-position:right  -360px;}
 #menu-list-sour             {background-position:left  -180px;} [dir=rtl] #menu-list-sour             {background-position:right  -180px;}
 #menu-myaccount             {background-position:left  -390px;} [dir=rtl] #menu-myaccount             {background-position:right  -390px;}
-#menu-mypage                {background-position:left  -390px;} [dir=rtl] #menu-mypage                {background-position:right  -390px;}
 #menu-mypedigree            {background-position:left  -480px;} [dir=rtl] #menu-mypedigree            {background-position:right  -480px;}
 #menu-myrecord              {background-position:left  -120px;} [dir=rtl] #menu-myrecord              {background-position:right  -120px;}
 #menu-note-addfav           {background-position:left  -870px;} [dir=rtl] #menu-note-addfav           {background-position:right  -870px;}
@@ -1001,7 +1000,7 @@ a.icon-ldarrow:hover {width:20px;height:20px;background-image:url(images/ldarrow
 .icon-media-shuffle {width:10px;height:10px;background-image:url(images/reorder.png);}
 .icon-media-stop {width:20px;height:20px;background-image:url(images/stop.png);}
 .icon-minus {width:11px;height:11px;background-image:url(images/minus.png);}
-.icon-mypage {width:24px;height:24px;background-image:url(images/mypage.png);}
+.icon-myaccount {width:24px;height:24px;background-image:url(images/mypage.png);}
 .icon-note {width:20px;height:20px;background-image:url(images/notes.png);}
 .icon-note-list {width:20px;height:20px;background-image:url(images/notes.png);}
 .icon-osm {width:16px;height:16px;background-image:url(images/osm.png);}
@@ -1350,7 +1349,7 @@ div.widget {
 	padding: 0 5px;
 }
 
-.widget_quicklinks .icon-mypage,
+.widget_quicklinks .icon-myaccount,
 .widget_quicklinks .icon-pedigree,
 .widget_quicklinks .icon-indis {
 	color: #555;

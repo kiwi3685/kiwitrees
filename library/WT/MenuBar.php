@@ -48,45 +48,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	public static function getMyPageMenu() {
-		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
-
-		$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
-		$showLayout = ($PEDIGREE_LAYOUT) ? 1 : 0;
-
-		if (!WT_USER_ID) {
-			return null;
-		}
-
-		//-- main menu
-		$menu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mymenu');
-
-		//-- mypage submenu
-		$submenu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mypage');
-		$menu->addSubmenu($submenu);
-		//-- editaccount submenu
-			$submenu = new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount');
-			$menu->addSubmenu($submenu);
-		if (WT_USER_GEDCOM_ID) {
-			//-- my_pedigree submenu
-			$submenu = new WT_Menu(
-				WT_I18N::translate('My pedigree'),
-				'pedigree.php?ged='.WT_GEDURL.'&amp;rootid='.WT_USER_GEDCOM_ID."&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
-				'menu-mypedigree'
-			);
-			$menu->addSubmenu($submenu);
-			//-- my_indi submenu
-			$submenu = new WT_Menu(WT_I18N::translate('My individual record'), 'individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL, 'menu-myrecord');
-			$menu->addSubmenu($submenu);
-		}
-		if (WT_USER_GEDCOM_ADMIN) {
-			//-- admin submenu
-			$submenu = new WT_Menu(WT_I18N::translate('Administration'), 'admin.php', 'menu-admin');
-			$menu->addSubmenu($submenu);
-		}		
-		return $menu;
-	}
-
 	public static function getMyAccountMenu() {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
 

@@ -1233,7 +1233,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(images/l
 .icon-media-shuffle        {width:10px;height:10px;background-image:url(images/reorder.png);}
 .icon-media-stop           {width:20px;height:20px;background-image:url(images/stop.png);}
 .icon-minus                {width:11px;height:11px;background-image:url(images/minus.png);}
-.icon-mypage               {width:25px;height:25px;background-image:url(images/mypage.png);}
+.icon-myaccount            {width:25px;height:25px;background-image:url(images/mypage.png);}
 .icon-note                 {width:50px;height:50px;background-image:url(images/notes.png);}
 .icon-note-list            {width:50px;height:50px;background-image:url(images/notes.png);}
 .icon-osm 				   {width:16px;height:16px;background-image:url(images/osm.png);}
@@ -1588,7 +1588,7 @@ div.widget {
 	padding: 0 5px;
 }
 
-.widget_quicklinks .icon-mypage,
+.widget_quicklinks .icon-myaccount,
 .widget_quicklinks .icon-pedigree,
 .widget_quicklinks .icon-indis {
 	color: #555;

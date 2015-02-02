@@ -1,5 +1,5 @@
 <?php
-// Change the blocks on "My page" and "Home page"
+// Change the blocks on "Home page"
 //
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2015 kiwitrees.net
@@ -39,7 +39,6 @@ if ($user_id) {
 
 // Only an admin can edit the "default" page
 // Only managers can edit the "home page"
-// Only a user or an admin can edit a user's "my page"
 if (
 	$gedcom_id<0 && !WT_USER_IS_ADMIN ||
 	$gedcom_id>0 && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||
