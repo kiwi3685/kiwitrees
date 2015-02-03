@@ -29,7 +29,7 @@
 define('WT_SCRIPT_NAME', 'admin_site_use.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Server usage'))
@@ -48,11 +48,12 @@ function siteMedia() {
 		->fetchOne();
 	return	WT_I18N::number($count);
 }
+
 ?>
 
 <div id="size">
 	<h3><?php echo WT_I18N::translate('All trees'); ?></h3>
-	<ul class="admin_stats">
+	<ul class="server_stats">
 		<li>
 			<span><?php echo WT_I18N::translate('Individuals'); ?></span>
 			<span class="filler">&nbsp;</span>

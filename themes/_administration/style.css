@@ -265,6 +265,11 @@ input.log-date {text-align:center;}
 #change_list tbody.ChangeReplace ins, #change_list tbody.ChangeInsert ins, #change_list tbody.ChangeDelete ins {color: red; text-decoration: initial;}
 #change_list tbody.ChangeReplace del, #change_list tbody.ChangeInsert del, #change_list tbody.ChangeDelete del {color: blue; text-decoration: initial;}
 
+/* SERVER STATS */
+ul.server_stats li {
+	padding: 5px;
+	font-size: 1.25em;
+}
  
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
