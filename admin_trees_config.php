@@ -1319,7 +1319,8 @@ $controller
 										<input type="radio" id="radio_' ,$themename, '" name="NEW_THEME_DIR" value="" ', ($current_themedir == "" ? ' checked="checked"' : ''), '/>
 										<label for="radio_' ,$themename, '">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</label>
 									</p>
-								</div>';
+								</div>
+							';
 						?>
 				</td>
 				</tr>
