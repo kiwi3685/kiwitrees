@@ -37,14 +37,13 @@ foreach (get_theme_names() as $themename=>$themedir) {
 
 // Extract form variables
 $form_action        =safe_POST('form_action'   );
-$form_username      =safe_POST('form_username',       WT_REGEX_USERNAME);
+$form_username      =safe_POST('form_username', WT_REGEX_USERNAME);
 $form_realname      =safe_POST('form_realname' );
-$form_pass1         =safe_POST('form_pass1',          WT_REGEX_PASSWORD);
-$form_pass2         =safe_POST('form_pass2',          WT_REGEX_PASSWORD);
-$form_email         =safe_POST('form_email',          WT_REGEX_EMAIL,                         'email@example.com');
-$form_rootid        =safe_POST('form_rootid',         WT_REGEX_XREF,                           WT_USER_ROOT_ID   );
-$form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS);
-$form_language      =safe_POST('form_language',       array_keys(WT_I18N::installed_languages()), WT_LOCALE          );
+$form_pass1         =safe_POST('form_pass1', WT_REGEX_PASSWORD);
+$form_pass2         =safe_POST('form_pass2', WT_REGEX_PASSWORD);
+$form_email         =safe_POST('form_email', WT_REGEX_EMAIL, 'email@example.com');
+$form_rootid        =safe_POST('form_rootid', WT_REGEX_XREF, WT_USER_ROOT_ID   );
+$form_language      =safe_POST('form_language', array_keys(WT_I18N::installed_languages()), WT_LOCALE );
 $form_contact_method=safe_POST('form_contact_method');
 $form_visible_online=safe_POST_bool('form_visible_online');
 
@@ -69,7 +68,6 @@ if ($form_action=='update' && WT_Filter::checkCsrf()) {
 		// Change other settings
 		setUserFullName(WT_USER_ID, $form_realname);
 		setUserEmail   (WT_USER_ID, $form_email);
-		set_user_setting(WT_USER_ID, 'theme',         $form_theme);
 		set_user_setting(WT_USER_ID, 'language',      $form_language);
 		set_user_setting(WT_USER_ID, 'contactmethod', $form_contact_method);
 		set_user_setting(WT_USER_ID, 'visibleonline', $form_visible_online);
@@ -149,19 +147,6 @@ echo '<div id="edituser-page">
 		<div class="value">', edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language')), '</div>
 		<div class="label">', WT_I18N::translate('Email address'), help_link('email'), '</div>
 		<div class="value"><input type="email" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></div>
-		<div class="label">', WT_I18N::translate('Theme'), help_link('THEME'), '</div>
-		<div class="value">
-			<select name="form_theme">
-			<option value="">', htmlspecialchars(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
-			foreach (get_theme_names() as $themename=>$themedir) {
-				echo '<option value="', $themedir, '"';
-				if ($themedir==get_user_setting(WT_USER_ID, 'theme')) {
-					echo ' selected="selected"';
-				}
-				echo '>', $themename, '</option>';
-			}
-			echo '</select>
-		</div>
 		<div class="label">', WT_I18N::translate('Preferred contact method'), help_link('edituser_contact_meth'), '</div>
 		<div class="value">', edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod')), '</div>
 		<div class="label">', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</div>

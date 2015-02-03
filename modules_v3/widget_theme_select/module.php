@@ -51,11 +51,13 @@ class widget_theme_select_WT_Module extends WT_Module implements WT_Module_Widge
 			foreach (get_theme_names() as $themename=>$themedir) {
 				$content .= '
 					<div>
-						<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
-						<p>
-							<a href="' . get_query_url($themedir . '&amp;') . '&amp;theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >' . $themename . '</a>
-						</p>
-					</div>';
+						<a href="' . get_query_url($themedir . '&amp;') . '&amp;theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >
+							<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
+							<p>' . $themename . '</p>
+						</a>
+						
+					</div>
+				';
 			}
 		$content .= '</div><br>';
 
