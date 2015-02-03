@@ -129,16 +129,6 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		if ($menu) {
 			echo $menu->getMenuAsList();
 		}
-		$menu=WT_MenuBar::getThemeMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-			$allow_color_dropdown=true;
-		} else {
-			$allow_color_dropdown=false;
-		}
-		if ($allow_color_dropdown) {
-			echo color_theme_dropdown();
-		}
 		global $WT_IMAGES;
 	echo
 		'<li>',

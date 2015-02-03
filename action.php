@@ -150,12 +150,8 @@ case 'reject-changes':
 case 'theme':
 	// Change the current theme
 	$theme_dir=safe_POST('theme');
-	if (WT_Site::preference('ALLOW_USER_THEMES') && in_array($theme_dir, get_theme_names())) {
+	if (in_array($theme_dir, get_theme_names()) {
 		$WT_SESSION->theme_dir=$theme_dir;
-		if (WT_USER_ID) {
-			// Remember our selection
-			set_user_setting(WT_USER_ID, 'theme', $theme_dir);
-		}
 	} else {
 		// Request for a non-existant theme.
 		header('HTTP/1.0 406 Not Acceptable');

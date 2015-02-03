@@ -444,22 +444,6 @@ class WT_MenuBar {
 		return $menus;
 	}
 
-	public static function getThemeMenu() {
-		global $SEARCH_SPIDER;
-
-		if (WT_GED_ID && !$SEARCH_SPIDER && WT_Site::preference('ALLOW_USER_THEMES') && get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')) {
-			$menu=new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
-			foreach (get_theme_names() as $themename=>$themedir) {
-				$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir), '&amp;'), 'menu-theme-'.$themedir);
-				if (WT_THEME_DIR == 'themes/'.$themedir.'/') {$submenu->addClass('','','theme-active');}
-				$menu->addSubMenu($submenu);
-			}
-			return $menu;
-		} else {
-			return null;
-		}
-	}
-
 	public static function getLanguageMenu() {
 		global $SEARCH_SPIDER;
 

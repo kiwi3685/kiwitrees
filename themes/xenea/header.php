@@ -105,15 +105,6 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	'</div>'; // <div id="header">
 	echo
 	'<div id="optionsmenu">',
-		'<div id="theme-menu">',
-			'<ul class="makeMenu">';
-				$menu=WT_MenuBar::getThemeMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-	echo
-			'</ul>',
-		'</div>',
 		'<div id="fav-menu">',
 			'<ul class="makeMenu">';
 				$menu=WT_MenuBar::getFavoritesMenu();

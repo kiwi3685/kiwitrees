@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-02-02 14:56+1200\n"
-"PO-Revision-Date: 2015-02-02 14:56+1200\n"
+"POT-Creation-Date: 2015-02-03 08:24+1200\n"
+"PO-Revision-Date: 2015-02-03 08:24+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -17,6 +17,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: action.php:53
 #, php-format
@@ -2916,7 +2917,7 @@ msgstr ""
 #: modules_v3/review_changes/module.php:35
 #: modules_v3/widget_review_changes/module.php:35
 #: themes/_administration/header.php:105 themes/colors/header.php:117
-#: themes/kiwitrees/header.php:133 themes/levy/header.php:112
+#: themes/kiwitrees/header.php:133 themes/levy/header.php:114
 #: themes/uti-family/header.php:140 themes/webtrees/header.php:104
 #: themes/xenea/header.php:136 modules_v3/change_report/report.bak:50
 msgid "Pending changes"
@@ -14608,7 +14609,7 @@ msgstr ""
 #: search.php:154 search.php:257 search.php:259 search.php:261
 #: search_advanced.php:297 themes/colors/header.php:148
 #: themes/colors/header.php:149 themes/kiwitrees/header.php:159
-#: themes/levy/header.php:99 themes/levy/header.php:100
+#: themes/levy/header.php:101 themes/levy/header.php:102
 #: themes/uti-family/header.php:170 themes/webtrees/header.php:120
 #: themes/webtrees/header.php:121 themes/xenea/header.php:101
 msgid "Search"
@@ -21535,7 +21536,7 @@ msgstr ""
 msgid "Login or Register"
 msgstr ""
 
-#: themes/levy/header.php:62
+#: themes/levy/header.php:63
 msgid "Open in full browser window"
 msgstr ""
 
@@ -22098,22 +22099,8 @@ msgstr ""
 msgid "Pedigree Chart"
 msgstr ""
 
-#: library/framework/Foundation/js/vendor/jquery.js:14
-msgid "<iframe frameborder='0' width='0' height='0'/>"
-msgstr ""
+#~ msgid "<iframe frameborder='0' width='0' height='0'/>"
+#~ msgstr "<iframe frameborder='0' width='0' height='0'/>"
 
-#: library/framework/Foundation/js/vendor/jquery.js:26
-msgid "<script>"
-msgstr ""
-
-#: library/framework/Foundation/js/vendor/jquery.js:26
-msgid "<div>"
-msgstr ""
-
-#: modules_v3/gallery/galleria/galleria-1.4.2.min.js:2
-msgid "width"
-msgstr ""
-
-#: modules_v3/gallery/galleria/galleria-1.4.2.min.js:2
-msgid "height"
-msgstr ""
+#~ msgid "<script>"
+#~ msgstr "<script>"

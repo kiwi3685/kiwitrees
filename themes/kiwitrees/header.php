@@ -114,10 +114,6 @@ if ($view!='simple') {
 						if ($menu) {
 							echo $menu->getMenuAsList();
 						}
-						$menu=WT_MenuBar::getThemeMenu();
-						if ($menu) {
-							echo $menu->getMenuAsList();
-						}
 						$menu=WT_MenuBar::getLanguageMenu();
 						if ($menu) {
 							echo $menu->getMenuAsList();

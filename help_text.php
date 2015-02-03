@@ -435,11 +435,6 @@ case 'ALLOW_THEME_DROPDOWN':
 	$text = WT_I18N::translate('Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well.');
 	break;
 
-case 'ALLOW_USER_THEMES':
-	$title = WT_I18N::translate('Allow users to select their own theme');
-	$text = WT_I18N::translate('Gives users the option of selecting their own theme.');
-	break;
-
 case 'CALENDAR_FORMAT':
 	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->Display(false, null, array());
 	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display(false, null, array());

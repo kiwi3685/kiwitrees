@@ -36,10 +36,6 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
 $ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'listusers', 'loadrows', 'load1row', 'masquerade_user');
-$ALL_THEMES_DIRS=array();
-foreach (get_theme_names() as $themename=>$themedir) {
-	$ALL_THEME_DIRS[]=$themedir;
-}
 $ALL_EDIT_OPTIONS=array(
 	'none'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor'),
 	'access'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member'),
@@ -60,7 +56,6 @@ $realname          =safe_POST('realname'   );
 $pass1             =safe_POST('pass1',        WT_REGEX_PASSWORD);
 $pass2             =safe_POST('pass2',        WT_REGEX_PASSWORD);
 $emailaddress      =safe_POST('emailaddress', WT_REGEX_EMAIL);
-$user_theme        =safe_POST('user_theme',               $ALL_THEME_DIRS);
 $user_language     =safe_POST('user_language',            array_keys(WT_I18N::installed_languages()), WT_LOCALE);
 $new_contact_method=safe_POST('new_contact_method');
 $new_comment       =safe_POST('new_comment',              WT_REGEX_UNSAFE);
@@ -224,9 +219,6 @@ case 'load1row':
 	echo '<dt>', WT_I18N::translate('Automatically approve changes made by this user'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', get_user_setting($user_id, 'auto_accept')), '</dd>';
 
-	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
-	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), get_user_setting($user_id, 'theme')), '</dd>';
-
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', get_user_setting($user_id, 'visibleonline')), '</dd>';
 
@@ -285,7 +277,6 @@ case 'createuser':
 		set_user_setting($user_id, 'sessiontime', '0');
 		setUserFullName ($user_id, $realname);
 		setUserEmail    ($user_id, $emailaddress);
-		set_user_setting($user_id, 'theme',                $user_theme);
 		set_user_setting($user_id, 'language',             $user_language);
 		set_user_setting($user_id, 'contactmethod',        $new_contact_method);
 		set_user_setting($user_id, 'comment',              $new_comment);
@@ -412,18 +403,9 @@ case 'createform':
 			</tr>
 			<tr>
 				<td>', WT_I18N::translate('Language'), '</td>
-				<td>', edit_field_language('user_language', $user_language), '</td>';
-				if (WT_Site::preference('ALLOW_USER_THEMES')) {
-					echo '<td>', WT_I18N::translate('Theme'), help_link('THEME'), '</td>
-					<td>
-						<select name="new_user_theme">
-						<option value="" selected="selected">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
-							foreach (get_theme_names() as $themename=>$themedir) {
-								echo '<option value="', $themedir, '">', $themename, '</option>';
-							}
-						echo '</select>
-					</td>';
-				}
+				<td>', edit_field_language('user_language', $user_language), '</td>
+				<td></td>
+				<td></td>';
 			echo '</tr>';
 			if (WT_USER_IS_ADMIN) {
 			echo '<tr>
@@ -486,7 +468,7 @@ case 'createform':
 				</td>
 			</tr>
 				<td colspan="4">
-					<input type="submit" value="', WT_I18N::translate('Create User'), '">
+					<button class="btn btn-primary" type="submit"><i class="fa fa-user-plus"></i>' , WT_I18N::translate('Create User'), ' </button>
 				</td>
 			</tr>	
 		</table>

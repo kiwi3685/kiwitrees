@@ -503,19 +503,15 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	// Administration scripts begin with “admin” and use a special administration theme
 	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
-	if (WT_Site::preference('ALLOW_USER_THEMES')) {
-		// Requested change of theme?
-		$THEME_DIR=safe_GET('theme', get_theme_names());
-		unset($_GET['theme']);
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR = '';
-		}
-		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {
-			$THEME_DIR=$WT_SESSION->theme_dir;
-		}
-	} else {
-		$THEME_DIR='';
+	// Requested change of theme?
+	$THEME_DIR=safe_GET('theme', get_theme_names());
+	unset($_GET['theme']);
+	if (!in_array($THEME_DIR, get_theme_names())) {
+		$THEME_DIR = '';
+	}
+	// Last theme used?
+	if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {
+		$THEME_DIR=$WT_SESSION->theme_dir;
 	}
 	if (!$THEME_DIR) {
 		// User cannot choose (or has not chosen) a theme.

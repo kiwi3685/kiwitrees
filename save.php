@@ -100,7 +100,6 @@ case 'site_setting':
 		break;
 	case 'USE_REGISTRATION_MODULE':
 	case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
-	case 'ALLOW_USER_THEMES':
 	case 'ALLOW_CHANGE_GEDCOM':
 	case 'SMTP_AUTH':
 	case 'MAIL_FORMAT':

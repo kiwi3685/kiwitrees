@@ -164,30 +164,6 @@ function fetch_remote_file($host, $path, $timeout=3) {
 	}
 }
 
-// Check with the webtrees.net server for the latest version of webtrees.
-// Fetching the remote file can be slow, so check infrequently, and cache the result.
-// Pass the current versions of webtrees, PHP and MySQL, as the response
-// may be different for each.  The server logs are used to generate
-// installation statistics which can be found at http://svn.webtrees.net/statistics.html
-//function fetch_latest_version() {
-//	$last_update_timestamp=WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
-//	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
-//		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-//		$params='?w='.WT_VERSION.WT_VERSION_RELEASE.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
-//		$latest_version_txt=fetch_remote_file('svn.webtrees.net', '/build/latest-version.txt'.$params);
-//		if ($latest_version_txt) {
-//			WT_Site::preference('LATEST_WT_VERSION', $latest_version_txt);
-//			WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
-//			return $latest_version_txt;
-//		} else {
-//			// Cannot connect to server - use cached version (if we have one)
-//			return WT_Site::preference('LATEST_WT_VERSION');
-//		}
-//	} else {
-//		return WT_Site::preference('LATEST_WT_VERSION');
-//	}
-//}
-
 // Convert a file upload PHP error code into user-friendly text
 function file_upload_error_text($error_code) {
 	switch ($error_code) {

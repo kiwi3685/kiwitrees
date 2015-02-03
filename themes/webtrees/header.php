@@ -110,7 +110,6 @@ echo			'<li>', login_link(),'</li>';
 			}
 echo
 			WT_MenuBar::getFavoritesMenu(),
-			WT_MenuBar::getThemeMenu(),
 			WT_MenuBar::getLanguageMenu(),
 		'</ul>',
 		'<div class="header_search">',

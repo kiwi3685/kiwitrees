@@ -66,8 +66,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* Options Menu Layout */
 #optionsmenu { background:#84beff; background-image:url(images/barra.png); width:100%; color:#fff; font-weight:bold; font-size:11px; height:40px; z-index:100; position:relative;}
-#theme-menu {position:absolute; left:0; right:auto; margin:11px;}
-#fav-menu   {position:absolute; left:80px; right:auto; margin:11px;}
+#fav-menu   {position:absolute; left:0; right:auto; margin:11px;}
 #login-menu {position:absolute; left:0; right:0; margin:11px auto; width:300px;}
 #lang-menu  {position:absolute; left:auto; right:0; margin:11px; text-align:right;}
 #lang-menu .makeMenu li ul {left:auto; right:0;}
@@ -77,8 +76,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #login-menu .link:hover {color: #ff0000;}
 
 /* LTR to RTL Translation */
-[dir=rtl] #theme-menu {left:auto; right:0;}
-[dir=rtl] #fav-menu   {left:auto; right:80px;}
+[dir=rtl] #fav-menu   {left:auto; right:0;}
 [dir=rtl] #lang-menu  {left:0; right:auto; text-align:left;}
 [dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 
@@ -659,7 +657,7 @@ h4 { color:#000066; font-weight:bold;font-size:12px;}
 /* Change indicators */
 .change_new { border:solid #0000ff 2px;}
 
-.change_old { border:solid #ff0000 2px;}
+.change_old { border:solid #ff0000 2px; text-decoration: line-through;}
 
 .note_details { display:none;}
 
@@ -1666,5 +1664,18 @@ div.widget {
 	background-color: #CCC;
 	margin: 0 0 0 20px;
 	padding: 0 5px;
+}
+
+.widget .theme_form div {
+	float:left;
+	margin: 5px;
+}
+
+.widget .theme_form div img {
+	width:93px;
+}
+
+.widget .theme_form div p {
+	margin: 2px;
 }
 /* ------------------ */

@@ -873,7 +873,6 @@ try {
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
 		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1'),".
-		"('ALLOW_USER_THEMES',               '1'),".
 		"('ALLOW_CHANGE_GEDCOM',             '1'),".
 		"('SESSION_TIME',                    '7200'),".
 		"('SMTP_ACTIVE',                     'internal'),".

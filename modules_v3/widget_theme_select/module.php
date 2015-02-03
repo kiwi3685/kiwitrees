@@ -45,11 +45,19 @@ class widget_theme_select_WT_Module extends WT_Module implements WT_Module_Widge
 		$id = $this->getName().$widget_id;
 		$class = $this->getName();
 		$title = $this->getTitle();
-		$menu = WT_MenuBar::getThemeMenu();
+		$current_themedir = str_replace(array('themes','/'), '', WT_THEME_DIR);
 
-		if ($menu) {
-			$content = '<div class="center theme_form">'.WT_MenuBar::getThemeMenu().'</div><br>';
-		}
+		$content = '<div class="center theme_form">';
+			foreach (get_theme_names() as $themename=>$themedir) {
+				$content .= '
+					<div>
+						<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
+						<p>
+							<a href="' . get_query_url($themedir . '&amp;') . '&amp;theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >' . $themename . '</a>
+						</p>
+					</div>';
+			}
+		$content .= '</div><br>';
 
 		if ($template) {
 			require WT_THEME_DIR.'templates/widget_template.php';

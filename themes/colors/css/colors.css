@@ -1499,4 +1499,16 @@ div.widget {
 	padding: 0 5px;
 }
 
+.widget .theme_form div {
+	float:left;
+	margin: 5px;
+}
+
+.widget .theme_form div img {
+	width:95px;
+}
+
+.widget .theme_form div p {
+	margin: 2px;
+}
 /* ------------------ */
