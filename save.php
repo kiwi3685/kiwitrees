@@ -244,7 +244,7 @@ case 'user_setting':
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID) && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(WT_USER_IS_ADMIN || WT_USER_ID) && in_array($id2, array('language','visible_online','contact_method'))) {
 		fail();
 	}
 
