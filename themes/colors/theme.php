@@ -51,7 +51,7 @@ function getMenuAsCustomList($menu) {
 //-- print color theme sub type change dropdown box
 function color_theme_dropdown() {
 	global $COLOR_THEME_LIST, $WT_SESSION, $subColor;
-	$menu=new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Palette'), '#', 'menu-color');
+	$menu=new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Colors palette'), '#', 'menu-color');
 	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
 	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
 		$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
@@ -71,12 +71,29 @@ function color_theme_dropdown() {
 	return $menu->getMenuAsList();
 }
 
+function color_palette() {
+	global $COLOR_THEME_LIST, $WT_SESSION, $subColor;
+	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
+
+	$html = '<ul id="colors_palette">
+		<h3>' . WT_I18N::translate('Colors palette') . '</h3>';
+		foreach ($COLOR_THEME_LIST as $colorChoice => $colorName) {
+			$html .= '
+				<li id="menu-color-' . $colorChoice . '">
+					<input type="radio" id="palette_' . $colorChoice . '" name="NEW_COLOR_PALETTE" value="' . $colorChoice . '" ' . ($subColor == $colorChoice ? ' checked="checked"' : '') . '/>
+					<label for="palette_' . $colorChoice . '">' . $colorName . '</label>
+				</li>';
+		}
+	$html .= '</ul>';
+
+	return $html;
+}
+
 /**
  *  Define the default palette to be used.  Set $subColor
  *  to one of the collowing values to determine the default:
  *
  */
-
 $COLOR_THEME_LIST=array(
 	'aquamarine'      => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Aqua Marine'),
 	'ash'             => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Ash'),
@@ -96,37 +113,16 @@ $COLOR_THEME_LIST=array(
 	'tealtop'         => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Teal Top'),
 );
 
-// If we've selected a new palette, and we are logged in, set this value as a default.
-if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_THEME_LIST)) {
-	// Request to change color
-	$subColor=$_GET['themecolor'];
-	if (WT_USER_ID) {
-		set_user_setting(WT_USER_ID, 'themecolor', $subColor);
-		if (WT_USER_IS_ADMIN) {
-			WT_Site::preference('DEFAULT_COLOR_PALETTE', $subColor);
-		}
-	}
-	unset($_GET['themecolor']);
-	// Rember that we have selected a value
-	$WT_SESSION->subColor=$subColor;
-}
-// If we are logged in, use our preference
-$subColor=null;
-if (WT_USER_ID) {
-	$subColor=get_user_setting(WT_USER_ID, 'themecolor');
-}
-// If not logged in or no preference, use one we selected earlier in the session?
-if (!$subColor) {
-	$subColor=$WT_SESSION->subColor;
-}
-// We haven't selected one this session?  Use the site default
-if (!$subColor) {
-	$subColor=WT_Site::preference('DEFAULT_COLOR_PALETTE');
-}
-// Make sure our selected palette actually exists
-if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
+/*
+ * Set the color palette
+ *
+*/
+$subColor = get_gedcom_setting(WT_GED_ID, 'COLOR_PALETTE');
+// Make sure our selected palette is set and actually exists
+if (!$subColor || !array_key_exists($subColor, $COLOR_THEME_LIST)) {
 	$subColor='ash';
 }
+
 
 // Theme name - this needs double quotes, as file is scanned/parsed by script
 $theme_name = "colors"; /* I18N: Name of a theme. */ WT_I18N::translate('colors');

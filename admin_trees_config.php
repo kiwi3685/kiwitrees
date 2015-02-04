@@ -32,8 +32,17 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Family tree configuration'));
-
+	->setPageTitle(WT_I18N::translate('Family tree configuration'))
+	->addInlineJavascript('
+		jQuery("#theme input:radio[id^=radio_]").click(function(){
+			var div = "#radio_"+jQuery(this).val();
+			if (div == "#radio_colors") {
+				jQuery("#colors_palette").show();
+			} else {
+				jQuery("#colors_palette").hide();
+			}
+		});
+	');
 
 $PRIVACY_CONSTANTS = array(
 	'none'         => WT_I18N::translate('Show to visitors'),
@@ -165,6 +174,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SURNAME_LIST_STYLE',           WT_Filter::post('NEW_SURNAME_LIST_STYLE'));
 	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            WT_Filter::post('NEW_SURNAME_TRADITION'));
 	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    WT_Filter::post('NEW_THEME_DIR'));
+	set_gedcom_setting(WT_GED_ID, 'COLOR_PALETTE',                WT_Filter::post('NEW_COLOR_PALETTE'));
 	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              WT_Filter::post('NEW_THUMBNAIL_WIDTH'));
 	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 WT_Filter::postBool('NEW_USE_GEONAMES'));
 	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      WT_Filter::postBool('NEW_USE_RIN'));
@@ -1296,7 +1306,7 @@ $controller
 			<table>
 				<tr>
 					<td>
-						<?php echo $tree->tree_title_html, ' - ', WT_I18N::translate('Default Theme'), help_link('THEME'); ?>
+						<h3><?php echo $tree->tree_title_html, ' - ', WT_I18N::translate('Theme'); ?></h3>
 					</td>
 				</tr>
 				<tr>
@@ -1308,14 +1318,14 @@ $controller
 									'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
 											<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
 										<p>
-											<input type="radio" id="radio_' ,$themename, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
+											<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
 											<label for="radio_' ,$themename, '">', $themename, '</label>
 										</p>
 									</div>';
 							}
 							if ($current_themedir == 'colors') {
 								include WT_ROOT.'themes/colors/theme.php';
-								echo '<ul id="colors_pallette">' . color_theme_dropdown() . '</ul>';
+								echo color_palette();
 							} 
 						?>
 				</td>

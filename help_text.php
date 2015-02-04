@@ -430,11 +430,6 @@ case 'ALLOW_CHANGE_GEDCOM':
 	$text = /* I18N: Help text for the “Show list of family trees” site configuration setting */ WT_I18N::translate('For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.');
 	break;
 
-case 'ALLOW_THEME_DROPDOWN':
-	$title = WT_I18N::translate('Theme dropdown selector for theme changes');
-	$text = WT_I18N::translate('Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well.');
-	break;
-
 case 'CALENDAR_FORMAT':
 	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->Display(false, null, array());
 	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display(false, null, array());
@@ -981,14 +976,6 @@ case 'SURNAME_TRADITION':
 		/* I18N: In the Lithuanian surname tradition, ... */
 		WT_I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.').
 		'</dd></dl>';
-	break;
-
-case 'THEME':
-	$title = WT_I18N::translate('Theme');
-	$text = 
-		/* I18N: Help text for the "Default Theme" site configuration setting */ WT_I18N::translate('You can change the appearance of kiwitrees using "themes".  Each theme has a different style, layout, color scheme, etc.').
-		'<br/><br/>'.
-		WT_I18N::translate('Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting "default theme" at user level will give the setting for the current GEDCOM.  Selecting "default theme" at GEDCOM level will give the site setting.');
 	break;
 
 case 'THUMBNAIL_WIDTH':

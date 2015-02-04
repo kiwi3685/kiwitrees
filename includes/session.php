@@ -504,11 +504,11 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
 	// Requested change of theme?
-	$THEME_DIR=safe_GET('theme', get_theme_names());
+	$THEME_DIR = safe_GET('theme', get_theme_names());
 	unset($_GET['theme']);
-	if (!in_array($THEME_DIR, get_theme_names())) {
-		$THEME_DIR = 'kiwitrees';
-	}
+//	if (!in_array($THEME_DIR, get_theme_names())) {
+//		$THEME_DIR = 'kiwitrees';
+//	}
 	if (!$THEME_DIR) {
 		// 1) gedcom setting
 		// 3) kiwitrees
@@ -524,10 +524,6 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		}
 	}
 	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR.'/');
-	// Remember this setting
-	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme_dir = $THEME_DIR;
-	}
 }
 
 // If we have specified a CDN, use it for static theme resources
