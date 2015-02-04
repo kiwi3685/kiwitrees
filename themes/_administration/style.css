@@ -794,3 +794,9 @@ html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-ali
 #module_admin input, #module_admin select {float:left;clear:both;height:25px;font-size:110%;}
 #module_save {clear:both;}
 html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_admin input, html[dir=rtl] #module_admin select, html[dir=rtl] #module_admin label {float:right;}
+
+
+/* Styling for simpl_research module */
+#colors_pallette {list-style:none; float:left; font-weight:900; margin-bottom:20px; overflow:hidden;}
+#colors_pallette li ul li {float:left; font-weight:normal; line-height:30px; width:25%;}
+.theme-active {font-weight:900; border: 1px solid #ff0000;}

@@ -101,62 +101,56 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	// Top row left
 	'<div id="header">',
-	'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
+		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
 
-	// Top row right 
-	echo 
-	'<ul class="makeMenu">';
-		if (WT_USER_ID) {
-			$menu = WT_MenuBar::getMyAccountMenu();
+		// Top row right 
+		echo 
+		'<ul class="makeMenu">';
+			if (WT_USER_ID) {
+				$menu = WT_MenuBar::getMyAccountMenu();
+				if ($menu) {
+					echo $menu->getMenuAsList();
+				}
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo '<li>
+						<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+							WT_I18N::translate('Pending changes'), '
+						</a>
+					</li>';
+				}
+			} else {
+				echo '<li>', login_link(),'</li>';
+			}
+			$menu=WT_MenuBar::getFavoritesMenu();
 			if ($menu) {
 				echo $menu->getMenuAsList();
 			}
-			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-				echo '<li>
-					<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
-						WT_I18N::translate('Pending changes'), '
-					</a>
-				</li>';
+			$menu=WT_MenuBar::getLanguageMenu();
+			if ($menu) {
+				echo $menu->getMenuAsList();
 			}
-		} else {
-			echo '<li>', login_link(),'</li>';
-		}
-		$menu=WT_MenuBar::getFavoritesMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		$menu=WT_MenuBar::getLanguageMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		global $WT_IMAGES;
-	echo
-		'<li>',
-			'<form style="display:inline;" action="search.php" method="post">',
-			'<input type="hidden" name="action" value="general">',
-			'<input type="hidden" name="topsearch" value="yes">',
-			'<input type="search" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-			'<input class="search-icon" type="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
-			'</form>',
-		'</li>',
-	'</ul>',
-'</div>';
+			global $WT_IMAGES;
+		echo
+			'<li>',
+				'<form style="display:inline;" action="search.php" method="post">',
+				'<input type="hidden" name="action" value="general">',
+				'<input type="hidden" name="topsearch" value="yes">',
+				'<input type="search" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+				'<input class="search-icon" type="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
+				'</form>',
+			'</li>',
+		'</ul>',
+	'</div>';
 
-	// Second Row menu and palette selection
-	// Menu
-	foreach (WT_MenuBar::getModuleMenus() as $menu) {
-		$menu_items[]=$menu;
-	}
-
-	// Print the menu bar
+	// Print the main menu bar
 	echo
 		'<ul id="main-menu">'; 
 			if ($ctype != 'gedcom') {
 				echo '<li id="widget-button" class="icon-widget"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
 			}
-			foreach ($menu_items as $menu) {
+			foreach (WT_MenuBar::getModuleMenus() as $menu) {
 				if ($menu) {
-					echo $menu->getMenuAsList();
+					echo getMenuAsCustomList($menu);
 				}
 			}
 			unset($menu_items, $menu);

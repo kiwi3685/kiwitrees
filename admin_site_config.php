@@ -88,10 +88,6 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 					<td><?php echo edit_field_yes_no_inline('site_setting-REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION'), $controller); ?></td>
 				</tr>
 				<tr>
-					<td><?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?></td>
-					<td><?php echo select_edit_control_inline('site_setting-THEME_DIR', array_flip(get_theme_names()), null, WT_Site::preference('THEME_DIR'), $controller); ?></td>
-				</tr>
-				<tr>
 					<td><?php echo WT_I18N::translate('Show list of family trees'), help_link('ALLOW_CHANGE_GEDCOM'); ?></td>
 					<td><?php echo edit_field_yes_no_inline('site_setting-ALLOW_CHANGE_GEDCOM', WT_Site::preference('ALLOW_CHANGE_GEDCOM'), $controller); ?></td>
 				</tr>

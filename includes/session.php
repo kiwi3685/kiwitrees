@@ -507,37 +507,29 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	$THEME_DIR=safe_GET('theme', get_theme_names());
 	unset($_GET['theme']);
 	if (!in_array($THEME_DIR, get_theme_names())) {
-		$THEME_DIR = '';
-	}
-	// Last theme used?
-	if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {
-		$THEME_DIR=$WT_SESSION->theme_dir;
+		$THEME_DIR = 'kiwitrees';
 	}
 	if (!$THEME_DIR) {
-		// User cannot choose (or has not chosen) a theme.
 		// 1) gedcom setting
-		// 2) site setting
 		// 3) kiwitrees
 		// 4) first one found
 		if (WT_GED_ID) {
-			$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+			$THEME_DIR = get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR=WT_Site::preference('THEME_DIR');
+			$THEME_DIR = 'kiwitrees';
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR='kiwitrees';
-		}
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			list($THEME_DIR)=get_theme_names();
+			list($THEME_DIR) = get_theme_names();
 		}
 	}
-	define('WT_THEME_DIR', WT_THEMES_DIR.$THEME_DIR.'/');
+	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR.'/');
 	// Remember this setting
-	if (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') {
-		$WT_SESSION->theme_dir=$THEME_DIR;
+	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
+		$WT_SESSION->theme_dir = $THEME_DIR;
 	}
 }
+
 // If we have specified a CDN, use it for static theme resources
 define('WT_THEME_URL', WT_STATIC_URL.WT_THEME_DIR);
 

@@ -1313,14 +1313,10 @@ $controller
 										</p>
 									</div>';
 							}
-							echo
-								'<div ', ($current_themedir == '' ? 'class = "current_theme"' : 'class = "theme_box"'), '>
-									<p>
-										<input type="radio" id="radio_' ,$themename, '" name="NEW_THEME_DIR" value="" ', ($current_themedir == "" ? ' checked="checked"' : ''), '/>
-										<label for="radio_' ,$themename, '">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</label>
-									</p>
-								</div>
-							';
+							if ($current_themedir == 'colors') {
+								include WT_ROOT.'themes/colors/theme.php';
+								echo '<ul id="colors_pallette">' . color_theme_dropdown() . '</ul>';
+							} 
 						?>
 				</td>
 				</tr>
@@ -1328,6 +1324,9 @@ $controller
 		</div>
 	</div>
 	<p>
-		<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+		<button class="btn btn-primary" type="submit">
+		<i class="fa fa-floppy-o"></i>
+			<?php echo WT_I18N::translate('save'); ?>
+		</button>
 	</p>
 </form>
