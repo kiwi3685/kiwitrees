@@ -506,9 +506,6 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	// Requested change of theme?
 	$THEME_DIR = safe_GET('theme', get_theme_names());
 	unset($_GET['theme']);
-//	if (!in_array($THEME_DIR, get_theme_names())) {
-//		$THEME_DIR = 'kiwitrees';
-//	}
 	if (!$THEME_DIR) {
 		// 1) gedcom setting
 		// 3) kiwitrees
