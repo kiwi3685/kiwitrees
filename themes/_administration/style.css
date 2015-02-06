@@ -324,7 +324,7 @@ table.gedcom_table2 {margin:20px 0; width:100%;}
 #file-options, #privacy, #config-media, #layout-options, #hide-show, #edit-options {padding:10px;}
 #file-options table, #privacy table, #config-media table, #layout-options table, #hide-show table, #edit-options table {padding:5px; width:100%;}
 #file-options tr, #privacy tr, #config-media tr, #layout-options tr, #hide-show tr, #edit-options tr {border-bottom:1px solid;}
-#file-options td, #privacy td, #config-media td, #layout-options td, #hide-show td, #edit-options td {line-height:25px; vertical-align:middle;}
+#file-options td, #privacy td, #config-media td, #layout-options td, #hide-show td, #edit-options td {line-height:25px; padding:5px 0; vertical-align:middle;}
 #file-options th,#privacy th,#config-media th,#layout-options th,#hide-show th,#edit-options th {border-bottom:1px solid #fff; color:#25a325; padding-top:20px;text-align:left;font-weight:normal;}
 [dir=rtl] #file-options th,[dir=rtl] #privacy th,[dir=rtl] #config-media th,[dir=rtl] #layout-options th,[dir=rtl] #hide-show th,[dir=rtl] #edit-options th {text-align:right;}
 #layout-options table#relatives {margin:0 50px;}
@@ -593,20 +593,20 @@ table#story_table {width:100%}
 .ui-autocomplete a.ui-state-focus {color:#ff0000;}
 
 /* font-awesome icons */
-.icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */
-.icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color: #000; cursor:help; margin:0 5px;} /* fa-question-circle */
+.icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; } /* fa-trash-o */
+.icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color: #000; cursor:help; margin:0 5px; } /* fa-question-circle */
 .icon-mask				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.3em; cursor:help;} /* fa-reddit-square */
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; } /* fa-male */
 .icon-button_family 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; } /* fa-users */
-.icon-open				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell;} /* fa-arrow-circle-down */
-.icon-close				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell;} /* fa-arrow-circle-up */
+.icon-open				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell; } /* fa-arrow-circle-down */
+.icon-close				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell; } /* fa-arrow-circle-up */
 .icon-button_find_facts {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
 .icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-keyboard-o */
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-book */
 .icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-bank */
-.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin-bottom: 5px;} /* fa-camera-retro */
+.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin-bottom: 5px; } /* fa-camera-retro */
 .icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-file-text-o */
-.icon-resn-confidential {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000;} /* fa-ban */
+.icon-resn-confidential {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000; } /* fa-ban */
 .icon-darrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-down */ 
 .icon-larrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-left */ 
 .icon-rarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-arrow-right */ 
@@ -618,7 +618,10 @@ table#story_table {width:100%}
 .icon-email				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */ 
 .icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */ 
 .icon-yes				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-check */ 
-
+.icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 0.9em; margin: 0 3px; } /* fa-male */
+.icon-sex_m_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; margin: 0 3px; } /* fa-male */
+.icon-sex_f_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 0.9em; margin: 0 3px; color: #ff0000;} /* fa-female */
+.icon-sex_f_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; margin: 0 3px; color: #ff0000;} /* fa-female */
 
 #users ul li:before		{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; background: none; margin: 0 5px;} /* fa-circle */ 
 
