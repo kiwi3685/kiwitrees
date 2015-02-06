@@ -34,8 +34,9 @@ $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Family tree configuration'))
 	->addInlineJavascript('
+		jQuery("#colors_palette").hide();
 		jQuery("#theme input:radio[id^=radio_]").click(function(){
-			var div = "#radio_"+jQuery(this).val();
+			var div = "#radio_" + jQuery(this).val();
 			if (div == "#radio_colors") {
 				jQuery("#colors_palette").show();
 			} else {
@@ -90,7 +91,6 @@ case 'update':
 	}
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
-	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         WT_Filter::postBool('NEW_ALLOW_THEME_DROPDOWN'));
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
 	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              implode('_and_', array_unique(array(
@@ -474,19 +474,6 @@ $controller
 						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?>
 					</td>
 				</tr>
-				<tr>
-					<th colspan="2">
-						<?php echo WT_I18N::translate('User options'); ?>
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')); ?>
-					</td>
-				</tr>				
 			</table>
 		</div>
 		<!-- PRIVACY OPTIONS -->
@@ -1318,15 +1305,17 @@ $controller
 									'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
 											<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
 										<p>
-											<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
-											<label for="radio_' ,$themename, '">', $themename, '</label>
+											<label for="radio_' ,$themedir, '">
+												<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
+												', $themename, '
+											</label>
 										</p>
 									</div>';
 							}
-							if ($current_themedir == 'colors') {
+//							if ($current_themedir == 'colors') {
 								include WT_ROOT.'themes/colors/theme.php';
 								echo color_palette();
-							} 
+//							} 
 						?>
 				</td>
 				</tr>
