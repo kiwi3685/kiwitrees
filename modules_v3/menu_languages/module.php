@@ -29,39 +29,30 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
+class menu_languages_WT_Module extends WT_Module implements WT_Module_Menu {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module/menu */ WT_I18N::translate('Edit');
+		return /* I18N: Name of a module/menu */ WT_I18N::translate('Languages menu');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('An edit menu for individuals, families, sources, etc.');
+		return /* I18N: Description of the languages module */ WT_I18N::translate('The Languages menu item (other menus)');
 	}
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 10;
+		return 220;
 	}
 
 	// Implement WT_Module_Menu
 	public function MenuType() {
-		return 'main';
+		return 'other';
 	}
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		global $controller;
-
-		$menu = null;
-		if (empty($controller)) {
-			return null;
-		}
-
-		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
-			$menu = $controller->getEditMenu();
-		}
+		$menu=WT_MenuBar::getLanguageMenu();
 		return $menu;
 	}
 }

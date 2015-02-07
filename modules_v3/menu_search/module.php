@@ -46,6 +46,11 @@ class menu_search_WT_Module extends WT_Module implements WT_Module_Menu {
 	}
 
 	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
+	// Implement WT_Module_Menu
 	public function getMenu() {
 		$menu=WT_MenuBar::getSearchMenu();
 		return $menu;

@@ -1307,13 +1307,13 @@ $controller
 							foreach (get_theme_names() as $themename=>$themedir) {
 								echo
 									'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
+											<label for="radio_' ,$themedir, '">
 											<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
 										<p>
-											<label for="radio_' ,$themedir, '">
 												<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
 												', $themename, '
-											</label>
 										</p>
+											</label>
 									</div>';
 							}
 //							if ($current_themedir == 'colors') {

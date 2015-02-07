@@ -75,17 +75,16 @@ echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
-	'<meta charset="UTF-8">',
-	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
-	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
-	'<!--[if IE]>',
-		'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
-	'<![endif]-->',
-	
+		'<meta charset="UTF-8">',
+		'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
+		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
+		'<title>', htmlspecialchars($title), '</title>',
+		'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
+		'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
+		'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
+		'<!--[if IE]>',
+			'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
+		'<![endif]-->',
 	'</head>',
 	'<body id="body">';
 
@@ -94,7 +93,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	'<div id="header">',
 		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>',
 		'<div class="hsearch">';
-	echo 
+echo 
 			'<form action="search.php" method="post">',
 			'<input type="hidden" name="action" value="general">',
 			'<input type="hidden" name="topsearch" value="yes">',
@@ -102,48 +101,20 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 			'<input type="submit" name="search" value="&gt;">',
 			'</form>',
 		'</div>',
-	'</div>'; // <div id="header">
-	echo
+	'</div>', // <div id="header">
 	'<div id="optionsmenu">',
-		'<div id="fav-menu">',
-			'<ul class="makeMenu">';
-				$menu=WT_MenuBar::getFavoritesMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-	echo
-			'</ul>',
-		'</div>',
-		'<div id="login-menu">',
-			'<ul class="makeMenu">';
-			if (WT_USER_ID) {
-				$menu = WT_MenuBar::getMyAccountMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-	echo 				'<li>
-						<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
-							WT_I18N::translate('Pending changes'), '
-						</a>
-					</li>';
-				}
-			} else {
-	echo		'<li>', login_link(),'</li>';
-			}			
-	echo	
-			'</ul>',
-		'</div>';
-	echo
-		'<div id="lang-menu" class="makeMenu">',
-			'<ul class="makeMenu">';
-				$menu=WT_MenuBar::getLanguageMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-	echo 
-			'</ul>',
-		'</div>',
+		'<ul class="makeMenu">';
+			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+echo			'<li>
+					<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+						WT_I18N::translate('Pending changes'), '
+					</a>
+				</li>';
+			}
+			foreach (WT_MenuBar::getOtherMenus() as $menu) {
+				echo $menu->getMenuAsList();
+			}
+echo	'</ul>',
 	'</div>';
 
 	// Print the menu bar
@@ -153,12 +124,10 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 				if ($ctype != 'gedcom') {
 					echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">', WT_I18N::translate('Widgets'), '</span></a></li>';
 				}
-				foreach (WT_MenuBar::getModuleMenus() as $menu) {
-					if ($menu) {
-						echo $menu->getMenuAsList();
-					}
+				foreach (WT_MenuBar::getMainMenus() as $menu) {
+					echo $menu->getMenuAsList();
 				}
-	echo
+echo
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">
 		WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions

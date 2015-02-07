@@ -952,21 +952,7 @@ table.center {
 }
 
 a:hover .name1 {
-	color: #f00;
-	font-weight: bold;
-	font-size: 14px;
-}
-
-a:hover .name2 {
-	color: #f00;
-	font-weight: bold;
-	font-size: 14px;
-}
-
-a:hover .nameZoom {
-	color: #f00;
-	font-weight: bold;
-	font-size: 14px;
+	color: #009AFE;
 }
 
 .name2 {
@@ -975,18 +961,26 @@ a:hover .nameZoom {
 	font-size: 14px;
 }
 
-.details1 {
-	font-size: 11px;
-}
-
-.details2 {
-	font-size: 12px;
+a:hover .name2 {
+	color: #009AFE;
 }
 
 .nameZoom {
 	color: #555;
 	font-weight: bold;
 	font-size: 14px;
+}
+
+a:hover .nameZoom {
+	color: #009AFE;
+}
+
+.details1 {
+	font-size: 11px;
+}
+
+.details2 {
+	font-size: 12px;
 }
 
 .detailsZoom {

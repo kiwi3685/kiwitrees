@@ -433,12 +433,27 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	public static function getModuleMenus() {
+	public static function getMainMenus() {
 		$menus=array();
 		foreach (WT_Module::getActiveMenus() as $module) {
-			$menu=$module->getMenu();
-			if ($menu) {
-				$menus[] = $menu;
+			if ($module->MenuType() == 'main') {
+				$menu=$module->getMenu();
+				if ($menu) {
+					$menus[] = $menu;
+				}
+			}
+		}
+		return $menus;
+	}
+
+	public static function getOtherMenus() {
+		$menus=array();
+		foreach (WT_Module::getActiveMenus() as $module) {
+			if ($module->MenuType() == 'other') {
+				$menu=$module->getMenu();
+				if ($menu) {
+					$menus[] = $menu;
+				}
 			}
 		}
 		return $menus;

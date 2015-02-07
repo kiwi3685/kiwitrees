@@ -55,6 +55,7 @@ interface WT_Module_Access {
 
 interface WT_Module_Menu {
 	public function defaultMenuOrder();
+	public function MenuType();
 }
 
 interface WT_Module_Report {

@@ -92,6 +92,11 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
+	// Implement WT_Module_Menu
 	public function getMenu() {
 		// We don't actually have a menu - this is just a convenient "hook" to execute
 		// code at the right time during page execution

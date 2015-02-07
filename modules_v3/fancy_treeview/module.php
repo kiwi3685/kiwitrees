@@ -1651,6 +1651,11 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 	}
 
 	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
+	// Implement WT_Module_Menu
 	public function getMenu() {
 		global $SEARCH_SPIDER;
 

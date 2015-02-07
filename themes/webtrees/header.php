@@ -91,53 +91,41 @@ if ($view!='simple') {
 	global $WT_IMAGES;
 	echo
 		'<div id="header">',
-		'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
-		'<ul id="extra-menu" class="makeMenu">';
-			if (WT_USER_ID) {
-				$menu = WT_MenuBar::getMyAccountMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
+			'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
+			'<ul id="extra-menu" class="makeMenu">';
 				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-echo 					'<li>
+echo				'<li>
 						<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
 							WT_I18N::translate('Pending changes'), '
 						</a>
 					</li>';
 				}
-			} else {
-echo			'<li>', login_link(),'</li>';
-			}
-echo
-			WT_MenuBar::getFavoritesMenu(),
-			WT_MenuBar::getLanguageMenu(),
-		'</ul>',
-		'<div class="header_search">',
-			'<form action="search.php" method="post">',
-				'<input type="hidden" name="action" value="general">',
-				'<input type="hidden" name="topsearch" value="yes">',
-				'<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-				'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
-			'</form>',
-		'</div>',
-		'<div id="topMenu">',
-		'<ul id="main-menu">';
-			if ($ctype != 'gedcom') {
-				echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">', WT_I18N::translate('Widgets'), '</span></a></li>';
-			}
-			foreach (WT_MenuBar::getModuleMenus() as $menu) {
-				if ($menu) {
+				foreach (WT_MenuBar::getOtherMenus() as $menu) {
 					echo $menu->getMenuAsList();
 				}
-			}
-	echo
-		'</ul>',  // <ul id="main-menu">
-		'</div>', // <div id="topMenu">
+echo		'</ul>',
+			'<div class="header_search">',
+				'<form action="search.php" method="post">',
+					'<input type="hidden" name="action" value="general">',
+					'<input type="hidden" name="topsearch" value="yes">',
+					'<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+					'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
+				'</form>',
+			'</div>',
+			'<div id="topMenu">',
+				'<ul id="main-menu">';
+					if ($ctype != 'gedcom') {
+						echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">', WT_I18N::translate('Widgets'), '</span></a></li>';
+					}
+					foreach (WT_MenuBar::getMainMenus() as $menu) {
+						echo $menu->getMenuAsList();
+					}
+echo			'</ul>',  // <ul id="main-menu">
+			'</div>', // <div id="topMenu">
 		'</div>'; // <div id="header">
 }
-echo
-	$javascript,
-	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+echo 	$javascript,
+		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 	'<div id="content">';
 
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above

@@ -87,17 +87,16 @@ echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
-	'<meta charset="UTF-8">',
-	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
-	'<link rel="stylesheet" type="text/css" href="', WT_THEMES_DIR, '_administration/jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
-	'<!--[if IE]>',
-		'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
-	'<![endif]-->
-
+		'<meta charset="UTF-8">',
+		'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
+		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
+		'<title>', htmlspecialchars($title), '</title>',
+		'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
+		'<link rel="stylesheet" type="text/css" href="', WT_THEMES_DIR, '_administration/jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
+		'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
+		'<!--[if IE]>',
+			'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
+		'<![endif]-->
 	</head>';
 	
 if ($view!='simple') {echo '<body id="body">';
@@ -105,46 +104,21 @@ if ($view!='simple') {echo '<body id="body">';
 
 // begin header section
 if ($view!='simple') {
-	echo '
-		<div id="main_content">
+echo '	<div id="main_content">
 			<div id="navbar">
 				<div id="header">
 					<ul id="extra-menu" class="makeMenu">';
-						$menu=WT_MenuBar::getFavoritesMenu();
-						if ($menu) {
-							echo $menu->getMenuAsList();
-						}
-						$menu=WT_MenuBar::getLanguageMenu();
-						if ($menu) {
-							echo $menu->getMenuAsList();
-						}
-						if (WT_USER_ID) {
-							$menu = WT_MenuBar::getMyAccountMenu();
-							if ($menu) {
-								echo $menu->getMenuAsList();
-							}
-							if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-								echo '<li>
-									<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
-										WT_I18N::translate('Pending changes'), '
-									</a>
-								</li>';
-							}
-						} else {
-							$class_name = 'login_block_WT_Module';
-							$module = new $class_name;
-							echo '<li>
-								<a href="#">'.
-									(WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')) , '
+						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+echo						'<li>
+								<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+									WT_I18N::translate('Pending changes'), '
 								</a>
-								<ul id="login_popup">
-									<li>',
-										$module->getBlock('login_block'), '
-									</li>
-								</ul>
 							</li>';
 						}
-		echo 		'</ul>
+						foreach (WT_MenuBar::getOtherMenus() as $menu) {
+							echo $menu->getMenuAsList();
+						}
+echo 				'</ul>
 					<div id="bigtext" class="title" dir="auto">',
 						WT_TREE_TITLE, '
 					</div>
@@ -161,13 +135,10 @@ if ($view!='simple') {
 						if ($ctype != 'gedcom') {
 							echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
 						}
-						foreach (WT_MenuBar::getModuleMenus() as $menu) {
-							if ($menu) {
-								echo $menu->getMenuAsList();
-							}
+						foreach (WT_MenuBar::getMainMenus() as $menu) {
+							echo $menu->getMenuAsList();
 						}
-		echo
-					'</ul>
+echo				'</ul>
 				</div>', // <div id="topMenu">
 				WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 			'</div>'; // <div id="navbar">

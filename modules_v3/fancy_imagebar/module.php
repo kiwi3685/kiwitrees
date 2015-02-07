@@ -17,7 +17,7 @@
 // (at your option) any later version.
 //
 // This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// but WITHOUT ANY WARRANTY; without even the implied warranty def
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
@@ -469,6 +469,11 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
 		return 999;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
 	}
 
 	// Implement WT_Module_Menu

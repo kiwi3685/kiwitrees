@@ -37,12 +37,17 @@ class menu_favorites_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('The Favorites menu item');
+		return /* I18N: Description of the “favorites” module */ WT_I18N::translate('The Favorites menu item (other menus)');
 	}
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 100;
+		return 210;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'other';
 	}
 
 	// Implement WT_Module_Menu

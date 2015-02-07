@@ -65,13 +65,8 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #flash-messages {clear:both;}
 
 /* Options Menu Layout */
-#optionsmenu { background:#84beff; background-image:url(images/barra.png); width:100%; color:#fff; font-weight:bold; font-size:11px; height:40px; z-index:100; position:relative;}
-#fav-menu   {position:absolute; left:0; right:auto; margin:11px;}
-#login-menu {position:absolute; left:0; right:0; margin:11px auto; width:300px;}
-#lang-menu  {position:absolute; left:auto; right:0; margin:11px; text-align:right;}
-#lang-menu .makeMenu li ul {left:auto; right:0;}
+#optionsmenu {background:#84beff; background-image:url(images/barra.png); height:40px; line-height: 37px; padding: 0 10px; position:relative; text-align:right; z-index:100;}
 .lang-active, .theme-active {color:#000066; font-weight:900;}
-#optionsmenu li.divider:before {content: " - ";}
 #login-menu .link {color: #000; font-weight: normal;}
 #login-menu .link:hover {color: #ff0000;}
 
@@ -81,10 +76,13 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 [dir=rtl] #lang-menu .makeMenu li ul {right:auto;left:0;}
 
 .makeMenu li {display:inline;position:relative;white-space:nowrap;}
+.makeMenu li:before {content: " - ";}
+.makeMenu li:first-child:before, .makeMenu li li:before {content: "";}
+
 .makeMenu a {color:#fff;font-weight:bold;}
 .makeMenu a:hover {color:#ff0000;}
-.makeMenu li ul {display:none;position:absolute;left:0;right:auto;top:1.1em;background-color:#fff;border:thin solid #c3dfff;z-index:999;}
-.makeMenu li ul li {padding:2px;display:block;text-align:left;}
+.makeMenu li ul {display:none;position:absolute;left:auto;right:0;top:1.1em;background-color:#fff;border:thin solid #c3dfff;z-index:999;}
+.makeMenu li ul li {padding:2px;display:block;line-height:normal;text-align:left;}
 .makeMenu li ul li a {color:#000;font-weight:normal;}
 .makeMenu li ul li a:hover {color:#ff0000;;}
 .makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;}
@@ -92,7 +90,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 .makeMenu li ul li a.lang-active, .makeMenu li ul li a.theme-active {color:#000066;font-weight:900;}
 
 [dir=rtl] li ul li {text-align:right;}
-[dir=rtl] .makeMenu li ul {left:auto;right:0;}
+[dir=rtl] .makeMenu li ul {left:0;right:auto;}
 [dir=rtl] .makeMenu li ul li {text-align:right !important;}
 [dir=rtl] #extra-menu {text-align:left;}
 [dir=rtl] #extra-menu.makeMenu li ul {left:0;right:auto;}

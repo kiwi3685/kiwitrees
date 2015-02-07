@@ -51,6 +51,11 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		return 40;
 	}
 
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
 		return WT_PRIV_NONE;

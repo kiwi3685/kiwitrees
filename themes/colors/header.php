@@ -31,7 +31,6 @@ if (!defined('WT_WEBTREES')) {
 
 global $subColor;
 
-
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
@@ -76,28 +75,29 @@ echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
-	'<meta charset="UTF-8">',
-	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'css/colors.css" type="text/css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL,  'css/',  $subColor,  '.css" type="text/css">';
+		'<meta charset="UTF-8">',
+		'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
+		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
+		'<title>', htmlspecialchars($title), '</title>',
+		'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
+		'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css" type="text/css">',
+		'<link rel="stylesheet" href="', WT_THEME_URL, 'css/colors.css" type="text/css">',
+		'<link rel="stylesheet" href="', WT_THEME_URL,  'css/',  $subColor,  '.css" type="text/css">';
 
-if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
-	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'ipad.css">';
-} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') || stristr($_SERVER['HTTP_USER_AGENT'], 'Trident')) {
-	// This is needed for all versions of IE, so we cannot use conditional comments.
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">';
-}
+		if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
+			echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';
+			echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'ipad.css">';
+		} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE') || stristr($_SERVER['HTTP_USER_AGENT'], 'Trident')) {
+			// This is needed for all versions of IE, so we cannot use conditional comments.
+			echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">';
+		}
 
 echo
 	'</head>',
 	'<body id="body">';
 
 if  ($view!='simple') { // Use "simple" headers for popup windows
+	global $WT_IMAGES;
 	echo
 	// Top row left
 	'<div id="header">',
@@ -106,30 +106,16 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		// Top row right 
 		echo 
 		'<ul class="makeMenu">';
-			if (WT_USER_ID) {
-				$menu = WT_MenuBar::getMyAccountMenu();
-				if ($menu) {
-					echo $menu->getMenuAsList();
-				}
-				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-					echo '<li>
-						<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
-							WT_I18N::translate('Pending changes'), '
-						</a>
-					</li>';
-				}
-			} else {
-				echo '<li>', login_link(),'</li>';
+			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+				echo '<li>
+					<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+						WT_I18N::translate('Pending changes'), '
+					</a>
+				</li>';
 			}
-			$menu=WT_MenuBar::getFavoritesMenu();
-			if ($menu) {
+			foreach (WT_MenuBar::getOtherMenus() as $menu) {
 				echo $menu->getMenuAsList();
 			}
-			$menu=WT_MenuBar::getLanguageMenu();
-			if ($menu) {
-				echo $menu->getMenuAsList();
-			}
-			global $WT_IMAGES;
 		echo
 			'<li>',
 				'<form style="display:inline;" action="search.php" method="post">',
@@ -143,19 +129,14 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	'</div>';
 
 	// Print the main menu bar
-	echo
-		'<ul id="main-menu">'; 
+	echo '<ul id="main-menu">'; 
 			if ($ctype != 'gedcom') {
 				echo '<li id="widget-button" class="icon-widget"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
 			}
-			foreach (WT_MenuBar::getModuleMenus() as $menu) {
-				if ($menu) {
-					echo getMenuAsCustomList($menu);
-				}
+			foreach (WT_MenuBar::getMainMenus() as $menu) {
+				echo getMenuAsCustomList($menu);
 			}
-			unset($menu_items, $menu);
-	echo
-		'</ul>'; 
+	echo '</ul>'; 
 }
 // Remove list from home when only 1 gedcom 
 $this->addInlineJavaScript(
