@@ -1,5 +1,5 @@
 <?php
-// Site Unavailable
+// Site Offline
 //
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2015 kiwitrees.net
