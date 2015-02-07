@@ -115,8 +115,21 @@ echo						'<li>
 								</a>
 							</li>';
 						}
+						if (!WT_USER_ID) {
+							$class_name='login_block_WT_Module';
+							$module=new $class_name;
+							echo '
+							<li>
+								<a href="#">', WT_I18N::translate('Login or Register'), '</a>
+								<ul id="login_popup">
+									<li>', $module->getBlock('login_block'), '</li>
+								</ul>
+							</li>';
+						}
 						foreach (WT_MenuBar::getOtherMenus() as $menu) {
-							echo $menu->getMenuAsList();
+							if (!strpos($menu, WT_I18N::translate('Login'))) {
+								echo $menu->getMenuAsList();
+							}
 						}
 echo 				'</ul>
 					<div id="bigtext" class="title" dir="auto">',
