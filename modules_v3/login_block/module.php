@@ -65,7 +65,8 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 
 			$content .= "<br><br></form></div>";
 		} else {
-			$title = WT_I18N::translate('Login');
+			$title = (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login'));
+
 			$content='';
 			$content='<div id="login-box">
 				<form id="login-form" name="login-form" method="post" action="' .$url. '" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">

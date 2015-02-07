@@ -314,7 +314,9 @@ function login_link() {
 		return '';
 	} else {
 		return
-			'<a href="' . WT_LOGIN_URL.'?url=' . rawurlencode(get_query_url()).'">'. WT_I18N::translate('Login') . '</a>';
+			'<a href="' . WT_LOGIN_URL.'?url=' . rawurlencode(get_query_url()).'">'
+				. (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')) . '
+			</a>';
 	}
 }
 
