@@ -39,7 +39,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('An imagebar with small images on your home page between header and content.');
+		return /* I18N: Description of the module */ WT_I18N::translate('An image bar with small images on your home page between header and content.');
 	}
 
 	// Get module options

@@ -1177,7 +1177,7 @@ case 'edituser_contact_meth':
 	$text.='<br/><br/><dl><dt>';
 	$text.=WT_I18N::translate('Internal messaging');
 	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, the kiwitrees internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block if it is included among your widgts.  If you have removed this block from your widget bar, you will not see any messages.  They will, however, show up as soon as you configure the widget bar to again have the Message block.');
+	$text.=WT_I18N::translate('With this option, the kiwitrees internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block if it is included among your widgets.  If you have removed this block from your widget bar, you will not see any messages.  They will, however, show up as soon as you configure the widget bar to again have the Message block.');
 	$text.='</dd><dt>';
 	$text.=WT_I18N::translate('Internal messaging with emails');
 	$text.='</dt><dd>';
