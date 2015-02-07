@@ -34,7 +34,11 @@ $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Family tree configuration'))
 	->addInlineJavascript('
-		jQuery("#colors_palette").hide();
+		if(jQuery("#theme input:radio[id=radio_colors]").is(":checked")) {
+			jQuery("#colors_palette").show();
+		} else {
+			jQuery("#colors_palette").hide();
+		}
 		jQuery("#theme input:radio[id^=radio_]").click(function(){
 			var div = "#radio_" + jQuery(this).val();
 			if (div == "#radio_colors") {
