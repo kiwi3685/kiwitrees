@@ -186,7 +186,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #tree_stats ul.admin_stats, #users ul.admin_stats {
 	background-color: #c9c9c9;
 	font-size: 110%;
-	line-height: 2;
+	line-height: 1.8;
 	list-style-type:none;
 	margin: 0;
 	overflow-x: hidden;
