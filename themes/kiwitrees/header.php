@@ -1,5 +1,5 @@
 <?php
-// Header for Simpl_designer theme
+// Header for Kiwitrees theme
 //
 // Copyright (C) 2013 Nigel Osborne and kiwtrees.net. All rights reserved.
 //
