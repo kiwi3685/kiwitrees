@@ -40,7 +40,7 @@ $to        =safe_REQUEST($_REQUEST, 'to');
 $action    =safe_REQUEST($_REQUEST, 'action', array('compose', 'send'), 'compose');
 
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('webtrees Message'));
+$controller->setPageTitle(WT_I18N::translate('Kiwitrees Message'));
 
 $to_user_id=get_user_id($to);
 

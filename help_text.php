@@ -830,7 +830,7 @@ case 'SERVER_URL':
 
 case 'SHOW_COUNTER':
 	$title = WT_I18N::translate('Hit counters');
-	$text = WT_I18N::translate('Show hit counters on Portal and Individual pages.');
+	$text = WT_I18N::translate('Show hit counters on the Home and Individual pages.');
 	break;
 
 case 'SHOW_DEAD_PEOPLE':
