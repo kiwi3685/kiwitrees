@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-02-07 17:40+1200\n"
-"PO-Revision-Date: 2015-02-09 17:11+1200\n"
+"POT-Creation-Date: 2015-02-10 10:09+1200\n"
+"PO-Revision-Date: 2015-02-10 10:32+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/kiwitrees/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -460,7 +460,7 @@ msgstr "Chart"
 msgid "Theme"
 msgstr "Theme"
 
-#: admin_modules.php:160 library/WT/MenuBar.php:36 modules_v3/gedcom_block/module.php:35
+#: admin_modules.php:160 modules_v3/gedcom_block/module.php:35
 msgid "Home page"
 msgstr "Home page"
 
@@ -568,7 +568,7 @@ msgstr "Rule"
 msgid "Comment"
 msgstr "Comment"
 
-#: admin_site_access.php:285 admin_site_change - Original.php:276 admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243 admin_trees_config.php:622 admin_trees_manage.php:233 edit_interface.php:112 includes/functions/functions_print_facts.php:171 includes/functions/functions_print_facts.php:717 includes/functions/functions_print_facts.php:919 includes/functions/functions_print_facts.php:1207 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1135 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1241 includes/functions/functions_print_lists.php:1295 includes/functions/functions_print_lists.php:1338 library/WT/Controller/Family.php:159 library/WT/Controller/Individual.php:361 library/WT/Controller/Media.php:128 library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106 library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:413 modules_v3/fancy_treeview/module.php:557 modules_v3/faq/module.php:399 modules_v3/gallery/module.php:528 modules_v3/gedcom_news/module.php:124 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680 modules_v3/simpl_pages/module.php:489 modules_v3/stories/module.php:472 modules_v3/widget_blog/module.php:95 modules_v3/widget_messages/module.php:92 modules_v3/widget_messages/module.php:121
+#: admin_site_access.php:285 admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243 admin_trees_config.php:622 admin_trees_manage.php:233 edit_interface.php:112 includes/functions/functions_print_facts.php:171 includes/functions/functions_print_facts.php:717 includes/functions/functions_print_facts.php:919 includes/functions/functions_print_facts.php:1207 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1135 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1241 includes/functions/functions_print_lists.php:1295 includes/functions/functions_print_lists.php:1338 library/WT/Controller/Family.php:159 library/WT/Controller/Individual.php:361 library/WT/Controller/Media.php:128 library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106 library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:413 modules_v3/fancy_treeview/module.php:557 modules_v3/faq/module.php:399 modules_v3/gallery/module.php:528 modules_v3/gedcom_news/module.php:124 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680 modules_v3/simpl_pages/module.php:489 modules_v3/stories/module.php:472 modules_v3/widget_blog/module.php:95 modules_v3/widget_messages/module.php:92 modules_v3/widget_messages/module.php:121
 msgid "Delete"
 msgstr "Delete"
 
@@ -584,64 +584,60 @@ msgstr "IP address"
 msgid "Create a new rule"
 msgstr "Create a new rule"
 
-#: admin_site_change - Original.php:30 admin_site_change.php:30 modules_v3/change_report/module.php:36 modules_v3/change_report/report.bak:4 modules_v3/change_report/report.bak:42
+#: admin_site_change.php:30 modules_v3/change_report/module.php:36 modules_v3/change_report/report.bak:4 modules_v3/change_report/report.bak:42
 msgid "Changes"
 msgstr "Changes"
 
-#: admin_site_change - Original.php:36 admin_site_change.php:38
+#: admin_site_change.php:38
 msgid "accepted"
 msgstr "accepted"
 
-#: admin_site_change - Original.php:37 admin_site_change.php:39
+#: admin_site_change.php:39
 msgid "rejected"
 msgstr "rejected"
 
-#: admin_site_change - Original.php:38 admin_site_change.php:40
+#: admin_site_change.php:40
 msgid "pending"
 msgstr "pending"
 
-#: admin_site_change - Original.php:251 admin_site_change.php:269 admin_site_logs.php:221
+#: admin_site_change.php:269 admin_site_logs.php:221
 #, php-format
 msgid "From %s to %s"
 msgstr "From %s to %s"
 
-#: admin_site_change - Original.php:255 Original.php:289 admin_site_change.php:273 admin_site_change.php:305 includes/functions/functions_print.php:978 library/WT/Gedcom/Tag.php:325
+#: admin_site_change.php:273 admin_site_change.php:305 includes/functions/functions_print.php:978 library/WT/Gedcom/Tag.php:325
 msgid "Status"
 msgstr "Status"
 
-#: admin_site_change - Original.php:258 Original.php:290 admin_site_change.php:276 admin_site_change.php:306 admin_site_merge.php:140 includes/functions/functions_print_lists.php:1745 includes/functions/functions_print_lists.php:1881 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:563 modules_v3/todo/module.php:98 modules_v3/widget_todo/module.php:99
+#: admin_site_change.php:276 admin_site_change.php:306 admin_site_merge.php:140 includes/functions/functions_print_lists.php:1745 includes/functions/functions_print_lists.php:1881 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:563 modules_v3/todo/module.php:98 modules_v3/widget_todo/module.php:99
 msgid "Record"
 msgstr "Record"
 
-#: admin_site_change - Original.php:261 Original.php:291 admin_site_change.php:279
+#: admin_site_change.php:279
 msgid "Old data"
 msgstr "Old data"
 
-#: admin_site_change - Original.php:264 Original.php:292
-msgid "New data"
-msgstr "New data"
-
-#: admin_site_change - Original.php:267 Original.php:293 admin_site_change.php:283 admin_site_change.php:309 admin_site_logs.php:234 admin_site_logs.php:259 edit_changes.php:170
+#: admin_site_change.php:283 admin_site_change.php:309 admin_site_logs.php:234 admin_site_logs.php:259 edit_changes.php:170
 msgid "User"
 msgstr "User"
 
-#: admin_site_change - Original.php:270 Original.php:294 admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:140 admin_trees_manage.php:184 admin_trees_places.php:103 admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423 edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:64 modules_v3/extra_menus/module.php:367 modules_v3/fancy_imagebar/module.php:262 modules_v3/fancy_treeview/module.php:526 modules_v3/faq/module.php:356 modules_v3/gallery/module.php:489 modules_v3/googlemap/module.php:1462 modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:451 modules_v3/stories/module.php:455 modules_v3/widget_html/module.php:167
+#: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:140 admin_trees_manage.php:184 admin_trees_places.php:103 admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423 edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:64 modules_v3/extra_menus/module.php:367 modules_v3/fancy_imagebar/module.php:262 modules_v3/fancy_treeview/module.php:526 modules_v3/faq/module.php:356 modules_v3/gallery/module.php:489 modules_v3/googlemap/module.php:1462 modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:451 modules_v3/stories/module.php:455 modules_v3/widget_html/module.php:167
 msgid "Family tree"
 msgstr "Family tree"
 
-#: admin_site_change - Original.php:274 admin_site_change.php:290 admin_site_logs.php:241 find.php:189 find.php:204 find.php:222 find.php:239 find.php:256 find.php:274 find.php:291 find.php:471 library/WT/I18N.php:685 modules_v3/random_media/module.php:308
+#: admin_site_change.php:290 admin_site_logs.php:241 find.php:189 find.php:204 find.php:222 find.php:239 find.php:256 find.php:274 find.php:291 find.php:471 library/WT/I18N.php:685 modules_v3/random_media/module.php:308
 msgid "Filter"
 msgstr "Filter"
 
-#: admin_site_change - Original.php:275 admin_site_change.php:291 admin_site_logs.php:242 admin_trees_manage.php:216
+#: admin_site_change.php:291 admin_site_logs.php:242 admin_trees_manage.php:216
 msgid "Export"
 msgstr "Export"
 
-#: admin_site_change - Original.php:276 admin_site_change.php:292 admin_site_logs.php:243 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1295 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680
+#: admin_site_change.php:292 admin_site_logs.php:243 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1295 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680
 msgid "Permanently delete these records?"
 msgstr "Permanently delete these records?"
 
-#: admin_site_change - Original.php:288 admin_site_change.php:304 admin_site_logs.php:255
+#: admin_site_change.php:304 admin_site_logs.php:255
 msgid "Timestamp"
 msgstr "Timestamp"
 
@@ -1710,7 +1706,7 @@ msgstr "Place"
 
 #: admin_trees_duplicates.php:241
 msgid "Married name"
-msgstr "Married Name"
+msgstr "Married name"
 
 #: admin_trees_duplicates.php:284 branches.php:186 includes/functions/functions_edit.php:166 includes/functions/functions_edit.php:173 includes/functions/functions_edit.php:1432 includes/functions/functions_edit.php:1466 includes/functions/functions_print.php:889 includes/functions/functions_print_facts.php:1256 includes/functions/functions_print_lists.php:418 includes/functions/functions_print_lists.php:893 library/WT/Stats.php:3528 modules_v3/batch_update/admin_batch_update.php:341 modules_v3/charts/module.php:219 modules_v3/relatives/module.php:203 modules_v3/change_report/report.bak:9 modules_v3/family_group_report/report.bak:247 modules_v3/family_group_report/report.bak:418 modules_v3/family_group_report/report.bak:598 modules_v3/family_group_report/report.bak:939 modules_v3/individual_ext_report/report.bak:177 modules_v3/individual_report/report.bak:172
 msgid "yes"
@@ -1749,8 +1745,8 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
 
 #: admin_trees_manage.php:172
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
-msgstr "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then tick this box to merge the current media objects with the new GEDCOM."
+msgid "If you have created media objects in kiwitrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
+msgstr "If you have created media objects in kiwitrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
 
 #: admin_trees_manage.php:199
 msgid "Deleting old genealogy data…"
@@ -1773,8 +1769,8 @@ msgid "Create a new family tree"
 msgstr "Create a new family tree"
 
 #: admin_trees_manage.php:274
-msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
+msgid "Click here for PhpGedView to <b>kiwitrees</b> transfer wizard"
+msgstr "Click here for PhpGedView to <b>kiwitrees</b> transfer wizard"
 
 #: admin_trees_places.php:89
 msgid "Administration - place edit"
@@ -1870,7 +1866,7 @@ msgstr "Find unlinked individuals"
 
 #: admin_trees_unlinked.php:84
 msgid "No unlinked individuals to display"
-msgstr "Quick individual facts"
+msgstr "No unlinked individuals to display"
 
 #: admin_users.php:33 edituser.php:84
 msgid "User administration"
@@ -1943,7 +1939,7 @@ msgstr "Duplicate user name.  A user with that user name already exists.  Please
 
 #: admin_users.php:268 edituser.php:55 login.php:263
 msgid "Duplicate email address.  A user with that email already exists."
-msgstr "Duplicate e-mail address.  A user with that e-mail already exists."
+msgstr "Duplicate e-mail address.  A user with that email already exists."
 
 #: admin_users.php:271 edituser.php:104
 msgid "Passwords do not match."
@@ -1963,7 +1959,7 @@ msgstr "You must enter a password."
 
 #: admin_users.php:333
 msgid "You must enter an email address."
-msgstr "You must enter an e-mail address."
+msgstr "You must enter an email address."
 
 #: admin_users.php:338
 msgid "You must confirm the password."
@@ -1987,11 +1983,11 @@ msgstr "Approved by administrator"
 
 #: admin_users.php:379 edituser.php:148 help_text.php:1202 library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198 library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:715 login.php:393 setup.php:432
 msgid "Email address"
-msgstr "E-mail address"
+msgstr "Email address"
 
 #: admin_users.php:381
 msgid "Email verified"
-msgstr "E-mail verified"
+msgstr "Email verified"
 
 #: admin_users.php:386 login.php:404
 #, php-format
@@ -2050,7 +2046,7 @@ msgstr "Deleted user: "
 
 #: admin_users.php:564
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 #: admin_users.php:568
 msgid "Date registered"
@@ -2387,7 +2383,7 @@ msgstr "Associate events with this source"
 
 #: edit_interface.php:691
 msgid "Select Events"
-msgstr "Select Events"
+msgstr "Select events"
 
 #: edit_interface.php:775 edit_interface.php:821 includes/functions/functions_edit.php:1184
 msgid "Create a new Shared Note"
@@ -2407,7 +2403,7 @@ msgstr "Family navigator"
 
 #: edit_interface.php:993
 msgid "Edit Shared Note"
-msgstr "Edit Shared Note"
+msgstr "Edit shared note"
 
 #: edit_interface.php:1058 edit_interface.php:1127 includes/functions/functions_edit.php:1180
 msgid "Create Repository"
@@ -2861,7 +2857,7 @@ msgstr "If an individual was known by a nickname which is not part of their form
 
 #: help_text.php:299
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
+msgstr "The <b>surname</b> field contains a name used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 
 #: help_text.php:305
 msgid "Use this field to add a married name. Enter the surname only. Each time a married name is added an extra Married Surname line will be created for subsequent additional married names."
@@ -3049,13 +3045,13 @@ msgid "When a new individual record is added online in kiwitrees, a new ID for t
 msgstr "When a new individual record is added online in kiwitrees, a new ID for that individual will be generated automatically. The individual ID will have this prefix."
 
 #: help_text.php:542
-msgid "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
+msgid "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed."
+msgstr "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed."
 
 #: help_text.php:545
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
-msgstr "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
+msgstr "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
 
 #: help_text.php:547
 msgid "This setting is only used when you read or write GEDCOM files."
@@ -3085,20 +3081,20 @@ msgid "The length of time after birth can be set on the Privacy configuration ta
 msgstr "The length of time after birth can be set on the Privacy configuration tab option ‘Age at which to assume a person is dead’."
 
 #: help_text.php:575
-msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
-msgstr "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
+msgid "This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
+msgstr "This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
 
 #: help_text.php:577
-msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
+msgid "To protect this private data, kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
+msgstr "To protect this private data, kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 
 #: help_text.php:579
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
 msgstr "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
 
 #: help_text.php:581
-msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
+msgid "The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) or relative to the installation folder (e.g. ../../kiwitrees_data/)."
+msgstr "The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) or relative to the installation folder (e.g. ../../kiwitrees_data/)."
 
 #: help_text.php:587
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
@@ -3121,8 +3117,8 @@ msgid "If a visitor to the site has not specified a preferred language in their 
 msgstr "If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
 
 #: help_text.php:612
-msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.co.uk/webtrees/login.php ."
+msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/kiwitrees/login.php ."
+msgstr "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/kiwitrees/login.php ."
 
 #: help_text.php:617
 msgid "If this person has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be \"alive\".  Children's birth dates are considered to be such events for this purpose."
@@ -3130,7 +3126,7 @@ msgstr "If this person has any events other than Death, Burial, or Cremation mor
 
 #: help_text.php:622
 msgid "Set the maximum number of generations to display on Descendancy charts."
-msgstr "Set the maximum number of generations to display on Descendancy charts.Set the maximum number of generations to display on Descendancy charts."
+msgstr "Set the maximum number of generations to display on Descendancy charts."
 
 #: help_text.php:632
 #, php-format
@@ -3153,7 +3149,7 @@ msgstr "Set the maximum number of generations to display on Pedigree charts."
 
 #: help_text.php:651
 msgid "This folder will be used to store the media files for this family tree."
-msgstr "This folder will be used to store the media files for this family tree.This folder will be used to store the media files for this family tree."
+msgstr "This folder will be used to store the media files for this family tree."
 
 #: help_text.php:653
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
@@ -3266,7 +3262,7 @@ msgstr "Kiwitrees reply address"
 
 #: help_text.php:778
 msgid "E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br><br>Kiwitrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: kiwitrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message's &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br><br>Kiwitrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: kiwitrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message's &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
+msgstr "E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br><br>Kiwitrees can automatically create emails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification emails to users who have requested an account.<br><br>Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: kiwitrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other email abuse, some email systems require each message's &laquo;From:&raquo; field to reflect a valid email account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
 
 #: help_text.php:783
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
@@ -3305,12 +3301,12 @@ msgid "Enabling this option will force all visitors to login before they can vie
 msgstr "Enabling this option will force all visitors to login before they can view any data on the site."
 
 #: help_text.php:828
-msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
+msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
+msgstr "If your site can be reached using more than one URL, such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
 
 #: help_text.php:833
-msgid "Show hit counters on Portal and Individual pages."
-msgstr "Show hit counters on home and individual pages."
+msgid "Show hit counters on the Home and Individual pages."
+msgstr "Show hit counters on the Home and Individual pages."
 
 #: help_text.php:838
 msgid "Set the privacy access level for all dead people."
@@ -3482,7 +3478,7 @@ msgstr "If you have opted for custom welcome text, you can type that text here. 
 
 #: help_text.php:1041
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-msgstr "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
+msgstr "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorised</u> users only.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 
 #: help_text.php:1046
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
@@ -3605,8 +3601,8 @@ msgid "Shared notes, like regular notes, are free-form text.  Unlike regular not
 msgstr "Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one person, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note's contents.<br><ul><li><b>Link to an existing shared note</b><div style=\"padding-left:20px;\">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find Shared Note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style=\"padding-left:20px;\">When you click the <b>Create a new Shared Note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style=\"padding-left:20px;\">When you click the <b>Edit Shared Note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>"
 
 #: help_text.php:1147
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
+msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by kiwitrees and may cause your note to display incorrectly."
+msgstr "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by kiwitrees and may cause your note to display incorrectly."
 
 #: help_text.php:1153
 msgid "This section allows you to Add a source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
@@ -3643,7 +3639,7 @@ msgstr "With this option, the kiwitrees internal messaging system will be used a
 
 #: help_text.php:1182 includes/functions/functions_edit.php:257 includes/functions/functions_edit.php:268
 msgid "Internal messaging with emails"
-msgstr "Internal messaging with e-mail"
+msgstr "Internal messaging with email"
 
 #: help_text.php:1184
 msgid "This option is like kiwitrees internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
@@ -3671,7 +3667,7 @@ msgstr "This is a link to your own record in the family tree.  If this is the wr
 
 #: help_text.php:1203 setup.php:434
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
-msgstr "This e-mail address will be used to send you password reminders, site notifications and messages from other family members who are registered on the site."
+msgstr "This email address will be used to send you password reminders, site notifications and messages from other family members who are registered on the site."
 
 #: help_text.php:1207
 msgid "Export family tree"
@@ -3795,8 +3791,8 @@ msgid "The PGV to kiwitrees wizard is an automated process to assist administrat
 msgstr "The PGV to kiwitrees wizard is an automated process to assist administrators make the move from a PGV installation to a new kiwitrees one. It will transfer all PGV GEDCOM and other database information directly to your new kiwitrees database. The following requirements are necessary:"
 
 #: help_text.php:1302
-msgid "webtrees database must be on the same server as PGV's"
-msgstr "webtrees database must be on the same server as PGV’s"
+msgid "kiwitrees database must be on the same server as PGV's"
+msgstr "kiwitrees database must be on the same server as PGV's"
 
 #: help_text.php:1304
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
@@ -3816,7 +3812,7 @@ msgstr "The current kiwitrees admin username must be the same as an existing PGV
 
 #: help_text.php:1312
 msgid "All existing PGV users must have distinct email addresses"
-msgstr "All existing PGV users must have distinct e-mail addresses"
+msgstr "All existing PGV users must have distinct email addresses"
 
 #: help_text.php:1314
 msgid "<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -3899,8 +3895,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules."
 
 #: help_text.php:1400
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
+msgid "When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc."
+msgstr "When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc."
 
 #: help_text.php:1404 modules_v3/sources_tab/module.php:60
 msgid "Show all sources"
@@ -3964,23 +3960,23 @@ msgstr "The individual record identifies the user in each family tree.  Since a 
 
 #: help_text.php:1465
 msgid "Account approval and email verification"
-msgstr "Account approval and e-mail verification"
+msgstr "Account approval and email verification"
 
 #: help_text.php:1466
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the \"email verified\" option is selected automatically."
-msgstr "When a user registers for an account, an e-mail is sent to their e-mail address with a verification link.  When they click this link, we know the e-mail address is correct, and the ‘e-mail verified’ option is selected automatically."
+msgstr "When a user registers for an account, an email is sent to their e-mail address with a verification link.  When they click this link, we know the email address is correct, and the ‘email verified’ option is selected automatically."
 
 #: help_text.php:1468
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "If an administrator creates a user account, the verification e-mail is not sent, and the e-mail must be verified manually."
+msgstr "If an administrator creates a user account, the verification email is not sent, and the e-mail must be verified manually."
 
 #: help_text.php:1470
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "You should not approve an account unless you know that the e-mail address is correct."
+msgstr "You should not approve an account unless you know that the email address is correct."
 
 #: help_text.php:1472
 msgid "A user will not be able to login until both the \"email verified\" and \"approved by administrator\" options are selected."
-msgstr "A user will not be able to login until both the ‘e-mail verified’ and ‘approved by administrator’ options are selected."
+msgstr "A user will not be able to login until both the ‘email verified’ and ‘approved by administrator’ options are selected."
 
 #: help_text.php:1476
 msgid "Visible online"
@@ -4053,27 +4049,27 @@ msgstr "Your Name:"
 
 #: includes/authentication.php:238 includes/authentication.php:292 login.php:298 message.php:136 modules_v3/widget_messages/module.php:95
 msgid "Email Address:"
-msgstr "E-mail address:"
+msgstr "Email address:"
 
 #: includes/authentication.php:243 includes/authentication.php:295
 msgid "This message was sent while viewing the following URL: "
 msgstr "This message was sent while viewing the following URL: "
 
 #: includes/authentication.php:248 includes/authentication.php:262 includes/authentication.php:307 message.php:43
-msgid "webtrees Message"
-msgstr "webtrees Message"
+msgid "Kiwitrees Message"
+msgstr "Kiwitrees Message"
 
 #: includes/authentication.php:252
-msgid "You sent the following message to a webtrees administrator:"
-msgstr "You sent the following message to a webtrees administrator:"
+msgid "You sent the following message to a kiwitrees administrator:"
+msgstr "You sent the following message to a kiwitrees administrator:"
 
 #: includes/authentication.php:258
-msgid "You sent the following message to a webtrees user:"
-msgstr "You sent the following message to a webtrees user:"
+msgid "You sent the following message to a kiwitrees user:"
+msgstr "You sent the following message to a kiwitrees user:"
 
 #: includes/authentication.php:264 includes/authentication.php:271 includes/authentication.php:309 includes/authentication.php:316
-msgid "The following message has been sent to your webtrees user account from "
-msgstr "The following message has been sent to your webtrees user account from "
+msgid "The following message has been sent to your kiwitrees user account from "
+msgstr "The following message has been sent to your kiwitrees user account from "
 
 #: includes/config_data.php:38
 msgctxt "Unknown surname"
@@ -4785,7 +4781,7 @@ msgstr "grandmother"
 #: includes/functions/functions.php:1284
 msgctxt "parent's parent"
 msgid "grandparent"
-msgstr "grandparents"
+msgstr "grandparent"
 
 #: includes/functions/functions.php:1285
 msgctxt "parent's sibling"
@@ -4875,7 +4871,7 @@ msgstr "brother-in-law"
 #: includes/functions/functions.php:1302 library/WT/Controller/Individual.php:513
 msgctxt "spouses's child"
 msgid "step-child"
-msgstr "child"
+msgstr "step-child"
 
 #: includes/functions/functions.php:1303 library/WT/Controller/Individual.php:514
 msgctxt "spouses's daughter"
@@ -5075,7 +5071,7 @@ msgstr "great-grandchild"
 #: includes/functions/functions.php:1346
 msgctxt "child's child's daughter"
 msgid "great-granddaughter"
-msgstr "granddaughter’s husband"
+msgstr "great-granddaughter"
 
 #: includes/functions/functions.php:1347
 msgctxt "child's child's son"
@@ -5090,7 +5086,7 @@ msgstr "great-grandchild"
 #: includes/functions/functions.php:1349
 msgctxt "child's daughter's daughter"
 msgid "great-granddaughter"
-msgstr "granddaughter’s husband"
+msgstr "great-granddaughter"
 
 #: includes/functions/functions.php:1350
 msgctxt "child's daughter's husband"
@@ -6526,17 +6522,17 @@ msgstr "great x4 nephew"
 #: includes/functions/functions.php:1792
 msgctxt "(a man's) brother's great-great-great-granddaughter"
 msgid "great x4 niece"
-msgstr "Create a new source"
+msgstr "great x4 niece"
 
 #: includes/functions/functions.php:1794
 msgctxt "(a man's) sister's great-great-great-granddaughter"
 msgid "great x4 niece"
-msgstr "Create a new source"
+msgstr "great x4 niece"
 
 #: includes/functions/functions.php:1796
 msgctxt "(a woman's) great x4 niece"
 msgid "great x4 niece"
-msgstr "Create a new source"
+msgstr "great x4 niece"
 
 #: includes/functions/functions.php:1800
 msgctxt "(a man's) brother's great-great-great-grandchild"
@@ -6571,17 +6567,17 @@ msgstr "great x5 nephew"
 #: includes/functions/functions.php:1819
 msgctxt "(a man's) brother's great x4 granddaughter"
 msgid "great x5 niece"
-msgstr "Create a new source"
+msgstr "great x5 niece"
 
 #: includes/functions/functions.php:1821
 msgctxt "(a man's) sister's great x4 granddaughter"
 msgid "great x5 niece"
-msgstr "Create a new source"
+msgstr "great x5 niece"
 
 #: includes/functions/functions.php:1823
 msgctxt "(a woman's) great x5 niece"
 msgid "great x5 niece"
-msgstr "Create a new source"
+msgstr "great x5 niece"
 
 #: includes/functions/functions.php:1827
 msgctxt "(a man's) brother's great x4 grandchild"
@@ -6951,7 +6947,7 @@ msgstr[1] "%s days"
 
 #: includes/functions/functions_date.php:106
 msgid "midnight"
-msgstr "m.n."
+msgstr "midnight"
 
 #: includes/functions/functions_date.php:108
 msgid "a.m."
@@ -6967,7 +6963,7 @@ msgstr "p.m."
 
 #: includes/functions/functions_date.php:118
 msgid "Midnight"
-msgstr "M.N."
+msgstr "Midnight"
 
 #: includes/functions/functions_date.php:120
 msgid "A.M."
@@ -6975,7 +6971,7 @@ msgstr "A.M."
 
 #: includes/functions/functions_date.php:122
 msgid "Noon"
-msgstr "M."
+msgstr "Noon"
 
 #: includes/functions/functions_date.php:124
 msgid "P.M."
@@ -6995,7 +6991,7 @@ msgstr "webtrees internal messaging"
 
 #: includes/functions/functions_edit.php:258 includes/functions/functions_edit.php:269
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees sends e-mail with no storage"
+msgstr "webtrees sends email with no storage"
 
 #: includes/functions/functions_edit.php:260 includes/functions/functions_edit.php:271
 msgid "No contact"
@@ -7037,7 +7033,7 @@ msgstr "Add a media object"
 
 #: includes/functions/functions_edit.php:1193
 msgid "Edit shared note"
-msgstr "Edit Shared Note"
+msgstr "Edit shared note"
 
 #: includes/functions/functions_edit.php:1436
 msgid "No Temple - Living Ordinance"
@@ -7209,7 +7205,7 @@ msgstr "Fact or event"
 
 #: includes/functions/functions_print.php:1100 includes/functions/functions_print.php:1199
 msgid "Select"
-msgstr "Select Events"
+msgstr "Select"
 
 #: includes/functions/functions_print.php:1225 library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
@@ -7520,11 +7516,11 @@ msgstr "Click a row, then drag-and-drop to re-order media "
 msgid "Search engine"
 msgstr "Search engine"
 
-#: index.php:134 index.php:135
+#: index.php:129 index.php:130
 msgid "Change the blocks on this page"
 msgstr "Change the blocks on this page"
 
-#: index.php:136 modules_v3/extra_info/module.php:77
+#: index.php:131 modules_v3/extra_info/module.php:77
 msgid "Hit Count:"
 msgstr "Hit Count:"
 
@@ -7634,7 +7630,7 @@ msgstr "No facts for this family."
 
 #: library/WT/Controller/Family.php:225
 msgid "Add new family information"
-msgstr "Family Group Information"
+msgstr "Add new family information"
 
 #: library/WT/Controller/Familybook.php:73
 #, php-format
@@ -7690,7 +7686,7 @@ msgstr "%1$s (%2$s)"
 
 #: library/WT/Controller/Individual.php:328
 msgid "Edit gender"
-msgstr "Edit sex"
+msgstr "Edit gender"
 
 #: library/WT/Controller/Media.php:91 modules_v3/album/album_print_media.php:338 modules_v3/gallery/module.php:756
 msgid "Manage links"
@@ -7698,7 +7694,7 @@ msgstr "Manage links"
 
 #: library/WT/Controller/Media.php:179
 msgid "Edit details"
-msgstr "Edit Details"
+msgstr "Edit details"
 
 #: library/WT/Controller/Media.php:186
 msgid "To individual"
@@ -7706,7 +7702,7 @@ msgstr "To individual"
 
 #: library/WT/Controller/Media.php:189
 msgid "To family"
-msgstr "To Family"
+msgstr "To family"
 
 #: library/WT/Controller/Media.php:192
 msgid "To source"
@@ -7714,7 +7710,7 @@ msgstr "To Source"
 
 #: library/WT/Controller/Media.php:196
 msgid "View details"
-msgstr "View Details"
+msgstr "View details"
 
 #: library/WT/Controller/Note.php:84
 msgid "Edit note"
@@ -7844,7 +7840,7 @@ msgstr "April"
 #: library/WT/Date/Calendar.php:155
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "Day"
+msgstr "May"
 
 #: library/WT/Date/Calendar.php:156
 msgctxt "GENITIVE"
@@ -7904,7 +7900,7 @@ msgstr "April"
 #: library/WT/Date/Calendar.php:172
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "Day"
+msgstr "May"
 
 #: library/WT/Date/Calendar.php:173
 msgctxt "LOCATIVE"
@@ -7964,7 +7960,7 @@ msgstr "April"
 #: library/WT/Date/Calendar.php:189
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr "Day"
+msgstr "May"
 
 #: library/WT/Date/Calendar.php:190
 msgctxt "INSTRUMENTAL"
@@ -8004,7 +8000,7 @@ msgstr "December"
 #: library/WT/Date/Calendar.php:202
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr "Julian"
+msgstr "Jan"
 
 #: library/WT/Date/Calendar.php:203
 msgctxt "Abbreviation for February"
@@ -8014,7 +8010,7 @@ msgstr "Feb"
 #: library/WT/Date/Calendar.php:204
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr "Manager"
+msgstr "Mar"
 
 #: library/WT/Date/Calendar.php:205
 msgctxt "Abbreviation for April"
@@ -8024,7 +8020,7 @@ msgstr "Apr"
 #: library/WT/Date/Calendar.php:206
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr "Day"
+msgstr "May"
 
 #: library/WT/Date/Calendar.php:207
 msgctxt "Abbreviation for June"
@@ -8034,7 +8030,7 @@ msgstr "Julian"
 #: library/WT/Date/Calendar.php:208
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr "Julian"
+msgstr "Jul"
 
 #: library/WT/Date/Calendar.php:209
 msgctxt "Abbreviation for August"
@@ -8054,7 +8050,7 @@ msgstr "Oct"
 #: library/WT/Date/Calendar.php:212
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr "No"
+msgstr "Nov"
 
 #: library/WT/Date/Calendar.php:213
 msgctxt "Abbreviation for December"
@@ -8885,7 +8881,7 @@ msgstr "Father"
 #: library/WT/Date/Jalali.php:128
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr "Order"
+msgstr "Ord"
 
 #: library/WT/Date/Jalali.php:129
 msgctxt "Abbreviation for Persian month: Khordad"
@@ -8900,7 +8896,7 @@ msgstr "Tir"
 #: library/WT/Date/Jalali.php:131
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr "or"
+msgstr "Mor"
 
 #: library/WT/Date/Jalali.php:132
 msgctxt "Abbreviation for Persian month: Shahrivar"
@@ -9225,7 +9221,7 @@ msgstr "%s&nbsp;BC"
 #: library/WT/Date/Julian.php:101 library/WT/Date/Julian.php:103
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "AD&nbsp;%s"
+msgstr "%s&nbsp;CE"
 
 #: library/WT/Filter.php:248
 msgid "This form has expired.  Try again."
@@ -9234,12 +9230,12 @@ msgstr "This form has expired.  Try again."
 #: library/WT/Gedcom/Code/Adop.php:44
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr "Add a new parent"
+msgstr "Adopted by both parents"
 
 #: library/WT/Gedcom/Code/Adop.php:45
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr "Add a new parent"
+msgstr "Adopted by both parents"
 
 #: library/WT/Gedcom/Code/Adop.php:46
 msgid "Adopted by both parents"
@@ -9248,12 +9244,12 @@ msgstr "Adopted by both parents"
 #: library/WT/Gedcom/Code/Adop.php:50 library/WT/Gedcom/Tag.php:382
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr "Add a new father"
+msgstr "Adopted by father"
 
 #: library/WT/Gedcom/Code/Adop.php:51 library/WT/Gedcom/Tag.php:383
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr "Add a new father"
+msgstr "Adopted by father"
 
 #: library/WT/Gedcom/Code/Adop.php:52 library/WT/Gedcom/Tag.php:384
 msgid "Adopted by father"
@@ -9262,12 +9258,12 @@ msgstr "Adopted by father"
 #: library/WT/Gedcom/Code/Adop.php:56 library/WT/Gedcom/Tag.php:388
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr "Add a new mother"
+msgstr "Adopted by mother"
 
 #: library/WT/Gedcom/Code/Adop.php:57 library/WT/Gedcom/Tag.php:389
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr "Add a new mother"
+msgstr "Adopted by mother"
 
 #: library/WT/Gedcom/Code/Adop.php:58 library/WT/Gedcom/Tag.php:390
 msgid "Adopted by mother"
@@ -9276,12 +9272,12 @@ msgstr "Adopted by mother"
 #: library/WT/Gedcom/Code/Name.php:46
 msgctxt "MALE"
 msgid "adopted name"
-msgstr "Married Name"
+msgstr "adopted name"
 
 #: library/WT/Gedcom/Code/Name.php:49
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr "Married Name"
+msgstr "adopted name"
 
 #: library/WT/Gedcom/Code/Name.php:52
 msgid "adopted name"
@@ -9304,12 +9300,12 @@ msgstr "also known as"
 #: library/WT/Gedcom/Code/Name.php:70
 msgctxt "MALE"
 msgid "birth name"
-msgstr "Edit name"
+msgstr "birth name"
 
 #: library/WT/Gedcom/Code/Name.php:73
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr "Edit name"
+msgstr "birth name"
 
 #: library/WT/Gedcom/Code/Name.php:76
 msgid "birth name"
@@ -9318,12 +9314,12 @@ msgstr "birth name"
 #: library/WT/Gedcom/Code/Name.php:82
 msgctxt "MALE"
 msgid "change of name"
-msgstr "Change language"
+msgstr "change of name"
 
 #: library/WT/Gedcom/Code/Name.php:85
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr "Change language"
+msgstr "change of name"
 
 #: library/WT/Gedcom/Code/Name.php:88
 msgid "change of name"
@@ -9350,12 +9346,12 @@ msgstr "maiden name"
 #: library/WT/Gedcom/Code/Name.php:111
 msgctxt "MALE"
 msgid "married name"
-msgstr "Married Name"
+msgstr "Married name"
 
 #: library/WT/Gedcom/Code/Name.php:114
 msgctxt "FEMALE"
 msgid "married name"
-msgstr "Married Name"
+msgstr "Married name"
 
 #: library/WT/Gedcom/Code/Name.php:117
 msgid "married name"
@@ -9364,12 +9360,12 @@ msgstr "married name"
 #: library/WT/Gedcom/Code/Name.php:123
 msgctxt "MALE"
 msgid "religious name"
-msgstr "Real name"
+msgstr "religious name"
 
 #: library/WT/Gedcom/Code/Name.php:126
 msgctxt "FEMALE"
 msgid "religious name"
-msgstr "Real name"
+msgstr "religious name"
 
 #: library/WT/Gedcom/Code/Name.php:129
 msgid "religious name"
@@ -9408,32 +9404,32 @@ msgstr "Adopted"
 #: library/WT/Gedcom/Code/Pedi.php:56
 msgctxt "Pedigree"
 msgid "Foster"
-msgstr "Foster Child"
+msgstr "Foster"
 
 #: library/WT/Gedcom/Code/Pedi.php:57
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Foster Child"
+msgstr "Foster"
 
 #: library/WT/Gedcom/Code/Pedi.php:58
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Foster Child"
+msgstr "Foster"
 
 #: library/WT/Gedcom/Code/Pedi.php:62
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr "Sibling"
+msgstr "Sealing"
 
 #: library/WT/Gedcom/Code/Pedi.php:63
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr "Sibling"
+msgstr "Sealing"
 
 #: library/WT/Gedcom/Code/Pedi.php:64
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr "Sibling"
+msgstr "Sealing"
 
 #: library/WT/Gedcom/Code/Pedi.php:70
 msgid "Rada"
@@ -9492,12 +9488,12 @@ msgstr "Attendant"
 #: library/WT/Gedcom/Code/Rela.php:58
 msgctxt "MALE"
 msgid "Attending"
-msgstr "pending"
+msgstr "Attending"
 
 #: library/WT/Gedcom/Code/Rela.php:59
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "pending"
+msgstr "Attending"
 
 #: library/WT/Gedcom/Code/Rela.php:60
 msgid "Attending"
@@ -9638,12 +9634,12 @@ msgstr "Guardian"
 #: library/WT/Gedcom/Code/Rela.php:136
 msgctxt "MALE"
 msgid "Informant"
-msgstr "Format"
+msgstr "Informant"
 
 #: library/WT/Gedcom/Code/Rela.php:137
 msgctxt "FEMALE"
 msgid "Informant"
-msgstr "Format"
+msgstr "Informant"
 
 #: library/WT/Gedcom/Code/Rela.php:138
 msgid "Informant"
@@ -9927,7 +9923,7 @@ msgstr "Cochabamba, Bolivia"
 
 #: library/WT/Gedcom/Code/Temp.php:90
 msgid "Colonia Juarez, Mexico"
-msgstr "Colonia Juárez"
+msgstr "Colonia Juarez, Mexico"
 
 #: library/WT/Gedcom/Code/Temp.php:91
 msgid "Columbia, South Carolina"
@@ -11721,7 +11717,7 @@ msgstr "Death of a grandchild"
 #: library/WT/Gedcom/Tag.php:660
 msgctxt "daughter's son"
 msgid "Death of a grandson"
-msgstr "Date of Emigration"
+msgstr "Death of a grandson"
 
 #: library/WT/Gedcom/Tag.php:661
 msgctxt "daughter's daughter"
@@ -11731,7 +11727,7 @@ msgstr "Death of a granddaughter"
 #: library/WT/Gedcom/Tag.php:666
 msgctxt "son's son"
 msgid "Death of a grandson"
-msgstr "Date of Emigration"
+msgstr "Death of a grandson"
 
 #: library/WT/Gedcom/Tag.php:667
 msgctxt "son's daughter"
@@ -11930,11 +11926,11 @@ msgstr "Location"
 
 #: library/WT/Gedcom/Tag.php:746
 msgid "Marriage Intention"
-msgstr "Marriage Intention"
+msgstr "Marriage intention"
 
 #: library/WT/Gedcom/Tag.php:747
 msgid "Married Name"
-msgstr "Married Name"
+msgstr "Married name"
 
 #: library/WT/Gedcom/Tag.php:748 modules_v3/individual_ext_report/report.bak:12 modules_v3/individual_report/report.bak:9
 msgid "Highlighted image"
@@ -11942,7 +11938,7 @@ msgstr "Highlighted image"
 
 #: library/WT/Gedcom/Tag.php:749
 msgid "Married Surname"
-msgstr "Married Surname"
+msgstr "Married surname"
 
 #: library/WT/Gedcom/Tag.php:752
 msgid "Marriage of a son"
@@ -11975,7 +11971,7 @@ msgstr "Marriage of a grandchild"
 #: library/WT/Gedcom/Tag.php:766
 msgctxt "daughter's son"
 msgid "Marriage of a grandson"
-msgstr "Marriage Intention"
+msgstr "Marriage of a grandson"
 
 #: library/WT/Gedcom/Tag.php:767
 msgctxt "daughter's daughter"
@@ -11985,7 +11981,7 @@ msgstr "Marriage of a granddaughter"
 #: library/WT/Gedcom/Tag.php:772
 msgctxt "son's son"
 msgid "Marriage of a grandson"
-msgstr "Marriage Intention"
+msgstr "Marriage of a grandson"
 
 #: library/WT/Gedcom/Tag.php:773
 msgctxt "son's daughter"
@@ -12391,6 +12387,10 @@ msgstr "(filtered from %s total entries)"
 #: library/WT/I18N.php:683 library/WT/I18N.php:684
 msgid "Loading…"
 msgstr "Loading..."
+
+#: library/WT/MenuBar.php:36 themes/_administration/header.php:128
+msgid "Home"
+msgstr "Home"
 
 #: library/WT/MenuBar.php:70 modules_v3/widget_quicklinks/module.php:67
 msgid "My pedigree"
@@ -13893,7 +13893,7 @@ msgstr[1] "%d Individuals"
 
 #: login.php:74
 msgid "This account has not been verified.  Please check your email for a verification message."
-msgstr "This account has not been verified.  Please check your e-mail for a verification message."
+msgstr "This account has not been verified.  Please check your email for a verification message."
 
 #: login.php:78
 msgid "This account has not been approved.  Please wait for an administrator to approve it."
@@ -13909,15 +13909,15 @@ msgstr "You cannot login because your browser does not accept cookies."
 
 #: login.php:132
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an e-mail when your application has been approved."
+msgstr "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
 
 #: login.php:135
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an e-mail message when your application has been approved."
+msgstr "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorised</u> users only.<br /><br />If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
 
 #: login.php:138
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an e-mail when your request is approved."
+msgstr "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
 
 #: login.php:141
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website."
@@ -13937,7 +13937,7 @@ msgstr "Lost password request"
 
 #: login.php:182 modules_v3/login_block/module.php:105
 msgid "Username or email address"
-msgstr "Username or e-mail address"
+msgstr "Username or email address"
 
 #: login.php:218 login.php:324
 #, php-format
@@ -13963,7 +13963,7 @@ msgstr "After you have logged in, select the «My Account» link under the your 
 #: login.php:242
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
-msgstr "A new password has been created and e-mailed to %s.  You can change this password after you login."
+msgstr "A new password has been created and emailed to %s.  You can change this password after you login."
 
 #: login.php:266 message.php:71
 msgid "You are not allowed to send messages that contain external links."
@@ -13985,15 +13985,15 @@ msgstr "A prospective user has registered with webtrees at %s."
 
 #: login.php:300
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
-msgstr "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgstr "The user has been sent an email with the information necessary to confirm the access request"
 
 #: login.php:302
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
-msgstr "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
+msgstr "You will be informed by email when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
 
 #: login.php:304
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
-msgstr "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
+msgstr "You will be informed by email when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
 
 #: login.php:312
 #, php-format
@@ -14003,7 +14003,7 @@ msgstr "New registration at %s"
 #: login.php:326
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "You (or someone claiming to be you) has requested an account at %1$s using the e-mail address %2$s."
+msgstr "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 
 #: login.php:327
 msgid "Information about the request is shown under the link below."
@@ -14011,7 +14011,7 @@ msgstr "Information about the request is shown under the link below."
 
 #: login.php:328
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
-msgstr "Please click on the following link and fill in the requested data to confirm your request and e-mail address."
+msgstr "Please click on the following link and fill in the requested data to confirm your request and email address."
 
 #: login.php:340 login.php:454
 msgid "Verification code:"
@@ -14023,7 +14023,7 @@ msgstr "If you didn’t request an account, you can just delete this message."
 
 #: login.php:343
 msgid "You won't get any more email from this site, because the account request will be deleted automatically after seven days."
-msgstr "You won’t get any more e-mail from this site, because the account request will be deleted automatically after seven days."
+msgstr "You won’t get any more email from this site, because the account request will be deleted automatically after seven days."
 
 #: login.php:344
 #, php-format
@@ -14038,12 +14038,12 @@ msgstr "Hello %s ...<br />Thank you for your registration."
 #: login.php:360
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password."
-msgstr "We will now send a confirmation e-mail to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation e-mail. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation e-mail, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password."
+msgstr "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password."
 
 #: login.php:362
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
-msgstr "We will now send a confirmation e-mail to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation e-mail. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation e-mail, you can login.  To login to this site, you will need to know your user name and password."
+msgstr "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password."
 
 #: login.php:380
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>"
@@ -14076,7 +14076,7 @@ msgstr "Send"
 #: login.php:479
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "A new user (%1$s) has requested an account (%2$s) and verified an e-mail address (%3$s)."
+msgstr "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 
 #: login.php:481
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
@@ -14172,15 +14172,15 @@ msgstr "The file ‘%s’ does not exist."
 
 #: medialist.php:293
 msgid "View person"
-msgstr "View Person"
+msgstr "View person"
 
 #: medialist.php:296
 msgid "View family"
-msgstr "View Family"
+msgstr "View family"
 
 #: medialist.php:299
 msgid "View source"
-msgstr "View Source"
+msgstr "View source"
 
 #: mediaviewer.php:42
 #, php-format
@@ -14210,7 +14210,7 @@ msgstr "Download File"
 
 #: message.php:64
 msgid "Please enter a valid email address."
-msgstr "Please enter a valid e-mail address."
+msgstr "Please enter a valid email address."
 
 #: message.php:105
 msgid "Please enter a message subject."
@@ -14231,7 +14231,7 @@ msgstr "This message will be sent to %s"
 
 #: message.php:136
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
-msgstr "Please provide your e-mail address so that we may contact you in response to this message.  If you do not provide your e-mail address we will not be able to respond to your inquiry.  Your e-mail address will not be used in any other way besides responding to this inquiry."
+msgstr "Please provide your e-mail address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
 
 #: message.php:138 modules_v3/widget_messages/module.php:93
 msgid "Subject:"
@@ -14243,7 +14243,7 @@ msgstr "Body:"
 
 #: message.php:151
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr "When you send this message you will receive a copy sent via e-mail to the address you provided."
+msgstr "When you send this message you will receive a copy sent via email to the address you provided."
 
 #: message.php:207
 #, php-format
@@ -14370,11 +14370,11 @@ msgstr "Comments"
 
 #: modules_v3/album/album_print_media.php:298 modules_v3/album/album_print_media.php:300
 msgid "View Notes"
-msgstr "View Notes"
+msgstr "View notes"
 
 #: modules_v3/album/album_print_media.php:305
 msgid "View Details"
-msgstr "View Details"
+msgstr "View details"
 
 #: modules_v3/album/album_print_media.php:331
 msgid "Edit media"
@@ -14399,11 +14399,11 @@ msgstr "%s media objects"
 
 #: modules_v3/album/module.php:190
 msgid "Media title"
-msgstr "Media file"
+msgstr "Media title"
 
 #: modules_v3/album/module.php:208
 msgid "No media objects found"
-msgstr "Media Objects found"
+msgstr "No media objects found"
 
 #: modules_v3/album/module.php:280
 msgid "Configure display of grouped media items using GEDCOM media tag TYPE."
@@ -14590,8 +14590,8 @@ msgid "A report of recent and pending changes."
 msgstr "A report of recent and pending changes."
 
 #: modules_v3/charts/help_text.php:35
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page or at full width.<br /><br />When this block appears the root person and the type of chart to be displayed are determined by the administrator.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
-msgstr "This block allows a pedigree, descendancy, or hourglass chart to appear the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page or at full width.<br /><br />When this block appears the root person and the type of chart to be displayed are determined by the administrator.<br /><br />The behaviour of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear the Home page.  Because of space limitations, the charts should be placed only on the left side of the page or at full width.<br /><br />When this block appears the root person and the type of chart to be displayed are determined by the administrator.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
+msgstr "This block allows a pedigree, descendancy, or hourglass chart to appear the Home page.  Because of space limitations, the charts should be placed only on the left side of the page or at full width.<br /><br />When this block appears the root person and the type of chart to be displayed are determined by the administrator.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
 
 #: modules_v3/charts/module.php:40
 msgid "An alternative way to display charts."
@@ -15287,11 +15287,11 @@ msgstr "The %s time she married"
 
 #: modules_v3/fancy_treeview/module.php:1079 modules_v3/ahnentafel_report/report.bak:258 modules_v3/descendancy_report/report.bak:172
 msgid "He married"
-msgstr "Married Name"
+msgstr "He married"
 
 #: modules_v3/fancy_treeview/module.php:1079 modules_v3/ahnentafel_report/report.bak:259 modules_v3/descendancy_report/report.bak:241
 msgid "She married"
-msgstr "Married Name"
+msgstr "She married"
 
 #: modules_v3/fancy_treeview/module.php:1113
 msgid "divorced"
@@ -15371,7 +15371,7 @@ msgstr "adopted daughter of"
 
 #: modules_v3/fancy_treeview/module.php:1244 modules_v3/descendancy_report/report.bak:225
 msgid "daughter of"
-msgstr "daughter"
+msgstr "daughter of"
 
 #: modules_v3/fancy_treeview/module.php:1249
 msgctxt "MALE"
@@ -15586,7 +15586,7 @@ msgstr "This field controls the order in which the galleries are displayed."
 
 #: modules_v3/gallery/help_text.php:31
 msgid "You do not have to enter the numbers sequentially. If you leave holes in the numbering scheme, you can insert other albums later. For example, if you use the numbers 1, 6, 11, 16, you can later insert albums with the missing sequence numbers. Negative numbers and zero are allowed, and can be used to insert albums in front of the first one."
-msgstr "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+msgstr "You do not have to enter the numbers sequentially. If you leave holes in the numbering scheme, you can insert other albums later. For example, if you use the numbers 1, 6, 11, 16, you can later insert albums with the missing sequence numbers. Negative numbers and zero are allowed, and can be used to insert albums in front of the first one."
 
 #: modules_v3/gallery/help_text.php:31
 msgid "When more than one gallery has the same position number, only one of these albums will be visible."
@@ -15610,7 +15610,7 @@ msgstr "The album will appear only in the currently active family trees's galler
 
 #: modules_v3/gallery/help_text.php:41
 msgid "Gallery language"
-msgstr "Change language"
+msgstr "Gallery language"
 
 #: modules_v3/gallery/help_text.php:42
 msgid "Either leave all languages un-ticked to display the gallery texts in every language, or tick the specific languages you want to display it for.<br><br>To create translated texts for different languages create multiple copies setting the appropriate language only for each version."
@@ -15626,7 +15626,7 @@ msgstr "This is a brief title. It is displayed in two places.<ol><li> It is used
 
 #: modules_v3/gallery/help_text.php:51
 msgid "Gallery description"
-msgstr "Description"
+msgstr "Gallery description"
 
 #: modules_v3/gallery/help_text.php:52
 msgid "This is a sub-heading that will display below the Summary page title, above the tabbed list of galleries. It can contain HTML elements including an image if you wish. Simply ensure there is no content if you do not want to display it."
@@ -15634,7 +15634,7 @@ msgstr "This is a sub-heading that will display below the Summary page title, ab
 
 #: modules_v3/gallery/help_text.php:56
 msgid "Gallery source"
-msgstr "Show all sources"
+msgstr "Gallery source"
 
 #: modules_v3/gallery/help_text.php:57
 msgid "Here you can either select the kiwitrees media folder to display in this gallery page, or you can set a link to a Flickr or Picasa location for your group of images.<br><em>[Such external sources must be public or they will not be viewable in kiwitrees.]</em><br><br>For Flickr (www.flickr.com), enter the <strong>Set</strong> number of your images, usually a long number like <strong>72157633272831222</strong>. Nothing else is required in this field.<br><br>For Picassa (picasaweb.google.com) enter your user name and user album, in the format <strong>username/album</strong> like <strong>kiwi3685/NZImages</strong><br><br>The module will add these references to the correct URLs to link to your Flickr or Picasa sites."
@@ -15646,7 +15646,7 @@ msgstr "Gallery themes"
 
 #: modules_v3/gallery/help_text.php:70
 msgid "There are TWO types of theme in operation for this module.<br><br>The first is the standard kiwitrees theme (kiwitrees, clouds, colors, xenea etc). This controls the overall container for the gallery and the menu images in each of the kiwitrees themes. These are switched automatically when you change the main kiwitrees theme.<br><br>In addition, there is the Galleria theme that controls the actual image display area. This module includes three default themes for this, two supplied by Galleria (called \"classic\" and \"azur\"), and an alternative \"simpl_galleria\" one designed to compliment the colors of the blue-based themes such as webtrees, clouds and xenea. There are also other themes available <u>for purchase</u> from the Galleria website. Switch between the \"Azur\", \"Classic\" and \"Simpl_galleria\" by selecting them on the configuration page.<br><br>To add other Galleria themes, download them from their website (www.galleria.io/), and copy them to the /modules_v3/gallery/galleria/themes/ folder.<br>You should then add a 250px x 140px thumbnail image to suit in the /modules_v3/gallery/images folder, named to match the theme and of type png (like azur.png)."
-msgstr "There are TWO types of theme in operation for this module.<br><br>The first is the standard kiwitrees theme (kiwitrees, clouds, coloirs, xenea etc). This controls the overall container for the gallery and the menu images in each of the kiwitrees themes. These are switched automatically when you change the main kiwitrees theme.<br><br>In addition, there is the Galleria theme that controls the actual image display area. This module includes three default themes for this, two supplied by Galleria (called \"classic\" and \"azur\"), and an alternative \"simpl_galleria\" one designed to compliment the colors of the blue-based themes such as webtrees, clouds and xenea. There are also other themes available <u>for purchase</u> from the Galleria website. Switch between the \"Azur\", \"Classic\" and \"Simpl_galleria\" by selecting them on the configuration page.<br><br>To add other Galleria themes, download them from their website (www.galleria.io/), and copy them to the /modules_v3/gallery/galleria/themes/ folder.<br>You should then add a 250px x 140px thumbnail image to suit in the /modules_v3/gallery/images folder, named to match the theme and of type png (like azur.png)."
+msgstr "There are TWO types of theme in operation for this module.<br><br>The first is the standard kiwitrees theme (kiwitrees, clouds, colours, xenea etc). This controls the overall container for the gallery and the menu images in each of the kiwitrees themes. These are switched automatically when you change the main kiwitrees theme.<br><br>In addition, there is the Galleria theme that controls the actual image display area. This module includes three default themes for this, two supplied by Galleria (called \"classic\" and \"azur\"), and an alternative \"simpl_galleria\" one designed to compliment the colors of the blue-based themes such as webtrees, clouds and xenea. There are also other themes available <u>for purchase</u> from the Galleria website. Switch between the \"Azur\", \"Classic\" and \"Simpl_galleria\" by selecting them on the configuration page.<br><br>To add other Galleria themes, download them from their website (www.galleria.io/), and copy them to the /modules_v3/gallery/galleria/themes/ folder.<br>You should then add a 250px x 140px thumbnail image to suit in the /modules_v3/gallery/images folder, named to match the theme and of type png (like azur.png)."
 
 #: modules_v3/gallery/module.php:36 modules_v3/gallery/module.php:40 modules_v3/gallery/module.php:429 modules_v3/gallery/module.php:672
 msgid "Gallery"
@@ -15654,7 +15654,7 @@ msgstr "Gallery"
 
 #: modules_v3/gallery/module.php:45
 msgid "Display image galleries."
-msgstr "Display all"
+msgstr "Display image galleries."
 
 #: modules_v3/gallery/module.php:143
 msgid "Edit gallerys"
@@ -15670,7 +15670,7 @@ msgstr "Flickr"
 
 #: modules_v3/gallery/module.php:288
 msgid "Flickr set number"
-msgstr "Port number"
+msgstr "Flickr set number"
 
 #: modules_v3/gallery/module.php:297
 msgid "Picasa"
@@ -15710,7 +15710,7 @@ msgstr "Summary page description"
 
 #: modules_v3/gallery/module.php:472
 msgid "Select gallery theme"
-msgstr "Select a date"
+msgstr "Select gallery theme"
 
 #: modules_v3/gallery/module.php:495
 msgid "Add gallery"
@@ -15718,19 +15718,19 @@ msgstr "Add gallery"
 
 #: modules_v3/gallery/module.php:528
 msgid "Are you sure you want to delete this gallery?"
-msgstr "Are you sure you want to delete ‘%s’?"
+msgstr "Are you sure you want to delete this gallery?"
 
 #: modules_v3/gallery/module.php:539
 msgid "No galleries have been created."
-msgstr "The changes to ‘%s’ have been accepted."
+msgstr "No galleries have been created."
 
 #: modules_v3/gallery/module.php:593
 msgid "Show descriptions"
-msgstr "Description"
+msgstr "Show descriptions"
 
 #: modules_v3/gallery/module.php:594
 msgid "Hide descriptions"
-msgstr "Description"
+msgstr "Hide descriptions"
 
 #: modules_v3/gallery/module.php:595
 msgid "Play slideshow"
@@ -15754,7 +15754,7 @@ msgstr "Next image"
 
 #: modules_v3/gallery/module.php:600
 msgid "Previous image"
-msgstr "Real name"
+msgstr "Previous image"
 
 #: modules_v3/gallery/module.php:711
 msgid "Image collections related to our family"
@@ -15766,7 +15766,7 @@ msgstr "Linked to:"
 
 #: modules_v3/gallery/module.php:796
 msgid "Gallery is empty. Please choose other gallery."
-msgstr "Gallery is empty. Please choose other gallery."
+msgstr "Gallery is empty. Please choose another gallery."
 
 #: modules_v3/gedcom_block/module.php:40
 msgid "A greeting message for site visitors."
@@ -16274,7 +16274,7 @@ msgstr "Individual information"
 
 #: modules_v3/googlemap/module.php:1249
 msgid "View Person"
-msgstr "View Person"
+msgstr "View person"
 
 #: modules_v3/googlemap/module.php:1251
 msgid "Birth:"
@@ -16603,7 +16603,7 @@ msgstr "Show only people, events, or all?"
 
 #: modules_v3/random_media/module.php:314 modules_v3/random_media/module.php:364
 msgid "Select all"
-msgstr "Select Events"
+msgstr "Select all"
 
 #: modules_v3/random_media/module.php:386
 msgid "Show slide show controls?"
@@ -16714,19 +16714,19 @@ msgstr "Pending Changes block"
 
 #: modules_v3/review_changes/help_text.php:32 modules_v3/widget_review_changes/help_text.php:32
 msgid "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
-msgstr "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily e-mails to moderators whenever pending changes exist."
+msgstr "This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist."
 
 #: modules_v3/review_changes/module.php:40 modules_v3/widget_review_changes/module.php:40
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr "A list of changes that need moderator approval, and e-mail notifications."
+msgstr "A list of changes that need moderator approval, and email notifications."
 
 #: modules_v3/review_changes/module.php:87 modules_v3/widget_review_changes/module.php:87
-msgid "webtrees - Review changes"
-msgstr "webtrees - Review changes"
+msgid "kiwitrees - Review changes"
+msgstr "kiwitrees - Review changes"
 
 #: modules_v3/review_changes/module.php:88 modules_v3/widget_review_changes/module.php:88
-msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
-msgstr "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
+msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that kiwitrees site and login to review the changes."
+msgstr "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that kiwitrees site and login to review the changes."
 
 #: modules_v3/review_changes/module.php:108 modules_v3/widget_review_changes/module.php:108
 msgid "There are pending changes for you to moderate."
@@ -16734,23 +16734,23 @@ msgstr "There are pending changes for you to moderate."
 
 #: modules_v3/review_changes/module.php:111 modules_v3/widget_review_changes/module.php:111
 msgid "Last email reminder was sent "
-msgstr "Last e-mail reminder was sent "
+msgstr "Last email reminder was sent "
 
 #: modules_v3/review_changes/module.php:112 modules_v3/widget_review_changes/module.php:112
 msgid "Next email reminder will be sent after "
-msgstr "Next e-mail reminder will be sent after "
+msgstr "Next email reminder will be sent after "
 
 #: modules_v3/review_changes/module.php:180 modules_v3/widget_review_changes/module.php:171
 msgid "Send out reminder emails?"
-msgstr "Send out reminder e-mails?"
+msgstr "Send out reminder emails?"
 
 #: modules_v3/review_changes/module.php:184 modules_v3/widget_review_changes/module.php:175
 msgid "Reminder email frequency (days)"
-msgstr "Reminder e-mail frequency (days)"
+msgstr "Reminder email frequency (days)"
 
 #: modules_v3/simpl_pages/help_text.php:30
 msgid "Page position"
-msgstr "Place of Emigration"
+msgstr "Page position"
 
 #: modules_v3/simpl_pages/help_text.php:31
 msgid "This field controls the order in which the pages are displayed."
@@ -16758,7 +16758,7 @@ msgstr "This field controls the order in which the pages are displayed."
 
 #: modules_v3/simpl_pages/help_text.php:31
 msgid "You do not have to enter the numbers sequentially. If you leave holes in the numbering scheme, you can insert other pages later. For example, if you use the numbers 1, 6, 11, 16, you can later insert pages with the missing sequence numbers. Negative numbers and zero are allowed, and can be used to insert pages in front of the first one."
-msgstr "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
+msgstr "You do not have to enter the numbers sequentially. If you leave holes in the numbering scheme, you can insert other pages later. For example, if you use the numbers 1, 6, 11, 16, you can later insert pages with the missing sequence numbers. Negative numbers and zero are allowed, and can be used to insert pages in front of the first one."
 
 #: modules_v3/simpl_pages/help_text.php:31
 msgid "When more than one page has the same position number, only one of these pages will be visible."
@@ -16794,7 +16794,7 @@ msgstr "This is a brief title. It is displayed in two places.<ol><li> It is used
 
 #: modules_v3/simpl_pages/help_text.php:51
 msgid "Page description"
-msgstr "Description"
+msgstr "Page description"
 
 #: modules_v3/simpl_pages/help_text.php:52
 msgid "This is a sub-heading that will display below the Summary page title, above the tabbed list of pages. It can contain HTML elements including an image if you wish. Simply ensure there is no content if you do not want to display it."
@@ -16838,7 +16838,7 @@ msgstr "Resources"
 
 #: modules_v3/simpl_pages/module.php:408
 msgid "These are resources"
-msgstr "Create a new source"
+msgstr "These are resources"
 
 #: modules_v3/simpl_pages/module.php:436
 msgid "Pages"
@@ -16849,12 +16849,12 @@ msgid "Add page"
 msgstr "Add page"
 
 #: modules_v3/simpl_pages/module.php:489
-msgid "Are you sure you want to delete this pages?"
-msgstr "Are you sure you want to delete ‘%s’?"
+msgid "Are you sure you want to delete this page?"
+msgstr "Are you sure you want to delete this page?"
 
 #: modules_v3/simpl_pages/module.php:502
-msgid "No pages have been created."
-msgstr "The changes to ‘%s’ have been accepted."
+msgid "No pages have been created"
+msgstr "No pages have been created"
 
 #: modules_v3/simpl_privacy/help_text.php:32 modules_v3/simpl_privacy/module.php:35
 msgid "Privacy status"
@@ -16952,7 +16952,7 @@ msgstr "A sidebar tool to provide quick links to popular research web sites."
 
 #: modules_v3/simpl_research/module.php:107
 msgid "Check the plugins you want to use in the sidebar"
-msgstr "Click here to open or close the sidebar"
+msgstr "Check the plugins you want to use in the sidebar"
 
 #: modules_v3/simpl_research/module.php:118
 msgid "The settings will be reset to default. Are you sure you want to do this?"
@@ -17024,7 +17024,7 @@ msgstr "Story"
 
 #: modules_v3/stories/module.php:387
 msgid "Add another individual"
-msgstr "Find an individual"
+msgstr "Add another individual"
 
 #: modules_v3/stories/module.php:473
 msgid "Link"
@@ -17521,7 +17521,7 @@ msgstr "Add More Fields"
 
 #: setup.php:118
 msgid "Setup wizard for <b>Kiwitrees</b>"
-msgstr "Setup wizard for <b>kiwitrees</b>"
+msgstr "Setup wizard for <b>Kiwitrees</b>"
 
 #: setup.php:132
 msgid "Checking server configuration"
@@ -17606,7 +17606,7 @@ msgstr "If your server’s security policy permits it, you will be able to reque
 
 #: setup.php:225
 msgid "Oops!  Kiwitrees was unable to create files in this folder."
-msgstr "Oops!  kiwitrees was unable to create files in this folder."
+msgstr "Oops!  Kiwitrees was unable to create files in this folder."
 
 #: setup.php:226
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -18195,7 +18195,7 @@ msgstr "age"
 
 #: themes/_administration/header.php:112
 msgid "Server time"
-msgstr "Current Server Time:"
+msgstr "Server time"
 
 #: themes/_administration/header.php:115
 msgid "Client time"
@@ -18208,10 +18208,6 @@ msgstr "UTC"
 #: themes/_administration/header.php:126
 msgid "Dashboard"
 msgstr "Dashboard"
-
-#: themes/_administration/header.php:128
-msgid "Home"
-msgstr "Home"
 
 #: themes/_administration/header.php:132
 msgid "Site Administration"
@@ -18291,7 +18287,7 @@ msgstr "Tools"
 
 #: themes/_administration/theme.php:33
 msgid "_administration"
-msgstr "Administration"
+msgstr "_administration"
 
 #: themes/colors/footer.php:44 themes/kiwitrees/footer.php:38 themes/uti-family/footer.php:35 themes/webtrees/footer.php:39 themes/xenea/footer.php:40
 msgid "Powered by "
@@ -18407,7 +18403,7 @@ msgstr "Show lifespans"
 
 #: modules_v3/ahnentafel_report/report.bak:7 modules_v3/descendancy_report/report.bak:6 modules_v3/individual_ext_report/report.bak:6 modules_v3/individual_report/report.bak:6 modules_v3/missing_facts_report/report.bak:6 modules_v3/pedigree_report/report.bak:6 modules_v3/relative_ext_report/report.bak:6
 msgid "Enter Individual ID"
-msgstr "Individual"
+msgstr "Enter Individual ID"
 
 #: modules_v3/ahnentafel_report/report.bak:9 modules_v3/descendancy_report/report.bak:8 modules_v3/family_group_report/report.bak:8 modules_v3/individual_ext_report/report.bak:10 modules_v3/individual_report/report.bak:7
 msgid "Show sources?"
@@ -18415,7 +18411,7 @@ msgstr "Show all sources"
 
 #: modules_v3/ahnentafel_report/report.bak:10 modules_v3/family_group_report/report.bak:9 modules_v3/individual_ext_report/report.bak:11 modules_v3/individual_report/report.bak:8
 msgid "Show notes?"
-msgstr "Shared notes"
+msgstr "Shared notes?"
 
 #: modules_v3/ahnentafel_report/report.bak:11
 msgid "Show occupations?"
@@ -18451,7 +18447,7 @@ msgstr "Legal"
 
 #: modules_v3/ahnentafel_report/report.bak:14 modules_v3/bdm_report/report.bak:13 modules_v3/birth_report/report.bak:11 modules_v3/cemetery_report/report.bak:9 modules_v3/change_report/report.bak:10 modules_v3/death_report/report.bak:12 modules_v3/descendancy_report/report.bak:9 modules_v3/fact_sources/report.bak:9 modules_v3/family_group_report/report.bak:12 modules_v3/individual_ext_report/report.bak:13 modules_v3/individual_report/report.bak:10 modules_v3/marriage_report/report.bak:11 modules_v3/missing_facts_report/report.bak:9 modules_v3/occupation_report/report.bak:8 modules_v3/pedigree_report/report.bak:8 modules_v3/relative_ext_report/report.bak:9
 msgid "Page size"
-msgstr "Messages"
+msgstr "Page size"
 
 #: modules_v3/ahnentafel_report/report.bak:15 modules_v3/bdm_report/report.bak:14 modules_v3/birth_report/report.bak:12 modules_v3/cemetery_report/report.bak:10 modules_v3/change_report/report.bak:12 modules_v3/death_report/report.bak:13 modules_v3/descendancy_report/report.bak:10 modules_v3/fact_sources/report.bak:10 modules_v3/family_group_report/report.bak:13 modules_v3/individual_ext_report/report.bak:14 modules_v3/individual_report/report.bak:11 modules_v3/marriage_report/report.bak:12 modules_v3/missing_facts_report/report.bak:10 modules_v3/occupation_report/report.bak:9 modules_v3/pedigree_report/report.bak:9 modules_v3/relative_ext_report/report.bak:10
 msgctxt "font name"
@@ -18478,7 +18474,7 @@ msgstr "Ancestors of "
 
 #: modules_v3/ahnentafel_report/report.bak:54 modules_v3/bdm_report/report.bak:40 modules_v3/birth_report/report.bak:30 modules_v3/cemetery_report/report.bak:34 modules_v3/change_report/report.bak:43 modules_v3/death_report/report.bak:31 modules_v3/descendancy_report/report.bak:41 modules_v3/fact_sources/report.bak:42 modules_v3/family_group_report/report.bak:87 modules_v3/individual_ext_report/report.bak:90 modules_v3/individual_report/report.bak:86 modules_v3/marriage_report/report.bak:29 modules_v3/missing_facts_report/report.bak:51 modules_v3/occupation_report/report.bak:36 modules_v3/relative_ext_report/report.bak:42
 msgid "Page"
-msgstr "Messages"
+msgstr "Page"
 
 #: modules_v3/ahnentafel_report/report.bak:76 modules_v3/descendancy_report/report.bak:53
 msgid "Generation "
@@ -18496,7 +18492,7 @@ msgstr "was born"
 
 #: modules_v3/ahnentafel_report/report.bak:157 modules_v3/ahnentafel_report/report.bak:185 modules_v3/ahnentafel_report/report.bak:212 modules_v3/ahnentafel_report/report.bak:280 modules_v3/ahnentafel_report/report.bak:308 modules_v3/ahnentafel_report/report.bak:333 modules_v3/ahnentafel_report/report.bak:364 modules_v3/descendancy_report/report.bak:125 modules_v3/descendancy_report/report.bak:157 modules_v3/descendancy_report/report.bak:314 modules_v3/descendancy_report/report.bak:352 modules_v3/descendancy_report/report.bak:383 modules_v3/descendancy_report/report.bak:422 modules_v3/descendancy_report/report.bak:453
 msgid " in "
-msgstr "Not in DB"
+msgstr " in "
 
 #: modules_v3/ahnentafel_report/report.bak:158 modules_v3/ahnentafel_report/report.bak:186 modules_v3/ahnentafel_report/report.bak:281 modules_v3/ahnentafel_report/report.bak:309 modules_v3/ahnentafel_report/report.bak:334 modules_v3/ahnentafel_report/report.bak:365
 msgid " but the details are unknown"
@@ -18512,11 +18508,11 @@ msgstr "She was christened"
 
 #: modules_v3/ahnentafel_report/report.bak:193
 msgid "His occupation was"
-msgstr "Edit options"
+msgstr "His occupation was"
 
 #: modules_v3/ahnentafel_report/report.bak:194
 msgid "Her occupation was"
-msgstr "Edit options"
+msgstr "Her occupation was"
 
 #: modules_v3/ahnentafel_report/report.bak:220
 msgid "He resided at"
@@ -18548,19 +18544,19 @@ msgstr "Child of "
 
 #: modules_v3/bdm_report/report.bak:8 modules_v3/birth_report/report.bak:8
 msgid "Birth Date range start"
-msgstr "Births, Deaths, Marriages"
+msgstr "Birth Date range start"
 
 #: modules_v3/bdm_report/report.bak:9 modules_v3/birth_report/report.bak:9
 msgid "Birth Date range end"
-msgstr "Date range"
+msgstr "Birth Date range end"
 
 #: modules_v3/bdm_report/report.bak:10 modules_v3/death_report/report.bak:8
 msgid "Death Date range start"
-msgstr "Date range"
+msgstr "Death Date range start"
 
 #: modules_v3/bdm_report/report.bak:11 modules_v3/death_report/report.bak:9
 msgid "Death Date range end"
-msgstr "Date range"
+msgstr "Death Date range end"
 
 #: modules_v3/bdm_report/report.bak:167
 msgid "Spouse"
@@ -18580,7 +18576,7 @@ msgstr "Birthplace contains"
 
 #: modules_v3/cemetery_report/report.bak:8 modules_v3/death_report/report.bak:11
 msgid "Name List"
-msgstr "Place List"
+msgstr "Name List"
 
 #: modules_v3/change_report/report.bak:6
 msgid "Starting range of change dates"
@@ -18588,7 +18584,7 @@ msgstr "Starting range of change dates"
 
 #: modules_v3/change_report/report.bak:7
 msgid "Ending range of change dates"
-msgstr "Pending changes"
+msgstr "Ending range of change dates"
 
 #: modules_v3/change_report/report.bak:9
 msgid "Show pending changes"
@@ -18596,7 +18592,7 @@ msgstr "Pending changes"
 
 #: modules_v3/change_report/report.bak:11 modules_v3/pedigree_report/report.bak:7
 msgid "Orientation"
-msgstr "Generation"
+msgstr "Orientation"
 
 #: modules_v3/change_report/report.bak:58
 msgid "Differences"
@@ -18604,7 +18600,7 @@ msgstr "Date differences"
 
 #: modules_v3/change_report/report.bak:85
 msgid "Total pending changes: "
-msgstr "Moderate pending changes"
+msgstr "Total pending changes: "
 
 #: modules_v3/change_report/report.bak:125
 msgid "Total accepted changes: "
@@ -18612,21 +18608,21 @@ msgstr "Total accepted changes: "
 
 #: modules_v3/death_report/report.bak:7
 msgid "Death Place contains"
-msgstr "Birthplace contains"
+msgstr "Death Place contains"
 
 #: modules_v3/descendancy_report/report.bak:40
 msgid "Descendants of "
-msgstr "Descendants of %s"
+msgstr "Descendants of "
 
 #: modules_v3/descendancy_report/report.bak:175
 msgctxt "MALE"
 msgid "married"
-msgstr "Married Name"
+msgstr "married"
 
 #: modules_v3/descendancy_report/report.bak:244
 msgctxt "FEMALE"
 msgid "married"
-msgstr "Married Name"
+msgstr "married"
 
 #: modules_v3/descendancy_report/report.bak:330
 msgid "She was born"
@@ -18674,7 +18670,7 @@ msgstr "daughter"
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Parents and siblings"
-msgstr "Parent’s age"
+msgstr "Parents and siblings"
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Spouses and children"
@@ -18686,7 +18682,7 @@ msgstr "Direct line ancestors"
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Direct line ancestors and their families"
-msgstr "Add this person, his direct line ancestors and their families."
+msgstr "Direct line ancestors and their families"
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Choose relatives"
@@ -18694,11 +18690,11 @@ msgstr "Choose relatives"
 
 #: modules_v3/individual_ext_report/report.bak:311 modules_v3/individual_report/report.bak:313
 msgid "Brother"
-msgstr "mother"
+msgstr "Brother"
 
 #: modules_v3/individual_ext_report/report.bak:347 modules_v3/individual_report/report.bak:349
 msgid "Sister"
-msgstr "Foster Child"
+msgstr "Sister"
 
 #: modules_v3/individual_ext_report/report.bak:427 modules_v3/individual_report/report.bak:429
 msgid "Family with wife"
@@ -18706,7 +18702,7 @@ msgstr "Family tree"
 
 #: modules_v3/individual_ext_report/report.bak:433 modules_v3/individual_report/report.bak:435
 msgid "Family with husband"
-msgstr "Family with radāʿ parents"
+msgstr "Family with husband"
 
 #: modules_v3/marriage_report/report.bak:7
 msgid "Marriage Place contains"
@@ -18714,11 +18710,11 @@ msgstr "Birthplace contains"
 
 #: modules_v3/marriage_report/report.bak:8
 msgid "Marriage Date range start"
-msgstr "Marriage Intention"
+msgstr "Marriage Date range start"
 
 #: modules_v3/marriage_report/report.bak:9
 msgid "Marriage Date range end"
-msgstr "Marriage Intention"
+msgstr "Marriage Date range end"
 
 #: modules_v3/missing_facts_report/report.bak:12
 msgid "Sources to the events"
@@ -18726,7 +18722,7 @@ msgstr "Sources to the events"
 
 #: modules_v3/pedigree_report/report.bak:737
 msgid "Pedigree Chart"
-msgstr "Clear Chart"
+msgstr "Pedigree Chart"
 
 #~ msgid "<iframe frameborder='0' width='0' height='0'/>"
 #~ msgstr "<iframe frameborder='0' width='0' height='0'/>"
