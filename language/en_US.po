@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-02-07 17:40+1200\n"
-"PO-Revision-Date: 2015-02-08 11:45+1200\n"
+"POT-Creation-Date: 2015-02-10 08:46+1200\n"
+"PO-Revision-Date: 2015-02-10 08:47+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -741,10 +741,10 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: admin_site_access.php:285 admin_site_change - Original.php:276
-#: admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243
-#: admin_trees_config.php:622 admin_trees_manage.php:233
-#: edit_interface.php:112 includes/functions/functions_print_facts.php:171
+#: admin_site_access.php:285 admin_site_change.php:292
+#: admin_site_clean.php:127 admin_site_logs.php:243 admin_trees_config.php:622
+#: admin_trees_manage.php:233 edit_interface.php:112
+#: includes/functions/functions_print_facts.php:171
 #: includes/functions/functions_print_facts.php:717
 #: includes/functions/functions_print_facts.php:919
 #: includes/functions/functions_print_facts.php:1207
@@ -784,38 +784,34 @@ msgstr ""
 msgid "Create a new rule"
 msgstr ""
 
-#: admin_site_change - Original.php:30 admin_site_change.php:30
-#: modules_v3/change_report/module.php:36
+#: admin_site_change.php:30 modules_v3/change_report/module.php:36
 #: modules_v3/change_report/report.bak:4
 #: modules_v3/change_report/report.bak:42
 msgid "Changes"
 msgstr ""
 
-#: admin_site_change - Original.php:36 admin_site_change.php:38
+#: admin_site_change.php:38
 msgid "accepted"
 msgstr ""
 
-#: admin_site_change - Original.php:37 admin_site_change.php:39
+#: admin_site_change.php:39
 msgid "rejected"
 msgstr ""
 
-#: admin_site_change - Original.php:38 admin_site_change.php:40
+#: admin_site_change.php:40
 msgid "pending"
 msgstr ""
 
-#: admin_site_change - Original.php:251 admin_site_change.php:269
-#: admin_site_logs.php:221
+#: admin_site_change.php:269 admin_site_logs.php:221
 #, php-format
 msgid "From %s to %s"
 msgstr ""
 
-#: admin_site_change - Original.php:255 Original.php:289
 #: admin_site_change.php:273 admin_site_change.php:305
 #: includes/functions/functions_print.php:978 library/WT/Gedcom/Tag.php:325
 msgid "Status"
 msgstr ""
 
-#: admin_site_change - Original.php:258 Original.php:290
 #: admin_site_change.php:276 admin_site_change.php:306
 #: admin_site_merge.php:140 includes/functions/functions_print_lists.php:1745
 #: includes/functions/functions_print_lists.php:1881
@@ -825,22 +821,15 @@ msgstr ""
 msgid "Record"
 msgstr ""
 
-#: admin_site_change - Original.php:261 Original.php:291
 #: admin_site_change.php:279
 msgid "Old data"
 msgstr ""
 
-#: admin_site_change - Original.php:264 Original.php:292
-msgid "New data"
-msgstr ""
-
-#: admin_site_change - Original.php:267 Original.php:293
 #: admin_site_change.php:283 admin_site_change.php:309 admin_site_logs.php:234
 #: admin_site_logs.php:259 edit_changes.php:170
 msgid "User"
 msgstr ""
 
-#: admin_site_change - Original.php:270 Original.php:294
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237
 #: admin_site_logs.php:260 admin_trees_duplicates.php:140
 #: admin_trees_manage.php:184 admin_trees_places.php:103
@@ -855,20 +844,19 @@ msgstr ""
 msgid "Family tree"
 msgstr ""
 
-#: admin_site_change - Original.php:274 admin_site_change.php:290
-#: admin_site_logs.php:241 find.php:189 find.php:204 find.php:222 find.php:239
-#: find.php:256 find.php:274 find.php:291 find.php:471 library/WT/I18N.php:685
-#: modules_v3/random_media/module.php:308
+#: admin_site_change.php:290 admin_site_logs.php:241 find.php:189 find.php:204
+#: find.php:222 find.php:239 find.php:256 find.php:274 find.php:291
+#: find.php:471 library/WT/I18N.php:685 modules_v3/random_media/module.php:308
 msgid "Filter"
 msgstr ""
 
-#: admin_site_change - Original.php:275 admin_site_change.php:291
-#: admin_site_logs.php:242 admin_trees_manage.php:216
+#: admin_site_change.php:291 admin_site_logs.php:242
+#: admin_trees_manage.php:216
 msgid "Export"
 msgstr ""
 
-#: admin_site_change - Original.php:276 admin_site_change.php:292
-#: admin_site_logs.php:243 includes/functions/functions_print_lists.php:1060
+#: admin_site_change.php:292 admin_site_logs.php:243
+#: includes/functions/functions_print_lists.php:1060
 #: includes/functions/functions_print_lists.php:1201
 #: includes/functions/functions_print_lists.php:1295
 #: modules_v3/googlemap/admin_places.php:622
@@ -876,8 +864,7 @@ msgstr ""
 msgid "Permanently delete these records?"
 msgstr ""
 
-#: admin_site_change - Original.php:288 admin_site_change.php:304
-#: admin_site_logs.php:255
+#: admin_site_change.php:304 admin_site_logs.php:255
 msgid "Timestamp"
 msgstr ""
 
@@ -4092,13 +4079,13 @@ msgstr ""
 msgid ""
 "Some genealogy applications create GEDCOM files that contain media filenames "
 "with full paths.  These paths will not exist on the web-server.  To allow "
-"webtrees to find the file, the first part of the path must be removed."
+"kiwitrees to find the file, the first part of the path must be removed."
 msgstr ""
 
 #: help_text.php:545
 #, php-format
 msgid ""
-"For example, if the GEDCOM file contains %1$s and webtrees expects to find "
+"For example, if the GEDCOM file contains %1$s and kiwitrees expects to find "
 "%2$s in the media folder, then the GEDCOM media path would be %3$s."
 msgstr ""
 
@@ -4155,14 +4142,14 @@ msgstr ""
 
 #: help_text.php:575
 msgid ""
-"This folder will be used by webtrees to store media files, GEDCOM files, "
+"This folder will be used by kiwitrees to store media files, GEDCOM files, "
 "temporary files, etc.  These files may contain private data, and should not "
 "be made available over the internet."
 msgstr ""
 
 #: help_text.php:577
 msgid ""
-"To protect this private data, webtrees uses an Apache configuration file (."
+"To protect this private data, kiwitrees uses an Apache configuration file (."
 "htaccess) which blocks all access to this folder.  If your web-server does "
 "not support .htaccess files, and you cannot restrict access to this folder, "
 "then you can select another folder, away from your web documents."
@@ -4177,8 +4164,8 @@ msgstr ""
 
 #: help_text.php:581
 msgid ""
-"The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or "
-"relative to the installation folder (e.g. ../../webtrees_data/)."
+"The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) "
+"or relative to the installation folder (e.g. ../../kiwitrees_data/)."
 msgstr ""
 
 #: help_text.php:587
@@ -4224,7 +4211,7 @@ msgid ""
 "You only need to enter a Login URL if you want to redirect to a different "
 "site or location when your users login.  This is very useful if you need to "
 "switch from http to https when your users login.  Include the full URL to "
-"<i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login."
+"<i>login.php</i>.  For example, https://www.yourserver.com/kiwitrees/login."
 "php ."
 msgstr ""
 
@@ -4506,13 +4493,13 @@ msgstr ""
 #: help_text.php:828
 msgid ""
 "If your site can be reached using more than one URL, such as <b>http://www."
-"example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can "
+"example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can "
 "specify the preferred URL.  Requests for the other URLs will be redirected "
 "to the preferred one."
 msgstr ""
 
 #: help_text.php:833
-msgid "Show hit counters on Portal and Individual pages."
+msgid "Show hit counters on the Home and Individual pages."
 msgstr ""
 
 #: help_text.php:838
@@ -5082,8 +5069,8 @@ msgstr ""
 #: help_text.php:1147
 msgid ""
 "You should avoid using the vertical line character &ldquo;|&rdquo; in your "
-"notes.  It is used internally by webtrees and may cause your note to display "
-"incorrectly."
+"notes.  It is used internally by kiwitrees and may cause your note to "
+"display incorrectly."
 msgstr ""
 
 #: help_text.php:1153
@@ -5398,7 +5385,7 @@ msgid ""
 msgstr ""
 
 #: help_text.php:1302
-msgid "webtrees database must be on the same server as PGV's"
+msgid "kiwitrees database must be on the same server as PGV's"
 msgstr ""
 
 #: help_text.php:1304
@@ -5556,7 +5543,7 @@ msgstr ""
 
 #: help_text.php:1400
 msgid ""
-"When this option is selected, webtrees will calculate the age differences "
+"When this option is selected, kiwitrees will calculate the age differences "
 "between siblings, children, spouses, etc."
 msgstr ""
 
@@ -5801,20 +5788,21 @@ msgstr ""
 
 #: includes/authentication.php:248 includes/authentication.php:262
 #: includes/authentication.php:307 message.php:43
-msgid "webtrees Message"
+msgid "Kiwitrees Message"
 msgstr ""
 
 #: includes/authentication.php:252
-msgid "You sent the following message to a webtrees administrator:"
+msgid "You sent the following message to a kiwitrees administrator:"
 msgstr ""
 
 #: includes/authentication.php:258
-msgid "You sent the following message to a webtrees user:"
+msgid "You sent the following message to a kiwitrees user:"
 msgstr ""
 
 #: includes/authentication.php:264 includes/authentication.php:271
 #: includes/authentication.php:309 includes/authentication.php:316
-msgid "The following message has been sent to your webtrees user account from "
+msgid ""
+"The following message has been sent to your kiwitrees user account from "
 msgstr ""
 
 #: includes/config_data.php:38
@@ -9451,11 +9439,11 @@ msgstr ""
 msgid "Search engine"
 msgstr ""
 
-#: index.php:134 index.php:135
+#: index.php:129 index.php:130
 msgid "Change the blocks on this page"
 msgstr ""
 
-#: index.php:136 modules_v3/extra_info/module.php:77
+#: index.php:131 modules_v3/extra_info/module.php:77
 msgid "Hit Count:"
 msgstr ""
 
@@ -19783,7 +19771,7 @@ msgid "Are you sure you want to delete this pages?"
 msgstr ""
 
 #: modules_v3/simpl_pages/module.php:502
-msgid "No pages have been created."
+msgid "No pages have been created"
 msgstr ""
 
 #: modules_v3/simpl_privacy/help_text.php:32
