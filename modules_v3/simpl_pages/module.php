@@ -499,7 +499,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 								</tr>';
 							}
 						} else {
-							echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('No pages have been created.'), '</td></tr></table>';
+							echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('No pages have been created'), '</td></tr></table>';
 						}
 					echo '</table>';
 				echo '</div>
