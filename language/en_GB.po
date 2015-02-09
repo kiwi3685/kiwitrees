@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-02-07 17:40+1200\n"
-"PO-Revision-Date: 2015-02-08 11:45+1200\n"
+"PO-Revision-Date: 2015-02-09 17:11+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/kiwitrees/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -15658,7 +15658,7 @@ msgstr "Display all"
 
 #: modules_v3/gallery/module.php:143
 msgid "Edit gallerys"
-msgstr "Edit name"
+msgstr "Edit gallerys"
 
 #: modules_v3/gallery/module.php:263 themes/kiwitrees/theme.php:35
 msgid "kiwitrees"
@@ -16810,11 +16810,11 @@ msgstr "Display resource pages."
 
 #: modules_v3/simpl_pages/module.php:126 modules_v3/simpl_pages/module.php:199
 msgid "Edit pages"
-msgstr "Edit name"
+msgstr "Edit pages"
 
 #: modules_v3/simpl_pages/module.php:210
 msgid "Add pages"
-msgstr "Individual pages"
+msgstr "Add pages"
 
 #: modules_v3/simpl_pages/module.php:250
 msgid "Show this pages for which languages?"
@@ -16834,7 +16834,7 @@ msgstr "No contact method"
 
 #: modules_v3/simpl_pages/module.php:407
 msgid "Resources"
-msgstr "Sources"
+msgstr "Resources"
 
 #: modules_v3/simpl_pages/module.php:408
 msgid "These are resources"
@@ -16842,11 +16842,11 @@ msgstr "Create a new source"
 
 #: modules_v3/simpl_pages/module.php:436
 msgid "Pages"
-msgstr "Messages"
+msgstr "Pages"
 
 #: modules_v3/simpl_pages/module.php:457
 msgid "Add page"
-msgstr "My page"
+msgstr "Add page"
 
 #: modules_v3/simpl_pages/module.php:489
 msgid "Are you sure you want to delete this pages?"

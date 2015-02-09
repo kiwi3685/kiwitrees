@@ -92,9 +92,9 @@ function userLogout($user_id) {
  *
  * Returns 0 and NULL if we are not logged in.
  *
- * If you want to embed webtrees within a content management system, you would probably
+ * If you want to embed kiwitrees within a content management system, you would probably
  * rewrite these functions to extract the data from the parent system, and then
- * populate webtrees' user/user_setting/user_gedcom_setting tables as appropriate.
+ * populate kiwitrees' user/user_setting/user_gedcom_setting tables as appropriate.
  *
  */
 
@@ -245,30 +245,30 @@ function addMessage($message) {
 	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
 	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
 	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
-	$copy_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
+	$copy_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 	$from ='';
 	if (!$user_id_from) {
 		$from = $message['from'];
-		$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:')."\r\n\r\n".$copy_email;
+		$copy_email = WT_I18N::translate('You sent the following message to a kiwitrees administrator:')."\r\n\r\n".$copy_email;
 		$fromFullName = $message['from'];
 	} else {
 		$fromFullName = getUserFullName($user_id_from);
 		$from = hex4email($fromFullName, 'UTF-8')." <".getUserEmail($user_id_from).">";
 		$toFullName=getUserFullName($user_id_to);
-		$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:').' '.$toFullName."\r\n\r\n".$copy_email;
+		$copy_email = WT_I18N::translate('You sent the following message to a kiwitrees user:').' '.$toFullName."\r\n\r\n".$copy_email;
 
 	}
 	if ($message['method']!='messaging') {
-		$oryginal_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
+		$oryginal_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 		if (!$user_id_from) {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
 			if (!empty($message['from_name'])) {
 				$oryginal_email .= $message['from_name']."\r\n\r\n".$message['body'];
 			} else {
 				$oryginal_email .= $from."\r\n\r\n".$message['body'];
 			}
 		} else {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
 			$oryginal_email .= $fromFullName."\r\n\r\n".$message['body'];
 		}
 		if (!isset($message['no_from'])) {
@@ -304,16 +304,16 @@ function addMessage($message) {
 			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}
 	if ($message['method']!='messaging') {
-		$oryginal_subject = "[".WT_I18N::translate('webtrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
+		$oryginal_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 		if (!$user_id_from) {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
 			if (!empty($message['from_name'])) {
 				$oryginal_email .= $message['from_name']."\r\n\r\n".$message['body'];
 			} else {
 				$oryginal_email .= $from."\r\n\r\n".$message['body'];
 			}
 		} else {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
+			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
 			$oryginal_email .= $fromFullName."\r\n\r\n".$message['body'];
 		}
 		$toFullName=getUserFullName($user_id_to);

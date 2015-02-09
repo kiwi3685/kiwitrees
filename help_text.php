@@ -539,10 +539,10 @@ case 'GEDCOM_MEDIA_PATH':
 	$text = 
 		'<p>'.
 		// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
-		WT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.').
+		WT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed.').
 		'</p><p>'.
 		// I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
-		WT_I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="filename">/home/fab/documents/family/photo.jpeg</span>', '<span class="filename">family/photo.jpeg</span>', '<span class="filename">/home/fab/documents/</span>').
+		WT_I18N::translate('For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="filename">/home/fab/documents/family/photo.jpeg</span>', '<span class="filename">family/photo.jpeg</span>', '<span class="filename">/home/fab/documents/</span>').
 		'</p><p>'.
 		WT_I18N::translate('This setting is only used when you read or write GEDCOM files.').
 		'</p>';
@@ -572,13 +572,13 @@ case 'INDEX_DIRECTORY':
 	$title = WT_I18N::translate('Data folder');
 	$text = 
 		'<p>'.
-		/* I18N: Help text for the "Data folder" site configuration setting */ WT_I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.').
+		/* I18N: Help text for the "Data folder" site configuration setting */ WT_I18N::translate('This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.').
 		'</p><p>'.
-		/* I18N: “Apache” is a software program. */ WT_I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.').
+		/* I18N: “Apache” is a software program. */ WT_I18N::translate('To protect this private data, kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.').
 		'</p><p>'.
 		WT_I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder.').
 		'</p><p>'.
-		WT_I18N::translate('The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/).').
+		WT_I18N::translate('The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) or relative to the installation folder (e.g. ../../kiwitrees_data/).').
 		'</p>';
 	break;
 
@@ -609,7 +609,7 @@ case 'LANGUAGE':
 
 case 'LOGIN_URL':
 	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Login URL');
-	$text = /* I18N: Help text for the “Login URL” site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .');
+	$text = /* I18N: Help text for the “Login URL” site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/kiwitrees/login.php .');
 	break;
 
 case 'MAX_ALIVE_AGE':
@@ -773,7 +773,7 @@ case 'SMTP_SSL':
 	$text = /* I18N: Help text for the "Secure connection" site configuration setting */ WT_I18N::translate('Most servers do not use secure connections.');
 	break;
 
-case 'WEBTREES_EMAIL':
+case 'kiwitrees_EMAIL':
 	$title = WT_I18N::translate('Kiwitrees reply address');
 	$text = WT_I18N::translate('E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br><br>Kiwitrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: kiwitrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message\'s &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.');
 	break;
@@ -825,7 +825,7 @@ case 'REQUIRE_AUTHENTICATION':
 
 case 'SERVER_URL':
 	$title = WT_I18N::translate('Website URL');
-	$text = /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
+	$text = /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
 	break;
 
 case 'SHOW_COUNTER':
@@ -1144,7 +1144,7 @@ case 'edit_add_SHARED_NOTE':
 	$title = WT_I18N::translate('Add a shared note');
 	$text = WT_I18N::translate('Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one person, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note\'s contents.<br><ul><li><b>Link to an existing shared note</b><div style="padding-left:20px;">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find Shared Note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style="padding-left:20px;">When you click the <b>Create a new Shared Note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style="padding-left:20px;">When you click the <b>Edit Shared Note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>');
 	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-		$text.='<p class="warning">'.WT_I18N::translate('You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly.').'</p>';
+		$text.='<p class="warning">'.WT_I18N::translate('You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by kiwitrees and may cause your note to display incorrectly.').'</p>';
 	}
 	break;
 
@@ -1299,7 +1299,7 @@ case 'PGV_WIZARD':
 	$title = WT_I18N::translate('PhpGedView to kiwitrees transfer wizard');
 	$text =WT_I18N::translate('The PGV to kiwitrees wizard is an automated process to assist administrators make the move from a PGV installation to a new kiwitrees one. It will transfer all PGV GEDCOM and other database information directly to your new kiwitrees database. The following requirements are necessary:');
 	$text .= '<ul><li>';
-	$text .= WT_I18N::translate('webtrees database must be on the same server as PGV\'s');
+	$text .= WT_I18N::translate('kiwitrees database must be on the same server as PGV\'s');
 	$text .= '</li><li>';
 	$text .= WT_I18N::translate('PGV must be version 4.2.3, or any SVN up to #6973');
 	$text .= '</li><li>';
@@ -1397,7 +1397,7 @@ case 'role':
 
 case 'SHOW_AGE_DIFF':
 	$title = WT_I18N::translate('Date differences');
-	$text = WT_I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.');
+	$text = WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.');
 	break;
 
 case 'show_fact_sources':
