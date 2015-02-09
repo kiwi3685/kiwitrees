@@ -33,7 +33,7 @@ html {
 }
 
 body {
-	color: #232f49;
+	color: #555;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	margin: 0;
@@ -186,7 +186,6 @@ textarea:requi#ff0000:invalid {
 /* ========= Top bar items ========== */
 
 #navbar {
-	background-color: #DDD;
 	left: 0;
 	position: fixed;
 	right: 0;
@@ -3856,8 +3855,10 @@ a.icon-udarrow:hover {
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-edit */ 
 .icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */ 
 .icon-copy				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-copy */
-.icon-widget			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-bars */ 
-.icon-widget-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; color: red;} /* fa-times */ 
+.icon-widget			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-bars */ 
+.icon-widget:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-bars */ 
+.icon-widget-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-times */ 
+.icon-widget-close:hover{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-times */ 
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */ 
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */ 
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */ 
@@ -5314,7 +5315,7 @@ div.widget {
 }
 
 #widget-button {
-	margin: 14px 0 0 3px !important;
+	margin: 12px 0 0 3px !important;
 }
 
 #widget-bar {
