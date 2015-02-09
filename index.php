@@ -28,15 +28,10 @@ require './includes/session.php';
 // The only option for action is "ajax"
 $action=safe_REQUEST($_REQUEST, 'action', 'ajax');
 
-// The default view depends on whether we are logged in
 $ctype=safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
 //-- get the blocks list
-if (WT_USER_ID && $ctype=='user') {
-	$blocks=get_user_blocks(WT_USER_ID);
-} else {
-	$blocks=get_gedcom_blocks(WT_GED_ID);
-}
+$blocks=get_gedcom_blocks(WT_GED_ID);
 
 $all_blocks=WT_Module::getActiveBlocks();
 
