@@ -486,7 +486,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 										<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $item->block_id, '">', WT_I18N::translate('Edit'), '</a>
 									</td>
 									<td>
-										<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $item->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this pages?'), '\');">', WT_I18N::translate('Delete'), '</a>
+										<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $item->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this page?'), '\');">', WT_I18N::translate('Delete'), '</a>
 									</td>
 								</tr>
 								<tr>

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-02-10 08:46+1200\n"
-"PO-Revision-Date: 2015-02-10 08:47+1200\n"
+"POT-Creation-Date: 2015-02-10 10:09+1200\n"
+"PO-Revision-Date: 2015-02-10 10:09+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -624,8 +624,7 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: admin_modules.php:160 library/WT/MenuBar.php:36
-#: modules_v3/gedcom_block/module.php:35
+#: admin_modules.php:160 modules_v3/gedcom_block/module.php:35
 msgid "Home page"
 msgstr ""
 
@@ -2255,7 +2254,7 @@ msgstr ""
 
 #: admin_trees_manage.php:172
 msgid ""
-"If you have created media objects in webtrees, and have edited your gedcom "
+"If you have created media objects in kiwitrees, and have edited your gedcom "
 "off-line using a program that deletes media objects, then check this box to "
 "merge the current media objects with the new GEDCOM."
 msgstr ""
@@ -2281,7 +2280,7 @@ msgid "Create a new family tree"
 msgstr ""
 
 #: admin_trees_manage.php:274
-msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
+msgid "Click here for PhpGedView to <b>kiwitrees</b> transfer wizard"
 msgstr ""
 
 #: admin_trees_places.php:89
@@ -14503,6 +14502,10 @@ msgstr ""
 msgid "Loading…"
 msgstr ""
 
+#: library/WT/MenuBar.php:36 themes/_administration/header.php:128
+msgid "Home"
+msgstr ""
+
 #: library/WT/MenuBar.php:70 modules_v3/widget_quicklinks/module.php:67
 msgid "My pedigree"
 msgstr ""
@@ -16923,7 +16926,7 @@ msgstr ""
 #: modules_v3/charts/help_text.php:35
 msgid ""
 "This block allows a pedigree, descendancy, or hourglass chart to appear the "
-"Home Page.  Because of space limitations, the charts should be placed only "
+"Home page.  Because of space limitations, the charts should be placed only "
 "on the left side of the page or at full width.<br /><br />When this block "
 "appears the root person and the type of chart to be displayed are determined "
 "by the administrator.<br /><br />The behavior of these charts is identical "
@@ -19606,7 +19609,7 @@ msgstr ""
 
 #: modules_v3/review_changes/module.php:87
 #: modules_v3/widget_review_changes/module.php:87
-msgid "webtrees - Review changes"
+msgid "kiwitrees - Review changes"
 msgstr ""
 
 #: modules_v3/review_changes/module.php:88
@@ -19614,8 +19617,8 @@ msgstr ""
 msgid ""
 "Online changes have been made to a genealogical database.  These changes "
 "need to be reviewed and accepted before they will appear to all users.  "
-"Please use the URL below to enter that webtrees site and login to review the "
-"changes."
+"Please use the URL below to enter that kiwitrees site and login to review "
+"the changes."
 msgstr ""
 
 #: modules_v3/review_changes/module.php:108
@@ -19767,7 +19770,7 @@ msgid "Add page"
 msgstr ""
 
 #: modules_v3/simpl_pages/module.php:489
-msgid "Are you sure you want to delete this pages?"
+msgid "Are you sure you want to delete this page?"
 msgstr ""
 
 #: modules_v3/simpl_pages/module.php:502
@@ -21311,10 +21314,6 @@ msgstr ""
 
 #: themes/_administration/header.php:126
 msgid "Dashboard"
-msgstr ""
-
-#: themes/_administration/header.php:128
-msgid "Home"
 msgstr ""
 
 #: themes/_administration/header.php:132

@@ -169,7 +169,7 @@ case 'importform':
 		}
 	}
 	echo '<br><br><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
-	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
+	echo WT_I18N::translate('If you have created media objects in kiwitrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
 	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
 	echo '</form>';
 	exit;
@@ -271,7 +271,7 @@ if (WT_USER_IS_ADMIN) {
 			echo
 				'<div class="center">',
 				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
-				WT_I18N::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
+				WT_I18N::translate('Click here for PhpGedView to <b>kiwitrees</b> transfer wizard'),
 				'</a>',
 				help_link('PGV_WIZARD'),
 				'</div>';

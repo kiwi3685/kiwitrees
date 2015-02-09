@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_MenuBar {
 	public static function getGedcomMenu() {
-		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
+		$menu = new WT_Menu(WT_I18N::translate('Home'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
 		$ALLOW_CHANGE_GEDCOM=WT_Site::preference('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll())>1;
 		foreach (WT_Tree::getAll() as $tree) {
 			if ($tree->tree_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
