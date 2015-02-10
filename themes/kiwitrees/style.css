@@ -9,7 +9,7 @@
  *
  * Copyright (c) 2014 www.kiwitrees.net & Nigel Osborne
  *
- * This program is free software; you can #ff0000istribute it and/or modify
+ * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
@@ -159,35 +159,33 @@ form[name=block] .descriptionbox, form[name=block] .optionbox {
 }
 
 h2 {
-	color: #006;
 	font-weight: bold;
 	font-size: 18px;
 }
 
 h4 {
-	color: #006;
 	font-weight: bold;
 	font-size: 12px;
 }
 
-input:requi#ff0000:valid,
-textarea:requi#ff0000:valid {
+input:required:valid,
+textarea:required:valid {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);
 	background-position: right top;
 	background-repeat: no-repeat;
 }
 
-input:requi#ff0000:invalid,
-textarea:requi#ff0000:invalid {
+input:required:invalid,
+textarea:required:invalid {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);
 	background-position: right top;
 	background-repeat: no-repeat;
 }
 
-[dir='rtl'] input:requi#ff0000:valid,
-[dir='rtl'] textarea:requi#ff0000:valid,
-[dir='rtl'] input:requi#ff0000:invalid,
-[dir='rtl'] textarea:requi#ff0000:invalid {
+[dir='rtl'] input:required:valid,
+[dir='rtl'] textarea:required:valid,
+[dir='rtl'] input:required:invalid,
+[dir='rtl'] textarea:required:invalid {
 	background-position: left top;
 }
 
@@ -863,7 +861,7 @@ table.center {
 	padding: 5px;
 }
 
-.facts_label#ff0000,
+.facts_labelblue,
 .facts_labelblue {
 	color: #fff;
 	background-color: #C9C9C9;
@@ -873,15 +871,15 @@ table.center {
 	text-align: center;
 }
 
-.facts_value#ff0000,
+.facts_value#red,
 .facts_valueblue {
 	background-color: #edf7fd;
 	font-size: 12px;
 	padding: 4px;
 }
 
-.facts_label#ff0000,
-.facts_value#ff0000 {
+.facts_labelred,
+.facts_valuered {
 	border: solid #f00 2px;
 }
 
@@ -1493,7 +1491,7 @@ a:hover .nameZoom {
 	font-size: 12px;
 }
 
-.star#ff0000name {
+.starredname {
 	text-decoration: underline;
 }
 
@@ -1632,7 +1630,7 @@ a:hover .nameZoom {
 }
 
 .change_old,
-.name#ff0000 {
+.namered {
 	color: #000 !important;
 	text-decoration: line-through !important;
 }
