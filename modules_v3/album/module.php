@@ -302,8 +302,14 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 
 				$html .= '</div>
 				<div id="album_buttons">
-					<input type="submit" value="'.WT_I18N::translate('Save').'">
-					<input type="reset" value="'.WT_I18N::translate('Reset').'" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
+					<button class="btn btn-primary" type="submit">
+						<i class="fa fa-floppy-o"></i>'.
+						WT_I18N::translate('save').'
+					</button>
+					<button class="btn btn-primary" type="submit" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
+						<i class="fa fa-refresh"></i>'.
+						WT_I18N::translate('Reset').'
+					</button>
 				</div>
 				<div id="album_options">
 					<label for="NEW_ALBUM_OPTIONS" class="label">'.WT_I18N::translate('Match groups to types').'</label>
