@@ -35,10 +35,6 @@ $blocks=get_gedcom_blocks(WT_GED_ID);
 
 $all_blocks=WT_Module::getActiveBlocks();
 
-// The latest version is shown on the administration page.  This updates it every 3 days.
-// TODO: send an email notification to the admin when new versions are available.
-//fetch_latest_version(); //Commented out to prevent needless checks for w1.5+
-
 // We generate individual blocks using AJAX
 if ($action=='ajax') {
 	$controller=new WT_Controller_Ajax();
