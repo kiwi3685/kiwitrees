@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-02-10 10:09+1200\n"
-"PO-Revision-Date: 2015-02-10 10:33+1200\n"
+"POT-Creation-Date: 2015-02-12 11:30+1200\n"
+"PO-Revision-Date: 2015-02-12 11:30+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -99,7 +99,7 @@ msgstr ""
 #: inverselink.php:156 message.php:155
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:193
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:593
-#: modules_v3/GEDFact_assistant/module.php:138 modules_v3/album/module.php:341
+#: modules_v3/GEDFact_assistant/module.php:138 modules_v3/album/module.php:347
 #: modules_v3/googlemap/admin_places_edit.php:86
 #: modules_v3/googlemap/admin_places_edit.php:104
 #: modules_v3/googlemap/admin_places_edit.php:343
@@ -227,8 +227,8 @@ msgstr ""
 #: includes/functions/functions_edit.php:990 includes/media_reorder.php:179
 #: index_edit.php:338
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:592
-#: modules_v3/custom_js/module.php:72 modules_v3/faq/module.php:192
-#: modules_v3/gallery/module.php:484
+#: modules_v3/album/module.php:307 modules_v3/custom_js/module.php:72
+#: modules_v3/faq/module.php:192 modules_v3/gallery/module.php:484
 #: modules_v3/googlemap/admin_places_edit.php:342
 #: modules_v3/googlemap/module.php:413 modules_v3/googlemap/module.php:620
 #: modules_v3/googlemap/placehierarchy.php:254
@@ -9438,11 +9438,11 @@ msgstr ""
 msgid "Search engine"
 msgstr ""
 
-#: index.php:129 index.php:130
+#: index.php:125 index.php:126
 msgid "Change the blocks on this page"
 msgstr ""
 
-#: index.php:131 modules_v3/extra_info/module.php:77
+#: index.php:127 modules_v3/extra_info/module.php:77
 msgid "Hit Count:"
 msgstr ""
 
@@ -16390,7 +16390,7 @@ msgstr ""
 msgid "Columns per page"
 msgstr ""
 
-#: medialist.php:158 modules_v3/album/module.php:306
+#: medialist.php:158 modules_v3/album/module.php:311
 #: modules_v3/fancy_imagebar/module.php:275
 #: modules_v3/fancy_treeview/module.php:655
 #: modules_v3/fancy_treeview/module.php:656
@@ -16576,7 +16576,7 @@ msgid "Proposed Census Text&nbsp;&nbsp;"
 msgstr ""
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:40
-#: modules_v3/album/module.php:305 modules_v3/extra_menus/module.php:268
+#: modules_v3/extra_menus/module.php:268
 #: modules_v3/fancy_imagebar/module.php:274
 #: modules_v3/fancy_treeview/module.php:654 modules_v3/gallery/module.php:335
 #: modules_v3/simpl_pages/module.php:261
@@ -16721,18 +16721,18 @@ msgstr ""
 msgid "Number of groups"
 msgstr ""
 
-#: modules_v3/album/module.php:306 modules_v3/fancy_imagebar/module.php:275
+#: modules_v3/album/module.php:309 modules_v3/fancy_imagebar/module.php:275
 #: modules_v3/fancy_treeview/module.php:657
 msgid ""
 "The settings will be reset to default (for all trees). Are you sure you want "
 "to do this?"
 msgstr ""
 
-#: modules_v3/album/module.php:309
+#: modules_v3/album/module.php:315
 msgid "Match groups to types"
 msgstr ""
 
-#: modules_v3/album/module.php:338
+#: modules_v3/album/module.php:344
 msgid "Show media objects with no TYPE"
 msgstr ""
 
