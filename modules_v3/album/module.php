@@ -326,10 +326,10 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 									<tr>
 										<td>' .$translated_type. '</td>';
 										for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
-											if (isset($ALBUM_TITLES[$i]) && $value == WT_I18N::translate($ALBUM_TITLES[$i])) {
-												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' .$key. ']" value="' .(isset($ALBUM_TITLES[$i]) ? WT_I18N::translate($ALBUM_TITLES[$i]) : ""). '" checked="checked"></td>';
+											if (isset($ALBUM_TITLES[$i]) && $value == $ALBUM_TITLES[$i]) {
+												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' .$key. ']" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '" checked="checked"></td>';
 											} else {
-												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' .$key. ']" value="' .(isset($ALBUM_TITLES[$i]) ? WT_I18N::translate($ALBUM_TITLES[$i]) : ""). '"></td>';
+												$html .= '<td><input type="radio" name="NEW_ALBUM_OPTIONS[' .$key. ']" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '"></td>';
 											}
 										}
 									$html .= '</tr>
