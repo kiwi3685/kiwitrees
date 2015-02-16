@@ -1,14 +1,14 @@
 #
 # Translators:
-# jacolineDK, 2014
+# jacolineDK, 2014-2015
 # Nigel Osborne <admin@kiwitrees.net>, 2014
 # ohmadsen <ole@vends-herred.dk>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-02-07 17:40+1200\n"
-"PO-Revision-Date: 2015-02-08 11:45+1200\n"
+"POT-Creation-Date: 2015-02-10 10:09+1200\n"
+"PO-Revision-Date: 2015-02-17 09:00+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/kiwitrees/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -462,7 +462,7 @@ msgstr "Diagram"
 msgid "Theme"
 msgstr "Tema"
 
-#: admin_modules.php:160 library/WT/MenuBar.php:36 modules_v3/gedcom_block/module.php:35
+#: admin_modules.php:160 modules_v3/gedcom_block/module.php:35
 msgid "Home page"
 msgstr "Startside"
 
@@ -570,7 +570,7 @@ msgstr "Regel"
 msgid "Comment"
 msgstr "Kommentar"
 
-#: admin_site_access.php:285 admin_site_change - Original.php:276 admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243 admin_trees_config.php:622 admin_trees_manage.php:233 edit_interface.php:112 includes/functions/functions_print_facts.php:171 includes/functions/functions_print_facts.php:717 includes/functions/functions_print_facts.php:919 includes/functions/functions_print_facts.php:1207 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1135 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1241 includes/functions/functions_print_lists.php:1295 includes/functions/functions_print_lists.php:1338 library/WT/Controller/Family.php:159 library/WT/Controller/Individual.php:361 library/WT/Controller/Media.php:128 library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106 library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:413 modules_v3/fancy_treeview/module.php:557 modules_v3/faq/module.php:399 modules_v3/gallery/module.php:528 modules_v3/gedcom_news/module.php:124 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680 modules_v3/simpl_pages/module.php:489 modules_v3/stories/module.php:472 modules_v3/widget_blog/module.php:95 modules_v3/widget_messages/module.php:92 modules_v3/widget_messages/module.php:121
+#: admin_site_access.php:285 admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243 admin_trees_config.php:622 admin_trees_manage.php:233 edit_interface.php:112 includes/functions/functions_print_facts.php:171 includes/functions/functions_print_facts.php:717 includes/functions/functions_print_facts.php:919 includes/functions/functions_print_facts.php:1207 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1135 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1241 includes/functions/functions_print_lists.php:1295 includes/functions/functions_print_lists.php:1338 library/WT/Controller/Family.php:159 library/WT/Controller/Individual.php:361 library/WT/Controller/Media.php:128 library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106 library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:413 modules_v3/fancy_treeview/module.php:557 modules_v3/faq/module.php:399 modules_v3/gallery/module.php:528 modules_v3/gedcom_news/module.php:124 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680 modules_v3/simpl_pages/module.php:489 modules_v3/stories/module.php:472 modules_v3/widget_blog/module.php:95 modules_v3/widget_messages/module.php:92 modules_v3/widget_messages/module.php:121
 msgid "Delete"
 msgstr "Slet"
 
@@ -586,64 +586,60 @@ msgstr "IP adresse"
 msgid "Create a new rule"
 msgstr "Opret en ny regel"
 
-#: admin_site_change - Original.php:30 admin_site_change.php:30 modules_v3/change_report/module.php:36 modules_v3/change_report/report.bak:4 modules_v3/change_report/report.bak:42
+#: admin_site_change.php:30 modules_v3/change_report/module.php:36 modules_v3/change_report/report.bak:4 modules_v3/change_report/report.bak:42
 msgid "Changes"
 msgstr "Ændringer"
 
-#: admin_site_change - Original.php:36 admin_site_change.php:38
+#: admin_site_change.php:38
 msgid "accepted"
 msgstr "godkendt"
 
-#: admin_site_change - Original.php:37 admin_site_change.php:39
+#: admin_site_change.php:39
 msgid "rejected"
 msgstr "afvist"
 
-#: admin_site_change - Original.php:38 admin_site_change.php:40
+#: admin_site_change.php:40
 msgid "pending"
 msgstr "afventende"
 
-#: admin_site_change - Original.php:251 admin_site_change.php:269 admin_site_logs.php:221
+#: admin_site_change.php:269 admin_site_logs.php:221
 #, php-format
 msgid "From %s to %s"
 msgstr "Fra %s til %s"
 
-#: admin_site_change - Original.php:255 Original.php:289 admin_site_change.php:273 admin_site_change.php:305 includes/functions/functions_print.php:978 library/WT/Gedcom/Tag.php:325
+#: admin_site_change.php:273 admin_site_change.php:305 includes/functions/functions_print.php:978 library/WT/Gedcom/Tag.php:325
 msgid "Status"
 msgstr "Status"
 
-#: admin_site_change - Original.php:258 Original.php:290 admin_site_change.php:276 admin_site_change.php:306 admin_site_merge.php:140 includes/functions/functions_print_lists.php:1745 includes/functions/functions_print_lists.php:1881 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:563 modules_v3/todo/module.php:98 modules_v3/widget_todo/module.php:99
+#: admin_site_change.php:276 admin_site_change.php:306 admin_site_merge.php:140 includes/functions/functions_print_lists.php:1745 includes/functions/functions_print_lists.php:1881 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:563 modules_v3/todo/module.php:98 modules_v3/widget_todo/module.php:99
 msgid "Record"
 msgstr "Post"
 
-#: admin_site_change - Original.php:261 Original.php:291 admin_site_change.php:279
+#: admin_site_change.php:279
 msgid "Old data"
 msgstr "tidligere data"
 
-#: admin_site_change - Original.php:264 Original.php:292
-msgid "New data"
-msgstr "nye data"
-
-#: admin_site_change - Original.php:267 Original.php:293 admin_site_change.php:283 admin_site_change.php:309 admin_site_logs.php:234 admin_site_logs.php:259 edit_changes.php:170
+#: admin_site_change.php:283 admin_site_change.php:309 admin_site_logs.php:234 admin_site_logs.php:259 edit_changes.php:170
 msgid "User"
 msgstr "Bruger"
 
-#: admin_site_change - Original.php:270 Original.php:294 admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:140 admin_trees_manage.php:184 admin_trees_places.php:103 admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423 edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:64 modules_v3/extra_menus/module.php:367 modules_v3/fancy_imagebar/module.php:262 modules_v3/fancy_treeview/module.php:526 modules_v3/faq/module.php:356 modules_v3/gallery/module.php:489 modules_v3/googlemap/module.php:1462 modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:451 modules_v3/stories/module.php:455 modules_v3/widget_html/module.php:167
+#: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:140 admin_trees_manage.php:184 admin_trees_places.php:103 admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423 edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:64 modules_v3/extra_menus/module.php:367 modules_v3/fancy_imagebar/module.php:262 modules_v3/fancy_treeview/module.php:526 modules_v3/faq/module.php:356 modules_v3/gallery/module.php:489 modules_v3/googlemap/module.php:1462 modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:451 modules_v3/stories/module.php:455 modules_v3/widget_html/module.php:167
 msgid "Family tree"
 msgstr "Anetræ"
 
-#: admin_site_change - Original.php:274 admin_site_change.php:290 admin_site_logs.php:241 find.php:189 find.php:204 find.php:222 find.php:239 find.php:256 find.php:274 find.php:291 find.php:471 library/WT/I18N.php:685 modules_v3/random_media/module.php:308
+#: admin_site_change.php:290 admin_site_logs.php:241 find.php:189 find.php:204 find.php:222 find.php:239 find.php:256 find.php:274 find.php:291 find.php:471 library/WT/I18N.php:685 modules_v3/random_media/module.php:308
 msgid "Filter"
 msgstr "Filtrer"
 
-#: admin_site_change - Original.php:275 admin_site_change.php:291 admin_site_logs.php:242 admin_trees_manage.php:216
+#: admin_site_change.php:291 admin_site_logs.php:242 admin_trees_manage.php:216
 msgid "Export"
 msgstr "Gem på server"
 
-#: admin_site_change - Original.php:276 admin_site_change.php:292 admin_site_logs.php:243 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1295 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680
+#: admin_site_change.php:292 admin_site_logs.php:243 includes/functions/functions_print_lists.php:1060 includes/functions/functions_print_lists.php:1201 includes/functions/functions_print_lists.php:1295 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680
 msgid "Permanently delete these records?"
 msgstr "Slet disse poster permanent?"
 
-#: admin_site_change - Original.php:288 admin_site_change.php:304 admin_site_logs.php:255
+#: admin_site_change.php:304 admin_site_logs.php:255
 msgid "Timestamp"
 msgstr "Tidsstempel"
 
@@ -1647,7 +1643,7 @@ msgstr "Opret GEDCOM mediesti"
 
 #: admin_trees_duplicates.php:40 themes/_administration/header.php:167
 msgid "Find duplicate individuals"
-msgstr ""
+msgstr "Find dubletter"
 
 #: admin_trees_duplicates.php:152 help_text.php:1243 library/WT/Gedcom/Tag.php:329 modules_v3/fancy_treeview/module.php:552
 msgid "Surname"
@@ -1751,8 +1747,8 @@ msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory
 msgstr "Ingen GEDCOM-filer fundet. Du skal kopiere filerne til mappen <b>%s</b> på din server."
 
 #: admin_trees_manage.php:172
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
-msgstr "Hvis du har oprettet medieobjekter i webtrees og har redigeret din gedcom på din computer med et program der sletter medieobjekter, skal du sætte flueben her for at flette de nuværende medieobjekter med den nye GEDCOM."
+msgid "If you have created media objects in kiwitrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM."
+msgstr "Hvis du har oprettet medieobjekter i kiwitrees og har redigeret din gedcom på din computer med et program der sletter medieobjekter, skal du sætte flueben her for at flette de nuværende medieobjekter med den nye GEDCOM."
 
 #: admin_trees_manage.php:199
 msgid "Deleting old genealogy data…"
@@ -1775,8 +1771,8 @@ msgid "Create a new family tree"
 msgstr "Opret et nyt familietræ"
 
 #: admin_trees_manage.php:274
-msgid "Click here for PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "Klik her for guiden PhpGedView til <b>webtree</b> overførsel"
+msgid "Click here for PhpGedView to <b>kiwitrees</b> transfer wizard"
+msgstr "Klik her for guiden PhpGedView til <b>kiwitrees</b> overførsel"
 
 #: admin_trees_places.php:89
 msgid "Administration - place edit"
@@ -1788,7 +1784,7 @@ msgstr "Opdatere alle stednavne i et familietræ"
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Dette vil opdatere det højste trin af delen af et stednavn. Feks. \"Mexico\" vil matche “Quintana Roo, Mexico” men ikke “Santa Fe, New Mexico”."
 
 #: admin_trees_places.php:105 search.php:100 search.php:134
 msgid "Search for"
@@ -1856,7 +1852,7 @@ msgstr "Du kan omnummerere dette familie træ."
 
 #: admin_trees_renumber.php:277
 msgid "go"
-msgstr ""
+msgstr "kør"
 
 #: admin_trees_renumber.php:280
 msgid "Caution!  This may take a long time.  Be patient."
@@ -1864,7 +1860,7 @@ msgstr "Advarsel! Dette kan tage lang tid. Vær tålmodig."
 
 #: admin_trees_renumber.php:281
 msgid "If your server times out, press F5 to continue"
-msgstr ""
+msgstr "Hvis du oplever server timeout, brug F5 tasten for at fortsætte"
 
 #: admin_trees_unlinked.php:40 themes/_administration/header.php:168
 msgid "Find unlinked individuals"
@@ -3051,13 +3047,13 @@ msgid "When a new individual record is added online in kiwitrees, a new ID for t
 msgstr "Når et nyt individ bliver oprettet online i <b>kiwitrees</b>, får det automatisk tildelt et nyt ID. Individets ID vil have dette præfiks."
 
 #: help_text.php:542
-msgid "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Nogle genealogi programmer opretter GEDCOM filer der indeholder medie-filnavne med hele stier. Disse stier vil ikke eksistere på webserveren. For at lade webtrees finde filen, skal den første del af stien fjernes."
+msgid "Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed."
+msgstr "Nogle genealogi programmer opretter GEDCOM filer der indeholder medie-filnavne med hele stier. Disse stier vil ikke eksistere på webserveren. For at lade kiwitrees finde filen, skal den første del af stien fjernes."
 
 #: help_text.php:545
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
-msgstr "Hvis for eksempel GEDCOM filen indeholder %1$s og webtrees forventer at finde %2$s i mediemappen, så vil GEDCOM mediestien være %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s."
+msgstr "Hvis for eksempel GEDCOM filen indeholder %1$s og kiwitrees forventer at finde %2$s i mediemappen, så vil GEDCOM mediestien være %3$s."
 
 #: help_text.php:547
 msgid "This setting is only used when you read or write GEDCOM files."
@@ -3087,20 +3083,20 @@ msgid "The length of time after birth can be set on the Privacy configuration ta
 msgstr "Levetid efter fødsel kan indstilles under fanen Privatliv for hver GEDCOM's konfigurationsside: \"Antaget maksimal levetid for en person\"."
 
 #: help_text.php:575
-msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
-msgstr "Denne mappe vil bruges af webtrees til at opbevare mediefiler, GEDCOM filer, midlertidige filer osv. Disse filer kan indeholde privat data, og bør ikke være tilgængelige over internettet."
+msgid "This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
+msgstr "Denne mappe vil bruges af kiwitrees til at opbevare mediefiler, GEDCOM filer, midlertidige filer osv. Disse filer kan indeholde privat data, og bør ikke være tilgængelige over internettet."
 
 #: help_text.php:577
-msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "For at beskytte disse private data bruger webtrees en Apache konfigurationsfil (.htaccess) som blokere al adgang til denne mappe. Hvis din webserver ikke understøtter .htaccess filer og du ikke kan begrænse adgangen til denne mappe, bør du vælge en anden mappe som ikke ligger sammen med dine webdokumenter."
+msgid "To protect this private data, kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
+msgstr "For at beskytte disse private data bruger kiwitrees en Apache konfigurationsfil (.htaccess) som blokere al adgang til denne mappe. Hvis din webserver ikke understøtter .htaccess filer og du ikke kan begrænse adgangen til denne mappe, bør du vælge en anden mappe som ikke ligger sammen med dine webdokumenter."
 
 #: help_text.php:579
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder."
 msgstr "Hvis du vælger en anden mappe, skal du også flytte alle filer (undtagen config.ini.php, index.php og .htaccess) fra den eksisterende mappe til den nye."
 
 #: help_text.php:581
-msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr "Mappen kan angives komplet (f.eks /home/brugernavn/webtrees_data/) eller relativt til installationsmappen (f.eks. ../../webtrees_data/)."
+msgid "The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) or relative to the installation folder (e.g. ../../kiwitrees_data/)."
+msgstr "Mappen kan angives komplet (f.eks /home/brugernavn/kiwitrees_data/) eller relativt til installationsmappen (f.eks. ../../kiwitrees_data/)."
 
 #: help_text.php:587
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list."
@@ -3123,8 +3119,8 @@ msgid "If a visitor to the site has not specified a preferred language in their 
 msgstr "Hvis en gæst på websiden ikke har specificeret et foretrukket sprog i deres browsers konfiguration, eller hvis de har valg et sprog der ikke er understøttet, er det dette sprog der vil blive brugt. Denne indstilling gælder typisk for søgemaskiner."
 
 #: help_text.php:612
-msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Du behøver kun at angive en logon-URL hvis du ønsker at omdirigere til et andet websted eller placering når dine brugere logger ind. Dette er specielt nyttigt hvis du er nødt til at skifte fra http til https. Inkludér den fulde URL til <i>login.php</i>. For eksempel https://www.dinserver.dk/webtrees/login.php"
+msgid "You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/kiwitrees/login.php ."
+msgstr "Du behøver kun at angive en logon-URL hvis du ønsker at omdirigere til et andet websted eller placering når dine brugere logger ind. Dette er specielt nyttigt hvis du er nødt til at skifte fra http til https. Inkludér den fulde URL til <i>login.php</i>. For eksempel https://www.dinserver.dk/kiwitrees/login.php"
 
 #: help_text.php:617
 msgid "If this person has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be \"alive\".  Children's birth dates are considered to be such events for this purpose."
@@ -3307,12 +3303,12 @@ msgid "Enabling this option will force all visitors to login before they can vie
 msgstr "Ved at angive dette valg, tvinges alle besøgende til at logge ind førend de kan se data på siden."
 
 #: help_text.php:828
-msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "HVis dit websted kan findes med mere end et URL som fx. <b>http://www.example.com/webtrees/</b> og <b>http://webtrees.example.com/</b>, kan du her angive den foretrukne URL. Anmodninger for de andre webadresser vil blive omdirigeret til den foretrukne."
+msgid "If your site can be reached using more than one URL, such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
+msgstr "Hvis dit websted kan findes med mere end et URL som fx. <b>http://www.example.com/kiwitrees/</b> og <b>http://kiwitrees.example.com/</b>, kan du her angive den foretrukne URL. Anmodninger for de andre webadresser vil blive omdirigeret til den foretrukne."
 
 #: help_text.php:833
-msgid "Show hit counters on Portal and Individual pages."
-msgstr "Vis tæller med antal hits på velkomstsiden og personsider."
+msgid "Show hit counters on the Home and Individual pages."
+msgstr "Vis tæller med antal hits på velkomstsiden og person fakta sider."
 
 #: help_text.php:838
 msgid "Set the privacy access level for all dead people."
@@ -3609,8 +3605,8 @@ msgid ""
 msgstr "Delte noter, er ligesom almindelige noter, hvor man kan skrive hvad man vil. I modsætning til almindelige noter kan hver delt note tilhøre mere end en person, familie, kilde eller fakta.<br /><br />Ved at klikke på det relevante ikon kan du oprette et link til en eksisterende delt note eller oprette en ny delt note og samtidig linke til det. Hvis der allerede findes en link til en eksisterende delt note, kan du også redigere denne notes indhold.<br /><ul><li><b>Link til en eksisterende delt note</b><div style=\"padding-left:20px;\">Hvis du allerede kender den delte notes ID-nummer kan du skrive dette nummer direkte i feltet<br /><br />Når du klikker på ikonet for <b>Find delt note</b> kan du skrive det du gerne vil finde og derefter vælge netop den delte note du ønsker. ID-nummeret for den pågældende note vil automatisk blive overført til feltet.<br /><br />Klik derefter på <b>Tilføj</b> knappen for at opdatere dine oplysninger.</div><br /></li><li><b>Oprette en ny delt note</b><div style=\"padding-left:20px;\">Når du klikker på ikonet for <b>Opret ny delt note</b> så åbnes et nyt vindue. Du kan skrive hvad du ønsker i noten og lige som ved almindelige noter kan du også benytte webadresser.<br /><br />Når du klikker på <b>Gem</b> knappen vil du se en besked med ID-nummeret for den nye delte note. Når du klikker på linjen der begynder med &quot;Indsæt følgende . . .&quot; indsættes ID-nummeret automatisk i feltet og vinduet lukkes. Hvis du blot lukker vinduet så indsættes ID-nummeret ikke automatisk i feltet.<br /><br />Klik derefter på <b>Tilføj</b> knappen for at opdatere dine oplysninger.</div><br /></li><li><b>Redigere en eksisterende delt note</b><div style=\"padding-left:20px;\">Når du klikker på ikonet for <b>Rediger delt note</b> så åbnes et nyt vindue. Du kan ændre hvad du ønsker i noten og lige som ved almindelige noter kan du også benytte webadresser.<br /><br />Når du klikker på <b>Gem</b> knappen vil den delte note blive opdateret. Du kan nu lukke vinduet og klikke på <b>Gem</b> knappen igen.<br /><br />Når du ændrer en delt note vil ændringen kunne se alle de steder som den er tilknyttet til. Nye links til den ændrede note vil også indeholde den ændrede tekst.</div></li></ul>"
 
 #: help_text.php:1147
-msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Du bør undgå tegnet for en lodret streg &ldquo;|&rdquo; i dine noter. Tegnet bliver brugt internt i <b>webtrees</b> og kan være skyld i at din note ikke vises korrekt."
+msgid "You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by kiwitrees and may cause your note to display incorrectly."
+msgstr "Du bør undgå tegnet for en lodret streg &ldquo;|&rdquo; i dine noter. Tegnet bliver brugt internt i <b>kiwitrees</b> og kan være skyld i at din note ikke vises korrekt."
 
 #: help_text.php:1153
 msgid "This section allows you to Add a source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
@@ -3643,7 +3639,7 @@ msgstr "Interne beskeder"
 
 #: help_text.php:1180
 msgid "With this option, the kiwitrees internal messaging system will be used and no emails will be sent.<br><br>You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block if it is included among your widgets.  If you have removed this block from your widget bar, you will not see any messages.  They will, however, show up as soon as you configure the widget bar to again have the Message block."
-msgstr ""
+msgstr "Med denne funktion, vil <b>kiwitrees</b> eget besked system blive brugt, og der vil ikke blive sendt nogen emails.<br /><br />Du vil kun modtage <u>interne</u> beskeder fra andre brugere. Når en anden webstedsbruger sender en besked til dig, vil beskeden kunne ses i besked blokken på din personlige widget bar. Hvis du har fjernet denne blok fra din widget bar, vil du ikke se nogen beskeder. De vil dog komme frem så snart du tilføjer besked blokken til din widget bar"
 
 #: help_text.php:1182 includes/functions/functions_edit.php:257 includes/functions/functions_edit.php:268
 msgid "Internal messaging with emails"
@@ -3659,7 +3655,7 @@ msgstr "E-post genvej"
 
 #: help_text.php:1188
 msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to kiwitrees will not be used at all, and there will never be any messages in the Message block on your widget bar."
-msgstr ""
+msgstr "Med denne indstilling vil du kun modtage emails på den adresse du har indtastet på din brugerkonto. Det interne besked system i <b>kiwitrees</b> vil ikke blive brugt og der vil aldrig komme beskeder i rammen Beskeder på din personlige widget bar"
 
 #: help_text.php:1190
 msgid "No contact method"
@@ -3736,7 +3732,7 @@ msgstr "Favoritter"
 
 #: help_text.php:1249
 msgid "The Favorites drop-down list shows the favorites that you have selected on your widget bar.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br><br>More help about adding Favorites is available in your widget bar."
-msgstr ""
+msgstr "Favoritter i \"drop-down listen\" viser de favoritter, som du har valgt på din personlige widget bar. Den viser også favoritter, som webstedets administrator har valgt til den aktuelt aktive slægtsdatabase. Ved at klikke på en af ​​favoritterne, vil du blive ført direkte til den valgtes individs personoplysninger. <br><br> Mere hjælp om at tilføje favoritter er tilgængelig i din personlige widget bar."
 
 #: help_text.php:1253
 msgid "Import family tree"
@@ -3799,8 +3795,8 @@ msgid "The PGV to kiwitrees wizard is an automated process to assist administrat
 msgstr "PGV til <b>kiwitrees</b> guiden er en automatiseret proces der hjælper administratorer med at flytte fra en PGV installation til en ny <b>kiwitrees</b>. Den vil overføre alle PGV GEDCOM og andre databaseoplysninger direkte til din nye <b>kiwitrees</b> database. Følgende krav er nødvendige:"
 
 #: help_text.php:1302
-msgid "webtrees database must be on the same server as PGV's"
-msgstr "webtrees-databasen skal være på den samme server som PGV's"
+msgid "kiwitrees database must be on the same server as PGV's"
+msgstr "kiwitrees databasen skal være på den samme server som PGV's"
 
 #: help_text.php:1304
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
@@ -3903,8 +3899,8 @@ msgid "This role has all the permissions of the manager role in all family trees
 msgstr "Denne rolle har alle de rettighed til at bestemme hvilke rettigheder brugerne skal have samt rettighed til at ændre konfiguration og indstillinger for webstedets moduler."
 
 #: help_text.php:1400
-msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "Ved valg af denne funktion, vil webtrees beregne aldersforskellen mellem søskende, børn, ægtefæller osv."
+msgid "When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc."
+msgstr "Ved valg af denne funktion, vil kiwitrees beregne aldersforskellen mellem søskende, børn, ægtefæller osv."
 
 #: help_text.php:1404 modules_v3/sources_tab/module.php:60
 msgid "Show all sources"
@@ -4064,19 +4060,19 @@ msgid "This message was sent while viewing the following URL: "
 msgstr "Denne besked blev sendt fra følgende fuldstændige internetadresse (URL): "
 
 #: includes/authentication.php:248 includes/authentication.php:262 includes/authentication.php:307 message.php:43
-msgid "webtrees Message"
-msgstr "webtrees besked"
+msgid "Kiwitrees Message"
+msgstr "Kiwitrees besked"
 
 #: includes/authentication.php:252
-msgid "You sent the following message to a webtrees administrator:"
+msgid "You sent the following message to a kiwitrees administrator:"
 msgstr "Du sendte følgende besked til administratoren af hjemmesiden:"
 
 #: includes/authentication.php:258
-msgid "You sent the following message to a webtrees user:"
+msgid "You sent the following message to a kiwitrees user:"
 msgstr "Du sendte følgende besked til en anden bruger af hjemmesiden:"
 
 #: includes/authentication.php:264 includes/authentication.php:271 includes/authentication.php:309 includes/authentication.php:316
-msgid "The following message has been sent to your webtrees user account from "
+msgid "The following message has been sent to your kiwitrees user account from "
 msgstr "Følgende besked blev sendt til din brugerkonto fra "
 
 #: includes/config_data.php:38
@@ -7524,11 +7520,11 @@ msgstr "Klik på en række og træk-og-slip for at gensortere medier "
 msgid "Search engine"
 msgstr "Søgemaskine"
 
-#: index.php:134 index.php:135
+#: index.php:129 index.php:130
 msgid "Change the blocks on this page"
 msgstr "Tilpas rammerne på denne side"
 
-#: index.php:136 modules_v3/extra_info/module.php:77
+#: index.php:131 modules_v3/extra_info/module.php:77
 msgid "Hit Count:"
 msgstr "Antal visninger:"
 
@@ -12396,6 +12392,10 @@ msgstr "(filtreret ud af ialt %s elementer)"
 msgid "Loading…"
 msgstr "Indlæser"
 
+#: library/WT/MenuBar.php:36 themes/_administration/header.php:128
+msgid "Home"
+msgstr "Startside"
+
 #: library/WT/MenuBar.php:70 modules_v3/widget_quicklinks/module.php:67
 msgid "My pedigree"
 msgstr "Min slægt"
@@ -13962,7 +13962,7 @@ msgstr "Klik venligst på linket nedenfor og log dig ind med den nye adgangskode
 
 #: login.php:225
 msgid "After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password."
-msgstr ""
+msgstr "Efter at du har logget ind, så vælg linket ´Min Konto´ i menuen og udfyld feltet med adgangskoden for at ændre din adgangskode."
 
 #: login.php:242
 #, php-format
@@ -14415,7 +14415,7 @@ msgstr "Konfigurer visningen af gruperet medier ved brug af GEDCOM definationen 
 
 #: modules_v3/album/module.php:284
 msgid "You can not have any empty group."
-msgstr ""
+msgstr "Du kan ikke have en tom gruppe"
 
 #: modules_v3/album/module.php:290
 msgid "Number of groups"
@@ -14594,8 +14594,8 @@ msgid "A report of recent and pending changes."
 msgstr "En rapport over nylige og ventende ændringer"
 
 #: modules_v3/charts/help_text.php:35
-msgid "This block allows a pedigree, descendancy, or hourglass chart to appear the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page or at full width.<br /><br />When this block appears the root person and the type of chart to be displayed are determined by the administrator.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
-msgstr ""
+msgid "This block allows a pedigree, descendancy, or hourglass chart to appear the Home page.  Because of space limitations, the charts should be placed only on the left side of the page or at full width.<br /><br />When this block appears the root person and the type of chart to be displayed are determined by the administrator.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them."
+msgstr "Denne ramme tillader diagrammerne stamtavle, efterkommere eller timeglas at blive vist på forsiden. På grund af begrænsninger i størrelsen bør skemaerne kun blive placeret i venstre kolonne.<br /><br />Når denne ramme vises på siden, er proband forudbestemt af administrator. <br /><br />Diagrammernes adfærd er den samme som når de kaldes fra menuerne. Klik på en persons kasse for at se flere detaljer om dem."
 
 #: modules_v3/charts/module.php:40
 msgid "An alternative way to display charts."
@@ -14867,7 +14867,7 @@ msgstr "Tilføj menu element"
 
 #: modules_v3/extra_menus/help_text.php:37
 msgid "The menu should contains menu items. Using this option you can add menu details.."
-msgstr ""
+msgstr "Denne menu skal indeholde menu dele. Ved brug af denne indstilling kan du oprette menu detaljer"
 
 #: modules_v3/extra_menus/help_text.php:43 modules_v3/extra_menus/module.php:255
 msgid "Menu position"
@@ -14919,67 +14919,67 @@ msgstr "Vælges denne mulighed kan du redigere et menuelement."
 
 #: modules_v3/extra_menus/help_text.php:64
 msgid "Move menu down"
-msgstr ""
+msgstr "Flyt ned"
 
 #: modules_v3/extra_menus/help_text.php:65
 msgid "This option will let you move a menu item downwards."
-msgstr ""
+msgstr "Vælges denne mulighed kan du flytte et menu punkt nedad"
 
 #: modules_v3/extra_menus/help_text.php:65
 msgid "Each time you use this option, the position number of this menu item is increased by one. You can achieve the same effect by editing the menu item and changing the menu position field."
-msgstr ""
+msgstr "Hver gang du bruger denne indstilling, vil menuens positionsnummer blive hævet med én. Du kan opnå samme effekt ved at redigere punktet ved at ændre på positionsnummeret."
 
 #: modules_v3/extra_menus/help_text.php:69
 msgid "Move menu up"
-msgstr ""
+msgstr "Flyt op"
 
 #: modules_v3/extra_menus/help_text.php:70
 msgid "This option will let you move a menu item upwards."
-msgstr ""
+msgstr "Vælges denne mulighed kan du flytte et menu punkt opad"
 
 #: modules_v3/extra_menus/help_text.php:70
 msgid "Each time you use this option, the position number of this menu item is reduced by one. You can achieve the same effect by editing the menu item and changing the menu position field."
-msgstr ""
+msgstr "Hver gang du bruger denne indstilling, vil menuens positionsnummer blive reduceret med én. Du kan opnå samme effekt ved at redigere punktet ved at ændre på positionsnummeret."
 
 #: modules_v3/extra_menus/help_text.php:74 modules_v3/extra_menus/module.php:259
 msgid "Open menu in new tab or window"
-msgstr ""
+msgstr "Åbne menu i et nyt browservindue eller faneblad"
 
 #: modules_v3/extra_menus/help_text.php:75
 msgid "Normally you would expect clicking on a menu item to open that page in the existing browser window or tab. But if you need it to open in a new window or tab you can tick this option."
-msgstr ""
+msgstr "Normalt ville du forvente ved at klikke på et menupunkt, at den pågældende side åbner i det eksisterende vindue eller browserfane. Men hvis du har brug for, at åbne punktet i et nyt vindue eller faneblad kan du afkrydse her for denne mulighed."
 
 #: modules_v3/extra_menus/module.php:41
 msgid "Provides links to custom defined pages."
-msgstr ""
+msgstr "Danner links til brugerdefineret sider"
 
 #: modules_v3/extra_menus/module.php:149
 msgid "Edit menus"
-msgstr ""
+msgstr "Rediger menuer"
 
 #: modules_v3/extra_menus/module.php:232
 msgid "Add menu"
-msgstr ""
+msgstr "Opret menu"
 
 #: modules_v3/extra_menus/module.php:250
 msgid "Add your menu title here"
-msgstr ""
+msgstr "Opret menu titel"
 
 #: modules_v3/extra_menus/module.php:251
 msgid "Menu address"
-msgstr ""
+msgstr "Menu adresse"
 
 #: modules_v3/extra_menus/module.php:252
 msgid "Add your menu address here"
-msgstr ""
+msgstr "Tilføj menu adresse"
 
 #: modules_v3/extra_menus/module.php:263
 msgid "Show this menu for which languages?"
-msgstr ""
+msgstr "Angiv hvilke sprog?"
 
 #: modules_v3/extra_menus/module.php:381
 msgid "The menu is empty."
-msgstr ""
+msgstr "Menuen er tom"
 
 #: modules_v3/extra_menus/module.php:387 modules_v3/faq/module.php:374 modules_v3/gallery/module.php:502 modules_v3/simpl_pages/module.php:464
 msgid "Position item"
@@ -14987,7 +14987,7 @@ msgstr "Placer punkt"
 
 #: modules_v3/extra_menus/module.php:413
 msgid "Are you sure you want to delete this menu item?"
-msgstr ""
+msgstr "Der du sikker på du vil slette denne menu?"
 
 #: modules_v3/fact_sources/module.php:42
 msgid "A report of the information provided by a source."
@@ -15027,7 +15027,7 @@ msgstr "Smart billedgalleri"
 
 #: modules_v3/fancy_imagebar/module.php:42
 msgid "An image bar with small images on your home page between header and content."
-msgstr ""
+msgstr "Et galleri med små billeder vist på startsiden, lige under menubaren"
 
 #: modules_v3/fancy_imagebar/module.php:240
 msgid "The settings are changed. You will loose your changes if you switch trees."
@@ -15804,7 +15804,7 @@ msgstr "Er du sikker på at du vil fjerne denne person fra din liste med favorit
 
 #: modules_v3/gedcom_favorites/module.php:170 modules_v3/widget_favorites/module.php:194
 msgid "Add a favorite"
-msgstr ""
+msgstr "Tilføj en favorit"
 
 #: modules_v3/gedcom_favorites/module.php:192 modules_v3/widget_favorites/module.php:216
 msgid "Enter an optional note about this favorite"
@@ -16485,7 +16485,7 @@ msgstr "Favorit menu"
 
 #: modules_v3/menu_favorites/module.php:40
 msgid "The Favorites menu item (other menus)"
-msgstr ""
+msgstr "Favorit menu punkt (andre menuer)"
 
 #: modules_v3/menu_homepage/module.php:35
 msgid "Home menu"
@@ -16497,11 +16497,11 @@ msgstr "Hovedmenu element"
 
 #: modules_v3/menu_languages/module.php:35
 msgid "Languages menu"
-msgstr ""
+msgstr "Sprog menu"
 
 #: modules_v3/menu_languages/module.php:40
 msgid "The Languages menu item (other menus)"
-msgstr ""
+msgstr "Sprog menuer (andre menuer)"
 
 #: modules_v3/menu_lists/module.php:35
 msgid "Lists menu"
@@ -16513,11 +16513,11 @@ msgstr "Liste menu element"
 
 #: modules_v3/menu_login/module.php:35
 msgid "Login menu"
-msgstr ""
+msgstr "Login menu"
 
 #: modules_v3/menu_login/module.php:40
 msgid "The Login menu item (other menus)"
-msgstr ""
+msgstr "Login menu (andre menuer)"
 
 #: modules_v3/menu_reports/module.php:35
 msgid "Reports menu"
@@ -16716,11 +16716,11 @@ msgstr "Tilføj ny giftemål"
 
 #: modules_v3/relatives/module.php:274
 msgid "Add a son or daughter"
-msgstr ""
+msgstr "Tilføj en søn eller datter"
 
 #: modules_v3/relatives/module.php:278
 msgid "Add a brother or sister"
-msgstr ""
+msgstr "Tilføj en bror eller søster"
 
 #: modules_v3/relatives/module.php:315
 msgid "Show date differences"
@@ -16739,12 +16739,12 @@ msgid "A list of changes that need moderator approval, and email notifications."
 msgstr "En liste med ændringer som skal godkendes af en moderator og email notifikationer."
 
 #: modules_v3/review_changes/module.php:87 modules_v3/widget_review_changes/module.php:87
-msgid "webtrees - Review changes"
-msgstr "webtrees - gennemse ændringer"
+msgid "kiwitrees - Review changes"
+msgstr "kiwitrees - gennemse ændringer"
 
 #: modules_v3/review_changes/module.php:88 modules_v3/widget_review_changes/module.php:88
-msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes."
-msgstr "Der er blevet foretaget ændringer i slægtsdatabasen på hjemmesiden. Disse ændringer skal gennemses og godkendes før de vil blive vist for alle brugere. Brug venligst nedenstående URL for at åbne hjemmesiden, og log på for at gennemse ændringerne."
+msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that kiwitrees site and login to review the changes."
+msgstr "Der er blevet foretaget ændringer i slægtsdatabasen på hjemmesiden. Disse ændringer skal gennemses og godkendes før de vil blive vist for alle brugere. Brug venligst nedenstående URL for at åbne hjemmesiden, og log på for at gennemse ændringerne"
 
 #: modules_v3/review_changes/module.php:108 modules_v3/widget_review_changes/module.php:108
 msgid "There are pending changes for you to moderate."
@@ -16867,12 +16867,12 @@ msgid "Add page"
 msgstr "Opret side"
 
 #: modules_v3/simpl_pages/module.php:489
-msgid "Are you sure you want to delete this pages?"
-msgstr "Er du sikker på at du vil slette disse data?"
+msgid "Are you sure you want to delete this page?"
+msgstr "Er du sikker på du vil slette?"
 
 #: modules_v3/simpl_pages/module.php:502
-msgid "No pages have been created."
-msgstr "Der findes ingen sider endnu."
+msgid "No pages have been created"
+msgstr "Der findes ingen sider endnu"
 
 #: modules_v3/simpl_privacy/help_text.php:32 modules_v3/simpl_privacy/module.php:35
 msgid "Privacy status"
@@ -16893,7 +16893,7 @@ msgstr "<dt> Død </ dt> <dd> bruges, når en person er tydeligt markeret som d�
 
 #: modules_v3/simpl_privacy/help_text.php:38
 msgid "<dt>Presumed dead</dt><dd>This is set when a person either has a death recorded but with no date, or has no death record but <b>kiwitrees</b> has calculated that the person can reasonably be expected to be dead.</dd>"
-msgstr ""
+msgstr "<dt> Formodet død </ dt> <dd> Denne indstilling bruges hvis ID hverken har en notering om død eller dødsdato <b> kiwitrees </ b> har beregnet personen med rimelighed, kan forventes at være død. </ dd>"
 
 #: modules_v3/simpl_privacy/help_text.php:39
 msgid "<dt>Living</dt><dd>If there is no record of a death and no other related facts that imply death, then the person is assumed to be living.</dd>"
@@ -17235,7 +17235,7 @@ msgstr "Er du sikker på at du vil slette dette notat?"
 
 #: modules_v3/widget_blog/module.php:99
 msgid "Add a Journal entry"
-msgstr ""
+msgstr "Tilføj journal post"
 
 #: modules_v3/widget_favorites/module.php:40
 msgid "Display and manage a user’s favorite pages."
@@ -17283,11 +17283,11 @@ msgstr "Slet valgte beskeder"
 
 #: modules_v3/widget_quicklinks/module.php:35
 msgid "Quick links"
-msgstr ""
+msgstr "Genveje"
 
 #: modules_v3/widget_quicklinks/module.php:40
 msgid "A selection of links for a user."
-msgstr ""
+msgstr "Nyttige brugerlinks"
 
 #: modules_v3/widget_theme_select/module.php:35
 msgid "Theme change"
@@ -17299,7 +17299,7 @@ msgstr "En alternativ metode til at vælge et nyt tema"
 
 #: modules_v3/widget_todays_events/module.php:149 modules_v3/widget_todo/module.php:189 modules_v3/widget_upcoming/module.php:161
 msgid "Add a scrollbar when widget contents grow"
-msgstr ""
+msgstr "Tilføj en rullebjælke når rammens indhold udvider sig"
 
 #: modules_v3/widget_yahrzeit/module.php:35 modules_v3/yahrzeit/module.php:35
 msgid "Yahrzeiten"
@@ -17311,11 +17311,11 @@ msgstr "En liste over Hebræiske døds-mærkedage der forekommer i den nærmeste
 
 #: nocensus.php:35
 msgid "Missing Census Data"
-msgstr ""
+msgstr "Manglende data"
 
 #: nocensus.php:139
 msgid "view"
-msgstr ""
+msgstr "Vis"
 
 #: note.php:41
 #, php-format
@@ -17446,7 +17446,7 @@ msgstr "Valgt udskrift:"
 
 #: reportengine.php:273
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: reportengine.php:284
 msgid "Download report"
@@ -18225,23 +18225,19 @@ msgstr "UTC"
 
 #: themes/_administration/header.php:126
 msgid "Dashboard"
-msgstr ""
-
-#: themes/_administration/header.php:128
-msgid "Home"
-msgstr "Startside"
+msgstr "Kontrolpanel"
 
 #: themes/_administration/header.php:132
 msgid "Site Administration"
-msgstr ""
+msgstr "Side administration"
 
 #: themes/_administration/header.php:147
 msgid "Manage family trees"
-msgstr ""
+msgstr "Håndter familie træer"
 
 #: themes/_administration/header.php:158
 msgid "Family tree tools"
-msgstr ""
+msgstr "Værktøjer"
 
 #: themes/_administration/header.php:161
 msgid "Changes log"
@@ -18249,11 +18245,11 @@ msgstr "Ændringslog"
 
 #: themes/_administration/header.php:163
 msgid "Update place names"
-msgstr ""
+msgstr "Opdatér stednavne"
 
 #: themes/_administration/header.php:166
 msgid "Append family tree"
-msgstr ""
+msgstr "Tilføj familietræ"
 
 #: themes/_administration/header.php:169
 msgid "Set the default blocks for new family trees"
@@ -18265,7 +18261,7 @@ msgstr "Indstil standardblokkene"
 
 #: themes/_administration/header.php:176
 msgid "Manage users"
-msgstr ""
+msgstr "Håndter brugere"
 
 #: themes/_administration/header.php:177
 msgid "Add a new user"
@@ -18277,7 +18273,7 @@ msgstr "Slet inaktive brugere"
 
 #: themes/_administration/header.php:184
 msgid "Manage media"
-msgstr ""
+msgstr "Håndter medier"
 
 #: themes/_administration/header.php:188
 msgid "Modules"
@@ -18285,7 +18281,7 @@ msgstr "Moduler"
 
 #: themes/_administration/header.php:190
 msgid "Manage modules"
-msgstr ""
+msgstr "Håndter moduler"
 
 #: themes/_administration/header.php:191
 msgid "Menus"
@@ -18301,7 +18297,7 @@ msgstr "Blokke"
 
 #: themes/_administration/header.php:194 themes/webtrees/header.php:118 themes/xenea/header.php:125
 msgid "Widgets"
-msgstr ""
+msgstr "Håndter Widgets"
 
 #: themes/_administration/header.php:199
 msgid "Tools"
@@ -18313,7 +18309,7 @@ msgstr "Administration"
 
 #: themes/colors/footer.php:44 themes/kiwitrees/footer.php:38 themes/uti-family/footer.php:35 themes/webtrees/footer.php:39 themes/xenea/footer.php:40
 msgid "Powered by "
-msgstr ""
+msgstr "Udviklet af"
 
 #: themes/colors/templates/compactbox_template.php:57 themes/colors/templates/personbox_template.php:52 themes/kiwitrees/templates/compactbox_template.php:54 themes/kiwitrees/templates/personbox_template.php:48 themes/levy/templates/compactbox_template.php:57 themes/levy/templates/personbox_template.php:51 themes/uti-family/templates/compactbox_template.php:57 themes/uti-family/templates/personbox_template.php:51 themes/webtrees/templates/compactbox_template.php:57 themes/webtrees/templates/personbox_template.php:51 themes/xenea/templates/compactbox_template.php:57 themes/xenea/templates/personbox_template.php:51
 msgid "Loading..."
@@ -18321,7 +18317,7 @@ msgstr "Indlæser..."
 
 #: themes/colors/theme.php:54 themes/colors/theme.php:79
 msgid "Colors palette"
-msgstr ""
+msgstr "Farve palette"
 
 #: themes/colors/theme.php:98
 msgid "Aqua Marine"

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-02-10 10:09+1200\n"
-"PO-Revision-Date: 2015-02-10 10:32+1200\n"
+"PO-Revision-Date: 2015-02-17 09:00+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (Australia) (http://www.transifex.com/projects/p/kiwitrees/language/en_AU/)\n"
 "MIME-Version: 1.0\n"
@@ -12176,7 +12176,7 @@ msgstr "Image dimensions"
 
 #: library/WT/Gedcom/Tag.php:849
 msgid "Unrecognized GEDCOM Code"
-msgstr "Unrecognized GEDCOM Code"
+msgstr "Unrecognised GEDCOM Code"
 
 #: library/WT/Gedcom/Tag.php:858
 #, php-format

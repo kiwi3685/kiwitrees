@@ -291,7 +291,7 @@ case 'load_json':
 				}
 			}
 
-			$conf        = WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file));
+			$conf        = WT_Filter::escapeJS(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file)));
 			$delete_link =
 				'<p><a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .addslashes($media_path . $unused_file) . '\',media_folder:\'' . addslashes($media_folder) . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
 
@@ -421,7 +421,7 @@ function media_object_info(WT_Media $media) {
 	$xref   = $media->getXref();
 	$gedcom = WT_Tree::getNameFromId($media->getGedId());
 	$name   = $media->getFullName();
-	$conf   = WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($name));
+	$conf   = WT_Filter::escapeJS(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($name)));
 
 	$html   =
 		'<b>' . $name . '</b>' .
