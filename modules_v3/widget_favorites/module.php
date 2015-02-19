@@ -323,8 +323,3 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		}
 	}
 }
-
-//===============================================================================================================================
-class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
-
-}
