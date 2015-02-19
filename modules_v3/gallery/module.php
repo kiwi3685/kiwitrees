@@ -128,8 +128,10 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			return null;
 		}
 		
+		$menu_title = get_module_setting('gallery', 'HEADER_TITLE', WT_I18N::translate('Gallery'));
+
 		//-- main GALLERIES menu item
-		$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$default_block, 'menu-my_gallery', 'down');
+		$menu = new WT_Menu($menu_title, 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$default_block, 'menu-my_gallery', 'down');
 		$menu->addClass('menuitem', 'menuitem_hover', '');
 		foreach ($this->getMenuAlbumList() as $item) {
 			$languages=get_block_setting($item->block_id, 'languages');
