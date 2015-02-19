@@ -65,10 +65,7 @@ class WT_I18N {
 		global $WT_SESSION;
 
 		// The translation libraries only work with a cache.
-		$cache_options = array(
-			'automatic_serialization' => true,
-			'cache_id_prefix'         => md5(WT_SERVER_NAME . WT_SCRIPT_PATH),
-		);
+		$cache_options = array( 'automatic_serialization' => true );
 
 		if (ini_get('apc.enabled')) {
 			self::$cache = Zend_Cache::factory('Core', 'Apc', $cache_options, array());
