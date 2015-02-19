@@ -74,7 +74,7 @@ class ckeditor_WT_Module extends WT_Module {
 					skin : "moono",
 					width: "100%",
 					height: "150px",
-					toolbar: [["Source", "-", "Bold", "Italic", "Underline", "-", "Cut", "Copy", "Paste", "PasteText", "-", "Font", "FontSize", "TextColor", "BGColor"]]
+					toolbar: [["Bold", "Italic", "Underline", "-", "Subscript", "Superscript", "-", "NumberedList", "BulletedList", "Outdent", "Indent", "Font", "FontSize", "TextColor"]]
 				});
 			');
 	}
