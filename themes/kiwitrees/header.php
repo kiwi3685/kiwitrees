@@ -115,19 +115,18 @@ echo						'<li>
 								</a>
 							</li>';
 						}
-						if (!WT_USER_ID) {
-							$class_name='login_block_WT_Module';
-							$module=new $class_name;
-							echo '
-							<li>
-								<a href="#">', WT_I18N::translate('Login or Register'), '</a>
-								<ul id="login_popup">
-									<li>', $module->getBlock('login_block'), '</li>
-								</ul>
-							</li>';
-						}
 						foreach (WT_MenuBar::getOtherMenus() as $menu) {
-							if (!strpos($menu, WT_I18N::translate('Login'))) {
+							if (strpos($menu, WT_I18N::translate('Login')) && !WT_USER_ID && (array_key_exists('login_block', WT_Module::getInstalledModules('%')))) {
+								$class_name	= 'login_block_WT_Module';
+								$module		=  new $class_name;
+								echo '
+								<li>
+									<a href="#">', (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')), '</a>
+									<ul id="login_popup">
+										<li>', $module->getBlock('login_block'), '</li>
+									</ul>
+								</li>';
+							} else {
 								echo $menu->getMenuAsList();
 							}
 						}
