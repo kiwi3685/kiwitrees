@@ -93,8 +93,8 @@ Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
-$WT_REQUEST=new Zend_Controller_Request_Http();
-$WT_SESSION=new stdClass; 
+$WT_REQUEST = new Zend_Controller_Request_Http();
+$WT_SESSION = new \stdClass; 
 $WT_SESSION->locale=null; // Can't use Zend_Session until we've checked ini_set
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
