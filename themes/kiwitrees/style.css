@@ -2946,6 +2946,10 @@ div[id^="caldiv"] td {
 	padding: 10px;
 }
 
+.ui-front {
+	z-index: 2000;
+}
+
 /* jQuery.datatable styling general over-rides */
 .odd {
 	background-color: #fff;
