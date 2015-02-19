@@ -150,7 +150,7 @@ case 'reject-changes':
 case 'theme':
 	// Change the current theme
 	$theme_dir=safe_POST('theme');
-	if (in_array($theme_dir, get_theme_names()) {
+	if (in_array($theme_dir, get_theme_names())) {
 		$WT_SESSION->theme_dir=$theme_dir;
 	} else {
 		// Request for a non-existant theme.
