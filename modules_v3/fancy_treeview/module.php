@@ -232,7 +232,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 	// Reset all settings to default
 	private function ftv_reset() {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'FTV%'")->execute();
-		\WT\Log::addConfigurationLog($this->getTitle().' reset to default values');
+		AddToLog($this->getTitle().' reset to default values', 'auth');
 	}
 
 	// Delete item
@@ -241,7 +241,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		unset($FTV_SETTINGS[WT_Filter::getInteger('key')]);
 		$NEW_FTV_SETTINGS = array_merge($FTV_SETTINGS);
 		set_module_setting($this->getName(), 'FTV_SETTINGS',  serialize($NEW_FTV_SETTINGS));
-		\WT\Log::addConfigurationLog($this->getTitle().' item deleted');
+		AddToLog($this->getTitle().' item deleted', 'auth');
 	}
 
 	// Actions from the configuration page
@@ -253,7 +253,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$controller
 			->requireAdminLogin()
 			->setPageTitle('Fancy Tree View')
-			->pageHeader();
+			->pageHeader()
+			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js');
 
 		if (WT_Filter::postBool('save')) {
 			$surname = WT_Filter::post('NEW_FTV_SURNAME');
@@ -330,7 +331,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 							'SORT'			=> $count
 						);
 						set_module_setting($this->getName(), 'FTV_SETTINGS',  serialize($NEW_FTV_SETTINGS));
-						\WT\Log::addConfigurationLog($this->getTitle().' config updated');
+						AddToLog($this->getTitle().' config updated', 'config');
 					}
 				}
 			}
@@ -404,6 +405,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		// inline javascript
 		$controller->addInlineJavascript('
+			autocomplete();
+
 			function include_css(css_file) {
 				var html_doc = document.getElementsByTagName("head")[0];
 				var css = document.createElement("link");
@@ -535,13 +538,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$html .= '	</select>
 					<div class="field">
 						<label for="NEW_FTV_SURNAME" class="label">'.WT_I18N::translate('Add a surname').help_link('add_surname', $this->getName()).'</label>
-						<input type="text" id="NEW_FTV_SURNAME" class="surname" name="NEW_FTV_SURNAME" value="" />
+						<input data-autocomplete-type="SURN" type="text" id="NEW_FTV_SURNAME" class="surname" name="NEW_FTV_SURNAME" value="" />
 						<label>'.checkbox('soundex_std').WT_I18N::translate('Russell').'</label>
 						<label>'.checkbox('soudex_dm').WT_I18N::translate('Daitch-Mokotoff').'</label>
 					</div>
 					<div class="field">
 						<label class="label">'.WT_I18N::translate('Or manually add a root person').checkbox('unlock_field').'</label>
-						<input type="text" name="NEW_FTV_ROOTID" id="NEW_FTV_ROOTID" class="root_id" value="" size="5" maxlength="20"/>'.
+						<input data-autocomplete-type="INDI" type="text" name="NEW_FTV_ROOTID" id="NEW_FTV_ROOTID" class="root_id" value="" size="5" maxlength="20"/>'.
 						print_findindi_link('NEW_FTV_ROOTID');
 		$html .= '	</div>
 				</div>';
@@ -576,7 +579,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$html .=						'</a>
 									</td>
 									<td class="wrap">
-										<input type="text" name="NEW_FTV_PID['.$key.']" id="NEW_FTV_PID['.$key.']" value="'.$FTV_ITEM['PID'].'" size="5" maxlength="20">'.
+										<input data-autocomplete-type="INDI" type="text" name="NEW_FTV_PID['.$key.']" id="NEW_FTV_PID['.$key.']" value="'.$FTV_ITEM['PID'].'" size="5" maxlength="20">'.
 											print_findindi_link('NEW_FTV_PID['.$key.']');
 		$html .= '					</td>
 									<td>'.edit_field_access_level('NEW_FTV_ACCESS_LEVEL['.$key.']', $FTV_ITEM['ACCESS_LEVEL']).'</td>
@@ -1067,7 +1070,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				WT_I18N::translate('second'),
 				WT_I18N::translate('third'),
 				WT_I18N::translate('fourth'),
-				WT_I18N::translate('fifth')
+				WT_I18N::translate('fifth'),
+				WT_I18N::translate('sixth'),
+				WT_I18N::translate('seventh'),
+				WT_I18N::translate('eighth'),
+				WT_I18N::translate('ninth'),
+				WT_I18N::translate('tenth')
 			);
 			if($i == 0) {
 				$person->getSex() == 'M' ? $html .= /* I18N: %s is a number  */ WT_I18N::translate('He married %s times', $count) : $html .= WT_I18N::translate('She married %s times', $count);
@@ -1731,4 +1739,17 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				document.getElementsByTagName("head")[0].appendChild(newSheet);
 			</script>';
 	}
+
+//	private function ordinalize($num) {
+//        $suff = 'th';
+//        if ( ! in_array(($num % 100), array(11,12,13))){
+//            switch ($num % 10) {
+//                case 1:  $suff = 'st'; break;
+//                case 2:  $suff = 'nd'; break;
+//                case 3:  $suff = 'rd'; break;
+//            }
+//            return $num . $suff;
+//        }
+//        return $num . $suff;
+//    }
 }
