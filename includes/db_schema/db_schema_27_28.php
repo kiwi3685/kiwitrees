@@ -40,5 +40,8 @@ try {
 
 self::exec("ALTER TABLE `##module_privacy` CHANGE component component ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget')");
 
+// Delete redundant user blocks
+self::exec("DELETE FROM `##block` WHERE user_id > 0");
+
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);
