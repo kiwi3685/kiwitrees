@@ -127,33 +127,25 @@ function set_levelm($level, $parent) {
 function create_map($placelevels) {
 	global $level;
 	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom, $controller;
-	
+
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// =============================================================================================
 	$parent = safe_GET('parent', WT_REGEX_UNSAFE);
 	
 	// create the map
-	echo '<table style="margin:20px auto 0 auto;"><tr valign="top"><td>';
-	//<!-- start of map display -->
-	echo '<table><tr valign="top">';
-	echo '<td class="center" width="200px">';
-
 	$levelm = set_levelm($level, $parent);
 	$latlng = 
 		WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
 		->execute(array($levelm))
 		->fetch(PDO::FETCH_ASSOC);
-	if ($STREETVIEW && $level!=0 ) {
-		echo '<div id="place_map" style="margin-top:20px; border:1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px; ';
-	} else {
-		echo '<div id="place_map" style="border:1px solid gray; width:', $GOOGLEMAP_PH_XSIZE, 'px; height:', $GOOGLEMAP_PH_YSIZE, 'px; ';	
-	}
-	echo "\"><i class=\"icon-loading-large\"></i></div>";
-	echo '<script src="', WT_GM_SCRIPT, '"></script>';
-	echo '</td>';
+	$plzoom	= $latlng['pl_zoom'];// Map zoom level
 	
-	$plzoom	= $latlng['pl_zoom'];		// Map zoom level
+	echo '
+		<div id="place_map" style="margin: 0 auto; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px;">
+			<i class="icon-loading-large"></i>
+			<script src="', WT_GM_SCRIPT, '"></script>
+		</div>';
 
 	if (WT_USER_IS_ADMIN) {
 		$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
@@ -167,25 +159,23 @@ function create_map($placelevels) {
 		if ($latlng && isset($latlng['pl_id'])) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
-		echo '</tr><tr><td>';
-		echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
-		echo '&nbsp;|&nbsp;';
-		echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>';
-		echo '&nbsp;|&nbsp;';
-		echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
-		if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
-			$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", " 
-			$placelevels=substr($placelevels, 2); // remove the leading ", "
-			if ($placelevels) {
-				$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;ged='.WT_GEDCOM.'&amp;search='.urlencode($placelevels); // exact match
-				echo '&nbsp;|&nbsp;';
-				echo '<a href="'.$batchupdate_url.'">', WT_I18N::translate('Batch update'), '</a>';
+		echo '<p style="margin: 0 auto; padding: 10px; width: ', $GOOGLEMAP_PH_XSIZE, 'px;">
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>
+			&nbsp;|&nbsp;
+			<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>
+			&nbsp;|&nbsp;
+			<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
+			if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
+				$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", " 
+				$placelevels=substr($placelevels, 2); // remove the leading ", "
+				if ($placelevels) {
+					$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;ged='.WT_GEDCOM.'&amp;search='.urlencode($placelevels); // exact match
+					echo '&nbsp;|&nbsp;';
+					echo '<a href="'.$batchupdate_url.'">', WT_I18N::translate('Batch update'), '</a>';
+				}
 			}
-		}
+		echo '</p>';
 	}
-	echo '</td></tr></table>';
-	echo '</td>';
-	echo '<td style="margin-left:15px; float:right;">';
 
 	if ($STREETVIEW) {
 		$controller->addInlineJavascript('
@@ -199,66 +189,61 @@ function create_map($placelevels) {
 				if (window.focus) {win03.focus();}
 			}
 		');
-	
-		$parent = safe_GET('parent');
-		global $TBLPREFIX, $pl_lati, $pl_long;
-		if ($level>=1) {
-			$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// WT_placelocation lati
-			$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']);	// WT_placelocation long
-			
-			// Check if Streetview location parameters are stored in database		
-			$placeid	= $latlng['pl_id'];			// Placelocation place id
-			$sv_lat		= $latlng['sv_lati'];		// StreetView Point of View Latitude
-			$sv_lng		= $latlng['sv_long'];		// StreetView Point of View Longitude	
-			$sv_dir		= $latlng['sv_bearing'];	// StreetView Point of View Direction (degrees from North)
-			$sv_pitch	= $latlng['sv_elevation'];	// StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
-			$sv_zoom	= $latlng['sv_zoom'];		// StreetView Point of View Zoom (0, 1, 2 or 3)
-			
-			// Check if Street View Lati/Long are the default of 0 or null, if so use regular Place Lati/Long to set an initial location for the panda ------------
-			if (($latlng['sv_lati']==null && $latlng['sv_long']==null) || ($latlng['sv_lati']==0 && $latlng['sv_long']==0)) {
-					$sv_lat = $pl_lati;
-					$sv_lng = $pl_long;
+		echo '<div id="streetview" style="margin:20px auto; border:1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px;">';
+			$parent = safe_GET('parent');
+			global $TBLPREFIX, $pl_lati, $pl_long;
+			if ($level>=1) {
+				$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// WT_placelocation lati
+				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']);	// WT_placelocation long
+				
+				// Check if Streetview location parameters are stored in database		
+				$placeid	= $latlng['pl_id'];			// Placelocation place id
+				$sv_lat		= $latlng['sv_lati'];		// StreetView Point of View Latitude
+				$sv_lng		= $latlng['sv_long'];		// StreetView Point of View Longitude	
+				$sv_dir		= $latlng['sv_bearing'];	// StreetView Point of View Direction (degrees from North)
+				$sv_pitch	= $latlng['sv_elevation'];	// StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
+				$sv_zoom	= $latlng['sv_zoom'];		// StreetView Point of View Zoom (0, 1, 2 or 3)
+				
+				// Check if Street View Lati/Long are the default of 0 or null, if so use regular Place Lati/Long to set an initial location for the panda ------------
+				if (($latlng['sv_lati']==null && $latlng['sv_long']==null) || ($latlng['sv_lati']==0 && $latlng['sv_long']==0)) {
+						$sv_lat = $pl_lati;
+						$sv_lng = $pl_long;
+				}
+				// Set Street View parameters to numeric value if NULL (avoids problem with Google Street View™ Pane not rendering)
+				if ($sv_dir==null) {
+					$sv_dir=0;
+				}
+				if ($sv_pitch==null) {
+					$sv_pitch=0;
+				}				
+				if ($sv_zoom==null) {
+					$sv_zoom=1;
+				}
+				
+				echo '<iframe style="background:transparent; margin:10px; width:100%;height:100%;padding:0;border:0" src="module.php?mod=googlemap&amp;mod_action=wt_v3_street_view&amp;x=', $sv_lng ,'&amp;y=', $sv_lat, '&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=', $sv_dir, '&amp;p=', $sv_pitch, '&amp;m=', $sv_zoom, 'j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>';
+				
+				$list_latlon = (
+					WT_Gedcom_Tag::getLabel('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lat."'>".
+					WT_Gedcom_Tag::getLabel('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lng."'>".
+					/* I18N: Compass bearing (in degrees), for street-view mapping */ WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='".$sv_dir."'>".
+					/* I18N: Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'>".
+					WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."'>
+				");
+				if (WT_USER_IS_ADMIN) {
+					echo "<p align=\"center\" style=\"margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc; \">";
+				} else {
+					echo "<p align=\"center\" style=\"display:none; \">";
+				}
+				echo "<form style=\"text-align:left; margin-left:5px; font:11px verdana; color:blue;\" method=\"post\" action=\"\">";
+				echo $list_latlon;
+				echo "<input type=\"submit\" name=\"Submit\" onclick=\"update_sv_params($placeid);\" value=\"", WT_I18N::translate('save'), "\">";
+				echo "</form>";
+				echo "</p>";
+//				echo "</div>";
 			}
-			// Set Street View parameters to numeric value if NULL (avoids problem with Google Street View™ Pane not rendering)
-			if ($sv_dir==null) {
-				$sv_dir=0;
-			}
-			if ($sv_pitch==null) {
-				$sv_pitch=0;
-			}				
-			if ($sv_zoom==null) {
-				$sv_zoom=1;
-			}
-			
-			?>
-			<div>
-			<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:0" src="module.php?mod=googlemap&amp;mod_action=wt_v3_street_view&amp;x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
-			</div>
-			
-			<?php			
-			$list_latlon = (
-				WT_Gedcom_Tag::getLabel('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lat."'>".
-				WT_Gedcom_Tag::getLabel('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lng."'>".
-				/* I18N: Compass bearing (in degrees), for street-view mapping */ WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='".$sv_dir."'>".
-				/* I18N: Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'>".
-				WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."'>
-			");
-			if (WT_USER_IS_ADMIN) {
-				echo "<table align=\"center\" style=\"margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc; \">";
-			} else {
-				echo "<table align=\"center\" style=\"display:none; \">";
-			}
-			echo "<tr><td>";
-			echo "<form style=\"text-align:left; margin-left:5px; font:11px verdana; color:blue;\" method=\"post\" action=\"\">";
-			echo $list_latlon;
-			echo "<input type=\"submit\" name=\"Submit\" onclick=\"update_sv_params($placeid);\" value=\"", WT_I18N::translate('save'), "\">";
-			echo "</form>";
-			echo "</td></tr>";
-			echo "</table>";
-		}
-		// Next line puts Place hierarchy on new row -----
-		echo '</td></tr><tr>';
-	}	// End Streetview window ===================================================================
+		echo '</div>';
+	}
+
 }
 
 function check_were_am_i($numls, $levelm) {
