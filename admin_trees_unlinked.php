@@ -71,7 +71,7 @@ echo '<div id="admin_unlinked">
 		</div>
 	</form>';
 	// START OUTPUT
-	if ($action == 'View') {
+	if ($action == WT_I18N::translate('View')) {
 		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		if ($rows) {
 			foreach ($rows as $row) {
