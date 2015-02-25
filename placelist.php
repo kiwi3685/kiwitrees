@@ -61,12 +61,12 @@ echo '<div id="place-hierarchy">';
 				<h4><a href="placelist.php?display=hierarchy">', WT_I18N::translate('Switch to Place hierarchy'), '</a></h4>';
 
 			if ($num_places == 0) {
-				echo '<p style="text-align:center; font-weight:900;">', WT_I18N::translate('No results found.'), '<p>';
+				echo '<p>', WT_I18N::translate('No results found.'), '<p>';
 			} else {
-				echo '<ul style="list-style: none;width: 85%; margin: auto;">';
+				echo '<ul>';
 					foreach ($list_places as $n=>$list_place) {
 						echo '
-							<li style="display: inline-block; width: 400px;">
+							<li>
 								<a href="', $list_place->getURL(), '">', $list_place->getReverseName(), '</a>
 							</li>';
 					}
@@ -122,15 +122,15 @@ echo '<div id="place-hierarchy">';
 				create_map($placelevels);
 			}
 
-			echo '<div id="place-list" style="margin:20px auto; width:90%;">
-				<p style="padding: 10px; text-align: center; margin:0; border:0;">';
+			echo '<div id="place-list">
+				<p>';
 					if ($place_id) {
 						echo /* I18N: %s is a country or region */ WT_I18N::translate('Places in %s', $place->getPlaceName());
 					}
 				echo '</p>
-				<ul style="margin: 0; padding: 0; text-align: center; white-space: normal;">';
+				<ul>';
 					foreach ($child_places as $n => $child_place) {
-						echo '<li style="display: inline-block; text-align: left; width:150px; vertical-align:top; padding: 5px;">
+						echo '<li>
 							<a href="', $child_place->getURL(), '" class="list_item">', $child_place->getPlaceName(), '</a>
 						</li>';
 						if ($use_googlemap) {
@@ -141,7 +141,7 @@ echo '<div id="place-hierarchy">';
 				if ($child_places) {
 					if ($action=='find' && $place_id) {
 						$this_place = '<a href="' . $place->getURL() . '&amp;action=show" class="formField">' . $place->getPlaceName() . '</a>';
-						echo '<p style="margin: 10px; border: 0; padding: 0; text-align: center;">',
+						echo '<p>',
 							WT_I18N::translate('View all records found in %s', $this_place), help_link('ppp_view_records'), '
 						</p>';
 					}
@@ -179,7 +179,7 @@ echo '<div id="place-hierarchy">';
 					->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
 			
 				echo '<div class="loading-image">&nbsp;</div>';
-				echo '<div id="places-tabs" style="margin: 20px auto;"><ul>';
+				echo '<div id="places-tabs"><ul>';
 				if ($myindilist) {
 					echo '<li><a href="#places-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
 				}

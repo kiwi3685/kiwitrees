@@ -888,9 +888,77 @@ span.link_text {display:none;}
 #firstfocus {font-size:12px;width:330px;}
 #search-result-tabs,#places-tabs {margin:auto;visibility:hidden;width:98%;}
 #searchAccordion-indi,#searchAccordion-fam,#searchAccordion-source,#searchAccordion-note {margin:auto;width:99%;}
-#search-result-tabs h3,#place-hierarchy h2,#place-hierarchy h4 {text-align:center;}
+#search-result-tabs h3 {text-align:center;}
 
 [dir=rtl] .source-list th:last-child, [dir=rtl] .note-list th:last-child, [dir=rtl] .repo-list th:last-child {margin:0 1px 1px -2px;}
+
+/* ======== Place List page ========= */
+#place-hierarchy h2,
+#place-hierarchy h4 {
+	text-align: center;
+}
+
+#place-hierarchy p {
+	font-weight:900;
+	text-align:center;
+}
+
+#place-hierarchy ul {
+	list-style: none;
+	padding: 0;
+	margin: auto;
+	text-align: center;
+	white-space: normal;
+	width: 85%;
+}
+
+#place-hierarchy ul li {
+	display: inline-block;
+	text-align: initial;
+	width: 400px;
+}
+
+#place-hierarchy #place-list {
+	margin:20px auto;
+	width:90%;
+}
+
+#place-hierarchy #place-list p {
+	border:0;
+	margin:0;
+	padding: 10px;
+	text-align: center;
+}
+
+#place-hierarchy #place-list ul {
+}
+
+#place-hierarchy #place-list ul li {
+	padding: 5px;
+	vertical-align:top;
+	width: 150px;
+}
+
+#place-hierarchy #place-list ul + p {
+	margin: 10px;
+	border: 0;
+	padding: 0;
+	text-align: center;
+}
+
+#places-tabs {
+	margin: 20px auto;
+}
+
+#places-tabs ul {
+	width: auto;
+}
+
+#places-tabs ul li {
+	width: auto;
+}
+
+/* ---------------------------------- */
 
 /* Sidebar  */
 #indi_left {float:left;width:98%;}
@@ -1510,5 +1578,23 @@ div.widget {
 
 .widget .theme_form div p {
 	margin: 2px;
+}
+/* ------------------ */
+
+/* Styling for GoogleMap module */
+#place_map {
+	margin: 0 auto;
+	width: 800px;
+	height: 450px;
+ }
+
+#gm_links {
+	margin: 0 auto;
+	padding: 10px;
+	width: 800px;
+}
+
+#gm_links a {
+	font-weight: normal;
 }
 /* ------------------ */

@@ -142,7 +142,7 @@ function create_map($placelevels) {
 	$plzoom	= $latlng['pl_zoom'];// Map zoom level
 	
 	echo '
-		<div id="place_map" style="margin: 0 auto; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px;">
+		<div id="place_map">
 			<i class="icon-loading-large"></i>
 			<script src="', WT_GM_SCRIPT, '"></script>
 		</div>';
@@ -159,7 +159,7 @@ function create_map($placelevels) {
 		if ($latlng && isset($latlng['pl_id'])) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
-		echo '<p style="margin: 0 auto; padding: 10px; width: ', $GOOGLEMAP_PH_XSIZE, 'px;">
+		echo '<p id="gm_links">
 			<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>
 			&nbsp;|&nbsp;
 			<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>
