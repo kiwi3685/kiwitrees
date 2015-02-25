@@ -130,7 +130,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 
 	// Print the main menu bar
 	echo '<ul id="main-menu">'; 
-			if ($ctype != 'gedcom') {
+			if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php') {
 				echo '<li id="widget-button" class="icon-widget"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x icon-widget">&nbsp;</span></a></li>';
 			}
 			foreach (WT_MenuBar::getMainMenus() as $menu) {
@@ -149,6 +149,6 @@ echo
 	'<div id="content">';
 
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
-if ($ctype != 'gedcom' && $view != 'simple') {
+if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple') {
 	include_once 'widget-bar.php';
 }

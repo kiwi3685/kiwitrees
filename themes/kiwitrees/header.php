@@ -144,7 +144,7 @@ echo 				'</ul>
 				</div>', // <div id="header">
 				'<div id="topMenu" class="ui-state-active">
 					<ul id="main-menu">';
-						if ($ctype != 'gedcom') {
+						if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php') {
 							echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
 						}
 						foreach (WT_MenuBar::getMainMenus() as $menu) {
@@ -164,7 +164,7 @@ echo				'</select>
 // begin content section
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
 
-// add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
-if ($ctype != 'gedcom' && $view != 'simple') {
+// add widget bar inside content div for all pages except Home, and only for logged in users with role 'visitor' or above
+if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple') {
 	include_once 'widget-bar.php';
 }
