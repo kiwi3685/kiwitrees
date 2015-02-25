@@ -43,10 +43,6 @@ global $GOOGLEMAP_MIN_ZOOM;
 $GOOGLEMAP_MIN_ZOOM    = get_module_setting('googlemap', 'GM_MIN_ZOOM',    '2');  // min zoom level
 global $GOOGLEMAP_MAX_ZOOM;
 $GOOGLEMAP_MAX_ZOOM    = get_module_setting('googlemap', 'GM_MAX_ZOOM',    '20'); // max zoom level
-global $GOOGLEMAP_XSIZE;
-$GOOGLEMAP_XSIZE       = get_module_setting('googlemap', 'GM_XSIZE',       '600');      // X-size of Google map
-global $GOOGLEMAP_YSIZE;
-$GOOGLEMAP_YSIZE       = get_module_setting('googlemap', 'GM_YSIZE',       '400');      // Y-size of Google map
 global $GOOGLEMAP_PRECISION_0;
 $GOOGLEMAP_PRECISION_0 = get_module_setting('googlemap', 'GM_PRECISION_0', '0');  // Country level
 global $GOOGLEMAP_PRECISION_1;
@@ -65,10 +61,6 @@ global $GOOGLEMAP_COORD;
 $GOOGLEMAP_COORD       = get_module_setting('googlemap', 'GM_COORD',             '0'); // Enable or disable Display Map Co-ordinates
 
 //Place Hierarchy
-global $GOOGLEMAP_PH_XSIZE;
-$GOOGLEMAP_PH_XSIZE       =get_module_setting('googlemap', 'GM_PH_XSIZE',         '500'   ); // X-size of Place Hierarchy Google map
-global $GOOGLEMAP_PH_YSIZE;
-$GOOGLEMAP_PH_YSIZE       =get_module_setting('googlemap', 'GM_PH_YSIZE',         '350'   ); // Y-size of Place Hierarchy Google map
 global $GOOGLEMAP_PH_MARKER;
 $GOOGLEMAP_PH_MARKER      =get_module_setting('googlemap', 'GM_PH_MARKER',        'G_FLAG'); // Possible values: G_FLAG = Flag, G_DEFAULT_ICON = Standard icon
 global $GM_DISP_SHORT_PLACE;

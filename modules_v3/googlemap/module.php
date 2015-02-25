@@ -129,7 +129,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					</p>
 				';
 			}
-			echo '<div id="map_pane" style="border: 1px solid; height: 500px"></div>';
+			echo '<div id="map_pane"></div>';
 			$famids = array();
 			$families = $controller->record->getSpouseFamilies();
 			foreach ($families as $family) {
@@ -183,8 +183,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			set_module_setting('googlemap', 'GM_USE_STREETVIEW',    $_POST['NEW_GM_USE_STREETVIEW']);
 			set_module_setting('googlemap', 'GM_MIN_ZOOM',          $_POST['NEW_GM_MIN_ZOOM']);
 			set_module_setting('googlemap', 'GM_MAX_ZOOM',          $_POST['NEW_GM_MAX_ZOOM']);
-			set_module_setting('googlemap', 'GM_XSIZE',             $_POST['NEW_GM_XSIZE']);
-			set_module_setting('googlemap', 'GM_YSIZE',             $_POST['NEW_GM_YSIZE']);
 			set_module_setting('googlemap', 'GM_PRECISION_0',       $_POST['NEW_GM_PRECISION_0']);
 			set_module_setting('googlemap', 'GM_PRECISION_1',       $_POST['NEW_GM_PRECISION_1']);
 			set_module_setting('googlemap', 'GM_PRECISION_2',       $_POST['NEW_GM_PRECISION_2']);
@@ -194,8 +192,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			set_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', $_POST['NEW_GM_DEFAULT_TOP_LEVEL']);
 			set_module_setting('googlemap', 'GM_COORD',             $_POST['NEW_GM_COORD']);
 			set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   $_POST['NEW_GM_PLACE_HIERARCHY']);
-			set_module_setting('googlemap', 'GM_PH_XSIZE',          $_POST['NEW_GM_PH_XSIZE']);
-			set_module_setting('googlemap', 'GM_PH_YSIZE',          $_POST['NEW_GM_PH_YSIZE']);
 			set_module_setting('googlemap', 'GM_PH_MARKER',         $_POST['NEW_GM_PH_MARKER']);
 			set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  $_POST['NEW_GM_DISP_SHORT_PLACE']);
 
@@ -253,15 +249,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<tr>
 							<th><?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View™'); ?></th>
 							<td><?php echo radio_buttons('NEW_GM_USE_STREETVIEW', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_module_setting('googlemap', 'GM_USE_STREETVIEW', '0')); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Size of map (in pixels)'); ?></th>
-							<td>
-								<?php echo WT_I18N::translate('Width'); ?>
-								<input type="text" name="NEW_GM_XSIZE" value="<?php echo $GOOGLEMAP_XSIZE; ?>" size="10">
-								<?php echo WT_I18N::translate('Height'); ?>
-								<input type="text" name="NEW_GM_YSIZE" value="<?php echo $GOOGLEMAP_YSIZE; ?>" size="10">
-							</td>
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Zoom factor of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?></th>
@@ -377,15 +364,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<tr>
 							<th><?php echo WT_I18N::translate('Use Google Maps™ for the place hierarchy'); ?></th>
 							<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', get_module_setting('googlemap', 'GM_PLACE_HIERARCHY', '0')); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Size of map (in pixels)'); ?></th>
-							<td>
-								<?php echo WT_I18N::translate('Width'); ?>
-								<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $GOOGLEMAP_PH_XSIZE; ?>" size="10">
-								<?php echo WT_I18N::translate('Height'); ?>
-								<input type="text" name="NEW_GM_PH_YSIZE" value="<?php echo $GOOGLEMAP_PH_YSIZE; ?>" size="10">
-							</td>
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'); ?></th>
@@ -773,8 +751,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
 		echo '<tr>';
 		echo '<td valign="top">';
-		echo '<div id="pm_map" style="border: 1px solid gray; height: ', $GOOGLEMAP_YSIZE, 'px; font-size: 0.9em;';
-		echo '"><i class="icon-loading-large"></i></div>';
+		echo '<div id="pm_map"><i class="icon-loading-large"></i></div>';
 		if (WT_USER_IS_ADMIN) {
 			echo '
 				<p style="margin:10px 0;">

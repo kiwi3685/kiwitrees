@@ -1597,4 +1597,24 @@ div.widget {
 #gm_links a {
 	font-weight: normal;
 }
+
+#map_pane {
+	border: 1px solid;
+	height: 500px;
+}
+
+#pm_map {
+	border: 1px solid gray;
+	font-size: 0.9em;
+	height: 500px;
+}
+
+#side_bar {
+	font-size:0.9em;
+	height: 500px;
+	overflow:auto;
+	overflow-x:hidden;
+	overflow-y:auto;
+	width: 300px;
+}
 /* ------------------ */
