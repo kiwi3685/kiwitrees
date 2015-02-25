@@ -93,7 +93,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Menu
 	public function MenuType() {
-		return 'main';
+		return 'other';
 	}
 
 	// Implement WT_Module_Menu

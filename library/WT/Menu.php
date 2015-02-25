@@ -210,9 +210,22 @@ class WT_Menu {
 		if ($this->id) {
 			return '<li id="'.$this->id.'">'.$html.'</li>';
 		} else {
-			return '<li>'.$html.'</li>';
+			return '<li>' . $html . '</li>';
 		}
 
+	}
+
+	// Get the menu as a select drop-down for small screen sizes
+	function getMenuAsSelect() {
+		$option_link = '<option value="' . $this->link . '">' . $this->label . '</option>';
+		if ($this->submenus) {
+			foreach ($this->submenus as $submenu) {
+				if ($submenu) {
+					$option_link .= '<option value="' . $submenu->link . '">--- ' . $submenu->label . '</option>';
+				}
+			}
+		}
+		return $option_link;
 	}
 
 }

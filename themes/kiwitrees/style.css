@@ -458,6 +458,9 @@ textarea:required:invalid {
 	left: auto;
 }
 
+#topMenu #nav-select {
+	display: none; /* used for @media query and small devices */
+}
 /* ======= Footer styles ========== */
 #footer {
 	border-bottom: 1px solid;
@@ -537,6 +540,11 @@ textarea:required:invalid {
 #index_full_blocks {
 	clear: none;
 	width: 100%;
+}
+
+#index_small_blocks .block {
+	border: 1px solid #A9ADBC;
+	min-height: 280px;
 }
 
 [dir='rtl'] #index_main_blocks {
@@ -626,6 +634,11 @@ textarea:required:invalid {
 	overflow: hidden;
 }
 
+#home-page #index_small_blocks .block {
+	border: 1px solid #A9ADBC;
+	height: 280px;
+}
+
 #home-page #index_main_blocks .blockheader {
 	background: #fff;
 	font-size: 16px;
@@ -643,11 +656,9 @@ textarea:required:invalid {
 }
 
 #home-page #index_small_blocks > div {
-	background: #ddd;
 	float: left;
 	margin: 6px 1%;
-	width: 31.33333%;
-	height: 280px;
+	width: 31%;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -657,7 +668,6 @@ textarea:required:invalid {
 }
 
 #home-page .block {
-	border: 0;
 }
 
 #home-page .blockcontent {
@@ -5510,7 +5520,6 @@ div.widget {
 }
 /* ------------------ */
 
-
 /* Styling for Fancy Image bar */
 #fancy_imagebar {
 	position: relative;
@@ -5620,11 +5629,28 @@ div.widget {
 @media only screen
 and (min-device-width : 768px) 
 and (max-device-width : 1024px)  { 
-	body {font-size:12px;}
+	body {
+		font-size:12px;
+	}
 }
 /* iPhone */
 @media only screen
 and (min-device-width : 320px) 
 and (max-device-width : 480px)  { 
-	body {font-size:12px;}
+	#topMenu #main-menu {
+		display:none;
+	}
+	#topMenu #nav-select {
+		display: block;
+		height: 50px;
+		margin: 0 auto;
+		width: 70%;
+	}
+	#topMenu #nav-select select {
+		font-size: 30px;
+		width: 100%;
+	}
+	#topMenu #nav-select option {
+		font-size: 12px;
+	}
 }

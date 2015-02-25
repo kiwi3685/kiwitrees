@@ -151,6 +151,12 @@ echo 				'</ul>
 							echo $menu->getMenuAsList();
 						}
 echo				'</ul>
+					<select id="nav-select" onChange="window.location.href=this.value">
+						<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
+						foreach (WT_MenuBar::getMainMenus() as $menu) {
+							echo $menu->getMenuAsSelect();
+						}
+echo				'</select>
 				</div>', // <div id="topMenu">
 				WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 			'</div>'; // <div id="navbar">
