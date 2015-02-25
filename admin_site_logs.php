@@ -108,7 +108,7 @@ case 'delete':
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
-	header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
+	header('Content-Disposition: attachment; filename="kiwitrees-logs.csv"');
 	$rows=WT_DB::prepare($SELECT1.$WHERE.' ORDER BY log_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		echo
