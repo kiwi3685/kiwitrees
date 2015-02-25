@@ -51,18 +51,19 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery.min.js');				// 1.11.2
-	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery-ui.js');				// 1.10.4
+	define('WT_JQUERY_URL',			WT_STATIC_URL .'js/jquery.min.js');				// 1.11.2
+	define('WT_JQUERYUI_URL',		WT_STATIC_URL .'js/jquery-ui.js');				// 1.10.4
 }
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL.'js/jquery.colorbox-min.js');		// 1.5.14
-define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL.'js/jquery.cookie.js');			// 1.4.1
-define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL.'js/jquery.dataTables.min.js');	// 1.10.4
-define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL.'js/jquery.jeditable.js');			// 1.7.3
-define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL.'js/jquery.wheelzoom.js');			// 2.0.0
-define('WT_MODERNIZR_URL',         WT_STATIC_URL.'js/modernizr.custom.js');			// 2.6.2
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL.'js/webtrees.js');
-define('WT_JQUERY_AUTOSIZE',	   WT_STATIC_URL.'js/jquery.autosize.js');
-define('WT_JQUERY_TREEVIEW',	   WT_STATIC_URL.'js/jquery.treeview.js');
+define('WT_JQUERY_COLORBOX_URL',	WT_STATIC_URL . 'js/jquery.colorbox-min.js');		// 1.5.14
+define('WT_JQUERY_COOKIE_URL',		WT_STATIC_URL . 'js/jquery.cookie.js');			// 1.4.1
+define('WT_JQUERY_DATATABLES_URL',	WT_STATIC_URL . 'js/jquery.dataTables.min.js');	// 1.10.4
+define('WT_JQUERY_JEDITABLE_URL',	WT_STATIC_URL . 'js/jquery.jeditable.js');			// 1.7.3
+define('WT_JQUERY_WHEELZOOM_URL',	WT_STATIC_URL . 'js/jquery.wheelzoom.js');			// 2.0.0
+define('WT_MODERNIZR_URL',			WT_STATIC_URL . 'js/modernizr.custom.js');			// 2.6.2
+define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/webtrees.js');
+define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.js');
+define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');
+define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'jquery.ui.touch-punch.min.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
