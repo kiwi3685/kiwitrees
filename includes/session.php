@@ -63,7 +63,7 @@ define('WT_MODERNIZR_URL',			WT_STATIC_URL . 'js/modernizr.custom.js');			// 2.6
 define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/webtrees.js');
 define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.js');
 define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');
-define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'jquery.ui.touch-punch.min.js');
+define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes

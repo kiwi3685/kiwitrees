@@ -596,13 +596,7 @@ textarea:required:invalid {
 }
 
 #link_change_blocks {
-	background: #ddd;
-	border: thin solid #aaa;
-	clear: both;
-	margin: 0 14px;
-	padding: 10px 0;
 	text-align: center;
-	font-size: 12px;
 }
 
 #link_change_blocks  a {
