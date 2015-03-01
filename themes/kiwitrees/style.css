@@ -952,7 +952,7 @@ table.center {
 }
 
 a:hover .name1 {
-	color: #009AFE;
+	color: #009afe;
 }
 
 .name2 {
@@ -962,7 +962,7 @@ a:hover .name1 {
 }
 
 a:hover .name2 {
-	color: #009AFE;
+	color: #009afe;
 }
 
 .nameZoom {
@@ -972,7 +972,7 @@ a:hover .name2 {
 }
 
 a:hover .nameZoom {
-	color: #009AFE;
+	color: #009afe;
 }
 
 .details1 {
@@ -3014,6 +3014,10 @@ div[id^="caldiv"] td {
 
 .ui-front {
 	z-index: 2000;
+}
+
+.ui-state-highlight a {
+	color: #009afe;
 }
 
 /* jQuery.datatable styling general over-rides */
