@@ -1,7 +1,7 @@
 <?php
 // Classes and libraries for module system
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView

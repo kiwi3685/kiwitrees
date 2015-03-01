@@ -1,7 +1,7 @@
 <?php
 // Header for webtrees theme
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView

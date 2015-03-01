@@ -1,7 +1,7 @@
 <?php
 // List branches by surname - modified to become simpl_branches.
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (C) 2013 webtrees development team.
 //
 // Derived from PhpGedView

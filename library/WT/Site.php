@@ -1,7 +1,7 @@
 <?php
 // Provide an interface to the wt_site_setting table
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (c) 2012 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify

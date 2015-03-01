@@ -1,7 +1,7 @@
 <?php
 // Renumber the XREFs in a tree, so they are unique across the site.
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (C) 2014 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify

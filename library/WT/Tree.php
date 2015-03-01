@@ -1,7 +1,7 @@
 <?php
 // Provide an interface to the wt_gedcom table
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (c) 2013 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify

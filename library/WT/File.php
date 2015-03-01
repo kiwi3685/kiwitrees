@@ -1,7 +1,7 @@
 <?php
 // File manipulation utilities
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (c) 2014 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify

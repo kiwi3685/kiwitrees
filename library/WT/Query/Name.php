@@ -1,7 +1,7 @@
 <?php
 // MySQL queries on individual names
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (C) 2011 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify

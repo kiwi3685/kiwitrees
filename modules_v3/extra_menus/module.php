@@ -1,9 +1,10 @@
 <?php
-//	webtrees - simpl_menu2 module
+// A module to allow additional administrator defined menu items
 // 
-// Copyright (C) 2013 Nigel Osborne and kiwtrees.net. All rights reserved.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2015 kiwitrees.net
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (C) 2013 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify

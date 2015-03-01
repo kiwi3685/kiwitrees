@@ -7,7 +7,7 @@
 // $class - the additional class of the block
 // $content - the content of the block
 //
-// webtrees: Web based Family History software
+// Derived from webtrees
 // Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
