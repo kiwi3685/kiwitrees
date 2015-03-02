@@ -41,6 +41,7 @@ try {
 self::exec("ALTER TABLE `##module_privacy` CHANGE component component ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget')");
 
 // Delete redundant user blocks
+self::exec("DELETE FROM `##block_setting` WHERE block_id IN (SELECT block_id FROM `##block` WHERE user_id > 0)");
 self::exec("DELETE FROM `##block` WHERE user_id > 0");
 
 // Update the version to indicate success
