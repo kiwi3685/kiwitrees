@@ -864,7 +864,7 @@ try {
 		" (1, 'auto_accept',       ?),".
 		" (1, 'visibleonline',     ?)"
 	)->execute(array(
-		1, WT_LOCALE, 1, 1, 1, 0, 1
+		1, WT_LOCALE, 1, 1, 0, 1
 	));
 
 	WT_DB::prepare(
@@ -904,7 +904,6 @@ try {
 		" WHERE user_id=-1"
 	)->execute();
 	
-
 	// Write the config file.  We already checked that this would work.
 	$config_ini_php=
 		'; <'.'?php exit; ?'.'> DO NOT DELETE THIS LINE'      . PHP_EOL.
