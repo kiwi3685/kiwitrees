@@ -80,20 +80,22 @@ class Diff
 	 *
 	 * @param array $a Array containing the lines of the first string to compare.
 	 * @param array $b Array containing the lines for the second string to compare.
-	 * @param array $options
 	 */
 	public function __construct($a, $b, $options=array())
 	{
 		$this->a = $a;
 		$this->b = $b;
 
-		$this->options = array_merge($this->defaultOptions, $options);
+		if (is_array($options))
+			$this->options = array_merge($this->defaultOptions, $options);
+		else
+			$this->options = $this->defaultOptions;
 	}
 
 	/**
 	 * Render a diff using the supplied rendering class and return it.
 	 *
-	 * @param Diff_Renderer_Abstract $renderer An instance of the rendering object to use for generating the diff.
+	 * @param object $renderer An instance of the rendering object to use for generating the diff.
 	 * @return mixed The generated diff. Exact return value depends on the rendered.
 	 */
 	public function render(Diff_Renderer_Abstract $renderer)
@@ -171,7 +173,7 @@ class Diff
 
 		require_once dirname(__FILE__).'/Diff/SequenceMatcher.php';
 		$sequenceMatcher = new Diff_SequenceMatcher($this->a, $this->b, null, $this->options);
-		$this->groupedCodes = $sequenceMatcher->getGroupedOpcodes();
+		$this->groupedCodes = $sequenceMatcher->getGroupedOpcodes($this->options['context']);
 		return $this->groupedCodes;
 	}
 }
