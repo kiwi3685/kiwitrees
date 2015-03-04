@@ -1467,6 +1467,8 @@ function old_paths() {
 		WT_ROOT.'modules_v3/user_blog',
 		WT_ROOT.'modules_v3/theme_select',
 		WT_ROOT.'modules_v3/menu_mypage',
+		// Removed in kiwitrees 3.0.0
+		WT_ROOT.'modules_v3/fancy_treeview/themes',
 
 	);
 }

@@ -843,7 +843,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 						jQuery( "form#change_root" ).submit(function(e) {
 							e.preventDefault();
 							var new_rootid = jQuery("form #new_rootid").val();
-							var url = jQuery(location).attr("pathname") + "?mod='.$this->getName().'&mod_action=show&rootid=" + new_rootid;
+							var url = jQuery(location).attr("pathname") + "?mod='.$this->getName().'&mod_action=show&rootid=" + new_rootid + "&theme='.basename(WT_THEME_DIR). '"
 							jQuery.ajax({
 								url: url,
 								csrf: WT_CSRF_TOKEN,
@@ -867,11 +867,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					');
 				}
 
-				// add theme js
-				$html = $this->includeJs();
-
 				// Start page content
-				$html .= '
+				$html = '
 					<div id="fancy_treeview-page">
 						<div id="page-header">
 							<h2>'.$controller->getPageTitle().'</h2>
@@ -1064,24 +1061,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$html = ' ';
 
 		if($count > 1) {
-			// we assume no one married more then five times.
-			$wordcount = array(
-				WT_I18N::translate('first'),
-				WT_I18N::translate('second'),
-				WT_I18N::translate('third'),
-				WT_I18N::translate('fourth'),
-				WT_I18N::translate('fifth'),
-				WT_I18N::translate('sixth'),
-				WT_I18N::translate('seventh'),
-				WT_I18N::translate('eighth'),
-				WT_I18N::translate('ninth'),
-				WT_I18N::translate('tenth')
-			);
 			if($i == 0) {
 				$person->getSex() == 'M' ? $html .= /* I18N: %s is a number  */ WT_I18N::translate('He married %s times', $count) : $html .= WT_I18N::translate('She married %s times', $count);
 				$html .= '. ';
 			}
-			$person->getSex() == 'M' ? $html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount[$i]) : $html .= WT_I18N::translate('The %s time she married', $wordcount[$i]);
+			$wordcount = self::ordinalize($i + 1);
+			$person->getSex() == 'M' ? $html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount) : $html .= WT_I18N::translate('The %s time she married', $wordcount);
 		}
 		else {
 			$person->getSex() == 'M' ? $html .= WT_I18N::translate('He married') : $html .= WT_I18N::translate('She married');
@@ -1674,9 +1659,6 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				return null;
 			}
 
-			// load the module stylesheets
-			echo $this->getStylesheet();
-
 			foreach ($FTV_SETTINGS as $FTV_ITEM) {
 				if($FTV_ITEM['TREE'] == WT_GED_ID && $FTV_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
 					$FTV_GED_SETTINGS[] = $FTV_ITEM;
@@ -1702,54 +1684,16 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	private function getStylesheet() {
-		$module_dir = WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/';
-		$stylesheet = '';
-		if (file_exists($module_dir.WT_THEME_URL.'menu.css')) {
-			$stylesheet .= $this->includeCss($module_dir.WT_THEME_URL.'menu.css', 'screen');
-		}
-
-		if(WT_Filter::get('mod') == $this->getName()) {
-			$stylesheet .= $this->includeCss($module_dir.'themes/base/style.css');
-			$stylesheet .= $this->includeCss($module_dir.'themes/base/print.css', 'print');
-			if (file_exists($module_dir.WT_THEME_URL.'style.css')) {
-				$stylesheet .= $this->includeCss($module_dir.WT_THEME_URL.'style.css', 'screen');
-			}
-		}
-		return $stylesheet;
-	}
-
-	private function includeJs() {
-		global $controller;
-		// some files needs an extra js script
-		$theme = basename(WT_THEME_DIR);
-		if (file_exists( WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/'.WT_THEME_URL.$theme.'.js')) {
-			$controller->addExternalJavascript(WT_MODULES_DIR.$this->getName().'/'.WT_THEME_URL.$theme.'.js');
-		}
-	}
-
-	private function includeCss($css, $type = 'all') {
-		return
-			'<script>
-				var newSheet=document.createElement("link");
-				newSheet.setAttribute("href","'.$css.'");
-				newSheet.setAttribute("type","text/css");
-				newSheet.setAttribute("rel","stylesheet");
-				newSheet.setAttribute("media","'.$type.'");
-				document.getElementsByTagName("head")[0].appendChild(newSheet);
-			</script>';
-	}
-
-//	private function ordinalize($num) {
-//        $suff = 'th';
-//        if ( ! in_array(($num % 100), array(11,12,13))){
-//            switch ($num % 10) {
-//                case 1:  $suff = 'st'; break;
-//                case 2:  $suff = 'nd'; break;
-//                case 3:  $suff = 'rd'; break;
-//            }
-//            return $num . $suff;
-//        }
-//        return $num . $suff;
-//    }
+	private function ordinalize($num) {
+        $suff = WT_I18N::translate('th');
+        if ( ! in_array(($num % 100), array(11,12,13))){
+            switch ($num % 10) {
+                case 1:  $suff = WT_I18N::translate('st'); break;
+                case 2:  $suff = WT_I18N::translate('nd'); break;
+                case 3:  $suff = WT_I18N::translate('rd'); break;
+            }
+            return $num . $suff;
+        }
+        return $num . $suff;
+    }
 }
