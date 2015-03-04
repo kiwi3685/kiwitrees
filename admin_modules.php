@@ -144,11 +144,11 @@ $controller
 								'<tr>
 									<td>', two_state_checkbox('status-'.$module_name, $status=='enabled'), '</td>
 									<td>'; 
-										if ($module instanceof WT_Module_Config) {
+										if ( $module instanceof WT_Module_Config ) {
 											echo '<a href="', $module->getConfigLink(), '">';
 										}
 										echo $module->getTitle();
-										if ($module instanceof WT_Module_Config) {
+										if ( $module instanceof WT_Module_Config && array_key_exists( $module_name, WT_Module::getActiveModules() ) ) {
 											echo ' <i class="fa fa-cogs"></i></a>';
 										}
 									echo '
