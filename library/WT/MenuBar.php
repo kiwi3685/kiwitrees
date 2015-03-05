@@ -95,7 +95,7 @@ class WT_MenuBar {
 			return null;
 		}
 
-		$indi_xref=$controller->getSignificantIndividual()->getXref();
+		$indi_xref = $controller->getSignificantIndividual()->getXref();
 		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 		$menu = new WT_Menu(WT_I18N::translate('Charts'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart');
@@ -297,28 +297,32 @@ class WT_MenuBar {
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
 		// Build a list of submenu items and then sort it in localized name order
-		$menulist=array('indilist.php'  =>WT_I18N::translate('Individuals'));
+		$menulist = array('indilist.php' => WT_I18N::translate('Individuals'));
 		if (!$SEARCH_SPIDER) {
-			$menulist['famlist.php'  ]=WT_I18N::translate('Families');
-			$menulist['branches.php' ]=WT_I18N::translate('Branches');
-			$menulist['placelist.php']=WT_I18N::translate('Place hierarchy');
 			// Build a list of submenu items and then sort it in localized name order
+			$menulist['famlist.php'  ] = WT_I18N::translate('Families');
+			$menulist['branches.php' ] = WT_I18N::translate('Branches');
+			$menulist['placelist.php'] = WT_I18N::translate('Place hierarchy');
 			if ($row->obje) {
-				$menulist['medialist.php']=WT_I18N::translate('Media objects');
+				$menulist['medialist.php'] = WT_I18N::translate('Media objects');
 			}
 			if ($row->repo) {
-				$menulist['repolist.php']=WT_I18N::translate('Repositories');
+				$menulist['repolist.php'] = WT_I18N::translate('Repositories');
 			}
 			if ($row->sour) {
-				$menulist['sourcelist.php']=WT_I18N::translate('Sources');
+				$menulist['sourcelist.php'] = WT_I18N::translate('Sources');
 			}
 			if ($row->note) {
-				$menulist['notelist.php']=WT_I18N::translate('Shared notes');
+				$menulist['notelist.php'] = WT_I18N::translate('Shared notes');
+			}
+			if (array_key_exists('no_census', WT_Module::getActiveModules())) {
+				$menulist['no_census'] = WT_I18N::translate('UK Census check');
 			}
 		}
 		asort($menulist);
 
-		$surname_url='?surname='.rawurlencode($controller->getSignificantSurname()).'&amp;ged='.WT_GEDURL;
+		$surname_url = '?surname='.rawurlencode($controller->getSignificantSurname()).'&amp;ged='.WT_GEDURL;
+
 		foreach ($menulist as $page=>$name) {
 			switch ($page) {
 			case 'indilist.php':
@@ -358,6 +362,11 @@ class WT_MenuBar {
 
 			case 'medialist.php':
 				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-obje');
+				$menu->addSubmenu($submenu);
+				break;
+
+			case 'no_census':
+				$submenu = new WT_Menu($name, 'module.php?mod=' . $page . '&amp;mod_action=show&amp;ged='.WT_GEDURL, 'menu-list-obje');
 				$menu->addSubmenu($submenu);
 				break;
 			}
@@ -431,32 +440,6 @@ class WT_MenuBar {
 			$menu->addSubmenu($submenu);
 		}
 		return $menu;
-	}
-
-	public static function getMainMenus() {
-		$menus=array();
-		foreach (WT_Module::getActiveMenus() as $module) {
-			if ($module->MenuType() == 'main') {
-				$menu=$module->getMenu();
-				if ($menu) {
-					$menus[] = $menu;
-				}
-			}
-		}
-		return $menus;
-	}
-
-	public static function getOtherMenus() {
-		$menus=array();
-		foreach (WT_Module::getActiveMenus() as $module) {
-			if ($module->MenuType() == 'other') {
-				$menu=$module->getMenu();
-				if ($menu) {
-					$menus[] = $menu;
-				}
-			}
-		}
-		return $menus;
 	}
 
 	public static function getLanguageMenu() {
@@ -535,4 +518,31 @@ class WT_MenuBar {
 		}
 		return $menu;
 	}
+
+	public static function getMainMenus() {
+		$menus=array();
+		foreach (WT_Module::getActiveMenus() as $module) {
+			if ($module->MenuType() == 'main') {
+				$menu=$module->getMenu();
+				if ($menu) {
+					$menus[] = $menu;
+				}
+			}
+		}
+		return $menus;
+	}
+
+	public static function getOtherMenus() {
+		$menus=array();
+		foreach (WT_Module::getActiveMenus() as $module) {
+			if ($module->MenuType() == 'other') {
+				$menu=$module->getMenu();
+				if ($menu) {
+					$menus[] = $menu;
+				}
+			}
+		}
+		return $menus;
+	}
+
 }

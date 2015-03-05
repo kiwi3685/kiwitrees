@@ -5776,6 +5776,61 @@ div.widget {
 }
 /* ------------------ */
 
+/* Styles for nocensus module */
+
+.nocensus {
+	margin:10px auto;
+	min-width: 610px;
+	width:40%;
+}
+
+.nocensus label {
+	display: inline-block;
+	width: 100px;
+}
+
+.nocensus label + input {
+	margin: 0 7px;
+}
+
+#nocensus_result {
+	border-bottom: 1px solid;
+	border-top: 1px solid;
+	list-style: none;
+	margin: auto;
+	padding:20px 0 20px 0;
+	text-align: center;
+	white-space: normal;
+	width: 85%;
+}
+
+#nocensus_result li {
+	display: inline-block;
+	margin-bottom: 40px;
+	padding: 5px;
+	text-align: initial;
+	vertical-align: top;
+	width: 260px;
+}
+
+#nocensus_result li ul {
+	display: inline;
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+	text-align: initial;
+}
+
+#nocensus_result li ul li {
+	width: auto;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+/* ------------------ */
+
+
 /* FOR FUTURE USE
 .font-awesome-picker,
 .font-awesome-picker div {
