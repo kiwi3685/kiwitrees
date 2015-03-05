@@ -407,15 +407,6 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$controller->addInlineJavascript('
 			autocomplete();
 
-			function include_css(css_file) {
-				var html_doc = document.getElementsByTagName("head")[0];
-				var css = document.createElement("link");
-				css.setAttribute("rel", "stylesheet");
-				css.setAttribute("type", "text/css");
-				css.setAttribute("href", css_file);
-				html_doc.appendChild(css);
-			}
-			include_css("'.WT_MODULES_DIR.$this->getName().'/'.WT_THEME_URL.'style.css");
 			var pastefield; function paste_id(value) { pastefield.value=value; } // For the \'find indi\' link
 
 			jQuery(".tree").change(function(){
