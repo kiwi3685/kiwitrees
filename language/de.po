@@ -2,13 +2,13 @@
 # Translators:
 # Christian Utischill <christian.utischill@westernacher.com>, 2014-2015
 # Christian Utischill <christian.utischill@westernacher.com>, 2014
-# Grimpel, 2014
+# Grimpel, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-02-10 10:09+1200\n"
-"PO-Revision-Date: 2015-02-17 09:00+1200\n"
+"PO-Revision-Date: 2015-03-06 10:14+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -1816,7 +1816,7 @@ msgstr "Die folgenden Orte würden geändert:"
 
 #: admin_trees_places.php:134
 msgid "No places were found."
-msgstr "Keine Orte gefunden"
+msgstr "Keine Orte gefunden."
 
 #: admin_trees_renumber.php:27 themes/_administration/header.php:165
 msgid "Renumber family tree"
@@ -4058,19 +4058,19 @@ msgstr "Diese Nachricht wurde gesendet als die folgende Seite aufgerufen wurde: 
 
 #: includes/authentication.php:248 includes/authentication.php:262 includes/authentication.php:307 message.php:43
 msgid "Kiwitrees Message"
-msgstr ""
+msgstr "Kiwitrees Nachricht"
 
 #: includes/authentication.php:252
 msgid "You sent the following message to a kiwitrees administrator:"
-msgstr ""
+msgstr "Sie haben die folgende Nachricht an einen kiwitrees Verwalter gesendet:"
 
 #: includes/authentication.php:258
 msgid "You sent the following message to a kiwitrees user:"
-msgstr ""
+msgstr "Sie haben die folgende Nachricht an einen kiwtrees Benutzer gesendet:"
 
 #: includes/authentication.php:264 includes/authentication.php:271 includes/authentication.php:309 includes/authentication.php:316
 msgid "The following message has been sent to your kiwitrees user account from "
-msgstr ""
+msgstr "Die folgende Nachricht wurde an Ihr kiwitrees Benutzer Postfach gesendet von "
 
 #: includes/config_data.php:38
 msgctxt "Unknown surname"
@@ -15163,7 +15163,7 @@ msgstr ""
 
 #: modules_v3/fancy_treeview/module.php:316
 msgid "Error: The root person belonging to this surname already exists"
-msgstr "Fehler: Die gewählte Startperson für diesen Familöiennamen existiert schon"
+msgstr "Fehler: Die gewählte Startperson für diesen Familiennamen existiert schon"
 
 #: modules_v3/fancy_treeview/module.php:319
 msgid "Error: The root person you are trying to add already exists"
@@ -15763,7 +15763,7 @@ msgstr "verwandte Familienbilder"
 
 #: modules_v3/gallery/module.php:762
 msgid "Linked to:"
-msgstr "Linked mit"
+msgstr "Verbunden mit"
 
 #: modules_v3/gallery/module.php:796
 msgid "Gallery is empty. Please choose other gallery."
@@ -16452,7 +16452,7 @@ msgstr "Kalender Menü"
 
 #: modules_v3/menu_calendar/module.php:40
 msgid "The Calendar menu item"
-msgstr "Kalender Menü"
+msgstr "Kalender Menüeintrag"
 
 #: modules_v3/menu_charts/module.php:35
 msgid "Charts menu"
@@ -18631,7 +18631,7 @@ msgstr "Sie wurde geboren"
 
 #: modules_v3/descendancy_report/report.bak:357
 msgid "She "
-msgstr "sie"
+msgstr "Sie"
 
 #: modules_v3/descendancy_report/report.bak:400
 msgid "He was born"
@@ -18651,11 +18651,11 @@ msgstr "Eingabe der Familien-ID"
 
 #: modules_v3/family_group_report/report.bak:10 modules_v3/individual_ext_report/report.bak:12 modules_v3/individual_report/report.bak:9
 msgid "Show photos?"
-msgstr "Zeige Foto?"
+msgstr "Zeige Fotos?"
 
 #: modules_v3/family_group_report/report.bak:11
 msgid "Print basic events when blank?"
-msgstr "Druck des Ereignisses wenn leer?"
+msgstr "Druck der Basis-Ereignisse wenn leer?"
 
 #: modules_v3/family_group_report/report.bak:14 modules_v3/individual_ext_report/report.bak:15
 msgid "Use colors"
