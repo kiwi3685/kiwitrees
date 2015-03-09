@@ -664,7 +664,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Show
 	private function show() {
-		global $controller, $TEXT_DIRECTION;
+		global $controller;
 		$root = WT_Filter::get('rootid', WT_REGEX_XREF); // the first pid
 		$root_person = $this->get_person($root);
 
