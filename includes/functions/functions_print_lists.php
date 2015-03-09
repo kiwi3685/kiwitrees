@@ -1002,6 +1002,23 @@ function format_fam_table($datalist, $option='') {
 // print a table of sources
 function format_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
+
+	// Count the number of linked records.  These numbers include private records.
+	// It is not good to bypass privacy, but many servers do not have the resources
+	// to process privacy for every record in the tree code courtesy Greg Roach, webtrees.net
+	$count_individuals = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'SOUR' GROUP BY l_to"
+	)->fetchAssoc();
+	$count_families = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'SOUR' GROUP BY l_to"
+	)->fetchAssoc();
+	$count_media = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'SOUR' GROUP BY l_to"
+	)->fetchAssoc();
+	$count_notes = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##other` JOIN `##link` ON l_from = o_id AND l_file = o_file AND o_type = 'NOTE' AND l_type = 'SOUR' GROUP BY l_to"
+	)->fetchAssoc();
+	
 	$html = '';
 	$table_id = "ID".(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1103,19 +1120,21 @@ function format_sour_table($datalist) {
 		$html .= '</td>';
 		// Sortable name
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
+		$key = $source->getXref() . '@' . WT_GED_ID;
+		print_r($key);
 		//-- Author
 		$html .= '<td>'. highlight_search_hits(htmlspecialchars($source->getAuth())). '</td>';
 		//-- Linked INDIs
-		$num=count($source->fetchLinkedIndividuals());
+		$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
-		$num=count($source->fetchLinkedfamilies());
+		$num = array_key_exists($key, $count_families) ? $count_families[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
-		$num=count($source->fetchLinkedMedia());
+		$num = array_key_exists($key, $count_media) ? $count_media[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked NOTEs
-		$num=count($source->fetchLinkedNotes());
+		$num = array_key_exists($key, $count_notes) ? $count_notes[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
@@ -1212,16 +1231,16 @@ function format_note_table($datalist) {
 		//-- Shared Note name
 		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>';
 		//-- Linked INDIs
-		$num=count($note->fetchLinkedIndividuals());
+		$num = count($note->fetchLinkedIndividuals());
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
-		$num=count($note->fetchLinkedfamilies());
+		$num = count($note->fetchLinkedfamilies());
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
-		$num=count($note->fetchLinkedMedia());
+		$num = count($note->fetchLinkedMedia());
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked SOURs
-		$num=count($note->fetchLinkedSources());
+		$num = count($note->fetchLinkedSources());
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
@@ -1253,6 +1272,14 @@ function format_note_table($datalist) {
 // print a table of repositories
 function format_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
+
+	// Count the number of linked records.  These numbers include private records.
+	// It is not good to bypass privacy, but many servers do not have the resources
+	// to process privacy for every record in the tree code courtesy Greg Roach, webtrees.net
+	$count_sources = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'REPO' GROUP BY l_to"
+	)->fetchAssoc();
+
 	$html = '';
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1317,8 +1344,9 @@ function format_repo_table($repos) {
 			}
 		}	
 		$html .= '</td>';
+		$key = $repo->getXref() . '@' . WT_GED_ID;
 		//-- Linked SOURces
-		$num=count($repo->fetchLinkedSources());
+		$num = array_key_exists($key, $count_sources) ? $count_sources[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
