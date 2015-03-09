@@ -5450,6 +5450,11 @@ div.widget {
 	font-size: 3em;
 }
 
+.widget_quicklinks table {
+	width: 100%;
+}
+
+
 .widget_quicklinks td {
 	text-align: center;
 	vertical-align: top;
