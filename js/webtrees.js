@@ -1493,7 +1493,7 @@ function widget_bar() {
 	});
 
 	jQuery("#widget-button").click(function(){
-		jQuery("#widget-button").toggleClass("icon-widget icon-widget-close");
+		jQuery("#widget-button").toggleClass("fa-bars fa-times");
 	});
 }
 

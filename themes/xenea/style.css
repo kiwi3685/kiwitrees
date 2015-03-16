@@ -113,8 +113,8 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 /* Menu icons */
 #main-menu > li { background-image:url(images/sprites-top-menu.png); background-repeat:no-repeat; width:80px; text-align:center; height:28px; line-height:28px; text-indent:0;}
 #main-menu li li { background-image:url(images/sprites-sub-menu.png); background-repeat:no-repeat; height:23px;left:auto; line-height:23px; text-align:left; text-indent:26px;width:100%}
-#main-menu > li#widget-button.icon-widget {background-image:url(images/icon-widget.png);}
-#main-menu > li#widget-button.icon-widget-close {background-image:url(images/icon-widget-close.png);}
+#main-menu > li#widget-button.fa-bars {background-image:url(images/icon-widget.png);}
+#main-menu > li#widget-button.fa-times {background-image:url(images/icon-widget-close.png);}
 
 #main-menu li#menu-fancy_treeview {
 	background: url(images/menu-ftv.png) no-repeat 50% 25%;
@@ -1293,7 +1293,7 @@ dd .editlink, dd .deletelink {float:right;}
 a.icon-darrow:hover        {width:20px;height:20px;background-image:url(images/darrow2.png);}
 .icon-ddarrow              {width:20px;height:20px;background-image:url(images/ddarrow.png);}
 .icon-edit_indi            {width:25px;height:25px;background-image:url(images/edit_indi.png);}
-.icon-email                {width:16px;height:16px;background-image:url(images/email.png);}
+.fa-envelope-o                {width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list             {width:25px;height:25px;background-image:url(images/sfamily.png);}
 .icon-googlemaps           {width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-help                 {cursor:help;width:15px;height:15px;background-image:url(images/help.png);}
@@ -1333,7 +1333,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(images/l
 a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/rarrow2.png);}
 .icon-rdarrow              {width:20px;height:20px;background-image:url(images/rdarrow.png);}
 .icon-reminder             {width:15px;height:12px;background-image:url(images/reminder.png);}
-.icon-remove               {width:16px;height:16px;background-image:url(images/delete.png);}
+.fa-times               {width:16px;height:16px;background-image:url(images/delete.png);}
 .icon-repo-list            {width:25px;height:25px;background-image:url(images/repository.png);}
 .icon-repository           {width:25px;height:25px;background-image:url(images/repository.png);}
 .icon-resn-confidential    {width:16px;height:16px;background-image:url(images/resn_confidential.png);}
@@ -1347,8 +1347,8 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/r
 .icon-sex_f_9x9            {width:9px;height:9px;background-image:url(images/sex_f_9x9.png);}
 .icon-sex_m_15x15          {width:15px;height:15px;background-image:url(images/sex_m_15x15.png);}
 .icon-sex_m_9x9            {width:9px;height:9px;background-image:url(images/sex_m_9x9.png);}
-.icon-sex_u_15x15          {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
-.icon-sex_u_9x9            {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
+.fa-user          {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
+.fa-user            {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
 .icon-sfamily              {width:25px;height:25px;background-image:url(images/sfamily.png);}
 .icon-source               {width:25px;height:25px;background-image:url(images/source.png);}
 .icon-source-list          {width:25px;height:25px;background-image:url(images/source.png);}
@@ -1357,7 +1357,7 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/r
 .icon-uarrow               {width:20px;height:20px;background-image:url(images/uarrow.png);}
 a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/uarrow2.png);}
 .icon-udarrow              {width:20px;height:20px;background-image:url(images/udarrow.png);}
-.icon-user_add             {width:25px;height:25px;background-image:url(images/user_add.png);}
+.fa-user             {width:25px;height:25px;background-image:url(images/user_add.png);}
 .icon-warning              {width:17px;height:17px;background-image:url(images/warning.png);}
 .icon-wiki                 {width:16px;height:16px;background-image:url(images/w_button.png);}
 .icon-zoomin               {width:25px;height:25px;background-image:url(images/zoomin.png);}
@@ -2049,7 +2049,7 @@ div.widget {
 	padding: 5px;
 	text-align: initial;
 	vertical-align: top;
-	width: 260px;
+	width: 250px;
 }
 
 #nocensus_result li ul {

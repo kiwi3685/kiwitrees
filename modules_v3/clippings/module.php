@@ -288,7 +288,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
 						?>
 						</td>
-						<td class="optionbox center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>" class="icon-remove" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
+						<td class="optionbox center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>" class="fa-times" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
 					</tr>
 					<?php
 					}
@@ -464,7 +464,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						$out .= ' ('.$record->getLifeSpan().')';
 					}
 					$out .= '</a>';
-					$out .= '<a class="icon-remove remove_cart" href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;remove='.$xref.'&amp;pid='.$pid.'" title="'.WT_I18N::translate('Remove').'"></a>';
+					$out .= '<a class="fa-times remove_cart" href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;remove='.$xref.'&amp;pid='.$pid.'" title="'.WT_I18N::translate('Remove').'"></a>';
 					$out .='</li>';
 				}
 			}

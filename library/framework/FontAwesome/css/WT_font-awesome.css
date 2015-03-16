@@ -179,8 +179,7 @@
 .fa-search:before {
   content: "\f002";
 }
-.fa-envelope-o:before,
-.icon-email:before {
+.fa-envelope-o:before {
   content: "\f003";
 }
 .fa-heart:before {
@@ -193,9 +192,9 @@
   content: "\f006";
 }
 .fa-user:before,
-.icon-user_add:before,
-.icon-sex_u_15x15:before,
-.icon-sex_u_9x9:before,
+.fa-user:before,
+.fa-user:before,
+.fa-user:before,
 .unknown_gender:before,
 .icon-myaccount:before {
   content: "\f007";
@@ -217,10 +216,7 @@
 .icon-yes:before {
   content: "\f00c";
 }
-.fa-times:before,
-.icon-widget-close:before,
-.icon-remove:before,
-.icon-delete-grey:before {
+.fa-times:before {
   content: "\f00d";
 }
 .fa-search-plus:before,
@@ -790,7 +786,7 @@
 .fa-navicon:before,
 .fa-reorder:before,
 .fa-bars:before,
-.icon-widget:before {
+.fa-bars:before {
   content: "\f0c9";
 }
 .fa-list-ul:before {

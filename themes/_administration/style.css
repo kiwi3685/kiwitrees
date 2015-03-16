@@ -614,8 +614,8 @@ table#story_table {width:100%}
 .icon-ldarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-backward */ 
 .icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-forward */ 
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */ 
-.icon-delete-grey		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-times */ 
-.icon-email				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */ 
+.fa-times		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-times */ 
+.fa-envelope-o				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */ 
 .icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */ 
 .icon-yes				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-check */ 
 .icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 0.9em; margin: 0 3px; } /* fa-male */

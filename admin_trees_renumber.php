@@ -58,7 +58,7 @@ $xrefs = WT_DB::prepare(
 	))->fetchAssoc();
 
 echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
-if (WT_Filter::get('go')) {
+if (WT_Filter::get('continue')) {
 	foreach ($xrefs as $old_xref=>$type) {
 		WT_DB::exec("START TRANSACTION");
 		WT_DB::exec(
@@ -274,7 +274,7 @@ if ($xrefs) {
 		<div id="renumber">
 			<form method="GET" action="', WT_SCRIPT_NAME, '">
 				<p>', WT_I18N::translate('You can renumber this family tree.'), '
-				<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go') ,'"></p>
+				<input type="submit" name="continue" value="', /* I18N: button label */ WT_I18N::translate('continue') ,'"></p>
 				<input type="hidden" name="ged" value="', WT_Filter::escapeUrl(WT_GEDCOM), '">
 			</form>
 			<p class="warning">', WT_I18N::translate('Caution!  This may take a long time.  Be patient.'), '</p>

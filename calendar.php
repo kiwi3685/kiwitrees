@@ -440,7 +440,7 @@ case 'today':
 	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('Males'), '"></i> ', $males, '&nbsp;&nbsp;&nbsp;&nbsp;';
 	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('Males'), '"></i> ', $females, '&nbsp;&nbsp;&nbsp;&nbsp;';
 	if (count($indis)!=$males+$females) {
-		echo '<i class="icon-sex_u_15x15" title="', WT_I18N::translate('All People'), '"></i> ', count($indis)-$males-$females;
+		echo '<i class="fa-user" title="', WT_I18N::translate('All People'), '"></i> ', count($indis)-$males-$females;
 	}
 	echo '</td>';
 	echo '<td class="descriptionbox">', WT_I18N::translate('Total families: %s', count($fams)), '</td>';
@@ -583,7 +583,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 				++$females;
 				break;
 			default:
-				echo '<i class="icon-sex_u_9x9" title="',  WT_I18N::translate_c('unknown gender', 'Unknown'), '"></i>';
+				echo '<i class="fa-user" title="',  WT_I18N::translate_c('unknown gender', 'Unknown'), '"></i>';
 				break;
 			}
 			echo '<div class="indent">', $facts, '</div>', $tag2;

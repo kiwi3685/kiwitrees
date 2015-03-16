@@ -145,7 +145,7 @@ echo 				'</ul>
 				'<div id="topMenu" class="ui-state-active">
 					<ul id="main-menu">';
 						if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php') {
-							echo '<li id="widget-button" class="fa fa-fw fa-2x icon-widget"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
+							echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
 						}
 						foreach (WT_MenuBar::getMainMenus() as $menu) {
 							echo $menu->getMenuAsList();
