@@ -315,7 +315,7 @@ textarea:required:invalid {
 
 .title {
 	margin: 0 10px;
-	font-size: 48px;
+	font-size: 40px;
 	position: absolute;
 }
 
@@ -726,7 +726,7 @@ textarea:required:invalid {
 }
 
 .alpha_index {
-	color: #999;
+	color: #aaa;
 }
 
 .person_box,
@@ -914,7 +914,7 @@ table.center {
 }
 
 .tab_cell_inactive_empty a {
-	color: #999;
+	color: #aaa;
 }
 
 .tab_active_bottom {
@@ -2986,6 +2986,17 @@ div[id^="caldiv"] td {
 }
 
 /* ========= jquery-ui.custom.css changes ============ */
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background: none;
+	background-color: #eee;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	background: none;
+	background-color: #aaa;
+	border-bottom: 2px solid #555;
+}
+
 .ui-tabs,
 .ui-tabs .ui-tabs-nav li a {
 	padding: 0;
@@ -5400,14 +5411,10 @@ div.widget {
 }	
 
 #widget-bar .widget .blockheader {
-	background: #a9adbc;
-	font-size: 1em;
-	font-weight: 900;
-	line-height: 16px;
+	background: #aaa;
 	border-bottom: 2px solid #555;
-	overflow: hidden;
-	padding: 2px 5px;
-	color: #555;
+	padding: 5px;
+	color: #FFF;
 	text-transform: uppercase;
 }
 
