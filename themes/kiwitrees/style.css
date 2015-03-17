@@ -212,6 +212,8 @@ textarea:required:invalid {
 	float: right;
 	font-size: 13px;
 	font-weight: 600;
+	margin: 10px 0;
+	padding: 0;
 	text-transform: uppercase;
 	white-space: nowrap;
 }
@@ -308,27 +310,18 @@ textarea:required:invalid {
 
 /* ======= Header styles ========== */
 #header {
-	height: 48px;
-	position: relative;
-	margin: 0 0 15px 0;
+	height: 50px;
 }
 
 .title {
-	clear: both;
-	color: #555;
-	font-family: inherit;
-	left: 0;
-	margin: 10px 10px 20px;
+	margin: 0 10px;
+	font-size: 48px;
 	position: absolute;
-	right: auto;
-	width: 60%;
-	visibility: hidden;
 }
 
 .header_search {
-	clear: both;
 	float: right;
-	margin: 0 10px;
+	margin: 5px 10px;
 }
 
 .header_search input[type="search"] {
@@ -515,7 +508,7 @@ textarea:required:invalid {
 	margin: 0 auto;
 	padding: 12px;
 	position: relative;
-	top: 130px;
+	top: 110px;
 	z-index: 0;
 }
 
@@ -3000,7 +2993,8 @@ div[id^="caldiv"] td {
 
 .ui-tabs .ui-tabs-nav li a span {
 	display: block;
-	padding: .5em 1em;
+	padding: .5em;
+	font-size: 90%;
 }
 
 .ui-widget-content #outer_pages_container a {

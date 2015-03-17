@@ -72,9 +72,9 @@ $this
 
 		jQuery("#bigtext span").bigText({
 			fontSizeFactor: 1,
-		    maximumFontSize: 48,
+		    maximumFontSize: 40,
 		    limitingDimension: "both",
-		    verticalAlign: "top"
+		    verticalAlign: "middle"
 		});
 
 	');
@@ -107,6 +107,16 @@ if ($view!='simple') {
 echo '	<div id="main_content">
 			<div id="navbar">
 				<div id="header">
+					<div id="bigtext" class="title" dir="auto">',
+						WT_TREE_TITLE, '
+					</div>
+					<div class="header_search">
+						<form action="search.php" method="post">
+							<input type="hidden" name="action" value="general">
+							<input type="hidden" name="topsearch" value="yes">
+							<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">
+						</form>
+					</div>
 					<ul id="extra-menu" class="makeMenu">';
 						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 echo						'<li>
@@ -131,16 +141,6 @@ echo						'<li>
 							}
 						}
 echo 				'</ul>
-					<div id="bigtext" class="title" dir="auto">',
-						WT_TREE_TITLE, '
-					</div>
-					<div class="header_search">
-						<form action="search.php" method="post">
-							<input type="hidden" name="action" value="general">
-							<input type="hidden" name="topsearch" value="yes">
-							<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">
-						</form>
-					</div>
 				</div>', // <div id="header">
 				'<div id="topMenu" class="ui-state-active">
 					<ul id="main-menu">';
