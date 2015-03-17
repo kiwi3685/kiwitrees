@@ -114,6 +114,43 @@ class WT_Menu {
 				if ($this->onclick !== null) {
 					$link .= ' onclick="'.$this->onclick.'"';
 				}
+				$html='<a class="button '.$this->iconclass.'" data-dropdown="drop" href="#" data-dropdown="hover1" data-options="is_hover:true; hover_timeout:5000">'.$this->label.'</a>';
+			} else {
+				$html='<a class="button '.$this->iconclass.'" data-dropdown="drop" href="#" data-dropdown="hover1" data-options="is_hover:true; hover_timeout:5000">'.$this->label.'</a>';
+			}
+		} else {
+			$html=$this->label;
+		}
+		if ($this->submenus) {
+			$html.='<ul class="f-dropdown"  id="hover1">';
+			foreach ($this->submenus as $submenu) {
+				if ($submenu) {
+					if ($submenu->submenus) {
+						$submenu->iconclass.=' icon_arrow';
+					}
+					$html.=$submenu->getMenuAsList();
+				}
+			}
+			$html.='</ul>';
+		}
+//		if ($this->id) {
+//			return '<li id="'.$this->id.'">'.$html.'</li>';
+//		} else {
+			return $html;
+//		}
+	}
+
+	// Get the menu as a simple list - for accessible interfaces, search engines and CSS menus
+	function getOtherMenuAsList() {
+		$link = '';
+		if ($this->link) {
+			if ($this->target !== null) {
+				$link .= ' target="'.$this->target.'"';
+			}
+			if ($this->link=='#') {
+				if ($this->onclick !== null) {
+					$link .= ' onclick="'.$this->onclick.'"';
+				}
 				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
 			} else {
 				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
@@ -122,7 +159,7 @@ class WT_Menu {
 			$html=$this->label;
 		}
 		if ($this->submenus) {
-			$html.='<ul>';
+			$html.='<ul class="dropdown">';
 			foreach ($this->submenus as $submenu) {
 				if ($submenu) {
 					if ($submenu->submenus) {
@@ -134,9 +171,9 @@ class WT_Menu {
 			$html.='</ul>';
 		}
 		if ($this->id) {
-			return '<li id="'.$this->id.'">'.$html.'</li>';
+			return '<li class="has-dropdown" id="'.$this->id.'">'.$html.'</li>';
 		} else {
-			return '<li>'.$html.'</li>';
+			return '<li class="has-dropdown">'.$html.'</li>';
 		}
 	}
 

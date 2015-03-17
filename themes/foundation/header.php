@@ -32,6 +32,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 define('WT_JQUERY_BIGTEXT',  WT_THEME_URL.'js/jquery-bigtext.js');
+define('WT_FOUDATION', WT_STATIC_URL, '/library/framework/Foundation/js/foundation/foundation.js');
+define('WT_FOUDATION_TOPBAR', WT_STATIC_URL, '/library/framework/Foundation/js/foundation/foundation.topbar.js');
 
 // This theme uses the jQuery “colorbox” plugin to display images
 $this
@@ -40,6 +42,7 @@ $this
 	->addExternalJavascript (WT_JQUERY_AUTOSIZE)
 	->addExternalJavascript (WT_JQUERY_BIGTEXT)
 	->addInlineJavascript ('
+		$(document).foundation();
 		widget_bar();
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
@@ -92,14 +95,13 @@ echo '
 		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL), '
 		<title>', htmlspecialchars($title), '</title>
 		<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">
-		<link rel="stylesheet" href="', WT_STATIC_URL, '/library/framework/Foundation/css/normalize.css">
-		<link rel="stylesheet" href="', WT_STATIC_URL, '/library/framework/Foundation/css/foundation.css">
+		<link rel="stylesheet" href="', WT_STATIC_URL, 'library/framework/Foundation/css/normalize.css">
+		<link rel="stylesheet" href="', WT_STATIC_URL, 'library/framework/Foundation/css/foundation.css">
+		<link rel="stylesheet" href="', WT_STATIC_URL, 'library/framework/FontAwesome/css/font-awesome.css">
+
 		<link rel="stylesheet" type="text/css" href="', WT_THEMES_DIR, '_administration/jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">
 		<link rel="stylesheet" href="', WT_THEME_URL, 'app.css">
 		<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">
-		<!--[if IE]>
-			<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">
-		<![endif]-->
 	</head>';
 
 if ($view!='simple') {echo '<body id="body">';
@@ -107,63 +109,70 @@ if ($view!='simple') {echo '<body id="body">';
 
 // begin header section
 if ($view!='simple') {
-echo '	<div id="main_content">
-			<div id="navbar">
-				<div id="header">
-					<ul id="extra-menu" class="makeMenu">';
-						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-echo						'<li>
-								<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
-									WT_I18N::translate('Pending changes'), '
-								</a>
-							</li>';
+	?>
+		<nav class="top-bar" data-topbar role="navigation">
+			<ul class="title-area">
+				<li class="name">
+					<h1><a href="#"><?php echo WT_TREE_TITLE; ?> </a></h1>
+				</li>
+				<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+			</ul>
+
+			<section class="top-bar-section">
+				<!-- Right Nav Section -->
+				<ul class="right">
+					<?php if (WT_USER_CAN_ACCEPT && exists_pending_change()) { ?>
+						<li>
+							<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">
+								<?php echo WT_I18N::translate('Pending changes'); ?>
+							</a>
+						</li>
+					<?php }
+					foreach (WT_MenuBar::getOtherMenus() as $menu) {
+						if (strpos($menu, WT_I18N::translate('Login')) && !WT_USER_ID && (array_key_exists('login_block', WT_Module::getInstalledModules('%')))) {
+							$class_name	= 'login_block_WT_Module';
+							$module		=  new $class_name; ?>
+							<li class="has-dropdown">
+								<a href="#">', (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')), '</a>
+								<ul class="dropdown" id="login_popup">
+									<li>', $module->getBlock('login_block'), '</li>
+								</ul>
+							</li>
+						<?php } else {
+							echo $menu->getOtherMenuAsList();
 						}
-						foreach (WT_MenuBar::getOtherMenus() as $menu) {
-							if (strpos($menu, WT_I18N::translate('Login')) && !WT_USER_ID && (array_key_exists('login_block', WT_Module::getInstalledModules('%')))) {
-								$class_name	= 'login_block_WT_Module';
-								$module		=  new $class_name;
-								echo '
-								<li>
-									<a href="#">', (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')), '</a>
-									<ul id="login_popup">
-										<li>', $module->getBlock('login_block'), '</li>
-									</ul>
-								</li>';
-							} else {
-								echo $menu->getMenuAsList();
-							}
-						}
-echo 				'</ul>
-					<div id="bigtext" class="title" dir="auto">',
-						WT_TREE_TITLE, '
-					</div>
-					<div class="header_search">
-						<form action="search.php" method="post">
-							<input type="hidden" name="action" value="general">
-							<input type="hidden" name="topsearch" value="yes">
-							<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">
+					} ?>
+					<li class="has-form">
+						<form class="row collapse" action="search.php" method="post">
+							<div class="large-8 small-9 columns">
+								<input type="text" name="query" placeholder=" <?php echo WT_I18N::translate('Search');?> " dir="auto">
+								<input type="hidden" name="action" value="general">
+								<input type="hidden" name="topsearch" value="yes">
+							</div>
+							<div class="large-4 small-3 columns">
+								<a href="#" class="alert button expand">Search</a>
+							</div>
 						</form>
-					</div>
-				</div>', // <div id="header">
-				'<div id="topMenu" class="ui-state-active">
-					<ul id="main-menu">';
-						if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php') {
-							echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
-						}
-						foreach (WT_MenuBar::getMainMenus() as $menu) {
-							echo $menu->getMenuAsList();
-						}
-echo				'</ul>
-					<select id="nav-select" onChange="window.location.href=this.value">
-						<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
-						foreach (WT_MenuBar::getMainMenus() as $menu) {
-							echo $menu->getMenuAsSelect();
-						}
-echo				'</select>
-				</div>', // <div id="topMenu">
-				WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-			'</div>'; // <div id="navbar">
-}
+					</li>
+				</ul>
+			</section>
+
+			<div class="icon-bar" role="navigation">
+				<?php if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php') { ?>
+				<a class="" aria-labelledby="#itemlabel1">
+					<i class="fa fa-bars"></i>
+				</a>
+				<?php }
+				foreach (WT_MenuBar::getMainMenus() as $menu) {
+					echo $menu->getMenuAsList();
+				} ?>
+			</div>
+
+
+				<?php WT_FlashMessages::getHtmlMessages();  // Feedback from asynchronous actions ?>
+		</nav>
+<?php }
 // begin content section
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
 
