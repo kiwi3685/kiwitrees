@@ -404,7 +404,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	private function config() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle($this->getTitle())
