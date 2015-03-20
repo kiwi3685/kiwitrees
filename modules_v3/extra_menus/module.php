@@ -339,9 +339,11 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	private function config() {
 		require_once 'includes/functions/functions_edit.php';
 
-		$controller=new WT_Controller_Page();
-		$controller->setPageTitle($this->getTitle());
-		$controller->pageHeader();
+		$controller = new WT_Controller_Page();
+		$controller
+				->requireAdminLogin()
+				->setPageTitle($this->getTitle())
+				->pageHeader();
 
 		$items=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS menu_title, bs2.setting_value AS menu_address".

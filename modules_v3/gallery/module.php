@@ -112,6 +112,8 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			$this->moveup();
 			$this->config();
 			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 
