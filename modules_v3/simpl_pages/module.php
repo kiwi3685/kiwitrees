@@ -387,6 +387,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 
 		$controller=new WT_Controller_Page();
 		$controller
+			->requireAdminLogin()
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addInlineJavascript('jQuery("#pages_tabs").tabs();');
