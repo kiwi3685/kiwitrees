@@ -133,11 +133,11 @@ class WT_Menu {
 			}
 			$html.='</ul>';
 		}
-//		if ($this->id) {
-//			return '<li id="'.$this->id.'">'.$html.'</li>';
-//		} else {
+		if ($this->id) {
+			return '<li id="'.$this->id.'">'.$html.'</li>';
+		} else {
 			return $html;
-//		}
+		}
 	}
 
 	// Get the menu as a simple list - for accessible interfaces, search engines and CSS menus
