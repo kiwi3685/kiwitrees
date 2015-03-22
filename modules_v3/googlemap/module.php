@@ -405,7 +405,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			->pageHeader();
 
 		$stats		= new WT_Stats(WT_GEDCOM);
-		$countries	= $stats->getAllCountries();
+		$countries	= $stats->get_all_countries();
 		$action		= safe_REQUEST($_REQUEST, 'action');
 
  		$countrySelected = WT_Filter::get('countrySelected', null, 'Countries');
