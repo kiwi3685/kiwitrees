@@ -760,7 +760,7 @@ dt { float:left; font-weight:bold; margin-right:10px; clear:both;}
 #pending h3 {text-align:center;margin-top:20px;}
 
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
-.user_favorites_block .person_box .details2, .user_favorites_block .person_boxF.details2, .user_favorites_block .person_boxNN.details2 {min-height:40px;}
+.widget_favorites_block .person_box .details2, .widget_favorites_block .person_boxF.details2, .widget_favorites_block .person_boxNN.details2 {min-height:40px;}
 .action_header, .action_headerF, .action_headerNN {margin-bottom:3px;}
 
 /* ============= Statistics block ============ */
@@ -782,7 +782,7 @@ dt { float:left; font-weight:bold; margin-right:10px; clear:both;}
 .add_fav_ref input {margin:0 5px;}
 
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
-.gedcom_favorites_block,.user_favorites_block, 
+.gedcom_favorites_block,.widget_favorites_block, 
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
 #family-table .person_box, #family-table .person_boxF, #family-table .person_boxNN,

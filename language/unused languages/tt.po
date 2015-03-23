@@ -19676,11 +19676,11 @@ msgstr "Көндәлектән бу язманы бетерергәме?"
 msgid "Add a new Journal entry"
 msgstr "Көндәлеккә яңа язма өстәргә"
 
-#: modules_v3/user_favorites/module.php:35
+#: modules_v3/widget_favorites/module.php:35
 msgid "Display and manage a user’s favorite pages."
 msgstr "Кулланучының фаворит битләрен күрсәтергә / көйләргә"
 
-#: modules_v3/user_favorites/module.php:78
+#: modules_v3/widget_favorites/module.php:78
 #, php-format
 msgid "“%s” has been added to your favorites."
 msgstr "“%s” сезнең фаворитларга өстәлде"

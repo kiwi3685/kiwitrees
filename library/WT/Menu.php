@@ -114,9 +114,9 @@ class WT_Menu {
 				if ($this->onclick !== null) {
 					$link .= ' onclick="'.$this->onclick.'"';
 				}
-				$html='<a class="button '.$this->iconclass.'" data-dropdown="drop" href="#" data-dropdown="hover1" data-options="is_hover:true; hover_timeout:5000">'.$this->label.'</a>';
+				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
 			} else {
-				$html='<a class="button '.$this->iconclass.'" data-dropdown="drop" href="#" data-dropdown="hover1" data-options="is_hover:true; hover_timeout:5000">'.$this->label.'</a>';
+				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
 			}
 		} else {
 			$html=$this->label;
@@ -136,7 +136,7 @@ class WT_Menu {
 		if ($this->id) {
 			return '<li id="'.$this->id.'">'.$html.'</li>';
 		} else {
-			return $html;
+			return '<li>'.$html.'</li>';
 		}
 	}
 

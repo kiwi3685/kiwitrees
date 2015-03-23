@@ -351,7 +351,7 @@ td.descriptionbox a {color:#fff;}/* this keeps the tag color the same when it is
 
 /* ============== person box details ============== */
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
-.gedcom_favorites_block, .user_favorites_block, 
+.gedcom_favorites_block, .widget_favorites_block, 
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
 #family-table .person_box, #family-table .person_boxF, #family-table .person_boxNN,
@@ -586,7 +586,7 @@ html[dir='rtl'] #medialist-page .lb-menu li li {text-align:right;}
 
 /* ======= Favourites block ========== */
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
-.user_favorites_block .person_box .details2, .user_favorites_block .person_boxF.details2, .user_favorites_block .person_boxNN.details2 {min-height:40px;}
+.widget_favorites_block .person_box .details2, .widget_favorites_block .person_boxF.details2, .widget_favorites_block .person_boxNN.details2 {min-height:40px;}
 .add_fav_head {font-weight:900;margin:5px 0;}
 .add_fav_head i {margin:0 5px 1px 5px;}
 .add_fav_ref label {display:inline-block;min-width:100px;}

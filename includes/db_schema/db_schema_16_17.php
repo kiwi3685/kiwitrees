@@ -36,7 +36,7 @@ self::exec("INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, p
 
 // Add the initial default block settings
 
-self::exec("INSERT IGNORE INTO `##block` (user_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'todays_events'), (-1, 'main', 2, 'user_messages'), (-1, 'main', 3, 'user_favorites'), (-1, 'side', 1, 'user_welcome'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'upcoming_events'), (-1, 'side', 4, 'logged_in')");
+self::exec("INSERT IGNORE INTO `##block` (user_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'todays_events'), (-1, 'main', 2, 'user_messages'), (-1, 'main', 3, 'widget_favorites'), (-1, 'side', 1, 'user_welcome'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'upcoming_events'), (-1, 'side', 4, 'logged_in')");
 
 // Add a "default" tree, to store default settings
 self::exec("INSERT IGNORE INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (-1, 'DEFAULT_TREE')");

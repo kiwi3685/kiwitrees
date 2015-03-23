@@ -19189,11 +19189,11 @@ msgstr ""
 msgid "Add a new Journal entry"
 msgstr ""
 
-#: modules_v3/user_favorites/module.php:35
+#: modules_v3/widget_favorites/module.php:35
 msgid "Display and manage a user’s favorite pages."
 msgstr ""
 
-#: modules_v3/user_favorites/module.php:78
+#: modules_v3/widget_favorites/module.php:78
 #, php-format
 msgid "“%s” has been added to your favorites."
 msgstr ""

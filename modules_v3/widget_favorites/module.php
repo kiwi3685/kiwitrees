@@ -47,7 +47,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		switch($modAction) {
 		case 'menu-add-favorite':
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages
-			$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+			$record = WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
 			if (WT_USER_ID && $record->canDisplayName()) {
 				self::addFavorite(array(
 					'user_id'  =>WT_USER_ID,
@@ -73,7 +73,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		$action=safe_GET('action');
 		switch ($action) {
 		case 'deletefav':
-			$favorite_id=safe_GET('favorite_id');
+			$favorite_id = safe_GET('favorite_id');
 			if ($favorite_id) {
 				self::deleteFavorite($favorite_id);
 			}
@@ -113,7 +113,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 			break;
 		}
 
-		$block=get_block_setting($widget_id, 'block', false);
+		$block = get_block_setting($widget_id, 'block', false);
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -128,12 +128,12 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		$show_full = 1;
 		$PEDIGREE_FULL_DETAILS = 1;
 
-		$userfavs = $this->getFavorites($ctype=='user' ? WT_USER_ID : WT_GED_ID);
+		$userfavs = $this->getFavorites(WT_USER_ID);
 		if (!is_array($userfavs)) $userfavs = array();
 
-		$id=$this->getName().$widget_id;
-		$class=$this->getName().'_block';
-		$title=$this->getTitle();
+		$id		= $this->getName() . $widget_id;
+		$class	= $this->getName() . '_block';
+		$title	= $this->getTitle();
 
 		if (WT_USER_ID) {
 			$controller
@@ -146,7 +146,8 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		if ($userfavs) {
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
-				$removeFavourite = '<a class="font9" href="index.php?ctype='.$ctype.'&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
+				$xref =  $controller->record->getXref();
+				$removeFavourite = '<a href="' . WT_SCRIPT_NAME . '?pid=' . $xref . '&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
 				if ($favorite['type']=='URL') {
 					$content .= '<div id="boxurl'.$key.'.0" class="person_box">';
 					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
@@ -190,34 +191,36 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		}
 		if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
 			$uniqueID = (int)(microtime() * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
-			$content .= '<div class="add_fav_head">';
-			$content .= '<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>';
-			$content .= '</div>';
-			$content .= '<div id="add_fav'.$uniqueID.'" style="display: none;">';
-			$content .= '<form name="addfavform" method="get" action="index.php">';
-			$content .= '<input type="hidden" name="action" value="addfav">';
-			$content .= '<input type="hidden" name="ctype" value="'.$ctype.'">';
-			$content .= '<input type="hidden" name="ged" value="'.WT_GEDCOM.'">';
-			$content .= '<div class="add_fav_ref">';
-			$content .= '<input type="radio" name="fav_category" value="record" checked="checked" onclick="jQuery(\'#gid'.$uniqueID.'\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
-			$content .= '<label for="gid">'.WT_I18N::translate('Enter a Person, Family, or Source ID').'</label>';
-			$content .= '<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">';
-			$content .= ' '.print_findindi_link('gid'.$uniqueID);
-			$content .= ' '.print_findfamily_link('gid'.$uniqueID);
-			$content .= ' '.print_findsource_link('gid'.$uniqueID);
-			$content .= ' '.print_findrepository_link('gid'.$uniqueID);
-			$content .= ' '.print_findnote_link('gid'.$uniqueID);
-			$content .= ' '.print_findmedia_link('gid'.$uniqueID);
-			$content .= '</div>';
-			$content .= '<div class="add_fav_url">';
-			$content .= '<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid'.$uniqueID.'\').attr(\'disabled\',\'disabled\').val(\'\');">';
-			$content .= '<input type="text" name="url" id="url" size="20" value="" placeholder="'.WT_Gedcom_Tag::getLabel('URL').'" disabled="disabled"> ';
-			$content .= '<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="'.WT_I18N::translate('Title').'" disabled="disabled">';
-			$content .= '<p>'.WT_I18N::translate('Enter an optional note about this favorite').'</p>';
-			$content .= '<textarea name="favnote" rows="6" cols="50"></textarea>';
-			$content .= '</div>';
-			$content .= '<input type="submit" value="'.WT_I18N::translate('Add').'">';
-			$content .= '</form></div>';
+			$content .= '
+				<div class="add_fav_head">
+					<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>
+				</div>
+				<div id="add_fav'.$uniqueID.'" style="display: none;">
+					<form name="addfavform" method="get" action="index.php">
+						<input type="hidden" name="action" value="addfav">
+						<input type="hidden" name="ctype" value="'.$ctype.'">
+						<input type="hidden" name="ged" value="'.WT_GEDCOM.'">
+						<div class="add_fav_ref">
+							<input type="radio" name="fav_category" value="record" checked="checked" onclick="jQuery(\'#gid'.$uniqueID.'\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">
+							<label for="gid">'.WT_I18N::translate('Enter a Person, Family, or Source ID').'</label><br>
+							<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">'
+							. print_findindi_link('gid'.$uniqueID)
+							. print_findfamily_link('gid'.$uniqueID)
+							. print_findsource_link('gid'.$uniqueID)
+							. print_findrepository_link('gid'.$uniqueID)
+							. print_findnote_link('gid'.$uniqueID)
+							. print_findmedia_link('gid'.$uniqueID) . '
+						</div>
+						<div class="add_fav_url">
+							<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid'.$uniqueID.'\').attr(\'disabled\',\'disabled\').val(\'\');">
+							<input type="text" name="url" id="url" size="20" value="" placeholder="'.WT_Gedcom_Tag::getLabel('URL').'" disabled="disabled"> 
+							<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="'.WT_I18N::translate('Title').'" disabled="disabled">
+							<p>'.WT_I18N::translate('Enter an optional note about this favorite').'</p>
+							<textarea name="favnote" rows="6" cols="50"></textarea>
+						</div>
+						<input type="submit" value="'.WT_I18N::translate('Add').'">
+					</form>
+				</div>';
 		}
 
 		if ($template) {
@@ -234,6 +237,16 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
+		return false;
+	}
+
+	// Implement class WT_Module_Block
+	public function isUserBlock() {
+		return false;
+	}
+
+	// Implement class WT_Module_Block
+	public function isGedcomBlock() {
 		return false;
 	}
 

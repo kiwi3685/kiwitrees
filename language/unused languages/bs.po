@@ -19682,11 +19682,11 @@ msgstr "Da li ste sigurni da želite izbrisati ovu stavku iz dnevnika?"
 msgid "Add a new Journal entry"
 msgstr "Dodaj novu stavku u dnevik"
 
-#: modules_v3/user_favorites/module.php:35
+#: modules_v3/widget_favorites/module.php:35
 msgid "Display and manage a user’s favorite pages."
 msgstr "Prikaži i upravljaj korisnikovim omiljenim stanicama."
 
-#: modules_v3/user_favorites/module.php:78
+#: modules_v3/widget_favorites/module.php:78
 #, php-format
 msgid "“%s” has been added to your favorites."
 msgstr "“%s” dodan/a u  omiljene."

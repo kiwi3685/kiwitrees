@@ -3674,7 +3674,7 @@ class WT_Stats {
 			$content = $block->getBlock($GEDCOM);
 		}
 		else if (WT_USER_ID) {
-			$class_name = 'user_favorites_WT_Module';
+			$class_name = 'widget_favorites_WT_Module';
 			$block = new $class_name;
 			$content = $block->getBlock($GEDCOM);
 		}
@@ -3685,7 +3685,7 @@ class WT_Stats {
 	static function userFavorites() {return self::_getFavorites(false);}
 
 	static function totalGedcomFavorites() {return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));}
-	static function totalUserFavorites() {return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));}
+	static function totalUserFavorites() {return count(widget_favorites_WT_Module::getFavorites(WT_USER_ID));}
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Other blocks                                                              //

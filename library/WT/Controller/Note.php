@@ -109,13 +109,13 @@ class WT_Controller_Note extends WT_Controller_GedcomRecord {
 		}
 
 		// add to favorites
-		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+		if (array_key_exists('widget_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
 				'#',
 				'menu-note-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("jQuery.post('module.php?mod=widget_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$menu->addSubmenu($submenu);
 		}
 

@@ -233,9 +233,9 @@ class WT_MenuBar {
 						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
 						'menu-chart-relationship'
 					);
-					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+					if (array_key_exists('widget_favorites', WT_Module::getActiveModules())) {
 						// Add a submenu showing relationship from this person to each of our favorites
-						foreach (user_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
+						foreach (widget_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
 							if ($favorite['type']=='INDI' && $favorite['gedcom_id'] == WT_GED_ID) {
 								$person=WT_Person::getInstance($favorite['gid']);
 								if ($person instanceof WT_Person) {
@@ -466,17 +466,17 @@ class WT_MenuBar {
 	public static function getFavoritesMenu() {
 		global $REQUIRE_AUTHENTICATION, $controller, $SEARCH_SPIDER;
 
-		$show_user_favs=WT_USER_ID               && array_key_exists('user_favorites',   WT_Module::getActiveModules());
+		$show_user_favs=WT_USER_ID               && array_key_exists('widget_favorites',   WT_Module::getActiveModules());
 		$show_gedc_favs=!$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
 
 		if ($show_user_favs && !$SEARCH_SPIDER) {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
 				$favorites=array_merge(
 					gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
-					user_favorites_WT_Module::getFavorites(WT_USER_ID)
+					widget_favorites_WT_Module::getFavorites(WT_USER_ID)
 				);
 			} else {
-				$favorites=user_favorites_WT_Module::getFavorites(WT_USER_ID);
+				$favorites=widget_favorites_WT_Module::getFavorites(WT_USER_ID);
 			}
 		} else {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
@@ -512,7 +512,7 @@ class WT_MenuBar {
 		if ($show_user_favs) {
 			if (isset($controller->record) && $controller->record instanceof WT_GedcomRecord) {
 				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
+				$submenu->addOnclick("jQuery.post('module.php?mod=widget_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
 				$menu->addSubMenu($submenu);
 			} 
 		}
