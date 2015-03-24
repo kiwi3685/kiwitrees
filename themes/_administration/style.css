@@ -803,3 +803,12 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #colors_palette {list-style:none; float:left; font-weight:900; margin-bottom:20px; overflow:hidden;}
 #colors_palette li {float:left; font-weight:normal; line-height:30px; width:25%;}
 .theme-active {font-weight:900; border: 1px solid #ff0000;}
+
+/* Styling for calendar_utilities module */
+#calendar_utilities .container {padding-top:30px;}
+#calendar_utilities .label, #calendar_utilities .yesno {float:left;white-space:nowrap;}
+#calendar_utilities .label {clear:left;width:200px;}
+#calendar_utilities .yesno {width:150px;}
+#calendar_utilities p {clear:left;margin-top:30px;}
+#calendar_utilities h3 a {color:#e17009;}
+#calendar_utilities form {width:100%; margin:auto 30px;}

@@ -1893,3 +1893,41 @@ div.widget {
 }
 
 /* ------------------ */
+/* Styles for calendar_utilities module */
+
+#utilities-container {
+	margin:auto;
+	width:90%;
+}
+
+#utilities-container h2 {
+	text-align:center
+}
+
+#utilities-container i {
+	vertical-align: middle;
+	margin: 0 10px;
+	padding-bottom: 4px;
+}
+
+#utilities-container input[type="submit"], #utilities-container input[type="reset"],#utilities-container input[type="button"] {
+  padding: 10px 30px;
+  margin: 0 20px;
+  width: auto;
+}
+
+#utilities-container #relationships input[type="button"] {
+  padding: 0 3px;
+  margin: 0;
+  width: auto;
+}
+
+#plugin_container{
+	background: url(../images/calendar_background.png);
+	background-size: cover;
+}
+
+#main-menu li ul li#menu-calendar_utilities {
+	background:url(../images/utilities.png) no-repeat left 0;;
+}
+/* ------------------ */

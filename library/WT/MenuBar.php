@@ -392,6 +392,12 @@ class WT_MenuBar {
 		//-- viewyear sub menu
 		$submenu = new WT_Menu(WT_I18N::translate('Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year', 'menu-calendar-year');
 		$menu->addSubmenu($submenu);
+		//-- utilities sub menu
+		if (array_key_exists('calendar_utilities', WT_Module::getActiveModules())) {
+			$submenu = new WT_Menu(WT_I18N::translate('Utilities'), 'module.php?mod=calendar_utilities&amp;mod_action=show', 'menu-calendar_utilities');
+			$menu->addSubmenu($submenu);
+		}
+
 		return $menu;
 	}
 
