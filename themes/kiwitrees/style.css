@@ -1142,7 +1142,7 @@ a:hover .nameZoom {
 	text-decoration: none;
 	font-size: 11px;
 	background-color: #edf7fd;
-	border: solid #555 1px;
+	border: 1px solid #555;
 	white-space: nowrap;
 	visibility: hidden;
 	position: absolute;
@@ -1175,14 +1175,14 @@ a:hover .nameZoom {
 }
 
 .journal_box {
-	padding: 3pt;
-	border: thin solid #AAA;
+	border-bottom: 1px solid #555;
 	overflow: visible;
+	padding: 3px;
 }
 
 .news_box {
 	background-color: #edf7fd;
-	border-top: solid #555 1px;
+	border-top: 1px solid #555;
 	padding: 8px;
 }
 

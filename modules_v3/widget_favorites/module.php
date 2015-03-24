@@ -70,6 +70,8 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		self::updateSchema(); // make sure the favorites table has been created
 
+		$url = $_SERVER['REQUEST_URI'];
+
 		$action=safe_GET('action');
 		switch ($action) {
 		case 'deletefav':
@@ -80,16 +82,16 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 			unset($_GET['action']);
 			break;
 		case 'addfav':
-			$gid     =safe_GET('gid');
-			$favnote =safe_GET('favnote');
-			$url     =safe_GET('url', WT_REGEX_URL);
-			$favtitle=safe_GET('favtitle');
+			$gid      = safe_GET('gid');
+			$favnote  = safe_GET('favnote');
+			$url      = safe_GET('url', WT_REGEX_URL);
+			$favtitle = safe_GET('favtitle');
 
 			if ($gid) {
-				$record=WT_GedcomRecord::getInstance($gid);
+				$record = WT_GedcomRecord::getInstance($gid);
 				if ($record && $record->canDisplayDetails()) {
 					self::addFavorite(array(
-						'user_id'  =>$ctype=='user' ? WT_USER_ID : null,
+						'user_id'  =>WT_USER_ID,
 						'gedcom_id'=>WT_GED_ID,
 						'gid'      =>$record->getXref(),
 						'type'     =>$record->getType(),
@@ -100,7 +102,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 				}
 			} elseif ($url) {
 				self::addFavorite(array(
-					'user_id'  =>$ctype=='user' ? WT_USER_ID : null,
+					'user_id'  =>WT_USER_ID,
 					'gedcom_id'=>WT_GED_ID,
 					'gid'      =>null,
 					'type'     =>'URL',
@@ -146,8 +148,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 		if ($userfavs) {
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
-				$xref =  $controller->record->getXref();
-				$removeFavourite = '<a href="' . WT_SCRIPT_NAME . '?pid=' . $xref . '&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
+				$removeFavourite = '<a href="' . $url . '&amp;action=deletefav&amp;favorite_id='.$key.'" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a> ';
 				if ($favorite['type']=='URL') {
 					$content .= '<div id="boxurl'.$key.'.0" class="person_box">';
 					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
@@ -195,8 +196,8 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 				<div class="add_fav_head">
 					<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>
 				</div>
-				<div id="add_fav'.$uniqueID.'" style="display: none;">
-					<form name="addfavform" method="get" action="index.php">
+				<div id="add_fav'.$uniqueID.'" style="display: none;">' . $url . '
+					<form name="addfavform" method="get" action="' . $url . '">
 						<input type="hidden" name="action" value="addfav">
 						<input type="hidden" name="ctype" value="'.$ctype.'">
 						<input type="hidden" name="ged" value="'.WT_GEDCOM.'">

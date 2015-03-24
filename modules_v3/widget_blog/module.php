@@ -50,11 +50,13 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement class WT_Module_Block
 	public function getWidget($widget_id, $template=true, $cfg=null) {
-		global $ctype;
+		global $ctype, $controller;
+
+		$url = $_SERVER['REQUEST_URI'];
 
 		switch (safe_GET('action')) {
 		case 'deletenews':
-			$news_id=safe_GET('news_id');
+			$news_id = safe_GET('news_id');
 			if ($news_id) {
 				deleteNews($news_id);
 			}
@@ -64,7 +66,7 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -75,28 +77,34 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 		$title='';
 		$title.=$this->getTitle();
 		$content = '';
+
 		if (count($usernews)==0) {
 			$content .= WT_I18N::translate('You have not created any Journal items.');
 		}
+
 		foreach ($usernews as $key=>$news) {
-			$day = date('j', $news['date']);
-			$mon = date('M', $news['date']);
-			$year = date('Y', $news['date']);
-			$content .= "<div class=\"journal_box\">";
-			$content .= "<div class=\"news_title\">".$news['title'].'</div>';
-			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
-			if ($news["text"]==strip_tags($news["text"])) {
-				// No HTML?
-				// PHP5.3 $news["text"]=nl2br($news["text"], false);
-				$news["text"]=nl2br($news["text"]);
-			}
-			$content .= $news["text"]."<br><br>";
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$key.", '_blank', news_window_specs); return false;\">".WT_I18N::translate('Edit')."</a> | ";
-			$content .= "<a href=\"index.php?action=deletenews&amp;news_id={$key}&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this Journal entry?')."');\">".WT_I18N::translate('Delete')."</a><br>";
-			$content .= "</div><br>";
+			$day	= date('j', $news['date']);
+			$mon	= date('M', $news['date']);
+			$year	= date('Y', $news['date']);
+
+			$content .= '
+				<div class="journal_box">
+					<div class="news_title">' . $news['title'] . '</div>
+					<div class="news_date">' . format_timestamp($news['date']) . '</div>';
+					if ($news["text"]==strip_tags($news["text"])) {
+						// No HTML?
+						$news["text"]=nl2br($news["text"], false);
+					}
+			$content .= $news["text"] . '<br><br>
+					<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $key . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | 
+					<a href="' . $url . '?action=deletenews&amp;news_id=' . $key . '\'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this Journal entry?') . '\');">' . WT_I18N::translate('Delete') . '</a>
+				</div>';
 		}
 		if (WT_USER_ID) {
-			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', news_window_specs); return false;\">".WT_I18N::translate('Add a Journal entry')."</a>";
+			$content .= '
+				<p>
+					<a href="#" onclick="window.open(\'editnews.php?user_id=\'+' . WT_USER_ID . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Add a Journal entry') . '</a>
+				</p>';
 		}
 
 		if ($template) {
