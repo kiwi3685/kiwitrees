@@ -340,7 +340,7 @@ textarea:required:invalid {
 /* ======= Main menu styles ========== */
 #topMenu {
 	border-bottom: 5px solid #555;
-	height: 50px;
+	line-height: 50px;
 	width: 100%;
 }
 
@@ -348,7 +348,7 @@ textarea:required:invalid {
 	padding: 0;
 	margin: 0;
 	list-style-type: none;
-	line-height: 50px;
+	height: 50px;
 	vertical-align: middle;
 	text-transform: uppercase;
 }
@@ -5923,26 +5923,17 @@ div.widget {
  */
 
 /* RESPOSIVE layout adjustments */
-/* iPad */
-@media only screen
-and (min-device-width : 768px) 
-and (max-device-width : 1024px)  { 
-	body {
-		font-size:12px;
-	}
-}
-/* iPhone */
 @media only screen
 and (min-device-width : 320px) 
-and (max-device-width : 480px)  { 
+and (max-device-width : 1024px)  { 
 	#topMenu #main-menu {
 		display:none;
 	}
 	#topMenu #nav-select {
-		display: block;
-		height: 50px;
-		margin: 0 auto;
-		width: 70%;
+		display: inline-block;
+		height: 44px;
+		margin: auto;
+		vertical-align: bottom;
 	}
 	#topMenu #nav-select select {
 		font-size: 30px;
