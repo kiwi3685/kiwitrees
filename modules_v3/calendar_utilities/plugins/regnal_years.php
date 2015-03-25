@@ -48,7 +48,7 @@ $html.='
 		#regnal	.note{font-size:11px; font-style:italic; padding:5px; white-space:normal; font-weight:normal;}
 	</style>
 	<div id="regnal">
-		<p>Dates based on regnal years refer to the year of the current monarch\'s reign and usually have the format "year + monarch" (e.g. "4 Mary").  This page will take a date in regnal years and return an ordinary date. For instance, if you enter 6/1 1 Elizabeth I, you will get the year 1559 because June 1st in her first regnal year occurred in 1559.</p>
+		<p>Dates based on regnal years refer to the year of the current monarch\'s reign and usually have the format "year + monarch" (e.g. "4 Mary").  This page will take a date in regnal years and return an ordinary date. For instance, if you enter 6/11 Elizabeth I, Regnal year 1, you will get the year 1559 because June 1st in her first regnal year occurred in 1559.</p>
 		<div id="acknowledgement">
 			<p>This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
 			<p>
@@ -114,41 +114,41 @@ $html.='
 			<label class="main">Enter the Monarch and Regnal Year:
 				<label class="secondary">Monarch:</label> 
 				<select name="Monarch" size="1">
-					<option selected value="WilliamI">WilliamI
-					<option value="WilliamII">WilliamII
-					<option value="HenryI">HenryI
+					<option selected value="William I">William I
+					<option value="WilliamII">William II
+					<option value="HenryI">Henry I
 					<option value="Stephen">Stephen
-					<option value="HenryII">HenryII
-					<option value="RichardI">RichardI
+					<option value="HenryII">Henry II
+					<option value="RichardI">Richard I
 					<option value="John">John
-					<option value="HenryIII">HenryIII
-					<option value="EdwardI">EdwardI
-					<option value="EdwardII">EdwardII
-					<option value="EdwardIII">EdwardIII
-					<option value="RichardII">RichardII
-					<option value="HenryIV">HenryIV
-					<option value="HenryV">HenryV
-					<option value="HenryVI">HenryVI
-					<option value="EdwardIV">EdwardIV
-					<option value="EdwardV">EdwardV
-					<option value="RichardIII">RichardIII
-					<option value="HenryVII">HenryVII
-					<option value="HenryVIII">HenryVIII
-					<option value="EdwardVI">EdwardVI
+					<option value="HenryIII">Henry III
+					<option value="EdwardI">Edward I
+					<option value="EdwardII">Edward II
+					<option value="EdwardIII">Edward III
+					<option value="RichardII">Richard II
+					<option value="HenryIV">Henry IV
+					<option value="HenryV">Henry V
+					<option value="HenryVI">Henry VI
+					<option value="EdwardIV">Edward IV
+					<option value="EdwardV">Edward V
+					<option value="RichardIII">Richard III
+					<option value="HenryVII">Henry VII
+					<option value="HenryVIII">Henry VIII
+					<option value="EdwardVI">Edward VI
 					<option value="Jane">Jane
 					<option value="Mary">Mary
-					<option value="ElizabethI">ElizabethI
-					<option value="JamesI">JamesI
-					<option value="CharlesI">CharlesI
-					<option value="CharlesII">CharlesII
-					<option value="JamesII">JamesII
+					<option value="ElizabethI">Elizabeth I
+					<option value="JamesI">James I
+					<option value="CharlesI">Charles I
+					<option value="CharlesII">Charles II
+					<option value="JamesII">James II
 					<option value="WilliamandMary">William and Mary (William III)
 					<option value="Anne">Anne
 					<option value="GeorgeI">George I
 					<option value="GeorgeII">George II
 					<option value="GeorgeIII">George III
 					<option value="GeorgeIV">George IV
-					<option value="WilliamIV">William IV
+					<option value="William IV">William IV
 					<option value="Victoria">Victoria
 					<option value="EdwardVII">Edward VII
 					<option value="GeorgeV">George V
@@ -188,9 +188,9 @@ $html.='
 		}
 
 
-		if (Monarch == "WilliamI"){
+		if (Monarch == "William I"){
 			if (regnalyear > 21){
-				alert("William I only reigned for 21 years")
+				alert("William  I only reigned for 21 years")
 				regnalyear = "error"
 			}
 			regnalyear = regnalyear + 1065
@@ -205,9 +205,9 @@ $html.='
 		}
 
 	//alert(regnalyear)
-		if (Monarch == "WilliamII"){
+		if (Monarch == "William II"){
 			if (regnalyear > 13){
-				alert("William II only reigned for 13 years")
+				alert("William  II only reigned for 13 years")
 				regnalyear = "error"
 			}
 			regnalyear = regnalyear + 1086
@@ -608,9 +608,9 @@ $html.='
 			}
 		}
 
-	if (Monarch == "WilliamandMary"){
+	if (Monarch == "William andMary"){
 			if (regnalyear > 14){
-				alert("William only reigned for 14 years (the first six with Mary)")
+				alert("William  only reigned for 14 years (the first six with Mary)")
 				return
 			}
 			regnalyear = regnalyear + 1688
@@ -704,9 +704,9 @@ $html.='
 			}
 		}
 		
-		if (Monarch == "WilliamIV"){
+		if (Monarch == "William IV"){
 			if (regnalyear > 7){
-				alert("William IV only reigned for 7 years.")
+				alert("William  IV only reigned for 7 years.")
 				return
 			}
 			regnalyear = regnalyear + 1829

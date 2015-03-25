@@ -262,7 +262,6 @@ $help2 = 'http://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Calend
 // DISPLAY
 
 $html.= '
-	<link rel="stylesheet" href="'.WT_MODULES_DIR.$this->getName().'/'.WT_THEME_URL.'style.css" type="text/css">
 	<style>
 		#ecclesiastic h1 {font-size:15px; font-weight:bold;}
 		#ecclesiastic {color:#555; font-size:13px;}

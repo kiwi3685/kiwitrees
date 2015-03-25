@@ -296,7 +296,7 @@ $html.='
 		.hol {background-color:#D0AFAF; color:#000000;}
 	</style>
 	<div id="yearly">
-		<form action="'.$_SERVER["PHP_SELF"].'?mod=simpl_utilities&amp;mod_action=show#calculator" method="post">
+		<form action="'.$_SERVER["PHP_SELF"].'?mod=calendar_utilities&amp;mod_action=show#yearly_calendar" method="post">
 			<h1>Choose Year:</h1>
 			<select name="year">';
 			for ($i=1970; $i<=2038; $i++) {//mktime() can only be used betwee 1970 and 2038
