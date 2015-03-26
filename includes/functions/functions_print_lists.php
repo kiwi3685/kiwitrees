@@ -37,8 +37,8 @@ function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
 	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
-	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-	if ($option=='MARR_PLAC') return;
+	$SHOW_EST_LIST_DATES = get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
+	if ($option == 'MARR_PLAC') return;
 	$html = '';
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
@@ -80,7 +80,7 @@ function format_indi_table($datalist, $option='') {
 					/* 22 DEAT      */ { visible: false },
 					/* 23 TREE      */ { visible: false }
 				],
-				sorting: [['.($option=='sosa'?'4, "asc"':'1, "asc"').']],
+				sorting: [['.($option == 'sosa'?'4, "asc"':'1, "asc"').']],
 				displayLength: 20,
 				pagingType: "full_numbers"
 			});
@@ -295,7 +295,7 @@ function format_indi_table($datalist, $option='') {
 				</tfoot>
 				<tbody>';
 
-	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
+	$d100y = new WT_Date(date('Y')-100);  // 100 years ago
 	$unique_indis=array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
@@ -475,9 +475,9 @@ function format_indi_table($datalist, $option='') {
 		//-- Filtering by death date
 		$html .= '<td>';
 		// Died in last 100 years?  Died?  Not dead?
-		if (WT_Date::Compare($death_date, $d100y)>0) {
+		if (WT_Date::Compare($death_dates[0], $d100y)>0) {
 			$html .= 'Y100';
-		} elseif ($death_date->minJD() || $person->isDead()) {
+		} elseif ($death_dates[0]->minJD() || $person->isDead()) {
 			$html .= 'YES';
 		} else {
 			$html .= 'N';
