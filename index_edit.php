@@ -27,14 +27,14 @@
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 
 // Only one of $user_id and $gedcom_id should be set
-$user_id=safe_REQUEST($_REQUEST, 'user_id');
+$user_id = safe_REQUEST($_REQUEST, 'user_id');
 if ($user_id) {
-	$gedcom_id=null;
+	$gedcom_id = null;
 } else {
-	$gedcom_id=safe_REQUEST($_REQUEST, 'gedcom_id');
+	$gedcom_id = safe_REQUEST($_REQUEST, 'gedcom_id');
 }
 
 // Only an admin can edit the "default" page
@@ -42,30 +42,30 @@ if ($user_id) {
 if (
 	$gedcom_id<0 && !WT_USER_IS_ADMIN ||
 	$gedcom_id>0 && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||
-	$user_id && WT_USER_ID!=$user_id && !WT_USER_IS_ADMIN
+	$user_id && WT_USER_ID!= $user_id && !WT_USER_IS_ADMIN
 ) {
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.location.reload();');
 	exit;
 }
 
-$action=safe_GET('action');
+$action = safe_GET('action');
 
 if (isset($_REQUEST['main'])) {
-	$main=$_REQUEST['main'];
+	$main = $_REQUEST['main'];
 } else {
-	$main=array();
+	$main = array();
 }
 if (isset($_REQUEST['right'])) {
-	$right=$_REQUEST['right'];
+	$right = $_REQUEST['right'];
 } else {
-	$right=array();
+	$right = array();
 }
 
 // Define all the icons we're going to use
 $IconUarrow = 'icon-uarrow';
 $IconDarrow = 'icon-darrow';
-if($TEXT_DIRECTION=='ltr') {
+if($TEXT_DIRECTION == 'ltr') {
 	$IconRarrow = 'icon-rarrow';
 	$IconLarrow = 'icon-larrow';
 	$IconRDarrow = 'icon-rdarrow';
@@ -77,26 +77,22 @@ if($TEXT_DIRECTION=='ltr') {
 	$IconLDarrow = 'icon-rdarrow';
 }
 
-$all_blocks=array();
+$all_blocks = array();
 foreach (WT_Module::getActiveBlocks() as $name=>$block) {
 	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
-		$all_blocks[$name]=$block;
+		$all_blocks[$name] = $block;
 	}
 }
 
-if ($user_id) {
-	$blocks=get_user_blocks($user_id);
-} elseif ($gedcom_id) {
-	$blocks=get_gedcom_blocks($gedcom_id);
-}
+$blocks = get_gedcom_blocks($gedcom_id);
 
-if ($action=='update') {
+if ($action == 'update') {
 	Zend_Session::writeClose();
 	foreach (array('main', 'side') as $location) {
-		if ($location=='main') {
-			$new_blocks=$main;
+		if ($location == 'main') {
+			$new_blocks = $main;
 		} else {
-			$new_blocks=$right;
+			$new_blocks = $right;
 		}
 		foreach ($new_blocks as $order=>$block_name) {
 			if (is_numeric($block_name)) {
