@@ -183,7 +183,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			set_block_setting($block_id, 'gallery_access',	  safe_POST('gallery_access',		WT_REGEX_UNSAFE));
 			set_block_setting($block_id, 'plugin',			  safe_POST('plugin',			WT_REGEX_UNSAFE));
 			$languages=array();
-			foreach (WT_I18N::installed_languages() as $code=>$name) {
+			foreach (WT_I18N::used_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
 					$languages[]=$code;
 				}

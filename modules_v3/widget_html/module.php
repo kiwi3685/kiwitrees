@@ -136,7 +136,7 @@ class widget_html_WT_Module extends WT_Module implements WT_Module_Widget {
 			set_block_setting($widget_id, 'show_timestamp', WT_Filter::postBool('show_timestamp'));
 			set_block_setting($widget_id, 'timestamp',      WT_Filter::post('timestamp'));
 			$languages=array();
-			foreach (WT_I18N::installed_languages() as $code=>$name) {
+			foreach (WT_I18N::used_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
 					$languages[]=$code;
 				}

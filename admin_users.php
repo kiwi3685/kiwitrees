@@ -45,25 +45,25 @@ $ALL_EDIT_OPTIONS=array(
 );
 
 // Form actions
-$action            =safe_GET('action',   $ALL_ACTIONS, 'listusers');
-$usrlang           =safe_POST('usrlang',  array_keys(WT_I18N::installed_languages()));
-$username          =safe_POST('username', WT_REGEX_USERNAME);
-$filter            =safe_POST('filter',   WT_REGEX_NOSCRIPT);
-$ged               =safe_POST('ged',      WT_REGEX_NOSCRIPT);
+$action				= safe_GET('action',   $ALL_ACTIONS, 'listusers');
+$usrlang			= safe_POST('usrlang',  array_keys(WT_I18N::used_languages()));
+$username			= safe_POST('username', WT_REGEX_USERNAME);
+$filter				= safe_POST('filter',   WT_REGEX_NOSCRIPT);
+$ged				= safe_POST('ged',      WT_REGEX_NOSCRIPT);
 
 // Extract form variables
-$realname          =safe_POST('realname'   );
-$pass1             =safe_POST('pass1',        WT_REGEX_PASSWORD);
-$pass2             =safe_POST('pass2',        WT_REGEX_PASSWORD);
-$emailaddress      =safe_POST('emailaddress', WT_REGEX_EMAIL);
-$user_language     =safe_POST('user_language',            array_keys(WT_I18N::installed_languages()), WT_LOCALE);
-$new_contact_method=safe_POST('new_contact_method');
-$new_comment       =safe_POST('new_comment',              WT_REGEX_UNSAFE);
-$new_auto_accept   =safe_POST_bool('new_auto_accept');
-$canadmin          =safe_POST_bool('canadmin');
-$visibleonline     =safe_POST_bool('visibleonline');
-$verified          =safe_POST_bool('verified');
-$verified_by_admin =safe_POST_bool('verified_by_admin');
+$realname			= safe_POST('realname'   );
+$pass1				= safe_POST('pass1',			WT_REGEX_PASSWORD);
+$pass2				= safe_POST('pass2',			WT_REGEX_PASSWORD);
+$emailaddress		= safe_POST('emailaddress',	WT_REGEX_EMAIL);
+$user_language		= safe_POST('user_language',	array_keys(WT_I18N::used_languages()), WT_LOCALE);
+$new_contact_method	= safe_POST('new_contact_method');
+$new_comment		= safe_POST('new_comment',	WT_REGEX_UNSAFE);
+$new_auto_accept	= safe_POST_bool('new_auto_accept');
+$canadmin			= safe_POST_bool('canadmin');
+$visibleonline		= safe_POST_bool('visibleonline');
+$verified			= safe_POST_bool('verified');
+$verified_by_admin	= safe_POST_bool('verified_by_admin');
 
 switch ($action) {
 case 'deleteuser':

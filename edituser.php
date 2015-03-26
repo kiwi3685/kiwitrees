@@ -43,7 +43,7 @@ $form_pass1         =safe_POST('form_pass1', WT_REGEX_PASSWORD);
 $form_pass2         =safe_POST('form_pass2', WT_REGEX_PASSWORD);
 $form_email         =safe_POST('form_email', WT_REGEX_EMAIL, 'email@example.com');
 $form_rootid        =safe_POST('form_rootid', WT_REGEX_XREF, WT_USER_ROOT_ID   );
-$form_language      =safe_POST('form_language', array_keys(WT_I18N::installed_languages()), WT_LOCALE );
+$form_language      =safe_POST('form_language', array_keys(WT_I18N::used_languages()), WT_LOCALE );
 $form_contact_method=safe_POST('form_contact_method');
 $form_visible_online=safe_POST_bool('form_visible_online');
 

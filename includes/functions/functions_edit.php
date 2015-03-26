@@ -275,13 +275,13 @@ function edit_field_contact_inline($name, $selected='', $controller=null) {
 
 // Print an edit control for a language field
 function edit_field_language($name, $selected='', $extra='') {
-	return select_edit_control($name, WT_I18N::installed_languages(), null, $selected, $extra);
+	return select_edit_control($name, WT_I18N::used_languages(), null, $selected, $extra);
 }
 
 // An inline-editing version of edit_field_language()
 function edit_field_language_inline($name, $selected=false, $controller=null) {
 	return select_edit_control_inline(
-		$name, WT_I18N::installed_languages(), null, $selected, $controller
+		$name, WT_I18N::used_languages(), null, $selected, $controller
 	);
 }
 

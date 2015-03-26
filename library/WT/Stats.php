@@ -984,13 +984,13 @@ class WT_Stats {
 			return '';
 		}
 		// Get the country names for each language
-		$country_to_iso3166=array();
+		$country_to_iso3166 = array();
 		foreach (WT_I18N::installed_languages() as $code=>$lang) {
 			WT_I18N::init($code);
-			$countries=self::get_all_countries();
+			$countries = self::get_all_countries();
 			foreach (self::iso3166() as $three=>$two) {
-				$country_to_iso3166[$three]=$two;
-				$country_to_iso3166[$countries[$three]]=$two;
+				$country_to_iso3166[$three] = $two;
+				$country_to_iso3166[$countries[$three]] = $two;
 			}
 		}
 		WT_I18N::init(WT_LOCALE);

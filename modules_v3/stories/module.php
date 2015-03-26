@@ -269,7 +269,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				set_block_setting($block_id, 'title', safe_POST('title', WT_REGEX_UNSAFE)); // allow html
 				set_block_setting($block_id, 'story_body',  safe_POST('story_body', WT_REGEX_UNSAFE)); // allow html
 				$languages = array();
-				foreach (WT_I18N::installed_languages() as $code => $name) {
+				foreach (WT_I18N::used_languages() as $code => $name) {
 					if (safe_POST_bool('lang_'.$code)) {
 						$languages[] = $code;
 					}

@@ -124,7 +124,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			set_block_setting($block_id, 'header',  safe_POST('header',  WT_REGEX_UNSAFE));
 			set_block_setting($block_id, 'faqbody', safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
 			$languages=array();
-			foreach (WT_I18N::installed_languages() as $code=>$name) {
+			foreach (WT_I18N::used_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
 					$languages[]=$code;
 				}

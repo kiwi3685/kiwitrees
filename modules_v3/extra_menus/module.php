@@ -207,7 +207,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			set_block_setting($block_id, 'menu_access',		safe_POST('menu_access',		WT_REGEX_UNSAFE));
 			set_block_setting($block_id, 'new_tab',			safe_POST('new_tab',			WT_REGEX_UNSAFE));
 			$languages=array();
-			foreach (WT_I18N::installed_languages() as $code=>$name) {
+			foreach (WT_I18N::used_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
 					$languages[]=$code;
 				}

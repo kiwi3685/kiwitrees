@@ -635,6 +635,7 @@ textarea:required:invalid {
 
 #home-page #index_main_blocks .blockheader {
 	font-size: 16px;
+	font-weight: 900;
 }
 
 #home-page #index_small_blocks .blockheader {
