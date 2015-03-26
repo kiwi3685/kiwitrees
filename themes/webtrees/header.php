@@ -68,6 +68,11 @@ global $ALL_CAPS;
 if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
 $ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
+$show_widgetbar = false;
+if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple') {
+	$show_widgetbar = true;
+}
+
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
@@ -114,7 +119,7 @@ echo		'</ul>',
 			'</div>',
 			'<div id="topMenu">',
 				'<ul id="main-menu">';
-					if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php') {
+					if ($show_widgetbar) {
 						echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">', WT_I18N::translate('Widgets'), '</span></a></li>';
 					}
 					foreach (WT_MenuBar::getMainMenus() as $menu) {
@@ -129,6 +134,6 @@ echo 	$javascript,
 	'<div id="content">';
 
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
-if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple') {
+if ($show_widgetbar) {
 	include_once 'widget-bar.php';
 }

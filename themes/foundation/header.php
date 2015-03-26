@@ -86,6 +86,11 @@ global $ALL_CAPS;
 if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
 $ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
+$show_widgetbar = false;
+if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple') {
+	$show_widgetbar = true;
+}
+
 echo '
 	<!DOCTYPE html>
 	<html ', WT_I18N::html_markup(), '>
@@ -159,7 +164,7 @@ if ($view!='simple') {
 			</section>
 
 			<div class="icon-bar" role="navigation">
-				<?php if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php') { ?>
+				<?php if ($show_widgetbar) { ?>
 				<a class="" aria-labelledby="#itemlabel1">
 					<i class="fa fa-bars"></i>
 				</a>
@@ -177,6 +182,6 @@ if ($view!='simple') {
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
 
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'visitor' or above
-if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple') {
+if ($show_widgetbar) {
 	include_once 'widget-bar.php';
 }
