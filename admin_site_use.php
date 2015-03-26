@@ -49,35 +49,29 @@ function siteMedia() {
 	return	WT_I18N::number($count);
 }
 
+$db_size = WT_I18N::number(db_size());
+$dir_size = WT_I18N::number(directory_size());
+$total_size = WT_I18N::number(db_Size() + directory_size());
+
 ?>
 
 <div id="size">
 	<h3><?php echo WT_I18N::translate('All trees'); ?></h3>
 	<ul class="server_stats">
 		<li>
-			<span><?php echo WT_I18N::translate('Individuals'); ?></span>
-			<span class="filler">&nbsp;</span>
-			<span><?php echo siteIndividuals(); ?></span>
+			<?php echo WT_I18N::translate('%s Individuals', siteIndividuals()); ?>
 		</li>
 		<li>
-			<span><?php echo WT_I18N::translate('Media objects'); ?></span>
-			<span class="filler">&nbsp;</span>
-			<span><?php echo siteMedia(); ?></span>
+			<?php echo WT_I18N::translate('%s Media objects', siteMedia()); ?>
 		</li>
 		<li>
-			<span>Your database size is currently</span>
-			<span class="filler"></span>
-			<span><?php echo WT_I18N::number(db_size()); ?> MB</span>
+			<?php echo WT_I18N::translate('Your database size is currently %s MB', $db_size); ?>
 		</li>
 		<li>
-			<span>Your files are currently using</span>
-			<span class="filler"></span>
-			<span><?php echo WT_I18N::number(directory_size()); ?> MB</span>
+			<?php echo WT_I18N::translate('Your files including media items are currently using %s MB', $dir_size); ?>
 		</li>
 		<li>
-			<span>Total server space used is therefore</span>
-			<span class="filler"></span>
-			<span><?php echo WT_I18N::number(db_Size() + directory_size()); ?> MB</span>
+			<?php echo WT_I18N::translate('Total server space used is therefore %s MB', $total_size); ?>
 		</li>
 	</ul>
 </div>
