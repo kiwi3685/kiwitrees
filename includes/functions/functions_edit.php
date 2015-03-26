@@ -195,7 +195,7 @@ function two_state_checkbox($name, $is_checked=0, $extra='') {
 function edit_language_checkboxes($field_prefix, $languages) {
 	echo '<table>';
 	$i=0;
-	foreach (WT_I18N::installed_languages() as $code=>$name) {
+	foreach (WT_I18N::used_languages() as $code=>$name) {
 		$content = '<input type="checkbox" name="'.$field_prefix.$code.'" id="'.$field_prefix.$code.'"';
 		if (strpos(",{$languages},", ",{$code},")!==false) {
 			$content .= 'checked="checked"';

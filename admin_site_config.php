@@ -51,6 +51,10 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 	4 => WT_I18N::translate('Choose user defined welcome text typed below'),
 );
 
+if (WT_Filter::post('action') == 'languages') {
+	WT_Site::preference('LANGUAGES', implode(',', WT_Filter::postArray('LANGUAGES')));
+}
+
 ?>
 <div id="site-config">
 	<div id="tabs">
@@ -63,6 +67,9 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 			</li>
 			<li>
 				<a href="#login"><span><?php echo WT_I18N::translate('Login'); ?></span></a>
+			</li>
+			<li>
+				<a href="#lang"><span><?php echo WT_I18N::translate('Languages'); ?></span></a>
 			</li>
 		</ul>
 		<div id="site">
@@ -177,6 +184,48 @@ $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 					<td><?php echo edit_field_yes_no_inline('site_setting-SHOW_REGISTER_CAUTION', WT_Site::preference('SHOW_REGISTER_CAUTION'), $controller); ?></td>
 				</tr>
 			</table>
+		</div>
+		<div id="lang">
+			<h2>
+				<?php echo WT_I18N::translate('Select the languages your site will use'); ?>
+			</h2>
+			<h3>
+				<?php echo WT_I18N::translate('Select all'); ?>
+				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
+			</h3>
+			<form method="post">
+				<input type="hidden" name="action" value="languages">
+				<?php
+					$code_list = WT_Site::preference('LANGUAGES');
+					if ($code_list) {
+						$languages = explode(',', $code_list);
+					} else {
+						$languages = array(
+							'ar', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en_GB', 'en_US', 'es',
+							'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'nb',
+							'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh',
+						);
+					}
+					foreach (WT_I18N::installed_languages() as $code=>$name) {
+						echo '
+							<span style="display:inline-block;width: 200px;">
+								<input class="check" type="checkbox" name="LANGUAGES[]" id="lang_' . $code . '"';
+									if (in_array($code, $languages)) {
+										echo 'checked="checked"';
+									}
+								echo ' value="' . $code . '">
+								<label for="lang_' . $code . '"> '.$name.'</label>
+							</span>
+						';
+					}
+				?>
+				<p>
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-check"></i>
+						<?php echo WT_I18N::translate('save'); ?>
+					</button>
+				</p>
+			</form>
 		</div>
 	</div>
 </div>

@@ -238,6 +238,17 @@ class WT_I18N {
 		return $installed_languages;
 	}
 
+	// List languages marked as used in site admin
+	public static function used_languages() {
+		$used_languages = array();
+		foreach (self::installed_languages() as $code => $name) {
+			if (in_array($code, explode(',', WT_Site::preference('LANGUAGES')))) {
+				$used_languages[$code] = $name;
+			}
+		}
+		return $used_languages;
+	}
+
 	// Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
 	public static function html_markup() {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');

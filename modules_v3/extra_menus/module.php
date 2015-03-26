@@ -96,7 +96,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		)->execute(array($this->getName()))->fetchOne();
 		
 		foreach ($menu_titles as $items) {
-			$languages=get_block_setting($items->block_id, 'languages');
+			$languages =get_block_setting($items->block_id, 'languages');
 			if (in_array(WT_LOCALE, explode(',', $languages))) {
 				$lang=WT_LOCALE;
 			} else {
@@ -262,7 +262,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 					</div>
 					<div id="module_lang">
 						<label for = "languages">', WT_I18N::translate('Show this menu for which languages?'), '</label>';
-							$languages=get_block_setting($block_id, 'languages');
+							$languages = get_block_setting($block_id, 'languages');
 							echo edit_language_checkboxes('lang_', $languages),'
 					</div>
 					<div id="module_save">

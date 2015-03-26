@@ -456,7 +456,7 @@ class WT_MenuBar {
 		} else {
 			$menu=new WT_Menu(WT_I18N::translate('Language'), '#', 'menu-language');
 
-			foreach (WT_I18N::installed_languages() as $lang=>$name) {
+			foreach (WT_I18N::used_languages() as $lang=>$name) {
 				$submenu=new WT_Menu($name, get_query_url(array('lang'=>$lang), '&amp;'), 'menu-language-'.$lang);
 				if (WT_LOCALE == $lang) {$submenu->addClass('','','lang-active');}
 				$menu->addSubMenu($submenu);
