@@ -329,7 +329,7 @@ switch ($type) {
 
 	case 'SOUR_PAGE': // Citation details, for a given source, that contain the search term
 		$data = array();
-		$sid  = WT_Filter::get('sid', WT_REGEX_XREF);
+		$sid  = WT_Filter::get('extra', WT_REGEX_XREF);
 		// Fetch all data, regardless of privacy
 		$rows=
 			WT_DB::prepare(

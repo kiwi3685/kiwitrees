@@ -1222,6 +1222,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	global $pid, $gender, $linkToID, $bdm, $action, $event_add, $CensDate;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
+	// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
+	static $source_element_id;
+
 	if (substr($tag, 0, strpos($tag, "CENS"))) {
 		$event_add="census_add";
 	}
@@ -1544,10 +1547,11 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				echo ' data-autocomplete-type="REPO"';
 				break;
 			case 'SOUR':
+				$source_element_id = $element_id;
 				echo ' data-autocomplete-type="SOUR"';
 				break;
 			case 'PAGE':
-				echo ' data-autocomplete-type="SOUR_PAGE"';
+				echo ' data-autocomplete-type="SOUR_PAGE" data-autocomplete-extra="' . $source_element_id . '"';
 				break;
 			case 'SURN':
 			case '_MARNM_SURN':
