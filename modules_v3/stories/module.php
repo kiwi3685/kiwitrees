@@ -118,7 +118,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		');
 		$block_ids=
 			WT_DB::prepare(
-				"SELECT ##block.block_id".
+				"SELECT DISTINCT ##block.block_id".
 				" FROM ##block, ##block_setting".
 				" WHERE ##block.module_name=?".
 				" AND ##block.block_id = ##block_setting.block_id".
