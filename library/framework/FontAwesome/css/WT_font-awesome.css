@@ -517,6 +517,7 @@
 }
 .fa-plus:before,
 .icon-button_addsource:before,
+.icon-button_addmedia:before,
 .icon-button_addnote:before,
 .icon-image_add:before {
   content: "\f067";
@@ -923,7 +924,6 @@
   content: "\f0f5";
 }
 .fa-file-text-o:before,
-.icon-button_findnote:before,
 [class^="icon-mime-text-"]:before,
 [class*=" icon-mime-text-"]:before,
 .icon-mime-text-x-gedcom:before {
@@ -1234,7 +1234,8 @@
 [class*=" icon-mime-application-"]:before {
   content: "\f15b";
 }
-.fa-file-text:before {
+.fa-file-text:before,
+.icon-button_findnote:before {
   content: "\f15c";
 }
 .fa-sort-alpha-asc:before,
@@ -1539,8 +1540,7 @@
 .icon-mime-application-pdf:before {
   content: "\f1c1";
 }
-.fa-file-word-o:before,
-.icon-button_findnote:before {
+.fa-file-word-o:before {
   content: "\f1c2";
 }
 .fa-file-excel-o:before,

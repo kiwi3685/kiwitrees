@@ -59,12 +59,16 @@ legend {
 	font-weight: bold;
 }
 
-a {
+a,
+.icon-button_keyboard,
+.icon-target {
 	color: #009afe;
 	text-decoration: none;
 }
 
-a:hover {
+a:hover,
+.icon-button_keyboard:hover,
+.icon-target:hover {
 	color: #ff0000;
 	text-decoration: none;
 }
@@ -3704,13 +3708,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/bing.png);
 }
 
-.icon-button_addmedia {
-	width: 18px;
-	height: 16px;
-	background-image: url(images/buttons/addmedia.png);
-	vertical-align: middle;
-}
-
 .icon-button_addrepository {
 	width: 15px;
 	height: 15px;
@@ -3943,13 +3940,14 @@ a.icon-udarrow:hover {
 .icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */ 
 .icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */ 
 .icon-button_addsource	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */ 
-.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;;} /* fa-book */ 
-.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;;} /* fa-icon-keyboard-o */ 
-.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;; vertical-align: top;} /* fa-globe */ 
-.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;; vertical-align: top;} /* fa-calendar */
-.icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;; vertical-align: top;} /* fa-bank */
-.icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;;} /* fa-file-word-o */
-.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;;} /* fa-camera-retro */
+.icon-button_addmedia 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */ 
+.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-book */ 
+.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-icon-keyboard-o */ 
+.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-globe */ 
+.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-calendar */
+.icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-bank */
+.icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-file-text */
+.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-camera-retro */
 .icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-map-marker */
 .icon-image_add			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-plus */ 
 .icon-image_link		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-link */ 
