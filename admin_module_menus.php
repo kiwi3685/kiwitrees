@@ -59,7 +59,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 		WT_DB::prepare(
 			"UPDATE `##module` SET menu_order=? WHERE module_name=?"
 		)->execute(array($order, $module_name));
-		$module->order=$order; // Make the new order take effect immediately
+		$module->order = $order; // Make the new order take effect immediately
 	}
 	uasort($modules, create_function('$x,$y', 'return $x->order > $y->order;'));
 }
@@ -106,8 +106,8 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 							</table>
 						</td>
 					</tr>
-				<?php
-				$order++;
+					<?php
+					$order++;
 				}
 				?>
 			</tbody>

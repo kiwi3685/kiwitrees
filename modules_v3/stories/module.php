@@ -442,16 +442,18 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 		foreach ($stories as $this->getName=>$story) {
 			$order = safe_POST('taborder-'. $story->block_id);
-			WT_DB::prepare(
-				"UPDATE `##block` SET block_order=? WHERE block_id=?"
-			)->execute(array($order, $story->block_id));
-			$story->block_order=$order; // Make the new order take effect immediately
+			if ($order) {
+				WT_DB::prepare(
+					"UPDATE `##block` SET block_order=? WHERE block_id=?"
+				)->execute(array($order, $story->block_id));
+				$story->block_order = $order; // Make the new order take effect immediately
+			}
 		}
-		uasort($stories, create_function('$x,$y', 'return $x->block_order > $y->block_order;'));
+ 		uasort($stories, create_function('$x,$y', 'return $x->block_order > $y->block_order;'));
 
 		echo
 			'<p>
-				<form method="get" action="', WT_SCRIPT_NAME ,'">',
+				<form method="post" action="', WT_SCRIPT_NAME ,'">',
 					WT_I18N::translate('Family tree'), ' ',
 					'<input type="hidden" name="mod", value="', $this->getName(), '">',
 					'<input type="hidden" name="mod_action", value="admin_config">',
