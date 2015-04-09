@@ -116,8 +116,6 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 #main-menu > li#widget-button.fa-bars {background-image:url(../images/icon-widget.png);}
 #main-menu > li#widget-button.fa-times {background-image:url(../images/icon-widget-close.png);}
 
-
-
 [dir=rtl] #main-menu  {padding-right:16px;}
 [dir=rtl] #main-menu li {float:right;}
 [dir=rtl] #main-menu li:hover > ul {right:100%;left:auto;}
@@ -320,6 +318,17 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 #link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
+
+/* General chart page styles */
+.chart_options {
+	display: inline-block;
+	margin: 0 20px 10px;
+	width: 140px;
+}
+
+.chart_options input {
+	width: 100px;
+}
 
 /* chart styles */
 #ancestry_chart {margin-left:10px;}

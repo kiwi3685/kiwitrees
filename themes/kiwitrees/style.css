@@ -115,7 +115,6 @@ img.block,
 }
 
 input,
-button,
 textarea {
 	border: 1px solid #aaa;
 	border-right-color: #555;
@@ -125,7 +124,10 @@ textarea {
 }
 
 button {
-cursor: pointer;}
+	cursor: pointer;
+	min-width: 100px;
+	padding: 6px 12px;
+}
 
 input,
 textarea {
@@ -1495,6 +1497,16 @@ a:hover .nameZoom {
 	font-weight: 600;
 }
 
+/* General chart page styles */
+.chart_options {
+	display: inline-block;
+	margin: 0 20px 10px;
+	width: 140px;
+}
+
+.chart_options input {
+	width: 100px;
+}
 
 /* Styles for the option boxes */
 /* Style for the top and bottom bar */

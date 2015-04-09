@@ -635,65 +635,50 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<form name="people" method="get" action="module.php?ged=<?php echo WT_GEDURL; ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">
-			<table class="list_table" width="555">
-				<tr>
-					<td class="descriptionbox wrap">
-						<?php echo WT_I18N::translate('Individual'); ?>
-					</td>
-					<td class="descriptionbox wrap">
-						<?php echo WT_I18N::translate('Generations'); ?>
-					</td>
-					<td class="descriptionbox wrap">
-						<?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?>
-					</td>
-					<td class="descriptionbox wrap">
-						<?php echo WT_I18N::translate('Hide lines'), help_link('PEDIGREE_MAP_hidelines','googlemap'); ?>
-					</td>
-				</tr>
-				<tr>
-					<td class="optionbox">
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
-					</td>
-					<td class="optionbox">
-						<select name="PEDIGREE_GENERATIONS">
-						<?php
-							for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
-								echo '<option value="', $p, '" ';
-								if ($p == $controller->PEDIGREE_GENERATIONS) {
-									echo 'selected="selected"';
-								}
-								echo '>', $p, '</option>';
+			<div class="chart_options">
+				<label for = "rootid" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Individual'); ?></label>
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+					<?php echo print_findindi_link('rootid'); ?>
+			</div>	
+			<div class="chart_options">
+				<label for = "pedigree_generations" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Generations'); ?></label>
+					<select name="PEDIGREE_GENERATIONS" id="pedigree_generations">
+					<?php
+						for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
+							echo '<option value="', $p, '" ';
+							if ($p == $controller->PEDIGREE_GENERATIONS) {
+								echo 'selected="selected"';
 							}
-						?>
-						</select>
-					</td>
-					<td class="optionbox">
-						<?php
-						echo '<input name="hideflags" type="checkbox"';
-						if ($hideflags) {
-							echo ' checked="checked"';
+							echo '>', $p, '</option>';
 						}
+					?>
+					</select>
+			</div>	
+			<div class="chart_options">				
+				<label for = "checkflags" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?></label>
+					<?php
+						echo '<input name="hideflags" type="checkbox" id="checkflags"';
+							if ($hideflags) {
+								echo ' checked="checked"';
+							}
 						echo '>';
-						?>
-					</td>
-					<td class="optionbox">
-						<?php
-						echo '<input name="hidelines" type="checkbox"';
-						if ($hidelines) {
-							echo ' checked="checked"';
-						}
+					?>
+			</div>	
+			<div class="chart_options">				
+				<label for = "checklines" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Hide lines'), help_link('PEDIGREE_MAP_hidelines','googlemap'); ?></label>
+					<?php
+						echo '<input name="hidelines" type="checkbox" id="checklines"';
+							if ($hidelines) {
+								echo ' checked="checked"';
+							}
 						echo '>';
-						?>
-					</td>
-				</tr>
-				<tr>
-					<td class="topbottombar" colspan="5">
-						<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-					</td>
-				</tr>
-			</table>
+					?>			
+			</div>
+ 			<div class="btn btn-primary" style="display: inline-block;">
+ 				<button type="submit" value="<?php echo WT_I18N::translate('View'); ?>"><?php echo WT_I18N::translate('View'); ?></button>
+ 			</div>
 		</form>
+		<hr style="clear:both;">
 		<!-- end of form -->
 
 		<!-- count records by type -->

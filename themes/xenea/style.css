@@ -517,6 +517,17 @@ img.block { border:none; height:20px; vertical-align:middle;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
+/* General chart page styles */
+.chart_options {
+	display: inline-block;
+	margin: 0 20px 10px;
+	width: 140px;
+}
+
+.chart_options input {
+	width: 100px;
+}
+
 #familybook_chart {margin-left:10px; }
 #familybook_chart table {border-collapse: collapse; empty-cells: show;}
 #familybook_chart td {margin:0; padding:0;}
