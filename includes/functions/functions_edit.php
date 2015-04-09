@@ -1589,7 +1589,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "document.getElementById('", $element_id, "').style.display='none'";
 		echo '</script>';
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
-		foreach (array("Unknown", "Civil", "Religious", "Partners") as $indexval => $key) {
+		foreach (array("Unknown", "Civil", "Religious", "Partners", "Common") as $indexval => $key) {
 			if ($key=="Unknown") echo "<option value=\"\"";
 			else echo "<option value=\"", $key, "\"";
 			$a=strtolower($key);

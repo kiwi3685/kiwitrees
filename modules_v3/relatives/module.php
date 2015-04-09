@@ -167,7 +167,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td class="facts_value">
 					<?php $marr_type = strtoupper($family->getMarriageType());
-					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='UNKNOWN') {
+					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
 						$marr_fact = 'MARR_' . $marr_type;
 					} else {
 						$marr_fact = 'MARR';

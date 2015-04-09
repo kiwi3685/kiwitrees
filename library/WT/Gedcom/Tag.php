@@ -50,7 +50,7 @@ class WT_Gedcom_Tag {
 		'HEAD', 'HUSB', 'IDNO', 'IMMI', 'IMMI:DATE', 'IMMI:PLAC', 'INDI', 'INFL',
 		'LANG', 'LATI', 'LEGA', 'LONG', 'MAP', 'MARB', 'MARB:DATE', 'MARB:PLAC',
 		'MARC', 'MARL', 'MARR', 'MARR:DATE', 'MARR:PLAC',
-		'MARR_CIVIL', 'MARR_PARTNERS', 'MARR_RELIGIOUS', 'MARR_UNKNOWN', 'MARS',
+		'MARR_CIVIL', 'MARR_PARTNERS', 'MARR_RELIGIOUS', 'MARR_UNKNOWN', 'MARR_COMMON', 'MARS',
 		'MEDI', 'NAME', 'NAME:FONE', 'NAME:_HEB', 'NATI', 'NATU', 'NATU:DATE', 'NATU:PLAC',
 		'NCHI', 'NICK', 'NMR', 'NOTE', 'NPFX', 'NSFX', 'OBJE', 'OCCU', 'OCCU:AGNC',
 		'ORDI', 'ORDN', 'ORDN:AGNC', 'ORDN:DATE', 'ORDN:PLAC', 'PAGE', 'PEDI', 'PHON',
@@ -257,6 +257,7 @@ class WT_Gedcom_Tag {
 		case 'MARR_PARTNERS': return WT_I18N::translate('Registered partnership');
 		case 'MARR_RELIGIOUS': return WT_I18N::translate('Religious marriage');
 		case 'MARR_UNKNOWN': return WT_I18N::translate('Marriage type unknown');
+		case 'MARR_COMMON': return WT_I18N::translate('Common law marriage');
 		case 'MARS': return /* I18N: gedcom tag MARS */ WT_I18N::translate('Marriage settlement');
 		case 'MEDI': return /* I18N: gedcom tag MEDI */ WT_I18N::translate('Media type');
 		case 'NAME':
