@@ -42,9 +42,9 @@ $controller
 			<input type="hidden" name="show_full" value="'. $controller->show_full. '">
 			<div class="chart_options">
 				<label for = "rootid" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Individual'); ?></label>
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" value="<?php echo $controller->rootid; ?>">'. 
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" value="<?php echo $controller->rootid; ?>">
 					<?php echo print_findindi_link('rootid'); ?>
-			</div>	
+			</div>
 			<div class="chart_options">
 				<label for = "pedigree_generations" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Generations'); ?></label>
 				<select name="PEDIGREE_GENERATIONS" id="pedigree_generations">

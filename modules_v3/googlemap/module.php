@@ -642,17 +642,17 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			</div>	
 			<div class="chart_options">
 				<label for = "pedigree_generations" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Generations'); ?></label>
-					<select name="PEDIGREE_GENERATIONS" id="pedigree_generations">
-					<?php
-						for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
-							echo '<option value="', $p, '" ';
-							if ($p == $controller->PEDIGREE_GENERATIONS) {
-								echo 'selected="selected"';
-							}
-							echo '>', $p, '</option>';
+				<select name="PEDIGREE_GENERATIONS" id="pedigree_generations">
+				<?php
+					for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
+						echo '<option value="', $p, '" ';
+						if ($p == $controller->PEDIGREE_GENERATIONS) {
+							echo 'selected="selected"';
 						}
-					?>
-					</select>
+						echo '>', $p, '</option>';
+					}
+				?>
+				</select>
 			</div>	
 			<div class="chart_options">				
 				<label for = "checkflags" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?></label>
