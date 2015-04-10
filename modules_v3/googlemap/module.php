@@ -637,7 +637,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			<input type="hidden" name="mod_action" value="pedigree_map">
 			<div class="chart_options">
 				<label for = "rootid" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Individual'); ?></label>
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 			</div>	
 			<div class="chart_options">

@@ -34,43 +34,54 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();');
 
-echo '
+?>
 <div id="pedigree-page">
-	<h2>'. $controller->getPageTitle(). '</h2>
-	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="show_full" value="'. $controller->show_full. '">
-		<table class="list_table">
-			<tr>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Individual'). '</th>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Generations'). '</th>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Layout'). '</th>
-				<th class="descriptionbox wrap">'. WT_I18N::translate('Show Details'). '</th>
-				<th rowspan="2" class="facts_label03"><input type="submit" value="'. WT_I18N::translate('View'). '"></th>
-			</tr>
-			<tr>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="' .$controller->rootid. '">'. 
-					print_findindi_link('rootid'). '
-				</td>
-				<td class="optionbox center">
-					<select name="PEDIGREE_GENERATIONS">';
-						for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
-							echo '<option value="', $i, '"';
-							if ($i == $controller->PEDIGREE_GENERATIONS) echo ' selected="selected"';
-							echo '>', $i, '</option>';
+	<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<!-- print the form to change the number of displayed generations -->
+		<form name="people" id="people" method="get" action="?">
+			<input type="hidden" name="show_full" value="'. $controller->show_full. '">
+			<div class="chart_options">
+				<label for = "rootid" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Individual'); ?></label>
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" value="<?php echo $controller->rootid; ?>">'. 
+					<?php echo print_findindi_link('rootid'); ?>
+			</div>	
+			<div class="chart_options">
+				<label for = "pedigree_generations" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Generations'); ?></label>
+				<select name="PEDIGREE_GENERATIONS" id="pedigree_generations">
+					<?php
+						for ($p=3; $p<=$MAX_PEDIGREE_GENERATIONS; $p++) {
+							echo '<option value="', $p, '"';
+							if ($p == $controller->PEDIGREE_GENERATIONS) echo ' selected="selected"';
+							echo '>', $p, '</option>';
 						}
-					echo '</select>
-				</td>
-				<td class="optionbox center">'. select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset). '</td>
-				<td class="optionbox center">
-					<input type="checkbox" value="';
-					if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
-					else echo '0" onclick="document.people.show_full.value=\'1\';';
-					echo '">
-				</td>
-			</tr>
-		</table>
-	</form>';
+					?>
+				</select>
+			</div>	
+			<div class="chart_options">				
+				<label for = "talloffset" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Layout'); ?></label>
+				<?php
+					echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset);
+				?>
+			</div>
+			<div class="chart_options">				
+				<label for = "show_full" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Show Details'); ?></label>
+					<?php
+						echo '<input type="checkbox" id="show_full" value="';
+							if ($controller->show_full) {
+								echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
+							} else { 
+								echo '0" onclick="document.people.show_full.value=\'1\';';
+							}
+						echo '">';
+					?>			
+			</div>
+ 			<div class="btn btn-primary" style="display: inline-block;">
+ 				<button type="submit" value="<?php echo WT_I18N::translate('View'); ?>"><?php echo WT_I18N::translate('View'); ?></button>
+ 			</div>
+		</form>
+		<hr style="clear:both;">
+		<!-- end of form -->
+<?php
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
 	exit;
