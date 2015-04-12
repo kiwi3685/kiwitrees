@@ -64,14 +64,11 @@ $controller
 				?>
 			</div>
 			<div class="chart_options">				
-				<label for = "show_full" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Show Details'); ?></label>
+				<label for = "showfull" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Show Details'); ?></label>
 					<?php
-						echo '<input type="checkbox" id="show_full" value="';
-							if ($controller->show_full) {
-								echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
-							} else { 
-								echo '0" onclick="document.people.show_full.value=\'1\';';
-							}
+						echo '<input type="checkbox" id="showfull" value="';
+							if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
+							else echo '0" onclick="document.people.show_full.value=\'1\';';
 						echo '">';
 					?>			
 			</div>
