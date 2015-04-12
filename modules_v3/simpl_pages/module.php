@@ -37,7 +37,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	}
 
 	public function getMenuTitle() {
-		$HEADER_TITLE = WT_I18N::translate(get_module_setting('simpl_pages', 'HEADER_TITLE', 'Resources'));
+		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', 'Resources'));
 		return $HEADER_TITLE;
 	}
 
@@ -221,7 +221,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 				ckeditor_WT_Module::enableEditor($controller);
 			}
 
-			echo '<div id="simpl_pages">
+			echo '<div id="' . $this->getName() . '">
 				<form name="pages" method="post" action="#">
 					<input type="hidden" name="save" value="1">
 					<input type="hidden" name="block_id" value="', $block_id, '">
@@ -332,8 +332,8 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 
 	private function show() {
 		global $controller;
-		$HEADER_TITLE = WT_I18N::translate(get_module_setting('simpl_pages', 'HEADER_TITLE', 'Resources'));
-		$HEADER_DESCRIPTION = WT_I18N::translate(get_module_setting('simpl_pages', 'HEADER_DESCRIPTION', 'These are resources'));
+		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', 'Resources'));
+		$HEADER_DESCRIPTION = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_DESCRIPTION', 'These are resources'));
 		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($HEADER_TITLE)
@@ -399,14 +399,14 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		$action = safe_POST('action');
 
 		if ($action == 'update') {
-			set_module_setting('simpl_pages', 'HEADER_TITLE',		safe_POST('NEW_HEADER_TITLE'));
-			set_module_setting('simpl_pages', 'HEADER_DESCRIPTION',	safe_POST('NEW_HEADER_DESCRIPTION', WT_REGEX_UNSAFE)); // allow html
+			set_module_setting($this->getName(), 'HEADER_TITLE',		safe_POST('NEW_HEADER_TITLE'));
+			set_module_setting($this->getName(), 'HEADER_DESCRIPTION',	safe_POST('NEW_HEADER_DESCRIPTION', WT_REGEX_UNSAFE)); // allow html
 
-			AddToLog('simpl_pages config updated', 'config');
+			AddToLog($this->getName() . ' config updated', 'config');
 		}
 
-		$HEADER_TITLE			= get_module_setting('simpl_pages', 'HEADER_TITLE', WT_I18N::translate('Resources'));
-		$HEADER_DESCRIPTION		= get_module_setting('simpl_pages', 'HEADER_DESCRIPTION', WT_I18N::translate('These are resources'));
+		$HEADER_TITLE			= get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Resources'));
+		$HEADER_DESCRIPTION		= get_module_setting($this->getName(), 'HEADER_DESCRIPTION', WT_I18N::translate('These are resources'));
 
 		$items=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS pages_title, bs2.setting_value AS pages_content".
@@ -428,7 +428,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			"SELECT MAX(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
-		echo'<div id="simpl_pages">';
+		echo'<div id="' . $this->getName() . '">';
 //			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
 			echo'<h2>' .$controller->getPageTitle(). '</h2>
 			<div id="pages_tabs">
@@ -437,7 +437,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 					<li><a href="#pages_pages"><span>', WT_I18N::translate('Pages'), '</span></a></li>
 				</ul>
 				<div id="pages_summary">
-					<form method="post" name="configform" action="module.php?mod=simpl_pages&mod_action=admin_config">
+					<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
 					<input type="hidden" name="action" value="update">
 					<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('pages_title',$this->getName()),'</div>
 					<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $HEADER_TITLE, '"></div>
