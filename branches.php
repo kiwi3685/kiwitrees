@@ -59,39 +59,41 @@ $controller
 		jQuery("#branch-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
 	');
-
-echo '
-	<div id="branches-page">
-	<form name="surnlist" id="surnlist" action="?">
-		<table class="facts_table width50">
-			<tr>
-				<td class="descriptionbox">' ,
-					WT_Gedcom_Tag::getLabel('SURN'),
-				'</td>
-				<td class="optionbox">
-					<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="' .WT_Filter::escapeHtml($surn). '" dir="auto">
-					<input type="hidden" name="ged" id="ged" value="' ,$ged, '">
-					<input type="submit" value="' ,WT_I18N::translate('View'), '">
-					<p>' ,WT_I18N::translate('Phonetic search'), '</p>
-					<p>
-						<input type="checkbox" name="soundex_std" id="soundex_std" value="1" ';
-							if ($soundex_std) echo ' checked="checked"'; echo '>
-						<label for="soundex_std">' ,WT_I18N::translate('Russell'), '</label>
-						<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" ';
-							if ($soundex_dm) echo ' checked="checked"'; echo '>
-						<label for="soundex_dm">' ,WT_I18N::translate('Daitch-Mokotoff'), '</label>
-					</p>
-				</td>
-			</tr>
-		</table>
+?>
+<div id="branches-page">
+	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<form name="surnlist" id="surnlist" method="get" action="?">
+		<div class="chart_options">
+			<label for = "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
+				<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo WT_Filter::escapeHtml($surn); ?>" dir="auto">
+		</div>
+		<div class="chart_options branches">
+			<label><?php echo WT_I18N::translate('Phonetic search'); ?></label>
+					<?php
+						echo '
+							<label class="branches" for="soundex_std">' ,WT_I18N::translate('Russell'), '</label>
+							<input type="checkbox" name="soundex_std" id="soundex_std" value="1" ';
+								if ($soundex_std) echo ' checked="checked"'; echo '>
+							<label for="soundex_dm">' ,WT_I18N::translate('Daitch-Mokotoff'), '</label>
+							<input style="margin: auto 10px; width: initial;" type="checkbox" name="soundex_dm" id="soundex_dm" value="1" ';
+								if ($soundex_dm) echo ' checked="checked"'; echo '>
+						';
+					?>
+		</div>	
+		<div class="btn btn-primary" style="display: inline-block;">
+			<button type="submit" value="<?php echo $ged; ?>"><?php echo WT_I18N::translate('View'); ?></button>
+		</div>
 	</form>
-';
+	<hr style="clear:both;">
+	<!-- end of form -->
 
+<?php
 //-- results
 if ($surn) {
-	echo '<h2>', $controller->getPageTitle(), '</h2>
-	<div id="treecontrol"><a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a></div>
-	<div class="loading-image">&nbsp;</div>';
+	echo '
+		<div id="treecontrol"><a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a></div>
+		<div class="loading-image">&nbsp;</div>
+	';
 
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
 	usort($indis, array('WT_Person', 'CompareBirtDate'));

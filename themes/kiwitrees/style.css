@@ -1504,6 +1504,11 @@ a:hover .nameZoom {
 	width: 140px;
 }
 
+.chart_options label {
+	display:block;
+	font-weight:900;
+}
+
 .chart_options input {
 	width: 100px;
 }
@@ -4439,9 +4444,20 @@ a.icon-udarrow:hover {
 	left: auto;
 }
 
-/* simpl_branches */
-#branches-page h2 {
-	text-align: center;
+/* Branches list */
+#branches-page .branches {
+ 	min-width: 210px;
+ }
+
+#branches-page .branches label:nth-of-type(2n),
+#branches-page .branches label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
+}
+
+#branches-page .branches input {
+	margin: auto 10px;
+	width: initial;
 }
 
 #branches-page ul {
@@ -4495,8 +4511,7 @@ p.branches {
 }
 
 #treecontrol {
-	margin: auto;
-	text-align: center;
+	margin: 10px 20px;
 }
 
 /* Language menu */
@@ -4530,147 +4545,6 @@ p.branches {
 
 #extra-menu #lang-menu span {
 	display: none;
-}
-
-/*Language flags (only core languages) */
-#menu-language-ar {
-	background-position: 0 -15px;
-}
-
-#menu-language-bg {
-	background-position: 0 -30px;
-}
-
-#menu-language-bs {
-	background-position: 0 -45px;
-}
-
-#menu-language-ca {
-	background-position: 0 -60px;
-}
-
-#menu-language-cs {
-	background-position: 0 -75px;
-}
-
-#menu-language-da {
-	background-position: 0 -90px;
-}
-
-#menu-language-de {
-	background-position: 0 -105px;
-}
-
-#menu-language-en_GB {
-	background-position: 0 -120px;
-}
-
-#menu-language-en_US {
-	background-position: 0 -136px;
-}
-
-#menu-language-es {
-	background-position: 0 -150px;
-}
-
-#menu-language-et {
-	background-position: 0 -165px;
-}
-
-#menu-language-fa {
-	background-position: 0 -180px;
-}
-
-#menu-language-fi {
-	background-position: 0 -195px;
-}
-
-#menu-language-fr {
-	background-position: 0 -210px;
-}
-
-#menu-language-he {
-	background-position: 0 -225px;
-}
-
-#menu-language-hr {
-	background-position: 0 -240px;
-}
-
-#menu-language-hu {
-	background-position: 0 -255px;
-}
-
-#menu-language-is {
-	background-position: 0 -270px;
-}
-
-#menu-language-it {
-	background-position: 0 -285px;
-}
-
-#menu-language-lt {
-	background-position: 0 -300px;
-}
-
-#menu-language-nb {
-	background-position: 0 -315px;
-}
-
-#menu-language-nl {
-	background-position: 0 -330px;
-}
-
-#menu-language-nn {
-	background-position: 0 -345px;
-}
-
-#menu-language-pl {
-	background-position: 0 -360px;
-}
-
-#menu-language-pt {
-	background-position: 0 -375px;
-}
-
-#menu-language-pt_BR {
-	background-position: 0 -390px;
-}
-
-#menu-language-ru {
-	background-position: 0 -405px;
-}
-
-#menu-language-sk {
-	background-position: 0 -420px;
-}
-
-#menu-language-sl {
-	background-position: 0 -435px;
-}
-
-#menu-language-sv {
-	background-position: 0 -450px;
-}
-
-#menu-language-tr {
-	background-position: 0 -465px;
-}
-
-#menu-language-tt {
-	background-position: 0 -480px;
-}
-
-#menu-language-uk {
-	background-position: 0 -495px;
-}
-
-#menu-language-vi {
-	background-position: 0 -510px;
-}
-
-#menu-language-zh_CN {
-	background-position: 0 -525px;
 }
 
 /* Tooltips (jquery-ui tooltips) */
