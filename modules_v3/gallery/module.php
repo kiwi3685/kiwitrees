@@ -130,7 +130,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			return null;
 		}
 		
-		$menu_title = get_module_setting('gallery', 'HEADER_TITLE', WT_I18N::translate('Gallery'));
+		$menu_title = get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery'));
 
 		//-- main GALLERIES menu item
 		$menu = new WT_Menu($menu_title, 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$default_block, 'menu-my_gallery', 'down');
@@ -247,7 +247,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			}
 
 			echo '<div id="gallery_config">
-				<form name="gallery" method="post" action="#">
+				<form name="' . $this->getName() . '" method="post" action="#">
 					<input type="hidden" name="save" value="1">
 					<input type="hidden" name="block_id" value="', $block_id, '">
 					<table id="faq_module">
@@ -424,15 +424,15 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		$action = safe_POST('action');
 
 		if ($action == 'update') {
-			set_module_setting('gallery', 'HEADER_TITLE',		safe_POST('NEW_HEADER_TITLE'));
-			set_module_setting('gallery', 'HEADER_DESCRIPTION',	safe_POST('NEW_HEADER_DESCRIPTION', WT_REGEX_UNSAFE)); // allow html
+			set_module_setting($this->getName(), 'HEADER_TITLE',		safe_POST('NEW_HEADER_TITLE'));
+			set_module_setting($this->getName(), 'HEADER_DESCRIPTION',	safe_POST('NEW_HEADER_DESCRIPTION', WT_REGEX_UNSAFE)); // allow html
 
-			AddToLog('gallery config updated', 'config');
+			AddToLog($this->getName() . 'config updated', 'config');
 		}
 
-		$HEADER_TITLE			= get_module_setting('gallery', 'HEADER_TITLE', WT_I18N::translate('Gallery'));
-		$HEADER_DESCRIPTION		= get_module_setting('gallery', 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
-		$current_themedir 		= get_module_setting('gallery', 'THEME_DIR', WT_I18N::translate('azur'));
+		$HEADER_TITLE			= get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery'));
+		$HEADER_DESCRIPTION		= get_module_setting($this->getName(), 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
+		$current_themedir 		= get_module_setting($this->getName(), 'THEME_DIR', WT_I18N::translate('azur'));
 		$themename = $this->galleria_theme_names();
 
 		$items=WT_DB::prepare(
@@ -464,7 +464,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					<li><a href="#gallery_pages"><span>', WT_I18N::translate('Galleries'), '</span></a></li>
 				</ul>				
 				<div id="gallery_summary">
-					<form method="post" name="configform" action="module.php?mod=gallery&mod_action=admin_config">
+					<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
 					<input type="hidden" name="action" value="update">
 					<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('gallery_title',$this->getName()),'</div>
 					<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $HEADER_TITLE, '"></div>
@@ -673,8 +673,8 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	private function show() {
 		global $MEDIA_DIRECTORY, $controller;
 
-		$HEADER_TITLE			= get_module_setting('gallery', 'HEADER_TITLE', WT_I18N::translate('Gallery'));
-		$HEADER_DESCRIPTION		= get_module_setting('gallery', 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
+		$HEADER_TITLE			= get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery'));
+		$HEADER_DESCRIPTION		= get_module_setting($this->getName(), 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
 
 		$item_id=safe_GET('gallery_id');
 		$controller=new WT_Controller_Page();
