@@ -1457,6 +1457,7 @@ function old_paths() {
 		WT_ROOT.'themes/clouds',
 		WT_ROOT.'themes/fab',
 		WT_ROOT.'themes/minimal',
+		WT_ROOT.'themes/simpl_grey',
 		WT_ROOT.'themes/kiwitrees/jquery-ui-1.10.3',
 		WT_ROOT.'js/jquery.js',
 		WT_ROOT.'js/jquery.datatables.js',
