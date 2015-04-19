@@ -3,6 +3,7 @@
 *.zip
 *.ged
 /uploads
+/themes/foundation
 /themes/levy
 /themes/uti-family
 /themes/kiwitrees/icon_html.txt
