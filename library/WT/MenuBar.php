@@ -285,10 +285,10 @@ class WT_MenuBar {
 		global $SEARCH_SPIDER, $controller;
 
 		// The top level menu shows the individual list
-		$menu=new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'menu-list');
+		$menu = new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'menu-list');
  
 		// Do not show empty lists
-		$row=WT_DB::prepare(
+		$row = WT_DB::prepare(
 			"SELECT SQL_CACHE".
 			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour,".
 			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo,".
@@ -315,7 +315,7 @@ class WT_MenuBar {
 			if ($row->note) {
 				$menulist['notelist.php'] = WT_I18N::translate('Shared notes');
 			}
-			if (array_key_exists('no_census', WT_Module::getActiveModules())) {
+			if (array_key_exists('no_census', WT_Module::getActiveMenus())) {
 				$menulist['no_census'] = WT_I18N::translate('UK Census check');
 			}
 		}
