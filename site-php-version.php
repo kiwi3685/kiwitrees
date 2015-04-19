@@ -20,13 +20,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+//
+// NOTE - THIS FILE NOT CURRENTLY IN USE BY KIWITREES
+//
 
 define('WT_SCRIPT_NAME', 'site-php-version.php');
 
 // This script does not load session.php.
 // It may well invoke code that won’t run on PHP5.2…
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES', 'webtrees');
+define('WT_WEBTREES', 'kiwitrees');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
@@ -71,17 +74,16 @@ header('Content-Type: text/html; charset=UTF-8');
 		</h1>
 		<div class="content">
 			<p>
-				<?php echo WT_I18N::translate('This version of webtrees cannot be installed on this web-server.'); ?>
+				<?php echo WT_I18N::translate('This version of kiwitrees cannot be installed on this web-server.'); ?>
 			</p>
 			<p>
 				<?php echo WT_I18N::translate('You have the following options:'); ?>
 			</p>
 			<ul>
 				<li><?php /* I18N: %s is a version number */ echo WT_I18N::translate('Upgrade the web-server to PHP %s or higher.', '5.3.3'); ?></li>
-				<li><?php /* I18N: %s is a version number */ echo WT_I18N::translate('Install (or re-install) webtrees %s.', '<a href="https://launchpad.net/webtrees/1.4/1.4.0/+download/webtrees-1.4.0.zip">1.4.0</a>'); ?></li>
 			</ul>
 			<p class="good">
-				<?php echo WT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://webtrees.net">webtrees.net</a>'); ?>
+				<?php echo WT_I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://kiwitrees.net">kiwitrees.net</a>'); ?>
 			</p>
 		</div>
 		<!-- <?php echo PHP_VERSION; ?> -->
