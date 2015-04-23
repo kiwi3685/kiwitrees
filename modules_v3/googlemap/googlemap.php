@@ -156,7 +156,7 @@ function setup_map() {
 }
 
 function build_indiv_map($indifacts, $famids) {
-	global $controller, $GOOGLEMAP_MAX_ZOOM, $GOOGLEMAP_YSIZE, $GM_DEFAULT_TOP_VALUE;
+	global $controller, $GOOGLEMAP_MAX_ZOOM, $GM_DEFAULT_TOP_VALUE;
 
 	// Create the markers list array
 	$markers=array();

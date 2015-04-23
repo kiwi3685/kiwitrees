@@ -748,7 +748,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		echo '</td><td width="15px">&nbsp;</td>';
 		echo '<td width="310px" valign="top">';
-		echo '<div id="side_bar" style="width:300px; font-size:0.9em; overflow:auto; overflow-x:hidden; overflow-y:auto; height:', $GOOGLEMAP_YSIZE, 'px;"></div></td>';
+		echo '<div id="side_bar" style="width:300px; font-size:0.9em; overflow:auto; overflow-x:hidden; overflow-y:auto;"></div></td>';
 		echo '</tr>';
 		echo '</table>';
 		// display info under map
