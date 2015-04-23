@@ -1492,6 +1492,7 @@ function format_surname_table($surnames, $script) {
 			jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			jQuery(".surname-list").dataTable( {
 			"sDom": \'t\',
+			"destroy": true,
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bPaginate": false,
