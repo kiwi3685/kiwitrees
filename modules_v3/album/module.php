@@ -228,7 +228,9 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 			$ALBUM_OPTIONS = WT_Filter::postArray('NEW_ALBUM_OPTIONS');
 			if (isset($ALBUM_GROUPS)) set_module_setting($this->getName(), 'ALBUM_GROUPS', $ALBUM_GROUPS);				
 			if (!empty($ALBUM_TITLES)) set_module_setting($this->getName(), 'ALBUM_TITLES', serialize($ALBUM_TITLES));				
-			if (!empty($ALBUM_OPTIONS)) set_module_setting($this->getName(), 'ALBUM_OPTIONS', serialize($ALBUM_OPTIONS));				
+			if (!empty($ALBUM_OPTIONS)) set_module_setting($this->getName(), 'ALBUM_OPTIONS', serialize($ALBUM_OPTIONS));
+
+			AddToLog($this->getTitle().' set to new values', 'config');
 		}
 		$SHOW_FIND = WT_Filter::post('show');
 		$HIDE_FIND = WT_Filter::post('hide');
@@ -301,25 +303,15 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 						), null, $ALBUM_GROUPS);
 
 				$html .= '</div>
-				<div id="album_buttons">
-					<button class="btn btn-primary" type="submit">
-						<i class="fa fa-floppy-o"></i>'.
-						WT_I18N::translate('save').'
-					</button>
-					<button class="btn btn-primary" type="submit" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
-						<i class="fa fa-refresh"></i>'.
-						WT_I18N::translate('Reset').'
-					</button>
-				</div>
 				<div id="album_options">
 					<label for="NEW_ALBUM_OPTIONS" class="label">'.WT_I18N::translate('Match groups to types').'</label>
 					<table>';
-						$html .= '<tr>';
-							$html .= '<th>&nbsp;</th>';
+						$html .= '<tr><th colspan="2" rowspan="2"></th><th colspan="4">'.WT_I18N::translate('Groups (These must always be English titles)').'</th></tr>';
 							for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
-								$html .= '<th style="min-width:130px;"><input type="input" name="NEW_ALBUM_TITLES[]" value="' .(isset($ALBUM_TITLES[$i]) ? WT_I18N::translate($ALBUM_TITLES[$i]) : ""). '"></th>';
+								$html .= '<th style="min-width:130px;"><input type="input" name="NEW_ALBUM_TITLES[]" value="' .(isset($ALBUM_TITLES[$i]) ? $ALBUM_TITLES[$i] : ""). '"></th>';
 							}
 						$html .= '</tr>';
+							$html .= '<tr><th rowspan="19" style="max-width:25px;"><span class="rotate">'.WT_I18N::translate('Types').'</span></th></tr>';
 							foreach ($ALBUM_OPTIONS as $key=>$value) {
 								$translated_type = WT_Gedcom_Tag::getFileFormTypeValue($key);
 								$html .= '
@@ -337,7 +329,15 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 							}
 					$html .= '</table>
 				</div>
+				<button class="btn btn-primary save" type="submit">
+					<i class="fa fa-floppy-o"></i>'.
+					WT_I18N::translate('save').'
+				</button>
 			</form>
+			<button class="btn btn-primary reset" type="submit" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
+				<i class="fa fa-refresh"></i>'.
+				WT_I18N::translate('Reset').'
+			</button>
 			<form method="post" name="find_show" action="'.$this->getConfigLink().'">
 				<div id="album_find">
 				    <input type="hidden" name="show">

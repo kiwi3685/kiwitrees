@@ -150,7 +150,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 		// Set type of media from call in album
 		for ($i = 0; $i < $ALBUM_GROUPS; $i++) {
 			if ($i == $kind) {
-				$tt = WT_I18N::translate($ALBUM_TITLES[$i]);
+				$tt = $ALBUM_TITLES[$i];
 				$sqlmm .= " AND (";
 				foreach ($ALBUM_OPTIONS as $key=>$value) {
 					if ($value == $tt) {
@@ -180,7 +180,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 			echo '<table class="facts_table">
 				<tr>
 					<td class="descriptionbox" style="width:120px; text-align:center; vertical-align:middle;">
-						<span style="font-weight:900;">', $tt,'</span>
+						<span style="font-weight:900;">', WT_I18N::translate($tt),'</span>
 					</td>
 					<td class="optionbox">';
 		}

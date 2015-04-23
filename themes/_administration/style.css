@@ -456,14 +456,34 @@ table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding
 #album_config label {font-weight:900; font-size:110%; margin:5px 0;}
 #album_groups {float:left; width:400px; padding:5px 0;}
 #album_groups select {margin:0 10px;}
-#album_buttons {float:left;}
+#album_config button {float:left; margin: 10px;}
+#album_config button.reset {margin-top: -10px;}
 #album_options {clear:both; margin-top:15px;}
 #album_options td, #album_options th input {text-align:center;}
 #album_options td:first-child {text-align: left; /* as backup */ text-align:start;}
+#album_find {clear:both;}
 #album_find th {background-color: #c9c9c9; font-weight:900; padding: 0 5px; text-align:center;}
 #album_find td {padding: 0 5px; text-align:left;}
 #album_find td:first-child {padding:3px; text-align:center;}
 #album_find td img {max-height:34px;}
+.rotate {
+display: block;
+/* Safari */
+-webkit-transform: rotate(-90deg);
+
+/* Firefox */
+-moz-transform: rotate(-90deg);
+
+/* IE */
+-ms-transform: rotate(-90deg);
+
+/* Opera */
+-o-transform: rotate(-90deg);
+
+/* Internet Explorer */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+}
 
 [dir=rtl] #album_groups, [dir=rtl] #album_buttons {float:right;}
 [dir=rtl] #album_config td:first-child {text-align:right;}
