@@ -186,7 +186,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 							$tmp=new WT_Place($place, WT_GED_ID);
 							$details .= $tmp->getShortName();
 						}
-						echo WT_Gedcom_Tag::getLabelValue('MARR', $details);
+						echo WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
 					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
 						$husb = $family->getHusband();
 						$wife = $family->getWife();
