@@ -57,7 +57,10 @@ $xrefs = WT_DB::prepare(
 		WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
 	))->fetchAssoc();
 
-echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
+echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/merging-family-trees/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+';
+
 if (WT_Filter::get('continue')) {
 	foreach ($xrefs as $old_xref=>$type) {
 		WT_DB::exec("START TRANSACTION");
