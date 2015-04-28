@@ -570,7 +570,7 @@ div.scrollingArea{background-color:#fff;height:608px;overflow-x:auto;overflow-y:
 .gm_check a, .gm_check_top a:hover, .gm_check_details a, .details:hover {color:#0000ff;}
 .gm_check label {margin-left:20px; margin-right:0; white-space:nowrap;}
 [dir=rtl] .gm_check label {margin-right:20px;margin-left:0;}
-.gm_check input[type="checkbox"] {vertical-align:text-bottom;}
+.gm_check input[type="checkbox"] {vertical-align:middle;}
 #gm_check_title {font-weight:bold;padding:5px;}
 div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 .gm_check_details {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:10px 0; max-width:none; width:100%;}
@@ -705,7 +705,7 @@ table#story_table {width:100%}
 [dir=rtl] #cboxClose {right:auto;left:0}
 [dir=rtl] #cboxSlideshow {right:57px;left:auto; }
 
-/* Styling for simpl_duplicates module */
+/* Styling for Find duplicates module */
 #admin_dup .gm_check {overflow:hidden;}
 #admin_dup .gm_check label {white-space:nowrap; min-width:150px; display:inline-block;}
 #admin_dup .gm_check div {margin:5px 0;}
