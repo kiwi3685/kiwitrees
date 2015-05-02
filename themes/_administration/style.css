@@ -25,7 +25,7 @@
 html {overflow-y:scroll;}
 
 /* general styles */
-body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px; margin:10px; min-width:800px;}
+body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:14px; margin:10px; min-width:800px;}
 body#body_simple {min-width:0; margin:0;}
 input {padding:5px;}
 input[type="submit"], input[type="reset"], input[type="button"] {padding: 5px 30px; margin: 0 20px;}
@@ -427,8 +427,9 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 .upload_media sub {display:block; line-height:10px;}
 
 /* UPDATE PLACES */
-#places button[type="submit"] {padding: 5px 30px; margin: 0 20px;}
-#places input {width:300px;}
+#places button[type="submit"] {padding: 5px 30px; margin: 10px;}
+#places label {display: block; margin: 10px auto 5px;}
+#places input {width: 300px;}
 
 
 /* MANAGE MODULES */
