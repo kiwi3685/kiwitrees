@@ -87,7 +87,9 @@ $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Administration - place edit'))
-	->pageHeader();
+	->pageHeader()
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addInlineJavascript('autocomplete();');
 ?>
 <div id="places">
 	<h2>
@@ -97,15 +99,14 @@ $controller
 	<p>
 		<?php echo WT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
 	</p>
-
 	<form method="post">
 		<dl>
 			<dt><?php echo WT_I18N::translate('Family tree'); ?></dt>
 			<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, 'autofocus'); ?></dd>
 			<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
-			<dd><input name="search" id="search" type="text" size="30" value="<?= WT_Filter::escapeHtml($search) ?>" required></dd>
+			<dd><input name="search" id="search" type="text" data-autocomplete-type="PLAC" value="<?= WT_Filter::escapeHtml($search) ?>" required></dd>
 			<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>
-			<dd><input name="replace" id="replace" type="text" size="30" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
+			<dd><input name="replace" id="replace" type="text" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
 		</dl>
 		<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
 		<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>

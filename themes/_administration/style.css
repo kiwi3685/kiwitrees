@@ -428,6 +428,8 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* UPDATE PLACES */
 #places button[type="submit"] {padding: 5px 30px; margin: 0 20px;}
+#places input {width:300px;}
+
 
 /* MANAGE MODULES */
 #installed_table {width:100%;}
