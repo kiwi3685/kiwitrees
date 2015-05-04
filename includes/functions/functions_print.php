@@ -295,7 +295,7 @@ function execution_stats() {
 	global $start_time, $PRIVACY_CHECKS;
 
 	return
-		'<div class="execution_stats">'.
+		'<p class="execution_stats">'.
 		WT_I18N::translate(
 			'Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB.',
 			WT_I18N::number(microtime(true)-$start_time, 3),
@@ -303,7 +303,7 @@ function execution_stats() {
 			WT_I18N::number($PRIVACY_CHECKS),
 			WT_I18N::number(version_compare(PHP_VERSION, '5.2.1', '>=') ? (memory_get_peak_usage(true)/1024) : (memory_get_usage()/1024))
 		).
-		'</div>';
+		'</p>';
 }
 
 // Generate a login link
@@ -424,7 +424,7 @@ function contact_links($ged_id=WT_GED_ID) {
 	}
 
 	if ($supportLink==$contactLink) {
-		return '<div class="contact_links">'.WT_I18N::translate('For technical support or genealogy questions, please contact').' '.$supportLink.'</div>';
+		return '<div class="contact_links">'.WT_I18N::translate('If you have any questions or comments please contact').' '.$supportLink.'</div>';
 	} else {
 		if ($webmaster_user_id || $contact_user_id) {
 			$returnText = '<div class="contact_links">';

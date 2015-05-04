@@ -32,7 +32,7 @@ echo '</div>'; // <div id="content">
 if ($view!='simple') {
 	echo '
 		<div id="footer">';
-			if (contact_links() != '') echo contact_links();
+			if (contact_links() != '' && !array_key_exists('contact', WT_Module::getActiveModules())) echo contact_links();
 	echo '
 			<p class="logo">', 
 				WT_I18N::translate('Powered by '), '
