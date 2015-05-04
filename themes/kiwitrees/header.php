@@ -101,8 +101,11 @@ echo '
 		<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">
 		<!--[if IE]>
 			<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">
-		<![endif]-->
-	</head>
+		<![endif]-->';
+		if (file_exists(WT_THEME_URL . 'mystyle.css')) {
+			echo '<link rel="stylesheet" href="', WT_THEME_URL, 'mystyle.css" type="text/css">';
+		}
+	echo '</head>
 ';
 	
 if ($view!='simple') {echo '<body id="body">';

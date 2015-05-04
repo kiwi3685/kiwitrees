@@ -96,7 +96,9 @@ echo
 			// This is needed for all versions of IE, so we cannot use conditional comments.
 			echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">';
 		}
-
+		if (file_exists(WT_THEME_URL . 'mystyle.css')) {
+			echo '<link rel="stylesheet" href="', WT_THEME_URL, 'mystyle.css" type="text/css">';
+		}
 echo
 	'</head>',
 	'<body id="body">';

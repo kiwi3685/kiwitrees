@@ -89,9 +89,12 @@ echo
 		'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
 		'<!--[if IE]>',
 			'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
-		'<![endif]-->',
-	'</head>',
-	'<body id="body">';
+		'<![endif]-->';
+		if (file_exists(WT_THEME_URL . 'mystyle.css')) {
+			echo '<link rel="stylesheet" href="', WT_THEME_URL, 'mystyle.css" type="text/css">';
+		}
+	echo '</head>
+	<body id="body">';
 
 if ($view!='simple') { // Use "simple" headers for popup windows
 	echo 

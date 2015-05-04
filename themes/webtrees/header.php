@@ -77,19 +77,22 @@ echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
-	'<meta charset="UTF-8">',
-	'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
-	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
-	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
-	'<!--[if IE]>',
-		'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
-	'<![endif]-->
+		'<meta charset="UTF-8">',
+		'<meta http-equiv="X-UA-Compatible" content="IE=edge">',
+		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
+		'<title>', htmlspecialchars($title), '</title>',
+		'<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">',
+		'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">',
+		'<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">',
+		'<!--[if IE]>',
+			'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">',
+		'<![endif]-->';
 
-	</head>',
-	'<body id="body">';
+		if (file_exists(WT_THEME_URL . 'mystyle.css')) {
+			echo '<link rel="stylesheet" href="', WT_THEME_URL, 'mystyle.css" type="text/css">';
+		}
+	echo '</head>
+	<body id="body">';
 
 // begin header section
 if ($view!='simple') {
