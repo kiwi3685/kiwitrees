@@ -73,40 +73,41 @@ $fanChart = array(
 );
 
 //-- pedigree chart variables
-$bwidth=250;			// width of boxes on pedigree chart
-$bheight=80;			// height of boxes on pedigree chart
-$baseyoffset=10;		// position the entire pedigree tree relative to the top of the page
-$basexoffset=10;		// position the entire pedigree tree relative to the left of the page
-$bxspacing=10;			// horizontal spacing between boxes on the pedigree chart
-$byspacing=10;			// vertical spacing between boxes on the pedigree chart
-$linewidth=1.5;			// width of joining lines
-$shadowcolor="";		// shadow color for joining lines
-$shadowblur=0;			// shadow blur for joining lines
-$shadowoffsetX=0;		// shadowOffsetX for joining lines
-$shadowoffsetY=0;		// shadowOffsetY for joining lines
+$bwidth = 250;			// width of boxes on pedigree chart
+$bheight = 80;			// height of boxes on pedigree chart
+$baseyoffset = 10;		// position the entire pedigree tree relative to the top of the page
+$basexoffset = 10;		// position the entire pedigree tree relative to the left of the page
+$bxspacing = 10;			// horizontal spacing between boxes on the pedigree chart
+$byspacing = 10;			// vertical spacing between boxes on the pedigree chart
+$linewidth = 1.5;			// width of joining lines
+$shadowcolor = "";		// shadow color for joining lines
+$shadowblur = 0;			// shadow blur for joining lines
+$shadowoffsetX = 0;		// shadowOffsetX for joining lines
+$shadowoffsetY = 0;		// shadowOffsetY for joining lines
 
 // descendancy - relationship chart variables
-$Dbaseyoffset=20;		// position the entire descendancy tree relative to the top of the page
-$Dbasexoffset=20;		// position the entire descendancy tree relative to the left of the page
-$Dbxspacing=5;			// horizontal spacing between boxes
-$Dbyspacing=10;			// vertical spacing between boxes
-$Dbwidth=260;			// width of DIV layer boxes
-$Dbheight=80;			// height of DIV layer boxes
-$Dindent=15;			// width to indent descendancy boxes
-$Darrowwidth=30;		// additional width to include for the up arrows
+$Dbaseyoffset = 20;		// position the entire descendancy tree relative to the top of the page
+$Dbasexoffset = 20;		// position the entire descendancy tree relative to the left of the page
+$Dbxspacing = 5;			// horizontal spacing between boxes
+$Dbyspacing = 10;			// vertical spacing between boxes
+$Dbwidth = 260;			// width of DIV layer boxes
+$Dbheight = 80;			// height of DIV layer boxes
+$Dindent = 15;			// width to indent descendancy boxes
+$Darrowwidth = 30;		// additional width to include for the up arrows
 
 // -- Dimensions for compact version of chart displays
-$cbwidth=240;
-$cbheight=50;
+$cbwidth = 240;
+$cbheight = 50;
 
 // --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
-$WT_STATS_S_CHART_X=440;
-$WT_STATS_S_CHART_Y=125;
-$WT_STATS_L_CHART_X=900;
+// --  The largest possible area for charts is 300,000 pixels, so the maximum height or width is 1000 pixels
+$WT_STATS_S_CHART_X = 550;
+$WT_STATS_S_CHART_Y = 200;
+$WT_STATS_L_CHART_X = 900;
 // --  For map charts, the maximum size is 440 pixels wide by 220 pixels high
-$WT_STATS_MAP_X=440;
-$WT_STATS_MAP_Y=220;
+$WT_STATS_MAP_X = 440;
+$WT_STATS_MAP_Y = 220;
 
-$WT_STATS_CHART_COLOR1="ffffff";
-$WT_STATS_CHART_COLOR2="9ca3d4";
-$WT_STATS_CHART_COLOR3="e5e6ef";
+$WT_STATS_CHART_COLOR1 = "ffffff";
+$WT_STATS_CHART_COLOR2 = "9ca3d4";
+$WT_STATS_CHART_COLOR3 = "e5e6ef";

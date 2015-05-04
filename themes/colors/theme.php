@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 // Convert a menu into our theme-specific format
 function getMenuAsCustomList($menu) {
 		// Create an inert menu - to use as a label
-		$tmp=new WT_Menu(strip_tags($menu->label), '');
+		$tmp = new WT_Menu(strip_tags($menu->label), '');
 		// Insert the label into the submenu
 		if (is_array($menu->submenus)) {
 			array_unshift($menu->submenus, $tmp);
@@ -42,9 +42,9 @@ function getMenuAsCustomList($menu) {
 			$menu->addSubmenu($tmp);
 		}
 		// Neutralise the top-level menu
-		$menu->label='';
-		$menu->onclick='';
-		$menu->iconclass='';
+		$menu->label = '';
+		$menu->onclick = '';
+		$menu->iconclass = '';
 		return $menu->getMenuAsList();
 }
 
@@ -53,8 +53,8 @@ function color_theme_dropdown() {
 	global $COLOR_THEME_LIST, $WT_SESSION, $subColor;
 	$menu=new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Colors palette'), '#', 'menu-color');
 	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
-	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
-		$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
+	foreach ($COLOR_THEME_LIST as $colorChoice = >$colorName) {
+		$submenu = new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
 		if (isset($WT_SESSION->subColor)) {
 			if ($WT_SESSION->subColor == $colorChoice) {  
 				$submenu->addClass('','','theme-active');
@@ -120,7 +120,7 @@ $COLOR_THEME_LIST=array(
 $subColor = get_gedcom_setting(WT_GED_ID, 'COLOR_PALETTE');
 // Make sure our selected palette is set and actually exists
 if (!$subColor || !array_key_exists($subColor, $COLOR_THEME_LIST)) {
-	$subColor='ash';
+	$subColor = 'ash';
 }
 
 
@@ -130,21 +130,21 @@ $theme_name = "colors"; /* I18N: Name of a theme. */ WT_I18N::translate('colors'
 $footerfile = WT_THEME_DIR . 'footer.php';
 $headerfile = WT_THEME_DIR . 'header.php';
 
-$WT_IMAGES=array(
+$WT_IMAGES = array(
 	// used to draw charts
-	'dline'=>WT_THEME_URL.'images/dline.png',
-	'dline2'=>WT_THEME_URL.'images/dline2.png',
-	'hline'=>WT_THEME_URL.'images/hline.png',
-	'spacer'=>WT_THEME_URL.'images/spacer.png',
-	'vline'=>WT_THEME_URL.'images/vline.png',
+	'dline'		=>WT_THEME_URL.'images/dline.png',
+	'dline2'	=>WT_THEME_URL.'images/dline2.png',
+	'hline'		=>WT_THEME_URL.'images/hline.png',
+	'spacer'	=>WT_THEME_URL.'images/spacer.png',
+	'vline'		=>WT_THEME_URL.'images/vline.png',
 
 	// used in button images and javascript
-	'add'=>WT_THEME_URL.'images/add.png',
-	'button_family'=>WT_THEME_URL.'images/buttons/family.png',
-	'minus'=>WT_THEME_URL.'images/minus.png',
-	'plus'=>WT_THEME_URL.'images/plus.png',
-	'remove'=>WT_THEME_URL.'images/delete.png',
-	'search'=>WT_THEME_URL.'images/go.png',
+	'add'			=>WT_THEME_URL.'images/add.png',
+	'button_family'	=>WT_THEME_URL.'images/buttons/family.png',
+	'minus'			=>WT_THEME_URL.'images/minus.png',
+	'plus'			=>WT_THEME_URL.'images/plus.png',
+	'remove'		=>WT_THEME_URL.'images/delete.png',
+	'search'		=>WT_THEME_URL.'images/go.png',
 
 	// need different sizes before moving to CSS
 	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
@@ -170,11 +170,11 @@ $basexoffset = 10; // -- position the pedigree and timeline charts relative to t
 $bxspacing = 4; // -- horizontal spacing between boxes on the pedigree chart
 $byspacing = 5; // -- vertical spacing between boxes on the pedigree chart
 $brborder = 1; // -- pedigree chart box right border thickness 
-$linewidth=1.5;			// width of joining lines
-$shadowcolor="";		// shadow color for joining lines
-$shadowblur=0;			// shadow blur for joining lines
-$shadowoffsetX=0;		// shadowOffsetX for joining lines
-$shadowoffsetY=0;		// shadowOffsetY for joining lines
+$linewidth = 1.5;			// width of joining lines
+$shadowcolor = "";		// shadow color for joining lines
+$shadowblur = 0;			// shadow blur for joining lines
+$shadowoffsetX = 0;		// shadowOffsetX for joining lines
+$shadowoffsetY = 0;		// shadowOffsetY for joining lines
 
 //-- Other settings that should not be touched
 $Dbxspacing = 5; // -- position vertical line between boxes in relationship chart
@@ -185,16 +185,16 @@ $Dindent = 15; // -- width to indent ancestry and descendancy charts boxes
 $Darrowwidth = 300; // -- not used that I can see ***
 
 // -- Dimensions for compact version of chart displays
-$cbwidth=240;
-$cbheight=50;
+$cbwidth = 240;
+$cbheight = 50;
 
 // --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
-$WT_STATS_S_CHART_X = "440";
-$WT_STATS_S_CHART_Y = "125";
-$WT_STATS_L_CHART_X = "900";
+$WT_STATS_S_CHART_X = 550;
+$WT_STATS_S_CHART_Y = 200;
+$WT_STATS_L_CHART_X = 900;
 // --  For map charts, the maximum size is 440 pixels wide by 220 pixels high
-$WT_STATS_MAP_X = "440";
-$WT_STATS_MAP_Y = "220";
+$WT_STATS_MAP_X = 440;
+$WT_STATS_MAP_Y = 220;
 
 $WT_STATS_CHART_COLOR1 = "ffffff";
 $WT_STATS_CHART_COLOR2 = "95b8e0";

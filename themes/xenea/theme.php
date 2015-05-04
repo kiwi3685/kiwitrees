@@ -38,7 +38,7 @@ $headerfile = WT_THEME_DIR.'header.php';
 $footerfile = WT_THEME_DIR.'footer.php';
 
 //-- variables for image names
-$WT_IMAGES=array(
+$WT_IMAGES = array(
 	// used to draw charts
 	'dline'          =>WT_THEME_URL.'images/dline.png',
 	'dline2'         =>WT_THEME_URL.'images/dline2.png',
@@ -47,7 +47,7 @@ $WT_IMAGES=array(
 	'vline'          =>WT_THEME_URL.'images/vline.png',
 
 	// used in button images and javascript
-	'add'=>WT_THEME_URL.'images/add.png',
+	'add' = >WT_THEME_URL.'images/add.png',
 	'button_family'  =>WT_THEME_URL.'images/buttons/family.png',
 	'minus'          =>WT_THEME_URL.'images/minus.png',
 	'plus'           =>WT_THEME_URL.'images/plus.png',
@@ -95,16 +95,16 @@ $Dindent = 15; // -- width to indent descendancy boxes
 $Darrowwidth = 30; // -- additional width to include for the up arrows
 
 // -- Dimensions for compact version of chart displays
-$cbwidth=240;
-$cbheight=50;
+$cbwidth = 240;
+$cbheight = 50;
 
-// --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
-$WT_STATS_S_CHART_X = "440";
-$WT_STATS_S_CHART_Y = "125";
-$WT_STATS_L_CHART_X = "900";
+// --  The largest possible area for charts is 300,000 pixels, so the maximum height or width is 1000 pixels
+$WT_STATS_S_CHART_X = 550;
+$WT_STATS_S_CHART_Y = 200;
+$WT_STATS_L_CHART_X = 900;
 // --  For map charts, the maximum size is 440 pixels wide by 220 pixels high
-$WT_STATS_MAP_X = "440";
-$WT_STATS_MAP_Y = "220";
+$WT_STATS_MAP_X = 440;
+$WT_STATS_MAP_Y = 220;
 
 $WT_STATS_CHART_COLOR1 = "ffffff";
 $WT_STATS_CHART_COLOR2 = "84beff";
