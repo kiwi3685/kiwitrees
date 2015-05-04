@@ -104,7 +104,14 @@ echo
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 			echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 			}
-echo'	</div>
+			echo ' | <div class="header_search">
+				<form action="search.php" method="post">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search trees'), '" dir="auto">
+				</form>
+			</div>
+		</div>
 		<div id="info">',
 			WT_WEBTREES, ' ', WT_VERSION_TEXT,
 			'<br>',

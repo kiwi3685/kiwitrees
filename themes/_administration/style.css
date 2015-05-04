@@ -119,6 +119,7 @@ button {min-width:100px;}
  [dir=rtl] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
+#links .header_search {display:inline-block;}
 .ui-widget-content a.lang-active {color:#25a325;}
 .icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px; position: absolute;}
 
