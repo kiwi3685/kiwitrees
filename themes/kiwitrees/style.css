@@ -203,6 +203,7 @@ textarea:required:invalid {
 	left: 0;
 	position: fixed;
 	right: 0;
+	top: 0;
 	z-index: 1030;
 }
 #flash-messages {
@@ -463,12 +464,10 @@ textarea:required:invalid {
 }
 /* ======= Footer styles ========== */
 #footer {
-	border-top: 5px solid #555;
 	background-color: #aaa;
-	clear: both;
-	font-size: 12px;
+	border-top: 5px solid #555;
+	font-size: 0.8em;
 	margin-top: 120px;
-	padding-top: 10px;
 	text-align: center;
 }
 
@@ -510,14 +509,13 @@ textarea:required:invalid {
 }
 
 #content {
-	width: 96%;
 	clear: both;
 	font-size: 12px;
-	margin: 0 auto;
-	padding: 12px;
 	position: relative;
 	top: 110px;
 	z-index: 0;
+	overflow: hidden;
+	padding: 0;
 }
 
 #body_simple #content {
@@ -1845,7 +1843,6 @@ ul.clist {
 }
 
 .execution_stats {
-	padding-top: 12px;
 	text-align: center;
 }
 
@@ -3175,6 +3172,7 @@ div[id^="caldiv"] td {
 /* ========= Sidebar ============== */
 #main {
 	min-width: 600px;
+	padding: 0 12px;
 	width: 100%;
 }
 
