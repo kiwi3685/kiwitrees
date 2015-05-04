@@ -151,7 +151,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 		$html .= '
-		<div id="contact_page" style="font-size:1.2em; margin-bottom: -100px;">
+		<div id="contact_page" style="margin: 12px;">
 			<h2>' . $controller->getPageTitle() . '</h2>';
 
 			// Ensure the user always visits this page twice - once to compose it and again to send it.
@@ -191,39 +191,39 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 								<input type="email" name="from_email" id="from_email" size="40" value="'. htmlspecialchars($from_email). '">
 								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>';
 						}
-					$html .= '
-					</div>
+					$html .= '</div>
 					<hr>
 					<div id="contact_forms" style="width:80%; margin:auto;">';
-					for ($i = 1; $i <= $form_count; $i++) {
-						$form_title = $form_title_1;
-						if ($i > 1) {
-							$form_title = $form_title_2;
+						for ($i = 1; $i <= $form_count; $i++) {
+							$form_title = $form_title_1;
+							if ($i > 1) {
+								$form_title = $form_title_2;
+							}
+							$html .= '<form class="message_form" style="float:left; margin: auto 20px; max-width: 600px;" name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
+								$html .= WT_Filter::getCsrf();
+								$html .= $form_title;
+								$html .= '
+									<label for "subject' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Subject:'). '</label>
+									<input type="hidden" name="action" value="send">
+									<input type="hidden" name="to" value="'. htmlspecialchars($to). '">
+									<input type="hidden" name="time" value="">
+									<input type="hidden" name="method" value="'. $method. '">
+									<input type="hidden" name="url" value="'. htmlspecialchars($url). '">
+									<input type="text" name="subject" id="subject' . $i . '" value="'. htmlspecialchars($subject). '" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">
+									<label for "body' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Body:'). '</label>
+									<textarea class="html-edit" name="body" id="body' . $i . '" rows="7" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">'. htmlspecialchars($body). '</textarea>
+									<div class="btn btn-primary" style="display: inline-block;margin:10px auto;">
+										<button type="submit" value="value="'. WT_I18N::translate('Send'). '">'. WT_I18N::translate('Send'). '</button>
+									</div>
+							</form>';
 						}
-						$html .= '<form class="message_form" style="float:left; margin: auto 20px; max-width: 600px;" name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
-							$html .= WT_Filter::getCsrf();
-							$html .= $form_title;
+						if ($method == 'messaging2') {
 							$html .= '
-								<label for "subject' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Subject:'). '</label>
-								<input type="hidden" name="action" value="send">
-								<input type="hidden" name="to" value="'. htmlspecialchars($to). '">
-								<input type="hidden" name="time" value="">
-								<input type="hidden" name="method" value="'. $method. '">
-								<input type="hidden" name="url" value="'. htmlspecialchars($url). '">
-								<input type="text" name="subject" id="subject' . $i . '" value="'. htmlspecialchars($subject). '" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">
-								<label for "body' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Body:'). '</label>
-								<textarea class="html-edit" name="body" id="body' . $i . '" rows="7" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">'. htmlspecialchars($body). '</textarea>
-								<div class="btn btn-primary" style="display: inline-block;margin:10px auto;">
-									<button type="submit" value="value="'. WT_I18N::translate('Send'). '">'. WT_I18N::translate('Send'). '</button>
-								</div>
-						</form>';
-					}
-					if ($method == 'messaging2') {
-						$html .= '
-						<p class="message_form" style="clear:both; width: 600px; margin:auto;" >'. 
-							WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.') . '
-						</p>';
-					}
+							<p class="message_form" style="clear:both; width: 600px; margin:auto;" >'. 
+								WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.') . '
+							</p>';
+						}
+					$html .= '</div>';
 				break;
 
 				case 'send':
