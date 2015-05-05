@@ -170,10 +170,10 @@ echo				'</select>
 				WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 			'</div>'; // <div id="navbar">
 }
-// begin content section
-echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
-
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'visitor' or above
 if ($show_widgetbar) {
 	include_once 'widget-bar.php';
 }
+// begin content section
+echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
+

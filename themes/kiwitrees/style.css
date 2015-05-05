@@ -4396,15 +4396,16 @@ a.icon-udarrow:hover {
 }
 
 #cboxClose {
-	position: absolute;
-	bottom: 0;
-	right: 0;
 	background: url(images/controls.png) no-repeat -25px 0;
-	width: 25px;
-	height: 25px;
-	text-indent: -9999px;
-	margin: 10px;
 	border: 0;
+	bottom: 0;
+	height: 25px;
+	margin: 10px;
+	min-width: initial;
+	position: absolute;
+	right: 0;
+	text-indent: -9999px;
+	width: 25px;
 }
 
 #cboxClose:hover {
@@ -5279,15 +5280,16 @@ div.widget {
 }
 
 #widget-bar {
-	z-index: 999;
-	position: absolute;
-	display: none;
-	margin: -12px 0 0 -12px;
-	width: 450px;
-	min-height: 200px;
 	background-color: #ddd;
 	box-shadow: 5px 5px 8px 0 #888;
+	display: none;
+	font-size: 0.75em;
+	min-height: 200px;
 	padding-bottom: 10px;
+	position: absolute;
+	top: 106px;
+	width: 450px;
+	z-index: 999;
 }
 
 [dir='rtl'] #widget-bar {
