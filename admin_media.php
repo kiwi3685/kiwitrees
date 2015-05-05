@@ -465,7 +465,7 @@ function media_object_info(WT_Media $media) {
 
 	$linked = array();
 	foreach ($media->fetchLinkedIndividuals() as $link) {
-		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
+		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() .' <i>'.$link->getLifeSpan().'</i>'. '</a>';
 	}
 	foreach ($media->fetchLinkedFamilies() as $link) {
 		$linked[] = '<a href="' . $link->getHtmlUrl() . '">' . $link->getFullName() . '</a>';
