@@ -53,9 +53,8 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 
 		$days     = get_block_setting($widget_id, 'days',     1);
 		$sendmail = get_block_setting($widget_id, 'sendmail', true);
-		$block    = get_block_setting($widget_id, 'block',    true);
 		if ($cfg) {
-			foreach (array('days', 'sendmail', 'block') as $name) {
+			foreach (array('days', 'sendmail') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name = $cfg[$name];
 				}
@@ -159,7 +158,6 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($widget_id, 'days',     WT_Filter::postInteger('num', 1, 180, 7));
 			set_block_setting($widget_id, 'sendmail', WT_Filter::postBool('sendmail'));
-			set_block_setting($widget_id, 'block',    WT_Filter::postBool('block'));
 			exit;
 		}
 
@@ -173,13 +171,6 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 		echo edit_field_yes_no('sendmail', $sendmail);
 		echo '<br>';
 		echo WT_I18N::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2'>";
-		echo '</td></tr>';
-
-		$block = get_block_setting($widget_id, 'block', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

@@ -50,7 +50,6 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		$onlyBDM	= get_block_setting($widget_id, 'onlyBDM',		false);
 		$infoStyle	= get_block_setting($widget_id, 'infoStyle',	'table');
 		$sortStyle	= get_block_setting($widget_id, 'sortStyle',	'alpha');
-		$widget		= get_block_setting($widget_id, 'widget',		true);
 		if ($cfg) {
 			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'widget') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -111,7 +110,6 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 			set_block_setting($widget_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
 			set_block_setting($widget_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($widget_id, 'sortStyle', WT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			set_block_setting($widget_id, 'widget',    WT_Filter::postBool('widget'));
 			exit;
 		}
 
@@ -154,13 +152,6 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 			/* I18N: An option in a list-box */ 'alpha'=>WT_I18N::translate('sort by name'),
 			/* I18N: An option in a list-box */ 'anniv'=>WT_I18N::translate('sort by date')
 		), null, $sortStyle, '');
-		echo '</td></tr>';
-
-		$widget = get_block_setting($widget_id, 'widget', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when widget contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('widget', $widget);
 		echo '</td></tr>';
 	}
 }

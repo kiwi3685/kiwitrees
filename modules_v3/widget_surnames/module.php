@@ -51,9 +51,8 @@ class widget_surnames_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		$num = get_block_setting($widget_id, 'num', 10);
 		$infoStyle = get_block_setting($widget_id, 'infoStyle', 'table');
-		$block = get_block_setting($widget_id, 'block', false);
 		if ($cfg) {
-			foreach (array('num', 'infoStyle', 'block') as $name) {
+			foreach (array('num', 'infoStyle') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name = $cfg[$name];
 				}
@@ -136,7 +135,6 @@ class widget_surnames_WT_Module extends WT_Module implements WT_Module_Widget {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($widget_id, 'num',       WT_Filter::postInteger('num', 1, 10000, 10));
 			set_block_setting($widget_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
-			set_block_setting($widget_id, 'block',     WT_Filter::postBool('block'));
 			exit;
 		}
 
@@ -154,13 +152,6 @@ class widget_surnames_WT_Module extends WT_Module implements WT_Module_Widget {
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('bullet list'), 'array'=>WT_I18N::translate('compact list'), 'table'=>WT_I18N::translate('table'), 'tagcloud'=>WT_I18N::translate('tag cloud')), null, $infoStyle, '');
-		echo '</td></tr>';
-
-		$block = get_block_setting($widget_id, 'block', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 

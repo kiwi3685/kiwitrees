@@ -53,9 +53,8 @@ class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Wid
 		$infoStyle	= get_block_setting($widget_id, 'infoStyle', 'table');
 		$sortStyle	= get_block_setting($widget_id, 'sortStyle', 'date_desc');
 		$hide_empty	= get_block_setting($widget_id, 'hide_empty', false);
-		$block		= get_block_setting($widget_id, 'block', true);
 		if ($cfg) {
-			foreach (array('days', 'infoStyle', 'show_parents', 'sortStyle', 'hide_empty', 'block') as $name) {
+			foreach (array('days', 'infoStyle', 'show_parents', 'sortStyle', 'hide_empty') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name = $cfg[$name];
 				}
@@ -121,7 +120,6 @@ class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Wid
 			set_block_setting($widget_id, 'infoStyle',  WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($widget_id, 'sortStyle',  WT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
 			set_block_setting($widget_id, 'hide_empty', WT_Filter::postBool('hide_empty'));
-			set_block_setting($widget_id, 'block',      WT_Filter::postBool('block'));
 			exit;
 		}
 
@@ -151,13 +149,6 @@ class widget_recent_changes_WT_Module extends WT_Module implements WT_Module_Wid
 			'date_asc'  => /* I18N: An option in a list-box */ WT_I18N::translate('sort by date, oldest first'),
 			'date_desc' => /* I18N: An option in a list-box */ WT_I18N::translate('sort by date, newest first')
 		), null, $sortStyle, '');
-		echo '</td></tr>';
-
-		$block = get_block_setting($widget_id, 'block', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 
 		$hide_empty = get_block_setting($widget_id, 'hide_empty', true);

@@ -47,9 +47,8 @@ class widget_todo_WT_Module extends WT_Module implements WT_Module_Widget {
 		$show_unassigned	= get_block_setting($widget_id, 'show_unassigned', true);
 		$show_other			= get_block_setting($widget_id, 'show_other',      true);
 		$show_future		= get_block_setting($widget_id, 'show_future',     true);
-		$widget				= get_block_setting($widget_id, 'widget',           true);
 		if ($cfg) {
-			foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
+			foreach (array('show_unassigned', 'show_other', 'show_future') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name=$cfg[$name];
 				}
@@ -157,7 +156,6 @@ class widget_todo_WT_Module extends WT_Module implements WT_Module_Widget {
 			set_block_setting($widget_id, 'show_other',      WT_Filter::postBool('show_other'));
 			set_block_setting($widget_id, 'show_unassigned', WT_Filter::postBool('show_unassigned'));
 			set_block_setting($widget_id, 'show_future',     WT_Filter::postBool('show_future'));
-			set_block_setting($widget_id, 'widget',          WT_Filter::postBool('widget'));
 			exit;
 		}
 
@@ -182,13 +180,6 @@ class widget_todo_WT_Module extends WT_Module implements WT_Module_Widget {
 		echo WT_I18N::translate('Show research tasks that have a date in the future');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_future', $show_future);
-		echo '</td></tr>';
-
-		$widget = get_block_setting($widget_id, 'widget', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when widget contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('widget', $widget);
 		echo '</td></tr>';
 	}
 }

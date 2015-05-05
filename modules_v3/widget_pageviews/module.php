@@ -45,9 +45,8 @@ class widget_pageviews_WT_Module extends WT_Module implements WT_Module_Widget {
 		global $SHOW_COUNTER;
 
 		$num = (int)get_block_setting($widget_id, 'num', 10);
-		$block = get_block_setting($widget_id, 'block', false);
 		if ($cfg) {
-			foreach (array('count_placement', 'num', 'block') as $name) {
+			foreach (array('count_placement', 'num') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name = $cfg[$name];
 				}
@@ -109,7 +108,6 @@ class widget_pageviews_WT_Module extends WT_Module implements WT_Module_Widget {
 	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($widget_id, 'num',             WT_Filter::postInteger('num', 1, 10000, 10));
-			set_block_setting($widget_id, 'block',           WT_Filter::postBool('block'));
 			exit;
 		}
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
@@ -119,13 +117,6 @@ class widget_pageviews_WT_Module extends WT_Module implements WT_Module_Widget {
 		echo WT_I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
-
-		$block=get_block_setting($widget_id, 'block', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

@@ -58,14 +58,6 @@ class widget_messages_WT_Module extends WT_Module implements WT_Module_Widget {
 				deleteMessage($message_id);
 			}
 		}
-		$block=get_block_setting($widget_id, 'block', true);
-		if ($cfg) {
-			foreach (array('block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
-				}
-			}
-		}
 		$messages = getUserMessages(WT_USER_ID);
 
 		$id=$this->getName();
@@ -88,8 +80,8 @@ class widget_messages_WT_Module extends WT_Module implements WT_Module_Widget {
 			$content.=WT_I18N::translate('You have no pending messages.')."<br>";
 		} else {
 			$content.='<input type="hidden" name="action" value="deletemessage">';
-			$content.='<table class="list_table"><tr>';
-			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'.'.$this->getName().'_block :checkbox\').attr(\'checked\',\'checked\'); return false;">'.WT_I18N::translate('All').'</a></td>';
+			$content.='<table class="list_table ' . $this->getName() . '_widget"><tr>';
+			$content.='<td class="list_label">'.WT_I18N::translate('Delete').'<br><a href="#" onclick="jQuery(\'.'.$this->getName().'_widget :checkbox\').attr(\'checked\',\'checked\'); return false;">'.WT_I18N::translate('All').'</a></td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Date Sent:').'</td>';
 			$content.='<td class="list_label">'.WT_I18N::translate('Email Address:').'</td>';
@@ -144,18 +136,6 @@ class widget_messages_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($widget_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($widget_id, 'block',  WT_Filter::postBool('block'));
-			exit;
-		}
-
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		$block=get_block_setting($widget_id, 'block', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
-		echo '</td></tr>';
+		return false;
 	}
 }

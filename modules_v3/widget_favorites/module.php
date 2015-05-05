@@ -115,15 +115,6 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 			break;
 		}
 
-		$block = get_block_setting($widget_id, 'block', false);
-		if ($cfg) {
-			foreach (array('block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
-				}
-			}
-		}
-
 		// Override GEDCOM configuration temporarily
 		if (isset($show_full)) $saveShowFull = $show_full;
 		$savePedigreeFullDetails = $PEDIGREE_FULL_DETAILS;
@@ -258,19 +249,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($widget_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($widget_id, 'block',  WT_Filter::postBool('block'));
-			exit;
-		}
-
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		$block=get_block_setting($widget_id, 'block', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
-		echo '</td></tr>';
+		return false;
 	}
 
 	// Delete a favorite from the database

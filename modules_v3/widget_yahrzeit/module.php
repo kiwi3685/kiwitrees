@@ -47,10 +47,9 @@ class widget_yahrzeit_WT_Module extends WT_Module implements WT_Module_Widget {
 		$days      = get_block_setting($block_id, 'days',       7);
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$calendar  = get_block_setting($block_id, 'calendar',  'jewish');
-		$block     = get_block_setting($block_id, 'block',      true);
 
 		if ($cfg) {
-			foreach (array('days', 'infoStyle', 'block') as $name) {
+			foreach (array('days', 'infoStyle') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name=$cfg[$name];
 				}
@@ -231,7 +230,6 @@ class widget_yahrzeit_WT_Module extends WT_Module implements WT_Module_Widget {
 			set_block_setting($block_id, 'days',      WT_Filter::postInteger('days', 1, 30, 7));
 			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($block_id, 'calendar',  WT_Filter::post('calendar', 'jewish|gregorian', 'jewish'));
-			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
 			exit;
 		}
 
@@ -260,13 +258,6 @@ class widget_yahrzeit_WT_Module extends WT_Module implements WT_Module_Widget {
 			'jewish'   =>WT_Date_Jewish::calendarName(),
 			'gregorian'=>WT_Date_Gregorian::calendarName(),
 		), null, $calendar, '');
-		echo '</td></tr>';
-
-		$block=get_block_setting($block_id, 'block', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

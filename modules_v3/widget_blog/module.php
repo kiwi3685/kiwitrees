@@ -62,14 +62,7 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 			}
 			break;
 		}
-		$block=get_block_setting($widget_id, 'block', true);
-		if ($cfg) {
-			foreach (array('block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
-			}
-		}
+
 		$usernews = getUserNews(WT_USER_ID);
 
 		$id=$this->getName();
