@@ -109,3 +109,7 @@ $WT_STATS_MAP_Y = 220;
 $WT_STATS_CHART_COLOR1 = "ffffff";
 $WT_STATS_CHART_COLOR2 = "84beff";
 $WT_STATS_CHART_COLOR3 = "c3dfff";
+
+if (file_exists(WT_THEME_URL . 'mytheme.php')) {
+	include 'mytheme.php';
+}
