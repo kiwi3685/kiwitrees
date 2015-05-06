@@ -159,8 +159,9 @@ echo 				'</ul>
 						foreach (WT_MenuBar::getMainMenus() as $menu) {
 							echo $menu->getMenuAsList();
 						}
-echo				'</ul>
-					<select id="nav-select" onChange="window.location.href=this.value">
+echo				'</ul>', 
+					// select menu for responsive layouts only
+					'<select id="nav-select" onChange="window.location.href=this.value">
 						<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
 						foreach (WT_MenuBar::getMainMenus() as $menu) {
 							echo $menu->getMenuAsSelect();
