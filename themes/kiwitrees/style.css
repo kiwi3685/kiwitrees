@@ -5812,23 +5812,44 @@ div.widget {
  */
 
 /* RESPOSIVE layout adjustments */
-@media only screen
-and (min-device-width : 320px) 
-and (max-device-width : 1024px)  { 
+@media only screen and (max-device-width: 1024px) {
 	#topMenu #main-menu {
 		display:none;
 	}
-	#topMenu #nav-select {
-		display: inline-block;
-		height: 44px;
-		margin: auto;
-		vertical-align: bottom;
+	#navbar {
+		position: initial;
 	}
+	#topMenu #nav-select {
+		border: 1px solid #CCC;
+		background-color: #FFF;
+		display: block;
+		font-size: 12px;
+		height: 30px;
+		line-height: 30px;
+		margin: 10px auto;
+		text-align: left;
+		width: 70%;
+
+	}	
 	#topMenu #nav-select select {
 		font-size: 30px;
 		width: 100%;
 	}
 	#topMenu #nav-select option {
 		font-size: 12px;
+	}
+	#header {
+		height: auto;
+		text-align: center;
+	}
+	#header .title {
+		position: relative;
+		text-align: center;
+	}
+	#header #extra-menu, #header .header_search {
+		float:none;
+	}
+	#content {
+		top: auto;
 	}
 }
