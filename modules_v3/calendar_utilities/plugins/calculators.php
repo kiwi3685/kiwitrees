@@ -27,8 +27,21 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 $plugin_name = "Calculators"; // need double quotes, as file is scanned/parsed by script
-
-// DISPLAY
+global $WEEK_START;
+$months = '';
+for ($i=0; $i<12; ++$i) {
+	$months .= '"' . WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false) . '",';
+}
+$months = rtrim($months, ",");
+$days_in_week = 7;
+$days = '';
+// We use JD%7 = 0/Mon...6/Sun.  Config files use 0/Sun...6/Sat.  Add 6 to convert.
+$week_start=($WEEK_START+6)%$days_in_week;
+for ($week_day=0; $week_day<$days_in_week; ++$week_day) {
+	$days .= '"' . WT_Date_Gregorian::LONG_DAYS_OF_WEEK(($week_day+$week_start) % $days_in_week) . '",';
+}
+$days = rtrim($days, ",");
+// OVERALL DISPLAY
 $html .= '
 <style type="text/css">.result {color:blue;font-weight: 900;}
 	#utility_tools{min-height:280px;width: 100%;margin: auto;text-align: center;}
@@ -43,16 +56,56 @@ $html .= '
 	#relationships td{padding:5px;}
 	#dob_calc p.main {width:300px; margin:20px auto;}
 	#dob_calc p.main span {margin-right:20px;}
-	#dob_calc label {margin:0 40px 0 0;}
+	#dob_calc label {margin:0 20px 0 0;}
 	#dob_calc label.age_part {margin:0 15px 0 0;}
 	#dob_calc input {padding:3px;}
 	.age_part {width:20px;}
 	.icon-button_bday {display:inline-block; background-image:url(http://our-families.info/themes/simpl_grey/images/silk-sprite.png); background-color:transparent;background-repeat:no-repeat;margin:0 2px;vertical-align:middle; height:16px;width:16px;background-position:-64px -32px}
 </style>
 <div id="utility_tools">';
+
 // UTILITY 1 - DAY OF THE WEEK -->
-$html .= '<div class="utility" id="days">
-<h3 class="header"><span>Day of the Week Calculator</span></h3>';
+//$d = '';
+$html .= '
+<div class="utility" id="days">
+	<h3 class="header"><span>' . WT_I18N::translate('Day of the Week Calculator') . '</span></h3>
+	<form name="form">
+		<table>
+			<tbody>
+				<tr>
+					<td valign="top">
+					<p>
+						<label for="day">Day</label>
+						<select id="day" name="day" size="1">';
+							for ($d=0; $d<31; ++$d) {
+								$day = $d+1;
+								$html .= '<option value="' . $d . '"';
+								if ($day == 1) { $html .=' selected="selected"';}
+								$html .= '>' . $day . '</option>';
+							}
+						$html .= '</select>
+						<label for="month">Month</label>
+						<select id="month" name="month" size="1">';
+							for ($m=0; $m<12; ++$m) {
+								$month = WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($m+1, false);
+								$html .= '<option value="' . $m . '"';
+								if ($m == 0) { $html .=' selected="selected"';}
+								$html .= '>' . $month . '</option>';
+							}
+						$html .= '</select>
+						<label for="year">Year</label>
+						<input id="year" name="year" size="4" type="text" />
+					</p>
+
+					<h3><input class="button" name="gdi" onclick="getDateInfo()" type="button" value="Get Date" /></h3>
+
+					<p><label for="dow">Day of the week</label><input class="result" id="dow" name="dw" size="12" type="text" /> <label for="time">Time</label><input class="result" id="time" name="time" size="10" type="text" /></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>';
 ?>
 <!-- SCRIPTS -->
 <script>
@@ -61,85 +114,79 @@ $html .= '<div class="utility" id="days">
 <!-- This script and many more are available free online at -->
 <!-- The JavaScript Source!! http://javascript.internet.com -->
 <!-- Begin
-var months = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-var days = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+var months = new Array(<?php echo $months; ?>);
+var days = new Array(<?php echo $days; ?>);
 var mtend = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
-var opt = new Array("Past","Future");
+var opt = new Array(" <?php echo WT_I18N::translate('Past'); ?>"," <?php echo WT_I18N::translate('Future'); ?>");
 function getDateInfo() {
-var y = document.form.year.value;
-var m = document.form.month.options[document.form.month.options.selectedIndex].value;
-var d = document.form.day.options[document.form.day.options.selectedIndex].value;
-var hlpr = mtend[m];
-if (d < mtend[m] + 1) {
-if (m == 1 && y % 4 == 0) { hlpr++; }
-var c = new Date(y,m,d);
-var dayOfWeek = c.getDay();
-document.form.dw.value = days[dayOfWeek];
-if(c.getTime() > new Date().getTime()) {
-document.form.time.value = opt[1];
-}
-else {
-document.form.time.value = opt[0];
-   }
-}
-else {
-alert("The date "+months[m]+" "+d+", "+y+" is invalid.\nCheck it again.");
+	var y = document.form.year.value;
+	var m = document.form.month.options[document.form.month.options.selectedIndex].value;
+	var d = document.form.day.options[document.form.day.options.selectedIndex].value;
+	var hlpr = mtend[m];
+	if (d < mtend[m] + 1) {
+	if (m == 1 && y % 4 == 0) { hlpr++; }
+		var c = new Date(y,m,d);
+		var dayOfWeek = c.getDay();
+		document.form.dw.value = days[dayOfWeek];
+		if(c.getTime() > new Date().getTime()) {
+			document.form.time.value = opt[1];
+		}
+		else {
+			document.form.time.value = opt[0];
+	   }
+	}
+	else {
+		alert("The date "+months[m]+" "+d+", "+y+" is invalid.\nCheck it again.");
    }
 }
 function setY() {
-var y = new Date().getYear();
-if (y < 2000) y += 1900;
-document.form.year.value = y;
+	var y = new Date().getYear();
+	if (y < 2000) y += 1900;
+	document.form.year.value = y;
 }
-//  End -->
 </script>
 <?php
-$html .= '
-<form name="form">&nbsp;</form>
+// close UTILITY 1 -->
 
-<table>
-	<tbody>
-		<tr>
-			<td valign="top">
-			<p><label for="day">Day</label> <select id="day" name="day" size="1"><option selected="selected" value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option> </select> <label for="month">Month</label> <select id="month" name="month" size="1"><option selected="selected" value="0">January</option><option value="1">February</option><option value="2">March</option><option value="3">April</option><option value="4">May</option><option value="5">June</option><option value="6">July</option><option value="7">August</option><option value="8">September</option><option value="9">October</option><option value="10">November</option><option value="11">December</option> </select> <label for="year">Year</label> <input id="year" name="year" size="4" type="text" /></p>
-
-			<h3><input class="button" name="gdi" onclick="getDateInfo()" type="button" value="Get Date" /></h3>
-
-			<p><label for="dow">Day of the week</label><input class="result" id="dow" name="dw" size="12" type="text" /> <label for="time">Time</label><input class="result" id="time" name="time" size="10" type="text" /></p>
-			</td>
-		</tr>
-	</tbody>
-</table>
-</div>';
 // UTILITY 2 - RELATIONSHIP CALCULATOR
 $html .= '
 <div class="utility" id="relationships">
-<h3 class="header"><span>Relationship Calculator</span></h3>
+	<h3 class="header"><span>Relationship Calculator</span></h3>
 
-<form action="" method="post" name="generations">
-<table>
-	<tbody>
-		<tr>
-			<td colspan="3">Given a common blood ancestor, A....</td>
-		</tr>
-		<tr>
-			<td>If you are the</td>
-			<td><input name="yores" type="text" value="" /> <input onclick="incGen(1)" type="button" value="+" /> <input onclick="decGen(1)" type="button" value="-" /></td>
-			<td>of A and</td>
-		</tr>
-		<tr>
-			<td>D is the</td>
-			<td><input name="thares" type="text" value="" /> <input onclick="incGen(2)" type="button" value="+" /> <input onclick="decGen(2)" type="button" value="-" /></td>
-			<td>of A,</td>
-		</tr>
-		<tr>
-			<td colspan="3">then<input class="result" name="therelation" type="text" value="" /></td>
-		</tr>
-	</tbody>
-</table>
-</form>';
+	<form action="" method="post" name="generations">
+	<table>
+		<tbody>
+			<tr>
+				<td colspan="3">Given a common blood ancestor, A....</td>
+			</tr>
+			<tr>
+				<td>If you are the</td>
+				<td>
+					<input name="yores" type="text" value="" />
+					<input onclick="incGen(1)" type="button" value="+" />
+					<input onclick="decGen(1)" type="button" value="-" />
+				</td>
+				<td>of A and</td>
+			</tr>
+			<tr>
+				<td>D is the</td>
+				<td><input name="thares" type="text" value="" />
+				<input onclick="incGen(2)" type="button" value="+" />
+				<input onclick="decGen(2)" type="button" value="-" /></td>
+				<td>of A,</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					then
+					<input class="result" name="therelation" type="text" value="" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</div>';
 ?>
-<script language="JavaScript"> 
+<script language="JavaScript">
   var generationsData = new Object();
   generationsData.genYou = 0;
   generationsData.genD = 0;
@@ -153,19 +200,6 @@ $html .= '
     updateDisplays(); // initialize form text contents
   }
 
-  function popupTable(yores, thares)
-  {
-     while( generationsData.genYou < yores )
-        incGen(1);
-
-     while( generationsData.genD < thares )
-        incGen(2);
-
-     generationsData.genYou = yores;
-     generationsData.genD = thares;
-
-     updateDisplays();
-  }
   
   function numSuffix(n)
   {
@@ -299,10 +333,9 @@ $html .= '
     var t1 = generationsData.genYou;
     var t2 = generationsData.genD;
 
-    document.generations.yores.value = generationDisplay(t1);
-    document.generations.thares.value = generationDisplay(t2);
-    document.generations.therelation.value =
-         relationshipDisplay(t1, t2);
+	document.generations.yores.value = generationDisplay(t1);
+	document.generations.thares.value = generationDisplay(t2);
+	document.generations.therelation.value = relationshipDisplay(t1, t2);
   }
 
   function incGen(gen)
@@ -341,11 +374,31 @@ $html .= '
 </script>
 <?php
 // close UTILITY 2 -->
+
 // UTILITY 3 - DATE OF BIRTH CALCULATOR -->
 $html .= '
-</div>
-
-<div class="utility" id="dob_calc">';
+<div class="utility" id="dob_calc">
+	<h3 class="header"><span>Birth Date Calculator</span></h3>
+	<form name="theForm">
+		<p class="main">
+			<label for="">Event Date:</label>
+			<input id="eventDate" name="eventDate" onchange="setEventDateGui()" placeholder="31/12/1905" size="10" type="text" />
+		</p>
+		<p class="main">
+			<label>Age:</label>
+				<input class="age_part" id="ageYY" name="ageYY" onchange="setAgeYYGui()" placeholder="27" size="2" type="text" />
+			<label for="">yrs</label>
+				<input class="age_part" id="ageMM" name="ageMM" onchange="setAgeMMGui()" placeholder="0" size="2" type="text" />
+			<label for="">mths</label>
+				<input class="age_part" id="ageDD" name="ageDD" onchange="setAgeDDGui()" placeholder="0" size="2" type="text" />
+			<label for="">days</label>
+		</p>
+		<p class="main">
+			<span>Estimated DoB:</span>
+			<span id="showResult"></span>
+		</p>
+	</form>
+</div>';
 ?>
 <script>
 	var eventDate;
@@ -502,17 +555,6 @@ $html .= '
 	}
 </script>
 <?php
-$html .= '
-	<h3 class="header"><span>Birth Date Calculator</span></h3>
+// close UTILITY 3 -->
 
-	<form name="theForm">
-	<p class="main"><label for="">Event Date:</label> <input id="eventDate" name="eventDate" onchange="setEventDateGui()" placeholder="31/12/1905" size="10" type="text" /></p>
-
-	<p class="main"><label>Age:</label> <input class="age_part" id="ageYY" name="ageYY" onchange="setAgeYYGui()" placeholder="27" size="2" type="text" /> <label for="">yrs</label> <input class="age_part" id="ageMM" name="ageMM" onchange="setAgeMMGui()" placeholder="0" size="2" type="text" /> <label for="">mths</label> <input class="age_part" id="ageDD" name="ageDD" onchange="setAgeDDGui()" placeholder="0" size="2" type="text" /> <label for="">days</label></p>
-
-	<p class="main"><span>Estimated DoB:</span></p>
-	</form>
-	</div>
-
-	</div>
-';
+$html .= '</div>'; // Close OVERALL DISPLAY
