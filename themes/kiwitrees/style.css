@@ -522,6 +522,10 @@ textarea:required:invalid {
 	top: auto;
 }
 
+div[id*='-page'] {
+	margin: 12px;
+}
+
 /* ======= Block styles ========== */
 /* Default */
 #index_main_blocks {
@@ -4960,8 +4964,8 @@ ul#research_status ul.sublinks {
 }
 
 #gallery-page {
-	width: 90%;
-	margin: 0 auto;
+/*	width: 90%;
+	margin: 12px auto;*/
 }
 
 #gallery-header {
@@ -4970,11 +4974,10 @@ ul#research_status ul.sublinks {
 
 #gallery-container {
 	overflow: hidden;
-	padding: 20px 0;
 }
 
 #galleria {
-	height: 500px;
+	height: 600px;
 	float: left;
 	margin-bottom: 40px;
 }
