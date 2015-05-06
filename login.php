@@ -93,13 +93,23 @@ default:
 			} else {
 				$WT_SESSION->timediff=0;
 			}
-			$WT_SESSION->locale   	=get_user_setting($user_id, 'language');
-			$WT_SESSION->theme_dir	=get_user_setting($user_id, 'theme');
-			$WT_SESSION->gedcomid	=get_gedcomid($user_id, WT_GED_ID);
+			$WT_SESSION->locale   	= get_user_setting($user_id, 'language');
+			$WT_SESSION->theme_dir	= get_user_setting($user_id, 'theme');
+			$WT_SESSION->gedcomid	= get_gedcomid($user_id, WT_GED_ID);
+			$WT_SESSION->rootid		= $WT_TREE->userPreference($user_id, 'rootid');
+			$PEDIGREE_ROOT_ID		= get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 			// If we’ve clicked login from the login page, we don’t want to go back there.
 			if (strpos('index.php', $url)===0) {
-				$url = 'individual.php?pid='.$WT_SESSION->gedcomid.'&amp;ged='.WT_GEDURL;
+				if ($WT_SESSION->gedcomid) {
+					$url = 'individual.php?pid=' . $WT_SESSION->gedcomid . '&amp;ged=' . WT_GEDURL;
+				} elseif ($WT_SESSION->rootid) {
+					$url = 'individual.php?pid=' . $WT_SESSION->rootid . '&amp;ged=' . WT_GEDURL;	
+				} elseif ($PEDIGREE_ROOT_ID) {
+					$url = 'individual.php?pid=' . $PEDIGREE_ROOT_ID . '&amp;ged=' . WT_GEDURL;	
+				} else {
+					$url = 'index.php?ged=' . WT_GEDURL;					
+				}
 			}
 
 			// Redirect to the target URL
