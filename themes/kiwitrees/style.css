@@ -4964,8 +4964,8 @@ ul#research_status ul.sublinks {
 }
 
 #gallery-page {
-/*	width: 90%;
-	margin: 12px auto;*/
+	width: 90%;
+	margin: 0 auto;
 }
 
 #gallery-header {
@@ -4974,12 +4974,13 @@ ul#research_status ul.sublinks {
 
 #gallery-container {
 	overflow: hidden;
+	padding: 20px 0;
 }
 
 #galleria {
-	height: 600px;
+	height: 700px;
 	float: left;
-	margin-bottom: 40px;
+	margin-bottom: 5px;
 }
 
 .galleria-layer {
@@ -5026,9 +5027,7 @@ a#copy {
 	float: left;
 	font-size: 11px;
 	font-style: italic;
-	margin-top: -30px;
 }
-
 /* Styling for family page (family.php) */
 #family-page {
 	min-width: 900px;

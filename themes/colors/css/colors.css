@@ -1397,27 +1397,77 @@ ul#research_status ul.sublinks {display:none}
 [dir='rtl'] #album_content div.album_norm , [dir='rtl'] #album_content div.album_new, [dir='rtl'] #album_content div.album_old {float:right;}
 
 /* Styling for gallery module */
-/* Main menu icon */
-li#menu-my_gallery {background:url(../images/gallery.png) no-repeat 50% 50%}
-li#menu-my_gallery ul li {background:url(../images/gallery-small.png) no-repeat left 0}
-html[dir=rtl] li#menu-my_gallery ul li {background-position:right 0}
-li#menu-my_gallery ul li#menu-my_gallery-edit {background:url(../images/submenu_edit.png) no-repeat left 0}
-html[dir=rtl] #menu-my_gallery ul li#menu-my_gallery-edit {background-position:right 0}
 /* Gallery wrapper */
-#outer_gallery_container {overflow:hidden; padding:1em;}
-#gallery-page {width:80%; margin:0 auto;}
-#gallery-header {padding:0 2em 0 0;}
-#gallery-container {overflow:hidden; padding:20px 0;}
-#galleria {height:500px;float:left;margin-bottom:40px;}
-.galleria-layer {display:none!important;}
-.galleria-image iframe {width: 85%!important;height: 100%!important;margin: auto;display: block;}
-#links_bar {width:18%; float:right; margin-left:1%;}
-#links_bar h4 {margin: 0 0 10px 0; padding:0;}
-#links_bar .image_option {float:left;}
-#links_bar .image_option img {margin:5px;}
-#links_bar .image_links {clear:both;}
-#links_bar hr {clear: both;margin:5px 0 10px;}
-a#copy {clear:both;float:left; font-size:11px; font-style:italic; margin-top:-30px;}
+#outer_gallery_container {
+	overflow: hidden;
+	padding: 1em;
+}
+
+#gallery-page {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#gallery-header {
+	padding: 0 2em 0 0;
+}
+
+#gallery-container {
+	overflow: hidden;
+	padding: 20px 0;
+}
+
+#galleria {
+	height: 700px;
+	float: left;
+	margin-bottom: 5px;
+}
+
+.galleria-layer {
+	display: none!important;
+}
+
+.galleria-image iframe {
+	width: 85%!important;
+	height: 100%!important;
+	margin: auto;
+	display: block;
+}
+
+#links_bar {
+	width: 18%;
+	float: right;
+	margin-left: 1%;
+}
+
+#links_bar h4 {
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+
+#links_bar .image_option {
+	float: left;
+}
+
+#links_bar .image_option img {
+	margin: 5px;
+}
+
+#links_bar .image_links {
+	clear: both;
+}
+
+#links_bar hr {
+	clear: both;
+	margin: 5px 0 10px;
+}
+
+a#copy {
+	clear: both;
+	float: left;
+	font-size: 11px;
+	font-style: italic;
+}
 
 /* Styling for family page (family.php) */
 #family-page {min-width:900px;}

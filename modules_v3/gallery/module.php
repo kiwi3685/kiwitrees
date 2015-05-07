@@ -561,11 +561,10 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					flickrOptions: {
 						sort: "date-posted-asc",
 						description: true,
-						imageSize: "big"
+						imageSize: "original"
 					},
 					_showCaption: false,
-					imageCrop: true,
-					decription: true
+					imageCrop: false
 				});
 			';
 			break;
@@ -575,10 +574,11 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				Galleria.run("#galleria", {
 					picasa: "useralbum:'.$picasa_set.'",
 					picasaOptions: {
-						sort: "date-posted-asc"
+						sort: "date-posted-asc",
+						imageSize: "original"
 					},
 					_showCaption: false,
-					imageCrop: true
+					imageCrop: false
 				});
 			';
 			break;
