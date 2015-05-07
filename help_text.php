@@ -1059,14 +1059,6 @@ case 'add_facts':
 	$text.=WT_I18N::translate('Kiwitrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
 	break;
 
-case 'add_new_gedcom':
-	$title = WT_I18N::translate('Create a new family tree');
-	$text = 
-		WT_I18N::translate('This option creates a new family tree.  The name you give it will be used to generate URLs and filenames, so you should choose something short, simple, and avoid punctuation.').
-		'<br/><br/>'.
-		WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.');
-	break;
-
 case 'add_note':
 	// This is a general help text for multiple pages
 	$title = WT_I18N::translate('Add a note');
@@ -1103,11 +1095,6 @@ case 'block_move_right':
 case 'block_move_up':
 	$title = WT_I18N::translate('Move list entries');
 	$text = WT_I18N::translate('Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down.');
-	break;
-
-case 'default_gedcom':
-	$title = WT_I18N::translate('Default family tree');
-	$text = WT_I18N::translate('This option selects the family tree that is shown to visitors when they first arrive at the site.');
 	break;
 
 case 'default_individual':

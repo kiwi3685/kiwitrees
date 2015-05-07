@@ -73,6 +73,16 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 	fclose($fp);
 }
 
+
+$default_tree_title  = /* I18N: Default name for a new tree */ WT_I18N::translate('My family tree');
+$default_tree_name   = 'tree';
+$default_tree_number = 1;
+$existing_trees      = WT_Tree::getNameList();
+while (array_key_exists($default_tree_name . $default_tree_number, $existing_trees)) {
+	$default_tree_number++;
+}
+$default_tree_name .= $default_tree_number;
+
 // Process POST actions
 switch (WT_Filter::post('action')) {
 case 'delete':
@@ -242,29 +252,49 @@ foreach (WT_Tree::GetAll() as $tree) {
 
 // Options for creating new gedcoms and setting defaults
 if (WT_USER_IS_ADMIN) {
-	echo '<table class="gedcom_table2"><tr>';
-	if (count(WT_Tree::GetAll())>1) {
-		echo '<th>', WT_I18N::translate('Default family tree'), help_link('default_gedcom'), '</th>';
-	}
-	echo '<th>', WT_I18N::translate('Create a new family tree'), help_link('add_new_gedcom'), '</th></tr><tr>';
-	if (count(WT_Tree::GetAll())>1) {
-		echo
-			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
-			'<input type="hidden" name="action" value="setdefault">',
-			WT_Filter::getCsrf(),
-			select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
-			'</form></td>';
-	}
-	echo
-		'<td class="button">',
-		'<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">',
-		WT_Filter::getCsrf(),
-		'<input type="hidden" name="action" value="new_tree">',
-		'<input name="ged_name">',
-		' <input type="submit" value="', WT_I18N::translate('save') , '">',
-		'</form>',
-		'</td>',
-		'</tr></table><br>';
+	echo '<hr>
+	<div class="gedcom_table2">';
+		if (count(WT_Tree::GetAll())>1) {
+			echo  '
+				<form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">
+					<label>', WT_I18N::translate('Default family tree'), '</label>
+					<input type="hidden" name="action" value="setdefault">',
+					WT_Filter::getCsrf(),
+					select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'), '
+					<span class="help-text">' , WT_I18N::translate('This selects the family tree shown to visitors when they first arrive at the site.'), '</span>
+					<div class="input-group">
+						<button class="btn btn-primary" type="submit">
+						<i class="fa fa-floppy-o"></i>',
+							WT_I18N::translate('save'), '
+						</button>
+					</div>
+				</form>';
+		}
+	echo '</div>
+	<hr>
+	<div class="gedcom_table3">
+		<h3>', WT_I18N::translate('Create a new family tree'), '</h3>
+		<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">
+			<label for="gedcom_title">', WT_I18N::translate('Family tree title'), '</label>
+			<input type="text" id="gedcom_title" name="gedcom_title" dir="ltr" value="" size="50" maxlength="255" required placeholder="' , $default_tree_title, '">
+			<span class="help-text">' , WT_I18N::translate('This is the name used for display.'), '</span>
+			<label for="new_tree">', WT_I18N::translate('URL'), '</label>',
+			WT_Filter::getCsrf(), '
+			<div class="input-group">
+				<span>' ,
+					WT_SERVER_NAME.WT_SCRIPT_PATH, '?ged=
+				</span>
+				<input type="hidden" id="new_tree" name="action" value="new_tree">
+				<input name="ged_name" maxlength="31" value="', $default_tree_name, '" pattern="[^&lt;&gt;&amp;&quot;#^$.*?{}()\[\]/\\]*" required type="text">
+				<span class="help-text">' , WT_I18N::translate('Keep this short and avoid spaces and punctuation. A family name might be a good choice.'), '</span>
+			</div>
+			<button class="btn btn-primary" type="submit">
+			<i class="fa fa-check"></i>',
+				WT_I18N::translate('create'), '
+			</button>
+			<p class="help-text">' , WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'), '</p>
+		</form>
+	</div>';
 
 		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
 		if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
@@ -277,4 +307,3 @@ if (WT_USER_IS_ADMIN) {
 				'</div>';
 		}
 }	
-

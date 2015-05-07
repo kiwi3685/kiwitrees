@@ -50,6 +50,8 @@ button {min-width:100px;}
 .rela {opacity :0.4;}
 .faq_link {float:right; padding:0 20px;}
 .clearfloat {clear:both}
+.help-text{font-size: smaller; font-style: italic;}
+.input-group {margin:20px 0;}
 
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
@@ -106,11 +108,11 @@ button {min-width:100px;}
 #page_help a img {display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
-#admin_head {position:relative; height:80px; margin-bottom:10px; min-width:970px; z-index:1000;}
+#admin_head {position:relative; height:100px; margin-bottom:10px; min-width:970px; z-index:1000;}
 #title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
-#info {position:absolute; right:10px; bottom:0; text-align:right;}
+#info {position:absolute; right:10px; bottom:10px; text-align:right;}
 [dir=rtl] #info {right:auto; left:10px; text-align:left;}
-#links {position:absolute; left:10px; bottom:0; display:inline; margin-bottom:5px; white-space:nowrap;}
+#links {position:absolute; left:10px; bottom:10px; display:inline; white-space:nowrap;}
 [dir=rtl] #links {left:auto; right:10px;}
 #links li {display:inline; position:relative;}
 #links li ul {display:none; position:absolute; left:0; top:1.2em; background:#fff; border:1px solid #d9d6c4;z-index:999;}
@@ -128,7 +130,7 @@ button {min-width:100px;}
 #admin_content {min-width:750px;}
 
 /* SIDE MENU */
-#admin_menu {padding:10px 5px;top:102px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2e6e9e; white-space:nowrap; overflow:hidden;}
+#admin_menu {padding:10px 5px;top:122px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2e6e9e; white-space:nowrap; overflow:hidden;}
 #admin_menu .ui-accordion .ui-accordion-content-active {padding:.5em;}
 #admin_menu div p {margin:8px 5px; font-size:12px; white-space:normal;}
 #admin_menu div p span {font-style:italic; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
@@ -317,9 +319,9 @@ table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
 .gedcom_table th {font-size:105%; text-align:left; width:15%;}
 [dir=rtl] .gedcom_table th {text-align:right;}
 .gedcom_table th+th {font-weight:normal; width:80%}
-table.gedcom_table2 {margin:20px 0; width:100%;}
-.gedcom_table2 th {font-weight:bold; font-size:105%; padding:5px; text-align:center;}
-.gedcom_table2 td {text-align:center;}
+.gedcom_table2 {margin:20px 0; width:100%;}
+.gedcom_table2 label, .gedcom_table3 label {display:block; font-weight:900; margin:10px 0 3px;}
+.gedcom_table2 input {width: 100px;}
 
 /* FAMILY TREE CONFIG */
 #file-options, #privacy, #config-media, #layout-options, #hide-show, #edit-options {padding:10px;}
