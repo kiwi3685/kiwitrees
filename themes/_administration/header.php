@@ -30,7 +30,6 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addExternalJavascript(WT_JQUERY_AUTOSIZE)
-	->addExternalJavascript(WT_JQUERY_COOKIE_URL)
 	->addInlineJavascript('
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
@@ -48,17 +47,17 @@ $this
 			icons: false,
 			create: function(event, ui) {
 				//get index in cookie on accordion create event
-				if(jQuery.cookie("saved_index") != null){
-					act =  parseInt(jQuery.cookie("saved_index"));
+				if(sessionStorage.getItem("saved_index") != null){
+					act =  parseInt(sessionStorage.getItem("saved_index"));
 				}
 			},
 			activate: function(event, ui) {
 				//set cookie for current index on change event
 				var active = jQuery("#adminAccordion").accordion("option", "active");
-				jQuery.cookie("saved_index", null);
-				jQuery.cookie("saved_index", active);
+				sessionStorage.setItem("saved_index", null);
+				sessionStorage.setItem("saved_index", active);
 			},
-			active:parseInt(jQuery.cookie("saved_index"))
+			active:parseInt(sessionStorage.getItem("saved_index"))
 		});
 		jQuery("#adminAccordion").css("visibility", "visible");
 	');

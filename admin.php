@@ -1472,6 +1472,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/fancy_treeview/themes',
 		WT_ROOT.'nocensus.php',
 		WT_ROOT.'language/mi.mo',
+		WT_ROOT.'js/jquery.cookie.js',
 	);
 }
 

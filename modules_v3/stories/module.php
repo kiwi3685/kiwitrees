@@ -518,22 +518,19 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-			->addExternalJavascript(WT_JQUERY_COOKIE_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
-					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-					'.WT_I18N::datatablesI18N().',
-					"bAutoWidth":false,
-					"bPaginate": true,
-					"sPaginationType": "full_numbers",
-					"bLengthChange": true,
-					"bStateSave": true,
-					"iCookieDuration": 180,
-					"bFilter": true,
-					"bInfo": true,
-					"bJQueryUI": true,
-					"aaSorting": [[0,"asc"]],
-					"aoColumns": [
+					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+					' . WT_I18N::datatablesI18N() . ',
+					autoWidth: false,
+					paging: true,
+					pagingType: "full_numbers",
+					lengthChange: true,
+					filter: true,
+					info: true,
+					jQueryUI: true,
+					sorting: [[0,"asc"]],
+					columns: [
 						/* 0-name */ null,
 						/* 1-NAME */ null
 					]
@@ -667,7 +664,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	private function onClick($storytab = true) {
 		$tabId = $storytab ? array_search($this->getname(),array_keys(WT_Module::getActiveTabs())) : 0;
-		return "onclick=\"jQuery.cookie('indi-tab',$tabId);\"";
+		return "onclick=\"sessionStorage.setitem('indi-tab',$tabId);\"";
 	}
 
 	// Implement WT_Module_Access
