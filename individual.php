@@ -31,8 +31,6 @@
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller=new WT_Controller_Individual();
-$controller
-	->addExternalJavascript(WT_JQUERY_COOKIE_URL); // We use this to record the sidebar state
 	
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
@@ -100,8 +98,8 @@ $controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
 		spinner: \'<i class="icon-loading-small"></i>\',
 		cache:    true,
-		active:   jQuery.cookie("indi-tab"),
-		activate: function(event, ui) { jQuery.cookie("indi-tab", jQuery("#tabs").tabs("option", "active")); }
+		active:   sessionStorage.getItem("indi-tab"),
+		activate: function(event, ui) { sessionStorage.setItem("indi-tab", jQuery("#tabs").tabs("option", "active")); }
 	});
 
 	// sidebar settings 
@@ -129,14 +127,14 @@ $controller->addInlineJavascript('
 		objMain.addClass("use-sidebar");
 		objSeparator.css("height", objBar.outerHeight() + "px");
 		jQuery("#separator i").switchClass( "icon-sidebar-open", "icon-sidebar-close" );
-		jQuery.cookie("hide-sb", null);
+		sessionStorage.setItem("hide-sb", null);
 	}
 	// Hide sidebar
 	function hideSidebar(){
 		objMain.removeClass("use-sidebar");
 		objSeparator.css("height", objTabs.outerHeight() + "px");
 		jQuery("#separator i").switchClass( "icon-sidebar-close", "icon-sidebar-open" );
-		jQuery.cookie("hide-sb", "1");
+		sessionStorage.setItem("hide-sb", "1");
 	}
 	// Sidebar separator
 	objSeparator.click(function(e){
@@ -150,7 +148,7 @@ $controller->addInlineJavascript('
 		}
 	});
 	// Load preference
-	if (jQuery.cookie("hide-sb")=="1"){
+	if (sessionStorage.getItem("hide-sb")=="1"){
 		hideSidebar();
 	} else {
 		showSidebar();
