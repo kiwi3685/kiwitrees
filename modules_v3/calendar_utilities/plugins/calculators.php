@@ -26,7 +26,9 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-$plugin_name = "Calculators"; // need double quotes, as file is scanned/parsed by script
+// Plugin name - this needs double quotes, as file is scanned/parsed by script
+$plugin_name = "Calculators"; /* I18N: Name of a plugin. */ WT_I18N::translate('Calculators');
+
 global $WEEK_START;
 $months = '';
 for ($i=0; $i<12; ++$i) {
@@ -74,32 +76,39 @@ $html .= '
 			<tbody>
 				<tr>
 					<td valign="top">
-					<p>
-						<label for="day">Day</label>
-						<select id="day" name="day" size="1">';
-							for ($d=0; $d<31; ++$d) {
-								$day = $d+1;
-								$html .= '<option value="' . $d . '"';
-								if ($day == 1) { $html .=' selected="selected"';}
-								$html .= '>' . $day . '</option>';
-							}
-						$html .= '</select>
-						<label for="month">Month</label>
-						<select id="month" name="month" size="1">';
-							for ($m=0; $m<12; ++$m) {
-								$month = WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($m+1, false);
-								$html .= '<option value="' . $m . '"';
-								if ($m == 0) { $html .=' selected="selected"';}
-								$html .= '>' . $month . '</option>';
-							}
-						$html .= '</select>
-						<label for="year">Year</label>
-						<input id="year" name="year" size="4" type="text" />
-					</p>
+						<p>
+							<label for="day">' . WT_I18N::translate('Day') . '</label>
+							<select id="day" name="day" size="1">';
+								for ($d=0; $d<31; ++$d) {
+									$day = $d+1;
+									$html .= '<option value="' . $d . '"';
+									if ($day == 1) { $html .=' selected="selected"';}
+									$html .= '>' . $day . '</option>';
+								}
+							$html .= '</select>
+							<label for="month">' . WT_I18N::translate('Month') . '</label>
+							<select id="month" name="month" size="1">';
+								for ($m=0; $m<12; ++$m) {
+									$month = WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($m+1, false);
+									$html .= '<option value="' . $m . '"';
+									if ($m == 0) { $html .=' selected="selected"';}
+									$html .= '>' . $month . '</option>';
+								}
+							$html .= '</select>
+							<label for="year">' . WT_I18N::translate('Year') . '</label>
+							<input id="year" name="year" size="4" type="text" />
+						</p>
 
-					<h3><input class="button" name="gdi" onclick="getDateInfo()" type="button" value="Get Date" /></h3>
+						<h3>
+							<input class="button" name="gdi" onclick="getDateInfo()" type="button" value="' . WT_I18N::translate('Get Date') . '" />
+						</h3>
 
-					<p><label for="dow">Day of the week</label><input class="result" id="dow" name="dw" size="12" type="text" /> <label for="time">Time</label><input class="result" id="time" name="time" size="10" type="text" /></p>
+						<p>
+							<label for="dow">' . WT_I18N::translate('Day of the week') . '</label>
+								<input class="result" id="dow" name="dw" size="12" type="text" />
+							<label for="time">' . WT_I18N::translate('Time') . '</label>
+								<input class="result" id="time" name="time" size="10" type="text" />
+						</p>
 					</td>
 				</tr>
 			</tbody>
@@ -117,7 +126,7 @@ $html .= '
 var months = new Array(<?php echo $months; ?>);
 var days = new Array(<?php echo $days; ?>);
 var mtend = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
-var opt = new Array(" <?php echo WT_I18N::translate('Past'); ?>"," <?php echo WT_I18N::translate('Future'); ?>");
+var opt = new Array("<?php echo WT_I18N::translate('Past'); ?>","<?php echo WT_I18N::translate('Future'); ?>");
 function getDateInfo() {
 	var y = document.form.year.value;
 	var m = document.form.month.options[document.form.month.options.selectedIndex].value;
@@ -136,7 +145,7 @@ function getDateInfo() {
 	   }
 	}
 	else {
-		alert("The date "+months[m]+" "+d+", "+y+" is invalid.\nCheck it again.");
+		alert("<?php echo WT_I18N::translate('That date is invalid'); ?>");
    }
 }
 function setY() {
@@ -151,33 +160,32 @@ function setY() {
 // UTILITY 2 - RELATIONSHIP CALCULATOR
 $html .= '
 <div class="utility" id="relationships">
-	<h3 class="header"><span>Relationship Calculator</span></h3>
+	<h3 class="header"><span>' . WT_I18N::translate('Relationship Calculator') . '</span></h3>
 
 	<form action="" method="post" name="generations">
 	<table>
 		<tbody>
 			<tr>
-				<td colspan="3">Given a common blood ancestor, A....</td>
+				<td colspan="2">' . WT_I18N::translate('Given a common blood ancestor, <strong>X</strong>') . '</td>
 			</tr>
 			<tr>
-				<td>If you are the</td>
+				<td>' . WT_I18N::translate('The first relationship to <strong>X</strong> is') . '</td>
 				<td>
 					<input name="yores" type="text" value="" />
 					<input onclick="incGen(1)" type="button" value="+" />
 					<input onclick="decGen(1)" type="button" value="-" />
 				</td>
-				<td>of A and</td>
 			</tr>
 			<tr>
-				<td>D is the</td>
-				<td><input name="thares" type="text" value="" />
-				<input onclick="incGen(2)" type="button" value="+" />
-				<input onclick="decGen(2)" type="button" value="-" /></td>
-				<td>of A,</td>
+				<td>' . WT_I18N::translate('The relationship of <strong>D</strong> to <strong>X</strong> is') . '</td>
+				<td>
+					<input name="thares" type="text" value="" />
+					<input onclick="incGen(2)" type="button" value="+" />
+					<input onclick="decGen(2)" type="button" value="-" />
+				</td>
 			</tr>
 			<tr>
-				<td colspan="3">
-					then
+				<td colspan="2">
 					<input class="result" name="therelation" type="text" value="" />
 				</td>
 			</tr>

@@ -99,7 +99,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 							if ( get_module_setting($this->getName(), $plugin_file) == '1'){
 								$pluginfile = implode('', file(WT_MODULES_DIR.$this->getName().'/plugins/'.$plugin_file.'.php'));
 								if (preg_match('/plugin_name\s*=\s*"(.*)";/', $pluginfile, $match)) {
-									$plugin_title = $match[1];
+									$plugin_title = WT_I18N::translate($match[1]);
 								}
 								$html .=	
 									'<li>'.

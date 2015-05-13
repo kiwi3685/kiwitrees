@@ -26,7 +26,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-$plugin_name = "Ecclesiastical Dates"; // need double quotes, as file is scanned/parsed by script
+// Plugin name - this needs double quotes, as file is scanned/parsed by script
+$plugin_name = "Ecclesiastical Dates"; /* I18N: Name of a plugin. */ WT_I18N::translate('Ecclesiastical Dates');
 
 // DATA
 /* List of non-movable feasts */
