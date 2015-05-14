@@ -47,12 +47,12 @@ $WT_IMAGES = array(
 	'vline'          =>WT_THEME_URL.'images/vline.png',
 
 	// used in button images and javascript
-	'add' = >WT_THEME_URL.'images/add.png',
-	'button_family'  =>WT_THEME_URL.'images/buttons/family.png',
-	'minus'          =>WT_THEME_URL.'images/minus.png',
-	'plus'           =>WT_THEME_URL.'images/plus.png',
-	'remove'         =>WT_THEME_URL.'images/delete.png',
-	'search'         =>WT_THEME_URL.'images/search.png',
+	'add'			=>WT_THEME_URL.'images/add.png',
+	'button_family'	=>WT_THEME_URL.'images/buttons/family.png',
+	'minus'			=>WT_THEME_URL.'images/minus.png',
+	'plus'			=>WT_THEME_URL.'images/plus.png',
+	'remove'		=>WT_THEME_URL.'images/delete.png',
+	'search'		=>WT_THEME_URL.'images/search.png',
 
 	// need different sizes before moving to CSS
 	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',

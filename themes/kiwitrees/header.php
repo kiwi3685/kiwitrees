@@ -97,7 +97,8 @@ echo '
 		header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),'
 		<title>', htmlspecialchars($title), '</title>
 		<link rel="icon" href="', WT_THEME_URL, 'images/favicon.png" type="image/png">
-		<link rel="stylesheet" type="text/css" href="', WT_THEMES_DIR, '_administration/jquery-ui-1.10.3/jquery-ui-1.10.3.custom.css">
+		<link rel="stylesheet" href="', WT_THEMES_DIR, '_administration/jquery-ui-custom/jquery-ui.structure.min.css" type="text/css">
+		<link rel="stylesheet" href="', WT_THEMES_DIR, '_administration/jquery-ui-custom/jquery-ui.theme.min.css" type="text/css">
 		<link rel="stylesheet" href="', WT_THEME_URL, 'style.css" type="text/css">
 		<!--[if IE]>
 			<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'msie.css">

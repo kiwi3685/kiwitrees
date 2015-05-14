@@ -179,7 +179,6 @@ button {min-width:100px;}
 /* DASHBOARD BLOCKS */
 fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%;}
 fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
-#users div#logged_in_users {font-size: 110%;}
 #users div#logged_in_users ul {list-style: none;}
 #tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
 #tree_stats td, #recent td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
@@ -188,7 +187,6 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #trees span, #recent span {text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
 #tree_stats ul.admin_stats, #users ul.admin_stats {
 	background-color: #c9c9c9;
-	font-size: 110%;
 	line-height: 1.8;
 	list-style-type:none;
 	margin: 0;
