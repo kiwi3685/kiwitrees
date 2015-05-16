@@ -1273,10 +1273,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	preg_match('/^(?:(\d+) (' . WT_REGEX_TAG . ') ?(.*))/', $tag, $match);
 	if ($match) {
 		list(, $level, $fact, $value) = $match;
-	} else {
-		echo '<script>
-				alert("' . WT_I18N::translate('You must select a fact or event from the drop-down list first') . '")
-			</script>';
 	}
 
 	// element name : used to POST data
