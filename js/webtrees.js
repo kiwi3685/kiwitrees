@@ -343,23 +343,17 @@ function edit_source(pid) {
   });
 }
 
-function add_record(pid, fact, message) {
-	var factfield = document.getElementById(fact);
-//	var message = document.getElementById(message);
-	if (factfield) {
-		var factvalue = factfield.options[factfield.selectedIndex].value;
-		if (factvalue != "") {
-			if (factvalue == "OBJE") {
-				window.open('addmedia.php?action=showmediaform&linkid='+pid+'&ged='+WT_GEDCOM, '_blank', edit_window_specs);
-			} else {
-				return edit_interface({
-					"action": "add",
-					"pid": pid,
-					"fact": factvalue
-				});
-			}
+function add_record(pid, fact_field) {
+	var fact = jQuery('#' + fact_field).val();
+	if (fact) {
+		if (fact === "OBJE") {
+			window.open('addmedia.php?action=showmediaform&linkid=' + encodeURIComponent(xref) + '&ged=' + encodeURIComponent(WT_GEDCOM), '_blank', edit_window_specs);
 		} else {
-			alert(message);
+			return edit_interface({
+				"action": "add",
+				"pid": pid,
+				"fact": fact
+			});
 		}
 	}
 	return false;
