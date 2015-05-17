@@ -1096,7 +1096,6 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	}
 	$addfacts=array_merge(CheckFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
 	$quickfacts=array_intersect($quickfacts, $addfacts);
-	$message = WT_I18N::translate('You must select a fact or event from the drop-down list first.'); // only used if newfact is empty
 	$translated_addfacts=array();
 	foreach ($addfacts as $addfact) {
 		$translated_addfacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
@@ -1116,7 +1115,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
 	}
 	echo '</select>';
-	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\', \''.$message.'\');">';
+	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';
 	echo '<span class="quickfacts">';
 	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
 	echo '</span></form>';
@@ -1201,7 +1200,6 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 		$translated_addfacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
 	}
 	uasort($translated_addfacts, 'factsort');
-	$message = WT_I18N::translate('You must select a fact or event from the drop-down list first.'); // only used if newfact2 is empty
 	echo '<tr><td class="descriptionbox">';
 	echo WT_I18N::translate('Fact or event');
 	echo help_link('add_facts'), '</td>';
@@ -1216,7 +1214,7 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
 	}
 	echo '</select>';
-	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\', \''.$message.'\');">';
+	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\');">';
 	echo '<span class="quickfacts">';
 	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
 	echo '</span></form>';
