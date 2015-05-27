@@ -209,28 +209,28 @@ case 'load1row':
 	echo '<dl>';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', get_user_setting($user_id, 'canadmin')), '</dd>';
-
+	echo '<hr>';
 	echo '<dt>', WT_I18N::translate('Password'), '</dt>';
 	echo '<dd>', edit_field_inline('user-password-'.$user_id, ''), '</dd>';
-
+	echo '<hr>';
 	echo '<dt>', WT_I18N::translate('Preferred contact method'), '</dt>';
 	echo '<dd>', edit_field_contact_inline('user_setting-'.$user_id.'-contactmethod', get_user_setting($user_id, 'contactmethod')), '</dd>';
-
+	echo '<hr>';
 	echo '<dt>', WT_I18N::translate('Automatically approve changes made by this user'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', get_user_setting($user_id, 'auto_accept')), '</dd>';
-
+	echo '<hr>';
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', get_user_setting($user_id, 'visibleonline')), '</dd>';
-
-	echo '<dt>', WT_I18N::translate('Comments'), '</dt>';
-	echo '<dd>', edit_field_inline('user_setting-'.$user_id.'-comment', get_user_setting($user_id, 'comment')), '</dd>';
-
+	echo '<hr>';
+	echo '<dt class="comments">', WT_I18N::translate('Comments'), '</dt>';
+	echo '<dd class="comments">', edit_field_inline('user_setting-'.$user_id.'-comment', get_user_setting($user_id, 'comment')), '</dd>';
 	echo '</dl>';
 
 	// Column One - details
 
 	echo
 		'<div id="access">',
+		'<hr>',
 		'<h2>', WT_I18N::translate('Family tree access and settings'), '</h2>',
 		'<table><tr>',
 		'<th>', WT_I18N::translate('Family tree'), '</th>',

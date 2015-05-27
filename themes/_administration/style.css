@@ -354,16 +354,20 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 /* USER LIST */
 #list { width:100%}
 #list .editable {background:none;border:none;}
+#list .editable form button {margin: auto 10px;}
 #list img {padding-left:15px; width:25px; vertical-align:middle;}
 [dir=rtl] #list img {padding-right:15px;}
 #access img {width:11px;}
 #list h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
-#list dl {float:left;margin:0 0 0 20px;line-height:21px;}
-#list dt {clear:left; float:left; min-width:300px; margin:0; padding:5px 5px 5px 0; border-bottom:1px solid #999; font-weight:bold;}
-#list dd {border-bottom:1px solid #999; margin-left:300px; min-width:300px; padding:5px;}
+#list hr {width: 100%;}
+#list dl {float:left;margin:0 0 70px 20px;line-height:21px;}
+#list dt {clear:left; float:left; min-width:350px; margin:0; padding:5px; font-weight:bold;}
+#list dd {margin-left:350px; min-width:460px; padding:5px;}
+#list span[id$="-comment"] {display: block; min-width: 100%;}
+
 [dir=rtl] #list dl {float:right;margin:0 20px 0 0;}
-[dir=rtl] #list dt {clear:right; float:right; padding:5px 0 5px 5px;}
-[dir=rtl] #list dd {margin-right:300px;}
+[dir=rtl] #list dt {clear:right; float:right;}
+[dir=rtl] #list dd {margin-right:350px;}
 #access {float:left; margin-left:20px;}
 [dir=rtl] #access {float:right; margin-right:20px;}
 #access table {border-collapse: initial; margin-bottom:20px;}
