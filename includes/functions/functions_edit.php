@@ -992,7 +992,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
 	}
 	echo '<input type="button" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('close'), '" onclick="window.close();">';
-	echo '<input type="submit" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('check'), '" onclick="check_duplicates();" title="', /* I18N: button hover title */ WT_I18N::translate('Check for possible duplicates'), '">';
+	echo '<input type="button" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('check'), '" onclick="check_duplicates();" title="', /* I18N: button hover title */ WT_I18N::translate('Check for possible duplicates'), '">';
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('

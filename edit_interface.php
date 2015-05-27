@@ -2425,6 +2425,7 @@ case 'checkduplicates':
 			if ($rows) {
 				$i = 1;
 				$html .= '
+					<p>' . WT_I18N::translate('These individuals might be duplicates of your new entry. Click on a name to open a new tab at their page to view more details. <br><br>Close this window and the <strong>Add new individual</strong> window if you do not want to complete this addition.') . '</p>
 					<table class="facts_table">
 						<tr>
 							<th class="facts_label">' . WT_I18N::translate('Name') . '</th>
@@ -2462,7 +2463,7 @@ case 'checkduplicates':
 
 	$html .= '
 			<p id="save-cancel">
-				<input type="button" class="cancel" value="' . /* I18N: button label */ WT_I18N::translate('cancel'). '" onclick="window.close();">
+				<input type="button" class="cancel" value="' . /* I18N: button label */ WT_I18N::translate('close'). '" onclick="window.close();">
 			</p>
 		</div>';
 
