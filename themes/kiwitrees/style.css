@@ -1986,35 +1986,49 @@ dt {
 
 #medialist-page .pagination p.alignleft {
 	float: left;
-	text-align:left;
+	text-align: left;
 	width:33.33333%;
+}
+[dir='rtl'] #medialist-page .pagination p.alignleft {
+	float: right;
+	text-align: right;
 }
 
 #medialist-page .pagination p.aligncenter {
 	float: left;
 	text-align:center;
-	width:33.33333%;
+	width: 33.33333%;
+}
+[dir='rtl'] #medialist-page .pagination p.aligncenter {
+	float: right;
 }
 
 #medialist-page .pagination p.alignright {
 	float: right;
 	text-align:right;
-	width:33.33333%;
+	width: 33.33333%;
+}
+[dir='rtl'] #medialist-page .pagination p.alignright {
+	float: left;
+	text-align:left;
 }
 
 .media-list-item {
 	border-bottom: 1px inset #555;
 	float: left;
-	height:205px;
+	height: 205px;
 	margin: 10px;
 	overflow-y: auto;
 	width: 95%;
 	display: table-cell;
 }
+[dir='rtl'] .media-list-item {
+	float: right;
+}
 
 #medialist-page .medialist_title {
 	font-weight: 900;
-	margin: 0 0 10px 0;
+	margin-bottom: 10px;
 }
 
 #medialist-page .media-list-image {
@@ -2023,9 +2037,15 @@ dt {
 	float: left;
 	vertical-align: top;
 }
+[dir='rtl'] #medialist-page .media-list-image {
+	float: right;
+}
 
 #medialist-page .media-list-data {
-	margin-left: 110px;
+	margin: 0 0 0 110px;
+}
+[dir='rtl'] #medialist-page .media-list-data {
+	margin: 0 110px 0 0;
 }
 
 #medialist-page .media-list-sources {
@@ -2050,7 +2070,7 @@ dt {
 	line-height: 16px;
 	list-style-type: none;
 	margin: 0;
-	padding: 0 0 16px 0;
+	padding-bottom: 16px;
 }
 
 #medialist-page .lb-menu li {
@@ -2080,6 +2100,9 @@ dt {
 	float: left;
 	vertical-align: middle;
 }
+[dir='rtl'] #medialist-page .lb-menu a {
+	float: right;
+}
 
 #medialist-page .lb-menu li a {
 	padding: 0 24px;
@@ -2089,17 +2112,15 @@ dt {
 #medialist-page .lb-menu li li {
 	text-align: left;
 }
+[dir='rtl'] #medialist-page .lb-menu li li {
+	text-align: right;
+}
 
 #medialist-page .lb-menu li li a {
 	padding: 1px 10px 1px 5px;
 }
-
-[dir='rtl'] #medialist-page .lb-menu {
-	float: right;
-}
-
-[dir='rtl'] #medialist-page .lb-menu li li {
-	text-align: right;
+[dir='rtl'] #medialist-page .lb-menu li li a {
+	padding: 1px 5px 1px 10px;
 }
 
 #medialist-page li .lb-image_edit {

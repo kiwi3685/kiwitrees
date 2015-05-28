@@ -85,6 +85,10 @@ $medialist = WT_Query_Media::mediaList(
 			<?php echo select_edit_control('folder' , $folders, null, $folder); ?>
 		</div>
 		<div class="chart_options">
+			<label for = "subdirs"><?php /* I18N: Label for check-box */ echo WT_I18N::translate('Include subfolders'); ?></label>
+			<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?>>
+		</div>
+		<div class="chart_options">
 			<?php
 				if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 					echo '
@@ -100,10 +104,6 @@ $medialist = WT_Query_Media::mediaList(
 					';
 				}
 			?>
-		</div>
-		<div class="chart_options">
-			<label for = "subdirs"><?php /* I18N: Label for check-box */ echo WT_I18N::translate('Include subfolders'); ?></label>
-			<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?>>
 		</div>
 		<div class="chart_options">
 			<label for="form-type"><?php echo WT_I18N::translate('Type'); ?></label>
