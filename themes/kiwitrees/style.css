@@ -1972,38 +1972,70 @@ dt {
 
 /* ============== Media List page ======================= */
 
-#medialist-page .medialist {
- 	min-width: 210px;
- }
-
-#medialist-page .medialist label:nth-of-type(2n),
-#medialist-page .medialist label:nth-of-type(3n) {
-	display: inline;
-	font-weight: normal;
-}
-
-#medialist-page .pagination {
-	width:100%;
+#medialist-page .media-list-results {
+	margin: auto;
+	width: 95%;
 }
 
 #medialist-page .pagination {
 	clear: both;
 	margin: auto;
+	overflow: hidden;
 	width: 95%;
+}
+
+#medialist-page .pagination p.alignleft {
+	float: left;
+	text-align:left;
+	width:33.33333%;
+}
+
+#medialist-page .pagination p.aligncenter {
+	float: left;
+	text-align:center;
+	width:33.33333%;
+}
+
+#medialist-page .pagination p.alignright {
+	float: right;
+	text-align:right;
+	width:33.33333%;
 }
 
 .media-list-item {
 	border-bottom: 1px inset #555;
 	float: left;
-	height:200px;
+	height:205px;
 	margin: 10px;
 	overflow-y: auto;
 	width: 95%;
+	display: table-cell;
 }
 
 #medialist-page .medialist_title {
 	font-weight: 900;
 	margin: 0 0 10px 0;
+}
+
+#medialist-page .media-list-image {
+	clear: both;
+	width: 100px;
+	float: left;
+	vertical-align: top;
+}
+
+#medialist-page .media-list-data {
+	margin-left: 110px;
+}
+
+#medialist-page .media-list-sources {
+	margin: 10px auto;
+	width: 98%;
+	white-space: normal;
+}
+
+#medialist-page .media-list-link {
+	font-size: 90%;
 }
 
 .media-list-item img {

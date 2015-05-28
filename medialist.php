@@ -154,12 +154,12 @@ $medialist = WT_Query_Media::mediaList(
 		}
 
 		if ($ct>0) {
-			echo '<div style="width: 95%; margin: auto;">';
+			echo '<div class="media-list-results">';
 				// Prepare pagination details
 				$currentPage = ((int) ($start / $max)) + 1;
 				$lastPage = (int) (($ct + $max - 1) / $max);
-				
-				$pagination = '<div class="pagination"><p style="float: left;  width:33.33333%;  text-align:left;">';
+
+				$pagination = '<div class="pagination"><p class="alignleft">';
 					if ($TEXT_DIRECTION=='ltr') {
 						if ($ct>$max) {
 							if ($currentPage > 1) {
@@ -185,8 +185,8 @@ $medialist = WT_Query_Media::mediaList(
 						}
 					}
 				$pagination .= '</p>
-					<p style="font-weight: 600;float: left;  width:33.33333%;  text-align:center;">' . WT_I18N::translate('Page %s of %s' , $currentPage, $lastPage). '</p>
-					<p style="float: left; width:33.33333%; text-align:right;"">';
+					<p class="aligncenter">' . WT_I18N::translate('Page %s of %s' , $currentPage, $lastPage). '</p>
+					<p class="alignright">';
 						if ($TEXT_DIRECTION=='ltr') {
 							if ($ct>$max) {
 								if ($start+$max < $ct) {
@@ -215,23 +215,21 @@ $medialist = WT_Query_Media::mediaList(
 				$pagination .= '</p></div>';
 
 				// Output display
-				echo '<p style="font-weight: 600;text-align:center">' , WT_I18N::translate('Media Objects found'), ' ' , $ct, '</p>';
+				echo '<h3>' , WT_I18N::translate('%s media objects found', $ct) , '</h3>';
 				echo $pagination;
-				echo '<div style="display:table; width:100%;">';
+				echo '<div class="media-list-items">';
 				// Start media loop
 				for ($i=$start, $n=0; $i<$start+$count; ++$i) {
 					$mediaobject = $medialist[$i];
 
 					echo '<div class="media-list-item">';
 						if (WT_USER_CAN_EDIT) {
-							echo '<div style="">';
-								echo WT_Controller_Media::getMediaListMenu($mediaobject);
-							echo '</div>';
+							echo WT_Controller_Media::getMediaListMenu($mediaobject);
 						}
-						echo '<div style="clear: both;   width: 100px;   float: left;   vertical-align: top;">';
+						echo '<div class="media-list-image">';
 							echo $mediaobject->displayImage();
 						echo '</div>';
-						echo '<div class="" style="margin-left: 110px;">';
+						echo '<div class="media-list-data">';
 							// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
 							if ($sortby=='title') {
 								echo '<p class="medialist_title"><a href="' , $mediaobject->getHtmlUrl(), '">';
@@ -262,19 +260,22 @@ $medialist = WT_Query_Media::mediaList(
 									echo '<p class="ui-state-error">' , /* I18N: %s is a filename */ WT_I18N::translate('The file “%s” does not exist.' , $mediaobject->getFilename()), '</p>';
 								}
 							}
-							echo '<br>';
-							echo '<div style="white-space: normal; width: 95%;">';
-							echo print_fact_sources($mediaobject->getGedcomRecord(), 1);
-							echo print_fact_notes($mediaobject->getGedcomRecord(), 1);
-							echo '</div>';
+							if (is_null(print_fact_sources($mediaobject->getGedcomRecord(), 1)) && is_null(print_fact_notes($mediaobject->getGedcomRecord(), 1)) ) {
+							echo '<div class="media-list-sources" style="display:none">';
+							} else {
+							echo '<div class="media-list-sources">';
+							}
+								echo print_fact_sources($mediaobject->getGedcomRecord(), 1), 
+									print_fact_notes($mediaobject->getGedcomRecord(), 1), '
+							</div>';
 							foreach ($mediaobject->fetchLinkedIndividuals('OBJE') as $individual) {
-								echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
+								echo '<a class="media-list-link" href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
 							}
 							foreach ($mediaobject->fetchLinkedFamilies('OBJE') as $family) {
-								echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
+								echo '<a class="media-list-link" href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
 							}
 							foreach ($mediaobject->fetchLinkedSources('OBJE') as $source) {
-								echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
+								echo '<a class="media-list-link" href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
 							}
 						echo '</div>';
 					echo '</div>';
