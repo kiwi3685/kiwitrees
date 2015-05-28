@@ -265,4 +265,39 @@ class WT_Menu {
 		return $option_link;
 	}
 
+	// Get the menu as a simple list - for accessible interfaces, search engines and CSS menus
+	function getFoundationMenu() {
+		$link = '';
+		if ($this->link) {
+			if ($this->target !== null) {
+				$link .= ' target="'.$this->target.'"';
+			}
+			if ($this->link=='#') {
+				if ($this->onclick !== null) {
+					$link .= ' onclick="'.$this->onclick.'"';
+				}
+				$html='<a class="item '.$this->iconclass.'" href="'.$this->link.'"'.$link.'><label>'.$this->label.'</label></a>';
+			} else {
+				$html='<a class="item '.$this->iconclass.'" href="'.$this->link.'"'.$link.'><label>'.$this->label.'</label></a>';
+			}
+		} else {
+			$html=$this->label;
+		}
+		if ($this->submenus) {
+			$html.='<ul class="f-dropdown"  id="hover1">';
+			foreach ($this->submenus as $submenu) {
+				if ($submenu) {
+					if ($submenu->submenus) {
+						$submenu->iconclass.=' icon_arrow';
+					}
+					$html.=$submenu->getMenuAsList();
+				}
+			}
+			$html.='</ul>';
+		}
+			return $html;
+	}
+
+
+
 }
