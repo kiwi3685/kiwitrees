@@ -65,7 +65,7 @@ class WT_Query_Media {
 	}
 
 	// Generate a filtered, sourced, privacy-checked list of media objects - for the media list.
-	public static function mediaList($folder, $subfolders, $sort, $filter) {
+	public static function mediaList($folder, $subfolders, $sort, $filter, $form_type) {
 		// All files in the folder, plus external files
 		$sql = 
 			"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename" .
@@ -102,6 +102,11 @@ class WT_Query_Media {
 			$sql .= " AND (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
 			$args[] = $filter;
 			$args[] = $filter;
+		}
+
+		if ($form_type) {
+			$sql .= " AND (m_gedcom LIKE CONCAT('%\n3 TYPE ', ?, '%'))";
+			$args[] = $form_type;
 		}
 
 		switch ($sort) {

@@ -176,10 +176,6 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	*/
 	static function getMediaListMenu($mediaobject) {
 		$html='<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
-			$menu = new WT_Menu(WT_I18N::translate('Edit details'));
-			$menu->addClass('', '', 'lb-image_edit');
-			$menu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."', '_blank', edit_window_specs);");
-			$html.=$menu->getMenuAsList();
 			$menu = new WT_Menu(WT_I18N::translate('Set link'));
 			$menu->addClass('', '', 'lb-image_link');
 			$menu->addOnclick("return ilinkitem('".$mediaobject->getXref()."','person')");
@@ -195,6 +191,10 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 			$html.=$menu->getMenuAsList();
 			$menu = new WT_Menu(WT_I18N::translate('View details'), $mediaobject->getHtmlUrl());
 			$menu->addClass('', '', 'lb-image_view');
+			$html.=$menu->getMenuAsList();
+			$menu = new WT_Menu(WT_I18N::translate('Edit details'));
+			$menu->addClass('', '', 'lb-image_edit');
+			$menu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."', '_blank', edit_window_specs);");
 			$html.=$menu->getMenuAsList();
 		$html.='</ul></div>';
 		return $html;

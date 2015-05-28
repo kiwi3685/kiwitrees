@@ -530,7 +530,7 @@ if ($action=="filter") {
 	if ($type == "media") {
 		global $dirs;
 
-		$medialist = WT_Query_Media::mediaList('', 'include', 'title', $filter);
+		$medialist = WT_Query_Media::mediaList('', 'include', 'title', $filter, '');
 
 		echo '<div id="find-output">';
 
