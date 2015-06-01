@@ -133,7 +133,7 @@ echo '
 			<span>', $totusers, '</span>
 		</li>
 		<li>
-			<span class="inset"><a href="admin_users.php?action=listusers&amp;filter=1">', WT_I18N::translate('Administrators'), '</a></span>
+			<span class="inset"><a href="admin_users.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></span>
 			<span class="filler">&nbsp;</span>
 			<span>', $adminusers, '</span>
 		</li>

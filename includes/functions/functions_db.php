@@ -1532,6 +1532,12 @@ function admin_user_exists() {
 ////////////////////////////////////////////////////////////////////////////////
 // Functions to access the WT_USER_GEDCOM_SETTING table
 ////////////////////////////////////////////////////////////////////////////////
+function get_user_gedcom_setting($user_id, $gedcom_id, $setting_name, $default_value=null) {
+	return
+		WT_DB::prepare(
+			"SELECT SQL_CACHE setting_value FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=? AND setting_name=?"
+		)->execute(array($user_id, $gedcom_id, $setting_name))->fetchOne($default_value);
+}
 
 function get_user_from_gedcom_xref($ged_id, $xref) {
 	return
