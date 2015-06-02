@@ -154,12 +154,12 @@ echo '
 	<legend>', WT_I18N::translate('Users'), '</legend>
 	<ul class="admin_stats">
 		<li>
-			<span>', WT_I18N::translate('Total number of users'), '</span>
+			<span><a href="admin_users.php" >', WT_I18N::translate('Total number of users'), '</a></span>
 			<span class="filler">&nbsp;</span>
-			<span>', $totusers, '</span>
+			<span><a href="admin_users.php" >', $totusers, '</a></span>
 		</li>
 		<li>
-			<span class="inset"><a href="admin_users.php?action=listusers&amp;filter=1">', WT_I18N::translate('Administrators'), '</a></span>
+			<span class="inset">', WT_I18N::translate('Administrators'), '</span>
 			<span class="filler">&nbsp;</span>
 			<span>', $adminusers, '</span>
 		</li>
@@ -171,31 +171,19 @@ echo '
 		foreach ($gedadmin as $ged_id=>$geds) {
 			echo '
 			<li>
-				<span class="inset2"><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', $geds['title'], '</a></span>
+				<span class="inset2">', $geds['title'], '</span>
 				<span class="filler">&nbsp;</span>
 				<span>', $geds['number'], '</span>
 			</li>';
 		}
 		echo '
 		<li>
-			<span>';
-				if ($applusers == 0) {
-					echo WT_I18N::translate('Unverified by User');
-				} else {
-					echo '<a href="admin_users.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
-				}
-			echo '</span>
+			<span>', WT_I18N::translate('Unverified by User'), '</span>
 			<span class="filler">&nbsp;</span>
 			<span>', $applusers, '</span>
 		</li>
 		<li>
-			<span>';
-				if ($nverusers == 0) {
-					echo WT_I18N::translate('Unverified by Administrator');
-				} else {
-					echo '<a href="admin_users.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
-				}
-			echo '</span>
+			<span>', WT_I18N::translate('Unverified by Administrator'), '</span>
 			<span class="filler">&nbsp;</span>
 			<span>', $nverusers, '</span>
 		</li>
@@ -207,7 +195,7 @@ echo '
 		foreach ($userlang as $key=>$ulang) {
 			echo '
 			<li>
-				<span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></span>
+				<span>', $ulang['langname'], '</span>
 				<span class="filler">&nbsp;</span>
 				<span>', $ulang['number'], '</span>
 			</li>';
