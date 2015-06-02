@@ -45,20 +45,20 @@ $ALL_EDIT_OPTIONS=array(
 );
 
 // Form actions
-$action				= safe_GET('action', $ALL_ACTIONS, 'listusers');
-$usrlang			= safe_POST('usrlang', array_keys(WT_I18N::used_languages()));
+$action				= safe_GET('action',   $ALL_ACTIONS, 'listusers');
+$usrlang			= safe_POST('usrlang',  array_keys(WT_I18N::used_languages()));
 $username			= safe_POST('username', WT_REGEX_USERNAME);
-$filter				= safe_GET('filter', WT_REGEX_NOSCRIPT);
-$ged				= safe_GET('ged', WT_REGEX_NOSCRIPT);
+$filter				= safe_POST('filter',   WT_REGEX_NOSCRIPT);
+$ged				= safe_POST('ged',      WT_REGEX_NOSCRIPT);
 
 // Extract form variables
-$realname			= safe_POST('realname' );
-$pass1				= safe_POST('pass1', WT_REGEX_PASSWORD);
-$pass2				= safe_POST('pass2', WT_REGEX_PASSWORD);
+$realname			= safe_POST('realname'   );
+$pass1				= safe_POST('pass1',			WT_REGEX_PASSWORD);
+$pass2				= safe_POST('pass2',			WT_REGEX_PASSWORD);
 $emailaddress		= safe_POST('emailaddress',	WT_REGEX_EMAIL);
-$user_language		= safe_POST('user_language', array_keys(WT_I18N::used_languages()), WT_LOCALE);
+$user_language		= safe_POST('user_language',	array_keys(WT_I18N::used_languages()), WT_LOCALE);
 $new_contact_method	= safe_POST('new_contact_method');
-$new_comment		= safe_POST('new_comment', WT_REGEX_UNSAFE);
+$new_comment		= safe_POST('new_comment',	WT_REGEX_UNSAFE);
 $new_auto_accept	= safe_POST_bool('new_auto_accept');
 $canadmin			= safe_POST_bool('canadmin');
 $visibleonline		= safe_POST_bool('visibleonline');
@@ -87,21 +87,17 @@ case 'masquerade_user':
 	break;
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
-	$sSearch	= WT_Filter::get('sSearch');
-	$filter		= WT_Filter::get('filter', WT_REGEX_NOSCRIPT);
-	$ged		= WT_Filter::getInteger('ged', WT_REGEX_NOSCRIPT);
-//	$gedcom_id	= get_id_from_gedcom($ged);
-
+	$sSearch=safe_GET('sSearch');
 	$WHERE=" WHERE u.user_id>0";
 	$ARGS=array();
 	if ($sSearch) {
 		$WHERE.=
 			" AND (".
-				" user_name LIKE CONCAT('%', ?, '%') OR " .
-				" real_name LIKE CONCAT('%', ?, '%') OR " .
-				" email     LIKE CONCAT('%', ?, '%')
-			)";
+			" user_name LIKE CONCAT('%', ?, '%') OR " .
+			" real_name LIKE CONCAT('%', ?, '%') OR " .
+			" email     LIKE CONCAT('%', ?, '%'))";
 		$ARGS=array($sSearch, $sSearch, $sSearch);
+	} else {
 	}
 	$iDisplayStart =(int)safe_GET('iDisplayStart');
 	$iDisplayLength=(int)safe_GET('iDisplayLength');
@@ -144,53 +140,16 @@ case 'loadrows':
 		$WHERE.
 		$ORDER_BY.
 		$LIMIT;
-
+	
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$aaData = WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
-
-	// Filter the users
-	if ($filter) {
-		foreach ($aaData as $key => $aData) {
-			$user_id	= $aData[1];
-			$user_name	= $aData[2];
-			if ($filter == "warnings") {
-				if (get_user_setting($user_id, 'comment_exp')) {
-					if ((strtotime(get_user_setting($user_id, 'comment_exp')) == "-1") || (strtotime(get_user_setting($user_id, 'comment_exp')) >= time("U"))) unset($aaData[$key]);
-				}
-				else if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) <= 604800) || get_user_setting($user_id, 'verified')) unset($aaData[$key]);
-			}
-			else if ($filter == "adminusers") {
-				if (!get_user_setting($user_id, 'canadmin')) unset($aaData[$key]);
-			}
-			else if ($filter == "usunver") {
-				if (get_user_setting($user_id, 'verified')) unset($aaData[$key]);
-			}
-			else if ($filter == "admunver") {
-				if ((get_user_setting($user_id, 'verified_by_admin')) || (!get_user_setting($user_id, 'verified'))) {
-					unset($aaData[$key]);
-				}
-			}
-			else if ($filter == "language") {
-				if (get_user_setting($user_id, 'language') != $usrlang) {
-					unset($aaData[$key]);
-				}
-			}
-			else if ($filter == "gedadmin") {
-				if (get_user_gedcom_setting($user_id, $ged, 'canedit') != "admin") {
-					unset($aaData[$key]);
-				}
-			}
-		}
-	}
-	$aaData = array_values($aaData); // reindex the array
-
+	$aaData=WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
+	
 	// Reformat various columns for display
 	foreach ($aaData as &$aData) {
 		$aData[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
 		// $aData[1] is the user ID
-		$user_id	= $aData[1];
-		$user_name	= $aData[2];
-
+		$user_id  =$aData[1];
+		$user_name=$aData[2];
 		$aData[2]=edit_field_inline('user-user_name-'.$user_id, $aData[2]);
 		$aData[3]=edit_field_inline('user-real_name-'.$user_id, $aData[3]);
 		$aData[4]=edit_field_inline('user-email-'.    $user_id, $aData[4]);
@@ -241,7 +200,6 @@ case 'loadrows':
 		'aaData'              =>$aaData
 	));
 	exit;
-
 case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
 	$user_id=(int)safe_GET('user_id');
@@ -619,7 +577,7 @@ default:
 			'<tbody>',
 			'</tbody>',
 		'</table>';
-
+	
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
@@ -643,7 +601,7 @@ default:
 				'.WT_I18N::datatablesI18N().',
 				"bProcessing"     : true,
 				"bServerSide"     : true,
-				"sAjaxSource"     : "'.WT_SCRIPT_NAME.'?action=loadrows&filter='.$filter.'&ged=' . ($ged ? get_id_from_gedcom($ged) : WT_GED_ID ) . '",
+				"sAjaxSource"     : "'.WT_SCRIPT_NAME.'?action=loadrows",
 				"bJQueryUI": true,
 				"bAutoWidth":false,
 				"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_users_page_size', 10).',
@@ -690,7 +648,7 @@ default:
 				});
 				jQuery(this).addClass("icon-close");
 			});
-			oTable.fnFilter("'.safe_GET('sSearch', WT_REGEX_USERNAME).'");
+			oTable.fnFilter("'.safe_GET('filter', WT_REGEX_USERNAME).'");
 		');
 	break;
 }
