@@ -45,18 +45,44 @@ $stats=new WT_Stats(WT_GEDCOM);
 	$userlang  =array(); // Array for user languages
 	$gedadmin  =array(); // Array for managers
 
+// Server warnings
+$server_warnings = array();
+if (
+	version_compare(PHP_VERSION, '5.4', '<') && date('Y-m-d') >= '2014-08-14' ||
+	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2015-09-15' ||
+	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-06-20' ||
+	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2017-08-28'
+) {
+	$server_warnings[] = '<span class="warning">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible.', PHP_VERSION) . '<span>';
+} elseif (
+	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2014-09-14' ||
+	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-06-20' ||
+	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2016-08-28'
+) {
+	$server_warnings[] = '<span class="accepted">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version.', PHP_VERSION) . '<span>';
+}
+
 // Display a series of "blocks" of general information, vary according to admin or manager.
+?>
+<div id="content_container" style="visibility:hidden">
 
-echo '<div id="content_container" style="visibility:hidden">';
+	<div id="x"><!-- div x - manages the accordion effect -->
 
-echo '<div id="x">';// div x - manages the accordion effect
-
-echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
-	'<div id="about">',
-		'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>kiwitrees</b> site.'), '</p>',
-		'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net</a>'), '</p>',
-	'</div>';
-
+	<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
+	<div id="about">
+		<p><?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>kiwitrees</b> site.'); ?></p>
+		<p><?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net</a>'); ?></p>
+		<!-- SERVER WARNINGS -->
+		<?php if ($server_warnings): ?>
+			<div class="">
+				<h3 class=""><?php echo WT_I18N::translate('Server information'); ?></h2>
+				<?php foreach ($server_warnings as $server_warning): ?>
+					<?php echo $server_warning; ?>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+	</div>
+<?php
 
 // Accordion block for DELETE OLD FILES - only shown when old files are found
 $old_files_found=false;
