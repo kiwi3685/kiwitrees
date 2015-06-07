@@ -132,9 +132,9 @@ echo '<div id="search-page">
 		if ($controller->action == "replace") {
 			if (WT_USER_CAN_EDIT) { 
 				echo '<div class="label">', WT_I18N::translate('Search for'), '</div>
-					<div class="value"><input tabindex="1" name="query" value="" type="text" autofocus></div>
+					<div class="value"><input tabindex="1" id="query" name="query" value="" type="text" autofocus>', print_specialchar_link('query'), '</div>
 					<div class="label">',  WT_I18N::translate('Replace with'), '</div>
-					<div class="value"><input tabindex="2" name="replace" value="" type="text"></div>';			
+					<div class="value"><input tabindex="2" id="replace" name="replace" value="" type="text">', print_specialchar_link('replace'), '</div>';			
 				?>
 				<script>
 					function checkAll(box) {

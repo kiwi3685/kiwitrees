@@ -96,16 +96,18 @@ class search_replace_bu_plugin extends base_plugin {
 		);
 
 		return
-			'<tr><th>'.WT_I18N::translate('Search text/pattern').'</th>'.
-			'<td>'.
-			'<input name="search" size="40" value="'.htmlspecialchars($this->search).
-			'" onchange="this.form.submit();"></td></tr>'.
-
-			'<tr><th>'.WT_I18N::translate('Replacement text').'</th>'.
-			'<td>'.
-			'<input name="replace" size="40" value="'.htmlspecialchars($this->replace).
-			'" onchange="this.form.submit();"></td></tr>'.
-
+			'<tr>
+				<th>'.WT_I18N::translate('Search text/pattern').'</th>'.
+				'<td>'.
+					'<input id="search" name="search" size="40" value="' . htmlspecialchars($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
+				</td>
+			</tr>'.
+			'<tr>
+				<th>'.WT_I18N::translate('Replacement text').'</th>'.
+				'<td>'.
+					'<input id="repalce" name="replace" size="40" value="' . htmlspecialchars($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
+				</td>
+			</tr>'.
 			'<tr><th>'.WT_I18N::translate('Search method').'</th>'.
 			'<td><select name="method" onchange="this.form.submit();">'.
 			'<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>'.

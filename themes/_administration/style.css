@@ -629,7 +629,7 @@ table#story_table {width:100%}
 .icon-open				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell; } /* fa-arrow-circle-down */
 .icon-close				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell; } /* fa-arrow-circle-up */
 .icon-button_find_facts {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
-.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-keyboard-o */
+.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin: auto 10px;} /* fa-keyboard-o */
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-book */
 .icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-bank */
 .icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin-bottom: 5px; } /* fa-camera-retro */
