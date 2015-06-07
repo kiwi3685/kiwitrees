@@ -156,10 +156,22 @@ case 'load_json':
 		$aaData = array();
 		foreach ($rows as $row) {
 			$media = WT_Media::getInstance($row);
+			switch ($media->isPrimary()) {
+			case 'Y':
+				$highlight = WT_I18N::translate('yes');
+				break;
+			case 'N':
+				$highlight = WT_I18N::translate('no');
+				break;
+			default:
+				$highlight = '';
+				break;
+			}
 			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $row['media_path']),
 				$media->displayImage(),
 				media_object_info($media),
+				$highlight,
 				WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
 			);
 		}
@@ -217,10 +229,22 @@ case 'load_json':
 		$aaData = array();
 		foreach ($rows as $row) {
 			$media = WT_Media::getInstance($row);
+			switch ($media->isPrimary()) {
+			case 'Y':
+				$highlight = WT_I18N::translate('yes');
+				break;
+			case 'N':
+				$highlight = WT_I18N::translate('no');
+				break;
+			default:
+				$highlight = '';
+				break;
+			}
 			$aaData[] = array(
 			 	WT_Gedcom_Tag::getLabelValue('URL', $row['m_filename']),
 				$media->displayImage(),
 				media_object_info($media),
+				$highlight,
 				WT_Gedcom_Tag::getFileFormTypeValue($media->getMediaType()),
 			);
 		}
@@ -299,6 +323,7 @@ case 'load_json':
 				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
 				$img,
 				$create_form,
+				'',
 				'',
 			);
 		}
@@ -407,7 +432,6 @@ function media_file_info($media_folder, $media_path, $file) {
 				$imgsize = /* I18N: image dimensions, width × height */ WT_I18N::translate('%1$s × %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
 				$html .= WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize);
 			}
-
 		} else {
 			$html .= '<div class="error">' . WT_I18N::translate('This media file exists, but cannot be accessed.') . '</div>' ;
 		}
@@ -502,9 +526,9 @@ function media_object_info(WT_Media $media) {
 // Preserver the pagination/filtering/sorting between requests, so that the
 // browser’s back button works.  Pagination is dependent on the currently
 // selected folder.
-$table_id=md5($files.$media_folder.$media_path.$subfolders);
+$table_id  = md5($files.$media_folder.$media_path.$subfolders);
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Media'))
@@ -513,6 +537,7 @@ $controller
 	->addInlineJavascript('
 	var oTable=jQuery("#media-table-' . $table_id . '").dataTable( {
 		sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+		aaSorting: [0,"asc"],
 		bProcessing: true,
 		bServerSide: true,
 		sAjaxSource: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&files='.$files.'&media_folder='.$media_folder.'&media_path='.$media_path.'&subfolders='.$subfolders.'",
@@ -526,7 +551,8 @@ $controller
 		aoColumns: [
 			{},
 			{bSortable: false, sClass: "center"},
-			{bSortable: ' . ($files=='unused' ? 'false' : 'true') . '},
+			{bSortable: ' . ($files == 'unused' ? 'false' : 'true') . '},
+			{bSortable: true},
 			{bSortable: true}
 		]
 	});
@@ -600,6 +626,7 @@ $controller
 			<th><?php echo WT_I18N::translate('Media file'); ?></th>
 			<th><?php echo WT_I18N::translate('Media'); ?></th>
 			<th><?php echo WT_I18N::translate('Media object'); ?></th>
+			<th><?php echo WT_I18N::translate('Highlight'); ?></th>
 			<th><?php echo WT_I18N::translate('Media type'); ?></th>
 		</tr>
 	</thead>

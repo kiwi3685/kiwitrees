@@ -268,44 +268,44 @@ class WT_Media extends WT_GedcomRecord {
 	 * @param addHeight int - amount to add to height
 	 * @return array
 	 */
-	public function getImageAttributes($which='main',$addWidth=0,$addHeight=0) {
+	public function getImageAttributes($which = 'main',$addWidth = 0,$addHeight = 0) {
 		global $THUMBNAIL_WIDTH;
-		$var=$which.'imagesize';
+		$var = $which . 'imagesize';
 		if (!empty($this->$var)) return $this->$var;
 		$imgsize = array();
 		if ($this->fileExists($which)) {
-			$imgsize=@getimagesize($this->getServerFilename($which)); // [0]=width [1]=height [2]=filetype ['mime']=mimetype
+			$imgsize = @getimagesize($this->getServerFilename($which)); // [0]=width [1]=height [2]=filetype ['mime']=mimetype
 			if (is_array($imgsize) && !empty($imgsize['0'])) {
 				// this is an image
-				$imgsize[0]=$imgsize[0]+0;
-				$imgsize[1]=$imgsize[1]+0;
-				$imgsize['adjW']=$imgsize[0]+$addWidth; // adjusted width
-				$imgsize['adjH']=$imgsize[1]+$addHeight; // adjusted height
-				$imageTypes=array('','GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM');
-				$imgsize['ext']=$imageTypes[0+$imgsize[2]];
+				$imgsize[0] = $imgsize[0] + 0;
+				$imgsize[1] = $imgsize[1] + 0;
+				$imgsize['adjW'] = $imgsize[0] + $addWidth; // adjusted width
+				$imgsize['adjH'] = $imgsize[1] + $addHeight; // adjusted height
+				$imageTypes = array('','GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM');
+				$imgsize['ext'] = $imageTypes[0 + $imgsize[2]];
 				// this is for display purposes, always show non-adjusted info
-				$imgsize['WxH']=/* I18N: image dimensions, width × height */ WT_I18N::translate('%1$s × %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
-				$imgsize['imgWH']=' width="'.$imgsize['adjW'].'" height="'.$imgsize['adjH'].'" ';
-				if ( ($which=='thumb') && ($imgsize['0'] > $THUMBNAIL_WIDTH) ) {
+				$imgsize['WxH'] = /* I18N: image dimensions, width × height */ WT_I18N::translate('%1$s × %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
+				$imgsize['imgWH'] = ' width="'.$imgsize['adjW'].'" height="'.$imgsize['adjH'].'" ';
+				if ( ($which == 'thumb') && ($imgsize['0'] > $THUMBNAIL_WIDTH) ) {
 					// don’t let large images break the dislay
-					$imgsize['imgWH']=' width="'.$THUMBNAIL_WIDTH.'" ';
+					$imgsize['imgWH'] = ' width="'.$THUMBNAIL_WIDTH.'" ';
 				}
 			}
 		}
 
 		if (!is_array($imgsize) || empty($imgsize['0'])) {
 			// this is not an image, OR the file doesn’t exist OR it is a url
-			$imgsize[0]=0;
-			$imgsize[1]=0;
-			$imgsize['adjW']=0;
-			$imgsize['adjH']=0;
-			$imgsize['ext']='';
-			$imgsize['mime']='';
-			$imgsize['WxH']='';
-			$imgsize['imgWH']='';
+			$imgsize[0] = 0;
+			$imgsize[1] = 0;
+			$imgsize['adjW'] = 0;
+			$imgsize['adjH'] = 0;
+			$imgsize['ext'] = '';
+			$imgsize['mime'] = '';
+			$imgsize['WxH'] = '';
+			$imgsize['imgWH'] = '';
 			if ($this->isExternal($which)) {
 				// don’t let large external images break the dislay
-				$imgsize['imgWH']=' width="'.$THUMBNAIL_WIDTH.'" ';
+				$imgsize['imgWH'] = ' width="'.$THUMBNAIL_WIDTH.'" ';
 			}
 		}
 
@@ -314,24 +314,24 @@ class WT_Media extends WT_GedcomRecord {
 			// set file type equal to the file extension - can’t use parse_url because this may not be a full url
 			$exp = explode('?', $this->file);
 			$pathinfo = pathinfo($exp[0]);
-			$imgsize['ext']=@strtoupper($pathinfo['extension']);
+			$imgsize['ext'] = @strtoupper($pathinfo['extension']);
 			// all mimetypes we wish to serve with the media firewall must be added to this array.
 			$mime=array('DOC'=>'application/msword', 'MOV'=>'video/quicktime', 'MP3'=>'audio/mpeg', 'PDF'=>'application/pdf',
 			'PPT'=>'application/vnd.ms-powerpoint', 'RTF'=>'text/rtf', 'SID'=>'image/x-mrsid', 'TXT'=>'text/plain', 'XLS'=>'application/vnd.ms-excel',
 			'WMV'=>'video/x-ms-wmv');
 			if (empty($mime[$imgsize['ext']])) {
 				// if we don’t know what the mimetype is, use something ambiguous
-				$imgsize['mime']='application/octet-stream';
+				$imgsize['mime'] = 'application/octet-stream';
 				if ($this->fileExists($which)) {
 					// alert the admin if we cannot determine the mime type of an existing file
 					// as the media firewall will be unable to serve this file properly
 					AddToLog('Media Firewall error: >Unknown Mimetype< for file >'.$this->file.'<', 'media');
 				}
 			} else {
-				$imgsize['mime']=$mime[$imgsize['ext']];
+				$imgsize['mime'] = $mime[$imgsize['ext']];
 			}
 		}
-		$this->$var=$imgsize;
+		$this->$var = $imgsize;
 		return $this->$var;
 	}
 

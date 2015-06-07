@@ -251,6 +251,14 @@ $medialist = WT_Query_Media::mediaList(
 									}
 									echo WT_Gedcom_Tag::getLabelValue('FORM' , $mediaobject->mimeType());
 									echo WT_Gedcom_Tag::getLabelValue('TYPE' , $mediaobject->getMediaType());
+									switch ($mediaobject->isPrimary()) {
+									case 'Y':
+										echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('yes'));
+										break;
+									case 'N':
+										echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('no'));
+										break;
+									}
 									echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__' , $mediaobject->getFilesize());
 									$imgsize = $mediaobject->getImageAttributes();
 									if ($imgsize['WxH']) {
