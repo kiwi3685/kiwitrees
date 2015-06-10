@@ -61,7 +61,7 @@
 		$text = str_replace(".b.".'EmR', "<span class=\"note1\" title=\"".'Employer?'."\"> <b>".'EmR'."</b></span>", $text);
 		$text = str_replace(".b.".'EmD', "<span class=\"note1\" title=\"".'Employed?'."\"> <b>".'EmD'."</b></span>", $text);
 		$text = str_replace(".b.".'WH', "<span class=\"note1\" title=\"".'Working at Home?'."\"> <b>".'WH'."</b></span>", $text);
-		$text = str_replace(".b.".'EmN', "<span class=\"note1\" title=\"".'Unemployed?'."\"> <b>".'EmN'."</b></span>", $text);
+		$text = str_replace(".b.".'EmN', "<span class=\"note1\" title=\"".'Neither Employer nor Employed'."\"> <b>".'EmN'."</b></span>", $text);
 		$text = str_replace(".b.".'Edu', "<span class=\"note1\" title=\"".'Education - At School, Can Read, Can Write'."\"> <b>".'Edu'."</b></span>", $text);
 		$text = str_replace(".b.".'Eng?', "<span class=\"note1\" title=\"".'English spoken?'."\"> <b>".'Eng?'."</b></span>", $text);
 		$text = str_replace(".b.".'BIC', "<span class=\"note1\" title=\"".'Born in County'."\"> <b>".'BIC'."</b></span>", $text);
