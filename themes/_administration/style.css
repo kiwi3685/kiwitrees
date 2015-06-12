@@ -108,7 +108,7 @@ button {min-width:100px;}
 #page_help a img {display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
-#admin_head {position:relative; height:100px; margin-bottom:10px; min-width:970px; z-index:1000;}
+#admin_head {position:relative; height:100px; margin-bottom:10px; min-width:970px;}
 #title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
 #info {position:absolute; right:10px; bottom:10px; text-align:right;}
 [dir=rtl] #info {right:auto; left:10px; text-align:left;}

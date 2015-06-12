@@ -47,7 +47,6 @@ function helpDialog(which, mod) {
 			modal: true,
 			width: 500,
 			height: 'auto',
-			position: ['center', 'center'],
 		}).load(url+' .helpcontent', function() {
 			jQuery(this).dialog("option", "position", ['center', 'center'] );			
 		});
