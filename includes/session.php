@@ -61,7 +61,7 @@ define('WT_JQUERY_WHEELZOOM_URL',	WT_STATIC_URL . 'js/jquery.wheelzoom.js');		//
 define('WT_MODERNIZR_URL',			WT_STATIC_URL . 'js/modernizr.custom.js');		// 2.6.2
 define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/webtrees.js');
 define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.min.js');	// 1.18.18	Updated 18-06-2015
-define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');
+define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');		// 1.5pre	Updatd 2010
 define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
