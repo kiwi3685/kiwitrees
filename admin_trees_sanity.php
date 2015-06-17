@@ -38,25 +38,26 @@ $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Sanity check'))
-	->pageHeader()
-	->addInlineJavascript('
-		jQuery("#sanity_accordion").accordion({
-			active: 0,
-			collapsible: true,
-			heightStyle: "content"
-		});
-	');
+	->pageHeader();
+//	->addInlineJavascript('
+//		jQuery("#sanity_accordion").accordion({
+//			active: 0,
+//			collapsible: true,
+//			heightStyle: "content"
+//		});
+//	');
 ?>
 
 <style>
 	#sanity_check a {color: #75ABFF;}
-	#sanity_check h5 {font-size: 1.0em;}
+	#sanity_check h5 {font-size: 1.0em;   margin: 0;}
 	#sanity_check li {list-style-type: none;}
 	#sanity_check .first  {display: inline-block; width: 300px;}
 	#sanity_check .second {display: inline-block; width: 300px;}
 	#sanity_check .third  {display: inline-block; width: 300px;}
 	#sanity_check span.label {font-weight: 900; padding: 0 20px;}
 	#sanity_accordion {border-top: 1px inset; margin: 10px auto; padding: 20px 0; width: 98%;}
+	#sanity_accordion .result {  border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}
 </style>
 
 <div id="sanity_check">
@@ -80,13 +81,13 @@ $controller
 				<input type="checkbox" name="died" value="died" 
 					<?php if (WT_Filter::post('died')) echo ' checked="checked"'?>
 				>
-				<?php echo WT_I18N::translate('Birth after death'); ?>
+				<?php echo WT_I18N::translate('Birth after death or burial'); ?>
 			</li>
-			<li class="facts_value" name="buried" id="buried" >
-				<input type="checkbox" name="buried" value="buried" 
-					<?php if (WT_Filter::post('buried')) echo ' checked="checked"'?>
+			<li class="facts_value" name="sex" id="sex" >
+				<input type="checkbox" name="sex" value="sex" 
+					<?php if (WT_Filter::post('sex')) echo ' checked="checked"'?>
 				>
-				<?php echo WT_I18N::translate('Birth after burial'); ?>
+				<?php echo WT_I18N::translate('No gender recorded (Note: this does not include gender recorded as unknown)'); ?>
 			</li>
 		</ul>
 
@@ -107,41 +108,45 @@ $controller
 			if (WT_Filter::post('baptised')) {
 				$data = birth_comparisons(array('BAPM', 'CHR'));
 				echo '
-					<h5>' . WT_I18N::translate('%s born after they were baptised or christened', $data['count']) . '</h5>
-					<div>' . $data['html'] . '</div>';
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s born after baptism or christening', $data['count']) . '</h5>
+						<div>' . $data['html'] . '</div>
+					</div>';
 			}
 			if (WT_Filter::post('died')) {
 				$data = birth_comparisons(array('DEAT'));
 				echo '
-					<h5>' . WT_I18N::translate('%s born after they died', $data['count']) . '</h5>
-					<div>' . $data['html'] . '</div>';
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s born after death or burial', $data['count']) . '</h5>
+						<div>' . $data['html'] . '</div>
+					</div>';
 			}
-			if (WT_Filter::post('buried')) {
-				$data = birth_comparisons(array('BURI'));
+			if (WT_Filter::post('sex')) {
+				$data = missing_tag('SEX');
 				echo '
-					<h5>' . WT_I18N::translate('%s born after they were buried', $data['count']) . '</h5>
-					<div>' . $data['html'] . '</div>';
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s with no gender recorded', $data['count']) . '</h5>
+						<div>' . $data['html'] . '</div>
+					</div>';
 			}
-
-
 		?>
 	</div>
 </div> <!-- close sanity_check page div -->
 
 <?php
+
 // sanity functions
-
-
 function birth_comparisons($tag_array) {
 	$html = '';
 	$count = 0;
 	$tag_count = count($tag_array);
 	foreach ($tag_array as $val) {
-		$tags[] = "'%1 " . $val . "%'";
+		$tags[]  = "'%1 " . $val . "%'";
+		$tags2[] = "'%1 " . $val . " Y%'";
 	}
 	for ($i = 0; $i < $tag_count; $i ++) {
 		$rows = WT_DB::prepare(
-			"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`=? AND `i_gedcom` LIKE " . $tags[$i] . ""
+			"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`=? AND `i_gedcom` LIKE " . $tags[$i] . " AND `i_gedcom` NOT LIKE " . $tags2[$i] . ""
 		)->execute(array(WT_GED_ID))->fetchAll();
 		foreach ($rows as $row) {
 			$person			= WT_Person::getInstance($row->xref);
@@ -163,4 +168,24 @@ function birth_comparisons($tag_array) {
 		}
 	}
 	return array('html' => $html, 'count' => $count);
+}
+
+function missing_tag($tag) {
+	$html = '';
+	$count = 0;
+	$tags  = "'%1 " . $tag . "%'";
+	$rows = WT_DB::prepare(
+		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`=? AND `i_gedcom` NOT LIKE " . $tags . ""
+	)->execute(array(WT_GED_ID))->fetchAll();
+	foreach ($rows as $row) {
+		$person = WT_Person::getInstance($row->xref);
+		$html .= '
+			<p>
+				<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></div>
+				<div class="second"><span class="label">' . WT_I18N::translate('Missing %s', WT_Gedcom_Tag::getLabel($tag)) . '</span></div>
+			</p>';
+		$count ++;
+	}
+	return array('html' => $html, 'count' => $count);
+
 }
