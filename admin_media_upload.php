@@ -170,14 +170,13 @@ $controller->pageHeader();
 $mediaFolders = WT_Query_Media::folderListAll();
 
 // Determine file size limit
-// TODO: do we need to check post_max_size size too?
-$filesize = ini_get('upload_max_filesize');
+$filesize = detectMaxUploadFileSize();
 if (empty($filesize)) $filesize = "2M";
 
 // Print the form
 echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', WT_SCRIPT_NAME, '">';
 echo '<input type="hidden" name="action" value="upload">';
-echo '<p>', WT_I18N::translate('Upload media files'), ':&nbsp;&nbsp;', WT_I18N::translate('Maximum upload size: '), '<span class="accepted">', $filesize, '</span></p>';
+echo '<p>', WT_I18N::translate('Upload media files'), ':&nbsp;&nbsp;<span class="accepted">' , WT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()) , '</span></p>';
 
 // Print 5 forms for uploading images
 for ($i=1; $i<6; $i++) {

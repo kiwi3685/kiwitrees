@@ -456,8 +456,17 @@ if ($gedfile != 'FILE') {
 }
 if ($gedfile == 'FILE') {
 	// Box for user to choose to upload file from local computer
-	echo '<tr><td class="descriptionbox wrap width25">';
-	echo WT_I18N::translate('Media file to upload').help_link('upload_media_file').'</td><td class="optionbox wrap"><input type="file" name="mediafile" onchange="updateFormat(this.value);" size="40"></td></tr>';
+	echo '
+		<tr>
+			<td class="descriptionbox wrap width25">';
+				echo WT_I18N::translate('Media file to upload').help_link('upload_media_file').'
+			</td>
+			<td class="optionbox wrap">
+				<input type="file" name="mediafile" onchange="updateFormat(this.value);" size="40">
+				<i>' . WT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()) . '</i>
+			</td>
+		</tr>
+	';
 	// Check for thumbnail generation support
 	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<tr><td class="descriptionbox wrap width25">';
