@@ -1556,31 +1556,30 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '</tr>';
 			$countrows=0;
 			while ($x<$i) {
-				$placestr="";
-				$levels=explode(",", $place_list[$x]);
-				$parts=count($levels);
-				$levels=array_reverse($levels);
-				$placestr.="<a href=\"placelist.php?action=show";
+				$placestr 	= '';
+				$levels 	= explode(', ', $place_list[$x]);
+				$parts		= count($levels);
+				$levels		= array_reverse($levels);
+				$placestr	.= '<a href="placelist.php?action=show';
 				foreach ($levels as $pindex=>$ppart) {
-					$ppart=urlencode(trim($ppart));
-					$placestr.="&amp;parent[$pindex]=".$ppart."";
+					$placestr .= '&amp;parent[' . $pindex . ']=' . urlencode($ppart);
 				}
-				$placestr.="\">".$place_list[$x]."</a>";
-				$gedplace="<tr><td>".$placestr."</td>";
-				$z=0;
-				$y=0;
-				$id=0;
-				$level=0;
-				$matched[$x]=0;// used to exclude places where the gedcom place is matched at all levels
-				$mapstr_edit="<a href=\"#\" onclick=\"edit_place_location('";
-				$mapstr_add="<a href=\"#\" onclick=\"add_place_location('";
-				$mapstr3="";
-				$mapstr4="";
-				$mapstr5="')\" title='";
-				$mapstr6="' >";
-				$mapstr7="')\">";
-				$mapstr8="</a>";
-				while ($z<$parts) {
+				$placestr		.= '">' . $place_list[$x] . "</a>";
+				$gedplace		= '<tr><td>' . $placestr . '</td>';
+				$z				= 0;
+				$y				= 0;
+				$id				= 0;
+				$level			= 0;
+				$matched[$x]	= 0;// used to exclude places where the gedcom place is matched at all levels
+				$mapstr_edit	= '<a href="#" dir="auto" onclick="edit_place_location(\'';
+				$mapstr_add		= '<a href="#" dir="auto" onclick="add_place_location(\'';
+				$mapstr3		= '';
+				$mapstr4   		= '';
+				$mapstr5		= '\')" title=\'';
+				$mapstr6		= '\' >';
+				$mapstr7		= '\')">';
+				$mapstr8		= '</a>';
+ 				while ($z<$parts) {
 					if ($levels[$z]==' ' || $levels[$z]=='')
 						$levels[$z]="unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
 
@@ -1603,13 +1602,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 					if ($row['pl_place']!='') {
 						$placestr2=$mapstr_edit.$id."&amp;level=".$level.$mapstr3.$mapstr5.WT_I18N::translate('Zoom=').$row['pl_zoom'].$mapstr6.$row['pl_placerequested'].$mapstr8;
-						if ($row['pl_place']=='unknown')
+						if ($row['pl_place'] == 'unknown')
 							$matched[$x]++;
 					} else {
-						if ($levels[$z]=="unknown") {
-							$placestr2=$mapstr_add.$id."&amp;level=".$level.$mapstr3.$mapstr7."<strong>".rtrim(ltrim(WT_I18N::translate('unknown')))."</strong>".$mapstr8;$matched[$x]++;
+						if ($levels[$z] == "unknown") {
+							$placestr2 = $mapstr_add.$id."&amp;level=".$level.$mapstr3.$mapstr7."<strong>".rtrim(ltrim(WT_I18N::translate('unknown')))."</strong>".$mapstr8;$matched[$x]++;
 						} else {
-							$placestr2=$mapstr_add.$id."&amp;place_name=".urlencode($levels[$z])."&amp;level=".$level.$mapstr3.$mapstr7.'<span class="error">'.rtrim(ltrim($levels[$z])).'</span>'.$mapstr8;$matched[$x]++;
+							$placestr2 = $mapstr_add.$id."&amp;place_name=".urlencode($levels[$z])."&amp;level=".$level.$mapstr3.$mapstr7.'<span class="error">'.rtrim(ltrim($levels[$z])).'</span>'.$mapstr8;$matched[$x]++;
 						}
 					}
 					$plac[$z]="<td>".$placestr2."</td>\n";
