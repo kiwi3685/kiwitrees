@@ -39,13 +39,6 @@ $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Sanity check'))
 	->pageHeader();
-//	->addInlineJavascript('
-//		jQuery("#sanity_accordion").accordion({
-//			active: 0,
-//			collapsible: true,
-//			heightStyle: "content"
-//		});
-//	');
 ?>
 
 <style>
@@ -57,11 +50,13 @@ $controller
 	#sanity_check .third  {display: inline-block; width: 300px;}
 	#sanity_check span.label {font-weight: 900; padding: 0 20px;}
 	#sanity_accordion {border-top: 1px inset; margin: 10px auto; padding: 20px 0; width: 98%;}
-	#sanity_accordion .result {  border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}
+	#sanity_accordion .result {border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}
+	#sanity_check #sanity_options {margin:10px 30px;}
+	#sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
 </style>
 
 <div id="sanity_check">
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/sanity_check/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?></a>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/sanity-check/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?></a>
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<p class="warning">
 		<?php echo WT_I18N::translate('This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.'); ?>
@@ -69,28 +64,53 @@ $controller
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="go" value="1">
 		<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
-
-		<ul>
-			<li class="facts_value" name="baptised" id="baptised" >
-				<input type="checkbox" name="baptised" value="baptised" 
-					<?php if (WT_Filter::post('baptised')) echo ' checked="checked"'?>
-				>
-				<?php echo WT_I18N::translate('Birth after baptism or christening'); ?>
-			</li>
-			<li class="facts_value" name="died" id="died" >
-				<input type="checkbox" name="died" value="died" 
-					<?php if (WT_Filter::post('died')) echo ' checked="checked"'?>
-				>
-				<?php echo WT_I18N::translate('Birth after death or burial'); ?>
-			</li>
-			<li class="facts_value" name="sex" id="sex" >
-				<input type="checkbox" name="sex" value="sex" 
-					<?php if (WT_Filter::post('sex')) echo ' checked="checked"'?>
-				>
-				<?php echo WT_I18N::translate('No gender recorded (Note: this does not include gender recorded as unknown)'); ?>
-			</li>
-		</ul>
-
+		<div id="sanity_options">
+			<h4><?php echo WT_I18N::translate('Date discrepancies'); ?></h4>
+			<ul>
+				<li class="facts_value" name="baptised" id="baptised">
+					<input type="checkbox" name="baptised" value="baptised" 
+						<?php if (WT_Filter::post('baptised')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Birth after baptism or christening'); ?>
+				</li>
+				<li class="facts_value" name="died" id="died">
+					<input type="checkbox" name="died" value="died" 
+						<?php if (WT_Filter::post('died')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Birth after death or burial'); ?>
+				</li>
+			</ul>
+			<h4><?php echo WT_I18N::translate('Missing data'); ?></h4>
+			<ul>
+				<li class="facts_value" name="sex" id="sex" >
+					<input type="checkbox" name="sex" value="sex" 
+						<?php if (WT_Filter::post('sex')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('No gender recorded'); ?>
+				</li>
+			</ul>
+			<h4><?php echo WT_I18N::translate('Duplicated data'); ?></h4>
+			<ul>
+				<li class="facts_value" name="dupe_birt" id="dupe_birt" >
+					<input type="checkbox" name="dupe_birt" value="dupe_birt" 
+						<?php if (WT_Filter::post('dupe_birt')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Birth'); ?>
+				</li>
+				<li class="facts_value" name="dupe_deat" id="dupe_deat" >
+					<input type="checkbox" name="dupe_deat" value="dupe_deat" 
+						<?php if (WT_Filter::post('dupe_deat')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Death'); ?>
+				</li>
+				<li class="facts_value" name="dupe_sex" id="dupe_sex" >
+					<input type="checkbox" name="dupe_sex" value="dupe_sex" 
+						<?php if (WT_Filter::post('dupe_sex')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Gender'); ?>
+				</li>
+			</ul>
+		</div>
 		<button type="submit" class="btn btn-primary" >
 			<i class="fa fa-check"></i>
 			<?php echo $controller->getPageTitle(); ?>
@@ -126,7 +146,31 @@ $controller
 				echo '
 					<div class="result">
 						<h5>' . WT_I18N::translate('%s with no gender recorded', $data['count']) . '</h5>
-						<div>' . $data['html'] . '</div>
+						<ul>' . $data['html'] . '</ul>
+					</div>';
+			}
+			if (WT_Filter::post('dupe_deat')) {
+				$data = duplicate_tag('DEAT');
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s with duplicated death record', $data['count']) . '</h5>
+						<ul>' . $data['html'] . '</ul>
+					</div>';
+			}
+			if (WT_Filter::post('dupe_birt')) {
+				$data = duplicate_tag('BIRT');
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s with duplicated birth record', $data['count']) . '</h5>
+						<ul>' . $data['html'] . '</ul>
+					</div>';
+			}
+			if (WT_Filter::post('dupe_sex')) {
+				$data = duplicate_tag('SEX');
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s with duplicated gender record', $data['count']) . '</h5>
+						<ul>' . $data['html'] . '</ul>
 					</div>';
 			}
 		?>
@@ -140,14 +184,10 @@ function birth_comparisons($tag_array) {
 	$html = '';
 	$count = 0;
 	$tag_count = count($tag_array);
-	foreach ($tag_array as $val) {
-		$tags[]  = "'%1 " . $val . "%'";
-		$tags2[] = "'%1 " . $val . " Y%'";
-	}
 	for ($i = 0; $i < $tag_count; $i ++) {
 		$rows = WT_DB::prepare(
-			"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`=? AND `i_gedcom` LIKE " . $tags[$i] . " AND `i_gedcom` NOT LIKE " . $tags2[$i] . ""
-		)->execute(array(WT_GED_ID))->fetchAll();
+			"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` LIKE CONCAT('%1 ', ?, '%') AND `i_gedcom` NOT LIKE CONCAT('%1 ', ?, ' Y%')"
+		)->execute(array(WT_GED_ID, $tag_array[$i], $tag_array[$i]))->fetchAll();
 		foreach ($rows as $row) {
 			$person			= WT_Person::getInstance($row->xref);
 			$birth_date 	= $person->getBirthDate();
@@ -173,17 +213,27 @@ function birth_comparisons($tag_array) {
 function missing_tag($tag) {
 	$html = '';
 	$count = 0;
-	$tags  = "'%1 " . $tag . "%'";
 	$rows = WT_DB::prepare(
-		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`=? AND `i_gedcom` NOT LIKE " . $tags . ""
-	)->execute(array(WT_GED_ID))->fetchAll();
+		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` NOT REGEXP CONCAT('\n[0-9] ' , ?)"
+	)->execute(array(WT_GED_ID, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
-		$html .= '
-			<p>
-				<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></div>
-				<div class="second"><span class="label">' . WT_I18N::translate('Missing %s', WT_Gedcom_Tag::getLabel($tag)) . '</span></div>
-			</p>';
+		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></li>';
+		$count ++;
+	}
+	return array('html' => $html, 'count' => $count);
+
+}
+
+function duplicate_tag($tag) {
+	$html = '';
+	$count = 0;
+	$rows = WT_DB::prepare(
+		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` REGEXP '(\n1 " . $tag . ")((.*\n.*)*)(\n1 " . $tag . ")(.*)'"
+ 	)->execute(array(WT_GED_ID))->fetchAll();
+	foreach ($rows as $row) {
+		$person = WT_Person::getInstance($row->xref);
+		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></li>';
 		$count ++;
 	}
 	return array('html' => $html, 'count' => $count);
