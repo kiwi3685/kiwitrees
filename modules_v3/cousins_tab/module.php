@@ -1,29 +1,26 @@
 <?php
-/*
- * webtrees - simpl_cousins tab
- * Version 1.3.2
- * Copyright (C) 2010-2012 Nigel Osborne and kiwtrees.net. All rights reserved.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2012 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-*/
+// kiwitrees - simpl_cousins tab
+// Copyright (C) kiwtrees.net. All rights reserved.
+//
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -55,7 +52,7 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $controller;
@@ -133,11 +130,11 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 				$count_cousins_m ++;
 				$famc[] = $id2;
 			}
-		}		
+		}
 		$count_cousins = $count_cousins_f + $count_cousins_m;
 
 		$myParentFamily = $parentFamily->getXref();
-		
+
 		$html .= '<h3>'.WT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $count_cousins, $count_cousins, $fullname).'</h3>';
 		$html .= '<div id="cousins_tab_content">';
 
@@ -174,7 +171,7 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			$html .= '</div>';
 		}
 		$html .= '</div>'; // close id="cousins_f"
-		
+
 		//List Cousins (mother's family)
 		$prev_fam_id = -1;
 		$html .= '<div id="cousins_m">';
@@ -212,14 +209,14 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		$html .= '</div>'; // close id="cousins_m"
 		$html .= '</div>'; // close div id="cousins_tab_content"
 		return $html;
-		
+
 	}
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		return true;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
 		return false;
