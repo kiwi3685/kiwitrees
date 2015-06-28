@@ -147,7 +147,7 @@ foreach(get_all_users() as $user_id=>$user_name) {
 			$userlang[$user_lang]["number"] = 1;
 		}
 	}
-}	
+}
 
 echo '
 <fieldset id="users">
@@ -271,7 +271,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 		$accordion_element=$n;
 	}
 	++$n;
-	echo 
+	echo
 		'<h3><span dir="auto">', $tree->tree_title_html, '</span></h3>',
 		'<div>',
 		'<table>',
@@ -1242,7 +1242,7 @@ function old_paths() {
 		WT_ROOT.'themes/fab/images/fscreen.png',
 		WT_ROOT.'themes/minimal/images/fscreen.png',
 		WT_ROOT.'themes/webtrees/images/fscreen.png',
-		WT_ROOT.'themes/xenea/images/fscreen.png',		
+		WT_ROOT.'themes/xenea/images/fscreen.png',
 		// Removed in 1.2.7
 		WT_ROOT.'login_register.php',
 		WT_ROOT.'modules_v3/top10_givnnames/help_text.php',
