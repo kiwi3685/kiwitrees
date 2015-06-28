@@ -1167,7 +1167,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 
 // generates javascript code for calendar popup in user's language
 function print_calendar_popup($id) {
-	return 
+	return
 		' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>'.
 		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;z-index:1000;"></div>';
 }
@@ -1289,13 +1289,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		$element_id = $fact . (int)(microtime()*1000000); // ex: SOUR56402
 	if ($upperlevel)
 		$element_id = $upperlevel . "_" . $fact . (int)(microtime()*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
-  
 
 	// field value
 	$islink = (substr($value, 0, 1)=="@" && substr($value, 0, 2)!="@#");
 	if ($islink) {
 		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
-	} else { 
+	} else {
 		$value=trim(substr($tag, strlen($fact)+3));
 	}
 	if ($fact=='REPO' || $fact=='SOUR' || $fact=='OBJE' || $fact=='FAMC')
@@ -1316,7 +1315,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "<td class=\"descriptionbox wrap width25\">";
 	}
 
-
 	if (WT_DEBUG) {
 		echo $element_name, "<br>";
 	}
@@ -1330,7 +1328,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo WT_Gedcom_Tag::getLabel($fact);
 	}
 
-// help link
+	// help link
 	// If using GEDFact-assistant window
 	if ($action=="addnewnote_assisted") {
 		// Do not print on GEDFact Assistant window
@@ -1417,13 +1415,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// retrieve linked NOTE
-	if ($fact=="NOTE" && $islink) {		
+	if ($fact=="NOTE" && $islink) {
 		$note1=WT_Note::getInstance($value);
 		if ($note1) {
 			$noterec=$note1->getGedcomRecord();
 			preg_match("/$value/i", $noterec, $notematch);
 			$value=$notematch[0];
-		}		
+		}
 	}
 
 	if (in_array($fact, $emptyfacts) && ($value=='' || $value=='Y' || $value=='y')) {
@@ -1562,9 +1560,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			echo '>';
 		}
-		
+
 		$tmp_array = array('TYPE','TIME','NOTE','SOUR','REPO','OBJE','ASSO','_ASSO','AGE');
-		
+
 		// split PLAC
 		if ($fact=="PLAC" && $readOnly=='') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
@@ -1574,7 +1572,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
-			}	
+			}
 		} elseif (!in_array($fact, $tmp_array) && $readOnly=='') {
 			echo print_specialchar_link($element_id);
 		}
@@ -2370,16 +2368,19 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			$inSource = false;
 		}
 
-		if ($type!="DATA" && $type!="CONT") {
-			$tags[]=$type;
-			$person = WT_Person::getInstance($pid);
-			$subrecord = $level.' '.$type.' '.$text;
-			if ($inSource && $type=="DATE") {
+		if ($type != "DATA" && $type != "CONT") {
+			$tags[]		= $type;
+			$person		= WT_Person::getInstance($pid);
+			$subrecord	= $level . ' ' . $type . ' ' . $text;
+			if ($inSource && $type === "DATE") {
 				add_simple_tag($subrecord, '', WT_Gedcom_Tag::getLabel($label, $person));
-			} elseif (!$inSource && $type=="DATE") {
+			} elseif (!$inSource && $type === "DATE") {
 				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
-				$add_date = false;
-			} elseif ($type=='STAT') {
+				if ($level === '2') {
+					// We already have a date - no need to add one.
+					$add_date = false;
+				}
+ 			} elseif ($type=='STAT') {
 				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
 		 	} elseif ($level0type=='REPO') {
 				$repo = WT_Repository::getInstance($pid);
