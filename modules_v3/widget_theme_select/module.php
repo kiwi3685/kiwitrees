@@ -46,16 +46,21 @@ class widget_theme_select_WT_Module extends WT_Module implements WT_Module_Widge
 		$class = $this->getName();
 		$title = $this->getTitle();
 		$current_themedir = str_replace(array('themes','/'), '', WT_THEME_DIR);
+		if(strstr(get_query_url(), 'php?')) {
+			$separator = '&amp;';
+		} else {
+			$separator = '?';
+		}
 
 		$content = '<div class="center theme_form">';
 			foreach (get_theme_names() as $themename=>$themedir) {
 				$content .= '
 					<div>
-						<a href="' . get_query_url($themedir . '&amp;') . '&amp;theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >
+						<a href="' . get_query_url($themedir . '&amp;') . $separator . 'theme=' . $themedir . '" class="'. ($current_themedir == $themedir ? 'theme-active' : ''). '" >
 							<img src="themes/' . $themedir . '/images/screenshot_' . $themedir . '.png" alt="' . $themename . ' title="' . $themename . '">
 							<p>' . $themename . '</p>
 						</a>
-						
+
 					</div>
 				';
 			}

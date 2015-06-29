@@ -29,63 +29,61 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-// Valid values for form variables
-$ALL_THEMES_DIRS=array();
-foreach (get_theme_names() as $themename=>$themedir) {
-	$ALL_THEME_DIRS[]=$themedir;
-}
-
 // Extract form variables
-$form_action        =safe_POST('form_action'   );
-$form_username      =safe_POST('form_username', WT_REGEX_USERNAME);
-$form_realname      =safe_POST('form_realname' );
-$form_pass1         =safe_POST('form_pass1', WT_REGEX_PASSWORD);
-$form_pass2         =safe_POST('form_pass2', WT_REGEX_PASSWORD);
-$form_email         =safe_POST('form_email', WT_REGEX_EMAIL, 'email@example.com');
-$form_rootid        =safe_POST('form_rootid', WT_REGEX_XREF, WT_USER_ROOT_ID   );
-$form_language      =safe_POST('form_language', array_keys(WT_I18N::used_languages()), WT_LOCALE );
-$form_contact_method=safe_POST('form_contact_method');
-$form_visible_online=safe_POST_bool('form_visible_online');
+$form_action         = safe_POST('form_action');
+$form_username       = safe_POST('form_username', WT_REGEX_USERNAME);
+$form_realname       = safe_POST('form_realname' );
+$form_pass1          = safe_POST('form_pass1', WT_REGEX_PASSWORD);
+$form_pass2          = safe_POST('form_pass2', WT_REGEX_PASSWORD);
+$form_email          = safe_POST('form_email', WT_REGEX_EMAIL, 'email@example.com');
+$form_rootid         = safe_POST('form_rootid', WT_REGEX_XREF, WT_USER_ROOT_ID   );
+$form_language       = safe_POST('form_language', array_keys(WT_I18N::used_languages()), WT_LOCALE );
+$form_contact_method = safe_POST('form_contact_method');
+$form_visible_online = safe_POST_bool('form_visible_online');
 
 // Respond to form action
-if ($form_action=='update' && WT_Filter::checkCsrf()) {
-	if ($form_username!=WT_USER_NAME && get_user_id($form_username)) {
-		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
-	} elseif ($form_email!=getUserEmail(WT_USER_ID) && get_user_by_email($form_email)) {
-		WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
-	} else {
-		// Change username
-		if ($form_username!=WT_USER_NAME) {
-			AddToLog('User renamed to ->'.$form_username.'<-', 'auth');
-			rename_user(WT_USER_ID, $form_username);
-		}
+if ($form_action && WT_Filter::checkCsrf()) {
+	switch ($form_action) {
+		case 'update':
+			if ($form_username != WT_USER_NAME && get_user_id($form_username)) {
+				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
+			} elseif ($form_email!=getUserEmail(WT_USER_ID) && get_user_by_email($form_email)) {
+				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
+			} else {
+				// Change username
+				if ($form_username != WT_USER_NAME) {
+					AddToLog('User renamed to ->'  .$form_username . '<-', 'auth');
+					rename_user(WT_USER_ID, $form_username);
+				}
 
-		// Change password
-		if ($form_pass1 && $form_pass1 == $form_pass2) {
-			set_user_password(WT_USER_ID, $form_pass1);
-		}
+				// Change password
+				if ($form_pass1 && $form_pass1 == $form_pass2) {
+					set_user_password(WT_USER_ID, $form_pass1);
+				}
 
-		// Change other settings
-		setUserFullName(WT_USER_ID, $form_realname);
-		setUserEmail   (WT_USER_ID, $form_email);
-		set_user_setting(WT_USER_ID, 'language',      $form_language);
-		set_user_setting(WT_USER_ID, 'contactmethod', $form_contact_method);
-		set_user_setting(WT_USER_ID, 'visibleonline', $form_visible_online);
-		$WT_TREE->userPreference(WT_USER_ID, 'rootid', $form_rootid);
+				// Change other settings
+				setUserFullName(WT_USER_ID, $form_realname);
+				setUserEmail   (WT_USER_ID, $form_email);
+				set_user_setting(WT_USER_ID, 'language',       $form_language);
+				set_user_setting(WT_USER_ID, 'contactmethod',  $form_contact_method);
+				set_user_setting(WT_USER_ID, 'visibleonline',  $form_visible_online);
+				$WT_TREE->userPreference(WT_USER_ID, 'rootid', $form_rootid);
+			}
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+		break;
 
-		// Reload page to pick up changes such as theme and user_id
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
-		exit;
+		case 'delete':
+			// An administrator can only be deleted by another administrator
+			if (!WT_USER_IS_ADMIN) {
+				userLogout(WT_USER_ID);
+				delete_user(WT_USER_ID);
+			}
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+		break;
 	}
+
+	return;
 }
-
-$controller=new WT_Controller_Page();
-$controller
-	->setPageTitle(WT_I18N::translate('User administration'))
-	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
-	->addInlineJavascript('autocomplete();');
-
 // Form validation
 ?>
 <script>
@@ -114,44 +112,89 @@ function checkform(frm) {
 }
 </script>
 <?php
-
-// show the form to edit a user account details
-echo '<div id="edituser-page">
-	<h2>', WT_I18N::translate('My account'), '</h2>
-	<form name="editform" method="post" action="" onsubmit="return checkform(this);">
-	<input type="hidden" name="form_action" value="update">
-	', WT_Filter::getCsrf(), '
+$controller = new WT_Controller_Page();
+$controller
+	->setPageTitle(WT_I18N::translate('User administration'))
+	->pageHeader()
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('
+		autocomplete();
+		//Add help texts to page
+		jQuery(".help_text").each(function() {
+			var helpID = jQuery(this).attr("id");
+	 		jQuery("#" + helpID).load("help_text.php?help=" + helpID);
+		});
+	');
+ ?>
+<div id="edituser-page">
+	<h2><?php echo WT_I18N::translate('My account'); ?></h2>
 	<div id="edituser-table">
-		<div class="label">', WT_I18N::translate('Username'), help_link('username'), '</div>
-		<div class="value"><input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus></div>
-		<div class="label">', WT_I18N::translate('Real name'), help_link('real_name'), '</div>
-		<div class="value"><input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '"></div>';
-		$person=WT_Person::getInstance(WT_USER_GEDCOM_ID);
-		if ($person) {
-			echo '<div class="label">', WT_I18N::translate('Individual record'), help_link('edituser_gedcomid'), '</div>
-				<div class="value">', $person->format_list('span'), '</div>';
-		}
-		$person=WT_Person::getInstance(WT_USER_ROOT_ID);
-		echo '<div class="label">', WT_I18N::translate('Default individual'), help_link('default_individual'), '</div>
-			<div class="value"><input data-autocomplete-type="INDI" type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
-				echo print_findindi_link('rootid'), '<br>';
-				if ($person) {
-					echo $person->format_list('span');
-				}		
-			echo '</div>
-		<div class="label">', WT_I18N::translate('Password'), help_link('password'), '</div>
-		<div class="value"><input type="password" name="form_pass1"> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</div>
-		<div class="label">', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</div>
-		<div class="value"><input type="password" name="form_pass2"></div>
-		<div class="label">', WT_I18N::translate('Language'), '</div>
-		<div class="value">', edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language')), '</div>
-		<div class="label">', WT_I18N::translate('Email address'), help_link('email'), '</div>
-		<div class="value"><input type="email" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></div>
-		<div class="label">', WT_I18N::translate('Preferred contact method'), help_link('edituser_contact_meth'), '</div>
-		<div class="value">', edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod')), '</div>
-		<div class="label">', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</div>
-		<div class="value">', checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline')), '</div>
-	</div>'; // close edituser-table
-	echo '<div id="edituser_submit"><input type="submit" value="', WT_I18N::translate('save'), '"></div>';
-	echo '</form>
-</div>'; // close edituser-page
+		<form name="editform" method="post" action="" onsubmit="return checkform(this);">
+			<input type="hidden" id="form_action" name="form_action" value="update">
+			<?php echo WT_Filter::getCsrf(); ?>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Username'); ?></label>
+				<input type="text" name="form_username" value="<?php echo WT_USER_NAME; ?>" autofocus>
+				<span ID="username" class="help_text"></span>
+			</div>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Real name'); ?></label>
+				<input type="text" name="form_realname" value="<?php echo getUserFullName(WT_USER_ID); ?>">
+				<span ID="real_name" class="help_text"></span>
+			</div>
+			<?php $person = WT_Person::getInstance(WT_USER_GEDCOM_ID); ?>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Individual record'); ?></label>
+				<?php if ($person) { ?>
+					<div><?php echo $person->format_list('span'); ?></div>
+				<?php } else { ?>
+					<div class="label"><?php echo WT_I18N::translate('Unknown'); ?></div>
+				<?php } ?>
+				<span ID="edituser_gedcomid" class="help_text"></span>
+			</div>
+			<?php $person = WT_Person::getInstance(WT_USER_ROOT_ID); ?>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Default individual'); ?></label>
+				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="rootid" value="<?php echo WT_USER_ROOT_ID; ?>">
+					<?php echo print_findindi_link('rootid'); ?>
+					<br>
+					<?php if ($person) {
+						echo $person->format_list('span');
+					} ?>
+				<span ID="default_individual" class="help_text"></span>
+			</div>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Password'); ?></label>
+				<input type="password" name="form_pass1"> <?php echo WT_I18N::translate('Leave password blank if you want to keep the current password.'); ?>
+				<span ID="password" class="help_text"></span>
+			</div>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Confirm password'); ?></label>
+				<input type="password" name="form_pass2">
+				<span ID="password_confirm" class="help_text"></span>
+			</div>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Language'); ?></label>
+				<div class="label"><?php echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language')); ?></div>
+			</div>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Email address'); ?></label>
+				<input type="email" name="form_email" value="<?php echo getUserEmail(WT_USER_ID); ?>" size="150">
+				<span ID="email" class="help_text"></span>
+			</div>
+			<div class="chart_options">
+				<label><?php echo WT_I18N::translate('Preferred contact method'); ?></label>
+				<div class="label"><?php echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod')); ?></div>
+				<span ID="edituser_contact_meth_short" class="help_text"></span>
+			</div>
+			<div id="edituser_submit" class="btn btn-primary">
+				<button type="submit" value="<?php echo WT_I18N::translate('save') ?>"><?php echo WT_I18N::translate('save'); ?></button>
+			</div>
+		</form>
+		<?php if (!WT_USER_IS_ADMIN) { ?>
+			<div id="edituser_delete" class="btn btn-primary">
+				<button onclick="if (confirm('<?php echo htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', WT_USER_NAME)); ?>')) {jQuery('#form_action').val('delete'); document.editform.submit(); }"><?php echo WT_I18N::translate('Delete your account'); ?></button>
+			</div>
+		<?php } ?>
+	</div> <!-- close edituser-table -->
+</div> <!-- close edituser-page -->

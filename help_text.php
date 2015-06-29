@@ -172,7 +172,7 @@ case 'DATE':
 	}
 	$example1.='<br/>'.str_replace('/', '-', $example1).'<br/>'.str_replace('/', '.', $example1);
 	$example2.='<br/>'.str_replace('/', '-', $example2).'<br/>'.str_replace('/', '.', $example2);
-	$text = 
+	$text =
 		'<p>'.WT_I18N::translate('Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
@@ -274,7 +274,7 @@ case 'FORM':
 // This help text is used for all NAME components
 case 'NAME':
 	$title = WT_Gedcom_Tag::getLabel('NAME');
-	$text = 
+	$text =
 		'<p>' .
 		WT_I18N::translate('The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name.') .
 		'</p>' .
@@ -312,7 +312,7 @@ case 'NOTE':
 
 case 'OBJE':
 	$title = WT_Gedcom_Tag::getLabel('OBJE');
-	$text = 
+	$text =
 		'<p>'.
 		WT_I18N::translate('A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).').
 		'</p>';
@@ -345,7 +345,7 @@ case 'RELA':
 
 case 'RESN':
 	$title = WT_Gedcom_Tag::getLabel('RESN');
-	$text = 
+	$text =
 		WT_I18N::translate('Restrictions can be added to records and/or facts.  They restrict who can view the data and who can edit it.').
 		'<br><br>'.
 		WT_I18N::translate('Note that if a user account is linked to a record, then that user will always be able to view that record.');
@@ -435,7 +435,7 @@ case 'CALENDAR_FORMAT':
 	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display(false, null, array());
 	$d3=new WT_Date('15 OCT 1582'); $d3=$d3->Display(false, null, array());
 	$title = WT_I18N::translate('Calendar conversion');
-	$text = 
+	$text =
 		'<p>'.
 		WT_I18N::translate('Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars.').
 		'<p>'.
@@ -536,7 +536,7 @@ case 'GEDCOM_ID_PREFIX':
 
 case 'GEDCOM_MEDIA_PATH':
 	$title = WT_I18N::translate('GEDCOM media path');
-	$text = 
+	$text =
 		'<p>'.
 		// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
 		WT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed.').
@@ -570,7 +570,7 @@ case 'HIDE_LIVE_PEOPLE':
 
 case 'INDEX_DIRECTORY':
 	$title = WT_I18N::translate('Data folder');
-	$text = 
+	$text =
 		'<p>'.
 		/* I18N: Help text for the "Data folder" site configuration setting */ WT_I18N::translate('This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.').
 		'</p><p>'.
@@ -627,7 +627,7 @@ case 'MAX_EXECUTION_TIME':
 	ini_restore('max_execution_time');
 	$dflt_cpu=ini_get('max_execution_time');
 	$title = WT_I18N::translate('PHP time limit');
-	$text = 
+	$text =
 		WT_I18N::plural(
 			'By default, your server allows scripts to run for %s second.',
 			'By default, your server allows scripts to run for %s seconds.',
@@ -646,7 +646,7 @@ case 'MAX_PEDIGREE_GENERATIONS':
 
 case 'MEDIA_DIRECTORY':
 	$title = WT_I18N::translate('Media folder');
-	$text = 
+	$text =
 		'<p>'.
 		WT_I18N::translate('This folder will be used to store the media files for this family tree.').
 		'</p><p>'.
@@ -710,7 +710,7 @@ case 'PEDIGREE_SHOW_GENDER':
 
 case 'RELATIONSHIP_PATH_LENGTH':
 	$title = WT_I18N::translate('Restrict to immediate family');
-	$text = 
+	$text =
 		WT_I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.').
 		'<br/><br/>'.
 		WT_I18N::translate('For example, if you specify a path length of 2, the person will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).').
@@ -926,7 +926,7 @@ case 'SUBLIST_TRIGGER_I':
 
 case 'SURNAME_TRADITION':
 	$title = WT_I18N::translate('Surname tradition');
-	$text = 
+	$text =
 		WT_I18N::translate('When you Add a family member, a default surname can be provided.  This surname will depend on the local tradition.').
 		'<br><br><dl><dt>'.
 		/* I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname */
@@ -1142,7 +1142,7 @@ case 'edit_add_SOUR':
 
 case 'edit_edit_raw':
 	$title = WT_I18N::translate('Edit raw GEDCOM record');
-	$text = 
+	$text =
 		WT_I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix.').
 		'<br/><br/>'.
 		/* I18N: %s is a URL */ WT_I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/w/images-en/Ged551-5.pdf">http://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>');
@@ -1180,6 +1180,11 @@ case 'edituser_contact_meth':
 	$text.='</dd></dl>';
 	break;
 
+case 'edituser_contact_meth_short':
+	$title = WT_I18N::translate('Preferred contact method');
+	$text = WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you.');
+	break;
+
 case 'edituser_gedcomid':
 	$title = WT_I18N::translate('Individual record');
 	$text = WT_I18N::translate('This is a link to your own record in the family tree.  If this is the wrong person, contact an administrator.');
@@ -1192,7 +1197,7 @@ case 'email':
 
 case 'export_gedcom':
 	$title = WT_I18N::translate('Export family tree');
-	$text = 
+	$text =
 		'<p>' .
 		WT_I18N::translate('This option will save the family tree to a GEDCOM file on the server.') .
 		'</p><p>' .
@@ -1238,7 +1243,7 @@ case 'header_favorites':
 
 case 'import_gedcom':
 	$title = WT_I18N::translate('Import family tree');
-	$text = 
+	$text =
 		'<p>' .
 		WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.') .
 		'</p><p>' .
@@ -1309,7 +1314,7 @@ case 'phpinfo':
 
 case 'pending_changes':
 	$title = WT_I18N::translate('Pending changes');
-	$text = 
+	$text =
 		'<p>'.
 		WT_I18N::translate('When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted.').
 		'</p><p>'.
@@ -1353,7 +1358,7 @@ case 'remove_person':
 
 case 'role':
 	$title = WT_I18N::translate('Role');
-	$text = 
+	$text =
 		WT_I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.').
 		'<br/><br>'.
 		'<dl>'.
@@ -1409,7 +1414,7 @@ case 'upload_gedcom':
 
 case 'upload_media_file':
 	$title = WT_I18N::translate('Media file to upload');
-	$text = 
+	$text =
 		WT_I18N::translate('Select the media file that you want to upload.  If a file already exists with the same name, it will be overwritten.').
 		'<br/><br/>'.
 		WT_I18N::translate('It is easier to manage your media files if you choose a consistent format for the filenames.  To organise media files into folders, you must first set the number of levels in the GEDCOM administration page.');
@@ -1427,7 +1432,7 @@ case 'upload_server_file':
 
 case 'upload_server_folder':
 	$title = WT_I18N::translate('Folder name on server');
-	$text = 
+	$text =
 		'<p>' .
 		WT_I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.') .
 		'</p>';
@@ -1466,7 +1471,7 @@ case 'useradmin_visibleonline':
 
 case 'username':
 	$title = WT_I18N::translate('Username');
-	$text = 
+	$text =
 		'<p>'.
 		WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.').
 		'</p><p>'.

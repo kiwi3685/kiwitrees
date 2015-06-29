@@ -603,7 +603,7 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 .person_box_template i[class^="icon-silhouette"] {float:left;}
 [dir=rtl] .person_box_template i[class^="icon-silhouette"] {float:right;}
 
-.gedcom_favorites_block .person_box .details2,.gedcom_favorites_block .person_boxF.details2,.gedcom_favorites_block 
+.gedcom_favorites_block .person_box .details2,.gedcom_favorites_block .person_boxF.details2,.gedcom_favorites_block
 .person_boxNN.details2,.widget_favorites_block .person_box .details2,.widget_favorites_block .person_boxF.details2,.widget_favorites_block .person_boxNN.details2 {min-height:40px;}
 .action_header, .action_headerF, .action_headerNN {margin-bottom:3px;}
 
@@ -1222,17 +1222,60 @@ span.link_text {display:none;}
 [dir=rtl] #search-page-table .label {float:right;}
 [dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
 
-/*  edituser.php  */
-#edituser-page h2, #edituser_submit {margin:20px;text-align:center;}
-#edituser-table {border:1px solid #999999;border-radius:3px;margin:20px auto 0;width:800px;}
-#edituser-table .label {float:left;font-weight:700;padding:5px 10px 0;width:240px;white-space:nowrap;}
-#edituser-table .value {background-color:#ecf5ff;border-top:1px solid #999999;color:#333333;margin:0 0 0 260px;padding:5px;}
-#edituser-table .label span {margin:0 10px;}
-#edituser-table div:nth-of-type(2) {border:0;}
-#edituser-table select {margin:0;}
-[dir=rtl] #edituser-table .label {float:right;}
-[dir=rtl] #edituser-table .value {margin:0 260px 0 0;}
+/* ============== edituser.php ======================= */
+#edituser-page h2,
+#edituser_submit {
+	margin: 20px;
+}
 
+#edituser_delete {
+	margin: -50px 20px 20px 20px;
+	text-align: right;
+}
+
+[dir='rtl'] #edituser_delete {
+	text-align: left;
+}
+
+#edituser-table {
+	margin: 20px auto 0;
+	max-width: 800px;
+	width: 50%;
+}
+
+#edituser-table .chart_options {
+	display: block;
+	border-bottom: 1px outset;
+}
+
+#edituser-table .chart_options label {
+	display: inline-block;
+ 	width: 30%;
+}
+
+#edituser-table .chart_options .label {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#edituser-table .chart_options input {
+	padding: 5px;
+	width: 135px;
+}
+
+#edituser-table .chart_options input[type="email"] {
+	width: 240px;
+}
+
+#edituser-table .chart_options span .helpheader {
+	display: none;
+}
+
+#edituser-table .chart_options span .helpcontent {
+	font-style: italic;
+}
+
+================================================================================
 @media print {
 	form,button,input {display:none;}
 	#header select,#header input,#footer select,#backprint, #sidebar {display:none;}
@@ -1395,7 +1438,7 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 #edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
 #edit_interface-page input[type="text"][id*="SOUR_TITL"] {width:250px;}
-#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;} 
+#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;}
 #edit_interface-page textarea {margin:0 5px;width:440px;}
 #edit_interface-page textarea[id*="NOTE"] {height:240px;}
 #edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
@@ -1422,7 +1465,7 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 #addmedia-page .optionbox p.sub {font-size:11px;margin:0 5px;}
 #addmedia-page input[type="text"][id*="PAGE"], #addmedia-page input[type="text"][id*="_UID"] {width:350px;}
 #addmedia-page input[type="text"][id*="SOUR"], #addmedia-page input[type="text"][id*="REPO"],#addmedia-page input[type="text"][id*="OBJE"],#addmedia-page input[type="text"][id*="FAMC"],#addmedia-page input[type="text"][id*="ASSO"],#addmedia-page input[type="text"][id^="AGE"],#addmedia-page input[type="text"][id*="SHARED_NOTE"] {width:70px;}
-#addmedia-page input[id*="TEXT"] {height:140px;width:440px;} 
+#addmedia-page input[id*="TEXT"] {height:140px;width:440px;}
 #addmedia-page textarea {margin:0 5px;width:440px;}
 #addmedia-page textarea[id*="NOTE"] {height:240px;}
 
@@ -1484,7 +1527,7 @@ html[dir=\'rtl\'] #privacy_status dt span{float: left;}
 hr.stories_divider {border:none; border-top:medium double; margin:auto; padding:0; text-align:center; width:80%;}
 hr.stories_divider:after {content:"§"; display:inline-block;position:relative; top:-0.7em; font-size:1.5em; padding:0 0.25em; background:white;}
 /* story content - reset main styles to standard styling */
-#stories span, #stories h1, #stories h2, #stories h3, #stories h4, #stories h5, #stories h6, #stories p, #stories blockquote, #stories pre, 
+#stories span, #stories h1, #stories h2, #stories h3, #stories h4, #stories h5, #stories h6, #stories p, #stories blockquote, #stories pre,
 #stories a, #stories img, #stories strong, #stories sub, #stories sup, #stories b, #stories u, #stories i, #stories dl, #stories dt, #stories dd, #stories ol, #stories ul, #stories li,
 #stories fieldset, #stories form, #stories label, #stories legend, #stories table, #stories caption, #stories tbody, #stories tfoot, #stories thead, #stories tr, #stories th, #stories td
  {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
@@ -1637,7 +1680,7 @@ a#copy {
 #family-page [id^="fontdef-"] .icon {clear:both; margin-top:5px;}
 #family-page [id^="fontdef-"] .icon .itr {position:relative; width:20px; margin:auto;}
 #family-page [id^="fontdef-"] .icon .itr a {margin-top:5px;}
-#family-page [id^="fontdef-"] .icon .itr .popup {width:240px; margin-right:-110px;} 
+#family-page [id^="fontdef-"] .icon .itr .popup {width:240px; margin-right:-110px;}
 #family-page [id^="fontdef-"] .icon .itr .popup ul li a:nth-of-type(2) {text-decoration:underline;}
 #family-page [id^="fontdef-"] .icon .itr .popup ul li li {padding:0 15px;}
 #family-page [id^="fontdef-"] .icon .itr .popup ul span {padding:0;}
@@ -1673,7 +1716,7 @@ div.widget {
 [dir='rtl'] #widget-bar {
 	margin: -12px -12px 0 0 ;
 	box-shadow: -5px 8px 8px -3px #888;
-}	
+}
 
 #widget-bar .widget .block {
 	margin: 0;
@@ -1758,9 +1801,9 @@ div.widget {
 	float: left;
 	width: 0;
 	white-space: nowrap;
-	content: 
+	content:
 		". . . . . . . . . . . . . . . . . . . . "
-		". . . . . . . . . . . . . . . . . . . . " 
+		". . . . . . . . . . . . . . . . . . . . "
 		". . . . . . . . . . . . . . . . . . . . "
 		". . . . . . . . . . . . . . . . . . . . ";
 	margin:0;
@@ -1911,7 +1954,7 @@ div.widget {
 	font-size: 11px;
 	position: absolute;
 	left: auto;
-	right: 11px;	
+	right: 11px;
 }
 
 [dir=rtl] #fancy_treeview-page .blockheader .header-link {
@@ -2085,7 +2128,7 @@ div.widget {
 	display: inline;
 	list-style: none;
 	margin: 0;
-	padding: 0;	
+	padding: 0;
 	text-align: initial;
 }
 
@@ -2164,7 +2207,7 @@ div.widget {
 		text-align: left;
 		width: 70%;
 
-	}	
+	}
 	#topMenu #nav-select select {
 		font-size: 30px;
 		width: 100%;

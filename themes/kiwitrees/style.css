@@ -1232,6 +1232,18 @@ a:hover .nameZoom {
 	clear: both;
 }
 
+.help_text .helpheader  {
+	display:none;
+}
+
+.help_text .helpcontent {
+	border: none;
+	font-size: 100%;
+	font-style: italic;
+	margin: 10px 0;
+	width: 100%;
+}
+
 #familybook-page {
 	overflow-x: auto;
 }
@@ -2812,7 +2824,7 @@ div.faq_body {
 	overflow: hidden;
 	padding-top: 10px;
 	font-weight: normal;
-} 
+}
 .editlink,
 .copylink,
 .deletelink {
@@ -3691,49 +3703,56 @@ div[id^="caldiv"] td {
 #edituser-page h2,
 #edituser_submit {
 	margin: 20px;
-	text-align: center;
+}
+
+#edituser_delete {
+	margin: -50px 20px 20px 20px;
+	text-align: right;
+}
+
+[dir='rtl'] #edituser_delete {
+	text-align: left;
 }
 
 #edituser-table {
-	background-color: #C9C9C9;
-	border: 1px outset #ccc;
-	border-top: 0;
 	margin: 20px auto 0;
-	width: 800px;
+	max-width: 800px;
+	width: 50%;
 }
 
-#edituser-table .label {
-	border-top: 1px solid #fff;
-	float: left;
-	font-weight: bold;
-	padding: 5px 10px 0;
-	width: 240px;
-	white-space: nowrap;
+#edituser-table .chart_options {
+	display: block;
+	border-bottom: 1px outset;
 }
 
-#edituser-table .value {
-	background-color: #DDD;
-	border-top: 1px solid #ccc;
-	margin: 0 0 0 260px;
+#edituser-table .chart_options label {
+	display: inline-block;
+ 	width: 30%;
+}
+
+#edituser-table .chart_options .label {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#edituser-table .chart_options input {
 	padding: 5px;
+	width: 135px;
 }
 
-#edituser-table .label span {
-	margin: 0 10px;
+#edituser-table .chart_options input[type="email"] {
+	width: 240px;
 }
 
-#edituser-table select {
-	margin: 0;
+#edituser-table .chart_options span .helpheader {
+	display: none;
 }
 
-[dir='rtl'] #edituser-table .label {
-	float: right;
+#edituser-table .chart_options span .helpcontent {
+	font-style: italic;
 }
 
-[dir='rtl'] #edituser-table .value {
-	margin: 0 260px 0 0;
-}
-
+================================================================================
 @media print {
 	#backprint {
 		display: none;
@@ -4010,85 +4029,85 @@ a.icon-udarrow:hover {
 
 
 /* font-awesome icons */
-.icon-admin				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit; cursor: pointer;} /* fa-cogs */ 
-.icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; cursor: help; margin: 0 5px;} /* fa-question-circle */ 
-.icon-myaccount			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-university */ 
-.icon-pedigree			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-sitemap */ 
-.icon-indis				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-male */ 
-.fa-user				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-user */ 
-.icon-zoomin			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-search-plus */ 
-.icon-zoomout			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-search-minus */ 
-.icon-button_linknote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;} /* fa-link */ 
-.icon-button_addnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;} /* fa-plus */ 
-.icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-edit */ 
-.icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */ 
+.icon-admin				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit; cursor: pointer;} /* fa-cogs */
+.icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; cursor: help; margin: 0 5px;} /* fa-question-circle */
+.icon-myaccount			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-university */
+.icon-pedigree			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-sitemap */
+.icon-indis				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-male */
+.fa-user				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-user */
+.icon-zoomin			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-search-plus */
+.icon-zoomout			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-search-minus */
+.icon-button_linknote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;} /* fa-link */
+.icon-button_addnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;} /* fa-plus */
+.icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-edit */
+.icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */
 .icon-copy				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-copy */
-.fa-bars				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-bars */ 
-.fa-bars:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-bars */ 
-.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-times */ 
-.fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-times */ 
-.icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */ 
-.icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */ 
-.icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */ 
-.icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-male */ 
-.icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */ 
-.icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */ 
-.icon-button_addsource	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */ 
-.icon-button_addmedia 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */ 
-.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-book */ 
-.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-icon-keyboard-o */ 
-.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-globe */ 
+.fa-bars				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-bars */
+.fa-bars:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-bars */
+.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-times */
+.fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-times */
+.icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
+.icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
+.icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
+.icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-male */
+.icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */
+.icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */
+.icon-button_addsource	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
+.icon-button_addmedia 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
+.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-book */
+.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-icon-keyboard-o */
+.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-globe */
 .icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-calendar */
 .icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-bank */
 .icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-file-text */
 .icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-camera-retro */
 .icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-map-marker */
-.icon-image_add			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-plus */ 
-.icon-image_link		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-link */ 
-.icon-image_sort		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-sort-alpha-asc */ 
-.icon-cfamily			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */ 
-.icon-sex_f_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#800000 !important;} /* fa-female */ 
-.icon-sex_m_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#00008b !important;} /* fa-male */ 
-.icon-sex_u_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-user */ 
-.fa-user				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-user */ 
-.icon-sex_f_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#800000 !important; margin: 0 5px; vertical-align: middle;} /* fa-female */ 
-.icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#00008b !important; margin: 0 5px; vertical-align: middle;} /* fa-male */ 
-.icon-sex_u_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; margin: 0 5px; vertical-align: middle;} /* fa-user */ 
-.fa-user				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; margin: 0 5px; vertical-align: middle;} /* fa-user */ 
-.female_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#800000 !important; width: 24px;} /* fa-female */ 
-.male_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#00008b !important; width: 24px;} /* fa-male */ 
-.unknown_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; width: 24px;} /* fa-user */ 
-.icon-darrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-down */ 
-.icon-larrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-left */ 
-.icon-rarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-right */ 
-.icon-uarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-up */ 
-.icon-ldarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-backward */ 
-.icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */ 
-.icon-media-prev		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-backward */ 
-.icon-media-next		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */ 
-.icon-media-play		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-play */ 
-.icon-media-stop		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-pause */ 
-.icon-plus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-expand */ 
-.icon-minus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-compress */ 
-.fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-envelope-o */ 
-.icon-warning			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; color: #ff4500; margin: 0 5px 5px; vertical-align: middle;} /* fa-warning */ 
-.icon-lsdnarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-down */ 
-.icon-lsltarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-left */ 
-.icon-lsrtarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-right */ 
-.icon-lsuparrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-up */ 
-.icon-source			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-book */ 
-.icon-media				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-camera-retro */ 
-.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-times */ 
-.icon-resn-confidential {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-ban */ 
-.icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */ 
-.icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */ 
-.icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */ 
+.icon-image_add			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-plus */
+.icon-image_link		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-link */
+.icon-image_sort		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-sort-alpha-asc */
+.icon-cfamily			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */
+.icon-sex_f_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#800000 !important;} /* fa-female */
+.icon-sex_m_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#00008b !important;} /* fa-male */
+.icon-sex_u_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-user */
+.fa-user				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-user */
+.icon-sex_f_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#800000 !important; margin: 0 5px; vertical-align: middle;} /* fa-female */
+.icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#00008b !important; margin: 0 5px; vertical-align: middle;} /* fa-male */
+.icon-sex_u_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; margin: 0 5px; vertical-align: middle;} /* fa-user */
+.fa-user				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; margin: 0 5px; vertical-align: middle;} /* fa-user */
+.female_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#800000 !important; width: 24px;} /* fa-female */
+.male_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#00008b !important; width: 24px;} /* fa-male */
+.unknown_gender			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; width: 24px;} /* fa-user */
+.icon-darrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-down */
+.icon-larrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-left */
+.icon-rarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-right */
+.icon-uarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-arrow-up */
+.icon-ldarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-backward */
+.icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */
+.icon-media-prev		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-backward */
+.icon-media-next		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */
+.icon-media-play		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-play */
+.icon-media-stop		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-pause */
+.icon-plus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-expand */
+.icon-minus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-compress */
+.fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-envelope-o */
+.icon-warning			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; color: #ff4500; margin: 0 5px 5px; vertical-align: middle;} /* fa-warning */
+.icon-lsdnarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-down */
+.icon-lsltarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-left */
+.icon-lsrtarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-right */
+.icon-lsuparrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-up */
+.icon-source			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-book */
+.icon-media				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-camera-retro */
+.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-times */
+.icon-resn-confidential {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-ban */
+.icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
+.icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
+.icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */
 
-#extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */ 
+#extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */
 #extra-menu > li:hover	{color: #009afe;}
 
 /* Generic MIME types */
-[class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */ 
+[class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */
 [class^="icon-mime-application-"], [class*=" icon-mime-application-"]	{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file */
 [class^="icon-mime-audio-"],    [class*=" icon-mime-audio-"]   			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
 [class^="icon-mime-image-"],    [class*=" icon-mime-image-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
@@ -5379,7 +5398,7 @@ div.widget {
 [dir='rtl'] #widget-bar {
 	margin: -12px -12px 0 0 ;
 	box-shadow: -5px 8px 8px -3px #888;
-}	
+}
 
 #widget-bar .widget .blockheader {
 	background: #aaa;
@@ -5458,9 +5477,9 @@ div.widget {
 	float: left;
 	width: 0;
 	white-space: nowrap;
-	content: 
+	content:
 		". . . . . . . . . . . . . . . . . . . . "
-		". . . . . . . . . . . . . . . . . . . . " 
+		". . . . . . . . . . . . . . . . . . . . "
 		". . . . . . . . . . . . . . . . . . . . "
 		". . . . . . . . . . . . . . . . . . . . ";
 	margin:0;
@@ -5792,7 +5811,7 @@ div.widget {
 	display: inline;
 	list-style: none;
 	margin: 0;
-	padding: 0;	
+	padding: 0;
 	text-align: initial;
 }
 
@@ -5920,7 +5939,7 @@ div.widget {
 		text-align: left;
 		width: 70%;
 
-	}	
+	}
 	#topMenu #nav-select select {
 		font-size: 30px;
 		width: 100%;
