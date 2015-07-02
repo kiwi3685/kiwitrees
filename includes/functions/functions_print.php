@@ -386,9 +386,8 @@ function whoisonline() {
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
-	$method=get_user_setting($user_id, 'contactmethod');
-
-	$fullname=getUserFullName($user_id);
+	$method		= get_user_setting($user_id, 'contactmethod');
+	$fullname	= getUserFullName($user_id);
 
 	switch ($method) {
 	case 'none':

@@ -1,11 +1,6 @@
 <?php
-// Classes and libraries for module system
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2013 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
+// kiwitrees - contact module
+// Copyright (C) kiwtrees.net. All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,14 +9,12 @@
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
-// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-//
-// $Id: module.php 14786 2013-02-06 22:28:50Z greg $
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -62,9 +55,9 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		global $controller, $SEARCH_SPIDER;
-		
+
 		//-- main PAGES menu item
-		$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show', 'menu-contact', 'down');
+		$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . addslashes(urlencode(get_query_url())), 'menu-contact', 'down');
 		$menu->addClass('menuitem', 'menuitem_hover', '');
 		return $menu;
 	}
@@ -81,11 +74,11 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	private function show() {
 		global $controller;
-		$subject	= safe_REQUEST($_REQUEST, 'subject',    WT_REGEX_UNSAFE); // Messages may legitimately contain "<", etc.
-		$body		= safe_REQUEST($_REQUEST, 'body',       WT_REGEX_UNSAFE);
-		$from_name	= safe_REQUEST($_REQUEST, 'from_name',  WT_REGEX_UNSAFE);
+		$subject	= safe_REQUEST($_REQUEST, 'subject',	WT_REGEX_UNSAFE); // Messages may legitimately contain "<", etc.
+		$body		= safe_REQUEST($_REQUEST, 'body',		WT_REGEX_UNSAFE);
+		$from_name	= safe_REQUEST($_REQUEST, 'from_name',	WT_REGEX_UNSAFE);
 		$from_email	= safe_REQUEST($_REQUEST, 'from_email', WT_REGEX_EMAIL);
-		$url		= safe_REQUEST($_REQUEST, 'url',        WT_REGEX_URL);
+		$url		= safe_REQUEST($_REQUEST, 'url',		WT_REGEX_URL);
 		$method		= safe_REQUEST($_REQUEST, 'method', array('messaging', 'messaging2', 'messaging3', 'mailto', 'none'), 'messaging2');
 		$to			= safe_REQUEST($_REQUEST, 'to');
 		$action		= safe_REQUEST($_REQUEST, 'action', array('compose', 'send'), 'compose');
@@ -174,7 +167,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 							return true;
 						}
 					');
-						
+
 					if (array_key_exists('ckeditor', WT_Module::getActiveModules()) && WT_Site::preference('MAIL_FORMAT') == "1") {
 						ckeditor_WT_Module::enableBasicEditor($controller);
 					}
@@ -184,24 +177,29 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 					$html .= '<div class="message_form" style="width: 80%; margin:auto;">';
 						if (!WT_USER_ID) {
 							$html .= '
-								<p>' . WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead persons may also be private.  If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'). '</p>
+								<p>' . WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'). '</p>
 								<label for "from_name" style="display: block; font-weight: 900;">'. WT_I18N::translate('Your Name:'). '</label>
 								<input type="text" name="from_name" id="from_name" size="40" value="'. htmlspecialchars($from_name). '">
 								<label for "from_email" style="display: block; font-weight: 900;">'. WT_I18N::translate('Email Address:'). '</label>
 								<input type="email" name="from_email" id="from_email" size="40" value="'. htmlspecialchars($from_email). '">
-								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>';
+								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.	If you do not provide your email address we will not be able to respond to your inquiry.	Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>';
 						}
 					$html .= '</div>
 					<hr>
 					<div id="contact_forms" style="width:80%; margin:auto;">';
 						for ($i = 1; $i <= $form_count; $i++) {
-							$form_title = $form_title_1;
+							$form_title	= $form_title_1;
+							$to			= get_user_name(get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID'));
+							$to_name	= getUserFullName(get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID'));
 							if ($i > 1) {
-								$form_title = $form_title_2;
+								$form_title	= $form_title_2;
+								$to			= get_user_name(get_gedcom_setting($ged_id, 'CONTACT_USER_ID'));
+								$to_name	= getUserFullName(get_gedcom_setting($ged_id, 'CONTACT_USER_ID'));
 							}
-							$html .= '<form class="message_form" style="float:left; margin: auto 20px; max-width: 600px;" name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
+							$html .= '<form class="message_form" style="float:left; margin: auto 20px; max-width: 600px;" name="messageform" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 								$html .= WT_Filter::getCsrf();
 								$html .= $form_title;
+								$html .= WT_I18N::translate('This message will be sent to %s', '<b>' . $to_name . '</b>');
 								$html .= '
 									<label for "subject' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Subject:'). '</label>
 									<input type="hidden" name="action" value="send">
@@ -219,7 +217,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 						}
 						if ($method == 'messaging2') {
 							$html .= '
-							<p class="message_form" style="clear:both; width: 600px; margin:auto;" >'. 
+							<p class="message_form" style="clear:both; width: 600px; margin:auto;" >'.
 								WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.') . '
 							</p>';
 						}
@@ -231,8 +229,8 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 						$from = $from_email;
 					}
 					$message = array();
-					$message['to']=$to;
-					$message['from']=$from;
+					$message['to'] = $to;
+					$message['from'] = $from;
 					if (!empty($from_name)) {
 						$message['from_name'] = $from_name;
 						$message['from_email'] = $from_email;
@@ -246,7 +244,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 						WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s'. htmlspecialchars($to)));
 					} else {
 						WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-						AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)'. 'error');
+						AddToLog('Unable to send message.	FROM:'.$from.' TO:'.$to.' (failed to send)'. 'error');
 					}
 				break;
 
@@ -256,6 +254,4 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 		echo $html;
 	}
-
-
 }
