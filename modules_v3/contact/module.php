@@ -102,7 +102,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 			$to_user_id = '';
 		}
 
-		if ($supportLink == $contactLink) {
+		if (($supportLink == $contactLink) || ($contact_user_id == '') || ($webmaster_user_id == '')) {
 			$form_count = 1;
 			$to_user_id = WT_I18N::translate('Support');
 			$form_title_1 = '<h3>' . WT_I18N::translate('For technical support or genealogy questions') . '</h3>';
@@ -174,19 +174,19 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 					$html .= $errors;
 
-					$html .= '<div class="message_form" style="width: 80%; margin:auto;">';
+					$html .= '<form class="message_form" name="messageform" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 						if (!WT_USER_ID) {
-							$html .= '
+							$html .= '<div class="message_note">
 								<p>' . WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'). '</p>
 								<label for "from_name" style="display: block; font-weight: 900;">'. WT_I18N::translate('Your Name:'). '</label>
 								<input type="text" name="from_name" id="from_name" size="40" value="'. htmlspecialchars($from_name). '">
 								<label for "from_email" style="display: block; font-weight: 900;">'. WT_I18N::translate('Email Address:'). '</label>
 								<input type="email" name="from_email" id="from_email" size="40" value="'. htmlspecialchars($from_email). '">
-								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.	If you do not provide your email address we will not be able to respond to your inquiry.	Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>';
+								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.	If you do not provide your email address we will not be able to respond to your inquiry.	Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>
+							</div>';
 						}
-					$html .= '</div>
-					<hr>
-					<div id="contact_forms" style="width:80%; margin:auto;">';
+					$html .= '<hr>
+					<div id="contact_forms">';
 						for ($i = 1; $i <= $form_count; $i++) {
 							$form_title	= $form_title_1;
 							$to			= get_user_name(get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID'));
@@ -196,10 +196,10 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 								$to			= get_user_name(get_gedcom_setting($ged_id, 'CONTACT_USER_ID'));
 								$to_name	= getUserFullName(get_gedcom_setting($ged_id, 'CONTACT_USER_ID'));
 							}
-							$html .= '<form class="message_form" style="float:left; margin: auto 20px; max-width: 600px;" name="messageform" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 								$html .= WT_Filter::getCsrf();
+								$html .= '<div class="contact_form">';
 								$html .= $form_title;
-								$html .= WT_I18N::translate('This message will be sent to %s', '<b>' . $to_name . '</b>');
+								$html .= '<p>' . WT_I18N::translate('This message will be sent to %s', '<b>' . $to_name . '</b>') . '</p>';
 								$html .= '
 									<label for "subject' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Subject:'). '</label>
 									<input type="hidden" name="action" value="send">
@@ -213,7 +213,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 									<div class="btn btn-primary" style="display: inline-block;margin:10px auto;">
 										<button type="submit" value="value="'. WT_I18N::translate('Send'). '">'. WT_I18N::translate('Send'). '</button>
 									</div>
-							</form>';
+								</div>';
 						}
 						if ($method == 'messaging2') {
 							$html .= '
@@ -221,34 +221,37 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 								WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.') . '
 							</p>';
 						}
-					$html .= '</div>';
+					$html .= '</div>
+					</form>';
 				break;
 
-				case 'send':
-					if ($from_email) {
-						$from = $from_email;
-					}
-					$message = array();
-					$message['to'] = $to;
-					$message['from'] = $from;
-					if (!empty($from_name)) {
-						$message['from_name'] = $from_name;
-						$message['from_email'] = $from_email;
-					}
-					$message['subject'] = $subject;
-					$message['body'] = $body;
-					$message['created'] = WT_TIMESTAMP;
-					$message['method'] = $method;
-					$message['url'] = $url;
-					if (addMessage($message)) {
-						WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s'. htmlspecialchars($to)));
-					} else {
-						WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-						AddToLog('Unable to send message.	FROM:'.$from.' TO:'.$to.' (failed to send)'. 'error');
-					}
-				break;
-
-			}
+			case 'send':
+				if ($from_email) {
+					$from = $from_email;
+				}
+				$message = array();
+				$message['to'] = $to;
+				$message['from'] = $from;
+				if (!empty($from_name)) {
+					$message['from_name'] = $from_name;
+					$message['from_email'] = $from_email;
+				}
+				$message['subject'] = $subject;
+				$message['body'] = $body;
+				$message['created'] = WT_TIMESTAMP;
+				$message['method'] = $method;
+				$message['url'] = $url;
+				if (!addMessage($message)) {
+					AddToLog('Unable to send message.  FROM:' . $from . ' TO:' . $to .' (failed to send)', 'error');
+				}
+				if ($url) {
+					$return_to = $url;
+				} else {
+					$return_to = 'module.php?mod='. $this->getName().'&mod_action=show';
+				}
+				$controller->addInlineJavascript('window.location.href="'. $return_to.'";');
+			break;
+		}
 
 	$html .= '</div>';
 

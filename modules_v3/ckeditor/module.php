@@ -61,7 +61,7 @@ class ckeditor_WT_Module extends WT_Module {
 				});
 			');
 	}
-	// Convert <textarea class="html-edit"> fields to CKEditor fields with bassic settings only for messsaging
+	// Convert <textarea class="html-edit"> fields to CKEditor fields with basic settings only for messsaging
 	public static function enableBasicEditor($controller) {
 		$controller
 			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
