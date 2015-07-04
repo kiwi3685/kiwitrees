@@ -48,7 +48,7 @@ function helpDialog(which, mod) {
 			width: 500,
 			height: 'auto',
 		}).load(url+' .helpcontent', function() {
-			jQuery(this).dialog("option", "position", ['center', 'center'] );			
+			jQuery(this).dialog("option", "position", { my: "center center", at: "center center", of: window} );
 		});
 	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
@@ -61,24 +61,23 @@ function helpDialog(which, mod) {
 function modalDialog(url, title) {
 	jQuery('<div style="max-height:800px; overflow-y:auto"><div title="'+title+'"><div class="loading-image"></div><div></div>')
 		.dialog({
-			title: title,	
+			title: title,
 			modal: false,
 			width: 'auto',
 			height: 'auto',
 			modal: true,
-			position: ['center', 'center'],
 			closeText: "",
-			close: function(event, ui) { 
+			close: function(event, ui) {
 				jQuery(this).remove();
 				jQuery('.ui-widget-overlay').remove();
 			}
 		}).load(url, function() {
-			jQuery(this).dialog("option", "position", ['center', 'center'] );			
+			jQuery(this).dialog("option", "position", { my: "left top", at: "left+10% top+10%", of: window} );
 		});
 	// Close the window when we click outside it.
 	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
-		jQuery(this).remove();	
+		jQuery(this).remove();
 	});
 	return false;
 }
@@ -698,11 +697,11 @@ function expandbox(boxid, bstyle) {
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
-	
+
 	jQuery(document).ready(function() {
 		clength = jQuery(".compact_view").length;
-	}); 
-	
+	});
+
 	var url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
@@ -777,7 +776,7 @@ function expandbox(boxid, bstyle) {
 			inbox.style.display='none';
 		}
 
-		
+
 
 		if (inbox2) inbox2.style.display='none';
 
@@ -853,7 +852,7 @@ function restorebox(boxid, bstyle) {
 			jQuery(iconz).removeClass("icon-zoomin").addClass("icon-zoomout");
 		} else {
 			jQuery(iconz).removeClass("icon-zoomout").addClass("icon-zoomin");
-		
+
 		}
 		big = 0;
 		if (gender) {
@@ -1105,7 +1104,7 @@ var monthLabels = [];
 		} else {
 			date = new Date();
 		}
-		
+
   	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
   	if (dateDiv.style.visibility=='hidden') {
   		dateDiv.style.visibility = 'visible';
@@ -1232,7 +1231,7 @@ function findIndi(field, indiname, ged) {
  	window.nameElement = indiname;
  	return findWindow(ged, "indi", field);
  }
- 
+
 function findPlace(field, ged) {
 	return findWindow(ged, "place", field);
 }
@@ -1433,7 +1432,7 @@ function activate_colorbox(config) {
 		//jQuery('html.audio a[type^=audio].gallery').colorbox({
 		//	rel:         'nofollow', // Slideshows are just for images
 		//});
-		
+
 		// Allow all other media types remain as download links
 	});
 }
@@ -1512,7 +1511,7 @@ function toggle_select(source) {
 // Delete multiple list items
 function checkbox_delete(type) {
 	var i = 0, counter = 0, delete_list = [];
-	input_obj = document.getElementsByClassName("check"); 
+	input_obj = document.getElementsByClassName("check");
 	for (i = 0; i < input_obj.length; i++) {
 		if (input_obj[i].checked === true) {
 			counter++;
