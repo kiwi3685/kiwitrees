@@ -219,7 +219,7 @@ case 'update':
 		}
 	}
 
-	// Reload the page, so that the settings take effect immediately.	
+	// Reload the page, so that the settings take effect immediately.
 	Zend_Session::writeClose();
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $gedcom);
 	exit;
@@ -297,7 +297,7 @@ $controller
 						<?php
 						$CALENDAR_FORMATS=explode('_and_', $CALENDAR_FORMAT);
 						if (count($CALENDAR_FORMATS)==1) {
-							$CALENDAR_FORMATS[]='none';	
+							$CALENDAR_FORMATS[]='none';
 						}
 						foreach (array(
 							'none'     =>WT_I18N::translate('No calendar conversion'),
@@ -316,7 +316,7 @@ $controller
 						}
 						?>
 					</select>
-	
+
 					<select id="NEW_CALENDAR_FORMAT1" name="NEW_CALENDAR_FORMAT1">
 						<?php
 						foreach (array(
@@ -419,14 +419,14 @@ $controller
 					</td>
 					<td><select name="NEW_CONTACT_USER_ID">
 					<?php
-						$CONTACT_USER_ID=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+						$CONTACT_USER_ID = get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
 						echo '<option value="" ';
-						if ($CONTACT_USER_ID=='') echo ' selected="selected"';
+						if ($CONTACT_USER_ID == '') echo ' selected="selected"';
 						echo '>'. WT_I18N::translate('none'), '</option>';
 						foreach (get_all_users() as $user_id=>$user_name) {
 							if (get_user_setting($user_id, 'verified_by_admin')) {
 								echo '<option value="'.$user_id.'"';
-								if ($CONTACT_USER_ID==$user_id) echo ' selected="selected"';
+								if ($CONTACT_USER_ID == $user_id) echo ' selected="selected"';
 								echo '>'.getUserFullName($user_id).' - '.$user_name.'</option>';
 							}
 						}
@@ -555,7 +555,7 @@ $controller
 					</th>
 				</tr>
 		<?php
-	
+
 		$all_tags=array();
 		$tags=array_unique(array_merge(
 			explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE')),
@@ -565,15 +565,15 @@ $controller
 			explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE')),
 			array('SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN')
 		));
-	
+
 		foreach ($tags as $tag) {
 			if ($tag) {
 				$all_tags[$tag]=WT_Gedcom_Tag::getLabel($tag);
 			}
 		}
-	
+
 		uasort($all_tags, 'utf8_strcasecmp');
-	
+
 		echo '<tr><td>';
 		echo '<input data-autocomplete-type="IFSRO" type="text" class="pedigree_form" name="xref" id="xref" size="6" maxlength="20">';
 		echo ' ', print_findindi_link('xref');
@@ -1319,7 +1319,7 @@ $controller
 //							if ($current_themedir == 'colors') {
 								include WT_ROOT.'themes/colors/theme.php';
 								echo color_palette();
-//							} 
+//							}
 						?>
 				</td>
 				</tr>

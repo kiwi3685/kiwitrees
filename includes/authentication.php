@@ -42,7 +42,7 @@ if (!defined('WT_WEBTREES')) {
 // On failure, return an error code
 function authenticateUser($user_name, $password) {
 	global $WT_SESSION;
-	
+
 	// If no cookies are available, then we cannot log in.
 	if (!isset($_COOKIE[WT_SESSION_NAME])) {
 		return -5;
@@ -224,8 +224,8 @@ function AddToSearchLog($log_message, $geds) {
 function addMessage($message) {
 	global $TEXT_DIRECTION, $WEBTREES_EMAIL, $WT_REQUEST;
 
-	$user_id_from=get_user_id($message['from']);
-	$user_id_to  =get_user_id($message['to']);
+	$user_id_from = get_user_id($message['from']);
+	$user_id_to   = get_user_id($message['to']);
 
 	require_once WT_ROOT.'includes/functions/functions_mail.php';
 
