@@ -152,6 +152,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		echo '</form>';
 	} elseif ($action == "update" && $paramok) {
 		linkMedia($mediaid, $linktoid);
+		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 }
