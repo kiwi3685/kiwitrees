@@ -267,22 +267,25 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	}
 }
 
-// print HTML header meta links
-// previously identical code in each theme's header.php file
-// now added as a function here.
-
+/**
+* Print HTML header meta links
+*
+* Adds meta tags to header common to all themes
+*/ 
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
-	$header_links='';
+	$header_links = '';
 	if (!empty($LINK_CANONICAL)) {
-		$header_links.= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
+		$header_links .= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
 	}
 	if (!empty($META_DESCRIPTION)) {
-		$header_links.= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '">';
+		$header_links .= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '">';
 	}
-	$header_links.= '<meta name="robots" content="'. $META_ROBOTS. '">';
+	$header_links .= '<meta name="robots" content="'. $META_ROBOTS. '">';
 	if (!empty($META_GENERATOR)) {
-		$header_links.= '<meta name="generator" content="'. $META_GENERATOR. '">';
+		$header_links .= '<meta name="generator" content="'. $META_GENERATOR. '">';
 	}
+	$header_links .= '<meta name="viewport" content="width=device-width, initial-scale=1">';
+	
 	return $header_links;
 }
 
