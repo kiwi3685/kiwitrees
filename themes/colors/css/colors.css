@@ -1881,6 +1881,22 @@ div.widget {
 }
 /* ------------------ */
 
+/* Styling for Contacts module */
+.message_form {
+	margin: auto;
+	width:80%;
+}
+
+#contact_forms {
+}
+
+.contact_form {
+	float: left;
+	margin: auto 20px;
+	max-width: 600px;
+  	min-width: 45%;
+}
+
 /* Styling for Fancy_treeview module */
 
 /* Page */

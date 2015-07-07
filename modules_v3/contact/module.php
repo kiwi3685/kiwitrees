@@ -105,7 +105,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		if (($supportLink == $contactLink) || ($contact_user_id == '') || ($webmaster_user_id == '')) {
 			$form_count = 1;
 			$to_user_id = WT_I18N::translate('Support');
-			$form_title_1 = '<h3>' . WT_I18N::translate('For technical support or genealogy questions') . '</h3>';
+			$form_title_1 = '<h3>' . WT_I18N::translate('For further information') . '</h3>';
 			$form_title_2 = '';
 			$to_user_id_1 = '';
 			$to_user_id_2 = '';
