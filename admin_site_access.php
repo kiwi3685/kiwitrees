@@ -34,6 +34,9 @@ $controller
 
 $action=safe_GET('action');
 switch ($action) {
+case 'purge':
+	WT_DB::prepare("DELETE FROM `##site_access_rule` WHERE rule='unknown'")->execute();
+	break;
 case 'delete':
 	$user_access_rule_id=safe_GET('site_access_rule_id');
 	WT_DB::prepare("DELETE FROM `##site_access_rule` WHERE site_access_rule_id=?")->execute(array($user_access_rule_id));
@@ -180,9 +183,9 @@ case 'load_unknown':
 	// Reformat the data for display
 	foreach ($aaData as &$row) {
 		$site_access_rule_id=$row[3];
-		$row[3]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=allow&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
-		$row[4]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=deny&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
-		$row[5]='<i class="icon-yes" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=robot&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
+		$row[3]='<i class="fa fa-check" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=allow&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
+		$row[4]='<i class="fa fa-check" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=deny&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
+		$row[5]='<i class="fa fa-check" onclick="document.location=\''.WT_SCRIPT_NAME.'?action=robot&amp;site_access_rule_id='.$site_access_rule_id.'\';"></i>';
 	}
 
 	// Total filtered rows
@@ -267,40 +270,45 @@ WT_DB::exec(
 );
 
 ?>
+<div id="site_access_page">
+	<h2><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></h2>
 
-<h2><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></h2>
+	<p><?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
 
-<p><?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
+	<table id="site_access_rules" style="width:100%;">
+		<thead>
+			<tr>
+				<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('Start IP address'); ?></th>
+				<th>-</th>
+				<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('End IP address'); ?></th>
+				<th>-</th>
+				<th><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent_string */ WT_I18N::translate('User-agent string'); ?></th>
+				<th><?php echo /* I18N: noun */ WT_I18N::translate('Rule'); ?></th>
+				<th><?php echo WT_I18N::translate('Comment'); ?></th>
+				<th><?php echo WT_I18N::translate('Delete'); ?></th>
+			</tr>
+		</thead>
+	</table>
+	<hr>
+	<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search engines.'); ?></p>
 
-<table id="site_access_rules" style="width:100%;">
-	<thead>
-		<tr>
-			<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('Start IP address'); ?></th>
-			<th>-</th>
-			<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('End IP address'); ?></th>
-			<th>-</th>
-			<th><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent_string */ WT_I18N::translate('User-agent string'); ?></th>
-			<th><?php echo /* I18N: noun */ WT_I18N::translate('Rule'); ?></th>
-			<th><?php echo WT_I18N::translate('Comment'); ?></th>
-			<th><?php echo WT_I18N::translate('Delete'); ?></th>
-		</tr>
-	</thead>
-</table>
-
-<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search engines.'); ?></p>
-
-<table id="unknown_site_visitors" style="width:100%;">
-	<thead>
-		<tr>
-			<th rowspan="2"><?php /* I18N: http://en.wikipedia.org/wiki/IP_address */ echo WT_I18N::translate('IP address'); ?></th>
-			<th rowspan="2">-</th>
-			<th rowspan="2"><?php echo WT_I18N::translate('User-agent string'); ?></th>
-			<th colspan="3"><?php echo WT_I18N::translate('Create a new rule'); ?></th>
-		</tr>
-		<tr>
-			<th><?php echo WT_I18N::translate('allow'); ?></th>
-			<th><?php echo WT_I18N::translate('deny'); ?></th>
-			<th><?php echo WT_I18N::translate('robot'); ?></th>
-		</tr>
-	</thead>
-</table>
+	<table id="unknown_site_visitors" style="width:100%;">
+		<thead>
+			<tr>
+				<th rowspan="2"><?php /* I18N: http://en.wikipedia.org/wiki/IP_address */ echo WT_I18N::translate('IP address'); ?></th>
+				<th rowspan="2">-</th>
+				<th rowspan="2"><?php echo WT_I18N::translate('User-agent string'); ?></th>
+				<th colspan="3"><?php echo WT_I18N::translate('Create a new rule'); ?></th>
+			</tr>
+			<tr>
+				<th><?php echo WT_I18N::translate('allow'); ?></th>
+				<th><?php echo WT_I18N::translate('deny'); ?></th>
+				<th><?php echo WT_I18N::translate('robot'); ?></th>
+			</tr>
+		</thead>
+	</table>
+	<button type="submit" <?php echo  'onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete all visitors not recognised?')).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=purge\'; }"';?> >
+		<i class="fa fa-trash"></i>
+		<?php echo WT_I18N::translate('Delete all from "visitors not recognised" table'); ?>
+	</button>
+</div>
