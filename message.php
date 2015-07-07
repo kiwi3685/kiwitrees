@@ -48,8 +48,9 @@ $to_user_id=get_user_id($to);
 if ((!$to_user_id || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
 	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
 	WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-	$controller->pageHeader();
-	$controller->addInlineJavascript('window.opener.location.reload(); window.close();');
+	$controller->
+		pageHeader()
+		addInlineJavascript('window.opener.location.reload(); window.close();');
 	exit;
 }
 
@@ -114,7 +115,7 @@ case 'compose':
 			return true;
 		}
 	');
-		
+
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules()) && WT_Site::preference('MAIL_FORMAT') == "1") {
 		ckeditor_WT_Module::enableBasicEditor($controller);
 	}
@@ -175,8 +176,8 @@ case 'send':
 		}
 	}
 	if ($to == 'last_6mo') {
-		$toarray = array();
-		$sixmos = 60*60*24*30*6; //-- timestamp for six months
+		$toarray	= array();
+		$sixmos		= 60*60*24*30*6; //-- timestamp for six months
 		foreach (get_all_users() as $user_id=>$user_name) {
 			// SEE Bug [ 1827547 ] Message to inactive users sent to newcomers
 			if (get_user_setting($user_id,'sessiontime')>0 && (WT_TIMESTAMP - get_user_setting($user_id, 'sessiontime') > $sixmos)) {
@@ -190,18 +191,18 @@ case 'send':
 	}
 	$i = 0;
 	foreach ($toarray as $indexval => $to) {
-		$message = array();
-		$message['to']=$to;
-		$message['from']=$from;
+		$message			= array();
+		$message['to']		= $to;
+		$message['from']	= $from;
 		if (!empty($from_name)) {
-			$message['from_name'] = $from_name;
+			$message['from_name']  = $from_name;
 			$message['from_email'] = $from_email;
 		}
-		$message['subject'] = $subject;
-		$message['body'] = $body;
+		$message['subject']	= $subject;
+		$message['body']	= $body;
 		$message['created'] = WT_TIMESTAMP;
-		$message['method'] = $method;
-		$message['url'] = $url;
+		$message['method']	= $method;
+		$message['url']		= $url;
 		if ($i>0) $message['no_from'] = true;
 		if (addMessage($message)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Message successfully sent to %s', htmlspecialchars($to)));
