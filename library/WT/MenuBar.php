@@ -84,7 +84,7 @@ class WT_MenuBar {
 		//-- logout
 		$submenu = new WT_Menu(logout_link(), '', 'menu-logout');
 		$menu->addSubmenu($submenu);
-		
+
 		return $menu;
 	}
 
@@ -286,7 +286,7 @@ class WT_MenuBar {
 
 		// The top level menu shows the individual list
 		$menu = new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'menu-list');
- 
+
 		// Do not show empty lists
 		$row = WT_DB::prepare(
 			"SELECT SQL_CACHE".
@@ -441,7 +441,7 @@ class WT_MenuBar {
 		$submenu = new WT_Menu(WT_I18N::translate('Advanced search'), 'search_advanced.php?ged='.WT_GEDURL, 'menu-search-advanced');
 		$menu->addSubmenu($submenu);
 		//-- search_replace sub menu
-		if (WT_USER_CAN_EDIT) {
+		if (WT_USER_GEDCOM_ADMIN) {
 			$submenu = new WT_Menu(WT_I18N::translate('Search and replace'), 'search.php?ged='.WT_GEDURL.'&amp;action=replace', 'menu-search-replace');
 			$menu->addSubmenu($submenu);
 		}
@@ -520,7 +520,7 @@ class WT_MenuBar {
 				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
 				$submenu->addOnclick("jQuery.post('module.php?mod=widget_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
 				$menu->addSubMenu($submenu);
-			} 
+			}
 		}
 		return $menu;
 	}
