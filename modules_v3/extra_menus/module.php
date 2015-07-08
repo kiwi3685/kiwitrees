@@ -1,6 +1,6 @@
 <?php
 // A module to allow additional administrator defined menu items
-// 
+//
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2015 kiwitrees.net
 //
@@ -88,13 +88,13 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		global $controller, $SEARCH_SPIDER;
-		$menu_titles=$this->getMenuList();	
+		$menu_titles=$this->getMenuList();
 		$lang='';
-		
+
 		$min_block=WT_DB::prepare(
 			"SELECT MIN(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
-		
+
 		foreach ($menu_titles as $items) {
 			$languages =get_block_setting($items->block_id, 'languages');
 			if (in_array(WT_LOCALE, explode(',', $languages))) {
@@ -107,11 +107,11 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		$default_block=WT_DB::prepare(
 			"SELECT ##block.block_id FROM `##block`, `##block_setting` WHERE block_order=? AND module_name=? AND ##block.block_id = ##block_setting.block_id AND ##block_setting.setting_value LIKE ?"
 		)->execute(array($min_block, $this->getName(), '%'.$lang.'%'))->fetchOne();
-		
+
 		$main_menu_address = WT_DB::prepare(
 			"SELECT setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 		)->execute(array($default_block, 'menu_address'))->fetchOne();
-		
+
 		if (count($menu_titles)>1) {
 			$main_menu_title = $this->getMenuTitle();
 		} else {
@@ -119,7 +119,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 				"SELECT setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 			)->execute(array($default_block, 'menu_title'))->fetchOne();
 		}
-		
+
 		$main_menu_target = WT_DB::prepare(
 			"SELECT setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 		)->execute(array($default_block, 'new_tab'))->fetchOne();
@@ -127,7 +127,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		if ($SEARCH_SPIDER) {
 			return null;
 		}
-		
+
 
 		//-- main menu item
 		$menu = new WT_Menu($main_menu_title, $main_menu_address, $this->getName(), 'down');
@@ -179,98 +179,100 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 
 	// Action from the configuration page
 	private function edit() {
-
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		if (safe_POST_bool('save')) {
-			$block_id=safe_POST('block_id');
-			if ($block_id) {
-				WT_DB::prepare(
-					"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
-				)->execute(array(
-					safe_POST('gedcom_id'),
-					(int)safe_POST('block_order'),
-					$block_id
-				));
-			} else {
-				WT_DB::prepare(
-					"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
-				)->execute(array(
-					safe_POST('gedcom_id'),
-					$this->getName(),
-					(int)safe_POST('block_order')
-				));
-				$block_id=WT_DB::getInstance()->lastInsertId();
-			}
-			set_block_setting($block_id, 'menu_title',		safe_POST('menu_title',			WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'menu_address',	safe_POST('menu_address',		WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'menu_access',		safe_POST('menu_access',		WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'new_tab',			safe_POST('new_tab',			WT_REGEX_UNSAFE));
-			$languages=array();
-			foreach (WT_I18N::used_languages() as $code=>$name) {
-				if (safe_POST_bool('lang_'.$code)) {
-					$languages[]=$code;
+		if (WT_USER_IS_ADMIN) {
+			require_once WT_ROOT.'includes/functions/functions_edit.php';
+			if (safe_POST_bool('save')) {
+				$block_id=safe_POST('block_id');
+				if ($block_id) {
+					WT_DB::prepare(
+						"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
+					)->execute(array(
+						safe_POST('gedcom_id'),
+						(int)safe_POST('block_order'),
+						$block_id
+					));
+				} else {
+					WT_DB::prepare(
+						"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
+					)->execute(array(
+						safe_POST('gedcom_id'),
+						$this->getName(),
+						(int)safe_POST('block_order')
+					));
+					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-			}
-			set_block_setting($block_id, 'languages', implode(',', $languages));
-			$this->config();
-		} else {
-			$block_id=safe_GET('block_id');
-			$controller=new WT_Controller_Page();
-			if ($block_id) {
-				$controller->setPageTitle(WT_I18N::translate('Edit menu'));
-				$menu_title = get_block_setting($block_id, 'menu_title');
-				$menu_address = get_block_setting($block_id, 'menu_address');
-				$menu_access = get_block_setting($block_id, 'menu_access');
-				$new_tab = get_block_setting($block_id, 'new_tab');
-				$block_order = WT_DB::prepare(
-					"SELECT block_order FROM `##block` WHERE block_id = ?"
-				)->execute(array($block_id))->fetchOne();
-				$gedcom_id = WT_DB::prepare(
-					"SELECT gedcom_id FROM `##block` WHERE block_id = ?"
-				)->execute(array($block_id))->fetchOne();
+				set_block_setting($block_id, 'menu_title',		safe_POST('menu_title',			WT_REGEX_UNSAFE));
+				set_block_setting($block_id, 'menu_address',	safe_POST('menu_address',		WT_REGEX_UNSAFE));
+				set_block_setting($block_id, 'menu_access',		safe_POST('menu_access',		WT_REGEX_UNSAFE));
+				set_block_setting($block_id, 'new_tab',			safe_POST('new_tab',			WT_REGEX_UNSAFE));
+				$languages=array();
+				foreach (WT_I18N::used_languages() as $code=>$name) {
+					if (safe_POST_bool('lang_'.$code)) {
+						$languages[]=$code;
+					}
+				}
+				set_block_setting($block_id, 'languages', implode(',', $languages));
+				$this->config();
 			} else {
-				$controller->setPageTitle(WT_I18N::translate('Add menu'));
-				$menu_access = 1;
-				$menu_title = '';
-				$menu_address = '';
-				$new_tab = 0;
-				$block_order = WT_DB::prepare(
-					"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name = ?"
-				)->execute(array($this->getName()))->fetchOne();
-				$gedcom_id = WT_GED_ID;
-			}
-			$controller->pageHeader();
+				$block_id=safe_GET('block_id');
+				$controller=new WT_Controller_Page();
+				if ($block_id) {
+					$controller->setPageTitle(WT_I18N::translate('Edit menu'));
+					$menu_title = get_block_setting($block_id, 'menu_title');
+					$menu_address = get_block_setting($block_id, 'menu_address');
+					$menu_access = get_block_setting($block_id, 'menu_access');
+					$new_tab = get_block_setting($block_id, 'new_tab');
+					$block_order = WT_DB::prepare(
+						"SELECT block_order FROM `##block` WHERE block_id = ?"
+					)->execute(array($block_id))->fetchOne();
+					$gedcom_id = WT_DB::prepare(
+						"SELECT gedcom_id FROM `##block` WHERE block_id = ?"
+					)->execute(array($block_id))->fetchOne();
+				} else {
+					$controller->setPageTitle(WT_I18N::translate('Add menu'));
+					$menu_access = 1;
+					$menu_title = '';
+					$menu_address = '';
+					$new_tab = 0;
+					$block_order = WT_DB::prepare(
+						"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name = ?"
+					)->execute(array($this->getName()))->fetchOne();
+					$gedcom_id = WT_GED_ID;
+				}
+				$controller->pageHeader();
 
-			echo '
-				<form name="menu" method="post" action="#">
-					<input type="hidden" name="save" value="1">
-					<input type="hidden" name="block_id" value="', $block_id, '">
-					<div id="module_admin">
-						<label for "menu_title">', WT_I18N::translate('Title'), '</label>
-							<input type="text" id="menu_title" name="menu_title" size="51" tabindex="1" value="', $menu_title, '" placeholder="', WT_I18N::translate('Add your menu title here'), '" autofocus>
-						<label for "menu_title">', WT_I18N::translate('Menu address'), '</label>
-							<input type="text" id="menu_address" name="menu_address" size="51" tabindex="2" value="', $menu_address, '" placeholder="', WT_I18N::translate('Add your menu address here'), '">
-						<label for "menu_access">', WT_I18N::translate('Access level'), '</label>';
-							echo edit_field_access_level('menu_access', $menu_access, 'tabindex="3"'),'
-						<label for "block_order">', WT_I18N::translate('Menu position'), help_link('menu_position', $this->getName()), '</label>
-							<input type="text" id="block_order" name="block_order" size="3" tabindex="4" value="', $block_order, '">
-						<label for "gedcom_id">', WT_I18N::translate('Menu visibility'), help_link('menu_visibility', $this->getName()), '</label>';
-							echo select_edit_control('gedcom_id', WT_Tree::getIdList(), '', $gedcom_id, 'tabindex="5"'),'
-						<label for "new_tab">', WT_I18N::translate('Open menu in new tab or window'), help_link('new_tab', $this->getName()), '</label>';
-							echo checkbox('new_tab', $new_tab, 'tabindex="6"'),'
-					</div>
-					<div id="module_lang">
-						<label for = "languages">', WT_I18N::translate('Show this menu for which languages?'), '</label>';
-							$languages = get_block_setting($block_id, 'languages');
-							echo edit_language_checkboxes('lang_', $languages),'
-					</div>
-					<div id="module_save">
-						<input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="7">
-						&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="8">
-					</div>
-				</form>',
-			exit;
+				echo '
+					<form name="menu" method="post" action="#">
+						<input type="hidden" name="save" value="1">
+						<input type="hidden" name="block_id" value="', $block_id, '">
+						<div id="module_admin">
+							<label for "menu_title">', WT_I18N::translate('Title'), '</label>
+								<input type="text" id="menu_title" name="menu_title" size="51" tabindex="1" value="', $menu_title, '" placeholder="', WT_I18N::translate('Add your menu title here'), '" autofocus>
+							<label for "menu_title">', WT_I18N::translate('Menu address'), '</label>
+								<input type="text" id="menu_address" name="menu_address" size="51" tabindex="2" value="', $menu_address, '" placeholder="', WT_I18N::translate('Add your menu address here'), '">
+							<label for "menu_access">', WT_I18N::translate('Access level'), '</label>';
+								echo edit_field_access_level('menu_access', $menu_access, 'tabindex="3"'),'
+							<label for "block_order">', WT_I18N::translate('Menu position'), help_link('menu_position', $this->getName()), '</label>
+								<input type="text" id="block_order" name="block_order" size="3" tabindex="4" value="', $block_order, '">
+							<label for "gedcom_id">', WT_I18N::translate('Menu visibility'), help_link('menu_visibility', $this->getName()), '</label>';
+								echo select_edit_control('gedcom_id', WT_Tree::getIdList(), '', $gedcom_id, 'tabindex="5"'),'
+							<label for "new_tab">', WT_I18N::translate('Open menu in new tab or window'), help_link('new_tab', $this->getName()), '</label>';
+								echo checkbox('new_tab', $new_tab, 'tabindex="6"'),'
+						</div>
+						<div id="module_lang">
+							<label for = "languages">', WT_I18N::translate('Show this menu for which languages?'), '</label>';
+								$languages = get_block_setting($block_id, 'languages');
+								echo edit_language_checkboxes('lang_', $languages),'
+						</div>
+						<div id="module_save">
+							<input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="7">
+							&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="8">
+						</div>
+					</form>',
+				exit;
+			}
+		} else {
+			header('Location: ' . WT_SERVER_NAME.WT_SCRIPT_PATH);
 		}
 	}
 
@@ -367,7 +369,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 
 		echo
 			'<p>
-				<form method="get" action="', WT_SCRIPT_NAME ,'">', WT_I18N::translate('Family tree'), ' 
+				<form method="get" action="', WT_SCRIPT_NAME ,'">', WT_I18N::translate('Family tree'), '
 					<input type="hidden" name="mod", value="', $this->getName(), '">
 					<input type="hidden" name="mod_action", value="admin_config">',
 					select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM), '
@@ -443,5 +445,5 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 	}
-	
+
 }

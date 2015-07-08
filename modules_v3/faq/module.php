@@ -99,99 +99,102 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 
 	// Action from the configuration page
 	private function edit() {
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			$block_id = WT_Filter::postInteger('block_id');
-			if ($block_id) {
-				WT_DB::prepare(
-					"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
-				)->execute(array(
-					safe_POST('gedcom_id'),
-					(int)safe_POST('block_order'),
-					$block_id
-				));
-			} else {
-				WT_DB::prepare(
-					"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
-				)->execute(array(
-					safe_POST('gedcom_id'),
-					$this->getName(),
-					(int)safe_POST('block_order')
-				));
-				$block_id=WT_DB::getInstance()->lastInsertId();
-			}
-			set_block_setting($block_id, 'header',  safe_POST('header',  WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'faqbody', safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
-			$languages=array();
-			foreach (WT_I18N::used_languages() as $code=>$name) {
-				if (safe_POST_bool('lang_'.$code)) {
-					$languages[]=$code;
+		if (WT_USER_IS_ADMIN) {
+			require_once WT_ROOT.'includes/functions/functions_edit.php';
+			if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
+				$block_id = WT_Filter::postInteger('block_id');
+				if ($block_id) {
+					WT_DB::prepare(
+						"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
+					)->execute(array(
+						safe_POST('gedcom_id'),
+						(int)safe_POST('block_order'),
+						$block_id
+					));
+				} else {
+					WT_DB::prepare(
+						"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
+					)->execute(array(
+						safe_POST('gedcom_id'),
+						$this->getName(),
+						(int)safe_POST('block_order')
+					));
+					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-			}
-			set_block_setting($block_id, 'languages', implode(',', $languages));
-			$this->config();
-		} else {
-			$block_id=safe_GET('block_id');
-			$controller=new WT_Controller_Page();
-			if ($block_id) {
-				$controller->setPageTitle(WT_I18N::translate('Edit FAQ item'));
-				$header=get_block_setting($block_id, 'header');
-				$faqbody=get_block_setting($block_id, 'faqbody');
-				$block_order=WT_DB::prepare(
-					"SELECT block_order FROM `##block` WHERE block_id=?"
-				)->execute(array($block_id))->fetchOne();
-				$gedcom_id=WT_DB::prepare(
-					"SELECT gedcom_id FROM `##block` WHERE block_id=?"
-				)->execute(array($block_id))->fetchOne();
+				set_block_setting($block_id, 'header',  safe_POST('header',  WT_REGEX_UNSAFE));
+				set_block_setting($block_id, 'faqbody', safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
+				$languages=array();
+				foreach (WT_I18N::used_languages() as $code=>$name) {
+					if (safe_POST_bool('lang_'.$code)) {
+						$languages[]=$code;
+					}
+				}
+				set_block_setting($block_id, 'languages', implode(',', $languages));
+				$this->config();
 			} else {
-				$controller->setPageTitle(WT_I18N::translate('Add FAQ item'));
-				$header='';
-				$faqbody='';
-				$block_order=WT_DB::prepare(
-					"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name=?"
-				)->execute(array($this->getName()))->fetchOne();
-				$gedcom_id=WT_GED_ID;
-			}
-			$controller->pageHeader();
-			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-				ckeditor_WT_Module::enableEditor($controller);
-			}
+				$block_id=safe_GET('block_id');
+				$controller=new WT_Controller_Page();
+				if ($block_id) {
+					$controller->setPageTitle(WT_I18N::translate('Edit FAQ item'));
+					$header=get_block_setting($block_id, 'header');
+					$faqbody=get_block_setting($block_id, 'faqbody');
+					$block_order=WT_DB::prepare(
+						"SELECT block_order FROM `##block` WHERE block_id=?"
+					)->execute(array($block_id))->fetchOne();
+					$gedcom_id=WT_DB::prepare(
+						"SELECT gedcom_id FROM `##block` WHERE block_id=?"
+					)->execute(array($block_id))->fetchOne();
+				} else {
+					$controller->setPageTitle(WT_I18N::translate('Add FAQ item'));
+					$header='';
+					$faqbody='';
+					$block_order=WT_DB::prepare(
+						"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name=?"
+					)->execute(array($this->getName()))->fetchOne();
+					$gedcom_id=WT_GED_ID;
+				}
+				$controller->pageHeader();
+				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+					ckeditor_WT_Module::enableEditor($controller);
+				}
 
-			// "Help for this page" link
-			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
-			echo '<form name="faq" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
-			echo WT_Filter::getCsrf();
-			echo '<input type="hidden" name="save" value="1">';
-			echo '<input type="hidden" name="block_id" value="', $block_id, '">';
-			echo '<table id="faq_module">';
-			echo '<tr><th>';
-			echo WT_I18N::translate('Question');
-			echo '</th></tr><tr><td><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"></td></tr>';
-			echo '<tr><th>';
-			echo WT_I18N::translate('Answer');
-			echo '</th></tr><tr><td>';
-			echo '<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($faqbody), '</textarea>';
-			echo '</td></tr>';
-			echo '</table><table id="faq_module2">';
-			echo '<tr>';
-			echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
-			echo '<th>', WT_I18N::translate('FAQ position'), help_link('add_faq_order', $this->getName()), '</th>';
-			echo '<th>', WT_I18N::translate('FAQ visibility'), help_link('add_faq_visibility', $this->getName()), '</th>';
-			echo '</tr><tr>';
-			echo '<td>';
-			$languages=get_block_setting($block_id, 'languages');
-			echo edit_language_checkboxes('lang_', $languages);
-			echo '</td><td>';
-			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '"></td>';
-			echo '</td><td>';
-			echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"');
-			echo '</td></tr>';
-			echo '</table>';
+				// "Help for this page" link
+				echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
+				echo '<form name="faq" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
+				echo WT_Filter::getCsrf();
+				echo '<input type="hidden" name="save" value="1">';
+				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
+				echo '<table id="faq_module">';
+				echo '<tr><th>';
+				echo WT_I18N::translate('Question');
+				echo '</th></tr><tr><td><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"></td></tr>';
+				echo '<tr><th>';
+				echo WT_I18N::translate('Answer');
+				echo '</th></tr><tr><td>';
+				echo '<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($faqbody), '</textarea>';
+				echo '</td></tr>';
+				echo '</table><table id="faq_module2">';
+				echo '<tr>';
+				echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
+				echo '<th>', WT_I18N::translate('FAQ position'), help_link('add_faq_order', $this->getName()), '</th>';
+				echo '<th>', WT_I18N::translate('FAQ visibility'), help_link('add_faq_visibility', $this->getName()), '</th>';
+				echo '</tr><tr>';
+				echo '<td>';
+				$languages=get_block_setting($block_id, 'languages');
+				echo edit_language_checkboxes('lang_', $languages);
+				echo '</td><td>';
+				echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '"></td>';
+				echo '</td><td>';
+				echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"');
+				echo '</td></tr>';
+				echo '</table>';
 
-			echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
-			echo '</form>';
-			exit;
+				echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
+				echo '</form>';
+				exit;
+			}
+		} else {
+			header('Location: ' . WT_SERVER_NAME.WT_SCRIPT_PATH);
 		}
 	}
 
@@ -432,7 +435,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		$faqs=WT_DB::prepare(
 			"SELECT block_id FROM `##block` b WHERE module_name=? AND IFNULL(gedcom_id, ?)=?"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
-		
+
 		if (!$faqs) {
 			return null;
 		}

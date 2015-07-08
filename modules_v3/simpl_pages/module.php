@@ -109,7 +109,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		if ($SEARCH_SPIDER) {
 			return null;
 		}
-		
+
 		//-- main PAGES menu item
 		$menu = '';
 		$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;pages_id='.$default_block, 'menu-my_pages', 'down');
@@ -158,113 +158,116 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 
 	// Action from the configuration page
 	private function edit() {
+		if (WT_USER_IS_ADMIN) {
+			require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		if (safe_POST_bool('save')) {
-			$block_id=safe_POST('block_id');
-			if ($block_id) {
-				WT_DB::prepare(
-					"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
-				)->execute(array(
-					safe_POST('gedcom_id'),
-					(int)safe_POST('block_order'),
-					$block_id
-				));
-			} else {
-				WT_DB::prepare(
-					"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
-				)->execute(array(
-					safe_POST('gedcom_id'),
-					$this->getName(),
-					(int)safe_POST('block_order')
-				));
-				$block_id=WT_DB::getInstance()->lastInsertId();
-			}
-			set_block_setting($block_id, 'pages_title', safe_POST('pages_title', WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'pages_content', safe_POST('pages_content', WT_REGEX_UNSAFE)); // allow html
-			set_block_setting($block_id, 'pages_access', safe_POST('pages_access', WT_REGEX_UNSAFE));
-			$languages=array();
-			foreach (WT_I18N::used_languages() as $code=>$name) {
-				if (safe_POST_bool('lang_'.$code)) {
-					$languages[]=$code;
+			if (safe_POST_bool('save')) {
+				$block_id=safe_POST('block_id');
+				if ($block_id) {
+					WT_DB::prepare(
+						"UPDATE `##block` SET gedcom_id=NULLIF(?, ''), block_order=? WHERE block_id=?"
+					)->execute(array(
+						safe_POST('gedcom_id'),
+						(int)safe_POST('block_order'),
+						$block_id
+					));
+				} else {
+					WT_DB::prepare(
+						"INSERT INTO `##block` (gedcom_id, module_name, block_order) VALUES (NULLIF(?, ''), ?, ?)"
+					)->execute(array(
+						safe_POST('gedcom_id'),
+						$this->getName(),
+						(int)safe_POST('block_order')
+					));
+					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-			}
-			set_block_setting($block_id, 'languages', implode(',', $languages));
-			$this->config();
-		} else {
-			$block_id=safe_GET('block_id');
-			$controller=new WT_Controller_Page();
-			if ($block_id) {
-				$controller->setPageTitle(WT_I18N::translate('Edit pages'));
-				$items_title=get_block_setting($block_id, 'pages_title');
-				$items_content=get_block_setting($block_id, 'pages_content');
-				$items_access=get_block_setting($block_id, 'pages_access');
-				$block_order=WT_DB::prepare(
-					"SELECT block_order FROM `##block` WHERE block_id=?"
-				)->execute(array($block_id))->fetchOne();
-				$gedcom_id=WT_DB::prepare(
-					"SELECT gedcom_id FROM `##block` WHERE block_id=?"
-				)->execute(array($block_id))->fetchOne();
+				set_block_setting($block_id, 'pages_title', safe_POST('pages_title', WT_REGEX_UNSAFE));
+				set_block_setting($block_id, 'pages_content', safe_POST('pages_content', WT_REGEX_UNSAFE)); // allow html
+				set_block_setting($block_id, 'pages_access', safe_POST('pages_access', WT_REGEX_UNSAFE));
+				$languages=array();
+				foreach (WT_I18N::used_languages() as $code=>$name) {
+					if (safe_POST_bool('lang_'.$code)) {
+						$languages[]=$code;
+					}
+				}
+				set_block_setting($block_id, 'languages', implode(',', $languages));
+				$this->config();
 			} else {
-				$controller->setPageTitle(WT_I18N::translate('Add pages'));
-				$items_title='';
-				$items_content='';
-				$items_access=1;
-				$block_order=WT_DB::prepare(
-					"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name=?"
-				)->execute(array($this->getName()))->fetchOne();
-				$gedcom_id=WT_GED_ID;
-			}
-			$controller->pageHeader();
-			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-				ckeditor_WT_Module::enableEditor($controller);
-			}
+				$block_id=safe_GET('block_id');
+				$controller=new WT_Controller_Page();
+				if ($block_id) {
+					$controller->setPageTitle(WT_I18N::translate('Edit pages'));
+					$items_title=get_block_setting($block_id, 'pages_title');
+					$items_content=get_block_setting($block_id, 'pages_content');
+					$items_access=get_block_setting($block_id, 'pages_access');
+					$block_order=WT_DB::prepare(
+						"SELECT block_order FROM `##block` WHERE block_id=?"
+					)->execute(array($block_id))->fetchOne();
+					$gedcom_id=WT_DB::prepare(
+						"SELECT gedcom_id FROM `##block` WHERE block_id=?"
+					)->execute(array($block_id))->fetchOne();
+				} else {
+					$controller->setPageTitle(WT_I18N::translate('Add pages'));
+					$items_title='';
+					$items_content='';
+					$items_access=1;
+					$block_order=WT_DB::prepare(
+						"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name=?"
+					)->execute(array($this->getName()))->fetchOne();
+					$gedcom_id=WT_GED_ID;
+				}
+				$controller->pageHeader();
+				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+					ckeditor_WT_Module::enableEditor($controller);
+				}
 
-			echo '<div id="' . $this->getName() . '">
-				<form name="pages" method="post" action="#">
-					<input type="hidden" name="save" value="1">
-					<input type="hidden" name="block_id" value="', $block_id, '">
-					<table id="faq_module">
-						<tr>
-							<th>', WT_I18N::translate('Title'),'</th>
-						</tr>
-						<tr>
-							<td><input type="text" name="pages_title" size="90" tabindex="1" value="'.htmlspecialchars($items_title).'"></td>
-						</tr>
-						<tr>
-							<th>', WT_I18N::translate('Content'),'</th>
-						</tr>
-						<tr>
-							<td><textarea name="pages_content" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($items_content), '</textarea><td>
-						</tr>
-						<tr>
-							<th>', WT_I18N::translate('Access level'),'</th>
-						</tr>
-						<tr>
-							<td>', edit_field_access_level('pages_access', $items_access, 'tabindex="4"'), '</td>
-						</tr>
-					</table>
-					<table id="pages_module">
-						<tr>
-							<th>', WT_I18N::translate('Show this pages for which languages?'), help_link('pages_language', $this->getName()), '</th>
-							<th>', WT_I18N::translate('Pages position'), help_link('pages_position', $this->getName()), '</th>
-							<th>', WT_I18N::translate('Pages visibility'), help_link('pages_visibility', $this->getName()), '</th>
-						</tr>
-						<tr>
-							<td>',	$languages=get_block_setting($block_id, 'languages'); echo edit_language_checkboxes('lang_', $languages), '</td>
-							<td><input type="text" name="block_order" size="3" tabindex="5" value="', $block_order, '"></td>
-							<td>', select_edit_control('gedcom_id', WT_Tree::getIdList(), '', $gedcom_id, 'tabindex="4"'),'</td>
-						</tr>
-					</table>
-					<p>
-						<input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="7">
-						&nbsp;
-						<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="8">
-					</p>
-				</form>
-			</div>';
-			exit;
+				echo '<div id="' . $this->getName() . '">
+					<form name="pages" method="post" action="#">
+						<input type="hidden" name="save" value="1">
+						<input type="hidden" name="block_id" value="', $block_id, '">
+						<table id="faq_module">
+							<tr>
+								<th>', WT_I18N::translate('Title'),'</th>
+							</tr>
+							<tr>
+								<td><input type="text" name="pages_title" size="90" tabindex="1" value="'.htmlspecialchars($items_title).'"></td>
+							</tr>
+							<tr>
+								<th>', WT_I18N::translate('Content'),'</th>
+							</tr>
+							<tr>
+								<td><textarea name="pages_content" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($items_content), '</textarea><td>
+							</tr>
+							<tr>
+								<th>', WT_I18N::translate('Access level'),'</th>
+							</tr>
+							<tr>
+								<td>', edit_field_access_level('pages_access', $items_access, 'tabindex="4"'), '</td>
+							</tr>
+						</table>
+						<table id="pages_module">
+							<tr>
+								<th>', WT_I18N::translate('Show this pages for which languages?'), help_link('pages_language', $this->getName()), '</th>
+								<th>', WT_I18N::translate('Pages position'), help_link('pages_position', $this->getName()), '</th>
+								<th>', WT_I18N::translate('Pages visibility'), help_link('pages_visibility', $this->getName()), '</th>
+							</tr>
+							<tr>
+								<td>',	$languages=get_block_setting($block_id, 'languages'); echo edit_language_checkboxes('lang_', $languages), '</td>
+								<td><input type="text" name="block_order" size="3" tabindex="5" value="', $block_order, '"></td>
+								<td>', select_edit_control('gedcom_id', WT_Tree::getIdList(), '', $gedcom_id, 'tabindex="4"'),'</td>
+							</tr>
+						</table>
+						<p>
+							<input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="7">
+							&nbsp;
+							<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="8">
+						</p>
+					</form>
+				</div>';
+				exit;
+			}
+		} else {
+			header('Location: ' . WT_SERVER_NAME.WT_SCRIPT_PATH);
 		}
 	}
 
@@ -461,7 +464,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 							$trees=WT_Tree::getAll();
 							foreach ($items as $item) {
 								echo'<tr class="faq_edit_pos">
-									<td>', 
+									<td>',
 										WT_I18N::translate('Position item'), ': ', $item->block_order, ', ';
 										if ($item->gedcom_id==null) {
 											echo WT_I18N::translate('All');
@@ -524,7 +527,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 	}
-	
+
 	// Return the list of pages for menu
 	private function getMenupagesList() {
 		return WT_DB::prepare(
@@ -539,5 +542,5 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 	}
-	
+
 }
