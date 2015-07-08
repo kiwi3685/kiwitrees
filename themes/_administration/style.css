@@ -239,6 +239,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 
 /* SITE ACCESS */
 .ip_address span, .ua_string span, .raw_gedcom {direction:ltr;}
+#site_access_page h2 {display: inline;}
 #site_access_page .fa-check {color: #25a325; cursor: pointer;}
 #site_access_page button {cursor: pointer;}
 

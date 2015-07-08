@@ -6,11 +6,11 @@
 # Derived from webtrees
 # Copyright (C) 2012 webtrees development team
 #
-# This file needs to be placed in the domain root directory,
-# such as "www.example.com/robots.txt".  It will not work in a
-# subdirectory, such as "www.example.com/webtrees/robots.txt"
-# If you need to move it, then remember to adjust the paths as well.
-# e.g. "Disallow: /login.php" becomes "Disallow: /webtrees/login.php".
+#This file needs to be copied, renamed, and placed in your web site domain
+#root directory,  such as "www.example.com/robots.txt". It will not work in a
+#subdirectory, such as "www.example.com/kiwitrees/robots.txt".
+#If you do need to move it, remember to adjust the paths as well,
+#e.g. "Disallow: /login.php" becomes "Disallow: /kiwitrees/login.php".
 #
 # These URLs are expensive to generate or duplicate existing content:
 User-Agent: *

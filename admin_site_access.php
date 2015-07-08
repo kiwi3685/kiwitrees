@@ -34,8 +34,20 @@ $controller
 
 $action=safe_GET('action');
 switch ($action) {
+case 'reset':
+	WT_DB::exec("DELETE FROM `##site_access_rule` WHERE rule<>'unknown'");
+	WT_DB::exec(
+		"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
+		" ('Mozilla/5.0 (%) Gecko/% %/%', 'allow', 'Gecko-based browsers'),".
+		" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko)%', 'allow', 'WebKit-based browsers'),".
+		" ('Opera/% (%) Presto/% Version/%', 'allow', 'Presto-based browsers'),".
+		" ('Mozilla/% (compatible; MSIE %', 'allow', 'Trident-based browsers'),".
+		" ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer'),".
+		" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
+	);
+	break;
 case 'purge':
-	WT_DB::prepare("DELETE FROM `##site_access_rule` WHERE rule='unknown'")->execute();
+	WT_DB::exec("DELETE FROM `##site_access_rule` WHERE rule='unknown'");
 	break;
 case 'delete':
 	$user_access_rule_id=safe_GET('site_access_rule_id');
@@ -272,9 +284,8 @@ WT_DB::exec(
 ?>
 <div id="site_access_page">
 	<h2><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></h2>
-
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/site-access-rules/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '"><?php echo WT_I18N::translate('View FAQ for this page.'); ?></a>
 	<p><?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
-
 	<table id="site_access_rules" style="width:100%;">
 		<thead>
 			<tr>
@@ -289,9 +300,12 @@ WT_DB::exec(
 			</tr>
 		</thead>
 	</table>
+	<button type="submit" <?php echo  'onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('This will delete all your access rules and replace with basic kiwitrees defaults. Are you sure?')).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=reset\'; }"';?> >
+		<i class="fa fa-undo"></i>
+		<?php echo WT_I18N::translate('Reset'); ?>
+	</button>
 	<hr>
 	<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search engines.'); ?></p>
-
 	<table id="unknown_site_visitors" style="width:100%;">
 		<thead>
 			<tr>
@@ -309,6 +323,6 @@ WT_DB::exec(
 	</table>
 	<button type="submit" <?php echo  'onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete all visitors not recognised?')).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=purge\'; }"';?> >
 		<i class="fa fa-trash"></i>
-		<?php echo WT_I18N::translate('Delete all from "visitors not recognised" table'); ?>
+		<?php echo WT_I18N::translate('Delete'); ?>
 	</button>
 </div>
