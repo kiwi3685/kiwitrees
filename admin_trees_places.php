@@ -105,7 +105,7 @@ $controller
 		<label for="search"><?php echo WT_I18N::translate('Search for'); ?></label>
 		<input name="search" id="search" type="text" data-autocomplete-type="PLAC" value="<?= WT_Filter::escapeHtml($search) ?>" required>
 		<label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label>
-		<input name="replace" id="replace" type="text" value="<?php WT_Filter::escapeHtml($replace) ?>" required>
+		<input name="replace" id="replace" type="text" data-autocomplete-type="PLAC" value="<?php WT_Filter::escapeHtml($replace) ?>" required>
 		<p>
 			<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
 			<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
