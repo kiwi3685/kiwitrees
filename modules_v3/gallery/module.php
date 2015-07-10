@@ -120,7 +120,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		global $controller, $SEARCH_SPIDER;
-		
+
 		$block_id=safe_GET('block_id');
 		$default_block=WT_DB::prepare(
 			"SELECT block_id FROM `##block` WHERE block_order=? AND module_name=?"
@@ -129,8 +129,8 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		if ($SEARCH_SPIDER) {
 			return null;
 		}
-		
-		$menu_title = get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery'));
+
+		$menu_title = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery')));
 
 		//-- main GALLERIES menu item
 		$menu = new WT_Menu($menu_title, 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$default_block, 'menu-my_gallery', 'down');
@@ -154,7 +154,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	private function edit() {
 		global $MEDIA_DIRECTORY;
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		
+
 		if (safe_POST_bool('save')) {
 			$block_id=safe_POST('block_id');
 			if ($block_id) {
@@ -223,25 +223,25 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			$controller
 				->pageHeader()
 				->addInlineJavaScript('
-					function hide_fields(){ 
-						if (jQuery("#kiwitrees-radio").is(":checked")){ 
+					function hide_fields(){
+						if (jQuery("#kiwitrees-radio").is(":checked")){
 							jQuery("#kiwitrees-div .vis").css("visibility","visible");
 							jQuery("#flickr-div .vis").css("visibility","hidden");
 							jQuery("#picasa-div .vis").css("visibility","hidden");
 						}
-						else if (jQuery("#flickr-radio").is(":checked")){ 
+						else if (jQuery("#flickr-radio").is(":checked")){
 							jQuery("#kiwitrees-div .vis").css("visibility","hidden");
 							jQuery("#flickr-div .vis").css("visibility","visible");
 							jQuery("#picasa-div .vis").css("visibility","hidden");
 						}
-						else if (jQuery("#picasa-radio").is(":checked")){ 
+						else if (jQuery("#picasa-radio").is(":checked")){
 							jQuery("#kiwitrees-div .vis").css("visibility","hidden");
 							jQuery("#flickr-div .vis").css("visibility","hidden");
 							jQuery("#picasa-div .vis").css("visibility","visible");
 						}
 					};
 				');
-			
+
 			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 				ckeditor_WT_Module::enableEditor($controller);
 			}
@@ -311,7 +311,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 								echo '</label>
 							</div>
 						</td></tr>
-					</table>',// close #faq_module			
+					</table>',// close #faq_module
 					'<table id="gallery_module">
 						<tr>
 							<th>', WT_I18N::translate('Show this gallery for which languages?'), '</th>
@@ -334,7 +334,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 								echo edit_field_access_level('gallery_access', $item_access, 'tabindex="4"'),'
 							</td>
 						</tr>
-					</table>',// close #gallery_module	
+					</table>',// close #gallery_module
 					'<p>
 						<input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="7">
 						&nbsp;
@@ -462,7 +462,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				<ul>
 					<li><a href="#gallery_summary"><span>', WT_I18N::translate('Summary'), '</span></a></li>
 					<li><a href="#gallery_pages"><span>', WT_I18N::translate('Galleries'), '</span></a></li>
-				</ul>				
+				</ul>
 				<div id="gallery_summary">
 					<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
 					<input type="hidden" name="action" value="update">
@@ -582,7 +582,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				});
 			';
 			break;
-			default:		
+			default:
 			$js.='
 				Galleria.ready(function(options) {
 					this.bind("image", function(e) {
@@ -605,7 +605,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						showing_image:		"" // counter not compatible with I18N of kiwitrees
 					}
 				});
-			';			
+			';
 			break;
 		}
 		return $js;
@@ -614,12 +614,12 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	// Return the list of gallerys
 	private function getAlbumList() {
 		return WT_DB::prepare(
-			"SELECT block_id, 
-				bs1.setting_value AS gallery_title, 
-				bs2.setting_value AS gallery_access, 
-				bs3.setting_value AS gallery_description, 
-				bs4.setting_value AS gallery_folder_w, 
-				bs5.setting_value AS gallery_folder_f, 
+			"SELECT block_id,
+				bs1.setting_value AS gallery_title,
+				bs2.setting_value AS gallery_access,
+				bs3.setting_value AS gallery_description,
+				bs4.setting_value AS gallery_folder_w,
+				bs5.setting_value AS gallery_folder_f,
 				bs6.setting_value AS gallery_folder_p".
 			" FROM `##block` b".
 			" JOIN `##block_setting` bs1 USING (block_id)".
@@ -639,7 +639,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 	}
-	
+
 	// Return the list of gallerys for menu
 	private function getMenuAlbumList() {
 		return WT_DB::prepare(
@@ -654,7 +654,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 	}
-	
+
 	// Print the Notes for each media item
 	static function FormatGalleryNotes($haystack) {
 		$needle   = '1 NOTE';
@@ -728,7 +728,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		global $MEDIA_DIRECTORY;
 		$plugin = get_block_setting($item_id, 'plugin');
 		$images = '';
-		$media_links = ''; 
+		$media_links = '';
 		// Get the related media items
 		$sub_folder=str_replace($MEDIA_DIRECTORY, "",$sub_folder);
 		$sql = "SELECT * FROM ##media WHERE m_filename LIKE '%" . $sub_folder . "%' ORDER BY m_filename";
@@ -761,7 +761,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 								}
 							}
 						$gallery_links.='</div><hr>';// close .edit_links
-					}						
+					}
 					if ($links) {
 						$gallery_links .= '<h4>'.WT_I18N::translate('Linked to:').'</h4>';
 						$gallery_links .= '<div id="image_links">';
@@ -771,7 +771,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						$gallery_links .= '</div>';
 					}
 					$media_links = htmlspecialchars($gallery_links);
-					if ($mime_type == 'application/pdf'){ 
+					if ($mime_type == 'application/pdf'){
 						$images .= '<a href="' . $rawUrl . '"><img class="iframe" src="' . $thumbUrl . '" data-title="' . $mediaTitle.'" data-layer="' . $media_links.'" data-description="' . $media_notes . '"></a>';
 					} else {
 						$images .= '<a href="' . $rawUrl . '"><img src="'.$thumbUrl.'" data-title="' .$mediaTitle . '" data-layer="' . $media_links . '" data-description="' . $media_notes . '"></a>';
