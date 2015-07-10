@@ -82,7 +82,7 @@ echo
 	'</head>';
 	if ($view!='simple') {echo '<body id="body">';
 	} else {echo '<body id="body_simple">';}
-	
+
 // Header
 	if ($view!='simple') {
 echo
@@ -123,7 +123,7 @@ echo
 			'<br>',
 			/* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */
 			WT_I18N::translate('UTC'), ' — ', format_timestamp(WT_TIMESTAMP),
-		'</div>',	
+		'</div>',
 	'</div>'; // close admin_head
 
 // Side menu
@@ -144,6 +144,7 @@ echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i>', WT_I18N::trans
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_info.php"    ? 'class="current" ' : ''), 'href="admin_site_info.php">',    WT_I18N::translate('PHP information'       ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_access.php"  ? 'class="current" ' : ''), 'href="admin_site_access.php">',  WT_I18N::translate('Site access rules'     ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_clean.php"   ? 'class="current" ' : ''), 'href="admin_site_clean.php">',   WT_I18N::translate('Clean up data folder'  ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_site_lang.php"    ? 'class="current" ' : ''), 'href="admin_site_lang.php">',    WT_I18N::translate('Custom translation'    ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_use.php"     ? 'class="current" ' : ''), 'href="admin_site_use.php">',     WT_I18N::translate('Server usage'		    ), '</a></p>
 			</div>';
 }
@@ -218,5 +219,5 @@ echo '
 	</div>';
 	}
 echo '
-	<div id="admin_content" class="ui-widget-content">' , 
+	<div id="admin_content" class="ui-widget-content">' ,
 		WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions;

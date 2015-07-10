@@ -156,6 +156,20 @@ class WT_I18N {
 			}
 		}
 
+		// Load local user translations from database
+		$translations = WT_DB::prepare(
+				"SELECT standard_text, custom_text FROM `##custom_lang` WHERE language='{$locale}'"
+			)->execute()->fetchAll();
+		if ($translations) {
+			$translate = array();
+			foreach ($translations as $key => $value) {
+				$translate[$value->standard_text] = $value->custom_text;
+			}
+			WT_I18N::addTranslation(
+				new Zend_Translate('array', $translate, $locale)
+			);
+		}
+
 		// Extract language settings from the translation file
 		global $DATE_FORMAT; // I18N: This is the format string for full dates.  See http://php.net/date for codes
 		$DATE_FORMAT=self::noop('%j %F %Y');

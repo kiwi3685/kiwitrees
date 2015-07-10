@@ -243,6 +243,64 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #site_access_page .fa-check {color: #25a325; cursor: pointer;}
 #site_access_page button {cursor: pointer;}
 
+/* SITE CUSTOM TRANSLATIONS */
+#custom-language .row {
+	white-space: nowrap;
+}
+
+#custom-language .update {
+    font-size: 85%;
+    margin: 1% 6% 0;
+	text-align: right;
+}
+
+#custom-language textarea {
+	height: 120px;
+	margin: 0 10px 10px 10px;
+	max-height: 120px;
+	overflow: auto;
+	resize: none;
+	width: 45%;
+	vertical-align: top;
+}
+
+#custom-language .text-header {
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	display: inline-block;
+	font-weight: 900;
+	margin: 0 10px;
+	padding: 8px 2px;
+	text-align: center;
+	width: 45%;
+}
+
+#custom-language .symbol,
+#custom-language .trash {
+	cursor: pointer;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#custom-language .symbol {
+	color: #25a325;
+	font-weight: 900;
+}
+
+#custom-language .text-header + .symbol,
+#custom-language .text-header + .trash,
+#custom-language textarea[name="new_custom_text"] + .trash {
+	visibility: hidden;
+	cursor: auto;
+}
+
+#custom-language .button {
+	text-align: right;
+	display: inline-block;
+	margin: 1% 2% 0 2%;
+}
+
 /*SITE CONFIG */
 #site-config tr {border-bottom:1px solid;}
 #site-config td {line-height:30px; padding:0 20px;}
