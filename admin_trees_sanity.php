@@ -41,22 +41,8 @@ $controller
 	->pageHeader();
 ?>
 
-<style>
-	#sanity_check a {color: #75ABFF;}
-	#sanity_check h5 {font-size: 1.0em;   margin: 0;}
-	#sanity_check li {list-style-type: none;}
-	#sanity_check .first  {display: inline-block; width: 300px;}
-	#sanity_check .second {display: inline-block; width: 300px;}
-	#sanity_check .third  {display: inline-block; width: 300px;}
-	#sanity_check span.label {font-weight: 900; padding: 0 20px;}
-	#sanity_accordion {border-top: 1px inset; margin: 10px auto; padding: 20px 0; width: 98%;}
-	#sanity_accordion .result {border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}
-	#sanity_check #sanity_options {margin:10px 30px;}
-	#sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
-</style>
-
 <div id="sanity_check">
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/sanity-check/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?></a>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/sanity-check/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<p class="warning">
 		<?php echo WT_I18N::translate('This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.'); ?>
@@ -68,13 +54,13 @@ $controller
 			<h4><?php echo WT_I18N::translate('Date discrepancies'); ?></h4>
 			<ul>
 				<li class="facts_value" name="baptised" id="baptised">
-					<input type="checkbox" name="baptised" value="baptised" 
+					<input type="checkbox" name="baptised" value="baptised"
 						<?php if (WT_Filter::post('baptised')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Birth after baptism or christening'); ?>
 				</li>
 				<li class="facts_value" name="died" id="died">
-					<input type="checkbox" name="died" value="died" 
+					<input type="checkbox" name="died" value="died"
 						<?php if (WT_Filter::post('died')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Birth after death or burial'); ?>
@@ -83,7 +69,7 @@ $controller
 			<h4><?php echo WT_I18N::translate('Missing data'); ?></h4>
 			<ul>
 				<li class="facts_value" name="sex" id="sex" >
-					<input type="checkbox" name="sex" value="sex" 
+					<input type="checkbox" name="sex" value="sex"
 						<?php if (WT_Filter::post('sex')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('No gender recorded'); ?>
@@ -92,19 +78,19 @@ $controller
 			<h4><?php echo WT_I18N::translate('Duplicated data'); ?></h4>
 			<ul>
 				<li class="facts_value" name="dupe_birt" id="dupe_birt" >
-					<input type="checkbox" name="dupe_birt" value="dupe_birt" 
+					<input type="checkbox" name="dupe_birt" value="dupe_birt"
 						<?php if (WT_Filter::post('dupe_birt')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Birth'); ?>
 				</li>
 				<li class="facts_value" name="dupe_deat" id="dupe_deat" >
-					<input type="checkbox" name="dupe_deat" value="dupe_deat" 
+					<input type="checkbox" name="dupe_deat" value="dupe_deat"
 						<?php if (WT_Filter::post('dupe_deat')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Death'); ?>
 				</li>
 				<li class="facts_value" name="dupe_sex" id="dupe_sex" >
-					<input type="checkbox" name="dupe_sex" value="dupe_sex" 
+					<input type="checkbox" name="dupe_sex" value="dupe_sex"
 						<?php if (WT_Filter::post('dupe_sex')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Gender'); ?>

@@ -41,7 +41,7 @@ $controller
 
 echo '
 <div id="check_errors">
-<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/check-for-errors/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/check-for-errors/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 <h2>' .$controller->getPageTitle(). '</h2>
 <form method="get" action="', WT_SCRIPT_NAME, '">';
 echo '<input type="hidden" name="go" value="1">';

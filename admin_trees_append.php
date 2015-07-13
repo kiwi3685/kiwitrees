@@ -29,7 +29,7 @@ $controller
 	->pageHeader();
 
 echo '<h2>', $controller->getPageTitle(), '</h2>
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/merging-family-trees/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/merging-family-trees/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 ';
 
 $ged1_id = WT_Filter::post('ged1_id');

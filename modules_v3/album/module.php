@@ -197,7 +197,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 						} else {
 							$mediaTitle = $rowm['m_id'];
 						}
-						
+
 						$html .= '<tr>
 							<td>' .$media->displayImage(). '</td>
 							<td><a href="#" onclick="return window.open(\'addmedia.php?action=editmedia&amp;pid=' .$value['m_id']. '\', \'_blank\', edit_window_specs);")>' .$mediaTitle. '</a></td>
@@ -226,8 +226,8 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 			$ALBUM_GROUPS = WT_Filter::post('NEW_ALBUM_GROUPS');
 			$ALBUM_TITLES = WT_Filter::postArray('NEW_ALBUM_TITLES');
 			$ALBUM_OPTIONS = WT_Filter::postArray('NEW_ALBUM_OPTIONS');
-			if (isset($ALBUM_GROUPS)) set_module_setting($this->getName(), 'ALBUM_GROUPS', $ALBUM_GROUPS);				
-			if (!empty($ALBUM_TITLES)) set_module_setting($this->getName(), 'ALBUM_TITLES', serialize($ALBUM_TITLES));				
+			if (isset($ALBUM_GROUPS)) set_module_setting($this->getName(), 'ALBUM_GROUPS', $ALBUM_GROUPS);
+			if (!empty($ALBUM_TITLES)) set_module_setting($this->getName(), 'ALBUM_TITLES', serialize($ALBUM_TITLES));
 			if (!empty($ALBUM_OPTIONS)) set_module_setting($this->getName(), 'ALBUM_OPTIONS', serialize($ALBUM_OPTIONS));
 
 			AddToLog($this->getTitle().' set to new values', 'config');
@@ -277,10 +277,10 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		}
 
 		$html = '<div id="album_config">';
-			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '</a>
+			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 			<h2>' .$controller->getPageTitle(). '</h2>
 			<h3>' . WT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>';
-			
+
 			// check for emty groups
 			foreach ($ALBUM_TITLES as $value) {
 				if(!in_array($value, $ALBUM_OPTIONS)) echo '<script>alert(\''.WT_I18N::translate('You can not have any empty group.').'\')</script>';
@@ -290,7 +290,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 				<input type="hidden" name="save" value="1">
 				<div id="album_groups">
 					<label for="NEW_ALBUM_GROUPS" class="label">'.WT_I18N::translate('Number of groups').'</label>'.
-					select_edit_control('NEW_ALBUM_GROUPS', 
+					select_edit_control('NEW_ALBUM_GROUPS',
 						array(
 							0=>WT_I18N::number(0),
 							1=>WT_I18N::number(1),
@@ -345,7 +345,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 					if (isset($SHOW_FIND) && !isset($HIDE_FIND)) {
 						$html .= '<div id="show_list">' .$this->find_no_type(). '</div>
 						<input type="submit" name="hide" value="'.WT_I18N::translate('close'). '">';
-					}				
+					}
 				$html .= '</div>
 			</form>
 		</div>';

@@ -196,6 +196,13 @@ textarea:required:invalid {
 	background-position: left top;
 }
 
+.faq_link {
+  float: right;
+  padding: 0 20px;
+}
+[dir='rtl'] .faq_link {float: left;}
+
+
 /* ========= Top bar items ========== */
 
 #navbar {

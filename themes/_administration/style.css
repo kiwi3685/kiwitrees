@@ -901,3 +901,16 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #calendar_utilities p {clear:left;margin-top:30px;}
 #calendar_utilities h3 a {color:#e17009;}
 #calendar_utilities form {width:100%; margin:auto 30px;}
+
+/* SANITY CHECK */
+#sanity_check a {color: #75ABFF;}
+#sanity_check h5 {font-size: 1.0em;   margin: 0;}
+#sanity_check li {list-style-type: none;}
+#sanity_check .first  {display: inline-block; width: 300px;}
+#sanity_check .second {display: inline-block; width: 300px;}
+#sanity_check .third  {display: inline-block; width: 300px;}
+#sanity_check span.label {font-weight: 900; padding: 0 20px;}
+#sanity_accordion {border-top: 1px inset; margin: 10px auto; padding: 20px 0; width: 98%;}
+#sanity_accordion .result {border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}
+#sanity_check #sanity_options {margin:10px 30px;}
+#sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}

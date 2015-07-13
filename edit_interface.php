@@ -115,7 +115,7 @@ case 'delete':
 	// Retrieve the private data
 	$record = new WT_GedcomRecord($gedrec);
 	list($gedcom, $private_gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-			
+
 	// When deleting a media link, $linenum comes is an OBJE and the $mediaid to delete should be set
 	if ($linenum=='OBJE') {
 		$newged = remove_media_subrecord($gedrec, $_REQUEST['mediaid']);
@@ -199,7 +199,7 @@ case 'edit':
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
-		} 
+		}
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp());
@@ -287,7 +287,7 @@ case 'add':
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
-		} 
+		}
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp());
@@ -418,7 +418,7 @@ case 'addopfchild':
 ////////////////////////////////////////////////////////////////////////////////
 case 'addfamlink':
 	$person=WT_Person::getInstance($pid);
-	
+
 	if ($famtag=='CHIL') {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
 	} elseif ($person->getSex()=='F') {
@@ -457,7 +457,7 @@ case 'addfamlink':
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
-		} 
+		}
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $person->LastChangeTimestamp());
@@ -478,7 +478,7 @@ case 'addfamlink':
 ////////////////////////////////////////////////////////////////////////////////
 case 'linkspouse':
 	$person=WT_Person::getInstance($pid);
-	
+
 	if ($person->getSex()=='F') {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
 	} else {
@@ -516,7 +516,7 @@ case 'linkspouse':
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
-		} 
+		}
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $person->LastChangeTimestamp());
@@ -545,7 +545,7 @@ case 'linkspouse':
 ////////////////////////////////////////////////////////////////////////////////
 case 'linkfamaction':
 	$person=WT_Person::getInstance($pid);
-	
+
 	if ($famtag=='CHIL') {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
 	} elseif ($person->getSex()=='F') {
@@ -676,7 +676,7 @@ case 'addnewsource':
 				echo '<input type="checkbox" name="preserve_last_changed"';
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
-				} 
+				}
 				echo '>';
 				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
@@ -799,7 +799,7 @@ case 'addnewnote':
 				echo '<input type="checkbox" name="preserve_last_changed"';
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
-				} 
+				}
 				echo '>';
 				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 				echo "</td></tr>";
@@ -847,20 +847,16 @@ case 'addnewnote_assisted':
 		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
 		->pageHeader();
 
-	echo '<div id="edit_interface-page">';
-	echo '<h3>', $controller->getPageTitle(), '&nbsp;&nbsp;';
-		// When more languages are added to the wiki, we can expand or redesign this
-		switch (WT_LOCALE) {
-		case 'fr':
-			echo wiki_help_link('/fr/Module_Assistant_Recensement');
-			break;
-		case 'en':
-		default:
-			echo wiki_help_link('/en/Census_Assistant_module');
-			break;
-		}
-	echo '</h3>';
-	
+	echo '<div id="edit_interface-page">
+		<h3>', $controller->getPageTitle(), '
+			&nbsp;&nbsp;
+			<a class="faq_link" href="http://kiwitrees.net/?p=4670" alt="' . WT_I18N::translate('View FAQ for this page.') . '" target="_blank">' .
+				WT_I18N::translate('View FAQ for this page.') . '
+				<i class="fa fa-comments-o"></i>
+			</a>
+		</h3
+	';
+
 	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 	global $pid;
 
@@ -875,7 +871,7 @@ case 'addnewnote_assisted':
 			</form>
 		</div>
 		<div style="clear:both;"></div>
-		</div>';
+	</div>';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -917,7 +913,7 @@ case 'editsource':
 
 	// Hide the private data
 	list($gedrec)=$source->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-	
+
 	$controller
 		->setPageTitle($source->getFullName())
 		->pageHeader();
@@ -962,7 +958,7 @@ case 'editsource':
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
-		} 
+		}
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $source->LastChangeTimestamp());
@@ -998,7 +994,7 @@ case 'editnote':
 
 	// Hide the private data
 	list($gedrec)=$note->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-	
+
 	?>
 	<form method="post" action="edit_interface.php" >
 		<input type="hidden" name="action" value="update">
@@ -1007,12 +1003,12 @@ case 'editnote':
 		<?php
 		if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
 			$note_content=$n1match[1].get_cont(1, $gedrec, false);
-			
+
 			$num_note_lines=0;
 			foreach (preg_split("/\r?\n/", $note_content, -1 ) as $j=>$line) {
 				$num_note_lines++;
 			}
-	
+
 		} else {
 			$note_content='';
 		}
@@ -1033,7 +1029,7 @@ case 'editnote':
 					echo '<input type="checkbox" name="preserve_last_changed"';
 					if ($NO_UPDATE_CHAN) {
 						echo ' checked="checked"';
-					} 
+					}
 					echo '>';
 					echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 					echo WT_Gedcom_Tag::getLabelValue('DATE', $note->LastChangeTimestamp());
@@ -1105,7 +1101,7 @@ case 'addnewrepository':
 				echo '<input type="checkbox" name="preserve_last_changed"';
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
-				} 
+				}
 				echo '>';
 				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
@@ -1227,7 +1223,7 @@ case 'update':
 		// Retrieve the private data
 		$tmp=new WT_GedcomRecord($gedrec);
 		list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-			
+
 		// If the fact has a DATE or PLAC, then delete any value of Y
 		if ($text[0]=='Y') {
 			for ($n=1; $n<count($tag); ++$n) {
@@ -1281,7 +1277,7 @@ case 'update':
 				$glevel = $fields[0];
 				$i++;
 				while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) {
-					$i++;				
+					$i++;
 				}
 			}
 
@@ -1309,8 +1305,8 @@ case 'update':
 			if (!empty($SPFX)) $newged .= "\n2 SPFX $SPFX";
 			if (!empty($SURN)) $newged .= "\n2 SURN $SURN";
 			if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
-			
-			if (!empty($NOTE)) {			
+
+			if (!empty($NOTE)) {
 				$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
 				$gedlines = array_filter($gedlines, $cmpfunc);
 				$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
@@ -1318,7 +1314,7 @@ case 'update':
 				foreach($tempnote as &$line) {
     				$line = trim("1 CONT " . $line,' ');
 				}
-				$gedlines = array_merge($title,$tempnote,$gedlines);	
+				$gedlines = array_merge($title,$tempnote,$gedlines);
 			}
 
 			//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
@@ -1375,8 +1371,8 @@ case 'update':
 				if (!empty($SPFX)) $newged .= "\n2 SPFX $SPFX";
 				if (!empty($SURN)) $newged .= "\n2 SURN $SURN";
 				if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
-					
-				if (!empty($NOTE)) {				
+
+				if (!empty($NOTE)) {
 					$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
 					$gedlines = array_filter($gedlines, $cmpfunc);
 					$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
@@ -1384,9 +1380,9 @@ case 'update':
 					foreach($tempnote as &$line) {
     					$line = trim("1 CONT " . $line,' ');
 					}
-					$gedlines = array_merge($title,$tempnote,$gedlines);	
+					$gedlines = array_merge($title,$tempnote,$gedlines);
 				}
-				
+
 				//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
 				//-- _HEB/ROMN/FONE have to be before _AKA, even if _AKA exists in input and the others are now added
 				if (!empty($ROMN)) $newged .= "\n2 ROMN $ROMN";
@@ -1626,7 +1622,7 @@ case 'linkspouseaction':
 			}
 			if ((!empty($famid))&&($famid!="new")) {
 				$gedrec .= "\n1 FAMS @$famid@";
-				$success=replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN);				
+				$success=replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN);
 			}
 			if (!empty($pid)) {
 				$indirec = find_gedcom_record($pid, WT_GED_ID, true);
@@ -1988,7 +1984,7 @@ case 'reorder_children':
 			echo '<input type="checkbox" name="preserve_last_changed"';
 			if ($NO_UPDATE_CHAN) {
 				echo ' checked="checked"';
-			} 
+			}
 			echo '>';
 			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp());
@@ -2010,7 +2006,7 @@ case 'reorder_children':
 case 'changefamily':
 	$famid  = safe_GET('famid', WT_REGEX_XREF);
 	$family = WT_Family::getInstance($famid);
-	
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Change Family Members'))
 		->pageHeader();
@@ -2477,7 +2473,7 @@ function no_update_chan(WT_GedcomRecord $record) {
 	global $NO_UPDATE_CHAN;
 
 	$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
-	
+
 	if (WT_USER_IS_ADMIN) {
 		return
 			'<table class="facts_table">' .

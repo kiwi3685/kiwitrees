@@ -271,7 +271,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 * Print HTML header meta links
 *
 * Adds meta tags to header common to all themes
-*/ 
+*/
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
 	$header_links = '';
 	if (!empty($LINK_CANONICAL)) {
@@ -285,7 +285,7 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 		$header_links .= '<meta name="generator" content="'. $META_GENERATOR. '">';
 	}
 	$header_links .= '<meta name="viewport" content="width=device-width, initial-scale=1">';
-	
+
 	return $header_links;
 }
 
@@ -634,12 +634,6 @@ function help_link($help_topic, $module='') {
 // Print help as on-page text
 function help_text($help_topic) {
 	return '<iframe class="help_text_frame" src = "help_text.php?help=' . $help_topic . '"></iframe>';
-}
-
-
-// Print an external help link to the wiki site, in a new window
-function wiki_help_link($topic) {
-	return '<a class="help icon-wiki" href="'.WT_WEBTREES_WIKI.$topic.'" alt="'.WT_I18N::translate('webtrees wiki').'" target="_blank">&nbsp;</a>';
 }
 
 // When a user has searched for text, highlight any matches in

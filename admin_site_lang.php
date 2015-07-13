@@ -90,7 +90,7 @@ $custom_lang = custom_texts($language);
 if (WT_USER_IS_ADMIN) { ?>
 	<div id="custom-language">
 		<h2><?php echo WT_I18N::translate('Manage custom translations'); ?></h2>
-		<a class="current faq_link" href="http://kiwitrees.net/kiwi-blog/custom-translations/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '"><?php echo WT_I18N::translate('View FAQ for this page.'); ?></a>
+		<a class="current faq_link" href="http://kiwitrees.net/kiwi-blog/custom-translations/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 		<!-- SELECT LANGUAGE -->
 		<form method="post" action="">
 			<input type="hidden" name="action" value="translate">

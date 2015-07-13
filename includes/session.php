@@ -38,7 +38,6 @@ define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
 // External URLs
 define('WT_WEBTREES_URL',    'http://kiwitrees.net/');
-define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
 define('WT_TRANSLATORS_URL', 'http://kiwitrees.net/forums/forum/support-forum/translation/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
