@@ -38,12 +38,12 @@ if (!defined('WT_WEBTREES')) {
 		// Calculate census date from the census year selected
 		// UK CENSUS DATES
 			   if (cenyear == 1841) { var cendate = new Date(1841, 5, 6);    // 06 JUN 1841
-		} else if (cenyear == 1851) { var cendate = new Date(1851, 2, 30);    // 30 MAR 1851
+		} else if (cenyear == 1851) { var cendate = new Date(1851, 2, 30);   // 30 MAR 1851
 		} else if (cenyear == 1861) { var cendate = new Date(1861, 3, 7);    // 07 APR 1861
 		} else if (cenyear == 1871) { var cendate = new Date(1871, 3, 2);    // 02 APR 1871
 		} else if (cenyear == 1881) { var cendate = new Date(1881, 3, 3);    // 03 APR 1881
 		} else if (cenyear == 1891) { var cendate = new Date(1891, 3, 5);    // 05 APR 1891
-		} else if (cenyear == 1901) { var cendate = new Date(1901, 2, 31);    // 31 MAR 1901
+		} else if (cenyear == 1901) { var cendate = new Date(1901, 2, 31);   // 31 MAR 1901
 		} else if (cenyear == 1911) { var cendate = new Date(1911, 3, 2);    // 02 APR 1911
 		} else if (cenyear == 1921) { var cendate = new Date(1921, 3, 2);    // 02 APR 1921   // For Test Purposes
 		} else if (cenyear == 1931) { var cendate = new Date(1931, 3, 2);    // 02 APR 1931   // For Test Purposes
@@ -60,7 +60,7 @@ if (!defined('WT_WEBTREES')) {
 		} else if (cenyear == 1880) { var cendate = new Date(1880, 5, 1);    // 01 JUN 1880
 		} else if (cenyear == 1890) { var cendate = new Date(1890, 5, 1);    // 01 JUN 1890
 		} else if (cenyear == 1900) { var cendate = new Date(1900, 5, 1);    // 01 JUN 1900
-		} else if (cenyear == 1910) { var cendate = new Date(1910, 3, 15);    // 15 APR 1910
+		} else if (cenyear == 1910) { var cendate = new Date(1910, 3, 15);   // 15 APR 1910
 		} else if (cenyear == 1920) { var cendate = new Date(1920, 1, 1);    // 01 JAN 1920
 		} else if (cenyear == 1930) { var cendate = new Date(1930, 3, 1);    // 01 APR 1930
 		} else if (cenyear == 1940) { var cendate = new Date(1940, 3, 1);    // 01 APR 1940
@@ -81,7 +81,7 @@ if (!defined('WT_WEBTREES')) {
 		} else if (cenyear == 1941) { var cendate = new Date(1941,  31, 12);   // 01 JAN 1920
 		} else if (cenyear == 1946) { var cendate = new Date(1946,  31, 12);   // 01 APR 1930
 		} else if (cenyear == 1951) { var cendate = new Date(1951,  31, 12);   // 01 APR 1940
-		
+
 		// Default Date
 		} else {
 			var cendate = new Date(1901, 2, 31);
@@ -202,8 +202,6 @@ if (!defined('WT_WEBTREES')) {
 				TheCenYear='';
 			}
 		}
-
-
 	}
 
 	// Change Marital Condition and Years Married based on Census Year ======================
@@ -877,7 +875,7 @@ if (!defined('WT_WEBTREES')) {
 				flip_11 = "";
 				flip_16 = ""; //YoM
 				flip_21 = ""; //BithPlace
-				flip_23 = "";		
+				flip_23 = "";
 				//flip_27 = "";
 				//flip_28 = "";
 				//flip_29 = "";
@@ -885,7 +883,7 @@ if (!defined('WT_WEBTREES')) {
 				//flip_43 = "";
 				flip_46 = "";
 				flip_49 = "";
-			} 
+			}
 		}
 
 		// Hide or show ===============
