@@ -114,9 +114,9 @@ if (WT_USER_IS_ADMIN) { ?>
 				<input type="hidden" name="language" value=<?php echo $language; ?>>
 				<h3><?php echo WT_I18N::translate('Add a new translation'); ?></h3>
 				<div class="row">
-					<div class="text-header"><?php echo WT_I18N::translate('Standard Text'); ?></div>
+					<div class="text-header"><?php echo WT_I18N::translate('Standard text'); ?></div>
 					<div class="symbol">=></div>
-					<div class="text-header"><?php echo WT_I18N::translate('Custom Translation'); ?></div>
+					<div class="text-header"><?php echo WT_I18N::translate('Custom translation'); ?></div>
 					<div class="trash"><i class="fa fa-trash"></i></div>
 				</div>
 				<div class="row">
@@ -141,7 +141,7 @@ if (WT_USER_IS_ADMIN) { ?>
 				<div class="row">
 					<div class="text-header"><?php echo WT_I18N::translate('Standard Text'); ?></div>
 					<div class="symbol">=></div>
-					<div class="text-header"><?php echo WT_I18N::translate('Custom Translation'); ?></div>
+					<div class="text-header"><?php echo WT_I18N::translate('Custom translation'); ?></div>
 					<div class="trash"><i class="fa fa-trash"></i></div>
 				</div>
 				<?php foreach ($custom_lang as $key => $value){ ?>
