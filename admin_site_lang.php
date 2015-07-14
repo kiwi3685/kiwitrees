@@ -139,7 +139,7 @@ if (WT_USER_IS_ADMIN) { ?>
 				<input type="hidden" name="language" value=<?php echo $language; ?>>
 				<h3><?php echo WT_I18N::translate('Edit existing translations'); ?></h3>
 				<div class="row">
-					<div class="text-header"><?php echo WT_I18N::translate('Standard Text'); ?></div>
+					<div class="text-header"><?php echo WT_I18N::translate('Standard text'); ?></div>
 					<div class="symbol">=></div>
 					<div class="text-header"><?php echo WT_I18N::translate('Custom translation'); ?></div>
 					<div class="trash"><i class="fa fa-trash"></i></div>
