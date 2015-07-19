@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'admin.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
@@ -36,30 +36,37 @@ $controller
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
 
-$stats=new WT_Stats(WT_GEDCOM);
-	$totusers  =0;       // Total number of users
-	$warnusers =0;       // Users with warning
-	$applusers =0;       // Users who have not verified themselves
-	$nverusers =0;       // Users not verified by admin but verified themselves
-	$adminusers=0;       // Administrators
-	$userlang  =array(); // Array for user languages
-	$gedadmin  =array(); // Array for managers
+$stats = new WT_Stats(WT_GEDCOM);
+	$totusers	= 0;       // Total number of users
+	$warnusers	= 0;       // Users with warning
+	$applusers	= 0;       // Users who have not verified themselves
+	$nverusers	= 0;       // Users not verified by admin but verified themselves
+	$adminusers	= 0;       // Administrators
+	$userlang	= array(); // Array for user languages
+	$gedadmin	= array(); // Array for managers
 
 // Server warnings
 $server_warnings = array();
 if (
-	version_compare(PHP_VERSION, '5.4', '<') && date('Y-m-d') >= '2014-08-14' ||
-	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2015-09-15' ||
-	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-06-20' ||
-	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2017-08-28'
+	version_compare(PHP_VERSION, '5.4', '<') ||
+	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2015-09-14' ||
+	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-07-10' ||
+	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2017-08-28'
 ) {
-	$server_warnings[] = '<span class="warning">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible.', PHP_VERSION) . '<span>';
+	$server_warnings[] = '
+		<span class="warning">' .
+			WT_I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible.', PHP_VERSION) . '
+			<a href="http://php.net/supported-versions.php" target="_blank"><i class="icon-php"></i></a>
+		<span>';
 } elseif (
 	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2014-09-14' ||
 	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-06-20' ||
-	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2016-08-28'
+	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2016-08-28'
 ) {
-	$server_warnings[] = '<span class="accepted">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version.', PHP_VERSION) . '<span>';
+	$server_warnings[] = '
+		<span class="accepted">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version.', PHP_VERSION) . '
+		<a href="http://php.net/supported-versions.php" target="_blank"><i class="icon-php"></i></a>
+		<span>';
 }
 
 // Display a series of "blocks" of general information, vary according to admin or manager.
