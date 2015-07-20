@@ -25,17 +25,6 @@ define('WT_SCRIPT_NAME', 'admin_site_lang.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##custom_lang` (".
-	" custom_lang_id	INTEGER	NOT NULL AUTO_INCREMENT,".
-	" language			VARCHAR(10) NOT NULL,".
-	" standard_text		VARCHAR(255) NOT NULL,".
-	" custom_text		VARCHAR(255) NOT NULL,".
-	" updated			TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
-	" PRIMARY KEY		(custom_lang_id)".
-	") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
-);
-
 $controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()

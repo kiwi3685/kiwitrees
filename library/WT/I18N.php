@@ -157,17 +157,21 @@ class WT_I18N {
 		}
 
 		// Load local user translations from database
-		$translations = WT_DB::prepare(
-				"SELECT standard_text, custom_text FROM `##custom_lang` WHERE language='{$locale}'"
-			)->execute()->fetchAll();
-		if ($translations) {
-			$translate = array();
-			foreach ($translations as $key => $value) {
-				$translate[$value->standard_text] = $value->custom_text;
+		// First check if the table exists
+		$result = WT_DB::prepare("SHOW TABLES LIKE '##custom_lang' ")->execute()->fetchAll(PDO::FETCH_ASSOC);
+		if ($result) {
+			$translations = WT_DB::prepare(
+					"SELECT standard_text, custom_text FROM `##custom_lang` WHERE language='{$locale}'"
+				)->execute()->fetchAll();
+			if ($translations) {
+				$translate = array();
+				foreach ($translations as $key => $value) {
+					$translate[$value->standard_text] = $value->custom_text;
+				}
+				WT_I18N::addTranslation(
+					new Zend_Translate('array', $translate, $locale)
+				);
 			}
-			WT_I18N::addTranslation(
-				new Zend_Translate('array', $translate, $locale)
-			);
 		}
 
 		// Extract language settings from the translation file
