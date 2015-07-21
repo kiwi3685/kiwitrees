@@ -73,7 +73,7 @@ default:
 		case -1: // not validated
 			$message=WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
 			break;
-			
+
 		case -2: // not approved
 			$message=WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
 			break;
@@ -91,24 +91,29 @@ default:
 			if ($usertime) {
 				$WT_SESSION->timediff=WT_TIMESTAMP - strtotime($usertime);
 			} else {
-				$WT_SESSION->timediff=0;
+				$WT_SESSION->timediff = 0;
 			}
 			$WT_SESSION->locale   	= get_user_setting($user_id, 'language');
 			$WT_SESSION->theme_dir	= get_user_setting($user_id, 'theme');
 			$WT_SESSION->gedcomid	= get_gedcomid($user_id, WT_GED_ID);
-			$WT_SESSION->rootid		= $WT_TREE->userPreference($user_id, 'rootid');
-			$PEDIGREE_ROOT_ID		= get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+			if (WT_GED_ID == "") {
+				$WT_SESSION->rootid	= $WT_SESSION->gedcomid;
+				$PEDIGREE_ROOT_ID	= $WT_SESSION->gedcomid;
+			} else {
+				$WT_SESSION->rootid	= $WT_TREE->userPreference($user_id, 'rootid');
+				$PEDIGREE_ROOT_ID	= get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+			}
 
 			// If we’ve clicked login from the login page, we don’t want to go back there.
-			if (strpos('index.php', $url)===0) {
+			if (strpos('index.php', $url) === 0) {
 				if ($WT_SESSION->gedcomid) {
 					$url = 'individual.php?pid=' . $WT_SESSION->gedcomid . '&amp;ged=' . WT_GEDURL;
 				} elseif ($WT_SESSION->rootid) {
-					$url = 'individual.php?pid=' . $WT_SESSION->rootid . '&amp;ged=' . WT_GEDURL;	
+					$url = 'individual.php?pid=' . $WT_SESSION->rootid . '&amp;ged=' . WT_GEDURL;
 				} elseif ($PEDIGREE_ROOT_ID) {
-					$url = 'individual.php?pid=' . $PEDIGREE_ROOT_ID . '&amp;ged=' . WT_GEDURL;	
+					$url = 'individual.php?pid=' . $PEDIGREE_ROOT_ID . '&amp;ged=' . WT_GEDURL;
 				} else {
-					$url = 'index.php?ged=' . WT_GEDURL;					
+					$url = 'index.php?ged=' . WT_GEDURL;
 				}
 			}
 
@@ -182,7 +187,7 @@ default:
 			echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
 		}
 	echo '</form>';
-	
+
 	// hidden New Password block
 	echo '<div id="new_passwd">
 		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
@@ -197,7 +202,7 @@ default:
 		</form>
 	</div>';
 	echo '</div>';
-		
+
 	echo '</div>';
 	break;
 
@@ -397,7 +402,7 @@ case 'register':
 			<div>
 				<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
 					'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', htmlspecialchars($user_realname), '" autofocus>
-				</label>		
+				</label>
 			</div>
 			<div>
 				<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),

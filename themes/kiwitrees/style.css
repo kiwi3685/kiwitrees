@@ -531,6 +531,7 @@ textarea:required:invalid {
 
 div[id*='-page'] {
 	margin: 12px;
+	min-height: 320px;
 }
 
 /* ======= Block styles ========== */

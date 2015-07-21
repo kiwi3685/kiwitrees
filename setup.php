@@ -94,7 +94,7 @@ require 'includes/functions/functions.php';
 require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
 $WT_REQUEST = new Zend_Controller_Request_Http();
-$WT_SESSION = new \stdClass; 
+$WT_SESSION = new \stdClass;
 $WT_SESSION->locale=null; // Can't use Zend_Session until we've checked ini_set
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
@@ -816,7 +816,7 @@ try {
 		" FOREIGN KEY `##gedcom_chunk_fk1` (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
  		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	
+
 	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##site_access_rule` (".
 		" site_access_rule_id INTEGER          NOT NULL AUTO_INCREMENT,".
@@ -848,11 +848,12 @@ try {
 		" (-1, 'DEFAULT_TREE')"
 	)->execute();
 
+	$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password) VALUES ".
 		" (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER'), (1, ?, ?, ?, ?)"
 	)->execute(array(
-		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], crypt($_POST['wtpass'])
+		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], crypt($_POST['wtpass'], $hash)
 	));
 
 	WT_DB::prepare(
@@ -903,7 +904,7 @@ try {
 		" FROM `##block`" .
 		" WHERE user_id=-1"
 	)->execute();
-	
+
 	// Write the config file.  We already checked that this would work.
 	$config_ini_php=
 		'; <'.'?php exit; ?'.'> DO NOT DELETE THIS LINE'      . PHP_EOL.

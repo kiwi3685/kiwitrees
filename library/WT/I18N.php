@@ -158,19 +158,26 @@ class WT_I18N {
 
 		// Load local user translations from database
 		// First check if the table exists
-		$result = WT_DB::prepare("SHOW TABLES LIKE '##custom_lang' ")->execute()->fetchAll(PDO::FETCH_ASSOC);
-		if ($result) {
-			$translations = WT_DB::prepare(
-					"SELECT standard_text, custom_text FROM `##custom_lang` WHERE language='{$locale}'"
-				)->execute()->fetchAll();
-			if ($translations) {
-				$translate = array();
-				foreach ($translations as $key => $value) {
-					$translate[$value->standard_text] = $value->custom_text;
+		if (version_compare(PHP_VERSION, '5.6', '<')) {
+			$tables = @mysql_ping();
+		} else {
+			$tables = @mysqli_ping();
+		}
+		if ($tables) {
+			$result = WT_DB::prepare("SHOW TABLES LIKE '##custom_lang' ")->execute()->fetchAll(PDO::FETCH_ASSOC);
+			if ($result) {
+				$translations = WT_DB::prepare(
+						"SELECT standard_text, custom_text FROM `##custom_lang` WHERE language='{$locale}'"
+					)->execute()->fetchAll();
+				if ($translations) {
+					$translate = array();
+					foreach ($translations as $key => $value) {
+						$translate[$value->standard_text] = $value->custom_text;
+					}
+					WT_I18N::addTranslation(
+						new Zend_Translate('array', $translate, $locale)
+					);
 				}
-				WT_I18N::addTranslation(
-					new Zend_Translate('array', $translate, $locale)
-				);
 			}
 		}
 
@@ -259,9 +266,18 @@ class WT_I18N {
 	// List languages marked as used in site admin
 	public static function used_languages() {
 		$used_languages = array();
+		// check we are connected to DB
+		if (version_compare(PHP_VERSION, '5.6', '<')) {
+			$tables = @mysql_ping();
+		} else {
+			$tables = @mysqli_ping();
+		}
+
 		foreach (self::installed_languages() as $code => $name) {
-			if (in_array($code, explode(',', WT_Site::preference('LANGUAGES')))) {
+			if (($tables) && (in_array($code, explode(',', WT_Site::preference('LANGUAGES'))))) {
 				$used_languages[$code] = $name;
+			} else {
+				$used_languages[$code] = $name;				
 			}
 		}
 		return $used_languages;
