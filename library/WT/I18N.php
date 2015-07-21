@@ -157,13 +157,7 @@ class WT_I18N {
 		}
 
 		// Load local user translations from database
-		// First check if the table exists
-		if (version_compare(PHP_VERSION, '5.6', '<')) {
-			$tables = @mysql_ping();
-		} else {
-			$tables = @mysqli_ping();
-		}
-		if ($tables) {
+		if (WT_DB::isConnected()) {
 			$result = WT_DB::prepare("SHOW TABLES LIKE '##custom_lang' ")->execute()->fetchAll(PDO::FETCH_ASSOC);
 			if ($result) {
 				$translations = WT_DB::prepare(
@@ -266,18 +260,11 @@ class WT_I18N {
 	// List languages marked as used in site admin
 	public static function used_languages() {
 		$used_languages = array();
-		// check we are connected to DB
-		if (version_compare(PHP_VERSION, '5.6', '<')) {
-			$tables = @mysql_ping();
-		} else {
-			$tables = @mysqli_ping();
-		}
-
 		foreach (self::installed_languages() as $code => $name) {
-			if (($tables) && (in_array($code, explode(',', WT_Site::preference('LANGUAGES'))))) {
+			if (!WT_DB::isConnected()) {
 				$used_languages[$code] = $name;
-			} else {
-				$used_languages[$code] = $name;				
+			} elseif (in_array($code, explode(',', WT_Site::preference('LANGUAGES')))) {
+				$used_languages[$code] = $name;
 			}
 		}
 		return $used_languages;
@@ -285,10 +272,11 @@ class WT_I18N {
 
 	// Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
 	public static function html_markup() {
-		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
-		$dir=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
+		$localeData = Zend_Locale_Data::getList(self::$locale, 'layout');
+		$dir = $localeData['characterOrder'] == 'right-to-left' ? 'rtl' : 'ltr';
 		list($lang) = preg_split('/[-_@]/', self::$locale);
 		return 'lang="'.$lang.'" dir="'.$dir.'"';
+
 	}
 
 	// Translate a number into the local representation.  e.g. 12345.67 becomes

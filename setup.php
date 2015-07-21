@@ -818,6 +818,17 @@ try {
 	);
 
 	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##custom_lang`(".
+		" custom_lang_id    INTEGER      NOT NULL AUTO_INCREMENT,".
+		" language          VARCHAR(10)  NOT NULL,".
+		" standard_text     LONGTEXT     NOT NULL,".
+		" custom_text       LONGTEXT     NOT NULL,".
+		" updated           TIMESTAMP    NOT NULL   DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
+		" PRIMARY KEY   (custom_lang_id)".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+
+	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##site_access_rule` (".
 		" site_access_rule_id INTEGER          NOT NULL AUTO_INCREMENT,".
 		" ip_address_start     INTEGER UNSIGNED NOT NULL DEFAULT 0,".
