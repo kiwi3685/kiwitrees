@@ -50,6 +50,11 @@ class menu_login_WT_Module extends WT_Module implements WT_Module_Menu {
 		return 'other';
 	}
 
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_PUBLIC;
+	}
+
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		if (WT_USER_ID) {
