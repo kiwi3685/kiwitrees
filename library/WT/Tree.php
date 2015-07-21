@@ -86,7 +86,7 @@ class WT_Tree {
 			return $this;
 		}
 	}
-	
+
 	// Get and Set the tree's configuration settings
 	public function userPreference($user_id, $setting_name, $setting_value=null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
@@ -116,7 +116,7 @@ class WT_Tree {
 			return $this;
 		}
 	}
-	
+
 	// Can a user accept changes for this tree?
 	public function canAcceptChanges($user_id) {
 		return
@@ -195,13 +195,13 @@ class WT_Tree {
 	}
 
 	// Create a new tree
-	public static function create($tree_name) {
+	public static function create($tree_name, $tree_title) {
 		try {
 			// Create a new tree
 			WT_DB::prepare(
 				"INSERT INTO `##gedcom` (gedcom_name) VALUES (?)"
 			)->execute(array($tree_name));
-			$tree_id=WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+			$tree_id = WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
 		} catch (PDOException $ex) {
 			// A tree with that name already exists?
 			return;
@@ -248,7 +248,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'MAX_PEDIGREE_GENERATIONS',     '10');
 		set_gedcom_setting($tree_id, 'MEDIA_DIRECTORY',              'media/');
 		set_gedcom_setting($tree_id, 'MEDIA_ID_PREFIX',              'M');
-		set_gedcom_setting($tree_id, 'MEDIA_UPLOAD',                 WT_PRIV_USER); 
+		set_gedcom_setting($tree_id, 'MEDIA_UPLOAD',                 WT_PRIV_USER);
 		set_gedcom_setting($tree_id, 'META_DESCRIPTION',             '');
 		set_gedcom_setting($tree_id, 'META_TITLE',                   WT_WEBTREES);
 		set_gedcom_setting($tree_id, 'NOTE_FACTS_ADD',               'SOUR,RESN');
@@ -313,7 +313,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'WEBTREES_EMAIL',               '');
 		set_gedcom_setting($tree_id, 'WORD_WRAPPED_NOTES',           false);
 		set_gedcom_setting($tree_id, 'imported',                     0);
-		set_gedcom_setting($tree_id, 'title',                        /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
+		set_gedcom_setting($tree_id, 'title',                        $tree_title);
 
 		// Default restriction settings
 		$statement=WT_DB::prepare(
@@ -349,7 +349,7 @@ class WT_Tree {
 
 	// Delete everything relating to a tree
 	public static function delete($tree_id) {
-		// If this is the default tree, then unset 
+		// If this is the default tree, then unset
 		if (WT_Site::preference('DEFAULT_GEDCOM')==self::getNameFromId($tree_id)) {
 			WT_Site::preference('DEFAULT_GEDCOM', '');
 		}
@@ -401,7 +401,7 @@ class WT_Tree {
 		if ($file_pointer === false) {
 			return false;
 		}
-			
+
 		$buffer = reformat_record_export(gedcom_header($this->tree_name));
 
 		$stmt = WT_DB::prepare(

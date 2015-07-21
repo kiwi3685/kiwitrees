@@ -98,9 +98,10 @@ case 'setdefault':
 	}
 	break;
 case 'new_tree':
-	$ged_name=basename(WT_Filter::post('ged_name'));
-	if (WT_Filter::checkCsrf() && $ged_name) {
-		WT_Tree::create($ged_name);
+	$ged_name		= basename(WT_Filter::post('ged_name'));
+	$gedcom_title	= WT_Filter::post('gedcom_title');
+	if (WT_Filter::checkCsrf() && $ged_name && $gedcom_title) {
+		WT_Tree::create($ged_name, $gedcom_title);
 	}
 	break;
 case 'replace_upload':
@@ -139,7 +140,7 @@ case 'importform':
 		break;
 	}
 	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
-	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).  
+	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($previous_gedcom_filename), '\' && \'\' != \'', htmlspecialchars($previous_gedcom_filename), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
 	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">';
@@ -188,7 +189,6 @@ case 'importform':
 // List the gedcoms available to this user
 foreach (WT_Tree::GetAll() as $tree) {
 	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
-
 		echo
 			'<table class="gedcom_table">',
 			'<tr><th>', WT_I18N::translate('Family tree'),
@@ -246,16 +246,14 @@ foreach (WT_Tree::GetAll() as $tree) {
 			'<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">',
 			WT_Filter::getCsrf(),
 			'</form>',
-			'</td></tr></table></td></tr></table><br>';
+			'</td></tr></table></td></tr></table><br><hr>';
 	}
 }
 
 // Options for creating new gedcoms and setting defaults
 if (WT_USER_IS_ADMIN) {
-	echo '<hr>
-	<div class="gedcom_table2">';
 		if (count(WT_Tree::GetAll())>1) {
-			echo  '
+			echo '<div class="gedcom_table2">
 				<form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">
 					<label>', WT_I18N::translate('Default family tree'), '</label>
 					<input type="hidden" name="action" value="setdefault">',
@@ -268,12 +266,12 @@ if (WT_USER_IS_ADMIN) {
 							WT_I18N::translate('save'), '
 						</button>
 					</div>
-				</form>';
+				</form>
+			</div>
+			<hr>';
 		}
-	echo '</div>
-	<hr>
-	<div class="gedcom_table3">
-		<h3>', WT_I18N::translate('Create a new family tree'), '</h3>
+	echo '<div class="gedcom_table3">
+		<h2>', WT_I18N::translate('Create a new family tree'), '</h2>
 		<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">
 			<label for="gedcom_title">', WT_I18N::translate('Family tree title'), '</label>
 			<input type="text" id="gedcom_title" name="gedcom_title" dir="ltr" value="" size="50" maxlength="255" required placeholder="' , $default_tree_title, '">
@@ -297,13 +295,13 @@ if (WT_USER_IS_ADMIN) {
 	</div>';
 
 		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
-		if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
-			echo
-				'<div class="center">',
-				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
-				WT_I18N::translate('Click here for PhpGedView to <b>kiwitrees</b> transfer wizard'),
-				'</a>',
-				help_link('PGV_WIZARD'),
-				'</div>';
-		}
-}	
+//		if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
+//			echo
+//				'<div class="center">',
+//				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
+//				WT_I18N::translate('Click here for PhpGedView to <b>kiwitrees</b> transfer wizard'),
+//				'</a>',
+//				help_link('PGV_WIZARD'),
+//				'</div>';
+//		}
+}
