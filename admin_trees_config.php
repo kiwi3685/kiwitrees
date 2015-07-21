@@ -655,8 +655,13 @@ $controller
 						<?php echo WT_I18N::translate('Who can upload new media files?'), help_link('MEDIA_UPLOAD'); ?>
 					</td>
 					<td>
-						<?php echo select_edit_control('NEW_MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
-	 WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD')); ?>
+						<?php echo select_edit_control('NEW_MEDIA_UPLOAD',
+							array(
+								WT_PRIV_USER=>WT_I18N::translate('Show to members'),
+								WT_PRIV_NONE=>WT_I18N::translate('Show to managers'),
+								WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')
+							),
+							 null, get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD')); ?>
 					</td>
 				</tr>
 				<tr>
