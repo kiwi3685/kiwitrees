@@ -84,6 +84,21 @@ if ($form_action && WT_Filter::checkCsrf()) {
 
 	return;
 }
+
+$controller = new WT_Controller_Page();
+$controller
+	->setPageTitle(WT_I18N::translate('User administration'))
+	->pageHeader()
+	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addInlineJavascript('
+		autocomplete();
+		//Add help texts to page
+		jQuery(".help_text").each(function() {
+			var helpID = jQuery(this).attr("id");
+	 		jQuery("#" + helpID).load("help_text.php?help=" + helpID);
+		});
+	');
+
 // Form validation
 ?>
 <script>
@@ -111,21 +126,7 @@ function checkform(frm) {
 	return true;
 }
 </script>
-<?php
-$controller = new WT_Controller_Page();
-$controller
-	->setPageTitle(WT_I18N::translate('User administration'))
-	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
-	->addInlineJavascript('
-		autocomplete();
-		//Add help texts to page
-		jQuery(".help_text").each(function() {
-			var helpID = jQuery(this).attr("id");
-	 		jQuery("#" + helpID).load("help_text.php?help=" + helpID);
-		});
-	');
- ?>
+
 <div id="edituser-page">
 	<h2><?php echo WT_I18N::translate('My account'); ?></h2>
 	<div id="edituser-table">
