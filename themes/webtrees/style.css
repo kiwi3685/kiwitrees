@@ -262,6 +262,7 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 [dir=rtl] .title {float:right;}
 .header_search {clear:both; float:right;margin:-20px 10px;}
 [dir=rtl] .header_search {float:left;}
+#topMenu #nav-select {display: none;}
 
 #flash-messages {clear:both;}
 
@@ -2148,8 +2149,8 @@ div.widget {
 		position: initial;
 	}
 	#topMenu #nav-select {
-		border: 1px solid #CCC;
-		background-color: #FFF;
+        background-color: #EDF7FD;
+        border: solid #81A9CB 1px;
 		display: block;
 		font-size: 12px;
 		height: 30px;
