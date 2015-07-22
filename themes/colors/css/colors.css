@@ -98,7 +98,10 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 [dir=rtl] .makeMenu li ul {left:auto;right:0;}
 [dir=rtl] .makeMenu li ul li {text-align:right;}
 
-/* Menu setup  */
+/* Menu setup*/
+#topMenu {overflow: hidden;}
+#topMenu #nav-select {display: none;}
+
 #main-menu {display: inline-block;width:100%;margin:0;padding:0;height:48px;}
 #main-menu ul {padding:0;margin:0;border:1px solid #dddddd;border-radius:5px;list-style-type:none;position:absolute;visibility:hidden;opacity:0;background:#fff;z-index:110;}
 #main-menu li {display:block; position:relative;float:left;list-style:none;}
@@ -2211,6 +2214,9 @@ div.widget {
 	.media-list-item {
 		width: 48%; /* two per row */
 	}
+    #header .makeMenu {
+        float: none;
+    }
 	#topMenu #main-menu {
 		display:none;
 	}
@@ -2227,7 +2233,6 @@ div.widget {
 		margin: 10px auto;
 		text-align: left;
 		width: 70%;
-
 	}
 	#topMenu #nav-select select {
 		font-size: 30px;
@@ -2241,7 +2246,8 @@ div.widget {
 		text-align: center;
 	}
 	#header .title {
-		position: relative;
+		float: none;
+        position: relative;
 		text-align: center;
 	}
 	#header #extra-menu, #header .header_search {

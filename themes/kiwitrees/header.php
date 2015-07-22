@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_JQUERY_BIGTEXT',  WT_THEME_URL.'js/jquery-bigtext.js');
 
-// This theme uses the jQuery “colorbox” plugin to display images
+// This theme uses the jQuery ï¿½colorboxï¿½ plugin to display images
 $this
 	->addExternalJavascript (WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript (WT_JQUERY_WHEELZOOM_URL)
@@ -44,7 +44,7 @@ $this
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",
-			maxHeight		:"95%",				
+			maxHeight		:"95%",
 			fixed			:false,
 			slideshow		:true,
 			slideshowAuto	:false,
@@ -57,7 +57,7 @@ $this
 								return img_title;
 							}
 		});
-		jQuery("body").on("click", "a.gallery", function(event) {		
+		jQuery("body").on("click", "a.gallery", function(event) {
 			// Add colorbox to pdf-files
 			jQuery("a[type^=application].gallery").colorbox({
 				rel			:"gallery",
@@ -67,7 +67,7 @@ $this
 				photo		:false
 			});
 		});
-		
+
 		jQuery("textarea").autosize();
 
 		jQuery("#bigtext span").bigText({
@@ -108,7 +108,7 @@ echo '
 		}
 	echo '</head>
 ';
-	
+
 if ($view!='simple') {echo '<body id="body">';
 } else {echo '<body id="body_simple">';}
 
@@ -160,7 +160,7 @@ echo 				'</ul>
 						foreach (WT_MenuBar::getMainMenus() as $menu) {
 							echo $menu->getMenuAsList();
 						}
-echo				'</ul>', 
+echo				'</ul>',
 					// select menu for responsive layouts only
 					'<select id="nav-select" onChange="window.location.href=this.value">
 						<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
@@ -178,4 +178,3 @@ if ($show_widgetbar) {
 }
 // begin content section
 echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
-

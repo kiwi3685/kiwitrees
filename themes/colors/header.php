@@ -41,7 +41,7 @@ $this
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",
-			maxHeight		:"95%",				
+			maxHeight		:"95%",
 			fixed			:false,
 			slideshow		:true,
 			slideshowAuto	:false,
@@ -54,7 +54,7 @@ $this
 								return img_title;
 							}
 		});
-		jQuery("body").on("click", "a.gallery", function(event) {		
+		jQuery("body").on("click", "a.gallery", function(event) {
 			// Add colorbox to pdf-files
 			jQuery("a[type^=application].gallery").colorbox({
 				rel			:"gallery",
@@ -111,8 +111,8 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	'<div id="header">',
 		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
 
-		// Top row right 
-		echo 
+		// Top row right
+		echo
 		'<ul class="makeMenu">';
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 				echo '<li>
@@ -137,16 +137,26 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	'</div>';
 
 	// Print the main menu bar
-	echo '<ul id="main-menu">'; 
-			if ($show_widgetbar) {
-				echo '<li id="widget-button" class="fa-bars"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x fa-bars">&nbsp;</span></a></li>';
-			}
+	echo '<div id="topMenu">
+		<ul id="main-menu">';
+				if ($show_widgetbar) {
+					echo '<li id="widget-button" class="fa-bars"><a href="#" ><span style="line-height: inherit;" class="fa fa-fw fa-2x fa-bars">&nbsp;</span></a></li>';
+				}
+				foreach (WT_MenuBar::getMainMenus() as $menu) {
+					echo getMenuAsCustomList($menu);
+				}
+		echo '</ul>',
+		// select menu for responsive layouts only
+		'<select id="nav-select" onChange="window.location.href=this.value">
+			<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
 			foreach (WT_MenuBar::getMainMenus() as $menu) {
-				echo getMenuAsCustomList($menu);
+				echo $menu->getMenuAsSelect();
 			}
-	echo '</ul>'; 
+	echo	'</select>
+	</div>';
+
 }
-// Remove list from home when only 1 gedcom 
+// Remove list from home when only 1 gedcom
 $this->addInlineJavaScript(
 	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul li:last-child").remove();'
 );

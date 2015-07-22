@@ -42,8 +42,8 @@ color:#fff;}
 .facts_label,.facts_label a, .facts_label h2,.facts_label .date,
 .list_label, .list_label a, #search-page-table, #edituser-table,
 #lightbox_content span a,#lightbox_content span a:hover,
-#separator, .use-sidebar #separator, #family_nav, 
-.ui-state-active a:link, .ui-state-active a:visited 
+#separator, .use-sidebar #separator, #family_nav,
+.ui-state-active a:link, .ui-state-active a:visited
 {
 background-color:#51B389;
 color: #fff;
@@ -53,7 +53,7 @@ color: #fff;
 }
 
 /* Top Menu  */
-#main-menu {
+#topMenu {
 background:#52bf90;
 
 }
