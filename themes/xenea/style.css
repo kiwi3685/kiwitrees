@@ -115,6 +115,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #main-menu ul              {position:absolute;display:none;background:#fff;border:thin solid #aaaaaa;padding:0;z-index:99;}
 #main-menu li a            {margin:auto;padding-top:22px;width:100%;}
 #main-menu li li a         {display:block;position:relative;float:left;font-size:11px;line-height:1.5;padding:0 10px 1px 5px;}
+#topMenu #nav-select       {display: none;}
 
 /* Menu icons */
 #main-menu > li { background-image:url(images/sprites-top-menu.png); background-repeat:no-repeat; width:80px; text-align:center; height:28px; line-height:28px; text-indent:0;}
@@ -2401,10 +2402,10 @@ div.widget {
 		position: initial;
 	}
 	#topMenu #nav-select {
-		border: 1px solid #CCC;
-		background-color: #FFF;
+        background-color: #ECF5FF;
+        border: solid #84BEFF 1px;
 		display: block;
-		font-size: 12px;
+		font-size: 14px;
 		height: 30px;
 		line-height: 30px;
 		margin: 10px auto;
@@ -2417,7 +2418,6 @@ div.widget {
 		width: 100%;
 	}
 	#topMenu #nav-select option {
-		font-size: 12px;
 	}
 	#header {
 		height: auto;
