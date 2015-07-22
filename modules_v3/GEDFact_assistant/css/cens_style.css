@@ -21,7 +21,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
- 
+
 .cens_header {text-align:left; margin:5px; height:40px;}
 .cens_container {float:left; width:575px; margin:5px 0; padding:0;}
 .cens_container span {margin:0 3px;}
@@ -48,6 +48,7 @@ textarea#NOTE {font-size: 12px;height:250px; width:97%; overflow:auto;}
 .cens_addrows {clear:both; float:left; width:860px;}
 .cens_data {	height:170px; overflow-y:scroll;width:850px;}
 .cens_data table {width:100%;}
+.cens_data table td button {padding: 0; min-width: initial;}
 .cens_data .descriptionbox {min-width:0; padding:3px;}
 #navenclose {margin:-4px; width:270px;}
 .ltrnav {position:absolute; top:-15px; left:40px;}
@@ -75,6 +76,3 @@ html[dir='rtl'] .cens_addrows {clear:both; float:right;}
 html[dir='rtl'] .headimg2 {margin-right:0;}
 html[dir='rtl'] .cens_text_header span:nth-of-type(1) {float:right;}
 html[dir='rtl'] .cens_text_header span:nth-of-type(3) {float:left;}
-
-
-
