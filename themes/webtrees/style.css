@@ -2171,11 +2171,13 @@ div.widget {
 		text-align: center;
 	}
 	#header .title {
+        float: none;
 		position: relative;
 		text-align: center;
 	}
 	#header #extra-menu, #header .header_search {
 		float:none;
+        margin: 10px auto;
 	}
 	#content {
 		top: auto;

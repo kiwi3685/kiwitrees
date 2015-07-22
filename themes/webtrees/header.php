@@ -38,7 +38,7 @@ $this
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",
-			maxHeight		:"95%",				
+			maxHeight		:"95%",
 			fixed			:false,
 			slideshow		:true,
 			slideshowAuto	:false,
@@ -51,7 +51,7 @@ $this
 								return img_title;
 							}
 		});
-		jQuery("body").on("click", "a.gallery", function(event) {		
+		jQuery("body").on("click", "a.gallery", function(event) {
 			// Add colorbox to pdf-files
 			jQuery("a[type^=application].gallery").colorbox({
 				rel			:"gallery",
@@ -130,7 +130,14 @@ echo		'</ul>',
 						echo $menu->getMenuAsList();
 					}
 echo			'</ul>',  // <ul id="main-menu">
-			'</div>', // <div id="topMenu">
+				// select menu for responsive layouts only
+				'<select id="nav-select" onChange="window.location.href=this.value">
+					<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
+					foreach (WT_MenuBar::getMainMenus() as $menu) {
+						echo $menu->getMenuAsSelect();
+					}
+echo			'</select>
+			</div>', // <div id="topMenu">
 		'</div>'; // <div id="header">
 }
 echo 	$javascript,
