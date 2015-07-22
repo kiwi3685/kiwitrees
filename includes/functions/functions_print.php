@@ -1118,7 +1118,9 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '</select>';
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';
 	echo '<span class="quickfacts">';
-	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	foreach ($quickfacts as $fact) {
+		echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	}
 	echo '</span></form>';
 	echo '</td></tr>';
 }
