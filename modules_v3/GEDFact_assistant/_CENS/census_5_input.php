@@ -30,7 +30,7 @@ require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/js/census_5_input.js.php
 
 ?>
 <div class="cens_data">
-	<table id="tblSample" cellpadding=0>
+	<table id="tblSample">
 		<thead></thead>
 		<tbody></tbody>
 	</table>

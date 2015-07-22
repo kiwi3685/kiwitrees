@@ -88,7 +88,6 @@ echo '</div>';
 
 //-- Search  and Add Family Members Area ==========================================
 echo '<div class="optionbox cens_search" style="overflow:-moz-scrollbars-horizontal;overflow-x:hidden;overflow-y:scroll;">';
-?><!--[if lte IE 7]><style>.cens_search{margin-top:-0.7em;}</style><![EndIf]--><?php
 require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_3_search_add.php';
 echo '</div>';
 

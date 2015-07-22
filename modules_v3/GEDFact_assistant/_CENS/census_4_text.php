@@ -33,16 +33,15 @@ if (!defined('WT_WEBTREES')) {
 ?>
 <!--   ---- The proposed Census Text -------- -->
 <div class="optionbox cens_text wrap">
-<!--[if IE]><style>.cens_text{margin-top:-1.3em;}</style><![EndIf]-->
 	<div class="cens_text_header">
 		<span><input type="button" value="<?php echo WT_I18N::translate('Preview'); ?>" onclick="preview();"></span>
-		<span><b><?php echo WT_I18N::translate('Proposed Census Text&nbsp;&nbsp;'); ?></b></span>
+		<span><b><?php echo WT_I18N::translate('Proposed Census Text'); ?></b></span>
 		<span><input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="caSave();"></span>
 	</div>
 	<div class="optionbox">
 		<textarea wrap="off" name="NOTE" id="NOTE"></textarea><br>
 		<center>
-		<?php echo print_specialchar_link('NOTE'); ?>
+			<?php echo print_specialchar_link('NOTE'); ?>
 		</center>
 	</div>
 </div>

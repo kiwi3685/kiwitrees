@@ -24,7 +24,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 
 $filter         =safe_GET('filter');
 $action         =safe_GET('action');
@@ -70,16 +70,18 @@ $controller
 		return true;
 	}
 </script>
+
+<div align="center">
+	<table class="list_table width90" border="0">
+		<tr>
+			<td style="padding: 10px; color: initial;" valign="top" class="facts_label03 width90">
+				<?php echo WT_I18N::translate('Find an individual'); ?>
+			</td>
+		</tr>
+	</table>
+	<br>
+
 <?php
-
-echo "<div align=\"center\">";
-echo "<table class=\"list_table width90\" border=\"0\">";
-echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">";
-echo WT_I18N::translate('Find an individual');
-echo "</td>";
-echo "</table>";
-echo "<br>";
-
 if ($action=="filter") {
 	$filter = trim($filter);
 	$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));

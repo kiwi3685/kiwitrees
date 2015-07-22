@@ -1033,8 +1033,6 @@ if (!defined('WT_WEBTREES')) {
 			</font>
 			</td></tr></table>
 		</div>
-
-
 	</div>
 
 	<div class="cens_sour_year">
