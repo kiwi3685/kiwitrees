@@ -233,6 +233,7 @@ $controller
 
 
 ?>
+<h2><?php echo WT_I18N::translate('Family tree configuration'); ?></h2>
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="action" value="update">

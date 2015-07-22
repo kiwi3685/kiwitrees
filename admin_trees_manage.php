@@ -133,8 +133,8 @@ $controller->pageHeader();
 switch (safe_GET('action')) {
 case 'uploadform':
 case 'importform':
-	$gedcom_id=safe_GET('gedcom_id');
-	$gedcom_name=get_gedcom_from_id($gedcom_id);
+	$gedcom_id	 = safe_GET('gedcom_id');
+	$gedcom_name = get_gedcom_from_id($gedcom_id);
 	// Check it exists
 	if (!$gedcom_name) {
 		break;
@@ -142,111 +142,130 @@ case 'importform':
 	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
-	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($previous_gedcom_filename), '\' && \'\' != \'', htmlspecialchars($previous_gedcom_filename), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
-	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">';
-	echo WT_Filter::getCsrf();
-	if (WT_Filter::get('action')=='uploadform') {
-		echo '<input type="hidden" name="action" value="replace_upload">';
-		echo '<input type="file" name="ged_name">';
-	} else {
-		echo '<input type="hidden" name="action" value="replace_import">';
-		$d=opendir(WT_DATA_DIR);
-		$files=array();
-		while (($f=readdir($d))!==false) {
-			if (!is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
-				$fp=fopen(WT_DATA_DIR.$f, 'rb');
-				$header=fread($fp, 64);
-				fclose($fp);
-				if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {
-					$files[]=$f;
+	echo '
+		<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($previous_gedcom_filename), '\' && \'\' != \'', htmlspecialchars($previous_gedcom_filename), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">
+			<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">' ,
+			WT_Filter::getCsrf();
+			if (WT_Filter::get('action')=='uploadform') {
+				echo '
+					<input type="hidden" name="action" value="replace_upload">
+					<input type="file" name="ged_name">';
+			} else {
+				echo '<input type="hidden" name="action" value="replace_import">';
+				$d		= opendir(WT_DATA_DIR);
+				$files	= array();
+				while (($f=readdir($d))!==false) {
+					if (!is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
+						$fp=fopen(WT_DATA_DIR.$f, 'rb');
+						$header=fread($fp, 64);
+						fclose($fp);
+						if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {
+							$files[]=$f;
+						}
+					}
+				}
+				if ($files) {
+					sort($files);
+					echo WT_DATA_DIR, '<select name="ged_name">';
+					foreach ($files as $file) {
+						echo '<option value="', htmlspecialchars($file), '"';
+						if ($file==$previous_gedcom_filename) {
+							echo ' selected="selected"';
+						}
+						echo'>', htmlspecialchars($file), '</option>';
+					}
+					echo '</select>';
+				} else {
+					echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
+					echo '</form>';
+					exit;
 				}
 			}
-		}
-		if ($files) {
-			sort($files);
-			echo WT_DATA_DIR, '<select name="ged_name">';
-			foreach ($files as $file) {
-				echo '<option value="', htmlspecialchars($file), '"';
-				if ($file==$previous_gedcom_filename) {
-					echo ' selected="selected"';
-				}
-				echo'>', htmlspecialchars($file), '</option>';
-			}
-			echo '</select>';
-		} else {
-			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
-			echo '</form>';
-			exit;
-		}
-	}
-	echo '<br><br><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
-	echo WT_I18N::translate('If you have created media objects in kiwitrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
-	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
-	echo '</form>';
+			echo '<p>
+				<input type="checkbox" name="keep_media', $gedcom_id, '" value="1">
+			<p>',
+			WT_I18N::translate('If you have created media objects in kiwitrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.'),
+			'<p>
+				<input type="submit" value="', WT_I18N::translate('continue'), '">
+			</p>
+		</form>';
 	exit;
 }
 
 // List the gedcoms available to this user
 foreach (WT_Tree::GetAll() as $tree) {
 	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
-		echo
-			'<table class="gedcom_table">',
-			'<tr><th>', WT_I18N::translate('Family tree'),
-			'</th><th><a class="accepted" href="index.php?ctype=gedcom&amp;ged=', $tree->tree_name_url, '" dir="auto">',
-			$tree->tree_title_html, '</a>',
-			'</th></tr><tr><th class="accepted">', $tree->tree_name_html,
-			'</th><td>';
-
-		// The third row shows an optional progress bar and a list of maintenance options
-		$importing=WT_DB::prepare(
-			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=0 LIMIT 1"
-		)->execute(array($tree->tree_id))->fetchOne();
-		if ($importing) {
-			$in_progress=WT_DB::prepare(
-				"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=1 LIMIT 1"
-			)->execute(array($tree->tree_id))->fetchOne();
-			if (!$in_progress) {
-				echo '<div id="import', $tree->tree_id, '"><div id="progressbar', $tree->tree_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
-			$controller->addInlineJavascript(
-				'jQuery("#progressbar'.$tree->tree_id.'").progressbar({value: 0});'
-			);
-			} else {
-				echo '<div id="import', $tree->tree_id, '"></div>';
-			}
-			$controller->addInlineJavascript(
-				'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id='.$tree->tree_id.'&keep_media'.$tree->tree_id.'='.safe_GET('keep_media'.$tree->tree_id).'");'
-			);
-			echo '<table border="0" width="100%" id="actions', $tree->tree_id, '" style="display:none">';
-		} else {
-			echo '<table border="0" width="100%" id="actions', $tree->tree_id, '">';
-		}
-		echo
-			'<tr align="center">',
-			// export
-			'<td><a href="admin_trees_export.php?ged=', $tree->tree_name_url, '" onclick="return modalDialog(\'admin_trees_export.php?ged=', $tree->tree_name_url, '\', \'', WT_I18N::translate('Export'), '\');">', WT_I18N::translate('Export'), '</a>',
-			help_link('export_gedcom'),
-			'</td>',
-			// import
-			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Import'), '</a>',
-			help_link('import_gedcom'),
-			'</td>',
-			// download
-			'<td><a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">', WT_I18N::translate('Download'), '</a>',
-			help_link('download_gedcom'),
-			'</td>',
-			// upload
-			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Upload'), '</a>',
-			help_link('upload_gedcom'),
-			'</td>',
-			// delete
-			'<td>',
-			'<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">', WT_I18N::translate('Delete'), '</a>',
-			'<form name="delete_form', $tree->tree_id ,'" method="post" action="', WT_SCRIPT_NAME ,'">',
-			'<input type="hidden" name="action" value="delete">',
-			'<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">',
-			WT_Filter::getCsrf(),
-			'</form>',
-			'</td></tr></table></td></tr></table><br><hr>';
+		echo '
+			<table class="gedcom_table">
+				<tr>
+					<th>', WT_I18N::translate('Family tree'), '</th>
+					<th>
+						<a class="accepted" href="index.php?ctype=gedcom&amp;ged=', $tree->tree_name_url, '" dir="auto">', $tree->tree_title_html, '</a>
+						<a href="admin_trees_config.php?ged=', $tree->tree_name_html, '"><i class="fa fa-cog"></i></a>
+					</th>
+				</tr>
+				<tr>
+					<th class="accepted">', $tree->tree_name_html, '</th>
+					<td>';
+						// The third row shows an optional progress bar and a list of maintenance options
+						$importing = WT_DB::prepare(
+							"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=0 LIMIT 1"
+						)->execute(array($tree->tree_id))->fetchOne();
+						if ($importing) {
+							$in_progress = WT_DB::prepare(
+								"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=1 LIMIT 1"
+							)->execute(array($tree->tree_id))->fetchOne();
+							if (!$in_progress) {
+								echo '<div id="import', $tree->tree_id, '"><div id="progressbar', $tree->tree_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
+							$controller->addInlineJavascript(
+								'jQuery("#progressbar'.$tree->tree_id.'").progressbar({value: 0});'
+							);
+							} else {
+								echo '<div id="import', $tree->tree_id, '"></div>';
+							}
+							$controller->addInlineJavascript(
+								'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id='.$tree->tree_id.'&keep_media'.$tree->tree_id.'='.safe_GET('keep_media'.$tree->tree_id).'");'
+							);
+							echo '<table border="0" width="100%" id="actions', $tree->tree_id, '" style="display:none">';
+						} else {
+							echo '<table border="0" width="100%" id="actions', $tree->tree_id, '">';
+						}
+							echo '<tr align="center">',
+								// export
+								'<td>
+									<a href="admin_trees_export.php?ged=', $tree->tree_name_url, '" onclick="return modalDialog(\'admin_trees_export.php?ged=', $tree->tree_name_url, '\', \'', WT_I18N::translate('Export'), '\');">', WT_I18N::translate('Export'), '</a>',
+									help_link('export_gedcom'),
+								'</td>',
+								// import
+								'<td>
+									<a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Import'), '</a>',
+									help_link('import_gedcom'),
+								'</td>',
+								// download
+								'<td>
+									<a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">', WT_I18N::translate('Download'), '</a>',
+									help_link('download_gedcom'),
+								'</td>',
+								// upload
+								'<td>
+									<a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Upload'), '</a>',
+									help_link('upload_gedcom'),
+								'</td>',
+								// delete
+								'<td>
+									<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">', WT_I18N::translate('Delete'), '</a>
+									<form name="delete_form', $tree->tree_id ,'" method="post" action="', WT_SCRIPT_NAME ,'">
+										<input type="hidden" name="action" value="delete">
+										<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">',
+										WT_Filter::getCsrf(), '
+									</form>',
+								'</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		<br><hr>';
 	}
 }
 
