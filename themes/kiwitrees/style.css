@@ -5986,6 +5986,17 @@ div.widget {
 	#content {
 		top: auto;
 	}
+	#home-page #index_main_blocks {
+        float: none;
+        margin: auto;
+        width: 95%;
+    }
+	#home-page #index_small_blocks > div {
+		float: none;
+		margin: 10px auto;
+		width: 90%;
+	}
+
 }
 
 @media (min-width: 1025px) and (max-width: 1681px) {

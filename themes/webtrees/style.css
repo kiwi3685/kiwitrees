@@ -2183,6 +2183,12 @@ div.widget {
 	#content {
 		top: auto;
 	}
+    #index_main_blocks,
+    #index_small_blocks {
+        float: none;
+        margin: auto;
+        width: 95%;
+    }
 }
 
 @media (min-width: 1025px) and (max-width: 1681px) {
