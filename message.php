@@ -48,9 +48,9 @@ $to_user_id=get_user_id($to);
 if ((!$to_user_id || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
 	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
 	WT_FlashMessages::addMessage(WT_I18N::translate('Message was not sent'));
-	$controller->
-		pageHeader()
-		addInlineJavascript('window.opener.location.reload(); window.close();');
+	$controller
+		->pageHeader()
+		->addInlineJavascript('window.opener.location.reload(); window.close();');
 	exit;
 }
 
