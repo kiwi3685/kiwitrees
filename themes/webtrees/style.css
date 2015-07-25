@@ -1854,6 +1854,12 @@ div.widget {
   	min-width: 45%;
 }
 
+#main-menu li#menu-contact {
+	background: url(images/contact.png) no-repeat 50% 25%;
+	background-size: 50px;
+}
+
+
 /* Styling for Fancy_treeview module */
 
 /* Page */
