@@ -516,6 +516,7 @@ textarea:required:invalid {
 }
 
 #content {
+	background-color: #aaa;
 	clear: both;
 	font-size: 12px;
 	position: relative;

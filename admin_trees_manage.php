@@ -290,14 +290,17 @@ if (WT_USER_IS_ADMIN) {
 			<hr>';
 		}
 	echo '<div class="gedcom_table3">
-		<h2>', WT_I18N::translate('Create a new family tree'), '</h2>
-		<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">
+		<h2>', WT_I18N::translate('Create a new family tree'), '</h2>';
+		if (!WT_Tree::GetAll()) {
+			echo '<p class="warning">' , WT_I18N::translate('You need to create a family tree.') , '</p>';
+		}
+		echo '<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">
 			<label for="gedcom_title">', WT_I18N::translate('Family tree title'), '</label>
 			<input type="text" id="gedcom_title" name="gedcom_title" dir="ltr" value="" size="50" maxlength="255" required placeholder="' , $default_tree_title, '">
 			<span class="help-text">' , WT_I18N::translate('This is the name used for display.'), '</span>
-			<label for="new_tree">', WT_I18N::translate('URL'), '</label>',
-			WT_Filter::getCsrf(), '
 			<div class="input-group">
+				<label for="new_tree">', WT_I18N::translate('URL'), '</label>',
+				WT_Filter::getCsrf(), '
 				<span>' ,
 					WT_SERVER_NAME.WT_SCRIPT_PATH, '?ged=
 				</span>
@@ -309,7 +312,7 @@ if (WT_USER_IS_ADMIN) {
 			<i class="fa fa-check"></i>',
 				WT_I18N::translate('create'), '
 			</button>
-			<p class="help-text">' , WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'), '</p>
+			<p class="warning help-text">' , WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'), '</p>
 		</form>
 	</div>';
 

@@ -45,8 +45,8 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 }
 
 
-if (version_compare(PHP_VERSION, '5.2')<0) {
-	// Our translation system requires PHP 5.2, so we cannot translate this message :-(
+if (version_compare(PHP_VERSION, '5.3')<0) {
+	// Our translation system requires PHP 5.3, so we cannot translate this message :-(
 	header('Content-Type: text/html; charset=UTF-8');
 	echo
 		'<!DOCTYPE html>',
@@ -56,7 +56,7 @@ if (version_compare(PHP_VERSION, '5.2')<0) {
 		'<title>Kiwitrees setup wizard</title>',
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
-		'<p><b>Kiwitrees</b> requires PHP 5.2 or later.  PHP 5.3 is recommended.</p>';
+		'<p><b>Kiwitrees</b> requires PHP 5.3 or later.  PHP 5.5 is recommended.</p>';
 	if (version_compare(PHP_VERSION, '5.0')<0) {
 		echo '<p>Many servers offer both PHP4 and PHP5.  You may be able to change your default to PHP5 using a control panel or a configuration setting.</p>';
 	}
@@ -107,15 +107,21 @@ echo
 	'<style type="text/css">
 		body {color: black; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
 		a {color: black; font-weight: normal; text-decoration: none;}
-		a:hover {color: #81A9CB;}
-		h1 {color: #81A9CB; font-weight:normal;}
-		legend {color:#81A9CB; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
-		.good {color: green;}
+		a:hover {color: red}
+		h1 {color: #FFF; font-weight: normal;  background-color: black; padding: 20px;}
+		legend {font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
+		fieldset input {padding: 5px;}
+		fieldset span {color: grey; display: block;  font-size: 95%;font-style: italic;}
+		select {margin: auto 10px; padding: 6px 0;}
+		input[type="submit"] {padding: 8px 12px;}
+		.label_set {  margin: 10px auto;}
+		.label_set label {display: inline-block; width: 200px;}
+		.good {color: green; font-weight: bold;}
 		.bad {color: red; font-weight: bold;}
 		.info {color: blue;}
 	</style>',
 	'</head><body>',
-	'<h1>', WT_I18N::translate('Setup wizard for <b>Kiwitrees</b>'), '</h1>';
+	'<h1>', WT_I18N::translate('Installing kiwitrees'), '</h1>';
 
 echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" onsubmit="this.btncontinue.disabled=\'disabled\';">';
 echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
@@ -126,10 +132,10 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 if (!isset($_POST['lang'])) {
 	echo
-		'<p>', WT_I18N::translate('Change language'), ' ',
+		'<p>', WT_I18N::translate('Select your default language'), ' ',
 		edit_field_language('change_lang', WT_LOCALE, 'onchange="window.location=\'' .  WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
-		'<h2>', WT_I18N::translate('Checking server configuration'), '</h2>';
+		'<h2>', WT_I18N::translate('1 - Checking your server configuration'), '</h2>';
 	$warnings=false;
 	$errors=false;
 
@@ -172,7 +178,7 @@ if (!isset($_POST['lang'])) {
 	if (!$warnings && !$errors) {
 		echo '<p class="good">', WT_I18N::translate('The server configuration is OK.'), '</p>';
 	}
-	echo '<h2>', WT_I18N::translate('Checking server capacity'), '</h2>';
+	echo '<h2>', WT_I18N::translate('2 - Checking your server capacity'), '</h2>';
 	// Previously, we tried to determine the maximum value that we could set for these values.
 	// However, this is unreliable, especially on servers with custom restrictions.
 	// Now, we just show the default values.  These can (hopefully!) be changed using the
@@ -270,33 +276,35 @@ try {
 }
 
 if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
-	echo
-		'<h2>', WT_I18N::translate('Connection to database server'), '</h2>',
-		'<p>', WT_I18N::translate('<b>Kiwitrees</b> needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
-		'<p>', WT_I18N::translate('Your server\'s administrator will provide you with the connection details.'), '</p>',
-		'<fieldset><legend>', WT_I18N::translate('Database connection'), '</legend>',
-		'<table border="0"><tr><td>',
-		WT_I18N::translate('Server name'), '</td><td>',
-		'<input type="text" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '" dir="ltr"></td><td>',
-		WT_I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'),
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Port number'), '</td><td>',
-		'<input type="text" name="dbport" value="', htmlspecialchars($_POST['dbport']), '"></td><td>',
-		WT_I18N::translate('Most sites are configured to use the default value of 3306.'),
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Database user account'), '</td><td>',
-		'<input type="text" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '" autofocus></td><td>',
-		WT_I18N::translate('This is case sensitive.'),
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Database password'), '</td><td>',
-		'<input type="password" name="dbpass" value="', htmlspecialchars($_POST['dbpass']), '"></td><td>',
-		WT_I18N::translate('This is case sensitive.'),
-		'</td></tr><tr><td>',
-		'</td></tr></table>',
-		'</fieldset>',
-		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
-		'</form>',
-		'</body></html>';
+	echo '
+		<h2>', WT_I18N::translate('3 - Checking the connection to your database server'), '</h2>
+		<p>', WT_I18N::translate('Kiwitrees needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>
+		<p>', WT_I18N::translate('Your server\'s administrator will provide you with the connection details.'), '</p>
+		<fieldset>
+			<legend>', WT_I18N::translate('Database connection'), '</legend>
+			<div class="label_set">
+				<label for="dbhost">', WT_I18N::translate('Server name'), '</label>
+				<input type="text" id="dbhost" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '" dir="ltr">
+				<span>', WT_I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for="dbport">', WT_I18N::translate('Port number'), '</label>
+				<input type="text"  id="dbport"name="dbport" value="', htmlspecialchars($_POST['dbport']), '">
+				<span>', WT_I18N::translate('Most sites are configured to use the default value of 3306.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for="dbuser">', WT_I18N::translate('Database user account'), '</label>
+				<input type="text" id="dbuser" name="dbuser" value="', htmlspecialchars($_POST['dbuser']), '" autofocus>
+				<span>', WT_I18N::translate('This is case sensitive.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for="dbpass">', WT_I18N::translate('Database password'), '</label>
+				<input type="password" id="dbpass" name="dbpass" value="', htmlspecialchars($_POST['dbpass']), '">
+				<span>', WT_I18N::translate('This is case sensitive.'), '</span>
+			</div>
+		</fieldset>
+		<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">
+		</form></body></html>';
 		exit;
 } else {
 	// Copy these values through to the next step
@@ -365,23 +373,24 @@ if ($dbname_ok) {
 }
 
 if (!$dbname_ok) {
-	echo
-		'<h2>', WT_I18N::translate('Database and table names'), '</h2>',
-		'<p>', WT_I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server\'s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>',
-		'<fieldset><legend>', WT_I18N::translate('Database name'), '</legend>',
-		'<table border="0"><tr><td>',
-		WT_I18N::translate('Database name'), '</td><td>',
-		'<input type="text" name="dbname" value="', htmlspecialchars($_POST['dbname']), '" autofocus></td><td>',
-		WT_I18N::translate('This is case sensitive. If a database with this name does not already exist Kiwitrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Table prefix'), '</td><td>',
-		'<input type="text" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '"></td><td>',
-		WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "wt_" is suggested, but can be anything you want.'),
-		'</td></tr></table>',
-		'</fieldset>',
-		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
-		'</form>',
-		'</body></html>';
+	echo '
+		<h2>', WT_I18N::translate('4 - Enter your database and table names'), '</h2>
+		<p>', WT_I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server\'s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>
+		<fieldset>
+			<legend>', WT_I18N::translate('Database name'), '</legend>
+			<div class="label_set">
+				<label for "dbname">', WT_I18N::translate('Database name'), '</label>
+				<input type="text" id="dbname" name="dbname" value="', htmlspecialchars($_POST['dbname']), '" autofocus>
+				<span>', WT_I18N::translate('This is case sensitive. If a database with this name does not already exist Kiwitrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for "tblpfx">', WT_I18N::translate('Table prefix'), '</label>
+				<input type="text" id="tblpfx" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '">
+				<span>', WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "wt_" is suggested, but can be anything you want.'), '</span>
+			</div>
+		</fieldset>
+		<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">
+		</form></body></html>';
 		exit;
 } else {
 	// Copy these values through to the next step
@@ -393,59 +402,62 @@ if (!$dbname_ok) {
 // Step five - site setup data
 ////////////////////////////////////////////////////////////////////////////////
 
-if (!isset($_POST['wtname'    ])) $_POST['wtname'    ]='';
-if (!isset($_POST['wtuser'    ])) $_POST['wtuser'    ]='';
-if (!isset($_POST['wtpass'    ])) $_POST['wtpass'    ]='';
-if (!isset($_POST['wtpass2'   ])) $_POST['wtpass2'   ]='';
-if (!isset($_POST['wtemail'   ])) $_POST['wtemail'   ]='';
+if (!isset($_POST['ktname'    ])) $_POST['ktname'    ]='';
+if (!isset($_POST['ktuser'    ])) $_POST['ktuser'    ]='';
+if (!isset($_POST['ktpass'    ])) $_POST['ktpass'    ]='';
+if (!isset($_POST['ktpass2'   ])) $_POST['ktpass2'   ]='';
+if (!isset($_POST['ktemail'   ])) $_POST['ktemail'   ]='';
 
-if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'])<6 || strlen($_POST['wtpass2'])<6 || empty($_POST['wtemail']) || $_POST['wtpass']<>$_POST['wtpass2']) {
-	if (strlen($_POST['wtpass'])>0 && strlen($_POST['wtpass'])<6) {
+if (empty($_POST['ktname']) || empty($_POST['ktuser']) || strlen($_POST['ktpass'])<6 || strlen($_POST['ktpass2'])<6 || empty($_POST['ktemail']) || $_POST['ktpass']<>$_POST['ktpass2']) {
+	if (strlen($_POST['ktpass'])>0 && strlen($_POST['ktpass'])<6) {
 		echo '<p class="bad">', WT_I18N::translate('The password needs to be at least six characters long.'), '</p>';
-	} elseif ($_POST['wtpass']<>$_POST['wtpass2']) {
+	} elseif ($_POST['ktpass']<>$_POST['ktpass2']) {
 		echo '<p class="bad">', WT_I18N::translate('The passwords do not match.'), '</p>';
-	} elseif ((empty($_POST['wtname']) || empty($_POST['wtuser']) || empty($_POST['wtpass']) || empty($_POST['wtemail'])) && $_POST['wtname'].$_POST['wtuser'].$_POST['wtpass'].$_POST['wtemail']!='') {
+	} elseif ((empty($_POST['ktname']) || empty($_POST['ktuser']) || empty($_POST['ktpass']) || empty($_POST['ktemail'])) && $_POST['ktname'].$_POST['ktuser'].$_POST['ktpass'].$_POST['ktemail']!='') {
 		echo '<p class="bad">', WT_I18N::translate('You must enter all the administrator account fields.'), '</p>';
 	}
-	echo
-		'<h2>', WT_I18N::translate('System settings'), '</h2>',
-		'<h3>', WT_I18N::translate('Administrator account'), '</h3>',
-		'<p>', WT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this <b>Kiwitrees</b> installation.  Please choose a strong password.'), '</p>',
-		'<fieldset><legend>', WT_I18N::translate('Administrator account'), '</legend>',
-		'<table border="0"><tr><td>',
-		WT_I18N::translate('Your name'), '</td><td>',
-		'<input type="text" name="wtname" value="', htmlspecialchars($_POST['wtname']), '" autofocus></td><td>',
-		WT_I18N::translate('This is your real name, as you would like it displayed on screen.'),
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Login ID'), '</td><td>',
-		'<input type="text" name="wtuser" value="', htmlspecialchars($_POST['wtuser']), '"></td><td>',
-		WT_I18N::translate('You will use this to login to Kiwitrees.'),
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Password'), '</td><td>',
-		'<input type="password" name="wtpass" value="', htmlspecialchars($_POST['wtpass']), '"></td><td>',
-		WT_I18N::translate('This must to be at least six characters.  It is case-sensitive.'),
-		'</td></tr><tr><td>',
-		'&nbsp;', '</td><td>',
-		'<input type="password" name="wtpass2" value="', htmlspecialchars($_POST['wtpass2']), '"></td><td>',
-		WT_I18N::translate('Type your password again, to make sure you have typed it correctly.'),
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Email address'), '</td><td>',
-		'<input type="email" name="wtemail" value="', htmlspecialchars($_POST['wtemail']), '"></td><td>',
-		WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'),
-		'</td></tr><tr><td>',
-		'</td></tr></table>',
-		'</fieldset>',
-		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
-		'</form>',
-		'</body></html>';
+	echo'
+		<h2>', WT_I18N::translate('5 - System settings'), '</h2>
+		<h3>', WT_I18N::translate('Administrator account'), '</h3>
+		<p>', WT_I18N::translate('You need to set up an administrator account.  This account can control all aspects of this <b>Kiwitrees</b> installation.  Please choose a strong password.'), '</p>
+		<fieldset>
+			<legend>', WT_I18N::translate('Administrator account'), '</legend>
+			<div class="label_set">
+				<label for "ktname">', WT_I18N::translate('Your name'), '</label>
+				<input type="text" id="ktname" name="ktname" value="', htmlspecialchars($_POST['ktname']), '" autofocus>
+				<span>', WT_I18N::translate('This is your real name, as you would like it displayed on screen.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for "ktuser">', WT_I18N::translate('Login ID'), '</label>
+				<input type="text" id="ktuser" name="ktuser" value="', htmlspecialchars($_POST['ktuser']), '">
+				<span>', WT_I18N::translate('You will use this to login to Kiwitrees.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for "ktpass">', WT_I18N::translate('Password'), '</label>
+				<input type="password" id="ktpass" name="ktpass" value="', htmlspecialchars($_POST['ktpass']), '">
+				<span>', WT_I18N::translate('This must to be at least six characters.  It is case-sensitive.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for "ktpass2"></label>
+				<input type="password" id="ktpass2" name="ktpass2" value="', htmlspecialchars($_POST['ktpass2']), '">
+				<span>', WT_I18N::translate('Type your password again, to make sure you have typed it correctly.'), '</span>
+			</div>
+			<div class="label_set">
+				<label for "ktemail">', WT_I18N::translate('Email address'), '</label>
+				<input type="email" id="ktemail" name="ktemail" value="', htmlspecialchars($_POST['ktemail']), '">
+				<span>', WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'), '</span>
+			</div>
+		</fieldset>
+		<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">
+		</form></body></html>';
 		exit;
 } else {
 	// Copy these values through to the next step
-	echo '<input type="hidden" name="wtname"     value="'.htmlspecialchars($_POST['wtname']).'">';
-	echo '<input type="hidden" name="wtuser"     value="'.htmlspecialchars($_POST['wtuser']).'">';
-	echo '<input type="hidden" name="wtpass"     value="'.htmlspecialchars($_POST['wtpass']).'">';
-	echo '<input type="hidden" name="wtpass2"    value="'.htmlspecialchars($_POST['wtpass2']).'">';
-	echo '<input type="hidden" name="wtemail"    value="'.htmlspecialchars($_POST['wtemail']).'">';
+	echo '<input type="hidden" name="ktname"     value="'.htmlspecialchars($_POST['ktname']).'">';
+	echo '<input type="hidden" name="ktuser"     value="'.htmlspecialchars($_POST['ktuser']).'">';
+	echo '<input type="hidden" name="ktpass"     value="'.htmlspecialchars($_POST['ktpass']).'">';
+	echo '<input type="hidden" name="ktpass2"    value="'.htmlspecialchars($_POST['ktpass2']).'">';
+	echo '<input type="hidden" name="ktemail"    value="'.htmlspecialchars($_POST['ktemail']).'">';
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -864,7 +876,7 @@ try {
 		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password) VALUES ".
 		" (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER'), (1, ?, ?, ?, ?)"
 	)->execute(array(
-		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], crypt($_POST['wtpass'], $hash)
+		$_POST['ktuser'], $_POST['ktname'], $_POST['ktemail'], crypt($_POST['ktpass'], $hash)
 	));
 
 	WT_DB::prepare(
