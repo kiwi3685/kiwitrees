@@ -1529,6 +1529,23 @@ ul#research_status ul.sublinks {display:none}
 [dir='rtl'] #album_content div.album_norm , [dir='rtl'] #album_content div.album_new, [dir='rtl'] #album_content div.album_old {float:right;}
 
 /* Styling for gallery module */
+/* Main menu icon */
+li#menu-my_gallery {
+    background:url(images/gallery.png) no-repeat 50% 50%
+}
+li#menu-my_gallery ul li {
+    background:url(images/gallery-small.png) no-repeat left 0
+}
+html[dir=rtl] li#menu-my_gallery ul li {
+    background-position:right 0
+}
+li#menu-my_gallery ul li#menu-my_gallery-edit {
+    background:url(images/submenu_edit.png) no-repeat left 0
+}
+html[dir=rtl] #menu-my_gallery ul li#menu-my_gallery-edit {
+    background-position:right 0
+}
+
 /* Gallery wrapper */
 #outer_gallery_container {
 	overflow: hidden;
