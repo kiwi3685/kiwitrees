@@ -623,7 +623,7 @@ margin:20px;}
 
 .listlog { line-height:20pt; color:#555555;}
 
-input, button, textarea { border-color:#fff #000066 #000066 #fff; border-width:1px; font-family:inherit; font-size:12px;}
+input, button, textarea { border-color:#000066; border-width:1px; font-family:inherit; font-size:12px;}
 
 input, textarea { padding-left:3px; padding-right:3px;}
 

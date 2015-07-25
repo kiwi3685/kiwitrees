@@ -183,10 +183,10 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 								<label for "from_email" style="display: block; font-weight: 900;">'. WT_I18N::translate('Email Address:'). '</label>
 								<input type="email" name="from_email" id="from_email" size="40" value="'. htmlspecialchars($from_email). '">
 								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.	If you do not provide your email address we will not be able to respond to your inquiry.	Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>
+								<hr>
 							</div>';
 						}
-					$html .= '<hr>
-					<div id="contact_forms">';
+					$html .= '<div id="contact_forms">';
 						for ($i = 1; $i <= $form_count; $i++) {
 							$form_title	= $form_title_1;
 							$to			= get_user_name(get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID'));

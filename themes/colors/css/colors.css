@@ -497,7 +497,7 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .person5 {background:#55ff55;border:outset #5f5 1px;border-radius:3px;vertical-align:top;}
 
 button {border-width:1px;}
-input,button,textarea {border-color:#fff #494949 #494949 #fff;border-width:1px;font-size: 12px;font-family:inherit;}
+input,button,textarea {border-color: #494949;border-width:1px; font-size: 12px; font-family:inherit;}
 input, textarea {padding:0 3px;}
 
 .optionbox {border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
