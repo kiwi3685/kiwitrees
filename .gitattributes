@@ -65,5 +65,3 @@ library/Zend/Tool/          export-ignore
 library/Zend/View/          export-ignore
 library/Zend/Wildfire/      export-ignore
 library/Zend/XmlRpc/        export-ignore
-
-latest-version.txt          export-ignore
