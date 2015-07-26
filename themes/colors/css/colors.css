@@ -1910,8 +1910,9 @@ div.widget {
 	width:80%;
 }
 
-#contact_forms {
-    border: solid #999 1px;
+#contact_forms,
+.message_note {
+    border: 1px solid #999 ;
     padding: 20px;
 }
 
@@ -1920,6 +1921,14 @@ div.widget {
 	margin: auto 20px;
 	max-width: 600px;
   	min-width: 45%;
+}
+
+.message_note {
+    margin-bottom: 20px;
+}
+
+.message_note hr {
+    display: none;
 }
 
 #main-menu li#menu-contact {
