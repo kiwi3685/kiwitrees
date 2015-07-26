@@ -142,7 +142,7 @@ function preg_match_recursive($regex, $var) {
 // Fetch a remote file.  Stream wrappers are disabled on
 // many hosts, and do not allow the detection of timeout.
 function fetch_remote_file($host, $path, $timeout=3) {
-	$fp=@fsockopen($host, '80', $errno, $errstr, $timeout );
+	$fp = @fsockopen($host, '80', $errno, $errstr, $timeout );
 	if (!$fp) {
 		return null;
 	}
@@ -150,17 +150,37 @@ function fetch_remote_file($host, $path, $timeout=3) {
 	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
 	$response='';
-	while ($data=fread($fp, 65536)) {
-		$response.=$data;
+	while ($data = fread($fp, 65536)) {
+		$response .= $data;
 	}
 	fclose($fp);
 
 	// Take account of a “moved” response.
-	if (substr($response, 0, 12)=='HTTP/1.1 303' && preg_match('/\nLocation: http:\/\/([a-z0-9.-]+)(.+)/', $response, $match)) {
+	if (substr($response, 0, 12) == 'HTTP/1.1 303' && preg_match('/\nLocation: http:\/\/([a-z0-9.-]+)(.+)/', $response, $match)) {
 		return fetch_remote_file($match[1], $match[2]);
 	} else {
 		// The response includes headers, a blank line, then the content
 		return substr($response, strpos($response, "\r\n\r\n") + 4);
+	}
+}
+
+// Check with the webtrees.net server for the latest version of webtrees.
+// Fetching the remote file can be slow, so check infrequently, and cache the result.
+function fetch_latest_version() {
+	$last_update_timestamp=WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
+	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
+		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
+		$latest_version_txt = fetch_remote_file('www.kiwitrees.net', '/latest-version.txt');
+		if ($latest_version_txt) {
+			WT_Site::preference('LATEST_WT_VERSION', $latest_version_txt);
+			WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
+			return $latest_version_txt;
+		} else {
+			// Cannot connect to server - use cached version (if we have one)
+			return WT_Site::preference('LATEST_WT_VERSION');
+		}
+	} else {
+		return WT_Site::preference('LATEST_WT_VERSION');
 	}
 }
 
@@ -2029,7 +2049,7 @@ function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Pers
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
 			case 'nn': // Source: Hogne Røed Nilsen
-			case 'nb':				
+			case 'nb':
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
 				case 'M': return WT_I18N::translate('great x%d grandson',      $up-3);
@@ -2528,7 +2548,7 @@ function detectMaxUploadFileSize(){
 
 	$precision = 2;
 	$base = log($maxFileSize) / log(1024);
-	$suffixes = array('', 'k', 'M', 'G', 'T');   
+	$suffixes = array('', 'k', 'M', 'G', 'T');
 
 	$display_maxsize = round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor($base)];
 
