@@ -221,7 +221,7 @@ echo '
 		foreach ($userlang as $key=>$ulang) {
 			echo '
 			<li>
-				<span>', $ulang['langname'], '</span>
+				<span class="inset">', $ulang['langname'], '</span>
 				<span class="filler">&nbsp;</span>
 				<span>', $ulang['number'], '</span>
 			</li>';
