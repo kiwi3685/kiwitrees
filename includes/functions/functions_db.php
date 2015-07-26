@@ -1338,9 +1338,23 @@ function set_gedcom_setting($gedcom_id, $setting_name, $setting_value) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function create_user($username, $realname, $email, $password) {
+	if (version_compare(PHP_VERSION, '5.3')>0) {
+		// Some PHP5.2 implementations of crypt() appear to be broken - #802316
+		// PHP5.3 will always support BLOWFISH - see php.net/crypt
+		// This salt will select the BLOWFISH algorithm with 2^12 rounds
+		$salt='$2a$12$';
+		$salt_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
+		for ($i=0;$i<22;++$i) {
+			$salt.=substr($salt_chars, mt_rand(0,63), 1);
+		}
+		$password_hash=crypt($password, $salt);
+	} else {
+		// Our prefered hash algorithm is not available.  Use the default.
+		$password_hash=crypt($password);
+	}
 	try {
 		WT_DB::prepare("INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)")
-			->execute(array($username, $realname, $email, crypt($password)));
+			->execute(array($username, $realname, $email, $password_hash));
 		$user_id=WT_DB::getInstance()->lastInsertId();
 		// Set the initial block layout
 		WT_DB::prepare(
@@ -1647,13 +1661,13 @@ function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
 // server space functions
 //=================================
 function db_size () {
-	$sql = 'SHOW TABLE STATUS';  
-	$size = 0; 
+	$sql = 'SHOW TABLE STATUS';
+	$size = 0;
 	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		$size += $row['data_length'] + $row['index_length']; 
+		$size += $row['data_length'] + $row['index_length'];
 	}
-	$decimals = 0;  
+	$decimals = 0;
 	$mbytes = number_format($size/(1024*1024), $decimals);
 	return $mbytes;
 }
@@ -1663,7 +1677,7 @@ function directory_size() {
     foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_ROOT)) as $file){
         $total_size += $file->getSize();
     }
-   	$decimals = 0;  
+   	$decimals = 0;
 	$files = number_format($total_size/(1024*1024), $decimals);
 	return $files;
 }
