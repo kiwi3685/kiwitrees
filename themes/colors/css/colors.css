@@ -1911,6 +1911,8 @@ div.widget {
 }
 
 #contact_forms {
+    border: solid #999 1px;
+    padding: 20px;
 }
 
 .contact_form {
