@@ -55,11 +55,25 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		global $controller, $SEARCH_SPIDER;
+		$ged_id		= WT_GED_ID;
 
 		//-- main PAGES menu item
-		$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . addslashes(urlencode(get_query_url())), 'menu-contact', 'down');
-		$menu->addClass('menuitem', 'menuitem_hover', '');
-		return $menu;
+		$contact_user_id	= get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
+		$webmaster_user_id	= get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
+		$supportLink		= user_contact_link($webmaster_user_id);
+		if ($webmaster_user_id == $contact_user_id) {
+			$contactLink = $supportLink;
+		} else {
+			$contactLink = user_contact_link($contact_user_id);
+		}
+
+		if ((!$contact_user_id && !$webmaster_user_id) || (!$supportLink && !$contactLink)) {
+			return '';
+		} else {
+			$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;url=' . addslashes(urlencode(get_query_url())), 'menu-contact', 'down');
+			$menu->addClass('menuitem', 'menuitem_hover', '');
+			return $menu;
+		}
 	}
 
 	// Implement WT_Module_Menu
