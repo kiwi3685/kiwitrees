@@ -134,6 +134,8 @@ button {min-width:100px;}
 #admin_menu .ui-accordion .ui-accordion-content-active {padding:.5em;}
 #admin_menu div p {margin:8px 5px; font-size:12px; white-space:normal;}
 #admin_menu div p span {font-style:italic; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
+#admin_menu h3 span.menu-name {display: initial;}
+
 [dir=rtl] #admin_menu {top:92px; left:auto; right:10px; padding:10px 5px 10px 0; float:right;}
 
 /* CONTENT */
