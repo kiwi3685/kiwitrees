@@ -27,7 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Gedcom_Code_Rela {
-	
+
 	private static $TYPES=array(
 		'attendant', 'attending', 'best_man', 'bridesmaid', 'buyer',
 		'circumciser', 'civil_registrar', 'employee', 'employer', 'foster_child',
@@ -114,8 +114,14 @@ class WT_Gedcom_Code_Rela {
 			// always female
 			return WT_I18N::translate('Godmother');
 		case 'godparent':
-			// no sex implied
-			return WT_I18N::translate('Godparent');
+			switch ($sex) {
+			case 'M':
+				return WT_I18N::translate('Godfather');
+			case 'F':
+				return WT_I18N::translate('Godmother');
+			default:
+				return WT_I18N::translate('Godparent');
+			}
 		case 'godson':
 			// always male
 			return WT_I18N::translate('Godson');
@@ -123,8 +129,14 @@ class WT_Gedcom_Code_Rela {
 			// always female
 			return WT_I18N::translate('Goddaughter');
 		case 'godchild':
-			// no sex implied
-			return WT_I18N::translate('Godchild');
+			switch ($sex) {
+			case 'M':
+				return I18N::translate('Godson');
+			case 'F':
+				return I18N::translate('Goddaughter');
+			default:
+				return I18N::translate('Godchild');
+			}
 		case 'guardian':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate_c('MALE',   'Guardian');
@@ -212,4 +224,3 @@ class WT_Gedcom_Code_Rela {
 		return $values;
 	}
 }
-
