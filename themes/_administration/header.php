@@ -130,13 +130,13 @@ echo
 echo '
 	<div id="admin_menu" class="ui-widget-content">
 		<div id="adminAccordion" style="visibility:hidden">
-			<h3 id="administration"><i class="fa fa-dashboard fa-fw"></i>', WT_I18N::translate('Dashboard'), '</h3>
+			<h3 id="administration"><i class="fa fa-dashboard fa-fw"></i><span class="menu-name"><span class="menu-name">', WT_I18N::translate('Dashboard'), '</span></span></h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin.php" ? 'class="current" ' : ''), 'href="admin.php">', WT_I18N::translate('Home'), '</a></p>
 			</div>';
 
 if (WT_USER_IS_ADMIN) {
-echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i>', WT_I18N::translate('Site Administration'), '</h3>
+echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i><span class="menu-name">', WT_I18N::translate('Site Administration'), '</h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_config.php"  ? 'class="current" ' : ''), 'href="admin_site_config.php">',  WT_I18N::translate('Site configuration'    ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_logs.php"    ? 'class="current" ' : ''), 'href="admin_site_logs.php">',    WT_I18N::translate('Logs'                  ), '</a></p>
@@ -149,7 +149,7 @@ echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i>', WT_I18N::trans
 			</div>';
 }
 
-echo '		<h3 id="trees"><i class="fa fa-tree fa-fw"></i>', WT_I18N::translate('Family trees'), '</h3>
+echo '		<h3 id="trees"><i class="fa fa-tree fa-fw"></i><span class="menu-name">', WT_I18N::translate('Family trees'), '</span></h3>
 			<div>';
 if (WT_USER_IS_ADMIN) {
 echo '			<p><a ', (WT_SCRIPT_NAME=="admin_trees_manage.php" ? 'class="current" ' : ''), 'href="admin_trees_manage.php">', WT_I18N::translate('Manage family trees'), '</a></p>';
@@ -163,7 +163,7 @@ echo '					<p><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID
 				}
 echo '		</div>
 
-			<h3 id="tree-tools"><i class="fa fa-wrench fa-fw"></i>', WT_I18N::translate('Family tree tools'), '</h3>
+			<h3 id="tree-tools"><i class="fa fa-wrench fa-fw"></i><span class="menu-name">', WT_I18N::translate('Family tree tools'), '</span></h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin_trees_check.php"		? 'class="current" ' : ''), 'href="admin_trees_check.php">',		WT_I18N::translate('Check for GEDCOM errors'	), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_change.php"    	? 'class="current" ' : ''), 'href="admin_site_change.php">',		WT_I18N::translate('Changes log'				), '</a></p>
@@ -180,7 +180,7 @@ echo '		</div>
 
 if (WT_USER_IS_ADMIN) {
 echo '
-			<h3 id="user-admin"><i class="fa fa-users fa-fw"></i>', WT_I18N::translate('Users'), '</h3>
+			<h3 id="user-admin"><i class="fa fa-users fa-fw"></i><span class="menu-name">', WT_I18N::translate('Users'), '</span></h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')!="cleanup"&& safe_GET('action')!="createform" ? 'class="current" ' : ''), 'href="admin_users.php">', WT_I18N::translate('Manage users'), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="createform" ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></p>
@@ -188,13 +188,13 @@ echo '
 				<p><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></p>
 			</div>
 
-			<h3 id="media"><i class="fa fa-image fa-fw"></i>', WT_I18N::translate('Media'), '</h3>
+			<h3 id="media"><i class="fa fa-image fa-fw"></i><span class="menu-name">', WT_I18N::translate('Media'), '</span></h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin_media.php" ? 'class="current" ' : ''), 'href="admin_media.php">', WT_I18N::translate('Manage media'), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_media_upload.php" ? 'class="current" ' : ''), 'href="admin_media_upload.php">', WT_I18N::translate('Upload media files'), '</a></p>
 			</div>
 
-			<h3 id="modules"><i class="fa fa-puzzle-piece fa-fw"></i>', WT_I18N::translate('Modules'), '</h3>
+			<h3 id="modules"><i class="fa fa-puzzle-piece fa-fw"></i><span class="menu-name">', WT_I18N::translate('Modules'), '</span></h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin_modules.php" ? 'class="current" ' : ''), 'href="admin_modules.php">', WT_I18N::translate('Manage modules'), '</a></p>
 				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_menus.php"   ? 'class="current" ' : ''), 'href="admin_module_menus.php">',   WT_I18N::translate('Menus' 	), '</a></span></p>
@@ -205,7 +205,7 @@ echo '
 				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_reports.php" ? 'class="current" ' : ''), 'href="admin_module_reports.php">', WT_I18N::translate('Reports'	), '</a></span></p>
 			</div>
 
-			<h3 id="extras"><i class="fa fa-cogs fa-fw"></i>', WT_I18N::translate('Tools'), '</h3>
+			<h3 id="extras"><i class="fa fa-cogs fa-fw"></i><span class="menu-name">', WT_I18N::translate('Tools'), '</span></h3>
 			<div>';
 				foreach (WT_Module::getActiveModules(true) as $module) {
 					if ($module instanceof WT_Module_Config) {

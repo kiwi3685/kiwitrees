@@ -917,3 +917,26 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_accordion .result {border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}
 #sanity_check #sanity_options {margin:10px 30px;}
 #sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
+
+/* RESPOSIVE layout adjustments */
+@media (max-width: 350px) {
+}
+
+@media (min-width: 351px) and (max-width: 1024px) {
+	#admin_menu h3 span.menu-name {
+		display: none;
+	}
+	#admin_menu {
+		width: 60px;
+	}
+	#admin_content {
+	    margin: 0 0 0 80px;
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1681px) {
+}
+
+@media (min-width: 1681px) {
+	}
+}
