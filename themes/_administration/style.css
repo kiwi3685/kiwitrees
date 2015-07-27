@@ -179,7 +179,9 @@ button {min-width:100px;}
 /* DASHBOARD BLOCKS */
 fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%;}
 fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
-#users div#logged_in_users ul {list-style: none;}
+#users div#logged_in_users ul {list-style: none; margin: 3px 0;}
+#users div#logged_in_users .inset a {margin: 0 10px;}
+#users div#logged_in_users .inset br {display: none;}
 #tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
 #tree_stats td, #recent td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
 #tree_stats .ui-accordion-content, #recent .ui-accordion-content {background: #c9c9c9; padding:1em; min-height:180px;}
@@ -216,7 +218,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 }
 
 #tree_stats .inset, #users .inset {
-	padding: 0 0 0 20px;
+	padding: 6px 0 0 20px;
 }
 
 #tree_stats .inset2, #users .inset2 {
