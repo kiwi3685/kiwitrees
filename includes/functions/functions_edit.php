@@ -1423,6 +1423,16 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			$value=$notematch[0];
 		}
 	}
+	// Display HUSB / WIFE names for information only on MARR edit form.
+	$tmp = WT_GedcomRecord::GetInstance($pid);
+	if ($fact=='HUSB') {
+		$husb = WT_Person::getInstance($tmp->getHusband()->getXref());
+		echo $husb->getFullName();
+	}
+	if ($fact=='WIFE') {
+		$wife = WT_Person::getInstance($tmp->getWife()->getXref());
+		echo $wife->getFullName();
+	}
 
 	if (in_array($fact, $emptyfacts) && ($value=='' || $value=='Y' || $value=='y')) {
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\">";
