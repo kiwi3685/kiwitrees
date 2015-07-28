@@ -403,7 +403,7 @@ $html .= '
 			<label for="ageDD">' . WT_I18N::translate('days') . '</label>
 		</p>
 		<p class="main">
-			<span class="bold">' . WT_I18N::translate('Estimated DoB') . '</span>
+			<span class="bold">' . WT_I18N::translate('Estimated date of birth') . '</span>
 			<span id="showResult"></span>
 		</p>
 	</form>
