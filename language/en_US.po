@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-07-28 10:04+1200\n"
-"PO-Revision-Date: 2015-07-28 10:04+1200\n"
+"POT-Creation-Date: 2015-07-28 17:27+1200\n"
+"PO-Revision-Date: 2015-07-28 17:27+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -426,7 +426,7 @@ msgid "Recent changes"
 msgstr ""
 
 #: admin.php:304 calendar.php:135 library/WT/MenuBar.php:387
-#: modules_v3/calendar_utilities/plugins/calculators.php:80
+#: modules_v3/calendar_utilities/plugins/calculators.php:81
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:70
 msgid "Day"
 msgstr ""
@@ -436,7 +436,7 @@ msgid "Week"
 msgstr ""
 
 #: admin.php:304 calendar.php:151 library/WT/MenuBar.php:390
-#: modules_v3/calendar_utilities/plugins/calculators.php:89
+#: modules_v3/calendar_utilities/plugins/calculators.php:90
 msgid "Month"
 msgstr ""
 
@@ -453,8 +453,8 @@ msgstr ""
 #: admin_media.php:161 admin_media.php:234 admin_trees_duplicates.php:287
 #: branches.php:188 includes/functions/functions_edit.php:166
 #: includes/functions/functions_edit.php:173
-#: includes/functions/functions_edit.php:1435
-#: includes/functions/functions_edit.php:1469
+#: includes/functions/functions_edit.php:1445
+#: includes/functions/functions_edit.php:1479
 #: includes/functions/functions_print.php:900
 #: includes/functions/functions_print_facts.php:1256
 #: includes/functions/functions_print_lists.php:418
@@ -474,7 +474,7 @@ msgstr ""
 #: admin_media.php:164 admin_media.php:237 admin_users.php:255
 #: includes/functions/functions_edit.php:166
 #: includes/functions/functions_edit.php:173
-#: includes/functions/functions_edit.php:1466
+#: includes/functions/functions_edit.php:1476
 #: includes/functions/functions_print_facts.php:1259
 #: includes/functions/functions_print_lists.php:891 library/WT/Stats.php:3529
 #: medialist.php:259 modules_v3/batch_update/admin_batch_update.php:340
@@ -1678,7 +1678,8 @@ msgstr ""
 msgid "Age at which to assume a person is dead"
 msgstr ""
 
-#: admin_trees_config.php:547 timeline.php:125
+#: admin_trees_config.php:547
+#: modules_v3/calendar_utilities/plugins/calculators.php:399 timeline.php:125
 msgid "years"
 msgstr ""
 
@@ -2225,7 +2226,7 @@ msgid "Any"
 msgstr ""
 
 #: admin_trees_duplicates.php:184 calendar.php:578
-#: includes/functions/functions_edit.php:1474
+#: includes/functions/functions_edit.php:1484
 #: library/WT/Controller/Individual.php:265
 #: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3335
 #: statisticsplot.php:800 timeline.php:243
@@ -2233,7 +2234,7 @@ msgid "Male"
 msgstr ""
 
 #: admin_trees_duplicates.php:188 calendar.php:582
-#: includes/functions/functions_edit.php:1476
+#: includes/functions/functions_edit.php:1486
 #: library/WT/Controller/Individual.php:274
 #: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3335
 #: statisticsplot.php:801 timeline.php:245
@@ -2241,7 +2242,7 @@ msgid "Female"
 msgstr ""
 
 #: admin_trees_duplicates.php:192 calendar.php:586
-#: includes/functions/functions_edit.php:1478
+#: includes/functions/functions_edit.php:1488
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286
 #: library/WT/Controller/Individual.php:292 library/WT/Stats.php:3335
@@ -2866,7 +2867,7 @@ msgid "Send message to users who have not logged in for 6 months"
 msgstr ""
 
 #: ancestry.php:49 compact.php:43 descendancy.php:43 familybook.php:43
-#: fanchart.php:51 hourglass.php:54 includes/functions/functions_edit.php:1652
+#: fanchart.php:51 hourglass.php:54 includes/functions/functions_edit.php:1662
 #: inverselink.php:93 library/WT/Gedcom/Tag.php:241
 #: modules_v3/charts/module.php:224 modules_v3/googlemap/module.php:639
 #: modules_v3/individual_report/module.php:36 modules_v3/stories/module.php:341
@@ -2912,7 +2913,8 @@ msgstr ""
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:121
 #: library/WT/Person.php:474 library/WT/Stats.php:1649
 #: library/WT/Stats.php:2389 library/WT/Stats.php:2390
-#: modules_v3/GEDFact_assistant/CENS_ctrl.php:42 timeline.php:358
+#: modules_v3/GEDFact_assistant/CENS_ctrl.php:42
+#: modules_v3/calendar_utilities/plugins/calculators.php:397 timeline.php:358
 msgid "Age"
 msgstr ""
 
@@ -2975,7 +2977,7 @@ msgstr ""
 
 #: calendar.php:168 library/WT/MenuBar.php:393
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1039
-#: modules_v3/calendar_utilities/plugins/calculators.php:98 search.php:179
+#: modules_v3/calendar_utilities/plugins/calculators.php:99 search.php:179
 msgid "Year"
 msgstr ""
 
@@ -3255,7 +3257,7 @@ msgstr ""
 msgid "Link this person to an existing family as a husband"
 msgstr ""
 
-#: edit_interface.php:440 includes/functions/functions_edit.php:1674
+#: edit_interface.php:440 includes/functions/functions_edit.php:1684
 #: inverselink.php:105 library/WT/Gedcom/Tag.php:213
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1451
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1458
@@ -3365,7 +3367,7 @@ msgstr ""
 msgid "Add a spouse"
 msgstr ""
 
-#: edit_interface.php:1793 includes/functions/functions_edit.php:1498
+#: edit_interface.php:1793 includes/functions/functions_edit.php:1508
 #: library/WT/Controller/Individual.php:190
 msgid "Edit name"
 msgstr ""
@@ -5090,7 +5092,7 @@ msgid ""
 msgstr ""
 
 #: help_text.php:1064 help_text.php:1126
-#: includes/functions/functions_edit.php:1811
+#: includes/functions/functions_edit.php:1821
 #: library/WT/Controller/Family.php:231 modules_v3/notes/module.php:96
 msgid "Add a note"
 msgstr ""
@@ -5104,7 +5106,7 @@ msgid ""
 msgstr ""
 
 #: help_text.php:1070 help_text.php:1131
-#: includes/functions/functions_edit.php:1823
+#: includes/functions/functions_edit.php:1833
 #: library/WT/Controller/Family.php:238 modules_v3/notes/module.php:105
 msgid "Add a shared note"
 msgstr ""
@@ -5117,7 +5119,7 @@ msgid ""
 msgstr ""
 
 #: help_text.php:1076 help_text.php:1139
-#: includes/functions/functions_edit.php:1757
+#: includes/functions/functions_edit.php:1767
 #: library/WT/Controller/Family.php:256 modules_v3/sources_tab/module.php:82
 msgid "Add a source citation"
 msgstr ""
@@ -5219,8 +5221,8 @@ msgid ""
 "The ZIP option should reduce the download time by 75 percent."
 msgstr ""
 
-#: help_text.php:1116 includes/functions/functions_edit.php:1787
-#: includes/functions/functions_edit.php:1792
+#: help_text.php:1116 includes/functions/functions_edit.php:1797
+#: includes/functions/functions_edit.php:1802
 msgid "Add an associate"
 msgstr ""
 
@@ -9017,8 +9019,8 @@ msgid "This record was last changed by <i>%s</i> at %s"
 msgstr ""
 
 #: includes/functions/functions_edit.php:396
-#: includes/functions/functions_edit.php:2293
-#: includes/functions/functions_edit.php:2302
+#: includes/functions/functions_edit.php:2303
+#: includes/functions/functions_edit.php:2312
 msgid ""
 "Please reload the previous page to make sure you are working with the most "
 "recent record."
@@ -9041,7 +9043,7 @@ msgid "Select a date"
 msgstr ""
 
 #: includes/functions/functions_edit.php:1176
-#: includes/functions/functions_edit.php:1835
+#: includes/functions/functions_edit.php:1845
 #: library/WT/Controller/Family.php:246 modules_v3/album/module.php:94
 #: source.php:135
 msgid "Add a media object"
@@ -9051,16 +9053,16 @@ msgstr ""
 msgid "Edit shared note"
 msgstr ""
 
-#: includes/functions/functions_edit.php:1439
+#: includes/functions/functions_edit.php:1449
 msgid "No Temple - Living Ordinance"
 msgstr ""
 
-#: includes/functions/functions_edit.php:1846
+#: includes/functions/functions_edit.php:1856
 msgid "Add a restriction"
 msgstr ""
 
-#: includes/functions/functions_edit.php:2292
-#: includes/functions/functions_edit.php:2301
+#: includes/functions/functions_edit.php:2302
+#: includes/functions/functions_edit.php:2311
 msgid ""
 "An error occurred while creating the Edit form.  Another user may have "
 "changed this record since you previously viewed it."
@@ -13378,7 +13380,7 @@ msgid "Text"
 msgstr ""
 
 #: library/WT/Gedcom/Tag.php:333
-#: modules_v3/calendar_utilities/plugins/calculators.php:109
+#: modules_v3/calendar_utilities/plugins/calculators.php:110
 msgid "Time"
 msgstr ""
 
@@ -17104,44 +17106,64 @@ msgstr ""
 msgid "Calculators"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:73
+#: modules_v3/calendar_utilities/plugins/calculators.php:74
 msgid "Day of the Week Calculator"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:103
+#: modules_v3/calendar_utilities/plugins/calculators.php:104
 msgid "Get Date"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:107
+#: modules_v3/calendar_utilities/plugins/calculators.php:108
 msgid "Day of the week"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:129
+#: modules_v3/calendar_utilities/plugins/calculators.php:130
 msgid "Past"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:129
+#: modules_v3/calendar_utilities/plugins/calculators.php:130
 msgid "Future"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:148
+#: modules_v3/calendar_utilities/plugins/calculators.php:149
 msgid "That date is invalid"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:163
+#: modules_v3/calendar_utilities/plugins/calculators.php:164
 msgid "Relationship Calculator"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:169
+#: modules_v3/calendar_utilities/plugins/calculators.php:170
 msgid "Given a common blood ancestor, <strong>X</strong>"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:172
+#: modules_v3/calendar_utilities/plugins/calculators.php:173
 msgid "The first relationship to <strong>X</strong> is"
 msgstr ""
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:180
+#: modules_v3/calendar_utilities/plugins/calculators.php:181
 msgid "The relationship of <strong>D</strong> to <strong>X</strong> is"
+msgstr ""
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:390
+msgid "Birth Date Calculator"
+msgstr ""
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:393
+msgid "Event Date"
+msgstr ""
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:401
+msgid "months"
+msgstr ""
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:403
+msgid "days"
+msgstr ""
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:406
+msgid "Estimated date of birth"
 msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/ecclesiastical.php:30
