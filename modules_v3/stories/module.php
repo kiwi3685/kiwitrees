@@ -530,6 +530,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					info: true,
 					jQueryUI: true,
 					sorting: [[0,"asc"]],
+					displayLength: 20,
 					columns: [
 						/* 0-name */ null,
 						/* 1-NAME */ null

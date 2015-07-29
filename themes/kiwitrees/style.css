@@ -4721,6 +4721,11 @@ div#pages-container {
 }
 
 /* Styling for stories module */
+#story_table_wrapper {
+	margin: auto;
+	width: 80%;
+}
+
 #contents_list {
 	margin: auto auto 20px auto;
 	width: 60%;
