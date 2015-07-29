@@ -3070,6 +3070,13 @@ span.link_text {
 	font-weight: normal;
 }
 
+#personal_facts_content .facts_table .descriptionbox img { /* fact images */
+	float: right;
+}
+[dir='rtl'] #personal_facts_content .facts_table .descriptionbox img {
+	float: left;
+}
+
 /* ====Calendar pop up display ========= */
 div[id^="caldiv"] td {
 	border-radius:0;
