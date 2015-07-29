@@ -164,7 +164,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$html .= '
 				</ol>
 				<hr class="stories_divider">
-				<div id="story_contents">';		
+				<div id="story_contents">';
 					foreach ($block_ids as $block_id) {
 						$languages=get_block_setting($block_id, 'languages');
 						if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
@@ -227,10 +227,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$this->getName(),
 				$xref=$controller->record->getXref(),
 				WT_GED_ID
-			))->fetchOne();	
+			))->fetchOne();
 		return $count_of_stories==0;
 	}
-	
+
 	// Implement class WT_Module_Tab
 	public function canLoadAjax() {
 		return false;
@@ -467,7 +467,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<table id="story_table">
 					<thead>
 						<tr>
-							<th>', WT_I18N::translate('Order'), '</th>						
+							<th>', WT_I18N::translate('Order'), '</th>
 							<th>', WT_I18N::translate('Story title'), '</th>
 							<th>', WT_I18N::translate('Individual'), '</th>
 							<th class="maxwidth">', WT_I18N::translate('Edit'), '</th>
@@ -537,14 +537,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				});
 			');
 
-		$stories=WT_DB::prepare(
-			"SELECT block_id, xref".
-			" FROM `##block` b".
+		$stories = WT_DB::prepare(
+			"SELECT block_id".
+			" FROM `##block`".
 			" WHERE module_name=?".
-			" AND gedcom_id=?".
-			" ORDER BY xref"
+			" AND gedcom_id=?"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
-		
+
 		echo '<h2 class="center">', WT_I18N::translate('Stories'), '</h2>';
 		if (count($stories)>0) {
 			echo '<table id="story_table" class="width100">
