@@ -130,10 +130,10 @@ default:
 		->setPageTitle(WT_I18N::translate('Login'))
 		->pageHeader()
 		->addInlineJavascript('
-			jQuery("#new_passwd_form").hide();
-			jQuery("#passwd_click").click(function() {
-				jQuery("#new_passwd_form").slideToggle(100, function() {
-					jQuery("#new_passwd_username").focus()
+			jQuery("#login-page #new_passwd_form").hide();
+			jQuery("#login-page #passwd_click").click(function() {
+				jQuery("#login-page #new_passwd_form").slideToggle(100, function() {
+					jQuery("#login-page #new_passwd_username").focus()
 				});
 				return false;
 			});

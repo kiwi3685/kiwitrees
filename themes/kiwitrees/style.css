@@ -2210,7 +2210,7 @@ dt {
 #verify-form {
 	border: 1px outset #555;
 	display: inline-block;
-	margin: 10px auto 0 auto;
+	margin: 10px auto;
 	padding: 5px;
 }
 
