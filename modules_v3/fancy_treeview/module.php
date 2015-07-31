@@ -176,7 +176,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$tmp_array[$pos] = $val[$sort_by];
 		}
 		asort($tmp_array);
-		
+
 		$return_array = array();
 		foreach ($tmp_array as $pos => $val){
 			foreach ($array_keys as $key) {
@@ -574,7 +574,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 											print_findindi_link('NEW_FTV_PID['.$key.']');
 		$html .= '					</td>
 									<td>'.edit_field_access_level('NEW_FTV_ACCESS_LEVEL['.$key.']', $FTV_ITEM['ACCESS_LEVEL']).'</td>
-									<td><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_delete&amp;key='.$key.'"><img src="'.$WT_IMAGES['remove'].'" alt="icon-delete"/></a></td>
+									<td><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_delete&amp;key='.$key.'"><i class="fa fa-trash"/></i></td>
 								</tr>';
 							else:
 		$html .= '				<tr>
@@ -1102,7 +1102,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	private function print_children($family, $person, $spouse) {
 		$html = '';
-		
+
 		$match = null;
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
 			$html .= '<div class="children"><p>'.$person->getFullName().' ';
@@ -1166,13 +1166,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					foreach ($children as $child) {
 						$html .= '<li class="child"><a href="'.$child->getHtmlUrl().'">'.$child->getFullName().'</a>';
 						$pedi = $child->getChildFamilyPedigree($family->getXref());
-						
+
 						if($pedi === 'foster') {
 							if ($child->getSex() == 'F') {
 								$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('FEMALE', 'foster child').'</span>';
 							} else {
 								$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('MALE', 'foster child').'</span>';
-							}							
+							}
 						}
 						if($pedi === 'adopted') {
 							if ($child->getSex() == 'F') {
@@ -1207,7 +1207,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$parents = $person->getPrimaryChildFamily();
 		if ($parents) {
 			$pedi = $person->getChildFamilyPedigree($parents->getXref());
-			
+
 			$html = '';
 			switch($person->getSex()) {
 				case 'M':
@@ -1237,7 +1237,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 						$html .= ', '.WT_I18N::translate('child of').' ';
 					}
 			}
-			
+
 			$father = $parents->getHusband();
 			$mother = $parents->getWife();
 
@@ -1442,7 +1442,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 							' data-obje-note="' 	. htmlspecialchars($mediaobject->getNote())			. '"' .
 							' data-obje-xref="'		. $mediaobject->getXref()							. '"' .
 							' data-title="'     	. WT_Filter::escapeHtml($mediaobject->getFullName()). '"' .
-							'><img class="ftv-thumb" src="data:'.$mediaobject->mimeType().';base64,'.base64_encode($newThumb).'" dir="auto" title="'.$mediatitle.'" alt="'.$mediatitle.'" width="'.$width.'" height="'.$height.'"/></a>'; 
+							'><img class="ftv-thumb" src="data:'.$mediaobject->mimeType().';base64,'.base64_encode($newThumb).'" dir="auto" title="'.$mediatitle.'" alt="'.$mediatitle.'" width="'.$width.'" height="'.$height.'"/></a>';
 				}
 			}
 			else {
@@ -1473,8 +1473,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			if ($event->getDate()->isOK() && $event->canShow()) {
 				return $this->print_date($event->getDate());
 			}
-		}		
-	}	
+		}
+	}
 
 	private function print_fact($person, $tag) {
 		$facts = $person->getFacts();
@@ -1485,8 +1485,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$html = ', '.$str;
 				return $html;
 			}
-		}	
-	}	
+		}
+	}
 
 	private function print_place($place) {
 		if($this->options('show_places') == true) {
@@ -1616,7 +1616,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			}
 		}
 	}
-	
+
 	private function getImageData() {
 		Zend_Session::writeClose();
 		header('Content-type: text/html; charset=UTF-8');
