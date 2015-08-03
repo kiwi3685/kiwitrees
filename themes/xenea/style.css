@@ -2400,16 +2400,8 @@ div.widget {
 /* ------------------ */
 
 /* RESPOSIVE layout adjustments */
-@media (max-width: 350px) {
-	.media-list-item {
-		width: 95%; /* one per row */
-	}
-}
+@media (min-width: 320px) and (max-width: 1024px) {
 
-@media (min-width: 351px) and (max-width: 1024px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
 	#topMenu #main-menu {
 		display:none;
 	}
@@ -2426,7 +2418,6 @@ div.widget {
 		margin: 10px auto;
 		text-align: left;
 		width: 70%;
-
 	}
 	#topMenu #nav-select select {
 		font-size: 30px;
@@ -2441,10 +2432,17 @@ div.widget {
 	#header .title {
 		position: relative;
 		text-align: center;
+        float: none;
+        margin: auto;
 	}
-	#header #extra-menu, #header .header_search {
-		float:none;
+	#header .hsearch {
+        float: none;
+        padding: 10px;
+        margin: 0;
 	}
+    #optionsmenu  {
+        text-align: center;
+    }
 	#content {
 		top: auto;
 	}
@@ -2454,16 +2452,20 @@ div.widget {
         margin: auto;
         width: 95%;
     }
+    .media-list-item {
+        width: 95%; /* one per row */
+    }
+
 }
 
-@media (min-width: 1025px) and (max-width: 1681px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
+@media (min-width: 780px) and (max-width: 1680px) {
+   .media-list-item {
+       width: 45%; /* two per row */
+   }
 }
 
 @media (min-width: 1681px) {
-	.media-list-item {
-		width: 31%; /* three per row */
-	}
+   .media-list-item {
+       width: 31%; /* three per row */
+   }
 }
