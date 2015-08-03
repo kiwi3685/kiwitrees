@@ -5948,77 +5948,70 @@ div.widget {
 }
  */
 
-/* RESPOSIVE layout adjustments */
-@media (max-width: 350px) {
-	.media-list-item {
-		width: 95%; /* one per row */
-	}
-}
+ /* RESPOSIVE layout adjustments */
+ @media (min-width: 320px) and (max-width: 1024px) {
 
-@media (min-width: 351px) and (max-width: 1024px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
-	#topMenu #main-menu {
-		display:none;
-	}
-	#navbar {
-		position: initial;
-	}
-	#topMenu #nav-select {
-		border: 1px solid #CCC;
-		background-color: #FFF;
-		display: block;
-		font-size: 12px;
-		height: 30px;
-		line-height: 30px;
-		margin: 10px auto;
-		text-align: left;
-		width: 70%;
+ 	#topMenu #main-menu {
+ 		display:none;
+ 	}
+ 	#navbar {
+ 		position: initial;
+ 	}
+ 	#topMenu #nav-select {
+ 		border: 1px solid #CCC;
+ 		background-color: #FFF;
+ 		display: block;
+ 		font-size: 12px;
+ 		height: 30px;
+ 		line-height: 30px;
+ 		margin: 10px auto;
+ 		text-align: left;
+ 		width: 70%;
 
-	}
-	#topMenu #nav-select select {
-		font-size: 30px;
-		width: 100%;
-	}
-	#topMenu #nav-select option {
-		font-size: 12px;
-	}
-	#header {
-		height: auto;
-		text-align: center;
-	}
-	#header .title {
-		position: relative;
-		text-align: center;
-	}
-	#header #extra-menu, #header .header_search {
-		float:none;
-	}
-	#content {
-		top: auto;
-	}
-	#home-page #index_main_blocks {
+ 	}
+ 	#topMenu #nav-select select {
+ 		font-size: 30px;
+ 		width: 100%;
+ 	}
+ 	#topMenu #nav-select option {
+ 		font-size: 12px;
+ 	}
+ 	#header {
+ 		height: auto;
+ 		text-align: center;
+ 	}
+ 	#header .title {
+ 		position: relative;
+ 		text-align: center;
+ 	}
+ 	#header #extra-menu, #header .header_search {
+ 		float:none;
+ 	}
+ 	#content {
+ 		top: auto;
+ 	}
+
+	#home-page #index_main_blocks,
+    #home-page #index_small_blocks > div {
         float: none;
         margin: auto;
         width: 95%;
     }
-	#home-page #index_small_blocks > div {
-		float: none;
-		margin: 10px auto;
-		width: 90%;
-	}
 
-}
-
-@media (min-width: 1025px) and (max-width: 1681px) {
 	.media-list-item {
-		width: 48%; /* two per row */
-	}
-}
+ 		width: 95%; /* one per row */
+ 	}
 
-@media (min-width: 1681px) {
-	.media-list-item {
-		width: 31%; /* three per row */
-	}
-}
+ }
+
+ @media (min-width: 780px) and (max-width: 1680px) {
+ 	.media-list-item {
+ 		width: 45%; /* two per row */
+ 	}
+ }
+
+ @media (min-width: 1681px) {
+ 	.media-list-item {
+ 		width: 31%; /* three per row */
+ 	}
+ }

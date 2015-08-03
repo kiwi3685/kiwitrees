@@ -88,23 +88,23 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		global $controller, $SEARCH_SPIDER;
-		$menu_titles=$this->getMenuList();
-		$lang='';
+		$menu_titles = $this->getMenuList();
+		$lang = '';
 
 		$min_block=WT_DB::prepare(
 			"SELECT MIN(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
 		foreach ($menu_titles as $items) {
-			$languages =get_block_setting($items->block_id, 'languages');
+			$languages = get_block_setting($items->block_id, 'languages');
 			if (in_array(WT_LOCALE, explode(',', $languages))) {
-				$lang=WT_LOCALE;
+				$lang = WT_LOCALE;
 			} else {
-				$lang='';
+				$lang = '';
 			}
 		}
 
-		$default_block=WT_DB::prepare(
+		$default_block = WT_DB::prepare(
 			"SELECT ##block.block_id FROM `##block`, `##block_setting` WHERE block_order=? AND module_name=? AND ##block.block_id = ##block_setting.block_id AND ##block_setting.setting_value LIKE ?"
 		)->execute(array($min_block, $this->getName(), '%'.$lang.'%'))->fetchOne();
 
@@ -112,7 +112,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			"SELECT setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 		)->execute(array($default_block, 'menu_address'))->fetchOne();
 
-		if (count($menu_titles)>1) {
+		if (count($menu_titles) > 1) {
 			$main_menu_title = $this->getMenuTitle();
 		} else {
 			$main_menu_title = WT_DB::prepare(
@@ -359,7 +359,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
-		$min_block_order=WT_DB::prepare(
+		$min_block_order = WT_DB::prepare(
 			"SELECT MIN(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
@@ -385,7 +385,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		if (empty($items)) {
 			echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('The menu is empty.'), '</td></tr></table>';
 		} else {
-			$trees=WT_Tree::getAll();
+			$trees = WT_Tree::getAll();
 			foreach ($items as $item) {
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
@@ -398,7 +398,7 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 				echo '</td>';
 				// NOTE: Print the edit options of the current item
 				echo '<td>';
-				if ($item->block_order==$min_block_order) {
+				if ($item->block_order == $min_block_order) {
 					echo '&nbsp;';
 				} else {
 					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $item->block_id, ' "class="icon-uarrow"></a>';
