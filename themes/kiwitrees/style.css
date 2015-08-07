@@ -5967,7 +5967,6 @@ div.widget {
  		margin: 10px auto;
  		text-align: left;
  		width: 70%;
-
  	}
  	#topMenu #nav-select select {
  		font-size: 30px;
@@ -5987,17 +5986,16 @@ div.widget {
  	#header #extra-menu, #header .header_search {
  		float:none;
  	}
+
  	#content {
  		top: auto;
  	}
-
 	#home-page #index_main_blocks,
     #home-page #index_small_blocks > div {
         float: none;
         margin: auto;
         width: 95%;
     }
-
 	.media-list-item {
  		width: 95%; /* one per row */
  	}
