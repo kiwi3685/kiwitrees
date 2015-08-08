@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-07-28 17:27+1200\n"
-"PO-Revision-Date: 2015-07-31 07:37+1200\n"
+"PO-Revision-Date: 2015-08-08 14:18+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/kiwitrees/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3562,7 +3562,7 @@ msgstr "Der Medienbetrachter kann einen Link anzeigen, der eine Übertragung der
 
 #: help_text.php:878
 msgid "Show age of parents next to child's birthdate"
-msgstr ""
+msgstr "Zeige das Alter der Eltern bei den Geburtsdaten der Kinder"
 
 #: help_text.php:879
 msgid "This option controls whether or not to show age of father and mother next to child's birthdate on charts."
@@ -3843,7 +3843,7 @@ msgstr "Wenn Sie diese Option nutzen, wird das interne <b>kiwitrees</b> Nachrich
 
 #: help_text.php:1169 includes/functions/functions_edit.php:257 includes/functions/functions_edit.php:268
 msgid "Internal messaging with emails"
-msgstr ""
+msgstr "Interne Nachrichten-Funktion über Email "
 
 #: help_text.php:1171
 msgid "This option is like kiwitrees internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br><br>This is the default contact method."
@@ -7956,7 +7956,7 @@ msgstr "Alter des Ehemannes"
 
 #: library/WT/Controller/Timeline.php:224
 msgid "Wife's age"
-msgstr ""
+msgstr "Alter der Ehefrau"
 
 #: library/WT/Date.php:238
 #, php-format
@@ -9416,7 +9416,7 @@ msgstr "Elul"
 #: library/WT/Date/Julian.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;BCE"
 
 #: library/WT/Date/Julian.php:101 library/WT/Date/Julian.php:103
 #, php-format
@@ -9995,7 +9995,7 @@ msgstr "Fertiggestellt; Datum unbekannt"
 
 #: library/WT/Gedcom/Code/Stat.php:73
 msgid "Do Not Seal: unauthorized"
-msgstr ""
+msgstr "Nicht siegeln - keine Erlaubnis"
 
 #: library/WT/Gedcom/Code/Stat.php:76
 msgid "Do Not Seal, previous sealing cancelled"
@@ -10387,7 +10387,7 @@ msgstr "Perth, Australien"
 
 #: library/WT/Gedcom/Code/Temp.php:156
 msgid "President's Office"
-msgstr ""
+msgstr "Büro des Präsidenten"
 
 #: library/WT/Gedcom/Code/Temp.php:157
 msgid "Portland, Oregon"
@@ -11182,7 +11182,7 @@ msgstr "Ort (phonetisch)"
 
 #: library/WT/Gedcom/Tag.php:294
 msgid "Romanized place"
-msgstr ""
+msgstr "Ort romanisiert "
 
 #: library/WT/Gedcom/Tag.php:295
 msgid "Place in Hebrew"
@@ -11190,7 +11190,7 @@ msgstr "Ort (hebräisch)"
 
 #: library/WT/Gedcom/Tag.php:296
 msgid "Postal code"
-msgstr ""
+msgstr "Postleitzahl"
 
 #: library/WT/Gedcom/Tag.php:297
 msgid "Probate"
@@ -11250,7 +11250,7 @@ msgstr "Daten ID-Nummer"
 
 #: library/WT/Gedcom/Tag.php:314
 msgid "Romanized"
-msgstr ""
+msgstr "romanisiert "
 
 #: library/WT/Gedcom/Tag.php:315
 msgid "Remote server"
@@ -11318,7 +11318,7 @@ msgstr "Titel (phonetisch)"
 
 #: library/WT/Gedcom/Tag.php:336
 msgid "Romanized title"
-msgstr ""
+msgstr "romanisierter Tilel"
 
 #: library/WT/Gedcom/Tag.php:337
 msgid "Title in Hebrew"
@@ -14360,7 +14360,7 @@ msgstr "Seite %s von %s"
 #: medialist.php:218
 #, php-format
 msgid "%s media objects found"
-msgstr ""
+msgstr "%s Medienobjekte gefunden"
 
 #: medialist.php:268 mediaviewer.php:116
 #, php-format

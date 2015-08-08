@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-07-28 17:27+1200\n"
-"PO-Revision-Date: 2015-07-31 07:37+1200\n"
+"PO-Revision-Date: 2015-08-08 14:18+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/kiwitrees/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/kiwitrees/kiwitrees/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -278,7 +278,7 @@ msgstr "Individer"
 
 #: admin.php:260 admin.php:306 ancestry.php:104 calendar.php:408 descendancy.php:74 famlist.php:133 famlist.php:136 includes/functions/functions_print_lists.php:1068 includes/functions/functions_print_lists.php:1211 includes/functions/functions_print_lists.php:1422 library/WT/Controller/Search.php:571 library/WT/MenuBar.php:303 mediaviewer.php:142 modules_v3/gedcom_stats/module.php:102 modules_v3/gedcom_stats/module.php:317 modules_v3/googlemap/placehierarchy.php:281 modules_v3/html/module.php:189 modules_v3/relatives/module.php:35 modules_v3/widget_stats/module.php:119 modules_v3/widget_stats/module.php:352 note.php:107 placelist.php:187 search.php:114 source.php:106 statistics.php:58 statisticsplot.php:781 modules_v3/fact_sources/report.bak:150 modules_v3/fact_sources/report.bak:312
 msgid "Families"
-msgstr "Familier"
+msgstr "Relationer"
 
 #: admin.php:265 admin.php:307 includes/functions/functions_print_lists.php:1215 includes/functions/functions_print_lists.php:1317 includes/functions/functions_print_lists.php:1424 library/WT/Controller/Search.php:572 library/WT/MenuBar.php:313 mediaviewer.php:145 modules_v3/album/album_print_media.php:316 modules_v3/gedcom_stats/module.php:105 modules_v3/gedcom_stats/module.php:325 modules_v3/html/module.php:193 modules_v3/sources_tab/module.php:35 modules_v3/widget_stats/module.php:128 modules_v3/widget_stats/module.php:360 note.php:113 repo.php:101 search.php:119 sourcelist.php:32 sourcelist.php:36 statistics.php:343 statistics.php:380 modules_v3/ahnentafel_report/report.bak:480 modules_v3/descendancy_report/report.bak:612 modules_v3/family_group_report/report.bak:1107 modules_v3/individual_ext_report/report.bak:636 modules_v3/individual_report/report.bak:637
 msgid "Sources"
@@ -1921,11 +1921,11 @@ msgstr "Hold dette kort og undgå mellemrum og tegnsætning. Evt. familie navn k
 
 #: admin_trees_manage.php:313
 msgid "create"
-msgstr "skabe "
+msgstr "opret træ"
 
 #: admin_trees_manage.php:315
 msgid "After creating the family tree, you will be able to upload or import data from a GEDCOM file."
-msgstr "Efter oprettelsen af familietræet kan du anvende upload for at bruge en GEDCOM-fil fra din PC eller hent filen fra serveren for at importere til webtrees."
+msgstr "Efter oprettelsen af familietræet, vil du være i stand til at oploade eller importere data fra en GEDCOM fil."
 
 #: admin_trees_places.php:89
 msgid "Administration - place edit"
@@ -2079,7 +2079,7 @@ msgstr "Find person uden relationer"
 
 #: admin_trees_unlinked.php:84
 msgid "No unlinked individuals to display"
-msgstr "Ingen begivenheder er registreret for nulevende personer for i dag."
+msgstr "Fandt ingen poster at vise"
 
 #: admin_users.php:33 edituser.php:90
 msgid "User administration"
@@ -14632,7 +14632,7 @@ msgstr "Vis medie filer uden TYPE defination"
 
 #: modules_v3/batch_update/admin_batch_update.php:66 modules_v3/batch_update/module.php:32 modules_v3/batch_update/module.php:46 modules_v3/googlemap/placehierarchy.php:174
 msgid "Batch update"
-msgstr "Masseopdatering"
+msgstr "Baggrundskørsel"
 
 #: modules_v3/batch_update/admin_batch_update.php:81
 msgid "Your user account does not have \"automatically approve changes\" enabled.  You will only be able to change one record at a time."
@@ -17494,7 +17494,7 @@ msgstr "En rapport over de oplysninger der mangler for en person samt pårørend
 
 #: modules_v3/no_census/module.php:40
 msgid "A list of missing census data, for UK census records only"
-msgstr "En liste med mangle folketællingsdata. Gælder kun UK folketællinger"
+msgstr "En liste med mgl. folketællingsdata. Gælder kun UK folketællinger"
 
 #: modules_v3/no_census/module.php:72
 msgid "Missing Census Data"
@@ -17809,7 +17809,7 @@ msgstr "Dette er en titel som vil blive vist i oversigt over siderne Der kan bru
 
 #: modules_v3/simpl_pages/module.php:36 modules_v3/simpl_pages/module.php:440
 msgid "Pages"
-msgstr "Sider"
+msgstr "Brugerdef. sider"
 
 #: modules_v3/simpl_pages/module.php:46
 msgid "Display resource pages."
@@ -17947,7 +17947,7 @@ msgstr "Der findes ingen data for at dette ID er død, bliver derfor vist som le
 
 #: modules_v3/simpl_research/module.php:35 modules_v3/simpl_research/module.php:39
 msgid "Research links"
-msgstr "Forsknings links"
+msgstr "Forskningslinks"
 
 #: modules_v3/simpl_research/module.php:44
 msgid "A sidebar tool to provide quick links to popular research web sites."
