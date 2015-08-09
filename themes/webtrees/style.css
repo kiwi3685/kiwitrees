@@ -49,7 +49,7 @@ img {border:none;}
 legend img {height:20px;vertical-align:middle;width:20px;}
 img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img {border:none;height:25px;vertical-align:middle;}
 input, button, textarea {border-top-color:#fff;border-left-color:#fff;border-right-color:#555555;border-bottom-color:#555555;border-width:1px;font-size:12px;}
-input, textarea {padding:0 3px;}
+input, textarea {padding: 6px;}
 textarea {border-style:inset;}
 input.image {width:17px;height:17px;border:none;padding:0;vertical-align:top;}
 select {border:1px solid #555555;font-size:12px;padding:1px;}
@@ -2155,16 +2155,8 @@ div.widget {
 /* ------------------ */
 
 /* RESPOSIVE layout adjustments */
-@media (max-width: 350px) {
-	.media-list-item {
-		width: 95%; /* one per row */
-	}
-}
+@media (min-width: 320px) and (max-width: 1024px) {
 
-@media (min-width: 351px) and (max-width: 1024px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
 	#topMenu #main-menu {
 		display:none;
 	}
@@ -2172,37 +2164,40 @@ div.widget {
 		position: initial;
 	}
 	#topMenu #nav-select {
-        background-color: #EDF7FD;
-        border: solid #81A9CB 1px;
+        background-color: #ECF5FF;
+        border: solid #84BEFF 1px;
 		display: block;
-		font-size: 12px;
+		font-size: 14px;
 		height: 30px;
 		line-height: 30px;
 		margin: 10px auto;
 		text-align: left;
 		width: 70%;
-
 	}
 	#topMenu #nav-select select {
 		font-size: 30px;
 		width: 100%;
 	}
 	#topMenu #nav-select option {
-		font-size: 12px;
 	}
 	#header {
 		height: auto;
 		text-align: center;
 	}
 	#header .title {
-        float: none;
 		position: relative;
 		text-align: center;
+        float: none;
+        margin: auto;
 	}
-	#header #extra-menu, #header .header_search {
-		float:none;
-        margin: 10px auto;
+	#header .header_search {
+        float: none;
+        padding: 10px;
+        margin: 0;
 	}
+    #extra-menu  {
+        float: none;
+    }
 	#content {
 		top: auto;
 	}
@@ -2212,16 +2207,20 @@ div.widget {
         margin: auto;
         width: 95%;
     }
+    .media-list-item {
+        width: 95%; /* one per row */
+    }
+
 }
 
-@media (min-width: 1025px) and (max-width: 1681px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
+@media (min-width: 780px) and (max-width: 1680px) {
+   .media-list-item {
+       width: 45%; /* two per row */
+   }
 }
 
 @media (min-width: 1681px) {
-	.media-list-item {
-		width: 31%; /* three per row */
-	}
+   .media-list-item {
+       width: 31%; /* three per row */
+   }
 }
