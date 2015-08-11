@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-07-28 17:27+1200\n"
-"PO-Revision-Date: 2015-08-08 14:18+1200\n"
+"PO-Revision-Date: 2015-08-12 07:48+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.3\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -14365,7 +14365,7 @@ msgstr "%s Medienobjekte gefunden"
 #: medialist.php:268 mediaviewer.php:116
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "Die Datei %s gibt es nicht"
 
 #: medialist.php:280
 msgid "View person"
@@ -14491,15 +14491,15 @@ msgstr "Vorschau"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:38
 msgid "Proposed Census Text"
-msgstr ""
+msgstr "Vorgeschlagener Volkszählungstext "
 
 #: modules_v3/GEDFact_assistant/_CENS/census_note_decode.php:50
 msgid "Father's Birthplace - (Chapman format)"
-msgstr ""
+msgstr "Geburtsort des Vaters (Chapman Format)"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_note_decode.php:51
 msgid "Mother's Birthplace - (Chapman format)"
-msgstr ""
+msgstr "Geburtsort der Mutter  (Champman Format)"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:49
 msgid "When adding a Link, the ID field cannot be empty."
@@ -14563,11 +14563,11 @@ msgstr "Dokumente"
 
 #: modules_v3/album/album_print_media.php:298 modules_v3/album/album_print_media.php:300
 msgid "View Notes"
-msgstr ""
+msgstr "Anmerkungen zeigen"
 
 #: modules_v3/album/album_print_media.php:305
 msgid "View Details"
-msgstr ""
+msgstr "Einzelheiten zeigen"
 
 #: modules_v3/album/album_print_media.php:331
 msgid "Edit media"
@@ -14608,7 +14608,7 @@ msgstr ""
 
 #: modules_v3/album/module.php:292
 msgid "Number of groups"
-msgstr ""
+msgstr "Anzahl der Gruppen"
 
 #: modules_v3/album/module.php:307
 msgid "Match groups to types"
@@ -14684,7 +14684,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/married_names.php:106
 msgid "Surname Option"
-msgstr ""
+msgstr "Nachnamen Optionen"
 
 #: modules_v3/batch_update/plugins/married_names.php:109
 msgid "Wife's surname replaced by husband's surname"
@@ -14808,19 +14808,19 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:130
 msgid "Past"
-msgstr ""
+msgstr "Vergangenheit"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:130
 msgid "Future"
-msgstr ""
+msgstr "Zukunft"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:149
 msgid "That date is invalid"
-msgstr ""
+msgstr "Dieses Datum ist ungültig"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:164
 msgid "Relationship Calculator"
-msgstr ""
+msgstr "Berechung des Verwandtschaftsgrades"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:170
 msgid "Given a common blood ancestor, <strong>X</strong>"
@@ -14836,27 +14836,27 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:390
 msgid "Birth Date Calculator"
-msgstr ""
+msgstr "Berechnung des Geburtsdatums"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:393
 msgid "Event Date"
-msgstr ""
+msgstr "Ereignis Datum"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:401
 msgid "months"
-msgstr ""
+msgstr "Monate"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:403
 msgid "days"
-msgstr ""
+msgstr "Tage"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:406
 msgid "Estimated date of birth"
-msgstr ""
+msgstr "Geschätztes Datum für Geburt "
 
 #: modules_v3/calendar_utilities/plugins/ecclesiastical.php:30
 msgid "Ecclesiastical Dates"
-msgstr ""
+msgstr "kirchliche Termine"
 
 #: modules_v3/calendar_utilities/plugins/ecclesiastical.php:259 modules_v3/calendar_utilities/plugins/regnal_years.php:33
 msgid ""
@@ -14880,7 +14880,7 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:30
 msgid "Regnal Years"
-msgstr ""
+msgstr "Regierungsjahre"
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:50
 msgid "<p>Dates based on regnal years refer to the year of the current monarch's reign and usually have the format \"year + monarch\" (e.g. \"4 Mary\"). This page will take a date in regnal years and return an ordinary date. For instance, if you enter 6/11 Elizabeth I, Regnal year 1, you will get the year 1559 because June 1st in her first regnal year occurred in 1559.</p>"
@@ -14899,11 +14899,11 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:61
 msgid "Enter the month and day"
-msgstr ""
+msgstr "Eingabe von Monat und Tag"
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:62
 msgid "Month number"
-msgstr ""
+msgstr "Nummer des Monats"
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:79
 msgid "Enter the Monarch and Regnal Year"
@@ -14911,7 +14911,7 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:125
 msgid "Regnal Year"
-msgstr ""
+msgstr "Regierungsjahr"
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:132
 msgid "Double years such as &quot;1324/5&quot; reflect Old Style dating (see note below)."
@@ -14931,7 +14931,7 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:154
 msgid "You must enter a regnal year"
-msgstr ""
+msgstr "Sie müssen ein Regierungsjahr eingeben."
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:161
 msgid "William I only reigned for 21 years"
@@ -15585,11 +15585,11 @@ msgstr "Nur diesen Familien-Datensatz hinzufügen."
 
 #: modules_v3/clippings/module.php:93 modules_v3/clippings/module.php:512
 msgid "Add parents' records together with this family record."
-msgstr ""
+msgstr "Die Datensätze der Eltern dieser Familie hinzufügen."
 
 #: modules_v3/clippings/module.php:94 modules_v3/clippings/module.php:513
 msgid "Add parents' and children's records together with this family record."
-msgstr ""
+msgstr "Die Datensätze der Eltern und Kinder dieser Familie hinzufügen."
 
 #: modules_v3/clippings/module.php:95 modules_v3/clippings/module.php:514
 msgid "Add parents' and all descendants' records together with this family record."
@@ -15686,35 +15686,35 @@ msgstr "Abbrechen"
 
 #: modules_v3/contact/module.php:28 modules_v3/contact/module.php:52
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: modules_v3/contact/module.php:33
 msgid "A contact page"
-msgstr ""
+msgstr "Eine Kontakt Seite"
 
 #: modules_v3/contact/module.php:121
 msgid "Support"
-msgstr ""
+msgstr "Unterstützung"
 
 #: modules_v3/contact/module.php:122
 msgid "For further information"
-msgstr ""
+msgstr "Für weitere Informationen"
 
 #: modules_v3/contact/module.php:129
 msgid "For technical support and information"
-msgstr ""
+msgstr "Für technische Unterstützung und Information"
 
 #: modules_v3/contact/module.php:130
 msgid "Technical help"
-msgstr ""
+msgstr "Technische Fragen"
 
 #: modules_v3/contact/module.php:131
 msgid "For help with genealogy questions"
-msgstr ""
+msgstr "Bei genealogischen Fragen "
 
 #: modules_v3/contact/module.php:132
 msgid "Genealogy help"
-msgstr ""
+msgstr "Genealogische Fragen / Hilfe"
 
 #: modules_v3/contact/module.php:194
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
@@ -16422,19 +16422,19 @@ msgstr "Baumansicht"
 
 #: modules_v3/fancy_treeview/module.php:1679
 msgid "th"
-msgstr ""
+msgstr "th"
 
 #: modules_v3/fancy_treeview/module.php:1682
 msgid "st"
-msgstr ""
+msgstr "st"
 
 #: modules_v3/fancy_treeview/module.php:1683
 msgid "nd"
-msgstr ""
+msgstr "nd"
 
 #: modules_v3/fancy_treeview/module.php:1684
 msgid "rd"
-msgstr ""
+msgstr "rd"
 
 #: modules_v3/faq/help_text.php:34 modules_v3/faq/module.php:283
 msgid "Frequently asked questions"
@@ -16871,7 +16871,7 @@ msgstr "geografische Daten"
 
 #: modules_v3/googlemap/admin_places.php:211 modules_v3/googlemap/module.php:128 modules_v3/googlemap/module.php:222 modules_v3/googlemap/module.php:745 modules_v3/googlemap/module.php:1412 modules_v3/googlemap/placehierarchy.php:167
 msgid "Place Check"
-msgstr ""
+msgstr "Orts Prüfung"
 
 #: modules_v3/googlemap/admin_places.php:344
 msgid "File containing places (CSV)"
@@ -16891,7 +16891,7 @@ msgstr ""
 
 #: modules_v3/googlemap/admin_places.php:371
 msgid "Overwrite existing coordinates."
-msgstr ""
+msgstr "Überschreiben existierender Koordinaten"
 
 #: modules_v3/googlemap/admin_places.php:587 modules_v3/googlemap/admin_places.php:697 placelist.php:103
 msgid "Top Level"
@@ -16948,7 +16948,7 @@ msgstr "Genauigkeit"
 
 #: modules_v3/googlemap/admin_places_edit.php:293 modules_v3/googlemap/module.php:304 modules_v3/googlemap/places_edit.php:289
 msgid "Neighborhood"
-msgstr ""
+msgstr "Nachbarschaft"
 
 #: modules_v3/googlemap/admin_places_edit.php:295 modules_v3/googlemap/module.php:312 modules_v3/googlemap/places_edit.php:291
 msgid "House"
@@ -17024,7 +17024,7 @@ msgstr ""
 
 #: modules_v3/googlemap/help_text.php:54 modules_v3/googlemap/module.php:382
 msgid "Display Map Coordinates"
-msgstr ""
+msgstr "Zeige die Karte Koordinaten"
 
 #: modules_v3/googlemap/help_text.php:55
 msgid "This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers."
@@ -17279,7 +17279,7 @@ msgstr "Zoom"
 
 #: modules_v3/googlemap/placehierarchy.php:342
 msgid "This place has no coordinates"
-msgstr ""
+msgstr "Dieser Ort hat keine Koordinaten"
 
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:372
 msgid "Date not known"
@@ -17423,7 +17423,7 @@ msgstr "Startseite Menüpunkt"
 
 #: modules_v3/menu_languages/module.php:35
 msgid "Languages menu"
-msgstr ""
+msgstr "Sprachen Menue"
 
 #: modules_v3/menu_languages/module.php:40
 msgid "The Languages menu item (other menus)"
@@ -17491,15 +17491,15 @@ msgstr ""
 
 #: modules_v3/no_census/module.php:134 modules_v3/no_census/module.php:135 modules_v3/no_census/module.php:136 modules_v3/no_census/module.php:149 modules_v3/no_census/module.php:150 modules_v3/no_census/module.php:151 modules_v3/no_census/module.php:183 modules_v3/no_census/module.php:225 modules_v3/no_census/module.php:226
 msgid "all"
-msgstr ""
+msgstr "alle"
 
 #: modules_v3/no_census/module.php:161
 msgid "view"
-msgstr ""
+msgstr "zeige"
 
 #: modules_v3/no_census/module.php:281
 msgid "No missing records found"
-msgstr ""
+msgstr "Keine fehlende Datensätze gefunden"
 
 #: modules_v3/notes/module.php:40
 msgid "A tab showing the notes attached to an individual."
@@ -17702,7 +17702,7 @@ msgstr "Eine Liste der Änderungen, die die Zustimmung des Moderators brauchen s
 
 #: modules_v3/review_changes/module.php:87 modules_v3/widget_review_changes/module.php:86
 msgid "kiwitrees - Review changes"
-msgstr ""
+msgstr "kiwitrees  - Änderungen kontrollieren"
 
 #: modules_v3/review_changes/module.php:88 modules_v3/widget_review_changes/module.php:87
 msgid "Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that kiwitrees site and login to review the changes."
@@ -17762,7 +17762,7 @@ msgstr ""
 
 #: modules_v3/simpl_pages/help_text.php:41
 msgid "Page language"
-msgstr ""
+msgstr "Sprache der Seite"
 
 #: modules_v3/simpl_pages/help_text.php:42
 msgid "Either leave all languages un-ticked to display the page contents in every language, or tick the specific languages you want to display it for.<br><br>To create translated pages for different languages create multiple copies setting the appropriate language only for each version."
@@ -19163,7 +19163,7 @@ msgstr "Alter"
 
 #: themes/_administration/header.php:111 themes/kiwitrees/header.php:127
 msgid "Search trees"
-msgstr ""
+msgstr "Suche Familienstamm"
 
 #: themes/_administration/header.php:119
 msgid "Server time"
