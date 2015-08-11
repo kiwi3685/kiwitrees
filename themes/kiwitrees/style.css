@@ -743,6 +743,10 @@ div[id*='-page'] {
 	width: 99%;
 }
 
+/* indi and fam list pages */
+#indilist-page, #famlist-page {
+    font-size: 120%;
+}
 .alpha_index {
 	color: #aaa;
 }

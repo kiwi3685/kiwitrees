@@ -133,137 +133,140 @@ $controller
 	->setPageTitle(WT_I18N::translate('Individuals').' : '.$legend)
 	->pageHeader();
 
-echo '<h2 class="center">', WT_I18N::translate('Individuals'), '</h2>';
+echo '
+	<div id="indilist-page">
+		<h2 class="center">', WT_I18N::translate('Individuals'), '</h2>';
 
-// Print a selection list of initial letters
-$list=array();
-foreach (WT_Query_Name::surnameAlpha($show_marnm, false, WT_GED_ID) as $letter=>$count) {
-	switch ($letter) {
-	case '@':
-		$html=$UNKNOWN_NN;
-		break;
-	case ',':
-		$html=WT_I18N::translate('None');
-		break;
-	default:
-		$html=htmlspecialchars($letter);
-		break;
-	}
-	if ($count) {
-		if ($letter==$alpha) {
-			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
-		} else {
-			$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
-		}
-	} else {
-		$list[]=$html;
-	}
-}
-
-// Search spiders don't get the "show all" option as the other links give them everything.
-if (!$SEARCH_SPIDER) {
-	if ($show_all=='yes') {
-		$list[]='<span class="warning">'.WT_I18N::translate('All').'</span>';
-	} else {
-		$list[]='<a href="'.WT_SCRIPT_NAME.'?show_all=yes'.'&amp;ged='.WT_GEDURL.'">'.WT_I18N::translate('All').'</a>';
-	}
-}
-echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
-
-// Search spiders don't get an option to show/hide the surname sublists,
-// nor does it make sense on the all/unknown/surname views
-if (!$SEARCH_SPIDER) {
-	echo '<p class="center">';
-	if ($show!='none') {
-		if ($show_marnm) {
-			echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=no">', WT_I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';
-		} else {
-			echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=yes">', WT_I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
-		}
-
-		if ($alpha!='@' && $alpha!=',' && !$surname) {
-			if ($show=='surn') {
-				echo '<br><a href="', $url, '&amp;show=indi">', WT_I18N::translate('Show the list of individuals'), '</a>';
+		// Print a selection list of initial letters
+		$list=array();
+		foreach (WT_Query_Name::surnameAlpha($show_marnm, false, WT_GED_ID) as $letter=>$count) {
+			switch ($letter) {
+			case '@':
+				$html=$UNKNOWN_NN;
+				break;
+			case ',':
+				$html=WT_I18N::translate('None');
+				break;
+			default:
+				$html=htmlspecialchars($letter);
+				break;
+			}
+			if ($count) {
+				if ($letter==$alpha) {
+					$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
+				} else {
+					$list[]='<a href="'.WT_SCRIPT_NAME.'?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
+				}
 			} else {
-				echo '<br><a href="', $url, '&amp;show=surn">', WT_I18N::translate('Show the list of surnames'), '</a>';
+				$list[]=$html;
 			}
 		}
-	}
-	echo '</p>';
-}
 
-if ($show=='indi' || $show=='surn') {
-	$surns=WT_Query_Name::surnames($surname, $alpha, $show_marnm, false, WT_GED_ID);
-	if ($show=='surn') {
-		// Show the surname list
-		switch ($SURNAME_LIST_STYLE) {
-		case 'style1';
-			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME);
-			break;
-		case 'style3':
-			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true);
-			break;
-		case 'style2':
-		default:
-			echo format_surname_table($surns, WT_SCRIPT_NAME);
-			break;
-		}
-	} else {
-		// Show the list
-		$count=0;
-		foreach ($surns as $surnames) {
-			foreach ($surnames as $list) {
-				$count+=count($list);
+		// Search spiders don't get the "show all" option as the other links give them everything.
+		if (!$SEARCH_SPIDER) {
+			if ($show_all=='yes') {
+				$list[]='<span class="warning">'.WT_I18N::translate('All').'</span>';
+			} else {
+				$list[]='<a href="'.WT_SCRIPT_NAME.'?show_all=yes'.'&amp;ged='.WT_GEDURL.'">'.WT_I18N::translate('All').'</a>';
 			}
 		}
-		// Don't sublists short lists.
-		if ($count<get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I')) {
-			$falpha='';
-			$show_all_firstnames='no';
-		} else {
-			$givn_initials=WT_Query_Name::givenAlpha($surname, $alpha, $show_marnm, false, WT_GED_ID);
-			// Break long lists by initial letter of given name
-			if ($surname || $show_all=='yes') {
-				// Don't show the list until we have some filter criteria
-				$show=($falpha || $show_all_firstnames=='yes') ? 'indi' : 'none';
-				$list=array();
-				foreach ($givn_initials as $givn_initial=>$count) {
-					switch ($givn_initial) {
-					case '@':
-						$html=$UNKNOWN_PN;
-						break;
-					default:
-						$html=htmlspecialchars($givn_initial);
-						break;
+		echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
+
+		// Search spiders don't get an option to show/hide the surname sublists,
+		// nor does it make sense on the all/unknown/surname views
+		if (!$SEARCH_SPIDER) {
+			echo '<p class="center">';
+			if ($show!='none') {
+				if ($show_marnm) {
+					echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=no">', WT_I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';
+				} else {
+					echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=yes">', WT_I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
+				}
+
+				if ($alpha!='@' && $alpha!=',' && !$surname) {
+					if ($show=='surn') {
+						echo '<br><a href="', $url, '&amp;show=indi">', WT_I18N::translate('Show the list of individuals'), '</a>';
+					} else {
+						echo '<br><a href="', $url, '&amp;show=surn">', WT_I18N::translate('Show the list of surnames'), '</a>';
 					}
-					if ($count) {
-						if ($show=='indi' && $givn_initial==$falpha && $show_all_firstnames=='no') {
-							$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
-						} else {
-							$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+				}
+			}
+			echo '</p>';
+		}
+
+		if ($show=='indi' || $show=='surn') {
+			$surns=WT_Query_Name::surnames($surname, $alpha, $show_marnm, false, WT_GED_ID);
+			if ($show=='surn') {
+				// Show the surname list
+				switch ($SURNAME_LIST_STYLE) {
+				case 'style1';
+					echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME);
+					break;
+				case 'style3':
+					echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true);
+					break;
+				case 'style2':
+				default:
+					echo format_surname_table($surns, WT_SCRIPT_NAME);
+					break;
+				}
+			} else {
+				// Show the list
+				$count=0;
+				foreach ($surns as $surnames) {
+					foreach ($surnames as $list) {
+						$count+=count($list);
+					}
+				}
+				// Don't sublists short lists.
+				if ($count<get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I')) {
+					$falpha='';
+					$show_all_firstnames='no';
+				} else {
+					$givn_initials=WT_Query_Name::givenAlpha($surname, $alpha, $show_marnm, false, WT_GED_ID);
+					// Break long lists by initial letter of given name
+					if ($surname || $show_all=='yes') {
+						// Don't show the list until we have some filter criteria
+						$show=($falpha || $show_all_firstnames=='yes') ? 'indi' : 'none';
+						$list=array();
+						foreach ($givn_initials as $givn_initial=>$count) {
+							switch ($givn_initial) {
+							case '@':
+								$html=$UNKNOWN_PN;
+								break;
+							default:
+								$html=htmlspecialchars($givn_initial);
+								break;
+							}
+							if ($count) {
+								if ($show=='indi' && $givn_initial==$falpha && $show_all_firstnames=='no') {
+									$list[]='<a class="warning" href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+								} else {
+									$list[]='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'" title="'.$count.'">'.$html.'</a>';
+								}
+							} else {
+								$list[]=$html;
+							}
 						}
-					} else {
-						$list[]=$html;
+						// Search spiders don't get the "show all" option as the other links give them everything.
+						if (!$SEARCH_SPIDER) {
+							if ($show_all_firstnames=='yes') {
+								$list[]='<span class="warning">'.WT_I18N::translate('All').'</span>';
+							} else {
+								$list[]='<a href="'.$url.'&amp;show_all_firstnames=yes">'.WT_I18N::translate('All').'</a>';
+							}
+						}
+						if ($show_all=='no') {
+							echo '<h2 class="center">', WT_I18N::translate('Individuals with surname %s', $legend), '</h2>';
+						}
+						echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
 					}
 				}
-				// Search spiders don't get the "show all" option as the other links give them everything.
-				if (!$SEARCH_SPIDER) {
-					if ($show_all_firstnames=='yes') {
-						$list[]='<span class="warning">'.WT_I18N::translate('All').'</span>';
-					} else {
-						$list[]='<a href="'.$url.'&amp;show_all_firstnames=yes">'.WT_I18N::translate('All').'</a>';
-					}
+				if ($show=='indi') {
+					echo format_indi_table(
+						WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID)
+					);
 				}
-				if ($show_all=='no') {
-					echo '<h2 class="center">', WT_I18N::translate('Individuals with surname %s', $legend), '</h2>';
-				}
-				echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
-			}
-		}
-		if ($show=='indi') {
-			echo format_indi_table(
-				WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID)
-			);
-		}
 	}
+	echo '</div>';
 }
