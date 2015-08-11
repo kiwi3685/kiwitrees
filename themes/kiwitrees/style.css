@@ -475,6 +475,7 @@ textarea:required:invalid {
 	font-size: 0.8em;
 	margin-top: 120px;
 	min-height: 60px;
+	padding: 10px;
 	text-align: center;
 }
 
