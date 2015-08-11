@@ -357,7 +357,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		}
 
 		$html='<div id="pages-container">'.
-				'<h2>'.$this->getMenuTile().'</h2>'.
+				'<h2>'.$this->getMenuTitle().'</h2>'.
 				'<p>'.$this->getSummaryDescription().'</p>'.
 				'<div style="clear:both;"></div>'.
 				'<div id="pages_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
