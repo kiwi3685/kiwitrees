@@ -29,7 +29,7 @@
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
-	background-color: #aaa;
+	background-color: #ddd;
 	overflow-y: scroll;
 }
 
@@ -474,6 +474,7 @@ textarea:required:invalid {
 	border-top: 5px solid #555;
 	font-size: 0.8em;
 	margin-top: 120px;
+	min-height: 60px;
 	text-align: center;
 }
 
