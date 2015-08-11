@@ -181,13 +181,13 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				));
 				$block_id=WT_DB::getInstance()->lastInsertId();
 			}
-			set_block_setting($block_id, 'gallery_title',		  safe_POST('gallery_title',		WT_REGEX_UNSAFE)); // allow html
+			set_block_setting($block_id, 'gallery_title',		safe_POST('gallery_title',		WT_REGEX_UNSAFE)); // allow html
 			set_block_setting($block_id, 'gallery_description', safe_POST('gallery_description',WT_REGEX_UNSAFE)); // allow html
-			set_block_setting($block_id, 'gallery_folder_w',	  safe_POST('gallery_folder_w',	WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'gallery_folder_f',	  safe_POST('gallery_folder_f',	WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'gallery_folder_p',	  safe_POST('gallery_folder_p',	WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'gallery_access',	  safe_POST('gallery_access',		WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'plugin',			  safe_POST('plugin',			WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_folder_w',	safe_POST('gallery_folder_w',	WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_folder_f',	safe_POST('gallery_folder_f',	WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_folder_p',	safe_POST('gallery_folder_p',	WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_access',	 	safe_POST('gallery_access',		WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'plugin',			 	safe_POST('plugin',				WT_REGEX_UNSAFE));
 			$languages=array();
 			foreach (WT_I18N::used_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
@@ -469,27 +469,30 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				</ul>
 				<div id="gallery_summary">
 					<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
-					<input type="hidden" name="action" value="update">
-					<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('gallery_title',$this->getName()),'</div>
-					<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $this->getMenuTitle(), '"></div>
-					<div class="label">', WT_I18N::translate('Summary page description'), help_link('gallery_description',$this->getName()),'</div>
-					<div class="value2">
-						<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $this->getSummaryDescription(), '</textarea>
-					</div>
-					<div id="gallery_theme">
-						<div class="label">', WT_I18N::translate('Select gallery theme'), help_link('gallery_theme',$this->getName()),'</div>';
-						foreach ($themename as $themedir) {
-						echo
-							'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
-									<img src="', WT_MODULES_DIR,$this->getName(), '/images/' ,$themedir, '.png" alt="' ,$themedir, ' title="' ,$themedir, '">
-								<p>
-									<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
-									<label for="radio_' ,$themedir, '">', $themedir, '</label>
-								</p>
-							</div>';
-						}
-				echo '</div><div style="clear:both;"></div>
-					<div class="save"><input type="submit" value="', WT_I18N::translate('save'), '"></div>
+						<input type="hidden" name="action" value="update">
+						<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('gallery_title',$this->getName()),'</div>
+						<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $this->getMenuTitle(), '"></div>
+						<div class="label">', WT_I18N::translate('Summary page description'), help_link('gallery_description',$this->getName()),'</div>
+						<div class="value2">
+							<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $this->getSummaryDescription(), '</textarea>
+						</div>
+						<div id="gallery_theme">
+							<div class="label">', WT_I18N::translate('Select gallery theme'), help_link('gallery_theme',$this->getName()),'</div>';
+							foreach ($themename as $themedir) {
+							echo
+								'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
+										<img src="', WT_MODULES_DIR,$this->getName(), '/images/' ,$themedir, '.png" alt="' ,$themedir, ' title="' ,$themedir, '">
+									<p>
+										<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
+										<label for="radio_' ,$themedir, '">', $themedir, '</label>
+									</p>
+								</div>';
+							}
+						echo '</div>
+						<div style="clear:both;"></div>
+						<div class="save">
+							<input type="submit" value="', WT_I18N::translate('save'), '">
+						</div>
 					</form>
 				</div>
 				<div id="gallery_pages">
