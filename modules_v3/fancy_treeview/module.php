@@ -997,10 +997,10 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$resize = $this->options('resize_thumbs') == 1 ? true : false;
 			$html = '<div class="parents">'.$this->print_thumbnail($person, $this->options('thumb_size'), $this->options('thumb_resize_format'), $this->options('use_square_thumbs'), $resize).'<a id="'.$person->getXref().'" href="'.$person->getHtmlUrl().'"><p class="desc">'.$person->getFullName().'</a>';
 			if ($this->options('show_occu') == true) {
-				$html .= $this->print_fact($person, 'OCCU');
+				$html .= $this->printFact($person, 'OCCU');
 			}
 
-			$html .= $this->print_parents($person).$this->print_lifespan($person);
+			$html .= $this->printParents($person).$this->printLifespan($person);
 
 			// get a list of all the spouses
 			/*
@@ -1009,7 +1009,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
             $spousecount = 0;
             foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
                 $spouse = $family->getSpouse($person);
-                if ($spouse && $spouse->canDisplayDetails() && $this->getMarriage($family)) {
+                if ($spouse && $spouse->canDisplayDetails() && $family->getMarriage() && !$family->isNotMarried()) {
 					$spousecount++;
 				}
 			}
@@ -1023,9 +1023,15 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$spouseindex = 0;
 				foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
 					$spouse = $family->getSpouse($person);
-					if ($spouse && $spouse->canDisplayDetails() && $this->getMarriage($family)) {
-						$html .= $this->print_spouse($family, $person, $spouse, $spouseindex, $spousecount);
-						$spouseindex++;
+					if ($spouse && $spouse->canDisplayDetails()) {
+						$marriage = $family->getMarriage();
+						if ($marriage && $marriage->canShow()) {
+							$html .= $this->printSpouse($family, $person, $spouse, $spouseindex, $spousecount);
+							$spouseindex++;
+						} else {
+							$html .= $this->printPartner($family, $person, $spouse);
+						}
+
 					}
 				}
 			}
@@ -1035,7 +1041,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			// get children for each couple (could be none or just one, $spouse could be empty, includes children of non-married couples)
 			foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
 				$spouse = $family->getSpouse($person);
-				$html .= $this->print_children($family, $person, $spouse);
+				$html .= $this->printChildren($family, $person, $spouse);
 			}
 
 			return $html;
@@ -1047,7 +1053,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	private function print_spouse($family, $person, $spouse, $i, $count) {
+	private function printSpouse($family, $person, $spouse, $i, $count) {
 
 		$html = ' ';
 
@@ -1073,14 +1079,14 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			}
 		}
 
-		$html .= $this->print_parents($spouse);
+		$html .= $this->printParents($spouse);
 
 		if(!$family->getMarriage()) { // use the default privatized function to determine if marriage details can be shown.
 			$html .= '.';
 		}
 		else {
 			// use the facts below only on none private records.
-			if ($this->print_parents($spouse)) {
+			if ($this->printParents($spouse)) {
 				$html .= ',';
 			}
 			$marrdate = $family->getMarriageDate();
@@ -1089,9 +1095,9 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$html .= $this->print_date($marrdate);
 			}
 			if (!is_null($family->getMarriagePlace())) {
-				$html .= $this->print_place($family->getMarriagePlace());
+				$html .= $this->printPlace($family->getMarriagePlace());
 			}
-			$html .= $this->print_lifespan($spouse, true);
+			$html .= $this->printLifespan($spouse, true);
 
 			if($family->isDivorced()) {
 				$html .= $person->getFullName() . ' ' . WT_I18N::translate('and') . ' ' . $spouse->getFullName() .  ' ' . WT_I18N::translate('divorced') . $this->print_divorce_date($family) . '.';
@@ -1100,7 +1106,30 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return $html;
 	}
 
-	private function print_children($family, $person, $spouse) {
+	private function printPartner($family, $person, $spouse) {
+		$html = ' ';
+		switch ($person->getSex()) {
+			case 'M':
+				$html .= WT_I18N::translate('He had a relationship with');
+				break;
+			case 'F':
+				$html .= WT_I18N::translate('She had a relationship with');
+				break;
+			default:
+				$html .= WT_I18N::translate('This individual has a relationship with');
+				break;
+		}
+		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
+		$html .= $this->printRelationship($person, $spouse);
+		$html .= $this->printParents($spouse);
+		if ($family->getFacts('_NMR') && $this->printLifespan($spouse, true)) {
+			$html .= $this->printLifespan($spouse, true);
+		}
+
+		return $html;
+	}
+
+	private function printChildren($family, $person, $spouse) {
 		$html = '';
 
 		$match = null;
@@ -1203,7 +1232,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return $html;
 	}
 
-	private function print_parents($person) {
+	private function printParents($person) {
 		$parents = $person->getPrimaryChildFamily();
 		if ($parents) {
 			$pedi = $person->getChildFamilyPedigree($parents->getXref());
@@ -1255,7 +1284,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	private function print_lifespan($person, $is_spouse = false){
+	private function printLifespan($person, $is_spouse = false){
 		$html = '';
 		$birthdate = $person->getBirthDate();
 		$deathdate = $person->getDeathdate();
@@ -1273,7 +1302,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					$person->getSex() == 'F' ? $html .= WT_I18N::translate_c('PRESENT', 'She was born') : $html .= WT_I18N::translate_c('PRESENT', 'He was born');
 				}
 			} else {
-				$this->print_parents($person) || $this->print_fact($person, 'OCCU') ? $html .= ', ' : $html .= ' ';
+				$this->printParents($person) || $this->printFact($person, 'OCCU') ? $html .= ', ' : $html .= ' ';
 				if ($person->isDead()) {
 					$person->getSex() == 'F' ? $html .= WT_I18N::translate_c('PAST (FEMALE)', 'was born') : $html .= WT_I18N::translate_c('PAST (MALE)', 'was born');
 				}
@@ -1285,7 +1314,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$html .= $this->print_date($birthdate);
 			}
 			if ($person->getBirthPlace() != '') {
-				$html .= $this->print_place($person->getBirthPlace());
+				$html .= $this->printPlace($person->getBirthPlace());
 			}
 		}
 
@@ -1305,7 +1334,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$html .= $this->print_date($deathdate);
 			}
 			if ($person->getDeathPlace() != '') {
-				$html .= $this->print_place($person->getDeathPlace());
+				$html .= $this->printPlace($person->getDeathPlace());
 			}
 
 			if ($birthdate->isOK() && $deathdate->isOK()) {
@@ -1346,6 +1375,17 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			}
 			if ($mother) {
 				$html .= '<br><strong>' . WT_I18N::translate('Mother') . ':</strong> ' . strip_tags($mother->getFullName());
+			}
+		}
+		return $html;
+	}
+
+	private function printRelationship($person, $spouse) {
+		$html = '';
+		if ($this->options('check_relationship')) {
+			$relationship = $this->check_relationship($person, $spouse);
+			if ($relationship) {
+				$html .= ' (' . $relationship . ')';
 			}
 		}
 		return $html;
@@ -1476,7 +1516,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	private function print_fact($person, $tag) {
+	private function printFact($person, $tag) {
 		$facts = $person->getFacts();
 		foreach ($facts as $fact) {
 			if ($fact->getTag()== $tag) {
@@ -1488,7 +1528,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	private function print_place($place) {
+	private function printPlace($place) {
 		if($this->options('show_places') == true) {
 			$place = new WT_Place($place, WT_GED_ID);
 			$html = ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before placesnames', 'in ');
@@ -1607,16 +1647,6 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	// Determine if the family parents are married. Don't use the default function because we want to privatize the record but display the name and the parents of the spouse if the spouse him/herself is not private.
-	private function getMarriage($family) {
-		$record = WT_GedcomRecord::getInstance($family->getXref());
-		foreach ($record->getFacts('MARR', false, WT_PRIV_HIDE) as $fact) {
-			if($fact) {
-				return true;
-			}
-		}
-	}
-
 	private function getImageData() {
 		Zend_Session::writeClose();
 		header('Content-type: text/html; charset=UTF-8');
@@ -1656,7 +1686,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				}
 			}
 			if (!empty($FTV_GED_SETTINGS)) {
-				$menu = new WT_Menu(WT_I18N::translate('Tree view'), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;rootid='.$FTV_GED_SETTINGS[0]['PID'], 'menu-fancy_treeview');
+				$menu = new WT_Menu(WT_I18N::translate('Descendants'), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;rootid='.$FTV_GED_SETTINGS[0]['PID'], 'menu-fancy_treeview');
 
 				foreach($FTV_GED_SETTINGS as $FTV_ITEM) {
 					if(WT_Person::getInstance($FTV_ITEM['PID'])) {
@@ -1664,7 +1694,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 							$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;rootid='.$FTV_ITEM['PID'], 'menu-fancy_treeview-'.$FTV_ITEM['PID']);
 						}
 						else {
-							$submenu = new WT_Menu(WT_I18N::translate('Descendants of the %s family', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;rootid='.$FTV_ITEM['PID'], 'menu-fancy_treeview-'.$FTV_ITEM['PID']);
+							$submenu = new WT_Menu(WT_I18N::translate('%s family', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;rootid='.$FTV_ITEM['PID'], 'menu-fancy_treeview-'.$FTV_ITEM['PID']);
 						}
 						$menu->addSubmenu($submenu);
 					}
@@ -1677,7 +1707,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	private function ordinalize($num) {
         $suff = WT_I18N::translate('th');
-        if ( ! in_array(($num % 100), array(11,12,13))){
+        if ( !in_array(($num % 100), array(11,12,13))){
             switch ($num % 10) {
                 case 1:  $suff = WT_I18N::translate('st'); break;
                 case 2:  $suff = WT_I18N::translate('nd'); break;
