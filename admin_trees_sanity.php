@@ -95,6 +95,12 @@ $controller
 					>
 					<?php echo WT_I18N::translate('Gender'); ?>
 				</li>
+				<li class="facts_value" name="dupe_name" id="dupe_name" >
+					<input type="checkbox" name="dupe_name" value="dupe_name"
+						<?php if (WT_Filter::post('dupe_sex')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Name'); ?>
+				</li>
 			</ul>
 		</div>
 		<button type="submit" class="btn btn-primary" >
@@ -159,6 +165,14 @@ $controller
 						<ul>' . $data['html'] . '</ul>
 					</div>';
 			}
+			if (WT_Filter::post('dupe_name')) {
+				$data = identical_name();
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s with identical name records', $data['count']) . '</h5>
+						<ul>' . $data['html'] . '</ul>
+					</div>';
+			}
 		?>
 	</div>
 </div> <!-- close sanity_check page div -->
@@ -208,7 +222,6 @@ function missing_tag($tag) {
 		$count ++;
 	}
 	return array('html' => $html, 'count' => $count);
-
 }
 
 function duplicate_tag($tag) {
@@ -223,5 +236,18 @@ function duplicate_tag($tag) {
 		$count ++;
 	}
 	return array('html' => $html, 'count' => $count);
+}
 
+function identical_name() {
+	$html = '';
+	$count = 0;
+	$rows = WT_DB::prepare(
+		"SELECT n_id AS xref, COUNT(*) as count  FROM `##name` WHERE `n_file`= ? AND `n_type`= 'NAME' GROUP BY `n_id`, `n_sort` HAVING COUNT(*) > 1 "
+ 	)->execute(array(WT_GED_ID))->fetchAll();
+	foreach ($rows as $row) {
+		$person = WT_Person::getInstance($row->xref);
+		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></li>';
+		$count ++;
+	}
+	return array('html' => $html, 'count' => $count);
 }
