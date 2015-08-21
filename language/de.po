@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-07-28 17:27+1200\n"
-"PO-Revision-Date: 2015-08-12 07:48+1200\n"
+"PO-Revision-Date: 2015-08-20 09:03+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -310,7 +310,7 @@ msgstr "Woche"
 
 #: admin.php:304 calendar.php:151 library/WT/MenuBar.php:390 modules_v3/calendar_utilities/plugins/calculators.php:90
 msgid "Month"
-msgstr "Monat"
+msgstr "Monat "
 
 #: admin_media.php:61 admin_media.php:68
 #, php-format
@@ -367,7 +367,7 @@ msgstr "Verbindung setzen"
 
 #: admin_media.php:472 library/WT/Controller/Media.php:95 modules_v3/album/album_print_media.php:346
 msgid "To Person"
-msgstr "mit Person"
+msgstr "mit Person "
 
 #: admin_media.php:477 library/WT/Controller/Media.php:99 modules_v3/album/album_print_media.php:351
 msgid "To Family"
@@ -460,11 +460,11 @@ msgstr "Beschreibung"
 
 #: admin_module_blocks.php:59 admin_module_menus.php:78 admin_module_reports.php:59 admin_module_sidebar.php:78 admin_module_tabs.php:78 admin_module_widgets.php:78 modules_v3/extra_menus/module.php:253 modules_v3/fancy_treeview/module.php:550 modules_v3/gallery/module.php:320 modules_v3/simpl_pages/module.php:242
 msgid "Access level"
-msgstr "Zugriffsrechte"
+msgstr "Zugriffsrechte "
 
 #: admin_module_menus.php:75 admin_modules.php:128 admin_modules.php:157 modules_v3/extra_menus/module.php:37 modules_v3/fancy_treeview/module.php:548
 msgid "Menu"
-msgstr "Menü"
+msgstr "Menü "
 
 #: admin_module_menus.php:77 admin_module_sidebar.php:77 admin_module_tabs.php:77 admin_module_widgets.php:77 modules_v3/stories/module.php:470
 msgid "Order"
@@ -556,7 +556,7 @@ msgstr "Installations Verzeichnis"
 
 #: admin_pgv_to_wt.php:158 admin_site_merge.php:307 library/WT/I18N.php:703 modules_v3/batch_update/admin_batch_update.php:99 modules_v3/fancy_treeview/module.php:879
 msgid "next"
-msgstr "weiter"
+msgstr "weiter "
 
 #: admin_pgv_to_wt.php:1063
 msgid "You need to login again, using your PhpGedView username and password."
@@ -616,7 +616,7 @@ msgstr "Bemerkung"
 
 #: admin_site_access.php:299 admin_site_access.php:326 admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243 admin_trees_config.php:623 admin_trees_manage.php:256 edit_interface.php:112 includes/functions/functions_print_facts.php:171 includes/functions/functions_print_facts.php:717 includes/functions/functions_print_facts.php:919 includes/functions/functions_print_facts.php:1207 includes/functions/functions_print_lists.php:1077 includes/functions/functions_print_lists.php:1154 includes/functions/functions_print_lists.php:1220 includes/functions/functions_print_lists.php:1260 includes/functions/functions_print_lists.php:1322 includes/functions/functions_print_lists.php:1366 library/WT/Controller/Family.php:159 library/WT/Controller/Individual.php:361 library/WT/Controller/Media.php:128 library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106 library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:418 modules_v3/fancy_treeview/module.php:551 modules_v3/faq/module.php:403 modules_v3/gallery/module.php:532 modules_v3/gedcom_news/module.php:124 modules_v3/googlemap/admin_places.php:622 modules_v3/googlemap/admin_places.php:680 modules_v3/simpl_pages/module.php:493 modules_v3/stories/module.php:474 modules_v3/widget_blog/module.php:93 modules_v3/widget_messages/module.php:84 modules_v3/widget_messages/module.php:113
 msgid "Delete"
-msgstr "Löschen"
+msgstr "Löschen "
 
 #: admin_site_access.php:303
 msgid "This will delete all your access rules and replace with basic kiwitrees defaults. Are you sure?"
@@ -624,7 +624,7 @@ msgstr "Alle Ihre Anpassungen werden gelöscht und durch die Standardeinstellung
 
 #: admin_site_access.php:305 medialist.php:137 modules_v3/album/module.php:339 modules_v3/fancy_imagebar/module.php:275 modules_v3/fancy_treeview/module.php:649 modules_v3/fancy_treeview/module.php:650 modules_v3/googlemap/module.php:1969 modules_v3/simpl_research/module.php:118
 msgid "Reset"
-msgstr "Zurücksetzen"
+msgstr "Zurücksetzen "
 
 #: admin_site_access.php:308
 msgid "The following visitors were not recognised, and were assumed to be search engines."
@@ -681,7 +681,7 @@ msgstr "Benutzer"
 
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:140 admin_trees_manage.php:201 admin_trees_places.php:102 admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423 edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:64 modules_v3/extra_menus/module.php:372 modules_v3/fancy_imagebar/module.php:262 modules_v3/fancy_treeview/module.php:520 modules_v3/faq/module.php:360 modules_v3/gallery/module.php:493 modules_v3/googlemap/module.php:1424 modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:455 modules_v3/stories/module.php:457 modules_v3/widget_html/module.php:167
 msgid "Family tree"
-msgstr "Stammbaum"
+msgstr "Stammbaum "
 
 #: admin_site_change.php:290 admin_site_logs.php:241 find.php:189 find.php:204 find.php:222 find.php:239 find.php:256 find.php:274 find.php:291 find.php:471 library/WT/I18N.php:715 modules_v3/random_media/module.php:308
 msgid "Filter"
@@ -722,7 +722,7 @@ msgstr "Site-Einstellungen"
 
 #: admin_site_config.php:38 admin_trees_config.php:426 admin_trees_config.php:447 admin_trees_config.php:1280 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2157 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1189 modules_v3/family_nav/module.php:488 modules_v3/fancy_treeview/module.php:1116
 msgid "none"
-msgstr "keine"
+msgstr "keine "
 
 #: admin_site_config.php:39
 msgid "ssl"
@@ -914,7 +914,7 @@ msgstr "Fügen Sie Ihre Anwender-Übersetzung hier an"
 
 #: admin_site_lang.php:120 admin_site_lang.php:148 modules_v3/GEDFact_assistant/_CENS/census_4_text.php:39 modules_v3/calendar_utilities/module.php:166 modules_v3/extra_menus/module.php:268 modules_v3/fancy_imagebar/module.php:274 modules_v3/fancy_treeview/module.php:648 modules_v3/gallery/module.php:339 modules_v3/simpl_pages/module.php:261 modules_v3/simpl_research/module.php:117
 msgid "Save"
-msgstr "Speichern"
+msgstr "Speichern "
 
 #: admin_site_lang.php:129
 msgid "Edit existing translations"
@@ -1776,7 +1776,7 @@ msgstr "Auf Duplikate prüfen"
 
 #: admin_trees_duplicates.php:152 help_text.php:1235 library/WT/Gedcom/Tag.php:330 modules_v3/fancy_treeview/module.php:546
 msgid "Surname"
-msgstr "Nachname"
+msgstr "Nachname "
 
 #: admin_trees_duplicates.php:153 admin_trees_duplicates.php:165 admin_trees_duplicates.php:167
 msgid "Match exactly"
@@ -1821,11 +1821,11 @@ msgstr "Name"
 
 #: admin_trees_duplicates.php:221 admin_trees_sanity.php:84 library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1334 modules_v3/bdm_report/report.bak:56 modules_v3/change_report/report.bak:100 modules_v3/family_group_report/report.bak:177 modules_v3/family_group_report/report.bak:528 modules_v3/family_group_report/report.bak:869 modules_v3/individual_ext_report/report.bak:265 modules_v3/individual_ext_report/report.bak:301 modules_v3/individual_ext_report/report.bak:341 modules_v3/individual_ext_report/report.bak:377 modules_v3/individual_ext_report/report.bak:413 modules_v3/individual_ext_report/report.bak:471 modules_v3/individual_ext_report/report.bak:507 modules_v3/individual_ext_report/report.bak:548 modules_v3/individual_ext_report/report.bak:584 modules_v3/individual_ext_report/report.bak:620 modules_v3/individual_report/report.bak:268 modules_v3/individual_report/report.bak:304 modules_v3/individual_report/report.bak:344 modules_v3/individual_report/report.bak:380 modules_v3/individual_report/report.bak:416 modules_v3/individual_report/report.bak:474 modules_v3/individual_report/report.bak:510 modules_v3/individual_report/report.bak:551 modules_v3/individual_report/report.bak:587 modules_v3/individual_report/report.bak:623 modules_v3/relative_ext_report/report.bak:54
 msgid "Birth"
-msgstr "Geburt"
+msgstr "Geburt "
 
 #: admin_trees_duplicates.php:222 admin_trees_sanity.php:90 library/WT/Gedcom/Tag.php:185 modules_v3/fancy_treeview/module.php:1337 modules_v3/bdm_report/report.bak:85 modules_v3/change_report/report.bak:100 modules_v3/family_group_report/report.bak:284 modules_v3/family_group_report/report.bak:635 modules_v3/family_group_report/report.bak:976 modules_v3/individual_ext_report/report.bak:265 modules_v3/individual_ext_report/report.bak:301 modules_v3/individual_ext_report/report.bak:341 modules_v3/individual_ext_report/report.bak:377 modules_v3/individual_ext_report/report.bak:413 modules_v3/individual_ext_report/report.bak:471 modules_v3/individual_ext_report/report.bak:507 modules_v3/individual_ext_report/report.bak:548 modules_v3/individual_ext_report/report.bak:584 modules_v3/individual_ext_report/report.bak:620 modules_v3/individual_report/report.bak:268 modules_v3/individual_report/report.bak:304 modules_v3/individual_report/report.bak:344 modules_v3/individual_report/report.bak:380 modules_v3/individual_report/report.bak:416 modules_v3/individual_report/report.bak:474 modules_v3/individual_report/report.bak:510 modules_v3/individual_report/report.bak:551 modules_v3/individual_report/report.bak:587 modules_v3/individual_report/report.bak:623 modules_v3/relative_ext_report/report.bak:60
 msgid "Death"
-msgstr "Tod"
+msgstr "Tod "
 
 #: admin_trees_duplicates.php:224
 msgid "Merge selected"
@@ -1841,7 +1841,7 @@ msgstr "Ort"
 
 #: admin_trees_duplicates.php:244
 msgid "Married name"
-msgstr "Ehename"
+msgstr "Ehename "
 
 #: admin_trees_duplicates.php:330
 msgid "No duplicates to display"
@@ -2009,7 +2009,7 @@ msgstr "Achtung! Das kann lange dauern. Bitte um Geduld."
 
 #: admin_trees_renumber.php:284
 msgid "If your server times out, press F5 to continue"
-msgstr ""
+msgstr "Wenn Ihr Server abstürzt, bitte F5 drücken um weiterzumachen.  "
 
 #: admin_trees_sanity.php:40 themes/_administration/header.php:177
 msgid "Sanity check"
@@ -2017,7 +2017,7 @@ msgstr "Plausibilitätsprüfung"
 
 #: admin_trees_sanity.php:48
 msgid "This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time."
-msgstr ""
+msgstr "Dieser Vorgang kann lange dauern. Wenn Sie einen großen Familienstamm haben oder eine große Fehlerzahl erwarten, sollten Sie nicht alle Prüfungen auf einmal durchführen."
 
 #: admin_trees_sanity.php:54
 msgid "Date discrepancies"
@@ -2025,7 +2025,7 @@ msgstr "Datums Diskrepanzen"
 
 #: admin_trees_sanity.php:60
 msgid "Birth after baptism or christening"
-msgstr "Geburt nach Taufe"
+msgstr "Geburt nach Taufe "
 
 #: admin_trees_sanity.php:66
 msgid "Birth after death or burial"
@@ -2046,7 +2046,7 @@ msgstr "Doppelte Daten "
 #: admin_trees_sanity.php:118
 #, php-format
 msgid "%s born after baptism or christening"
-msgstr "%s Geburt nach Taufe"
+msgstr "%s Geburt nach Taufe "
 
 #: admin_trees_sanity.php:126
 #, php-format
@@ -2356,7 +2356,7 @@ msgstr "Sosa"
 
 #: branches.php:251 modules_v3/fancy_treeview/module.php:955
 msgid "Generation"
-msgstr "Generation"
+msgstr "Generation "
 
 #: calendar.php:34
 msgid "Anniversary calendar"
@@ -2408,7 +2408,7 @@ msgstr "Geburten, Sterbefälle, Heiraten"
 
 #: calendar.php:227 famlist.php:71 famlist.php:77 famlist.php:83 famlist.php:166 famlist.php:168 famlist.php:252 famlist.php:254 indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:166 indilist.php:168 indilist.php:252 indilist.php:254 library/WT/I18N.php:654 library/WT/Stats.php:3335 modules_v3/extra_menus/help_text.php:50 modules_v3/extra_menus/module.php:394 modules_v3/fancy_treeview/module.php:604 modules_v3/faq/module.php:188 modules_v3/faq/module.php:380 modules_v3/gallery/help_text.php:37 modules_v3/gallery/module.php:508 modules_v3/googlemap/admin_places.php:595 modules_v3/googlemap/admin_places.php:738 modules_v3/googlemap/module.php:1429 modules_v3/googlemap/module.php:1445 modules_v3/no_census/module.php:183 modules_v3/random_media/module.php:304 modules_v3/simpl_pages/help_text.php:37 modules_v3/simpl_pages/module.php:470 modules_v3/widget_messages/module.php:84 modules_v3/ahnentafel_report/report.bak:8 modules_v3/descendancy_report/report.bak:7 modules_v3/individual_ext_report/report.bak:7 modules_v3/individual_ext_report/report.bak:8 modules_v3/individual_ext_report/report.bak:12 modules_v3/individual_report/report.bak:9 modules_v3/missing_facts_report/report.bak:7 modules_v3/missing_facts_report/report.bak:8 modules_v3/relative_ext_report/report.bak:7
 msgid "All"
-msgstr "Alles"
+msgstr "Alles "
 
 #: calendar.php:266 includes/functions/functions_print.php:1116 includes/functions/functions_print.php:1217
 msgid "Custom Event"
@@ -2448,7 +2448,7 @@ msgstr "%s. Jahrestag"
 #: descendancy.php:118 descendancy.php:124 library/WT/Controller/Descendancy.php:99 modules_v3/charts/module.php:102 modules_v3/fancy_treeview/module.php:565 modules_v3/fancy_treeview/module.php:674 modules_v3/fancy_treeview/module.php:1664
 #, php-format
 msgid "Descendants of %s"
-msgstr "Nachkommen von %s"
+msgstr "Nachkommen von %s "
 
 #: downloadbackup.php:35
 msgid "Error"
@@ -2836,12 +2836,12 @@ msgstr "Nachfahren Stufen"
 #: famlist.php:179 indilist.php:179
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr ""
+msgstr "Schließt Personen mit “%s” als Ehename aus."
 
 #: famlist.php:181 indilist.php:181
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr ""
+msgstr "Schließt Personen mit “%s” als Ehename ein."
 
 #: famlist.php:186 indilist.php:186
 msgid "Show the list of individuals"
@@ -5320,7 +5320,7 @@ msgstr "Urenkelsohn"
 #: includes/functions/functions.php:1375
 msgctxt "child's son's wife"
 msgid "grandson's wife"
-msgstr "Enkeln's Frau"
+msgstr "Enkeln's Frau "
 
 #: includes/functions/functions.php:1376
 msgctxt "daughter's child's child"
@@ -5360,17 +5360,17 @@ msgstr "Urenkelsohn"
 #: includes/functions/functions.php:1383
 msgctxt "daughter's husband's father"
 msgid "son-in-law's father"
-msgstr "Schwiegersohns Vater"
+msgstr "Schwiegersohns Vater "
 
 #: includes/functions/functions.php:1384
 msgctxt "daughter's husband's mother"
 msgid "son-in-law's mother"
-msgstr "Schwiegersohns Mutter"
+msgstr "Schwiegersohns Mutter "
 
 #: includes/functions/functions.php:1385
 msgctxt "daughter's husband's parent"
 msgid "son-in-law's parent"
-msgstr "Schwiegersohns Eltern"
+msgstr "Schwiegersohns Eltern "
 
 #: includes/functions/functions.php:1386
 msgctxt "daughter's son's child"
@@ -7337,7 +7337,7 @@ msgstr[1] "%d angemeldete Benutzer"
 
 #: includes/functions/functions_print.php:429
 msgid "If you have any questions or comments please contact"
-msgstr "Wenn Sie Fragen oder Kommentare haben, bitte melden"
+msgstr "Wenn Sie Fragen oder Kommentare haben, bitte melden bei "
 
 #: includes/functions/functions_print.php:434 themes/levy/functions.php:61
 msgid "For technical support and information contact"
@@ -7526,7 +7526,7 @@ msgstr "Nur Personen unbekannten Geschlechts zeigen."
 
 #: includes/functions/functions_print_lists.php:177 includes/functions/functions_print_lists.php:628
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Zeige Lebende oder Paare deren beide Partner lebend sind."
+msgstr "Zeige Lebende oder Paare deren beide Partner lebend sind. "
 
 #: includes/functions/functions_print_lists.php:180
 msgid "Alive"
@@ -7780,7 +7780,7 @@ msgstr "Die Details dieser Person sind vertraulich."
 
 #: individual.php:91 library/WT/Controller/Chart.php:48 modules_v3/fancy_treeview/module.php:846 modules_v3/fancy_treeview/module.php:892
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "Diese Person existiert nicht oder Sie haben keine Berechtigung sie anzusehen."
+msgstr "Diese Person existiert nicht oder Sie haben keine Berechtigung sie anzusehen. "
 
 #: individual.php:258
 msgid "Click here to open or close the sidebar"
@@ -7805,7 +7805,7 @@ msgstr "Vorfahren von %s"
 
 #: library/WT/Controller/Ancestry.php:145 library/WT/Stats.php:2636 library/WT/Stats.php:2661 library/WT/Stats.php:2672 library/WT/Stats.php:2682 library/WT/Stats.php:3437 modules_v3/fancy_treeview/module.php:1097 modules_v3/ahnentafel_report/report.bak:400 modules_v3/descendancy_report/report.bak:131 modules_v3/descendancy_report/report.bak:229 modules_v3/descendancy_report/report.bak:298 modules_v3/descendancy_report/report.bak:362 modules_v3/descendancy_report/report.bak:432 modules_v3/descendancy_report/report.bak:485
 msgid "and"
-msgstr "und"
+msgstr "und "
 
 #: library/WT/Controller/Compact.php:48 library/WT/Controller/Compact.php:118
 #, php-format
@@ -10709,11 +10709,11 @@ msgstr "Beerdigung"
 
 #: library/WT/Gedcom/Tag.php:149
 msgid "Date of burial"
-msgstr "Begräbnisdatum"
+msgstr "Begräbnisdatum "
 
 #: library/WT/Gedcom/Tag.php:150
 msgid "Place of burial"
-msgstr "Ort: Begräbnis"
+msgstr "Ort: Begräbnis "
 
 #: library/WT/Gedcom/Tag.php:151
 msgid "Call number"
@@ -10761,11 +10761,11 @@ msgstr "Zeichensatz"
 
 #: library/WT/Gedcom/Tag.php:163 modules_v3/family_group_report/report.bak:201 modules_v3/family_group_report/report.bak:552 modules_v3/family_group_report/report.bak:893
 msgid "Christening"
-msgstr "Taufe"
+msgstr "Taufe "
 
 #: library/WT/Gedcom/Tag.php:164
 msgid "Date of christening"
-msgstr "Taufdatum"
+msgstr "Taufdatum "
 
 #: library/WT/Gedcom/Tag.php:165
 msgid "Place of christening"
@@ -11572,27 +11572,27 @@ msgstr "Ort der Brit Mila"
 
 #: library/WT/Gedcom/Tag.php:479
 msgid "Burial of a son"
-msgstr "Beerdigung eines Sohns"
+msgstr "Beerdigung eines Sohns "
 
 #: library/WT/Gedcom/Tag.php:480
 msgid "Burial of a daughter"
-msgstr "Beerdigung einer Tochter"
+msgstr "Beerdigung einer Tochter "
 
 #: library/WT/Gedcom/Tag.php:481
 msgid "Burial of a child"
-msgstr "Kind: Beerdigung"
+msgstr "Kind: Beerdigung "
 
 #: library/WT/Gedcom/Tag.php:485
 msgid "Burial of a grandson"
-msgstr "Beerdigung eines Enkelsohns"
+msgstr "Beerdigung eines Enkelsohns "
 
 #: library/WT/Gedcom/Tag.php:486
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkeltochter"
+msgstr "Beerdigung einer Enkeltochter "
 
 #: library/WT/Gedcom/Tag.php:487 library/WT/Gedcom/Tag.php:493 library/WT/Gedcom/Tag.php:499
 msgid "Burial of a grandchild"
-msgstr "Enkel: Beerdigung"
+msgstr "Enkel: Beerdigung "
 
 #: library/WT/Gedcom/Tag.php:491
 msgctxt "daughter's son"
@@ -11602,7 +11602,7 @@ msgstr "Beerdigung eines Enkels"
 #: library/WT/Gedcom/Tag.php:492
 msgctxt "daughter's daughter"
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkelin"
+msgstr "Beerdigung einer Enkelin "
 
 #: library/WT/Gedcom/Tag.php:497
 msgctxt "son's son"
@@ -11612,15 +11612,15 @@ msgstr "Beerdigung eines Enkels"
 #: library/WT/Gedcom/Tag.php:498
 msgctxt "son's daughter"
 msgid "Burial of a granddaughter"
-msgstr "Beerdigung einer Enkelin"
+msgstr "Beerdigung einer Enkelin "
 
 #: library/WT/Gedcom/Tag.php:503
 msgid "Burial of a grandfather"
-msgstr "Beerdigung eines Großvaters"
+msgstr "Beerdigung eines Großvaters "
 
 #: library/WT/Gedcom/Tag.php:504
 msgid "Burial of a grandmother"
-msgstr "Beerdigung einer Großmutter"
+msgstr "Beerdigung einer Großmutter "
 
 #: library/WT/Gedcom/Tag.php:505
 msgid "Burial of a grandparent"
@@ -12840,7 +12840,7 @@ msgstr "Durchschnittsalter bezogen auf Ehejahrhundert"
 msgid "%s child"
 msgid_plural "%s children"
 msgstr[0] "%s Kind"
-msgstr[1] "%s Kinder"
+msgstr[1] "%s Kinder "
 
 #: library/WT/Stats.php:2807 statistics.php:526 statisticsplot.php:908
 msgid "Month of birth of first child in a relation"
@@ -13760,7 +13760,7 @@ msgstr "UdSSR"
 
 #: library/WT/Stats.php:4004
 msgid "Suriname"
-msgstr "Suriname"
+msgstr "Surinam "
 
 #: library/WT/Stats.php:4005
 msgid "Slovakia"
@@ -14780,19 +14780,19 @@ msgstr "Ein Bericht der Personen, die zu einem gegebenen Zeitpunkt und Ort gebor
 
 #: modules_v3/calendar_utilities/module.php:35
 msgid "Calendar utilities"
-msgstr ""
+msgstr "Kalender Hilfsprogramme"
 
 #: modules_v3/calendar_utilities/module.php:40
 msgid "A selection of calendar utility tools"
-msgstr ""
+msgstr "Eine Auswahl der Kalender Hilfsprogramme"
 
 #: modules_v3/calendar_utilities/module.php:150
 msgid "Select the utilities you want to display"
-msgstr ""
+msgstr "Wählen Sie die Hilfsprogramme zur Anzeige aus"
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:30
 msgid "Calculators"
-msgstr ""
+msgstr "Rechner "
 
 #: modules_v3/calendar_utilities/plugins/calculators.php:74
 msgid "Day of the Week Calculator"
@@ -14866,7 +14866,7 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/ecclesiastical.php:287 modules_v3/calendar_utilities/plugins/old_new.php:61 modules_v3/calendar_utilities/plugins/regnal_years.php:55
 msgid "Help with English calendar"
-msgstr ""
+msgstr "Hilfe zum englischen Kalender"
 
 #: modules_v3/calendar_utilities/plugins/old_new.php:29
 msgid "Old & New Style Dates"
@@ -15099,7 +15099,7 @@ msgstr ""
 
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:30
 msgid "Yearly Calendar"
-msgstr ""
+msgstr "Jährlicher Kalender"
 
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:67 modules_v3/calendar_utilities/plugins/yearly_calendar.php:128
 msgid "Saint Pauls Day"
@@ -15682,7 +15682,7 @@ msgstr "%s zum Sammelbehälter hinzufügen"
 
 #: modules_v3/clippings/module.php:616 modules_v3/extra_menus/module.php:269 modules_v3/fancy_treeview/module.php:506 modules_v3/gallery/module.php:341 modules_v3/simpl_pages/module.php:263
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Abbrechen "
 
 #: modules_v3/contact/module.php:28 modules_v3/contact/module.php:52
 msgid "Contact"
@@ -15755,7 +15755,7 @@ msgstr "Familie mütterlicherseits (%s)"
 
 #: modules_v3/custom_js/module.php:35
 msgid "Custom JavaScript"
-msgstr "Custom JavaScript"
+msgstr "Eigenes JavaScript "
 
 #: modules_v3/custom_js/module.php:40
 msgid "Allows you to easily add Custom JavaScript to your webtrees site."
@@ -15959,7 +15959,7 @@ msgstr "unmittelbare Familienangehörige"
 
 #: modules_v3/fancy_imagebar/help_text.php:35
 msgid "Showing images on the Fancy Imagebar"
-msgstr "Bilder anzeigen in der Fancy Imagebar"
+msgstr "Bilder in der Fancy Imagebar anzeigen"
 
 #: modules_v3/fancy_imagebar/help_text.php:36
 msgid "Here you can choose which images should be shown in the Fancy Imagebar. Uncheck the images you do not want to show.<br><br>If there are less images choosen then needed to fill up the entire Fancy Imagebar, the images will be repeated.<br><br>Note: Only local ’jpg’ or ’png’ images which are set as type = ’photo’ are supported by this module. External images are not supported. It is not possible to keep transparency for png thumbnails in the Fancy Imagebar. Transparent png-thumbnails will get a black background in the Fancy Imagebar. The images shown in this table have the right specifications already.<br><br>The Fancy Imagebar module respects privacy settings!"
@@ -16045,7 +16045,7 @@ msgstr "Verwandtschaftsverhältnis zwischen den Partnern prüfen"
 
 #: modules_v3/fancy_treeview/help_text.php:52
 msgid "<p>With this option turned on, the script checks if a (married) couple has the same ancestors.</p><p>If a relationship between the partners is found, a text will appear between brackets after the spouses’ name to indicate the relationship.</p><p>Note: this option can cause slower page loading, especially on large trees. If you notice such a behavior, reduce the number of generation blocks to load at once (see the previous option).</p>"
-msgstr ""
+msgstr "<p> Solange diese Option aktiviert ist, überprüft das Skript, ob ein (Ehe-) Paar die gleichen Vorfahren hat. </ P> <p> Wenn eine Beziehung zwischen den Partnern festgestellt wird, wird ein Text in Klammern nach dem Namen der Eheleute erscheinen, der die Beziehung zeigt  </ p> <p>. Hinweis: diese Option kann besonders bei großen Stammbäumen langsameren Seitenaufbau verursachen. Wenn Sie ein solches Verhalten feststellen, reduzieren die Anzahl der Generation Blöcke die Sie auf einmal laden (siehe vorherige Option). </ P>"
 
 #: modules_v3/fancy_treeview/help_text.php:57 modules_v3/fancy_treeview/module.php:611
 msgid "Show single persons"
@@ -16089,24 +16089,24 @@ msgstr ""
 
 #: modules_v3/fancy_treeview/module.php:47
 msgid "Fancy Tree View"
-msgstr ""
+msgstr "Elegante Baumansicht"
 
 #: modules_v3/fancy_treeview/module.php:52
 msgid "A Fancy overview of the descendants of one family(branch) in a narrative way"
-msgstr ""
+msgstr "Ein eleganter Überblick der Nachkommen eines Familienzweiges in erzählender Form. "
 
 #: modules_v3/fancy_treeview/module.php:274
 msgid "Error: The surname you entered doesn’t exist in this tree."
-msgstr ""
+msgstr "Fehler: Den eingegebenen Familienname  gibt es in diesem Stammbaum nicht.  "
 
 #: modules_v3/fancy_treeview/module.php:283 modules_v3/fancy_treeview/module.php:353
 msgid "Error: The root person you are trying to add has no partner and/or children. It is not possible to set this individual as root person."
-msgstr ""
+msgstr "Fehler: Die Ausgangsperson die Sie versucht haben hinzuzufügen, hat keine Partner oder Kinder. So ist es nicht möglich diese Person als Ausgangsperson zu verwenden."
 
 #: modules_v3/fancy_treeview/module.php:290 modules_v3/fancy_treeview/module.php:362
 #, php-format
 msgid "Error: An individual with ID %s doesn’t exist in this tree."
-msgstr ""
+msgstr "Fehler: Die eingegebene Person %s  gibt es in diesem Stammbaum nicht.  "
 
 #: modules_v3/fancy_treeview/module.php:317
 msgid "Error: The root person belonging to this surname already exists"
@@ -16135,7 +16135,7 @@ msgstr "Bearbeiten der Startperson"
 #: modules_v3/fancy_treeview/module.php:587
 #, php-format
 msgid "The person with root id %s doesn’t exist anymore in this tree"
-msgstr ""
+msgstr "Die Person mit der Ausgangs-ID %s  gibt es in diesem Stammbaum nicht.  "
 
 #: modules_v3/fancy_treeview/module.php:597
 msgid "General Options"
@@ -16147,7 +16147,7 @@ msgstr "Orte anzeigen?"
 
 #: modules_v3/fancy_treeview/module.php:617
 msgid "Use default Gedcom settings to abbreviate place names?"
-msgstr ""
+msgstr "Nutzen Sie die GEDCOM - Voreinstellungen um die Orts-Namen abzukürzen."
 
 #: modules_v3/fancy_treeview/module.php:626
 msgid "Show occupations"
@@ -16159,7 +16159,7 @@ msgstr "Größe der Vorschaubilder"
 
 #: modules_v3/fancy_treeview/module.php:635
 msgid "percent"
-msgstr "Prozent"
+msgstr "Prozent "
 
 #: modules_v3/fancy_treeview/module.php:635
 msgid "pixels"
@@ -16167,7 +16167,7 @@ msgstr "Pixel"
 
 #: modules_v3/fancy_treeview/module.php:638
 msgid "Use square thumbnails"
-msgstr "Platz Thumbnails verwenden"
+msgstr "Quadratische Vorschaubilder verwenden "
 
 #: modules_v3/fancy_treeview/module.php:642
 msgid "Show form to change start person"
@@ -16175,7 +16175,7 @@ msgstr "Zeige Formular um den Beginn der Person zu ändern"
 
 #: modules_v3/fancy_treeview/module.php:690 modules_v3/fancy_treeview/module.php:693
 msgid "follow"
-msgstr "folge"
+msgstr "folge "
 
 #: modules_v3/fancy_treeview/module.php:871
 msgid "Change root person"
@@ -16183,15 +16183,15 @@ msgstr "Ändere die Startperson"
 
 #: modules_v3/fancy_treeview/module.php:872
 msgid "ID"
-msgstr "ID"
+msgstr "ID "
 
 #: modules_v3/fancy_treeview/module.php:874
 msgid "Go"
-msgstr "Start"
+msgstr "Start "
 
 #: modules_v3/fancy_treeview/module.php:957 modules_v3/faq/module.php:319
 msgid "back to top"
-msgstr "zurück nach oben"
+msgstr "zurück nach oben "
 
 #: modules_v3/fancy_treeview/module.php:962
 msgid "The details of this generation are private."
@@ -16200,12 +16200,12 @@ msgstr "Die Einzelheiten zu dieser Generation sind nicht öffentlich."
 #: modules_v3/fancy_treeview/module.php:1056
 #, php-format
 msgid "He married %s times"
-msgstr "Er heiratete  %s mal"
+msgstr "Er heiratete  %s mal "
 
 #: modules_v3/fancy_treeview/module.php:1056
 #, php-format
 msgid "She married %s times"
-msgstr "Sie heiratete  %s mal"
+msgstr "Sie heiratete  %s mal "
 
 #: modules_v3/fancy_treeview/module.php:1060
 #, php-format
@@ -16219,62 +16219,62 @@ msgstr "Zu diesen Zeitpunkt  %s heiratete sie."
 
 #: modules_v3/fancy_treeview/module.php:1063 modules_v3/ahnentafel_report/report.bak:258 modules_v3/descendancy_report/report.bak:172
 msgid "He married"
-msgstr "Er heiratete"
+msgstr "Er heiratete "
 
 #: modules_v3/fancy_treeview/module.php:1063 modules_v3/ahnentafel_report/report.bak:259 modules_v3/descendancy_report/report.bak:241
 msgid "She married"
-msgstr "Sie heiratete"
+msgstr "Sie heiratete "
 
 #: modules_v3/fancy_treeview/module.php:1097
 msgid "divorced"
-msgstr "geschieden"
+msgstr "geschieden "
 
 #: modules_v3/fancy_treeview/module.php:1110 modules_v3/fancy_treeview/module.php:1125 modules_v3/fancy_treeview/module.php:1144 modules_v3/fancy_treeview/module.php:1248 modules_v3/fancy_treeview/module.php:1297
 msgid "and "
-msgstr "und"
+msgstr "und "
 
 #: modules_v3/fancy_treeview/module.php:1111 modules_v3/fancy_treeview/module.php:1129
 msgctxt "Two parents/one child"
 msgid "had"
-msgstr "hat"
+msgstr "hat "
 
 #: modules_v3/fancy_treeview/module.php:1114 modules_v3/fancy_treeview/module.php:1136
 msgctxt "One parent/one child"
 msgid "had"
-msgstr "hat"
+msgstr "hat "
 
 #: modules_v3/fancy_treeview/module.php:1116 statisticsplot.php:929
 msgid "children"
-msgstr "Kinder"
+msgstr "Kinder "
 
 #: modules_v3/fancy_treeview/module.php:1127
 msgctxt "Two parents/multiple children"
 msgid "had"
-msgstr "hat"
+msgstr "hat "
 
 #: modules_v3/fancy_treeview/module.php:1134
 msgctxt "One parent/multiple children"
 msgid "had"
-msgstr "hat"
+msgstr "hat "
 
 #: modules_v3/fancy_treeview/module.php:1142 modules_v3/ahnentafel_report/report.bak:397 modules_v3/descendancy_report/report.bak:482
 msgid "Children of "
-msgstr "Kinder von"
+msgstr "Kinder von "
 
 #: modules_v3/fancy_treeview/module.php:1172
 msgctxt "FEMALE"
 msgid "foster child"
-msgstr "Pflegekind"
+msgstr "Pflegekind "
 
 #: modules_v3/fancy_treeview/module.php:1174
 msgctxt "MALE"
 msgid "foster child"
-msgstr "Pflegekind"
+msgstr "Pflegekind "
 
 #: modules_v3/fancy_treeview/module.php:1179
 msgctxt "FEMALE"
 msgid "adopted"
-msgstr "adoptiert"
+msgstr "adoptiert "
 
 #: modules_v3/fancy_treeview/module.php:1181
 msgctxt "MALE"
@@ -16283,7 +16283,7 @@ msgstr "adoptiert"
 
 #: modules_v3/fancy_treeview/module.php:1215
 msgid "foster son of"
-msgstr "Pflegesohn von"
+msgstr "Pflegesohn von "
 
 #: modules_v3/fancy_treeview/module.php:1217
 msgid "adopted son of"
@@ -16291,11 +16291,11 @@ msgstr "Adoptivsohn von "
 
 #: modules_v3/fancy_treeview/module.php:1219 modules_v3/descendancy_report/report.bak:294
 msgid "son of"
-msgstr "Sohn von"
+msgstr "Sohn von "
 
 #: modules_v3/fancy_treeview/module.php:1224
 msgid "foster daughter of"
-msgstr "Pflegetochter von"
+msgstr "Pflegetochter von "
 
 #: modules_v3/fancy_treeview/module.php:1226
 msgid "adopted daughter of"
@@ -16303,16 +16303,16 @@ msgstr "Adoptivtochter von "
 
 #: modules_v3/fancy_treeview/module.php:1228 modules_v3/descendancy_report/report.bak:225
 msgid "daughter of"
-msgstr "Tochter von"
+msgstr "Tochter von "
 
 #: modules_v3/fancy_treeview/module.php:1233
 msgctxt "MALE"
 msgid "foster child of"
-msgstr "Pflegekind von"
+msgstr "Pflegekind von "
 
 #: modules_v3/fancy_treeview/module.php:1235
 msgid "adopted child of"
-msgstr "adoptiertes Kind von"
+msgstr "adoptiertes Kind von "
 
 #: modules_v3/fancy_treeview/module.php:1237
 msgid "child of"
@@ -16321,120 +16321,120 @@ msgstr "Kind von"
 #: modules_v3/fancy_treeview/module.php:1270
 msgctxt "PAST"
 msgid "She was born"
-msgstr "Sie wurde geboren"
+msgstr "Sie wurde geboren "
 
 #: modules_v3/fancy_treeview/module.php:1270
 msgctxt "PAST"
 msgid "He was born"
-msgstr "Er wurde geboren"
+msgstr "Er wurde geboren "
 
 #: modules_v3/fancy_treeview/module.php:1273
 msgctxt "PRESENT"
 msgid "She was born"
-msgstr "Sie wurde geboren"
+msgstr "Sie wurde geboren "
 
 #: modules_v3/fancy_treeview/module.php:1273
 msgctxt "PRESENT"
 msgid "He was born"
-msgstr "Er wurde geboren"
+msgstr "Er wurde geboren "
 
 #: modules_v3/fancy_treeview/module.php:1278
 msgctxt "PAST (FEMALE)"
 msgid "was born"
-msgstr "wurde geboren"
+msgstr "wurde geboren  "
 
 #: modules_v3/fancy_treeview/module.php:1278
 msgctxt "PAST (MALE)"
 msgid "was born"
-msgstr "wurde geboren"
+msgstr "wurde geboren "
 
 #: modules_v3/fancy_treeview/module.php:1281
 msgctxt "PRESENT (FEMALE)"
 msgid "was born"
-msgstr "wurde geboren"
+msgstr "wurde geboren "
 
 #: modules_v3/fancy_treeview/module.php:1281
 msgctxt "PRESENT (MALE)"
 msgid "was born"
-msgstr "wurde geboren"
+msgstr "wurde geboren "
 
 #: modules_v3/fancy_treeview/module.php:1298 modules_v3/descendancy_report/report.bak:137 modules_v3/descendancy_report/report.bak:364
 msgctxt "FEMALE"
 msgid "died"
-msgstr "starb"
+msgstr "starb "
 
 #: modules_v3/fancy_treeview/module.php:1298 modules_v3/descendancy_report/report.bak:134 modules_v3/descendancy_report/report.bak:434
 msgctxt "MALE"
 msgid "died"
-msgstr "starb"
+msgstr "starb "
 
 #: modules_v3/fancy_treeview/module.php:1301 modules_v3/ahnentafel_report/report.bak:290
 msgid "She died"
-msgstr "Sie starb"
+msgstr "Sie starb "
 
 #: modules_v3/fancy_treeview/module.php:1301 modules_v3/ahnentafel_report/report.bak:289
 msgid "He died"
-msgstr "Er starb"
+msgstr "Er starb "
 
 #: modules_v3/fancy_treeview/module.php:1313
 #, php-format
 msgctxt "age in days/months"
 msgid "at the age of %s"
-msgstr "im Alter von %s"
+msgstr "im Alter von %s "
 
 #: modules_v3/fancy_treeview/module.php:1316
 #, php-format
 msgctxt "age in years"
 msgid "at the age of %s"
-msgstr "im Alter von %s"
+msgstr "im Alter von %s "
 
 #: modules_v3/fancy_treeview/module.php:1345 search_advanced.php:212 modules_v3/bdm_report/report.bak:116 modules_v3/family_group_report/report.bak:462 modules_v3/family_group_report/report.bak:722 modules_v3/individual_ext_report/report.bak:235 modules_v3/individual_report/report.bak:238 modules_v3/relative_ext_report/report.bak:62
 msgid "Father"
-msgstr "Vater"
+msgstr "Vater "
 
 #: modules_v3/fancy_treeview/module.php:1348 search_advanced.php:249 modules_v3/bdm_report/report.bak:118 modules_v3/family_group_report/report.bak:469 modules_v3/family_group_report/report.bak:729 modules_v3/individual_ext_report/report.bak:271 modules_v3/individual_report/report.bak:274 modules_v3/relative_ext_report/report.bak:63
 msgid "Mother"
-msgstr "Mutter"
+msgstr "Mutter "
 
 #: modules_v3/fancy_treeview/module.php:1460
 msgctxt "before dateformat dd-mm-yyyy"
 msgid "on "
-msgstr "am"
+msgstr "am "
 
 #: modules_v3/fancy_treeview/module.php:1463
 msgctxt "before dateformat mmm yyyy"
 msgid "in "
-msgstr "im"
+msgstr "in "
 
 #: modules_v3/fancy_treeview/module.php:1466
 msgctxt "before dateformat yyyy"
 msgid "in "
-msgstr "im"
+msgstr "in "
 
 #: modules_v3/fancy_treeview/module.php:1494
 msgctxt "before placesnames"
 msgid "in "
-msgstr "in"
+msgstr "in "
 
 #: modules_v3/fancy_treeview/module.php:1659
 msgid "Tree view"
-msgstr "Baumansicht"
+msgstr "Baumansicht "
 
 #: modules_v3/fancy_treeview/module.php:1679
 msgid "th"
-msgstr "th"
+msgstr "th "
 
 #: modules_v3/fancy_treeview/module.php:1682
 msgid "st"
-msgstr "st"
+msgstr "st "
 
 #: modules_v3/fancy_treeview/module.php:1683
 msgid "nd"
-msgstr "nd"
+msgstr "nd "
 
 #: modules_v3/fancy_treeview/module.php:1684
 msgid "rd"
-msgstr "rd"
+msgstr "rd "
 
 #: modules_v3/faq/help_text.php:34 modules_v3/faq/module.php:283
 msgid "Frequently asked questions"
@@ -16510,11 +16510,11 @@ msgstr "Diesen Block in welchen Sprachen zeigen?"
 
 #: modules_v3/faq/module.php:285
 msgid "Click on a title to go straight to it, or scroll down to read them all"
-msgstr ""
+msgstr "Klicken sie auf einen Titel um direkt dahin zu gehen oder scrollen sie um alle zu lesen"
 
 #: modules_v3/faq/module.php:288
 msgid "Click here to Add, Edit, or Delete"
-msgstr ""
+msgstr "Klicken Sie hier um hinzuzufügen,  zu ändern oder zu löschen"
 
 #: modules_v3/faq/module.php:372
 msgid "The FAQ list is empty."
@@ -16530,7 +16530,7 @@ msgstr "Position der Galerie"
 
 #: modules_v3/gallery/help_text.php:31
 msgid "This field controls the order in which the galleries are displayed."
-msgstr ""
+msgstr "Dieses Feld legt die Reihenfolge fest, in der die Gallerien  angezeigt werden."
 
 #: modules_v3/gallery/help_text.php:31
 msgid "You do not have to enter the numbers sequentially. If you leave holes in the numbering scheme, you can insert other albums later. For example, if you use the numbers 1, 6, 11, 16, you can later insert albums with the missing sequence numbers. Negative numbers and zero are allowed, and can be used to insert albums in front of the first one."
@@ -16710,7 +16710,7 @@ msgstr "verwandte Familienbilder"
 
 #: modules_v3/gallery/module.php:766
 msgid "Linked to:"
-msgstr "Verbunden mit"
+msgstr "Verbunden mit: "
 
 #: modules_v3/gallery/module.php:800
 msgid "Gallery is empty. Please choose other gallery."
@@ -17479,7 +17479,7 @@ msgstr ""
 
 #: modules_v3/no_census/module.php:123
 msgid "Enter a surname, then select any combination of the two options Census place and Census date"
-msgstr ""
+msgstr "Eingabe des  Nachnamens und dann die Kombination der beiden Optionen: Ort und Datum der Volkszählung"
 
 #: modules_v3/no_census/module.php:129
 msgid "Select <b>All</b> for everyone, or leave blank for your own ancestors"
@@ -17646,7 +17646,7 @@ msgstr "Wenn Sie einen leeren Block verbergen, können Sie seine Konfiguration e
 
 #: modules_v3/relative_ext_report/module.php:36 modules_v3/relative_ext_report/report.bak:4 modules_v3/relative_ext_report/report.bak:41
 msgid "Related individuals"
-msgstr "Verwandte Personen"
+msgstr "Verwandte Personen "
 
 #: modules_v3/relative_ext_report/module.php:42 modules_v3/relative_ext_report/report.bak:5
 msgid "A report of the individuals that are closely related to an individual."
@@ -18012,7 +18012,7 @@ msgstr "Soll diese Geschichte gelöscht werden?"
 
 #: modules_v3/stories/module.php:503
 msgid "Are you sure you want to link to this story?"
-msgstr ""
+msgstr "Sind Sie sicher dass Sie diese Geschichte verbinden wollen?"
 
 #: modules_v3/todays_events/module.php:32 modules_v3/widget_todays_events/module.php:35
 msgid "On this day"
@@ -18161,7 +18161,7 @@ msgstr "Tochter von %s"
 #: modules_v3/tree/class_treeview.php:339
 #, php-format
 msgid "Child of %s"
-msgstr "Kind von %s"
+msgstr "Kind von %s "
 
 #: modules_v3/tree/module.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
@@ -18237,15 +18237,15 @@ msgstr "Antwort"
 
 #: modules_v3/widget_messages/module.php:116
 msgid "Delete Selected Messages"
-msgstr ""
+msgstr "Löschen der ausgewählten Meldungen"
 
 #: modules_v3/widget_quicklinks/module.php:35
 msgid "Quick links"
-msgstr ""
+msgstr "Quick links "
 
 #: modules_v3/widget_quicklinks/module.php:40
 msgid "A selection of links for a user."
-msgstr ""
+msgstr "Eine Auswahl der \"Links\" für einen Nutzer"
 
 #: modules_v3/widget_theme_select/module.php:35
 msgid "Theme change"
@@ -18299,16 +18299,16 @@ msgstr "Ortsliste"
 
 #: placelist.php:61
 msgid "Switch to Place hierarchy"
-msgstr ""
+msgstr "Auf Orts-Hierarchie umschalten"
 
 #: placelist.php:107
 msgid "Switch to list view"
-msgstr ""
+msgstr "Auf Listenansicht umschalten"
 
 #: placelist.php:128
 #, php-format
 msgid "Places in %s"
-msgstr "Orte in %s"
+msgstr "Orte in %s "
 
 #: placelist.php:145
 #, php-format
@@ -18470,11 +18470,11 @@ msgstr "Genau"
 
 #: search_advanced.php:161 search_advanced.php:223 search_advanced.php:238 search_advanced.php:260 search_advanced.php:275
 msgid "Begins with"
-msgstr "Beginnt mit"
+msgstr "Beginnt mit "
 
 #: search_advanced.php:162 search_advanced.php:224 search_advanced.php:239 search_advanced.php:261 search_advanced.php:276
 msgid "Contains"
-msgstr "Enthält"
+msgstr "Enthält "
 
 #: search_advanced.php:163 search_advanced.php:225 search_advanced.php:240 search_advanced.php:262 search_advanced.php:277
 msgid "Sounds like"
@@ -18486,11 +18486,11 @@ msgstr "Mehr Felder hinzufügen"
 
 #: setup.php:124
 msgid "Installing kiwitrees"
-msgstr ""
+msgstr "Installieren Sie kiwitrees "
 
 #: setup.php:135
 msgid "Select your default language"
-msgstr ""
+msgstr "Voreingestellte Sprache wählen"
 
 #: setup.php:138
 msgid "1 - Checking your server configuration"
@@ -18685,7 +18685,7 @@ msgstr "Administrator Konto"
 
 #: setup.php:422
 msgid "You need to set up an administrator account.  This account can control all aspects of this <b>Kiwitrees</b> installation.  Please choose a strong password."
-msgstr ""
+msgstr "Sie müssen einen Administrator-Account einrichten. Dieser Account kann alle Belange der  <b>Kiwitrees</b> Installation kontrollieren/ beeinflussen. Bitte wählen Sie eine \"starkes\" Paßwort"
 
 #: setup.php:426
 msgid "Your name"
@@ -18804,7 +18804,7 @@ msgstr "Anzahl weibliche Personen"
 
 #: statistics.php:85
 msgid "Total living"
-msgstr "Anzahl Lebende"
+msgstr "Anzahl Lebende "
 
 #: statistics.php:86
 msgid "Total dead"
@@ -18840,7 +18840,7 @@ msgstr "Höchstes erreichtes Alter"
 
 #: statistics.php:166
 msgid "Oldest living people"
-msgstr "Höchstes Alter noch lebender Personen"
+msgstr "Höchstes Alter noch lebender Personen "
 
 #: statistics.php:183
 msgid "Total given names"
@@ -18900,7 +18900,7 @@ msgstr "Älteste Frau"
 
 #: statistics.php:273
 msgid "Age at birth of child"
-msgstr "Alter bei Geburt des Kindes"
+msgstr "Alter bei Geburt des Kindes "
 
 #: statistics.php:276
 msgid "Youngest father"
@@ -18920,7 +18920,7 @@ msgstr "Älteste Mutter"
 
 #: statistics.php:293
 msgid "Children in family"
-msgstr "Anzahl Kinder"
+msgstr "Anzahl Kinder "
 
 #: statistics.php:309
 msgid "Largest number of grandchildren"
@@ -18932,11 +18932,11 @@ msgstr "Altersunterschied"
 
 #: statistics.php:320
 msgid "Age between siblings"
-msgstr "Altersunterschiede zwischen Geschwistern"
+msgstr "Altersunterschiede zwischen Geschwistern "
 
 #: statistics.php:321
 msgid "Greatest age between siblings"
-msgstr "Größter Altersunterschied zwischen Geschwistern"
+msgstr "Größter Altersunterschied zwischen Geschwistern "
 
 #: statistics.php:328
 msgid "Age between husband and wife"
@@ -18956,7 +18956,7 @@ msgstr "Letzes Ereignis"
 
 #: statistics.php:400
 msgid "Birth places"
-msgstr ""
+msgstr "Geburtsorte"
 
 #: statistics.php:401
 msgid "Death places"
@@ -18968,7 +18968,7 @@ msgstr "Heiratsort"
 
 #: statistics.php:409
 msgid "Events in countries"
-msgstr "Ereignisse in Ländern"
+msgstr "Ereignisse in Ländern "
 
 #: statistics.php:422
 msgid "Create your own chart"
@@ -19004,15 +19004,15 @@ msgstr "Alter bezogen auf Geburtsjahr"
 
 #: statistics.php:546 statisticsplot.php:926
 msgid "Age in year of first marriage"
-msgstr "Alter im Jahr der ersten Ehe"
+msgstr "Alter im Jahr der ersten Ehe "
 
 #: statistics.php:554
 msgid "Individual distribution"
-msgstr "Personenverteilung"
+msgstr "Personenverteilung "
 
 #: statistics.php:568 statistics.php:579 statistics.php:588
 msgid "Select the desired age interval"
-msgstr "Wählen Sie die gewünschte Alters-Zeitspanne"
+msgstr "Wählen Sie die gewünschte Alters-Zeitspanne "
 
 #: statistics.php:571 statistics.php:573 statistics.php:575 statistics.php:582 statistics.php:584
 #, php-format
@@ -19047,7 +19047,7 @@ msgstr "Spanne: 1 Kind"
 
 #: statistics.php:600
 msgid "interval two children"
-msgstr "Spanne: 2 Kinder"
+msgstr "Spanne: 2 Kinder "
 
 #: statistics.php:617
 msgid "Geographical area"
@@ -19083,11 +19083,11 @@ msgstr "Kategorien:"
 
 #: statistics.php:633
 msgid "overall"
-msgstr "insgesamt"
+msgstr "insgesamt "
 
 #: statistics.php:637
 msgid "gender"
-msgstr ""
+msgstr "Geschlecht"
 
 #: statistics.php:641
 msgid "date periods"
@@ -19131,7 +19131,7 @@ msgstr "%s noch nicht umgesetzt"
 
 #: statisticsplot.php:803
 msgid " per gender"
-msgstr ""
+msgstr "pro Geschlecht"
 
 #: statisticsplot.php:805
 msgid " per time period"
@@ -19195,7 +19195,7 @@ msgstr "Stammbaum-Tools"
 
 #: themes/_administration/header.php:168
 msgid "Check for GEDCOM errors"
-msgstr ""
+msgstr "Prüfung auf GEDCOM Fehler"
 
 #: themes/_administration/header.php:169
 msgid "Changes log"
@@ -19271,7 +19271,7 @@ msgstr "Unterstützt durch"
 
 #: themes/colors/header.php:151 themes/kiwitrees/header.php:166 themes/levy/header.php:152 themes/webtrees/header.php:135 themes/xenea/header.php:143
 msgid "Choose a page"
-msgstr ""
+msgstr "Seite wählen"
 
 #: themes/colors/templates/compactbox_template.php:57 themes/colors/templates/personbox_template.php:52 themes/foundation/templates/compactbox_template.php:54 themes/foundation/templates/personbox_template.php:48 themes/kiwitrees/templates/compactbox_template.php:54 themes/kiwitrees/templates/personbox_template.php:48 themes/levy/templates/compactbox_template.php:57 themes/levy/templates/personbox_template.php:51 themes/webtrees/templates/compactbox_template.php:57 themes/webtrees/templates/personbox_template.php:51 themes/xenea/templates/compactbox_template.php:57 themes/xenea/templates/personbox_template.php:51
 msgid "Loading..."
@@ -19279,7 +19279,7 @@ msgstr "Laden..."
 
 #: themes/colors/theme.php:54 themes/colors/theme.php:79
 msgid "Colors palette"
-msgstr ""
+msgstr "Farbpalette"
 
 #: themes/colors/theme.php:98
 msgid "Aqua Marine"
@@ -19347,11 +19347,11 @@ msgstr "Türkis"
 
 #: themes/colors/theme.php:128
 msgid "colors"
-msgstr ""
+msgstr "Farben"
 
 #: themes/foundation/theme.php:35
 msgid "new_kiwitrees"
-msgstr ""
+msgstr "neues kiwitrees"
 
 #: themes/levy/functions.php:51
 msgid "For technical support or genealogy questions, please contact"
@@ -19395,11 +19395,11 @@ msgstr "Eingabe der Personen-ID"
 
 #: modules_v3/ahnentafel_report/report.bak:9 modules_v3/descendancy_report/report.bak:8 modules_v3/family_group_report/report.bak:8 modules_v3/individual_ext_report/report.bak:10 modules_v3/individual_report/report.bak:7
 msgid "Show sources?"
-msgstr ""
+msgstr "Quellen anzeigen?"
 
 #: modules_v3/ahnentafel_report/report.bak:10 modules_v3/family_group_report/report.bak:9 modules_v3/individual_ext_report/report.bak:11 modules_v3/individual_report/report.bak:8
 msgid "Show notes?"
-msgstr ""
+msgstr "Anmerkungen anzeigen ?"
 
 #: modules_v3/ahnentafel_report/report.bak:11
 msgid "Show occupations?"
@@ -19411,7 +19411,7 @@ msgstr "Wohnort zeigen?"
 
 #: modules_v3/ahnentafel_report/report.bak:13
 msgid "Show children of ancestors?"
-msgstr "Zeige Kinder der Vorfahren"
+msgstr "Zeige Kinder der Vorfahren "
 
 #: modules_v3/ahnentafel_report/report.bak:14 modules_v3/bdm_report/report.bak:13 modules_v3/birth_report/report.bak:11 modules_v3/cemetery_report/report.bak:9 modules_v3/change_report/report.bak:10 modules_v3/death_report/report.bak:12 modules_v3/descendancy_report/report.bak:9 modules_v3/fact_sources/report.bak:9 modules_v3/family_group_report/report.bak:12 modules_v3/individual_ext_report/report.bak:13 modules_v3/individual_report/report.bak:10 modules_v3/marriage_report/report.bak:11 modules_v3/missing_facts_report/report.bak:9 modules_v3/occupation_report/report.bak:8 modules_v3/pedigree_report/report.bak:8 modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
@@ -19466,21 +19466,21 @@ msgstr "Seite"
 
 #: modules_v3/ahnentafel_report/report.bak:76 modules_v3/descendancy_report/report.bak:53
 msgid "Generation "
-msgstr ""
+msgstr "Generation"
 
 #: modules_v3/ahnentafel_report/report.bak:138 modules_v3/descendancy_report/report.bak:102
 msgctxt "MALE"
 msgid "was born"
-msgstr "wurde geboren"
+msgstr "wurde geboren "
 
 #: modules_v3/ahnentafel_report/report.bak:139 modules_v3/descendancy_report/report.bak:105
 msgctxt "FEMALE"
 msgid "was born"
-msgstr "wurde geboren"
+msgstr "wurde geboren "
 
 #: modules_v3/ahnentafel_report/report.bak:157 modules_v3/ahnentafel_report/report.bak:185 modules_v3/ahnentafel_report/report.bak:212 modules_v3/ahnentafel_report/report.bak:280 modules_v3/ahnentafel_report/report.bak:308 modules_v3/ahnentafel_report/report.bak:333 modules_v3/ahnentafel_report/report.bak:364 modules_v3/descendancy_report/report.bak:125 modules_v3/descendancy_report/report.bak:157 modules_v3/descendancy_report/report.bak:314 modules_v3/descendancy_report/report.bak:352 modules_v3/descendancy_report/report.bak:383 modules_v3/descendancy_report/report.bak:422 modules_v3/descendancy_report/report.bak:453
 msgid " in "
-msgstr "in"
+msgstr "in "
 
 #: modules_v3/ahnentafel_report/report.bak:158 modules_v3/ahnentafel_report/report.bak:186 modules_v3/ahnentafel_report/report.bak:281 modules_v3/ahnentafel_report/report.bak:309 modules_v3/ahnentafel_report/report.bak:334 modules_v3/ahnentafel_report/report.bak:365
 msgid " but the details are unknown"
@@ -19488,15 +19488,15 @@ msgstr "aber die Details sind nicht bekannt"
 
 #: modules_v3/ahnentafel_report/report.bak:164
 msgid "He was christened"
-msgstr "Er wurde getauft"
+msgstr "Er wurde getauft "
 
 #: modules_v3/ahnentafel_report/report.bak:165
 msgid "She was christened"
-msgstr "Sie wurde getauft"
+msgstr "Sie wurde getauft "
 
 #: modules_v3/ahnentafel_report/report.bak:193
 msgid "His occupation was"
-msgstr "Sein Beruf war"
+msgstr "Sein Beruf war "
 
 #: modules_v3/ahnentafel_report/report.bak:194
 msgid "Her occupation was"
@@ -19504,11 +19504,11 @@ msgstr "Ihr Beruf war"
 
 #: modules_v3/ahnentafel_report/report.bak:220
 msgid "He resided at"
-msgstr "Er wohnte in"
+msgstr "Er wohnte in "
 
 #: modules_v3/ahnentafel_report/report.bak:221
 msgid "She resided at"
-msgstr "Sie wohnte in"
+msgstr "Sie wohnte in "
 
 #: modules_v3/ahnentafel_report/report.bak:314 modules_v3/ahnentafel_report/report.bak:341
 msgid "He was cremated"
@@ -19520,15 +19520,15 @@ msgstr "Sie wurde verbrannt"
 
 #: modules_v3/ahnentafel_report/report.bak:345
 msgid "He was buried"
-msgstr "Er wurde beerdigt"
+msgstr "Er wurde beerdigt "
 
 #: modules_v3/ahnentafel_report/report.bak:346
 msgid "She was buried"
-msgstr "Sie wurde beerdigt"
+msgstr "Sie wurde beerdigt "
 
 #: modules_v3/ahnentafel_report/report.bak:394 modules_v3/descendancy_report/report.bak:479
 msgid "Child of "
-msgstr "Kind von"
+msgstr "Kind von "
 
 #: modules_v3/bdm_report/report.bak:8 modules_v3/birth_report/report.bak:8
 msgid "Birth Date range start"
@@ -19548,7 +19548,7 @@ msgstr "Datumsbereich des Todes endet"
 
 #: modules_v3/bdm_report/report.bak:167
 msgid "Spouse"
-msgstr ""
+msgstr "Ehepartner"
 
 #: modules_v3/bdm_report/report.bak:208 modules_v3/birth_report/report.bak:65 modules_v3/cemetery_report/report.bak:86 modules_v3/death_report/report.bak:98 modules_v3/fact_sources/report.bak:140 modules_v3/fact_sources/report.bak:144 modules_v3/fact_sources/report.bak:303 modules_v3/fact_sources/report.bak:307 modules_v3/missing_facts_report/report.bak:598 modules_v3/occupation_report/report.bak:92 modules_v3/relative_ext_report/report.bak:146
 msgid "Total individuals"
@@ -19556,11 +19556,11 @@ msgstr "Gesamtzahl Personen"
 
 #: modules_v3/birth_report/report.bak:7
 msgid "Birth Place contains"
-msgstr ""
+msgstr "Geburtsort beinhaltet"
 
 #: modules_v3/cemetery_report/report.bak:6
 msgid "Burial Place contains"
-msgstr ""
+msgstr "Beerdigungsort beinhaltet "
 
 #: modules_v3/cemetery_report/report.bak:8 modules_v3/death_report/report.bak:11
 msgid "Name List"
@@ -19576,7 +19576,7 @@ msgstr ""
 
 #: modules_v3/change_report/report.bak:9
 msgid "Show pending changes"
-msgstr ""
+msgstr "Zeige offene Änderungen"
 
 #: modules_v3/change_report/report.bak:11 modules_v3/pedigree_report/report.bak:7
 msgid "Orientation"
@@ -19584,7 +19584,7 @@ msgstr "Orientierung"
 
 #: modules_v3/change_report/report.bak:58
 msgid "Differences"
-msgstr ""
+msgstr "Unterschiede"
 
 #: modules_v3/change_report/report.bak:85
 msgid "Total pending changes: "
@@ -19605,16 +19605,16 @@ msgstr "Nachkommen von"
 #: modules_v3/descendancy_report/report.bak:175
 msgctxt "MALE"
 msgid "married"
-msgstr "verheiratet"
+msgstr "verheiratet "
 
 #: modules_v3/descendancy_report/report.bak:244
 msgctxt "FEMALE"
 msgid "married"
-msgstr "verheiratet"
+msgstr "verheiratet "
 
 #: modules_v3/descendancy_report/report.bak:330
 msgid "She was born"
-msgstr "Sie wurde geboren"
+msgstr "Sie wurde geboren "
 
 #: modules_v3/descendancy_report/report.bak:357
 msgid "She "
@@ -19622,7 +19622,7 @@ msgstr "Sie"
 
 #: modules_v3/descendancy_report/report.bak:400
 msgid "He was born"
-msgstr "Er wurde geboren"
+msgstr "Er wurde geboren "
 
 #: modules_v3/descendancy_report/report.bak:427
 msgid "He "
@@ -19638,7 +19638,7 @@ msgstr "Eingabe der Familien-ID"
 
 #: modules_v3/family_group_report/report.bak:10 modules_v3/individual_ext_report/report.bak:12 modules_v3/individual_report/report.bak:9
 msgid "Show photos?"
-msgstr ""
+msgstr "Photos anzeigen ?"
 
 #: modules_v3/family_group_report/report.bak:11
 msgid "Print basic events when blank?"
@@ -19646,7 +19646,7 @@ msgstr "Druck der Basis-Ereignisse wenn leer?"
 
 #: modules_v3/family_group_report/report.bak:14 modules_v3/individual_ext_report/report.bak:15
 msgid "Use colors"
-msgstr ""
+msgstr "Benutze Farben"
 
 #: modules_v3/family_group_report/report.bak:763 modules_v3/individual_ext_report/report.bak:518 modules_v3/individual_report/report.bak:521
 msgid "Son"
@@ -19658,7 +19658,7 @@ msgstr "Tochter"
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Parents and siblings"
-msgstr "Eltern und Geschwister"
+msgstr "Eltern und Geschwister "
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Spouses and children"
@@ -19670,7 +19670,7 @@ msgstr "Direkte Vorfahren"
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Direct line ancestors and their families"
-msgstr " Direkte Vorfahren mit derer Familien"
+msgstr " Direkte Vorfahren mit derer Familien "
 
 #: modules_v3/individual_ext_report/report.bak:7 modules_v3/missing_facts_report/report.bak:7 modules_v3/relative_ext_report/report.bak:7
 msgid "Choose relatives"
@@ -19694,7 +19694,7 @@ msgstr "Familie mit Ehemann"
 
 #: modules_v3/marriage_report/report.bak:7
 msgid "Marriage Place contains"
-msgstr ""
+msgstr "Hochzeitsort enthält "
 
 #: modules_v3/marriage_report/report.bak:8
 msgid "Marriage Date range start"
