@@ -184,7 +184,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #users div#logged_in_users ul {list-style: none; margin: 3px 0;}
 #users div#logged_in_users .inset a {margin: 0 10px;}
 #users div#logged_in_users .inset br {display: none;}
-#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
+#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal;}
 #tree_stats td, #recent td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
 #tree_stats .ui-accordion-content, #recent .ui-accordion-content {background: #c9c9c9; padding:1em; min-height:180px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
