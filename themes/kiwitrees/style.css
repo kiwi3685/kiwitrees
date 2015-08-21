@@ -5954,7 +5954,7 @@ div.widget {
  */
 
  /* RESPOSIVE layout adjustments */
- @media (min-width: 320px) and (max-width: 1024px) {
+ @media (min-width: 320px) and (max-width: 900px) {
 
  	#topMenu #main-menu {
  		display:none;
