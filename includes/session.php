@@ -490,8 +490,8 @@ if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt
 }
 
 if (WT_USER_ID) {
-	//-- update the login time every 5 minutes
-	if (WT_TIMESTAMP-$WT_SESSION->activity_time > 300) {
+	//-- update the login time once per minute
+	if (WT_TIMESTAMP-$WT_SESSION->activity_time >= 60) {
 		set_user_setting(WT_USER_ID, 'sessiontime', WT_TIMESTAMP);
 		$WT_SESSION->activity_time = WT_TIMESTAMP;
 	}
