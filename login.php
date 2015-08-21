@@ -67,29 +67,29 @@ $message='';
 switch ($action) {
 case 'login':
 default:
-	if ($action=='login') {
-		$user_id=authenticateUser($username, $password);
+	if ($action == 'login') {
+		$user_id = authenticateUser($username, $password);
 		switch ($user_id) {
 		case -1: // not validated
-			$message=WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
+			$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
 			break;
 
 		case -2: // not approved
-			$message=WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
+			$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
 			break;
 
 		case -3: // bad password
 		case -4: // bad username
-			$message=WT_I18N::translate('The username or password is incorrect.');
+			$message = WT_I18N::translate('The username or password is incorrect.');
 			break;
 
 		case -5: // no cookies
-			$message=WT_I18N::translate('You cannot login because your browser does not accept cookies.');
+			$message = WT_I18N::translate('You cannot login because your browser does not accept cookies.');
 			break;
 
 		default: // Success
 			if ($usertime) {
-				$WT_SESSION->timediff=WT_TIMESTAMP - strtotime($usertime);
+				$WT_SESSION->timediff = WT_TIMESTAMP - strtotime($usertime);
 			} else {
 				$WT_SESSION->timediff = 0;
 			}
@@ -211,9 +211,9 @@ case 'requestpw':
 		->setPageTitle(WT_I18N::translate('Lost password request'))
 		->pageHeader();
 	echo '<div id="login-page">';
-	$user_name=safe_POST('new_passwd_username', WT_REGEX_USERNAME);
+	$user_name = safe_POST('new_passwd_username', WT_REGEX_USERNAME);
 
-	$user_id=WT_DB::prepare(
+	$user_id = WT_DB::prepare(
 		"SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
 	)->execute(array($user_name))->fetchOne();
 	if ($user_id) {
@@ -239,7 +239,7 @@ case 'requestpw':
 		$mail_body .= WT_I18N::translate('Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure.') . "\r\n\r\n";
 		$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password.') . "\r\n\r\n";
 
-		if ($TEXT_DIRECTION=='rtl') {
+		if ($TEXT_DIRECTION == 'rtl') {
 			$mail_body .= "<a href=\"".WT_SERVER_NAME.WT_SCRIPT_PATH."\">".WT_SERVER_NAME.WT_SCRIPT_PATH."</a>";
 		} else {
 			$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH;
@@ -269,7 +269,7 @@ case 'register':
 	$controller->setPageTitle(WT_I18N::translate('Request new user account'));
 
 	// The form parameters are mandatory, and the validation errors are shown in the client.
-	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01==$user_password02 && $user_realname && $user_email && $user_comments) {
+	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
 		if (get_user_id($user_name)) {
@@ -287,7 +287,7 @@ case 'register':
 			$controller->pageHeader();
 			AddToLog('User registration requested for: '.$user_name, 'auth');
 
-			$user_id=create_user($user_name, $user_realname, $user_email, $user_password01);
+			$user_id = create_user($user_name, $user_realname, $user_email, $user_password01);
 
 			set_user_setting($user_id, 'language',          WT_LOCALE);
 			set_user_setting($user_id, 'verified',          0);
@@ -301,10 +301,10 @@ case 'register':
 			set_user_setting($user_id, 'sessiontime',       0);
 
 			// Generate an email in the admin’s language
-			$webmaster_user_id=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+			$webmaster_user_id = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
 			WT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
-			$mail1_body=
+			$mail1_body =
 				WT_I18N::translate('Hello Administrator ...')."\r\n\r\n".
 				/* I18N: %s is a server name/URL */
 				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE)) . "\r\n\r\n".
@@ -314,9 +314,9 @@ case 'register':
 				WT_I18N::translate('Comments')      .' '.$user_comments."\r\n\r\n".
 				WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . "\r\n\r\n";
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-				$mail1_body.=WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
+				$mail1_body.= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
 			} else {
-				$mail1_body.=WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part.') . "\r\n";
+				$mail1_body.= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part.') . "\r\n";
 			}
 			$mail1_body.=
 				"\r\n".
@@ -324,10 +324,10 @@ case 'register':
 				"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
 				"LANGUAGE: ".WT_LOCALE."\r\n";
 
-			$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
-			$mail1_to     =$WEBTREES_EMAIL;
-			$mail1_from   =$user_email;
-			$mail1_method =get_user_setting($webmaster_user_id, 'contact_method');
+			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
+			$mail1_to      = $WEBTREES_EMAIL;
+			$mail1_from    = $user_email;
+			$mail1_method  = get_user_setting($webmaster_user_id, 'contact_method');
 			WT_I18N::init(WT_LOCALE);
 
 			echo '<div id="login-register-page">';
@@ -335,18 +335,18 @@ case 'register':
 			require_once WT_ROOT.'includes/functions/functions_mail.php';
 
 			// Generate an email in the user’s language
-			$mail2_body=
+			$mail2_body =
 				WT_I18N::translate('Hello %s ...', $user_realname) . "\r\n\r\n".
 				/* I18N: %1$s is the site URL and %2$s is an email address */
 				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE), $user_email) . '  '.
 				WT_I18N::translate('Information about the request is shown under the link below.') . "\r\n\r\n".
 				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . "\r\n\r\n";
-			if ($TEXT_DIRECTION=='rtl') {
+			if ($TEXT_DIRECTION == 'rtl') {
 				$mail2_body .= "<a href=\"";
 				$mail2_body .= WT_LOGIN_URL . "?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify\">";
 			}
 			$mail2_body .= WT_LOGIN_URL . "?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify";
-			if ($TEXT_DIRECTION=='rtl') {
+			if ($TEXT_DIRECTION == 'rtl') {
 				$mail2_body .= "</a>";
 			}
 			$mail2_body.=
@@ -356,16 +356,16 @@ case 'register':
 				WT_I18N::translate('Comments').": " . $user_comments . "\r\n\r\n".
 				WT_I18N::translate('If you didn\'t request an account, you can just delete this message.') . "  ".
 				WT_I18N::translate('You won\'t get any more email from this site, because the account request will be deleted automatically after seven days.') . "\r\n";
-			$mail2_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
-			$mail2_to     =$user_email;
-			$mail2_from   =$WEBTREES_EMAIL;
+			$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
+			$mail2_to      = $user_email;
+			$mail2_from    = $WEBTREES_EMAIL;
 
 			// Send user message by email only
 			webtreesMail($mail2_to, $mail2_from, $mail2_subject, $mail2_body);
 
 			// Send admin message by email and/or internal messaging
 			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
-			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
+			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
@@ -447,7 +447,7 @@ case 'userverify':
 	}
 
 	// Change to the new user’s language
-	$user_id=get_user_id($user_name);
+	$user_id = get_user_id($user_name);
 	WT_I18N::init(get_user_setting($user_id, 'language'));
 
 	$controller->setPageTitle(WT_I18N::translate('User verification'));
@@ -484,11 +484,11 @@ case 'verify_hash':
 	AddToLog('User attempted to verify hashcode: '.$user_name, 'auth');
 
 	// switch language to webmaster settings
-	$webmaster_user_id=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+	$webmaster_user_id = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
 	WT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
-	$user_id=get_user_id($user_name);
-	$mail1_body=
+	$user_id = get_user_id($user_name);
+	$mail1_body =
 		WT_I18N::translate('Hello Administrator ...') . "\r\n\r\n".
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
 		WT_I18N::translate('A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).', getUserFullName($user_id), $user_name,  getUserEmail($user_id))."\r\n\r\n";
@@ -497,12 +497,12 @@ case 'verify_hash':
 	} else {
 		$mail1_body .= WT_I18N::translate('You do not have to take any action; the user can now login.') . "\r\n";
 	}
-	if ($TEXT_DIRECTION=='rtl') {
+	if ($TEXT_DIRECTION == 'rtl') {
 		$mail1_body .= "<a href=\"";
 		$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user_name) . "\">";
 	}
 	$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user_name);
-	if ($TEXT_DIRECTION=="rtl") {
+	if ($TEXT_DIRECTION == "rtl") {
 		$mail1_body .= "</a>";
 	}
 	$mail1_body.=
@@ -512,10 +512,10 @@ case 'verify_hash':
 		"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
 		"LANGUAGE: ".WT_LOCALE."\r\n";
 
-	$mail1_to=$WEBTREES_EMAIL;
-	$mail1_from=getUserEmail($user_id);
-	$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
-	$mail1_method=get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
+	$mail1_to = $WEBTREES_EMAIL;
+	$mail1_from = getUserEmail($user_id);
+	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
+	$mail1_method = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 
 	// Change to the new user’s language
 	WT_I18N::init(get_user_setting($user_id, 'language'));
@@ -533,7 +533,7 @@ case 'verify_hash':
 		if ($pw_ok && $hc_ok) {
 			require_once WT_ROOT.'includes/functions/functions_mail.php';
 			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
-			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
+			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
