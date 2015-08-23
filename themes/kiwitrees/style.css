@@ -5738,6 +5738,7 @@ div.widget {
 
 /* family-block */
 #fancy_treeview-page .blockcontent {
+	font-size: 13px;
 	padding: 20px 0 20px 40px;
 }
 
@@ -5768,7 +5769,7 @@ div.widget {
 }
 
 #fancy_treeview-page .date {
-	font-size: 13px;
+	color: inherit;
 	font-weight: normal;
 }
 

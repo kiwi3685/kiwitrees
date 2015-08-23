@@ -44,12 +44,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of the module */ WT_I18N::translate('Fancy Tree View');
+		return /* WT_I18N: Name of the module */ WT_I18N::translate('Fancy Tree View');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('A Fancy overview of the descendants of one family(branch) in a narrative way');
+		return /* WT_I18N: Description of the module */ WT_I18N::translate('A Fancy overview of the descendants of one family(branch) in a narrative way');
 	}
 
 	// Get module options
@@ -671,7 +671,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$controller=new WT_Controller_Page;
 		if($root_person && $root_person->canDisplayName()) {
 			$controller
-				->setPageTitle(/* I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of %s', $root_person->getFullName()))
+				->setPageTitle(/* WT_I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of %s', $root_person->getFullName()))
 				->pageHeader()
 				->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 				->addInlineJavascript('
@@ -1009,7 +1009,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
             $spousecount = 0;
             foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
                 $spouse = $family->getSpouse($person);
-                if ($spouse && $spouse->canDisplayDetails() && $family->getMarriage() && !$family->isNotMarried()) {
+                if ($spouse && $spouse->canDisplayDetails() && ($family->getMarriage() || $family->isNotMarried())) {
 					$spousecount++;
 				}
 			}
@@ -1057,16 +1057,52 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		$html = ' ';
 
+		// we assume no one married more then 15 times.
+		$wordcount = array(
+		    WT_I18N::translate('first'),
+		    WT_I18N::translate('second'),
+		    WT_I18N::translate('third'),
+		    WT_I18N::translate('fourth'),
+		    WT_I18N::translate('fifth'),
+		    WT_I18N::translate('sixth'),
+		    WT_I18N::translate('seventh'),
+		    WT_I18N::translate('eighth'),
+		    WT_I18N::translate('ninth'),
+		    WT_I18N::translate('tenth'),
+		    WT_I18N::translate('11th'),
+		    WT_I18N::translate('12th'),
+		    WT_I18N::translate('13th'),
+		    WT_I18N::translate('14th'),
+		    WT_I18N::translate('15th')
+		);
+
+		$wordcount2 = array(
+		    WT_I18N::translate('once'),
+		    WT_I18N::translate('twice'),
+		    WT_I18N::translate('three times'),
+		    WT_I18N::translate('four times'),
+		    WT_I18N::translate('five times'),
+		    WT_I18N::translate('six times'),
+		    WT_I18N::translate('seven times'),
+		    WT_I18N::translate('eight times'),
+		    WT_I18N::translate('nine times'),
+		    WT_I18N::translate('ten times'),
+		    WT_I18N::translate('11 times'),
+		    WT_I18N::translate('12 times'),
+		    WT_I18N::translate('13 times'),
+		    WT_I18N::translate('14 times'),
+		    WT_I18N::translate('15 times')
+		);
+
 		if($count > 1) {
 			if($i == 0) {
-				$person->getSex() == 'M' ? $html .= /* I18N: %s is a number  */ WT_I18N::translate('He married %s times', $count) : $html .= WT_I18N::translate('She married %s times', $count);
+				$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count]) : $html .= '<br>' . WT_I18N::translate('She married %s times', $wordcount2[$count]);
 				$html .= '. ';
 			}
-			$wordcount = self::ordinalize($i + 1);
-			$person->getSex() == 'M' ? $html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount) : $html .= WT_I18N::translate('The %s time she married', $wordcount);
+			$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcount[$i]);
 		}
 		else {
-			$person->getSex() == 'M' ? $html .= WT_I18N::translate('He married') : $html .= WT_I18N::translate('She married');
+			$person->getSex() == 'M' ? $html .= '<br>' . WT_I18N::translate('He married') : $html .= '<br>' . WT_I18N::translate('She married');
 		}
 
 		$html .= ' <a href="'.$spouse->getHtmlUrl().'">'.$spouse->getFullName().'</a>';
@@ -1110,13 +1146,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$html = ' ';
 		switch ($person->getSex()) {
 			case 'M':
-				$html .= WT_I18N::translate('He had a relationship with');
+				$html .= '<br>' . WT_I18N::translate('He had a relationship with');
 				break;
 			case 'F':
-				$html .= WT_I18N::translate('She had a relationship with');
+				$html .= '<br>' . WT_I18N::translate('She had a relationship with');
 				break;
 			default:
-				$html .= WT_I18N::translate('This individual has a relationship with');
+				$html .= '<br>' . WT_I18N::translate('This individual has a relationship with');
 				break;
 		}
 		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
@@ -1136,13 +1172,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
 			$html .= '<div class="children"><p>'.$person->getFullName().' ';
 					if($spouse && $spouse->canDisplayDetails()) {
-						$html .= /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
+						$html .= /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
 						$html .= WT_I18N::translate_c('Two parents/one child', 'had');
 					}
 					else {
 						$html .= WT_I18N::translate_c('One parent/one child', 'had');
 					}
-					$html .= ' '.WT_I18N::translate('none').' '.WT_I18N::translate('children').'.</p></div>';
+					$html .= ' ' . /* WT_I18N: 'no' is the number zero  */ WT_I18N::translate('no').' '.WT_I18N::translate('children').'.</p></div>';
 		}
 		else {
 			$children = $family->getChildren();
@@ -1151,7 +1187,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					$html .= '<div class="children"><p>'.$person->getFullName().' ';
 					// needs multiple translations for the word 'had' to serve different languages.
 					if($spouse && $spouse->canDisplayDetails()) {
-						$html .= /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
+						$html .= /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
 						if (count($children) > 1) {
 							$html .= WT_I18N::translate_c('Two parents/multiple children', 'had');
 						} else {
@@ -1165,12 +1201,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 							$html .= WT_I18N::translate_c('One parent/one child', 'had');
 						}
 					}
-					$html .= ' './* I18N: %s is a number */ WT_I18N::plural('%s child', '%s children', count($children), count($children)).'.</p></div>';
+					$html .= ' './* WT_I18N: %s is a number */ WT_I18N::plural('%s child', '%s children', count($children), count($children)).'.</p></div>';
 				}
 				else {
 					$html .= '<div class="children"><p>'. WT_I18N::translate('Children of ').$person->getFullName();
 					if($spouse && $spouse->canDisplayDetails()) {
-						$html .= ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
+						$html .= ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 						if (!$family->getMarriage()) {
 							// check relationship first (If a relationship is found the information of this parent is printed elsewhere on the page.)
 							if ($this->options('check_relationship')) {
@@ -1274,7 +1310,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$html .= $father->getFullName();
 			}
 			if ($father && $mother) {
-				$html .= ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
+				$html .= ' ' . /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 			}
 			if ($mother) {
 				$html .= $mother->getFullName();
@@ -1323,7 +1359,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$deathdata = true;
 
 			if($birthdata) {
-				$html .= ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
+				$html .= ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 				$person->getSex() == 'F' ? $html .= WT_I18N::translate_c('FEMALE', 'died') : $html .= WT_I18N::translate_c('MALE', 'died');
 			}
 			else {
@@ -1339,10 +1375,10 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			if ($birthdate->isOK() && $deathdate->isOK()) {
 				if (WT_Date::getAge($birthdate, $deathdate, 0) < 2) {
-					$html .= ' './* I18N: %s is the age of death in days/months; %s is a string, e.g. at the age of 2 months */  WT_I18N::translate_c('age in days/months', 'at the age of %s', $ageOfdeath);
+					$html .= ' './* WT_I18N: %s is the age of death in days/months; %s is a string, e.g. at the age of 2 months */  WT_I18N::translate_c('age in days/months', 'at the age of %s', $ageOfdeath);
 				}
 				else {
-					$html .= ' './* I18N: %s is the age of death in years; %s is a number, e.g. at the age of 40 */  WT_I18N::translate_c('age in years', 'at the age of %s', $ageOfdeath);
+					$html .= ' './* WT_I18N: %s is the age of death in years; %s is a number, e.g. at the age of 40 */  WT_I18N::translate_c('age in years', 'at the age of %s', $ageOfdeath);
 				}
 			}
 		}
@@ -1497,13 +1533,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			return ' '.$date->Display();
 		}
 		if($date->MinDate()->d > 0) {
-			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat dd-mm-yyyy', 'on ').$date->Display();
+			return ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat dd-mm-yyyy', 'on ').$date->Display();
 		}
 		if($date->MinDate()->m > 0) {
-			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat mmm yyyy', 'in ').$date->Display();
+			return ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat mmm yyyy', 'in ').$date->Display();
 		}
 		if($date->MinDate()->y > 0) {
-			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat yyyy', 'in ').$date->Display();
+			return ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat yyyy', 'in ').$date->Display();
 		}
 	}
 
@@ -1531,7 +1567,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 	private function printPlace($place) {
 		if($this->options('show_places') == true) {
 			$place = new WT_Place($place, WT_GED_ID);
-			$html = ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before placesnames', 'in ');
+			$html = ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before placesnames', 'in ');
 			if	($this->options('use_gedcom_places') == true) {
 				$html .= $place->getShortName();
 			} else {
@@ -1705,16 +1741,4 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 	}
 
-	private function ordinalize($num) {
-        $suff = WT_I18N::translate('th');
-        if ( !in_array(($num % 100), array(11,12,13))){
-            switch ($num % 10) {
-                case 1:  $suff = WT_I18N::translate('st'); break;
-                case 2:  $suff = WT_I18N::translate('nd'); break;
-                case 3:  $suff = WT_I18N::translate('rd'); break;
-            }
-            return $num . $suff;
-        }
-        return $num . $suff;
-    }
 }
