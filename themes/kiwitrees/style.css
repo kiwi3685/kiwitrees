@@ -3067,10 +3067,6 @@ span.link_text {
 	clear: both;
 }
 
-#personal_facts_content .facts_table .descriptionbox a {
-	font-weight: 900;
-}
-
 #personal_facts_content .facts_table .descriptionbox .editfacts a {
 	font-weight: normal;
 }
