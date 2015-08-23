@@ -3,12 +3,13 @@
 # Christian Utischill <christian.utischill@westernacher.com>, 2014-2015
 # Christian Utischill <christian.utischill@westernacher.com>, 2014
 # Grimpel, 2014-2015
+# Nigel Osborne <kiwi3685@me.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2015-07-28 17:27+1200\n"
-"PO-Revision-Date: 2015-08-20 09:03+1200\n"
+"PO-Revision-Date: 2015-08-22 18:44+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -1072,7 +1073,7 @@ msgstr "Ihre Dateien inclusive Medien sind derzeit %s MB groß"
 #: admin_site_use.php:74
 #, php-format
 msgid "Total server space used is therefore %s MB"
-msgstr ""
+msgstr "Der gesamte dafür benutzte Speicherplatz beträgt %s MB."
 
 #: admin_trees_append.php:28
 msgid "Append family trees"
@@ -1281,7 +1282,7 @@ msgstr "Zur «TITLE» Kennung im Kopfbereich hinzufügen"
 
 #: admin_trees_config.php:474 help_text.php:682
 msgid "Description META tag"
-msgstr "META Tag Description"
+msgstr "META Tag Beschreibung"
 
 #: admin_trees_config.php:479
 msgid "Leave this field empty to use the title of the currently active database."
@@ -1402,7 +1403,7 @@ msgstr "Namen"
 
 #: admin_trees_config.php:752 help_text.php:478
 msgid "Min. no. of occurrences to be a \"common surname\""
-msgstr ""
+msgstr "Mindestanzahl von Vorkommen um ein »Häufiger Nachname« zu sein."
 
 #: admin_trees_config.php:760 help_text.php:468
 msgid "Names to add to common surnames (comma separated)"
@@ -1917,7 +1918,7 @@ msgstr "Dieser Name wird angezeigt."
 
 #: admin_trees_manage.php:309
 msgid "Keep this short and avoid spaces and punctuation. A family name might be a good choice."
-msgstr ""
+msgstr "Bitte kurz halten und Leerstellen und Interpunktionen vermeiden. Ein Familienname ist eine gute Wahl."
 
 #: admin_trees_manage.php:313
 msgid "create"
@@ -1937,7 +1938,7 @@ msgstr "Aktualisieren aller Ortsangaben aus einem Stammbaum"
 
 #: admin_trees_places.php:99
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr ""
+msgstr "Dies ändert die höchste Ebene der Orts-angaben der Teile der Ortsangaben. “Mexico” passt zu “Quintana Roo, Mexico”, aber nicht zu “Santa Fe, New Mexico”."
 
 #: admin_trees_places.php:104 search.php:100 search.php:134
 msgid "Search for"
@@ -1996,8 +1997,8 @@ msgstr "Sie können den Stammbaum so durchnummerieren, dass eine unverwechselbar
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "In diesem Stammbaum gibt es %s  Datensätze, die die gleichen “XREF” wie ein anderer Stammbaum verwenden."
+msgstr[1] "In diesem Stammbaum gibt es %s  Datensätze, die die gleichen “XREF” wie ein anderer Stammbaum verwenden"
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
@@ -2227,7 +2228,7 @@ msgstr "Benutzer erstellen"
 
 #: admin_users.php:485
 msgid "Number of months since the last login for a user's account to be considered inactive: "
-msgstr ""
+msgstr "Anzahl der Monate die seit dem letzen Login für einen Benutzer-Account als inaktiv betrachtet werden: "
 
 #: admin_users.php:494 relationship.php:92
 msgid "Options:"
@@ -2963,7 +2964,7 @@ msgstr "Geben Sie die Adresse, genau wie sie auf einem Briefumschlag geschrieben
 
 #: help_text.php:58
 msgid "The organization, institution, corporation, person, or other entity that has authority.<br><br>For example, an employer of a person, or a church that administered rites or events, or an organization responsible for creating and/or archiving records."
-msgstr ""
+msgstr "Zuständige Organisation, Behörde, Person, Unternehmen, usw.<br /><br />Z.B., Arbeitgeber der Person, oder Kirche wo das Ereignis stattfand, oder für Urkunden zuständige Behörde."
 
 #: help_text.php:63
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -3101,7 +3102,7 @@ msgstr "Geben Sie die Telefon Nummer, inklusiv den internationalen und lokalen V
 
 #: help_text.php:338
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as \"Salt Lake City, Salt Lake, Utah, USA\".<br><br>Let's examine each part of this place.  The first part, \"Salt Lake City,\" is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, \"Salt Lake,\" is the county.  \"Utah\" is the state, and \"USA\" is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn't know the county for Salt Lake City.  You should then record it like this: \"Salt Lake City, , Utah, USA\".  Suppose you only know that a person was born in Utah.  You would enter the information like this: \", , Utah, USA\".  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr ""
+msgstr "Orte sollten dem üblichen Ahnenforschungs-Standard entsprechend eingegeben werden. Das heißt, man gibt von links nach rechts immer größere Ortschaften ein, mit einem Komma zwischen jedem Ort. Jeder so angegebene Ort sollte einem Archiv oder Standesamt entsprechen, wo Geburts-, Ehe-, und Todes-Fälle registriert werden.<br /><br />Zum Beispiel, Salt Lake City sollte als «Salt Lake City, Salt Lake, Utah, USA» eingegeben werden.<br /><br />Der erste Teil, «Salt Lake City», ist die Stadt oder Gemeinde wo das Ereignis statt fand. Für manche Städte, London, Paris, und Berlin, zum Beispiel, ist der Stadtteil auch wichtig und wird deshalb vor dem Stadtnamen mit folgendem Komma eingegeben. In Berlin nennt man den Stadtteil gewöhnlich hinter «Berlin» (z.B. «Berlin-Tempelhof»), aber Ahnenforscher nennen den Stadtteil zuerst (z.B. «Dahlem, Berlin».<br /><br />Der zweite Teil des obigen Beispiels «Salt Lake» entspricht dem Kreis (englisch: county).<br /><br />Der dritte Teil «Utah» ist das Bundesland oder Provinz.<br /><br />Der vierte Teil «USA» ist das Land.<br /><br />Teile der Ortsangabe die entfallen oder unbekannt sind, sollten durch leere entsprechende Eingaben angedeutet werden. Zum Beispiel, die Eingabe «Salt Lake City,,Utah,USA» bedeutet dass Sie den Kreis worin sich Salt Lake City befindet nicht wissen. Die Eingabe «Vaduz,,,Liechtenstein» bedeutet dass in Liechtenstein keine Kreise oder Bundesländer vorkommen.<br /><br />Mit dem Ort suchen Link können Sie leicht Orte ermitteln, die schon in der Datenbank vorhanden sind."
 
 #: help_text.php:343
 msgid "Select a relationship name from the list. Selecting <b>Godfather</b> means: <i>This associate is the Godfather of the current individual</i>."
@@ -3117,7 +3118,7 @@ msgstr "Bitte beachten: Wenn ein Benutzerkonto an einen Datensatz geknüpft ist,
 
 #: help_text.php:356
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled \"Romanized\", it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr ""
+msgstr "In vielen Kulturkreisen ist es üblich, den traditionellen Namen in landesüblicher Schreibweise festzuhalten und zusätzlich einen romanisierten Namen, der die Aussprache des Namens im lateinischen Alphabet wiedergibt.<br /><br />Falls Sie es vorziehen ein nicht lateinisches Alphabet, wie Hebräisch, Griechisch, Russisch, Chinesisch oder Arabisch zur Namenseingabe in den Standard-Feldern zu nutzen, dann steht dieses Feld zur Eingabe eines Namens im lateinischen Alphabet bereit.  Beide Namensversionen erscheinen in Listen und Diagrammen.<br /><br />Wenngleich das Feld als \"Romanized\" gekennzeichnet ist, ist es nicht auf die Eingabe von Buchstaben des lateinischen Alphabets beschränkt. Dies ist bei japanischen Namen von Interesse, wo drei verschiedene Alphabete vorkommen können."
 
 #: help_text.php:361
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
@@ -3153,7 +3154,7 @@ msgstr "Geben Sie die URL Adresse mit http://. ein.<br /><br />Zum Beispiel, ein
 
 #: help_text.php:401
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled \"Hebrew\", it is not restricted to containing only Hebrew characters."
-msgstr ""
+msgstr "In vielen Kulturkreisen ist es üblich, neben dem in Landessprache geschrieben Namen einen romanisiert geschriebenen oder ausgesprochenen Namen in lateinischem Alphabet zu führen.<br /><br />Falls Sie es vorziehen, das lateinische Alphabet für Namen in den Standard Feldern zu nutzen, dann kann dieses Feld zum Eintrag der Nicht-lateinischen Version, wie griechisch, hebräisch, russisch, arabisch  oder chinesisch genutzt werden.  Beide Versionen des Namens werden in Listen und Diagrammen dargestellt.<br /><br />Wenngleich dies Feld auch als \"hebräisch\" bezeichnet ist, muß es nicht nur hebräische Zeichen beinhalten."
 
 #: help_text.php:406
 msgid "Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page."
@@ -3410,7 +3411,7 @@ msgstr "Hier bestimmen Sie, ob der Stammbaum im Hochformat oder Querformat darge
 
 #: help_text.php:708
 msgid "This option controls whether or not to show the individual's gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn't conceal the gender. The option simply removes some duplicate information from the box."
-msgstr ""
+msgstr "Diese Option bestimmt, ob das Geschlecht der Person mittels Symbol in Diagrammen gezeigt wird oder nicht.<br /><br />Da das Geschlecht auch durch die Farbe der Box angedeutet ist, verbirgt diese Option das Geschlecht nicht.  Diese Option verbirgt nur doppelte Information."
 
 #: help_text.php:714
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
@@ -3478,7 +3479,7 @@ msgstr "Kiwitrees Antwort-Mailadresse"
 
 #: help_text.php:778
 msgid "E-mail address to be used in the &laquo;From:&raquo; field of e-mails that kiwitrees creates automatically.<br><br>Kiwitrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  Kiwitrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the &laquo;From:&raquo; field of these automatically created e-mails is something like <i>From: kiwitrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message's &laquo;From:&raquo; field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr ""
+msgstr "Die Mail-Adresse, die für das «Absender:» Feld von automatisch erstellten Mails benutzt werden soll.<br /><br /><b>webtrees</b> erstellt automatische Mails, die den Verwalter darauf aufmerksam machen, dass Änderungen gemacht wurden, und dass diese noch kontrolliert werden müssen. Automatische Mails werden auch erstellt, wenn neue Benutzer einen Zugriffsantrag gemacht haben.<br /><br />Das «Absender:» Feld dieser automatischen Mails ähnelt gewöhnlich <i>Abs: kiwitrees-noreply@yoursite</i> und das bedeutet dass keine Antwort erwartet ist. Um gültige Mails zu erkennen, erfordern manche Mail-Systeme dass jede Mail-Nachricht eine gültige Absender-Adresse hat. Diese Mail-Systeme erkennen also keine Mails vom Absender <i>kiwitrees-noreply</i> als gültig."
 
 #: help_text.php:783
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
@@ -3486,7 +3487,7 @@ msgstr ""
 
 #: help_text.php:788
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new person.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr ""
+msgstr "Dies ist eine Komma-separierte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag BIRT in der Liste erscheint, werden die Felder für Geburtsdatum und Geburtsort auf dem Formular angezeigt."
 
 #: help_text.php:793
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
@@ -3566,7 +3567,7 @@ msgstr "Zeige das Alter der Eltern bei den Geburtsdaten der Kinder"
 
 #: help_text.php:879
 msgid "This option controls whether or not to show age of father and mother next to child's birthdate on charts."
-msgstr ""
+msgstr "Diese Option bestimmt, ob oder ob nicht das Alter von Vater und Mutter neben dem Geburtsdatum im Diagramm angezeigt werden soll."
 
 #: help_text.php:884
 msgid "Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
@@ -3634,11 +3635,11 @@ msgstr "Kinder erhalten eher einen Familiennamen als einen Nachnamens"
 
 #: help_text.php:970
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Nachnamen werden gebeugt, um das Geschlecht der Person anzuzeigen."
 
 #: help_text.php:977
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Nachnamen werden gebeugt, um das Geschlecht und den Ehestand der Person anzuzeigen."
 
 #: help_text.php:983
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
@@ -3666,7 +3667,7 @@ msgstr ""
 
 #: help_text.php:1008
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<p>This image might be used when the gender of the individual is unknown:</p>"
-msgstr ""
+msgstr "Benutze Silhouetten wenn kein spezielles Bild für diese Person spezifiziert wurde. Die Bilder die verwendet werden sind geschlechts-spezifisch zu der entsprechenden Person </p>. Diese Bild wird benutzt wenn das Geschlecht der Person unbekannt ist:</p>"
 
 #: help_text.php:1016
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -3694,7 +3695,7 @@ msgstr "Wenn Sie sich für einen individualisierten Begrüßungstext entschieden
 
 #: help_text.php:1041
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-msgstr ""
+msgstr "Hier können Sie den auf den Login-Bildschirm erscheinenden Text definieren. Sie müssen bestimmen, welcher vordefinierte Text am besten zur Beschreibung Ihrer Zugangsregelung/ -beschränkung geeignet ist. <br /> <br /> Sie können aber auch Ihren eigenen, individulisierten Begrüßungstext eingeben. <b> Bitte beachten Sie hierzu die Hilfetexte, die mit dem individualisiertem Begrüßungstext verbunden sind</ b> Feld für weitere Informationen <br /> <br /> Die vordefinierten Standardtexte sind: <ul><li><b>Textbausteine die mitteilen, dass alle Nutzer, unabhängig vom Bezug zur Ihrer Genealogie, ein Benutzerkonto beantragen können: </ b> <div class=\"list_value_wrap\"> <center> <b> Herzlich Willkommen auf dieser Genealogie Webseite </ b> </ center> <br /> Der Zugang zu dieser Website ist jedem Besucher möglich, der ein Benutzerkonto besitzt. <br /> <br /> Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch nicht über ein Benutzerkonto verfügen, können Sie es hier beantragen, indem Sie auf den entsprechenden Link klicken. <br /> <br /> Sobald Ihre Angaben überprüft sind, wird der Web-Seiten-Administrator Ihr Konto zu aktivieren. Sie erhalten eine Benachrichtigung per E-Mail, sobald Ihr Antrag genehmigt wurde </ div> <br/> </ li> <li> <b> Standardtext, der besagt, dass bei jeder Anfrage für ein Benutzerkonto der Adminsitrator entscheidet :. </ B> < div class = \"list_value_wrap\"> <center> <b> Willkommen auf dieser Genealogie-Webseite </ b> </ center> <br /> Der Zugang zu dieser Website ist nur <u> autorisierten </ u> Benutzern gestattet. <br /> <br /> Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch nicht über ein Benutzerkonto verfügen, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken. <br /> <br /> Sobald Ihre Angaben überprüft sind, wird der Web-Seiten-Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail-Nachricht, wenn Ihr Antrag genehmigt wurde </ div> <br/> </ li> <li> <b> Standardtext, dass nur Familienmitglieder ein Benutzerkonto beantragen können:</u>. </ B> <div class = \"list_value_wrap\"> <center> <b> Willkommen auf dieser Genealogie-Webseite </ b> </ center> <br /> Der Zugang zu dieser Website ist, <u> nur Familienmitgliedern </ u> möglich. <br / > <br /> Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken. <br /> <br /> Nach Überprüfung Ihrer Informationen, insbesondere in Bezug auf Ihre Familienzugehörigkeit, wird der Web-Seiten-Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, sobald Ihr Antrag genehmigt wurde. </ Div> </ li> </ ul>"
 
 #: help_text.php:1046
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it."
@@ -3827,7 +3828,7 @@ msgstr "Hier können Sie zwei Datensätze der selben GEDCOM Datei zusammenfügen
 
 #: help_text.php:1158
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, \"Oneida, Idaho, USA\" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. \"Idaho, USA\" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr ""
+msgstr "Jede Quelle enthält Einträge über bestimmte Ereignisse, im Großen und Ganzen für bestimmte Daten- und Zuständigkeitsbereiche. Zum Beispiel, jede Volkszählung die als Quelle zitiert werden kann enthält Einträge die man als «Volkszählung» Ereignisse in die Datenbank eintragen kann. In kirchlichen Registern sind gewöhnlich Ereignisse wie Geburten, Ehen, und Tode aufgezeichnet.<br /><br />Aus der Liste wählen Sie Ereignisse die in dieser Quelle aufgezeichnet sind. Als Datum gibt man gewöhnlich einen Bereich wie zum Beispiel <i>FROM 1900 TO 1910</i> (bedeutet VON Anfang 1900 BIS Ende 1910). Bitte beachten Sie dass alle Daten in der englischen Sprache eingetragen werden müssen. Als Zuständigkeitsbereich gibt man gewöhnlich eine Ortschaft. Zum Beispiel, die Eingabe «Oneida, Idaho, USA» bedeutet dass diese Quelle für Ereignisse in allen Orten in Oneida County Idaho, USA zuständig ist, aber nicht für Ereignisse anderer Orte. Die Eingabe «Idaho, USA» bedeutet dass diese Quelle für Ereignisse in allen Orten im Staat Idaho USA zuständig ist, aber nicht für Ereignisse anderswo."
 
 #: help_text.php:1163 help_text.php:1185
 msgid "Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
@@ -12457,7 +12458,7 @@ msgstr "Sonstiges"
 
 #: library/WT/I18N.php:180
 msgid "%j %F %Y"
-msgstr "%F %j, %Y"
+msgstr "%j. %F %Y"
 
 #: library/WT/I18N.php:182
 msgid "%H:%i:%s"
@@ -14113,15 +14114,15 @@ msgstr "Sie können sich nicht anmelden, weil in Ihrem Browser keine Cookies akt
 
 #: login.php:147
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr ""
+msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br />Der Zugriff auf diese Seite ist nur <u>autorisierten</u> Benutzern erlaubt.<br /><br />Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br /><br />Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrem Antrag zustimmen (oder ihn ablehnen). Sie werden eine Mail mit dem Antragsergebnis erhalten."
 
 #: login.php:150
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr ""
+msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br />Den Zugriff auf diese Seite erhalten <u>nur Familienmitglieder</u>.<br /><br />Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br /><br />Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrem Antrag zustimmen (oder ihn ablehnen).<br />Sie werden eine Mail mit dem Antragsergebnis erhalten."
 
 #: login.php:153
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr ""
+msgstr "<center><b>Willkommen auf dieser Genealogie Webseite</b></center><br />Der Zugriff auf diese Seite ist nur <u>autorisierten</u> Benutzern erlaubt.<br /><br />Wenn Sie bereits einen Benutzernamen haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch keinen Zugang besitzen, können Sie diesen beantragen, indem Sie auf den entsprechenden Link klicken.<br /><br />Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrem Antrag zustimmen (oder ihn ablehnen). Sie werden eine Mail mit dem Antragsergebnis erhalten."
 
 #: login.php:156
 msgid "<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website."
@@ -14158,7 +14159,7 @@ msgstr "Empfehlung:"
 
 #: login.php:239
 msgid "Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure."
-msgstr ""
+msgstr "Bitte klicken Sie den Link unten oder fügen Sie es in Ihren Browser ein, melden Sie sich mit dem neuen Passwort, und ändern Sie es sofort, um die Integrität Ihrer Daten zu sichern."
 
 #: login.php:240
 msgid "After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password."
@@ -14176,7 +14177,7 @@ msgstr "Sie dürfen keine Mitteilungen versenden, die externe Adressen enthalten
 #: login.php:282 message.php:73 modules_v3/contact/module.php:149
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "Löschen Sie “%1$s” bis “%2$s” und versuchen Sie es noch einmal."
 
 #: login.php:308 login.php:492
 msgid "Hello Administrator ..."
@@ -14189,15 +14190,15 @@ msgstr "Ein zukünftiger Benutzer hat sich mit webtrees auf %s registriert."
 
 #: login.php:315
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
-msgstr ""
+msgstr "Dem Benutzer wurde eine E-Mail mit den notwendigen Informationen, geschickt um die Zugangsanforderungen zu bestätigen."
 
 #: login.php:317
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
-msgstr ""
+msgstr "Sie werden per E-Mail informiert werden, wenn dieser potenziellen Nutzer die Anfrage bestätigt hat. Sie können dann den Prozess durch die Aktivierung des Benutzernamens vervollständigen. Der neue Benutzer wird nicht in der Lage sich anmelden, bis Sie das Konto aktiviert haben."
 
 #: login.php:319
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
-msgstr ""
+msgstr "Sie werden per E-Mail informiert werden, wenn diese potenziellen Nutzer die Anfrage bestätigt hat. Danach wird der Benutzer in der Lage, sein sich ohne Ihr Zutun anzumelden."
 
 #: login.php:327
 #, php-format
@@ -14680,7 +14681,7 @@ msgstr "Fehlende Ehenamen hinzufügen"
 
 #: modules_v3/batch_update/plugins/married_names.php:40
 msgid "You can make it easier to search for married women by recording their married name.<br />However not all women take their husband's surname, so beware of introducing incorrect information into your database."
-msgstr ""
+msgstr "Das Suchen nach verheirateten Frauen kann erleichtert werden, wenn die Datenbank nicht nur Geburtsnamen sondern auch Ehenamen enthält.<br />Da nicht alle verheiratete Frauen den Nachnamen des Gatten nehmen, sollten Sie diese Option vielleicht nicht benutzen; Sie könnten dadurch falsche Daten in Ihre Datenbank einfügen"
 
 #: modules_v3/batch_update/plugins/married_names.php:106
 msgid "Surname Option"
@@ -14688,7 +14689,7 @@ msgstr "Nachnamen Optionen"
 
 #: modules_v3/batch_update/plugins/married_names.php:109
 msgid "Wife's surname replaced by husband's surname"
-msgstr ""
+msgstr "Frauen übernehmen den Nachnamen ihres Ehemanns."
 
 #: modules_v3/batch_update/plugins/married_names.php:111
 msgid "Wife's maiden surname becomes new given name"
@@ -15718,11 +15719,11 @@ msgstr "Genealogische Fragen / Hilfe"
 
 #: modules_v3/contact/module.php:194
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
-msgstr ""
+msgstr "<b>Bitte beachten:</b> Private Informationen von lebenden Personen werden nur an Verwandte und nahe Freunde weitergegeben. Sie werden, bevor Sie irgendwelche privaten Daten erhalten, aufgefordert Ihre Bekanntschaft nachzuweisen. Manchmal sind Informationen von toten Personen ebenfalls privat. Wenn dies der Fall ist, ist es deswegen der Fall, weil über die Person nicht genügend Informationen bekannt sind, um zu ermitteln, ob die Person noch lebt oder nicht und wir möglicherweise nicht mehr Informationen über die Person haben.<br /><br />Bevor Sie eine Frage stellen, bestätigen Sie bitte, dass Sie über die korrekte Person nachfragen, indem Sie die Daten, Orte, und nahe Verwandte überprüfen. Wenn Sie Änderungen zu den genealogischen Daten beitragen, beinhalten Sie bitte die Quellen von denen Sie die Daten beschafft haben."
 
 #: modules_v3/contact/module.php:199
 msgid "Please provide your email address so that we may contact you in response to this message.\tIf you do not provide your email address we will not be able to respond to your inquiry.\tYour email address will not be stored or used in any other way than responding to this inquiry."
-msgstr ""
+msgstr "Bitte geben Sie die E-Mail-Adresse an, damit wir Ihre Nachricht beantworten können. Andernfalls ist eine Antwort nicht möglich. Ihre E-Mail-Adresse wird ausschließlich zur Beantwortung Ihrer Anfrage genutzt."
 
 #: modules_v3/cousins_tab/module.php:33
 msgid "Cousins"
@@ -15815,7 +15816,7 @@ msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:43 modules_v3/extra_menus/module.php:255
 msgid "Menu position"
-msgstr ""
+msgstr "Menue Reiehfolge"
 
 #: modules_v3/extra_menus/help_text.php:44
 msgid "This field controls the order in which the menu items are displayed."
@@ -15831,7 +15832,7 @@ msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:48 modules_v3/extra_menus/module.php:257
 msgid "Menu visibility"
-msgstr ""
+msgstr "Menue Sichbarkeit"
 
 #: modules_v3/extra_menus/help_text.php:49
 msgid "You can determine whether this menu item will be visible regardless of family tree, or whether it will be visible only to the current family tree."
@@ -15971,7 +15972,7 @@ msgstr "Fancy Imagebar"
 
 #: modules_v3/fancy_imagebar/module.php:42
 msgid "An image bar with small images on your home page between header and content."
-msgstr ""
+msgstr "Ein aus kleinen Fotos bestehender Bilderstreifen, der auf der Startseite zwischen Kopf- und Inhaltsbereich angezeigt wird."
 
 #: modules_v3/fancy_imagebar/module.php:240
 msgid "The settings are changed. You will loose your changes if you switch trees."
@@ -16200,12 +16201,12 @@ msgstr "Die Einzelheiten zu dieser Generation sind nicht öffentlich."
 #: modules_v3/fancy_treeview/module.php:1056
 #, php-format
 msgid "He married %s times"
-msgstr "Er heiratete  %s mal "
+msgstr "Er heiratete  %s mal."
 
 #: modules_v3/fancy_treeview/module.php:1056
 #, php-format
 msgid "She married %s times"
-msgstr "Sie heiratete  %s mal "
+msgstr "Sie heiratete  %s mal. "
 
 #: modules_v3/fancy_treeview/module.php:1060
 #, php-format
@@ -16426,7 +16427,7 @@ msgstr "th "
 
 #: modules_v3/fancy_treeview/module.php:1682
 msgid "st"
-msgstr "st "
+msgstr ".te  "
 
 #: modules_v3/fancy_treeview/module.php:1683
 msgid "nd"
@@ -16726,7 +16727,7 @@ msgstr "Standarddiagramm"
 
 #: modules_v3/gedcom_favorites/module.php:40
 msgid "Display and manage a family tree’s favorite pages."
-msgstr ""
+msgstr "Anzeigen und Verwalten der Stammbaum-Favoriten."
 
 #: modules_v3/gedcom_favorites/module.php:125 modules_v3/stories/module.php:358 modules_v3/stories/module.php:378 modules_v3/widget_favorites/module.php:142
 msgid "Are you sure you want to remove this item from your list of Favorites?"
@@ -18028,7 +18029,7 @@ msgstr "Nur Ereignisse lebender Personen zeigen?"
 
 #: modules_v3/todays_events/module.php:132 modules_v3/upcoming_events/module.php:144 modules_v3/widget_todays_events/module.php:123 modules_v3/widget_upcoming/module.php:135
 msgid "Show only Births, Deaths, and Marriages?"
-msgstr ""
+msgstr "Nur Geburten, Sterbefälle, Heiraten anzeigen? "
 
 #: modules_v3/todays_events/module.php:150 modules_v3/upcoming_events/module.php:162 modules_v3/widget_todays_events/module.php:141 modules_v3/widget_upcoming/module.php:153 modules_v3/change_report/report.bak:8
 msgid "sort by date"
@@ -18521,7 +18522,7 @@ msgstr "melden …"
 #: setup.php:165
 #, php-format
 msgid "PHP extension \"%1$s\" is disabled.  Without it, the following features will not work: %2$s.  Please ask your server's administrator to enable it."
-msgstr ""
+msgstr "Die PHP Einstellung \"%1$s\" ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Server-Administrator diese zu aktivieren."
 
 #: setup.php:171
 msgid "file upload capability"
@@ -18530,7 +18531,7 @@ msgstr "Fähigkeit für Datei-Upload"
 #: setup.php:174
 #, php-format
 msgid "PHP setting \"%1$s\" is disabled. Without it, the following features will not work: %2$s.  Please ask your server's administrator to enable it."
-msgstr ""
+msgstr "Die PHP Erweiterung \"%1$s\" ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Server-Administrator  diese zu aktivieren."
 
 #: setup.php:179
 msgid "The server configuration is OK."
@@ -18538,7 +18539,7 @@ msgstr "Die Servereinstellungen sind in Ordnung."
 
 #: setup.php:181
 msgid "2 - Checking your server capacity"
-msgstr ""
+msgstr "2 - Prüfe Serverleistung"
 
 #: setup.php:190
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -18600,12 +18601,12 @@ msgstr "Überprüfen Sie die Einstellungen und versuchen Sie es erneut."
 
 #: setup.php:280
 msgid "3 - Checking the connection to your database server"
-msgstr ""
+msgstr "3 - Prüfung der Verbindung zum Datenbank Server"
 
 #: setup.php:281
 #, php-format
 msgid "Kiwitrees needs a MySQL database, version %s or later."
-msgstr ""
+msgstr "Kiwitrees benötigt eine MySQL-Datenbank in der Version %s oder höher."
 
 #: setup.php:282
 msgid "Your server's administrator will provide you with the connection details."
@@ -18641,7 +18642,7 @@ msgstr ""
 
 #: setup.php:377
 msgid "4 - Enter your database and table names"
-msgstr ""
+msgstr "4 - Eingabe der Datenbank- und Tabellennamen"
 
 #: setup.php:378
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server's administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -18677,7 +18678,7 @@ msgstr "Sie müssen alle Administrator Konto Felder ausfüllen."
 
 #: setup.php:420
 msgid "5 - System settings"
-msgstr ""
+msgstr "5 - Systemeinstellungen"
 
 #: setup.php:421 setup.php:424
 msgid "Administrator account"
@@ -18697,7 +18698,7 @@ msgstr "Benutzername"
 
 #: setup.php:433
 msgid "You will use this to login to Kiwitrees."
-msgstr ""
+msgstr "Bitte benutzen Sie das Login für kiwitrees."
 
 #: setup.php:438
 msgid "This must to be at least six characters.  It is case-sensitive."
@@ -18721,7 +18722,7 @@ msgstr "Die Webseite befindet sich im Wartungsmodus. Sie sollten es in einigen M
 
 #: site-php-version.php:77
 msgid "This version of kiwitrees cannot be installed on this web-server."
-msgstr ""
+msgstr "Diese kiwitrees Version kann auf diesem Web-Server nicht installiert werden."
 
 #: site-php-version.php:80
 msgid "You have the following options:"
@@ -18734,7 +18735,7 @@ msgstr "Aufrüsten des Servers auf  PHP %s oder höher."
 
 #: site-php-version.php:86
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://kiwitrees.net\">kiwitrees.net</a>"
-msgstr ""
+msgstr "Wenn Sie das Problem nicht selbst lösen können, können Sie im Forum auf der Seite <a href=\"http://kiwitrees.net\">kiwitrees.net</a> um Hilfe bitten."
 
 #: site-unavailable.php:67
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
