@@ -1219,7 +1219,9 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 	echo '</select>';
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\');">';
 	echo '<span class="quickfacts">';
-	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	foreach ($quickfacts as $fact) {
+		echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . WT_TIMESTAMP . '&ged=' . WT_GEDCOM . '" target="_blank">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	}
 	echo '</span></form>';
 	echo '</td></tr>';
 }
