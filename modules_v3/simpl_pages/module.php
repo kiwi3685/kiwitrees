@@ -37,8 +37,15 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	}
 
 	public function getMenuTitle() {
-		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', 'Resources'));
+		$default_title = WT_I18N::translate('Resources');
+		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', $default_title));
 		return $HEADER_TITLE;
+	}
+
+	public function getSummaryDescription() {
+		$default_description = WT_I18N::translate('These are resources');
+		$HEADER_DESCRIPTION = get_module_setting($this->getName(), 'HEADER_DESCRIPTION', $default_description);
+		return $HEADER_DESCRIPTION;
 	}
 
 	// Extend class WT_Module
@@ -335,11 +342,9 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 
 	private function show() {
 		global $controller;
-		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', 'Resources'));
-		$HEADER_DESCRIPTION = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_DESCRIPTION', 'These are resources'));
 		$controller = new WT_Controller_Page();
 		$controller
-			->setPageTitle($HEADER_TITLE)
+			->setPageTitle($this->getMenuTitle())
 			->pageHeader();
 		$items_id = safe_GET('pages_id');
 		$items_list = $this->getPagesList();
@@ -352,8 +357,8 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		}
 
 		$html='<div id="pages-container">'.
-				'<h2>'.$HEADER_TITLE.'</h2>'.
-				$HEADER_DESCRIPTION.
+				'<h2>'.$this->getMenuTitle().'</h2>'.
+				'<p>'.$this->getSummaryDescription().'</p>'.
 				'<div style="clear:both;"></div>'.
 				'<div id="pages_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
 				if ($count_items > 1) {
@@ -408,9 +413,6 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			AddToLog($this->getName() . ' config updated', 'config');
 		}
 
-		$HEADER_TITLE			= get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Resources'));
-		$HEADER_DESCRIPTION		= get_module_setting($this->getName(), 'HEADER_DESCRIPTION', WT_I18N::translate('These are resources'));
-
 		$items=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS pages_title, bs2.setting_value AS pages_content".
 			" FROM `##block` b".
@@ -443,10 +445,10 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 					<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
 					<input type="hidden" name="action" value="update">
 					<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('pages_title',$this->getName()),'</div>
-					<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $HEADER_TITLE, '"></div>
+					<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $this->getMenuTitle(), '"></div>
 					<div class="label">', WT_I18N::translate('Summary page description'), help_link('pages_description',$this->getName()),'</div>
 					<div class="value2">
-						<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $HEADER_DESCRIPTION, '</textarea>
+						<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $this->getSummaryDescription(), '</textarea>
 					</div>
 					<div class="save"><input type="submit" value="', WT_I18N::translate('save'), '"></div>
 					</form>

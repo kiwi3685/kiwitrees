@@ -29,7 +29,7 @@
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
-	background-color: #aaa;
+	background-color: #ddd;
 	overflow-y: scroll;
 }
 
@@ -83,7 +83,6 @@ th {
 }
 
 td {
-	border-radius: 5px;
 }
 
 ul {
@@ -475,6 +474,8 @@ textarea:required:invalid {
 	border-top: 5px solid #555;
 	font-size: 0.8em;
 	margin-top: 120px;
+	min-height: 60px;
+	padding: 10px;
 	text-align: center;
 }
 
@@ -516,7 +517,6 @@ textarea:required:invalid {
 }
 
 #content {
-	background-color: #aaa;
 	clear: both;
 	font-size: 12px;
 	position: relative;
@@ -744,6 +744,10 @@ div[id*='-page'] {
 	width: 99%;
 }
 
+/* indi and fam list pages */
+#indilist-page, #famlist-page {
+    font-size: 120%;
+}
 .alpha_index {
 	color: #aaa;
 }
@@ -2211,7 +2215,7 @@ dt {
 #verify-form {
 	border: 1px outset #555;
 	display: inline-block;
-	margin: 10px auto 0 auto;
+	margin: 10px auto;
 	padding: 5px;
 }
 
@@ -3063,12 +3067,15 @@ span.link_text {
 	clear: both;
 }
 
-#personal_facts_content .facts_table .descriptionbox a {
-	font-weight: 900;
-}
-
 #personal_facts_content .facts_table .descriptionbox .editfacts a {
 	font-weight: normal;
+}
+
+#personal_facts_content .facts_table .descriptionbox img { /* fact images */
+	float: right;
+}
+[dir='rtl'] #personal_facts_content .facts_table .descriptionbox img {
+	float: left;
 }
 
 /* ====Calendar pop up display ========= */
@@ -3297,7 +3304,7 @@ div[id^="caldiv"] td {
 }
 
 .use-sidebar #indi_left {
-	width: 77%;
+	width: 76%;
 }
 
 .use-sidebar #sidebar {
@@ -4722,6 +4729,11 @@ div#pages-container {
 }
 
 /* Styling for stories module */
+#story_table_wrapper {
+	margin: auto;
+	width: 80%;
+}
+
 #contents_list {
 	margin: auto auto 20px auto;
 	width: 60%;
@@ -5722,6 +5734,7 @@ div.widget {
 
 /* family-block */
 #fancy_treeview-page .blockcontent {
+	font-size: 13px;
 	padding: 20px 0 20px 40px;
 }
 
@@ -5752,7 +5765,7 @@ div.widget {
 }
 
 #fancy_treeview-page .date {
-	font-size: 13px;
+	color: inherit;
 	font-weight: normal;
 }
 
@@ -5937,77 +5950,68 @@ div.widget {
 }
  */
 
-/* RESPOSIVE layout adjustments */
-@media (max-width: 350px) {
-	.media-list-item {
-		width: 95%; /* one per row */
-	}
-}
+ /* RESPOSIVE layout adjustments */
+ @media (min-width: 320px) and (max-width: 900px) {
 
-@media (min-width: 351px) and (max-width: 1024px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
-	#topMenu #main-menu {
-		display:none;
-	}
-	#navbar {
-		position: initial;
-	}
-	#topMenu #nav-select {
-		border: 1px solid #CCC;
-		background-color: #FFF;
-		display: block;
-		font-size: 12px;
-		height: 30px;
-		line-height: 30px;
-		margin: 10px auto;
-		text-align: left;
-		width: 70%;
+ 	#topMenu #main-menu {
+ 		display:none;
+ 	}
+ 	#navbar {
+ 		position: initial;
+ 	}
+ 	#topMenu #nav-select {
+ 		border: 1px solid #CCC;
+ 		background-color: #FFF;
+ 		display: block;
+ 		font-size: 12px;
+ 		height: 30px;
+ 		line-height: 30px;
+ 		margin: 10px auto;
+ 		text-align: left;
+ 		width: 70%;
+ 	}
+ 	#topMenu #nav-select select {
+ 		font-size: 30px;
+ 		width: 100%;
+ 	}
+ 	#topMenu #nav-select option {
+ 		font-size: 12px;
+ 	}
+ 	#header {
+ 		height: auto;
+ 		text-align: center;
+ 	}
+ 	#header .title {
+ 		position: relative;
+ 		text-align: center;
+ 	}
+ 	#header #extra-menu, #header .header_search {
+ 		float:none;
+ 	}
 
-	}
-	#topMenu #nav-select select {
-		font-size: 30px;
-		width: 100%;
-	}
-	#topMenu #nav-select option {
-		font-size: 12px;
-	}
-	#header {
-		height: auto;
-		text-align: center;
-	}
-	#header .title {
-		position: relative;
-		text-align: center;
-	}
-	#header #extra-menu, #header .header_search {
-		float:none;
-	}
-	#content {
-		top: auto;
-	}
-	#home-page #index_main_blocks {
+ 	#content {
+ 		top: auto;
+ 	}
+	#home-page #index_main_blocks,
+    #home-page #index_small_blocks > div {
         float: none;
         margin: auto;
         width: 95%;
     }
-	#home-page #index_small_blocks > div {
-		float: none;
-		margin: 10px auto;
-		width: 90%;
-	}
-
-}
-
-@media (min-width: 1025px) and (max-width: 1681px) {
 	.media-list-item {
-		width: 48%; /* two per row */
-	}
-}
+ 		width: 95%; /* one per row */
+ 	}
 
-@media (min-width: 1681px) {
-	.media-list-item {
-		width: 31%; /* three per row */
-	}
-}
+ }
+
+ @media (min-width: 780px) and (max-width: 1680px) {
+ 	.media-list-item {
+ 		width: 45%; /* two per row */
+ 	}
+ }
+
+ @media (min-width: 1681px) {
+ 	.media-list-item {
+ 		width: 31%; /* three per row */
+ 	}
+ }

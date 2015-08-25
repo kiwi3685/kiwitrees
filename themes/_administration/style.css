@@ -134,6 +134,8 @@ button {min-width:100px;}
 #admin_menu .ui-accordion .ui-accordion-content-active {padding:.5em;}
 #admin_menu div p {margin:8px 5px; font-size:12px; white-space:normal;}
 #admin_menu div p span {font-style:italic; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
+#admin_menu h3 span.menu-name {display: initial;}
+
 [dir=rtl] #admin_menu {top:92px; left:auto; right:10px; padding:10px 5px 10px 0; float:right;}
 
 /* CONTENT */
@@ -179,8 +181,10 @@ button {min-width:100px;}
 /* DASHBOARD BLOCKS */
 fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%;}
 fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
-#users div#logged_in_users ul {list-style: none;}
-#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
+#users div#logged_in_users ul {list-style: none; margin: 3px 0;}
+#users div#logged_in_users .inset a {margin: 0 10px;}
+#users div#logged_in_users .inset br {display: none;}
+#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal;}
 #tree_stats td, #recent td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
 #tree_stats .ui-accordion-content, #recent .ui-accordion-content {background: #c9c9c9; padding:1em; min-height:180px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
@@ -216,7 +220,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 }
 
 #tree_stats .inset, #users .inset {
-	padding: 0 0 0 20px;
+	padding: 6px 0 0 20px;
 }
 
 #tree_stats .inset2, #users .inset2 {
@@ -915,3 +919,26 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_accordion .result {border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}
 #sanity_check #sanity_options {margin:10px 30px;}
 #sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
+
+/* RESPOSIVE layout adjustments */
+@media (max-width: 350px) {
+}
+
+@media (min-width: 351px) and (max-width: 1024px) {
+	#admin_menu h3 span.menu-name {
+		display: none;
+	}
+	#admin_menu {
+		width: 60px;
+	}
+	#admin_content {
+	    margin: 0 0 0 80px;
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1681px) {
+}
+
+@media (min-width: 1681px) {
+	}
+}

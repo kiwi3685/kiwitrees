@@ -53,10 +53,11 @@ $html .= '
 	.utility{background-color: #DDD; border:1px solid #c0c0c0;border-radius:8px;height:200px;margin:10px;display:inline-block;width:31%;min-width: 380px;overflow: hidden;}
 	.utility table{margin:auto;}
 	.utility label{margin:0 10px;}
+	.bold {font-weight: 900;}
 	#days .button {cursor: pointer;font-size: 80%;}
 	#relationships .result{margin:0 20px;padding:2px 5px;width:250px;}
 	#relationships td{padding:5px;}
-	#dob_calc p.main {width:300px; margin:20px auto;}
+	#dob_calc p.main {margin:20px auto;}
 	#dob_calc p.main span {margin-right:20px;}
 	#dob_calc label {margin:0 20px 0 0;}
 	#dob_calc label.age_part {margin:0 15px 0 0;}
@@ -204,18 +205,18 @@ $html .= '
   generationsData.genArray[2] = "Great grandchild";
 
   function initialBuild()
-  { 
+  {
     updateDisplays(); // initialize form text contents
   }
 
-  
+
   function numSuffix(n)
   {
     var numString = " " + n;
     var retStr = "th"; // default return
-	    
+
     if(numString.length > 0)
-    {	    
+    {
        if( numString.match(/11$/)
             || numString.match(/12$/)
             || numString.match(/13$/)
@@ -228,7 +229,7 @@ $html .= '
        else if( numString.charAt(numString.length - 1) == '3' )
             retStr = "rd";
     }
-	       
+
    return n + retStr;
   }
 
@@ -241,7 +242,7 @@ $html .= '
          ///
          // Increase array size and init values
          ///
-         generationsData.genArray[ix] = numSuffix(ix -1) + " " 
+         generationsData.genArray[ix] = numSuffix(ix -1) + " "
                      + generationsData.genArray[2];
      }
     return( generationsData.genArray[genNumber] );
@@ -263,7 +264,7 @@ $html .= '
 		}
                 else
                 {
-                    theirrelation = "You and D are " 
+                    theirrelation = "You and D are "
                            + numSuffix(t1) + " Cousins";
                 }
         }
@@ -282,9 +283,9 @@ $html .= '
                 {
                     grandind=  numSuffix(t2 - 2) + " Great Grand";
                 }
-          
+
                 theirrelation="D is your " + grandind + " niece/nephew";
-                    
+
         }
         else if( t1 > 0 && t2 == 0 )
         {
@@ -301,7 +302,7 @@ $html .= '
                 {
                     grandind = numSuffix(t1 - 2) + " Great Grand";
                 }
-          
+
                 theirrelation="You are the " + grandind + " niece/nephew of D";
         }
         else
@@ -318,11 +319,11 @@ $html .= '
                 lesser = t1;
                 removed = t2 - t1;
             }
-              
+
             if( removed > 0 )
             {
-                theirrelation = "You and D are " 
-                     + numSuffix(lesser) + " cousins " + removed; 
+                theirrelation = "You and D are "
+                     + numSuffix(lesser) + " cousins " + removed;
 
                 if( removed == 1 )
                     theirrelation += " time removed";
@@ -360,7 +361,7 @@ $html .= '
          ///
          // Increase array size and init value
          ///
-         generationsData.genArray[lgth] = numSuffix(lgth -1) + " " 
+         generationsData.genArray[lgth] = numSuffix(lgth -1) + " "
                      + generationsData.genArray[2];
      }
      updateDisplays();
@@ -370,7 +371,7 @@ $html .= '
   {
      if( gen == 1 && generationsData.genYou > 0 )
           generationsData.genYou--;
- 
+
      if( gen == 2 && generationsData.genD > 0 )
           generationsData.genD--;
 
@@ -386,23 +387,23 @@ $html .= '
 // UTILITY 3 - DATE OF BIRTH CALCULATOR -->
 $html .= '
 <div class="utility" id="dob_calc">
-	<h3 class="header"><span>Birth Date Calculator</span></h3>
+	<h3 class="header"><span>' . WT_I18N::translate('Birth Date Calculator') . '</span></h3>
 	<form name="theForm">
 		<p class="main">
-			<label for="">Event Date:</label>
+			<label for="eventDate" class="bold">' . WT_I18N::translate('Event Date') . '</label>
 			<input id="eventDate" name="eventDate" onchange="setEventDateGui()" placeholder="31/12/1905" size="10" type="text" />
 		</p>
 		<p class="main">
-			<label>Age:</label>
+			<label class="bold">' . WT_I18N::translate('Age') . '</label>
 				<input class="age_part" id="ageYY" name="ageYY" onchange="setAgeYYGui()" placeholder="27" size="2" type="text" />
-			<label for="">yrs</label>
+			<label for="ageYY">' . WT_I18N::translate('years') . '</label>
 				<input class="age_part" id="ageMM" name="ageMM" onchange="setAgeMMGui()" placeholder="0" size="2" type="text" />
-			<label for="">mths</label>
+			<label for="ageMM">' . WT_I18N::translate('months') . '</label>
 				<input class="age_part" id="ageDD" name="ageDD" onchange="setAgeDDGui()" placeholder="0" size="2" type="text" />
-			<label for="">days</label>
+			<label for="ageDD">' . WT_I18N::translate('days') . '</label>
 		</p>
 		<p class="main">
-			<span>Estimated DoB:</span>
+			<span class="bold">' . WT_I18N::translate('Estimated date of birth') . '</span>
 			<span id="showResult"></span>
 		</p>
 	</form>

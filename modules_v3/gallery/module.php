@@ -37,7 +37,15 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	}
 
 	public function getMenuTitle() {
-		return WT_I18N::translate('Gallery');
+		$default_title = WT_I18N::translate('Gallery');
+		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', $default_title));
+		return $HEADER_TITLE;
+	}
+
+	public function getSummaryDescription() {
+		$default_description = WT_I18N::translate('These are galleries');
+		$HEADER_DESCRIPTION = get_module_setting($this->getName(), 'HEADER_DESCRIPTION', $default_description);
+		return $HEADER_DESCRIPTION;
 	}
 
 	// Extend class WT_Module
@@ -130,10 +138,8 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			return null;
 		}
 
-		$menu_title = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery')));
-
 		//-- main GALLERIES menu item
-		$menu = new WT_Menu($menu_title, 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$default_block, 'menu-my_gallery', 'down');
+		$menu = new WT_Menu($this->getMenuTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$default_block, 'menu-my_gallery', 'down');
 		$menu->addClass('menuitem', 'menuitem_hover', '');
 		foreach ($this->getMenuAlbumList() as $item) {
 			$languages=get_block_setting($item->block_id, 'languages');
@@ -175,13 +181,13 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				));
 				$block_id=WT_DB::getInstance()->lastInsertId();
 			}
-			set_block_setting($block_id, 'gallery_title',		  safe_POST('gallery_title',		WT_REGEX_UNSAFE)); // allow html
+			set_block_setting($block_id, 'gallery_title',		safe_POST('gallery_title',		WT_REGEX_UNSAFE)); // allow html
 			set_block_setting($block_id, 'gallery_description', safe_POST('gallery_description',WT_REGEX_UNSAFE)); // allow html
-			set_block_setting($block_id, 'gallery_folder_w',	  safe_POST('gallery_folder_w',	WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'gallery_folder_f',	  safe_POST('gallery_folder_f',	WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'gallery_folder_p',	  safe_POST('gallery_folder_p',	WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'gallery_access',	  safe_POST('gallery_access',		WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'plugin',			  safe_POST('plugin',			WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_folder_w',	safe_POST('gallery_folder_w',	WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_folder_f',	safe_POST('gallery_folder_f',	WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_folder_p',	safe_POST('gallery_folder_p',	WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'gallery_access',	 	safe_POST('gallery_access',		WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'plugin',			 	safe_POST('plugin',				WT_REGEX_UNSAFE));
 			$languages=array();
 			foreach (WT_I18N::used_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
@@ -430,12 +436,10 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			AddToLog($this->getName() . 'config updated', 'config');
 		}
 
-		$HEADER_TITLE			= get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery'));
-		$HEADER_DESCRIPTION		= get_module_setting($this->getName(), 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
 		$current_themedir 		= get_module_setting($this->getName(), 'THEME_DIR', WT_I18N::translate('azur'));
 		$themename = $this->galleria_theme_names();
 
-		$items=WT_DB::prepare(
+		$items = WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS gallery_title, bs2.setting_value AS gallery_description".
 			" FROM `##block` b".
 			" JOIN `##block_setting` bs1 USING (block_id)".
@@ -465,27 +469,30 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 				</ul>
 				<div id="gallery_summary">
 					<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
-					<input type="hidden" name="action" value="update">
-					<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('gallery_title',$this->getName()),'</div>
-					<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $HEADER_TITLE, '"></div>
-					<div class="label">', WT_I18N::translate('Summary page description'), help_link('gallery_description',$this->getName()),'</div>
-					<div class="value2">
-						<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $HEADER_DESCRIPTION, '</textarea>
-					</div>
-					<div id="gallery_theme">
-						<div class="label">', WT_I18N::translate('Select gallery theme'), help_link('gallery_theme',$this->getName()),'</div>';
-						foreach ($themename as $themedir) {
-						echo
-							'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
-									<img src="', WT_MODULES_DIR,$this->getName(), '/images/' ,$themedir, '.png" alt="' ,$themedir, ' title="' ,$themedir, '">
-								<p>
-									<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
-									<label for="radio_' ,$themedir, '">', $themedir, '</label>
-								</p>
-							</div>';
-						}
-				echo '</div><div style="clear:both;"></div>
-					<div class="save"><input type="submit" value="', WT_I18N::translate('save'), '"></div>
+						<input type="hidden" name="action" value="update">
+						<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('gallery_title',$this->getName()),'</div>
+						<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $this->getMenuTitle(), '"></div>
+						<div class="label">', WT_I18N::translate('Summary page description'), help_link('gallery_description',$this->getName()),'</div>
+						<div class="value2">
+							<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $this->getSummaryDescription(), '</textarea>
+						</div>
+						<div id="gallery_theme">
+							<div class="label">', WT_I18N::translate('Select gallery theme'), help_link('gallery_theme',$this->getName()),'</div>';
+							foreach ($themename as $themedir) {
+							echo
+								'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
+										<img src="', WT_MODULES_DIR,$this->getName(), '/images/' ,$themedir, '.png" alt="' ,$themedir, ' title="' ,$themedir, '">
+									<p>
+										<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
+										<label for="radio_' ,$themedir, '">', $themedir, '</label>
+									</p>
+								</div>';
+							}
+						echo '</div>
+						<div style="clear:both;"></div>
+						<div class="save">
+							<input type="submit" value="', WT_I18N::translate('save'), '">
+						</div>
 					</form>
 				</div>
 				<div id="gallery_pages">
@@ -672,55 +679,59 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	// Start to show the gallery display with the parts common to all galleries
 	private function show() {
 		global $MEDIA_DIRECTORY, $controller;
-
-		$HEADER_TITLE			= get_module_setting($this->getName(), 'HEADER_TITLE', WT_I18N::translate('Gallery'));
-		$HEADER_DESCRIPTION		= get_module_setting($this->getName(), 'HEADER_DESCRIPTION', WT_I18N::translate('These are galleries'));
-
 		$item_id=safe_GET('gallery_id');
 		$controller=new WT_Controller_Page();
 		$controller
-			->setPageTitle($HEADER_TITLE)
+			->setPageTitle($this->getMenuTitle())
 			->pageHeader()
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/galleria-1.4.2.min.js')
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/flickr/galleria.flickr.min.js')
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/picasa/galleria.picasa.min.js')
 			->addInlineJavaScript($this->getJavaScript($item_id));
-		$html=
-			'<div id="gallery-page">'.
-			'<div id="gallery-container">'.
-			'<h2>'.$controller->getPageTitle().'</h2>'.
-			$HEADER_DESCRIPTION.
-			'<div style="clear:both;"></div>'.
-			'<div id="gallery_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">'.
-			'<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
-			$item_list=$this->getAlbumList();
-			foreach ($item_list as $item) {
-				$languages=get_block_setting($item->block_id, 'languages');
-				if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
-					$html.='<li class="ui-state-default ui-corner-top'.($item_id==$item->block_id ? ' ui-tabs-selected ui-state-active' : '').'">'.
-						'<a href="module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$item->block_id.'">'.
-						'<span title="'.WT_I18N::translate($item->gallery_title).'">'.WT_I18N::translate($item->gallery_title).'</span></a></li>';
-				}
-			}
-		$html.=
-			'</ul>'.
-			'<div id="outer_gallery_container">';
-				foreach ($item_list as $item) {
-					$languages=get_block_setting($item->block_id, 'languages');
-					if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item_id==$item->block_id && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
-						$item_gallery='<h4>'.WT_I18N::translate($item->gallery_description).'</h4>'.$this->mediaDisplay($item->gallery_folder_w, $item_id);
+
+		$html = '<div id="gallery-page">
+			<div id="gallery-container">
+				<h2>' . $controller->getPageTitle() . '</h2>
+				<p>' . $this->getSummaryDescription() . '</p>
+				<div style="clear:both;"></div>
+				<div id="gallery_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+					<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
+					$item_list=$this->getAlbumList();
+					foreach ($item_list as $item) {
+						$languages=get_block_setting($item->block_id, 'languages');
+						if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
+							$html.='
+								<li class="ui-state-default ui-corner-top'.($item_id==$item->block_id ? ' ui-tabs-selected ui-state-active' : '').'">
+									<a href="module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$item->block_id.'">
+										<span title="' . WT_I18N::translate($item->gallery_title).'">' . WT_I18N::translate($item->gallery_title) . '</span>
+									</a>
+								</li>';
+						}
 					}
-				}
-				if (!isset($item_gallery)) {
-					$html.='<h4>'.WT_I18N::translate('Image collections related to our family').'</h4>'.$this->mediaDisplay('//', $item_id);
-				} else {
-					$html.=$item_gallery;
-				}
-		$html.=
-			'</div>'. //close #outer_gallery_container
-			'</div>'. //close #gallery_tabs
-			'</div>'; //close #gallery-container
+					$html .= '</ul>'.
+					'<div id="outer_gallery_container">';
+						foreach ($item_list as $item) {
+							$languages=get_block_setting($item->block_id, 'languages');
+							if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item_id==$item->block_id && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
+								$item_gallery = '
+									<h4>'.WT_I18N::translate($item->gallery_description).'</h4>'
+									. $this->mediaDisplay($item->gallery_folder_w, $item_id);
+							}
+						}
+						if (!isset($item_gallery)) {
+							$html .= '
+								<h4>' . WT_I18N::translate('Image collections related to our family') . '</h4>' .
+								$this->mediaDisplay('//', $item_id);
+						} else {
+							$html .= $item_gallery;
+						}
+					$html.= '</div>'. //close #outer_gallery_container
+				'</div>'. //close #gallery_tabs
+			'</div>'. //close #gallery-container
+		'</div>'; //close #gallery-page
+
 		echo $html;
+
 	}
 
 	// Print the gallery display

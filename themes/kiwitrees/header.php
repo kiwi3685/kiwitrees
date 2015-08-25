@@ -114,67 +114,66 @@ if ($view!='simple') {echo '<body id="body">';
 
 // begin header section
 if ($view!='simple') {
-echo '	<div id="main_content">
-			<div id="navbar">
-				<div id="header">
-					<div id="bigtext" class="title" dir="auto">',
-						WT_TREE_TITLE, '
-					</div>
-					<div class="header_search">
-						<form action="search.php" method="post">
-							<input type="hidden" name="action" value="general">
-							<input type="hidden" name="topsearch" value="yes">
-							<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search trees'), '" dir="auto">
-						</form>
-					</div>
-					<ul id="extra-menu" class="makeMenu">';
-						if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-echo						'<li>
-								<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
-									WT_I18N::translate('Pending changes'), '
-								</a>
-							</li>';
-						}
-						foreach (WT_MenuBar::getOtherMenus() as $menu) {
-							if (strpos($menu, WT_I18N::translate('Login')) && !WT_USER_ID && (array_key_exists('login_block', WT_Module::getInstalledModules('%')))) {
-								$class_name	= 'login_block_WT_Module';
-								$module		=  new $class_name;
-								echo '
-								<li>
-									<a href="#">', (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')), '</a>
-									<ul id="login_popup">
-										<li>', $module->getBlock('login_block'), '</li>
-									</ul>
-								</li>';
-							} else {
-								echo $menu->getMenuAsList();
-							}
-						}
-echo 				'</ul>
-				</div>', // <div id="header">
-				'<div id="topMenu" class="ui-state-active">
-					<ul id="main-menu">';
-						if ($show_widgetbar) {
-							echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
-						}
-						foreach (WT_MenuBar::getMainMenus() as $menu) {
-							echo $menu->getMenuAsList();
-						}
-echo				'</ul>',
-					// select menu for responsive layouts only
-					'<select id="nav-select" onChange="window.location.href=this.value">
-						<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
-						foreach (WT_MenuBar::getMainMenus() as $menu) {
-							echo $menu->getMenuAsSelect();
-						}
-echo				'</select>
-				</div>', // <div id="topMenu">
-				WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-			'</div>'; // <div id="navbar">
+	echo '<div id="navbar">
+		<div id="header">
+			<div id="bigtext" class="title" dir="auto">',
+				WT_TREE_TITLE, '
+			</div>
+			<div class="header_search">
+				<form action="search.php" method="post">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="25" placeholder="', WT_I18N::translate('Search trees'), '" dir="auto">
+				</form>
+			</div>
+			<ul id="extra-menu" class="makeMenu">';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo '<li>
+						<a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">',
+							WT_I18N::translate('Pending changes'), '
+						</a>
+					</li>';
+				}
+				foreach (WT_MenuBar::getOtherMenus() as $menu) {
+					if (strpos($menu, WT_I18N::translate('Login')) && !WT_USER_ID && (array_key_exists('login_block', WT_Module::getInstalledModules('%')))) {
+						$class_name	= 'login_block_WT_Module';
+						$module		=  new $class_name;
+						echo '
+						<li>
+							<a href="#">', (WT_Site::preference('USE_REGISTRATION_MODULE') ? WT_I18N::translate('Login or Register') : WT_I18N::translate('Login')), '</a>
+							<ul id="login_popup">
+								<li>', $module->getBlock('login_block'), '</li>
+							</ul>
+						</li>';
+					} else {
+						echo $menu->getMenuAsList();
+					}
+				}
+			echo '</ul>
+		</div>', // <div id="header">
+		'<div id="topMenu" class="ui-state-active">
+			<ul id="main-menu">';
+				if ($show_widgetbar) {
+					echo '<li id="widget-button" class="fa fa-fw fa-2x fa-bars"><a href="#" ><span style="line-height: inherit;">&nbsp;</span></a></li>';
+				}
+				foreach (WT_MenuBar::getMainMenus() as $menu) {
+					echo $menu->getMenuAsList();
+				}
+			echo '</ul>',
+			// select menu for responsive layouts only
+			'<select id="nav-select" onChange="window.location.href=this.value">
+				<option selected="selected" value="">', WT_I18N::translate('Choose a page'), '</option>';
+				foreach (WT_MenuBar::getMainMenus() as $menu) {
+					echo $menu->getMenuAsSelect();
+				}
+			echo '</select>
+		</div>', // <div id="topMenu">
+		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+	'</div>'; // <div id="navbar">
 }
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'visitor' or above
 if ($show_widgetbar) {
 	include_once 'widget-bar.php';
 }
 // begin content section
-echo $javascript, '<div id="content">';// closed in footer, as is div "main_content"
+echo $javascript, '<div id="content">';// closed in footer

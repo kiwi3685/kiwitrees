@@ -133,7 +133,9 @@ $controller
 	->setPageTitle(WT_I18N::translate('Families').' : '.$legend)
 	->pageHeader();
 
-echo '<h2 class="center">', WT_I18N::translate('Families'), '</h2>';
+echo '
+	<div id="indilist-page">
+		<h2 class="center">', WT_I18N::translate('Families'), '</h2>';
 
 // Print a selection list of initial letters
 $list=array();
@@ -266,4 +268,5 @@ if ($show=='indi' || $show=='surn') {
 			);
 		}
 	}
+	echo '</div>';	
 }

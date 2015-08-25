@@ -78,7 +78,7 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 [dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
 
 /* Options Menu  */
-.makeMenu {float:right;margin:21px 10px 0 0;}
+.makeMenu {float:right;margin:10px;}
 .makeMenu ul {border-radius:5px;}
 .makeMenu li {display:inline;position:relative;white-space:nowrap;z-index:100;}
 .makeMenu li:before {content:" | ";}
@@ -97,6 +97,9 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 [dir=rtl] .makeMenu {display:block;float:left;margin:21px 0 0 10px;}
 [dir=rtl] .makeMenu li ul {left:auto;right:0;}
 [dir=rtl] .makeMenu li ul li {text-align:right;}
+
+.header_search {float:right; margin-top: 6px;}
+
 
 /* Menu setup*/
 #topMenu #nav-select {display: none;}
@@ -498,7 +501,7 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 
 button {border-width:1px;}
 input,button,textarea {border-color: #494949;border-width:1px; font-size: 12px; font-family:inherit;}
-input, textarea {padding:0 3px;}
+input, textarea {padding:5px;}
 
 .optionbox {border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
 .optionbox input {margin-right:5px;}
@@ -1058,7 +1061,7 @@ span.link_text {display:none;}
 
 .search_hit {background:#ffff00;color:#000;}
 .search_item {font-weight:600;}
-.search-icon {height:16px; vertical-align:text-bottom;}
+.search-icon {height:16px; vertical-align:top;}
 
 #firstfocus {font-size:12px;width:330px;}
 #search-result-tabs,#places-tabs {margin:auto;visibility:hidden;width:98%;}
@@ -1910,7 +1913,10 @@ div.widget {
 	width:80%;
 }
 
-#contact_forms {
+#contact_forms,
+.message_note {
+    border: 1px solid #999 ;
+    padding: 20px;
 }
 
 .contact_form {
@@ -1918,6 +1924,14 @@ div.widget {
 	margin: auto 20px;
 	max-width: 600px;
   	min-width: 45%;
+}
+
+.message_note {
+    margin-bottom: 20px;
+}
+
+.message_note hr {
+    display: none;
 }
 
 #main-menu li#menu-contact {
@@ -2225,22 +2239,8 @@ div.widget {
 /* ------------------ */
 
 /* RESPOSIVE layout adjustments */
-@media (max-width: 350px) {
-	.media-list-item {
-		width: 95%; /* one per row */
-	}
-}
+@media (min-width: 320px) and (max-width: 1024px) {
 
-@media (min-width: 351px) and (max-width: 1024px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
-    #header .makeMenu {
-        float: none;
-    }
-    #topMenu {
-        overflow: hidden;
-    }
 	#topMenu #main-menu {
 		display:none;
 	}
@@ -2248,13 +2248,11 @@ div.widget {
 		position: initial;
 	}
 	#topMenu #nav-select {
-		border: 1px solid #CCC;
-		background-color: #FFF;
 		display: block;
-		font-size: 12px;
+		font-size: 14px;
 		height: 30px;
 		line-height: 30px;
-		margin: 10px auto;
+		margin: 0 auto;
 		text-align: left;
 		width: 70%;
 	}
@@ -2263,19 +2261,22 @@ div.widget {
 		width: 100%;
 	}
 	#topMenu #nav-select option {
-		font-size: 12px;
 	}
 	#header {
 		height: auto;
 		text-align: center;
 	}
 	#header .title {
-		float: none;
-        position: relative;
+		position: relative;
 		text-align: center;
+        float: none;
+        margin: auto;
 	}
-	#header #extra-menu, #header .header_search {
-		float:none;
+	#header .header_search,
+    #header .makeMenu {
+        float: none;
+        padding: 10px;
+        margin: 0;
 	}
 	#content {
 		top: auto;
@@ -2286,16 +2287,20 @@ div.widget {
         margin: auto;
         width: 95%;
     }
+    .media-list-item {
+        width: 95%; /* one per row */
+    }
+
 }
 
-@media (min-width: 1025px) and (max-width: 1681px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
+@media (min-width: 780px) and (max-width: 1680px) {
+   .media-list-item {
+       width: 45%; /* two per row */
+   }
 }
 
 @media (min-width: 1681px) {
-	.media-list-item {
-		width: 31%; /* three per row */
-	}
+   .media-list-item {
+       width: 31%; /* three per row */
+   }
 }

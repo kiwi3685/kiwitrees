@@ -32,7 +32,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'Kiwitrees');
-define('WT_VERSION',         '3.1.1');
+define('WT_VERSION',         '3.1.2');
 define('WT_VERSION_RELEASE', ''); // “dev”, “beta”, “rc1”, “”, etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 
@@ -490,8 +490,8 @@ if (WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='admin_pgv_to_wt
 }
 
 if (WT_USER_ID) {
-	//-- update the login time every 5 minutes
-	if (WT_TIMESTAMP-$WT_SESSION->activity_time > 300) {
+	//-- update the login time once per minute
+	if (WT_TIMESTAMP-$WT_SESSION->activity_time >= 60) {
 		set_user_setting(WT_USER_ID, 'sessiontime', WT_TIMESTAMP);
 		$WT_SESSION->activity_time = WT_TIMESTAMP;
 	}

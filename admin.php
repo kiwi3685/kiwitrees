@@ -36,6 +36,9 @@ $controller
 	->setPageTitle(WT_I18N::translate('Administration'))
 	->pageHeader();
 
+//Check for updates
+$latest_version = fetch_latest_version();
+
 $stats = new WT_Stats(WT_GEDCOM);
 	$totusers	= 0;       // Total number of users
 	$warnusers	= 0;       // Users with warning
@@ -77,8 +80,24 @@ if (
 
 	<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
 	<div id="about">
-		<p><?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>kiwitrees</b> site.'); ?></p>
-		<p><?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net</a>'); ?></p>
+		<p><?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this kiwitrees site.'); ?></p>
+		<p><?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net forums</a>'); ?></p>
+
+		<?php
+		// Latest version info
+		if (WT_USER_IS_ADMIN) {
+			if ($latest_version) {
+				if (version_compare(WT_VERSION, $latest_version) < 0) {
+					echo '<p>' ,  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Version %s of kiwitrees is now available at %s.', $latest_version, ' <a class="current" href="http://kiwitrees.net/services/downloads/">kiwitrees.net downloads</a>'), '</p>';
+				} else {
+					echo '<p>' , WT_I18N::translate('Your version of kiwitrees is the latest available.') , '</p>';
+				}
+			} else {
+				echo '<p>' , WT_I18N::translate('No upgrade information is available.') , '</p>';
+			}
+		}
+		?>
+
 		<!-- SERVER WARNINGS -->
 		<?php if ($server_warnings): ?>
 			<div class="">
@@ -202,7 +221,7 @@ echo '
 		foreach ($userlang as $key=>$ulang) {
 			echo '
 			<li>
-				<span>', $ulang['langname'], '</span>
+				<span class="inset">', $ulang['langname'], '</span>
 				<span class="filler">&nbsp;</span>
 				<span>', $ulang['number'], '</span>
 			</li>';

@@ -305,7 +305,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 
 	// Print the date of this fact/event
 	echo format_fact_date($fact, $record, true, true);
-	
+
 	// Print the place of this fact/event
 	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';
 	// A blank line between the primary attributes (value, date, place) and the secondary ones
@@ -370,7 +370,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case '_WT_USER':
-			$fullname=getUserFullname(get_user_id($match[2])); // may not exist	
+			$fullname=getUserFullname(get_user_id($match[2])); // may not exist
 			if ($fullname) {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $fullname);
 			} else {
@@ -552,7 +552,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 		return $data;
 	} else {
 		echo $data;
-	}	
+	}
 }
 
 //-- Print the links to media objects
@@ -574,52 +574,53 @@ function print_media_links($factrec, $level, $pid='') {
 		if ($media) {
 			if ($media->canDisplayDetails()) {
 				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
-				echo '<div class="media-display"><div class="media-display-image">';
-				echo $media->displayImage();
-				echo '</div>'; // close div "media-display-image"
-				echo '<div class="media-display-title">';
-				if ($SEARCH_SPIDER) {
-					echo $media->getFullName();
-				} else {
-					echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">', $media->getFullName(), '</a>';
-				}
-				// NOTE: echo the notes of the media
-				echo '<p>';
-				echo print_fact_notes($media->getGedcomRecord(), 1);
-				if (preg_match('/2 DATE (.+)/', get_sub_record('FILE', 1, $media->getGedcomRecord()), $match)) {
-					$media_date=new WT_Date($match[1]);
-					$md = $media_date->Display(true);
-					echo '<p class="label">', WT_Gedcom_Tag::getLabel('DATE'), ': </p> ', $md;
-				}
-				$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $media->getGedcomRecord(), $match);
-				if ($ttype>0) {
-					$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
-					echo '<p class="label">', WT_I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</p>';
-				}
-				echo '</p>';
-				//-- print spouse name for marriage events
-				$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
-				if ($ct>0) {
-					$spouse=WT_Person::getInstance($match[1]);
-					if ($spouse) {
-						echo '<a href="', $spouse->getHtmlUrl(), '">';
-						echo $spouse->getFullName();
-						echo '</a>';
-					}
-					if (empty($SEARCH_SPIDER)) {
-						$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
+				echo '<div class="media-display">
+					<div class="media-display-image">';
+						echo $media->displayImage();
+					echo '</div>'; // close div "media-display-image"
+					echo '<div class="media-display-title">';
+						if ($SEARCH_SPIDER) {
+							echo $media->getFullName();
+						} else {
+							echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">', $media->getFullName(), '</a>';
+						}
+						// echo the notes of the media
+						echo '<p>';
+							echo print_fact_notes($media->getGedcomRecord(), 1);
+							if (preg_match('/2 DATE (.+)/', get_sub_record('FILE', 1, $media->getGedcomRecord()), $match)) {
+								$media_date=new WT_Date($match[1]);
+								$md = $media_date->Display(true);
+								echo '<p class="label">', WT_Gedcom_Tag::getLabel('DATE'), ': </p> ', $md;
+							}
+							$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $media->getGedcomRecord(), $match);
+							if ($ttype>0) {
+								$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
+								echo '<p class="label">', WT_I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</p>';
+							}
+						echo '</p>';
+						//-- print spouse name for marriage events
+						$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
 						if ($ct>0) {
-							$famid = trim($match[1]);
-							$family = WT_Family::getInstance($famid);
-							if ($family) {
-								if ($spouse) echo " - ";
-								echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+							$spouse=WT_Person::getInstance($match[1]);
+							if ($spouse) {
+								echo '<a href="', $spouse->getHtmlUrl(), '">';
+								echo $spouse->getFullName();
+								echo '</a>';
+							}
+							if (empty($SEARCH_SPIDER)) {
+								$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
+								if ($ct>0) {
+									$famid = trim($match[1]);
+									$family = WT_Family::getInstance($famid);
+									if ($family) {
+										if ($spouse) echo " - ";
+										echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+									}
+								}
 							}
 						}
-					}
-				}
-				print_fact_notes($media->getGedcomRecord(), $nlevel);
-				print_fact_sources($media->getGedcomRecord(), $nlevel);
+						print_fact_notes($media->getGedcomRecord(), $nlevel);
+						print_fact_sources($media->getGedcomRecord(), $nlevel);
 				echo '</div>';//close div "media-display-title"
 				echo '</div>';//close div "media-display"
 			}
@@ -656,7 +657,7 @@ function print_main_sources(WT_Event $fact, $level) {
 	$linenum = $fact->getLineNumber();
 	$parent  = $fact->getParentObject();
 	$pid     = $parent->getXref();
-	
+
 	$nlevel = $level+1;
 	if ($fact->getIsNew()) {
 		$styleadd = 'change_new';
@@ -955,7 +956,7 @@ function print_main_notes(WT_Event $fact, $level) {
 			$nid = $nmatch[1];
 			$note=WT_Note::getInstance($nid);
 			if ($note) {
-				$noterec=$note->getGedcomRecord();				
+				$noterec=$note->getGedcomRecord();
 				$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
 				$line1 = $n1match[1];
 				$text  = get_cont(1, $noterec);
@@ -1192,7 +1193,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	} else {
 		$styleadd = '';
 	}
-	
+
 	$linenum = 0;
 	echo '<tr><td class="descriptionbox width20', $styleadd, '">';
 	if ($SHOW_FACT_ICONS) {
@@ -1217,7 +1218,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	echo '<em>';
 	foreach ($mediaobject->getAllNames() as $name) {
-		if ($name['type']!='TITL') echo '<br>'; 
+		if ($name['type']!='TITL') echo '<br>';
 		echo $name['full'];
 	}
 	echo '</em>';
@@ -1250,7 +1251,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
 		}
 	}
-	
+
 	switch ($mediaobject->isPrimary()) {
 	case 'Y':
 		echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('yes'));
@@ -1288,7 +1289,7 @@ function print_source_media($src_media) {
 					} else {
 						$html .= '<a href="mediaviewer.php?mid='. $media->getXref(). '&amp;ged='. WT_GEDURL. '">'. $media->getFullName(). '</a>';
 					}
-				$html .= '</div>				
+				$html .= '</div>
 			</div>';
 		}
 	}

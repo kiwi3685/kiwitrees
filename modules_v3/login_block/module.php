@@ -46,10 +46,10 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$controller->addInlineJavascript('
-				jQuery("#new_passwd").hide();
-				jQuery("#passwd_click").click(function() {
-					jQuery("#new_passwd").slideToggle(100, function() {
-						jQuery("#new_passwd_username").focus();
+				jQuery("#login_popup #new_passwd_form").hide();
+				jQuery("#login_popup #passwd_click").click(function() {
+					jQuery("#login_popup #new_passwd_form").slideToggle(100, function() {
+						jQuery("#login_popup #new_passwd_username").focus();
 					});
 					return false;
 				});
@@ -94,7 +94,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.= '<div><a href="'.WT_LOGIN_URL.'?action=register">'. WT_I18N::translate('Request new user account').'</a></div>';
 			}
 		$content.= '</form>'; // close "login-form"
-		
+
 		// hidden New Password block
 		$content.= '<div id="new_passwd">
 			<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">

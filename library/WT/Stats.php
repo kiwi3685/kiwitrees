@@ -2301,7 +2301,7 @@ class WT_Stats {
 	function lastDivorceYear()  { return $this->_mortalityQuery('year',  'DESC', 'DIV'); }
 	function lastDivorceName()  { return $this->_mortalityQuery('name',  'DESC', 'DIV'); }
 	function lastDivorcePlace() { return $this->_mortalityQuery('place', 'DESC', 'DIV'); }
-	
+
 	function statsDiv($params=null) {return $this->_statsDiv(true, false, -1, -1, $params);}
 
 	function _statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
@@ -2436,7 +2436,7 @@ class WT_Stats {
 			return $rows;
 		}
 	}
-	
+
 	//
 	// Female only
 	//
@@ -2458,7 +2458,7 @@ class WT_Stats {
 	function oldestMarriageMale()                     { return $this->_marriageQuery('full', 'DESC', 'M'); }
 	function oldestMarriageMaleName()                 { return $this->_marriageQuery('name', 'DESC', 'M'); }
 	function oldestMarriageMaleAge($show_years=false) { return $this->_marriageQuery('age',  'DESC', 'M', $show_years); }
-	
+
 	function statsMarrAge($params=null) { return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params); }
 
 	function ageBetweenSpousesMF    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params=null); }
@@ -2699,7 +2699,7 @@ class WT_Stats {
 		}
 		return $top10;
 	}
-	
+
 	function _monthFirstChildQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2;
 		if ($params === null) {$params = array();}
@@ -2891,19 +2891,30 @@ class WT_Stats {
 			$chm = "";
 			$chxl = "0:|";
 			$i = 0;
-			$counts=array();
+			$counts = array();
 			foreach ($rows as $values) {
-				if ($sizes[0]<980) $sizes[0] += 38;
+				if ($sizes[0] < 980) $sizes[0] += 38;
 				$chxl .= self::_centuryName($values['century'])."|";
-				if ($max<=5) $counts[] = round($values['num']*819.2-1, 1);
-				else $counts[] = round($values['num']*409.6, 1);
+				if ($max <= 5) {
+					$counts[] = round($values['num']*819.2-1, 1);
+				} elseif ($max <= 10) {
+					$counts[] = round($values['num']*409.6, 1);
+				} else {
+					$counts[] = round($values['num'] * 204.8, 1);
+				}
 				$chm .= 't'.$values['num'].',000000,0,'.$i.',11,1|';
 				$i++;
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chm = substr($chm,0,-1);
-			if ($max<=5) $chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|3:||".WT_I18N::translate('Number of children')."|";
-			else $chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|6|7|8|9|10|3:||".WT_I18N::translate('Number of children')."|";
+			if ($max <= 5) {
+				$chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|3:||".WT_I18N::translate('Number of children')."|";
+			} elseif ($max <= 10) {
+				$chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|6|7|8|9|10|3:||".WT_I18N::translate('Number of children')."|";
+			} else {
+				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||" . I18N::translate('Number of children') . "|";
+			}
+
 			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Average number of children per family')."\" title=\"".WT_I18N::translate('Average number of children per family')."\" />";
 		} else {
 			if ($sex=='M') {
@@ -3494,8 +3505,8 @@ class WT_Stats {
 			return getUserName();
 		} else {
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
-				# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in 
-				return $params[0]; 
+				# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
+				return $params[0];
 			}
 			else return null;
 		}
@@ -3590,7 +3601,7 @@ class WT_Stats {
 		} else {
 			// indi/fam/sour/etc.
 		}
-		
+
 		$count=WT_DB::prepare(
 			"SELECT SQL_NO_CACHE page_count FROM `##hit_counter`".
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"

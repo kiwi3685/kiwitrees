@@ -91,13 +91,13 @@ function format_indi_table($datalist, $option='') {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery(".parents", jQuery(this).closest("table").DataTable().rows().nodes()).slideToggle();
 			})
-	
+
 			/* Hide/show statistics */
 			.on("click", ".btn-toggle-statistics", function() {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery("#indi_list_table-charts_' . $table_id . '").slideToggle();
 			})
-  	
+
 			/* Filter buttons in table header */
 			.on("click", "button[data-filter-column]", function() {
 				var btn = jQuery(this);
@@ -513,7 +513,7 @@ function format_indi_table($datalist, $option='') {
 				</table>
 		</div>
 		</div>';
-		
+
 	return $html;
 }
 
@@ -572,13 +572,13 @@ function format_fam_table($datalist, $option='') {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery(".parents", jQuery(this).closest("table").DataTable().rows().nodes()).slideToggle();
 			})
-  
+
 			/* Hide/show statistics */
 			.on("click", ".btn-toggle-statistics", function() {
 				jQuery(this).toggleClass("ui-state-active");
 				jQuery("#fam_list_table-charts_' . $table_id . '").slideToggle();
 			})
-  
+
 			/* Filter buttons in table header */
 			.on("click", "button[data-filter-column]", function() {
 				var btn = $(this);
@@ -995,7 +995,7 @@ function format_fam_table($datalist, $option='') {
 				</table>
 		</div>
 		</div>';
-	
+
 	return $html;
 }
 
@@ -1018,7 +1018,7 @@ function format_sour_table($datalist) {
 	$count_notes = WT_DB::prepare(
 		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##other` JOIN `##link` ON l_from = o_id AND l_file = o_file AND o_type = 'NOTE' AND l_type = 'SOUR' GROUP BY l_to"
 	)->fetchAssoc();
-	
+
 	$html = '';
 	$table_id = "ID".(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1074,7 +1074,7 @@ function format_sour_table($datalist) {
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .='<th><div class="delete_src">
-				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'sources\');} else {return false;}">			
+				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'sources\');} else {return false;}">
 				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
 			</div></th>';
 	$html .= '</tr></thead>';
@@ -1116,12 +1116,11 @@ function format_sour_table($datalist) {
 			} else {
 				$html .= '<a href="'. $source->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			}
-		}	
+		}
 		$html .= '</td>';
 		// Sortable name
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
 		$key = $source->getXref() . '@' . WT_GED_ID;
-		print_r($key);
 		//-- Author
 		$html .= '<td>'. highlight_search_hits(htmlspecialchars($source->getAuth())). '</td>';
 		//-- Linked INDIs
@@ -1159,7 +1158,7 @@ function format_sour_table($datalist) {
 		$html .= '</tr>';
 	}
 	$html .= '</tbody></table></div>';
-		
+
 	return $html;
 }
 
@@ -1199,7 +1198,7 @@ function format_note_table($datalist) {
 			jQuery(".note-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 		');
-		
+
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="note-list">';
@@ -1217,7 +1216,7 @@ function format_note_table($datalist) {
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .='<th><div class="delete_src">
-				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'notes\');} else {return false;}">			
+				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'notes\');} else {return false;}">
 				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
 			</div></th>';
 	$html .= '</tr></thead>';
@@ -1265,7 +1264,7 @@ function format_note_table($datalist) {
 		$html .= '</tr>';
 	}
 	$html .= '</tbody></table></div>';
-		
+
 	return $html;
 }
 
@@ -1307,7 +1306,7 @@ function format_repo_table($repos) {
 		jQuery(".repo-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
 		');
-		
+
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="repo-list">';
@@ -1319,7 +1318,7 @@ function format_repo_table($repos) {
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .='<th><div class="delete_src">
-				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'repos\');} else {return false;}">			
+				<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'repos\');} else {return false;}">
 				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
 			</div></th>';
 	$html .= '</tr></thead>';
@@ -1342,7 +1341,7 @@ function format_repo_table($repos) {
 			} else {
 				$html .= '<a href="'. $repo->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			}
-		}	
+		}
 		$html .= '</td>';
 		$key = $repo->getXref() . '@' . WT_GED_ID;
 		//-- Linked SOURces
@@ -1371,7 +1370,7 @@ function format_repo_table($repos) {
 		$html .= '</tr>';
 	}
 	$html .= '</tbody></table></div>';
-	
+
 	return $html;
 }
 
@@ -1409,7 +1408,7 @@ function format_media_table($datalist) {
 		jQuery(".media-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
 		');
-		
+
 	//--table wrapper
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="media-list">';
@@ -1475,7 +1474,7 @@ function format_media_table($datalist) {
 		}
 	}
 	$html .= '</tbody></table></div>';
-	
+
 	return $html;
 }
 
@@ -1560,7 +1559,7 @@ function format_surname_table($surnames, $script) {
 		$html.='<td>'. $subtotal. '</td></tr>';
 	}
 	$html .= '</tbody></table>';
-	
+
 	return $html;
 }
 
@@ -1866,7 +1865,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 					/* 5-ANNIV  */ { "sType": "numeric", "bVisible": false},
 					/* 6-Event */  { "sClass": "center" }
 				]
-			});		
+			});
 		');
 
 	// Did we have any output?  Did we skip anything?
