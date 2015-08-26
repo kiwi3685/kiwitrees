@@ -1186,7 +1186,7 @@ function print_addnewnote_link($element_id) {
 
 /// Used in GEDFact CENS assistant
 function print_addnewnote_assisted_link($element_id, $pid) {
-	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
+//	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
 }
 
 function print_editnote_link($note_id) {
@@ -1211,12 +1211,11 @@ function print_addnewsource_link($element_id) {
 * @param string $tag fact record to edit (eg 2 DATE xxxxx)
 * @param string $upperlevel optional upper level tag (eg BIRT)
 * @param string $label An optional label to echo instead of the default
-* @param string $readOnly optional, when "READONLY", fact data can't be changed
-* @param string $noClose optional, when "NOCLOSE", final "</td></tr>" won't be printed
+* @param string $extra optional text to display after the input field
 * (so that additional text can be printed in the box)
 * @param boolean $rowDisplay True to have the row displayed by default, false to hide it by default
 */
-function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose='', $rowDisplay=true) {
+function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $rowDisplay = true) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
 	global $pid, $gender, $linkToID, $bdm, $action, $event_add, $CensDate;
@@ -1259,13 +1258,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		</script>
 		<?php
 	}
-	if (!isset($noClose) && isset($readOnly) && $readOnly=="NOCLOSE") {
-		$noClose = "NOCLOSE";
-		$readOnly = '';
-	}
-
-	if (!isset($noClose) || $noClose!="NOCLOSE") $noClose = '';
-	if (!isset($readOnly) || $readOnly!="READONLY") $readOnly = '';
 
 	if (empty($linkToID)) $linkToID = $pid;
 
@@ -1303,20 +1295,20 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	if ($fact=='SHARED_NOTE_EDIT' || $fact=='SHARED_NOTE') {$islink=1;$fact="NOTE";}
 
 	// label
-	echo "<tr id=\"", $element_id, "_tr\" ";
+	echo '<div id="' . $element_id . '_factdiv" ';
 	if ($fact=="MAP" || ($fact=="LATI" || $fact=="LONG") && $value=='') {
-		echo " style=\"display:none;\"";
+		echo ' style="display:none;"';
 	}
-	echo " >";
+	echo ' >';
 
 	if (in_array($fact, $subnamefacts) || $fact=="LATI" || $fact=="LONG") {
-		echo "<td class=\"optionbox wrap width25\">";
+		echo '<label class="1"  style="display: inline-block; vertical-align: top;">';
 	} else {
-		echo "<td class=\"descriptionbox wrap width25\">";
+		echo '<label class="">';
 	}
 
 	if (WT_DEBUG) {
-		echo $element_name, "<br>";
+		echo $element_name . '<br>';
 	}
 
 	// tag name
@@ -1328,8 +1320,22 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo WT_Gedcom_Tag::getLabel($fact);
 	}
 
-	// help link
-	// If using GEDFact-assistant window
+	// tag level
+	if ($level>0) {
+		if ($fact=="TEXT" && $level>1) {
+			echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level-1, "\">";
+			echo "<input type=\"hidden\" name=\"islink[]\" value=\"0\">";
+			echo "<input type=\"hidden\" name=\"tag[]\" value=\"DATA\">";
+			//-- leave data text[] value empty because the following TEXT line will
+			//--- cause the DATA to be added
+			echo "<input type=\"hidden\" name=\"text[]\" value=\"\">";
+		}
+		echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level, "\">";
+		echo "<input type=\"hidden\" name=\"islink[]\" value=\"", $islink, "\">";
+		echo "<input type=\"hidden\" name=\"tag[]\" value=\"", $fact, "\">";
+	}
+
+	// help text
 	if ($action=="addnewnote_assisted") {
 		// Do not print on GEDFact Assistant window
 	} else {
@@ -1392,27 +1398,16 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			break;
 		}
 	}
-	// tag level
-	if ($level>0) {
-		if ($fact=="TEXT" && $level>1) {
-			echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level-1, "\">";
-			echo "<input type=\"hidden\" name=\"islink[]\" value=\"0\">";
-			echo "<input type=\"hidden\" name=\"tag[]\" value=\"DATA\">";
-			//-- leave data text[] value empty because the following TEXT line will
-			//--- cause the DATA to be added
-			echo "<input type=\"hidden\" name=\"text[]\" value=\"\">";
-		}
-		echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level, "\">";
-		echo "<input type=\"hidden\" name=\"islink[]\" value=\"", $islink, "\">";
-		echo "<input type=\"hidden\" name=\"tag[]\" value=\"", $fact, "\">";
-	}
-	echo "</td>";
+
+	echo '</label>';
 
 	// value
-	echo "<td class=\"optionbox wrap\">";
+	echo '<div class="input">';
 	if (WT_DEBUG) {
 		echo $tag, "<br>";
 	}
+
+	echo '<div class="input-group">';
 
 	// retrieve linked NOTE
 	if ($fact=="NOTE" && $islink) {
@@ -1509,7 +1504,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	} else {
 		// textarea
 		if ($fact=='TEXT' || $fact=='ADDR' || ($fact=='NOTE' && !$islink)) {
-			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", htmlspecialchars($value), "</textarea><br>";
+			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", htmlspecialchars($value), "</textarea>";
 		} else {
 			// text
 			// If using GEDFact-assistant window
@@ -1574,17 +1569,18 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		$tmp_array = array('TYPE','TIME','NOTE','SOUR','REPO','OBJE','ASSO','_ASSO','AGE');
 
 		// split PLAC
-		if ($fact=="PLAC" && $readOnly=='') {
-			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
-			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
-			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=INDI_LATI],tr[id^=INDI_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
-			echo '</div>';
-			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
-				places_assistant_WT_Module::setup_place_subfields($element_id);
-				places_assistant_WT_Module::print_place_subfields($element_id);
-			}
-		} elseif (!in_array($fact, $tmp_array) && $readOnly=='') {
-			echo print_specialchar_link($element_id);
+		if ($fact=="PLAC") {
+			echo '
+				<div id="' . $element_id . '_pop" style="display: inline;">
+					<div class="input-group-addon">' . print_specialchar_link($element_id) .  '</div>
+					<div class="input-group-addon">' . print_findplace_link($element_id) . '</div>
+					<div class="input-group-addon">
+						<span  onclick="jQuery(\'div[id^=', $upperlevel, '_LATI],div[id^=', $upperlevel, '_LONG],div[id^=INDI_LATI],div[id^=INDI_LONG],div[id^=LATI],div[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>
+				 	</div>
+				</div>
+			';
+		} elseif (!in_array($fact, $tmp_array)) {
+			echo '<div class="input-group-addon">' . print_specialchar_link($element_id) . '</div>';
 		}
 	}
 	// MARRiage TYPE : hide text field and show a selection list
@@ -1599,13 +1595,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			$a=strtolower($key);
 			$b=strtolower($value);
 			if (@strpos($a, $b)!==false || @strpos($b, $a)!==false) echo " selected=\"selected\"";
-			$tmp="MARR_".strtoupper($key);
+			$tmp = "MARR_".strtoupper($key);
 			echo ">", WT_Gedcom_Tag::getLabel($tmp), "</option>";
 		}
 		echo "</select>";
 	}
 	// NAME TYPE : hide text field and show a selection list
-	else if ($fact=='TYPE' && $level==0) {
+	else if ($fact == 'TYPE' && $level == 0) {
 		$extra = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
 		switch (WT_Person::getInstance($pid)->getSex()) {
 			case 'M': echo edit_field_name_type_m($element_name, $value, $extra); break;
@@ -1618,10 +1614,10 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// popup links
-	if (!$readOnly) {
+	if ($fact) {
 		switch ($fact) {
 		case 'DATE':
-			echo print_calendar_popup($element_id);
+			echo '<div class="input-group-addon">' . print_calendar_popup($element_id) . '</div>';
 			// If GEDFact_assistant/_CENS/ module is installed -------------------------------------------------
 			if ($action=='add' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				if (isset($CensDate) && $CensDate=='yes') {
@@ -1644,20 +1640,20 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'SOUR':
 			echo print_findsource_link($element_id, $element_id . '_description'), ' ', print_addnewsource_link($element_id);
 			//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
-			if ($level==1) {
+			if ($level == 1) {
 				echo '<br>';
-				if ($PREFER_LEVEL2_SOURCES==='0') {
-					$level1_checked='';
-					$level2_checked='';
+				if ($PREFER_LEVEL2_SOURCES === '0') {
+					$level1_checked = '';
+					$level2_checked = '';
 				} else if ($PREFER_LEVEL2_SOURCES==='1' || $PREFER_LEVEL2_SOURCES===true) {
-					$level1_checked='';
-					$level2_checked=' checked="checked"';
+					$level1_checked = '';
+					$level2_checked = ' checked="checked"';
 				} else {
-					$level1_checked=' checked="checked"';
-					$level2_checked='';
+					$level1_checked = ' checked="checked"';
+					$level2_checked = '';
 
 				}
-				if (strpos($bdm, 'B')!==false) {
+				if (strpos($bdm, 'B') !== false) {
 					echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="Y">';
 					echo WT_I18N::translate('Individual');
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
@@ -1669,7 +1665,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 						}
 					}
 				}
-				if (strpos($bdm, 'D')!==false) {
+				if (strpos($bdm, 'D') !== false) {
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
 						foreach ($matches[1] as $match) {
 							if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
@@ -1679,7 +1675,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 						}
 					}
 				}
-				if (strpos($bdm, 'M')!==false) {
+				if (strpos($bdm, 'M') !== false) {
 					echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="Y">';
 					echo WT_I18N::translate('Family');
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
@@ -1704,7 +1700,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				}
 				// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
 				// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
-				if (($action=='add' || $action=='edit') && $pid && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				if (($action == 'add' || $action == 'edit') && $pid && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 					// Check if a CENS event ---------------------------
 					if ($event_add=='census_add') {
 						$type_pid=WT_GedcomRecord::getInstance($pid);
@@ -1723,29 +1719,29 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			break;
 		}
-
+		echo '</div>'; // "input_group"
 		echo '<div id="' . $element_id . '_description">';
 	}
 
 	// current value
-	if ($fact=='DATE') {
-		$date=new WT_Date($value);
-		echo $date->Display(false);
+	if ($fact == 'DATE') {
+		$date = new WT_Date($value);
+		echo $date->Display();
 	}
-	if (($fact=='ASSO' || $fact=='_ASSO' || $fact=='SOUR' || $fact=='OBJE' || ($fact=='NOTE' && $islink)) && $value) {
-		$record=WT_GedcomRecord::getInstance($value);
+	if (($fact == 'ASSO' || $fact == '_ASSO' || $fact == 'SOUR' || $fact == 'OBJE' || ($fact == 'NOTE' && $islink)) && $value) {
+		$record = WT_GedcomRecord::getInstance($value);
 		if ($record) {
 			echo ' ', $record->getFullName();
-		} elseif ($value!='new') {
+		} elseif ($value != 'new') {
 			echo ' ', $value;
 		}
 	}
 	// pastable values
-	if ($readOnly=='') {
-		if ($fact=='FORM' && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept);
+	if ($fact == 'FORM' && $upperlevel == 'OBJE') {
+		print_autopaste_link($element_id, $FILE_FORM_accept);
 	}
 
-	if ($noClose != 'NOCLOSE') echo '</div></td></tr>';
+	echo '</div>' . $extra . '</div></div>';
 
 	return $element_id;
 }

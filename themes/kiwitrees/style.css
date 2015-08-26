@@ -62,14 +62,16 @@ legend {
 
 a,
 .icon-button_keyboard,
-.icon-target {
+.icon-target,
+.icon-help {
 	color: #009afe;
 	text-decoration: none;
 }
 
 a:hover,
 .icon-button_keyboard:hover,
-.icon-target:hover {
+.icon-target:hover,
+.icon-help:hover {
 	color: #ff0000;
 	text-decoration: none;
 }
@@ -117,10 +119,6 @@ img.block,
 input,
 textarea {
 	border: 1px solid #aaa;
-	border-right-color: #555;
-	border-bottom-color: #555;
-	border-radius: 3px;
-	font-size: 12px;
 }
 
 button {
@@ -153,7 +151,6 @@ select {
 }
 
 form {
-	font-size: 12px;
 }
 
 form[name=block] .descriptionbox, form[name=block] .optionbox {
@@ -193,6 +190,10 @@ textarea:required:invalid {
 [dir='rtl'] input:required:invalid,
 [dir='rtl'] textarea:required:invalid {
 	background-position: left top;
+}
+
+div [id$="_factdiv"] {
+	margin: 10px auto;
 }
 
 .faq_link {
@@ -518,7 +519,7 @@ textarea:required:invalid {
 
 #content {
 	clear: both;
-	font-size: 12px;
+	font-size: 14px;
 	position: relative;
 	top: 110px;
 	z-index: 0;
@@ -1236,9 +1237,10 @@ a:hover .nameZoom {
 }
 
 .helpcontent {
-	font-size: 80%;
+	font-size: .9em;
 	margin-left: 10px;
 	margin-right: 10px;
+	max-height: 600px;
 }
 
 .helpcontent dt {
@@ -1251,7 +1253,7 @@ a:hover .nameZoom {
 
 .help_text .helpcontent {
 	border: none;
-	font-size: 100%;
+	font-size: .9em;;
 	font-style: italic;
 	margin: 10px 0;
 	width: 100%;
@@ -3108,6 +3110,11 @@ div[id^="caldiv"] td {
 }
 
 /* ========= jquery-ui.custom.css changes ============ */
+.ui-widget {
+    font-family: inherit;
+    font-size: inherit;
+}
+
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
 	background: none;
 	background-color: #eee;
@@ -3148,6 +3155,10 @@ div[id^="caldiv"] td {
 
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
 	padding: .3em .5em;
+}
+
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text {
+     padding: 0;
 }
 
 /* jQuery.datatable styling general over-rides */
@@ -4062,6 +4073,8 @@ a.icon-udarrow:hover {
 .fa-bars:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-bars */
 .fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-times */
 .fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-times */
+.fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-save */
+.fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-save */
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
@@ -4071,13 +4084,13 @@ a.icon-udarrow:hover {
 .icon-button_addsource	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
 .icon-button_addmedia 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-book */
-.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-icon-keyboard-o */
-.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-globe */
-.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-calendar */
+.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.8em; margin: 0 .5em; vertical-align: top;} /* fa-icon-keyboard-o */
+.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.8em; margin: 0 .5em; vertical-align: top;} /* fa-globe */
+.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.8em; margin: 0 .5em; vertical-align: top;} /* fa-calendar */
 .icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-bank */
 .icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-file-text */
 .icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-camera-retro */
-.icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-map-marker */
+.icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.8em; margin: 0 .5em; vertical-align: top;} /* fa-map-marker */
 .icon-image_add			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-plus */
 .icon-image_link		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-link */
 .icon-image_sort		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-sort-alpha-asc */
@@ -4217,10 +4230,45 @@ a.icon-udarrow:hover {
 	width: 180px;
 }
 
+#edit_interface-page #add_facts,
+#edit_interface-page #additional_facts {
+	float:left;
+	margin:auto 40px;
+	min-width: 35%;
+}
+
+[dir='rtl'] #edit_interface-page #add_facts,
+[dir='rtl'] #edit_interface-page #additional_facts {
+	float:right;
+}
+
+#edit_interface-page .input-group {
+}
+
+#edit_interface-page .input-group-addon {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#edit_interface-page label {
+	display: inline-block;
+	font-weight: 600;
+	vertical-align: top;
+	width:  150px;
+}
+
+#edit_interface-page .input {
+	display: inline-block;
+}
+
+#edit_interface-page div[class^="fact_"] {
+    font-size: .9em;
+    margin: 5px;
+}
+
 #edit_interface-page input[type="text"],
 #edit_interface-page #NAME_display {
-	line-height: 18px;
-	margin: 0 5px;
+	line-height: 2;
 	vertical-align: top;
 	width: 240px;
 }
@@ -4257,7 +4305,6 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page textarea {
-	margin: 0 5px;
 	width: 440px;
 }
 
@@ -4313,35 +4360,17 @@ a.icon-udarrow:hover {
 }
 
 #save-cancel {
-	background: #ddd;
-	border-top: solid #aaa 3px;
-	bottom: 0;
-	left: 0;
-	margin: 0;
-	position: fixed;
-	width: 100%;
+	clear: both;
+	float: left;
 }
 
 #save-cancel input {
 	padding: 5px 10px;
 }
 
-#save-cancel .save {
-	float: left;
-	margin: 10px;
-}
-
+#save-cancel .save,
 #save-cancel .cancel {
-	float: right;
-	margin: 10px;
-}
-
-[dir='rtl'] #save-cancel .save {
-	float: right;
-}
-
-[dir='rtl'] #save-cancel .cancel {
-	float: left;
+	margin: 10px 40px;
 }
 
 #edit_interface-page {

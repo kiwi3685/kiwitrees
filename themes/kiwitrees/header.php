@@ -41,6 +41,7 @@ $this
 	->addExternalJavascript (WT_JQUERY_BIGTEXT)
 	->addInlineJavascript ('
 		widget_bar();
+		display_help();
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",

@@ -39,6 +39,15 @@ var fam_nav_specs		='width=300,height=600,left=817,top=150,resizable=1,scrollbar
 
 var pastefield, nameElement, remElement; // Elements to paste to
 
+//Add help texts to page
+function display_help() {
+	jQuery(".help_text").each(function() {
+		var helpID = jQuery(this).attr("id");
+		jQuery("#" + helpID).load("help_text.php?help=" + helpID);
+	});
+}
+
+
 // TODO: This function loads help_text.php twice.  It should only load it once.
 function helpDialog(which, mod) {
 	var url='help_text.php?help='+which+'&mod='+mod;
@@ -48,7 +57,7 @@ function helpDialog(which, mod) {
 			width: 500,
 			height: 'auto',
 		}).load(url+' .helpcontent', function() {
-			jQuery(this).dialog("option", "position", { my: "center center", at: "center center", of: window} );
+			jQuery(this).dialog("option", "position", { my: "center top", at: "center top", of: "#content"} );
 		});
 	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");

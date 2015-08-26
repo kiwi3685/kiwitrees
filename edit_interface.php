@@ -28,7 +28,7 @@ define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Page();
 $controller
 	->requireMemberLogin()
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
@@ -265,62 +265,71 @@ case 'add':
 	$record = WT_GedcomRecord::getInstance($pid);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record))
+		->setPageTitle(WT_I18N::translate('Add new fact') . ' - ' . $record->getFullName() . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	init_calendar_popup();
-	echo '<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="action" value="update">';
-	echo '<input type="hidden" name="linenum" value="new">';
-	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	echo '<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array">';
-	echo '<table class="facts_table">';
-
-	create_add_form($fact);
-
-	if (WT_USER_IS_ADMIN) {
-		echo '<tr><td class="descriptionbox wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-		echo '<input type="checkbox" name="preserve_last_changed"';
-		if ($NO_UPDATE_CHAN) {
-			echo ' checked="checked"';
-		}
-		echo '>';
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
-		echo '</td></tr>';
-	}
-	echo '</table>';
-
-	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
-	if ($level0type=='INDI' || $level0type=='FAM') {
-		// ... but not facts which are simply links to other records
-		if ($fact!='OBJE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
-			print_add_layer('SOUR');
-			print_add_layer('OBJE');
-			// Don't add notes to notes!
-			if ($fact!='NOTE') {
-				print_add_layer('NOTE');
-				print_add_layer('SHARED_NOTE');
-			}
-			print_add_layer('ASSO');
-			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($fact=='CHR' || $fact=='MARR') {
-				print_add_layer('ASSO2');
-			}
-			print_add_layer('RESN');
-		}
-	}
 	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php echo init_calendar_popup(); ?>
+		<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">
+			<input type="hidden" name="action" value="update">
+			<input type="hidden" name="linenum" value="new">
+			<input type="hidden" name="pid" value="', $pid, '">
+			<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array">
+			<div id="add_facts">
+			<?php
+				echo create_add_form($fact);
+
+				if (WT_USER_IS_ADMIN) { ?>
+					<label class="width25"><?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?></label>
+					<div class="input">
+						<?php
+							echo '<input type="checkbox" name="preserve_last_changed"';
+								if ($NO_UPDATE_CHAN) {
+									echo ' checked="checked"';
+								}
+							echo '>' .
+							WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN') .
+							WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
+							WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
+						?>
+					</div>
+				<?php } ?>
+			</div>
+			<?php
+			// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
+			if ($level0type=='INDI' || $level0type=='FAM') {
+				echo '<div id="additional_facts">';
+					// ... but not facts which are simply links to other records
+					if ($fact!='OBJE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
+						print_add_layer('SOUR');
+						print_add_layer('OBJE');
+						// Don't add notes to notes!
+						if ($fact!='NOTE') {
+							print_add_layer('NOTE');
+							print_add_layer('SHARED_NOTE');
+						}
+						print_add_layer('ASSO');
+						// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+						if ($fact=='CHR' || $fact=='MARR') {
+							print_add_layer('ASSO2');
+						}
+						print_add_layer('RESN');
+					}
+				echo '</div>';
+			}
+			?>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;

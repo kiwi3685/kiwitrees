@@ -92,11 +92,6 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('
 		autocomplete();
-		//Add help texts to page
-		jQuery(".help_text").each(function() {
-			var helpID = jQuery(this).attr("id");
-	 		jQuery("#" + helpID).load("help_text.php?help=" + helpID);
-		});
 	');
 
 // Form validation
