@@ -34,7 +34,7 @@ legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:t
 select {height:25px;}
 img {border:none; vertical-align:middle;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
-table {max-width:996px; border-collapse:collapse;}
+table {border-collapse:collapse;}
 td {line-height:25px; vertical-align:middle;}
 i.fa {margin:5px; font-size:1.5em; vertical-align:middle;}
 button {min-width:100px;}
