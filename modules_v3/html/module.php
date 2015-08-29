@@ -45,7 +45,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		global $ctype, $GEDCOM;
 
 		// Only show this block for certain languages
-		$languages=get_block_setting($block_id, 'languages');
+		$languages = get_block_setting($block_id, 'languages');
 		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
 			return;
 		}
@@ -93,19 +93,36 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 		* Start Of Output
 		*/
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id = $this->getName().$block_id;
+		$class = $this->getName().'_block';
+		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
-		$title.=$title_tmp;
+		$title .= $title_tmp;
 
 		$content = $html;
 
+//start DEBUG code
+		$content .= '<div style="height: 0;visibility:hidden;">';
+			$languages = get_block_setting($block_id, 'languages');
+			$content .= 'WT_LOCALE = ' . WT_LOCALE . '<br>';
+			$content .= 'Browser language = ' . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . '<br>';
+			$content .= 'GEDCOM default language = ' . get_gedcom_setting(WT_GED_ID, 'LANGUAGE') . '<br>';
+			$content .= 'Block languages = ' . $languages . '<br>';
+			if (WT_USER_ID && get_user_setting(WT_USER_ID, 'language', WT_LOCALE)) {
+				$content .= 'User default language = ' . get_user_setting(WT_USER_ID, 'language', WT_LOCALE) . '<br>';
+			} else {
+				$content .= 'User default language = Not set<br>';
+			}
+			$content .= 'Site languages = ' . implode(', ', WT_I18N::used_languages()) . '<br>';
+			$content .= 'Installed language files = ' . implode(', ', WT_I18N::installed_languages()) . '<br>';
+		$content .= '</div>';
+//end DEBUG code
+
 		if (get_block_setting($block_id, 'show_timestamp', false)) {
-			$content.='<br>'.format_timestamp(get_block_setting($block_id, 'timestamp', WT_TIMESTAMP));
+			$content .= '<br>'.format_timestamp(get_block_setting($block_id, 'timestamp', WT_TIMESTAMP));
 		}
 
 		if ($template) {
@@ -142,8 +159,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'html',           WT_Filter::post('html'));
 			set_block_setting($block_id, 'show_timestamp', WT_Filter::postBool('show_timestamp'));
 			set_block_setting($block_id, 'timestamp',      WT_Filter::post('timestamp'));
-			$languages=array();
-			foreach (WT_I18N::used_languages() as $code=>$name) {
+			$languages = array();
+			foreach (WT_I18N::used_languages('name') as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
 					$languages[]=$code;
 				}
@@ -263,8 +280,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			</div>'
 		);
 
-		$title=get_block_setting($block_id, 'title');
-		$html=get_block_setting($block_id, 'html');
+		$title = get_block_setting($block_id, 'title');
+		$html = get_block_setting($block_id, 'html');
 		// title
 		echo '<tr><td class="descriptionbox wrap">',
 			WT_Gedcom_Tag::getLabel('TITL'),
@@ -315,7 +332,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', htmlspecialchars($html), '</textarea>';
 		echo '</td></tr>';
 
-		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);
+		$show_timestamp = get_block_setting($block_id, 'show_timestamp', false);
 		echo '<tr><td class="descriptionbox wrap">';
 		echo WT_I18N::translate('Show the date and time of update');
 		echo '</td><td class="optionbox">';
@@ -323,7 +340,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">';
 		echo '</td></tr>';
 
-		$languages=get_block_setting($block_id, 'languages');
+		$languages = get_block_setting($block_id, 'languages');
 		echo '<tr><td class="descriptionbox wrap">';
 		echo WT_I18N::translate('Show this block for which languages?');
 		echo '</td><td class="optionbox">';
