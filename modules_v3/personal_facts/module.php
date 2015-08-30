@@ -49,11 +49,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function isGrayedOut() {
 		return false;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $EXPAND_RELATIVES_EVENTS, $controller;
-		$EXPAND_HISTO_EVENTS = false;
+		global $EXPAND_RELATIVES_EVENTS, $EXPAND_HISTO_EVENTS, $controller;
 
 		echo '<script>';
 		if (!$EXPAND_RELATIVES_EVENTS) {
@@ -114,7 +113,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function hasTabContent() {
 		return true;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
 		global $SEARCH_SPIDER;
