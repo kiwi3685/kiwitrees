@@ -921,7 +921,6 @@ $controller
 						</td>
 						<td>
 							<?php echo edit_field_yes_no('NEW_EXPAND_HISTO_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_HISTO_EVENTS')); ?>
-							<?php echo get_gedcom_setting(WT_GED_ID, 'EXPAND_HISTO_EVENTS'); ?>
 						</td>
 					</tr>
 				<?php } ?>
