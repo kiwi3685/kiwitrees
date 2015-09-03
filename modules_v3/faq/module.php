@@ -265,7 +265,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		$controller=new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getTitle())
-			->pageHeader();
+			->pageHeader()
+			->addInlineJavascript('
+				jQuery("#faq_accordion").accordion({heightStyle: "content", collapsible: true, active: false});
+				jQuery("#faq_accordion").css("visibility", "visible");
+			');
 
 		$faqs=WT_DB::prepare(
 			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body".
@@ -278,53 +282,27 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" AND IFNULL(gedcom_id, ?)=?".
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
+		?>
+		<div id="faq_page" style=" width: 70%; margin: 0 auto;">
+			<h2 class="center"> <?php echo WT_I18N::translate('Frequently asked questions'); ?> </h2>
+		<?php if (WT_USER_GEDCOM_ADMIN) { ?>
+			<div class="faq_edit">
+				<a href="module.php?mod=faq&amp;mod_action=admin_config"> <?php echo WT_I18N::translate('Click here to Add, Edit, or Delete'); ?> </a>
+			</div>
+		<?php } ?>
+		<div id="faq_accordion" style="visibility:hidden">
+			<?php foreach ($faqs as $id => $faq) {
+				$header   =get_block_setting($faq->block_id, 'header');
+				$faqbody  =get_block_setting($faq->block_id, 'faqbody');
+				$languages=get_block_setting($faq->block_id, 'languages');
+				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) { ?>
+					<h2> <?php echo $faq->header; ?> </h2>
+					<div class="faq_body"> <?php echo substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody); ?> </div>
+				<?php } ?>
+			<?php } ?>
+		</div>
 
-		// Define your colors for the alternating rows
-		echo '<h2 class="center">', WT_I18N::translate('Frequently asked questions'), '</h2>';
-		// Instructions
-		echo '<div class="faq_italic">', WT_I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
-			if (WT_USER_GEDCOM_ADMIN) {
-				echo '<div class="faq_edit">',
-						'<a href="module.php?mod=faq&amp;mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
-				'</div>';
-			}
-		echo '</div>';
-		//Start the table to contain the list of headers
-		$row_count = 0;
-		echo '<table class="faq">';
-		// List of titles
-		foreach ($faqs as $id => $faq) {
-			$header   =get_block_setting($faq->block_id, 'header');
-			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
-			$languages=get_block_setting($faq->block_id, 'languages');
-			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				$row_color = ($row_count % 2) ? 'odd' : 'even';
-				// NOTE: Print the header of the current item
-				echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
-				echo '<a href="#faq', $id, '">', $faq->header, '</a>';
-				echo '</td></tr>';
-				$row_count++;
-			}
-		}
-		echo '</table><hr>';
-		// Detailed entries
-		foreach ($faqs as $id => $faq) {
-			$header   =get_block_setting($faq->block_id, 'header');
-			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
-			$languages=get_block_setting($faq->block_id, 'languages');
-			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				// NOTE: Print the body text of the current item, with its header
-				echo '<div class="faq_title" id="faq', $id, '">', $faq->header;
-				echo '<div class="faq_top faq_italic">';
-				echo '<a href="#body">', WT_I18N::translate('back to top'), '</a>';
-				echo '</div>';
-				echo '</div>';
-				// PHP5.3 echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody, false), '</div>';
-				echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody), '</div>';
-				echo '<hr>';
-			}
-		}
-	}
+	<?php }
 
 	private function config() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
