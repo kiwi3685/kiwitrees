@@ -472,7 +472,7 @@ textarea:required:invalid {
 #footer {
 	background-color: #aaa;
 	border-top: 5px solid #555;
-	font-size: 0.8em;
+	font-size: 12px;
 	margin-top: 120px;
 	min-height: 60px;
 	padding: 10px;
