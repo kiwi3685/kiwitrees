@@ -883,6 +883,9 @@ html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-ali
 [dir=rtl] #fancy_treeview-config input[type="submit"] {margin-right: 0;}
 
 /* Styling for Extra menus module */
+#menus_summary .label, #menus_summary .value, #menus_summary .save {
+	display: inline-block;
+}
 #module_admin, #module_lang {margin: 0 0 10px 0;padding: 5px;overflow:hidden;}
 #module_admin {float:left;width:450px;}
 #module_lang {float:left;margin:0 30px;}

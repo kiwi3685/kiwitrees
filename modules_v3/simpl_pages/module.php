@@ -413,7 +413,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			AddToLog($this->getName() . ' config updated', 'config');
 		}
 
-		$items=WT_DB::prepare(
+		$items = WT_DB::prepare (
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS pages_title, bs2.setting_value AS pages_content".
 			" FROM `##block` b".
 			" JOIN `##block_setting` bs1 USING (block_id)".
@@ -443,14 +443,14 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 				</ul>
 				<div id="pages_summary">
 					<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
-					<input type="hidden" name="action" value="update">
-					<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('pages_title',$this->getName()),'</div>
-					<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $this->getMenuTitle(), '"></div>
-					<div class="label">', WT_I18N::translate('Summary page description'), help_link('pages_description',$this->getName()),'</div>
-					<div class="value2">
-						<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $this->getSummaryDescription(), '</textarea>
-					</div>
-					<div class="save"><input type="submit" value="', WT_I18N::translate('save'), '"></div>
+						<input type="hidden" name="action" value="update">
+						<div class="label">', WT_I18N::translate('Main menu and summary page title'), help_link('pages_title',$this->getName()),'</div>
+						<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="', $this->getMenuTitle(), '"></div>
+						<div class="label">', WT_I18N::translate('Summary page description'), help_link('pages_description',$this->getName()),'</div>
+						<div class="value2">
+							<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120">', $this->getSummaryDescription(), '</textarea>
+						</div>
+						<div class="save"><input type="submit" value="', WT_I18N::translate('save'), '"></div>
 					</form>
 				</div>
 				<div id="pages_pages">
@@ -507,8 +507,8 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 						} else {
 							echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('No pages have been created'), '</td></tr></table>';
 						}
-					echo '</table>';
-				echo '</div>
+					echo '</table>
+				</div>
 			</div>
 		</div>';
 	}

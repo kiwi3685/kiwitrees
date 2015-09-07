@@ -34,7 +34,9 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	}
 
 	public function getMenuTitle() {
-		return WT_I18N::translate('Menu');
+		$default_title = WT_I18N::translate('Menu');
+		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'MENU_TITLE', $default_title));
+		return $HEADER_TITLE;
 	}
 
 	// Extend class WT_Module
@@ -343,11 +345,19 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 
 		$controller = new WT_Controller_Page();
 		$controller
-				->requireAdminLogin()
-				->setPageTitle($this->getTitle())
-				->pageHeader();
+			->requireAdminLogin()
+			->setPageTitle($this->getTitle())
+			->pageHeader()
+			->addInlineJavascript('jQuery("#menus_tabs").tabs();');
 
-		$items=WT_DB::prepare(
+		$action = safe_POST('action');
+
+		if ($action == 'update') {
+			set_module_setting($this->getName(), 'MENU_TITLE', safe_POST('NEW_MENU_TITLE'));
+			AddToLog($this->getName() . ' config updated', 'config');
+		}
+
+		$items = WT_DB::prepare (
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS menu_title, bs2.setting_value AS menu_address".
 			" FROM `##block` b".
 			" JOIN `##block_setting` bs1 USING (block_id)".
@@ -367,65 +377,81 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			"SELECT MAX(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
-		echo
-			'<p>
-				<form method="get" action="', WT_SCRIPT_NAME ,'">', WT_I18N::translate('Family tree'), '
-					<input type="hidden" name="mod", value="', $this->getName(), '">
-					<input type="hidden" name="mod_action", value="admin_config">',
-					select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM), '
-					<input type="submit" value="', WT_I18N::translate('show'), '">
-				</form>
-			</p>';
-
 		echo '
-			<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add menu item'), '</a>',
-			help_link('add_menu', $this->getName());
-
-		echo '<table id="faq_edit">';
-		if (empty($items)) {
-			echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('The menu is empty.'), '</td></tr></table>';
-		} else {
-			$trees = WT_Tree::getAll();
-			foreach ($items as $item) {
-				// NOTE: Print the position of the current item
-				echo '<tr class="faq_edit_pos"><td>';
-				echo WT_I18N::translate('Position item'), ': ', $item->block_order, ', ';
-				if ($item->gedcom_id==null) {
-					echo WT_I18N::translate('All');
-				} else {
-					echo $trees[$item->gedcom_id]->tree_title_html;
-				}
-				echo '</td>';
-				// NOTE: Print the edit options of the current item
-				echo '<td>';
-				if ($item->block_order == $min_block_order) {
-					echo '&nbsp;';
-				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $item->block_id, ' "class="icon-uarrow"></a>';
-					echo help_link('moveup_pages', $this->getName());
-				}
-				echo '</td><td>';
-				if ($item->block_order==$max_block_order) {
-					echo '&nbsp;';
-				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $item->block_id, ' "class="icon-darrow"></a>';
-					echo help_link('movedown_menu', $this->getName());
-				}
-				echo '</td><td>';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $item->block_id, '">', WT_I18N::translate('Edit'), '</a>';
-				echo help_link('edit_menu', $this->getName());
-				echo '</td><td>';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $item->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this menu item?'), '\');">', WT_I18N::translate('Delete'), '</a>';
-				echo help_link('delete_menu', $this->getName());
-				echo '</td></tr>';
-				// NOTE: Print the title text of the current item
-				echo '<tr><td colspan="5">';
-				echo '<div class="faq_edit_item">';
-				echo '<div class="faq_edit_title">', WT_I18N::translate($item->menu_title), '</div>';
-				// NOTE: Print the body text of the current item
-				echo '<div>', substr(WT_I18N::translate($item->menu_address), 0, 1)=='<' ? WT_I18N::translate($item->menu_address) : nl2br(WT_I18N::translate($item->menu_address)), '</div></div></td></tr>';
-			}
-			echo '</table>';
+			<div id="' . $this->getName() . '">',
+	//			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+				'<h2>' .$controller->getPageTitle(). '</h2>
+				<div id="menus_tabs">
+					<ul>
+						<li><a href="#menus_summary"><span>', WT_I18N::translate('Main menu title'), '</span></a></li>
+						<li><a href="#menus_pages"><span>', WT_I18N::translate('Menus'), '</span></a></li>
+					</ul>
+					<div id="menus_summary">
+						<form method="post" name="configform" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
+							<input type="hidden" name="action" value="update">
+							<div class="label" style="display: inline-block;">', WT_I18N::translate('Main menu title'),'</div>
+							<div class="value" style="display: inline-block;"><input type="text" name="NEW_MENU_TITLE" value="', $this->getMenuTitle(), '"></div>
+							<div class="save" style="display: inline-block;"><input type="submit" value="', WT_I18N::translate('save'), '"></div>
+						</form>
+					</div>
+					<div id="menus_pages">
+						<p>
+							<form method="get" action="', WT_SCRIPT_NAME ,'">', WT_I18N::translate('Family tree'), '
+								<input type="hidden" name="mod", value="', $this->getName(), '">
+								<input type="hidden" name="mod_action", value="admin_config">',
+								select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM), '
+								<input type="submit" value="', WT_I18N::translate('show'), '">
+							</form>
+						</p>
+						<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add menu item'), '</a>
+						<table id="faq_edit">';
+							if (empty($items)) {
+								echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('The menu is empty.'), '</td></tr></table>';
+							} else {
+								$trees = WT_Tree::getAll();
+								foreach ($items as $item) {
+									// NOTE: Print the position of the current item
+									echo '<tr class="faq_edit_pos"><td>';
+									echo WT_I18N::translate('Position item'), ': ', $item->block_order, ', ';
+									if ($item->gedcom_id==null) {
+										echo WT_I18N::translate('All');
+									} else {
+										echo $trees[$item->gedcom_id]->tree_title_html;
+									}
+									echo '</td>';
+									// NOTE: Print the edit options of the current item
+									echo '<td>';
+									if ($item->block_order == $min_block_order) {
+										echo '&nbsp;';
+									} else {
+										echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $item->block_id, ' "class="icon-uarrow"></a>';
+										echo help_link('moveup_pages', $this->getName());
+									}
+									echo '</td><td>';
+									if ($item->block_order==$max_block_order) {
+										echo '&nbsp;';
+									} else {
+										echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $item->block_id, ' "class="icon-darrow"></a>';
+										echo help_link('movedown_menu', $this->getName());
+									}
+									echo '</td><td>';
+									echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $item->block_id, '">', WT_I18N::translate('Edit'), '</a>';
+									echo help_link('edit_menu', $this->getName());
+									echo '</td><td>';
+									echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $item->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this menu item?'), '\');">', WT_I18N::translate('Delete'), '</a>';
+									echo help_link('delete_menu', $this->getName());
+									echo '</td></tr>';
+									// NOTE: Print the title text of the current item
+									echo '<tr><td colspan="5">';
+									echo '<div class="faq_edit_item">';
+									echo '<div class="faq_edit_title">', WT_I18N::translate($item->menu_title), '</div>';
+									// NOTE: Print the body text of the current item
+									echo '<div>', substr(WT_I18N::translate($item->menu_address), 0, 1)=='<' ? WT_I18N::translate($item->menu_address) : nl2br(WT_I18N::translate($item->menu_address)), '</div></div></td></tr>';
+								}
+						echo '</table>
+					</div>
+				</div>
+			</div>';
 		}
 	}
 
