@@ -580,6 +580,14 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .deleted_text {text-decoration:line-through;}
 
 /* FAQ MODULE (also used in config pages of other modules) */
+#faq .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#faq #faq_tabs, #faq #faq_items form {
+    margin: 20px auto;
+}
+#faq .save{margin: 20px 0;}
 table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:98%;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
@@ -811,6 +819,7 @@ table#story_table {width:100%}
 #simpl_pages .label{line-height:25px;margin-top: 20px;}
 #simpl_pages .value input.long{width:500px; height:100px;}
 #simpl_pages .value2{}
+#simpl_pages .save{margin: 20px 0;}
 html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:right;}
 #cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
@@ -856,7 +865,8 @@ html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-ali
 #gallery_config #gallery_theme div:nth-child(3) {margin: 0 20px;}
 .vis{margin:0;padding:5px;}
 .vis input{margin:3px;width:90%;}
-#cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
+#cke_NEW_HEADER_DESCRIPTION div#cke_1_contents,
+#cke_NEW_FAQ_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
 /* Styling for Fancy Tree View module */
 #fancy_treeview-config #top {margin-bottom: 30px;}
@@ -883,8 +893,14 @@ html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-ali
 [dir=rtl] #fancy_treeview-config input[type="submit"] {margin-right: 0;}
 
 /* Styling for Extra menus module */
+#menus_summary {
+	margin: 20px 0;
+}
 #menus_summary .label, #menus_summary .value, #menus_summary .save {
 	display: inline-block;
+}
+#extra_menus #menus_tabs, #extra_menus #menus_pages form {
+    margin: 20px auto;
 }
 #module_admin, #module_lang {margin: 0 0 10px 0;padding: 5px;overflow:hidden;}
 #module_admin {float:left;width:450px;}

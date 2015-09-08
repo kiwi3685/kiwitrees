@@ -2829,6 +2829,24 @@ div.faq_body {
 	float: left;
 }
 
+#faq_page {
+	margin: 0 auto;
+	width: 70%;
+}
+
+#faq_page h2.ui-accordion-header {
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+}
+
+#faq_page div.ui-widget-content {
+    border: none;
+    background: #fff;
+    color: inherit;
+}
+
 /* ========= Positioning edit, copy, delete links ============= */
 
 /* General use */
@@ -6001,6 +6019,9 @@ div.widget {
 	.media-list-item {
  		width: 95%; /* one per row */
  	}
+	#faq_page {
+		width: 95%;
+	}
 
  }
 
