@@ -310,7 +310,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 		?>
-		<div id="faq_page" style=" width: 70%; margin: 0 auto;">
+		<div id="faq_page">
 			<h2 class="center"> <?php echo WT_I18N::translate('Frequently asked questions');?></h2>
 			<div id="faq_accordion" style="visibility:hidden">
 				<?php foreach ($faqs as $id => $faq) {
