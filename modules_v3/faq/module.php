@@ -62,9 +62,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			$this->moveup();
 			$this->config();
 			break;
-		case 'show':
-			$this->show();
-			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
 		}
