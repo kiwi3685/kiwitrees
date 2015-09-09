@@ -5,7 +5,7 @@
 // Copyright (C) 2015 kiwitrees.net
 //
 // Derived from webtrees
-// Copyright (C) 2012 webtrees development team
+// Copyright (C) 2013 webtrees development team
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -62,6 +62,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			$this->moveup();
 			$this->config();
 			break;
+		case 'show':
+			$this->show();
+			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
 		}
@@ -74,7 +77,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
 	// Implement class WT_Module_Block
@@ -151,9 +154,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				$controller	= new WT_Controller_Page();
 				if ($block_id) {
 					$controller->setPageTitle(WT_I18N::translate('Edit FAQ item'));
-					$header		= get_block_setting($block_id, 'header');
-					$faqbody	= get_block_setting($block_id, 'faqbody');
-					$block_order=WT_DB::prepare(
+					$header		 = get_block_setting($block_id, 'header');
+					$faqbody	 = get_block_setting($block_id, 'faqbody');
+					$block_order = WT_DB::prepare(
 						"SELECT block_order FROM `##block` WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
 					$gedcom_id	= WT_DB::prepare(
@@ -173,48 +176,57 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 					ckeditor_WT_Module::enableEditor($controller);
 				}
 				?>
-				<div id="<?php echo $this->getName();?>">
-					<form name="faq" method="post" action="module.php?mod=<?php echo $this->getName()?>&amp;mod_action=admin_edit">
-						<?php echo WT_Filter::getCsrf();?>
-						<input type="hidden" name="save" value="1">';
-						<input type="hidden" name="block_id" value="<?php echo $block_id;?>">
+				<div id="<?php echo $this->getName(); ?>">
+					<form name="faq" method="post" action="#">
+						<?php echo WT_Filter::getCsrf(); ?>
+						<input type="hidden" name="save" value="1">
+						<input type="hidden" name="block_id" value="<?php echo $block_id; ?>">
 						<table id="faq_module">
 							<tr>
-								<th><?php echo WT_I18N::translate('Question');?></th>
+								<th><?php echo WT_I18N::translate('Question'); ?></th>
 							</tr>
 							<tr>
-								<td><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header);?>"></td>
+								<td><input type="text" name="header" size="90" tabindex="1" value="<?php echo htmlspecialchars($header); ?>"></td>
 							</tr>
 							<tr>
-								<th><?php echo WT_I18N::translate('Answer');?></th>
+								<th><?php echo WT_I18N::translate('Answer'); ?></th>
 							</tr>
 							<tr>
 									<td>
-										<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars($faqbody);?></textarea>
+										<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars($faqbody); ?></textarea>
 									</td>
 							</tr>
 						</table>
-						<table id="faq_module2">'
+						<table id="faq_module2">
 							<tr>
-								<th><?php echo WT_I18N::translate('Show this block for which languages?');?></th>
-								<th><?php echo WT_I18N::translate('FAQ position'), help_link('add_faq_order', $this->getName());?></th>
-								<th><?php echo WT_I18N::translate('FAQ visibility'), help_link('add_faq_visibility', $this->getName());?></th>
+								<th><?php echo WT_I18N::translate('Show this block for which languages?'); ?></th>
+								<th><?php echo WT_I18N::translate('FAQ position'); ?></th>
+								<th><?php echo WT_I18N::translate('FAQ visibility'); ?></th>
 							</tr>
 							<tr>
 								<td>
 									<?php
-									$languages=get_block_setting($block_id, 'languages');
+									$languages = get_block_setting($block_id, 'languages');
 									echo edit_language_checkboxes('lang_', $languages);
 									?>
 								</td>
-								<td><input type="text" name="block_order" size="3" tabindex="3" value="<?php $block_order;?>"></td>
-								<td><?php echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"');?></td>
+								<td>
+									<input type="text" name="block_order" size="3" tabindex="3" value="<?php echo $block_order; ?>">
+								</td>
+								<td>
+									<?php echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"'); ?>
+								</td>
 							</tr>
 						</table>
 						<p>
-							<input type="submit" value="<?php WT_I18N::translate('save');?>" tabindex="5">
-							&nbsp;
-							<input type="button" value="<?php WT_I18N::translate('cancel');?>" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="8">
+							<button class="btn btn-primary save" type="submit"  tabindex="5">
+								<i class="fa fa-floppy-o"></i>
+								<?php echo WT_I18N::translate('save'); ?>
+							</button>
+							<button class="btn btn-primary cancel" type="submit" onclick="window.location=\'<?php echo $this->getConfigLink(); ?>\';" tabindex="8">
+								<i class="fa fa-times"></i>
+								<?php echo WT_I18N::translate('cancel'); ?>
+							</button>
 						</p>
 					</form>
 				</div>
@@ -298,7 +310,13 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				jQuery("#faq_accordion").css("visibility", "visible");
 			');
 
-		$faqs=WT_DB::prepare(
+		if (safe_POST('query_faq')) {
+			$search = safe_POST('query_faq');
+		} else {
+			$search = '%';
+		};
+
+		$faqs = WT_DB::prepare(
 			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body".
 			" FROM `##block` b".
 			" JOIN `##block_setting` bs1 USING (block_id)".
@@ -307,19 +325,32 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" AND bs1.setting_name='header'".
 			" AND bs2.setting_name='faqbody'".
 			" AND IFNULL(gedcom_id, ?)=?".
+			" AND (bs2.setting_value LIKE '%" . $search . "%' OR bs1.setting_value LIKE '%" . $search . "%')".
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 		?>
-		<div id="faq_page">
-			<h2 class="center"> <?php echo WT_I18N::translate('Frequently asked questions');?></h2>
+
+		<div id="faq-page">
+			<h2 class="center"> <?php echo WT_I18N::translate('Frequently asked questions'); ?></h2>
+			<div id="faq_search">
+				<form method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show" >
+					<input
+						type="search"
+						name="query_faq"
+						value="<?php echo ($search == '%' ? '' : $search); ?>"
+						placeholder="<?php echo WT_I18N::translate('Search FAQs'); ?>"
+						dir="auto"
+					>
+				</form>
+			</div>
 			<div id="faq_accordion" style="visibility:hidden">
 				<?php foreach ($faqs as $id => $faq) {
 					$header		= get_block_setting($faq->block_id, 'header');
 					$faqbody	= get_block_setting($faq->block_id, 'faqbody');
 					$languages	= get_block_setting($faq->block_id, 'languages');
 					if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) { ?>
-						<h2><?php echo $faq->header;?></h2>
-						<div class="faq_body"> <?php echo substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody); ?> </div>
+						<h2><?php echo $this->faq_search_hits($faq->header, $search); ?></h2>
+						<div class="faq_body"> <?php echo $this->faq_search_hits(substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody), $search); ?> </div>
 					<?php } ?>
 				<?php } ?>
 			</div>
@@ -370,38 +401,48 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		)->execute(array($this->getName()))->fetchOne();
 		?>
 
-		<div id="<?php echo $this->getName();?>">
+		<div id="<?php echo $this->getName(); ?>">
 <!--		<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a> -->
-			<h2><?php echo $controller->getPageTitle();?></h2>
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div id="faq_tabs">
 				<ul>
-					<li><a href="#faq_summary"><span><?php echo WT_I18N::translate('Summary');?></span></a></li>
-					<li><a href="#faq_items"><span><?php echo WT_I18N::translate('FAQs');?></span></a></li>
+					<li><a href="#faq_summary"><span><?php echo WT_I18N::translate('Summary'); ?></span></a></li>
+					<li><a href="#faq_items"><span><?php echo WT_I18N::translate('FAQs'); ?></span></a></li>
 				</ul>
 				<div id="faq_summary">
-					<form method="post" name="configform" action="module.php?mod=<?php echo $this->getName();?>&mod_action=admin_config">
+					<form method="post" name="configform" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_config">
 						<input type="hidden" name="action" value="update">
-						<div class="label"><?php echo WT_I18N::translate('Main menu and page title');?></div>
-						<div class="value"><input type="text" name="NEW_FAQ_TITLE" value="<?php echo $this->getMenuTitle();?>"></div>
-						<div class="label"><?php echo WT_I18N::translate('Page description');?></div>
+						<div class="label"><?php echo WT_I18N::translate('Main menu and page title'); ?></div>
+						<div class="value"><input type="text" name="NEW_FAQ_TITLE" value="<?php echo $this->getMenuTitle(); ?>"></div>
+						<div class="label"><?php echo WT_I18N::translate('Page description'); ?></div>
 						<div class="value2">
-							<textarea name="NEW_FAQ_DESCRIPTION" class="html-edit" rows="5" cols="120"><?php echo $this->getSummaryDescription();?></textarea>
+							<textarea name="NEW_FAQ_DESCRIPTION" class="html-edit" rows="5" cols="120"><?php echo $this->getSummaryDescription(); ?></textarea>
 						</div>
-						<div class="save"><input type="submit" value="<?php echo WT_I18N::translate('save');?>"></div>
+						<div class="save">
+							<button class="btn btn-primary save" type="submit">
+								<i class="fa fa-floppy-o"></i>
+								<?php echo WT_I18N::translate('save'); ?>
+							</button>
+						</div>
 					</form>
 				</div>
 				<div id="faq_items">
-					<form method="get" action="<?php echo WT_SCRIPT_NAME;?>#faq_items">
-						<label><?php echo WT_I18N::translate('Family tree');?></label>
-						<input type="hidden" name="mod", value="', $this->getName(), '">
-						<input type="hidden" name="mod_action", value="admin_config">
-						<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM);?>
-						<input type="submit" value="<?php echo WT_I18N::translate('show');?>">
+					<form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
+						<label><?php echo WT_I18N::translate('Family tree'); ?></label>
+						<input type="hidden" name="mod" value="<?php echo $this->getName(); ?>">
+						<input type="hidden" name="mod_action" value="admin_config">
+						<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+						<button class="btn btn-primary show" type="submit" tabindex="5">
+							<i class="fa fa-eye"></i>
+							<?php echo WT_I18N::translate('show'); ?>
+						</button>
 					</form>
-					<div class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-						<a class="ui-button-text" href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">
-							<?php echo WT_I18N::translate('Add FAQ item');?>
-						</a>
+					<div>
+						<button class="btn btn-primary add" type="submit">
+							<i class="fa fa-plus"></i>
+							<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit"></a>
+							<?php echo WT_I18N::translate('Add FAQ item'); ?>
+						</button>
 					</div>
 					<table id="faq_edit">
 						<?php
@@ -410,45 +451,51 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 							foreach ($faqs as $faq) { ?>
 								<tr class="faq_edit_pos">
 									<td>
-										<?php echo WT_I18N::translate('Position item'), ': ', ($faq->block_order+1);
-										if ($faq->gedcom_id==null) {
-											echo WT_I18N::translate('All');
+										<?php
+										echo '<p>' . WT_I18N::translate('FAQ position') . '<span>' . ($faq->block_order) . '</span></p>';
+										echo '<p>' . WT_I18N::translate('Family tree');
+											if ($faq->gedcom_id == null) {
+												echo '<span>' . WT_I18N::translate('All') . '</span>';
+											} else {
+												echo '<span>' . $trees[$faq->gedcom_id]->tree_title_html . '</span>';
+											}
+										echo '</p>';
+										?>
+									</td>
+									<td>
+										<?php
+										if ($faq->block_order == $min_block_order) {
+											echo '&nbsp;';
 										} else {
-											echo $trees[$faq->gedcom_id]->tree_title_html;
-										} ?>
+											echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_moveup&amp;block_id=' . $faq->block_id . '" class="icon-uarrow"></a>';
+										}
+										?>
 									</td>
 									<td>
-										<?php if ($faq->block_order==$min_block_order) { ?>
-											&nbsp;
-										<?php } else { ?>
-											<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_moveup&amp;block_id=<?php echo $faq->block_id;?>" class="icon-uarrow">
-											</a>
-										<?php } ?>
+										<?php
+										if ($faq->block_order == $max_block_order) {
+											echo '&nbsp;';
+										} else {
+											echo '<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_movedown&amp;block_id=' . $faq->block_id . '" class="icon-darrow"></a>';
+										}
+										?>
 									</td>
 									<td>
-										<?php if ($faq->block_order==$max_block_order) { ?>
-											&nbsp;
-										<?php } else { ?>
-											<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_movedown&amp;block_id=<?php echo $faq->block_id;?>" class="icon-darrow">
-											</a>
-										<?php } ?>
-									</td>
-									<td>
-										<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $faq->block_id;?>">
-											<?php echo WT_I18N::translate('Edit');?>
+										<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $faq->block_id; ?>">
+											<?php echo WT_I18N::translate('Edit'); ?>
 										</a>
 									</td>
 									<td>
-										<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $faq->block_id;?>" onclick="return confirm(\'<?php echo WT_I18N::translate('Are you sure you want to delete this FAQ entry?');?>\');">
-											<?php echo WT_I18N::translate('Delete');?>
+										<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $faq->block_id; ?>" onclick="return confirm('<?php echo WT_I18N::translate('Are you sure you want to delete this FAQ entry?'); ?>');">
+											<?php echo WT_I18N::translate('Delete'); ?>
 										</a>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="5">
 										<div class="faq_edit_item">
-											<div class="faq_edit_title"><?php echo $faq->header;?></div>
-											<div class="faq_edit_content"><?php echo substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody);?></div>
+											<div class="faq_edit_title"><?php echo $faq->header; ?></div>
+											<div class="faq_edit_content"><?php echo substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody); ?></div>
 										</div>
 									</td>
 								</tr>
@@ -456,7 +503,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 						} else { ?>
 							<tr>
 								<td class="error center" colspan="5">
-									<?php echo WT_I18N::translate('The FAQ list is empty.');?>
+									<?php echo WT_I18N::translate('The FAQ list is empty.'); ?>
 								</td>
 							</tr>
 						<?php } ?>
@@ -485,7 +532,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			return null;
 		}
 
-		$faqs=WT_DB::prepare(
+		$faqs = WT_DB::prepare(
 			"SELECT block_id FROM `##block` b WHERE module_name=? AND IFNULL(gedcom_id, ?)=?"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
@@ -500,4 +547,13 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		}
 		return $menu;
 	}
+
+	function faq_search_hits($string, $search) {
+		if ($search != '%') {
+			return preg_replace('/' . $search . '/i', '<span class="search_hit">$0</span>', $string);
+		} else {
+			return $string;
+		}
+	}
+
 }

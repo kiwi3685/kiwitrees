@@ -876,18 +876,42 @@ p.branches {display:inline;}
 #tabDefinedTagsShow,#tabFilterAndCustom,#tabAction {margin-left:auto;margin-right:auto;}
 #tabDefinedTagsShow td,#tabAction td {text-align:center;width:50%;}
 
-/* FAQ table  */
-table.faq {background-color:#eeeeee;margin:5px 0 15px 5px;width:98%;}
-table.faq tr.odd td {background-color:#eeeeee;}
+/* ======= FAQ page styles ========== */
+#faq-page {
+	margin: 0 auto;
+	width: 70%;
+}
 
-div.faq_title {background-color:#eeeeee;font-weight:700;margin:1em 0;padding:.25em;width:98%;}
-div.faq_body {clear:both;margin:1em 0;padding:.5em;}
+#faq-page h2.ui-accordion-header {
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+    text-align: inherit;
+}
 
-.faq_italic {font-size:12px;font-style:italic;font-weight:700;padding:0 10px;}
-.faq_top,.faq_edit {float:right;}
+#faq-page #faq_accordion {
+	clear:both;
+}
 
-[dir=rtl] .faq_top {float:left;}
-[dir=rtl] .faq_edit {float:left;}
+#faq-page div.ui-widget-content {
+    border: none;
+    background: #fff;
+    color: inherit;
+}
+
+#faq-page #faq_search {
+	float: right;
+    margin: 10px 0;
+}
+[dir='rtl'] #faq-page #faq_search {
+	float: left;
+}
+
+#faq-page #faq_search input {
+	font-size: 110%;
+	padding: 5px;
+}
 
 ul.clist {color:#000;list-style-image:none;margin:0;text-decoration:none;}
 

@@ -1071,16 +1071,35 @@ p.branches {display:inline;}
 #tabFilterAndCustom { margin-left:auto; margin-right:auto;}
 #tabAction { margin-left:auto; margin-right:auto;}
 #tabAction td { width:50%; text-align:center;}
-/* FAQ table styles */
-table.faq { background-color:#e0e0e0; margin:5px 0 50px 5px; width:98%;}
-table.faq tr.odd td { background-color:#e7eef3;}
-div.faq_title { background-color:#e0e0e0; margin:1em 0; padding:.25em; font-weight:bold; width:98%;}
-div.faq_body { clear:both; margin:1em 0; padding:1em;}
-.faq_italic { font-style:italic; font-weight:bold; font-size:90%; padding:0 10px;}
-.faq_top {float:right;}
-.faq_edit {float:right;}
-[dir=rtl] .faq_top {float:left;}
-[dir=rtl] .faq_edit {float:left;}
+/* ======= FAQ page styles ========== */
+#faq-page {
+	margin: 0 auto;
+	width: 70%;
+}
+
+#faq-page h2.ui-accordion-header {
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+}
+
+#faq-page div.ui-widget-content {
+    border: none;
+    background: #fff;
+    color: inherit;
+}
+
+#faq-page #faq_search {
+    margin: 10px auto;
+	width: 200px;
+}
+
+#faq-page #faq_search input {
+	font-size: 110%;
+	padding: 5px;
+    width: 200px;
+}
 
 td.descriptionbox a {/* this keeps the tag color the same when it is a link as when not */ color:#0000ff;}
 

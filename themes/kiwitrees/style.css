@@ -2782,69 +2782,38 @@ dt {
 	float: right;
 }
 
-/* ======= FAQ table styles ========== */
-table.faq {
-	background-color: #e0e0e0;
-	margin: 5px 0 50px 5px;
-	width: 98%;
-}
-
-table.faq tr.odd td {
-	background-color: #fff;
-}
-
-div.faq_title {
-	background-color: #e0e0e0;
-	margin: 1em 0;
-	padding: .25em;
-	font-weight: bold;
-	width: 98%;
-}
-
-div.faq_body {
-	clear: both;
-	padding: 0 1em;
-}
-
-.faq_italic {
-	font-style: italic;
-	font-weight: bold;
-	font-size: 90%;
-	padding: 0 10px;
-}
-
-.faq_top {
-	float: right;
-}
-
-.faq_edit {
-	float: right;
-}
-
-[dir='rtl'] .faq_top {
-	float: left;
-}
-
-[dir='rtl'] .faq_edit {
-	float: left;
-}
-
-#faq_page {
+/* ======= FAQ page styles ========== */
+#faq-page {
 	margin: 0 auto;
 	width: 70%;
 }
 
-#faq_page h2.ui-accordion-header {
+#faq-page h2.ui-accordion-header {
 	border: none;
     background-color: transparent;
     border-radius: 0;
     color: inherit;
 }
 
-#faq_page div.ui-widget-content {
+#faq-page #faq_accordion {
+	clear:both;
+}
+
+#faq-page div.ui-widget-content {
     border: none;
     background: #fff;
     color: inherit;
+}
+
+#faq-page #faq_search {
+    margin: 10px auto;
+	width: 200px;
+}
+
+#faq-page #faq_search input {
+	font-size: 110%;
+	padding: 5px;
+    width: 200px;
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
@@ -6019,7 +5988,7 @@ div.widget {
 	.media-list-item {
  		width: 95%; /* one per row */
  	}
-	#faq_page {
+	#faq-page {
 		width: 95%;
 	}
 
