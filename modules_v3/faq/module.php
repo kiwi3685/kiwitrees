@@ -328,10 +328,15 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" AND (bs2.setting_value LIKE '%" . $search . "%' OR bs1.setting_value LIKE '%" . $search . "%')".
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
+
+		$faq_description = get_module_setting($this->getName(), 'FAQ_DESCRIPTION');
 		?>
 
 		<div id="faq-page">
-			<h2 class="center"> <?php echo WT_I18N::translate('Frequently asked questions'); ?></h2>
+			<h2> <?php echo WT_I18N::translate('Frequently asked questions'); ?></h2>
+			<div id="faq_description">
+				<?php echo $faq_description; ?>
+			</div>
 			<div id="faq_search">
 				<form method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show" >
 					<input

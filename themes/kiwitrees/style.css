@@ -2797,6 +2797,7 @@ dt {
 
 #faq-page #faq_accordion {
 	clear:both;
+	margin-bottom: 50px;
 }
 
 #faq-page div.ui-widget-content {
