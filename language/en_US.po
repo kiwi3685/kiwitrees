@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2015-09-08 17:29+1200\n"
-"PO-Revision-Date: 2015-09-08 17:29+1200\n"
+"POT-Creation-Date: 2015-09-09 17:44+1200\n"
+"PO-Revision-Date: 2015-09-09 17:44+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -233,8 +233,8 @@ msgstr ""
 #: index_edit.php:334
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:592
 #: modules_v3/album/module.php:334 modules_v3/custom_js/module.php:72
-#: modules_v3/extra_menus/module.php:198 modules_v3/extra_menus/module.php:324
-#: modules_v3/faq/module.php:215 modules_v3/faq/module.php:390
+#: modules_v3/extra_menus/module.php:200 modules_v3/extra_menus/module.php:332
+#: modules_v3/faq/module.php:224 modules_v3/faq/module.php:424
 #: modules_v3/gallery/module.php:494
 #: modules_v3/googlemap/admin_places_edit.php:342
 #: modules_v3/googlemap/module.php:391 modules_v3/googlemap/module.php:598
@@ -242,7 +242,9 @@ msgstr ""
 #: modules_v3/googlemap/places_edit.php:338
 #: modules_v3/simpl_pages/module.php:226 modules_v3/simpl_pages/module.php:416
 #: modules_v3/sitemap/module.php:260 modules_v3/stories/module.php:395
-#: modules_v3/stories/module.php:509
+#: modules_v3/stories/module.php:509 modules_v3/extra_menus/module.php.bak:198
+#: modules_v3/extra_menus/module.php.bak:324 modules_v3/faq/module.php.bak:224
+#: modules_v3/faq/module.php.bak:424
 msgid "save"
 msgstr ""
 
@@ -651,12 +653,14 @@ msgstr ""
 #: modules_v3/extra_menus/module.php:183
 #: modules_v3/fancy_treeview/module.php:550 modules_v3/gallery/module.php:326
 #: modules_v3/simpl_pages/module.php:202
+#: modules_v3/extra_menus/module.php.bak:183
 msgid "Access level"
 msgstr ""
 
 #: admin_module_menus.php:75 admin_modules.php:128 admin_modules.php:157
 #: modules_v3/extra_menus/module.php:104
 #: modules_v3/fancy_treeview/module.php:548
+#: modules_v3/extra_menus/module.php.bak:104
 msgid "Menu"
 msgstr ""
 
@@ -840,8 +844,8 @@ msgstr ""
 #: library/WT/Controller/Family.php:159
 #: library/WT/Controller/Individual.php:361 library/WT/Controller/Media.php:128
 #: library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106
-#: library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:376
-#: modules_v3/fancy_treeview/module.php:551 modules_v3/faq/module.php:443
+#: library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:398
+#: modules_v3/fancy_treeview/module.php:551 modules_v3/faq/module.php:490
 #: modules_v3/gallery/module.php:539 modules_v3/gedcom_news/module.php:124
 #: modules_v3/googlemap/admin_places.php:622
 #: modules_v3/googlemap/admin_places.php:680
@@ -849,6 +853,7 @@ msgstr ""
 #: modules_v3/widget_blog/module.php:93
 #: modules_v3/widget_messages/module.php:84
 #: modules_v3/widget_messages/module.php:113
+#: modules_v3/extra_menus/module.php.bak:376 modules_v3/faq/module.php.bak:490
 msgid "Delete"
 msgstr ""
 
@@ -935,12 +940,15 @@ msgstr ""
 #: admin_trees_manage.php:201 admin_trees_places.php:102
 #: admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423
 #: edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:64
-#: modules_v3/extra_menus/module.php:329
+#: modules_v3/extra_menus/module.php:339 modules_v3/extra_menus/module.php:364
 #: modules_v3/fancy_imagebar/module.php:262
-#: modules_v3/fancy_treeview/module.php:520 modules_v3/faq/module.php:395
-#: modules_v3/gallery/module.php:500 modules_v3/googlemap/module.php:1424
-#: modules_v3/html/module.php:314 modules_v3/simpl_pages/module.php:421
-#: modules_v3/stories/module.php:457 modules_v3/widget_html/module.php:167
+#: modules_v3/fancy_treeview/module.php:520 modules_v3/faq/module.php:431
+#: modules_v3/faq/module.php:456 modules_v3/gallery/module.php:500
+#: modules_v3/googlemap/module.php:1424 modules_v3/html/module.php:314
+#: modules_v3/simpl_pages/module.php:421 modules_v3/stories/module.php:457
+#: modules_v3/widget_html/module.php:167
+#: modules_v3/extra_menus/module.php.bak:329 modules_v3/faq/module.php.bak:431
+#: modules_v3/faq/module.php.bak:456
 msgid "Family tree"
 msgstr ""
 
@@ -1843,9 +1851,10 @@ msgstr ""
 #: admin_trees_config.php:1014 admin_trees_config.php:1035
 #: admin_trees_config.php:1067 admin_trees_config.php:1088
 #: admin_trees_config.php:1096 admin_trees_config.php:1104
-#: modules_v3/extra_menus/module.php:333 modules_v3/faq/module.php:399
+#: modules_v3/extra_menus/module.php:345 modules_v3/faq/module.php:437
 #: modules_v3/gallery/module.php:504 modules_v3/googlemap/module.php:251
 #: modules_v3/simpl_pages/module.php:425 modules_v3/stories/module.php:461
+#: modules_v3/extra_menus/module.php.bak:333 modules_v3/faq/module.php.bak:437
 msgid "show"
 msgstr ""
 
@@ -3042,9 +3051,9 @@ msgstr ""
 #: indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:168
 #: indilist.php:170 indilist.php:254 indilist.php:256 library/WT/I18N.php:656
 #: library/WT/Stats.php:3346 modules_v3/extra_menus/help_text.php:50
-#: modules_v3/extra_menus/module.php:348
-#: modules_v3/fancy_treeview/module.php:604 modules_v3/faq/module.php:211
-#: modules_v3/faq/module.php:415 modules_v3/gallery/help_text.php:37
+#: modules_v3/extra_menus/module.php:366
+#: modules_v3/fancy_treeview/module.php:604 modules_v3/faq/module.php:217
+#: modules_v3/faq/module.php:458 modules_v3/gallery/help_text.php:37
 #: modules_v3/gallery/module.php:515 modules_v3/googlemap/admin_places.php:595
 #: modules_v3/googlemap/admin_places.php:738
 #: modules_v3/googlemap/module.php:1429 modules_v3/googlemap/module.php:1445
@@ -3054,6 +3063,8 @@ msgstr ""
 #: modules_v3/widget_messages/module.php:84
 #: modules_v3/ahnentafel_report/report.bak:8
 #: modules_v3/descendancy_report/report.bak:7
+#: modules_v3/extra_menus/module.php.bak:348 modules_v3/faq/module.php.bak:217
+#: modules_v3/faq/module.php.bak:458
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/individual_ext_report/report.bak:8
 #: modules_v3/individual_ext_report/report.bak:12
@@ -3210,14 +3221,15 @@ msgstr ""
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:307 library/WT/Controller/Media.php:82
 #: library/WT/Controller/Note.php:81 library/WT/Controller/Repository.php:81
-#: library/WT/Controller/Source.php:81 modules_v3/extra_menus/module.php:371
-#: modules_v3/faq/module.php:438 modules_v3/gallery/module.php:536
+#: library/WT/Controller/Source.php:81 modules_v3/extra_menus/module.php:393
+#: modules_v3/faq/module.php:485 modules_v3/gallery/module.php:536
 #: modules_v3/gallery/module.php:768 modules_v3/gedcom_news/module.php:123
 #: modules_v3/googlemap/admin_places.php:620
 #: modules_v3/googlemap/admin_places.php:655
 #: modules_v3/googlemap/admin_places.php:678 modules_v3/page_menu/module.php:35
 #: modules_v3/simpl_pages/module.php:464 modules_v3/stories/module.php:473
 #: modules_v3/widget_blog/module.php:92 note.php:126 note.php:130
+#: modules_v3/extra_menus/module.php.bak:371 modules_v3/faq/module.php.bak:485
 msgid "Edit"
 msgstr ""
 
@@ -13401,6 +13413,7 @@ msgstr ""
 #: modules_v3/extra_menus/module.php:179 modules_v3/gallery/module.php:260
 #: modules_v3/gedcom_favorites/module.php:191
 #: modules_v3/widget_favorites/module.php:209
+#: modules_v3/extra_menus/module.php.bak:179
 msgid "Title"
 msgstr ""
 
@@ -18362,7 +18375,8 @@ msgid "There are no facts for this individual."
 msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:36
-#: modules_v3/extra_menus/module.php:337
+#: modules_v3/extra_menus/module.php:352
+#: modules_v3/extra_menus/module.php.bak:337
 msgid "Add menu item"
 msgstr ""
 
@@ -18373,7 +18387,8 @@ msgid ""
 msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:43
-#: modules_v3/extra_menus/module.php:185
+#: modules_v3/extra_menus/module.php:185 modules_v3/extra_menus/module.php:363
+#: modules_v3/extra_menus/module.php.bak:185
 msgid "Menu position"
 msgstr ""
 
@@ -18400,6 +18415,7 @@ msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:48
 #: modules_v3/extra_menus/module.php:187
+#: modules_v3/extra_menus/module.php.bak:187
 msgid "Menu visibility"
 msgstr ""
 
@@ -18427,6 +18443,7 @@ msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:59
 #: modules_v3/extra_menus/module.php:149
+#: modules_v3/extra_menus/module.php.bak:149
 msgid "Edit menu"
 msgstr ""
 
@@ -18466,6 +18483,7 @@ msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:74
 #: modules_v3/extra_menus/module.php:189
+#: modules_v3/extra_menus/module.php.bak:189
 msgid "Open menu in new tab or window"
 msgstr ""
 
@@ -18476,57 +18494,68 @@ msgid ""
 "or tab you can tick this option."
 msgstr ""
 
+#: modules_v3/extra_menus/module.php:36
+msgid "Extra menus"
+msgstr ""
+
 #: modules_v3/extra_menus/module.php:41
+#: modules_v3/extra_menus/module.php.bak:41
 msgid "Provides links to custom defined pages."
 msgstr ""
 
 #: modules_v3/extra_menus/module.php:161
+#: modules_v3/extra_menus/module.php.bak:161
 msgid "Add menu"
 msgstr ""
 
 #: modules_v3/extra_menus/module.php:180
+#: modules_v3/extra_menus/module.php.bak:180
 msgid "Add your menu title here"
 msgstr ""
 
 #: modules_v3/extra_menus/module.php:181
+#: modules_v3/extra_menus/module.php.bak:181
 msgid "Menu address"
 msgstr ""
 
 #: modules_v3/extra_menus/module.php:182
+#: modules_v3/extra_menus/module.php.bak:182
 msgid "Add your menu address here"
 msgstr ""
 
 #: modules_v3/extra_menus/module.php:193
+#: modules_v3/extra_menus/module.php.bak:193
 msgid "Show this menu for which languages?"
 msgstr ""
 
-#: modules_v3/extra_menus/module.php:200 modules_v3/faq/module.php:217
+#: modules_v3/extra_menus/module.php:204 modules_v3/faq/module.php:228
 #: modules_v3/simpl_pages/module.php:228
+#: modules_v3/extra_menus/module.php.bak:200 modules_v3/faq/module.php.bak:228
 msgid "cancel"
 msgstr ""
 
-#: modules_v3/extra_menus/module.php:316 modules_v3/extra_menus/module.php:322
+#: modules_v3/extra_menus/module.php:321 modules_v3/extra_menus/module.php:327
+#: modules_v3/extra_menus/module.php.bak:316
+#: modules_v3/extra_menus/module.php.bak:322
 msgid "Main menu title"
 msgstr ""
 
-#: modules_v3/extra_menus/module.php:317 themes/_administration/header.php:200
+#: modules_v3/extra_menus/module.php:322 themes/_administration/header.php:200
+#: modules_v3/extra_menus/module.php.bak:317
 msgid "Menus"
 msgstr ""
 
-#: modules_v3/extra_menus/module.php:346 modules_v3/faq/module.php:413
-#: modules_v3/gallery/module.php:513 modules_v3/simpl_pages/module.php:439
-msgid "Position item"
-msgstr ""
-
-#: modules_v3/extra_menus/module.php:375
+#: modules_v3/extra_menus/module.php:397
+#: modules_v3/extra_menus/module.php.bak:375
 msgid "Are you sure you want to delete this menu item?"
 msgstr ""
 
-#: modules_v3/extra_menus/module.php:392
-msgid "The menu is empty."
+#: modules_v3/extra_menus/module.php:414
+msgid "The menu list is empty."
 msgstr ""
 
-#: modules_v3/extra_menus/module.php:491
+#: modules_v3/extra_menus/module.php:518
+#: modules_v3/extra_menus/module.php.bak:491
 msgid "Edit menus"
 msgstr ""
 
@@ -19261,7 +19290,8 @@ msgstr ""
 msgid "%s family"
 msgstr ""
 
-#: modules_v3/faq/help_text.php:34 modules_v3/faq/module.php:314
+#: modules_v3/faq/help_text.php:34 modules_v3/faq/module.php:334
+#: modules_v3/faq/module.php.bak:334
 msgid "Frequently asked questions"
 msgstr ""
 
@@ -19278,7 +19308,9 @@ msgid ""
 "You may use HTML to format the answer and to add links to other websites."
 msgstr ""
 
-#: modules_v3/faq/help_text.php:42 modules_v3/faq/module.php:200
+#: modules_v3/faq/help_text.php:42 modules_v3/faq/module.php:203
+#: modules_v3/faq/module.php:455 modules_v3/faq/module.php.bak:203
+#: modules_v3/faq/module.php.bak:455
 msgid "FAQ position"
 msgstr ""
 
@@ -19294,7 +19326,8 @@ msgid ""
 "will be visible."
 msgstr ""
 
-#: modules_v3/faq/help_text.php:47 modules_v3/faq/module.php:201
+#: modules_v3/faq/help_text.php:47 modules_v3/faq/module.php:204
+#: modules_v3/faq/module.php.bak:204
 msgid "FAQ visibility"
 msgstr ""
 
@@ -19330,58 +19363,66 @@ msgid ""
 "has the same position number, only one of these items will be visible."
 msgstr ""
 
-#: modules_v3/faq/module.php:36 modules_v3/faq/module.php:104
-#: modules_v3/faq/module.php:379
+#: modules_v3/faq/module.php:36 modules_v3/faq/module.php:107
+#: modules_v3/faq/module.php:410 modules_v3/faq/module.php.bak:36
+#: modules_v3/faq/module.php.bak:107 modules_v3/faq/module.php.bak:410
 msgid "FAQs"
 msgstr ""
 
-#: modules_v3/faq/module.php:41
+#: modules_v3/faq/module.php:41 modules_v3/faq/module.php.bak:41
 msgid "A list of frequently asked questions and answers."
 msgstr ""
 
-#: modules_v3/faq/module.php:153
+#: modules_v3/faq/module.php:156 modules_v3/faq/module.php.bak:156
 msgid "Edit FAQ item"
 msgstr ""
 
-#: modules_v3/faq/module.php:163 modules_v3/faq/module.php:403
+#: modules_v3/faq/module.php:166 modules_v3/faq/module.php:444
+#: modules_v3/faq/module.php.bak:166 modules_v3/faq/module.php.bak:444
 msgid "Add FAQ item"
 msgstr ""
 
-#: modules_v3/faq/module.php:183
+#: modules_v3/faq/module.php:186 modules_v3/faq/module.php.bak:186
 msgid "Question"
 msgstr ""
 
-#: modules_v3/faq/module.php:189
+#: modules_v3/faq/module.php:192 modules_v3/faq/module.php.bak:192
 msgid "Answer"
 msgstr ""
 
-#: modules_v3/faq/module.php:199 modules_v3/html/module.php:345
+#: modules_v3/faq/module.php:202 modules_v3/html/module.php:345
 #: modules_v3/stories/module.php:342 modules_v3/widget_html/module.php:202
+#: modules_v3/faq/module.php.bak:202
 msgid "Show this block for which languages?"
 msgstr ""
 
-#: modules_v3/faq/module.php:378 modules_v3/gallery/module.php:467
-#: modules_v3/simpl_pages/module.php:404
+#: modules_v3/faq/module.php:341 modules_v3/faq/module.php.bak:341
+msgid "Search FAQs"
+msgstr ""
+
+#: modules_v3/faq/module.php:409 modules_v3/gallery/module.php:467
+#: modules_v3/simpl_pages/module.php:404 modules_v3/faq/module.php.bak:409
 msgid "Summary"
 msgstr ""
 
-#: modules_v3/faq/module.php:384
+#: modules_v3/faq/module.php:415 modules_v3/faq/module.php.bak:415
 msgid "Main menu and page title"
 msgstr ""
 
-#: modules_v3/faq/module.php:386 modules_v3/simpl_pages/help_text.php:51
+#: modules_v3/faq/module.php:417 modules_v3/simpl_pages/help_text.php:51
+#: modules_v3/faq/module.php.bak:417
 msgid "Page description"
 msgstr ""
 
-#: modules_v3/faq/module.php:442
+#: modules_v3/faq/module.php:489 modules_v3/faq/module.php.bak:489
 msgid "Are you sure you want to delete this FAQ entry?"
 msgstr ""
 
-#: modules_v3/faq/module.php:459
+#: modules_v3/faq/module.php:506 modules_v3/faq/module.php.bak:506
 msgid "The FAQ list is empty."
 msgstr ""
 
-#: modules_v3/faq/module.php:498
+#: modules_v3/faq/module.php:545 modules_v3/faq/module.php.bak:545
 msgid "Edit FAQ items"
 msgstr ""
 
@@ -19569,6 +19610,11 @@ msgstr ""
 
 #: modules_v3/gallery/module.php:506
 msgid "Add gallery"
+msgstr ""
+
+#: modules_v3/gallery/module.php:513 modules_v3/simpl_pages/module.php:439
+#: modules_v3/extra_menus/module.php.bak:346
+msgid "Position item"
 msgstr ""
 
 #: modules_v3/gallery/module.php:539
@@ -23179,6 +23225,10 @@ msgstr ""
 
 #: modules_v3/descendancy_report/report.bak:427
 msgid "He "
+msgstr ""
+
+#: modules_v3/extra_menus/module.php.bak:392
+msgid "The menu is empty."
 msgstr ""
 
 #: modules_v3/fact_sources/report.bak:5
