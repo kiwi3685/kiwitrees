@@ -247,7 +247,7 @@ foreach ($controller->tabs as $tab) {
 			echo ' rel="nofollow"';
 		} else {
 			// Non-AJAX tabs load immediately
-			echo 'href=#', $tab->getName() . '"';
+			echo ' href=#', $tab->getName() . '"';
 		}
 		echo ' title="', $tab->getDescription(), '">', $tab->getTitle(), '</a></li>';
 	}
