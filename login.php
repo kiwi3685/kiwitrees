@@ -128,16 +128,7 @@ default:
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Login'))
-		->pageHeader()
-		->addInlineJavascript('
-			jQuery("#login-page #new_passwd_form").hide();
-			jQuery("#login-page #passwd_click").click(function() {
-				jQuery("#login-page #new_passwd_form").slideToggle(100, function() {
-					jQuery("#login-page #new_passwd_username").focus()
-				});
-				return false;
-			});
-		');
+		->pageHeader();
 
 	echo '<div id="login-page">';
 	echo '<div id="login-text">';
@@ -181,7 +172,7 @@ default:
 			<input type="submit" value="', WT_I18N::translate('Login'), '">
 		</div>
 		<div>
-			<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), '</a>
+			<a href="#" class="passwd_click">', WT_I18N::translate('Request new password'), '</a>
 		</div>';
 		if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
 			echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
@@ -189,13 +180,13 @@ default:
 	echo '</form>';
 
 	// hidden New Password block
-	echo '<div id="new_passwd">
-		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
+	echo '<div class="new_passwd">
+		<form class="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
-			<label for="new_passwd_username">', WT_I18N::translate('Username or email address'),
-				'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
+			<label>', WT_I18N::translate('Username or email address'),
+				'<input type="text" class="new_passwd_username" name="new_passwd_username" value="">
 			</label>
 		</div>
 		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('continue'), '"></div>

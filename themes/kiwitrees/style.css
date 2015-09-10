@@ -2205,12 +2205,12 @@ dt {
 	text-align: center;
 }
 
-#new_passwd {
+.new_passwd {
 	overflow: hidden;
 }
 
 #login-form,
-#new_passwd_form,
+.new_passwd_form,
 #register-form ,
 #verify-form {
 	border: 1px outset #555;
@@ -2221,7 +2221,7 @@ dt {
 
 #login-form div,
 #login-form div a,
-#new_passwd_form div,
+.new_passwd_form div,
 #register-form div,
 #verify-form div {
 	color: #232f49;
@@ -2231,20 +2231,20 @@ dt {
 }
 
 #login-form label,
-#new_passwd_form label,
+.new_passwd_form label,
 #verify-form label {
 	display: block;
 	text-align: right;
 }
 
 #login-form label input,
-#new_passwd_form label input,
+.new_passwd_form label input,
 #verify-form input {
 	width: 140px;
 	margin: 0 10px;
 }
 
-#new_passwd_form h4,
+.new_passwd_form h4,
 #register-form h4 {
 	font-weight: normal;
 	text-align: center;
@@ -2277,13 +2277,13 @@ dt {
 }
 
 .login_block_block #login-form,
-.login_block_block #new_passwd_form {
+.login_block_block .new_passwd_form {
 	border: 0;
 	background: none;
 }
 
 [dir='rtl'] #login-form label,
-[dir='rtl'] #new_passwd_form label,
+[dir='rtl'] .new_passwd_form label,
 [dir='rtl'] #register-form label,
 [dir='rtl'] #verify-form label {
 	text-align: left;
@@ -3110,12 +3110,6 @@ div[id^="caldiv"] td {
 .ui-tabs,
 .ui-tabs .ui-tabs-nav li a {
 	padding: 0;
-}
-
-.ui-tabs .ui-tabs-nav li a span {
-	display: block;
-	padding: .5em;
-	font-size: 90%;
 }
 
 .ui-widget-content #outer_pages_container a {
