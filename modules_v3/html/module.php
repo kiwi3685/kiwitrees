@@ -104,23 +104,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$content = $html;
 
-//start DEBUG code
-		$content .= '<div style="height: 0;visibility:hidden;">';
-			$languages = get_block_setting($block_id, 'languages');
-			$content .= 'WT_LOCALE = ' . WT_LOCALE . '<br>';
-			$content .= 'Browser language = ' . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . '<br>';
-			$content .= 'GEDCOM default language = ' . get_gedcom_setting(WT_GED_ID, 'LANGUAGE') . '<br>';
-			$content .= 'Block languages = ' . $languages . '<br>';
-			if (WT_USER_ID && get_user_setting(WT_USER_ID, 'language', WT_LOCALE)) {
-				$content .= 'User default language = ' . get_user_setting(WT_USER_ID, 'language', WT_LOCALE) . '<br>';
-			} else {
-				$content .= 'User default language = Not set<br>';
-			}
-			$content .= 'Site languages = ' . implode(', ', WT_I18N::used_languages()) . '<br>';
-			$content .= 'Installed language files = ' . implode(', ', WT_I18N::installed_languages()) . '<br>';
-		$content .= '</div>';
-//end DEBUG code
-
 		if (get_block_setting($block_id, 'show_timestamp', false)) {
 			$content .= '<br>'.format_timestamp(get_block_setting($block_id, 'timestamp', WT_TIMESTAMP));
 		}
