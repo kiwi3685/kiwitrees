@@ -784,6 +784,7 @@ p.branches {display:inline;}
     background-color: transparent;
     border-radius: 0;
     color: inherit;
+    text-align: left;
 }
 
 #faq-page #faq_accordion {
@@ -2234,6 +2235,9 @@ div.widget {
     .media-list-item {
         width: 95%; /* one per row */
     }
+    #faq-page {
+		width: 95%;
+	}
 
 }
 

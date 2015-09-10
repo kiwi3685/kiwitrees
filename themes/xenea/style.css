@@ -2474,6 +2474,9 @@ div.widget {
     .media-list-item {
         width: 95%; /* one per row */
     }
+    #faq-page {
+		width: 95%;
+	}
 
 }
 
