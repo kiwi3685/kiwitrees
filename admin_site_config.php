@@ -110,17 +110,17 @@ if (WT_Filter::post('action') == 'languages') {
 		</div>
 		<div id="mail">
 			<table>
-				<tr>					
+				<tr>
 					<td><?php echo WT_I18N::translate('Messages'), help_link('SMTP_ACTIVE'); ?></td>
 					<td><?php echo select_edit_control_inline('site_setting-SMTP_ACTIVE', $SMTP_ACTIVE_OPTIONS, null, WT_Site::preference('SMTP_ACTIVE'), $controller); ?></td>
 				</tr>
-				<tr>					
+				<tr>
 					<td><?php echo WT_I18N::translate('Send mail in HTML format'), help_link('MAIL_FORMAT'); ?></td>
 					<td><?php echo edit_field_yes_no_inline('site_setting-MAIL_FORMAT', WT_Site::preference('MAIL_FORMAT'), $controller); ?></td>
 				</tr>
 				<tr>
 					<td><?php echo WT_I18N::translate('Sender email'), help_link('SMTP_FROM_NAME'); ?></td>
-					<td><?php echo edit_field_inline('site_setting-SMTP_FROM_NAME', WT_Site::preference('SMTP_FROM_NAME'), $controller); ?></td>						
+					<td><?php echo edit_field_inline('site_setting-SMTP_FROM_NAME', WT_Site::preference('SMTP_FROM_NAME'), $controller); ?></td>
 				</tr>
 				<tr></tr>
 				<tr>
@@ -128,7 +128,7 @@ if (WT_Filter::post('action') == 'languages') {
 						<?php echo WT_I18N::translate('SMTP mail server'); ?>
 					</th>
 				</tr>
-				<tr>					
+				<tr>
 					<td><?php echo WT_I18N::translate('Server name'), help_link('SMTP_HOST'); ?></td>
 					<td><?php echo edit_field_inline('site_setting-SMTP_HOST', WT_Site::preference('SMTP_HOST'), $controller); ?></td>
 				</tr>
@@ -221,7 +221,7 @@ if (WT_Filter::post('action') == 'languages') {
 				?>
 				<p>
 					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-check"></i>
+						<i class="fa fa-floppy-o"></i>
 						<?php echo WT_I18N::translate('save'); ?>
 					</button>
 				</p>

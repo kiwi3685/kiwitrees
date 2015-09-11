@@ -593,7 +593,7 @@ table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:s
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
 [dir=rtl] #faq_module2 th, [dir=rtl] #faq_module2 td {text-align:right;}
 #faq_items select {height: 34px; min-width: 175px;}
-#faq_items button a {color: initial;}
+#faq_items button {color: initial;}
 
 table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
 #faq_edit tr {border-bottom:2px solid;}
@@ -673,6 +673,17 @@ table#site_map {border:1px inset #d9d6c4; border-collapse:separate; border-spaci
 #site_map td {border-bottom:1px solid #d3d3d3; padding:5px;}
 
 /* STORIES MODULE */
+#stories .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#stories form {
+    margin: 20px auto;
+}
+#stories .save{margin: 20px 0;}
+#stories select {height: 34px; min-width: 175px;}
+#stories button {color: initial;}
+
 table#story_module, table#story_module2 {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
 #story_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 [dir=rtl] #story_module th {text-align:right;}
@@ -817,6 +828,15 @@ table#story_table {width:100%}
 #admin_dup .exact input[type="text"] {margin:0;padding:1px 0;}
 
 /* Styling for simpl_pages module */
+#simpl_pages .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#simpl_pages #gallery_tabs, #simpl_pages #pages_pages form {margin: 20px auto;}
+#simpl_pages .save{clear: both; margin: 20px 0;}
+#pages_pages select {height: 34px; min-width: 175px;}
+#pages_pages button {color: initial;}
+
 #simpl_pages #pages_module th, #simpl_pages #pages_module td {vertical-align:top; text-align:left;}
 #simpl_pages #pages_module th {min-width: 150px;}
 #simpl_pages #pages_tabs, #simpl_pages #pages_pages form {margin:20px auto;}
@@ -860,7 +880,7 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #gallery #gallery_tabs, #gallery #gallery_pages form {margin: 20px auto;}
 #gallery .save{clear: both; margin: 20px 0;}
 #gallery_pages select {height: 34px; min-width: 175px;}
-#gallery_pages button a {color: initial;}
+#gallery_pages button {color: initial;}
 .gallery_edit_pos td {white-space:nowrap;}
 .gallery_edit_pos td:first-child {width:80%;}
 .gallery_edit_pos span {font-weight: 900; margin: 0 10px;}
@@ -918,7 +938,7 @@ table#gallery_module {border:1px solid; border-collapse:collapse;border-radius:5
 }
 #extra_menus .save{clear: both; margin: 20px 0;}
 #menus_pages select {height: 34px; min-width: 175px;}
-#menus_pages button a {color: initial;}
+#menus_pages button {color: initial;}
 #extra_menus input[type="checkbox"] {
 	width: 25px;
 	height: 25px;

@@ -179,37 +179,37 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 					ckeditor_WT_Module::enableEditor($controller);
 				}
 				?>
-				<div id="<?php echo $this->getName();?>">
+				<div id="<?php echo $this->getName(); ?>">
 					<form name="pages" method="post" action="#">
 						<input type="hidden" name="save" value="1">
 						<input type="hidden" name="block_id" value="', $block_id, '">
 						<table id="faq_module">
 							<tr>
-								<th>', WT_I18N::translate('Title'),'</th>
+								<th><?php echo WT_I18N::translate('Title'); ?></th>
 							</tr>
 							<tr>
-								<td><input type="text" name="pages_title" size="90" tabindex="1" value="<?php echo htmlspecialchars($items_title);?>"></td>
+								<td><input type="text" name="pages_title" size="90" tabindex="1" value="<?php echo htmlspecialchars($items_title); ?>"></td>
 							</tr>
 							<tr>
-								<th><?php echo WT_I18N::translate('Content');?></th>
+								<th><?php echo WT_I18N::translate('Content'); ?></th>
 							</tr>
 							<tr>
 								<td>
-									<textarea name="pages_content" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars($items_content);?></textarea>
+									<textarea name="pages_content" class="html-edit" rows="10" cols="90" tabindex="2"><?php echo htmlspecialchars($items_content); ?></textarea>
 								<td>
 							</tr>
 							<tr>
-								<th><?php echo WT_I18N::translate('Access level');?></th>
+								<th><?php echo WT_I18N::translate('Access level'); ?></th>
 							</tr>
 							<tr>
-								<td><?php edit_field_access_level('pages_access', $items_access, 'tabindex="4"');?></td>
+								<td><?php edit_field_access_level('pages_access', $items_access, 'tabindex="4"'); ?></td>
 							</tr>
 						</table>
 						<table id="pages_module">
 							<tr>
-								<th><?php echo WT_I18N::translate('Show this pages for which languages?'), help_link('pages_language', $this->getName());?></th>
-								<th><?php echo WT_I18N::translate('Pages position'), help_link('pages_position', $this->getName());?></th>
-								<th><?php echo WT_I18N::translate('Pages visibility'), help_link('pages_visibility', $this->getName());?></th>
+								<th><?php echo WT_I18N::translate('Show this pages for which languages?'), help_link('pages_language', $this->getName()); ?></th>
+								<th><?php echo WT_I18N::translate('Pages position'), help_link('pages_position', $this->getName()); ?></th>
+								<th><?php echo WT_I18N::translate('Pages visibility'), help_link('pages_visibility', $this->getName()); ?></th>
 							</tr>
 							<tr>
 								<td>
@@ -218,15 +218,15 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 									echo edit_language_checkboxes('lang_', $languages);
 									?>
 								</td>
-								<td><input type="text" name="block_order" size="3" tabindex="5" value="<?php $block_order;?>"></td>
-								<td><?php echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"');?></td>
+								<td><input type="text" name="block_order" size="3" tabindex="5" value="<?php $block_order; ?>"></td>
+								<td><?php echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"'); ?></td>
 							</tr>
 						</table>
 						<button class="btn btn-primary save" type="submit"  tabindex="7">
 							<i class="fa fa-floppy-o"></i>
 							<?php echo WT_I18N::translate('save'); ?>
 						</button>
-						<button class="btn btn-primary cancel" type="submit" onclick="window.location=\'<?php echo $this->getConfigLink(); ?>\';" tabindex="8">
+						<button class="btn btn-primary cancel" type="button" onclick="window.location='<?php echo $this->getConfigLink(); ?>';" tabindex="8">
 							<i class="fa fa-times"></i>
 							<?php echo WT_I18N::translate('cancel'); ?>
 						</button>
@@ -318,8 +318,8 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		}
 		?>
 		<div id="pages-container">
-			<h2><?php echo $this->getMenuTitle();?></h2>
-			<p><?php echo $this->getSummaryDescription();?></p>
+			<h2><?php echo $this->getMenuTitle(); ?></h2>
+			<p><?php echo $this->getSummaryDescription(); ?></p>
 			<div style="clear:both;"></div>
 			<div id="pages_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 				<?php
@@ -329,9 +329,9 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 						foreach ($items_list as $items) {
 							$languages = get_block_setting($items->block_id, 'languages');
 							if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $items->pages_access >= WT_USER_ACCESS_LEVEL) { ?>
-								<li class="ui-state-default ui-corner-top<?php ($items_id==$items->block_id ? ' ui-tabs-selected ui-state-active' : '');?>">
-									<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=show&amp;pages_id=<?php echo $items->block_id;?>">
-										<span title="<?php echo WT_I18N::translate($items->pages_title);?>"><?php echo WT_I18N::translate($items->pages_title);?></span>
+								<li class="ui-state-default ui-corner-top<?php ($items_id==$items->block_id ? ' ui-tabs-selected ui-state-active' : ''); ?>">
+									<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;pages_id=<?php echo $items->block_id; ?>">
+										<span title="<?php echo WT_I18N::translate($items->pages_title); ?>"><?php echo WT_I18N::translate($items->pages_title); ?></span>
 									</a>
 								</li>
 							<?php }
@@ -349,7 +349,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 					if (empty($items_content)) {
 						$items_content = '<h4>'.WT_I18N::translate('No content').'</h4>';
 					}
-					echo $items_content;?>
+					echo $items_content; ?>
 				</div> <!-- close outer_pages_container -->
 			</div> <!-- close pages_tabs -->
 		</div> <!-- close pages-container -->
@@ -399,38 +399,45 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		)->execute(array($this->getName()))->fetchOne();
 		?>
 
-		<div id="<?php echo $this->getName();?>">
+		<div id="<?php echo $this->getName(); ?>">
 <!--		<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a> -->
-			<h2><?php echo $controller->getPageTitle();?></h2>
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div id="pages_tabs">
 				<ul>
-					<li><a href="#pages_summary"><span><?php echo WT_I18N::translate('Summary');?></span></a></li>
-					<li><a href="#pages_pages"><span><?php echo WT_I18N::translate('Pages');?></span></a></li>
+					<li><a href="#pages_summary"><span><?php echo WT_I18N::translate('Summary'); ?></span></a></li>
+					<li><a href="#pages_pages"><span><?php echo WT_I18N::translate('Pages'); ?></span></a></li>
 				</ul>
 				<div id="pages_summary">
-					<form method="post" name="configform" action="module.php?mod=' . $this->getName() ;?>&mod_action=admin_config">
+					<form method="post" name="configform" action="module.php?mod=' . $this->getName() ; ?>&amp;mod_action=admin_config">
 						<input type="hidden" name="action" value="update">
-						<div class="label"><?php echo WT_I18N::translate('Main menu and summary page title'), help_link('pages_title',$this->getName());?></div>
-						<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="<?php echo $this->getMenuTitle();?>"></div>
-						<div class="label"><?php echo WT_I18N::translate('Summary page description'), help_link('pages_description',$this->getName());?></div>
+						<div class="label"><?php echo WT_I18N::translate('Main menu and summary page title'); ?></div>
+						<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="<?php echo $this->getMenuTitle(); ?>"></div>
+						<div class="label"><?php echo WT_I18N::translate('Summary page description'); ?></div>
 						<div class="value2">
-							<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120"><?php echo $this->getSummaryDescription();?></textarea>
+							<textarea name="NEW_HEADER_DESCRIPTION" class="html-edit" rows="5" cols="120"><?php echo $this->getSummaryDescription(); ?></textarea>
 						</div>
-						<div class="save"><input type="submit" value="<?php echo WT_I18N::translate('save');?>"></div>
+						<button class="btn btn-primary save" type="submit">
+							<i class="fa fa-floppy-o"></i>
+							<?php echo WT_I18N::translate('save'); ?>
+						</button>
 					</form>
 				</div>
 				<div id="pages_pages">
-					<form method="get" action="<?php echo WT_SCRIPT_NAME;?>#pages_pages">
-						<label><?php echo WT_I18N::translate('Family tree');?></label>
-						<input type="hidden" name="mod", value="<?php echo $this->getName();?>">
+					<form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
+						<label><?php echo WT_I18N::translate('Family tree'); ?></label>
+						<input type="hidden" name="mod", value="<?php echo $this->getName(); ?>">
 						<input type="hidden" name="mod_action", value="admin_config">
-						<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM);?>
-						<input type="submit" value="<?php echo WT_I18N::translate('show');?>">
+						<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+						<button class="btn btn-primary show" type="submit">
+							<i class="fa fa-eye"></i>
+							<?php echo WT_I18N::translate('show'); ?>
+						</button>
 					</form>
-					<div class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-						<a class="ui-button-text" href="module.php?mod=<?php $this->getName();?>&amp;mod_action=admin_edit">
-							<?php echo WT_I18N::translate('Add page');?>
-						</a>
+					<div>
+						<button class="btn btn-primary add" onclick="location.href='module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit'">
+							<i class="fa fa-plus"></i>
+							<?php echo WT_I18N::translate('Add page'); ?>
+						</button>
 					</div>
 					<table id="pages_module">
 						<?php
@@ -450,7 +457,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 										<?php if ($item->block_order == $min_block_order) { ?>
 											&nbsp;
 										<?php } else { ?>
-											<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_moveup&amp;block_id=<?php echo $item->block_id;?> "class="icon-uarrow">
+											<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_moveup&amp;block_id=<?php echo $item->block_id; ?> "class="icon-uarrow">
 											</a>
 										<?php } ?>
 									</td>
@@ -458,26 +465,26 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 										<?php if ($item->block_order == $max_block_order) { ?>
 											&nbsp;
 										<?php } else { ?>
-											<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_movedown&amp;block_id=<?php echo $item->block_id;?> "class="icon-darrow">
+											<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_movedown&amp;block_id=<?php echo $item->block_id; ?> "class="icon-darrow">
 											</a>
 										<?php } ?>
 									</td>
 									<td>
-										<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $item->block_id;?>">
-											<?php echo WT_I18N::translate('Edit');?>
+										<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $item->block_id; ?>">
+											<?php echo WT_I18N::translate('Edit'); ?>
 										</a>
 									</td>
 									<td>
-										<a href="module.php?mod=<?php echo $this->getName();?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $item->block_id;?>" onclick="return confirm(\'<?php echo WT_I18N::translate('Are you sure you want to delete this page?');?>\');">
-											<?php echo WT_I18N::translate('Delete');?>
+										<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $item->block_id; ?>" onclick="return confirm(\'<?php echo WT_I18N::translate('Are you sure you want to delete this page?'); ?>\');">
+											<?php echo WT_I18N::translate('Delete'); ?>
 										</a>
 									</td>
 								</tr>
 								<tr>
 									<td colspan="5">
 										<div class="faq_edit_item">
-											<div class="faq_edit_title"><?php echo WT_I18N::translate($item->pages_title);?></div>
-											<div><?php substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content);?></div>
+											<div class="faq_edit_title"><?php echo WT_I18N::translate($item->pages_title); ?></div>
+											<div><?php substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content); ?></div>
 										</div>
 									</td>
 								</tr>
@@ -485,7 +492,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 						} else { ?>
 							<tr>
 								<td class="error center" colspan="5">
-									<?php echo WT_I18N::translate('No pages have been created');?>
+									<?php echo WT_I18N::translate('No pages have been created'); ?>
 								</td>
 							</tr>
 						<?php } ?>

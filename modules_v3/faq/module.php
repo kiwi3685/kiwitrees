@@ -223,7 +223,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 								<i class="fa fa-floppy-o"></i>
 								<?php echo WT_I18N::translate('save'); ?>
 							</button>
-							<button class="btn btn-primary cancel" type="submit" onclick="window.location=\'<?php echo $this->getConfigLink(); ?>\';" tabindex="8">
+							<button class="btn btn-primary cancel" type="button" onclick="window.location=\'<?php echo $this->getConfigLink(); ?>\';" tabindex="8">
 								<i class="fa fa-times"></i>
 								<?php echo WT_I18N::translate('cancel'); ?>
 							</button>
@@ -443,9 +443,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 						</button>
 					</form>
 					<div>
-						<button class="btn btn-primary add" type="submit">
+						<button class="btn btn-primary add" onclick="location.href='module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit'">
 							<i class="fa fa-plus"></i>
-							<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit"></a>
 							<?php echo WT_I18N::translate('Add FAQ item'); ?>
 						</button>
 					</div>

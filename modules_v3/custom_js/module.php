@@ -69,11 +69,11 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<form style="width:98%;" method="post" name="configform" action="', $this->getConfigLink(), '">
 							<input type="hidden" name="action" value="update">
 							<textarea id="new_js" style="width:100%;" name="NEW_CJS_FOOTER">', $CJS_FOOTER, '</textarea>
-							<button class="btn btn-primary save" type="submit" ">
+							<button class="btn btn-primary save" type="submit">
 							    <i class="fa fa-floppy-o"></i>'.
 							    WT_I18N::translate('save').'
 							</button>
-							<button class="btn btn-primary reset" type="reset"">
+							<button class="btn btn-primary reset" type="reset">
 							    <i class="fa fa-refresh"></i>'.
 							    WT_I18N::translate('reset').'
 							</button>
