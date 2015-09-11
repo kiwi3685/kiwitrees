@@ -595,7 +595,7 @@ table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:s
 #faq_items select {height: 34px; min-width: 175px;}
 #faq_items button a {color: initial;}
 
-table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; font-size:12px; margin-top:30px; padding:5px;}
+table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
 #faq_edit tr {border-bottom:2px solid;}
 #faq_edit td {padding:10px;}
 #faq_edit td p {margin:0;}
@@ -853,20 +853,32 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #simpl_research_links .buttons {clear:both;}
 
 /* Styling for gallery module */
-#gallery_config #gallery_module {width:100%;}
-#gallery_config #gallery_module th, #gallery_config #gallery_module td {vertical-align:top; text-align:left;}
-#gallery_config #gallery_module th {min-width: 150px;}
-#gallery_config #pages_tabs, #gallery_config #pages_pages form {margin:20px auto;}
-#gallery_config .label{line-height:25px; margin-top: 20px;}
-#gallery_config .value input.long{width:500px; height:100px;}
-#gallery_config .value2{}
-#gallery_config #gallery_theme {margin-bottom: 20px; overflow: hidden;}
-html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-align:right;}
-#gallery_pages .add_gallery {margin:15px 0;}
+#gallery .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#gallery #gallery_tabs, #gallery #gallery_pages form {margin: 20px auto;}
+#gallery .save{clear: both; margin: 20px 0;}
+#gallery_pages select {height: 34px; min-width: 175px;}
+#gallery_pages button a {color: initial;}
+.gallery_edit_pos td {white-space:nowrap;}
+.gallery_edit_pos td:first-child {width:80%;}
+.gallery_edit_pos span {font-weight: 900; margin: 0 10px;}
+.gallery_edit_title {border-bottom:1px solid; margin-bottom:10px;}
+.gallery_edit_item {border:1px inset #d3d3d3; padding:5px;}
+.gallery_edit_content {max-height:200px; overflow:auto;}
+
+#gallery #gallery_module {width:100%;}
+#gallery #gallery_module th, #gallery #gallery_module td {padding:10px; vertical-align:top; text-align:left;}
+table#gallery_module {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
+#gallery_module td p {margin:0;}
+#gallery_module tr.gallery_edit_pos {border-bottom:none;}
+#gallery_module tr {border-bottom:1px solid;}
+#gallery_module table tr {border:none;}
 #kiwitrees-div, #flickr-div, #picasa-div {width:31%;margin:0 1%;border:1px solid;float:left;height:80px;}
 #kiwitrees-div p, #flickr-div p, #picasa-div p {border-bottom:1px solid; margin:0; text-align:center;}
 #kiwitrees-div select{margin:0 5px;width:95%;}
-#gallery_config #gallery_theme div:nth-child(3) {margin: 0 20px;}
+
 .vis{margin:0;padding:5px;}
 .vis input{margin:3px;width:90%;}
 #cke_NEW_HEADER_DESCRIPTION div#cke_1_contents,
@@ -905,7 +917,6 @@ html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-ali
     margin: 20px auto;
 }
 #extra_menus .save{clear: both; margin: 20px 0;}
-table#menus_edit {border:1px solid; border-collapse:collapse;border-radius:5px; font-size:12px; margin-top:30px; padding:5px;}
 #menus_pages select {height: 34px; min-width: 175px;}
 #menus_pages button a {color: initial;}
 #extra_menus input[type="checkbox"] {
@@ -913,7 +924,8 @@ table#menus_edit {border:1px solid; border-collapse:collapse;border-radius:5px; 
 	height: 25px;
 	cursor: pointer;
 }
-table#menus_edit {border:1px solid; border-collapse:collapse;border-radius:5px; font-size:12px; margin-top:30px; padding:5px;}
+#extra_menus #menus_edit {width:100%;}
+table#menus_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
 #menus_edit tr {border-bottom:2px solid;}
 #menus_edit td {padding:10px;}
 #menus_edit td p {margin:0;}
@@ -924,6 +936,7 @@ table#menus_edit {border:1px solid; border-collapse:collapse;border-radius:5px; 
 .menus_edit_title {border-bottom:1px solid; margin-bottom:10px;}
 .menus_edit_item {border:1px inset #d3d3d3; padding:5px;}
 .menus_edit_content {max-height:200px; overflow:auto;}
+
 
 /* ---------------------------------- */
 
@@ -943,11 +956,11 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 .theme-active {font-weight:900; border: 1px solid #ff0000;}
 
 /* Styling for calendar_utilities module */
-#calendar_utilities .container {padding-top:30px;}
+#calendar_utilities .container {padding-top: 20px; overflow: hidden;}
 #calendar_utilities .label, #calendar_utilities .yesno {float:left;white-space:nowrap;}
 #calendar_utilities .label {clear:left;width:200px;}
 #calendar_utilities .yesno {width:150px;}
-#calendar_utilities p {clear:left;margin-top:30px;}
+#calendar_utilities button {clear:left;margin-top:30px;}
 #calendar_utilities h3 a {color:#e17009;}
 #calendar_utilities form {width:100%; margin:auto 30px;}
 

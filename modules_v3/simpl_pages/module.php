@@ -222,11 +222,14 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 								<td><?php echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"');?></td>
 							</tr>
 						</table>
-						<p>
-							<input type="submit" value="<?php echo WT_I18N::translate('save');?>" tabindex="7">
-							&nbsp;
-							<input type="button" value="<?php echo WT_I18N::translate('cancel');?>" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="8">
-						</p>
+						<button class="btn btn-primary save" type="submit"  tabindex="7">
+							<i class="fa fa-floppy-o"></i>
+							<?php echo WT_I18N::translate('save'); ?>
+						</button>
+						<button class="btn btn-primary cancel" type="submit" onclick="window.location=\'<?php echo $this->getConfigLink(); ?>\';" tabindex="8">
+							<i class="fa fa-times"></i>
+							<?php echo WT_I18N::translate('cancel'); ?>
+						</button>
 					</form>
 				</div>
 				<?php exit;

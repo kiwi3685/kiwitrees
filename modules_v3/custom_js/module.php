@@ -54,7 +54,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					    document.getElementById("new_js").value=""
 					}
 				');
-	
+
 			$action = safe_POST("action");
 
 			if ($action == 'update') {
@@ -69,9 +69,18 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<form style="width:98%;" method="post" name="configform" action="', $this->getConfigLink(), '">
 							<input type="hidden" name="action" value="update">
 							<textarea id="new_js" style="width:100%;" name="NEW_CJS_FOOTER">', $CJS_FOOTER, '</textarea>
-							<input type="submit" value="', WT_I18N::translate('save'), '">
-							<input type="reset" value="', WT_I18N::translate('reset'), '">
-							<input type="button" onclick="clearFields()" value="', WT_I18N::translate('clear'), '">
+							<button class="btn btn-primary save" type="submit" ">
+							    <i class="fa fa-floppy-o"></i>'.
+							    WT_I18N::translate('save').'
+							</button>
+							<button class="btn btn-primary reset" type="reset"">
+							    <i class="fa fa-refresh"></i>'.
+							    WT_I18N::translate('reset').'
+							</button>
+							<button class="btn btn-primary clear" type="button" onclick="clearFields()">
+							    <i class="fa fa-trash-o"></i>'.
+							    WT_I18N::translate('clear').'
+							</button>
 						</form>
 					</div>
 				';
@@ -114,4 +123,3 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 }
-

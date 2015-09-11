@@ -493,7 +493,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				else jQuery("#country_list select").prop("disabled", false);
 			});
 
-			jQuery("input[type=reset]").click(function(e){
+			jQuery("button[type=reset]").click(function(e){
 				jQuery("#dialog-confirm").dialog({
 					resizable: false,
 					width: 400,
@@ -645,9 +645,15 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				</div>
 				<hr/>';
 		$html .='<div class="buttons">
-					<input type="submit" value="'.WT_I18N::translate('Save').'">
-					<input type="reset" value="'.WT_I18N::translate('Reset').'">
-					<div id="dialog-confirm" title="'.WT_I18N::translate('Reset').'" style="display:none">
+					<button class="btn btn-primary save" type="submit" ">
+						<i class="fa fa-floppy-o"></i>'.
+						WT_I18N::translate('save').'
+					</button>
+					<button class="btn btn-primary reset" type="reset"">
+						<i class="fa fa-refresh"></i>'.
+						WT_I18N::translate('reset').'
+					</button>
+					<div id="dialog-confirm" title="' . WT_I18N::translate('reset') . '" style="display:none">
 						<p>'.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'</p>
 					</div>
 	 			</div>
