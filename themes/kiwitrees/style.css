@@ -131,7 +131,7 @@ button {
 
 input,
 textarea {
-	padding: 3px;
+	padding: 5px;
 }
 
 textarea {
@@ -1536,7 +1536,7 @@ a:hover .nameZoom {
 }
 
 .chart_options input {
-	width: 100px;
+	width: 200px;
 }
 
 /* Styles for the option boxes */
@@ -4101,6 +4101,7 @@ a.icon-udarrow:hover {
 .icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
 .icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
 .icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */
+.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1em;  margin: 0 5px;} /* fa-eye */
 
 #extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */
 #extra-menu > li:hover	{color: #009afe;}
@@ -4562,6 +4563,12 @@ a.icon-udarrow:hover {
 #branches-page .branches input {
 	margin: auto 10px;
 	width: initial;
+}
+
+#branches-page button {
+	display: inline-block;
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 #branches-page ul {
@@ -5794,24 +5801,34 @@ div.widget {
 /* ------------------ */
 
 /* Styles for nocensus module */
-.nocensus {
-	margin:10px auto;
-	min-width: 610px;
-	width:40%;
+#nocensus-page .nocensus {
+ 	min-width: 100px;
+	vertical-align: top;
+ }
+
+#nocensus-page .nocensus label:nth-of-type(2n),
+#nocensus-page .nocensus label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
 }
 
-.nocensus label {
+#nocensus-page .nocensus input {
+	margin: auto 10px;
+	width: initial;
+}
+
+#nocensus-page .helpcontent {
+	font-size: inherit;
+    margin: 0;
+}
+
+#nocensus-page button {
 	display: inline-block;
-	width: 100px;
-}
-
-.nocensus label + input {
-	margin: 0 7px;
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 #nocensus_result {
-	border-bottom: 1px solid;
-	border-top: 1px solid;
 	list-style: none;
 	margin: auto;
 	padding:20px 0 20px 0;

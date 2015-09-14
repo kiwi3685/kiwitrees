@@ -66,7 +66,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	private function show() {
 		global $controller, $GEDCOM;
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 
 		$controller
 			->setPageTitle(WT_I18N::translate(WT_I18N::translate('Missing Census Data')))
@@ -77,11 +77,10 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 		session_write_close();
 
 		//-- args
-		$surn = safe_POST('surn', '[^<>&%{};]*');
-		$plac = safe_POST('plac', '[^<>&%{};]*');
-		$dat = safe_POST('dat', '[^<>&%{};]*');
-
-		$ged = safe_POST('ged');
+		$surn	= safe_POST('surn', '[^<>&%{};]*');
+		$plac	= safe_POST('plac', '[^<>&%{};]*');
+		$dat	= safe_POST('dat', '[^<>&%{};]*');
+		$ged	= safe_POST('ged');
 		if (empty($ged)) {
 			$ged = $GEDCOM;
 		}
@@ -114,56 +113,73 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 		) as $date=>$jd)
 			foreach ($places as $place)
 				$data_sources[]=array('event'=>'CENS', 'date'=>$date, 'place'=>$place, 'jd'=>$jd);
-				
-		// Start Page -----------------------------------------------------------------------
-		echo '
 
-			<div class="nocensus_page">
-				<h2 class="center">' . WT_I18N::translate('Individuals with missing census data') . '</h2>
-				<h4 class="center">' . WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date') . '</h3>
-				<form method="post" id="surnlist" name="surnlist" action="module.php?mod=no_census&amp;mod_action=show&theme='.basename(WT_THEME_DIR). '">
-					<div class="nocensus">
-						<label for "SURN" style="width: 100px;display: inline-block;">' . WT_Gedcom_Tag::getLabel('SURN') . '</label>
-						<input data-autocomplete-type="SURN" type="text" name="surn" id="SURN" value="' . $surn . '">
-						<input type="hidden" name="ged" id="ged" value="' . $ged . '" >
-						' . WT_I18N::translate('Select <b>All</b> for everyone, or leave blank for your own ancestors') . '
+		// Start Page -----------------------------------------------------------------------
+		?>
+			<div id="nocensus-page">
+				<h2><?php echo WT_I18N::translate('Individuals with missing census data'); ?></h2>
+				<h4><?php echo WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
+				<form name="surnlist" id="surnlist" method="post" action="module.php?mod=no_census&amp;mod_action=show">
+					<div class="chart_options">
+						<label for "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
+						<input data-autocomplete-type="SURN" type="text" name="surn" id="SURN" value="<?php echo $surn; ?>">
+						<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" >
+						<div class="helpcontent">
+							<p>
+								<?php echo WT_I18N::translate('Select <b>All</b> for everyone, or leave blank for your own ancestors'); ?>
+							</p>
+						</div>
 					</div>
-					<div class="nocensus">
-						<label for "cens_plac">' . WT_I18N::translate('Census Place') . '</label>
+					<div class="chart_options nocensus">
+						<label for "cens_plac"><?php echo WT_I18N::translate('Census Place'); ?></label>
 						<select name="plac" id="cens_plac">
-							<option value="' . WT_I18N::translate('all') . '"';
-								if ($plac == WT_I18N::translate('all')) echo ' selected="selected"';
-								echo '>' . WT_I18N::translate('all') . '
+							<?php
+							echo '<option value="' . WT_I18N::translate('all') . '"';
+								if ($plac == WT_I18N::translate('all')) {
+									echo ' selected = "selected"';
+								}
+								echo WT_I18N::translate('all') . '
 							</option>';
 							foreach ($places as $place_list) {
 								echo '<option value="' . $place_list. '"';
-									if ($place_list == $plac) echo ' selected="selected"';
-									echo ">". $place_list. "
-								</option>";
+									if ($place_list == $plac) {
+										echo ' selected = "selected"';
+									}
+									echo '>' . $place_list. '
+								</option>';
 							}
-						echo '</select>
+							?>
+						</select>
 					</div>
-					<div class="nocensus">
-						<label for "cens_dat">' . WT_I18N::translate('Census date') . '</label>
+					<div class="chart_options nocensus">
+						<label for "cens_dat"><?php echo WT_I18N::translate('Census date'); ?></label>
 						<select name="dat"  id="cens_dat">
-							<option value="' . WT_I18N::translate('all') . '"';
-								if ($dat == WT_I18N::translate('all')) echo ' selected="selected"';
+							<?php
+							echo '<option value="' . WT_I18N::translate('all') . '"';
+								if ($dat == WT_I18N::translate('all')) {
+									echo ' selected = "selected"';
+								}
 								echo '>' . WT_I18N::translate('all') . '
 							</option>';
 							foreach ($uk_dates as $date_list) {
-								echo '<option value="' . $date_list. '"';
-									if ($date_list == $dat) echo ' selected="selected"';
-									echo ">". substr($date_list,7,4). "
-								</option>";
+								echo '<option value="' . $date_list . '"';
+									if ($date_list == $dat) {
+										echo ' selected="selected"';
+									}
+									echo '>' . substr($date_list,7,4). '
+								</option>';
 							}
-						echo '</select>
+							?>
+						</select>
 					</div>
-					<button style="width: 50px;margin: 20px auto;display: block;padding: 5px;" type="submit">', WT_I18N::translate('view'), '</button>
+					<button class="btn btn-primary show" type="submit">
+						<i class="fa fa-eye"></i>
+						<?php echo WT_I18N::translate('show'); ?>
+					</button>
 				</form>
-		';
-		?>
+				<hr style="clear:both;">
+				<!-- end of form -->
 		<?php
-
 		function life_sort($a, $b) {
 			if ($a->getDate()->minJD() < $b->getDate()->minJD()) return -1;
 			if ($a->getDate()->minJD() > $b->getDate()->minJD()) return 1;
@@ -172,7 +188,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 
 		function add_parents(&$array, $indi) {
 			if ($indi) {
-				$array[]=$indi;
+				$array[] = $indi;
 				foreach ($indi->getChildFamilies() as $parents) {
 					add_parents($array, $parents->getHusband());
 					add_parents($array, $parents->getWife());
@@ -181,7 +197,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 		}
 
 		if ($surn == WT_I18N::translate('All') || $surn == WT_I18N::translate('all')) {
-			$indis=WT_Query_Name::individuals('', '', '', false, false, WT_GED_ID);
+			$indis = WT_Query_Name::individuals('', '', '', false, false, WT_GED_ID);
 		} elseif ($surn) {
 			$indis = WT_Query_Name::individuals($surn, '', '', false, false, WT_GED_ID);
 		} else {
@@ -228,12 +244,12 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 							if ($data_source['jd']<$birt_jd || $data_source['jd']>$deat_jd)
 								continue;
 							// Find where the person was immediately before/after
-							$bef_plac=$birt_plac;
-							$aft_plac=$deat_plac;
-							$bef_fact='BIRT';
-							$bef_jd=$birt_jd;
-							$aft_jd=$deat_jd;
-							$aft_fact='DEAT';
+							$bef_plac	= $birt_plac;
+							$aft_plac	= $deat_plac;
+							$bef_fact	= 'BIRT';
+							$bef_jd		= $birt_jd;
+							$aft_jd		= $deat_jd;
+							$aft_fact	= 'DEAT';
 							foreach ($life as $event) {
 								if ($event->getDate()->MinJD()<=$data_source['jd'] && $event->getDate()->MinJD()>$bef_jd) {
 									$bef_jd  =$event->getDate()->MinJD();
@@ -252,18 +268,18 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 							// If we were in the right place before/after the missing event, show it
 							if (stripos($bef_plac, $data_source['place']) !== false || stripos($aft_plac, $data_source['place']) !== false) {
 								$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
-								$desc_event=WT_Gedcom_Tag::getLabel($data_source['event']);
-								$missing_text.="<li>{$data_source['place']} {$desc_event} for {$data_source['date']} <i><font size='-2'>({$age_at_census})</font></i></li>";
+								$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
+								$missing_text .= "<li>{$data_source['place']} {$desc_event} for {$data_source['date']} <i><font size='-2'>({$age_at_census})</font></i></li>";
 							}
 						}
 					}
 				}
 			if ($missing_text) {
-				$birth_year=$indi->getBirthDate()->gregorianYear();
+				$birth_year = $indi->getBirthDate()->gregorianYear();
 				if ($birth_year == 0) {
 					$birth_year='????';
 				}
-				$death_year=$indi->getDeathDate()->gregorianYear();
+				$death_year = $indi->getDeathDate()->gregorianYear();
 				if ($death_year == 0) {
 					$death_year='????';
 				}
@@ -276,9 +292,11 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 					</li>
 				';
 				++$n;
-				} 	
+				}
 			}
-			if ($n == 0) echo '<div class="center error">' . WT_I18N::translate('No missing records found') . '</div>';
+			if ($n == 0 && $surn) {
+				echo '<div class="center error">' . WT_I18N::translate('No missing records found') . '</div>';
+			}
 		echo '
 			</ul>
 	</div>';

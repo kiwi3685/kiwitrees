@@ -2167,25 +2167,28 @@ div.widget {
 /* ------------------ */
 
 /* Styles for nocensus module */
+#nocensus-page .nocensus {
+ 	min-width: 100px;
+	vertical-align: top;
+ }
 
-.nocensus {
-	margin:10px auto;
-	min-width: 610px;
-	width:40%;
+#nocensus-page .nocensus label:nth-of-type(2n),
+#nocensus-page .nocensus label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
 }
 
-.nocensus label {
-	display: inline-block;
-	width: 100px;
+#nocensus-page .nocensus input {
+	margin: auto 10px;
+	width: initial;
 }
 
-.nocensus label + input {
-	margin: 0 7px;
+#nocensus-page .helpcontent {
+	font-size: inherit;
+    margin: 0;
 }
 
 #nocensus_result {
-	border-bottom: 1px solid;
-	border-top: 1px solid;
 	list-style: none;
 	margin: auto;
 	padding:20px 0 20px 0;
