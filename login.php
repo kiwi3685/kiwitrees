@@ -407,7 +407,15 @@ case 'register':
 			</div>
 			<div>
 				<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-					'<input type="password" id="user_password01" name="user_password01" value="', htmlspecialchars($user_password01), '" required placeholder="', /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
+					'<input
+						 type="password"
+						 id="user_password01"
+						 name="user_password01"
+						 value="', htmlspecialchars($user_password01), '"
+						 required placeholder="', /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '"
+						 pattern="'. WT_REGEX_PASSWORD .'"
+						 onchange="form.user_password02.pattern = regex_quote(this.value);"
+					 >
 				</label>
 			</div>
 			<div>
