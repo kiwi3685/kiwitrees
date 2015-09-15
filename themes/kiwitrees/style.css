@@ -4416,14 +4416,13 @@ a.icon-udarrow:hover {
 
 #cboxLoadedContent {
 	background: #fff;
-	margin-bottom: 30px;
-	margin-top: 35px;
+	margin-bottom: 50px;
+	margin-top: 40px;
 	overflow: auto;
 }
 
 #cboxTitle {
-	color: #949494;
-	font-weight: 800;
+	color: #555;
 	font-size: 14px;
 	left: 0;
 	position: absolute;
@@ -4485,6 +4484,7 @@ a.icon-udarrow:hover {
 	background: none;
 	border: 0;
 	bottom: 8px;
+	color: #555;
 	font-size: 14px;
 	left: 57px;
 	min-width: initial;

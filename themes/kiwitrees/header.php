@@ -45,6 +45,7 @@ $this
 		jQuery.extend(jQuery.colorbox.settings, {
 			maxWidth		:"95%",
 			maxHeight		:"95%",
+			minWidth		:"250",
 			fixed			:false,
 			slideshow		:true,
 			slideshowAuto	:false,
