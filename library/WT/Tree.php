@@ -314,6 +314,10 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'WORD_WRAPPED_NOTES',           false);
 		set_gedcom_setting($tree_id, 'imported',                     0);
 		set_gedcom_setting($tree_id, 'title',                        $tree_title);
+		if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
+			set_gedcom_setting($tree_id, 'EXPAND_HISTO_EVENTS',      false);
+		}
+
 
 		// Default restriction settings
 		$statement=WT_DB::prepare(

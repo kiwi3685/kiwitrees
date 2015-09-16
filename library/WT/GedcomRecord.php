@@ -376,7 +376,7 @@ class WT_GedcomRecord {
 
 	// Can the details of this record be shown?
 	public function canDisplayDetails($access_level=WT_USER_ACCESS_LEVEL) {
-		// CACHING: this function can take three different parameters, 
+		// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
 		case WT_PRIV_PUBLIC: // visitor

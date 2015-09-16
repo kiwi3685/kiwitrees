@@ -193,9 +193,9 @@ echo '<option value="recent"';
 if ($filterof == "recent") echo ' selected="selected"';
 echo '>', WT_I18N::translate('Recent Years (&lt; 100 yrs)'), '</option>';
 echo '</select>';
-	
+
 echo '&nbsp;&nbsp;&nbsp;';
-	
+
 if ($filtersx=="") {
 	echo '<i class="icon-sex_m_15x15" title="', WT_I18N::translate('All People'), '"></i>';
 	echo '<i class="icon-sex_f_15x15" title="', WT_I18N::translate('All People'), '"></i> | ';
@@ -335,7 +335,7 @@ case 'calendar':
 	$cal_date->d=0;
 	$cal_date->SetJDfromYMD();
 	// Make a separate list for each day.  Unspecified/invalid days go in day 0.
-	$found_facts=array();
+	$found_facts = array();
 	for ($d=0; $d<=$days_in_month; ++$d)
 		$found_facts[$d]=array();
 	// Fetch events for each day
@@ -353,11 +353,17 @@ case 'calendar':
 case 'year':
 	$cal_date->m = 0;
 	$cal_date->setJdFromYmd();
+	$found_facts = array();
 	$found_facts = apply_filter(get_calendar_events($ged_date->MinJD(), $ged_date->MaxJD(), $events), $filterof, $filtersx);
 	// Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
-	$found_facts = array_unique($found_facts);
+	foreach ($found_facts as $key=>$value) {
+		$found_facts[$key]=serialize($found_facts[$key]);
+	}
+	$found_facts=array_unique($found_facts);
+	foreach ($found_facts as $key=>$value){
+		$found_facts[$key]=unserialize($found_facts[$key]);
+	}
 	break;
-
 }
 
 // Group the facts by family/individual

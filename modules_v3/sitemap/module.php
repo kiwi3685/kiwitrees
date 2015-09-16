@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	const RECORDS_PER_VOLUME=500;    // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
 	const CACHE_LIFE        =1209600; // Two weeks
-	
+
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */ WT_I18N::translate('Sitemaps');
@@ -256,10 +256,13 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			}
 			echo '>', $tree->tree_title_html, '</p>';
 		}
-		echo
-			'<input type="submit" value="', WT_I18N::translate('save'), '">',
-			'</form>',
-			'<hr>';
+		echo '
+			<button class="btn btn-primary save" type="submit">
+				<i class="fa fa-floppy-o"></i>'.
+				WT_I18N::translate('save').'
+			</button>
+			</form>
+			<hr>';
 
 		if ($include_any) {
 			$site_map_url1=WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap.xml';

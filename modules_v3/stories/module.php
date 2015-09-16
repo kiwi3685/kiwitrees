@@ -392,7 +392,14 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 								</td>
 							</tr>
 						</table>
-						<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5"></p>
+						<button class="btn btn-primary save" type="submit" tabindex="5">
+							<i class="fa fa-floppy-o"></i>' .
+							WT_I18N::translate('save'). '
+						</button>
+						<button class="btn btn-primary cancel" type="button" onclick="window.location=\'' . $this->getConfigLink() . '\';" tabindex="6">
+							<i class="fa fa-times"></i>' .
+							WT_I18N::translate('cancel') .'
+						</button>
 					</form>';
 				exit;
 			}
@@ -450,64 +457,75 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			}
 		}
  		uasort($stories, create_function('$x,$y', 'return $x->block_order > $y->block_order;'));
-
-		echo
-			'<p>
-				<form method="post" action="', WT_SCRIPT_NAME ,'">',
-					WT_I18N::translate('Family tree'), ' ',
-					'<input type="hidden" name="mod", value="', $this->getName(), '">',
-					'<input type="hidden" name="mod_action", value="admin_config">',
-					select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM),
-					'<input type="submit" value="', WT_I18N::translate('show'), '">',
-				'</form>
-			</p>
-			<form name="story_list" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">
-				<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add story'), '</a></h3>';
-				if (count($stories)>0) {
-				echo '<table id="story_table">
-					<thead>
-						<tr>
-							<th>', WT_I18N::translate('Order'), '</th>
-							<th>', WT_I18N::translate('Story title'), '</th>
-							<th>', WT_I18N::translate('Individual'), '</th>
-							<th class="maxwidth">', WT_I18N::translate('Edit'), '</th>
-							<th class="maxwidth">', WT_I18N::translate('Delete'), '</th>';
-							if ($new_xref) echo '<th class="maxwidth">', WT_I18N::translate('Link'), '</th>';
-						echo '</tr>
-					</thead>';
-				}
-					echo '<tbody>';
-						$order = 1;
-						foreach ($stories as $story) {
-							$story_title = get_block_setting($story->block_id, 'title');
-							$xref = explode(",", get_block_setting($story->block_id, 'xref'));
-							$count_xref = count($xref);
-							echo '
-								<tr class="sortme">
-									<td>
-										<input type="text" value="', $order, '" name="taborder-', $story->block_id, '">
-									</td>
-									<td>', $story_title, '</td>
-									<td>';
-										for ($x = 0; $x < $count_xref; $x++) {
-											$indi[$x] = WT_Person::getInstance($xref[$x]);
-											if ($indi[$x]) {
-													  echo '<p style="margin:0;"><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
-											} else {
-												echo '<p style="margin:0;" class="error">', $xref[$x], '</p>';
+		?>
+		<div id="<?php echo $this->getName(); ?>">
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
+			<form method="get" action="<?php echo WT_SCRIPT_NAME; ?>">
+				<label><?php echo WT_I18N::translate('Family tree'); ?></label>
+				<input type="hidden" name="mod", value="<?php echo $this->getName(); ?>">
+				<input type="hidden" name="mod_action", value="admin_config">
+				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+				<button class="btn btn-primary show" type="submit">
+					<i class="fa fa-eye"></i>
+					<?php echo WT_I18N::translate('show'); ?>
+				</button>
+			</form>
+			<?php
+			echo
+				'<button class="btn btn-primary add" onclick="window.location.href=\'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit\'">
+					<i class="fa fa-plus"></i>' .
+					WT_I18N::translate('Add story') .'
+				</button>
+				<form name="story_list" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">';
+					if (count($stories)>0) {
+					echo '<table id="story_table">
+						<thead>
+							<tr>
+								<th>', WT_I18N::translate('Order'), '</th>
+								<th>', WT_I18N::translate('Story title'), '</th>
+								<th>', WT_I18N::translate('Individual'), '</th>
+								<th class="maxwidth">', WT_I18N::translate('Edit'), '</th>
+								<th class="maxwidth">', WT_I18N::translate('Delete'), '</th>';
+								if ($new_xref) echo '<th class="maxwidth">', WT_I18N::translate('Link'), '</th>';
+							echo '</tr>
+						</thead>
+						<tbody>';
+							$order = 1;
+							foreach ($stories as $story) {
+								$story_title = get_block_setting($story->block_id, 'title');
+								$xref = explode(",", get_block_setting($story->block_id, 'xref'));
+								$count_xref = count($xref);
+								echo '
+									<tr class="sortme">
+										<td>
+											<input type="text" value="', $order, '" name="taborder-', $story->block_id, '">
+										</td>
+										<td>', $story_title, '</td>
+										<td>';
+											for ($x = 0; $x < $count_xref; $x++) {
+												$indi[$x] = WT_Person::getInstance($xref[$x]);
+												if ($indi[$x]) {
+														  echo '<p style="margin:0;"><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
+												} else {
+													echo '<p style="margin:0;" class="error">', $xref[$x], '</p>';
+												}
 											}
-										}
-									echo '</td>
-									<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '"><div class="icon-edit">&nbsp;</div></a></td>
-									<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this story?'), '\');"><div class="icon-delete">&nbsp;</div></a></td>';
-									if ($new_xref) echo '<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=story_link&amp;block_id=', $story->block_id, '&amp;xref=', $new_xref, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to link to this story?'), '\');"><div class="icon-link">&nbsp;</div></a></td>';
-								echo '</tr>';
-							$order++;
-						}
-					echo '</tbody>
-				</table>
-				<p><input type="submit" value="', WT_I18N::translate('save'), '"></p>
-			</form>';
+										echo '</td>
+										<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '"><div class="icon-edit">&nbsp;</div></a></td>
+										<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this story?'), '\');"><div class="icon-delete">&nbsp;</div></a></td>';
+										if ($new_xref) echo '<td class="center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=story_link&amp;block_id=', $story->block_id, '&amp;xref=', $new_xref, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to link to this story?'), '\');"><div class="icon-link">&nbsp;</div></a></td>';
+									echo '</tr>';
+								$order++;
+							}
+						echo '</tbody>
+					</table>';
+				}
+				echo '<button class="btn btn-primary save" type="submit">
+					<i class="fa fa-floppy-o"></i>' .
+					WT_I18N::translate('save'). '
+				</button>
+			</form>
+		</div>';
 	}
 
 	private function show_list() {
@@ -530,6 +548,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					info: true,
 					jQueryUI: true,
 					sorting: [[0,"asc"]],
+					displayLength: 20,
 					columns: [
 						/* 0-name */ null,
 						/* 1-NAME */ null

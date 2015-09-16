@@ -29,7 +29,7 @@
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
-	background-color: #aaa;
+	background-color: #ddd;
 	overflow-y: scroll;
 }
 
@@ -83,7 +83,6 @@ th {
 }
 
 td {
-	border-radius: 5px;
 }
 
 ul {
@@ -132,7 +131,7 @@ button {
 
 input,
 textarea {
-	padding: 3px;
+	padding: 5px;
 }
 
 textarea {
@@ -473,8 +472,10 @@ textarea:required:invalid {
 #footer {
 	background-color: #aaa;
 	border-top: 5px solid #555;
-	font-size: 0.8em;
+	font-size: 12px;
 	margin-top: 120px;
+	min-height: 60px;
+	padding: 10px;
 	text-align: center;
 }
 
@@ -743,6 +744,10 @@ div[id*='-page'] {
 	width: 99%;
 }
 
+/* indi and fam list pages */
+#indilist-page, #famlist-page {
+    font-size: 120%;
+}
 .alpha_index {
 	color: #aaa;
 }
@@ -1531,7 +1536,7 @@ a:hover .nameZoom {
 }
 
 .chart_options input {
-	width: 100px;
+	width: 200px;
 }
 
 /* Styles for the option boxes */
@@ -2200,23 +2205,23 @@ dt {
 	text-align: center;
 }
 
-#new_passwd {
+.new_passwd {
 	overflow: hidden;
 }
 
 #login-form,
-#new_passwd_form,
+.new_passwd_form,
 #register-form ,
 #verify-form {
 	border: 1px outset #555;
 	display: inline-block;
-	margin: 10px auto 0 auto;
+	margin: 10px auto;
 	padding: 5px;
 }
 
 #login-form div,
 #login-form div a,
-#new_passwd_form div,
+.new_passwd_form div,
 #register-form div,
 #verify-form div {
 	color: #232f49;
@@ -2226,20 +2231,20 @@ dt {
 }
 
 #login-form label,
-#new_passwd_form label,
+.new_passwd_form label,
 #verify-form label {
 	display: block;
 	text-align: right;
 }
 
 #login-form label input,
-#new_passwd_form label input,
+.new_passwd_form label input,
 #verify-form input {
 	width: 140px;
 	margin: 0 10px;
 }
 
-#new_passwd_form h4,
+.new_passwd_form h4,
 #register-form h4 {
 	font-weight: normal;
 	text-align: center;
@@ -2272,13 +2277,13 @@ dt {
 }
 
 .login_block_block #login-form,
-.login_block_block #new_passwd_form {
+.login_block_block .new_passwd_form {
 	border: 0;
 	background: none;
 }
 
 [dir='rtl'] #login-form label,
-[dir='rtl'] #new_passwd_form label,
+[dir='rtl'] .new_passwd_form label,
 [dir='rtl'] #register-form label,
 [dir='rtl'] #verify-form label {
 	text-align: left;
@@ -2777,51 +2782,39 @@ dt {
 	float: right;
 }
 
-/* ======= FAQ table styles ========== */
-table.faq {
-	background-color: #e0e0e0;
-	margin: 5px 0 50px 5px;
-	width: 98%;
+/* ======= FAQ page styles ========== */
+#faq-page {
+	margin: 0 auto;
+	width: 70%;
 }
 
-table.faq tr.odd td {
-	background-color: #fff;
+#faq-page h2.ui-accordion-header {
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
 }
 
-div.faq_title {
-	background-color: #e0e0e0;
-	margin: 1em 0;
-	padding: .25em;
-	font-weight: bold;
-	width: 98%;
+#faq-page #faq_accordion {
+	clear:both;
+	margin-bottom: 50px;
 }
 
-div.faq_body {
-	clear: both;
-	padding: 0 1em;
+#faq-page div.ui-widget-content {
+    border: none;
+    background: #fff;
+    color: inherit;
 }
 
-.faq_italic {
-	font-style: italic;
-	font-weight: bold;
-	font-size: 90%;
-	padding: 0 10px;
+#faq-page #faq_search {
+    margin: 10px auto;
+	width: 200px;
 }
 
-.faq_top {
-	float: right;
-}
-
-.faq_edit {
-	float: right;
-}
-
-[dir='rtl'] .faq_top {
-	float: left;
-}
-
-[dir='rtl'] .faq_edit {
-	float: left;
+#faq-page #faq_search input {
+	font-size: 110%;
+	padding: 5px;
+    width: 200px;
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
@@ -3062,12 +3055,15 @@ span.link_text {
 	clear: both;
 }
 
-#personal_facts_content .facts_table .descriptionbox a {
-	font-weight: 900;
-}
-
 #personal_facts_content .facts_table .descriptionbox .editfacts a {
 	font-weight: normal;
+}
+
+#personal_facts_content .facts_table .descriptionbox img { /* fact images */
+	float: right;
+}
+[dir='rtl'] #personal_facts_content .facts_table .descriptionbox img {
+	float: left;
 }
 
 /* ====Calendar pop up display ========= */
@@ -3117,9 +3113,8 @@ div[id^="caldiv"] td {
 }
 
 .ui-tabs .ui-tabs-nav li a span {
-	display: block;
-	padding: .5em;
-	font-size: 90%;
+    display: block;
+    padding: .5em 1em;
 }
 
 .ui-widget-content #outer_pages_container a {
@@ -3136,10 +3131,6 @@ div[id^="caldiv"] td {
 
 .ui-state-highlight a {
 	color: #009afe;
-}
-
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-	padding: .3em .5em;
 }
 
 /* jQuery.datatable styling general over-rides */
@@ -3296,7 +3287,7 @@ div[id^="caldiv"] td {
 }
 
 .use-sidebar #indi_left {
-	width: 77%;
+	width: 76%;
 }
 
 .use-sidebar #sidebar {
@@ -4110,6 +4101,7 @@ a.icon-udarrow:hover {
 .icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
 .icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
 .icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */
+.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1em;  margin: 0 5px;} /* fa-eye */
 
 #extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */
 #extra-menu > li:hover	{color: #009afe;}
@@ -4424,14 +4416,13 @@ a.icon-udarrow:hover {
 
 #cboxLoadedContent {
 	background: #fff;
-	margin-bottom: 30px;
-	margin-top: 35px;
+	margin-bottom: 50px;
+	margin-top: 40px;
 	overflow: auto;
 }
 
 #cboxTitle {
-	color: #949494;
-	font-weight: 800;
+	color: #555;
 	font-size: 14px;
 	left: 0;
 	position: absolute;
@@ -4493,6 +4484,7 @@ a.icon-udarrow:hover {
 	background: none;
 	border: 0;
 	bottom: 8px;
+	color: #555;
 	font-size: 14px;
 	left: 57px;
 	min-width: initial;
@@ -4571,6 +4563,12 @@ a.icon-udarrow:hover {
 #branches-page .branches input {
 	margin: auto 10px;
 	width: initial;
+}
+
+#branches-page button {
+	display: inline-block;
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 #branches-page ul {
@@ -4721,6 +4719,11 @@ div#pages-container {
 }
 
 /* Styling for stories module */
+#story_table_wrapper {
+	margin: auto;
+	width: 80%;
+}
+
 #contents_list {
 	margin: auto auto 20px auto;
 	width: 60%;
@@ -5721,6 +5724,7 @@ div.widget {
 
 /* family-block */
 #fancy_treeview-page .blockcontent {
+	font-size: 13px;
 	padding: 20px 0 20px 40px;
 }
 
@@ -5751,7 +5755,7 @@ div.widget {
 }
 
 #fancy_treeview-page .date {
-	font-size: 13px;
+	color: inherit;
 	font-weight: normal;
 }
 
@@ -5797,24 +5801,34 @@ div.widget {
 /* ------------------ */
 
 /* Styles for nocensus module */
-.nocensus {
-	margin:10px auto;
-	min-width: 610px;
-	width:40%;
+#nocensus-page .nocensus {
+ 	min-width: 100px;
+	vertical-align: top;
+ }
+
+#nocensus-page .nocensus label:nth-of-type(2n),
+#nocensus-page .nocensus label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
 }
 
-.nocensus label {
+#nocensus-page .nocensus input {
+	margin: auto 10px;
+	width: initial;
+}
+
+#nocensus-page .helpcontent {
+	font-size: inherit;
+    margin: 0;
+}
+
+#nocensus-page button {
 	display: inline-block;
-	width: 100px;
-}
-
-.nocensus label + input {
-	margin: 0 7px;
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 #nocensus_result {
-	border-bottom: 1px solid;
-	border-top: 1px solid;
 	list-style: none;
 	margin: auto;
 	padding:20px 0 20px 0;
@@ -5936,77 +5950,71 @@ div.widget {
 }
  */
 
-/* RESPOSIVE layout adjustments */
-@media (max-width: 350px) {
-	.media-list-item {
-		width: 95%; /* one per row */
-	}
-}
+ /* RESPOSIVE layout adjustments */
+ @media (min-width: 320px) and (max-width: 900px) {
 
-@media (min-width: 351px) and (max-width: 1024px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
-	#topMenu #main-menu {
-		display:none;
-	}
-	#navbar {
-		position: initial;
-	}
-	#topMenu #nav-select {
-		border: 1px solid #CCC;
-		background-color: #FFF;
-		display: block;
-		font-size: 12px;
-		height: 30px;
-		line-height: 30px;
-		margin: 10px auto;
-		text-align: left;
-		width: 70%;
+ 	#topMenu #main-menu {
+ 		display:none;
+ 	}
+ 	#navbar {
+ 		position: initial;
+ 	}
+ 	#topMenu #nav-select {
+ 		border: 1px solid #CCC;
+ 		background-color: #FFF;
+ 		display: block;
+ 		font-size: 12px;
+ 		height: 30px;
+ 		line-height: 30px;
+ 		margin: 10px auto;
+ 		text-align: left;
+ 		width: 70%;
+ 	}
+ 	#topMenu #nav-select select {
+ 		font-size: 30px;
+ 		width: 100%;
+ 	}
+ 	#topMenu #nav-select option {
+ 		font-size: 12px;
+ 	}
+ 	#header {
+ 		height: auto;
+ 		text-align: center;
+ 	}
+ 	#header .title {
+ 		position: relative;
+ 		text-align: center;
+ 	}
+ 	#header #extra-menu, #header .header_search {
+ 		float:none;
+ 	}
 
-	}
-	#topMenu #nav-select select {
-		font-size: 30px;
-		width: 100%;
-	}
-	#topMenu #nav-select option {
-		font-size: 12px;
-	}
-	#header {
-		height: auto;
-		text-align: center;
-	}
-	#header .title {
-		position: relative;
-		text-align: center;
-	}
-	#header #extra-menu, #header .header_search {
-		float:none;
-	}
-	#content {
-		top: auto;
-	}
-	#home-page #index_main_blocks {
+ 	#content {
+ 		top: auto;
+ 	}
+	#home-page #index_main_blocks,
+    #home-page #index_small_blocks > div {
         float: none;
         margin: auto;
         width: 95%;
     }
-	#home-page #index_small_blocks > div {
-		float: none;
-		margin: 10px auto;
-		width: 90%;
-	}
-
-}
-
-@media (min-width: 1025px) and (max-width: 1681px) {
 	.media-list-item {
-		width: 48%; /* two per row */
+ 		width: 95%; /* one per row */
+ 	}
+	#faq-page {
+		width: 95%;
 	}
-}
 
-@media (min-width: 1681px) {
-	.media-list-item {
-		width: 31%; /* three per row */
-	}
-}
+ }
+
+ @media (min-width: 780px) and (max-width: 1680px) {
+ 	.media-list-item {
+ 		width: 45%; /* two per row */
+ 	}
+ }
+
+ @media (min-width: 1681px) {
+ 	.media-list-item {
+ 		width: 31%; /* three per row */
+ 	}
+ }

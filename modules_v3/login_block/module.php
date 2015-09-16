@@ -45,15 +45,6 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		global $controller;
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$controller->addInlineJavascript('
-				jQuery("#new_passwd").hide();
-				jQuery("#passwd_click").click(function() {
-					jQuery("#new_passwd").slideToggle(100, function() {
-						jQuery("#new_passwd_username").focus();
-					});
-					return false;
-				});
-			');
 		$url = WT_LOGIN_URL.'?url='.rawurlencode(get_query_url());
 		if (WT_USER_ID) {
 			$title = WT_I18N::translate('Logout');
@@ -88,22 +79,22 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 					<input type="submit" value="'. WT_I18N::translate('Login'). '">
 				</div>
 				<div>
-					<a href="#" id="passwd_click">'. WT_I18N::translate('Request new password').'</a>
+					<a href="#" class="passwd_click">'. WT_I18N::translate('Request new password').'</a>
 				</div>';
 			if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
 				$content.= '<div><a href="'.WT_LOGIN_URL.'?action=register">'. WT_I18N::translate('Request new user account').'</a></div>';
 			}
 		$content.= '</form>'; // close "login-form"
-		
+
 		// hidden New Password block
-		$content.= '<div id="new_passwd">
-			<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
+		$content.= '<div class="new_passwd">
+			<form class="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
 			<h4>'. WT_I18N::translate('Lost password request').'</h4>
 			<div>
-				<label for="new_passwd_username">'. WT_I18N::translate('Username or email address').
-					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
+				<label>'. WT_I18N::translate('Username or email address').
+					'<input type="text" class="new_passwd_username" name="new_passwd_username" value="">
 				</label>
 			</div>
 			<div><input type="submit" value="'. WT_I18N::translate('continue'). '"></div>

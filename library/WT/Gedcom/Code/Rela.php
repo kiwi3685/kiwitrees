@@ -131,11 +131,11 @@ class WT_Gedcom_Code_Rela {
 		case 'godchild':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate('Godson');
+				return WT_I18N::translate('Godson');
 			case 'F':
-				return I18N::translate('Goddaughter');
+				return WT_I18N::translate('Goddaughter');
 			default:
-				return I18N::translate('Godchild');
+				return WT_I18N::translate('Godchild');
 			}
 		case 'guardian':
 			switch ($sex) {

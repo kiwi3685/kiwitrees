@@ -31,7 +31,7 @@
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller=new WT_Controller_Individual();
-	
+
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
 		$controller->ajaxRequest();
@@ -102,7 +102,7 @@ $controller->addInlineJavascript('
 		activate: function(event, ui) { sessionStorage.setItem("indi-tab", jQuery("#tabs").tabs("option", "active")); }
 	});
 
-	// sidebar settings 
+	// sidebar settings
 	// Variables
 	var objMain			= jQuery("#main");
 	var objTabs			= jQuery("#indi_left");
@@ -111,13 +111,21 @@ $controller->addInlineJavascript('
 	// Adjust header dimensions
 	function adjHeader(){
 		var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
-		var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
+		if (document.getElementById("indi_mainimage")) {
+			var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth + 20;
+		} else {
+			var indi_mainimage_div = 0;
+		}
 		var header_accordion_div = document.getElementById("header_accordion1");
 		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
 
 		jQuery(window).bind("resize", function(){
 			var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
-			var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
+			if (document.getElementById("indi_mainimage")) {
+				var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth + 20;
+			} else {
+				var indi_mainimage_div = 0;
+			}
 			var header_accordion_div = document.getElementById("header_accordion1");
 			header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
 		 });
@@ -155,10 +163,10 @@ $controller->addInlineJavascript('
 	}
 	adjHeader();
 	jQuery("#main").css("visibility", "visible");
-	
+
 	function show_gedcom_record() {
 		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
-	}	
+	}
 
 	jQuery("#header_accordion1").accordion({
 		active: 0,
@@ -175,7 +183,10 @@ echo
 	'<div id="indi_header">';
 if ($controller->record->canDisplayDetails()) {
 	// Highlight image or silhouette
-	echo '<div id="indi_mainimage">', $controller->record->displayImage(), '</div>';
+	$image = $controller->record->displayImage();
+	if ($image || $USE_SILHOUETTE) {
+		echo '<div id="indi_mainimage">', $controller->record->displayImage(), '</div>';
+	}
 	$globalfacts=$controller->getGlobalFacts();
 	echo '<div id="header_accordion1">'; // contain accordions for names
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
@@ -197,7 +208,7 @@ if ($controller->record->canDisplayDetails()) {
 		$fact = $value->getTag();
 		if ($fact=="SEX") $controller->print_sex_record($value);
 	}
-	echo '</h3>'; // close first name accordion header	
+	echo '</h3>'; // close first name accordion header
 	//Display name details
 	foreach ($globalfacts as $key=>$value) {
 		$fact = $value->getTag();
@@ -229,15 +240,16 @@ foreach ($controller->tabs as $tab) {
 		// own <span title="">, but jQueryUI gives the <a> element padding, which
 		// shows the correct title on the text but the wrong title on the padding.
 		// So,... move the padding from the <a> to the internal <span>.
-		echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="';
+		echo '<li class="' . $greyed_out . '"><a';
 		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
-			echo $controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName();
+			echo  ' href="' . $controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName() . '""';
+			echo ' rel="nofollow"';
 		} else {
 			// Non-AJAX tabs load immediately
-			echo '#', $tab->getName();
+			echo ' href=#', $tab->getName() . '"';
 		}
-		echo '"><span title="', $tab->getDescription(), '">', $tab->getTitle(), '</span></a></li>';
+		echo ' title="', $tab->getDescription(), '">', $tab->getTitle(), '</a></li>';
 	}
 }
 echo '</ul>';
@@ -256,7 +268,7 @@ if (WT_Module::getActiveSidebars()) {
 	echo $sidebar_html,
 	//clickable element to open/close sidebar
 	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '">
-		<i class="icon-sidebar-close"></i>				
+		<i class="icon-sidebar-close"></i>
 	</a>';
 } else {
 	$controller

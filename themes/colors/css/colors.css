@@ -78,7 +78,7 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 [dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
 
 /* Options Menu  */
-.makeMenu {float:right;margin:21px 10px 0 0;}
+.makeMenu {float:right;margin:10px;}
 .makeMenu ul {border-radius:5px;}
 .makeMenu li {display:inline;position:relative;white-space:nowrap;z-index:100;}
 .makeMenu li:before {content:" | ";}
@@ -97,6 +97,9 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 [dir=rtl] .makeMenu {display:block;float:left;margin:21px 0 0 10px;}
 [dir=rtl] .makeMenu li ul {left:auto;right:0;}
 [dir=rtl] .makeMenu li ul li {text-align:right;}
+
+.header_search {float:right; margin-top: 6px;}
+
 
 /* Menu setup*/
 #topMenu #nav-select {display: none;}
@@ -498,7 +501,7 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 
 button {border-width:1px;}
 input,button,textarea {border-color: #494949;border-width:1px; font-size: 12px; font-family:inherit;}
-input, textarea {padding:0 3px;}
+input, textarea {padding:5px;}
 
 .optionbox {border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
 .optionbox input {margin-right:5px;}
@@ -825,12 +828,12 @@ p.branches {display:inline;}
 
 #login-text,#register-text,#user-verify {margin:20px auto;text-align:justify;width:610px;}
 
-#login-form,#new_passwd_form,#register-form,#verify-form {border:1px solid #999999;border-radius:3px;display:inline-block;margin:10px auto 0;padding:5px;}
-#login-form div,#login-form div a,#new_passwd_form div,#register-form div,#verify-form div {margin:auto;padding:5px;text-align:center;}
-#login-form label,#new_passwd_form label,#verify-form label {display:block;text-align:right;}
-#login-form label input,#new_passwd_form label input,#verify-form input {margin:0 10px;width:140px;}
+#login-form,.new_passwd_form,#register-form,#verify-form {border:1px solid #999999;border-radius:3px;display:inline-block;margin:10px auto 0;padding:5px;}
+#login-form div,#login-form div a,.new_passwd_form div,#register-form div,#verify-form div {margin:auto;padding:5px;text-align:center;}
+#login-form label,.new_passwd_form label,#verify-form label {display:block;text-align:right;}
+#login-form label input,.new_passwd_form label input,#verify-form input {margin:0 10px;width:140px;}
 
-#new_passwd_form h4 {font-weight:400;text-align:center;}
+.new_passwd_form h4 {font-weight:400;text-align:center;}
 
 #register-form div,#verify-form div {text-align:right;}
 #register-form label input {margin:0 10px;width:220px;}
@@ -840,7 +843,7 @@ p.branches {display:inline;}
 #register-form div#registration-submit {text-align:center;}
 #register-form h4 {font-weight:400;text-align:center;}
 
-[dir=rtl] #login-form label,[dir=rtl] #new_passwd_form label,[dir=rtl] #register-form label,[dir=rtl] #verify-form label {text-align:left;}
+[dir=rtl] #login-form label,[dir=rtl] .new_passwd_form label,[dir=rtl] #register-form label,[dir=rtl] #verify-form label {text-align:left;}
 
 /* reportengine.php */
 #reportengine-page table {margin:20px auto;}
@@ -873,18 +876,42 @@ p.branches {display:inline;}
 #tabDefinedTagsShow,#tabFilterAndCustom,#tabAction {margin-left:auto;margin-right:auto;}
 #tabDefinedTagsShow td,#tabAction td {text-align:center;width:50%;}
 
-/* FAQ table  */
-table.faq {background-color:#eeeeee;margin:5px 0 15px 5px;width:98%;}
-table.faq tr.odd td {background-color:#eeeeee;}
+/* ======= FAQ page styles ========== */
+#faq-page {
+	margin: 0 auto;
+	width: 70%;
+}
 
-div.faq_title {background-color:#eeeeee;font-weight:700;margin:1em 0;padding:.25em;width:98%;}
-div.faq_body {clear:both;margin:1em 0;padding:.5em;}
+#faq-page h2.ui-accordion-header {
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+    text-align: inherit;
+}
 
-.faq_italic {font-size:12px;font-style:italic;font-weight:700;padding:0 10px;}
-.faq_top,.faq_edit {float:right;}
+#faq-page #faq_accordion {
+	clear:both;
+}
 
-[dir=rtl] .faq_top {float:left;}
-[dir=rtl] .faq_edit {float:left;}
+#faq-page div.ui-widget-content {
+    border: none;
+    background: #fff;
+    color: inherit;
+}
+
+#faq-page #faq_search {
+	float: right;
+    margin: 10px 0;
+}
+[dir='rtl'] #faq-page #faq_search {
+	float: left;
+}
+
+#faq-page #faq_search input {
+	font-size: 110%;
+	padding: 5px;
+}
 
 ul.clist {color:#000;list-style-image:none;margin:0;text-decoration:none;}
 
@@ -1058,7 +1085,7 @@ span.link_text {display:none;}
 
 .search_hit {background:#ffff00;color:#000;}
 .search_item {font-weight:600;}
-.search-icon {height:16px; vertical-align:text-bottom;}
+.search-icon {height:16px; vertical-align:top;}
 
 #firstfocus {font-size:12px;width:330px;}
 #search-result-tabs,#places-tabs {margin:auto;visibility:hidden;width:98%;}
@@ -2140,25 +2167,28 @@ div.widget {
 /* ------------------ */
 
 /* Styles for nocensus module */
+#nocensus-page .nocensus {
+ 	min-width: 100px;
+	vertical-align: top;
+ }
 
-.nocensus {
-	margin:10px auto;
-	min-width: 610px;
-	width:40%;
+#nocensus-page .nocensus label:nth-of-type(2n),
+#nocensus-page .nocensus label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
 }
 
-.nocensus label {
-	display: inline-block;
-	width: 100px;
+#nocensus-page .nocensus input {
+	margin: auto 10px;
+	width: initial;
 }
 
-.nocensus label + input {
-	margin: 0 7px;
+#nocensus-page .helpcontent {
+	font-size: inherit;
+    margin: 0;
 }
 
 #nocensus_result {
-	border-bottom: 1px solid;
-	border-top: 1px solid;
 	list-style: none;
 	margin: auto;
 	padding:20px 0 20px 0;
@@ -2236,22 +2266,8 @@ div.widget {
 /* ------------------ */
 
 /* RESPOSIVE layout adjustments */
-@media (max-width: 350px) {
-	.media-list-item {
-		width: 95%; /* one per row */
-	}
-}
+@media (min-width: 320px) and (max-width: 1024px) {
 
-@media (min-width: 351px) and (max-width: 1024px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
-    #header .makeMenu {
-        float: none;
-    }
-    #topMenu {
-        overflow: hidden;
-    }
 	#topMenu #main-menu {
 		display:none;
 	}
@@ -2259,13 +2275,11 @@ div.widget {
 		position: initial;
 	}
 	#topMenu #nav-select {
-		border: 1px solid #CCC;
-		background-color: #FFF;
 		display: block;
-		font-size: 12px;
+		font-size: 14px;
 		height: 30px;
 		line-height: 30px;
-		margin: 10px auto;
+		margin: 0 auto;
 		text-align: left;
 		width: 70%;
 	}
@@ -2274,19 +2288,22 @@ div.widget {
 		width: 100%;
 	}
 	#topMenu #nav-select option {
-		font-size: 12px;
 	}
 	#header {
 		height: auto;
 		text-align: center;
 	}
 	#header .title {
-		float: none;
-        position: relative;
+		position: relative;
 		text-align: center;
+        float: none;
+        margin: auto;
 	}
-	#header #extra-menu, #header .header_search {
-		float:none;
+	#header .header_search,
+    #header .makeMenu {
+        float: none;
+        padding: 10px;
+        margin: 0;
 	}
 	#content {
 		top: auto;
@@ -2297,16 +2314,23 @@ div.widget {
         margin: auto;
         width: 95%;
     }
+    .media-list-item {
+        width: 95%; /* one per row */
+    }
+    #faq-page {
+		width: 95%;
+	}
+
 }
 
-@media (min-width: 1025px) and (max-width: 1681px) {
-	.media-list-item {
-		width: 48%; /* two per row */
-	}
+@media (min-width: 780px) and (max-width: 1680px) {
+   .media-list-item {
+       width: 45%; /* two per row */
+   }
 }
 
 @media (min-width: 1681px) {
-	.media-list-item {
-		width: 31%; /* three per row */
-	}
+   .media-list-item {
+       width: 31%; /* three per row */
+   }
 }

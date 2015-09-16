@@ -34,10 +34,10 @@ legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:t
 select {height:25px;}
 img {border:none; vertical-align:middle;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
-table {max-width:996px; border-collapse:collapse;}
+table {border-collapse:collapse;}
 td {line-height:25px; vertical-align:middle;}
-i.fa {margin:5px; font-size:1.5em; vertical-align:middle;}
-button {min-width:100px;}
+i.fa {margin:5px; font-size:1.25em; vertical-align:middle;}
+button {cursor: pointer; min-width:100px;}
 .icon {border:none; padding-left:0;padding-right:5pt;}
 .warning, .error, .red {color:#ff0000;}
 .accepted, a.accepted {color:#25a325;}
@@ -184,7 +184,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #users div#logged_in_users ul {list-style: none; margin: 3px 0;}
 #users div#logged_in_users .inset a {margin: 0 10px;}
 #users div#logged_in_users .inset br {display: none;}
-#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:900;}
+#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal;}
 #tree_stats td, #recent td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
 #tree_stats .ui-accordion-content, #recent .ui-accordion-content {background: #c9c9c9; padding:1em; min-height:180px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
@@ -580,20 +580,32 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .deleted_text {text-decoration:line-through;}
 
 /* FAQ MODULE (also used in config pages of other modules) */
+#faq .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#faq #faq_tabs, #faq #faq_items form {
+    margin: 20px auto;
+}
+#faq .save{margin: 20px 0;}
 table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:98%;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
-table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; font-size:12px; margin-top:30px; padding:5px;}
+[dir=rtl] #faq_module2 th, [dir=rtl] #faq_module2 td {text-align:right;}
+#faq_items select {height: 34px; min-width: 175px;}
+#faq_items button {color: initial;}
+
+table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
 #faq_edit tr {border-bottom:2px solid;}
 #faq_edit td {padding:10px;}
 #faq_edit td p {margin:0;}
 #faq_edit tr.faq_edit_pos {border-bottom:none;}
 .faq_edit_pos td {white-space:nowrap;}
 .faq_edit_pos td:first-child {width:80%;}
+.faq_edit_pos span {font-weight: 900; margin: 0 10px;}
 .faq_edit_title {border-bottom:1px solid; margin-bottom:10px;}
 .faq_edit_item {border:1px inset #d3d3d3; padding:5px;}
 .faq_edit_content {max-height:200px; overflow:auto;}
-[dir=rtl] #faq_module2 th, [dir=rtl] #faq_module2 td {text-align:right;}
 
 /* GOOGLEMAP MODULE*/
 /* Configure */
@@ -661,6 +673,17 @@ table#site_map {border:1px inset #d9d6c4; border-collapse:separate; border-spaci
 #site_map td {border-bottom:1px solid #d3d3d3; padding:5px;}
 
 /* STORIES MODULE */
+#stories .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#stories form {
+    margin: 20px auto;
+}
+#stories .save{margin: 20px 0;}
+#stories select {height: 34px; min-width: 175px;}
+#stories button {color: initial;}
+
 table#story_module, table#story_module2 {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
 #story_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 [dir=rtl] #story_module th {text-align:right;}
@@ -805,12 +828,22 @@ table#story_table {width:100%}
 #admin_dup .exact input[type="text"] {margin:0;padding:1px 0;}
 
 /* Styling for simpl_pages module */
+#simpl_pages .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#simpl_pages #gallery_tabs, #simpl_pages #pages_pages form {margin: 20px auto;}
+#simpl_pages .save{clear: both; margin: 20px 0;}
+#pages_pages select {height: 34px; min-width: 175px;}
+#pages_pages button {color: initial;}
+
 #simpl_pages #pages_module th, #simpl_pages #pages_module td {vertical-align:top; text-align:left;}
 #simpl_pages #pages_module th {min-width: 150px;}
 #simpl_pages #pages_tabs, #simpl_pages #pages_pages form {margin:20px auto;}
 #simpl_pages .label{line-height:25px;margin-top: 20px;}
 #simpl_pages .value input.long{width:500px; height:100px;}
 #simpl_pages .value2{}
+#simpl_pages .save{margin: 20px 0;}
 html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:right;}
 #cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
@@ -840,23 +873,36 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #simpl_research_links .buttons {clear:both;}
 
 /* Styling for gallery module */
-#gallery_config #gallery_module {width:100%;}
-#gallery_config #gallery_module th, #gallery_config #gallery_module td {vertical-align:top; text-align:left;}
-#gallery_config #gallery_module th {min-width: 150px;}
-#gallery_config #pages_tabs, #gallery_config #pages_pages form {margin:20px auto;}
-#gallery_config .label{line-height:25px; margin-top: 20px;}
-#gallery_config .value input.long{width:500px; height:100px;}
-#gallery_config .value2{}
-#gallery_config #gallery_theme {margin-bottom: 20px; overflow: hidden;}
-html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-align:right;}
-#gallery_pages .add_gallery {margin:15px 0;}
+#gallery .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#gallery #gallery_tabs, #gallery #gallery_pages form {margin: 20px auto;}
+#gallery .save{clear: both; margin: 20px 0;}
+#gallery_pages select {height: 34px; min-width: 175px;}
+#gallery_pages button {color: initial;}
+.gallery_edit_pos td {white-space:nowrap;}
+.gallery_edit_pos td:first-child {width:80%;}
+.gallery_edit_pos span {font-weight: 900; margin: 0 10px;}
+.gallery_edit_title {border-bottom:1px solid; margin-bottom:10px;}
+.gallery_edit_item {border:1px inset #d3d3d3; padding:5px;}
+.gallery_edit_content {max-height:200px; overflow:auto;}
+
+#gallery #gallery_module {width:100%;}
+#gallery #gallery_module th, #gallery #gallery_module td {padding:10px; vertical-align:top; text-align:left;}
+table#gallery_module {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
+#gallery_module td p {margin:0;}
+#gallery_module tr.gallery_edit_pos {border-bottom:none;}
+#gallery_module tr {border-bottom:1px solid;}
+#gallery_module table tr {border:none;}
 #kiwitrees-div, #flickr-div, #picasa-div {width:31%;margin:0 1%;border:1px solid;float:left;height:80px;}
 #kiwitrees-div p, #flickr-div p, #picasa-div p {border-bottom:1px solid; margin:0; text-align:center;}
 #kiwitrees-div select{margin:0 5px;width:95%;}
-#gallery_config #gallery_theme div:nth-child(3) {margin: 0 20px;}
+
 .vis{margin:0;padding:5px;}
 .vis input{margin:3px;width:90%;}
-#cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
+#cke_NEW_HEADER_DESCRIPTION div#cke_1_contents,
+#cke_NEW_FAQ_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
 /* Styling for Fancy Tree View module */
 #fancy_treeview-config #top {margin-bottom: 30px;}
@@ -883,11 +929,42 @@ html[dir='rtl'] #gallery_module th, html[dir='rtl'] #gallery_module td {text-ali
 [dir=rtl] #fancy_treeview-config input[type="submit"] {margin-right: 0;}
 
 /* Styling for Extra menus module */
+#extra_menus .label {
+    line-height: 25px;
+    margin-top: 20px;
+}
+#extra_menus #menus_tabs, #extra_menus #menus_pages form {
+    margin: 20px auto;
+}
+#extra_menus .save{clear: both; margin: 20px 0;}
+#menus_pages select {height: 34px; min-width: 175px;}
+#menus_pages button {color: initial;}
+#extra_menus input[type="checkbox"] {
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+#extra_menus #menus_edit {width:100%;}
+table#menus_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
+#menus_edit tr {border-bottom:2px solid;}
+#menus_edit td {padding:10px;}
+#menus_edit td p {margin:0;}
+#menus_edit tr.menus_edit_pos {border-bottom:none;}
+.menus_edit_pos td {white-space:nowrap;}
+.menus_edit_pos td:first-child {width:80%;}
+.menus_edit_pos span {font-weight: 900; margin: 0 10px;}
+.menus_edit_title {border-bottom:1px solid; margin-bottom:10px;}
+.menus_edit_item {border:1px inset #d3d3d3; padding:5px;}
+.menus_edit_content {max-height:200px; overflow:auto;}
+
+
+/* ---------------------------------- */
+
 #module_admin, #module_lang {margin: 0 0 10px 0;padding: 5px;overflow:hidden;}
 #module_admin {float:left;width:450px;}
 #module_lang {float:left;margin:0 30px;}
 #module_lang label[for="languages"] {font-weight:700;}
-#module_admin label {float:left;clear:both;line-height:20px; margin-top:10px;}
+#module_admin label {float:left;clear:both;font-weight: 700;line-height:20px; margin-top:10px;}
 #module_admin input, #module_admin select {float:left;clear:both;height:25px;font-size:110%;}
 #module_save {clear:both;}
 html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_admin input, html[dir=rtl] #module_admin select, html[dir=rtl] #module_admin label {float:right;}
@@ -899,11 +976,11 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 .theme-active {font-weight:900; border: 1px solid #ff0000;}
 
 /* Styling for calendar_utilities module */
-#calendar_utilities .container {padding-top:30px;}
+#calendar_utilities .container {padding-top: 20px; overflow: hidden;}
 #calendar_utilities .label, #calendar_utilities .yesno {float:left;white-space:nowrap;}
 #calendar_utilities .label {clear:left;width:200px;}
 #calendar_utilities .yesno {width:150px;}
-#calendar_utilities p {clear:left;margin-top:30px;}
+#calendar_utilities button {clear:left;margin-top:30px;}
 #calendar_utilities h3 a {color:#e17009;}
 #calendar_utilities form {width:100%; margin:auto 30px;}
 

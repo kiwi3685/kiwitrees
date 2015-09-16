@@ -2891,19 +2891,30 @@ class WT_Stats {
 			$chm = "";
 			$chxl = "0:|";
 			$i = 0;
-			$counts=array();
+			$counts = array();
 			foreach ($rows as $values) {
-				if ($sizes[0]<980) $sizes[0] += 38;
+				if ($sizes[0] < 980) $sizes[0] += 38;
 				$chxl .= self::_centuryName($values['century'])."|";
-				if ($max<=5) $counts[] = round($values['num']*819.2-1, 1);
-				else $counts[] = round($values['num']*409.6, 1);
+				if ($max <= 5) {
+					$counts[] = round($values['num']*819.2-1, 1);
+				} elseif ($max <= 10) {
+					$counts[] = round($values['num']*409.6, 1);
+				} else {
+					$counts[] = round($values['num'] * 204.8, 1);
+				}
 				$chm .= 't'.$values['num'].',000000,0,'.$i.',11,1|';
 				$i++;
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chm = substr($chm,0,-1);
-			if ($max<=5) $chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|3:||".WT_I18N::translate('Number of children')."|";
-			else $chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|6|7|8|9|10|3:||".WT_I18N::translate('Number of children')."|";
+			if ($max <= 5) {
+				$chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|3:||".WT_I18N::translate('Number of children')."|";
+			} elseif ($max <= 10) {
+				$chxl .= "1:||".WT_I18N::translate('century')."|2:|0|1|2|3|4|5|6|7|8|9|10|3:||".WT_I18N::translate('Number of children')."|";
+			} else {
+				$chxl .= "1:||" . I18N::translate('century') . "|2:|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|3:||" . I18N::translate('Number of children') . "|";
+			}
+
 			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Average number of children per family')."\" title=\"".WT_I18N::translate('Average number of children per family')."\" />";
 		} else {
 			if ($sex=='M') {

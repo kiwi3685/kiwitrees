@@ -492,7 +492,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
 		// Else if unformatted Shared Note --------------------------------------------------
 		} else if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
-			$text=$centitl.$text;
+			$text = $centitl.$text;
 		}
 		if ($textOnly) {
 			if (!$return) {
@@ -507,7 +507,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		if (!$npage) {
 			$data .= '<div class="fact_NOTE"><span class="label">';
 			if ($brpos !== false) {
-				if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
+				if ($EXPAND_NOTES) $plusminus = 'minus'; else $plusminus = 'plus';
 				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
 			}
 
@@ -554,11 +554,11 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 */
 function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
+	$ged_id = get_id_from_gedcom($GEDCOM);
 
 	$data = "";
 	$previous_spos = 0;
-	$nlevel = $level+1;
+	$nlevel = $level + 1;
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
 		$nid = str_replace("@","",$match[$j][1]);
@@ -570,12 +570,12 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 		$previous_spos = $spos2;
 		$nt = preg_match("/@(.*)@/", $match[$j][1], $nmatch);
 		$closeSpan = false;
-		if ($nt==0) {
+		if ($nt == 0) {
 			//-- print embedded note records
 			$closeSpan = print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
 			$data .= $closeSpan;
 		} else {
-			$note=WT_Note::getInstance($nmatch[1]);
+			$note = WT_Note::getInstance($nmatch[1]);
 			if ($note) {
 				if ($note->canDisplayDetails()) {
 					$noterec = $note->getGedcomRecord();

@@ -110,6 +110,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', WT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 WT_Filter::postBool('NEW_EXPAND_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      WT_Filter::postBool('NEW_EXPAND_RELATIVES_EVENTS'));
+	set_gedcom_setting(WT_GED_ID, 'EXPAND_HISTO_EVENTS',      	  WT_Filter::postBool('NEW_EXPAND_HISTO_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               WT_Filter::postBool('NEW_EXPAND_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD',                str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK',              str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_QUICK')));
@@ -913,6 +914,16 @@ $controller
 						</table>
 					</td>
 				</tr>
+				<?php if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) { ?>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Automatically expand list of historic events'); ?>
+						</td>
+						<td>
+							<?php echo edit_field_yes_no('NEW_EXPAND_HISTO_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_HISTO_EVENTS')); ?>
+						</td>
+					</tr>
+				<?php } ?>
 				<tr>
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Places'); ?>
