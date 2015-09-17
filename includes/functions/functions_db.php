@@ -935,22 +935,22 @@ function search_stories($query, $geds, $match) {
 	}
 
 	// Convert the query into a SQL expression
-	$querysql=array();
+	$querysql = array();
 	// Convert the query into a regular expression
-	$queryregex=array();
+	$queryregex = array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		$querysql[]="setting_value LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
+		$queryregex[]	= preg_quote(utf8_strtoupper($q), '/');
+		$querysql[]		= "setting_value LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."' OR setting_name LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
     $sql ="
-        SELECT ##block.`block_id` AS block_id, `gedcom_id` AS ged_id
-         FROM ##block JOIN ##block_setting
-         ON ##block.`block_id` = ##block_setting.`block_id`
-		 WHERE (".implode(" {$match} ", $querysql).")
+        SELECT kt_block.`block_id` AS block_id, `gedcom_id` AS ged_id
+         FROM kt_block JOIN kt_block_setting
+         ON kt_block.`block_id` = kt_block_setting.`block_id`
+		 WHERE (" . implode($match, $querysql) . ")
          AND `module_name`='stories'
-         AND `gedcom_id` IN (".implode(',', $geds).")
+         AND `gedcom_id` IN (" . implode(',', $geds) . ")
          AND `setting_name` LIKE 'story_body'
 	";
 
@@ -960,10 +960,9 @@ function search_stories($query, $geds, $match) {
 	$list     = array();
 	$stories  = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($stories as $story) {
-		$list['title']  = get_block_setting('116', 'title');
-        $list['xref']   = get_block_setting('116', 'xref');
+        $list[]   = get_block_setting($story['block_id'], 'xref');
 	}
-	return $list;
+	return $stories;
 }
 
 //-- function to find the gedcom id for the given rin

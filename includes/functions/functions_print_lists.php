@@ -1301,20 +1301,43 @@ function format_story_table($datalist) {
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="story-list">';
 	//-- table header
-	$html .= '<table id="'. $table_id. '"><thead><tr>';
+	$html .= '<table id="'. $table_id. '" class="width100"><thead><tr>';
 	$html .= '<th>'. WT_I18N::translate('Story title'). '</th>';
 	$html .= '<th>'. WT_I18N::translate('Individual'). '</th>';
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	foreach ($datalist as $story) {
-		$html .= '<tr>';
-		//-- Story title
-		$html .= '<td>'. $story['title']. '</td>';
-		//-- Linked INDIs
-		$html .= '<td>'. $story['xref']. '</td>';
-		$html .= '</tr>';
-	}
+		foreach ($datalist as $story) {
+			$story_title	= get_block_setting($story, 'title');
+			$xref			= explode(",", get_block_setting($story, 'xref'));
+			$count_xref		= count($xref);
+			// if one indi is private, the whole story is private.
+			$private = 0;
+			for ($x = 0; $x < $count_xref; $x++) {
+				$indi[$x] = WT_Person::getInstance($xref[$x]);
+				if ($indi[$x] && !$indi[$x]->canDisplayDetails()) {
+					$private = $x+1;
+				}
+			}
+			if ($private == 0) {
+				$languages=get_block_setting($story, 'languages');
+				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+					$html .= '<tr>
+						<td>'. $story_title. '</td>
+						<td>';
+							for ($x = 0; $x < $count_xref; $x++) {
+								$indi[$x] = WT_Person::getInstance($xref[$x]);
+								if (!$indi[$x]){
+									$html .= '<p style="margin:0;" class="error">'. $xref[$x]. '</p>';
+								} else {
+									$html .= '<p style="margin:0;"><a href="' . $indi[$x]->getHtmlUrl() . '" class="current">'.$indi[$x]->getFullName(). '</a></p>';
+								}
+							}
+						$html .= '</td>
+					</tr>';
+				}
+			}
+		}
 	$html .= '</tbody></table></div>';
 
 	return $html;

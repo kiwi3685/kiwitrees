@@ -37,6 +37,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 	var $srindi;
 	var $srnote;
 	var $srsour;
+	var $srstor;
 	var $resultsPageNum = 0;
 	var $resultsPerPage = 50;
 	var $totalResults = -1;
@@ -119,7 +120,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		// TODO: fetch each variable independently, using appropriate validation
 		// Aquire all the variables values from the $_REQUEST
-		$varNames = array ("isPostBack", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
+		$varNames = array ("isPostBack", "srfams", "srindi", "srsour", "srnote", "srstor", "view", "soundex", "subaction", "nameprt", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
 		$this->setRequestValues($varNames);
 
 		if (!$this->isPostBack) {
@@ -203,6 +204,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$this->inputFieldNames[] = "srfams";
 		$this->inputFieldNames[] = "srsour";
 		$this->inputFieldNames[] = "srnote";
+		$this->inputFieldNames[] = "srstor";
 		$this->inputFieldNames[] = "showasso";
 		$this->inputFieldNames[] = "firstname";
 		$this->inputFieldNames[] = "lastname";
@@ -382,13 +384,14 @@ class WT_Controller_Search extends WT_Controller_Page {
 					exit;
 				}
 			}
-			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist && count($this->mystorieslist==1)) {
-				$story = $this->mystorieslist[0];
-//				if ($story->canDisplayName()) {
+			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist && count($this->mystorieslist)==1) {
+				$story = $this->mystorieslist[xref];
+				$person = WT_Person::getInstance($story);
+				if ($person->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$story->getRawUrl());
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH. 'individual.php?pid='. $story . '#stories');
 					exit;
-//				}
+				}
 			}
 		}
 	}
@@ -596,98 +599,98 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 				// individual results
 				echo '<div id="searchAccordion-indi">';
-				// Split individuals by tree
-				$trees=WT_Tree::getAll();
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedId() == $ged_id) {
-							$datalist[]=$individual;
+					// Split individuals by tree
+					$trees=WT_Tree::getAll();
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->myindilist as $individual) {
+							if ($individual->getGedId() == $ged_id) {
+								$datalist[]=$individual;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM = $gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+								<div class="indi-acc_content">',
+								format_indi_table($datalist);
+							echo '</div>';//indi-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
-							<div class="indi-acc_content">',
-							format_indi_table($datalist);
-						echo '</div>';//indi-acc_content
-					}
-				}
 				echo '</div>';//#searchAccordion-indi
 				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({heightStyle: "content", collapsible: true});');
 
 				// family results
 				echo '<div id="searchAccordion-fam">';
-				// Split families by gedcom
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->myfamlist as $family) {
-						if ($family->getGedId() == $ged_id) {
-							$datalist[]=$family;
+					// Split families by gedcom
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->myfamlist as $family) {
+							if ($family->getGedId() == $ged_id) {
+								$datalist[]=$family;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM = $gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+								<div class="fam-acc_content">',
+								format_fam_table($datalist);
+							echo '</div>';//fam-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
-							<div class="fam-acc_content">',
-							format_fam_table($datalist);
-						echo '</div>';//fam-acc_content
-					}
-				}
 				echo '</div>';//#searchAccordion-fam
 				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({heightStyle: "content", collapsible: true});');
 
 				// source results
 				echo '<div id="searchAccordion-source">';
-				// Split sources by gedcom
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedId() == $ged_id) {
-							$datalist[]=$source;
+					// Split sources by gedcom
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->mysourcelist as $source) {
+							if ($source->getGedId() == $ged_id) {
+								$datalist[]=$source;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM = $gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+								<div class="source-acc_content">',
+								format_sour_table($datalist);
+							echo '</div>';//fam-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
-							<div class="source-acc_content">',
-							format_sour_table($datalist);
-						echo '</div>';//fam-acc_content
-					}
-				}
 				echo '</div>';//#searchAccordion-source
 				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({heightStyle: "content", collapsible: true});');
 
 				// note results
 				echo '<div id="searchAccordion-note">';
-				// Split notes by gedcom
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->mynotelist as $note) {
-						if ($note->getGedId() == $ged_id) {
-							$datalist[]=$note;
+					// Split notes by gedcom
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->mynotelist as $note) {
+							if ($note->getGedId() == $ged_id) {
+								$datalist[]=$note;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM = $gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+								<div class="note-acc_content">',
+								format_note_table($datalist);
+							echo '</div>';//note-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM = $gedcom;
-						load_gedcom_settings($ged_id);
-						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
-							<div class="note-acc_content">',
-							format_note_table($datalist);
-						echo '</div>';//note-acc_content
-					}
-				}
 				echo '</div>';//#searchAccordion-note
 				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({heightStyle: "content", collapsible: true});');
 
@@ -695,15 +698,12 @@ class WT_Controller_Search extends WT_Controller_Page {
 				echo '<div id="searchAccordion-story">';
 				// Split stories by gedcom
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
-//					$datalist = array();
-					$datalist = $this->mystorieslist;
-//					foreach ($this->mystorieslist as $story) {
-//						if ($story->getGedId() == $ged_id) {
-//							$datalist[0] = $story['title'];
-//							$datalist[1]  = $story['xref'];
-//						}
-//					}
-					var_dump($datalist);
+					$datalist = array();
+					foreach ($this->mystorieslist as $story) {
+						if ($story['ged_id'] == $ged_id) {
+							$datalist[] = $story['block_id'];
+						}
+					}
 					if ($datalist) {
 						$somethingPrinted = true;
 						echo '<h3 class="story-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
@@ -712,7 +712,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 						echo '</div>';//story-acc_content
 					}
 				}
-				echo '</div>';//#searchAccordion-note
+				echo '</div>';//#searchAccordion-story
 				$this->addInlineJavascript('jQuery("#searchAccordion-story").accordion({heightStyle: "content", collapsible: true});');
 
 
