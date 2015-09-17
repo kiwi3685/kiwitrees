@@ -1121,6 +1121,7 @@ function format_sour_table($datalist) {
 		// Sortable name
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
 		$key = $source->getXref() . '@' . WT_GED_ID;
+		print_r($key);
 		//-- Author
 		$html .= '<td>'. highlight_search_hits(htmlspecialchars($source->getAuth())). '</td>';
 		//-- Linked INDIs
@@ -1263,6 +1264,80 @@ function format_note_table($datalist) {
 		}
 		$html .= '</tr>';
 	}
+	$html .= '</tbody></table></div>';
+
+	return $html;
+}
+
+// print a table of stories
+function format_story_table($datalist) {
+	global $SHOW_LAST_CHANGE, $controller;
+	$html = '';
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$controller
+		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+		->addInlineJavascript('
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
+			jQuery("#'.$table_id.'").dataTable({
+			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			'.WT_I18N::datatablesI18N().',
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"bProcessing": true,
+			"aoColumns": [
+                /* 0-name */ null,
+                /* 1-NAME */ null
+			],
+			"iDisplayLength": 20,
+			"sPaginationType": "full_numbers"
+
+	   });
+			jQuery(".story-list").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
+		');
+
+	//--table wrapper
+	$html .= '<div class="loading-image">&nbsp;</div>';
+	$html .= '<div class="story-list">';
+	//-- table header
+	$html .= '<table id="'. $table_id. '" class="width100"><thead><tr>';
+	$html .= '<th>'. WT_I18N::translate('Story title'). '</th>';
+	$html .= '<th>'. WT_I18N::translate('Individual'). '</th>';
+	$html .= '</tr></thead>';
+	//-- table body
+	$html .= '<tbody>';
+		foreach ($datalist as $story) {
+			$story_title	= get_block_setting($story, 'title');
+			$xref			= explode(",", get_block_setting($story, 'xref'));
+			$count_xref		= count($xref);
+			// if one indi is private, the whole story is private.
+			$private = 0;
+			for ($x = 0; $x < $count_xref; $x++) {
+				$indi[$x] = WT_Person::getInstance($xref[$x]);
+				if ($indi[$x] && !$indi[$x]->canDisplayDetails()) {
+					$private = $x+1;
+				}
+			}
+			if ($private == 0) {
+				$languages=get_block_setting($story, 'languages');
+				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+					$html .= '<tr>
+						<td>'. $story_title. '</td>
+						<td>';
+							for ($x = 0; $x < $count_xref; $x++) {
+								$indi[$x] = WT_Person::getInstance($xref[$x]);
+								if (!$indi[$x]){
+									$html .= '<p style="margin:0;" class="error">'. $xref[$x]. '</p>';
+								} else {
+									$html .= '<p style="margin:0;"><a href="' . $indi[$x]->getHtmlUrl() . '" class="current">'.$indi[$x]->getFullName(). '</a></p>';
+								}
+							}
+						$html .= '</td>
+					</tr>';
+				}
+			}
+		}
 	$html .= '</tbody></table></div>';
 
 	return $html;
