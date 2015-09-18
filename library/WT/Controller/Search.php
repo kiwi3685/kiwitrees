@@ -263,7 +263,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 	/**
 	 * Handles searches entered in the top search box in the themes and
-	 * prepares the search to do a general search on indi's, fams, and sources.
+	 * prepares the search to do a general search on indi's, fams, sources and stories.
 	 */
 	function TopSearch() {
 		// first set some required variables. Search only in current gedcom, only in indi's and stories attached to indi's.
@@ -343,7 +343,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 
 			// Search the stories
-			if (isset ($this->srstor)) {
+			if (isset ($this->srstor) && array_key_exists('stories', WT_Module::getActiveModules())) {
 				if (!empty ($this->query))
 				$this->mystorieslist = search_stories($query_terms, array_keys($this->sgeds), 'AND');
 			} else {
