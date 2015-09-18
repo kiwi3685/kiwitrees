@@ -568,7 +568,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist)==1 && $this->action!="replace") {
-			$indi = $this->myindilist[0];
+			reset($this->myindilist);
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 			exit;
 		}
