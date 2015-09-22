@@ -103,11 +103,17 @@ class married_names_bu_plugin extends base_plugin {
 	function getOptionsForm() {
 		return
 			parent::getOptionsForm().
-			'<tr valign="top"><th>'.WT_I18N::translate('Surname Option').'</th>'.
-			'<td class="optionbox"><select name="surname" onchange="reset_reload();"><option value="replace"'.
-			($this->surname=='replace' ? ' selected="selected"' : '').
-			'">'.WT_I18N::translate('Wife\'s surname replaced by husband\'s surname').'</option><option value="add"'.
-			($this->surname=='add' ? ' selected="selected"' : '').
-			'">'.WT_I18N::translate('Wife\'s maiden surname becomes new given name').'</option></select></td></tr>';
+			'<label><span>' . WT_I18N::translate('Surname Option') . '</span>
+				<select name="surname" onchange="reset_reload();">
+					<option value="replace"' .
+						($this->surname=='replace' ? ' selected="selected"' : '') .
+						'">' . WT_I18N::translate('Wife\'s surname replaced by husband\'s surname') . '
+					</option>
+					<option value="add"' .
+						($this->surname=='add' ? ' selected="selected"' : '') .
+						'">' . WT_I18N::translate('Wife\'s maiden surname becomes new given name') . '
+					</option>
+				</select>
+			</label>';
 	}
 }

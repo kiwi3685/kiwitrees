@@ -564,20 +564,49 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 
 /* BATCH UPDATE MODULE */
-#batch_update {margin:10px 0; max-width:auto; padding:5px;}
-#batch_update tr, #batch_update2 tr {border-bottom:1px solid #d3d3d3;}
-#batch_update th {text-align:left;}
-[dir=rtl] #batch_update th {text-align:right;}
-#batch_update td {padding:0 10px;}
-#batch_update2 {border:1px inset #d3d3d3; border-collapse:separate; margin:10px 0 0 0; width:98%;}
-#batch_update2 th {font-size:115%; font-weight:bold; padding:5px; text-align:left; width:100%}
-[dir=rtl] #batch_update2 th {text-align:right;}
-#batch_update2 td {text-align:center;}
-#batch_update2 td+td {text-align:left; border:2px inset #d3d3d3;}
-[dir=rtl] #batch_update2 td+td {text-align:right;}
-#batch_update2 pre {margin:0; padding:5px;}
-.added_text {background:#808080; color:#ffffff; border:1px solid #808080}
-.deleted_text {text-decoration:line-through;}
+#batch_update a {
+	color: #75abff;
+}
+#batch_update label {
+	display: block;
+}
+#batch_update label span {
+	display: inline-block;
+	font-weight: 700;
+    width: 200px;
+}
+#batch_update select,
+#batch_update input {
+    font-size: 14px;
+	height: auto;
+	margin: 10px 0;
+    padding: 5px;
+	min-width: 300px;
+}
+#batch_update2 {
+	margin:10px;
+	width:98%;
+}
+#batch_update button {
+	margin: 10px;
+}
+#batch_update span.bu_name {
+    display: block;
+    font-size: 140%;
+	margin: 5px 0;
+}
+#batch_update pre {
+	border: 1px solid;
+	margin:0;
+	padding:5px;
+}
+.added_text {
+	background:#ffff00;
+	color:#75abff;
+}
+.deleted_text {
+	text-decoration:line-through;
+}
 
 /* FAQ MODULE (also used in config pages of other modules) */
 #faq .label {
