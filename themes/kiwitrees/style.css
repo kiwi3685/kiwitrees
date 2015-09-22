@@ -29,7 +29,7 @@
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
-	background-color: #ddd;
+	background-color: #eee;
 	overflow-y: scroll;
 }
 
@@ -205,7 +205,7 @@ textarea:required:invalid {
 /* ========= Top bar items ========== */
 
 #navbar {
-	background-color: #ddd;
+	background-color: #eee;
 	left: 0;
 	position: fixed;
 	right: 0;
@@ -512,7 +512,7 @@ textarea:required:invalid {
 
 /* ======= Content styles ========== */
 #main_content {
-	background-color: #DDD;
+	background-color: #eee;
 	margin: 0 auto;
 }
 
@@ -633,7 +633,6 @@ div[id*='-page'] {
 
 /* Home page specific */
 #home-page #index_main_blocks {
-	background: #ddd;
 	float: none;
 	width: 98%;
 	margin: 6px auto;
@@ -4675,13 +4674,10 @@ body .ui-tooltip {
 }
 
 /* Styling for simpl_pages module */
-div#pages-container {
-	width: 96%;
-}
-
 #pages-container {
 	font-size: 110%;
 	margin: 0 auto;
+	width: 96%;
 }
 
 #pages_tabs {
