@@ -28,8 +28,8 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Gedcom_Code_Rela {
 
-	private static $TYPES=array(
-		'attendant', 'attending', 'best_man', 'bridesmaid', 'buyer',
+	private static $TYPES = array(
+		'attendant', 'attending', 'beneficiary', 'best_man', 'bridesmaid', 'buyer',
 		'circumciser', 'civil_registrar', 'employee', 'employer', 'foster_child',
 		'foster_father', 'foster_mother', 'friend', 'godfather', 'godmother',
 		'godparent', 'godson', 'goddaughter', 'godchild', 'guardian',
@@ -58,6 +58,12 @@ class WT_Gedcom_Code_Rela {
 			case 'M': return WT_I18N::translate_c('MALE',   'Attending');
 			case 'F': return WT_I18N::translate_c('FEMALE', 'Attending');
 			default:  return WT_I18N::translate  (          'Attending');
+			}
+		case 'beneficiary':
+			switch ($sex) {
+			case 'M': return WT_I18N::translate_c('MALE',   'Beneficiary');
+			case 'F': return WT_I18N::translate_c('FEMALE', 'Beneficiary');
+			default:  return WT_I18N::translate  (          'Beneficiary');
 			}
 		case 'best_man':
 			// always male
