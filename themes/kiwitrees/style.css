@@ -281,7 +281,7 @@ textarea:required:invalid {
 
 #extra-menu li ul li a {
 	color: #232f49;
-	font-size: 11px;
+	font-size: 12px;
 }
 
 .lang-active,
@@ -427,7 +427,7 @@ textarea:required:invalid {
 	display: block;
 	position: relative;
 	float: left;
-	font-size: 11px;
+	font-size: 12px;
 	padding: 5px 0;
 }
 
@@ -3105,14 +3105,8 @@ div[id^="caldiv"] td {
 	border-bottom: 2px solid #555;
 }
 
-.ui-tabs,
-.ui-tabs .ui-tabs-nav li a {
-	padding: 0;
-}
-
 .ui-tabs .ui-tabs-nav li a span {
     display: block;
-    padding: .5em 1em;
 }
 
 .ui-widget-content #outer_pages_container a {
