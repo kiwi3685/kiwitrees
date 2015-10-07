@@ -37,7 +37,8 @@ class WT_Date_Gregorian extends WT_Date_Calendar {
 		return '@#DGREGORIAN@';
 	}
 	static function CAL_START_JD() {
-		return 2299161; // 15 OCT 1582
+//		return 2299161; // 15 OCT 1582
+		return 1;
 	}
 
 	static function calendarName() {
@@ -52,29 +53,33 @@ class WT_Date_Gregorian extends WT_Date_Calendar {
 		}
 	}
 
-	static function YMDtoJD($y, $m, $d) {
-		if ($y<0) { // 0=1BC, -1=2BC, etc.
-			++$y;
+	static function YMDtoJD($year, $month, $day) {
+		if ($year < 0) {
+			// 1 B.C.E. => 0, 2 B.C.E> => 1, etc.
+			++$year;
 		}
-		$a=(int)((14-$m)/12);
-		$y=$y+4800-$a;
-		$m=$m+12*$a-3;
-		return $d+(int)((153*$m+2)/5)+365*$y+(int)($y/4)-(int)($y/100)+(int)($y/400)-32045;
+		$a     = (int) ((14 - $month) / 12);
+		$year  = $year + 4800 - $a;
+		$month = $month + 12 * $a - 3;
+
+		return $day + (int) ((153 * $month + 2) / 5) + 365 * $year + (int) ($year / 4) - (int) ($year / 100) + (int) ($year / 400) - 32045;
 	}
 
-	static function JDtoYMD($j) {
-		$a=$j+32044;
-		$b=(int)((4*$a+3)/146097);
-		$c=$a-(int)($b*146097/4);
-		$d=(int)((4*$c+3)/1461);
-		$e=$c-(int)((1461*$d)/4);
-		$m=(int)((5*$e+2)/153);
-		$day=$e-(int)((153*$m+2)/5)+1;
-		$month=$m+3-12*(int)($m/10);
-		$year=$b*100+$d-4800+(int)($m/10);
-		if ($year<1) { // 0=1BC, -1=2BC, etc.
-			--$year;
+	static function JDtoYMD($julian_day) {
+		$a = $julian_day + 32044;
+		$b = (int) ((4 * $a + 3) / 146097);
+		$c = $a - (int) ($b * 146097 / 4);
+		$d = (int) ((4 * $c + 3) / 1461);
+		$e = $c - (int) ((1461 * $d) / 4);
+		$m = (int) ((5 * $e + 2) / 153);
+
+		$day   = $e - (int) ((153 * $m + 2) / 5) + 1;
+		$month = $m + 3 - 12 * (int) ($m / 10);
+		$year  = $b * 100 + $d - 4800 + (int) ($m / 10);
+		if ($year < 1) { // 0 is 1 BCE, -1 is 2 BCE, etc.
+			$year--;
 		}
+
 		return array($year, $month, $day);
 	}
 }

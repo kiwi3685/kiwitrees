@@ -235,7 +235,7 @@ class WT_Date_Calendar {
 		return 0; // @#DJULIAN@ 01 JAN 4713B.C.
 	}
 	static function CAL_END_JD() {
-		return 99999999;
+		return PHP_INT_MAX;
 	}
 	static function NUM_DAYS_OF_WEEK() {
 		return 7;
@@ -357,7 +357,7 @@ class WT_Date_Calendar {
 
 	// Is this date within the valid range of the calendar
 	function InValidRange() {
-		return $this->minJD>=$this->CAL_START_JD() && $this->maxJD<=$this->CAL_END_JD();
+		return $this->minJD >= $this->CAL_START_JD() && $this->maxJD <= $this->CAL_END_JD();
 	}
 
 	// How many days in the current month

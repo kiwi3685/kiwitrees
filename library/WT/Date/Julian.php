@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Date_Julian extends WT_Date_Calendar {
-	var $new_old_style=false;
+	var $new_old_style = false;
 
 	static function CALENDAR_ESCAPE() {
 		return '@#DJULIAN@';
@@ -44,18 +44,19 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		return /* I18N: The julian calendar */ WT_I18N::translate('Julian');
 	}
 
-	static function NextYear($y) {
-		if ($y==-1)
+	static function NextYear($year) {
+		if ($year == -1) {
 			return 1;
-		else
-			return $y+1;
+		} else {
+			return $year + 1;
+		}
 	}
 
 	function IsLeapYear() {
-		if ($this->y>0) {
-			return $this->y%4==0;
+		if ($this->y > 0) {
+			return $this->y%4 == 0;
 		} else {
-			return $this->y%4==-1;
+			return $this->y%4 == -1;
 		}
 	}
 
@@ -69,47 +70,55 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	}
 
 	static function JDtoYMD($j) {
-		$c=$j+32082;
-		$d=(int)((4*$c+3)/1461);
-		$e=$c-(int)(1461*$d/4);
-		$m=(int)((5*$e+2)/153);
-		$day=$e-(int)((153*$m+2)/5)+1;
-		$month=$m+3-12*(int)($m/10);
-		$year=$d-4800+(int)($m/10);
-		if ($year<1) // 0=1BC, -1=2BC, etc.
-		--$year;
+		$c	= $j + 32082;
+		$d	= (int) ((4 * $c + 3) / 1461);
+		$e	= $c - (int) (1461 * $d / 4);
+		$m	= (int) ((5 * $e + 2) / 153);
+		$day	= $e - (int) ((153 * $m + 2) / 5) + 1;
+		$month	= $m + 3 - 12 * (int) ($m / 10);
+		$year	= $d - 4800 + (int) ($m / 10);
+		if ($year < 1) {
+			// 0 is 1 BCE, -1 is 2 BCE, etc.
+			$year--;
+		}
+
 		return array($year, $month, $day);
 	}
 
 	// Process new-style/old-style years and years BC
 	function ExtractYear($year) {
-		if (preg_match('/^(\d\d\d\d) \/ \d{1,4}$/', $year, $match)) { // Assume the first year is correct
-			$this->new_old_style=true;
-			return $match[1]+1;
-		} else
-			if (preg_match('/^(\d+) b ?c$/', $year, $match))
-				return -$match[1];
-			else
-				return (int)$year;
+		if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) {
+			// Assume the first year is correct
+			$this->new_old_style = true;
+
+			return $match[1] + 1;
+		} elseif (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
+			return -$match[1];
+		} else {
+			return (int) $year;
+		}
 	}
 
 	function FormatLongYear() {
-		if ($this->y<0) {
-			return /*  I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */ WT_I18N::translate('%s&nbsp;BCE', WT_I18N::digits(-$this->y));
+		if ($this->y < 0) {
+			return /*  WT_I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */
+				WT_I18N::translate('%s&nbsp;BCE', WT_I18N::digits(-$this->y));
 		} else {
 			if ($this->new_old_style) {
-				return WT_I18N::translate('%s&nbsp;CE', WT_I18N::digits(sprintf('%d/%02d', $this->y-1, $this->y % 100)));
-			} else
-				return /* I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era */ WT_I18N::translate('%s&nbsp;CE', WT_I18N::digits($this->y));
+				return WT_I18N::translate('%s&nbsp;CE', WT_I18N::digits(sprintf('%d/%02d', $this->y - 1, $this->y % 100)));
+			} else {
+				return /* WT_I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era */
+					WT_I18N::translate('%s&nbsp;CE', WT_I18N::digits($this->y));
+			}
 		}
 	}
 
 	function FormatGedcomYear() {
-		if ($this->y<0) {
-			return sprintf('%04dB.C.', -$this->y);
+		if ($this->y < 0) {
+			return sprintf('%04d B.C.', -$this->y);
 		} else {
 			if ($this->new_old_style) {
-				return sprintf('%04d/%02d', $this->y-1, $this->y % 100);
+				return sprintf('%04d/%02d', $this->y - 1, $this->y % 100);
 			} else {
 				return sprintf('%04d', $this->y);
 			}
