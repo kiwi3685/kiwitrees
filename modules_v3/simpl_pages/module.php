@@ -330,7 +330,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 							$languages = get_block_setting($items->block_id, 'languages');
 							if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $items->pages_access >= WT_USER_ACCESS_LEVEL) { ?>
 								<li class="ui-state-default ui-corner-top<?php ($items_id==$items->block_id ? ' ui-tabs-selected ui-state-active' : ''); ?>">
-									<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;pages_id=<?php echo $items->block_id; ?>">
+									<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;pages_id=<?php echo $items->block_id; ?>" class="ui-tabs-anchor">
 										<span title="<?php echo WT_I18N::translate($items->pages_title); ?>"><?php echo WT_I18N::translate($items->pages_title); ?></span>
 									</a>
 								</li>

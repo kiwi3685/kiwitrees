@@ -27,12 +27,12 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class search_replace_bu_plugin extends base_plugin {
-	var $search =null; // Search string
-	var $replace=null; // Replace string
-	var $method =null; // simple/wildcards/regex
-	var $regex  =null; // Search string, converted to a regex
-	var $case   =null; // "i" for case insensitive, "" for case sensitive
-	var $error  =null; // Message for bad user parameters
+	var $search  = null; // Search string
+	var $replace = null; // Replace string
+	var $method  = null; // simple/wildcards/regex
+	var $regex   = null; // Search string, converted to a regex
+	var $case    = null; // "i" for case insensitive, "" for case sensitive
+	var $error   = null; // Message for bad user parameters
 
 	static function getName() {
 		return WT_I18N::translate('Search and replace');
@@ -59,21 +59,21 @@ class search_replace_bu_plugin extends base_plugin {
 
 	function getOptions() {
 		parent::getOptions();
-		$this->search =safe_GET('search', WT_REGEX_UNSAFE);
-		$this->replace=safe_GET('replace', WT_REGEX_UNSAFE);
-		$this->method =safe_GET('method', array('exact', 'words', 'wildcards', 'regex'), 'exact');
-		$this->case   =safe_GET('case', 'i');
+		$this->search  = safe_GET('search', WT_REGEX_UNSAFE);
+		$this->replace = safe_GET('replace', WT_REGEX_UNSAFE);
+		$this->method  = safe_GET('method', array('exact', 'words', 'wildcards', 'regex'), 'exact');
+		$this->case    = safe_GET('case', 'i');
 
 		$this->error='';
 		switch ($this->method) {
 		case 'exact':
-			$this->regex=preg_quote($this->search, '/');
+			$this->regex = preg_quote($this->search, '/');
 			break;
 		case 'words':
-			$this->regex='\b'.preg_quote($this->search, '/').'\b';
+			$this->regex = '\b'.preg_quote($this->search, '/').'\b';
 			break;
 		case 'wildcards':
-			$this->regex='\b'.str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')).'\b';
+			$this->regex = '\b'.str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')).'\b';
 			break;
 		case 'regex':
 			$this->regex=$this->search;
@@ -81,7 +81,7 @@ class search_replace_bu_plugin extends base_plugin {
 			// A valid regex on a null string returns zero.
 			// An invalid regex on a null string returns false (and throws a warning).
 			if (@preg_match('/'.$this->search.'/', null) === false) {
-				$this->error='<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
+				$this->error = '<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
 			}
 			break;
 		}
@@ -96,30 +96,29 @@ class search_replace_bu_plugin extends base_plugin {
 		);
 
 		return
-			'<tr>
-				<th>'.WT_I18N::translate('Search text/pattern').'</th>'.
-				'<td>'.
-					'<input id="search" name="search" size="40" value="' . htmlspecialchars($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
-				</td>
-			</tr>'.
-			'<tr>
-				<th>'.WT_I18N::translate('Replacement text').'</th>'.
-				'<td>'.
-					'<input id="repalce" name="replace" size="40" value="' . htmlspecialchars($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
-				</td>
-			</tr>'.
-			'<tr><th>'.WT_I18N::translate('Search method').'</th>'.
-			'<td><select name="method" onchange="this.form.submit();">'.
-			'<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>'.
-			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>'.
-			'<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>'.
-			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>'.
-			'</select><br><em>'.$descriptions[$this->method].'</em>'.$this->error.'</td></tr>'.
-
-			'<tr><th>'.WT_I18N::translate('Case insensitive').'</th>'.
-			'<td>'.
-			'<input type="checkbox" name="case" value="i" '.($this->case=='i' ? 'checked="checked"' : '').'" onchange="this.form.submit();">'.
-			'<br><em>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</em></td></tr>'.
+			'<label>
+				<span>'.WT_I18N::translate('Search text/pattern') . '</span>
+				<input id="search" name="search" value="' . htmlspecialchars($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
+			</label>
+			<label>
+				<span>' . WT_I18N::translate('Replacement text') . '</span>
+				<input id="replace" name="replace" value="' . htmlspecialchars($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
+			</label>
+			<label>
+				<span>' . WT_I18N::translate('Search method') . '</span>
+				<select name="method" onchange="this.form.submit();">
+					<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>
+					<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>
+					<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>
+					<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>
+				</select>
+				<p><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</p>
+			</label>
+			<label>
+				<span>' . WT_I18N::translate('Case insensitive') . '</span>
+				<input type="checkbox" name="case" value="i" ' . ($this->case=='i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">
+				<p><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></p>
+			</label>' .
 			parent::getOptionsForm();
 	}
 }
