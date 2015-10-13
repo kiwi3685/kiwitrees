@@ -244,15 +244,15 @@ function print_month($start,$end,$year) {
     $html.= '
 		<table class="cal"><tr>';
 			for ($i=$start; $i<=$end; $i++) {
-				$html.=  '<th>' .$month_name[$i] . '</th>';    
+				$html.=  '<th>' .$month_name[$i] . '</th>';
 			}
-		$html.= '</tr>';    
+		$html.= '</tr>';
 		for ($day=1; $day<=31; $day++) {
 			$html.=  '<tr>';
 				for ($mth=$start; $mth<=$end; $mth++) {
 					if ( day_exists($year,$mth,$day) ) {
 						$fmt = $year. '-' .$mth. '-' .$day;
-						$week = date('N', mktime(0,0,0,$mth,$day,$year));				
+						$week = date('N', mktime(0,0,0,$mth,$day,$year));
 						$print_day = $day_letter[$week];
 						$style = ( $week == 7 ) ? ' class="sunday"' : '';
 						$weekno = ( $week == 1 ) ? '<span class="rw">' .(int)date('W', mktime(0,0,0,$mth,$day,$year)). '</span>' : '';
@@ -280,23 +280,24 @@ $html.='
 	<style type="text/css">
 		#yearly {margin-bottom:30px;}
 		#yearly select {font-size:14px;}
-		#yearly h1 {font-size:15px; font-weight:bold;}
+		#yearly h2 {font-weight:bold;margin:10px;text-align:left;}
 		#yearly h3 {font-size:10px; font-weight:bold; margin-top:3px; margin-bottom:3px;}
-		th {background-color:#8F8F8F; color:#000000; width:180px;}
+        #yearly form h2 {display: inline-block;}
+		th {background-color:#8F8F8F; width:180px;}
 		p {margin-top:0px; margin-bottom:5px;}
 		.l {width:15px; float:left; text-align:right;}
 		.r {width:24px; margin-left:4px; float:left;}
 		.r2 {margin-left:4px; float:left;}
-		.rw {font-family: Arial, Verdana, sans-serif;font-size: 36px;font-weight: bold;margin-left: 4px;float: right;text-align: right;position: absolute;color: #8F8F8F;padding-left: 120px;margin-top: -4px;display: block; opacity: 0.5;}
-		.cal {border:solid black 2px; border-collapse:collapse; font-size:10px; width:95%; margin:10px auto;}
-		.cal td {border:solid black 1px; border-collapse:collapse; padding:2px;}
-		.cal th {border:solid black 1px; border-collapse:collapse; padding:2px; width:16%}
-		.sunday {background-color:#C1C1C1; color:#000000;}
-		.hol {background-color:#D0AFAF; color:#000000;}
+		.rw {font-size:3em;font-weight: bold;position: absolute;padding-left:7%;margin-top:2%;display: block; opacity: 0.15;}
+		.cal {border-collapse:collapse; font-size:90%; width:95%; margin:10px auto;}
+		.cal td {border: 1px solid; border-collapse:collapse; padding:2px;}
+		.cal th {border: 1px solid; border-collapse:collapse; padding:2px; width:16%}
+		.sunday {background-color:#ddd;}
+		.hol {background-color:#D0AFAF;}
 	</style>
 	<div id="yearly">
 		<form action="'.$_SERVER["PHP_SELF"].'?mod=calendar_utilities&amp;mod_action=show#yearly_calendar" method="post">
-			<h1>' . WT_I18N::translate('Choose Year') . '</h1>
+			<h2>' . WT_I18N::translate('Choose Year') . '</h2>
 			<select name="year">';
 			for ($i=1970; $i<=2038; $i++) {//mktime() can only be used betwee 1970 and 2038
 				$selected = ($i==$year) ? " selected=\"selected\"":"";
@@ -307,7 +308,7 @@ $html.='
 				</select>
 				<input class="button_ec" type="submit" name="submit" value="Get Calendar" onclick="calc_calendar()">
 		</form>
-		<h1>'.$year.' - ' . WT_I18N::translate('First part of year') . '</h1>'.print_month(1,6,$year).'
+		<h2>'.$year.' - ' . WT_I18N::translate('First part of year') . '</h2>'.print_month(1,6,$year).'
 		<div style="page-break-after:always;"></div>
-		<h1>'.$year.' - ' . WT_I18N::translate('Second part of year') . '</h1>'.print_month(7,12,$year).'
+		<h2>'.$year.' - ' . WT_I18N::translate('Second part of year') . '</h2>'.print_month(7,12,$year).'
 	</div>';

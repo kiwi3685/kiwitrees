@@ -29,12 +29,14 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller = new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->addInlineJavascript('jQuery("#x").accordion({heightStyle: "content"});')
-	->addInlineJavascript('jQuery("#tree_stats").accordion({event: "click"});') // add " hoverintent" to change from just click to hover
-	->addInlineJavascript('jQuery("#changes").accordion({event: "click"});')
-	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
 	->setPageTitle(WT_I18N::translate('Administration'))
-	->pageHeader();
+	->pageHeader()
+	->addInlineJavascript('
+		jQuery("#x").accordion({heightStyle: "content", collapsible: true});
+		jQuery("#tree_stats").accordion({event: "click", collapsible: true});
+		jQuery("#changes").accordion({event: "click", collapsible: true});
+		jQuery("#content_container").css("visibility", "visible");
+	');
 
 //Check for updates
 $latest_version = fetch_latest_version();

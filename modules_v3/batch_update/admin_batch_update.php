@@ -37,89 +37,93 @@ if (!WT_USER_GEDCOM_ADMIN) {
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 class batch_update {
-	var $plugin   =null; // Form parameter: chosen plugin
-	var $xref     =null; // Form parameter: record to update
-	var $action   =null; // Form parameter: how to update record
-	var $data     =null; // Form parameter: additional details for $action
-	var $plugins  =null; // Array of available plugins
-	var $PLUGIN   =null; // An instance of a plugin object
-	var $all_xrefs=null; // An array of all xrefs that might need to be updated
-	var $prev_xref=null; // The previous xref to process
-	var $curr_xref=null; // The xref to process
-	var $next_xref=null; // The next xref to process
-	var $record   =null; // A GedcomRecord object corresponding to $curr_xref
+	var $plugin    = null; // Form parameter: chosen plugin
+	var $xref      = null; // Form parameter: record to update
+	var $action    = null; // Form parameter: how to update record
+	var $data      = null; // Form parameter: additional details for $action
+	var $plugins   = null; // Array of available plugins
+	var $PLUGIN    = null; // An instance of a plugin object
+	var $all_xrefs = null; // An array of all xrefs that might need to be updated
+	var $prev_xref = null; // The previous xref to process
+	var $curr_xref = null; // The xref to process
+	var $next_xref = null; // The next xref to process
+	var $record    = null; // A GedcomRecord object corresponding to $curr_xref
 
 	// Main entry point - called by the webtrees framework in response to module.php?mod=batch_update
 	function main() {
 		// HTML common to all pages
 		$html=
-			self::getJavascript().
-			'<form id="batch_update_form" action="module.php" method="get">'.
-			'<input type="hidden" name="mod" value="batch_update">'.
-			'<input type="hidden" name="mod_action" value="admin_batch_update">'.
-			'<input type="hidden" name="xref"   value="'.$this->xref.'">'.
-			'<input type="hidden" name="action" value="">'. // will be set by javascript for next update
-			'<input type="hidden" name="data"   value="">'. // will be set by javascript for next update
-			'<table id="batch_update"><tr>'.
-			'<th>'.WT_I18N::translate('Family tree').'</th>'.
-			'<td>'.select_edit_control('ged', WT_Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"').
-			'</td></tr><tr><th>'.WT_I18N::translate('Batch update').'</th><td><select name="plugin" onchange="reset_reload();">';
-		if (!$this->plugin) {
-			$html.='<option value="" selected="selected"></option>';
-		}
-
-		foreach ($this->plugins as $class=>$plugin) {
-			$html.='<option value="'.$class.'"'.($this->plugin==$class ? ' selected="selected"' : '').'>'.$plugin->getName().'</option>';
-		}
-		$html.='</select>';
-		if ($this->PLUGIN) {
-			$html.='<br><em>'.$this->PLUGIN->getDescription().'</em>';
-		}
-		$html.='</td></tr>';
-
-		if (!get_user_setting(WT_USER_ID, 'auto_accept'))
-			$html.='<tr><td colspan="2" class="warning">'.WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.').'</td></tr>';
-
-		// If a plugin is selected, display the details
-		if ($this->PLUGIN) {
-			$html.=$this->PLUGIN->getOptionsForm();
-			if (substr($this->action, -4)=='_all') {
-				// Reset - otherwise we might "undo all changes", which refreshes the
-				// page, which makes them all again!
-				$html.='<script>reset_reload();</script>';
-			} else {
-				if ($this->curr_xref) {
-					// Create an object, so we can get the latest version of the name.
-					$object=WT_GedcomRecord::getInstance($this->curr_xref);
-					$object->setGedcomRecord($this->record);
-
-					$html.=
-						'</table><table id="batch_update2"><tr><td>'.
-						self::createSubmitButton(WT_I18N::translate('previous'), $this->prev_xref).
-						self::createSubmitButton(WT_I18N::translate('next'), $this->next_xref).
-						'</td><th><a href="'.$object->getHtmlUrl().'">'.$object->getFullName().'</a>'.
-						'</th>'.
-						'</tr><tr><td valign="top">'.
-						'<br>'.implode('<br>',$this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'<br>'.
-						'</td><td dir="ltr" align="left">'.
-						$this->PLUGIN->getActionPreview($this->curr_xref, $this->record);
-						'</td></tr>';
-				} else {
-					$html.='<tr><td class="accepted" colspan=2>'.WT_I18N::translate('Nothing found.').'</td></tr>';
-				}
-			}
-		}
-		$html.='</table></form>';
+			self::getJavascript(). '
+			<div id="batch_update">
+				<h2>' .  WT_I18N::translate('Batch update') . '</h2>
+				<form id="batch_update_form" action="module.php" method="get">
+					<input type="hidden" name="mod" value="batch_update">
+					<input type="hidden" name="mod_action" value="admin_batch_update">
+					<input type="hidden" name="xref"   value="' . $this->xref . '">
+					<input type="hidden" name="action" value="">
+					<input type="hidden" name="data"   value="">
+					<label><span>' . WT_I18N::translate('Family tree') . '</span>' .
+						select_edit_control('ged', WT_Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"') . '
+					</label>
+					<label><span>' . WT_I18N::translate('Batch update tool') . '</span>
+						<select name="plugin" onchange="reset_reload();">';
+							if (!$this->plugin) {
+								$html.='<option value="" selected="selected"></option>';
+							}
+							foreach ($this->plugins as $class=>$plugin) {
+								$html.='<option value="'.$class.'"'.($this->plugin==$class ? ' selected="selected"' : '').'>'.$plugin->getName().'</option>';
+							}
+						$html.='</select>
+					</label>';
+					if ($this->PLUGIN) {
+						$html.='<p><em>'.$this->PLUGIN->getDescription().'</em></p>';
+					}
+					if (!get_user_setting(WT_USER_ID, 'auto_accept')){
+						$html.='<p class="warning">'.WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.').'</p>';
+					}
+					// If a plugin is selected, display the details
+					if ($this->PLUGIN) {
+						$html .= $this->PLUGIN->getOptionsForm();
+						if (substr($this->action, -4)=='_all') {
+							// Reset - otherwise we might "undo all changes", which refreshes the
+							// page, which makes them all again!
+							$html .= '<script>reset_reload();</script>';
+						} else {
+							if ($this->curr_xref) {
+								// Create an object, so we can get the latest version of the name.
+								$object = WT_GedcomRecord::getInstance($this->curr_xref);
+								$object->setGedcomRecord($this->record);
+								$html .= '
+									<hr>' .
+									self::createSubmitButton(WT_I18N::translate('previous'), $this->prev_xref) .
+									self::createSubmitButton(WT_I18N::translate('next'), $this->next_xref) . '
+									<div id="batch_update2">
+										<a href="' . $object->getHtmlUrl() . '"><span class="bu_name">' . $object->getFullName() . '</span></a>' .
+										$this->PLUGIN->getActionPreview($this->curr_xref, $this->record) . '
+										<p>' . implode('' , $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'</p>
+									</div>
+								';
+							} else {
+								$html .= '
+									<div id="batch_update2" class="accepted">' .
+										WT_I18N::translate('Nothing found.') . '
+									</div>
+								';
+							}
+						}
+					}
+			$html .= '</form>
+		</div>';
 		return $html;
 	}
 
 	// Constructor - initialise variables and validate user-input
 	function __construct() {
-		$this->plugins=self::getPluginList();              // List of available plugins
-		$this->plugin =safe_GET('plugin', array_keys($this->plugins)); // User parameters
-		$this->xref   =safe_GET('xref',   WT_REGEX_XREF);
-		$this->action =safe_GET('action');
-		$this->data   =safe_GET('data');
+		$this->plugins = self::getPluginList(); // List of available plugins
+		$this->plugin  = safe_GET('plugin', array_keys($this->plugins)); // User parameters
+		$this->xref    = safe_GET('xref', WT_REGEX_XREF);
+		$this->action  = safe_GET('action');
+		$this->data    = safe_GET('data');
 
 		// Don't do any processing until a plugin is chosen.
 		if ($this->plugin) {
@@ -131,10 +135,10 @@ class batch_update {
 			case '':
 				break;
 			case 'update':
-				$record=self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
+				$record = self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
 				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
-					$newrecord=$this->PLUGIN->updateRecord($this->xref, $record);
-					if ($newrecord!=$record) {
+					$newrecord = $this->PLUGIN->updateRecord($this->xref, $record);
+					if ($newrecord != $record) {
 						if ($newrecord) {
 							replace_gedrec($this->xref, WT_GED_ID, $newrecord, $this->PLUGIN->chan);
 						} else {
@@ -142,14 +146,14 @@ class batch_update {
 						}
 					}
 				}
-				$this->xref=$this->findNextXref($this->xref);
+				$this->xref = $this->findNextXref($this->xref);
 				break;
 			case 'update_all':
 				foreach ($this->all_xrefs as $xref=>$type) {
-					$record=self::getLatestRecord($xref, $type);
+					$record = self::getLatestRecord($xref, $type);
 					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
-						$newrecord=$this->PLUGIN->updateRecord($xref, $record);
-						if ($newrecord!=$record) {
+						$newrecord = $this->PLUGIN->updateRecord($xref, $record);
+						if ($newrecord != $record) {
 							if ($newrecord) {
 								replace_gedrec($xref, WT_GED_ID, $newrecord, $this->PLUGIN->chan);
 							} else {
@@ -158,18 +162,18 @@ class batch_update {
 						}
 					}
 				}
-				$this->xref='';
+				$this->xref = '';
 				return;
 			case 'delete':
-				$record=self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
+				$record = self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]);
 				if ($this->PLUGIN->doesRecordNeedUpdate($this->xref, $record)) {
 					delete_gedrec($this->xref, WT_GED_ID);
 				}
-				$this->xref=$this->findNextXref($this->xref);
+				$this->xref = $this->findNextXref($this->xref);
 				break;
 			case 'delete_all':
 				foreach ($this->all_xrefs as $xref=>$type) {
-					$record=self::getLatestRecord($xref, $type);
+					$record = self::getLatestRecord($xref, $type);
 					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
 						delete_gedrec($xref, WT_GED_ID);
 					}
@@ -187,20 +191,20 @@ class batch_update {
 			// been specified at all.
 			if (array_key_exists($this->xref, $this->all_xrefs) &&
 				$this->PLUGIN->doesRecordNeedUpdate($this->xref, self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]))) {
-				$this->curr_xref=$this->xref;
+				$this->curr_xref = $this->xref;
 			}
 			// The requested record doesn't need updating - find one that does
 			if (!$this->curr_xref) {
-				$this->curr_xref=$this->findNextXref($this->xref);
+				$this->curr_xref = $this->findNextXref($this->xref);
 			}
 			if (!$this->curr_xref) {
-				$this->curr_xref=$this->findPrevXref($this->xref);
+				$this->curr_xref = $this->findPrevXref($this->xref);
 			}
 			// If we've found a record to update, get details and look for the next/prev
 			if ($this->curr_xref) {
-				$this->record=self::getLatestRecord($this->curr_xref, $this->all_xrefs[$this->curr_xref]);
-				$this->prev_xref=$this->findPrevXref($this->curr_xref);
-				$this->next_xref=$this->findNextXref($this->curr_xref);
+				$this->record		= self::getLatestRecord($this->curr_xref, $this->all_xrefs[$this->curr_xref]);
+				$this->prev_xref	= $this->findPrevXref($this->curr_xref);
+				$this->next_xref	= $this->findNextXref($this->curr_xref);
 			}
 		}
 	}
@@ -298,13 +302,31 @@ class batch_update {
 
 	// Create a submit button for our form
 	static function createSubmitButton($text, $xref, $action='', $data='') {
+		$button_icon = '';
+		switch($text) {
+			case 'previous':
+				$button_icon = "fa-backward";
+				break;
+			case 'next':
+				$button_icon = "fa-forward";
+				break;
+			case 'Update':
+				$button_icon = "fa-floppy-o";
+				break;
+			case 'Update all':
+				$button_icon = "fa-floppy-o";
+				break;
+		}
 		return
-			'<input type="submit" value="'.$text.'" onclick="'.
-			'this.form.xref.value=\''.htmlspecialchars($xref).'\';'.
-			'this.form.action.value=\''.htmlspecialchars($action).'\';'.
-			'this.form.data.value=\''.htmlspecialchars($data).'\';'.
-			'return true;"'.
-			($xref ? '' : ' disabled').'>';
+			'<button type="submit" onclick="'.
+				'this.form.xref.value=\''.htmlspecialchars($xref).'\';'.
+				'this.form.action.value=\''.htmlspecialchars($action).'\';'.
+				'this.form.data.value=\''.htmlspecialchars($data).'\';'.
+				'return true;"'.
+				($xref ? '' : ' disabled').'>
+				<i class="fa ' . $button_icon . '"></i>'.
+				$text .'
+			</button>';
 	}
 
 	// Get the current view of a record, allowing for pending changes
@@ -335,11 +357,12 @@ class base_plugin {
 	// Default option is just the "don't update CHAN record"
 	function getOptionsForm() {
 		return
-			'<tr><th>'.WT_I18N::translate('Update the CHAN record').'</th>'.
-			'<td><select name="chan" onchange="this.form.submit();">'.
-			'<option value="no"' .($this->chan ? '' : ' selected="selected"').'>'.WT_I18N::translate('no') .'</option>'.
-			'<option value="yes"'.($this->chan ? ' selected="selected"' : '').'>'.WT_I18N::translate('yes').'</option>'.
-			'</select></td></tr>';
+			'<label><span>'.WT_I18N::translate('Update the CHAN record').'</span>
+				<select name="chan" onchange="this.form.submit();">
+					<option value="no"' .($this->chan ? '' : ' selected="selected"').'>'.WT_I18N::translate('no') .'</option>
+					<option value="yes"'.($this->chan ? ' selected="selected"' : '').'>'.WT_I18N::translate('yes').'</option>
+				</select>
+			</label>';
 	}
 
 	// Default buttons are update and update_all

@@ -1583,6 +1583,15 @@ jQuery.widget( "ui.dialog", jQuery.ui.dialog, {
 	}
 });
 
+// common script for login block(s)
+jQuery(".new_passwd_form").hide();
+jQuery(".passwd_click").click(function() {
+	jQuery(".new_passwd_form").slideToggle(100, function() {
+		jQuery(".new_passwd_username").focus();
+	});
+	return false;
+});
+
 
 /*
 * hoverIntent | Copyright 2011 Brian Cherne

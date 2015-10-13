@@ -101,7 +101,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 								if (preg_match('/plugin_name\s*=\s*"(.*)";/', $pluginfile, $match)) {
 									$plugin_title = WT_I18N::translate($match[1]);
 								}
-								$html .=	
+								$html .=
 									'<li>'.
 										'<a href="#'.$plugin_file.'">'.
 											'<span title="'.$plugin_title.'">'.$plugin_title.'</span>
@@ -143,7 +143,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 			}
 			AddToLog('calendar_utilities config updated', 'config');
 		}
-	
+
 		echo '
 			<div id="calendar_utilities">
 				<h2>', $controller->getPageTitle(), '</h2>
@@ -162,9 +162,10 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 						</div>';
 					}
 					echo '
-						<p>
-							<input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="7">
-						</p>
+						<button class="btn btn-primary save" type="submit">
+							<i class="fa fa-floppy-o"></i>'.
+							WT_I18N::translate('save').'
+						</button>
 				</form>
 			</div >';
 	}

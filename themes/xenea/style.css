@@ -1020,18 +1020,18 @@ p.branches {display:inline;}
 #login-register-page .confirm p+p {font-size:12px;font-weight:normal;}
 #login-text, #register-text, #user-verify {margin:20px auto;width:610px;text-align:justify;}
 #login-box, #register-box {text-align:center;}
-#login-form, #new_passwd_form, #register-form, #verify-form {background-color:#c3dfff;display:inline-block;margin:10px auto 0 auto;padding:5px;}
-#login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div {color:#000066;padding:5px;text-align:center;}
-#login-form label, #new_passwd_form label, #verify-form label {display:block;text-align:right;}
-#login-form label input, #new_passwd_form label input, #verify-form input {width:140px;margin:0 10px;}
-#new_passwd_form h4, #register-form h4 {color:#000066;font-weight:normal;text-align:center;}
+#login-form, .new_passwd_form, #register-form, #verify-form {background-color:#c3dfff;display:inline-block;margin:10px auto 0 auto;padding:5px;}
+#login-form div, #login-form div a, .new_passwd_form div, #register-form div, #verify-form div {color:#000066;padding:5px;text-align:center;}
+#login-form label, .new_passwd_form label, #verify-form label {display:block;text-align:right;}
+#login-form label input, .new_passwd_form label input, #verify-form input {width:140px;margin:0 10px;}
+.new_passwd_form h4, #register-form h4 {color:#000066;font-weight:normal;text-align:center;}
 #register-form div, #verify-form div {text-align:right;}
 #register-form label input, #register-form label select, #register-form textarea {width:220px;margin:0 10px;}
 #register-form label select {margin:0 9px;width:223px;}
 #register-form textarea {margin:0 3px;vertical-align:top;}
 #register-form div#registration-submit {text-align:center;}
-.login_block_block #login-form, .login_block_block #new_passwd_form {border:0;background:none;}
-[dir=rtl] #login-form label, [dir=rtl] #new_passwd_form label, [dir=rtl] #register-form label, [dir=rtl] #verify-form label {text-align:left;}
+.login_block_block #login-form, .login_block_block .new_passwd_form {border:0;background:none;}
+[dir=rtl] #login-form label, [dir=rtl] .new_passwd_form label, [dir=rtl] #register-form label, [dir=rtl] #verify-form label {text-align:left;}
 
 /* ============== reportengine.php ======================= */
 #reportengine-page table {margin:20px auto;}
@@ -1071,16 +1071,35 @@ p.branches {display:inline;}
 #tabFilterAndCustom { margin-left:auto; margin-right:auto;}
 #tabAction { margin-left:auto; margin-right:auto;}
 #tabAction td { width:50%; text-align:center;}
-/* FAQ table styles */
-table.faq { background-color:#e0e0e0; margin:5px 0 50px 5px; width:98%;}
-table.faq tr.odd td { background-color:#e7eef3;}
-div.faq_title { background-color:#e0e0e0; margin:1em 0; padding:.25em; font-weight:bold; width:98%;}
-div.faq_body { clear:both; margin:1em 0; padding:1em;}
-.faq_italic { font-style:italic; font-weight:bold; font-size:90%; padding:0 10px;}
-.faq_top {float:right;}
-.faq_edit {float:right;}
-[dir=rtl] .faq_top {float:left;}
-[dir=rtl] .faq_edit {float:left;}
+/* ======= FAQ page styles ========== */
+#faq-page {
+	margin: 0 auto;
+	width: 70%;
+}
+
+#faq-page h2.ui-accordion-header {
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+}
+
+#faq-page div.ui-widget-content {
+    border: none;
+    background: #fff;
+    color: inherit;
+}
+
+#faq-page #faq_search {
+    margin: 10px auto;
+	width: 200px;
+}
+
+#faq-page #faq_search input {
+	font-size: 110%;
+	padding: 5px;
+    width: 200px;
+}
 
 td.descriptionbox a {/* this keeps the tag color the same when it is a link as when not */ color:#0000ff;}
 
@@ -2314,27 +2333,29 @@ div.widget {
 	text-align: left;
 }
 /* ------------------ */
-
 /* Styles for nocensus module */
+#nocensus-page .nocensus {
+ 	min-width: 100px;
+	vertical-align: top;
+ }
 
-.nocensus {
-	margin:10px auto;
-	min-width: 610px;
-	width:40%;
+#nocensus-page .nocensus label:nth-of-type(2n),
+#nocensus-page .nocensus label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
 }
 
-.nocensus label {
-	display: inline-block;
-	width: 100px;
+#nocensus-page .nocensus input {
+	margin: auto 10px;
+	width: initial;
 }
 
-.nocensus label + input {
-	margin: 0 7px;
+#nocensus-page .helpcontent {
+	font-size: inherit;
+    margin: 0;
 }
 
 #nocensus_result {
-	border-bottom: 1px solid;
-	border-top: 1px solid;
 	list-style: none;
 	margin: auto;
 	padding:20px 0 20px 0;
@@ -2455,6 +2476,9 @@ div.widget {
     .media-list-item {
         width: 95%; /* one per row */
     }
+    #faq-page {
+		width: 95%;
+	}
 
 }
 

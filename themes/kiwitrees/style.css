@@ -29,7 +29,7 @@
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
-	background-color: #ddd;
+	background-color: #eee;
 	overflow-y: scroll;
 }
 
@@ -129,7 +129,7 @@ button {
 
 input,
 textarea {
-	padding: 3px;
+	padding: 5px;
 }
 
 textarea {
@@ -206,7 +206,7 @@ div [id$="_factdiv"] {
 /* ========= Top bar items ========== */
 
 #navbar {
-	background-color: #ddd;
+	background-color: #eee;
 	left: 0;
 	position: fixed;
 	right: 0;
@@ -282,7 +282,7 @@ div [id$="_factdiv"] {
 
 #extra-menu li ul li a {
 	color: #232f49;
-	font-size: 11px;
+	font-size: 12px;
 }
 
 .lang-active,
@@ -428,7 +428,7 @@ div [id$="_factdiv"] {
 	display: block;
 	position: relative;
 	float: left;
-	font-size: 11px;
+	font-size: 12px;
 	padding: 5px 0;
 }
 
@@ -473,7 +473,7 @@ div [id$="_factdiv"] {
 #footer {
 	background-color: #aaa;
 	border-top: 5px solid #555;
-	font-size: 0.8em;
+	font-size: 12px;
 	margin-top: 120px;
 	min-height: 60px;
 	padding: 10px;
@@ -513,7 +513,7 @@ div [id$="_factdiv"] {
 
 /* ======= Content styles ========== */
 #main_content {
-	background-color: #DDD;
+	background-color: #eee;
 	margin: 0 auto;
 }
 
@@ -634,7 +634,6 @@ div[id*='-page'] {
 
 /* Home page specific */
 #home-page #index_main_blocks {
-	background: #ddd;
 	float: none;
 	width: 98%;
 	margin: 6px auto;
@@ -899,7 +898,6 @@ table.center {
 }
 
 .quickfacts a {
-	font-size: 9px;
 	padding: 0 3px;
 }
 
@@ -1538,7 +1536,7 @@ a:hover .nameZoom {
 }
 
 .chart_options input {
-	width: 100px;
+	width: 200px;
 }
 
 /* Styles for the option boxes */
@@ -2207,12 +2205,12 @@ dt {
 	text-align: center;
 }
 
-#new_passwd {
+.new_passwd {
 	overflow: hidden;
 }
 
 #login-form,
-#new_passwd_form,
+.new_passwd_form,
 #register-form ,
 #verify-form {
 	border: 1px outset #555;
@@ -2223,7 +2221,7 @@ dt {
 
 #login-form div,
 #login-form div a,
-#new_passwd_form div,
+.new_passwd_form div,
 #register-form div,
 #verify-form div {
 	color: #232f49;
@@ -2233,20 +2231,20 @@ dt {
 }
 
 #login-form label,
-#new_passwd_form label,
+.new_passwd_form label,
 #verify-form label {
 	display: block;
 	text-align: right;
 }
 
 #login-form label input,
-#new_passwd_form label input,
+.new_passwd_form label input,
 #verify-form input {
 	width: 140px;
 	margin: 0 10px;
 }
 
-#new_passwd_form h4,
+.new_passwd_form h4,
 #register-form h4 {
 	font-weight: normal;
 	text-align: center;
@@ -2279,13 +2277,13 @@ dt {
 }
 
 .login_block_block #login-form,
-.login_block_block #new_passwd_form {
+.login_block_block .new_passwd_form {
 	border: 0;
 	background: none;
 }
 
 [dir='rtl'] #login-form label,
-[dir='rtl'] #new_passwd_form label,
+[dir='rtl'] .new_passwd_form label,
 [dir='rtl'] #register-form label,
 [dir='rtl'] #verify-form label {
 	text-align: left;
@@ -2784,51 +2782,39 @@ dt {
 	float: right;
 }
 
-/* ======= FAQ table styles ========== */
-table.faq {
-	background-color: #e0e0e0;
-	margin: 5px 0 50px 5px;
-	width: 98%;
+/* ======= FAQ page styles ========== */
+#faq-page {
+	margin: 0 auto;
+	width: 70%;
 }
 
-table.faq tr.odd td {
-	background-color: #fff;
+#faq-page h2.ui-accordion-header {
+	border: none;
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
 }
 
-div.faq_title {
-	background-color: #e0e0e0;
-	margin: 1em 0;
-	padding: .25em;
-	font-weight: bold;
-	width: 98%;
+#faq-page #faq_accordion {
+	clear:both;
+	margin-bottom: 50px;
 }
 
-div.faq_body {
-	clear: both;
-	padding: 0 1em;
+#faq-page div.ui-widget-content {
+    border: none;
+    background: #fff;
+    color: inherit;
 }
 
-.faq_italic {
-	font-style: italic;
-	font-weight: bold;
-	font-size: 90%;
-	padding: 0 10px;
+#faq-page #faq_search {
+    margin: 10px auto;
+	width: 200px;
 }
 
-.faq_top {
-	float: right;
-}
-
-.faq_edit {
-	float: right;
-}
-
-[dir='rtl'] .faq_top {
-	float: left;
-}
-
-[dir='rtl'] .faq_edit {
-	float: left;
+#faq-page #faq_search input {
+	font-size: 110%;
+	padding: 5px;
+    width: 200px;
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
@@ -3126,15 +3112,8 @@ div[id^="caldiv"] td {
 	border-bottom: 2px solid #555;
 }
 
-.ui-tabs,
-.ui-tabs .ui-tabs-nav li a {
-	padding: 0;
-}
-
 .ui-tabs .ui-tabs-nav li a span {
-	display: block;
-	padding: .5em;
-	font-size: 90%;
+    display: block;
 }
 
 .ui-widget-content #outer_pages_container a {
@@ -4123,6 +4102,7 @@ a.icon-udarrow:hover {
 .icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
 .icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
 .icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */
+.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1em;  margin: 0 5px;} /* fa-eye */
 
 #extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */
 #extra-menu > li:hover	{color: #009afe;}
@@ -4453,14 +4433,13 @@ a.icon-udarrow:hover {
 
 #cboxLoadedContent {
 	background: #fff;
-	margin-bottom: 30px;
-	margin-top: 35px;
+	margin-bottom: 50px;
+	margin-top: 40px;
 	overflow: auto;
 }
 
 #cboxTitle {
-	color: #949494;
-	font-weight: 800;
+	color: #555;
 	font-size: 14px;
 	left: 0;
 	position: absolute;
@@ -4522,6 +4501,7 @@ a.icon-udarrow:hover {
 	background: none;
 	border: 0;
 	bottom: 8px;
+	color: #555;
 	font-size: 14px;
 	left: 57px;
 	min-width: initial;
@@ -4600,6 +4580,12 @@ a.icon-udarrow:hover {
 #branches-page .branches input {
 	margin: auto 10px;
 	width: initial;
+}
+
+#branches-page button {
+	display: inline-block;
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 #branches-page ul {
@@ -4707,13 +4693,10 @@ body .ui-tooltip {
 }
 
 /* Styling for simpl_pages module */
-div#pages-container {
-	width: 96%;
-}
-
 #pages-container {
 	font-size: 110%;
 	margin: 0 auto;
+	width: 96%;
 }
 
 #pages_tabs {
@@ -5832,24 +5815,34 @@ div.widget {
 /* ------------------ */
 
 /* Styles for nocensus module */
-.nocensus {
-	margin:10px auto;
-	min-width: 610px;
-	width:40%;
+#nocensus-page .nocensus {
+ 	min-width: 100px;
+	vertical-align: top;
+ }
+
+#nocensus-page .nocensus label:nth-of-type(2n),
+#nocensus-page .nocensus label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
 }
 
-.nocensus label {
+#nocensus-page .nocensus input {
+	margin: auto 10px;
+	width: initial;
+}
+
+#nocensus-page .helpcontent {
+	font-size: inherit;
+    margin: 0;
+}
+
+#nocensus-page button {
 	display: inline-block;
-	width: 100px;
-}
-
-.nocensus label + input {
-	margin: 0 7px;
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 #nocensus_result {
-	border-bottom: 1px solid;
-	border-top: 1px solid;
 	list-style: none;
 	margin: auto;
 	padding:20px 0 20px 0;
@@ -6022,6 +6015,9 @@ div.widget {
 	.media-list-item {
  		width: 95%; /* one per row */
  	}
+	#faq-page {
+		width: 95%;
+	}
 
  }
 

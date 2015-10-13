@@ -61,7 +61,7 @@ class WT_I18N {
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
-	public static function init($locale=null) {
+	public static function init($locale = null) {
 		global $WT_SESSION;
 
 		// The translation libraries only work with a cache.
@@ -78,53 +78,55 @@ class WT_I18N {
 		Zend_Locale::setCache(self::$cache);
 		Zend_Translate::setCache(self::$cache);
 
-		$installed_languages=self::installed_languages();
-		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
+		$installed_languages = self::installed_languages();
+		$used_languages = self::used_languages();
+
+		if (is_null($locale) || !array_key_exists($locale, $installed_languages) || !array_key_exists($locale, $used_languages)) {
 			// Automatic locale selection.
-			if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $installed_languages)) {
+			if (isset($_GET['lang']) && array_key_exists($_GET['lang'], $installed_languages) && array_key_exists($_GET['lang'], $used_languages)) {
 				// Requested in the URL?
-				$locale=$_GET['lang'];
+				$locale = $_GET['lang'];
 				unset($_GET['lang']);
 				if (WT_USER_ID) {
 					set_user_setting(WT_USER_ID, 'language', $locale);
 				}
-			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
+			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages) && array_key_exists($WT_SESSION->locale, $used_languages)) {
 				// Rembered from a previous visit?
-				$locale=$WT_SESSION->locale;
+				$locale = $WT_SESSION->locale;
 			} else {
 				// Browser preference takes priority over gedcom default
 				if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-					$prefs=explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
+					$prefs = explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
 				} else {
-					$prefs=array();
+					$prefs = array();
 				}
 				if (WT_GED_ID) {
 					// Add the tree’s default language as a low-priority
-					$locale=get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
-					$prefs[]=$locale.';q=0.2';
+					$locale = get_gedcom_setting(WT_GED_ID, 'LANGUAGE');
+					$prefs[] = $locale . ';q=0.2';
 				}
-				$prefs2=array();
+				$prefs2 = array();
 				foreach ($prefs as $pref) {
-					list($l, $q)=explode(';q=', $pref.';q=1.0');
-					$l=preg_replace_callback(
+					list($l, $q) = explode(';q=', $pref . ';q=1.0');
+					$l = preg_replace_callback(
 						'/_[a-z][a-z]$/',
 						function($x) { return strtoupper($x[0]); },
 						str_replace('-', '_', $l)
 					); // en-gb => en_GB
 					if (array_key_exists($l, $prefs2)) {
-						$prefs2[$l]=max((float)$q, $prefs2[$l]);
+						$prefs2[$l] = max((float)$q, $prefs2[$l]);
 					} else {
-						$prefs2[$l]=(float)$q;
+						$prefs2[$l] = (float)$q;
 					}
 				}
 				// Ensure there is a fallback.
 				if (!array_key_exists('en_US', $prefs2)) {
-					$prefs2['en_US']=0.01;
+					$prefs2['en_US'] = 0.01;
 				}
 				arsort($prefs2);
 				foreach (array_keys($prefs2) as $pref) {
-					if (array_key_exists($pref, $installed_languages)) {
-						$locale=$pref;
+					if (array_key_exists($pref, $installed_languages) && array_key_exists($pref, $used_languages)) {
+						$locale = $pref;
 						break;
 					}
 				}
@@ -193,14 +195,14 @@ class WT_I18N {
 		global $TEXT_DIRECTION;
 		$TEXT_DIRECTION = WT_I18N::scriptDirection(WT_I18N::languageScript($locale));
 
-		self::$locale=$locale;
-		self::$dir=$TEXT_DIRECTION;
+		self::$locale = $locale;
+		self::$dir = $TEXT_DIRECTION;
 
 		// I18N: This punctuation is used to separate lists of items.
-		self::$list_separator=WT_I18N::translate(', ');
+		self::$list_separator = WT_I18N::translate(', ');
 
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
-		self::$collation=WT_I18N::translate('utf8_unicode_ci');
+		self::$collation = WT_I18N::translate('utf8_unicode_ci');
 
 		// Non-latin numbers may require non-latin digits
 		try {
@@ -219,22 +221,22 @@ class WT_I18N {
 
 	// Check which languages are installed
 	public static function installed_languages() {
-		$mo_files=glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
-		$cache_key=md5(serialize($mo_files));
+		$mo_files = glob(WT_ROOT . 'language' . DIRECTORY_SEPARATOR . '*.mo');
+		$cache_key = md5(serialize($mo_files));
 
 		if (!($installed_languages=self::$cache->load($cache_key))) {
-			$installed_languages=array();
+			$installed_languages = array();
 			foreach ($mo_files as $mo_file) {
 				if (preg_match('/^(([a-z][a-z][a-z]?)([-_][A-Z][A-Z])?([-_][A-Za-z]+)*)\.mo$/', basename($mo_file), $match)) {
 					// Sort by the transation of the base language, then the variant.
 					// e.g. English|British English, Portuguese|Brazilian Portuguese
 					$tmp1 = WT_I18N::languageName($match[1]);
-					if ($match[1]==$match[2]) {
-						$tmp2=$tmp1;
+					if ($match[1] == $match[2]) {
+						$tmp2 = $tmp1;
 					} else {
 						$tmp2 = WT_I18N::languageName($match[2]);
 					}
-					$installed_languages[$match[1]]=$tmp2.'|'.$tmp1;
+					$installed_languages[$match[1]] = $tmp2.'|'.$tmp1;
 				}
 			}
 			if (empty($installed_languages)) {
@@ -246,10 +248,10 @@ class WT_I18N {
 			foreach ($installed_languages as &$value) {
 				// The locale database doesn't have translations for certain
 				// "default" languages, such as zn_CH.
-				if (substr($value, -1)=='|') {
-					list($value,)=explode('|', $value);
+				if (substr($value, -1) == '|') {
+					list($value,) = explode('|', $value);
 				} else {
-					list(,$value)=explode('|', $value);
+					list(,$value) = explode('|', $value);
 				}
 			}
 			self::$cache->save($installed_languages, $cache_key);

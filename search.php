@@ -122,7 +122,16 @@ echo '<div id="search-page">
 				if (isset ($controller->srnote)) echo 'checked="checked"';
 				echo ' value="yes" id="srnote" name="srnote">
 					<label for="srnote">' ,  WT_I18N::translate('Shared notes'), '</label>
-			</p></div>
+				</p>';
+				if (array_key_exists('stories', WT_Module::getActiveModules())) {
+					echo '<p>
+						<input type="checkbox"';
+						if (isset ($controller->srstor)) echo 'checked="checked"';
+						echo ' value="yes" id="srstor" name="srstor">
+							<label for="srstor">' ,  WT_I18N::translate('Stories'), '</label>
+					</p>';
+				}
+			echo '</div>
 			<div class="label">' , WT_I18N::translate('Associates'), '</div>
 			<div class="value"><input type="checkbox" id="showasso" name="showasso" value="on"';
 				if ($controller->showasso == 'on') echo ' checked="checked"';
@@ -130,7 +139,7 @@ echo '<div id="search-page">
 		}
 		//========== Search and replace Search Form ==========
 		if ($controller->action == "replace") {
-			if (WT_USER_GEDCOM_ADMIN) { 
+			if (WT_USER_GEDCOM_ADMIN) {
 				echo '<div class="label">', WT_I18N::translate('Search for'), '</div>
 					<div class="value"><input tabindex="1" id="query" name="query" value="" type="text" autofocus>', print_specialchar_link('query'), '</div>
 					<div class="label">',  WT_I18N::translate('Replace with'), '</div>

@@ -79,10 +79,11 @@ $controller
 								if ($soundex_dm) echo ' checked="checked"'; echo '>
 						';
 					?>
-		</div>	
-		<div class="btn btn-primary" style="display: inline-block;">
-			<button type="submit" value="<?php echo $ged; ?>"><?php echo WT_I18N::translate('View'); ?></button>
 		</div>
+		<button class="btn btn-primary show" type="submit">
+			<i class="fa fa-eye"></i>
+			<?php echo WT_I18N::translate('show'); ?>
+		</button>
 	</form>
 	<hr style="clear:both;">
 	<!-- end of form -->

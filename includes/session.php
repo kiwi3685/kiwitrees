@@ -430,7 +430,7 @@ $GEDCOM=WT_GEDCOM;
 
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', WT_I18N::init());
-$WT_SESSION->locale=WT_I18N::$locale;
+$WT_SESSION->locale = WT_I18N::$locale;
 
 // Non-latin languages may need non-latin digits
 define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem'));

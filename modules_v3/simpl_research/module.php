@@ -53,31 +53,21 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 	public function hasSidebarContent() {
 		return true;
 	}
-	
+
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
 	}
-	
+
 	// Extend WT_Module_Config
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_config':
 			$this->config();
 			break;
-		case 'admin_reset':
-			$this->research_reset();
-			$this->config();
-			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
 		}
-	}
-
-	// Reset all settings to default
-	private function research_reset() {
-		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'RESEARCH%'")->execute();
-		AddToLog($this->getTitle().' reset to default values', 'config');
 	}
 
 	// Implement WT_Module_Config
@@ -86,7 +76,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 	}
 
 	// Configuration page
-	private function config() {		
+	private function config() {
 		require WT_ROOT.'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Page;
 		$controller
@@ -95,29 +85,44 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			->pageHeader();
 
 		if (WT_Filter::postBool('save')) {
-			set_module_setting($this->getName(), 'RESEARCH_PLUGINS', serialize(WT_Filter::post('NEW_RESEARCH_PLUGINS')));				
+			set_module_setting($this->getName(), 'RESEARCH_PLUGINS', serialize(WT_Filter::post('NEW_RESEARCH_PLUGINS')));
 			AddToLog($this->getTitle().' config updated', 'config');
-		}			
+		}
 
-		$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));			
-		$html = '	
-			<h2>'.$controller->getPageTitle().'</h2>
-			<form method="post" name="configform" action="'.$this->getConfigLink().'">						
-				<input type="hidden" name="save" value="1">
-				<h3>'.WT_I18N::translate('Check the plugins you want to use in the sidebar').'</h3>
-				<div id="simpl_research_links">';
-					foreach ($this->getPluginList() as $plugin) {
-						if (is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
-						if(!isset($value)) $value = '1';
-						$html .= '<div class="field">'.two_state_checkbox('NEW_RESEARCH_PLUGINS['.get_class($plugin).']', $value).'<label>'.$plugin->getName().'</label></div>';
-					}
-				$html .= '
-					</div>
-					<div class="buttons">
-						<input type="submit" value="'.WT_I18N::translate('Save').'" />
-						<input type="reset" value="'.WT_I18N::translate('Reset').'" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default. Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';"/>
-					</div>
-			</form>';
+		$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
+		$html = '
+			<div id="' . $this->getName() . '">
+				<h2>'.$controller->getPageTitle().'</h2>
+				<h3>' . WT_I18N::translate('Check the plugins you want to use in the sidebar') . '</h3>
+				<form method="post" name="configform" action="'.$this->getConfigLink().'">
+					<input type="hidden" name="save" value="1">
+					<h4>' . WT_I18N::translate('Select all') .'
+						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
+					</h4>
+					<div id="simpl_research_links">';
+						foreach ($this->getPluginList() as $plugin) {
+							if (is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) {
+								$value = $RESEARCH_PLUGINS[get_class($plugin)];
+							} else {
+								$value = '0';
+							}
+							$html .= '
+								<div class="field">' .
+									checkbox('NEW_RESEARCH_PLUGINS['  .get_class($plugin) . ']', $value, ' class="check"').'
+									<label>'.
+										$plugin->getName().'
+									</label>
+								</div>
+							';
+						}
+					$html .= '
+						</div>
+						<button class="btn btn-primary save" type="submit">
+							<i class="fa fa-floppy-o"></i>'.
+							WT_I18N::translate('save').'
+						</button>
+				</form>
+			</div>';
 		// output
 		ob_start();
 		$html .= ob_get_clean();
@@ -140,52 +145,76 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			');
 			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
-			$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
-			$link = '';
-			$sublinks = '';
-			foreach ($this->getPluginList() as $plugin) {
-				if(is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) $value = $RESEARCH_PLUGINS[get_class($plugin)];
-				if(!isset($value)) $value = '1';
-				if($value == true) {
-					$name = false; // only use the first fact with a NAME tag.
-					foreach ($globalfacts as $key=>$value) {
-						$fact = $value->getTag();
-						if ($fact == "NAME" && !$name) {
-							$primary = $this->getPrimaryName($value);
-							if($primary) {
-								$name = true;
-								// create plugin vars						
-								$givn 		= $this->encode($primary['givn'], $plugin->encode_plus()); // all given names
-								$given		= explode(" ", $primary['givn']);
-								$first		= $given[0]; // first given name
-								$middle		= count($given) > 1 ? $given[1] : ""; // middle name (second given name)
-								$surn 		= $this->encode($primary['surn'], $plugin->encode_plus()); // surname without prefix
-								$surname	= $this->encode($primary['surname'], $plugin->encode_plus()); // full surname (with prefix)
-								$fullname 	= $plugin->encode_plus() ? $givn.'+'.$surname : $givn.'%20'.$surname; // full name
-								$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
-								$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
-								$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
+				$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
+				$link = '';
+				$sublinks = '';
+				foreach ($this->getPluginList() as $plugin) {
+					if(is_array($RESEARCH_PLUGINS) && array_key_exists(get_class($plugin), $RESEARCH_PLUGINS)) {
+						$value = $RESEARCH_PLUGINS[get_class($plugin)];
+					} else {
+						 $value = '0';
+					}
+					if($value == 1) {
+						$name = false; // only use the first fact with a NAME tag.
+						foreach ($globalfacts as $key=>$value) {
+							$fact = $value->getTag();
+							if ($fact == "NAME" && !$name) {
+								$primary = $this->getPrimaryName($value);
+								if($primary) {
+									$name = true;
+									// create plugin vars
+									$givn 		= $this->encode($primary['givn'], $plugin->encode_plus()); // all given names
+									$given		= explode(" ", $primary['givn']);
+									$first		= $given[0]; // first given name
+									$middle		= count($given) > 1 ? $given[1] : ""; // middle name (second given name)
+									$surn 		= $this->encode($primary['surn'], $plugin->encode_plus()); // surname without prefix
+									$surname	= $this->encode($primary['surname'], $plugin->encode_plus()); // full surname (with prefix)
+									$fullname 	= $plugin->encode_plus() ? $givn.'+'.$surname : $givn.'%20'.$surname; // full name
+									$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
+									$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
+									$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
+								}
 							}
 						}
-					}
-					if($sublinks) {
-						$html.='<li><a class="mainlink" href="'.htmlspecialchars($link).'"><span class="ui-icon ui-icon-triangle-1-e left"></span>'.$plugin->getName().'</a>';
-						$html .= '<ul class="sublinks">';
-						foreach ($sublinks as $sublink) {
-							$html.='<li><a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank"><span class="ui-icon ui-icon-triangle-1-e left"></span>'.$sublink['title'].'</a></li>';
+						if($sublinks) {
+							$html .= '
+								<li>
+									<a class="mainlink" href="'.htmlspecialchars($link).'">
+										<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
+										$plugin->getName().'
+									</a>
+									<ul class="sublinks">';
+										foreach ($sublinks as $sublink) {
+											$html .= '
+												<li>
+													<a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank">
+														<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
+														$sublink['title'].'
+													</a>
+												</li>
+											';
+										}
+									$html .= '</ul>
+								</li>
+							';
 						}
-						$html .= '</ul></li>';
-					}
-					else { // default
-						$html.='<li><a class="research_link" href="'.htmlspecialchars($link).'" target="_blank"><span class="ui-icon ui-icon-triangle-1-e left"></span>'.$plugin->getName().'</a></li>';
+						else { // default
+							$html .= '
+								<li>
+									<a class="research_link" href="'.htmlspecialchars($link).'" target="_blank">
+										<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
+										$plugin->getName().'
+									</a>
+								</li>
+							';
+						}
 					}
 				}
-			}
-			$html.= '</ul>';
+			$html .=  '</ul>';
 			return $html;
 		}
 	}
-	
+
 	private function encode($var, $plus) {
 		$var = rawurlencode($var);
 		return $plus ? str_replace("%20", "+", $var) : $var;
@@ -219,7 +248,6 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$all_names=$dummy->getAllNames();
 		return $all_names[0];
 	}
-
 
 }
 

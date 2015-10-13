@@ -762,7 +762,7 @@ function search_sources($query, $geds, $match) {
 	$sql.=' ORDER BY ged_id';
 
 	$list=array();
-	$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 	$GED_ID=WT_GED_ID;
 	foreach ($rows as $row) {
 		// Switch privacy file if necessary
@@ -850,6 +850,7 @@ function search_notes($query, $geds, $match) {
 		}
 		$list[]=$record;
 	}
+
 	// Switch privacy file if necessary
 	if ($GED_ID!=WT_GED_ID) {
 		$GEDCOM=WT_GEDCOM;
@@ -919,6 +920,49 @@ function search_repos($query, $geds, $match) {
 		load_gedcom_settings(WT_GED_ID);
 	}
 	return $list;
+}
+
+// Search the stories module contents
+// $query - array of search terms
+// $geds - array of gedcoms to search
+// $match - AND or OR
+function search_stories($query, $geds, $match) {
+	global $GEDCOM;
+
+	// No query => no results
+	if (!$query) {
+		return array();
+	}
+
+	// Convert the query into a SQL expression
+	$querysql = array();
+	// Convert the query into a regular expression
+	$queryregex = array();
+
+	foreach ($query as $q) {
+		$queryregex[]	= preg_quote(utf8_strtoupper($q), '/');
+		$querysql[]		= "setting_value LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."' OR setting_name LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
+	}
+
+    $sql ="
+        SELECT kt_block.`block_id` AS block_id, `gedcom_id` AS ged_id
+         FROM kt_block JOIN kt_block_setting
+         ON kt_block.`block_id` = kt_block_setting.`block_id`
+		 WHERE (" . implode($match, $querysql) . ")
+         AND `module_name`='stories'
+         AND `gedcom_id` IN (" . implode(',', $geds) . ")
+         AND `setting_name` LIKE 'story_body'
+	";
+
+	// Group results by gedcom, to minimise switching between privacy files
+	$sql .=' ORDER BY ged_id';
+
+	$list     = array();
+	$stories  = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($stories as $story) {
+        $list[]   = get_block_setting($story['block_id'], 'xref');
+	}
+	return $stories;
 }
 
 //-- function to find the gedcom id for the given rin
