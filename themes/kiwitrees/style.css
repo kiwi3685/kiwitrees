@@ -3153,14 +3153,6 @@ div[id^="caldiv"] td {
 	color: #009afe;
 }
 
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-	padding: .3em .5em;
-}
-
-.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text {
-     padding: 0;
-}
-
 /* jQuery.datatable styling general over-rides */
 .odd {
 	background-color: #fff;
