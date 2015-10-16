@@ -1186,7 +1186,7 @@ function print_addnewnote_link($element_id) {
 
 /// Used in GEDFact CENS assistant
 function print_addnewnote_assisted_link($element_id, $pid) {
-//	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
+	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;" target="_blank">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
 }
 
 function print_editnote_link($note_id) {

@@ -852,35 +852,7 @@ case 'addnoteaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote_assisted':
-	$controller
-		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
-		->pageHeader();
-
-	echo '<div id="edit_interface-page">
-		<h3>', $controller->getPageTitle(), '
-			&nbsp;&nbsp;
-			<a class="faq_link" href="http://kiwitrees.net/?p=4670" alt="' . WT_I18N::translate('View FAQ for this page.') . '" target="_blank">' .
-				WT_I18N::translate('View FAQ for this page.') . '
-				<i class="fa fa-comments-o"></i>
-			</a>
-		</h3
-	';
-
-	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
-	global $pid;
-
-	echo '
-		<div class="center" style="width:100%;">
-			<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-				<input type="hidden" name="action" value="addnoteaction_assisted">
-				<input type="hidden" name="noteid" value="newnote">
-				<input id="pid_array" type="hidden" name="pid_array" value="none">
-				<input id="pid" type="hidden" name="pid" value=', $pid, '>',
-					require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php','
-			</form>
-		</div>
-		<div style="clear:both;"></div>
-	</div>';
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/CENS_ctrl.php';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////

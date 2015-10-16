@@ -506,10 +506,6 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		$brpos = strpos($text, '<br>');
 		if (!$npage) {
 			$data .= '<div class="fact_NOTE"><span class="label">';
-			if ($brpos !== false) {
-				if ($EXPAND_NOTES) $plusminus = 'minus'; else $plusminus = 'plus';
-				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
-			}
 
 			// Check if Shared Note -----------------------------
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
@@ -521,6 +517,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 
 		if ($brpos !== false) {
 			$data .= '<span class="field" dir="auto">'.substr($text, 0, $brpos).'</span>';
+			if ($brpos !== false) {
+				if ($EXPAND_NOTES) {
+					$plusminus = 'minus';
+				} else {
+					$plusminus = 'plus';
+				}
+				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
+			}
 			if ($npage) {
 				$data .= substr($text, $brpos + 4) . "</div>";
 			} else {

@@ -3112,6 +3112,10 @@ div[id^="caldiv"] td {
 	border-bottom: 2px solid #555;
 }
 
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text {
+    padding: 0;
+}
+
 .ui-tabs .ui-tabs-nav li a span {
     display: block;
 }
@@ -3837,7 +3841,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/buttons/head.png);
 }
 
-
 .icon-button_note {
 	width: 17px;
 	height: 20px;
@@ -4044,7 +4047,7 @@ a.icon-udarrow:hover {
 .fa-bars:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-bars */
 .fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-times */
 .fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-times */
-.fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-save */
+.fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-save */
 .fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-save */
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
@@ -4097,7 +4100,7 @@ a.icon-udarrow:hover {
 .icon-lsuparrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-up */
 .icon-source			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-book */
 .icon-media				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-camera-retro */
-.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-times */
+.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000; vertical-align: middle;} /* fa-times */
 .icon-resn-confidential {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-ban */
 .icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
 .icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
@@ -4240,7 +4243,6 @@ a.icon-udarrow:hover {
 
 #edit_interface-page input[type="text"],
 #edit_interface-page #NAME_display {
-	line-height: 2;
 	vertical-align: top;
 	width: 240px;
 }

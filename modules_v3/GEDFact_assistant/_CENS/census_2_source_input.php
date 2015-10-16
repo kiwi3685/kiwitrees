@@ -959,111 +959,102 @@ if (!defined('WT_WEBTREES')) {
 
 </script>
 
-<div class="optionbox cens_sour">
-	<div class="cens_sour_country">
-		<span><?php echo WT_I18N::translate('Country'); ?><br></span>
-		<select id="censCtry" name="censCtry" >
-			<option id="UKOPT" name="UKOPT" value="UK">UK</option>
-			<option id="USOPT" name="USOPT" value="USA">USA</option>
-			<option id="FROPT" name="FROPT" value="FR">FR</option>
-		</select>
+<div class="cens_sour">
+	<div class="cens_ctry-yr">
+		<div class="cens_sour_country">
+			<div><?php echo WT_I18N::translate('Country'); ?></div>
+			<select id="censCtry" name="censCtry" >
+				<option id="UKOPT" name="UKOPT" value="UK">UK</option>
+				<option id="USOPT" name="USOPT" value="USA">USA</option>
+				<option id="FROPT" name="FROPT" value="FR">FR</option>
+			</select>
 
-		<script>
-		if (TheCenYear=='') {
-			var censyear = new DynamicOptionList();
-			censyear.addDependentFields("censCtry","censYear");
-			censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
-			censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940");
-			censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
-			censyear.forValue("UK").setDefaultOptions("");
-			censyear.forValue("UK").setDefaultOptions("");
-			censyear.forValue("USA").setDefaultOptions("");
-		}
-		else if (TheCenYear!='' && TheCenCtry=='UK') {
-			var censyear = new DynamicOptionList();
-			censyear.addDependentFields("censCtry","censYear");
-			censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", TheCenYear);
-			censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940");
-			censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
-			censyear.forValue("FR").setDefaultOptions("");
-			censyear.forValue("UK").setDefaultOptions(TheCenYear);
-			censyear.forValue("USA").setDefaultOptions("");
-			document.getElementById("UKOPT").selected = true;
-			document.getElementById("USOPT").selected = false;
-			document.getElementById("FROPT").selected = false;
-		}
-		else if (TheCenYear!='' && TheCenCtry=='USA') {
-			var censyear = new DynamicOptionList();
-			censyear.addDependentFields("censCtry","censYear");
-			censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
-			censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940", TheCenYear);
-			censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
-			censyear.forValue("FR").setDefaultOptions("");
-			censyear.forValue("UK").setDefaultOptions("");
-			censyear.forValue("USA").setDefaultOptions(TheCenYear);
-			document.getElementById("UKOPT").selected = false;
-			document.getElementById("USOPT").selected = true;
-			document.getElementById("FROPT").selected = false;
-		}
-		else if (TheCenYear!='' && TheCenCtry=='FR') {
-			var censyear = new DynamicOptionList();
-			censyear.addDependentFields("censCtry","censYear");
-			censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
-			censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940", TheCenYear);
-			censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
-			censyear.forValue("USA").setDefaultOptions("");
-			censyear.forValue("UK").setDefaultOptions("");
-			censyear.forValue("FR").setDefaultOptions(TheCenYear);
-			document.getElementById("UKOPT").selected = false;
-			document.getElementById("FROPT").selected = true;
-			document.getElementById("USOPT").selected = false;
-		}
-		</script>
-
-		<div>
-			<table><tr><td class="nowrap">
-			<br>
-			<?php
-				// echo "&nbsp;".WT_I18N::translate('Date').":&nbsp;&nbsp;";
-				echo "<font size=2>";
-			// Input renamed as type=hidden to hide the date field ----- //
-			// Note Input field is still required ---------------------- //
-			?>
-				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>" readonly="readonly">
-			</font>
-			</td></tr></table>
+			<script>
+			if (TheCenYear=='') {
+				var censyear = new DynamicOptionList();
+				censyear.addDependentFields("censCtry","censYear");
+				censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
+				censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940");
+				censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
+				censyear.forValue("UK").setDefaultOptions("");
+				censyear.forValue("UK").setDefaultOptions("");
+				censyear.forValue("USA").setDefaultOptions("");
+			}
+			else if (TheCenYear!='' && TheCenCtry=='UK') {
+				var censyear = new DynamicOptionList();
+				censyear.addDependentFields("censCtry","censYear");
+				censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", TheCenYear);
+				censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940");
+				censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
+				censyear.forValue("FR").setDefaultOptions("");
+				censyear.forValue("UK").setDefaultOptions(TheCenYear);
+				censyear.forValue("USA").setDefaultOptions("");
+				document.getElementById("UKOPT").selected = true;
+				document.getElementById("USOPT").selected = false;
+				document.getElementById("FROPT").selected = false;
+			}
+			else if (TheCenYear!='' && TheCenCtry=='USA') {
+				var censyear = new DynamicOptionList();
+				censyear.addDependentFields("censCtry","censYear");
+				censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
+				censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940", TheCenYear);
+				censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
+				censyear.forValue("FR").setDefaultOptions("");
+				censyear.forValue("UK").setDefaultOptions("");
+				censyear.forValue("USA").setDefaultOptions(TheCenYear);
+				document.getElementById("UKOPT").selected = false;
+				document.getElementById("USOPT").selected = true;
+				document.getElementById("FROPT").selected = false;
+			}
+			else if (TheCenYear!='' && TheCenCtry=='FR') {
+				var censyear = new DynamicOptionList();
+				censyear.addDependentFields("censCtry","censYear");
+				censyear.forValue("UK").addOptions( "", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
+				censyear.forValue("USA").addOptions( "", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", "1940", TheCenYear);
+				censyear.forValue("FR").addOptions( "", "1876", "1881", "1886", "1891", "1896", "1901", "1906", "1911", "1914", "1921", "1926","1931", "1936", "1941", "1946", "1951");
+				censyear.forValue("USA").setDefaultOptions("");
+				censyear.forValue("UK").setDefaultOptions("");
+				censyear.forValue("FR").setDefaultOptions(TheCenYear);
+				document.getElementById("UKOPT").selected = false;
+				document.getElementById("FROPT").selected = true;
+				document.getElementById("USOPT").selected = false;
+			}
+			</script>
+			<input type="hidden" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>" readonly="readonly">
 		</div>
-	</div>
 
-	<div class="cens_sour_year">
-		<span><?php echo WT_I18N::translate('Year'); ?><br></span>
-		<select style = "background:#ffaaaa;";
-				onchange = "if (this.options[this.selectedIndex].value!='') {
-								changeYear(this.options[this.selectedIndex].value);
-							}"
-				id="censYear" name="censYear">
-		</select>
-		<input type="hidden" id="prevYear" name="prevYear" value="">&nbsp;&nbsp;&nbsp;
+		<div class="cens_sour_year">
+			<div><?php echo WT_I18N::translate('Year'); ?></div>
+			<select style = "background:#ffaaaa;";
+					onchange = "if (this.options[this.selectedIndex].value!='') {
+									changeYear(this.options[this.selectedIndex].value);
+								}"
+					id="censYear" name="censYear">
+			</select>
+			<input type="hidden" id="prevYear" name="prevYear" value="">
+		</div>
 	</div>
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></div>
+			<p class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></p>
 			<script>
 				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ',WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>">');
 			</script>
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?></div>
+			<p class="cens_sour_2"><?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?></p>
 			<input id="citation" name="citation" type="text" value="<?php echo ""; ?>">
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_I18N::translate('Place'); ?></div>
+			<p class="cens_sour_2"><?php echo WT_I18N::translate('Place'); ?></p>
 			<input id="locality" name="locality" type="text" value="<?php echo ""; ?>">
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_I18N::translate('Notes'); ?></div>
+			<p class="cens_sour_2"><?php echo WT_I18N::translate('Notes'); ?></p>
 			<input id="notes" name="notes" type="text" value="<?php echo ""; ?>">
 		</div>
 	</div>
+
+
 </div>

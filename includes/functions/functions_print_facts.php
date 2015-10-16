@@ -502,6 +502,8 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$data .= '<span class="label">';
 				$elementID = $sid."-".(int)(microtime()*1000000);
 				$src_media = trim(get_gedcom_value('OBJE', '1', $source->getGedcomRecord()), '@');
+				$data .= WT_I18N::translate('Source').':</span> <span class="field">';
+				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';
 				if ($EXPAND_SOURCES) {
 					$plusminus='icon-minus';
 				} else {
@@ -510,8 +512,6 @@ function print_fact_sources($factrec, $level, $return=false) {
 				if ($lt>0 || $src_media) {
 					$data .= '<a href="#" onclick="return expand_layer(\''.$elementID.'\');"><i id="'.$elementID.'_img" class="'.$plusminus.'"></i></a> ';
 				}
-				$data .= WT_I18N::translate('Source').':</span> <span class="field">';
-				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';
 				$data .= '</span>';
 				$data .= '</div>';
 				$data .= "<div id=\"$elementID\"";

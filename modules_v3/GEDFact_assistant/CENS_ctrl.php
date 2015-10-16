@@ -26,22 +26,25 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-$controller=new WT_Controller_Individual();
+$controller = new WT_Controller_Individual();
 
 global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full, $famid;
 echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css" rel="stylesheet">';
 
-$summary=$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2);
+$summary = $controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2);
 if (!($controller->record->isDead())) {
 	// If alive display age
-	$bdate=$controller->record->getBirthDate();
+	$bdate = $controller->record->getBirthDate();
 	$age = WT_Date::GetAgeGedcom($bdate);
-	if ($age!="") {
-		$summary.= "<span class=\"label\">".WT_I18N::translate('Age').":</span><span class=\"field\"> ".get_age_at_event($age, true)."</span>";
+	if ($age != '') {
+		$summary .= '
+			<span class="label">' . WT_I18N::translate('Age') . ':</span>
+			<span class="field">' . get_age_at_event($age, true) . '</span>
+		';
 	}
 }
-$summary.=$controller->record->format_first_major_fact(WT_EVENTS_DEAT, 2);
+$summary .= $controller->record->format_first_major_fact(WT_EVENTS_DEAT, 2);
 
 $controller->census_assistant();

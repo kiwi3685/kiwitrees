@@ -81,6 +81,7 @@ global $pid;
             <input type="hidden" name="noteid" value="newnote">
             <input id="pid_array" type="hidden" name="pid_array" value="none">
             <input id="pid" type="hidden" name="pid" value=' . $pid . '>
+
             <!-- Header of assistant window ===================================================== -->
             <div class="cens_header">
                 <h3>
@@ -90,36 +91,33 @@ global $pid;
                     <div class="head_summary"><?php echo $summary; ?></div>
                 <?php } ?>
             </div>
-            <div class="cens_left">
-                <!-- Census & Source Information Area =============================================== -->
-                <div class="cens_container">
+            <!-- Census & Source Information Area =============================================== -->
+            <div class="cens_container">
+                <span>
                     <?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_2_source_input.php'; ?>
-                </div>
-                <!-- Census Text Input Area ========================================================= -->
-                <div class="cens_textinput">
-                	<div class="cens_textinput_left">
-                		<input type="button" value="<?php echo WT_I18N::translate('Add/Insert Blank Row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');">
-                	</div>
-                	<div class="cens_textinput_right">
-                		<?php echo WT_I18N::translate('Add'); ?>
-                		<input  type="radio" name="totallyrad" value="0" checked="checked">
-                	</div>
-                	<!--  Census Add Rows Area ================================================== -->
-                    <div class="cens_addrows">
-                    	<?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_5_input.php'; ?>
-                    </div>
-                </div>
+                </span>
+                <hr>
                 <!-- Proposed Census Text Area ============================================== -->
-                <div class="cens_result">
-                    <span>
-                        <?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_4_text.php'; ?>
-                    </span>
-                </div>
+                <span>
+                    <?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_4_text.php'; ?>
+                </span>
             </div>
-            <div class="cens_right">
-                <!-- Search  and Add Family Members Area ============================================ -->
-                <div class="cens_search">
-                        <?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_3_search_add.php'; ?>
+            <!-- Search  and Add Family Members Area ============================================ -->
+            <div class="cens_search">
+                    <?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_3_search_add.php'; ?>
+            </div>
+            <!-- Census Text Input Area ========================================================= -->
+            <div class="optionbox cens_textinput">
+            	<div class="cens_textinput_left">
+            		<input type="button" value="<?php echo WT_I18N::translate('Add/Insert Blank Row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');">
+            	</div>
+            	<div class="cens_textinput_right">
+            		<?php echo WT_I18N::translate('Add'); ?>
+            		<input  type="radio" name="totallyrad" value="0" checked="checked">
+            	</div>
+            	<!--  Census Add Rows Area ================================================== -->
+                <div class="cens_addrows">
+                	<?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_5_input.php'; ?>
                 </div>
             </div>
 		</form>
