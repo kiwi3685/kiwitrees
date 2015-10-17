@@ -38,7 +38,7 @@ $censdate   = new WT_Date('31 MAR 1901');
 $censyear   = $censdate->date1->y;
 $ctry       = 'UK';
 
-// $married    = WT_Date::Compare($censdate, $marrdate);
+// $married = WT_Date::Compare($censdate, $marrdate);
 // === Set $married to "Not married as we only want the Birth name here" ===
 $married    = -1;
 
@@ -93,7 +93,7 @@ global $pid;
             <div class="cens_left">
                 <!-- Census & Source Information Area =============================================== -->
                 <div class="cens_container">
-                    <?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_2_source_input.php'; ?>
+                    <?php require WT_ROOT . WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_2_source_input.php'; ?>
                 </div>
                 <!-- Census Text Input Area ========================================================= -->
                 <div class="cens_textinput">
@@ -112,7 +112,7 @@ global $pid;
                 <!-- Proposed Census Text Area ============================================== -->
                 <div class="cens_result">
                     <span>
-                        <?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_4_text.php'; ?>
+                        <?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_4_text.php'; ?>
                     </span>
                 </div>
             </div>

@@ -31,7 +31,6 @@ $controller = new WT_Controller_Individual();
 global $tabno, $linkToID, $SEARCH_SPIDER;
 global $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full, $famid;
-echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css" rel="stylesheet">';
 
 $summary = $controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2);
 if (!($controller->record->isDead())) {
