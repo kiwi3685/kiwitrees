@@ -47,7 +47,7 @@ if (!defined('WT_WEBTREES')) {
 			<i class="fa fa-eye"></i>
 			<?php echo WT_I18N::translate('preview'); ?>
 		</button>
-		<button class="btn btn-primary" type="button" onclick="caSave();" >
+		<button class="btn btn-primary" type="submit" onclick="caSave();" >
 			<i class="fa fa-save"></i>
 			<?php echo WT_I18N::translate('save'); ?>
 		</button>
