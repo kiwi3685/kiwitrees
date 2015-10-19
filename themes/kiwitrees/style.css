@@ -3372,7 +3372,7 @@ div[id^="caldiv"] td {
 }
 
 .nav_content .facts_label {
-	width: 75px;
+	width: initial;
 }
 
 .famnav_title {
@@ -6170,6 +6170,9 @@ textarea#NOTE {
 	#faq-page {
 		width: 95%;
 	}
+	.cens_left {
+		width: 95%; /* census assistant */
+	}
 
  }
 
@@ -6177,6 +6180,10 @@ textarea#NOTE {
  	.media-list-item {
  		width: 45%; /* two per row */
  	}
+	.cens_left {
+		width: 65%; /* census assistant */
+	}
+
  }
 
  @media (min-width: 1681px) {
