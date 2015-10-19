@@ -986,15 +986,28 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		print_add_layer('NOTE', 1);
 		print_add_layer('SHARED_NOTE', 1);
 	}
-	echo '<p id="save-cancel">';
-	echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('save'), '">';
-	if (preg_match('/^add(child|spouse|newparent)/', $nextaction)) {
-		echo '<input type="submit" class="save" value="', /* I18N: button label */ WT_I18N::translate('go to new individual'), '" onclick="document.addchildform.goto.value=\'new\';">';
-	}
-	echo '<input type="button" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('close'), '" onclick="window.close();">';
-	echo '<input type="button" class="cancel" value="', /* I18N: button label */ WT_I18N::translate('check'), '" onclick="check_duplicates();" title="', /* I18N: button hover title */ WT_I18N::translate('Check for possible duplicates'), '">';
-	echo '</p>';
-	echo '</form>';
+	echo '<p id="save-cancel">
+		<button class="btn btn-primary" type="submit">
+			<i class="fa fa-save"></i>' .
+			WT_I18N::translate('save') .'
+		</button>';
+		if (preg_match('/^add(child|spouse|newparent)/', $nextaction)) {
+			echo '<button class="btn btn-primary" type="submit" onclick="document.addchildform.goto.value=\'new\';">
+				<i class="fa fa-eye"></i>' .
+				WT_I18N::translate('go to new individual') .'
+			</button>';
+		}
+		echo '<button class="btn btn-primary" type="button"  onclick="window.close();">
+			<i class="fa fa-times"></i>' .
+			WT_I18N::translate('close') .'
+		</button>';
+		echo '<button class="btn btn-primary" type="button" onclick="check_duplicates();" title="', /* I18N: button hover title */ WT_I18N::translate('Check for possible duplicates'), '">
+			<i class="fa fa-check"></i>' .
+			WT_I18N::translate('check') .'
+		</button>
+	</p>
+	</form>';
+	
 	$controller->addInlineJavascript('
 		SURNAME_TRADITION="' . $SURNAME_TRADITION . '";
 		sextag="' . $sextag . '";
