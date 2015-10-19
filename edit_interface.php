@@ -39,27 +39,24 @@ $controller
 
 // TODO work out whether to use GET/POST for these
 // TODO decide what (if any) validation is required on these parameters
-$action =safe_REQUEST($_REQUEST, 'action',  WT_REGEX_UNSAFE);
-$linenum=safe_REQUEST($_REQUEST, 'linenum', WT_REGEX_UNSAFE);
-$pid    =safe_REQUEST($_REQUEST, 'pid',     WT_REGEX_XREF);
-$famid  =safe_REQUEST($_REQUEST, 'famid',   WT_REGEX_XREF);
-$text   =safe_REQUEST($_REQUEST, 'text',    WT_REGEX_UNSAFE);
-$tag    =safe_REQUEST($_REQUEST, 'tag',     WT_REGEX_UNSAFE);
-$famtag =safe_REQUEST($_REQUEST, 'famtag',  WT_REGEX_UNSAFE);
-$glevels=safe_REQUEST($_REQUEST, 'glevels', WT_REGEX_UNSAFE);
-$islink =safe_REQUEST($_REQUEST, 'islink',  WT_REGEX_UNSAFE);
-$type   =safe_REQUEST($_REQUEST, 'type',    WT_REGEX_UNSAFE);
-$fact   =safe_REQUEST($_REQUEST, 'fact',    WT_REGEX_UNSAFE);
-$option =safe_REQUEST($_REQUEST, 'option',  WT_REGEX_UNSAFE);
-
-$assist =safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
-$noteid =safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
-
-$pid_array      =safe_REQUEST($_REQUEST, 'pid_array',       WT_REGEX_XREF);
-$pids_array_add =safe_REQUEST($_REQUEST, 'pids_array_add',  WT_REGEX_XREF);
-$pids_array_edit=safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
-
-$update_CHAN=!safe_POST_bool('preserve_last_changed');
+$action				= safe_REQUEST($_REQUEST, 'action',  WT_REGEX_UNSAFE);
+$linenum			= safe_REQUEST($_REQUEST, 'linenum', WT_REGEX_UNSAFE);
+$pid				= safe_REQUEST($_REQUEST, 'pid',     WT_REGEX_XREF);
+$famid				= safe_REQUEST($_REQUEST, 'famid',   WT_REGEX_XREF);
+$text				= safe_REQUEST($_REQUEST, 'text',    WT_REGEX_UNSAFE);
+$tag				= safe_REQUEST($_REQUEST, 'tag',     WT_REGEX_UNSAFE);
+$famtag				= safe_REQUEST($_REQUEST, 'famtag',  WT_REGEX_UNSAFE);
+$glevels			= safe_REQUEST($_REQUEST, 'glevels', WT_REGEX_UNSAFE);
+$islink				= safe_REQUEST($_REQUEST, 'islink',  WT_REGEX_UNSAFE);
+$type				= safe_REQUEST($_REQUEST, 'type',    WT_REGEX_UNSAFE);
+$fact				= safe_REQUEST($_REQUEST, 'fact',    WT_REGEX_UNSAFE);
+$option				= safe_REQUEST($_REQUEST, 'option',  WT_REGEX_UNSAFE);
+$assist				= safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
+$noteid				= safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
+$pid_array			= safe_REQUEST($_REQUEST, 'pid_array',		 WT_REGEX_XREF);
+$pids_array_add		= safe_REQUEST($_REQUEST, 'pids_array_add',  WT_REGEX_XREF);
+$pids_array_edit	= safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
+$update_CHAN		= !safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
 
@@ -67,7 +64,7 @@ $uploaded_files = array();
 $edit = false;
 
 if (!empty($pid)) {
-	if (($pid!="newsour") && ($pid!="newrepo") && ($noteid!="newnote")) {
+	if (($pid != "newsour") && ($pid != "newrepo") && ($noteid != "newnote")) {
 		$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 		$ct = preg_match("/^0 @$pid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
@@ -180,80 +177,92 @@ case 'edit':
 		->pageHeader();
 
 	// Hide the private data
-	list($gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-	init_calendar_popup();
-	echo '<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="action" value="update">';
-	echo '<input type="hidden" name="linenum" value="', $linenum, '">';
-	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	echo '<input type="hidden" id="pids_array_edit" name="pids_array_edit" value="no_array">';
-
-	echo '<table class="facts_table">';
-	$level1type = create_edit_form($gedrec, $linenum, $level0type);
-	if (WT_USER_IS_ADMIN) {
-		echo '<tr><td class="descriptionbox wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-		echo '<input type="checkbox" name="preserve_last_changed"';
-		if ($NO_UPDATE_CHAN) {
-			echo ' checked="checked"';
-		}
-		echo '>';
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
-		echo '</td></tr>';
-	}
-	echo '</table>';
-	switch ($level0type) {
-	case 'OBJE':
-	case 'NOTE':
-		// OBJE and NOTE "facts" are all special, and none can take lower-level links
-		break;
-	case 'SOUR':
-	case 'REPO':
-		// SOUR and REPO "facts" may only take a NOTE
-		if ($level1type!='NOTE') {
-			print_add_layer('NOTE');
-		}
-		break;
-	case 'FAM':
-	case 'INDI':
-		// FAM and INDI records have "real facts".  They can take NOTE/SOUR/OBJE/etc.
-		if ($level1type!='SEX') {
-			if ($level1type!='SOUR' && $level1type!='REPO') {
-				print_add_layer('SOUR');
-			}
-			if ($level1type!='OBJE' && $level1type!='REPO') {
-				print_add_layer('OBJE');
-			}
-			if ($level1type!='NOTE') {
-				print_add_layer('NOTE');
-			}
-			// Shared Note addition ------------
-			if ($level1type!='SHARED_NOTE' && $level1type!='NOTE') {
-				print_add_layer('SHARED_NOTE');
-			}
-			if ($level1type!='ASSO' && $level1type!='REPO' && $level1type!='NOTE') {
-				print_add_layer('ASSO');
-			}
-			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($level1type=='CHR' || $level1type=='MARR') {
-				print_add_layer('ASSO2');
-			}
-			// RESN can be added to all level 1 tags
-			print_add_layer('RESN');
-		}
-		break;
-	}
+	list($gedrec) = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php init_calendar_popup(); ?>
+		<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">
+			<input type="hidden" name="action" value="update">
+			<input type="hidden" name="linenum" value="<?php echo $linenum; ?>">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+			<input type="hidden" id="pids_array_edit" name="pids_array_edit" value="no_array">
+			<div id="add_facts">
+				<?php $level1type = create_edit_form($gedrec, $linenum, $level0type);
+				if (WT_USER_IS_ADMIN) { ?>
+					<div class="last_change">
+						<label class="width25">
+							<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+						</label>
+						<div class="input">
+							<?php if ($NO_UPDATE_CHAN) { ?>
+								<input type="checkbox" checked="checked" name="preserve_last_changed">
+							<?php } else { ?>
+								<input type="checkbox" name="preserve_last_changed">
+							<?php }
+							echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
+							if (isset($famrec)) {
+								$event = new WT_Event(get_sub_record(1, "1 CHAN", $famrec), null, 0);
+								echo format_fact_date($event, new WT_Person(''), false, true);
+							} ?>
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+			<div class="additional_facts">
+				<?php switch ($level0type) {
+					case 'OBJE':
+					case 'NOTE':
+						// OBJE and NOTE "facts" are all special, and none can take lower-level links
+					break;
+					case 'SOUR':
+					case 'REPO':
+						// SOUR and REPO "facts" may only take a NOTE
+						if ($level1type!='NOTE') {
+							print_add_layer('NOTE');
+						}
+					break;
+					case 'FAM':
+					case 'INDI':
+						// FAM and INDI records have "real facts".  They can take NOTE/SOUR/OBJE/etc.
+						if ($level1type != 'SEX') {
+							if ($level1type != 'SOUR' && $level1type != 'REPO') {
+								print_add_layer('SOUR');
+							}
+							if ($level1type != 'OBJE' && $level1type != 'REPO') {
+								print_add_layer('OBJE');
+							}
+							if ($level1type != 'NOTE') {
+								print_add_layer('NOTE');
+							}
+							// Shared Note addition ------------
+							if ($level1type != 'SHARED_NOTE' && $level1type != 'NOTE') {
+								print_add_layer('SHARED_NOTE');
+							}
+							if ($level1type != 'ASSO' && $level1type != 'REPO' && $level1type != 'NOTE') {
+								print_add_layer('ASSO');
+							}
+							// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+							if ($level1type=='CHR' || $level1type=='MARR') {
+								print_add_layer('ASSO2');
+							}
+							// RESN can be added to all level 1 tags
+							print_add_layer('RESN');
+						}
+					break;
+				} ?>
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button" onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
@@ -274,51 +283,51 @@ case 'add':
 		<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">
 			<input type="hidden" name="action" value="update">
 			<input type="hidden" name="linenum" value="new">
-			<input type="hidden" name="pid" value="', $pid, '">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 			<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array">
 			<div id="add_facts">
-			<?php
-				echo create_add_form($fact);
-
+				<?php echo create_add_form($fact);
 				if (WT_USER_IS_ADMIN) { ?>
-					<label class="width25"><?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?></label>
-					<div class="input">
-						<?php
-							echo '<input type="checkbox" name="preserve_last_changed"';
-								if ($NO_UPDATE_CHAN) {
-									echo ' checked="checked"';
-								}
-							echo '>' .
-							WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN') .
-							WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
-							WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
-						?>
+					<div class="last_change">
+						<label class="width25">
+							<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+						</label>
+						<div class="input">
+							<?php if ($NO_UPDATE_CHAN) { ?>
+								<input type="checkbox" checked="checked" name="preserve_last_changed">
+							<?php } else { ?>
+								<input type="checkbox" name="preserve_last_changed">
+							<?php }
+							echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
+							if (isset($famrec)) {
+								$event = new WT_Event(get_sub_record(1, "1 CHAN", $famrec), null, 0);
+								echo format_fact_date($event, new WT_Person(''), false, true);
+							} ?>
+						</div>
 					</div>
 				<?php } ?>
 			</div>
-			<?php
-			// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
-			if ($level0type=='INDI' || $level0type=='FAM') {
-				echo '<div id="additional_facts">';
-					// ... but not facts which are simply links to other records
-					if ($fact!='OBJE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
+			<?php // Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
+			if ($level0type === 'INDI' || $level0type === 'FAM') { ?>
+				<div id="additional_facts">
+					<?php // ... but not facts which are simply links to other records
+					if ($fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'ASSO' && $fact !== 'ALIA') {
 						print_add_layer('SOUR');
 						print_add_layer('OBJE');
 						// Don't add notes to notes!
-						if ($fact!='NOTE') {
+						if ($fact != 'NOTE') {
 							print_add_layer('NOTE');
 							print_add_layer('SHARED_NOTE');
 						}
 						print_add_layer('ASSO');
-						// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-						if ($fact=='CHR' || $fact=='MARR') {
+						// allow to add godfather and godmother for CHR fact or best man and bridesmaid for MARR fact in one window
+						if ($fact === 'CHR' || $fact === 'MARR') {
 							print_add_layer('ASSO2');
 						}
 						print_add_layer('RESN');
-					}
-				echo '</div>';
-			}
-			?>
+					} ?>
+				</div>
+			<?php } ?>
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
@@ -605,7 +614,7 @@ case 'linkfamaction':
 				//-- get the old ID
 				$spid = trim($match[1]);
 				//-- only continue if the old husb/wife is not the same as the current one
-				if ($spid!=$pid) {
+				if ($spid != $pid) {
 					//-- change a of the old ids to the new id
 					$famrec = str_replace("\n1 $famtag @$spid@", "\n1 $famtag @$pid@", $famrec);
 					$success=replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
@@ -662,11 +671,11 @@ case 'addnewsource':
 			<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ABBR'); ?></td></tr>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
+			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 			<?php } ?>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
+			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN") !==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
 			<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 			<?php } ?>
@@ -916,9 +925,9 @@ case 'editsource':
 		}
 		$gedlines = explode("\n", $gedrec);
 	}
-	for ($i=$linenum; $i<$lines; $i++) {
+	for ($i = $linenum; $i < $lines; $i++) {
 		$fields = explode(' ', $gedlines[$i]);
-		if ((substr($gedlines[$i], 0, 1)<2) && $fields[1]!="CHAN") {
+		if ((substr($gedlines[$i], 0, 1)<2) && $fields[1] != "CHAN") {
 			$level1type = create_edit_form($gedrec, $i, $level0type);
 			echo '<input type="hidden" name="linenum[]" value="', $i, '">';
 			$usedfacts[]=$fields[1];
@@ -1057,11 +1066,11 @@ case 'addnewrepository':
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Repository name'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('REPO_NAME'); ?></td></tr>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
+			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 			<?php } ?>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
+			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN") !== false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 			<?php } ?>
@@ -1178,22 +1187,23 @@ case 'update':
 	if (isset($_REQUEST['pids_array_add'])) $pids_array = $_REQUEST['pids_array_add'];
 	if (isset($_REQUEST['pids_array_edit'])) $pids_array = $_REQUEST['pids_array_edit'];
 	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
-
-	if (isset($pids_array) && $pids_array!="no_array") {
+echo $pid;
+	if (isset($pids_array) && $pids_array != "no_array") {
 		$cens_pids = explode(', ', $pids_array);
 		$cens_pids = array_diff($cens_pids, array("add"));
 	}
 
 	if (!isset($cens_pids)) {
 		$cens_pids = array($pid);
-		$idnums="";
+		$idnums = "";
 	} else {
 		$cens_pids = $cens_pids;
-		$idnums="multi";
+		$idnums = "multi";
 	}
 
-	// Cycle through each individual concerned defined by $cens_pids array.
 	$success = true;
+
+	// Cycle through each individual concerned defined by $cens_pids array.
 	foreach ($cens_pids as $pid) {
 		if (isset($pid)) {
 			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
@@ -1202,7 +1212,7 @@ case 'update':
 		}
 
 		// Retrieve the private data
-		$tmp=new WT_GedcomRecord($gedrec);
+		$tmp = new WT_GedcomRecord($gedrec);
 		list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
 		// If the fact has a DATE or PLAC, then delete any value of Y
@@ -1245,12 +1255,12 @@ case 'update':
 		$gedlines = explode("\n", trim($gedrec));
 		//-- for new facts set linenum to number of lines
 		if (!is_array($linenum)) {
-			if ($linenum=="new" || $idnums=="multi") {
+			if ($linenum == "new" || $idnums == "multi") {
 				$linenum = count($gedlines);
 			}
 			$newged = "";
-			for ($i=0; $i<$linenum; $i++) {
-				$newged .= $gedlines[$i]."\n";
+			for ($i = 0; $i < $linenum; $i++) {
+				$newged .= $gedlines[$i] . "\n";
 			}
 			//-- for edits get the level from the line
 			if (isset($gedlines[$linenum])) {
@@ -1379,7 +1389,7 @@ case 'update':
 			}
 
 		}
-		$success = $success && replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN);
+		$success = $success && replace_gedrec($pid, WT_GED_ID, $newged . $private_gedrec, $update_CHAN);
 	} // end foreach $cens_pids  -------------
 
 	if ($success && !WT_DEBUG) {
@@ -1773,24 +1783,25 @@ case 'editname':
 	$controller
 		->setPageTitle(WT_I18N::translate('Edit name'))
 		->pageHeader();
+	?>
+	<div id="edit_interface-page">
+		<h2> <?php echo $controller->getPageTitle(); ?></h2>
 
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	// Hide the private data
-	list($gedrec)=$person->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-	$gedlines = explode("\n", trim($gedrec));
-	$fields = explode(' ', $gedlines[$linenum]);
-	$glevel = $fields[0];
-	$i = $linenum+1;
-	$namerec = $gedlines[$linenum];
-	while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) {
-		$namerec.="\n".$gedlines[$i];
-		$i++;
-	}
-	print_indi_form('update', '', $linenum, $namerec, '', $person->getSex());
-	echo '</div><!-- id="edit_interface-page" -->';
-	break;
+		<?php // Hide the private data
+		list($gedrec)	= $person->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+		$gedlines		= explode("\n", trim($gedrec));
+		$fields			= explode(' ', $gedlines[$linenum]);
+		$glevel			= $fields[0];
+		$i				= $linenum + 1;
+		$namerec		= $gedlines[$linenum];
+		while (($i < count($gedlines)) && ($gedlines[$i]{0} > $glevel)) {
+			$namerec .= "\n" . $gedlines[$i];
+			$i++;
+		}
+		print_indi_form('update', '', $linenum, $namerec, '', $person->getSex());
+		?>
+	</div><!-- id="edit_interface-page" -->
+	<?php break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addname':
