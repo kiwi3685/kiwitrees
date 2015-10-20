@@ -998,7 +998,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			</button>
 			<?php if (preg_match('/^add(child|spouse|newparent)/', $nextaction)) { ?>
 				<button class="btn btn-primary" type="submit" onclick="document.addchildform.goto.value=\'new\';">
-					<i class="fa fa-eye"></i>
+					<i class="fa fa-mail-forward"></i>
 					<?php echo WT_I18N::translate('go to new individual'); ?>
 				</button>
 			<?php } ?>
@@ -1007,7 +1007,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				<?php echo WT_I18N::translate('close'); ?>
 			</button>
 			<button class="btn btn-primary" type="button" onclick="check_duplicates();" title="<?php /* I18N: button hover title */ WT_I18N::translate('Check for possible duplicates'); ?>">
-				<i class="fa fa-check"></i>
+				<i class="fa fa-eye"></i>
 				<?php echo WT_I18N::translate('check'); ?>
 			</button>
 		</p>

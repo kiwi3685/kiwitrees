@@ -358,7 +358,7 @@ case 'addchild':
 	$controller->pageHeader();
 
 	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
+	echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 	print_indi_form('addchildaction', $famid, '', '', 'CHIL', $gender);
 
