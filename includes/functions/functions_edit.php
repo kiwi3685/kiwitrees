@@ -961,7 +961,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			}
 			if (WT_USER_IS_ADMIN) { ?>
 				<div class="last_change">
-					<label class="width25">
+					<label>
 						<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
 					</label>
 					<div class="input">
@@ -997,7 +997,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				<?php echo WT_I18N::translate('save'); ?>
 			</button>
 			<?php if (preg_match('/^add(child|spouse|newparent)/', $nextaction)) { ?>
-				<button class="btn btn-primary" type="submit" onclick="document.addchildform.goto.value=\'new\';">
+				<button class="btn btn-primary" type="submit" onclick="document.addchildform.goto.value='new';">
 					<i class="fa fa-mail-forward"></i>
 					<?php echo WT_I18N::translate('go to new individual'); ?>
 				</button>
@@ -1192,7 +1192,7 @@ function print_calendar_popup($id) {
 }
 
 function print_addnewmedia_link($element_id) {
-	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a media object').'"></a>';
+	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', \'\'); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a media object').'"></a>';
 }
 
 function print_addnewrepository_link($element_id) {
@@ -1360,11 +1360,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	} else {
 		// Not all facts have help text.
 		switch ($fact) {
-		case 'FORM':
-			if ($upperlevel!='OBJE') {
-				echo help_link($fact);
-			}
-			break;
 		case 'NOTE':
 			if ($islink) {
 				echo help_link('edit_add_SHARED_NOTE');
@@ -1412,8 +1407,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		case 'TIME':
 		case 'URL':
 		case '_HEB':
-		case '_PRIM':
-			echo help_link($fact);
 			break;
 		}
 	}

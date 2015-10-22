@@ -194,7 +194,7 @@ textarea:required:invalid {
 }
 
 div [id$="_factdiv"] {
-	margin: 10px auto;
+	margin: 10px auto 15px;
 }
 
 .faq_link {
@@ -4207,34 +4207,47 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page #add_facts,
-#edit_interface-page #additional_facts {
+#edit_interface-page #additional_facts,
+#addmedia-page #add_facts,
+#addmedia-page #additional_facts {
 	float:left;
-	margin:auto 40px;
+	margin:auto 40px 20px;
 	min-width: 35%;
 }
 
 [dir='rtl'] #edit_interface-page #add_facts,
-[dir='rtl'] #edit_interface-page #additional_facts {
+[dir='rtl'] #edit_interface-page #additional_facts,
+[dir='rtl'] #addmedia-page #add_facts,
+[dir='rtl'] #addmedia-page #additional_facts {
 	float:right;
 }
 
-#edit_interface-page .input-group {
-}
-
-#edit_interface-page .input-group-addon {
+#edit_interface-page .input-group-addon,
+#addmedia-page .input-group-addon {
 	display: inline-block;
 	vertical-align: top;
 }
 
-#edit_interface-page label {
+#edit_interface-page span.help_text,
+#addmedia-page span.help_text {
+	display: block;
+	max-width: 500px;
+}
+#edit_interface-page label,
+#addmedia-page label {
 	display: inline-block;
 	font-weight: 600;
 	vertical-align: top;
-	width:  150px;
+	width: 180px;
 }
 
-#edit_interface-page .input {
+#edit_interface-page .input,
+#addmedia-page .input {
 	display: inline-block;
+}
+
+#addmedia-page select[name="folder_list"] {
+	width: 252px;
 }
 
 #edit_interface-page div[class^="fact_"] {
@@ -4243,6 +4256,7 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page input[type="text"],
+#addmedia-page input[type="text"],
 #edit_interface-page #NAME_display {
 	vertical-align: top;
 	width: 240px;
@@ -4251,27 +4265,6 @@ a.icon-udarrow:hover {
 #edit_interface-page input[type="text"][id*="PAGE"],
 #edit_interface-page input[type="text"][id*="_UID"] {
 	width: 350px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR"],
-#edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 250px;
-}
-
-#edit_interface-page input[type="text"][id$="DATE"] {
-	width: 160px;
-}
-
-#edit_interface-page input[type="text"][id^="TIME"] {
-	width: 100px;
-}
-
-#edit_interface-page input[type="text"][id*="OBJE_FILE"] {
-	width: 200px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR_TITL"] {
-	width: 250px;
 }
 
 #edit_interface-page input[id*="TEXT"] {
@@ -4361,11 +4354,6 @@ a.icon-udarrow:hover {
 }
 
 /* Addmedia pop-ups*/
-#addmedia-page input[type="text"] {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 300px;
-}
 
 #addmedia-page .optionbox select {
 	margin: 0 5px;
@@ -6172,6 +6160,10 @@ textarea#NOTE {
 	#faq-page {
 		width: 95%;
 	}
+	#edit_interface-page #add_facts,
+	#edit_interface-page #additional_facts {
+		width: 95%;
+	}
 	.cens_left {
 		width: 95%; /* census assistant */
 	}
@@ -6182,6 +6174,10 @@ textarea#NOTE {
  	.media-list-item {
  		width: 45%; /* two per row */
  	}
+	#edit_interface-page #add_facts,
+	#edit_interface-page #additional_facts {
+		width: 95%;
+	}
 	.cens_left {
 		width: 65%; /* census assistant */
 	}

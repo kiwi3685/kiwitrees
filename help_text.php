@@ -266,11 +266,6 @@ case 'FAX':
 	$text = WT_I18N::translate('Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
 	break;
 
-case 'FORM':
-	$title = WT_Gedcom_Tag::getLabel('FORM');
-	$text = WT_I18N::translate('This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.');
-	break;
-
 // This help text is used for all NAME components
 case 'NAME':
 	$title = WT_Gedcom_Tag::getLabel('NAME');
