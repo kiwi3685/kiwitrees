@@ -3824,12 +3824,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/bing.png);
 }
 
-.icon-button_addrepository {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/buttons/addrepository.png);
-}
-
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
@@ -4056,8 +4050,10 @@ a.icon-udarrow:hover {
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-male */
 .icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */
 .icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */
-.icon-button_addsource	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
-.icon-button_addmedia 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
+.icon-button_addsource,
+.icon-button_addmedia,
+.icon-button_addrepository
+						{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-book */
 .icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.8em; margin: 0 .5em; vertical-align: top;} /* fa-icon-keyboard-o */
 .icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.8em; margin: 0 .5em; vertical-align: top;} /* fa-globe */
@@ -4248,6 +4244,10 @@ a.icon-udarrow:hover {
 
 #addmedia-page select[name="folder_list"] {
 	width: 252px;
+}
+
+#edit_interface-page select[name^="EVEN"] {
+	width: 247px;
 }
 
 #edit_interface-page div[class^="fact_"] {
@@ -6161,7 +6161,9 @@ textarea#NOTE {
 		width: 95%;
 	}
 	#edit_interface-page #add_facts,
-	#edit_interface-page #additional_facts {
+	#edit_interface-page #additional_facts,
+	#addmedia-page #add_facts,
+	#addmedia-page #additional_facts {
 		width: 95%;
 	}
 	.cens_left {
@@ -6174,10 +6176,6 @@ textarea#NOTE {
  	.media-list-item {
  		width: 45%; /* two per row */
  	}
-	#edit_interface-page #add_facts,
-	#edit_interface-page #additional_facts {
-		width: 95%;
-	}
 	.cens_left {
 		width: 65%; /* census assistant */
 	}

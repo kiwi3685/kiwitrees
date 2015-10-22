@@ -209,7 +209,7 @@ case 'edit':
 					</div>
 				<?php } ?>
 			</div>
-			<div class="additional_facts">
+			<div id="additional_facts">
 				<?php switch ($level0type) {
 					case 'OBJE':
 					case 'NOTE':
@@ -645,13 +645,12 @@ case 'linkfamaction':
 case 'addnewsource':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new source'))
-		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	echo '<script>';
+		->pageHeader()
+		->addInlineJavascript('
+			display_help();
+		');
 	?>
+	<script>
 		function check_form(frm) {
 			if (frm.TITL.value=="") {
 				alert('<?php echo WT_I18N::translate('You must provide a source title'); ?>');
@@ -660,80 +659,155 @@ case 'addnewsource':
 			}
 			return true;
 		}
-	<?php
-	echo '</script>';
-	?>
-	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-		<input type="hidden" name="action" value="addsourceaction">
-		<input type="hidden" name="pid" value="newsour">
-		<table class="facts_table">
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></td>
-			<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ABBR'); ?></td></tr>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !==false) { ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
-			<?php } ?>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN") !==false) { ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
-			<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
-			<?php } ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('AUTH'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="AUTH" id="AUTH" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('AUTH'); ?></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PUBL'); ?></td>
-			<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php echo print_specialchar_link('PUBL'); ?></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('REPO'); ?></td>
-			<td class="optionbox wrap"><input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'), ' ', print_addnewrepository_link('REPO'); ?></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
-		<?php
-			if (WT_USER_IS_ADMIN) {
-				echo '<tr><td class="descriptionbox wrap width25">';
-				echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-				echo '<input type="checkbox" name="preserve_last_changed"';
-				if ($NO_UPDATE_CHAN) {
-					echo ' checked="checked"';
-				}
-				echo '>';
-				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-				echo '</td></tr>';
-			}
-		?>
-		</table>
-			<a href="#"  onclick="return expand_layer('events');"><i id="events_img" class="icon-plus"></i>
-			<?php echo WT_I18N::translate('Associate events with this source'); ?></a><?php echo help_link('edit_SOUR_EVEN'); ?>
-			<div id="events" style="display: none;">
-			<table class="facts_table">
-			<tr>
-				<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Select Events'), help_link('edit_SOUR_EVEN'); ?></td>
-				<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
+	</script>
+
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+			<input type="hidden" name="action" value="addsourceaction">
+			<input type="hidden" name="pid" value="newsour">
+			<div id="add_facts">
+				<div id="TITLE_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('TITL'); ?>
+					</label>
+					<div class="input">
+						<input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="">
+						<div class="input-group-addon">
+							<?php echo print_specialchar_link('TITL'); ?>
+						</div>
+					</div>
+				</div>
+				<div id="ABBR_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('ABBR'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="ABBR" id="ABBR" value="" maxlength="255">
+						<div class="input-group-addon">
+							<?php echo print_specialchar_link('ABBR'); ?>
+						</div>
+					</div>
+				</div>
+				<div id="_HEB_factdiv">
+					<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !==false) { ?>
+						<label>
+							<?php echo WT_Gedcom_Tag::getLabel('_HEB'); ?>
+						</label>
+						<div class="input">
+							<input type="text" name="_HEB" id="_HEB" value="">
+							<?php echo print_specialchar_link('_HEB'); ?>
+						</div>
+					<?php } ?>
+					</div>
+					<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN") !==false) { ?>
+						<div id="ROMN_factdiv">
+							<label>
+								<?php echo WT_Gedcom_Tag::getLabel('_HEB'); ?>
+							</label>
+							<div class="input">
+								<input  type="text" name="ROMN" id="ROMN" value="">
+								<?php echo print_specialchar_link('ROMN'); ?>
+							</div>
+						</div>
+					<?php } ?>
+				<div id="AUTH_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('AUTH'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="AUTH" id="AUTH" value="" maxlength="255">
+						<?php echo print_specialchar_link('AUTH'); ?>
+					</div>
+				</div>
+				<div id="PUBL_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('PUBL'); ?>
+					</label>
+					<div class="input">
+						<textarea name="PUBL" id="PUBL" rows="5"></textarea>
+						<?php echo print_specialchar_link('PUBL'); ?>
+					</div>
+				</div>
+				<div id="REPO_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('REPO'); ?>
+					</label>
+					<div class="input">
+						<input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value="">
+						<?php echo print_findrepository_link('REPO') .
+						' ' .
+						print_addnewrepository_link('REPO'); ?>
+					</div>
+				</div>
+				<div id="CALN_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('CALN'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="CALN" id="CALN" value="">
+						<?php echo print_specialchar_link('CALN'); ?>
+					</div>
+				</div>
+				<?php if (WT_USER_IS_ADMIN) { ?>
+					<div class="last_change">
+						<label>
+							<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+						</label>
+						<div class="input">
+							<?php if ($NO_UPDATE_CHAN) { ?>
+								<input type="checkbox" checked="checked" name="preserve_last_changed">
+							<?php } else { ?>
+								<input type="checkbox" name="preserve_last_changed">
+							<?php }
+							echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
+						</div>
+					</div>
+				<?php }?>
+			</div>
+			<div id="additional_facts">
+				<a href="#"  onclick="return expand_layer('events');">
+					<i id="events_img" class="icon-plus"></i>
+					<?php echo WT_I18N::translate('Associate events with this source'); ?>
+				</a>
+				<div id="events" style="display: none;">
+					<span id="edit_SOUR_EVEN" class="help_text"></span>
 					<?php
-					$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'));
-					foreach ($parts as $key) {
-						?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
-					<?php
-					}
-					$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'));
-					foreach ($parts as $key) {
-						?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
-					<?php
-					}
+					add_simple_tag('0 DATE', 'EVEN');
+					add_simple_tag('0 PLAC', 'EVEN');
+					add_simple_tag('0 AGNC');
 					?>
-				</select></td>
-			</tr>
-			<?php
-			add_simple_tag('0 DATE', 'EVEN');
-			add_simple_tag('0 PLAC', 'EVEN');
-			add_simple_tag('0 AGNC');
-			?>
-			</table>
-		</div>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+					<label>
+						<?php echo WT_I18N::translate('Select Events'); ?>
+					</label>
+					<div class="input">
+						<select name="EVEN[]" multiple="multiple" size="5">
+							<?php
+							$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'));
+							foreach ($parts as $key) { ?>
+								<option value="<?php echo $key; ?>">
+									<?php echo WT_Gedcom_Tag::getLabel($key); ?>
+								</option>
+							<?php }
+							$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'));
+							foreach ($parts as $key) { ?>
+								<option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
