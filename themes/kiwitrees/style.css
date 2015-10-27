@@ -39,6 +39,9 @@ body {
 	font-size: 16px;
 	margin: 0;
 	width: 100%;
+	display: flex;
+	min-height: 100%;
+	flex-direction: column;
 }
 
 #body_simple {
@@ -507,11 +510,6 @@ textarea:required:invalid {
 }
 
 /* ======= Content styles ========== */
-#main_content {
-	background-color: #eee;
-	margin: 0 auto;
-}
-
 #content {
 	clear: both;
 	font-size: 14px;
@@ -520,6 +518,7 @@ textarea:required:invalid {
 	z-index: 0;
 	overflow: hidden;
 	padding: 0;
+	flex: 1;
 }
 
 #body_simple #content {
