@@ -1158,7 +1158,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$html .= '<br>' . WT_I18N::translate('She had a relationship with');
 				break;
 			default:
-				$html .= '<br>' . WT_I18N::translate('This individual has a relationship with');
+				$html .= '<br>' . WT_I18N::translate('This individual had a relationship with');
 				break;
 		}
 		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
