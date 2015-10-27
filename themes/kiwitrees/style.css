@@ -966,8 +966,6 @@ a:hover .name1 {
 
 .name2 {
 	color: #555;
-	font-weight: bold;
-	font-size: 14px;
 }
 
 a:hover .name2 {
@@ -2206,10 +2204,8 @@ dt {
 .new_passwd_form,
 #register-form ,
 #verify-form {
-	border: 1px outset #555;
 	display: inline-block;
 	margin: 10px auto;
-	padding: 5px;
 }
 
 #login-form div,
@@ -2251,9 +2247,9 @@ dt {
 #register-form label input,
 #register-form label select,
 #register-form textarea {
-	width: 220px;
+	width: 300px;
 	margin: 0 10px;
-	padding: 3px;
+	padding: 8px;
 }
 
 #register-form label select {
@@ -4221,7 +4217,6 @@ a.icon-udarrow:hover {
 #addmedia-page #add_facts,
 #addmedia-page #additional_facts {
 	margin: auto 10px 20px;
-	max-width: 33%;
 }
 
 #edit_interface-page #add_other_details {
@@ -6187,6 +6182,8 @@ textarea#NOTE {
 	}
 	#edit_interface-page #add_facts,
 	#edit_interface-page #additional_facts,
+	#edit_interface-page #add_name_details,
+	#edit_interface-page #add_other_details,
 	#addmedia-page #add_facts,
 	#addmedia-page #additional_facts {
 		width: 95%;
@@ -6207,6 +6204,17 @@ textarea#NOTE {
 	.cens_left {
 		width: 65%; /* census assistant */
 	}
+	#edit_interface-page #add_facts,
+	#edit_interface-page #additional_facts,
+	#addmedia-page #add_facts,
+	#addmedia-page #additional_facts {
+		width: 45%;
+	}
+	#edit_interface-page #add_name_details,
+	#edit_interface-page #add_other_details,
+	div#add_other_details + div#additional_facts {
+		width: 31%;
+	}
 
  }
 
@@ -6214,4 +6222,16 @@ textarea#NOTE {
  	.media-list-item {
  		width: 31%; /* three per row */
  	}
+	#edit_interface-page #add_facts,
+	#edit_interface-page #additional_facts,
+	#addmedia-page #add_facts,
+	#addmedia-page #additional_facts {
+		width: 756px;
+	}
+	#edit_interface-page #add_name_details,
+	#edit_interface-page #add_other_details,
+	div#add_other_details + div#additional_facts {
+		width: 520px;
+	}
+
  }

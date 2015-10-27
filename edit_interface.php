@@ -34,7 +34,7 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('
 		autocomplete();
-		var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
+		var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('j', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
 ');
 
 // TODO work out whether to use GET/POST for these
@@ -233,6 +233,7 @@ case 'edit':
 						// SOUR and REPO "facts" may only take a NOTE
 						if ($level1type!='NOTE') {
 							print_add_layer('NOTE');
+							echo '<p>' . print_add_layer('NOTE') . '</p>';
 						}
 					break;
 					case 'FAM':
@@ -240,27 +241,27 @@ case 'edit':
 						// FAM and INDI records have "real facts".  They can take NOTE/SOUR/OBJE/etc.
 						if ($level1type != 'SEX') {
 							if ($level1type != 'SOUR' && $level1type != 'REPO') {
-								print_add_layer('SOUR');
+								echo '<p>' . print_add_layer('SOUR') . '</p>';
 							}
 							if ($level1type != 'OBJE' && $level1type != 'REPO') {
-								print_add_layer('OBJE');
+								echo '<p>' . print_add_layer('OBJE') . '</p>';
 							}
 							if ($level1type != 'NOTE') {
-								print_add_layer('NOTE');
+								echo '<p>' . print_add_layer('NOTE') . '</p>';
 							}
 							// Shared Note addition ------------
 							if ($level1type != 'SHARED_NOTE' && $level1type != 'NOTE') {
-								print_add_layer('SHARED_NOTE');
+								echo '<p>' . print_add_layer('SHARED_NOTE') . '</p>';
 							}
 							if ($level1type != 'ASSO' && $level1type != 'REPO' && $level1type != 'NOTE') {
-								print_add_layer('ASSO');
+								echo '<p>' . print_add_layer('ASSO') . '</p>';
 							}
 							// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
 							if ($level1type=='CHR' || $level1type=='MARR') {
-								print_add_layer('ASSO2');
+								echo '<p>' . print_add_layer('ASSO2') . '</p>';
 							}
 							// RESN can be added to all level 1 tags
-							print_add_layer('RESN');
+							echo '<p>' . print_add_layer('RESN') . '</p>';
 						}
 					break;
 				} ?>
@@ -325,19 +326,19 @@ case 'add':
 				<div id="additional_facts">
 					<?php // ... but not facts which are simply links to other records
 					if ($fact !== 'OBJE' && $fact !== 'NOTE' && $fact !== 'SHARED_NOTE' && $fact !== 'REPO' && $fact !== 'SOUR' && $fact !== 'ASSO' && $fact !== 'ALIA') {
-						print_add_layer('SOUR');
-						print_add_layer('OBJE');
+						echo '<p>' . print_add_layer('SOUR') . '</p>';
+						echo '<p>' . print_add_layer('OBJE') . '</p>';
 						// Don't add notes to notes!
 						if ($fact != 'NOTE') {
-							print_add_layer('NOTE');
-							print_add_layer('SHARED_NOTE');
+							echo '<p>' . print_add_layer('NOTE') . '</p>';
+							echo '<p>' . print_add_layer('SHARED_NOTE') . '</p>';
 						}
-						print_add_layer('ASSO');
+						echo '<p>' . print_add_layer('ASSO') . '</p>';
 						// allow to add godfather and godmother for CHR fact or best man and bridesmaid for MARR fact in one window
 						if ($fact === 'CHR' || $fact === 'MARR') {
-							print_add_layer('ASSO2');
+							echo '<p>' . print_add_layer('ASSO2') . '</p>';
 						}
-						print_add_layer('RESN');
+						echo '<p>' . print_add_layer('RESN') . '</p>';
 					} ?>
 				</div>
 			<?php } ?>

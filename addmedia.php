@@ -801,12 +801,10 @@ $controller
 			<?php }?>
 		</div>
 		<div id="additional_facts">
-			<?php echo
-				print_add_layer('SOUR', 1);
-				print_add_layer('NOTE', 1);
-				print_add_layer('SHARED_NOTE', 1);
-				print_add_layer('RESN', 1);
-			?>
+			<p><?php echo print_add_layer('SOUR', 1); ?></p>
+			<p><?php echo print_add_layer('NOTE', 1); ?></p>
+			<p><?php echo print_add_layer('SHARED_NOTE', 1); ?></p>
+			<p><?php echo print_add_layer('RESN', 1); ?></p>
 		</div>
 		<p id="save-cancel">
 			<button class="btn btn-primary" type="submit">

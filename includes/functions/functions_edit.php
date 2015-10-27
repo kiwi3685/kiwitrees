@@ -966,16 +966,16 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				?>
 			</div>
 		<div id="additional_facts">
-			<?php if ($nextaction == 'update') { // GEDCOM 5.5.1 spec says NAME doesn't get a OBJE
-				print_add_layer('SOUR');
-				print_add_layer('NOTE');
-				print_add_layer('SHARED_NOTE');
-			} else {
-				print_add_layer('SOUR', 1);
-				print_add_layer('OBJE', 1);
-				print_add_layer('NOTE', 1);
-				print_add_layer('SHARED_NOTE', 1);
-			} ?>
+			<?php if ($nextaction == 'update') { ?> <!-- GEDCOM 5.5.1 spec says NAME doesn't get a OBJE -->
+				<p><?php echo print_add_layer('SOUR'); ?></p>
+				<p><?php echo print_add_layer('NOTE'); ?></p>
+				<p><?php echo print_add_layer('SHARED_NOTE'); ?></p>
+			<?php } else { ?>
+				<p><?php echo print_add_layer('SOUR', 1); ?></p>
+				<p><?php echo print_add_layer('OBJE', 1); ?></p>
+				<p><?php echo print_add_layer('NOTE', 1); ?></p>
+				<p><?php echo print_add_layer('SHARED_NOTE', 1); ?></p>
+			<?php } ?>
 		</div>
 		<?php
 		if (WT_USER_IS_ADMIN) { ?>
