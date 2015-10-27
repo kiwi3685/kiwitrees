@@ -96,7 +96,8 @@ if (!empty($pid)) {
 if (!WT_USER_CAN_EDIT || !$edit) {
 	$controller
 		->pageHeader()
-		->addInlineJavascript('closePopupAndReloadParent();');
+		->addInlineJavascript('
+		closePopupAndReloadParent();');
 	exit;
 }
 
@@ -130,6 +131,10 @@ case 'delete':
 case 'editraw':
 	$pid    = safe_GET('pid', WT_REGEX_XREF); // print_indi_form() uses this
 	$record = WT_GedcomRecord::getInstance($pid);
+	$controller->addInlineJavascript('
+		display_help();
+	');
+
 
 	// Hide the private data
 	list($gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
@@ -145,22 +150,30 @@ case 'editraw':
 
 	?>
 	<div id="edit_interface-page">
-		<h4>
+		<h2>
 			<?php echo $controller->getPageTitle(); ?>
-			<?php echo help_link('edit_edit_raw'); ?>
 			<?php print_specialchar_link('newgedrec2'); ?>
-		</h4>
+		</h2>
+		<span id="edit_edit_raw" class="help_text"></span>
 		<form method="post" action="edit_interface.php">
 			<input type="hidden" name="action" value="updateraw">
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
-			<textarea name="newgedrec1" id="newgedrec1" dir="ltr" readonly="readonly"><?php echo htmlspecialchars($gedrec1); ?></textarea>
-			<br>
-			<textarea name="newgedrec2" id="newgedrec2" dir="ltr"><?php echo htmlspecialchars($gedrec2); ?></textarea>
-			<br>
+			<p>
+				<textarea name="newgedrec1" id="newgedrec1" dir="ltr" readonly="readonly"><?php echo htmlspecialchars($gedrec1); ?></textarea>
+			</p>
+			<p>
+				<textarea name="newgedrec2" id="newgedrec2" dir="ltr"><?php echo htmlspecialchars($gedrec2); ?></textarea>
+			</p>
 			<?php echo no_update_chan($record); ?>
 			<p id="save-cancel">
-				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button" onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
 			</p>
 		</form>
 	</div><!-- id="edit_interface-page" -->
@@ -356,13 +369,13 @@ case 'addchild':
 		$controller->setPageTitle(WT_I18N::translate('Add an unlinked person'));
 	}
 	$controller->pageHeader();
+	?>
 
-	echo '<div id="edit_interface-page">';
-	echo '<h2>', $controller->getPageTitle(), '</h2>';
-
-	print_indi_form('addchildaction', $famid, '', '', 'CHIL', $gender);
-
-	echo '</div><!-- id="edit_interface-page" -->';
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php echo print_indi_form('addchildaction', $famid, '', '', 'CHIL', $gender); ?>
+	</div><!-- id="edit_interface-page" -->
+	<?php
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -376,13 +389,12 @@ case 'addspouse':
 		$controller->setPageTitle(WT_I18N::translate('Add a husband'));
 	}
 	$controller->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	print_indi_form('addspouseaction', $famid, '', '', $famtag);
-
-	echo '</div><!-- id="edit_interface-page" -->';
+	?>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php echo print_indi_form('addspouseaction', $famid, '', '', $famtag); ?>
+	</div><!-- id="edit_interface-page" -->
+	<?php
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -406,13 +418,13 @@ case 'addnewparent':
 		$controller->setPageTitle($name . WT_I18N::translate('Add a father'));
 	}
 	$controller->pageHeader();
+	?>
 
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	print_indi_form('addnewparentaction', $famid, '', '', $famtag);
-
-	echo '</div><!-- id="edit_interface-page" -->';
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php echo print_indi_form('addnewparentaction', $famid, '', '', $famtag); ?>
+	</div><!-- id="edit_interface-page" -->
+	<?php
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -424,18 +436,17 @@ case 'addopfchild':
 	$controller
 		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a child to create a one-parent family'))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	print_indi_form('addopfchildaction', $famid, '', '', 'CHIL');
-
-	echo '</div><!-- id="edit_interface-page" -->';
+	?>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php echo print_indi_form('addopfchildaction', $famid, '', '', 'CHIL'); ?>
+	</div><!-- id="edit_interface-page" -->
+	<?php
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addfamlink':
-	$person=WT_Person::getInstance($pid);
+	$person = WT_Person::getInstance($pid);
 
 	if ($famtag=='CHIL') {
 		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
@@ -446,49 +457,60 @@ case 'addfamlink':
 	}
 
 	$controller->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	echo '<form method="post" name="addchildform" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="linkfamaction">';
-	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
-	echo '<table class="facts_table">';
-	echo '<tr><td class="facts_label">', WT_I18N::translate('Family'), '</td>';
-	echo '<td class="facts_value"><input data-autocomplete-type="FAM" type="text" id="famid" name="famid" size="8">';
-	echo print_findfamily_link('famid');
-	echo '</td></tr>';
-	if ($famtag=='CHIL') {
-		echo '<tr><td class="facts_label">', WT_Gedcom_Tag::getLabel('PEDI'), '</td><td class="facts_value">';
-		switch ($person->getSex()) {
-		case 'M': echo edit_field_pedi_m('PEDI'); break;
-		case 'F': echo edit_field_pedi_f('PEDI'); break;
-		case 'U': echo edit_field_pedi_u('PEDI'); break;
-		}
-		echo help_link('PEDI');
-		echo '</td></tr>';
-	}
-	if (WT_USER_IS_ADMIN) {
-		echo '<tr><td class="descriptionbox wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-		echo '<input type="checkbox" name="preserve_last_changed"';
-		if ($NO_UPDATE_CHAN) {
-			echo ' checked="checked"';
-		}
-		echo '>';
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $person->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $person->LastChangeUser());
-		echo '</td></tr>';
-	}
-	echo '</table>';
 	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+		<form method="post" name="addchildform" action="edit_interface.php">
+			<input type="hidden" name="action" value="linkfamaction">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+			<input type="hidden" name="famtag" value="<?php echo $famtag; ?>">
+			<div id="add_facts">
+				<div id="LINKFAM1_factdiv">
+					<label><?php echo WT_I18N::translate('Family'); ?></label>
+					<div class="input">
+						<div class="input-group">
+							<input data-autocomplete-type="FAM" type="text" id="famid" name="famid" size="8">
+							<?php echo print_findfamily_link('famid'); ?>
+						</div>
+					</div>
+				</div>
+				<div id="LINKFAM2_factdiv">
+					<?php if ($famtag=='CHIL') { ?>
+						<label><?php echo WT_Gedcom_Tag::getLabel('PEDI'); ?></label>
+						<div class="input">
+							<div class="input-group">
+								<?php
+								switch ($person->getSex()) {
+									case 'M':
+										echo edit_field_pedi_m('PEDI');
+									break;
+									case 'F':
+										echo edit_field_pedi_f('PEDI');
+									break;
+									case 'U':
+										echo edit_field_pedi_u('PEDI');
+									break;
+								}
+								echo help_link('PEDI');
+								?>
+							</div>
+						</div>
+					<?php } ?>
+				</div>
+				<?php echo no_update_chan($person); ?>
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
@@ -943,13 +965,14 @@ case 'addnoteaction_assisted':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
 		->pageHeader();
+	?>
 
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php'; ?>
+	</div><!-- id="edit_interface-page" -->
 
-	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php';
-
-	echo 	'</div><!-- id="edit_interface-page" -->';
+	<?php
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1557,9 +1580,9 @@ case 'addspouseaction':
 
 	splitSOUR(); // separate SOUR record from the rest
 
-	$gedrec ="0 @REF@ INDI";
-	$gedrec.=addNewName();
-	$gedrec.=addNewSex ();
+	$gedrec	="0 @REF@ INDI";
+	$gedrec	.=addNewName();
+	$gedrec	.=addNewSex ();
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedrec.=addNewFact($match);
@@ -1576,10 +1599,10 @@ case 'addspouseaction':
 	$success = true;
 	if ($famid=="new") {
 		$famrec = "0 @new@ FAM";
-		$SEX=safe_POST('SEX', '[MF]', 'U');
-		if ($SEX=="M") $famtag = "HUSB";
-		if ($SEX=="F") $famtag = "WIFE";
-		if ($famtag=="HUSB") {
+		$SEX = safe_POST('SEX', '[MF]', 'U');
+		if ($SEX	== "M") $famtag = "HUSB";
+		if ($SEX	== "F") $famtag = "WIFE";
+		if ($famtag	== "HUSB") {
 			$famrec .= "\n1 HUSB @$xref@";
 			$famrec .= "\n1 WIFE @$pid@";
 		} else {
@@ -1589,7 +1612,7 @@ case 'addspouseaction':
 
 		if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 			foreach ($matches[1] as $match) {
-				$famrec.=addNewFact($match);
+				$famrec .= addNewFact($match);
 			}
 		}
 
@@ -1875,20 +1898,25 @@ case 'editname':
 		print_indi_form('update', '', $linenum, $namerec, '', $person->getSex());
 		?>
 	</div><!-- id="edit_interface-page" -->
-	<?php break;
+	<?php
+	break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addname':
 	$controller
 		->setPageTitle(WT_I18N::translate('Add new Name'))
 		->pageHeader();
+	?>
 
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php echo
+			$person=WT_Person::getInstance($pid);
+			print_indi_form('update', '', 'new', 'NEW', '', $person->getSex());
+		?>
+	</div><!-- id="edit_interface-page" -->
 
-	$person=WT_Person::getInstance($pid);
-	print_indi_form('update', '', 'new', 'NEW', '', $person->getSex());
-	echo '</div><!-- id="edit_interface-page" -->';
+	<?php
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2531,29 +2559,31 @@ case 'checkduplicates':
 
 	echo $html;
 	break;
-
 }
 
 // Keep the existing CHAN record when editing
 function no_update_chan(WT_GedcomRecord $record) {
 	global $NO_UPDATE_CHAN;
-
 	$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
-
-	if (WT_USER_IS_ADMIN) {
-		return
-			'<table class="facts_table">' .
-			'<tr><td class="descriptionbox  wrap width25">' .
-			WT_Gedcom_Tag::getLabel('CHAN') .
-			'</td><td class="optionbox wrap">' .
-			'<input type="checkbox" name="preserve_last_changed"' . $checked . '>' .
-			WT_I18N::translate('Do not update the “last change” record') .
-			help_link('no_update_CHAN') .
-			WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
-			WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser()) .
-			'</td></tr>' .
-			'</table>';
-	} else {
+	if (WT_USER_IS_ADMIN) { ?>
+		<div class="last_change">
+			<label>
+				<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+			</label>
+			<div class="input">
+				<?php if ($NO_UPDATE_CHAN) { ?>
+					<input type="checkbox" checked="checked" name="preserve_last_changed">
+				<?php } else { ?>
+					<input type="checkbox" name="preserve_last_changed">
+				<?php }
+				echo WT_I18N::translate('Do not update the “last change” record') .
+				help_link('no_update_CHAN') .
+				WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
+				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
+				?>
+			</div>
+		</div>
+	<?php } else {
 		return '';
 	}
 }
