@@ -40,7 +40,7 @@ body {
 	margin: 0;
 	width: 100%;
 	display: flex;
-	min-height: 100vh;
+	height: 100vh;
 	flex-direction: column;
 }
 
@@ -518,7 +518,7 @@ textarea:required:invalid {
 	z-index: 0;
 	overflow: hidden;
 	padding: 0;
-	flex: 1;
+	flex: 1 0 auto;
 }
 
 #body_simple #content {
