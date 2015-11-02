@@ -56,8 +56,8 @@ $media = WT_Media::getInstance($pid);
 if ($media) {
 	$disp = $media->canDisplayDetails();
 }
-if ($action=='update' || $action=='create') {
-	if (!isset($linktoid) || $linktoid=='new') $linktoid='';
+if ($action == 'update' || $action == 'create') {
+	if (!isset($linktoid) || $linktoid == 'new') $linktoid='';
 	if (!empty($linktoid)) {
 		$disp = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 	}
@@ -86,7 +86,7 @@ case 'create': // Save the information from the “showcreateform” action
 	if ($folderName) {
 		$folderName .= '/';
 		// Not allowed to use “../”
-		if (strpos('/' . $folderName, '/../')!==false) {
+		if (strpos('/' . $folderName, '/../') !== false) {
 			WT_FlashMessages::addMessage('Folder names are not allowed to include “../”');
 			break;
 		}
@@ -405,11 +405,11 @@ case 'update': // Save the information from the “editmedia” action
 	exit;
 case 'showmediaform':
 	$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
-	$action='create';
+	$action = 'create';
 	break;
 case 'editmedia':
 	$controller->setPageTitle(WT_I18N::translate('Edit media object'));
-	$action='update';
+	$action = 'update';
 	break;
 default:
 	throw new Exception('Bad $action (' . $action . ') in addmedia.php');
@@ -421,9 +421,9 @@ $controller
 <div id="addmedia-page">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">
-		<input type="hidden" name="action" value="', $action, '">
-		<input type="hidden" name="ged" value="', WT_GEDCOM, '">
-		<input type="hidden" name="pid" value="', $pid, '">
+		<input type="hidden" name="action" value="<?php echo $action; ?>">
+		<input type="hidden" name="ged" value="<?php echo  WT_GEDCOM; ?>">
+		<input type="hidden" name="pid" value="<?php echo  $pid; ?>">
 		<?php if ($linktoid) { ?>
 			<input type="hidden" name="linktoid" value="<?php echo $linktoid; ?>">
 		<?php } ?>
@@ -562,7 +562,7 @@ $controller
 						</label>
 					<div class="input">
 						<?php //-- don’t let regular users change the location of media items
-						if ($action!='update' || WT_USER_GEDCOM_ADMIN) {
+						if ($action != 'update' || WT_USER_GEDCOM_ADMIN) {
 							$mediaFolders = WT_Query_Media::folderList();
 							echo '<span dir="ltr">
 								<select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">
