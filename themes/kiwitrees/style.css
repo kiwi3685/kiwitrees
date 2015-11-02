@@ -636,12 +636,11 @@ div[id*='-page'] {
 #home-page #index_small_blocks {
 	width: 100%;
 	margin: 12px auto;
-	overflow: hidden;
 }
 
 #home-page #index_small_blocks .block {
-	border: 1px solid #A9ADBC;
 	height: 280px;
+	overflow: hidden;
 }
 
 #home-page #index_main_blocks .blockheader {
