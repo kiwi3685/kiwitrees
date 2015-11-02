@@ -163,6 +163,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 								if($primary) {
 									$name = true;
 									// create plugin vars
+									$birth_year	= $controller->record->getBirthYear();
 									$givn 		= $this->encode($primary['givn'], $plugin->encode_plus()); // all given names
 									$given		= explode(" ", $primary['givn']);
 									$first		= $given[0]; // first given name
@@ -171,7 +172,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 									$surname	= $this->encode($primary['surname'], $plugin->encode_plus()); // full surname (with prefix)
 									$fullname 	= $plugin->encode_plus() ? $givn.'+'.$surname : $givn.'%20'.$surname; // full name
 									$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
-									$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
+									$link 		= $plugin->create_link($birth_year, $fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 									$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 								}
 							}
@@ -222,14 +223,14 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 
  	// Scan the plugin folder for a list of plugins
 	private function getPluginList() {
-		$array=array();
-		$dir=dirname(__FILE__).'/plugins/';
-		$dir_handle=opendir($dir);
-		while ($file=readdir($dir_handle)) {
-			if (substr($file, -4)=='.php') {
+		$array		= array();
+		$dir		= dirname(__FILE__).'/plugins/';
+		$dir_handle	= opendir($dir);
+		while ($file	=readdir($dir_handle)) {
+			if (substr($file, -4) == '.php') {
 				require dirname(__FILE__).'/plugins/'.$file;
-				$class=basename($file, '.php').'_plugin';
-				$array[$class]=new $class;
+				$class = basename($file, '.php').'_plugin';
+				$array[$class] = new $class;
 			}
 		}
 		closedir($dir_handle);
@@ -242,10 +243,10 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if (!$event->canShow()) {
 			return false;
 		}
-		$factrec = $event->getGedComRecord();
+		$factrec	= $event->getGedComRecord();
 		// Create a dummy record, so we can extract the formatted NAME value from the event.
-		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
-		$all_names=$dummy->getAllNames();
+		$dummy		= new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
+		$all_names	= $dummy->getAllNames();
 		return $all_names[0];
 	}
 
