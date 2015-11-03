@@ -4234,6 +4234,11 @@ a.icon-udarrow:hover {
 	display: block;
 	max-width: 500px;
 }
+
+#addmedia-page .help_text {
+	margin: 0 5px;
+}
+
 #edit_interface-page label,
 #addmedia-page label {
 	display: inline-block;

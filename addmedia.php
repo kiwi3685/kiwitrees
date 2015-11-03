@@ -440,11 +440,11 @@ $controller
 							' ', print_findfamily_link('gid'),
 							' ', print_findsource_link('gid');
 						?>
-						<div class="help_text">
-							<span class="helpcontent">
-								<?php echo WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'); ?>
-							</span>
-						</div>
+					</div>
+					<div class="help_text">
+						<span class="helpcontent">
+							<?php echo WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'); ?>
+						</span>
 					</div>
 				</div>
 			<?php }
@@ -490,8 +490,8 @@ $controller
 						</label>
 						<div class="input">
 							<input type="file" name="thumbnail">
-							<span id="upload_thumbnail_file" class="help_text"></span>
 						</div>
+						<span id="upload_thumbnail_file" class="help_text"></span>
 					</div>
 				<?php }
 			}
@@ -501,18 +501,15 @@ $controller
 			if ($gedfile == 'FILE') {
 				if (WT_USER_GEDCOM_ADMIN) { ?>
 					<div id="FILE_factdiv">
-						<?php add_simple_tag(
-							"1 $gedfile",
-							'',
-							WT_I18N::translate('File name on server'),
-							'<div class="help_text">
-								<span class="helpcontent">' .
-									WT_I18N::translate('Do not change to keep original file name.') .
-									WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') .
-								'</span>
-							</div>',
-							'NOCLOSE');
-						 ?>
+						<?php add_simple_tag("1 $gedfile",'',WT_I18N::translate('File name on server'),'','NOCLOSE'); ?>
+					</div>
+					<div class="help_text">
+						<span class="helpcontent">
+							<?php echo
+								WT_I18N::translate('Do not change to keep original file name.') .
+								WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.');
+							?>
+						</span>
 					</div>
 				<?php }
 				$fileName = '';
@@ -540,16 +537,16 @@ $controller
 						        echo '>';
 						    } else {
 						        echo '>'; ?>
-						        <div class="help_text">
-						            <span class="helpcontent">
-						                <?php echo WT_I18N::translate('Do not change to keep original file name.'); ?>
-						            </span>
-						        </div>
 						    <?php } ?>
 						<?php } else { ?>
 						    <?php echo $fileName; ?>
 						    <input name="filename" type="hidden" value="<?php echo htmlspecialchars($fileName); ?>">
 						<?php } ?>
+					</div>
+					<div class="help_text">
+						<span class="helpcontent">
+							<?php echo WT_I18N::translate('Do not change to keep original file name.'); ?>
+						</span>
 					</div>
 				</div>
 			<?php } ?>
@@ -704,11 +701,12 @@ $controller
 				"1 $gedprim",
 				'',
 				'',
-				'<div class="help_text">
-					<span id="' . $gedprim . '" class="help_text"></span>
-				</div>'
-			);
-
+				''
+			); ?>
+			<div class="help_text">
+				<span id="<?php echo $gedprim; ?>" class="help_text"></span>
+			</div>
+			<?php
 			//-- print out editing fields for any other data in the media record
 			$sourceSOUR = '';
 			if (!empty($gedrec)) {
