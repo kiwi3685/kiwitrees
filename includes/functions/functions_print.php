@@ -506,10 +506,6 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		$brpos = strpos($text, '<br>');
 		if (!$npage) {
 			$data .= '<div class="fact_NOTE"><span class="label">';
-			if ($brpos !== false) {
-				if ($EXPAND_NOTES) $plusminus = 'minus'; else $plusminus = 'plus';
-				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
-			}
 
 			// Check if Shared Note -----------------------------
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
@@ -521,6 +517,14 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 
 		if ($brpos !== false) {
 			$data .= '<span class="field" dir="auto">'.substr($text, 0, $brpos).'</span>';
+			if ($brpos !== false) {
+				if ($EXPAND_NOTES) {
+					$plusminus = 'minus';
+				} else {
+					$plusminus = 'plus';
+				}
+				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
+			}
 			if ($npage) {
 				$data .= substr($text, $brpos + 4) . "</div>";
 			} else {
@@ -1118,9 +1122,9 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '</select>';
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';
 	echo '<span class="quickfacts">';
-	foreach ($quickfacts as $fact) {
-		echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
-	}
+		foreach ($quickfacts as $fact) {
+			echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . WT_TIMESTAMP . '&ged=' . WT_GEDCOM . '" target="_blank">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+		}
 	echo '</span></form>';
 	echo '</td></tr>';
 }
@@ -1219,7 +1223,9 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 	echo '</select>';
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\');">';
 	echo '<span class="quickfacts">';
-	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	foreach ($quickfacts as $fact) {
+		echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . WT_TIMESTAMP . '&ged=' . WT_GEDCOM . '" target="_blank">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	}
 	echo '</span></form>';
 	echo '</td></tr>';
 }

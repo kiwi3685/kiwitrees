@@ -92,11 +92,7 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('
 		autocomplete();
-		//Add help texts to page
-		jQuery(".help_text").each(function() {
-			var helpID = jQuery(this).attr("id");
-	 		jQuery("#" + helpID).load("help_text.php?help=" + helpID);
-		});
+		display_help();
 	');
 
 // Form validation
@@ -136,12 +132,12 @@ function checkform(frm) {
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Username'); ?></label>
 				<input type="text" name="form_username" value="<?php echo WT_USER_NAME; ?>" autofocus>
-				<span ID="username" class="help_text"></span>
+				<span id="username" class="help_text"></span>
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Real name'); ?></label>
 				<input type="text" name="form_realname" value="<?php echo getUserFullName(WT_USER_ID); ?>">
-				<span ID="real_name" class="help_text"></span>
+				<span id="real_name" class="help_text"></span>
 			</div>
 			<?php $person = WT_Person::getInstance(WT_USER_GEDCOM_ID); ?>
 			<div class="chart_options">
@@ -151,7 +147,7 @@ function checkform(frm) {
 				<?php } else { ?>
 					<div class="label"><?php echo WT_I18N::translate('Unknown'); ?></div>
 				<?php } ?>
-				<span ID="edituser_gedcomid" class="help_text"></span>
+				<span id="edituser_gedcomid" class="help_text"></span>
 			</div>
 			<?php $person = WT_Person::getInstance(WT_USER_ROOT_ID); ?>
 			<div class="chart_options">
@@ -162,17 +158,17 @@ function checkform(frm) {
 					<?php if ($person) {
 						echo $person->format_list('span');
 					} ?>
-				<span ID="default_individual" class="help_text"></span>
+				<span id="default_individual" class="help_text"></span>
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Password'); ?></label>
 				<input type="password" name="form_pass1"> <?php echo WT_I18N::translate('Leave password blank if you want to keep the current password.'); ?>
-				<span ID="password" class="help_text"></span>
+				<span id="password" class="help_text"></span>
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Confirm password'); ?></label>
 				<input type="password" name="form_pass2">
-				<span ID="password_confirm" class="help_text"></span>
+				<span id="password_confirm" class="help_text"></span>
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Language'); ?></label>
@@ -181,12 +177,12 @@ function checkform(frm) {
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Email address'); ?></label>
 				<input type="email" name="form_email" value="<?php echo getUserEmail(WT_USER_ID); ?>" size="150">
-				<span ID="email" class="help_text"></span>
+				<span id="email" class="help_text"></span>
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Preferred contact method'); ?></label>
 				<div class="label"><?php echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod')); ?></div>
-				<span ID="edituser_contact_meth_short" class="help_text"></span>
+				<span id="edituser_contact_meth_short" class="help_text"></span>
 			</div>
 			<div id="edituser_submit" class="btn btn-primary">
 				<button type="submit" value="<?php echo WT_I18N::translate('save') ?>"><?php echo WT_I18N::translate('save'); ?></button>

@@ -39,6 +39,9 @@ body {
 	font-size: 16px;
 	margin: 0;
 	width: 100%;
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
 }
 
 #body_simple {
@@ -62,14 +65,16 @@ legend {
 
 a,
 .icon-button_keyboard,
-.icon-target {
+.icon-target,
+.icon-help {
 	color: #009afe;
 	text-decoration: none;
 }
 
 a:hover,
 .icon-button_keyboard:hover,
-.icon-target:hover {
+.icon-target:hover,
+.icon-help:hover {
 	color: #ff0000;
 	text-decoration: none;
 }
@@ -117,14 +122,11 @@ img.block,
 input,
 textarea {
 	border: 1px solid #aaa;
-	border-right-color: #555;
-	border-bottom-color: #555;
-	border-radius: 3px;
-	font-size: 12px;
 }
 
 button {
 	cursor: pointer;
+	margin: 0 5px;
 	min-width: 100px;
 	padding: 6px 12px;
 }
@@ -147,13 +149,10 @@ input.image {
 }
 
 select {
-	border: 1px solid #555;
-	font-size: 12px;
-	padding: 3px;
+	padding: 4px;
 }
 
 form {
-	font-size: 12px;
 }
 
 form[name=block] .descriptionbox, form[name=block] .optionbox {
@@ -511,19 +510,15 @@ textarea:required:invalid {
 }
 
 /* ======= Content styles ========== */
-#main_content {
-	background-color: #eee;
-	margin: 0 auto;
-}
-
 #content {
 	clear: both;
-	font-size: 12px;
+	font-size: 14px;
 	position: relative;
 	top: 110px;
 	z-index: 0;
 	overflow: hidden;
 	padding: 0;
+	flex: 1 0 auto;
 }
 
 #body_simple #content {
@@ -641,12 +636,11 @@ div[id*='-page'] {
 #home-page #index_small_blocks {
 	width: 100%;
 	margin: 12px auto;
-	overflow: hidden;
 }
 
 #home-page #index_small_blocks .block {
-	border: 1px solid #A9ADBC;
 	height: 280px;
+	overflow: hidden;
 }
 
 #home-page #index_main_blocks .blockheader {
@@ -745,7 +739,7 @@ div[id*='-page'] {
 
 /* indi and fam list pages */
 #indilist-page, #famlist-page {
-    font-size: 120%;
+	font-size: 120%;
 }
 .alpha_index {
 	color: #aaa;
@@ -970,8 +964,6 @@ a:hover .name1 {
 
 .name2 {
 	color: #555;
-	font-weight: bold;
-	font-size: 14px;
 }
 
 a:hover .name2 {
@@ -1234,9 +1226,10 @@ a:hover .nameZoom {
 }
 
 .helpcontent {
-	font-size: 80%;
+	font-size: .9em;
 	margin-left: 10px;
 	margin-right: 10px;
+	max-height: 600px;
 }
 
 .helpcontent dt {
@@ -1249,7 +1242,7 @@ a:hover .nameZoom {
 
 .help_text .helpcontent {
 	border: none;
-	font-size: 100%;
+	font-size: .9em;;
 	font-style: italic;
 	margin: 10px 0;
 	width: 100%;
@@ -1811,11 +1804,8 @@ a.showit:hover > span {
 	padding: 2px 5px;
 	cursor: default;
 	display: block;
-	/* if width will be 100% horizontal scrollbar will apear when scroll mode will be used */
-	/*width:100%;*/
 	font: menu;
 	font-size: 12px;
-	/* it is very important, if line-height not setted or setted in relative units scroll will be broken in firefox */
 	line-height: 14px;
 	overflow: hidden;
 }
@@ -1828,8 +1818,9 @@ a.showit:hover > span {
 	background-color: #eee;
 }
 
-.ui-autocomplete a.ui-state-focus {
+ul.ui-autocomplete li.ui-state-focus a {
 	color: #ff0000;
+	font-weight: normal;
 }
 
 .ui-sortable li {
@@ -2211,10 +2202,8 @@ dt {
 .new_passwd_form,
 #register-form ,
 #verify-form {
-	border: 1px outset #555;
 	display: inline-block;
 	margin: 10px auto;
-	padding: 5px;
 }
 
 #login-form div,
@@ -2256,9 +2245,9 @@ dt {
 #register-form label input,
 #register-form label select,
 #register-form textarea {
-	width: 220px;
+	width: 300px;
 	margin: 0 10px;
-	padding: 3px;
+	padding: 8px;
 }
 
 #register-form label select {
@@ -2788,9 +2777,9 @@ dt {
 
 #faq-page h2.ui-accordion-header {
 	border: none;
-    background-color: transparent;
-    border-radius: 0;
-    color: inherit;
+	background-color: transparent;
+	border-radius: 0;
+	color: inherit;
 }
 
 #faq-page #faq_accordion {
@@ -2799,20 +2788,20 @@ dt {
 }
 
 #faq-page div.ui-widget-content {
-    border: none;
-    background: #fff;
-    color: inherit;
+	border: none;
+	background: #fff;
+	color: inherit;
 }
 
 #faq-page #faq_search {
-    margin: 10px auto;
+	margin: 10px auto;
 	width: 200px;
 }
 
 #faq-page #faq_search input {
 	font-size: 110%;
 	padding: 5px;
-    width: 200px;
+	width: 200px;
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
@@ -3085,8 +3074,8 @@ div[id^="caldiv"] td {
 }
 
 .media-display-image {
-    max-height: 160px;
-    overflow: hidden;
+	max-height: 160px;
+	overflow: hidden;
 }
 
 [dir='rtl'] .media-display {
@@ -3094,6 +3083,11 @@ div[id^="caldiv"] td {
 }
 
 /* ========= jquery-ui.custom.css changes ============ */
+.ui-widget {
+	font-family: inherit;
+	font-size: inherit;
+}
+
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
 	background: none;
 	background-color: #eee;
@@ -3105,8 +3099,12 @@ div[id^="caldiv"] td {
 	border-bottom: 2px solid #555;
 }
 
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text {
+	padding: 0;
+}
+
 .ui-tabs .ui-tabs-nav li a span {
-    display: block;
+	display: block;
 }
 
 .ui-widget-content #outer_pages_container a {
@@ -3123,6 +3121,10 @@ div[id^="caldiv"] td {
 
 .ui-state-highlight a {
 	color: #009afe;
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    padding: .5em;
 }
 
 /* jQuery.datatable styling general over-rides */
@@ -3361,7 +3363,7 @@ div[id^="caldiv"] td {
 }
 
 .nav_content .facts_label {
-	width: 75px;
+	width: initial;
 }
 
 .famnav_title {
@@ -3812,12 +3814,6 @@ div[id^="caldiv"] td {
 	background-image: url(images/bing.png);
 }
 
-.icon-button_addrepository {
-	width: 15px;
-	height: 15px;
-	background-image: url(images/buttons/addrepository.png);
-}
-
 .icon-button_find_facts {
 	width: 20px;
 	height: 20px;
@@ -3829,7 +3825,6 @@ div[id^="caldiv"] td {
 	height: 18px;
 	background-image: url(images/buttons/head.png);
 }
-
 
 .icon-button_note {
 	width: 17px;
@@ -4035,24 +4030,28 @@ a.icon-udarrow:hover {
 .icon-copy				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-copy */
 .fa-bars				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-bars */
 .fa-bars:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-bars */
-.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-times */
+.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000; vertical-align: middle;} /* fa-times */
 .fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-times */
+.fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-save */
+.fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-save */
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-male */
 .icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */
 .icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */
-.icon-button_addsource	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
-.icon-button_addmedia 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-plus */
-.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-book */
-.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-icon-keyboard-o */
-.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-globe */
-.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-calendar */
-.icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em; vertical-align: top;} /* fa-bank */
-.icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-file-text */
-.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .5em;} /* fa-camera-retro */
-.icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-map-marker */
+.icon-button_addsource,
+.icon-button_addmedia,
+.icon-button_addrepository
+						{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em;} /* fa-plus */
+.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em;} /* fa-book */
+.icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em; vertical-align: top;} /* fa-icon-keyboard-o */
+.icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em; vertical-align: top;} /* fa-globe */
+.icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em; vertical-align: top;} /* fa-calendar */
+.icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em; vertical-align: top;} /* fa-bank */
+.icon-button_findnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em;} /* fa-file-text */
+.icon-button_media		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em;} /* fa-camera-retro */
+.icon-target			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 .25em; vertical-align: top;} /* fa-map-marker */
 .icon-image_add			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-plus */
 .icon-image_link		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-link */
 .icon-image_sort		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-sort-alpha-asc */
@@ -4088,23 +4087,23 @@ a.icon-udarrow:hover {
 .icon-lsuparrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-up */
 .icon-source			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-book */
 .icon-media				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-camera-retro */
-.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-times */
 .icon-resn-confidential {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-ban */
 .icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
 .icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
 .icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */
-.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1em;  margin: 0 5px;} /* fa-eye */
+.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-eye */
+.fa-mail-forward		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-mail-forward */
 
 #extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */
 #extra-menu > li:hover	{color: #009afe;}
 
 /* Generic MIME types */
-[class^="icon-mime-"],       [class*=" icon-mime-"]       				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */
+[class^="icon-mime-"],	   [class*=" icon-mime-"]	   				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-o */
 [class^="icon-mime-application-"], [class*=" icon-mime-application-"]	{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file */
-[class^="icon-mime-audio-"],    [class*=" icon-mime-audio-"]   			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
-[class^="icon-mime-image-"],    [class*=" icon-mime-image-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
-[class^="icon-mime-text-"],    [class*=" icon-mime-text-"]				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
-[class^="icon-mime-video-"],    [class*=" icon-mime-video-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
+[class^="icon-mime-audio-"],	[class*=" icon-mime-audio-"]   			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-audio-o */
+[class^="icon-mime-image-"],	[class*=" icon-mime-image-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-image-o */
+[class^="icon-mime-text-"],	[class*=" icon-mime-text-"]				{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-text-o */
+[class^="icon-mime-video-"],	[class*=" icon-mime-video-"]			{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-video-o */
 /* Specific MIME types */
 .icon-mime-application-pdf												{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-pdf-o */
 .icon-mime-application-vnd-ms-excel										{font-family: 'FontAwesome'; font-style: normal; font-size: 3em; background: none; margin: 5px;} /* fa-file-excel-o */
@@ -4171,7 +4170,7 @@ a.icon-udarrow:hover {
 }
 
 
-/* Edit interface pop-ups*/
+/* Edit interface pages*/
 #edit_interface-page h4 {
 	color: #555;
 	margin: 5px;
@@ -4184,47 +4183,101 @@ a.icon-udarrow:hover {
 #edit_interface-page #LATI,#edit_interface-page #LONG,#edit_interface-page #SPFX,#edit_interface-page #NSFX,#edit_interface-page #NPFX {
 	line-height: 18px;
 	margin: 0 5px;
-	width: 88px;
 }
 
 #edit_interface-page #GIVN,#edit_interface-page #SURN,#edit_interface-page #_MARNM {
 	line-height: 18px;
 	margin: 0 5px;
-	width: 180px;
+}
+
+#edit_interface-page #add_facts,
+#edit_interface-page #additional_facts,
+#edit_interface-page #add_name_details,
+#edit_interface-page #add_other_details,
+#addmedia-page #add_facts,
+#addmedia-page #additional_facts {
+	float: left;
+}
+
+[dir='rtl'] #edit_interface-page #add_facts,
+[dir='rtl'] #edit_interface-page #additional_facts,
+[dir='rtl'] #edit_interface-page #add_name_details,
+[dir='rtl'] #edit_interface-page #add_other_details,
+[dir='rtl'] #addmedia-page #add_facts,
+[dir='rtl'] #addmedia-page #additional_facts {
+	float: right;
+}
+
+#edit_interface-page #add_facts,
+#edit_interface-page #additional_facts,
+#edit_interface-page #add_name_details,
+#edit_interface-page #add_other_details,
+#addmedia-page #add_facts,
+#addmedia-page #additional_facts {
+	margin: auto 10px 20px;
+}
+
+#edit_interface-page #add_other_details {
+	border-left: 1px solid;
+	border-right:  1px solid;
+	padding: 0 10px;
+}
+
+#edit_interface-page .input-group-addon,
+#addmedia-page .input-group-addon {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#edit_interface-page span.help_text,
+#addmedia-page span.help_text {
+	display: block;
+	max-width: 500px;
+}
+
+#addmedia-page .help_text {
+	margin: 0 5px;
+}
+
+#edit_interface-page label,
+#addmedia-page label {
+	display: inline-block;
+	font-weight: 600;
+	padding: 0 5px;
+	vertical-align: top;
+	width: 25%;
+}
+
+#edit_interface-page .input,
+#addmedia-page .input {
+	display: inline-block;
+	padding: 0 5px;
+}
+
+#addmedia-page select[name="folder_list"],
+#edit_interface-page select[name^="PEDI"] {
+	width: 252px;
+}
+
+#edit_interface-page select[name^="EVEN"] {
+	width: 247px;
+}
+
+#edit_interface-page div[class^="fact_"] {
+	font-size: .9em;
+	margin: 5px;
 }
 
 #edit_interface-page input[type="text"],
+#addmedia-page input[type="text"],
 #edit_interface-page #NAME_display {
-	line-height: 18px;
-	margin: 0 5px;
 	vertical-align: top;
 	width: 240px;
 }
 
 #edit_interface-page input[type="text"][id*="PAGE"],
 #edit_interface-page input[type="text"][id*="_UID"] {
-	width: 350px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR"],
-#edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"] {
-	width: 250px;
-}
-
-#edit_interface-page input[type="text"][id$="DATE"] {
-	width: 160px;
-}
-
-#edit_interface-page input[type="text"][id^="TIME"] {
-	width: 100px;
-}
-
-#edit_interface-page input[type="text"][id*="OBJE_FILE"] {
-	width: 200px;
-}
-
-#edit_interface-page input[type="text"][id*="SOUR_TITL"] {
-	width: 250px;
+	width: 300px;
 }
 
 #edit_interface-page input[id*="TEXT"] {
@@ -4233,7 +4286,6 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page textarea {
-	margin: 0 5px;
 	width: 440px;
 }
 
@@ -4247,16 +4299,12 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page textarea[id^="newgedrec"] {
-	line-height: 18px;
-	width: 605px;
+	line-height: 20px;
+	min-width: 600px;
 }
 
 #edit_interface-page textarea#newgedrec1 {
-	height: 20px;
-}
-
-#edit_interface-page textarea#newgedrec2 {
-	height: 364px;
+	height: 20px!important;
 }
 
 #edit_interface-page textarea[id*="ADDR"],
@@ -4289,35 +4337,17 @@ a.icon-udarrow:hover {
 }
 
 #save-cancel {
-	background: #ddd;
-	border-top: solid #aaa 3px;
-	bottom: 0;
-	left: 0;
-	margin: 0;
-	position: fixed;
-	width: 100%;
+	clear: both;
+	float: left;
 }
 
 #save-cancel input {
 	padding: 5px 10px;
 }
 
-#save-cancel .save {
-	float: left;
-	margin: 10px;
-}
-
+#save-cancel .save,
 #save-cancel .cancel {
-	float: right;
-	margin: 10px;
-}
-
-[dir='rtl'] #save-cancel .save {
-	float: right;
-}
-
-[dir='rtl'] #save-cancel .cancel {
-	float: left;
+	margin: 10px 40px;
 }
 
 #edit_interface-page {
@@ -4332,12 +4362,21 @@ a.icon-udarrow:hover {
 	color: #555;
 }
 
-/* Addmedia pop-ups*/
-#addmedia-page input[type="text"] {
-	line-height: 18px;
-	margin: 0 5px;
-	width: 300px;
+div [id$="_factdiv"] {
+	margin: 10px auto 15px;
 }
+
+#edit_interface-page .last_change {
+	clear: both;
+}
+
+#edit_interface-page .last_change label,
+#edit_interface-page div#PEDI_factdiv label {
+    line-height: 18px;
+	max-width: 120px;
+}
+
+/* Addmedia pop-ups*/
 
 #addmedia-page .optionbox select {
 	margin: 0 5px;
@@ -4559,8 +4598,8 @@ a.icon-udarrow:hover {
 
 #branches-page button {
 	display: inline-block;
-    margin-top: 15px;
-    vertical-align: top;
+	margin-top: 15px;
+	vertical-align: top;
 }
 
 #branches-page ul {
@@ -5808,13 +5847,13 @@ div.widget {
 
 #nocensus-page .helpcontent {
 	font-size: inherit;
-    margin: 0;
+	margin: 0;
 }
 
 #nocensus-page button {
 	display: inline-block;
-    margin-top: 15px;
-    vertical-align: top;
+	margin-top: 15px;
+	vertical-align: top;
 }
 
 #nocensus_result {
@@ -5878,6 +5917,157 @@ div.widget {
 	padding: 0 3px;
 	margin: 0;
 	width: auto;
+}
+/* ------------------ */
+
+/* Styles for Census Assistant */
+.cens_header {
+	margin: 10px 0;
+}
+.cens_container {
+	border: 1px solid;
+	padding: 8px;
+}
+.cens_left {
+	float: left;
+	width: 75%;
+}
+.cens_right {
+	float: right;
+}
+.cens_sour {
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.cens_ctry-yr {
+	display:inline-block;
+}
+.cens_sour_country,
+.cens_sour_year {
+	display: inline;
+	float: left;
+}
+.cens_sour_year {
+	margin: 0 30px;
+}
+
+.cens_sour_year div,
+.cens_sour_country div {
+	display: inline-block;
+}
+.cens_sour_year select,
+.cens_sour_country select {
+	margin: 0 20px;
+}
+.cens_sour_scs {
+	width: 100%;
+}
+
+.cens_sour input {
+	font-weight:normal;
+	width: 99%;
+}
+.cens_sour_1 {
+}
+.cens_sour_2 {
+	margin: 10px 0 0 0;
+}
+.cens_text_header button {
+	margin: 5px 0 0;
+}
+.cens_text_header button:nth-of-type(1) {
+	float:left;
+}
+.cens_text_header button:nth-of-type(2) {
+	float:right;
+}
+.cens_text h3 {
+	margin: 0;
+}
+textarea#NOTE {
+	font-size: inherit;
+	min-height: 200px;
+	width: 99%;
+}
+.cens_search {
+	border: 1px solid;
+	float: right;
+	margin: 0 10px;
+	overflow-x: hidden;
+	padding: 8px;
+}
+.cens_search .cens_table {
+	font-size: 12px;
+}
+.cens_search h4 {
+	font-size: 1em;
+	margin: 0;
+}
+.cens_result {
+	border: 1px solid;
+	padding: 8px;
+}
+.cens_text {
+	overflow: hidden;
+}
+.cens_textinput {
+	border: 1px solid;
+	margin: 10px 0;
+	padding: 8px;
+}
+.cens_textinput_left  {
+	float: left;
+	width: 90%;
+	text-align: center;
+}
+.cens_textinput_right  {
+	float: right;
+	margin: 5px;
+}
+.cens_table td {
+	border: 1px solid;
+	min-width: 15px;
+	padding: 3px;
+	white-space: nowrap;
+}
+.cens_table td p {
+	font-weight: 900;
+	margin: 0;
+}
+.cens_table td.divider {
+	border: none;
+	height: 15px;
+}
+.cens_table .linkcell td {
+	border: 0;
+	font-weight: normal;
+	text-align: left;
+}
+.cens_table .linkcell .ltrnav {
+	background-color: #eee;
+	border: 1px solid;
+	font-size: 90%;
+	left:40px;
+	position: absolute;
+	right: auto;
+	top: -15px;
+}
+.cens_addrows {
+	clear: both;
+}
+.cens_data {
+	min-height: 170px;
+	overflow-x: auto;
+}
+.cens_data table {
+	width: 100%;
+}
+.cens_data table .header {
+	background-color: #ddd;
+	border: 0;
+	min-width: 0;
+	padding: 3px;
 }
 /* ------------------ */
 
@@ -5982,16 +6172,30 @@ div.widget {
  		top: auto;
  	}
 	#home-page #index_main_blocks,
-    #home-page #index_small_blocks > div {
-        float: none;
-        margin: auto;
-        width: 95%;
-    }
+	#home-page #index_small_blocks > div {
+		float: none;
+		margin: auto;
+		width: 95%;
+	}
 	.media-list-item {
  		width: 95%; /* one per row */
  	}
 	#faq-page {
 		width: 95%;
+	}
+	#edit_interface-page #add_facts,
+	#edit_interface-page #additional_facts,
+	#edit_interface-page #add_name_details,
+	#edit_interface-page #add_other_details,
+	#addmedia-page #add_facts,
+	#addmedia-page #additional_facts {
+		width: 95%;
+	}
+	#edit_interface-page textarea[id^="newgedrec"] {
+		min-width: 95%;
+	}
+	.cens_left {
+		width: 95%; /* census assistant */
 	}
 
  }
@@ -6000,10 +6204,37 @@ div.widget {
  	.media-list-item {
  		width: 45%; /* two per row */
  	}
+	.cens_left {
+		width: 65%; /* census assistant */
+	}
+	#edit_interface-page #add_facts,
+	#edit_interface-page #additional_facts,
+	#addmedia-page #add_facts,
+	#addmedia-page #additional_facts {
+		width: 45%;
+	}
+	#edit_interface-page #add_name_details,
+	#edit_interface-page #add_other_details,
+	div#add_other_details + div#additional_facts {
+		width: 31%;
+	}
+
  }
 
  @media (min-width: 1681px) {
  	.media-list-item {
  		width: 31%; /* three per row */
  	}
+	#edit_interface-page #add_facts,
+	#edit_interface-page #additional_facts,
+	#addmedia-page #add_facts,
+	#addmedia-page #additional_facts {
+		width: 756px;
+	}
+	#edit_interface-page #add_name_details,
+	#edit_interface-page #add_other_details,
+	div#add_other_details + div#additional_facts {
+		width: 520px;
+	}
+
  }

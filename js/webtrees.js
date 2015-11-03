@@ -25,19 +25,29 @@
 
 // Specifications for various types of popup edit window.
 // Choose positions to center in the smallest (1000x800) target screen
-var edit_window_specs	='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
-var indx_window_specs	='width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // index_edit.php, module configuration
-var news_window_specs	='width=900,height=750,left=70, top=70, resizable=1,scrollbars=1'; // edit_news.php
-var help_window_specs	='width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
-var find_window_specs	='width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
-var mesg_window_specs	='width=800,height=650,left=250,top=100,resizable=1,scrollbars=1'; // message.php
-var chan_window_specs	='width=600,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
-var mord_window_specs	='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
-var assist_window_specs	='width=900,height=800,left=70,top=70,  resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
-var gmap_window_specs	='width=580,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
-var fam_nav_specs		='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
+var edit_window_specs	= 'width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
+var indx_window_specs	= 'width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // index_edit.php, module configuration
+var news_window_specs	= 'width=900,height=750,left=70, top=70, resizable=1,scrollbars=1'; // edit_news.php
+var help_window_specs	= 'width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
+var find_window_specs	= 'width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
+var mesg_window_specs	= 'width=800,height=650,left=250,top=100,resizable=1,scrollbars=1'; // message.php
+var chan_window_specs	= 'width=600,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
+var mord_window_specs	= 'width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
+//var assist_window_specs	= 'width=900,height=800,left=70,top=70,  resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
+var assist_window_specs	= ''; // edit_interface.php, used for census assistant
+var gmap_window_specs	= 'width=580,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
+var fam_nav_specs		= 'width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
 var pastefield, nameElement, remElement; // Elements to paste to
+
+//Add help texts to page
+function display_help() {
+	jQuery(".help_text").each(function() {
+		var helpID = jQuery(this).attr("id");
+		jQuery("#" + helpID).load("help_text.php?help=" + helpID);
+	});
+}
+
 
 // TODO: This function loads help_text.php twice.  It should only load it once.
 function helpDialog(which, mod) {
@@ -48,7 +58,7 @@ function helpDialog(which, mod) {
 			width: 500,
 			height: 'auto',
 		}).load(url+' .helpcontent', function() {
-			jQuery(this).dialog("option", "position", { my: "center center", at: "center center", of: window} );
+			jQuery(this).dialog("option", "position", { my: "center top", at: "center top", of: "#content"} );
 		});
 	jQuery(".ui-widget-overlay").on("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
@@ -303,7 +313,8 @@ var show = false;
  *        Field to paste a result into.
  */
 function edit_interface(params, windowspecs, pastefield) {
-	var features = windowspecs || edit_window_specs;
+//	var features = windowspecs || edit_window_specs;
+	var features = '';
 	window.pastefield = pastefield;
 	var url = 'edit_interface.php?' + jQuery.param(params) + '&accesstime=' + accesstime + '&ged=' + WT_GEDCOM;
 	window.open(url, '_blank', features);

@@ -62,8 +62,8 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	private static function media_3_find() {
 		global $MEDIA_DIRECTORY, $ABBREVIATE_CHART_LABELS;
 
-		$controller=new WT_Controller_Simple();
-		
+		$controller = new WT_Controller_Simple();
+
 		$type           ='indi';
 		$filter         =safe_GET('filter');
 		$action         =safe_GET('action');
@@ -76,18 +76,17 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$all            =safe_GET_bool('all');
 		$subclick       =safe_GET('subclick');
 		$choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
-		
+
 		$controller
 			->setPageTitle(WT_I18N::translate('Find an individual'))
 			->pageHeader();
-		
-		echo '<script>';
 		?>
-		
+
+		<script>
 			function pasterow(id, name, gend, yob, age, bpl) {
 				window.opener.opener.insertRowToTable(id, name, '', gend, '', yob, age, 'Y', '', bpl);
 			}
-		
+
 			function pasteid(id, name, thumb) {
 				if (thumb) {
 					window.opener.<?php echo $callback; ?>(id, name, thumb);
@@ -124,9 +123,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				}
 				return true;
 			}
+		</script>
+
 		<?php
-		echo '</script>';
-		
 		echo "<div align=\"center\">";
 		echo "<table class=\"list_table width90\" border=\"0\">";
 		echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
@@ -137,7 +136,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo "<br>";
 		echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
 		echo "<br>";
-		
+
 		$filter = trim($filter);
 		$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
@@ -155,7 +154,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					'".(1901-$indi->getbirthyear())."' ,
 					'".$indi->getbirthplace()."'); return false;\">
 					<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";
-	
+
 				$born=WT_Gedcom_Tag::getLabel('BIRT');
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
 			echo "<hr>";
@@ -177,7 +176,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$controller
 			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 			->pageHeader();
-		
+
 		$record=WT_GedcomRecord::getInstance($iid2);
 		if ($record) {
 			$headjs='';
@@ -199,7 +198,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			}
 			</script>
 			<?php
-		
+
 		} else {
 			?>
 			<script>
@@ -210,7 +209,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			</script>
 			<?php
 		}
-		?>		
+		?>
 		<script>window.onLoad = insertId();</script>
 		<?php
 	}

@@ -105,7 +105,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td class="center ',
 							$controller->getPersonStyle($people['wife']), ' nam">
-							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">'. 
+							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">'.
 								$people['wife']->getFullName(). '
 							</a>
 							<div class="font9">' . $people['wife']->getLifeSpan() . '</div>
@@ -237,7 +237,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td class="center ',
 							$controller->getPersonStyle($people['husb']), ' nam">
-							<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">'. 
+							<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">'.
 								$people['husb']->getFullName(). '
 							</a>
 							<div class="font9">' . $people['husb']->getLifeSpan() . '</div>
@@ -274,7 +274,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addClass('', 'submenu flyout2');
 				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
 				$menu->addSubmenu($submenu);
-				echo '<tr><td class="facts_label" style="width:75px;">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
+				echo '<tr><td class="facts_label">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
 				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
 				echo $child->getFullName();
 				echo '</a>';
@@ -326,7 +326,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td class="center ',
 							$controller->getPersonStyle($people['wife']), ' nam">
-							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">'. 
+							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">'.
 								$people['wife']->getFullName(). '
 							</a>
 							<div class="font9">' . $people['wife']->getLifeSpan() . '</div>

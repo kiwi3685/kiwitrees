@@ -518,6 +518,7 @@
   content: "\f066";
 }
 .fa-plus:before,
+.icon-button_addrepository:before,
 .icon-button_addsource:before,
 .icon-button_addmedia:before,
 .icon-button_addnote:before,
@@ -1574,7 +1575,7 @@
 .fa-file-sound-o:before,
 .fa-file-audio-o:before,
 [class^="icon-mime-audio-"]:before,
-[class*=" icon-mime-audio-"]:before, 
+[class*=" icon-mime-audio-"]:before,
 .icon-mime-audio-mp3:before,
 .icon-mime-audio-mpeg:before,
 .icon-mime-audio-x-ms-wma:before,

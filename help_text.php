@@ -266,11 +266,6 @@ case 'FAX':
 	$text = WT_I18N::translate('Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
 	break;
 
-case 'FORM':
-	$title = WT_Gedcom_Tag::getLabel('FORM');
-	$text = WT_I18N::translate('This is an optional field that can be used to enter the file format of the multimedia object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.');
-	break;
-
 // This help text is used for all NAME components
 case 'NAME':
 	$title = WT_Gedcom_Tag::getLabel('NAME');
@@ -1112,32 +1107,9 @@ case 'download_zipped':
 	$text = WT_I18N::translate('When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent.');
 	break;
 
-case 'edit_add_ASSO':
-	$title = WT_I18N::translate('Add an associate');
-	$text = WT_I18N::translate('Add an associate allows you to link a fact with an associated person in the site.  This is one way in which you might record that someone was the Godfather of another person.');
-	break;
-
 case 'edit_add_GEDFact_ASSISTED':
 	$title = WT_I18N::translate('GEDFact shared note assistant');
 	$text = WT_I18N::translate('Clicking the "+" icon will open the GEDFact Shared Note Assistant window.<br>Specific help will be found there.<br><br>When you click the "Save" button, the ID of the Shared Note will be pasted here.');
-	break;
-
-case 'edit_add_NOTE':
-	$title = WT_I18N::translate('Add a note');
-	$text = WT_I18N::translate('This section allows you to Add a Note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page.');
-	break;
-
-case 'edit_add_SHARED_NOTE':
-	$title = WT_I18N::translate('Add a shared note');
-	$text = WT_I18N::translate('Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one person, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note\'s contents.<br><ul><li><b>Link to an existing shared note</b><div style="padding-left:20px;">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find Shared Note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style="padding-left:20px;">When you click the <b>Create a new Shared Note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style="padding-left:20px;">When you click the <b>Edit Shared Note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>');
-	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-		$text.='<p class="warning">'.WT_I18N::translate('You should avoid using the vertical line character &ldquo;|&rdquo; in your notes.  It is used internally by kiwitrees and may cause your note to display incorrectly.').'</p>';
-	}
-	break;
-
-case 'edit_add_SOUR':
-	$title = WT_I18N::translate('Add a source citation');
-	$text = WT_I18N::translate('This section allows you to Add a source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the <b>Create a new source</b> link if you need to enter a new source.  In the Citation Details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source.');
 	break;
 
 case 'edit_edit_raw':

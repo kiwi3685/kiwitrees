@@ -31,17 +31,29 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 ?>
-<!--   ---- The proposed Census Text -------- -->
-<div class="optionbox cens_text wrap">
+<!--   ====== The proposed Census Text ========= -->
+<div class="cens_text wrap">
 	<div class="cens_text_header">
-		<span><input type="button" value="<?php echo WT_I18N::translate('Preview'); ?>" onclick="preview();"></span>
-		<span><b><?php echo WT_I18N::translate('Proposed Census Text'); ?></b></span>
-		<span><input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="caSave();"></span>
+		<h3>
+			<?php echo WT_I18N::translate('Proposed Census Text'); ?>
+		</h3>
 	</div>
-	<div class="optionbox">
-		<textarea wrap="off" name="NOTE" id="NOTE"></textarea><br>
-		<center>
+	<div>
+		<textarea wrap="off" name="NOTE" id="NOTE"></textarea>
+		<p class="center">
 			<?php echo print_specialchar_link('NOTE'); ?>
-		</center>
+		</p>
+		<button class="btn btn-primary" type="button" onclick="preview();">
+			<i class="fa fa-eye"></i>
+			<?php echo WT_I18N::translate('preview'); ?>
+		</button>
+		<button class="btn btn-primary" type="submit" onclick="caSave();" >
+			<i class="fa fa-save"></i>
+			<?php echo WT_I18N::translate('save'); ?>
+		</button>
+		<button class="btn btn-primary" type="button" onclick="window.close();">
+			<i class="fa fa-times"></i>
+			<?php echo WT_I18N::translate('close'); ?>
+		</button>
 	</div>
 </div>

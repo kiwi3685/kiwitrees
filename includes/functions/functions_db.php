@@ -941,13 +941,13 @@ function search_stories($query, $geds, $match) {
 
 	foreach ($query as $q) {
 		$queryregex[]	= preg_quote(utf8_strtoupper($q), '/');
-		$querysql[]		= "setting_value LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."' OR setting_name LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
-	}
+		$querysql[]		= " setting_value LIKE " . WT_DB::quote("%{$q}%") . " COLLATE '" . WT_I18N::$collation . "' OR setting_name LIKE " . WT_DB::quote("%{$q}%") . " COLLATE '" . WT_I18N::$collation . "'";
+}
 
     $sql ="
-        SELECT kt_block.`block_id` AS block_id, `gedcom_id` AS ged_id
-         FROM kt_block JOIN kt_block_setting
-         ON kt_block.`block_id` = kt_block_setting.`block_id`
+        SELECT ##block.`block_id` AS block_id, `gedcom_id` AS ged_id
+         FROM ##block JOIN ##block_setting
+         ON ##block.`block_id` = ##block_setting.`block_id`
 		 WHERE (" . implode($match, $querysql) . ")
          AND `module_name`='stories'
          AND `gedcom_id` IN (" . implode(',', $geds) . ")
