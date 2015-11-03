@@ -579,11 +579,10 @@ $controller
 									}
 									foreach ($mediaFolders as $f) {
 										echo '<option value="' . $f . '"';
-											if ($folder == $f) {
+											if ($folder === $f) {
 												echo ' selected="selected"';
-												echo '>' . $f;
 											}
-										echo '</option>';
+										echo '>' . $f . '</option>';
 									}
 								echo '</select>
 							</span>';
