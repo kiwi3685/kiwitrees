@@ -163,7 +163,11 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 								if($primary) {
 									$name = true;
 									// create plugin vars
-									$birth_year	= $controller->record->getBirthYear();
+									if ($controller->record->getBirthYear()) {
+										$birth_year	= $controller->record->getBirthYear();
+									} else {
+										$birth_year = '';
+									}
 									$givn 		= $this->encode($primary['givn'], $plugin->encode_plus()); // all given names
 									$given		= explode(" ", $primary['givn']);
 									$first		= $given[0]; // first given name
@@ -173,7 +177,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 									$fullname 	= $plugin->encode_plus() ? $givn.'+'.$surname : $givn.'%20'.$surname; // full name
 									$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
 									$link 		= $plugin->create_link($birth_year, $fullname, $givn, $first, $middle, $prefix, $surn, $surname);
-									$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname);
+									$sublinks 	= $plugin->create_sublink($birth_year, $fullname, $givn, $first, $middle, $prefix, $surn, $surname);
 								}
 							}
 						}

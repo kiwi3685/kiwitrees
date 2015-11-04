@@ -10,12 +10,11 @@ class ancestry_plugin extends research_base_plugin {
 		return 'Ancestry';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-
+	static function create_link($birth_year, $fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = '#';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($birth_year, $fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		$domain = array(
 			// these are all the languages supported by ancestry. See: http://corporate.ancestry.com/about-ancestry/international/
 			'de'		=> 'de',		// German
@@ -32,8 +31,8 @@ class ancestry_plugin extends research_base_plugin {
 		} else {
 			$ancestry_domain = $domain['en_US'];
 		}
-		$url = 'http://search.ancestry.' . $ancestry_domain . '/cgi-bin/sse.dll?new=1&gsfn=' . $givn.'&gsln=' . $surname . '&gl=ROOT_CATEGORY&rank=1';
-		$collection=array(
+		$url = 'http://search.ancestry.' . $ancestry_domain . '/cgi-bin/sse.dll?new=1&gsfn=' . $givn.'&gsln=' . $surname . '&msbdy=' . $birth_year . '&gl=ROOT_CATEGORY&rank=1';
+		$collection = array(
 				"All Collections"	=>"0",
 				"Australia"			=>"2",
 				"Canada"			=>"3",
@@ -63,8 +62,7 @@ class ancestry_plugin extends research_base_plugin {
 		return $link;
 	}
 
-
 	static function encode_plus() {
-		return false;	
+		return false;
 	}
 }
