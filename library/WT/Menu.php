@@ -98,7 +98,7 @@ class WT_Menu {
 		$this->submenus[] = $obj;
 	}
 
-	// 
+	//
 	public function __toString() {
 		return $this->getMenuAsList();
 	}
@@ -122,7 +122,7 @@ class WT_Menu {
 			$html=$this->label;
 		}
 		if ($this->submenus) {
-			$html.='<ul class="f-dropdown"  id="hover1">';
+			$html.='<ul class="f-dropdown hover1">';
 			foreach ($this->submenus as $submenu) {
 				if ($submenu) {
 					if ($submenu->submenus) {
@@ -258,7 +258,7 @@ class WT_Menu {
 		if ($this->submenus) {
 			foreach ($this->submenus as $submenu) {
 				if ($submenu) {
-					$option_link .= '<option value="' . $submenu->link . '">--- ' . $submenu->label . '</option>';
+					$option_link .= '<option value="' . $submenu->link . '">&dash;&dash;&dash;&nbsp;' . $submenu->label . '</option>';
 				}
 			}
 		}
