@@ -318,6 +318,9 @@ class WT_MenuBar {
 			if (array_key_exists('no_census', WT_Module::getActiveMenus())) {
 				$menulist['no_census'] = WT_I18N::translate('UK Census check');
 			}
+			if (array_key_exists('uk_register', WT_Module::getActiveMenus())) {
+				$menulist['uk_register'] = WT_I18N::translate('UK 1939 Register');
+			}
 		}
 		asort($menulist);
 
@@ -366,6 +369,11 @@ class WT_MenuBar {
 				break;
 
 			case 'no_census':
+				$submenu = new WT_Menu($name, 'module.php?mod=' . $page . '&amp;mod_action=show&amp;ged='.WT_GEDURL, 'menu-list-obje');
+				$menu->addSubmenu($submenu);
+				break;
+
+			case 'uk_register':
 				$submenu = new WT_Menu($name, 'module.php?mod=' . $page . '&amp;mod_action=show&amp;ged='.WT_GEDURL, 'menu-list-obje');
 				$menu->addSubmenu($submenu);
 				break;

@@ -29,20 +29,20 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
+class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('UK Census check');
+		return /* I18N: Name of a module */ WT_I18N::translate('UK 1939 Register');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “UK Census check” module */ WT_I18N::translate('A list of missing census data, for UK census records only');
+		return /* I18N: Description of the “UK 1939 Register” module */ WT_I18N::translate('A list of missing data for the UK 1939 Register records');
 	}
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 21;
+		return 25;
 	}
 
 	// Implement WT_Module_Menu
@@ -69,7 +69,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 		$controller = new WT_Controller_Page();
 
 		$controller
-			->setPageTitle(WT_I18N::translate(WT_I18N::translate('Missing Census Data')))
+			->setPageTitle(WT_I18N::translate(WT_I18N::translate('Missing Register Data')))
 			->pageHeader()
 			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 			->addInlineJavascript('autocomplete();');
@@ -79,48 +79,32 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 		//-- args
 		$surn	= safe_POST('surn', '[^<>&%{};]*');
 		$plac	= safe_POST('plac', '[^<>&%{};]*');
-		$dat	= safe_POST('dat', '[^<>&%{};]*');
+		$dat	= '29 SEP 1939';
 		$ged	= safe_POST('ged');
 		if (empty($ged)) {
 			$ged = $GEDCOM;
 		}
 
 		//List of Places
-		$places = array('England', 'Wales', 'Scotland', 'Isle of Man', 'Channel Islands');
+		$places = array('England', 'Wales');
 
 		//List of Dates
 		$uk_dates =  array(
-			'06 JUN 1841',
-			'30 MAR 1851',
-			'07 APR 1861',
-			'02 APR 1871',
-			'03 APR 1881',
-			'05 APR 1891',
-			'31 MAR 1901',
-			'02 APR 1911'
+			'29 SEP 1939'
 		);
 
 		// Generate a list of combined censuses or other facts
-		foreach (array(
-			'06 JUN 1841'=>GregorianToJD(6,6,1841),
-			'30 MAR 1851'=>GregorianToJD(3,30,1851),
-			'07 APR 1861'=>GregorianToJD(4,7,1861),
-			'02 APR 1871'=>GregorianToJD(4,2,1871),
-			'03 APR 1881'=>GregorianToJD(4,3,1881),
-			'05 APR 1891'=>GregorianToJD(4,5,1891),
-			'31 MAR 1901'=>GregorianToJD(3,31,1901),
-			'02 APR 1911'=>GregorianToJD(4,02,1911)
-		) as $date=>$jd) {
+		foreach (array('29 SEP 1939' => GregorianToJD(9,29,1939)) as $date => $jd) {
 			foreach ($places as $place) {
-				$data_sources[]=array('event'=>'CENS', 'date'=>$date, 'place'=>$place, 'jd'=>$jd);
+				$data_sources[] = array('event' => 'RESI', 'date' => $date, 'place' => $place, 'jd' => $jd);
 			}
 		}
 
 		// Start Page -----------------------------------------------------------------------
 		?>
 			<div id="nocensus-page">
-				<h2><?php echo WT_I18N::translate('Individuals with missing census data'); ?></h2>
-				<h4><?php echo WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
+				<h2><?php echo WT_I18N::translate('Individuals with missing register data'); ?></h2>
+				<h4><?php echo WT_I18N::translate('Enter a surname, then select England or Wales from the country list'); ?></h3>
 				<form name="surnlist" id="surnlist" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show">
 					<div class="chart_options">
 						<label for "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
@@ -133,7 +117,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 						</div>
 					</div>
 					<div class="chart_options nocensus">
-						<label for "cens_plac"><?php echo WT_I18N::translate('Census Place'); ?></label>
+						<label for "cens_plac"><?php echo WT_I18N::translate('Country'); ?></label>
 						<select name="plac" id="cens_plac">
 							<?php
 							echo '<option value="' . WT_I18N::translate('all') . '"';
@@ -148,27 +132,6 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 										echo ' selected = "selected"';
 									}
 									echo '>' . $place_list. '
-								</option>';
-							}
-							?>
-						</select>
-					</div>
-					<div class="chart_options nocensus">
-						<label for "cens_dat"><?php echo WT_I18N::translate('Census date'); ?></label>
-						<select name="dat"  id="cens_dat">
-							<?php
-							echo '<option value="' . WT_I18N::translate('all') . '"';
-								if ($dat == WT_I18N::translate('all')) {
-									echo ' selected = "selected"';
-								}
-								echo '>' . WT_I18N::translate('all') . '
-							</option>';
-							foreach ($uk_dates as $date_list) {
-								echo '<option value="' . $date_list . '"';
-									if ($date_list == $dat) {
-										echo ' selected="selected"';
-									}
-									echo '>' . substr($date_list,7,4). '
 								</option>';
 							}
 							?>
@@ -214,6 +177,15 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 			add_parents($indis, WT_Person::getInstance($id));
 		}
 
+		// Notes about the register
+		?>
+		<h4><?php echo WT_I18N::translate('Notes'); ?></h4>
+		<ol id="register_notes">
+			<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('This list assumes entries relating to the 1939 Register are recorded using the <b>residence</b> GEDCOM tag (RESI))'); ?></li>
+			<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('In general anyone who died after 1991, or is still alive, will be redacted (hidden) on the Register. They are listed here, but with a note indicating they are likely to be redacted. However, the Register is incomplete in this regard, so many people who died <u>before</u> 1991 are still redacted.'); ?></li>
+			<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('Anyone serving in the military on 29 September 1939 is excluded from the Register. They are included in these lists but with a note that they may be in the military. This list assumes their military service is recorded with either the _MILI or _MILT GEDCOM tags'); ?></li>
+		</ol>
+		<?php
 		// Show sources to user
 		echo '<ul id="nocensus_result">';
 			// Check each INDI against each SOUR
@@ -243,7 +215,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 					if($check1 == $plac || $plac == WT_I18N::translate('all')) {
 						if($check2 == $dat || $dat == WT_I18N::translate('all')) {
 							// Person not alive - skip
-							if ($data_source['jd']<$birt_jd || $data_source['jd']>$deat_jd)
+							if ($data_source['jd'] < $birt_jd || $data_source['jd'] > $deat_jd)
 								continue;
 							// Find where the person was immediately before/after
 							$bef_plac	= $birt_plac;
@@ -252,18 +224,20 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 							$bef_jd		= $birt_jd;
 							$aft_jd		= $deat_jd;
 							$aft_fact	= 'DEAT';
+
 							foreach ($life as $event) {
-								if ($event->getDate()->MinJD()<=$data_source['jd'] && $event->getDate()->MinJD()>$bef_jd) {
-									$bef_jd  =$event->getDate()->MinJD();
-									$bef_plac=$event->getPlace();
-									$bef_fact=$event->getTag();
+								if ($event->getDate()->MinJD() <= $data_source['jd'] && $event->getDate()->MinJD() > $bef_jd) {
+									$bef_jd   = $event->getDate()->MinJD();
+									$bef_plac = $event->getPlace();
+									$bef_fact = $event->getTag();
 								}
-								if ($event->getDate()->MinJD()>=$data_source['jd'] && $event->getDate()->MinJD()<$aft_jd) {
-									$aft_jd  =$event->getDate()->MinJD();
-									$aft_plac=$event->getPlace();
-									$aft_fact=$event->getTag();
+								if ($event->getDate()->MinJD() >= $data_source['jd'] && $event->getDate()->MinJD() < $aft_jd) {
+									$aft_jd   = $event->getDate()->MinJD();
+									$aft_plac = $event->getPlace();
+									$aft_fact = $event->getTag();
 								}
 							}
+
 							// If we already have this event - skip
 							if ($bef_jd == $data_source['jd'] && $bef_fact == $data_source['event'])
 								continue;
@@ -271,7 +245,17 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 							if (stripos($bef_plac, $data_source['place']) !== false || stripos($aft_plac, $data_source['place']) !== false) {
 								$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
 								$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
-								$missing_text .= "<li>{$data_source['place']} {$desc_event} for {$data_source['date']} <i><font size='-2'>({$age_at_census})</font></i></li>";
+								$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Age') . ' - ' . $age_at_census . '</i></li>';
+
+							// Person died after 1991 - make note
+							if ($indi->getEstimatedDeathDate()->gregorianYear() > '1991') {
+								$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
+							}
+
+							// Check if person in military
+							if ($bef_fact == '_MILI' || $bef_fact == '_MILT') {
+								$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably excluded - military service') . '</i></li>';
+							}
 							}
 						}
 					}
@@ -285,14 +269,14 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 				if ($death_year == 0) {
 					$death_year='????';
 				}
-				echo '
+				?>
 					<li>
-						<a target="_blank" href="', $indi->getHtmlUrl(), '">', $indi->getFullName(), '
-							<span> (', $birth_year, '-', $death_year, ') </span>
+						<a target="_blank" href="<?php echo $indi->getHtmlUrl(); ?>"><?php echo $indi->getFullName(); ?>
+							<span> (<?php echo $birth_year . '-' . $death_year; ?>) </span>
 						</a>
-						<ul>', $missing_text, '</ul>
+						<ul><?php echo $missing_text; ?></ul>
 					</li>
-				';
+				<?php
 				++$n;
 				}
 			}
@@ -303,11 +287,4 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 			</ul>
 	</div>';
 	}
-
-	private function life_sort($a, $b) {
-		if ($a->getDate()->minJD() < $b->getDate()->minJD()) return -1;
-		if ($a->getDate()->minJD() > $b->getDate()->minJD()) return 1;
-		return 0;
-	}
-
 }
