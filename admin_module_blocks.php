@@ -91,6 +91,9 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 				?>
 			</tbody>
 		</table>
-		<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+		<button class="btn btn-primary show" type="submit">
+			<i class="fa fa-floppy-o"></i>
+			<?php echo WT_I18N::translate('save'); ?>
+		</button>
 	</form>
 </div>

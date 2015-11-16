@@ -81,7 +81,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 			<tbody>
 				<?php
 				$order = 1;
-				foreach ($modules as $module_name=>$module) { 
+				foreach ($modules as $module_name=>$module) {
 					?>
 					<tr class="sortme">
 						<td ><?php echo $module->getTitle(); ?></td>
@@ -111,6 +111,9 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 				?>
 			</tbody>
 		</table>
-		<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+		<button class="btn btn-primary show" type="submit">
+			<i class="fa fa-floppy-o"></i>
+			<?php echo WT_I18N::translate('save'); ?>
+		</button>
 	</form>
 </div>

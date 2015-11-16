@@ -143,7 +143,7 @@ $controller
 							echo
 								'<tr>
 									<td>', two_state_checkbox('status-'.$module_name, $status=='enabled'), '</td>
-									<td>'; 
+									<td>';
 										if ( $module instanceof WT_Module_Config ) {
 											echo '<a href="', $module->getConfigLink(), '">';
 										}
@@ -190,7 +190,10 @@ $controller
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+			<button class="btn btn-primary show" type="submit">
+				<i class="fa fa-floppy-o"></i>
+				<?php echo WT_I18N::translate('save'); ?>
+			</button>
 		</form>
 	</div>
 </div>
