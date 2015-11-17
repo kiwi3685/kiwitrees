@@ -1121,7 +1121,6 @@ function format_sour_table($datalist) {
 		// Sortable name
 		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
 		$key = $source->getXref() . '@' . WT_GED_ID;
-		print_r($key);
 		//-- Author
 		$html .= '<td>'. highlight_search_hits(htmlspecialchars($source->getAuth())). '</td>';
 		//-- Linked INDIs
