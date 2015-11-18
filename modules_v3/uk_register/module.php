@@ -237,7 +237,6 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
 									$aft_fact = $event->getTag();
 								}
 							}
-
 							// If we already have this event - skip
 							if ($bef_jd == $data_source['jd'] && $bef_fact == $data_source['event'])
 								continue;
@@ -246,16 +245,14 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
 								$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
 								$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
 								$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Age') . ' - ' . $age_at_census . '</i></li>';
-
-							// Person died after 1991 - make note
-							if ($indi->getEstimatedDeathDate()->gregorianYear() > '1991') {
-								$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
-							}
-
-							// Check if person in military
-							if ($bef_fact == '_MILI' || $bef_fact == '_MILT') {
-								$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably excluded - military service') . '</i></li>';
-							}
+								// Person died after 1991 - make note
+								if ($indi->getEstimatedDeathDate()->gregorianYear() > '1991') {
+									$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
+								}
+								// Check if person in military
+								if ($bef_fact == '_MILI' || $bef_fact == '_MILT') {
+									$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably excluded - military service') . '</i></li>';
+								}
 							}
 						}
 					}
@@ -282,6 +279,8 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
 			}
 			if ($n == 0 && $surn) {
 				echo '<div class="center error">' . WT_I18N::translate('No missing records found') . '</div>';
+			} else {
+				echo '<div class="center">' . WT_I18N::plural('%s record found', '%s records found', $n, $n) . '</div>';
 			}
 		echo '
 			</ul>

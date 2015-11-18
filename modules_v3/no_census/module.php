@@ -298,6 +298,8 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Menu {
 			}
 			if ($n == 0 && $surn) {
 				echo '<div class="center error">' . WT_I18N::translate('No missing records found') . '</div>';
+			} else {
+				echo '<div class="center">' . WT_I18N::plural('%s record found', '%s records found', $n, $n) . '</div>';
 			}
 		echo '
 			</ul>
