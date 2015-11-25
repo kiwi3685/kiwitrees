@@ -1,0 +1,252 @@
+/* ============= */
+/* = Structure = */
+/* ============= */
+
+#advent_block {
+    height: 1200px;
+    min-height: 100%;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background: url(../images/background.jpg);
+    background-repeat: repeat-y, no-repeat;
+    background-position: 50% 0, 50% 0%;
+}
+
+#advent_wrapper {
+    padding-bottom: 83px;
+    margin: 0 auto;
+    max-width: 880px;
+    overflow: hidden;
+}
+
+#advent_wrapper h1 {
+    font-size: 30px;
+}
+
+#advent_wrapper p {
+    font-size: 20px;
+}
+
+/* ========= */
+/* = Doors = */
+/* ========= */
+
+.doors {
+     margin: 4rem 0;
+     counter-reset: days;
+     list-style: none;
+}
+
+.doors > li{
+    -webkit-perspective: 900;
+    -moz-perspective: 900;
+    -o-perspective: 900;
+    perspective: 900;
+    position: relative;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    counter-increment: days;
+}
+
+.doors li:nth-child(6n){
+    margin-right: 0;
+}
+
+.doors > li,
+.doors li .door,
+.doors li .door:after,
+.doors li .doorway{
+    width: 125px;
+    height: 125px;
+    left: 0;
+    top: 0;
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.doors li .door{
+    position: absolute;
+    z-index: 3;
+    border-left: 1px solid rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-right: 1px solid rgba(0,0,0,0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    padding: 1rem;
+    color: transparent;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.4))), url(../images/background.jpg);
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0, rgba(0,0,0,0.4) 100%), url(../images/background.jpg);
+    background: -moz-linear-gradient(left, rgba(0,0,0,0) 0, rgba(0,0,0,0.4) 100%), url(../images/background.jpg);
+    background: -ms-linear-gradient(left, rgba(0,0,0,0) 0, rgba(0,0,0,0.4) 100%), url(../images/background.jpg);
+    background: -o-linear-gradient(left, rgba(0,0,0,0) 0, rgba(0,0,0,0.4) 100%), url(../images/background.jpg);
+    background: linear-gradient(left, rgba(0,0,0,0) 0, rgba(0,0,0,0.4) 100%), url(../images/background.jpg);
+    background-position: 0 0, 0,0;
+    background-repeat: no-repeat;
+}
+
+/* The numbers */
+.doors li .door:before {
+    content: counter(days);
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #fff;
+    font-size: 2.6rem;
+    line-height: 1;
+    font-weight: bold;
+    padding-right: 30px;
+    background: url(../images/lock.png) 100% 0 no-repeat;
+}
+
+/* The doorway */
+.doorway {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: bold;
+    -webkit-transition: color 1s;
+    -moz-transition: color 1s;
+    -o-transition: color 1s;
+    transition: color 1s;
+    padding: 4px 8px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Centre the text vertically */
+.doorway:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.doorway span.text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.doors li.available .doorway span.text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.doors li.available .door:before{
+    background: none;
+}
+
+/* ==================== */
+/* = Door BG position = */
+/* ==================== */
+/* Initial values, will be overriden by JS */
+.doors li:nth-child(1)    .door { background-position: 0 0, -423.5px -369.5px}
+.doors li:nth-child(2)    .door { background-position: 0 0, -568.5px -369.5px}
+.doors li:nth-child(3)    .door { background-position: 0 0, -713.5px -369.5px}
+.doors li:nth-child(4)    .door { background-position: 0 0, -858.5px -369.5px}
+.doors li:nth-child(5)    .door { background-position: 0 0, -1003.5px -369.5px}
+.doors li:nth-child(6)    .door { background-position: 0 0, -1148.5px -369.5px}
+.doors li:nth-child(7)    .door { background-position: 0 0, -423.5px -514.5px}
+.doors li:nth-child(8)    .door { background-position: 0 0, -568.5px -514.5px}
+.doors li:nth-child(9)    .door { background-position: 0 0, -713.5px -514.5px}
+.doors li:nth-child(10) .door { background-position: 0 0, -858.5px -514.5px}
+.doors li:nth-child(11) .door { background-position: 0 0, -1003.5px -514.5px}
+.doors li:nth-child(12) .door { background-position: 0 0, -1148.5px -514.5px}
+.doors li:nth-child(13) .door { background-position: 0 0, -423.5px -659.5px}
+.doors li:nth-child(14) .door { background-position: 0 0, -568.5px -659.5px}
+.doors li:nth-child(15) .door { background-position: 0 0, -713.5px -659.5px}
+.doors li:nth-child(16) .door { background-position: 0 0, -858.5px -659.5px}
+.doors li:nth-child(17) .door { background-position: 0 0, -1003.5px -659.5px}
+.doors li:nth-child(18) .door { background-position: 0 0, -1148.5px -659.5px}
+.doors li:nth-child(19) .door { background-position: 0 0, -423.5px -804.5px}
+.doors li:nth-child(20) .door { background-position: 0 0, -568.5px -804.5px}
+.doors li:nth-child(21) .door { background-position: 0 0, -713.5px -804.5px}
+.doors li:nth-child(22) .door { background-position: 0 0, -858.5px -804.5px}
+.doors li:nth-child(23) .door { background-position: 0 0, -1003.5px -804.5px}
+.doors li:nth-child(24) .door { background-position: 0 0, -1148.5px -804.5px}
+
+/* ========================= */
+/* = Doors - 3D transforms = */
+/* ========================= */
+
+.csstransforms3d .doors li .door{
+    position: absolute;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.csstransforms3d .doors li .door:after{
+    position: absolute;
+    content: "";
+    background: #000;
+    z-index: 4;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.csstransforms3d .doors li.available .door{
+    -webkit-transform: rotateY(-25deg);
+    -moz-transform: rotateY(-25deg);
+    -ms-transform: rotateY(-25deg);
+    -o-transform: rotateY(-25deg);
+    transform: rotateY(-25deg);
+
+    -webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.5);
+    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.5);
+}
+
+.csstransforms3d .doors li.available:hover .door{
+    -webkit-transform: rotateY(-100deg);
+    -webkit-transform: rotate3d(0, -100deg, 0);
+    -moz-transform: rotateY(-100deg);
+    -o-transform: rotateY(-100deg);
+    transform: rotateY(-100deg);
+}
+
+/* ============================== */
+/* = Doors - no-csstransforms3d = */
+/* ============================== */
+.no-csstransforms3d.csstransitions .doors li .door{
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+.no-csstransforms3d.csstransitions .doors li.available:hover .door{
+    opacity: 0;
+}
