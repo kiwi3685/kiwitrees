@@ -76,6 +76,22 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
 
 		session_write_close();
 
+		function life_sort($a, $b) {
+			if ($a->getDate()->minJD() < $b->getDate()->minJD()) return -1;
+			if ($a->getDate()->minJD() > $b->getDate()->minJD()) return 1;
+			return 0;
+		}
+
+		function add_parents(&$array, $indi) {
+			if ($indi) {
+				$array[] = $indi;
+				foreach ($indi->getChildFamilies() as $parents) {
+					add_parents($array, $parents->getHusband());
+					add_parents($array, $parents->getWife());
+				}
+			}
+		}
+
 		//-- args
 		$surn	= safe_POST('surn', '[^<>&%{};]*');
 		$plac	= safe_POST('plac', '[^<>&%{};]*');
@@ -145,21 +161,6 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
 				<hr style="clear:both;">
 				<!-- end of form -->
 		<?php
-		function life_sort($a, $b) {
-			if ($a->getDate()->minJD() < $b->getDate()->minJD()) return -1;
-			if ($a->getDate()->minJD() > $b->getDate()->minJD()) return 1;
-			return 0;
-		}
-
-		function add_parents(&$array, $indi) {
-			if ($indi) {
-				$array[] = $indi;
-				foreach ($indi->getChildFamilies() as $parents) {
-					add_parents($array, $parents->getHusband());
-					add_parents($array, $parents->getWife());
-				}
-			}
-		}
 
 		if ($surn == WT_I18N::translate('All') || $surn == WT_I18N::translate('all')) {
 			$indis = WT_Query_Name::individuals('', '', '', false, false, WT_GED_ID);
