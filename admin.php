@@ -1516,6 +1516,7 @@ function old_paths() {
 		WT_ROOT.'language/mi.mo',
 		WT_ROOT.'js/jquery.cookie.js',
 		// Removed in kiwitrees 3.2.0
+		WT_ROOT.'library/framework/FontAwesome/css/WT_font-awesome.css',
 		WT_ROOT.'js/webtrees.js',
 	);
 }

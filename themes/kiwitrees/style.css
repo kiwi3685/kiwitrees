@@ -25,7 +25,7 @@
  *
 */
 
-@import url("../../library/framework/FontAwesome/css/WT_font-awesome.css");
+@import url("../../library/framework/FontAwesome/css/KT_font-awesome.css");
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
@@ -196,6 +196,7 @@ textarea:required:invalid {
 
 .faq_link {
   float: right;
+  font-size: 14px;
   padding: 0 20px;
 }
 [dir='rtl'] .faq_link {float: left;}
@@ -6132,6 +6133,7 @@ textarea#NOTE {
  	#topMenu #nav-select {
  		border: 1px solid #CCC;
  		background-color: #FFF;
+		color: #555;
  		display: block;
  		font-size: 12px;
  		height: 30px;
@@ -6140,11 +6142,11 @@ textarea#NOTE {
  		text-align: left;
  		width: 70%;
  	}
- 	#topMenu #nav-select select {
+ 	#topMenu #nav-select ul {
  		font-size: 30px;
  		width: 100%;
  	}
- 	#topMenu #nav-select option {
+ 	#topMenu #nav-select li {
  		font-size: 12px;
  	}
  	#header {
