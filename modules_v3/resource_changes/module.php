@@ -31,9 +31,6 @@ if (!defined('WT_WEBTREES')) {
 
 class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 
-	const DEFAULT_DAYS = 30;
-	const MAX_DAYS = 90;
-
 	// Extend class WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Recent changes');
@@ -49,8 +46,6 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 		switch($mod_action) {
 		case 'show':
 			$this->show();
-			break;
-			unset($_GET['action']);
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -74,50 +69,110 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 
 	// Implement class WT_Module_Menu
 	public function show() {
-		global $controller, $GEDCOM;
+		global $controller, $DATE_FORMAT, $GEDCOM;
+		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
 		//Configuration settings ===== //
-		$days			= self::DEFAULT_DAYS; // Number of days to show
-		$sortStyle		= 'date_desc'; // Sort by date, newest first
-		$aaSorting		= "[4,'desc'], [5,'asc']";
-		// ============================ //
+		$action		= WT_Filter::post('action');
+		$set_days	= WT_Filter::post('set_days');
+		$pending	= WT_Filter::post('pending','' , 0);
+		$from		= '';
+		$to			= '';
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+		$earliest	= WT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change` WHERE status NOT LIKE 'pending' ")->execute(array())->fetchOne();
+		$latest		= WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change` WHERE status NOT LIKE 'pending' ")->execute(array())->fetchOne();
+		if (!$set_days){
+			$from		= WT_Filter::post('date1');
+			$to			= WT_Filter::post('date2');
+			$earliest	= WT_Filter::post('date1', '\d\d\d\d-\d\d-\d\d', $earliest);
+			$latest		= WT_Filter::post('date2', '\d\d\d\d-\d\d-\d\d', $latest);
+			$date1		= new DateTime($from);
+			$date2		= new DateTime($to);
+			$days		= $date2->diff($date1)->format("%a");
+			$disp_from	= preg_replace("[\s-(.*)]", "",strip_tags(format_timestamp(strtotime($earliest))));
+			$disp_to	= preg_replace("[\s-(.*)]", "", strip_tags(format_timestamp(strtotime($latest))));
+		}
 
-		$pending_changes = WT_DB::prepare(
-			"SELECT *".
+		$rows = WT_DB::prepare(
+			"SELECT xref".
 			" FROM `##change`".
 			" WHERE status='pending' AND gedcom_id=?".
 			" GROUP BY xref"
 		)->execute(array(WT_GED_ID))->fetchAll();
+		$pending_changes = array();
+		foreach ($rows as $row) {
+			$pending_changes[] = $row->xref;
+		}
 
-		$recent_changes = get_recent_changes(WT_CLIENT_JD - $days);
+		$recent_changes = get_recent_changes(WT_CLIENT_JD - ($set_days ? $set_days : $days));
 
-		$n = 0;
-		$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
-
-		// Print block header
-		$id		= $this->getName();
-		$class	= $this->getName();
-		$title	= /* I18N: title for list of recent changes */ WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $days, WT_I18N::number($days));
-		$content = '
-			<style>#research_tasks-page table th, #research_tasks-page table td {padding:8px;}</style>
-			<div id="research_tasks-page" style="margin: auto; width: 90%;">
-			<h2>' . $title . '</h2>
+		// Prepare table headers and footers
+		$table_header = '
+			<table class="changes width100">
+				<thead>
+					<tr>
+						<th style="width: 30px;">&nbsp;</th>
+						<th>' . WT_I18N::translate('Record') . '</th>
+						<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
+						<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>
+						<th>DATE</th>
+						<th>SORTNAME</th>
+					</tr>
+				</thead>
+				<tbody>
 		';
 
-		// Print changes
-		if ($recent_changes || $pending_changes) {
+		$table_footer = '
+			</tbody></table>
+		';
+
+		// Common settings
+		$content = '
+			<style>
+				#research_tasks-page table th, #research_tasks-page table td {padding:8px;}
+				#research_tasks-page button {display: inline-block; margin-top: 15px; vertical-align: top;}
+				input[name="pending"] {vertical-align: top; width: 20px;}
+				label[for^="pending"] {display: inline-block; font-weight: normal; width: 20px;}
+			</style>
+			<div id="research_tasks-page" style="margin: auto; width: 90%;">
+			<h2>' . WT_I18N::translate('Changes') . '</h2>
+			<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
+				<input type="hidden" name="action" value="?">
+				<div class="chart_options">
+					<label for = "DATE1">' . WT_I18N::translate('Starting range of change dates') . '</label>
+					<input type="text" name="date1" id="DATE1" value="' . ($set_days ? '' : $disp_from) . '">' . print_calendar_popup("DATE1") . '
+				</div>
+				<div class="chart_options">
+					<label for = "DATE2">' . WT_I18N::translate('Ending range of change dates') . '</label>
+					<input type="text" name="date2" id="DATE2" value="' . ($set_days ? '' : $disp_to) . '">' . print_calendar_popup("DATE2") . '
+				</div>
+				<div class="chart_options">
+					<label for = "DAYS">' . WT_I18N::translate('Number of days to show') . '</label>
+					<input type="text" name="set_days" id="DAYS" value="' . ($set_days ? $set_days : '') . '">
+				</div>
+				<div class="chart_options">
+				<label>' . WT_I18N::translate('Show pending changes') . '</label>' .
+					edit_field_yes_no('pending', $pending) .'
+				</div>
+				<button class="btn btn-primary show" type="submit">
+					<i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
+				</button>
+			</form>
+			<hr style="clear:both;">
+		';
+
+		if (($recent_changes || $pending_changes) && $action) {
 			$controller
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
 					jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 					jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-					jQuery("#'.$table_id.'").dataTable({
+					jQuery(".changes").dataTable({
 						dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 						' . WT_I18N::datatablesI18N() . ',
 						autoWidth: false,
@@ -127,191 +182,114 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 						filter: true,
 						info: true,
 						jQueryUI: true,
-						sorting: ['.$aaSorting.'],
+						sorting: [[4,"desc"], [5,"asc"]],
 						displayLength: 20,
 						"aoColumns": [
-							/* 0-Type */    {"bSortable": false, "sClass": "center"},
-							/* 1-Record */  {"iDataSort": 5},
-							/* 2-Change */  {"iDataSort": 4},
-							/* 3-By */      null,
-							/* 4-DATE */    {"bVisible": false},
-							/* 5-SORTNAME */{"sType": "unicode", "bVisible": false}
+							/* 0-Type */     {"bSortable": false, "sClass": "center"},
+							/* 1-Record */   {"iDataSort": 5},
+							/* 2-Change */   {"iDataSort": 4},
+							/* 3-By */       null,
+							/* 4-DATE */     {"bVisible": false},
+							/* 5-SORTNAME */ {"sType": "unicode", "bVisible": false}
 						]
 					});
 				');
+			// Print pending changes
+			if ($pending_changes && $pending) {
+				$content .= '<h3>' . WT_I18N::translate('Pending changes') . '</h3>';
+				// table headers
+				$content .= $table_header;
+				//-- table body
+				$content .= $this->change_data($pending_changes);
+				//-- table footer
+				$content .= $table_footer;
+			}
+			// Print approved changes
+			if ($recent_changes) {
+				$content .= '
+					<h3>' .
+						($set_days ? WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $set_days, WT_I18N::number($set_days)) : WT_I18N::translate('Changes %1$s - %2$s (%3$s days)', $disp_from, $disp_to, WT_I18N::number($days))) . '
+					</h3>';
+				// table headers
+				$content .= $table_header;
+				//-- table body
+				$content .= $this->change_data($recent_changes);
+				//-- table footer
+				$content .= $table_footer;
+			} else {
+				$content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
+			}
 		}
-		// Print pending changes
-		if ($pending_changes) {
-			$content .= '
-				<h3>' . WT_I18N::translate('Pending changes') . '</h3>
-				<table id="' . $table_id . '" class="width100">
-					<thead>
-						<tr>
-							<th style="width: 30px;">&nbsp;</th>
-							<th>' . WT_I18N::translate('Record') . '</th>
-							<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
-							<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>
-							<th>DATE</th>
-							<th>SORTNAME</th>
-						</tr>
-					</thead>
-					<tbody>';
-						//-- table body
-						foreach ($pending_changes as $change_id) {
-							$record = WT_GedcomRecord::getInstance($change_id);
-							if (!$record || !$record->canDisplayDetails()) {
-								continue;
-							}
-							$content .= '
-								<tr>
-									<td>';
-									$indi = false;
-									switch ($record->getType()) {
-										case "INDI":
-											$icon = $record->getSexImage('small', '', '', false);
-											$indi = true;
-											break;
-										case "FAM":
-											$icon = '<i class="icon-button_family"></i>';
-											break;
-										case "OBJE":
-											$icon = '<i class="icon-button_media"></i>';
-											break;
-										case "NOTE":
-											$icon = '<i class="icon-button_note"></i>';
-											break;
-										case "SOUR":
-											$icon = '<i class="icon-button_source"></i>';
-											break;
-										case "REPO":
-											$icon = '<i class="icon-button_repository"></i>';
-											break;
-										default:
-											$icon = '&nbsp;';
-											break;
-									}
-									$content .= '<a href="'. $record->getHtmlUrl() .'">'. $icon . '</a>';
-								$content .= '</td>';
-								++$n;
-								//-- Record name(s)
-								$name = $record->getFullName();
-								$content .= '<td class="wrap">
-									<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
-									if ($indi) {
-										$content .= '<p style="display: inline; font-size: 80%; padding: 0 10px;">' . $record->getLifeSpan() . '</p>';
-										$addname = $record->getAddName();
-										if ($addname) {
-											$content .= '
-												<div class="indent">
-													<a href="'. $record->getHtmlUrl() .'">'. $addname . '</a>
-												</div>';
-										}
-									}
-								$content .= '</td>';
-								//-- Last change date/time
-								$content .= '<td class="wrap">' . $record->LastChangeTimestamp() . '</td>';
-								//-- Last change user
-								$content .= '<td class="wrap">' . $record->LastChangeUser() . '</td>';
-								//-- change date (sortable) hidden by datatables code
-								$content .= '<td>' . $record->LastChangeTimestamp(true) . '</td>';
-								//-- names (sortable) hidden by datatables code
-								$content .= '<td>' . $record->getSortName() . '</td>
-							</tr>
-						';
-					}
-				$content .= '</tbody>
-			</table>
-		';
-	}
-		// Print approved changes
-		if ($recent_changes) {
-			$content .= '
-				<h3>' . WT_I18N::translate('Recent changes') . '</h3>
-				<table id="' . $table_id . '" class="width100">
-					<thead>
-						<tr>
-							<th style="width: 30px;">&nbsp;</th>
-							<th>' . WT_I18N::translate('Record') . '</th>
-							<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
-							<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>
-							<th>DATE</th>
-							<th>SORTNAME</th>
-						</tr>
-					</thead>
-					<tbody>';
-						//-- table body
-						foreach ($recent_changes as $change_id) {
-							$record = WT_GedcomRecord::getInstance($change_id);
-							if (!$record || !$record->canDisplayDetails()) {
-								continue;
-							}
-							$content .= '
-								<tr>
-									<td>';
-										$indi = false;
-										switch ($record->getType()) {
-											case "INDI":
-												$icon = $record->getSexImage('small', '', '', false);
-												$indi = true;
-												break;
-											case "FAM":
-												$icon = '<i class="icon-button_family"></i>';
-												break;
-											case "OBJE":
-												$icon = '<i class="icon-button_media"></i>';
-												break;
-											case "NOTE":
-												$icon = '<i class="icon-button_note"></i>';
-												break;
-											case "SOUR":
-												$icon = '<i class="icon-button_source"></i>';
-												break;
-											case "REPO":
-												$icon = '<i class="icon-button_repository"></i>';
-												break;
-											default:
-												$icon = '&nbsp;';
-												break;
-										}
-										$content .= '<a href="'. $record->getHtmlUrl() .'">'. $icon . '</a>';
-									$content .= '</td>';
-									++$n;
-									//-- Record name(s)
-									$name = $record->getFullName();
-									$content .= '<td class="wrap">
-										<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
-										if ($indi) {
-											$content .= '<p style="display: inline; font-size: 80%; padding: 0 10px;">' . $record->getLifeSpan() . '</p>';
-											$addname = $record->getAddName();
-											if ($addname) {
-												$content .= '
-													<div class="indent">
-														<a href="'. $record->getHtmlUrl() .'">'. $addname . '</a>
-													</div>';
-											}
-										}
-									$content .= '</td>';
-									//-- Last change date/time
-									$content .= '<td class="wrap">' . $record->LastChangeTimestamp() . '</td>';
-									//-- Last change user
-									$content .= '<td class="wrap">' . $record->LastChangeUser() . '</td>';
-									//-- change date (sortable) hidden by datatables code
-									$content .= '<td>' . $record->LastChangeTimestamp(true) . '</td>';
-									//-- names (sortable) hidden by datatables code
-									$content .= '<td>' . $record->getSortName() . '</td>
-								</tr>
-							';
-						}
-					$content .= '</tbody>
-				</table>
-			';
-		} else {
-			$content .= WT_I18N::translate('There have been no changes within the last %s days.', WT_I18N::number($days));
-		}
-
 		$content .= '</div>';
 
 		echo $content;
 	}
+
+	private function change_data ($type) {
+		$change_data = '';
+		foreach ($type as $change_id) {
+			$record = WT_GedcomRecord::getInstance($change_id);
+			if (!$record || !$record->canDisplayDetails()) {
+				continue;
+			}
+			$change_data .= '
+				<tr>
+					<td>';
+						$indi = false;
+						switch ($record->getType()) {
+							case "INDI":
+								$icon = $record->getSexImage('small', '', '', false);
+								$indi = true;
+								break;
+							case "FAM":
+								$icon = '<i class="icon-button_family"></i>';
+								break;
+							case "OBJE":
+								$icon = '<i class="icon-button_media"></i>';
+								break;
+							case "NOTE":
+								$icon = '<i class="icon-button_note"></i>';
+								break;
+							case "SOUR":
+								$icon = '<i class="icon-button_source"></i>';
+								break;
+							case "REPO":
+								$icon = '<i class="icon-button_repository"></i>';
+								break;
+							default:
+								$icon = '&nbsp;';
+								break;
+						}
+						$change_data .= '<a href="'. $record->getHtmlUrl() .'">'. $icon . '</a>
+					</td>';
+					//-- Record name(s)
+					$name = $record->getFullName();
+					$change_data .= '<td class="wrap">
+						<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
+						if ($indi) {
+							$change_data .= '<p style="display: inline; font-size: 80%; padding: 0 10px;">' . $record->getLifeSpan() . '</p>';
+							$addname = $record->getAddName();
+							if ($addname) {
+								$change_data .= '
+									<div class="indent">
+										<a href="'. $record->getHtmlUrl() .'">'. $addname . '</a>
+									</div>';
+							}
+						}
+					$change_data .= '</td>';
+					//-- Last change date/time
+					$change_data .= '<td class="wrap">' . $record->LastChangeTimestamp() . '</td>';
+					//-- Last change user
+					$change_data .= '<td class="wrap">' . $record->LastChangeUser() . '</td>';
+					//-- change date (sortable) hidden by datatables code
+					$change_data .= '<td>' . $record->LastChangeTimestamp(true) . '</td>';
+					//-- names (sortable) hidden by datatables code
+					$change_data .= '<td>' . $record->getSortName() . '</td>
+				</tr>
+			';
+		}
+		return $change_data;
+	}
+
 
 }
