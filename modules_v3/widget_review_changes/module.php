@@ -126,8 +126,7 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 						case 'FAM':
 						case 'SOUR':
 						case 'OBJE':
-							$content.=$block ? '<br>' : ' ';
-							$content.='<a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes').'</a>';
+							$content.= '<p><a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes').'</a></p>';
 							break;
 						}
 						$content.='<br>';

@@ -253,15 +253,29 @@ class WT_Menu {
 	}
 
 	// Get the menu as a select drop-down for small screen sizes
+//	function getMenuAsSelect() {
+//		$option_link = '<option value="' . $this->link . '">' . $this->label . '</option>';
+//		if ($this->submenus) {
+//			foreach ($this->submenus as $submenu) {
+//				if ($submenu) {
+//					$option_link .= '<option value="' . $submenu->link . '">&dash;&dash;&dash;&nbsp;' . $submenu->label . '</option>';
+//				}
+//			}
+//		}
+//		return $option_link;
+//	}
+
+	// Get the menu as a drop-down list for small screen sizes
 	function getMenuAsSelect() {
-		$option_link = '<option value="' . $this->link . '">' . $this->label . '</option>';
+		$option_link = '<li><a href="' . $this->link . '">' . $this->label . '</a></li>';
 		if ($this->submenus) {
 			foreach ($this->submenus as $submenu) {
 				if ($submenu) {
-					$option_link .= '<option value="' . $submenu->link . '">&dash;&dash;&dash;&nbsp;' . $submenu->label . '</option>';
+					$option_link .= '<li><a href="' . $submenu->link . '">&dash;&dash;&dash;&nbsp;' . $submenu->label . '</a></li>';
 				}
 			}
 		}
+//		$option_link = '</li>';
 		return $option_link;
 	}
 
