@@ -197,12 +197,13 @@ echo '
 			<h3 id="modules"><i class="fa fa-puzzle-piece fa-fw"></i><span class="menu-name">', WT_I18N::translate('Modules'), '</span></h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME=="admin_modules.php" ? 'class="current" ' : ''), 'href="admin_modules.php">', WT_I18N::translate('Manage modules'), '</a></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_menus.php"   ? 'class="current" ' : ''), 'href="admin_module_menus.php">',   WT_I18N::translate('Menus' 	), '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_tabs.php"    ? 'class="current" ' : ''), 'href="admin_module_tabs.php">',    WT_I18N::translate('Tabs'	), '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_blocks.php"  ? 'class="current" ' : ''), 'href="admin_module_blocks.php">',  WT_I18N::translate('Blocks'	), '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_widgets.php" ? 'class="current" ' : ''), 'href="admin_module_widgets.php">', WT_I18N::translate('Widgets'	), '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_sidebar.php" ? 'class="current" ' : ''), 'href="admin_module_sidebar.php">', WT_I18N::translate('Sidebar'	), '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_reports.php" ? 'class="current" ' : ''), 'href="admin_module_reports.php">', WT_I18N::translate('Reports'	), '</a></span></p>
+				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_menus.php"     ? 'class="current" ' : ''), 'href="admin_module_menus.php">',     WT_I18N::translate('Menus' 	),  '</a></span></p>
+				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_tabs.php"      ? 'class="current" ' : ''), 'href="admin_module_tabs.php">',      WT_I18N::translate('Tabs'	),  '</a></span></p>
+				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_blocks.php"    ? 'class="current" ' : ''), 'href="admin_module_blocks.php">',    WT_I18N::translate('Blocks'	),  '</a></span></p>
+				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_widgets.php"   ? 'class="current" ' : ''), 'href="admin_module_widgets.php">',   WT_I18N::translate('Widgets'	),  '</a></span></p>
+				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_sidebar.php"   ? 'class="current" ' : ''), 'href="admin_module_sidebar.php">',   WT_I18N::translate('Sidebar'	),  '</a></span></p>
+				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_reports.php"   ? 'class="current" ' : ''), 'href="admin_module_reports.php">',   WT_I18N::translate('Reports'	),  '</a></span></p>
+				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_resources.php" ? 'class="current" ' : ''), 'href="admin_module_resources.php">', WT_I18N::translate('Resources'), '</a></span></p>
 			</div>
 
 			<h3 id="extras"><i class="fa fa-cogs fa-fw"></i><span class="menu-name">', WT_I18N::translate('Tools'), '</span></h3>

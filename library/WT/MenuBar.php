@@ -431,6 +431,29 @@ class WT_MenuBar {
 		return $menu;
 	}
 
+	/**
+	* get the resources menu
+	* @return WT_Menu the menu item
+	*/
+	public static function getResourcesMenu($pid='', $famid='') {
+		global $SEARCH_SPIDER;
+
+		$active_resources = WT_Module::getActiveResources();
+		if ($SEARCH_SPIDER || !$active_resources) {
+			return null;
+		}
+
+		$menu = new WT_Menu(WT_I18N::translate('Resources'), '', 'menu-resources');
+
+		foreach ($active_resources as $resources) {
+			foreach ($resources->getResourceMenus() as $submenu) {
+				$menu->addSubmenu($submenu);
+			}
+		}
+		return $menu;
+	}
+
+
 	public static function getSearchMenu() {
 		global $SEARCH_SPIDER;
 
@@ -534,10 +557,10 @@ class WT_MenuBar {
 	}
 
 	public static function getMainMenus() {
-		$menus=array();
+		$menus = array();
 		foreach (WT_Module::getActiveMenus() as $module) {
 			if ($module->MenuType() == 'main') {
-				$menu=$module->getMenu();
+				$menu = $module->getMenu();
 				if ($menu) {
 					$menus[] = $menu;
 				}

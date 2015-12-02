@@ -108,7 +108,8 @@ $controller
 				{ sClass: "center" },
 				{ sClass: "center", bVisible: false },
 				{ sClass: "center" },
-				{ sClass: "center", bVisible: false }
+				{ sClass: "center", bVisible: false },
+				{ sClass: "center" }
 			]
 		});
 	');
@@ -133,6 +134,7 @@ $controller
 					<th><?php echo WT_I18N::translate('Chart'); ?></th>
 					<th><?php echo WT_I18N::translate('Report'); ?></th>
 					<th><?php echo WT_I18N::translate('Theme'); ?></th>
+					<th><?php echo WT_I18N::translate('Resources'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -154,14 +156,15 @@ $controller
 									echo '
 									</td>
 									<td>', $module->getDescription(), '</td>
-									<td>', $module instanceof WT_Module_Menu    ? WT_I18N::translate('Menu') : '-', '</td>
-									<td>', $module instanceof WT_Module_Tab     ? WT_I18N::translate('Tab') : '-', '</td>
-									<td>', $module instanceof WT_Module_Sidebar ? WT_I18N::translate('Sidebar') : '-', '</td>
-									<td>', $module instanceof WT_Module_Block   ? WT_I18N::translate('Home page') : '-', '</td>
-									<td>', $module instanceof WT_Module_Widget  ? WT_I18N::translate('Widget') : '-', '</td>
-									<td>', $module instanceof WT_Module_Chart   ? WT_I18N::translate('Chart') : '-', '</td>
-									<td>', $module instanceof WT_Module_Report  ? WT_I18N::translate('Report') : '-', '</td>
-									<td>', $module instanceof WT_Module_Theme   ? WT_I18N::translate('Theme') : '-', '</td>
+									<td>', $module instanceof WT_Module_Menu    	? WT_I18N::translate('Menu') : '-', '</td>
+									<td>', $module instanceof WT_Module_Tab     	? WT_I18N::translate('Tab') : '-', '</td>
+									<td>', $module instanceof WT_Module_Sidebar 	? WT_I18N::translate('Sidebar') : '-', '</td>
+									<td>', $module instanceof WT_Module_Block   	? WT_I18N::translate('Home page') : '-', '</td>
+									<td>', $module instanceof WT_Module_Widget  	? WT_I18N::translate('Widget') : '-', '</td>
+									<td>', $module instanceof WT_Module_Chart   	? WT_I18N::translate('Chart') : '-', '</td>
+									<td>', $module instanceof WT_Module_Report  	? WT_I18N::translate('Report') : '-', '</td>
+									<td>', $module instanceof WT_Module_Theme   	? WT_I18N::translate('Theme') : '-', '</td>
+									<td>', $module instanceof WT_Module_Resources   ? WT_I18N::translate('Resources') : '-', '</td>
 								</tr>
 							';
 						} else {
@@ -176,6 +179,7 @@ $controller
 											WT_I18N::translate('This module cannot be found.  Delete its configuration settings.'),
 										'</a>
 									</td>
+									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>

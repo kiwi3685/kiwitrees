@@ -29,11 +29,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
+class resource_changes_WT_Module extends WT_Module implements WT_Module_Resources {
 
 	// Extend class WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Recent changes');
+		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Changes');
 	}
 
 	// Extend class WT_Module
@@ -52,6 +52,11 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 		}
 	}
 
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_USER;
+	}
+
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
 		return 25;
@@ -62,9 +67,19 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 		return 'other';
 	}
 
-	// Implement WT_Module_Menu
-	public function getMenu() {
-		return null;
+	// Implement WT_Module_Resources
+	public function getResourceMenus() {
+		global $controller;
+
+		$menus	= array();
+		$menu	= new WT_Menu(
+			$this->getTitle(),
+			'module.php?mod=' . $this->getName() . '&mod_action=show',
+			'menu-resources-' . $this->getName()
+		);
+		$menus[] = $menu;
+
+		return $menus;
 	}
 
 	// Implement class WT_Module_Menu
@@ -139,8 +154,8 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 				input[name="pending"] {vertical-align: top; width: 20px;}
 				label[for^="pending"] {display: inline-block; font-weight: normal; width: 20px;}
 			</style>
-			<div id="research_tasks-page" style="margin: auto; width: 90%;">
-			<h2>' . WT_I18N::translate('Changes') . '</h2>
+			<div id="recent_changes-page" style="margin: auto; width: 90%;">
+			<h2>' . $this->getTitle() . '</h2>
 			<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
 				<input type="hidden" name="action" value="?">
 				<div class="chart_options">
