@@ -507,7 +507,7 @@ textarea:required:invalid {
 }
 
 .hit-counter {
-	font-weight: 900;
+	font-weight: 700;
 }
 
 /* ======= Content styles ========== */
@@ -646,7 +646,7 @@ div[id*='-page'] {
 
 #home-page #index_main_blocks .blockheader {
 	font-size: 16px;
-	font-weight: 900;
+	font-weight: 700;
 }
 
 #home-page #index_small_blocks .blockheader {
@@ -1513,8 +1513,8 @@ a:hover .nameZoom {
 }
 
 .chart_options label {
-	display:block;
-	font-weight:900;
+	display: block;
+	font-weight: 700;
 }
 
 .chart_options input {
@@ -2032,7 +2032,7 @@ dt {
 }
 
 #medialist-page .medialist_title {
-	font-weight: 900;
+	font-weight: 700;
 	margin-bottom: 10px;
 }
 
@@ -2598,7 +2598,7 @@ dt {
 }
 
 #place-hierarchy p {
-	font-weight:900;
+	font-weight: 700;
 	text-align:center;
 }
 
@@ -2669,7 +2669,7 @@ dt {
 }
 
 .random_media_title {
-	font-weight: 900;
+	font-weight: 700;
 	line-height: 30px;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -2690,7 +2690,7 @@ dt {
 }
 
 .add_fav_head {
-	font-weight: 900;
+	font-weight: 700;
 	margin: 5px 0;
 }
 
@@ -4082,10 +4082,10 @@ a.icon-udarrow:hover {
 .icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
 .icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
 .icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */
-.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-eye */
+.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: middle;} /* fa-eye */
 .fa-mail-forward		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-mail-forward */
 
-#extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 900; margin: 0 3px;} /* fa-angle-down */
+#extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 700; margin: 0 3px;} /* fa-angle-down */
 #extra-menu > li:hover	{color: #009afe;}
 
 /* Generic MIME types */
@@ -4913,7 +4913,7 @@ ul#research_status ul.sublinks {
 
 #cousins_tab h4 {
 	font-size: 16px;
-	font-weight: 900;
+	font-weight: 700;
 	margin: 0 0 5px;
 	text-align: center;
 }
@@ -5341,7 +5341,7 @@ a#copy {
 }
 
 #family-page [id^="fontdef-"] .NAME {
-	font-weight: 900;
+	font-weight: 700;
 	font-size: 110%;
 	padding: 5px 0;
 	display: block;
@@ -6024,7 +6024,7 @@ textarea#NOTE {
 	white-space: nowrap;
 }
 .cens_table td p {
-	font-weight: 900;
+	font-weight: 700;
 	margin: 0;
 }
 .cens_table td.divider {

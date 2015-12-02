@@ -134,8 +134,8 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_menu {
 		// Common settings
 		$content = '
 			<style>
-				#research_tasks-page table th, #research_tasks-page table td {padding:8px;}
-				#research_tasks-page button {display: inline-block; margin-top: 15px; vertical-align: top;}
+				#recent_changes-page table th, #recent_changes-page table td {padding:8px;}
+				#recent_changes-page button {display: inline-block; margin-top: 15px; vertical-align: top;}
 				input[name="pending"] {vertical-align: top; width: 20px;}
 				label[for^="pending"] {display: inline-block; font-weight: normal; width: 20px;}
 			</style>
