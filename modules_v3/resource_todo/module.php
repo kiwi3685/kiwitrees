@@ -71,18 +71,15 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_menu {
 	// Implement class WT_Module_Menu
 	public function show() {
 		global $controller, $GEDCOM;
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Page();
 
-		//Configuration settings ===== //
-		$show_unassigned	= true; // Show research tasks that are not assigned to any user
-		$show_other			= true; // Show research tasks that are assigned to other users
-		$show_future		= true; // Show research tasks that have a date in the future
-		// ============================ //
+		// Configuration settings ===== //
+		$action				= WT_Filter::post('action');
+		$show_unassigned	= WT_Filter::post('show_unassigned', '', 1);
+		$show_other			= WT_Filter::post('show_other', '', 1);
+		$show_future		= WT_Filter::post('show_future', '', 1);
 
-		$template			= true;
-		$id					= $this->getName();
-		$class				= $this->getName();
-		$title				= '';
 		$table_id = 'ID'.(int)(microtime()*1000000); // create a unique ID
 		$controller
 			->setPageTitle($this->getTitle())
@@ -113,10 +110,36 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_menu {
 			jQuery(".loading-image").css("display", "none");
 			');
 		$content = '
-			<style>#research_tasks-page table th, #research_tasks-page table td {padding:8px;}</style>
+			<style>
+				#research_tasks-page table th, #research_tasks-page table td {padding:8px;}
+				input[name^="show_"] {vertical-align: top; width: 20px;}
+				label[for^="show_"] {display: inline-block; font-weight: normal; width: 20px;}
+			</style>
 			<div id="research_tasks-page" style="margin: auto; width: 90%;">
 				<h2>' . $this->getTitle() . '</h2>
-				<div class="loading-image">&nbsp;</div>
+				<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
+					<input type="hidden" name="action" value="?">
+					<div class="chart_options">
+						<label>' . WT_I18N::translate('Show tasks not assigned to any user') . '</label>' .
+						edit_field_yes_no('show_unassigned', $show_unassigned) .'
+					</div>
+					<div class="chart_options">
+						<label>' . WT_I18N::translate('Show tasks assigned to other users') . '</label>' .
+						edit_field_yes_no('show_other', $show_other) .'
+					</div>
+					<div class="chart_options">
+						<label>' . WT_I18N::translate('Show tasks that have a date in the future') . '</label>' .
+						edit_field_yes_no('show_future', $show_future) .'
+					</div>
+					<button class="btn btn-primary show" type="submit">
+						<i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
+					</button>
+				</form>
+				<hr style="clear:both;">
+		';
+			// Display results
+			if ($action){
+				$content .= '<div class="loading-image">&nbsp;</div>
 				<table id="' .$table_id. '" style="visibility:hidden; width:100%;">
 					<thead>
 						<tr>
@@ -157,6 +180,7 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_menu {
 				if (!$found) {
 					$content .= '<p>'.WT_I18N::translate('There are no research tasks in this family tree.').'</p>';
 				}
+			}
 			$content .= '</div>
 		';
 
