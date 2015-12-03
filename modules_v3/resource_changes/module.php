@@ -62,14 +62,8 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 		return 25;
 	}
 
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'other';
-	}
-
 	// Implement WT_Module_Resources
 	public function getResourceMenus() {
-		global $controller;
 
 		$menus	= array();
 		$menu	= new WT_Menu(
@@ -91,6 +85,8 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader();
+
+		init_calendar_popup();
 
 		//Configuration settings ===== //
 		$action		= WT_Filter::post('action');

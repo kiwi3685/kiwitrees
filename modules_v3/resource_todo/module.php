@@ -63,11 +63,6 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 	}
 
 	// Implement WT_Module_Resources
-	public function MenuType() {
-		return 'other';
-	}
-
-	// Implement WT_Module_Resources
 	public function getResourceMenus() {
 		global $controller;
 
