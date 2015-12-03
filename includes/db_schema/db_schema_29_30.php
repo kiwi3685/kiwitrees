@@ -34,5 +34,9 @@ if (!defined('WT_WEBTREES')) {
 // add resource to module_privacy components
 self::exec("ALTER TABLE `##module_privacy` CHANGE component component ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget', 'resource')");
 
+// Delete old menu settings
+self::exec("DELETE FROM `##module_privacy` WHERE `module_name` = 'no_census' and `component` = 'menu'");
+self::exec("UPDATE `##module` SET `menu_order` = null WHERE `module_name` = 'no_census'");
+
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);

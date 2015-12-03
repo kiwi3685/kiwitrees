@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
+class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('UK 1939 Register');
@@ -40,31 +40,37 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Menu {
 		return /* I18N: Description of the “UK 1939 Register” module */ WT_I18N::translate('A list of missing data for the UK 1939 Register records');
 	}
 
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 25;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'other';
-	}
-
-	// Implement WT_Module_Menu
-	public function getMenu() {
-		return null;
-	}
-
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'show':
 			$this->show();
 			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 
-	private function show() {
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_USER;
+	}
+
+	// Implement WT_Module_Resources
+	public function getResourceMenus() {
+		$menus	= array();
+		$menu	= new WT_Menu(
+			$this->getTitle(),
+			'module.php?mod=' . $this->getName() . '&mod_action=show',
+			'menu-resources-' . $this->getName()
+		);
+		$menus[] = $menu;
+
+		return $menus;
+	}
+
+	// Implement class WT_Module_Resources
+	public function show() {
 		global $controller, $GEDCOM;
 		$controller = new WT_Controller_Page();
 

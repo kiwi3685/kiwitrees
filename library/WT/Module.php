@@ -63,8 +63,6 @@ interface WT_Module_Report {
 }
 
 interface WT_Module_Resources {
-	public function defaultMenuOrder();
-	public function MenuType();
 	public function getResourceMenus();
 }
 
