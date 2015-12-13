@@ -28,50 +28,54 @@ class WT_File {
 	// write output to a stream or return it.
 	//////////////////////////////////////////////////////////////////////////////
 
-	public static function fetchUrl($url, $stream=null) {
+	public static function fetchUrl($url, $stream = null) {
 		$host  = parse_url($url, PHP_URL_HOST);
 		$port  = parse_url($url, PHP_URL_PORT);
 		$path  = parse_url($url, PHP_URL_PATH);
 		$query = parse_url($url, PHP_URL_QUERY);
 
 		if (!$port) {
-			$port = parse_url($url, PHP_URL_SCHEME) == 'https' ? 443 : 80;
+			$port = parse_url($url, PHP_URL_SCHEME) === 'https' ? 443 : 80;
 		}
 
-		$scheme = $port == 443 ? 'ssl://' : '';
+		$scheme = $port === 443 ? 'ssl://' : '';
 
-		$fp = @fsockopen($scheme . $host, $port, $errno, $errstr, 5);
-		if (!$fp) {
-			return null;
-		}
+		try {
+			$fp = fsockopen($scheme . $host, $port, $errno, $errstr, 5);
 
-		fputs($fp, "GET $path?$query HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
+			fputs($fp, "GET $path?$query HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
-		// The first part of the response include the HTTP headers
-		$response = fread($fp, 65536);
+			// The first part of the response include the HTTP headers
+			$response = fread($fp, 65536);
 
-		// The file has moved?  Follow it.
-		if (preg_match('/^HTTP\/1.[01] 30[23].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
-			fclose($fp);
-			return WT_File::fetchUrl($match[1], $stream);
-		} else {
-			// The response includes headers, a blank line, then the content
-			$response = substr($response, strpos($response, "\r\n\r\n") + 4);
-		}
+			// The file has moved?  Follow it.
+			if (preg_match('/^HTTP\/1.[01] 30[123].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
+				fclose($fp);
 
-		if ($stream) {
-			fwrite($stream, $response);
-			while ($tmp = fread($fp, 8192)) {
-				fwrite($stream, $tmp);
+				return self::fetchUrl($match[1], $stream);
+			} else {
+				// The response includes headers, a blank line, then the content
+				$response = substr($response, strpos($response, "\r\n\r\n") + 4);
 			}
-			fclose($fp);
-			return null;
-		} else  {
-			while ($tmp = fread($fp, 8192)) {
-				$response .= $tmp;
+
+			if ($stream) {
+				fwrite($stream, $response);
+				while ($tmp = fread($fp, 8192)) {
+					fwrite($stream, $tmp);
+				}
+				fclose($fp);
+
+				return null;
+			} else {
+				while ($tmp = fread($fp, 8192)) {
+					$response .= $tmp;
+				}
+				fclose($fp);
+
+				return $response;
 			}
-			fclose($fp);
-			return $response;
+		} catch (\ErrorException $ex) {
+			return null;
 		}
 	}
 
@@ -80,37 +84,51 @@ class WT_File {
 	//////////////////////////////////////////////////////////////////////////////
 
 	public static function delete($path) {
-		// In case the file is marked read-only
-		@chmod($path, 0777);
-
 		if (is_dir($path)) {
 			$dir = opendir($path);
 			while ($dir !== false && (($file = readdir($dir)) !== false)) {
-				if ($file != '.' && $file != '..') {
-					WT_File::delete($path . DIRECTORY_SEPARATOR . $file);
+				if ($file !== '.' && $file !== '..') {
+					self::delete($path . DIRECTORY_SEPARATOR . $file);
 				}
 			}
 			closedir($dir);
-			@rmdir($path);
+			try {
+				rmdir($path);
+			} catch (\ErrorException $ex) {
+				// Continue, in case there are other files/folders that we can delete.
+			}
 		} else {
-			@unlink($path);
+			try {
+				unlink($path);
+			} catch (\ErrorException $ex) {
+				// Continue, in case there are other files/folders that we can delete.
+			}
 		}
+
 		return !file_exists($path);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Create a folder, and sub-folders, if it does not already exist
-	//////////////////////////////////////////////////////////////////////////////
-
+	/**
+	 * Create a folder, and sub-folders, if it does not already exist
+	 *
+	 * @param string $path
+	 *
+	 * @return bool Does the folder now exist
+	 */
 	public static function mkdir($path) {
 		if (is_dir($path)) {
 			return true;
 		} else {
-			if (!is_dir(dirname($path))) {
-				WT_File::mkdir(dirname($path));
+			if (dirname($path) && !is_dir(dirname($path))) {
+				self::mkdir(dirname($path));
 			}
-			@mkdir($path);
-			return is_dir($path);
+			try {
+				mkdir($path);
+
+				return true;
+			} catch (\ErrorException $ex) {
+				return false;
+			}
 		}
 	}
 }

@@ -164,12 +164,12 @@ function fetch_remote_file($host, $path, $timeout=3) {
 	}
 }
 
-// Check with the webtrees.net server for the latest version of webtrees.
+// Check with the kiwitrees.net server for the latest version of kiwitrees.
 // Fetching the remote file can be slow, so check infrequently, and cache the result.
 function fetch_latest_version() {
-	$last_update_timestamp=WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
+	$last_update_timestamp = WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
 	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
-		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
+		$row = WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
 		$latest_version_txt = fetch_remote_file('www.kiwitrees.net', '/latest-version.txt');
 		if ($latest_version_txt) {
 			WT_Site::preference('LATEST_WT_VERSION', $latest_version_txt);
