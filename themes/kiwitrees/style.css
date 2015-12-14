@@ -740,7 +740,7 @@ div[id*='-page'] {
 
 /* indi and fam list pages */
 #indilist-page, #famlist-page {
-	font-size: 120%;
+	font-size: initial;
 }
 .alpha_index {
 	color: #aaa;
@@ -1009,6 +1009,12 @@ a:hover .nameZoom {
 
 .starredname {
 	text-decoration: underline;
+}
+
+.lifespan_name {
+	font-size: 80%;
+	font-weight: normal;
+	margin: 0 5px;
 }
 
 .date {
@@ -4173,12 +4179,10 @@ a.icon-udarrow:hover {
 
 #edit_interface-page #LATI,#edit_interface-page #LONG,#edit_interface-page #SPFX,#edit_interface-page #NSFX,#edit_interface-page #NPFX {
 	line-height: 18px;
-	margin: 0 5px;
 }
 
 #edit_interface-page #GIVN,#edit_interface-page #SURN,#edit_interface-page #_MARNM {
 	line-height: 18px;
-	margin: 0 5px;
 }
 
 #edit_interface-page #add_facts,
@@ -4327,6 +4331,14 @@ a.icon-udarrow:hover {
 	text-align: center;
 }
 
+#edit_interface-page .reorder {
+    background-color: #fff;
+	border: 1px solid;
+	cursor: move;
+	margin-bottom: 10px;
+	padding: 0 5px;
+}
+
 #save-cancel {
 	clear: both;
 	float: left;
@@ -4359,12 +4371,13 @@ div [id$="_factdiv"] {
 
 #edit_interface-page .last_change {
 	clear: both;
+	max-width: 700px;
 }
 
 #edit_interface-page .last_change label,
 #edit_interface-page div#PEDI_factdiv label {
     line-height: 18px;
-	max-width: 120px;
+/*	max-width: 120px;*/
 }
 
 /* Addmedia pop-ups*/

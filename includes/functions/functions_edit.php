@@ -615,14 +615,12 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 			<input type="hidden" name="famtag" value="<?php echo $famtag; ?>">
 			<input type="hidden" name="goto" value="">
-			<?php
-			// When adding a new child, specify the pedigree
-			if ($nextaction == 'addchildaction' || $nextaction == 'addopfchildaction') {
-				add_simple_tag('0 PEDI');
-			}
-			?>
 			<div id="add_name_details">
-			<?php
+				<?php
+				// When adding a new child, specify the pedigree
+				if ($nextaction == 'addchildaction' || $nextaction == 'addopfchildaction') {
+					add_simple_tag('0 PEDI');
+				}
 				if ($nextaction == 'update') {
 					$name_type = get_gedcom_value('TYPE', 2, $namerec);
 					add_simple_tag('0 TYPE ' . $name_type);

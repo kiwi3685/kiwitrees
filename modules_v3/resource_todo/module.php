@@ -169,11 +169,16 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 							$record = WT_GedcomRecord::getInstance($todo['id']);
 							if ($record && $record->canDisplayDetails()) {
 								$user_name = preg_match('/\n2 _WT_USER (.+)/', $todo['factrec'], $match) ? $match[1] : '';
+								$type = $record->getType();
 								if ($user_name == WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
 									$content .= '<tr>
 										<td>' . $todo['date']->JD() . '</td>
 										<td class="wrap">' . $todo['date']->Display(empty($SEARCH_SPIDER)) . '</td>
-										<td class="wrap"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';
+										<td class="wrap">
+											<a href="' . $record->getHtmlUrl() . '">' .
+												($type == 'INDI' ? $record->getLifespanName() : $record->getFullName()) .'
+											</a>
+										</td>';
 										if ($show_unassigned || $show_other) {
 											$content .= '<td class="wrap">'.$user_name.'</td>';
 										}

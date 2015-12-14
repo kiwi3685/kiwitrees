@@ -493,6 +493,12 @@ class WT_Person extends WT_GedcomRecord {
 			);
 	}
 
+	// Get the full name plus lifespan
+	public function getLifespanName() {
+		$lifespan_name = WT_Person::getFullName() . '<span class="lifespan_name" style="font-weight:normal; font-size: 80%;">(' . $this->getLifeSpan() . ')</span>';
+		return $lifespan_name;
+	}
+
 	// Get all the dates/places for births/deaths - for the INDI lists
 	function getAllBirthDates() {
 		if (is_null($this->_getAllBirthDates)) {

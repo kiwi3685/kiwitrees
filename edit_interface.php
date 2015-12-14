@@ -8,7 +8,7 @@
 // Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team
+// Copyright (C) 2002 to 2010  PGV Development Team($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ')
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -137,18 +137,18 @@ case 'editraw':
 
 
 	// Hide the private data
-	list($gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	list($gedrec) = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
 	// Remove the first line of the gedrec - things go wrong when users change either the TYPE or XREF
 	// Notes are special - they may contain data on the first line
-	$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
-	list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
+	$gedrec = preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
+	list($gedrec1, $gedrec2) = explode("\n", $gedrec, 2);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit raw GEDCOM record'))
+		->setPageTitle(($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ') .  WT_I18N::translate('Edit raw GEDCOM record'))
 		->pageHeader();
-
 	?>
+
 	<div id="edit_interface-page">
 		<h2>
 			<?php echo $controller->getPageTitle(); ?>
@@ -186,7 +186,7 @@ case 'edit':
 	$record = WT_GedcomRecord::getInstance($pid);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_I18N::translate('Edit'))
+		->setPageTitle(($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ') . WT_I18N::translate('Edit'))
 		->pageHeader();
 
 	// Hide the private data
@@ -288,7 +288,7 @@ case 'add':
 	$record = WT_GedcomRecord::getInstance($pid);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Add new fact') . ' - ' . $record->getFullName() . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record))
+		->setPageTitle(($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ') . WT_I18N::translate('Add new fact') . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record))
 		->pageHeader();
 	?>
 	<div id="edit_interface-page">
@@ -407,7 +407,7 @@ case 'addnewparent':
 
 	if ($person) {
 		// Adding a parent to an individual
-		$name=$person->getFullName() . ' - ';
+		$name = $person->getLifespanName() . '- ';
 	} else {
 		// Adding a spouse to a family
 		$name='';
@@ -435,7 +435,7 @@ case 'addopfchild':
 	$person = WT_Person::getInstance($pid);
 
 	$controller
-		->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a child to create a one-parent family'))
+		->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Add a child to create a one-parent family'))
 		->pageHeader();
 	?>
 	<div id="edit_interface-page">
@@ -450,11 +450,11 @@ case 'addfamlink':
 	$person = WT_Person::getInstance($pid);
 
 	if ($famtag=='CHIL') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
 	} elseif ($person->getSex()=='F') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a wife'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a wife'));
 	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a husband'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a husband'));
 	}
 
 	$controller->pageHeader();
@@ -521,64 +521,68 @@ case 'linkspouse':
 	$person=WT_Person::getInstance($pid);
 
 	if ($person->getSex()=='F') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Add a husband using an existing person'));
 	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Add a wife using an existing person'));
 	}
 
 	$controller->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	init_calendar_popup();
-	echo '<form method="post" name="addchildform" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="linkspouseaction">';
-	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	echo '<input type="hidden" name="famid" value="new">';
-	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
-	echo '<table class="facts_table">';
-	echo '<tr><td class="facts_label">';
-	if ($famtag=="WIFE") {
-		echo WT_I18N::translate('Wife');
-	} else {
-		echo WT_I18N::translate('Husband');
-	}
-	echo '</td>';
-	echo '<td class="facts_value"><input data-autocomplete-type="INDI" id="spouseid" type="text" name="spid" size="8">';
-	echo print_findindi_link('spouseid');
-	echo '</td></tr>';
-	add_simple_tag("0 MARR Y");
-	add_simple_tag("0 DATE", "MARR");
-	add_simple_tag("0 PLAC", "MARR");
-	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td class=\"descriptionbox wrap width25\">";
-		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-		echo '<input type="checkbox" name="preserve_last_changed"';
-		if ($NO_UPDATE_CHAN) {
-			echo ' checked="checked"';
-		}
-		echo '>';
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $person->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $person->LastChangeUser());
-		echo '</td></tr>';
-	}
-	echo '</table>';
-	print_add_layer("SOUR");
-	print_add_layer("OBJE");
-	print_add_layer("NOTE");
-	print_add_layer("SHARED_NOTE");
-	print_add_layer("ASSO");
-	// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-	print_add_layer("ASSO2");
-	print_add_layer("RESN");
 	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+		<?php echo init_calendar_popup(); ?>
+		<form method="post" name="addchildform" action="edit_interface.php">
+			<input type="hidden" name="action" value="linkspouseaction">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+			<input type="hidden" name="famid" value="new">
+			<input type="hidden" name="famtag" value="<?php echo $famtag; ?>">
+			<div id="add_facts">
+				<label>
+					<?php
+					if ($famtag=="WIFE") {
+						echo WT_I18N::translate('Wife');
+					} else {
+						echo WT_I18N::translate('Husband');
+					}
+					?>
+				</label>
+				<div class="input">
+					<div class="input-group">
+						<input data-autocomplete-type="INDI" id="spouseid" type="text" name="spid" size="8">
+						<?php echo  print_findindi_link('spouseid'); ?>
+					</div>
+				</div>
+				<?php
+				add_simple_tag("0 MARR Y");
+				add_simple_tag("0 DATE", "MARR");
+				add_simple_tag("0 PLAC", "MARR");
+				echo no_update_chan($person);
+				?>
+			</div>
+			<div id="additional_facts">
+				<?php
+					print_add_layer("SOUR");
+					print_add_layer("OBJE");
+					print_add_layer("NOTE");
+					print_add_layer("SHARED_NOTE");
+					print_add_layer("ASSO");
+					// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+					print_add_layer("ASSO2");
+					print_add_layer("RESN");
+				?>
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
@@ -588,11 +592,11 @@ case 'linkfamaction':
 	$person=WT_Person::getInstance($pid);
 
 	if ($famtag=='CHIL') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a child'));
 	} elseif ($person->getSex()=='F') {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a wife'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a wife'));
 	} else {
-		$controller->setPageTitle($person->getFullName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a husband'));
+		$controller->setPageTitle($person->getLifespanName() . ' - ' . WT_I18N::translate('Link this person to an existing family as a husband'));
 	}
 
 	$controller->pageHeader();
@@ -2426,39 +2430,45 @@ case 'reorder_fams':
 		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });')
 		->setPageTitle(WT_I18N::translate('Re-order families'))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
 	?>
-	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="reorder_fams_update">
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
-		<input type="hidden" name="option" value="bymarriage">
-		<ul id="reorder_list">
-		<?php
-			$person = WT_Person::getInstance($pid);
-			$fams = $person->getSpouseFamilies();
-			if ((!empty($option))&&($option=="bymarriage")) {
-				usort($fams, array('WT_Family', 'CompareMarrDate'));
-			}
-			$i=0;
-			foreach ($fams as $family) {
-				echo '<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_', $family->getXref(), '" >';
-				echo '<span class="name2">', $family->getFullName(), '</span><br>';
-				echo $family->format_first_major_fact(WT_EVENTS_MARR, 2);
-				echo '<input type="hidden" name="order[', $family->getXref(), ']" value="', $i, '">';
-				echo '</li>';
-				$i++;
-			}
-		?>
-		</ul>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<button type="submit" class="save" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form name="reorder_form" method="post" action="edit_interface.php">
+			<input type="hidden" name="action" value="reorder_fams_update">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+			<input type="hidden" name="option" value="bymarriage">
+			<ul id="reorder_list">
+			<?php
+				$person = WT_Person::getInstance($pid);
+				$fams = $person->getSpouseFamilies();
+				if ((!empty($option))&&($option=="bymarriage")) {
+					usort($fams, array('WT_Family', 'CompareMarrDate'));
+				}
+				$i=0;
+				foreach ($fams as $family) { ?>
+					<li class="reorder" id="li_<?php echo $family->getXref(); ?>" >
+						<p><?php echo $family->getFullName(); ?></p>
+						<p><?php echo  $family->format_first_major_fact(WT_EVENTS_MARR, 2); ?></p>
+						<input type="hidden" name="order[<?php echo $family->getXref(); ?>]" value="<?php echo $i; ?>">
+					</li>
+					<?php $i++;
+				}
+			?>
+			</ul>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button type="submit" class="save" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();">
+					<i class="fa fa-arrows"></i>
+					<?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
+				<button class="btn btn-primary" type="button" onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div><!-- id="edit_interface-page" -->
 	<?php
 	break;
