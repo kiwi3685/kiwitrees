@@ -130,7 +130,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 						<th style="width: 30px;">&nbsp;</th>
 						<th>' . WT_I18N::translate('Record') . '</th>
 						<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
-						<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>
+						<th>' . WT_I18N::translate('Username') . '</th>
 						<th>DATE</th>
 						<th>SORTNAME</th>
 					</tr>
@@ -199,7 +199,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 							/* 0-Type */     {"bSortable": false, "sClass": "center"},
 							/* 1-Record */   {"iDataSort": 5},
 							/* 2-Change */   {"iDataSort": 4},
-							/* 3-By */       null,
+							/* 3-User */       null,
 							/* 4-DATE */     {"bVisible": false},
 							/* 5-SORTNAME */ {"sType": "unicode", "bVisible": false}
 						]

@@ -155,11 +155,11 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 							<th>DATE</th>
 							<th>' . WT_Gedcom_Tag::getLabel('DATE') . '</th>
 							<th>' . WT_I18N::translate('Record') . '</th>';
+							$content .= '<th>' . WT_Gedcom_Tag::getLabel('TEXT').'</th>';
 							if ($show_unassigned || $show_other) {
-								$content .= '<th>'.WT_I18N::translate('Username').'</th>';
+								$content .= '<th>' . WT_I18N::translate('Username') . '</th>';
 							}
-							$content .= '<th>'.WT_Gedcom_Tag::getLabel('TEXT').'</th>
-						</tr>
+						$content .= '</tr>
 					</thead>
 					<tbody>';
 						$found	= false;
@@ -179,12 +179,12 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 												($type == 'INDI' ? $record->getLifespanName() : $record->getFullName()) .'
 											</a>
 										</td>';
+										$text = preg_match('/^1 _TODO (.+)/', $todo['factrec'], $match) ? $match[1] : '';
+										$content .= '<td class="wrap">'.$text.'</td>';
 										if ($show_unassigned || $show_other) {
 											$content .= '<td class="wrap">'.$user_name.'</td>';
 										}
-										$text = preg_match('/^1 _TODO (.+)/', $todo['factrec'], $match) ? $match[1] : '';
-										$content .= '<td class="wrap">'.$text.'</td>
-									</tr>';
+									$content .= '</tr>';
 									$found = true;
 								}
 							}
