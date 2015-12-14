@@ -28,17 +28,17 @@ define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Simple();
 
-$type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');
-$filter         =safe_GET('filter');
-$action         =safe_GET('action');
-$callback       =safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
-$media          =safe_GET('media');
-$all            =safe_GET_bool('all');
-$subclick       =safe_GET('subclick');
-$choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
-$qs             =safe_GET('tags');
+$type		= safe_GET('type', WT_REGEX_ALPHA, 'indi');
+$filter		= safe_GET('filter');
+$action		= safe_GET('action');
+$callback	= safe_GET('callback', WT_REGEX_NOSCRIPT, 'paste_id');
+$media		= safe_GET('media');
+$all		= safe_GET_bool('all');
+$subclick	= safe_GET('subclick');
+$choose		= safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
+$qs			= safe_GET('tags');
 
 // Retrives the currently selected tags in the opener window (reading curTags value of the query string)
 // $preselDefault will be set to the array of DEFAULT preselected tags
@@ -123,15 +123,6 @@ echo '<script>';
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
 				window.opener.insertRowToTable(id, name);
-				// Check if Indi, Fam or source ===================
-				/*
-				if (id.match("I")=="I") {
-					var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', edit_window_specs);
-					if (window.focus) {win01.focus();}
-				} else if (id.match("F")=="F") {
-					// TODO --- alert('Opening Navigator with family id entered will come later');
-				}
-				*/
 			}
 			window.opener.<?php echo $callback; ?>(id);
 			if (window.opener.pastename) window.opener.pastename(name);
@@ -179,13 +170,15 @@ echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 if ($type == "indi") {
 	echo '<div id="find-header">
 	<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="'.$callback.'">
+	<input type="hidden" name="callback" value="' . $callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
-	echo '">
+	if ($filter) {
+		echo $filter;
+	}
+	echo '" autofocus>
 	<input type="submit" value="', WT_I18N::translate('Filter'), '">
 	</form></div>';
 }
