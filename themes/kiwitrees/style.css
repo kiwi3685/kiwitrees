@@ -4986,6 +4986,17 @@ ul#research_status ul.sublinks {
 	content: ". ";
 }
 
+/* Styling for reorder media page */
+#reordermedia-page div.pic {
+	display: table;
+}
+
+#reordermedia-page div.pic span {
+	display: table-cell;
+	padding: 0 10px;
+    vertical-align: middle;
+}
+
 /* Styling for album module */
 #album_content div.pic {
 	width: 122px;

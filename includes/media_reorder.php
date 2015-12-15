@@ -38,17 +38,15 @@ function media_reorder_row($rowm) {
 		return false;
 	}
 
-	echo "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $media->getXref() . "\" >";
-	echo "<table class=\"pic\"><tr>";
-	echo "<td width=\"80\" valign=\"top\" align=\"center\" >";
-	echo $media->displayImage();
-	echo "</td><td>";
-	echo $media->getFullName();
-	echo "</td>";
-	echo "</tr>";
-	echo "</table>";
-	echo "<input type=\"hidden\" name=\"order1[",$media->getXref(), "]\" value=\"0\">";
-	echo "</li>";
+	?>
+	<li class="facts_value" style="list-style:none;cursor:move;margin-bottom:2px;" id="li_<?php echo $media->getXref(); ?>" >
+		<div class="pic">
+			<?php echo $media->displayImage(); ?>
+			<?php echo $media->getFullName(); ?>
+		</div>
+		<input type="hidden" name="order1[<?php echo $media->getXref(); ?>]" value="0">
+	</li>
+	<?php
 	return true;
 }
 
@@ -64,119 +62,109 @@ $controller->addInlineJavascript('
 			);
 		});
 	');
-
-echo '<br><b>', WT_I18N::translate('Re-order media'), '</b>';
-echo '&nbsp --- &nbsp;' . WT_I18N::translate('Click a row, then drag-and-drop to re-order media ');
-
 ?>
-<form name="reorder_form" method="post" action="edit_interface.php">
-	<input type="hidden" name="action" value="reorder_media_update">
-	<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+<div id="reordermedia-page">
+	<h2><?php echo WT_I18N::translate('Re-order media'); ?></h2>
+	<p><?php echo WT_I18N::translate('Click a row, then drag-and-drop to re-order media '); ?></p>
+	<form name="reorder_form" method="post" action="edit_interface.php">
+		<input type="hidden" name="action" value="reorder_media_update">
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
-	<ul id="reorder_media_list">
-	<?php
-	$person = WT_Person::getInstance($pid);
+		<ul id="reorder_media_list">
+			<?php
+			$person = WT_Person::getInstance($pid);
 
-	//-- find all of the related ids
-	$ids = array($person->getXref());
-	foreach ($person->getSpouseFamilies() as $family) {
-		$ids[] = $family->getXref();
-	}
-
-	//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
-	$sort_current_objes = array();
-	$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
-	for ($i=0; $i<$sort_ct; $i++) {
-		if (!isset($sort_current_objes[$sort_match[$i][1]])) {
-			$sort_current_objes[$sort_match[$i][1]] = 1;
-		} else {
-			$sort_current_objes[$sort_match[$i][1]]++;
-		}
-		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
-	}
-
-	// create ORDER BY list from Gedcom sorted records list  ---------------------------
-	$orderbylist = 'ORDER BY '; // initialize
-	foreach ($sort_match as $id) {
-		$orderbylist .= "m_id='$id[1]' DESC, ";
-	}
-	$orderbylist = rtrim($orderbylist, ', ');
-
-	//-- get a list of the current objects in the record
-	$current_objes = array();
-	$regexp = '/\n\d OBJE @(.*)@/';
-	$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
-	for ($i=0; $i<$ct; $i++) {
-		if (!isset($current_objes[$match[$i][1]])) {
-			$current_objes[$match[$i][1]] = 1;
-		}  else {
-			$current_objes[$match[$i][1]]++;
-		}
-		$obje_links[$match[$i][1]][] = $match[$i][0];
-	}
-
-	$media_found = false;
-
-	// Get the related media items
-	$sqlmm =
-		"SELECT DISTINCT m_id, m_ext, m_filename, m_titl, m_file, m_gedcom" .
-		" FROM `##media`" .
-		" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
-		" WHERE m_file=? AND l_from IN (";
-	$i=0;
-	$vars=array(WT_GED_ID);
-	foreach ($ids as $media_id) {
-		if ($i>0) $sqlmm .= ",";
-		$sqlmm .= "?";
-		$vars[]=$media_id;
-		$i++;
-	}
-	$sqlmm .= ')';
-
-	if ($sort_ct>0) {
-		$sqlmm .= $orderbylist;
-	}
-
-	$rows=WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
-
-	$foundObjs = array();
-	foreach ($rows as $rowm) {
-		if (isset($foundObjs[$rowm['m_id']])) {
-			if (isset($current_objes[$rowm['m_id']])) {
-				$current_objes[$rowm['m_id']]--;
+			//-- find all of the related ids
+			$ids = array($person->getXref());
+			foreach ($person->getSpouseFamilies() as $family) {
+				$ids[] = $family->getXref();
 			}
-			continue;
-		}
-		$rows = array();
-		$rows['normal'] = $rowm;
-		if (isset($current_objes[$rowm['m_id']])) $current_objes[$rowm['m_id']]--;
-		foreach ($rows as $rowm) {
-			$res = media_reorder_row($rowm);
-			$media_found = $media_found || $res;
-			$foundObjs[$rowm['m_id']] = true;
-		}
-	}
-	?>
-	</ul>
-	<?php
-		if (WT_USER_IS_ADMIN) {
-			echo '<table width=97%><tr><td class="descriptionbox wrap width25">';
-			echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-			if ($NO_UPDATE_CHAN) {
-				echo '<input type="checkbox" checked="checked" name="preserve_last_changed">';
-			} else {
-				echo '<input type="checkbox" name="preserve_last_changed">';
+
+			//-- If they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
+			$sort_current_objes = array();
+			$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
+			for ($i=0; $i<$sort_ct; $i++) {
+				if (!isset($sort_current_objes[$sort_match[$i][1]])) {
+					$sort_current_objes[$sort_match[$i][1]] = 1;
+				} else {
+					$sort_current_objes[$sort_match[$i][1]]++;
+				}
+				$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
 			}
-			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
-			$event = $person->getChangeEvent();
-			if ($event) {
-				echo format_fact_date($event, $person, false, true);
+
+			// create ORDER BY list from Gedcom sorted records list  ---------------------------
+			$orderbylist = 'ORDER BY '; // initialize
+			foreach ($sort_match as $id) {
+				$orderbylist .= "m_id='$id[1]' DESC, ";
 			}
-			echo '</td></tr></table>';
-		}
-	?>
-	<p id="save-cancel">
-		<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-		<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-	</p>
-</form>
+			$orderbylist = rtrim($orderbylist, ', ');
+
+			//-- get a list of the current objects in the record
+			$current_objes = array();
+			$regexp = '/\n\d OBJE @(.*)@/';
+			$ct = preg_match_all($regexp, $person->getGedcomRecord(), $match, PREG_SET_ORDER);
+			for ($i=0; $i<$ct; $i++) {
+				if (!isset($current_objes[$match[$i][1]])) {
+					$current_objes[$match[$i][1]] = 1;
+				}  else {
+					$current_objes[$match[$i][1]]++;
+				}
+				$obje_links[$match[$i][1]][] = $match[$i][0];
+			}
+
+			$media_found = false;
+
+			// Get the related media items
+			$sqlmm =
+				"SELECT DISTINCT m_id, m_ext, m_filename, m_titl, m_file, m_gedcom" .
+				" FROM `##media`" .
+				" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
+				" WHERE m_file=? AND l_from IN (";
+			$i=0;
+			$vars=array(WT_GED_ID);
+			foreach ($ids as $media_id) {
+				if ($i>0) $sqlmm .= ",";
+				$sqlmm .= "?";
+				$vars[]=$media_id;
+				$i++;
+			}
+			$sqlmm .= ')';
+
+			if ($sort_ct>0) {
+				$sqlmm .= $orderbylist;
+			}
+
+			$rows=WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
+
+			$foundObjs = array();
+			foreach ($rows as $rowm) {
+				if (isset($foundObjs[$rowm['m_id']])) {
+					if (isset($current_objes[$rowm['m_id']])) {
+						$current_objes[$rowm['m_id']]--;
+					}
+					continue;
+				}
+				$rows = array();
+				$rows['normal'] = $rowm;
+				if (isset($current_objes[$rowm['m_id']])) $current_objes[$rowm['m_id']]--;
+				foreach ($rows as $rowm) {
+					$res = media_reorder_row($rowm);
+					$media_found = $media_found || $res;
+					$foundObjs[$rowm['m_id']] = true;
+				}
+			}
+			?>
+		</ul>
+		<?php echo no_update_chan($person); ?>
+		<p id="save-cancel">
+			<button class="btn btn-primary" type="submit">
+				<i class="fa fa-save"></i>
+				<?php echo WT_I18N::translate('save'); ?>
+			</button>
+			<button class="btn btn-primary" type="button" onclick="window.close();">
+				<i class="fa fa-times"></i>
+				<?php echo WT_I18N::translate('close'); ?>
+			</button>
+		</p>
+	</form>
+</div>

@@ -2462,7 +2462,8 @@ case 'reorder_fams':
 				</button>
 				<button type="submit" class="save" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();">
 					<i class="fa fa-arrows"></i>
-					<?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
+					<?php echo WT_I18N::translate('sort by date of marriage'); ?>
+				</button>
 				<button class="btn btn-primary" type="button" onclick="window.close();">
 					<i class="fa fa-times"></i>
 					<?php echo WT_I18N::translate('close'); ?>
