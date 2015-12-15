@@ -30,7 +30,7 @@ define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Simple();
+$controller = new WT_Controller_Page();
 $controller
 	->requireEditorLogin()
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
@@ -51,108 +51,141 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 
 	//-- check for admin
 	$paramok =  true;
-	if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+	if (!empty($linktoid)) {
+		$paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+	}
 
-	if ($action == "choose" && $paramok) {
-		echo '<form name="link" method="get" action="inverselink.php">';
-		echo '<input type="hidden" name="action" value="update">';
-		if (!empty($mediaid)) {
-			echo '<input type="hidden" name="mediaid" value="', $mediaid, '">';
-		}
-		if (!empty($linktoid)) {
-			echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
-		}
-		echo '<input type="hidden" name="linkto" value="', $linkto, '">';
-		echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
-		echo '<table class="facts_table">';
-		echo '<tr><td class="topbottombar" colspan="2">';
-		echo WT_I18N::translate('Link to an existing media object');
-		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media'), '</td>';
-		echo '<td class="optionbox wrap">';
-		if (!empty($mediaid)) {
-			//-- Get the title of this existing Media item
-			$title=
-				WT_DB::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
-				->execute(array($mediaid, WT_GED_ID))
-				->fetchOne();
-			if ($title) {
-				echo '<b>', htmlspecialchars($title), '</b>';
-			} else {
-				echo '<b>', $mediaid, '</b>';
-			}
-		} else {
-			echo '<input data-autocomplete-type="OBJE" type="text" name="mediaid" id="mediaid" size="5">';
-			echo ' ', print_findmedia_link('mediaid', '1media');
-			echo "</td></tr>";
-		}
-
-		if (!isset($linktoid)) $linktoid = "";
-		echo '<tr><td class="descriptionbox">';
-
-		if ($linkto == "person") {
-			echo WT_I18N::translate('Individual'), "</td>";
-			echo '<td class="optionbox wrap">';
-			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '"> ';
-				echo print_findindi_link('linktopid');
-			} else {
-				$record=WT_Person::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
-			}
-		}
-
-		if ($linkto == "family") {
-			echo WT_I18N::translate('Family'), '</td>';
-			echo '<td class="optionbox wrap">';
-			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '"> ';
-				echo print_findfamily_link('linktofamid');
-			} else {
-				$record=WT_Family::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
-			}
-		}
-
-		if ($linkto == "source") {
-			echo WT_I18N::translate('Source'), "</td>";
-			echo '<td  class="optionbox wrap">';
-			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '"> ';
-				echo print_findsource_link('linktosid');
-			} else {
-				$record=WT_Source::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
-			}
-		}
-		if ($linkto == "repository") {
-			echo WT_I18N::translate('Repository'), "</td>";
-			echo '<td  class="optionbox wrap">';
-			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '">';
-			} else {
-				$record=WT_Repository::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
-			}
-		}
-
-		if ($linkto == "note") {
-			echo WT_I18N::translate('Shared note'), "</td>";
-			echo '<td  class="optionbox wrap">';
-			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '">';
-			} else {
-				$record=WT_Note::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
-			}
-		}
-
-		echo '</td></tr>';
-		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Set link'), '"></td></tr>';
-		echo '</table>';
-		echo '</form>';
+	if ($action == "choose" && $paramok) { ?>
+		<div id="inverselink-page">
+			<form name="link" method="get" action="inverselink.php">
+				<input type="hidden" name="action" value="update">
+				<?php if (!empty($mediaid)) { ?>
+					<input type="hidden" name="mediaid" value="<?php echo $mediaid; ?>">
+				<?php }
+				if (!empty($linktoid)) { ?>
+					<input type="hidden" name="linktoid" value="<?php echo $linktoid; ?>">
+				<?php } ?>
+				<input type="hidden" name="linkto" value="<?php echo $linkto; ?>">
+				<input type="hidden" name="ged" value="<?php echo $GEDCOM; ?>">
+				<h2><?php echo WT_I18N::translate('Link to an existing media object'); ?></h2>
+				<div id="add_facts">
+					<div id="MEDIA_factdiv">
+						<label><?php echo WT_I18N::translate('Media'); ?></label>
+						<div class="input">
+							<?php if (!empty($mediaid)) {
+								//-- Get the title of this existing Media item
+								$title=
+									WT_DB::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
+									->execute(array($mediaid, WT_GED_ID))
+									->fetchOne();
+								if ($title) { ?>
+									<b><?php echo htmlspecialchars($title); ?></b>
+								<?php } else { ?>
+									<b><?php echo $mediaid; ?></b>
+								<?php }
+							} else { ?>
+								<input data-autocomplete-type="OBJE" type="text" name="mediaid" id="mediaid" size="5">
+								 <?php echo print_findmedia_link('mediaid', '1media');
+							} ?>
+						</div>
+					</div>
+					<?php if (!isset($linktoid)) {
+						$linktoid = "";
+					} ?>
+					<?php if ($linkto == "person") { ?>
+						<div id="INDI_factdiv">
+							<label>
+								<?php echo WT_I18N::translate('Individual'); ?>
+							</label>
+							<div class="input">
+								<?php if ($linktoid == "") { ?>
+									<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="<?php echo $linktoid; ?>">
+									<?php echo print_findindi_link('linktopid');
+								} else {
+									$record = WT_Person::getInstance($linktoid);
+									echo $record->format_list('span', false, $record->getFullName());
+								} ?>
+							</div>
+						</div>
+					<?php }
+					if ($linkto == "family") { ?>
+						<div id="FAM_factdiv">
+							<label>
+								<?php echo WT_I18N::translate('Family'); ?>
+							</label>
+							<div class="input">
+								<?php if ($linktoid == "") { ?>
+									<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="<?php echo $linktoid; ?>">
+									<?php echo print_findfamily_link('linktofamid');
+								} else {
+									$record = WT_Family::getInstance($linktoid);
+									echo $record->format_list('span', false, $record->getFullName());
+								} ?>
+							</div>
+						</div>
+					<?php }
+					if ($linkto == "source") { ?>
+						<div id="SOUR_factdiv">
+							<label>
+								<?php echo WT_I18N::translate('Source'); ?>
+							</label>
+							<div class="input">
+								<?php if ($linktoid == "") { ?>
+									<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="<?php echo $linktoid; ?>">
+									<?php echo print_findsource_link('linktosid');
+								} else {
+									$record = WT_Source::getInstance($linktoid);
+									echo $record->format_list('span', false, $record->getFullName());
+								} ?>
+							</div>
+						</div>
+					<?php }
+					if ($linkto == "repository") { ?>
+						<div id="REPO_factdiv">
+							<label>
+								<?php echo WT_I18N::translate('Repository'); ?>
+							</label>
+							<div class="input">
+								<?php if ($linktoid == "") { ?>
+									<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="<?php echo $linktoid; ?>">
+								<?php } else {
+									$record = WT_Repository::getInstance($linktoid);
+									echo $record->format_list('span', false, $record->getFullName());
+								} ?>
+							</div>
+						</div>
+					<?php }
+					if ($linkto == "note") { ?>
+						<div id="NOTE_factdiv">
+							<label>
+								<?php echo WT_I18N::translate('Shared note'); ?>
+							</label>
+							<div class="input_group">
+								<?php if ($linktoid == "") { ?>
+									<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="<?php echo $linktoid; ?>">
+								<?php } else {
+									$record = WT_Note::getInstance($linktoid);
+									echo $record->format_list('span', false, $record->getFullName());
+								} ?>
+							</div>
+						</div>
+					<?php } ?>
+					<p id="save-cancel">
+						<button class="btn btn-primary" type="submit">
+							<i class="fa fa-link"></i>
+							<?php echo WT_I18N::translate('Set link'); ?>
+						</button>
+						<button class="btn btn-primary" type="button" onclick="closePopupAndReloadParent();">
+							<i class="fa fa-times"></i>
+							<?php echo WT_I18N::translate('close'); ?>
+						</button>
+					</p>
+				</div>
+			</form>
+		</div>
+	<?php
 	} elseif ($action == "update" && $paramok) {
 		linkMedia($mediaid, $linktoid);
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
-	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
 }

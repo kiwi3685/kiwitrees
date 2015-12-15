@@ -589,21 +589,21 @@ $controller
 						if (WT_USER_IS_ADMIN) {
 							echo '<br>
 							<span dir="ltr">
-								<input type="text" name="folder" size="40" value="' . $folder . '">
+								<input type="text" name="folder" value="' . $folder . '">
 							</span>';
-							if ($gedfile == 'FILE') { ?>
-								<div class="help_text">
-						            <span class="helpcontent">
-						                <?php echo WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'); ?>
-						            </span>
-									<span id="upload_server_folder" class="help_text"></span>
-						        </div>
-							<?php }
 						} else { ?>
 							<input name="folder" type="hidden" value="<?php echo addslashes($folder); ?>">
 					<?php } ?>
 					</div>
-				<?php } else { ?>
+					<?php if ($gedfile == 'FILE') { ?>
+						<div class="help_text">
+							<span class="helpcontent">
+								<?php echo WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'); ?>
+							</span>
+							<span id="upload_server_folder" class="help_text"></span>
+						</div>
+					<?php }
+				} else { ?>
 					<div class="input">
 						<input name="folder" type="hidden" value="">
 					</div>

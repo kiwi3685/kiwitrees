@@ -4031,6 +4031,7 @@ a.icon-udarrow:hover {
 .fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-times */
 .fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-save */
 .fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-save */
+.fa-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-link */
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
@@ -4235,7 +4236,8 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page label,
-#addmedia-page label {
+#addmedia-page label,
+#inverselink-page label {
 	display: inline-block;
 	font-weight: 600;
 	padding: 0 5px;
@@ -4244,7 +4246,8 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page .input,
-#addmedia-page .input {
+#addmedia-page .input,
+#inverselink-page .input {
 	display: inline-block;
 	padding: 0 5px;
 }
@@ -4265,7 +4268,8 @@ a.icon-udarrow:hover {
 
 #edit_interface-page input[type="text"],
 #addmedia-page input[type="text"],
-#edit_interface-page #NAME_display {
+#edit_interface-page #NAME_display,
+#inverselink-page input[type="text"] {
 	vertical-align: top;
 	width: 240px;
 }
@@ -6194,7 +6198,8 @@ textarea#NOTE {
 	#edit_interface-page #add_name_details,
 	#edit_interface-page #add_other_details,
 	#addmedia-page #add_facts,
-	#addmedia-page #additional_facts {
+	#addmedia-page #additional_facts,
+	#inverselink-page #add_facts {
 		width: 95%;
 	}
 	#edit_interface-page textarea[id^="newgedrec"] {
@@ -6216,7 +6221,8 @@ textarea#NOTE {
 	#edit_interface-page #add_facts,
 	#edit_interface-page #additional_facts,
 	#addmedia-page #add_facts,
-	#addmedia-page #additional_facts {
+	#addmedia-page #additional_facts,
+	#inverselink-page #add_facts {
 		width: 45%;
 	}
 	#edit_interface-page #add_name_details,
@@ -6234,7 +6240,8 @@ textarea#NOTE {
 	#edit_interface-page #add_facts,
 	#edit_interface-page #additional_facts,
 	#addmedia-page #add_facts,
-	#addmedia-page #additional_facts {
+	#addmedia-page #additional_facts,
+	#inverselink-page #add_facts {
 		width: 756px;
 	}
 	#edit_interface-page #add_name_details,
