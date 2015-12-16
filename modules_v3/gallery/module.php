@@ -761,7 +761,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
 							$html.='
 								<li class="ui-state-default ui-corner-top'.($item_id==$item->block_id ? ' ui-tabs-selected ui-state-active' : '').'">
-									<a href="module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$item->block_id.'">
+									<a href="module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$item->block_id.'" class="ui-tabs-anchor">
 										<span title="' . WT_I18N::translate($item->gallery_title).'">' . WT_I18N::translate($item->gallery_title) . '</span>
 									</a>
 								</li>';
