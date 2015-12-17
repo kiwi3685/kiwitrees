@@ -176,7 +176,7 @@ case 'editraw':
 				</button>
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -277,7 +277,7 @@ case 'edit':
 				</button>
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -353,7 +353,7 @@ case 'add':
 				</button>
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -375,7 +375,7 @@ case 'addchild':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<?php echo print_indi_form('addchildaction', $famid, '', '', 'CHIL', $gender); ?>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -394,7 +394,7 @@ case 'addspouse':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<?php echo print_indi_form('addspouseaction', $famid, '', '', $famtag); ?>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -424,7 +424,7 @@ case 'addnewparent':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<?php echo print_indi_form('addnewparentaction', $famid, '', '', $famtag); ?>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -441,7 +441,7 @@ case 'addopfchild':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<?php echo print_indi_form('addopfchildaction', $famid, '', '', 'CHIL'); ?>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -512,7 +512,7 @@ case 'addfamlink':
 				</button>
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -583,7 +583,7 @@ case 'linkspouse':
 				</button>
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -835,7 +835,7 @@ case 'addnewsource':
 				</button>
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -930,7 +930,7 @@ case 'addnewnote':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -975,7 +975,7 @@ case 'addnoteaction_assisted':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php'; ?>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 
 	<?php
 	break;
@@ -994,7 +994,7 @@ case 'addmedia_links':
 			<input type="hidden" name="noteid" value="newnote">
 			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -1068,7 +1068,7 @@ case 'editsource':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -1136,7 +1136,7 @@ case 'editnote':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -1205,7 +1205,7 @@ case 'addnewrepository':
 			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
 		</p>
 	</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -1902,7 +1902,7 @@ case 'editname':
 		}
 		print_indi_form('update', '', $linenum, $namerec, '', $person->getSex());
 		?>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -1919,7 +1919,7 @@ case 'addname':
 			$person=WT_Person::getInstance($pid);
 			print_indi_form('update', '', 'new', 'NEW', '', $person->getSex());
 		?>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 
 	<?php
 	break;
@@ -2034,70 +2034,68 @@ case 'reorder_children':
 		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });')
 		->setPageTitle(WT_I18N::translate('Re-order children'))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
 	?>
-	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="reorder_update">
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
-		<input type="hidden" name="option" value="bybirth">
-		<ul id="reorder_list">
-		<?php
-			// reorder children in modified families
-			$family = WT_Family::getInstance($pid);
-			$ids = array();
-			foreach ($family->getChildren() as $child) {
-				$ids[]=$child->getXref();
-			}
-			if ($family->getUpdatedFamily()) $family = $family->getUpdatedFamily();
-			$children = array();
-			foreach ($family->getChildren() as $k=>$child) {
-				$bdate = $child->getEstimatedBirthDate();
-				if ($bdate->isOK()) {
-					$sortkey = $bdate->JD();
-				} else {
-					$sortkey = 1e8; // birth date missing => sort last
-				}
-				$children[$child->getXref()] = $sortkey;
-			}
-			if ((!empty($option))&&($option=="bybirth")) {
-				asort($children);
-			}
-			$i=0;
-			$show_full = 1; // Force details to show for each child
-			foreach ($children as $id=>$child) {
-				echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
-				if (!in_array($id, $ids)) echo ' class="facts_valueblue"';
-				echo ' id="li_',$id,'" >';
-				print_pedigree_person(WT_Person::getInstance($id), 2);
-				echo '<input type="hidden" name="order[',$id,']" value="',$i,'">';
-				echo '</li>';
-				$i++;
-			}
-		echo '</ul>';
-		if (WT_USER_IS_ADMIN) {
-			echo "<table width=93%><tr><td class=\"descriptionbox wrap width25\">";
-			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
-			echo '<input type="checkbox" name="preserve_last_changed"';
-			if ($NO_UPDATE_CHAN) {
-				echo ' checked="checked"';
-			}
-			echo '>';
-			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp());
-			echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $family->LastChangeUser());
-			echo '</td></tr></table>';
-		}
-		?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<button type="submit" class="save" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of birth'); ?></button>
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
-	</div><!-- id="edit_interface-page" -->
+
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form name="reorder_form" method="post" action="edit_interface.php">
+			<input type="hidden" name="action" value="reorder_update">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+			<input type="hidden" name="option" value="bybirth">
+			<ul id="reorder_list">
+				<?php
+					// reorder children in modified families
+					$family = WT_Family::getInstance($pid);
+					$ids = array();
+					foreach ($family->getChildren() as $child) {
+						$ids[]=$child->getXref();
+					}
+					if ($family->getUpdatedFamily()) $family = $family->getUpdatedFamily();
+					$children = array();
+					foreach ($family->getChildren() as $k=>$child) {
+						$bdate = $child->getEstimatedBirthDate();
+						if ($bdate->isOK()) {
+							$sortkey = $bdate->JD();
+						} else {
+							$sortkey = 1e8; // birth date missing => sort last
+						}
+						$children[$child->getXref()] = $sortkey;
+					}
+					if ((!empty($option))&&($option=="bybirth")) {
+						asort($children);
+					}
+					$i=0;
+					$show_full = 1; // Force details to show for each child
+					foreach ($children as $id=>$child) { ?>
+						<li class="reorder"
+							<?php if (!in_array($id, $ids)) {
+								echo ' class="facts_valueblue" ';
+							} ?>
+							id="li_<?php echo $i; ?>" >
+							<?php print_pedigree_person(WT_Person::getInstance($id), 2); ?>
+							<input type="hidden" name="order[',$id,']" value="',$i,'">
+						</li>
+						<?php $i++;
+					}
+				?>
+			</ul>
+			<?php echo no_update_chan($family); ?>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button type="submit" class="btn btn-primary" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();">
+					<i class="fa fa-arrows"></i>
+					<?php echo WT_I18N::translate('sort by date of birth'); ?>
+				</button>
+				<button class="btn btn-primary" type="button" onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -2109,9 +2107,6 @@ case 'changefamily':
 	$controller
 		->setPageTitle(WT_I18N::translate('Change Family Members'))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
 
 	$father = $family->getHusband();
 	$mother = $family->getWife();
@@ -2163,72 +2158,80 @@ case 'changefamily':
 		}
 	}
 	?>
-	<div id="changefam">
-	<p>
-		<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
-	</p>
-	<form name="changefamform" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="changefamily_update">
-		<input type="hidden" name="famid" value="<?php echo $famid; ?>">
-		<table>
-			<tr>
-			<?php if ($father) { ?>
-				<td class="descriptionbox"><b><?php echo $father->getLabel(); ?></b><input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
-				<td id="HUSBName" class="optionbox"><?php echo $father->getFullName(); ?></td>
-			<?php } else { ?>
-				<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="HUSB" value=""></td>
-				<td id="HUSBName" class="optionbox"></td>
-			<?php } ?>
-				<td class="optionbox">
-					<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none':'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-				</td>
-				<td class="optionbox">
-					<a href="#" onclick="return findIndi(document.changefamform.HUSB, document.getElementById('HUSBName'));"><?php echo WT_I18N::translate('Change'); ?></a>
-				</td>
-			</tr>
-			<tr>
-			<?php if ($mother) { ?>
-				<td class="descriptionbox"><b><?php echo $mother->getLabel(); ?></b><input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>"></td>
-				<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
-			<?php } else { ?>
-				<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="WIFE" value=""></td>
-				<td id="WIFEName" class="optionbox"></td>
-			<?php } ?>
-				<td class="optionbox">
-					<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-				</td>
-				<td class="optionbox">
-					<a href="#" onclick="return findIndi(document.changefamform.WIFE, document.getElementById('WIFEName'));"><?php echo WT_I18N::translate('Change'); ?></a>
-				</td>
-			</tr>
-			<?php $i=0; foreach ($children as $child) { ?>
-			<tr>
-				<td class="descriptionbox"><b><?php echo $child->getLabel(); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>"></td>
-				<td id="CHILName<?php echo $i; ?>" class="optionbox"><?php echo $child->getFullName(); ?></td>
-				<td class="optionbox">
-					<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-				</td>
-				<td class="optionbox">
-					<a href="#" onclick="return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Change'); ?></a>
-				</td>
-			</tr>
-			<?php $i++; } ?>
-			<tr>
-				<td class="descriptionbox"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value=""></td>
-				<td id="CHILName<?php echo $i; ?>" class="optionbox"></td>
-				<td colspan="2" class="optionbox child">
-					<a href="#" id="childrem<?php echo $i; ?>" style="display: none;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-					<a href="#" onclick="remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Add'); ?></a>
-				</td>
-			</tr>
-		</table>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
-	</div><!-- id="edit_interface-page" -->
-	</div><!-- id="changefam" -->
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<div class="help_text">
+			<p class="help_content">
+				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
+			</p>
+		</div>
+		<form id="changefamform" name="changefamform" method="post" action="edit_interface.php">
+			<input type="hidden" name="action" value="changefamily_update">
+			<input type="hidden" name="famid" value="<?php echo $famid; ?>">
+			<table>
+				<tr>
+				<?php if ($father) { ?>
+					<td class="descriptionbox"><b><?php echo $father->getLabel(); ?></b><input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
+					<td id="HUSBName" class="optionbox"><?php echo $father->getFullName(); ?></td>
+				<?php } else { ?>
+					<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="HUSB" value=""></td>
+					<td id="HUSBName" class="optionbox"></td>
+				<?php } ?>
+					<td class="optionbox">
+						<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none':'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+					</td>
+					<td class="optionbox">
+						<a href="#" onclick="return findIndi(document.changefamform.HUSB, document.getElementById('HUSBName'));"><?php echo WT_I18N::translate('Change'); ?></a>
+					</td>
+				</tr>
+				<tr>
+				<?php if ($mother) { ?>
+					<td class="descriptionbox"><b><?php echo $mother->getLabel(); ?></b><input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>"></td>
+					<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
+				<?php } else { ?>
+					<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="WIFE" value=""></td>
+					<td id="WIFEName" class="optionbox"></td>
+				<?php } ?>
+					<td class="optionbox">
+						<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+					</td>
+					<td class="optionbox">
+						<a href="#" onclick="return findIndi(document.changefamform.WIFE, document.getElementById('WIFEName'));"><?php echo WT_I18N::translate('Change'); ?></a>
+					</td>
+				</tr>
+				<?php $i=0; foreach ($children as $child) { ?>
+					<tr>
+						<td class="descriptionbox"><b><?php echo $child->getLabel(); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>"></td>
+						<td id="CHILName<?php echo $i; ?>" class="optionbox"><?php echo $child->getFullName(); ?></td>
+						<td class="optionbox">
+							<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+						</td>
+						<td class="optionbox">
+							<a href="#" onclick="return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Change'); ?></a>
+						</td>
+					</tr>
+				<?php $i++; } ?>
+				<tr>
+					<td class="descriptionbox"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value=""></td>
+					<td id="CHILName<?php echo $i; ?>" class="optionbox"></td>
+					<td colspan="2" class="optionbox child">
+						<a href="#" id="childrem<?php echo $i; ?>" style="display: none;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+						<a href="#" onclick="remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Add'); ?></a>
+					</td>
+				</tr>
+			</table>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button" onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
@@ -2460,7 +2463,7 @@ case 'reorder_fams':
 					<i class="fa fa-save"></i>
 					<?php echo WT_I18N::translate('save'); ?>
 				</button>
-				<button type="submit" class="save" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();">
+				<button type="submit" class="btn btn-primary" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();">
 					<i class="fa fa-arrows"></i>
 					<?php echo WT_I18N::translate('sort by date of marriage'); ?>
 				</button>
@@ -2470,7 +2473,7 @@ case 'reorder_fams':
 				</button>
 			</p>
 		</form>
-	</div><!-- id="edit_interface-page" -->
+	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
 
