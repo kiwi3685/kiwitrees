@@ -57,7 +57,7 @@ function helpDialog(which, mod) {
 			modal: true,
 			width: 500,
 			height: 'auto',
-		}).load(url+' .helpcontent', function() {
+		}).load(url+' .help_content', function() {
 			jQuery(this).dialog("option", "position", { my: "center top", at: "center top", of: "#content"} );
 		});
 	jQuery(".ui-widget-overlay").on("click", function () {

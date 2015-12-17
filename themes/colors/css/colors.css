@@ -464,8 +464,8 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .gender_image {border:none;padding-left:3px;padding-right:3px;vertical-align:middle;}
 
 .helpheader {}
-.helpcontent {margin-left:10px;margin-right:10px;}
-.helpcontent dt {clear:both;}
+.help_content {margin-left:10px;margin-right:10px;}
+.help_content dt {clear:both;}
 
 .hit-counter {background:#000;color:#fff;font-weight:700;}
 
@@ -1304,7 +1304,7 @@ span.link_text {display:none;}
 	display: none;
 }
 
-#edituser-table .chart_options span .helpcontent {
+#edituser-table .chart_options span .help_content {
 	font-style: italic;
 }
 
@@ -2183,7 +2183,7 @@ div.widget {
 	width: initial;
 }
 
-#nocensus-page .helpcontent {
+#nocensus-page .help_content {
 	font-size: inherit;
     margin: 0;
 }

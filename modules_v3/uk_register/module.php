@@ -132,7 +132,7 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 						<label for "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
 						<input data-autocomplete-type="SURN" type="text" name="surn" id="SURN" value="<?php echo $surn; ?>">
 						<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" >
-						<div class="helpcontent">
+						<div class="help_content">
 							<p>
 								<?php echo WT_I18N::translate('Select <b>All</b> for everyone, or leave blank for your own ancestors'); ?>
 							</p>

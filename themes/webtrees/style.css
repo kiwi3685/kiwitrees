@@ -176,8 +176,8 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 .rtl_cal_day {direction:rtl;float:right;color:#0000ff;font-weight:bold;}
 
 .helpheader {}
-.helpcontent {margin-left:10px;margin-right:10px;}
-.helpcontent dt {clear:both;}
+.help_content {margin-left:10px;margin-right:10px;}
+.help_content dt {clear:both;}
 
 /* General chart page styles */
 .chart_options {
@@ -1242,7 +1242,7 @@ dd .editlink, dd .deletelink {float:right;}
 	display: none;
 }
 
-#edituser-table .chart_options span .helpcontent {
+#edituser-table .chart_options span .help_content {
 	font-style: italic;
 }
 
@@ -2108,7 +2108,7 @@ div.widget {
 	width: initial;
 }
 
-#nocensus-page .helpcontent {
+#nocensus-page .help_content {
 	font-size: inherit;
     margin: 0;
 }

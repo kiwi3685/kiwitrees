@@ -1232,14 +1232,14 @@ a:hover .nameZoom {
 	font-weight: bold;
 }
 
-.helpcontent {
+.help_content {
 	font-size: .9em;
 	margin-left: 10px;
 	margin-right: 10px;
 	max-height: 600px;
 }
 
-.helpcontent dt {
+.help_content dt {
 	clear: both;
 }
 
@@ -1247,7 +1247,7 @@ a:hover .nameZoom {
 	display:none;
 }
 
-.help_text .helpcontent {
+.help_text .help_content {
 	border: none;
 	font-size: .9em;;
 	font-style: italic;
@@ -3738,7 +3738,7 @@ div[id^="caldiv"] td {
 	display: none;
 }
 
-#edituser-table .chart_options span .helpcontent {
+#edituser-table .chart_options span .help_content {
 	font-style: italic;
 }
 
@@ -4032,6 +4032,9 @@ a.icon-udarrow:hover {
 .fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-save */
 .fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-save */
 .fa-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-link */
+.fa-link:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-link */
+.fa-arrows				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-arrows */
+.fa-arrows:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-arrows */
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
@@ -4312,22 +4315,12 @@ a.icon-udarrow:hover {
 	width: 300px;
 }
 
-#edit_interface-page #changefam {
+#edit_interface-page #changefamform {
 	padding: 5px;
 }
 
-#edit_interface-page #changefam table {
-	margin: 10px auto;
-	min-width: 400px;
-	max-width: 650px;
-}
-
-#edit_interface-page #changefam span {
-	margin: 0;
-}
-
-#edit_interface-page #changefam td {
-	padding: 5px;
+#edit_interface-page #changefamform td {
+	padding: 8px;
 	white-space: normal;
 }
 
@@ -5865,7 +5858,7 @@ div.widget {
 	width: initial;
 }
 
-#nocensus-page .helpcontent {
+#nocensus-page .help_content {
 	font-size: inherit;
 	margin: 0;
 }

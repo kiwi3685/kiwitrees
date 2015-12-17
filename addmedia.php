@@ -442,7 +442,7 @@ $controller
 						?>
 					</div>
 					<div class="help_text">
-						<span class="helpcontent">
+						<span class="help_content">
 							<?php echo WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'); ?>
 						</span>
 					</div>
@@ -475,7 +475,7 @@ $controller
 					<div class="input">
 						<input type="file" name="mediafile" onchange="updateFormat(this.value);">
 						<div class="help_text">
-							<span class="helpcontent">
+							<span class="help_content">
 								<?php echo WT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()); ?>
 							</span>
 						</div>
@@ -504,7 +504,7 @@ $controller
 						<?php add_simple_tag("1 $gedfile",'',WT_I18N::translate('File name on server'),'','NOCLOSE'); ?>
 					</div>
 					<div class="help_text">
-						<span class="helpcontent">
+						<span class="help_content">
 							<?php echo
 								WT_I18N::translate('Do not change to keep original file name.') .
 								WT_I18N::translate('You may enter a URL, beginning with &laquo;http://&raquo;.');
@@ -544,7 +544,7 @@ $controller
 						<?php } ?>
 					</div>
 					<div class="help_text">
-						<span class="helpcontent">
+						<span class="help_content">
 							<?php echo WT_I18N::translate('Do not change to keep original file name.'); ?>
 						</span>
 					</div>
@@ -597,7 +597,7 @@ $controller
 					</div>
 					<?php if ($gedfile == 'FILE') { ?>
 						<div class="help_text">
-							<span class="helpcontent">
+							<span class="help_content">
 								<?php echo WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'); ?>
 							</span>
 							<span id="upload_server_folder" class="help_text"></span>

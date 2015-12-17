@@ -473,9 +473,9 @@ font-size:10px;}
 
 .helpheader {}
 
-.helpcontent { margin-left:10px; margin-right:10px;}
+.help_content { margin-left:10px; margin-right:10px;}
 
-.helpcontent dt { clear:both;}
+.help_content dt { clear:both;}
 
 #content { clear:both; margin-left:1px;}
 
@@ -1490,7 +1490,7 @@ dd .editlink, dd .deletelink {float:right;}
 	display: none;
 }
 
-#edituser-table .chart_options span .helpcontent {
+#edituser-table .chart_options span .help_content {
 	font-style: italic;
 }
 
@@ -2350,7 +2350,7 @@ div.widget {
 	width: initial;
 }
 
-#nocensus-page .helpcontent {
+#nocensus-page .help_content {
 	font-size: inherit;
     margin: 0;
 }
