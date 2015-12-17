@@ -1988,11 +1988,21 @@ dt {
 	width: 95%;
 }
 
+#medialist-page #save-cancel {
+	clear: both;
+	float: right;
+}
+
+[dir='rtl'] #medialist-page #save-cancel {
+	clear: both;
+	float: left;
+}
+
 #medialist-page .pagination {
+	background-color: #fff;
 	clear: both;
 	margin: auto;
 	overflow: hidden;
-	width: 95%;
 }
 
 #medialist-page .pagination p.alignleft {
@@ -4025,16 +4035,24 @@ a.icon-udarrow:hover {
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-edit */
 .icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */
 .icon-copy				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-copy */
+
 .fa-bars				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-bars */
 .fa-bars:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-bars */
 .fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000; vertical-align: middle;} /* fa-times */
 .fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-times */
 .fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-save */
 .fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-save */
+.fa-search				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-search */
+.fa-search:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-search */
+.fa-refresh				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-refresh */
+.fa-refresh:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-refresh */
 .fa-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-link */
 .fa-link:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-link */
 .fa-arrows				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-arrows */
 .fa-arrows:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-arrows */
+.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: middle;} /* fa-eye */
+.fa-mail-forward		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-mail-forward */
+
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
@@ -4092,8 +4110,6 @@ a.icon-udarrow:hover {
 .icon-resn-none			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#008000;} /* fa-circle-o */
 .icon-resn-locked		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-lock */
 .icon-resn-privacy		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000;} /* fa-unlock-alt */
-.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: middle;} /* fa-eye */
-.fa-mail-forward		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-mail-forward */
 
 #extra-menu > li:after	{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; font-weight: 700; margin: 0 3px;} /* fa-angle-down */
 #extra-menu > li:hover	{color: #009afe;}
