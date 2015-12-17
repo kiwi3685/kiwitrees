@@ -354,7 +354,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 												if ($person) {
 													echo $person->format_list('span');
 													echo '
-														<p style="margin: 0;">
+														<p>
 															<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref. '&amp;block_id='.$block_id. '" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a>
 														</p>
 														<hr style="margin-top: 0;"">
@@ -374,7 +374,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 													if ($person) {
 														echo $person->format_list('span');
 														echo '
-															<p style="margin: 0;">
+															<p>
 																<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref[$x]. '&amp;block_id='. $block_id. '" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a>
 															</p>
 															<hr style="margin-top: 0;"">
@@ -505,9 +505,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 											for ($x = 0; $x < $count_xref; $x++) {
 												$indi[$x] = WT_Person::getInstance($xref[$x]);
 												if ($indi[$x]) {
-														  echo '<p style="margin:0;"><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
+														  echo '<p><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
 												} else {
-													echo '<p style="margin:0;" class="error">', $xref[$x], '</p>';
+													echo '<p class="error">', $xref[$x], '</p>';
 												}
 											}
 										echo '</td>
@@ -594,9 +594,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 									for ($x = 0; $x < $count_xref; $x++) {
 										$indi[$x] = WT_Person::getInstance($xref[$x]);
 										if (!$indi[$x]){
-											echo '<p style="margin:0;" class="error">', $xref[$x], '</p>';
+											echo '<p class="error">', $xref[$x], '</p>';
 										} else {
-											echo '<p style="margin:0;"><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
+											echo '<p><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
 										}
 									}
 								echo '</td>

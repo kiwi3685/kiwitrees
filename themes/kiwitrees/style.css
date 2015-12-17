@@ -4769,6 +4769,19 @@ body .ui-tooltip {
 	width: 80%;
 }
 
+#story_table th {
+	font-size: initial;
+    padding: 8px;
+}
+
+#story_table td {
+    padding: 10px;
+}
+
+#story_table td p {
+    margin: 0;
+}
+
 #contents_list {
 	margin: auto auto 20px auto;
 	width: 60%;
