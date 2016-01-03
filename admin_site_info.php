@@ -29,39 +29,42 @@
 define('WT_SCRIPT_NAME', 'admin_site_info.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('PHP information'))
+	->setPageTitle(WT_I18N::translate('Server information'))
 	->pageHeader();
 
+$variables = WT_DB::prepare("SHOW VARIABLES")->fetchAssoc();
+array_walk($variables, function (&$x) { $x = str_replace(',', ', ', $x); });
+
 ob_start();
-
-phpinfo();
-$php_info = ob_get_contents();
-
-ob_end_clean();
-
-$php_info    = str_replace(" width=\"600\"", " width=\"\"", $php_info);
-$php_info    = str_replace("</body></html>", "", $php_info);
-$php_info    = str_replace("<table", "<table class=\"php_info ltr\"", $php_info);
-$php_info    = str_replace("td class=\"e\"", "td", $php_info);
-$php_info    = str_replace("td class=\"v\"", "td", $php_info);
-$php_info    = str_replace("tr class=\"v\"", "tr", $php_info);
-$php_info    = str_replace("tr class=\"h\"", "tr", $php_info);
-
-$php_info    = str_replace(";", "; ", $php_info);
-$php_info    = str_replace(",", ", ", $php_info);
-
-// Put logo in table header
-$logo_offset = strpos($php_info, "<td>");
-$php_info = substr_replace($php_info, "<td colspan=\"3\" class=\"center\">", $logo_offset, 4);
-$logo_width_offset = strpos($php_info, "width=\"\"");
-$php_info = substr_replace($php_info, "", $logo_width_offset, 8);
-$php_info = str_replace(" width=\"\"", "", $php_info);
-
-$offset = strpos($php_info, "<table");
-$php_info = substr($php_info, $offset);
-
-echo '<div id="page_help">', help_link('phpinfo'), '</div>';
-echo '<div class="php_info">', $php_info, '</div>';
+phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
+preg_match('%<body>(.*)</body>%s', ob_get_clean(), $matches);
+$html = $matches[1];
+?>
+<div id="server-info">
+	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<div class="php-info"><?php echo $html; ?></div>
+	<div class="php-info">
+		<table>
+			<tbody>
+				<tr class="h">
+					<td>
+						<h2><?php echo WT_I18N::translate('MySQL variables'); ?></h2>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<?php foreach ($variables as $variable => $value): ?>
+					<tr>
+						<td class="e"><?php echo WT_Filter::escapeHtml($variable); ?></td>
+						<td class="v"><?php echo WT_Filter::escapeHtml($value); ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</div>

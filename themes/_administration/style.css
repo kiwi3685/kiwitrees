@@ -347,13 +347,45 @@ ul.server_stats li {
 [dir=rtl] #readme .back {float:left;}
 
 /* PHP INFO */
-div.php_info {padding:10px; text-align:center; width:100%;}
-table.php_info {border-collapse:separate; border-spacing:0; text-align:left; width:98%}
-[dir=rtl] table.php_info {text-align:right;}
-.php_info td {border-bottom:1px solid #d3d3d3; border-right:0;}
-[dir=rtl] .php_info td {border-left:0;}
-.php_info td+td {border-right:0; padding-left:20px;}
-[dir=rtl] .php_info td+td {border-left:0; padding-right:20px;}
+.php-info table {
+	width: 100%;
+}
+.php-info .center {
+	text-align: center;
+}
+.php-info .center table {
+	margin: 1em auto;
+	text-align: left;
+}
+.php-info .center th {
+	text-align: center;
+}
+.php-info td,
+.php-info th {
+	border: 1px solid #666;
+	vertical-align: baseline;
+	padding: 4px 5px;
+}
+.php-info .e {
+	background-color: #ccf;
+	width: 300px;
+}
+.php-info .h {
+	background-color: #99c;
+}
+.php-info .v {
+	background-color: #ddd;
+	max-width: 300px;
+	overflow-x: auto;
+	word-break: break-all;
+}
+.php-info .v i {
+	color: #999;
+}
+.php-info img {
+	float: right;
+	border: 0;
+}
 
 /* MANAGE SITES */
 table.sites {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:10px 0;}

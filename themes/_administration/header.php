@@ -141,7 +141,7 @@ echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i><span class="menu
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_config.php"  ? 'class="current" ' : ''), 'href="admin_site_config.php">',  WT_I18N::translate('Site configuration'    ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_logs.php"    ? 'class="current" ' : ''), 'href="admin_site_logs.php">',    WT_I18N::translate('Logs'                  ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_readme.php"  ? 'class="current" ' : ''), 'href="admin_site_readme.php">',  WT_I18N::translate('README documentation'  ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_info.php"    ? 'class="current" ' : ''), 'href="admin_site_info.php">',    WT_I18N::translate('PHP information'       ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME=="admin_site_info.php"    ? 'class="current" ' : ''), 'href="admin_site_info.php">',    WT_I18N::translate('Server information'       ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_access.php"  ? 'class="current" ' : ''), 'href="admin_site_access.php">',  WT_I18N::translate('Site access rules'     ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_clean.php"   ? 'class="current" ' : ''), 'href="admin_site_clean.php">',   WT_I18N::translate('Clean up data folder'  ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME=="admin_site_lang.php"    ? 'class="current" ' : ''), 'href="admin_site_lang.php">',    WT_I18N::translate('Custom translation'    ), '</a></p>
