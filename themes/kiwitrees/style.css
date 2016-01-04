@@ -899,8 +899,18 @@ table.center {
 	border: solid #00f 2px;
 }
 
-.quickfacts a {
-	padding: 0 3px;
+.quickfacts {
+	display: block;
+    font-size: 90%;
+	padding: 3px;
+}
+
+.quickfacts a:after {
+	content: " | ";
+}
+
+.quickfacts a:last-child:after {
+	content: "";
 }
 
 .tabs_table {
