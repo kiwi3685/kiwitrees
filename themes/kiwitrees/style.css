@@ -214,8 +214,16 @@ textarea:required:invalid {
 }
 #flash-messages {
 	clear: both;
+	top: 110px;
+	position: relative;
 }
 
+#flash-messages p {
+    background: #f0f8ff;
+    color: #00f;
+    margin: 0;
+    padding: 3px 10px;
+}
 #topbar {
 	height: 1em;
 	width: 100%;
