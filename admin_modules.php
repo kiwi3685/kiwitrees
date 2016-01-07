@@ -38,12 +38,12 @@ switch (WT_Filter::post('action')) {
 case 'update_mods':
 	if (WT_Filter::checkCsrf()) {
 		foreach ($modules as $module_name=>$status) {
-			$new_status=WT_Filter::post("status-{$module_name}", '[01]');
-			if ($new_status!==null) {
-				$new_status=$new_status ? 'enabled' : 'disabled';
-				if ($new_status!=$status) {
+			$new_status = WT_Filter::post("status-{$module_name}", '[01]');
+			if ($new_status !== null) {
+				$new_status = $new_status ? 'enabled' : 'disabled';
+				if ($new_status != $status) {
 					WT_DB::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module_name));
-					$module_status[$module_name]=$new_status;
+					$module_status[$module_name] = $new_status;
 				}
 			}
 		}
@@ -141,7 +141,7 @@ $controller
 					<?php
 					foreach ($module_status as $module_name=>$status) {
 						if (array_key_exists($module_name, $modules)) {
-							$module=$modules[$module_name];
+							$module = $modules[$module_name];
 							echo
 								'<tr>
 									<td>', two_state_checkbox('status-'.$module_name, $status=='enabled'), '</td>

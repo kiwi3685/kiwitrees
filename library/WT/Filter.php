@@ -231,7 +231,6 @@ class WT_Filter {
 				$WT_SESSION->CSRF_TOKEN .= substr($charset, mt_rand(0, 61), 1);
 			}
 		}
-
 		return $WT_SESSION->CSRF_TOKEN;
 	}
 
