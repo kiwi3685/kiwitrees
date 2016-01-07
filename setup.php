@@ -136,8 +136,8 @@ if (!isset($_POST['lang'])) {
 		edit_field_language('change_lang', WT_LOCALE, 'onchange="window.location=\'' .  WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', WT_I18N::translate('1 - Checking your server configuration'), '</h2>';
-	$warnings=false;
-	$errors=false;
+	$warnings	= false;
+	$errors		= false;
 
 	// Mandatory functions
 	$disable_functions=preg_split('/ *, */', ini_get('disable_functions'));
@@ -734,12 +734,13 @@ try {
 	);
 	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##module` (".
-		" module_name   VARCHAR(32)                 NOT NULL,".
-		" status        ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled',".
-		" tab_order     INTEGER                         NULL, ".
-		" menu_order    INTEGER                         NULL, ".
-		" sidebar_order INTEGER                         NULL,".
-		" widget_order  INTEGER                         NULL,".
+		" module_name   	VARCHAR(32)               		NOT NULL,".
+		" status        	ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled',".
+		" tab_order     	INTEGER                         NULL, ".
+		" menu_order    	INTEGER                         NULL, ".
+		" sidebar_order 	INTEGER                         NULL,".
+		" widget_order  	INTEGER                         NULL,".
+		" resource_order	INTEGER            	            NULL,".
 		" PRIMARY KEY (module_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
@@ -756,7 +757,7 @@ try {
 		"CREATE TABLE IF NOT EXISTS `##module_privacy` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" gedcom_id     INTEGER     NOT NULL,".
-		" component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget') NOT NULL,".
+		" component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget', 'resource') NOT NULL,".
 		" access_level  TINYINT     NOT NULL,".
 		" PRIMARY KEY                        (module_name, gedcom_id, component),".
 		" FOREIGN KEY `##module_privacy_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */,".

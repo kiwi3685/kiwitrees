@@ -1,5 +1,5 @@
 <?php
-// Module Administration User Interface.
+// Resource Modules Administration User Interface.
 //
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2015 kiwitrees.net
@@ -38,12 +38,18 @@ $action = safe_POST('action');
 if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$value = safe_POST("resourceaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$access_level = safe_POST("resourceaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'resource', ?)"
-			)->execute(array($module_name, $tree->tree_id, $value));
+			)->execute(array($module_name, $tree->tree_id, $access_level));
 		}
+		$order = safe_POST('resourceorder-'.$module_name);
+		WT_DB::prepare(
+			"UPDATE `##module` SET resource_order=? WHERE module_name=?"
+		)->execute(array($order, $module_name));
+		$module->order = $order; // Make the new order take effect immediately
 	}
+	uasort($modules, create_function('$x,$y', 'return $x->order > $y->order;'));
 }
 
 ?>
