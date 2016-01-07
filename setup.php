@@ -183,8 +183,8 @@ if (!isset($_POST['lang'])) {
 	// However, this is unreliable, especially on servers with custom restrictions.
 	// Now, we just show the default values.  These can (hopefully!) be changed using the
 	// site settings page.
-	$maxmem=to_mb(ini_get('memory_limit'));
-	$maxcpu=ini_get('max_execution_time');
+	$maxmem = to_mb(ini_get('memory_limit'));
+	$maxcpu = ini_get('max_execution_time');
 	echo
 		'<p>',
 		WT_I18N::translate('The memory and CPU time requirements depend on the number of individuals in your family tree.'),
@@ -222,11 +222,11 @@ if (!isset($_POST['lang'])) {
 // Step two - The data folder needs to be writable
 ////////////////////////////////////////////////////////////////////////////////
 
-@file_put_contents(WT_DATA_DIR . 'test.txt', 'FAB!');
-$FAB = @file_get_contents(WT_DATA_DIR . 'test.txt');
+@file_put_contents(WT_DATA_DIR . 'test.txt', 'OK!');
+$OK = @file_get_contents(WT_DATA_DIR . 'test.txt');
 @unlink(WT_DATA_DIR . 'test.txt');
 
-if ($FAB != 'FAB!') {
+if ($OK != 'OK!') {
 	echo '<h2>', realpath(WT_DATA_DIR), '</h2>';
 	echo '<p class="bad">', WT_I18N::translate('Oops!  Kiwitrees was unable to create files in this folder.'), '</p>';
 	echo '<p>', WT_I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';
