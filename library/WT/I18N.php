@@ -91,7 +91,7 @@ class WT_I18N {
 					set_user_setting(WT_USER_ID, 'language', $locale);
 				}
 			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages) && array_key_exists($WT_SESSION->locale, $used_languages)) {
-				// Rembered from a previous visit?
+				// Remembered from a previous visit?
 				$locale = $WT_SESSION->locale;
 			} else {
 				// Browser preference takes priority over gedcom default
@@ -128,6 +128,8 @@ class WT_I18N {
 					if (array_key_exists($pref, $installed_languages) && array_key_exists($pref, $used_languages)) {
 						$locale = $pref;
 						break;
+					} else {
+						$locale = 'en_US'; // last resort
 					}
 				}
 			}
