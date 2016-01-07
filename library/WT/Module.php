@@ -14,7 +14,7 @@
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
@@ -158,7 +158,7 @@ abstract class WT_Module {
 			" FROM `##module`".
 			" JOIN `##module_privacy` USING (module_name)".
 			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?".
-			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order WHEN 'widget' THEN widget_order  ELSE 0 END, module_name"
+			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order WHEN 'widget' THEN widget_order ELSE 0 END, module_name"
 		)->execute(array($ged_id, $component, $access_level))->fetchOneColumn();
 		$array=array();
 		foreach ($module_names as $module_name) {
@@ -167,7 +167,7 @@ abstract class WT_Module {
 				$class = $module_name.'_WT_Module';
 				$array[$module_name] = new $class();
 			} else {
-				// Module has been deleted from disk?  Disable it.
+				// Module has been deleted from disk? Disable it.
 				AddToLog("Module {$module_name} has been deleted from disk - disabling it", 'config');
 				WT_DB::prepare(
 					"UPDATE `##module` SET status='disabled' WHERE module_name=?"
