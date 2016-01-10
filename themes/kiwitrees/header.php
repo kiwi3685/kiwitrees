@@ -170,15 +170,14 @@ if ($view!='simple') {
 				}
 			echo '</ul>
 		</div>', // <div id="topMenu">
-//		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 	'</div>'; // <div id="navbar">
 }
-// begin content section
-echo 	$javascript,
-		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
-		'<div id="content">';// closed in footer
-
-// add widget bar inside content div for all pages except Home, and only for logged in users with role 'visitor' or above
+// add widget bar for all pages except Home, and only for logged in users with role 'visitor' or above
 if ($show_widgetbar) {
 	include_once 'widget-bar.php';
 }
+// begin content section
+echo 	$javascript,
+//		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
+		'<div id="content">';// closed in footer
