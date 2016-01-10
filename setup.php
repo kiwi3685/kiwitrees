@@ -919,8 +919,17 @@ try {
 
 	// Create the default settings for new family trees
 	WT_DB::prepare(
-		"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'gedcom_stats'), (-1, 'main', 2, 'gedcom_news'), (-1, 'main', 3, 'gedcom_favorites'), (-1, 'main', 4, 'review_changes'), (-1, 'side', 1, 'gedcom_block'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'todays_events'), (-1, 'side', 4, 'logged_in')"
+		"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES 
+			(-1, 'main', 1, 'gedcom_stats'),
+			(-1, 'side', 1, 'gedcom_block'),
+			(-1, 'side', 2, 'todays_events'),
+			(-1, 'side', 3, 'logged_in'),
+			(NULL, NULL, 0, 'widget_quicklinks'),
+			(NULL, NULL, 0, 'widget_quicklinks'),
+			(NULL, NULL, 0, 'widget_upcoming'),
+			(NULL, NULL, 0, 'widget_todays_events')"
 	)->execute();
+
 	// Create the blocks for the admin user
 	WT_DB::prepare(
 		"INSERT INTO `##block` (user_id, location, block_order, module_name)" .
