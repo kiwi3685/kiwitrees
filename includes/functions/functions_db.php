@@ -1382,35 +1382,28 @@ function set_gedcom_setting($gedcom_id, $setting_name, $setting_value) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function create_user($username, $realname, $email, $password) {
-	if (version_compare(PHP_VERSION, '5.3')>0) {
+	if (version_compare(PHP_VERSION, '5.3') > 0) {
 		// Some PHP5.2 implementations of crypt() appear to be broken - #802316
 		// PHP5.3 will always support BLOWFISH - see php.net/crypt
 		// This salt will select the BLOWFISH algorithm with 2^12 rounds
-		$salt='$2a$12$';
-		$salt_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
-		for ($i=0;$i<22;++$i) {
-			$salt.=substr($salt_chars, mt_rand(0,63), 1);
+		$salt		= '$2a$12$';
+		$salt_chars	= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
+		for ($i = 0; $i < 22; ++$i) {
+			$salt .= substr($salt_chars, mt_rand(0,63), 1);
 		}
-		$password_hash=crypt($password, $salt);
+		$password_hash = crypt($password, $salt);
 	} else {
 		// Our prefered hash algorithm is not available.  Use the default.
-		$password_hash=crypt($password);
+		$password_hash = crypt($password);
 	}
 	try {
 		WT_DB::prepare("INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)")
 			->execute(array($username, $realname, $email, $password_hash));
-		$user_id=WT_DB::getInstance()->lastInsertId();
-		// Set the initial block layout
-		WT_DB::prepare(
-			"INSERT INTO `##block` (user_id, location, block_order, module_name)".
-			" SELECT ?, location, block_order, module_name".
-			" FROM `##block`".
-			" WHERE user_id=-1"
-		)->execute(array($user_id));
+		$user_id = WT_DB::getInstance()->lastInsertId();
 	} catch (PDOException $ex) {
 		// User already exists?
 	}
-	$user_id=
+	$user_id =
 		WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE user_name=?")
 		->execute(array($username))->fetchOne();
 	return $user_id;
