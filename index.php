@@ -26,32 +26,32 @@ define('WT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';
 
 // The only option for action is "ajax"
-$action=safe_REQUEST($_REQUEST, 'action', 'ajax');
+$action = safe_REQUEST($_REQUEST, 'action', 'ajax');
 
-$ctype=safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
+$ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
 //-- get the blocks list
-$blocks=get_gedcom_blocks(WT_GED_ID);
+$blocks = get_gedcom_blocks(WT_GED_ID);
 
-$all_blocks=WT_Module::getActiveBlocks();
+$all_blocks = WT_Module::getActiveBlocks();
 
 // We generate individual blocks using AJAX
-if ($action=='ajax') {
-	$controller=new WT_Controller_Ajax();
+if ($action == 'ajax') {
+	$controller = new WT_Controller_Ajax();
 	$controller->pageHeader();
 
 	// Check we're displaying an allowable block.
-	$block_id=safe_GET('block_id');
+	$block_id = safe_GET('block_id');
 	if (array_key_exists($block_id, $blocks['main'])) {
-		$module_name=$blocks['main'][$block_id];
+		$module_name = $blocks['main'][$block_id];
 	} elseif (array_key_exists($block_id, $blocks['side'])) {
-		$module_name=$blocks['side'][$block_id];
+		$module_name = $blocks['side'][$block_id];
 	} else {
 		exit;
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
-		$class_name=$module_name.'_WT_Module';
-		$module=new $class_name;
+		$class_name = $module_name.'_WT_Module';
+		$module = new $class_name;
 		$module->getBlock($block_id);
 	}
 	if (WT_DEBUG) {
@@ -63,12 +63,12 @@ if ($action=='ajax') {
 	exit;
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 $controller
 	->setPageTitle(WT_TREE_TITLE)
 	->setMetaRobots('index,follow')
-	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . WT_GEDCOM)
+	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype = ' . $ctype . '&amp;ged = ' . WT_GEDCOM)
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');
@@ -80,17 +80,21 @@ echo '<div id="home-page">';
 		} else {
 			echo '<div id="index_full_blocks">';
 		}
-		foreach ($blocks['main'] as $block_id=>$module_name) {
-			$class_name=$module_name.'_WT_Module';
-			$module=new $class_name;
+		foreach ($blocks['main'] as $block_id => $module_name) {
+			$class_name = $module_name.'_WT_Module';
+			$module = new $class_name;
 			if ($SEARCH_SPIDER || !$module->loadAjax()) {
 				// Load the block directly
 				$module->getBlock($block_id);
 			} else {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				echo '
+					<div id="block_', $block_id, '">
+						<div class="loading-image">&nbsp;</div>
+					</div>
+				';
 				$controller->addInlineJavascript(
-					'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
+					'jQuery("#block_'.$block_id.'").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);
 			}
 		}
@@ -102,17 +106,21 @@ echo '<div id="home-page">';
 		} else {
 			echo '<div id="index_full_blocks">';
 		}
-		foreach ($blocks['side'] as $block_id=>$module_name) {
-			$class_name=$module_name.'_WT_Module';
-			$module=new $class_name;
+		foreach ($blocks['side'] as $block_id => $module_name) {
+			$class_name = $module_name.'_WT_Module';
+			$module = new $class_name;
 			if ($SEARCH_SPIDER || !$module->loadAjax()) {
 				// Load the block directly
 				$module->getBlock($block_id);
 			} else {
 				// Load the block asynchronously
-				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				echo '
+					<div id="block_', $block_id, '">
+						<div class="loading-image">&nbsp;</div>
+					</div>
+				';
 				$controller->addInlineJavascript(
-					'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
+					'jQuery("#block_'.$block_id.'").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
 				);
 			}
 		}
@@ -128,5 +136,5 @@ echo '<div id="home-page">';
 	} else {
 		echo '<div class="clearfloat"></div>';
 	}
-	
+
 echo '</div>'; // <div id="home-page">

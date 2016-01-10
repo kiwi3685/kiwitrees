@@ -25,58 +25,58 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Tree {
 	// Tree attributes
-	public $tree_id         =null; // The "gedcom ID" number
-	public $tree_name       =null; // The "gedcom name" text
-	public $tree_name_url   =null;
-	public $tree_name_html  =null;
-	public $tree_title      =null; // The "gedcom title" text
-	public $tree_title_html =null;
-	public $imported        =null;
+	public $tree_id         = null; // The "gedcom ID" number
+	public $tree_name       = null; // The "gedcom name" text
+	public $tree_name_url   = null;
+	public $tree_name_html  = null;
+	public $tree_title      = null; // The "gedcom title" text
+	public $tree_title_html = null;
+	public $imported        = null;
 
 	// List of all trees
-	private static $trees   =null;
+	private static $trees   = null;
 
 	// Tree settings
-	private $preference     =null;    // wt_gedcom_setting table
-	private $user_preference=array(); // wt_user_gedcom_setting table
+	private $preference     = null;    // wt_gedcom_setting table
+	private $user_preference = array(); // wt_user_gedcom_setting table
 
 	// Create a tree object.  This is a private constructor - it can only
 	// be called from WT_Tree::getAll() to ensure proper initialisation.
 	private function __construct($tree_id, $tree_name, $tree_title, $imported) {
-		if (strpos($tree_title, '%')===false) {
+		if (strpos($tree_title, '%') === false) {
 			// Allow users to translate tree titles.
-			//$tree_title=WT_I18N::Translate($tree_title);
+			//$tree_title = WT_I18N::Translate($tree_title);
 		}
-		$this->tree_id        =$tree_id;
-		$this->tree_name      =$tree_name;
-		$this->tree_name_url  =rawurlencode($tree_name);
-		$this->tree_name_html =htmlspecialchars($tree_name);
-		$this->tree_title     =$tree_title;
-		$this->tree_title_html='<span dir="auto">'.htmlspecialchars($tree_title).'</span>';
-		$this->imported       =$imported;
+		$this->tree_id        = $tree_id;
+		$this->tree_name      = $tree_name;
+		$this->tree_name_url  = rawurlencode($tree_name);
+		$this->tree_name_html = htmlspecialchars($tree_name);
+		$this->tree_title     = $tree_title;
+		$this->tree_title_html= '<span dir="auto">'.htmlspecialchars($tree_title).'</span>';
+		$this->imported       = $imported;
 	}
 
 	// Get and Set the tree's configuration settings
-	public function preference($setting_name, $setting_value=null) {
+	public function preference($setting_name, $setting_value = null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
-		if ($this->preference===null) {
-			$this->preference=WT_DB::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id=?"
+		if ($this->preference === null) {
+			$this->preference = WT_DB::prepare(
+				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
 			)->execute(array($this->tree_id))->fetchAssoc();
 		}
 
 		// If $setting_value is null, then GET the setting
-		if ($setting_value===null) {
+		if ($setting_value === null) {
 			// If parameter two is not specified, GET the setting
 			if (!array_key_exists($setting_name, $this->preference)) {
-				$this->preference[$setting_name]=null;
+				$this->preference[$setting_name] = null;
 			}
 			return $this->preference[$setting_name];
 		} else {
 			// If parameter two is specified, then SET the setting
-			if ($this->preference($setting_name)!=$setting_value) {
-				$this->preference[$setting_name]=$setting_value;
+			if ($this->preference($setting_name) != $setting_value) {
+				$this->preference[$setting_name] = $setting_value;
 				// Audit log of changes
 				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
 			}
@@ -88,17 +88,17 @@ class WT_Tree {
 	}
 
 	// Get and Set the tree's configuration settings
-	public function userPreference($user_id, $setting_name, $setting_value=null) {
+	public function userPreference($user_id, $setting_name, $setting_value = null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
 		if (!array_key_exists($user_id, $this->user_preference)) {
-			$this->user_preference[$user_id]=WT_DB::prepare(
-				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=?"
+			$this->user_preference[$user_id] = WT_DB::prepare(
+				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
 			)->execute(array($user_id, $this->tree_id))->fetchAssoc();
 		}
 
 		// If $setting_value is null, then GET the setting
-		if ($setting_value===null) {
+		if ($setting_value === null) {
 			// If parameter two is not specified, GET the setting
 			if (!array_key_exists($setting_name, $this->user_preference[$user_id])) {
 				$this->user_preference[$user_id][$setting_name]=null;
@@ -106,7 +106,7 @@ class WT_Tree {
 			return $this->user_preference[$user_id][$setting_name];
 		} else {
 			// If parameter two is specified, then SET the setting.
-			if ($this->preference($setting_name)!=$setting_value) {
+			if ($this->preference($setting_name) != $setting_value) {
 				// Audit log of changes
 				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
 			}
@@ -121,13 +121,13 @@ class WT_Tree {
 	public function canAcceptChanges($user_id) {
 		return
 			userIsAdmin($user_id) ||
-			$this->userPreference($user_id, 'canedit')=='admin' ||
-			$this->userPreference($user_id, 'canedit')=='accept';
+			$this->userPreference($user_id, 'canedit') == 'admin' ||
+			$this->userPreference($user_id, 'canedit') == 'accept';
 	}
 
 	// Fetch all the trees that we have permission to access.
 	public static function getAll() {
-		if (self::$trees===null) {
+		if (self::$trees === null) {
 			self::$trees=array();
 			$rows=WT_DB::prepare(
 				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported".
@@ -135,10 +135,10 @@ class WT_Tree {
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')".
 				" LEFT JOIN `##gedcom_setting`      gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='imported')".
 				" LEFT JOIN `##gedcom_setting`      gs3 ON (g.gedcom_id=gs3.gedcom_id AND gs3.setting_name='REQUIRE_AUTHENTICATION')".
-				" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.setting_name='canedit' AND ugs.user_id=?)".
+				" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.setting_name='canedit' AND ugs.user_id = ?)".
 				" WHERE ".
 				"  g.gedcom_id>0 AND (".          // exclude the "template" tree
-				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)". // Admin sees all
+				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id = ? AND setting_name='canadmin' AND setting_value=1)". // Admin sees all
 				"   ) OR (".
 				"    gs2.setting_value = 1 AND (".                // Allow imported trees, with either:
 				"     gs3.setting_value <> 1 OR".                 // visitor access
@@ -183,7 +183,7 @@ class WT_Tree {
 
 	public static function getIdFromName($tree_name) {
 		foreach (self::getAll() as $tree_id=>$tree) {
-			if ($tree->tree_name==$tree_name) {
+			if ($tree->tree_name == $tree_name) {
 				return $tree_id;
 			}
 		}
@@ -320,7 +320,7 @@ class WT_Tree {
 
 
 		// Default restriction settings
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULL, ?, ?)"
 		);
 		$statement->execute(array($tree_id, 'SSN',  'confidential'));
@@ -348,43 +348,43 @@ class WT_Tree {
 		)->execute(array($tree_id));
 
 		// Update the list of trees - to include the new configuration settings
-		self::$trees=null;
+		self::$trees = null;
 	}
 
 	// Delete everything relating to a tree
 	public static function delete($tree_id) {
 		// If this is the default tree, then unset
-		if (WT_Site::preference('DEFAULT_GEDCOM')==self::getNameFromId($tree_id)) {
+		if (WT_Site::preference('DEFAULT_GEDCOM') == self::getNameFromId($tree_id)) {
 			WT_Site::preference('DEFAULT_GEDCOM', '');
 		}
 		// Don't delete the logs.
-		WT_DB::prepare("UPDATE `##log` SET gedcom_id=NULL   WHERE gedcom_id =?")->execute(array($tree_id));
+		WT_DB::prepare("UPDATE `##log` SET gedcom_id = NULL   WHERE gedcom_id = ?")->execute(array($tree_id));
 
-		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##dates`               WHERE d_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##families`            WHERE f_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##individuals`         WHERE i_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##link`                WHERE l_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##media`               WHERE m_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##name`                WHERE n_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##other`               WHERE o_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##placelinks`          WHERE pl_file   =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##places`              WHERE p_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##sources`             WHERE s_file    =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id =?")->execute(array($tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id =?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##dates`               WHERE d_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##families`            WHERE f_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##individuals`         WHERE i_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##link`                WHERE l_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##media`               WHERE m_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##name`                WHERE n_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##other`               WHERE o_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##placelinks`          WHERE pl_file    = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##places`              WHERE p_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##sources`             WHERE s_file     = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id  = ?")->execute(array($tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id  = ?")->execute(array($tree_id));
 
 		// After updating the database, we need to fetch a new (sorted) copy
-		self::$trees=null;
+		self::$trees = null;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
