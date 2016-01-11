@@ -2174,7 +2174,7 @@ dt {
 	background: url(images/image_view.png) no-repeat 0 0;
 }
 
-/* ============== login.php ======================= */
+/* ============== Login / Register Page ======================= */
 #login-register-page h2 {
 	text-align: center;
 }
@@ -2304,6 +2304,36 @@ dt {
 [dir='rtl'] #register-form div,
 [dir='rtl'] #verify-form div {
 	text-align: left;
+}
+
+/* ============== Edit_Changes Page ======================= */
+#edit_changes-page table {
+	margin: 20px;
+}
+
+#edit_changes-page table table {
+	margin: 5px;
+}
+
+#edit_changes-page h3 {
+	font-size: 1.1em;
+    margin: 3px 0;
+}
+
+#edit_changes-page td, #edit_changes-page th {
+	border: 1px solid;
+	padding: 8px;
+}
+
+#edit_changes-page th {
+	background: #ddd;
+	font-weight: 600;
+}
+
+#edit_changes-page table p {
+	margin: 0;
+	font-size: 1.1em;
+	font-weight: 600;
 }
 
 /* ============== reportengine.php ======================= */

@@ -102,7 +102,7 @@ echo
 				}
 			echo '</span>';
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-			echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+			echo ' | <li><a href="edit_changes.php" target="_blank" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 			}
 			echo ' | <div class="header_search">
 				<form action="search.php" method="post">

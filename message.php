@@ -136,25 +136,49 @@ case 'compose':
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
 		echo '<td><input type="text" name="from_name" size="40" value="', htmlspecialchars($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', htmlspecialchars($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '</td></tr>';
 	}
-	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';
-	echo '<td>';
-	echo '<input type="hidden" name="action" value="send">';
-	echo '<input type="hidden" name="to" value="', htmlspecialchars($to), '">';
-	echo '<input type="hidden" name="time" value="">';
-	echo '<input type="hidden" name="method" value="', $method, '">';
-	echo '<input type="hidden" name="url" value="', htmlspecialchars($url), '">';
-	echo '<input type="text" name="subject" size="80" value="', htmlspecialchars($subject), '"></td></tr>';
-	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '</td><td><textarea class="html-edit" name="body" cols="80" rows="7">', htmlspecialchars($body), '</textarea><br></td></tr>';
-	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '"></td></tr>';
-	echo '</table>';
-	echo '</form>';
-	if ($method=='messaging2') {
-		echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
-	}
-	echo
-		'<p id="save-cancel">',
-		'<input type="button" class="cancel" value="', WT_I18N::translate('close'), '" onclick="window.close();">',
-		'</p>';
+	echo '
+			<tr>
+				<td align="right">', WT_I18N::translate('Subject:'), '</td>
+				<td>
+					<input type="hidden" name="action" value="send">
+					<input type="hidden" name="to" value="', htmlspecialchars($to), '">
+					<input type="hidden" name="time" value="">
+					<input type="hidden" name="method" value="', $method, '">
+					<input type="hidden" name="url" value="', htmlspecialchars($url), '">
+					<input type="text" name="subject" size="80" value="', htmlspecialchars($subject), '">
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" align="right">', WT_I18N::translate('Body:'), '</td>
+				<td>
+					<textarea class="html-edit" name="body" cols="80" rows="7">', htmlspecialchars($body), '</textarea>
+					<br>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<p id="save-cancel">
+						<button class="btn btn-primary" type="submit">
+							<i class="fa fa-envelope"></i>
+							' , WT_I18N::translate('Send') , '
+						</button>';
+						if ($method=='messaging2') {
+							echo '<p>
+								' , WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.') , '
+							</p>';
+						}
+						echo '<button class="btn btn-primary" type="button" onclick="window.close();">
+							<i class="fa fa-times"></i>' ,
+							WT_I18N::translate('close'), '
+						</button>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</form>';
+	?>
+	<?php
 	break;
 
 case 'send':
