@@ -28,7 +28,7 @@ define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Simple();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAcceptLogin()
 	->setPageTitle(WT_I18N::translate('Pending changes'))
