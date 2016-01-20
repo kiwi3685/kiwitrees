@@ -3800,56 +3800,6 @@ div[id^="caldiv"] td {
 	font-style: italic;
 }
 
-================================================================================
-@media print {
-	#backprint {
-		display: none;
-	}
-
-	#header,
-	#footer,
-	#topMenu,
-	#sidebar,
-	.noprint {
-		display: none !important;
-	}
-
-	form,
-	button,
-	input {
-			display: none;
-		} /* buttons and input are used out of forms in sortable tables*/
-
-	.lifespan_outer {
-		position: relative;
-		width: auto;
-		height: auto;
-		overflow: visible;
-		border: none;
-	}
-
-	.lifespan_people {
-		position: absolute;
-		width: auto;
-		left: -10px;
-		top: -60px;
-		z-index: 1;
-	}
-
-	#CB_All {
-		display: none;
-	}
-
-	/* Family tree view pagination */
-	#fancy_treeview .generation-block {
-		page-break-after: always;
-	}
-
-	#fancy_treeview .generation-block:last-child {
-		page-break-after: avoid;
-	}
-}
-
 /* Icons */
 [class^="icon-"],[class*=" icon-"] {
 	display: inline-block;
@@ -6221,8 +6171,7 @@ textarea#NOTE {
  */
 
  /* RESPOSIVE layout adjustments */
- @media (min-width: 320px) and (max-width: 900px) {
-
+@media (min-width: 320px) and (max-width: 900px) {
  	#topMenu #main-menu {
  		display:none;
  	}
@@ -6290,10 +6239,9 @@ textarea#NOTE {
 	.cens_left {
 		width: 95%; /* census assistant */
 	}
+}
 
- }
-
- @media (min-width: 780px) and (max-width: 1680px) {
+@media (min-width: 780px) and (max-width: 1680px) {
  	.media-list-item {
  		width: 45%; /* two per row */
  	}
@@ -6312,10 +6260,9 @@ textarea#NOTE {
 	div#add_other_details + div#additional_facts {
 		width: 31%;
 	}
+}
 
- }
-
- @media (min-width: 1681px) {
+@media (min-width: 1681px) {
  	.media-list-item {
  		width: 31%; /* three per row */
  	}
@@ -6331,5 +6278,52 @@ textarea#NOTE {
 	div#add_other_details + div#additional_facts {
 		width: 520px;
 	}
+}
 
- }
+/* PRINT layout adjustments */
+
+@media print {
+	#header,
+	#footer,
+	#topMenu,
+	#navbar,
+	#sidebar,
+	.noprint {
+		display: none !important;
+	}
+
+	form,
+	button,
+	input {
+		display: none;
+	} /* buttons and input are used out of forms in sortable tables*/
+
+	.lifespan_outer {
+		position: relative;
+		width: auto;
+		height: auto;
+		overflow: visible;
+		border: none;
+	}
+
+	.lifespan_people {
+		position: absolute;
+		width: auto;
+		left: -10px;
+		top: -60px;
+		z-index: 1;
+	}
+
+	#CB_All {
+		display: none;
+	}
+
+	/* Family tree view pagination */
+	#fancy_treeview .generation-block {
+		page-break-after: always;
+	}
+
+	#fancy_treeview .generation-block:last-child {
+		page-break-after: avoid;
+	}
+}
