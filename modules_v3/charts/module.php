@@ -185,7 +185,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		global $ctype, $controller;
 
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
@@ -194,9 +194,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			exit;
 		}
 
-		$details=get_block_setting($block_id, 'details', false);
-		$type   =get_block_setting($block_id, 'type',    'pedigree');
-		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$details= get_block_setting($block_id, 'details', false);
+		$type   = get_block_setting($block_id, 'type',    'pedigree');
+		$pid    = get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
 			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

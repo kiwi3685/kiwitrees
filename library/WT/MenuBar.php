@@ -96,7 +96,7 @@ class WT_MenuBar {
 		}
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
-		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+		$PEDIGREE_ROOT_ID = get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 		$menu = new WT_Menu(WT_I18N::translate('Charts'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart');
 

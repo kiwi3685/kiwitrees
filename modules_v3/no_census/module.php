@@ -74,7 +74,6 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 	public function show() {
 		global $controller, $GEDCOM;
 		$controller = new WT_Controller_Page();
-
 		$controller
 			->setPageTitle(WT_I18N::translate(WT_I18N::translate('Missing Census Data')))
 			->pageHeader()
@@ -84,6 +83,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 		session_write_close();
 
 		//-- args
+		$go 	= WT_Filter::post('go');
 		$surn	= safe_POST('surn', '[^<>&%{};]*');
 		$plac	= safe_POST('plac', '[^<>&%{};]*');
 		$dat	= safe_POST('dat', '[^<>&%{};]*');
@@ -129,6 +129,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 				<h2><?php echo WT_I18N::translate('Individuals with missing census data'); ?></h2>
 				<h4><?php echo WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
 				<form name="surnlist" id="surnlist" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show">
+					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
 						<label for "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
 						<input data-autocomplete-type="SURN" type="text" name="surn" id="SURN" value="<?php echo $surn; ?>">
@@ -222,95 +223,96 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 		}
 
 		// Show sources to user
-		echo '<ul id="nocensus_result">';
-			// Check each INDI against each SOUR
-			$n = 0;
-			foreach ($indis as $id=>$indi) {
-				// Build up a list of significant life events for this individual
-				$life = array();
-				// Get a birth/death date for this indi
-				// Make sure we have a BIRTH, whether it has a place or not
-				$birt_jd	= $indi->getEstimatedBirthDate()->JD();
-				$birt_plac	= $indi->getBirthPlace();
-				$deat_jd	= $indi->getEstimatedDeathDate()->JD();
-				$deat_plac	= $indi->getDeathPlace();
+		if ($go == 1) {
+			echo '<ul id="nocensus_result">';
+				// Check each INDI against each SOUR
+				$n = 0;
+				foreach ($indis as $id=>$indi) {
+					// Build up a list of significant life events for this individual
+					$life = array();
+					// Get a birth/death date for this indi
+					// Make sure we have a BIRTH, whether it has a place or not
+					$birt_jd	= $indi->getEstimatedBirthDate()->JD();
+					$birt_plac	= $indi->getBirthPlace();
+					$deat_jd	= $indi->getEstimatedDeathDate()->JD();
+					$deat_plac	= $indi->getDeathPlace();
 
-				// Create an array of events with dates
-				foreach ($indi->getFacts() as $event) {
-					if ($event->getTag() != 'CHAN' && $event->getDate()->isOK()) {
-						$life[] = $event;
+					// Create an array of events with dates
+					foreach ($indi->getFacts() as $event) {
+						if ($event->getTag() != 'CHAN' && $event->getDate()->isOK()) {
+							$life[] = $event;
+						}
 					}
-				}
-				uasort($life, 'life_sort');
-				// Now check for missing sources
-				$missing_text = '';
-				foreach ($data_sources as $data_source) {
-				$check1 = "{$data_source['place']}";
-				$check2 = "{$data_source['date']}";
-					if($check1 == $plac || $plac == WT_I18N::translate('all')) {
-						if($check2 == $dat || $dat == WT_I18N::translate('all')) {
-							// Person not alive - skip
-							if ($data_source['jd']<$birt_jd || $data_source['jd']>$deat_jd)
-								continue;
-							// Find where the person was immediately before/after
-							$bef_plac	= $birt_plac;
-							$aft_plac	= $deat_plac;
-							$bef_fact	= 'BIRT';
-							$bef_jd		= $birt_jd;
-							$aft_jd		= $deat_jd;
-							$aft_fact	= 'DEAT';
-							foreach ($life as $event) {
-								if ($event->getDate()->MinJD()<=$data_source['jd'] && $event->getDate()->MinJD()>$bef_jd) {
-									$bef_jd  =$event->getDate()->MinJD();
-									$bef_plac=$event->getPlace();
-									$bef_fact=$event->getTag();
+					uasort($life, 'life_sort');
+					// Now check for missing sources
+					$missing_text = '';
+					foreach ($data_sources as $data_source) {
+					$check1 = "{$data_source['place']}";
+					$check2 = "{$data_source['date']}";
+						if($check1 == $plac || $plac == WT_I18N::translate('all')) {
+							if($check2 == $dat || $dat == WT_I18N::translate('all')) {
+								// Person not alive - skip
+								if ($data_source['jd']<$birt_jd || $data_source['jd']>$deat_jd)
+									continue;
+								// Find where the person was immediately before/after
+								$bef_plac	= $birt_plac;
+								$aft_plac	= $deat_plac;
+								$bef_fact	= 'BIRT';
+								$bef_jd		= $birt_jd;
+								$aft_jd		= $deat_jd;
+								$aft_fact	= 'DEAT';
+								foreach ($life as $event) {
+									if ($event->getDate()->MinJD()<=$data_source['jd'] && $event->getDate()->MinJD()>$bef_jd) {
+										$bef_jd  =$event->getDate()->MinJD();
+										$bef_plac=$event->getPlace();
+										$bef_fact=$event->getTag();
+									}
+									if ($event->getDate()->MinJD()>=$data_source['jd'] && $event->getDate()->MinJD()<$aft_jd) {
+										$aft_jd  =$event->getDate()->MinJD();
+										$aft_plac=$event->getPlace();
+										$aft_fact=$event->getTag();
+									}
 								}
-								if ($event->getDate()->MinJD()>=$data_source['jd'] && $event->getDate()->MinJD()<$aft_jd) {
-									$aft_jd  =$event->getDate()->MinJD();
-									$aft_plac=$event->getPlace();
-									$aft_fact=$event->getTag();
+								// If we already have this event - skip
+								if ($bef_jd == $data_source['jd'] && $bef_fact == $data_source['event'])
+									continue;
+								// If we were in the right place before/after the missing event, show it
+								if (stripos($bef_plac, $data_source['place']) !== false || stripos($aft_plac, $data_source['place']) !== false) {
+									$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
+									$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
+									$missing_text .= "<li>{$data_source['place']} {$desc_event} for {$data_source['date']} <i><font size='-2'>({$age_at_census})</font></i></li>";
 								}
-							}
-							// If we already have this event - skip
-							if ($bef_jd == $data_source['jd'] && $bef_fact == $data_source['event'])
-								continue;
-							// If we were in the right place before/after the missing event, show it
-							if (stripos($bef_plac, $data_source['place']) !== false || stripos($aft_plac, $data_source['place']) !== false) {
-								$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
-								$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
-								$missing_text .= "<li>{$data_source['place']} {$desc_event} for {$data_source['date']} <i><font size='-2'>({$age_at_census})</font></i></li>";
 							}
 						}
 					}
+				if ($missing_text) {
+					$birth_year = $indi->getBirthDate()->gregorianYear();
+					if ($birth_year == 0) {
+						$birth_year='????';
+					}
+					$death_year = $indi->getDeathDate()->gregorianYear();
+					if ($death_year == 0) {
+						$death_year='????';
+					}
+					echo '
+						<li>
+							<a target="_blank" href="', $indi->getHtmlUrl(), '">', $indi->getFullName(), '
+								<span> (', $birth_year, '-', $death_year, ') </span>
+							</a>
+							<ul>', $missing_text, '</ul>
+						</li>
+					';
+					++$n;
+					}
 				}
-			if ($missing_text) {
-				$birth_year = $indi->getBirthDate()->gregorianYear();
-				if ($birth_year == 0) {
-					$birth_year='????';
+				if ($n == 0 && $surn) {
+					echo '<div class="center error">' . WT_I18N::translate('No missing records found') . '</div>';
+				} else {
+					echo '<div class="center">' . WT_I18N::plural('%s record found', '%s records found', $n, $n) . '</div>';
 				}
-				$death_year = $indi->getDeathDate()->gregorianYear();
-				if ($death_year == 0) {
-					$death_year='????';
-				}
-				echo '
-					<li>
-						<a target="_blank" href="', $indi->getHtmlUrl(), '">', $indi->getFullName(), '
-							<span> (', $birth_year, '-', $death_year, ') </span>
-						</a>
-						<ul>', $missing_text, '</ul>
-					</li>
-				';
-				++$n;
-				}
-			}
-			if ($n == 0 && $surn) {
-				echo '<div class="center error">' . WT_I18N::translate('No missing records found') . '</div>';
-			} else {
-				echo '<div class="center">' . WT_I18N::plural('%s record found', '%s records found', $n, $n) . '</div>';
-			}
-		echo '
-			</ul>
-	</div>';
+			echo '</ul>';
+		}
+	echo '</div>';
 	}
 
 	private function life_sort($a, $b) {
