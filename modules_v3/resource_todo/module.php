@@ -120,11 +120,12 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 			');
 		$content = '
 			<style>
-				#research_tasks-page table th, #research_tasks-page table td {padding:8px;}
+				#resource-page.research_tasks {margin: auto; width: 90%;}
+				#resource-page table th, #resource-page table td {padding:8px;}
 				input[name^="show_"] {vertical-align: top; width: 20px;}
 				label[for^="show_"] {display: inline-block; font-weight: normal; width: 20px;}
 			</style>
-			<div id="research_tasks-page" style="margin: auto; width: 90%;">
+			<div id="resource-page" class="research_tasks">
 				<h2>' . $this->getTitle() . '</h2>
 				<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
 					<input type="hidden" name="action" value="?">

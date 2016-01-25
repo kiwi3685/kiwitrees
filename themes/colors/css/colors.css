@@ -2167,23 +2167,23 @@ div.widget {
 /* ------------------ */
 
 /* Styles for nocensus module */
-#nocensus-page .nocensus {
+#resource-page.nocensus {
  	min-width: 100px;
 	vertical-align: top;
  }
 
-#nocensus-page .nocensus label:nth-of-type(2n),
-#nocensus-page .nocensus label:nth-of-type(3n) {
+#resource-page.nocensus label:nth-of-type(2n),
+#resource-page.nocensus label:nth-of-type(3n) {
 	display: inline;
 	font-weight: normal;
 }
 
-#nocensus-page .nocensus input {
+#resource-page.nocensus input {
 	margin: auto 10px;
 	width: initial;
 }
 
-#nocensus-page .help_content {
+#resource-page .help_content {
 	font-size: inherit;
     margin: 0;
 }

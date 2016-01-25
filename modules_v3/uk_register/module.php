@@ -124,7 +124,7 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 
 		// Start Page -----------------------------------------------------------------------
 		?>
-			<div id="nocensus-page">
+			<div id="resource-page" class="ukregister">
 				<h2><?php echo WT_I18N::translate('Individuals with missing register data'); ?></h2>
 				<h4><?php echo WT_I18N::translate('Enter a surname, then select England or Wales from the country list'); ?></h3>
 				<form name="surnlist" id="surnlist" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show">
@@ -146,7 +146,7 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 								if ($plac == WT_I18N::translate('all')) {
 									echo ' selected = "selected"';
 								}
-								echo WT_I18N::translate('all') . '
+								echo '>' . WT_I18N::translate('all') . '
 							</option>';
 							foreach ($places as $place_list) {
 								echo '<option value="' . $place_list. '"';

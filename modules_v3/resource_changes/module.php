@@ -145,12 +145,12 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 		// Common settings
 		$content = '
 			<style>
-				#recent_changes-page table th, #recent_changes-page table td {padding:8px;}
-				#recent_changes-page button {display: inline-block; margin-top: 15px; vertical-align: top;}
+				#resource-page.recent_changes table th, #resource-page table td {padding:8px;}
+				#resource-page.recent_changes button {display: inline-block; margin-top: 15px; vertical-align: top;}
 				input[name="pending"] {vertical-align: top; width: 20px;}
 				label[for^="pending"] {display: inline-block; font-weight: normal; width: 20px;}
 			</style>
-			<div id="recent_changes-page" style="margin: auto; width: 90%;">
+			<div id="resource-page" class="recent_changes" style="margin: auto; width: 90%;">
 			<h2>' . $this->getTitle() . '</h2>
 			<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
 				<input type="hidden" name="action" value="?">
