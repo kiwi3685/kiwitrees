@@ -300,16 +300,16 @@ class WT_Person extends WT_GedcomRecord {
 		return null;
 	}
 
-	// Display the prefered image for this individual.
+	// Display the preferred image for this individual.
 	// Use an icon if no image is available.
-	public function displayImage() {
+	public function displayImage($override_silhouette=false) {
 		global $USE_SILHOUETTE;
 
 		$media = $this->findHighlightedMedia();
 		if ($media) {
 			// Thumbnail exists - use it.
 			return $media->displayImage();
-		} elseif ($USE_SILHOUETTE) {
+		} elseif ($USE_SILHOUETTE && !$override_silhouette) {
 			// No thumbnail exists - use an icon
 			return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
 		} else {

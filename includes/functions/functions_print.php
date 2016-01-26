@@ -791,7 +791,7 @@ function format_parents_age($pid, $birth_date=null) {
 // $record - the person (or couple) whose ages should be printed
 // $anchor option to print a link to calendar
 // $time option to print TIME value
-function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=false, $time=false) {
+function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=false, $time=false, $show_age=true) {
 	global $pid, $SEARCH_SPIDER;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
@@ -822,7 +822,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 		$fact = $event->getTag();
 		if ($record instanceof WT_Person) {
 			// age of parents at child birth
-			if ($fact=='BIRT') {
+			if ($fact=='BIRT' && $show_age) {
 				$html .= format_parents_age($record->getXref(), $date);
 			}
 			// age at event
@@ -870,7 +870,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 						}
 					}
 				}
-				if ($ageText) $html .= ' <span class="age">'.$ageText.'</span>';
+				if ($ageText && $show_age) $html .= ' <span class="age">'.$ageText.'</span>';
 			}
 		} elseif ($record instanceof WT_Family) {
 			$indirec=find_person_record($pid, $ged_id);
@@ -892,7 +892,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 					}
 				}
 			}
-			if ($ageText) $html .= ' <span class="age">'.$ageText.'</span>';
+			if ($ageText && $show_age) $html .= ' <span class="age">'.$ageText.'</span>';
 		}
 	} else {
 		// 1 DEAT Y with no DATE => print YES
@@ -906,7 +906,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 	}
 	// print gedcom ages
 	foreach (array(WT_Gedcom_Tag::getLabel('AGE')=>$fact_age, WT_Gedcom_Tag::getLabel('HUSB')=>$husb_age, WT_Gedcom_Tag::getLabel('WIFE')=>$wife_age) as $label=>$age) {
-		if ($age!='') {
+		if ($age!='' && $show_age) {
 			$html.=' <span class="label">'.$label.':</span> <span class="age">'.get_age_at_event($age, false).'</span>';
 		}
 	}

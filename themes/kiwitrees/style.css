@@ -6279,7 +6279,9 @@ textarea#NOTE {
 
 /* PRINT layout adjustments */
 @media all {
-	.page-break	{ display: none; }
+	.page-break	{
+		display: none;
+	}
 }
 
 @media print {
@@ -6326,4 +6328,19 @@ textarea#NOTE {
 	#fancy_treeview .generation-block:last-child {
 		page-break-after: avoid;
 	}
+
+	#resource-page.individual_report #families,
+	#resource-page.individual_report #facts_sources {
+		page-break-inside: avoid;
+		position: relative;
+		display: block;
+	}
+
+	.page-break	{
+		position: relative;
+		display: block;
+		page-break-after: always;
+	}
+
+
 }
