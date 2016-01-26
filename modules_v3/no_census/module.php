@@ -127,66 +127,68 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 		?>
 			<div id="resource-page" class="nocensus">
 				<h2><?php echo WT_I18N::translate('Individuals with missing census data'); ?></h2>
-				<h4><?php echo WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
-				<form name="surnlist" id="surnlist" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show">
-					<input type="hidden" name="go" value="1">
-					<div class="chart_options">
-						<label for "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
-						<input data-autocomplete-type="SURN" type="text" name="surn" id="SURN" value="<?php echo $surn; ?>">
-						<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" >
-						<div class="help_content">
-							<p>
-								<?php echo WT_I18N::translate('Select <b>All</b> for everyone, or leave blank for your own ancestors'); ?>
-							</p>
+				<div class="noprint">
+					<h4><?php echo WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
+					<form name="surnlist" id="surnlist" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show">
+						<input type="hidden" name="go" value="1">
+						<div class="chart_options">
+							<label for "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
+							<input data-autocomplete-type="SURN" type="text" name="surn" id="SURN" value="<?php echo $surn; ?>">
+							<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" >
+							<div class="help_content">
+								<p>
+									<?php echo WT_I18N::translate('Select <b>All</b> for everyone, or leave blank for your own ancestors'); ?>
+								</p>
+							</div>
 						</div>
-					</div>
-					<div class="chart_options nocensus">
-						<label for "cens_plac"><?php echo WT_I18N::translate('Census Place'); ?></label>
-						<select name="plac" id="cens_plac">
-							<?php
-							echo '<option value="' . WT_I18N::translate('all') . '"';
-								if ($plac == WT_I18N::translate('all')) {
-									echo ' selected = "selected"';
-								}
-								echo WT_I18N::translate('all') . '
-							</option>';
-							foreach ($places as $place_list) {
-								echo '<option value="' . $place_list. '"';
-									if ($place_list == $plac) {
+						<div class="chart_options nocensus">
+							<label for "cens_plac"><?php echo WT_I18N::translate('Census Place'); ?></label>
+							<select name="plac" id="cens_plac">
+								<?php
+								echo '<option value="' . WT_I18N::translate('all') . '"';
+									if ($plac == WT_I18N::translate('all')) {
 										echo ' selected = "selected"';
 									}
-									echo '>' . $place_list. '
+									echo WT_I18N::translate('all') . '
 								</option>';
-							}
-							?>
-						</select>
-					</div>
-					<div class="chart_options nocensus">
-						<label for "cens_dat"><?php echo WT_I18N::translate('Census date'); ?></label>
-						<select name="dat"  id="cens_dat">
-							<?php
-							echo '<option value="' . WT_I18N::translate('all') . '"';
-								if ($dat == WT_I18N::translate('all')) {
-									echo ' selected = "selected"';
+								foreach ($places as $place_list) {
+									echo '<option value="' . $place_list. '"';
+										if ($place_list == $plac) {
+											echo ' selected = "selected"';
+										}
+										echo '>' . $place_list. '
+									</option>';
 								}
-								echo '>' . WT_I18N::translate('all') . '
-							</option>';
-							foreach ($uk_dates as $date_list) {
-								echo '<option value="' . $date_list . '"';
-									if ($date_list == $dat) {
-										echo ' selected="selected"';
+								?>
+							</select>
+						</div>
+						<div class="chart_options nocensus">
+							<label for "cens_dat"><?php echo WT_I18N::translate('Census date'); ?></label>
+							<select name="dat"  id="cens_dat">
+								<?php
+								echo '<option value="' . WT_I18N::translate('all') . '"';
+									if ($dat == WT_I18N::translate('all')) {
+										echo ' selected = "selected"';
 									}
-									echo '>' . substr($date_list,7,4). '
+									echo '>' . WT_I18N::translate('all') . '
 								</option>';
-							}
-							?>
-						</select>
-					</div>
-					<button class="btn btn-primary show" type="submit">
-						<i class="fa fa-eye"></i>
-						<?php echo WT_I18N::translate('show'); ?>
-					</button>
-				</form>
+								foreach ($uk_dates as $date_list) {
+									echo '<option value="' . $date_list . '"';
+										if ($date_list == $dat) {
+											echo ' selected="selected"';
+										}
+										echo '>' . substr($date_list,7,4). '
+									</option>';
+								}
+								?>
+							</select>
+						</div>
+						<button class="btn btn-primary show" type="submit">
+							<i class="fa fa-eye"></i>
+							<?php echo WT_I18N::translate('show'); ?>
+						</button>
+					</form>
+				</div>
 				<hr style="clear:both;">
 				<!-- end of form -->
 		<?php

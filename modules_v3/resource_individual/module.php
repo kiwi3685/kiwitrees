@@ -122,7 +122,6 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		    #resource-page.individual_report #facts_sources {margin: 30px 0;}
 		    #resource-page.individual_report #facts_sources span:first-child:after {content:". "}
 		    #resource-page.individual_report .chart_options label {display:block; font-weight:900;}
-		    #resource-page.individual_report button {display: inline-block; margin-top: 15px;}
 
 		    #resource-page.individual_report .individual_report_fact{border-bottom: 1px solid;}
 		    #resource-page.individual_report .individual_report_fact label {display: inline-block; font-weight: 700; padding: 5px; width: 15%;}
@@ -137,9 +136,8 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		    #resource-page.individual_report .individual_report_fact .place span {display: initial; padding: 0px;}
 		</style>
 		<div id="resource-page" class="individual_report">
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div class="noprint">
-				<h2><?php echo $controller->getPageTitle(); ?></h2>
-				<!-- print the form to change the number of displayed generations -->
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;rootid=<?php echo $rootid; ?>&amp;ged=<?php echo WT_GEDURL; ?>">
 					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
@@ -173,15 +171,15 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 						<?php echo WT_I18N::translate('show'); ?>
 					</button>
 				</form>
-				<hr style="clear:both;">
-				<!-- end of form -->
 			</div>
+			<hr style="clear:both;">
+			<!-- end of form -->
 			<?php if ($go == 1) {
 				$person = WT_Person::getInstance($rootid);
 				$indifacts = $person->getIndiFacts();
 				sort_facts($indifacts);
 				if ($person && $person->canDisplayDetails()) { ; ?>
-					<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $person->getFullName(); ?></h2>
+					<h2><?php echo $person->getFullName(); ?></h2>
 					<?php // Image displays
 					switch ($photos) {
 						case 'highlighted':

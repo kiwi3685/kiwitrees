@@ -127,24 +127,26 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 			</style>
 			<div id="resource-page" class="research_tasks">
 				<h2>' . $this->getTitle() . '</h2>
-				<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
-					<input type="hidden" name="action" value="?">
-					<div class="chart_options">
-						<label>' . WT_I18N::translate('Show tasks not assigned to any user') . '</label>' .
-						edit_field_yes_no('show_unassigned', $show_unassigned) .'
-					</div>
-					<div class="chart_options">
-						<label>' . WT_I18N::translate('Show tasks assigned to other users') . '</label>' .
-						edit_field_yes_no('show_other', $show_other) .'
-					</div>
-					<div class="chart_options">
-						<label>' . WT_I18N::translate('Show tasks that have a date in the future') . '</label>' .
-						edit_field_yes_no('show_future', $show_future) .'
-					</div>
-					<button class="btn btn-primary show" type="submit">
-						<i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
-					</button>
-				</form>
+				<div class="noprint">
+					<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
+						<input type="hidden" name="action" value="?">
+						<div class="chart_options">
+							<label>' . WT_I18N::translate('Show tasks not assigned to any user') . '</label>' .
+							edit_field_yes_no('show_unassigned', $show_unassigned) .'
+						</div>
+						<div class="chart_options">
+							<label>' . WT_I18N::translate('Show tasks assigned to other users') . '</label>' .
+							edit_field_yes_no('show_other', $show_other) .'
+						</div>
+						<div class="chart_options">
+							<label>' . WT_I18N::translate('Show tasks that have a date in the future') . '</label>' .
+							edit_field_yes_no('show_future', $show_future) .'
+						</div>
+						<button class="btn btn-primary show" type="submit">
+							<i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
+						</button>
+					</form>
+				</div>
 				<hr style="clear:both;">
 		';
 			// Display results

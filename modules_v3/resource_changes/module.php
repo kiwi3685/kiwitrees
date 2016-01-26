@@ -146,35 +146,36 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 		$content = '
 			<style>
 				#resource-page.recent_changes table th, #resource-page table td {padding:8px;}
-				#resource-page.recent_changes button {display: inline-block; margin-top: 15px; vertical-align: top;}
 				input[name="pending"] {vertical-align: top; width: 20px;}
 				label[for^="pending"] {display: inline-block; font-weight: normal; width: 20px;}
 			</style>
 			<div id="resource-page" class="recent_changes" style="margin: auto; width: 90%;">
-			<h2>' . $this->getTitle() . '</h2>
-			<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
-				<input type="hidden" name="action" value="?">
-				<div class="chart_options">
-					<label for = "DATE1">' . WT_I18N::translate('Starting range of change dates') . '</label>
-					<input type="text" name="date1" id="DATE1" value="' . ($set_days ? '' : $disp_from) . '">' . print_calendar_popup("DATE1") . '
+				<h2>' . $this->getTitle() . '</h2>
+				<div class="noprint">
+					<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
+						<input type="hidden" name="action" value="?">
+						<div class="chart_options">
+							<label for = "DATE1">' . WT_I18N::translate('Starting range of change dates') . '</label>
+							<input type="text" name="date1" id="DATE1" value="' . ($set_days ? '' : $disp_from) . '">' . print_calendar_popup("DATE1") . '
+						</div>
+						<div class="chart_options">
+							<label for = "DATE2">' . WT_I18N::translate('Ending range of change dates') . '</label>
+							<input type="text" name="date2" id="DATE2" value="' . ($set_days ? '' : $disp_to) . '">' . print_calendar_popup("DATE2") . '
+						</div>
+						<div class="chart_options">
+							<label for = "DAYS">' . WT_I18N::translate('Number of days to show') . '</label>
+							<input type="text" name="set_days" id="DAYS" value="' . ($set_days ? $set_days : '') . '">
+						</div>
+						<div class="chart_options">
+						<label>' . WT_I18N::translate('Show pending changes') . '</label>' .
+							edit_field_yes_no('pending', $pending) .'
+						</div>
+						<button class="btn btn-primary show" type="submit">
+							<i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
+						</button>
+					</form>
 				</div>
-				<div class="chart_options">
-					<label for = "DATE2">' . WT_I18N::translate('Ending range of change dates') . '</label>
-					<input type="text" name="date2" id="DATE2" value="' . ($set_days ? '' : $disp_to) . '">' . print_calendar_popup("DATE2") . '
-				</div>
-				<div class="chart_options">
-					<label for = "DAYS">' . WT_I18N::translate('Number of days to show') . '</label>
-					<input type="text" name="set_days" id="DAYS" value="' . ($set_days ? $set_days : '') . '">
-				</div>
-				<div class="chart_options">
-				<label>' . WT_I18N::translate('Show pending changes') . '</label>' .
-					edit_field_yes_no('pending', $pending) .'
-				</div>
-				<button class="btn btn-primary show" type="submit">
-					<i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
-				</button>
-			</form>
-			<hr style="clear:both;">
+				<hr style="clear:both;">
 		';
 
 		if (($recent_changes || $pending_changes) && $action) {
@@ -219,7 +220,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 			if ($recent_changes) {
 				$content .= '
 					<h3>' .
-						($set_days ? WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $set_days, WT_I18N::number($set_days)) : WT_I18N::translate('Changes %1$s - %2$s (%3$s days)', $disp_from, $disp_to, WT_I18N::number($days))) . '
+						($set_days ? WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $set_days, WT_I18N::number($set_days)) : WT_I18N::translate('%1$s - %2$s (%3$s days)', $disp_from, $disp_to, WT_I18N::number($days))) . '
 					</h3>';
 				// table headers
 				$content .= $table_header;

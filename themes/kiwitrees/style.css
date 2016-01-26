@@ -1531,6 +1531,7 @@ a:hover .nameZoom {
 .chart_options {
 	display: inline-block;
 	margin: 0 20px 10px;
+	vertical-align: top;
 }
 
 .chart_options label {
@@ -5890,7 +5891,7 @@ div.widget {
 
 #resource-page button {
 	display: inline-block;
-	margin-top: 15px;
+	margin-top: 10px;
 	vertical-align: top;
 }
 
