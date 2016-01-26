@@ -82,7 +82,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		// Our parent needs $this->record
 		parent::__construct();
 
-		// If we can display the details, add them to the page header		
+		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canDisplayDetails()) {
 			$this->setPageTitle($this->record->getFullName().' '.$this->record->getLifespan());
 		}
@@ -135,7 +135,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		Zend_Session::writeClose();
 
 		echo $mod->getTabContent();
-		
+
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
 		}
@@ -160,7 +160,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
 		$all_names=$dummy->getAllNames();
 		$primary_name=$all_names[0];
-		
+
 		$this->name_count++;
 		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
 		echo '<div class="indi_name_details"';
@@ -447,7 +447,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* build an array of Person that will be used to build a list
 	* of family members on the families tab
 	* @param Family $family the family we are building for
-	* @return array an array of Person that will be used to iterate through on the indivudal.php page
+	* @return array an array of Person that will be used to iterate through on the individual.php page
 	*/
 	function buildFamilyList($family, $type, $include_pedi=true) {
 		$labels = array();
@@ -705,7 +705,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				}
 			}
 			$delchildren[$i]->setLabel($label);
-			
+
 		}
 
 		$people = array();
