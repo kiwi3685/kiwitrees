@@ -132,12 +132,6 @@ $medialist = WT_Query_Media::mediaList(
 			<label for = "filter"><?php echo WT_I18N::translate('Search filters'); ?></label>
 			<input id="filter" name="filter" value="<?php echo WT_Filter::escapeHtml($filter); ?>" size="14" dir="auto">
 		</div>
-<!--
-		<div class="btn btn-primary" style="display: inline-block;">
-			<button type="submit" name="apply_filter" value="apply_filter"><?php echo WT_I18N::translate('Search'); ?></button>
-			<button type="submit" name="reset"value="reset"><?php echo WT_I18N::translate('Reset'); ?></button>
-		</div>
--->
 		<p id="save-cancel">
 			<button class="btn btn-primary" type="submit" name="apply_filter" value="apply_filter">
 				<i class="fa fa-search"></i>

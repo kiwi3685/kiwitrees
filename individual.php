@@ -164,10 +164,6 @@ $controller->addInlineJavascript('
 	adjHeader();
 	jQuery("#main").css("visibility", "visible");
 
-	function show_gedcom_record() {
-		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
-	}
-
 	jQuery("#header_accordion1").accordion({
 		active: 0,
 		heightStyle: "content",

@@ -34,9 +34,6 @@ $controller
 	->setPageTitle(WT_I18N::translate('Pending changes'))
 	->pageHeader()
 	->addInlineJavascript('
-		function show_gedcom_record(xref) {
-			var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", edit_window_specs);
-		}
 		function show_diff(diffurl) {
 			window.opener.location = diffurl;
 			return false;

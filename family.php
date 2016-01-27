@@ -32,12 +32,8 @@ require './includes/session.php';
 $controller=new WT_Controller_Family();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
-	$controller->pageHeader()
-				->addInlineJavascript('
-					function show_gedcom_record() {
-						var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
-					}
-				');
+	$controller->pageHeader();
+	
 	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
@@ -92,7 +88,7 @@ $show_full = '1';
 echo '
 	<div id="family-page">
 		<h2 class="name_head" class="center">', $controller->record->getFullName(), '</h2>
-		<div id="family_chart">'; 
+		<div id="family_chart">';
 				print_parents($controller->record->getXref());
 				if (WT_USER_CAN_EDIT) {
 					if ($controller->diff_record) {
@@ -120,4 +116,3 @@ echo '
 					echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';
 				}
 		echo '</div>';
-
