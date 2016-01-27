@@ -4364,6 +4364,7 @@ a.icon-udarrow:hover {
 
 #edit_interface-page {
 	margin-bottom: 50px;
+	overflow: hidden;
 }
 
 #edit_interface-page [id^="QUAY"] .descriptionbox,

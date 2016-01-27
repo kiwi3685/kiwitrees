@@ -8,8 +8,7 @@
 // Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ')
-//
+// Copyright (C) 2002 to 2010  PGV Development Team
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
@@ -135,7 +134,6 @@ case 'editraw':
 		display_help();
 	');
 
-
 	// Hide the private data
 	list($gedrec) = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
@@ -145,7 +143,7 @@ case 'editraw':
 	list($gedrec1, $gedrec2) = explode("\n", $gedrec, 2);
 
 	$controller
-		->setPageTitle(($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ') .  WT_I18N::translate('Edit raw GEDCOM record'))
+		->setPageTitle(WT_I18N::translate('Edit raw GEDCOM record') . ' - ' . ($type == 'INDI' ? $record->getLifespanName() : $record->getFullName()))
 		->pageHeader();
 	?>
 
@@ -186,7 +184,7 @@ case 'edit':
 	$record = WT_GedcomRecord::getInstance($pid);
 
 	$controller
-		->setPageTitle(($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ') . WT_I18N::translate('Edit'))
+		->setPageTitle(WT_I18N::translate('Edit') . ' - ' . ($type == 'INDI' ? $record->getLifespanName() : $record->getFullName()))
 		->pageHeader();
 
 	// Hide the private data
@@ -288,7 +286,7 @@ case 'add':
 	$record = WT_GedcomRecord::getInstance($pid);
 
 	$controller
-		->setPageTitle(($type == 'INDI' ? $record->getLifespanName() . '- ' : $record->getFullName() . ' - ') . WT_I18N::translate('Add new fact') . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record))
+		->setPageTitle(WT_I18N::translate('Add new fact') . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record) . ' - ' . ($type == 'INDI' ? $record->getLifespanName() : $record->getFullName()))
 		->pageHeader();
 	?>
 	<div id="edit_interface-page">
@@ -893,43 +891,55 @@ case 'addnewnote':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new Shared Note'))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
 	?>
-	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-		<input type="hidden" name="action" value="addnoteaction">
-		<input type="hidden" name="noteid" value="newnote">
-		<!-- <input type="hidden" name="pid" value="$pid"> -->
-		<?php
-			echo '<table class="facts_table">';
-				echo '<tr>';
-					echo '<td class="descriptionbox nowrap">';
-					echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE');
-					echo '</td>';
-					echo '<td class="optionbox wrap" ><textarea name="NOTE" id="NOTE" rows="15" cols="87"></textarea>';
-					echo print_specialchar_link('NOTE');
-					echo '</td>';
-				echo '</tr>';
-			if (WT_USER_IS_ADMIN) {
-				echo '<tr><td class="descriptionbox wrap width25">';
-				echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-				echo '<input type="checkbox" name="preserve_last_changed"';
-				if ($NO_UPDATE_CHAN) {
-					echo ' checked="checked"';
-				}
-				echo '>';
-				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-				echo "</td></tr>";
-			}
-	?>
-		</table>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+			<input type="hidden" name="action" value="addnoteaction">
+			<input type="hidden" name="noteid" value="newnote">
+			<div id="add_facts">
+				<div class="help_text">
+					<p class="help_content">
+						<?php echo WT_I18N::translate('Shared Notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one person, family, source, or event.'); ?>
+					</p>
+				</div>
+				<div id="TITLE_factdiv">
+					<label>
+						<?php echo WT_I18N::translate('Shared note'); ?>
+					</label>
+					<div class="input">
+						<textarea name="NOTE" id="NOTE" rows="15" cols="87"></textarea>
+						<?php echo print_specialchar_link('NOTE'); ?>
+					</div>
+				</div>
+				<?php if (WT_USER_IS_ADMIN) { ?>
+					<div class="last_change">
+						<label>
+							<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+						</label>
+						<div class="input">
+							<?php if ($NO_UPDATE_CHAN) { ?>
+								<input type="checkbox" checked="checked" name="preserve_last_changed">
+							<?php } else { ?>
+								<input type="checkbox" name="preserve_last_changed">
+							<?php }
+							echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
+						</div>
+					</div>
+				<?php }?>
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
@@ -1004,19 +1014,8 @@ case 'editsource':
 	$source = WT_Source::getInstance($pid);
 
 	// Hide the private data
-	list($gedrec)=$source->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	list($gedrec) = $source->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
-	$controller
-		->setPageTitle($source->getFullName())
-		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-	init_calendar_popup();
-	echo '<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="action" value="update">';
-	echo '<input type="hidden" name="pid" value="', $pid, '">';
-	echo '<table class="facts_table">';
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
 	$uniquefacts = preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
 	$usedfacts = array();
@@ -1027,47 +1026,73 @@ case 'editsource':
 		}
 		$gedlines = explode("\n", $gedrec);
 	}
-	for ($i = $linenum; $i < $lines; $i++) {
-		$fields = explode(' ', $gedlines[$i]);
-		if ((substr($gedlines[$i], 0, 1)<2) && $fields[1] != "CHAN") {
-			$level1type = create_edit_form($gedrec, $i, $level0type);
-			echo '<input type="hidden" name="linenum[]" value="', $i, '">';
-			$usedfacts[]=$fields[1];
-			foreach ($uniquefacts as $key=>$fact) {
-				if ($fact==$fields[1]) unset($uniquefacts[$key]);
-			}
-		}
-	}
-	foreach ($uniquefacts as $key=>$fact) {
-		$gedrec.="\n1 ".$fact;
-		$level1type = create_edit_form($gedrec, $lines++, $level0type);
-		echo '<input type="hidden" name="linenum[]" value="', $i, '">';
-	}
 
-	if (WT_USER_IS_ADMIN) {
-		echo '<tr><td class="descriptionbox wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-		echo '<input type="checkbox" name="preserve_last_changed"';
-		if ($NO_UPDATE_CHAN) {
-			echo ' checked="checked"';
-		}
-		echo '>';
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $source->LastChangeTimestamp());
-		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $source->LastChangeUser());
-		echo '</td></tr>';
-	}
-	echo '</table>';
-	print_add_layer("OBJE");
-	print_add_layer("NOTE");
-	print_add_layer("SHARED_NOTE");
-	print_add_layer("RESN");
+	$controller
+		->setPageTitle($source->getFullName())
+		->pageHeader();
+
+		init_calendar_popup();
 	?>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
+			<input type="hidden" name="action" value="update">';
+			<input type="hidden" name="pid" value="', $pid, '">';
+			<div id="add_facts">
+				<?php
+				for ($i = $linenum; $i < $lines; $i++) {
+					$fields = explode(' ', $gedlines[$i]);
+					if ((substr($gedlines[$i], 0, 1) <2) && $fields[1] != "CHAN") {
+						$level1type = create_edit_form($gedrec, $i, $level0type); ?>
+						<input type="hidden" name="linenum[]" value="<?php echo $i; ?>">
+						<?php
+						$usedfacts[]=$fields[1];
+						foreach ($uniquefacts as $key=>$fact) {
+							if ($fact==$fields[1]) unset($uniquefacts[$key]);
+						}
+					}
+				}
+				foreach ($uniquefacts as $key=>$fact) {
+					$gedrec.="\n1 ".$fact;
+					$level1type = create_edit_form($gedrec, $lines++, $level0type); ?>
+					<input type="hidden" name="linenum[]" value="<?php echo $i; ?>">
+				<?php } ?>
+				<?php if (WT_USER_IS_ADMIN) { ?>
+					<div class="last_change">
+						<label>
+							<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+						</label>
+						<div class="input">
+							<?php if ($NO_UPDATE_CHAN) { ?>
+								<input type="checkbox" checked="checked" name="preserve_last_changed">
+							<?php } else { ?>
+								<input type="checkbox" name="preserve_last_changed">
+							<?php }
+							echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
+						</div>
+					</div>
+				<?php }?>
+			</div>
+			<div id="additional_facts">
+				<?php
+				print_add_layer("OBJE");
+				print_add_layer("NOTE");
+				print_add_layer("SHARED_NOTE");
+				print_add_layer("RESN");
+				?>
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
@@ -1077,65 +1102,73 @@ case 'editnote':
 	$pid  = safe_GET('pid', WT_REGEX_XREF);
 	$note = WT_Note::getInstance($pid);
 
+	// Hide the private data
+	list($gedrec) = $note->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+
+	if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
+		$note_content=$n1match[1].get_cont(1, $gedrec, false);
+
+		$num_note_lines=0;
+		foreach (preg_split("/\r?\n/", $note_content, -1 ) as $j=>$line) {
+			$num_note_lines++;
+		}
+
+	} else {
+		$note_content='';
+	}
+
 	$controller
 		->setPageTitle(WT_I18N::translate('Edit Shared Note'))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	// Hide the private data
-	list($gedrec)=$note->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-
 	?>
-	<form method="post" action="edit_interface.php" >
-		<input type="hidden" name="action" value="update">
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
-		<?php
-		if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
-			$note_content=$n1match[1].get_cont(1, $gedrec, false);
-
-			$num_note_lines=0;
-			foreach (preg_split("/\r?\n/", $note_content, -1 ) as $j=>$line) {
-				$num_note_lines++;
-			}
-
-		} else {
-			$note_content='';
-		}
-		?>
-		<table class="facts_table">
-			<tr>
-				<td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE'); ?></td>
-				<td class="optionbox wrap">
-					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php
-						echo htmlspecialchars($note_content);
-					?></textarea><br><?php echo print_specialchar_link('NOTE'); ?>
-				</td>
-			</tr>
-			<?php
-				if (WT_USER_IS_ADMIN) {
-					echo '<tr><td class="descriptionbox wrap width25">';
-					echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-					echo '<input type="checkbox" name="preserve_last_changed"';
-					if ($NO_UPDATE_CHAN) {
-						echo ' checked="checked"';
-					}
-					echo '>';
-					echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-					echo WT_Gedcom_Tag::getLabelValue('DATE', $note->LastChangeTimestamp());
-					echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $note->LastChangeUser());
-					echo '</td></tr>';
-				}
-			?>
-		</table>
-		<input type="hidden" name="num_note_lines" value="<?php echo $num_note_lines; ?>">
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form method="post" action="edit_interface.php" >
+			<input type="hidden" name="action" value="update">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+			<div id="add_facts">
+				<div class="help_text">
+					<p class="help_content">
+						<?php echo WT_I18N::translate('Shared Notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one person, family, source, or event.'); ?>
+					</p>
+				</div>
+				<div id="TITLE_factdiv">
+					<label>
+						<?php echo WT_I18N::translate('Shared note'); ?>
+					</label>
+					<div class="input">
+						<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php echo htmlspecialchars($note_content); ?></textarea>
+					</div>
+					<?php if (WT_USER_IS_ADMIN) { ?>
+						<div class="last_change">
+							<label>
+								<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+							</label>
+							<div class="input">
+								<?php if ($NO_UPDATE_CHAN) { ?>
+									<input type="checkbox" checked="checked" name="preserve_last_changed">
+								<?php } else { ?>
+									<input type="checkbox" name="preserve_last_changed">
+								<?php }
+								echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
+							</div>
+						</div>
+					<?php }?>
+				</div>
+				<input type="hidden" name="num_note_lines" value="<?php echo $num_note_lines; ?>">
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;
@@ -1145,12 +1178,9 @@ case 'addnewrepository':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create Repository'))
 		->pageHeader();
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	echo '<script>';
 	?>
+
+	<script>
 		function check_form(frm) {
 			if (frm.NAME.value=="") {
 				alert('<?php echo WT_I18N::translate('You must provide a repository name'); ?>');
@@ -1159,52 +1189,113 @@ case 'addnewrepository':
 			}
 			return true;
 		}
-	<?php
-	echo '</script>';
-	?>
-	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-		<input type="hidden" name="action" value="addrepoaction">
-		<input type="hidden" name="pid" value="newrepo">
-		<table class="facts_table">
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Repository name'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('REPO_NAME'); ?></td></tr>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !== false) { ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
-			<?php } ?>
-			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN") !== false) { ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
-			<?php } ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ADDR'), help_link('ADDR'); ?></td>
-			<td class="optionbox wrap"><textarea name="ADDR" id="ADDR" rows="5" cols="60"></textarea><?php echo print_specialchar_link('ADDR'); ?> </td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PHON'), help_link('PHON'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255"> </td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('FAX'), help_link('FAX'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="FAX" id="FAX" value="" size="40"></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('EMAIL'), help_link('EMAIL'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255"></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('WWW'), help_link('URL'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255"> </td></tr>
-		<?php
-			if (WT_USER_IS_ADMIN) {
-				echo '<tr><td class="descriptionbox wrap width25">';
-				echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
-				echo '<input type="checkbox" name="preserve_last_changed"';
-				if ($NO_UPDATE_CHAN) {
-					echo ' checked="checked"';
-				}
-				echo '>';
-				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-				echo '</td></tr>';
-			}
-		?>
-		</table>
-		<p id="save-cancel">
-			<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-			<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-		</p>
-	</form>
+	</script>
+
+	<div id="edit_interface-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+			<input type="hidden" name="action" value="addrepoaction">
+			<input type="hidden" name="pid" value="newrepo">
+			<div id="add_facts">
+				<div id="TITLE_factdiv">
+					<label>
+						<?php echo WT_I18N::translate('Repository name'); ?>
+					</label>
+					<div class="input">
+						<input type="text" data-autocomplete-type="REPO_NAME" name="REPO_NAME" id="REPO_NAME" value="">
+						<?php echo print_specialchar_link('REPO_NAME'); ?>
+					</div>
+				</div>
+				<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB") !== false) { ?>
+					<div id="_HEB_factdiv">
+						<label>
+							<?php echo WT_Gedcom_Tag::getLabel('_HEB'); ?>
+						</label>
+						<div class="input">
+							<input type="text" data-autocomplete-type="_HEB" name="_HEB" id="_HEB" value="">
+								<?php echo print_specialchar_link('_HEB'); ?>
+						</div>
+					</div>
+				<?php }
+				if (strstr($ADVANCED_NAME_FACTS, "ROMN") !== false) { ?>
+					<div id="ROMN_factdiv">
+						<label>
+							<?php echo WT_Gedcom_Tag::getLabel('ROMN'); ?>
+						</label>
+						<div class="input">
+							<input type="text" data-autocomplete-type="ROMN" name="ROMN" id="ROMN" value="">
+								<?php echo print_specialchar_link('ROMN'); ?>
+						</div>
+					</div>
+				<?php } ?>
+				<div id="ADDR_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('ADDR'); ?>
+					</label>
+					<div class="input">
+						<textarea name="ADDR" id="ADDR" rows="5" cols="60"></textarea>
+						<?php echo print_specialchar_link('ADDR'); ?>
+					</div>
+				</div>
+				<div id="PHON_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('PHON'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255">
+					</div>
+				</div>
+				<div id="FAX_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('FAX'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="FAX" id="FAX" value="" size="40" maxlength="255">
+					</div>
+				</div>
+				<div id="EMAIL_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('EMAIL'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255">
+					</div>
+				</div>
+				<div id="WWW_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('WWW'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255">
+					</div>
+				</div>
+				<?php if (WT_USER_IS_ADMIN) { ?>
+					<div class="last_change">
+						<label>
+							<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+						</label>
+						<div class="input">
+							<?php if ($NO_UPDATE_CHAN) { ?>
+								<input type="checkbox" checked="checked" name="preserve_last_changed">
+							<?php } else { ?>
+								<input type="checkbox" name="preserve_last_changed">
+							<?php }
+							echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
+						</div>
+					</div>
+				<?php }?>
+			</div>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-save"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+				<button class="btn btn-primary" type="button"  onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('close'); ?>
+				</button>
+			</p>
+		</form>
 	</div> <!-- id="edit_interface-page" -->
 	<?php
 	break;

@@ -356,11 +356,6 @@ case 'SEX':
 	$text = WT_I18N::translate('Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown.');
 	break;
 
-case 'SHARED_NOTE':
-	$title = WT_Gedcom_Tag::getLabel('SHARED_NOTE');
-	$text = WT_I18N::translate('Shared Notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one person, family, source, or event.');
-	break;
-
 case 'SOUR':
 	$title = WT_Gedcom_Tag::getLabel('SOUR');
 	$text = WT_I18N::translate('This field allows you to change the source record that this fact\'s source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source\'s ID number.  To remove the entire citation, make this field blank.');
