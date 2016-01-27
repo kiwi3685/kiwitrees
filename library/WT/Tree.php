@@ -229,7 +229,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'EXPAND_SOURCES',               false);
 		set_gedcom_setting($tree_id, 'FAM_FACTS_ADD',                'CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS,RESN');
 		set_gedcom_setting($tree_id, 'FAM_FACTS_QUICK',              'MARR,DIV,_NMR');
-		set_gedcom_setting($tree_id, 'FAM_FACTS_UNIQUE',             'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS');
+		set_gedcom_setting($tree_id, 'FAM_FACTS_UNIQUE',             'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS,_NMR');
 		set_gedcom_setting($tree_id, 'FAM_ID_PREFIX',                'F');
 		set_gedcom_setting($tree_id, 'FULL_SOURCES',                 false);
 		set_gedcom_setting($tree_id, 'GEDCOM_ID_PREFIX',             'I');
