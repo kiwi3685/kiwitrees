@@ -992,19 +992,16 @@ case 'addnoteaction_assisted':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
+	$controller=new WT_Controller_Simple();
 	$controller
 		->setPageTitle(WT_I18N::translate('Family navigator'))
 		->pageHeader();
-
 	?>
-	<div id="edit_interface-page">
-		<h4><?php echo $controller->getPageTitle(); ?></h4>
-		<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
-			<input type="hidden" name="action" value="addmedia_links">
-			<input type="hidden" name="noteid" value="newnote">
-			<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
-		</form>
-	</div> <!-- id="edit_interface-page" -->
+	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
+		<input type="hidden" name="action" value="addmedia_links">
+		<input type="hidden" name="noteid" value="newnote">
+		<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
+	</form>
 	<?php
 	break;
 

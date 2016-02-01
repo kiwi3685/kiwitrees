@@ -79,17 +79,19 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		}
 
 		// edit menu
-		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-obje');
+		$menu = new WT_Menu(WT_I18N::translate('Edit'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref(), 'menu-obje');
+		$menu->addTarget('_blank');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), '#', 'menu-obje-edit');
-			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', edit_window_specs)");
+			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref(), 'menu-obje-edit');
+			$submenu->addTarget('_blank');
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
 			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), '#', 'menu-obje-link');
-				$submenu->addOnclick("return ilinkitem('".$this->record->getXref()."','manage');");
+				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $this->record->getXref() . '&linkto=manage&ged=' . WT_GEDCOM, 'menu-obje-edit');
+				$submenu->addTarget('_blank');
 			} else {
 				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'menu-obje-link');
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), '#', 'menu-obje-link-indi');
@@ -170,7 +172,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		sort_facts($facts);
 		return $facts;
 	}
-	
+
 	/**
 	* edit menu items used in album tab and media list
 	*/
