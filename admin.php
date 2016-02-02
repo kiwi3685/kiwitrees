@@ -51,25 +51,26 @@ $stats = new WT_Stats(WT_GEDCOM);
 	$gedadmin	= array(); // Array for managers
 
 // Server warnings
+// Note that security support for 5.6 ends after security support for 7.0
 $server_warnings = array();
 if (
-	version_compare(PHP_VERSION, '5.4', '<') ||
-	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2015-09-14' ||
-	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-07-10' ||
-	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2017-08-28'
+	PHP_VERSION_ID < 50500 ||
+	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2016-07-10' ||
+	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2018-12-31' ||
+	PHP_VERSION_ID >= 70000 && PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2018-12-03'
 ) {
 	$server_warnings[] = '
 		<span class="warning">' .
-			WT_I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible.', PHP_VERSION) . '
+			WT_I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should ask your web service provider to upgrade to a later version as soon as possible.', PHP_VERSION) . '
 			<a href="http://php.net/supported-versions.php" target="_blank"><i class="icon-php"></i></a>
 		<span>';
 } elseif (
-	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2014-09-14' ||
-	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-06-20' ||
-	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2016-08-28'
+	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2015-07-10' ||
+	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2016-12-31' ||
+	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03'
 ) {
 	$server_warnings[] = '
-		<span class="accepted">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version.', PHP_VERSION) . '
+		<span class="accepted">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should should ask your web service provider to upgrade to a later version.', PHP_VERSION) . '
 		<a href="http://php.net/supported-versions.php" target="_blank"><i class="icon-php"></i></a>
 		<span>';
 }

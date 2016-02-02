@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-02-03 08:07+1300\n"
-"PO-Revision-Date: 2016-02-03 08:08+1300\n"
+"POT-Creation-Date: 2016-02-03 08:35+1300\n"
+"PO-Revision-Date: 2016-02-03 08:35+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -255,95 +255,96 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: admin.php:63
+#: admin.php:64
 #, php-format
 msgid ""
 "Your web server is using PHP version %s, which is no longer receiving "
-"security updates.  You should upgrade to a later version as soon as possible."
+"security updates.  You should ask your web service provider to upgrade to a "
+"later version as soon as possible."
 msgstr ""
 
-#: admin.php:72
+#: admin.php:73
 #, php-format
 msgid ""
 "Your web server is using PHP version %s, which is no longer maintained.  You "
-"should upgrade to a later version."
+"should should ask your web service provider to upgrade to a later version."
 msgstr ""
 
-#: admin.php:85
+#: admin.php:86
 msgid ""
 "These pages provide access to all the configuration settings and management "
 "tools for this kiwitrees site."
 msgstr ""
 
-#: admin.php:86
+#: admin.php:87
 #, php-format
 msgid "Support is available at %s."
 msgstr ""
 
-#: admin.php:93
+#: admin.php:94
 #, php-format
 msgid "Version %s of kiwitrees is now available at %s."
 msgstr ""
 
-#: admin.php:95
+#: admin.php:96
 msgid "Your version of kiwitrees is the latest available."
 msgstr ""
 
-#: admin.php:98
+#: admin.php:99
 msgid "No upgrade information is available."
 msgstr ""
 
-#: admin.php:106 admin_site_info.php:35 themes/_administration/header.php:144
+#: admin.php:107 admin_site_info.php:35 themes/_administration/header.php:144
 msgid "Server information"
 msgstr ""
 
-#: admin.php:129
+#: admin.php:130
 msgid "Old files found"
 msgstr ""
 
-#: admin.php:131
+#: admin.php:132
 msgid ""
 "Files have been found from a previous version of webtrees.  Old files can "
 "sometimes be a security risk.  You should delete them."
 msgstr ""
 
-#: admin.php:182 themes/_administration/header.php:183
+#: admin.php:183 themes/_administration/header.php:183
 msgid "Users"
 msgstr ""
 
-#: admin.php:185
+#: admin.php:186
 msgid "Total number of users"
 msgstr ""
 
-#: admin.php:190
+#: admin.php:191
 msgid "Administrators"
 msgstr ""
 
-#: admin.php:195
+#: admin.php:196
 msgid "Managers"
 msgstr ""
 
-#: admin.php:209
+#: admin.php:210
 msgid "Unverified by User"
 msgstr ""
 
-#: admin.php:214
+#: admin.php:215
 msgid "Unverified by Administrator"
 msgstr ""
 
-#: admin.php:219
+#: admin.php:220
 msgid "Users' languages"
 msgstr ""
 
-#: admin.php:233
+#: admin.php:234
 msgid "Users Logged In"
 msgstr ""
 
-#: admin.php:244
+#: admin.php:245
 msgid "Family tree statistics"
 msgstr ""
 
-#: admin.php:257 admin.php:307 ancestry.php:98 calendar.php:413
+#: admin.php:258 admin.php:308 ancestry.php:98 calendar.php:413
 #: descendancy.php:69 includes/functions/functions_print_lists.php:1066
 #: includes/functions/functions_print_lists.php:1208
 #: includes/functions/functions_print_lists.php:1493
@@ -360,7 +361,7 @@ msgstr ""
 msgid "Individuals"
 msgstr ""
 
-#: admin.php:262 admin.php:308 ancestry.php:104 calendar.php:414
+#: admin.php:263 admin.php:309 ancestry.php:104 calendar.php:414
 #: descendancy.php:74 famlist.php:133 famlist.php:138
 #: includes/functions/functions_print_lists.php:1068
 #: includes/functions/functions_print_lists.php:1210
@@ -379,7 +380,7 @@ msgstr ""
 msgid "Families"
 msgstr ""
 
-#: admin.php:267 admin.php:309
+#: admin.php:268 admin.php:310
 #: includes/functions/functions_print_lists.php:1214
 #: includes/functions/functions_print_lists.php:1390
 #: includes/functions/functions_print_lists.php:1497
@@ -399,7 +400,7 @@ msgstr ""
 msgid "Sources"
 msgstr ""
 
-#: admin.php:272 admin.php:310 library/WT/MenuBar.php:311 mediaviewer.php:148
+#: admin.php:273 admin.php:311 library/WT/MenuBar.php:311 mediaviewer.php:148
 #: modules_v3/gedcom_stats/module.php:111
 #: modules_v3/gedcom_stats/module.php:341 modules_v3/html/module.php:201
 #: modules_v3/widget_stats/module.php:146
@@ -408,7 +409,7 @@ msgstr ""
 msgid "Repositories"
 msgstr ""
 
-#: admin.php:277 admin.php:311
+#: admin.php:278 admin.php:312
 #: includes/functions/functions_print_lists.php:1070
 #: includes/functions/functions_print_lists.php:1212 library/WT/MenuBar.php:308
 #: medialist.php:35 modules_v3/gedcom_stats/module.php:108
@@ -419,7 +420,7 @@ msgstr ""
 msgid "Media objects"
 msgstr ""
 
-#: admin.php:282 admin.php:312 library/WT/Controller/Search.php:596
+#: admin.php:283 admin.php:313 library/WT/Controller/Search.php:596
 #: mediaviewer.php:151
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1054
 #: modules_v3/notes/module.php:35 modules_v3/resource_individual/module.php:203
@@ -429,22 +430,22 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
-#: admin.php:294 modules_v3/recent_changes/module.php:39
+#: admin.php:295 modules_v3/recent_changes/module.php:39
 #: modules_v3/widget_recent_changes/module.php:39
 msgid "Recent changes"
 msgstr ""
 
-#: admin.php:306 calendar.php:135 library/WT/MenuBar.php:379
+#: admin.php:307 calendar.php:135 library/WT/MenuBar.php:379
 #: modules_v3/calendar_utilities/plugins/calculators.php:81
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:70
 msgid "Day"
 msgstr ""
 
-#: admin.php:306
+#: admin.php:307
 msgid "Week"
 msgstr ""
 
-#: admin.php:306 calendar.php:151 library/WT/MenuBar.php:381
+#: admin.php:307 calendar.php:151 library/WT/MenuBar.php:381
 #: modules_v3/calendar_utilities/plugins/calculators.php:90
 msgid "Month"
 msgstr ""
