@@ -52,7 +52,7 @@ class menu_languages_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		$menu=WT_MenuBar::getLanguageMenu();
+		$menu = WT_MenuBar::get LanguageMenu();
 		return $menu;
 	}
 }

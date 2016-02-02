@@ -52,7 +52,7 @@ class menu_homepage_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		$menu=WT_MenuBar::getGedcomMenu();
+		$menu = WT_MenuBar::get GedcomMenu();
 		return $menu;
 	}
 }
