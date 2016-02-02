@@ -105,36 +105,6 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 'checked';
 
 		?>
-		<style>
-		    #resource-page.individual_report {margin: auto; width: 90%;}
-		    #resource-page.individual_report h3 {margin: 20px 0 5px 0; text-decoration: underline;}
-		    #resource-page.individual_report h4 {font-size: 100%; margin: 0;}
-		    #resource-page.individual_report #facts_events {clear: both;}
-		    #resource-page.individual_report #notes {margin: 30px 0;}
-			#resource-page.individual_report #notes ol {margin-top: 0;}
-			#resource-page.individual_report #families {margin: 30px 0;}
-		    #resource-page.individual_report #families .details {font-style: italic;}
-		    #resource-page.individual_report #parents,
-		    #resource-page.individual_report #spouses {text-indent: 10px;}
-		    #resource-page.individual_report #siblings,
-		    #resource-page.individual_report #spouse_children {text-indent: 20px;}
-		    #resource-page.individual_report span.label {display: inline-block; font-weight: 700; text-transform: capitalize; width: 200px;}
-		    #resource-page.individual_report #facts_sources {margin: 30px 0;}
-		    #resource-page.individual_report #facts_sources span:first-child:after {content:". "}
-		    #resource-page.individual_report .chart_options label {display:block; font-weight:900;}
-
-		    #resource-page.individual_report .individual_report_fact{border-bottom: 1px solid;}
-		    #resource-page.individual_report .individual_report_fact label {display: inline-block; font-weight: 700; padding: 5px; width: 15%;}
-		    #resource-page.individual_report .individual_report_fact .date {display: inline-block; min-width: 15%;}
-		    #resource-page.individual_report .individual_report_fact .place {display: inline-block; min-width: 20%;}
-		    #resource-page.individual_report .individual_report_fact .field,
-		    #resource-page.individual_report .individual_report_fact .field span {display: inline-block; padding: 0 10px;}
-		    #resource-page.individual_report .individual_report_fact sup {color: #ff0000; display: inline-block; font-size: 70%; padding: 0 5px;}
-
-		    #resource-page.individual_report .individual_report_fact div span,
-		    #resource-page.individual_report .individual_report_fact div div {padding: 5px; width: 300px;}
-		    #resource-page.individual_report .individual_report_fact .place span {display: initial; padding: 0px;}
-		</style>
 		<div id="resource-page" class="individual_report">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div class="noprint">

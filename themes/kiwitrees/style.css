@@ -5866,25 +5866,8 @@ div.widget {
 [dir=rtl] #fancy_treeview-page #btn_next {
 	text-align: left;
 }
-/* ------------------ */
-
-/* Styles for nocensus module */
-#resource-page.nocensus {
- 	min-width: 100px;
-	vertical-align: top;
- }
-
-#resource-page.nocensus label:nth-of-type(2n),
-#resource-page.nocensus label:nth-of-type(3n) {
-	display: inline;
-	font-weight: normal;
-}
-
-#resource-page.nocensus input {
-	margin: auto 10px;
-	width: initial;
-}
-
+/* ------------------
+General Resource page styling  */
 #resource-page .help_content {
 	font-size: inherit;
 	margin: 0;
@@ -5896,6 +5879,20 @@ div.widget {
 	vertical-align: top;
 }
 
+/* Styles for nocensus resource */
+#resource-page.nocensus {
+ 	min-width: 100px;
+	vertical-align: top;
+}
+#resource-page.nocensus label:nth-of-type(2n),
+#resource-page.nocensus label:nth-of-type(3n) {
+	display: inline;
+	font-weight: normal;
+}
+#resource-page.nocensus input {
+	margin: auto 10px;
+	width: initial;
+}
 #nocensus_result {
 	list-style: none;
 	margin: auto;
@@ -5904,7 +5901,6 @@ div.widget {
 	white-space: normal;
 	width: 85%;
 }
-
 #nocensus_result li {
 	display: inline-block;
 	margin-bottom: 40px;
@@ -5913,7 +5909,6 @@ div.widget {
 	vertical-align: top;
 	width: 250px;
 }
-
 #nocensus_result li ul {
 	display: inline;
 	list-style: none;
@@ -5921,13 +5916,151 @@ div.widget {
 	padding: 0;
 	text-align: initial;
 }
-
 #nocensus_result li ul li {
 	width: auto;
 	margin: 0;
 	padding: 0;
 	display: block;
 }
+
+/* Styles for recent changes resource */
+#resource-page.recent_changes table th,
+#resource-page table td {
+	padding:8px;
+}
+#resource-page.recent_changes table.changes th:first-child {
+ 	width: 30px;
+}
+#resource-page.recent_changes .chart_options input[name="pending"] {
+	vertical-align: top;
+	width: 20px;
+}
+#resource-page.recent_changes .chart_options label[for^="pending"] {
+	display: inline-block;
+	font-weight: normal;
+	width: 20px;
+}
+#resource-page.recent_changes {
+	margin: auto;
+	width: 90%;
+}
+
+#resource-page.recent_changes td.wrap p {
+	display: inline;
+	font-size: 80%;
+	padding: 0 10px;
+}
+
+/* Styles for individual report resource */
+#resource-page.individual_report {
+	margin: auto;
+	width: 90%;
+}
+#resource-page.individual_report h3 {
+	margin: 20px 0 5px 0;
+	text-decoration: underline;
+}
+#resource-page.individual_report h4 {
+	font-size: 100%;
+	margin: 0;
+}
+#resource-page.individual_report #facts_events {
+	clear: both;
+}
+#resource-page.individual_report #notes {
+	margin: 30px 0;
+}
+#resource-page.individual_report #notes ol {
+	margin-top: 0;
+}
+#resource-page.individual_report #families {
+	margin: 30px 0;
+}
+#resource-page.individual_report #families .details {
+	font-style: italic;
+}
+#resource-page.individual_report #parents,
+#resource-page.individual_report #spouses {
+	text-indent: 10px;
+}
+#resource-page.individual_report #siblings,
+#resource-page.individual_report #spouse_children {
+	text-indent: 20px;
+}
+#resource-page.individual_report span.label {
+	display: inline-block;
+	font-weight: 700;
+	text-transform: capitalize;
+	width: 200px;
+}
+#resource-page.individual_report #facts_sources {
+	margin: 30px 0;
+}
+#resource-page.individual_report .chart_options label {
+	display:block; font-weight:900;}
+
+#resource-page.individual_report .individual_report_fact {
+	border-bottom: 1px solid;
+}
+#resource-page.individual_report .individual_report_fact label {
+	display: inline-block;
+	font-weight: 700;
+	padding: 5px;
+	width: 15%;
+}
+#resource-page.individual_report .individual_report_fact .date {
+	display: inline-block;
+	min-width: 15%;
+}
+#resource-page.individual_report .individual_report_fact .place {
+	display: inline-block;
+	min-width: 20%;
+}
+#resource-page.individual_report .individual_report_fact .field,
+#resource-page.individual_report .individual_report_fact .field span {
+	display: inline-block;
+	padding: 0 10px;
+}
+#resource-page.individual_report .individual_report_fact sup {
+	color: #ff0000;
+	display: inline-block;
+	font-size: 70%;
+	padding: 0 5px;
+}
+
+#resource-page.individual_report .individual_report_fact div span,
+#resource-page.individual_report .individual_report_fact div div {
+	padding: 5px;
+	width: 300px;
+}
+#resource-page.individual_report .individual_report_fact .place span {
+	display: initial;
+	padding: 0px;
+}
+
+/* Styles for UK Register resource */
+#resource-page #nocensus_result li i {
+	font-size: 90%;
+}
+
+/* Styles for To Do resource */
+#resource-page.research_tasks {
+	margin: auto;
+	width: 90%;
+}
+#resource-page table th, #resource-page table td {
+	padding:8px;
+}
+#resource-page input[name^="show_"] {
+	vertical-align:
+	top; width: 20px;
+}
+#resource-page label[for^="show_"] {
+	display: inline-block;
+	font-weight: normal;
+	width: 20px;
+}
+
 /* ------------------ */
 
 /* Styles for calendar_utilities module */

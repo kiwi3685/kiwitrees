@@ -253,14 +253,14 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 							if (stripos($bef_plac, $data_source['place']) !== false || stripos($aft_plac, $data_source['place']) !== false) {
 								$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
 								$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
-								$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Age') . ' - ' . $age_at_census . '</i></li>';
+								$missing_text .= '<li><i>' . WT_I18N::translate('Age') . ' - ' . $age_at_census . '</i></li>';
 								// Person died after 1991 - make note
 								if ($indi->getEstimatedDeathDate()->gregorianYear() > '1991') {
-									$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
+									$missing_text .= '<li><i>' . WT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
 								}
 								// Check if person in military
 								if ($bef_fact == '_MILI' || $bef_fact == '_MILT') {
-									$missing_text .= '<li><i style="font-size: 90%;">' . WT_I18N::translate('Probably excluded - military service') . '</i></li>';
+									$missing_text .= '<li><i>' . WT_I18N::translate('Probably excluded - military service') . '</i></li>';
 								}
 							}
 						}

@@ -127,7 +127,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 			<table class="changes width100">
 				<thead>
 					<tr>
-						<th style="width: 30px;">&nbsp;</th>
+						<th>&nbsp;</th>
 						<th>' . WT_I18N::translate('Record') . '</th>
 						<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
 						<th>' . WT_I18N::translate('Username') . '</th>
@@ -144,11 +144,6 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 
 		// Common settings
 		$content = '
-			<style>
-				#resource-page.recent_changes table th, #resource-page table td {padding:8px;}
-				input[name="pending"] {vertical-align: top; width: 20px;}
-				label[for^="pending"] {display: inline-block; font-weight: normal; width: 20px;}
-			</style>
 			<div id="resource-page" class="recent_changes" style="margin: auto; width: 90%;">
 				<h2>' . $this->getTitle() . '</h2>
 				<div class="noprint">
@@ -279,7 +274,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 					$change_data .= '<td class="wrap">
 						<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
 						if ($indi) {
-							$change_data .= '<p style="display: inline; font-size: 80%; padding: 0 10px;">' . $record->getLifeSpan() . '</p>';
+							$change_data .= '<p>' . $record->getLifeSpan() . '</p>';
 							$addname = $record->getAddName();
 							if ($addname) {
 								$change_data .= '
