@@ -6178,25 +6178,46 @@ textarea#NOTE {
  		position: initial;
  	}
  	#topMenu #nav-select {
- 		border: 1px solid #CCC;
- 		background-color: #FFF;
-		color: #555;
- 		display: block;
+ 		background-color: #fff;
+		display:block;
  		font-size: 12px;
  		height: 30px;
  		line-height: 30px;
  		margin: 10px auto;
+		text-align: center;
+		width: 70%;
+ 	}
+
+	#topMenu #nav-select a {
+		color: #555;
+ 	}
+
+	#topMenu #nav-select:hover ul,
+	#topMenu #nav-select:focus ul,
+	#topMenu #nav-select:active ul,
+	#topMenu #nav-select ul:hover ul li,
+	#topMenu #nav-select ul:focus li ul,
+	#topMenu #nav-select ul:active li ul {
+		display:block;
+	}
+	#topMenu #nav-select ul {
+ 		background-color: #fff;
+		display: none;
+		font-size: 30px;
+		list-style: none;
+		margin: 0;
+		padding: 0 10px;
  		text-align: left;
- 		width: 70%;
- 	}
- 	#topMenu #nav-select ul {
- 		font-size: 30px;
- 		width: 100%;
- 	}
+	}
  	#topMenu #nav-select li {
- 		font-size: 12px;
+		background-color: #fff;
+		font-size: 12px;
+		padding: 0 10px;
  	}
- 	#header {
+	#topMenu #nav-select ul ul li {
+ 		display:none;
+  	}
+	#header {
  		height: auto;
  		text-align: center;
  	}

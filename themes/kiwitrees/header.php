@@ -163,12 +163,14 @@ if ($view!='simple') {
 				}
 			echo '</ul>',
 			// select menu for responsive layouts only
-			'<ul id="nav-select" onChange="window.location.href=this.value">
-				<span>', WT_I18N::translate('Choose a page'), '</span>';
+//			'<div id="menu_select" style="text-align:center;">',
+			'<div id="nav-select" onChange="window.location.href=this.value">
+				<a href="#">Main menu</a>';
+//				<span>', WT_I18N::translate('Choose a page'), '</span>';
 				foreach (WT_MenuBar::getMainMenus() as $menu) {
-					echo $menu->getMenuAsSelect();
+					echo $menu->getResponsiveMenu();
 				}
-			echo '</ul>
+			echo '</div>
 		</div>', // <div id="topMenu">
 		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 	'</div>'; // <div id="navbar">
