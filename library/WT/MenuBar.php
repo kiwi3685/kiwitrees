@@ -33,10 +33,11 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_MenuBar {
 	public static function getGedcomMenu() {
-		$menu = new WT_Menu(WT_I18N::translate('Home'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
-		$ALLOW_CHANGE_GEDCOM=WT_Site::preference('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll())>1;
-		foreach (WT_Tree::getAll() as $tree) {
-			if ($tree->tree_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
+		if (count(WT_Tree::getAll()) === 1 || WT_Site::preference('ALLOW_CHANGE_GEDCOM') === '0') {
+			$menu = new WT_Menu(WT_I18N::translate('Home'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
+		} else {
+			$menu = new WT_Menu(WT_I18N::translate('Home'), '#', 'menu-tree');
+			foreach (WT_Tree::getAll() as $tree) {
 				$submenu = new WT_Menu(
 					$tree->tree_title_html,
 					'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url,
@@ -98,7 +99,7 @@ class WT_MenuBar {
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
 		$PEDIGREE_ROOT_ID = get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
-		$menu = new WT_Menu(WT_I18N::translate('Charts'), 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart');
+		$menu = new WT_Menu(WT_I18N::translate('Charts'), '#', 'menu-chart');
 
 		// Build a sortable list of submenu items and then sort it in localized name order
 		$menuList = array(
@@ -285,7 +286,7 @@ class WT_MenuBar {
 		global $SEARCH_SPIDER, $controller;
 
 		// The top level menu shows the individual list
-		$menu = new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'menu-list');
+		$menu = new WT_Menu(WT_I18N::translate('Lists'), '#', 'menu-list');
 
 		// Do not show empty lists
 		$row = WT_DB::prepare(
@@ -374,22 +375,17 @@ class WT_MenuBar {
 			return null;
 		}
 		//-- main calendar menu item
-		$menu = new WT_Menu(WT_I18N::translate('Calendar'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar');
-		//-- viewday sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('Day'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar-day');
-		$menu->addSubmenu($submenu);
-		//-- viewmonth sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('Month'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=calendar', 'menu-calendar-month');
-		$menu->addSubmenu($submenu);
-		//-- viewyear sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year', 'menu-calendar-year');
-		$menu->addSubmenu($submenu);
-		//-- utilities sub menu
-		if (array_key_exists('calendar_utilities', WT_Module::getActiveModules())) {
-			$submenu = new WT_Menu(WT_I18N::translate('Utilities'), 'module.php?mod=calendar_utilities&amp;mod_action=show', 'menu-calendar_utilities');
+		$menu = new WT_Menu(WT_I18N::translate('Calendar'), '#', 'menu-calendar');
+			$submenu = new WT_Menu(WT_I18N::translate('Day'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar-day');
 			$menu->addSubmenu($submenu);
-		}
-
+			$submenu = new WT_Menu(WT_I18N::translate('Month'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=calendar', 'menu-calendar-month');
+			$menu->addSubmenu($submenu);
+			$submenu = new WT_Menu(WT_I18N::translate('Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year', 'menu-calendar-year');
+			$menu->addSubmenu($submenu);
+			if (array_key_exists('calendar_utilities', WT_Module::getActiveModules())) {
+				$submenu = new WT_Menu(WT_I18N::translate('Utilities'), 'module.php?mod=calendar_utilities&amp;mod_action=show', 'menu-calendar_utilities');
+				$menu->addSubmenu($submenu);
+			}
 		return $menu;
 	}
 
@@ -405,7 +401,7 @@ class WT_MenuBar {
 			return null;
 		}
 
-		$menu = new WT_Menu(WT_I18N::translate('Reports'), 'reportengine.php?ged='.WT_GEDURL, 'menu-report');
+		$menu = new WT_Menu(WT_I18N::translate('Reports'), '#', 'menu-report');
 
 		foreach ($active_reports as $report) {
 			foreach ($report->getReportMenus() as $submenu) {
@@ -427,7 +423,7 @@ class WT_MenuBar {
 			return null;
 		}
 
-		$menu = new WT_Menu(WT_I18N::translate('Resources'), '', 'menu-resources');
+		$menu = new WT_Menu(WT_I18N::translate('Resources'), '#', 'menu-resources');
 
 		foreach ($active_resources as $resources) {
 			foreach ($resources->getResourceMenus() as $submenu) {
@@ -445,21 +441,17 @@ class WT_MenuBar {
 			return null;
 		}
 		//-- main search menu item
-		$menu = new WT_Menu(WT_I18N::translate('Search'), 'search.php?ged='.WT_GEDURL, 'menu-search');
-		//-- search_general sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('General search'), 'search.php?ged='.WT_GEDURL, 'menu-search-general');
-		$menu->addSubmenu($submenu);
-		//-- search_soundex sub menu
-		$submenu = new WT_Menu(/* I18N: search using “sounds like”, rather than exact spelling */ WT_I18N::translate('Phonetic search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
-		$menu->addSubmenu($submenu);
-		//-- advanced search
-		$submenu = new WT_Menu(WT_I18N::translate('Advanced search'), 'search_advanced.php?ged='.WT_GEDURL, 'menu-search-advanced');
-		$menu->addSubmenu($submenu);
-		//-- search_replace sub menu
-		if (WT_USER_GEDCOM_ADMIN) {
-			$submenu = new WT_Menu(WT_I18N::translate('Search and replace'), 'search.php?ged='.WT_GEDURL.'&amp;action=replace', 'menu-search-replace');
+		$menu = new WT_Menu(WT_I18N::translate('Search'), '#', 'menu-search');
+			$submenu = new WT_Menu(WT_I18N::translate('General search'), 'search.php?ged='.WT_GEDURL, 'menu-search-general');
 			$menu->addSubmenu($submenu);
-		}
+			$submenu = new WT_Menu(/* I18N: search using “sounds like”, rather than exact spelling */ WT_I18N::translate('Phonetic search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
+			$menu->addSubmenu($submenu);
+			$submenu = new WT_Menu(WT_I18N::translate('Advanced search'), 'search_advanced.php?ged='.WT_GEDURL, 'menu-search-advanced');
+			$menu->addSubmenu($submenu);
+			if (WT_USER_GEDCOM_ADMIN) {
+				$submenu = new WT_Menu(WT_I18N::translate('Search and replace'), 'search.php?ged='.WT_GEDURL.'&amp;action=replace', 'menu-search-replace');
+				$menu->addSubmenu($submenu);
+			}
 		return $menu;
 	}
 
