@@ -5997,8 +5997,8 @@ General Resource page styling  */
 	margin: 30px 0;
 }
 #resource-page.individual_report .chart_options label {
-	display:block; font-weight:900;}
-
+	display:block; font-weight:900;
+}
 #resource-page.individual_report .individual_report_fact {
 	border-bottom: 1px solid;
 }
@@ -6027,7 +6027,6 @@ General Resource page styling  */
 	font-size: 70%;
 	padding: 0 5px;
 }
-
 #resource-page.individual_report .individual_report_fact div span,
 #resource-page.individual_report .individual_report_fact div div {
 	padding: 5px;
