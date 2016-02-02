@@ -52,7 +52,7 @@ class menu_favorites_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		$menu = WT_MenuBar::get FavoritesMenu();
+		$menu = WT_MenuBar::getFavoritesMenu();
 		return $menu;
 	}
 }

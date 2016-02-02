@@ -52,7 +52,7 @@ class menu_charts_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		$menu = WT_MenuBar::get ChartsMenu();
+		$menu = WT_MenuBar::getChartsMenu();
 		return $menu;
 	}
 }
