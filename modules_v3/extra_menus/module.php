@@ -2,7 +2,7 @@
 // A module to allow additional administrator defined menu items
 //
 // Kiwitrees: Web based Family History software
-// Copyright (C) 2015 kiwitrees.net
+// Copyright (C) 2016 kiwitrees.net
 //
 // Derived from webtrees
 // Copyright (C) 2013 webtrees development team

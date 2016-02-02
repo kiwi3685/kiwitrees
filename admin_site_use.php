@@ -4,7 +4,7 @@
 // Provides links for administrators to get to other administrative areas of the site
 //
 // Kiwitrees: Web based Family History software
-// Copyright (C) 2015 kiwitrees.net
+// Copyright (C) 2016 kiwitrees.net
 //
 // Derived from webtrees
 // Copyright (C) 2012 webtrees development team

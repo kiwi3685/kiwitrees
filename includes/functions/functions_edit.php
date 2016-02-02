@@ -2,7 +2,7 @@
 // Various functions used by the Edit interface
 //
 // Kiwitrees: Web based Family History software
-// Copyright (C) 2015 kiwitrees.net
+// Copyright (C) 2016 kiwitrees.net
 //
 // Derived from webtrees
 // Copyright (C) 2012 webtrees development team

@@ -4,7 +4,7 @@
 // This page will allow you to merge 2 gedcom records
 //
 // Kiwitrees: Web based Family History software
-// Copyright (C) 2015 kiwitrees.net
+// Copyright (C) 2016 kiwitrees.net
 //
 // Derived from webtrees
 // Copyright (C) 2012 webtrees development team

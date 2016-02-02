@@ -2,7 +2,7 @@
 // Fancy Tree View Module
 //
 // Kiwitrees: Web based Family History software
-// Copyright (C) 2015 kiwitrees.net
+// Copyright (C) 2016 kiwitrees.net
 //
 // Derived from JustCarmen
 // Copyright (C) 2015 JustCarmen

@@ -5,7 +5,7 @@
 // It simply needs to set $title and $text for the help topic $help_topic
 //
 // Kiwitrees: Web based Family History software
-// Copyright (C) 2015 kiwitrees.net
+// Copyright (C) 2016 kiwitrees.net
 //
 // Derived from webtrees
 // Copyright (C) 2012 webtrees development team
