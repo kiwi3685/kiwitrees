@@ -248,7 +248,7 @@ class WT_Date {
 		case 'TO':     /* I18N: Gedcom TO dates      */ $tmp = WT_I18N::translate('to %s',               $d1 . $conv1); break;
 		case 'BETAND': /* I18N: Gedcom BET-AND dates */ $tmp = WT_I18N::translate('between %s and %s',   $d1 . $conv1, $d2.$conv2); break;
 		case 'FROMTO': /* I18N: Gedcom FROM-TO dates */ $tmp = WT_I18N::translate('from %s to %s',       $d1 . $conv1, $d2.$conv2); break;
-		default: $tmp = WT_I18N::translate('Invalid date'); break; // e.g. BET without AND
+		default: $tmp = '<span class="error">' . WT_I18N::translate('Invalid date') . '</span>'; break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {
 			$tmp = WT_I18N::translate('%1$s (%2$s)', $tmp, $this->text);
