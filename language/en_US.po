@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-02-03 08:35+1300\n"
-"PO-Revision-Date: 2016-02-03 08:35+1300\n"
+"POT-Creation-Date: 2016-02-05 11:09+1300\n"
+"PO-Revision-Date: 2016-02-05 11:09+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -16801,14 +16801,6 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/module.php:206
 msgid "Not a valid Individual, Family or Source ID"
-msgstr ""
-
-#: modules_v3/advent/module.php:35
-msgid "Advent calendar"
-msgstr ""
-
-#: modules_v3/advent/module.php:40
-msgid "Add your own advent calendar to your Home page."
 msgstr ""
 
 #: modules_v3/ahnentafel_report/module.php:42
