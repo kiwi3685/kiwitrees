@@ -2594,17 +2594,17 @@ case 'reorder_fams_update':
 ////////////////////////////////////////////////////////////////////////////////
 case 'checkduplicates':
 	$gedcom_id	= safe_GET('ged', array_keys(WT_Tree::getAll()), WT_GED_ID);
-	$surn		= safe_GET('surname', '[^<>&%{};]*');
-	$givn		= safe_GET('given', '[^<>&%{};]*');
+	$surn		= WT_Filter::get('surname', '[^<>&%{};]*');
+	$givn		= WT_Filter::get('given', '[^<>&%{};]*');
 	$html		= '';
 
 	// the sql query used to identify simple duplicates
-	$sql = "
+	$sql = '
 		SELECT n_id, n_full, n_surn, n_givn, n_type, n_sort
 		FROM `##name`
-		 WHERE n_surn LIKE '%".$surn."%'
-		 AND n_givn LIKE '%".$givn."%'
-		 AND n_file = ".$gedcom_id." ";
+		 WHERE n_surn LIKE "%' . $surn . '%"
+		 AND n_givn LIKE "%' . $givn . '%"
+		 AND n_file = '. $gedcom_id. ' ';
 	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 	$controller
@@ -2612,18 +2612,18 @@ case 'checkduplicates':
 		->pageHeader();
 
 	$html = '
-		<div id="edit_interface-page">
-			<h4>'. $controller->getPageTitle() . '</h4>';
+		<div id="edit_interface-page" class="duplicates">
+			<h2>'. $controller->getPageTitle() . '</h2>';
 
 			if ($rows) {
 				$i = 1;
 				$html .= '
 					<p>' . WT_I18N::translate('These individuals might be duplicates of your new entry. Click on a name to open a new tab at their page to view more details. <br><br>Close this window and the <strong>Add new individual</strong> window if you do not want to complete this addition.') . '</p>
-					<table class="facts_table">
+					<table>
 						<tr>
-							<th class="facts_label">' . WT_I18N::translate('Name') . '</th>
-							<th class="facts_label">' . WT_I18N::translate('Lifespan') . '</th>
-							<th class="facts_label">' . WT_I18N::translate('Birthplace') . '</th>
+							<th>' . WT_I18N::translate('Name') . '</th>
+							<th>' . WT_I18N::translate('Lifespan') . '</th>
+							<th>' . WT_I18N::translate('Birthplace') . '</th>
 						</tr>';
 				foreach ($rows as $row) {
 					$id = $row['n_id'];
@@ -2634,15 +2634,15 @@ case 'checkduplicates':
 
 					$html .= '
 							<tr>
-								<td class="facts_value"><a href="'. $person->getHtmlUrl() . '" target="_blank">' . $name . '</a></td>
-								<td class="facts_value">' . $lifespan .'</td>
-								<td class="facts_value">' . $birthplace .'</td>
+								<td><a href="'. $person->getHtmlUrl() . '" target="_blank">' . $name . '</a></td>
+								<td>' . $lifespan .'</td>
+								<td>' . $birthplace .'</td>
 							</tr>';
 
 					if ($i == 10 ) {
 					$html .= '
 							<tr>
-								<td colspan="3" class="facts_value"><span class="warning">' . WT_I18N::translate('More than %s possible duplicates found.', $i) . '</span></td>
+								<td colspan="3"><span class="warning">' . WT_I18N::translate('More than %s possible duplicates found.', $i) . '</span></td>
 							</tr>';
 						break;
 					}
@@ -2656,7 +2656,10 @@ case 'checkduplicates':
 
 	$html .= '
 			<p id="save-cancel">
-				<input type="button" class="cancel" value="' . /* I18N: button label */ WT_I18N::translate('close'). '" onclick="window.close();">
+				<button class="btn btn-primary" type="button" onclick="window.close();">
+					<i class="fa fa-times"></i> ' .
+					WT_I18N::translate('close') . '
+				</button>
 			</p>
 		</div>';
 

@@ -1173,10 +1173,10 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		}
 
 		// optional check for possible duplicate person
-		function check_duplicates(surname, given, ged) {
+		function check_duplicates() {
 			var frm  = document.forms[0];
-			var givn =frm.GIVN.value.split(/\s+/)[0]; // uses the first given name only
-			var surn = frm.SURN.value;
+			var surn = jQuery("#SURN").val();
+			var givn = jQuery("#GIVN").val().split(/\s+/)[0]; // uses the first given name only
 			return edit_interface({
 				"action": "checkduplicates",
 				"surname": surn,

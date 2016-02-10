@@ -4387,11 +4387,29 @@ div [id$="_factdiv"] {
 #edit_interface-page .last_change label,
 #edit_interface-page div#PEDI_factdiv label {
     line-height: 18px;
-/*	max-width: 120px;*/
+}
+
+#edit_interface-page.duplicates table {
+	border-collapse: collapse;
+    margin: 0 30px;
+	max-width: 900px;
+	width: 80%;
+}
+
+#edit_interface-page.duplicates th,
+#edit_interface-page.duplicates td {
+	border: 1px solid;
+}
+
+#edit_interface-page.duplicates th {
+	font-weight: 700;
+}
+
+#edit_interface-page.duplicates td {
+	padding: 10px;
 }
 
 /* Addmedia pop-ups*/
-
 #addmedia-page .optionbox select {
 	margin: 0 5px;
 }
