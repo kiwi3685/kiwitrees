@@ -94,7 +94,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Tab
 	public function defaultTabOrder() {
-		return 80;
+		return 60;
 	}
 
 	// Implement WT_Module_Tab
@@ -639,7 +639,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<label for = "rootid" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Individual'); ?></label>
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
-			</div>	
+			</div>
 			<div class="chart_options">
 				<label for = "pedigree_generations" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Generations'); ?></label>
 				<select name="PEDIGREE_GENERATIONS" id="pedigree_generations">
@@ -653,8 +653,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					}
 				?>
 				</select>
-			</div>	
-			<div class="chart_options">				
+			</div>
+			<div class="chart_options">
 				<label for = "checkflags" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?></label>
 					<?php
 						echo '<input name="hideflags" type="checkbox" id="checkflags"';
@@ -663,8 +663,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							}
 						echo '>';
 					?>
-			</div>	
-			<div class="chart_options">				
+			</div>
+			<div class="chart_options">
 				<label for = "checklines" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Hide lines'), help_link('PEDIGREE_MAP_hidelines','googlemap'); ?></label>
 					<?php
 						echo '<input name="hidelines" type="checkbox" id="checklines"';
@@ -672,7 +672,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								echo ' checked="checked"';
 							}
 						echo '>';
-					?>			
+					?>
 			</div>
  			<div class="btn btn-primary" style="display: inline-block;">
  				<button type="submit" value="<?php echo WT_I18N::translate('View'); ?>"><?php echo WT_I18N::translate('View'); ?></button>

@@ -62,7 +62,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 
 	// Implement WT_Module_Tab
 	public function defaultTabOrder() {
-		return 60;
+		return 90;
 	}
 
 	// Implement WT_Module_Tab
