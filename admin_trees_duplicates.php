@@ -42,7 +42,7 @@ $controller
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('
 		autocomplete();
-		
+
 		// prevent more than two boxes from being checked
 		var checked = 0;
 		function addCheck(box) {
@@ -56,10 +56,10 @@ $controller
 				if(cb.checked && ++count>2){
 					alert("Sorry, you can only merge 2 at a time");
 					return false;
-				} 
+				}
 			return true;
 		}
-		
+
 		// loop through all checkboxes with class "check" and create input string for form
 		function checkbox_test() {
 			var counter = 0, i = 0, myvar = new Array();
@@ -90,48 +90,50 @@ $controller
 				}
 				// send checkbox values
 				document.body.appendChild(form);
-				form.submit();   
+				form.submit();
 			} else {
 				alert("There is nothing selected");
 			}
-		}				
+		}
 	');
 
-$action		= safe_GET('action','go', '');
-$gedcom_id	= safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
-$surn		= safe_GET('surname', '[^<>&%{};]*');
-$givn		= safe_GET('given', '[^<>&%{};]*');
+$action		= safe_get('action','go', '');
+$gedcom_id	= safe_get('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
+$surn		= WT_Filter::get('surname', '[^<>&%{};]*');
+$givn		= WT_Filter::get('given', '[^<>&%{};]*');
 $exact_givn	= safe_GET_bool('exact_givn');
 $exact_surn	= safe_GET_bool('exact_surn');
 $married	= safe_GET_bool('married');
 $gender		= safe_GET('gender');
 
 // the sql query used to identify duplicates
-$sql = "
+$sql = '
 	SELECT n_id, n_full, n_surn, n_givn, n_type, n_sort
-	FROM `##name` ";
+	FROM `##name` ';
 	if ($exact_surn) {
-		$sql .= "WHERE n_surn = '".$surn."' ";
+		$sql .= 'WHERE n_surn = "' . $surn  . '" ';
 	} else {
-		$sql .= "WHERE n_surn LIKE '%".$surn."%' ";
+		$sql .= 'WHERE n_surn LIKE "%' . $surn . '%"';
 	}
 	if ($exact_givn) {
-		$sql .= "AND n_givn = '".$givn."' ";
+		$sql .= 'AND n_givn = "' . $givn  . '" ';
 	} else {
-		$sql .= "AND n_givn LIKE '%".$givn."%' ";
+		$sql .= 'AND n_givn LIKE "%' . $givn . '%"';
 	}
-	if (!$married) { $sql .= "AND n_type NOT LIKE '_MARNM'"; }
-	$sql .= "AND n_file = ".$gedcom_id."
-	AND n_full IN (
+	if (!$married) {
+		$sql .= 'AND n_type NOT LIKE "_MARNM" ';
+	}
+	$sql .= 'AND n_file = '. $gedcom_id. ' ';
+	$sql .= 'AND n_full IN (
 		SELECT n_full
 		FROM `##name`
 		GROUP BY n_full
 		HAVING count(n_full) > 1
 		)
-	ORDER BY n_sort ASC";
+	ORDER BY n_sort ASC';
 
 $SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-	
+
 echo '<div id="admin_dup">
 	<h2>' .$controller->getPageTitle(). '</h2>
 	<form method="get" name="duplicates_form" action="', WT_SCRIPT_NAME, '">
@@ -141,7 +143,7 @@ echo '<div id="admin_dup">
 				<select name="ged">';
 				foreach (WT_Tree::getAll() as $tree) {
 					echo '<option value="', $tree->tree_name_html, '"';
-					if (empty($ged) && $tree->tree_id==WT_GED_ID || !empty($ged) && $ged==$tree->tree_name) {
+					if (empty($ged) && $tree->tree_id == WT_GED_ID || !empty($ged) && $ged == $tree->tree_name) {
 						echo ' selected="selected"';
 					}
 					echo ' dir="auto">', $tree->tree_title_html, '</option>';
@@ -173,22 +175,22 @@ echo '<div id="admin_dup">
 					</div>
 			</div>
 			<div id="gender">
-				<label>', WT_I18N::translate('Gender'), '</label>				
+				<label>', WT_I18N::translate('Gender'), '</label>
 				<select name="gender">
 					<option value="A"';
-						if ($gender=='A' || empty($gender)) echo ' selected="selected"';
+						if ($gender == 'A' || empty($gender)) echo ' selected="selected"';
 						echo '>', WT_I18N::translate('Any'), '
 					</option>
 					<option value="M"';
-						if ($gender=='M') echo ' selected="selected"';
+						if ($gender == 'M') echo ' selected="selected"';
 						echo '>', WT_I18N::translate('Male'), '
 					</option>
 					<option value="F"';
-						if ($gender=='F') echo ' selected="selected"';
+						if ($gender == 'F') echo ' selected="selected"';
 						echo '>', WT_I18N::translate('Female'), '
 					</option>
 					<option value="U"';
-						if ($gender=='U') echo ' selected="selected"';
+						if ($gender == 'U') echo ' selected="selected"';
 						echo '>', WT_I18N::translate_c('unknown gender', 'Unknown'), '
 					</option>
 				</select>
@@ -235,11 +237,11 @@ echo '<div id="admin_dup">
 							$i = 0;
 							foreach ($rows as $row) {
 								$i++;
-								$bdate = '';
-								$bplace = '';
-								$ddate = '';
-								$dplace = '';
-								$name1 = $row['n_full'];
+								$bdate	= '';
+								$bplace	= '';
+								$ddate	= '';
+								$dplace	= '';
+								$name1	= $row['n_full'];
 								if ($row['n_type'] == '_MARNM') {
 									$marr = '<span style="font-style:italic;font-size:80%;">('.WT_I18N::translate('Married name').')</span>';
 								} else {
@@ -255,32 +257,32 @@ echo '<div id="admin_dup">
 											$bdate .= $birth_date->Display();
 										}
 									} else {
-										$birth_date=$person->getEstimatedBirthDate();
-										$birth_jd=$birth_date->JD();
+										$birth_date	= $person->getEstimatedBirthDate();
+										$birth_jd	= $birth_date->JD();
 										if ($SHOW_EST_LIST_DATES) {
 											$bdate .= $birth_date->Display();
 										} else {
 											$bdate .= '&nbsp;';
 										}
-										$birth_dates[0]=new WT_Date('');
+										$birth_dates[0] = new WT_Date('');
 									}
 
 									//find birth places
 									foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
-										$tmp=new WT_Place($birth_place, WT_GED_ID);
+										$tmp = new WT_Place($birth_place, WT_GED_ID);
 										if ($n) {$bplace .= '<br>';}
 										$bplace .= $tmp->getShortName();
 									}
 
 									// find death dates
-									if ($death_dates=$person->getAllDeathDates()) {
+									if ($death_dates = $person->getAllDeathDates()) {
 										foreach ($death_dates as $num=>$death_date) {
 											if ($num) {$ddate .= '<br>';}
 											$ddate .= $death_date->Display();
 										}
 									} else {
-										$death_date=$person->getEstimatedDeathDate();
-										$death_jd=$death_date->JD();
+										$death_date	= $person->getEstimatedDeathDate();
+										$death_jd	= $death_date->JD();
 										if ($SHOW_EST_LIST_DATES) {
 											$ddate .= $death_date->Display();
 										} else if ($person->isDead()) {
@@ -290,21 +292,21 @@ echo '<div id="admin_dup">
 										}
 										$death_dates[0]=new WT_Date('');
 									}
-									
+
 									// find death places
 									foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
 										$tmp=new WT_Place($death_place, WT_GED_ID);
 										if ($n) {$dplace .= '<br>';}
 										$dplace .= $tmp->getShortName();
 									}
-									
+
 									//output result rows, grouping exact matches (on full name)
 									if ($name2 == $name1) {
 										echo '<tr>
 											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name1. ' '. $marr. '</a></td>
-											<td><div class="col2">',$bdate,'</div></td>
+											<td><div class="col2">' . $bdate . '</div></td>
 											<td><div class="col3">'. $bplace. '</div></td>
-											<td><div class="col4">',$ddate,'</div></td>
+											<td><div class="col4">' . $ddate . '</div></td>
 											<td><div class="col5">'. $dplace. '</div></td>
 											<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
 											</tr>';
@@ -313,15 +315,15 @@ echo '<div id="admin_dup">
 										echo '<tr><td colspan="5" style="border:0;">&nbsp;</td></tr>
 											<tr>
 											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name2. ' '. $marr. '</a></div></td>
-											<td><div class="col2">',$bdate,'</div></td>
+											<td><div class="col2">' . $bdate . '</div></td>
 											<td><div class="col3">'. $bplace. '</div></td>
-											<td><div class="col4">',$ddate,'</div></td>
+											<td><div class="col4">' . $ddate . '</div></td>
 											<td><div class="col5">'. $dplace. '</div></td>
 											<td><div class="col6"><input type="checkbox" name="gid[]"  onclick="return addCheck(this);" class="check" value="'.$id.'"></div></td>
 											</tr>';
 									}
 								}
-							} 
+							}
 						echo '</tbody>
 					</table>
 				</div>

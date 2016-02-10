@@ -1172,7 +1172,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			convertHidden("NAME");
 		}
 
-		// optional check for possible diplucate person
+		// optional check for possible duplicate person
 		function check_duplicates(surname, given, ged) {
 			var frm  = document.forms[0];
 			var givn =frm.GIVN.value.split(/\s+/)[0]; // uses the first given name only
