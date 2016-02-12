@@ -1519,6 +1519,8 @@ function old_paths() {
 		// Removed in kiwitrees 3.2.0
 		WT_ROOT.'library/framework/FontAwesome/css/WT_font-awesome.css',
 		WT_ROOT.'js/webtrees.js',
+		// Removed in kiwitrees 3.2.0
+		WT_ROOT.'language/unused languages',
 	);
 }
 
