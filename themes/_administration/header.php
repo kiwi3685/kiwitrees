@@ -96,7 +96,7 @@ echo
 			}
 			echo logout_link(),
 			'<span>';
-			$language_menu=WT_MenuBar::getLanguageMenu();
+			$language_menu = WT_MenuBar::getLanguageMenu();
 				if ($language_menu) {
 					echo ' | ', $language_menu->getMenuAsList();
 				}

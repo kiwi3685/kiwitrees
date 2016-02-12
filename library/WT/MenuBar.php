@@ -457,13 +457,14 @@ class WT_MenuBar {
 
 	public static function getLanguageMenu() {
 		global $SEARCH_SPIDER;
+		$languages = WT_I18N::used_languages();
 
 		if ($SEARCH_SPIDER) {
 			return null;
 		} else {
-			$menu=new WT_Menu(WT_I18N::translate('Language'), '#', 'menu-language');
+			$menu = new WT_Menu(WT_I18N::translate('Language'), '#', 'menu-language');
 
-			foreach (WT_I18N::used_languages() as $lang=>$name) {
+			foreach ($languages as $lang=>$name) {
 				$submenu=new WT_Menu($name, get_query_url(array('lang'=>$lang), '&amp;'), 'menu-language-'.$lang);
 				if (WT_LOCALE == $lang) {$submenu->addClass('','','lang-active');}
 				$menu->addSubMenu($submenu);
@@ -479,33 +480,33 @@ class WT_MenuBar {
 	public static function getFavoritesMenu() {
 		global $REQUIRE_AUTHENTICATION, $controller, $SEARCH_SPIDER;
 
-		$show_user_favs=WT_USER_ID               && array_key_exists('widget_favorites',   WT_Module::getActiveModules());
-		$show_gedc_favs=!$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
+		$show_user_favs =  WT_USER_ID && array_key_exists('widget_favorites',   WT_Module::getActiveModules());
+		$show_gedc_favs =! $REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
 
 		if ($show_user_favs && !$SEARCH_SPIDER) {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
-				$favorites=array_merge(
+				$favorites = array_merge(
 					gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
 					widget_favorites_WT_Module::getFavorites(WT_USER_ID)
 				);
 			} else {
-				$favorites=widget_favorites_WT_Module::getFavorites(WT_USER_ID);
+				$favorites = widget_favorites_WT_Module::getFavorites(WT_USER_ID);
 			}
 		} else {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
-				$favorites=gedcom_favorites_WT_Module::getFavorites(WT_GED_ID);
+				$favorites = gedcom_favorites_WT_Module::getFavorites(WT_GED_ID);
 			} else {
 				return null;
 			}
 		}
 		// Sort $favorites alphabetically?
 
-		$menu=new WT_Menu(WT_I18N::translate('Favorites'), '#', 'menu-favorites');
+		$menu = new WT_Menu(WT_I18N::translate('Favorites'), '#', 'menu-favorites');
 
 		foreach ($favorites as $favorite) {
 			switch($favorite['type']) {
 			case 'URL':
-				$submenu=new WT_Menu($favorite['title'], $favorite['url']);
+				$submenu = new WT_Menu($favorite['title'], $favorite['url']);
 				$menu->addSubMenu($submenu);
 				break;
 			case 'INDI':
@@ -513,9 +514,9 @@ class WT_MenuBar {
 			case 'SOUR':
 			case 'OBJE':
 			case 'NOTE':
-				$obj=WT_GedcomRecord::getInstance($favorite['gid']);
+				$obj = WT_GedcomRecord::getInstance($favorite['gid']);
 				if ($obj && $obj->canDisplayName()) {
-					$submenu=new WT_Menu($obj->getFullName(), $obj->getHtmlUrl());
+					$submenu = new WT_Menu($obj->getFullName(), $obj->getHtmlUrl());
 					$menu->addSubMenu($submenu);
 				}
 				break;
@@ -524,7 +525,7 @@ class WT_MenuBar {
 
 		if ($show_user_favs) {
 			if (isset($controller->record) && $controller->record instanceof WT_GedcomRecord) {
-				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
+				$submenu = new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
 				$submenu->addOnclick("jQuery.post('module.php?mod=widget_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
 				$menu->addSubMenu($submenu);
 			}
