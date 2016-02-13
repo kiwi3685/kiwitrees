@@ -64,7 +64,8 @@ background:#a9adbc;
 .makeMenu ul li a:hover, .ui-widget-header, #save-cancel,
 .optionbox,#indi_header .ui-state-active a:link,
 .list_value,.list_value_wrap,.list_value_wrap a,
-#login-form,.new_passwd_form,#register-form,#contact_forms,.message_note {
+#login-form,.new_passwd_form,#register-form,#contact_forms,.message_note,
+#footer {
 background:#f0f2f5;
 }
 

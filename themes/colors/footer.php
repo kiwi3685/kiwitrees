@@ -35,11 +35,9 @@ echo '</div>'; // <div id="content">
 
 if ($view!='simple') {
 	echo '
-		<div id="footer" class="', $TEXT_DIRECTION, '">
-			<br>';
+		<div id="footer" class="', $TEXT_DIRECTION, '">';
 				if (contact_links() != '' && !array_key_exists('contact', WT_Module::getActiveModules())) echo contact_links();
 	echo '
-			<br>
 			<p class="logo">',
 				WT_I18N::translate('Powered by '), '
 				<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>

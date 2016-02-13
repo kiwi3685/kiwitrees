@@ -37,7 +37,13 @@
 html {overflow-y:scroll;}
 
 /* Set defaults */
-body {font:12px tahoma, arial, helvetica, sans-serif;margin: 0;}
+body {
+    font:12px tahoma, arial, helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+	height: 100vh;
+	flex-direction: column;
+}
 legend,.details_label {font-weight:700;}
 a {color:#333333;text-decoration:none;}
 a:hover {color:#ff0000;text-decoration:none;}
@@ -123,8 +129,6 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 /* Menu icons */
 #main-menu > li {background-image:url(../images/sprites-top-menu.png);background-repeat:no-repeat;height:40px;line-height:40px;margin:4px 0 0 16px;text-indent:32px;width:40px;}
 #main-menu li ul li {background-image:url(../images/sprites-sub-menu.png);background-repeat:no-repeat;height:28px;left:auto;line-height:25px;text-align:left;text-indent:22px;width:100%;}
-#main-menu > li#widget-button.fa-bars {background-image:url(../images/icon-widget.png);}
-#main-menu > li#widget-button.fa-times {background-image:url(../images/icon-widget-close.png);}
 
 [dir=rtl] #main-menu  {padding-right:16px;}
 [dir=rtl] #main-menu li {float:right;}
@@ -134,40 +138,33 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 [dir=rtl] #main-menu li li a {display:block; float:right;}
 [dir=rtl] #main-menu > li > ul > li:first-child {text-align:center;}
 
-#main-menu li#menu-fancy_treeview {
-	background: url(../images/menu-ftv.png) no-repeat 50% 25%;
-	background-size: 40px;
-}
-
-#main-menu li#menu-fancy_treeview ul li:not(:first-child) {
-	background: url(../images/menu-ftv-small.png) no-repeat 1% 0;
-	background-size: 22px;
-}
-
-html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
-	background-position: 99% 0;
-}
-
-
 #flash-messages {clear:both;}
 
 /* Menu Icons */
-#menu-tree      {background-position:center     0;}
-#menu-chart     {background-position:center -41px;}
-#menu-list      {background-position:center -82px;}
-#menu-calendar  {background-position:center -123px;}
-#menu-report    {background-position:center -164px;}
-#menu-search    {background-position:center -205px;}
-#menu-help      {background-position:center -246px;}
-#menu-mymenu    {background-position:center -287px;}
-#menu-clippings {background-position:center -328px;}
-#menu-indi      {background-position:center -369px;}
-#menu-sour      {background-position:center -451px;}
-#menu-fam       {background-position:center -410px;}
-#menu-note      {background-position:center -492px;}
-#menu-obje      {background-position:center -533px;}
-#menu-repo      {background-position:center -574px;}
-#menu-story     {background-position:center -616px;}
+#menu-tree              {background-position:center     0;}
+#menu-chart             {background-position:center -41px;}
+#menu-list              {background-position:center -82px;}
+#menu-calendar          {background-position:center -123px;}
+#menu-report            {background-position:center -164px;}
+#menu-search            {background-position:center -205px;}
+#menu-help              {background-position:center -246px;}
+#menu-mymenu            {background-position:center -287px;}
+#menu-clippings         {background-position:center -328px;}
+#menu-indi              {background-position:center -369px;}
+#menu-sour              {background-position:center -451px;}
+#menu-fam               {background-position:center -410px;}
+#menu-note              {background-position:center -492px;}
+#menu-obje              {background-position:center -533px;}
+#menu-repo              {background-position:center -574px;}
+#menu-story             {background-position:center -615px;}
+#menu-my_pages          {background-position:center -656px;}
+#menu-fancy_treeview    {background-position:center -697px;}
+#widget-button.fa-bars  {background-position:center -738px;}
+#widget-button.fa-times {background-position:center -779px;}
+#menu-my_gallery        {background-position:center -820px;}
+#menu-extra-menu        {background-position:center -862px;}
+#menu-contact           {background-position:center -903px;}
+#menu-resources         {background-position:center -943px;}
 
 /* Submenu Icons */
 #menu-chart-ancestry        {background-position:left -208px;} [dir=rtl] #menu-chart-ancestry        {background-position:right -208px;}
@@ -269,8 +266,11 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 /* Stories */
 #menu-story-sub             {background-position:left -1092px;} [dir=rtl] #menu-story-sub            {background-position:right -1040px;}
 
-/* families  */
-#content {clear:both;padding:10px 10px 0 10px;}
+#content {
+    clear:both;
+    padding:10px 10px 0 10px;
+    flex: 1 0 auto;
+}
 #content .center a {font-size:13px;}
 #content .center a.warning,#login-box span.error,#calendar-page span.error {color:#ff5500;}
 
@@ -282,7 +282,12 @@ div.error {color:#dd0000;font-weight:600;}
 
 #pid {background:#ffffcc;color:#333333;}
 
-#footer {clear:both;width:99%;}
+#footer {
+    border-top: 1px solid #999;
+    clear:both;
+	margin-top: 20px;
+    width:99%;
+}
 
 #index .user_messages td {border:1px #999 solid;padding:2px;}
 
@@ -1755,7 +1760,6 @@ div [id$="_factdiv"] {
 [dir=rtl] #cboxSlideshow {right:57px;left:auto; }
 
 /* Styling for simpl_pages module */
-li#menu-my_pages {background:url(../images/pages.png) no-repeat 50% 50%}
 li#menu-my_pages ul li {background:url(../images/pages-small.png) no-repeat left 0}
 [dir=rtl] li#menu-my_pages ul li {background-position:right 0}
 li#menu-my_pages ul li#menu-my_pages-edit {background:url(../images/submenu_edit.png) no-repeat left 0}
@@ -1846,15 +1850,8 @@ ul#research_status ul.sublinks {display:none}
 [dir='rtl'] #album_content div.album_norm , [dir='rtl'] #album_content div.album_new, [dir='rtl'] #album_content div.album_old {float:right;}
 
 /* Styling for gallery module */
-/* Main menu icon */
-li#menu-my_gallery {
-    background:url(../images/gallery.png) no-repeat 50% 50%
-}
 li#menu-my_gallery ul li {
     background:url(../images/gallery-small.png) no-repeat left 0
-}
-html[dir=rtl] li#menu-my_gallery ul li {
-    background-position:right 0
 }
 li#menu-my_gallery ul li#menu-my_gallery-edit {
     background:url(../images/submenu_edit.png) no-repeat left 0
@@ -2194,12 +2191,6 @@ div.widget {
     display: none;
 }
 
-#main-menu li#menu-contact {
-	background: url(../images/contact.png) no-repeat 50% 25%;
-	background-size: 40px;
-}
-
-
 /* Styling for Fancy_treeview module */
 
 /* Page */
@@ -2400,6 +2391,16 @@ div.widget {
 [dir=rtl] #fancy_treeview-page #btn_next {
 	text-align: left;
 }
+
+#main-menu li#menu-fancy_treeview ul li:not(:first-child) {
+	background: url(../images/menu-ftv-small.png) no-repeat 1% 0;
+	background-size: 22px;
+}
+
+html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
+	background-position: 99% 0;
+}
+
 /* ------------------ */
 
 General Resource page styling  */
