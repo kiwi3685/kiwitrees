@@ -1370,7 +1370,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 			}
 			break;
 		case 'ASSO':
-		case '_ASSO': // Some apps (including webtrees) use "2 _ASSO", since "2 ASSO" is not strictly valid GEDCOM
+		case '_ASSO': // Some apps (including kiwitrees) use "2 _ASSO", since "2 ASSO" is not strictly valid GEDCOM
 			if ($level == 1) {
 				echo help_link('ASSO_1');
 			} else {
