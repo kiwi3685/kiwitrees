@@ -4409,7 +4409,6 @@ div [id$="_factdiv"] {
 	padding: 10px;
 }
 
-/* Addmedia pop-ups*/
 #addmedia-page .optionbox select {
 	margin: 0 5px;
 }
@@ -5885,6 +5884,7 @@ div.widget {
 	text-align: left;
 }
 /* ------------------
+
 General Resource page styling  */
 #resource-page .help_content {
 	font-size: inherit;
