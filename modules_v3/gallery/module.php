@@ -257,6 +257,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 					<form name="<?php echo $this->getName(); ?>" method="post" action="#">
 						<input type="hidden" name="save" value="1">
 						<input type="hidden" name="block_id" value="<?php echo $block_id; ?>">
+						<?php echo WT_Filter::getCsrf(); ?>
 						<table id="faq_module">
 							<tr><th><?php echo WT_I18N::translate('Title'); ?></th></tr>
 							<tr><td><input type="text" name="gallery_title" size="90" tabindex="1" value="<?php echo htmlspecialchars($item_title); ?>"></td></tr>
@@ -827,7 +828,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 							$gallery_links .='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.WT_THEME_URL.'images/edit.png" title="'.WT_I18N::translate('Edit').'"></a></div>';
 							if (WT_USER_GEDCOM_ADMIN) {
 								if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-									$gallery_links.='<div class="image_option"><a onclick="return ilinkitem(\''.$rowm['m_id'].'\', \'manage\')" href="#"><img src="'.WT_THEME_URL.'images/link.png" title="'.WT_I18N::translate('Manage links').'"></a></div>';
+									$gallery_links.='<div class="image_option"><a href="inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . WT_GEDCOM . '" target="_blank"><img src="' . WT_THEME_URL . 'images/link.png" title="' . WT_I18N::translate('Manage links') . '"></a></div>';
 								}
 							}
 						$gallery_links.='</div><hr>';// close .edit_links
