@@ -104,13 +104,13 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	}
 
 	public function getMenuTitle() {
-		$default_title = WT_I18N::translate('Resources');
+		$default_title = WT_I18N::translate('Pages');
 		$HEADER_TITLE = WT_I18N::translate(get_module_setting($this->getName(), 'HEADER_TITLE', $default_title));
 		return $HEADER_TITLE;
 	}
 
 	public function getSummaryDescription() {
-		$default_description = WT_I18N::translate('These are resources');
+		$default_description = WT_I18N::translate('These are pages');
 		$HEADER_DESCRIPTION = get_module_setting($this->getName(), 'HEADER_DESCRIPTION', $default_description);
 		return $HEADER_DESCRIPTION;
 	}
@@ -183,6 +183,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 					<form name="pages" method="post" action="#">
 						<input type="hidden" name="save" value="1">
 						<input type="hidden" name="block_id" value="', $block_id, '">
+						<?php echo WT_Filter::getCsrf(); ?>
 						<table id="faq_module">
 							<tr>
 								<th><?php echo WT_I18N::translate('Title'); ?></th>
