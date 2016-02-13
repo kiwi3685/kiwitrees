@@ -157,7 +157,7 @@ function album_print_media($pid, $level=1, $related=false, $kind=0, $noedit=fals
 						$sqlmm .= "m_gedcom LIKE '%TYPE " .strtolower($key). "%' OR ";
 					}
 					if ($tt == WT_I18N::translate('Other')) {
-						$sqlmm .= "m_gedcom NOT LIKE '%TYPE %' OR ";					
+						$sqlmm .= "m_gedcom NOT LIKE '%TYPE %' OR ";
 					}
 				}
 				$sqlmm = rtrim($sqlmm, ' OR ');
@@ -343,18 +343,18 @@ function album_print_media_row($rtype, $rowm, $pid) {
 					$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
 					$submenu->addClass('submenuitem', 'submenu');
 
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
-					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=person', '_blank', find_window_specs);");
+					$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
+					$ssubmenu->addTarget('_blank');
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
-					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=family', '_blank', find_window_specs);");
+					$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
+					$ssubmenu->addTarget('_blank');
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
-					$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=source', '_blank', find_window_specs);");
+					$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
+					$ssubmenu->addTarget('_blank');
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
@@ -362,7 +362,7 @@ function album_print_media_row($rtype, $rowm, $pid) {
 				}
 				// Unlink Media
 				$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
-				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '".$rowm['m_id']."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');");
+				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '".$rowm['m_id']."', '".WT_I18N::translate('Are you sure you want to delete this link?')."');");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 			}

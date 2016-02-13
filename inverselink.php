@@ -99,7 +99,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 							</label>
 							<div class="input">
 								<?php if ($linktoid == "") { ?>
-									<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="<?php echo $linktoid; ?>">
+									<input data-autocomplete-type="INDI" class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="<?php echo $linktoid; ?>">
 									<?php echo print_findindi_link('linktopid');
 								} else {
 									$record = WT_Person::getInstance($linktoid);
@@ -115,7 +115,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 							</label>
 							<div class="input">
 								<?php if ($linktoid == "") { ?>
-									<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="<?php echo $linktoid; ?>">
+									<input data-autocomplete-type="FAM" class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="<?php echo $linktoid; ?>">
 									<?php echo print_findfamily_link('linktofamid');
 								} else {
 									$record = WT_Family::getInstance($linktoid);
@@ -131,7 +131,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 							</label>
 							<div class="input">
 								<?php if ($linktoid == "") { ?>
-									<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="<?php echo $linktoid; ?>">
+									<input data-autocomplete-type="SOUR" class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="<?php echo $linktoid; ?>">
 									<?php echo print_findsource_link('linktosid');
 								} else {
 									$record = WT_Source::getInstance($linktoid);
@@ -147,7 +147,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 							</label>
 							<div class="input">
 								<?php if ($linktoid == "") { ?>
-									<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="<?php echo $linktoid; ?>">
+									<input data-autocomplete-type="REPO" class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="<?php echo $linktoid; ?>">
 								<?php } else {
 									$record = WT_Repository::getInstance($linktoid);
 									echo $record->format_list('span', false, $record->getFullName());
@@ -162,7 +162,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 							</label>
 							<div class="input_group">
 								<?php if ($linktoid == "") { ?>
-									<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="<?php echo $linktoid; ?>">
+									<input data-autocomplete-type="NOTE" class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="<?php echo $linktoid; ?>">
 								<?php } else {
 									$record = WT_Note::getInstance($linktoid);
 									echo $record->format_list('span', false, $record->getFullName());
