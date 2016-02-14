@@ -1520,6 +1520,7 @@ function old_paths() {
 		WT_ROOT.'library/framework/FontAwesome/css/WT_font-awesome.css',
 		WT_ROOT.'js/webtrees.js',
 		WT_ROOT.'language/unused languages',
+		WT_ROOT.'modules_v3/individual_report',
 	);
 }
 
