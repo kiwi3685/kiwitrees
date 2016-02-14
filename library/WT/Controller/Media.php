@@ -94,15 +94,15 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 				$submenu->addTarget('_blank');
 			} else {
 				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'menu-obje-link');
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), '#', 'menu-obje-link-indi');
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'), '#', 'menu-obje-link-indi');
 				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','person');");
 				$submenu->addSubMenu($ssubmenu);
 
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'), '#', 'menu-obje-link-fam');
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To family'), '#', 'menu-obje-link-fam');
 				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','family');");
 				$submenu->addSubMenu($ssubmenu);
 
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'), '#', 'menu-obje-link-sour');
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To source'), '#', 'menu-obje-link-sour');
 				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','source');");
 				$submenu->addSubMenu($ssubmenu);
 			}
@@ -183,15 +183,15 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 					$menu = new WT_Menu(WT_I18N::translate('Set link'));
 					$menu->addClass('', '', 'lb-image_link');
 
-					$submenu = new WT_Menu(WT_I18N::translate('To Person'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
+					$submenu = new WT_Menu(WT_I18N::translate('To individual'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
 					$submenu->addTarget('_blank');
 					$menu->addSubMenu($submenu);
 
-					$submenu = new WT_Menu(WT_I18N::translate('To Family'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
+					$submenu = new WT_Menu(WT_I18N::translate('To family'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
 					$submenu->addTarget('_blank');
 					$menu->addSubMenu($submenu);
 
-					$submenu = new WT_Menu(WT_I18N::translate('To Source'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
+					$submenu = new WT_Menu(WT_I18N::translate('To source'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
 					$submenu->addTarget('_blank');
 					$menu->addSubMenu($submenu);
 					$html .= $menu->getMenuAsList();

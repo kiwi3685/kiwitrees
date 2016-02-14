@@ -343,17 +343,17 @@ function album_print_media_row($rtype, $rowm, $pid) {
 					$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
 					$submenu->addClass('submenuitem', 'submenu');
 
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
+					$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
 					$ssubmenu->addTarget('_blank');
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
+					$ssubmenu = new WT_Menu(WT_I18N::translate('To family'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
 					$ssubmenu->addTarget('_blank');
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
 
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
+					$ssubmenu = new WT_Menu(WT_I18N::translate('To source'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
 					$ssubmenu->addTarget('_blank');
 					$ssubmenu->addClass('submenuitem', 'submenu');
 					$submenu->addSubMenu($ssubmenu);
