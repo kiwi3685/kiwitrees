@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-02-05 11:09+1300\n"
-"PO-Revision-Date: 2016-02-05 11:09+1300\n"
+"POT-Creation-Date: 2016-02-15 10:42+1300\n"
+"PO-Revision-Date: 2016-02-15 10:42+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -94,7 +94,7 @@ msgstr ""
 #: edit_interface.php:509 edit_interface.php:580 edit_interface.php:832
 #: edit_interface.php:939 edit_interface.php:1089 edit_interface.php:1165
 #: edit_interface.php:1292 edit_interface.php:2182 edit_interface.php:2318
-#: edit_interface.php:2560 edit_interface.php:2659 find.php:697
+#: edit_interface.php:2560 edit_interface.php:2661 find.php:697
 #: includes/functions/functions_edit.php:1011 includes/media_reorder.php:166
 #: inverselink.php:180 message.php:173
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:195
@@ -189,7 +189,7 @@ msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr ""
 
 #: addmedia.php:558 admin_media_upload.php:212 help_text.php:1401
-#: modules_v3/gallery/module.php:287
+#: modules_v3/gallery/module.php:288
 msgid "Folder name on server"
 msgstr ""
 
@@ -209,7 +209,7 @@ msgstr ""
 #: addmedia.php:793 admin_trees_config.php:1304 edit_interface.php:214
 #: edit_interface.php:313 edit_interface.php:788 edit_interface.php:927
 #: edit_interface.php:1069 edit_interface.php:1151 edit_interface.php:1280
-#: edit_interface.php:2682 help_text.php:1238
+#: edit_interface.php:2685 help_text.php:1238
 #: includes/functions/functions_edit.php:990
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:610
 msgid "Do not update the “last change” record"
@@ -237,13 +237,13 @@ msgstr ""
 #: modules_v3/custom_js/module.php:74 modules_v3/extra_menus/module.php:200
 #: modules_v3/extra_menus/module.php:332
 #: modules_v3/fancy_treeview/module.php:650 modules_v3/faq/module.php:224
-#: modules_v3/faq/module.php:429 modules_v3/gallery/module.php:367
-#: modules_v3/gallery/module.php:526
+#: modules_v3/faq/module.php:429 modules_v3/gallery/module.php:368
+#: modules_v3/gallery/module.php:527
 #: modules_v3/googlemap/admin_places_edit.php:342
 #: modules_v3/googlemap/module.php:391 modules_v3/googlemap/module.php:598
 #: modules_v3/googlemap/placehierarchy.php:239
 #: modules_v3/googlemap/places_edit.php:338
-#: modules_v3/simpl_pages/module.php:227 modules_v3/simpl_pages/module.php:421
+#: modules_v3/simpl_pages/module.php:228 modules_v3/simpl_pages/module.php:422
 #: modules_v3/simpl_research/module.php:122 modules_v3/sitemap/module.php:262
 #: modules_v3/stories/module.php:397 modules_v3/stories/module.php:525
 msgid "save"
@@ -396,7 +396,6 @@ msgstr ""
 #: modules_v3/descendancy_report/report.bak:612
 #: modules_v3/family_group_report/report.bak:1107
 #: modules_v3/individual_ext_report/report.bak:636
-#: modules_v3/individual_report/report.bak:644
 msgid "Sources"
 msgstr ""
 
@@ -426,7 +425,6 @@ msgstr ""
 #: modules_v3/notes/module.php:35 modules_v3/resource_individual/module.php:203
 #: modules_v3/uk_register/module.php:191 source.php:112 statistics.php:344
 #: modules_v3/individual_ext_report/report.bak:221
-#: modules_v3/individual_report/report.bak:224
 msgid "Notes"
 msgstr ""
 
@@ -460,7 +458,7 @@ msgstr ""
 msgid "The file %s could not be deleted."
 msgstr ""
 
-#: admin_media.php:161 admin_media.php:234 admin_trees_duplicates.php:287
+#: admin_media.php:161 admin_media.php:234 admin_trees_duplicates.php:289
 #: branches.php:189 includes/functions/functions_edit.php:166
 #: includes/functions/functions_edit.php:173
 #: includes/functions/functions_edit.php:1447
@@ -476,7 +474,6 @@ msgstr ""
 #: modules_v3/family_group_report/report.bak:598
 #: modules_v3/family_group_report/report.bak:939
 #: modules_v3/individual_ext_report/report.bak:177
-#: modules_v3/individual_report/report.bak:173
 msgid "yes"
 msgstr ""
 
@@ -493,7 +490,6 @@ msgstr ""
 #: modules_v3/family_group_report/report.bak:601
 #: modules_v3/family_group_report/report.bak:942
 #: modules_v3/individual_ext_report/report.bak:180
-#: modules_v3/individual_report/report.bak:176
 msgid "no"
 msgstr ""
 
@@ -528,7 +524,7 @@ msgstr ""
 msgid "This media file does not exist."
 msgstr ""
 
-#: admin_media.php:454 admin_trees_duplicates.php:205
+#: admin_media.php:454 admin_trees_duplicates.php:207
 #: admin_trees_unlinked.php:69 admin_trees_unlinked.php:74 ancestry.php:108
 #: compact.php:50 descendancy.php:76 familybook.php:57 fanchart.php:64
 #: hourglass.php:74 modules_v3/googlemap/module.php:678 pedigree.php:76
@@ -537,24 +533,27 @@ msgid "View"
 msgstr ""
 
 #: admin_media.php:470 inverselink.php:176 library/WT/Controller/Media.php:96
-#: library/WT/Controller/Media.php:181
+#: library/WT/Controller/Media.php:183
 #: modules_v3/album/album_print_media.php:343
 msgid "Set link"
 msgstr ""
 
 #: admin_media.php:472 library/WT/Controller/Media.php:97
+#: library/WT/Controller/Media.php:186
 #: modules_v3/album/album_print_media.php:346
-msgid "To Person"
+msgid "To individual"
 msgstr ""
 
 #: admin_media.php:477 library/WT/Controller/Media.php:101
+#: library/WT/Controller/Media.php:190
 #: modules_v3/album/album_print_media.php:351
-msgid "To Family"
+msgid "To family"
 msgstr ""
 
 #: admin_media.php:482 library/WT/Controller/Media.php:105
+#: library/WT/Controller/Media.php:194
 #: modules_v3/album/album_print_media.php:356
-msgid "To Source"
+msgid "To source"
 msgstr ""
 
 #: admin_media.php:516 find.php:567
@@ -648,7 +647,7 @@ msgstr ""
 #: admin_module_reports.php:58 admin_module_resources.php:64
 #: admin_module_sidebar.php:76 admin_module_tabs.php:76
 #: admin_module_widgets.php:76 admin_modules.php:128 find.php:452
-#: library/WT/Gedcom/Tag.php:194 modules_v3/gallery/module.php:263
+#: library/WT/Gedcom/Tag.php:194 modules_v3/gallery/module.php:264
 msgid "Description"
 msgstr ""
 
@@ -656,8 +655,8 @@ msgstr ""
 #: admin_module_reports.php:59 admin_module_resources.php:65
 #: admin_module_sidebar.php:78 admin_module_tabs.php:78
 #: admin_module_widgets.php:78 modules_v3/extra_menus/module.php:183
-#: modules_v3/fancy_treeview/module.php:550 modules_v3/gallery/module.php:344
-#: modules_v3/simpl_pages/module.php:202
+#: modules_v3/fancy_treeview/module.php:550 modules_v3/gallery/module.php:345
+#: modules_v3/simpl_pages/module.php:203
 msgid "Access level"
 msgstr ""
 
@@ -712,7 +711,7 @@ msgid "Theme"
 msgstr ""
 
 #: admin_modules.php:137 admin_modules.php:167 library/WT/MenuBar.php:426
-#: modules_v3/simpl_pages/module.php:107 themes/_administration/header.php:206
+#: themes/_administration/header.php:206
 msgid "Resources"
 msgstr ""
 
@@ -810,7 +809,7 @@ msgstr ""
 #: admin_trees_check.php:44 admin_trees_renumber.php:61
 #: admin_trees_sanity.php:45
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:74
-#: modules_v3/album/module.php:280 modules_v3/gallery/module.php:491
+#: modules_v3/album/module.php:280 modules_v3/gallery/module.php:492
 msgid "View FAQ for this page."
 msgstr ""
 
@@ -859,10 +858,10 @@ msgstr ""
 #: library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106
 #: library/WT/Controller/Source.php:106 modules_v3/extra_menus/module.php:397
 #: modules_v3/fancy_treeview/module.php:551 modules_v3/faq/module.php:494
-#: modules_v3/gallery/module.php:590 modules_v3/gedcom_news/module.php:124
+#: modules_v3/gallery/module.php:591 modules_v3/gedcom_news/module.php:124
 #: modules_v3/googlemap/admin_places.php:622
 #: modules_v3/googlemap/admin_places.php:680
-#: modules_v3/simpl_pages/module.php:479 modules_v3/stories/module.php:488
+#: modules_v3/simpl_pages/module.php:480 modules_v3/stories/module.php:488
 #: modules_v3/widget_blog/module.php:93
 #: modules_v3/widget_messages/module.php:84
 #: modules_v3/widget_messages/module.php:113
@@ -946,16 +945,16 @@ msgid "User"
 msgstr ""
 
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237
-#: admin_site_logs.php:260 admin_trees_duplicates.php:140
+#: admin_site_logs.php:260 admin_trees_duplicates.php:142
 #: admin_trees_manage.php:201 admin_trees_places.php:102
 #: admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423
 #: edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:65
 #: modules_v3/extra_menus/module.php:339 modules_v3/extra_menus/module.php:363
 #: modules_v3/fancy_imagebar/module.php:262
 #: modules_v3/fancy_treeview/module.php:520 modules_v3/faq/module.php:436
-#: modules_v3/faq/module.php:460 modules_v3/gallery/module.php:532
-#: modules_v3/gallery/module.php:556 modules_v3/googlemap/module.php:1424
-#: modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:427
+#: modules_v3/faq/module.php:460 modules_v3/gallery/module.php:533
+#: modules_v3/gallery/module.php:557 modules_v3/googlemap/module.php:1424
+#: modules_v3/html/module.php:297 modules_v3/simpl_pages/module.php:428
 #: modules_v3/stories/module.php:464 modules_v3/widget_html/module.php:167
 msgid "Family tree"
 msgstr ""
@@ -1565,7 +1564,7 @@ msgstr ""
 
 #: admin_trees_config.php:273 admin_users.php:405 admin_users.php:566
 #: edituser.php:174 help_text.php:596 library/WT/Gedcom/Tag.php:243
-#: library/WT/MenuBar.php:464
+#: library/WT/MenuBar.php:465
 msgid "Language"
 msgstr ""
 
@@ -1861,13 +1860,13 @@ msgstr ""
 #: admin_trees_config.php:1067 admin_trees_config.php:1088
 #: admin_trees_config.php:1096 admin_trees_config.php:1104 branches.php:85
 #: modules_v3/extra_menus/module.php:345 modules_v3/faq/module.php:442
-#: modules_v3/gallery/module.php:538 modules_v3/googlemap/module.php:251
+#: modules_v3/gallery/module.php:539 modules_v3/googlemap/module.php:251
 #: modules_v3/no_census/module.php:188
 #: modules_v3/resource_changes/module.php:169
 #: modules_v3/resource_individual/module.php:139
 #: modules_v3/resource_individual/module.php:141
 #: modules_v3/resource_todo/module.php:140
-#: modules_v3/simpl_pages/module.php:433 modules_v3/stories/module.php:470
+#: modules_v3/simpl_pages/module.php:434 modules_v3/stories/module.php:470
 #: modules_v3/uk_register/module.php:165
 msgid "show"
 msgstr ""
@@ -2186,7 +2185,6 @@ msgstr ""
 #: modules_v3/cemetery_report/report.bak:8
 #: modules_v3/death_report/report.bak:11
 #: modules_v3/individual_ext_report/report.bak:12
-#: modules_v3/individual_report/report.bak:9
 msgid "None"
 msgstr ""
 
@@ -2221,38 +2219,36 @@ msgstr ""
 msgid "Find duplicate individuals"
 msgstr ""
 
-#: admin_trees_duplicates.php:152 help_text.php:1202
+#: admin_trees_duplicates.php:154 help_text.php:1202
 #: library/WT/Gedcom/Tag.php:330 modules_v3/fancy_treeview/module.php:546
 msgid "Surname"
 msgstr ""
 
-#: admin_trees_duplicates.php:153 admin_trees_duplicates.php:165
-#: admin_trees_duplicates.php:167
+#: admin_trees_duplicates.php:155 admin_trees_duplicates.php:167
+#: admin_trees_duplicates.php:169
 msgid "Match exactly"
 msgstr ""
 
-#: admin_trees_duplicates.php:160 admin_trees_duplicates.php:172
+#: admin_trees_duplicates.php:162 admin_trees_duplicates.php:174
 msgid "Tick for exact match"
 msgstr ""
 
-#: admin_trees_duplicates.php:164 search.php:182
+#: admin_trees_duplicates.php:166 search.php:182
 msgid "Given name"
 msgstr ""
 
-#: admin_trees_duplicates.php:176 admin_trees_sanity.php:96
+#: admin_trees_duplicates.php:178 admin_trees_sanity.php:96
 #: library/WT/Gedcom/Tag.php:316 modules_v3/family_group_report/report.bak:833
 #: modules_v3/individual_ext_report/report.bak:383
 #: modules_v3/individual_ext_report/report.bak:590
-#: modules_v3/individual_report/report.bak:386
-#: modules_v3/individual_report/report.bak:600
 msgid "Gender"
 msgstr ""
 
-#: admin_trees_duplicates.php:180
+#: admin_trees_duplicates.php:182
 msgid "Any"
 msgstr ""
 
-#: admin_trees_duplicates.php:184 calendar.php:584
+#: admin_trees_duplicates.php:186 calendar.php:584
 #: includes/functions/functions_edit.php:1486
 #: library/WT/Controller/Individual.php:265
 #: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3346
@@ -2260,7 +2256,7 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
-#: admin_trees_duplicates.php:188 calendar.php:588
+#: admin_trees_duplicates.php:190 calendar.php:588
 #: includes/functions/functions_edit.php:1488
 #: library/WT/Controller/Individual.php:274
 #: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3346
@@ -2268,7 +2264,7 @@ msgstr ""
 msgid "Female"
 msgstr ""
 
-#: admin_trees_duplicates.php:192 calendar.php:592
+#: admin_trees_duplicates.php:194 calendar.php:592
 #: includes/functions/functions_edit.php:1490
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286
@@ -2276,17 +2272,15 @@ msgstr ""
 #: timeline.php:247 modules_v3/family_group_report/report.bak:833
 #: modules_v3/individual_ext_report/report.bak:383
 #: modules_v3/individual_ext_report/report.bak:590
-#: modules_v3/individual_report/report.bak:386
-#: modules_v3/individual_report/report.bak:600
 msgctxt "unknown gender"
 msgid "Unknown"
 msgstr ""
 
-#: admin_trees_duplicates.php:197
+#: admin_trees_duplicates.php:199
 msgid "Include married names: "
 msgstr ""
 
-#: admin_trees_duplicates.php:220 admin_trees_sanity.php:102
+#: admin_trees_duplicates.php:222 admin_trees_sanity.php:102
 #: edit_interface.php:2624 library/WT/Controller/Individual.php:176
 #: library/WT/Gedcom/Tag.php:267 library/WT/Stats.php:3347
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
@@ -2306,7 +2300,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: admin_trees_duplicates.php:221 admin_trees_sanity.php:84
+#: admin_trees_duplicates.php:223 admin_trees_sanity.php:84
 #: library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1405
 #: modules_v3/bdm_report/report.bak:56
 #: modules_v3/family_group_report/report.bak:177
@@ -2322,21 +2316,11 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:548
 #: modules_v3/individual_ext_report/report.bak:584
 #: modules_v3/individual_ext_report/report.bak:620
-#: modules_v3/individual_report/report.bak:268
-#: modules_v3/individual_report/report.bak:304
-#: modules_v3/individual_report/report.bak:344
-#: modules_v3/individual_report/report.bak:380
-#: modules_v3/individual_report/report.bak:416
-#: modules_v3/individual_report/report.bak:477
-#: modules_v3/individual_report/report.bak:517
-#: modules_v3/individual_report/report.bak:558
-#: modules_v3/individual_report/report.bak:594
-#: modules_v3/individual_report/report.bak:630
 #: modules_v3/relative_ext_report/report.bak:54
 msgid "Birth"
 msgstr ""
 
-#: admin_trees_duplicates.php:222 admin_trees_sanity.php:90
+#: admin_trees_duplicates.php:224 admin_trees_sanity.php:90
 #: library/WT/Gedcom/Tag.php:185 modules_v3/fancy_treeview/module.php:1408
 #: modules_v3/bdm_report/report.bak:85
 #: modules_v3/family_group_report/report.bak:284
@@ -2352,25 +2336,15 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:548
 #: modules_v3/individual_ext_report/report.bak:584
 #: modules_v3/individual_ext_report/report.bak:620
-#: modules_v3/individual_report/report.bak:268
-#: modules_v3/individual_report/report.bak:304
-#: modules_v3/individual_report/report.bak:344
-#: modules_v3/individual_report/report.bak:380
-#: modules_v3/individual_report/report.bak:416
-#: modules_v3/individual_report/report.bak:477
-#: modules_v3/individual_report/report.bak:517
-#: modules_v3/individual_report/report.bak:558
-#: modules_v3/individual_report/report.bak:594
-#: modules_v3/individual_report/report.bak:630
 #: modules_v3/relative_ext_report/report.bak:60
 msgid "Death"
 msgstr ""
 
-#: admin_trees_duplicates.php:224
+#: admin_trees_duplicates.php:226
 msgid "Merge selected"
 msgstr ""
 
-#: admin_trees_duplicates.php:228 admin_trees_duplicates.php:230
+#: admin_trees_duplicates.php:230 admin_trees_duplicates.php:232
 #: edit_changes.php:171 help_text.php:178 help_text.php:208
 #: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.bak:130
 #: modules_v3/bdm_report/report.bak:156 modules_v3/bdm_report/report.bak:190
@@ -2379,7 +2353,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: admin_trees_duplicates.php:229 admin_trees_duplicates.php:231
+#: admin_trees_duplicates.php:231 admin_trees_duplicates.php:233
 #: library/WT/Gedcom/Tag.php:292
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1050
 #: modules_v3/googlemap/admin_places.php:180
@@ -2397,11 +2371,11 @@ msgstr ""
 msgid "Place"
 msgstr ""
 
-#: admin_trees_duplicates.php:244
+#: admin_trees_duplicates.php:246
 msgid "Married name"
 msgstr ""
 
-#: admin_trees_duplicates.php:330
+#: admin_trees_duplicates.php:332
 msgid "No duplicates to display"
 msgstr ""
 
@@ -2903,12 +2877,9 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1305 inverselink.php:98
 #: library/WT/Gedcom/Tag.php:241 modules_v3/charts/module.php:224
 #: modules_v3/googlemap/module.php:639
-#: modules_v3/individual_report/module.php:36
 #: modules_v3/resource_individual/module.php:114
 #: modules_v3/stories/module.php:341 modules_v3/stories/module.php:486
 #: modules_v3/stories/module.php:572 pedigree.php:44
-#: modules_v3/individual_report/report.bak:4
-#: modules_v3/individual_report/report.bak:86
 msgid "Individual"
 msgstr ""
 
@@ -3071,13 +3042,13 @@ msgstr ""
 #: modules_v3/extra_menus/module.php:365
 #: modules_v3/fancy_treeview/module.php:604 modules_v3/faq/module.php:217
 #: modules_v3/faq/module.php:462 modules_v3/gallery/help_text.php:37
-#: modules_v3/gallery/module.php:558 modules_v3/googlemap/admin_places.php:595
+#: modules_v3/gallery/module.php:559 modules_v3/googlemap/admin_places.php:595
 #: modules_v3/googlemap/admin_places.php:738
 #: modules_v3/googlemap/module.php:1429 modules_v3/googlemap/module.php:1445
 #: modules_v3/no_census/module.php:211 modules_v3/random_media/module.php:304
 #: modules_v3/resource_individual/module.php:133
 #: modules_v3/simpl_pages/help_text.php:37
-#: modules_v3/simpl_pages/module.php:222 modules_v3/simpl_pages/module.php:451
+#: modules_v3/simpl_pages/module.php:223 modules_v3/simpl_pages/module.php:452
 #: modules_v3/uk_register/module.php:173
 #: modules_v3/widget_messages/module.php:84
 #: modules_v3/ahnentafel_report/report.bak:8
@@ -3085,7 +3056,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/individual_ext_report/report.bak:8
 #: modules_v3/individual_ext_report/report.bak:12
-#: modules_v3/individual_report/report.bak:9
 #: modules_v3/missing_facts_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:8
 #: modules_v3/relative_ext_report/report.bak:7
@@ -3240,12 +3210,12 @@ msgstr ""
 #: library/WT/Controller/Individual.php:307 library/WT/Controller/Media.php:82
 #: library/WT/Controller/Note.php:81 library/WT/Controller/Repository.php:81
 #: library/WT/Controller/Source.php:81 modules_v3/extra_menus/module.php:392
-#: modules_v3/faq/module.php:489 modules_v3/gallery/module.php:585
-#: modules_v3/gallery/module.php:827 modules_v3/gedcom_news/module.php:123
+#: modules_v3/faq/module.php:489 modules_v3/gallery/module.php:586
+#: modules_v3/gallery/module.php:828 modules_v3/gedcom_news/module.php:123
 #: modules_v3/googlemap/admin_places.php:620
 #: modules_v3/googlemap/admin_places.php:655
 #: modules_v3/googlemap/admin_places.php:678 modules_v3/page_menu/module.php:35
-#: modules_v3/simpl_pages/module.php:474 modules_v3/stories/module.php:487
+#: modules_v3/simpl_pages/module.php:475 modules_v3/stories/module.php:487
 #: modules_v3/widget_blog/module.php:92 note.php:126 note.php:130
 msgid "Edit"
 msgstr ""
@@ -3328,9 +3298,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:197
 #: modules_v3/individual_ext_report/report.bak:211
 #: modules_v3/individual_ext_report/report.bak:477
-#: modules_v3/individual_report/report.bak:193
-#: modules_v3/individual_report/report.bak:214
-#: modules_v3/individual_report/report.bak:487
 msgid "Wife"
 msgstr ""
 
@@ -3342,9 +3309,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:194
 #: modules_v3/individual_ext_report/report.bak:208
 #: modules_v3/individual_ext_report/report.bak:441
-#: modules_v3/individual_report/report.bak:190
-#: modules_v3/individual_report/report.bak:211
-#: modules_v3/individual_report/report.bak:447
 msgid "Husband"
 msgstr ""
 
@@ -5455,7 +5419,7 @@ msgid ""
 "you leave this field empty, the most common surname will be used."
 msgstr ""
 
-#: help_text.php:1207 library/WT/MenuBar.php:503
+#: help_text.php:1207 library/WT/MenuBar.php:504
 #: modules_v3/gedcom_favorites/module.php:35
 #: modules_v3/widget_favorites/module.php:35
 msgid "Favorites"
@@ -9348,7 +9312,6 @@ msgstr ""
 #: includes/functions/functions_print_facts.php:920
 #: includes/functions/functions_print_facts.php:1208
 #: library/WT/Controller/Individual.php:189
-#: modules_v3/album/album_print_media.php:365
 msgid "Are you sure you want to delete this fact?"
 msgstr ""
 
@@ -9361,7 +9324,7 @@ msgstr ""
 #: includes/functions/functions_print_facts.php:483
 #: includes/functions/functions_print_facts.php:505 inverselink.php:130
 #: library/WT/Gedcom/Tag.php:322 modules_v3/fact_sources/module.php:36
-#: modules_v3/gallery/module.php:267 modules_v3/bdm_report/report.bak:134
+#: modules_v3/gallery/module.php:268 modules_v3/bdm_report/report.bak:134
 #: modules_v3/bdm_report/report.bak:160 modules_v3/bdm_report/report.bak:194
 #: modules_v3/birth_report/report.bak:41 modules_v3/death_report/report.bak:52
 #: modules_v3/fact_sources/report.bak:4 modules_v3/fact_sources/report.bak:41
@@ -9751,7 +9714,7 @@ msgstr ""
 #: library/WT/Controller/Family.php:167
 #: library/WT/Controller/Individual.php:369 library/WT/Controller/Media.php:138
 #: library/WT/Controller/Note.php:114 library/WT/Controller/Repository.php:114
-#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:527
+#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:528
 msgid "Add to favorites"
 msgstr ""
 
@@ -9830,27 +9793,15 @@ msgid "Edit gender"
 msgstr ""
 
 #: library/WT/Controller/Media.php:92 library/WT/Controller/Media.php:93
-#: modules_v3/album/album_print_media.php:338 modules_v3/gallery/module.php:830
+#: modules_v3/album/album_print_media.php:338 modules_v3/gallery/module.php:831
 msgid "Manage links"
 msgstr ""
 
-#: library/WT/Controller/Media.php:184
-msgid "To individual"
-msgstr ""
-
-#: library/WT/Controller/Media.php:187
-msgid "To family"
-msgstr ""
-
-#: library/WT/Controller/Media.php:190
-msgid "To source"
-msgstr ""
-
-#: library/WT/Controller/Media.php:194
+#: library/WT/Controller/Media.php:199
 msgid "View details"
 msgstr ""
 
-#: library/WT/Controller/Media.php:197
+#: library/WT/Controller/Media.php:203
 msgid "Edit details"
 msgstr ""
 
@@ -11443,7 +11394,7 @@ msgstr ""
 msgid "%s&nbsp;CE"
 msgstr ""
 
-#: library/WT/Filter.php:247
+#: library/WT/Filter.php:261
 msgid "This form has expired.  Try again."
 msgstr ""
 
@@ -11657,7 +11608,6 @@ msgstr ""
 
 #: library/WT/Gedcom/Code/Pedi.php:90 library/WT/Gedcom/Code/Pedi.php:95
 #: library/WT/Person.php:997 modules_v3/individual_ext_report/report.bak:229
-#: modules_v3/individual_report/report.bak:232
 msgid "Family with parents"
 msgstr ""
 
@@ -13363,7 +13313,7 @@ msgstr ""
 msgid "Submission"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:331 modules_v3/individual_report/report.bak:206
+#: library/WT/Gedcom/Tag.php:331
 msgid "Temple"
 msgstr ""
 
@@ -13378,9 +13328,9 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:334
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1040
-#: modules_v3/extra_menus/module.php:179 modules_v3/gallery/module.php:261
+#: modules_v3/extra_menus/module.php:179 modules_v3/gallery/module.php:262
 #: modules_v3/gedcom_favorites/module.php:191
-#: modules_v3/simpl_pages/module.php:188
+#: modules_v3/simpl_pages/module.php:189
 #: modules_v3/widget_favorites/module.php:209
 msgid "Title"
 msgstr ""
@@ -14220,7 +14170,6 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:749 modules_v3/resource_individual/module.php:134
 #: modules_v3/individual_ext_report/report.bak:12
-#: modules_v3/individual_report/report.bak:9
 msgid "Highlighted image"
 msgstr ""
 
@@ -16849,6 +16798,10 @@ msgstr ""
 msgid "Unlink Media"
 msgstr ""
 
+#: modules_v3/album/album_print_media.php:365
+msgid "Are you sure you want to delete this link?"
+msgstr ""
+
 #: modules_v3/album/module.php:35
 msgid "Album"
 msgstr ""
@@ -18479,7 +18432,7 @@ msgid "Show this menu for which languages?"
 msgstr ""
 
 #: modules_v3/extra_menus/module.php:204 modules_v3/faq/module.php:228
-#: modules_v3/gallery/module.php:371 modules_v3/simpl_pages/module.php:231
+#: modules_v3/gallery/module.php:372 modules_v3/simpl_pages/module.php:232
 #: modules_v3/stories/module.php:401
 msgid "cancel"
 msgstr ""
@@ -18492,7 +18445,7 @@ msgstr ""
 msgid "Menus"
 msgstr ""
 
-#: modules_v3/extra_menus/module.php:396 modules_v3/gallery/module.php:589
+#: modules_v3/extra_menus/module.php:396 modules_v3/gallery/module.php:590
 msgid "Are you sure you want to delete this menu item?"
 msgstr ""
 
@@ -19196,7 +19149,6 @@ msgstr ""
 #: modules_v3/family_group_report/report.bak:462
 #: modules_v3/family_group_report/report.bak:722
 #: modules_v3/individual_ext_report/report.bak:235
-#: modules_v3/individual_report/report.bak:238
 #: modules_v3/relative_ext_report/report.bak:62
 msgid "Father"
 msgstr ""
@@ -19207,7 +19159,6 @@ msgstr ""
 #: modules_v3/family_group_report/report.bak:469
 #: modules_v3/family_group_report/report.bak:729
 #: modules_v3/individual_ext_report/report.bak:271
-#: modules_v3/individual_report/report.bak:274
 #: modules_v3/relative_ext_report/report.bak:63
 msgid "Mother"
 msgstr ""
@@ -19341,8 +19292,8 @@ msgstr ""
 msgid "Search FAQs"
 msgstr ""
 
-#: modules_v3/faq/module.php:414 modules_v3/gallery/module.php:495
-#: modules_v3/simpl_pages/module.php:407
+#: modules_v3/faq/module.php:414 modules_v3/gallery/module.php:496
+#: modules_v3/simpl_pages/module.php:408
 msgid "Summary"
 msgstr ""
 
@@ -19366,8 +19317,8 @@ msgstr ""
 msgid "Edit FAQ items"
 msgstr ""
 
-#: modules_v3/gallery/help_text.php:30 modules_v3/gallery/module.php:342
-#: modules_v3/gallery/module.php:555
+#: modules_v3/gallery/help_text.php:30 modules_v3/gallery/module.php:343
+#: modules_v3/gallery/module.php:556
 msgid "Gallery position"
 msgstr ""
 
@@ -19390,7 +19341,7 @@ msgid ""
 "albums will be visible."
 msgstr ""
 
-#: modules_v3/gallery/help_text.php:35 modules_v3/gallery/module.php:343
+#: modules_v3/gallery/help_text.php:35 modules_v3/gallery/module.php:344
 msgid "Gallery visibility"
 msgstr ""
 
@@ -19505,99 +19456,99 @@ msgstr ""
 msgid "Edit gallerys"
 msgstr ""
 
-#: modules_v3/gallery/module.php:277 themes/kiwitrees/theme.php:35
+#: modules_v3/gallery/module.php:278 themes/kiwitrees/theme.php:35
 msgid "kiwitrees"
 msgstr ""
 
-#: modules_v3/gallery/module.php:299
+#: modules_v3/gallery/module.php:300
 msgid "Flickr"
 msgstr ""
 
-#: modules_v3/gallery/module.php:309
+#: modules_v3/gallery/module.php:310
 msgid "Flickr set number"
 msgstr ""
 
-#: modules_v3/gallery/module.php:321
+#: modules_v3/gallery/module.php:322
 msgid "Picasa"
 msgstr ""
 
-#: modules_v3/gallery/module.php:331
+#: modules_v3/gallery/module.php:332
 msgid "Picasa user/gallery"
 msgstr ""
 
-#: modules_v3/gallery/module.php:341
+#: modules_v3/gallery/module.php:342
 msgid "Show this gallery for which languages?"
 msgstr ""
 
-#: modules_v3/gallery/module.php:467
+#: modules_v3/gallery/module.php:468
 msgid "azur"
 msgstr ""
 
-#: modules_v3/gallery/module.php:496
+#: modules_v3/gallery/module.php:497
 msgid "Galleries"
 msgstr ""
 
-#: modules_v3/gallery/module.php:501 modules_v3/simpl_pages/module.php:413
+#: modules_v3/gallery/module.php:502 modules_v3/simpl_pages/module.php:414
 msgid "Main menu and summary page title"
 msgstr ""
 
-#: modules_v3/gallery/module.php:503 modules_v3/simpl_pages/module.php:415
+#: modules_v3/gallery/module.php:504 modules_v3/simpl_pages/module.php:416
 msgid "Summary page description"
 msgstr ""
 
-#: modules_v3/gallery/module.php:508
+#: modules_v3/gallery/module.php:509
 msgid "Select gallery theme"
 msgstr ""
 
-#: modules_v3/gallery/module.php:544
+#: modules_v3/gallery/module.php:545
 msgid "Add gallery"
 msgstr ""
 
-#: modules_v3/gallery/module.php:606 modules_v3/simpl_pages/module.php:495
+#: modules_v3/gallery/module.php:607 modules_v3/simpl_pages/module.php:496
 msgid "No pages have been created"
 msgstr ""
 
-#: modules_v3/gallery/module.php:663
+#: modules_v3/gallery/module.php:664
 msgid "Show descriptions"
 msgstr ""
 
-#: modules_v3/gallery/module.php:664
+#: modules_v3/gallery/module.php:665
 msgid "Hide descriptions"
 msgstr ""
 
-#: modules_v3/gallery/module.php:665
+#: modules_v3/gallery/module.php:666
 msgid "Play slideshow"
 msgstr ""
 
-#: modules_v3/gallery/module.php:666
+#: modules_v3/gallery/module.php:667
 msgid "Pause slideshow"
 msgstr ""
 
-#: modules_v3/gallery/module.php:667
+#: modules_v3/gallery/module.php:668
 msgid "Enter fullscreen"
 msgstr ""
 
-#: modules_v3/gallery/module.php:668
+#: modules_v3/gallery/module.php:669
 msgid "Exit fullscreen"
 msgstr ""
 
-#: modules_v3/gallery/module.php:669 modules_v3/random_media/module.php:168
+#: modules_v3/gallery/module.php:670 modules_v3/random_media/module.php:168
 msgid "Next image"
 msgstr ""
 
-#: modules_v3/gallery/module.php:670
+#: modules_v3/gallery/module.php:671
 msgid "Previous image"
 msgstr ""
 
-#: modules_v3/gallery/module.php:782
+#: modules_v3/gallery/module.php:783
 msgid "Image collections related to our family"
 msgstr ""
 
-#: modules_v3/gallery/module.php:836
+#: modules_v3/gallery/module.php:837
 msgid "Linked to:"
 msgstr ""
 
-#: modules_v3/gallery/module.php:870
+#: modules_v3/gallery/module.php:871
 msgid "Gallery is empty. Please choose other gallery."
 msgstr ""
 
@@ -20323,7 +20274,7 @@ msgid "Use this value"
 msgstr ""
 
 #: modules_v3/html/help_text.php:34 modules_v3/html/module.php:311
-#: modules_v3/simpl_pages/module.php:194
+#: modules_v3/simpl_pages/module.php:195
 #: modules_v3/widget_html/help_text.php:34
 #: modules_v3/widget_html/module.php:187
 msgid "Content"
@@ -20403,12 +20354,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/module.php:42
 #: modules_v3/individual_ext_report/report.bak:5
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
-
-#: modules_v3/individual_report/module.php:42
-#: modules_v3/resource_individual/module.php:41
-#: modules_v3/individual_report/report.bak:5
-msgid "A report of an individual’s details."
 msgstr ""
 
 #: modules_v3/individuals/module.php:35
@@ -20632,7 +20577,6 @@ msgstr ""
 #: modules_v3/random_media/module.php:304
 #: modules_v3/resource_individual/module.php:171
 #: modules_v3/individual_ext_report/report.bak:151
-#: modules_v3/individual_report/report.bak:147
 msgid "Facts and events"
 msgstr ""
 
@@ -20857,6 +20801,10 @@ msgstr ""
 msgid "Individual report"
 msgstr ""
 
+#: modules_v3/resource_individual/module.php:41
+msgid "A report of an individual’s details."
+msgstr ""
+
 #: modules_v3/resource_individual/module.php:118
 msgid "Show sources"
 msgstr ""
@@ -20871,7 +20819,6 @@ msgstr ""
 
 #: modules_v3/resource_individual/module.php:285
 #: modules_v3/individual_ext_report/report.bak:427
-#: modules_v3/individual_report/report.bak:484
 msgid "Family with wife"
 msgstr ""
 
@@ -21032,7 +20979,8 @@ msgid ""
 "you wish. Simply ensure there is no content if you do not want to display it."
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:36 modules_v3/simpl_pages/module.php:408
+#: modules_v3/simpl_pages/module.php:36 modules_v3/simpl_pages/module.php:107
+#: modules_v3/simpl_pages/module.php:409
 msgid "Pages"
 msgstr ""
 
@@ -21041,10 +20989,10 @@ msgid "Display resource pages."
 msgstr ""
 
 #: modules_v3/simpl_pages/module.php:113
-msgid "These are resources"
+msgid "These are my pages"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:157 modules_v3/simpl_pages/module.php:582
+#: modules_v3/simpl_pages/module.php:157 modules_v3/simpl_pages/module.php:583
 msgid "Edit pages"
 msgstr ""
 
@@ -21052,31 +21000,31 @@ msgstr ""
 msgid "Add pages"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:210
+#: modules_v3/simpl_pages/module.php:211
 msgid "Show this pages for which languages?"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:211
+#: modules_v3/simpl_pages/module.php:212
 msgid "Pages position"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:212
+#: modules_v3/simpl_pages/module.php:213
 msgid "Pages visibility"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:350
+#: modules_v3/simpl_pages/module.php:351
 msgid "No content"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:439
+#: modules_v3/simpl_pages/module.php:440
 msgid "Add page"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:449
+#: modules_v3/simpl_pages/module.php:450
 msgid "Position item"
 msgstr ""
 
-#: modules_v3/simpl_pages/module.php:478
+#: modules_v3/simpl_pages/module.php:479
 msgid "Are you sure you want to delete this page?"
 msgstr ""
 
@@ -22590,7 +22538,6 @@ msgstr ""
 #: modules_v3/descendancy_report/report.bak:41
 #: modules_v3/fact_sources/report.bak:42
 #: modules_v3/family_group_report/report.bak:87
-#: modules_v3/individual_report/report.bak:87
 #: modules_v3/marriage_report/report.bak:29
 #: modules_v3/occupation_report/report.bak:36
 #: modules_v3/relative_ext_report/report.bak:42
@@ -22716,7 +22663,7 @@ msgstr ""
 msgid "_administration"
 msgstr ""
 
-#: themes/colors/footer.php:44 themes/foundation/footer.php:38
+#: themes/colors/footer.php:42 themes/foundation/footer.php:38
 #: themes/kiwitrees/footer.php:38 themes/webtrees/footer.php:39
 #: themes/xenea/footer.php:40
 msgid "Powered by "
@@ -22857,7 +22804,6 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.bak:7
 #: modules_v3/descendancy_report/report.bak:6
 #: modules_v3/individual_ext_report/report.bak:6
-#: modules_v3/individual_report/report.bak:6
 #: modules_v3/missing_facts_report/report.bak:6
 #: modules_v3/pedigree_report/report.bak:6
 #: modules_v3/relative_ext_report/report.bak:6
@@ -22868,14 +22814,12 @@ msgstr ""
 #: modules_v3/descendancy_report/report.bak:8
 #: modules_v3/family_group_report/report.bak:8
 #: modules_v3/individual_ext_report/report.bak:10
-#: modules_v3/individual_report/report.bak:7
 msgid "Show sources?"
 msgstr ""
 
 #: modules_v3/ahnentafel_report/report.bak:10
 #: modules_v3/family_group_report/report.bak:9
 #: modules_v3/individual_ext_report/report.bak:11
-#: modules_v3/individual_report/report.bak:8
 msgid "Show notes?"
 msgstr ""
 
@@ -22899,7 +22843,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:9
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
-#: modules_v3/individual_report/report.bak:10
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/occupation_report/report.bak:8
@@ -22917,7 +22860,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:9
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
-#: modules_v3/individual_report/report.bak:10
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/occupation_report/report.bak:8
@@ -22935,7 +22877,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:9
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
-#: modules_v3/individual_report/report.bak:10
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/occupation_report/report.bak:8
@@ -22953,7 +22894,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:9
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
-#: modules_v3/individual_report/report.bak:10
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/occupation_report/report.bak:8
@@ -22971,7 +22911,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:9
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
-#: modules_v3/individual_report/report.bak:10
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/occupation_report/report.bak:8
@@ -22988,7 +22927,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:10
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
-#: modules_v3/individual_report/report.bak:11
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/occupation_report/report.bak:9
@@ -23006,7 +22944,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:10
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
-#: modules_v3/individual_report/report.bak:11
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/occupation_report/report.bak:9
@@ -23024,7 +22961,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:10
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
-#: modules_v3/individual_report/report.bak:11
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/occupation_report/report.bak:9
@@ -23042,7 +22978,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:10
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
-#: modules_v3/individual_report/report.bak:11
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/occupation_report/report.bak:9
@@ -23063,7 +22998,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:42
 #: modules_v3/family_group_report/report.bak:87
 #: modules_v3/individual_ext_report/report.bak:90
-#: modules_v3/individual_report/report.bak:87
 #: modules_v3/marriage_report/report.bak:29
 #: modules_v3/missing_facts_report/report.bak:51
 #: modules_v3/occupation_report/report.bak:36
@@ -23250,7 +23184,6 @@ msgstr ""
 
 #: modules_v3/family_group_report/report.bak:10
 #: modules_v3/individual_ext_report/report.bak:12
-#: modules_v3/individual_report/report.bak:9
 msgid "Show photos?"
 msgstr ""
 
@@ -23265,13 +23198,11 @@ msgstr ""
 
 #: modules_v3/family_group_report/report.bak:763
 #: modules_v3/individual_ext_report/report.bak:518
-#: modules_v3/individual_report/report.bak:528
 msgid "Son"
 msgstr ""
 
 #: modules_v3/family_group_report/report.bak:798
 #: modules_v3/individual_ext_report/report.bak:554
-#: modules_v3/individual_report/report.bak:564
 msgid "Daughter"
 msgstr ""
 
@@ -23306,17 +23237,14 @@ msgid "Choose relatives"
 msgstr ""
 
 #: modules_v3/individual_ext_report/report.bak:311
-#: modules_v3/individual_report/report.bak:314
 msgid "Brother"
 msgstr ""
 
 #: modules_v3/individual_ext_report/report.bak:347
-#: modules_v3/individual_report/report.bak:350
 msgid "Sister"
 msgstr ""
 
 #: modules_v3/individual_ext_report/report.bak:433
-#: modules_v3/individual_report/report.bak:444
 msgid "Family with husband"
 msgstr ""
 
