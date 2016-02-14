@@ -4371,8 +4371,7 @@ a.icon-udarrow:hover {
 #edit_interface-page [id^="DATE"] .descriptionbox,
 #edit_interface-page [id^="QUAY"] + [id*="OBJE"] .descriptionbox {
 	background: #fff;
-	border: solid #009ada 1px;
-	color: #555;
+	border: 1px solid;
 }
 
 div [id$="_factdiv"] {

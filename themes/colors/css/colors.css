@@ -470,28 +470,28 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .gender_image {border:none;padding-left:3px;padding-right:3px;vertical-align:middle;}
 
 .helpheader {}
-    .help_content {
-    	font-size: .9em;
-    	margin-left: 10px;
-    	margin-right: 10px;
-    	max-height: 600px;
-    }
+.help_content {
+	font-size: .9em;
+	margin-left: 10px;
+	margin-right: 10px;
+	max-height: 600px;
+}
 
-    .help_content dt {
-    	clear: both;
-    }
+.help_content dt {
+	clear: both;
+}
 
-    .help_text .helpheader  {
-    	display:none;
-    }
+.help_text .helpheader  {
+	display:none;
+}
 
-    .help_text .help_content {
-    	border: none;
-    	font-size: .9em;;
-    	font-style: italic;
-    	margin: 10px 0;
-    	width: 100%;
-    }
+.help_text .help_content {
+	border: none;
+	font-size: .9em;;
+	font-style: italic;
+	margin: 10px 0;
+	width: 100%;
+}
 
 .hit-counter {background:#000;color:#fff;font-weight:700;}
 
@@ -726,6 +726,11 @@ p.branches {display:inline;}
 	text-align:left;
 }
 
+#medialist-page #save-cancel {
+	clear: both;
+	float: right;
+    margin: 0 30px;
+}
 .media-list-item {
 	border-bottom: 1px inset #555;
 	float: left;
@@ -944,7 +949,13 @@ p.branches {display:inline;}
 	background-color: transparent;
 	border-radius: 0;
 	color: inherit;
+    text-align: left;
 }
+
+[dir=rtl] #faq-page h2.ui-accordion-header {
+    text-align: right;
+}
+
 
 #faq-page #faq_accordion {
 	clear:both;
@@ -1685,8 +1696,7 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 #edit_interface-page [id^="DATE"] .descriptionbox,
 #edit_interface-page [id^="QUAY"] + [id*="OBJE"] .descriptionbox {
 	background: #fff;
-	border: solid #009ada 1px;
-	color: #555;
+	border: 1px solid;
 }
 
 div [id$="_factdiv"] {
@@ -1722,6 +1732,7 @@ div [id$="_factdiv"] {
 #edit_interface-page.duplicates td {
 	padding: 10px;
 }
+
 /* Addmedia pop-ups*/
 #addmedia-page input[type="text"] {line-height:18px;margin:0 5px;width:300px;}
 #addmedia-page .optionbox select {margin:0 5px;}
@@ -2403,7 +2414,7 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 
 /* ------------------ */
 
-General Resource page styling  */
+/* General Resource page styling  */
 #resource-page .help_content {
 	font-size: inherit;
 	margin: 0;
@@ -2983,6 +2994,5 @@ textarea#NOTE {
        display: block;
        page-break-after: always;
    }
-
 
 }
