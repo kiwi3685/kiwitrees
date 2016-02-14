@@ -110,7 +110,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 	}
 
 	public function getSummaryDescription() {
-		$default_description = WT_I18N::translate('These are pages');
+		$default_description = WT_I18N::translate('These are my pages');
 		$HEADER_DESCRIPTION = get_module_setting($this->getName(), 'HEADER_DESCRIPTION', $default_description);
 		return $HEADER_DESCRIPTION;
 	}
