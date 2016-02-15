@@ -176,21 +176,21 @@ echo '
 		// nor does it make sense on the all/unknown/surname views
 		if (!$SEARCH_SPIDER) {
 			echo '<p class="center">';
-			if ($show!='none') {
-				if ($show_marnm) {
-					echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=no">', WT_I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';
-				} else {
-					echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=yes">', WT_I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
-				}
-
-				if ($alpha!='@' && $alpha!=',' && !$surname) {
-					if ($show=='surn') {
-						echo '<br><a href="', $url, '&amp;show=indi">', WT_I18N::translate('Show the list of individuals'), '</a>';
+				if ($show!='none') {
+					if ($show_marnm) {
+						echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=no">', WT_I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';
 					} else {
-						echo '<br><a href="', $url, '&amp;show=surn">', WT_I18N::translate('Show the list of surnames'), '</a>';
+						echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=yes">', WT_I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
+					}
+
+					if ($alpha!='@' && $alpha!=',' && !$surname) {
+						if ($show=='surn') {
+							echo '<br><a href="', $url, '&amp;show=indi">', WT_I18N::translate('Show the list of individuals'), '</a>';
+						} else {
+							echo '<br><a href="', $url, '&amp;show=surn">', WT_I18N::translate('Show the list of surnames'), '</a>';
+						}
 					}
 				}
-			}
 			echo '</p>';
 		}
 
@@ -267,6 +267,6 @@ echo '
 						WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID)
 					);
 				}
-	}
+			}
+		}
 	echo '</div>';
-}
