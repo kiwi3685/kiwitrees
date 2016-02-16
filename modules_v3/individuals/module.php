@@ -57,7 +57,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 40;
+		return 60;
 	}
 
 	// Implement WT_Module_Sidebar
@@ -140,7 +140,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			});
 		');
 
-		
+
 		$out='<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="'.WT_I18N::translate('Search').'"><p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {

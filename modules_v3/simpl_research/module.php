@@ -46,7 +46,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 9;
+		return 30;
 	}
 
 	// Implement WT_Module_Sidebar

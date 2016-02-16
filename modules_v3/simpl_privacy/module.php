@@ -1,6 +1,6 @@
 <?php
 // A sidebar to show extra/non-genealogical information about an individual
-// 
+//
 // Copyright (C) 2013 Nigel Osborne and kiwtrees.net. All rights reserved.
 //
 // Kiwitrees: Web based Family History software
@@ -42,7 +42,7 @@ class simpl_privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 15;
+		return 20;
 	}
 
 	// Implement WT_Module_Sidebar
@@ -53,7 +53,7 @@ class simpl_privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
 		// code based on similar in function_print_list.php
-		global $MAX_ALIVE_AGE, $SHOW_EST_LIST_DATES, $SEARCH_SPIDER;	
+		global $MAX_ALIVE_AGE, $SHOW_EST_LIST_DATES, $SEARCH_SPIDER;
 		$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 		$controller=new WT_Controller_Individual();
 		$html = '<dl id="privacy_status">';
@@ -82,12 +82,12 @@ class simpl_privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$html .= '</dl>';
 		return $html;
 	}
-	
+
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
 	}
-	
+
 	// This is a copy, with modifications, of the function isDead() in /library/WT/Person.php (w1.4.2)
 	// It is VERY important that the parameters used in both are identical.
 	private function simpl_isDead() {

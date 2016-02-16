@@ -57,7 +57,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 50;
+		return 70;
 	}
 
 	// Implement WT_Module_Sidebar
@@ -72,7 +72,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$alpha   =safe_GET('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname =safe_GET('surname', '[^<>&%{};]*'); // All indis with this surname.  NB - allow ' and "
 		$search   =safe_GET('search');
-		
+
 		if ($search) {
 			return $this->search($search);
 		} elseif ($alpha=='@' || $alpha==',' || $surname) {

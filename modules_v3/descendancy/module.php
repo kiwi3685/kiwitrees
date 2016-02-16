@@ -67,7 +67,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 30;
+		return 50;
 	}
 
 	// Implement WT_Module_Sidebar
