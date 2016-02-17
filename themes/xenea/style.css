@@ -35,7 +35,14 @@
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
 
-body { color:#000066; background-color:#fff; font:12px tahoma, arial, helvetica, sans-serif; margin:1px;}
+body {color:#000066;
+    background-color:#fff;
+    font:12px tahoma, arial, helvetica, sans-serif;
+    margin:1px;
+    display: flex;
+	height: 100vh;
+	flex-direction: column;
+}
 
 a {color:#0000ff;text-decoration:none;}
 a:hover {color:#ff0000;text-decoration:none;}
@@ -175,6 +182,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #menu-repo      {background-position:center -406px;}
 #menu-story     {background-position:center -435px;}
 #menu-contact   {background-position:center -464px;}
+#menu-resources {background-position:center -493px;}
 
 /*******************Menu submenu Icons**********************/
 /* Chart Icons */
@@ -206,6 +214,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* Report Icons */
 #menu-report li             {background-position:left -483px;} [dir=rtl] #menu-report li              {background-position:right -483px;}
+#menu-resources li          {background-position:left -483px;} [dir=rtl] #menu-report li              {background-position:right -483px;}
 
 /* Calendar Icons */
 #menu-calendar-day          {background-position:left -506px;} [dir=rtl] #menu-calendar-day           {background-position:right -506px;}
@@ -472,14 +481,42 @@ font-size:10px;}
 .rtl_cal_day { direction:rtl; float:right; color:#0000ff; font-weight:bold;}
 
 .helpheader {}
+.help_content {
+	font-size: .9em;
+	margin-left: 10px;
+	margin-right: 10px;
+	max-height: 600px;
+}
 
-.help_content { margin-left:10px; margin-right:10px;}
+.help_content dt {
+	clear: both;
+}
 
-.help_content dt { clear:both;}
+.help_text .helpheader  {
+	display:none;
+}
 
-#content { clear:both; margin-left:1px;}
+.help_text .help_content {
+	border: none;
+	font-size: .9em;;
+	font-style: italic;
+	margin: 10px 0;
+	width: 100%;
+}
 
-#footer { clear:both; color:#000066; font-size:12px; width:99%;}
+#content {
+    clear:both;
+    margin-left:1px;
+    flex: 1 0 auto;
+}
+
+#footer {
+    border-top: 2px solid #0073cf;
+    clear:both;
+    color:#000066;
+    font-size:12px;
+    width:99%;
+}
 
 /*-- index.php specific style sheets -- */
 .small_inner_block { max-height:190px; overflow:auto; text-decoration:none;}
@@ -530,15 +567,16 @@ img.block { border:none; height:20px; vertical-align:middle;}
 .chart_options {
 	display: inline-block;
 	margin: 0 20px 10px;
+    vertical-align: top;
 }
 
 .chart_options label {
 	display:block;
-	font-weight:900;
+	font-weight:700;
 }
 
 .chart_options input {
-	width: 100px;
+	width: 200px;
 }
 
 #familybook_chart {margin-left:10px; }
@@ -627,9 +665,11 @@ margin:20px;}
 
 input, button, textarea { border-color:#000066; border-width:1px; font-family:inherit; font-size:12px;}
 
-input, textarea { padding-left:3px; padding-right:3px;}
+input, textarea { padding:5px;}
 
-select { border-color:#84beff; border-width:1px; font-family:inherit; font-size:12px;}
+button { padding: 5px 8px;}
+
+select { border-color:#84beff; border-width:1px; font-family:inherit; font-size:12px; padding: 5px;}
 
 form { font-size:12px;}
 
@@ -640,6 +680,11 @@ h4 { color:#000066; font-weight:bold;font-size:12px;}
 .formField { font-size:12px;}
 
 .starredname { text-decoration:underline;}
+.lifespan_name {
+	font-size: 80%;
+	font-weight: normal;
+	margin: 0 5px;
+}
 
 .search_hit { background-color:#ffff00;}
 .search_item {font-weight:600;}
@@ -885,6 +930,12 @@ p.branches {display:inline;}
 	text-align:left;
 }
 
+#medialist-page #save-cancel {
+	clear: both;
+	float: right;
+    margin: 0 30px;
+}
+
 .media-list-item {
 	border-bottom: 1px inset #555;
 	float: left;
@@ -1033,6 +1084,36 @@ p.branches {display:inline;}
 .login_block_block #login-form, .login_block_block .new_passwd_form {border:0;background:none;}
 [dir=rtl] #login-form label, [dir=rtl] .new_passwd_form label, [dir=rtl] #register-form label, [dir=rtl] #verify-form label {text-align:left;}
 
+/* ============== Edit_Changes Page ======================= */
+#edit_changes-page table {
+	margin: 20px;
+}
+
+#edit_changes-page table table {
+	margin: 5px;
+}
+
+#edit_changes-page h3 {
+	font-size: 1.1em;
+    margin: 3px 0;
+}
+
+#edit_changes-page td, #edit_changes-page th {
+	border: 1px solid;
+	padding: 8px;
+}
+
+#edit_changes-page th {
+	background: #ddd;
+	font-weight: 600;
+}
+
+#edit_changes-page table p {
+	margin: 0;
+	font-size: 1.1em;
+	font-weight: 600;
+}
+
 /* ============== reportengine.php ======================= */
 #reportengine-page table {margin:20px auto;}
 #reportengine-page .report-type {overflow:hidden;margin:auto;width:180px;}
@@ -1071,6 +1152,7 @@ p.branches {display:inline;}
 #tabFilterAndCustom { margin-left:auto; margin-right:auto;}
 #tabAction { margin-left:auto; margin-right:auto;}
 #tabAction td { width:50%; text-align:center;}
+
 /* ======= FAQ page styles ========== */
 #faq-page {
 	margin: 0 auto;
@@ -1082,6 +1164,15 @@ p.branches {display:inline;}
     background-color: transparent;
     border-radius: 0;
     color: inherit;
+    text-align: left;
+}
+
+[dir=rtl] #faq-page h2.ui-accordion-header {
+    text-align: right;
+}
+
+#faq-page #faq_accordion {
+	clear:both;
 }
 
 #faq-page div.ui-widget-content {
@@ -1091,14 +1182,16 @@ p.branches {display:inline;}
 }
 
 #faq-page #faq_search {
-    margin: 10px auto;
-	width: 200px;
+	float: right;
+    margin: 10px 0;
+}
+[dir='rtl'] #faq-page #faq_search {
+	float: left;
 }
 
 #faq-page #faq_search input {
 	font-size: 110%;
 	padding: 5px;
-    width: 200px;
 }
 
 td.descriptionbox a {/* this keeps the tag color the same when it is a link as when not */ color:#0000ff;}
@@ -1210,7 +1303,7 @@ dd .editlink, dd .deletelink {float:right;}
 .ui-accordion .ui-accordion-header a {padding:0.5em;}
 .ui-helper-reset {line-height:1.6;}
 .ui-state-highlight a {color:#ff0000;}
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 0;}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 4px 8px;}
 
 [dir=rtl] .ui-tabs {direction:rtl;}
 [dir=rtl] .ui-tabs .ui-tabs-nav li.ui-tabs-active,
@@ -1348,7 +1441,7 @@ dd .editlink, dd .deletelink {float:right;}
 #tabs {background-color:#fff;border-color:#dddddd;float:left;width:100%;overflow:visible;}
 #sidebar {border-color:#dddddd;display:none;margin:5px 2px 0 0;height:auto;}
 #sidebarAccordion, #sidebarAccordion2 {width:auto;}
-#sidebarAccordion h3, #sidebarAccordion2 h3 {height:30px;text-align:center;border-color:#999999;}
+#sidebarAccordion h3, #sidebarAccordion2 h3 {text-align:center;border-color:#999999;}
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {width:20%;}
@@ -1498,8 +1591,6 @@ dd .editlink, dd .deletelink {float:right;}
 /* ======= Who is online block ========== */
 .logged_in_list {margin:5px 0 0 0;padding:0;line-height:20px;}
 
-@media print { #topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #sidebar, #separator {display:none;} #header, #footer, .noprint {display:none !important;} form, button, input {display:none;} #pedigree_chart {right:auto;left:-80px;} #header_accordion1 {width: 500px!important} [dir=rtl] #pedigree_chart {left:auto;right:-80px;} #familybook_chart h3 {margin-bottom: 10px;} .lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;} .lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1;} #CB_All {display:none;}}
-
 /* Icons */
 [class^="icon-"],[class*=" icon-"] {display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
 .icon-add                  {width:14px;height:15px;background-image:url(images/add.png);}
@@ -1644,41 +1735,213 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/u
 #medialist-page .list_value_wrap a {color:#0000ff;font-weight:normal}
 #medialist-page .list_value_wrap a:hover {color:#ff0000;font-weight:normal}
 
-/* Edit interface pop-ups*/
-#edit_interface-page h4 {color:#555555;margin:5px;}
-#edit_interface-page .optionbox span {margin:0 5px;}
-#edit_interface-page #LATI,#edit_interface-page #LONG,#edit_interface-page #SPFX,#edit_interface-page #NSFX,#edit_interface-page #NPFX {line-height:18px;margin:0 5px;width:88px;}
-#edit_interface-page #GIVN,#edit_interface-page #SURN,#edit_interface-page #_MARNM {line-height:18px;margin:0 5px;width:180px;}
-#edit_interface-page input[type="text"], #edit_interface-page #NAME_display {line-height:18px;margin:0 5px;vertical-align:top;width:240px;}
-#edit_interface-page input[type="text"][id*="PAGE"], #edit_interface-page input[type="text"][id*="_UID"] {width:350px;}
-#edit_interface-page input[type="text"][id*="SOUR"], #edit_interface-page input[type="text"][id*="REPO"],#edit_interface-page input[type="text"][id*="OBJE"],#edit_interface-page input[type="text"][id*="FAMC"],#edit_interface-page input[type="text"][id*="ASSO"],#edit_interface-page input[type="text"][id^="AGE"],#edit_interface-page input[type="text"][id*="SHARED_NOTE"] {width:250px;}
-#edit_interface-page input[type="text"][id$="DATE"] {width:160px;}
-#edit_interface-page input[type="text"][id^="TIME"] {width:100px;}
-#edit_interface-page input[type="text"][id*="OBJE_FILE"] {width:200px;}
-#edit_interface-page input[type="text"][id*="SOUR_TITL"] {width:250px;}
-#edit_interface-page input[id*="TEXT"] {height:140px;width:440px;}
-#edit_interface-page textarea {margin:0 5px;width:440px;}
-#edit_interface-page textarea[id*="NOTE"] {height:240px;}
-#edit_interface-page textarea[id*="TEXT"], #edit_interface-page textarea[id*="PUBL"] {height:140px;}
-#edit_interface-page textarea[id^="newgedrec"] {line-height:18px;width:605px;}
-#edit_interface-page textarea#newgedrec1 {height:20px;}
-#edit_interface-page textarea#newgedrec2 {height:364px;}
-#edit_interface-page textarea[id*="ADDR"], #edit_interface-page input[id*="ADDR"] {height:80px;width:300px;}
-#edit_interface-page #changefam {padding:5px;}
-#edit_interface-page #changefam table {margin:10px auto;min-width:400px;max-width:650px;}
-#edit_interface-page #changefam span {margin:0;}
-#edit_interface-page #changefam td {padding:5px; white-space:normal;}
-#edit_interface-page #changefam td.child {text-align:center;}
-#save-cancel {position:fixed;bottom: 0;background-color:#c3dfff;margin:0;width:98%;}
-#save-cancel input {padding:2px 8px;}
-#save-cancel .save {float:left;margin:5px;}
-#save-cancel .cancel {float:right;margin:5px;}
-[dir=rtl] #save-cancel .save {float:right;}
-[dir=rtl] #save-cancel .cancel {float:left;}
-#edit_interface-page {margin-bottom:50px;}
+/* Edit interface pages*/
+#edit_interface-page #add_facts,
+#edit_interface-page #additional_facts,
+#edit_interface-page #add_name_details,
+#edit_interface-page #add_other_details,
+#addmedia-page #add_facts,
+#addmedia-page #additional_facts {
+	float: left;
+}
+
+[dir='rtl'] #edit_interface-page #add_facts,
+[dir='rtl'] #edit_interface-page #additional_facts,
+[dir='rtl'] #edit_interface-page #add_name_details,
+[dir='rtl'] #edit_interface-page #add_other_details,
+[dir='rtl'] #addmedia-page #add_facts,
+[dir='rtl'] #addmedia-page #additional_facts {
+	float: right;
+}
+
+#edit_interface-page #add_facts,
+#edit_interface-page #additional_facts,
+#edit_interface-page #add_name_details,
+#edit_interface-page #add_other_details,
+#addmedia-page #add_facts,
+#addmedia-page #additional_facts {
+	margin: auto 10px 20px;
+}
+
+#edit_interface-page #add_other_details {
+	border-left: 1px solid;
+	border-right:  1px solid;
+	padding: 0 10px;
+}
+
+#edit_interface-page .input-group-addon,
+#addmedia-page .input-group-addon {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#edit_interface-page span.help_text,
+#addmedia-page span.help_text {
+	display: block;
+	max-width: 500px;
+}
+
+#addmedia-page .help_text {
+	margin: 0 5px;
+}
+
+#edit_interface-page label,
+#addmedia-page label,
+#inverselink-page label {
+	display: inline-block;
+	font-weight: 600;
+	padding: 0 5px;
+	vertical-align: top;
+	width: 25%;
+}
+
+#edit_interface-page .input,
+#addmedia-page .input,
+#inverselink-page .input {
+	display: inline-block;
+	padding: 0 5px;
+}
+
+#addmedia-page select[name="folder_list"],
+#edit_interface-page select[name^="PEDI"] {
+	width: 252px;
+}
+
+#edit_interface-page select[name^="EVEN"] {
+	width: 247px;
+}
+
+#edit_interface-page div[class^="fact_"] {
+	font-size: .9em;
+	margin: 5px;
+}
+
+#edit_interface-page input[type="text"],
+#addmedia-page input[type="text"],
+#edit_interface-page #NAME_display,
+#inverselink-page input[type="text"] {
+	vertical-align: top;
+	width: 240px;
+}
+
+#edit_interface-page input[type="text"][id*="PAGE"],
+#edit_interface-page input[type="text"][id*="_UID"] {
+	width: 300px;
+}
+
+#edit_interface-page input[id*="TEXT"] {
+	height: 140px;
+	width: 440px;
+}
+
+#edit_interface-page textarea {
+	width: 440px;
+}
+
+#edit_interface-page textarea[id*="NOTE"] {
+	height: 240px;
+}
+
+#edit_interface-page textarea[id*="TEXT"],
+#edit_interface-page textarea[id*="PUBL"] {
+	height: 140px;
+}
+
+#edit_interface-page textarea[id^="newgedrec"] {
+	line-height: 20px;
+	min-width: 600px;
+}
+
+#edit_interface-page textarea#newgedrec1 {
+	height: 20px!important;
+}
+
+#edit_interface-page textarea[id*="ADDR"],
+#edit_interface-page input[id*="ADDR"] {
+	height: 80px;
+	width: 300px;
+}
+
+#edit_interface-page #changefamform {
+	padding: 5px;
+}
+
+#edit_interface-page #changefamform td {
+	padding: 8px;
+	white-space: normal;
+}
+
+#edit_interface-page #changefam td.child {
+	text-align: center;
+}
+
+#edit_interface-page .reorder {
+    background-color: #fff;
+	border: 1px solid;
+	cursor: move;
+	margin-bottom: 10px;
+	padding: 0 5px;
+}
+
+#save-cancel {
+	clear: both;
+	float: left;
+}
+
+#save-cancel input {
+	padding: 5px 10px;
+}
+
+#save-cancel .save,
+#save-cancel .cancel {
+	margin: 10px 40px;
+}
+
+#edit_interface-page {
+	margin-bottom: 50px;
+	overflow: hidden;
+}
+
 #edit_interface-page [id^="QUAY"] .descriptionbox,
 #edit_interface-page [id^="DATE"] .descriptionbox,
-#edit_interface-page [id^="QUAY"] + [id*="OBJE"] .descriptionbox{background-color:#ecf5ff; border:solid #c3dfff 1px; color:#000066;}
+#edit_interface-page [id^="QUAY"] + [id*="OBJE"] .descriptionbox {
+	background: #fff;
+	border: 1px solid;
+}
+
+div [id$="_factdiv"] {
+	margin: 10px auto 15px;
+}
+
+#edit_interface-page .last_change {
+	clear: both;
+	max-width: 700px;
+}
+
+#edit_interface-page .last_change label,
+#edit_interface-page div#PEDI_factdiv label {
+    line-height: 18px;
+}
+
+#edit_interface-page.duplicates table {
+	border-collapse: collapse;
+    margin: 0 30px;
+	max-width: 900px;
+	width: 80%;
+}
+
+#edit_interface-page.duplicates th,
+#edit_interface-page.duplicates td {
+	border: 1px solid;
+}
+
+#edit_interface-page.duplicates th {
+	font-weight: 700;
+}
+
+#edit_interface-page.duplicates td {
+	padding: 10px;
+}
 
 /* Addmedia pop-ups*/
 #addmedia-page input[type="text"] {line-height:18px;margin:0 5px;width:300px;}
@@ -1778,6 +2041,17 @@ ul#research_status ul.sublinks {display:none}
 .cousins_lifespan, .cousins_pedi {font-size:9px;padding:3px 5px 5px 5px;}
 .cousins_counter {margin:0 3px;font-size:80%;}
 .cousins_counter:after {content:". ";}
+
+/* Styling for reorder media page */
+#reordermedia-page div.pic {
+	display: table;
+}
+
+#reordermedia-page div.pic span {
+	display: table-cell;
+	padding: 0 10px;
+    vertical-align: middle;
+}
 
 /* Styling for album module */
 #album_content div.pic {width:122px; height:122px; overflow:hidden; display:table;}
@@ -2333,28 +2607,32 @@ div.widget {
 	text-align: left;
 }
 /* ------------------ */
-/* Styles for nocensus module */
+/* General Resource page styling  */
+#resource-page .help_content {
+	font-size: inherit;
+	margin: 0;
+}
+
+#resource-page button {
+	display: inline-block;
+	margin-top: 10px;
+	vertical-align: top;
+}
+
+/* Styles for nocensus resource */
 #resource-page.nocensus {
  	min-width: 100px;
 	vertical-align: top;
- }
-
+}
 #resource-page.nocensus label:nth-of-type(2n),
 #resource-page.nocensus label:nth-of-type(3n) {
 	display: inline;
 	font-weight: normal;
 }
-
 #resource-page.nocensus input {
 	margin: auto 10px;
 	width: initial;
 }
-
-#resource-page .help_content {
-	font-size: inherit;
-    margin: 0;
-}
-
 #nocensus_result {
 	list-style: none;
 	margin: auto;
@@ -2363,7 +2641,6 @@ div.widget {
 	white-space: normal;
 	width: 85%;
 }
-
 #nocensus_result li {
 	display: inline-block;
 	margin-bottom: 40px;
@@ -2372,7 +2649,6 @@ div.widget {
 	vertical-align: top;
 	width: 250px;
 }
-
 #nocensus_result li ul {
 	display: inline;
 	list-style: none;
@@ -2380,7 +2656,6 @@ div.widget {
 	padding: 0;
 	text-align: initial;
 }
-
 #nocensus_result li ul li {
 	width: auto;
 	margin: 0;
@@ -2388,7 +2663,145 @@ div.widget {
 	display: block;
 }
 
+/* Styles for recent changes resource */
+#resource-page.recent_changes table th,
+#resource-page table td {
+	padding:8px;
+}
+#resource-page.recent_changes table.changes th:first-child {
+ 	width: 30px;
+}
+#resource-page.recent_changes .chart_options input[name="pending"] {
+	vertical-align: top;
+	width: 20px;
+}
+#resource-page.recent_changes .chart_options label[for^="pending"] {
+	display: inline-block;
+	font-weight: normal;
+	width: 20px;
+}
+#resource-page.recent_changes {
+	margin: auto;
+	width: 90%;
+}
+
+#resource-page.recent_changes td.wrap p {
+	display: inline;
+	font-size: 80%;
+	padding: 0 10px;
+}
+
+/* Styles for individual report resource */
+#resource-page.individual_report {
+	margin: auto;
+	width: 90%;
+}
+#resource-page.individual_report h3 {
+	margin: 20px 0 5px 0;
+	text-decoration: underline;
+}
+#resource-page.individual_report h4 {
+	font-size: 100%;
+	margin: 0;
+}
+#resource-page.individual_report #facts_events {
+	clear: both;
+}
+#resource-page.individual_report #notes {
+	margin: 30px 0;
+}
+#resource-page.individual_report #notes ol {
+	margin-top: 0;
+}
+#resource-page.individual_report #families {
+	margin: 30px 0;
+}
+#resource-page.individual_report #families .details {
+	font-style: italic;
+}
+#resource-page.individual_report #parents,
+#resource-page.individual_report #spouses {
+	text-indent: 10px;
+}
+#resource-page.individual_report #siblings,
+#resource-page.individual_report #spouse_children {
+	text-indent: 20px;
+}
+#resource-page.individual_report span.label {
+	display: inline-block;
+	font-weight: 700;
+	text-transform: capitalize;
+	width: 200px;
+}
+#resource-page.individual_report #facts_sources {
+	margin: 30px 0;
+}
+#resource-page.individual_report .chart_options label {
+	display:block; font-weight:900;
+}
+#resource-page.individual_report .individual_report_fact {
+	border-bottom: 1px solid;
+}
+#resource-page.individual_report .individual_report_fact label {
+	display: inline-block;
+	font-weight: 700;
+	padding: 5px;
+	width: 15%;
+}
+#resource-page.individual_report .individual_report_fact .date {
+	display: inline-block;
+	min-width: 15%;
+}
+#resource-page.individual_report .individual_report_fact .place {
+	display: inline-block;
+	min-width: 20%;
+}
+#resource-page.individual_report .individual_report_fact .field,
+#resource-page.individual_report .individual_report_fact .field span {
+	display: inline-block;
+	padding: 0 10px;
+}
+#resource-page.individual_report .individual_report_fact sup {
+	color: #ff0000;
+	display: inline-block;
+	font-size: 70%;
+	padding: 0 5px;
+}
+#resource-page.individual_report .individual_report_fact div span,
+#resource-page.individual_report .individual_report_fact div div {
+	padding: 5px;
+	width: 300px;
+}
+#resource-page.individual_report .individual_report_fact .place span {
+	display: initial;
+	padding: 0px;
+}
+
+/* Styles for UK Register resource */
+#resource-page #nocensus_result li i {
+	font-size: 90%;
+}
+
+/* Styles for To Do resource */
+#resource-page.research_tasks {
+	margin: auto;
+	width: 90%;
+}
+#resource-page table th, #resource-page table td {
+	padding:8px;
+}
+#resource-page input[name^="show_"] {
+	vertical-align:
+	top; width: 20px;
+}
+#resource-page label[for^="show_"] {
+	display: inline-block;
+	font-weight: normal;
+	width: 20px;
+}
+
 /* ------------------ */
+
 /* Styles for calendar_utilities module */
 
 #utilities-container {
@@ -2420,71 +2833,267 @@ div.widget {
 
 /* ------------------ */
 
+/* Styles for Census Assistant */
+.cens_header {
+	margin: 10px 0;
+}
+.cens_container {
+	border: 1px solid;
+	padding: 8px;
+}
+.cens_left {
+	float: left;
+	width: 75%;
+}
+.cens_right {
+	float: right;
+}
+.cens_sour {
+	font-weight: bold;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.cens_ctry-yr {
+	display:inline-block;
+}
+.cens_sour_country,
+.cens_sour_year {
+	display: inline;
+	float: left;
+}
+.cens_sour_year {
+	margin: 0 30px;
+}
+
+.cens_sour_year div,
+.cens_sour_country div {
+	display: inline-block;
+}
+.cens_sour_year select,
+.cens_sour_country select {
+	margin: 0 20px;
+}
+.cens_sour_scs {
+	width: 100%;
+}
+
+.cens_sour input {
+	font-weight:normal;
+	width: 99%;
+}
+.cens_sour_1 {
+}
+.cens_sour_2 {
+	margin: 10px 0 0 0;
+}
+.cens_text_header button {
+	margin: 5px 0 0;
+}
+.cens_text_header button:nth-of-type(1) {
+	float:left;
+}
+.cens_text_header button:nth-of-type(2) {
+	float:right;
+}
+.cens_text h3 {
+	margin: 0;
+}
+textarea#NOTE {
+	font-size: inherit;
+	min-height: 200px;
+	width: 99%;
+}
+.cens_search {
+	border: 1px solid;
+	float: right;
+	margin: 0 10px;
+	overflow-x: hidden;
+	padding: 8px;
+}
+.cens_search .cens_table {
+	font-size: 12px;
+}
+.cens_search h4 {
+	font-size: 1em;
+	margin: 0;
+}
+.cens_result {
+	border: 1px solid;
+	padding: 8px;
+}
+.cens_text {
+	overflow: hidden;
+}
+.cens_textinput {
+	border: 1px solid;
+	margin: 10px 0;
+	padding: 8px;
+}
+.cens_textinput_left  {
+	float: left;
+	width: 90%;
+	text-align: center;
+}
+.cens_textinput_right  {
+	float: right;
+	margin: 5px;
+}
+.cens_table td {
+	border: 1px solid;
+	min-width: 15px;
+	padding: 3px;
+	white-space: nowrap;
+}
+.cens_table td p {
+	font-weight: 700;
+	margin: 0;
+}
+.cens_table td.divider {
+	border: none;
+	height: 15px;
+}
+.cens_table .linkcell td {
+	border: 0;
+	font-weight: normal;
+	text-align: left;
+}
+.cens_table .linkcell .ltrnav {
+	background-color: #eee;
+	border: 1px solid;
+	font-size: 90%;
+	left:40px;
+	position: absolute;
+	right: auto;
+	top: -15px;
+}
+.cens_addrows {
+	clear: both;
+}
+.cens_data {
+	min-height: 170px;
+	overflow-x: auto;
+}
+.cens_data table {
+	width: 100%;
+}
+.cens_data table .header {
+	background-color: #ddd;
+	border: 0;
+	min-width: 0;
+	padding: 3px;
+}
+/* ------------------ */
+
 /* RESPOSIVE layout adjustments */
-@media (min-width: 320px) and (max-width: 1024px) {
+@media (min-width: 320px) and (max-width: 900px) {
+   #topMenu #main-menu {
+       display:none;
+   }
+   #navbar {
+       position: initial;
+   }
+   #topMenu #nav-select {
+       background-color: #fff;
+       display:block;
+       font-size: 12px;
+       height: 30px;
+       line-height: 30px;
+       margin: 10px auto;
+       text-align: center;
+       width: 70%;
+   }
 
-	#topMenu #main-menu {
-		display:none;
-	}
-	#navbar {
-		position: initial;
-	}
-	#topMenu #nav-select {
-        background-color: #ECF5FF;
-        border: solid #84BEFF 1px;
-		display: block;
-		font-size: 14px;
-		height: 30px;
-		line-height: 30px;
-		margin: 10px auto;
-		text-align: left;
-		width: 70%;
-	}
-	#topMenu #nav-select select {
-		font-size: 30px;
-		width: 100%;
-	}
-	#topMenu #nav-select option {
-	}
-	#header {
-		height: auto;
-		text-align: center;
-	}
-	#header .title {
-		position: relative;
-		text-align: center;
-        float: none;
-        margin: auto;
-	}
-	#header .hsearch {
-        float: none;
-        padding: 10px;
-        margin: 0;
-	}
-    #optionsmenu  {
-        text-align: center;
-    }
-	#content {
-		top: auto;
-	}
-    #index_main_blocks,
-    #index_small_blocks {
-        float: none;
-        margin: auto;
-        width: 95%;
-    }
-    .media-list-item {
-        width: 95%; /* one per row */
-    }
-    #faq-page {
-		width: 95%;
-	}
+   #topMenu #nav-select a {
+       color: #555;
+   }
 
+   #topMenu #nav-select:hover ul,
+   #topMenu #nav-select:focus ul,
+   #topMenu #nav-select:active ul,
+   #topMenu #nav-select ul:hover ul li,
+   #topMenu #nav-select ul:focus li ul,
+   #topMenu #nav-select ul:active li ul {
+       display:block;
+   }
+   #topMenu #nav-select ul {
+       background-color: #fff;
+       display: none;
+       font-size: 30px;
+       list-style: none;
+       margin: 0;
+       padding: 0 10px;
+       text-align: left;
+   }
+   #topMenu #nav-select li {
+       background-color: #fff;
+       font-size: 12px;
+       padding: 0 10px;
+   }
+   #topMenu #nav-select ul ul li {
+       display:none;
+   }
+   #header {
+       height: auto;
+       text-align: center;
+   }
+   #header .title {
+       position: relative;
+       text-align: center;
+   }
+   #header #extra-menu, #header .header_search {
+       float:none;
+   }
+
+   #content {
+       top: auto;
+   }
+   #home-page #index_main_blocks,
+   #home-page #index_small_blocks > div {
+       float: none;
+       margin: auto;
+       width: 95%;
+   }
+   .media-list-item {
+       width: 95%; /* one per row */
+   }
+   #faq-page {
+       width: 95%;
+   }
+   #edit_interface-page #add_facts,
+   #edit_interface-page #additional_facts,
+   #edit_interface-page #add_name_details,
+   #edit_interface-page #add_other_details,
+   #addmedia-page #add_facts,
+   #addmedia-page #additional_facts,
+   #inverselink-page #add_facts {
+       width: 95%;
+   }
+   #edit_interface-page textarea[id^="newgedrec"] {
+       min-width: 95%;
+   }
+   .cens_left {
+       width: 95%; /* census assistant */
+   }
 }
 
 @media (min-width: 780px) and (max-width: 1680px) {
    .media-list-item {
        width: 45%; /* two per row */
+   }
+   .cens_left {
+       width: 65%; /* census assistant */
+   }
+   #edit_interface-page #add_facts,
+   #edit_interface-page #additional_facts,
+   #addmedia-page #add_facts,
+   #addmedia-page #additional_facts,
+   #inverselink-page #add_facts {
+       width: 45%;
+   }
+   #edit_interface-page #add_name_details,
+   #edit_interface-page #add_other_details,
+   div#add_other_details + div#additional_facts {
+       width: 31%;
    }
 }
 
@@ -2492,4 +3101,83 @@ div.widget {
    .media-list-item {
        width: 31%; /* three per row */
    }
+   #edit_interface-page #add_facts,
+   #edit_interface-page #additional_facts,
+   #addmedia-page #add_facts,
+   #addmedia-page #additional_facts,
+   #inverselink-page #add_facts {
+       width: 756px;
+   }
+   #edit_interface-page #add_name_details,
+   #edit_interface-page #add_other_details,
+   div#add_other_details + div#additional_facts {
+       width: 520px;
+   }
+}
+
+/* PRINT layout adjustments */
+@media all {
+   .page-break	{
+       display: none;
+   }
+}
+
+@media print {
+   #header,
+   #footer,
+   #topMenu,
+   #navbar,
+   #sidebar,
+   .noprint {
+       display: none !important;
+   }
+
+   form,
+   button,
+   input {
+       display: none;
+   } /* buttons and input are used out of forms in sortable tables*/
+
+   .lifespan_outer {
+       position: relative;
+       width: auto;
+       height: auto;
+       overflow: visible;
+       border: none;
+   }
+
+   .lifespan_people {
+       position: absolute;
+       width: auto;
+       left: -10px;
+       top: -60px;
+       z-index: 1;
+   }
+
+   #CB_All {
+       display: none;
+   }
+
+   /* Family tree view pagination */
+   #fancy_treeview .generation-block {
+       page-break-after: always;
+   }
+
+   #fancy_treeview .generation-block:last-child {
+       page-break-after: avoid;
+   }
+
+   #resource-page.individual_report #families,
+   #resource-page.individual_report #facts_sources {
+       page-break-inside: avoid;
+       position: relative;
+       display: block;
+   }
+
+   .page-break	{
+       position: relative;
+       display: block;
+       page-break-after: always;
+   }
+
 }
