@@ -1375,15 +1375,6 @@ span.link_text {display:none;}
 }
 
 ================================================================================
-@media print {
-	form,button,input {display:none;}
-	#header select, #header input, #footer select, #sidebar {display:none;}
-	#header,#footer,.noprint {display:none!important;}
-	#CB_All {display:none;}
-	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
-	.lifespan_people {position:absolute;width:auto;left:-10px;top:-60px;z-index:1;}
-}
-
 /* Icons */
 [class^="icon-"],[class*=" icon-"] {display:inline-block;vertical-align:middle;background-repeat:no-repeat;}
 .icon-add                  {width:14px;height:15px;background-image:url(../images/add.png);}

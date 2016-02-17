@@ -1333,13 +1333,6 @@ dd .editlink, dd .deletelink {float:right;}
 }
 
 ================================================================================
-@media print {
-	#header, #footer, .noprint {display:none !important;}
-	form, button, input {display:none;} /* buttons and input are used out of forms in sortable tables*/
-	.lifespan_outer {position:relative;width:auto;height:auto;overflow:visible;border:none;}
-	.lifespan_people {position:absolute;	width:auto;	left:-10px;	top:-60px;z-index:1;}
-	#CB_All {display:none;}
-}
 
 /* Icons */
 [class^="icon-"], [class*=" icon-"] {display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
