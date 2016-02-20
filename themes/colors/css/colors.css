@@ -25,14 +25,6 @@
 * $Id: colors.css 15070 2013-06-20 23:30:30Z nigel $
 */
 
-/* select horizontal vs portrait display on family page */
-.family1 {display:block;}
-.family2 {display:none;}
-@media screen and (min-width: 1450px) {
-  .family1 {display:none;}
-  .family2 {display:block;}
-}
-
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
 
