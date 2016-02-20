@@ -163,8 +163,10 @@ if ($view!='simple') {
 				}
 			echo '</ul>',
 			// select menu for responsive layouts only
+//			'<div id="menu_select" style="text-align:center;">',
 			'<div id="nav-select" onChange="window.location.href=this.value">
 				<a href="#">Main menu</a>';
+//				<span>', WT_I18N::translate('Choose a page'), '</span>';
 				foreach (WT_MenuBar::getMainMenus() as $menu) {
 					echo $menu->getResponsiveMenu();
 				}
@@ -179,4 +181,5 @@ if ($show_widgetbar) {
 }
 // begin content section
 echo 	$javascript,
+//		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 		'<div id="content">';// closed in footer

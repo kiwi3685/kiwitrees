@@ -128,7 +128,7 @@ case 'loadrows':
 	} else {
 		$ORDER_BY='';
 	}
-
+	
 	$sql=
 		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, '', us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value".
 		" FROM `##user` u".
@@ -140,10 +140,10 @@ case 'loadrows':
 		$WHERE.
 		$ORDER_BY.
 		$LIMIT;
-
+	
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$aaData=WT_DB::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
-
+	
 	// Reformat various columns for display
 	foreach ($aaData as &$aData) {
 		$aData[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
@@ -186,7 +186,7 @@ case 'loadrows':
 			$aData[14]='';
 		}
 	}
-
+	
 	// Total filtered/unfiltered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$iTotalRecords=WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
@@ -309,6 +309,7 @@ case 'createform':
 		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 		->addInlineJavascript('autocomplete();');
 
+	init_calendar_popup();
 	$controller
 	->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}')
 	->addInlineJavascript('
@@ -469,7 +470,7 @@ case 'createform':
 				<td colspan="4">
 					<button class="btn btn-primary" type="submit"><i class="fa fa-user-plus"></i>' , WT_I18N::translate('Create User'), ' </button>
 				</td>
-			</tr>
+			</tr>	
 		</table>
 	</form>';
 	break;
@@ -576,7 +577,7 @@ default:
 			'<tbody>',
 			'</tbody>',
 		'</table>';
-
+	
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
@@ -594,7 +595,7 @@ default:
 			        	.attr("data-autocomplete-ged", "' . $tree->tree_name_html . '")
 			        	.css("width", "50px")
 	    		}
-			});
+			});	
 			var oTable = jQuery("#list").dataTable({
 				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				'.WT_I18N::datatablesI18N().',
@@ -628,9 +629,9 @@ default:
 					jQuery("#list script").each(function() {
 						eval(this.text);
 					});
-				}
+				}				
 			});
-
+			
 			/* When clicking on the +/- icon, we expand/collapse the details block */
 			jQuery("#list tbody").on("click", "td.icon-close", function () {
 				var nTr=this.parentNode;
