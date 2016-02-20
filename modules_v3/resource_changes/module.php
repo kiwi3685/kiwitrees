@@ -86,8 +86,6 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
-		init_calendar_popup();
-
 		//Configuration settings ===== //
 		$action		= WT_Filter::post('action');
 		$set_days	= WT_Filter::post('set_days');
@@ -97,22 +95,23 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 
 		$earliest	= WT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change` WHERE status NOT LIKE 'pending' ")->execute(array())->fetchOne();
 		$latest		= WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change` WHERE status NOT LIKE 'pending' ")->execute(array())->fetchOne();
+
 		if (!$set_days){
 			$from		= WT_Filter::post('date1');
 			$to			= WT_Filter::post('date2');
 			$earliest	= WT_Filter::post('date1', '\d\d\d\d-\d\d-\d\d', $earliest);
-			$latest		= WT_Filter::post('date2', '\d\d\d\d-\d\d-\d\d', $latest);
-			$date1		= new DateTime($from);
-			$date2		= new DateTime($to);
-			$days		= $date2->diff($date1)->format("%a");
-			$disp_from	= preg_replace("[\s-(.*)]", "",strip_tags(format_timestamp(strtotime($earliest))));
-			$disp_to	= preg_replace("[\s-(.*)]", "", strip_tags(format_timestamp(strtotime($latest))));
+			$latest		= WT_Filter::post('date2', '\d\d\d\d-\d\d\-\d\d', $latest);
+			$date1		= new DateTime($earliest);
+			$date2		= new DateTime($latest);
+			$days		= $date1->diff($date2)->format("%a") + 1;
+			$disp_from	= strtoupper(date('d M Y', strtotime($earliest)));
+			$disp_to	= strtoupper(date('d M Y', strtotime($latest)));
 		}
 
 		$rows = WT_DB::prepare(
 			"SELECT xref".
-			" FROM `##change`".
-			" WHERE status='pending' AND gedcom_id=?".
+			" FROM `##change`" .
+			" WHERE status='pending' AND gedcom_id=?" .
 			" GROUP BY xref"
 		)->execute(array(WT_GED_ID))->fetchAll();
 		$pending_changes = array();
@@ -120,7 +119,23 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 			$pending_changes[] = $row->xref;
 		}
 
-		$recent_changes = get_recent_changes(WT_CLIENT_JD - ($set_days ? $set_days : $days));
+		if ($set_days){
+			$recent_changes = get_recent_changes(WT_CLIENT_JD - $set_days);
+		} else {
+			$rows = WT_DB::prepare(
+				"SELECT xref".
+				" FROM `##change`" .
+				" WHERE status='accepted' AND gedcom_id=?" .
+				" AND change_time >= ?" .
+				" AND change_time <= ?" .
+				" GROUP BY xref"
+			)->execute(array(WT_GED_ID, date('Y-m-d', strtotime($from)), date('Y-m-d', strtotime($to))))->fetchAll();
+			$recent_changes = array();
+			foreach ($rows as $row) {
+				$recent_changes[] = $row->xref;
+			}
+
+		}
 
 		// Prepare table headers and footers
 		$table_header = '
