@@ -2003,8 +2003,8 @@ case 'addname':
 
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
-		<?php echo
-			$person=WT_Person::getInstance($pid);
+		<?php
+			$person = WT_Person::getInstance($pid);
 			print_indi_form('update', '', 'new', 'NEW', '', $person->getSex());
 		?>
 	</div> <!-- id="edit_interface-page" -->
@@ -2074,7 +2074,7 @@ case 'al_reset_media_update': // Reset sort using Album Page
 			$newgedrec .= $line."\n";
 		}
 	}
-	$success=replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 
 	if ($success && !WT_DEBUG) {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
