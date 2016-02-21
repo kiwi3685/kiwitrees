@@ -104,8 +104,8 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 			$date1		= new DateTime($earliest);
 			$date2		= new DateTime($latest);
 			$days		= $date1->diff($date2)->format("%a") + 1;
-			$disp_from	= strtoupper(date('d M Y', strtotime($earliest)));
-			$disp_to	= strtoupper(date('d M Y', strtotime($latest)));
+			$disp_from	= $earliest ? strtoupper(date('d M Y', strtotime($earliest))) : '';
+			$disp_to	= $latest ? strtoupper(date('d M Y', strtotime($latest))) : '';
 		}
 
 		$rows = WT_DB::prepare(
