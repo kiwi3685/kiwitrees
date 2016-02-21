@@ -1521,6 +1521,7 @@ function old_paths() {
 		WT_ROOT.'js/webtrees.js',
 		WT_ROOT.'language/unused languages',
 		WT_ROOT.'modules_v3/individual_report',
+		WT_ROOT.'modules_v3/change_report',
 	);
 }
 
