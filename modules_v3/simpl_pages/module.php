@@ -182,7 +182,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 				<div id="<?php echo $this->getName(); ?>">
 					<form name="pages" method="post" action="#">
 						<input type="hidden" name="save" value="1">
-						<input type="hidden" name="block_id" value="', $block_id, '">
+						<input type="hidden" name="block_id" value="<?php echo $block_id;?>">
 						<?php echo WT_Filter::getCsrf(); ?>
 						<table id="faq_module">
 							<tr>
@@ -203,7 +203,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 								<th><?php echo WT_I18N::translate('Access level'); ?></th>
 							</tr>
 							<tr>
-								<td><?php edit_field_access_level('pages_access', $items_access, 'tabindex="4"'); ?></td>
+								<td><?php echo edit_field_access_level('pages_access', $items_access, 'tabindex="4"'); ?></td>
 							</tr>
 						</table>
 						<table id="pages_module">
@@ -219,7 +219,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 									echo edit_language_checkboxes('lang_', $languages);
 									?>
 								</td>
-								<td><input type="text" name="block_order" size="3" tabindex="5" value="<?php $block_order; ?>"></td>
+								<td><input type="text" name="block_order" size="3" tabindex="5" value="<?php echo $block_order; ?>"></td>
 								<td><?php echo select_edit_control('gedcom_id', WT_Tree::getIdList(), WT_I18N::translate('All'), $gedcom_id, 'tabindex="4"'); ?></td>
 							</tr>
 						</table>
@@ -485,7 +485,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 									<td colspan="5">
 										<div class="faq_edit_item">
 											<div class="faq_edit_title"><?php echo WT_I18N::translate($item->pages_title); ?></div>
-											<div><?php substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content); ?></div>
+											<div><?php echo substr($item->pages_content, 0, 1)=='<' ? $item->pages_content : nl2br($item->pages_content); ?></div>
 										</div>
 									</td>
 								</tr>

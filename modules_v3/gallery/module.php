@@ -596,7 +596,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 									<td colspan="5">
 										<div class="faq_edit_item">
 											<div class="faq_edit_title"><?php echo WT_I18N::translate($gallery->gallery_title);?></div>
-											<div><?php substr($gallery->gallery_description, 0, 1)=='<' ? $gallery->gallery_description : nl2br($gallery->gallery_description);?></div>
+											<div><?php echo substr($gallery->gallery_description, 0, 1)=='<' ? $gallery->gallery_description : nl2br($gallery->gallery_description);?></div>
 										</div>
 									</td>
 								</tr>
