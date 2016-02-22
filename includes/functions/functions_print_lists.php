@@ -1322,14 +1322,14 @@ function format_story_table($datalist) {
 				$languages=get_block_setting($story, 'languages');
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 					$html .= '<tr>
-						<td>'. $story_title. '</td>
+						<td>'. highlight_search_hits($story_title) . '</td>
 						<td>';
 							for ($x = 0; $x < $count_xref; $x++) {
 								$indi[$x] = WT_Person::getInstance($xref[$x]);
 								if (!$indi[$x]){
 									$html .= '<p style="margin:0;" class="error">'. $xref[$x]. '</p>';
 								} else {
-									$html .= '<p style="margin:0;"><a href="' . $indi[$x]->getHtmlUrl() . '" class="current">'.$indi[$x]->getFullName(). '</a></p>';
+									$html .= '<p style="margin:0;"><a href="' . $indi[$x]->getHtmlUrl() . '" class="current">' . highlight_search_hits($indi[$x]->getFullName()) . '</a></p>';
 								}
 							}
 						$html .= '</td>
