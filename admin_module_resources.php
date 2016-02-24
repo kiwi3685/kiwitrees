@@ -38,18 +38,12 @@ $action = safe_POST('action');
 if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$access_level = safe_POST("resourceaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$value = safe_POST("blockaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'resource', ?)"
-			)->execute(array($module_name, $tree->tree_id, $access_level));
+			)->execute(array($module_name, $tree->tree_id, $value));
 		}
-		$order = safe_POST('resourceorder-'.$module_name);
-		WT_DB::prepare(
-			"UPDATE `##module` SET resource_order=? WHERE module_name=?"
-		)->execute(array($order, $module_name));
-		$module->order = $order; // Make the new order take effect immediately
 	}
-	uasort($modules, create_function('$x,$y', 'return $x->order > $y->order;'));
 }
 
 ?>
@@ -77,10 +71,10 @@ if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 							<table class="modules_table2">
 								<?php
 								foreach (WT_Tree::getAll() as $tree) {
-									$varname = 'resourceaccess-'.$module_name.'-'.$tree->tree_id;
+									$varname = 'resourceaccess-'.$module->getName().'-'.$tree->tree_id;
 									$access_level = WT_DB::prepare(
 										"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='resource'"
-									)->execute(array($tree->tree_id, $module_name))->fetchOne();
+									)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
 									if ($access_level === null) {
 										$access_level=$module->defaultAccessLevel();
 									}
