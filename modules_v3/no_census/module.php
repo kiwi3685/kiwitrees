@@ -57,6 +57,16 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 		return WT_PRIV_USER;
 	}
 
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
+	// Implement WT_Module_Menu
+	public function getMenu() {
+		return false;
+	}
+
 	// Implement WT_Module_Resources
 	public function getResourceMenus() {
 		$menus	= array();
