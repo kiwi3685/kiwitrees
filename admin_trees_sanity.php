@@ -97,7 +97,7 @@ $controller
 				</li>
 				<li class="facts_value" name="dupe_name" id="dupe_name" >
 					<input type="checkbox" name="dupe_name" value="dupe_name"
-						<?php if (WT_Filter::post('dupe_sex')) echo ' checked="checked"'?>
+						<?php if (WT_Filter::post('dupe_name')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Name'); ?>
 				</li>
