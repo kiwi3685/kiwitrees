@@ -1519,7 +1519,6 @@ function old_paths() {
 		// Removed in kiwitrees 3.2.0
 		WT_ROOT.'library/framework/FontAwesome/css/WT_font-awesome.css',
 		WT_ROOT.'js/webtrees.js',
-		WT_ROOT.'language/unused languages',
 		WT_ROOT.'modules_v3/individual_report',
 		WT_ROOT.'modules_v3/change_report',
 	);
