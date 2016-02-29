@@ -26,7 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -55,7 +55,7 @@ class WT_Controller_Clippings {
 
 	public function __construct() {
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $WT_SESSION;
-
+		
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
 			$WT_SESSION->cart=array();
@@ -215,12 +215,12 @@ class WT_Controller_Clippings {
 					switch ($object->getType()) {
 					case 'INDI':
 						$filetext .= $record."\n";
-						$filetext .= "1 SOUR @KIWITREES@\n";
+						$filetext .= "1 SOUR @WEBTREES@\n";
 						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
 					case 'FAM':
 						$filetext .= $record."\n";
-						$filetext .= "1 SOUR @KIWITREES@\n";
+						$filetext .= "1 SOUR @WEBTREES@\n";
 						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
 					case 'SOUR':
@@ -248,7 +248,7 @@ class WT_Controller_Clippings {
 			if ($this->IncludeMedia == "yes") {
 				$this->media_list = $media;
 			}
-			$filetext .= "0 @KIWITREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
+			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
 			if ($user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
 				$filetext .= "1 AUTH " . getUserFullName($user_id) . "\n";
 			}
@@ -271,7 +271,7 @@ class WT_Controller_Clippings {
 			fclose($fp);
 			$zipName = "clippings".rand(0, 1500).".zip";
 			$fname = WT_DATA_DIR.$zipName;
-			$comment = "Created by ".WT_KIWITREES." ".WT_VERSION_TEXT." on ".date("d M Y").".";
+			$comment = "Created by ".WT_WEBTREES." ".WT_VERSION_TEXT." on ".date("d M Y").".";
 			$archive = new PclZip($fname);
 			// add the ged file to the root of the zip file (strip off the data folder)
 			$this->media_list[]= array (PCLZIP_ATT_FILE_NAME => WT_DATA_DIR.$tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);

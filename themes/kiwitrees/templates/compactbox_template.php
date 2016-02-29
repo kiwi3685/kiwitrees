@@ -27,7 +27,7 @@
 //
 // $Id: compactbox_template.php 13642 2012-03-24 13:06:08Z greg $
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

@@ -20,7 +20,7 @@
 //
 // $Id$
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -29,7 +29,7 @@ echo '</div>'; // id="admin_content"
 if ($view!='simple') {
 	echo '<div id="admin_footer">';
 		echo '<p class="logo">';
-		echo '<a href="', WT_KIWITREES_URL, '" target="_blank" title="', WT_KIWITREES, ' ', WT_VERSION_TEXT, '">', WT_KIWITREES,'</a>';
+		echo '<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'</a>';
 		echo '</p>';
 		if (WT_DEBUG) {
 			echo execution_stats();

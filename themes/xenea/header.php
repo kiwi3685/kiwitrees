@@ -26,7 +26,7 @@
 //
 // $Id$
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

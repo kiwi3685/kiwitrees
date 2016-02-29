@@ -30,7 +30,7 @@
 //
 // $Id: block_main_temp.php 12663 2011-11-10 00:29:50Z greg $
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

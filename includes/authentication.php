@@ -31,7 +31,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -197,7 +197,7 @@ function AddToLog($log_message, $log_type='error') {
 	)->execute(array(
 		$log_type,
 		$log_message,
-		WT_CLIENT_IP,
+		$WT_REQUEST->getClientIp(),
 		defined('WT_USER_ID') && WT_USER_ID && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? WT_USER_ID : null,
 		defined('WT_GED_ID') ? WT_GED_ID : null
 	));
@@ -212,7 +212,7 @@ function AddToSearchLog($log_message, $geds) {
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 		)->execute(array(
 			(count(WT_Tree::getAll())==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
-			WT_CLIENT_IP,
+			$WT_REQUEST->getClientIp(),
 			WT_USER_ID ? WT_USER_ID : null,
 			$tree->tree_id
 		));
@@ -242,8 +242,8 @@ function addMessage($message) {
 		}
 		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
 	}
-	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".WT_CLIENT_IP."\r\n";
-	$copy_email .= "DNS LOOKUP: ".gethostbyaddr(WT_CLIENT_IP)."\r\n";
+	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
+	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
 	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
 	$copy_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
 	$from ='';
@@ -293,15 +293,15 @@ function addMessage($message) {
 	if (!userIsAdmin($user_id_from)) {
 		if (!empty($message['url']))
 			$message['body'] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
-		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".WT_CLIENT_IP."\r\n";
-		$message['body'] .= "DNS LOOKUP: ".gethostbyaddr(WT_CLIENT_IP)."\r\n";
+		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
+		$message['body'] .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
 		$message['body'] .= "LANGUAGE: ".WT_LOCALE."\r\n";
 	}
 	if (empty($message['created']))
 		$message['created'] = gmdate ("D, d M Y H:i:s T");
 	if ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-			->execute(array($message['from'], WT_CLIENT_IP, get_user_id($message['to']), $message['subject'], $message['body']));
+			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}
 	if ($message['method']!='messaging') {
 		$oryginal_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];

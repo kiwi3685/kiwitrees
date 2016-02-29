@@ -25,7 +25,7 @@
 // $Id: pclzip.lib.php,v 1.60 2009/09/30 21:01:04 vblavet Exp $
 // --------------------------------------------------------------------------------
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

@@ -24,7 +24,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_KIWITREES')) {
+if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -37,7 +37,7 @@ if ($view!='simple') {
 	echo '
 			<p class="logo">',
 				WT_I18N::translate('Powered by '), '
-				<a href="', WT_KIWITREES_URL, '" target="_blank" title="', WT_KIWITREES, ' ', WT_VERSION_TEXT, '">', WT_KIWITREES,'<span>&trade;</span></a>
+				<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>
 			</p>';
 			if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 				echo execution_stats();
