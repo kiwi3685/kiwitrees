@@ -1,7 +1,7 @@
 /*
-jQuery BigText v1.2.0, May 2014 *** MODIFED BY KIWITREES>NET ***
+jQuery BigText v1.2.0, May 2014 *** MODIFED BY KIWITREESNET ***
 
-Usage: 
+Usage:
 $("#div").bigText({
 	fontSizeFactor: {Number}, (0.8)
 	maximumFontSize: {Number}, (null)
@@ -34,23 +34,23 @@ Copyright (C) 2013 Daniel Hoffmann Bernardes, Ícaro Technologies
 
 
 (function($){
-    "use strict"; 
+    "use strict";
     var defaultOptions= {
         fontSizeFactor: 0.8,
         maximumFontSize: null,
         limitingDimension: "both",
         verticalAlign: "center",
     };
-    
+
     $.fn.bigText= function(options) {
         return this.each(function() {
             options= $.extend({}, defaultOptions, options);
             var $this= $(this);
             var $parent= $this.parent();
-            
+
             //hides the element to prevent "flashing"
             $this.css("visibility", "hidden");
-                        
+
             $this.css({
                 display: "inline-block",
                 clear: "both",
@@ -61,54 +61,54 @@ Copyright (C) 2013 Daniel Hoffmann Bernardes, Ícaro Technologies
                 margin: 0,
                 top: "50%"
             });
-            
+
             var parentPadding= {
                 left: parseInt($parent.css('padding-left')),
                 top: parseInt($parent.css('padding-top')),
                 right: parseInt($parent.css('padding-right')),
                 bottom: parseInt($parent.css('padding-bottom'))
             };
-                        
+
             var box= {
                 width: $this.outerWidth(),
                 height: $this.outerHeight()
             };
-            
+
             var widthFactor= ($parent.innerWidth() - parentPadding.left - parentPadding.right) / box.width;
             var heightFactor= ($parent.innerHeight() - parentPadding.top - parentPadding.bottom) / box.height;
             var lineHeight;
-            
+
             if (options.limitingDimension.toLowerCase() === "width") {
                 lineHeight= Math.floor(widthFactor * 1000);
                 $parent.height(lineHeight);
             } else if (options.limitingDimension.toLowerCase() === "height") {
                 lineHeight= Math.floor(heightFactor * 1000);
             } else if (widthFactor < heightFactor)
-                lineHeight= Math.floor(widthFactor * 1000);        
+                lineHeight= Math.floor(widthFactor * 1000);
             else if (widthFactor >= heightFactor)
                 lineHeight= Math.floor(heightFactor * 1000);
-            
+
             var fontSize= lineHeight * options.fontSizeFactor;
             if (options.maximumFontSize !== null && fontSize > options.maximumFontSize) {
                 fontSize= options.maximumFontSize;
                 lineHeight= fontSize / options.fontSizeFactor;
             }
-    
-    
+
+
             $this.css({
                 'font-size': Math.floor(fontSize)  + "px",
                 'line-height': Math.ceil(lineHeight)  + "px",
                 'margin-bottom': "0px",
                 'margin-right': "0px"
             });
-            
+
             if (options.limitingDimension.toLowerCase() === "height") {
                 //this option needs the font-size to be set already so $this.width() returns the right size
                 //this +4 is to compensate the rounding erros that can occur due to the calls to Math.floor in the centering code
                 $parent.width(($this.width() + 4) + "px");
             }
             var endCSS= {};
-            
+
             switch(options.verticalAlign.toLowerCase()) {
                 case "top":
                     endCSS['top']= "0%";
@@ -120,11 +120,11 @@ Copyright (C) 2013 Daniel Hoffmann Bernardes, Ícaro Technologies
                 default:
                     endCSS['margin-top']= Math.floor((-$this.innerHeight() / 2)) + "px";
                 break;
-            }          
-            
+            }
+
             $this.css(endCSS);
             //shows the element after the work is done
             $this.css("visibility", "visible");
         });
-    } 
+    }
 })(jQuery);
