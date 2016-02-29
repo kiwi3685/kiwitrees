@@ -23,7 +23,7 @@
 //
 // $Id: module.php 14786 2013-02-06 22:28:50Z greg $
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

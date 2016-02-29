@@ -81,7 +81,7 @@ if (
 
 	<div id="x"><!-- div x - manages the accordion effect -->
 
-	<h2><?php echo WT_WEBTREES, ' ', WT_VERSION; ?></h2>
+	<h2><?php echo WT_KIWITREES, ' ', WT_VERSION; ?></h2>
 	<div id="about">
 		<p><?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this kiwitrees site.'); ?></p>
 		<p><?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support is available at %s.', ' <a class="current" href="http://kiwitrees.net/forums/">kiwitrees.net forums</a>'); ?></p>

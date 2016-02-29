@@ -27,7 +27,7 @@
 //
 // $Id: personbox_template.php 14022 2012-06-20 06:30:55Z nigel $
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

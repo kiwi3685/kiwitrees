@@ -24,7 +24,7 @@
 //
 // $Id: theme.php 9831 2010-11-13 04:43:15Z nigel $
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

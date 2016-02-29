@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -31,7 +31,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	// Popup windows don't always need a title
 	public function __construct() {
 		parent::__construct();
-		$this->setPageTitle(WT_WEBTREES);
+		$this->setPageTitle(WT_KIWITREES);
 	}
 
 	// Simple (i.e. popup) windows are deprecated.

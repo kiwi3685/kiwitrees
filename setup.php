@@ -66,7 +66,7 @@ if (version_compare(PHP_VERSION, '5.3')<0) {
 // This script (uniquely) does not load session.php.
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES',    'kiwitrees');
+define('WT_KIWITREES',    'kiwitrees');
 require 'includes/authentication.php'; // for AddToLog()
 require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');

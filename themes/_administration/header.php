@@ -20,7 +20,7 @@
 //
 // $Id$
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -113,7 +113,7 @@ echo
 			</div>
 		</div>
 		<div id="info">',
-			WT_WEBTREES, ' ', WT_VERSION_TEXT,
+			WT_KIWITREES, ' ', WT_VERSION_TEXT,
 			'<br>',
 			/* I18N: The local time on the server */
 			WT_I18N::translate('Server time'), ' —  ', format_timestamp(WT_SERVER_TIMESTAMP),

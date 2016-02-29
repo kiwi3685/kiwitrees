@@ -26,7 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -90,7 +90,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		$this->pdf->setRTL($this->rtl);
 		// Set the document information
 		// Only admin should see the version number
-		$appversion = WT_WEBTREES;
+		$appversion = WT_KIWITREES;
 		if (WT_USER_IS_ADMIN) {
 			$appversion .= " ".WT_VERSION_TEXT;
 		}
