@@ -272,10 +272,6 @@ class WT_Stats {
 
 	function _getPercentage($total, $type) {
 		switch($type) {
-			default:
-			case 'all':
-				$type = $this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources();
-				break;
 			case 'individual':
 				$type = $this->_totalIndividuals();
 				break;
@@ -288,10 +284,11 @@ class WT_Stats {
 			case 'note':
 				$type = $this->_totalNotes();
 				break;
+			case 'all':
 			default:
-				return WT_I18N::percentage(0, 1);
+				$type = $this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources();
 		}
-		if ($type==0) {
+		if ($type == 0) {
 			return WT_I18N::percentage(0, 1);
 		} else {
 			return WT_I18N::percentage($total / $type, 1);
