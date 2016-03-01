@@ -65,7 +65,7 @@ if (
 			<a href="http://php.net/supported-versions.php" target="_blank"><i class="icon-php"></i></a>
 		<span>';
 } elseif (
-	PHP_VERSION_ID < 50600 && date('Y-m-d') >= '2015-07-10' ||
+	PHP_VERSION_ID < 50600 ||
 	PHP_VERSION_ID < 70000 && date('Y-m-d') >= '2016-12-31' ||
 	PHP_VERSION_ID < 70100 && date('Y-m-d') >= '2017-12-03'
 ) {
