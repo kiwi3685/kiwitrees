@@ -620,7 +620,7 @@ function import_record($gedrec, $ged_id, $update) {
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
 		$sql_insert_other=WT_DB::prepare(
-			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?,?,?,?)"
+			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, LEFT(?, 15), ?)"
 		);
 	}
 
