@@ -409,7 +409,7 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 					<li><a href="#pages_pages"><span><?php echo WT_I18N::translate('Pages'); ?></span></a></li>
 				</ul>
 				<div id="pages_summary">
-					<form method="post" name="configform" action="module.php?mod=' . $this->getName() ; ?>&amp;mod_action=admin_config">
+					<form method="post" name="configform" action="module.php?mod=<?php echo $this->getName() ; ?>&amp;mod_action=admin_config">
 						<input type="hidden" name="action" value="update">
 						<div class="label"><?php echo WT_I18N::translate('Main menu and summary page title'); ?></div>
 						<div class="value"><input type="text" name="NEW_HEADER_TITLE" value="<?php echo $this->getMenuTitle(); ?>"></div>
