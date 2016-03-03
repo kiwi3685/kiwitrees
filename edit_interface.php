@@ -2152,16 +2152,18 @@ case 'reorder_children':
 					if ((!empty($option))&&($option=="bybirth")) {
 						asort($children);
 					}
-					$i=0;
+					$i = 0;
 					$show_full = 1; // Force details to show for each child
 					foreach ($children as $id=>$child) { ?>
 						<li class="reorder"
-							<?php if (!in_array($id, $ids)) {
+							<?php
+							if (!in_array($id, $ids)) {
 								echo ' class="facts_valueblue" ';
-							} ?>
-							id="li_<?php echo $i; ?>" >
+							}
+							?>
+							id="li_<?php echo $id; ?>" >
 							<?php print_pedigree_person(WT_Person::getInstance($id), 2); ?>
-							<input type="hidden" name="order[',$id,']" value="',$i,'">
+							<input type="hidden" name="order[<?php echo $id; ?>]" value="<?php echo $i; ?>">
 						</li>
 						<?php $i++;
 					}
