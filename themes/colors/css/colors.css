@@ -1366,7 +1366,6 @@ span.link_text {display:none;}
 	font-style: italic;
 }
 
-================================================================================
 /* Icons */
 [class^="icon-"],[class*=" icon-"] {display:inline-block;vertical-align:middle;background-repeat:no-repeat;}
 .icon-add                  {width:14px;height:15px;background-image:url(../images/add.png);}
