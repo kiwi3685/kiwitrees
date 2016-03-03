@@ -137,6 +137,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 		?>
 			<div id="resource-page" class="nocensus">
 				<h2><?php echo WT_I18N::translate('Individuals with missing census data'); ?></h2>
+				<h5><?php echo $this->getDescription(); ?></h5>
 				<div class="noprint">
 					<h4><?php echo WT_I18N::translate('Enter a surname, then select any combination of the two options Census place and Census date'); ?></h3>
 					<form name="surnlist" id="surnlist" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show">

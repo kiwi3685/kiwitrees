@@ -116,7 +116,8 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 
 		?>
 		<div id="resource-page" class="individual_report">
-			<h2><?php echo $controller->getPageTitle(); ?></h2>
+			<h2><?php echo $this->getTitle(); ?></h2>
+			<h5><?php echo $this->getDescription(); ?></h5>
 			<div class="noprint">
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;rootid=<?php echo $rootid; ?>&amp;ged=<?php echo WT_GEDURL; ?>">
 					<input type="hidden" name="go" value="1">

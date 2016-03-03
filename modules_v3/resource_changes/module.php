@@ -171,6 +171,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 		$content = '
 			<div id="resource-page" class="recent_changes" style="margin: auto; width: 90%;">
 				<h2>' . $this->getTitle() . '</h2>
+				<h5>' . $this->getDescription() . '</h5>
 				<div class="noprint">
 					<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
 						<input type="hidden" name="action" value="?">
