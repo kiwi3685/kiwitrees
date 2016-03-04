@@ -163,7 +163,7 @@ switch ($type) {
 					$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
 				}
 			}
-		}	
+		}
 		echo json_encode($data);
 	exit;
 
@@ -227,7 +227,31 @@ switch ($type) {
 			if ($media->canDisplayName()) {
 				$data[]=array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
 			}
-		}	
+		}
+		echo json_encode($data);
+	exit;
+
+	case 'OCCU': // Occupation fields, that contain the search term
+		$data = array();
+		// Fetch all data, regardless of privacy
+		$rows=
+			WT_DB::prepare(
+				"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+				" FROM `##individuals`".
+				" WHERE i_gedcom LIKE '%\n1 OCCU %' AND i_file=?".
+				" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n1 OCCU ', -1) COLLATE '".WT_I18N::$collation."'"
+			)
+			->execute(array(WT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+		// Filter for privacy
+		foreach ($rows as $row) {
+			$person = WT_Person::getInstance($row);
+			if (preg_match('/\n1 OCCU (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
+				if (!in_array($match[1], $data)) {
+					$data[]=$match[1];
+				}
+			}
+		}
 		echo json_encode($data);
 	exit;
 
@@ -270,7 +294,7 @@ switch ($type) {
 		}
 		echo json_encode($data);
 	exit;
-		
+
 	case 'PLAC2': // Place names (without hierarchy), that include the search term
 		// Do not filter by privacy.  Place names on their own do not identify individuals.
 		echo json_encode(
@@ -429,7 +453,7 @@ switch ($type) {
 			if ($source->canDisplayName()) {
 				$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
 			}
-		}	
+		}
 		// Fetch all data, regardless of privacy
 		$rows=get_REPO_rows($term);
 		// Filter for privacy
@@ -438,7 +462,7 @@ switch ($type) {
 			if ($repository->canDisplayName()) {
 				$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
 			}
-		}	
+		}
 		// Fetch all data, regardless of privacy
 		$rows=get_OBJE_rows($term);
 		// Filter for privacy

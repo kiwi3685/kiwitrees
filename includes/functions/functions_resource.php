@@ -356,3 +356,18 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 	if (!$return) echo $data;
 	else return $data;
 }
+
+function resource_occu($occupation) {
+	$data = array();
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
+			" FROM `##individuals`" .
+			" WHERE `i_gedcom` REGEXP '(.*)\n1 OCCU (.*)" . $occupation . "(.*)\n' AND i_file=?"
+		)
+		->execute(array(WT_GED_ID))
+		->fetchAll();
+
+	return $rows;
+}
