@@ -1162,7 +1162,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				break;
 		}
 		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
-		$html .= $this->printRelationship($person, $spouse);
+		$html .= $this->printRelationship($person, $spouse, $family);
 		$html .= $this->printParents($spouse);
 		if ($family->getFacts('_NMR') && $this->printLifespan($spouse, true)) {
 			$html .= $this->printLifespan($spouse, true);
@@ -1422,10 +1422,10 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return $html;
 	}
 
-	private function printRelationship($person, $spouse) {
+	private function printRelationship($person, $spouse, $family) {
 		$html = '';
 		if ($this->options('check_relationship')) {
-			$relationship = $this->check_relationship($person, $spouse);
+			$relationship = $this->check_relationship($person, $spouse, $family);
 			if ($relationship) {
 				$html .= ' (' . $relationship . ')';
 			}
