@@ -38,7 +38,7 @@ $action = safe_POST('action');
 if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$value = safe_POST("blockaccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$value = safe_POST("access-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
 			)->execute(array($module_name, $tree->tree_id, $value));
@@ -62,32 +62,45 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 			<tbody>
 				<?php
 				$order = 1;
-				foreach ($modules as $module_name=>$module) {
+				foreach ($modules as $module) {
 					?>
-					<tr>
-						<td><?php echo $module->getTitle(); ?></td>
-						<td><?php echo $module->getDescription(); ?></td>
+					<tr class="sortme">
+						<td>
+							<?php echo $module->getTitle(); ?>
+						</td>
+						<td>
+							<?php echo $module->getDescription(); ?>
+						</td>
+						<td>
+							<input type="text" size="3" value="<?php echo $order; ?>" name="order-<?php echo $module->getName(); ?>">
+						</td>
 						<td>
 							<table class="modules_table2">
-							<?php
-							foreach (WT_Tree::getAll() as $tree) {
-								$varname = 'blockaccess-'.$module->getName().'-'.$tree->tree_id;
-								$access_level=WT_DB::prepare(
-									"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='block'"
-								)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
-								if ($access_level===null) {
-									$access_level=$module->defaultAccessLevel();
-								}
-								echo '<tr><td>', $tree->tree_title_html, '</td><td>';
-								echo edit_field_access_level($varname, $access_level);
-							}
-						?>
-						</table>
-					</td>
+								<?php foreach (WT_Tree::getAll() as $tree) { ?>
+									<tr>
+										<td>
+											<?php echo $tree->tree_title_html; ?>
+										</td>
+										<td>
+											<?php
+												$access_level = WT_DB::prepare(
+													"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='block'"
+												)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
+												if ($access_level === null) {
+													$access_level = $module->defaultAccessLevel();
+												}
+												echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->tree_id, $access_level);
+											?>
+										</td>
+									</tr>
+								<?php } ?>
+							</table>
+						</td>
 					</tr>
-					<?php
-					$order++;
+				<?php
+				$order++;
 				}
+
 				?>
 			</tbody>
 		</table>
