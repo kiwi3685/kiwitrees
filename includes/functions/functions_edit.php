@@ -1595,7 +1595,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		echo '<script>
 			document.getElementById("' . $element_id . '").style.display="none"
 		</script>
-		<select id="' . $element_id . '_sel" onchange="document.getElementById("' . $element_id . '").value=this.value;" >';
+		<select id="' . $element_id . '_sel" onchange="document.getElementById(\'' . $element_id . '\').value=this.value;" >';
 			foreach (array("Unknown", "Civil", "Religious", "Partners", "Common") as $indexval => $key) {
 				if ($key == "Unknown") {
 					echo '<option value=""';
@@ -1615,7 +1615,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		echo '</select>';
 	} else if ($fact == 'TYPE' && $level == 0) {
 		// NAME TYPE : hide text field and show a selection list
-		$onchange = 'onchange="document.getElementById("' . $element_id . '").value=this.value;"';
+		$onchange = 'onchange="document.getElementById(\'' . $element_id . '\').value=this.value;"';
 		switch (WT_Person::getInstance($pid)->getSex()) {
 			case 'M':
 				echo edit_field_name_type_m($element_name, $value, $onchange);
