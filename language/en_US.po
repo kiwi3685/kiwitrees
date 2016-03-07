@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-02-15 10:42+1300\n"
-"PO-Revision-Date: 2016-02-15 10:42+1300\n"
+"POT-Creation-Date: 2016-03-08 08:22+1300\n"
+"PO-Revision-Date: 2016-03-08 08:47+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -93,8 +93,8 @@ msgstr ""
 #: edit_interface.php:173 edit_interface.php:274 edit_interface.php:350
 #: edit_interface.php:509 edit_interface.php:580 edit_interface.php:832
 #: edit_interface.php:939 edit_interface.php:1089 edit_interface.php:1165
-#: edit_interface.php:1292 edit_interface.php:2182 edit_interface.php:2318
-#: edit_interface.php:2560 edit_interface.php:2661 find.php:697
+#: edit_interface.php:1292 edit_interface.php:2184 edit_interface.php:2320
+#: edit_interface.php:2562 edit_interface.php:2663 find.php:697
 #: includes/functions/functions_edit.php:1011 includes/media_reorder.php:166
 #: inverselink.php:180 message.php:173
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:195
@@ -209,22 +209,22 @@ msgstr ""
 #: addmedia.php:793 admin_trees_config.php:1304 edit_interface.php:214
 #: edit_interface.php:313 edit_interface.php:788 edit_interface.php:927
 #: edit_interface.php:1069 edit_interface.php:1151 edit_interface.php:1280
-#: edit_interface.php:2685 help_text.php:1238
+#: edit_interface.php:2687 help_text.php:1238
 #: includes/functions/functions_edit.php:990
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:610
 msgid "Do not update the “last change” record"
 msgstr ""
 
-#: addmedia.php:809 admin_module_blocks.php:96 admin_module_menus.php:117
-#: admin_module_reports.php:96 admin_module_resources.php:102
-#: admin_module_sidebar.php:116 admin_module_tabs.php:122
-#: admin_module_widgets.php:116 admin_modules.php:199 admin_site_config.php:225
+#: addmedia.php:809 admin_module_blocks.php:109 admin_module_menus.php:127
+#: admin_module_reports.php:108 admin_module_resources.php:108
+#: admin_module_sidebar.php:127 admin_module_tabs.php:127
+#: admin_module_widgets.php:127 admin_modules.php:199 admin_site_config.php:225
 #: admin_site_merge.php:163 admin_trees_config.php:1349
 #: admin_trees_manage.php:285 block_edit.php:59 edit_interface.php:169
 #: edit_interface.php:270 edit_interface.php:346 edit_interface.php:505
 #: edit_interface.php:576 edit_interface.php:828 edit_interface.php:935
 #: edit_interface.php:1085 edit_interface.php:1161 edit_interface.php:1288
-#: edit_interface.php:2174 edit_interface.php:2314 edit_interface.php:2552
+#: edit_interface.php:2176 edit_interface.php:2316 edit_interface.php:2554
 #: editnews.php:73 edituser.php:188 find.php:469
 #: includes/functions/functions_edit.php:37
 #: includes/functions/functions_edit.php:59
@@ -356,7 +356,7 @@ msgstr ""
 #: modules_v3/random_media/module.php:304 modules_v3/widget_stats/module.php:91
 #: modules_v3/widget_stats/module.php:336 note.php:104 placelist.php:184
 #: search.php:109 search.php:170 source.php:103 statistics.php:56
-#: statisticsplot.php:785 modules_v3/fact_sources/report.bak:52
+#: statisticsplot.php:783 modules_v3/fact_sources/report.bak:52
 #: modules_v3/fact_sources/report.bak:256
 msgid "Individuals"
 msgstr ""
@@ -371,10 +371,10 @@ msgstr ""
 #: modules_v3/gedcom_stats/module.php:317
 #: modules_v3/googlemap/placehierarchy.php:281 modules_v3/html/module.php:189
 #: modules_v3/relatives/module.php:35
-#: modules_v3/resource_individual/module.php:215
+#: modules_v3/resource_individual/module.php:229
 #: modules_v3/widget_stats/module.php:119
 #: modules_v3/widget_stats/module.php:352 note.php:107 placelist.php:187
-#: search.php:114 source.php:106 statistics.php:58 statisticsplot.php:781
+#: search.php:114 source.php:106 statistics.php:58 statisticsplot.php:779
 #: modules_v3/fact_sources/report.bak:150
 #: modules_v3/fact_sources/report.bak:312
 msgid "Families"
@@ -388,7 +388,7 @@ msgstr ""
 #: mediaviewer.php:145 modules_v3/album/album_print_media.php:316
 #: modules_v3/gedcom_stats/module.php:105
 #: modules_v3/gedcom_stats/module.php:325 modules_v3/html/module.php:193
-#: modules_v3/resource_individual/module.php:333
+#: modules_v3/resource_individual/module.php:320
 #: modules_v3/sources_tab/module.php:35 modules_v3/widget_stats/module.php:128
 #: modules_v3/widget_stats/module.php:360 note.php:113 repo.php:101
 #: search.php:119 sourcelist.php:32 sourcelist.php:36 statistics.php:343
@@ -422,8 +422,8 @@ msgstr ""
 #: admin.php:283 admin.php:313 library/WT/Controller/Search.php:596
 #: mediaviewer.php:151
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1054
-#: modules_v3/notes/module.php:35 modules_v3/resource_individual/module.php:203
-#: modules_v3/uk_register/module.php:191 source.php:112 statistics.php:344
+#: modules_v3/notes/module.php:35 modules_v3/resource_individual/module.php:219
+#: modules_v3/uk_register/module.php:202 source.php:112 statistics.php:344
 #: modules_v3/individual_ext_report/report.bak:221
 msgid "Notes"
 msgstr ""
@@ -464,9 +464,9 @@ msgstr ""
 #: includes/functions/functions_edit.php:1447
 #: includes/functions/functions_edit.php:1481
 #: includes/functions/functions_print.php:904
-#: includes/functions/functions_print_facts.php:1257
+#: includes/functions/functions_print_facts.php:1256
 #: includes/functions/functions_print_lists.php:418
-#: includes/functions/functions_print_lists.php:893 library/WT/Stats.php:3539
+#: includes/functions/functions_print_lists.php:893 library/WT/Stats.php:3536
 #: medialist.php:262 modules_v3/batch_update/admin_batch_update.php:363
 #: modules_v3/charts/module.php:219 modules_v3/relatives/module.php:203
 #: modules_v3/family_group_report/report.bak:247
@@ -481,8 +481,8 @@ msgstr ""
 #: includes/functions/functions_edit.php:166
 #: includes/functions/functions_edit.php:173
 #: includes/functions/functions_edit.php:1478
-#: includes/functions/functions_print_facts.php:1260
-#: includes/functions/functions_print_lists.php:891 library/WT/Stats.php:3540
+#: includes/functions/functions_print_facts.php:1259
+#: includes/functions/functions_print_lists.php:891 library/WT/Stats.php:3537
 #: medialist.php:265 modules_v3/batch_update/admin_batch_update.php:362
 #: modules_v3/charts/module.php:218 modules_v3/fancy_treeview/module.php:1187
 #: modules_v3/family_group_report/report.bak:250
@@ -644,7 +644,7 @@ msgid "Block"
 msgstr ""
 
 #: admin_module_blocks.php:58 admin_module_menus.php:76
-#: admin_module_reports.php:58 admin_module_resources.php:64
+#: admin_module_reports.php:58 admin_module_resources.php:58
 #: admin_module_sidebar.php:76 admin_module_tabs.php:76
 #: admin_module_widgets.php:76 admin_modules.php:128 find.php:452
 #: library/WT/Gedcom/Tag.php:194 modules_v3/gallery/module.php:264
@@ -652,7 +652,7 @@ msgid "Description"
 msgstr ""
 
 #: admin_module_blocks.php:59 admin_module_menus.php:78
-#: admin_module_reports.php:59 admin_module_resources.php:65
+#: admin_module_reports.php:59 admin_module_resources.php:59
 #: admin_module_sidebar.php:78 admin_module_tabs.php:78
 #: admin_module_widgets.php:78 modules_v3/extra_menus/module.php:183
 #: modules_v3/fancy_treeview/module.php:550 modules_v3/gallery/module.php:345
@@ -676,7 +676,7 @@ msgstr ""
 msgid "Report"
 msgstr ""
 
-#: admin_module_resources.php:63
+#: admin_module_resources.php:57
 msgid "Resource"
 msgstr ""
 
@@ -779,7 +779,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:1064 admin_trees_append.php:174
 #: admin_trees_download.php:141 admin_trees_manage.php:189
-#: admin_trees_renumber.php:280 admin_users.php:539 login.php:192 login.php:435
+#: admin_trees_renumber.php:280 admin_users.php:538 login.php:192 login.php:435
 #: modules_v3/login_block/module.php:100 setup.php:210 setup.php:234
 #: setup.php:306 setup.php:392 setup.php:451
 msgid "continue"
@@ -844,9 +844,9 @@ msgstr ""
 #: admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243
 #: admin_trees_config.php:624 admin_trees_manage.php:256 edit_interface.php:109
 #: includes/functions/functions_print_facts.php:171
-#: includes/functions/functions_print_facts.php:718
-#: includes/functions/functions_print_facts.php:920
-#: includes/functions/functions_print_facts.php:1208
+#: includes/functions/functions_print_facts.php:717
+#: includes/functions/functions_print_facts.php:919
+#: includes/functions/functions_print_facts.php:1207
 #: includes/functions/functions_print_lists.php:1077
 #: includes/functions/functions_print_lists.php:1153
 #: includes/functions/functions_print_lists.php:1219
@@ -929,8 +929,8 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1983
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:126
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:586
-#: modules_v3/resource_changes/module.php:131
-#: modules_v3/resource_todo/module.php:154 modules_v3/todo/module.php:98
+#: modules_v3/resource_changes/module.php:156
+#: modules_v3/resource_todo/module.php:165 modules_v3/todo/module.php:98
 #: modules_v3/widget_todo/module.php:98
 msgid "Record"
 msgstr ""
@@ -947,7 +947,7 @@ msgstr ""
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237
 #: admin_site_logs.php:260 admin_trees_duplicates.php:142
 #: admin_trees_manage.php:201 admin_trees_places.php:102
-#: admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:423
+#: admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:422
 #: edit_changes.php:172 modules_v3/batch_update/admin_batch_update.php:65
 #: modules_v3/extra_menus/module.php:339 modules_v3/extra_menus/module.php:363
 #: modules_v3/fancy_imagebar/module.php:262
@@ -1129,17 +1129,17 @@ msgstr ""
 msgid "Use password"
 msgstr ""
 
-#: admin_site_config.php:144 admin_users.php:373 admin_users.php:562
+#: admin_site_config.php:144 admin_users.php:372 admin_users.php:561
 #: edituser.php:133 help_text.php:732 help_text.php:1440 login.php:162
 #: login.php:226 login.php:302 login.php:345 login.php:460
 #: modules_v3/login_block/module.php:69
-#: modules_v3/resource_changes/module.php:133
-#: modules_v3/resource_todo/module.php:157 modules_v3/todo/module.php:100
+#: modules_v3/resource_changes/module.php:158
+#: modules_v3/resource_todo/module.php:168 modules_v3/todo/module.php:100
 #: modules_v3/widget_todo/module.php:100
 msgid "Username"
 msgstr ""
 
-#: admin_site_config.php:148 admin_users.php:213 admin_users.php:385
+#: admin_site_config.php:148 admin_users.php:213 admin_users.php:384
 #: edituser.php:164 help_text.php:727 help_text.php:1248 login.php:167
 #: login.php:228 login.php:464 modules_v3/login_block/module.php:74
 #: setup.php:436
@@ -1246,7 +1246,7 @@ msgid "Logs"
 msgstr ""
 
 #: admin_site_logs.php:225 admin_site_logs.php:256 edit_changes.php:169
-#: includes/functions/functions_print_facts.php:598
+#: includes/functions/functions_print_facts.php:597
 #: library/WT/Gedcom/Tag.php:339 medialist.php:109
 msgid "Type"
 msgstr ""
@@ -1494,9 +1494,9 @@ msgstr ""
 #: admin_trees_config.php:53 includes/functions/functions_edit.php:224
 #: includes/functions/functions_edit.php:244
 #: includes/functions/functions_print_facts.php:227
-#: includes/functions/functions_print_facts.php:385
-#: includes/functions/functions_print_facts.php:747
-#: includes/functions/functions_print_facts.php:994
+#: includes/functions/functions_print_facts.php:384
+#: includes/functions/functions_print_facts.php:746
+#: includes/functions/functions_print_facts.php:993
 #: includes/functions/functions_resource.php:116
 msgid "Show to visitors"
 msgstr ""
@@ -1506,9 +1506,9 @@ msgstr ""
 #: includes/functions/functions_edit.php:231
 #: includes/functions/functions_edit.php:245
 #: includes/functions/functions_print_facts.php:230
-#: includes/functions/functions_print_facts.php:388
-#: includes/functions/functions_print_facts.php:750
-#: includes/functions/functions_print_facts.php:997
+#: includes/functions/functions_print_facts.php:387
+#: includes/functions/functions_print_facts.php:749
+#: includes/functions/functions_print_facts.php:996
 #: includes/functions/functions_resource.php:119
 msgid "Show to members"
 msgstr ""
@@ -1518,9 +1518,9 @@ msgstr ""
 #: includes/functions/functions_edit.php:232
 #: includes/functions/functions_edit.php:246
 #: includes/functions/functions_print_facts.php:233
-#: includes/functions/functions_print_facts.php:391
-#: includes/functions/functions_print_facts.php:753
-#: includes/functions/functions_print_facts.php:1000
+#: includes/functions/functions_print_facts.php:390
+#: includes/functions/functions_print_facts.php:752
+#: includes/functions/functions_print_facts.php:999
 #: includes/functions/functions_resource.php:122
 msgid "Show to managers"
 msgstr ""
@@ -1562,13 +1562,13 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: admin_trees_config.php:273 admin_users.php:405 admin_users.php:566
+#: admin_trees_config.php:273 admin_users.php:404 admin_users.php:565
 #: edituser.php:174 help_text.php:596 library/WT/Gedcom/Tag.php:243
 #: library/WT/MenuBar.php:465
 msgid "Language"
 msgstr ""
 
-#: admin_trees_config.php:278 admin_users.php:237 admin_users.php:424
+#: admin_trees_config.php:278 admin_users.php:237 admin_users.php:423
 #: edituser.php:154 help_text.php:1091 modules_v3/gedcom_block/module.php:53
 msgid "Default individual"
 msgstr ""
@@ -1706,7 +1706,7 @@ msgid ""
 "a GEDCOM RESN tag"
 msgstr ""
 
-#: admin_trees_config.php:592 edit_interface.php:2307
+#: admin_trees_config.php:592 edit_interface.php:2309
 #: includes/functions/functions_print.php:1067
 #: includes/functions/functions_print.php:1123
 #: includes/functions/functions_print.php:1168
@@ -1861,13 +1861,15 @@ msgstr ""
 #: admin_trees_config.php:1096 admin_trees_config.php:1104 branches.php:85
 #: modules_v3/extra_menus/module.php:345 modules_v3/faq/module.php:442
 #: modules_v3/gallery/module.php:539 modules_v3/googlemap/module.php:251
-#: modules_v3/no_census/module.php:188
-#: modules_v3/resource_changes/module.php:169
-#: modules_v3/resource_individual/module.php:139
-#: modules_v3/resource_individual/module.php:141
-#: modules_v3/resource_todo/module.php:140
+#: modules_v3/no_census/module.php:199
+#: modules_v3/resource_changes/module.php:195
+#: modules_v3/resource_fact/module.php:167
+#: modules_v3/resource_fact/module.php:169
+#: modules_v3/resource_individual/module.php:151
+#: modules_v3/resource_individual/module.php:153
+#: modules_v3/resource_todo/module.php:151
 #: modules_v3/simpl_pages/module.php:434 modules_v3/stories/module.php:470
-#: modules_v3/uk_register/module.php:165
+#: modules_v3/uk_register/module.php:176
 msgid "show"
 msgstr ""
 
@@ -2177,11 +2179,11 @@ msgstr ""
 msgid "Apply privacy settings?"
 msgstr ""
 
-#: admin_trees_download.php:117 admin_users.php:446 famlist.php:116
-#: famlist.php:148 indilist.php:116 indilist.php:148 library/WT/Stats.php:764
+#: admin_trees_download.php:117 admin_users.php:445 famlist.php:116
+#: famlist.php:148 indilist.php:116 indilist.php:148 library/WT/Stats.php:761
 #: modules_v3/clippings/module.php:202 modules_v3/clippings/module.php:587
 #: modules_v3/families/module.php:152 modules_v3/individuals/module.php:151
-#: modules_v3/resource_individual/module.php:132
+#: modules_v3/resource_individual/module.php:144
 #: modules_v3/cemetery_report/report.bak:8
 #: modules_v3/death_report/report.bak:11
 #: modules_v3/individual_ext_report/report.bak:12
@@ -2251,16 +2253,16 @@ msgstr ""
 #: admin_trees_duplicates.php:186 calendar.php:584
 #: includes/functions/functions_edit.php:1486
 #: library/WT/Controller/Individual.php:265
-#: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3346
-#: statisticsplot.php:800 timeline.php:243
+#: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3343
+#: statisticsplot.php:798 timeline.php:243
 msgid "Male"
 msgstr ""
 
 #: admin_trees_duplicates.php:190 calendar.php:588
 #: includes/functions/functions_edit.php:1488
 #: library/WT/Controller/Individual.php:274
-#: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3346
-#: statisticsplot.php:801 timeline.php:245
+#: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3343
+#: statisticsplot.php:799 timeline.php:245
 msgid "Female"
 msgstr ""
 
@@ -2268,7 +2270,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:1490
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286
-#: library/WT/Controller/Individual.php:292 library/WT/Stats.php:3346
+#: library/WT/Controller/Individual.php:292 library/WT/Stats.php:3343
 #: timeline.php:247 modules_v3/family_group_report/report.bak:833
 #: modules_v3/individual_ext_report/report.bak:383
 #: modules_v3/individual_ext_report/report.bak:590
@@ -2281,12 +2283,13 @@ msgid "Include married names: "
 msgstr ""
 
 #: admin_trees_duplicates.php:222 admin_trees_sanity.php:102
-#: edit_interface.php:2624 library/WT/Controller/Individual.php:176
-#: library/WT/Gedcom/Tag.php:267 library/WT/Stats.php:3347
+#: edit_interface.php:2626 library/WT/Controller/Individual.php:176
+#: library/WT/Gedcom/Tag.php:267 library/WT/Stats.php:3344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588
-#: modules_v3/bdm_report/report.bak:6 modules_v3/bdm_report/report.bak:47
-#: modules_v3/birth_report/report.bak:6 modules_v3/birth_report/report.bak:34
+#: modules_v3/resource_fact/module.php:183 modules_v3/bdm_report/report.bak:6
+#: modules_v3/bdm_report/report.bak:47 modules_v3/birth_report/report.bak:6
+#: modules_v3/birth_report/report.bak:34
 #: modules_v3/cemetery_report/report.bak:39
 #: modules_v3/death_report/report.bak:6 modules_v3/death_report/report.bak:36
 #: modules_v3/fact_sources/report.bak:60 modules_v3/fact_sources/report.bak:153
@@ -2295,7 +2298,6 @@ msgstr ""
 #: modules_v3/marriage_report/report.bak:6
 #: modules_v3/marriage_report/report.bak:36
 #: modules_v3/missing_facts_report/report.bak:52
-#: modules_v3/occupation_report/report.bak:41
 #: modules_v3/relative_ext_report/report.bak:48
 msgid "Name"
 msgstr ""
@@ -2674,20 +2676,20 @@ msgstr ""
 msgid "Are you sure you want to masquerade as “%s”?"
 msgstr ""
 
-#: admin_users.php:210 admin_users.php:369 help_text.php:1352
+#: admin_users.php:210 admin_users.php:368 help_text.php:1352
 msgid "Administrator"
 msgstr ""
 
-#: admin_users.php:216 admin_users.php:395 edituser.php:183 help_text.php:1129
+#: admin_users.php:216 admin_users.php:394 edituser.php:183 help_text.php:1129
 #: help_text.php:1151
 msgid "Preferred contact method"
 msgstr ""
 
-#: admin_users.php:219 admin_users.php:387 help_text.php:1414
+#: admin_users.php:219 admin_users.php:386 help_text.php:1414
 msgid "Automatically approve changes made by this user"
 msgstr ""
 
-#: admin_users.php:222 admin_users.php:399
+#: admin_users.php:222 admin_users.php:398
 msgid "Visible to other users when online"
 msgstr ""
 
@@ -2696,21 +2698,21 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: admin_users.php:234 admin_users.php:417
+#: admin_users.php:234 admin_users.php:416
 msgid "Family tree access and settings"
 msgstr ""
 
-#: admin_users.php:238 admin_users.php:425 edituser.php:144 help_text.php:1156
+#: admin_users.php:238 admin_users.php:424 edituser.php:144 help_text.php:1156
 #: help_text.php:1317 help_text.php:1419
 msgid "Individual record"
 msgstr ""
 
-#: admin_users.php:239 admin_users.php:426 help_text.php:1327
+#: admin_users.php:239 admin_users.php:425 help_text.php:1327
 #: library/WT/Gedcom/Tag.php:313
 msgid "Role"
 msgstr ""
 
-#: admin_users.php:240 admin_users.php:427 help_text.php:702
+#: admin_users.php:240 admin_users.php:426 help_text.php:702
 msgid "Restrict to immediate family"
 msgstr ""
 
@@ -2728,131 +2730,131 @@ msgstr ""
 msgid "Passwords do not match."
 msgstr ""
 
-#: admin_users.php:318 edituser.php:103
+#: admin_users.php:317 edituser.php:103
 msgid "You must enter a user name."
 msgstr ""
 
-#: admin_users.php:323 edituser.php:108
+#: admin_users.php:322 edituser.php:108
 msgid "You must enter a real name."
 msgstr ""
 
-#: admin_users.php:328
+#: admin_users.php:327
 msgid "You must enter a password."
 msgstr ""
 
-#: admin_users.php:333
+#: admin_users.php:332
 msgid "You must enter an email address."
 msgstr ""
 
-#: admin_users.php:338
+#: admin_users.php:337
 msgid "You must confirm the password."
 msgstr ""
 
-#: admin_users.php:343 edituser.php:118
+#: admin_users.php:342 edituser.php:118
 msgid "Passwords must contain at least 6 characters."
 msgstr ""
 
-#: admin_users.php:356
+#: admin_users.php:355
 msgid ""
 "You must specify an individual record before you can restrict the user to "
 "their immediate family."
 msgstr ""
 
-#: admin_users.php:367 admin_users.php:563 edituser.php:138 help_text.php:1307
+#: admin_users.php:366 admin_users.php:562 edituser.php:138 help_text.php:1307
 #: login.php:303 login.php:394
 msgid "Real name"
 msgstr ""
 
-#: admin_users.php:375
+#: admin_users.php:374
 msgid "Approved by administrator"
 msgstr ""
 
-#: admin_users.php:379 edituser.php:178 help_text.php:1161
+#: admin_users.php:378 edituser.php:178 help_text.php:1161
 #: library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198
 #: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:716 login.php:399
 #: setup.php:446
 msgid "Email address"
 msgstr ""
 
-#: admin_users.php:381
+#: admin_users.php:380
 msgid "Email verified"
 msgstr ""
 
-#: admin_users.php:386 login.php:415
+#: admin_users.php:385 login.php:415
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin_users.php:390 edituser.php:169 help_text.php:1253 login.php:422
+#: admin_users.php:389 edituser.php:169 help_text.php:1253 login.php:422
 msgid "Confirm password"
 msgstr ""
 
-#: admin_users.php:391 login.php:423
+#: admin_users.php:390 login.php:423
 msgid "Type the password again."
 msgstr ""
 
-#: admin_users.php:412
+#: admin_users.php:411
 msgid "Admin comments on user"
 msgstr ""
 
-#: admin_users.php:460 includes/functions/functions_print_facts.php:271
+#: admin_users.php:459 includes/functions/functions_print_facts.php:270
 #: includes/functions/functions_resource.php:160
 msgid "No"
 msgstr ""
 
-#: admin_users.php:471
+#: admin_users.php:470
 msgid "Create User"
 msgstr ""
 
-#: admin_users.php:485
+#: admin_users.php:484
 msgid ""
 "Number of months since the last login for a user's account to be considered "
 "inactive: "
 msgstr ""
 
-#: admin_users.php:494 relationship.php:92
+#: admin_users.php:493 relationship.php:92
 msgid "Options:"
 msgstr ""
 
-#: admin_users.php:505
+#: admin_users.php:504
 msgid "User's account has been inactive too long: "
 msgstr ""
 
-#: admin_users.php:516
+#: admin_users.php:515
 msgid "User didn't verify within 7 days."
 msgstr ""
 
-#: admin_users.php:526
+#: admin_users.php:525
 msgid "User not verified by administrator."
 msgstr ""
 
-#: admin_users.php:533
+#: admin_users.php:532
 msgid "Nothing found to cleanup"
 msgstr ""
 
-#: admin_users.php:550
+#: admin_users.php:549
 msgid "Deleted user: "
 msgstr ""
 
-#: admin_users.php:564
+#: admin_users.php:563
 msgid "Email"
 msgstr ""
 
-#: admin_users.php:568
+#: admin_users.php:567
 msgid "Date registered"
 msgstr ""
 
-#: admin_users.php:570
+#: admin_users.php:569
 msgid "Last logged in"
 msgstr ""
 
-#: admin_users.php:571
+#: admin_users.php:570
 msgid "Verified"
 msgstr ""
 
-#: admin_users.php:572
+#: admin_users.php:571
 msgid "Approved"
 msgstr ""
 
@@ -2877,7 +2879,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1305 inverselink.php:98
 #: library/WT/Gedcom/Tag.php:241 modules_v3/charts/module.php:224
 #: modules_v3/googlemap/module.php:639
-#: modules_v3/resource_individual/module.php:114
+#: modules_v3/resource_individual/module.php:126
 #: modules_v3/stories/module.php:341 modules_v3/stories/module.php:486
 #: modules_v3/stories/module.php:572 pedigree.php:44
 msgid "Individual"
@@ -2917,11 +2919,11 @@ msgstr ""
 #: includes/functions/functions_print.php:891
 #: library/WT/Controller/Timeline.php:226
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:121
-#: library/WT/Person.php:474 library/WT/Stats.php:1649
-#: library/WT/Stats.php:2389 library/WT/Stats.php:2390
+#: library/WT/Person.php:474 library/WT/Stats.php:1646
+#: library/WT/Stats.php:2386 library/WT/Stats.php:2387
 #: modules_v3/GEDFact_assistant/CENS_ctrl.php:42
 #: modules_v3/calendar_utilities/plugins/calculators.php:397
-#: modules_v3/uk_register/module.php:256 timeline.php:358
+#: modules_v3/uk_register/module.php:267 timeline.php:358
 msgid "Age"
 msgstr ""
 
@@ -3006,9 +3008,9 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr ""
 
 #: calendar.php:208 calendar.php:210 calendar.php:446 calendar.php:447
-#: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:614
-#: library/WT/Stats.php:616 library/WT/Stats.php:624 library/WT/Stats.php:625
-#: library/WT/Stats.php:1662 library/WT/Stats.php:2402
+#: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:611
+#: library/WT/Stats.php:613 library/WT/Stats.php:621 library/WT/Stats.php:622
+#: library/WT/Stats.php:1659 library/WT/Stats.php:2399
 #: modules_v3/gedcom_stats/module.php:95 modules_v3/gedcom_stats/module.php:167
 #: modules_v3/html/module.php:177 modules_v3/top10_givnnames/module.php:90
 #: modules_v3/widget_givnnames/module.php:89
@@ -3018,9 +3020,9 @@ msgid "Males"
 msgstr ""
 
 #: calendar.php:213 calendar.php:215
-#: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:613
-#: library/WT/Stats.php:617 library/WT/Stats.php:623 library/WT/Stats.php:626
-#: library/WT/Stats.php:1662 library/WT/Stats.php:2402
+#: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:610
+#: library/WT/Stats.php:614 library/WT/Stats.php:620 library/WT/Stats.php:623
+#: library/WT/Stats.php:1659 library/WT/Stats.php:2399
 #: modules_v3/gedcom_stats/module.php:96 modules_v3/gedcom_stats/module.php:168
 #: modules_v3/html/module.php:181 modules_v3/top10_givnnames/module.php:85
 #: modules_v3/widget_givnnames/module.php:84
@@ -3038,18 +3040,18 @@ msgstr ""
 #: famlist.php:168 famlist.php:170 famlist.php:254 famlist.php:256
 #: indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:168
 #: indilist.php:170 indilist.php:254 indilist.php:256 library/WT/I18N.php:658
-#: library/WT/Stats.php:3346 modules_v3/extra_menus/help_text.php:50
+#: library/WT/Stats.php:3343 modules_v3/extra_menus/help_text.php:50
 #: modules_v3/extra_menus/module.php:365
 #: modules_v3/fancy_treeview/module.php:604 modules_v3/faq/module.php:217
 #: modules_v3/faq/module.php:462 modules_v3/gallery/help_text.php:37
 #: modules_v3/gallery/module.php:559 modules_v3/googlemap/admin_places.php:595
 #: modules_v3/googlemap/admin_places.php:738
 #: modules_v3/googlemap/module.php:1429 modules_v3/googlemap/module.php:1445
-#: modules_v3/no_census/module.php:211 modules_v3/random_media/module.php:304
-#: modules_v3/resource_individual/module.php:133
+#: modules_v3/no_census/module.php:222 modules_v3/random_media/module.php:304
+#: modules_v3/resource_individual/module.php:145
 #: modules_v3/simpl_pages/help_text.php:37
 #: modules_v3/simpl_pages/module.php:223 modules_v3/simpl_pages/module.php:452
-#: modules_v3/uk_register/module.php:173
+#: modules_v3/uk_register/module.php:184
 #: modules_v3/widget_messages/module.php:84
 #: modules_v3/ahnentafel_report/report.bak:8
 #: modules_v3/descendancy_report/report.bak:7
@@ -3113,12 +3115,12 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: downloadbackup.php:37 includes/session.php:558
+#: downloadbackup.php:37 includes/session.php:593
 msgid "You do not have permission to view this page."
 msgstr ""
 
 #: edit_changes.php:34 help_text.php:1283
-#: modules_v3/resource_changes/module.php:206
+#: modules_v3/resource_changes/module.php:232
 #: modules_v3/review_changes/module.php:35
 #: modules_v3/widget_review_changes/module.php:35
 #: themes/_administration/header.php:105 themes/colors/header.php:127
@@ -3177,7 +3179,7 @@ msgid "Moderate pending changes"
 msgstr ""
 
 #: edit_changes.php:192 includes/functions/functions_print.php:376
-#: library/WT/Stats.php:3467 library/WT/Stats.php:3469 message.php:123
+#: library/WT/Stats.php:3464 library/WT/Stats.php:3466 message.php:123
 #: modules_v3/widget_messages/module.php:68
 msgid "Send Message"
 msgstr ""
@@ -3197,12 +3199,12 @@ msgstr ""
 #: edit_interface.php:187 edit_interface.php:1364
 #: includes/functions/functions_print_facts.php:167
 #: includes/functions/functions_print_facts.php:169
-#: includes/functions/functions_print_facts.php:705
-#: includes/functions/functions_print_facts.php:715
-#: includes/functions/functions_print_facts.php:906
-#: includes/functions/functions_print_facts.php:918
+#: includes/functions/functions_print_facts.php:704
+#: includes/functions/functions_print_facts.php:714
+#: includes/functions/functions_print_facts.php:905
+#: includes/functions/functions_print_facts.php:917
+#: includes/functions/functions_print_facts.php:1204
 #: includes/functions/functions_print_facts.php:1205
-#: includes/functions/functions_print_facts.php:1206
 #: library/WT/Controller/Family.php:120
 #: library/WT/Controller/Individual.php:265
 #: library/WT/Controller/Individual.php:274
@@ -3292,7 +3294,6 @@ msgid "Add a wife using an existing person"
 msgstr ""
 
 #: edit_interface.php:542 library/WT/Gedcom/Tag.php:342
-#: modules_v3/resource_individual/module.php:292
 #: modules_v3/family_group_report/report.bak:493
 #: modules_v3/family_group_report/report.bak:1067
 #: modules_v3/individual_ext_report/report.bak:197
@@ -3402,36 +3403,35 @@ msgstr ""
 msgid "Re-order media"
 msgstr ""
 
-#: edit_interface.php:2123 edit_interface.php:2495
+#: edit_interface.php:2123 edit_interface.php:2497
 #: library/WT/Controller/Family.php:136 modules_v3/relatives/module.php:286
 msgid "Re-order children"
 msgstr ""
 
-#: edit_interface.php:2178 reportengine.php:523
+#: edit_interface.php:2180 reportengine.php:523
 #: modules_v3/bdm_report/report.bak:12 modules_v3/birth_report/report.bak:10
 #: modules_v3/fact_sources/report.bak:8
 #: modules_v3/individual_ext_report/report.bak:9
-#: modules_v3/occupation_report/report.bak:7
 #: modules_v3/relative_ext_report/report.bak:8
 msgid "sort by date of birth"
 msgstr ""
 
-#: edit_interface.php:2196 edit_interface.php:2329
+#: edit_interface.php:2198 edit_interface.php:2331
 #: library/WT/Controller/Family.php:125
 msgid "Change Family Members"
 msgstr ""
 
-#: edit_interface.php:2205 edit_interface.php:2214
+#: edit_interface.php:2207 edit_interface.php:2216
 #: includes/functions/functions.php:1166
 msgid "mother"
 msgstr ""
 
-#: edit_interface.php:2207 edit_interface.php:2212
+#: edit_interface.php:2209 edit_interface.php:2214
 #: includes/functions/functions.php:1167
 msgid "father"
 msgstr ""
 
-#: edit_interface.php:2220 includes/functions/functions.php:1208
+#: edit_interface.php:2222 includes/functions/functions.php:1208
 #: includes/functions/functions_charts.php:273
 #: includes/functions/functions_charts.php:832
 #: modules_v3/googlemap/googlemap.php:291
@@ -3439,7 +3439,7 @@ msgstr ""
 msgid "son"
 msgstr ""
 
-#: edit_interface.php:2222 includes/functions/functions.php:1209
+#: edit_interface.php:2224 includes/functions/functions.php:1209
 #: includes/functions/functions_charts.php:274
 #: includes/functions/functions_charts.php:833
 #: modules_v3/googlemap/googlemap.php:286
@@ -3447,28 +3447,28 @@ msgstr ""
 msgid "daughter"
 msgstr ""
 
-#: edit_interface.php:2224 edit_interface.php:2303
+#: edit_interface.php:2226 edit_interface.php:2305
 #: includes/functions/functions.php:1210 modules_v3/googlemap/googlemap.php:295
 #: modules_v3/googlemap/googlemap.php:322
 msgid "child"
 msgstr ""
 
-#: edit_interface.php:2231 edit_interface.php:2240
+#: edit_interface.php:2233 edit_interface.php:2242
 #: includes/functions/functions.php:1194
 msgid "wife"
 msgstr ""
 
-#: edit_interface.php:2233 edit_interface.php:2242
+#: edit_interface.php:2235 edit_interface.php:2244
 #: includes/functions/functions.php:1181
 msgid "husband"
 msgstr ""
 
-#: edit_interface.php:2235 edit_interface.php:2244 edit_interface.php:2265
-#: edit_interface.php:2280 includes/functions/functions.php:1207
+#: edit_interface.php:2237 edit_interface.php:2246 edit_interface.php:2267
+#: edit_interface.php:2282 includes/functions/functions.php:1207
 msgid "spouse"
 msgstr ""
 
-#: edit_interface.php:2253
+#: edit_interface.php:2255
 msgid ""
 "Use this page to change or remove family members.<br /><br />For each member "
 "in the family, you can use the Change link to choose a different person to "
@@ -3477,8 +3477,8 @@ msgid ""
 "family members, click the Save button to save the changes."
 msgstr ""
 
-#: edit_interface.php:2269 edit_interface.php:2284 edit_interface.php:2295
-#: edit_interface.php:2306 index_edit.php:288 index_edit.php:306
+#: edit_interface.php:2271 edit_interface.php:2286 edit_interface.php:2297
+#: edit_interface.php:2308 index_edit.php:288 index_edit.php:306
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:131
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:244
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:590
@@ -3490,25 +3490,25 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: edit_interface.php:2272 edit_interface.php:2287 edit_interface.php:2298
+#: edit_interface.php:2274 edit_interface.php:2289 edit_interface.php:2300
 msgid "Change"
 msgstr ""
 
-#: edit_interface.php:2522 edit_interface.php:2571
+#: edit_interface.php:2524 edit_interface.php:2573
 #: library/WT/Controller/Individual.php:338 modules_v3/relatives/module.php:387
 msgid "Re-order families"
 msgstr ""
 
-#: edit_interface.php:2556 reportengine.php:524
+#: edit_interface.php:2558 reportengine.php:524
 #: modules_v3/marriage_report/report.bak:10
 msgid "sort by date of marriage"
 msgstr ""
 
-#: edit_interface.php:2611
+#: edit_interface.php:2613
 msgid "Possible duplicates"
 msgstr ""
 
-#: edit_interface.php:2621
+#: edit_interface.php:2623
 msgid ""
 "These individuals might be duplicates of your new entry. Click on a name to "
 "open a new tab at their page to view more details. <br><br>Close this window "
@@ -3516,20 +3516,20 @@ msgid ""
 "complete this addition."
 msgstr ""
 
-#: edit_interface.php:2625 statistics.php:136
+#: edit_interface.php:2627 statistics.php:136
 msgid "Lifespan"
 msgstr ""
 
-#: edit_interface.php:2626
+#: edit_interface.php:2628
 msgid "Birthplace"
 msgstr ""
 
-#: edit_interface.php:2645
+#: edit_interface.php:2647
 #, php-format
 msgid "More than %s possible duplicates found."
 msgstr ""
 
-#: edit_interface.php:2653
+#: edit_interface.php:2655
 msgid "No duplicates found"
 msgstr ""
 
@@ -3550,7 +3550,7 @@ msgstr ""
 msgid "My account"
 msgstr ""
 
-#: edituser.php:148 library/WT/Stats.php:3794
+#: edituser.php:148 library/WT/Stats.php:3791
 msgid "Unknown"
 msgstr ""
 
@@ -3570,7 +3570,7 @@ msgstr ""
 #: library/WT/Person.php:420 library/WT/Person.php:443
 #: library/WT/Person.php:1913 library/WT/Report/Base.php:1947
 #: library/WT/Repository.php:60 library/WT/Source.php:52
-#: library/WT/Stats.php:869 library/WT/Stats.php:1814
+#: library/WT/Stats.php:866 library/WT/Stats.php:1811
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:215
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:341
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:484
@@ -3606,12 +3606,12 @@ msgid "Private"
 msgstr ""
 
 #: expand_view.php:93 includes/functions/functions_print_facts.php:197
-#: includes/functions/functions_print_facts.php:617
-#: includes/functions/functions_print_facts.php:1251
+#: includes/functions/functions_print_facts.php:616
+#: includes/functions/functions_print_facts.php:1250
 #: library/WT/Controller/Ancestry.php:144
-#: library/WT/Controller/Descendancy.php:210 library/WT/Stats.php:2638
-#: library/WT/Stats.php:2664 library/WT/Stats.php:2675
-#: library/WT/Stats.php:2684 modules_v3/relatives/module.php:52
+#: library/WT/Controller/Descendancy.php:210 library/WT/Stats.php:2635
+#: library/WT/Stats.php:2661 library/WT/Stats.php:2672
+#: library/WT/Stats.php:2681 modules_v3/relatives/module.php:52
 msgid "View Family"
 msgstr ""
 
@@ -8914,9 +8914,9 @@ msgstr ""
 
 #: includes/functions/functions_edit.php:247
 #: includes/functions/functions_print_facts.php:236
-#: includes/functions/functions_print_facts.php:394
-#: includes/functions/functions_print_facts.php:756
-#: includes/functions/functions_print_facts.php:1003
+#: includes/functions/functions_print_facts.php:393
+#: includes/functions/functions_print_facts.php:755
+#: includes/functions/functions_print_facts.php:1002
 #: includes/functions/functions_resource.php:125
 msgid "Only managers can edit"
 msgstr ""
@@ -9083,6 +9083,7 @@ msgid "Interactive tree"
 msgstr ""
 
 #: includes/functions/functions_print.php:115
+#: modules_v3/resource_individual/module.php:286
 msgid "Family with spouse"
 msgstr ""
 
@@ -9107,14 +9108,14 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: includes/functions/functions_print.php:352 library/WT/Stats.php:3441
+#: includes/functions/functions_print.php:352 library/WT/Stats.php:3438
 #, php-format
 msgid "%d anonymous logged-in user"
 msgid_plural "%d anonymous logged-in users"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions/functions_print.php:358 library/WT/Stats.php:3451
+#: includes/functions/functions_print.php:358 library/WT/Stats.php:3448
 #, php-format
 msgid "%d logged-in user"
 msgid_plural "%d logged-in users"
@@ -9143,11 +9144,11 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
-#: includes/functions/functions_print.php:619 library/WT/Stats.php:854
-#: library/WT/Stats.php:1395 library/WT/Stats.php:1481
-#: library/WT/Stats.php:1792 library/WT/Stats.php:1891
-#: library/WT/Stats.php:2122 library/WT/Stats.php:2539
-#: library/WT/Stats.php:2640 library/WT/Stats.php:2687
+#: includes/functions/functions_print.php:619 library/WT/Stats.php:851
+#: library/WT/Stats.php:1392 library/WT/Stats.php:1478
+#: library/WT/Stats.php:1789 library/WT/Stats.php:1888
+#: library/WT/Stats.php:2119 library/WT/Stats.php:2536
+#: library/WT/Stats.php:2637 library/WT/Stats.php:2684
 msgid "This information is private and cannot be shown."
 msgstr ""
 
@@ -9301,16 +9302,16 @@ msgid "Sat"
 msgstr ""
 
 #: includes/functions/functions_print_facts.php:170
-#: includes/functions/functions_print_facts.php:716
-#: includes/functions/functions_print_facts.php:919
-#: includes/functions/functions_print_facts.php:1207
+#: includes/functions/functions_print_facts.php:715
+#: includes/functions/functions_print_facts.php:918
+#: includes/functions/functions_print_facts.php:1206
 msgid "Copy"
 msgstr ""
 
 #: includes/functions/functions_print_facts.php:171
-#: includes/functions/functions_print_facts.php:718
-#: includes/functions/functions_print_facts.php:920
-#: includes/functions/functions_print_facts.php:1208
+#: includes/functions/functions_print_facts.php:717
+#: includes/functions/functions_print_facts.php:919
+#: includes/functions/functions_print_facts.php:1207
 #: library/WT/Controller/Individual.php:189
 msgid "Are you sure you want to delete this fact?"
 msgstr ""
@@ -9321,8 +9322,8 @@ msgstr ""
 msgid "#%d"
 msgstr ""
 
-#: includes/functions/functions_print_facts.php:483
-#: includes/functions/functions_print_facts.php:505 inverselink.php:130
+#: includes/functions/functions_print_facts.php:482
+#: includes/functions/functions_print_facts.php:504 inverselink.php:130
 #: library/WT/Gedcom/Tag.php:322 modules_v3/fact_sources/module.php:36
 #: modules_v3/gallery/module.php:268 modules_v3/bdm_report/report.bak:134
 #: modules_v3/bdm_report/report.bak:160 modules_v3/bdm_report/report.bak:194
@@ -9360,8 +9361,8 @@ msgid ""
 "Show individuals who are dead or couples where both partners are deceased."
 msgstr ""
 
-#: includes/functions/functions_print_lists.php:189 library/WT/Stats.php:686
-#: library/WT/Stats.php:688 modules_v3/simpl_privacy/module.php:61
+#: includes/functions/functions_print_lists.php:189 library/WT/Stats.php:683
+#: library/WT/Stats.php:685 modules_v3/simpl_privacy/module.php:61
 msgid "Dead"
 msgstr ""
 
@@ -9415,7 +9416,7 @@ msgid "Anniversary"
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:264
-#: includes/functions/functions_print_lists.php:747 statisticsplot.php:783
+#: includes/functions/functions_print_lists.php:747 statisticsplot.php:781
 #: modules_v3/family_group_report/report.bak:753
 #: modules_v3/relative_ext_report/report.bak:121
 msgid "Children"
@@ -9441,7 +9442,7 @@ msgid "Decade of death"
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:510 statistics.php:538
-#: statisticsplot.php:920
+#: statisticsplot.php:918
 msgid "Age related to death year"
 msgstr ""
 
@@ -9498,7 +9499,7 @@ msgid "Decade of marriage"
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:992 statistics.php:250
-#: statistics.php:542 statisticsplot.php:923
+#: statistics.php:542 statisticsplot.php:921
 msgid "Age in year of marriage"
 msgstr ""
 
@@ -9563,7 +9564,7 @@ msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:2402
+#: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:2399
 msgid "Average age"
 msgstr ""
 
@@ -9571,7 +9572,7 @@ msgstr ""
 msgid "Click a row, then drag-and-drop to re-order media "
 msgstr ""
 
-#: includes/session.php:556
+#: includes/session.php:591
 msgid "Search engine"
 msgstr ""
 
@@ -9643,14 +9644,14 @@ msgid ""
 "moderator."
 msgstr ""
 
-#: individual.php:86 modules_v3/resource_individual/module.php:347
+#: individual.php:86 modules_v3/resource_individual/module.php:334
 msgid "The details of this individual are private."
 msgstr ""
 
 #: individual.php:91 library/WT/Controller/Chart.php:48
 #: modules_v3/fancy_treeview/module.php:852
 #: modules_v3/fancy_treeview/module.php:898
-#: modules_v3/resource_individual/module.php:351
+#: modules_v3/resource_individual/module.php:338
 msgid ""
 "This individual does not exist or you do not have permission to view it."
 msgstr ""
@@ -9680,9 +9681,9 @@ msgstr ""
 msgid "Ancestors of %s"
 msgstr ""
 
-#: library/WT/Controller/Ancestry.php:145 library/WT/Stats.php:2636
-#: library/WT/Stats.php:2661 library/WT/Stats.php:2672
-#: library/WT/Stats.php:2682 library/WT/Stats.php:3448
+#: library/WT/Controller/Ancestry.php:145 library/WT/Stats.php:2633
+#: library/WT/Stats.php:2658 library/WT/Stats.php:2669
+#: library/WT/Stats.php:2679 library/WT/Stats.php:3445
 #: modules_v3/fancy_treeview/module.php:1145
 #: modules_v3/ahnentafel_report/report.bak:400
 #: modules_v3/descendancy_report/report.bak:131
@@ -12200,7 +12201,7 @@ msgstr ""
 msgid "Hermosillo, Mexico"
 msgstr ""
 
-#: library/WT/Gedcom/Code/Temp.php:113 library/WT/Stats.php:3899
+#: library/WT/Gedcom/Code/Temp.php:113 library/WT/Stats.php:3896
 msgid "Hong Kong"
 msgstr ""
 
@@ -12731,7 +12732,7 @@ msgstr ""
 
 #: library/WT/Gedcom/Tag.php:156
 #: modules_v3/GEDFact_assistant/_CENS/census_asst_date.php:47
-#: modules_v3/no_census/module.php:166
+#: modules_v3/no_census/module.php:177
 msgid "Census date"
 msgstr ""
 
@@ -12834,7 +12835,7 @@ msgstr ""
 #: modules_v3/googlemap/module.php:278 modules_v3/googlemap/module.php:349
 #: modules_v3/googlemap/module.php:1426 modules_v3/googlemap/module.php:1544
 #: modules_v3/googlemap/places_edit.php:283
-#: modules_v3/uk_register/module.php:143
+#: modules_v3/uk_register/module.php:154
 msgid "Country"
 msgstr ""
 
@@ -12932,7 +12933,7 @@ msgstr ""
 msgid "Place of Event"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:212
+#: library/WT/Gedcom/Tag.php:212 modules_v3/resource_fact/module.php:149
 msgid "Fact"
 msgstr ""
 
@@ -13133,9 +13134,9 @@ msgstr ""
 msgid "Place of Naturalization"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:275 library/WT/Stats.php:2911
-#: library/WT/Stats.php:2913 library/WT/Stats.php:2915 statistics.php:550
-#: statisticsplot.php:929
+#: library/WT/Gedcom/Tag.php:275 library/WT/Stats.php:2908
+#: library/WT/Stats.php:2910 library/WT/Stats.php:2912 statistics.php:550
+#: statisticsplot.php:927
 msgid "Number of children"
 msgstr ""
 
@@ -14168,7 +14169,7 @@ msgstr ""
 msgid "Married Name"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:749 modules_v3/resource_individual/module.php:134
+#: library/WT/Gedcom/Tag.php:749 modules_v3/resource_individual/module.php:146
 #: modules_v3/individual_ext_report/report.bak:12
 msgid "Highlighted image"
 msgstr ""
@@ -14487,8 +14488,8 @@ msgstr ""
 msgid "Painting"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:922 library/WT/Stats.php:3238
-#: library/WT/Stats.php:3412 modules_v3/album/album_print_media.php:55
+#: library/WT/Gedcom/Tag.php:922 library/WT/Stats.php:3235
+#: library/WT/Stats.php:3409 modules_v3/album/album_print_media.php:55
 #: modules_v3/album/album_print_media.php:60
 #: modules_v3/album/album_print_media.php:61
 #: modules_v3/album/album_print_media.php:64
@@ -14694,7 +14695,7 @@ msgstr ""
 #: modules_v3/descendancy/module.php:98 modules_v3/descendancy/module.php:131
 #: modules_v3/families/module.php:144 modules_v3/individuals/module.php:144
 #: search.php:163 search.php:266 search.php:268 search.php:270
-#: search_advanced.php:297 themes/colors/header.php:119
+#: search_advanced.php:299 themes/colors/header.php:119
 #: themes/colors/header.php:120 themes/foundation/header.php:149
 #: themes/levy/header.php:110 themes/levy/header.php:111
 #: themes/webtrees/header.php:120 themes/webtrees/header.php:121
@@ -14780,131 +14781,131 @@ msgstr ""
 msgid "Resulting value"
 msgstr ""
 
-#: library/WT/Stats.php:338 library/WT/Stats.php:382
+#: library/WT/Stats.php:335 library/WT/Stats.php:379
 msgid "Without sources"
 msgstr ""
 
-#: library/WT/Stats.php:339 library/WT/Stats.php:383
+#: library/WT/Stats.php:336 library/WT/Stats.php:380
 msgid "With sources"
 msgstr ""
 
-#: library/WT/Stats.php:340 statistics.php:383
+#: library/WT/Stats.php:337 statistics.php:383
 msgid "Individuals with sources"
 msgstr ""
 
-#: library/WT/Stats.php:384 statistics.php:384
+#: library/WT/Stats.php:381 statistics.php:384
 msgid "Families with sources"
 msgstr ""
 
-#: library/WT/Stats.php:612 library/WT/Stats.php:618
+#: library/WT/Stats.php:609 library/WT/Stats.php:615
 msgctxt "unknown people"
 msgid "Unknown"
 msgstr ""
 
-#: library/WT/Stats.php:685 library/WT/Stats.php:687
+#: library/WT/Stats.php:682 library/WT/Stats.php:684
 #: modules_v3/simpl_privacy/module.php:77
 msgid "Living"
 msgstr ""
 
-#: library/WT/Stats.php:1000 statistics.php:609
+#: library/WT/Stats.php:997 statistics.php:609
 msgid "Surname distribution chart"
 msgstr ""
 
-#: library/WT/Stats.php:1021 statistics.php:558
+#: library/WT/Stats.php:1018 statistics.php:558
 msgid "Birth by country"
 msgstr ""
 
-#: library/WT/Stats.php:1038 statistics.php:566
+#: library/WT/Stats.php:1035 statistics.php:566
 msgid "Death by country"
 msgstr ""
 
-#: library/WT/Stats.php:1055 statistics.php:562
+#: library/WT/Stats.php:1052 statistics.php:562
 msgid "Marriage by country"
 msgstr ""
 
-#: library/WT/Stats.php:1073 statistics.php:608
+#: library/WT/Stats.php:1070 statistics.php:608
 msgid "Individual distribution chart"
 msgstr ""
 
-#: library/WT/Stats.php:1102
+#: library/WT/Stats.php:1099
 msgid "Highest population"
 msgstr ""
 
-#: library/WT/Stats.php:1103
+#: library/WT/Stats.php:1100
 msgid "Lowest population"
 msgstr ""
 
-#: library/WT/Stats.php:1104
+#: library/WT/Stats.php:1101
 msgid "Nobody at all"
 msgstr ""
 
-#: library/WT/Stats.php:1251 statistics.php:111
+#: library/WT/Stats.php:1248 statistics.php:111
 msgid "Births by century"
 msgstr ""
 
-#: library/WT/Stats.php:1312 statistics.php:112
+#: library/WT/Stats.php:1309 statistics.php:112
 msgid "Deaths by century"
 msgstr ""
 
-#: library/WT/Stats.php:1649 library/WT/Stats.php:2389
-#: library/WT/Stats.php:2390 library/WT/Stats.php:2911
-#: library/WT/Stats.php:2913 library/WT/Stats.php:2915
-#: library/WT/Stats.php:3063
+#: library/WT/Stats.php:1646 library/WT/Stats.php:2386
+#: library/WT/Stats.php:2387 library/WT/Stats.php:2908
+#: library/WT/Stats.php:2910 library/WT/Stats.php:2912
+#: library/WT/Stats.php:3060
 msgid "century"
 msgstr ""
 
-#: library/WT/Stats.php:1650 library/WT/Stats.php:1662
+#: library/WT/Stats.php:1647 library/WT/Stats.php:1659
 msgid "Average age related to death century"
 msgstr ""
 
-#: library/WT/Stats.php:1662 modules_v3/gedcom_stats/module.php:165
+#: library/WT/Stats.php:1659 modules_v3/gedcom_stats/module.php:165
 #: modules_v3/gedcom_stats/module.php:344 modules_v3/html/module.php:243
 #: modules_v3/widget_stats/module.php:227
 #: modules_v3/widget_stats/module.php:379 statistics.php:139
 msgid "Average age at death"
 msgstr ""
 
-#: library/WT/Stats.php:1756 library/WT/Stats.php:3626
+#: library/WT/Stats.php:1753 library/WT/Stats.php:3623
 #: modules_v3/simpl_research/plugins/rijksarchiefbelgie.php:20
 msgid "birth"
 msgstr ""
 
-#: library/WT/Stats.php:1757 library/WT/Stats.php:3627
+#: library/WT/Stats.php:1754 library/WT/Stats.php:3624
 #: modules_v3/simpl_research/plugins/rijksarchiefbelgie.php:24
 msgid "death"
 msgstr ""
 
-#: library/WT/Stats.php:1758 library/WT/Stats.php:3628
+#: library/WT/Stats.php:1755 library/WT/Stats.php:3625
 msgid "marriage"
 msgstr ""
 
-#: library/WT/Stats.php:1759 library/WT/Stats.php:3629
+#: library/WT/Stats.php:1756 library/WT/Stats.php:3626
 msgid "adoption"
 msgstr ""
 
-#: library/WT/Stats.php:1760 library/WT/Stats.php:3630
+#: library/WT/Stats.php:1757 library/WT/Stats.php:3627
 msgid "burial"
 msgstr ""
 
-#: library/WT/Stats.php:1761 library/WT/Stats.php:3631
+#: library/WT/Stats.php:1758 library/WT/Stats.php:3628
 msgid "census added"
 msgstr ""
 
-#: library/WT/Stats.php:2208 statistics.php:213
+#: library/WT/Stats.php:2205 statistics.php:213
 msgid "Marriages by century"
 msgstr ""
 
-#: library/WT/Stats.php:2273 statistics.php:214
+#: library/WT/Stats.php:2270 statistics.php:214
 msgid "Divorces by century"
 msgstr ""
 
-#: library/WT/Stats.php:2391 library/WT/Stats.php:2392
-#: library/WT/Stats.php:2396 library/WT/Stats.php:2400
-#: library/WT/Stats.php:2402
+#: library/WT/Stats.php:2388 library/WT/Stats.php:2389
+#: library/WT/Stats.php:2393 library/WT/Stats.php:2397
+#: library/WT/Stats.php:2399
 msgid "Average age in century of marriage"
 msgstr ""
 
-#: library/WT/Stats.php:2573 library/WT/Stats.php:2577
+#: library/WT/Stats.php:2570 library/WT/Stats.php:2574
 #: modules_v3/fancy_treeview/module.php:1210
 #, php-format
 msgid "%s child"
@@ -14912,27 +14913,27 @@ msgid_plural "%s children"
 msgstr[0] ""
 msgstr[1] ""
 
-#: library/WT/Stats.php:2807 statistics.php:526 statisticsplot.php:908
+#: library/WT/Stats.php:2804 statistics.php:526 statisticsplot.php:906
 msgid "Month of birth of first child in a relation"
 msgstr ""
 
-#: library/WT/Stats.php:2855 statistics.php:308
+#: library/WT/Stats.php:2852 statistics.php:308
 msgid "Largest families"
 msgstr ""
 
-#: library/WT/Stats.php:2918 modules_v3/gedcom_stats/module.php:181
+#: library/WT/Stats.php:2915 modules_v3/gedcom_stats/module.php:181
 #: modules_v3/gedcom_stats/module.php:360 modules_v3/html/module.php:253
 #: modules_v3/widget_stats/module.php:245
 #: modules_v3/widget_stats/module.php:395 statistics.php:296
 msgid "Average number of children per family"
 msgstr ""
 
-#: library/WT/Stats.php:3063
+#: library/WT/Stats.php:3060
 msgctxt "unknown century"
 msgid "Unknown"
 msgstr ""
 
-#: library/WT/Stats.php:3080 modules_v3/fact_sources/report.bak:246
+#: library/WT/Stats.php:3077 modules_v3/fact_sources/report.bak:246
 #: modules_v3/fact_sources/report.bak:250
 #: modules_v3/fact_sources/report.bak:348
 #: modules_v3/fact_sources/report.bak:352
@@ -14940,1191 +14941,1191 @@ msgstr ""
 msgid "Total families"
 msgstr ""
 
-#: library/WT/Stats.php:3081 statistics.php:297
+#: library/WT/Stats.php:3078 statistics.php:297
 msgid "Number of families without children"
 msgstr ""
 
-#: library/WT/Stats.php:3114 library/WT/Stats.php:3118
+#: library/WT/Stats.php:3111 library/WT/Stats.php:3115
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] ""
 msgstr[1] ""
 
-#: library/WT/Stats.php:3347
+#: library/WT/Stats.php:3344
 msgid "Count"
 msgstr ""
 
-#: library/WT/Stats.php:3438
+#: library/WT/Stats.php:3435
 msgid "No logged-in and no anonymous users"
 msgstr ""
 
-#: library/WT/Stats.php:3795
+#: library/WT/Stats.php:3792
 msgid "Aruba"
 msgstr ""
 
-#: library/WT/Stats.php:3796
+#: library/WT/Stats.php:3793
 msgid "Acadia"
 msgstr ""
 
-#: library/WT/Stats.php:3797
+#: library/WT/Stats.php:3794
 msgid "Afghanistan"
 msgstr ""
 
-#: library/WT/Stats.php:3798
+#: library/WT/Stats.php:3795
 msgid "Angola"
 msgstr ""
 
-#: library/WT/Stats.php:3799
+#: library/WT/Stats.php:3796
 msgid "Anguilla"
 msgstr ""
 
-#: library/WT/Stats.php:3800
+#: library/WT/Stats.php:3797
 msgid "Aland Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3801
+#: library/WT/Stats.php:3798
 msgid "Albania"
 msgstr ""
 
-#: library/WT/Stats.php:3802
+#: library/WT/Stats.php:3799
 msgid "Andorra"
 msgstr ""
 
-#: library/WT/Stats.php:3803
+#: library/WT/Stats.php:3800
 msgid "Netherlands Antilles"
 msgstr ""
 
-#: library/WT/Stats.php:3804
+#: library/WT/Stats.php:3801
 msgid "United Arab Emirates"
 msgstr ""
 
-#: library/WT/Stats.php:3805
+#: library/WT/Stats.php:3802
 msgid "Argentina"
 msgstr ""
 
-#: library/WT/Stats.php:3806
+#: library/WT/Stats.php:3803
 msgid "Armenia"
 msgstr ""
 
-#: library/WT/Stats.php:3807
+#: library/WT/Stats.php:3804
 msgid "American Samoa"
 msgstr ""
 
-#: library/WT/Stats.php:3808
+#: library/WT/Stats.php:3805
 msgid "Antarctica"
 msgstr ""
 
-#: library/WT/Stats.php:3809
+#: library/WT/Stats.php:3806
 msgid "French Southern Territories"
 msgstr ""
 
-#: library/WT/Stats.php:3810
+#: library/WT/Stats.php:3807
 msgid "Antigua and Barbuda"
 msgstr ""
 
-#: library/WT/Stats.php:3811
+#: library/WT/Stats.php:3808
 msgid "Australia"
 msgstr ""
 
-#: library/WT/Stats.php:3812
+#: library/WT/Stats.php:3809
 msgid "Austria"
 msgstr ""
 
-#: library/WT/Stats.php:3813
+#: library/WT/Stats.php:3810
 msgid "Azerbaijan"
 msgstr ""
 
-#: library/WT/Stats.php:3814
+#: library/WT/Stats.php:3811
 msgid "Azores"
 msgstr ""
 
-#: library/WT/Stats.php:3815
+#: library/WT/Stats.php:3812
 msgid "Burundi"
 msgstr ""
 
-#: library/WT/Stats.php:3816
+#: library/WT/Stats.php:3813
 msgid "Belgium"
 msgstr ""
 
-#: library/WT/Stats.php:3817
+#: library/WT/Stats.php:3814
 msgid "Benin"
 msgstr ""
 
-#: library/WT/Stats.php:3818
+#: library/WT/Stats.php:3815
 msgid "Burkina Faso"
 msgstr ""
 
-#: library/WT/Stats.php:3819
+#: library/WT/Stats.php:3816
 msgid "Bangladesh"
 msgstr ""
 
-#: library/WT/Stats.php:3820
+#: library/WT/Stats.php:3817
 msgid "Bulgaria"
 msgstr ""
 
-#: library/WT/Stats.php:3821
+#: library/WT/Stats.php:3818
 msgid "Bahrain"
 msgstr ""
 
-#: library/WT/Stats.php:3822
+#: library/WT/Stats.php:3819
 msgid "Bahamas"
 msgstr ""
 
-#: library/WT/Stats.php:3823
+#: library/WT/Stats.php:3820
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: library/WT/Stats.php:3824
+#: library/WT/Stats.php:3821
 msgid "Belarus"
 msgstr ""
 
-#: library/WT/Stats.php:3825
+#: library/WT/Stats.php:3822
 msgid "Belize"
 msgstr ""
 
-#: library/WT/Stats.php:3826
+#: library/WT/Stats.php:3823
 msgid "Bermuda"
 msgstr ""
 
-#: library/WT/Stats.php:3827
+#: library/WT/Stats.php:3824
 msgid "Bolivia"
 msgstr ""
 
-#: library/WT/Stats.php:3828
+#: library/WT/Stats.php:3825
 msgid "Brazil"
 msgstr ""
 
-#: library/WT/Stats.php:3829
+#: library/WT/Stats.php:3826
 msgid "Barbados"
 msgstr ""
 
-#: library/WT/Stats.php:3830
+#: library/WT/Stats.php:3827
 msgid "Brunei Darussalam"
 msgstr ""
 
-#: library/WT/Stats.php:3831
+#: library/WT/Stats.php:3828
 msgid "Bhutan"
 msgstr ""
 
-#: library/WT/Stats.php:3832
+#: library/WT/Stats.php:3829
 msgid "Bouvet Island"
 msgstr ""
 
-#: library/WT/Stats.php:3833
+#: library/WT/Stats.php:3830
 msgid "Botswana"
 msgstr ""
 
-#: library/WT/Stats.php:3834
+#: library/WT/Stats.php:3831
 msgid "British West Indies"
 msgstr ""
 
-#: library/WT/Stats.php:3835
+#: library/WT/Stats.php:3832
 msgid "Central African Republic"
 msgstr ""
 
-#: library/WT/Stats.php:3836
+#: library/WT/Stats.php:3833
 msgid "Canada"
 msgstr ""
 
-#: library/WT/Stats.php:3837
+#: library/WT/Stats.php:3834
 msgid "Cape Colony"
 msgstr ""
 
-#: library/WT/Stats.php:3838
+#: library/WT/Stats.php:3835
 msgid "Catalonia"
 msgstr ""
 
-#: library/WT/Stats.php:3839
+#: library/WT/Stats.php:3836
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3840
+#: library/WT/Stats.php:3837
 msgid "Switzerland"
 msgstr ""
 
-#: library/WT/Stats.php:3841
+#: library/WT/Stats.php:3838
 msgid "Channel Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3842
+#: library/WT/Stats.php:3839
 msgid "Chile"
 msgstr ""
 
-#: library/WT/Stats.php:3843
+#: library/WT/Stats.php:3840
 msgid "China"
 msgstr ""
 
-#: library/WT/Stats.php:3844
+#: library/WT/Stats.php:3841
 msgid "Cote d'Ivoire"
 msgstr ""
 
-#: library/WT/Stats.php:3845
+#: library/WT/Stats.php:3842
 msgid "Cameroon"
 msgstr ""
 
-#: library/WT/Stats.php:3846
+#: library/WT/Stats.php:3843
 msgid "Congo (Kinshasa)"
 msgstr ""
 
-#: library/WT/Stats.php:3847
+#: library/WT/Stats.php:3844
 msgid "Congo (Brazzaville)"
 msgstr ""
 
-#: library/WT/Stats.php:3848
+#: library/WT/Stats.php:3845
 msgid "Cook Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3849
+#: library/WT/Stats.php:3846
 msgid "Colombia"
 msgstr ""
 
-#: library/WT/Stats.php:3850
+#: library/WT/Stats.php:3847
 msgid "Comoros"
 msgstr ""
 
-#: library/WT/Stats.php:3851
+#: library/WT/Stats.php:3848
 msgid "Cape Verde"
 msgstr ""
 
-#: library/WT/Stats.php:3852
+#: library/WT/Stats.php:3849
 msgid "Costa Rica"
 msgstr ""
 
-#: library/WT/Stats.php:3853
+#: library/WT/Stats.php:3850
 msgid "Czechoslovakia"
 msgstr ""
 
-#: library/WT/Stats.php:3854
+#: library/WT/Stats.php:3851
 msgid "Cuba"
 msgstr ""
 
-#: library/WT/Stats.php:3855
+#: library/WT/Stats.php:3852
 msgid "Christmas Island"
 msgstr ""
 
-#: library/WT/Stats.php:3856
+#: library/WT/Stats.php:3853
 msgid "Cayman Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3857
+#: library/WT/Stats.php:3854
 msgid "Cyprus"
 msgstr ""
 
-#: library/WT/Stats.php:3858
+#: library/WT/Stats.php:3855
 msgid "Czech Republic"
 msgstr ""
 
-#: library/WT/Stats.php:3859
+#: library/WT/Stats.php:3856
 msgid "Germany"
 msgstr ""
 
-#: library/WT/Stats.php:3860
+#: library/WT/Stats.php:3857
 msgid "Djibouti"
 msgstr ""
 
-#: library/WT/Stats.php:3861
+#: library/WT/Stats.php:3858
 msgid "Dominica"
 msgstr ""
 
-#: library/WT/Stats.php:3862
+#: library/WT/Stats.php:3859
 msgid "Denmark"
 msgstr ""
 
-#: library/WT/Stats.php:3863
+#: library/WT/Stats.php:3860
 msgid "Dominican Republic"
 msgstr ""
 
-#: library/WT/Stats.php:3864
+#: library/WT/Stats.php:3861
 msgid "Algeria"
 msgstr ""
 
-#: library/WT/Stats.php:3865
+#: library/WT/Stats.php:3862
 msgid "Ecuador"
 msgstr ""
 
-#: library/WT/Stats.php:3866
+#: library/WT/Stats.php:3863
 msgid "Egypt"
 msgstr ""
 
-#: library/WT/Stats.php:3867
+#: library/WT/Stats.php:3864
 msgid "Eire"
 msgstr ""
 
-#: library/WT/Stats.php:3868
+#: library/WT/Stats.php:3865
 msgid "England"
 msgstr ""
 
-#: library/WT/Stats.php:3869
+#: library/WT/Stats.php:3866
 msgid "Eritrea"
 msgstr ""
 
-#: library/WT/Stats.php:3870
+#: library/WT/Stats.php:3867
 msgid "Western Sahara"
 msgstr ""
 
-#: library/WT/Stats.php:3871
+#: library/WT/Stats.php:3868
 msgid "Spain"
 msgstr ""
 
-#: library/WT/Stats.php:3872
+#: library/WT/Stats.php:3869
 msgid "Estonia"
 msgstr ""
 
-#: library/WT/Stats.php:3873
+#: library/WT/Stats.php:3870
 msgid "Ethiopia"
 msgstr ""
 
-#: library/WT/Stats.php:3874
+#: library/WT/Stats.php:3871
 msgid "Finland"
 msgstr ""
 
-#: library/WT/Stats.php:3875
+#: library/WT/Stats.php:3872
 msgid "Fiji"
 msgstr ""
 
-#: library/WT/Stats.php:3876
+#: library/WT/Stats.php:3873
 msgid "Flanders"
 msgstr ""
 
-#: library/WT/Stats.php:3877
+#: library/WT/Stats.php:3874
 msgid "Falkland Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3878
+#: library/WT/Stats.php:3875
 msgid "France"
 msgstr ""
 
-#: library/WT/Stats.php:3879
+#: library/WT/Stats.php:3876
 msgid "Faeroe Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3880
+#: library/WT/Stats.php:3877
 msgid "Micronesia"
 msgstr ""
 
-#: library/WT/Stats.php:3881
+#: library/WT/Stats.php:3878
 msgid "Gabon"
 msgstr ""
 
-#: library/WT/Stats.php:3882
+#: library/WT/Stats.php:3879
 msgid "United Kingdom"
 msgstr ""
 
-#: library/WT/Stats.php:3883
+#: library/WT/Stats.php:3880
 msgid "Georgia"
 msgstr ""
 
-#: library/WT/Stats.php:3884
+#: library/WT/Stats.php:3881
 msgid "Guernsey"
 msgstr ""
 
-#: library/WT/Stats.php:3885
+#: library/WT/Stats.php:3882
 msgid "Ghana"
 msgstr ""
 
-#: library/WT/Stats.php:3886
+#: library/WT/Stats.php:3883
 msgid "Gibraltar"
 msgstr ""
 
-#: library/WT/Stats.php:3887
+#: library/WT/Stats.php:3884
 msgid "Guinea"
 msgstr ""
 
-#: library/WT/Stats.php:3888
+#: library/WT/Stats.php:3885
 msgid "Guadeloupe"
 msgstr ""
 
-#: library/WT/Stats.php:3889
+#: library/WT/Stats.php:3886
 msgid "Gambia"
 msgstr ""
 
-#: library/WT/Stats.php:3890
+#: library/WT/Stats.php:3887
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: library/WT/Stats.php:3891
+#: library/WT/Stats.php:3888
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: library/WT/Stats.php:3892
+#: library/WT/Stats.php:3889
 msgid "Greece"
 msgstr ""
 
-#: library/WT/Stats.php:3893
+#: library/WT/Stats.php:3890
 msgid "Grenada"
 msgstr ""
 
-#: library/WT/Stats.php:3894
+#: library/WT/Stats.php:3891
 msgid "Greenland"
 msgstr ""
 
-#: library/WT/Stats.php:3895
+#: library/WT/Stats.php:3892
 msgid "Guatemala"
 msgstr ""
 
-#: library/WT/Stats.php:3896
+#: library/WT/Stats.php:3893
 msgid "French Guiana"
 msgstr ""
 
-#: library/WT/Stats.php:3897
+#: library/WT/Stats.php:3894
 msgid "Guam"
 msgstr ""
 
-#: library/WT/Stats.php:3898
+#: library/WT/Stats.php:3895
 msgid "Guyana"
 msgstr ""
 
-#: library/WT/Stats.php:3900
+#: library/WT/Stats.php:3897
 msgid "Heard Island and McDonald Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3901
+#: library/WT/Stats.php:3898
 msgid "Honduras"
 msgstr ""
 
-#: library/WT/Stats.php:3902
+#: library/WT/Stats.php:3899
 msgid "Croatia"
 msgstr ""
 
-#: library/WT/Stats.php:3903
+#: library/WT/Stats.php:3900
 msgid "Haiti"
 msgstr ""
 
-#: library/WT/Stats.php:3904
+#: library/WT/Stats.php:3901
 msgid "Hungary"
 msgstr ""
 
-#: library/WT/Stats.php:3905
+#: library/WT/Stats.php:3902
 msgid "Indonesia"
 msgstr ""
 
-#: library/WT/Stats.php:3906
+#: library/WT/Stats.php:3903
 msgid "India"
 msgstr ""
 
-#: library/WT/Stats.php:3907
+#: library/WT/Stats.php:3904
 msgid "Isle of Man"
 msgstr ""
 
-#: library/WT/Stats.php:3908
+#: library/WT/Stats.php:3905
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: library/WT/Stats.php:3909
+#: library/WT/Stats.php:3906
 msgid "Ireland"
 msgstr ""
 
-#: library/WT/Stats.php:3910
+#: library/WT/Stats.php:3907
 msgid "Iran"
 msgstr ""
 
-#: library/WT/Stats.php:3911
+#: library/WT/Stats.php:3908
 msgid "Iraq"
 msgstr ""
 
-#: library/WT/Stats.php:3912
+#: library/WT/Stats.php:3909
 msgid "Iceland"
 msgstr ""
 
-#: library/WT/Stats.php:3913
+#: library/WT/Stats.php:3910
 msgid "Israel"
 msgstr ""
 
-#: library/WT/Stats.php:3914
+#: library/WT/Stats.php:3911
 msgid "Italy"
 msgstr ""
 
-#: library/WT/Stats.php:3915
+#: library/WT/Stats.php:3912
 msgid "Jamaica"
 msgstr ""
 
-#: library/WT/Stats.php:3916
+#: library/WT/Stats.php:3913
 msgid "Jordan"
 msgstr ""
 
-#: library/WT/Stats.php:3917
+#: library/WT/Stats.php:3914
 msgid "Japan"
 msgstr ""
 
-#: library/WT/Stats.php:3918
+#: library/WT/Stats.php:3915
 msgid "Kazakhstan"
 msgstr ""
 
-#: library/WT/Stats.php:3919
+#: library/WT/Stats.php:3916
 msgid "Kenya"
 msgstr ""
 
-#: library/WT/Stats.php:3920
+#: library/WT/Stats.php:3917
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: library/WT/Stats.php:3921
+#: library/WT/Stats.php:3918
 msgid "Cambodia"
 msgstr ""
 
-#: library/WT/Stats.php:3922
+#: library/WT/Stats.php:3919
 msgid "Kiribati"
 msgstr ""
 
-#: library/WT/Stats.php:3923
+#: library/WT/Stats.php:3920
 msgid "Saint Kitts and Nevis"
 msgstr ""
 
-#: library/WT/Stats.php:3924
+#: library/WT/Stats.php:3921
 msgid "Korea"
 msgstr ""
 
-#: library/WT/Stats.php:3925
+#: library/WT/Stats.php:3922
 msgid "Kuwait"
 msgstr ""
 
-#: library/WT/Stats.php:3926
+#: library/WT/Stats.php:3923
 msgid "Laos"
 msgstr ""
 
-#: library/WT/Stats.php:3927
+#: library/WT/Stats.php:3924
 msgid "Lebanon"
 msgstr ""
 
-#: library/WT/Stats.php:3928
+#: library/WT/Stats.php:3925
 msgid "Liberia"
 msgstr ""
 
-#: library/WT/Stats.php:3929
+#: library/WT/Stats.php:3926
 msgid "Libya"
 msgstr ""
 
-#: library/WT/Stats.php:3930
+#: library/WT/Stats.php:3927
 msgid "Saint Lucia"
 msgstr ""
 
-#: library/WT/Stats.php:3931
+#: library/WT/Stats.php:3928
 msgid "Liechtenstein"
 msgstr ""
 
-#: library/WT/Stats.php:3932
+#: library/WT/Stats.php:3929
 msgid "Sri Lanka"
 msgstr ""
 
-#: library/WT/Stats.php:3933
+#: library/WT/Stats.php:3930
 msgid "Lesotho"
 msgstr ""
 
-#: library/WT/Stats.php:3934
+#: library/WT/Stats.php:3931
 msgid "Lithuania"
 msgstr ""
 
-#: library/WT/Stats.php:3935
+#: library/WT/Stats.php:3932
 msgid "Luxembourg"
 msgstr ""
 
-#: library/WT/Stats.php:3936
+#: library/WT/Stats.php:3933
 msgid "Latvia"
 msgstr ""
 
-#: library/WT/Stats.php:3937
+#: library/WT/Stats.php:3934
 msgid "Macau"
 msgstr ""
 
-#: library/WT/Stats.php:3938
+#: library/WT/Stats.php:3935
 msgid "Morocco"
 msgstr ""
 
-#: library/WT/Stats.php:3939
+#: library/WT/Stats.php:3936
 msgid "Monaco"
 msgstr ""
 
-#: library/WT/Stats.php:3940
+#: library/WT/Stats.php:3937
 msgid "Moldova"
 msgstr ""
 
-#: library/WT/Stats.php:3941
+#: library/WT/Stats.php:3938
 msgid "Madagascar"
 msgstr ""
 
-#: library/WT/Stats.php:3942
+#: library/WT/Stats.php:3939
 msgid "Maldives"
 msgstr ""
 
-#: library/WT/Stats.php:3943
+#: library/WT/Stats.php:3940
 msgid "Mexico"
 msgstr ""
 
-#: library/WT/Stats.php:3944
+#: library/WT/Stats.php:3941
 msgid "Marshall Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3945
+#: library/WT/Stats.php:3942
 msgid "Macedonia"
 msgstr ""
 
-#: library/WT/Stats.php:3946
+#: library/WT/Stats.php:3943
 msgid "Mali"
 msgstr ""
 
-#: library/WT/Stats.php:3947
+#: library/WT/Stats.php:3944
 msgid "Malta"
 msgstr ""
 
-#: library/WT/Stats.php:3948
+#: library/WT/Stats.php:3945
 msgid "Myanmar"
 msgstr ""
 
-#: library/WT/Stats.php:3949
+#: library/WT/Stats.php:3946
 msgid "Mongolia"
 msgstr ""
 
-#: library/WT/Stats.php:3950
+#: library/WT/Stats.php:3947
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: library/WT/Stats.php:3951
+#: library/WT/Stats.php:3948
 msgid "Montenegro"
 msgstr ""
 
-#: library/WT/Stats.php:3952
+#: library/WT/Stats.php:3949
 msgid "Mozambique"
 msgstr ""
 
-#: library/WT/Stats.php:3953
+#: library/WT/Stats.php:3950
 msgid "Mauritania"
 msgstr ""
 
-#: library/WT/Stats.php:3954
+#: library/WT/Stats.php:3951
 msgid "Montserrat"
 msgstr ""
 
-#: library/WT/Stats.php:3955
+#: library/WT/Stats.php:3952
 msgid "Martinique"
 msgstr ""
 
-#: library/WT/Stats.php:3956
+#: library/WT/Stats.php:3953
 msgid "Mauritius"
 msgstr ""
 
-#: library/WT/Stats.php:3957
+#: library/WT/Stats.php:3954
 msgid "Malawi"
 msgstr ""
 
-#: library/WT/Stats.php:3958
+#: library/WT/Stats.php:3955
 msgid "Malaysia"
 msgstr ""
 
-#: library/WT/Stats.php:3959
+#: library/WT/Stats.php:3956
 msgid "Mayotte"
 msgstr ""
 
-#: library/WT/Stats.php:3960
+#: library/WT/Stats.php:3957
 msgid "Namibia"
 msgstr ""
 
-#: library/WT/Stats.php:3961
+#: library/WT/Stats.php:3958
 msgid "New Caledonia"
 msgstr ""
 
-#: library/WT/Stats.php:3962
+#: library/WT/Stats.php:3959
 msgid "Niger"
 msgstr ""
 
-#: library/WT/Stats.php:3963
+#: library/WT/Stats.php:3960
 msgid "Norfolk Island"
 msgstr ""
 
-#: library/WT/Stats.php:3964
+#: library/WT/Stats.php:3961
 msgid "Nigeria"
 msgstr ""
 
-#: library/WT/Stats.php:3965
+#: library/WT/Stats.php:3962
 msgid "Nicaragua"
 msgstr ""
 
-#: library/WT/Stats.php:3966
+#: library/WT/Stats.php:3963
 msgid "Northern Ireland"
 msgstr ""
 
-#: library/WT/Stats.php:3967
+#: library/WT/Stats.php:3964
 msgid "Niue"
 msgstr ""
 
-#: library/WT/Stats.php:3968
+#: library/WT/Stats.php:3965
 msgid "Netherlands"
 msgstr ""
 
-#: library/WT/Stats.php:3969
+#: library/WT/Stats.php:3966
 msgid "Norway"
 msgstr ""
 
-#: library/WT/Stats.php:3970
+#: library/WT/Stats.php:3967
 msgid "Nepal"
 msgstr ""
 
-#: library/WT/Stats.php:3971
+#: library/WT/Stats.php:3968
 msgid "Nauru"
 msgstr ""
 
-#: library/WT/Stats.php:3972
+#: library/WT/Stats.php:3969
 msgid "Neutral Zone"
 msgstr ""
 
-#: library/WT/Stats.php:3973
+#: library/WT/Stats.php:3970
 msgid "New Zealand"
 msgstr ""
 
-#: library/WT/Stats.php:3974
+#: library/WT/Stats.php:3971
 msgid "Oman"
 msgstr ""
 
-#: library/WT/Stats.php:3975
+#: library/WT/Stats.php:3972
 msgid "Pakistan"
 msgstr ""
 
-#: library/WT/Stats.php:3976
+#: library/WT/Stats.php:3973
 msgid "Panama"
 msgstr ""
 
-#: library/WT/Stats.php:3977
+#: library/WT/Stats.php:3974
 msgid "Pitcairn"
 msgstr ""
 
-#: library/WT/Stats.php:3978
+#: library/WT/Stats.php:3975
 msgid "Peru"
 msgstr ""
 
-#: library/WT/Stats.php:3979
+#: library/WT/Stats.php:3976
 msgid "Philippines"
 msgstr ""
 
-#: library/WT/Stats.php:3980
+#: library/WT/Stats.php:3977
 msgid "Palau"
 msgstr ""
 
-#: library/WT/Stats.php:3981
+#: library/WT/Stats.php:3978
 msgid "Papua New Guinea"
 msgstr ""
 
-#: library/WT/Stats.php:3982
+#: library/WT/Stats.php:3979
 msgid "Poland"
 msgstr ""
 
-#: library/WT/Stats.php:3983
+#: library/WT/Stats.php:3980
 msgid "Puerto Rico"
 msgstr ""
 
-#: library/WT/Stats.php:3984
+#: library/WT/Stats.php:3981
 msgid "North Korea"
 msgstr ""
 
-#: library/WT/Stats.php:3985
+#: library/WT/Stats.php:3982
 msgid "Portugal"
 msgstr ""
 
-#: library/WT/Stats.php:3986
+#: library/WT/Stats.php:3983
 msgid "Paraguay"
 msgstr ""
 
-#: library/WT/Stats.php:3987
+#: library/WT/Stats.php:3984
 msgid "Occupied Palestinian Territory"
 msgstr ""
 
-#: library/WT/Stats.php:3988
+#: library/WT/Stats.php:3985
 msgid "French Polynesia"
 msgstr ""
 
-#: library/WT/Stats.php:3989
+#: library/WT/Stats.php:3986
 msgid "Qatar"
 msgstr ""
 
-#: library/WT/Stats.php:3990
+#: library/WT/Stats.php:3987
 msgid "Reunion"
 msgstr ""
 
-#: library/WT/Stats.php:3991
+#: library/WT/Stats.php:3988
 msgid "Romania"
 msgstr ""
 
-#: library/WT/Stats.php:3992
+#: library/WT/Stats.php:3989
 msgid "Russia"
 msgstr ""
 
-#: library/WT/Stats.php:3993
+#: library/WT/Stats.php:3990
 msgid "Rwanda"
 msgstr ""
 
-#: library/WT/Stats.php:3994
+#: library/WT/Stats.php:3991
 msgid "Saudi Arabia"
 msgstr ""
 
-#: library/WT/Stats.php:3995
+#: library/WT/Stats.php:3992
 msgid "Serbia and Montenegro"
 msgstr ""
 
-#: library/WT/Stats.php:3996
+#: library/WT/Stats.php:3993
 msgid "Scotland"
 msgstr ""
 
-#: library/WT/Stats.php:3997
+#: library/WT/Stats.php:3994
 msgid "Sudan"
 msgstr ""
 
-#: library/WT/Stats.php:3998
+#: library/WT/Stats.php:3995
 msgid "At Sea"
 msgstr ""
 
-#: library/WT/Stats.php:3999
+#: library/WT/Stats.php:3996
 msgid "Senegal"
 msgstr ""
 
-#: library/WT/Stats.php:4000
+#: library/WT/Stats.php:3997
 msgid "Serbia"
 msgstr ""
 
-#: library/WT/Stats.php:4001
+#: library/WT/Stats.php:3998
 msgid "Singapore"
 msgstr ""
 
-#: library/WT/Stats.php:4002
+#: library/WT/Stats.php:3999
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4003
+#: library/WT/Stats.php:4000
 msgid "Saint Helena"
 msgstr ""
 
-#: library/WT/Stats.php:4004
+#: library/WT/Stats.php:4001
 msgid "Sicily"
 msgstr ""
 
-#: library/WT/Stats.php:4005
+#: library/WT/Stats.php:4002
 msgid "Svalbard and Jan Mayen Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4006
+#: library/WT/Stats.php:4003
 msgid "Solomon Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4007
+#: library/WT/Stats.php:4004
 msgid "Sierra Leone"
 msgstr ""
 
-#: library/WT/Stats.php:4008
+#: library/WT/Stats.php:4005
 msgid "El Salvador"
 msgstr ""
 
-#: library/WT/Stats.php:4009
+#: library/WT/Stats.php:4006
 msgid "San Marino"
 msgstr ""
 
-#: library/WT/Stats.php:4010
+#: library/WT/Stats.php:4007
 msgid "Somalia"
 msgstr ""
 
-#: library/WT/Stats.php:4011
+#: library/WT/Stats.php:4008
 msgid "Saint Pierre and Miquelon"
 msgstr ""
 
-#: library/WT/Stats.php:4012
+#: library/WT/Stats.php:4009
 msgid "South Sudan"
 msgstr ""
 
-#: library/WT/Stats.php:4013
+#: library/WT/Stats.php:4010
 msgid "Sao Tome and Principe"
 msgstr ""
 
-#: library/WT/Stats.php:4014
+#: library/WT/Stats.php:4011
 msgid "USSR"
 msgstr ""
 
-#: library/WT/Stats.php:4015
+#: library/WT/Stats.php:4012
 msgid "Suriname"
 msgstr ""
 
-#: library/WT/Stats.php:4016
+#: library/WT/Stats.php:4013
 msgid "Slovakia"
 msgstr ""
 
-#: library/WT/Stats.php:4017
+#: library/WT/Stats.php:4014
 msgid "Slovenia"
 msgstr ""
 
-#: library/WT/Stats.php:4018
+#: library/WT/Stats.php:4015
 msgid "Sweden"
 msgstr ""
 
-#: library/WT/Stats.php:4019
+#: library/WT/Stats.php:4016
 msgid "Swaziland"
 msgstr ""
 
-#: library/WT/Stats.php:4020
+#: library/WT/Stats.php:4017
 msgid "Seychelles"
 msgstr ""
 
-#: library/WT/Stats.php:4021
+#: library/WT/Stats.php:4018
 msgid "Syrian Arab Republic"
 msgstr ""
 
-#: library/WT/Stats.php:4022
+#: library/WT/Stats.php:4019
 msgid "Turks and Caicos Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4023
+#: library/WT/Stats.php:4020
 msgid "Chad"
 msgstr ""
 
-#: library/WT/Stats.php:4024
+#: library/WT/Stats.php:4021
 msgid "Togo"
 msgstr ""
 
-#: library/WT/Stats.php:4025
+#: library/WT/Stats.php:4022
 msgid "Thailand"
 msgstr ""
 
-#: library/WT/Stats.php:4026
+#: library/WT/Stats.php:4023
 msgid "Tajikistan"
 msgstr ""
 
-#: library/WT/Stats.php:4027
+#: library/WT/Stats.php:4024
 msgid "Tokelau"
 msgstr ""
 
-#: library/WT/Stats.php:4028
+#: library/WT/Stats.php:4025
 msgid "Turkmenistan"
 msgstr ""
 
-#: library/WT/Stats.php:4029
+#: library/WT/Stats.php:4026
 msgid "Timor-Leste"
 msgstr ""
 
-#: library/WT/Stats.php:4030
+#: library/WT/Stats.php:4027
 msgid "Tonga"
 msgstr ""
 
-#: library/WT/Stats.php:4031
+#: library/WT/Stats.php:4028
 msgid "Transylvania"
 msgstr ""
 
-#: library/WT/Stats.php:4032
+#: library/WT/Stats.php:4029
 msgid "Trinidad and Tobago"
 msgstr ""
 
-#: library/WT/Stats.php:4033
+#: library/WT/Stats.php:4030
 msgid "Tunisia"
 msgstr ""
 
-#: library/WT/Stats.php:4034
+#: library/WT/Stats.php:4031
 msgid "Turkey"
 msgstr ""
 
-#: library/WT/Stats.php:4035
+#: library/WT/Stats.php:4032
 msgid "Tuvalu"
 msgstr ""
 
-#: library/WT/Stats.php:4036
+#: library/WT/Stats.php:4033
 msgid "Taiwan"
 msgstr ""
 
-#: library/WT/Stats.php:4037
+#: library/WT/Stats.php:4034
 msgid "Tanzania"
 msgstr ""
 
-#: library/WT/Stats.php:4038
+#: library/WT/Stats.php:4035
 msgid "Uganda"
 msgstr ""
 
-#: library/WT/Stats.php:4039
+#: library/WT/Stats.php:4036
 msgid "Ukraine"
 msgstr ""
 
-#: library/WT/Stats.php:4040
+#: library/WT/Stats.php:4037
 msgid "US Minor Outlying Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4041
+#: library/WT/Stats.php:4038
 msgid "Uruguay"
 msgstr ""
 
-#: library/WT/Stats.php:4042
+#: library/WT/Stats.php:4039
 msgid "USA"
 msgstr ""
 
-#: library/WT/Stats.php:4043
+#: library/WT/Stats.php:4040
 msgid "Uzbekistan"
 msgstr ""
 
-#: library/WT/Stats.php:4044
+#: library/WT/Stats.php:4041
 msgid "Vatican City"
 msgstr ""
 
-#: library/WT/Stats.php:4045
+#: library/WT/Stats.php:4042
 msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
-#: library/WT/Stats.php:4046
+#: library/WT/Stats.php:4043
 msgid "Venezuela"
 msgstr ""
 
-#: library/WT/Stats.php:4047
+#: library/WT/Stats.php:4044
 msgid "British Virgin Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4048
+#: library/WT/Stats.php:4045
 msgid "US Virgin Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4049
+#: library/WT/Stats.php:4046
 msgid "Viet Nam"
 msgstr ""
 
-#: library/WT/Stats.php:4050
+#: library/WT/Stats.php:4047
 msgid "Vanuatu"
 msgstr ""
 
-#: library/WT/Stats.php:4051
+#: library/WT/Stats.php:4048
 msgid "West Africa"
 msgstr ""
 
-#: library/WT/Stats.php:4052
+#: library/WT/Stats.php:4049
 msgid "Wallis and Futuna Islands"
 msgstr ""
 
-#: library/WT/Stats.php:4053
+#: library/WT/Stats.php:4050
 msgid "Wales"
 msgstr ""
 
-#: library/WT/Stats.php:4054
+#: library/WT/Stats.php:4051
 msgid "Samoa"
 msgstr ""
 
-#: library/WT/Stats.php:4055
+#: library/WT/Stats.php:4052
 msgid "Yemen"
 msgstr ""
 
-#: library/WT/Stats.php:4056
+#: library/WT/Stats.php:4053
 msgid "Yugoslavia"
 msgstr ""
 
-#: library/WT/Stats.php:4057
+#: library/WT/Stats.php:4054
 msgid "South Africa"
 msgstr ""
 
-#: library/WT/Stats.php:4058
+#: library/WT/Stats.php:4055
 msgid "Zaire"
 msgstr ""
 
-#: library/WT/Stats.php:4059
+#: library/WT/Stats.php:4056
 msgid "Zambia"
 msgstr ""
 
-#: library/WT/Stats.php:4060
+#: library/WT/Stats.php:4057
 msgid "Zimbabwe"
 msgstr ""
 
-#: library/WT/Stats.php:4067
+#: library/WT/Stats.php:4064
 #, php-format
 msgid "%s BCE"
 msgstr ""
 
-#: library/WT/Stats.php:4070
+#: library/WT/Stats.php:4067
 msgctxt "CENTURY"
 msgid "21st"
 msgstr ""
 
-#: library/WT/Stats.php:4071
+#: library/WT/Stats.php:4068
 msgctxt "CENTURY"
 msgid "20th"
 msgstr ""
 
-#: library/WT/Stats.php:4072
+#: library/WT/Stats.php:4069
 msgctxt "CENTURY"
 msgid "19th"
 msgstr ""
 
-#: library/WT/Stats.php:4073
+#: library/WT/Stats.php:4070
 msgctxt "CENTURY"
 msgid "18th"
 msgstr ""
 
-#: library/WT/Stats.php:4074
+#: library/WT/Stats.php:4071
 msgctxt "CENTURY"
 msgid "17th"
 msgstr ""
 
-#: library/WT/Stats.php:4075
+#: library/WT/Stats.php:4072
 msgctxt "CENTURY"
 msgid "16th"
 msgstr ""
 
-#: library/WT/Stats.php:4076
+#: library/WT/Stats.php:4073
 msgctxt "CENTURY"
 msgid "15th"
 msgstr ""
 
-#: library/WT/Stats.php:4077
+#: library/WT/Stats.php:4074
 msgctxt "CENTURY"
 msgid "14th"
 msgstr ""
 
-#: library/WT/Stats.php:4078
+#: library/WT/Stats.php:4075
 msgctxt "CENTURY"
 msgid "13th"
 msgstr ""
 
-#: library/WT/Stats.php:4079
+#: library/WT/Stats.php:4076
 msgctxt "CENTURY"
 msgid "12th"
 msgstr ""
 
-#: library/WT/Stats.php:4080
+#: library/WT/Stats.php:4077
 msgctxt "CENTURY"
 msgid "11th"
 msgstr ""
 
-#: library/WT/Stats.php:4081
+#: library/WT/Stats.php:4078
 msgctxt "CENTURY"
 msgid "10th"
 msgstr ""
 
-#: library/WT/Stats.php:4082
+#: library/WT/Stats.php:4079
 msgctxt "CENTURY"
 msgid "9th"
 msgstr ""
 
-#: library/WT/Stats.php:4083
+#: library/WT/Stats.php:4080
 msgctxt "CENTURY"
 msgid "8th"
 msgstr ""
 
-#: library/WT/Stats.php:4084
+#: library/WT/Stats.php:4081
 msgctxt "CENTURY"
 msgid "7th"
 msgstr ""
 
-#: library/WT/Stats.php:4085
+#: library/WT/Stats.php:4082
 msgctxt "CENTURY"
 msgid "6th"
 msgstr ""
 
-#: library/WT/Stats.php:4086
+#: library/WT/Stats.php:4083
 msgctxt "CENTURY"
 msgid "5th"
 msgstr ""
 
-#: library/WT/Stats.php:4087
+#: library/WT/Stats.php:4084
 msgctxt "CENTURY"
 msgid "4th"
 msgstr ""
 
-#: library/WT/Stats.php:4088
+#: library/WT/Stats.php:4085
 msgctxt "CENTURY"
 msgid "3rd"
 msgstr ""
 
-#: library/WT/Stats.php:4089
+#: library/WT/Stats.php:4086
 msgctxt "CENTURY"
 msgid "2nd"
 msgstr ""
 
-#: library/WT/Stats.php:4090
+#: library/WT/Stats.php:4087
 msgctxt "CENTURY"
 msgid "1st"
 msgstr ""
@@ -16499,7 +16500,6 @@ msgstr ""
 #: modules_v3/death_report/report.bak:10 modules_v3/fact_sources/report.bak:8
 #: modules_v3/individual_ext_report/report.bak:9
 #: modules_v3/marriage_report/report.bak:10
-#: modules_v3/occupation_report/report.bak:7
 #: modules_v3/relative_ext_report/report.bak:8
 msgid "Sort order"
 msgstr ""
@@ -18988,7 +18988,7 @@ msgctxt "One parent/one child"
 msgid "had"
 msgstr ""
 
-#: modules_v3/fancy_treeview/module.php:1187 statisticsplot.php:929
+#: modules_v3/fancy_treeview/module.php:1187 statisticsplot.php:927
 msgid "children"
 msgstr ""
 
@@ -19144,7 +19144,7 @@ msgid "at the age of %s"
 msgstr ""
 
 #: modules_v3/fancy_treeview/module.php:1416
-#: modules_v3/resource_individual/module.php:228 search_advanced.php:212
+#: modules_v3/resource_individual/module.php:242 search_advanced.php:212
 #: modules_v3/bdm_report/report.bak:116
 #: modules_v3/family_group_report/report.bak:462
 #: modules_v3/family_group_report/report.bak:722
@@ -19154,7 +19154,7 @@ msgid "Father"
 msgstr ""
 
 #: modules_v3/fancy_treeview/module.php:1419
-#: modules_v3/resource_individual/module.php:244 search_advanced.php:249
+#: modules_v3/resource_individual/module.php:253 search_advanced.php:249
 #: modules_v3/bdm_report/report.bak:118
 #: modules_v3/family_group_report/report.bak:469
 #: modules_v3/family_group_report/report.bak:729
@@ -20220,6 +20220,7 @@ msgid "Center map here"
 msgstr ""
 
 #: modules_v3/googlemap/module.php:1428 modules_v3/googlemap/module.php:1444
+#: modules_v3/resource_fact/module.php:151
 #: modules_v3/widget_messages/module.php:69
 msgid "&lt;select&gt;"
 msgstr ""
@@ -20489,44 +20490,44 @@ msgstr ""
 msgid "A list of missing census data, for UK census records only"
 msgstr ""
 
-#: modules_v3/no_census/module.php:78
+#: modules_v3/no_census/module.php:88
 msgid "Missing Census Data"
 msgstr ""
 
-#: modules_v3/no_census/module.php:129
+#: modules_v3/no_census/module.php:139
 msgid "Individuals with missing census data"
 msgstr ""
 
-#: modules_v3/no_census/module.php:131
+#: modules_v3/no_census/module.php:142
 msgid ""
 "Enter a surname, then select any combination of the two options Census place "
 "and Census date"
 msgstr ""
 
-#: modules_v3/no_census/module.php:140 modules_v3/uk_register/module.php:138
+#: modules_v3/no_census/module.php:151 modules_v3/uk_register/module.php:149
 msgid "Select <b>All</b> for everyone, or leave blank for your own ancestors"
 msgstr ""
 
-#: modules_v3/no_census/module.php:145
+#: modules_v3/no_census/module.php:156
 msgid "Census Place"
 msgstr ""
 
-#: modules_v3/no_census/module.php:148 modules_v3/no_census/module.php:149
-#: modules_v3/no_census/module.php:152 modules_v3/no_census/module.php:169
-#: modules_v3/no_census/module.php:170 modules_v3/no_census/module.php:173
-#: modules_v3/no_census/module.php:211 modules_v3/no_census/module.php:254
-#: modules_v3/no_census/module.php:255 modules_v3/uk_register/module.php:146
-#: modules_v3/uk_register/module.php:147 modules_v3/uk_register/module.php:150
-#: modules_v3/uk_register/module.php:173 modules_v3/uk_register/module.php:224
-#: modules_v3/uk_register/module.php:225
+#: modules_v3/no_census/module.php:159 modules_v3/no_census/module.php:160
+#: modules_v3/no_census/module.php:163 modules_v3/no_census/module.php:180
+#: modules_v3/no_census/module.php:181 modules_v3/no_census/module.php:184
+#: modules_v3/no_census/module.php:222 modules_v3/no_census/module.php:265
+#: modules_v3/no_census/module.php:266 modules_v3/uk_register/module.php:157
+#: modules_v3/uk_register/module.php:158 modules_v3/uk_register/module.php:161
+#: modules_v3/uk_register/module.php:184 modules_v3/uk_register/module.php:235
+#: modules_v3/uk_register/module.php:236
 msgid "all"
 msgstr ""
 
-#: modules_v3/no_census/module.php:311 modules_v3/uk_register/module.php:290
+#: modules_v3/no_census/module.php:322 modules_v3/uk_register/module.php:301
 msgid "No missing records found"
 msgstr ""
 
-#: modules_v3/no_census/module.php:313 modules_v3/uk_register/module.php:292
+#: modules_v3/no_census/module.php:324 modules_v3/uk_register/module.php:303
 #, php-format
 msgid "%s record found"
 msgid_plural "%s records found"
@@ -20543,17 +20544,6 @@ msgstr ""
 
 #: modules_v3/notes/module.php:87
 msgid "There are no Notes for this individual."
-msgstr ""
-
-#: modules_v3/occupation_report/module.php:36
-#: modules_v3/occupation_report/report.bak:4
-#: modules_v3/occupation_report/report.bak:35
-msgid "Occupations"
-msgstr ""
-
-#: modules_v3/occupation_report/module.php:42
-#: modules_v3/occupation_report/report.bak:5
-msgid "A report of individuals who had a given occupation."
 msgstr ""
 
 #: modules_v3/openstreetmap/module.php:15
@@ -20575,7 +20565,7 @@ msgstr ""
 
 #: modules_v3/personal_facts/module.php:35
 #: modules_v3/random_media/module.php:304
-#: modules_v3/resource_individual/module.php:171
+#: modules_v3/resource_individual/module.php:183
 #: modules_v3/individual_ext_report/report.bak:151
 msgid "Facts and events"
 msgstr ""
@@ -20642,7 +20632,7 @@ msgid "A list of records that have been updated recently."
 msgstr ""
 
 #: modules_v3/recent_changes/module.php:78
-#: modules_v3/resource_changes/module.php:218
+#: modules_v3/resource_changes/module.php:244
 #: modules_v3/widget_recent_changes/module.php:78
 #, php-format
 msgid "Changes in the last day"
@@ -20651,14 +20641,14 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: modules_v3/recent_changes/module.php:83
-#: modules_v3/resource_changes/module.php:227
+#: modules_v3/resource_changes/module.php:253
 #: modules_v3/widget_recent_changes/module.php:83
 #, php-format
 msgid "There have been no changes within the last %s days."
 msgstr ""
 
 #: modules_v3/recent_changes/module.php:139
-#: modules_v3/resource_changes/module.php:161
+#: modules_v3/resource_changes/module.php:187
 #: modules_v3/upcoming_events/module.php:129
 #: modules_v3/widget_recent_changes/module.php:130
 #: modules_v3/widget_upcoming/module.php:120
@@ -20702,7 +20692,6 @@ msgstr ""
 #: modules_v3/death_report/report.bak:10 modules_v3/fact_sources/report.bak:8
 #: modules_v3/individual_ext_report/report.bak:9
 #: modules_v3/marriage_report/report.bak:10
-#: modules_v3/occupation_report/report.bak:7
 #: modules_v3/relative_ext_report/report.bak:8
 msgid "sort by name"
 msgstr ""
@@ -20780,21 +20769,29 @@ msgstr ""
 msgid "A report of recent and pending changes."
 msgstr ""
 
-#: modules_v3/resource_changes/module.php:153
+#: modules_v3/resource_changes/module.php:179
 msgid "Starting range of change dates"
 msgstr ""
 
-#: modules_v3/resource_changes/module.php:157
+#: modules_v3/resource_changes/module.php:183
 msgid "Ending range of change dates"
 msgstr ""
 
-#: modules_v3/resource_changes/module.php:165
+#: modules_v3/resource_changes/module.php:191
 msgid "Show pending changes"
 msgstr ""
 
-#: modules_v3/resource_changes/module.php:218
+#: modules_v3/resource_changes/module.php:244
 #, php-format
 msgid "%1$s - %2$s (%3$s days)"
+msgstr ""
+
+#: modules_v3/resource_fact/module.php:36
+msgid "Fact report"
+msgstr ""
+
+#: modules_v3/resource_fact/module.php:41
+msgid "A report of individuals who have a selected fact in their record."
 msgstr ""
 
 #: modules_v3/resource_individual/module.php:36
@@ -20805,21 +20802,29 @@ msgstr ""
 msgid "A report of an individual’s details."
 msgstr ""
 
-#: modules_v3/resource_individual/module.php:118
+#: modules_v3/resource_individual/module.php:130
 msgid "Show sources"
 msgstr ""
 
-#: modules_v3/resource_individual/module.php:124
+#: modules_v3/resource_individual/module.php:136
 msgid "Show notes"
 msgstr ""
 
-#: modules_v3/resource_individual/module.php:130
+#: modules_v3/resource_individual/module.php:142
 msgid "Show media"
 msgstr ""
 
-#: modules_v3/resource_individual/module.php:285
-#: modules_v3/individual_ext_report/report.bak:427
-msgid "Family with wife"
+#: modules_v3/resource_individual/module.php:286
+msgid "Family with partner"
+msgstr ""
+
+#: modules_v3/resource_individual/module.php:290
+#: modules_v3/bdm_report/report.bak:167
+msgid "Spouse"
+msgstr ""
+
+#: modules_v3/resource_individual/module.php:290
+msgid "Partner"
 msgstr ""
 
 #: modules_v3/resource_todo/module.php:36 modules_v3/todo/help_text.php:34
@@ -20833,19 +20838,19 @@ msgstr ""
 msgid "A list of tasks and activities that are linked to the family tree."
 msgstr ""
 
-#: modules_v3/resource_todo/module.php:128
+#: modules_v3/resource_todo/module.php:139
 msgid "Show tasks not assigned to any user"
 msgstr ""
 
-#: modules_v3/resource_todo/module.php:132
+#: modules_v3/resource_todo/module.php:143
 msgid "Show tasks assigned to other users"
 msgstr ""
 
-#: modules_v3/resource_todo/module.php:136
+#: modules_v3/resource_todo/module.php:147
 msgid "Show tasks that have a date in the future"
 msgstr ""
 
-#: modules_v3/resource_todo/module.php:192 modules_v3/todo/module.php:133
+#: modules_v3/resource_todo/module.php:203 modules_v3/todo/module.php:133
 #: modules_v3/widget_todo/module.php:132
 msgid "There are no research tasks in this family tree."
 msgstr ""
@@ -21339,7 +21344,7 @@ msgstr ""
 msgid "Place counts before or after name?"
 msgstr ""
 
-#: modules_v3/top10_pageviews/module.php:145 statisticsplot.php:674
+#: modules_v3/top10_pageviews/module.php:145 statisticsplot.php:672
 msgid "before"
 msgstr ""
 
@@ -21417,25 +21422,25 @@ msgstr ""
 msgid "A list of missing data for the UK 1939 Register records"
 msgstr ""
 
-#: modules_v3/uk_register/module.php:78
+#: modules_v3/uk_register/module.php:88
 msgid "Missing Register Data"
 msgstr ""
 
-#: modules_v3/uk_register/module.php:128
+#: modules_v3/uk_register/module.php:138
 msgid "Individuals with missing register data"
 msgstr ""
 
-#: modules_v3/uk_register/module.php:130
+#: modules_v3/uk_register/module.php:141
 msgid "Enter a surname, then select England or Wales from the country list"
 msgstr ""
 
-#: modules_v3/uk_register/module.php:193
+#: modules_v3/uk_register/module.php:204
 msgid ""
 "This list assumes entries relating to the 1939 Register are recorded using "
 "the <b>residence</b> GEDCOM tag (RESI))"
 msgstr ""
 
-#: modules_v3/uk_register/module.php:194
+#: modules_v3/uk_register/module.php:205
 msgid ""
 "In general anyone who died after 1991, or is still alive, will be redacted "
 "(hidden) on the Register. They are listed here, but with a note indicating "
@@ -21443,7 +21448,7 @@ msgid ""
 "regard, so many people who died <u>before</u> 1991 are still redacted."
 msgstr ""
 
-#: modules_v3/uk_register/module.php:195
+#: modules_v3/uk_register/module.php:206
 msgid ""
 "Anyone serving in the military on 29 September 1939 is excluded from the "
 "Register. They are included in these lists but with a note that they may be "
@@ -21451,11 +21456,11 @@ msgid ""
 "either the _MILI or _MILT GEDCOM tags"
 msgstr ""
 
-#: modules_v3/uk_register/module.php:259
+#: modules_v3/uk_register/module.php:270
 msgid "Probably redacted - living or died after 1991"
 msgstr ""
 
-#: modules_v3/uk_register/module.php:263
+#: modules_v3/uk_register/module.php:274
 msgid "Probably excluded - military service"
 msgstr ""
 
@@ -22361,7 +22366,7 @@ msgstr ""
 msgid "Create your own chart"
 msgstr ""
 
-#: statistics.php:476 statisticsplot.php:891
+#: statistics.php:476 statisticsplot.php:889
 msgid "Statistics plot"
 msgstr ""
 
@@ -22369,27 +22374,27 @@ msgstr ""
 msgid "Select chart type:"
 msgstr ""
 
-#: statistics.php:510 statisticsplot.php:899
+#: statistics.php:510 statisticsplot.php:897
 msgid "Month of birth"
 msgstr ""
 
-#: statistics.php:514 statisticsplot.php:902
+#: statistics.php:514 statisticsplot.php:900
 msgid "Month of death"
 msgstr ""
 
-#: statistics.php:518 statisticsplot.php:905
+#: statistics.php:518 statisticsplot.php:903
 msgid "Month of marriage"
 msgstr ""
 
-#: statistics.php:522 statisticsplot.php:911
+#: statistics.php:522 statisticsplot.php:909
 msgid "Month of first marriage"
 msgstr ""
 
-#: statistics.php:534 statisticsplot.php:917
+#: statistics.php:534 statisticsplot.php:915
 msgid "Age related to birth year"
 msgstr ""
 
-#: statistics.php:546 statisticsplot.php:926
+#: statistics.php:546 statisticsplot.php:924
 msgid "Age in year of first marriage"
 msgstr ""
 
@@ -22493,11 +22498,11 @@ msgstr[1] ""
 msgid "results:"
 msgstr ""
 
-#: statistics.php:661 statisticsplot.php:765
+#: statistics.php:661 statisticsplot.php:763
 msgid "numbers"
 msgstr ""
 
-#: statistics.php:664 statisticsplot.php:789
+#: statistics.php:664 statisticsplot.php:787
 msgid "percentage"
 msgstr ""
 
@@ -22505,32 +22510,32 @@ msgstr ""
 msgid "show the plot"
 msgstr ""
 
-#: statisticsplot.php:676 statisticsplot.php:702
+#: statisticsplot.php:674 statisticsplot.php:700
 msgid "over"
 msgstr ""
 
-#: statisticsplot.php:678
+#: statisticsplot.php:676
 msgid "less than"
 msgstr ""
 
-#: statisticsplot.php:746
+#: statisticsplot.php:744
 #, php-format
 msgid "%s not implemented"
 msgstr ""
 
-#: statisticsplot.php:803
+#: statisticsplot.php:801
 msgid " per gender"
 msgstr ""
 
-#: statisticsplot.php:805
+#: statisticsplot.php:803
 msgid " per time period"
 msgstr ""
 
-#: statisticsplot.php:815 statisticsplot.php:817 statisticsplot.php:819
+#: statisticsplot.php:813 statisticsplot.php:815 statisticsplot.php:817
 msgid "Counts "
 msgstr ""
 
-#: statisticsplot.php:815 statisticsplot.php:817 statisticsplot.php:819
+#: statisticsplot.php:813 statisticsplot.php:815 statisticsplot.php:817
 #: modules_v3/ahnentafel_report/report.bak:54
 #: modules_v3/bdm_report/report.bak:40 modules_v3/birth_report/report.bak:30
 #: modules_v3/cemetery_report/report.bak:34
@@ -22539,26 +22544,25 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:42
 #: modules_v3/family_group_report/report.bak:87
 #: modules_v3/marriage_report/report.bak:29
-#: modules_v3/occupation_report/report.bak:36
 #: modules_v3/relative_ext_report/report.bak:42
 msgid "of"
 msgstr ""
 
-#: statisticsplot.php:899 statisticsplot.php:902 statisticsplot.php:905
-#: statisticsplot.php:908 statisticsplot.php:911
+#: statisticsplot.php:897 statisticsplot.php:900 statisticsplot.php:903
+#: statisticsplot.php:906 statisticsplot.php:909
 msgid "month"
 msgstr ""
 
-#: statisticsplot.php:914
+#: statisticsplot.php:912
 msgid "Months between marriage and first child"
 msgstr ""
 
-#: statisticsplot.php:914
+#: statisticsplot.php:912
 msgid "Months between marriage and birth of first child"
 msgstr ""
 
-#: statisticsplot.php:917 statisticsplot.php:920 statisticsplot.php:923
-#: statisticsplot.php:926
+#: statisticsplot.php:915 statisticsplot.php:918 statisticsplot.php:921
+#: statisticsplot.php:924
 msgid "age"
 msgstr ""
 
@@ -22669,8 +22673,8 @@ msgstr ""
 msgid "Powered by "
 msgstr ""
 
-#: themes/colors/header.php:149 themes/levy/header.php:152
-#: themes/webtrees/header.php:135 themes/xenea/header.php:143
+#: themes/colors/header.php:149 themes/webtrees/header.php:135
+#: themes/xenea/header.php:143
 msgid "Choose a page"
 msgstr ""
 
@@ -22845,7 +22849,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
-#: modules_v3/occupation_report/report.bak:8
 #: modules_v3/pedigree_report/report.bak:8
 #: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
@@ -22862,7 +22865,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
-#: modules_v3/occupation_report/report.bak:8
 #: modules_v3/pedigree_report/report.bak:8
 #: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
@@ -22879,7 +22881,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
-#: modules_v3/occupation_report/report.bak:8
 #: modules_v3/pedigree_report/report.bak:8
 #: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
@@ -22896,7 +22897,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
-#: modules_v3/occupation_report/report.bak:8
 #: modules_v3/pedigree_report/report.bak:8
 #: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
@@ -22913,7 +22913,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
-#: modules_v3/occupation_report/report.bak:8
 #: modules_v3/pedigree_report/report.bak:8
 #: modules_v3/relative_ext_report/report.bak:9
 msgid "Page size"
@@ -22929,7 +22928,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
-#: modules_v3/occupation_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:9
 #: modules_v3/relative_ext_report/report.bak:10
 msgctxt "font name"
@@ -22946,7 +22944,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
-#: modules_v3/occupation_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:9
 #: modules_v3/relative_ext_report/report.bak:10
 msgctxt "font name"
@@ -22963,7 +22960,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
-#: modules_v3/occupation_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:9
 #: modules_v3/relative_ext_report/report.bak:10
 msgctxt "font name"
@@ -22980,7 +22976,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
-#: modules_v3/occupation_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:9
 #: modules_v3/relative_ext_report/report.bak:10
 msgid "Font"
@@ -23000,7 +22995,6 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.bak:90
 #: modules_v3/marriage_report/report.bak:29
 #: modules_v3/missing_facts_report/report.bak:51
-#: modules_v3/occupation_report/report.bak:36
 #: modules_v3/relative_ext_report/report.bak:42
 msgid "Page"
 msgstr ""
@@ -23111,10 +23105,6 @@ msgstr ""
 msgid "Death Date range end"
 msgstr ""
 
-#: modules_v3/bdm_report/report.bak:167
-msgid "Spouse"
-msgstr ""
-
 #: modules_v3/bdm_report/report.bak:208 modules_v3/birth_report/report.bak:65
 #: modules_v3/cemetery_report/report.bak:86
 #: modules_v3/death_report/report.bak:98 modules_v3/fact_sources/report.bak:140
@@ -23122,7 +23112,6 @@ msgstr ""
 #: modules_v3/fact_sources/report.bak:303
 #: modules_v3/fact_sources/report.bak:307
 #: modules_v3/missing_facts_report/report.bak:598
-#: modules_v3/occupation_report/report.bak:92
 #: modules_v3/relative_ext_report/report.bak:146
 msgid "Total individuals"
 msgstr ""
@@ -23242,6 +23231,10 @@ msgstr ""
 
 #: modules_v3/individual_ext_report/report.bak:347
 msgid "Sister"
+msgstr ""
+
+#: modules_v3/individual_ext_report/report.bak:427
+msgid "Family with wife"
 msgstr ""
 
 #: modules_v3/individual_ext_report/report.bak:433
