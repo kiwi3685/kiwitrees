@@ -105,14 +105,15 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		session_write_close();
 
 		//-- args
-		$go 			= WT_Filter::post('go');
-		$rootid 		= WT_Filter::get('rootid');
-		$root_id		= WT_Filter::post('root_id');
-		$rootid			= empty($root_id) ? $rootid : $root_id;
-		$photos			= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
-		$ged			= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
+		$go 					= WT_Filter::post('go');
+		$rootid 			= WT_Filter::get('rootid');
+		$root_id			= WT_Filter::post('root_id');
+		$rootid				= empty($root_id) ? $rootid : $root_id;
+		$photos				= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
+		$ged					= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
 		$showsources	= WT_Filter::post('showsources') ? WT_Filter::post('showsources') : 'checked';
 		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 'checked';
+		$exclude_tags = array('FAMC', 'FAMS', '_WT_OBJE_SORT');
 
 		?>
 		<div id="resource-page" class="individual_report">
@@ -186,7 +187,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 						foreach ($indifacts as $fact) {
 							if (
 								(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
-								&& !in_array($fact->getTag(), array('FAMC', 'FAMS'))
+								&& !in_array($fact->getTag(), $exclude_tags)
 							) { ?>
 									<div class="individual_report_fact">
 										<label>
@@ -210,18 +211,20 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 							<?php }
 						} ?>
 					</div>
-					<div id="notes">
-						<h3><?php echo WT_I18N::translate('Notes'); ?></h3>
-						<ol>
-							<?php
-							$otherfacts = $person->getOtherFacts();
-							foreach ($otherfacts as $fact) {
-								if ($fact->getTag() == 'NOTE') { ?>
-									<li> <?php echo print_resourcenotes($fact, 1, true, true); ?></li>
-								<?php }
-							} ?>
+					<?php
+					$otherfacts = $person->getOtherFacts();
+					foreach ($otherfacts as $fact) {
+						if ($fact->getTag() == 'NOTE') { ?>
+							<div id="notes">
+								<h3><?php echo WT_I18N::translate('Notes'); ?></h3>
+								<ol>
+							<li>
+								<?php echo print_resourcenotes($fact, 1, true, true); ?>
+							</li>
 						</ol>
 					</div>
+						<?php }
+					} ?>
 					<div id="families">
 						<h3><?php echo WT_I18N::translate('Families'); ?></h3>
 						<?php
@@ -235,34 +238,24 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 								$wife = $family->getWife();
 								if (!empty($husband)) {  ?>
 									<p>
-										<?php echo
-										'<span class="label">' . WT_I18N::translate('Father') . '</span>' .
-										$husband->getFullName() . '&nbsp;' .
-										'(<span class="details">' .
-											WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
-											$husband->getBirthDate()->Display() . '&nbsp;' .
-											$husband->getBirthPlace() . '&nbsp;-&nbsp;' .
-											WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
-											$husband->getDeathDate()->Display() . '&nbsp;' .
-											$husband->getDeathPlace() .
-										'</span>)';
-										?>
+										<span class="label">
+											<?php echo WT_I18N::translate('Father'); ?>
+										</span>
+										<?php echo $husband->getFullName(); ?>&nbsp;
+										<span class="details">
+											<?php echo $this->personDetails($husband); ?>
+										</span>
 									</p>
 								<?php }
 								if (!empty($wife)) {  ?>
 									<p>
-										<?php echo
-										'<span class="label">' . WT_I18N::translate('Mother') . '</span>' .
-										$wife->getFullName() . '&nbsp;' .
-										'(<span class="details">' .
-											WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
-											$wife->getBirthDate()->Display() . '&nbsp;' .
-											$wife->getBirthPlace() . '&nbsp;-&nbsp;' .
-											WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
-											$wife->getDeathDate()->Display() . '&nbsp;' .
-											$wife->getDeathPlace() .
-										'</span>)';
-										?>
+										<span class="label">
+											<?php echo WT_I18N::translate('Mother'); ?>
+										</span>
+										<?php echo $wife->getFullName(); ?>&nbsp;
+										<span class="details">
+											<?php echo $this->personDetails($wife); ?>
+										</span>
 									</p>
 								<?php } ?>
 							</div>
@@ -272,18 +265,13 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 								foreach ($children as $child) {
 									if (!empty($child) && $child != $person) {  ?>
 										<p>
-											<?php echo
-											'<span class="label">' . get_relationship_name(get_relationship($person, $child)) . '</span>' .
-											$child->getFullName() . '&nbsp;' .
-											'(<span class="details">' .
-												WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
-												$child->getBirthDate()->Display() . '&nbsp;' .
-												$child->getBirthPlace() . '&nbsp;-&nbsp;';
-												WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
-												$child->getDeathDate()->Display() . '&nbsp;' .
-												$child->getDeathPlace() .
-											'</span>)';
-											?>
+											<span class="label">
+												<?php echo get_relationship_name(get_relationship($person, $child)); ?>
+											</span>
+											<?php echo $child->getFullName(); ?>&nbsp;
+											<span class="details">
+												<?php echo $this->personDetails($child); ?>
+											</span>
 										</p>
 									<?php }
 								} ?>
@@ -291,28 +279,21 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 						<?php }
 
 						// spouses
-						$families = $person->getSpouseFamilies();
-						foreach ($families as $family) {?>
-							<h4><?php echo WT_I18N::translate('Family with wife'); ?></h4>
-							<div id="spouses">
-								<?php
-								$wife = $family->getWife();
-								if (!empty($wife)) {  ?>
+						$families	= $person->getSpouseFamilies();
+						foreach ($families as $family) {
+							$spouse = $family->getSpouse($person);
+							$marriage = $family->getMarriage(); ?>
+								<h4><?php echo ($marriage ? WT_I18N::translate('Family with spouse') : WT_I18N::translate('Family with partner')); ?></h4>
+								<div id="spouses">
 									<p>
-										<?php echo
-										'<span class="label">' . WT_I18N::translate('Wife') . '</span>' .
-										$wife->getFullName() . '&nbsp;' .
-										'(<span class="details">' .
-											WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
-											$wife->getBirthDate()->Display() . '&nbsp;' .
-											$wife->getBirthPlace() . ')' .
-											WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
-											$wife->getDeathDate()->Display() . '&nbsp;' .
-											$wife->getDeathPlace() .
-										'</span>)';
-										?>
+										<span class="label">
+											<?php echo ($marriage ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner')); ?>
+										</span>
+										<?php echo $spouse->getFullName(); ?>&nbsp;
+										<span class="details">
+											<?php echo $this->personDetails($spouse); ?>
+										</span>
 									</p>
-								<?php } ?>
 							</div>
 							<div id="spouse_children">
 								<?php
@@ -320,18 +301,13 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 								foreach ($children as $child) {
 									if (!empty($child)) {  ?>
 										<p>
-											<?php echo
-											'<span class="label">' . get_relationship_name(get_relationship($person, $child)) . '</span>' .
-											$child->getFullName() . '&nbsp;' .
-											'(<span class="details">' .
-												WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
-												$child->getBirthDate()->Display() . '&nbsp;' .
-												$child->getBirthPlace() . ')' .
-												WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
-												$child->getDeathDate()->Display() . '&nbsp;' .
-												$child->getDeathPlace() .
-											'</span>)';
-											?>
+											<span class="label">
+												<?php echo get_relationship_name(get_relationship($person, $child)); ?>
+											</span>
+											<?php echo $child->getFullName(); ?> &nbsp;
+											<span class="details">
+												<?php echo $this->personDetails($child); ?>
+											</span>
 										</p>
 									<?php }
 								} ?>
@@ -365,5 +341,29 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 			} ?>
 		</div>
 	<?php }
+
+	private function personDetails($person) {
+		$birth_date = $person->getBirthDate();
+		$birth_plac = $person->getBirthPlace();
+		$death_date = $person->getDeathDate();
+		$death_plac = $person->getDeathPlace();
+		$birth = '';
+		$death = '';
+
+		if ($birth_date->isOK() || $birth_plac != '') {
+			$birth = WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
+				$birth_date->Display() . '&nbsp;' .
+				$birth_plac;
+		}
+
+		if ($death_date->isOK() || $death_plac != '') {
+			$death = ($birth == '' ? '' : '&nbsp;-&nbsp;') .
+				WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
+				$death_date->Display() . '&nbsp;' .
+				$death_plac;
+		}
+
+		return $birth . $death;
+	}
 
 }
