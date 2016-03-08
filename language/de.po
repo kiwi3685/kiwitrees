@@ -3,13 +3,14 @@
 # Christian Utischill <christian.utischill@westernacher.com>, 2014-2016
 # Christian Utischill <christian.utischill@westernacher.com>, 2014
 # Grimpel, 2014-2015
+# Gunnar Offel <gunnar.offel@googlemail.com>, 2016
 # Nigel Osborne <kiwi3685@me.com>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2016-02-15 10:42+1300\n"
-"PO-Revision-Date: 2016-02-18 10:05+1300\n"
+"PO-Revision-Date: 2016-03-09 08:09+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -3970,11 +3971,11 @@ msgstr "Älteste zuoberst"
 
 #: help_text.php:1244
 msgid "When this check box is checked, the chart will be printed with oldest people at the top.  When it is unchecked, youngest people will appear at the top."
-msgstr ""
+msgstr "Wenn diese Box aktiv ist, werden die ältesten Personen oben dargestellt. Wenn sie inaktiv ist, sind die Jüngsten an oberster Stelle."
 
 #: help_text.php:1249
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr ""
+msgstr "Das Passwort muss mindestens 6 Zeichen enthalten und ist case-sensitive, das heißt, dass \"geheim\" nicht gleich \"GEHEIM\" ist."
 
 #: help_text.php:1254 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
@@ -4038,7 +4039,7 @@ msgstr "Wartende Änderungen werden  nur angezeigt, wenn Ihr Konto über die Ber
 
 #: help_text.php:1295
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
-msgstr ""
+msgstr "Jeder Nutzer hat die Option um Änderungen automatisch zu akzeptieren. Wenn diese Funktion aktiv ist werden alle Änderungen sofort gespeichert. Viele Administratoren aktivieren diese Option für ihre Benutzeraccounts."
 
 #: help_text.php:1302
 msgid "View all records"
@@ -4146,7 +4147,7 @@ msgstr "Die Medien-Datei, die Sie auf den Server übertragen möchten, sollte do
 
 #: help_text.php:1404
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr ""
+msgstr "Wenn eine große Anzahl von Medien vorhanden ist, können diese in Ordnern und Unterordnern organisiert werden."
 
 #: help_text.php:1410
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording."
@@ -14226,7 +14227,7 @@ msgstr "Verifizierungscode:"
 
 #: login.php:348
 msgid "If you didn't request an account, you can just delete this message."
-msgstr ""
+msgstr "Wenn du den Account nicht angelegt hast, kannst du diese Nachricht einfach löschen."
 
 #: login.php:349
 msgid "You won't get any more email from this site, because the account request will be deleted automatically after seven days."
@@ -14877,7 +14878,7 @@ msgstr "Hilfe zum englischen Kalender"
 
 #: modules_v3/calendar_utilities/plugins/old_new.php:29
 msgid "Old & New Style Dates"
-msgstr ""
+msgstr "Altes und neues Datumsformat"
 
 #: modules_v3/calendar_utilities/plugins/old_new.php:32
 msgid ""
@@ -15890,7 +15891,7 @@ msgstr ""
 
 #: modules_v3/extra_menus/help_text.php:74 modules_v3/extra_menus/module.php:189
 msgid "Open menu in new tab or window"
-msgstr ""
+msgstr "Öffnet das Menü in einem neuen Tab oder Fenster"
 
 #: modules_v3/extra_menus/help_text.php:75
 msgid "Normally you would expect clicking on a menu item to open that page in the existing browser window or tab. But if you need it to open in a new window or tab you can tick this option."
@@ -15902,7 +15903,7 @@ msgstr ""
 
 #: modules_v3/extra_menus/module.php:41
 msgid "Provides links to custom defined pages."
-msgstr ""
+msgstr "Liefert Verknüpfungen zu benutzerdefinierten Seiten."
 
 #: modules_v3/extra_menus/module.php:161
 msgid "Add menu"
@@ -16096,7 +16097,7 @@ msgstr ""
 
 #: modules_v3/fancy_treeview/help_text.php:75
 msgid "PDF not supported for RTL-languages"
-msgstr ""
+msgstr "PDF unterstützt keine RTL-Sprachen"
 
 #: modules_v3/fancy_treeview/help_text.php:76
 msgid "<p>Currently the PDF option is only supported for LTR-languages. These are all languages in which the text is read from left to right. The PDF icon will be disabled when the user selects a RTL-language. In a RTL language the text is read from right to left.</p>"
@@ -16341,12 +16342,12 @@ msgstr "Sie heiratete  %s mal. "
 #: modules_v3/fancy_treeview/module.php:1108
 #, php-format
 msgid "The %s time he married"
-msgstr "Zu diesen Zeitpunkt  %s heiratete er."
+msgstr "Zum %s Mal heiratete er."
 
 #: modules_v3/fancy_treeview/module.php:1108
 #, php-format
 msgid "The %s time she married"
-msgstr "Zu diesen Zeitpunkt  %s heiratete sie."
+msgstr "Zum %s Mal heiratete sie."
 
 #: modules_v3/fancy_treeview/module.php:1111 modules_v3/ahnentafel_report/report.bak:258 modules_v3/descendancy_report/report.bak:172
 msgid "He married"
@@ -16846,7 +16847,7 @@ msgstr "Verbunden mit: "
 
 #: modules_v3/gallery/module.php:871
 msgid "Gallery is empty. Please choose other gallery."
-msgstr ""
+msgstr "Diese Galerie ist leer. Bitte eine andere wählen."
 
 #: modules_v3/gedcom_block/module.php:40
 msgid "A greeting message for site visitors."
@@ -16870,7 +16871,7 @@ msgstr "Lesezeichen hinzufügen"
 
 #: modules_v3/gedcom_favorites/module.php:192 modules_v3/widget_favorites/module.php:210
 msgid "Enter an optional note about this favorite"
-msgstr ""
+msgstr "Einen optionalen Kommentar zu diesem Favoriten eingeben"
 
 #: modules_v3/gedcom_news/module.php:43
 msgid "News"
@@ -17019,7 +17020,7 @@ msgstr "Lösche alle vorhandenen geographischen Daten vor dem Import der Datei."
 
 #: modules_v3/googlemap/admin_places.php:367
 msgid "Do not create new locations, just import coordinates for existing locations."
-msgstr ""
+msgstr "Keine neuen Orte anlegen, lediglich Koordinaten für bestehende importieren."
 
 #: modules_v3/googlemap/admin_places.php:371
 msgid "Overwrite existing coordinates."
@@ -17322,8 +17323,8 @@ msgstr[1] "%1$d Personen dargestellt aus %2$d  von %3$d Generationen."
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "%s Personendetails sind vertraulich. "
-msgstr[1] "%s Personendetails sind vertraulich. "
+msgstr[0] "%s Personen ist vertraulich. "
+msgstr[1] "%s Personen sind vertraulich. "
 
 #: modules_v3/googlemap/module.php:778
 msgid "No ancestors in the database."
@@ -17374,7 +17375,7 @@ msgstr "Hier herauszoomen"
 
 #: modules_v3/googlemap/module.php:1307
 msgid "Center map here"
-msgstr ""
+msgstr "Karte zentrieren"
 
 #: modules_v3/googlemap/module.php:1428 modules_v3/googlemap/module.php:1444 modules_v3/widget_messages/module.php:69
 msgid "&lt;select&gt;"
@@ -18345,7 +18346,7 @@ msgstr "Kind von %s "
 
 #: modules_v3/tree/module.php:38
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr ""
+msgstr "Ein interaktiver Baum zeigt alle Vorfahren und Nachfahren einer Person."
 
 #: modules_v3/uk_register/module.php:35
 msgid "UK 1939 Register"
@@ -18422,7 +18423,7 @@ msgstr "Eine Lieblingsseite des Benutzers anzeigen und verwalten "
 #: modules_v3/widget_favorites/module.php:61
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr ""
+msgstr "\"%s\" wurde zu den Favoriten hinzugefügt."
 
 #: modules_v3/widget_messages/module.php:40
 msgid "Communicate directly with other users, using private messages."
@@ -18533,7 +18534,7 @@ msgstr "Orte in %s "
 #: placelist.php:145
 #, php-format
 msgid "View all records found in %s"
-msgstr ""
+msgstr "Zeige alle in %s gefunden Einträge"
 
 #: relationship.php:63
 #, php-format
@@ -18714,7 +18715,7 @@ msgstr "Voreingestellte Sprache wählen"
 
 #: setup.php:138
 msgid "1 - Checking your server configuration"
-msgstr ""
+msgstr "1 - Prüfe die Serverkonfiguration"
 
 #: setup.php:146
 #, php-format
@@ -18783,7 +18784,7 @@ msgstr "Großer Stammbaum (50000 Personen): 64-128MB, 40-80 Sekunden"
 #: setup.php:201
 #, php-format
 msgid "This server's memory limit is %dMB and its CPU time limit is %d seconds."
-msgstr ""
+msgstr "Die Limits des Servers liegen bei %dMB für den Speicher und %d Sekunden CPU Zeit."
 
 #: setup.php:203
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -18808,7 +18809,7 @@ msgstr "Um fortzufahren, muß dies erst geändert werden."
 #: setup.php:263
 #, php-format
 msgid "This database is only running MySQL version %s.  You cannot install Kiwitrees here."
-msgstr ""
+msgstr "Diese Datenbank arbeitet mit der MySQL Version %s. Du kannst Kiwitrees hier nicht installieren."
 
 #: setup.php:272 setup.php:345
 msgid "Unable to connect using these settings.  Your server gave the following error."
