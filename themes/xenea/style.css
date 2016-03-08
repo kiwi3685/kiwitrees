@@ -1153,37 +1153,44 @@ p.branches {display:inline;}
 
 #faq-page h2.ui-accordion-header {
 	border: none;
-    background-color: transparent;
-    border-radius: 0;
-    color: inherit;
-    text-align: left;
-}
-
-[dir=rtl] #faq-page h2.ui-accordion-header {
-    text-align: right;
+	background-color: transparent;
+	border-radius: 0;
+	color: inherit;
 }
 
 #faq-page #faq_accordion {
 	clear:both;
+	margin-bottom: 50px;
+	visibility: hidden;
 }
 
 #faq-page div.ui-widget-content {
-    border: none;
-    background: #fff;
-    color: inherit;
+	border: none;
+	background: #fff;
+	color: inherit;
 }
 
 #faq-page #faq_search {
-	float: right;
-    margin: 10px 0;
-}
-[dir='rtl'] #faq-page #faq_search {
-	float: left;
+	margin: 10px auto;
+	width: 200px;
 }
 
 #faq-page #faq_search input {
 	font-size: 110%;
 	padding: 5px;
+	width: 200px;
+}
+
+#faq-page .faq_body {
+	margin: 0 20px;
+}
+#faq-page .faq_body p {
+	margin: 0;
+}
+
+#faq-page .faq_subaccordion {
+	margin: auto 20px;
+	visibility: hidden;
 }
 
 td.descriptionbox a {/* this keeps the tag color the same when it is a link as when not */ color:#0000ff;}

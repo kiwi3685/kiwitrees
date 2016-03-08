@@ -940,17 +940,12 @@ p.branches {display:inline;}
 	background-color: transparent;
 	border-radius: 0;
 	color: inherit;
-    text-align: left;
 }
-
-[dir=rtl] #faq-page h2.ui-accordion-header {
-    text-align: right;
-}
-
 
 #faq-page #faq_accordion {
 	clear:both;
 	margin-bottom: 50px;
+	visibility: hidden;
 }
 
 #faq-page div.ui-widget-content {
@@ -969,6 +964,19 @@ p.branches {display:inline;}
 	padding: 5px;
 	width: 200px;
 }
+
+#faq-page .faq_body {
+	margin: 0 20px;
+}
+#faq-page .faq_body p {
+	margin: 0;
+}
+
+#faq-page .faq_subaccordion {
+	margin: auto 20px;
+	visibility: hidden;
+}
+
 
 ul.clist {color:#000;list-style-image:none;margin:0;text-decoration:none;}
 
