@@ -2856,6 +2856,16 @@ dt {
 	width: 200px;
 }
 
+#faq-page .faq_body {
+	margin: 0 20px;
+}
+#faq-page .faq_body p {
+	margin: 0;
+}
+
+#faq-page .faq_subaccordion {
+	margin: auto 20px;
+}
 /* ========= Positioning edit, copy, delete links ============= */
 
 /* General use */
@@ -5816,6 +5826,7 @@ div.widget {
 }
 
 #fancy_treeview-page li.family {
+	clear: both;
 	padding: 10px 20px;
 }
 

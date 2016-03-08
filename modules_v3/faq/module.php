@@ -308,7 +308,10 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			->addInlineJavascript('
 				jQuery("#faq_accordion").accordion({heightStyle: "content", collapsible: true, active: false});
 				jQuery("#faq_accordion").css("visibility", "visible");
+				jQuery(".faq_subaccordion").accordion({heightStyle: "content", collapsible: true, active: false});
+				jQuery(".faq_subaccordion").css("visibility", "visible"); 
 			');
+			/* Use a structure like <div id="faq_subaccordion"><h2>Title<h2><p>Content</p></div> inside any FAQ page to create sub-levels within that FAQ */
 
 		if (safe_POST('query_faq')) {
 			$search = safe_POST('query_faq');
