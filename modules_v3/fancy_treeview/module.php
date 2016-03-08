@@ -1009,22 +1009,20 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$html .= $this->printParents($person).$this->printLifespan($person);
 
 			// get a list of all the spouses
-			/*
-			 * First, determine the true number of spouses by checking the family gedcom
-        	 */
-            $spousecount = 0;
-            foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
-                $spouse = $family->getSpouse($person);
-                if ($spouse && $spouse->canDisplayDetails() && ($family->getMarriage() || $family->isNotMarried())) {
+			// First, determine the true number of spouses by checking the family gedcom
+			$spousecount = 0;
+			foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
+				$spouse = $family->getSpouse($person);
+				if ($spouse && $spouse->canDisplayDetails() && ($family->getMarriage() || $family->isNotMarried())) {
 					$spousecount++;
 				}
 			}
-            /*
-             * Now iterate thru spouses
-             * $spouseindex is used for ordinal rather than array index
-             * as not all families have a spouse
-             * $spousecount is passed rather than doing each time inside function get_spouse
-             */
+      /*
+       * Now iterate thru spouses
+       * $spouseindex is used for ordinal rather than array index
+       * as not all families have a spouse
+       * $spousecount is passed rather than doing each time inside function get_spouse
+      */
 			if($spousecount > 0) {
 				$spouseindex = 0;
 				foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
@@ -1102,7 +1100,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		if($count > 1) {
 			if($i == 0) {
-				$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count]) : $html .= '<br>' . WT_I18N::translate('She married %s times', $wordcount2[$count]);
+				$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s times', $wordcount2[$count]);
 				$html .= '. ';
 			}
 			$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcount[$i]);
