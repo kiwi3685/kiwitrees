@@ -122,6 +122,13 @@ img.block,
 input,
 textarea {
 	border: 1px solid #aaa;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding: 5px;
+}
+
+textarea {
+	border-style: inset;
 }
 
 button {
@@ -129,15 +136,6 @@ button {
 	margin: 0 5px;
 	min-width: 100px;
 	padding: 6px 12px;
-}
-
-input,
-textarea {
-	padding: 5px;
-}
-
-textarea {
-	border-style: inset;
 }
 
 input.image {
@@ -4291,34 +4289,23 @@ a.icon-udarrow:hover {
 }
 
 #edit_interface-page input[type="text"],
-#addmedia-page input[type="text"],
+#edit_interface-page textarea,
+#edit_interface-page input[type="text"][id*="PAGE"],
+#edit_interface-page input[type="text"][id*="_UID"],
+#edit_interface-page textarea[id*="ADDR"],
+#edit_interface-page input[id*="ADDR"],
+#edit_interface-page textarea[id*="NOTE"],
 #edit_interface-page #NAME_display,
+#addmedia-page input[type="text"],
 #inverselink-page input[type="text"] {
 	vertical-align: top;
-	width: 240px;
+	width: 370px;
 }
 
-#edit_interface-page input[type="text"][id*="PAGE"],
-#edit_interface-page input[type="text"][id*="_UID"] {
-	width: 300px;
-}
-
-#edit_interface-page input[id*="TEXT"] {
-	height: 140px;
-	width: 440px;
-}
-
-#edit_interface-page textarea {
-	width: 440px;
-}
-
-#edit_interface-page textarea[id*="NOTE"] {
-	height: 240px;
-}
-
-#edit_interface-page textarea[id*="TEXT"],
-#edit_interface-page textarea[id*="PUBL"] {
-	height: 140px;
+#edit_interface-page input[id^="CENS_DATE"],
+#edit_interface-page select[id="selcensdate"] {
+	width: 152px;
+	min-width: auto;
 }
 
 #edit_interface-page textarea[id^="newgedrec"] {
@@ -4328,12 +4315,6 @@ a.icon-udarrow:hover {
 
 #edit_interface-page textarea#newgedrec1 {
 	height: 20px!important;
-}
-
-#edit_interface-page textarea[id*="ADDR"],
-#edit_interface-page input[id*="ADDR"] {
-	height: 80px;
-	width: 300px;
 }
 
 #edit_interface-page #changefamform {
@@ -4355,6 +4336,10 @@ a.icon-udarrow:hover {
 	cursor: move;
 	margin-bottom: 10px;
 	padding: 0 5px;
+}
+
+#edit_interface-page select {
+	min-width: 200px;
 }
 
 #save-cancel {
