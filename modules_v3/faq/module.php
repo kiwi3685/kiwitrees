@@ -311,7 +311,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				jQuery(".faq_subaccordion").accordion({heightStyle: "content", collapsible: true, active: false});
 				jQuery(".faq_subaccordion").css("visibility", "visible");
 			');
-			/* Use a structure like <div id="faq_subaccordion"  style="visibility:hidden"><h2>Title<h2><p>Content</p></div> inside any FAQ page to create sub-levels within that FAQ */
+			/* Use a structure like <div id="faq_subaccordion"><h2>Your sub-level title<h2><p>Your sub-level content</p></div> inside any FAQ page to create sub-levels within that FAQ */
 
 		if (safe_POST('query_faq')) {
 			$search = safe_POST('query_faq');
