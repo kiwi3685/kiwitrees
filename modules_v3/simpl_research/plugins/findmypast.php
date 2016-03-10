@@ -11,10 +11,28 @@ class findmypast_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://search.findmypast.com/search/world-records?firstname=' . $givn . '&firstname_variants=true&lastname=' . $surname . '&yearofbirth=' . $birth_year . '&yearofbirth_offset=2';
+		return $link = '#';
 	}
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return false;
+
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
+		$base_url = 'http://search.findmypast.com/search/';
+		$url			= '?firstname=' . $givn . '&firstname_variants=true&lastname=' . $surname . '&yearofbirth=' . $birth_year . '&yearofbirth_offset=2';
+
+		$collection = array(
+				"World"												=>"world-records",
+				"Australia &amp; New Zealand"	=>"australia-and-new-zealand-records",
+				"Ireland"											=>"ireland-records",
+				"United Kingdom"							=>"united-kingdom-records",
+				"United States &amp; Canada"	=>"united-states-records",
+			);
+
+		foreach($collection as $x=>$x_value) {
+				$link[] = array(
+					'title' => WT_I18N::translate($x),
+					'link'  => $base_url. $x_value . $url
+				);
+			}
+			return $link;
 	}
 
 	static function encode_plus() {
