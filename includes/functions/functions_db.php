@@ -962,7 +962,7 @@ function search_stories($query, $geds, $match) {
 	foreach ($stories as $story) {
         $list[]   = get_block_setting($story['block_id'], 'xref');
 	}
-	return $stories;
+	return $list;
 }
 
 //-- function to find the gedcom id for the given rin
