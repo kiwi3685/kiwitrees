@@ -397,7 +397,8 @@
 .fa-edit:before,
 .fa-pencil-square-o:before,
 .icon-edit:before,
-.icon-button_find_facts:before {
+.icon-button_find_facts:before,
+.icon-button_note:before {
   content: "\f044";
 }
 .fa-share-square-o:before {
