@@ -357,17 +357,25 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 	else return $data;
 }
 
-function resource_occu($occupation) {
+function resource_fact($level, $fact, $output) {
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows=
-		WT_DB::prepare(
-			"SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
-			" FROM `##individuals`" .
-			" WHERE `i_gedcom` REGEXP '(.*)\n1 OCCU (.*)" . $occupation . "(.*)\n' AND i_file=?"
-		)
+	$sql = "SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
+				" FROM `##individuals`" .
+				" WHERE `i_gedcom` REGEXP '(.*)\n" . $level . " " . $fact . " (.*)" . $output . "(.*)\n' AND i_file=?";
+	$rows = WT_DB::prepare($sql)
 		->execute(array(WT_GED_ID))
 		->fetchAll();
-
 	return $rows;
+}
+
+function simpl_fact($level, $fact, $person) {
+	if ($level == 1) {
+		$html = htmlspecialchars($person->getFactByType($fact)->getDetail());
+	} else {
+			preg_match_all('/\n2 (' . $fact . ') (.+)/', $person->getGedcomRecord(), $match, PREG_SET_ORDER);
+			$label_fact = WT_Gedcom_Tag::getLabelValue($fact, htmlspecialchars($match[0][2]));
+			$html = preg_replace('/([a-zA-Z])+:/', '', $label_fact);
+	}
+	return $html;
 }
