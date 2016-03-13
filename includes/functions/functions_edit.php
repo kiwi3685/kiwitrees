@@ -1404,6 +1404,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		case 'TIME':
 		case 'URL':
 		case '_HEB':
+			echo help_link($fact);
 			break;
 		}
 	}
