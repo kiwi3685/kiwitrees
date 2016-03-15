@@ -1547,6 +1547,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 			case 'OBJE':
 				echo ' data-autocomplete-type="OBJE"';
 				break;
+			case 'OCCU':
+				echo ' data-autocomplete-type="OCCU"';
+				break;
 			case 'PLAC':
 				echo ' data-autocomplete-type="PLAC"';
 				break;
@@ -2483,15 +2486,15 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 		if (in_array($level1tag, $value) && !in_array($key, $tags)) {
 			if ($key == 'TYPE') {
 				add_simple_tag('2 TYPE '.$type_val, $level1tag);
-			} elseif ($level1tag == '_TODO' && $key == 'DATE') {
+			} elseif ($level1tag === '_TODO' && $key === 'DATE') {
 				add_simple_tag('2 '.$key.' '.strtoupper(date('d M Y')), $level1tag);
-			} elseif ($level1tag == '_TODO' && $key == '_WT_USER') {
+			} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
 				add_simple_tag('2 '.$key.' '.WT_USER_NAME, $level1tag);
-			} else if ($level1tag == 'TITL' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
+			} elseif ($level1tag === 'TITL' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
 				add_simple_tag('2 '.$key, $level1tag);
-			} else if ($level1tag == 'NAME' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
+			} elseif ($level1tag === 'NAME' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
 				add_simple_tag('2 '.$key, $level1tag);
-			} else if ($level1tag!='TITL' && $level1tag!='NAME') {
+			} elseif ($level1tag !== 'NAME') {
 				add_simple_tag('2 '.$key, $level1tag);
 			}
 			switch ($key) { // Add level 3/4 tags as appropriate

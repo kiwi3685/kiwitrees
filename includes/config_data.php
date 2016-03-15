@@ -207,7 +207,6 @@ $nondatefacts=array(
 	'SOUR',
 	'SSN',
 	'TEXT',
-	'TITL',
 	'WIFE',
 	'WWW',
 	'_EMAIL',
@@ -249,6 +248,7 @@ $level2_tags=array(
 		'OCCU',
 		'ORDN',
 		'RETI',
+		'TITL',
 	),
 	'CALN'=>array(
 		'REPO',
@@ -304,6 +304,7 @@ $level2_tags=array(
 		'RETI',
 		'SLGC',
 		'SLGS',
+		'TITL',
 		'WILL',
 		'_TODO',
 	),
@@ -361,6 +362,7 @@ $level2_tags=array(
 		'SLGC',
 		'SLGS',
 		'SSN',
+		'TITL',
 		'WILL',
 	),
 	'STAT'=>array(
