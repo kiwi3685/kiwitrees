@@ -1528,51 +1528,53 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 			// Extra markup for specific fact types
 			switch ($fact) {
-			case 'DATE':
-				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
-				break;
-			case 'GIVN':
-				echo ' autofocus data-autocomplete-type="GIVN"';
-				break;
-			case 'LATI':
-				echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
-				break;
-			case 'LONG':
-				echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
-				break;
-			case 'NOTE':
-				// Shared notes.  Inline notes are handled elsewhere.
-				echo ' data-autocomplete-type="NOTE"';
-				break;
-			case 'OBJE':
-				echo ' data-autocomplete-type="OBJE"';
-				break;
-			case 'OCCU':
-				echo ' data-autocomplete-type="OCCU"';
-				break;
-			case 'PLAC':
-				echo ' data-autocomplete-type="PLAC"';
-				break;
-			case 'REPO':
-				echo ' data-autocomplete-type="REPO"';
-				break;
-			case 'SOUR':
-				$source_element_id = $element_id;
-				echo ' data-autocomplete-type="SOUR"';
-				break;
-			case 'PAGE':
-				echo ' data-autocomplete-type="SOUR_PAGE" data-autocomplete-extra="' . $source_element_id . '"';
-				break;
-			case 'SURN':
-			case '_MARNM_SURN':
-				echo ' data-autocomplete-type="SURN"';
-				break;
-			case 'ASSO':
-				echo ' data-autocomplete-type="INDI"';
-				break;
-			case '_ASSO':
-				echo ' data-autocomplete-type="INDI"';
-				break;
+				case 'ALIA':
+				case 'ASSO':
+				case '_ASSO':
+					echo ' data-autocomplete-type="ASSO" data-autocomplete-extra="input.DATE"';
+					break;
+				case 'CAUS':
+					echo ' data-autocomplete-type="CAUS"';
+					break;
+				case 'DATE':
+					echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
+					break;
+				case 'GIVN':
+					echo ' autofocus data-autocomplete-type="GIVN"';
+					break;
+				case 'LATI':
+					echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
+					break;
+				case 'LONG':
+					echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
+					break;
+				case 'NOTE':
+					// Shared notes.  Inline notes are handled elsewhere.
+					echo ' data-autocomplete-type="NOTE"';
+					break;
+				case 'OBJE':
+					echo ' data-autocomplete-type="OBJE"';
+					break;
+				case 'OCCU':
+					echo ' data-autocomplete-type="OCCU"';
+					break;
+				case 'PAGE':
+					echo ' data-autocomplete-type="SOUR_PAGE" data-autocomplete-extra="' . $source_element_id . '"';
+					break;
+				case 'PLAC':
+					echo ' data-autocomplete-type="PLAC"';
+					break;
+				case 'REPO':
+					echo ' data-autocomplete-type="REPO"';
+					break;
+				case 'SOUR':
+					$source_element_id = $element_id;
+					echo ' data-autocomplete-type="SOUR"';
+					break;
+				case 'SURN':
+				case '_MARNM_SURN':
+					echo ' data-autocomplete-type="SURN"';
+					break;
 			}
 			echo '>';
 		}

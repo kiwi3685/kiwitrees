@@ -34,6 +34,54 @@ $type = WT_Filter::get('field');
 
 switch ($type) {
 	case 'ASSO': // Associates of an individuals, whose name contains the search terms
+		$data = array();
+		// Fetch all data, regardless of privacy
+		$rows=
+			WT_DB::prepare(
+				"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
+				" FROM `##individuals`".
+				" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
+				" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full COLLATE '" . WT_I18N::$collation . "'"
+			)
+			->execute(array($term, $term, WT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+		// Filter for privacy - and whether they could be alive at the right time
+		$event_date = WT_Filter::get('extra');
+		$date       = new WT_Date($event_date);
+		$event_jd   = $date->JD();
+
+		foreach ($rows as $row) {
+			$person = WT_Person::getInstance($row);
+			if ($person->canDisplayName()) {
+				// filter ASSOciate
+				if ($event_jd) {
+					// Exclude individuals who were born after the event.
+					$person_birth_jd = $person->getEstimatedBirthDate()->minJD();
+					if ($person_birth_jd && $person_birth_jd > $event_jd) {
+						continue;
+					}
+					// Exclude individuals who died before the event.
+					$person_death_jd = $person->getEstimatedDeathDate()->MaxJD();
+					if ($person_death_jd && $person_death_jd < $event_jd) {
+						continue;
+					}
+				}
+				// Display, with age or lifespan if possible
+				$label = $person->getFullName();
+				if ($event_jd && $person->getBirthDate()->isOK()) {
+					$label .= ', <span class="age">(' . I18N::translate('Age') . ' ' . $person->getBirthDate()->minimumDate()->getAge(false, $event_jd) . ')</span>';
+				} else {
+					$label .= ', <i>' . $person->getLifeSpan() . '</i>';
+				}
+				$data[] = array('value'=>$row['xref'], 'label'=>$label);
+			}
+		}
+
+		echo json_encode($data);
+
+	exit;
+
+	case 'CAUS': // Cause of death.
 		$data=array();
 		// Fetch all data, regardless of privacy
 		$rows=
@@ -45,80 +93,13 @@ switch ($type) {
 			)
 			->execute(array($term, $term, WT_GED_ID))
 			->fetchAll(PDO::FETCH_ASSOC);
-		// Filter for privacy - and whether they could be alive at the right time
-		$pid        = WT_Filter::get('pid', WT_REGEX_XREF);
-		$event_date = WT_Filter::get('event_date');
-		$record     = WT_GedcomRecord::getInstance($pid); // INDI or FAM
-		$tmp        = new WT_Date($event_date);
-		$event_jd   = $tmp->JD();
-		// INDI
-		$indi_birth_jd = 0;
-		if ($record && $record->getType()=="INDI") {
-			$indi_birth_jd=$record->getEstimatedBirthDate()->minJD();
-		}
-		// HUSB & WIFE
-		$husb_birth_jd = 0;
-		$wife_birth_jd = 0;
-		if ($record && $record->getType()=="FAM") {
-			$husb=$record->getHusband();
-			if ($husb) {
-				$husb_birth_jd = $husb->getEstimatedBirthDate()->minJD();
-			}
-			$wife=$record->getWife();
-			if ($wife) {
-				$wife_birth_jd = $wife->getEstimatedBirthDate()->minJD();
-			}
-		}
+		// Filter for privacy
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
-			if ($person->canDisplayName()) {
-				// filter ASSOciate
-				if ($event_jd) {
-					// no self-ASSOciate
-					if ($pid && $person->getXref()==$pid) {
-						continue;
-					}
-					// filter by birth date
-					$person_birth_jd=$person->getEstimatedBirthDate()->minJD();
-					if ($person_birth_jd) {
-						// born after event or not a contemporary
-						if ($event_jd && $person_birth_jd>$event_jd) {
-							continue;
-						} elseif ($indi_birth_jd && abs($indi_birth_jd-$person_birth_jd)>$MAX_ALIVE_AGE*365) {
-							continue;
-						} elseif ($husb_birth_jd && $wife_birth_jd && abs($husb_birth_jd-$person_birth_jd)>$MAX_ALIVE_AGE*365 && abs($wife_birth_jd-$person_birth_jd)>$MAX_ALIVE_AGE*365) {
-							continue;
-						} elseif ($husb_birth_jd && abs($husb_birth_jd-$person_birth_jd)>$MAX_ALIVE_AGE*365) {
-							continue;
-						} elseif ($wife_birth_jd && abs($wife_birth_jd-$person_birth_jd)>$MAX_ALIVE_AGE*365) {
-							continue;
-						}
-					}
-					// filter by death date
-					$person_death_jd=$person->getEstimatedDeathDate()->MaxJD();
-					if ($person_death_jd) {
-						// dead before event or not a contemporary
-						if ($event_jd && $person_death_jd<$event_jd) {
-							continue;
-						} elseif ($indi_birth_jd && $person_death_jd<$indi_birth_jd) {
-							continue;
-						} elseif ($husb_birth_jd && $wife_birth_jd && $person_death_jd<$husb_birth_jd && $person_death_jd<$wife_birth_jd) {
-							continue;
-						} elseif ($husb_birth_jd && $person_death_jd<$husb_birth_jd) {
-							continue;
-						} elseif ($wife_birth_jd && $person_death_jd<$wife_birth_jd) {
-							continue;
-						}
-					}
+			$person = WT_Person::getInstance($row);
+			if (preg_match('/\n2 CAUS (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
+				if (!in_array($match[1], $data)) {
+					$data[]=$match[1];
 				}
-				// display
-				$label=str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full);
-				if ($event_jd && $person->getBirthDate()->isOK()) {
-					$label.=", <span class=\"age\">(".WT_I18N::translate('Age')." ".$person->getBirthDate()->MinDate()->getAge(false, $event_jd).")</span>";
-				} else {
-					$label.=', <i>'.$person->getLifeSpan().'</i>';
-				}
-				$data[]=array('value'=>$row->xref, 'label'=>$label);
 			}
 		}
 		echo json_encode($data);
@@ -195,9 +176,9 @@ switch ($type) {
 			->fetchAll(PDO::FETCH_ASSOC);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
+			$person = WT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
+				$data[] = array('value'=>$row['xref'], 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
 			}
 		}
 		echo json_encode($data);
