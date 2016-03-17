@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language='.WT_LOCALE);
+define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3&amp;language='.WT_LOCALE);
 
 // http://www.google.com/permissions/guidelines.html
 //
@@ -1681,7 +1681,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<html>
 			<head>
 				<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-				<script src="https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false"></script>
+				<script src="https://maps.google.com/maps/api/js?v=3"></script>
 				<script>
 
 		// Following function creates an array of the google map parameters passed ---------------------
@@ -1909,7 +1909,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			var street = new google.maps.ImageMapType({
 				getTileUrl: function(coord, zoom) {
 					var X = coord.x % (1 << zoom);  // wrap
-					return 'http://cbk0.google.com/cbk?output=overlay&zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
+					return 'https://cbk0.google.com/cbk?output=overlay&zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
 				},
 				tileSize: new google.maps.Size(256, 256),
 				isPng: true

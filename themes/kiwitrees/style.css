@@ -5643,6 +5643,38 @@ div.widget {
 	overflow-y:auto;
 	height: 500px;
 }
+
+#streetview {
+	margin: 40px auto 150px auto;
+	width: 800px;
+	height: 385px;
+}
+
+#streetview iframe {
+	height: 100%;
+	width: 100%;
+}
+
+#streetview form {
+	overflow: hidden;
+	text-align: center;
+}
+
+#streetview form input {
+ 	width: 50px;
+	background: none;
+	border: none;
+}
+
+#streetview form p {
+	margin: 0 25px;
+	width: 100%;
+}
+
+#streetview form p#save-cancel {
+	margin: 0;
+}
+
 /* ------------------ */
 
 /* Styling for Contacts module */
