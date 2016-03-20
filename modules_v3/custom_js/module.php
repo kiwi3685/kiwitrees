@@ -45,7 +45,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return 999;
 	}
 
-	// Implement WT_Module_Access
+	// Implement WT_Module_Menu
 	public function defaultAccessLevel() {
 		return false;
 	}

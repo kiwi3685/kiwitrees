@@ -50,9 +50,6 @@ interface WT_Module_Config {
 	public function getConfigLink();
 }
 
-interface WT_Module_Access {
-}
-
 interface WT_Module_Menu {
 	public function defaultMenuOrder();
 	public function defaultAccessLevel();
