@@ -45,12 +45,17 @@ class widget_quicklinks_WT_Module extends WT_Module implements WT_Module_Widget 
 		return 10;
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	// Implement class WT_Module_Widget
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		$id		= $this->getName();
 		$class	= $this->getName();
 		$title = '';
-		
+
 //		if (WT_USER_GEDCOM_ADMIN) { - FOR FUTURE DEVELOPMENT
 //			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
 //		} else {

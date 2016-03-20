@@ -85,7 +85,7 @@ class widget_todo_WT_Module extends WT_Module implements WT_Module_Widget {
 					/* 2-Username */	{},
 					/* 3-Text */		{}
 				]
-				});		
+				});
 			jQuery("#'.$table_id.'").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 			');
@@ -148,6 +148,11 @@ class widget_todo_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Implement WT_Module_Widget
 	public function defaultWidgetOrder() {
 		return 40;
+	}
+
+	// Implement WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
 	}
 
 	// Implement class WT_Module_Widget

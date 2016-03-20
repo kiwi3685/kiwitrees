@@ -130,6 +130,11 @@ class widget_surnames_WT_Module extends WT_Module implements WT_Module_Widget {
 		return 160;
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	// Implement class WT_Module_Block
 	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {

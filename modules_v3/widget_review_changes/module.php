@@ -152,6 +152,11 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 		return 140;
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	// Implement class WT_Module_Block
 	public function configureBlock($widget_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {

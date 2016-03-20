@@ -205,7 +205,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 						</div>
 						<div class="add_fav_url">
 							<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid'.$uniqueID.'\').attr(\'disabled\',\'disabled\').val(\'\');">
-							<input type="text" name="url" id="url" size="20" value="" placeholder="'.WT_Gedcom_Tag::getLabel('URL').'" disabled="disabled"> 
+							<input type="text" name="url" id="url" size="20" value="" placeholder="'.WT_Gedcom_Tag::getLabel('URL').'" disabled="disabled">
 							<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="'.WT_I18N::translate('Title').'" disabled="disabled">
 							<p>'.WT_I18N::translate('Enter an optional note about this favorite').'</p>
 							<textarea name="favnote" rows="6" cols="50"></textarea>
@@ -245,6 +245,11 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Implement WT_Module_Widget
 	public function defaultWidgetOrder() {
 		return 80;
+	}
+
+	// Implement WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
 	}
 
 	// Implement class WT_Module_Block

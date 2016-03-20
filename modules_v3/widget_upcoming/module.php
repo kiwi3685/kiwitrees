@@ -40,6 +40,11 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 		return /* I18N: Description of the “Upcoming events” module */ WT_I18N::translate('A list of the anniversaries that will occur in the near future.');
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	// Implement class WT_Module_Widget
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 
@@ -98,7 +103,7 @@ class widget_upcoming_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement WT_Module_Widget
 	public function defaultWidgetOrder() {
-		return 10;
+		return 30;
 	}
 
 

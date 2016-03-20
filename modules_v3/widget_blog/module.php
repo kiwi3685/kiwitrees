@@ -89,7 +89,7 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 						$news["text"]=nl2br($news["text"], false);
 					}
 			$content .= $news["text"] . '<br><br>
-					<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $key . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | 
+					<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $key . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> |
 					<a href="' . $url . '?action=deletenews&amp;news_id=' . $key . '\'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this Journal entry?') . '\');">' . WT_I18N::translate('Delete') . '</a>
 				</div>';
 		}
@@ -116,6 +116,11 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 	// Implement WT_Module_Sidebar
 	public function defaultWidgetOrder() {
 		return 90;
+	}
+
+	// Implement WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
 	}
 
 	// Implement class WT_Module_Block
