@@ -55,6 +55,7 @@ interface WT_Module_Access {
 
 interface WT_Module_Menu {
 	public function defaultMenuOrder();
+	public function defaultAccessLevel();
 	public function MenuType();
 }
 
@@ -80,7 +81,7 @@ interface WT_Module_Tab {
 	public function canLoadAjax();
 	public function getPreLoadContent();
 	public function isGrayedOut();
-	public function getAccessLevel();
+	public function defaultAccessLevel();
 }
 
 interface WT_Module_Theme {
@@ -108,7 +109,7 @@ abstract class WT_Module {
 	// This is the default for the module and all its components.
 	public function defaultAccessLevel() {
 		// Returns one of: WT_PRIV_HIDE, WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_ADMIN
-		return WT_PRIV_PUBLIC;
+//		return WT_PRIV_PUBLIC;
 	}
 
 	// This is an internal name, used to generate identifiers
