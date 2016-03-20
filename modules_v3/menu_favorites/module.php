@@ -45,6 +45,11 @@ class menu_favorites_WT_Module extends WT_Module implements WT_Module_Menu {
 		return 210;
 	}
 
+	// Implement WT_Module_Access
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	// Implement WT_Module_Menu
 	public function MenuType() {
 		return 'other';

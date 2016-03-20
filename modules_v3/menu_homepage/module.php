@@ -45,6 +45,11 @@ class menu_homepage_WT_Module extends WT_Module implements WT_Module_Menu {
 		return 10;
 	}
 
+	// Extend class WT_Module_Menu
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	// Implement WT_Module_Menu
 	public function MenuType() {
 		return 'main';
