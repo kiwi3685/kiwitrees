@@ -42,7 +42,7 @@ class menu_lists_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 4;
+		return 40;
 	}
 
 	// Implement WT_Module_Menu

@@ -57,26 +57,6 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 		}
 	}
 
-	// Extend class WT_Module_Menu
-	public function getMenuTitle() {
-		return WT_I18N::translate('Utilities');
-	}
-
-	// Implement WT_Module_Menu
-	public function getMenu() {
-		return false;
-	}
-
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 40;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
-	}
-
 	// Implement WT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';

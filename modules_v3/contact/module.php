@@ -33,9 +33,19 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		return /* I18N: Description of the “contact” module */ WT_I18N::translate('A contact page');
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultMenuOrder() {
+		return 160;
+	}
+
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
 	}
 
 	// Extend WT_Module
@@ -74,16 +84,6 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 			$menu->addClass('menuitem', 'menuitem_hover', '');
 			return $menu;
 		}
-	}
-
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 40;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
 	}
 
 	private function show() {

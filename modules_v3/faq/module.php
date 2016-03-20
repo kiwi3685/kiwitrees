@@ -41,6 +41,21 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		return /* I18N: Description of the “FAQ” module */ WT_I18N::translate('A list of frequently asked questions and answers.');
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultMenuOrder() {
+		return 130;
+	}
+
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_NONE;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
@@ -68,11 +83,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		default:
 			header('HTTP/1.0 404 Not Found');
 		}
-	}
-
-	// Extend class WT_Module
-	public function defaultAccessLevel() {
-		return WT_PRIV_NONE;
 	}
 
 	// Implement WT_Module_Config
@@ -519,16 +529,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			</div>
 		</div>
 		<?php
-	}
-
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 40;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
 	}
 
 	// Implement WT_Module_Menu

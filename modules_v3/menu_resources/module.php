@@ -42,7 +42,7 @@ class menu_resources_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 7;
+		return 80;
 	}
 
 	// Implement WT_Module_Menu

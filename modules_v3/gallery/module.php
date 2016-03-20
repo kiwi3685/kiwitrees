@@ -55,17 +55,17 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 40;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
+		return 100;
 	}
 
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
 		return WT_PRIV_NONE;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
 	}
 
 	// Implement WT_Module_Config

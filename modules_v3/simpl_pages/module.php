@@ -41,6 +41,21 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		return /* I18N: Description of the “Simpl_pages” module */ WT_I18N::translate('Display resource pages.');
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultMenuOrder() {
+		return 90;
+	}
+
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_NONE;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
@@ -68,11 +83,6 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		default:
 			header('HTTP/1.0 404 Not Found');
 		}
-	}
-
-	// Extend class WT_Module
-	public function defaultAccessLevel() {
-		return WT_PRIV_NONE;
 	}
 
 	// Implement WT_Module_Config
@@ -534,16 +544,6 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			" AND (gedcom_id IS NULL OR gedcom_id=?)".
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
-	}
-
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 40;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
 	}
 
 	// Implement WT_Module_Menu

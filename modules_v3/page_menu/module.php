@@ -42,7 +42,12 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 10;
+		return 20;
+	}
+
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_USER;
 	}
 
 	// Implement WT_Module_Menu

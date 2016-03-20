@@ -42,7 +42,7 @@ class menu_homepage_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 1;
+		return 10;
 	}
 
 	// Implement WT_Module_Menu

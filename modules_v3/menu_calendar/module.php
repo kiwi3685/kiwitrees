@@ -42,7 +42,7 @@ class menu_calendar_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 5;
+		return 50;
 	}
 
 	// Implement WT_Module_Menu

@@ -40,9 +40,19 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return /* I18N: Description of the “Clippings cart” module */ WT_I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultMenuOrder() {
+		return 160;
+	}
+
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
 	}
 
 	// Extend WT_Module
@@ -303,16 +313,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			header('HTTP/1.0 404 Not Found');
 			break;
 		}
-	}
-
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 20;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
 	}
 
 	// Implement WT_Module_Menu

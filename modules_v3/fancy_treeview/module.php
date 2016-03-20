@@ -1701,7 +1701,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
-		return 10;
+		return 120;
+	}
+
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_USER;
 	}
 
 	// Implement WT_Module_Menu

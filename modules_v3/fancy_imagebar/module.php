@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu {
-	
+
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of the module */ WT_I18N::translate('Fancy Imagebar');
@@ -40,6 +40,16 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 	// Extend WT_Module
 	public function getDescription() {
 		return /* I18N: Description of the module */ WT_I18N::translate('An image bar with small images on your home page between header and content.');
+	}
+
+	// Implement WT_Module_Menu
+	public function defaultMenuOrder() {
+		return 999;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'other';
 	}
 
 	// Get module options
@@ -108,11 +118,11 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if($this->options('images') == 1) $img_checked = ' checked="checked"';
 		elseif(is_array($this->options('images')) && in_array($media->getXref(), $this->options('images'))) $img_checked = ' checked="checked"';
 		else $img_checked = "";
-		
-		// ouput all thumbs as jpg thumbs (transparent png files are not possible in the Fancy Imagebar, so there is no need to keep the mimeType png).			
+
+		// ouput all thumbs as jpg thumbs (transparent png files are not possible in the Fancy Imagebar, so there is no need to keep the mimeType png).
 		ob_start();imagejpeg($image,null,100);$image = ob_get_clean();
 		return '<img src="data:image/jpeg;base64,'.base64_encode($image).'" alt="'.$media->getXref().'" title="'.strip_tags($media->getFullName()).'"/><br/>
-				<span><input type="checkbox" value="'.$media->getXref().'"'.$img_checked.'></span>';		
+				<span><input type="checkbox" value="'.$media->getXref().'"'.$img_checked.'></span>';
 	}
 
 	private function getXrefs() {
@@ -313,7 +323,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$html .= ob_get_clean();
 		echo $html;
 	}
-	
+
 	// Implement WT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
@@ -347,9 +357,9 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	private function FancyThumb($mediaobject, $thumbwidth, $thumbheight) {
 		$imgSrc = $mediaobject->getServerFilename();
-		$type = $mediaobject->mimeType();	
-		
-		//getting the image dimensions			
+		$type = $mediaobject->mimeType();
+
+		//getting the image dimensions
 		list($width_orig, $height_orig) = @getimagesize($imgSrc);
 		switch ($type) {
 			case 'image/jpeg':
@@ -359,7 +369,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$image = @imagecreatefrompng($imgSrc);
 				break;
 		}
-		
+
 		$ratio_orig = $width_orig/$height_orig;
 
 		if ($thumbwidth/$thumbheight > $ratio_orig) {
@@ -369,11 +379,11 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		   $new_width = $thumbheight*$ratio_orig;
 		   $new_height = $thumbheight;
 		}
-		
+
 		// transparent png files are not possible in the Fancy Imagebar, so no extra code needed.
 		$new_image = @imagecreatetruecolor(round($new_width), round($new_height));
 		@imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width_orig, $height_orig);
-				
+
 		$thumb = @imagecreatetruecolor($thumbwidth, $thumbheight);
 		@imagecopyresampled($thumb, $new_image, 0, 0, 0, 0, $thumbwidth, $thumbheight, $thumbwidth, $thumbheight);
 
@@ -396,7 +406,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		{
 			$x = ($index % $numberOfThumbs) * ($thumbWidth + $pxBetweenThumbs) + $leftOffSet;
 		 	$y = floor($index / $numberOfThumbs) * ($thumbWidth + $pxBetweenThumbs) + $topOffSet;
-			
+
 		 	@imagecopy($FancyImageBar, $thumb, $x, $y, 0, 0, $thumbWidth, $thumbHeight);
 		}
 		return $FancyImageBar;
@@ -467,27 +477,17 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 	}
 
 	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 999;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
-	}
-
-	// Implement WT_Module_Menu
 	public function getMenu() {
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller, $ctype, $SEARCH_SPIDER;
 
 		if ($this->options('images') !== 0 && WT_SCRIPT_NAME === 'index.php') {
-			if ($SEARCH_SPIDER) return null;			
+			if ($SEARCH_SPIDER) return null;
 			if ($ctype=='gedcom') {
-				
+
 				// add js file to set a few theme depending styles
 				$controller->addExternalJavascript(WT_MODULES_DIR.$this->getName().'/style.js');
-			
+
 				// put the fancy imagebar in the right position
 				$controller->addInlineJavaScript("jQuery('#content').before(jQuery('#fancy_imagebar'));");
 				$html = $this->GetFancyImageBar();

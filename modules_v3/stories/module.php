@@ -40,6 +40,21 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		return /* I18N: Description of the “Stories” module */ WT_I18N::translate('Add narrative stories to individuals in the family tree.');
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultMenuOrder() {
+		return 160;
+	}
+
+	// Extend class WT_Module
+	public function defaultAccessLevel() {
+		return WT_PRIV_HIDE;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'main';
+	}
+
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
@@ -652,21 +667,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		$xref = array_diff($xref, array($indi));
 		set_block_setting($block_id, 'xref', implode(',', $xref));
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH. 'module.php?mod='. $this->getName(). '&mod_action=admin_edit&block_id='. $block_id);
-	}
-
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 30;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'main';
-	}
-
-	// Extend class WT_Module
-	public function defaultAccessLevel() {
-		return WT_PRIV_HIDE;
 	}
 
 	// Implement WT_Module_Menu

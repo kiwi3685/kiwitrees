@@ -40,6 +40,16 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return WT_I18N::translate('Allows you to easily add Custom JavaScript to your webtrees site.');
 	}
 
+	// Implement WT_Module_Menu
+	public function defaultMenuOrder() {
+		return 999;
+	}
+
+	// Implement WT_Module_Menu
+	public function MenuType() {
+		return 'other';
+	}
+
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
@@ -93,16 +103,6 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
-	}
-
-	// Implement WT_Module_Menu
-	public function defaultMenuOrder() {
-		return 999;
-	}
-
-	// Implement WT_Module_Menu
-	public function MenuType() {
-		return 'other';
 	}
 
 	// Implement WT_Module_Menu
