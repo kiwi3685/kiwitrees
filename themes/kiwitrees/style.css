@@ -3314,6 +3314,7 @@ div[id^="caldiv"] td {
 /* ========= Sidebar ============== */
 #main {
 	min-width: 600px;
+	padding: 0 12px;
 	width: 100%;
 }
 
