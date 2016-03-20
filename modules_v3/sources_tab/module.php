@@ -45,6 +45,11 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		return 30;
 	}
 
+	// Implement WT_Module_Tab
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	protected $sourceCount = null;
 
 	// Implement WT_Module_Tab
@@ -127,8 +132,4 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '';
 	}
 
-	// Implement WT_Module_Access
-	public function getAccessLevel() {
-		return false; // restrict access to members or above
-	}
 }

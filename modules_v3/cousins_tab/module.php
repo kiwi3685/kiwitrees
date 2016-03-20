@@ -227,9 +227,4 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '';
 	}
 
-	// Implement WT_Module_Access
-	public function getAccessLevel() {
-		return true; // restrict access to members or above
-	}
-
 }

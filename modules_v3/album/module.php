@@ -40,6 +40,16 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		return /* I18N: Description of the “Album” module */ WT_I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
 	}
 
+	// Implement WT_Module_Tab
+	public function defaultAccessLevel() {
+		return false;
+	}
+
+	// Implement WT_Module_Tab
+	public function defaultTabOrder() {
+		return 90;
+	}
+
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
@@ -58,11 +68,6 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 	// Implement WT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
-	}
-
-	// Implement WT_Module_Tab
-	public function defaultTabOrder() {
-		return 90;
 	}
 
 	// Implement WT_Module_Tab
@@ -353,11 +358,6 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		ob_start();
 		$html .= ob_get_clean();
 		echo $html;
-	}
-
-	// Implement WT_Module_Access
-	public function getAccessLevel() {
-		return false; // restrict access to members or above
 	}
 
 }

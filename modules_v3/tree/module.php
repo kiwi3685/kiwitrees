@@ -44,6 +44,16 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	// Implement WT_Module_Tab
+	public function defaultAccessLevel() {
+		return false;
+	}
+
+	// Implement WT_Module_Tab
+	public function isGrayedOut() {
+		return false;
+	}
+
+	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $controller;
 
@@ -62,11 +72,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $SEARCH_SPIDER;
 
 		return !$SEARCH_SPIDER;
-	}
-
-	// Implement WT_Module_Tab
-	public function isGrayedOut() {
-		return false;
 	}
 
 	// Implement WT_Module_Tab
@@ -164,11 +169,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	public function js() {
 		return WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/treeview.js';
-	}
-
-	// Implement WT_Module_Access
-	public function getAccessLevel() {
-		return false; // restrict access to members or above
 	}
 
 }

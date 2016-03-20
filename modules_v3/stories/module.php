@@ -243,7 +243,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$xref=$controller->record->getXref(),
 				WT_GED_ID
 			))->fetchOne();
-		return $count_of_stories==0;
+		return $count_of_stories == 0;
 	}
 
 	// Implement class WT_Module_Tab
@@ -683,11 +683,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function onClick($storytab = true) {
 		$tabId = $storytab ? array_search($this->getname(),array_keys(WT_Module::getActiveTabs())) : 0;
 		return "onclick=\"sessionStorage.setitem('indi-tab',$tabId);\"";
-	}
-
-	// Implement WT_Module_Access
-	public function getAccessLevel() {
-		return false; // restrict access to members or above
 	}
 
 }

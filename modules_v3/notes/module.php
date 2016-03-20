@@ -151,8 +151,9 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		return '';
 	}
 
-	// Implement WT_Module_Access
-	public function getAccessLevel() {
-		return false; // restrict access to members or above
+	// Implement WT_Module_Tab
+	public function defaultAccessLevel() {
+		return false;
 	}
+
 }
