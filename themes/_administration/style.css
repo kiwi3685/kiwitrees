@@ -37,7 +37,12 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 table {border-collapse:collapse;}
 td {line-height:25px; vertical-align:middle;}
 i.fa {margin:5px; font-size:1.25em; vertical-align:middle;}
-button {cursor: pointer; min-width:100px;}
+button {
+	cursor: pointer;
+	float: left;
+	margin: 10px;
+	min-width:100px;
+}
 .icon {border:none; padding-left:0;padding-right:5pt;}
 .warning, .error, .red {color:#ff0000;}
 .accepted, a.accepted {color:#25a325;}
@@ -51,6 +56,13 @@ button {cursor: pointer; min-width:100px;}
 .faq_link {float:right; padding:0 20px;}
 .clearfloat {clear:both}
 .help-text{font-size: smaller; font-style: italic;}
+.help_content {
+	border: none;
+	font-size: .9em;
+	font-style: italic;
+	font-weight: 400;
+	margin: 10px 0;
+}
 .input-group {margin:20px 0;}
 
 /* jQuery styling over-rides */
@@ -418,6 +430,45 @@ table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
 .gedcom_table2 label, .gedcom_table3 label {display:block; font-weight:900; margin:10px 0 3px;}
 .gedcom_table2 input {width: 100px;}
 
+#trees_import label,
+#tree-download label {
+	display: inline-block;
+	font-weight: 600;
+	margin: 0 5px;
+	width: 200px;
+	vertical-align: top;
+}
+
+#trees_import .input label {
+	width: 50px;
+}
+
+#trees_import  div.input {
+	display: inline-block;
+	padding: 0 5px;
+	width: 80%;
+}
+
+#trees_import  span.input_addon {
+	border: 1px inset;
+	font-weight: 400;
+	padding: 8px;
+}
+
+#trees_import select,
+#trees_import input {
+	font-size: 14px;
+	height: auto;
+	padding: 5px 0;
+	min-width: 300px;
+}
+
+#trees_import input[type="radio"],
+#trees_import input[type="checkbox"] {
+	min-width: initial;
+	width: 20px;
+}
+
 /* FAMILY TREE CONFIG */
 #file-options, #privacy, #config-media, #layout-options, #hide-show, #edit-options {padding:10px;}
 #file-options table, #privacy table, #config-media table, #layout-options table, #hide-show table, #edit-options table {padding:5px; width:100%;}
@@ -440,10 +491,28 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 #check_errors {min-height: inherit;}*/
 
 /* TREE DOWNLOAD */
-#tree-download {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px;}
-#tree-download dl {float:left;margin:0 0 0 20px;line-height:21px;max-width:600px;}
+#tree-download hr {
+	margin: 30px 0;
+}
+
+#tree-download label {
+	vertical-align: middle;
+}
+
+#tree-download button {
+	float: none;
+}
+
+#tree-download .input button {
+	float: left;
+}
+
+#tree-download dl {
+	float:left;margin:0 0 0 40px;
+	line-height:21px;
+}
 #tree-download dt {clear:left; float:left; min-width:170px; margin:0; padding:5px 5px 5px 0; font-weight:bold;}
-#tree-download dd {border-bottom:1px solid #999; margin-left:300px; min-width:300px; padding:5px;}
+#tree-download dd {margin-left:300px; min-width:300px; padding:5px;}
 [dir=rtl] #tree-download dl {float:right;margin:0 20px 0 0; max-width:600px;}
 [dir=rtl] #tree-download dt {clear:right; float:right; padding:5px 0 5px 5px;}
 [dir=rtl] #tree-download dd {margin-right:300px;}
@@ -605,14 +674,14 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 #batch_update label span {
 	display: inline-block;
 	font-weight: 700;
-    width: 200px;
+	width: 200px;
 }
 #batch_update select,
 #batch_update input {
-    font-size: 14px;
+	font-size: 14px;
 	height: auto;
 	margin: 10px 0;
-    padding: 5px;
+	padding: 5px;
 	min-width: 300px;
 }
 #batch_update2 {
@@ -623,14 +692,14 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 	margin: 10px;
 }
 #batch_update span.bu_name {
-    display: block;
-    font-size: 140%;
+	display: block;
+	font-size: 125%;
 	margin: 5px 0;
 }
 #batch_update pre {
 	border: 1px solid;
-	margin:0;
-	padding:5px;
+	margin: 0;
+	padding: 5px;
 }
 .added_text {
 	background:#ffff00;

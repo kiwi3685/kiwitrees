@@ -122,7 +122,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                WT_Filter::postBool('NEW_GENERATE_UIDS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           WT_Filter::postBool('NEW_HIDE_GEDCOM_ERRORS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             WT_Filter::postBool('NEW_HIDE_LIVE_PEOPLE'));
-	set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH',            WT_Filter::post('GEDCOM_MEDIA_PATH'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK',             str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_QUICK')));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_UNIQUE')));
@@ -187,7 +186,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              WT_Filter::postBool('NEW_WATERMARK_THUMB'));
 	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID',            WT_Filter::post('NEW_WEBMASTER_USER_ID'));
 	set_gedcom_setting(WT_GED_ID, 'WEBTREES_EMAIL',               WT_Filter::post('NEW_WEBTREES_EMAIL'));
-	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           WT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
 	if (WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE)) {
 		set_gedcom_setting(WT_GED_ID, 'title',                        WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE));
 	}
@@ -353,14 +351,6 @@ $controller
 					</td>
 					<td>
 						<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', get_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES')); ?>
 					</td>
 				</tr>
 			</table>
@@ -639,14 +629,6 @@ $controller
 					</td>
 					<td>
 						<?php echo WT_DATA_DIR; ?><input type="text" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" size="15" maxlength="255">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ WT_I18N::translate('GEDCOM media path'), help_link('GEDCOM_MEDIA_PATH'); ?>
-					</td>
-					<td>
-						<input type="text" name="NEW_GEDCOM_MEDIA_PATH" value="<?php echo $GEDCOM_MEDIA_PATH; ?>" dir="ltr" size="30" maxlength="255">
 					</td>
 				</tr>
 				<tr>

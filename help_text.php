@@ -1031,11 +1031,6 @@ case 'WELCOME_TEXT_AUTH_MODE':
 	$text = WT_I18N::translate('Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>');
 	break;
 
-case 'WORD_WRAPPED_NOTES':
-	$title = WT_I18N::translate('Add spaces where notes were wrapped');
-	$text = WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.');
-	break;
-
 	//////////////////////////////////////////////////////////////////////////////
 	// This section contains all the other help items.
 	//////////////////////////////////////////////////////////////////////////////
@@ -1090,16 +1085,6 @@ case 'block_move_up':
 case 'default_individual':
 	$title = WT_I18N::translate('Default individual');
 	$text = WT_I18N::translate('This individual will be selected by default when viewing charts and reports.');
-	break;
-
-case 'download_gedcom':
-	$title = WT_I18N::translate('Download family tree');
-	$text = WT_I18N::translate('This option will download the family tree to a GEDCOM file on your computer.');
-	break;
-
-case 'download_zipped':
-	$title = WT_I18N::translate('Download ZIP file');
-	$text = WT_I18N::translate('When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent.');
 	break;
 
 case 'edit_add_GEDFact_ASSISTED':
@@ -1162,17 +1147,6 @@ case 'email':
 	$text = WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.');
 	break;
 
-case 'export_gedcom':
-	$title = WT_I18N::translate('Export family tree');
-	$text =
-		'<p>' .
-		WT_I18N::translate('This option will save the family tree to a GEDCOM file on the server.') .
-		'</p><p>' .
-		/* I18N: %s is a folder name */
-		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
-		'</p>';
-	break;
-
 case 'fambook_descent':
 	$title = WT_I18N::translate('Descendant generations');
 	$text = WT_I18N::translate('This value determines the number of descendant generations of the root person that will be printed in Hourglass format.');
@@ -1206,17 +1180,6 @@ case 'google_chart_surname':
 case 'header_favorites':
 	$title = WT_I18N::translate('Favorites');
 	$text = WT_I18N::translate('The Favorites drop-down list shows the favorites that you have selected on your widget bar.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br><br>More help about adding Favorites is available in your widget bar.');
-	break;
-
-case 'import_gedcom':
-	$title = WT_I18N::translate('Import family tree');
-	$text =
-		'<p>' .
-		WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.') .
-		'</p><p>' .
-		/* I18N: %s is a folder name */
-		WT_I18N::translate('GEDCOM files are stored in the %s folder.', '<b style="dir:auto;">' . WT_DATA_DIR . '</b>') .
-		'</p>';
 	break;
 
 case 'include_media':
@@ -1448,7 +1411,7 @@ case 'username':
 
 case 'utf8_ansi':
 	$title = WT_I18N::translate('Convert from UTF-8 to ANSI');
-	$text = WT_I18N::translate('For optimal display on the Internet, kiwitrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren\'t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program\'s method for handling these special characters by some other means.  Consult your program\'s manufacturer or author.<br><br>This <a href=\'http://en.wikipedia.org/wiki/UTF-8\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8.');
+	$text = WT_I18N::translate('Kiwitrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.');
 	break;
 
 case 'zip':

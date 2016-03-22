@@ -25,10 +25,10 @@ define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Family trees'));
+	->setPageTitle(WT_I18N::translate('Manage family trees'));
 
 // Don’t allow the user to cancel the request.  We do not want to be left
 // with an incomplete transaction.
@@ -118,10 +118,16 @@ case 'replace_upload':
 	exit;
 case 'replace_import':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
+	$keep_media         = WT_Filter::post('keep_media', '1', '0');
+	$GEDCOM_MEDIA_PATH  = WT_Filter::post('GEDCOM_MEDIA_PATH');
+	$WORD_WRAPPED_NOTES = WT_Filter::post('WORD_WRAPPED_NOTES', '1', '0');
 	// Make sure the gedcom still exists
 	if (WT_Filter::checkCsrf() && get_gedcom_from_id($gedcom_id)) {
 		$ged_name = basename(WT_Filter::post('ged_name'));
 		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name, $ged_name);
+		set_gedcom_setting(WT_GED_ID, 'GEDCOM_MEDIA_PATH', WT_Filter::post('GEDCOM_MEDIA_PATH'));
+		set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES', WT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
+
 	}
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
 	exit;
@@ -130,65 +136,110 @@ case 'replace_import':
 $controller->pageHeader();
 
 // Process GET actions
-switch (safe_GET('action')) {
-case 'uploadform':
-case 'importform':
+if (safe_GET('action') == 'importform') {
 	$gedcom_id	 = safe_GET('gedcom_id');
 	$gedcom_name = get_gedcom_from_id($gedcom_id);
 	// Check it exists
 	if (!$gedcom_name) {
 		break;
 	}
-	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
-	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
-	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
 	echo '
-		<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($previous_gedcom_filename), '\' && \'\' != \'', htmlspecialchars($previous_gedcom_filename), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">
-			<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">' ,
-			WT_Filter::getCsrf();
-			if (WT_Filter::get('action')=='uploadform') {
-				echo '
-					<input type="hidden" name="action" value="replace_upload">
-					<input type="file" name="ged_name">';
-			} else {
-				echo '<input type="hidden" name="action" value="replace_import">';
-				$d		= opendir(WT_DATA_DIR);
-				$files	= array();
-				while (($f=readdir($d))!==false) {
-					if (!is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
-						$fp=fopen(WT_DATA_DIR.$f, 'rb');
-						$header=fread($fp, 64);
-						fclose($fp);
-						if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {
-							$files[]=$f;
-						}
-					}
-				}
-				if ($files) {
-					sort($files);
-					echo WT_DATA_DIR, '<select name="ged_name">';
-					foreach ($files as $file) {
-						echo '<option value="', htmlspecialchars($file), '"';
-						if ($file==$previous_gedcom_filename) {
-							echo ' selected="selected"';
-						}
-						echo'>', htmlspecialchars($file), '</option>';
-					}
-					echo '</select>';
-				} else {
-					echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
-					echo '</form>';
-					exit;
-				}
-			}
-			echo '<p>
-				<input type="checkbox" name="keep_media', $gedcom_id, '" value="1">
-			<p>',
-			WT_I18N::translate('If you have created media objects in kiwitrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.'),
-			'<p>
-				<input type="submit" value="', WT_I18N::translate('continue'), '">
-			</p>
-		</form>';
+	<div id="trees_import">
+		<h2>' . $tree->tree_title_html . ' — ' . WT_I18N::translate('Import a GEDCOM file') . '</h2>
+		<h4 class="accepted">' . /* I18N: %s is the name of a family tree */ WT_I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', $tree->tree_title_html) . '</h4>';
+		// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
+		$previous_gedcom_filename = get_gedcom_setting($gedcom_id, 'gedcom_filename');
+		echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="' . WT_SCRIPT_NAME . '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'' . htmlspecialchars($previous_gedcom_filename) . '\' && \'\' != \'' . htmlspecialchars($previous_gedcom_filename) . '\') return confirm(\'' . htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')) . '\'); else return true;">
+			<input type="hidden" name="gedcom_id" value="' . $gedcom_id . '">' .
+			WT_Filter::getCsrf() . '
+			<input type="hidden" name="action" value="replace_upload">
+				<h3>' . WT_I18N::translate('Select a GEDCOM file to import') . '</h3>
+				<div class="tree_import">
+					<label>' . WT_I18N::translate('A file on your computer') . '</label>
+					<div class="input">
+						<input type="radio" name="action" id="import-computer" value="replace_upload" checked>
+						<span class="input_addon">
+							<input type="file" name="ged_name" id="import-computer-file">
+						</span>
+						<div class="help_content">' .
+								WT_I18N::translate('Maximum file size allowed is %s', detectMaxUploadFileSize()) . '
+						</div>
+					</div>
+				</div>
+				<div class="tree_import">
+					<label>' . WT_I18N::translate('A file on the server') . '</label>
+					<div class="input">
+						<input type="radio" name="action" id="import-server" value="replace_import">
+						<span class="input_addon">' . WT_DATA_DIR;
+							$d = opendir(WT_DATA_DIR);
+							$files = array();
+							while (($f=readdir($d))!==false) {
+								if (!is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
+									$fp = fopen(WT_DATA_DIR.$f, 'rb');
+									$header = fread($fp, 64);
+									fclose($fp);
+									if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {
+										$files[] = $f;
+									}
+								}
+							}
+							sort($files);
+							echo '<select name="ged_name">';
+								foreach ($files as $file) {
+									echo '<option value="', htmlspecialchars($file), '"';
+									if ($file == $previous_gedcom_filename) {
+										echo ' selected="selected"';
+									}
+									echo'>', htmlspecialchars($file), '</option>';
+								}
+								if (!$files) {
+									echo '<option disabled selected>' . WT_I18N::translate('No GEDCOM files found.') . '</option>';
+								}
+							echo '</select>
+						</span>
+					</div>
+				</div>
+				<hr>
+				<h3>' . WT_I18N::translate('Import options') . '</h3>
+				<div class="tree_import">
+					<label>' . WT_I18N::translate('Keep media objects') . '</label>
+					<div class="input">
+						<input type="checkbox" name="keep_media' . $gedcom_id . '" value="1">
+						<div class="help_content">' .
+							WT_I18N::translate('If you have created media objects in kiwitrees, and edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.') . '
+						</div>
+					</div>
+				</div>
+				<div class="tree_import">
+					<label>' . WT_I18N::translate('Add spaces where notes were wrapped') . '</label>
+					<div class="input">' .
+						edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES')) . '
+						<div class="help_content">' .
+							WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause kiwitrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.') . '
+						</div>
+					</div>
+				</div>
+				<div class="tree_import">
+					<label>' . /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ WT_I18N::translate('Remove the GEDCOM media path from filenames') . '</label>
+					<div class="input">
+						<input type="text" name="NEW_GEDCOM_MEDIA_PATH" value="' . $GEDCOM_MEDIA_PATH . '" dir="ltr" maxlength="255">
+						<div class="help_content">' .
+							// I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
+							WT_I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow kiwitrees to find the file, the first part of the path must be removed.').
+							// I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
+							WT_I18N::translate('For example, if the GEDCOM file contains %1$s and kiwitrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="accepted">/home/familytree/documents/family/photo.jpeg</span>', '<span class="accepted">family/photo.jpeg</span>', '<span class="accepted">/home/familytree/documents/</span>').
+							WT_I18N::translate('This setting is only used when you read or write GEDCOM files.') .'
+						</div>
+					</div>
+				</div>
+				<p>
+					<button class="btn btn-primary" type="submit">
+					<i class="fa fa-play"></i>' .
+						WT_I18N::translate('continue') . '
+					</button>
+				</p>
+			</form>
+		</div>';
 	exit;
 }
 
@@ -231,29 +282,20 @@ foreach (WT_Tree::GetAll() as $tree) {
 							echo '<table border="0" width="100%" id="actions', $tree->tree_id, '">';
 						}
 							echo '<tr align="center">',
-								// export
-								'<td>
-									<a href="admin_trees_export.php?ged=', $tree->tree_name_url, '" onclick="return modalDialog(\'admin_trees_export.php?ged=', $tree->tree_name_url, '\', \'', WT_I18N::translate('Export'), '\');">', WT_I18N::translate('Export'), '</a>',
-									help_link('export_gedcom'),
-								'</td>',
 								// import
 								'<td>
-									<a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Import'), '</a>',
-									help_link('import_gedcom'),
-								'</td>',
+									<a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Import a GEDCOM file'), '</a>
+									<i class="fa fa-upload"><i>
+								</td>',
 								// download
 								'<td>
-									<a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">', WT_I18N::translate('Download'), '</a>',
-									help_link('download_gedcom'),
-								'</td>',
-								// upload
-								'<td>
-									<a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Upload'), '</a>',
-									help_link('upload_gedcom'),
-								'</td>',
+									<a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">', WT_I18N::translate('Export a GEDCOM file'), '</a>
+									<i class="fa fa-download"><i>
+								</td>',
 								// delete
 								'<td>
-									<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">', WT_I18N::translate('Delete'), '</a>
+									<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">', WT_I18N::translate('Delete this family tree'), '</a>
+									<i class="fa fa-trash"><i>
 									<form name="delete_form', $tree->tree_id ,'" method="post" action="', WT_SCRIPT_NAME ,'">
 										<input type="hidden" name="action" value="delete">
 										<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">',
@@ -312,7 +354,7 @@ if (WT_USER_IS_ADMIN) {
 			<i class="fa fa-check"></i>',
 				WT_I18N::translate('create'), '
 			</button>
-			<p class="warning help-text">' , WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'), '</p>
+			<p class="warning help-text clearfloat">' , WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'), '</p>
 		</form>
 	</div>';
 
