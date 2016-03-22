@@ -319,9 +319,9 @@ class batch_update {
 		}
 		return
 			'<button type="submit" onclick="'.
-				'this.form.xref.value=\''.htmlspecialchars($xref).'\';'.
-				'this.form.action.value=\''.htmlspecialchars($action).'\';'.
-				'this.form.data.value=\''.htmlspecialchars($data).'\';'.
+				'this.form.xref.value=\''.WT_Filter::escapeHtml($xref).'\';'.
+				'this.form.action.value=\''.WT_Filter::escapeHtml($action).'\';'.
+				'this.form.data.value=\''.WT_Filter::escapeHtml($data).'\';'.
 				'return true;"'.
 				($xref ? '' : ' disabled').'>
 				<i class="fa ' . $button_icon . '"></i>'.

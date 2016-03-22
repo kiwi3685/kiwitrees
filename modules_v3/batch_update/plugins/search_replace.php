@@ -98,11 +98,11 @@ class search_replace_bu_plugin extends base_plugin {
 		return
 			'<label>
 				<span>'.WT_I18N::translate('Search text/pattern') . '</span>
-				<input id="search" name="search" value="' . htmlspecialchars($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
+				<input id="search" name="search" value="' . WT_Filter::escapeHtml($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
 			</label>
 			<label>
 				<span>' . WT_I18N::translate('Replacement text') . '</span>
-				<input id="replace" name="replace" value="' . htmlspecialchars($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
+				<input id="replace" name="replace" value="' . WT_Filter::escapeHtml($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
 			</label>
 			<label>
 				<span>' . WT_I18N::translate('Search method') . '</span>
