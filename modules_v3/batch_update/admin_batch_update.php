@@ -97,7 +97,7 @@ class batch_update {
 									<hr>' .
 									self::createSubmitButton(WT_I18N::translate('previous'), $this->prev_xref) .
 									self::createSubmitButton(WT_I18N::translate('next'), $this->next_xref) . '
-									<div id="batch_update2">
+									<div id="batch_update2" class="clearfloat">
 										<a href="' . $object->getHtmlUrl() . '"><span class="bu_name">' . $object->getFullName() . '</span></a>' .
 										$this->PLUGIN->getActionPreview($this->curr_xref, $this->record) . '
 										<p>' . implode('' , $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'</p>
