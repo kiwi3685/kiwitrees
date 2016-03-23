@@ -1233,37 +1233,39 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					$html .= ':<ol>';
 
 					foreach ($children as $child) {
-						$html .= '<li class="child"><a href="'.$child->getHtmlUrl().'">'.$child->getFullName().'</a>';
-						$pedi = $child->getChildFamilyPedigree($family->getXref());
+						if ($child->canDisplayDetails()) {
+							$html .= '<li class="child"><a href="'.$child->getHtmlUrl().'">'.$child->getFullName().'</a>';
+							$pedi = $child->getChildFamilyPedigree($family->getXref());
 
-						if($pedi === 'foster') {
-							if ($child->getSex() == 'F') {
-								$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('FEMALE', 'foster child').'</span>';
-							} else {
-								$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('MALE', 'foster child').'</span>';
+							if($pedi === 'foster') {
+								if ($child->getSex() == 'F') {
+									$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('FEMALE', 'foster child').'</span>';
+								} else {
+									$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('MALE', 'foster child').'</span>';
+								}
 							}
-						}
-						if($pedi === 'adopted') {
-							if ($child->getSex() == 'F') {
-								$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('FEMALE', 'adopted').'</span>';
-							} else {
-								$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('MALE', 'adopted').'</span>';
+							if($pedi === 'adopted') {
+								if ($child->getSex() == 'F') {
+									$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('FEMALE', 'adopted').'</span>';
+								} else {
+									$html .= ' <span class="pedi"> - '.WT_I18N::translate_c('MALE', 'adopted').'</span>';
+								}
 							}
-						}
-						if ($child->canDisplayDetails() && ($child->getBirthDate()->isOK() || $child->getDeathdate()->isOK())) {
-							$html .= '<span class="lifespan"> (' . $child->getLifeSpan() . ')</span>';
-						}
+							if ($child->getBirthDate()->isOK() || $child->getDeathdate()->isOK()) {
+								$html .= '<span class="lifespan"> (' . $child->getLifeSpan() . ')</span>';
+							}
 
-						$child_family = $this->get_family($child);
-						if ($child->canDisplayDetails() && $child_family) {
-								$html .= ' - <a class="scroll" href="#'.$child_family->getXref().'"></a>';
-						}
-						else { // just go to the person details in the next generation (added prefix 'S'for Single Individual, to prevent double ID's.)
-							if ($this->options('show_singles') == true) {
-								$html .= ' - <a class="scroll" href="#S' . $child->getXref() . '"></a>';
+							$child_family = $this->get_family($child);
+							if ($child->canDisplayDetails() && $child_family) {
+									$html .= ' - <a class="scroll" href="#'.$child_family->getXref().'"></a>';
 							}
+							else { // just go to the person details in the next generation (added prefix 'S'for Single Individual, to prevent double ID's.)
+								if ($this->options('show_singles') == true) {
+									$html .= ' - <a class="scroll" href="#S' . $child->getXref() . '"></a>';
+								}
+							}
+							$html .= '</li>';
 						}
-						$html .= '</li>';
 					}
 					$html .= '</ol></div>';
 				}
