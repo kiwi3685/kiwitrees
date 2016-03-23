@@ -1,12 +1,13 @@
 #
 # Translators:
+# Nigel Osborne <kiwi3685@me.com>, 2016
 # wim meijberg <jwmeijberg@home.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2016-02-15 10:42+1300\n"
-"PO-Revision-Date: 2016-03-23 08:01+1300\n"
+"PO-Revision-Date: 2016-03-24 07:37+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/kiwitrees/kiwitrees/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -3705,7 +3706,7 @@ msgstr "Kies een standaard koptekst voor uw eigen Welkomsttekst. Als uw gebruike
 
 #: help_text.php:1026
 msgid "If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr "Als u gekozen heeft voor een eigen welkomsttekst, kan u hier die text invoeren. Om deze text ook in andere talen in te stellen, moet u naar die taal overschakelen en deze pagina opnieuw bezoeken."
+msgstr "Als u gekozen heeft voor een eigen welkomsttekst, kunt u hier de tekst invoeren. Om deze tekst ook in andere talen in te stellen, moet u naar die taal overschakelen en deze pagina opnieuw bezoeken."
 
 #: help_text.php:1031
 msgid "Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
@@ -14415,7 +14416,7 @@ msgstr "Vul onderwerp van het bericht in"
 
 #: message.php:111 modules_v3/contact/module.php:177
 msgid "Please enter some message text before sending."
-msgstr "Voer wat text in vóór het verzenden a.u.b."
+msgstr "Voer tekst in vóór het verzenden a.u.b."
 
 #: message.php:127
 msgid "<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead persons may also be private.  If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
@@ -14716,11 +14717,11 @@ msgstr "Het lijkt erop dat de regex een fout bevat. Het kan niet worden gebruikt
 
 #: modules_v3/batch_update/plugins/search_replace.php:92
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr "Zoek naar de exacte text, zelfs als het midden in een woord voorkomt."
+msgstr "Zoek naar de exacte tekst, zelfs als het midden in een woord voorkomt."
 
 #: modules_v3/batch_update/plugins/search_replace.php:93
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "Zoek naar de exacte text, tenzij het midden in een woord voorkomt."
+msgstr "Zoek naar de exacte tekst, tenzij het midden in een woord voorkomt."
 
 #: modules_v3/batch_update/plugins/search_replace.php:94
 msgid "Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters."
@@ -14872,7 +14873,7 @@ msgstr "Hulp voor de Engelse kalender"
 
 #: modules_v3/calendar_utilities/plugins/old_new.php:29
 msgid "Old & New Style Dates"
-msgstr "Old & New Style datums"
+msgstr "Oude & Nieuwe Stijl datums"
 
 #: modules_v3/calendar_utilities/plugins/old_new.php:32
 msgid "<div id=\"popup\"><p>There are several different areas. They operate as follows.</p><p><b>1. Calculation of major moveable feasts.</b></p><p>Since the ecclesiastical calendar is based on lunar rather than solar cycles, certain key holidays (feasts) occur on different days each year. The method of calculating these feasts has also changed since the council of Nicea (325 A.D.). The button dived \"Calculate Holidays\" calculates the dates of seven major feasts for the year entered in the field dived \"Year\", and displays the results below this field. The only restrictions are that the number entered in the field \"Year\" must be an integer (no fractions) greater than zero. However, the holidays generated are only valid for dates since 325 A.D. (Early Christian and Roman dating is another story). Also, for purposes of calculation, I have assumed that the ecclesiastical year begins on January first, even though this standard was only gradually accepted. If you are working with early monastic documents you might want to consider that dates from December 25th through March may be \"off\" by one year. To a Benedictine, for instance (to whom the year began on December 25th), the feast of the Innocents in 1450 would be December 28th, 1450, while to others it might be December 28th, 1449. In fact, before 1582, most calendars did not have the year begin on January 1st, even though the calculation of the moveable feasts acted as if it did. In England, the year \"began\" either on December 25th, or, more frequently on March 25th (Lady Day), until 1752. These vagaries are not something I wanted to include in the calculations, since they often varied quite a bit. The calculations for the holidays will take into account the days dropped from the calendar when the \"New style\" was adopted, since these affect the month and day of Easter. Conventions about the beginning of the year are easily corrected for.</p><p><b>2. Old and New style dating and Day of the week</b></p><p>When the Pope Gregory revised the calendar in 1582, a certain number of days were omitted from the calendar at a particular time, resulting in two separate styles of dating. England persisted in using the \"Old Style\" until 1752, because of religious differences. The Old Style also often dated the beginning of the year from March 25 rather than January 1, and this area of the site takes this difference into account. Thus March 8, 1735, Old Style is really March 19, 1736 in the New Style! Occasionally, particularly in dating material between 1582 and 1755 or so, it becomes necessary to convert back and forth.</p><p>Here is a more detailed description of the transition year (in England): 1752.</p><p>The area called \"Convert Old Style to New Style\" converts the old style date to a new style date and returns an answer. The area called \"Convert New Style to Old Style\" converts the new style date to an old style date and enters it in the \"Old style\" fields. You must enter an integer greater than zero for the year.</p><p>You can also calculate the day of the week for both old and new style dates.</p><p>Remember that these forms assume that the year begins on March 25th. If you want to plug in dates derived from the \"Ecclesiastical Holidays\" area, be aware that you will have to subtract 1 from the year for all dates between January 1st and March 24th.</p><p><b>NOTE FOR STUDENTS OF CONTINENTAL HISTORY</b></p><p>Don't try to use this site to calculate dates of documents between 1588 and 1752 because England is a special case during these years.</p></p>"
@@ -14918,7 +14919,7 @@ msgstr "Regeringsjaar"
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:132
 msgid "Double years such as &quot;1324/5&quot; reflect Old Style dating (see note below)."
-msgstr "Dubbele jaren zoals &quot;1324/5&quot;; geven Oud Stijl datering (zie onderstaande notitie)."
+msgstr "Dubbele jaren zoals &quot;1324/5&quot;; geven Oude Stijl datering (zie onderstaande notitie)."
 
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:135
 msgid "Keep in mind that a monarch's last regnal year is cut short by death or deposition and may not include all dates."
@@ -16398,7 +16399,7 @@ msgstr "had"
 
 #: modules_v3/fancy_treeview/module.php:1213 modules_v3/ahnentafel_report/report.bak:397 modules_v3/descendancy_report/report.bak:482
 msgid "Children of "
-msgstr "Kinderen van"
+msgstr "Kinderen van "
 
 #: modules_v3/fancy_treeview/module.php:1243
 msgctxt "FEMALE"
