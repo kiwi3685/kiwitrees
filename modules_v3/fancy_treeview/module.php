@@ -1100,7 +1100,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		if($count > 1) {
 			if($i == 0) {
-				$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s times', $wordcount2[$count]);
+				$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s', $wordcount2[$count-1]);
 				$html .= '. ';
 			}
 			$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcount[$i]);
@@ -1208,7 +1208,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					$html .= ' './* WT_I18N: %s is a number */ WT_I18N::plural('%s child', '%s children', count($children), count($children)).'.</p></div>';
 				}
 				else {
-					$html .= '<div class="children"><p>'. WT_I18N::translate('Children of ').$person->getFullName();
+					$html .= '<div class="children"><p>'. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('Children of ').$person->getFullName();
 					if($spouse && $spouse->canDisplayDetails()) {
 						$html .= ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 						if (!$family->getMarriage()) {
