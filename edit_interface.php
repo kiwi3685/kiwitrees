@@ -1033,9 +1033,9 @@ case 'editsource':
 
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
-		<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
-			<input type="hidden" name="action" value="update">';
-			<input type="hidden" name="pid" value="', $pid, '">';
+		<form method="post" action="edit_interface.php" enctype="multipart/form-data">
+			<input type="hidden" name="action" value="update">
+			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 			<div id="add_facts">
 				<?php
 				for ($i = $linenum; $i < $lines; $i++) {
