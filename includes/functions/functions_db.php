@@ -960,7 +960,7 @@ function search_stories($query, $geds, $match) {
 	$list     = array();
 	$stories  = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-	return $list;
+	return $stories;
 }
 
 //-- function to find the gedcom id for the given rin
