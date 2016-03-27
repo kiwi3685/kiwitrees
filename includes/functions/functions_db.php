@@ -959,9 +959,7 @@ function search_stories($query, $geds, $match) {
 
 	$list     = array();
 	$stories  = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
-	foreach ($stories as $story) {
-        $list[]   = get_block_setting($story['block_id'], 'xref');
-	}
+
 	return $list;
 }
 
