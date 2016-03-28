@@ -948,7 +948,7 @@ function search_stories($query, $geds, $match) {
         SELECT ##block.`block_id` AS block_id, `gedcom_id` AS ged_id
          FROM ##block JOIN ##block_setting
          ON ##block.`block_id` = ##block_setting.`block_id`
-		 WHERE (" . implode($match, $querysql) . ")
+		 WHERE (".implode(" {$match} ", $querysql).")
          AND `module_name`='stories'
          AND `gedcom_id` IN (" . implode(',', $geds) . ")
          AND `setting_name` LIKE 'story_body'
