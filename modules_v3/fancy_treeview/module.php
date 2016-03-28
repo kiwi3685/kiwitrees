@@ -1733,7 +1733,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				}
 			}
 			if (!empty($FTV_GED_SETTINGS)) {
-				$menu = new WT_Menu(WT_I18N::translate('Descendants'), 'module.php?mod='.$this->getName().'&amp;mod_action=show&amp;rootid='.$FTV_GED_SETTINGS[0]['PID'], 'menu-fancy_treeview');
+				$menu = new WT_Menu(WT_I18N::translate('Descendants'), '#', 'menu-fancy_treeview');
 
 				foreach($FTV_GED_SETTINGS as $FTV_ITEM) {
 					if(WT_Person::getInstance($FTV_ITEM['PID'])) {
