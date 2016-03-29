@@ -1726,7 +1726,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 	if ($fact == 'SOUR' && $level == 1) {
-		echo '<p>';
+		echo '
+			<div class="source_links">
+				<h4>', WT_I18N::translate('Link this source to these records'), '</h4>';
 			if ($PREFER_LEVEL2_SOURCES === '0') {
 				$level1_checked = '';
 				$level2_checked = '';
@@ -1739,13 +1741,19 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 			}
 			if (strpos($bdm, 'B') !== false) {
-				echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="Y">';
-				echo WT_I18N::translate('Individual');
+				echo '
+					<p>
+						<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="Y">',
+						WT_I18N::translate('Individual'),
+					'</p>';
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
 					foreach ($matches[1] as $match) {
 						if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
-							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-							echo WT_Gedcom_Tag::getLabel($match);
+							echo '
+								<p>
+									<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">',
+									WT_Gedcom_Tag::getLabel($match),
+								'</p>';
 						}
 					}
 				}
@@ -1754,23 +1762,32 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
 					foreach ($matches[1] as $match) {
 						if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
-							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-							echo WT_Gedcom_Tag::getLabel($match);
+							echo '
+								<p>
+									<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">',
+									WT_Gedcom_Tag::getLabel($match),
+								'</p>';
 						}
 					}
 				}
 			}
 			if (strpos($bdm, 'M') !== false) {
-				echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="Y">';
-				echo WT_I18N::translate('Family');
+				echo '
+					<p>
+						<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="Y">',
+						WT_I18N::translate('Family'),
+					'</p>';
 				if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 					foreach ($matches[1] as $match) {
-						echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-						echo WT_Gedcom_Tag::getLabel($match);
+						echo '
+							<p>
+								<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">',
+								WT_Gedcom_Tag::getLabel($match),
+							'</p>';
 					}
 				}
 			}
-		echo '</p>';
+		echo '</div>';
 	}
 
 	echo '</div>';

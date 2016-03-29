@@ -434,6 +434,10 @@ font-size:10px;}
 
 .source_citations { display:none;}
 
+.source_links, .source_links p {
+	margin: auto 20px;
+}
+
 .contact_links { margin-top:15px; text-align:center;}
 
 .theme_form { margin-top:0; font-size:14px; color:#fff;}
@@ -3123,13 +3127,13 @@ textarea#NOTE {
    #edit_interface-page #add_name_details,
    #edit_interface-page #add_other_details,
    div#add_other_details + div#additional_facts {
-       width: 31%;
+       width: 30%;
    }
 }
 
 @media (min-width: 1681px) {
    .media-list-item {
-       width: 31%; /* three per row */
+       width: 30%; /* three per row */
    }
    #edit_interface-page #add_facts,
    #edit_interface-page #additional_facts,
