@@ -1773,7 +1773,7 @@ hr.stories_divider:after {content:"§"; display:inline-block;position:relative; 
 ul#research_status li {list-style-type:none; line-height:16px; padding:2px 0; margin-bottom:5px}
 ul#research_status li ul, ul#research_status li li:last-child {margin-bottom:0}
 ul#research_status span.ui-icon {display:inline-block;vertical-align:top}
-ul#research_status ul.sublinks {display:none}
+ul#research_status ul.sublinks {display:none;	font-size: 90%;}
 
 /* Styling for simpl_cousins module (cousins_tab) */
 #cousins_tab {width:98%;}

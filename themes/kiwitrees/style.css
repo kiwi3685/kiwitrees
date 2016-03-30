@@ -4942,8 +4942,8 @@ ul#research_status span.ui-icon {
 
 ul#research_status ul.sublinks {
 	display: none;
+	font-size: 90%;
 }
-
 /* Styling for simpl_cousins module (cousins_tab) */
 #cousins_tab {
 	width: 98%;
