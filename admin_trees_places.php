@@ -111,7 +111,7 @@ $controller
 		</p>
 	</form>
 
-	<p class="error">
+	<p class="error clearfloat">
 		<?php echo WT_I18N::translate('Caution! This may take a long time. Be patient.'); ?>
 	</p>
 
