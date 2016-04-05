@@ -1864,10 +1864,38 @@ ul.clist {
 	text-align: center;
 }
 
+/* calendar page */
+#calendar-page div.cal-selectors {
+	border: 1px solid;
+	margin: 2px 0;
+}
+
+#calendar-page label.cal-label {
+	background: #c9c9c9;
+	display: inline-block;
+	font-weight: 700;
+	max-width: 100px;
+	padding: 8px 5px;
+	width: 10%;
+}
+
+#calendar-page div.cal-input {
+	display: inline-block;
+}
+
 #calendar-page .calendars {
 	margin: 10px auto;
 	text-align: center;
 	width: 100%;
+}
+
+#calendar-page select {
+	font-size: inherit;
+	padding: 2px;
+}
+
+#calendar-page input[type="text"] {
+	text-align: center;
 }
 
 .center2 {

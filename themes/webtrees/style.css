@@ -412,6 +412,40 @@ td.descriptionbox a {color:#fff;}/* this keeps the tag color the same when it is
 #pending h2 {text-align:center;margin-bottom:20px;}
 #pending h3 {text-align:center;margin-top:20px;}
 
+/* calendar page */
+#calendar-page div.cal-selectors {
+	border: 1px #81a9cb solid;
+	margin: 2px 0;
+}
+
+#calendar-page label.cal-label {
+	background: #b2c7d7;
+	display: inline-block;
+	font-weight: 700;
+	max-width: 100px;
+	padding: 8px 5px;
+	width: 10%;
+}
+
+#calendar-page div.cal-input {
+	display: inline-block;
+}
+
+#calendar-page .calendars {
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+}
+
+#calendar-page select {
+	font-size: inherit;
+	padding: 2px;
+}
+
+#calendar-page input[type="text"] {
+	text-align: center;
+}
+
 /* ============== person box details ============== */
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
 .gedcom_favorites_block, .widget_favorites_block,

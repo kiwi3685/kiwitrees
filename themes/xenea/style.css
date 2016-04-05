@@ -824,6 +824,40 @@ dt { float:left; font-weight:bold; margin-right:10px; clear:both;}
 #pending h2 {text-align:center;margin-bottom:20px;}
 #pending h3 {text-align:center;margin-top:20px;}
 
+/* calendar page */
+#calendar-page div.cal-selectors {
+	border: 1px solid;
+	margin: 2px 0;
+}
+
+#calendar-page label.cal-label {
+	background: #c3dfff;
+	display: inline-block;
+	font-weight: 700;
+	max-width: 100px;
+	padding: 8px 5px;
+	width: 10%;
+}
+
+#calendar-page div.cal-input {
+	display: inline-block;
+}
+
+#calendar-page .calendars {
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+}
+
+#calendar-page select {
+	font-size: inherit;
+	padding: 2px;
+}
+
+#calendar-page input[type="text"] {
+	text-align: center;
+}
+
 .gedcom_favorites_block .person_box .details2, .gedcom_favorites_block .person_boxF.details2, .gedcom_favorites_block .person_boxNN.details2 {min-height:40px;}
 .widget_favorites_block .person_box .details2, .widget_favorites_block .person_boxF.details2, .widget_favorites_block .person_boxNN.details2 {min-height:40px;}
 .action_header, .action_headerF, .action_headerNN {margin-bottom:3px;}
@@ -1287,7 +1321,7 @@ dd .editlink, dd .deletelink {float:right;}
 .ui-state-default .ui-icon {background-image:url(jquery-ui-custom/images/ui-icons_222222_256x240.png);}
 
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
-.ui-tabs .ui-tabs-nav li a span {display:block; padding:.5em 1em;}
+.ui-tabs .ui-tabs-nav li a span {display:block; padding:0 1em;}
 .ui-tabs .ui-tabs-nav {padding:.3em .3em 0 .3em;border-color:#888888;}
 .ui-tabs .ui-tabs-nav li {font-size:1em;bottom:0;margin:0 0.15em 0 0.1em;border-color:#888888;background:#eff8f8;}
 .ui-tabs .ui-tabs-nav li a {color:#555555;}
