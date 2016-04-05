@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-03-24 09:27+1300\n"
-"PO-Revision-Date: 2016-03-24 09:27+1300\n"
+"POT-Creation-Date: 2016-04-05 17:41+1200\n"
+"PO-Revision-Date: 2016-04-05 17:41+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -344,8 +344,9 @@ msgstr ""
 msgid "Family tree statistics"
 msgstr ""
 
-#: admin.php:258 admin.php:308 ancestry.php:98 calendar.php:413
-#: descendancy.php:69 includes/functions/functions_print_lists.php:1066
+#: admin.php:258 admin.php:308 ancestry.php:98 calendar.php:369
+#: calendar.php:548 descendancy.php:69
+#: includes/functions/functions_print_lists.php:1066
 #: includes/functions/functions_print_lists.php:1208
 #: includes/functions/functions_print_lists.php:1493
 #: includes/functions/functions_print_lists.php:1585 indilist.php:133
@@ -361,12 +362,12 @@ msgstr ""
 msgid "Individuals"
 msgstr ""
 
-#: admin.php:263 admin.php:309 ancestry.php:104 calendar.php:414
-#: descendancy.php:74 famlist.php:133 famlist.php:138
+#: admin.php:263 admin.php:309 ancestry.php:104 calendar.php:370
+#: calendar.php:549 descendancy.php:74 famlist.php:133 famlist.php:138
 #: includes/functions/functions_print_lists.php:1068
 #: includes/functions/functions_print_lists.php:1210
 #: includes/functions/functions_print_lists.php:1495
-#: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:304
+#: library/WT/Controller/Search.php:594 library/WT/MenuBar.php:305
 #: mediaviewer.php:142 modules_v3/gedcom_stats/module.php:102
 #: modules_v3/gedcom_stats/module.php:317
 #: modules_v3/googlemap/placehierarchy.php:285 modules_v3/html/module.php:189
@@ -384,7 +385,7 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1214
 #: includes/functions/functions_print_lists.php:1390
 #: includes/functions/functions_print_lists.php:1497
-#: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:314
+#: library/WT/Controller/Search.php:595 library/WT/MenuBar.php:315
 #: mediaviewer.php:145 modules_v3/album/album_print_media.php:316
 #: modules_v3/gedcom_stats/module.php:105
 #: modules_v3/gedcom_stats/module.php:325 modules_v3/html/module.php:193
@@ -399,7 +400,7 @@ msgstr ""
 msgid "Sources"
 msgstr ""
 
-#: admin.php:273 admin.php:311 library/WT/MenuBar.php:311 mediaviewer.php:148
+#: admin.php:273 admin.php:311 library/WT/MenuBar.php:312 mediaviewer.php:148
 #: modules_v3/gedcom_stats/module.php:111
 #: modules_v3/gedcom_stats/module.php:341 modules_v3/html/module.php:201
 #: modules_v3/widget_stats/module.php:146
@@ -410,7 +411,7 @@ msgstr ""
 
 #: admin.php:278 admin.php:312
 #: includes/functions/functions_print_lists.php:1070
-#: includes/functions/functions_print_lists.php:1212 library/WT/MenuBar.php:308
+#: includes/functions/functions_print_lists.php:1212 library/WT/MenuBar.php:309
 #: medialist.php:35 modules_v3/gedcom_stats/module.php:108
 #: modules_v3/gedcom_stats/module.php:333 modules_v3/html/module.php:197
 #: modules_v3/widget_stats/module.php:137
@@ -433,7 +434,7 @@ msgstr ""
 msgid "Recent changes"
 msgstr ""
 
-#: admin.php:307 calendar.php:135 library/WT/MenuBar.php:379
+#: admin.php:307 calendar.php:142 calendar.php:338
 #: modules_v3/calendar_utilities/plugins/calculators.php:81
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:70
 msgid "Day"
@@ -443,7 +444,7 @@ msgstr ""
 msgid "Week"
 msgstr ""
 
-#: admin.php:307 calendar.php:151 library/WT/MenuBar.php:381
+#: admin.php:307 calendar.php:162 calendar.php:339
 #: modules_v3/calendar_utilities/plugins/calculators.php:90
 msgid "Month"
 msgstr ""
@@ -464,7 +465,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:1448
 #: includes/functions/functions_edit.php:1482
 #: includes/functions/functions_print.php:904
-#: includes/functions/functions_print_facts.php:1256
+#: includes/functions/functions_print_facts.php:1259
 #: includes/functions/functions_print_lists.php:418
 #: includes/functions/functions_print_lists.php:893 library/WT/Stats.php:3536
 #: medialist.php:262 modules_v3/batch_update/admin_batch_update.php:363
@@ -481,7 +482,7 @@ msgstr ""
 #: includes/functions/functions_edit.php:166
 #: includes/functions/functions_edit.php:173
 #: includes/functions/functions_edit.php:1479
-#: includes/functions/functions_print_facts.php:1259
+#: includes/functions/functions_print_facts.php:1262
 #: includes/functions/functions_print_lists.php:891 library/WT/Stats.php:3537
 #: medialist.php:265 modules_v3/batch_update/admin_batch_update.php:362
 #: modules_v3/charts/module.php:218 modules_v3/fancy_treeview/module.php:1185
@@ -526,7 +527,7 @@ msgstr ""
 
 #: admin_media.php:454 admin_trees_duplicates.php:207
 #: admin_trees_unlinked.php:69 admin_trees_unlinked.php:74 ancestry.php:108
-#: compact.php:50 descendancy.php:76 familybook.php:57 fanchart.php:64
+#: compact.php:50 descendancy.php:76 familybook.php:57 fanchart_original.php:64
 #: hourglass.php:74 modules_v3/googlemap/module.php:678 pedigree.php:76
 #: relationship.php:156
 msgid "View"
@@ -709,7 +710,7 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: admin_modules.php:137 admin_modules.php:167 library/WT/MenuBar.php:426
+#: admin_modules.php:137 admin_modules.php:167 library/WT/MenuBar.php:419
 #: themes/_administration/header.php:206
 msgid "Resources"
 msgstr ""
@@ -843,9 +844,9 @@ msgstr ""
 #: admin_site_change.php:292 admin_site_clean.php:127 admin_site_logs.php:243
 #: admin_trees_config.php:614 edit_interface.php:109
 #: includes/functions/functions_print_facts.php:171
-#: includes/functions/functions_print_facts.php:717
-#: includes/functions/functions_print_facts.php:919
-#: includes/functions/functions_print_facts.php:1207
+#: includes/functions/functions_print_facts.php:720
+#: includes/functions/functions_print_facts.php:922
+#: includes/functions/functions_print_facts.php:1210
 #: includes/functions/functions_print_lists.php:1077
 #: includes/functions/functions_print_lists.php:1153
 #: includes/functions/functions_print_lists.php:1219
@@ -1246,7 +1247,7 @@ msgid "Logs"
 msgstr ""
 
 #: admin_site_logs.php:225 admin_site_logs.php:256 edit_changes.php:169
-#: includes/functions/functions_print_facts.php:597
+#: includes/functions/functions_print_facts.php:600
 #: library/WT/Gedcom/Tag.php:339 medialist.php:109
 msgid "Type"
 msgstr ""
@@ -1494,9 +1495,9 @@ msgstr ""
 #: admin_trees_config.php:53 includes/functions/functions_edit.php:224
 #: includes/functions/functions_edit.php:244
 #: includes/functions/functions_print_facts.php:227
-#: includes/functions/functions_print_facts.php:384
-#: includes/functions/functions_print_facts.php:746
-#: includes/functions/functions_print_facts.php:993
+#: includes/functions/functions_print_facts.php:387
+#: includes/functions/functions_print_facts.php:749
+#: includes/functions/functions_print_facts.php:996
 #: includes/functions/functions_resource.php:116
 msgid "Show to visitors"
 msgstr ""
@@ -1506,9 +1507,9 @@ msgstr ""
 #: includes/functions/functions_edit.php:231
 #: includes/functions/functions_edit.php:245
 #: includes/functions/functions_print_facts.php:230
-#: includes/functions/functions_print_facts.php:387
-#: includes/functions/functions_print_facts.php:749
-#: includes/functions/functions_print_facts.php:996
+#: includes/functions/functions_print_facts.php:390
+#: includes/functions/functions_print_facts.php:752
+#: includes/functions/functions_print_facts.php:999
 #: includes/functions/functions_resource.php:119
 msgid "Show to members"
 msgstr ""
@@ -1518,9 +1519,9 @@ msgstr ""
 #: includes/functions/functions_edit.php:232
 #: includes/functions/functions_edit.php:246
 #: includes/functions/functions_print_facts.php:233
-#: includes/functions/functions_print_facts.php:390
-#: includes/functions/functions_print_facts.php:752
-#: includes/functions/functions_print_facts.php:999
+#: includes/functions/functions_print_facts.php:393
+#: includes/functions/functions_print_facts.php:755
+#: includes/functions/functions_print_facts.php:1002
 #: includes/functions/functions_resource.php:122
 msgid "Show to managers"
 msgstr ""
@@ -1540,7 +1541,7 @@ msgid "Privacy"
 msgstr ""
 
 #: admin_trees_config.php:246 ancestry.php:62 descendancy.php:53
-#: fanchart.php:58 pedigree.php:61
+#: fanchart_original.php:58 pedigree.php:61
 msgid "Layout"
 msgstr ""
 
@@ -1564,7 +1565,7 @@ msgstr ""
 
 #: admin_trees_config.php:271 admin_users.php:404 admin_users.php:565
 #: edituser.php:174 help_text.php:596 library/WT/Gedcom/Tag.php:243
-#: library/WT/MenuBar.php:465
+#: library/WT/MenuBar.php:458
 msgid "Language"
 msgstr ""
 
@@ -1855,8 +1856,8 @@ msgstr ""
 #: modules_v3/gallery/module.php:539 modules_v3/googlemap/module.php:251
 #: modules_v3/no_census/module.php:189
 #: modules_v3/resource_changes/module.php:180
-#: modules_v3/resource_fact/module.php:153
-#: modules_v3/resource_fact/module.php:155
+#: modules_v3/resource_fact/module.php:154
+#: modules_v3/resource_fact/module.php:156
 #: modules_v3/resource_individual/module.php:136
 #: modules_v3/resource_individual/module.php:138
 #: modules_v3/resource_todo/module.php:136
@@ -2169,7 +2170,7 @@ msgid "A file on your computer"
 msgstr ""
 
 #: admin_trees_download.php:120 modules_v3/clippings/module.php:203
-#: modules_v3/clippings/module.php:576
+#: modules_v3/clippings/module.php:574
 msgid "Zip File(s)"
 msgstr ""
 
@@ -2181,13 +2182,13 @@ msgstr ""
 
 #: admin_trees_download.php:129 help_text.php:1071
 #: modules_v3/clippings/module.php:210 modules_v3/clippings/module.php:218
-#: modules_v3/clippings/module.php:585 modules_v3/clippings/module.php:593
+#: modules_v3/clippings/module.php:583 modules_v3/clippings/module.php:591
 msgid "Apply privacy settings?"
 msgstr ""
 
 #: admin_trees_download.php:132 admin_users.php:445 famlist.php:116
 #: famlist.php:148 indilist.php:116 indilist.php:148 library/WT/Stats.php:761
-#: modules_v3/clippings/module.php:212 modules_v3/clippings/module.php:587
+#: modules_v3/clippings/module.php:212 modules_v3/clippings/module.php:585
 #: modules_v3/families/module.php:152 modules_v3/individuals/module.php:151
 #: modules_v3/resource_individual/module.php:129
 #: modules_v3/cemetery_report/report.bak:8
@@ -2197,19 +2198,19 @@ msgid "None"
 msgstr ""
 
 #: admin_trees_download.php:134 admin_users.php:44 help_text.php:1311
-#: modules_v3/clippings/module.php:213 modules_v3/clippings/module.php:588
+#: modules_v3/clippings/module.php:213 modules_v3/clippings/module.php:586
 msgid "Manager"
 msgstr ""
 
 #: admin_trees_download.php:136 admin_users.php:41 help_text.php:1299
 #: modules_v3/clippings/module.php:214 modules_v3/clippings/module.php:220
-#: modules_v3/clippings/module.php:589 modules_v3/clippings/module.php:595
+#: modules_v3/clippings/module.php:587 modules_v3/clippings/module.php:593
 msgid "Member"
 msgstr ""
 
 #: admin_trees_download.php:138 admin_users.php:40 help_text.php:1295
 #: modules_v3/clippings/module.php:215 modules_v3/clippings/module.php:221
-#: modules_v3/clippings/module.php:590 modules_v3/clippings/module.php:596
+#: modules_v3/clippings/module.php:588 modules_v3/clippings/module.php:594
 msgid "Visitor"
 msgstr ""
 
@@ -2222,7 +2223,7 @@ msgid ""
 msgstr ""
 
 #: admin_trees_download.php:144 modules_v3/clippings/module.php:225
-#: modules_v3/clippings/module.php:601
+#: modules_v3/clippings/module.php:599
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
 msgstr ""
 
@@ -2235,7 +2236,7 @@ msgid ""
 msgstr ""
 
 #: admin_trees_download.php:154 modules_v3/clippings/module.php:228
-#: modules_v3/clippings/module.php:605
+#: modules_v3/clippings/module.php:603
 msgid "Add the GEDCOM media path to filenames"
 msgstr ""
 
@@ -2277,7 +2278,7 @@ msgstr ""
 msgid "Any"
 msgstr ""
 
-#: admin_trees_duplicates.php:186 calendar.php:584
+#: admin_trees_duplicates.php:186 calendar.php:662
 #: includes/functions/functions_edit.php:1487
 #: library/WT/Controller/Individual.php:265
 #: library/WT/Controller/Individual.php:268 library/WT/Stats.php:3343
@@ -2285,7 +2286,7 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
-#: admin_trees_duplicates.php:190 calendar.php:588
+#: admin_trees_duplicates.php:190 calendar.php:666
 #: includes/functions/functions_edit.php:1489
 #: library/WT/Controller/Individual.php:274
 #: library/WT/Controller/Individual.php:277 library/WT/Stats.php:3343
@@ -2293,7 +2294,7 @@ msgstr ""
 msgid "Female"
 msgstr ""
 
-#: admin_trees_duplicates.php:194 calendar.php:592
+#: admin_trees_duplicates.php:194 calendar.php:670
 #: includes/functions/functions_edit.php:1491
 #: library/WT/Controller/Individual.php:283
 #: library/WT/Controller/Individual.php:286
@@ -2314,7 +2315,7 @@ msgstr ""
 #: library/WT/Gedcom/Tag.php:267 library/WT/Stats.php:3344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588
-#: modules_v3/resource_fact/module.php:169 modules_v3/bdm_report/report.bak:6
+#: modules_v3/resource_fact/module.php:170 modules_v3/bdm_report/report.bak:6
 #: modules_v3/bdm_report/report.bak:47 modules_v3/birth_report/report.bak:6
 #: modules_v3/birth_report/report.bak:34
 #: modules_v3/cemetery_report/report.bak:39
@@ -2945,7 +2946,8 @@ msgid "Send message to users who have not logged in for 6 months"
 msgstr ""
 
 #: ancestry.php:49 compact.php:43 descendancy.php:43 familybook.php:43
-#: fanchart.php:51 hourglass.php:54 includes/functions/functions_edit.php:1743
+#: fanchart_original.php:51 hourglass.php:54
+#: includes/functions/functions_edit.php:1747
 #: includes/functions/functions_print_lists.php:1305 inverselink.php:98
 #: library/WT/Gedcom/Tag.php:241 modules_v3/charts/module.php:224
 #: modules_v3/googlemap/module.php:639
@@ -2971,8 +2973,9 @@ msgstr ""
 msgid "Show cousins"
 msgstr ""
 
-#: ancestry.php:113 descendancy.php:79 familybook.php:62 fanchart.php:69
-#: hourglass.php:79 modules_v3/googlemap/module.php:644 pedigree.php:49
+#: ancestry.php:113 descendancy.php:79 familybook.php:62
+#: fanchart_original.php:69 hourglass.php:79
+#: modules_v3/googlemap/module.php:644 pedigree.php:49
 #: modules_v3/ahnentafel_report/report.bak:8
 #: modules_v3/descendancy_report/report.bak:7
 #: modules_v3/individual_ext_report/report.bak:8
@@ -3002,12 +3005,12 @@ msgstr ""
 msgid "Branches of the %s family"
 msgstr ""
 
-#: branches.php:46 library/WT/MenuBar.php:305
+#: branches.php:46 library/WT/MenuBar.php:306
 msgid "Branches"
 msgstr ""
 
 #: branches.php:71 library/WT/Controller/Search.php:235
-#: library/WT/MenuBar.php:447 search.php:245 search.php:251
+#: library/WT/MenuBar.php:440 search.php:245 search.php:251
 msgid "Phonetic search"
 msgstr ""
 
@@ -3038,46 +3041,34 @@ msgstr ""
 msgid "Generation"
 msgstr ""
 
-#: calendar.php:34
+#: calendar.php:35
 msgid "Anniversary calendar"
 msgstr ""
 
-#: calendar.php:107
-msgid "On This Day ..."
-msgstr ""
-
-#: calendar.php:110
-msgid "In This Month ..."
-msgstr ""
-
-#: calendar.php:113
-msgid "In This Year ..."
-msgstr ""
-
-#: calendar.php:168 library/WT/MenuBar.php:383
+#: calendar.php:183 calendar.php:340
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1027
 #: modules_v3/calendar_utilities/plugins/calculators.php:99 search.php:188
 msgid "Year"
 msgstr ""
 
-#: calendar.php:180
+#: calendar.php:199
 msgid "Show"
 msgstr ""
 
-#: calendar.php:186 calendar.php:200 calendar.php:201 calendar.php:204
-#: calendar.php:205 calendar.php:449
+#: calendar.php:206 calendar.php:225 calendar.php:226 calendar.php:230
+#: calendar.php:231 calendar.php:403 calendar.php:587
 msgid "All People"
 msgstr ""
 
-#: calendar.php:190
+#: calendar.php:213
 msgid "Living People"
 msgstr ""
 
-#: calendar.php:194
+#: calendar.php:220
 msgid "Recent Years (&lt; 100 yrs)"
 msgstr ""
 
-#: calendar.php:208 calendar.php:210 calendar.php:446 calendar.php:447
+#: calendar.php:235 calendar.php:238 calendar.php:400 calendar.php:584
 #: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:611
 #: library/WT/Stats.php:613 library/WT/Stats.php:621 library/WT/Stats.php:622
 #: library/WT/Stats.php:1659 library/WT/Stats.php:2399
@@ -3089,7 +3080,7 @@ msgstr ""
 msgid "Males"
 msgstr ""
 
-#: calendar.php:213 calendar.php:215
+#: calendar.php:242 calendar.php:244 calendar.php:401 calendar.php:585
 #: includes/functions/functions_print_lists.php:2207 library/WT/Stats.php:610
 #: library/WT/Stats.php:614 library/WT/Stats.php:620 library/WT/Stats.php:623
 #: library/WT/Stats.php:1659 library/WT/Stats.php:2399
@@ -3102,11 +3093,12 @@ msgstr ""
 msgid "Females"
 msgstr ""
 
-#: calendar.php:224
-msgid "Births, Deaths, Marriages"
+#: calendar.php:250 modules_v3/bdm_report/module.php:36
+#: modules_v3/bdm_report/report.bak:4 modules_v3/bdm_report/report.bak:32
+msgid "Vital records"
 msgstr ""
 
-#: calendar.php:227 famlist.php:71 famlist.php:77 famlist.php:83
+#: calendar.php:253 famlist.php:71 famlist.php:77 famlist.php:83
 #: famlist.php:168 famlist.php:170 famlist.php:254 famlist.php:256
 #: indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:168
 #: indilist.php:170 indilist.php:254 indilist.php:256 library/WT/I18N.php:658
@@ -3134,39 +3126,40 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: calendar.php:266 includes/functions/functions_print.php:1120
+#: calendar.php:292 includes/functions/functions_print.php:1120
 #: includes/functions/functions_print.php:1221
 msgid "Custom Event"
 msgstr ""
 
-#: calendar.php:277 calendar.php:279
-msgid "View Day"
+#: calendar.php:343 modules_v3/todays_events/module.php:32
+#: modules_v3/widget_todays_events/module.php:35
+msgid "On this day"
 msgstr ""
 
-#: calendar.php:282 calendar.php:284
-msgid "View Month"
-msgstr ""
-
-#: calendar.php:287 calendar.php:289
-msgid "View Year"
-msgstr ""
-
-#: calendar.php:444 find.php:490 modules_v3/GEDFact_assistant/module.php:162
-#: statistics.php:80
+#: calendar.php:398 calendar.php:582 find.php:490
+#: modules_v3/GEDFact_assistant/module.php:162 statistics.php:80
 #, php-format
 msgid "Total individuals: %s"
 msgstr ""
 
-#: calendar.php:452 find.php:515 statistics.php:201
+#: calendar.php:406 calendar.php:590 find.php:515 statistics.php:201
 #, php-format
 msgid "Total families: %s"
 msgstr ""
 
-#: calendar.php:484
+#: calendar.php:411
+msgid "In this month"
+msgstr ""
+
+#: calendar.php:473
 msgid "Day not set"
 msgstr ""
 
-#: calendar.php:566 includes/functions/functions_print_lists.php:2141
+#: calendar.php:512
+msgid "In this year"
+msgstr ""
+
+#: calendar.php:644 includes/functions/functions_print_lists.php:2141
 #: modules_v3/widget_yahrzeit/module.php:118 modules_v3/yahrzeit/module.php:119
 #, php-format
 msgid "%s year anniversary"
@@ -3269,12 +3262,12 @@ msgstr ""
 #: edit_interface.php:187 edit_interface.php:1364
 #: includes/functions/functions_print_facts.php:167
 #: includes/functions/functions_print_facts.php:169
-#: includes/functions/functions_print_facts.php:704
-#: includes/functions/functions_print_facts.php:714
-#: includes/functions/functions_print_facts.php:905
-#: includes/functions/functions_print_facts.php:917
-#: includes/functions/functions_print_facts.php:1204
-#: includes/functions/functions_print_facts.php:1205
+#: includes/functions/functions_print_facts.php:707
+#: includes/functions/functions_print_facts.php:717
+#: includes/functions/functions_print_facts.php:908
+#: includes/functions/functions_print_facts.php:920
+#: includes/functions/functions_print_facts.php:1207
+#: includes/functions/functions_print_facts.php:1208
 #: library/WT/Controller/Family.php:120
 #: library/WT/Controller/Individual.php:265
 #: library/WT/Controller/Individual.php:274
@@ -3342,7 +3335,7 @@ msgstr ""
 msgid "Link this person to an existing family as a husband"
 msgstr ""
 
-#: edit_interface.php:469 includes/functions/functions_edit.php:1765
+#: edit_interface.php:469 includes/functions/functions_edit.php:1778
 #: inverselink.php:114 library/WT/Gedcom/Tag.php:213
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1386
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:924
@@ -3553,7 +3546,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:244
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:590
 #: modules_v3/clippings/module.php:279 modules_v3/clippings/module.php:301
-#: modules_v3/clippings/module.php:467
+#: modules_v3/clippings/module.php:465
 #: modules_v3/gedcom_favorites/module.php:125
 #: modules_v3/googlemap/admin_places.php:663 modules_v3/stories/module.php:373
 #: modules_v3/stories/module.php:393 modules_v3/widget_favorites/module.php:142
@@ -3676,8 +3669,8 @@ msgid "Private"
 msgstr ""
 
 #: expand_view.php:93 includes/functions/functions_print_facts.php:197
-#: includes/functions/functions_print_facts.php:616
-#: includes/functions/functions_print_facts.php:1250
+#: includes/functions/functions_print_facts.php:619
+#: includes/functions/functions_print_facts.php:1253
 #: library/WT/Controller/Ancestry.php:144
 #: library/WT/Controller/Descendancy.php:210 library/WT/Stats.php:2635
 #: library/WT/Stats.php:2661 library/WT/Stats.php:2672
@@ -3777,7 +3770,7 @@ msgstr ""
 msgid "Individuals with surname %s"
 msgstr ""
 
-#: fanchart.php:75 help_text.php:1156
+#: fanchart_original.php:75 help_text.php:1156
 msgid "Width"
 msgstr ""
 
@@ -5137,7 +5130,7 @@ msgid ""
 "individuals or families."
 msgstr ""
 
-#: help_text.php:1049 includes/functions/functions_edit.php:1844
+#: help_text.php:1049 includes/functions/functions_edit.php:1861
 #: library/WT/Controller/Family.php:231 modules_v3/notes/module.php:96
 msgid "Add a note"
 msgstr ""
@@ -5150,7 +5143,7 @@ msgid ""
 "close the window, and that's all."
 msgstr ""
 
-#: help_text.php:1055 includes/functions/functions_edit.php:1854
+#: help_text.php:1055 includes/functions/functions_edit.php:1871
 #: library/WT/Controller/Family.php:238 modules_v3/notes/module.php:105
 msgid "Add a shared note"
 msgstr ""
@@ -5162,7 +5155,7 @@ msgid ""
 "shared note and at the same time create a link to it."
 msgstr ""
 
-#: help_text.php:1061 includes/functions/functions_edit.php:1795
+#: help_text.php:1061 includes/functions/functions_edit.php:1812
 #: library/WT/Controller/Family.php:256 modules_v3/sources_tab/module.php:87
 msgid "Add a source citation"
 msgstr ""
@@ -5420,7 +5413,7 @@ msgid ""
 "you leave this field empty, the most common surname will be used."
 msgstr ""
 
-#: help_text.php:1181 library/WT/MenuBar.php:504
+#: help_text.php:1181 library/WT/MenuBar.php:497
 #: modules_v3/gedcom_favorites/module.php:35
 #: modules_v3/widget_favorites/module.php:35
 msgid "Favorites"
@@ -5437,7 +5430,7 @@ msgid ""
 msgstr ""
 
 #: help_text.php:1186 modules_v3/clippings/module.php:206
-#: modules_v3/clippings/module.php:579
+#: modules_v3/clippings/module.php:577
 msgid "Include media (automatically zips files)"
 msgstr ""
 
@@ -8889,9 +8882,9 @@ msgstr ""
 
 #: includes/functions/functions_edit.php:247
 #: includes/functions/functions_print_facts.php:236
-#: includes/functions/functions_print_facts.php:393
-#: includes/functions/functions_print_facts.php:755
-#: includes/functions/functions_print_facts.php:1002
+#: includes/functions/functions_print_facts.php:396
+#: includes/functions/functions_print_facts.php:758
+#: includes/functions/functions_print_facts.php:1005
 #: includes/functions/functions_resource.php:125
 msgid "Only managers can edit"
 msgstr ""
@@ -8923,8 +8916,8 @@ msgid "This record was last changed by <i>%s</i> at %s"
 msgstr ""
 
 #: includes/functions/functions_edit.php:396
-#: includes/functions/functions_edit.php:2318
-#: includes/functions/functions_edit.php:2327
+#: includes/functions/functions_edit.php:2335
+#: includes/functions/functions_edit.php:2344
 msgid ""
 "Please reload the previous page to make sure you are working with the most "
 "recent record."
@@ -8947,7 +8940,7 @@ msgid "Select a date"
 msgstr ""
 
 #: includes/functions/functions_edit.php:1199
-#: includes/functions/functions_edit.php:1864
+#: includes/functions/functions_edit.php:1881
 #: library/WT/Controller/Family.php:246 modules_v3/album/module.php:99
 #: source.php:135
 msgid "Add a media object"
@@ -8961,17 +8954,21 @@ msgstr ""
 msgid "No Temple - Living Ordinance"
 msgstr ""
 
-#: includes/functions/functions_edit.php:1823
-#: includes/functions/functions_edit.php:1827
+#: includes/functions/functions_edit.php:1731
+msgid "Link this source to these records"
+msgstr ""
+
+#: includes/functions/functions_edit.php:1840
+#: includes/functions/functions_edit.php:1844
 msgid "Add an associate"
 msgstr ""
 
-#: includes/functions/functions_edit.php:1873
+#: includes/functions/functions_edit.php:1890
 msgid "Add a restriction"
 msgstr ""
 
-#: includes/functions/functions_edit.php:2317
-#: includes/functions/functions_edit.php:2326
+#: includes/functions/functions_edit.php:2334
+#: includes/functions/functions_edit.php:2343
 msgid ""
 "An error occurred while creating the Edit form.  Another user may have "
 "changed this record since you previously viewed it."
@@ -9277,16 +9274,16 @@ msgid "Sat"
 msgstr ""
 
 #: includes/functions/functions_print_facts.php:170
-#: includes/functions/functions_print_facts.php:715
-#: includes/functions/functions_print_facts.php:918
-#: includes/functions/functions_print_facts.php:1206
+#: includes/functions/functions_print_facts.php:718
+#: includes/functions/functions_print_facts.php:921
+#: includes/functions/functions_print_facts.php:1209
 msgid "Copy"
 msgstr ""
 
 #: includes/functions/functions_print_facts.php:171
-#: includes/functions/functions_print_facts.php:717
-#: includes/functions/functions_print_facts.php:919
-#: includes/functions/functions_print_facts.php:1207
+#: includes/functions/functions_print_facts.php:720
+#: includes/functions/functions_print_facts.php:922
+#: includes/functions/functions_print_facts.php:1210
 #: library/WT/Controller/Individual.php:189
 msgid "Are you sure you want to delete this fact?"
 msgstr ""
@@ -9297,8 +9294,8 @@ msgstr ""
 msgid "#%d"
 msgstr ""
 
-#: includes/functions/functions_print_facts.php:482
-#: includes/functions/functions_print_facts.php:504 inverselink.php:130
+#: includes/functions/functions_print_facts.php:485
+#: includes/functions/functions_print_facts.php:507 inverselink.php:130
 #: library/WT/Gedcom/Tag.php:322 modules_v3/fact_sources/module.php:36
 #: modules_v3/gallery/module.php:268 modules_v3/bdm_report/report.bak:134
 #: modules_v3/bdm_report/report.bak:160 modules_v3/bdm_report/report.bak:194
@@ -9478,7 +9475,7 @@ msgstr ""
 msgid "Age in year of marriage"
 msgstr ""
 
-#: includes/functions/functions_print_lists.php:1072 library/WT/MenuBar.php:317
+#: includes/functions/functions_print_lists.php:1072 library/WT/MenuBar.php:318
 #: notelist.php:32 notelist.php:36 search.php:124
 msgid "Shared notes"
 msgstr ""
@@ -9646,7 +9643,7 @@ msgstr ""
 msgid "Repository"
 msgstr ""
 
-#: library/WT/Controller/AdvancedSearch.php:41 library/WT/MenuBar.php:449
+#: library/WT/Controller/AdvancedSearch.php:41 library/WT/MenuBar.php:442
 #: search.php:245 search.php:252 search.php:255
 msgid "Advanced search"
 msgstr ""
@@ -9690,7 +9687,7 @@ msgstr ""
 #: library/WT/Controller/Family.php:167
 #: library/WT/Controller/Individual.php:369 library/WT/Controller/Media.php:138
 #: library/WT/Controller/Note.php:114 library/WT/Controller/Repository.php:114
-#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:528
+#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:521
 msgid "Add to favorites"
 msgstr ""
 
@@ -9873,12 +9870,12 @@ msgstr ""
 msgid "Edit repository"
 msgstr ""
 
-#: library/WT/Controller/Search.php:231 library/WT/MenuBar.php:445
+#: library/WT/Controller/Search.php:231 library/WT/MenuBar.php:438
 #: search.php:250 search.php:254
 msgid "General search"
 msgstr ""
 
-#: library/WT/Controller/Search.php:239 library/WT/MenuBar.php:452
+#: library/WT/Controller/Search.php:239 library/WT/MenuBar.php:445
 #: modules_v3/batch_update/plugins/search_replace.php:38 search.php:247
 #: search.php:257
 msgid "Search and replace"
@@ -12908,7 +12905,7 @@ msgstr ""
 msgid "Place of Event"
 msgstr ""
 
-#: library/WT/Gedcom/Tag.php:212 modules_v3/resource_fact/module.php:135
+#: library/WT/Gedcom/Tag.php:212 modules_v3/resource_fact/module.php:136
 msgid "Fact"
 msgstr ""
 
@@ -14646,25 +14643,25 @@ msgstr ""
 msgid "Show family on timeline chart"
 msgstr ""
 
-#: library/WT/MenuBar.php:306 modules_v3/googlemap/module.php:234
-#: placelist.php:43 placelist.php:45
-msgid "Place hierarchy"
-msgstr ""
-
-#: library/WT/MenuBar.php:378 modules_v3/widget_yahrzeit/module.php:260
+#: library/WT/MenuBar.php:304 modules_v3/widget_yahrzeit/module.php:260
 #: modules_v3/yahrzeit/module.php:266
 msgid "Calendar"
 msgstr ""
 
-#: library/WT/MenuBar.php:386
-msgid "Utilities"
+#: library/WT/MenuBar.php:307 modules_v3/googlemap/module.php:234
+#: placelist.php:43 placelist.php:45
+msgid "Place hierarchy"
 msgstr ""
 
-#: library/WT/MenuBar.php:404 themes/_administration/header.php:205
+#: library/WT/MenuBar.php:321 modules_v3/calendar_utilities/module.php:35
+msgid "Calendar utilities"
+msgstr ""
+
+#: library/WT/MenuBar.php:397 themes/_administration/header.php:205
 msgid "Reports"
 msgstr ""
 
-#: library/WT/MenuBar.php:444 lifespan.php:302 medialist.php:138
+#: library/WT/MenuBar.php:437 lifespan.php:302 medialist.php:138
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:58
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:96
 #: modules_v3/descendancy/module.php:98 modules_v3/descendancy/module.php:131
@@ -16990,11 +16987,6 @@ msgstr ""
 msgid "Tick this box to match both upper and lower case letters."
 msgstr ""
 
-#: modules_v3/bdm_report/module.php:36 modules_v3/bdm_report/report.bak:4
-#: modules_v3/bdm_report/report.bak:32
-msgid "Vital records"
-msgstr ""
-
 #: modules_v3/bdm_report/module.php:42 modules_v3/bdm_report/report.bak:5
 msgid "A report of vital records for a given date or place."
 msgstr ""
@@ -17006,10 +16998,6 @@ msgstr ""
 
 #: modules_v3/birth_report/module.php:42 modules_v3/birth_report/report.bak:5
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
-
-#: modules_v3/calendar_utilities/module.php:35
-msgid "Calendar utilities"
 msgstr ""
 
 #: modules_v3/calendar_utilities/module.php:40
@@ -17974,7 +17962,7 @@ msgid ""
 msgstr ""
 
 #: modules_v3/clippings/help_text.php:39 modules_v3/clippings/module.php:270
-#: modules_v3/clippings/module.php:477
+#: modules_v3/clippings/module.php:475
 msgid "Empty Cart"
 msgstr ""
 
@@ -17999,77 +17987,77 @@ msgstr ""
 msgid "Family Tree Clippings Cart"
 msgstr ""
 
-#: modules_v3/clippings/module.php:98 modules_v3/clippings/module.php:507
+#: modules_v3/clippings/module.php:98 modules_v3/clippings/module.php:505
 msgid "Which other links from this family would you like to add?"
 msgstr ""
 
-#: modules_v3/clippings/module.php:102 modules_v3/clippings/module.php:511
+#: modules_v3/clippings/module.php:102 modules_v3/clippings/module.php:509
 msgid "Add just this family record."
 msgstr ""
 
-#: modules_v3/clippings/module.php:103 modules_v3/clippings/module.php:512
+#: modules_v3/clippings/module.php:103 modules_v3/clippings/module.php:510
 msgid "Add parents' records together with this family record."
 msgstr ""
 
-#: modules_v3/clippings/module.php:104 modules_v3/clippings/module.php:513
+#: modules_v3/clippings/module.php:104 modules_v3/clippings/module.php:511
 msgid "Add parents' and children's records together with this family record."
 msgstr ""
 
-#: modules_v3/clippings/module.php:105 modules_v3/clippings/module.php:514
+#: modules_v3/clippings/module.php:105 modules_v3/clippings/module.php:512
 msgid ""
 "Add parents' and all descendants' records together with this family record."
 msgstr ""
 
 #: modules_v3/clippings/module.php:106 modules_v3/clippings/module.php:129
-#: modules_v3/clippings/module.php:143 modules_v3/clippings/module.php:515
-#: modules_v3/clippings/module.php:538 modules_v3/clippings/module.php:551
+#: modules_v3/clippings/module.php:143 modules_v3/clippings/module.php:513
+#: modules_v3/clippings/module.php:536 modules_v3/clippings/module.php:549
 #: modules_v3/googlemap/admin_places.php:375
 msgid "Continue Adding"
 msgstr ""
 
-#: modules_v3/clippings/module.php:116 modules_v3/clippings/module.php:523
+#: modules_v3/clippings/module.php:116 modules_v3/clippings/module.php:521
 msgid "Which links from this person would you also like to add?"
 msgstr ""
 
-#: modules_v3/clippings/module.php:120 modules_v3/clippings/module.php:528
+#: modules_v3/clippings/module.php:120 modules_v3/clippings/module.php:526
 msgid "Add just this person."
 msgstr ""
 
-#: modules_v3/clippings/module.php:121 modules_v3/clippings/module.php:529
+#: modules_v3/clippings/module.php:121 modules_v3/clippings/module.php:527
 msgid "Add this person, his parents, and siblings."
 msgstr ""
 
-#: modules_v3/clippings/module.php:122 modules_v3/clippings/module.php:530
+#: modules_v3/clippings/module.php:122 modules_v3/clippings/module.php:528
 msgid "Add this person and his direct line ancestors."
 msgstr ""
 
 #: modules_v3/clippings/module.php:123 modules_v3/clippings/module.php:125
-#: modules_v3/clippings/module.php:128 modules_v3/clippings/module.php:531
-#: modules_v3/clippings/module.php:533 modules_v3/clippings/module.php:536
+#: modules_v3/clippings/module.php:128 modules_v3/clippings/module.php:529
+#: modules_v3/clippings/module.php:531 modules_v3/clippings/module.php:534
 msgid "Number of generations:"
 msgstr ""
 
-#: modules_v3/clippings/module.php:124 modules_v3/clippings/module.php:532
+#: modules_v3/clippings/module.php:124 modules_v3/clippings/module.php:530
 msgid "Add this person, his direct line ancestors, and their families."
 msgstr ""
 
-#: modules_v3/clippings/module.php:126 modules_v3/clippings/module.php:534
+#: modules_v3/clippings/module.php:126 modules_v3/clippings/module.php:532
 msgid "Add this person, his spouse, and children."
 msgstr ""
 
-#: modules_v3/clippings/module.php:127 modules_v3/clippings/module.php:535
+#: modules_v3/clippings/module.php:127 modules_v3/clippings/module.php:533
 msgid "Add this person, his spouse, and all descendants."
 msgstr ""
 
-#: modules_v3/clippings/module.php:137 modules_v3/clippings/module.php:545
+#: modules_v3/clippings/module.php:137 modules_v3/clippings/module.php:543
 msgid "Which records linked to this source should be added?"
 msgstr ""
 
-#: modules_v3/clippings/module.php:141 modules_v3/clippings/module.php:549
+#: modules_v3/clippings/module.php:141 modules_v3/clippings/module.php:547
 msgid "Add just this source."
 msgstr ""
 
-#: modules_v3/clippings/module.php:142 modules_v3/clippings/module.php:550
+#: modules_v3/clippings/module.php:142 modules_v3/clippings/module.php:548
 msgid "Add this source and families/people linked to it."
 msgstr ""
 
@@ -18095,16 +18083,16 @@ msgstr ""
 msgid "Enter an individual, family, or source ID"
 msgstr ""
 
-#: modules_v3/clippings/module.php:188 modules_v3/clippings/module.php:441
+#: modules_v3/clippings/module.php:188 modules_v3/clippings/module.php:439
 msgid "Your Clippings Cart is empty."
 msgstr ""
 
-#: modules_v3/clippings/module.php:202 modules_v3/clippings/module.php:575
+#: modules_v3/clippings/module.php:202 modules_v3/clippings/module.php:573
 msgid "File Information"
 msgstr ""
 
-#: modules_v3/clippings/module.php:235 modules_v3/clippings/module.php:481
-#: modules_v3/clippings/module.php:617
+#: modules_v3/clippings/module.php:235 modules_v3/clippings/module.php:479
+#: modules_v3/clippings/module.php:615
 msgid "Download Now"
 msgstr ""
 
@@ -18112,16 +18100,16 @@ msgstr ""
 msgid "Name / Description"
 msgstr ""
 
-#: modules_v3/clippings/module.php:332
+#: modules_v3/clippings/module.php:330
 msgid "Add to clippings cart"
 msgstr ""
 
-#: modules_v3/clippings/module.php:486
+#: modules_v3/clippings/module.php:484
 #, php-format
 msgid "Add %s to cart"
 msgstr ""
 
-#: modules_v3/clippings/module.php:616 modules_v3/fancy_treeview/module.php:506
+#: modules_v3/clippings/module.php:614 modules_v3/fancy_treeview/module.php:506
 msgid "Cancel"
 msgstr ""
 
@@ -20203,7 +20191,7 @@ msgid "Center map here"
 msgstr ""
 
 #: modules_v3/googlemap/module.php:1428 modules_v3/googlemap/module.php:1444
-#: modules_v3/resource_fact/module.php:137
+#: modules_v3/resource_fact/module.php:138
 #: modules_v3/widget_messages/module.php:69
 msgid "&lt;select&gt;"
 msgstr ""
@@ -20376,14 +20364,6 @@ msgstr ""
 #: modules_v3/marriage_report/module.php:42
 #: modules_v3/marriage_report/report.bak:5
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
-
-#: modules_v3/menu_calendar/module.php:35
-msgid "Calendar menu"
-msgstr ""
-
-#: modules_v3/menu_calendar/module.php:40
-msgid "The Calendar menu item"
 msgstr ""
 
 #: modules_v3/menu_charts/module.php:35
@@ -21220,11 +21200,6 @@ msgstr ""
 
 #: modules_v3/stories/module.php:531
 msgid "Are you sure you want to link to this story?"
-msgstr ""
-
-#: modules_v3/todays_events/module.php:32
-#: modules_v3/widget_todays_events/module.php:35
-msgid "On this day"
 msgstr ""
 
 #: modules_v3/todays_events/module.php:37
