@@ -92,8 +92,10 @@ $controller
 //-- results
 if ($surn) {
 	echo '
-		<div id="treecontrol"><a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a></div>
-		<div class="loading-image">&nbsp;</div>
+		<div id="treecontrol">
+			<a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a>
+		</div>
+		<div class="loading-image"></div>
 	';
 
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
