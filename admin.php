@@ -1523,6 +1523,8 @@ function old_paths() {
 		WT_ROOT.'modules_v3/change_report',
 		// Removed in kiwitrees 3.2.1
 		WT_ROOT.'modules_v3/occupation_report',
+		WT_ROOT.'modules_v3/menu_calendar',
+
 
 	);
 }
