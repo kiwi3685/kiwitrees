@@ -588,7 +588,7 @@ class WT_Date_Calendar {
 			$date_fmt=$DATE_FORMAT;
 		}
 		$URL='calendar.php?cal='.rawurlencode($this->CALENDAR_ESCAPE());
-		$action="year";
+		$view="year";
 		if (strpos($date_fmt, "Y")!==false
 		||  strpos($date_fmt, "y")!==false) {
 			$URL.='&amp;year='.$this->FormatGedcomYear();
@@ -599,15 +599,15 @@ class WT_Date_Calendar {
 		||  strpos($date_fmt, "n")!==false) {
 			$URL.='&amp;month='.$this->FormatGedcomMonth();
 			if ($this->m>0)
-				$action="calendar";
+				$view="month";
 		}
 		if (strpos($date_fmt, "d")!==false
 		||  strpos($date_fmt, "D")!==false
 		||  strpos($date_fmt, "j")!==false) {
 			$URL.='&amp;day='.$this->FormatGedcomDay();
 			if ($this->d>0)
-				$action="today";
+				$view="today";
 		}
-		return $URL.'&amp;action='.$action;
+		return $URL.'&amp;view='.$view;
 	}
 }
