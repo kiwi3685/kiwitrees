@@ -301,6 +301,7 @@ class WT_MenuBar {
 		$menulist = array('indilist.php' => WT_I18N::translate('Individuals'));
 		if (!$SEARCH_SPIDER) {
 			// Build a list of submenu items and then sort it in localized name order
+			$menulist['calendar.php'  ] = WT_I18N::translate('Calendar');
 			$menulist['famlist.php'  ] = WT_I18N::translate('Families');
 			$menulist['branches.php' ] = WT_I18N::translate('Branches');
 			$menulist['placelist.php'] = WT_I18N::translate('Place hierarchy');
@@ -315,6 +316,9 @@ class WT_MenuBar {
 			}
 			if ($row->note) {
 				$menulist['notelist.php'] = WT_I18N::translate('Shared notes');
+			}
+			if (array_key_exists('calendar_utilities', WT_Module::getActiveModules())) {
+				$menulist['module.php?mod=calendar_utilities&amp;mod_action=show'] = WT_I18N::translate('Calendar utilities');
 			}
 		}
 		asort($menulist);
@@ -362,30 +366,19 @@ class WT_MenuBar {
 				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-obje');
 				$menu->addSubmenu($submenu);
 				break;
-			}
-		}
 
-		return $menu;
-	}
-
-	public static function getCalendarMenu() {
-		global $SEARCH_SPIDER;
-
-		if ($SEARCH_SPIDER) {
-			return null;
-		}
-		//-- main calendar menu item
-		$menu = new WT_Menu(WT_I18N::translate('Calendar'), '#', 'menu-calendar');
-			$submenu = new WT_Menu(WT_I18N::translate('Day'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar-day');
-			$menu->addSubmenu($submenu);
-			$submenu = new WT_Menu(WT_I18N::translate('Month'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=calendar', 'menu-calendar-month');
-			$menu->addSubmenu($submenu);
-			$submenu = new WT_Menu(WT_I18N::translate('Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year', 'menu-calendar-year');
-			$menu->addSubmenu($submenu);
-			if (array_key_exists('calendar_utilities', WT_Module::getActiveModules())) {
-				$submenu = new WT_Menu(WT_I18N::translate('Utilities'), 'module.php?mod=calendar_utilities&amp;mod_action=show', 'menu-calendar_utilities');
+			case 'calendar.php':
+				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-calendar');
 				$menu->addSubmenu($submenu);
+				break;
+
+			case 'module.php?mod=calendar_utilities&amp;mod_action=show':
+				$submenu = new WT_Menu($name, $page, 'menu-calendar_utilities');
+				$menu->addSubmenu($submenu);
+				break;
 			}
+		}
+
 		return $menu;
 	}
 
