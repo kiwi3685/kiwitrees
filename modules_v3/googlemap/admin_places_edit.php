@@ -35,7 +35,7 @@ $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
-$controller=new WT_Controller_Simple();
+$controller=new WT_Controller_Page();
 $controller
 		->requireAdminLogin()
 		->setPageTitle(WT_I18N::translate('Geographic data'))
@@ -66,8 +66,8 @@ function getHighestIndex() {
 }
 
 $where_am_i=place_id_to_hierarchy($placeid);
-$level=count($where_am_i);
-$link = 'module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent='.$placeid;
+$level	= count($where_am_i);
+$link 	= 'module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent='.$placeid;
 
 if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 	$statement=
@@ -131,10 +131,11 @@ if ($action=="update") {
 	$place_name = $row->pl_place;
 	$place_icon = $row->pl_icon;
 	$selected_country = explode("/", $place_icon);
-	if (isset($selected_country[1]) && $selected_country[1]!="flags")
+	if (isset($selected_country[1]) && $selected_country[1]!="flags"){
 		$selected_country = $selected_country[1];
-	else
+	} else {
 		$selected_country = "Countries";
+	}
 	$parent_id = $row->pl_parent_id;
 	$level = $row->pl_level;
 	$zoomfactor = $row->pl_zoom;
@@ -167,7 +168,7 @@ if ($action=="update") {
 			}
 		}
 		$parent_id = $row->pl_parent_id;
-	} 
+	}
 	while ($row->pl_parent_id!=0 && $row->pl_lati===null && $row->pl_long===null);
 
 	$success = false;
@@ -233,8 +234,8 @@ include_once 'wt_v3_places_edit.js.php';
 $api='v3';
 
 ?>
-
-<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=admin_places_edit">
+<div id="editplaces-page">
+	<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=admin_places_edit">
 	<input type="hidden" name="action" value="<?php echo $action; ?>record">
 	<input type="hidden" name="placeid" value="<?php echo $placeid; ?>">
 	<input type="hidden" name="level" value="<?php echo $level; ?>">
@@ -245,12 +246,9 @@ $api='v3';
 	<input type="hidden" name="parent_long" value="<?php echo $parent_long; ?>">
 	<input type="hidden" name="parent_lati" value="<?php echo $parent_lati; ?>">
 
+	<div id="map_pane" style="width: 80%; height: 500px;"></div>
+
 	<table class="facts_table">
-	<tr>
-		<td class="optionbox" colspan="3">
-		<center><div id="map_pane" style="width: 100%; height: 300px"></div></center>
-		</td>
-	</tr>
 	<tr>
 		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input">
@@ -262,7 +260,7 @@ $api='v3';
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_I18N::translate('Precision'), help_link('PLE_PRECISION','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_I18N::translate('Precision'); ?></td>
 		<?php
 			$exp = explode(".", $place_lati);
 			if (isset($exp[1])) {
@@ -295,6 +293,11 @@ $api='v3';
 			<label for="new_prec_4"><?php echo WT_I18N::translate('House'); ?></label>
 			<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();"<?php if ($precision>$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_5; ?>">
 			<label for="new_prec_5"><?php echo WT_I18N::translate('Max'); ?></label>
+			<div class="help_text">
+				<span class="help_content">
+					<?php echo WT_I18N::translate('Based on this setting the number of digits that will be used in the latitude and longitude is determined.'); ?>
+				</span>
+			</div>
 		</td>
 	</tr>
 	<tr>
@@ -318,28 +321,46 @@ $api='v3';
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom factor'), help_link('PLE_ZOOM','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom factor'); ?></td>
 		<td class="optionbox" colspan="2">
-			<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();"></td>
+			<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();">
+			<div class="help_text">
+				<span class="help_content">
+					<?php echo WT_I18N::translate('This value will be used as the minimal value when displaying this geographic location on a map.'); ?>
+				</span>
+			</div>
+		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_I18N::translate('Flag'), help_link('PLE_ICON','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_I18N::translate('Flag'); ?></td>
 		<td class="optionbox" colspan="2">
 			<div id="flagsDiv">
-<?php
-		if (($place_icon == NULL) || ($place_icon == "")) { ?>
-				<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>
-<?php   }
-		else { ?>
-				<img alt="<?php echo /* I18N: The emblem of a country or region */ WT_I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
-				<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
-				<a href="#" onclick="remove_icon();return false;"><?php echo WT_I18N::translate('Remove flag'); ?></a>
-<?php   } ?>
-			</div></td>
+				<?php if (($place_icon == NULL) || ($place_icon == "")) { ?>
+					<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>
+				<?php } else { ?>
+					<img alt="<?php echo /* I18N: The emblem of a country or region */ WT_I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
+					<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
+					<a href="#" onclick="remove_icon();return false;"><?php echo WT_I18N::translate('Remove flag'); ?></a>
+				<?php } ?>
+			</div>
+			<div class="help_text">
+				<span class="help_content">
+					<?php echo WT_I18N::translate('When this geographic location is shown, this flag will be displayed.'); ?>
+				</span>
+			</div>
+		</td>
 	</tr>
 	</table>
 	<p id="save-cancel">
-		<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-		<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
+		<button class="btn btn-primary" type="submit">
+			<i class="fa fa-save"></i>
+			<?php echo WT_I18N::translate('save'); ?>
+		</button>
+		<button class="btn btn-primary" type="button" onclick="window.close();">
+			<i class="fa fa-times"></i>
+			<?php echo WT_I18N::translate('close'); ?>
+		</button>
 	</p>
+
 </form>
+</div>

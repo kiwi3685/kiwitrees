@@ -88,14 +88,14 @@ function get_place_list_loc($parent_id, $status='active') {
 					"SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
 					" FROM `##placelocation`".
 					" LEFT JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place".
-					" WHERE `##places`.p_place IS NULL AND pl_parent_id=?".				
+					" WHERE `##places`.p_place IS NULL AND pl_parent_id=?".
 					" ORDER BY pl_place COLLATE ".WT_I18N::$collation
 				)
 				->execute(array($parent_id))
 				->fetchAll();
 			break;
 		case 'active':
-		default: 
+		default:
 			$rows=
 				WT_DB::prepare(
 					"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
@@ -161,9 +161,9 @@ function findFiles($path) {
 	}
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller->requireAdminLogin();
-	
+
 if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 	Zend_Session::writeClose();
 	$tmp = place_id_to_hierarchy($parent);
@@ -546,12 +546,12 @@ function updateList(status) {
 }
 
 function edit_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
+	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank');
 	return false;
 }
 
 function add_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
+	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank');
 	return false;
 }
 
@@ -588,7 +588,7 @@ echo '<div id="gm_tabs">
 		</div>
 		<div id="gm_active">
 			<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&status=', $status, '" style="display:inline;">
-				<label for="status">', WT_I18N::translate('List places'), '</label>',  help_link('PLE_ACTIVE','googlemap'), '			
+				<label for="status">', WT_I18N::translate('List places'), '</label>',  help_link('PLE_ACTIVE','googlemap'), '
 				<select id="status" name="status" onchange="updateList(this.value)">
 					<option value="all"';
 						if ($status=='all') echo ' selected="selected"';
@@ -619,7 +619,7 @@ echo '<div id="gm_tabs">
 							<th><div class="col5">', WT_I18N::translate('Icon'), '</div></th>
 							<th><div class="col6">', WT_I18N::translate('Edit'), '</div></th>
 							<th><div class="col7">
-								<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'places\');} else {return false;}">			
+								<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'places\');} else {return false;}">
 								<input type="checkbox" onClick="toggle_select(this)" style="vertical-align:middle;">
 							</div></th>
 						</tr>
@@ -652,7 +652,7 @@ echo '<div id="gm_tabs">
 								}
 							echo '</div></td>
 							<td><div class="col6">
-								<a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;" class="icon-edit" title="', WT_I18N::translate('Edit'), '"></a>
+                                <a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;" class="icon-edit" title="', WT_I18N::translate('Edit'), '"></a>
 							</div></td>';
 							$noRows=
 								WT_DB::prepare("SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id=?")
@@ -677,7 +677,7 @@ echo '<div id="gm_tabs">
 							<th><div class="col5">', WT_I18N::translate('Icon'), '</div></th>
 							<th><div class="col6">', WT_I18N::translate('Edit'), '</div></th>
 							<th><div class="col7">
-								<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'places\');} else {return false;}">			
+								<input type="button" value="'. WT_I18N::translate('Delete'). '" onclick="if (confirm(\''. htmlspecialchars(WT_I18N::translate('Permanently delete these records?')). '\')) {return checkbox_delete(\'places\');} else {return false;}">
 								<input type="checkbox" onClick="toggle_select(this)" style="vertical-align:middle;">
 							</div></th>
 						</tr>
@@ -689,7 +689,7 @@ echo '<div id="gm_tabs">
 	<div id="gm_options">
 		<table id="gm_manage">
 			<tr>
-				<td>', 
+				<td>',
 					WT_I18N::translate('Add  a new geographic location'),
 				'</td>
 				<td>

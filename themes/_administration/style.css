@@ -793,8 +793,34 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 .gm_check_details td {border:1px solid #d3d3d3; border-top:0; font-size:95%;}
 
 /* Admin_places_edit */
-#editplaces #map_pane {border: 2px inset;}
-#editplaces table {border-collapse:initial;}
+#editplaces-page #map_pane {
+	border: 2px inset;
+}
+
+#editplaces-page table {
+	border-collapse:initial;
+}
+
+#editplaces-page td {
+	vertical-align: top;
+}
+
+#editplaces-page label a,
+#editplaces-page #flagsDiv a {
+	color: #75abff;
+	font-size: initial;
+	font-weight: bold;
+}
+
+#editplaces-page #save-cancel {
+	background: #ddd;
+	border: 0;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	position: initial;
+	width: 100%;
+}
 
 /* SITE MAP MODULE*/
 table#site_map {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px;}
@@ -860,7 +886,7 @@ table#story_table {width:100%}
 .icon-ldarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-backward */
 .icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-forward */
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
-.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-times */
+.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000;} /* fa-times */
 .fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */
 .icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */
 .icon-yes				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-check */
