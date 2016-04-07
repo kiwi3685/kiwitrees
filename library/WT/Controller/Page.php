@@ -28,10 +28,10 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Controller_Page extends WT_Controller_Base {
 	// Page header information
-	const     DOCTYPE       ='<!DOCTYPE html>';  // HTML5
-	private   $canonical_url='';
-	private   $meta_robots  ='noindex,nofollow'; // Most pages are not intended for robots
-	private   $page_title   =WT_WEBTREES;        // <head><title> $page_title </title></head>
+	const     DOCTYPE       = '<!DOCTYPE html>';  // HTML5
+	private   $canonical_url= '';
+	private   $meta_robots  = 'noindex,nofollow'; // Most pages are not intended for robots
+	private   $page_title   = WT_WEBTREES;        // <head><title> $page_title </title></head>
 
 	// Startup activity
 	public function __construct() {
@@ -53,7 +53,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// What should this page show in the browser's title bar?
 	public function setPageTitle($page_title) {
-		$this->page_title=$page_title;
+		$this->page_title = $page_title;
 		return $this;
 	}
 	// Some pages will want to display this as <h2> $page_title </h2>
@@ -63,13 +63,13 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// What is the preferred URL for this page?
 	public function setCanonicalUrl($canonical_url) {
-		$this->canonical_url=$canonical_url;
+		$this->canonical_url = $canonical_url;
 		return $this;
 	}
 
 	// Should robots index this page?
 	public function setMetaRobots($meta_robots) {
-		$this->meta_robots=$meta_robots;
+		$this->meta_robots = $meta_robots;
 		return $this;
 	}
 
@@ -87,8 +87,8 @@ class WT_Controller_Page extends WT_Controller_Base {
 	public function requireManagerLogin($ged_id=WT_GED_ID) {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (
-			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
-			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
+			$ged_id == WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
+			$ged_id != WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
 		) {
 			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
@@ -120,7 +120,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	public function requireMemberLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_ID) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -133,19 +133,19 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
-		$title=html_entity_decode(strip_tags($this->page_title), ENT_QUOTES, 'UTF-8');
+		$title = html_entity_decode(strip_tags($this->page_title), ENT_QUOTES, 'UTF-8');
 
 		// Initialise variables for the theme's header.php
-		$LINK_CANONICAL  =$this->canonical_url;
-		$META_ROBOTS     =$this->meta_robots;
-		$META_DESCRIPTION=WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION') : '';
+		$LINK_CANONICAL		= $this->canonical_url;
+		$META_ROBOTS		= $this->meta_robots;
+		$META_DESCRIPTION	= WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION') : '';
 		if (!$META_DESCRIPTION) {
 			$META_DESCRIPTION = strip_tags(WT_TREE_TITLE);
 		}
-		$META_GENERATOR  =WT_WEBTREES.'-'.WT_VERSION_TEXT.' - '.WT_WEBTREES_URL;
-		$META_TITLE      =WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_TITLE') : '';
+		$META_GENERATOR		= WT_WEBTREES . '-' . WT_VERSION_TEXT . ' - ' . WT_WEBTREES_URL;
+		$META_TITLE			= WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_TITLE') : '';
 		if ($META_TITLE) {
-			$title.=' - '.$META_TITLE;
+			$title .= ' - ' . $META_TITLE;
 		}
 
 		// This javascript needs to be loaded in the header, *before* the CSS.
@@ -166,7 +166,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 			var accesstime     = "' . WT_Filter::escapeJs(WT_TIMESTAMP)              . '";
 			var WT_CSRF_TOKEN  = "' . WT_Filter::escapeJs(WT_Filter::getCsrfToken()) . '";
 		', self::JS_PRIORITY_HIGH);
-	
+
 		// Temporary fix for access to main menu hover elements on android/blackberry touch devices
 		$this->addInlineJavascript('
 			if(navigator.userAgent.match(/Android|PlayBook/i)) {
@@ -174,9 +174,9 @@ class WT_Controller_Page extends WT_Controller_Base {
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
 		');
-		
+
 		header('Content-Type: text/html; charset=UTF-8');
-		require WT_ROOT.$headerfile;
+		require WT_ROOT . $headerfile;
 
 		// Flush the output, so the browser can render the header and load javascript
 		// while we are preparing data for the page
@@ -189,7 +189,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		Zend_Session::writeClose();
 
 		// We've displayed the header - display the footer automatically
-		$this->page_header=true;
+		$this->page_header = true;
 		return $this;
 	}
 
@@ -216,16 +216,16 @@ class WT_Controller_Page extends WT_Controller_Base {
 		static $individual; // Only query the DB once.
 
 		if (!$individual && WT_USER_ROOT_ID) {
-			$individual=WT_Person::getInstance(WT_USER_ROOT_ID);
+			$individual = WT_Person::getInstance(WT_USER_ROOT_ID);
 		}
 		if (!$individual && WT_USER_GEDCOM_ID) {
-			$individual=WT_Person::getInstance(WT_USER_GEDCOM_ID);
+			$individual = WT_Person::getInstance(WT_USER_GEDCOM_ID);
 		}
 		if (!$individual) {
-			$individual=WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
+			$individual = WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
 		}
 		if (!$individual) {
-			$individual=WT_Person::getInstance(
+			$individual = WT_Person::getInstance(
 				WT_DB::prepare(
 					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
 				)->execute(array(WT_GED_ID))->fetchOne()
@@ -233,12 +233,12 @@ class WT_Controller_Page extends WT_Controller_Base {
 		}
 		if (!$individual) {
 			// always return a record
-			$individual=new WT_Person('0 @I@ INDI');
+			$individual = new WT_Person('0 @I@ INDI');
 		}
 		return $individual;
 	}
 	public function getSignificantFamily() {
-		$individual=$this->getSignificantIndividual();
+		$individual = $this->getSignificantIndividual();
 		if ($individual) {
 			foreach ($individual->getChildFamilies() as $family) {
 				return $family;
