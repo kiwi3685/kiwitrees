@@ -344,13 +344,16 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			break;
 		case '_UID':
 			// These shouldn't be displayed at all.
+		case 'RIN':
+			// These don't belong at level 2, so do not display them.
+			// They are only shown when editing.
 			break;
 		case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN / 3 DATE / 3 PLAC
-			$events=array();
+			$events = array();
 			foreach (preg_split('/ *, */', $match[2]) as $event) {
-				$events[]=WT_Gedcom_Tag::getLabel($event);
+				$events[] = WT_Gedcom_Tag::getLabel($event);
 			}
-			if (count($events)==1) echo WT_Gedcom_Tag::getLabelValue('EVEN', $event);
+			if (count($events) == 1) echo WT_Gedcom_Tag::getLabelValue('EVEN', $event);
 			else echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(WT_I18N::$list_separator, $events));
 			if (preg_match('/\n3 DATE (.+)/', $fact->getGedcomRecord(), $date_match)) {
 				$date=new WT_Date($date_match[1]);
@@ -361,7 +364,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			}
 			break;
 		case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
-			$family=WT_Family::getInstance(str_replace('@', '', $match[2]));
+			$family = WT_Family::getInstance(str_replace('@', '', $match[2]));
 			if ($family) { // May be a pointer to a non-existant record
 				echo WT_Gedcom_Tag::getLabelValue('FAM', '<a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a>');
 				if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcomRecord(), $match)) {
