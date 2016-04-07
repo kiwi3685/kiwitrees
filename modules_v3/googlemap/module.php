@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3&amp;language='.WT_LOCALE);
+define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3&amp;language=' . WT_LOCALE);
 
 // http://www.google.com/permissions/guidelines.html
 //
@@ -62,7 +62,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		case 'admin_config':
 			$this->config();
 			break;
-		case 'flags':
+		case 'admin_flags':
 			$this->flags();
 			break;
 		case 'pedigree_map':
@@ -170,7 +170,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$action=safe_REQUEST($_REQUEST, 'action');
 
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
@@ -251,7 +251,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<td><?php echo radio_buttons('NEW_GM_USE_STREETVIEW', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_module_setting('googlemap', 'GM_USE_STREETVIEW', '0')); ?></td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Zoom factor of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?></th>
+							<th>
+								<?php echo WT_I18N::translate('Zoom factor of map'); ?>
+							</th>
 							<td>
 								<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
 								<?php for ($j=1; $j < 15; $j++) { ?>
@@ -263,15 +265,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MAX_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 								<?php } ?>
 								</select>
+								<span class="help_content">
+									<?php echo WT_I18N::translate('Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.'); ?>
+								</span>
+							</tr>
 							</td>
-						</tr>
 					</table>
 				</div>
 
 				<div id="gm_advanced">
 					<table class="gm_edit_config">
 						<tr>
-							<th colspan="2"><?php echo WT_I18N::translate('Precision of the latitude and longitude'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?></th>
+							<th colspan="2"><?php echo WT_I18N::translate('Precision of the latitude and longitude'); ?></th>
 							<td>
 								<table>
 									<tr>
@@ -317,7 +322,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
 									</tr>
-									<tr><td><?php echo WT_I18N::translate('Max'); ?>&nbsp;&nbsp;</td>
+									<tr>
+										<td><?php echo WT_I18N::translate('Max'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_5">
 											<?php for ($j=0; $j < 10; $j++) { ?>
 											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_5==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
@@ -330,12 +336,33 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<th colspan="2"><?php echo WT_I18N::translate('Default value for top-level'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></th>
+							<td colspan="4">
+								<span class="help_content">
+									<?php echo WT_I18N::translate('This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.'); ?>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th colspan="2"><?php echo WT_I18N::translate('Default value for top-level'); ?></th>
 							<td><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE; ?>" size="20"></td>
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<th class="gm_prefix" colspan="3"><?php echo WT_I18N::translate('Optional prefixes and suffixes'), help_link('GM_NAME_PREFIX_SUFFIX','googlemap');?></th>
+							<td colspan="4">
+								<span class="help_content">
+									<?php echo WT_I18N::translate('Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again.'); ?>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th class="gm_prefix" colspan="3"><?php echo WT_I18N::translate('Optional prefixes and suffixes');?></th>
+						</tr>
+						<tr>
+							<td colspan="4">
+								<span class="help_content">
+									<?php echo WT_I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.'); ?>
+								</span>
+							</td>
 						</tr>
 						<tr id="gm_level_titles">
 							<th>&nbsp;</th>
@@ -364,6 +391,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<tr>
 							<th><?php echo WT_I18N::translate('Use Google Maps™ for the place hierarchy'); ?></th>
 							<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', get_module_setting('googlemap', 'GM_PLACE_HIERARCHY', '0')); ?></td>
+							<td></td>
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'); ?></th>
@@ -373,14 +401,25 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<option value="G_FLAG" <?php if ($GOOGLEMAP_PH_MARKER=="G_FLAG") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Flag'); ?></option>
 								</select>
 							</td>
+							<td></td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE','googlemap'); ?></th>
+							<th><?php echo WT_I18N::translate('Display short placenames'); ?></th>
 							<td><?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $GM_DISP_SHORT_PLACE); ?></td>
+							<td>
+								<span class="help_content">
+									<?php echo WT_I18N::translate('Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br /><b>Examples:<br />Full name: </b>Chicago, Illinois, USA<br /><b>Short name: </b>Chicago<br /><b>Full name: </b>Illinois, USA<br /><b>Short name: </b>Illinois'); ?>
+								</span>
+							</td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Display Map Coordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?></th>
+							<th><?php echo WT_I18N::translate('Display Map Coordinates'); ?></th>
 							<td><?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD); ?></td>
+							<td>
+								<span class="help_content">
+									<?php echo WT_I18N::translate('This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers.'); ?>
+								</span>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -399,17 +438,16 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require WT_ROOT . WT_MODULES_DIR . 'googlemap/defaultconfig.php';
 		require WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle(WT_I18N::translate('Select flag'))
 			->pageHeader();
 
-		$stats		= new WT_Stats(WT_GEDCOM);
-		$countries	= $stats->get_all_countries();
-		$action		= safe_REQUEST($_REQUEST, 'action');
-
- 		$countrySelected = WT_Filter::get('countrySelected', null, 'Countries');
- 		$stateSelected   = WT_Filter::get('stateSelected',   null, 'States');
+		$stats				= new WT_Stats(WT_GEDCOM);
+		$countries			= $stats->get_all_countries();
+		$action				= safe_REQUEST($_REQUEST, 'action');
+ 		$countrySelected	= WT_Filter::get('countrySelected', null, 'Countries');
+ 		$stateSelected		= WT_Filter::get('stateSelected',   null, 'States');
 
 		$country = array();
 		if (is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/flags')) {
@@ -473,11 +511,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<script>
 			function selectCountry() {
 				if (document.flags.COUNTRYSELECT.value == 'Countries') {
-					window.location="module.php?mod=googlemap&mod_action=flags";
+					window.location="module.php?mod=googlemap&mod_action=admin_flags";
 				} else if (document.flags.STATESELECT.value != 'States') {
-					window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=" + document.flags.COUNTRYSELECT.value + "&stateSelected=" + document.flags.STATESELECT.value;
+					window.location="module.php?mod=googlemap&mod_action=admin_flags&countrySelected=" + document.flags.COUNTRYSELECT.value + "&stateSelected=" + document.flags.STATESELECT.value;
 				} else {
-					window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=" + document.flags.COUNTRYSELECT.value;
+					window.location="module.php?mod=googlemap&mod_action=admin_flags&countrySelected=" + document.flags.COUNTRYSELECT.value;
 				}
 			}
 		</script>
@@ -516,101 +554,118 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			asort($stateList);
 		}
 		?>
-		<h4><?php echo WT_I18N::translate('Change flag'); ?></h4>
-		<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
-			<input type="hidden" name="action" value="ChangeFlag">
-			<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>">
-			<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>">
-			<table class="facts_table">
-				<tr>
-					<td class="optionbox" colspan="4">
-						<?php echo help_link('PLE_FLAGS','googlemap'); ?>
-						<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
-							<option value="Countries"><?php echo WT_I18N::translate('Countries'); ?></option>
-							<?php foreach ($countryList as $country_key=>$country_name) {
-								echo '<option value="', $country_key, '"';
-								if ($countrySelected == $country_key) echo ' selected="selected" ';
-								echo '>', $country_name, '</option>';
-							} ?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-		<?php
-				$j = 1;
-				for ($i = 0; $i < count($flags); $i++) {
-					if ($countrySelected == 'Countries') {
-						$tempstr = '<td><input type="radio" dir="ltr" name="FLAGS" value="'.$i.'"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/places/flags/'.$flags[$i].'.png" alt="'.$flags[$i].'"  title="';
-						if ($flags[$i]!='blank') {
-							if (isset($countries[$flags[$i]])) {
-								$tempstr.=$countries[$flags[$i]];
-							} else {
-								$tempstr.=$flags[$i];
-							}
-						} else {
-							$tempstr.=$countries['???'];
+		<div id="changeflags-page">
+			<h3><?php echo WT_I18N::translate('Change flag'); ?></h3>
+			<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=admin_flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
+				<input type="hidden" name="action" value="ChangeFlag">
+				<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>">
+				<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>">
+				<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
+					<option value="Countries"><?php echo WT_I18N::translate('Countries'); ?></option>
+					<?php foreach ($countryList as $country_key=>$country_name) {
+						echo '<option value="', $country_key, '"';
+						if ($countrySelected == $country_key) echo ' selected="selected" ';
+						echo '>', $country_name, '</option>';
+					} ?>
+				</select>
+				<p class="help_text">
+					<span class="help_content">
+						<?php echo WT_I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country.'); ?>
+					</span>
+				</p>
+				<hr>
+				<div class="flags_wrapper">
+					<?php
+					$j = 1;
+					for ($i = 0; $i < count($flags); $i++) {
+						if ($countrySelected == 'Countries') {
+							$tempstr = '
+								<div class="flags_item">
+									<span>
+										<input type="radio" dir="ltr" name="FLAGS" value="' . $i . '">
+										<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/flags/' . $flags[$i] . '.png" alt="' . $flags[$i] . '"  title="';
+											if ($flags[$i] != 'blank') {
+												if (isset($countries[$flags[$i]])) {
+													$tempstr .= $countries[$flags[$i]];
+												} else {
+													$tempstr .= $flags[$i];
+												}
+											} else {
+												$tempstr .= $countries['???'];
+											}
+										echo $tempstr, '">
+									</span>
+									<label>', $flags[$i] != 'blank' ? $countries[$flags[$i]] : $flags[$i], '</label>
+								</div>
+							';
+						} else { ?>
+							<div class="flags_item">
+								<span>
+									<input type="radio" dir="ltr" name="FLAGS" value="<?php echo $i; ?>">
+									<img src="<?php echo WT_STATIC_URL . WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected; ?>/flags/<?php echo $flags[$i]; ?>.png">
+								</span>
+								<label style=""><?php echo $flags[$i]; ?></label>
+							</div>
+						<?php }
+						$j++;
+					} ?>
+				</div>
+				<div
+					<?php if ($countrySelected == 'Countries' || count($stateList)==0) { ?>
+						 style=" visibility: hidden"
+					<?php } ?>
+					>
+					<div class="help_text">
+						<span class="help_content">
+							<?php echo WT_I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country.'); ?>
+						</span>
+					</div>
+					<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
+						<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
+						<?php foreach ($stateList as $state_key=>$state_name) {
+							echo '<option value="', $state_key, '"';
+							if ($stateSelected == $state_key) echo ' selected="selected"';
+							echo '>', $state_name, '</option>';
+						} ?>
+					</select>
+				</div>
+				<div class="flags_wrapper">
+					<?php
+					$j = 1;
+					for ($i = 0; $i < count($flags_s); $i++) {
+						if ($stateSelected != 'States') {
+							echo '
+								<div class="flags_item">
+									<span>
+										<input type="radio" dir="ltr" name="FLAGS" value="', $i, '">
+										<img src="', WT_STATIC_URL.WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flags_s[$i], '.png">
+									</span>
+									<label>', $flags_s[$i], '</label>
+								</div>
+							';
 						}
-						echo $tempstr, '">&nbsp;&nbsp;', $flags[$i], '</input></td>';
-					} else {
-						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '"><img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $flags[$i], '.png">&nbsp;&nbsp;', $flags[$i], '</input></td>';
-					}
-					if ($j == 4) {
-						echo '</tr><tr>';
-						$j = 0;
-					}
-					$j++;
-				}
-				echo '</tr><tr';
-				if ($countrySelected == 'Countries' || count($stateList)==0) {
-					echo ' style=" visibility: hidden"';
-				}
-				echo '>';
-		?>
-					<td class="optionbox" colspan="4">
-						<?php echo help_link('PLE_FLAGS','googlemap'); ?>
-						<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
-							<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
-							<?php foreach ($stateList as $state_key=>$state_name) {
-								echo '<option value="', $state_key, '"';
-								if ($stateSelected == $state_key) echo ' selected="selected"';
-								echo '>', $state_name, '</option>';
-							} ?>
-						</select>
-					</td>
-				</tr>
-				<tr>
-		<?php
-				$j = 1;
-				for ($i = 0; $i < count($flags_s); $i++) {
-					if ($stateSelected != 'States') {
-						echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '"><img src="', WT_STATIC_URL.WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flags_s[$i], '.png">&nbsp;&nbsp;', $flags_s[$i], '</input></td>';
-					}
-					if ($j == 4) {
-						echo '</tr><tr>';
-						$j = 0;
-					}
-					$j++;
-				}
-		?>
-				</tr>
-			</table>
-			<p id="save-cancel">
-				<input type="submit" class="save" value="<?php echo WT_I18N::translate('save'); ?>">
-				<input type="button" class="cancel" value="<?php echo WT_I18N::translate('close'); ?>" onclick="window.close();">
-			</p>
-		</form>
-		<?php
-	}
+						$j++;
+					} ?>
+					</div>
+				<p id="save-cancel">
+					<button class="btn btn-primary" type="submit">
+						<i class="fa fa-save"></i>
+						<?php echo WT_I18N::translate('save'); ?>
+					</button>
+					<button class="btn btn-primary" type="button" onclick="window.close();">
+						<i class="fa fa-times"></i>
+						<?php echo WT_I18N::translate('close'); ?>
+					</button>
+				</p>
+			</form>
+		</div>
+	<?php }
 
 	private function pedigree_map() {
 		global $controller, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS;
 
 		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-
-		// Default is show for both of these.
-		$hideflags = safe_GET('hideflags');
-		$hidelines = safe_GET('hidelines');
 
 		$controller=new WT_Controller_Pedigree();
 
@@ -654,29 +709,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				?>
 				</select>
 			</div>
-			<div class="chart_options">
-				<label for = "checkflags" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags','googlemap'); ?></label>
-					<?php
-						echo '<input name="hideflags" type="checkbox" id="checkflags"';
-							if ($hideflags) {
-								echo ' checked="checked"';
-							}
-						echo '>';
-					?>
-			</div>
-			<div class="chart_options">
-				<label for = "checklines" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Hide lines'), help_link('PEDIGREE_MAP_hidelines','googlemap'); ?></label>
-					<?php
-						echo '<input name="hidelines" type="checkbox" id="checklines"';
-							if ($hidelines) {
-								echo ' checked="checked"';
-							}
-						echo '>';
-					?>
-			</div>
- 			<div class="btn btn-primary" style="display: inline-block;">
- 				<button type="submit" value="<?php echo WT_I18N::translate('View'); ?>"><?php echo WT_I18N::translate('View'); ?></button>
- 			</div>
+			<button class="btn btn-primary show" type="submit">
+	 			<i class="fa fa-eye"></i>
+	 			<?php echo WT_I18N::translate('View'); ?>
+	 		</button>
 		</form>
 		<hr style="clear:both;">
 		<!-- end of form -->
@@ -795,10 +831,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<!-- Start of map scripts -->
 		<?php
 		echo '<script src="', WT_GM_SCRIPT, '"></script>';
-		$controller->addInlineJavascript($this->pedigree_map_js($hideflags, $hidelines));
+		$controller->addInlineJavascript($this->pedigree_map_js());
 	}
 
-	private function pedigree_map_js($hideflags, $hidelines) {
+	private function pedigree_map_js() {
 		global $controller, $SHOW_HIGHLIGHT_IMAGES, $PEDIGREE_GENERATIONS;
 		// The HomeControl returns the map to the original position and style
 		$js='function HomeControl(controlDiv, pm_map) {'.
@@ -1218,7 +1254,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$lat[$i] = (double)str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]['lati']);
 					$lon[$i] = (double)str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]['long']);
 					if ($lat[$i] || $lon[$i]) {
-						if ((!$hideflags) && ($latlongval[$i]['icon'] != NULL)) {
+						if (($latlongval[$i]['icon'] != NULL)) {
 							$flags[$i] = $latlongval[$i]['icon'];
 							$ffile = strrchr($latlongval[$i]['icon'], '/');
 							$ffile = substr($ffile,1, strpos($ffile, '.')-1);
@@ -1256,34 +1292,30 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						$js.= "var marker = createMarker(point, \"".addslashes($name)."\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 						$js.= "<div class='iwstyle'>";
 						$js.= "<a href='module.php?ged=".WT_GEDURL."&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
-						if ($hideflags) $js.= '&amp;hideflags=1';
-						if ($hidelines) $js.= '&amp;hidelines=1';
 						$js.= "' title='".WT_I18N::translate('Pedigree map')."'>".$dataleft."</a>".$datamid.$dataright."</div>\", \"".$marker_number."\");";
 						// Construct the polygon lines
-						if (!$hidelines) {
-							$to_child = (intval(($i-1)/2)); // Draw a line from parent to child
-							if (array_key_exists($to_child, $lat) && $lat[$to_child]!=0 && $lon[$to_child]!=0) {
-								$js.='
-								var linecolor;
-								var plines;
-								var lines = [new google.maps.LatLng('.$lat[$i].','.$lon[$i].'),
-									new google.maps.LatLng('.$lat[$to_child].','.$lon[$to_child].')];
-								linecolor = "'.$colored_line[$curgen].'";
-								plines = new google.maps.Polygon({
-									paths: lines,
-									strokeColor: linecolor,
-									strokeOpacity: 0.8,
-									strokeWeight: 3,
-									fillColor: "#FF0000",
-									fillOpacity: 0.1
-								});
-								plines.setMap(pm_map);';
-							}
+						$to_child = (intval(($i-1)/2)); // Draw a line from parent to child
+						if (array_key_exists($to_child, $lat) && $lat[$to_child]!=0 && $lon[$to_child]!=0) {
+							$js.='
+							var linecolor;
+							var plines;
+							var lines = [new google.maps.LatLng('.$lat[$i].','.$lon[$i].'),
+								new google.maps.LatLng('.$lat[$to_child].','.$lon[$to_child].')];
+							linecolor = "'.$colored_line[$curgen].'";
+							plines = new google.maps.Polygon({
+								paths: lines,
+								strokeColor: linecolor,
+								strokeOpacity: 0.8,
+								strokeWeight: 3,
+								fillColor: "#FF0000",
+								fillOpacity: 0.1
+							});
+							plines.setMap(pm_map);';
 						}
-						// Extend and fit marker bounds
-						$js.='bounds.extend(point);';
-						$js.='pm_map.fitBounds(bounds);';
-						$count++;
+					// Extend and fit marker bounds
+					$js.='bounds.extend(point);';
+					$js.='pm_map.fitBounds(bounds);';
+					$count++;
 					}
 				}
 			} else {
@@ -1965,8 +1997,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<div id="toggle">
 					<form name="myForm" title="myForm">
 						<?php
-						echo '<input id="butt1" name ="butt1" type="button" value="', WT_I18N::translate('Google Maps™'), '" onclick="toggleStreetView();"></input>';
-						echo '<input id="butt2" name ="butt2" type="button" value="', WT_I18N::translate('Reset'), '" onclick="initialize();"></input>';
+						echo '<input id="butt1" name ="butt1" type="button" value="', WT_I18N::translate('Google Maps™'), '" onclick="toggleStreetView();">';
+						echo '<input id="butt2" name ="butt2" type="button" value="', WT_I18N::translate('Reset'), '" onclick="initialize();">';
 						?>
 					</form>
 				</div>

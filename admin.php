@@ -1524,7 +1524,8 @@ function old_paths() {
 		// Removed in kiwitrees 3.2.1
 		WT_ROOT.'modules_v3/occupation_report',
 		WT_ROOT.'modules_v3/menu_calendar',
-
+		WT_ROOT.'modules_v3/googlemap/places_edit.php', //old unused file shoulld have been removed months ago!
+		WT_ROOT.'modules_v3/googlemap/help_text.php', 
 
 	);
 }

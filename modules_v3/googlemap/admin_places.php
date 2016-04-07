@@ -342,11 +342,15 @@ if ($action=='ImportFile') {
 	<table class="gm_plac_edit">
 		<tr>
 			<th><?php echo WT_I18N::translate('File containing places (CSV)'); ?></th>
-			<td><input type="file" name="placesfile" size="50"></td>
+			<td>
+				<div class="input">
+					<input type="file" name="placesfile" size="50">
+				</div>
+			</td>
 		</tr>
 		<?php if (count($placefiles)>0) { ?>
 		<tr>
-			<th><?php echo WT_I18N::translate('Server file containing places (CSV)'), help_link('PLIF_LOCALFILE','googlemap'); ?></th>
+			<th><?php echo WT_I18N::translate('Server file containing places (CSV)'); ?></th>
 			<td>
 				<select name="localfile">
 					<option></option>
@@ -356,6 +360,9 @@ if ($action=='ImportFile') {
 						else echo $placefile; ?></option>
 					<?php } ?>
 				</select>
+				<span class="help_content">
+					<?php echo WT_I18N::translate('Select a file from the list of files already on the server which contains the place locations in CSV format.'); ?>
+				</span>
 			</td>
 		</tr>
 		<?php } ?>
@@ -372,7 +379,10 @@ if ($action=='ImportFile') {
 			<td><input type="checkbox" name="overwritedata"></td>
 		</tr>
 	</table>
-	<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>"><br>
+	<button id="savebutton" class="btn btn-primary" type="submit">
+		<i class="fa fa-save"></i>
+		<?php echo WT_I18N::translate('Continue Adding'); ?>
+	</button>
 </form>
 <?php
 	exit;
@@ -565,6 +575,11 @@ echo '<div id="gm_tabs">
 		<li><a href="#gm_options"><span>', WT_I18N::translate('Options'), '</span></a></li>
 	</ul>
 	<div id="gm_list">
+		<div class="help_text">
+			<span class="help_content">' .
+				WT_I18N::translate('By default the list shows only those places which can be matched between the Google Maps place list and your family trees.  You may have details for other places, such as those imported in bulk from an external file.  This option also allows you to list all the places that exist the Google Maps list, or just those that exist in the Google Maps table but not on your family trees.') . '
+			</span>
+		</div>
 		<div id="gm_breadcrumb">';
 			$where_am_i=place_id_to_hierarchy($parent);
 			foreach (array_reverse($where_am_i, true) as $id=>$place) {
@@ -588,7 +603,7 @@ echo '<div id="gm_tabs">
 		</div>
 		<div id="gm_active">
 			<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&status=', $status, '" style="display:inline;">
-				<label for="status">', WT_I18N::translate('List places'), '</label>',  help_link('PLE_ACTIVE','googlemap'), '
+				<label for="status">', WT_I18N::translate('List places'), '</label>
 				<select id="status" name="status" onchange="updateList(this.value)">
 					<option value="all"';
 						if ($status=='all') echo ' selected="selected"';
@@ -695,7 +710,10 @@ echo '<div id="gm_tabs">
 				<td>
 					<form action="#" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">',
 						select_edit_control("parent_id", $where_am_i, WT_I18N::translate('Top Level'), $parent), '
-						<input type="submit" value="', WT_I18N::translate('Add'), '">
+						<button class="btn btn-primary" type="submit" value="', WT_I18N::translate('Add'), '">
+							<i class="fa fa-plus"></i>' .
+							WT_I18N::translate('Add') . '
+						</button>
 					</form>
 				</td>
 			</tr>
@@ -708,8 +726,11 @@ echo '<div id="gm_tabs">
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ImportGedcom">',
-						select_edit_control("ged", WT_Tree::getNameList(), null, WT_GEDCOM),
-						'<input type="submit" value="', WT_I18N::translate('Import'), '">
+						select_edit_control("ged", WT_Tree::getNameList(), null, WT_GEDCOM), '
+						<button class="btn btn-primary" type="submit" value="', WT_I18N::translate('Import'), '">
+							<i class="fa fa-arrow-right"></i>' .
+							WT_I18N::translate('Import') . '
+						</button>
 					</form>
 				</td>
 			</tr>
@@ -722,7 +743,10 @@ echo '<div id="gm_tabs">
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ImportFile">
-						<input type="submit" value="', WT_I18N::translate('Upload'), '">
+						<button class="btn btn-primary" type="submit" value="', WT_I18N::translate('Upload'), '">
+							<i class="fa fa-upload"></i>' .
+							WT_I18N::translate('Upload') . '
+						</button>
 					</form>
 				</td>
 			</tr>
@@ -735,8 +759,11 @@ echo '<div id="gm_tabs">
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ExportFile">',
-						select_edit_control("parent", $where_am_i, WT_I18N::translate('All'), WT_GED_ID),
-						'<input type="submit" value="', WT_I18N::translate('Download'), '">
+						select_edit_control("parent", $where_am_i, WT_I18N::translate('All'), WT_GED_ID), '
+						<button class="btn btn-primary" type="submit" value="', WT_I18N::translate('Download'), '">
+							<i class="fa fa-download"></i>' .
+							WT_I18N::translate('Download') . '
+						</button>
 					</form>
 				</td>
 			</tr>

@@ -3996,7 +3996,6 @@ class WT_Stats {
 			'SEN'=>WT_I18N::translate('Senegal'),
 			'SER'=>WT_I18N::translate('Serbia'),
 			'SGP'=>WT_I18N::translate('Singapore'),
-			'SGS'=>WT_I18N::translate('South Georgia and the South Sandwich Islands'),
 			'SHN'=>WT_I18N::translate('Saint Helena'),
 			'SIC'=>WT_I18N::translate('Sicily'),
 			'SJM'=>WT_I18N::translate('Svalbard and Jan Mayen Islands'),

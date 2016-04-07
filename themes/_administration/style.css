@@ -72,6 +72,7 @@ button {
 .ui-widget-header {padding:5px;}
 .ui-progressbar-value {height:60% !important; background:#d3d3d3 !important;}
 .ui-accordion .ui-accordion-content-active {display:block;}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 0.25em 1em;}
 .css_right {float:right;}
 [dir=rtl] .css_right {float:left;}
 [dir=rtl] input {padding-right:3px; padding-left:0;}
@@ -743,7 +744,7 @@ table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; ma
 #gm_config th {font-size:105%; font-weight:bold; padding:5px; text-align:left;}
 [dir=rtl] #gm_config th {text-align:right;}
 .gm_edit_config {border:1px inset #d3d3d3; border-collapse:separate; font-size:90%; margin:10px 0;}
-.gm_edit_config th {border-bottom:1px solid #d3d3d3; font-weight:bold; padding:5px; text-align:left;}
+.gm_edit_config th {border-bottom:1px solid #d3d3d3; font-weight:bold; padding:5px; text-align:left; width:180px;}
 [dir=rtl] .gm_edit_config th {text-align:right;}
 .gm_edit_config td {border-bottom:1px solid #d3d3d3; padding:1px 0 0 50px; vertical-align:middle;}
 .gm_edit_config input {margin:0; vertical-align:middle;}
@@ -763,16 +764,28 @@ table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; ma
 #gm_active {padding:5px; vertical-align:top;}
 [dir=rtl] #gm_breadcrumb {float:left;text-align:left;}
 .gm_plac_edit {border-spacing:0;}
-.gm_plac_edit th {font-size:105%; font-weight:bold; padding:0 3px; text-align:left;}
+.gm_plac_edit th {font-weight:normal; padding:10px; text-align:left;}
 [dir=rtl] .gm_plac_edit th {text-align:right;}
 .gm_plac_edit td {border-bottom:1px solid #d3d3d3; padding:0 3px;}
-#gm_manage {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; margin:10px 0 0; padding:0 5px; width:98%;}
+#gm_manage {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; font-size: 14px; margin:10px 0 0; padding:0 5px; width:98%;}
 #gm_manage td {border-bottom:1px solid #d3d3d3; vertical-align:middle;}
+#gm_manage select {padding: 0px 5px; height: 33px; margin: 10px; min-width: 100px;}
+#gm_manage button {float: right; margin: 10px; min-width: 105px;}
 #gm_active input {height:auto; vertical-align:top;}
 div.scrollableContainer{border:1px solid #888;color:#555;margin:10px auto;padding:32px 0;position:relative;}
 div.scrollingArea{background-color:#fff;height:608px;overflow-x:auto;overflow-y:scroll;}
 .gm_plac_edit thead {border-bottom:2px solid #d3d3d3; left:0;top:0;position:absolute;width:952px;}
 .gm_plac_edit tfoot {border-top:2px solid #d3d3d3; left:0;bottom:0;position:absolute;width:952px;}
+.gm_plac_edit .input {
+	display: inline-block;
+	padding: 0 5px;
+}
+.gm_plac_edit input {
+	border: 1px solid #aaa;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	padding: 5px;
+}
 .col1 {width:300px;}
 .col2, .col3 {width:136px;}
 .col4 {width:120px;}
@@ -812,14 +825,35 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 	font-weight: bold;
 }
 
-#editplaces-page #save-cancel {
-	background: #ddd;
+#editplaces-page #save-cancel,
+#changeflags-page #save-cancel {
 	border: 0;
-	bottom: 0;
-	left: 0;
-	margin: 0;
 	position: initial;
-	width: 100%;
+}
+
+#changeflags-page .flags_item {
+	float: left;
+	height: 25px;
+	padding: 5px;
+	width: 200px;
+}
+
+#changeflags-page .flags_item img {
+	vertical-align: text-top;
+}
+
+#changeflags-page .flags_item span {
+	 float:left;
+	 width: 60px;
+}
+
+#changeflags-page select {
+	height: initial;
+	padding: 5px;
+}
+
+[dir=rtl] #changeflags-page .flags_item {
+	float: right;
 }
 
 /* SITE MAP MODULE*/
