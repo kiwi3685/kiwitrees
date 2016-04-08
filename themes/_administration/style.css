@@ -1187,6 +1187,12 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_check #sanity_options {margin:10px 30px;}
 #sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
 
+/* CITATION REVIEW */
+#source_options .input {display: inline-block; margin: 20px;}
+#source_options label {display: block;}
+#source_options select {height: 33px;}
+#source_list table a {color: #75ABFF; font-weight: 600;}
+
 /* RESPOSIVE layout adjustments */
 @media (max-width: 350px) {
 }
