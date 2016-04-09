@@ -37,7 +37,7 @@ require WT_ROOT.'includes/functions/functions_print_facts.php';
 $controller=new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Source check'))
+	->setPageTitle(WT_I18N::translate('Source citation check'))
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('
@@ -70,6 +70,11 @@ $sid = WT_Filter::post('source');
 
 <div id="source_check">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<div class="help_text">
+		<p class="help_content">
+			<?php echo WT_I18N::translate('Display a list of citations attached to any chosen source record. Used to review citations for accuracy and consistency. Entries in the column <strong>Edit raw GEDCOM record</strong> can be clicked to open the edit raw GEDCOM page. Entries in the column <strong>Record</strong> can be clicked to the detail page of that record for further editing. If you have many similar edits you might prefer to use the <strong>Batch update</strong> tool.'); ?>
+		</p>
+	</div>
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="go" value="1">
 		<div id="source_options">
@@ -96,9 +101,7 @@ $sid = WT_Filter::post('source');
 			<?php
 
 			$source		= WT_Source::getInstance($sid);
-			$indi_data	= indi_citations($sid);
-			$fam_data	= fam_citations($sid);
-			$data		= array_merge($indi_data, $fam_data);
+			$data	= citations($sid);
 			?>
 			<h3>
 				<span><?php echo WT_I18N::translate('Source'); ?><span>: <a href="<?php echo $source->getHtmlUrl(); ?>"><?php echo $source->getFullName(); ?></a>
@@ -128,29 +131,23 @@ $sid = WT_Filter::post('source');
 								<?php
 								switch ($record->getType()) {
 									case "INDI":
+										$icon = $record->getSexImage('small', '', '', false);
 										$type = WT_I18N::translate('Individual');
 										break;
 									case "FAM":
+										$icon = '<i class="icon-button_family"></i>';
 										$type = WT_I18N::translate('Family');
 										break;
 									case "OBJE":
+										$icon = '<i class="icon-button_media"></i>';
 										$type = WT_I18N::translate('Media');
-										break;
-									case "NOTE":
-										$type = WT_I18N::translate('Note');
-										break;
-									case "SOUR":
-										$type = WT_I18N::translate('Source');
-										break;
-									case "REPO":
-										$type = WT_I18N::translate('Repository');
 										break;
 									default:
 										$type = '&nbsp;';
 										break;
 								}
 								?>
-								<a href="#" onclick="return edit_raw('<?php echo $row->xref; ?>');"><?php echo $type; ?></a>
+								<a href="#" onclick="return edit_raw('<?php echo $row->xref; ?>');"><?php echo $icon . ' ' . $type; ?></a>
 							</td>
 							<td>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank"><?php echo $record->getFullName(); ?></a>
@@ -168,18 +165,26 @@ $sid = WT_Filter::post('source');
 <?php
 
 // source functions
-function indi_citations($sid) {
-	$rows = WT_DB::prepare(
-		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` REGEXP '2 SOUR @" . $sid . "@\n3 PAGE (.*)\n'"
-	)->execute(array(WT_GED_ID))->fetchAll();
-
-	return $rows;
-}
-
-function fam_citations($sid) {
-	$rows = WT_DB::prepare(
-		"SELECT f_id AS xref, f_gedcom AS gedrec FROM `##families` WHERE `f_file` = ? AND `f_gedcom` REGEXP '2 SOUR @" . $sid . "@\n3 PAGE (.*)\n'"
-	)->execute(array(WT_GED_ID))->fetchAll();
+function citations($sid) {
+	$rows = WT_DB::prepare("
+		SELECT i_id AS xref, i_gedcom AS gedrec
+		FROM `##individuals`
+		WHERE `i_file` = ?
+		AND `i_gedcom`
+		REGEXP '2 SOUR @" . $sid . "@\n3 PAGE (.*)\n'
+		UNION
+		SELECT f_id AS xref, f_gedcom AS gedrec
+		FROM `##families`
+		WHERE `f_file` = ?
+		AND `f_gedcom`
+		REGEXP '2 SOUR @" . $sid . "@\n3 PAGE (.*)\n'
+		UNION
+		SELECT m_id AS xref, m_gedcom AS gedrec
+		FROM `##media`
+		WHERE `m_file` = ?
+		AND `m_gedcom`
+		REGEXP '2 SOUR @" . $sid . "@\n3 PAGE (.*)\n'
+	")->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
 
 	return $rows;
 }
