@@ -141,9 +141,6 @@ if ($changed_gedcoms) {
 			$prev_gedcom_id = null;
 			foreach ($changes as $change) {
 				if ($change->xref != $prev_xref || $change->gedcom_id != $prev_gedcom_id) {
-					if ($prev_xref) {
-						$output .= '</table></td></tr>';
-					}
 					$prev_xref	     = $change->xref;
 					$prev_gedcom_id	 = $change->gedcom_id;
 					$output .= '<tr><td>';
