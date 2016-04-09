@@ -319,7 +319,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 
 		if (WT_USER_CAN_EDIT) {
-			//--make sure the totals are correct
 			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'), '#', 'menu-indi-addname');
 			$submenu->addOnclick("return add_name('".$this->record->getXref()."');");
 			$menu->addSubmenu($submenu);
@@ -339,6 +338,41 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				$submenu->addOnclick("return reorder_families('".$this->record->getXref()."');");
 				$menu->addSubmenu($submenu);
 			}
+
+			$submenu = new WT_Menu(WT_I18N::translate('Link this person to an existing family as a child'), '#', 'menu-indi-linkchild');
+			$submenu->addOnclick("return add_famc('".$this->record->getXref()."');");
+			$menu->addSubmenu($submenu);
+
+			if ($this->record->getSex()!="F") {
+				$submenu = new WT_Menu(WT_I18N::translate('Add a wife'), '#', 'menu-indi-addwife');
+				$submenu->addOnclick("return addspouse('".$this->record->getXref()."', 'WIFE');");
+				$menu->addSubmenu($submenu);
+
+				$submenu = new WT_Menu(WT_I18N::translate('Add a wife using an existing person'), '#', 'menu-indi-addewife');
+				$submenu->addOnclick("return linkspouse('".$this->record->getXref()."', 'WIFE');");
+				$menu->addSubmenu($submenu);
+
+				$submenu = new WT_Menu(WT_I18N::translate('Link this person to an existing family as a husband'), '#', 'menu-indi-linkhusb');
+				$submenu->addOnclick("return add_fams('".$this->record->getXref()."', 'HUSB');");
+				$menu->addSubmenu($submenu);
+			}
+			if ($this->record->getSex()!="M") {
+				$submenu = new WT_Menu(WT_I18N::translate('Add a husband'), '#', 'menu-indi-addhusb');
+				$submenu->addOnclick("return addspouse('".$this->record->getXref()."', 'HUSB');");
+				$menu->addSubmenu($submenu);
+
+				$submenu = new WT_Menu(WT_I18N::translate('Add a husband using an existing person'), '#', 'menu-indi-addehusb');
+				$submenu->addOnclick("return linkspouse('".$this->record->getXref()."', 'HUSB');");
+				$menu->addSubmenu($submenu);
+
+				$submenu = new WT_Menu(WT_I18N::translate('Link this person to an existing family as a wife'), '#', 'menu-indi-linkwife');
+				$submenu->addOnclick("return add_fams('".$this->record->getXref()."', 'WIFE');");
+				$menu->addSubmenu($submenu);
+			}
+
+			$submenu = new WT_Menu(WT_I18N::translate('Add a child to create a one-parent family'), '#', 'menu-indi-onepare');
+			$submenu->addOnclick("return addopfchild('".$this->record->getXref()."', 'U');");
+			$menu->addSubmenu($submenu);
 		}
 
 		// edit/view raw gedcom

@@ -1044,6 +1044,15 @@ p.branches {display:inline;}
 #menu-indi-del              {background-position:left  -840px;} [dir=rtl] #menu-indi-del              {background-position:right  -840px;}
 #menu-indi-editraw          {background-position:left  -240px;} [dir=rtl] #menu-indi-editraw          {background-position:right  -240px;}
 #menu-indi-editsex          {background-position:left  -810px;} [dir=rtl] #menu-indi-editsex          {background-position:right  -810px;}
+#menu-indi-orderfam         {background-position:left -1080px;} [dir=rtl] #menu-indi-orderfam         {background-position:right -1080px;}
+#menu-indi-linkchild        {background-position:left -1140px;} [dir=rtl] #menu-indi-linkchild        {background-position:right -1140px;}
+#menu-indi-addwife          {background-position:left -780px;} [dir=rtl] #menu-indi-addwife          {background-position:right -780px;}
+#menu-indi-addewife         {background-position:left -780px;} [dir=rtl] #menu-indi-addewife         {background-position:right -780px;}
+#menu-indi-linkhusb         {background-position:left -1140px;} [dir=rtl] #menu-indi-linkhusb         {background-position:right -1140px;}
+#menu-indi-addhusb          {background-position:left -780px;} [dir=rtl] #menu-indi-addhusb          {background-position:right -780px;}
+#menu-indi-addehusb         {background-position:left -780px;} [dir=rtl] #menu-indi-addehusb         {background-position:right -780px;}
+#menu-indi-linkwife         {background-position:left -1140px;} [dir=rtl] #menu-indi-linkwife         {background-position:right -1140px;}
+#menu-indi-onepare          {background-position:left -1050px;} [dir=rtl] #menu-indi-onepare          {background-position:right -1050px;}
 #menu-list-fam              {background-position:left   -90px;} [dir=rtl] #menu-list-fam              {background-position:right   -90px;}
 #menu-list-indi             {background-position:left  -120px;} [dir=rtl] #menu-list-indi             {background-position:right  -120px;}
 #menu-list-note             {background-position:left  -420px;} [dir=rtl] #menu-list-note             {background-position:right  -420px;}

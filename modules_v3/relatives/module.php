@@ -377,66 +377,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '<script>jQuery("DIV.elderdate").toggle();</script>';
 		}
 
-		if ($controller->record->canEdit()) {
-		?>
-		<br><table class="facts_table">
-		<?php
-			if (count($families)>1) { ?>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return reorder_families('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Re-order families'); ?></a>
-				</td>
-			</tr>
-		<?php } ?>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Link this person to an existing family as a child'); ?></a>
-				</td>
-			</tr>
-			<?php if ($controller->record->getSex()!="F") { ?>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return addspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife'); ?></a>
-				</td>
-			</tr>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing person'); ?></a>
-				</td>
-			</tr>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return add_fams('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Link this person to an existing family as a husband'); ?></a>
-				</td>
-			</tr>
-			<?php }
-			if ($controller->record->getSex()!="M") { ?>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return addspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband'); ?></a>
-				</td>
-			</tr>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing person'); ?></a>
-				</td>
-			</tr>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return add_fams('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Link this person to an existing family as a wife'); ?></a>
-				</td>
-			</tr>
-			<?php } ?>
-			<tr>
-				<td class="facts_value">
-				<a href="#" onclick="return addopfchild('<?php echo $controller->record->getXref(); ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
-				</td>
-			</tr>
-		</table>
-		<?php } ?>
-		<br>
-		<?php
-
 		$ABBREVIATE_CHART_LABELS = $saved_ABBREVIATE_CHART_LABELS; // Restore GEDCOM configuration
 		unset($show_full);
 		if (isset($saved_show_full)) $show_full = $saved_show_full;

@@ -224,6 +224,16 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 #menu-indi-del              {background-position:left -806px;} [dir=rtl] #menu-indi-del              {background-position:right -806px;}
 #menu-indi-addfav           {background-position:left -832px;} [dir=rtl] #menu-indi-addfav           {background-position:right -832px;}
 
+#menu-indi-orderfam         {background-position:left -858px;} [dir=rtl] #menu-indi-orderfam         {background-position:right -858px;}
+#menu-indi-linkchild        {background-position:left -520px;} [dir=rtl] #menu-indi-linkchild        {background-position:right -520px;}
+#menu-indi-addwife          {background-position:left -832px;} [dir=rtl] #menu-indi-addwife          {background-position:right -832px;}
+#menu-indi-addewife         {background-position:left -832px;} [dir=rtl] #menu-indi-addewife         {background-position:right -832px;}
+#menu-indi-linkhusb         {background-position:left -520px;} [dir=rtl] #menu-indi-linkhusb         {background-position:right -520px;}
+#menu-indi-addhusb          {background-position:left -832px;} [dir=rtl] #menu-indi-addhusb          {background-position:right -832px;}
+#menu-indi-addehusb         {background-position:left -832px;} [dir=rtl] #menu-indi-addehusb         {background-position:right -832px;}
+#menu-indi-linkwife         {background-position:left -520px;} [dir=rtl] #menu-indi-linkwife         {background-position:right -520px;}
+#menu-indi-onepare          {background-position:left -832px;} [dir=rtl] #menu-indi-onepare          {background-position:right -832px;}
+
 /* Edit Notes */
 #menu-note-addfav           {background-position:left -832px;} [dir=rtl] #menu-note-fav              {background-position:right -832px;}
 #menu-note-del              {background-position:left -806px;} [dir=rtl] #menu-note-del              {background-position:right -806px;}

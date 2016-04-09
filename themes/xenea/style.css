@@ -258,6 +258,16 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #menu-indi-del              {background-position:left -713px;} [dir=rtl] #menu-indi-del               {background-position:right -713px;}
 #menu-indi-addfav           {background-position:left -736px;} [dir=rtl] #menu-indi-addfav            {background-position:right -736px;}
 
+#menu-indi-orderfam         {background-position:left -759px;} [dir=rtl] #menu-indi-orderfam         {background-position:right -759px;}
+#menu-indi-linkchild        {background-position:left -875px;} [dir=rtl] #menu-indi-linkchild        {background-position:right -875px;}
+#menu-indi-addwife          {background-position:left -690px;} [dir=rtl] #menu-indi-addwife          {background-position:right -690px;}
+#menu-indi-addewife         {background-position:left -690px;} [dir=rtl] #menu-indi-addewife         {background-position:right -690px;}
+#menu-indi-linkhusb         {background-position:left -875px;} [dir=rtl] #menu-indi-linkhusb         {background-position:right -875px;}
+#menu-indi-addhusb          {background-position:left -690px;} [dir=rtl] #menu-indi-addhusb          {background-position:right -690px;}
+#menu-indi-addehusb         {background-position:left -690px;} [dir=rtl] #menu-indi-addehusb         {background-position:right -690px;}
+#menu-indi-linkwife         {background-position:left -875px;} [dir=rtl] #menu-indi-linkwife         {background-position:right -875px;}
+#menu-indi-onepare          {background-position:left -690px;} [dir=rtl] #menu-indi-onepare          {background-position:right -690px;}
+
 /* Edit Notes */
 #menu-note-addfav           {background-position:left -736px;} [dir=rtl] #menu-note-fav               {background-position:right -736px;}
 #menu-note-del              {background-position:left -713px;} [dir=rtl] #menu-note-del               {background-position:right -713px;}
