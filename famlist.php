@@ -91,6 +91,11 @@ if ($show_all=='yes') {
 		$legend=$UNKNOWN_NN;
 	} else {
 		$legend=htmlspecialchars($surname);
+		// The surname parameter is a root/canonical form.
+		// Display it as the actual surname
+		foreach (WT_Query_Name::surnames($surname, $alpha, $show_marnm === 'yes', true, WT_GED_ID) as $details) {
+			$legend = implode('/', array_keys($details));
+		}
 	}
 	$url=WT_SCRIPT_NAME.'?surname='.rawurlencode($surname).'&amp;ged='.WT_GEDURL;
 	switch($falpha) {
@@ -269,4 +274,4 @@ echo '
 				}
 			}
 		}
-	echo '</div>';	
+	echo '</div>';
