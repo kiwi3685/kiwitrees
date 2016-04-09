@@ -257,6 +257,10 @@ textarea:required:invalid {
 #extra-menu li ul {
 	left: auto;
 	right: 0;
+	max-height: 400px;
+	min-width: 140px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 #extra-menu li ul,
@@ -384,7 +388,10 @@ textarea:required:invalid {
 	display: none;
 	line-height: 12px;
 	list-style: none;
-	min-width: 138px;
+	max-height: 400px;
+	min-width: 150px;
+	overflow-y: auto;
+	overflow-x: hidden;
 	position: absolute;
 	padding: 0;
 	z-index: 999;

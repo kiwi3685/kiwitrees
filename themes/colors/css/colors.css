@@ -77,7 +77,7 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 
 /* Options Menu  */
 .makeMenu {float:right;margin:10px;}
-.makeMenu ul {border-radius:5px;}
+.makeMenu ul {border-radius:5px; max-height: 400px; min-width: 140px; overflow-y: auto; overflow-x: hidden;}
 .makeMenu li {display:inline;position:relative;white-space:nowrap;z-index:100;}
 .makeMenu li:before {content:" | ";}
 .makeMenu li a.link {font-size:13px;margin-left:5px;margin-right:5px;}
@@ -102,7 +102,7 @@ span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
 /* Menu setup*/
 #topMenu #nav-select {display: none;}
 #main-menu {display: inline-block;width:100%;margin:0;padding:0;height:48px;}
-#main-menu ul {padding:0;margin:0;border:1px solid #dddddd;border-radius:5px;list-style-type:none;position:absolute;visibility:hidden;opacity:0;background:#fff;z-index:110;}
+#main-menu ul {	max-height: 400px; min-width: 140px; overflow-y: auto; overflow-x: hidden; padding:0;margin:0;border:1px solid #dddddd;border-radius:5px;list-style-type:none;position:absolute;visibility:hidden;opacity:0;background:#fff;z-index:110;}
 #main-menu li {display:block; position:relative;float:left;list-style:none;}
 #main-menu li a {display:block;}
 #main-menu li > ul {display:block;left:100%;right:auto;position:absolute;top:0;z-index:210;}
@@ -188,9 +188,7 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 
 
 /* Calendar Icons */
-#menu-calendar-day          {background-position:left -572px;} [dir=rtl] #menu-calendar-day          {background-position:right -572px;}
-#menu-calendar-month        {background-position:left -572px;} [dir=rtl] #menu-calendar-month        {background-position:right -572px;}
-#menu-calendar-year         {background-position:left -572px;} [dir=rtl] #menu-calendar-year         {background-position:right -572px;}
+#menu-calendar          {background-position:left -572px;} [dir=rtl] #menu-calendar-day          {background-position:right -572px;}
 
 /* Search Icons */
 #menu-search-general        {background-position:left -598px;} [dir=rtl] #menu-search-general        {background-position:right -598px;}
