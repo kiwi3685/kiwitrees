@@ -488,7 +488,6 @@ textarea:required:invalid {
 	font-size: 12px;
 	margin-top: 120px;
 	min-height: 60px;
-	padding: 10px;
 	text-align: center;
 }
 
@@ -6444,9 +6443,6 @@ textarea#NOTE {
  		float:none;
  	}
 
- 	#content {
- 		top: auto;
- 	}
 	#home-page #index_main_blocks,
 	#home-page #index_small_blocks > div {
 		float: none;
