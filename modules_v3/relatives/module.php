@@ -49,7 +49,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		echo '<table><tr>';
 		echo '<td><i class="icon-cfamily"></i></td>';
 		echo '<td><span class="subheaders">', $label, '</span>';
-		echo ' - <a href="', $url, '">', WT_I18N::translate('View Family'), '</a></td>';
+		echo ' - <a href="', $url, '">', WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'), '</a></td>';
 		echo '</tr></table>';
 	}
 

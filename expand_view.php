@@ -90,7 +90,7 @@ foreach ($events as $event) {
 				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
 			if ($event->getParentObject() instanceof WT_Family) {
-				echo '<a href="', $event->getParentObject()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), ' - </a>';
+				echo '<a href="', $event->getParentObject()->getHtmlUrl(), '">', WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'), ' - </a>';
 			}
 			echo ' ',format_fact_place($event, true, true);
 			echo '</div>';

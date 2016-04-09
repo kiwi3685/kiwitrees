@@ -194,7 +194,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	}
 	if ($fact->getParentObject() instanceof WT_Family && $record instanceof WT_Person) {
 		// Family events on an individual page
-		echo '<a href="', $fact->getParentObject()->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
+		echo '<a href="', $fact->getParentObject()->getHtmlUrl(), '">', WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'), '</a><br>';
 	}
 
 	// Print the value of this fact/event
@@ -619,7 +619,7 @@ function print_media_links($factrec, $level, $pid='') {
 									$family = WT_Family::getInstance($famid);
 									if ($family) {
 										if ($spouse) echo " - ";
-										echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+										echo '<a href="', $family->getHtmlUrl(), '">', WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'), '</a>';
 									}
 								}
 							}
@@ -1253,7 +1253,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			if ($spouse) {
 				echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
-			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
+			echo '<a href="', $family->getHtmlUrl(), '">', WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'), '</a><br>';
 		}
 	}
 
