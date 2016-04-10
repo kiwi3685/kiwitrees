@@ -758,13 +758,13 @@ table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; ma
 .gm_levels input {width:90%;}
 
 /* Geographic data */
-#gm_tabs {width:980px;}
+#gm_tabs {width:1000px;}
 #gm_breadcrumb, #gm_breadcrumb a {color:#25a325; font-weight:bold; }
 #gm_breadcrumb{float:right;margin-top:10px;text-align:right;width:50%}
 #gm_active {padding:5px; vertical-align:top;}
 [dir=rtl] #gm_breadcrumb {float:left;text-align:left;}
 .gm_plac_edit {border-spacing:0;}
-.gm_plac_edit th {font-weight:normal; padding:10px; text-align:left;}
+.gm_plac_edit th {font-weight:normal; padding:0 3px; text-align:left;}
 [dir=rtl] .gm_plac_edit th {text-align:right;}
 .gm_plac_edit td {border-bottom:1px solid #d3d3d3; padding:0 3px;}
 #gm_manage {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; font-size: 14px; margin:10px 0 0; padding:0 5px; width:98%;}
@@ -774,8 +774,8 @@ table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; ma
 #gm_active input {height:auto; vertical-align:top;}
 div.scrollableContainer{border:1px solid #888;color:#555;margin:10px auto;padding:32px 0;position:relative;}
 div.scrollingArea{background-color:#fff;height:608px;overflow-x:auto;overflow-y:scroll;}
-.gm_plac_edit thead {border-bottom:2px solid #d3d3d3; left:0;top:0;position:absolute;width:952px;}
-.gm_plac_edit tfoot {border-top:2px solid #d3d3d3; left:0;bottom:0;position:absolute;width:952px;}
+.gm_plac_edit thead {left:0;top:0;position:absolute;width:952px;}
+.gm_plac_edit tfoot {left:0;bottom:0;position:absolute;width:952px;}
 .gm_plac_edit .input {
 	display: inline-block;
 	padding: 0 5px;
