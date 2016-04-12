@@ -346,8 +346,17 @@ if (WT_USER_IS_ADMIN) {
 				<span>' ,
 					WT_SERVER_NAME.WT_SCRIPT_PATH, '?ged=
 				</span>
-				<input type="hidden" id="new_tree" name="action" value="new_tree">
-				<input name="ged_name" maxlength="31" value="', $default_tree_name, '" pattern="[^&lt;&gt;&amp;&quot;#^$.*?{}()\[\]/\\]*" required type="text">
+				<input type="hidden" id="new_tree" name="action" value="new_tree">' ; ?>
+				<input
+					id="ged_name"
+					maxlength="31"
+					name="tree_name"
+					pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*"
+					required
+					type="text"
+					value="<?php echo $default_tree_name; ?>"
+					>
+				<?php echo '
 				<span class="help-text">' , WT_I18N::translate('Keep this short and avoid spaces and punctuation. A family name might be a good choice.'), '</span>
 			</div>
 			<button class="btn btn-primary" type="submit">
