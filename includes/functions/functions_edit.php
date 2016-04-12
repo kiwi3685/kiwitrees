@@ -924,11 +924,11 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				}
 				?>
 			</div>
-			<div id="add_other_details">
-				<?php
-				// If we are adding a new individual, add the basic details
-				if ($nextaction != 'update') {
-					// 1 SEX
+			<?php
+			// If we are adding a new individual, add the basic details
+			if ($nextaction != 'update') { ?>
+				<div id="add_other_details">
+					<?php // 1 SEX
 					if ($famtag == "HUSB" || $sextag == "M") {
 						add_simple_tag("0 SEX M");
 					} elseif ($famtag == "WIFE" || $sextag == "F") {
@@ -959,10 +959,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 								addSimpleTags($match);
 							}
 						}
-					}
-				}
-				?>
-			</div>
+					} ?>
+				</div>
+			<?php } ?>
 		<div id="additional_facts">
 			<?php if ($nextaction == 'update') { ?> <!-- GEDCOM 5.5.1 spec says NAME doesn't get a OBJE -->
 				<p><?php echo print_add_layer('SOUR'); ?></p>

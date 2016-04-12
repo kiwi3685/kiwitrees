@@ -4330,8 +4330,11 @@ a.icon-udarrow:hover {
 	margin: 5px;
 }
 
-#edit_interface-page input[type="text"],
-#edit_interface-page textarea,
+#edit_interface-page input[type="text"]  {
+	vertical-align: top;
+	width: 240px;
+}
+
 #edit_interface-page input[type="text"][id*="PAGE"],
 #edit_interface-page input[type="text"][id*="_UID"],
 #edit_interface-page textarea[id*="ADDR"],
