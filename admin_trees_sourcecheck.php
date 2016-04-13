@@ -48,7 +48,7 @@ $controller
 		jQuery("#citation_table").dataTable({
 			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			' . WT_I18N::datatablesI18N() . ',
-			autoWidth: true,
+			autoWidth: false,
 			paging: true,
 			pagingType: "full_numbers",
 			lengthChange: true,
@@ -58,11 +58,14 @@ $controller
 			sorting: [[2,"asc"]],
 			displayLength: 20,
 			columns: [
-				/* 0-type   */ { "sWidth": "200px" },
-				/* 1-record */ null,
+				/* 0-type   */ null,
+				/* 1-record */ { "className": "nowrap" },
 				/* 2-cite   */ null
 			]
 		});
+
+		jQuery("#source_list").css("visibility", "visible");
+		jQuery(".loading-image").css("display", "none");
 	');
 
 $sid = WT_Filter::post('source');
@@ -97,10 +100,9 @@ $sid = WT_Filter::post('source');
 	<hr class="clearfloat">
 
 	<?php if (WT_Filter::post('go')) { 	?>
-		<div id="source_list">
+		<div id="source_list" style="visibility: hidden;">
 			<?php
-
-			$source		= WT_Source::getInstance($sid);
+			$source	= WT_Source::getInstance($sid);
 			$data	= citations($sid);
 			?>
 			<h3>
@@ -109,7 +111,7 @@ $sid = WT_Filter::post('source');
 			<table id="citation_table" style="width: 100%;">
 				<thead>
 					<tr>
-						<th><?php echo WT_I18N::translate('Edit raw GEDCOM record'); ?></th>
+						<th style="min-width: 200px;"><?php echo WT_I18N::translate('Edit raw GEDCOM record'); ?></th>
 						<th><?php echo WT_I18N::translate('Record'); ?></th>
 						<th><?php echo WT_I18N::translate('Citation'); ?></th>
 					</tr>
@@ -117,14 +119,10 @@ $sid = WT_Filter::post('source');
 				<tbody>
 					<?php
 					foreach ($data as $row) {
-						$needle		= '2 SOUR @' . $sid . '@';
-						$pos1		= strpos($row->gedrec, $needle) + strlen($needle);
-						$start_pos	= strpos($row->gedrec, '3 PAGE ', $pos1);
-						$end_pos	= strpos($row->gedrec, "\n", $start_pos);
-						$length		= $end_pos - $start_pos - 7;
 						$indi		= WT_Person::getInstance($row->xref);
 						$fam_data	= WT_Family::getInstance($row->xref);
 						$record		= WT_Person::getInstance($row->xref) ? WT_Person::getInstance($row->xref) : WT_Family::getInstance($row->xref);
+						preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*)\n/i', $row->gedrec, $match);
 						?>
 						<tr>
 							<td>
@@ -147,12 +145,17 @@ $sid = WT_Filter::post('source');
 										break;
 								}
 								?>
-								<a href="#" onclick="return edit_raw('<?php echo $row->xref; ?>');"><?php echo $icon . ' ' . $type; ?></a>
+								<span>
+									<?php echo $icon; ?>
+								</span>
+								<a href="#" onclick="return edit_raw('<?php echo $row->xref; ?>');">
+									<?php echo $type; ?>
+								</a>
 							</td>
 							<td>
 								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank"><?php echo $record->getFullName(); ?></a>
 							<td>
-								<?php echo substr($row->gedrec, $start_pos + 7, $length); ?>
+								<?php echo $match[1]; ?>
 							</td>
 						</tr>
 					<?php } ?>

@@ -158,11 +158,10 @@ echo '			<p><a ', (WT_SCRIPT_NAME=="admin_trees_manage.php" ? 'class="current" '
 				foreach (WT_Tree::getAll() as $tree) {
 					if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
 						// Add a title="" element, since long tree titles are cropped
-echo '					<p><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', htmlspecialchars($tree->tree_title), '" dir="auto">', $tree->tree_title_html, '</a></span></p>';
+						echo '<p><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', htmlspecialchars($tree->tree_title), '" dir="auto">', $tree->tree_title_html, '</a></span></p>';
 					}
 				}
-echo '		</div>
-
+			echo '</div>
 			<h3 id="tree-tools"><i class="fa fa-wrench fa-fw"></i><span class="menu-name">', WT_I18N::translate('Family tree tools'), '</span></h3>
 			<div>';
 			//-- gedcom list
@@ -181,7 +180,7 @@ echo '		</div>
 				);
 				asort($ft_tools);
 				foreach ($ft_tools as $file=>$title) {
-					echo '<p><a ', (WT_SCRIPT_NAME=="', $file, '"		? 'class="current" ' : ''), 'href="', $file, '">', $title, '</a></p>';
+					echo '<p><a ', (WT_SCRIPT_NAME==$file ? 'class="current" ' : ''), 'href="', $file, '">', $title, '</a></p>';
 				}
 				echo '<p><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'',  WT_I18N::translate('Set the default blocks for new family trees'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></p>
 			</div>';
