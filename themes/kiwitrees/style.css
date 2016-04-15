@@ -6102,9 +6102,9 @@ General Resource page styling  */
 	min-width: 15%;
 }
 #resource-page.individual_report .individual_report_fact .place {
-	display: inline-block;
 	min-width: 20%;
 }
+#resource-page.individual_report .individual_report_fact .place,
 #resource-page.individual_report .individual_report_fact .field,
 #resource-page.individual_report .individual_report_fact .field span {
 	display: inline-block;
@@ -6531,6 +6531,10 @@ textarea#NOTE {
 		display: none !important;
 	}
 
+	#content {
+		top: 0;
+	}
+
 	form,
 	button,
 	input {
@@ -6561,23 +6565,16 @@ textarea#NOTE {
 	#fancy_treeview .generation-block {
 		page-break-after: always;
 	}
-
 	#fancy_treeview .generation-block:last-child {
 		page-break-after: avoid;
 	}
 
-	#resource-page.individual_report #families,
-	#resource-page.individual_report #facts_sources {
-		page-break-inside: avoid;
-		position: relative;
-		display: block;
+	/* Resource pages pagination */
+	#resource-page.individual_report #facts_events,
+	#resource-page.individual_report #notes,
+	#resource-page.individual_report #families {
+		font-size: 90%;
+		page-break-after: auto;
 	}
-
-	.page-break	{
-		position: relative;
-		display: block;
-		page-break-after: always;
-	}
-
 
 }

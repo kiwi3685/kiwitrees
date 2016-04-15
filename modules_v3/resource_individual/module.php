@@ -141,14 +141,15 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 			</div>
 			<hr style="clear:both;">
 			<!-- end of form -->
-			<?php if ($go == 1) {
-				$person = WT_Person::getInstance($rootid);
-				$indifacts = $person->getIndiFacts();
-				sort_facts($indifacts);
-				if ($person && $person->canDisplayDetails()) { ; ?>
-					<h2><?php echo $person->getFullName(); ?></h2>
-					<?php // Image displays
-					switch ($photos) {
+				<?php if ($go == 1) { ?>
+					<?php
+					$person = WT_Person::getInstance($rootid);
+					$indifacts = $person->getIndiFacts();
+					sort_facts($indifacts);
+					if ($person && $person->canDisplayDetails()) { ; ?>
+						<h2><?php echo $person->getFullName(); ?></h2>
+						<?php // Image displays
+						switch ($photos) {
 						case 'highlighted':
 							$image = $person->displayImage(true);
 							if ($image) {
@@ -164,156 +165,153 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 						break;
 
 					} ?>
-					<div id="facts_events">
-						<h3><?php echo WT_I18N::translate('Facts and events'); ?></h3>
-						<?php
-						$source_num = 1;
-						$source_list = array();
-						foreach ($indifacts as $fact) {
-							if (
-								(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
-								&& !in_array($fact->getTag(), $exclude_tags)
-							) { ?>
-									<div class="individual_report_fact">
-										<label>
-											<?php echo print_fact_label($fact, $person);
-											// -- count source(s) for this fact/event as footnote reference
-											$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
-											if ($ct > 0) {
-												$sup = '<sup>';
-													$sources = resource_sources($fact, 2, $source_num);
-													for ($i = 0; $i < $ct; $i++) {
-														$sup .= $source_num . ',&nbsp;';
-														$source_num = $source_num + 1;
-													}
-													$sup = rtrim($sup,',&nbsp;');
-													$source_list = array_merge($source_list, $sources);
-												echo $sup . '</sup>';
-											} ?>
-										</label>
-										<?php echo print_resourcefact($fact, $person); ?>
-									</div>
-							<?php }
-						} ?>
-					</div>
+				<div id="facts_events">
+					<h3><?php echo WT_I18N::translate('Facts and events'); ?></h3>
 					<?php
-					$otherfacts = $person->getOtherFacts();
-					foreach ($otherfacts as $fact) {
-						if ($fact->getTag() == 'NOTE') { ?>
-							<div id="notes">
-								<h3><?php echo WT_I18N::translate('Notes'); ?></h3>
-								<ol>
-							<li>
-								<?php echo print_resourcenotes($fact, 1, true, true); ?>
-							</li>
-						</ol>
-					</div>
+					$source_num = 1;
+					$source_list = array();
+					foreach ($indifacts as $fact) {
+						if (
+							(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
+							&& !in_array($fact->getTag(), $exclude_tags)
+						) { ?>
+							<div class="individual_report_fact">
+								<label>
+									<?php echo print_fact_label($fact, $person);
+									// -- count source(s) for this fact/event as footnote reference
+									$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+									if ($ct > 0) {
+										$sup = '<sup>';
+											$sources = resource_sources($fact, 2, $source_num);
+											for ($i = 0; $i < $ct; $i++) {
+												$sup .= $source_num . ',&nbsp;';
+												$source_num = $source_num + 1;
+											}
+											$sup = rtrim($sup,',&nbsp;');
+											$source_list = array_merge($source_list, $sources);
+										echo $sup . '</sup>';
+									} ?>
+								</label>
+								<?php echo print_resourcefact($fact, $person); ?>
+							</div>
 						<?php }
 					} ?>
-					<div id="families">
-						<h3><?php echo WT_I18N::translate('Families'); ?></h3>
-						<?php
-						$families = $person->getChildFamilies();
-						// parents
-						foreach ($families as $family) { ?>
-							<h4><?php echo $person->getChildFamilyLabel($family); ?></h4>
-							<div id="parents">
-								<?php
-								$husband = $family->getHusband();
-								$wife = $family->getWife();
-								if (!empty($husband)) {  ?>
+				</div>
+				<?php
+				$otherfacts = $person->getOtherFacts();
+				foreach ($otherfacts as $fact) {
+					if ($fact->getTag() == 'NOTE') { ?>
+						<div id="notes">
+							<h3><?php echo WT_I18N::translate('Notes'); ?></h3>
+							<ol>
+								<li>
+									<?php echo print_resourcenotes($fact, 1, true, true); ?>
+								</li>
+							</ol>
+						</div>
+					<?php }
+				} ?>
+				<div id="families">
+					<h3><?php echo WT_I18N::translate('Families'); ?></h3>
+					<?php
+					$families = $person->getChildFamilies();
+					// parents
+					foreach ($families as $family) { ?>
+						<h4><?php echo $person->getChildFamilyLabel($family); ?></h4>
+						<div id="parents">
+							<?php
+							$husband = $family->getHusband();
+							$wife = $family->getWife();
+							if (!empty($husband)) {  ?>
+								<p>
+									<span class="label">
+										<?php echo WT_I18N::translate('Father'); ?>
+									</span>
+									<?php echo $husband->getFullName(); ?>&nbsp;
+									<span class="details">
+										<?php echo $this->personDetails($husband); ?>
+									</span>
+								</p>
+							<?php }
+							if (!empty($wife)) {  ?>
+								<p>
+									<span class="label">
+										<?php echo WT_I18N::translate('Mother'); ?>
+									</span>
+									<?php echo $wife->getFullName(); ?>&nbsp;
+									<span class="details">
+										<?php echo $this->personDetails($wife); ?>
+									</span>
+								</p>
+							<?php } ?>
+						</div>
+						<div id="siblings">
+							<?php
+							$children = $family->getChildren();
+							foreach ($children as $child) {
+								if (!empty($child) && $child != $person) {  ?>
 									<p>
 										<span class="label">
-											<?php echo WT_I18N::translate('Father'); ?>
+											<?php echo get_relationship_name(get_relationship($person, $child)); ?>
 										</span>
-										<?php echo $husband->getFullName(); ?>&nbsp;
+										<?php echo $child->getFullName(); ?>&nbsp;
 										<span class="details">
-											<?php echo $this->personDetails($husband); ?>
+											<?php echo $this->personDetails($child); ?>
 										</span>
 									</p>
 								<?php }
-								if (!empty($wife)) {  ?>
+							} ?>
+						</div>
+					<?php }
+					// spouses
+					$families	= $person->getSpouseFamilies();
+					foreach ($families as $family) {
+						$spouse = $family->getSpouse($person);
+						$marriage = $family->getMarriage(); ?>
+							<h4><?php echo ($marriage ? WT_I18N::translate('Family with spouse') : WT_I18N::translate('Family with partner')); ?></h4>
+							<div id="spouses">
+								<p>
+									<span class="label">
+										<?php echo ($marriage ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner')); ?>
+									</span>
+									<?php echo $spouse->getFullName(); ?>&nbsp;
+									<span class="details">
+										<?php echo $this->personDetails($spouse); ?>
+									</span>
+								</p>
+						</div>
+						<div id="spouse_children">
+							<?php
+							$children = $family->getChildren();
+							foreach ($children as $child) {
+								if (!empty($child)) {  ?>
 									<p>
 										<span class="label">
-											<?php echo WT_I18N::translate('Mother'); ?>
+											<?php echo get_relationship_name(get_relationship($person, $child)); ?>
 										</span>
-										<?php echo $wife->getFullName(); ?>&nbsp;
+										<?php echo $child->getFullName(); ?> &nbsp;
 										<span class="details">
-											<?php echo $this->personDetails($wife); ?>
+											<?php echo $this->personDetails($child); ?>
 										</span>
 									</p>
-								<?php } ?>
-							</div>
-							<div id="siblings">
-								<?php
-								$children = $family->getChildren();
-								foreach ($children as $child) {
-									if (!empty($child) && $child != $person) {  ?>
-										<p>
-											<span class="label">
-												<?php echo get_relationship_name(get_relationship($person, $child)); ?>
-											</span>
-											<?php echo $child->getFullName(); ?>&nbsp;
-											<span class="details">
-												<?php echo $this->personDetails($child); ?>
-											</span>
-										</p>
-									<?php }
-								} ?>
-							</div>
-						<?php }
-
-						// spouses
-						$families	= $person->getSpouseFamilies();
-						foreach ($families as $family) {
-							$spouse = $family->getSpouse($person);
-							$marriage = $family->getMarriage(); ?>
-								<h4><?php echo ($marriage ? WT_I18N::translate('Family with spouse') : WT_I18N::translate('Family with partner')); ?></h4>
-								<div id="spouses">
-									<p>
-										<span class="label">
-											<?php echo ($marriage ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner')); ?>
-										</span>
-										<?php echo $spouse->getFullName(); ?>&nbsp;
-										<span class="details">
-											<?php echo $this->personDetails($spouse); ?>
-										</span>
-									</p>
-							</div>
-							<div id="spouse_children">
-								<?php
-								$children = $family->getChildren();
-								foreach ($children as $child) {
-									if (!empty($child)) {  ?>
-										<p>
-											<span class="label">
-												<?php echo get_relationship_name(get_relationship($person, $child)); ?>
-											</span>
-											<?php echo $child->getFullName(); ?> &nbsp;
-											<span class="details">
-												<?php echo $this->personDetails($child); ?>
-											</span>
-										</p>
-									<?php }
-								} ?>
-							</div>
-						<?php } ?>
-
-					</div>
-					<div class="page-break"></div>
-					<div id="facts_sources">
-						<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
-						<?php
-							foreach ($source_list as $key => $value) {
-								echo '
-									<p>
-										<span>' . ($key + 1) . '</span>
-										<span>' . $value . '</span>
-									</p>
-								';
-							}
-						?>
-					</div>
+								<?php }
+							} ?>
+						</div>
+					<?php } ?>
+				</div>
+				<div id="facts_sources">
+					<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
+					<?php
+						foreach ($source_list as $key => $value) {
+							echo '
+								<p>
+									<span>' . ($key + 1) . '</span>
+									<span>' . $value . '</span>
+								</p>
+							';
+						}
+					?>
+				</div>
 				<?php } elseif ($person && $person->canDisplayName()) { ?>
 					<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $person->getFullName(); ?></h2>
 					<p class="ui-state-highlight"><?php echo WT_I18N::translate('The details of this individual are private.'); ?></p>
