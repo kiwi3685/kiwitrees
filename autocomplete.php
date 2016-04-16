@@ -264,7 +264,7 @@ switch ($type) {
 				return $data;
 			}
 			$places = json_decode($json, true);
-			if ($places["geonames"]) {
+			if (isset($places['geonames']) && is_array($places['geonames'])) {
 				foreach ($places["geonames"] as $k => $place) {
 					$data[] = $place["name"].", ".
 										$place["adminName2"].", ".
