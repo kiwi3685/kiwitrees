@@ -39,9 +39,19 @@ body {
 	font-size: 16px;
 	margin: 0;
 	width: 100%;
-	display: flex;
+	/* flex box settings */
 	height: 100vh;
-	flex-direction: column;
+	min-height: 100vh;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+html, body {
+    height:100%;/* needed for flexbox in IE11 */
 }
 
 #body_simple {
@@ -531,6 +541,8 @@ textarea:required:invalid {
 	overflow: hidden;
 	padding: 0;
 	flex: 1 0 auto;
+    -ms-flex: 1;
+    -webkit-flex: 1 0 auto;;
 }
 
 #body_simple #content {

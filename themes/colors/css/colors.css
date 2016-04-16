@@ -31,10 +31,20 @@ html {overflow-y:scroll;}
 body {
     font:12px tahoma, arial, helvetica, sans-serif;
     margin: 0;
-    display: flex;
+    /* flex box settings */
 	height: 100vh;
-	flex-direction: column;
+	min-height: 100vh;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
 }
+html, body {
+    height:100%;/* needed for flexbox in IE11 */
+}
+
 legend,.details_label {font-weight:700;}
 a {color:#333333;text-decoration:none;}
 a:hover {color:#ff0000;text-decoration:none;}
@@ -268,6 +278,8 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
     clear:both;
     padding:10px 10px 0 10px;
     flex: 1 0 auto;
+    -ms-flex: 1;
+    -webkit-flex: 1 0 auto;;
 }
 #content .center a {font-size:13px;}
 #content .center a.warning,#login-box span.error,#calendar-page span.error {color:#ff5500;}

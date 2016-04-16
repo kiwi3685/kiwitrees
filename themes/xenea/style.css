@@ -31,9 +31,18 @@ body {color:#000066;
     background-color:#fff;
     font:12px tahoma, arial, helvetica, sans-serif;
     margin:1px;
-    display: flex;
+    /* flex box settings */
 	height: 100vh;
-	flex-direction: column;
+	min-height: 100vh;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+html, body {
+    height:100%;/* needed for flexbox in IE11 */
 }
 
 a {color:#0000ff;text-decoration:none;}
@@ -523,6 +532,8 @@ font-size:10px;}
     clear:both;
     margin-left:1px;
     flex: 1 0 auto;
+    -ms-flex: 1;
+    -webkit-flex: 1 0 auto;;
 }
 
 #footer {

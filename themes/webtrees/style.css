@@ -33,10 +33,20 @@ body {
     background-color:#fff;
     font:12px tahoma, arial, helvetica, sans-serif;
     margin:1px;padding-left:5px;
-    display: flex;
+    /* flex box settings */
 	height: 100vh;
-	flex-direction: column;
+	min-height: 100vh;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
 }
+html, body {
+    height:100%;/* needed for flexbox in IE11 */
+}
+
 fieldset {margin:8px 8px 4px 8px;text-align:left;}
 [dir=rtl] fieldset {text-align:right;}
 legend {font-weight:bold;}
@@ -74,6 +84,8 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #content {
     clear:both;
     flex: 1 0 auto;
+    -ms-flex: 1;
+    -webkit-flex: 1 0 auto;;
 }
 #footer {
     border-top: 2px solid #81A9CB;
