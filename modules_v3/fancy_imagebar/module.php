@@ -295,33 +295,33 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<div class="left">'.WT_I18N::translate('Choose which images you want to show in the Fancy Imagebar').':'.help_link('choose_images', $this->getName()).'</div>
 				<div class="selectbox"><span class="nowrap">'.WT_I18N::translate('select all').'</span>';
 					$this->options('images') == 1 ? $html .= '<input id="select_all" type="checkbox" checked="checked"/>' :  $html .= '<input id="select_all" type="checkbox"/>';
-	// The datatable will be dynamically filled with images from the database.
-	$html .= '</div>
-				<div class="clearfloat"></div>
-				<h3 class="no_images">'.WT_I18N::translate('No images to display for this tree').'</h3>';
-				$this->options('images') == 1 ? $imagelist = $this->getXrefs() : $imagelist = $this->options('images');
-	$html .= '	<input id="imagelist" type="hidden" name="NEW_FIB_IMAGES" value = "'.implode("|", $imagelist).'">
-				<table id="image_block"><thead><th>&nbsp;</th></thead><tbody></tbody></table>
-			</div>
-			<div id="block_right" class="right">
-				<h3>'.WT_I18N::translate('Options').':</h3>
-				<div id="options">
-					<div class="field">
-						<label class="label">'.WT_I18N::translate('Random images').':</label>'.
-						 edit_field_yes_no('NEW_FIB_OPTIONS[RANDOM]', $this->options('random')).'
-					</div>
-					<div class="field tone">
-						<label class="label">'.WT_I18N::translate('Images Tone').':</label>'.
-						select_edit_control('NEW_FIB_OPTIONS[TONE]', array('Sepia', 'Black and White', 'Colors'), null, $this->options('tone')).'
-					</div>
-					<div class="field">
-						<label class="label">'.WT_I18N::translate('Cropped image size').':</label>
-						<input type="text" name="NEW_FIB_OPTIONS[SIZE]" size="3" value="'.$this->options('size').'"/>&nbsp;px
+		// The datatable will be dynamically filled with images from the database.
+		$html .= '</div>
+					<div class="clearfloat"></div>
+					<h3 class="no_images">'.WT_I18N::translate('No images to display for this tree').'</h3>';
+					$this->options('images') == 1 ? $imagelist = $this->getXrefs() : $imagelist = $this->options('images');
+		$html .= '	<input id="imagelist" type="hidden" name="NEW_FIB_IMAGES" value = "'.implode("|", $imagelist).'">
+					<table id="image_block"><thead><th>&nbsp;</th></thead><tbody></tbody></table>
+				</div>
+				<div id="block_right" class="right">
+					<h3>'.WT_I18N::translate('Options').':</h3>
+					<div id="options">
+						<div class="field">
+							<label class="label">'.WT_I18N::translate('Random images').':</label>'.
+							 edit_field_yes_no('NEW_FIB_OPTIONS[RANDOM]', $this->options('random')).'
+						</div>
+						<div class="field tone">
+							<label class="label">'.WT_I18N::translate('Images Tone').':</label>'.
+							select_edit_control('NEW_FIB_OPTIONS[TONE]', array('Sepia', 'Black and White', 'Colors'), null, $this->options('tone')).'
+						</div>
+						<div class="field">
+							<label class="label">'.WT_I18N::translate('Cropped image size').':</label>
+							<input type="text" name="NEW_FIB_OPTIONS[SIZE]" size="3" value="'.$this->options('size').'"/>&nbsp;px
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
-		</div>';
+			</form>
+			</div>';
 
 		// output
 		ob_start();
@@ -440,6 +440,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module_Menu
 	private function GetFancyImageBar(){
+		global $controller;
 
 		if($medialist=$this->FancyImageBarMedia()) {
 			$width = $height = $this->options('size');
@@ -471,10 +472,22 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 					$FancyImageBar = $this->FancyImageBarSepia($FancyImageBar, 0);
 				}
 				ob_start();imagejpeg($FancyImageBar,null,100);$FancyImageBar = ob_get_clean();
-				$html = '<div id="fancy_imagebar">
+				$html = '<div id="fancy_imagebar" style="clear:both; overflow:hidden;">
 							<img alt="fancy_imagebar" src="data:image/jpeg;base64,'.base64_encode($FancyImageBar).'">
 						</div>';
-
+						$theme = explode('/', WT_THEME_DIR);
+						switch ($theme[1]) {
+							case 'kiwitrees':
+							$height = $this->options('size');
+							$controller->addInlineJavaScript("jQuery('#content').css({'margin-top':'" . $height . "px'});");
+							break;
+							case 'xenea':
+							$height = $this->options('size') + 48;
+							$controller->addInlineJavaScript("jQuery('#topMenu').css({'height':'" . $height . "px'});");
+							break;
+							default:
+							break;
+						}
 				// output
 				return $html;
 			}
@@ -494,7 +507,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$controller->addExternalJavascript(WT_MODULES_DIR.$this->getName().'/style.js');
 
 				// put the fancy imagebar in the right position
-				$controller->addInlineJavaScript("jQuery('#content').before(jQuery('#fancy_imagebar'));");
+				$controller->addInlineJavaScript("jQuery('#topMenu').append(jQuery('#fancy_imagebar'));");
 				$html = $this->GetFancyImageBar();
 
 				// output

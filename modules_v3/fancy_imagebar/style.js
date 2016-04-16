@@ -26,26 +26,20 @@
 var $theme = WT_THEME_DIR.split("/")[1];
 
 jQuery('#fancy_imagebar').css({"clear":"both","overflow":"hidden"});
-if ($theme === 'clouds') {
-	jQuery('#fancy_imagebar').css({"margin":"10px 10px 0 10px","border":"1px solid #003399"});
-	jQuery('#fancy_imagebar img').css({"margin-bottom":"-2px"});
-}
+
 if ($theme === 'colors') {
-	jQuery('#fancy_imagebar').append('<div class="divider" style="background-color:#999;height:1px;margin-top:1px">');
+	jQuery('#fancy_imagebar img').css({"border-top":"1px solid #999"});
 }
-if ($theme === 'fab') {
-	jQuery('#fancy_imagebar').css({"border":"#A9A9A9 1px solid","border-radius":"3px","margin":"0 3px"});
-	jQuery('#fancy_imagebar img').css({"margin-bottom":"-3px"});
-}
-if ($theme === 'justblack') {
-	jQuery('#fancy_imagebar').css({"margin-top":"-1px"}).append('<div class="divider" style="margin-top:3px">');
-}
-if ($theme === 'minimal') {
-	jQuery('#fancy_imagebar').css({"padding-top":"2px"}).append('<div class="divider" style="background-color:#555555;height:1px">');
+if ($theme === 'kiwitrees') {
+	jQuery('#fancy_imagebar').css({"line-height":"0","position":"initial", "top":"auto"});
+	jQuery('#fancy_imagebar img').css({"border-top":"5px solid #555"});
 }
 if ($theme === 'webtrees') {
-	jQuery('#fancy_imagebar').append('<div class="divider" style="background-color:#81A9CB;height:2px;margin-top:3px">');
+	jQuery('#fancy_imagebar img').css({"border-top":"2px solid #81A9CB", "margin-top":"5px", "padding-top":"7px"});
 }
 if ($theme === 'xenea') {
-	jQuery('#fancy_imagebar').append('<div class="divider" style="background-color:#0073CF;height:2px;margin:7px 0 15px">');
+	jQuery('#fancy_imagebar img').css({"border-top":"2px solid #0073CF", "margin-top":"15px"});
+}
+if ($theme === 'xenea') {
+//	jQuery('#fancy_imagebar').append('<div class="divider" style="background-color:#0073CF;height:2px;margin:7px 0 15px">');
 }
