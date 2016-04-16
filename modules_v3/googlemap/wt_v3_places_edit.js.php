@@ -270,13 +270,6 @@ if (!defined('WT_WEBTREES')) {
 		}
 		?>
 
-		prec = 20;
-		for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-			if (document.editplaces.NEW_PRECISION[i].checked) {
-				prec = document.editplaces.NEW_PRECISION[i].value;
-			}
-		}
-
 		// Set marker by clicking on map ---
 		clickset = google.maps.event.addListener(map, 'click', function(event) {
 			// alert(pos2);
@@ -303,11 +296,13 @@ if (!defined('WT_WEBTREES')) {
 		// Set marker by drag-n-drop on map ---
 		dragset = google.maps.event.addListener(marker, 'drag', function() {
 			pos1 = marker.getPosition();
+			prec = jQuery('input[name=NEW_PRECISION]:checked').val();
 			document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos1.lat()).toFixed(prec);
 			document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos1.lng()).toFixed(prec);
 		});
 		dropset = google.maps.event.addListener(marker, 'dragend', function() {
 			pos2 = marker.getPosition();
+			prec = jQuery('input[name=NEW_PRECISION]:checked').val();
 			document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos2.lat()).toFixed(prec);
 			document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos2.lng()).toFixed(prec);
 			updateMap('flag_drag');
@@ -319,12 +314,7 @@ if (!defined('WT_WEBTREES')) {
 	}
 
 	function setLoc(lat, lng) {
-		prec = 20;
-		for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
-			if (document.editplaces.NEW_PRECISION[i].checked) {
-				prec = document.editplaces.NEW_PRECISION[i].value;
-			}
-		}
+		prec = jQuery('input[name=NEW_PRECISION]:checked').val();
 		if (lat < 0.0) {
 			document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(prec) * -1);
 			document.editplaces.LATI_CONTROL.value = 'PL_S';
