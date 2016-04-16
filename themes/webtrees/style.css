@@ -2149,6 +2149,12 @@ div.widget {
 	margin: 2px;
 }
 /* ------------------ */
+/* Styling for Fancy Image bar */
+#fancy_imagebar img {
+	border-top: 2px solid #81A9CB;
+    margin-top: 5px;
+    padding-top: 7px;
+}
 
 /* Styling for GoogleMap module */
 #place_map {

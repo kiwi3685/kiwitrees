@@ -2170,6 +2170,11 @@ div.widget {
 }
 /* ------------------ */
 
+/* Styling for Fancy Image bar */
+#fancy_imagebar img {
+	border-top: 1px solid #999;
+}
+
 /* Styling for GoogleMap module */
 #place_map {
 	margin: 0 auto;

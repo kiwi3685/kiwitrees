@@ -2401,6 +2401,11 @@ div.widget {
 	margin: 2px;
 }
 /* ------------------ */
+/* Styling for Fancy Image bar */
+#fancy_imagebar img {
+	border-top: 2px solid #0073CF;
+    margin-top: 15px;
+}
 
 /* Styling for GoogleMap module */
 #place_map {

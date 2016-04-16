@@ -478,6 +478,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 						$theme = explode('/', WT_THEME_DIR);
 						switch ($theme[1]) {
 							case 'kiwitrees':
+							case 'levy':
 							$height = $this->options('size');
 							$controller->addInlineJavaScript("jQuery('#content').css({'margin-top':'" . $height . "px'});");
 							break;
@@ -502,9 +503,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if ($this->options('images') !== 0 && WT_SCRIPT_NAME === 'index.php') {
 			if ($SEARCH_SPIDER) return null;
 			if ($ctype=='gedcom') {
-
-				// add js file to set a few theme depending styles
-				$controller->addExternalJavascript(WT_MODULES_DIR.$this->getName().'/style.js');
 
 				// put the fancy imagebar in the right position
 				$controller->addInlineJavaScript("jQuery('#topMenu').append(jQuery('#fancy_imagebar'));");

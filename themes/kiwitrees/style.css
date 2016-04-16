@@ -5651,10 +5651,12 @@ div.widget {
 
 /* Styling for Fancy Image bar */
 #fancy_imagebar {
-	position: relative;
-	top: 105px;
+	line-height: 0;
 }
-/* ------------------ */
+
+#fancy_imagebar img {
+	border-top: 5px solid #555;
+}
 
 /* Styling for GoogleMap module */
 #place_map {
