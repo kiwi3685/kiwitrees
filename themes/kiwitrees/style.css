@@ -4330,21 +4330,18 @@ a.icon-udarrow:hover {
 	margin: 5px;
 }
 
-#edit_interface-page input[type="text"]  {
-	vertical-align: top;
-	width: 240px;
-}
-
 #edit_interface-page input[type="text"][id*="PAGE"],
 #edit_interface-page input[type="text"][id*="_UID"],
 #edit_interface-page textarea[id*="ADDR"],
 #edit_interface-page input[id*="ADDR"],
 #edit_interface-page textarea[id*="NOTE"],
+#edit_interface-page input[type="text"],
+#edit_interface-page textarea,
 #edit_interface-page #NAME_display,
 #addmedia-page input[type="text"],
 #inverselink-page input[type="text"] {
 	vertical-align: top;
-	width: 370px;
+	width: 270px;
 }
 
 #edit_interface-page input[id^="CENS_DATE"],
