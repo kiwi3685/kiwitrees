@@ -285,10 +285,6 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 							endforeach;
 			$html .= '	</select>
 				</div>
-				<div id="buttons">
-					<input type="submit" value="'.WT_I18N::translate('Save').'">&nbsp;&nbsp;
-					<input type="reset" value="'.WT_I18N::translate('Reset').'" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
-				</div>
 			</div>
 			<div class="clearfloat"></div>
 			<div id="block_left" class="left">
@@ -320,6 +316,16 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 						</div>
 					</div>
 				</div>
+				<p class="buttons">
+					<button class="btn btn-primary save" type="submit">
+						<i class="fa fa-floppy-o"></i>' .
+						WT_I18N::translate('save') . '
+					</button>
+					<button class="btn btn-primary cancel" type="reset" onclick="if (confirm(\''.WT_I18N::translate('The settings will be reset to default (for all trees). Are you sure you want to do this?').'\')) window.location.href=\'module.php?mod='.$this->getName().'&amp;mod_action=admin_reset\';">
+						<i class="fa fa-refresh"></i>' .
+						WT_I18N::translate('reset') . '
+					</button>
+				</p>
 			</form>
 			</div>';
 

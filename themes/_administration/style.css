@@ -1038,8 +1038,9 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #cke_NEW_HEADER_DESCRIPTION div#cke_1_contents {height:200px !important;}
 
 /* Styling for fancy_imagebar module */
+#fib_config {overflow: hidden;font-size: 110%;}
 #fib_config #selectbar {width:60%;margin-bottom:20px}
-#fib_config #buttons{text-align:right}
+#fib_config p.buttons{clear: both;}
 #fib_config #block_left {width:50%}
 #fib_config #block_right{float:left;margin-left:20px}
 #fib_config .left {float:left}
