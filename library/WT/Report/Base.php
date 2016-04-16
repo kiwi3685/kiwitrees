@@ -1983,7 +1983,7 @@ echo "<br>".$addname."<br>";
 for ($ii=0; $ii<=strlen($addname); $ii++)
 echo substr($addname, $ii, 1)." ";
 */
-				$addname = preg_replace(array('/<span class="starredname">/','/<\/span><\/span>/','/<\/span>/'), array('«','','»'), $addname);						
+				$addname = preg_replace(array('/<span class="starredname">/','/<\/span><\/span>/','/<\/span>/'), array('«','','»'), $addname);
 				if (!WT_RNEW) {
 					$addname = strip_tags($addname); //@@ unknown printed in other alignment with ... on wrong side
 				}
@@ -2133,8 +2133,16 @@ function RepeatTagSHandler($attrs) {
 			$count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
 			$i = 0;
 			while ($i < $count) {
-				$repeats[] = get_sub_record($level, "$level $t", $subrec, $i + 1);;
 				$i++;
+				// Privacy check - is this a link, and are we allowed to view the linked object?
+				$subrecord = get_sub_record($level, "$level $t", $subrec, $i);
+				if (preg_match('/^\d ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@/', $subrecord, $xref_match)) {
+					$linked_object = WT_GedcomRecord::getInstance($xref_match[1]);
+					if ($linked_object && !$linked_object->canDisplayDetails()) {
+						continue;
+					}
+				}
+				$repeats[] = $subrecord;
 			}
 		}
 	}
