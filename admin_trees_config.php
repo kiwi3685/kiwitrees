@@ -56,6 +56,12 @@ $PRIVACY_CONSTANTS = array(
 	'hidden'       => WT_I18N::translate('Hide from everyone')
 );
 
+// List custom theme files that might exist
+$custom_files = array(
+		'mystyle.css',
+		'mytheme.php',
+	);
+
 switch (WT_Filter::post('action')) {
 case 'delete':
 	if (!WT_Filter::checkCsrf()) {
@@ -1305,20 +1311,30 @@ $controller
 							$current_themedir = get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 							foreach (get_theme_names() as $themename=>$themedir) {
 								echo
-									'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
-											<label for="radio_' ,$themedir, '">
-											<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
+								'<div ', ($current_themedir == $themedir ? 'class = "current_theme theme_box"' : 'class = "theme_box"'), '>
+									<label for="radio_' ,$themedir, '">
+										<img src="themes/', $themedir, '/images/screenshot_' ,$themedir, '.png" alt="' ,$themename, ' title="' ,$themename, '">
 										<p>
-												<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
-												', $themename, '
+											<input type="radio" id="radio_' ,$themedir, '" name="NEW_THEME_DIR" value="', $themedir, '" ', ($current_themedir == $themedir ? ' checked="checked"' : ''), '/>
+											', $themename, '
 										</p>
-											</label>
-									</div>';
+										<p class="custom_files">';
+											$html = WT_I18N::translate('Customised');
+											$files_found = false;
+											foreach ($custom_files as $file) {
+												$path = WT_ROOT . WT_THEMES_DIR . $themedir . '/' . $file;
+												if (file_exists($path)) {
+													$files_found = true;
+													$html .= '&nbsp;' . $file . '&nbsp;';
+												}
+											}
+											echo ($files_found ? $html : '');
+										echo '</p>
+									</label>
+								</div>';
 							}
-//							if ($current_themedir == 'colors') {
-								include WT_ROOT.'themes/colors/theme.php';
-								echo color_palette();
-//							}
+							include WT_ROOT.'themes/colors/theme.php';
+							echo color_palette();
 						?>
 				</td>
 				</tr>

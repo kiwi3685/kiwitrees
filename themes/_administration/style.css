@@ -480,10 +480,10 @@ table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
 #layout-options table#relatives {margin:0 50px;}
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
 textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
-.current_theme, .theme_box {float:left; padding:1px; text-align:center;}
+.current_theme, .theme_box {float:left; height: 210px; padding: 10px; text-align:center;}
 #theme table {max-width:none;}
-.theme_box {border:2px solid #ccc; margin: 10px;}
-.current_theme {border:2px solid #ff0000; margin: 10px;}
+.theme_box p.custom_files {font-weight: normal; font-size: 90%; font-style: italic;}
+.current_theme {background: #ff0000; color: #fff;}
 .current_theme p, .theme_box p {font-weight:bold; margin:0;}
 .current_theme input[type="radio"], .theme_box input[type="radio"] {cursor:pointer; height:20px; width:20px;}
 .current_theme input[type="radio"], .theme_box input[type="radio"], .current_theme label, .theme_box label {vertical-align:middle;}
