@@ -1506,7 +1506,7 @@ a.icon-rdarrow:hover {width:20px;height:20px;background-image:url(images/rdarrow
 a.icon-uarrow:hover {width:20px;height:20px;background-image:url(images/uarrow2.png);}
 .icon-udarrow {width:20px;height:20px;background-image:url(images/udarrow.png);}
 a.icon-udarrow:hover {width:20px;height:20px;background-image:url(images/udarrow2.png);}
-.fa-user {width:20px;height:20px;background-image:url(images/user_add.png);}
+.fa-user {display: inline-block;width:20px;height:20px;background-image:url(images/user_add.png);}
 .icon-warning {width:17px;height:17px;background-image:url(images/warning.png);}
 .icon-wiki {width:16px;height:16px;background-image:url(images/w_button.png);}
 .icon-zoomin {width:25px;height:25px;background-image:url(images/zoomin.png);}
