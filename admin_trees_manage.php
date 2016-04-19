@@ -284,18 +284,24 @@ foreach (WT_Tree::GetAll() as $tree) {
 							echo '<tr align="center">',
 								// import
 								'<td>
-									<a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Import a GEDCOM file'), '</a>
-									<i class="fa fa-upload"><i>
+									<a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">',
+										WT_I18N::translate('Import a GEDCOM file'), '
+										<i class="fa fa-upload"></i>
+									</a>
 								</td>',
 								// download
 								'<td>
-									<a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">', WT_I18N::translate('Export a GEDCOM file'), '</a>
-									<i class="fa fa-download"><i>
+									<a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">',
+										WT_I18N::translate('Export a GEDCOM file'), '
+										<i class="fa fa-download"></i>
+									</a>
 								</td>',
 								// delete
 								'<td>
-									<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">', WT_I18N::translate('Delete this family tree'), '</a>
-									<i class="fa fa-trash"><i>
+									<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">',
+										WT_I18N::translate('Delete this family tree'), '
+										<i class="fa fa-trash"></i>
+									</a>
 									<form name="delete_form', $tree->tree_id ,'" method="post" action="', WT_SCRIPT_NAME ,'">
 										<input type="hidden" name="action" value="delete">
 										<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">',
@@ -309,72 +315,98 @@ foreach (WT_Tree::GetAll() as $tree) {
 			</table>
 		<br><hr>';
 	}
-}
+} ?>
 
-// Options for creating new gedcoms and setting defaults
+<?php // Options for creating new gedcoms and setting defaults
 if (WT_USER_IS_ADMIN) {
-		if (count(WT_Tree::GetAll())>1) {
-			echo '<div class="gedcom_table2">
-				<form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">
-					<label>', WT_I18N::translate('Default family tree'), '</label>
-					<input type="hidden" name="action" value="setdefault">',
-					WT_Filter::getCsrf(),
-					select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'), '
-					<span class="help-text">' , WT_I18N::translate('This selects the family tree shown to visitors when they first arrive at the site.'), '</span>
-					<div class="input-group">
-						<button class="btn btn-primary" type="submit">
-						<i class="fa fa-floppy-o"></i>',
-							WT_I18N::translate('save'), '
-						</button>
-					</div>
-				</form>
-			</div>
-			<hr>';
-		}
-	echo '<div class="gedcom_table3">
-		<h2>', WT_I18N::translate('Create a new family tree'), '</h2>';
-		if (!WT_Tree::GetAll()) {
-			echo '<p class="warning">' , WT_I18N::translate('You need to create a family tree.') , '</p>';
-		}
-		echo '<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">
-			<label for="gedcom_title">', WT_I18N::translate('Family tree title'), '</label>
-			<input type="text" id="gedcom_title" name="gedcom_title" dir="ltr" value="" size="50" maxlength="255" required placeholder="' , $default_tree_title, '">
-			<span class="help-text">' , WT_I18N::translate('This is the name used for display.'), '</span>
-			<div class="input-group">
-				<label for="new_tree">', WT_I18N::translate('URL'), '</label>',
-				WT_Filter::getCsrf(), '
-				<span>' ,
-					WT_SERVER_NAME.WT_SCRIPT_PATH, '?ged=
+	if (count(WT_Tree::GetAll())>1) { ?>
+		<div class="gedcom_table2">
+			<form name="defaultform" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+				<?php echo WT_Filter::getCsrf(); ?>
+				<label>
+					<?php echo WT_I18N::translate('Default family tree'); ?>
+				</label>
+				<input type="hidden" name="action" value="setdefault">
+				<?php echo select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'); ?>
+				<span class="help-text">
+					<?php echo WT_I18N::translate('This selects the family tree shown to visitors when they first arrive at the site.'); ?>
 				</span>
-				<input type="hidden" id="new_tree" name="action" value="new_tree">' ; ?>
+				<div class="input-group">
+					<button class="btn btn-primary" type="submit">
+					<i class="fa fa-floppy-o"></i>
+						<?php echo WT_I18N::translate('save'); ?>
+					</button>
+				</div>
+			</form>
+		</div>
+		<hr class="clearfloat">
+	<?php } ?>
+	<div class="gedcom_table3">
+		<h3><?php echo WT_I18N::translate('Create a new family tree'); ?></h3>
+		<?php if (!WT_Tree::GetAll()) { ?>
+			<p class="warning">
+				<?php echo WT_I18N::translate('You need to create a family tree.'); ?>
+			</p>
+		<?php } ?>
+		<form name="createform" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
+			<label for="gedcom_title">
+				<?php echo WT_I18N::translate('Family tree title'); ?>
+			</label>
+			<input
+				type="text"
+				id="gedcom_title"
+				name="gedcom_title"
+				dir="ltr"
+				value=""
+				size="50"
+				maxlength="255"
+				required
+				placeholder="<?php echo $default_tree_title; ?>"
+			>
+			<span class="help-text">
+				<?php echo WT_I18N::translate('This is the name used for display.'); ?>
+			</span>
+			<div class="input-group">
+				<label for="new_tree">
+					<?php echo WT_I18N::translate('URL'); ?>
+				</label>
+				<span>
+					<?php echo WT_SERVER_NAME . WT_SCRIPT_PATH; ?>?ged=
+				</span>
+				<input type="hidden" id="new_tree" name="action" value="new_tree">
 				<input
 					id="ged_name"
 					maxlength="31"
-					name="tree_name"
+					name="ged_name"
 					pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*"
 					required
 					type="text"
 					value="<?php echo $default_tree_name; ?>"
-					>
-				<?php echo '
-				<span class="help-text">' , WT_I18N::translate('Keep this short and avoid spaces and punctuation. A family name might be a good choice.'), '</span>
+				>
+				<span class="help-text">
+					<?php echo WT_I18N::translate('Keep this short and avoid spaces and punctuation. A family name might be a good choice.'); ?>
+				</span>
 			</div>
 			<button class="btn btn-primary" type="submit">
-			<i class="fa fa-check"></i>',
-				WT_I18N::translate('create'), '
+			<i class="fa fa-check"></i>
+				<?php echo WT_I18N::translate('create'); ?>
 			</button>
-			<p class="warning help-text clearfloat">' , WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'), '</p>
+			<p class="warning help-text clearfloat">
+				<?php echo WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'); ?>
+			</p>
 		</form>
-	</div>';
+	</div>
 
-		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
-//		if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
-//			echo
-//				'<div class="center">',
-//				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
-//				WT_I18N::translate('Click here for PhpGedView to <b>kiwitrees</b> transfer wizard'),
-//				'</a>',
-//				help_link('PGV_WIZARD'),
-//				'</div>';
-//		}
+	<?php // display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
+//	if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
+//		echo
+//			'<div class="center">',
+//			'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
+//			WT_I18N::translate('Click here for PhpGedView to <b>kiwitrees</b> transfer wizard'),
+//			'</a>',
+//			help_link('PGV_WIZARD'),
+//			'</div>';
+//	}
+
 }
