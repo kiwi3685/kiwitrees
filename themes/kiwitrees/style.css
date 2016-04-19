@@ -3428,6 +3428,7 @@ div[id^="caldiv"] td {
 
 .use-sidebar #separator {
 	height: 20px !important;
+	margin: auto 20px;
 	right: 20%;
 }
 
