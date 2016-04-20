@@ -1319,7 +1319,7 @@ $controller
 											', $themename, '
 										</p>
 										<p class="custom_files">';
-											$html = WT_I18N::translate('Customised');
+											$html = WT_I18N::translate('Customized');
 											$files_found = false;
 											foreach ($custom_files as $file) {
 												$path = WT_ROOT . WT_THEMES_DIR . $themedir . '/' . $file;
