@@ -1526,6 +1526,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/menu_calendar',
 		WT_ROOT.'modules_v3/googlemap/places_edit.php', //old unused file shoulld have been removed months ago!
 		WT_ROOT.'modules_v3/googlemap/help_text.php',
+		WT_ROOT.'modules_v3/googlemap/places/flags/SGS.png',
 		// Removed in kiwitrees 3.2.2
 		WT_ROOT.'modules_v3/fancy_imagebar/style.js',
 	);
