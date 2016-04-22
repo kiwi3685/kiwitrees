@@ -179,7 +179,7 @@ function print_month($start,$end,$year) {
 		date('Y-n-j', ($easter + 189*A_DAY)) => WT_I18N::translate('19th Sunday after Trinity Sunday'), /* 19 Benedicta (Trinitatem) */
 		date('Y-n-j', ($easter + 196*A_DAY)) => WT_I18N::translate('20th Sunday after Trinity Sunday'), /* 20 Benedicta (Trinitatem) */
 		date('Y-n-j', ($easter + 203*A_DAY)) => WT_I18N::translate('21st Sunday after Trinity Sunday'), /* 21 Benedicta (Trinitatem) */
-		date('Y-n-j', ($easter + 211*A_DAY)) => '22 Benedicta (Trinitatem)', /* WT_I18N::translate('22nd Sunday after Trinity Sunday*/
+		date('Y-n-j', ($easter + 211*A_DAY)) => '22 Benedicta (Trinitatem)', /* I18N::translate('22nd Sunday after Trinity Sunday*/
 
 		/* Advent or Benedicta - HOW TO CALCULATE???? */
 
@@ -223,7 +223,7 @@ function print_month($start,$end,$year) {
 		date('Y-n-j', ($easter + 51*A_DAY)) => WT_I18N::translate('2 Pentecost'), /* Pentecostes 2 */
 		date('Y-n-j', ($easter +2*A_DAY)) => WT_I18N::translate('Easter Tuesday'), /* Pascha 3 */
 		date('Y-n-j', mktime(0,0,0, 8, 15,$year)) => WT_I18N::translate('Visitatio Assumption'), /* Visitation of the Virgin Mary*/
-		date('Y-n-j', mktime(0,0,0, 3, 25,$year)) => WT_I18N::translate('Annunciation of the Virgin Mary'), /* WT_I18N::translate('Annuntatio Assumption Virginis') */
+		date('Y-n-j', mktime(0,0,0, 3, 25,$year)) => WT_I18N::translate('Annunciation of the Virgin Mary'), /* I18N::translate('Annuntatio Assumption Virginis') */
 		date('Y-n-j', mktime(0,0,0, 9, 29,$year)) => WT_I18N::translate('Saint Michaelmas'), /* Festo Michaelis */
 
 		/* After 1812 - HOW TO CALCULATE???? */

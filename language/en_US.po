@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-04-21 09:21+1200\n"
-"PO-Revision-Date: 2016-04-21 09:21+1200\n"
+"POT-Creation-Date: 2016-04-22 15:01+1200\n"
+"PO-Revision-Date: 2016-04-22 15:02+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -22,6 +22,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
+#. I18N: %s is the name of an individual, source or other record
 #: action.php:53
 #, php-format
 msgid "The changes to “%s” have been accepted."
@@ -31,21 +32,25 @@ msgstr "The changes to “%s” have been accepted."
 msgid "Record copied to clipboard"
 msgstr "Record copied to clipboard"
 
+#. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:106
 #, php-format
 msgid "The family “%s” has been deleted, as it only has one member."
 msgstr "The family “%s” has been deleted, as it only has one member."
 
+#. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:114 action.php:118
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
 msgstr "The link from “%1$s” to “%2$s” has been deleted."
 
+#. I18N: %s is the name of an individual, source or other record
 #: action.php:143
 #, php-format
 msgid "The changes to “%s” have been rejected."
 msgstr "The changes to “%s” have been rejected."
 
+#. I18N: A media object that is not linked to any other record
 #: addmedia.php:78 addmedia.php:407 admin_site_other.php:75
 msgid "Create a new media object"
 msgstr "Create a new media object"
@@ -221,6 +226,7 @@ msgstr ""
 msgid "Do not update the “last change” record"
 msgstr "Do not update the “last change” record"
 
+#. I18N: button label
 #: addmedia.php:809 admin_module_blocks.php:109 admin_module_menus.php:127
 #: admin_module_reports.php:108 admin_module_resources.php:108
 #: admin_module_sidebar.php:127 admin_module_tabs.php:127
@@ -250,7 +256,7 @@ msgstr "Do not update the “last change” record"
 #: modules_v3/googlemap/module.php:430 modules_v3/googlemap/module.php:653
 #: modules_v3/googlemap/placehierarchy.php:242
 #: modules_v3/simpl_pages/module.php:238 modules_v3/simpl_pages/module.php:432
-#: modules_v3/simpl_research/module.php:122 modules_v3/sitemap/module.php:262
+#: modules_v3/simpl_research/module.php:151 modules_v3/sitemap/module.php:262
 #: modules_v3/stories/module.php:412 modules_v3/stories/module.php:540
 msgid "save"
 msgstr "save"
@@ -289,11 +295,13 @@ msgstr ""
 "These pages provide access to all the configuration settings and management "
 "tools for this kiwitrees site."
 
+#. I18N: %s is a URL/link to the project website
 #: admin.php:87
 #, php-format
 msgid "Support is available at %s."
 msgstr "Support is available at %s."
 
+#. I18N: %s is a URL/link to the project website
 #: admin.php:94
 #, php-format
 msgid "Version %s of kiwitrees is now available at %s."
@@ -377,6 +385,7 @@ msgstr "Family tree statistics"
 msgid "Individuals"
 msgstr "Individuals"
 
+#. I18N: Name of a module
 #: admin.php:263 admin.php:309 ancestry.php:104 calendar.php:390
 #: calendar.php:569 descendancy.php:74 famlist.php:138 famlist.php:143
 #: includes/functions/functions_print_lists.php:1068
@@ -396,6 +405,7 @@ msgstr "Individuals"
 msgid "Families"
 msgstr "Families"
 
+#. I18N: Name of a module
 #: admin.php:268 admin.php:310
 #: includes/functions/functions_print_lists.php:1214
 #: includes/functions/functions_print_lists.php:1390
@@ -435,6 +445,7 @@ msgstr "Repositories"
 msgid "Media objects"
 msgstr "Media objects"
 
+#. I18N: Name of a module
 #: admin.php:283 admin.php:313 library/WT/Controller/Search.php:596
 #: mediaviewer.php:151
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1054
@@ -444,6 +455,8 @@ msgstr "Media objects"
 msgid "Notes"
 msgstr "Notes"
 
+#. I18N: Name of a module
+#. I18N: Name of a module
 #: admin.php:295 modules_v3/recent_changes/module.php:39
 #: modules_v3/widget_recent_changes/module.php:39
 msgid "Recent changes"
@@ -483,7 +496,7 @@ msgstr "The file %s could not be deleted."
 #: includes/functions/functions_print_facts.php:1262
 #: includes/functions/functions_print_lists.php:418
 #: includes/functions/functions_print_lists.php:893 library/WT/Stats.php:3536
-#: medialist.php:262 modules_v3/batch_update/admin_batch_update.php:363
+#: medialist.php:262 modules_v3/batch_update/admin_batch_update.php:370
 #: modules_v3/charts/module.php:219 modules_v3/relatives/module.php:203
 #: modules_v3/family_group_report/report.bak:247
 #: modules_v3/family_group_report/report.bak:418
@@ -493,13 +506,14 @@ msgstr "The file %s could not be deleted."
 msgid "yes"
 msgstr "yes"
 
+#. I18N: 'no' is the number zero
 #: admin_media.php:164 admin_media.php:237 admin_users.php:255
 #: includes/functions/functions_edit.php:166
 #: includes/functions/functions_edit.php:173
 #: includes/functions/functions_edit.php:1478
 #: includes/functions/functions_print_facts.php:1265
 #: includes/functions/functions_print_lists.php:891 library/WT/Stats.php:3537
-#: medialist.php:265 modules_v3/batch_update/admin_batch_update.php:362
+#: medialist.php:265 modules_v3/batch_update/admin_batch_update.php:369
 #: modules_v3/charts/module.php:218 modules_v3/fancy_treeview/module.php:1185
 #: modules_v3/family_group_report/report.bak:250
 #: modules_v3/family_group_report/report.bak:421
@@ -522,11 +536,13 @@ msgstr "Create"
 msgid "Are you sure you want to delete “%s”?"
 msgstr "Are you sure you want to delete “%s”?"
 
+#. I18N: size of file in KB
 #: admin_media.php:428 library/WT/Media.php:206
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
 
+#. I18N: image dimensions, width × height
 #: admin_media.php:432 library/WT/Media.php:287
 #, php-format
 msgid "%1$s × %2$s pixels"
@@ -540,6 +556,7 @@ msgstr "This media file exists, but cannot be accessed."
 msgid "This media file does not exist."
 msgstr "This media file does not exist."
 
+#. I18N: Submit button, on a form
 #: admin_media.php:454 admin_trees_duplicates.php:207
 #: admin_trees_unlinked.php:69 admin_trees_unlinked.php:74 ancestry.php:108
 #: compact.php:50 descendancy.php:76 familybook.php:57 fanchart_original.php:64
@@ -592,10 +609,12 @@ msgstr "Media files"
 msgid "Media folders"
 msgstr "Media folders"
 
+#. I18N: “Local files” are stored on this computer
 #: admin_media.php:571
 msgid "Local files"
 msgstr "Local files"
 
+#. I18N: “External files” are stored on other computers
 #: admin_media.php:574
 msgid "External files"
 msgstr "External files"
@@ -604,6 +623,7 @@ msgstr "External files"
 msgid "Unused files"
 msgstr "Unused files"
 
+#. I18N: Label for check-box
 #: admin_media.php:604 medialist.php:88
 msgid "Include subfolders"
 msgstr "Include subfolders"
@@ -620,6 +640,7 @@ msgstr "External media files have a URL instead of a filename."
 msgid "Media file"
 msgstr "Media file"
 
+#. I18N: gedcom tag OBJE
 #: admin_media.php:628 library/WT/Gedcom/Tag.php:281
 #: modules_v3/album/module.php:194
 msgid "Media object"
@@ -629,6 +650,8 @@ msgstr "Media object"
 msgid "Highlight"
 msgstr "Highlight"
 
+#. I18N: gedcom tag MEDI
+#. I18N: gedcom tag _TYPE
 #: admin_media.php:630 library/WT/Gedcom/Tag.php:262
 #: library/WT/Gedcom/Tag.php:826
 msgid "Media type"
@@ -660,6 +683,7 @@ msgstr "Module administration"
 msgid "Block"
 msgstr "Block"
 
+#. I18N: gedcom tag DSCR
 #: admin_module_blocks.php:58 admin_module_menus.php:76
 #: admin_module_reports.php:58 admin_module_resources.php:58
 #: admin_module_sidebar.php:76 admin_module_tabs.php:76
@@ -710,7 +734,7 @@ msgstr "Tab"
 msgid "Widget"
 msgstr "Widget"
 
-#: admin_modules.php:126
+#: admin_modules.php:126 modules_v3/simpl_research/module.php:123
 msgid "Enabled"
 msgstr "Enabled"
 
@@ -732,6 +756,7 @@ msgstr "Theme"
 msgid "Resources"
 msgstr "Resources"
 
+#. I18N: Name of a module
 #: admin_modules.php:162 modules_v3/gedcom_block/module.php:35
 msgid "Home page"
 msgstr "Home page"
@@ -762,11 +787,13 @@ msgstr "The version of %s is too old"
 msgid "The version of %s is too new"
 msgstr "The version of %s is too new"
 
+#. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:82
 #, php-format
 msgid "<b>webtrees</b> cannot connect to the PhpGedView database: %s."
 msgstr "<b>webtrees</b> cannot connect to the PhpGedView database: %s."
 
+#. I18N: %s is an error message
 #: admin_pgv_to_wt.php:85
 #, php-format
 msgid "MySQL gave the error: %s"
@@ -784,6 +811,7 @@ msgstr "Where is your PhpGedView installation?"
 msgid "Installation directory"
 msgstr "Installation directory"
 
+#. I18N: button label, next page
 #: admin_pgv_to_wt.php:158 admin_site_merge.php:307 library/WT/I18N.php:707
 #: modules_v3/batch_update/admin_batch_update.php:99
 #: modules_v3/fancy_treeview/module.php:885
@@ -794,6 +822,10 @@ msgstr "next"
 msgid "You need to login again, using your PhpGedView username and password."
 msgstr "You need to login again, using your PhpGedView username and password."
 
+#. I18N: Button label
+#. I18N: button label
+#. I18N: button label
+#. I18N: button label
 #: admin_pgv_to_wt.php:1064 admin_trees_append.php:174
 #: admin_trees_download.php:109 admin_trees_download.php:168
 #: admin_trees_manage.php:238 admin_trees_renumber.php:280 admin_users.php:538
@@ -806,18 +838,22 @@ msgstr "continue"
 msgid "Site access rules"
 msgstr "Site access rules"
 
+#. I18N: An access rule - allow access to the site
 #: admin_site_access.php:125 admin_site_access.php:318
 msgid "allow"
 msgstr "allow"
 
+#. I18N: An access rule - deny access to the site
 #: admin_site_access.php:126 admin_site_access.php:319
 msgid "deny"
 msgstr "deny"
 
+#. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:127 admin_site_access.php:320
 msgid "robot"
 msgstr "robot"
 
+#. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:286
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "Restrict access to the site, using IP addresses and user-agent strings"
@@ -848,14 +884,17 @@ msgstr "Start IP address"
 msgid "End IP address"
 msgstr "End IP address"
 
+#. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:296 admin_site_access.php:314
 msgid "User-agent string"
 msgstr "User-agent string"
 
+#. I18N: noun
 #: admin_site_access.php:297
 msgid "Rule"
 msgstr "Rule"
 
+#. I18N: gedcom tag COMM
 #: admin_site_access.php:298 library/WT/Gedcom/Tag.php:169
 msgid "Comment"
 msgstr "Comment"
@@ -909,6 +948,7 @@ msgstr ""
 "The following visitors were not recognised, and were assumed to be search "
 "engines."
 
+#. I18N: http://en.wikipedia.org/wiki/IP_address
 #: admin_site_access.php:312 admin_site_logs.php:231 admin_site_logs.php:258
 msgid "IP address"
 msgstr "IP address"
@@ -921,27 +961,33 @@ msgstr "Create a new rule"
 msgid "Are you sure you want to delete all visitors not recognised?"
 msgstr "Are you sure you want to delete all visitors not recognised?"
 
+#. I18N: Name of a module. Tasks that need further research.
 #: admin_site_change.php:30 modules_v3/resource_changes/module.php:36
 msgid "Changes"
 msgstr "Changes"
 
+#. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:38
 msgid "accepted"
 msgstr "accepted"
 
+#. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:39
 msgid "rejected"
 msgstr "rejected"
 
+#. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:40
 msgid "pending"
 msgstr "pending"
 
+#. I18N: %s are both user-input date fields
 #: admin_site_change.php:269 admin_site_logs.php:221
 #, php-format
 msgid "From %s to %s"
 msgstr "From %s to %s"
 
+#. I18N: gedcom tag STAT
 #: admin_site_change.php:273 admin_site_change.php:305
 #: includes/functions/functions_print.php:993 library/WT/Gedcom/Tag.php:326
 msgid "Status"
@@ -1012,6 +1058,7 @@ msgstr "Timestamp"
 msgid "GEDCOM Data"
 msgstr "GEDCOM Data"
 
+#. I18N: The “Data folder” is a configuration setting
 #: admin_site_clean.php:31 themes/_administration/header.php:146
 msgid "Clean up data folder"
 msgstr "Clean up data folder"
@@ -1040,10 +1087,12 @@ msgstr "Site configuration"
 msgid "none"
 msgstr "none"
 
+#. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:39
 msgid "ssl"
 msgstr "ssl"
 
+#. I18N: Transport Layer Security - a secure communications protocol
 #: admin_site_config.php:40
 msgid "tls"
 msgstr "tls"
@@ -1086,6 +1135,7 @@ msgstr "Choose user defined welcome text typed below"
 msgid "Mail configuration"
 msgstr "Mail configuration"
 
+#. I18N: Name of a module
 #: admin_site_config.php:69 includes/functions/functions_print.php:321
 #: login.php:130 login.php:172 modules_v3/login_block/module.php:35
 #: modules_v3/login_block/module.php:59 modules_v3/login_block/module.php:79
@@ -1122,6 +1172,7 @@ msgstr "Require an administrator to approve new user registrations"
 msgid "Show list of family trees"
 msgstr "Show list of family trees"
 
+#. I18N: A site configuration setting
 #: admin_site_config.php:102 help_text.php:712
 msgid "Session timeout"
 msgstr "Session timeout"
@@ -1130,11 +1181,14 @@ msgstr "Session timeout"
 msgid "Website URL"
 msgstr "Website URL"
 
+#. I18N: A site configuration setting
+#. I18N: Name of a module
 #: admin_site_config.php:114 help_text.php:717
 #: modules_v3/widget_messages/module.php:35
 msgid "Messages"
 msgstr "Messages"
 
+#. I18N: A site configuration setting
 #: admin_site_config.php:118 help_text.php:722
 msgid "Send mail in HTML format"
 msgstr "Send mail in HTML format"
@@ -1147,10 +1201,12 @@ msgstr "Sender email"
 msgid "SMTP mail server"
 msgstr "SMTP mail server"
 
+#. I18N: A site configuration setting
 #: admin_site_config.php:132 help_text.php:752 setup.php:286
 msgid "Server name"
 msgstr "Server name"
 
+#. I18N: A site configuration setting
 #: admin_site_config.php:136 help_text.php:757 setup.php:291
 msgid "Port number"
 msgstr "Port number"
@@ -1176,10 +1232,12 @@ msgstr "Username"
 msgid "Password"
 msgstr "Password"
 
+#. I18N: A site configuration setting
 #: admin_site_config.php:152 help_text.php:762
 msgid "Secure connection"
 msgstr "Secure connection"
 
+#. I18N: A site configuration setting
 #: admin_site_config.php:156 help_text.php:747
 msgid "Sending server name"
 msgstr "Sending server name"
@@ -1194,6 +1252,7 @@ msgstr ""
 "com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail "
 "password]"
 
+#. I18N: A site configuration setting
 #: admin_site_config.php:167 help_text.php:601
 msgid "Login URL"
 msgstr "Login URL"
@@ -1220,7 +1279,7 @@ msgstr "Select the languages your site will use"
 
 #: admin_site_config.php:193 modules_v3/random_media/module.php:314
 #: modules_v3/random_media/module.php:364
-#: modules_v3/simpl_research/module.php:99
+#: modules_v3/simpl_research/module.php:118
 msgid "Select all"
 msgstr "Select all"
 
@@ -1277,6 +1336,7 @@ msgstr "Are you sure you want to delete this translation?"
 msgid "Logs"
 msgstr "Logs"
 
+#. I18N: gedcom tag TYPE
 #: admin_site_logs.php:225 admin_site_logs.php:256 edit_changes.php:166
 #: includes/functions/functions_print_facts.php:603
 #: library/WT/Gedcom/Tag.php:339 medialist.php:109
@@ -1392,19 +1452,23 @@ msgstr "Merge from ID:"
 msgid "Add unlinked records"
 msgstr "Add unlinked records"
 
+#. I18N: An individual that is not linked to any other record
 #: admin_site_other.php:47
 msgid "Create a new individual"
 msgstr "Create a new individual"
 
+#. I18N: An note that is not linked to any other record
 #: admin_site_other.php:54
 msgid "Create a new note"
 msgstr "Create a new note"
 
+#. I18N: A source that is not linked to any other record
 #: admin_site_other.php:61 edit_interface.php:672 edit_interface.php:843
 #: includes/functions/functions_edit.php:1219
 msgid "Create a new source"
 msgstr "Create a new source"
 
+#. I18N: A repository that is not linked to any other repository
 #: admin_site_other.php:68
 msgid "Create a new repository"
 msgstr "Create a new repository"
@@ -1470,6 +1534,7 @@ msgstr ""
 msgid "The family trees were combined successfully."
 msgstr "The family trees were combined successfully."
 
+#. I18N:  Copy all the records from [family tree 1] into [family tree 2]
 #: admin_trees_append.php:168
 #, php-format
 msgid "Copy all the records from %1$s into %2$s"
@@ -1495,11 +1560,13 @@ msgstr "This may cause a problem for other applications."
 msgid "This may be a mistake in your data."
 msgstr "This may be a mistake in your data."
 
+#. I18N: placeholders are GEDCOM IDs, such as R123
 #: admin_trees_check.php:167
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
 msgstr "%1$s does not exist.  Did you mean %2$s?"
 
+#. I18N: placeholders are GEDCOM IDs, such as R123
 #: admin_trees_check.php:173
 #, php-format
 msgid "%1$s does not exist."
@@ -1509,16 +1576,19 @@ msgstr "%1$s does not exist."
 msgid "This type of link is not allowed here."
 msgstr "This type of link is not allowed here."
 
+#. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:193
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s is a %2$s but a %3$s is expected."
 
+#. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s does not have a link back to %2$s."
 
+#. I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:215
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
@@ -1597,12 +1667,16 @@ msgstr "Edit options"
 msgid "Family tree title"
 msgstr "Family tree title"
 
+#. I18N: gedcom tag URL (A web address / URL)
+#. I18N: gedcom tag WWW (A web address / URL)
+#. I18N: gedcom tag _URL
 #: admin_trees_config.php:270 admin_trees_manage.php:372
 #: library/WT/Gedcom/Tag.php:340 library/WT/Gedcom/Tag.php:344
 #: library/WT/Gedcom/Tag.php:828
 msgid "URL"
 msgstr "URL"
 
+#. I18N: gedcom tag LANG
 #: admin_trees_config.php:277 admin_users.php:404 admin_users.php:565
 #: edituser.php:174 help_text.php:596 library/WT/Gedcom/Tag.php:243
 #: library/WT/MenuBar.php:458
@@ -1712,10 +1786,12 @@ msgstr "enable"
 msgid "Show dead people"
 msgstr "Show dead people"
 
+#. I18N: ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:510 help_text.php:591
 msgid "Extend privacy to dead people"
 msgstr "Extend privacy to dead people"
 
+#. I18N: ... Extend privacy to dead people [who were] ...
 #: admin_trees_config.php:516
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
@@ -1779,6 +1855,7 @@ msgstr "Who can upload new media files?"
 msgid "Show download link in media viewer"
 msgstr "Show download link in media viewer"
 
+#. I18N: Small versions of images
 #: admin_trees_config.php:666
 msgid "Thumbnail images"
 msgstr "Thumbnail images"
@@ -1795,6 +1872,7 @@ msgstr "Use silhouettes"
 msgid "Show highlight images in people boxes"
 msgstr "Show highlight images in people boxes"
 
+#. I18N: Copyright messages, added to images
 #: admin_trees_config.php:694 help_text.php:1003
 msgid "Watermarks"
 msgstr "Watermarks"
@@ -1914,12 +1992,14 @@ msgstr "show"
 msgid "The date and time of the last update"
 msgstr "The date and time of the last update"
 
+#. I18N: Name of a module/block
 #: admin_trees_config.php:814 admin_trees_config.php:962
 #: library/WT/MenuBar.php:102 modules_v3/charts/help_text.php:34
 #: modules_v3/charts/module.php:35
 msgid "Charts"
 msgstr "Charts"
 
+#. I18N: A site configuration setting
 #: admin_trees_config.php:819 help_text.php:692
 msgid "Default pedigree chart layout"
 msgstr "Default pedigree chart layout"
@@ -1980,6 +2060,7 @@ msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
 msgstr "last"
 
+#. I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:927
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
@@ -1989,6 +2070,7 @@ msgstr "Show the %1$s %2$s parts of a place name."
 msgid "Abbreviate chart labels"
 msgstr "Abbreviate chart labels"
 
+#. I18N: A site configuration setting
 #: admin_trees_config.php:975 help_text.php:687
 msgid "Show chart details by default"
 msgstr "Show chart details by default"
@@ -2142,10 +2224,12 @@ msgctxt "Surname tradition"
 msgid "paternal"
 msgstr "paternal"
 
+#. I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname
 #: admin_trees_config.php:1263 help_text.php:923
 msgid "patrilineal"
 msgstr "patrilineal"
 
+#. I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname
 #: admin_trees_config.php:1263 help_text.php:929
 msgid "matrilineal"
 msgstr "matrilineal"
@@ -2247,17 +2331,20 @@ msgstr "Apply privacy settings?"
 msgid "None"
 msgstr "None"
 
+#. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:134 admin_users.php:44 help_text.php:1311
 #: modules_v3/clippings/module.php:213 modules_v3/clippings/module.php:586
 msgid "Manager"
 msgstr "Manager"
 
+#. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:136 admin_users.php:41 help_text.php:1299
 #: modules_v3/clippings/module.php:214 modules_v3/clippings/module.php:220
 #: modules_v3/clippings/module.php:587 modules_v3/clippings/module.php:593
 msgid "Member"
 msgstr "Member"
 
+#. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:138 admin_users.php:40 help_text.php:1295
 #: modules_v3/clippings/module.php:215 modules_v3/clippings/module.php:221
 #: modules_v3/clippings/module.php:588 modules_v3/clippings/module.php:594
@@ -2307,6 +2394,7 @@ msgstr "Media filenames will be prefixed by %s."
 msgid "Find duplicate individuals"
 msgstr "Find duplicate individuals"
 
+#. I18N: gedcom tag SURN
 #: admin_trees_duplicates.php:154 help_text.php:1176
 #: library/WT/Gedcom/Tag.php:330 modules_v3/fancy_treeview/module.php:546
 msgid "Surname"
@@ -2325,6 +2413,7 @@ msgstr "Tick for exact match"
 msgid "Given name"
 msgstr "Given name"
 
+#. I18N: gedcom tag SEX
 #: admin_trees_duplicates.php:178 admin_trees_sanity.php:96
 #: library/WT/Gedcom/Tag.php:316 modules_v3/family_group_report/report.bak:833
 #: modules_v3/individual_ext_report/report.bak:383
@@ -2368,12 +2457,14 @@ msgstr "Unknown"
 msgid "Include married names: "
 msgstr "Include married names: "
 
+#. I18N: gedcom tag NAME
 #: admin_trees_duplicates.php:222 admin_trees_sanity.php:102
 #: edit_interface.php:2626 library/WT/Controller/Individual.php:176
 #: library/WT/Gedcom/Tag.php:267 library/WT/Stats.php:3344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588
-#: modules_v3/resource_fact/module.php:170 modules_v3/bdm_report/report.bak:6
+#: modules_v3/resource_fact/module.php:170
+#: modules_v3/simpl_research/module.php:124 modules_v3/bdm_report/report.bak:6
 #: modules_v3/bdm_report/report.bak:47 modules_v3/birth_report/report.bak:6
 #: modules_v3/birth_report/report.bak:34
 #: modules_v3/cemetery_report/report.bak:39
@@ -2388,6 +2479,7 @@ msgstr "Include married names: "
 msgid "Name"
 msgstr "Name"
 
+#. I18N: gedcom tag BIRT
 #: admin_trees_duplicates.php:223 admin_trees_sanity.php:84
 #: library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1405
 #: modules_v3/bdm_report/report.bak:56
@@ -2408,6 +2500,7 @@ msgstr "Name"
 msgid "Birth"
 msgstr "Birth"
 
+#. I18N: gedcom tag DEAT
 #: admin_trees_duplicates.php:224 admin_trees_sanity.php:90
 #: library/WT/Gedcom/Tag.php:185 modules_v3/fancy_treeview/module.php:1408
 #: modules_v3/bdm_report/report.bak:85
@@ -2432,6 +2525,7 @@ msgstr "Death"
 msgid "Merge selected"
 msgstr "Merge selected"
 
+#. I18N: gedcom tag DATE
 #: admin_trees_duplicates.php:230 admin_trees_duplicates.php:232
 #: edit_changes.php:168 help_text.php:178 help_text.php:208
 #: library/WT/Gedcom/Tag.php:184 modules_v3/bdm_report/report.bak:130
@@ -2441,6 +2535,7 @@ msgstr "Merge selected"
 msgid "Date"
 msgstr "Date"
 
+#. I18N: gedcom tag PLAC
 #: admin_trees_duplicates.php:231 admin_trees_duplicates.php:233
 #: library/WT/Gedcom/Tag.php:292
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1050
@@ -2467,11 +2562,13 @@ msgstr "Married name"
 msgid "No duplicates to display"
 msgstr "No duplicates to display"
 
+#. I18N: %s is a filename
 #: admin_trees_export.php:39
 #, php-format
 msgid "Family tree exported to %s."
 msgstr "Family tree exported to %s."
 
+#. I18N: %s is a filename
 #: admin_trees_export.php:41
 #, php-format
 msgid "Unable to create %s.  Check the permissions."
@@ -2481,6 +2578,7 @@ msgstr "Unable to create %s.  Check the permissions."
 msgid "Manage family trees"
 msgstr "Manage family trees"
 
+#. I18N: Default name for a new tree
 #: admin_trees_manage.php:77
 msgid "My family tree"
 msgstr "My family tree"
@@ -2489,6 +2587,7 @@ msgstr "My family tree"
 msgid "Import a GEDCOM file"
 msgstr "Import a GEDCOM file"
 
+#. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:149
 #, php-format
 msgid ""
@@ -2546,10 +2645,12 @@ msgstr ""
 "the original GEDCOM during the import process. If you have already imported "
 "the file you will need to re-import it."
 
+#. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:223
 msgid "Remove the GEDCOM media path from filenames"
 msgstr "Remove the GEDCOM media path from filenames"
 
+#. I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
 #: admin_trees_manage.php:228 help_text.php:532
 msgid ""
 "Some genealogy applications create GEDCOM files that contain media filenames "
@@ -2560,6 +2661,7 @@ msgstr ""
 "with full paths.  These paths will not exist on the web-server.  To allow "
 "kiwitrees to find the file, the first part of the path must be removed."
 
+#. I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
 #: admin_trees_manage.php:230 help_text.php:535
 #, php-format
 msgid ""
@@ -2651,11 +2753,13 @@ msgstr "Search for"
 msgid "Replace with"
 msgstr "Replace with"
 
+#. I18N: button label
 #: admin_trees_places.php:109
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:48
 msgid "preview"
 msgstr "preview"
 
+#. I18N: button label
 #: admin_trees_places.php:110
 msgid "update"
 msgstr "update"
@@ -2756,6 +2860,7 @@ msgstr "Birth after baptism or christening"
 msgid "Birth after death or burial"
 msgstr "Birth after death or burial"
 
+#. I18N: Name of a module/report
 #: admin_trees_sanity.php:69 modules_v3/missing_facts_report/module.php:36
 #: modules_v3/missing_facts_report/report.bak:4
 #: modules_v3/missing_facts_report/report.bak:50
@@ -2825,6 +2930,8 @@ msgstr ""
 "the detail page of that record for further editing. If you have many similar "
 "edits you might prefer to use the <strong>Batch update</strong> tool."
 
+#. I18N: gedcom tag SOUR
+#. I18N: Name of a module/report
 #: admin_trees_sourcecheck.php:89 admin_trees_sourcecheck.php:109
 #: includes/functions/functions_print_facts.php:488
 #: includes/functions/functions_print_facts.php:510 inverselink.php:130
@@ -2850,6 +2957,7 @@ msgstr "Edit raw GEDCOM record"
 msgid "Citation"
 msgstr "Citation"
 
+#. I18N: gedcom tag INDI
 #: admin_trees_sourcecheck.php:133 ancestry.php:49 compact.php:43
 #: descendancy.php:43 familybook.php:43 fanchart_original.php:51
 #: hourglass.php:54 includes/functions/functions_edit.php:1746
@@ -2862,6 +2970,8 @@ msgstr "Citation"
 msgid "Individual"
 msgstr "Individual"
 
+#. I18N: gedcom tag FAM
+#. I18N: Name of a module/report
 #: admin_trees_sourcecheck.php:137 edit_interface.php:469
 #: includes/functions/functions_edit.php:1777 inverselink.php:114
 #: library/WT/Gedcom/Tag.php:213
@@ -2888,10 +2998,12 @@ msgstr "No unlinked individuals to display"
 msgid "User administration"
 msgstr "User administration"
 
+#. I18N: Listbox entry; name of a role
 #: admin_users.php:42 help_text.php:1303
 msgid "Editor"
 msgstr "Editor"
 
+#. I18N: Listbox entry; name of a role
 #: admin_users.php:43 help_text.php:1307
 msgid "Moderator"
 msgstr "Moderator"
@@ -2941,6 +3053,7 @@ msgstr "Family tree access and settings"
 msgid "Individual record"
 msgstr "Individual record"
 
+#. I18N: gedcom tag ROLE
 #: admin_users.php:239 admin_users.php:425 help_text.php:1290
 #: library/WT/Gedcom/Tag.php:313
 msgid "Role"
@@ -3007,6 +3120,10 @@ msgstr "Real name"
 msgid "Approved by administrator"
 msgstr "Approved by administrator"
 
+#. I18N: gedcom tag EMAI
+#. I18N: gedcom tag EMAIL
+#. I18N: gedcom tag EMAL
+#. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:178 help_text.php:1146
 #: library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198
 #: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:716 login.php:399
@@ -3018,6 +3135,7 @@ msgstr "Email address"
 msgid "Email verified"
 msgstr "Email verified"
 
+#. I18N: placeholder text for new-password field
 #: admin_users.php:385 login.php:415
 #, php-format
 msgid "Use at least %s character."
@@ -3029,6 +3147,7 @@ msgstr[1] "Use at least %s characters."
 msgid "Confirm password"
 msgstr "Confirm password"
 
+#. I18N: placeholder text for repeat-password field
 #: admin_users.php:390 login.php:423
 msgid "Type the password again."
 msgstr "Type the password again."
@@ -3145,6 +3264,7 @@ msgstr "Generations"
 msgid "Show Details"
 msgstr "Show Details"
 
+#. I18N: gedcom tag AGE
 #: autocomplete.php:72 includes/functions/functions_print.php:853
 #: includes/functions/functions_print.php:891
 #: library/WT/Controller/Timeline.php:226
@@ -3157,6 +3277,7 @@ msgstr "Show Details"
 msgid "Age"
 msgstr "Age"
 
+#. I18N: %s is a surname
 #: branches.php:44
 #, php-format
 msgid "Branches of the %s family"
@@ -3166,16 +3287,19 @@ msgstr "Branches of the %s family"
 msgid "Branches"
 msgstr "Branches"
 
+#. I18N: search using “sounds like”, rather than exact spelling
 #: branches.php:71 library/WT/Controller/Search.php:235
 #: library/WT/MenuBar.php:440 search.php:245 search.php:251
 msgid "Phonetic search"
 msgstr "Phonetic search"
 
+#. I18N: http://en.wikipedia.org/wiki/Soundex
 #: branches.php:74 library/WT/Soundex.php:32
 #: modules_v3/fancy_treeview/module.php:533 search.php:196
 msgid "Russell"
 msgstr "Russell"
 
+#. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: branches.php:77 library/WT/Soundex.php:33
 #: modules_v3/fancy_treeview/module.php:534 search.php:200
 msgid "Daitch-Mokotoff"
@@ -3189,6 +3313,7 @@ msgstr "Collapse all"
 msgid "Expand all"
 msgstr "Expand all"
 
+#. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: branches.php:156 branches.php:182
 #: includes/functions/functions_print_lists.php:258
 msgid "Sosa"
@@ -3250,11 +3375,13 @@ msgstr "Males"
 msgid "Females"
 msgstr "Females"
 
+#. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: calendar.php:266 modules_v3/bdm_report/module.php:36
 #: modules_v3/bdm_report/report.bak:4 modules_v3/bdm_report/report.bak:32
 msgid "Vital records"
 msgstr "Vital records"
 
+#. I18N: listbox option, e.g. “10,25,50,100,all”
 #: calendar.php:269 famlist.php:71 famlist.php:77 famlist.php:83
 #: famlist.php:173 famlist.php:175 famlist.php:259 famlist.php:261
 #: indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:173
@@ -3293,6 +3420,8 @@ msgstr "Custom Event"
 msgid "Calendar"
 msgstr "Calendar"
 
+#. I18N: Name of a module
+#. I18N: Name of a module
 #: calendar.php:363 modules_v3/todays_events/module.php:32
 #: modules_v3/widget_todays_events/module.php:35
 msgid "On this day"
@@ -3327,6 +3456,8 @@ msgstr "In this year"
 msgid "%s year anniversary"
 msgstr "%s year anniversary"
 
+#. I18N: %s is an individual’s name
+#. I18N: %s is the surname of the root individual
 #: descendancy.php:118 descendancy.php:124
 #: library/WT/Controller/Descendancy.php:99 modules_v3/charts/module.php:102
 #: modules_v3/fancy_treeview/module.php:565
@@ -3344,6 +3475,8 @@ msgstr "Error"
 msgid "You do not have permission to view this page."
 msgstr "You do not have permission to view this page."
 
+#. I18N: Name of a module
+#. I18N: Name of a module
 #: edit_changes.php:34 help_text.php:1246
 #: modules_v3/resource_changes/module.php:217
 #: modules_v3/review_changes/module.php:35
@@ -3413,6 +3546,7 @@ msgstr "Undo all changes"
 msgid "Are you sure you want to undo all the changes to this family tree?"
 msgstr "Are you sure you want to undo all the changes to this family tree?"
 
+#. I18N: Name of a module/menu
 #: edit_interface.php:187 edit_interface.php:1364
 #: includes/functions/functions_print_facts.php:167
 #: includes/functions/functions_print_facts.php:169
@@ -3497,6 +3631,7 @@ msgstr "Add a husband using an existing person"
 msgid "Add a wife using an existing person"
 msgstr "Add a wife using an existing person"
 
+#. I18N: gedcom tag WIFE
 #: edit_interface.php:542 library/WT/Gedcom/Tag.php:342
 #: modules_v3/family_group_report/report.bak:493
 #: modules_v3/family_group_report/report.bak:1067
@@ -3506,6 +3641,7 @@ msgstr "Add a wife using an existing person"
 msgid "Wife"
 msgstr "Wife"
 
+#. I18N: gedcom tag HUSB
 #: edit_interface.php:544 library/WT/Gedcom/Tag.php:236
 #: modules_v3/cemetery_report/report.bak:8
 #: modules_v3/death_report/report.bak:11
@@ -3555,6 +3691,7 @@ msgstr "Shared note"
 msgid "Create a new Shared Note using Assistant"
 msgstr "Create a new Shared Note using Assistant"
 
+#. I18N: Name of a module/sidebar
 #: edit_interface.php:997
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:158
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:167
@@ -3604,6 +3741,7 @@ msgstr "Add new Name"
 msgid "Add from clipboard"
 msgstr "Add from clipboard"
 
+#. I18N: gedcom tag _WT_OBJE_SORT
 #: edit_interface.php:2032 edit_interface.php:2043 edit_interface.php:2067
 #: edit_interface.php:2087 includes/media_reorder.php:67
 #: library/WT/Gedcom/Tag.php:831 modules_v3/album/module.php:105
@@ -3615,6 +3753,7 @@ msgstr "Re-order media"
 msgid "Re-order children"
 msgstr "Re-order children"
 
+#. I18N: An option in a list-box
 #: edit_interface.php:2180 reportengine.php:523
 #: modules_v3/bdm_report/report.bak:12 modules_v3/birth_report/report.bak:10
 #: modules_v3/fact_sources/report.bak:8
@@ -3711,6 +3850,7 @@ msgstr "Change"
 msgid "Re-order families"
 msgstr "Re-order families"
 
+#. I18N: An option in a list-box
 #: edit_interface.php:2558 reportengine.php:524
 #: modules_v3/marriage_report/report.bak:10
 msgid "sort by date of marriage"
@@ -3854,6 +3994,7 @@ msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
 msgstr "reject"
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:42
 #, php-format
 msgid ""
@@ -3883,6 +4024,7 @@ msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
 msgstr "reject"
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:60
 #, php-format
 msgid ""
@@ -4099,6 +4241,7 @@ msgstr ""
 "Dates are stored using English abbreviations and keywords.  Shortcuts are "
 "available as alternatives to these abbreviations and keywords."
 
+#. I18N: gedcom tag FORM
 #: help_text.php:178 help_text.php:190 help_text.php:201 help_text.php:208
 #: library/WT/Gedcom/Tag.php:231
 msgid "Format"
@@ -4142,18 +4285,22 @@ msgstr ""
 "in another calendar, add a keyword before the date.  This keyword is "
 "optional if the month or year format make the date unambiguous."
 
+#. I18N: The julian calendar
 #: help_text.php:209 library/WT/Date/Julian.php:44
 msgid "Julian"
 msgstr "Julian"
 
+#. I18N: The Hebrew/Jewish calendar
 #: help_text.php:214 library/WT/Date/Jewish.php:41
 msgid "Jewish"
 msgstr "Jewish"
 
+#. I18N: The Arabic/Hijri calendar
 #: help_text.php:228 library/WT/Date/Hijri.php:42
 msgid "Hijri"
 msgstr "Hijri"
 
+#. I18N: The French calendar
 #: help_text.php:240 library/WT/Date/French.php:41
 msgid "French"
 msgstr "French"
@@ -4542,6 +4689,7 @@ msgstr ""
 "Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, "
 "FONE, etc. to allow you to store place names in several different alphabets."
 
+#. I18N: Help text for the “Show list of family trees” site configuration setting
 #: help_text.php:420
 msgid ""
 "For sites with more than one family tree, this option will show the list of "
@@ -4570,6 +4718,7 @@ msgstr ""
 msgid "The following calendars are supported:"
 msgstr "The following calendars are supported:"
 
+#. I18N: The three place holders are all dates.
 #: help_text.php:441
 #, php-format
 msgid ""
@@ -4826,6 +4975,7 @@ msgstr ""
 "The length of time after birth can be set on the Privacy configuration tab "
 "option \"Age at which to assume a person is dead\"."
 
+#. I18N: Help text for the "Data folder" site configuration setting
 #: help_text.php:565
 msgid ""
 "This folder will be used by kiwitrees to store media files, GEDCOM files, "
@@ -4836,6 +4986,7 @@ msgstr ""
 "temporary files, etc.  These files may contain private data, and should not "
 "be made available over the internet."
 
+#. I18N: “Apache” is a software program.
 #: help_text.php:567
 msgid ""
 "To protect this private data, kiwitrees uses an Apache configuration file (."
@@ -4922,6 +5073,7 @@ msgstr ""
 "this language will be used.  Typically, this setting applies to search "
 "engines."
 
+#. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:602
 msgid ""
 "You only need to enter a Login URL if you want to redirect to a different "
@@ -5013,6 +5165,7 @@ msgstr ""
 "If you are concerned that users might upload inappropriate images, you can "
 "restrict media uploads to managers only."
 
+#. I18N: %s is an amount of memory, such as 32MB
 #: help_text.php:664
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
@@ -5042,12 +5195,14 @@ msgstr ""
 "When a new note record is added online in kiwitrees, a new ID for that note "
 "will be generated automatically. The note ID will have this prefix."
 
+#. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:688
 msgid ""
 "This is the initial setting for the “show details” option on the charts."
 msgstr ""
 "This is the initial setting for the “show details” option on the charts."
 
+#. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: help_text.php:693
 msgid ""
 "This option indicates whether the Pedigree chart should be generated in "
@@ -5100,6 +5255,7 @@ msgstr ""
 "Note: longer path lengths require a lot of calculation, which can make your "
 "site run slowly for these users."
 
+#. I18N: Help text for the “Session timeout” site configuration setting
 #: help_text.php:713
 msgid ""
 "The time in seconds that a kiwitrees session remains active before requiring "
@@ -5108,6 +5264,7 @@ msgstr ""
 "The time in seconds that a kiwitrees session remains active before requiring "
 "a login.  The default is 7200, which is 2 hours."
 
+#. I18N: Help text for the “Messages” site configuration setting
 #: help_text.php:718
 msgid ""
 "Kiwitrees needs to send emails, such as password reminders and site "
@@ -5120,6 +5277,7 @@ msgstr ""
 "facility (which is not always available) or an external SMTP (mail-relay) "
 "service, for which you will need to provide the connection details."
 
+#. I18N: Help text for the “Messages” site configuration setting
 #: help_text.php:723
 msgid ""
 "By default kiwitrees sends emails in plain text format. Setting this option "
@@ -5140,14 +5298,17 @@ msgstr "The password required for authentication with the SMTP server."
 msgid "The user name required for authentication with the SMTP server."
 msgstr "The user name required for authentication with the SMTP server."
 
+#. I18N: Help text for the “Use password” site configuration setting
 #: help_text.php:738
 msgid "Most SMTP servers require a password."
 msgstr "Most SMTP servers require a password."
 
+#. I18N: A site configuration setting
 #: help_text.php:742
 msgid "Sender name"
 msgstr "Sender name"
 
+#. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:743
 msgid ""
 "This name is used in the “From” field, when sending automatic emails from "
@@ -5156,6 +5317,7 @@ msgstr ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server. It must be a valid email address."
 
+#. I18N: Help text for the “Sending server name” site configuration setting
 #: help_text.php:748
 msgid ""
 "Many mail servers require that the sending server identifies itself "
@@ -5164,6 +5326,7 @@ msgstr ""
 "Many mail servers require that the sending server identifies itself "
 "correctly, using a valid domain name."
 
+#. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:753
 msgid ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
@@ -5172,10 +5335,12 @@ msgstr ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
 
+#. I18N: Help text for the "Port number" site configuration setting
 #: help_text.php:758
 msgid "By default, SMTP works on port 25."
 msgstr "By default, SMTP works on port 25."
 
+#. I18N: Help text for the "Secure connection" site configuration setting
 #: help_text.php:763
 msgid "Most servers do not use secure connections."
 msgstr "Most servers do not use secure connections."
@@ -5308,6 +5473,7 @@ msgstr ""
 "Enabling this option will force all visitors to login before they can view "
 "any data on the site."
 
+#. I18N: Help text for the "Website URL" site configuration setting
 #: help_text.php:818
 msgid ""
 "If your site can be reached using more than one URL, such as <b>http://www."
@@ -5542,38 +5708,46 @@ msgstr ""
 "When you Add a family member, a default surname can be provided.  This "
 "surname will depend on the local tradition."
 
+#. I18N: In the patrilineal surname tradition, ...
 #: help_text.php:926 help_text.php:936 help_text.php:957 help_text.php:964
 msgid "Children take their father’s surname."
 msgstr "Children take their father’s surname."
 
+#. I18N: In the matrilineal surname tradition, ...
 #: help_text.php:932
 msgid "Children take their mother’s surname."
 msgstr "Children take their mother’s surname."
 
+#. I18N: In the paternal surname tradition, ...
 #: help_text.php:938 help_text.php:958 help_text.php:965
 msgid "Wives take their husband’s surname."
 msgstr "Wives take their husband’s surname."
 
+#. I18N: In the Spanish surname tradition, ...
 #: help_text.php:943
 msgid ""
 "Children take one surname from the father and one surname from the mother."
 msgstr ""
 "Children take one surname from the father and one surname from the mother."
 
+#. I18N: In the Portuguese surname tradition, ...
 #: help_text.php:948
 msgid ""
 "Children take one surname from the mother and one surname from the father."
 msgstr ""
 "Children take one surname from the mother and one surname from the father."
 
+#. I18N: In the Icelandic surname tradition, ...
 #: help_text.php:953
 msgid "Children take a patronym instead of a surname."
 msgstr "Children take a patronym instead of a surname."
 
+#. I18N: In the Polish surname tradition, ...
 #: help_text.php:960
 msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr "Surnames are inflected to indicate an individual’s gender."
 
+#. I18N: In the Lithuanian surname tradition, ...
 #: help_text.php:967
 msgid ""
 "Surnames are inflected to indicate an individual’s gender and marital status."
@@ -5985,6 +6159,7 @@ msgstr ""
 "understand the GEDCOM format.  If you make a mistake here, it can be "
 "difficult to fix."
 
+#. I18N: %s is a URL
 #: help_text.php:1100
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
@@ -6226,6 +6401,8 @@ msgstr ""
 "The number of occurrences of the specified name will be shown on the map. If "
 "you leave this field empty, the most common surname will be used."
 
+#. I18N: Name of a module
+#. I18N: Name of a module
 #: help_text.php:1181 library/WT/MenuBar.php:497
 #: modules_v3/gedcom_favorites/module.php:35
 #: modules_v3/widget_favorites/module.php:35
@@ -6829,6 +7006,7 @@ msgstr "Help"
 msgid "The help text has not been written for this item."
 msgstr "The help text has not been written for this item."
 
+#. I18N: %s is an individual’s name
 #: hourglass.php:43 library/WT/Controller/Hourglass.php:106
 #: modules_v3/charts/module.php:105
 #, php-format
@@ -6844,6 +7022,7 @@ msgstr "Loading data from GEDCOM: %.1f%%"
 msgid "Invalid GEDCOM file - no header record found."
 msgstr "Invalid GEDCOM file - no header record found."
 
+#. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:151
 #, php-format
 msgid "This GEDCOM is encoded using %1$s.  Assume this to mean %2$s."
@@ -6907,105 +7086,127 @@ msgstr "…"
 msgid "File successfully uploaded"
 msgstr "File successfully uploaded"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:195
 msgid "Uploaded file exceeds the allowed size"
 msgstr "Uploaded file exceeds the allowed size"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:198
 msgid "File was only partially uploaded, please try again"
 msgstr "File was only partially uploaded, please try again"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:201
 msgid "No file was received. Please upload again."
 msgstr "No file was received. Please upload again."
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:204
 msgid "Missing PHP temporary directory"
 msgstr "Missing PHP temporary directory"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:207
 msgid "PHP failed to write to disk"
 msgstr "PHP failed to write to disk"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:210
 msgid "PHP blocked file by extension"
 msgstr "PHP blocked file by extension"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1014
 msgctxt "MALE"
 msgid "first cousin"
 msgstr "first cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1017
 msgctxt "MALE"
 msgid "second cousin"
 msgstr "second cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1020
 msgctxt "MALE"
 msgid "third cousin"
 msgstr "third cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1023
 msgctxt "MALE"
 msgid "fourth cousin"
 msgstr "fourth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1026
 msgctxt "MALE"
 msgid "fifth cousin"
 msgstr "fifth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1029
 msgctxt "MALE"
 msgid "sixth cousin"
 msgstr "sixth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1032
 msgctxt "MALE"
 msgid "seventh cousin"
 msgstr "seventh cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1035
 msgctxt "MALE"
 msgid "eighth cousin"
 msgstr "eighth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1038
 msgctxt "MALE"
 msgid "ninth cousin"
 msgstr "ninth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1041
 msgctxt "MALE"
 msgid "tenth cousin"
 msgstr "tenth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1044
 msgctxt "MALE"
 msgid "eleventh cousin"
 msgstr "eleventh cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1047
 msgctxt "MALE"
 msgid "twelfth cousin"
 msgstr "twelfth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1050
 msgctxt "MALE"
 msgid "thirteenth cousin"
 msgstr "thirteenth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1053
 msgctxt "MALE"
 msgid "fourteenth cousin"
 msgstr "fourteenth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1056
 msgctxt "MALE"
 msgid "fifteenth cousin"
 msgstr "fifteenth cousin"
 
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:1059
 #, php-format
 msgctxt "MALE"
@@ -7174,6 +7375,7 @@ msgctxt "MALE/FEMALE"
 msgid "%d x cousin"
 msgstr "%d x cousin"
 
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:1108
 #, php-format
 msgctxt "MALE"
@@ -7204,12 +7406,14 @@ msgctxt "MALE"
 msgid "fifth %s"
 msgstr "fifth %s"
 
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:1114
 #, php-format
 msgctxt "MALE"
 msgid "%1$d x %2$s"
 msgstr "%1$d x %2$s"
 
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:1119
 #, php-format
 msgctxt "FEMALE"
@@ -7240,12 +7444,14 @@ msgctxt "FEMALE"
 msgid "fifth %s"
 msgstr "fifth %s"
 
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:1125
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$d x %2$s"
 msgstr "%1$d x %2$s"
 
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:1130
 #, php-format
 msgctxt "MALE/FEMALE"
@@ -7276,6 +7482,7 @@ msgctxt "MALE/FEMALE"
 msgid "fifth %s"
 msgstr "fifth %s"
 
+#. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:1136
 #, php-format
 msgctxt "MALE/FEMALE"
@@ -7290,6 +7497,7 @@ msgstr "self"
 msgid "parent"
 msgstr "parent"
 
+#. I18N: A life partner - like a husband, but not married
 #: includes/functions/functions.php:1174
 #: library/WT/Controller/Individual.php:509
 #: library/WT/Controller/Individual.php:525
@@ -7297,11 +7505,13 @@ msgctxt "MALE"
 msgid "partner"
 msgstr "partner"
 
+#. I18N: A previous husband, now divorced
 #: includes/functions/functions.php:1176
 #: library/WT/Controller/Individual.php:513
 msgid "ex-husband"
 msgstr "ex-husband"
 
+#. I18N: A life partner - like a wife, but not married
 #: includes/functions/functions.php:1187
 #: library/WT/Controller/Individual.php:508
 #: library/WT/Controller/Individual.php:524
@@ -7309,11 +7519,13 @@ msgctxt "FEMALE"
 msgid "partner"
 msgstr "partner"
 
+#. I18N: A previous wife, now divorced
 #: includes/functions/functions.php:1189
 #: library/WT/Controller/Individual.php:512
 msgid "ex-wife"
 msgstr "ex-wife"
 
+#. I18N: A life partner - like a spouse, but not married
 #: includes/functions/functions.php:1200
 #: library/WT/Controller/Individual.php:507
 #: library/WT/Controller/Individual.php:523
@@ -7321,6 +7533,7 @@ msgctxt "MALE/FEMALE"
 msgid "partner"
 msgstr "partner"
 
+#. I18N: A previous spouse, now divorced
 #: includes/functions/functions.php:1202
 #: library/WT/Controller/Individual.php:511
 msgid "ex-spouse"
@@ -9223,6 +9436,7 @@ msgstr "great x7 aunt"
 msgid "great x7 aunt/uncle"
 msgstr "great x7 aunt/uncle"
 
+#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1715 includes/functions/functions.php:1735
 #, php-format
 msgid "great x%d uncle"
@@ -9492,6 +9706,7 @@ msgctxt "(a woman's) great x%d nephew/niece"
 msgid "great x%d nephew/niece"
 msgstr "great x%d nephew/niece"
 
+#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1889 includes/functions/functions.php:1900
 #, php-format
 msgid "great x%d nephew"
@@ -9579,6 +9794,7 @@ msgstr "great x7 grandmother"
 msgid "great x7 grandparent"
 msgstr "great x7 grandparent"
 
+#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1961 includes/functions/functions.php:1968
 #: includes/functions/functions.php:1975 includes/functions/functions.php:1983
 #: includes/functions/functions.php:1993
@@ -9672,6 +9888,7 @@ msgstr "great x7 granddaughter"
 msgid "great x7 grandchild"
 msgstr "great x7 grandchild"
 
+#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2056 includes/functions/functions.php:2069
 #, php-format
 msgid "great x%d grandson"
@@ -9687,46 +9904,55 @@ msgstr "great x%d granddaughter"
 msgid "great x%d grandchild"
 msgstr "great x%d grandchild"
 
+#. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2119
 #, php-format
 msgid "%s once removed ascending"
 msgstr "%s once removed ascending"
 
+#. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2122
 #, php-format
 msgid "%s once removed descending"
 msgstr "%s once removed descending"
 
+#. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2127
 #, php-format
 msgid "%s twice removed ascending"
 msgstr "%s twice removed ascending"
 
+#. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2130
 #, php-format
 msgid "%s twice removed descending"
 msgstr "%s twice removed descending"
 
+#. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2135
 #, php-format
 msgid "%s thrice removed ascending"
 msgstr "%s thrice removed ascending"
 
+#. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2138
 #, php-format
 msgid "%s thrice removed descending"
 msgstr "%s thrice removed descending"
 
+#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:2143
 #, php-format
 msgid "%1$s %2$d times removed ascending"
 msgstr "%1$s %2$d times removed ascending"
 
+#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:2146
 #, php-format
 msgid "%1$s %2$d times removed descending"
 msgstr "%1$s %2$d times removed descending"
 
+#. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: includes/functions/functions.php:2161
 #, php-format
 msgid "%1$s's %2$s"
@@ -9739,6 +9965,7 @@ msgstr "%1$s's %2$s"
 msgid "No children"
 msgstr "No children"
 
+#. I18N: This is a title, so needs suitable capitalisation
 #: includes/functions/functions_charts.php:266
 #: includes/functions/functions_charts.php:826
 #, php-format
@@ -9772,10 +9999,12 @@ msgstr "This family remained childless"
 msgid "Add new"
 msgstr "Add new"
 
+#. I18N: gedcom tag CHIL
 #: includes/functions/functions_date.php:35 library/WT/Gedcom/Tag.php:162
 msgid "Child"
 msgstr "Child"
 
+#. I18N: gedcom tag INFL
 #: includes/functions/functions_date.php:37 library/WT/Gedcom/Tag.php:242
 msgid "Infant"
 msgstr "Infant"
@@ -9791,6 +10020,7 @@ msgid_plural "%s years"
 msgstr[0] "%s year"
 msgstr[1] "%s years"
 
+#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:58 library/WT/I18N.php:386
 #, php-format
 msgid "%s month"
@@ -9798,6 +10028,7 @@ msgid_plural "%s months"
 msgstr[0] "%s month"
 msgstr[1] "%s months"
 
+#. I18N: Part of an age string. e.g. 7 weeks and 3 days
 #: includes/functions/functions_date.php:60 library/WT/I18N.php:390
 #, php-format
 msgid "%s week"
@@ -9805,6 +10036,7 @@ msgid_plural "%s weeks"
 msgstr[0] "%s week"
 msgstr[1] "%s weeks"
 
+#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: includes/functions/functions_date.php:62 library/WT/I18N.php:394
 #, php-format
 msgid "%s day"
@@ -9812,34 +10044,42 @@ msgid_plural "%s days"
 msgstr[0] "%s day"
 msgstr[1] "%s days"
 
+#. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:106
 msgid "midnight"
 msgstr "midnight"
 
+#. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:108
 msgid "a.m."
 msgstr "a.m."
 
+#. I18N: time format “%a” - exactly 12:00:00
 #: includes/functions/functions_date.php:110
 msgid "noon"
 msgstr "noon"
 
+#. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:112
 msgid "p.m."
 msgstr "p.m."
 
+#. I18N: time format “%A” - exactly 00:00:00
 #: includes/functions/functions_date.php:118
 msgid "Midnight"
 msgstr "Midnight"
 
+#. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:120
 msgid "A.M."
 msgstr "A.M."
 
+#. I18N: time format “%A” - exactly 12:00:00
 #: includes/functions/functions_date.php:122
 msgid "Noon"
 msgstr "Noon"
 
+#. I18N: time format “%A” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:124
 msgid "P.M."
 msgstr "P.M."
@@ -9882,6 +10122,7 @@ msgid ""
 msgstr ""
 "The record with id %s was changed by another user since you last accessed it."
 
+#. I18N: %s placeholders are a user-ID and a timestamp
 #: includes/functions/functions_edit.php:394
 #, php-format
 msgid "This record was last changed by <i>%s</i> at %s"
@@ -9901,6 +10142,7 @@ msgstr ""
 msgid "go to new individual"
 msgstr "go to new individual"
 
+#. I18N: button hover title
 #: includes/functions/functions_edit.php:1012
 msgid "Check for possible duplicates"
 msgstr "Check for possible duplicates"
@@ -9959,12 +10201,14 @@ msgstr "Invalid GEDCOM format"
 msgid "Message was not sent"
 msgstr "Message was not sent"
 
+#. I18N: %s is an error message
 #: includes/functions/functions_mail.php:184
 #: includes/functions/functions_mail.php:194
 #, php-format
 msgid "Mailer error: %s"
 msgstr "Mailer error: %s"
 
+#. I18N: Name of a report
 #: includes/functions/functions_print.php:92
 #: library/WT/Controller/Fanchart.php:301 library/WT/Controller/Pedigree.php:95
 #: library/WT/MenuBar.php:106 modules_v3/charts/module.php:208
@@ -9985,6 +10229,9 @@ msgstr "Pedigree map"
 msgid "Relationship to me"
 msgstr "Relationship to me"
 
+#. I18N: gedcom tag DESC
+#. I18N: Name of a module/sidebar
+#. I18N: Name of a module/report
 #: includes/functions/functions_print.php:99
 #: library/WT/Controller/Descendancy.php:102
 #: library/WT/Controller/Fanchart.php:308 library/WT/Gedcom/Tag.php:189
@@ -9999,6 +10246,7 @@ msgstr "Relationship to me"
 msgid "Descendants"
 msgstr "Descendants"
 
+#. I18N: Name of a module/report
 #: includes/functions/functions_print.php:100
 #: library/WT/Controller/Ancestry.php:84 library/WT/Controller/Fanchart.php:309
 #: library/WT/MenuBar.php:108 modules_v3/ahnentafel_report/module.php:36
@@ -10024,6 +10272,7 @@ msgstr "Fan chart"
 msgid "Hourglass chart"
 msgstr "Hourglass chart"
 
+#. I18N: Name of a module
 #: includes/functions/functions_print.php:107
 #: library/WT/Controller/Fanchart.php:314 library/WT/MenuBar.php:122
 #: modules_v3/charts/module.php:211 modules_v3/tree/module.php:33
@@ -10084,6 +10333,7 @@ msgstr "For technical support and information contact"
 msgid "For help with genealogy questions contact"
 msgstr "For help with genealogy questions contact"
 
+#. I18N: gedcom tag NOTE
 #: includes/functions/functions_print.php:514
 #: includes/functions/functions_print.php:598
 #: includes/functions/functions_resource.php:347 library/WT/Gedcom/Tag.php:278
@@ -10134,6 +10384,7 @@ msgstr "on the date of death"
 msgid "after death"
 msgstr "after death"
 
+#. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
 #: includes/functions/functions_print.php:975
 #: modules_v3/googlemap/admin_places.php:192 modules_v3/googlemap/module.php:51
 #: modules_v3/googlemap/module.php:176 modules_v3/googlemap/module.php:1428
@@ -10266,6 +10517,7 @@ msgstr "Copy"
 msgid "Are you sure you want to delete this fact?"
 msgstr "Are you sure you want to delete this fact?"
 
+#. I18N: This is an abbreviation for a number.  i.e. #7 means number 7
 #: includes/functions/functions_print_facts.php:179
 #: includes/functions/functions_print_facts.php:184 library/WT/Person.php:741
 #, php-format
@@ -10469,6 +10721,7 @@ msgstr "Spouses"
 msgid "%1$s (%2$d)"
 msgstr "%1$s (%2$d)"
 
+#. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1793
 #, php-format
 msgid "Changed on %1$s by %2$s"
@@ -10489,6 +10742,7 @@ msgstr "No events for living people exist for today."
 msgid "No events exist for tomorrow."
 msgstr "No events exist for tomorrow."
 
+#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:2059
 #: includes/functions/functions_print_lists.php:2168
 #, php-format
@@ -10502,6 +10756,7 @@ msgstr[1] "No events exist for the next %s days."
 msgid "No events for living people exist for tomorrow."
 msgstr "No events for living people exist for tomorrow."
 
+#. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:2066
 #: includes/functions/functions_print_lists.php:2175
 #, php-format
@@ -10566,6 +10821,7 @@ msgstr "Move Right"
 msgid "Move Left"
 msgstr "Move Left"
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:50
 #, php-format
 msgid ""
@@ -10583,6 +10839,7 @@ msgstr ""
 "This individual has been deleted.  The deletion will need to be reviewed by "
 "a moderator."
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:68
 #, php-format
 msgid ""
@@ -10624,6 +10881,7 @@ msgstr "Click here to open or close the sidebar"
 msgid "Link to an existing media object"
 msgstr "Link to an existing media object"
 
+#. I18N: gedcom tag REPO
 #: inverselink.php:146 library/WT/Gedcom/Tag.php:304
 msgid "Repository"
 msgstr "Repository"
@@ -10633,6 +10891,7 @@ msgstr "Repository"
 msgid "Advanced search"
 msgstr "Advanced search"
 
+#. I18N: %s is an individual’s name
 #: library/WT/Controller/Ancestry.php:81 library/WT/Controller/Ancestry.php:103
 #, php-format
 msgid "Ancestors of %s"
@@ -10652,6 +10911,7 @@ msgstr "Ancestors of %s"
 msgid "and"
 msgstr "and"
 
+#. I18N: %s is an individual’s name
 #: library/WT/Controller/Compact.php:48 library/WT/Controller/Compact.php:118
 #, php-format
 msgid "Compact tree of %s"
@@ -10672,6 +10932,8 @@ msgstr ""
 "will leave the individuals in place.  Are you sure you want to delete this "
 "family?"
 
+#. I18N: Menu option.  Add [the current page] to the list of favorites
+#. I18N: Menu option.  Add [the current page] to the list of favorites
 #: library/WT/Controller/Family.php:167
 #: library/WT/Controller/Individual.php:403 library/WT/Controller/Media.php:138
 #: library/WT/Controller/Note.php:114 library/WT/Controller/Repository.php:114
@@ -10687,6 +10949,7 @@ msgstr "No facts for this family."
 msgid "Add new family information"
 msgstr "Add new family information"
 
+#. I18N: %s is an individual’s name
 #: library/WT/Controller/Familybook.php:73
 #, php-format
 msgid "Family book of %s"
@@ -10696,24 +10959,29 @@ msgstr "Family book of %s"
 msgid "Family book"
 msgstr "Family book"
 
+#. I18N: A title/heading. %s is an individual’s name
 #: library/WT/Controller/Familybook.php:401
 #, php-format
 msgid "Family of %s"
 msgstr "Family of %s"
 
+#. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: library/WT/Controller/Fanchart.php:48 library/WT/Controller/Fanchart.php:358
 #, php-format
 msgid "Fan chart of %s"
 msgstr "Fan chart of %s"
 
+#. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:57
 msgid "half circle"
 msgstr "half circle"
 
+#. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:58
 msgid "three-quarter circle"
 msgstr "three-quarter circle"
 
+#. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:59
 msgid "full circle"
 msgstr "full circle"
@@ -10770,6 +11038,7 @@ msgstr "Edit details"
 msgid "Edit note"
 msgstr "Edit note"
 
+#. I18N: %s is an individual’s name
 #: library/WT/Controller/Pedigree.php:92
 #, php-format
 msgid "Pedigree tree of %s"
@@ -10866,6 +11135,7 @@ msgstr "General search"
 msgid "Search and replace"
 msgstr "Search and replace"
 
+#. I18N: Name of a module
 #: library/WT/Controller/Search.php:597 modules_v3/stories/module.php:35
 #: modules_v3/stories/module.php:581 search.php:131
 msgid "Stories"
@@ -10892,51 +11162,61 @@ msgstr "Husband's age"
 msgid "Wife's age"
 msgstr "Wife's age"
 
+#. I18N: Gedcom ABT dates
 #: library/WT/Date.php:241
 #, php-format
 msgid "about %s"
 msgstr "about %s"
 
+#. I18N: Gedcom CAL dates
 #: library/WT/Date.php:242
 #, php-format
 msgid "calculated %s"
 msgstr "calculated %s"
 
+#. I18N: Gedcom EST dates
 #: library/WT/Date.php:243
 #, php-format
 msgid "estimated %s"
 msgstr "estimated %s"
 
+#. I18N: Gedcom INT dates
 #: library/WT/Date.php:244
 #, php-format
 msgid "interpreted %s (%s)"
 msgstr "interpreted %s (%s)"
 
+#. I18N: Gedcom BEF dates
 #: library/WT/Date.php:245
 #, php-format
 msgid "before %s"
 msgstr "before %s"
 
+#. I18N: Gedcom AFT dates
 #: library/WT/Date.php:246
 #, php-format
 msgid "after %s"
 msgstr "after %s"
 
+#. I18N: Gedcom FROM dates
 #: library/WT/Date.php:247
 #, php-format
 msgid "from %s"
 msgstr "from %s"
 
+#. I18N: Gedcom TO dates
 #: library/WT/Date.php:248
 #, php-format
 msgid "to %s"
 msgstr "to %s"
 
+#. I18N: Gedcom BET-AND dates
 #: library/WT/Date.php:249
 #, php-format
 msgid "between %s and %s"
 msgstr "between %s and %s"
 
+#. I18N: Gedcom FROM-TO dates
 #: library/WT/Date.php:250
 #, php-format
 msgid "from %s to %s"
@@ -11514,489 +11794,587 @@ msgstr "Nonidi"
 msgid "Decidi"
 msgstr "Decidi"
 
+#. I18N: The gregorian calendar
 #: library/WT/Date/Gregorian.php:45
 msgid "Gregorian"
 msgstr "Gregorian"
 
+#. I18N: http://en.wikipedia.org/wiki/Muharram
 #: library/WT/Date/Hijri.php:55
 msgctxt "NOMINATIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
+#. I18N: http://en.wikipedia.org/wiki/Safar
 #: library/WT/Date/Hijri.php:56
 msgctxt "NOMINATIVE"
 msgid "Safar"
 msgstr "Safar"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:57
 msgctxt "NOMINATIVE"
 msgid "Rabi' al-awwal"
 msgstr "Rabi' al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:58
 msgctxt "NOMINATIVE"
 msgid "Rabi' al-thani"
 msgstr "Rabi' al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:59
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:60
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:61
 msgctxt "NOMINATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
+#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:62
 msgctxt "NOMINATIVE"
 msgid "Sha'aban"
 msgstr "Sha'aban"
 
+#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: library/WT/Date/Hijri.php:63
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
+#. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:64
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:65
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi'dah"
 msgstr "Dhu al-Qi'dah"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:66
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
+#. I18N: http://en.wikipedia.org/wiki/Muharram
 #: library/WT/Date/Hijri.php:72
 msgctxt "GENITIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
+#. I18N: http://en.wikipedia.org/wiki/Safar
 #: library/WT/Date/Hijri.php:73
 msgctxt "GENITIVE"
 msgid "Safar"
 msgstr "Safar"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:74
 msgctxt "GENITIVE"
 msgid "Rabi' al-awwal"
 msgstr "Rabi' al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:75
 msgctxt "GENITIVE"
 msgid "Rabi' al-thani"
 msgstr "Rabi' al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:76
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:77
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:78
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
+#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:79
 msgctxt "GENITIVE"
 msgid "Sha'aban"
 msgstr "Sha'aban"
 
+#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: library/WT/Date/Hijri.php:80
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
+#. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:81
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:82
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi'dah"
 msgstr "Dhu al-Qi'dah"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:83
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
+#. I18N: http://en.wikipedia.org/wiki/Muharram
 #: library/WT/Date/Hijri.php:89
 msgctxt "LOCATIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
+#. I18N: http://en.wikipedia.org/wiki/Safar
 #: library/WT/Date/Hijri.php:90
 msgctxt "LOCATIVE"
 msgid "Safar"
 msgstr "Safar"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:91
 msgctxt "LOCATIVE"
 msgid "Rabi' al-awwal"
 msgstr "Rabi' al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:92
 msgctxt "LOCATIVE"
 msgid "Rabi' al-thani"
 msgstr "Rabi' al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:93
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:94
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:95
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
+#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:96
 msgctxt "LOCATIVE"
 msgid "Sha'aban"
 msgstr "Sha'aban"
 
+#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: library/WT/Date/Hijri.php:97
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
+#. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:98
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:99
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi'dah"
 msgstr "Dhu al-Qi'dah"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:100
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
+#. I18N: http://en.wikipedia.org/wiki/Muharram
 #: library/WT/Date/Hijri.php:106
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
 msgstr "Muharram"
 
+#. I18N: http://en.wikipedia.org/wiki/Safar
 #: library/WT/Date/Hijri.php:107
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
 msgstr "Safar"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: library/WT/Date/Hijri.php:108
 msgctxt "INSTRUMENTAL"
 msgid "Rabi' al-awwal"
 msgstr "Rabi' al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: library/WT/Date/Hijri.php:109
 msgctxt "INSTRUMENTAL"
 msgid "Rabi' al-thani"
 msgstr "Rabi' al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: library/WT/Date/Hijri.php:110
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: library/WT/Date/Hijri.php:111
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
+#. I18N: http://en.wikipedia.org/wiki/Rajab
 #: library/WT/Date/Hijri.php:112
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rajab"
 
+#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: library/WT/Date/Hijri.php:113
 msgctxt "INSTRUMENTAL"
 msgid "Sha'aban"
 msgstr "Sha'aban"
 
+#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: library/WT/Date/Hijri.php:114
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramadan"
 
+#. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: library/WT/Date/Hijri.php:115
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Shawwal"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: library/WT/Date/Hijri.php:116
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi'dah"
 msgstr "Dhu al-Qi'dah"
 
+#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: library/WT/Date/Hijri.php:117
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
+#. I18N: The Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:41
 msgid "Jalali"
 msgstr "Jalali"
 
+#. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:55
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
+#. I18N:  2nd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:56
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
+#. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:57
 msgctxt "NOMINATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
+#. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:58
 msgctxt "NOMINATIVE"
 msgid "Tir"
 msgstr "Tir"
 
+#. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:59
 msgctxt "NOMINATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
+#. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:60
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
+#. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:61
 msgctxt "NOMINATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
+#. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:62
 msgctxt "NOMINATIVE"
 msgid "Aban"
 msgstr "Aban"
 
+#. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:63
 msgctxt "NOMINATIVE"
 msgid "Azar"
 msgstr "Azar"
 
+#. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:64
 msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
+#. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:65
 msgctxt "NOMINATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
+#. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:66
 msgctxt "NOMINATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
+#. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:73
 msgctxt "GENITIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
+#. I18N:  2nd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:74
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
+#. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:75
 msgctxt "GENITIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
+#. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:76
 msgctxt "GENITIVE"
 msgid "Tir"
 msgstr "Tir"
 
+#. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:77
 msgctxt "GENITIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
+#. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:78
 msgctxt "GENITIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
+#. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:79
 msgctxt "GENITIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
+#. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:80
 msgctxt "GENITIVE"
 msgid "Aban"
 msgstr "Aban"
 
+#. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:81
 msgctxt "GENITIVE"
 msgid "Azar"
 msgstr "Azar"
 
+#. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:82
 msgctxt "GENITIVE"
 msgid "Dey"
 msgstr "Dey"
 
+#. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:83
 msgctxt "GENITIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
+#. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:84
 msgctxt "GENITIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
+#. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:91
 msgctxt "LOCATIVE"
 msgid "Farvardin"
 msgstr "Farvardin"
 
+#. I18N:  2nd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:92
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
+#. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:93
 msgctxt "LOCATIVE"
 msgid "Khordad"
 msgstr "Khordad"
 
+#. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:94
 msgctxt "LOCATIVE"
 msgid "Tir"
 msgstr "Tir"
 
+#. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:95
 msgctxt "LOCATIVE"
 msgid "Mordad"
 msgstr "Mordad"
 
+#. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:96
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
+#. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:97
 msgctxt "LOCATIVE"
 msgid "Mehr"
 msgstr "Mehr"
 
+#. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:98
 msgctxt "LOCATIVE"
 msgid "Aban"
 msgstr "Aban"
 
+#. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:99
 msgctxt "LOCATIVE"
 msgid "Azar"
 msgstr "Azar"
 
+#. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:100
 msgctxt "LOCATIVE"
 msgid "Dey"
 msgstr "Dey"
 
+#. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:101
 msgctxt "LOCATIVE"
 msgid "Bahman"
 msgstr "Bahman"
 
+#. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:102
 msgctxt "LOCATIVE"
 msgid "Esfand"
 msgstr "Esfand"
 
+#. I18N:  1st month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:109
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
 msgstr "Farvardin"
 
+#. I18N:  2nd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:110
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
+#. I18N:  3rd month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:111
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
 msgstr "Khordad"
 
+#. I18N:  4th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:112
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
 msgstr "Tir"
 
+#. I18N:  5th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:113
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
 msgstr "Mordad"
 
+#. I18N:  6th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:114
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
 msgstr "Shahrivar"
 
+#. I18N:  7th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:115
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
 msgstr "Mehr"
 
+#. I18N:  8th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:116
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
 msgstr "Aban"
 
+#. I18N:  9th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:117
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
 msgstr "Azar"
 
+#. I18N: 10th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:118
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
 msgstr "Dey"
 
+#. I18N: 11th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:119
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
 msgstr "Bahman"
 
+#. I18N: 12th month in the Persian/Jalali calendar
 #: library/WT/Date/Jalali.php:120
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
@@ -12342,11 +12720,13 @@ msgctxt "INSTRUMENTAL"
 msgid "Elul"
 msgstr "Elul"
 
+#. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:105
 #, php-format
 msgid "%s&nbsp;BCE"
 msgstr "%s&nbsp;BCE"
 
+#. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:108 library/WT/Date/Julian.php:111
 #, php-format
 msgid "%s&nbsp;CE"
@@ -12370,132 +12750,160 @@ msgstr "Adopted by both parents"
 msgid "Adopted by both parents"
 msgstr "Adopted by both parents"
 
+#. I18N: gedcom tag _ADPF
 #: library/WT/Gedcom/Code/Adop.php:50 library/WT/Gedcom/Tag.php:383
 msgctxt "MALE"
 msgid "Adopted by father"
 msgstr "Adopted by father"
 
+#. I18N: gedcom tag _ADPF
 #: library/WT/Gedcom/Code/Adop.php:51 library/WT/Gedcom/Tag.php:384
 msgctxt "FEMALE"
 msgid "Adopted by father"
 msgstr "Adopted by father"
 
+#. I18N: gedcom tag _ADPF
 #: library/WT/Gedcom/Code/Adop.php:52 library/WT/Gedcom/Tag.php:385
 msgid "Adopted by father"
 msgstr "Adopted by father"
 
+#. I18N: gedcom tag _ADPM
 #: library/WT/Gedcom/Code/Adop.php:56 library/WT/Gedcom/Tag.php:389
 msgctxt "MALE"
 msgid "Adopted by mother"
 msgstr "Adopted by mother"
 
+#. I18N: gedcom tag _ADPM
 #: library/WT/Gedcom/Code/Adop.php:57 library/WT/Gedcom/Tag.php:390
 msgctxt "FEMALE"
 msgid "Adopted by mother"
 msgstr "Adopted by mother"
 
+#. I18N: gedcom tag _ADPM
 #: library/WT/Gedcom/Code/Adop.php:58 library/WT/Gedcom/Tag.php:391
 msgid "Adopted by mother"
 msgstr "Adopted by mother"
 
+#. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:46
 msgctxt "MALE"
 msgid "adopted name"
 msgstr "adopted name"
 
+#. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:49
 msgctxt "FEMALE"
 msgid "adopted name"
 msgstr "adopted name"
 
+#. I18N: The name given to a child by its adoptive parents
 #: library/WT/Gedcom/Code/Name.php:52
 msgid "adopted name"
 msgstr "adopted name"
 
+#. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:58
 msgctxt "MALE"
 msgid "also known as"
 msgstr "also known as"
 
+#. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:61
 msgctxt "FEMALE"
 msgid "also known as"
 msgstr "also known as"
 
+#. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: library/WT/Gedcom/Code/Name.php:64
 msgid "also known as"
 msgstr "also known as"
 
+#. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:70
 msgctxt "MALE"
 msgid "birth name"
 msgstr "birth name"
 
+#. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:73
 msgctxt "FEMALE"
 msgid "birth name"
 msgstr "birth name"
 
+#. I18N: The name given to an individual at their birth
 #: library/WT/Gedcom/Code/Name.php:76
 msgid "birth name"
 msgstr "birth name"
 
+#. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:82
 msgctxt "MALE"
 msgid "change of name"
 msgstr "change of name"
 
+#. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:85
 msgctxt "FEMALE"
 msgid "change of name"
 msgstr "change of name"
 
+#. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: library/WT/Gedcom/Code/Name.php:88
 msgid "change of name"
 msgstr "change of name"
 
+#. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: library/WT/Gedcom/Code/Name.php:94
 msgctxt "MALE"
 msgid "immigration name"
 msgstr "immigration name"
 
+#. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: library/WT/Gedcom/Code/Name.php:97
 msgctxt "FEMALE"
 msgid "immigration name"
 msgstr "immigration name"
 
+#. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: library/WT/Gedcom/Code/Name.php:100
 msgid "immigration name"
 msgstr "immigration name"
 
+#. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: library/WT/Gedcom/Code/Name.php:106
 msgid "maiden name"
 msgstr "maiden name"
 
+#. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:111
 msgctxt "MALE"
 msgid "married name"
 msgstr "married name"
 
+#. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:114
 msgctxt "FEMALE"
 msgid "married name"
 msgstr "married name"
 
+#. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: library/WT/Gedcom/Code/Name.php:117
 msgid "married name"
 msgstr "married name"
 
+#. I18N: A name taken when entering a religion or a religous order
 #: library/WT/Gedcom/Code/Name.php:123
 msgctxt "MALE"
 msgid "religious name"
 msgstr "religious name"
 
+#. I18N: A name taken when entering a religion or a religous order
 #: library/WT/Gedcom/Code/Name.php:126
 msgctxt "FEMALE"
 msgid "religious name"
 msgstr "religious name"
 
+#. I18N: A name taken when entering a religion or a religous order
 #: library/WT/Gedcom/Code/Name.php:129
 msgid "religious name"
 msgstr "religious name"
@@ -12545,21 +12953,25 @@ msgctxt "Female pedigree"
 msgid "Foster"
 msgstr "Foster"
 
+#. I18N: “sealing” is a ceremony in the Mormon church.
 #: library/WT/Gedcom/Code/Pedi.php:62
 msgctxt "Pedigree"
 msgid "Sealing"
 msgstr "Sealing"
 
+#. I18N: “sealing” is a ceremony in the Mormon church.
 #: library/WT/Gedcom/Code/Pedi.php:63
 msgctxt "Male pedigree"
 msgid "Sealing"
 msgstr "Sealing"
 
+#. I18N: “sealing” is a ceremony in the Mormon church.
 #: library/WT/Gedcom/Code/Pedi.php:64
 msgctxt "Female pedigree"
 msgid "Sealing"
 msgstr "Sealing"
 
+#. I18N: This is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:70
 msgid "Rada"
 msgstr "Rada"
@@ -12577,26 +12989,32 @@ msgstr "Family with adoptive parents"
 msgid "Family with foster parents"
 msgstr "Family with foster parents"
 
+#. I18N: “sealing” is a Mormon ceremony.
 #: library/WT/Gedcom/Code/Pedi.php:93
 msgid "Family with sealing parents"
 msgstr "Family with sealing parents"
 
+#. I18N: “rada” is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:94
 msgid "Family with rada parents"
 msgstr "Family with rada parents"
 
+#. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: library/WT/Gedcom/Code/Quay.php:36
 msgid "primary evidence"
 msgstr "primary evidence"
 
+#. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: library/WT/Gedcom/Code/Quay.php:38
 msgid "secondary evidence"
 msgstr "secondary evidence"
 
+#. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: library/WT/Gedcom/Code/Quay.php:40
 msgid "questionable evidence"
 msgstr "questionable evidence"
 
+#. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: library/WT/Gedcom/Code/Quay.php:42
 msgid "unreliable evidence"
 msgstr "unreliable evidence"
@@ -12746,6 +13164,7 @@ msgstr "Godfather"
 msgid "Godmother"
 msgstr "Godmother"
 
+#. I18N: gedcom tag _GODP
 #: library/WT/Gedcom/Code/Rela.php:129 library/WT/Gedcom/Tag.php:734
 msgid "Godparent"
 msgstr "Godparent"
@@ -12914,58 +13333,72 @@ msgstr "Ward"
 msgid "Ward"
 msgstr "Ward"
 
+#. I18N: gedcom tag _WITN
 #: library/WT/Gedcom/Code/Rela.php:217 library/WT/Gedcom/Tag.php:830
 msgid "Witness"
 msgstr "Witness"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:57
 msgid "Born in the covenant"
 msgstr "Born in the covenant"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:60
 msgid "Sealing cancelled (divorce)"
 msgstr "Sealing cancelled (divorce)"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:63
 msgid "Died as a child: exempt"
 msgstr "Died as a child: exempt"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:67
 msgid "Cleared but not yet completed"
 msgstr "Cleared but not yet completed"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:70
 msgid "Completed; date unknown"
 msgstr "Completed; date unknown"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:73
 msgid "Do Not Seal: unauthorized"
 msgstr "Do Not Seal: unauthorized"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:76
 msgid "Do Not Seal, previous sealing cancelled"
 msgstr "Do Not Seal, previous sealing cancelled"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:79
 msgid "Excluded from this submission"
 msgstr "Excluded from this submission"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:82
 msgid "Died as an infant: exempt"
 msgstr "Died as an infant: exempt"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:85
 msgid "Completed before 1970; date not available"
 msgstr "Completed before 1970; date not available"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:88
 msgid "Stillborn: exempt"
 msgstr "Stillborn: exempt"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:91
 msgid "Submitted but not yet cleared"
 msgstr "Submitted but not yet cleared"
 
+#. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: library/WT/Gedcom/Code/Stat.php:94
 msgid "Uncleared: insufficient data"
 msgstr "Uncleared: insufficient data"
@@ -13102,6 +13535,7 @@ msgstr "Detroit, Michigan"
 msgid "Edmonton, Alberta, Canada"
 msgstr "Edmonton, Alberta, Canada"
 
+#. I18N: http://en.wikipedia.org/wiki/Endowment_house
 #: library/WT/Gedcom/Code/Temp.php:99
 msgid "Endowment House"
 msgstr "Endowment House"
@@ -13330,6 +13764,7 @@ msgstr "Papeete, Tahiti"
 msgid "Perth, Australia"
 msgstr "Perth, Australia"
 
+#. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: library/WT/Gedcom/Code/Temp.php:156
 msgid "President's Office"
 msgstr "President's Office"
@@ -13516,10 +13951,12 @@ msgctxt "Abbreviation for email address"
 msgid "e."
 msgstr "e."
 
+#. I18N: gedcom tag ABBR
 #: library/WT/Gedcom/Tag.php:113
 msgid "Abbreviation"
 msgstr "Abbreviation"
 
+#. I18N: gedcom tag ADDR
 #: library/WT/Gedcom/Tag.php:114
 msgid "Address"
 msgstr "Address"
@@ -13532,6 +13969,7 @@ msgstr "Address line 1"
 msgid "Address line 2"
 msgstr "Address line 2"
 
+#. I18N: gedcom tag ADOP
 #: library/WT/Gedcom/Tag.php:117
 msgid "Adoption"
 msgstr "Adoption"
@@ -13544,38 +13982,48 @@ msgstr "Date of Adoption"
 msgid "Place of Adoption"
 msgstr "Place of Adoption"
 
+#. I18N: gedcom tag AFN
 #: library/WT/Gedcom/Tag.php:120
 msgid "Ancestral File Number"
 msgstr "Ancestral File Number"
 
+#. I18N: gedcom tag AGNC
 #: library/WT/Gedcom/Tag.php:122
 msgid "Agency"
 msgstr "Agency"
 
+#. I18N: gedcom tag ALIA
 #: library/WT/Gedcom/Tag.php:123
 msgid "Alias"
 msgstr "Alias"
 
+#. I18N: gedcom tag ANCE
 #: library/WT/Gedcom/Tag.php:124
 msgid "Generations of ancestors"
 msgstr "Generations of ancestors"
 
+#. I18N: gedcom tag ANCI
 #: library/WT/Gedcom/Tag.php:125
 msgid "Ancestors interest"
 msgstr "Ancestors interest"
 
+#. I18N: gedcom tag ANUL
 #: library/WT/Gedcom/Tag.php:126
 msgid "Annulment"
 msgstr "Annulment"
 
+#. I18N: gedcom tag ASSO
+#. I18N: gedcom tag _ASSO
 #: library/WT/Gedcom/Tag.php:127 library/WT/Gedcom/Tag.php:400
 msgid "Associate"
 msgstr "Associate"
 
+#. I18N: gedcom tag AUTH
 #: library/WT/Gedcom/Tag.php:128
 msgid "Author"
 msgstr "Author"
 
+#. I18N: gedcom tag BAPL
 #: library/WT/Gedcom/Tag.php:129
 msgid "LDS baptism"
 msgstr "LDS baptism"
@@ -13588,6 +14036,7 @@ msgstr "Date of LDS Baptism"
 msgid "Place of LDS Baptism"
 msgstr "Place of LDS Baptism"
 
+#. I18N: gedcom tag BAPM
 #: library/WT/Gedcom/Tag.php:132
 msgid "Baptism"
 msgstr "Baptism"
@@ -13600,6 +14049,7 @@ msgstr "Date of baptism"
 msgid "Place of baptism"
 msgstr "Place of baptism"
 
+#. I18N: gedcom tag BARM
 #: library/WT/Gedcom/Tag.php:135
 msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
@@ -13612,6 +14062,7 @@ msgstr "Date of bar mitzvah"
 msgid "Place of bar mitzvah"
 msgstr "Place of bar mitzvah"
 
+#. I18N: gedcom tag BASM
 #: library/WT/Gedcom/Tag.php:138
 msgid "Bat mitzvah"
 msgstr "Bat mitzvah"
@@ -13632,6 +14083,7 @@ msgstr "Date of birth"
 msgid "Place of birth"
 msgstr "Place of birth"
 
+#. I18N: gedcom tag BLES
 #: library/WT/Gedcom/Tag.php:144
 msgid "Blessing"
 msgstr "Blessing"
@@ -13644,10 +14096,12 @@ msgstr "Date of Blessing"
 msgid "Place of Blessing"
 msgstr "Place of Blessing"
 
+#. I18N: gedcom tag BLOB
 #: library/WT/Gedcom/Tag.php:147
 msgid "Binary Data Object"
 msgstr "Binary Data Object"
 
+#. I18N: gedcom tag BURI
 #: library/WT/Gedcom/Tag.php:148 modules_v3/family_group_report/report.bak:346
 #: modules_v3/family_group_report/report.bak:697
 #: modules_v3/family_group_report/report.bak:1038
@@ -13662,22 +14116,27 @@ msgstr "Date of burial"
 msgid "Place of burial"
 msgstr "Place of burial"
 
+#. I18N: gedcom tag CALN
 #: library/WT/Gedcom/Tag.php:151
 msgid "Call number"
 msgstr "Call number"
 
+#. I18N: gedcom tag CAST
 #: library/WT/Gedcom/Tag.php:152
 msgid "Caste"
 msgstr "Caste"
 
+#. I18N: gedcom tag CAUS
 #: library/WT/Gedcom/Tag.php:153
 msgid "Cause"
 msgstr "Cause"
 
+#. I18N: gedcom tag CEME
 #: library/WT/Gedcom/Tag.php:154 modules_v3/cemetery_report/report.bak:52
 msgid "Cemetery"
 msgstr "Cemetery"
 
+#. I18N: gedcom tag CENS
 #: library/WT/Gedcom/Tag.php:155 modules_v3/album/album_print_media.php:54
 #: modules_v3/album/album_print_media.php:66
 #: modules_v3/album/album_print_media.php:70
@@ -13697,22 +14156,27 @@ msgstr "Census date"
 msgid "Census place"
 msgstr "Census place"
 
+#. I18N: gedcom tag CHAN
 #: library/WT/Gedcom/Tag.php:158
 msgid "Last change"
 msgstr "Last change"
 
+#. I18N: gedcom tag CHAN:DATE
 #: library/WT/Gedcom/Tag.php:159
 msgid "Date of last change"
 msgstr "Date of last change"
 
+#. I18N: gedcom tag CHAN:_WT_USER
 #: library/WT/Gedcom/Tag.php:160
 msgid "Author of last change"
 msgstr "Author of last change"
 
+#. I18N: gedcom tag CHAR
 #: library/WT/Gedcom/Tag.php:161
 msgid "Character set"
 msgstr "Character set"
 
+#. I18N: gedcom tag CHR
 #: library/WT/Gedcom/Tag.php:163 modules_v3/family_group_report/report.bak:201
 #: modules_v3/family_group_report/report.bak:552
 #: modules_v3/family_group_report/report.bak:893
@@ -13727,28 +14191,34 @@ msgstr "Date of christening"
 msgid "Place of christening"
 msgstr "Place of christening"
 
+#. I18N: gedcom tag CHRA
 #: library/WT/Gedcom/Tag.php:166
 msgid "Adult christening"
 msgstr "Adult christening"
 
+#. I18N: gedcom tag CITN
 #: library/WT/Gedcom/Tag.php:167
 msgid "Citizenship"
 msgstr "Citizenship"
 
+#. I18N: gedcom tag CITY
 #: library/WT/Gedcom/Tag.php:168 modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places_edit.php:289
 #: modules_v3/googlemap/module.php:301
 msgid "City"
 msgstr "City"
 
+#. I18N: gedcom tag CONC
 #: library/WT/Gedcom/Tag.php:170
 msgid "Concatenation"
 msgstr "Concatenation"
 
+#. I18N: gedcom tag CONT
 #: library/WT/Gedcom/Tag.php:171
 msgid "Continued"
 msgstr "Continued"
 
+#. I18N: gedcom tag CONF
 #: library/WT/Gedcom/Tag.php:172
 msgid "Confirmation"
 msgstr "Confirmation"
@@ -13761,18 +14231,22 @@ msgstr "Date of confirmation"
 msgid "Place of confirmation"
 msgstr "Place of confirmation"
 
+#. I18N: gedcom tag CONL
 #: library/WT/Gedcom/Tag.php:175
 msgid "LDS confirmation"
 msgstr "LDS confirmation"
 
+#. I18N: gedcom tag COPR
 #: library/WT/Gedcom/Tag.php:176
 msgid "Copyright"
 msgstr "Copyright"
 
+#. I18N: gedcom tag CORP
 #: library/WT/Gedcom/Tag.php:177
 msgid "Corporation"
 msgstr "Corporation"
 
+#. I18N: gedcom tag CREM
 #: library/WT/Gedcom/Tag.php:178
 msgid "Cremation"
 msgstr "Cremation"
@@ -13785,6 +14259,7 @@ msgstr "Date of Cremation"
 msgid "Place of Cremation"
 msgstr "Place of Cremation"
 
+#. I18N: gedcom tag CTRY
 #: library/WT/Gedcom/Tag.php:181
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:965
 #: modules_v3/googlemap/admin_places.php:176
@@ -13795,6 +14270,7 @@ msgstr "Place of Cremation"
 msgid "Country"
 msgstr "Country"
 
+#. I18N: gedcom tag DATA
 #: library/WT/Gedcom/Tag.php:182
 msgid "Data"
 msgstr "Data"
@@ -13815,22 +14291,27 @@ msgstr "Date of death"
 msgid "Place of death"
 msgstr "Place of death"
 
+#. I18N: gedcom tag DESI
 #: library/WT/Gedcom/Tag.php:190
 msgid "Descendants interest"
 msgstr "Descendants interest"
 
+#. I18N: gedcom tag DEST
 #: library/WT/Gedcom/Tag.php:191
 msgid "Destination"
 msgstr "Destination"
 
+#. I18N: gedcom tag DIV
 #: library/WT/Gedcom/Tag.php:192
 msgid "Divorce"
 msgstr "Divorce"
 
+#. I18N: gedcom tag DIVF
 #: library/WT/Gedcom/Tag.php:193
 msgid "Divorce filed"
 msgstr "Divorce filed"
 
+#. I18N: gedcom tag EDUC
 #: library/WT/Gedcom/Tag.php:195
 msgid "Education"
 msgstr "Education"
@@ -13839,6 +14320,7 @@ msgstr "Education"
 msgid "School or college"
 msgstr "School or college"
 
+#. I18N: gedcom tag EMIG
 #: library/WT/Gedcom/Tag.php:200
 msgid "Emigration"
 msgstr "Emigration"
@@ -13851,6 +14333,7 @@ msgstr "Date of Emigration"
 msgid "Place of Emigration"
 msgstr "Place of Emigration"
 
+#. I18N: gedcom tag ENDL
 #: library/WT/Gedcom/Tag.php:203
 msgid "LDS endowment"
 msgstr "LDS endowment"
@@ -13863,6 +14346,7 @@ msgstr "Date of LDS Endowment"
 msgid "Place of LDS Endowment"
 msgstr "Place of LDS Endowment"
 
+#. I18N: gedcom tag ENGA
 #: library/WT/Gedcom/Tag.php:206
 msgid "Engagement"
 msgstr "Engagement"
@@ -13875,6 +14359,7 @@ msgstr "Date of engagement"
 msgid "Place of engagement"
 msgstr "Place of engagement"
 
+#. I18N: gedcom tag EVEN
 #: library/WT/Gedcom/Tag.php:209 modules_v3/fact_sources/report.bak:68
 #: modules_v3/fact_sources/report.bak:155
 #: modules_v3/missing_facts_report/report.bak:53
@@ -13889,18 +14374,22 @@ msgstr "Date of Event"
 msgid "Place of Event"
 msgstr "Place of Event"
 
+#. I18N: gedcom tag FACT
 #: library/WT/Gedcom/Tag.php:212 modules_v3/resource_fact/module.php:136
 msgid "Fact"
 msgstr "Fact"
 
+#. I18N: gedcom tag FAMC
 #: library/WT/Gedcom/Tag.php:214
 msgid "Family as a child"
 msgstr "Family as a child"
 
+#. I18N: gedcom tag FAMF
 #: library/WT/Gedcom/Tag.php:215
 msgid "Family file"
 msgstr "Family file"
 
+#. I18N: gedcom tag FAMS
 #: library/WT/Gedcom/Tag.php:216
 msgid "Family as a spouse"
 msgstr "Family as a spouse"
@@ -13937,10 +14426,12 @@ msgstr "Date of LDS Spouse Sealing"
 msgid "Place of LDS Spouse Sealing"
 msgstr "Place of LDS Spouse Sealing"
 
+#. I18N: gedcom tag FAX
 #: library/WT/Gedcom/Tag.php:225
 msgid "Fax"
 msgstr "Fax"
 
+#. I18N: gedcom tag FCOM
 #: library/WT/Gedcom/Tag.php:226
 msgid "First communion"
 msgstr "First communion"
@@ -13953,34 +14444,43 @@ msgstr "Date of first communion"
 msgid "Place of first communion"
 msgstr "Place of first communion"
 
+#. I18N: gedcom tag FILE
 #: library/WT/Gedcom/Tag.php:229
 msgid "Filename"
 msgstr "Filename"
 
+#. I18N: gedcom tag FONE
 #: library/WT/Gedcom/Tag.php:230
 msgid "Phonetic"
 msgstr "Phonetic"
 
+#. I18N: gedcom tag GEDC
+#. I18N: gedcom tag _GEDF
 #: library/WT/Gedcom/Tag.php:232 library/WT/Gedcom/Tag.php:733
 msgid "GEDCOM file"
 msgstr "GEDCOM file"
 
+#. I18N: gedcom tag GIVN
 #: library/WT/Gedcom/Tag.php:233
 msgid "Given names"
 msgstr "Given names"
 
+#. I18N: gedcom tag GRAD
 #: library/WT/Gedcom/Tag.php:234
 msgid "Graduation"
 msgstr "Graduation"
 
+#. I18N: gedcom tag HEAD
 #: library/WT/Gedcom/Tag.php:235
 msgid "Header"
 msgstr "Header"
 
+#. I18N: gedcom tag IDNO
 #: library/WT/Gedcom/Tag.php:237
 msgid "Identification number"
 msgstr "Identification number"
 
+#. I18N: gedcom tag IMMI
 #: library/WT/Gedcom/Tag.php:238
 msgid "Immigration"
 msgstr "Immigration"
@@ -13993,25 +14493,30 @@ msgstr "Date of Immigration"
 msgid "Place of Immigration"
 msgstr "Place of Immigration"
 
+#. I18N: gedcom tag LATI
 #: library/WT/Gedcom/Tag.php:244 modules_v3/googlemap/admin_places.php:185
 #: modules_v3/googlemap/module.php:1585
 msgid "Latitude"
 msgstr "Latitude"
 
+#. I18N: gedcom tag LEGA
 #: library/WT/Gedcom/Tag.php:245
 msgid "Legatee"
 msgstr "Legatee"
 
+#. I18N: gedcom tag LONG
 #: library/WT/Gedcom/Tag.php:246 modules_v3/googlemap/admin_places.php:185
 #: modules_v3/googlemap/module.php:1585
 msgid "Longitude"
 msgstr "Longitude"
 
+#. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:247 library/WT/Gedcom/Tag.php:916
 #: modules_v3/googlemap/module.php:242
 msgid "Map"
 msgstr "Map"
 
+#. I18N: gedcom tag MARB
 #: library/WT/Gedcom/Tag.php:248
 msgid "Marriage banns"
 msgstr "Marriage banns"
@@ -14024,14 +14529,17 @@ msgstr "Date of marriage banns"
 msgid "Place of marriage banns"
 msgstr "Place of marriage banns"
 
+#. I18N: gedcom tag MARC
 #: library/WT/Gedcom/Tag.php:251
 msgid "Marriage contract"
 msgstr "Marriage contract"
 
+#. I18N: gedcom tag MARL
 #: library/WT/Gedcom/Tag.php:252
 msgid "Marriage licence"
 msgstr "Marriage licence"
 
+#. I18N: gedcom tag MARR
 #: library/WT/Gedcom/Tag.php:253 modules_v3/bdm_report/report.bak:76
 #: modules_v3/family_group_report/report.bak:372
 msgid "Marriage"
@@ -14057,10 +14565,12 @@ msgstr "Marriage type unknown"
 msgid "Common law marriage"
 msgstr "Common law marriage"
 
+#. I18N: gedcom tag MARS
 #: library/WT/Gedcom/Tag.php:261
 msgid "Marriage settlement"
 msgstr "Marriage settlement"
 
+#. I18N: gedcom tag REPO:NAME
 #: library/WT/Gedcom/Tag.php:265
 msgctxt "Repository"
 msgid "Name"
@@ -14074,10 +14584,12 @@ msgstr "Phonetic name"
 msgid "Name in Hebrew"
 msgstr "Name in Hebrew"
 
+#. I18N: gedcom tag NATI
 #: library/WT/Gedcom/Tag.php:271
 msgid "Nationality"
 msgstr "Nationality"
 
+#. I18N: gedcom tag NATU
 #: library/WT/Gedcom/Tag.php:272
 msgid "Naturalization"
 msgstr "Naturalization"
@@ -14090,36 +14602,44 @@ msgstr "Date of Naturalization"
 msgid "Place of Naturalization"
 msgstr "Place of Naturalization"
 
+#. I18N: gedcom tag NCHI
 #: library/WT/Gedcom/Tag.php:275 library/WT/Stats.php:2908
 #: library/WT/Stats.php:2910 library/WT/Stats.php:2912 statistics.php:550
 #: statisticsplot.php:927
 msgid "Number of children"
 msgstr "Number of children"
 
+#. I18N: gedcom tag NICK
 #: library/WT/Gedcom/Tag.php:276
 msgid "Nickname"
 msgstr "Nickname"
 
+#. I18N: gedcom tag NMR
 #: library/WT/Gedcom/Tag.php:277
 msgid "Number of marriages"
 msgstr "Number of marriages"
 
+#. I18N: gedcom tag NPFX
 #: library/WT/Gedcom/Tag.php:279
 msgid "Name prefix"
 msgstr "Name prefix"
 
+#. I18N: gedcom tag NSFX
 #: library/WT/Gedcom/Tag.php:280
 msgid "Name suffix"
 msgstr "Name suffix"
 
+#. I18N: gedcom tag OCCU
 #: library/WT/Gedcom/Tag.php:282
 msgid "Occupation"
 msgstr "Occupation"
 
+#. I18N: gedcom tag ORDI
 #: library/WT/Gedcom/Tag.php:284
 msgid "Ordinance"
 msgstr "Ordinance"
 
+#. I18N: gedcom tag ORDN
 #: library/WT/Gedcom/Tag.php:285
 msgid "Ordination"
 msgstr "Ordination"
@@ -14136,14 +14656,17 @@ msgstr "Date of Ordination"
 msgid "Place of Ordination"
 msgstr "Place of Ordination"
 
+#. I18N: gedcom tag PAGE
 #: library/WT/Gedcom/Tag.php:289
 msgid "Citation details"
 msgstr "Citation details"
 
+#. I18N: gedcom tag PEDI
 #: library/WT/Gedcom/Tag.php:290
 msgid "Relationship to parents"
 msgstr "Relationship to parents"
 
+#. I18N: gedcom tag PHON
 #: library/WT/Gedcom/Tag.php:291
 msgid "Phone"
 msgstr "Phone"
@@ -14160,38 +14683,47 @@ msgstr "Romanized place"
 msgid "Place in Hebrew"
 msgstr "Place in Hebrew"
 
+#. I18N: gedcom tag POST
 #: library/WT/Gedcom/Tag.php:296
 msgid "Postal code"
 msgstr "Postal code"
 
+#. I18N: gedcom tag PROB
 #: library/WT/Gedcom/Tag.php:297
 msgid "Probate"
 msgstr "Probate"
 
+#. I18N: gedcom tag PROP
 #: library/WT/Gedcom/Tag.php:298
 msgid "Property"
 msgstr "Property"
 
+#. I18N: gedcom tag PUBL
 #: library/WT/Gedcom/Tag.php:299
 msgid "Publication"
 msgstr "Publication"
 
+#. I18N: gedcom tag QUAY
 #: library/WT/Gedcom/Tag.php:300
 msgid "Quality of data"
 msgstr "Quality of data"
 
+#. I18N: gedcom tag REFN
 #: library/WT/Gedcom/Tag.php:301
 msgid "Reference number"
 msgstr "Reference number"
 
+#. I18N: gedcom tag RELA
 #: library/WT/Gedcom/Tag.php:302
 msgid "Relationship"
 msgstr "Relationship"
 
+#. I18N: gedcom tag RELI
 #: library/WT/Gedcom/Tag.php:303
 msgid "Religion"
 msgstr "Religion"
 
+#. I18N: gedcom tag RESI
 #: library/WT/Gedcom/Tag.php:305
 msgid "Residence"
 msgstr "Residence"
@@ -14204,30 +14736,37 @@ msgstr "Date of Residence"
 msgid "Place of Residence"
 msgstr "Place of Residence"
 
+#. I18N: gedcom tag RESN
 #: library/WT/Gedcom/Tag.php:308
 msgid "Restriction"
 msgstr "Restriction"
 
+#. I18N: gedcom tag RETI
 #: library/WT/Gedcom/Tag.php:309
 msgid "Retirement"
 msgstr "Retirement"
 
+#. I18N: gedcom tag RFN
 #: library/WT/Gedcom/Tag.php:311
 msgid "Record file number"
 msgstr "Record file number"
 
+#. I18N: gedcom tag RIN
 #: library/WT/Gedcom/Tag.php:312
 msgid "Record ID number"
 msgstr "Record ID number"
 
+#. I18N: gedcom tag ROMN
 #: library/WT/Gedcom/Tag.php:314
 msgid "Romanized"
 msgstr "Romanized"
 
+#. I18N: gedcom tag SERV
 #: library/WT/Gedcom/Tag.php:315
 msgid "Remote server"
 msgstr "Remote server"
 
+#. I18N: gedcom tag SLGC
 #: library/WT/Gedcom/Tag.php:318
 msgid "LDS child sealing"
 msgstr "LDS child sealing"
@@ -14240,18 +14779,22 @@ msgstr "Date of LDS Child Sealing"
 msgid "Place of LDS Child Sealing"
 msgstr "Place of LDS Child Sealing"
 
+#. I18N: gedcom tag SLGS
 #: library/WT/Gedcom/Tag.php:321
 msgid "LDS spouse sealing"
 msgstr "LDS spouse sealing"
 
+#. I18N: gedcom tag SPFX
 #: library/WT/Gedcom/Tag.php:323
 msgid "Surname prefix"
 msgstr "Surname prefix"
 
+#. I18N: gedcom tag SSN
 #: library/WT/Gedcom/Tag.php:324
 msgid "Social Security Number"
 msgstr "Social Security Number"
 
+#. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:325 modules_v3/googlemap/admin_places.php:177
 #: modules_v3/googlemap/admin_places_edit.php:287
 #: modules_v3/googlemap/module.php:292
@@ -14262,27 +14805,33 @@ msgstr "State"
 msgid "Status change date"
 msgstr "Status change date"
 
+#. I18N: gedcom tag SUBM
 #: library/WT/Gedcom/Tag.php:328
 msgid "Submitter"
 msgstr "Submitter"
 
+#. I18N: gedcom tag SUBN
 #: library/WT/Gedcom/Tag.php:329
 msgid "Submission"
 msgstr "Submission"
 
+#. I18N: gedcom tag TEMP
 #: library/WT/Gedcom/Tag.php:331
 msgid "Temple"
 msgstr "Temple"
 
+#. I18N: gedcom tag TEXT
 #: library/WT/Gedcom/Tag.php:332
 msgid "Text"
 msgstr "Text"
 
+#. I18N: gedcom tag TIME
 #: library/WT/Gedcom/Tag.php:333
 #: modules_v3/calendar_utilities/plugins/calculators.php:110
 msgid "Time"
 msgstr "Time"
 
+#. I18N: gedcom tag TITL
 #: library/WT/Gedcom/Tag.php:334
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1040
 #: modules_v3/extra_menus/module.php:189 modules_v3/gallery/module.php:262
@@ -14304,14 +14853,17 @@ msgstr "Romanized title"
 msgid "Title in Hebrew"
 msgstr "Title in Hebrew"
 
+#. I18N: gedcom tag TRLR
 #: library/WT/Gedcom/Tag.php:338
 msgid "Trailer"
 msgstr "Trailer"
 
+#. I18N: gedcom tag VERS
 #: library/WT/Gedcom/Tag.php:341
 msgid "Version"
 msgstr "Version"
 
+#. I18N: gedcom tag WILL
 #: library/WT/Gedcom/Tag.php:343
 msgid "Will"
 msgstr "Will"
@@ -14385,16 +14937,19 @@ msgstr "Adoption of a sister"
 msgid "Adoption of a sibling"
 msgstr "Adoption of a sibling"
 
+#. I18N: gedcom tag _AKA
 #: library/WT/Gedcom/Tag.php:396
 msgctxt "MALE"
 msgid "Also known as"
 msgstr "Also known as"
 
+#. I18N: gedcom tag _AKA
 #: library/WT/Gedcom/Tag.php:397
 msgctxt "FEMALE"
 msgid "Also known as"
 msgstr "Also known as"
 
+#. I18N: gedcom tag _AKA
 #: library/WT/Gedcom/Tag.php:398
 msgid "Also known as"
 msgstr "Also known as"
@@ -14468,6 +15023,7 @@ msgstr "Baptism of a sister"
 msgid "Baptism of a sibling"
 msgstr "Baptism of a sibling"
 
+#. I18N: gedcom tag _BIBL
 #: library/WT/Gedcom/Tag.php:437
 msgid "Bibliography"
 msgstr "Bibliography"
@@ -14541,6 +15097,7 @@ msgstr "Birth of a sister"
 msgid "Birth of a sibling"
 msgstr "Birth of a sibling"
 
+#. I18N: gedcom tag _BRTM
 #: library/WT/Gedcom/Tag.php:474
 msgid "Brit milah"
 msgstr "Brit milah"
@@ -14751,6 +15308,7 @@ msgstr "Christening of a sister"
 msgid "Christening of a sibling"
 msgstr "Christening of a sibling"
 
+#. I18N: gedcom tag _COML
 #: library/WT/Gedcom/Tag.php:579
 msgid "Common Law Marriage"
 msgstr "Common Law Marriage"
@@ -14877,6 +15435,7 @@ msgstr "Cremation of a wife"
 msgid "Cremation of a spouse"
 msgstr "Cremation of a spouse"
 
+#. I18N: gedcom tag _DBID
 #: library/WT/Gedcom/Tag.php:646
 msgid "Linked database ID"
 msgstr "Linked database ID"
@@ -15003,18 +15562,22 @@ msgstr "Death of a wife"
 msgid "Death of a spouse"
 msgstr "Death of a spouse"
 
+#. I18N: gedcom tag _DEG
 #: library/WT/Gedcom/Tag.php:713
 msgid "Degree"
 msgstr "Degree"
 
+#. I18N: gedcom tag _DETS
 #: library/WT/Gedcom/Tag.php:714
 msgid "Death of one spouse"
 msgstr "Death of one spouse"
 
+#. I18N: gedcom tag _DNA (from FTM 2010)
 #: library/WT/Gedcom/Tag.php:715
 msgid "DNA markers"
 msgstr "DNA markers"
 
+#. I18N: gedcom tag _EYEC
 #: library/WT/Gedcom/Tag.php:717
 msgid "Eye color"
 msgstr "Eye color"
@@ -15071,60 +15634,74 @@ msgstr "Fact 12"
 msgid "Fact 13"
 msgstr "Fact 13"
 
+#. I18N: gedcom tag _FNRL
 #: library/WT/Gedcom/Tag.php:731
 msgid "Funeral"
 msgstr "Funeral"
 
+#. I18N: gedcom tag _FREL
 #: library/WT/Gedcom/Tag.php:732
 msgid "Relationship to father"
 msgstr "Relationship to father"
 
+#. I18N: gedcom tag _HAIR
 #: library/WT/Gedcom/Tag.php:735
 msgid "Hair color"
 msgstr "Hair color"
 
+#. I18N: gedcom tag _HEB
 #: library/WT/Gedcom/Tag.php:736
 msgid "Hebrew"
 msgstr "Hebrew"
 
+#. I18N: gedcom tag _HEIG
 #: library/WT/Gedcom/Tag.php:737
 msgid "Height"
 msgstr "Height"
 
+#. I18N: gedcom tag _HNM
 #: library/WT/Gedcom/Tag.php:738
 msgid "Hebrew name"
 msgstr "Hebrew name"
 
+#. I18N: gedcom tag _HOL
 #: library/WT/Gedcom/Tag.php:739
 msgid "Holocaust"
 msgstr "Holocaust"
 
+#. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:742
 msgctxt "MALE"
 msgid "Interred"
 msgstr "Interred"
 
+#. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:743
 msgctxt "FEMALE"
 msgid "Interred"
 msgstr "Interred"
 
+#. I18N: gedcom tag _INTE
 #: library/WT/Gedcom/Tag.php:744
 msgid "Interred"
 msgstr "Interred"
 
+#. I18N: gedcom tag _LOC
 #: library/WT/Gedcom/Tag.php:746
 msgid "Location"
 msgstr "Location"
 
+#. I18N: gedcom tag _MARI
 #: library/WT/Gedcom/Tag.php:747
 msgid "Marriage Intention"
 msgstr "Marriage Intention"
 
+#. I18N: gedcom tag _MARNM
 #: library/WT/Gedcom/Tag.php:748
 msgid "Married Name"
 msgstr "Married Name"
 
+#. I18N: gedcom tag _PRIM
 #: library/WT/Gedcom/Tag.php:749 modules_v3/resource_individual/module.php:131
 #: modules_v3/individual_ext_report/report.bak:12
 msgid "Highlighted image"
@@ -15146,6 +15723,7 @@ msgstr "Marriage of a daughter"
 msgid "Marriage of a child"
 msgstr "Marriage of a child"
 
+#. I18N: ...to each other
 #: library/WT/Gedcom/Tag.php:758
 msgid "Marriage of parents"
 msgstr "Marriage of parents"
@@ -15195,14 +15773,17 @@ msgstr "Marriage of a half-sister"
 msgid "Marriage of a half-sibling"
 msgstr "Marriage of a half-sibling"
 
+#. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:785
 msgid "Marriage of a father"
 msgstr "Marriage of a father"
 
+#. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:786
 msgid "Marriage of a mother"
 msgstr "Marriage of a mother"
 
+#. I18N: ...to another spouse
 #: library/WT/Gedcom/Tag.php:787
 msgid "Marriage of a parent"
 msgstr "Marriage of a parent"
@@ -15219,74 +15800,91 @@ msgstr "Marriage of a sister"
 msgid "Marriage of a sibling"
 msgstr "Marriage of a sibling"
 
+#. I18N: gedcom tag _MBON
 #: library/WT/Gedcom/Tag.php:795
 msgid "Marriage bond"
 msgstr "Marriage bond"
 
+#. I18N: gedcom tag _MDCL
 #: library/WT/Gedcom/Tag.php:796
 msgid "Medical"
 msgstr "Medical"
 
+#. I18N: gedcom tag _MEDC
 #: library/WT/Gedcom/Tag.php:797
 msgid "Medical condition"
 msgstr "Medical condition"
 
+#. I18N: gedcom tag _MEND
 #: library/WT/Gedcom/Tag.php:798
 msgid "Marriage ending status"
 msgstr "Marriage ending status"
 
+#. I18N: gedcom tag _MILI
 #: library/WT/Gedcom/Tag.php:799
 msgid "Military"
 msgstr "Military"
 
+#. I18N: gedcom tag _MILT
 #: library/WT/Gedcom/Tag.php:800
 msgid "Military service"
 msgstr "Military service"
 
+#. I18N: gedcom tag _MREL
 #: library/WT/Gedcom/Tag.php:801
 msgid "Relationship to mother"
 msgstr "Relationship to mother"
 
+#. I18N: gedcom tag _MSTAT
 #: library/WT/Gedcom/Tag.php:802
 msgid "Marriage beginning status"
 msgstr "Marriage beginning status"
 
+#. I18N: gedcom tag _NAME
 #: library/WT/Gedcom/Tag.php:803
 msgid "Mailing name"
 msgstr "Mailing name"
 
+#. I18N: gedcom tag _NAMS
 #: library/WT/Gedcom/Tag.php:804
 msgid "Namesake"
 msgstr "Namesake"
 
+#. I18N: gedcom tag _NLIV
 #: library/WT/Gedcom/Tag.php:805
 msgid "Not living"
 msgstr "Not living"
 
+#. I18N: gedcom tag _NMAR
 #: library/WT/Gedcom/Tag.php:808
 msgctxt "MALE"
 msgid "Never married"
 msgstr "Never married"
 
+#. I18N: gedcom tag _NMAR
 #: library/WT/Gedcom/Tag.php:809
 msgctxt "FEMALE"
 msgid "Never married"
 msgstr "Never married"
 
+#. I18N: gedcom tag _NMAR
 #: library/WT/Gedcom/Tag.php:810
 msgid "Never married"
 msgstr "Never married"
 
+#. I18N: gedcom tag _NMR
 #: library/WT/Gedcom/Tag.php:814
 msgctxt "MALE"
 msgid "Not married"
 msgstr "Not married"
 
+#. I18N: gedcom tag _NMR
 #: library/WT/Gedcom/Tag.php:815
 msgctxt "FEMALE"
 msgid "Not married"
 msgstr "Not married"
 
+#. I18N: gedcom tag _NMR
 #: library/WT/Gedcom/Tag.php:816
 msgid "Not married"
 msgstr "Not married"
@@ -15295,42 +15893,53 @@ msgstr "Not married"
 msgid "by"
 msgstr "by"
 
+#. I18N: gedcom tag _PRMN
 #: library/WT/Gedcom/Tag.php:819
 msgid "Permanent number"
 msgstr "Permanent number"
 
+#. I18N: gedcom tag _SCBK
 #: library/WT/Gedcom/Tag.php:820
 msgid "Scrapbook"
 msgstr "Scrapbook"
 
+#. I18N: gedcom tag _SEPR
 #: library/WT/Gedcom/Tag.php:821
 msgid "Separated"
 msgstr "Separated"
 
+#. I18N: gedcom tag _SSHOW
+#. I18N: Name of a module
 #: library/WT/Gedcom/Tag.php:822 modules_v3/random_media/module.php:35
 msgid "Slide show"
 msgstr "Slide show"
 
+#. I18N: gedcom tag _STAT
 #: library/WT/Gedcom/Tag.php:823
 msgid "Marriage status"
 msgstr "Marriage status"
 
+#. I18N: gedcom tag _SUBQ
 #: library/WT/Gedcom/Tag.php:824
 msgid "Short version"
 msgstr "Short version"
 
+#. I18N: gedcom tag _TODO
 #: library/WT/Gedcom/Tag.php:825
 msgid "Research task"
 msgstr "Research task"
 
+#. I18N: gedcom tag _UID
 #: library/WT/Gedcom/Tag.php:827
 msgid "Globally unique identifier"
 msgstr "Globally unique identifier"
 
+#. I18N: gedcom tag _WEIG
 #: library/WT/Gedcom/Tag.php:829
 msgid "Weight"
 msgstr "Weight"
 
+#. I18N: gedcom tag _YART
 #: library/WT/Gedcom/Tag.php:832
 msgid "Yahrzeit"
 msgstr "Yahrzeit"
@@ -15373,6 +15982,7 @@ msgstr "Image dimensions"
 msgid "Unrecognized GEDCOM Code"
 msgstr "Unrecognized GEDCOM Code"
 
+#. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: library/WT/Gedcom/Tag.php:859
 #, php-format
 msgid ""
@@ -15460,10 +16070,12 @@ msgstr "Painting"
 msgid "Other"
 msgstr "Other"
 
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: library/WT/I18N.php:184
 msgid "%j %F %Y"
 msgstr "%F %j, %Y"
 
+#. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:186
 msgid "%H:%i:%s"
 msgstr "%g:%i:%s %a"
@@ -15476,45 +16088,55 @@ msgstr "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 msgstr "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 
+#. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 #: library/WT/I18N.php:194
 msgid "WEEK_START=0"
 msgstr "WEEK_START=0"
 
+#. I18N: This punctuation is used to separate lists of items.
 #: library/WT/I18N.php:204
 msgid ", "
 msgstr ", "
 
+#. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:207
 msgid "utf8_unicode_ci"
 msgstr "utf8_unicode_ci"
 
+#. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
 #: library/WT/I18N.php:314
 #, php-format
 msgid "%s%%"
 msgstr "%s%%"
 
+#. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (stillborn)
 #: library/WT/I18N.php:368
 msgid "(stillborn)"
 msgstr "(stillborn)"
 
+#. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in infancy)
 #: library/WT/I18N.php:371
 msgid "(in infancy)"
 msgstr "(in infancy)"
 
+#. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (in childhood)
 #: library/WT/I18N.php:374
 msgid "(in childhood)"
 msgstr "(in childhood)"
 
+#. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged less than 21 years)
 #: library/WT/I18N.php:403
 #, php-format
 msgid "(aged less than %s)"
 msgstr "(aged less than %s)"
 
+#. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged more than 21 years)
 #: library/WT/I18N.php:406
 #, php-format
 msgid "(aged more than %s)"
 msgstr "(aged more than %s)"
 
+#. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan 1900 (aged 43 years)
 #: library/WT/I18N.php:409 library/WT/I18N.php:413
 #, php-format
 msgid "(aged %s)"
@@ -15562,19 +16184,23 @@ msgid_plural "%s seconds ago"
 msgstr[0] "%s second ago"
 msgstr[1] "%s seconds ago"
 
+#. I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options
 #: library/WT/I18N.php:662
 #, php-format
 msgid "Display %s"
 msgstr "Display %s"
 
+#. I18N: button label, first page
 #: library/WT/I18N.php:705 modules_v3/fancy_treeview/module.php:1066
 msgid "first"
 msgstr "first"
 
+#. I18N: button label, last page
 #: library/WT/I18N.php:706
 msgid "last"
 msgstr "last"
 
+#. I18N: button label, previous page
 #: library/WT/I18N.php:708 modules_v3/batch_update/admin_batch_update.php:98
 msgid "previous"
 msgstr "previous"
@@ -15583,11 +16209,13 @@ msgstr "previous"
 msgid "No records to display"
 msgstr "No records to display"
 
+#. I18N: %s are placeholders for numbers
 #: library/WT/I18N.php:711 library/WT/I18N.php:712
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
 msgstr "Showing %1$s to %2$s of %3$s"
 
+#. I18N: %s is a placeholder for a number
 #: library/WT/I18N.php:713
 #, php-format
 msgid "(filtered from %s total entries)"
@@ -15611,6 +16239,8 @@ msgstr "My pedigree"
 msgid "My individual record"
 msgstr "My individual record"
 
+#. I18N: Name of a module
+#. I18N: Name of a module
 #: library/WT/MenuBar.php:115 modules_v3/gedcom_stats/module.php:35
 #: modules_v3/html/module.php:164 modules_v3/widget_stats/module.php:35
 #: statistics.php:40 statistics.php:52
@@ -15634,6 +16264,7 @@ msgstr "Show family on timeline chart"
 msgid "Place hierarchy"
 msgstr "Place hierarchy"
 
+#. I18N: Name of a module
 #: library/WT/MenuBar.php:321 modules_v3/calendar_utilities/module.php:35
 msgid "Calendar utilities"
 msgstr "Calendar utilities"
@@ -15660,6 +16291,7 @@ msgstr "Search"
 msgid "…"
 msgstr "…"
 
+#. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Person.php:490
 #, php-format
 msgid "%1$s&nbsp;–&nbsp;%2$s"
@@ -15679,20 +16311,24 @@ msgid_plural "%d months"
 msgstr[0] "%d month"
 msgstr[1] "%d months"
 
+#. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Person.php:970 library/WT/Person.php:984
 #, php-format
 msgid "Mother’s family with %s"
 msgstr "Mother’s family with %s"
 
+#. I18N: A step-family.  %s is an individual’s name
 #: library/WT/Person.php:972 library/WT/Person.php:986
 #, php-format
 msgid "Father’s family with %s"
 msgstr "Father’s family with %s"
 
+#. I18N: A step-family.
 #: library/WT/Person.php:976 library/WT/Person.php:990
 msgid "Mother’s family with an unknown individual"
 msgstr "Mother’s family with an unknown individual"
 
+#. I18N: A step-family.
 #: library/WT/Person.php:978 library/WT/Person.php:992
 msgid "Father’s family with an unknown individual"
 msgstr "Father’s family with an unknown individual"
@@ -15701,26 +16337,31 @@ msgstr "Father’s family with an unknown individual"
 msgid "unknown person"
 msgstr "unknown person"
 
+#. I18N: %s is the spouse name
 #: library/WT/Person.php:1024
 #, php-format
 msgid "Family with %s"
 msgstr "Family with %s"
 
+#. I18N: %s is the name of an individual’s father
 #: library/WT/Person.php:1637
 #, php-format
 msgid "Father: %s"
 msgstr "Father: %s"
 
+#. I18N: %s is the name of an individual’s mother
 #: library/WT/Person.php:1646
 #, php-format
 msgid "Mother: %s"
 msgstr "Mother: %s"
 
+#. I18N: Place a nickname in quotation marks
 #: library/WT/Person.php:1794
 #, php-format
 msgid "“%s”"
 msgstr "“%s”"
 
+#. I18N: This is a report footer. %s is the name of the application.
 #: library/WT/Report/Base.php:219
 #, php-format
 msgid "Generated by %s"
@@ -15858,6 +16499,7 @@ msgstr "Divorces by century"
 msgid "Average age in century of marriage"
 msgstr "Average age in century of marriage"
 
+#. I18N: %s is a number
 #: library/WT/Stats.php:2570 library/WT/Stats.php:2574
 #: modules_v3/fancy_treeview/module.php:1208
 #, php-format
@@ -16969,6 +17611,7 @@ msgstr "Zambia"
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
+#. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Stats.php:4063
 #, php-format
 msgid "%s BCE"
@@ -17079,6 +17722,7 @@ msgctxt "CENTURY"
 msgid "1st"
 msgstr "1st"
 
+#. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
 #: library/WT/Tree.php:335
 msgid "John /DOE/"
 msgstr "John /DOE/"
@@ -17257,6 +17901,7 @@ msgstr ""
 "After you have logged in, select the «My Account» link under the your name "
 "in the menu and fill in the password fields to change your password."
 
+#. I18N: %s is a username
 #: login.php:248
 #, php-format
 msgid ""
@@ -17270,6 +17915,7 @@ msgstr ""
 msgid "You are not allowed to send messages that contain external links."
 msgstr "You are not allowed to send messages that contain external links."
 
+#. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:273 message.php:73 modules_v3/contact/module.php:149
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
@@ -17279,6 +17925,7 @@ msgstr "You should delete the “%1$s” from “%2$s” and try again."
 msgid "Hello Administrator ..."
 msgstr "Hello Administrator ..."
 
+#. I18N: %s is a server name/URL
 #: login.php:301
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
@@ -17312,11 +17959,13 @@ msgstr ""
 "request.  After this, the user will be able to login without any action on "
 "your part."
 
+#. I18N: %s is a server name/URL
 #: login.php:318
 #, php-format
 msgid "New registration at %s"
 msgstr "New registration at %s"
 
+#. I18N: %1$s is the site URL and %2$s is an email address
 #: login.php:332
 #, php-format
 msgid ""
@@ -17354,6 +18003,7 @@ msgstr ""
 "You won't get any more email from this site, because the account request "
 "will be deleted automatically after seven days."
 
+#. I18N: %s is a server name/URL
 #: login.php:350
 #, php-format
 msgid "Your registration at %s"
@@ -17430,6 +18080,7 @@ msgstr "Desired user name"
 msgid "Desired password"
 msgstr "Desired password"
 
+#. I18N: placeholder text for registration-comments field
 #: login.php:428
 msgid "Explain why you are requesting an account."
 msgstr "Explain why you are requesting an account."
@@ -17443,6 +18094,7 @@ msgstr "User verification"
 msgid "Send"
 msgstr "Send"
 
+#. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:493
 #, php-format
 msgid ""
@@ -17464,6 +18116,7 @@ msgstr ""
 msgid "You do not have to take any action; the user can now login."
 msgstr "You do not have to take any action; the user can now login."
 
+#. I18N: %s is a server name/URL
 #: login.php:516
 #, php-format
 msgid "New user at %s"
@@ -17529,10 +18182,12 @@ msgstr "Folder"
 msgid "Sort order"
 msgstr "Sort order"
 
+#. I18N: An option in a list-box
 #: medialist.php:98
 msgid "sort by title"
 msgstr "sort by title"
 
+#. I18N: An option in a list-box
 #: medialist.php:101
 msgid "sort by filename"
 msgstr "sort by filename"
@@ -17555,6 +18210,7 @@ msgstr "Page %s of %s"
 msgid "%s media objects found"
 msgstr "%s media objects found"
 
+#. I18N: %s is a filename
 #: medialist.php:274 mediaviewer.php:116
 #, php-format
 msgid "The file “%s” does not exist."
@@ -17568,6 +18224,7 @@ msgstr "View person"
 msgid "View source"
 msgstr "View source"
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:42
 #, php-format
 msgid ""
@@ -17585,6 +18242,7 @@ msgstr ""
 "This media object has been deleted.  The deletion will need to be reviewed "
 "by a moderator."
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: mediaviewer.php:60
 #, php-format
 msgid ""
@@ -17785,10 +18443,12 @@ msgstr "Search for People to add to Add Links list."
 msgid "Click Name to add person to Add Links List."
 msgstr "Click Name to add person to Add Links List."
 
+#. I18N: Name of a module
 #: modules_v3/GEDFact_assistant/module.php:35
 msgid "Census assistant"
 msgstr "Census assistant"
 
+#. I18N: Description of the “Census assistant” module
 #: modules_v3/GEDFact_assistant/module.php:40
 msgid ""
 "An alternative way to enter census transcripts and link them to individuals."
@@ -17799,6 +18459,7 @@ msgstr ""
 msgid "Not a valid Individual, Family or Source ID"
 msgstr "Not a valid Individual, Family or Source ID"
 
+#. I18N: Description of the “Ancestors” module
 #: modules_v3/ahnentafel_report/module.php:42
 #: modules_v3/ahnentafel_report/report.bak:6
 msgid "A report of an individual’s ancestors, in a narrative style."
@@ -17849,10 +18510,12 @@ msgstr "Unlink Media"
 msgid "Are you sure you want to delete this link?"
 msgstr "Are you sure you want to delete this link?"
 
+#. I18N: Name of a module
 #: modules_v3/album/module.php:35
 msgid "Album"
 msgstr "Album"
 
+#. I18N: Description of the “Album” module
 #: modules_v3/album/module.php:40
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
 msgstr "An alternative to the “media” tab, and an enhanced image viewer."
@@ -17907,6 +18570,7 @@ msgstr ""
 msgid "Show media objects with no TYPE"
 msgstr "Show media objects with no TYPE"
 
+#. I18N: Name of a module
 #: modules_v3/batch_update/admin_batch_update.php:58
 #: modules_v3/batch_update/module.php:32 modules_v3/batch_update/module.php:46
 #: modules_v3/googlemap/placehierarchy.php:174
@@ -17925,23 +18589,30 @@ msgstr ""
 "Your user account does not have \"automatically approve changes\" enabled.  "
 "You will only be able to change one record at a time."
 
-#: modules_v3/batch_update/admin_batch_update.php:109
+#: modules_v3/batch_update/admin_batch_update.php:106
+msgid ""
+"You should create a backup GEDCOM file before using the Update all option."
+msgstr ""
+"You should create a backup GEDCOM file before using the Update all option."
+
+#: modules_v3/batch_update/admin_batch_update.php:116
 msgid "Nothing found."
 msgstr "Nothing found."
 
-#: modules_v3/batch_update/admin_batch_update.php:360
+#: modules_v3/batch_update/admin_batch_update.php:367
 msgid "Update the CHAN record"
 msgstr "Update the CHAN record"
 
-#: modules_v3/batch_update/admin_batch_update.php:372
-#: modules_v3/batch_update/admin_batch_update.php:377
+#: modules_v3/batch_update/admin_batch_update.php:379
+#: modules_v3/batch_update/admin_batch_update.php:384
 msgid "Update"
 msgstr "Update"
 
-#: modules_v3/batch_update/admin_batch_update.php:373
+#: modules_v3/batch_update/admin_batch_update.php:380
 msgid "Update all"
 msgstr "Update all"
 
+#. I18N: Description of the “Batch update” module
 #: modules_v3/batch_update/module.php:37
 msgid "Apply automatic corrections to your genealogy data."
 msgstr "Apply automatic corrections to your genealogy data."
@@ -18010,6 +18681,7 @@ msgstr ""
 "Correct NAME records of the form 'John/DOE/' or 'John /DOE', as produced by "
 "older genealogy programs."
 
+#. I18N: Description of the “Search and replace” option of the batch update module
 #: modules_v3/batch_update/plugins/search_replace.php:42
 msgid ""
 "Search and replace text, using simple searches or advanced pattern matching."
@@ -18082,19 +18754,23 @@ msgstr "Case insensitive"
 msgid "Tick this box to match both upper and lower case letters."
 msgstr "Tick this box to match both upper and lower case letters."
 
+#. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: modules_v3/bdm_report/module.php:42 modules_v3/bdm_report/report.bak:5
 msgid "A report of vital records for a given date or place."
 msgstr "A report of vital records for a given date or place."
 
+#. I18N: Name of a module/report
 #: modules_v3/birth_report/module.php:36 modules_v3/birth_report/report.bak:4
 #: modules_v3/birth_report/report.bak:29
 msgid "Births"
 msgstr "Births"
 
+#. I18N: Description of the “Births” module
 #: modules_v3/birth_report/module.php:42 modules_v3/birth_report/report.bak:5
 msgid "A report of individuals who were born in a given time or place."
 msgstr "A report of individuals who were born in a given time or place."
 
+#. I18N: Description of the “calendar_utilities” module
 #: modules_v3/calendar_utilities/module.php:40
 msgid "A selection of calendar utility tools"
 msgstr "A selection of calendar utility tools"
@@ -18103,6 +18779,7 @@ msgstr "A selection of calendar utility tools"
 msgid "Select the utilities you want to display"
 msgstr "Select the utilities you want to display"
 
+#. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/calculators.php:30
 msgid "Calculators"
 msgstr "Calculators"
@@ -18167,6 +18844,7 @@ msgstr "days"
 msgid "Estimated date of birth"
 msgstr "Estimated date of birth"
 
+#. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/ecclesiastical.php:30
 msgid "Ecclesiastical Dates"
 msgstr "Ecclesiastical Dates"
@@ -18280,6 +18958,7 @@ msgstr ""
 msgid "Help with English calendar"
 msgstr "Help with English calendar"
 
+#. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/old_new.php:29
 msgid "Old & New Style Dates"
 msgstr "Old & New Style Dates"
@@ -18386,6 +19065,7 @@ msgstr ""
 "of documents between 1588 and 1752 because England is a special case during "
 "these years.</p></p>"
 
+#. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:30
 msgid "Regnal Years"
 msgstr "Regnal Years"
@@ -18675,6 +19355,7 @@ msgstr ""
 msgid "Jane only ruled from July 6th to July 19th, 1553"
 msgstr "Jane only ruled from July 6th to July 19th, 1553"
 
+#. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:30
 msgid "Yearly Calendar"
 msgstr "Yearly Calendar"
@@ -18980,6 +19661,9 @@ msgstr "20th Sunday after Trinity Sunday"
 msgid "21st Sunday after Trinity Sunday"
 msgstr "21st Sunday after Trinity Sunday"
 
+#. I18N::translate('22nd Sunday after Trinity Sunday
+#. Advent or Benedicta - HOW TO CALCULATE????
+#. If 23 Benedicta is Adventus 1 then stop calculate Benedicta
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:187
 msgid "23rd Sunday after Trinity Sunday"
 msgstr "23rd Sunday after Trinity Sunday"
@@ -19056,6 +19740,7 @@ msgstr "Visitatio Assumption"
 msgid "Annunciation of the Virgin Mary"
 msgstr "Annunciation of the Virgin Mary"
 
+#. I18N::translate('Annuntatio Assumption Virginis')
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:227
 msgid "Saint Michaelmas"
 msgstr "Saint Michaelmas"
@@ -19076,12 +19761,14 @@ msgstr "First part of year"
 msgid "Second part of year"
 msgstr "Second part of year"
 
+#. I18N: Name of a module/report
 #: modules_v3/cemetery_report/module.php:36
 #: modules_v3/cemetery_report/report.bak:4
 #: modules_v3/cemetery_report/report.bak:33
 msgid "Cemeteries"
 msgstr "Cemeteries"
 
+#. I18N: Description of the “Cemeteries” module
 #: modules_v3/cemetery_report/module.php:42
 #: modules_v3/cemetery_report/report.bak:5
 msgid "A report of individuals who were buried in a given place."
@@ -19105,6 +19792,7 @@ msgstr ""
 "to their behavior when they are called up from the menus.  Click on the box "
 "of a person to see more details about them."
 
+#. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:40
 msgid "An alternative way to display charts."
 msgstr "An alternative way to display charts."
@@ -19156,6 +19844,7 @@ msgstr ""
 msgid "Chart type"
 msgstr "Chart type"
 
+#. I18N: label for a yes/no option
 #: modules_v3/charts/module.php:242 modules_v3/gedcom_favorites/module.php:240
 #: modules_v3/recent_changes/module.php:165
 #: modules_v3/review_changes/module.php:189
@@ -19167,10 +19856,12 @@ msgstr "Chart type"
 msgid "Add a scrollbar when block contents grow"
 msgstr "Add a scrollbar when block contents grow"
 
+#. I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com
 #: modules_v3/ckeditor/module.php:35
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
+#. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:40
 msgid ""
 "Allow other modules to edit text using a “WYSIWYG” editor, instead of using "
@@ -19224,10 +19915,12 @@ msgstr ""
 "b> link in the Name boxes.  There is <u>no</u> confirmation dialog when you "
 "click either of these links;  the requested deletion takes place immediately."
 
+#. I18N: Name of a module
 #: modules_v3/clippings/module.php:35
 msgid "Clippings cart"
 msgstr "Clippings cart"
 
+#. I18N: Description of the “Clippings cart” module
 #: modules_v3/clippings/module.php:40
 msgid "Select records from your family tree and save them as a GEDCOM file."
 msgstr "Select records from your family tree and save them as a GEDCOM file."
@@ -19373,10 +20066,12 @@ msgstr "Add %s to cart"
 msgid "Cancel"
 msgstr "Cancel"
 
+#. I18N: Name of a module
 #: modules_v3/contact/module.php:28 modules_v3/contact/module.php:62
 msgid "Contact"
 msgstr "Contact"
 
+#. I18N: Description of the “contact” module
 #: modules_v3/contact/module.php:33
 msgid "A contact page"
 msgstr "A contact page"
@@ -19441,10 +20136,12 @@ msgstr ""
 "to respond to your inquiry.\tYour email address will not be stored or used "
 "in any other way than responding to this inquiry."
 
+#. I18N: Name of a module/tab on the individual page.
 #: modules_v3/cousins_tab/module.php:33
 msgid "Cousins"
 msgstr "Cousins"
 
+#. I18N: Description of the "Facts and events" module
 #: modules_v3/cousins_tab/module.php:38
 msgid "A tab showing cousins of an individual."
 msgstr "A tab showing cousins of an individual."
@@ -19492,28 +20189,34 @@ msgstr "reset"
 msgid "clear"
 msgstr "clear"
 
+#. I18N: Name of a module/report
 #: modules_v3/death_report/module.php:36 modules_v3/death_report/report.bak:4
 #: modules_v3/death_report/report.bak:30
 msgid "Deaths"
 msgstr "Deaths"
 
+#. I18N: Description of the “Deaths” module
 #: modules_v3/death_report/module.php:42 modules_v3/death_report/report.bak:5
 msgid "A report of individuals who died in a given time or place."
 msgstr "A report of individuals who died in a given time or place."
 
+#. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy/module.php:42
 msgid "A sidebar showing the descendants of an individual."
 msgstr "A sidebar showing the descendants of an individual."
 
+#. I18N: Description of the “Descendants” module
 #: modules_v3/descendancy_report/module.php:42
 #: modules_v3/descendancy_report/report.bak:5
 msgid "A report of an individual’s descendants, in a narrative style."
 msgstr "A report of an individual’s descendants, in a narrative style."
 
+#. I18N: Name of a module/sidebar
 #: modules_v3/extra_info/module.php:32
 msgid "Extra information"
 msgstr "Extra information"
 
+#. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:37
 msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "A sidebar showing non-genealogical information about an individual."
@@ -19661,10 +20364,12 @@ msgstr ""
 "existing browser window or tab. But if you need it to open in a new window "
 "or tab you can tick this option."
 
+#. I18N: Name of a module.
 #: modules_v3/extra_menus/module.php:36
 msgid "Extra menus"
 msgstr "Extra menus"
 
+#. I18N: Description of the “Extra menus” module
 #: modules_v3/extra_menus/module.php:41
 msgid "Provides links to custom defined pages."
 msgstr "Provides links to custom defined pages."
@@ -19715,25 +20420,30 @@ msgstr "The menu list is empty."
 msgid "Edit menus"
 msgstr "Edit menus"
 
+#. I18N: Description of the “Source” module
 #: modules_v3/fact_sources/module.php:42
 msgid "A report of the information provided by a source."
 msgstr "A report of the information provided by a source."
 
+#. I18N: Name of a module/sidebar
 #: modules_v3/families/module.php:35
 msgid "Family list"
 msgstr "Family list"
 
+#. I18N: Description of the “Families” module
 #: modules_v3/families/module.php:40
 msgid ""
 "A sidebar showing an alphabetic list of all the families in the family tree."
 msgstr ""
 "A sidebar showing an alphabetic list of all the families in the family tree."
 
+#. I18N: Description of the “Family” module
 #: modules_v3/family_group_report/module.php:42
 #: modules_v3/family_group_report/report.bak:5
 msgid "A report of family members and their details."
 msgstr "A report of family members and their details."
 
+#. I18N: Description of the “Family navigator” module
 #: modules_v3/family_nav/module.php:40
 msgid "A sidebar showing an individual’s close families and relatives."
 msgstr "A sidebar showing an individual’s close families and relatives."
@@ -19770,10 +20480,12 @@ msgstr ""
 "specifications already.<br><br>The Fancy Imagebar module respects privacy "
 "settings!"
 
+#. I18N: Name of the module
 #: modules_v3/fancy_imagebar/module.php:37
 msgid "Fancy Imagebar"
 msgstr "Fancy Imagebar"
 
+#. I18N: Description of the module
 #: modules_v3/fancy_imagebar/module.php:42
 msgid ""
 "An image bar with small images on your home page between header and content."
@@ -19790,6 +20502,7 @@ msgstr ""
 msgid "Choose which images you want to show in the Fancy Imagebar"
 msgstr "Choose which images you want to show in the Fancy Imagebar"
 
+#. I18N: select all (of the family trees)
 #: modules_v3/fancy_imagebar/module.php:292 search.php:217
 msgid "select all"
 msgstr "select all"
@@ -19815,6 +20528,7 @@ msgstr "Images Tone"
 msgid "Cropped image size"
 msgstr "Cropped image size"
 
+#. I18N: %s is the surname of the root individual
 #: modules_v3/fancy_treeview/db_schema/db_schema_0_1.php:43
 #: modules_v3/fancy_treeview/module.php:568
 #, php-format
@@ -20013,10 +20727,12 @@ msgstr ""
 "will be disabled when the user selects a RTL-language. In a RTL language the "
 "text is read from right to left.</p>"
 
+#. I18N: Name of the module
 #: modules_v3/fancy_treeview/module.php:47
 msgid "Fancy Tree View"
 msgstr "Fancy Tree View"
 
+#. I18N: Description of the module
 #: modules_v3/fancy_treeview/module.php:52
 msgid ""
 "A Fancy overview of the descendants of one family(branch) in a narrative way"
@@ -20248,6 +20964,7 @@ msgstr "14 times"
 msgid "15 times"
 msgstr "15 times"
 
+#. I18N: %s is a number
 #: modules_v3/fancy_treeview/module.php:1103
 #, php-format
 msgid "He married %s"
@@ -20258,6 +20975,7 @@ msgstr "He married %s"
 msgid "She married %s"
 msgstr "She married %s"
 
+#. I18N: %s is an ordinal
 #: modules_v3/fancy_treeview/module.php:1106
 #, php-format
 msgid "The %s time he married"
@@ -20296,6 +21014,7 @@ msgstr "She had a relationship with"
 msgid "This individual had a relationship with"
 msgstr "This individual had a relationship with"
 
+#. I18N: Note the space at the end of the string
 #: modules_v3/fancy_treeview/module.php:1179
 #: modules_v3/fancy_treeview/module.php:1194
 #: modules_v3/fancy_treeview/module.php:1213
@@ -20330,6 +21049,7 @@ msgctxt "One parent/multiple children"
 msgid "had"
 msgstr "had"
 
+#. I18N: Note the space at the end of the string
 #: modules_v3/fancy_treeview/module.php:1211
 #: modules_v3/ahnentafel_report/report.bak:397
 #: modules_v3/descendancy_report/report.bak:482
@@ -20459,12 +21179,14 @@ msgstr "She died"
 msgid "He died"
 msgstr "He died"
 
+#. I18N: %s is the age of death in days/months; %s is a string, e.g. at the age of 2 months
 #: modules_v3/fancy_treeview/module.php:1384
 #, php-format
 msgctxt "age in days/months"
 msgid "at the age of %s"
 msgstr "at the age of %s"
 
+#. I18N: %s is the age of death in years; %s is a number, e.g. at the age of 40
 #: modules_v3/fancy_treeview/module.php:1387
 #, php-format
 msgctxt "age in years"
@@ -20491,21 +21213,25 @@ msgstr "Father"
 msgid "Mother"
 msgstr "Mother"
 
+#. I18N: Note the space at the end of the string
 #: modules_v3/fancy_treeview/module.php:1542
 msgctxt "before dateformat dd-mm-yyyy"
 msgid "on "
 msgstr "on "
 
+#. I18N: Note the space at the end of the string
 #: modules_v3/fancy_treeview/module.php:1545
 msgctxt "before dateformat mmm yyyy"
 msgid "in "
 msgstr "in "
 
+#. I18N: Note the space at the end of the string
 #: modules_v3/fancy_treeview/module.php:1548
 msgctxt "before dateformat yyyy"
 msgid "in "
 msgstr "in "
 
+#. I18N: Note the space at the end of the string
 #: modules_v3/fancy_treeview/module.php:1576
 msgctxt "before placesnames"
 msgid "in "
@@ -20611,11 +21337,13 @@ msgstr ""
 "question and changing the FAQ Position field.  When more than one FAQ item "
 "has the same position number, only one of these items will be visible."
 
+#. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: modules_v3/faq/module.php:36 modules_v3/faq/module.php:117
 #: modules_v3/faq/module.php:428
 msgid "FAQs"
 msgstr "FAQs"
 
+#. I18N: Description of the “FAQ” module
 #: modules_v3/faq/module.php:41
 msgid "A list of frequently asked questions and answers."
 msgstr "A list of frequently asked questions and answers."
@@ -20859,6 +21587,7 @@ msgstr "Display image galleries."
 msgid "Edit gallerys"
 msgstr "Edit gallerys"
 
+#. I18N: Name of a theme.
 #: modules_v3/gallery/module.php:278 themes/kiwitrees/theme.php:35
 msgid "kiwitrees"
 msgstr "kiwitrees"
@@ -20955,6 +21684,7 @@ msgstr "Linked to:"
 msgid "Gallery is empty. Please choose other gallery."
 msgstr "Gallery is empty. Please choose other gallery."
 
+#. I18N: Description of the “Home page” module
 #: modules_v3/gedcom_block/module.php:40
 msgid "A greeting message for site visitors."
 msgstr "A greeting message for site visitors."
@@ -20963,6 +21693,7 @@ msgstr "A greeting message for site visitors."
 msgid "Default chart"
 msgstr "Default chart"
 
+#. I18N: Description of the “Favorites” module
 #: modules_v3/gedcom_favorites/module.php:40
 msgid "Display and manage a family tree’s favorite pages."
 msgstr "Display and manage a family tree’s favorite pages."
@@ -20982,10 +21713,12 @@ msgstr "Add a favorite"
 msgid "Enter an optional note about this favorite"
 msgstr "Enter an optional note about this favorite"
 
+#. I18N: Name of a module
 #: modules_v3/gedcom_news/module.php:43
 msgid "News"
 msgstr "News"
 
+#. I18N: Description of the “GEDCOM News” module
 #: modules_v3/gedcom_news/module.php:48
 msgid "Family news and site announcements."
 msgstr "Family news and site announcements."
@@ -21014,12 +21747,15 @@ msgstr "Age of item"
 msgid "Number of items"
 msgstr "Number of items"
 
+#. I18N: Description of “Statistics” module
 #: modules_v3/gedcom_stats/module.php:40 modules_v3/widget_stats/module.php:40
 msgid ""
 "The size of the family tree, earliest and latest events, common names, etc."
 msgstr ""
 "The size of the family tree, earliest and latest events, common names, etc."
 
+#. I18N: %s is a date
+#. I18N: %s is a date
 #: modules_v3/gedcom_stats/module.php:89 modules_v3/html/module.php:167
 #: modules_v3/widget_stats/module.php:85
 #, php-format
@@ -21098,6 +21834,7 @@ msgstr "View statistics as graphs"
 msgid "Most Common Surnames"
 msgstr "Most Common Surnames"
 
+#. I18N: label for yes/no option
 #: modules_v3/gedcom_stats/module.php:263
 #: modules_v3/widget_stats/module.php:310
 msgid "Show date of last update?"
@@ -21303,6 +22040,7 @@ msgstr ""
 "Based on this setting the number of digits that will be used in the latitude "
 "and longitude is determined."
 
+#. I18N: Measure of latitude/longitude
 #: modules_v3/googlemap/admin_places_edit.php:306
 #: modules_v3/googlemap/admin_places_edit.php:316
 msgid "degrees"
@@ -21332,6 +22070,7 @@ msgstr ""
 "This value will be used as the minimal value when displaying this geographic "
 "location on a map."
 
+#. I18N: The emblem of a country or region
 #: modules_v3/googlemap/admin_places_edit.php:335
 #: modules_v3/googlemap/admin_places_edit.php:341
 #: modules_v3/googlemap/module.php:401
@@ -21356,6 +22095,7 @@ msgstr "Remove flag"
 msgid "When this geographic location is shown, this flag will be displayed."
 msgstr "When this geographic location is shown, this flag will be displayed."
 
+#. I18N: Description of the “Google Maps™” module
 #: modules_v3/googlemap/module.php:56
 msgid ""
 "Show the location of places and events using the Google Maps™ mapping "
@@ -21392,6 +22132,7 @@ msgstr "Hybrid"
 msgid "Terrain"
 msgstr "Terrain"
 
+#. I18N: http://en.wikipedia.org/wiki/Google_street_view
 #: modules_v3/googlemap/module.php:250 modules_v3/googlemap/module.php:1964
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:495
 msgid "Google Street View™"
@@ -21539,10 +22280,12 @@ msgstr ""
 "can be selected. If no flags are shown, then there are no flags defined for "
 "this country."
 
+#. I18N: Part of a country, state/region/county
 #: modules_v3/googlemap/module.php:624 modules_v3/googlemap/module.php:1474
 msgid "Subdivision"
 msgstr "Subdivision"
 
+#. I18N: %s is an individual’s name
 #: modules_v3/googlemap/module.php:679
 #, php-format
 msgid "Pedigree map of %s"
@@ -21574,6 +22317,7 @@ msgstr[1] "%s individuals are private."
 msgid "No ancestors in the database."
 msgstr "No ancestors in the database."
 
+#. I18N: %1$d is a count of individuals, %2$s is a list of their names
 #: modules_v3/googlemap/module.php:817
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
@@ -21623,6 +22367,8 @@ msgstr "Zoom out here"
 msgid "Center map here"
 msgstr "Center map here"
 
+#. I18N: first/default option in a drop-down listbox
+#. I18N: first/default option in a drop-down listbox
 #: modules_v3/googlemap/module.php:1460 modules_v3/googlemap/module.php:1476
 #: modules_v3/resource_fact/module.php:138
 #: modules_v3/widget_messages/module.php:69
@@ -21637,6 +22383,7 @@ msgstr "Include fully matched places: "
 msgid "Zoom="
 msgstr "Zoom="
 
+#. I18N: A count of places
 #: modules_v3/googlemap/module.php:1688
 #, php-format
 msgid "Total places: %s"
@@ -21652,10 +22399,12 @@ msgstr ""
 "will NOT INCLUDE places that are fully matched between the GEDCOM file and "
 "the GoogleMap tables"
 
+#. I18N: Compass bearing (in degrees), for street-view mapping
 #: modules_v3/googlemap/placehierarchy.php:232
 msgid "Bearing"
 msgstr "Bearing"
 
+#. I18N: Angle of elevation (in degrees), for street-view mapping
 #: modules_v3/googlemap/placehierarchy.php:234
 msgid "Elevation"
 msgstr "Elevation"
@@ -21719,11 +22468,14 @@ msgstr ""
 "standard templates.  When you select one of these templates, the text area "
 "will contain a copy that you can then alter to suit your site's requirements."
 
+#. I18N: Name of a module
+#. I18N: Name of a module
 #: modules_v3/html/module.php:35 modules_v3/widget_html/module.php:35
 #: reportengine.php:277
 msgid "HTML"
 msgstr "HTML"
 
+#. I18N: Description of the “HTML” module
 #: modules_v3/html/module.php:40 modules_v3/widget_html/module.php:40
 msgid "Add your own text and graphics."
 msgstr "Add your own text and graphics."
@@ -21736,6 +22488,7 @@ msgstr "Keyword examples"
 msgid "Narrative description"
 msgstr "Narrative description"
 
+#. I18N: do not translate the #keywords#
 #: modules_v3/html/module.php:162
 msgid ""
 "This GEDCOM (family tree) was last updated on #gedcomUpdated#. There are "
@@ -21768,21 +22521,25 @@ msgstr "Default"
 msgid "Show the date and time of update"
 msgstr "Show the date and time of update"
 
+#. I18N: Name of a module/report
 #: modules_v3/individual_ext_report/module.php:36
 #: modules_v3/individual_ext_report/report.bak:4
 #: modules_v3/individual_ext_report/report.bak:89
 msgid "Related families"
 msgstr "Related families"
 
+#. I18N: Description of the “Related families”
 #: modules_v3/individual_ext_report/module.php:42
 #: modules_v3/individual_ext_report/report.bak:5
 msgid "A report of the families that are closely related to an individual."
 msgstr "A report of the families that are closely related to an individual."
 
+#. I18N: Name of a module
 #: modules_v3/individuals/module.php:35
 msgid "Individual list"
 msgstr "Individual list"
 
+#. I18N: Description of “Individuals” module
 #: modules_v3/individuals/module.php:40
 msgid ""
 "A sidebar showing an alphabetic list of all the individuals in the family "
@@ -21791,15 +22548,19 @@ msgstr ""
 "A sidebar showing an alphabetic list of all the individuals in the family "
 "tree."
 
+#. I18N: Name of a module. (A list of users who are online now)
+#. I18N: Name of a module. (A list of users who are online now)
 #: modules_v3/logged_in/module.php:35 modules_v3/widget_logged_in/module.php:35
 #: themes/levy/footer.php:40
 msgid "Who is online"
 msgstr "Who is online"
 
+#. I18N: Description of the “Who is online” module
 #: modules_v3/logged_in/module.php:40 modules_v3/widget_logged_in/module.php:40
 msgid "A list of users and visitors who are currently online."
 msgstr "A list of users and visitors who are currently online."
 
+#. I18N: Description of the “Login” module
 #: modules_v3/login_block/module.php:40
 msgid "An alternative way to login and logout."
 msgstr "An alternative way to login and logout."
@@ -21808,89 +22569,110 @@ msgstr "An alternative way to login and logout."
 msgid "Logged in as "
 msgstr "Logged in as "
 
+#. I18N: Name of a module/report
 #: modules_v3/marriage_report/module.php:36
 #: modules_v3/marriage_report/report.bak:4
 #: modules_v3/marriage_report/report.bak:28
 msgid "Marriages"
 msgstr "Marriages"
 
+#. I18N: Description of the “Marriages” module
 #: modules_v3/marriage_report/module.php:42
 #: modules_v3/marriage_report/report.bak:5
 msgid "A report of individuals who were married in a given time or place."
 msgstr "A report of individuals who were married in a given time or place."
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_charts/module.php:35
 msgid "Charts menu"
 msgstr "Charts menu"
 
+#. I18N: Description of the “Edit” module
 #: modules_v3/menu_charts/module.php:40
 msgid "The Charts menu item"
 msgstr "The Charts menu item"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_favorites/module.php:35
 msgid "Favorites menu"
 msgstr "Favorites menu"
 
+#. I18N: Description of the “favorites” module
 #: modules_v3/menu_favorites/module.php:40
 msgid "The Favorites menu item (other menus)"
 msgstr "The Favorites menu item (other menus)"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_homepage/module.php:35
 msgid "Home menu"
 msgstr "Home menu"
 
+#. I18N: Description of the “Edit” module
 #: modules_v3/menu_homepage/module.php:40
 msgid "The Home page menu item"
 msgstr "The Home page menu item"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_languages/module.php:35
 msgid "Languages menu"
 msgstr "Languages menu"
 
+#. I18N: Description of the languages module
 #: modules_v3/menu_languages/module.php:40
 msgid "The Languages menu item (other menus)"
 msgstr "The Languages menu item (other menus)"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_lists/module.php:35
 msgid "Lists menu"
 msgstr "Lists menu"
 
+#. I18N: Description of the “Edit” module
 #: modules_v3/menu_lists/module.php:40
 msgid "The Lists menu item"
 msgstr "The Lists menu item"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_login/module.php:35
 msgid "Login menu"
 msgstr "Login menu"
 
+#. I18N: Description of the languages module
 #: modules_v3/menu_login/module.php:40
 msgid "The Login menu item (other menus)"
 msgstr "The Login menu item (other menus)"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_reports/module.php:35
 msgid "Reports menu"
 msgstr "Reports menu"
 
+#. I18N: Description of the “Edit” module
 #: modules_v3/menu_reports/module.php:40
 msgid "The Reports menu item"
 msgstr "The Reports menu item"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_resources/module.php:35
 msgid "Resources menu"
 msgstr "Resources menu"
 
+#. I18N: Description of the “Resources” module
 #: modules_v3/menu_resources/module.php:40
 msgid "The Resources menu item"
 msgstr "The Resources menu item"
 
+#. I18N: Name of a module/menu
 #: modules_v3/menu_search/module.php:35
 msgid "Search menu"
 msgstr "Search menu"
 
+#. I18N: Description of the “Edit” module
 #: modules_v3/menu_search/module.php:40
 msgid "The Search menu item"
 msgstr "The Search menu item"
 
+#. I18N: Description of the “Missing data”
 #: modules_v3/missing_facts_report/module.php:42
 #: modules_v3/missing_facts_report/report.bak:5
 msgid ""
@@ -21900,10 +22682,12 @@ msgstr ""
 "A report of the information that is missing for an individual and their "
 "relatives."
 
+#. I18N: Name of a module
 #: modules_v3/no_census/module.php:36
 msgid "UK Census check"
 msgstr "UK Census check"
 
+#. I18N: Description of the “UK Census check” module
 #: modules_v3/no_census/module.php:41
 msgid "A list of missing census data, for UK census records only"
 msgstr "A list of missing census data, for UK census records only"
@@ -21954,6 +22738,7 @@ msgid_plural "%s records found"
 msgstr[0] "%s record found"
 msgstr[1] "%s records found"
 
+#. I18N: Description of the “Notes” module
 #: modules_v3/notes/module.php:40
 msgid "A tab showing the notes attached to an individual."
 msgstr "A tab showing the notes attached to an individual."
@@ -21966,23 +22751,28 @@ msgstr "Show all notes"
 msgid "There are no Notes for this individual."
 msgstr "There are no Notes for this individual."
 
+#. I18N: Name of a module
 #: modules_v3/openstreetmap/module.php:15
 msgid "OpenStreetMap"
 msgstr "OpenStreetMap"
 
+#. I18N: Description of the “OSM” module
 #: modules_v3/openstreetmap/module.php:20
 msgid "Show the location of places and events using OpenStreetMap (OSM)"
 msgstr "Show the location of places and events using OpenStreetMap (OSM)"
 
+#. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:40
 msgid "An edit menu for individuals, families, sources, etc."
 msgstr "An edit menu for individuals, families, sources, etc."
 
+#. I18N: Description of the “Pedigree” module
 #: modules_v3/pedigree_report/module.php:42
 #: modules_v3/pedigree_report/report.bak:5
 msgid "A report of an individual’s ancestors, formatted as a tree."
 msgstr "A report of an individual’s ancestors, formatted as a tree."
 
+#. I18N: Name of a module/tab on the individual page.
 #: modules_v3/personal_facts/module.php:35
 #: modules_v3/random_media/module.php:304
 #: modules_v3/resource_individual/module.php:169
@@ -21990,6 +22780,7 @@ msgstr "A report of an individual’s ancestors, formatted as a tree."
 msgid "Facts and events"
 msgstr "Facts and events"
 
+#. I18N: Description of the “Facts and events” module
 #: modules_v3/personal_facts/module.php:40
 msgid "A tab showing the facts and events of an individual."
 msgstr "A tab showing the facts and events of an individual."
@@ -22006,6 +22797,7 @@ msgstr "Events of close relatives"
 msgid "Historical facts"
 msgstr "Historical facts"
 
+#. I18N: Description of the “Slide show” module
 #: modules_v3/random_media/module.php:40
 msgid "Random images from the current family tree."
 msgstr "Random images from the current family tree."
@@ -22046,11 +22838,13 @@ msgstr "Show slide show controls?"
 msgid "Start slide show on page load?"
 msgstr "Start slide show on page load?"
 
+#. I18N: Description of the “Recent changes” module
 #: modules_v3/recent_changes/module.php:44
 #: modules_v3/widget_recent_changes/module.php:44
 msgid "A list of records that have been updated recently."
 msgstr "A list of records that have been updated recently."
 
+#. I18N: title for list of recent changes
 #: modules_v3/recent_changes/module.php:78
 #: modules_v3/resource_changes/module.php:233
 #: modules_v3/widget_recent_changes/module.php:78
@@ -22101,6 +22895,10 @@ msgstr[1] "maximum %d days"
 msgid "Presentation style"
 msgstr "Presentation style"
 
+#. I18N: An option in a list-box
+#. I18N: An option in a list-box
+#. I18N: An option in a list-box
+#. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:157
 #: modules_v3/todays_events/module.php:149
 #: modules_v3/upcoming_events/module.php:161
@@ -22116,11 +22914,13 @@ msgstr "Presentation style"
 msgid "sort by name"
 msgstr "sort by name"
 
+#. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:158
 #: modules_v3/widget_recent_changes/module.php:154
 msgid "sort by date, oldest first"
 msgstr "sort by date, oldest first"
 
+#. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:159
 #: modules_v3/widget_recent_changes/module.php:155
 msgid "sort by date, newest first"
@@ -22140,17 +22940,20 @@ msgstr ""
 "If you hide an empty block, you will not be able to change its configuration "
 "until it becomes visible by no longer being empty."
 
+#. I18N: Name of a report
 #: modules_v3/relative_ext_report/module.php:36
 #: modules_v3/relative_ext_report/report.bak:4
 #: modules_v3/relative_ext_report/report.bak:41
 msgid "Related individuals"
 msgstr "Related individuals"
 
+#. I18N: Description of the “Related individuals” module
 #: modules_v3/relative_ext_report/module.php:42
 #: modules_v3/relative_ext_report/report.bak:5
 msgid "A report of the individuals that are closely related to an individual."
 msgstr "A report of the individuals that are closely related to an individual."
 
+#. I18N: Description of the “Families” module
 #: modules_v3/relatives/module.php:40
 msgid "A tab showing the close relatives of an individual."
 msgstr "A tab showing the close relatives of an individual."
@@ -22187,6 +22990,7 @@ msgstr "Add a brother or sister"
 msgid "Show date differences"
 msgstr "Show date differences"
 
+#. I18N: Description of “Research tasks” module
 #: modules_v3/resource_changes/module.php:41
 msgid "A report of recent and pending changes."
 msgstr "A report of recent and pending changes."
@@ -22212,18 +23016,22 @@ msgstr "There are no pending changes."
 msgid "%1$s - %2$s (%3$s days)"
 msgstr "%1$s - %2$s (%3$s days)"
 
+#. I18N: Name of a module. Tasks that need further research.
 #: modules_v3/resource_fact/module.php:36
 msgid "Fact report"
 msgstr "Fact report"
 
+#. I18N: Description of Fact report module
 #: modules_v3/resource_fact/module.php:41
 msgid "A report of individuals who have a selected fact in their record."
 msgstr "A report of individuals who have a selected fact in their record."
 
+#. I18N: Name of a module. Tasks that need further research.
 #: modules_v3/resource_individual/module.php:36
 msgid "Individual report"
 msgstr "Individual report"
 
+#. I18N: Description of “Research tasks” module
 #: modules_v3/resource_individual/module.php:41
 msgid "A report of an individual’s details."
 msgstr "A report of an individual’s details."
@@ -22253,12 +23061,16 @@ msgstr "Spouse"
 msgid "Partner"
 msgstr "Partner"
 
+#. I18N: Name of a module. Tasks that need further research.
+#. I18N: Name of a module.  Tasks that need further research.
+#. I18N: Name of a module.  Tasks that need further research.
 #: modules_v3/resource_todo/module.php:36 modules_v3/todo/help_text.php:34
 #: modules_v3/todo/module.php:35 modules_v3/widget_todo/help_text.php:34
 #: modules_v3/widget_todo/module.php:35
 msgid "Research tasks"
 msgstr "Research tasks"
 
+#. I18N: Description of “Research tasks” module
 #: modules_v3/resource_todo/module.php:41 modules_v3/todo/module.php:40
 #: modules_v3/widget_todo/module.php:40
 msgid "A list of tasks and activities that are linked to the family tree."
@@ -22297,6 +23109,7 @@ msgstr ""
 "need to be approved by a moderator.  It also generates daily emails to "
 "moderators whenever pending changes exist."
 
+#. I18N: Description of the “Pending changes” module
 #: modules_v3/review_changes/module.php:40
 #: modules_v3/widget_review_changes/module.php:40
 msgid ""
@@ -22446,6 +23259,7 @@ msgstr ""
 msgid "Pages"
 msgstr "Pages"
 
+#. I18N: Description of the “Simpl_pages” module
 #: modules_v3/simpl_pages/module.php:41
 msgid "Display resource pages."
 msgstr "Display resource pages."
@@ -22490,6 +23304,7 @@ msgstr "Position item"
 msgid "Are you sure you want to delete this page?"
 msgstr "Are you sure you want to delete this page?"
 
+#. I18N: Name of a module/sidebar
 #: modules_v3/simpl_privacy/help_text.php:32
 #: modules_v3/simpl_privacy/module.php:35
 msgid "Privacy status"
@@ -22538,6 +23353,7 @@ msgstr ""
 "<dt>Living</dt><dd>If there is no record of a death and no other related "
 "facts that imply death, then the person is assumed to be living.</dd>"
 
+#. I18N: Description of the "Extra information" module
 #: modules_v3/simpl_privacy/module.php:40
 msgid "A sidebar tool to show privacy status of an individual."
 msgstr "A sidebar tool to show privacy status of an individual."
@@ -22618,36 +23434,49 @@ msgstr ""
 "There are no records to suggest this person is dead, so they are displayed "
 "as living."
 
+#. I18N: Name of a module/sidebar
 #: modules_v3/simpl_research/module.php:35
 #: modules_v3/simpl_research/module.php:39
 msgid "Research links"
 msgstr "Research links"
 
+#. I18N: Description of the module
 #: modules_v3/simpl_research/module.php:44
 msgid "A sidebar tool to provide quick links to popular research web sites."
 msgstr "A sidebar tool to provide quick links to popular research web sites."
 
-#: modules_v3/simpl_research/module.php:96
-msgid "Check the plugins you want to use in the sidebar"
-msgstr "Check the plugins you want to use in the sidebar"
+#: modules_v3/simpl_research/module.php:115
+msgid "Select the links you want to use in the sidebar"
+msgstr "Select the links you want to use in the sidebar"
 
-#: modules_v3/simpl_research/module.php:261
-#: modules_v3/simpl_research/module.php:286
+#: modules_v3/simpl_research/module.php:125
+msgid "Area"
+msgstr "Area"
+
+#: modules_v3/simpl_research/module.php:126
+msgid "Pay to view"
+msgstr "Pay to view"
+
+#: modules_v3/simpl_research/module.php:290
+#: modules_v3/simpl_research/module.php:314
 msgid "International"
 msgstr "International"
 
-#: modules_v3/simpl_research/module.php:293
+#: modules_v3/simpl_research/module.php:321
 msgid "&#36;"
 msgstr "&#36;"
 
+#. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:38
 msgid "Sitemaps"
 msgstr "Sitemaps"
 
+#. I18N: Description of the “Sitemaps” module
 #: modules_v3/sitemap/module.php:43
 msgid "Generate sitemap files for search engines."
 msgstr "Generate sitemap files for search engines."
 
+#. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: modules_v3/sitemap/module.php:246
 msgid ""
 "Sitemaps are a way for webmasters to tell search engines about the pages on "
@@ -22680,6 +23509,7 @@ msgstr ""
 "To tell search engines that sitemaps are available, you can use the "
 "following links."
 
+#. I18N: Description of the “Sources” module
 #: modules_v3/sources_tab/module.php:40
 msgid "A tab showing the sources linked to an individual."
 msgstr "A tab showing the sources linked to an individual."
@@ -22688,6 +23518,7 @@ msgstr "A tab showing the sources linked to an individual."
 msgid "There are no Source citations for this individual."
 msgstr "There are no Source citations for this individual."
 
+#. I18N: Description of the “Stories” module
 #: modules_v3/stories/module.php:40
 msgid "Add narrative stories to individuals in the family tree."
 msgstr "Add narrative stories to individuals in the family tree."
@@ -22730,6 +23561,7 @@ msgstr "Are you sure you want to delete this story?"
 msgid "Are you sure you want to link to this story?"
 msgstr "Are you sure you want to link to this story?"
 
+#. I18N: Description of the “On This Day” module
 #: modules_v3/todays_events/module.php:37
 #: modules_v3/widget_todays_events/module.php:40
 msgid "A list of the anniversaries that occur today."
@@ -22749,6 +23581,7 @@ msgstr "Show only events of living people?"
 msgid "Show only Births, Deaths, and Marriages?"
 msgstr "Show only Births, Deaths, and Marriages?"
 
+#. I18N: An option in a list-box
 #: modules_v3/todays_events/module.php:150
 #: modules_v3/upcoming_events/module.php:162
 #: modules_v3/widget_todays_events/module.php:146
@@ -22796,21 +23629,26 @@ msgstr "Show research tasks that are not assigned to any user"
 msgid "Show research tasks that have a date in the future"
 msgstr "Show research tasks that have a date in the future"
 
+#. I18N: Name of a module.  Top=Most common
+#. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_givnnames/module.php:35
 #: modules_v3/widget_givnnames/module.php:35 statistics.php:191
 msgid "Top given names"
 msgstr "Top given names"
 
+#. I18N: Description of the “Top given names” module
 #: modules_v3/top10_givnnames/module.php:40
 #: modules_v3/widget_givnnames/module.php:40
 msgid "A list of the most popular given names."
 msgstr "A list of the most popular given names."
 
+#. I18N: i.e. most popular given name.
 #: modules_v3/top10_givnnames/module.php:69
 #: modules_v3/widget_givnnames/module.php:68
 msgid "Top given name"
 msgstr "Top given name"
 
+#. I18N: Title for a list of the most common given names, %s is a number.  Note that a separate translation exists when %s is 1
 #: modules_v3/top10_givnnames/module.php:72
 #: modules_v3/widget_givnnames/module.php:71
 #, php-format
@@ -22828,11 +23666,13 @@ msgstr[1] "Top %s given names"
 msgid "Number of items to show"
 msgstr "Number of items to show"
 
+#. I18N: Name of a module
 #: modules_v3/top10_pageviews/module.php:35
 #: modules_v3/widget_pageviews/module.php:35
 msgid "Most viewed pages"
 msgstr "Most viewed pages"
 
+#. I18N: Description of the “Most visited pages” module
 #: modules_v3/top10_pageviews/module.php:40
 #: modules_v3/widget_pageviews/module.php:40
 msgid "A list of the pages that have been viewed the most number of times."
@@ -22850,21 +23690,26 @@ msgstr "before"
 msgid "after"
 msgstr "after"
 
+#. I18N: Name of a module.  Top=Most common
+#. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_surnames/module.php:35
 #: modules_v3/widget_surnames/module.php:35 statistics.php:190
 msgid "Top surnames"
 msgstr "Top surnames"
 
+#. I18N: Description of the “Top surnames” module
 #: modules_v3/top10_surnames/module.php:40
 #: modules_v3/widget_surnames/module.php:40
 msgid "A list of the most popular surnames."
 msgstr "A list of the most popular surnames."
 
+#. I18N: i.e. most popular surname.
 #: modules_v3/top10_surnames/module.php:91
 #: modules_v3/widget_surnames/module.php:90
 msgid "Top surname"
 msgstr "Top surname"
 
+#. I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
 #: modules_v3/top10_surnames/module.php:94
 #: modules_v3/widget_surnames/module.php:93
 #, php-format
@@ -22891,21 +23736,25 @@ msgstr "Use compact layout"
 msgid "Show all spouses and ancestors"
 msgstr "Show all spouses and ancestors"
 
+#. I18N: e.g. “Son of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:327
 #, php-format
 msgid "Son of %s"
 msgstr "Son of %s"
 
+#. I18N: e.g. “Daughter of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:333
 #, php-format
 msgid "Daughter of %s"
 msgstr "Daughter of %s"
 
+#. I18N: e.g. “Child of [father name & mother name]”
 #: modules_v3/tree/class_treeview.php:339
 #, php-format
 msgid "Child of %s"
 msgstr "Child of %s"
 
+#. I18N: Description of the “Interactive tree” module
 #: modules_v3/tree/module.php:38
 msgid ""
 "An interactive tree, showing all the ancestors and descendants of an "
@@ -22914,10 +23763,12 @@ msgstr ""
 "An interactive tree, showing all the ancestors and descendants of an "
 "individual."
 
+#. I18N: Name of a module
 #: modules_v3/uk_register/module.php:35
 msgid "UK 1939 Register"
 msgstr "UK 1939 Register"
 
+#. I18N: Description of the “UK 1939 Register” module
 #: modules_v3/uk_register/module.php:40
 msgid "A list of missing data for the UK 1939 Register records"
 msgstr "A list of missing data for the UK 1939 Register records"
@@ -22934,6 +23785,7 @@ msgstr "Individuals with missing register data"
 msgid "Enter a surname, then select England or Wales from the country list"
 msgstr "Enter a surname, then select England or Wales from the country list"
 
+#. I18N: Note about UK 1939 Register check
 #: modules_v3/uk_register/module.php:194
 msgid ""
 "This list assumes entries relating to the 1939 Register are recorded using "
@@ -22942,6 +23794,7 @@ msgstr ""
 "This list assumes entries relating to the 1939 Register are recorded using "
 "the <b>residence</b> GEDCOM tag (RESI))"
 
+#. I18N: Note about UK 1939 Register check
 #: modules_v3/uk_register/module.php:195
 msgid ""
 "In general anyone who died after 1991, or is still alive, will be redacted "
@@ -22954,6 +23807,7 @@ msgstr ""
 "they are likely to be redacted. However, the Register is incomplete in this "
 "regard, so many people who died <u>before</u> 1991 are still redacted."
 
+#. I18N: Note about UK 1939 Register check
 #: modules_v3/uk_register/module.php:196
 msgid ""
 "Anyone serving in the military on 29 September 1939 is excluded from the "
@@ -22974,20 +23828,24 @@ msgstr "Probably redacted - living or died after 1991"
 msgid "Probably excluded - military service"
 msgstr "Probably excluded - military service"
 
+#. I18N: Name of a module
 #: modules_v3/upcoming_events/module.php:32
 #: modules_v3/widget_upcoming/module.php:35
 msgid "Upcoming events"
 msgstr "Upcoming events"
 
+#. I18N: Description of the “Upcoming events” module
 #: modules_v3/upcoming_events/module.php:37
 #: modules_v3/widget_upcoming/module.php:40
 msgid "A list of the anniversaries that will occur in the near future."
 msgstr "A list of the anniversaries that will occur in the near future."
 
+#. I18N: Name of a module
 #: modules_v3/widget_blog/module.php:43
 msgid "Journal"
 msgstr "Journal"
 
+#. I18N: Description of the “Journal” module
 #: modules_v3/widget_blog/module.php:48
 msgid "A private area to record notes or keep a journal."
 msgstr "A private area to record notes or keep a journal."
@@ -23004,15 +23862,18 @@ msgstr "Are you sure you want to delete this Journal entry?"
 msgid "Add a Journal entry"
 msgstr "Add a Journal entry"
 
+#. I18N: Description of the “Favorites” module
 #: modules_v3/widget_favorites/module.php:40
 msgid "Display and manage a user’s favorite pages."
 msgstr "Display and manage a user’s favorite pages."
 
+#. I18N: %s is the name of an individual, source or other record
 #: modules_v3/widget_favorites/module.php:61
 #, php-format
 msgid "“%s” has been added to your favorites."
 msgstr "“%s” has been added to your favorites."
 
+#. I18N: Description of the “Messages” module
 #: modules_v3/widget_messages/module.php:40
 msgid "Communicate directly with other users, using private messages."
 msgstr "Communicate directly with other users, using private messages."
@@ -23039,6 +23900,7 @@ msgstr "You have no pending messages."
 msgid "Date Sent:"
 msgstr "Date Sent:"
 
+#. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: modules_v3/widget_messages/module.php:107
 #: modules_v3/widget_messages/module.php:108
 msgid "RE: "
@@ -23052,32 +23914,39 @@ msgstr "Reply"
 msgid "Delete Selected Messages"
 msgstr "Delete Selected Messages"
 
+#. I18N: Name of a module
 #: modules_v3/widget_quicklinks/module.php:35
 msgid "Quick links"
 msgstr "Quick links"
 
+#. I18N: Description of the “Quick links” module
 #: modules_v3/widget_quicklinks/module.php:40
 msgid "A selection of links for a user."
 msgstr "A selection of links for a user."
 
+#. I18N: Name of a module
 #: modules_v3/widget_theme_select/module.php:35
 msgid "Theme change"
 msgstr "Theme change"
 
+#. I18N: Description of the “Theme change” module
 #: modules_v3/widget_theme_select/module.php:40
 msgid "An alternative way to select a new theme."
 msgstr "An alternative way to select a new theme."
 
+#. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: modules_v3/widget_yahrzeit/module.php:35 modules_v3/yahrzeit/module.php:35
 msgid "Yahrzeiten"
 msgstr "Yahrzeiten"
 
+#. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: modules_v3/widget_yahrzeit/module.php:40 modules_v3/yahrzeit/module.php:40
 msgid ""
 "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr ""
 "A list of the Hebrew death anniversaries that will occur in the near future."
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: note.php:41
 #, php-format
 msgid ""
@@ -23095,6 +23964,7 @@ msgstr ""
 "This note has been deleted.  The deletion will need to be reviewed by a "
 "moderator."
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: note.php:59
 #, php-format
 msgid ""
@@ -23134,6 +24004,7 @@ msgstr "Switch to Place hierarchy"
 msgid "Switch to list view"
 msgstr "Switch to list view"
 
+#. I18N: %s is a country or region
 #: placelist.php:128
 #, php-format
 msgid "Places in %s"
@@ -23144,6 +24015,7 @@ msgstr "Places in %s"
 msgid "View all records found in %s"
 msgstr "View all records found in %s"
 
+#. I18N: %s are individual’s names
 #: relationship.php:63
 #, php-format
 msgid "Relationships between %1$s and %2$s"
@@ -23178,6 +24050,7 @@ msgstr "No other link between the two individuals could be found."
 msgid "Relationship: %s"
 msgstr "Relationship: %s"
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:41
 #, php-format
 msgid ""
@@ -23195,6 +24068,7 @@ msgstr ""
 "This repository has been deleted.  The deletion will need to be reviewed by "
 "a moderator."
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: repo.php:59
 #, php-format
 msgid ""
@@ -23246,6 +24120,7 @@ msgstr "PDF"
 msgid "Download report"
 msgstr "Download report"
 
+#. I18N: An option in a list-box
 #: reportengine.php:525 modules_v3/bdm_report/report.bak:12
 #: modules_v3/cemetery_report/report.bak:7
 #: modules_v3/death_report/report.bak:10
@@ -23295,6 +24170,7 @@ msgstr "Last name"
 msgid "Phonetic algorithm"
 msgstr "Phonetic algorithm"
 
+#. I18N: select none (of the family trees)
 #: search.php:218
 msgid "select none"
 msgstr "select none"
@@ -23359,6 +24235,7 @@ msgstr "Select your default language"
 msgid "1 - Checking your server configuration"
 msgstr "1 - Checking your server configuration"
 
+#. I18N: %s is a PHP function/module/setting
 #: setup.php:146
 #, php-format
 msgid ""
@@ -23377,14 +24254,17 @@ msgstr ""
 "PHP extension \"%s\" is disabled.  You cannot install Kiwitrees until this "
 "is enabled.  Please ask your server's administrator to enable it."
 
+#. I18N: a program feature
 #: setup.php:159
 msgid "jewish calendar"
 msgstr "jewish calendar"
 
+#. I18N: a program feature
 #: setup.php:160
 msgid "creating thumbnails of images"
 msgstr "creating thumbnails of images"
 
+#. I18N: a program feature
 #: setup.php:161 setup.php:162
 msgid "reporting"
 msgstr "reporting"
@@ -23398,6 +24278,7 @@ msgstr ""
 "PHP extension \"%1$s\" is disabled.  Without it, the following features will "
 "not work: %2$s.  Please ask your server's administrator to enable it."
 
+#. I18N: a program feature
 #: setup.php:171
 msgid "file upload capability"
 msgstr "file upload capability"
@@ -23676,6 +24557,7 @@ msgstr "This version of kiwitrees cannot be installed on this web-server."
 msgid "You have the following options:"
 msgstr "You have the following options:"
 
+#. I18N: %s is a version number
 #: site-php-version.php:83
 #, php-format
 msgid "Upgrade the web-server to PHP %s or higher."
@@ -23709,6 +24591,7 @@ msgstr "The database reported the following error message:"
 msgid "If you are the website administrator, you should check that:"
 msgstr "If you are the website administrator, you should check that:"
 
+#. I18N: [you should check that:] ...
 #: site-unavailable.php:81
 msgid ""
 "the database connection settings in the file <b>/data/config.ini.php</b> are "
@@ -23717,6 +24600,7 @@ msgstr ""
 "the database connection settings in the file <b>/data/config.ini.php</b> are "
 "still correct"
 
+#. I18N: [you should check that:] ...
 #: site-unavailable.php:82
 msgid ""
 "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have "
@@ -23725,6 +24609,7 @@ msgstr ""
 "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have "
 "access permissions that allow the webserver to read them"
 
+#. I18N: [you should check that:] ...
 #: site-unavailable.php:83
 msgid ""
 "you can connect to the database using other applications, such as phpmyadmin"
@@ -23739,6 +24624,7 @@ msgstr ""
 "If you cannot resolve the problem yourself, you can ask for help on the "
 "forums at <a href=\"http://kiwitrees.net/forums/\">Kiwitrees.net</a>"
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: source.php:41
 #, php-format
 msgid ""
@@ -23756,6 +24642,7 @@ msgstr ""
 "This source has been deleted.  The deletion will need to be reviewed by a "
 "moderator."
 
+#. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: source.php:59
 #, php-format
 msgid ""
@@ -24083,6 +24970,7 @@ msgstr "gender"
 msgid "date periods"
 msgstr "date periods"
 
+#. I18N: from 1700 interval 50 years
 #: statistics.php:645 statistics.php:647 statistics.php:649 statistics.php:651
 #: statistics.php:653 statistics.php:655
 #, php-format
@@ -24167,14 +25055,17 @@ msgstr "age"
 msgid "Search trees"
 msgstr "Search trees"
 
+#. I18N: The local time on the server
 #: themes/_administration/header.php:119
 msgid "Server time"
 msgstr "Server time"
 
+#. I18N: The local time on the client/browser
 #: themes/_administration/header.php:122
 msgid "Client time"
 msgstr "Client time"
 
+#. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: themes/_administration/header.php:125
 msgid "UTC"
 msgstr "UTC"
@@ -24260,6 +25151,7 @@ msgstr "Widgets"
 msgid "Tools"
 msgstr "Tools"
 
+#. I18N: Name of a theme.
 #: themes/_administration/theme.php:33
 msgid "_administration"
 msgstr "_administration"
@@ -24290,78 +25182,97 @@ msgstr "Choose a page"
 msgid "Loading..."
 msgstr "Loading..."
 
+#. I18N: A colour scheme
 #: themes/colors/theme.php:54 themes/colors/theme.php:79
 msgid "Colors palette"
 msgstr "Colors palette"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:98
 msgid "Aqua Marine"
 msgstr "Aqua Marine"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:99
 msgid "Ash"
 msgstr "Ash"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:100
 msgid "Belgian Chocolate"
 msgstr "Belgian Chocolate"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:101
 msgid "Blue Lagoon"
 msgstr "Blue Lagoon"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:102
 msgid "Blue Marine"
 msgstr "Blue Marine"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:103
 msgid "Coffee and Cream"
 msgstr "Coffee and Cream"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:104
 msgid "Cold Day"
 msgstr "Cold Day"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:105
 msgid "Green Beam"
 msgstr "Green Beam"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:106
 msgid "Mediterranio"
 msgstr "Mediterranio"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:107
 msgid "Mercury"
 msgstr "Mercury"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:108
 msgid "Nocturnal"
 msgstr "Nocturnal"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:109
 msgid "Olivia"
 msgstr "Olivia"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:110
 msgid "Pink Plastic"
 msgstr "Pink Plastic"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:111
 msgid "Sage"
 msgstr "Sage"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:112
 msgid "Shiny Tomato"
 msgstr "Shiny Tomato"
 
+#. I18N: The name of a colour-scheme
 #: themes/colors/theme.php:113
 msgid "Teal Top"
 msgstr "Teal Top"
 
+#. I18N: Name of a theme.
 #: themes/colors/theme.php:128
 msgid "colors"
 msgstr "colors"
 
+#. I18N: Name of a theme.
 #: themes/foundation/theme.php:35
 msgid "new_kiwitrees"
 msgstr "new_kiwitrees"
@@ -24374,10 +25285,12 @@ msgstr "For technical support or genealogy questions, please contact"
 msgid "Open in full browser window"
 msgstr "Open in full browser window"
 
+#. I18N: Name of a theme.
 #: themes/webtrees/theme.php:37
 msgid "webtrees"
 msgstr "webtrees"
 
+#. I18N: Name of a theme.
 #: themes/xenea/theme.php:35
 msgid "xenea"
 msgstr "xenea"
@@ -24394,6 +25307,7 @@ msgstr "Day:"
 msgid "Year:"
 msgstr "Year:"
 
+#. I18N: an age indicator, which can be dragged around the screen
 #: timeline.php:258
 msgid "Show an age cursor?"
 msgstr "Show an age cursor?"
@@ -24681,6 +25595,7 @@ msgstr "He was buried"
 msgid "She was buried"
 msgstr "She was buried"
 
+#. I18N: Note the space at the end of the string
 #: modules_v3/ahnentafel_report/report.bak:394
 #: modules_v3/descendancy_report/report.bak:479
 msgid "Child of "

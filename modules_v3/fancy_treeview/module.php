@@ -44,12 +44,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module
 	public function getTitle() {
-		return /* WT_I18N: Name of the module */ WT_I18N::translate('Fancy Tree View');
+		return /* I18N: Name of the module */ WT_I18N::translate('Fancy Tree View');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* WT_I18N: Description of the module */ WT_I18N::translate('A Fancy overview of the descendants of one family(branch) in a narrative way');
+		return /* I18N: Description of the module */ WT_I18N::translate('A Fancy overview of the descendants of one family(branch) in a narrative way');
 	}
 
 	// Get module options
@@ -677,7 +677,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$controller=new WT_Controller_Page;
 		if($root_person && $root_person->canDisplayName()) {
 			$controller
-				->setPageTitle(/* WT_I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of %s', $root_person->getFullName()))
+				->setPageTitle(/* I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of %s', $root_person->getFullName()))
 				->pageHeader()
 				->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 				->addInlineJavascript('
@@ -1100,10 +1100,10 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		if($count > 1) {
 			if($i == 0) {
-				$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s', $wordcount2[$count-1]);
+				$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s', $wordcount2[$count-1]);
 				$html .= '. ';
 			}
-			$person->getSex() == 'M' ? $html .= '<br>' . /* WT_I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcount[$i]);
+			$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcount[$i]);
 		}
 		else {
 			$person->getSex() == 'M' ? $html .= '<br>' . WT_I18N::translate('He married') : $html .= '<br>' . WT_I18N::translate('She married');
@@ -1176,13 +1176,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
 			$html .= '<div class="children"><p>'.$person->getFullName().' ';
 					if($spouse && $spouse->canDisplayDetails()) {
-						$html .= /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
+						$html .= /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
 						$html .= WT_I18N::translate_c('Two parents/one child', 'had');
 					}
 					else {
 						$html .= WT_I18N::translate_c('One parent/one child', 'had');
 					}
-					$html .= ' ' . /* WT_I18N: 'no' is the number zero  */ WT_I18N::translate('no').' '.WT_I18N::translate('children').'.</p></div>';
+					$html .= ' ' . /* I18N: 'no' is the number zero  */ WT_I18N::translate('no').' '.WT_I18N::translate('children').'.</p></div>';
 		}
 		else {
 			$children = $family->getChildren();
@@ -1191,7 +1191,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					$html .= '<div class="children"><p>'.$person->getFullName().' ';
 					// needs multiple translations for the word 'had' to serve different languages.
 					if($spouse && $spouse->canDisplayDetails()) {
-						$html .= /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
+						$html .= /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName().' ';
 						if (count($children) > 1) {
 							$html .= WT_I18N::translate_c('Two parents/multiple children', 'had');
 						} else {
@@ -1205,12 +1205,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 							$html .= WT_I18N::translate_c('One parent/one child', 'had');
 						}
 					}
-					$html .= ' './* WT_I18N: %s is a number */ WT_I18N::plural('%s child', '%s children', count($children), count($children)).'.</p></div>';
+					$html .= ' './* I18N: %s is a number */ WT_I18N::plural('%s child', '%s children', count($children), count($children)).'.</p></div>';
 				}
 				else {
-					$html .= '<div class="children"><p>'. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('Children of ').$person->getFullName();
+					$html .= '<div class="children"><p>'. /* I18N: Note the space at the end of the string */ WT_I18N::translate('Children of ').$person->getFullName();
 					if($spouse && $spouse->canDisplayDetails()) {
-						$html .= ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
+						$html .= ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 						if (!$family->getMarriage()) {
 							// check relationship first (If a relationship is found the information of this parent is printed elsewhere on the page.)
 							if ($this->options('check_relationship')) {
@@ -1316,7 +1316,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$html .= $father->getFullName();
 			}
 			if ($father && $mother) {
-				$html .= ' ' . /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
+				$html .= ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 			}
 			if ($mother) {
 				$html .= $mother->getFullName();
@@ -1365,7 +1365,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$deathdata = true;
 
 			if($birthdata) {
-				$html .= ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
+				$html .= ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 				$person->getSex() == 'F' ? $html .= WT_I18N::translate_c('FEMALE', 'died') : $html .= WT_I18N::translate_c('MALE', 'died');
 			}
 			else {
@@ -1381,10 +1381,10 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			if ($birthdate->isOK() && $deathdate->isOK()) {
 				if (WT_Date::getAge($birthdate, $deathdate, 0) < 2) {
-					$html .= ' './* WT_I18N: %s is the age of death in days/months; %s is a string, e.g. at the age of 2 months */  WT_I18N::translate_c('age in days/months', 'at the age of %s', $ageOfdeath);
+					$html .= ' './* I18N: %s is the age of death in days/months; %s is a string, e.g. at the age of 2 months */  WT_I18N::translate_c('age in days/months', 'at the age of %s', $ageOfdeath);
 				}
 				else {
-					$html .= ' './* WT_I18N: %s is the age of death in years; %s is a number, e.g. at the age of 40 */  WT_I18N::translate_c('age in years', 'at the age of %s', $ageOfdeath);
+					$html .= ' './* I18N: %s is the age of death in years; %s is a number, e.g. at the age of 40 */  WT_I18N::translate_c('age in years', 'at the age of %s', $ageOfdeath);
 				}
 			}
 		}
@@ -1539,13 +1539,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			return ' '.$date->Display();
 		}
 		if($date->MinDate()->d > 0) {
-			return ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat dd-mm-yyyy', 'on ').$date->Display();
+			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat dd-mm-yyyy', 'on ').$date->Display();
 		}
 		if($date->MinDate()->m > 0) {
-			return ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat mmm yyyy', 'in ').$date->Display();
+			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat mmm yyyy', 'in ').$date->Display();
 		}
 		if($date->MinDate()->y > 0) {
-			return ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat yyyy', 'in ').$date->Display();
+			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat yyyy', 'in ').$date->Display();
 		}
 	}
 
@@ -1573,7 +1573,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 	private function printPlace($place) {
 		if($this->options('show_places') == true) {
 			$place = new WT_Place($place, WT_GED_ID);
-			$html = ' '. /* WT_I18N: Note the space at the end of the string */ WT_I18N::translate_c('before placesnames', 'in ');
+			$html = ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before placesnames', 'in ');
 			if	($this->options('use_gedcom_places') == true) {
 				$html .= $place->getShortName();
 			} else {

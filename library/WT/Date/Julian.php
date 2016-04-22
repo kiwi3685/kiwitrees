@@ -107,7 +107,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 			if ($this->new_old_style) {
 				return WT_I18N::translate('%s&nbsp;CE', WT_I18N::digits(sprintf('%d/%02d', $this->y - 1, $this->y % 100)));
 			} else {
-				return /* WT_I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era */
+				return /* I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era */
 					WT_I18N::translate('%s&nbsp;CE', WT_I18N::digits($this->y));
 			}
 		}
