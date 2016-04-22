@@ -100,7 +100,14 @@ class batch_update {
 									<div id="batch_update2" class="clearfloat">
 										<a href="' . $object->getHtmlUrl() . '"><span class="bu_name">' . $object->getFullName() . '</span></a>' .
 										$this->PLUGIN->getActionPreview($this->curr_xref, $this->record) . '
-										<p>' . implode('' , $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'</p>
+										<p>';
+											if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+												$html .= '<p class="help_content warning">' .
+													WT_I18N::translate('You should create a backup GEDCOM file before using the Update all option.') .
+												'</p>';
+											}
+											$html .= implode('' , $this->PLUGIN->getActionButtons($this->curr_xref, $this->record)) . '
+										</p>
 									</div>
 								';
 							} else {
