@@ -668,16 +668,6 @@ case 'MEMORY_LIMIT':
 		WT_I18N::translate('If you leave this setting empty, the default value will be used.');
 	break;
 
-case 'META_DESCRIPTION':
-	$title = WT_I18N::translate('Description META tag');
-	$text = WT_I18N::translate('The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database.');
-	break;
-
-case 'META_TITLE':
-	$title = WT_I18N::translate('Add to TITLE header tag');
-	$text = WT_I18N::translate('This text will be appended to each page title.  It will be shown in the browser\'s title bar, bookmarks, etc.');
-	break;
-
 case 'NOTE_ID_PREFIX':
 	$title = WT_I18N::translate('Note ID prefix');
 	$text = WT_I18N::translate('When a new note record is added online in kiwitrees, a new ID for that note will be generated automatically. The note ID will have this prefix.');

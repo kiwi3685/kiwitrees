@@ -479,6 +479,7 @@ table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
 [dir=rtl] #file-options th,[dir=rtl] #privacy th,[dir=rtl] #config-media th,[dir=rtl] #layout-options th,[dir=rtl] #hide-show th,[dir=rtl] #edit-options th {text-align:right;}
 #layout-options table#relatives {margin:0 50px;}
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
+#file-options input[name="NEW_META_DESCRIPTION"] {width: 95%;}
 textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 .current_theme, .theme_box {float:left; height: 210px; padding: 10px; text-align:center;}
 #theme table {max-width:none;}

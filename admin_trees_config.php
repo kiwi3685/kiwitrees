@@ -460,20 +460,24 @@ $controller
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
+						<?php echo WT_I18N::translate('Add to TITLE header tag'); ?>
 					</td>
 					<td>
 						<input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" size="40" maxlength="255">
+						<p class="help_content">
+							<?php echo WT_I18N::translate('This text will be appended to each page title.  It will be shown in the browser\'s title bar, bookmarks, etc.');	?>
+						</p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
+						<?php echo WT_I18N::translate('Description META tag'); ?>
 					</td>
 					<td>
 						<input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" size="40" maxlength="255">
-						<br>
-						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?>
+						<p class="help_content">
+							<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active family tree.'); ?>
+						</p>
 					</td>
 				</tr>
 			</table>
