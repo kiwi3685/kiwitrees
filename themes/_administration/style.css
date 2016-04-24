@@ -726,6 +726,7 @@ table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:s
 [dir=rtl] #faq_module2 th, [dir=rtl] #faq_module2 td {text-align:right;}
 #faq_items select {height: 34px; min-width: 175px;}
 #faq_items button {color: initial;}
+table#faq_module  textarea {font-size: 16px;}
 
 table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
 #faq_edit tr {border-bottom:2px solid;}
@@ -890,6 +891,10 @@ table#story_table {width:100%}
 #story_table td:first-of-type {text-align:center; width:20px;}
 #story_table td:first-of-type input {font-size:90%; width:20px;}
 
+/* CKEditor styles */
+.cke_editable {
+	font-size: 16px;
+}
 
 /* Autocomplete styles */
 .ui-autocomplete-input {background-color:#eee8aa;}

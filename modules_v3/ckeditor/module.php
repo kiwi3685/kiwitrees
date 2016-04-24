@@ -50,6 +50,7 @@ class ckeditor_WT_Module extends WT_Module {
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
+					contentsCss: "'.WT_MODULES_DIR.'ckeditor/kt_ckeditor.css",
 					skin : "moono",
 					allowedContent: true,
 					width: "100%",

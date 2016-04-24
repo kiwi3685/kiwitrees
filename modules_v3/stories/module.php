@@ -157,10 +157,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		}
 		if (WT_USER_GEDCOM_ADMIN) { // change to WT_USER_CAN_EDIT to allow editors to create first story.
 			$html .= '
-				<p style="border-bottom:thin solid #aaa; margin:-10px; padding-bottom:2px;">
+				<div style="border-bottom:thin solid #aaa; margin:-10px; padding-bottom:2px;">
 					<span><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'"><i style="margin: 0 3px 0 10px;" class="icon-button_addnote">&nbsp;</i>'. WT_I18N::translate('Add story').'</a></span>
 					<span><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_config&amp;xref='.$controller->record->getXref().'"><i style="margin: 0 3px 0 10px;" class="icon-button_linknote">&nbsp;</i>'. WT_I18N::translate('Link this individual to an existing story ').'</a></span>
-				</p>
+				</div>
 			';
 		}
 		if ($count_stories > 1) {
@@ -183,15 +183,15 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					foreach ($block_ids as $block_id) {
 						$languages=get_block_setting($block_id, 'languages');
 						if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+							if (WT_USER_CAN_EDIT) {
+								$html .= '
+									<div style="margin:16px 0 0 0;">
+										<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
+									</div>';
+							}
 							$html .= '
 								<div id="stories_'.$block_id.'" class="story">
 									<h1>'.get_block_setting($block_id, 'title').'</h1>';
-									if (WT_USER_CAN_EDIT) {
-										$html .= '
-											<p style="margin:-36px 0 0 0;">
-												<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
-											</p>';
-									}
 									$html .= '
 										<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>
 										<hr class="stories_divider">
@@ -204,16 +204,16 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($block_ids as $block_id) {
 				$languages=get_block_setting($block_id, 'languages');
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
+					if (WT_USER_CAN_EDIT) {
+						$html .= '
+							<div style="margin:16px 0 0 0;">
+								<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
+							</div>
+						';
+					}
 					$html .= '
 						<div id="stories_'.$block_id.'" class="story">
 							<h1>'.get_block_setting($block_id, 'title').'</h1>';
-							if (WT_USER_CAN_EDIT) {
-								$html .= '
-									<p style="margin:-36px 0 0 0;">
-										<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
-									</p>
-								';
-							}
 							$html .= '
 								<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>
 						</div>';
