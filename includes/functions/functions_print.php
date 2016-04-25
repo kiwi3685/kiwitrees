@@ -278,7 +278,16 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 		$header_links .= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
 	}
 	if (!empty($META_DESCRIPTION)) {
-		$header_links .= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '">';
+		global $controller, $ctype, $WT_TREE;
+		switch ($ctype) {
+			case '':
+				$header_links .= '<meta name="description" content="' . htmlspecialchars(strip_tags($controller->getPageTitle() . ' - ' . $WT_TREE->tree_title_html)) . '">';
+				break;
+			case 'gedcom':
+			default:
+				$header_links .= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '">';
+				break;
+		}
 	}
 	$header_links .= '<meta name="robots" content="'. $META_ROBOTS. '">';
 	if (!empty($META_GENERATOR)) {
