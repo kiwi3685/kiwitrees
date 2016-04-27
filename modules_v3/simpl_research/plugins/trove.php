@@ -7,7 +7,15 @@ if (!defined('WT_WEBTREES')) {
 
 class trove_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Trove (Australia)';
+		return 'Trove';
+	}
+
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'AUS';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {

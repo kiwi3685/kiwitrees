@@ -10,15 +10,23 @@ class wikipedia_person_plugin extends research_base_plugin {
 		return 'Wikipedia-Personensuche';  // uses German wikipedia
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {		
+	static function getPaySymbol() {
+		return true;
+	}
+
+	static function getSearchArea() {
+		return 'DEU';
+	}
+
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 'https://toolserver.org/~apper/pd/person/' . $givn . '_' . $surname;
 	}
-	
+
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
-	
+
 	static function encode_plus() {
-		return false;	
+		return false;
 	}
 }

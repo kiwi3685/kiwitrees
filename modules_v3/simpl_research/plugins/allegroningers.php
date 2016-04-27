@@ -10,6 +10,14 @@ class allegroningers_plugin extends research_base_plugin {
 		return 'Alle Groningers';
 	}
 
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'NLD';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 'http://www.allegroningers.nl/personen/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/persoon_rol_s_0/0/q/persoon_rol_s_1/0';
 

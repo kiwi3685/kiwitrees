@@ -10,6 +10,14 @@ class dsrotterdam_plugin extends research_base_plugin {
 		return 'Digitale Stamboom Rotterdam';
 	}
 
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'NLD';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 'http://rotterdam.digitalestamboom.nl/search.aspx?lang=nl&verder=' . $givn . urlencode('||') . $prefix . urlencode('|') . $surn;
 	}
@@ -17,8 +25,8 @@ class dsrotterdam_plugin extends research_base_plugin {
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
-	
+
 	static function encode_plus() {
-		return true;	
+		return true;
 	}
 }

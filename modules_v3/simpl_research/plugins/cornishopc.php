@@ -10,15 +10,23 @@ class cornishopc_plugin extends research_base_plugin {
 		return 'Cornish OPC';
 	}
 
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'GBR';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.cornwall-opc-database.org/search-database/person-search/index.php?year_from=&year_to=&parish=&forename1=' . $first . '&surname1=' . $surname . '&t=person&soundex=1&nearby=1&bf=Search';		                
+		return $link = 'http://www.cornwall-opc-database.org/search-database/person-search/index.php?year_from=&year_to=&parish=&forename1=' . $first . '&surname1=' . $surname . '&t=person&soundex=1&nearby=1&bf=Search';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
-	
+
 	static function encode_plus() {
-		return false;	
+		return false;
 	}
 }

@@ -10,6 +10,14 @@ class myheritage_plugin extends research_base_plugin {
 		return 'MyHeritage';
 	}
 
+	static function getPaySymbol() {
+		return true;
+	}
+
+	static function getSearchArea() {
+		return 'INT';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 'http://www.myheritage.com/research?formId=master&formMode=&action=query&exactSearch=0&qname=Name+fn.' . $givn . '+ln.' . $surname;
 	}
@@ -17,8 +25,8 @@ class myheritage_plugin extends research_base_plugin {
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
-	
+
 	static function encode_plus() {
-		return false;	
+		return false;
 	}
 }

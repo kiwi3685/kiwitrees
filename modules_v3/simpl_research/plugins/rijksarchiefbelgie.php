@@ -10,6 +10,14 @@ class rijksarchiefbelgie_plugin extends research_base_plugin {
 		return 'Rijksarchief België';
 	}
 
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'BEL';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = '#';
 	}
@@ -26,8 +34,8 @@ class rijksarchiefbelgie_plugin extends research_base_plugin {
 			)
 		);
 	}
-	
+
 	static function encode_plus() {
-		return false;	
+		return false;
 	}
 }

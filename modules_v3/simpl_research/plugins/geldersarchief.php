@@ -10,6 +10,14 @@ class geldersarchief_plugin extends research_base_plugin {
 		return 'Gelders Archief';
 	}
 
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'NLD';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 	'http://www.geldersarchief.nl/zoeken/?mizk_alle=' . $givn . '+' . $surn . '&mizig=128&miview=tbl';
 	}

@@ -10,6 +10,14 @@ class deceased_online_plugin extends research_base_plugin {
 		return 'Deceased Online';
 	}
 
+	static function getPaySymbol() {
+		return true;
+	}
+
+	static function getSearchArea() {
+		return 'GBR';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 'https://www.deceasedonline.com/servlet/GSDOSearch?' .'GSDOInptSName=' .$surname .'&GSDOInptFName=' .$first;
 	}
@@ -19,6 +27,6 @@ class deceased_online_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return false;	
+		return false;
 	}
 }

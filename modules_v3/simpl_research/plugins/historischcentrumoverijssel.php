@@ -10,6 +10,14 @@ class historischcentrumoverijssel_plugin extends research_base_plugin {
 		return 'Historisch Centrum Overijssel';
 	}
 
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'NLD';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 'http://www.historischcentrumoverijssel.nl/zoeken-in-de-collecties/archieven?mivast=141&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=' . $surn . '&mip1=' . $givn;
 	}

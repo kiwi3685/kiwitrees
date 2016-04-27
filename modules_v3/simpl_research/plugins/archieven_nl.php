@@ -10,6 +10,14 @@ class archieven_nl_plugin extends research_base_plugin {
 		return 'Archieven.nl';
 	}
 
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'NLD';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return $link = 'http://www.archieven.nl/nl/zoeken?mivast=0&miadt=0&mizig=310&miview=tbl&milang=nl&micols=1&mires=0&mip3=' . $surn . '&mip1=' . $givn;
 	}

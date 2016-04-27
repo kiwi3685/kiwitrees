@@ -10,6 +10,14 @@ class ancestry_plugin extends research_base_plugin {
 		return 'Ancestry';
 	}
 
+	static function getPaySymbol() {
+		return true;
+	}
+
+	static function getSearchArea() {
+		return 'INT';
+	}
+
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = '#';
 	}

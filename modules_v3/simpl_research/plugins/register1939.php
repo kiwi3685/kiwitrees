@@ -7,7 +7,15 @@ if (!defined('WT_WEBTREES')) {
 
 class register1939_plugin extends research_base_plugin {
 	static function getName() {
-		return '1939 Register (England & Wales)';
+		return '1939 Register';
+	}
+
+	static function getPaySymbol() {
+		return true;
+	}
+
+	static function getSearchArea() {
+		return 'GBR';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {

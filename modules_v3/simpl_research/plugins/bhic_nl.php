@@ -7,7 +7,15 @@ if (!defined('WT_WEBTREES')) {
 
 class bhic_nl_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Brabants Historisch Informatiecentrum';
+		return 'Brabants Historisch Info.';
+	}
+
+	static function getPaySymbol() {
+		return false;
+	}
+
+	static function getSearchArea() {
+		return 'NLD';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {

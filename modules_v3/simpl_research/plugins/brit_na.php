@@ -10,6 +10,14 @@ class brit_na_plugin extends research_base_plugin {
 		return 'British Newspaper Archive';
 	}
 
+	static function getPaySymbol() {
+		return true;
+	}
+
+	static function getSearchArea() {
+		return 'GBR';
+	}
+
 	static function create_link($fullname, $givn, $first, $prefix, $surn, $surname) {
 		return $link = 'http://www.britishnewspaperarchive.co.uk/search/results?basicsearch=%22' . $first . '%20' . $surname				. '%22';
 	}
@@ -17,8 +25,8 @@ class brit_na_plugin extends research_base_plugin {
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
-	
+
 	static function encode_plus() {
-		return false;	
+		return false;
 	}
 }
