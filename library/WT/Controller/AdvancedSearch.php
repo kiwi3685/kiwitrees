@@ -39,7 +39,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		parent::__construct();
 
 		$this->setPageTitle(WT_I18N::translate('Advanced search'));
-		
+
 		if (empty($_REQUEST['action'])) {
 			$this->action="advanced";
 		}
@@ -131,18 +131,18 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				$ofields[]=$fact;
 			}
 		}
-		$fields=array();
+		$fields = array();
 		foreach ($ofields as $field) {
-			$fields[$field]=WT_Gedcom_Tag::GetLabel($field);
+			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
 		}
 		uksort($fields, array('WT_Controller_AdvancedSearch', 'tagSort'));
 		return $fields;
 	}
 
 	public static function tagSort($x, $y) {
-		list($x1)=explode(':', $x.':');
-		list($y1)=explode(':', $y.':');
-		$tmp=utf8_strcasecmp(WT_Gedcom_Tag::getLabel($x1), WT_Gedcom_Tag::getLabel($y1));
+		list($x1) = explode(':', $x.':');
+		list($y1) = explode(':', $y.':');
+		$tmp = utf8_strcasecmp(WT_Gedcom_Tag::getLabel($x1), WT_Gedcom_Tag::getLabel($y1));
 		if ($tmp) {
 			return $tmp;
 		} else {

@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Gedcom_Tag {
 	// All tags that webtrees knows how to translate - including special/internal tags
-	private static $ALL_TAGS=array(
+	private static $ALL_TAGS = array(
 		'ABBR', 'ADDR', 'ADR1', 'ADR2', 'ADOP', 'ADOP:DATE', 'ADOP:PLAC',
 		'AFN', 'AGE', 'AGNC', 'ALIA', 'ANCE', 'ANCI', 'ANUL', 'ASSO', 'AUTH', 'BAPL',
 		'BAPL:DATE', 'BAPL:PLAC', 'BAPM', 'BAPM:DATE', 'BAPM:PLAC', 'BARM',
@@ -46,7 +46,7 @@ class WT_Gedcom_Tag {
 		'EVEN:PLAC', 'FACT', 'FAM', 'FAMC', 'FAMF', 'FAMS', 'FAMS:CENS:DATE', 'FAMS:CENS:PLAC',
 		'FAMS:DIV:DATE', 'FAMS:MARR:DATE', 'FAMS:MARR:PLAC', 'FAMS:NOTE',
 		'FAX', 'FCOM', 'FCOM:DATE',
-		'FCOM:PLAC', 'FILE', 'FONE', 'FORM', 'GEDC', 'GIVN', 'GRAD',
+		'FCOM:PLAC', 'FILE', 'FONE', 'FORM', 'GEDC', 'GIVN', 'GRAD', 'GRAD:DATE', 'GRAD:PLAC',
 		'HEAD', 'HUSB', 'IDNO', 'IMMI', 'IMMI:DATE', 'IMMI:PLAC', 'INDI', 'INFL',
 		'LANG', 'LATI', 'LEGA', 'LONG', 'MAP', 'MARB', 'MARB:DATE', 'MARB:PLAC',
 		'MARC', 'MARL', 'MARR', 'MARR:DATE', 'MARR:PLAC',
@@ -232,6 +232,8 @@ class WT_Gedcom_Tag {
 		case 'GEDC': return /* I18N: gedcom tag GEDC */ WT_I18N::translate('GEDCOM file');
 		case 'GIVN': return /* I18N: gedcom tag GIVN */ WT_I18N::translate('Given names');
 		case 'GRAD': return /* I18N: gedcom tag GRAD */ WT_I18N::translate('Graduation');
+		case 'GRAD:DATE': return WT_I18N::translate('Date of Graduation');
+		case 'GRAD:PLAC': return WT_I18N::translate('Place of Graduation');
 		case 'HEAD': return /* I18N: gedcom tag HEAD */ WT_I18N::translate('Header');
 		case 'HUSB': return /* I18N: gedcom tag HUSB */ WT_I18N::translate('Husband');
 		case 'IDNO': return /* I18N: gedcom tag IDNO */ WT_I18N::translate('Identification number');
@@ -882,7 +884,7 @@ class WT_Gedcom_Tag {
 		uasort($facts, 'utf8_strcasecmp');
 		return $facts;
 	}
-	
+
 	// Get a list of reference facts that will be displayed in the "Extra information" sidebar module, and at the same time excluded from the personal_facts module
 	public static function getReferenceFacts() {
 		return array('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID', 'SSN');
