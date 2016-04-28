@@ -109,7 +109,8 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	// Top row left
 	'<div id="header">',
-		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>';
+		WT_TREE_TITLE, 
+		'<span class="subtitle" dir="auto">' . htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'subtitle')) . '</span>';
 
 		// Top row right
 		echo '<div class="header_search">

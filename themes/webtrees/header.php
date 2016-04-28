@@ -100,7 +100,10 @@ if ($view!='simple') {
 	global $WT_IMAGES;
 	echo
 		'<div id="header">',
-			'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
+			'<div class="title" dir="auto">',
+				WT_TREE_TITLE, '
+				<span class="subtitle" dir="auto">' . htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'subtitle')) . '</span>
+			</div>',
 			'<ul id="extra-menu" class="makeMenu">';
 				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 echo				'<li>

@@ -82,8 +82,10 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* Title Line    */
 #header {height:49px;}
-span.title {float:left;font-size:24px; margin:16px 0 3px 12px;}
-[dir=rtl] span.title {float:right;margin:16px 12px 3px 3px;}
+#header span.treetitle {float:left;font-size:24px; margin:16px 12px; 0}
+[dir=rtl] #header span.treetitle {float:right;}
+#header span.subtitle {float: left; font-style: italic; font-weight: 600; margin: 30px 0 0;}
+[dir=rtl] #header span.subtitle {float:right;}
 
 /* Options Menu  */
 .makeMenu {float:right;margin:10px;}

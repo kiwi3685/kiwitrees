@@ -313,6 +313,12 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 
 .title {display:inline;float:left;font-size:36px;margin:10px;}
 [dir=rtl] .title {float:right;}
+.subtitle {
+	font-size: .4em;
+	font-style: italic;
+	font-weight: 600;
+}
+
 .header_search {clear:both; float:right;margin:-30px 10px;}
 [dir=rtl] .header_search {float:left;}
 #topMenu #nav-select {display: none;}

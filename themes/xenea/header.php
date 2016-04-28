@@ -99,17 +99,17 @@ echo '
 
 if ($view!='simple') { // Use "simple" headers for popup windows
 	echo
-	'<div id="header">',
-		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>',
-		'<div class="hsearch">';
-echo
-			'<form action="search.php" method="post">',
-			'<input type="hidden" name="action" value="general">',
-			'<input type="hidden" name="topsearch" value="yes">',
-			'<input type="search" name="query" size="12" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-			'<input type="submit" name="search" value="&gt;">',
-			'</form>',
-		'</div>',
+	'<div id="header">
+		<span class="title" dir="auto">', WT_TREE_TITLE, '</span>
+		<span class="subtitle" dir="auto">' . htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'subtitle')) . '</span>
+		<div class="hsearch">
+			<form action="search.php" method="post">
+				<input type="hidden" name="action" value="general">
+				<input type="hidden" name="topsearch" value="yes">
+				<input type="search" name="query" size="12" placeholder="', WT_I18N::translate('Search'), '" dir="auto">
+				<input type="submit" name="search" value="&gt;">
+			</form>
+		</div>',
 	'</div>', // <div id="header">
 	'<div id="optionsmenu">',
 		'<ul class="makeMenu">';
