@@ -187,6 +187,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 				foreach ($this->getPluginList() as $area => $plugins) {
 					$enabled_plugins		 = $this->countEnabledPlugins($plugins, $RESEARCH_PLUGINS);
 					$total_enabled_plugins	 = $total_enabled_plugins + $enabled_plugins;
+					ksort($plugins);
 					if ($enabled_plugins > 0) {
 						$html .= '
 						<li class="research-area">
@@ -271,22 +272,20 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 	}
 
 	protected function getPluginList() {
-		$plugins 	= array();
-		$dir	 	= dirname(__FILE__).'/plugins/';
-		$dir_handle = opendir($dir);
+		$plugins 	 = array();
+		$dir	 	 = dirname(__FILE__).'/plugins/';
+		$dir_handle  = opendir($dir);
 		while ($file = readdir($dir_handle)) {
 			if (substr($file, -4)=='.php') {
 				require dirname(__FILE__) . '/plugins/' . $file;
 				$label	= basename($file, ".php");
-				$class	= basename($file, '.php').'_plugin';
+				$class	= $label . '_plugin';
 				$plugin	= new $class;
 				$area = self::getSearchAreaName($plugin->getSearchArea());
 				$plugins[$area][$label] = $plugin;
 			}
 		}
-
 		closedir($dir_handle);
-		ksort($plugins);
 		$int		 = WT_I18N::translate("International");
 		$pluginlist	 = array_merge(array($int => $plugins[$int]), $plugins);
 		return $pluginlist;
