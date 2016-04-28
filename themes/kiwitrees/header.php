@@ -72,7 +72,7 @@ $this
 
 		jQuery("textarea").autosize();
 
-		jQuery("#bigtext span").bigText({
+		jQuery("#bigtext span.treetitle").bigText({
 			fontSizeFactor: 1,
 		    maximumFontSize: 40,
 		    limitingDimension: "both",
@@ -120,6 +120,7 @@ if ($view!='simple') {
 		<div id="header">
 			<div id="bigtext" class="title" dir="auto">',
 				WT_TREE_TITLE, '
+				<span class="subtitle" dir="auto">' . htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'subtitle')) . '</span>
 			</div>
 			<div class="header_search">
 				<form action="search.php" method="post">

@@ -52,7 +52,7 @@ class WT_Tree {
 		$this->tree_name_url  = rawurlencode($tree_name);
 		$this->tree_name_html = htmlspecialchars($tree_name);
 		$this->tree_title     = $tree_title;
-		$this->tree_title_html= '<span dir="auto">'.htmlspecialchars($tree_title).'</span>';
+		$this->tree_title_html= '<span class="treetitle" dir="auto">'.htmlspecialchars($tree_title).'</span>';
 		$this->imported       = $imported;
 	}
 

@@ -343,13 +343,19 @@ textarea:required:invalid {
 
 /* ======= Header styles ========== */
 #header {
-	height: 50px;
+	height: 65px;
 }
 
 .title {
-	margin: 0 10px;
+	margin: 10px;
 	font-size: 40px;
 	position: absolute;
+}
+
+.subtitle {
+	font-size: .4em;
+	font-style: italic;
+	font-weight: 600;
 }
 
 .header_search {
@@ -536,7 +542,7 @@ textarea:required:invalid {
 	clear: both;
 	font-size: 14px;
 	position: relative;
-	top: 110px;
+	top: 125px;
 	z-index: 0;
 	overflow: hidden;
 	padding: 0;
@@ -6487,6 +6493,10 @@ textarea#NOTE {
  	#header #extra-menu, #header .header_search {
  		float:none;
  	}
+
+	#content {
+		top: 10px;
+	}
 
 	#home-page #index_main_blocks,
 	#home-page #index_small_blocks > div {

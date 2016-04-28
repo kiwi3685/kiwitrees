@@ -195,6 +195,9 @@ case 'update':
 	if (WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE)) {
 		set_gedcom_setting(WT_GED_ID, 'title',                        WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE));
 	}
+	if (WT_Filter::post('gedcom_subtitle', WT_REGEX_UNSAFE)) {
+		set_gedcom_setting(WT_GED_ID, 'subtitle',                        WT_Filter::post('gedcom_subtitle', WT_REGEX_UNSAFE));
+	}
 
 	// Only accept valid folders for NEW_MEDIA_DIRECTORY
 	$NEW_MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', WT_Filter::post('NEW_MEDIA_DIRECTORY') . '/');
@@ -263,6 +266,14 @@ $controller
 					</td>
 					<td>
 						<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="50" maxlength="255">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Family tree subtitle'); ?>
+					</td>
+					<td>
+						<input type="text" name="gedcom_subtitle" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'subtitle')); ?>" size="50" maxlength="255">
 					</td>
 				</tr>
 				<tr>
