@@ -105,6 +105,7 @@ case 'site_setting':
 	case 'MAIL_FORMAT':
 	case 'WELCOME_TEXT_CUST_HEAD':
 	case 'SHOW_REGISTER_CAUTION':
+	case 'MAINTENANCE':
 		$value=(int)$value;
 		break;
 	case 'WELCOME_TEXT_AUTH_MODE_4':

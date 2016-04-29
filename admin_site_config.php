@@ -106,6 +106,19 @@ if (WT_Filter::post('action') == 'languages') {
 					<td><?php echo WT_I18N::translate('Website URL'), help_link('SERVER_URL'); ?></td>
 					<td><?php echo select_edit_control_inline('site_setting-SERVER_URL', array(WT_SERVER_NAME.WT_SCRIPT_PATH=>WT_SERVER_NAME.WT_SCRIPT_PATH), '', WT_Site::preference('SERVER_URL'), $controller); ?></td>
 				</tr>
+				<tr>
+					<td>
+						<?php echo WT_I18N::translate('Maintenance'); ?>
+					</td>
+					<td>
+						<?php echo edit_field_yes_no_inline('site_setting-MAINTENANCE', WT_Site::preference('MAINTENANCE'), $controller); ?>
+						<div class="help_text">
+							<span class="help_content">
+								<?php echo WT_I18N::translate('Set this to <b>yes</b> to temporarily prevent anyone <u>except the site administrator</u> from accessing your site.'); ?>
+							</span>
+						</div>
+					</td>
+				</tr>
 			</table>
 		</div>
 		<div id="mail">
@@ -186,13 +199,13 @@ if (WT_Filter::post('action') == 'languages') {
 			</table>
 		</div>
 		<div id="lang">
-			<h2>
-				<?php echo WT_I18N::translate('Select the languages your site will use'); ?>
-			</h2>
 			<h3>
+				<?php echo WT_I18N::translate('Select the languages your site will use'); ?>
+			</h3>
+			<h4>
 				<?php echo WT_I18N::translate('Select all'); ?>
 				<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
-			</h3>
+			</h4>
 			<form method="post">
 				<input type="hidden" name="action" value="languages">
 				<?php

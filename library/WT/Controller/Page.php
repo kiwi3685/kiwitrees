@@ -130,6 +130,12 @@ class WT_Controller_Page extends WT_Controller_Base {
 	public function pageHeader() {
 		// Import global variables into the local scope, for the theme's header.php
 		global $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $headerfile, $view;
+		$MAINTENANCE = WT_Site::preference('MAINTENANCE');
+		// Maintenance mode
+		if ($MAINTENANCE && !WT_USER_IS_ADMIN) {
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-maintenance.php');
+			exit;
+		}
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
