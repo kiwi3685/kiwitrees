@@ -415,11 +415,6 @@ case 'ADVANCED_PLAC_FACTS':
 	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets.');
 	break;
 
-case 'ALLOW_CHANGE_GEDCOM':
-	$title = WT_I18N::translate('Show list of family trees');
-	$text = /* I18N: Help text for the “Show list of family trees” site configuration setting */ WT_I18N::translate('For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.');
-	break;
-
 case 'CALENDAR_FORMAT':
 	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->Display(false, null, array());
 	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display(false, null, array());
@@ -558,20 +553,6 @@ case 'HIDE_LIVE_PEOPLE':
 		$text .= '</p>';
         break;
 
-case 'INDEX_DIRECTORY':
-	$title = WT_I18N::translate('Data folder');
-	$text =
-		'<p>'.
-		/* I18N: Help text for the "Data folder" site configuration setting */ WT_I18N::translate('This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.').
-		'</p><p>'.
-		/* I18N: “Apache” is a software program. */ WT_I18N::translate('To protect this private data, kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.').
-		'</p><p>'.
-		WT_I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder.').
-		'</p><p>'.
-		WT_I18N::translate('The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) or relative to the installation folder (e.g. ../../kiwitrees_data/).').
-		'</p>';
-	break;
-
 case 'INDI_FACTS_ADD':
 	$title = WT_I18N::translate('All individual facts');
 	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list.');
@@ -597,11 +578,6 @@ case 'LANGUAGE':
 	$text = WT_I18N::translate('If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.');
 	break;
 
-case 'LOGIN_URL':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Login URL');
-	$text = /* I18N: Help text for the “Login URL” site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/kiwitrees/login.php .');
-	break;
-
 case 'MAX_ALIVE_AGE':
 	$title = WT_I18N::translate('Age at which to assume a person is dead');
 	$text = WT_I18N::translate('If this person has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be "alive".  Children\'s birth dates are considered to be such events for this purpose.');
@@ -610,23 +586,6 @@ case 'MAX_ALIVE_AGE':
 case 'MAX_DESCENDANCY_GENERATIONS':
 	$title = WT_I18N::translate('Maximum descendancy generations');
 	$text = WT_I18N::translate('Set the maximum number of generations to display on Descendancy charts.');
-	break;
-
-case 'MAX_EXECUTION_TIME':
-	// Find the default value for max_execution_time
-	ini_restore('max_execution_time');
-	$dflt_cpu=ini_get('max_execution_time');
-	$title = WT_I18N::translate('PHP time limit');
-	$text =
-		WT_I18N::plural(
-			'By default, your server allows scripts to run for %s second.',
-			'By default, your server allows scripts to run for %s seconds.',
-			$dflt_cpu, $dflt_cpu
-		).
-		' '.
-		WT_I18N::translate('You can request a higher or lower limit, although the server may ignore this request.').
-		' '.
-		WT_I18N::translate('If you leave this setting empty, the default value will be used.');
 	break;
 
 case 'MAX_PEDIGREE_GENERATIONS':
@@ -654,18 +613,6 @@ case 'MEDIA_ID_PREFIX':
 case 'MEDIA_UPLOAD':
 	$title = WT_I18N::translate('Who can upload new media files?');
 	$text = WT_I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.');
-	break;
-
-case 'MEMORY_LIMIT':
-	// Find the default value for max_execution_time
-	ini_restore('memory_limit');
-	$dflt_mem=ini_get('memory_limit');
-	$title = WT_I18N::translate('Memory limit');
-	$text =  /* I18N: %s is an amount of memory, such as 32MB */ WT_I18N::translate('By default, your server allows scripts to use %s of memory.', $dflt_mem).
-		' '.
-		WT_I18N::translate('You can request a higher or lower limit, although the server may ignore this request.').
-		' '.
-		WT_I18N::translate('If you leave this setting empty, the default value will be used.');
 	break;
 
 case 'NOTE_ID_PREFIX':
@@ -696,61 +643,6 @@ case 'RELATIONSHIP_PATH_LENGTH':
 		WT_I18N::translate('For example, if you specify a path length of 2, the person will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).').
 		'<br/><br/>'.
 		WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users.');
-	break;
-
-case 'SESSION_TIME':
-	$title/* I18N: A site configuration setting */ =WT_I18N::translate('Session timeout');
-	$text = /* I18N: Help text for the “Session timeout” site configuration setting */ WT_I18N::translate('The time in seconds that a kiwitrees session remains active before requiring a login.  The default is 7200, which is 2 hours.');
-	break;
-
-case 'SMTP_ACTIVE':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Messages');
-	$text = /* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('Kiwitrees needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.');
-	break;
-
-case 'MAIL_FORMAT':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Send mail in HTML format');
-	$text = /* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('By default kiwitrees sends emails in plain text format. Setting this option to \'yes\' will change that to the multipart format. This allows the use of HTML formatting, but also includes a plain text version for recipients that do not allow HTML formatted emails.');
-	break;
-
-case 'SMTP_AUTH_PASS':
-	$title = WT_I18N::translate('Password');
-	$text = WT_I18N::translate('The password required for authentication with the SMTP server.');
-	break;
-
-case 'SMTP_AUTH_USER':
-	$title = WT_I18N::translate('Username');
-	$text = WT_I18N::translate('The user name required for authentication with the SMTP server.');
-	break;
-
-case 'SMTP_AUTH':
-	$title = WT_I18N::translate('Use password');
-	$text = /* I18N: Help text for the “Use password” site configuration setting */ WT_I18N::translate('Most SMTP servers require a password.');
-	break;
-
-case 'SMTP_FROM_NAME':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Sender name');
-	$text = /* I18N: Help text for the “Sender name” site configuration setting */ WT_I18N::translate('This name is used in the “From” field, when sending automatic emails from this server. It must be a valid email address.');
-	break;
-
-case 'SMTP_HELO':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Sending server name');
-	$text = /* I18N: Help text for the “Sending server name” site configuration setting */ WT_I18N::translate('Many mail servers require that the sending server identifies itself correctly, using a valid domain name.');
-	break;
-
-case 'SMTP_HOST':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Server name');
-	$text = /* I18N: Help text for the “Server name” site configuration setting */ WT_I18N::translate('This is the name of the SMTP server. \'localhost\' means that the mail service is running on the same computer as your web server.');
-	break;
-
-case 'SMTP_PORT':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Port number');
-	$text = /* I18N: Help text for the "Port number" site configuration setting */ WT_I18N::translate('By default, SMTP works on port 25.');
-	break;
-
-case 'SMTP_SSL':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Secure connection');
-	$text = /* I18N: Help text for the "Secure connection" site configuration setting */ WT_I18N::translate('Most servers do not use secure connections.');
 	break;
 
 case 'kiwitrees_EMAIL':
@@ -793,19 +685,9 @@ case 'REPO_ID_PREFIX':
 	$text = WT_I18N::translate('When a new repository record is added online in kiwitrees, a new ID for that repository will be generated automatically. The repository ID will have this prefix.');
 	break;
 
-case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
-	$title = WT_I18N::translate('Require an administrator to approve new user registrations');
-	$text = WT_I18N::translate('If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the <b>User approved by Admin</b> checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention.');
-	break;
-
 case 'REQUIRE_AUTHENTICATION':
 	$title = WT_I18N::translate('Require visitor authentication');
 	$text = WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.');
-	break;
-
-case 'SERVER_URL':
-	$title = WT_I18N::translate('Website URL');
-	$text = /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
 	break;
 
 case 'SHOW_COUNTER':
@@ -867,11 +749,6 @@ case 'SHOW_PEDIGREE_PLACES':
 case 'SHOW_PRIVATE_RELATIONSHIPS':
 	$title = WT_I18N::translate('Show private relationships');
 	$text = WT_I18N::translate('This option will retain family links in private records.  This means that you will see empty "private" boxes on the pedigree chart and on other charts with private people.');
-	break;
-
-case 'SHOW_REGISTER_CAUTION':
-	$title = WT_I18N::translate('Show acceptable use agreement on «Request new user account» page');
-	$text = WT_I18N::translate('When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class="list_value_wrap"><div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>');
 	break;
 
 case 'SHOW_STATS':
@@ -968,11 +845,6 @@ case 'USE_GEONAMES':
 	$text = WT_I18N::translate('Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names.');
 	break;
 
-case 'USE_REGISTRATION_MODULE':
-	$title = WT_I18N::translate('Allow visitors to request account registration');
-	$text = WT_I18N::translate('Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, the Administrator will have to approve the registration before it becomes active.');
-	break;
-
 case 'USE_RELATIONSHIP_PRIVACY':
 	$title = WT_I18N::translate('Use relationship privacy');
 	$text = WT_I18N::translate('<b>No</b> means that authenticated users can see the details of all living people.  <b>Yes</b> means that users can only see the private information of living people they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user\'s account details.');
@@ -1006,24 +878,9 @@ case 'WEBMASTER_USER_ID':
 	$text = WT_I18N::translate('The person to be contacted about technical questions or errors encountered on your site.');
 	break;
 
-case 'WELCOME_TEXT_CUST_HEAD':
-	$title = WT_I18N::translate('Standard header for custom welcome text');
-	$text = WT_I18N::translate('Choose to display a standard header for your custom Welcome text.  When your users change language, this header will appear in the new language.<br><br>If set to <b>Yes</b>, the header will look like this:<div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access is permitted to users who have an account and a password for this website.<br></div>');
-	break;
-
-case 'WELCOME_TEXT_AUTH_MODE_CUST':
-	$title = WT_I18N::translate('Custom welcome text');
-	$text = WT_I18N::translate('If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again.');
-	break;
-
-case 'WELCOME_TEXT_AUTH_MODE':
-	$title = WT_I18N::translate('Welcome text on login page');
-	$text = WT_I18N::translate('Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>');
-	break;
-
-	//////////////////////////////////////////////////////////////////////////////
-	// This section contains all the other help items.
-	//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+// This section contains all the other help items.
+//////////////////////////////////////////////////////////////////////////////
 
 case 'add_facts':
 	$title = WT_I18N::translate('Add a fact');

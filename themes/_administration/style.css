@@ -320,14 +320,16 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 
 /*SITE CONFIG */
 #site-config table {width: 100%;}
-#site-config tr {border-bottom: 1px solid;}
-#site-config td {line-height: 30px; padding:0 20px;}
-#site-config td:first-child {width: 30%;}
+#site-config tr:nth-child(odd) td:first-child {font-weight: 600;}
+#site-config tr:nth-child(even) {border-bottom: 1px solid;}
+#site-config td {padding:0 20px;}
+#site-config td:first-child {width: 40%;}
 #site-config p {font-style: italic;}
 #site-config tr th.smtp {padding-top: 50px;}
-#site-config td div.help_text {float: right; width: 80%;}
+#site-config td .help_content {font-size: .85em;}
 #site-config td .editable input, #site-config td .editable select {height: 25px; margin: 5px; padding: 0;}
 #site-config td .editable button {height: 27px; margin: 5px 0; padding: 0;}
+#site-config #lang {overflow: hidden;}
 
 /*SITE LOGS & CHANGE LOGS*/
 .site_logs, .site_change {margin:10px auto;}
