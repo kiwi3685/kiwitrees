@@ -30,7 +30,7 @@ define('WT_WEBTREES', 'kiwitrees');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
-define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
+define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 $WT_SESSION = new stdClass();
 $WT_SESSION->locale='';
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
@@ -58,6 +58,8 @@ header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 			a {color: #81A9CB; font-weight: bold; text-decoration: none;}
 			a:hover {text-decoration: none;}
 			.content {border:1px solid gray; padding:15px; border-radius:15px; text-align: center;}
+			p {text-align: center;}
+			p a {color: #ccc; font-weight:normal}
 		</style>
 	</head>
 	<body>
@@ -70,5 +72,8 @@ header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 				<?php echo WT_I18N::translate('It shouldn\'t take too long, so please <a href="index.php">try again</a> later'); ?>
 			</h3>
 		</div>
+		<p>
+			<a href="login.php"><?php echo WT_I18N::translate('administration'); ?></a>
+		<p>
 	</body>
 </html>

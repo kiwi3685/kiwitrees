@@ -128,7 +128,7 @@ default:
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Login'))
-		->pageHeader();
+		->pageHeader(true);
 
 	echo '<div id="login-page">';
 	echo '<div id="login-text">';
