@@ -837,6 +837,7 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 #editplaces-page #save-cancel,
 #changeflags-page #save-cancel {
 	border: 0;
+	clear: both;
 	position: initial;
 }
 
@@ -863,6 +864,10 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 
 [dir=rtl] #changeflags-page .flags_item {
 	float: right;
+}
+
+#changeflags-page .help_text {
+	clear:both;
 }
 
 /* SITE MAP MODULE*/
