@@ -30,16 +30,6 @@ define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-
-//$cal      = safe_GET('cal',      '@#D[A-Z ]+@');
-//$day      = safe_GET('day',      '[0-9]+');
-//$month    = safe_GET('month',    '[A-Z]{3,5}');
-//$year     = safe_GET('year',     '[0-9]+(-[0-9]+|[?]+)?');
-//$action   = safe_GET('action',   array('year', 'today', 'month'), 'today');
-//$filterev = safe_GET('filterev', array('all', 'bdm', WT_REGEX_TAG), 'bdm');
-//$filterof = safe_GET('filterof', array('all', 'living', 'recent'), 'all');
-//$filtersx = safe_GET('filtersx', array('M', 'F'), '');
-
 $cal      = WT_Filter::get('cal', '@#D[A-Z ]+@');
 $day      = WT_Filter::get('day', '\d\d?');
 $month    = WT_Filter::get('month', '[A-Z]{3,5}');
@@ -433,23 +423,24 @@ $controller
 			$cal_date->d = 0;
 			$cal_date->SetJDfromYMD();
 			// Make a separate list for each day.  Unspecified/invalid days go in day 0.
+			$found_facts = array();
 			for ($d = 0; $d <= $days_in_month; ++$d) {
 				$found_facts[$d] = array();
 			}
 			// Fetch events for each day
 			for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd){
 				foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $event) {
-					$tmp=$event['date']->MinDate();
+					$tmp = $event['date']->MinDate();
 					if ($tmp->d >= 1 && $tmp->y && $tmp->d <= $tmp->DaysInMonth()) {
-						$d = $jd-$cal_date->minJD+1;
+						$d = $jd - $cal_date->minJD + 1;
 					} else {
 						$d = 0;
 					}
 					$found_facts[$d][] = $event;
 				}
 			}
-			$cal_facts=array();
-			foreach ($found_facts as $d=>$facts) {
+			$cal_facts = array();
+			foreach ($found_facts as $d => $facts) {
 				$cal_facts[$d] = array();
 				foreach ($facts as $fact) {
 					$id = $fact['id'];
