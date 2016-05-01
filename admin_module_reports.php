@@ -47,7 +47,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 }
 
 ?>
-<div id="reports"
+<div id="reports">
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="action" value="update_mods">
 		<?php echo WT_Filter::getCsrf(); ?>
