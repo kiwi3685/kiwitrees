@@ -29,7 +29,7 @@
 define('WT_SCRIPT_NAME', 'reportengine.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 $famid   =WT_Filter::get('famid', WT_REGEX_XREF);
 $pid     =WT_Filter::get('pid', WT_REGEX_XREF);

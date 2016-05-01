@@ -55,7 +55,7 @@ class simpl_privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		// code based on similar in function_print_list.php
 		global $MAX_ALIVE_AGE, $SHOW_EST_LIST_DATES, $SEARCH_SPIDER;
 		$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-		$controller=new WT_Controller_Individual();
+		$controller = new WT_Controller_Individual();
 		$html = '<dl id="privacy_status">';
 		if ($death_dates=$controller->record->getAllDeathDates()) {
 			$html .= '<dt>' .WT_I18N::translate('Dead').help_link('privacy_status',$this->getName()). '</dt>';

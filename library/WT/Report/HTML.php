@@ -176,7 +176,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	function run() {
-		$controller=new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple();
 		$controller
 			->setPageTitle($this->title)
 			->pageHeader();

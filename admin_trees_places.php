@@ -83,7 +83,7 @@ if ($search && $replace) {
 	}
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Administration - place edit'))

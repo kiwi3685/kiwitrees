@@ -29,7 +29,7 @@
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Family();
+$controller = new WT_Controller_Family();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	$controller->pageHeader();

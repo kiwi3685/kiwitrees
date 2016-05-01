@@ -28,7 +28,7 @@ define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 
 $pid1        =safe_GET_xref('pid1');
 $pid2        =safe_GET_xref('pid2');

@@ -293,7 +293,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$this->config();
 			} else {
 				$block_id=safe_GET('block_id');
-				$controller=new WT_Controller_Page();
+				$controller = new WT_Controller_Page();
 				$controller->addInlineJavascript('
 					jQuery("#newField").click(function(){
 					    jQuery(".add_indi:last").clone().insertAfter(".indi_find:last");
@@ -546,7 +546,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function show_list() {
 		global $controller;
 
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()

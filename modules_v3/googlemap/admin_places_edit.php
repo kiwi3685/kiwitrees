@@ -35,7 +35,7 @@ $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 		->requireAdminLogin()
 		->setPageTitle(WT_I18N::translate('Geographic data'))

@@ -172,7 +172,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	private static function media_query_3a() {
 		$iid2 = safe_GET('iid');
 
-		$controller=new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple();
 		$controller
 			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
 			->pageHeader();

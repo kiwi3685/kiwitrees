@@ -29,7 +29,7 @@
 define('WT_SCRIPT_NAME', 'admin_site_merge.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page;
+$controller = new WT_Controller_Page;
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Merge records'))

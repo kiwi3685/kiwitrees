@@ -249,7 +249,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		require WT_ROOT.'includes/functions/functions_edit.php';
 
-		$controller=new WT_Controller_Page;
+		$controller = new WT_Controller_Page;
 		$controller
 			->requireAdminLogin()
 			->setPageTitle('Fancy Tree View')
@@ -674,7 +674,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$root = WT_Filter::get('rootid', WT_REGEX_XREF); // the first pid
 		$root_person = $this->get_person($root);
 
-		$controller=new WT_Controller_Page;
+		$controller = new WT_Controller_Page;
 		if($root_person && $root_person->canDisplayName()) {
 			$controller
 				->setPageTitle(/* I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of %s', $root_person->getFullName()))

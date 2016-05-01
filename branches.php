@@ -39,7 +39,7 @@ if (WT_USER_GEDCOM_ID) {
 	load_ancestors_array(WT_Person::getInstance(WT_USER_GEDCOM_ID), 1);
 }
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 if ($surn) {
 	$controller->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', htmlspecialchars($surn)));
 } else {

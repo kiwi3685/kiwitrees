@@ -38,7 +38,7 @@ if (!$block || $block->gedcom_id && !userGedcomAdmin(WT_USER_ID, $block->gedcom_
 $class_name=$block->module_name.'_WT_Module';
 $block=new $class_name;
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 $controller->pageHeader();
 
 if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {

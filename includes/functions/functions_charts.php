@@ -607,7 +607,7 @@ function print_cousins($famid, $personcount=1) {
 */
 function print_parents($famid, $personcount=1) {
 	global $GEDCOM, $pbwidth, $pbheight;
-	$controller=new WT_Controller_Family();
+	$controller = new WT_Controller_Family();
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	$family = WT_Family::getInstance($famid);
 	if (is_null($family)) return;

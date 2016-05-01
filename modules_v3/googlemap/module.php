@@ -667,7 +667,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 
-		$controller=new WT_Controller_Pedigree();
+		$controller = new WT_Controller_Pedigree();
 
 		// Start of internal configuration variables
 		// Limit this to match available number of icons.
@@ -1422,7 +1422,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$WT_SESSION['placecheck_state'] = $state;
 		}
 
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Google Maps™'))

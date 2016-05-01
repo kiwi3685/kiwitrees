@@ -72,7 +72,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 			$clip_ctrl=new WT_Controller_Clippings();
 
-			$controller=new WT_Controller_Page();
+			$controller = new WT_Controller_Page();
 			$controller
 				->setPageTitle($this->getTitle())
 				->PageHeader()

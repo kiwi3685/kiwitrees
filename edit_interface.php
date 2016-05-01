@@ -992,7 +992,7 @@ case 'addnoteaction_assisted':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
-	$controller=new WT_Controller_Simple();
+	$controller = new WT_Controller_Simple();
 	$controller
 		->setPageTitle(WT_I18N::translate('Family navigator'))
 		->pageHeader();

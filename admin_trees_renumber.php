@@ -21,7 +21,7 @@
 define('WT_SCRIPT_NAME', 'admin_trees_renumber.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Renumber family tree'))

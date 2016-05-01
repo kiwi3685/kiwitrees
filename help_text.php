@@ -32,7 +32,7 @@
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 global $WT_IMAGES;
 $help=safe_GET('help');
 switch ($help) {

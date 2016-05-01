@@ -24,7 +24,7 @@
 define('WT_SCRIPT_NAME', 'admin_trees_export.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax();
 $controller
 	->pageHeader()
 	->requireManagerLogin();

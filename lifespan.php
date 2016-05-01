@@ -31,7 +31,7 @@ require './includes/session.php';
 
 $zoomfactor=10;
 
-$controller=new WT_Controller_Lifespan();
+$controller = new WT_Controller_Lifespan();
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')

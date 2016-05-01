@@ -30,7 +30,7 @@ require './includes/session.php';
 $fname=safe_GET('fname');
 
 if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
-	$controller=new WT_Controller_Page();
+	$controller = new WT_Controller_Page();
 	$controller
 		->setPageTitle(WT_I18N::translate('Error'))
 		->pageHeader();

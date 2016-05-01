@@ -740,7 +740,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	private function show() {
 		global $MEDIA_DIRECTORY, $controller;
 		$item_id=safe_GET('gallery_id');
-		$controller=new WT_Controller_Page();
+		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getMenuTitle())
 			->pageHeader()

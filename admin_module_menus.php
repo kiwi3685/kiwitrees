@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'admin_module_menus.php');
 require 'includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Module administration'))
@@ -65,7 +65,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 }
 
 ?>
-<div id="menus" align="center">
+<div id="menus"
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="action" value="update_mods">
 		<?php echo WT_Filter::getCsrf(); ?>

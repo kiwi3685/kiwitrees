@@ -30,7 +30,7 @@
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
-$controller=new WT_Controller_Individual();
+$controller = new WT_Controller_Individual();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
