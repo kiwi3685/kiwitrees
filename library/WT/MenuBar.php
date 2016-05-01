@@ -434,17 +434,7 @@ class WT_MenuBar {
 			return null;
 		}
 		//-- main search menu item
-		$menu = new WT_Menu(WT_I18N::translate('Search'), '#', 'menu-search');
-			$submenu = new WT_Menu(WT_I18N::translate('General search'), 'search.php?ged='.WT_GEDURL, 'menu-search-general');
-			$menu->addSubmenu($submenu);
-			$submenu = new WT_Menu(/* I18N: search using “sounds like”, rather than exact spelling */ WT_I18N::translate('Phonetic search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
-			$menu->addSubmenu($submenu);
-			$submenu = new WT_Menu(WT_I18N::translate('Advanced search'), 'search_advanced.php?ged='.WT_GEDURL, 'menu-search-advanced');
-			$menu->addSubmenu($submenu);
-			if (WT_USER_GEDCOM_ADMIN) {
-				$submenu = new WT_Menu(WT_I18N::translate('Search and replace'), 'search.php?ged='.WT_GEDURL.'&amp;action=replace', 'menu-search-replace');
-				$menu->addSubmenu($submenu);
-			}
+		$menu = new WT_Menu(WT_I18N::translate('Search'), 'search.php?ged=' . WT_GEDURL, 'menu-search');
 		return $menu;
 	}
 

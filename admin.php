@@ -1529,6 +1529,8 @@ function old_paths() {
 		WT_ROOT.'modules_v3/googlemap/places/flags/SGS.png',
 		// Removed in kiwitrees 3.2.2
 		WT_ROOT.'modules_v3/fancy_imagebar/style.js',
+		WT_ROOT.'search-advanced.php',
+		WT_ROOT.'library/WT/Controller/AdvancedSearch.php',
 	);
 }
 

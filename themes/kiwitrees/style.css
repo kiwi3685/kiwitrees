@@ -3777,46 +3777,44 @@ div[id^="caldiv"] td {
 }
 
 /* ============== search.php ======================= */
-#search-page h2,
-#search_submit {
-	margin: 20px;
-	text-align: center;
+#search-page button {
+	vertical-align: top;
 }
 
-#search-page-table {
-	background-color: #C9C9C9;
-	border: 1px outset #ccc;
-	border-top: 0;
-	margin: 20px auto 0;
-	width: 580px;
+#search-page button i {
+	vertical-align: middle;
 }
 
-#search-page-table .label {
-	border-top: 1px solid #ccc;
+.search-page-table input {
+	font-size: initial;
+	width: 300px;
+}
+
+.search-page-table input[type="checkbox"],
+.search-page-table input[type="radio"] {
+	width: initial;
+}
+
+.search-page-table .label {
 	float: left;
 	font-weight: bold;
-	padding: 5px 10px 0;
 	width: 150px;
 }
 
-#search-page-table .value {
-	background-color: #DDD;
-	border-top: 1px solid #ccc;
-	margin: 0 0 0 170px;
-	padding: 5px;
-	white-space: nowrap;
+.search-page-table .value {
+	margin: 0 0 10px 170px;
 }
 
-#search-page-table p {
+.search-page-table p {
 	margin: 0;
 }
 
-[dir='rtl'] #search-page-table .label {
+[dir='rtl'] .search-page-table .label {
 	float: right;
 }
 
-[dir='rtl'] #search-page-table .value {
-	margin: 0 170px 0 0;
+[dir='rtl'] .search-page-table .value {
+	margin: 0 170px 10px 0;
 }
 
 /* ============== edituser.php ======================= */
@@ -4122,10 +4120,11 @@ a.icon-udarrow:hover {
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-male */
 .icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */
 .icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */
+.fa-plus,
 .icon-button_addsource,
 .icon-button_addmedia,
 .icon-button_addrepository
-						{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-plus */
+						{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-plus */
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-book */
 .icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-icon-keyboard-o */
 .icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-globe */

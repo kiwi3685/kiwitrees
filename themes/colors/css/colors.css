@@ -1129,7 +1129,7 @@ span.link_text {display:none;}
 .ui-helper-reset {line-height:1.5;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
 .ui-tabs, .ui-tabs .ui-tabs-nav li a {padding:0;}
-.ui-tabs .ui-tabs-nav li a span {display:block; padding:.5em 1em;}
+.ui-tabs .ui-tabs-nav li a span {display:block; padding:0 1em;}
 .ui-state-active,.ui-widget-content .ui-state-active {border:0 solid #999999;color:#000;font-weight:400;outline:none;}
 .ui-state-highlight a {color:#ff0000;}
 .ui-widget-header {border:1px solid #fff;font-weight:400;}
@@ -1362,12 +1362,11 @@ span.link_text {display:none;}
 #find-header span,#find-output p.find-media-title {font-weight:700;}
 
 /* search.php  */
-#search-page h2,#search_submit {margin:20px;text-align:center;}
-#search-page-table {border:1px solid #999999;border-radius:3px;margin:20px auto 0;width:580px;}
-#search-page-table .label {float:left;font-weight:700;padding:5px 10px 0;width:150px;}
-#search-page-table .value {background-color:#ecf5ff;border-top:1px solid #999999;color:#333333;margin:0 0 0 170px;padding:5px;white-space:nowrap;}
-#search-page-table div:nth-of-type(2) {border:0;}
-#search-page-table label,#search-page-table .value input {margin:0 3px;}
+.search-page-table {border:1px solid #999999;border-radius:3px;margin:20px 0;width:580px;}
+.search-page-table .label {float:left;font-weight:700;padding:5px 10px 0;width:150px;}
+.search-page-table .value {background-color:#ecf5ff;border-top:1px solid #999999;color:#333333;margin:0 0 0 170px;padding:5px;white-space:nowrap;}
+.search-page-table div:nth-of-type(2) {border:0;}
+.search-page-table label,.search-page-table .value input {margin:0 3px;}
 #sb_content_descendancy,#sb_content_individuals,#sb_content_families,#sb_content_clippings {margin-top:5px;}
 
 .desc_tree_div,.name_tree_div {display:none;}
@@ -1375,8 +1374,8 @@ span.link_text {display:none;}
 .name_tree_div ul,.name_tree_div_visible ul,#sb_clippings_content ul {margin:0;padding:0;}
 
 [dir=rtl] #sb_content_extra_info .editfacts,.find-media-details {float:left;}
-[dir=rtl] #search-page-table .label {float:right;}
-[dir=rtl] #search-page-table .value {margin:0 170px 0 0;}
+[dir=rtl] .search-page-table .label {float:right;}
+[dir=rtl] .search-page-table .value {margin:0 170px 0 0;}
 
 /* ============== edituser.php ======================= */
 #edituser-page h2,
