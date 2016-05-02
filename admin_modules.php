@@ -54,7 +54,7 @@ case 'update_mods':
 
 switch (WT_Filter::get('action')) {
 case 'delete_module':
-	$module_name=WT_Filter::get('module_name');
+	$module_name = WT_Filter::get('module_name');
 	WT_DB::prepare(
 		"DELETE `##block_setting`".
 		" FROM `##block_setting`".
@@ -108,6 +108,7 @@ $controller
 				{ sClass: "center" },
 				{ sClass: "center" },
 				{ sClass: "center" },
+				{ sClass: "center" },
 				{ sClass: "center" }
 			]
 		});
@@ -127,6 +128,7 @@ $controller
 					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Block'); ?></th>
 					<th><?php echo WT_I18N::translate('Chart'); ?></th>
+					<th><?php echo WT_I18N::translate('List'); ?></th>
 					<th><?php echo WT_I18N::translate('Menu'); ?></th>
 					<th><?php echo WT_I18N::translate('Report'); ?></th>
 					<th><?php echo WT_I18N::translate('Resource'); ?></th>
@@ -137,12 +139,12 @@ $controller
 				</thead>
 				<tbody>
 					<?php
-					foreach ($module_status as $module_name=>$status) {
+					foreach ($module_status as $module_name => $status) {
 						if (array_key_exists($module_name, $modules)) {
 							$module = $modules[$module_name];
 							echo
 								'<tr>
-									<td>', two_state_checkbox('status-'.$module_name, $status=='enabled'), '</td>
+									<td>', two_state_checkbox('status-' . $module_name, $status == 'enabled'), '</td>
 									<td>';
 										if ( $module instanceof WT_Module_Config ) {
 											echo '<a href="', $module->getConfigLink(), '">';
@@ -155,6 +157,7 @@ $controller
 									<td>', $module->getDescription(), '</td>
 									<td>', $module instanceof WT_Module_Block   	? WT_I18N::translate('Home page') : '-', '</td>
 									<td>', $module instanceof WT_Module_Chart   	? WT_I18N::translate('Chart') : '-', '</td>
+									<td>', $module instanceof WT_Module_List   		? WT_I18N::translate('List') : '-', '</td>
 									<td>', $module instanceof WT_Module_Menu    	? WT_I18N::translate('Menu') : '-', '</td>
 									<td>', $module instanceof WT_Module_Report  	? WT_I18N::translate('Report') : '-', '</td>
 									<td>', $module instanceof WT_Module_Resources   ? WT_I18N::translate('Resource') : '-', '</td>

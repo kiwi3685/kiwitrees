@@ -61,7 +61,6 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 			</thead>
 			<tbody>
 				<?php
-				$order = 1;
 				foreach ($modules as $module) {
 					?>
 					<tr>
@@ -94,11 +93,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 							</table>
 						</td>
 					</tr>
-				<?php
-				$order++;
-				}
-
-				?>
+				<?php } ?>
 			</tbody>
 		</table>
 		<button class="btn btn-primary show" type="submit">
