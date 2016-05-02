@@ -115,7 +115,7 @@ $controller
 	');
 
 ?>
-<div>
+<div id="module-admin-page">
 	<div id="tabs">
 		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods">

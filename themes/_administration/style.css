@@ -613,11 +613,11 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 
 /* MANAGE MODULES */
-#installed_table {width:100%;}
-#installed_table th {min-width:60px;}
-#installed_table a {white-space: nowrap;}
-.ui-widget-content a.error {color: #ff0000;}
-i.fa-cogs {font-size:1em;}
+#module-admin-page #installed_table {width:100%;}
+#module-admin-page #installed_table th {min-width:60px;}
+#module-admin-page #installed_table a {color: #000; white-space: nowrap;}
+#module-admin-page .ui-widget-content a.error {color: #ff0000;}
+#module-admin-page i.fa-cogs {font-size:1em;}
 
 
 /* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS, WIDGETS */
