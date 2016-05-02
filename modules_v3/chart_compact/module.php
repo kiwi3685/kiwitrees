@@ -68,7 +68,6 @@ class chart_compact_WT_Module extends WT_Module implements WT_Module_Chart {
 			'menu-chart-compact'
 		);
 		$menus[] = $menu;
-
 		return $menus;
 	}
 

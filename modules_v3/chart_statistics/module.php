@@ -68,7 +68,6 @@ class chart_statistics_WT_Module extends WT_Module implements WT_Module_Chart {
 			'menu-chart-statistics'
 		);
 		$menus[] = $menu;
-
 		return $menus;
 	}
 

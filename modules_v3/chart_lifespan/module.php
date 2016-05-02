@@ -68,7 +68,6 @@ class chart_lifespan_WT_Module extends WT_Module implements WT_Module_Chart {
 			'menu-chart-lifespan'
 		);
 		$menus[] = $menu;
-
 		return $menus;
 	}
 

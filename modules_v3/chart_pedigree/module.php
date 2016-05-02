@@ -68,7 +68,6 @@ class chart_pedigree_WT_Module extends WT_Module implements WT_Module_Chart {
 			'menu-chart-pedigree'
 		);
 		$menus[] = $menu;
-
 		return $menus;
 	}
 

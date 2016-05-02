@@ -68,7 +68,6 @@ class chart_ancestry_WT_Module extends WT_Module implements WT_Module_Chart {
 			'menu-chart-ancestry'
 		);
 		$menus[] = $menu;
-
 		return $menus;
 	}
 

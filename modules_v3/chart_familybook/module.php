@@ -62,19 +62,13 @@ class chart_familybook_WT_Module extends WT_Module implements WT_Module_Chart {
 		global $controller;
 		$indi_xref	= $controller->getSignificantIndividual()->getXref();
 		$menus		= array();
-		if (function_exists('imagettftext')) {
-			$menu = new WT_Menu(
-				$this->getTitle(),
-				'familybook.php?rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
-				'menu-chart-familybook'
-			);
-			$menus[] = $menu;
-
-			return $menus;
-		} else {
-			return false;
-		}
-
+		$menu = new WT_Menu(
+			$this->getTitle(),
+			'familybook.php?rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
+			'menu-chart-familybook'
+		);
+		$menus[] = $menu;
+		return $menus;
 	}
 
 }

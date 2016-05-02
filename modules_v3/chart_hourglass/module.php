@@ -62,19 +62,13 @@ class chart_hourglass_WT_Module extends WT_Module implements WT_Module_Chart {
 		global $controller;
 		$indi_xref	= $controller->getSignificantIndividual()->getXref();
 		$menus		= array();
-		if (function_exists('imagettftext')) {
-			$menu = new WT_Menu(
-				$this->getTitle(),
-				'hourglass.php?rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
-				'menu-chart-hourglass'
-			);
-			$menus[] = $menu;
-
-			return $menus;
-		} else {
-			return false;
-		}
-
+		$menu = new WT_Menu(
+			$this->getTitle(),
+			'hourglass.php?rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
+			'menu-chart-hourglass'
+		);
+		$menus[] = $menu;
+		return $menus;
 	}
 
 }

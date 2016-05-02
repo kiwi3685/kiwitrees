@@ -68,7 +68,6 @@ class chart_timeline_WT_Module extends WT_Module implements WT_Module_Chart {
 			'menu-chart-timeline'
 		);
 		$menus[] = $menu;
-
 		return $menus;
 	}
 
