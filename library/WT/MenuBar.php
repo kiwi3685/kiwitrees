@@ -101,182 +101,11 @@ class WT_MenuBar {
 
 		$menu = new WT_Menu(WT_I18N::translate('Charts'), '#', 'menu-chart');
 
-		// Build a sortable list of submenu items and then sort it in localized name order
-		$menuList = array(
-			'pedigree'    =>WT_I18N::translate('Pedigree'),
-			'descendancy' =>WT_I18N::translate('Descendants'),
-			'ancestry'    =>WT_I18N::translate('Ancestors'),
-			'compact'     =>WT_I18N::translate('Compact tree'),
-			'hourglass'   =>WT_I18N::translate('Hourglass chart'),
-			'familybook'  =>WT_I18N::translate('Family book'),
-			'timeline'    =>WT_I18N::translate('Timeline'),
-			'lifespan'    =>WT_I18N::translate('Lifespans'),
-			'relationship'=>WT_I18N::translate('Relationships'),
-			'statistics'  =>WT_I18N::translate('Statistics'),
-		);
-		if (function_exists('imagettftext')) {
-			$menuList['fanchart']=WT_I18N::translate('Fan chart');
-		}
-		// TODO: Use WT_Module_Chart ??
-		if (array_key_exists('tree', WT_Module::getActiveModules())) {
-			$menuList['tree']=WT_I18N::translate('Interactive tree');
-		}
-		if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-			$menuList['pedigree_map']=WT_I18N::translate('Pedigree map');
-		}
-		asort($menuList);
-
-		// Produce the submenus in localized name order
-		foreach ($menuList as $menuType => $menuName) {
-			switch ($menuType) {
-			case 'pedigree':
-				$submenu = new WT_Menu($menuName, 'pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-pedigree');
+		$active_charts = WT_Module::getActiveCharts();
+		uasort($active_charts, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+		foreach ($active_charts as $chart) {
+			foreach ($chart->getChartMenus() as $submenu) {
 				$menu->addSubmenu($submenu);
-				break;
-
-			case 'descendancy':
-				$submenu = new WT_Menu($menuName, 'descendancy.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-descendancy');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'ancestry':
-				$submenu = new WT_Menu($menuName, 'ancestry.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-ancestry');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'compact':
-				$submenu = new WT_Menu($menuName, 'compact.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-compact');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'fanchart':
-				$submenu = new WT_Menu($menuName, 'fanchart.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-fanchart');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'hourglass':
-				$submenu = new WT_Menu($menuName, 'hourglass.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-hourglass');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'familybook':
-				$submenu = new WT_Menu($menuName, 'familybook.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-familybook');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'timeline':
-				//-- timeline
-				$link = 'timeline.php?ged='.WT_GEDURL;
-				$submenu = new WT_Menu($menuName, 'timeline.php?pids%5B%5D='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-timeline');
-				if ($controller instanceof WT_Controller_Family && $controller->record) {
-					// Build a sortable list of submenu items and then sort it in localized name order
-					$menuList = array();
-					$menuList['parentTimeLine'] = WT_I18N::translate('Show couple on timeline chart');
-					$menuList['childTimeLine'] = WT_I18N::translate('Show children on timeline chart');
-					$menuList['familyTimeLine'] = WT_I18N::translate('Show family on timeline chart');
-					asort($menuList);
-
-					// Produce the submenus in localized name order
-					foreach ($menuList as $menuType => $menuName) {
-						switch ($menuType) {
-						case 'parentTimeLine':
-							// charts / parents_timeline
-							$subsubmenu = new WT_Menu(
-								WT_I18N::translate('Show couple on timeline chart'),
-								'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE')).'&amp;ged='.WT_GEDURL,
-								'menu-chart-timeline-parents'
-							);
-							$submenu->addSubmenu($subsubmenu);
-							break;
-
-						case 'childTimeLine':
-							// charts / children_timeline
-							$subsubmenu = new WT_Menu(
-								WT_I18N::translate('Show children on timeline chart'),
-								'timeline.php?'.$controller->getTimelineIndis(array('CHIL')).'&amp;ged='.WT_GEDURL,
-								'menu-chart-timeline-children'
-							);
-							$submenu->addSubmenu($subsubmenu);
-							break;
-
-						case 'familyTimeLine':
-							// charts / family_timeline
-							$subsubmenu = new WT_Menu(
-								WT_I18N::translate('Show family on timeline chart'),
-								'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE','CHIL')).'&amp;ged='.WT_GEDURL,
-								'menu-chart-timeline-family'
-							);
-							$submenu->addSubmenu($subsubmenu);
-							break;
-
-						}
-					}
-				}
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'lifespan':
-				$submenu = new WT_Menu($menuName, 'lifespan.php?pids%5B%5D='.$indi_xref.'&amp;addFamily=1&amp;ged='.WT_GEDURL, 'menu-chart-lifespan');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'relationship':
-				if ($indi_xref) {
-					// Pages focused on a specific person - from the person, to me
-					$pid1 = WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
-					if (!$pid1 && $PEDIGREE_ROOT_ID) $pid1 = $PEDIGREE_ROOT_ID;
-					$pid2 = $indi_xref;
-					if ($pid1 == $pid2) {
-						$pid2 = '';
-					}
-					$submenu = new WT_Menu(
-						WT_I18N::translate('Relationships'),
-						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
-						'menu-chart-relationship'
-					);
-					if (array_key_exists('widget_favorites', WT_Module::getActiveModules())) {
-						// Add a submenu showing relationship from this person to each of our favorites
-						foreach (widget_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
-							if ($favorite['type']=='INDI' && $favorite['gedcom_id'] == WT_GED_ID) {
-								$person=WT_Person::getInstance($favorite['gid']);
-								if ($person instanceof WT_Person) {
-									$subsubmenu = new WT_Menu(
-										$person->getFullName(),
-										'relationship.php?pid1='.$person->getXref().'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
-										'menu-chart-relationship-'.$person->getXref().'-'.$pid2 // We don't use these, but a custom theme might
-									);
-									$submenu->addSubmenu($subsubmenu);
-								}
-							}
-						}
-					}
-				} else {
-					// Regular pages - from me, to somebody
-					$pid1 = WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
-					$pid2 = '';
-					$submenu = new WT_Menu(
-						WT_I18N::translate('Relationships'),
-						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
-						'menu-chart-relationship'
-					);
-				}
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'statistics':
-				$submenu = new WT_Menu($menuName, 'statistics.php?ged='.WT_GEDURL, 'menu-chart-statistics');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'tree':
-				$submenu = new WT_Menu($menuName, 'module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$indi_xref, 'menu-chart-tree');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'pedigree_map':
-				$submenu = new WT_Menu($menuName, 'module.php?ged='.WT_GEDURL.'&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$indi_xref, 'menu-chart-pedigree_map');
-				$menu->addSubmenu($submenu);
-				break;
 			}
 		}
 		return $menu;
@@ -389,7 +218,7 @@ class WT_MenuBar {
 	public static function getReportsMenu($pid='', $famid='') {
 		global $SEARCH_SPIDER;
 
-		$active_reports=WT_Module::getActiveReports();
+		$active_reports = WT_Module::getActiveReports();
 		if ($SEARCH_SPIDER || !$active_reports) {
 			return null;
 		}

@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'admin_modules.php');
 require 'includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller=new WT_Controller_Page();
+$controller = new WT_Controller_Page();
 $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Module administration'));
@@ -106,16 +106,15 @@ $controller
 				{ sClass: "center" },
 				{ sClass: "center" },
 				{ sClass: "center" },
-				{ sClass: "center", bVisible: false },
 				{ sClass: "center" },
-				{ sClass: "center", bVisible: false },
+				{ sClass: "center" },
 				{ sClass: "center" }
 			]
 		});
 	');
 
 ?>
-<div align="center">
+<div>
 	<div id="tabs">
 		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods">
@@ -126,15 +125,14 @@ $controller
 					<th><?php echo WT_I18N::translate('Enabled'); ?></th>
 					<th width="120px"><?php echo WT_I18N::translate('Module'); ?></th>
 					<th><?php echo WT_I18N::translate('Description'); ?></th>
-					<th><?php echo WT_I18N::translate('Menu'); ?></th>
-					<th><?php echo WT_I18N::translate('Tab'); ?></th>
-					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
 					<th><?php echo WT_I18N::translate('Block'); ?></th>
-					<th><?php echo WT_I18N::translate('Widget'); ?></th>
 					<th><?php echo WT_I18N::translate('Chart'); ?></th>
+					<th><?php echo WT_I18N::translate('Menu'); ?></th>
 					<th><?php echo WT_I18N::translate('Report'); ?></th>
-					<th><?php echo WT_I18N::translate('Theme'); ?></th>
-					<th><?php echo WT_I18N::translate('Resources'); ?></th>
+					<th><?php echo WT_I18N::translate('Resource'); ?></th>
+					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
+					<th><?php echo WT_I18N::translate('Tab'); ?></th>
+					<th><?php echo WT_I18N::translate('Widget'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -153,18 +151,16 @@ $controller
 										if ( $module instanceof WT_Module_Config && array_key_exists( $module_name, WT_Module::getActiveModules() ) ) {
 											echo ' <i class="fa fa-cogs"></i></a>';
 										}
-									echo '
-									</td>
+									echo '</td>
 									<td>', $module->getDescription(), '</td>
-									<td>', $module instanceof WT_Module_Menu    	? WT_I18N::translate('Menu') : '-', '</td>
-									<td>', $module instanceof WT_Module_Tab     	? WT_I18N::translate('Tab') : '-', '</td>
-									<td>', $module instanceof WT_Module_Sidebar 	? WT_I18N::translate('Sidebar') : '-', '</td>
 									<td>', $module instanceof WT_Module_Block   	? WT_I18N::translate('Home page') : '-', '</td>
-									<td>', $module instanceof WT_Module_Widget  	? WT_I18N::translate('Widget') : '-', '</td>
 									<td>', $module instanceof WT_Module_Chart   	? WT_I18N::translate('Chart') : '-', '</td>
+									<td>', $module instanceof WT_Module_Menu    	? WT_I18N::translate('Menu') : '-', '</td>
 									<td>', $module instanceof WT_Module_Report  	? WT_I18N::translate('Report') : '-', '</td>
-									<td>', $module instanceof WT_Module_Theme   	? WT_I18N::translate('Theme') : '-', '</td>
-									<td>', $module instanceof WT_Module_Resources   ? WT_I18N::translate('Resources') : '-', '</td>
+									<td>', $module instanceof WT_Module_Resources   ? WT_I18N::translate('Resource') : '-', '</td>
+									<td>', $module instanceof WT_Module_Sidebar 	? WT_I18N::translate('Sidebar') : '-', '</td>
+									<td>', $module instanceof WT_Module_Tab     	? WT_I18N::translate('Tab') : '-', '</td>
+									<td>', $module instanceof WT_Module_Widget  	? WT_I18N::translate('Widget') : '-', '</td>
 								</tr>
 							';
 						} else {

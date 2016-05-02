@@ -43,7 +43,7 @@ interface WT_Module_Widget {
 }
 
 interface WT_Module_Chart {
-	public function getChart();
+	public function getChartMenus();
 }
 
 interface WT_Module_Config {
@@ -79,10 +79,6 @@ interface WT_Module_Tab {
 	public function getPreLoadContent();
 	public function isGrayedOut();
 	public function defaultAccessLevel();
-}
-
-interface WT_Module_Theme {
-	public function getTheme();
 }
 
 abstract class WT_Module {
@@ -151,18 +147,18 @@ abstract class WT_Module {
 	}
 
 	static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
-		$module_names=WT_DB::prepare(
+		$module_names = WT_DB::prepare(
 			"SELECT SQL_CACHE module_name".
 			" FROM `##module`".
 			" JOIN `##module_privacy` USING (module_name)".
 			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?".
 			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order WHEN 'widget' THEN widget_order ELSE 0 END, module_name"
 		)->execute(array($ged_id, $component, $access_level))->fetchOneColumn();
-		$array=array();
+		$array = array();
 		foreach ($module_names as $module_name) {
-			if (file_exists(WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php')) {
-				require_once WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php';
-				$class = $module_name.'_WT_Module';
+			if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
+				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
+				$class = $module_name . '_WT_Module';
 				$array[$module_name] = new $class();
 			} else {
 				// Module has been deleted from disk? Disable it.
@@ -172,7 +168,7 @@ abstract class WT_Module {
 				)->execute(array($module_name));
 			}
 		}
-		if ($component!='menu' && $component!='sidebar' && $component!='tab' && $component!='widget') {
+		if ($component != 'menu' && $component != 'sidebar' && $component != 'tab' && $component != 'widget') {
 			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 		}
 		return $array;
@@ -182,7 +178,7 @@ abstract class WT_Module {
 	static public function getActiveBlocks($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $blocks = null;
 		if ($blocks === null) {
-			$blocks=self::getActiveModulesByComponent('block', $ged_id, $access_level);
+			$blocks = self::getActiveModulesByComponent('block', $ged_id, $access_level);
 		}
 		return $blocks;
 	}
@@ -191,7 +187,7 @@ abstract class WT_Module {
 	static public function getActiveWidgets($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $widgets = null;
 		if ($widgets === null) {
-			$widgets=self::getActiveModulesByComponent('widget', $ged_id, $access_level);
+			$widgets = self::getActiveModulesByComponent('widget', $ged_id, $access_level);
 		}
 		return $widgets;
 	}
@@ -200,7 +196,7 @@ abstract class WT_Module {
 	static public function getActiveCharts($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $charts = null;
 		if ($charts === null) {
-			$charts=self::getActiveModulesByComponent('chart', $ged_id, $access_level);
+			$charts = self::getActiveModulesByComponent('chart', $ged_id, $access_level);
 		}
 		return $charts;
 	}
@@ -209,7 +205,7 @@ abstract class WT_Module {
 	static public function getActiveMenus($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $menus = null;
 		if ($menus === null) {
-			$menus=self::getActiveModulesByComponent('menu', $ged_id, $access_level);
+			$menus = self::getActiveModulesByComponent('menu', $ged_id, $access_level);
 		}
 		return $menus;
 	}
@@ -218,7 +214,7 @@ abstract class WT_Module {
 	static public function getActiveReports($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $reports = null;
 		if ($reports === null) {
-			$reports=self::getActiveModulesByComponent('report', $ged_id, $access_level);
+			$reports = self::getActiveModulesByComponent('report', $ged_id, $access_level);
 		}
 		return $reports;
 	}
@@ -236,7 +232,7 @@ abstract class WT_Module {
 	static public function getActiveSidebars($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $sidebars = null;
 		if ($sidebars === null) {
-			$sidebars=self::getActiveModulesByComponent('sidebar', $ged_id, $access_level);
+			$sidebars = self::getActiveModulesByComponent('sidebar', $ged_id, $access_level);
 		}
 		return $sidebars;
 	}
@@ -245,18 +241,9 @@ abstract class WT_Module {
 	static public function getActiveTabs($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $tabs = null;
 		if ($tabs === null) {
-			$tabs=self::getActiveModulesByComponent('tab', $ged_id, $access_level);
+			$tabs = self::getActiveModulesByComponent('tab', $ged_id, $access_level);
 		}
 		return $tabs;
-	}
-
-	// Get a list of all the active, authorised themes
-	static public function getActiveThemes($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $themes = null;
-		if ($themes === null) {
-			$themes=self::getActiveModulesByComponent('theme', $ged_id, $access_level);
-		}
-		return $themes;
 	}
 
 	// Get a list of all installed modules.
@@ -267,8 +254,8 @@ abstract class WT_Module {
 		$dir		= opendir(WT_ROOT.WT_MODULES_DIR);
 		while (($file = readdir($dir)) !== false) {
 			if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.WT_MODULES_DIR.$file.'/module.php')) {
-				require_once WT_ROOT.WT_MODULES_DIR.$file.'/module.php';
-				$class	= $file.'_WT_Module';
+				require_once WT_ROOT . WT_MODULES_DIR . $file . '/module.php';
+				$class	= $file . '_WT_Module';
 				$module	= new $class();
 				$modules[$module->getName()] = $module;
 				WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order, widget_order) VALUES (?, ?, ?, ?, ?, ?)")
@@ -338,13 +325,6 @@ abstract class WT_Module {
 						" FROM `##gedcom`"
 					)->execute(array($module->getName(), $module->defaultAccessLevel()));
 				}
-				if ($module instanceof WT_Module_Theme) {
-					WT_DB::prepare(
-						"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)".
-						" SELECT ?, gedcom_id, 'theme', ?".
-						" FROM `##gedcom`"
-					)->execute(array($module->getName(), $module->defaultAccessLevel()));
-				}
 			}
 		}
 		uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
@@ -392,11 +372,6 @@ abstract class WT_Module {
 			if ($module instanceof WT_Module_Resources) {
 				WT_DB::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'resource', ?)"
-				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-			}
-			if ($module instanceof WT_Module_Theme) {
-				WT_DB::prepare(
-					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
 				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 			}
 		}
