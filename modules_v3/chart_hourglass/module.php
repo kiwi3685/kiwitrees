@@ -1,5 +1,5 @@
 <?php
-// View for the pedigree tree.
+// Classes and libraries for module system
 //
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2016 kiwitrees.net
