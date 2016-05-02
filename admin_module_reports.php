@@ -64,15 +64,12 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 				$order = 1;
 				foreach ($modules as $module) {
 					?>
-					<tr class="sortme">
+					<tr>
 						<td>
 							<?php echo $module->getTitle(); ?>
 						</td>
 						<td>
 							<?php echo $module->getDescription(); ?>
-						</td>
-						<td>
-							<input type="text" size="3" value="<?php echo $order; ?>" name="order-<?php echo $module->getName(); ?>">
 						</td>
 						<td>
 							<table class="modules_table2">
