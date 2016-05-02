@@ -621,7 +621,7 @@ i.fa-cogs {font-size:1em;}
 
 
 /* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS, WIDGETS */
-table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding:5px; margin-bottom:10px;}
+table.modules_table {border:2px inset #d3d3d3; border-collapse:separate; padding:5px; margin:10px;}
 .modules_table th {border-bottom:2px solid #d3d3d3; font-weight:bold; font-size:105%;}
 .modules_table td {border-bottom:2px solid #d3d3d3; padding:3px; min-width:120px;}
 .modules_table td+td+td {min-width:60px;}
