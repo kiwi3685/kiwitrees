@@ -51,6 +51,7 @@ class TreeView {
 	 */
 	public function drawViewport($root_person, $generations) {
 		$html = '
+			<h2 id="tree-title">' . WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
 			<a name="tv_content"></a>
 			<div id="' . $this->name . '_out" class="tv_out">
 				<div id="tv_tools" class="noprint">
@@ -66,7 +67,6 @@ class TreeView {
 						</li>
 					</ul>
 				</div>
-				<h2 id="tree-title">' . WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
 				<div id="' . $this->name . '_in" class="tv_in" dir="ltr">
 					' . $this->drawPerson($root_person, $generations, 0, null, null, true) .'
 				</div>

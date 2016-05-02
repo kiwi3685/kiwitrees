@@ -19,15 +19,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#tree-title {text-align: center; margin-bottom: 100px;}
-
+#tree-title {display:none;}
+#tree-page #tree-title {display: block; text-align: initial; margin:10px;}
 .tv_out {
 	position: relative;
 	overflow: hidden;
 	height: 100%;
 	width: 99%;
-	border: thin solid #CCCCCC; /* customizable */
-	min-height: 350px; /* customizable, not mandatory, but should be set to have allways something to display */
+	border: 3px inset #e6e6e6; /* customizable */
+	min-height: 350px; /* customizable, not mandatory, but should be set to always have something to display */
 	max-height: 10000px; /* customizable, not mandatory, but should be set not too high to limit the size of ajax requests and not too low to enable whole big trees printing */
 	background: #E6E6E6; /* customizable */
 }
@@ -42,6 +42,7 @@
 	top: 0;
 	cursor: move;
 	display: inline-block; /* prevent from blinking on IE */
+	padding: 20px;
 }
 
 .tv_in table.tv_tree,

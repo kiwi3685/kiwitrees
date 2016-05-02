@@ -132,33 +132,33 @@ echo '
 		<div id="adminAccordion" style="visibility:hidden">
 			<h3 id="administration"><i class="fa fa-dashboard fa-fw"></i><span class="menu-name"><span class="menu-name">', WT_I18N::translate('Dashboard'), '</span></span></h3>
 			<div>
-				<p><a ', (WT_SCRIPT_NAME=="admin.php" ? 'class="current" ' : ''), 'href="admin.php">', WT_I18N::translate('Home'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin.php" ? 'class="current" ' : ''), 'href="admin.php">', WT_I18N::translate('Home'), '</a></p>
 			</div>';
 
 if (WT_USER_IS_ADMIN) {
 echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i><span class="menu-name">', WT_I18N::translate('Site Administration'), '</h3>
 			<div>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_config.php"  ? 'class="current" ' : ''), 'href="admin_site_config.php">',  WT_I18N::translate('Site configuration'    ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_logs.php"    ? 'class="current" ' : ''), 'href="admin_site_logs.php">',    WT_I18N::translate('Logs'                  ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_readme.php"  ? 'class="current" ' : ''), 'href="admin_site_readme.php">',  WT_I18N::translate('README documentation'  ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_info.php"    ? 'class="current" ' : ''), 'href="admin_site_info.php">',    WT_I18N::translate('Server information'       ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_access.php"  ? 'class="current" ' : ''), 'href="admin_site_access.php">',  WT_I18N::translate('Site access rules'     ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_clean.php"   ? 'class="current" ' : ''), 'href="admin_site_clean.php">',   WT_I18N::translate('Clean up data folder'  ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_lang.php"    ? 'class="current" ' : ''), 'href="admin_site_lang.php">',    WT_I18N::translate('Custom translation'    ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_site_use.php"     ? 'class="current" ' : ''), 'href="admin_site_use.php">',     WT_I18N::translate('Server usage'		    ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_config.php"  ? 'class="current" ' : ''), 'href="admin_site_config.php">',  WT_I18N::translate('Site configuration'    ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_logs.php"    ? 'class="current" ' : ''), 'href="admin_site_logs.php">',    WT_I18N::translate('Logs'                  ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_readme.php"  ? 'class="current" ' : ''), 'href="admin_site_readme.php">',  WT_I18N::translate('README documentation'  ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_info.php"    ? 'class="current" ' : ''), 'href="admin_site_info.php">',    WT_I18N::translate('Server information'       ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_access.php"  ? 'class="current" ' : ''), 'href="admin_site_access.php">',  WT_I18N::translate('Site access rules'     ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_clean.php"   ? 'class="current" ' : ''), 'href="admin_site_clean.php">',   WT_I18N::translate('Clean up data folder'  ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_lang.php"    ? 'class="current" ' : ''), 'href="admin_site_lang.php">',    WT_I18N::translate('Custom translation'    ), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_site_use.php"     ? 'class="current" ' : ''), 'href="admin_site_use.php">',     WT_I18N::translate('Server usage'		    ), '</a></p>
 			</div>';
 }
 
 echo '		<h3 id="trees"><i class="fa fa-tree fa-fw"></i><span class="menu-name">', WT_I18N::translate('Family trees'), '</span></h3>
 			<div>';
 if (WT_USER_IS_ADMIN) {
-echo '			<p><a ', (WT_SCRIPT_NAME=="admin_trees_manage.php" ? 'class="current" ' : ''), 'href="admin_trees_manage.php">', WT_I18N::translate('Manage family trees'), '</a></p>';
+echo '			<p><a ', (WT_SCRIPT_NAME == "admin_trees_manage.php" ? 'class="current" ' : ''), 'href="admin_trees_manage.php">', WT_I18N::translate('Manage family trees'), '</a></p>';
 }
 				//-- gedcom list
 				foreach (WT_Tree::getAll() as $tree) {
 					if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
 						// Add a title="" element, since long tree titles are cropped
-						echo '<p><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', htmlspecialchars($tree->tree_title), '" dir="auto">', $tree->tree_title_html, '</a></span></p>';
+						echo '<p><span><a ', (WT_SCRIPT_NAME == "admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', htmlspecialchars($tree->tree_title), '" dir="auto">', $tree->tree_title_html, '</a></span></p>';
 					}
 				}
 			echo '</div>
@@ -189,35 +189,43 @@ if (WT_USER_IS_ADMIN) {
 echo '
 			<h3 id="user-admin"><i class="fa fa-users fa-fw"></i><span class="menu-name">', WT_I18N::translate('Users'), '</span></h3>
 			<div>
-				<p><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')!="cleanup"&& safe_GET('action')!="createform" ? 'class="current" ' : ''), 'href="admin_users.php">', WT_I18N::translate('Manage users'), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="createform" ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_users_bulk.php" ? 'class="current" ' : ''), 'href="admin_users_bulk.php">', WT_I18N::translate('Send broadcast messages'), '</a>
-				<p><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')!="cleanup"&& safe_GET('action')!="createform" ? 'class="current" ' : ''), 'href="admin_users.php">', WT_I18N::translate('Manage users'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')=="createform" ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_users_bulk.php" ? 'class="current" ' : ''), 'href="admin_users_bulk.php">', WT_I18N::translate('Send broadcast messages'), '</a>
+				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></p>
 			</div>
 
 			<h3 id="media"><i class="fa fa-image fa-fw"></i><span class="menu-name">', WT_I18N::translate('Media'), '</span></h3>
 			<div>
-				<p><a ', (WT_SCRIPT_NAME=="admin_media.php" ? 'class="current" ' : ''), 'href="admin_media.php">', WT_I18N::translate('Manage media'), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME=="admin_media_upload.php" ? 'class="current" ' : ''), 'href="admin_media_upload.php">', WT_I18N::translate('Upload media files'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_media.php" ? 'class="current" ' : ''), 'href="admin_media.php">', WT_I18N::translate('Manage media'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_media_upload.php" ? 'class="current" ' : ''), 'href="admin_media_upload.php">', WT_I18N::translate('Upload media files'), '</a></p>
 			</div>
 
 			<h3 id="modules"><i class="fa fa-puzzle-piece fa-fw"></i><span class="menu-name">', WT_I18N::translate('Modules'), '</span></h3>
 			<div>
-				<p><a ', (WT_SCRIPT_NAME=="admin_modules.php" ? 'class="current" ' : ''), 'href="admin_modules.php">', WT_I18N::translate('Manage modules'), '</a></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_menus.php"     ? 'class="current" ' : ''), 'href="admin_module_menus.php">',     WT_I18N::translate('Menus' 	),  '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_tabs.php"      ? 'class="current" ' : ''), 'href="admin_module_tabs.php">',      WT_I18N::translate('Tabs'	),  '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_blocks.php"    ? 'class="current" ' : ''), 'href="admin_module_blocks.php">',    WT_I18N::translate('Blocks'	),  '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_widgets.php"   ? 'class="current" ' : ''), 'href="admin_module_widgets.php">',   WT_I18N::translate('Widgets'	),  '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_sidebar.php"   ? 'class="current" ' : ''), 'href="admin_module_sidebar.php">',   WT_I18N::translate('Sidebar'	),  '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_reports.php"   ? 'class="current" ' : ''), 'href="admin_module_reports.php">',   WT_I18N::translate('Reports'	),  '</a></span></p>
-				<p><span><a ', (WT_SCRIPT_NAME=="admin_module_resources.php" ? 'class="current" ' : ''), 'href="admin_module_resources.php">', WT_I18N::translate('Resources'), '</a></span></p>
-			</div>
+				<p><a ', (WT_SCRIPT_NAME=="admin_modules.php" ? 'class="current" ' : ''), 'href="admin_modules.php">', WT_I18N::translate('Manage modules'), '</a></p>';
+				//-- module categories
+				$module_cats = array(
+					"admin_module_menus.php"		=> WT_I18N::translate('Menus'),
+					"admin_module_tabs.php"			=> WT_I18N::translate('Tabs'),
+					"admin_module_blocks.php"		=> WT_I18N::translate('Blocks'),
+					"admin_module_widgets.php"		=> WT_I18N::translate('Widgets'),
+					"admin_module_sidebar.php"		=> WT_I18N::translate('Sidebar'),
+					"admin_module_reports.php"		=> WT_I18N::translate('Reports'),
+					"admin_module_resources.php"	=> WT_I18N::translate('Resources'),
+					"admin_module_charts.php"		=> WT_I18N::translate('Charts'),
+				);
+				asort($module_cats);
+				foreach ($module_cats as $file=>$title) {
+					echo '<p><a ', (WT_SCRIPT_NAME == $file ? 'class="current" ' : ''), 'href="', $file, '">', $title, '</a></p>';
+				}
+			echo '</div>
 
 			<h3 id="extras"><i class="fa fa-cogs fa-fw"></i><span class="menu-name">', WT_I18N::translate('Tools'), '</span></h3>
 			<div>';
 				foreach (WT_Module::getActiveModules(true) as $module) {
 					if ($module instanceof WT_Module_Config) {
-						echo '<p><span><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></span></p>';
+						echo '<p><span><a ', (WT_SCRIPT_NAME == "module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></span></p>';
 					}
 				}
 }

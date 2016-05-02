@@ -45,7 +45,7 @@ define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3&amp;language=' .
 //
 // Hence, use "Google Maps™ mapping service" where appropriate.
 
-class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
+class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab, WT_Module_Chart {
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps™');
@@ -90,6 +90,21 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Config
 	public function getConfigLink() {
 		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
+	}
+
+	// Implement WT_Module_Chart
+	public function getChartMenus() {
+		global $controller;
+		$indi_xref = $controller->getSignificantIndividual()->getXref();
+		$menus	= array();
+		$menu	= new WT_Menu(
+			$this->getTitle(),
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=pedigree_map&amp;rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
+			'menu-chart-pedigree_map'
+		);
+		$menus[] = $menu;
+
+		return $menus;
 	}
 
 	// Implement WT_Module_Tab
