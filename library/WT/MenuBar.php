@@ -96,119 +96,50 @@ class WT_MenuBar {
 			return null;
 		}
 
-		$indi_xref = $controller->getSignificantIndividual()->getXref();
-		$PEDIGREE_ROOT_ID = get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
-
-		$menu = new WT_Menu(WT_I18N::translate('Charts'), '#', 'menu-chart');
-
 		$active_charts = WT_Module::getActiveCharts();
-		uasort($active_charts, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
-		foreach ($active_charts as $chart) {
-			foreach ($chart->getChartMenus() as $submenu) {
-				$menu->addSubmenu($submenu);
+
+		if ($active_charts) {
+			$indi_xref = $controller->getSignificantIndividual()->getXref();
+			$PEDIGREE_ROOT_ID = get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
+
+			$menu = new WT_Menu(WT_I18N::translate('Charts'), '#', 'menu-chart');
+
+			uasort($active_charts, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+			foreach ($active_charts as $chart) {
+				foreach ($chart->getChartMenus() as $submenu) {
+					$menu->addSubmenu($submenu);
+				}
 			}
+			return $menu;
 		}
-		return $menu;
 	}
 
 	public static function getListsMenu() {
 		global $SEARCH_SPIDER, $controller;
 
-		// The top level menu shows the individual list
-		$menu = new WT_Menu(WT_I18N::translate('Lists'), '#', 'menu-list');
+		$active_lists = WT_Module::getActiveLists();
 
-		// Do not show empty lists
-		$row = WT_DB::prepare(
-			"SELECT SQL_CACHE".
-			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour,".
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo,".
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='NOTE') AS note,".
-			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file=?                  ) AS obje"
-		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
+		if ($active_lists) {
+			// The top level menu shows the individual list
+			$menu = new WT_Menu(WT_I18N::translate('Lists'), '#', 'menu-list');
 
-		// Build a list of submenu items and then sort it in localized name order
-		$menulist = array('indilist.php' => WT_I18N::translate('Individuals'));
-		if (!$SEARCH_SPIDER) {
-			// Build a list of submenu items and then sort it in localized name order
-			$menulist['calendar.php'  ] = WT_I18N::translate('Calendar');
-			$menulist['famlist.php'  ] = WT_I18N::translate('Families');
-			$menulist['branches.php' ] = WT_I18N::translate('Branches');
-			$menulist['placelist.php'] = WT_I18N::translate('Place hierarchy');
-			if ($row->obje) {
-				$menulist['medialist.php'] = WT_I18N::translate('Media objects');
+			// Do not show empty lists
+			$row = WT_DB::prepare(
+				"SELECT SQL_CACHE".
+				" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour,".
+				" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo,".
+				" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='NOTE') AS note,".
+				" EXISTS(SELECT 1 FROM `##media`   WHERE m_file=?                  ) AS obje"
+			)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
+
+			uasort($active_lists, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+			foreach ($active_lists as $list) {
+				foreach ($list->getListMenus() as $submenu) {
+					$menu->addSubmenu($submenu);
+				}
 			}
-			if ($row->repo) {
-				$menulist['repolist.php'] = WT_I18N::translate('Repositories');
-			}
-			if ($row->sour) {
-				$menulist['sourcelist.php'] = WT_I18N::translate('Sources');
-			}
-			if ($row->note) {
-				$menulist['notelist.php'] = WT_I18N::translate('Shared notes');
-			}
-			if (array_key_exists('calendar_utilities', WT_Module::getActiveModules())) {
-				$menulist['module.php?mod=calendar_utilities&amp;mod_action=show'] = WT_I18N::translate('Calendar utilities');
-			}
+			return $menu;
 		}
-		asort($menulist);
-
-		$surname_url = '?surname='.rawurlencode($controller->getSignificantSurname()).'&amp;ged='.WT_GEDURL;
-
-		foreach ($menulist as $page=>$name) {
-			switch ($page) {
-			case 'indilist.php':
-				$submenu = new WT_Menu($name, $page.$surname_url, 'menu-list-indi');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'famlist.php':
-				$submenu = new WT_Menu($name, $page.$surname_url, 'menu-list-fam');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'branches.php':
-				$submenu = new WT_Menu($name, $page.$surname_url, 'menu-branches');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'sourcelist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-sour');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'notelist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-note');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'repolist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-repo');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'placelist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-plac');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'medialist.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-obje');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'calendar.php':
-				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-calendar');
-				$menu->addSubmenu($submenu);
-				break;
-
-			case 'module.php?mod=calendar_utilities&amp;mod_action=show':
-				$submenu = new WT_Menu($name, $page, 'menu-calendar_utilities');
-				$menu->addSubmenu($submenu);
-				break;
-			}
-		}
-
-		return $menu;
 	}
 
 	/**

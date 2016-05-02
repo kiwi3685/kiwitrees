@@ -214,6 +214,7 @@ echo '
 					"admin_module_reports.php"		=> WT_I18N::translate('Reports'),
 					"admin_module_resources.php"	=> WT_I18N::translate('Resources'),
 					"admin_module_charts.php"		=> WT_I18N::translate('Charts'),
+					"admin_module_lists.php"		=> WT_I18N::translate('Lists'),
 				);
 				asort($module_cats);
 				foreach ($module_cats as $file=>$title) {

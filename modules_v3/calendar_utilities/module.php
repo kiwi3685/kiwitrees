@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config {
+class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_List {
 
 	// Extend class WT_Module
 	public function getTitle() {
@@ -37,7 +37,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “calendar_utilities” module */ WT_I18N::translate('A selection of calendar utility tools');
+		return /* I18N: Description of the calendar utilities module */ WT_I18N::translate('A selection of calendar utility tools');
 	}
 
 	// Extend class WT_Module
@@ -55,6 +55,19 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 			$this->config();
 			break;
 		}
+	}
+
+	// Implement WT_Module_List
+	public function getListMenus() {
+		global $controller;
+		$menus = array();
+		$menu  = new WT_Menu(
+			$this->getTitle(),
+			'module.php?mod=calendar_utilities&amp;mod_action=show',
+			'menu-calendar_utilities'
+		);
+		$menus[] = $menu;
+		return $menus;
 	}
 
 	// Implement WT_Module_Config

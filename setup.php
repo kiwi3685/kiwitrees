@@ -757,7 +757,7 @@ try {
 		"CREATE TABLE IF NOT EXISTS `##module_privacy` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" gedcom_id     INTEGER     NOT NULL,".
-		" component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme', 'widget', 'resource') NOT NULL,".
+		" component     ENUM('block', 'chart', 'list', 'menu', 'report', 'sidebar', 'tab', 'widget', 'resource') NOT NULL,".
 		" access_level  TINYINT     NOT NULL,".
 		" PRIMARY KEY                        (module_name, gedcom_id, component),".
 		" FOREIGN KEY `##module_privacy_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */,".
@@ -919,7 +919,7 @@ try {
 
 	// Create the default settings for new family trees
 	WT_DB::prepare(
-		"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES 
+		"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES
 			(-1, 'main', 1, 'gedcom_stats'),
 			(-1, 'side', 1, 'gedcom_block'),
 			(-1, 'side', 2, 'todays_events'),
