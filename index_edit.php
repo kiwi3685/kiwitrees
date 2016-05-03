@@ -235,7 +235,7 @@ $controller
 	var block_descr = new Array();
 	');
 
-	
+
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name=>$block) {
 		$controller->addInlineJavascript(
@@ -248,89 +248,98 @@ $controller
 
 ?>
 <form name="config_setup" method="post" action="index_edit.php?action=update" onsubmit="select_options(); return modalDialogSubmitAjax(this);" >
-<input type="hidden" name="user_id"   value="<?php echo $user_id; ?>">
-<input type="hidden" name="gedcom_id" value="<?php echo $gedcom_id; ?>">
-<table border="1" id="change_blocks">
-<?php
-// NOTE: Row 1: Column legends
-echo '<tr>';
-	echo '<td class="descriptionbox center vmiddle" colspan="2">';
-		echo '<b>', WT_I18N::translate('Main Section Blocks'), '</b>';
-	echo '</td>';
-	echo '<td class="descriptionbox center vmiddle" colspan="3">';
-		echo '<b>', WT_I18N::translate('Available Blocks'), '</b>';
-	echo '</td>';
-	echo '<td class="descriptionbox center vmiddle" colspan="2">';
-		echo '<b>', WT_I18N::translate('Right Section Blocks'), '</b>';
-	echo '</td>';
-echo '</tr>';
-echo '<tr>';
-// NOTE: Row 2 column 1: Up/Down buttons for left (main) block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_up_block(\'main_select\');" title="', WT_I18N::translate('Move up'), '"class="', $IconUarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_down_block(\'main_select\');" title="', WT_I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_up');
-echo '</td>';
-// NOTE: Row 2 column 2: Left (Main) block list
-echo '<td class="optionbox center">';
-	echo '<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">';
-	foreach ($blocks['main'] as $block_id=>$block_name) {
-		echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
-	}
-	echo '</select>';
-echo '</td>';
-// NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_left_right_block(\'main_select\', \'right_select\');" title="', WT_I18N::translate('Move Right'), '"class="', $IconRDarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'main_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '"class="', $IconRarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'available_select\', \'main_select\');" title="', WT_I18N::translate('Add'), '"class="', $IconLarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_right');
-echo '</td>';
-// Row 2 column 4: Middle (Available) block list
-echo '<td class="optionbox center">';
-	echo '<select id="available_select" name="available[]" size="10" onchange="show_description(\'available_select\');">';
-	foreach ($all_blocks as $block_name=>$block) {
-		echo '<option value="', $block_name, '">', $block->getTitle(), '</option>';
-	}
-	echo '</select>';
-echo '</td>';
-// NOTE: Row 2 column 5: Left/Right buttons for right block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_left_right_block(\'right_select\', \'main_select\');" title="', WT_I18N::translate('Move Left'), '"class="', $IconLDarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'right_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '"class="', $IconLarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'available_select\', \'right_select\');" title="', WT_I18N::translate('Add'), '"class="', $IconRarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_right');
-echo '</td>';
-// NOTE: Row 2 column 6: Right block list
-echo '<td class="optionbox center">';
-	echo '<select multiple="multiple" id="right_select" name="right[]" size="10" onchange="show_description(\'right_select\');">';
-	foreach ($blocks['side'] as $block_id=>$block_name) {
-		echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
-	}
-	echo '</select>';
-echo '</td>';
-// NOTE: Row 2 column 7: Up/Down buttons for right block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_up_block(\'right_select\');" title="', WT_I18N::translate('Move up'), '"class="', $IconUarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_down_block(\'right_select\');" title="', WT_I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_up');
-echo '</td>';
-echo '</tr>';
-// NOTE: Row 3 columns 1-7: Summary description of currently selected block
-echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
-echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
-echo '</div></td></tr>';
-echo '<tr><td class="topbottombar" colspan="7">';
-echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
-echo '</td></tr></table>';
-echo '</form>';
+	<input type="hidden" name="user_id"   value="<?php echo $user_id; ?>">
+	<input type="hidden" name="gedcom_id" value="<?php echo $gedcom_id; ?>">
+	<table id="change_blocks">
+		<!-- NOTE: Row 1: Column legends -->
+		<tr>
+			<td class="descriptionbox center vmiddle" colspan="2">
+				<b><?php echo WT_I18N::translate('Main Section Blocks'); ?></b>
+			</td>
+			<td class="descriptionbox center vmiddle" colspan="3">
+				<b><?php echo WT_I18N::translate('Available Blocks'); ?></b>
+			</td>
+			<td class="descriptionbox center vmiddle" colspan="2">
+				<b><?php echo WT_I18N::translate('Right Section Blocks'); ?></b>
+			</td>
+		</tr>
+		<tr>
+			<!-- NOTE: Row 2 column 1: Up/Down buttons for left (main) block list -->
+			<td class="optionbox center vmiddle">
+				<a onclick="move_up_block('main_select');" title="<?php echo WT_I18N::translate('Move up'); ?>"class="<?php echo $IconUarrow; ?>"></a>
+				<br>
+				<a onclick="move_down_block('main_select');" title="<?php echo WT_I18N::translate('Move down'); ?>"class="<?php echo $IconDarrow; ?>"></a>
+				<br><br>
+				<?php echo help_link('block_move_up'); ?>
+			</td>
+			<!-- NOTE: Row 2 column 2: Left (Main) block list -->
+			<td class="optionbox center">
+				<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">
+					<?php foreach ($blocks['main'] as $block_id=>$block_name) { ?>
+						<option value="<?php echo $block_id; ?>"><?php echo $all_blocks[$block_name]->getTitle(); ?></option>
+					<?php } ?>
+				</select>
+			</td>
+			<!-- NOTE: Row 2 column 3: Left/Right buttons for left (main) block list -->
+			<td class="optionbox center vmiddle">
+				<a onclick="move_left_right_block('main_select', 'right_select');" title="<?php echo WT_I18N::translate('Move Right'); ?>"class="<?php echo $IconRDarrow; ?>"></a>
+				<br>
+				<a onclick="move_left_right_block('main_select', 'available_select');" title="<?php echo WT_I18N::translate('Remove'); ?>"class="<?php echo $IconRarrow; ?>"></a>
+				<br>
+				<a onclick="move_left_right_block('available_select', 'main_select');" title="<?php echo WT_I18N::translate('Add'); ?>"class="<?php echo $IconLarrow; ?>"></a>
+				<br><br>
+				<?php echo help_link('block_move_right'); ?>
+			</td>
+			<!-- NOTE: Row 2 column 4: Middle (Available) block list -->
+			<td class="optionbox center">
+				<select id="available_select" name="available[]" size="10" onchange="show_description(\'available_select\');">
+					<?php foreach ($all_blocks as $block_name=>$block) { ?>
+						<option value="<?php echo $block_name; ?>"><?php echo $block->getTitle(); ?></option>
+					<?php } ?>
+				</select>
+			</td>
+			<!-- NOTE: Row 2 column 5: Left/Right buttons for right block list -->
+			<td class="optionbox center vmiddle">
+				<a onclick="move_left_right_block('right_select', 'main_select');" title="<?php echo WT_I18N::translate('Move Left'); ?>"class="<?php echo $IconLDarrow; ?>"></a>
+				<br>
+				<a onclick="move_left_right_block('right_select', 'available_select');" title="<?php echo WT_I18N::translate('Remove'); ?>"class="<?php echo $IconLarrow; ?>"></a>
+				<br>
+				<a onclick="move_left_right_block('available_select', 'right_select');" title="<?php echo WT_I18N::translate('Add'); ?>"class="<?php echo $IconRarrow; ?>"></a>
+				<br><br>
+				<?php echo help_link('block_move_right'); ?>
+			</td>
+			<!-- NOTE: Row 2 column 6: Right block list -->
+			<td class="optionbox center">
+				<select multiple="multiple" id="right_select" name="right[]" size="10" onchange="show_description('right_select');">
+					<?php foreach ($blocks['side'] as $block_id=>$block_name) { ?>
+						<option value="<?php echo $block_id; ?>"><?php echo $all_blocks[$block_name]->getTitle(); ?></option>
+					<?php } ?>
+				</select>
+			</td>
+			<!-- NOTE: Row 2 column 7: Up/Down buttons for right block list -->
+			<td class="optionbox center vmiddle">
+				<a onclick="move_up_block('right_select');" title="<?php echo WT_I18N::translate('Move up'); ?>"class="<?php echo $IconUarrow; ?>"></a>
+				<br>
+				<a onclick="move_down_block('right_select');" title="<?php echo WT_I18N::translate('Move down'); ?>"class="<?php echo $IconDarrow; ?>"></a>
+				<br><br>
+				<?php echo help_link('block_move_up'); ?>
+			</td>
+		</tr>
+		<!-- NOTE: Row 3 columns 1-7: Summary description of currently selected block -->
+		<tr>
+			<td class="descriptionbox wrap" colspan="7">
+				<div id="instructions">
+					<?php echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'); ?>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="topbottombar" colspan="7">
+				<button class="btn btn-primary show" type="submit">
+					<i class="fa fa-floppy-o"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+			</td>
+		</tr>
+	</table>
+</form>

@@ -56,7 +56,10 @@ if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		<?php echo $block->configureBlock($block_id); ?>
 		<tr>
 			<td colspan="2" class="topbottombar">
-				<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+				<button class="btn btn-primary show" type="submit">
+					<i class="fa fa-floppy-o"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
 			</td>
 		</tr>
 	</table>

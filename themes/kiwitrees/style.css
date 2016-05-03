@@ -656,6 +656,10 @@ div[id*='-page'] {
 	padding: 0 3px;
 }
 
+#change_blocks button {
+	font-size: initial;
+}
+
 /* Home page specific */
 #home-page #index_main_blocks {
 	float: none;
@@ -856,6 +860,10 @@ table.center {
 
 .facts_table {
 	width: 100%;
+}
+
+.facts_table button {
+	font-size: initial;
 }
 
 .facts_label {
