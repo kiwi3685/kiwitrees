@@ -40,6 +40,11 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		return /* I18N: Description of the “Home page” module */ WT_I18N::translate('A greeting message for site visitors.');
 	}
 
+	// Extend class WT_Module_Block
+	public function defaultAccessLevel() {
+		return WT_PRIV_PUBLIC;
+	}
+
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $controller;

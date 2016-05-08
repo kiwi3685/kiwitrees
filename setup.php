@@ -930,14 +930,6 @@ try {
 			(NULL, NULL, 0, 'widget_todays_events')"
 	)->execute();
 
-	// Create the blocks for the admin user
-	WT_DB::prepare(
-		"INSERT INTO `##block` (user_id, location, block_order, module_name)" .
-		" SELECT 1, location, block_order, module_name" .
-		" FROM `##block`" .
-		" WHERE user_id=-1"
-	)->execute();
-
 	// Write the config file.  We already checked that this would work.
 	$config_ini_php=
 		'; <'.'?php exit; ?'.'> DO NOT DELETE THIS LINE'      . PHP_EOL.

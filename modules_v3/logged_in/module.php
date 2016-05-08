@@ -40,6 +40,11 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		return /* I18N: Description of the “Who is online” module */ WT_I18N::translate('A list of users and visitors who are currently online.');
 	}
 
+	// Extend class WT_Module_Block
+	public function defaultAccessLevel() {
+		return WT_PRIV_PUBLIC;
+	}
+
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;

@@ -106,7 +106,7 @@ abstract class WT_Module {
 	// This is the default for the module and all its components.
 	public function defaultAccessLevel() {
 		// Returns one of: WT_PRIV_HIDE, WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_ADMIN
-//		return WT_PRIV_PUBLIC;
+		return WT_PRIV_HIDE;
 	}
 
 	// This is an internal name, used to generate identifiers
