@@ -35,7 +35,7 @@ class WT_Controller_Simple extends WT_Controller_Page {
 	}
 
 	// Simple (i.e. popup) windows are deprecated.
-	public function pageHeader() {
+	public function pageHeader($maintenance=false) {
 		global $view;
 		$view = 'simple';
 		parent::pageHeader();
