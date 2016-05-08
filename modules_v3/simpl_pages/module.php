@@ -317,14 +317,16 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getMenuTitle())
-			->pageHeader();
-		$items_id	 = safe_GET('pages_id');
+			->pageHeader()
+			->addInlineJavascript('jQuery("#pages_tabs").tabs();');
+
 		$items_list  = $this->getPagesList();
 		$count_items = 0;
+
 		foreach ($items_list as $items) {
 			$languages = get_block_setting($items->block_id, 'languages');
 			if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $items->pages_access >= WT_USER_ACCESS_LEVEL) {
-				$count_items = $count_items +1;
+				$count_items = $count_items + 1;
 			}
 		}
 		?>
@@ -332,40 +334,48 @@ class simpl_pages_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			<h2><?php echo $this->getMenuTitle(); ?></h2>
 			<p><?php echo $this->getSummaryDescription(); ?></p>
 			<div style="clear:both;"></div>
-			<div id="pages_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-				<?php
-				if ($count_items > 1) { ?>
-					<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+			<?php if ($count_items == 0) { ?>
+				<h4><?php echo WT_I18N::translate('No content'); ?></h4>
+			<?php }
+			if ($count_items == 1) {
+				$languages = get_block_setting($items->block_id, 'languages');
+				if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $items->pages_access >= WT_USER_ACCESS_LEVEL) { ?>
+					<div>
+						<?php echo $items_list[0]->pages_content; ?>
+					</div>
+				<?php }
+			} else { ?>
+				<div id="pages_tabs">
+					<ul>
 						<?php
-						foreach ($items_list as $items) {
+						$page_id = 0;
+	 					foreach ($items_list as $items) {
+							$page_id ++;
 							$languages = get_block_setting($items->block_id, 'languages');
 							if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $items->pages_access >= WT_USER_ACCESS_LEVEL) { ?>
-								<li class="ui-state-default ui-corner-top<?php ($items_id==$items->block_id ? ' ui-tabs-selected ui-state-active' : ''); ?>">
-									<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;pages_id=<?php echo $items->block_id; ?>" class="ui-tabs-anchor">
+								<li>
+									<a href="#pageid_<?php echo $page_id; ?>">
 										<span title="<?php echo WT_I18N::translate($items->pages_title); ?>"><?php echo WT_I18N::translate($items->pages_title); ?></span>
 									</a>
 								</li>
 							<?php }
 						} ?>
 					</ul>
-				<?php } ?>
-				<div id="outer_pages_container" style="padding: 1em;">
 					<?php
+					$page_id = 0;
 					foreach ($items_list as $items) {
+						$page_id ++;
 						$languages = get_block_setting($items->block_id, 'languages');
-						if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $items_id==$items->block_id && $items->pages_access >= WT_USER_ACCESS_LEVEL) {
-							$items_content = $items->pages_content;
-						}
-					}
-					if (empty($items_content)) {
-						$items_content = '<h4>'.WT_I18N::translate('No content').'</h4>';
-					}
-					echo $items_content; ?>
-				</div> <!-- close outer_pages_container -->
-			</div> <!-- close pages_tabs -->
+						if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $items->pages_access >= WT_USER_ACCESS_LEVEL) { ?>
+							<div id="pageid_<?php echo $page_id; ?>">
+								<?php echo $items->pages_content; ?>
+							</div>
+						<?php }
+					} ?>
+				</div> <!-- close pages_tabs -->
+			<?php } ?>		
 		</div> <!-- close pages-container -->
-		<?php
-	}
+	<?php }
 
 	private function config() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
