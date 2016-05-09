@@ -38,54 +38,18 @@ if (!defined('WT_WEBTREES')) {
 // we can show the death of X on the page of Y, or the marriage
 // of X+Y on the page of Z.  We need to know both records to
 // calculate ages, relationships, etc.
-function print_resourcefact(WT_Event $fact, WT_GedcomRecord $record) {
+//
+// This is a copy of function print_fact() (functions_print_facts.php) without date and place for different formatting purposes
+//
+function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 	global $HIDE_GEDCOM_ERRORS;
 	$SHOW_PARENTS_AGE = false; // not required on resource prints
+	$html = '';
 
 	static $n_chil = 0, $n_gchi = 0;
 
 	if (!$fact->canShow()) {
 		return;
-	}
-
-	// Some facts don't get printed here ...
-	switch ($fact->getTag()) {
-	case 'NOTE':
-		print_main_notes($fact, 1);
-		return;
-	case 'SOUR':
-		print_main_sources($fact, 1);
-		return;
-	case 'OBJE':
-		// These are printed separately, after all other facts
-		return;
-	case 'BLOB':
-		// A deprecated tag, that cannot be displayed ??
-		return;
-	case 'FAMC':
-	case 'FAMS':
-	case 'CHIL':
-	case 'HUSB':
-	case 'WIFE':
-		// These are internal links, not facts
-		return;
-	case '_WT_OBJE_SORT':
-		// These links are used internally to record the sort order.
-		return;
-	default:
-		// Hide unrecognised/custom tags?
-		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact->getTag())) {
-			return;
-		}
-		break;
-	}
-
-	// Print the date of this fact/event
-	echo format_fact_date($fact, $record, false, true, false);
-
-	// Print the place of this fact/event
-	if (format_fact_place($fact) != ' - ') {
-		echo '<span class="place">', format_fact_place($fact, true), '</span>';
 	}
 
 	// Print the value of this fact/event
@@ -94,72 +58,81 @@ function print_resourcefact(WT_Event $fact, WT_GedcomRecord $record) {
 		print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
-		echo '<span class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getDetail()), '" target="new">', htmlspecialchars($fact->getDetail()), '</a></span>';
+		$html .= '<a href="https://familysearch.org/search/tree/results#count=20&query=afn:' . rawurlencode($fact->getDetail()) . '" target="new">' . htmlspecialchars($fact->getDetail()) . '</a>';
 		break;
 	case 'ASSO':
 		// we handle this later, in print_asso_rela_record()
 		break;
+	case 'BURI':
+		// include CEME if recorded
+		if (preg_match('/\n2 CEME (.+)/', $fact->getGedcomRecord(), $match)) {
+			$html .= WT_Gedcom_Tag::getLabelValue('CEME', $match[1]);
+		} else {
+			$html .= '&nbsp;';
+		}
+		break;
 	case 'EMAIL':
 	case 'EMAI':
 	case '_EMAIL':
-		echo '<span class="field"><a href="mailto:', htmlspecialchars($fact->getDetail()), '">', htmlspecialchars($fact->getDetail()), '</a></span>';
+		$html .= '<a href="mailto:' . htmlspecialchars($fact->getDetail()) . '">' . htmlspecialchars($fact->getDetail()) . '</a>';
 		break;
 	case 'FILE':
 		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-			echo '<span class="field">', htmlspecialchars($fact->getDetail()), '</span>';
+			$html .= htmlspecialchars($fact->getDetail());
 		}
 		break;
 	case 'RESN':
-		echo '<span class="field">';
+		$html .= '';
 		switch ($fact->getDetail()) {
 		case 'none':
 			// Note: "1 RESN none" is not valid gedcom.
 			// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
-			echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
+			$html .= '<i class="icon-resn-none"></i> ' . WT_I18N::translate('Show to visitors');
 			break;
 		case 'privacy':
-			echo '<i class="icon-class-none"></i> ', WT_I18N::translate('Show to members');
+			$html .= '<i class="icon-class-none"></i> ' . WT_I18N::translate('Show to members');
 			break;
 		case 'confidential':
-			echo '<i class="icon-confidential-none"></i> ', WT_I18N::translate('Show to managers');
+			$html .= '<i class="icon-confidential-none"></i> ' . WT_I18N::translate('Show to managers');
 			break;
 		case 'locked':
-			echo '<i class="icon-locked-none"></i> ', WT_I18N::translate('Only managers can edit');
+			$html .= '<i class="icon-locked-none"></i> ' . WT_I18N::translate('Only managers can edit');
 			break;
 		default:
-			echo htmlspecialchars($fact->getDetail());
+			$html .= htmlspecialchars($fact->getDetail());
 			break;
 		}
-		echo '</span>';
+		$html .= '';
 		break;
 	case 'PUBL': // Publication details might contain URLs.
-		echo '<span class="field">', expand_urls(htmlspecialchars($fact->getDetail())), '</span>';
+		$html .= expand_urls(htmlspecialchars($fact->getDetail()));
 		break;
 	case 'REPO':
-		if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getDetail(), $match)) {
+		if (preg_match('/^@('.WT_REGEX_XREF.')@$/' . $fact->getDetail() . $match)) {
 			print_repository_record($match[1]);
 		} else {
-			echo '<div class="error">', htmlspecialchars($fact->getDetail()), '</div>';
+			$html .= '<div class="error">' . htmlspecialchars($fact->getDetail()) . '</div>';
 		}
 		break;
 	case 'URL':
 	case '_URL':
 	case 'WWW':
-		echo '<span class="field"><a href="', htmlspecialchars($fact->getDetail()), '">', htmlspecialchars($fact->getDetail()), '</a></span>';
+		$html .= '<a href="' . htmlspecialchars($fact->getDetail()) . '">' . htmlspecialchars($fact->getDetail()) . '</a>';
 		break;
 	case 'TEXT': // 0 SOUR / 1 TEXT
-		// PHP5.3 echo '<span class="field">', nl2br(htmlspecialchars($fact->getDetail()), false), '</div>';
-		echo '<span class="field">', nl2br(htmlspecialchars($fact->getDetail())), '</span>';
+		// PHP5.3 $html .= nl2br(htmlspecialchars($fact->getDetail()) . false) . '</div>';
+		$html .= nl2br(htmlspecialchars($fact->getDetail()));
 		break;
 	default:
 		// Display the value for all other facts/events
 		switch ($fact->getDetail()) {
 		case '':
 			// Nothing to display
+			$html .= '&nbsp;';
 			break;
 		case 'N':
 			// Not valid GEDCOM
-			echo '<span class="field">', WT_I18N::translate('No'), '</span>';
+			$html .= WT_I18N::translate('No');
 			break;
 		case 'Y':
 			// Do not display "Yes".
@@ -168,17 +141,20 @@ function print_resourcefact(WT_Event $fact, WT_GedcomRecord $record) {
 			if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getDetail(), $match)) {
 				$target = WT_GedcomRecord::getInstance($match[1]);
 				if ($target) {
-					echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
+					$html .= '<div><a href="' . $target->getHtmlUrl() . '">' . $target->getFullName() . '</a></div>';
 				} else {
-					echo '<div class="error">', htmlspecialchars($fact->getDetail()), '</div>';
+					$html .= '<div class="error">' . htmlspecialchars($fact->getDetail()) . '</div>';
 				}
 			} else {
-				echo '<span class="field"><span dir="auto">', htmlspecialchars($fact->getDetail()), '</span></span>';
+				$html .= '<span dir="auto">' . htmlspecialchars($fact->getDetail()) . '</span>';
 			}
 			break;
 		}
 		break;
 	}
+
+	return $html;
+
 }
 //end print resource fact function
 
@@ -209,8 +185,8 @@ function resource_sources(WT_Event $fact, $level, $source_num) {
 	for ($j = 0; $j < $ct; $j++) {
 		$details = '';
 		$sid	= trim($match[$j][2], '@');
-		$spos1	= strpos($fact, $match[$j][1], $spos2);
-		$spos2	= strpos($fact, "\n$level", $spos1);
+		$spos1	= stripos($fact, $match[$j][1], $spos2);
+		$spos2	= stripos($fact, "\n$level", $spos1);
 		if (!$spos2) $spos2 = strlen($fact);
 		$srec	= substr($fact, $spos1, $spos2-$spos1);
 		$source	= WT_Source::getInstance($sid);
@@ -315,8 +291,8 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 	$ct = preg_match_all("/$level NOTE(.*)/", $fact, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
 		$nid = str_replace("@","",$match[$j][1]);
-		$spos1 = strpos($fact, $match[$j][0], $previous_spos);
-		$spos2 = strpos($fact."\n$level", "\n$level", $spos1+1);
+		$spos1 = stripos($fact, $match[$j][0], $previous_spos);
+		$spos2 = stripos($fact."\n$level", "\n$level", $spos1+1);
 		if (!$spos2) $spos2 = strlen($fact);
 		$nrec = substr($fact, $spos1, $spos2-$spos1);
 		if (!isset($match[$j][1])) $match[$j][1]="";
@@ -337,7 +313,7 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 					$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
 					$data .= $closeSpan;
 					if (!$textOnly) {
-						if (strpos($noterec, "1 SOUR")!==false) {
+						if (stripos($noterec, "1 SOUR")!==false) {
 							require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 							$data .= print_fact_sources($noterec, 1, true);
 						}
@@ -348,7 +324,7 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 			}
 		}
 		if (!$textOnly) {
-			if (strpos($fact, "$nlevel SOUR")!==false) {
+			if (stripos($fact, "$nlevel SOUR")!==false) {
 				$data .= "<div class=\"indent\">";
 				$data .= print_fact_sources($nrec, $nlevel, true);
 				$data .= "</div>";
@@ -359,24 +335,75 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 	else return $data;
 }
 
-function resource_fact($level, $fact, $output) {
-	$data = array();
+function resource_findfact($level, $fact, $year_from, $year_to, $place, $detail) {
+	$list = array();
 	// Fetch all data, regardless of privacy
 	$sql = "SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
 				" FROM `##individuals`" .
-				" WHERE `i_gedcom` REGEXP '(.*)\n" . $level . " " . $fact . " (.*)" . $output . "(.*)\n' AND i_file=?";
+				" WHERE `i_gedcom` REGEXP '(.*)\n" . $level . " " . $fact . "' AND i_file=?";
 	$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID))->fetchAll();
-
-	return $rows;
-}
-
-function simpl_fact($level, $fact, $person) {
-//	if ($level == 1) {
-		$html = htmlspecialchars($person->getFactByType($fact)->getDetail());
-//	} else {
-//			preg_match_all('/\n2 (' . $fact . ') (.+)/', $person->getGedcomRecord(), $match, PREG_SET_ORDER);
-//			$label_fact = WT_Gedcom_Tag::getLabelValue($fact, htmlspecialchars($match[0][2]));
-//			$html = preg_replace('/([a-zA-Z])+:/', '', $label_fact);
-//	}
-	return $html;
+	foreach ($rows as $row) {
+		$person = WT_Person::getInstance($row->xref);
+		$indifacts = $person->getIndiFacts();
+		foreach ($indifacts as $item) {
+			if ($item->getTag() == $fact) {
+				if ($year_from || $year_to || $place || $detail) {
+					$result_place = format_fact_place($item, true);
+					$result_date = format_fact_date($item, $person, false, true, false);
+					if ($year_from || $year_to) {
+						preg_match_all("/\d{4}/", format_fact_date($item, $person, false, true, false), $matches);
+						$ct = count($matches[0]);
+						if (
+								($ct == 1 && (
+										($year_from && !$year_to && $matches[0][0] >= $year_from) ||
+										($year_to && !$year_from && $matches[0][0] <= $year_to) ||
+										($year_from && $year_to && $matches[0][0] >= $year_from && $matches[0][0] <= $year_to)
+									)
+								) ||
+								($ct == 2 && (
+										($year_from && $matches[0][0] >= $year_from) && ($year_to && $matches[0][0] <= $year_to) &&
+										($year_from && $matches[0][1] >= $year_from) && ($year_to && $matches[0][1] <= $year_to)
+									)
+								)
+							) {
+								if (!$place && !$detail) {
+									$list[] = $row;
+								} elseif ($place && !$detail && stripos(strip_tags($result_place), $place) !== false) {
+									$list[] = $row;
+								} elseif (!$place && $detail && stripos(strip_tags($result_detail), $detail) !== false) {
+									$list[] = $row;
+								} elseif ($place && $detail && stripos(strip_tags($result_place), $place) !== false && stripos(strip_tags($result_detail), $detail) !== false) {
+									$list[] = $row;
+								}
+						}
+					}
+					if ($place && !$year_from && !$year_to) {
+						if (stripos(strip_tags($result_place), $place) !== false) {
+							if (!$detail) {
+								$list[] = $row;
+							} elseif ($detail && stripos(strip_tags($result_detail), $detail) !== false ) {
+								$list[] = $row;
+							}
+						}
+					}
+					if ($detail && !$year_from && !$year_to && !$place) {
+						if (stripos(strip_tags($result_detail), $detail) !== false) {
+							$list[] = $row;
+						}
+					}
+				} else {
+					$list[] = $row;
+				}
+			}
+		}
+	}
+	// remove duplicates
+	foreach ($list as $key=>$value) {
+		$list[$key] = serialize($list[$key]);
+	}
+	$list = array_unique($list);
+	foreach ($list as $key=>$value){
+		$list[$key] = unserialize($list[$key]);
+	}
+	return $list;
 }

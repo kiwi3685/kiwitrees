@@ -1531,6 +1531,10 @@ function old_paths() {
 		WT_ROOT.'modules_v3/fancy_imagebar/style.js',
 		WT_ROOT.'search-advanced.php',
 		WT_ROOT.'library/WT/Controller/AdvancedSearch.php',
+		WT_ROOT.'modules_v3/birth_report',
+		WT_ROOT.'modules_v3/death_report',
+		WT_ROOT.'modules_v3/cemetery_report',
+
 	);
 }
 

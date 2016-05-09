@@ -90,15 +90,15 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		session_write_close();
 
 		//-- args
-		$go 					= WT_Filter::post('go');
-		$rootid 			= WT_Filter::get('rootid');
-		$root_id			= WT_Filter::post('root_id');
-		$rootid				= empty($root_id) ? $rootid : $root_id;
-		$photos				= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
-		$ged					= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
+		$go 			= WT_Filter::post('go');
+		$rootid 		= WT_Filter::get('rootid');
+		$root_id		= WT_Filter::post('root_id');
+		$rootid			= empty($root_id) ? $rootid : $root_id;
+		$photos			= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
+		$ged			= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
 		$showsources	= WT_Filter::post('showsources') ? WT_Filter::post('showsources') : 'checked';
 		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 'checked';
-		$exclude_tags = array('FAMC', 'FAMS', '_WT_OBJE_SORT');
+		$exclude_tags	= array('FAMC', 'FAMS', '_WT_OBJE_SORT');
 
 		?>
 		<div id="resource-page" class="individual_report">
@@ -167,35 +167,49 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 					} ?>
 				<div id="facts_events">
 					<h3><?php echo WT_I18N::translate('Facts and events'); ?></h3>
-					<?php
-					$source_num = 1;
-					$source_list = array();
-					foreach ($indifacts as $fact) {
-						if (
-							(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
-							&& !in_array($fact->getTag(), $exclude_tags)
-						) { ?>
-							<div class="individual_report_fact">
-								<label>
-									<?php echo print_fact_label($fact, $person);
-									// -- count source(s) for this fact/event as footnote reference
-									$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
-									if ($ct > 0) {
-										$sup = '<sup>';
-											$sources = resource_sources($fact, 2, $source_num);
-											for ($i = 0; $i < $ct; $i++) {
-												$sup .= $source_num . ',&nbsp;';
-												$source_num = $source_num + 1;
-											}
-											$sup = rtrim($sup,',&nbsp;');
-											$source_list = array_merge($source_list, $sources);
-										echo $sup . '</sup>';
-									} ?>
-								</label>
-								<?php echo print_resourcefact($fact, $person); ?>
-							</div>
-						<?php }
-					} ?>
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th><?php echo WT_I18N::translate('Date'); ?></th>
+								<th><?php echo WT_I18N::translate('Place'); ?></th>
+								<th><?php echo WT_I18N::translate('Information'); ?></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$source_num = 1;
+							$source_list = array();
+							foreach ($indifacts as $fact) {
+								if (
+									(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
+									&& !in_array($fact->getTag(), $exclude_tags)
+								) { ?>
+									<tr class="individual_report_fact">
+										<td>
+											<?php echo print_fact_label($fact, $person);
+											// -- count source(s) for this fact/event as footnote reference
+											$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+											if ($ct > 0) {
+												$sup = '<sup>';
+													$sources = resource_sources($fact, 2, $source_num);
+													for ($i = 0; $i < $ct; $i++) {
+														$sup .= $source_num . ',&nbsp;';
+														$source_num = $source_num + 1;
+													}
+													$sup = rtrim($sup,',&nbsp;');
+													$source_list = array_merge($source_list, $sources);
+												echo $sup . '</sup>';
+											} ?>
+										</td>
+										<td><?php echo format_fact_date($fact, $person, false, true, false); ?></td>
+										<td><?php echo format_fact_place($fact, true); ?></td>
+										<td class="field"><?php echo print_resourcefactDetails($fact, $person); ?></td>
+									</tr>
+								<?php }
+							} ?>
+						</tbody>
+					</table>
 				</div>
 				<?php
 				$otherfacts = $person->getOtherFacts();

@@ -82,7 +82,7 @@ switch ($type) {
 	exit;
 
 	case 'CAUS': // Cause of death.
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=
 			WT_DB::prepare(
@@ -106,7 +106,7 @@ switch ($type) {
 	exit;
 
 	case 'CEME': // Cemetery fields, that contain the search term
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=
 			WT_DB::prepare(
@@ -130,7 +130,7 @@ switch ($type) {
 	exit;
 
 	case 'FAM': // Families, whose name contains the search terms
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_FAM_rows($term);
 		// Filter for privacy
@@ -185,7 +185,7 @@ switch ($type) {
 	exit;
 
 	case 'NOTE': // Notes which contain the search terms
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_NOTE_rows($term);
 		// Filter for privacy
@@ -199,7 +199,7 @@ switch ($type) {
 	exit;
 
 	case 'OBJE':
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_OBJE_rows($term);
 		// Filter for privacy
@@ -238,7 +238,7 @@ switch ($type) {
 
 	case 'PLAC': // Place names (with hierarchy), that include the search term
 		// Do not filter by privacy.  Place names on their own do not identify individuals.
-		$data=array();
+		$data = array();
 		foreach (WT_Place::findPlaces($term, WT_GED_ID) as $place) {
 			$data[]=$place->getGedcomName();
 		}
@@ -291,7 +291,7 @@ switch ($type) {
 	exit;
 
 	case 'REPO': // Repositories, that include the search terms
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_REPO_rows($term);
 		// Filter for privacy
@@ -305,7 +305,7 @@ switch ($type) {
 	exit;
 
 	case 'REPO_NAME': // Repository names, that include the search terms
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_REPO_rows($term);
 		// Filter for privacy
@@ -319,7 +319,7 @@ switch ($type) {
 	exit;
 
 	case 'SOUR': // Sources, that include the search terms
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_SOUR_rows($term);
 		// Filter for privacy
@@ -381,7 +381,7 @@ switch ($type) {
 	exit;
 
 	case 'SOUR_TITL': // Source titles, that include the search terms
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=
 			WT_DB::prepare(
@@ -416,7 +416,7 @@ switch ($type) {
 	exit;
 
 	case 'IFSRO':
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_INDI_rows($term);
 		// Filter for privacy
@@ -480,7 +480,7 @@ switch ($type) {
 	exit;
 
 	case 'IFS':
-		$data=array();
+		$data = array();
 		// Fetch all data, regardless of privacy
 		$rows=get_INDI_rows($term);
 		// Filter for privacy

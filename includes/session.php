@@ -55,6 +55,8 @@ if (WT_USE_GOOGLE_API) {
 }
 define('WT_JQUERY_COLORBOX_URL',	WT_STATIC_URL . 'js/jquery.colorbox-min.js');	    // 1.6.1   Updated 18-06-2015
 define('WT_JQUERY_DATATABLES_URL',	WT_STATIC_URL . 'js/jquery.dataTables.min.js');	    // 1.10.11 Updated 12-04-2016
+define('WT_JQUERY_DT_HTML5',		WT_STATIC_URL . 'js/buttons.html5.min.js');	    	// installed 08.05.2016
+define('WT_JQUERY_DT_BUTTONS',		WT_STATIC_URL . 'js/dataTables.buttons.min.js');	// installed 08.05.2016
 define('WT_JQUERY_DT_RESPONSIVE',	WT_STATIC_URL . 'js/dataTables.responsive.min.js'); // 2.0.2   Updated 12-04-2016
 define('WT_JQUERY_JEDITABLE_URL',	WT_STATIC_URL . 'js/jquery.jeditable.js');		    // 1.7.3
 define('WT_JQUERY_WHEELZOOM_URL',	WT_STATIC_URL . 'js/jquery.wheelzoom.js');		    // 2.0.0

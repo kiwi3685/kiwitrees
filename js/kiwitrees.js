@@ -1594,6 +1594,13 @@ jQuery(".passwd_click").click(function() {
 	return false;
 });
 
+// common script for help text drop-down display
+jQuery(".help_content").on("click", ".more", function(e){
+	e.preventDefault();
+	jQuery(this).next(".hidden").slideToggle();
+	jQuery(this).parent().siblings().find(".hidden").slideUp();
+});
+
 
 /*
 * hoverIntent | Copyright 2011 Brian Cherne

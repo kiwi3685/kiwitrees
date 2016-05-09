@@ -31,15 +31,7 @@ $controller
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->setPageTitle(WT_I18N::translate('Site configuration'))
 	->pageHeader()
-	->addInlineJavascript('
-		jQuery("#tabs").tabs();
-
-		jQuery(".help_content").on("click", ".more", function(e){
-			e.preventDefault();
-			jQuery(this).next(".hidden").slideToggle();
-			jQuery(this).parent().siblings().find(".hidden").slideUp();
-		});
-	');
+	->addInlineJavascript('jQuery("#tabs").tabs();');
 
 // Lists of options for <select> controls.
 $SMTP_SSL_OPTIONS = array(
