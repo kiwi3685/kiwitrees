@@ -335,7 +335,7 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 	else return $data;
 }
 
-function resource_findfact($level, $fact, $year_from, $year_to, $place, $detail) {
+function resource_findfact($level, $fact) {
 	$list = array();
 	// Fetch all data, regardless of privacy
 	$sql = "SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
@@ -347,57 +347,11 @@ function resource_findfact($level, $fact, $year_from, $year_to, $place, $detail)
 		$indifacts = $person->getIndiFacts();
 		foreach ($indifacts as $item) {
 			if ($item->getTag() == $fact) {
-				if ($year_from || $year_to || $place || $detail) {
-					$result_place = format_fact_place($item, true);
-					$result_date = format_fact_date($item, $person, false, true, false);
-					if ($year_from || $year_to) {
-						preg_match_all("/\d{4}/", format_fact_date($item, $person, false, true, false), $matches);
-						$ct = count($matches[0]);
-						if (
-								($ct == 1 && (
-										($year_from && !$year_to && $matches[0][0] >= $year_from) ||
-										($year_to && !$year_from && $matches[0][0] <= $year_to) ||
-										($year_from && $year_to && $matches[0][0] >= $year_from && $matches[0][0] <= $year_to)
-									)
-								) ||
-								($ct == 2 && (
-										($year_from && $matches[0][0] >= $year_from) && ($year_to && $matches[0][0] <= $year_to) &&
-										($year_from && $matches[0][1] >= $year_from) && ($year_to && $matches[0][1] <= $year_to)
-									)
-								)
-							) {
-								if (!$place && !$detail) {
-									$list[] = $row;
-								} elseif ($place && !$detail && stripos(strip_tags($result_place), $place) !== false) {
-									$list[] = $row;
-								} elseif (!$place && $detail && stripos(strip_tags($result_detail), $detail) !== false) {
-									$list[] = $row;
-								} elseif ($place && $detail && stripos(strip_tags($result_place), $place) !== false && stripos(strip_tags($result_detail), $detail) !== false) {
-									$list[] = $row;
-								}
-						}
-					}
-					if ($place && !$year_from && !$year_to) {
-						if (stripos(strip_tags($result_place), $place) !== false) {
-							if (!$detail) {
-								$list[] = $row;
-							} elseif ($detail && stripos(strip_tags($result_detail), $detail) !== false ) {
-								$list[] = $row;
-							}
-						}
-					}
-					if ($detail && !$year_from && !$year_to && !$place) {
-						if (stripos(strip_tags($result_detail), $detail) !== false) {
-							$list[] = $row;
-						}
-					}
-				} else {
 					$list[] = $row;
-				}
 			}
 		}
 	}
-	// remove duplicates
+	// remove duplicate individuals
 	foreach ($list as $key=>$value) {
 		$list[$key] = serialize($list[$key]);
 	}
@@ -406,4 +360,55 @@ function resource_findfact($level, $fact, $year_from, $year_to, $place, $detail)
 		$list[$key] = unserialize($list[$key]);
 	}
 	return $list;
+}
+
+function filter_facts ($item, $person, $year_from, $year_to, $place, $detail) {
+	if ($year_from || $year_to || $place || $detail) {
+		$result_place	= format_fact_place($item, true);
+		$result_date	= format_fact_date($item, $person, false, true, false);
+		$result_detail	= print_resourcefactDetails($item, $person);
+		if ($year_from || $year_to) {
+			preg_match_all("/\d{4}/", format_fact_date($item, $person, false, true, false), $matches);
+			$ct = count($matches[0]);
+			if (
+					($ct === 1 && (
+							($year_from && !$year_to && $matches[0][0] >= $year_from) ||
+							($year_to && !$year_from && $matches[0][0] <= $year_to) ||
+							($year_from && $year_to && $matches[0][0] >= $year_from && $matches[0][0] <= $year_to)
+						)
+					) ||
+					($ct === 2 && (
+							($year_from && $matches[0][0] >= $year_from) && ($year_to && $matches[0][0] <= $year_to) &&
+							($year_from && $matches[0][1] >= $year_from) && ($year_to && $matches[0][1] <= $year_to)
+						)
+					)
+				) {
+					if (!$place && !$detail) {
+						return true;
+					} elseif ($place && !$detail && stripos(strip_tags($result_place), $place) !== false) {
+						return true;
+					} elseif (!$place && $detail && stripos(strip_tags($result_detail), $detail) !== false) {
+						return true;
+					} elseif ($place && $detail && stripos(strip_tags($result_place), $place) !== false && stripos(strip_tags($result_detail), $detail) !== false) {
+						return true;
+					}
+			}
+		}
+		if ($place && !$year_from && !$year_to) {
+			if (stripos(strip_tags($result_place), $place) !== false) {
+				if (!$detail) {
+					return true;
+				} elseif ($detail && stripos(strip_tags($result_detail), $detail) !== false ) {
+					return true;
+				}
+			}
+		}
+		if ($detail && !$year_from && !$year_to && !$place) {
+			if (stripos(strip_tags($result_detail), $detail) !== false) {
+				return true;
+			}
+		}
+	} else {
+		return false;
+	}
 }

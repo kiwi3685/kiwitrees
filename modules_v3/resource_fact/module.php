@@ -104,7 +104,9 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 						/* 0-BIRT_DATE */  	{"bVisible": false},
 						/* 1-Name */		{"sClass": "nowrap"},
 						/* 2-DoB */			{"iDataSort": 0, "sClass": "nowrap"},
-						/* 3-Fact */ 		{}
+						/* 3-Date */ 		{"sClass": "nowrap"},
+						/* 3-Place */ 		{},
+						/* 3-Details */ 	{}
 					]
 				});
 			jQuery("#output").css("visibility", "visible");
@@ -227,41 +229,46 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 								<th>BIRT_DATE</th><!-- hidden cell -->
 								<th><?php echo WT_I18N::translate('Name'); ?></th>
 								<th><?php echo WT_Gedcom_Tag::getLabel('BIRT:DATE'); ?></th>
+								<th><?php echo WT_I18N::translate('Date'); ?></th>
+								<th><?php echo WT_I18N::translate('Place'); ?></th>
 								<th><?php echo WT_I18N::translate('Details'); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
-							$rows = resource_findfact($level, $fact, $year_from, $year_to, $place, $detail);
+							$rows = resource_findfact($level, $fact);
 							foreach ($rows as $row) {
 								$person = WT_Person::getInstance($row->xref);
 								if ($person->canDisplayDetails()) { ?>
-									<tr>
-										<td><!-- hidden cell -->
-											<?php echo $person->getBirthDate()->JD(); ?>
-										</td>
-										<td>
-											<a href="<?php echo $person->getHtmlUrl(); ?>" target="_blank"><?php echo $person->getFullName(); ?></a>
-										</td>
-										<td>
-											<?php echo $person->getBirthDate()->Display(); ?>
-										</td>
-										<td>
-											<table class="details">
-												<?php $indifacts = $person->getIndiFacts();
-												foreach ($indifacts as $item) {
-													if ($item->getTag() == $fact) { ?>
-														<tr>
-															<td><?php echo format_fact_date($item, $person, false, true, false); ?></td>
-															<td><?php echo format_fact_place($item, true); ?></td>
-															<td class="field"><?php echo print_resourcefactDetails($item, $person); ?></td>
-														</tr>
-													<?php }
-												} ?>
-											</table>
-										</td>
-									</tr>
-								<?php }
+									<?php $indifacts = $person->getIndiFacts();
+									foreach ($indifacts as $item) {
+										if ($item->getTag() == $fact) {
+											$filtered_facts = filter_facts ($item, $person, $year_from, $year_to, $place, $detail);
+											if ($filtered_facts) { ?>
+												<tr>
+													<td><!-- hidden cell -->
+														<?php echo $person->getBirthDate()->JD(); ?>
+													</td>
+													<td>
+														<a href="<?php echo $person->getHtmlUrl(); ?>" target="_blank"><?php echo $person->getFullName(); ?></a>
+													</td>
+													<td>
+														<?php echo $person->getBirthDate()->Display(); ?>
+													</td>
+													<td>
+														<?php echo format_fact_date($item, $person, false, true, false); ?>
+													</td>
+													<td>
+														<?php echo format_fact_place($item, true); ?>
+													</td>
+													<td class="field">
+														<?php echo print_resourcefactDetails($item, $person); ?>
+													</td>
+												</tr>
+											<?php }
+										}
+									}
+								}
 							} ?>
 						</tbody>
 					</table>
