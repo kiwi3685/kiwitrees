@@ -23,7 +23,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 //-- get the widgets list
-$widgets = WT_Module::getActiveWidgets(WT_GED_ID, WT_USER_ACCESS_LEVEL);
+$widgets = WT_Module::getActiveWidgets();
 
 echo '<div id="widget-bar">';
 	foreach ($widgets as $module_name=>$module) {
