@@ -1534,6 +1534,17 @@ function old_paths() {
 		WT_ROOT.'modules_v3/birth_report',
 		WT_ROOT.'modules_v3/death_report',
 		WT_ROOT.'modules_v3/cemetery_report',
+		WT_ROOT.'modules_v3/simpl_research/plugins/alledrenten.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/allefriezen.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/allegroningers.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/allelimburgers.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/archief_amsterdam.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/bhic_nl.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/dsrotterdam.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/historischcentrumoverijssel.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/hetutrechtsarchief.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/register1939.php', //replaced for better sorting
+		WT_ROOT.'modules_v3/simpl_research/plugins/rhcvechtenvenen.php', //replaced for better sorting
 
 	);
 }

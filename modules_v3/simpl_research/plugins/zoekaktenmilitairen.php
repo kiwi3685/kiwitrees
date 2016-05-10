@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefzaanstad_plugin extends research_base_plugin {
+class zoekaktenmilitairen_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Archief Zaanstad';
+		return 'Zoekakten Militaire Stamboeken';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class archiefzaanstad_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://archief.zaanstad.nl/voorouders?mivast=137&miadt=137&mizig=309&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=' . strtolower($first) . '+' . strtolower($surname);
+		return $link = 'http://zoekakten.nl/zoekmil2.php?soort=0&anaam=' .$surname . '&vnaam=' . $givn . '&submit=Zoek';
 	}
 
 	static function create_sublink() {

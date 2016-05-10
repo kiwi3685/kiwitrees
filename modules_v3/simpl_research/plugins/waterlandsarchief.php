@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class stadsarchiefkampen_plugin extends research_base_plugin {
+class waterlandsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Stadsarchief Kampen';
+		return 'Waterlands Archief';
 	}
 
 	static function getPaySymbol() {
@@ -19,10 +19,10 @@ class stadsarchiefkampen_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.stadsarchiefkampen.nl/direct-zoeken-2/doorzoek-alles-2?mivast=69&miadt=69&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $surn . '&mip1=' . $givn;
+		return $link = 'http://waterlandsarchief.nl/voorouders/q/persoon_achternaam_t_0/' . $surname . '/q/persoon_voornaam_t_0/' . strtolower($first);
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink() {
 		return false;
 	}
 

@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class allefriezen_plugin extends research_base_plugin {
+class deventerstadsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Alle Friezen';
+		return 'Deventer Stadsarchief';
 	}
 
 	static function getPaySymbol() {
@@ -19,14 +19,14 @@ class allefriezen_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://www.allefriezen.nl/zoeken/persons?ss=%7B%22q%22:%22' . $givn . '%20' . $surn . '%22%7D';
+		return $link = 'http://www.stadsarchiefdeventer.nl/zoeken-in-de-collecties/archieven?mivast=45&miadt=45&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $first . 'n%20' . $surname;
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink() {
 		return false;
 	}
 
 	static function encode_plus() {
-		return false;
+		return true;
 	}
 }

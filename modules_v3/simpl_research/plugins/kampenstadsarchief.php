@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class allelimburgers_plugin extends research_base_plugin {
+class kampenstadsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Alle Limburgers';
+		return 'Kampen Stadsarchief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class allelimburgers_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.allelimburgers.nl/wgpublic/persoonu.php?&search_fd5=%3D%3D' . $surn . '&search_fd6=%3D%3D' . $givn . '&multisearch_fd6=7,8&multisearch_fd16=17&multisearch_fd20=21,22';
+		return $link = 'http://www.stadsarchiefkampen.nl/direct-zoeken-2/doorzoek-alles-2?mivast=69&miadt=69&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $surn . '&mip1=' . $givn;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
@@ -27,6 +27,6 @@ class allelimburgers_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return false;
+		return true;
 	}
 }

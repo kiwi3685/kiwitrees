@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class erfgoedleiden_plugin extends research_base_plugin {
+class brabantshic_nl_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Erfgoed Leiden en omstreken';
+		return 'Brabant BHIC';
 	}
 
 	static function getPaySymbol() {
@@ -19,14 +19,14 @@ class erfgoedleiden_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://www.erfgoedleiden.nl/collecties/personen/zoek-op-personen/q/text/' . strtolower($first) . '%20' . strtolower($surname);
+		return $link = 'https://www.bhic.nl/memorix/genealogy/search?serviceUrl=%2Fgenealogie%2F%3Fq_text%3D' . $givn . '%2B' . $surn;
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
 }

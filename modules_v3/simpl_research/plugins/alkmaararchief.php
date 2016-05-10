@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class rhcvechtenvenen_plugin extends research_base_plugin {
+class alkmaararchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'RHC Vecht en Venen';
+		return 'Alkmaar Regionaal Archief';
 	}
 
 	static function getPaySymbol() {
@@ -19,14 +19,14 @@ class rhcvechtenvenen_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.rhcvechtenvenen.nl/collectie/?mivast=386&miadt=386&mizig=100&miview=tbl&milang=nl&micols=1&mires=0&mip1=' . $surn . '&mip3=' . $givn;
+		return $link = 'https://www.regionaalarchiefalkmaar.nl/collecties/genealogie/aktes/q/persoon_achternaam_t_0/' . strtolower($surname) . '/q/persoon_voornaam_t_0/' . strtolower($first) . '/q/zoekwijze/s';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink() {
 		return false;
 	}
 
 	static function encode_plus() {
-		return false;
+		return true;
 	}
 }

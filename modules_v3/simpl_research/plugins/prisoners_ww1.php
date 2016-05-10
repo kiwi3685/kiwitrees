@@ -5,9 +5,10 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class historischcentrumoverijssel_plugin extends research_base_plugin {
+class prisoners_ww1_plugin extends research_base_plugin {
+
 	static function getName() {
-		return 'Historisch Centrum Overijssel';
+		return 'Prisoners of the 1st World War';
 	}
 
 	static function getPaySymbol() {
@@ -15,11 +16,11 @@ class historischcentrumoverijssel_plugin extends research_base_plugin {
 	}
 
 	static function getSearchArea() {
-		return 'NLD';
+		return 'INT';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.historischcentrumoverijssel.nl/zoeken-in-de-collecties/archieven?mivast=141&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=' . $surn . '&mip1=' . $givn;
+		return $link = 'http://grandeguerre.icrc.org/en/File/Search#/3/2/107/0/British%20and%20Commonwealth/Military/' . $surname;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
@@ -29,4 +30,5 @@ class historischcentrumoverijssel_plugin extends research_base_plugin {
 	static function encode_plus() {
 		return false;
 	}
+
 }

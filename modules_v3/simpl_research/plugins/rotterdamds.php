@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class stadsarchiefdeventer_plugin extends research_base_plugin {
+class rotterdamds_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Stadsarchief Deventer';
+		return 'Digitale Stamboom Rotterdam';
 	}
 
 	static function getPaySymbol() {
@@ -19,10 +19,10 @@ class stadsarchiefdeventer_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.stadsarchiefdeventer.nl/zoeken-in-de-collecties/archieven?mivast=45&miadt=45&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $first . 'n%20' . $surname;
+		return $link = 'http://rotterdam.digitalestamboom.nl/search.aspx?lang=nl&verder=' . $givn . urlencode('||') . $prefix . urlencode('|') . $surn;
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
 

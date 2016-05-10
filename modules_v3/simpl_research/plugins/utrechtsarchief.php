@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class hetutrechtsarchief_plugin extends research_base_plugin {
+class utrechtsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Het Utrechts Archief';
+		return 'Utrechts Archief';
 	}
 
 	static function getPaySymbol() {

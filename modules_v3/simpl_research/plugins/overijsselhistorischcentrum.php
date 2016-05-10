@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class dsrotterdam_plugin extends research_base_plugin {
+class overijsselhistorischcentrum_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Digitale Stamboom Rotterdam';
+		return 'Overijssel Historisch Centrum';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class dsrotterdam_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://rotterdam.digitalestamboom.nl/search.aspx?lang=nl&verder=' . $givn . urlencode('||') . $prefix . urlencode('|') . $surn;
+		return $link = 'http://www.historischcentrumoverijssel.nl/zoeken-in-de-collecties/archieven?mivast=141&miadt=141&mizig=128&miview=tbl&milang=nl&micols=1&mires=0&mip2=' . $surn . '&mip1=' . $givn;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
@@ -27,6 +27,6 @@ class dsrotterdam_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
 }

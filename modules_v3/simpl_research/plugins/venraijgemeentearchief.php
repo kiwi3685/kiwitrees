@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class streekarchivariaatnwveluwe_plugin extends research_base_plugin {
+class venraijgemeentearchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Streekarchivariaat Noordwest-Veluwe';
+		return 'Venraij Gemeentearchief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class streekarchivariaatnwveluwe_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.streekarchivariaat.nl/nl/alle-personen?mivast=434&miadt=434&mizig=100&miview=ldt&milang=nl&micols=1&mires=0&mip1=' . $surname . '&mip3=' . $first;
+		return $link = 'http://gemeentearchiefvenray.nl/genealogie/zoeken-door-personen/q/persoon_achternaam_t_0/' . $surname . '/q/persoon_voornaam_t_0/' . strtolower($first);
 	}
 
 	static function create_sublink() {

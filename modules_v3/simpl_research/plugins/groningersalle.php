@@ -5,10 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class grandeguerre_plugin extends research_base_plugin {
-
+class groningersalle_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Prisoners of the 1st World War';
+		return 'Groningen Alle Groningers';
 	}
 
 	static function getPaySymbol() {
@@ -16,11 +15,12 @@ class grandeguerre_plugin extends research_base_plugin {
 	}
 
 	static function getSearchArea() {
-		return 'INT';
+		return 'NLD';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://grandeguerre.icrc.org/en/File/Search#/3/2/107/0/British%20and%20Commonwealth/Military/' . $surname;
+		return $link = 'http://www.allegroningers.nl/personen/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/persoon_rol_s_0/0/q/persoon_rol_s_1/0';
+
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
@@ -30,5 +30,4 @@ class grandeguerre_plugin extends research_base_plugin {
 	static function encode_plus() {
 		return false;
 	}
-
 }

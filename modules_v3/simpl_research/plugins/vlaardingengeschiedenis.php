@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class groningerarchieven_plugin extends research_base_plugin {
+class vlaardingengeschiedenis_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Groninger archieven RHC';
+		return 'Geschiedenis van Vlaardingen';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class groningerarchieven_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://www.groningerarchieven.nl/zoeken/mais/archief/?q=' . strtolower($first) . '+' . strtolower($surname);
+		return $link = 'http://www.geschiedenisvanvlaardingen.nl/HAZA/zoek?achternaam=' . $surname . '&voornaam=' . $givn . '';
 	}
 
 	static function create_sublink() {

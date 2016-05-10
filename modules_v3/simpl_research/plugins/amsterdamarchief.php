@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archief_amsterdam_plugin extends research_base_plugin {
+class amsterdamarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Archief Amsterdam';
+		return 'Amsterdam Archief';
 	}
 
 	static function getPaySymbol() {

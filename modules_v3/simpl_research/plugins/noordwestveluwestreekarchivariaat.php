@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefdelft_plugin extends research_base_plugin {
+class noordwestveluwestreekarchivariaat_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Archief Delft';
+		return 'Noordwest-Veluwe SA';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class archiefdelft_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://collectie-delft.nl/zoeken?trefwoord=' . $first . '+' . $surname . '&search-source=bronnen';
+		return $link = 'http://www.streekarchivariaat.nl/nl/alle-personen?mivast=434&miadt=434&mizig=100&miview=ldt&milang=nl&micols=1&mires=0&mip1=' . $surname . '&mip3=' . $first;
 	}
 
 	static function create_sublink() {

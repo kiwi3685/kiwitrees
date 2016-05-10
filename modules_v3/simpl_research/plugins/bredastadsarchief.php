@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class allegroningers_plugin extends research_base_plugin {
+class bredastadsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Alle Groningers';
+		return 'Breda Stadsarchief';
 	}
 
 	static function getPaySymbol() {
@@ -19,15 +19,14 @@ class allegroningers_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.allegroningers.nl/personen/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/persoon_rol_s_0/0/q/persoon_rol_s_1/0';
-
+		return $link = 'https://stadsarchief.breda.nl/collecties/genealogie/q/persoon_achternaam_t_0/' . $surname . '/q/persoon_voornaam_t_0/' . strtolower($first);
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink() {
 		return false;
 	}
 
 	static function encode_plus() {
-		return false;
+		return true;
 	}
 }

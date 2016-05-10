@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefnijmegen_plugin extends research_base_plugin {
+class nijmegenarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Regionaal Archief Nijmegen';
+		return 'Nijmegen Regionaal Archief';
 	}
 
 	static function getPaySymbol() {

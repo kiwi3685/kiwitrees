@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class bhic_nl_plugin extends research_base_plugin {
+class zoekaktenlandverhuizers_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Brabants Historisch Info.';
+		return 'Zoekakten Landverhuizers';
 	}
 
 	static function getPaySymbol() {
@@ -19,14 +19,14 @@ class bhic_nl_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://www.bhic.nl/memorix/genealogy/search?serviceUrl=%2Fgenealogie%2F%3Fq_text%3D' . $givn . '%2B' . $surn;
+		return $link = 'http://zoekakten.nl/zoeklv2.php?soort=0&naam=' .$surname . '&submit=Zoek';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink() {
 		return false;
 	}
 
 	static function encode_plus() {
-		return false;
+		return true;
 	}
 }

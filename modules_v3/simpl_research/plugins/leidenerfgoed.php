@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archieftilburg_plugin extends research_base_plugin {
+class leidenerfgoed_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Regionaal Archief Tilburg';
+		return 'Leiden en omstreken Erfgoed';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class archieftilburg_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.regionaalarchieftilburg.nl/zoek-een-persoon/#/persons?%3Fss=%7B%22q%22:%22jan%22%7D&sa=%7B%22person_1%22:%7B%22search_t_geslachtsnaam%22:%22' . strtolower($surname) . '%22,%22search_t_tussenvoegsel%22:%22%22,%22search_t_voornaam%22:%22' . strtolower($first) . '%22%7D%7D';
+		return $link = 'https://www.erfgoedleiden.nl/collecties/personen/zoek-op-personen/q/text/' . strtolower($first) . '%20' . strtolower($surname);
 	}
 
 	static function create_sublink() {

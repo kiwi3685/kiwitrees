@@ -5,7 +5,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class register1939_plugin extends research_base_plugin {
+class _1939register_plugin extends research_base_plugin {
 	static function getName() {
 		return '1939 Register';
 	}

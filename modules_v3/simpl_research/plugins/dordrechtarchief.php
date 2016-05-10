@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefdordrecht_plugin extends research_base_plugin {
+class dordrechtarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Regionaal Archief Dordrecht';
+		return 'Dordrecht Regionaal Archief';
 	}
 
 	static function getPaySymbol() {

@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class groningerarchieven_plugin extends research_base_plugin {
+class eemlandarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Groninger archieven RHC';
+		return 'Eemland Archief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class groningerarchieven_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://www.groningerarchieven.nl/zoeken/mais/archief/?q=' . strtolower($first) . '+' . strtolower($surname);
+		return $link = 'http://www.archiefeemland.nl/collectie/archieven/zoekresultaat?mivast=28&miadt=28&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mif3=2&mizk_alle=' . $first . '%20' . $surname;
 	}
 
 	static function create_sublink() {

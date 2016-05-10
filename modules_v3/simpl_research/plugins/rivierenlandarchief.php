@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class stadsarchiefbreda_plugin extends research_base_plugin {
+class rivierenlandarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Stadsarchief Breda';
+		return 'Rivierenland Regionaal Archief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class stadsarchiefbreda_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://stadsarchief.breda.nl/collecties/genealogie/q/persoon_achternaam_t_0/' . $surname . '/q/persoon_voornaam_t_0/' . strtolower($first);
+		return $link = 'http://regionaalarchiefrivierenland.nl/archieven?mizk_alle=' . strtolower($first) . '+' . strtolower($surname);
 	}
 
 	static function create_sublink() {

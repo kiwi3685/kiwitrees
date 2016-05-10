@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefhengelo_plugin extends research_base_plugin {
+class zutphenarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Archief Hengelo';
+		return 'Zutphen Regionaal Archief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class archiefhengelo_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://archief.hengelo.nl/genealogie/zoek.php?type=advanced&achternaam=' . $surname . '&voornaam=' . $first . '&gezinsbladen=1&geboortedatum_dag=&geboortedatum_maand=&geboortedatum_jaar=&gezinskaarten=1&kostgangerskaarten=1&geboorten=1&aktenummer=&aktejaar=&huwelijken=1&overlijden=1';
+		return $link = 'http://www.regionaalarchiefzutphen.nl/voorouders/persons?ss=%7B%22q%22:%22' . $first . '%20' . $surname . '%22%7D';
 	}
 
 	static function create_sublink() {

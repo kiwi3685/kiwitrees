@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefzutphen_plugin extends research_base_plugin {
+class tholengemeentearchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Regionaal Archief Zutphen';
+		return 'Tholen Gemeentearchief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class archiefzutphen_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://www.regionaalarchiefzutphen.nl/voorouders/persons?ss=%7B%22q%22:%22' . $first . '%20' . $surname . '%22%7D';
+		return $link ='http://www.archieftholen.nl/onze-bronnen/voorouders/q/persoon_achternaam_t_0/' . $surname . '/q/persoon_voornaam_t_0/' . strtolower($first);
 	}
 
 	static function create_sublink() {

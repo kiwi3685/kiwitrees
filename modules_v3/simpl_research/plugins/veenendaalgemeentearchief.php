@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefrivierenland_plugin extends research_base_plugin {
+class veenendaalgemeentearchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Regionaal Archief Rivierenland';
+		return 'Veenendaal Gemeentearchief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class archiefrivierenland_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'http://regionaalarchiefrivierenland.nl/archieven?mizk_alle=' . strtolower($first) . '+' . strtolower($surname);
+		return $link = 'http://collecties.veenendaal.nl/component/search_all/result?trefwoord=' . $fullname . '';
 	}
 
 	static function create_sublink() {

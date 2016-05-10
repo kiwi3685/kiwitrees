@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class alledrenten_plugin extends research_base_plugin {
+class drentenalle_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Alle Drenten';
+		return 'Drenthe Alle Drenten';
 	}
 
 	static function getPaySymbol() {

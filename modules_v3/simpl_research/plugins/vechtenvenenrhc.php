@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class groningerarchieven_plugin extends research_base_plugin {
+class vechtenvenenrhc_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Groninger archieven RHC';
+		return 'Vecht en Venen RHC';
 	}
 
 	static function getPaySymbol() {
@@ -19,14 +19,14 @@ class groningerarchieven_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://www.groningerarchieven.nl/zoeken/mais/archief/?q=' . strtolower($first) . '+' . strtolower($surname);
+		return $link = 'http://www.rhcvechtenvenen.nl/collectie/?mivast=386&miadt=386&mizig=100&miview=tbl&milang=nl&micols=1&mires=0&mip1=' . $surn . '&mip3=' . $givn;
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
 }

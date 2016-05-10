@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class archiefalkmaar_plugin extends research_base_plugin {
+class friezenalle_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Regionaal Archief Alkmaar';
+		return 'Friesland Alle Friezen';
 	}
 
 	static function getPaySymbol() {
@@ -19,14 +19,14 @@ class archiefalkmaar_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return $link = 'https://www.regionaalarchiefalkmaar.nl/collecties/genealogie/aktes/q/persoon_achternaam_t_0/' . strtolower($surname) . '/q/persoon_voornaam_t_0/' . strtolower($first) . '/q/zoekwijze/s';
+		return $link = 'https://www.allefriezen.nl/zoeken/persons?ss=%7B%22q%22:%22' . $givn . '%20' . $surn . '%22%7D';
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
 		return false;
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
 }
