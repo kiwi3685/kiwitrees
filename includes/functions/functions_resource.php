@@ -409,6 +409,6 @@ function filter_facts ($item, $person, $year_from, $year_to, $place, $detail) {
 			}
 		}
 	} else {
-		return false;
+		return true;
 	}
 }

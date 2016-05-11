@@ -44,7 +44,7 @@ button {
 	min-width:100px;
 }
 .icon {border:none; padding-left:0;padding-right:5pt;}
-.warning, .error, .red {color:#ff0000;}
+.warning, .error, .red {color:#ff0000!important;}
 .accepted, a.accepted {color:#25a325;}
 .center {text-align:center;}
 .nowrap {white-space:nowrap;}
@@ -329,7 +329,9 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 #site-config td .help_content {font-size: .85em;}
 #site-config td .editable input, #site-config td .editable select {height: 25px; margin: 5px; padding: 0;}
 #site-config td .editable button {height: 27px; margin: 5px 0; padding: 0;}
+#site-config th {text-align: left;}
 #site-config #lang {overflow: hidden;}
+[dir=rtl] #site-config th {text-align: right;}
 
 /*SITE LOGS & CHANGE LOGS*/
 .site_logs, .site_change {margin:10px auto;}

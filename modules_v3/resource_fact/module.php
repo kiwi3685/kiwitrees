@@ -145,9 +145,10 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 
 			<div class="help_text">
 				<div class="help_content">
-					<h5><?php echo $this->getDescription(); ?></h5><a href="#" class="more noprint"><i class="fa fa-question-circle-o"></i></a>
-					<div class="hidden" style="display: none";>
-						<?php echo WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" at Administration > Family trees > <u>your family tree</u> > "Edit options" tab and therefore only GEDCOM first-level records.'); ?>
+					<h5><?php echo $this->getDescription(); ?></h5>
+					<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+					<div class="hidden">
+						<?php echo /* I18N help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" at Administration > Family trees > <u>your family tree</u> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place and detail filters can be any string of characters you expect to find in those data fields '); ?>
 					</div>
 				</div>
 			</div>

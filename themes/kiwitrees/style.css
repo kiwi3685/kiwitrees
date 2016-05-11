@@ -145,7 +145,7 @@ button {
 	cursor: pointer;
 	margin: 0 5px;
 	min-width: 100px;
-	padding: 6px 12px;
+	padding: 4px 10px;
 }
 
 input.image {
@@ -3293,6 +3293,26 @@ div[id^="caldiv"] td {
 	padding: 4px;
 }
 
+div.dt-buttons {
+	float: right;
+	margin: 5px;
+}
+
+div.dt-buttons a.dt-button {
+	position: relative;
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px solid #999;
+	border-radius: 2px;
+	font-size: 0.88em;
+	color: initial;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #e9e9e9;
+	background-image: -webkit-linear-gradient(top, #fff 0%, #e9e9e9 100%);	cursor: pointer;
+	padding: 5px 15px;
+}
+
 .recent_changes_block .dataTables_info,
 .upcoming_events_block .dataTables_info,
 .todays_events_block .dataTables_info,
@@ -5575,7 +5595,7 @@ div.widget {
 	min-height: 200px;
 	padding-bottom: 10px;
 	position: absolute;
-	top: 106px;
+	top: 120px;
 	width: 450px;
 	z-index: 999;
 }
@@ -6008,18 +6028,58 @@ div.widget {
 [dir=rtl] #fancy_treeview-page #btn_next {
 	text-align: left;
 }
-/* ------------------
+/* ------------------ */
 
-General Resource page styling  */
+/* General Resource page styling  */
+
+#resource-page {
+	margin: auto 20px;
+}
+
 #resource-page .help_content {
 	font-size: inherit;
 	margin: 0;
 }
 
+#resource-page .help_content .hidden {
+	display: none;
+	margin: 0 10px;
+}
+
 #resource-page button {
 	display: inline-block;
-	margin-top: 10px;
+	margin-top: 15px;
 	vertical-align: top;
+}
+
+#resource-page h5 {
+	display: inline-block;
+	margin: 0 10px 10px;
+	font-style: normal;
+}
+
+#resource-page form {
+	margin-top: 20px;
+}
+
+#resource-page table th,
+#resource-page table td {
+	padding: 5px;
+	text-align: left;
+}
+[dir=rtl] #resource-page table th,
+[dir=rtl] #resource-page table td {
+	text-align: right;
+}
+
+#resource-page input[name^="show_"] {
+	vertical-align:
+	top; width: 20px;
+}
+#resource-page label[for^="show_"] {
+	display: inline-block;
+	font-weight: normal;
+	width: 20px;
 }
 
 /* Styles for nocensus resource */
@@ -6064,6 +6124,10 @@ General Resource page styling  */
 	margin: 0;
 	padding: 0;
 	display: block;
+}
+
+#resource-page.fact_report .dataTables_length select {
+	min-width: initial;
 }
 
 /* Styles for recent changes resource */
@@ -6146,13 +6210,11 @@ General Resource page styling  */
 	border-bottom: 1px solid;
 }
 #resource-page.individual_report .individual_report_fact label {
-	display: inline-block;
 	font-weight: 700;
 	padding: 5px;
 	width: 15%;
 }
 #resource-page.individual_report .individual_report_fact .date {
-	display: inline-block;
 	min-width: 15%;
 }
 #resource-page.individual_report .individual_report_fact .place {
@@ -6161,7 +6223,6 @@ General Resource page styling  */
 #resource-page.individual_report .individual_report_fact .place,
 #resource-page.individual_report .individual_report_fact .field,
 #resource-page.individual_report .individual_report_fact .field span {
-	display: inline-block;
 	padding: 0 10px;
 }
 #resource-page.individual_report .individual_report_fact sup {
@@ -6180,6 +6241,29 @@ General Resource page styling  */
 	padding: 0px;
 }
 
+/* Styles for facts & events resource */
+#resource-page.fact_report select {
+	min-width: 200px;
+}
+#resource-page.fact_report table td {
+	padding: 3px 5px;;
+}
+#resource-page.fact_report table.details {
+	border-collapse: collapse;
+	width: 100%;
+}
+#resource-page.fact_report table.details td,
+#resource-page.fact_report table.details th {
+	width: 20%;
+}
+#resource-page.fact_report table#report_header {
+	border: 1px solid;
+	margin: 20px 0;
+}
+#resource-page.fact_report table#report_header th {
+	font-weight: 900;
+}
+
 /* Styles for UK Register resource */
 #resource-page #nocensus_result li i {
 	font-size: 90%;
@@ -6189,18 +6273,6 @@ General Resource page styling  */
 #resource-page.research_tasks {
 	margin: auto;
 	width: 90%;
-}
-#resource-page table th, #resource-page table td {
-	padding:8px;
-}
-#resource-page input[name^="show_"] {
-	vertical-align:
-	top; width: 20px;
-}
-#resource-page label[for^="show_"] {
-	display: inline-block;
-	font-weight: normal;
-	width: 20px;
 }
 
 /* ------------------ */
@@ -6619,6 +6691,12 @@ textarea#NOTE {
 		display: none;
 	}
 
+	/* DataTables */
+	div.fg-toolbar {
+		display:none;
+	}
+
+
 	/* Family tree view pagination */
 	#fancy_treeview .generation-block {
 		page-break-after: always;
@@ -6633,6 +6711,10 @@ textarea#NOTE {
 	#resource-page.individual_report #families {
 		font-size: 90%;
 		page-break-after: auto;
+	}
+
+	#resource-page.fact_report table td {
+		white-space: normal;
 	}
 
 }
