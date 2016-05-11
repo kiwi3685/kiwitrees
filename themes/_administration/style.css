@@ -721,23 +721,18 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
 /* FAQ MODULE (also used in config pages of other modules) */
-#faq .label {
-    line-height: 25px;
-    margin-top: 20px;
-}
-#faq #faq_tabs, #faq #faq_items form {
-    margin: 20px auto;
-}
+#faq .label {line-height: 25px; margin-top: 20px;}
+#faq #faq_tabs, #faq #faq_items form {margin: 20px auto; overflow: hidden;}
 #faq .save{margin: 20px 0;}
 table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:98%;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
 [dir=rtl] #faq_module2 th, [dir=rtl] #faq_module2 td {text-align:right;}
-#faq_items select {height: 34px; min-width: 175px;}
-#faq_items button {color: initial;}
+#faq_items select {height: 34px; min-width: 175px;vertical-align: middle;}
+#faq_items button {color: initial; float: none;}
 table#faq_module  textarea {font-size: 16px;}
 
-table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
+table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px; width: 100%;}
 #faq_edit tr {border-bottom:2px solid;}
 #faq_edit td {padding:10px;}
 #faq_edit td p {margin:0;}
@@ -879,16 +874,11 @@ table#site_map {border:1px inset #d9d6c4; border-collapse:separate; border-spaci
 #site_map td {border-bottom:1px solid #d3d3d3; padding:5px;}
 
 /* STORIES MODULE */
-#stories .label {
-    line-height: 25px;
-    margin-top: 20px;
-}
-#stories form {
-    margin: 20px auto;
-}
+#stories .label {line-height: 25px; margin-top: 20px;}
+#stories form {margin: 20px auto; overflow: hidden;}
 #stories .save{margin: 20px 0;}
-#stories select {height: 34px; min-width: 175px;}
-#stories button {color: initial;}
+#stories select {height: 34px; min-width: 175px; vertical-align: middle;}
+#stories button {color: initial; float: none;}
 
 table#story_module, table#story_module2 {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
 #story_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
@@ -1044,7 +1034,7 @@ table#story_table {width:100%}
 }
 #simpl_pages #pages_pages form {margin: 20px auto;}
 #simpl_pages .save {clear: both; margin: 20px 0;}
-#pages_pages select {height: 34px; min-width: 175px;}
+#pages_pages select {height: 34px; min-width: 175px; vertical-align: middle;}
 #pages_pages button {color: initial; float: none;}
 
 #simpl_pages #pages_module {width:100%;}
@@ -1088,7 +1078,7 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #gallery .label {line-height: 25px; margin-top: 20px;}
 #gallery #gallery_tabs, #gallery #gallery_pages form {margin: 20px auto;  overflow: hidden}
 #gallery .save{clear: both; margin: 20px 0;}
-#gallery_pages select {height: 34px; min-width: 175px;}
+#gallery_pages select {height: 34px; min-width: 175px; vertical-align: middle;}
 #gallery_pages button {color: initial; float: none;}
 .gallery_edit_pos td {white-space:nowrap;}
 .gallery_edit_pos td:first-child {width:80%;}
@@ -1138,21 +1128,12 @@ table#gallery_module {border:1px solid; border-collapse:collapse;border-radius:5
 [dir=rtl] #fancy_treeview-config input[type="submit"] {margin-right: 0;}
 
 /* Styling for Extra menus module */
-#extra_menus .label {
-    line-height: 25px;
-    margin-top: 20px;
-}
-#extra_menus #menus_tabs, #extra_menus #menus_pages form {
-    margin: 20px auto;
-}
+#extra_menus .label {line-height: 25px; margin-top: 20px;}
+#extra_menus #menus_tabs, #extra_menus #menus_pages form {margin: 20px auto; overflow: hidden;}
 #extra_menus .save{clear: both; margin: 20px 0;}
-#menus_pages select {height: 34px; min-width: 175px;}
-#menus_pages button {color: initial;}
-#extra_menus input[type="checkbox"] {
-	width: 25px;
-	height: 25px;
-	cursor: pointer;
-}
+#menus_pages select {height: 34px; min-width: 175px; vertical-align: middle;}
+#menus_pages button {color: initial; float: none;}
+#extra_menus input[type="checkbox"] {width: 25px; height: 25px; cursor: pointer;}
 #extra_menus #menus_edit {width:100%;}
 table#menus_edit {border:1px solid; border-collapse:collapse;border-radius:5px; margin-top:30px; padding:5px;}
 #menus_edit tr {border-bottom:2px solid;}
