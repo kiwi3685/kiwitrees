@@ -476,11 +476,15 @@ class extra_menus_WT_Module extends WT_Module implements WT_Module_Menu, WT_Modu
 			"SELECT ##block.block_id FROM `##block`, `##block_setting` WHERE block_order=? AND module_name=? AND ##block.block_id = ##block_setting.block_id AND ##block_setting.setting_value LIKE ?"
 		)->execute(array($min_block, $this->getName(), '%'.$lang.'%'))->fetchOne();
 
-		$main_menu_address = WT_DB::prepare(
-			"SELECT setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
-		)->execute(array($default_block, 'menu_address'))->fetchOne();
+		if (count($menu_titles) == 0) {
+			$main_menu_address = '#';
+		} else {
+			$main_menu_address = WT_DB::prepare(
+				"SELECT setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
+			)->execute(array($default_block, 'menu_address'))->fetchOne();
+		}
 
-		if (count($menu_titles) > 1) {
+		if (count($menu_titles) == 0 || count($menu_titles) > 1) {
 			$main_menu_title = $this->getMenuTitle();
 		} else {
 			$main_menu_title = WT_DB::prepare(
