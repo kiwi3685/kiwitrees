@@ -3773,7 +3773,7 @@ class WT_Stats {
 			'PLW'=>'PW', 'PNG'=>'PG', 'POL'=>'PL', 'PRI'=>'PR', 'PRK'=>'KP', 'PRT'=>'PO',
 			'PRY'=>'PY', 'PSE'=>'PS', 'PYF'=>'PF', 'QAT'=>'QA', 'REU'=>'RE', 'ROM'=>'RO',
 			'RUS'=>'RU', 'RWA'=>'RW', 'SAU'=>'SA', 'SCT'=>'GB', 'SDN'=>'SD', 'SEN'=>'SN',
-			'SER'=>'RS', 'SGP'=>'SG', 'SGS'=>'GS', 'SHN'=>'SH', 'SIC'=>'IT', 'SJM'=>'SJ',
+			'SER'=>'RS', 'SGP'=>'SG', 'SHN'=>'SH', 'SIC'=>'IT', 'SJM'=>'SJ',
 			'SLB'=>'SB', 'SLE'=>'SL', 'SLV'=>'SV', 'SMR'=>'SM', 'SOM'=>'SO', 'SPM'=>'PM',
 			'STP'=>'ST', 'SUN'=>'RU', 'SUR'=>'SR', 'SVK'=>'SK', 'SVN'=>'SI', 'SWE'=>'SE',
 			'SWZ'=>'SZ', 'SYC'=>'SC', 'SYR'=>'SY', 'TCA'=>'TC', 'TCD'=>'TD', 'TGO'=>'TG',
