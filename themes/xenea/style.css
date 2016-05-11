@@ -130,10 +130,10 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 #main-menu ul ul           {z-index:60;}
 #main-menu li              {float:left;position:relative;left:50%;}
 #main-menu li li           {clear:both;}
-#main-menu li:hover > ul   {display:block;position:absolute;top:0;left:100%;right:auto;margin-top:0;}
+#main-menu li:hover > ul   {display:block;position:absolute;top:0;left:100%;right:auto;margin-top:2px;}
 #main-menu > li:hover > ul {left:0;right:auto;top:42px;}
 #main-menu a               {display:block;white-space:nowrap;overflow:hidden;}
-#main-menu ul              {position:absolute;display:none;background:#fff;border:thin solid #aaaaaa;padding:0;z-index:99;	max-height: 400px; min-width: 140px; overflow-y: auto; overflow-x: hidden;}
+#main-menu ul              {position:absolute;display:none;background:#fff;border:1px solid #aaa;padding:3px;z-index:99; max-height: 400px; min-width: 140px; overflow-y: auto; overflow-x: hidden;}
 #main-menu li a            {margin:auto;padding-top:22px;width:100%;}
 #main-menu li li a         {display:block;position:relative;float:left;font-size:11px;line-height:1.5;padding:0 10px 1px 5px;}
 #topMenu #nav-select       {display: none;}
