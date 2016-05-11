@@ -748,51 +748,49 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/flickr/galleria.flickr.min.js')
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/picasa/galleria.picasa.min.js')
 			->addInlineJavaScript($this->getJavaScript($item_id));
+		?>
 
-		$html = '<div id="gallery-page">
+		<div id="gallery-page">
 			<div id="gallery-container">
-				<h2>' . $controller->getPageTitle() . '</h2>
-				<p>' . $this->getSummaryDescription() . '</p>
-				<div style="clear:both;"></div>
+				<h2><?php echo $controller->getPageTitle(); ?></h2>
+				<p><?php echo $this->getSummaryDescription(); ?></p>
+				<div class="clearfloat"></div>
 				<div id="gallery_tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-					<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
-					$item_list=$this->getAlbumList();
-					foreach ($item_list as $item) {
-						$languages=get_block_setting($item->block_id, 'languages');
-						if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
-							$html.='
-								<li class="ui-state-default ui-corner-top'.($item_id==$item->block_id ? ' ui-tabs-selected ui-state-active' : '').'">
-									<a href="module.php?mod='.$this->getName().'&amp;mod_action=show&amp;gallery_id='.$item->block_id.'" class="ui-tabs-anchor">
-										<span title="' . WT_I18N::translate($item->gallery_title).'">' . WT_I18N::translate($item->gallery_title) . '</span>
+					<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+						<?php
+						$item_list=$this->getAlbumList();
+						foreach ($item_list as $item) {
+							$languages=get_block_setting($item->block_id, 'languages');
+							if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item->gallery_access >= WT_USER_ACCESS_LEVEL) { ?>
+								<li class="ui-state-default ui-corner-top<?php echo ($item_id == $item->block_id ? ' ui-tabs-selected ui-state-active' : ''); ?>">
+									<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;gallery_id=<?php echo $item->block_id; ?>" class="ui-tabs-anchor">
+										<span title="<?php echo WT_I18N::translate($item->gallery_title); ?>"><?php echo WT_I18N::translate($item->gallery_title); ?></span>
 									</a>
-								</li>';
-						}
-					}
-					$html .= '</ul>'.
-					'<div id="outer_gallery_container">';
+								</li>
+							<?php }
+						} ?>
+					</ul>
+					<div id="outer_gallery_container">
+						<?php
 						foreach ($item_list as $item) {
 							$languages=get_block_setting($item->block_id, 'languages');
 							if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item_id==$item->block_id && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
 								$item_gallery = '
-									<h4>'.WT_I18N::translate($item->gallery_description).'</h4>'
-									. $this->mediaDisplay($item->gallery_folder_w, $item_id);
+									<h4>' . WT_I18N::translate($item->gallery_description) . '</h4>' .
+									$this->mediaDisplay($item->gallery_folder_w, $item_id);
 							}
 						}
 						if (!isset($item_gallery)) {
-							$html .= '
-								<h4>' . WT_I18N::translate('Image collections related to our family') . '</h4>' .
+							echo '<h4>' . WT_I18N::translate('Image collections related to our family') . '</h4>' .
 								$this->mediaDisplay('//', $item_id);
 						} else {
-							$html .= $item_gallery;
-						}
-					$html.= '</div>'. //close #outer_gallery_container
-				'</div>'. //close #gallery_tabs
-			'</div>'. //close #gallery-container
-		'</div>'; //close #gallery-page
-
-		echo $html;
-
-	}
+							echo $item_gallery;
+						} ?>
+					</div><!-- close #outer_gallery_container -->
+				</div><!-- close #gallery_tabs -->
+			</div><!-- close #gallery-container -->
+		</div><!-- close #gallery-page -->
+	<?php }
 
 	// Print the gallery display
 	private function mediaDisplay($sub_folder, $item_id) {
