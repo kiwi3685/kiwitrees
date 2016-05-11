@@ -63,7 +63,7 @@ class list_calendar_WT_Module extends WT_Module implements WT_Module_List {
 		$menus = array();
 		$menu  = new WT_Menu(
 			$this->getTitle(),
-			'calendar.php&amp;ged=' . WT_GEDURL,
+			'calendar.php?ged=' . WT_GEDURL,
 			'menu-list-branches'
 		);
 		$menus[] = $menu;
