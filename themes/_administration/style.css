@@ -1042,14 +1042,15 @@ table#story_table {width:100%}
     line-height: 25px;
     margin-top: 20px;
 }
-#simpl_pages #gallery_tabs, #simpl_pages #pages_pages form {margin: 20px auto;}
-#simpl_pages .save{clear: both; margin: 20px 0;}
+#simpl_pages #pages_pages form {margin: 20px auto;}
+#simpl_pages .save {clear: both; margin: 20px 0;}
 #pages_pages select {height: 34px; min-width: 175px;}
-#pages_pages button {color: initial;}
+#pages_pages button {color: initial; float: none;}
 
+#simpl_pages #pages_module {width:100%;}
 #simpl_pages #pages_module th, #simpl_pages #pages_module td {vertical-align:top; text-align:left;}
 #simpl_pages #pages_module th {min-width: 150px;}
-#simpl_pages #pages_tabs, #simpl_pages #pages_pages form {margin:20px auto;}
+#simpl_pages #pages_tabs, #simpl_pages #pages_config_tabs, #simpl_pages #pages_pages form {margin:20px auto; overflow: hidden;}
 #simpl_pages .label{line-height:25px;margin-top: 20px;}
 #simpl_pages .value input.long{width:500px; height:100px;}
 #simpl_pages .value2{}
@@ -1084,14 +1085,11 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #simpl_research_links .buttons {clear:both;}
 
 /* Styling for gallery module */
-#gallery .label {
-    line-height: 25px;
-    margin-top: 20px;
-}
-#gallery #gallery_tabs, #gallery #gallery_pages form {margin: 20px auto;}
+#gallery .label {line-height: 25px; margin-top: 20px;}
+#gallery #gallery_tabs, #gallery #gallery_pages form {margin: 20px auto;  overflow: hidden}
 #gallery .save{clear: both; margin: 20px 0;}
 #gallery_pages select {height: 34px; min-width: 175px;}
-#gallery_pages button {color: initial;}
+#gallery_pages button {color: initial; float: none;}
 .gallery_edit_pos td {white-space:nowrap;}
 .gallery_edit_pos td:first-child {width:80%;}
 .gallery_edit_pos span {font-weight: 900; margin: 0 10px;}
