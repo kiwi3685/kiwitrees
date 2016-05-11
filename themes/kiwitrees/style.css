@@ -3253,7 +3253,7 @@ div[id^="caldiv"] td {
 }
 
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-    padding: .5em;
+    padding: 5px 8px;;
 }
 
 /* jQuery.datatable styling general over-rides */

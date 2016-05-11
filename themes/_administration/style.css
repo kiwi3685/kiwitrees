@@ -1077,7 +1077,8 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 /* Styling for gallery module */
 #gallery .label {line-height: 25px; margin-top: 20px;}
 #gallery #gallery_tabs, #gallery #gallery_pages form {margin: 20px auto;  overflow: hidden}
-#gallery .save{clear: both; margin: 20px 0;}
+#gallery .save {clear: both; margin: 20px 0;}
+#gallery .save button {float: none;}
 #gallery_pages select {height: 34px; min-width: 175px; vertical-align: middle;}
 #gallery_pages button {color: initial; float: none;}
 .gallery_edit_pos td {white-space:nowrap;}
