@@ -86,6 +86,11 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	public function configureBlock($block_id) {
 	}
 
+	// Implement class WT_Module_Block
+	public function isGedcomBlock() {
+		return false;
+	}
+
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
