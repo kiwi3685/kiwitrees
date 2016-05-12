@@ -30,7 +30,6 @@ if (!defined('WT_WEBTREES')) {
 interface WT_Module_Block {
 	public function getBlock($block_id);
 	public function loadAjax();
-	public function isUserBlock();
 	public function isGedcomBlock();
 	public function configureBlock($block_id);
 }

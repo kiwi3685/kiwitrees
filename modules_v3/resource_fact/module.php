@@ -142,7 +142,6 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 		?>
 		<div id="resource-page" class="fact_report">
 			<h2><?php echo $this->getTitle(); ?></h2>
-
 			<div class="help_text">
 				<div class="help_content">
 					<h5><?php echo $this->getDescription(); ?></h5>

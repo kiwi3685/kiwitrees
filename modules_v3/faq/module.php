@@ -100,11 +100,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	}
 
 	// Implement class WT_Module_Block
-	public function isUserBlock() {
-		return false;
-	}
-
-	// Implement class WT_Module_Block
 	public function isGedcomBlock() {
 		return false;
 	}

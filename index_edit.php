@@ -79,7 +79,7 @@ if($TEXT_DIRECTION == 'ltr') {
 
 $all_blocks = array();
 foreach (WT_Module::getActiveBlocks() as $name=>$block) {
-	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
+	if ($user_id || $gedcom_id && $block->isGedcomBlock()) {
 		$all_blocks[$name] = $block;
 	}
 }

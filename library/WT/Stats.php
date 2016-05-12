@@ -3706,7 +3706,7 @@ class WT_Stats {
 		if (isset($params[0]) && $params[0] != '') {$block = $params[0];} else {return '';}
 		$all_blocks=array();
 		foreach (WT_Module::getActiveBlocks() as $name=>$active_block) {
-			if ($ctype=='user' && $active_block->isUserBlock() || $ctype=='gedcom' && $active_block->isGedcomBlock()) {
+			if ($ctype=='user' || $ctype=='gedcom' && $active_block->isGedcomBlock()) {
 				$all_blocks[$name]=$active_block;
 			}
 		}
