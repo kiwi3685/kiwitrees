@@ -155,7 +155,7 @@ $controller
 										}
 									echo '</td>
 									<td>', $module->getDescription(), '</td>
-									<td>', $module instanceof WT_Module_Block   	? WT_I18N::translate('Home page') : '-', '</td>
+									<td>', $module instanceof WT_Module_Block   	? ($module->isGedcomBlock() ? WT_I18N::translate('Home page') : WT_I18N::translate('Other')) : '-', '</td>
 									<td>', $module instanceof WT_Module_Chart   	? WT_I18N::translate('Chart') : '-', '</td>
 									<td>', $module instanceof WT_Module_List   		? WT_I18N::translate('List') : '-', '</td>
 									<td>', $module instanceof WT_Module_Menu    	? WT_I18N::translate('Menu') : '-', '</td>
