@@ -18,7 +18,7 @@ class familytreeseeker_plugin extends research_base_plugin {
 		return 'INT';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://familytreeseeker.com/search.php?l=en&fn=' . $givn . '&sn=' . strtolower($surname) . '&m=1&bd1=0&bd2=0&bp=&t=1&submit=Search';
 	}
 

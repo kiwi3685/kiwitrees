@@ -18,7 +18,7 @@ class groningersalle_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://www.allegroningers.nl/personen/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/persoon_rol_s_0/0/q/persoon_rol_s_1/0';
 
 	}

@@ -18,7 +18,7 @@ class stamboomzoeker_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://stamboomzoeker.nl/search.php?l=nl&fn=' . $givn . '&sn=' . $surname . '&m=1&bd1=0&bd2=2014&bp=&t=1&submit=Zoeken';
 	}
 

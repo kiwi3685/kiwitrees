@@ -18,7 +18,7 @@ class zutphenarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://www.regionaalarchiefzutphen.nl/voorouders/persons?ss=%7B%22q%22:%22' . $first . '%20' . $surname . '%22%7D';
 	}
 

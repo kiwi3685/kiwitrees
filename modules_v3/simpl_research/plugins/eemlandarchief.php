@@ -18,7 +18,7 @@ class eemlandarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://www.archiefeemland.nl/collectie/archieven/zoekresultaat?mivast=28&miadt=28&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mif3=2&mizk_alle=' . $first . '%20' . $surname;
 	}
 

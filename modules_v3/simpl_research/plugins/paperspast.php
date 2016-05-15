@@ -18,7 +18,7 @@ class paperspast_plugin extends research_base_plugin {
 		return 'NZL';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=q&hs=1&r=1&results=1&dafdq=&dafmq=&dafyq=&datdq=&datmq=&datyq=&pbq=&sf=&ssnip=&tyq=&t=2&txq=' . $first  . '+' . $surname . '&x=26&y=3&e=-------10--1----2%22Jessie+Ledger%22--';
 	}
 

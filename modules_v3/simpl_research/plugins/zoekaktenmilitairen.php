@@ -18,7 +18,7 @@ class zoekaktenmilitairen_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://zoekakten.nl/zoekmil2.php?soort=0&anaam=' .$surname . '&vnaam=' . $givn . '&submit=Zoek';
 	}
 

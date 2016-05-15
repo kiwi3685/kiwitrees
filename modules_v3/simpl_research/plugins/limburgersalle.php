@@ -18,7 +18,7 @@ class limburgersalle_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://www.allelimburgers.nl/wgpublic/persoonu.php?&search_fd5=%3D%3D' . $surn . '&search_fd6=%3D%3D' . $givn . '&multisearch_fd6=7,8&multisearch_fd16=17&multisearch_fd20=21,22';
 	}
 

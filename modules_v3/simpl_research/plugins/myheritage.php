@@ -18,7 +18,7 @@ class myheritage_plugin extends research_base_plugin {
 		return 'INT';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://www.myheritage.com/research?formId=master&formMode=&action=query&exactSearch=0&qname=Name+fn.' . $givn . '+ln.' . $surname;
 	}
 

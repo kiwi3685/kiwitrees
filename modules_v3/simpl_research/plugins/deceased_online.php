@@ -18,7 +18,7 @@ class deceased_online_plugin extends research_base_plugin {
 		return 'GBR';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'https://www.deceasedonline.com/servlet/GSDOSearch?' .'GSDOInptSName=' .$surname .'&GSDOInptFName=' .$first;
 	}
 

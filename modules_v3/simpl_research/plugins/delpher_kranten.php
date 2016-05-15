@@ -18,7 +18,7 @@ class delpher_kranten_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://kranten.delpher.nl/nl/results?query=' . urlencode('"') . $fullname . urlencode('"') . '&coll=ddd';
 	}
 

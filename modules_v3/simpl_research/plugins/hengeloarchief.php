@@ -18,7 +18,7 @@ class hengeloarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://archief.hengelo.nl/genealogie/zoek.php?type=advanced&achternaam=' . $surname . '&voornaam=' . $first . '&gezinsbladen=1&geboortedatum_dag=&geboortedatum_maand=&geboortedatum_jaar=&gezinskaarten=1&kostgangerskaarten=1&geboorten=1&aktenummer=&aktejaar=&huwelijken=1&overlijden=1';
 	}
 

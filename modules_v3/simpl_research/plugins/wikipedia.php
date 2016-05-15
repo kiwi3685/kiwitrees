@@ -18,7 +18,7 @@ class wikipedia_plugin extends research_base_plugin {
 		return 'INT';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		$language = substr(WT_LOCALE, 0, 2);
 		return $link = 'https://' . $language . '.wikipedia.org/wiki/' . $givn . '_' .$surname;
 	}

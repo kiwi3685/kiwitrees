@@ -18,7 +18,7 @@ class openarchieven_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		$languages = array('de', 'en', 'fr', 'nl');
 
 		$language = WT_LOCALE;

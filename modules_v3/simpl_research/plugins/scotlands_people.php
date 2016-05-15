@@ -18,7 +18,7 @@ class scotlands_people_plugin extends research_base_plugin {
 		return 'GBR';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://www.scotlandspeople.gov.uk/people/' . $first .'_' . $surname .'_1513_2012';
 	}
 

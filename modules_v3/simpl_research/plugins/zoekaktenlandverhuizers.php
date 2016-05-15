@@ -18,7 +18,7 @@ class zoekaktenlandverhuizers_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'http://zoekakten.nl/zoeklv2.php?soort=0&naam=' .$surname . '&submit=Zoek';
 	}
 

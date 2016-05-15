@@ -18,7 +18,7 @@ class alkmaararchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'https://www.regionaalarchiefalkmaar.nl/collecties/genealogie/aktes/q/persoon_achternaam_t_0/' . strtolower($surname) . '/q/persoon_voornaam_t_0/' . strtolower($first) . '/q/zoekwijze/s';
 	}
 

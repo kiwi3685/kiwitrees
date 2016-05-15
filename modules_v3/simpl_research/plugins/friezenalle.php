@@ -18,7 +18,7 @@ class friezenalle_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		return $link = 'https://www.allefriezen.nl/zoeken/persons?ss=%7B%22q%22:%22' . $givn . '%20' . $surn . '%22%7D';
 	}
 

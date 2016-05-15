@@ -18,7 +18,7 @@ class online_begraafplaatsen_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		// querystrings are not possible anymore due to changes in website functionality. Just present the link to the website.
 		return $link = 'http://www.online-begraafplaatsen.nl/zoeken.asp';
 	}
