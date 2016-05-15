@@ -36,6 +36,8 @@ $controller
 	->addInlineJavascript('
 		autocomplete();
 		jQuery("#search-tabs").tabs();
+		jQuery("#search-page").css("visibility", "visible");
+		jQuery(".loading-image").css("display", "none");
 	');
 ?>
 
@@ -89,8 +91,8 @@ $controller
 		return true;
 	}
 </script>
-
-<div id="search-page">
+<div class="loading-image">&nbsp;</div>
+<div id="search-page" style="visibility: hidden;">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<div id="search-tabs">
 		<ul>
@@ -359,7 +361,7 @@ $controller
 				</script>
 				<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php#advanced">
 					<input type="hidden" name="action" value="advanced">
-					<input type="hidden" name="isPostBack" value="true">					
+					<input type="hidden" name="isPostBack" value="true">
 					<table id="field_table">
 						<!-- // search terms -->
 						<?php
