@@ -3684,7 +3684,7 @@ class WT_Stats {
 		else if (WT_USER_ID) {
 			$class_name = 'widget_favorites_WT_Module';
 			$block = new $class_name;
-			$content = $block->getBlock($GEDCOM);
+			$content = $block->getWidget($GEDCOM);
 		}
 		return ob_get_clean();
 	}
