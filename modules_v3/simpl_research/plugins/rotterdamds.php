@@ -7,7 +7,7 @@ if (!defined('WT_WEBTREES')) {
 
 class rotterdamds_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Digitale Stamboom Rotterdam';
+		return 'Rotterdam Digitale Stamboom';
 	}
 
 	static function getPaySymbol() {

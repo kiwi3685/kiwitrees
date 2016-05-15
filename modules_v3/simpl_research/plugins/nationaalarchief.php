@@ -7,7 +7,7 @@ if (!defined('WT_WEBTREES')) {
 
 class nationaalarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'National Archief';
+		return 'Nationaal Archief';
 	}
 
 	static function getPaySymbol() {
