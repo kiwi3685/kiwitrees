@@ -11,7 +11,7 @@ class amsterdamarchief_plugin extends research_base_plugin {
 	}
 
 	static function getPaySymbol() {
-		return false;
+		return true;
 	}
 
 	static function getSearchArea() {
