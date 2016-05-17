@@ -191,8 +191,10 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 					if ($enabled_plugins > 0) {
 						$html .= '
 						<li class="research-area">
-							<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
-							<a href="#" class="research-area-title">' . $area . ' (' . $enabled_plugins . ')' . '</a>
+							<a href="#" class="research-area-title">
+								<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+								' . $area . ' (' . $enabled_plugins . ')' . '
+							</a>
 							<ul class="research-list'; $html .= ($i == 0 ? ' first' : ''); $html .= '">';
 								$i++;
 								foreach ($plugins as $label => $plugin) {
