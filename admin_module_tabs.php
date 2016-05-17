@@ -43,12 +43,12 @@ $controller
 		});
 	');
 
-$modules=WT_Module::getActiveTabs(WT_GED_ID, WT_PRIV_HIDE);
+$modules = WT_Module::getActiveTabs(WT_GED_ID, WT_PRIV_HIDE);
 
 $action = safe_POST('action');
 
-if ($action=='update_mods' && WT_Filter::checkCsrf()) {
-	foreach ($modules as $module_name=>$module) {
+if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
+	foreach ($modules as $module_name => $module) {
 		foreach (WT_Tree::getAll() as $tree) {
 			$access_level = safe_POST("access-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
@@ -59,7 +59,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 		WT_DB::prepare(
 			"UPDATE `##module` SET tab_order=? WHERE module_name=?"
 		)->execute(array($order, $module_name));
-		$module->order=$order; // Make the new order take effect immediately
+		$module->order = $order; // Make the new order take effect immediately
 	}
 	uasort($modules, create_function('$x,$y', 'return $x->order > $y->order;'));
 }

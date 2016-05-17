@@ -77,7 +77,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 
-		$this->tabs=WT_Module::getActiveTabs();
+		$this->tabs = WT_Module::getActiveTabs();
 
 		// Our parent needs $this->record
 		parent::__construct();
@@ -119,11 +119,11 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 
 		// Initialise tabs
-		$tab=safe_GET('module');
+		$tab = safe_GET('module');
 
 		// A request for a non-existant tab?
 		if (array_key_exists($tab, $this->tabs)) {
-			$mod=$this->tabs[$tab];
+			$mod = $this->tabs[$tab];
 		} else {
 			header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
 			exit;

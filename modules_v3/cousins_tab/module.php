@@ -56,19 +56,19 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $controller;
-		$list_f=array();
-		$list_f2=array();
-		$list_f3=array();
-		$list_m=array();
-		$list_m2=array();
-		$list_m3=array();
-		$count_cousins_f = 0;
-		$count_cousins_m = 0;
-		$family = '';
-		$html = '';
-		$person = $controller->getSignificantIndividual();
-		$fullname =  $controller->record->getFullName();
-		$xref =  $controller->record->getXref();
+		$list_f				= array();
+		$list_f2			= array();
+		$list_f3			= array();
+		$list_m				= array();
+		$list_m2			= array();
+		$list_m3			= array();
+		$count_cousins_f	= 0;
+		$count_cousins_m	= 0;
+		$family				= '';
+		$html				= '';
+		$person				= $controller->getSignificantIndividual();
+		$fullname			=  $controller->record->getFullName();
+		$xref				=  $controller->record->getXref();
 		if ($person->getPrimaryChildFamily()) {
 			$parentFamily = $person->getPrimaryChildFamily();
 		} else {
@@ -88,21 +88,21 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		//Lookup father's siblings
-		$rows=WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyHusb, 0, strpos($grandparentFamilyHusb, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
+		$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyHusb, 0, strpos($grandparentFamilyHusb, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			if ($row['xref'] != substr($parentFamily->getHusband(), 0, strpos($parentFamily->getHusband(), '@')))
 				$list_f[]=$row['xref'];
 		}
 		//Lookup Aunt & Uncle's families (father's family)
 		foreach ($list_f as $ids) {
-			$rows=WT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = WT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_f2[]=$row['xref'];
 			}
 		}
 		//Lookup cousins (father's family)
 		foreach ($list_f2 as $id2) {
-			$rows=WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_f3[]=$row['xref'];
 				$count_cousins_f ++;
@@ -110,21 +110,21 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		//Lookup mother's siblings
-		$rows=WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyWife, 0, strpos($grandparentFamilyWife, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
+		$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".substr($grandparentFamilyWife, 0, strpos($grandparentFamilyWife, '@'))."'")->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			if ($row['xref'] != substr($parentFamily->getWife(), 0, strpos($parentFamily->getWife(), '@')))
 				$list_m[]=$row['xref'];
 		}
 		//Lookup Aunt & Uncle's families (mother's family)
 		foreach ($list_m as $ids) {
-			$rows=WT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = WT_DB::prepare("SELECT l_from as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND (l_type LIKE 'HUSB' OR l_type LIKE 'WIFE') AND l_to LIKE '".$ids."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_m2[]=$row['xref'];
 			}
 		}
 		//Lookup cousins (mother's family)
 		foreach ($list_m2 as $id2) {
-			$rows=WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
+			$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				$list_m3[]=$row['xref'];
 				$count_cousins_m ++;
@@ -219,7 +219,7 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
-		return false;
+		return true;
 	}
 
 	// Implement WT_Module_Tab

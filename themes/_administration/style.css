@@ -885,7 +885,7 @@ table#story_module, table#story_module2 {border:1px inset #d9d6c4; border-collap
 [dir=rtl] #story_module th {text-align:right;}
 #story_module2 th, #story_module2 td {vertical-align:top; text-align:left;}
 [dir=rtl] #story_module2 th, [dir=rtl] #story_module2 td {text-align:right;}
-table#story_table {width:100%}
+table#story_table {width: 99%;}
 #story_table_wrapper {margin-top:20px;}
 #story_table th {text-align:center;}
 #story_table th:first-of-type {text-align:left;}

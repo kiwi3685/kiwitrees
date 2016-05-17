@@ -98,7 +98,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
-		return false;
+		return true;
 	}
 
 	// Implement class WT_Module_Block
@@ -243,7 +243,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Tab
 	public function canLoadAjax() {
-		return false;
+		return true;
 	}
 
 	// Implement class WT_Module_Tab
@@ -515,7 +515,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 											for ($x = 0; $x < $count_xref; $x++) {
 												$indi[$x] = WT_Person::getInstance($xref[$x]);
 												if ($indi[$x]) {
-														  echo '<p><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
+														  echo '<p><a href="', $indi[$x]->getHtmlUrl().'#stories" class="current">'.$indi[$x]->getFullName(), '</a></p>';
 												} else {
 													echo '<p class="error">', $xref[$x], '</p>';
 												}
@@ -606,7 +606,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 										if (!$indi[$x]){
 											echo '<p class="error">', $xref[$x], '</p>';
 										} else {
-											echo '<p><a href="', $indi[$x]->getHtmlUrl().'" '.$this->onClick(true).' class="current">'.$indi[$x]->getFullName(), '</a></p>';
+											echo '<p><a href="', $indi[$x]->getHtmlUrl().'#stories" class="current">'.$indi[$x]->getFullName(), '</a></p>';
 										}
 									}
 								echo '</td>
@@ -673,11 +673,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		//-- Stories menu item
 		$menu = new WT_Menu($this->getTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show_list', 'menu-story');
 		return $menu;
-	}
-
-	private function onClick($storytab = true) {
-		$tabId = $storytab ? array_search($this->getname(),array_keys(WT_Module::getActiveTabs())) : 0;
-		return "onclick=\"sessionStorage.setitem('indi-tab',$tabId);\"";
 	}
 
 }

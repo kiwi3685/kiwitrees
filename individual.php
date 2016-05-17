@@ -33,13 +33,13 @@ require './includes/session.php';
 $controller = new WT_Controller_Individual();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
-	if (safe_GET('action')=='ajax') {
+	if (safe_GET('action') == 'ajax') {
 		$controller->ajaxRequest();
 		exit;
 	}
 	// Generate the sidebar content *before* we display the page header,
 	// as the clippings cart needs to have write access to the session.
-	$sidebar_html=$controller->getSideBarContent();
+	$sidebar_html = $controller->getSideBarContent();
 
 	$controller->pageHeader();
 	if ($controller->record->isMarkedDeleted()) {
@@ -94,6 +94,9 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 
 $linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
 
+// Get tab IDs
+$tab_ids = WT_DB::prepare("SELECT module_name, tab_order FROM `##module` WHERE tab_order IS NOT NULL AND status = 'enabled'")->fetchAssoc();
+
 $controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
 		spinner: \'<i class="icon-loading-small"></i>\',
@@ -101,6 +104,13 @@ $controller->addInlineJavascript('
 		active:   sessionStorage.getItem("indi-tab"),
 		activate: function(event, ui) { sessionStorage.setItem("indi-tab", jQuery("#tabs").tabs("option", "active")); }
 	});
+	var taborder = ' . json_encode($tab_ids) . ';
+	var hash = window.location.hash.substr(1);
+	var activetab = taborder[hash] - 1;
+	if (activetab >= 0) {
+		jQuery("#tabs").tabs({ active: activetab });
+		scrollTo(0,0);
+	}
 
 	// sidebar settings
 	// Variables
