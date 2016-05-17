@@ -109,7 +109,6 @@ $controller->addInlineJavascript('
 	var activetab = taborder[hash] - 1;
 	if (activetab >= 0) {
 		jQuery("#tabs").tabs({ active: activetab });
-		scrollTo(0,0);
 	}
 
 	// sidebar settings
@@ -180,6 +179,7 @@ $controller->addInlineJavascript('
 		collapsible: true
 	});
 
+	jQuery("html, body").animate({ scrollTop: 0 }, "slow");
 ');
 
 // ===================================== header area
