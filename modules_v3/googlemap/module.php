@@ -1567,12 +1567,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			?>
 			<script>
 			function edit_place_location(placeid) {
-				window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank');
+				window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=update&placeid=' + placeid, '_blank');
 				return false;
 			}
 
 			function add_place_location(placeid) {
-				window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank');
+				window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid=' + placeid, '_blank');
 				return false;
 			}
 			</script>
