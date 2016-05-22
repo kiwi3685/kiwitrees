@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$action=safe_REQUEST($_REQUEST, 'action');
+$action = safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
@@ -51,11 +51,11 @@ echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/
 function place_id_to_hierarchy($id) {
 	$statement=
 		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
-	$arr=array();
-	while ($id!=0) {
-		$row=$statement->execute(array($id))->fetchOneRow();
-		$arr=array($id=>$row->pl_place)+$arr;
-		$id=$row->pl_parent_id;
+	$arr = array();
+	while ($id != 0) {
+		$row = $statement->execute(array($id))->fetchOneRow();
+		$arr = array($id=>$row->pl_place)+$arr;
+		$id = $row->pl_parent_id;
 	}
 	return $arr;
 }
@@ -65,7 +65,7 @@ function getHighestIndex() {
 	return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne();
 }
 
-$where_am_i=place_id_to_hierarchy($placeid);
+$where_am_i = place_id_to_hierarchy($placeid);
 $level	= count($where_am_i);
 $link 	= 'module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent='.$placeid;
 
@@ -141,7 +141,7 @@ if ($action=="update") {
 	$zoomfactor = $row->pl_zoom;
 	$parent_lati = "0.0";
 	$parent_long = "0.0";
-	if ($row->pl_lati!==null && $row->pl_long!==null) {
+	if ($row->pl_lati !== null && $row->pl_long !== null) {
 		$place_lati = (float)(str_replace(array('N', 'S', ','), array('', '-', '.') , $row->pl_lati));
 		$place_long = (float)(str_replace(array('E', 'W', ','), array('', '-', '.') , $row->pl_long));
 		$show_marker = true;
@@ -176,7 +176,7 @@ if ($action=="update") {
 	echo '<h3>', htmlspecialchars(str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), '</h3>';
 }
 
-if ($action=='add') {
+if ($action == 'add') {
 	// --- find the parent place in the file
 	if ($placeid != 0) {
 		if (!isset($place_name)) $place_name  = '';
@@ -192,17 +192,17 @@ if ($action=='add') {
 				WT_DB::prepare("SELECT pl_lati, pl_long, pl_parent_id, pl_zoom, pl_level FROM `##placelocation` WHERE pl_id=?")
 				->execute(array($parent_id))
 				->fetchOneRow();
-			if ($row->pl_lati!==null && $row->pl_long!==null) {
-				$parent_lati=str_replace(array('N', 'S', ','), array('', '-', '.') , $row->pl_lati);
-				$parent_long=str_replace(array('E', 'W', ','), array('', '-', '.') , $row->pl_long);
-				$zoomfactor=$row->pl_zoom;
-				if ($zoomfactor>$GOOGLEMAP_MAX_ZOOM) {
-					$zoomfactor=$GOOGLEMAP_MAX_ZOOM;
+			if ($row->pl_lati !== null && $row->pl_long !== null) {
+				$parent_lati = str_replace(array('N', 'S', ','), array('', '-', '.') , $row->pl_lati);
+				$parent_long = str_replace(array('E', 'W', ','), array('', '-', '.') , $row->pl_long);
+				$zoomfactor	 = $row->pl_zoom;
+				if ($zoomfactor > $GOOGLEMAP_MAX_ZOOM) {
+					$zoomfactor = $GOOGLEMAP_MAX_ZOOM;
 				}
-				$level=$row->pl_level+1;
+				$level = $row->pl_level+1;
 			}
 			$parent_id = $row->pl_parent_id;
-		} while ($row->pl_parent_id!=0 && $row->pl_lati===null && $row->pl_long===null);
+		} while ($row->pl_parent_id != 0 && $row->pl_lati === null && $row->pl_long === null);
 	}
 	else {
 		if (!isset($place_name)) $place_name  = '';

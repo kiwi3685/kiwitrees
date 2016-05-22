@@ -109,7 +109,7 @@ function get_place_list_loc($parent_id, $status='active') {
 			break;
 	}
 
-	$placelist=array();
+	$placelist = array();
 	foreach ($rows as $row) {
 		$placelist[]=array('place_id'=>$row->pl_id, 'place'=>$row->pl_place, 'lati'=>$row->pl_lati, 'long'=>$row->pl_long, 'zoom'=>$row->pl_zoom, 'icon'=>$row->pl_icon);
 	}
@@ -541,11 +541,11 @@ if ($action=='ImportFile2') {
 			}
 		}
 	}
-	$parent=0;
+	$parent = 0;
 }
 
-if ($action=='DeleteRecord') {
-	$sql="DELETE FROM `##placelocation` WHERE pl_id IN (".$deleteRecord.")";
+if ($action == 'DeleteRecord') {
+	$sql = "DELETE FROM `##placelocation` WHERE pl_id IN (".$deleteRecord.")";
 	WT_DB::prepare($sql)->execute();
 }
 
@@ -556,7 +556,7 @@ function updateList(status) {
 }
 
 function edit_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=add&placeid='+placeid, '_blank');
+	window.open('module.php?mod=googlemap&mod_action=admin_places_edit&action=update&placeid=' + placeid, '_blank');
 	return false;
 }
 
