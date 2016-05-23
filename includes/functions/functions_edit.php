@@ -1319,7 +1319,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	// label
 	echo '<div id="' . $element_id . '_factdiv" ';
-	if ($fact == "MAP" || ($fact == "LATI" || $fact == "LONG") && $value == '') {
+	if ($fact === 'DATA' || $fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
 		echo ' style="display:none;"';
 	}
 	echo ' >';
