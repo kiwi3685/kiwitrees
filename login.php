@@ -237,7 +237,7 @@ case 'requestpw':
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_mail.php';
-		webtreesMail(getUserEmail($user_id), $WEBTREES_EMAIL, WT_I18N::translate('Lost password request'), $mail_body);
+		kiwiMail(getUserEmail($user_id), $WEBTREES_EMAIL, WT_I18N::translate('Lost password request'), $mail_body);
 	}
 	// Show a success message, even if the user account does not exist.
 	// Otherwise this page can be used to guess/test usernames.
@@ -352,10 +352,10 @@ case 'register':
 			$mail2_from    = $WEBTREES_EMAIL;
 
 			// Send user message by email only
-			webtreesMail($mail2_to, $mail2_from, $mail2_subject, $mail2_body);
+			kiwiMail($mail2_to, $mail2_from, $mail2_subject, $mail2_body);
 
 			// Send admin message by email and/or internal messaging
-			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
+			kiwiMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
 			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
@@ -531,7 +531,7 @@ case 'verify_hash':
 		$hc_ok = get_user_setting($user_id, 'reg_hashcode') == $user_hashcode;
 		if ($pw_ok && $hc_ok) {
 			require_once WT_ROOT.'includes/functions/functions_mail.php';
-			webtreesMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
+			kiwiMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
 			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));

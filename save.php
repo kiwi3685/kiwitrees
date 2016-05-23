@@ -262,7 +262,7 @@ case 'user_setting':
 		if ($value && get_user_setting($id1, $id2)!=$value && get_user_setting($id1, 'sessiontime')==0) {
 			require_once WT_ROOT.'includes/functions/functions_mail.php';
 			WT_I18N::init(get_user_setting($id1, 'language'));
-			webtreesMail(
+			kiwiMail(
 				getUserEmail($id1),
 				$WEBTREES_EMAIL,
 				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),

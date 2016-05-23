@@ -48,11 +48,11 @@ function authenticateUser($user_name, $password) {
 		return -5;
 	}
 
-	if ($user_id=get_user_id($user_name)) {
+	if ($user_id = get_user_id($user_name)) {
 		if (check_user_password($user_id, $password)) {
-			$is_admin=get_user_setting($user_id, 'canadmin');
-			$verified=get_user_setting($user_id, 'verified');
-			$approved=get_user_setting($user_id, 'verified_by_admin');
+			$is_admin = get_user_setting($user_id, 'canadmin');
+			$verified = get_user_setting($user_id, 'verified');
+			$approved = get_user_setting($user_id, 'verified_by_admin');
 			if ($verified && $approved || $is_admin) {
 				// Whenever we change our authorisation level change the session ID
 				Zend_Session::regenerateId();
@@ -82,7 +82,7 @@ function authenticateUser($user_name, $password) {
 function userLogout($user_id) {
 	AddToLog('Logout '.getUserName($user_id), 'auth');
 	// If we are logging ourself out, then end our session too.
-	if (WT_USER_ID==$user_id) {
+	if (WT_USER_ID == $user_id) {
 		Zend_Session::destroy();
 	}
 }
@@ -115,7 +115,7 @@ function getUserName() {
 /**
  * check if given username is an admin
  */
-function userIsAdmin($user_id=WT_USER_ID) {
+function userIsAdmin($user_id = WT_USER_ID) {
 	if ($user_id) {
 		return get_user_setting($user_id, 'canadmin');
 	} else {
@@ -126,9 +126,9 @@ function userIsAdmin($user_id=WT_USER_ID) {
 /**
  * check if given username is an admin for the given gedcom
  */
-function userGedcomAdmin($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
+function userGedcomAdmin($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
 	if ($user_id) {
-		return WT_Tree::get($ged_id)->userPreference($user_id, 'canedit')=='admin' || userIsAdmin($user_id);
+		return WT_Tree::get($ged_id)->userPreference($user_id, 'canedit') == 'admin' || userIsAdmin($user_id);
 	} else {
 		return false;
 	}
@@ -137,13 +137,13 @@ function userGedcomAdmin($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 /**
  * check if the given user has access privileges on this gedcom
  */
-function userCanAccess($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
+function userCanAccess($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
 	if ($user_id) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
-			$tmp=WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
-			return $tmp=='admin' || $tmp=='accept' || $tmp=='edit' || $tmp=='access';
+			$tmp = WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
+			return $tmp == 'admin' || $tmp == 'accept' || $tmp == 'edit' || $tmp == 'access';
 		}
 	} else {
 		return false;
@@ -153,14 +153,14 @@ function userCanAccess($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 /**
  * check if the given user has write privileges for the given gedcom
  */
-function userCanEdit($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
+function userCanEdit($user_id = WT_USER_ID, $ged_id = WT_GED_ID) {
 
 	if ($user_id) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
-			$tmp=WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
-			return $tmp=='admin' || $tmp=='accept' || $tmp=='edit';
+			$tmp = WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
+			return $tmp == 'admin' || $tmp == 'accept' || $tmp == 'edit';
 		}
 	} else {
 		return false;
@@ -190,7 +190,7 @@ function setUserEmail($user_id, $email) {
 // add a message into the log-file
 // Note that while transfering data from PhpGedView to WT, we delete the WT users and
 // replace with PhpGedView users.  Hence the current user_id is not always available.
-function AddToLog($log_message, $log_type='error') {
+function AddToLog($log_message, $log_type = 'error') {
 	global $WT_REQUEST;
 	WT_DB::prepare(
 		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
@@ -198,7 +198,7 @@ function AddToLog($log_message, $log_type='error') {
 		$log_type,
 		$log_message,
 		$WT_REQUEST->getClientIp(),
-		defined('WT_USER_ID') && WT_USER_ID && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? WT_USER_ID : null,
+		defined('WT_USER_ID') && WT_USER_ID && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' ? WT_USER_ID : null,
 		defined('WT_GED_ID') ? WT_GED_ID : null
 	));
 }
@@ -211,7 +211,7 @@ function AddToSearchLog($log_message, $geds) {
 		WT_DB::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 		)->execute(array(
-			(count(WT_Tree::getAll())==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
+			(count(WT_Tree::getAll()) == count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
 			$WT_REQUEST->getClientIp(),
 			WT_USER_ID ? WT_USER_ID : null,
 			$tree->tree_id
@@ -235,51 +235,51 @@ function addMessage($message) {
 	//-- setup the message body for the "from" user
 	$copy_email = $message['body'];
 	if (isset($message['from_name']))
-		$copy_email = WT_I18N::translate('Your Name:')." ".$message['from_name']."\r\n".WT_I18N::translate('Email Address:')." ".$message['from_email']."\r\n\r\n".$copy_email;
+		$copy_email = WT_I18N::translate('Your Name:') . " " . $message['from_name'] . "\r\n" . WT_I18N::translate('Email Address:') . " " . $message['from_email'] . "\r\n\r\n" . $copy_email;
 	if (!empty($message['url'])) {
 		if (strpos($message['url'],WT_SERVER_NAME.WT_SCRIPT_PATH)!==0) {
-			$message['url']=WT_SERVER_NAME.WT_SCRIPT_PATH.$message['url'];
+			$message['url'] = WT_SERVER_NAME.WT_SCRIPT_PATH.$message['url'];
 		}
-		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
+		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n" . WT_I18N::translate('This message was sent while viewing the following URL: ') . "\r\n" . $message['url'] . "\r\n";
 	}
-	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
-	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
+	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: " . $WT_REQUEST->getClientIp() . "\r\n";
+	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp()) . "\r\n";
 	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
-	$copy_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
+	$copy_subject = "[" . /* I18N subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
 	$from ='';
 	if (!$user_id_from) {
 		$from = $message['from'];
-		$copy_email = WT_I18N::translate('You sent the following message to a kiwitrees administrator:')."\r\n\r\n".$copy_email;
+		$copy_email = WT_I18N::translate('You sent the following message to an administrator:') . "\r\n\r\n" . $copy_email;
 		$fromFullName = $message['from'];
 	} else {
 		$fromFullName = getUserFullName($user_id_from);
-		$from = hex4email($fromFullName, 'UTF-8')." <".getUserEmail($user_id_from).">";
-		$toFullName=getUserFullName($user_id_to);
-		$copy_email = WT_I18N::translate('You sent the following message to a kiwitrees user:').' '.$toFullName."\r\n\r\n".$copy_email;
+		$from = hex4email($fromFullName, 'UTF-8') . " <" . getUserEmail($user_id_from) . ">";
+		$toFullName = getUserFullName($user_id_to);
+		$copy_email = WT_I18N::translate('You sent the following message to a user:') . ' ' . $toFullName . "\r\n\r\n" . $copy_email;
 
 	}
-	if ($message['method']!='messaging') {
-		$oryginal_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
+	if ($message['method'] != 'messaging') {
+		$original_subject = "[" . /* I18N Subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
 		if (!$user_id_from) {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
+			$original_email = /* I18N Start of message from a kiwitrees site */ WT_I18N::translate('The following message has been sent to your %1$s user account from ', strip_tags(WT_TREE_TITLE));
 			if (!empty($message['from_name'])) {
-				$oryginal_email .= $message['from_name']."\r\n\r\n".$message['body'];
+				$original_email .= $message['from_name']."\r\n\r\n".$message['body'];
 			} else {
-				$oryginal_email .= $from."\r\n\r\n".$message['body'];
+				$original_email .= $from."\r\n\r\n".$message['body'];
 			}
 		} else {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
-			$oryginal_email .= $fromFullName."\r\n\r\n".$message['body'];
+			$original_email = /* I18N Start of message from a kiwitrees site */ WT_I18N::translate('The following message has been sent to your %1$s user account from ', strip_tags(WT_TREE_TITLE));
+			$original_email .= $fromFullName . "\r\n\r\n" . $message['body'];
 		}
 		if (!isset($message['no_from'])) {
 			if (stristr($from, $WEBTREES_EMAIL)) {
 				$from = getUserEmail(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
 			}
-			// copy messages should be from:  $WEBTREES_EMAIL
+			// copy messages should be from: $WEBTREES_EMAIL
 			$copy_from = $WEBTREES_EMAIL;
 			if (!empty($copy_from)) {
 				// send the copy message to sender
-				if (!webtreesMail($from, $copy_from, $copy_subject, $copy_email)) {
+				if (!kiwiMail($from, $copy_from, $copy_subject, $copy_email)) {
 					return false;
 				}
 			}
@@ -299,28 +299,28 @@ function addMessage($message) {
 	}
 	if (empty($message['created']))
 		$message['created'] = gmdate ("D, d M Y H:i:s T");
-	if ($message['method']!='messaging3' && $message['method']!='mailto' && $message['method']!='none') {
+	if ($message['method'] != 'messaging3' && $message['method'] != 'mailto' && $message['method'] != 'none') {
 		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}
-	if ($message['method']!='messaging') {
-		$oryginal_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION=='ltr'?"] ":" [").$message['subject'];
+	if ($message['method'] != 'messaging') {
+		$original_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION == 'ltr'?"] ":" [").$message['subject'];
 		if (!$user_id_from) {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
+			$original_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
 			if (!empty($message['from_name'])) {
-				$oryginal_email .= $message['from_name']."\r\n\r\n".$message['body'];
+				$original_email .= $message['from_name']."\r\n\r\n".$message['body'];
 			} else {
-				$oryginal_email .= $from."\r\n\r\n".$message['body'];
+				$original_email .= $from."\r\n\r\n".$message['body'];
 			}
 		} else {
-			$oryginal_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
-			$oryginal_email .= $fromFullName."\r\n\r\n".$message['body'];
+			$original_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
+			$original_email .= $fromFullName."\r\n\r\n".$message['body'];
 		}
-		$toFullName=getUserFullName($user_id_to);
+		$toFullName = getUserFullName($user_id_to);
 		$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
 		if (getUserEmail($user_id_to)) {
 			// send the original message
-			if (!webtreesMail($to, $from, $oryginal_subject, $oryginal_email)) {
+			if (!kiwiMail($to, $from, $original_subject, $original_email)) {
 				return false;
 			}
 		}
@@ -381,15 +381,15 @@ function getUserNews($user_id) {
 		->execute(array($user_id))
 		->fetchAll();
 
-	$news=array();
+	$news = array();
 	foreach ($rows as $row) {
-		$news[$row->news_id]=array(
-			'id'=>$row->news_id,
-			'user_id'=>$row->user_id,
-			'gedcom_id'=>$row->gedcom_id,
-			'date'=>$row->updated,
-			'title'=>$row->subject,
-			'text'=>$row->body,
+		$news[$row->news_id] = array(
+			'id'		=> $row->news_id,
+			'user_id'	=> $row->user_id,
+			'gedcom_id'	=> $row->gedcom_id,
+			'date'		=> $row->updated,
+			'title'		=> $row->subject,
+			'text'		=> $row->body,
 		);
 	}
 	return $news;
@@ -401,15 +401,15 @@ function getGedcomNews($gedcom_id) {
 		->execute(array($gedcom_id))
 		->fetchAll();
 
-	$news=array();
+	$news = array();
 	foreach ($rows as $row) {
 		$news[$row->news_id]=array(
-			'id'=>$row->news_id,
-			'user_id'=>$row->user_id,
-			'gedcom_id'=>$row->gedcom_id,
-			'date'=>$row->updated,
-			'title'=>$row->subject,
-			'text'=>$row->body,
+			'id'		=> $row->news_id,
+			'user_id'	=> $row->user_id,
+			'gedcom_id'	=> $row->gedcom_id,
+			'date'		=> $row->updated,
+			'title'		=> $row->subject,
+			'text'		=> $row->body,
 		);
 	}
 	return $news;
@@ -428,12 +428,12 @@ function getNewsItem($news_id) {
 
 	if ($row) {
 		return array(
-			'id'=>$row->news_id,
-			'user_id'=>$row->user_id,
-			'gedcom_id'=>$row->gedcom_id,
-			'date'=>$row->updated,
-			'title'=>$row->subject,
-			'text'=>$row->body,
+			'id'		=> $row->news_id,
+			'user_id'	=> $row->user_id,
+			'gedcom_id'	=> $row->gedcom_id,
+			'date'		=> $row->updated,
+			'title'		=> $row->subject,
+			'text'		=> $row->body,
 		);
 	} else {
 		return null;
