@@ -1365,7 +1365,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		// Not all facts have help text.
 		switch ($fact) {
 		case 'NAME':
-			if ($upperlevel!='REPO') {
+			if ($upperlevel!='REPO' && $upperlevel !== 'UNKNOWN') {
 				echo help_link($fact);
 			}
 			break;
@@ -1504,7 +1504,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 			echo '>', $typeValue, '</option>';
 		}
 		echo '</select>';
-	} else if (($fact == 'NAME' && $upperlevel!='REPO') || $fact == '_MARNM') {
+	} else if (($fact == 'NAME' && $upperlevel!='REPO' && $upperlevel !== 'UNKNOWN') || $fact == '_MARNM') {
 		// Populated in javascript from sub-tags
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", htmlspecialchars($value), "\" class=\"", $fact, "\">";
 		echo '<span id="', $element_id, '_display" dir="auto">', htmlspecialchars($value), '</span>';

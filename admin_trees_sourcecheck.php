@@ -102,12 +102,22 @@ $sid = WT_Filter::post('source');
 	<?php if (WT_Filter::post('go')) { 	?>
 		<div id="source_list" style="visibility: hidden;">
 			<?php
-			$source	= WT_Source::getInstance($sid);
-			$data	= citations($sid);
+			$source		 = WT_Source::getInstance($sid);
+			$data		 = citations($sid);
+			$no_citation = count_sources($sid) - count($data);
 			?>
 			<h3>
 				<span><?php echo WT_I18N::translate('Source'); ?><span>: <a href="<?php echo $source->getHtmlUrl(); ?>"><?php echo $source->getFullName(); ?></a>
 			</h3>
+			<?php if ($no_citation > 0) { ?>
+				<h5>
+				<?php echo WT_I18N::plural(
+						'This source also appears in %s GEDCOM record without a citation attached',
+						'This source also appears in %s GEDCOM records without a citation attached',
+						$no_citation, $no_citation
+					); ?>
+				</h5>
+			<?php } ?>
 			<table id="citation_table" style="width: 100%;">
 				<thead>
 					<tr>
@@ -119,14 +129,13 @@ $sid = WT_Filter::post('source');
 				<tbody>
 					<?php
 					foreach ($data as $row) {
-						$indi		= WT_Person::getInstance($row->xref);
-						$fam_data	= WT_Family::getInstance($row->xref);
-						$record		= WT_Person::getInstance($row->xref) ? WT_Person::getInstance($row->xref) : WT_Family::getInstance($row->xref);
-						preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*)\n/i', $row->gedrec, $match);
+						preg_match('/\n\d SOUR @' . $sid . '@(?:\n[3-9].*)*\n\d PAGE (.*)\n/i', $row->gedrec, $match);
+						$record = WT_Person::getInstance($row->xref) ? WT_Person::getInstance($row->xref) : WT_Family::getInstance($row->xref) ? WT_Family::getInstance($row->xref) : WT_Media::getInstance($row->xref);
 						?>
 						<tr>
 							<td>
 								<?php
+								if($record){
 								switch ($record->getType()) {
 									case "INDI":
 										$icon = $record->getSexImage('small', '', '', false);
@@ -143,7 +152,7 @@ $sid = WT_Filter::post('source');
 									default:
 										$type = '&nbsp;';
 										break;
-								}
+								}}
 								?>
 								<span>
 									<?php echo $icon; ?>
@@ -186,8 +195,21 @@ function citations($sid) {
 		FROM `##media`
 		WHERE `m_file` = ?
 		AND `m_gedcom`
+		REGEXP '1 SOUR @" . $sid . "@\n2 PAGE (.*)\n'
+		UNION
+		SELECT o_id AS xref, o_gedcom AS gedrec
+		FROM `##other`
+		WHERE `o_file` = ?
+		AND `o_gedcom`
 		REGEXP '2 SOUR @" . $sid . "@\n3 PAGE (.*)\n'
-	")->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
+	")->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
 
 	return $rows;
+}
+
+// source functions ignoring citation
+function count_sources($sid) {
+	// Count the number of linked records.  These numbers include private records, but htis is only accessibel on admin pages
+	$count = WT_DB::prepare("SELECT count(*) FROM `##link` WHERE `l_to` LIKE '" . $sid . "'")->fetchOne();
+	return $count;
 }

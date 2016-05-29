@@ -6640,7 +6640,7 @@ textarea#NOTE {
 	#edit_interface-page #add_name_details,
 	#edit_interface-page #add_other_details,
 	div#add_other_details + div#additional_facts {
-		width: 520px;
+		width: 525px;
 	}
 }
 
