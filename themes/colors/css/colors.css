@@ -2621,6 +2621,10 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 }
 
 /* Styles for recent changes resource */
+#resource-page.recent_changes {
+	margin: auto;
+	width: 90%;
+}
 #resource-page.recent_changes table th,
 #resource-page table td {
 	padding:8px;
@@ -2637,11 +2641,6 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 	font-weight: normal;
 	width: 20px;
 }
-#resource-page.recent_changes {
-	margin: auto;
-	width: 90%;
-}
-
 #resource-page.recent_changes td.wrap p {
 	display: inline;
 	font-size: 80%;

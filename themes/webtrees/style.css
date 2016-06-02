@@ -2591,6 +2591,10 @@ div.widget {
 }
 
 /* Styles for recent changes resource */
+#resource-page.recent_changes {
+	margin: auto;
+	width: 90%;
+}
 #resource-page.recent_changes table th,
 #resource-page table td {
 	padding:8px;
@@ -2607,11 +2611,6 @@ div.widget {
 	font-weight: normal;
 	width: 20px;
 }
-#resource-page.recent_changes {
-	margin: auto;
-	width: 90%;
-}
-
 #resource-page.recent_changes td.wrap p {
 	display: inline;
 	font-size: 80%;

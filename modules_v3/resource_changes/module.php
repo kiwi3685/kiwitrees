@@ -105,73 +105,62 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
     }
 
     if (!$set_days){
-      $earliest     = $from ? strtoupper(date('d M Y', strtotime($from))) : date('d M Y', strtotime($earliest));
-      $latest       = $to ? strtoupper(date('d M Y', strtotime($to))) : date('d M Y', strtotime($latest));
-      $date1        = new DateTime($earliest);
-      $date2        = new DateTime($latest);
-      $days         = $date1->diff($date2)->format("%a") + 1;
-    }
-
-    $pending_changes = array();
-    if ($pending) {
-        $rows = WT_DB::prepare(
-          "SELECT xref, change_time, IFNULL(user_name, '<none>') AS user_name".
-          " FROM `##change`" .
-          " LEFT JOIN `##user` USING (user_id)" .
-          " WHERE status='pending' AND gedcom_id=?"
-        )->execute(array(WT_GED_ID))->fetchAll();
-        $pending_changes = array();
-        foreach ($rows as $row) {
-          $pending_changes[] = $row;
-        }
-    }
-
-    // find changes in database
-    if ($set_days){
-        $arr = array(WT_GED_ID, 'DATE_ADD(NOW(), INTERVAL -' . $set_days . ' DAY)', 'DATE(NOW())');
+        $earliest     = $from ? strtoupper(date('d M Y', strtotime($from))) : date('d M Y', strtotime($earliest));
+        $latest       = $to ? strtoupper(date('d M Y', strtotime($to))) : date('d M Y', strtotime($latest));
+        $date1        = new DateTime($earliest);
+        $date2        = new DateTime($latest);
+        $days         = $date1->diff($date2)->format("%a") + 1;
     } else {
-        $arr = array(WT_GED_ID, date('Y-m-d', strtotime($earliest)), date('Y-m-d', strtotime($latest)));
-    }
-    $rows = WT_DB::prepare(
-        "SELECT xref, change_time, IFNULL(user_name, '<none>') AS user_name".
-        " FROM `##change`" .
-        " LEFT JOIN `##user` USING (user_id)" .
-        " WHERE status='accepted' AND gedcom_id=?" .
-        " AND change_time BETWEEN ? AND ?"
-        )->execute($arr)->fetchAll();
-    $recent_changes = array();
-    foreach ($rows as $row) {
-        $recent_changes[] = $row;
+        $days = $set_days;
     }
 
-/*    $sql = "SELECT xref, change_time, IFNULL(user_name, \'<none>\') AS user_name\n"
-        . " FROM `kt_change`\n"
-        . " LEFT JOIN `kt_user` USING (user_id)\n"
-        . " WHERE status=\'accepted\' AND gedcom_id=2\n"
-        . " AND change_time BETWEEN DATE_ADD(NOW(), INTERVAL -51 DAY) AND DATE(NOW())\n"
-        . "ORDER BY `kt_change`.`change_time` DESC";
-*/
 
+    if($action == 'go') {
+        if ($pending) {
+            $rows = WT_DB::prepare(
+              "SELECT xref, change_time, IFNULL(user_name, '<none>') AS user_name".
+              " FROM `##change`" .
+              " LEFT JOIN `##user` USING (user_id)" .
+              " WHERE status='pending' AND gedcom_id=?"
+            )->execute(array(WT_GED_ID))->fetchAll();
+            $pending_changes = array();
+            foreach ($rows as $row) {
+              $pending_changes[] = $row;
+            }
+        }
 
-
-
+        // find changes in database
+        if ($set_days){
+            $sql = "SELECT xref, change_time, IFNULL(user_name, '<none>') AS user_name"
+                . " FROM `##change`"
+                . " LEFT JOIN `##user` USING (user_id)"
+                . " WHERE status='accepted' AND gedcom_id=" . WT_GED_ID
+                . " AND `change_time` BETWEEN DATE_ADD(NOW(), INTERVAL - {$set_days} DAY) AND DATE(NOW())";
+        } else {
+            $sql = "SELECT xref, change_time, IFNULL(user_name, '<none>') AS user_name"
+                . " FROM `##change`"
+                . " LEFT JOIN `##user` USING (user_id)"
+                . " WHERE status='accepted' AND gedcom_id=" . WT_GED_ID
+                . " AND `change_time` BETWEEN '" . date('Y-m-d', strtotime($earliest)) . "' AND '" . date('Y-m-d', strtotime($latest . ' + 1 day')) . "'";
+        }
+        $recent_changes = WT_DB::prepare($sql)->execute()->fetchAll();
+    }
 
     // Prepare table headers and footers
     $table_header = '
-    earliest = ' . date('Y-m-d', strtotime($earliest)) . '<br>
-    latest = ' . date('Y-m-d', strtotime($latest)) . '<br>
-      <table class="changes width100">
-        <thead>
-          <tr>
-            <th>&nbsp;</th>
-            <th>' . WT_I18N::translate('Record') . '</th>
-            <th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
-            <th>' . WT_I18N::translate('Username') . '</th>
-            <th>DATE</th>
-            <th>SORTNAME</th>
-          </tr>
-        </thead>
-        <tbody>
+        <div class="loading-image">&nbsp;</div>
+        <table class="changes width100" style="visibility:hidden;">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>' . WT_I18N::translate('Record') . '</th>
+                    <th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
+                    <th>' . WT_I18N::translate('Username') . '</th>
+                    <th>DATE</th>
+                    <th>SORTNAME</th>
+                </tr>
+            </thead>
+            <tbody>
     ';
 
     $table_footer = '
@@ -180,20 +169,20 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
 
     // Common settings
     $content = '
-      <div id="resource-page" class="recent_changes" style="margin: auto; width: 90%;">
+    <div id="resource-page" class="recent_changes">
         <h2>' . $this->getTitle() . '</h2>
         <div class="help_text">
             <div class="help_content">
                 <h5>' . $this->getDescription() . '</h5>
                 <a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
                 <div class="hidden">
-                    ' . /* I18N help for resource facts and events module */ WT_I18N::translate('View a list of data changes to the current family tree  based on <b>either</b> a range of dates <b>or</b> a number of days up to and including today. If you enter one or more dates plus a number of days, the dates will be ignored.') . '
+                    ' . /* I18N help for resource facts and events module */ WT_I18N::translate('View a list of data changes to the current family tree  based on <b>either</b> a range of dates <b>or</b> a number of days up to and including today. If you enter one or more dates plus a number of days, the dates will be ignored.<br>If <b>Show pending changes</b> is selected these will <u>all</u> be shown regardless of date or day settings.') . '
                 </div>
             </div>
         </div>
         <div class="noprint">
           <form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
-            <input type="hidden" name="action" value="?">
+            <input type="hidden" name="action" value="go">
             <div class="chart_options">
               <label for = "DATE1">' . WT_I18N::translate('Starting range of change dates') . '</label>
               <input type="text" name="date1" id="DATE1" value="' . ($set_days ? '' : $earliest) . '">' . print_calendar_popup("DATE1") . '
@@ -221,7 +210,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
         <hr style="clear:both;">
     ';
 
-    if (($recent_changes || $pending_changes) && $action) {
+    if ($action == "go") {
       $controller
         ->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
         ->addExternalJavascript(WT_JQUERY_DT_HTML5)
@@ -251,6 +240,8 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
               /* 5-SORTNAME */ {"sType": "unicode", "bVisible": false}
             ]
           });
+          jQuery(".changes").css("visibility", "visible");
+          jQuery(".loading-image").css("display", "none");
         ');
       // Print pending changes
       if ($pending) {
@@ -265,13 +256,15 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
         } else {
           $content .= WT_I18N::translate('There are no pending changes.');
         }
+        $content .= '<hr style="clear:both;">';
       }
       // Print approved changes
       if ($recent_changes) {
         $content .= '
-          <h3>' .
-            ($set_days ? WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $set_days, WT_I18N::number($set_days)) : WT_I18N::translate('%1$s - %2$s (%3$s days)', $earliest, $latest, WT_I18N::number($days))) . '
-          </h3>';
+            <h3>' . WT_I18N::translate('Recent changes') . '</h3>
+            <h3>' .
+                ($set_days ? WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $set_days, WT_I18N::number($set_days)) : WT_I18N::translate('%1$s - %2$s (%3$s days)', $earliest, $latest, WT_I18N::number($days))) . '
+            </h3>';
         // table headers
         $content .= $table_header;
         //-- table body

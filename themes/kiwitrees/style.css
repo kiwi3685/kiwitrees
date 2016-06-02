@@ -4132,7 +4132,7 @@ a.icon-udarrow:hover {
 .fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-save */
 .fa-search				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-search */
 .fa-search:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-search */
-.fa-refresh				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-refresh */
+.fa-refresh				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: middle;} /* fa-refresh */
 .fa-refresh:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-refresh */
 .fa-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-link */
 .fa-link:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #009afe;} /* fa-link */
@@ -6131,6 +6131,10 @@ div.widget {
 }
 
 /* Styles for recent changes resource */
+#resource-page.recent_changes {
+	margin: auto;
+	width: 90%;
+}
 #resource-page.recent_changes table th,
 #resource-page table td {
 	padding:8px;
@@ -6147,11 +6151,6 @@ div.widget {
 	font-weight: normal;
 	width: 20px;
 }
-#resource-page.recent_changes {
-	margin: auto;
-	width: 90%;
-}
-
 #resource-page.recent_changes td.wrap p {
 	display: inline;
 	font-size: 80%;
