@@ -27,7 +27,7 @@ require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_import.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$search  = WT_Filter::post('search');
+$search  = WT_Filter::post('search', null, WT_Filter::get('search'));
 $replace = WT_Filter::post('replace');
 $confirm = WT_Filter::post('confirm');
 

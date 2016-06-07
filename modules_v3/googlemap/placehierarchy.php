@@ -150,31 +150,25 @@ function create_map($placelevels) {
 	if (WT_USER_IS_ADMIN) {
 		$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
 		if ($parent && isset($parent[0]) ) {
-			$placecheck_url .= '&amp;country='.$parent[0];
+			$placecheck_url .= '&amp;country=' . $parent[0];
 			if (isset($parent[1])) {
-				$placecheck_url .= '&amp;state='.$parent[1];
+				$placecheck_url .= '&amp;state=' . $parent[1];
 			}
 		}
 		$adminplaces_url = 'module.php?mod=googlemap&amp;mod_action=admin_places';
 		if ($latlng && isset($latlng['pl_id'])) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
+		$update_places_url = 'admin_trees_places.php?ged=' . WT_GEDCOM . '&amp;search=' . $parent[0];
 		echo '<p id="gm_links">
 			<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>
 			&nbsp;|&nbsp;
-			<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>
+			<a href="' . $adminplaces_url . '">' . WT_I18N::translate('Geographic data') . '</a>
 			&nbsp;|&nbsp;
-			<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
-			if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
-				$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", "
-				$placelevels=substr($placelevels, 2); // remove the leading ", "
-				if ($placelevels) {
-					$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;ged='.WT_GEDCOM.'&amp;search='.urlencode($placelevels); // exact match
-					echo '&nbsp;|&nbsp;';
-					echo '<a href="'.$batchupdate_url.'">', WT_I18N::translate('Batch update'), '</a>';
-				}
-			}
-		echo '</p>';
+			<a href="' . $placecheck_url . '">' . WT_I18N::translate('Place Check') . '</a>
+			&nbsp;|&nbsp;
+			<a href="' . $update_places_url . '">' . WT_I18N::translate('Update place names') . '</a>
+		</p>';
 	}
 
 	if ($STREETVIEW && $level >= 1) {
