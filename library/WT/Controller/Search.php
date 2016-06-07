@@ -318,9 +318,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 			'EMAIL',
 			'EMIG:DATE','EMIG:PLAC',
 			'ENDL:DATE','ENDL:PLAC',
-			'EVEN',
-			'EVEN:DATE','EVEN:PLAC',
-			'FAMS:CENS:DATE','FAMS:CENS:PLAC',
+			'EVEN', 'EVEN:TYPE', 'EVEN:DATE', 'EVEN:PLAC',
+ 			'FACT', 'FACT:TYPE',
+ 			'FAMS:CENS:DATE','FAMS:CENS:PLAC',
 			'FAMS:DIV:DATE',
 			'FAMS:NOTE',
 			'FAMS:SLGS:DATE','FAMS:SLGS:PLAC',
@@ -358,7 +358,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		foreach ($ofields as $field) {
 			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
 		}
-		uksort($fields, array('WT_Controller_AdvancedSearch', 'tagSort'));
+		uksort($fields, array('WT_Controller_Search', 'tagSort'));
 		return $fields;
 	}
 
@@ -1037,12 +1037,17 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					break;
 				}
-			} elseif ($parts[0] == 'FAMS') {
+			} elseif ($parts[0] === 'FAMS') {
 				// e.g. searches for occupation, religion, note, etc.
 				$sql.=" AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
 				$bind[]=$parts[1];
 				$bind[]=$value;
-			} else {
+			} elseif ($parts[1] === 'TYPE') {
+ 				// e.g. FACT:TYPE or EVEN:TYPE
+ 				$sql .= " AND ind.i_gedcom REGEXP CONCAT('\n1 ', ?, '.*(\n[2-9] .*)*\n2 TYPE .*', ?)";
+ 				$bind[] = $parts[0];
+ 				$bind[] = $value;
+  			} else {
 				// e.g. searches for occupation, religion, note, etc.
 				$sql.=" AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
 				$bind[]=$parts[0];
