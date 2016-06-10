@@ -257,7 +257,7 @@ class WT_Menu {
 		$option_link = '
 			<ul>
 				<li>
-					<a href="#">' . $this->label . '</a>';
+					<a href="'.$this->link.'">' . $this->label . '</a>';
 					if ($this->submenus) {
 						$option_link .= '<ul>';
 						foreach ($this->submenus as $submenu) {
