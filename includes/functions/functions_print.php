@@ -1123,10 +1123,13 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '<select id="newfact" name="newfact">';
 	echo '<option value="" disabled selected>' . WT_I18N::translate('Select') . '</option>';
 	foreach ($translated_addfacts as $fact=>$fact_name) {
-		echo '<option value="', $fact, '">', $fact_name, '</option>';
+		if ($fact !== 'EVEN' && $fact !== 'FACT') {
+			echo '<option value="', $fact, '">', $fact_name, '</option>';
+		}
 	}
 	if ($type == 'INDI' || $type == 'FAM') {
 		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
+		echo '<option value="FACT">', WT_I18N::translate('Custom Fact'), '</option>';
 	}
 	echo '</select>';
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';

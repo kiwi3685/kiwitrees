@@ -105,37 +105,56 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 						/* 1-Name */		{"sClass": "nowrap"},
 						/* 2-DoB */			{"iDataSort": 0, "sClass": "nowrap"},
 						/* 3-Date */ 		{"sClass": "nowrap"},
-						/* 3-Place */ 		{},
-						/* 3-Details */ 	{}
+						/* 4-Place */ 		{},
+						/* 5-Type */ 		{},
+						/* 6-Details */ 	{}
 					]
 				});
 			jQuery("#output").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
+
+			var form = document.getElementById("resource"),
+			fact = form.elements.fact;
+
+			fact.onchange = function () {
+			    var form = this.form;
+			    if ((this.value == "EVEN") || (this.value == "FACT") ) {
+			        form.elements.type.disabled = false;
+					jQuery("#disable_type").css("opacity", "initial");
+			    } else {
+			        form.elements.type.disabled = true;
+					jQuery("#disable_type").css("opacity", "0.4");
+			    }
+			};
+			fact.onchange();
 		');
 
 		//-- set list of all configured individual tags (level 1)
-		$fact_lists = explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'));
-
-		//-- args
-		if (WT_Filter::post('fact') && WT_Filter::post('fact') != 'fact'){
-			list($fact, $level) = explode("-", WT_Filter::post('fact'), 2);
-		} else {
-			list($fact, $level) = array('', '');
+		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$translated_indifacts	= array();
+		foreach ($indifacts as $addfact) {
+			$translated_indifacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
 		}
+		uasort($translated_indifacts, 'factsort');
+
+		//-- variables
+		$fact		= WT_Filter::post('fact');
 		$year_from	= WT_Filter::post('year_from');
 		$year_to	= WT_Filter::post('year_to');
 		$place		= WT_Filter::post('place');
+		$type		= WT_Filter::post('type');
 		$detail		= WT_Filter::post('detail');
 		$go			= WT_Filter::post('go');
 		$reset		= WT_Filter::post('reset');
 
 		// reset all variables
 		if ($reset == 'reset') {
+			$fact		= '';
 			$year_from	= '';
 			$year_to	= '';
 			$place		= '';
+			$type		= '';
 			$detail		= '';
-			$fact		= '';
 			$go			= 0;
 		}
 
@@ -157,14 +176,15 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 					<div class="chart_options">
 						<label for = "fact"><?php echo WT_I18N::translate('Fact or event'); ?></label>
 						<select name="fact" id="fact">
-							<option value="fact" selected="selected"><?php echo /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'); ?></option>
-							<?php foreach ($fact_lists as $key) { ?>
-								<option value="<?php echo $key . '-1'?>"
-									<?php if ($key == $fact) { ?>
-									 selected="selected"
-									<?php } ?>
-									><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
-							<?php } ?>
+							<option value="fact" disabled selected ><?php echo /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('Select'); ?></option>
+							<?php foreach ($translated_indifacts as $key=>$fact_name) {
+								if ($key !== 'EVEN' && $key !== 'FACT') {
+									echo '<option value="' . $key . '"' . ($key == $fact ? ' selected ' : '') . '>' . $fact_name . '</option>';
+								}
+							}
+							echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . WT_I18N::translate('Custom Event') . '</option>';
+							echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . WT_I18N::translate('Custom Fact') . '</option>';
+							?>
 						</select>
 					</div>
 						<input type="hidden" name="go" value="1">
@@ -177,9 +197,13 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 							<label for="place"><?php echo WT_I18N::translate('Place'); ?></label>
 							<input type="text" data-autocomplete-type="PLAC" id="place" name="place" value="<?php echo $place; ?>">
 						</div>
+						<div class="chart_options" id="disable_type">
+							<label for="type"><?php echo WT_I18N::translate('Type'); ?></label>
+							<input type="text" data-autocomplete-type="EVEN_TYPE" id="type" name="type" value="<?php echo $type; ?>" <?php ($fact !== 'EVEN' || $fact !== 'FACT' ? '' : 'disabled'); ?>>
+						</div>
 						<div class="chart_options">
 							<label for="detail"><?php echo WT_I18N::translate('Details'); ?></label>
-							<input type="text" data-autocomplete-type=<?php echo $fact; ?> id="detail" name="detail" value="<?php echo $detail; ?>">
+							<input type="text" id="detail" name="detail" value="<?php echo $detail; ?>">
 						</div>
 		 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
 							<i class="fa fa-eye"></i>
@@ -216,6 +240,12 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 								<td><?php echo $place; ?></td>
 							</tr>
 						<?php }
+						if ($type) { ?>
+							<tr>
+								<th><?php echo WT_I18N::translate('Type'); ?></th>
+								<td><?php echo $type; ?></td>
+							</tr>
+						<?php }
 						if ($detail) { ?>
 							<tr>
 								<th><?php echo WT_I18N::translate('Containing'); ?></th>
@@ -231,18 +261,20 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 								<th><?php echo WT_Gedcom_Tag::getLabel('BIRT:DATE'); ?></th>
 								<th><?php echo WT_I18N::translate('Date'); ?></th>
 								<th><?php echo WT_I18N::translate('Place'); ?></th>
+								<th><?php echo WT_I18N::translate('Type'); ?></th>
 								<th><?php echo WT_I18N::translate('Details'); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
-							$rows = resource_findfact($level, $fact);
+							$rows = resource_findfact($fact, $type);
 							foreach ($rows as $row) {
 								$person = WT_Person::getInstance($row->xref);
 								if ($person->canDisplayDetails()) { ?>
 									<?php $indifacts = $person->getIndiFacts();
 									foreach ($indifacts as $item) {
 										if ($item->getTag() == $fact) {
+											if ($type) {$details = $type;}
 											$filtered_facts = filter_facts ($item, $person, $year_from, $year_to, $place, $detail);
 											if ($filtered_facts) { ?>
 												<tr>
@@ -262,6 +294,17 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 														<?php echo format_fact_place($item, true); ?>
 													</td>
 													<td class="field">
+														<?php
+															$ct = preg_match("/2 TYPE (.*)/", $item->getGedcomRecord(), $ematch);
+															if ($ct>0) {
+																$factname = trim($ematch[1]);
+																echo $factname;
+															} else {
+																echo '';
+															}
+														?>
+													</td>
+													<td class="field">
 														<?php echo print_resourcefactDetails($item, $person); ?>
 													</td>
 												</tr>
@@ -276,5 +319,4 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 			<?php } ?>
 		</div>
 	<?php }
-
 }

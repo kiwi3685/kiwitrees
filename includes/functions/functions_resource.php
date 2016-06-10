@@ -335,12 +335,18 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 	else return $data;
 }
 
-function resource_findfact($level, $fact) {
+function resource_findfact($fact, $type='') {
 	$list = array();
 	// Fetch all data, regardless of privacy
-	$sql = "SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
+	if ($fact == 'EVEN' || $fact == 'FACT'){
+		$sql = "SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
 				" FROM `##individuals`" .
-				" WHERE `i_gedcom` REGEXP '(.*)\n" . $level . " " . $fact . "' AND i_file=?";
+				" WHERE `i_gedcom` REGEXP '(.*)\n1 " . $fact . ".*\n2 TYPE ([^\n]*)" . $type . "*[^\n]*' AND i_file=?";
+	} else {
+		$sql = "SELECT i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec" .
+				" FROM `##individuals`" .
+				" WHERE `i_gedcom` REGEXP '(.*)\n1 " . $fact . "' AND i_file=?";
+	}
 	$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
