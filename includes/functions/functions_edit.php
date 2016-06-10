@@ -1575,6 +1575,11 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 				case '_MARNM_SURN':
 					echo ' data-autocomplete-type="SURN"';
 					break;
+				case 'TYPE':
+					if ($level == 2 && $tags[0] == 'EVEN') {
+						echo ' data-autocomplete-type="EVEN_TYPE"';
+					}
+					break;
 			}
 			echo '>';
 		}

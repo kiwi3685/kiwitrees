@@ -98,7 +98,7 @@ switch ($type) {
 			$person = WT_Person::getInstance($row);
 			if (preg_match('/\n2 CAUS (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
 				if (!in_array($match[1], $data)) {
-					$data[]=$match[1];
+					$data[] = $match[1];
 				}
 			}
 		}
@@ -119,10 +119,34 @@ switch ($type) {
 			->fetchAll(PDO::FETCH_ASSOC);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
+			$person = WT_Person::getInstance($row);
 			if (preg_match('/\n2 CEME (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
 				if (!in_array($match[1], $data)) {
-					$data[]=$match[1];
+					$data[] = $match[1];
+				}
+			}
+		}
+		echo json_encode($data);
+	exit;
+
+	case 'EVEN_TYPE': // Event types
+		$data = array();
+		// Fetch all data, regardless of privacy
+		$rows=
+			WT_DB::prepare(
+				"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+				" FROM `##individuals`".
+				" WHERE i_gedcom REGEXP '(.*)\n1 EVEN.*\n2 TYPE ([^\n]*)" . $term . "*[^\n]*' AND i_file=?".
+				" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 TYPE ', -1) COLLATE '".WT_I18N::$collation."'"
+			)
+			->execute(array(WT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+		// Filter for privacy
+		foreach ($rows as $row) {
+			$person = WT_Person::getInstance($row);
+			if (preg_match('/\n2 TYPE (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
+				if (!in_array($match[1], $data)) {
+					$data[] = $match[1];
 				}
 			}
 		}
@@ -132,10 +156,10 @@ switch ($type) {
 	case 'FAM': // Families, whose name contains the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_FAM_rows($term);
+		$rows = get_FAM_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$family=WT_Family::getInstance($row);
+			$family = WT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
 				$marriage_year=$family->getMarriageYear();
 				if ($marriage_year) {
@@ -187,7 +211,7 @@ switch ($type) {
 	case 'NOTE': // Notes which contain the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_NOTE_rows($term);
+		$rows = get_NOTE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$note=WT_Note::getInstance($row);
@@ -201,7 +225,7 @@ switch ($type) {
 	case 'OBJE':
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_OBJE_rows($term);
+		$rows = get_OBJE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$media=WT_Media::getInstance($row);
@@ -229,7 +253,7 @@ switch ($type) {
 			$person = WT_Person::getInstance($row);
 			if (preg_match('/\n1 OCCU (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
 				if (!in_array($match[1], $data)) {
-					$data[]=$match[1];
+					$data[] = $match[1];
 				}
 			}
 		}
@@ -293,7 +317,7 @@ switch ($type) {
 	case 'REPO': // Repositories, that include the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_REPO_rows($term);
+		$rows = get_REPO_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$repository=WT_Repository::getInstance($row);
@@ -307,7 +331,7 @@ switch ($type) {
 	case 'REPO_NAME': // Repository names, that include the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_REPO_rows($term);
+		$rows = get_REPO_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$repository=WT_Repository::getInstance($row);
@@ -321,7 +345,7 @@ switch ($type) {
 	case 'SOUR': // Sources, that include the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_SOUR_rows($term);
+		$rows = get_SOUR_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$source=WT_Source::getInstance($row);
@@ -346,12 +370,12 @@ switch ($type) {
 			->fetchAll(PDO::FETCH_ASSOC);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
+			$person = WT_Person::getInstance($row);
 			if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $person->getGedcomRecord(), $match)) {
-				$data[]=$match[1];
+				$data[] = $match[1];
 			}
 			if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $person->getGedcomRecord(), $match)) {
-				$data[]=$match[1];
+				$data[] = $match[1];
 			}
 		}
 		// Fetch all data, regardless of privacy
@@ -365,12 +389,12 @@ switch ($type) {
 			->fetchAll(PDO::FETCH_ASSOC);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$family=WT_Family::getInstance($row);
+			$family = WT_Family::getInstance($row);
 			if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $family->getGedcomRecord(), $match)) {
-				$data[]=$match[1];
+				$data[] = $match[1];
 			}
 			if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $family->getGedcomRecord(), $match)) {
-				$data[]=$match[1];
+				$data[] = $match[1];
 			}
 		}
 		// array_unique() converts the keys from integer to string, which breaks
@@ -418,16 +442,16 @@ switch ($type) {
 	case 'IFSRO':
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_INDI_rows($term);
+		$rows = get_INDI_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
+			$person = WT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
 				$data[]=array('value'=>$row['xref'], 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
 			}
 		}
 		// Fetch all data, regardless of privacy
-		$rows=get_SOUR_rows($term);
+		$rows = get_SOUR_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$source=WT_Source::getInstance($row);
@@ -436,7 +460,7 @@ switch ($type) {
 			}
 		}
 		// Fetch all data, regardless of privacy
-		$rows=get_REPO_rows($term);
+		$rows = get_REPO_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$repository=WT_Repository::getInstance($row);
@@ -445,7 +469,7 @@ switch ($type) {
 			}
 		}
 		// Fetch all data, regardless of privacy
-		$rows=get_OBJE_rows($term);
+		$rows = get_OBJE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$media=WT_Media::getInstance($row);
@@ -454,10 +478,10 @@ switch ($type) {
 			}
 		}
 		// Fetch all data, regardless of privacy
-		$rows=get_FAM_rows($term);
+		$rows = get_FAM_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$family=WT_Family::getInstance($row);
+			$family = WT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
 				$marriage_year=$family->getMarriageYear();
 				if ($marriage_year) {
@@ -468,7 +492,7 @@ switch ($type) {
 			}
 		}
 		// Fetch all data, regardless of privacy
-		$rows=get_NOTE_rows($term);
+		$rows = get_NOTE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$note=WT_Note::getInstance($row);
@@ -482,16 +506,16 @@ switch ($type) {
 	case 'IFS':
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=get_INDI_rows($term);
+		$rows = get_INDI_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$person=WT_Person::getInstance($row);
+			$person = WT_Person::getInstance($row);
 			if ($person->canDispLayname()) {
 				$data[]=array('value'=>$row['xref'],       'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
 			}
 		}
 		// Fetch all data, regardless of privacy
-		$rows=get_SOUR_rows($term);
+		$rows = get_SOUR_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
 			$source = WT_Source::getInstance($row);
@@ -500,10 +524,10 @@ switch ($type) {
 			}
 		}
 		// Fetch all data, regardless of privacy
-		$rows=get_FAM_rows($term);
+		$rows = get_FAM_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$family=WT_Family::getInstance($row);
+			$family = WT_Family::getInstance($row);
 			if ($family->canDispLayname()) {
 				$marriage_year=$family->getMarriageYear();
 				if ($marriage_year) {
