@@ -1472,7 +1472,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo select_edit_control('gedcom_id', WT_Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();"');
 					echo '<label>', WT_I18N::translate('Country'), '</label>
 					<select name="country" onchange="this.form.submit();">
-						<option value="XYZ" selected="selected">', /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), '</option>
+						<option value="XYZ" selected="selected">', /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('Select'), '</option>
 						<option value="XYZ">', WT_I18N::translate('All'), '</option>';
 							$rows=WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
 								->fetchAssoc();
@@ -1488,7 +1488,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if ($country!='XYZ') {
 						echo '<label>', /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'), '</label>
 							<select name="state" onchange="this.form.submit();">
-								<option value="XYZ" selected="selected">', WT_I18N::translate('&lt;select&gt;'), '</option>
+								<option value="XYZ" selected="selected">', WT_I18N::translate('Select'), '</option>
 								<option value="XYZ">', WT_I18N::translate('All'), '</option>';
 								$places=WT_DB::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 									->execute(array($par_id))

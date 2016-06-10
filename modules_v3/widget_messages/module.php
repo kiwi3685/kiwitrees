@@ -66,7 +66,7 @@ class widget_messages_WT_Module extends WT_Module implements WT_Module_Widget {
 		$content='<form name="messageform" method="post" onsubmit="return confirm(\''.WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.').'\');">';
 		if (get_user_count()>1) {
 			$content.='<br>'.WT_I18N::translate('Send Message')." <select name=\"touser\">";
-			$content.='<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
+			$content.='<option value="">' . WT_I18N::translate('Select') . '</option>';
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
 					$content.='<option value="'.$user_name.'">';
