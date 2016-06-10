@@ -3813,8 +3813,7 @@ div.dt-buttons a.dt-button {
 }
 
 .search-page-table input {
-	font-size: initial;
-	width: 300px;
+	padding: 5px 10px;
 }
 
 .search-page-table input[type="checkbox"],

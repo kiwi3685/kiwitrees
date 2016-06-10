@@ -150,6 +150,7 @@ $controller
 						<input type="checkbox" id="showasso" name="showasso" value="on" <?php if ($controller->showasso == 'on') echo ' checked="checked"'; ?> >
 						<label for="showasso"><?php echo WT_I18N::translate('Show related persons/families'); ?></label>
 					</div>
+					<hr>
 					<?php echo search_trees(); ?>
 				</div>
 				<button class="btn btn-primary" type="submit">
