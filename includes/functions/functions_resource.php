@@ -368,11 +368,18 @@ function resource_findfact($fact, $type='') {
 	return $list;
 }
 
-function filter_facts ($item, $person, $year_from, $year_to, $place, $detail) {
-	if ($year_from || $year_to || $place || $detail) {
+function filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $type=false) {
+	if ($year_from || $year_to || $place || $detail || $type) {
 		$result_place	= format_fact_place($item, true);
 		$result_date	= format_fact_date($item, $person, false, true, false);
 		$result_detail	= print_resourcefactDetails($item, $person);
+		if ($type) {
+			$ct = preg_match("/2 TYPE (.*)/", $item->getGedcomRecord(), $ematch);
+			if ($ct>0) {
+				$result_type = trim($ematch[1]);
+			}
+		}
+
 		if ($year_from || $year_to) {
 			preg_match_all("/\d{4}/", format_fact_date($item, $person, false, true, false), $matches);
 			$ct = count($matches[0]);
@@ -389,28 +396,43 @@ function filter_facts ($item, $person, $year_from, $year_to, $place, $detail) {
 						)
 					)
 				) {
-					if (!$place && !$detail) {
+					if (!$place && !$detail && !$type) {
 						return true;
-					} elseif ($place && !$detail && stripos(strip_tags($result_place), $place) !== false) {
+					} elseif (!$place && !$detail && $type && stripos(strip_tags($result_type), $type) !== false) {
 						return true;
-					} elseif (!$place && $detail && stripos(strip_tags($result_detail), $detail) !== false) {
+					} elseif (!$place && $detail && !$type && stripos(strip_tags($result_detail), $detail) !== false) {
 						return true;
-					} elseif ($place && $detail && stripos(strip_tags($result_place), $place) !== false && stripos(strip_tags($result_detail), $detail) !== false) {
+					} elseif (!$place && $detail && $type && stripos(strip_tags($result_detail), $detail) !== false && stripos(strip_tags($result_type), $type) !== false) {
+						return true;
+					} elseif ($place && !$detail && !$type && stripos(strip_tags($result_place), $place) !== false) {
+						return true;
+					} elseif ($place && !$detail && $type && stripos(strip_tags($result_place), $place) !== false && stripos(strip_tags($result_type), $type) !== false) {
+						return true;
+					} elseif ($place && $detail && !$type && stripos(strip_tags($result_place), $place) !== false && stripos(strip_tags($result_detail), $detail) !== false) {
+						return true;
+					} elseif ($place && $detail && $type && stripos(strip_tags($result_place), $place) !== false && stripos(strip_tags($result_detail), $detail) !== false && stripos(strip_tags($result_type), $type) !== false) {
 						return true;
 					}
 			}
 		}
 		if ($place && !$year_from && !$year_to) {
 			if (stripos(strip_tags($result_place), $place) !== false) {
-				if (!$detail) {
+				if (!$detail && !$type) {
 					return true;
-				} elseif ($detail && stripos(strip_tags($result_detail), $detail) !== false ) {
+				} elseif ($detail && !$type && stripos(strip_tags($result_detail), $detail) !== false ) {
+					return true;
+				} elseif (!$detail && $type && stripos(strip_tags($result_type), $type) !== false ) {
 					return true;
 				}
 			}
 		}
 		if ($detail && !$year_from && !$year_to && !$place) {
 			if (stripos(strip_tags($result_detail), $detail) !== false) {
+				return true;
+			}
+		}
+		if ($type && !$year_from && !$year_to && !$place){
+			if (stripos(strip_tags($result_type), $type) !== false) {
 				return true;
 			}
 		}

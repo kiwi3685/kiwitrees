@@ -157,8 +157,8 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 			$detail		= '';
 			$go			= 0;
 		}
-
 		?>
+
 		<div id="resource-page" class="fact_report">
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="help_text">
@@ -166,7 +166,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 					<h5><?php echo $this->getDescription(); ?></h5>
 					<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 					<div class="hidden">
-						<?php echo /* I18N help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" at Administration > Family trees > <u>your family tree</u> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place and detail filters can be any string of characters you expect to find in those data fields '); ?>
+						<?php echo /* I18N help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" at Administration > Family trees > <u>your family tree</u> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
 					</div>
 				</div>
 			</div>
@@ -222,7 +222,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 				<div id="output" style="visibility:hidden;">
 					<table id="report_header">
 						<tr>
-							<th colspan="2"><?php echo WT_I18N::translate('Listing individuals based on these details'); ?></th>
+							<th colspan="2"><?php echo WT_I18N::translate('Listing individuals based on these filters'); ?></th>
 						</tr>
 						<tr>
 							<th><?php echo WT_I18N::translate('Fact'); ?></th>
@@ -248,7 +248,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 						<?php }
 						if ($detail) { ?>
 							<tr>
-								<th><?php echo WT_I18N::translate('Containing'); ?></th>
+								<th><?php echo WT_I18N::translate('Details'); ?></th>
 								<td><?php echo $detail; ?></td>
 							</tr>
 							<?php } ?>
@@ -267,15 +267,14 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 						</thead>
 						<tbody>
 							<?php
-							$rows = resource_findfact($fact, $type);
+							$rows = resource_findfact($fact);
 							foreach ($rows as $row) {
 								$person = WT_Person::getInstance($row->xref);
 								if ($person->canDisplayDetails()) { ?>
 									<?php $indifacts = $person->getIndiFacts();
 									foreach ($indifacts as $item) {
 										if ($item->getTag() == $fact) {
-											if ($type) {$details = $type;}
-											$filtered_facts = filter_facts ($item, $person, $year_from, $year_to, $place, $detail);
+											$filtered_facts = filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $type);
 											if ($filtered_facts) { ?>
 												<tr>
 													<td><!-- hidden cell -->
