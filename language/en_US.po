@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-06-11 11:28+1200\n"
-"PO-Revision-Date: 2016-06-11 11:34+1200\n"
+"POT-Creation-Date: 2016-06-13 09:13+1200\n"
+"PO-Revision-Date: 2016-06-13 09:14+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -112,7 +112,7 @@ msgstr "There was an error uploading your file."
 #: modules_v3/googlemap/admin_places_edit.php:86
 #: modules_v3/googlemap/admin_places_edit.php:104
 #: modules_v3/googlemap/admin_places_edit.php:361
-#: modules_v3/googlemap/module.php:672
+#: modules_v3/googlemap/module.php:685
 msgid "close"
 msgstr "close"
 
@@ -254,7 +254,7 @@ msgstr "Do not update the “last change” record"
 #: modules_v3/faq/module.php:437 modules_v3/gallery/module.php:363
 #: modules_v3/gallery/module.php:522
 #: modules_v3/googlemap/admin_places_edit.php:357
-#: modules_v3/googlemap/module.php:445 modules_v3/googlemap/module.php:668
+#: modules_v3/googlemap/module.php:458 modules_v3/googlemap/module.php:681
 #: modules_v3/googlemap/placehierarchy.php:236
 #: modules_v3/simpl_pages/module.php:455
 #: modules_v3/simpl_research/module.php:151 modules_v3/sitemap/module.php:262
@@ -569,7 +569,7 @@ msgstr "This media file does not exist."
 #: admin_media.php:454 admin_trees_duplicates.php:207
 #: admin_trees_unlinked.php:69 admin_trees_unlinked.php:74 ancestry.php:108
 #: compact.php:50 descendancy.php:76 familybook.php:57 fanchart.php:64
-#: hourglass.php:74 modules_v3/googlemap/module.php:729 pedigree.php:76
+#: hourglass.php:74 modules_v3/googlemap/module.php:742 pedigree.php:76
 #: relationship.php:156
 msgid "View"
 msgstr "View"
@@ -958,7 +958,7 @@ msgstr ""
 "defaults. Are you sure?"
 
 #: admin_site_access.php:305 medialist.php:142 modules_v3/album/module.php:344
-#: modules_v3/googlemap/module.php:2016
+#: modules_v3/googlemap/module.php:2022
 #: modules_v3/resource_changes/module.php:206
 #: modules_v3/resource_fact/module.php:214
 msgid "Reset"
@@ -1048,7 +1048,7 @@ msgstr "User"
 #: modules_v3/fancy_imagebar/module.php:277
 #: modules_v3/fancy_treeview/module.php:520 modules_v3/faq/module.php:444
 #: modules_v3/faq/module.php:468 modules_v3/gallery/module.php:528
-#: modules_v3/gallery/module.php:552 modules_v3/googlemap/module.php:1471
+#: modules_v3/gallery/module.php:552 modules_v3/googlemap/module.php:1484
 #: modules_v3/html/module.php:291 modules_v3/simpl_pages/module.php:459
 #: modules_v3/stories/module.php:474 modules_v3/widget_html/module.php:172
 msgid "Family tree"
@@ -2362,7 +2362,7 @@ msgstr "Estimated dates for birth and death"
 #: admin_trees_config.php:1017 admin_trees_config.php:1038
 #: admin_trees_config.php:1070 admin_trees_config.php:1091
 #: admin_trees_config.php:1099 admin_trees_config.php:1107
-#: modules_v3/googlemap/module.php:266
+#: modules_v3/googlemap/module.php:270
 msgid "hide"
 msgstr "hide"
 
@@ -2372,7 +2372,7 @@ msgstr "hide"
 #: admin_trees_config.php:1070 admin_trees_config.php:1091
 #: admin_trees_config.php:1099 admin_trees_config.php:1107 branches.php:85
 #: modules_v3/extra_menus/module.php:350 modules_v3/faq/module.php:450
-#: modules_v3/gallery/module.php:534 modules_v3/googlemap/module.php:266
+#: modules_v3/gallery/module.php:534 modules_v3/googlemap/module.php:270
 #: modules_v3/no_census/module.php:189
 #: modules_v3/resource_changes/module.php:203
 #: modules_v3/resource_fact/module.php:208
@@ -2938,7 +2938,7 @@ msgstr "Date"
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
 #: modules_v3/googlemap/admin_places.php:184
-#: modules_v3/googlemap/module.php:1586 modules_v3/resource_fact/module.php:197
+#: modules_v3/googlemap/module.php:1599 modules_v3/resource_fact/module.php:197
 #: modules_v3/resource_fact/module.php:239
 #: modules_v3/resource_fact/module.php:263
 #: modules_v3/resource_individual/module.php:175 search.php:176 search.php:253
@@ -3367,7 +3367,7 @@ msgstr "Citation"
 #: includes/functions/functions_edit.php:1752
 #: includes/functions/functions_print_lists.php:1305 inverselink.php:98
 #: library/WT/Gedcom/Tag.php:245 modules_v3/charts/module.php:219
-#: modules_v3/googlemap/module.php:709
+#: modules_v3/googlemap/module.php:722
 #: modules_v3/resource_individual/module.php:111
 #: modules_v3/stories/module.php:351 modules_v3/stories/module.php:496
 #: modules_v3/stories/module.php:582 pedigree.php:44
@@ -3653,7 +3653,7 @@ msgid "Show cousins"
 msgstr "Show cousins"
 
 #: ancestry.php:113 descendancy.php:79 familybook.php:62 fanchart.php:69
-#: hourglass.php:79 modules_v3/googlemap/module.php:714 pedigree.php:49
+#: hourglass.php:79 modules_v3/googlemap/module.php:727 pedigree.php:49
 #: modules_v3/ahnentafel_report/report.bak:8
 #: modules_v3/descendancy_report/report.bak:7
 #: modules_v3/individual_ext_report/report.bak:8
@@ -3795,7 +3795,7 @@ msgstr "Vital records"
 #: modules_v3/faq/module.php:470 modules_v3/gallery/help_text.php:37
 #: modules_v3/gallery/module.php:554 modules_v3/googlemap/admin_places.php:610
 #: modules_v3/googlemap/admin_places.php:762
-#: modules_v3/googlemap/module.php:1476 modules_v3/googlemap/module.php:1492
+#: modules_v3/googlemap/module.php:1489 modules_v3/googlemap/module.php:1505
 #: modules_v3/no_census/module.php:212 modules_v3/random_media/module.php:299
 #: modules_v3/resource_individual/module.php:130
 #: modules_v3/simpl_pages/help_text.php:37
@@ -4359,7 +4359,7 @@ msgstr "Delete your account"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1074
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1129
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1178
-#: modules_v3/googlemap/module.php:749
+#: modules_v3/googlemap/module.php:762
 msgid "Private"
 msgstr "Private"
 
@@ -7549,7 +7549,7 @@ msgctxt "MALE/FEMALE"
 msgid "%1$d x %2$s"
 msgstr "%1$d x %2$s"
 
-#: includes/functions/functions.php:1163 modules_v3/googlemap/module.php:1249
+#: includes/functions/functions.php:1163 modules_v3/googlemap/module.php:1262
 msgid "self"
 msgstr "self"
 
@@ -10281,7 +10281,7 @@ msgid "Pedigree"
 msgstr "Pedigree"
 
 #: includes/functions/functions_print.php:94
-#: library/WT/Controller/Fanchart.php:303 modules_v3/googlemap/module.php:1310
+#: library/WT/Controller/Fanchart.php:303 modules_v3/googlemap/module.php:1323
 msgid "Pedigree map"
 msgstr "Pedigree map"
 
@@ -10441,9 +10441,9 @@ msgstr "after death"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
 #: includes/functions/functions_print.php:984
-#: modules_v3/googlemap/admin_places.php:192 modules_v3/googlemap/module.php:51
-#: modules_v3/googlemap/module.php:191 modules_v3/googlemap/module.php:1443
-#: modules_v3/googlemap/module.php:1976 modules_v3/googlemap/module.php:2015
+#: modules_v3/googlemap/admin_places.php:192 modules_v3/googlemap/module.php:54
+#: modules_v3/googlemap/module.php:194 modules_v3/googlemap/module.php:1456
+#: modules_v3/googlemap/module.php:1982 modules_v3/googlemap/module.php:2021
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
@@ -10469,7 +10469,7 @@ msgstr "Fact or event"
 #. I18N: first/default option in a drop-down listbox
 #: includes/functions/functions_print.php:1124
 #: includes/functions/functions_print.php:1228
-#: modules_v3/googlemap/module.php:1475 modules_v3/googlemap/module.php:1491
+#: modules_v3/googlemap/module.php:1488 modules_v3/googlemap/module.php:1504
 #: modules_v3/resource_fact/module.php:179
 #: modules_v3/widget_messages/module.php:69
 msgid "Select"
@@ -11174,7 +11174,7 @@ msgstr "Pedigree tree of %s"
 #: modules_v3/googlemap/admin_places_edit.php:176
 #: modules_v3/googlemap/admin_places_edit.php:223
 #: modules_v3/googlemap/admin_places_edit.php:227
-#: modules_v3/googlemap/module.php:1656
+#: modules_v3/googlemap/module.php:1669
 #: modules_v3/googlemap/placehierarchy.php:308
 #: modules_v3/googlemap/placehierarchy.php:321
 #: modules_v3/googlemap/placehierarchy.php:323
@@ -14258,7 +14258,7 @@ msgstr "Citizenship"
 #. I18N: gedcom tag CITY
 #: library/WT/Gedcom/Tag.php:168 modules_v3/googlemap/admin_places.php:179
 #: modules_v3/googlemap/admin_places_edit.php:289
-#: modules_v3/googlemap/module.php:316
+#: modules_v3/googlemap/module.php:329
 msgid "City"
 msgstr "City"
 
@@ -14318,8 +14318,8 @@ msgstr "Place of cremation"
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:965
 #: modules_v3/googlemap/admin_places.php:176
 #: modules_v3/googlemap/admin_places_edit.php:285
-#: modules_v3/googlemap/module.php:298 modules_v3/googlemap/module.php:391
-#: modules_v3/googlemap/module.php:1473 modules_v3/googlemap/module.php:1591
+#: modules_v3/googlemap/module.php:311 modules_v3/googlemap/module.php:404
+#: modules_v3/googlemap/module.php:1486 modules_v3/googlemap/module.php:1604
 #: modules_v3/uk_register/module.php:144
 msgid "Country"
 msgstr "Country"
@@ -14565,7 +14565,7 @@ msgstr "Place of immigration"
 
 #. I18N: gedcom tag LATI
 #: library/WT/Gedcom/Tag.php:248 modules_v3/googlemap/admin_places.php:185
-#: modules_v3/googlemap/module.php:1600
+#: modules_v3/googlemap/module.php:1613
 msgid "Latitude"
 msgstr "Latitude"
 
@@ -14576,13 +14576,13 @@ msgstr "Legatee"
 
 #. I18N: gedcom tag LONG
 #: library/WT/Gedcom/Tag.php:250 modules_v3/googlemap/admin_places.php:185
-#: modules_v3/googlemap/module.php:1600
+#: modules_v3/googlemap/module.php:1613
 msgid "Longitude"
 msgstr "Longitude"
 
 #. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:251 library/WT/Gedcom/Tag.php:920
-#: modules_v3/googlemap/module.php:257
+#: modules_v3/googlemap/module.php:261
 msgid "Map"
 msgstr "Map"
 
@@ -14868,7 +14868,7 @@ msgstr "Social Security Number"
 #. I18N: gedcom tag STAE
 #: library/WT/Gedcom/Tag.php:329 modules_v3/googlemap/admin_places.php:177
 #: modules_v3/googlemap/admin_places_edit.php:287
-#: modules_v3/googlemap/module.php:307
+#: modules_v3/googlemap/module.php:320
 msgid "State"
 msgstr "State"
 
@@ -21952,7 +21952,7 @@ msgid "Show link to Statistics charts?"
 msgstr "Show link to Statistics charts?"
 
 #: modules_v3/googlemap/admin_places.php:176
-#: modules_v3/googlemap/module.php:393 modules_v3/googlemap/module.php:1593
+#: modules_v3/googlemap/module.php:406 modules_v3/googlemap/module.php:1606
 msgid "Level"
 msgstr "Level"
 
@@ -21974,26 +21974,26 @@ msgid "Icon"
 msgstr "Icon"
 
 #: modules_v3/googlemap/admin_places.php:201
-#: modules_v3/googlemap/module.php:141 modules_v3/googlemap/module.php:163
-#: modules_v3/googlemap/module.php:227 modules_v3/googlemap/module.php:794
-#: modules_v3/googlemap/module.php:1450
+#: modules_v3/googlemap/module.php:144 modules_v3/googlemap/module.php:166
+#: modules_v3/googlemap/module.php:231 modules_v3/googlemap/module.php:807
+#: modules_v3/googlemap/module.php:1463
 #: modules_v3/googlemap/placehierarchy.php:164
 msgid "Google Maps™ preferences"
 msgstr "Google Maps™ preferences"
 
 #: modules_v3/googlemap/admin_places.php:206
 #: modules_v3/googlemap/admin_places_edit.php:41
-#: modules_v3/googlemap/module.php:142 modules_v3/googlemap/module.php:232
-#: modules_v3/googlemap/module.php:795 modules_v3/googlemap/module.php:1454
-#: modules_v3/googlemap/module.php:1587
+#: modules_v3/googlemap/module.php:145 modules_v3/googlemap/module.php:236
+#: modules_v3/googlemap/module.php:808 modules_v3/googlemap/module.php:1467
+#: modules_v3/googlemap/module.php:1600
 #: modules_v3/googlemap/placehierarchy.php:166
 #: modules_v3/googlemap/placehierarchy.php:342
 msgid "Geographic data"
 msgstr "Geographic data"
 
 #: modules_v3/googlemap/admin_places.php:211
-#: modules_v3/googlemap/module.php:143 modules_v3/googlemap/module.php:237
-#: modules_v3/googlemap/module.php:796 modules_v3/googlemap/module.php:1459
+#: modules_v3/googlemap/module.php:146 modules_v3/googlemap/module.php:241
+#: modules_v3/googlemap/module.php:809 modules_v3/googlemap/module.php:1472
 #: modules_v3/googlemap/placehierarchy.php:168
 msgid "Place Check"
 msgstr "Place Check"
@@ -22110,17 +22110,17 @@ msgid "Precision"
 msgstr "Precision"
 
 #: modules_v3/googlemap/admin_places_edit.php:291
-#: modules_v3/googlemap/module.php:324
+#: modules_v3/googlemap/module.php:337
 msgid "Neighborhood"
 msgstr "Neighborhood"
 
 #: modules_v3/googlemap/admin_places_edit.php:293
-#: modules_v3/googlemap/module.php:332
+#: modules_v3/googlemap/module.php:345
 msgid "House"
 msgstr "House"
 
 #: modules_v3/googlemap/admin_places_edit.php:295
-#: modules_v3/googlemap/module.php:341
+#: modules_v3/googlemap/module.php:354
 msgid "Max"
 msgstr "Max"
 
@@ -22165,21 +22165,21 @@ msgstr ""
 #. I18N: The emblem of a country or region
 #: modules_v3/googlemap/admin_places_edit.php:335
 #: modules_v3/googlemap/admin_places_edit.php:341
-#: modules_v3/googlemap/module.php:416
+#: modules_v3/googlemap/module.php:429
 msgid "Flag"
 msgstr "Flag"
 
 #: modules_v3/googlemap/admin_places_edit.php:339
 #: modules_v3/googlemap/admin_places_edit.php:342
-#: modules_v3/googlemap/module.php:511 modules_v3/googlemap/module.php:514
-#: modules_v3/googlemap/module.php:517 modules_v3/googlemap/module.php:573
+#: modules_v3/googlemap/module.php:524 modules_v3/googlemap/module.php:527
+#: modules_v3/googlemap/module.php:530 modules_v3/googlemap/module.php:586
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:378
 msgid "Change flag"
 msgstr "Change flag"
 
 #: modules_v3/googlemap/admin_places_edit.php:343
-#: modules_v3/googlemap/module.php:511 modules_v3/googlemap/module.php:514
-#: modules_v3/googlemap/module.php:517
+#: modules_v3/googlemap/module.php:524 modules_v3/googlemap/module.php:527
+#: modules_v3/googlemap/module.php:530
 msgid "Remove flag"
 msgstr "Remove flag"
 
@@ -22188,7 +22188,7 @@ msgid "When this geographic location is shown, this flag will be displayed."
 msgstr "When this geographic location is shown, this flag will be displayed."
 
 #. I18N: Description of the “Google Maps™” module
-#: modules_v3/googlemap/module.php:56
+#: modules_v3/googlemap/module.php:59
 msgid ""
 "Show the location of places and events using the Google Maps™ mapping "
 "service."
@@ -22196,59 +22196,59 @@ msgstr ""
 "Show the location of places and events using the Google Maps™ mapping "
 "service."
 
-#: modules_v3/googlemap/module.php:159
+#: modules_v3/googlemap/module.php:162
 msgid "No map data for this person"
 msgstr "No map data for this person"
 
-#: modules_v3/googlemap/module.php:247
+#: modules_v3/googlemap/module.php:251
 msgid "Basic"
 msgstr "Basic"
 
-#: modules_v3/googlemap/module.php:248 search.php:105
+#: modules_v3/googlemap/module.php:252 search.php:105
 msgid "Advanced"
 msgstr "Advanced"
 
 #. I18N: Name of a module
-#: modules_v3/googlemap/module.php:249 modules_v3/list_places/module.php:36
+#: modules_v3/googlemap/module.php:253 modules_v3/list_places/module.php:36
 #: placelist.php:43 placelist.php:45
 msgid "Place hierarchy"
 msgstr "Place hierarchy"
 
-#: modules_v3/googlemap/module.php:254
+#: modules_v3/googlemap/module.php:258
 msgid "Default map type"
 msgstr "Default map type"
 
-#: modules_v3/googlemap/module.php:258
+#: modules_v3/googlemap/module.php:262
 msgid "Satellite"
 msgstr "Satellite"
 
-#: modules_v3/googlemap/module.php:259
+#: modules_v3/googlemap/module.php:263
 msgid "Hybrid"
 msgstr "Hybrid"
 
-#: modules_v3/googlemap/module.php:260
+#: modules_v3/googlemap/module.php:264
 msgid "Terrain"
 msgstr "Terrain"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
-#: modules_v3/googlemap/module.php:265 modules_v3/googlemap/module.php:1979
+#: modules_v3/googlemap/module.php:269 modules_v3/googlemap/module.php:1985
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:495
 msgid "Google Street View™"
 msgstr "Google Street View™"
 
-#: modules_v3/googlemap/module.php:270
+#: modules_v3/googlemap/module.php:274
 msgid "Zoom factor of map"
 msgstr "Zoom factor of map"
 
-#: modules_v3/googlemap/module.php:273
+#: modules_v3/googlemap/module.php:277
 msgid "minimum"
 msgstr "minimum"
 
-#: modules_v3/googlemap/module.php:278
+#: modules_v3/googlemap/module.php:282
 msgid "maximum"
 msgstr "maximum"
 
-#: modules_v3/googlemap/module.php:284
+#: modules_v3/googlemap/module.php:288
 msgid ""
 "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is "
 "single house. Note that 15 is only available in certain areas."
@@ -22256,17 +22256,38 @@ msgstr ""
 "Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is "
 "single house. Note that 15 is only available in certain areas."
 
-#: modules_v3/googlemap/module.php:294
+#. I18N: Optional Google Map API key
+#: modules_v3/googlemap/module.php:293
+msgid "Google Maps™ API key"
+msgstr "Google Maps™"
+
+#: modules_v3/googlemap/module.php:297
+msgid ""
+"<b>Optional</b>. Google prefers that users of Google Maps™ obtain an API key "
+"from them. This is linked to their usage restrictions described at https://"
+"developers.google.com/maps/documentation/geocoding/usage-limits. The same "
+"page has a link to get a key. You can continue to use the maps feature "
+"without the API key if you do not exceed the restrictions but a warning "
+"message will exist in the source code of your web page."
+msgstr ""
+"<b>Optional</b>. Google prefers that users of Google Maps™ obtain an API key "
+"from them. This is linked to their usage restrictions described at https://"
+"developers.google.com/maps/documentation/geocoding/usage-limits. The same "
+"page has a link to get a key. You can continue to use the maps feature "
+"without the API key if you do not exceed the restrictions but a warning "
+"message will exist in the source code of your web page."
+
+#: modules_v3/googlemap/module.php:307
 msgid "Precision of the latitude and longitude"
 msgstr "Precision of the latitude and longitude"
 
-#: modules_v3/googlemap/module.php:303 modules_v3/googlemap/module.php:312
-#: modules_v3/googlemap/module.php:321 modules_v3/googlemap/module.php:329
-#: modules_v3/googlemap/module.php:337 modules_v3/googlemap/module.php:346
+#: modules_v3/googlemap/module.php:316 modules_v3/googlemap/module.php:325
+#: modules_v3/googlemap/module.php:334 modules_v3/googlemap/module.php:342
+#: modules_v3/googlemap/module.php:350 modules_v3/googlemap/module.php:359
 msgid "digits"
 msgstr "digits"
 
-#: modules_v3/googlemap/module.php:356
+#: modules_v3/googlemap/module.php:369
 msgid ""
 "This specifies the precision of the different levels when entering new "
 "geographic locations. For example a country will be specified with precision "
@@ -22276,11 +22297,11 @@ msgstr ""
 "geographic locations. For example a country will be specified with precision "
 "0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
 
-#: modules_v3/googlemap/module.php:361
+#: modules_v3/googlemap/module.php:374
 msgid "Default value for top-level"
 msgstr "Default value for top-level"
 
-#: modules_v3/googlemap/module.php:368
+#: modules_v3/googlemap/module.php:381
 msgid ""
 "Here the default level for the highest level in the place-hierarchy can be "
 "defined. If a place cannot be found this name is added as the highest level "
@@ -22290,11 +22311,11 @@ msgstr ""
 "defined. If a place cannot be found this name is added as the highest level "
 "(country) and the database is searched again."
 
-#: modules_v3/googlemap/module.php:373
+#: modules_v3/googlemap/module.php:386
 msgid "Optional prefixes and suffixes"
 msgstr "Optional prefixes and suffixes"
 
-#: modules_v3/googlemap/module.php:378
+#: modules_v3/googlemap/module.php:391
 msgid ""
 "Some place names may be written with optional prefixes and suffixes.  For "
 "example “Orange” versus “Orange County”.  If the family tree contains the "
@@ -22310,31 +22331,31 @@ msgstr ""
 "disregarded.  Multiple options should be separated with semicolons.  For "
 "example “County;County of” or “Township;Twp;Twp.”."
 
-#: modules_v3/googlemap/module.php:384
+#: modules_v3/googlemap/module.php:397
 msgid "Prefixes"
 msgstr "Prefixes"
 
-#: modules_v3/googlemap/module.php:385
+#: modules_v3/googlemap/module.php:398
 msgid "Suffixes"
 msgstr "Suffixes"
 
-#: modules_v3/googlemap/module.php:407
+#: modules_v3/googlemap/module.php:420
 msgid "Use Google Maps™ for the place hierarchy"
 msgstr "Use Google Maps™ for the place hierarchy"
 
-#: modules_v3/googlemap/module.php:412
+#: modules_v3/googlemap/module.php:425
 msgid "Type of place markers in Place Hierarchy"
 msgstr "Type of place markers in Place Hierarchy"
 
-#: modules_v3/googlemap/module.php:415
+#: modules_v3/googlemap/module.php:428
 msgid "Standard"
 msgstr "Standard"
 
-#: modules_v3/googlemap/module.php:422
+#: modules_v3/googlemap/module.php:435
 msgid "Display short placenames"
 msgstr "Display short placenames"
 
-#: modules_v3/googlemap/module.php:426
+#: modules_v3/googlemap/module.php:439
 msgid ""
 "Here you can choose between two types of displaying places names in "
 "hierarchy. If set Yes the place has short name or actual level name, if No - "
@@ -22348,11 +22369,11 @@ msgstr ""
 "><b>Short name: </b>Chicago<br /><b>Full name: </b>Illinois, USA<br /"
 "><b>Short name: </b>Illinois"
 
-#: modules_v3/googlemap/module.php:431
+#: modules_v3/googlemap/module.php:444
 msgid "Display Map Coordinates"
 msgstr "Display Map Coordinates"
 
-#: modules_v3/googlemap/module.php:435
+#: modules_v3/googlemap/module.php:448
 msgid ""
 "This options sets whether Latitude and Longitude are displayed on the pop-up "
 "window attached to map markers."
@@ -22360,15 +22381,15 @@ msgstr ""
 "This options sets whether Latitude and Longitude are displayed on the pop-up "
 "window attached to map markers."
 
-#: modules_v3/googlemap/module.php:458
+#: modules_v3/googlemap/module.php:471
 msgid "Select flag"
 msgstr "Select flag"
 
-#: modules_v3/googlemap/module.php:579
+#: modules_v3/googlemap/module.php:592
 msgid "Countries"
 msgstr "Countries"
 
-#: modules_v3/googlemap/module.php:588 modules_v3/googlemap/module.php:635
+#: modules_v3/googlemap/module.php:601 modules_v3/googlemap/module.php:648
 msgid ""
 "Using the pull down menu it is possible to select a country, of which a flag "
 "can be selected. If no flags are shown, then there are no flags defined for "
@@ -22379,17 +22400,17 @@ msgstr ""
 "this country."
 
 #. I18N: Part of a country, state/region/county
-#: modules_v3/googlemap/module.php:639 modules_v3/googlemap/module.php:1489
+#: modules_v3/googlemap/module.php:652 modules_v3/googlemap/module.php:1502
 msgid "Subdivision"
 msgstr "Subdivision"
 
 #. I18N: %s is an individual’s name
-#: modules_v3/googlemap/module.php:694
+#: modules_v3/googlemap/module.php:707
 #, php-format
 msgid "Pedigree map of %s"
 msgstr "Pedigree map of %s"
 
-#: modules_v3/googlemap/module.php:815
+#: modules_v3/googlemap/module.php:828
 #, php-format
 msgid ""
 "%1$d individual displayed, out of the normal total of %2$d, from %3$d "
@@ -22404,82 +22425,82 @@ msgstr[1] ""
 "%1$d individuals displayed, out of the normal total of %2$d, from %3$d "
 "generations."
 
-#: modules_v3/googlemap/module.php:825
+#: modules_v3/googlemap/module.php:838
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
 msgstr[0] "%s individual is private."
 msgstr[1] "%s individuals are private."
 
-#: modules_v3/googlemap/module.php:829
+#: modules_v3/googlemap/module.php:842
 msgid "No ancestors in the database."
 msgstr "No ancestors in the database."
 
 #. I18N: %1$d is a count of individuals, %2$s is a list of their names
-#: modules_v3/googlemap/module.php:832
+#: modules_v3/googlemap/module.php:845
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
 msgstr[0] "%1$d individual is missing birthplace map coordinates: %2$s."
 msgstr[1] "%1$d individuals are missing birthplace map coordinates: %2$s."
 
-#: modules_v3/googlemap/module.php:878
+#: modules_v3/googlemap/module.php:891
 #: modules_v3/googlemap/wt_v3_googlemap.js.php:280
 #: modules_v3/googlemap/wt_v3_places_edit.js.php:176
 msgid "Redraw map"
 msgstr "Redraw map"
 
-#: modules_v3/googlemap/module.php:1233
+#: modules_v3/googlemap/module.php:1246
 msgid "Root"
 msgstr "Root"
 
-#: modules_v3/googlemap/module.php:1261
+#: modules_v3/googlemap/module.php:1274
 msgid "Individual information"
 msgstr "Individual information"
 
-#: modules_v3/googlemap/module.php:1262
+#: modules_v3/googlemap/module.php:1275
 msgid "View Person"
 msgstr "View Person"
 
-#: modules_v3/googlemap/module.php:1264
+#: modules_v3/googlemap/module.php:1277
 msgid "Birth:"
 msgstr "Birth:"
 
-#: modules_v3/googlemap/module.php:1350 timeline.php:291
+#: modules_v3/googlemap/module.php:1363 timeline.php:291
 msgid "Zoom in"
 msgstr "Zoom in"
 
-#: modules_v3/googlemap/module.php:1351 timeline.php:292
+#: modules_v3/googlemap/module.php:1364 timeline.php:292
 msgid "Zoom out"
 msgstr "Zoom out"
 
-#: modules_v3/googlemap/module.php:1352
+#: modules_v3/googlemap/module.php:1365
 msgid "Zoom in here"
 msgstr "Zoom in here"
 
-#: modules_v3/googlemap/module.php:1353
+#: modules_v3/googlemap/module.php:1366
 msgid "Zoom out here"
 msgstr "Zoom out here"
 
-#: modules_v3/googlemap/module.php:1354
+#: modules_v3/googlemap/module.php:1367
 msgid "Center map here"
 msgstr "Center map here"
 
-#: modules_v3/googlemap/module.php:1501
+#: modules_v3/googlemap/module.php:1514
 msgid "Include fully matched places: "
 msgstr "Include fully matched places: "
 
-#: modules_v3/googlemap/module.php:1651
+#: modules_v3/googlemap/module.php:1664
 msgid "Zoom="
 msgstr "Zoom="
 
 #. I18N: A count of places
-#: modules_v3/googlemap/module.php:1703
+#: modules_v3/googlemap/module.php:1716
 #, php-format
 msgid "Total places: %s"
 msgstr "Total places: %s"
 
-#: modules_v3/googlemap/module.php:1708
+#: modules_v3/googlemap/module.php:1721
 msgid ""
 "This will list all the places from the selected GEDCOM file. By default this "
 "will NOT INCLUDE places that are fully matched between the GEDCOM file and "
