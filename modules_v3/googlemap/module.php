@@ -29,7 +29,10 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3&amp;language=' . WT_LOCALE);
+global $GM_API_KEY;
+$GM_API_KEY = get_module_setting('googlemap', 'GM_API_KEY', ''); // Optional Google Map API key
+if ($GM_API_KEY) {$key = '&key=' . $GM_API_KEY; } else {$key = '';}
+define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3&amp;language=' . WT_LOCALE . $key);
 
 // http://www.google.com/permissions/guidelines.html
 //
@@ -115,8 +118,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		ob_start();
-		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+		require_once WT_ROOT . WT_MODULES_DIR . 'googlemap/googlemap.php';
+		require_once WT_ROOT . WT_MODULES_DIR . 'googlemap/defaultconfig.php';
 		setup_map();
 		return ob_get_clean();
 	}
@@ -180,10 +183,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	private function config() {
-		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-		require WT_ROOT.'includes/functions/functions_edit.php';
+		require WT_ROOT . WT_MODULES_DIR.'googlemap/defaultconfig.php';
+		require WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$action=safe_REQUEST($_REQUEST, 'action');
+		$action = safe_REQUEST($_REQUEST, 'action');
 
 		$controller = new WT_Controller_Page();
 		$controller
@@ -193,7 +196,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			->addInlineJavascript('jQuery("#tabs").tabs();');
 
 
-		if ($action=='update') {
+		if ($action == 'update') {
 			set_module_setting('googlemap', 'GM_MAP_TYPE',          $_POST['NEW_GM_MAP_TYPE']);
 			set_module_setting('googlemap', 'GM_USE_STREETVIEW',    $_POST['NEW_GM_USE_STREETVIEW']);
 			set_module_setting('googlemap', 'GM_MIN_ZOOM',          $_POST['NEW_GM_MIN_ZOOM']);
@@ -209,18 +212,19 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   $_POST['NEW_GM_PLACE_HIERARCHY']);
 			set_module_setting('googlemap', 'GM_PH_MARKER',         $_POST['NEW_GM_PH_MARKER']);
 			set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  $_POST['NEW_GM_DISP_SHORT_PLACE']);
+			set_module_setting('googlemap', 'GM_API_KEY',  			$_POST['NEW_GM_API_KEY']);
 
-			for ($i=1; $i<=9; $i++) {
+			for ($i = 1; $i <= 9; $i ++) {
 				set_module_setting('googlemap', 'GM_PREFIX_'.$i,  $_POST['NEW_GM_PREFIX_'.$i]);
 				set_module_setting('googlemap', 'GM_POSTFIX_'.$i, $_POST['NEW_GM_POSTFIX_'.$i]);
 			}
 
 			AddToLog('Googlemap config updated', 'config');
 			// read the config file again, to set the vars
-			require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+			require WT_ROOT . WT_MODULES_DIR . 'googlemap/defaultconfig.php';
 		}
 		?>
-		<table id="gm_config">
+		<table id = "gm_config">
 			<tr>
 				<th>
 					<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_config">
@@ -254,10 +258,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<th><?php echo WT_I18N::translate('Default map type'); ?></th>
 							<td>
 								<select name="NEW_GM_MAP_TYPE">
-									<option value="ROADMAP" <?php if ($GOOGLEMAP_MAP_TYPE=="ROADMAP") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Map'); ?></option>
-									<option value="SATELLITE" <?php if ($GOOGLEMAP_MAP_TYPE=="SATELLITE") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Satellite'); ?></option>
-									<option value="HYBRID" <?php if ($GOOGLEMAP_MAP_TYPE=="HYBRID") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hybrid'); ?></option>
-									<option value="TERRAIN" <?php if ($GOOGLEMAP_MAP_TYPE=="TERRAIN") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Terrain'); ?></option>
+									<option value="ROADMAP" <?php if ($GOOGLEMAP_MAP_TYPE == "ROADMAP") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Map'); ?></option>
+									<option value="SATELLITE" <?php if ($GOOGLEMAP_MAP_TYPE == "SATELLITE") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Satellite'); ?></option>
+									<option value="HYBRID" <?php if ($GOOGLEMAP_MAP_TYPE == "HYBRID") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hybrid'); ?></option>
+									<option value="TERRAIN" <?php if ($GOOGLEMAP_MAP_TYPE == "TERRAIN") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Terrain'); ?></option>
 								</select>
 							</td>
 						</tr>
@@ -271,20 +275,29 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							</th>
 							<td>
 								<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
-								<?php for ($j=1; $j < 15; $j++) { ?>
-								<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MIN_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+								<?php for ($j=1; $j<15; $j++) { ?>
+								<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MIN_ZOOM == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 								<?php } ?>
 								</select>
 								<?php echo WT_I18N::translate('maximum'); ?>: <select name="NEW_GM_MAX_ZOOM">
-								<?php for ($j=1; $j < 21; $j++) { ?>
-								<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MAX_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+								<?php for ($j=1; $j<21; $j++) { ?>
+								<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MAX_ZOOM == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 								<?php } ?>
 								</select>
-								<span class="help_content">
+								<p class="help_content">
 									<?php echo WT_I18N::translate('Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.'); ?>
-								</span>
-							</tr>
+								</p>
 							</td>
+						</tr>
+						<tr>
+							<th><?php echo /* I18N: Optional Google Map API key */ WT_I18N::translate('Google Maps™ API key'); ?></th>
+							<td>
+								<input type="text" name="NEW_GM_API_KEY" value="<?php echo $GM_API_KEY; ?>" size="50">
+								<p class="help_content">
+									<?php echo WT_I18N::translate('<b>Optional</b>. Google prefers that users of Google Maps™ obtain an API key from them. This is linked to their usage restrictions described at https://developers.google.com/maps/documentation/geocoding/usage-limits. The same page has a link to get a key.  You can continue to use the maps feature without the API key if you do not exceed the restrictions but a warning message will exist in the source code of your web page.'); ?>
+								</p>
+							</td>
+						</tr>
 					</table>
 				</div>
 
@@ -297,8 +310,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<tr>
 										<td><?php echo WT_I18N::translate('Country'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_0">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_0==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<?php for ($j=0; $j<10; $j++) { ?>
+											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_0 == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -306,8 +319,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<tr>
 										<td><?php echo WT_I18N::translate('State'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_1">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_1==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<?php for ($j=0; $j<10; $j++) { ?>
+											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_1 == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -315,24 +328,24 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<tr>
 										<td><?php echo WT_I18N::translate('City'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_2">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_2==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<?php for ($j=0; $j<10; $j++) { ?>
+											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_2 == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
 									</tr>
 									<tr><td><?php echo WT_I18N::translate('Neighborhood'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_3">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_3==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<?php for ($j=0; $j<10; $j++) { ?>
+											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_3 == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
 									</tr>
 									<tr><td><?php echo WT_I18N::translate('House'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_4">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_4==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<?php for ($j=0; $j<10; $j++) { ?>
+											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_4 == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -340,8 +353,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									<tr>
 										<td><?php echo WT_I18N::translate('Max'); ?>&nbsp;&nbsp;</td>
 										<td><select name="NEW_GM_PRECISION_5">
-											<?php for ($j=0; $j < 10; $j++) { ?>
-											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_5==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
+											<?php for ($j=0; $j<10; $j++) { ?>
+											<option value="<?php echo $j; ?>"<?php if ($GOOGLEMAP_PRECISION_5 == $j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 											<?php } ?>
 											</select>&nbsp;&nbsp;<?php echo WT_I18N::translate('digits'); ?>
 										</td>
@@ -387,7 +400,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<tr  class="gm_levels">
 							<th>
 								<?php
-								if ($level==1) {
+								if ($level == 1) {
 									echo WT_I18N::translate('Country');
 								} else {
 									echo WT_I18N::translate('Level'), " ", $level;
@@ -412,8 +425,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'); ?></th>
 							<td>
 								<select name="NEW_GM_PH_MARKER">
-									<option value="G_DEFAULT_ICON" <?php if ($GOOGLEMAP_PH_MARKER=="G_DEFAULT_ICON") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Standard'); ?></option>
-									<option value="G_FLAG" <?php if ($GOOGLEMAP_PH_MARKER=="G_FLAG") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Flag'); ?></option>
+									<option value="G_DEFAULT_ICON" <?php if ($GOOGLEMAP_PH_MARKER == "G_DEFAULT_ICON") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Standard'); ?></option>
+									<option value="G_FLAG" <?php if ($GOOGLEMAP_PH_MARKER == "G_FLAG") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Flag'); ?></option>
 								</select>
 							</td>
 							<td></td>
@@ -591,8 +604,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<hr>
 				<div class="flags_wrapper">
 					<?php
-					$j = 1;
-					for ($i = 0; $i < count($flags); $i++) {
+					$j=1;
+					for ($i=0; $i<count($flags); $i++) {
 						if ($countrySelected == 'Countries') {
 							$tempstr = '
 								<div class="flags_item">
@@ -626,7 +639,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					} ?>
 				</div>
 				<div
-					<?php if ($countrySelected == 'Countries' || count($stateList)==0) { ?>
+					<?php if ($countrySelected == 'Countries' || count($stateList) == 0) { ?>
 						 style=" visibility: hidden"
 					<?php } ?>
 					>
@@ -646,8 +659,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</div>
 				<div class="flags_wrapper">
 					<?php
-					$j = 1;
-					for ($i = 0; $i < count($flags_s); $i++) {
+					$j=1;
+					for ($i=0; $i<count($flags_s); $i++) {
 						if ($stateSelected != 'States') {
 							echo '
 								<div class="flags_item">
@@ -752,7 +765,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$latlongval[$i] = NULL;
 				} else {
 					$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
-					if ($latlongval[$i] != NULL && $latlongval[$i]['lati']=='0' && $latlongval[$i]['long']=='0') {
+					if ($latlongval[$i] != NULL && $latlongval[$i]['lati'] == '0' && $latlongval[$i]['long'] == '0') {
 						$latlongval[$i] = NULL;
 					}
 				}
@@ -1478,7 +1491,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								->fetchAssoc();
 							foreach ($rows as $id=>$place) {
 								echo '<option value="', htmlspecialchars($place), '"';
-								if ($place==$country) {
+								if ($place == $country) {
 									echo ' selected="selected"';
 									$par_id=$id;
 								}
@@ -1494,7 +1507,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 									->execute(array($par_id))
 									->fetchOneColumn();
 								foreach ($places as $place) {
-									echo '<option value="', htmlspecialchars($place), '"', $place==$state?' selected="selected"':'', '>', htmlspecialchars($place), '</option>';
+									echo '<option value="', htmlspecialchars($place), '"', $place == $state?' selected="selected"':'', '>', htmlspecialchars($place), '</option>';
 								}
 								echo '</select>';
 							}
@@ -1538,7 +1551,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$place_list=array_keys($place_list);
 
 			// Apply_filter
-			if ($country=='XYZ') {
+			if ($country == 'XYZ') {
 				$filter='.*$';
 			} else {
 				$filter=preg_quote($country).'$';
@@ -1627,7 +1640,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$mapstr7		= '\')">';
 				$mapstr8		= '</a>';
  				while ($z<$parts) {
-					if ($levels[$z]==' ' || $levels[$z]=='')
+					if ($levels[$z] == ' ' || $levels[$z] == '')
 						$levels[$z]="unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
 
 					$levels[$z]=rtrim(ltrim($levels[$z]));
@@ -1659,14 +1672,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						}
 					}
 					$plac[$z]="<td>".$placestr2."</td>\n";
-					if ($row['pl_lati']=='0') {
+					if ($row['pl_lati'] == '0') {
 						$lati[$z]="<td class='error'><strong>".$row['pl_lati']."</strong></td>";
 					} elseif ($row['pl_lati']!='') {
 						$lati[$z]="<td>".$row['pl_lati']."</td>";
 					} else {
 						$lati[$z]="<td class='error center'><strong>X</strong></td>";$matched[$x]++;
 					}
-					if ($row['pl_long']=='0') {
+					if ($row['pl_long'] == '0') {
 						$long[$z]="<td class='error'><strong>".$row['pl_long']."</strong></td>";
 					} elseif ($row['pl_long']!='') {
 						$long[$z]="<td>".$row['pl_long']."</td>";
@@ -1843,11 +1856,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				draggable: true
 			});
 
-			// ===Next, get the map’s default panorama and set up some defaults. ===========================
+			// Next, get the map’s default panorama and set up some defaults.
 
-			// --- First check if Browser supports html5 ---
+			// First check if Browser supports html5
 			var browserName=navigator.appName;
-			if (browserName=='Microsoft Internet Explorer') {
+			if (browserName == 'Microsoft Internet Explorer') {
 				var render_type = '';
 			} else {
 				var render_type = 'html5';
@@ -1887,12 +1900,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			aLink.href = 'javascript:void(0)'; onmousedown=function(e) {
 				if (parseInt(navigator.appVersion)>3) {
 					var clickType=1;
-					if (navigator.appName=='Netscape') {
+					if (navigator.appName == 'Netscape') {
 						clickType=e.which;
 					} else {
 						clickType=event.button;
 					}
-					if (clickType==1) {
+					if (clickType == 1) {
 						self.status='Left button!';
 					}
 					if (clickType!=1) {
@@ -1945,14 +1958,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				parent.document.getElementById('sv_longText').value = pos.lng()+"\u00B0";
 			});
 
-			//======================================================================================
 			// Now add the ImageMapType overlay to the map
-			//--------------------------------------------------------------------------------------
 			map.overlayMapTypes.push(null);
 
-			//======================================================================================
 			// Now create the StreetView ImageMap
-			//--------------------------------------------------------------------------------------
 			var street = new google.maps.ImageMapType({
 				getTileUrl: function(coord, zoom) {
 					var X = coord.x % (1 << zoom);  // wrap
@@ -1962,11 +1971,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				isPng: true
 			});
 
-			//======================================================================================
 			//  Add the Street view Image Map
-			//--------------------------------------------------------------------------------------
 			map.overlayMapTypes.setAt(1, street);
-			//==============================================================================================
 		}
 
 		function toggleStreetView() {

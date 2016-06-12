@@ -249,7 +249,7 @@ function build_indiv_map($indifacts, $famids) {
 							$markers[$i]['date'] = $match[1];
 						}
 						if ($spouse) {
-							$markers[$i]['name']=$spouse->getXref();
+							$markers[$i]['name'] = $spouse->getXref();
 						}
 					}
 				}
@@ -409,7 +409,7 @@ function build_indiv_map($indifacts, $famids) {
 		}
 		// add $gmarks array to the required wt_v3_googlemap.js.php
 		$gmarks = $markers;
-		$pid=$controller->record->getXref();
+		$pid	= $controller->record->getXref();
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
 		// Create the normal googlemap sidebar of events and children
 		echo '
@@ -423,19 +423,15 @@ function build_indiv_map($indifacts, $famids) {
 							</td>';
 							$z++;
 							echo '<td class="', $marker['class'], '" style="white-space:normal;">';
-
-								if (!empty($marker['info'])) {
-									echo '<span style="margin:0 10px; display:inline-block;">', $marker['info'], '</span>';
-								}
 								if (!empty($marker['name'])) {
-									$person=WT_Person::getInstance($marker['name']);
+									$person = WT_Person::getInstance($marker['name']);
 									if ($person) {
 										echo '<span style="margin:0 10px; display:inline-block;"><a href="', $person->getHtmlUrl(), '">', $person->getFullName(), '</a></span>';
 									}
 								}
 								echo '<span  style="margin:0 10px; display:inline-block;">', print_fact_place_map($marker['placerec']), '</span>';
 								if (!empty($marker['date'])) {
-									$date=new WT_Date($marker['date']);
+									$date = new WT_Date($marker['date']);
 									echo '<span style="margin:0 10px; display:inline-block;">', $date->Display(true), '</span>';
 								}
 

@@ -750,9 +750,9 @@ table#faq_edit {border:1px solid; border-collapse:collapse;border-radius:5px; ma
 #gm_config th {font-size:105%; font-weight:bold; padding:5px; text-align:left;}
 [dir=rtl] #gm_config th {text-align:right;}
 .gm_edit_config {border:1px inset #d3d3d3; border-collapse:separate; font-size:90%; margin:10px 0;}
-.gm_edit_config th {border-bottom:1px solid #d3d3d3; font-weight:bold; padding:5px; text-align:left; width:180px;}
+.gm_edit_config th {border-bottom:1px solid #d3d3d3; font-weight:bold; padding:8px 5px; text-align:left; vertical-align: text-top; width:180px;}
 [dir=rtl] .gm_edit_config th {text-align:right;}
-.gm_edit_config td {border-bottom:1px solid #d3d3d3; padding:1px 0 0 50px; vertical-align:middle;}
+.gm_edit_config td {border-bottom:1px solid #d3d3d3; padding:8px 0 8px 50px; vertical-align:middle;}
 .gm_edit_config input {margin:0; vertical-align:middle;}
 .gm_edit_config label {margin:5px; vertical-align:middle;}
 [dir=rtl] .gm_edit_config td {padding:1px 50px 0 0;}
