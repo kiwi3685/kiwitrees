@@ -1545,7 +1545,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/simpl_research/plugins/hetutrechtsarchief.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/register1939.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/rhcvechtenvenen.php', //replaced for better sorting
-
+		WT_ROOT.'library/framework/Foundation',
 	);
 }
 
