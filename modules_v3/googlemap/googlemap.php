@@ -208,6 +208,8 @@ function build_indiv_map($indifacts, $famids) {
 				}
 				if ($spouse) {
 					$markers[$i]['name']		= $spouse->getXref();
+				}
+				if ($spouse && ($fact == 'HUSB' || $fact == 'WIFE')) {
 					$markers[$i]['fact_label']	= get_relationship_name(get_relationship($controller->record, $spouse, true, 3));
 				}
 			} else {
@@ -251,6 +253,8 @@ function build_indiv_map($indifacts, $famids) {
 						}
 						if ($spouse) {
 							$markers[$i]['name']		= $spouse->getXref();
+						}
+						if ($spouse && ($fact == 'HUSB' || $fact == 'WIFE')) {
 							$markers[$i]['fact_label']	= get_relationship_name(get_relationship($controller->record, $spouse, true, 3));
 						}
 					}
