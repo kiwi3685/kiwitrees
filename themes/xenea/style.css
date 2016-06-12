@@ -363,7 +363,7 @@ th { font-weight:100;}
 
 .facts_table { width:99%;}
 
-.facts_label { color:#000066; background-color:#c3dfff; font-size:12px; padding:4px; width:20%; text-align:center;}
+.facts_label { color:#000066; background-color:#c3dfff; font-size:12px; padding:4px; width:20%; text-align:center; text-transform: capitalize;}
 
 .facts_label02, .facts_label03 { color:#ff0000; background-color:#84beff; font-size:12px; padding:4px; text-align:center; font-weight:bold;}
 

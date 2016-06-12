@@ -872,6 +872,7 @@ table.center {
 	font-size: 12px;
 	padding: 4px 4px 4px 4px;
 	width: 20%;
+	text-transform: capitalize;
 }
 
 .facts_label03 {
