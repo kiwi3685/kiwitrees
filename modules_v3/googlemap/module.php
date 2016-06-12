@@ -294,7 +294,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							<td>
 								<input type="text" name="NEW_GM_API_KEY" value="<?php echo $GM_API_KEY; ?>" size="50">
 								<p class="help_content">
-									<?php echo WT_I18N::translate('<b>Optional</b>. Google prefers that users of Google Maps™ obtain an API key from them. This is linked to their usage restrictions described at https://developers.google.com/maps/documentation/geocoding/usage-limits. The same page has a link to get a key.  You can continue to use the maps feature without the API key if you do not exceed the restrictions but a warning message will exist in the source code of your web page.'); ?>
+									<?php echo WT_I18N::translate('<b>Optional</b>. Google prefers that users of Google Maps™ obtain an API key from them. This is linked to their usage restrictions described at https://developers.google.com/maps/documentation/geocoding/usage-limits. The same page has a link to get a key. You can continue to use the maps feature without the API key if you do not exceed the restrictions but a warning message will exist in the source code of your web page.'); ?>
 								</p>
 							</td>
 						</tr>
