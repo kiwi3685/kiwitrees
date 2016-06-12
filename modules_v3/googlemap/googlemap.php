@@ -159,7 +159,7 @@ function build_indiv_map($indifacts, $famids) {
 	global $controller, $GOOGLEMAP_MAX_ZOOM, $GM_DEFAULT_TOP_VALUE;
 
 	// Create the markers list array
-	$markers=array();
+	$markers = array();
 	// Add the events to the markers list array
 	//-- sort the facts into date order
 	sort_facts($indifacts);
@@ -188,7 +188,7 @@ function build_indiv_map($indifacts, $famids) {
 			} else {
 				$useThisItem = true;
 			}
-			if (($ctla>0) && ($ctlo>0) && ($useThisItem==true)) {
+			if (($ctla > 0) && ($ctlo > 0) && ($useThisItem == true)) {
 				$i++;
 				$markers[$i]=array(
 					'class'      => 'optionbox',
@@ -196,21 +196,22 @@ function build_indiv_map($indifacts, $famids) {
 					'tabindex'   => '',
 					'placed'     => 'no',
 					'fact'       => $fact,
-					'fact_label' => WT_Gedcom_Tag::getLabel($fact /* TODO: specify the individual */),
+					'fact_label' => WT_Gedcom_Tag::getLabel($fact),
 					'info'       => $fact_data=='Y' ? '' : $fact_data,
 					'placerec'   => $placerec,
 					'lati'       => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
 					'lng'        => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
 				);
 				$ctd = preg_match("/2 DATE (.+)/", $factrec, $match);
-				if ($ctd>0) {
+				if ($ctd > 0) {
 					$markers[$i]['date'] = $match[1];
 				}
 				if ($spouse) {
-					$markers[$i]['name']=$spouse->getXref();
+					$markers[$i]['name']		= $spouse->getXref();
+					$markers[$i]['fact_label']	= get_relationship_name(get_relationship($controller->record, $spouse, true, 3));
 				}
 			} else {
-				if ($useThisItem==true && $addrFound==false) {
+				if ($useThisItem == true && $addrFound == false) {
 					$ctpl = preg_match("/\d PLAC (.*)/", $placerec, $match1);
 					$latlongval = get_lati_long_placelocation($match1[1]);
 					if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
@@ -228,7 +229,7 @@ function build_indiv_map($indifacts, $famids) {
 							'tabindex'   => '',
 							'placed'     => 'no',
 							'fact'       => $fact,
-							'fact_label' => WT_Gedcom_Tag::getLabel($fact /* TODO: specify the individual */),
+							'fact_label' => WT_Gedcom_Tag::getLabel($fact),
 							'info'       => $fact_data=='Y' ? '' : $fact_data,
 							'placerec'   => $placerec,
 						);
@@ -249,7 +250,8 @@ function build_indiv_map($indifacts, $famids) {
 							$markers[$i]['date'] = $match[1];
 						}
 						if ($spouse) {
-							$markers[$i]['name'] = $spouse->getXref();
+							$markers[$i]['name']		= $spouse->getXref();
+							$markers[$i]['fact_label']	= get_relationship_name(get_relationship($controller->record, $spouse, true, 3));
 						}
 					}
 				}
@@ -266,7 +268,7 @@ function build_indiv_map($indifacts, $famids) {
 				if ($famrec) {
 					$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
 					for ($j=0; $j<$num; $j++) {
-						$person=WT_Person::getInstance($smatch[$j][1]);
+						$person = WT_Person::getInstance($smatch[$j][1]);
 						if ($person->canDisplayDetails()) {
 							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
 							$birthrec = '';
@@ -318,18 +320,18 @@ function build_indiv_map($indifacts, $famids) {
 										if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
 											$i++;
 											$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-											$markers[$i]['fact']	     = 'BIRT';
-											$markers[$i]['fact_label'] = WT_I18N::translate('child');
-											$markers[$i]['class']	     = 'option_boxNN';
+											$markers[$i]['fact']		= 'BIRT';
+											$markers[$i]['fact_label']	= WT_I18N::translate('child');
+											$markers[$i]['class']		= 'option_boxNN';
 											if (strpos($srec, "\n1 SEX F")!==false) {
-												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
-												$markers[$i]['class']      = 'person_boxF';
+												$markers[$i]['fact']		= 'BIRT';
+												$markers[$i]['fact_label']	= WT_I18N::translate('daughter');
+												$markers[$i]['class']		= 'person_boxF';
 											}
 											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]['fact']       = 'BIRT';
-												$markers[$i]['fact_label'] = WT_I18N::translate('son');
-												$markers[$i]['class']      = 'person_box';
+												$markers[$i]['fact']		= 'BIRT';
+												$markers[$i]['fact_label']	= WT_I18N::translate('son');
+												$markers[$i]['class']		= 'person_box';
 											}
 											$markers[$i]['icon'] = $latlongval['icon'];
 											$markers[$i]['placerec'] = $placerec;
