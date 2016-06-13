@@ -123,7 +123,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		// A request for a non-existant tab?
 		if (array_key_exists($tab, $this->tabs)) {
-			$mod = $this->tabs[$tab];
+			$module = $this->tabs[$tab];
 		} else {
 			header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
 			exit;
@@ -134,7 +134,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		Zend_Session::writeClose();
 
-		echo $mod->getTabContent();
+		echo $module->getTabContent();
 
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
@@ -768,22 +768,20 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	// TODO?? - only load one block immediately - load the others by AJAX.
 	public function getSideBarContent() {
 		global $controller;
-
-		$html='';
-		$active=0;
-		$n=0;
-		foreach (WT_Module::getActiveSidebars() as $mod) {
-			if ($mod->hasSidebarContent()) {
-				$html.='<h3 id="'.$mod->getName().'"><a href="#">'.$mod->getTitle().'</a></h3>';
-				$html.='<div id="sb_content_'.$mod->getName().'">'.$mod->getSidebarContent().'</div>';
+		$html	= '';
+		$active	= 0;
+		$n		= 0;
+		foreach (WT_Module::getActiveSidebars() as $module) {
+			if ($module->hasSidebarContent()) {
+				$html .= '<h3 id="' . $module->getName() . '"><a href="#">' . $module->getTitle() . '</a></h3>';
+				$html .= '<div id="sb_content_'.$module->getName().'">'.$module->getSidebarContent().'</div>';
 				// The family navigator should be opened by default
-				if ($mod->getName()=='family_nav') {
-					$active=$n;
+				if ($module->getName() == 'family_nav') {
+					$active = $n;
 				}
 				++$n;
 			}
 		}
-
 		$controller
 			->addInlineJavascript('
 				jQuery("#sidebarAccordion").accordion({

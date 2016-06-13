@@ -1848,7 +1848,7 @@ div#pages-container {margin:0 auto; overflow:hidden; padding:20px; width:96%;}
 li#extra_menus {background:url(../images/extra_menu.png) no-repeat 50% 50%;}
 li#extra_menus ul li#extra_menus-edit {background:url(../images/extra_menu-edit.png) no-repeat left 0;}
 li#extra_menus ul li#extra_menus-Test {background:url(../images/test.png) no-repeat left 0;} /* THIS IS A SAMPLE SUB_MENU IMAGE */
-html[dir=rtl] li#extra_menus ul li {background-position:right 0}
+[dir=rtl] li#extra_menus ul li {background-position:right 0}
 
 
 /* Styling for simpl_privacy module */
@@ -1856,8 +1856,8 @@ html[dir=rtl] li#extra_menus ul li {background-position:right 0}
 #privacy_status dt{float:none;width:100%;}
 #privacy_status dd{font-size:80%;float:left;margin:0 0 0 20px;}
 #privacy_status dt span{float:right;}
-html[dir=\'rtl\'] #privacy_status dd{float:right;margin:0 20px 0 0;}
-html[dir=\'rtl\'] #privacy_status dt span{float: left;}
+[dir='rtl'] #privacy_status dd{float:right;margin:0 20px 0 0;}
+[dir='rtl'] #privacy_status dt span{float: left;}
 
 /* Styling for stories module */
 #contents_list {margin:auto auto 20px auto; width:60%;}
@@ -1890,6 +1890,8 @@ ul#research_status li ul.first {display:block;}
 ul#research_status li ul, ul#research_status li li:last-child {margin-bottom:0}
 ul#research_status span.ui-icon {display:inline-block;vertical-align:top}
 ul#research_status ul.sublinks {display:none; font-size: 90%;}
+ul#research_status a.config_link {float: right;}
+[dir='rtl'] ul#research_status a.config_link {float: left;}
 
 /* Styling for simpl_cousins module (cousins_tab) */
 #cousins_tab {width:98%;}

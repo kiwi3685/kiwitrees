@@ -5065,6 +5065,13 @@ ul#research_status ul.sublinks {
 	font-size: 90%;
 }
 
+ul#research_status a.config_link {
+	float: right;
+}
+[dir='rtl'] ul#research_status a.config_link {
+	float: left;
+}
+
 /* Styling for simpl_cousins module (cousins_tab) */
 #cousins_tab {
 	width: 98%;

@@ -2119,6 +2119,8 @@ ul#research_status li ul.first {display:block;}
 ul#research_status li ul, ul#research_status li li:last-child {margin-bottom:0}
 ul#research_status span.ui-icon {display:inline-block;vertical-align:top}
 ul#research_status ul.sublinks {display:none; font-size: 90%;}
+ul#research_status a.config_link {float: right;}
+[dir='rtl'] ul#research_status a.config_link {float: left;}
 
 /* Styling for simpl_cousins module (cousins_tab) */
 #cousins_tab {width:98%;}

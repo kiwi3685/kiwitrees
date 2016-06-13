@@ -72,7 +72,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
 	// Configuration page
@@ -113,7 +113,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			<div id="' . $this->getName() . '">
 				<h2>'.$controller->getPageTitle().'</h2>
 				<h3>' . WT_I18N::translate('Select the links you want to use in the sidebar') . '</h3>
-				<form method="post" name="configform" action="'.$this->getConfigLink().'">
+				<form method="post" name="configform" action="' . $this->getConfigLink() . '">
 					<input type="hidden" name="save" value="1">
 					<h3>' . WT_I18N::translate('Select all') .'
 						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
@@ -179,6 +179,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			');
 			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
+				$html .= '<a class="config_link fa fa-cog icon-admin" href="' . $this->getConfigLink() . '" title="' . WT_I18N::translate('Configure') .'">&nbsp;</a>';
 				$i = 0;
 				$total_enabled_plugins = 0;
 				$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
