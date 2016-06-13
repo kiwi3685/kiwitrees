@@ -126,18 +126,18 @@ case 'load_json':
 		} else {
 			$LIMIT = "";
 		}
-		$iSortingCols=safe_GET('iSortingCols');
+		$iSortingCols = safe_GET('iSortingCols');
 		if ($iSortingCols) {
 			$ORDER_BY = " ORDER BY ";
 			for ($i=0; $i<$iSortingCols; ++$i) {
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (safe_GET('sSortDir_'.$i)) {
+				switch (safe_GET('sSortDir_' . $i)) {
 				case 'asc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY .= (1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' DESC ';
 					break;
 				}
 				if ($i<$iSortingCols-1) {
@@ -148,7 +148,7 @@ case 'load_json':
 			$ORDER_BY="1 ASC";
 		}
 
-		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = WT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
 		// Total filtered/unfiltered rows
 		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 		$iTotalRecords        = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
@@ -204,12 +204,12 @@ case 'load_json':
 			for ($i=0; $i<$iSortingCols; ++$i) {
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
-				switch (safe_GET('sSortDir_'.$i)) {
+				switch (safe_GET('sSortDir_' . $i)) {
 				case 'asc':
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' ASC ';
 					break;
 				case 'desc':
-					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+					$ORDER_BY .= (1+(int)safe_GET('iSortCol_' . $i)).' DESC ';
 					break;
 				}
 				if ($i<$iSortingCols-1) {
@@ -220,7 +220,7 @@ case 'load_json':
 			$ORDER_BY="1 ASC";
 		}
 
-		$rows = WT_DB::prepare($SELECT1.$ORDER_BY.$LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
+		$rows = WT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
 
 		// Total filtered/unfiltered rows
 		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
@@ -523,10 +523,10 @@ function media_object_info(WT_Media $media) {
 // Start here
 ////////////////////////////////////////////////////////////////////////////////
 
-// Preserver the pagination/filtering/sorting between requests, so that the
+// Preserve the pagination/filtering/sorting between requests, so that the
 // browser’s back button works.  Pagination is dependent on the currently
 // selected folder.
-$table_id  = md5($files.$media_folder.$media_path.$subfolders);
+$table_id  = md5($files . $media_folder . $media_path . $subfolders);
 
 $controller = new WT_Controller_Page();
 $controller
@@ -535,27 +535,27 @@ $controller
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->pageHeader()
 	->addInlineJavascript('
-	var oTable=jQuery("#media-table-' . $table_id . '").dataTable( {
-		sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-		aaSorting: [0,"asc"],
-		bProcessing: true,
-		bServerSide: true,
-		sAjaxSource: "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&files='.$files.'&media_folder='.$media_folder.'&media_path='.$media_path.'&subfolders='.$subfolders.'",
-		'.WT_I18N::datatablesI18N(array(5,10,20,50,100,500,1000,-1)).',
-		bJQueryUI: true,
-		bAutoWidth:false,
-		iDisplayLength: 10,
-		sPaginationType: "full_numbers",
-		bStateSave: true,
-		iCookieDuration: 300,
-		aoColumns: [
-			{},
-			{bSortable: false, sClass: "center"},
-			{bSortable: ' . ($files == 'unused' ? 'false' : 'true') . '},
-			{bSortable: true},
-			{bSortable: true}
-		]
-	});
+		var oTable=jQuery("#media-table-' . $table_id . '").dataTable( {
+			sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			aaSorting: [0,"asc"],
+			bProcessing: true,
+			bServerSide: true,
+			sAjaxSource: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
+			' . WT_I18N::datatablesI18N(array(5,10,20,50,100,500,1000,-1)) . ',
+			bJQueryUI: true,
+			bAutoWidth:false,
+			iDisplayLength: 10,
+			sPaginationType: "full_numbers",
+			bStateSave: true,
+			iCookieDuration: 300,
+			aoColumns: [
+				/*0 - media file */		{},
+				/*1 - media object */	{bSortable: false, sClass: "center"},
+				/*2 - media name */		{bSortable: ' . ($files == 'unused' ? 'false' : 'true') . '},
+				/*3 - highlighted? */	{},
+				/*4 - media type */		{}
+			]
+		});
 	');
 ?>
 
