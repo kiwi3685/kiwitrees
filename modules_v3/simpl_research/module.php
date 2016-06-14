@@ -179,7 +179,9 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			');
 			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
-				$html .= '<a class="config_link fa fa-cog icon-admin" href="' . $this->getConfigLink() . '" title="' . WT_I18N::translate('Configure') .'">&nbsp;</a>';
+				if (WT_USER_GEDCOM_ADMIN) {
+					$html .= '<a class="config_link fa fa-cog icon-admin" href="' . $this->getConfigLink() . '" title="' . WT_I18N::translate('Configure') .'">&nbsp;</a>';
+				}
 				$i = 0;
 				$total_enabled_plugins = 0;
 				$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
