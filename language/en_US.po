@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-06-13 09:13+1200\n"
-"PO-Revision-Date: 2016-06-13 09:14+1200\n"
+"POT-Creation-Date: 2016-06-15 07:48+1200\n"
+"PO-Revision-Date: 2016-06-15 07:50+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -1564,7 +1564,7 @@ msgid ""
 "website</b><br>Access to this site is permitted to every visitor who has a "
 "user account.<br>If you have a user account, you can login on this page.  If "
 "you don't have a user account, you can apply for one by clicking on the "
-"appropriate link below.<br<After verifying your application, the site "
+"appropriate link below.<br>After verifying your application, the site "
 "administrator will activate your account.  You will receive an email when "
 "your application has been approved.</center></div><br/></"
 "li><li><b>Predefined text that states admin will decide on each request for "
@@ -1572,7 +1572,7 @@ msgid ""
 "Genealogy website</b><br>Access to this site is permitted to <u>authorized</"
 "u> users only.<br>If you have a user account you can login on this page.  If "
 "you don't have a user account, you can apply for one by clicking on the "
-"appropriate link below.<br<After verifying your information, the "
+"appropriate link below.<br>After verifying your information, the "
 "administrator will either approve or decline your account application.  You "
 "will receive an email message when your application has been approved.</"
 "center></div><br/></li><li><b>Predefined text that states only family "
@@ -1580,7 +1580,7 @@ msgid ""
 "\"><center><b>Welcome to this Genealogy website</b><br>Access to this site "
 "is permitted to <u>family members only</u>.<br>If you have a user account "
 "you can login on this page.  If you don't have a user account, you can apply "
-"for one by clicking on the appropriate link below.<br<After verifying the "
+"for one by clicking on the appropriate link below.<br>After verifying the "
 "information you provide, the administrator will either approve or decline "
 "your request for an account.  You will receive an email when your request is "
 "approved.</center></div></li></ul>"
@@ -1592,7 +1592,7 @@ msgstr ""
 "website</b><br>Access to this site is permitted to every visitor who has a "
 "user account.<br>If you have a user account, you can login on this page.  If "
 "you don't have a user account, you can apply for one by clicking on the "
-"appropriate link below.<br<After verifying your application, the site "
+"appropriate link below.<br>After verifying your application, the site "
 "administrator will activate your account.  You will receive an email when "
 "your application has been approved.</center></div><br/></"
 "li><li><b>Predefined text that states admin will decide on each request for "
@@ -1600,7 +1600,7 @@ msgstr ""
 "Genealogy website</b><br>Access to this site is permitted to <u>authorized</"
 "u> users only.<br>If you have a user account you can login on this page.  If "
 "you don't have a user account, you can apply for one by clicking on the "
-"appropriate link below.<br<After verifying your information, the "
+"appropriate link below.<br>After verifying your information, the "
 "administrator will either approve or decline your account application.  You "
 "will receive an email message when your application has been approved.</"
 "center></div><br/></li><li><b>Predefined text that states only family "
@@ -1608,7 +1608,7 @@ msgstr ""
 "\"><center><b>Welcome to this Genealogy website</b><br>Access to this site "
 "is permitted to <u>family members only</u>.<br>If you have a user account "
 "you can login on this page.  If you don't have a user account, you can apply "
-"for one by clicking on the appropriate link below.<br<After verifying the "
+"for one by clicking on the appropriate link below.<br>After verifying the "
 "information you provide, the administrator will either approve or decline "
 "your request for an account.  You will receive an email when your request is "
 "approved.</center></div></li></ul>"
@@ -3886,8 +3886,8 @@ msgstr "You do not have permission to view this page."
 #: modules_v3/review_changes/module.php:35
 #: modules_v3/widget_review_changes/module.php:35
 #: themes/_administration/header.php:105 themes/colors/header.php:128
-#: themes/kiwitrees/header.php:136 themes/webtrees/header.php:111
-#: themes/xenea/header.php:119
+#: themes/kiwitrees/header.php:136 themes/levy/header.php:118
+#: themes/webtrees/header.php:111 themes/xenea/header.php:119
 msgid "Pending changes"
 msgstr "Pending changes"
 
@@ -4180,22 +4180,22 @@ msgstr "father"
 #: edit_interface.php:2222 includes/functions/functions.php:1208
 #: includes/functions/functions_charts.php:273
 #: includes/functions/functions_charts.php:832
-#: modules_v3/googlemap/googlemap.php:291
-#: modules_v3/googlemap/googlemap.php:331 modules_v3/relatives/module.php:275
+#: modules_v3/googlemap/googlemap.php:297
+#: modules_v3/googlemap/googlemap.php:337 modules_v3/relatives/module.php:275
 msgid "son"
 msgstr "son"
 
 #: edit_interface.php:2224 includes/functions/functions.php:1209
 #: includes/functions/functions_charts.php:274
 #: includes/functions/functions_charts.php:833
-#: modules_v3/googlemap/googlemap.php:286
-#: modules_v3/googlemap/googlemap.php:326 modules_v3/relatives/module.php:276
+#: modules_v3/googlemap/googlemap.php:292
+#: modules_v3/googlemap/googlemap.php:332 modules_v3/relatives/module.php:276
 msgid "daughter"
 msgstr "daughter"
 
 #: edit_interface.php:2226 edit_interface.php:2305
-#: includes/functions/functions.php:1210 modules_v3/googlemap/googlemap.php:295
-#: modules_v3/googlemap/googlemap.php:322
+#: includes/functions/functions.php:1210 modules_v3/googlemap/googlemap.php:301
+#: modules_v3/googlemap/googlemap.php:328
 msgid "child"
 msgstr "child"
 
@@ -10382,11 +10382,11 @@ msgstr[1] "%d logged-in users"
 msgid "If you have any questions or comments please contact"
 msgstr "If you have any questions or comments please contact"
 
-#: includes/functions/functions_print.php:443
+#: includes/functions/functions_print.php:443 themes/levy/functions.php:61
 msgid "For technical support and information contact"
 msgstr "For technical support and information contact"
 
-#: includes/functions/functions_print.php:449
+#: includes/functions/functions_print.php:449 themes/levy/functions.php:55
 msgid "For help with genealogy questions contact"
 msgstr "For help with genealogy questions contact"
 
@@ -16312,6 +16312,7 @@ msgstr "Resources"
 #: modules_v3/families/module.php:144 modules_v3/individuals/module.php:144
 #: search.php:34 search.php:240 search.php:521 search_advanced.php:299
 #: themes/colors/header.php:120 themes/colors/header.php:121
+#: themes/levy/header.php:110 themes/levy/header.php:111
 #: themes/webtrees/header.php:123 themes/webtrees/header.php:124
 #: themes/xenea/header.php:109
 msgid "Search"
@@ -19903,6 +19904,7 @@ msgstr "An alternative way to display charts."
 #: modules_v3/random_media/module.php:145
 #: modules_v3/recent_changes/module.php:74
 #: modules_v3/review_changes/module.php:100
+#: modules_v3/simpl_research/module.php:182
 #: modules_v3/todays_events/module.php:69 modules_v3/todo/module.php:62
 #: modules_v3/top10_givnnames/module.php:63
 #: modules_v3/top10_pageviews/module.php:61
@@ -22710,7 +22712,9 @@ msgid "A list of sources"
 msgstr "A list of sources"
 
 #. I18N: Name of a module. (A list of users who are online now)
+#. I18N: Name of a module. (A list of users who are online now)
 #: modules_v3/logged_in/module.php:35 modules_v3/widget_logged_in/module.php:35
+#: themes/levy/footer.php:40
 msgid "Who is online"
 msgstr "Who is online"
 
@@ -23653,12 +23657,12 @@ msgstr "Area"
 msgid "Pay to view"
 msgstr "Pay to view"
 
-#: modules_v3/simpl_research/module.php:291
-#: modules_v3/simpl_research/module.php:315
+#: modules_v3/simpl_research/module.php:292
+#: modules_v3/simpl_research/module.php:316
 msgid "International"
 msgstr "International"
 
-#: modules_v3/simpl_research/module.php:322
+#: modules_v3/simpl_research/module.php:323
 msgid "&#36;"
 msgstr "&#36;"
 
@@ -25394,6 +25398,8 @@ msgstr "Choose a page"
 #: themes/colors/templates/personbox_template.php:52
 #: themes/kiwitrees/templates/compactbox_template.php:54
 #: themes/kiwitrees/templates/personbox_template.php:48
+#: themes/levy/templates/compactbox_template.php:57
+#: themes/levy/templates/personbox_template.php:51
 #: themes/webtrees/templates/compactbox_template.php:57
 #: themes/webtrees/templates/personbox_template.php:51
 #: themes/xenea/templates/compactbox_template.php:57
@@ -25490,6 +25496,14 @@ msgstr "Teal Top"
 #: themes/colors/theme.php:128
 msgid "colors"
 msgstr "colors"
+
+#: themes/levy/functions.php:51
+msgid "For technical support or genealogy questions, please contact"
+msgstr "For technical support or genealogy questions, please contact"
+
+#: themes/levy/header.php:63
+msgid "Open in full browser window"
+msgstr "Open in full browser window"
 
 #. I18N: Name of a theme.
 #: themes/webtrees/theme.php:37
@@ -26010,12 +26024,6 @@ msgstr "Pedigree Chart"
 
 #~ msgid "new_kiwitrees"
 #~ msgstr "new_kiwitrees"
-
-#~ msgid "For technical support or genealogy questions, please contact"
-#~ msgstr "For technical support or genealogy questions, please contact"
-
-#~ msgid "Open in full browser window"
-#~ msgstr "Open in full browser window"
 
 #~ msgid "Birth Place contains"
 #~ msgstr "Birth Place contains"
