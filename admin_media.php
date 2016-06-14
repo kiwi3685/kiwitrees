@@ -145,7 +145,7 @@ case 'load_json':
 				}
 			}
 		} else {
-			$ORDER_BY="1 ASC";
+			$ORDER_BY = "1 ASC";
 		}
 
 		$rows = WT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
@@ -535,23 +535,22 @@ $controller
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->pageHeader()
 	->addInlineJavascript('
-		var oTable=jQuery("#media-table-' . $table_id . '").dataTable( {
-			sDom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			aaSorting: [0,"asc"],
-			bProcessing: true,
-			bServerSide: true,
-			sAjaxSource: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
-			' . WT_I18N::datatablesI18N(array(5,10,20,50,100,500,1000,-1)) . ',
-			bJQueryUI: true,
-			bAutoWidth:false,
-			iDisplayLength: 10,
-			sPaginationType: "full_numbers",
-			bStateSave: true,
-			iCookieDuration: 300,
-			aoColumns: [
+		jQuery("#media-table-' . $table_id . '").dataTable({
+			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			processing: true,
+			serverSide: true,
+			ajaxSource: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
+			' . WT_I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
+			jQueryUI: true,
+			autoWidth:false,
+			pageLength: 10,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 300,
+			columns: [
 				/*0 - media file */		{},
-				/*1 - media object */	{bSortable: false, sClass: "center"},
-				/*2 - media name */		{bSortable: ' . ($files == 'unused' ? 'false' : 'true') . '},
+				/*1 - media object */	{sortable: false, class: "center"},
+				/*2 - media name */		{sortable: ' . ($files === 'unused' ? 'false' : 'true') . '},
 				/*3 - highlighted? */	{},
 				/*4 - media type */		{}
 			]

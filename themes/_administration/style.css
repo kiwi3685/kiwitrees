@@ -600,6 +600,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 .media_table th+th {min-width:120px;}
 .media_table th+th+th+th {width:120px;}
 .media_table td {padding:5px; border:1px solid #ccc; vertical-align:top;}
+.media_table td:nth-child(2) {vertical-align:middle;}
 
 /* UPLOAD MEDIA */
 .upload_media {border-collapse:separate; border-bottom:2px solid #d3d3d3; margin:10px 0;}
