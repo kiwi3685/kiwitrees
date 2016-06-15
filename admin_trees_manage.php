@@ -397,16 +397,4 @@ if (WT_USER_IS_ADMIN) {
 			</p>
 		</form>
 	</div>
-
-	<?php // display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
-//	if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
-//		echo
-//			'<div class="center">',
-//			'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
-//			WT_I18N::translate('Click here for PhpGedView to <b>kiwitrees</b> transfer wizard'),
-//			'</a>',
-//			help_link('PGV_WIZARD'),
-//			'</div>';
-//	}
-
-}
+<?php }

@@ -1391,7 +1391,7 @@ function findPosY(obj) {
 	return curtop;
 }
 
-// This is the default way for webtrees to show image galleries.
+// This is the default way to show image galleries.
 // Custom themes may use a different viewer.
 function activate_colorbox(config) {
 	jQuery.extend(jQuery.colorbox.settings, {

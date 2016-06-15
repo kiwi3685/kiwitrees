@@ -198,7 +198,7 @@ function AddToLog($log_message, $log_type = 'error') {
 		$log_type,
 		$log_message,
 		$WT_REQUEST->getClientIp(),
-		defined('WT_USER_ID') && WT_USER_ID && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' ? WT_USER_ID : null,
+		defined('WT_USER_ID') && WT_USER_ID ? WT_USER_ID : null,
 		defined('WT_GED_ID') ? WT_GED_ID : null
 	));
 }

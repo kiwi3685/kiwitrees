@@ -86,7 +86,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		switch ($fact->getDetail()) {
 		case 'none':
 			// Note: "1 RESN none" is not valid gedcom.
-			// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
+			// However, kiwitrees privacy rules will interpret it as "show an otherwise private record to public".
 			$html .= '<i class="icon-resn-none"></i> ' . WT_I18N::translate('Show to visitors');
 			break;
 		case 'privacy':

@@ -1870,7 +1870,7 @@ class WT_Person extends WT_GedcomRecord {
 	// create a short name for compact display on charts
 	public function getShortName() {
 		global $bwidth, $SHOW_HIGHLIGHT_IMAGES, $UNKNOWN_NN, $UNKNOWN_PN;
-		// Estimate number of characters that can fit in box. Calulates to 28 characters in webtrees theme, or 34 if no thumbnail used.
+		// Estimate number of characters that can fit in box. Calulates to 28 characters in kiwitrees theme, or 34 if no thumbnail used.
 		if ($SHOW_HIGHLIGHT_IMAGES) {
 			$char = intval(($bwidth-40)/6.5);
 		} else {

@@ -52,8 +52,8 @@ foreach ($_cfgs as $_cfg) {
 		} else {
 			// We’ve chosen a custom location for our media folder - need to update our media-folder to point to it.
 			// We have, for example,
-			// $_mf_dir = /home/fisharebest/my_pictures/
-			// $_data_dir = /home/fisharebest/public_html/webtrees/data/
+			// $_mf_dir = /home/my_domain/my_pictures/
+			// $_data_dir = /home/my_domain/public_html/kiwitrees/data/
 			// Therefore we need to calculate ../../../my_pictures/
 			$_media_dir = '';
 			$_tmp_dir = $_data_dir;

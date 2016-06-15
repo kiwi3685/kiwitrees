@@ -41,8 +41,8 @@ define('WT_WEBTREES_URL',    'http://kiwitrees.net/');
 define('WT_TRANSLATORS_URL', 'http://kiwitrees.net/forums/forum/support-forum/translation/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
-// For example, http://my.cdn.com/webtrees-static-1.3.1/
-define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1.3.1/
+// For example, http://my.cdn.com/kiwitrees-static-1.3.1/
+define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/kiwitrees-static-1.3.1/
 
 // Optionally, load major JS libraries from Google’s public CDN
 define ('WT_USE_GOOGLE_API', false);
@@ -205,10 +205,9 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 	}
 }
 
-// Enable this code when we release webtrees 1.5
-//if (version_compare(PHP_VERSION, '5.3.3', '<')) {
-//	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-php-version.php');
-//}
+if (version_compare(PHP_VERSION, '5.3.3', '<')) {
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-php-version.php');
+}
 
 // Some browsers do not send a user-agent string
 if (!isset($_SERVER['HTTP_USER_AGENT'])) {
@@ -516,7 +515,7 @@ if (WT_Site::preference('LOGIN_URL')) {
 }
 
 // If there is no current tree and we need one, then redirect somewhere
-if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php') {
+if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php') {
 	if (!$WT_TREE || !WT_IMPORTED) {
 		if (WT_USER_IS_ADMIN) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');

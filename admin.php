@@ -318,9 +318,7 @@ echo
 	'</div>', // id=changes
 	'</div>'; //id = "x"
 
-// This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
-// It was generated with the help of a command like this
-// svn diff svn://svn.webtrees.net/tags/1.2.3 svn://svn.webtrees.net/trunk --summarize | grep ^D | sort
+// This is a list of old files and directories, from earlier versions of kiwitrees, that can be deleted
 function old_paths() {
 	return array(
 		// Removed in 1.0.2
@@ -1528,12 +1526,14 @@ function old_paths() {
 		WT_ROOT.'modules_v3/googlemap/help_text.php',
 		WT_ROOT.'modules_v3/googlemap/places/flags/SGS.png',
 		// Removed in kiwitrees 3.2.2
-		WT_ROOT.'modules_v3/fancy_imagebar/style.js',
 		WT_ROOT.'search-advanced.php',
+		WT_ROOT.'admin_pgv_to_wt.php',
+		WT_ROOT.'library/framework/Foundation',
 		WT_ROOT.'library/WT/Controller/AdvancedSearch.php',
 		WT_ROOT.'modules_v3/birth_report',
 		WT_ROOT.'modules_v3/death_report',
 		WT_ROOT.'modules_v3/cemetery_report',
+		WT_ROOT.'modules_v3/fancy_imagebar/style.js',
 		WT_ROOT.'modules_v3/simpl_research/plugins/alledrenten.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/allefriezen.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/allegroningers.php', //replaced for better sorting
@@ -1545,7 +1545,6 @@ function old_paths() {
 		WT_ROOT.'modules_v3/simpl_research/plugins/hetutrechtsarchief.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/register1939.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/rhcvechtenvenen.php', //replaced for better sorting
-		WT_ROOT.'library/framework/Foundation',
 	);
 }
 

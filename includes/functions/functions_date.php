@@ -1,5 +1,5 @@
 <?php
-// Date Functions that can be used by any page in webtrees
+// Date Functions that can be used by any page in kiwitrees
 //
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2016 kiwitrees.net

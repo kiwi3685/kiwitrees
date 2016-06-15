@@ -122,7 +122,7 @@ case 'delete':
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
-	header('Content-Disposition: attachment; filename="webtrees-changes.csv"');
+	header('Content-Disposition: attachment; filename="kiwitrees-changes.csv"');
 	$rows=WT_DB::prepare($SELECT1.$WHERE.' ORDER BY change_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		$row->old_gedcom = str_replace('"', '""', $row->old_gedcom);
@@ -204,7 +204,7 @@ case 'load_json':
 		$row[3]=$diff->Render($renderer);
 		$row[4]='';
 	}
-	
+
 	// Total filtered/unfiltered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 	$iTotalRecords=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();

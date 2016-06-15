@@ -28,7 +28,7 @@
 class WT_I18N {
 	// Lookup table to convert unicode code-points into scripts.
 	// See https://en.wikipedia.org/wiki/Unicode_block
-	// Note: we only need details for scripts of languages into which webtrees is translated.
+	// Note: we only need details for scripts of languages into which kiwitrees is translated.
 	private static $scripts = array(
 		array('Latn', 0x0041, 0x005A), // a-z
 		array('Latn', 0x0061, 0x007A), // A-Z
@@ -184,10 +184,10 @@ class WT_I18N {
 		$DATE_FORMAT=self::noop('%j %F %Y');
 		global $TIME_FORMAT; // I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 		$TIME_FORMAT=self::noop('%H:%i:%s');
-		global $ALPHABET_upper; // Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
+		global $ALPHABET_upper; // Alphabetic sorting sequence (upper-case letters), used by kiwitrees to sort strings
 		$ALPHABET_upper=self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 		list(, $ALPHABET_upper)=explode('=', $ALPHABET_upper);
-		global $ALPHABET_lower; // Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
+		global $ALPHABET_lower; // Alphabetic sorting sequence (lower-case letters), used by kiwitrees to sort strings
 		$ALPHABET_lower=self::noop('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz');
 		list(, $ALPHABET_lower)=explode('=', $ALPHABET_lower);
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...

@@ -36,8 +36,8 @@ require_once WT_ROOT."library/tcpdf/tcpdf.php";
 /**
 * Main WT Report Class for PDF
 *
-* @package webtrees
-* @subpackage Reports
+
+
 */
 class WT_Report_PDF extends WT_Report_Base {
 	/**
@@ -57,7 +57,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	const unicode = true;
 	/**
 	* FALSE means that the full font is embedded, TRUE means only the used chars
-	* in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files  
+	* in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
 	* @var boolean const
 	*/
 	const subsetting = false;
@@ -275,8 +275,8 @@ class WT_Report_PDF extends WT_Report_Base {
 * WT Report PDF Class
 *
 * This class inherits from the TCPDF class and is used to generate the PDF document
-* @package webtrees
-* @subpackage Reports
+
+
 */
 class PDF extends TCPDF {
 	/**
@@ -492,7 +492,7 @@ class PDF extends TCPDF {
 		$this->currentStyle = $s;
 		$style = $this->wt_report->getStyle($s);
 		$this->SetFont($style['font'], $style['style'], $style['size']);
-		} 
+		}
 
 	/**
 	* Get the style -PDF
@@ -622,8 +622,8 @@ class PDF extends TCPDF {
 /**
 * Cell element - PDF
 *
-* @package webtrees
-* @subpackage Reports
+
+
 */
 class CellPDF extends Cell {
 	/**
@@ -766,8 +766,8 @@ class CellPDF extends Cell {
 /**
 * HTML element - PDF Report
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class HtmlPDF extends Html {
@@ -809,8 +809,8 @@ class HtmlPDF extends Html {
 /**
 * TextBox element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class TextBoxPDF extends TextBox {
@@ -1071,7 +1071,7 @@ class TextBoxPDF extends TextBox {
 		// Draw the border
 		if (!empty($cS)) {
 			if (!$pdf->getRTL()) {
-				$cXM = $cX;	
+				$cXM = $cX;
 			} else {
 				$cXM=($pdf->getPageWidth())-$cX-$cW;
 			}
@@ -1085,7 +1085,7 @@ class TextBoxPDF extends TextBox {
 					$pdf->SetY($cY + $cM['padding_top']);
 				}
 				else {
-					$pdf->SetY($cY + $cM['cell']);					
+					$pdf->SetY($cY + $cM['cell']);
 				}
 			}
 		}
@@ -1096,7 +1096,7 @@ class TextBoxPDF extends TextBox {
 					$pdf->SetLeftMargin($cX + $cM['padding_left']);
 				}
 				else {
-					$pdf->SetLeftMargin($cX + $cM['cell']);					
+					$pdf->SetLeftMargin($cX + $cM['cell']);
 				}
 				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM['right']);
 			}
@@ -1160,8 +1160,8 @@ class TextBoxPDF extends TextBox {
 /**
 * Text element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class TextPDF extends Text {
@@ -1187,7 +1187,7 @@ class TextPDF extends Text {
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		
+
 		// Paint the text color or they might use inherited colors by the previous function
 		$match = array();
 		if (preg_match("/#?(..)(..)(..)/", $this->color, $match)) {
@@ -1303,8 +1303,8 @@ class TextPDF extends Text {
 /**
 * Footnote element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class FootnotePDF extends Footnote {
@@ -1456,8 +1456,8 @@ class FootnotePDF extends Footnote {
 /**
 * PageHeader element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 */
 class PageHeaderPDF extends PageHeader {
 
@@ -1480,8 +1480,8 @@ class PageHeaderPDF extends PageHeader {
 /**
 * ImagePDF class element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 */
 class ImagePDF extends Image {
 
@@ -1553,8 +1553,8 @@ class ImagePDF extends Image {
 /**
 * Line element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class LinePDF extends Line {

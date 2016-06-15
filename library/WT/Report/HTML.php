@@ -34,8 +34,8 @@ if (!defined('WT_WEBTREES')) {
 /**
 * Main WT Report Class for HTML
 *
-* @package webtrees
-* @subpackage Reports
+
+
 */
 class WT_Report_HTML extends WT_Report_Base {
 	/**
@@ -561,8 +561,8 @@ class WT_Report_HTML extends WT_Report_Base {
 /**
 * Cell element - HTML
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info and fix border and filling
 */
 class CellHTML extends Cell {
@@ -774,8 +774,8 @@ class CellHTML extends Cell {
 /**
 * HTML element - HTML Report
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class HtmlHTML extends Html {
@@ -827,8 +827,8 @@ class HtmlHTML extends Html {
 /**
 * TextBox element - HTML Report
 *
-* @package webtrees
-* @subpackage Reports
+
+
 */
 class TextBoxHTML extends TextBox {
 
@@ -1096,8 +1096,8 @@ class TextBoxHTML extends TextBox {
 /**
 * Text element - HTML Report
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class TextHTML extends Text {
@@ -1263,8 +1263,8 @@ class TextHTML extends Text {
 /**
 * Footnote element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class FootnoteHTML extends Footnote {
@@ -1423,8 +1423,8 @@ class FootnoteHTML extends Footnote {
 /**
 * PageHeader element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class PageHeaderHTML extends PageHeader {
@@ -1443,8 +1443,8 @@ class PageHeaderHTML extends PageHeader {
 /**
 * Image element
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class ImageHTML extends Image {
@@ -1521,8 +1521,8 @@ class ImageHTML extends Image {
 /**
 * Line element - HTML Report
 *
-* @package webtrees
-* @subpackage Reports
+
+
 * @todo add info
 */
 class LineHTML extends Line {

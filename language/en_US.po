@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-06-15 10:34+1200\n"
-"PO-Revision-Date: 2016-06-15 10:44+1200\n"
+"POT-Creation-Date: 2016-06-16 11:17+1200\n"
+"PO-Revision-Date: 2016-06-16 11:17+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -786,75 +786,6 @@ msgstr "Other"
 #: admin_modules.php:178
 msgid "This module cannot be found.  Delete its configuration settings."
 msgstr "This module cannot be found.  Delete its configuration settings."
-
-#: admin_pgv_to_wt.php:37
-msgid "PhpGedView to webtrees transfer wizard"
-msgstr "PhpGedView to webtrees transfer wizard"
-
-#: admin_pgv_to_wt.php:45
-msgid "The specified directory does not contain an installation of PhpGedView"
-msgstr "The specified directory does not contain an installation of PhpGedView"
-
-#: admin_pgv_to_wt.php:66
-msgid "PhpGedView must use the same database as <b>webtrees</b>"
-msgstr "PhpGedView must use the same database as <b>webtrees</b>"
-
-#: admin_pgv_to_wt.php:75
-#, php-format
-msgid "The version of %s is too old"
-msgstr "The version of %s is too old"
-
-#: admin_pgv_to_wt.php:77
-#, php-format
-msgid "The version of %s is too new"
-msgstr "The version of %s is too new"
-
-#. I18N: %s is a database name/identifier
-#: admin_pgv_to_wt.php:82
-#, php-format
-msgid "<b>webtrees</b> cannot connect to the PhpGedView database: %s."
-msgstr "<b>webtrees</b> cannot connect to the PhpGedView database: %s."
-
-#. I18N: %s is an error message
-#: admin_pgv_to_wt.php:85
-#, php-format
-msgid "MySQL gave the error: %s"
-msgstr "MySQL gave the error: %s"
-
-#: admin_pgv_to_wt.php:117
-msgid "PhpGedView to <b>webtrees</b> transfer wizard"
-msgstr "PhpGedView to <b>webtrees</b> transfer wizard"
-
-#: admin_pgv_to_wt.php:136
-msgid "Where is your PhpGedView installation?"
-msgstr "Where is your PhpGedView installation?"
-
-#: admin_pgv_to_wt.php:138
-msgid "Installation directory"
-msgstr "Installation directory"
-
-#. I18N: button label, next page
-#: admin_pgv_to_wt.php:158 admin_site_merge.php:307 library/WT/I18N.php:707
-#: modules_v3/batch_update/admin_batch_update.php:99
-#: modules_v3/fancy_treeview/module.php:885
-msgid "next"
-msgstr "next"
-
-#: admin_pgv_to_wt.php:1063
-msgid "You need to login again, using your PhpGedView username and password."
-msgstr "You need to login again, using your PhpGedView username and password."
-
-#. I18N: Button label
-#. I18N: button label
-#. I18N: button label
-#. I18N: button label
-#: admin_pgv_to_wt.php:1064 admin_trees_append.php:174
-#: admin_trees_download.php:109 admin_trees_download.php:168
-#: admin_trees_manage.php:238 admin_trees_renumber.php:280 admin_users.php:538
-#: login.php:192 login.php:435 modules_v3/login_block/module.php:100
-#: setup.php:210 setup.php:234 setup.php:306 setup.php:392 setup.php:451
-msgid "continue"
-msgstr "continue"
 
 #: admin_site_access.php:33 themes/_administration/header.php:145
 msgid "Site access rules"
@@ -1827,6 +1758,13 @@ msgstr "Find a source"
 msgid "Merge from ID:"
 msgstr "Merge from ID:"
 
+#. I18N: button label, next page
+#: admin_site_merge.php:307 library/WT/I18N.php:707
+#: modules_v3/batch_update/admin_batch_update.php:99
+#: modules_v3/fancy_treeview/module.php:885
+msgid "next"
+msgstr "next"
+
 #: admin_site_other.php:34 admin_site_other.php:39
 #: themes/_administration/header.php:171
 msgid "Add unlinked records"
@@ -1919,6 +1857,18 @@ msgstr "The family trees were combined successfully."
 #, php-format
 msgid "Copy all the records from %1$s into %2$s"
 msgstr "Copy all the records from %1$s into %2$s"
+
+#. I18N: Button label
+#. I18N: button label
+#. I18N: button label
+#. I18N: button label
+#: admin_trees_append.php:174 admin_trees_download.php:109
+#: admin_trees_download.php:168 admin_trees_manage.php:238
+#: admin_trees_renumber.php:280 admin_users.php:538 login.php:192 login.php:435
+#: modules_v3/login_block/module.php:100 setup.php:210 setup.php:234
+#: setup.php:306 setup.php:392 setup.php:451
+msgid "continue"
+msgstr "continue"
 
 #: admin_trees_check.php:39
 msgid "Check for errors"
@@ -23054,6 +23004,7 @@ msgstr "Presentation style"
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
+#. I18N: An option in a list-box
 #: modules_v3/recent_changes/module.php:152
 #: modules_v3/todays_events/module.php:154
 #: modules_v3/upcoming_events/module.php:156
@@ -23833,7 +23784,6 @@ msgstr "Show research tasks that are not assigned to any user"
 msgid "Show research tasks that have a date in the future"
 msgstr "Show research tasks that have a date in the future"
 
-#. I18N: Name of a module.  Top=Most common
 #. I18N: Name of a module.  Top=Most common
 #: modules_v3/top10_givnnames/module.php:35
 #: modules_v3/widget_givnnames/module.php:35 statistics.php:191
@@ -25957,6 +25907,43 @@ msgstr "Orientation"
 #: modules_v3/pedigree_report/report.bak:737
 msgid "Pedigree Chart"
 msgstr "Pedigree Chart"
+
+#~ msgid "PhpGedView to webtrees transfer wizard"
+#~ msgstr "PhpGedView to webtrees transfer wizard"
+
+#~ msgid ""
+#~ "The specified directory does not contain an installation of PhpGedView"
+#~ msgstr ""
+#~ "The specified directory does not contain an installation of PhpGedView"
+
+#~ msgid "PhpGedView must use the same database as <b>webtrees</b>"
+#~ msgstr "PhpGedView must use the same database as <b>webtrees</b>"
+
+#~ msgid "The version of %s is too old"
+#~ msgstr "The version of %s is too old"
+
+#~ msgid "The version of %s is too new"
+#~ msgstr "The version of %s is too new"
+
+#~ msgid "<b>webtrees</b> cannot connect to the PhpGedView database: %s."
+#~ msgstr "<b>webtrees</b> cannot connect to the PhpGedView database: %s."
+
+#~ msgid "MySQL gave the error: %s"
+#~ msgstr "MySQL gave the error: %s"
+
+#~ msgid "PhpGedView to <b>webtrees</b> transfer wizard"
+#~ msgstr "PhpGedView to <b>webtrees</b> transfer wizard"
+
+#~ msgid "Where is your PhpGedView installation?"
+#~ msgstr "Where is your PhpGedView installation?"
+
+#~ msgid "Installation directory"
+#~ msgstr "Installation directory"
+
+#~ msgid ""
+#~ "You need to login again, using your PhpGedView username and password."
+#~ msgstr ""
+#~ "You need to login again, using your PhpGedView username and password."
 
 #~ msgid ""
 #~ "The value to place in the Description meta tag in the HTML page header.  "

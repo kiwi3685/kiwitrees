@@ -13,7 +13,7 @@ text=auto
 *.png binary
 *.jpg binary
 
-# Exclude the following files when we build webtrees
+# Exclude the following files when we build kiwitrees
 
 .git*                       export-ignore
 Makefile                    export-ignore

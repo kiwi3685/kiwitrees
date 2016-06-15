@@ -27,7 +27,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Gedcom_Tag {
-	// All tags that webtrees knows how to translate - including special/internal tags
+	// All tags that kiwitrees knows how to translate - including special/internal tags
 	private static $ALL_TAGS = array(
 		'ABBR', 'ADDR', 'ADR1', 'ADR2', 'ADOP', 'ADOP:DATE', 'ADOP:PLAC',
 		'AFN', 'AGE', 'AGNC', 'ALIA', 'ANCE', 'ANCI', 'ANUL', 'ASSO', 'AUTH', 'BAPL',

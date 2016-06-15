@@ -44,8 +44,6 @@ define("WT_RNEW", false);
  * Main Report Class
  *
  * Document wide functions and variable defaults that will be inherited of the report modules
- * @package webtrees
- * @subpackage Reports
  */
 class WT_Report_Base {
 	/**
@@ -418,9 +416,6 @@ class WT_Report_Base {
 
 /**
  * Main WT Report Element class that all other page elements are extended from
- *
- * @package webtrees
- * @subpackage Reports
  */
 class Element {
 	/**
@@ -509,8 +504,6 @@ class Element {
 /**
 * HTML element class
 *
-* @package webtrees
-* @subpackage Reports
 * @todo add info
 */
 class Html extends Element {
@@ -554,8 +547,6 @@ class Html extends Element {
 /**
  * Cell element class
 *
-* @package webtrees
-* @subpackage Reports
 */
 class Cell extends Element {
 	/**
@@ -707,8 +698,6 @@ class Cell extends Element {
 /**
  * TextBox element class
 *
-* @package webtrees
-* @subpackage Reports
 * @todo add info
 */
 class TextBox extends Element {
@@ -852,8 +841,6 @@ class TextBox extends Element {
 /**
  * Text element class
 *
-* @package webtrees
-* @subpackage Reports
 * @todo add info
 */
 class Text extends Element {
@@ -918,8 +905,6 @@ class Text extends Element {
 /**
  * Footnote element class
 *
-* @package webtrees
-* @subpackage Reports
 * @todo add info
 */
 class Footnote extends Element {
@@ -1015,8 +1000,6 @@ class Footnote extends Element {
 /**
  * PageHeader element class
 *
-* @package webtrees
-* @subpackage Reports
 * @todo add info
 */
 class PageHeader extends Element {
@@ -1053,8 +1036,6 @@ class PageHeader extends Element {
 /**
  * Image element class
 *
-* @package webtrees
-* @subpackage Reports
 * @todo add info
 */
 class Image extends Element {
@@ -1136,8 +1117,6 @@ class Image extends Element {
 /**
  * Line element class
 *
-* @package webtrees
-* @subpackage Reports
 * @todo add info
 */
 class Line extends Element {

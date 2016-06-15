@@ -223,7 +223,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		switch ($fact->getDetail()) {
 		case 'none':
 			// Note: "1 RESN none" is not valid gedcom.
-			// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
+			// However, kiwitrees privacy rules will interpret it as "show an otherwise private record to public".
 			echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
 			break;
 		case 'privacy':
@@ -386,7 +386,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			switch ($match[2]) {
 			case 'none':
 				// Note: "2 RESN none" is not valid gedcom.
-				// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+				// However, kiwitrees privacy rules will interpret it as "show an otherwise private fact to public".
 				echo WT_Gedcom_Tag::getLabelValue('RESN', '<i class="icon-resn-none"></i> '.WT_I18N::translate('Show to visitors'));
 				break;
 			case 'privacy':
@@ -748,7 +748,7 @@ function print_main_sources(WT_Event $fact, $level) {
 						switch ($rmatch) {
 						case 'none':
 							// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
-							// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+							// However, kiwitrees privacy rules will interpret it as "show an otherwise private fact to public".
 							echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
 							break;
 						case 'privacy':
@@ -995,7 +995,7 @@ function print_main_notes(WT_Event $fact, $level) {
 				switch ($match) {
 				case 'none':
 					// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
-					// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+					// However, kiwitrees privacy rules will interpret it as "show an otherwise private fact to public".
 					echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
 					break;
 				case 'privacy':

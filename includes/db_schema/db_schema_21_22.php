@@ -56,7 +56,7 @@ self::exec(
 	" WHERE status = 'pending'"
 );
 
-// Previous versions of webtrees included the MEDIA_DIRECTORY setting in the
+// Previous versions of kiwitrees included the MEDIA_DIRECTORY setting in the
 // FILE tag of the OBJE records.  Remove it…
 self::exec(
 	"UPDATE `##media` m".
