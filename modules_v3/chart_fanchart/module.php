@@ -38,7 +38,7 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of “Fanchart” module */ WT_I18N::translate('An individual\'s fanchart chart');
+		return /* I18N: Description of “Fanchart” module */ WT_I18N::translate('An individual\'s fanchart');
 	}
 
 	// Extend WT_Module

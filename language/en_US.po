@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-06-15 07:48+1200\n"
-"PO-Revision-Date: 2016-06-15 07:50+1200\n"
+"POT-Creation-Date: 2016-06-15 10:34+1200\n"
+"PO-Revision-Date: 2016-06-15 10:44+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -602,7 +602,7 @@ msgstr "To source"
 msgid "This media object is not linked to any other record."
 msgstr "This media object is not linked to any other record."
 
-#: admin_media.php:534 admin_media.php:627 admin_trees_config.php:254
+#: admin_media.php:534 admin_media.php:626 admin_trees_config.php:254
 #: admin_trees_sourcecheck.php:150
 #: includes/functions/functions_print_lists.php:1491 inverselink.php:73
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:88
@@ -610,58 +610,58 @@ msgstr "This media object is not linked to any other record."
 msgid "Media"
 msgstr "Media"
 
-#: admin_media.php:565 admin_trees_config.php:656
+#: admin_media.php:564 admin_trees_config.php:656
 msgid "Media files"
 msgstr "Media files"
 
-#: admin_media.php:566 admin_trees_config.php:645
+#: admin_media.php:565 admin_trees_config.php:645
 msgid "Media folders"
 msgstr "Media folders"
 
 #. I18N: “Local files” are stored on this computer
-#: admin_media.php:571
+#: admin_media.php:570
 msgid "Local files"
 msgstr "Local files"
 
 #. I18N: “External files” are stored on other computers
-#: admin_media.php:574
+#: admin_media.php:573
 msgid "External files"
 msgstr "External files"
 
-#: admin_media.php:577
+#: admin_media.php:576
 msgid "Unused files"
 msgstr "Unused files"
 
 #. I18N: Label for check-box
-#: admin_media.php:604 medialist.php:88
+#: admin_media.php:603 medialist.php:88
 msgid "Include subfolders"
 msgstr "Include subfolders"
 
-#: admin_media.php:607
+#: admin_media.php:606
 msgid "Exclude subfolders"
 msgstr "Exclude subfolders"
 
-#: admin_media.php:611
+#: admin_media.php:610
 msgid "External media files have a URL instead of a filename."
 msgstr "External media files have a URL instead of a filename."
 
-#: admin_media.php:626 admin_media_upload.php:184
+#: admin_media.php:625 admin_media_upload.php:184
 msgid "Media file"
 msgstr "Media file"
 
 #. I18N: gedcom tag OBJE
-#: admin_media.php:628 library/WT/Gedcom/Tag.php:285
+#: admin_media.php:627 library/WT/Gedcom/Tag.php:285
 #: modules_v3/album/module.php:194
 msgid "Media object"
 msgstr "Media object"
 
-#: admin_media.php:629
+#: admin_media.php:628
 msgid "Highlight"
 msgstr "Highlight"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
-#: admin_media.php:630 library/WT/Gedcom/Tag.php:266
+#: admin_media.php:629 library/WT/Gedcom/Tag.php:266
 #: library/WT/Gedcom/Tag.php:830
 msgid "Media type"
 msgstr "Media type"
@@ -19829,8 +19829,8 @@ msgstr "Fanchart"
 
 #. I18N: Description of “Fanchart” module
 #: modules_v3/chart_fanchart/module.php:41
-msgid "An individual's fanchart chart"
-msgstr "An individual's fanchart chart"
+msgid "An individual's fanchart"
+msgstr "An individual's fanchart"
 
 #. I18N: Name of a module
 #: modules_v3/chart_hourglass/module.php:36
@@ -19904,7 +19904,7 @@ msgstr "An alternative way to display charts."
 #: modules_v3/random_media/module.php:145
 #: modules_v3/recent_changes/module.php:74
 #: modules_v3/review_changes/module.php:100
-#: modules_v3/simpl_research/module.php:182
+#: modules_v3/simpl_research/module.php:183
 #: modules_v3/todays_events/module.php:69 modules_v3/todo/module.php:62
 #: modules_v3/top10_givnnames/module.php:63
 #: modules_v3/top10_pageviews/module.php:61
@@ -23657,12 +23657,12 @@ msgstr "Area"
 msgid "Pay to view"
 msgstr "Pay to view"
 
-#: modules_v3/simpl_research/module.php:292
-#: modules_v3/simpl_research/module.php:316
+#: modules_v3/simpl_research/module.php:294
+#: modules_v3/simpl_research/module.php:318
 msgid "International"
 msgstr "International"
 
-#: modules_v3/simpl_research/module.php:323
+#: modules_v3/simpl_research/module.php:325
 msgid "&#36;"
 msgstr "&#36;"
 
