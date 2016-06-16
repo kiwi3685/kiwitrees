@@ -279,7 +279,7 @@ class WT_MenuBar {
 	public static function getMainMenus() {
 		$menus = array();
 		foreach (WT_Module::getActiveMenus() as $module) {
-			if ($module->MenuType() == 'main') {
+			if ($module->MenuType() == 'main' || !$module->MenuType()) {
 				$menu = $module->getMenu();
 				if ($menu) {
 					$menus[] = $menu;
