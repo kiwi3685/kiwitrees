@@ -244,11 +244,10 @@ echo
 '<fieldset id="trees">
 	<legend>', WT_I18N::translate('Family tree statistics'), '</legend>',
 	'<div id="tree_stats">';
-
 		foreach (WT_Tree::getAll() as $tree) {
 			$stats = new WT_Stats($tree->tree_name);
-			if ($tree->tree_id==WT_GED_ID) {
-				$accordion_element=$n;
+			if ($tree->tree_id == WT_GED_ID) {
+				$accordion_element = $n;
 			}
 			++$n;
 			echo '
@@ -285,7 +284,7 @@ echo
 					<span>', $stats->totalNotes(), '</span>
 				</li>
 			</ul>';
-		}
+			}
 		echo '
 	</div>', // id=tree_stats
 '</fieldset>'; // id=trees
