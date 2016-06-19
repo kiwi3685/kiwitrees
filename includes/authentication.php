@@ -226,6 +226,7 @@ function addMessage($message) {
 
 	$user_id_from = get_user_id($message['from']);
 	$user_id_to   = get_user_id($message['to']);
+	$original_email = /* I18N Start of message from a kiwitrees site */ WT_I18N::translate('The following message has been sent to your %1$s user account from ', strip_tags(WT_TREE_TITLE));
 
 	require_once WT_ROOT.'includes/functions/functions_mail.php';
 
@@ -261,14 +262,12 @@ function addMessage($message) {
 	if ($message['method'] != 'messaging') {
 		$original_subject = "[" . /* I18N Subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
 		if (!$user_id_from) {
-			$original_email = /* I18N Start of message from a kiwitrees site */ WT_I18N::translate('The following message has been sent to your %1$s user account from ', strip_tags(WT_TREE_TITLE));
 			if (!empty($message['from_name'])) {
 				$original_email .= $message['from_name']."\r\n\r\n".$message['body'];
 			} else {
 				$original_email .= $from."\r\n\r\n".$message['body'];
 			}
 		} else {
-			$original_email = /* I18N Start of message from a kiwitrees site */ WT_I18N::translate('The following message has been sent to your %1$s user account from ', strip_tags(WT_TREE_TITLE));
 			$original_email .= $fromFullName . "\r\n\r\n" . $message['body'];
 		}
 		if (!isset($message['no_from'])) {
@@ -306,14 +305,12 @@ function addMessage($message) {
 	if ($message['method'] != 'messaging') {
 		$original_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION == 'ltr'?"] ":" [").$message['subject'];
 		if (!$user_id_from) {
-			$original_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
 			if (!empty($message['from_name'])) {
 				$original_email .= $message['from_name']."\r\n\r\n".$message['body'];
 			} else {
 				$original_email .= $from."\r\n\r\n".$message['body'];
 			}
 		} else {
-			$original_email = WT_I18N::translate('The following message has been sent to your kiwitrees user account from ');
 			$original_email .= $fromFullName."\r\n\r\n".$message['body'];
 		}
 		$toFullName = getUserFullName($user_id_to);
