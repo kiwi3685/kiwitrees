@@ -356,6 +356,7 @@ textarea:required:invalid {
 	font-size: .4em;
 	font-style: italic;
 	font-weight: 600;
+	padding: 0 10px;
 }
 
 .header_search {

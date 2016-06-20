@@ -119,8 +119,7 @@ if ($view!='simple') {
 	echo '<div id="navbar">
 		<div id="header">
 			<div id="bigtext" class="title" dir="auto">',
-				WT_TREE_TITLE, '
-				<span class="subtitle" dir="auto">' . htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'subtitle')) . '</span>
+				WT_TREE_TITLE . WT_TREE_SUBTITLE . '
 			</div>
 			<div class="header_search">
 				<form action="search.php" method="post">

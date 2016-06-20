@@ -25,13 +25,15 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Tree {
 	// Tree attributes
-	public $tree_id         = null; // The "gedcom ID" number
-	public $tree_name       = null; // The "gedcom name" text
-	public $tree_name_url   = null;
-	public $tree_name_html  = null;
-	public $tree_title      = null; // The "gedcom title" text
-	public $tree_title_html = null;
-	public $imported        = null;
+	public $tree_id         	= null; // The "gedcom ID" number
+	public $tree_name       	= null; // The "gedcom name" text
+	public $tree_name_url   	= null;
+	public $tree_name_html  	= null;
+	public $tree_title      	= null; // The "gedcom title" text
+	public $tree_title_html 	= null;
+	public $tree_subtitle		= null;
+	public $tree_subtitle_html	= null;
+	public $imported        	= null;
 
 	// List of all trees
 	private static $trees   = null;
@@ -42,18 +44,20 @@ class WT_Tree {
 
 	// Create a tree object.  This is a private constructor - it can only
 	// be called from WT_Tree::getAll() to ensure proper initialisation.
-	private function __construct($tree_id, $tree_name, $tree_title, $imported) {
+	private function __construct($tree_id, $tree_name, $tree_title, $tree_subtitle, $imported) {
 		if (strpos($tree_title, '%') === false) {
 			// Allow users to translate tree titles.
 			//$tree_title = WT_I18N::Translate($tree_title);
 		}
-		$this->tree_id        = $tree_id;
-		$this->tree_name      = $tree_name;
-		$this->tree_name_url  = rawurlencode($tree_name);
-		$this->tree_name_html = htmlspecialchars($tree_name);
-		$this->tree_title     = $tree_title;
-		$this->tree_title_html= '<span class="treetitle" dir="auto">'.htmlspecialchars($tree_title).'</span>';
-		$this->imported       = $imported;
+		$this->tree_id        		= $tree_id;
+		$this->tree_name      		= $tree_name;
+		$this->tree_name_url  		= rawurlencode($tree_name);
+		$this->tree_name_html 		= htmlspecialchars($tree_name);
+		$this->tree_title     		= $tree_title;
+		$this->tree_title_html		= '<span class="treetitle" dir="auto">'.htmlspecialchars($tree_title).'</span>';
+		$this->tree_subtitle		= $tree_subtitle;
+		$this->tree_subtitle_html	= '<span class="subtitle" dir="auto">' . htmlspecialchars($tree_subtitle) . '</span>';
+		$this->imported       		= $imported;
 	}
 
 	// Get and Set the tree's configuration settings
@@ -130,12 +134,13 @@ class WT_Tree {
 		if (self::$trees === null) {
 			self::$trees=array();
 			$rows=WT_DB::prepare(
-				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported".
+				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported, gs4.setting_value AS tree_subtitle".
 				" FROM `##gedcom` g".
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')".
 				" LEFT JOIN `##gedcom_setting`      gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='imported')".
 				" LEFT JOIN `##gedcom_setting`      gs3 ON (g.gedcom_id=gs3.gedcom_id AND gs3.setting_name='REQUIRE_AUTHENTICATION')".
 				" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.setting_name='canedit' AND ugs.user_id = ?)".
+				" LEFT JOIN `##gedcom_setting`      gs4 ON (g.gedcom_id=gs4.gedcom_id AND gs4.setting_name='subtitle')".
 				" WHERE ".
 				"  g.gedcom_id>0 AND (".          // exclude the "template" tree
 				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id = ? AND setting_name='canadmin' AND setting_value=1)". // Admin sees all
@@ -148,7 +153,7 @@ class WT_Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(WT_USER_ID, WT_USER_ID))->fetchAll();
 			foreach ($rows as $row) {
-				self::$trees[$row->tree_id]=new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->imported);
+				self::$trees[$row->tree_id] = new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->tree_subtitle, $row->imported);
 			}
 		}
 		return self::$trees;
@@ -314,6 +319,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'WORD_WRAPPED_NOTES',           false);
 		set_gedcom_setting($tree_id, 'imported',                     0);
 		set_gedcom_setting($tree_id, 'title',                        $tree_title);
+		set_gedcom_setting($tree_id, 'subtitle',                     '');
 		if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
 			set_gedcom_setting($tree_id, 'EXPAND_HISTO_EVENTS',      false);
 		}

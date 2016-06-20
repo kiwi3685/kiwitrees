@@ -432,6 +432,7 @@ if ($WT_TREE) {
 	define('WT_GED_ID',            $WT_TREE->tree_id);
 	define('WT_GEDURL',            $WT_TREE->tree_name_url);
 	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
+	define('WT_TREE_SUBTITLE',     $WT_TREE->tree_subtitle_html);
 	define('WT_IMPORTED',          $WT_TREE->imported);
 	define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
 	define('WT_USER_CAN_ACCEPT',   $WT_TREE->canAcceptChanges(WT_USER_ID));
@@ -453,6 +454,7 @@ if ($WT_TREE) {
 	define('WT_GED_ID',            null);
 	define('WT_GEDURL',            '');
 	define('WT_TREE_TITLE',        WT_WEBTREES);
+	define('WT_TREE_SUBTITLE',     '');
 	define('WT_IMPORTED',          false);
 	define('WT_USER_GEDCOM_ADMIN', false);
 	define('WT_USER_CAN_ACCEPT',   false);
@@ -463,6 +465,7 @@ if ($WT_TREE) {
 	define('WT_USER_PATH_LENGTH',  0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
+
 $GEDCOM = WT_GEDCOM;
 
 // With no parameters, init() looks to the environment to choose a language

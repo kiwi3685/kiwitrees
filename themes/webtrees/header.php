@@ -101,8 +101,7 @@ if ($view!='simple') {
 	echo
 		'<div id="header">',
 			'<div class="title" dir="auto">',
-				WT_TREE_TITLE, '
-				<span class="subtitle" dir="auto">' . htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'subtitle')) . '</span>
+				WT_TREE_TITLE . WT_TREE_SUBTITLE,'
 			</div>',
 			'<ul id="extra-menu" class="makeMenu">';
 				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {

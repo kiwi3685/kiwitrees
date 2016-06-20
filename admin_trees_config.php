@@ -192,11 +192,9 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',              WT_Filter::postBool('NEW_WATERMARK_THUMB'));
 	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID',            WT_Filter::post('NEW_WEBMASTER_USER_ID'));
 	set_gedcom_setting(WT_GED_ID, 'WEBTREES_EMAIL',               WT_Filter::post('NEW_WEBTREES_EMAIL'));
+	set_gedcom_setting(WT_GED_ID, 'subtitle',               	  WT_Filter::post('new_subtitle', WT_REGEX_UNSAFE));
 	if (WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE)) {
-		set_gedcom_setting(WT_GED_ID, 'title',                        WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE));
-	}
-	if (WT_Filter::post('gedcom_subtitle', WT_REGEX_UNSAFE)) {
-		set_gedcom_setting(WT_GED_ID, 'subtitle',                        WT_Filter::post('gedcom_subtitle', WT_REGEX_UNSAFE));
+		set_gedcom_setting(WT_GED_ID, 'title',                    WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE));
 	}
 
 	// Only accept valid folders for NEW_MEDIA_DIRECTORY
@@ -273,7 +271,7 @@ $controller
 						<?php echo WT_I18N::translate('Family tree subtitle'); ?>
 					</td>
 					<td>
-						<input type="text" name="gedcom_subtitle" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'subtitle')); ?>" size="50" maxlength="255">
+						<input type="text" dir="ltr" name="new_subtitle" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'subtitle')); ?>" size="50" maxlength="255">
 					</td>
 				</tr>
 				<tr>
