@@ -168,144 +168,180 @@ echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 
 // Show indi and hide the rest
 if ($type == "indi") {
-	echo '<div id="find-header">
-	<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="' . $callback . '">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="indi">
-	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
-	<input type="text" name="filter" value="';
-	if ($filter) {
-		echo $filter;
-	}
-	echo '" autofocus>
-	<input type="submit" value="', WT_I18N::translate('Filter'), '">
-	</form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
+				<input type="hidden" name="callback" value="' . $callback . '">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="indi">
+				<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
+				<input type="text" name="filter" value="';
+					if ($filter) {
+						echo $filter;
+					}
+					echo '" autofocus>
+				<input type="submit" value="', WT_I18N::translate('Filter'), '">
+			</form>
+		</div>
+	';
 }
 
 // Show fam and hide the rest
 if ($type == "fam") {
-	echo '<div id="find-header">
-	<form name="filterfam" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="'.$callback.'">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="fam">
-	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
-	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
-	echo '">
-	<input type="submit" value="', WT_I18N::translate('Filter'), '">
-	</form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filterfam" method="get" onsubmit="return checknames(this);" action="find.php">
+				<input type="hidden" name="callback" value="'.$callback.'">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="fam">
+				<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
+				<input type="text" name="filter" value="';
+					if ($filter) echo $filter;
+					echo '">
+				<input type="submit" value="', WT_I18N::translate('Filter'), '">
+			</form>
+		</div>
+	';
 }
 
 // Show media and hide the rest
 if ($type == 'media') {
-	echo '<div id="find-header">
-	<form name="filtermedia" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="choose" value="', $choose, '">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="media">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', WT_I18N::translate('Media contains:'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
-	echo '">',
-	help_link('simple_filter'),
-	'<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
-	</p></form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filtermedia" method="get" onsubmit="return checknames(this);" action="find.php">
+				<input type="hidden" name="choose" value="', $choose, '">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="media">
+				<input type="hidden" name="callback" value="', $callback, '">
+				<input type="hidden" name="subclick">
+				<span>', WT_I18N::translate('Media contains:'), '</span>
+				<input type="text" name="filter" value="';
+					if ($filter) echo $filter;
+				echo '">',
+				help_link('simple_filter'), '
+					<p>
+						<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+						<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
+					</p>
+			</form>
+		</div>
+	';
 }
 
 // Show place and hide the rest
 if ($type == "place") {
-	echo '<div id="find-header">
-	<form name="filterplace" method="get"  onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="place">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', WT_I18N::translate('Place contains:'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
-	echo '">
-	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
-	</p></form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filterplace" method="get"  onsubmit="return checknames(this);" action="find.php">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="place">
+				<input type="hidden" name="callback" value="', $callback, '">
+				<input type="hidden" name="subclick">
+				<span>', WT_I18N::translate('Place contains:'), '</span>
+				<input type="text" name="filter" value="';
+					if ($filter) echo $filter;
+				echo '">
+				<p>
+					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+				</p>
+			</form>
+		</div>
+	';
 }
 
 // Show repo and hide the rest
 if ($type == "repo") {
-	echo '<div id="find-header">
-	<form name="filterrepo" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="repo">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', WT_I18N::translate('Repository contains:'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
-	echo '">
-	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
-	</td></tr></table>
-	</p></form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filterrepo" method="get" onsubmit="return checknames(this);" action="find.php">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="repo">
+				<input type="hidden" name="callback" value="', $callback, '">
+				<input type="hidden" name="subclick">
+				<span>', WT_I18N::translate('Repository contains:'), '</span>
+				<input type="text" name="filter" value="';
+					if ($filter) echo $filter;
+				echo '">
+				<p>
+					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+				</p>
+			</form>
+		</div>
+	';
 }
 
 // Show Shared Notes and hide the rest
 if ($type == "note") {
-	echo '<div id="find-header">
-	<form name="filternote" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="note">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', WT_I18N::translate('Shared Note contains:'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
-	echo '">
-	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
-	</p></form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filternote" method="get" onsubmit="return checknames(this);" action="find.php">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="note">
+				<input type="hidden" name="callback" value="', $callback, '">
+				<input type="hidden" name="subclick">
+				<span>', WT_I18N::translate('Shared Note contains:'), '</span>
+				<input type="text" name="filter" value="';
+					if ($filter) echo $filter;
+				echo '">
+				<p>
+					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+				</p>
+			</form>
+		</div>
+	';
 }
 
 // Show source and hide the rest
 if ($type == "source") {
-	echo '<div id="find-header">
-	<form name="filtersource" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="source">
-	<input type="hidden" name="callback" value="', $callback, '">
-	<input type="hidden" name="subclick">
-	<span>', WT_I18N::translate('Source contains:'), '</span>
-	<input type="text" name="filter" value="';
-	if ($filter) echo $filter;
-	echo '">
-	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
-	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
-	</p></form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filtersource" method="get" onsubmit="return checknames(this);" action="find.php">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="source">
+				<input type="hidden" name="callback" value="', $callback, '">
+				<input type="hidden" name="subclick">
+				<span>', WT_I18N::translate('Source contains:'), '</span>
+				<input type="text" name="filter" value="';
+					if ($filter) echo $filter;
+				echo '">
+				<p>
+					<input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+					<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+				</p>
+			</form>
+		</div>
+	';
 }
 
 // Show specialchar and hide the rest
 if ($type == 'specialchar') {
-	echo '<div id="find-header">
-	<form name="filterspecialchar" method="get" action="find.php">
-	<input type="hidden" name="action" value="filter">
-	<input type="hidden" name="type" value="specialchar">
-	<input type="hidden" name="callback" value="'.$callback.'">
-	<p><select id="language_filter" name="language_filter" onchange="submit();">
-	<option value="">', WT_I18N::translate('Change language'), '</option>';
-	$language_options = '';
-	foreach ($specialchar_languages as $key=>$value) {
-		$language_options.= '<option value="'.$key.'"';
-		if ($key==$language_filter) {
-			$language_options.=' selected="selected"';
-		}
-		$language_options.='>'.$value.'</option>';
-	}
-	echo $language_options,
-	'</select>
-	</p></form></div>';
+	echo '
+		<div id="find-header">
+			<form name="filterspecialchar" method="get" action="find.php">
+				<input type="hidden" name="action" value="filter">
+				<input type="hidden" name="type" value="specialchar">
+				<input type="hidden" name="callback" value="'.$callback.'">
+				<p>
+					<select id="language_filter" name="language_filter" onchange="submit();">
+						<option value="">', WT_I18N::translate('Change language'), '</option>';
+							$language_options = '';
+							foreach ($specialchar_languages as $key=>$value) {
+								$language_options.= '<option value="'.$key.'"';
+								if ($key==$language_filter) {
+									$language_options.=' selected="selected"';
+								}
+								$language_options.='>'.$value.'
+							</option>';
+							}
+						echo $language_options,
+					'</select>
+				</p>
+			</form>
+		</div>
+	';
 }
 
 // Show facts

@@ -199,15 +199,15 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 		/* Set width */
 		if (WT_USER_CAN_EDIT) {
-			$fam_width = '70%';
+			$fam_width = '65';
 		} else {
-			$fam_width = '100%';
+			$fam_width = '100';
 		}
 
 		$indifacts = $this->record->getFacts();
 		if ($indifacts) {
 			echo '
-				<div style="display:inline-block;width:', $fam_width, ';">
+				<div style="display:inline-block;width:', $fam_width, '%;">
 					<table style="width:100%;">';
 					sort_facts($indifacts);
 					foreach ($indifacts as $fact) {
@@ -221,7 +221,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		}
 
 		if (WT_USER_CAN_EDIT) {
-			echo '<div style="display:inline-block;width:30%;vertical-align:top;"><table style="width:100%;">';
+			echo '<div style="display:inline-block;width:', 100 - $fam_width, '%;vertical-align:top;"><table style="width:100%;">';
 			echo '<tr><th class="descriptionbox" colspan="2">', WT_I18N::translate('Add new family information'), '</th></tr>';
 			print_add_new_fact2($this->record->getXref(), $indifacts, 'FAM');
 
