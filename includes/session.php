@@ -32,9 +32,8 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'Kiwitrees');
-define('WT_VERSION',         '3.2.2');
-define('WT_VERSION_RELEASE', ''); // “dev”, “beta”, “rc1”, “”, etc.
-define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
+define('WT_VERSION',         '3.2.3');
+define('WT_VERSION_TEXT',    trim(WT_VERSION));
 
 // External URLs
 define('WT_WEBTREES_URL',    'http://kiwitrees.net/');
