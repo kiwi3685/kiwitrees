@@ -129,7 +129,7 @@ if (WT_USER_IS_ADMIN && $old_files_found) {
 	echo
 		'<h2><span class="warning">', WT_I18N::translate('Old files found'), '</span></h2>',
 		'<div>',
-		'<p>', WT_I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'), '</p>',
+		'<p>', WT_I18N::translate('Files have been found from a previous version of kiwitrees.  Old files can sometimes be a security risk.  You should delete them.'), '</p>',
 		'<ul>';
 		foreach (old_paths() as $path) {
 			if (file_exists($path)) {

@@ -5,7 +5,7 @@
 // It also handles the internal mail messages and news/journal.
 // customizations.  Assumes that a database connection has already been established.
 //
-// You can extend webtrees to work with other systems by implementing the functions in this file.
+// You can extend kiwitrees to work with other systems by implementing the functions in this file.
 // Other possible options are to use LDAP for authentication.
 //
 // Kiwitrees: Web based Family History software

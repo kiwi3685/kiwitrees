@@ -1,7 +1,7 @@
 <?php
 // Update the database schema from version 11 to 12
 // - delete the wt_name.n_list column; it has never been used
-// - a bug in webtrees 1.1.2 caused the wt_name.n_full column
+// - an old pre-kiwitrees bug caused the wt_name.n_full column
 // to include slashes around the surname.  These are unnecessary,
 // and cause problems when we try to match the name from the
 // gedcom with the name from the table.
@@ -47,4 +47,3 @@ try {
 
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);
-

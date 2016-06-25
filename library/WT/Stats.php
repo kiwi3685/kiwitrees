@@ -3573,7 +3573,7 @@ class WT_Stats {
 // Tools                                                                     //
 ///////////////////////////////////////////////////////////////////////////////
 
-	// Older versions of webtrees allowed access to all constants and globals.
+	// Older versions allowed access to all constants and globals.
 	// Newer version just allow access to these values:
 	public static function WT_VERSION()      { return WT_VERSION; }
 	public static function WT_VERSION_TEXT() { return WT_VERSION_TEXT; }
@@ -3669,7 +3669,7 @@ class WT_Stats {
 		return $rows;
 	}
 
-	// These functions provide access to additional non-stats features of webtrees
+	// These functions provide access to additional non-stats features
 	// for use in the HTML block.
 
 	static function _getFavorites($isged=true) {

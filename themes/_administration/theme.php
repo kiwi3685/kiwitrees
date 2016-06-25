@@ -1,12 +1,14 @@
 <?php
 // Administration theme
 //
-// kiwitrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Kiwitrees: Web based Family History software
+// Copyright (C) 2016 kiwitrees.net
 //
-// Derived from PhpGedView and webtrees
-// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
-// Copyright (C) 2010 to 2013  webtrees Development Team.  All rights reserved.
+// Derived from webtrees
+// Copyright (C) 2012 webtrees development team
+//
+// Derived from PhpGedView
+// Copyright (c) 2009-2010 Greg Roach
 //
 // This is free software;you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

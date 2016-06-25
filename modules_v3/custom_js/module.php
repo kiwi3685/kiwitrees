@@ -37,7 +37,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Allows you to easily add Custom JavaScript to your webtrees site.');
+		return WT_I18N::translate('Allows you to easily add Custom JavaScript to your kiwitrees site.');
 	}
 
 	// Implement WT_Module_Menu

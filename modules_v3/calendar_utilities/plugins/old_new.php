@@ -1,14 +1,8 @@
 <?php
 /*
  * Plugin for calendar_utilities module
- * 
+ *
  * Copyright (C) 2013 Nigel Osborne and kiwtrees.net. All rights reserved.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2013 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,7 +51,7 @@ $html.='
 		<div id="acknowledgement">
 			<p>This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
 			<p>
-				His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents will need to follow 
+				His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents will need to follow
 				<i title="Help with English calendar" onclick="modalNotes(\''.$help1.'\', \''.WT_I18N::translate('Help with English calendar').'\')">this link </i>
 				if they wish to date documents from this period.
 			<p>
@@ -65,14 +59,14 @@ $html.='
 			</p>
 		</div>
 ';
-// Part one - Old to New 
+// Part one - Old to New
 $html.='
 	<form name="Olddayofweek">
 		<h1>Convert Old Style Dates to New Style Dates</h1>
 		<div class="main">Enter the Old Style date in question:
-			<div class="secondary">Month: 
+			<div class="secondary">Month:
 				<select name="Month" size="1">';
-					for ($i=1; $i<13; ++$i) {						
+					for ($i=1; $i<13; ++$i) {
 						$html.='<option value="'. $i. '"';
 						if ($i==1) $html.=' selected ';
 						$html.='>'. $month_name[$i-1]. '</option>';
@@ -103,9 +97,9 @@ $html.='
 	<form name="Newdayofweek">
 		<h1>Convert New Style Dates to Old Style Dates</h1>
 		<div class="main">Enter the New Style date in question:
-			<div class="secondary">Month: 
+			<div class="secondary">Month:
 				<select name="Month" size="1">';
-					for ($i=1; $i<13; ++$i) {						
+					for ($i=1; $i<13; ++$i) {
 						$html.='<option value="'. $i. '"';
 						if ($i==1) $html.=' selected ';
 						$html.='>'. $month_name[$i-1]. '</option>';
@@ -135,12 +129,12 @@ $html.='</div>';
 ?>
 <!-- SCRIPTS -->
  <script><!--
- 
+
 	function OldDayOfWeek() {
 		var Month=parseInt(document.Olddayofweek.Month.value)
 		var Day=parseInt(document.Olddayofweek.Day.value)
 		var Year=parseInt(document.Olddayofweek.year.value)
-		 
+
 		if (isNaN(Year)) {
 				alert("You must enter a year.")
 				return
@@ -153,8 +147,8 @@ $html.='</div>';
 		if (Month ==6) {if (Day>30) {alert("June has only 30 days. I'll proceed, assuming June 31st to be the same as July 1st.")}}
 		if (Month ==9) {if (Day>30) {alert("September has only 30 days. I'll proceed, assuming September 31st to be the same as August 1st.")}}
 		if (Month ==11) {if (Day>30) {alert("November has only 30 days. I'll proceed, assuming November 31st to be the same as December 1st.")}}
-		if (Month ==2) {	
-			if (Day>28){	
+		if (Month ==2) {
+			if (Day>28){
 				if (Day==29){
 					if (Year%4 !=0) {
 						alert(Year + " was not a leap year. I'll proceed, assuming February 29th to mean March 1st.")
@@ -162,7 +156,7 @@ $html.='</div>';
 				}
 				else {alert("February never has more than 29 days. I'll proceed, assuming you mean early March.")}
 			}
-		} 
+		}
 
 		var OldYear = Year
 		var OldMonth = Month
@@ -172,12 +166,12 @@ $html.='</div>';
 		var COR = parseInt((OldYear/100) - 16)
 		if (COR > 0) {COR = COR - parseInt((OldYear/400) -4)}
 		if (COR > 0) {Day = Day + COR}
-		 
+
 		if (Day > 31) {
 			if (Month == 2) {
 				if ( (OldYear/4) - parseInt(OldYear/4) < 0.1 ) {
-					if ((OldYear/100 - parseInt(OldYear/100)) == 0) {Day = Day - 28} 
-					else {Day = Day - 29}		
+					if ((OldYear/100 - parseInt(OldYear/100)) == 0) {Day = Day - 28}
+					else {Day = Day - 29}
 				}
 			else {Day = Day - 28}
 			}
@@ -202,8 +196,8 @@ $html.='</div>';
 					if ((OldYear/100 - parseInt(OldYear/100)) == 0) {
 						Day = Day - 28
 						Month = Month + 1
-					} 
-					else {Day = Day - 29}		
+					}
+					else {Day = Day - 29}
 				}
 			else {Day = Day - 28
 				Month = Month + 1
@@ -222,28 +216,28 @@ $html.='</div>';
 				Month = Month + 1
 			}
 
-		}	
+		}
 
 		if (Day > 28) {
 			if (Month == 2) {
 				if ( (OldYear/4) - parseInt(OldYear/4) < 0.1 ) {
-					if ((OldYear/100 - parseInt(OldYear/100)) == 0) {Day = Day - 28} 
-					else {Day = Day - 29}		
+					if ((OldYear/100 - parseInt(OldYear/100)) == 0) {Day = Day - 28}
+					else {Day = Day - 29}
 				}
 			else {Day = Day - 28}
 			Month = (Month + 1)
 		if (Day == 0) {
 				Day = 29
 				Month = (Month - 1)
-				} 
+				}
 			}
-		}	
+		}
 
 		if (Month == 13) {
 			Month = 1
 			Year = (Year + 1)
 		}
-				
+
 		document.Olddayofweek.Weekdayoldstyle.value = OldMonth + "/" + OldDay + "/" + OldYear + " Old Style corresponds to " + Month + "/" + Day + "/" + Year + " New Style"
 	}
 
@@ -251,7 +245,7 @@ $html.='</div>';
 		var Month=parseInt(document.Newdayofweek.Month.value)
 		var Day=parseInt(document.Newdayofweek.Day.value)
 		var Year=parseInt(document.Newdayofweek.year.value)
-				 
+
 		if (isNaN(Year)) {
 				alert("You must enter a year.")
 				document.Olddayofweek.Weekdayoldstyle.value = " "
@@ -261,7 +255,7 @@ $html.='</div>';
 			if (Year < 325) {alert("This site is valid only for dates later than 325 A.D.");
 			document.Olddayofweek.Weekdayoldstyle.value = " "
 			return}
-			   if (Year < 1582 ) {alert(" Nobody used New Style dates before 1582."); 
+			   if (Year < 1582 ) {alert(" Nobody used New Style dates before 1582.");
 			document.Olddayofweek.Weekdayoldstyle.value = " "
 			return;}
 
@@ -272,8 +266,8 @@ $html.='</div>';
 		if (Month ==6) {if (Day>30) {alert("June has only 30 days. I'll proceed, assuming June 31st to be the same as July 1st.")}}
 		if (Month ==9) {if (Day>30) {alert("September has only 30 days. I'll proceed, assuming September 31st to be the same as August 1st.")}}
 		if (Month ==11) {if (Day>30) {alert("November has only 30 days. I'll proceed, assuming November 31st to be the same as December 1st.")}}
-		if (Month ==2) {	
-			if (Day>28){	
+		if (Month ==2) {
+			if (Day>28){
 				if (Day==29){
 					if (Year%4 !=0) {
 								alert(Year + " was not a leap year. I'll proceed, assuming February 29th to mean March 1st.")
@@ -281,13 +275,13 @@ $html.='</div>';
 				}
 				else {alert("February never has more than 29 days. I'll proceed, assuming you mean early March.")}
 			}
-		} 
+		}
 
 		var OldYear = Year
 		var OldMonth = Month
 		var OldDay = Day
 
-		 
+
 		Day = Day - 10
 		var COR = parseInt((OldYear/100) - 16)
 		if (COR > 0) {COR = COR - parseInt((OldYear/400) -4)}
@@ -300,8 +294,8 @@ $html.='</div>';
 				Year = (Year - 1)}
 			if (Month == 2) {
 				if ( (OldYear/4) - parseInt(OldYear/4) < 0.1 ) {
-					if ((OldYear/100 - parseInt(OldYear/100)) == 0) {Day = Day + 28} 
-					else {Day = Day + 29}		
+					if ((OldYear/100 - parseInt(OldYear/100)) == 0) {Day = Day + 28}
+					else {Day = Day + 29}
 				}
 			else {Day = Day + 28}
 			}

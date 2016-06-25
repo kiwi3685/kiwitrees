@@ -233,14 +233,14 @@ class WT_DB {
 		$need_to_delete_old_files=false;
 		$need_to_update_config_data=false;
 		$need_to_update_stored_procedures=false;
-		
+
 		// During installation, the current version is set to a special value of
 		// -1 (v1.2.5 to v1.2.7) or -2 (v1.3.0 onwards).  This indicates that the tables have
 		// been created, but that we still need to install/update configuration data
 		// and/or stored procedures.
 		switch ($current_version) {
 		case -1:
-			// Due to a bug in webtrees 1.2.5 - 1.2.7, the setup value of "-1"
+			// Due to a bug pre-kiwitrees, the setup value of "-1"
 			// wasn't being updated.
 			$current_version=12;
 			WT_Site::preference($schema_name, $current_version);

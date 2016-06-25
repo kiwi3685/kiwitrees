@@ -544,8 +544,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$data .= '</div>';
 			} else {
 				// Show that we do actually have sources for this data.
-				// Commented out for now, based on user feedback.
-				// http://webtrees.net/index.php/en/forum/3-help-for-beta-and-svn-versions/27002-source-media-privacy-issue
+				// Commented out for now, based on pre-kiwitrees user feedback.
 				//$data .= WT_Gedcom_Tag::getLabelValue('SOUR', WT_I18N::translate('yes'));
 			}
 		} else {

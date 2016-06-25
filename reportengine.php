@@ -1,7 +1,7 @@
 <?php
 // Report Engine
 //
-// Processes webtrees XML Reports and generates a report
+// Processes XML Reports and generates a report
 //
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2016 kiwitrees.net

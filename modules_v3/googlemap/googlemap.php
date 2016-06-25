@@ -1,5 +1,5 @@
 <?php
-// Google map module for webtrees
+// Google map
 //
 // Kiwitrees: Web based Family History software
 // Copyright (C) 2016 kiwitrees.net

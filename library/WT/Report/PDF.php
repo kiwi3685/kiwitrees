@@ -132,7 +132,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		header('Expires:');
 		header('Pragma:');
 		header('Cache-control:');
-		$this->pdf->Output('webtrees-'.uniqid().'.pdf', 'I');
+		$this->pdf->Output('kiwitrees-'.uniqid().'.pdf', 'I');
 	}
 
 	/**

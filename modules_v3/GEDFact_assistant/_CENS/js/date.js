@@ -18,7 +18,7 @@ See documentation and examples at http://www.JavascriptToolbox.com/lib/date/
 */
 Date.$VERSION = 1.02;
 
-// Census Assistant Control module for webtrees
+// Census Assistant Control
 //
 // Census information about an individual
 //

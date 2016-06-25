@@ -762,7 +762,7 @@ function update_places($gid, $ged_id, $gedrec) {
 	static $sql_insert_places=null;
 	static $sql_select_places=null;
 	if (!$sql_insert_placelinks) {
-		// Use INSERT IGNORE as a (temporary) fix for https://bugs.launchpad.net/webtrees/+bug/582226
+		// Use INSERT IGNORE as a (temporary) fix
 		// It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
 		// Of course, there almost certainly are such places .....
 		// We need a better solution that attaches multiple names to single places

@@ -93,7 +93,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	if ($useTTF) {
 		// imagettftext is available, make sure the requested font exists
 		if (!isset($font)||($font=='')||!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
-			$font = 'DejaVuSans.ttf'; // this font ships with webtrees
+			$font = 'DejaVuSans.ttf'; // this font ships with kiwitrees
 			if (!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
 				$useTTF = false;
 			}
@@ -254,7 +254,7 @@ $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 
 $filetime = $media->getFiletime($which);
 $filetimeHeader = gmdate("D, d M Y H:i:s", $filetime).' GMT';
 $expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
-if (safe_GET('cb')) $expireOffset = $expireOffset * 7; // if cb parameter was sent, cache for 7 days 
+if (safe_GET('cb')) $expireOffset = $expireOffset * 7; // if cb parameter was sent, cache for 7 days
 $expireHeader = gmdate("D, d M Y H:i:s", WT_TIMESTAMP + $expireOffset) . " GMT";
 
 $type = isImageTypeSupported($imgsize['ext']);

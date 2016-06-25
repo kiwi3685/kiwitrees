@@ -71,7 +71,7 @@ case 'gallery_theme':
 	'<br><br>'.
 	'The first is the standard kiwitrees theme (kiwitrees, clouds, colors, xenea etc). This controls the overall container for the gallery and the menu images in each of the kiwitrees themes. These are switched automatically when you change the main kiwitrees theme.'.
 	'<br><br>'.
-	'In addition, there is the Galleria theme that controls the actual image display area. This module includes three default themes for this, two supplied by Galleria (called "classic" and "azur"), and an alternative "simpl_galleria" one designed to compliment the colors of the blue-based themes such as webtrees, clouds and xenea. There are also other themes available <u>for purchase</u> from the Galleria website. Switch between the "Azur", "Classic" and "Simpl_galleria" by selecting them on the configuration page.'.
+	'In addition, there is the Galleria theme that controls the actual image display area. This module includes three default themes for this, two supplied by Galleria (called "classic" and "azur"), and an alternative "simpl_galleria" one designed to compliment the colors of the blue-based themes such as clouds and xenea. There are also other themes available <u>for purchase</u> from the Galleria website. Switch between the "Azur", "Classic" and "Simpl_galleria" by selecting them on the configuration page.'.
 	'<br><br>'.
 	'To add other Galleria themes, download them from their website (www.galleria.io/), and copy them to the /modules_v3/gallery/galleria/themes/ folder.'.
 	'<br>'.

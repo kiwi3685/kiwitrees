@@ -33,7 +33,7 @@ class ancestry_plugin extends research_base_plugin {
 			'it'		=> 'it',		// Italian
 			'sv'		=> 'se',		// Swedish
 			);
-		// ancestry supports Canada in English and French versions, too; but webtrees doesn't support these language versions
+		// ancestry supports Canada in English and French versions, too; but kiwitrees doesn't support these language versions
 		if (isset($domain[WT_LOCALE])) {
 			$ancestry_domain = $domain[WT_LOCALE];
 		} else {

@@ -1976,7 +1976,7 @@ function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Pers
 				case 'F': return WT_I18N::translate('great x%d grandmother', $up-1);
 				case 'U': return WT_I18N::translate('great x%d grandparent', $up-1);
 				}
-			case 'nn': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
+			case 'nn':
 			case 'nb':
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -2090,8 +2090,6 @@ function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Pers
 		case 'pl': // Source: Lukasz Wilenski
 			return cousin_name($up+$down+2, $sex2);
 		case 'it':
-			// Source: Michele Locati.  See italian_cousins_names.zip
-			// http://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
 			return cousin_name($up+$down-3, $sex2);
 		case 'es':
 			// Source: Wes Groleau.  See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html

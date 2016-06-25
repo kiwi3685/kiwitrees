@@ -1,8 +1,14 @@
 /*
  * Style for Admistration pages
  *
- * webtrees:Web based Family History software
- * Copyright (C) 2013 webtrees development team.
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2016 kiwitrees.net
+ *
+ * Derived from webtrees
+ * Copyright (C) 2012 webtrees development team
+ *
+ * Derived from PhpGedView
+ * Copyright (c) 2009-2010 Greg Roach
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -136,7 +142,7 @@ button {
 #links li:hover > ul {display:block;}
 #links .header_search {display:inline-block;}
 .ui-widget-content a.lang-active {color:#25a325;}
-.icon-kiwitrees {background:url('images/kiwi_webtrees_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px; position: absolute;}
+.icon-kiwitrees {background:url('images/kiwi_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px; position: absolute;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content, #content_container {min-height:700px; overflow: hidden;}

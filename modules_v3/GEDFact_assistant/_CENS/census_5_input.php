@@ -1,5 +1,5 @@
 <?php
-// Census Assistant Control module for webtrees
+// Census Assistant Control
 //
 // Census input table area
 //
