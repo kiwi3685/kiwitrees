@@ -102,12 +102,13 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 					displayLength: 20,
 					"aoColumns": [
 						/* 0-BIRT_DATE */  	{"bVisible": false},
-						/* 1-Name */		{"sClass": "nowrap"},
-						/* 2-DoB */			{"iDataSort": 0, "sClass": "nowrap"},
-						/* 3-Date */ 		{"sClass": "nowrap"},
-						/* 4-Place */ 		{},
-						/* 5-Type */ 		{},
-						/* 6-Details */ 	{}
+						/* 1-OTHER_DATE */ 	{"bVisible": false},
+						/* 2-Name */		{"sClass": "nowrap"},
+						/* 3-DoB */			{"iDataSort": 0, "sClass": "nowrap"},
+						/* 4-Date */ 		{"iDataSort": 1, "sClass": "nowrap"},
+						/* 5-Place */ 		{},
+						/* 6-Type */ 		{},
+						/* 7-Details */ 	{}
 					]
 				});
 			jQuery("#output").css("visibility", "visible");
@@ -257,6 +258,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 						<thead>
 							<tr>
 								<th>BIRT_DATE</th><!-- hidden cell -->
+								<th>OTHER_DATE</th><!-- hidden cell -->
 								<th><?php echo WT_I18N::translate('Name'); ?></th>
 								<th><?php echo WT_Gedcom_Tag::getLabel('BIRT:DATE'); ?></th>
 								<th><?php echo WT_I18N::translate('Date'); ?></th>
@@ -275,10 +277,19 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 									foreach ($indifacts as $item) {
 										if ($item->getTag() == $fact) {
 											$filtered_facts = filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $type);
-											if ($filtered_facts) { ?>
+											if ($filtered_facts) {
+												$factrec = $item->getGedcomRecord();
+												if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
+													$date = new WT_Date($match[1]);
+												} else {
+													$date = new WT_Date('');
+												} ?>
 												<tr>
-													<td><!-- hidden cell -->
+													<td><!-- hidden cell 1 - birth date -->
 														<?php echo $person->getBirthDate()->JD(); ?>
+													</td>
+													<td><!-- hidden cell 2 - other date -->
+														<?php echo $date->JD(); ?>
 													</td>
 													<td>
 														<a href="<?php echo $person->getHtmlUrl(); ?>" target="_blank"><?php echo $person->getFullName(); ?></a>
