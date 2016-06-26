@@ -99,8 +99,8 @@ echo '
 
 if ($view!='simple') { // Use "simple" headers for popup windows
 	echo
-	'<div id="header"> . '
-		WT_TREE_TITLE . WT_TREE_SUBTITLE . '
+	'<div id="header">' ,
+		WT_TREE_TITLE , WT_TREE_SUBTITLE, '
 		<div class="hsearch">
 			<form action="search.php" method="post">
 				<input type="hidden" name="action" value="general">
