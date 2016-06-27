@@ -444,9 +444,9 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 
 .tabs_table {max-width:98%;}
 
-.facts_table {padding:0; width:100%; text-transform: capitalize;}
+.facts_table {padding:0; width:100%;}
+.facts_label {border:1px solid #999999;border-radius:3px;padding:4px;text-align:center;width:20%; text-transform: capitalize;}
 .facts_label .submenu a {background:#fff;color:#000;}
-.facts_label {border:1px solid #999999;border-radius:3px;padding:4px;text-align:center;width:20%;}
 .facts_label03 {border-radius:3px;font-weight:700;padding:4px;text-align:center;}
 .facts_value {border:1pt solid #999999;border-radius:3px;padding:4px;}
 .facts_value02 {background:#fff;border:1pt solid #dddddd;padding:5px;}
