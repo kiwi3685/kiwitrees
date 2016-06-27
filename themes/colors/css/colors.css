@@ -32,17 +32,15 @@ body {
     font:12px tahoma, arial, helvetica, sans-serif;
     margin: 0;
     /* flex box settings */
-	height: 100vh;
-	min-height: 100vh;
+    height: 100vh;
+    min-height: 100vh;
     display: -ms-flexbox;
-    display: -webkit-flex;
+    display: -webkit-box;
     display: flex;
     -ms-flex-direction: column;
-    -webkit-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
     flex-direction: column;
-}
-html, body {
-    height:100%;/* needed for flexbox in IE11 */
 }
 
 legend,.details_label {font-weight:700;}
@@ -59,7 +57,6 @@ img {border:none;}
 img.block {height:25px;}
 a.gallery img {border-radius:5px;}
 
-
 fieldset {margin:8px 8px 4px;padding:30px;text-align:left;}
 fieldset ol, fieldset li {margin:2px 0 0 5px;}
 [dir=rtl] fieldset {text-align:right;}
@@ -67,7 +64,6 @@ fieldset ol, fieldset li {margin:2px 0 0 5px;}
 
 dt {float:left;font-weight:bold;margin-right:10px;clear:both;}
 [dir=rtl] dt {float:right;margin-right:auto;margin-left:10px;}
-
 
 input:required:valid, textarea:required:valid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAONJREFUeNpi/P//PwMlgImBQjDwBrCgCzDOF2Zg+Adk/AOGDRvQfHZGoDWMxgyMDMb/Q1/NIt0F/xk8gIbNZPj7P41YL4AUGsM1//rfkuyeYMzw8z9xXgBqgNm0nuHnv0D/IH/juavmngV6oYY4F3z7y2DqY2oMpANB9MYl684yfP9Xw3Dzzw7sXgQmJGTM0MbjwdDKc0b2vt5/EM2QwunBoMyCVS1YPYYAMOwZ7FmiGLLYzjBYsSQD+QpALAjErNgMYERPyoyMjMxAih+IOYD4LxD/hOJfQLV/MaJ9NC8wAAQYAPbPfH2KJKx/AAAAAElFTkSuQmCC);background-position:right top; background-repeat:no-repeat;}
 input:required:invalid, textarea:required:invalid {background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=);background-position:right top; background-repeat:no-repeat;}
@@ -81,14 +77,14 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 [dir='rtl'] .faq_link {float: left;}
 
 /* Title Line    */
-#header {height:49px;}
+#header {min-height:49px;}
 #header span.treetitle {float:left;font-size:24px; margin:16px 12px; 0}
 [dir=rtl] #header span.treetitle {float:right;}
 #header span.subtitle {float: left; font-style: italic; font-weight: 600; margin: 30px 0 0;}
 [dir=rtl] #header span.subtitle {float:right;}
 
 /* Options Menu  */
-.makeMenu {float:right;margin:10px;}
+.makeMenu {float:right; margin:10px;}
 .makeMenu ul {border-radius:5px; max-height: 400px; min-width: 140px; overflow-y: auto; overflow-x: hidden;}
 .makeMenu li {display:inline;position:relative;white-space:nowrap;z-index:100;}
 .makeMenu li:before {content:" | ";}
@@ -112,6 +108,7 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 
 /* Menu setup*/
+#topMenu  {min-height: 48px;}
 #topMenu #nav-select {display: none;}
 #main-menu {display: inline-block;width:100%;margin:0;padding:0;height:48px;}
 #main-menu ul {	max-height: 400px; min-width: 140px; overflow-y: auto; overflow-x: hidden; padding:0;margin:0;border:1px solid #dddddd;border-radius:5px;list-style-type:none;position:absolute;visibility:hidden;opacity:0;background:#fff;z-index:110;}
@@ -278,10 +275,13 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 
 #content {
     clear:both;
+    position: relative;
     padding:10px 10px 0 10px;
     flex: 1 0 auto;
     -ms-flex: 1;
-    -webkit-flex: 1 0 auto;;
+    -webkit-flex: 1 0 auto;
+    top: auto;
+
 }
 #content .center a {font-size:13px;}
 #content .center a.warning,#login-box span.error,#calendar-page span.error {color:#ff5500;}
@@ -3012,17 +3012,33 @@ textarea#NOTE {
        display:none;
    }
    #header {
-       height: auto;
+       min-height: 120px;
        text-align: center;
    }
-   #header .title {
-       position: relative;
-       text-align: center;
-   }
+    #header span.treetitle {
+        display: block;
+        text-align: center;
+        float:none;
+        margin: auto;
+        width: 100%;
+    }
+    #header span.subtitle {
+        display: block;
+        float: none;
+        margin: 5px auto;
+    }
    #header #extra-menu, #header .header_search {
-       float:none;
+        display: block;
+        float: none;
+        width: 100%;
+        margin: 10px auto;
    }
-
+   .makeMenu {
+    display: block;
+    float: none;
+    width: 100%;
+    margin: auto;
+   }
    #content {
        top: auto;
    }
