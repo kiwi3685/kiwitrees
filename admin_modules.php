@@ -124,8 +124,8 @@ $controller
 				<thead>
 					<tr>
 					<th><?php echo WT_I18N::translate('Enabled'); ?></th>
-					<th width="120px"><?php echo WT_I18N::translate('Module'); ?></th>
-					<th><?php echo WT_I18N::translate('Description'); ?></th>
+					<th style="width: 120px;"><?php echo WT_I18N::translate('Module'); ?></th>
+					<th style="max-width: 460px;"><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Block'); ?></th>
 					<th><?php echo WT_I18N::translate('Chart'); ?></th>
 					<th><?php echo WT_I18N::translate('List'); ?></th>
