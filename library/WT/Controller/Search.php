@@ -543,7 +543,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 			}
 			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist && count($this->mystorieslist) == 1) {
 				$story = $this->mystorieslist[0];
-				$person = WT_Person::getInstance($story);
+				$person = WT_Person::getInstance($story['xref']);
 				if ($person->canDisplayName()) {
 					Zend_Session::writeClose();
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH. $person->getRawUrl() . '#stories');

@@ -74,7 +74,7 @@ class WT_GedcomRecord {
 		global $gedcom_record_cache, $GEDCOM;
 		static $pending_record_cache;
 
-		$is_pending=false; // Did this record come from a pending edit
+		$is_pending = false; // Did this record come from a pending edit
 
 		if (is_array($data)) {
 			$ged_id = $data['ged_id'];

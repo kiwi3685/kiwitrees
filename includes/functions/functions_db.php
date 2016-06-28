@@ -941,25 +941,32 @@ function search_stories($query, $geds, $match) {
 
 	foreach ($query as $q) {
 		$queryregex[]	= preg_quote(utf8_strtoupper($q), '/');
-		$querysql[]		= " setting_value LIKE " . WT_DB::quote("%{$q}%") . " COLLATE '" . WT_I18N::$collation . "' OR setting_name LIKE " . WT_DB::quote("%{$q}%") . " COLLATE '" . WT_I18N::$collation . "'";
-}
+		$querysql[]		= "setting_value LIKE " . WT_DB::quote("%{$q}%") . " COLLATE '" . WT_I18N::$collation . "'";
+	}
 
-    $sql ="
-        SELECT ##block.`block_id` AS block_id, `gedcom_id` AS ged_id
-         FROM ##block JOIN ##block_setting
-         ON ##block.`block_id` = ##block_setting.`block_id`
-		 WHERE (".implode(" {$match} ", $querysql).")
-         AND `module_name`='stories'
-         AND `gedcom_id` IN (" . implode(',', $geds) . ")
-         AND `setting_name` LIKE 'story_body'
+	$sql = "
+		SELECT ##block_setting.`setting_value` as xref, ##block.`block_id` AS block_id, ##block.`gedcom_id` AS ged_id
+		FROM ##block_setting
+		JOIN ##block ON ##block.`block_id` = ##block_setting.`block_id`
+		WHERE ##block_setting.`block_id` = (
+			SELECT ##block_setting.`block_id`
+			FROM ##block_setting
+			JOIN ##block ON ##block.`block_id` = ##block_setting.`block_id`
+			WHERE (
+				(`setting_name` = 'story_body' AND " . implode(" {$match} ", $querysql) . ")
+				OR
+				(`setting_name` = 'story_title' AND " . implode(" {$match} ", $querysql) . ")
+			)
+			AND ##block.`module_name` = 'stories'
+			AND ##block.`gedcom_id` IN (" . implode(',', $geds) . ")
+		)
+		AND ##block_setting.setting_name = 'xref'
 	";
 
 	// Group results by gedcom, to minimise switching between privacy files
 	$sql .=' ORDER BY ged_id';
-
 	$list     = array();
 	$stories  = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
-
 	return $stories;
 }
 
