@@ -64,8 +64,8 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		global $controller, $SEARCH_SPIDER;
-		$ged_id		= WT_GED_ID;
+		global $controller, $WT_REQUEST, $SEARCH_SPIDER;
+		$ged_id	= WT_GED_ID;
 
 		//-- main PAGES menu item
 		$contact_user_id	= get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
@@ -146,8 +146,8 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 			if (preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject.$body, $match)) {
 				$errors.=
 					'<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links.').'</p>'.
-					'<p class="ui-state-highlight">'./* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.'. $match[2], $match[1]).'</p>'.
-				AddToLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", IP="'.$WT_REQUEST->getClientIp().'", subject="'.$subject.'", body="'.$body.'"'. 'auth');
+					'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.” */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.'. $match[2], $match[1]).'</p>'.
+				AddToLog('Possible spam message from "'.$from_name . '"/"' . $from_email . '", IP="' . $WT_REQUEST->getClientIp() . '", subject="' . $subject.'", body="' . $body . '"' . 'auth');
 				$action='compose';
 			}
 			$from = $from_email;

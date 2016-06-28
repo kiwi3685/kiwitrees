@@ -91,19 +91,14 @@ class WT_MenuBar {
 
 	public static function getChartsMenu() {
 		global $SEARCH_SPIDER, $controller;
-
 		if ($SEARCH_SPIDER || !WT_GED_ID) {
 			return null;
 		}
-
 		$active_charts = WT_Module::getActiveCharts();
-
 		if ($active_charts) {
 			$indi_xref = $controller->getSignificantIndividual()->getXref();
 			$PEDIGREE_ROOT_ID = get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
-
 			$menu = new WT_Menu(WT_I18N::translate('Charts'), '#', 'menu-chart');
-
 			uasort($active_charts, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 			foreach ($active_charts as $chart) {
 				foreach ($chart->getChartMenus() as $submenu) {
@@ -116,16 +111,13 @@ class WT_MenuBar {
 
 	public static function getListsMenu() {
 		global $SEARCH_SPIDER, $controller;
-
 		if ($SEARCH_SPIDER || !WT_GED_ID) {
 			return null;
 		}
-
 		$active_lists = WT_Module::getActiveLists();
 
 		if ($active_lists) {
 			$menu = new WT_Menu(WT_I18N::translate('Lists'), '#', 'menu-list');
-
 			uasort($active_lists, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 			foreach ($active_lists as $list) {
 				foreach ($list->getListMenus() as $submenu) {
