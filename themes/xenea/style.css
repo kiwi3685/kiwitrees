@@ -63,9 +63,9 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 /* Header Layout */
 #header { height:40px; background:#003399; background-image:url(images/cabeza.png); background-position:left top;}
-.treetitle {display:block; float:left; margin:6px 11px; font-size:24px;}
-.subtitle {float:left; font-style: italic; font-weight: 600; margin:19px 10px;}
-.hsearch {display:block;float:right;margin-top:10px;margin-right:5px;}
+#header .treetitle {display:block; float:left; margin:6px 11px; font-size:24px;}
+#header .subtitle {float:left; font-style: italic; font-weight: 600; margin:19px 10px;}
+#header .hsearch {display:block;float:right;margin-top:10px;margin-right:5px;}
 
 /* LTR to RTL Translation */
 [dir=rtl] #header {background-position:right top;background-image:url(images/cabeza_rtl.png);}
