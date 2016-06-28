@@ -72,10 +72,46 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 
 	// Implement class WT_Module_Resources
 	public function show() {
-		global $controller;
+		global $controller, $level2_tags;
 		require WT_ROOT.'includes/functions/functions_resource.php';
 
 		$table_id = 'ID'.(int)(microtime()*1000000); // create a unique ID
+
+		//-- set list of all configured individual tags (level 1)
+		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$translated_indifacts	= array();
+		foreach ($indifacts as $addfact) {
+			$translated_indifacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
+		}
+		uasort($translated_indifacts, 'factsort');
+
+		// set list of facts that have level 2 TYPE subtag
+		$typefacts = array();
+		foreach ($level2_tags as $key=>$value) {
+			$key == 'TYPE' ? $typefacts[] = $value : '';
+		}
+		$typefacts = array_values(array_intersect(call_user_func_array('array_merge', $typefacts), $indifacts));
+
+		//-- variables
+		$fact		= WT_Filter::post('fact');
+		$year_from	= WT_Filter::post('year_from');
+		$year_to	= WT_Filter::post('year_to');
+		$place		= WT_Filter::post('place');
+		$type		= WT_Filter::post('type');
+		$detail		= WT_Filter::post('detail');
+		$go			= WT_Filter::post('go');
+		$reset		= WT_Filter::post('reset');
+
+		// reset all variables
+		if ($reset == 'reset') {
+			$fact		= '';
+			$year_from	= '';
+			$year_to	= '';
+			$place		= '';
+			$type		= '';
+			$detail		= '';
+			$go			= 0;
+		}
 
 		$controller = new WT_Controller_Individual();
 		$controller
@@ -116,10 +152,10 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 
 			var form = document.getElementById("resource"),
 			fact = form.elements.fact;
-
+			var typefacts = ' . json_encode($typefacts) . ';
 			fact.onchange = function () {
 			    var form = this.form;
-			    if ((this.value == "EVEN") || (this.value == "FACT") ) {
+				if (jQuery.inArray(this.value, typefacts) !== -1) {
 			        form.elements.type.disabled = false;
 					jQuery("#disable_type").css("opacity", "initial");
 			    } else {
@@ -129,35 +165,6 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 			};
 			fact.onchange();
 		');
-
-		//-- set list of all configured individual tags (level 1)
-		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-		$translated_indifacts	= array();
-		foreach ($indifacts as $addfact) {
-			$translated_indifacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
-		}
-		uasort($translated_indifacts, 'factsort');
-
-		//-- variables
-		$fact		= WT_Filter::post('fact');
-		$year_from	= WT_Filter::post('year_from');
-		$year_to	= WT_Filter::post('year_to');
-		$place		= WT_Filter::post('place');
-		$type		= WT_Filter::post('type');
-		$detail		= WT_Filter::post('detail');
-		$go			= WT_Filter::post('go');
-		$reset		= WT_Filter::post('reset');
-
-		// reset all variables
-		if ($reset == 'reset') {
-			$fact		= '';
-			$year_from	= '';
-			$year_to	= '';
-			$place		= '';
-			$type		= '';
-			$detail		= '';
-			$go			= 0;
-		}
 		?>
 
 		<div id="resource-page" class="fact_report">

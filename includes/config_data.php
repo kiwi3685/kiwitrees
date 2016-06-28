@@ -35,13 +35,13 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Unknown surname
-$UNKNOWN_NN=WT_I18N::translate_c('Unknown surname', '…');
+$UNKNOWN_NN = WT_I18N::translate_c('Unknown surname', '…');
 
 // Unknown given name
-$UNKNOWN_PN=WT_I18N::translate_c('Unknown given name', '…');
+$UNKNOWN_PN = WT_I18N::translate_c('Unknown given name', '…');
 
 // NPFX tags - name prefixes
-$NPFX_accept=array(
+$NPFX_accept = array(
 	'Adm',
 	'Amb',
 	'Brig',
@@ -80,7 +80,7 @@ $NPFX_accept=array(
 );
 
 // SPFX tags - surname prefixes
-$SPFX_accept=array(
+$SPFX_accept = array(
 	'al',
 	'da',
 	'de',
@@ -96,7 +96,7 @@ $SPFX_accept=array(
 );
 
 // NSFX tags - name suffixes
-$NSFX_accept=array(
+$NSFX_accept = array(
 	'I',
 	'II',
 	'III',
@@ -112,7 +112,7 @@ $NSFX_accept=array(
 );
 
 // FILE:FORM tags - file formats
-$FILE_FORM_accept=array(
+$FILE_FORM_accept = array(
 	'avi',
 	'bmp',
 	'gif',
@@ -126,7 +126,7 @@ $FILE_FORM_accept=array(
 );
 
 // Fact tags (as opposed to event tags), that don't normally have a value
-$emptyfacts=array(
+$emptyfacts = array(
 	'ADOP',
 	'ANUL',
 	'BAPL',
@@ -176,7 +176,7 @@ $emptyfacts=array(
 );
 
 // Tags that don't require a PLAC subtag
-$nonplacfacts=array(
+$nonplacfacts = array(
 	'ENDL',
 	'NCHI',
 	'SLGC',
@@ -184,7 +184,7 @@ $nonplacfacts=array(
 );
 
 // Tags that don't require a DATE subtag
-$nondatefacts=array(
+$nondatefacts = array(
 	'ABBR',
 	'ADDR',
 	'AFN',
@@ -212,28 +212,18 @@ $nondatefacts=array(
 	'_EMAIL',
 );
 
-// Tags that require a TYPE subtag
-$typefacts=array(
-);
-
-// Tags that require a DATE:TIME as well as a DATE
-$date_and_time=array(
-	'BIRT',
-	'DEAT',
-);
-
 // Level 2 tags that apply to specific Level 1 tags
 // Tags are applied in the order they appear here.
-$level2_tags=array(
-	'_HEB'=>array(
+$level2_tags = array(
+	'_HEB' =>array(
 		'NAME',
 		'TITL',
 	),
-	'ROMN'=>array(
+	'ROMN' =>array(
 		'NAME',
 		'TITL',
 	),
-	'TYPE'=>array(
+	'TYPE' =>array(
 		'EVEN',
 		'FACT',
 		'GRAD',
@@ -242,7 +232,7 @@ $level2_tags=array(
 		'ORDN',
 		'SSN',
 	),
-	'AGNC'=>array(
+	'AGNC' =>array(
 		'EDUC',
 		'GRAD',
 		'OCCU',
@@ -250,17 +240,17 @@ $level2_tags=array(
 		'RETI',
 		'TITL',
 	),
-	'CALN'=>array(
+	'CALN' =>array(
 		'REPO',
 	),
-//	'CEME'=>array( // CEME is NOT a valid 5.5.1 tag
+//	'CEME' =>array( // CEME is NOT a valid 5.5.1 tag
 //		'BURI',
 //	),
-	'RELA'=>array(
+	'RELA' =>array(
 		'ASSO',
 		'_ASSO',
 	),
-	'DATE'=>array(
+	'DATE' =>array(
 		'ADOP',
 		'ANUL',
 		'BAPL',
@@ -308,18 +298,18 @@ $level2_tags=array(
 		'WILL',
 		'_TODO',
 	),
-	'AGE'=>array(
+	'AGE' =>array(
 		'CENS',
 		'DEAT',
 	),
-	'TEMP'=>array(
+	'TEMP' =>array(
 		'BAPL',
 		'CONL',
 		'ENDL',
 		'SLGC',
 		'SLGS',
 	),
-	'PLAC'=>array(
+	'PLAC' =>array(
 		'ADOP',
 		'ANUL',
 		'BAPL',
@@ -365,14 +355,14 @@ $level2_tags=array(
 		'TITL',
 		'WILL',
 	),
-	'STAT'=>array(
+	'STAT' =>array(
 		'BAPL',
 		'CONL',
 		'ENDL',
 		'SLGC',
 		'SLGS',
 	),
-	'ADDR'=>array(
+	'ADDR' =>array(
 		'BAPM',
 		'BIRT',
 		'BURI',
@@ -391,48 +381,48 @@ $level2_tags=array(
 		'PROP',
 		'RESI',
 	),
-	'CAUS'=>array(
+	'CAUS' =>array(
 		'DEAT',
 	),
-	'PHON'=>array(
+	'PHON' =>array(
 		'OCCU',
 		'RESI',
 	),
-	'FAX'=>array(
+	'FAX' =>array(
 		'OCCU',
 		'RESI',
 	),
-	'URL'=>array(
+	'URL' =>array(
 		'OCCU',
 		'RESI',
 	),
-	'EMAIL'=>array(
+	'EMAIL' =>array(
 		'OCCU',
 		'RESI',
 	),
-	'HUSB'=>array(
+	'HUSB' =>array(
 		'MARR',
 	),
-	'WIFE'=>array(
+	'WIFE' =>array(
 		'MARR',
 	),
-	'FAMC'=>array(
+	'FAMC' =>array(
 		'ADOP',
 		'SLGC',
 	),
-	'FILE'=>array(
+	'FILE' =>array(
 		'OBJE',
 	),
-	'_PRIM'=>array(
+	'_PRIM' =>array(
 		'OBJE',
 	),
-	'EVEN'=>array(
+	'EVEN' =>array(
 		'DATA',
 	),
-	'_WT_USER'=>array(
+	'_WT_USER' =>array(
 		'_TODO',
 	),
-	'RELI'=>array(
+	'RELI' =>array(
 		//'CHR',
 		//'CHRA',
 		//'BAPM',
@@ -442,5 +432,5 @@ $level2_tags=array(
 );
 
 // The order of name parts, when generating names
-$STANDARD_NAME_FACTS=array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
-$REVERSED_NAME_FACTS=array('NAME', 'NPFX', 'SPFX', 'SURN', 'GIVN', 'NSFX');
+$STANDARD_NAME_FACTS = array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
+$REVERSED_NAME_FACTS = array('NAME', 'NPFX', 'SPFX', 'SURN', 'GIVN', 'NSFX');
