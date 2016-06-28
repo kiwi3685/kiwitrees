@@ -27,7 +27,7 @@ class sampllink_plugin extends research_base_plugin { // THIS NAME MUST MATCH EX
 	}
 
 	static function encode_plus() {
-		return false; // NORAMLLY LEFT AS false. USE true IF SITE REQUIRES ENCODING '+' BETWEEN NAMES INSTEAD OF '%20'
+		return false; // NORMALLY LEFT AS false. USE true IF SITE REQUIRES ENCODING '+' BETWEEN NAMES INSTEAD OF '%20'
 	}
 
 }
