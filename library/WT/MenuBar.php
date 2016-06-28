@@ -117,24 +117,19 @@ class WT_MenuBar {
 	public static function getListsMenu() {
 		global $SEARCH_SPIDER, $controller;
 
+		if ($SEARCH_SPIDER || !WT_GED_ID) {
+			return null;
+		}
+
 		$active_lists = WT_Module::getActiveLists();
 
 		if ($active_lists) {
-			// The top level menu shows the individual list
 			$menu = new WT_Menu(WT_I18N::translate('Lists'), '#', 'menu-list');
-
-			// Do not show empty lists
-			$row = WT_DB::prepare(
-				"SELECT SQL_CACHE".
-				" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour,".
-				" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo,".
-				" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='NOTE') AS note,".
-				" EXISTS(SELECT 1 FROM `##media`   WHERE m_file=?                  ) AS obje"
-			)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
 			uasort($active_lists, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 			foreach ($active_lists as $list) {
 				foreach ($list->getListMenus() as $submenu) {
+
 					$menu->addSubmenu($submenu);
 				}
 			}
