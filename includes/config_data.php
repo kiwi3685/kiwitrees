@@ -212,6 +212,12 @@ $nondatefacts = array(
 	'_EMAIL',
 );
 
+// Tags that require a DATE:TIME as well as a DATE
+$date_and_time=array(
+	'BIRT',
+	'DEAT',
+);
+
 // Level 2 tags that apply to specific Level 1 tags
 // Tags are applied in the order they appear here.
 $level2_tags = array(
