@@ -36,7 +36,7 @@ switch ($type) {
 	case 'ASSO': // Associates of an individuals, whose name contains the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=
+		$rows =
 			WT_DB::prepare(
 				"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 				" FROM `##individuals`".
@@ -84,7 +84,7 @@ switch ($type) {
 	case 'CAUS': // Cause of death.
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=
+		$rows =
 			WT_DB::prepare(
 				"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 				" FROM `##individuals`".
@@ -108,7 +108,7 @@ switch ($type) {
 	case 'CEME': // Cemetery fields, that contain the search term
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=
+		$rows =
 			WT_DB::prepare(
 				"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 				" FROM `##individuals`".
@@ -161,11 +161,11 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$family = WT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
-				$marriage_year=$family->getMarriageYear();
+				$marriage_year = $family->getMarriageYear();
 				if ($marriage_year) {
-					$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
 				} else {
-					$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName());
 				}
 			}
 		}
@@ -189,7 +189,7 @@ switch ($type) {
 	case 'INDI': // Individuals, whose name contains the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=
+		$rows =
 			WT_DB::prepare(
 				"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 				" FROM `##individuals`".
@@ -214,9 +214,9 @@ switch ($type) {
 		$rows = get_NOTE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$note=WT_Note::getInstance($row);
+			$note = WT_Note::getInstance($row);
 			if ($note->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>$note->getFullName());
+				$data[] = array('value'=>$row['xref'], 'label'=>$note->getFullName());
 			}
 		}
 		echo json_encode($data);
@@ -228,9 +228,9 @@ switch ($type) {
 		$rows = get_OBJE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$media=WT_Media::getInstance($row);
+			$media = WT_Media::getInstance($row);
 			if ($media->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
+				$data[] = array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
 			}
 		}
 		echo json_encode($data);
@@ -239,7 +239,7 @@ switch ($type) {
 	case 'OCCU': // Occupation fields, that contain the search term
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=
+		$rows =
 			WT_DB::prepare(
 				"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 				" FROM `##individuals`".
@@ -264,11 +264,11 @@ switch ($type) {
 		// Do not filter by privacy.  Place names on their own do not identify individuals.
 		$data = array();
 		foreach (WT_Place::findPlaces($term, WT_GED_ID) as $place) {
-			$data[]=$place->getGedcomName();
+			$data[] = $place->getGedcomName();
 		}
 		if (!$data && get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')) {
 			// No place found?  Use an external gazetteer
-			$url=
+			$url =
 				"http://api.geonames.org/searchJSON".
 				"?name_startsWith=".urlencode($term).
 				"&lang=".WT_LOCALE.
@@ -320,9 +320,9 @@ switch ($type) {
 		$rows = get_REPO_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$repository=WT_Repository::getInstance($row);
+			$repository = WT_Repository::getInstance($row);
 			if ($repository->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+				$data[] = array('value'=>$row['xref'], 'label'=>$row['n_full']);
 			}
 		}
 		echo json_encode($data);
@@ -334,9 +334,9 @@ switch ($type) {
 		$rows = get_REPO_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$repository=WT_Repository::getInstance($row);
+			$repository = WT_Repository::getInstance($row);
 			if ($repository->canDisplayName()) {
-				$data[]=$row['n_full'];
+				$data[] = $row['n_full'];
 			}
 		}
 		echo json_encode($data);
@@ -348,9 +348,9 @@ switch ($type) {
 		$rows = get_SOUR_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$source=WT_Source::getInstance($row);
+			$source = WT_Source::getInstance($row);
 			if ($source->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+				$data[] = array('value'=>$row['xref'], 'label'=>$row['n_full']);
 			}
 		}
 		echo json_encode($data);
@@ -360,7 +360,7 @@ switch ($type) {
 		$data = array();
 		$sid  = WT_Filter::get('extra', WT_REGEX_XREF);
 		// Fetch all data, regardless of privacy
-		$rows=
+		$rows =
 			WT_DB::prepare(
 				"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 				" FROM `##individuals`".
@@ -400,14 +400,14 @@ switch ($type) {
 		// array_unique() converts the keys from integer to string, which breaks
 		// the JSON encoding - so need to call array_values() to convert them
 		// back into integers.
-		$data=array_values(array_unique($data));
+		$data = array_values(array_unique($data));
 		echo json_encode($data);
 	exit;
 
 	case 'SOUR_TITL': // Source titles, that include the search terms
 		$data = array();
 		// Fetch all data, regardless of privacy
-		$rows=
+		$rows =
 			WT_DB::prepare(
 				"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, s_name".
 				" FROM `##sources`".
@@ -417,9 +417,9 @@ switch ($type) {
 			->fetchAll(PDO::FETCH_ASSOC);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$source=WT_Source::getInstance($row);
+			$source = WT_Source::getInstance($row);
 			if ($source->canDisplayName()) {
-				$data[]=$row['s_name'];
+				$data[] = $row['s_name'];
 			}
 		}
 		echo json_encode($data);
@@ -447,34 +447,34 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$person = WT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
+				$data[] = array('value'=>$row['xref'], 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
 			}
 		}
 		// Fetch all data, regardless of privacy
 		$rows = get_SOUR_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$source=WT_Source::getInstance($row);
+			$source = WT_Source::getInstance($row);
 			if ($source->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+				$data[] = array('value'=>$row['xref'], 'label'=>$row['n_full']);
 			}
 		}
 		// Fetch all data, regardless of privacy
 		$rows = get_REPO_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$repository=WT_Repository::getInstance($row);
+			$repository = WT_Repository::getInstance($row);
 			if ($repository->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+				$data[] = array('value'=>$row['xref'], 'label'=>$row['n_full']);
 			}
 		}
 		// Fetch all data, regardless of privacy
 		$rows = get_OBJE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$media=WT_Media::getInstance($row);
+			$media = WT_Media::getInstance($row);
 			if ($media->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
+				$data[] = array('value'=>$row['xref'], 'label'=>'<img src="'.$media->getHtmlUrlDirect().'" width="25"> '.$media->getFullName());
 			}
 		}
 		// Fetch all data, regardless of privacy
@@ -483,11 +483,11 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$family = WT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
-				$marriage_year=$family->getMarriageYear();
+				$marriage_year = $family->getMarriageYear();
 				if ($marriage_year) {
-					$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
 				} else {
-					$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName());
 				}
 			}
 		}
@@ -495,9 +495,9 @@ switch ($type) {
 		$rows = get_NOTE_rows($term);
 		// Filter for privacy
 		foreach ($rows as $row) {
-			$note=WT_Note::getInstance($row);
+			$note = WT_Note::getInstance($row);
 			if ($note->canDisplayName()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>$note->getFullName());
+				$data[] = array('value'=>$row['xref'], 'label'=>$note->getFullName());
 			}
 		}
 		echo json_encode($data);
@@ -511,7 +511,7 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$person = WT_Person::getInstance($row);
 			if ($person->canDispLayname()) {
-				$data[]=array('value'=>$row['xref'],       'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
+				$data[] = array('value'=>$row['xref'],       'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
 			}
 		}
 		// Fetch all data, regardless of privacy
@@ -520,7 +520,7 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$source = WT_Source::getInstance($row);
 			if ($source->canDispLayname()) {
-				$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+				$data[] = array('value'=>$row['xref'], 'label'=>$row['n_full']);
 			}
 		}
 		// Fetch all data, regardless of privacy
@@ -529,11 +529,11 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$family = WT_Family::getInstance($row);
 			if ($family->canDispLayname()) {
-				$marriage_year=$family->getMarriageYear();
+				$marriage_year = $family->getMarriageYear();
 				if ($marriage_year) {
-					$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
 				} else {
-					$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName());
 				}
 			}
 		}
@@ -543,15 +543,14 @@ switch ($type) {
 
 function get_FAM_rows($term) {
 	return
-	$rows=
 		WT_DB::prepare(
-			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
-			" FROM `##families`".
-			" JOIN `##name` AS husb_name ON (f_husb=husb_name.n_id AND f_file=husb_name.n_file)".
-			" JOIN `##name` AS wife_name ON (f_wife=wife_name.n_id AND f_file=wife_name.n_file)".
-			" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND f_file=?".
-			" AND husb_name.n_type<>'_MARNM' AND wife_name.n_type<>'_MARNM'".
-			" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE '".WT_I18N::$collation."'"
+			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, husb_name.n_sort, wife_name.n_sort" .
+			" FROM `##families`" .
+			" JOIN `##name` AS husb_name ON (f_husb=husb_name.n_id AND f_file=husb_name.n_file)" .
+			" JOIN `##name` AS wife_name ON (f_wife=wife_name.n_id AND f_file=wife_name.n_file)" .
+			" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND f_file=?" .
+			" AND husb_name.n_type<>'_MARNM' AND wife_name.n_type<>'_MARNM'" .
+			" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE '" . WT_I18N::$collation . "'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
