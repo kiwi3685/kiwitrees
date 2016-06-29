@@ -2389,7 +2389,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		$expected_subtags['PLAC']=array_merge($match[1], $expected_subtags['PLAC']);
 	}
 
-	$stack=array(0=>$level0type);
+	$stack = array(0=>$level0type);
 	// Loop on existing tags :
 	while (true) {
 		// Keep track of our hierarchy, e.g. 1=>BIRT, 2=>PLAC, 3=>FONE
@@ -2438,10 +2438,10 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		}
 
 		// Get a list of tags present at the next level
-		$subtags=array();
-		for ($ii=$i+1; isset($gedlines[$ii]) && preg_match('/^\s*(\d+)\s+(\S+)/', $gedlines[$ii], $mm) && $mm[1]>$level; ++$ii)
+		$subtags = array();
+		for ($ii = $i+1; isset($gedlines[$ii]) && preg_match('/^\s*(\d+)\s+(\S+)/', $gedlines[$ii], $mm) && $mm[1]>$level; ++$ii)
 			if ($mm[1] == $level+1)
-				$subtags[]=$mm[2];
+				$subtags[] = $mm[2];
 
 		// Insert missing tags
 		if (!empty($expected_subtags[$type])) {
