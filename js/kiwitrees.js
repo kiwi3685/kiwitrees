@@ -569,23 +569,23 @@ function addmedia_links(field, iid, iname) {
 function valid_date(datefield) {
 	var months = new Array("JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC");
 
-	var datestr=datefield.value;
+	var datestr = datefield.value;
 	// if a date has a date phrase marked by () this has to be excluded from altering
-	var datearr=datestr.split("(");
-	var datephrase="";
+	var datearr		= datestr.split("(");
+	var datephrase	= "";
 	if (datearr.length > 1) {
-		datestr=datearr[0];
-		datephrase=datearr[1];
+		datestr = datearr[0];
+		datephrase = datearr[1];
 	}
 
 	// Gedcom dates are upper case
-	datestr=datestr.toUpperCase();
+	datestr = datestr.toUpperCase();
 	// Gedcom dates have no leading/trailing/repeated whitespace
-	datestr=datestr.replace(/\s+/, " ");
-	datestr=datestr.replace(/(^\s)|(\s$)/, "");
+	datestr = datestr.replace(/\s+/, " ");
+	datestr = datestr.replace(/(^\s)|(\s$)/, "");
 	// Gedcom dates have spaces between letters and digits, e.g. "01JAN2000" => "01 JAN 2000"
-	datestr=datestr.replace(/(\d)([A-Z])/, "$1 $2");
-	datestr=datestr.replace(/([A-Z])(\d)/, "$1 $2");
+	datestr = datestr.replace(/(\d)([A-Z])/, "$1 $2");
+	datestr = datestr.replace(/([A-Z])(\d)/, "$1 $2");
 
 	// Shortcut for quarter format, "Q1 1900" => "BET JAN 1900 AND MAR 1900".  See [ 1509083 ]
  	if (datestr.match(/^Q ([1-4]) (\d\d\d\d)$/)) {
@@ -609,12 +609,12 @@ function valid_date(datefield) {
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
 	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
  	if (qsearch.exec(datestr)) {
- 		var f0=RegExp.$1;
-		var f1=parseInt(RegExp.$2, 10);
-		var f2=parseInt(RegExp.$3, 10);
-		var f3=parseInt(RegExp.$4, 10);
- 		var f4=RegExp.$5;
-		var dmy='DMY';
+ 		var f0 = RegExp.$1;
+		var f1 = parseInt(RegExp.$2, 10);
+		var f2 = parseInt(RegExp.$3, 10);
+		var f3 = parseInt(RegExp.$4, 10);
+ 		var f4 = RegExp.$5;
+		var dmy = 'DMY';
 		if (typeof(locale_date_format)!='undefined')
 			if (locale_date_format=='MDY' || locale_date_format=='YMD')
 				dmy=locale_date_format;
@@ -668,9 +668,10 @@ function valid_date(datefield) {
 	// Only update it if is has been corrected - otherwise input focus
 	// moves to the end of the field unnecessarily
 	if (datefield.value !== datestr) {
-		datefield.value=datestr;
+		datefield.value = datestr;
 	}
 }
+
 var oldheight = 0;
 var oldwidth = 0;
 var oldz = 0;
