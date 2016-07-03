@@ -239,7 +239,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 						<?php if ($year_from || $year_to) { ?>
 							<tr>
 								<th><?php echo WT_I18N::translate('Dates'); ?></th>
-								<td><?php echo ($year_from ? 'from ' . $year_from : '') . ' ' . ($year_to ? 'to ' . $year_to : ''); ?></td>
+								<td><?php echo ($year_from ? WT_I18N::translate('from %s', $year_from) : '') . ' ' . ($year_to ? WT_I18N::translate('to %s', $year_to) : ''); ?></td>
 							</tr>
 						<?php }
 						if ($place) { ?>
