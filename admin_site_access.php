@@ -302,7 +302,7 @@ WT_DB::exec(
 	</table>
 	<button type="submit" <?php echo  'onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('This will delete all your access rules and replace with basic kiwitrees defaults. Are you sure?')).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=reset\'; }"';?> >
 		<i class="fa fa-undo"></i>
-		<?php echo WT_I18N::translate('Reset'); ?>
+		<?php echo WT_I18N::translate('reset'); ?>
 	</button>
 	<hr>
 	<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search engines.'); ?></p>
