@@ -80,6 +80,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
     $controller
       ->setPageTitle($this->getTitle())
       ->pageHeader();
+    init_calendar_popup();
 
     //Configuration settings ===== //
     $action     = WT_Filter::post('action');
@@ -105,15 +106,16 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
     }
 
     if (!$set_days){
-        $earliest     = $from ? strtoupper(date('d M Y', strtotime($from))) : date('d M Y', strtotime($earliest));
-        $latest       = $to ? strtoupper(date('d M Y', strtotime($to))) : date('d M Y', strtotime($latest));
-        $date1        = new DateTime($earliest);
-        $date2        = new DateTime($latest);
-        $days         = $date1->diff($date2)->format("%a") + 1;
+        $earliest   = $from ? strtoupper(date('d M Y', strtotime($from))) : strtoupper(date('d M Y', strtotime($earliest)));
+        $latest     = $to ? strtoupper(date('d M Y', strtotime($to))) : strtoupper(date('d M Y', strtotime($latest)));
+        $date1      = new DateTime($earliest);
+        $date2      = new DateTime($latest);
+        $days       = $date1->diff($date2)->format("%a") + 1;
+        $from_disp  = new WT_Date($earliest);
+        $to_disp    = new WT_Date($latest);
     } else {
         $days = $set_days;
     }
-
 
     if($action == 'go') {
         if ($pending) {
@@ -185,11 +187,11 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
             <input type="hidden" name="action" value="go">
             <div class="chart_options">
               <label for = "DATE1">' . WT_I18N::translate('Starting range of change dates') . '</label>
-              <input type="text" name="date1" id="DATE1" value="' . ($set_days ? '' : $earliest) . '">' . print_calendar_popup("DATE1") . '
+              <input type="text" name="date1" id="DATE1" value="' . ($set_days ? '' : $earliest) . '" onblur="valid_date(this);" onmouseout="valid_date(this);">' . print_calendar_popup("DATE1") . '
             </div>
             <div class="chart_options">
               <label for = "DATE2">' . WT_I18N::translate('Ending range of change dates') . '</label>
-              <input type="text" name="date2" id="DATE2" value="' . ($set_days ? '' : $latest) . '" pattern="\d\d [a-zA-Z]{3} \d\d\d\d">' . print_calendar_popup("DATE2") . '
+              <input type="text" name="date2" id="DATE2" value="' . ($set_days ? '' : $latest) . '" onblur="valid_date(this);" onmouseout="valid_date(this);">' . print_calendar_popup("DATE2") . '
             </div>
             <div class="chart_options">
               <label for = "DAYS">' . WT_I18N::translate('Number of days to show') . '</label>
@@ -203,7 +205,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
               <i class="fa fa-eye"></i>' . WT_I18N::translate('show') . '
             </button>
             <button class="btn btn-primary" type="submit" name="reset" value="reset">
-                <i class="fa fa-refresh"></i>' . WT_I18N::translate('Reset') . '
+                <i class="fa fa-refresh"></i>' . WT_I18N::translate('reset') . '
             </button>
           </form>
         </div>
@@ -263,7 +265,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
         $content .= '
             <h3>' . WT_I18N::translate('Recent changes') . '</h3>
             <h3>' .
-                ($set_days ? WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $set_days, WT_I18N::number($set_days)) : WT_I18N::translate('%1$s - %2$s (%3$s days)', $earliest, $latest, WT_I18N::number($days))) . '
+                ($set_days ? WT_I18N::plural('Changes in the last day', 'Changes in the last %s days', $set_days, WT_I18N::number($set_days)) : WT_I18N::translate('%1$s - %2$s (%3$s days)', $from_disp->Display(), $to_disp->Display(), WT_I18N::number($days))) . '
             </h3>';
         // table headers
         $content .= $table_header;
