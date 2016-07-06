@@ -1544,6 +1544,10 @@ function old_paths() {
 		WT_ROOT.'modules_v3/simpl_research/plugins/hetutrechtsarchief.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/register1939.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/rhcvechtenvenen.php', //replaced for better sorting
+		// Removed in kiwitrees 3.2.3
+		WT_ROOT.'themes/_administration/images/kiwi_webtrees_logo_white.png',
+		WT_ROOT.'modules_v3/descendancy_report',
+		WT_ROOT.'modules_v3/fancy_treeview/help_text.php',
 	);
 }
 
