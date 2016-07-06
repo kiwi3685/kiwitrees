@@ -64,7 +64,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		global $controller, $WT_REQUEST, $SEARCH_SPIDER;
+		global $controller, $SEARCH_SPIDER;
 		$ged_id	= WT_GED_ID;
 
 		//-- main PAGES menu item
@@ -87,7 +87,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 	}
 
 	private function show() {
-		global $controller;
+		global $controller, $WT_REQUEST;
 		$subject	= safe_REQUEST($_REQUEST, 'subject',	WT_REGEX_UNSAFE); // Messages may legitimately contain "<", etc.
 		$body		= safe_REQUEST($_REQUEST, 'body',		WT_REGEX_UNSAFE);
 		$from_name	= safe_REQUEST($_REQUEST, 'from_name',	WT_REGEX_UNSAFE);
