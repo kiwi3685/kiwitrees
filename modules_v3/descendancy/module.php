@@ -177,7 +177,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out = '';
 		foreach ($rows as $row) {
 			$person = WT_Person::getInstance($row->xref);
-			if ($person->canShowName()) {
+			if ($person->canDisplayName()) {
 				$out .= $this->getPersonLi($person);
 			}
 		}
