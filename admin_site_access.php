@@ -237,9 +237,9 @@ $controller
 				/* 2 ip_address_end          */ {"iDataSort": 3, "sClass": "ip_address"},
 				/* 3 ip_address_end (sort)   */ {"sType": "numeric", "bVisible": false},
 				/* 4 user_agent_pattern      */ {"sClass": "ua_string"},
-				/* 5 comment                 */ {},
-				/* 6 rule                    */ {},
-				/* 7 <delete>                */ {"bSortable": false, "sClass": "center"}
+				/* 5 rule                    */ {"sClass": "rule"},
+				/* 6 comment                 */ {"sClass": "comment"},
+				/* 7 <delete>                */ {"bSortable": false, "sClass": "center delete"}
 			],
 			"fnDrawCallback": function() {
 				// Our JSON responses include Javascript as well as HTML.  This does not get

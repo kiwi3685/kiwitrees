@@ -33,6 +33,10 @@ html {
 	overflow-y: scroll;
 }
 
+html, body {
+    height:100%;/* needed for flexbox in IE11 */
+}
+
 body {
 	color: #555;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -48,10 +52,6 @@ body {
     -ms-flex-direction: column;
     -webkit-flex-direction: column;
     flex-direction: column;
-}
-
-html, body {
-    height:100%;/* needed for flexbox in IE11 */
 }
 
 #body_simple {
