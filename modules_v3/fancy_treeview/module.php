@@ -624,7 +624,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$controller
 				->setPageTitle(/* I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of %s', $root_person->getFullName()))
 				->pageHeader()
-				->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 				->addExternalJavascript(WT_MODULES_DIR . $this->getName() . '/js/ftv.js')
 				->addInlineJavascript('
 					var RootID				= "' . $root . '";
@@ -634,16 +634,13 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					', WT_Controller_Base::JS_PRIORITY_HIGH
 				)
 				->addInlineJavascript('
-					jQuery("#new_rootid").autocomplete({
-						source: "autocomplete.php?field=INDI",
-						html: true
-					});
+					autocomplete();
 
 					// submit form to change root id
 				    jQuery( "form#change_root" ).submit(function(e) {
 				        e.preventDefault();
 				        var new_rootid = jQuery("form #new_rootid").val();
-				        var url = jQuery(location).attr("pathname") + "?mod="' . $this->getName() . '"&mod_action=show&rootid="' . $root . ';
+						var url = jQuery(location).attr("pathname") + "?mod=' . $this->getName() . '&mod_action=show&rootid=" + new_rootid;
 				        jQuery.ajax({
 				            url: url,
 				            csrf: WT_CSRF_TOKEN,
@@ -672,7 +669,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<div class="chart_options noprint">
 					<form id="change_root">
 						<label class="label"><?php echo WT_I18N::translate('Change root person'); ?></label>
-						<input type="text" name="new_rootid" id="new_rootid">
+						<input type="text" name="new_rootid" id="new_rootid" data-autocomplete-type="INDI">
 						<?php echo print_findindi_link('new_rootid'); ?>
 						<button class="btn btn-primary show" type="submit">
 							<i class="fa fa-eye"></i>
