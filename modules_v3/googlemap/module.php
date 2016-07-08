@@ -1259,9 +1259,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$curgen++;
 				}
 				$relationship=get_relationship_name(get_relationship($controller->root, $person, false, 0));
-				if (empty($relationship)) $relationship=WT_I18N::translate('self');
-				$event = '<img src=\"'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
-					'<strong>&nbsp;'.$relationship.':&nbsp;</strong>';
+				if (empty($relationship)) $relationship = WT_I18N::translate('self');
+				$event = '<img src=\"' . WT_STATIC_URL.WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png\" width=\"10\" height=\"10\">'.
+					'<span class=\"relationship\">' . $relationship . '</span>';
 				// add thumbnail image
 				if ($SHOW_HIGHLIGHT_IMAGES) {
 					$image = $person->displayImage();
@@ -1271,11 +1271,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// end of add image
 
 				$dataleft  = addslashes($image) . $event . addslashes($name);
-				$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
-				$datamid .= '('.WT_I18N::translate('View Person').')';
-				$datamid  .= '</a></span>';
-				$dataright = '<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
-						addslashes($person->getBirthDate()->Display(false)).'<br>'.$person->getBirthPlace();
+				$datamid   = "<a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
+				$datamid .= '<br>' . WT_I18N::translate('View Person') . '<br>';
+				$datamid  .= '</a>';
+				$dataright = '<span class=\"event\">' . WT_I18N::translate('Birth&nbsp;') . '</span>' .
+						addslashes($person->getBirthDate()->Display(false)) . '<br>' . $person->getBirthPlace();
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 				if ($latlongval[$i] != NULL) {

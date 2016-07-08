@@ -48,7 +48,7 @@ ul.tabs {margin:0 !important; padding:0; padding-left:2px; padding-top:2px; heig
 ul.tabs li {float:left; padding:0; margin:0; margin-left:2px; list-style-type:none;}
 /* link inside the tab. uses a background image */
 ul.tabs a {float:left; font-size:13px; display:block; /* padding:5px 30px; */ padding:0px 10px; text-decoration:none; border:1px solid #666; border-bottom:0px; height:18px; background-color:#efefef; color:#777; margin-right:2px; position:relative; top:1px; outline:0; border-radius:4px 4px 0 0;}
-ul.tabs a:hover { background-color:#ffffff; color:#333;} 
+ul.tabs a:hover { background-color:#ffffff; color:#333;}
 /* selected tab */
 ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#000; cursor:default;}
 /* tabs */
@@ -67,7 +67,7 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #view_type td {width:360px;}
 #view_type form{width:360px; text-align:center;}
 
-/* Elements To be defined later (leave as dislay:none; for now) */ 
+/* Elements To be defined later (leave as dislay:none; for now) */
 /* sidebar */
 #s_bar {display:none; width:370px; border:1px solid black; margin-bottom:1em;}
 #s_bar td{padding-left:5px; width:370px; text-decoration:none; color:#4444ff; background:#aabbd8;}
@@ -101,6 +101,8 @@ html[dir="rtl"] #side_bar .gallery img, html[dir="rtl"] .iwstyle .gallery img, h
 #side_bar .icon-silhouette-M, #side_bar .icon-silhouette-F, #side_bar .icon-silhouette-U, .iwstyle .icon-silhouette-M, .iwstyle .icon-silhouette-F, .iwstyle .icon-silhouette-U {float:left;}
 html[dir="rtl"] #side_bar .icon-silhouette-M, html[dir="rtl"] #side_bar .icon-silhouette-F, html[dir="rtl"] #side_bar .icon-silhouette-U, html[dir="rtl"] .iwstyle .icon-silhouette-M, html[dir="rtl"] .iwstyle .icon-silhouette-F, html[dir="rtl"] .iwstyle .icon-silhouette-U  {float:right;}
 #pedigreemap_chart {margin:20px;}
+#pedigreemap_chart span.relationship {font-weight: 600; margin:auto 5px; text-transform: capitalize;}
+#pedigreemap_chart span.event {font-weight: 600; text-transform: capitalize;}
 
 .icon-config_maps {font-family: 'FontAwesome'; font-style:normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;}		/* .fa-globe */
 .icon-edit_maps {font-family: 'FontAwesome'; font-style:normal; font-size: 1.2em; vertical-align: inherit; margin: 0 3px 0 10px;}		/* .fa-map-marker */
