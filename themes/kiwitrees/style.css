@@ -773,7 +773,7 @@ div[id*='-page'] {
 
 /* indi and fam list pages */
 #indilist-page, #famlist-page {
-	font-size: initial;
+	font-size: 15px;
 }
 .alpha_index {
 	color: #aaa;
