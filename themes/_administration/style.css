@@ -439,7 +439,6 @@ table.sites {border:1px inset #d9d6c4; border-collapse:separate; border-spacing:
 
 /* CLEANUP */
 #cleanup li {list-style:none; margin-bottom:5px;}
-#cleanup button[type="submit"] {padding: 5px 30px; margin: 0 20px;}
 
 /* MANAGE FAMILY TREES */
 table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
