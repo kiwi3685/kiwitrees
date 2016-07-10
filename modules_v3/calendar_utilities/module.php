@@ -128,11 +128,11 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 			->setPageTitle($this->getTitle())
 			->pageHeader();
 
-		$action = safe_POST('action');
+		$action = WT_Filter::post('action');
 
 		if ($action=='update') {
 			foreach ($this->list_plugins() as $plugin_file) {
-				set_module_setting($this->getName(), $plugin_file, safe_POST('NEW_'.$plugin_file));
+				set_module_setting($this->getName(), $plugin_file, WT_Filter::post('NEW_'.$plugin_file));
 			}
 			AddToLog('calendar_utilities config updated', 'config');
 		}
