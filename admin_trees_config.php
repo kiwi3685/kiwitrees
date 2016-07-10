@@ -99,6 +99,7 @@ case 'update':
 	if (!WT_Filter::checkCsrf()) {
 		break;
 	}
+	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      WT_Filter::postBool('NEW_ABBREVIATE_CHART_LABELS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          WT_Filter::post('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          WT_Filter::post('NEW_ADVANCED_PLAC_FACTS'));
 	// For backwards compatibility with we store the two calendar formats in one variable
