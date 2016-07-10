@@ -1940,6 +1940,9 @@ ul.clist {
 
 .execution_stats {
 	text-align: center;
+	background-color: #aaa;
+	margin: 0;
+	padding: 10px;
 }
 
 dl {
