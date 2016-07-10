@@ -64,14 +64,14 @@ function full_rmdir($dir) {
 }
 
 // Vars
-$ajaxdeleted = false;
-$locked_by_context = array('index.php', 'config.ini.php');
+$ajaxdeleted		= false;
+$locked_by_context	= array('index.php', 'config.ini.php');
 
 // If we are storing the media in the data folder (this is the
-// defaultl), then don’t delete it.
+// default), then don’t delete it.
 // Need to consider the settings for all gedcoms
 foreach (WT_Tree::getAll() as $tree) {
-	$MEDIA_DIRECTORY=$tree->preference('MEDIA_DIRECTORY');
+	$MEDIA_DIRECTORY = $tree->preference('MEDIA_DIRECTORY');
 
 	if (substr($MEDIA_DIRECTORY, 0, 3) !='../') {
 		// Just need to add the first part of the path
@@ -79,13 +79,13 @@ foreach (WT_Tree::getAll() as $tree) {
 		$locked_by_context[] = $tmp[0];
 	}
 }
+?>
+<h3><?php echo $controller->getPageTitle(); ?></h3>
+<p>
+	<?php echo WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="icon-resn-confidential"></i>'); ?>
+</p>
 
-echo
-	'<h3>', $controller->getPageTitle(), '</h3>',
-	'<p>',
-	WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<i class="icon-resn-confidential"></i>'),
-	'</p>';
-
+<?php
 //post back
 if (isset($_REQUEST['to_delete'])) {
 	echo '<div class="error">', WT_I18N::translate('Deleted files:'), '</div>';
@@ -98,32 +98,47 @@ if (isset($_REQUEST['to_delete'])) {
 		echo '<div class="error">', $v, '</div>';
 	}
 }
+?>
 
-echo '<form name="delete_form" method="post" action="">';
-echo '<div id="cleanup"><ul>';
-
-$dir=dir(WT_DATA_DIR);
-$entries=array();
-while (false !== ($entry=$dir->read())) {
-	$entries[]=$entry;
-}
-sort($entries);
-foreach ($entries as $entry) {
-	if ($entry[0] != '.') {
-		if (in_array($entry, $locked_by_context)) {
-			echo "<li class=\"facts_value\" name=\"$entry\" id=\"lock_$entry\" >";
-			echo '<i class="icon-resn-confidential"></i> <span>', $entry, '</span>';
-		} else {
-			echo "<li class=\"facts_value\" name=\"$entry\" id=\"li_$entry\" >";
-			echo '<input type="checkbox" name="to_delete[]" value="', $entry, '">', $entry;
-			$element[] = "li_".$entry;
-		}
-		echo '</li>';
-	}
-}
-$dir->close();
-echo
-	'</ul>',
-	'<button type="submit">', WT_I18N::translate('Delete'), '</button>',
-	'</div>',
-	'</form>';
+	<form name="delete_form" method="post" action="">
+		<div id="cleanup">
+			<ul>
+				<?php
+				$dir	 = dir(WT_DATA_DIR);
+				$entries = array();
+				while (false !== ($entry = $dir->read())) {
+					$entries[] = $entry;
+				}
+				sort($entries);
+				foreach ($entries as $entry) {
+					if ($entry[0] != '.') {
+						$file_path = WT_DATA_DIR . $entry;
+						if (is_dir($file_path)) {
+							$icon = '<i class="fa fa-folder-open-o"></i>';
+						} else {
+							$icon = '<i class="fa fa-file-o"></i>';
+						}
+						if (in_array($entry, $locked_by_context)) { ?>
+							<li class="facts_value" name="<?php echo $entry; ?>" id="lock_<?php echo $entry; ?>" >
+								<i class="icon-resn-confidential"></i>
+								<?php echo $icon; ?>
+								<span><?php echo $entry; ?></span>
+						<?php } else { ?>
+							<li class="facts_value" name="<?php echo $entry; ?>" id="li_<?php echo $entry; ?>" >
+								<input type="checkbox" name="to_delete[]" value="<?php echo $entry; ?>">
+								<?php echo $icon; ?>
+								<?php echo $entry; ?>
+								<?php $element[] = 'li_' . $entry; ?>
+						<?php } ?>
+						</li>
+					<?php }
+				}
+				$dir->close(); ?>
+			</ul>
+			<button class="btn btn-primary delete" type="submit">
+				<i class="fa fa-trash-o"></i>
+				<?php echo WT_I18N::translate('Delete'); ?>
+			</button>
+		</div>
+	</form>
+<?php
