@@ -13,3 +13,6 @@
 /js/colorbox
 /modules_v3/advent
 /language/unused languages
+/modules_v3/backup_to_dropbox/dropbox-sdk/examples
+/modules_v3/backup_to_dropbox/dropbox-sdk/support
+/modules_v3/backup_to_dropbox/dropbox-sdk/test
