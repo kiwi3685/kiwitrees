@@ -934,7 +934,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 
 	$factrec = $event->getGedcomRecord();
 
-	$wt_place=new WT_Place($event->getPlace(), WT_GED_ID);
+	$wt_place = new WT_Place($event->getPlace(), WT_GED_ID);
 
 	$name_parts=explode(', ', $event->getPlace());
 	$ct=count($name_parts);
@@ -942,9 +942,9 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
 		if ($SEARCH_SPIDER) {
-			$html=$wt_place->getFullName();
+			$html = $wt_place->getFullName();
 		} else {
-			$html='<a href="' . $wt_place->getURL() . '">' . $wt_place->getFullName() . '</a>';
+			$html = '<a href="' . $wt_place->getURL() . '">' . $wt_place->getFullName() . '</a>';
 		}
 	} else {
 		// Abbreviate the place name, for chart boxes
