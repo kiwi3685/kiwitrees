@@ -507,8 +507,22 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 .current_theme input[type="radio"], .theme_box input[type="radio"] {cursor:pointer; height:20px; width:20px;}
 .current_theme input[type="radio"], .theme_box input[type="radio"], .current_theme label, .theme_box label {vertical-align:middle;}
 
-/* CHECK FOR ERRORS
-#check_errors {min-height: inherit;}*/
+/* CHECK FOR ERRORS */
+#check_errors select {
+	height: 32px;
+	margin: 10px;
+}
+
+#check_errors button {
+	float: none;
+	padding-top: 3px;
+}
+
+#check_errors .noresult {
+	padding: 10px;
+	margin: 20px 10px;
+	font-weight: bold;
+}
 
 /* TREE DOWNLOAD */
 #tree-download hr {
@@ -1190,7 +1204,7 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 
 /* SANITY CHECK */
 #sanity_check a {color: #75ABFF;}
-#sanity_check h5 {font-size: 1.0em;   margin: 0;}
+#sanity_check h5 {clear: both; font-size: 1.0em; margin: 0;}
 #sanity_check li {list-style-type: none;}
 #sanity_check .first  {display: inline-block; width: 300px;}
 #sanity_check .second {display: inline-block; width: 300px;}
