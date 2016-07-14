@@ -107,7 +107,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
+					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $controller->record->getXref(); ?>', '<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
 				</tr>
 				<?php
 			}
@@ -153,7 +153,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
-					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
+					<td class="facts_value"><a href="#" onclick="return addnewspouse('<?php echo $controller->record->getXref(); ?>','<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
 				</tr>
 				<?php
 			}
@@ -283,7 +283,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label">
 					<?php if (WT_USER_CAN_EDIT && isset($people["children"][1])) { ?>
-					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><i class="icon-media-shuffle"></i> <?php echo WT_I18N::translate('Re-order children'); ?></a>
+					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');"><i class="icon-media-shuffle"></i> <?php echo WT_I18N::translate('Re-order children'); ?></a>
 					<?php } ?>
 				</td>
 				<td class="facts_value">

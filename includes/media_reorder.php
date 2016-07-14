@@ -65,7 +65,9 @@ $controller->addInlineJavascript('
 ?>
 <div id="reordermedia-page">
 	<h2><?php echo WT_I18N::translate('Re-order media'); ?></h2>
-	<p><?php echo WT_I18N::translate('Click a row, then drag-and-drop to re-order media '); ?></p>
+	<span class="help_content">
+		<?php echo WT_I18N::translate('Click a row then drag-and-drop to re-order media.'); ?>
+	</span>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_media_update">
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>">

@@ -2126,6 +2126,9 @@ case 'reorder_children':
 
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<span class="help_content">
+			<?php echo WT_I18N::translate('Either click the "sort by date" button or click a row then drag-and-drop to re-order media.'); ?>
+		</span>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="action" value="reorder_update">
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
@@ -2177,7 +2180,7 @@ case 'reorder_children':
 				</button>
 				<button type="submit" class="btn btn-primary" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();">
 					<i class="fa fa-arrows"></i>
-					<?php echo WT_I18N::translate('sort by date of birth'); ?>
+					<?php echo WT_I18N::translate('sort by date'); ?>
 				</button>
 				<button class="btn btn-primary" type="button" onclick="window.close();">
 					<i class="fa fa-times"></i>
@@ -2526,6 +2529,9 @@ case 'reorder_fams':
 	?>
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<span class="help_content">
+			<?php echo WT_I18N::translate('Either click the "sort by date" button or click a row then drag-and-drop to re-order media'); ?>
+		</span>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="action" value="reorder_fams_update">
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
@@ -2555,7 +2561,7 @@ case 'reorder_fams':
 				</button>
 				<button type="submit" class="btn btn-primary" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();">
 					<i class="fa fa-arrows"></i>
-					<?php echo WT_I18N::translate('sort by date of marriage'); ?>
+					<?php echo WT_I18N::translate('sort by date'); ?>
 				</button>
 				<button class="btn btn-primary" type="button" onclick="window.close();">
 					<i class="fa fa-times"></i>
