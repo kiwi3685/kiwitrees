@@ -64,6 +64,7 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		$list_m3			= array();
 		$count_cousins_f	= 0;
 		$count_cousins_m	= 0;
+		$count_duplicates	= 0;
 		$family				= '';
 		$html				= '';
 		$person				= $controller->getSignificantIndividual();
@@ -126,16 +127,20 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		foreach ($list_m2 as $id2) {
 			$rows = WT_DB::prepare("SELECT l_to as xref FROM `##link` WHERE l_file = ".WT_GED_ID." AND l_type LIKE 'CHIL' AND l_from LIKE '".$id2."'")->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
-				$list_m3[]=$row['xref'];
+				$list_m3[] = $row['xref'];
 				$count_cousins_m ++;
+				if (in_array($row['xref'], $list_f3)) {$count_duplicates++;} // this adjusts the count for cousins of siblings married to siblings
 				$famc[] = $id2;
 			}
 		}
-		$count_cousins = $count_cousins_f + $count_cousins_m;
+		$count_cousins = $count_cousins_f + $count_cousins_m - $count_duplicates;
 
 		$myParentFamily = $parentFamily->getXref();
 
-		$html .= '<h3>'.WT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $count_cousins, $count_cousins, $fullname).'</h3>';
+		$html .= '<h3>' . WT_I18N::plural('%2$s has %1$d first cousin recorded', '%2$s has %1$d first cousins recorded', $count_cousins, $count_cousins, $fullname) . '</h3>';
+		if ($count_duplicates > 0) {
+			$html .= '<p>' . /* I18N: a reference to cousins of siblings married to siblings */ WT_I18N::plural('%1$d is on both sides of the family', '%1$d are on both sides of the family', $count_duplicates, $count_duplicates) . '</p>';
+		}
 		$html .= '<div id="cousins_tab_content">';
 
 		//List Cousins (father's family)
