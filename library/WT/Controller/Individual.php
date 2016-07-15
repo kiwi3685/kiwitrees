@@ -202,7 +202,11 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					if (isset($nmatch[$i][2])) {
 							$name = htmlspecialchars($nmatch[$i][2]);
 							$name = str_replace('/', '', $name);
-							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
+							$name = preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
+
+							// Combine two consecutive preferred names into one.
+							$name = preg_replace('/<span class=\"starredname\">(.*)<\/span> <span class=\"starredname\">(.*)<\/span>/', '<span class="starredname">$1 $2</span>', $name);
+
 							switch ($fact) {
 							case 'TYPE':
 								echo WT_Gedcom_Code_Name::getValue($name, $this->record);

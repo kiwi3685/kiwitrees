@@ -1767,23 +1767,23 @@ class WT_Person extends WT_GedcomRecord {
 
 		// Add placeholder for unknown given name
 		if (!$GIVN) {
-			$GIVN='@P.N.';
-			$pos=strpos($full, '/');
-			$full=substr($full, 0, $pos).'@P.N. '.substr($full, $pos);
+			$GIVN	= '@P.N.';
+			$pos	= strpos($full, '/');
+			$full	= substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
 		}
 
 		// The NPFX field might be present, but not appear in the NAME
 		if ($NPFX && strpos($full, "$NPFX ")!==0) {
-			$full="$NPFX $full";
+			$full = "$NPFX $full";
 		}
 
 		// The NSFX field might be present, but not appear in the NAME
-		if ($NSFX && strrpos($full, " $NSFX")!==strlen($full)-strlen(" $NSFX")) {
-			$full="$full $NSFX";
+		if ($NSFX && strrpos($full, " $NSFX") !== strlen($full) - strlen(" $NSFX")) {
+			$full = "$full $NSFX";
 		}
 
 		// GEDCOM nicknames should be specificied in a NICK field, or in the
-		// NAME filed, surrounded by ASCII quotes (or both).
+		// NAME field, surrounded by ASCII quotes (or both).
 		if ($NICK) {
 			// NICK field found.  Add localised quotation marks.
 
@@ -1791,24 +1791,24 @@ class WT_Person extends WT_GedcomRecord {
 			// pages and vice-versa.  Just use straight ASCII quotes.  Keep the old code, so that we keep the
 			// translations.
 			if (false) {
-				$QNICK=/* I18N: Place a nickname in quotation marks */ WT_I18N::translate('“%s”', $NICK);
+				$QNICK = /* I18N: Place a nickname in quotation marks */ WT_I18N::translate('“%s”', $NICK);
 			} else {
-				$QNICK='"'.$NICK.'"';
+				$QNICK = '"'.$NICK.'"';
 			}
 
-			if (preg_match('/(^| |"|«|“|\'|‹|‘|„)'.preg_quote($NICK, '/').'( |"|»|”|\'|›|’|”|$)/', $full)) {
+			if (preg_match('/(^| |"|«|“|\'|‹|‘|„)' . preg_quote($NICK, '/').'( |"|»|”|\'|›|’|”|$)/', $full)) {
 				// NICK present in name.  Localise ASCII quotes (but leave others).
 				// GREG 28/Jan/12 - redundant - see comment above.
 				// $full=str_replace('"'.$NICK.'"', $QNICK, $full);
 			} else {
 				// NICK not present in NAME.
-				$pos=strpos($full, '/');
-				if ($pos===false) {
+				$pos = strpos($full, '/');
+				if ($pos === false) {
 					// No surname - append it
-					$full.=' '.$QNICK;
+					$full .= ' '.$QNICK;
 				} else {
 					// Insert before surname
-					$full=substr($full, 0, $pos).$QNICK.' '.substr($full, $pos);
+					$full = substr($full, 0, $pos).$QNICK.' '.substr($full, $pos);
 				}
 			}
 		}
@@ -1816,23 +1816,26 @@ class WT_Person extends WT_GedcomRecord {
 		// Remove slashes - they don't get displayed
 		// $fullNN keeps the @N.N. placeholders, for the database
 		// $full is for display on-screen
-		$fullNN=str_replace('/', '', $full);
+		$fullNN = str_replace('/', '', $full);
 
 		// Insert placeholders for any missing/unknown names
 		if (strpos($full, '@N.N.')!==false) {
-			$full=str_replace('@N.N.', $UNKNOWN_NN, $full);
+			$full = str_replace('@N.N.', $UNKNOWN_NN, $full);
 		}
 		if (strpos($full, '@P.N.')!==false) {
-			$full=str_replace('@P.N.', $UNKNOWN_PN, $full);
+			$full = str_replace('@P.N.', $UNKNOWN_PN, $full);
 		}
-		$full='<span class="NAME" dir="auto" translate="no">'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</span>';
+		$full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)) . '</span>';
 
 		// The standards say you should use a suffix of '*' for preferred name
-		$full=preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
+		$full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
+		// Combine two consecutive preferred names into one.
+//		$full = preg_replace('/(<span class="starredname">)(.*)(</span>&nbsp;<span class="starredname">)(.*)(</span>)/', '/<span class="starredname">$2&nbsp;$4</span>/', $full);
+		$full = preg_replace('/<span class=\"starredname\">(.*)<\/span> <span class=\"starredname\">(.*)<\/span>/', '<span class="starredname">$1 $2</span>', $full);
 		// Remove prefered-name indicater - they don't go in the database
-		$GIVN  =str_replace('*', '', $GIVN);
-		$fullNN=str_replace('*', '', $fullNN);
+		$GIVN	= str_replace('*', '', $GIVN);
+		$fullNN	= str_replace('*', '', $fullNN);
 
 		foreach ($SURNS AS $SURN) {
 			// Scottish 'Mc and Mac ' prefixes both sort under 'Mac'
