@@ -1439,7 +1439,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	if (in_array($fact, $emptyfacts) && ($value == '' || $value == 'Y' || $value == 'y')) {
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\">";
-		if ($level<=1) {
+		if ($level <= 1) {
 			echo '<input type="checkbox" ';
 			if ($value) {
 				echo ' checked="checked"';
@@ -1447,7 +1447,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value=''; \">";
 			echo WT_I18N::translate('yes');
 		}
-
 	} else if ($fact == "TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
 	} else if ($fact == "ADOP") {
@@ -1966,8 +1965,8 @@ function addNewFact($fact) {
 	$FACT=safe_POST($fact,          WT_REGEX_UNSAFE);
 	$DATE=safe_POST("{$fact}_DATE", WT_REGEX_UNSAFE);
 	$PLAC=safe_POST("{$fact}_PLAC", WT_REGEX_UNSAFE);
-	if ($DATE || $PLAC || $FACT && $FACT!='Y') {
-		if ($FACT && $FACT!='Y') {
+	if ($DATE || $PLAC || $FACT && $FACT != 'Y') {
+		if ($FACT && $FACT != 'Y') {
 			$gedrec="\n1 {$fact} {$FACT}";
 		} else {
 			$gedrec="\n1 {$fact}";
