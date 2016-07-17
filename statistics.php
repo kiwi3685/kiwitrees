@@ -46,7 +46,7 @@ if (!$ajax) {
 				load: function() {jQuery("#loading-indicator").removeClass("loading-image");},
 				cache: true
 			});
-		')		
+		')
 		->pageHeader();
 
 	echo '<div id="statistics-page"><h2>', WT_I18N::translate('Statistics'), '</h2>',
@@ -569,7 +569,7 @@ if (!$ajax) {
 			echo '<br><select id="xas-grenzen-leeftijden" name="xas-grenzen-leeftijden">
 				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected">',
 				WT_I18N::plural('interval %s year', 'interval %s years', 10, WT_I18N::number(10)), '</option>
-				<option value="5,20,40,60,75,80,85,90">', 
+				<option value="5,20,40,60,75,80,85,90">',
 				WT_I18N::plural('interval %s year', 'interval %s years', 20, WT_I18N::number(20)), '</option>
 				<option value="10,25,50,75,100">',
 				WT_I18N::plural('interval %s year', 'interval %s years', 25, WT_I18N::number(25)), '</option>
@@ -618,6 +618,7 @@ if (!$ajax) {
 			echo '<br><select id="chart_shows" name="chart_shows">
 				<option value="world" selected="selected">', WT_I18N::translate('World'), '</option>
 				<option value="europe">', WT_I18N::translate('Europe'), '</option>
+				<option value="usa">', WT_I18N::translate('United States'), '</option>
 				<option value="south_america">', WT_I18N::translate('South America'), '</option>
 				<option value="asia">', WT_I18N::translate('Asia'), '</option>
 				<option value="middle_east">', WT_I18N::translate('Middle East'), '</option>
@@ -668,7 +669,7 @@ if (!$ajax) {
 			<table width="100%">
 			<tr align="center"><td>
 				<br>
-				<input type="submit" value="', WT_I18N::translate('show the plot'), ' ">
+				<input type="submit" value="', WT_I18N::translate('show'), ' ">
 				<input type="reset"  value=" ', WT_I18N::translate('reset'), ' " onclick="{statusEnable(\'z_sex\'); statusHide(\'x_years\'); statusHide(\'x_months\'); statusHide(\'x_numbers\'); statusHide(\'map_opt\');}"><br>
 			</td>
 			</tr>
