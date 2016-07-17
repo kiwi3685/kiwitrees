@@ -279,7 +279,7 @@ echo
 					<span>', $stats->totalMedia(), '</span>
 				</li>
 				<li>
-					<span><a href="notelist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Notes'), '</a></span>
+					<span><a href="notelist.php?ged=', $tree->tree_name_url, '">', WT_I18N::translate('Shared notes'), '</a></span>
 					<span class="filler">&nbsp;</span>
 					<span>', $stats->totalNotes(), '</span>
 				</li>
