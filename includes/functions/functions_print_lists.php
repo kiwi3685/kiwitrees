@@ -837,9 +837,9 @@ function format_fam_table($datalist, $option='') {
 			} else {
 				$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $wife)).'"';
 			}
-			if ($num==$wife->getPrimaryName()) {
-				$class=' class="name2"';
-				$sex_image=$wife->getSexImage();
+			if ($num == $wife->getPrimaryName()) {
+				$class = ' class="name2"';
+				$sex_image = $wife->getSexImage();
 				list($surn, $givn)=explode(',', $name['sort']);
 			} else {
 				$class='';
@@ -864,12 +864,12 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Wife age
-		$wdate=$wife->getBirthDate();
+		$wdate = $wife->getBirthDate();
 		if ($wdate->isOK() && $mdate->isOK()) {
 			if ($wdate->gregorianYear()>=1550 && $wdate->gregorianYear()<2030) {
 				$birt_by_decade[(int)($wdate->gregorianYear()/10)*10] .= $wife->getSex();
 			}
-			$wage=WT_Date::getAge($wdate, $mdate, 0);
+			$wage = WT_Date::getAge($wdate, $mdate, 0);
 			if ($wage>=0 && $wage<=$max_age) {
 				$marr_by_age[$wage].=$wife->getSex();
 			}
@@ -877,7 +877,7 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<td>'.WT_Date::getAge($wdate, $mdate, 2).'</td><td>'.WT_Date::getAge($wdate, $mdate, 1).'</td>';
 		//-- Marriage date
 		$html .= '<td>';
-		if ($marriage_dates=$family->getAllMarriageDates()) {
+		if ($marriage_dates = $family->getAllMarriageDates()) {
 			foreach ($marriage_dates as $n=>$marriage_date) {
 				if ($n) {
 					$html .= '<br>';
@@ -885,15 +885,34 @@ function format_fam_table($datalist, $option='') {
 				$html .= '<div>'. $marriage_date->Display(!$SEARCH_SPIDER). '</div>';
 			}
 			if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
-				$marr_by_decade[(int)($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
+				$marr_by_decade[(int)($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex() . $wife->getSex();
 			}
-		} elseif ($family->getFacts('_NMR')) {
-			$html .= WT_I18N::translate('no');
-		} elseif ($family->getFacts('MARR')) {
+		} else if (get_sub_record(1, '1 _NMR', $family->getGedcomRecord())) {
+			$hus = $family->getHusband();
+			$wif = $family->getWife();
+			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $hus);
+			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $wif);
+			else $html .= WT_Gedcom_Tag::getLabel('_NMR');
+		} else if (get_sub_record(1, '1 _NMAR', $family->getGedcomRecord())) {
+			$hus = $family->getHusband();
+			$wif = $family->getWife();
+			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMAR', $hus);
+			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMAR', $wif);
+			else $html .= WT_Gedcom_Tag::getLabel('_NMAR');
+		} else {
+			$factdetail = explode(' ', trim($family->getMarriageRecord()));
+			if (isset($factdetail)) {
+				if (count($factdetail) >= 3) {
+					if (strtoupper($factdetail[2]) != "N") {
 						$html .= WT_I18N::translate('yes');
 					} else {
+						$html .= WT_I18N::translate('no');
+					}
+				} else {
 					$html .= '&nbsp;';
 				}
+			}
+		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
 		$html .= '<td>';
@@ -904,11 +923,11 @@ function format_fam_table($datalist, $option='') {
 		}
 		$html .= '</td>';
 		//-- Marriage anniversary
-		$html .= '<td>'.WT_Date::getAge($mdate, null, 2).'</td>';
+		$html .= '<td>' . WT_Date::getAge($mdate, null, 2) . '</td>';
 		//-- Marriage place
 		$html .= '<td>';
 		foreach ($family->getAllMarriagePlaces() as $n=>$marriage_place) {
-			$tmp=new WT_Place($marriage_place, WT_GED_ID);
+			$tmp = new WT_Place($marriage_place, WT_GED_ID);
 			if ($n) {
 				$html .= '<br>';
 			}
