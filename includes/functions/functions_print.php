@@ -273,12 +273,13 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 * Adds meta tags to header common to all themes
 */
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
+	global $WT_TREE;
 	$header_links = '';
 	if (!empty($LINK_CANONICAL)) {
 		$header_links .= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
 	}
-	if (!empty($META_DESCRIPTION)) {
-		global $controller, $ctype, $WT_TREE;
+	if (!empty($META_DESCRIPTION) && $WT_TREE->tree_title_html) {
+		global $controller, $ctype;
 		switch ($ctype) {
 			case '':
 				$header_links .= '<meta name="description" content="' . htmlspecialchars(strip_tags($controller->getPageTitle() . ' - ' . $WT_TREE->tree_title_html)) . '">';
