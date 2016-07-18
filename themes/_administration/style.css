@@ -64,10 +64,15 @@ button {
 .help-text{font-size: smaller; font-style: italic;}
 .help_content {
 	border: none;
-	font-size: .9em;
+	font-size: .85em;
 	font-style: italic;
 	font-weight: 400;
-	margin: 10px 0;
+	margin: 3px 0 10px;
+}
+.help_content a {
+	display: block;
+	font-weight: 600;
+	margin: 5px;
 }
 .input-group {margin:20px 0;}
 
@@ -89,8 +94,8 @@ button {
 .editable:hover {color:#ff0000; cursor:pointer;} /* both cursors needed for cross-browser support */
 
 /* jQuery.datatable styling over-rides */
-.odd {background-color:#fff; color:#000;}
-.even {background-color:#eee; color:#000;}
+.odd {background-color:#fff;}
+.even {background-color:#ddd;}
 .fg-button {padding:2px 6px;}
 .dataTables_paginate {float:left;}
 .dataTables_processing {float:left; margin-top:5px; padding-left:5px;}
@@ -489,15 +494,171 @@ table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
 }
 
 /* FAMILY TREE CONFIG */
-#file-options, #privacy, #config-media, #layout-options, #hide-show, #edit-options {padding:10px;}
-#file-options table, #privacy table, #config-media table, #layout-options table, #hide-show table, #edit-options table {padding:5px; width:100%;}
-#file-options tr, #privacy tr, #config-media tr, #layout-options tr, #hide-show tr, #edit-options tr {border-bottom:1px solid;}
-#file-options td, #privacy td, #config-media td, #layout-options td, #hide-show td, #edit-options td {line-height:25px; padding:5px 0; vertical-align:middle;}
-#file-options th,#privacy th,#config-media th,#layout-options th,#hide-show th,#edit-options th {border-bottom:1px solid #fff; color:#25a325; padding-top:20px;text-align:left;font-weight:normal;}
-[dir=rtl] #file-options th,[dir=rtl] #privacy th,[dir=rtl] #config-media th,[dir=rtl] #layout-options th,[dir=rtl] #hide-show th,[dir=rtl] #edit-options th {text-align:right;}
-#layout-options table#relatives {margin:0 50px;}
-#NEW_CALENDAR_FORMAT1 {margin:0 20px;}
-#file-options input[name="NEW_META_DESCRIPTION"] {width: 95%;}
+
+#family_tree_config h3.accordion {
+	display: none;
+}
+
+#family_tree_config #accordion .ui-accordion-content {
+	padding: 5px;
+}
+
+div.tree_config,
+div.tree_config .input_group,
+#website input[name="NEW_META_TITLE"],
+#website input[name="NEW_META_DESCRIPTION"] {
+	width: 73%;
+}
+
+div.tree_config {
+	color: #555;
+	margin: 0;
+	padding: 5px 10px;
+	width: 99%;
+}
+
+div.tree_config,
+div.tree_config .input_group {
+	display: inline-block;
+	vertical-align: top;
+}
+
+div.tree_config .input_group input[type="text"],
+div.tree_config .input_group input[type="password"] {
+	max-width: 90%;
+	width: 580px;
+}
+
+div.tree_config .input_group input[type="text"][name="gedcom"],
+div.tree_config .input_group input[type="text"][name="NEW_PEDIGREE_ROOT_ID"] {
+	width: 310px;
+}
+
+div.tree_config .sm_input_group input[type="text"] {
+	width: 30px;
+}
+
+div.tree_config .sm_input_group {
+	display: inline-block;
+	vertical-align: middle;
+	width: 25%;
+}
+
+div.tree_config .sm_input_group .input_label {
+	display: inline-block;
+	margin: 0px -5px 5px 0;
+	min-width: 130px;
+	padding: 8px 3px 7px;
+	width: 40%;
+	white-space: nowrap;
+}
+
+div.tree_config label {
+	display: inline-block;
+	font-weight: 600;
+	width: 25%;
+}
+
+div.tree_config input[type="radio"]+label {
+	font-weight: normal;
+	width: 30px;
+}
+
+div.tree_config select {
+	height: 32px;
+	width: 390px;
+}
+
+div.tree_config .input_label {
+	background-color: #ddd;
+	border: 1px solid #aaa;
+}
+
+div.tree_config .input_label.left{
+	border-right: 0;
+	border-radius: 5px 0 0 5px;
+	margin: 0px -5px 5px 0;
+	padding: 8px 3px 7px;
+}
+
+div.tree_config .input_label.right {
+	border-left: 0;
+	border-radius: 0 5px 5px 0;
+	margin: 0px 0 5px -5px;
+	padding: 8px 8px 7px;
+}
+
+div.tree_config span.help_content {
+	display: block;
+}
+
+div.tree_config span.help_content a {
+	color: #3383bb;
+	font-weight: 400;
+}
+
+#privacy h3 {
+	margin-bottom: 0px;
+}
+
+#privacy table {
+	width: 100%;
+	margin-top: 10px;
+	max-width: 100%;
+}
+
+#privacy thead {
+	border-bottom:1px solid;
+}
+
+#privacy th {
+	color:#25a325;
+	font-weight:normal;
+	max-width: 25%;
+	text-align:left;
+}
+
+#privacy td {
+	padding: 5px
+}
+
+#privacy td input[type="text"],
+#privacy td select {
+	padding: 4px;
+	width: 90%;
+}
+
+#privacy td button {
+	margin: 0
+}
+
+#layout-options h4 {
+	font-style: normal;
+}
+
+#layout-options table#relatives {
+	margin: 0 10px;
+	width: 100%;
+}
+
+#layout-options table#relatives td {
+	padding: 5px 20px;
+}
+
+#layout-options select#NEW_SHOW_PEDIGREE_PLACES_SUFFIX {
+	width: 80px;
+}
+
+#layout-options select#NEW_SHOW_PEDIGREE_PLACES {
+	width: 50px;
+}
+
+#hide-show table, #edit-options table {padding:5px; width:100%;}
+#hide-show tr, #edit-options tr {border-bottom:1px solid;}
+#hide-show td, #edit-options td {line-height:25px; padding:5px 0; vertical-align:middle;}
+#hide-show th, #edit-options th {border-bottom:1px solid #fff; color:#25a325; text-align:left;font-weight:normal;}
+[dir=rtl] #hide-show th,[dir=rtl] #edit-options th {text-align:right;}
+
 textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 .current_theme, .theme_box {float:left; height: 210px; padding: 10px; text-align:center;}
 #theme table {max-width:none;}
@@ -576,8 +737,8 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 #access td+td+td+td {text-align:center;}
 td.details {padding: 10px;}
 td.details:hover {color:#000;}
-tr.odd  + tr td.details {background-color:#d3e7ff;}
-tr.even + tr td.details {background-color:#eeffee;}
+tr.odd  + tr td.details {background-color:#fff;}
+tr.even + tr td.details {background-color:#ddd;}
 
 #main_select,#available_select,#right_select {min-width:150px; min-height:128px;}
 #change_blocks .topbottombar {text-align:center;}
@@ -929,7 +1090,7 @@ table#story_table {width: 99%;}
 .ui-autocomplete {padding:0; border:1px solid black; background-color:#ffffff; z-index:99999; list-style-position:outside; list-style:none; margin:0; max-height:200px;overflow-y:auto;}
 .ui-autocomplete li {margin:0; padding:2px 5px; cursor:default; display:block; font:menu;font-size:12px; line-height:14px; overflow:hidden;}
 .ui-autocomplete-loading {background:#ffffff url(images/indicator.gif) right center no-repeat;}
-.ui-autocomplete li:nth-child(odd) {background-color:#eee;}
+.ui-autocomplete li:nth-child(odd) {background-color:#ddd;}
 .ui-autocomplete a.ui-state-focus {color:#ff0000;}
 
 /* font-awesome icons */
@@ -1221,7 +1382,7 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #source_options select {height: 33px;}
 #source_list table a {color: #75ABFF; font-weight: 600;}
 
-/* RESPOSIVE layout adjustments */
+/* RESPONSIVE layout adjustments */
 @media (max-width: 350px) {
 }
 
@@ -1233,7 +1394,35 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 		width: 60px;
 	}
 	#admin_content {
-	    margin: 0 0 0 80px;
+		margin: 0 0 0 10%;
+		min-width: initial;
+		padding: 5px;
+		width: 88%;
+	}
+	.help_content {
+		display: none!important;
+	}
+	#family_tree_config ul {
+		display: none;
+	}
+	#family_tree_config h3.accordion {
+		display: block;
+	}
+	div.tree_config label {
+		display: block;
+		padding: 5px 0;
+	}
+	div.tree_config .input_label {
+		display: block;
+	}
+	div.tree_config,
+	div.tree_config .input_group,
+	#website input[name="NEW_META_TITLE"],
+	#website input[name="NEW_META_DESCRIPTION"] {
+		width: 98%;
+	}
+	div.tree_config .input_group label {
+		display: inline-block;
 	}
 }
 

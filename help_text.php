@@ -415,30 +415,6 @@ case 'ADVANCED_PLAC_FACTS':
 	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets.');
 	break;
 
-case 'CALENDAR_FORMAT':
-	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->Display(false, null, array());
-	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display(false, null, array());
-	$d3=new WT_Date('15 OCT 1582'); $d3=$d3->Display(false, null, array());
-	$title = WT_I18N::translate('Calendar conversion');
-	$text =
-		'<p>'.
-		WT_I18N::translate('Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars.').
-		'<p>'.
-		WT_I18N::translate('The following calendars are supported:').
-		'</p><ul>'.
-		'<li>'.WT_Date_Gregorian::calendarName().'</li>'.
-		'<li>'.WT_Date_Julian::calendarName().'</li>'.
-		'<li>'.WT_Date_Jewish::calendarName().'</li>'.
-		'<li>'.WT_Date_French::calendarName().'</li>'.
-		'<li>'.WT_Date_Hijri::calendarName().'</li>'.
-		'<li>'.WT_Date_Jalali::calendarName().'</li>'.
-		'</ul><p>'.
-		/* I18N: The three place holders are all dates. */ WT_I18N::translate('Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar.', $d1, $d2, $d3).
-		'</p><p>'.
-		WT_I18N::translate('In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out.').
-		'</p>';
-	break;
-
 case 'CHART_BOX_TAGS':
 	$title = WT_I18N::translate('Other facts to show in charts');
 	$text = WT_I18N::translate('This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the Pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 Standard.  For example, if you wanted the occupation to show up in the box, you would add "OCCU" to this field.');
@@ -449,39 +425,9 @@ case 'CHECK_MARRIAGE_RELATIONS':
 	$text = WT_I18N::translate('When calculating relationships, this option controls whether kiwitrees will include spouses/partners as well as blood relatives.');
 	break;
 
-case 'COMMON_NAMES_ADD':
-	$title = WT_I18N::translate('Names to add to common surnames (comma separated)');
-	$text = WT_I18N::translate('If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>');
-	break;
-
-case 'COMMON_NAMES_REMOVE':
-	$title = WT_I18N::translate('Names to remove from common surnames (comma separated)');
-	$text = WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>  Surnames entered here will also be removed from the Top-10 list on the Home Page.');
-	break;
-
-case 'COMMON_NAMES_THRESHOLD':
-	$title = WT_I18N::translate('Min. no. of occurrences to be a "common surname"');
-	$text = WT_I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page.');
-	break;
-
-case 'CONTACT_USER_ID':
-	$title = WT_I18N::translate('Genealogy contact');
-	$text = WT_I18N::translate('The person to contact about the genealogical data on this site.');
-	break;
-
-case 'DEFAULT_PEDIGREE_GENERATIONS':
-	$title = WT_I18N::translate('Default pedigree generations');
-	$text = WT_I18N::translate('Set the default number of generations to display on Descendancy and Pedigree charts.');
-	break;
-
 case 'EXPAND_NOTES':
 	$title = WT_I18N::translate('Automatically expand notes');
 	$text = WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.');
-	break;
-
-case 'EXPAND_RELATIVES_EVENTS':
-	$title = WT_I18N::translate('Automatically expand list of events of close relatives');
-	$text = WT_I18N::translate('This option controls whether or not to automatically expand the <i>Events of close relatives</i> list.');
 	break;
 
 case 'EXPAND_SOURCES':
@@ -504,19 +450,9 @@ case 'FAM_FACTS_UNIQUE':
 	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list.');
 	break;
 
-case 'FAM_ID_PREFIX':
-	$title = WT_I18N::translate('Family ID prefix');
-	$text = WT_I18N::translate('When a new family record is added online in kiwitrees, a new ID for that family will be generated automatically. The family ID will have this prefix.');
-	break;
-
 case 'FULL_SOURCES':
 	$title = WT_I18N::translate('Use full source citations');
 	$text = WT_I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don\'t use these fields, you can disable them when creating new source citations.');
-	break;
-
-case 'GEDCOM_ID_PREFIX':
-	$title = WT_I18N::translate('Individual ID prefix');
-	$text = WT_I18N::translate('When a new individual record is added online in kiwitrees, a new ID for that individual will be generated automatically. The individual ID will have this prefix.');
 	break;
 
 case 'GEDCOM_MEDIA_PATH':
@@ -533,25 +469,10 @@ case 'GEDCOM_MEDIA_PATH':
 		'</p>';
 	break;
 
-case 'GENERATE_GUID':
-	$title = WT_I18N::translate('Automatically create globally unique IDs');
-	$text = WT_I18N::translate('<b>GUID</b> in this context is an acronym for «Globally Unique ID».<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same person no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let kiwitrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.');
-	break;
-
 case 'HIDE_GEDCOM_ERRORS':
 	$title = WT_I18N::translate('GEDCOM errors');
 	$text = WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and kiwitrees understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.');
 	break;
-
-case 'HIDE_LIVE_PEOPLE':
-        $title = WT_I18N::translate('Privacy options');
-        $text = WT_I18N::translate('This option will enable all privacy settings and hide the details of living people, as defined or modified on the Privacy tab of each GEDCOM\'s configuration page.');
-        $text .= '<p>';
-		$text .= WT_I18N::plural('Note: "living" is defined (if no death or burial is known) as ending %d year after birth or estimated birth.','Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth.', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'), get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
-		$text .= ' ';
-		$text .= WT_I18N::translate('The length of time after birth can be set on the Privacy configuration tab option "Age at which to assume a person is dead".');
-		$text .= '</p>';
-        break;
 
 case 'INDI_FACTS_ADD':
 	$title = WT_I18N::translate('All individual facts');
@@ -568,66 +489,9 @@ case 'INDI_FACTS_UNIQUE':
 	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list.');
 	break;
 
-case 'KEEP_ALIVE':
-	$title = WT_I18N::translate('Extend privacy to dead people');
-	$text = WT_I18N::translate('In some countries, privacy laws apply not only to living people, but also to those who have died recently.  This option will allow you to extend the privacy rules for living people to those who were born or died within a specified number of years.  Leave these values empty to disable this feature.');
-	break;
-
-case 'LANGUAGE':
-	$title = WT_I18N::translate('Language');
-	$text = WT_I18N::translate('If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.');
-	break;
-
-case 'MAX_ALIVE_AGE':
-	$title = WT_I18N::translate('Age at which to assume a person is dead');
-	$text = WT_I18N::translate('If this person has any events other than Death, Burial, or Cremation more recent than this number of years, he is considered to be "alive".  Children\'s birth dates are considered to be such events for this purpose.');
-	break;
-
-case 'MAX_DESCENDANCY_GENERATIONS':
-	$title = WT_I18N::translate('Maximum descendancy generations');
-	$text = WT_I18N::translate('Set the maximum number of generations to display on Descendancy charts.');
-	break;
-
-case 'MAX_PEDIGREE_GENERATIONS':
-	$title = WT_I18N::translate('Maximum pedigree generations');
-	$text = WT_I18N::translate('Set the maximum number of generations to display on Pedigree charts.');
-	break;
-
-case 'MEDIA_DIRECTORY':
-	$title = WT_I18N::translate('Media folder');
-	$text =
-		'<p>'.
-		WT_I18N::translate('This folder will be used to store the media files for this family tree.').
-		'</p><p>'.
-		WT_I18N::translate('If you select a different folder, you must also move any media files from the existing folder to the new one.').
-		'</p><p>'.
-		WT_I18N::translate('If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate.').
-		'</p>';
-	break;
-
-case 'MEDIA_ID_PREFIX':
-	$title = WT_I18N::translate('Media ID prefix');
-	$text = WT_I18N::translate('When a new media record is added online in kiwitrees, a new ID for that media will be generated automatically. The media ID will have this prefix.');
-	break;
-
-case 'MEDIA_UPLOAD':
-	$title = WT_I18N::translate('Who can upload new media files?');
-	$text = WT_I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.');
-	break;
-
-case 'NOTE_ID_PREFIX':
-	$title = WT_I18N::translate('Note ID prefix');
-	$text = WT_I18N::translate('When a new note record is added online in kiwitrees, a new ID for that note will be generated automatically. The note ID will have this prefix.');
-	break;
-
 case 'PEDIGREE_FULL_DETAILS':
 	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Show chart details by default');
 	$text = /* I18N: Help text for the “Show chart details by default” tree configuration setting */ WT_I18N::translate('This is the initial setting for the “show details” option on the charts.');
-	break;
-
-case 'PEDIGREE_LAYOUT':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Default pedigree chart layout');
-	$text = /* I18N: Help text for the “Default pedigree chart layout” tree configuration setting */ WT_I18N::translate('This option indicates whether the Pedigree chart should be generated in landscape or portrait mode.');
 	break;
 
 case 'PEDIGREE_SHOW_GENDER':
@@ -675,11 +539,6 @@ case 'REPO_FACTS_UNIQUE':
 	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list.');
 	break;
 
-case 'REPO_ID_PREFIX':
-	$title = WT_I18N::translate('Repository ID prefix');
-	$text = WT_I18N::translate('When a new repository record is added online in kiwitrees, a new ID for that repository will be generated automatically. The repository ID will have this prefix.');
-	break;
-
 case 'REQUIRE_AUTHENTICATION':
 	$title = WT_I18N::translate('Require visitor authentication');
 	$text = WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.');
@@ -688,16 +547,6 @@ case 'REQUIRE_AUTHENTICATION':
 case 'SHOW_COUNTER':
 	$title = WT_I18N::translate('Hit counters');
 	$text = WT_I18N::translate('Show hit counters on the Home and Individual pages.');
-	break;
-
-case 'SHOW_DEAD_PEOPLE':
-	$title = WT_I18N::translate('Show dead people');
-	$text = WT_I18N::translate('Set the privacy access level for all dead people.');
-	break;
-
-case 'SHOW_EST_LIST_DATES':
-	$title = WT_I18N::translate('Estimated dates for birth and death');
-	$text = WT_I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.');
 	break;
 
 case 'SHOW_FACT_ICONS':
@@ -720,40 +569,14 @@ case 'SHOW_LEVEL2_NOTES':
 	$text = WT_I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual\'s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual\'s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.');
 	break;
 
-case 'SHOW_LIVING_NAMES':
-	$title = WT_I18N::translate('Names of private individuals');
-	$text = WT_I18N::translate('This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record.');
-
-	break;
-
-case 'SHOW_MEDIA_DOWNLOAD':
-	$title = WT_I18N::translate('Show download link in media viewer');
-	$text = WT_I18N::translate('The Media Viewer can show a link which, when clicked, will download the Media file to the local PC.<br><br>You may want to hide the download link for security reasons.');
-	break;
-
 case 'SHOW_PARENTS_AGE':
 	$title = WT_I18N::translate('Show age of parents next to child\'s birthdate');
 	$text = WT_I18N::translate('This option controls whether or not to show age of father and mother next to child\'s birthdate on charts.');
 	break;
 
-case 'SHOW_PEDIGREE_PLACES':
-	$title = WT_I18N::translate('Abbreviate place names');
-	$text = WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.');
-	break;
-
-case 'SHOW_PRIVATE_RELATIONSHIPS':
-	$title = WT_I18N::translate('Show private relationships');
-	$text = WT_I18N::translate('This option will retain family links in private records.  This means that you will see empty "private" boxes on the pedigree chart and on other charts with private people.');
-	break;
-
 case 'SHOW_STATS':
 	$title = WT_I18N::translate('Execution statistics');
 	$text = WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.');
-	break;
-
-case 'SOURCE_ID_PREFIX':
-	$title = WT_I18N::translate('Source ID prefix');
-	$text = WT_I18N::translate('When a new source record is added online in kiwitrees, a new ID for that source will be generated automatically.  The source ID will have this prefix.');
 	break;
 
 case 'SOUR_FACTS_ADD':
@@ -769,11 +592,6 @@ case 'SOUR_FACTS_QUICK':
 case 'SOUR_FACTS_UNIQUE':
 	$title = WT_I18N::translate('Unique source facts');
 	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list.');
-	break;
-
-case 'SUBLIST_TRIGGER_I':
-	$title = WT_I18N::translate('Maximum number of surnames on individual list');
-	$text = WT_I18N::translate('Long lists of persons with the same surname can be broken into smaller sub-lists according to the first letter of the individual\'s given name.<br><br>This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero.');
 	break;
 
 case 'SURNAME_TRADITION':
@@ -843,34 +661,6 @@ case 'USE_GEONAMES':
 case 'USE_RELATIONSHIP_PRIVACY':
 	$title = WT_I18N::translate('Use relationship privacy');
 	$text = WT_I18N::translate('<b>No</b> means that authenticated users can see the details of all living people.  <b>Yes</b> means that users can only see the private information of living people they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user\'s account details.');
-	break;
-
-case 'USE_RIN':
-	$title = WT_I18N::translate('Use RIN number instead of GEDCOM ID');
-	$text = WT_I18N::translate('Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN.');
-	break;
-
-case 'USE_SILHOUETTE':
-	$title = WT_I18N::translate('Use silhouettes');
-	$text = WT_I18N::translate('Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<p>This image might be used when the gender of the individual is unknown:</p>') .
-	'<p style="text-align:center;"><img src="' . $WT_IMAGES['default_image_U'] . '" style="width:40px;" alt="" title="" /></p>';
-	break;
-
-case 'Watermarks':
-	$title = WT_I18N::translate('Watermarks');
-	$text  =
-		'<p>' .
-		WT_I18N::translate('A watermark is text that is added to an image, to discourage others from copying it without permission.') .
-		'</p><p>' .
-		WT_I18N::translate('Watermarks are optional and normally shown just to visitors.') .
-		'</p><p>' .
-		WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server.') .
-		'</p>';
-	break;
-
-case 'WEBMASTER_USER_ID':
-	$title = WT_I18N::translate('Technical help contact');
-	$text = WT_I18N::translate('The person to be contacted about technical questions or errors encountered on your site.');
 	break;
 
 //////////////////////////////////////////////////////////////////////////////
