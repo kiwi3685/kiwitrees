@@ -18,8 +18,8 @@ class kampenstadsarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.stadsarchiefkampen.nl/direct-zoeken-2/doorzoek-alles-2?mivast=69&miadt=69&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $surn . '&mip1=' . $givn;
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+		return $link = 'http://www.stadsarchiefkampen.nl/direct-zoeken-2/doorzoek-alles-2?mivast=69&miadt=69&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $fullname . '';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
