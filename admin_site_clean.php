@@ -113,11 +113,7 @@ if (isset($_REQUEST['to_delete'])) {
 				foreach ($entries as $entry) {
 					if ($entry[0] != '.') {
 						$file_path = WT_DATA_DIR . $entry;
-						if (is_dir($file_path)) {
-							$icon = '<i class="fa fa-folder-open-o"></i>';
-						} else {
-							$icon = '<i class="fa fa-file-o"></i>';
-						}
+						$icon = '<i class="fa ' . (is_dir($file_path)? 'fa-folder-open-o' : 'fa-file-o') . '"></i>';
 						if (in_array($entry, $locked_by_context)) { ?>
 							<li class="facts_value" name="<?php echo $entry; ?>" id="lock_<?php echo $entry; ?>" >
 								<i class="icon-resn-confidential"></i>
