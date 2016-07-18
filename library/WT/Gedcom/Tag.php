@@ -261,7 +261,7 @@ class WT_Gedcom_Tag {
 		case 'MARR_PARTNERS': return WT_I18N::translate('Registered partnership');
 		case 'MARR_RELIGIOUS': return WT_I18N::translate('Religious marriage');
 		case 'MARR_UNKNOWN': return WT_I18N::translate('Marriage type unknown');
-		case 'MARR_COMMON': return WT_I18N::translate('Common law marriage');
+		case 'MARR_COMMON': return WT_I18N::translate('Common-law marriage');
 		case 'MARS': return /* I18N: gedcom tag MARS */ WT_I18N::translate('Marriage settlement');
 		case 'MEDI': return /* I18N: gedcom tag MEDI */ WT_I18N::translate('Media type');
 		case 'NAME':
@@ -580,7 +580,7 @@ class WT_Gedcom_Tag {
 			case 'F': return WT_I18N::translate('Christening of a sister');
 			default:  return WT_I18N::translate('Christening of a sibling');
 			}
-		case '_COML': return /* I18N: gedcom tag _COML */ WT_I18N::translate('Common Law Marriage');
+		case '_COML': return /* I18N: gedcom tag _COML */ WT_I18N::translate('Common-law marriage');
 		case '_CREM_CHIL':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate('Cremation of a son');
