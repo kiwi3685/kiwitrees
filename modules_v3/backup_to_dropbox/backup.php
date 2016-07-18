@@ -21,7 +21,8 @@ class Backup {
      * @param  [type] $dirtocopy [description]
      * @return [type]            [description]
      */
-    public function upload($dirtocopy){
+    public function upload($dirtocopy, $db_exclude){
+		$DB_EXCLUDE = explode(',', $db_exclude);
 
         if(!file_exists($dirtocopy)){
 
@@ -35,25 +36,30 @@ class Backup {
                 $this->uploadFile($dirtocopy);
 
             } else { //otherwise collect all files and folders
+				$dirtocopy	= str_replace("\\", "/", $dirtocopy);
+				$exclude	= array_merge($this->ignoreList(), $DB_EXCLUDE);
+				$filter		= function ($file, $key, $iterator) use ($exclude) {
+					if (!in_array($file->getFilename(), $exclude)) {
+						return true;
+					}
+				};
 
-                $iter = new \RecursiveIteratorIterator(
-                    new \RecursiveDirectoryIterator($dirtocopy, \RecursiveDirectoryIterator::SKIP_DOTS),
-                    \RecursiveIteratorIterator::SELF_FIRST,
-                    \RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
-                );
+				$innerIterator = new RecursiveDirectoryIterator(
+					$dirtocopy,
+					RecursiveDirectoryIterator::SKIP_DOTS
+				);
+
+				$iterator = new RecursiveIteratorIterator(
+					new RecursiveCallbackFilterIterator($innerIterator, $filter)
+				);
 
                 //loop through all entries
-                foreach($iter as $file) {
-                    $file = str_replace("\\", "/", $file);
-                    $words = explode('/',$file);
-                    $stop = end($words);
-
-                    //if file is not in the ignore list pass to uploadFile method
-                    if(!in_array($stop, $this->ignoreList())){
-                        $this->uploadFile($file);
-                    }
-
+                foreach ($iterator as $pathname => $fileInfo) {
+					$file = str_replace(WT_DATA_DIR, "", $fileInfo);
+					$file = str_replace("\\", "/", $file);
+                    $this->uploadFile($file);
                 }
+
             }
         }
     }
@@ -61,7 +67,7 @@ class Backup {
     /**
      * uploadFile upload file to dropbox using the Dropbox API
      * @param  string $file path to file
-     */
+    */
     public function uploadFile($file){
         $f = fopen($file, "rb");
         $this->dbxClient->uploadFile("/$file", Dropbox\WriteMode::add(), $f);
@@ -71,14 +77,14 @@ class Backup {
     /**
      * ignoreList array of filenames or directories to ignore
      * @return array
-     */
+    */
     public function ignoreList(){
         return array(
             '.gitignore',
+			'.DS_Store',
             '.htaccess',
             'config.ini.php',
-            'cache',
-            'media', // temporary
+            'cache'
         );
     }
 }
