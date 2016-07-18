@@ -85,8 +85,8 @@ if (WT_Filter::post('action') == 'languages') {
 						<div class="help_text">
 							<span class="help_content">
 								<?php echo /* I18N: Help text for the "Data folder" site configuration setting */ WT_I18N::translate('This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.'); ?>
-								<a href="#" class="more accepted" style="display: block; font-weight: 600;"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
-								<span class="hidden" style="display: none";>
+								 <a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
+								<span class="hidden" style="display: none;">
 									<?php echo /* I18N: “Apache” is a software program. */ WT_I18N::translate('To protect this private data, kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.'); ?>
 									<br>
 									<?php echo WT_I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder.'); ?>
@@ -429,7 +429,7 @@ if (WT_Filter::post('action') == 'languages') {
 						<div class="help_text">
 							<span class="help_content">
 								<?php echo WT_I18N::translate('Choose to display a standard header for your custom welcome text on the login page.'); ?>
-								<a href="#" class="more accepted" style="display: block; font-weight: 600;"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
+								 <a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
 								<span class="hidden" style="display: none";>
 									<?php echo /* Explanation for custom welcome text option */ WT_I18N::translate('When your users change language, this header will appear in the new language. If set to <b>Yes</b>, the header will look like this:<div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b><br>Access is permitted to users who have an account and a password for this website.</center></div>'); ?>
 								</span>
@@ -447,7 +447,7 @@ if (WT_Filter::post('action') == 'languages') {
 						<div class="help_text">
 							<span class="help_content">
 								<?php echo WT_I18N::translate('Here you can choose text to appear on the login screen. You must determine which predefined text is most appropriate. You can also choose to enter your own custom welcome text.'); ?>
-								<a href="#" class="more accepted" style="display: block; font-weight: 600;"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
+								 <a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
 								<span class="hidden" style="display: none";>
 									<?php echo /* Explanation for custom welcome text */ WT_I18N::translate('Please refer to the Help text associated with the <b>Custom Welcome text</b> field for more information.<br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b><br>Access to this site is permitted to every visitor who has a user account.<br>If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.</center></div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b><br>Access to this site is permitted to <u>authorized</u> users only.<br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</center></div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class="list_value_wrap"><center><b>Welcome to this Genealogy website</b><br>Access to this site is permitted to <u>family members only</u>.<br>If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</center></div></li></ul>'); ?>
 								</span>
