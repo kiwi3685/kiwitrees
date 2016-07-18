@@ -1831,8 +1831,8 @@ class WT_Person extends WT_GedcomRecord {
 		$full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
 		// Combine two consecutive preferred names into one.
-//		$full = preg_replace('/(<span class="starredname">)(.*)(</span>&nbsp;<span class="starredname">)(.*)(</span>)/', '/<span class="starredname">$2&nbsp;$4</span>/', $full);
 		$full = preg_replace('/<span class=\"starredname\">(.*)<\/span> <span class=\"starredname\">(.*)<\/span>/', '<span class="starredname">$1 $2</span>', $full);
+
 		// Remove prefered-name indicater - they don't go in the database
 		$GIVN	= str_replace('*', '', $GIVN);
 		$fullNN	= str_replace('*', '', $fullNN);
