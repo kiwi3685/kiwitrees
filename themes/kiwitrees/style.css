@@ -178,7 +178,7 @@ h2 {
 
 h4 {
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 input:required:valid,
@@ -1282,6 +1282,7 @@ a:hover .nameZoom {
 
 .help_content {
 	font-size: .9em;
+	font-style: italic;
 	margin-left: 10px;
 	margin-right: 10px;
 	max-height: 600px;
@@ -1297,8 +1298,6 @@ a:hover .nameZoom {
 
 .help_text .help_content {
 	border: none;
-	font-size: .9em;
-	font-style: italic;
 	margin: 10px 0;
 	width: 100%;
 }
@@ -1861,7 +1860,7 @@ a.showit:hover > span {
 }
 
 .ui-autocomplete li:nth-child(odd) {
-	background-color: #eee;
+	background-color: #ddd;
 }
 
 ul.ui-autocomplete li.ui-state-focus a {
@@ -3266,7 +3265,7 @@ div[id^="caldiv"] td {
 }
 
 .even {
-	background-color: #eee;
+	background-color: #ddd;
 }
 
 .css_right {
