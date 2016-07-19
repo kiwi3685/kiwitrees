@@ -25,7 +25,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  */
-@import url("../../library/framework/FontAwesome/css/KT_font-awesome.css");
+@import url("../../library/fontawesome/css/KT_font-awesome.css");
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
