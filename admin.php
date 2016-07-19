@@ -1548,6 +1548,8 @@ function old_paths() {
 		WT_ROOT.'themes/_administration/images/kiwi_webtrees_logo_white.png',
 		WT_ROOT.'modules_v3/descendancy_report',
 		WT_ROOT.'modules_v3/fancy_treeview/help_text.php',
+		WT_ROOT.'library/framework', // content moved to library/
+
 	);
 }
 

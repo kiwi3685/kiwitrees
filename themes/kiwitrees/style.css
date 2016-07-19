@@ -25,7 +25,7 @@
  *
 */
 
-@import url("../../library/framework/fontawesome/css/KT_font-awesome.css");
+@import url("../../library/fontawesome/css/KT_font-awesome.css");
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {
