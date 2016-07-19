@@ -2127,7 +2127,7 @@ case 'reorder_children':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<span class="help_content">
-			<?php echo WT_I18N::translate('Either click the "sort by date" button or click a row then drag-and-drop to re-order media.'); ?>
+			<?php echo WT_I18N::translate('Either click the "sort by date" button or click a row then drag-and-drop to re-order.'); ?>
 		</span>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="action" value="reorder_update">
@@ -2530,7 +2530,7 @@ case 'reorder_fams':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<span class="help_content">
-			<?php echo WT_I18N::translate('Either click the "sort by date" button or click a row then drag-and-drop to re-order media'); ?>
+			<?php echo WT_I18N::translate('Either click the "sort by date" button or click a row then drag-and-drop to re-order.'); ?>
 		</span>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="action" value="reorder_fams_update">

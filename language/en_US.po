@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-07-19 15:39+1200\n"
-"PO-Revision-Date: 2016-07-19 15:41+1200\n"
+"POT-Creation-Date: 2016-07-20 08:47+1200\n"
+"PO-Revision-Date: 2016-07-20 08:49+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -4274,8 +4274,8 @@ msgstr "You do not have permission to view this page."
 #: modules_v3/review_changes/module.php:35
 #: modules_v3/widget_review_changes/module.php:35
 #: themes/_administration/header.php:105 themes/colors/header.php:126
-#: themes/kiwitrees/header.php:135 themes/levy/header.php:118
-#: themes/webtrees/header.php:110 themes/xenea/header.php:118
+#: themes/kiwitrees/header.php:135 themes/webtrees/header.php:110
+#: themes/xenea/header.php:118
 msgid "Pending changes"
 msgstr "Pending changes"
 
@@ -4542,11 +4542,13 @@ msgstr "Re-order media"
 msgid "Re-order children"
 msgstr "Re-order children"
 
-#: edit_interface.php:2130
+#: edit_interface.php:2130 edit_interface.php:2533
 msgid ""
 "Either click the \"sort by date\" button or click a row then drag-and-drop "
-"to re-order media."
-msgstr "Click a row, then drag-and-drop to re-order media "
+"to re-order."
+msgstr ""
+"Either click the \"sort by date\" button or click a row then drag-and-drop "
+"to re-order."
 
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
@@ -4662,12 +4664,6 @@ msgstr "Add"
 #: library/WT/Controller/Individual.php:341
 msgid "Re-order families"
 msgstr "Re-order families"
-
-#: edit_interface.php:2533
-msgid ""
-"Either click the \"sort by date\" button or click a row then drag-and-drop "
-"to re-order media"
-msgstr "Click a row, then drag-and-drop to re-order media "
 
 #: edit_interface.php:2619
 msgid "Possible duplicates"
@@ -10332,11 +10328,11 @@ msgstr[1] "%d logged-in users"
 msgid "If you have any questions or comments please contact"
 msgstr "If you have any questions or comments please contact"
 
-#: includes/functions/functions_print.php:444 themes/levy/functions.php:61
+#: includes/functions/functions_print.php:444
 msgid "For technical support and information contact"
 msgstr "For technical support and information contact"
 
-#: includes/functions/functions_print.php:450 themes/levy/functions.php:55
+#: includes/functions/functions_print.php:450
 msgid "For help with genealogy questions contact"
 msgstr "For help with genealogy questions contact"
 
@@ -16476,7 +16472,6 @@ msgstr "Resources"
 #: modules_v3/families/module.php:144 modules_v3/individuals/module.php:144
 #: search.php:34 search.php:240 search.php:521 search_advanced.php:299
 #: themes/colors/header.php:118 themes/colors/header.php:119
-#: themes/levy/header.php:110 themes/levy/header.php:111
 #: themes/webtrees/header.php:122 themes/webtrees/header.php:123
 #: themes/xenea/header.php:108
 msgid "Search"
@@ -22850,9 +22845,7 @@ msgid "A list of sources"
 msgstr "A list of sources"
 
 #. I18N: Name of a module. (A list of users who are online now)
-#. I18N: Name of a module. (A list of users who are online now)
 #: modules_v3/logged_in/module.php:35 modules_v3/widget_logged_in/module.php:35
-#: themes/levy/footer.php:40
 msgid "Who is online"
 msgstr "Who is online"
 
@@ -25539,8 +25532,6 @@ msgstr "Choose a page"
 #: themes/colors/templates/personbox_template.php:52
 #: themes/kiwitrees/templates/compactbox_template.php:54
 #: themes/kiwitrees/templates/personbox_template.php:48
-#: themes/levy/templates/compactbox_template.php:57
-#: themes/levy/templates/personbox_template.php:51
 #: themes/webtrees/templates/compactbox_template.php:57
 #: themes/webtrees/templates/personbox_template.php:51
 #: themes/xenea/templates/compactbox_template.php:57
@@ -25637,14 +25628,6 @@ msgstr "Teal Top"
 #: themes/colors/theme.php:128
 msgid "colors"
 msgstr "colors"
-
-#: themes/levy/functions.php:51
-msgid "For technical support or genealogy questions, please contact"
-msgstr "For technical support or genealogy questions, please contact"
-
-#: themes/levy/header.php:63
-msgid "Open in full browser window"
-msgstr "Open in full browser window"
 
 #. I18N: Name of a theme.
 #: themes/webtrees/theme.php:37
@@ -26034,6 +26017,17 @@ msgstr "Orientation"
 #: modules_v3/pedigree_report/report.bak:737
 msgid "Pedigree Chart"
 msgstr "Pedigree Chart"
+
+#~ msgid ""
+#~ "Either click the \"sort by date\" button or click a row then drag-and-"
+#~ "drop to re-order media"
+#~ msgstr "Click a row, then drag-and-drop to re-order media "
+
+#~ msgid "For technical support or genealogy questions, please contact"
+#~ msgstr "For technical support or genealogy questions, please contact"
+
+#~ msgid "Open in full browser window"
+#~ msgstr "Open in full browser window"
 
 #~ msgid "Individual ID prefix"
 #~ msgstr "Individual ID prefix"
