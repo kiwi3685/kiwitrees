@@ -406,9 +406,10 @@ function addnewchild(famid, gender) {
   });
 }
 
-function addnewspouse(famid, famtag) {
+function addnewspouse(pid, famid, famtag) {
   return edit_interface({
     "action": "addspouse",
+	"pid": pid,
     "famid": famid,
     "famtag": famtag
   });
@@ -1590,7 +1591,6 @@ jQuery(".help_content").on("click", ".more", function(e){
 	jQuery(this).next(".hidden").slideToggle();
 	jQuery(this).parent().siblings().find(".hidden").slideUp();
 });
-
 
 /*
 * hoverIntent | Copyright 2011 Brian Cherne

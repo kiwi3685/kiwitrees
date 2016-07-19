@@ -200,7 +200,7 @@ function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='',
 	$hfams = $wife->getChildFamilies();
 	$hparents = false;
 	$upfamid = "";
-	
+
 	if ($hfams || $sosa) {
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
@@ -324,8 +324,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
 					$famids = WT_Person::getInstance($chil)->getSpouseFamilies();
-					
-					
+
+
 					$maxfam = count($famids)-1;
 					for ($f=0; $f<=$maxfam; $f++) {
 						$famid_child = $famids[$f]->getXref();
@@ -340,7 +340,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							else echo " align=\"right\">";
 							//if ($f==$maxfam) echo "<img height=\"50%\"";
 							//else echo "<img height=\"100%\"";
-							
+
 							//find out how many cousins there are to establish vertical line on second families
 							$family=WT_Family::getInstance($famid_child);
 							$fchildren=$family->getChildren();
@@ -351,7 +351,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							if ($show_cousins>0) {
 								if (($cbheight * $kids) > $bheight) {
 									$PBadj = ($Pheader/2+$kids*4.5);
-								} 
+								}
 							}
 
 							if ($PBadj<0) $PBadj=0;
@@ -561,8 +561,8 @@ function print_cousins($famid, $personcount=1) {
 	if ($save_show_full) {
 		$bheight = $cbheight;
 		$bwidth  = $cbwidth;
-	}  
-	
+	}
+
 	$show_full = false;
 	echo '<td valign="middle" height="100%">';
 	if ($kids) {
@@ -634,11 +634,13 @@ function print_parents($famid, $personcount=1) {
 				break;
 			}
 			echo '<div id="husb_parents">';
+				$husb_father = WT_Person::getInstance($hparents['HUSB']);
+				$husb_mother = WT_Person::getInstance($hparents['WIFE']);
+
 				if (!empty($upfamid)) {
 					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
 				}
 				// husbants's father
-				$husb_father = WT_Person::getInstance($hparents['HUSB']);
 				if ($hparents && !empty($husb_father)) {
 					echo '<div class="fam_parent">';
 						print_pedigree_person(WT_Person::getInstance($hparents['HUSB']), 3, 4, $personcount);
@@ -646,12 +648,11 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_mother, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 				}
 				// husband's mother
-				$husb_mother = WT_Person::getInstance($hparents['WIFE']);
 				if ($hparents && !empty($husb_mother)) {
 					echo '<div class="fam_parent">';
 						print_pedigree_person($husb_mother, 3, 5, $personcount);
@@ -659,9 +660,9 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $husb_father, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 				}
 				/* marriage details */
 				echo '<div class="center">';
@@ -680,12 +681,12 @@ function print_parents($famid, $personcount=1) {
 						  	<div class="person_box empty_parent">
 						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
 						 		<a href="#" onclick="return addnewparentfamily(\'', $husb->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 			echo '</div>';
 		}
 
@@ -701,11 +702,13 @@ function print_parents($famid, $personcount=1) {
 					break;
 				}
 			echo '<div id="wife_parents">';
+				$wife_father = WT_Person::getInstance($wparents['HUSB']);
+				$wife_mother = WT_Person::getInstance($wparents['WIFE']);
+
 				if (!empty($upfamid)) {
 					echo '<p>', print_url_arrow($upfamid, '?famid='. $upfamid. '&amp;ged='. WT_GEDURL, $upfamid, 2), '</p>';
 				}
 				// wife's father
-				$wife_father = WT_Person::getInstance($wparents['HUSB']);
 				if ($wparents && !empty($wife_father)) {
 					echo '<div class="fam_parent">';
 						print_pedigree_person(WT_Person::getInstance($wparents['HUSB']), 3, 4, $personcount);
@@ -713,12 +716,11 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_father, '\', \'HUSB\', \'', $upfamid, '\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 				}
 				// wife's mother
-				$wife_mother = WT_Person::getInstance($wparents['WIFE']);
 				if ($wparents && !empty($wife_mother)) {
 					echo '<div class="fam_parent">';
 						print_pedigree_person($wife_mother, 3, 5, $personcount);
@@ -726,9 +728,9 @@ function print_parents($famid, $personcount=1) {
 				} else {
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
-						 		<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
+						 		<a href="#" onclick="return addnewparentfamily(\'', $wife_mother, '\', \'WIFE\', \'', $upfamid, '\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 				}
 				/* marriage details */
 				echo '<div class="center">';
@@ -747,12 +749,12 @@ function print_parents($famid, $personcount=1) {
 						  	<div class="person_box empty_parent">
 						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'HUSB\', \'new\');"><i class="icon-sex_m_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 					echo '<div class="fam_parent">
 						  	<div class="person_box empty_parent">
 						 		<a href="#" onclick="return addnewparentfamily(\'', $wife->getXref(), '\', \'WIFE\', \'new\');"><i class="icon-sex_f_15x15"></i><span>', WT_I18N::translate('Add new'), '</span></a>
 						  	</div>
-					</div>';		
+					</div>';
 			echo '</div>';
 		}
 	echo '</div>';
@@ -831,7 +833,7 @@ function print_children($famid, $childid = "", $personcount="1") {
 				<a href="#" onclick="return addnewchild(\'',$famid,'\');">' . WT_I18N::translate('Add a child to this family') . '</a>
 				<a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>
 				<a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>
-			</div>';					
+			</div>';
 		}
 	echo '</div>';
 
@@ -861,20 +863,20 @@ function print_children($famid, $childid = "", $personcount="1") {
 	if ((count($children) > 0) || (count($newchildren) > 0) || (count($oldchildren) > 0)) {
 			foreach ($children as $indexval => $chil) {
 				if (!in_array($chil, $oldchildren)) {
-					echo '<div class="fam_child">'; 
+					echo '<div class="fam_child">';
 						print_pedigree_person(WT_Person::getInstance($chil), 3, 8, $personcount);
 					echo '</div>';
 					$personcount++;
 				}
 			}
 			foreach ($newchildren as $indexval => $chil) {
-				echo '<div class="fam_child">'; 
+				echo '<div class="fam_child">';
 					print_pedigree_person(WT_Person::getInstance($chil), 3, 0, $personcount);
 					$personcount++;
 				echo '</div>';
 			}
 			foreach ($oldchildren as $indexval => $chil) {
-				echo '<div class="fam_child">'; 
+				echo '<div class="fam_child">';
 					print_pedigree_person(WT_Person::getInstance($chil), 3, 0, $personcount);
 					$personcount++;
 				echo '</div>';
@@ -883,7 +885,7 @@ function print_children($famid, $childid = "", $personcount="1") {
 	} else {
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
 			echo '<div><i class="icon-childless"></i> '.WT_I18N::translate('This family remained childless').'</div>';
-			echo '<div class="fam_child">'; 
+			echo '<div class="fam_child">';
 				print_pedigree_person(WT_Person::getInstance($childid), 3, 0, $personcount);
 				$personcount++;
 			echo '</div>';
