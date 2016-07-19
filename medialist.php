@@ -256,7 +256,7 @@ $medialist = WT_Query_Media::mediaList(
 										echo WT_Gedcom_Tag::getLabelValue('FILE' , $mediaobject->getFilename());
 									}
 									echo WT_Gedcom_Tag::getLabelValue('FORM' , $mediaobject->mimeType());
-									echo WT_Gedcom_Tag::getLabelValue('TYPE' , $mediaobject->getMediaType());
+									echo WT_Gedcom_Tag::getLabelValue('TYPE' , WT_Gedcom_Tag::getFileFormTypeValue($mediaobject->getMediaType()));
 									switch ($mediaobject->isPrimary()) {
 									case 'Y':
 										echo WT_Gedcom_Tag::getLabelValue('_PRIM', WT_I18N::translate('yes'));
