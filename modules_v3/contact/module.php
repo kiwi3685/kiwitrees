@@ -147,7 +147,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 				$errors.=
 					'<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links.').'</p>'.
 					'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.” */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.'. $match[2], $match[1]).'</p>'.
-				AddToLog('Possible spam message from "' . $from_name . '"/"' . $from_email . '", subject="' . $subject . '", body="' . $body . '"', 'error');
+				AddToLog('Possible spam message from "' . $from_name . '"/"' . $from_email . '", IP="'.$WT_REQUEST->getClientIp().'" subject="' . $subject . '", body="' . $body . '"', 'error');
 				$action='compose';
 			}
 			$from = $from_email;
