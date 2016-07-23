@@ -1315,7 +1315,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	if ($fact == 'REPO' || $fact == 'SOUR' || $fact == 'OBJE' || $fact == 'FAMC')
 		$islink = true;
 
-	if ($fact == 'SHARED_NOTE_EDIT' || $fact == 'SHARED_NOTE') {$islink = 1; $fact = "NOTE";}
+	if ($fact === 'SHARED_NOTE_EDIT' || $fact === 'SHARED_NOTE') {$islink = 1; $fact = "NOTE";}
 
 	// label
 	echo '<div id="' . $element_id . '_factdiv" ';
@@ -1325,7 +1325,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	echo ' >';
 
 	if (in_array($fact, $subnamefacts) || $fact == "LATI" || $fact == "LONG") {
-		echo '<label class="1"  style="display: inline-block; vertical-align: top;">';
+		echo '<label class="1" style="display: inline-block; vertical-align: top;">';
 	} else {
 		echo '<label>';
 	}
@@ -1338,13 +1338,13 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	if ($label) {
 		echo $label;
 	} elseif ($upperlevel) {
-		echo WT_Gedcom_Tag::getLabel($upperlevel.':'.$fact);
+		echo WT_Gedcom_Tag::getLabel($upperlevel . ':' . $fact);
 	} else {
 		echo WT_Gedcom_Tag::getLabel($fact);
 	}
 
 	// tag level
-	if ($level>0) {
+	if ($level > 0) {
 		if ($fact == "TEXT" && $level>1) {
 			echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level-1, "\">";
 			echo "<input type=\"hidden\" name=\"islink[]\" value=\"0\">";
@@ -1419,11 +1419,11 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	// retrieve linked NOTE
 	if ($fact == "NOTE" && $islink) {
-		$note1=WT_Note::getInstance($value);
+		$note1 = WT_Note::getInstance($value);
 		if ($note1) {
-			$noterec=$note1->getGedcomRecord();
+			$noterec = $note1->getGedcomRecord();
 			preg_match("/$value/i", $noterec, $notematch);
-			$value=$notematch[0];
+			$value = $notematch[0];
 		}
 	}
 	// Display HUSB / WIFE names for information only on MARR edit form.
@@ -1833,9 +1833,9 @@ function print_add_layer($tag, $level=2) {
 			add_simple_tag(($level+1)." QUAY");
 		}
 		// 3 OBJE
-		add_simple_tag(($level+1)." OBJE");
+		add_simple_tag(($level+1) . " OBJE");
 		// 3 SHARED_NOTE
-		add_simple_tag(($level+1)." SHARED_NOTE");
+		add_simple_tag(($level+1) . " SHARED_NOTE");
 		echo "</div>";
 	}
 	if ($tag == "ASSO" || $tag == "ASSO2") {
