@@ -134,6 +134,8 @@ $controller
 			'_WT_OBJE_SORT' => 'OBJE',
 		);
 
+		$errors = false;
+
 		$RECORD_LINKS = array(
 			'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT', '_LOC'),
 			'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'HUSB', 'WIFE', 'CHIL', '_LOC'),
@@ -145,8 +147,6 @@ $controller
 			'SUBN'=>array('SUBM'),
 			'_LOC'=>array('SOUR', 'OBJE', '_LOC'),
 		);
-
-		$errors = false;
 
 		// Generate lists of all links
 		$all_links = array();
@@ -210,42 +210,41 @@ $controller
 				}
 			}
 		}
-		function link_message($type1, $xref1, $type2, $xref2) {
-			return
-				/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
-					'%1$s %2$s has a %3$s link to %4$s.',
-					format_type($type1),
-					format_link($xref1),
-					format_type($type2),
-					format_link($xref2)
-				);
-		}
-
-		function format_link($xref) {
-			return '<b><a href="gedrecord.php?pid=' . $xref . '">' . $xref . '</a></b>';
-		}
-
-		function format_type($type) {
-			return '<b title="' . strip_tags(WT_Gedcom_Tag::getLabel($type)) . '">' . $type . '</b>';
-		}
-
-		function error($message) {
-			global $errors;
-			$errors = true;
-			return '<p class="ui-state-error">' . $message . '</p>';
-		}
-
-		function warning($message) {
-			global $errors;
-			$errors = true;
-			return '<p class="ui-state-highlight">' . $message . '</p>';
-		}
-
-		if (!$errors) {
-			echo '<p class="ui-state-highlight noresult">', WT_I18N::translate('No errors were found.'), '</p>';
-		}
-
-	} ?>
-
+	}
+	if (!$errors) {
+		echo '<p class="ui-state-highlight noresult">', WT_I18N::translate('No errors were found.'), '</p>';
+	}
+	?>
 </div>
 <?php
+
+function link_message($type1, $xref1, $type2, $xref2) {
+	return
+		/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
+			'%1$s %2$s has a %3$s link to %4$s.',
+			format_type($type1),
+			format_link($xref1),
+			format_type($type2),
+			format_link($xref2)
+		);
+}
+
+function format_link($xref) {
+	return '<b><a href="gedrecord.php?pid=' . $xref . '">' . $xref . '</a></b>';
+}
+
+function format_type($type) {
+	return '<b title="' . strip_tags(WT_Gedcom_Tag::getLabel($type)) . '">' . $type . '</b>';
+}
+
+function error($message) {
+	global $errors;
+	$errors = true;
+	return '<p class="ui-state-error">' . $message . '</p>';
+}
+
+function warning($message) {
+	global $errors;
+	$errors = true;
+	return '<p class="ui-state-highlight">' . $message . '</p>';
+}
