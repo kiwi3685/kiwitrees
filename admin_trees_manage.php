@@ -136,7 +136,8 @@ case 'replace_import':
 $controller->pageHeader();
 
 // Process GET actions
-if (safe_GET('action') == 'importform') {
+switch (WT_Filter::get('action')) {
+case 'importform':
 	$gedcom_id	 = safe_GET('gedcom_id');
 	$gedcom_name = get_gedcom_from_id($gedcom_id);
 	// Check it exists
@@ -240,7 +241,11 @@ if (safe_GET('action') == 'importform') {
 				</p>
 			</form>
 		</div>';
-	exit;
+	return;
+}
+
+if (!WT_Tree::GetAll()) {
+	WT_FlashMessages::addMessage(WT_I18N::translate('You need to create a family tree.'));
 }
 
 // List the gedcoms available to this user
