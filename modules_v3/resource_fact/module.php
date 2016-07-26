@@ -79,6 +79,8 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 
 		//-- set list of all configured individual tags (level 1)
 		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$uniquefacts			= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+		$indifacts				=array_merge($indifacts, $uniquefacts);
 		$translated_indifacts	= array();
 		foreach ($indifacts as $addfact) {
 			$translated_indifacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
