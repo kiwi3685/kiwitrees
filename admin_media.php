@@ -99,8 +99,8 @@ case 'load_json':
 				" WHERE setting_value=?" .
 				" AND   m_filename LIKE CONCAT(?, '%')" .
 				" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')" .
-				"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
-				"	AND   m_filename NOT LIKE 'http://%'" .
+				" OR   m_titl LIKE CONCAT('%', ?, '%'))" .
+				" AND   m_filename NOT LIKE 'http://%'" .
 				" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS1 = array($media_path, $media_folder, $media_path, $sSearch, $sSearch);
 		// Unfiltered rows
@@ -110,7 +110,7 @@ case 'load_json':
 				" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 				" WHERE setting_value=?" .
 				" AND   m_filename LIKE CONCAT(?, '%')" .
-				"	AND   m_filename NOT LIKE 'http://%'" .
+				" AND   m_filename NOT LIKE 'http://%'" .
 				" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS2 = array($media_folder, $media_path);
 
@@ -221,7 +221,6 @@ case 'load_json':
 		}
 
 		$rows = WT_DB::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll(PDO::FETCH_ASSOC);
-
 		// Total filtered/unfiltered rows
 		$iTotalDisplayRecords = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 		$iTotalRecords        = WT_DB::prepare($SELECT2)->execute($ARGS2)->fetchColumn();
@@ -401,6 +400,13 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 	return scan_dirs(WT_DATA_DIR . $media_folder . $media_path, $subfolders=='include', $filter);
 }
 
+function externalMedia() {
+	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')")
+		->execute()
+		->fetchOne();
+	return	$count;
+}
+
 // Fetch a list of all files on in the database
 function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	return WT_DB::prepare(
@@ -568,9 +574,11 @@ $controller
 			<td>
 				<input type="radio" name="files" value="local"<?php echo $files=='local' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
 				<?php echo /* I18N: “Local files” are stored on this computer */ WT_I18N::translate('Local files'); ?>
-				<br>
-				<input type="radio" name="files" value="external"<?php echo $files=='external' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
-				<?php echo /* I18N: “External files” are stored on other computers */ WT_I18N::translate('External files'); ?>
+				<?php if (externalMedia() > 0){ ?>
+					<br>
+					<input type="radio" name="files" value="external"<?php echo $files=='external' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
+					<?php echo /* I18N: “External files” are stored on other computers */ WT_I18N::translate('External files');
+				} ?>
 				<br>
 				<input type="radio" name="files" value="unused"<?php echo $files=='unused' ? ' checked="checked"' : ''; ?> onchange="this.form.submit();">
 				<?php echo WT_I18N::translate('Unused files'); ?>

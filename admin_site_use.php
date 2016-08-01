@@ -43,7 +43,7 @@ function siteIndividuals() {
 }
 
 function siteMedia() {
-	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media`")
+	$count = WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##media` WHERE (m_filename NOT LIKE 'http://%' AND m_filename NOT LIKE 'https://%')")
 		->execute()
 		->fetchOne();
 	return	WT_I18N::number($count);
@@ -75,4 +75,3 @@ $total_size = WT_I18N::number(db_Size() + directory_size());
 		</li>
 	</ul>
 </div>
-
