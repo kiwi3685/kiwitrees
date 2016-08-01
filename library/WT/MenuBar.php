@@ -111,22 +111,22 @@ class WT_MenuBar {
 
 	public static function getListsMenu() {
 		global $SEARCH_SPIDER, $controller;
-		if ($SEARCH_SPIDER || !WT_GED_ID) {
-			return null;
-		}
+
 		$active_lists = WT_Module::getActiveLists();
 
-		if ($active_lists) {
-			$menu = new WT_Menu(WT_I18N::translate('Lists'), '#', 'menu-list');
-			uasort($active_lists, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
-			foreach ($active_lists as $list) {
-				foreach ($list->getListMenus() as $submenu) {
-
-					$menu->addSubmenu($submenu);
-				}
-			}
-			return $menu;
+		if ($SEARCH_SPIDER || !$active_lists) {
+			return null;
 		}
+
+		$menu = new WT_Menu(WT_I18N::translate('Lists'), '#', 'menu-list');
+		uasort($active_lists, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
+		foreach ($active_lists as $list) {
+			foreach ($list->getListMenus() as $submenu) {
+
+				$menu->addSubmenu($submenu);
+			}
+		}
+		return $menu;
 	}
 
 	/**
@@ -159,6 +159,7 @@ class WT_MenuBar {
 		global $SEARCH_SPIDER;
 
 		$active_resources = WT_Module::getActiveResources();
+
 		if ($SEARCH_SPIDER || !$active_resources) {
 			return null;
 		}
@@ -180,7 +181,7 @@ class WT_MenuBar {
 		if ($SEARCH_SPIDER) {
 			return null;
 		}
-		//-- main search menu item
+
 		$menu = new WT_Menu(WT_I18N::translate('Search'), 'search.php?ged=' . WT_GEDURL, 'menu-search');
 		return $menu;
 	}
