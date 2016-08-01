@@ -150,7 +150,7 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 						</div>
 					<?php } ?>
 					<div class="tree_config even">
-						<label><?php echo WT_I18N::translate('Add more files to exclude'); ?></label>
+						<label><?php echo WT_I18N::translate('Also exclude these files'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_DB_EXCLUDE" value="<?php echo $db_exclude; ?>">
 							<span class="help_content">
