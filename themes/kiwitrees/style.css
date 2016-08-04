@@ -942,6 +942,12 @@ table.center {
 	content: "";
 }
 
+.sour_facts[id$="_factdiv"] {
+	background-color: #d3d3d3;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
 .tabs_table {
 	width: 99%;
 }

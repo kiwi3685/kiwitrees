@@ -381,6 +381,8 @@ th { font-weight:100;}
 
 .quickfacts a {font-size:9px;padding:0 3px;}
 
+.sour_facts[id$="_factdiv"] { background-color: #ddd; margin: 0 auto; padding: 10px 0;}
+
 .tabs_table { width:99%;}
 
 .tab_cell_active { color:#000066; background-color:#fff; border-color:#ff6633; border-width:1px; border-bottom-style:none; border-top-style:solid; border-right-style:solid; text-align:center; font-weight:bold;}

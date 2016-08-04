@@ -1196,7 +1196,7 @@ function print_calendar_popup($id) {
 }
 
 function print_addnewmedia_link($element_id) {
-	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform\', \'_blank\', \'\'); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a media object').'"></a>';
+	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform&type=event\', \'_blank\', \'\'); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a media object').'"></a>';
 }
 
 function print_addnewrepository_link($element_id) {
@@ -1292,7 +1292,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	// element name : used to POST data
 	if ($level == 0) {
-		if ($upperlevel) $element_name=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE | ...
+		if ($upperlevel) $element_name = $upperlevel . "_" . $fact; // ex: BIRT_DATE | DEAT_DATE | ...
 		else $element_name = $fact; // ex: OCCU
 	} else $element_name = "text[]";
 	if ($level == 1) $main_fact = $fact;
@@ -1321,6 +1321,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	echo '<div id="' . $element_id . '_factdiv" ';
 	if ($fact === 'DATA' || $fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
 		echo ' style="display:none;"';
+	}
+	if ($fact == "SOUR" || ($level > 2 && ($fact == "TEXT" || $fact == "PAGE" || $fact == "OBJE" || $fact == "QUAY" || $fact == "DATE"))) {
+		echo ' class="sour_facts"';
 	}
 	echo ' >';
 
@@ -2312,6 +2315,7 @@ function create_add_form($fact) {
 		if ($fact == "SOUR") {
 			add_simple_tag("2 PAGE");
 			add_simple_tag("3 TEXT");
+			add_simple_tag("2 OBJ");
 			if ($FULL_SOURCES) {
 				add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
 				add_simple_tag("2 QUAY");
@@ -2332,8 +2336,8 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 	global $pid, $tags, $ADVANCED_PLAC_FACTS, $date_and_time;
 	global $FULL_SOURCES;
 
-	$tags=array();
-	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
+	$tags		=array();
+	$gedlines	= explode("\n", $gedrec); // -- find the number of lines in the record
 	if (!isset($gedlines[$linenum])) {
 		echo "<span class=\"error\">", WT_I18N::translate('An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it.'), "<br><br>";
 		echo WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</span>";
@@ -2343,7 +2347,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 	$glevel = $fields[0];
 	$level = $glevel;
 
-	if ($level!=1 && preg_match("~/@.*/@~i", trim($fields[1]))) {
+	if ($level != 1 && preg_match("~/@.*/@~i", trim($fields[1]))) {
 		echo "<span class=\"error\">", WT_I18N::translate('An error occurred while creating the Edit form.  Another user may have changed this record since you previously viewed it.'), "<br><br>";
 		echo WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</span>";
 		return;
@@ -2365,27 +2369,26 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 	} else {
 		$levellink = false;
 	}
-	$i = $linenum;
-	$inSource = false;
-	$levelSource = 0;
-	$add_date = true;
+	$i				= $linenum;
+	$inSource		= false;
+	$levelSource	= 0;
+	$add_date		= true;
 	// List of tags we would expect at the next level
-	// NB add_missing_subtags() already takes care of the simple cases
+	// NB insert_missing_subtags() already takes care of the simple cases
 	// where a level 1 tag is missing a level 2 tag.  Here we only need to
 	// handle the more complicated cases.
-	$expected_subtags=array(
-		'SOUR'=>array('PAGE', 'DATA'),
+	$expected_subtags = array(
+		'SOUR'=>array('PAGE', 'DATA', 'OBJE'),
 		'DATA'=>array('TEXT'),
 		'PLAC'=>array('MAP'),
 		'MAP' =>array('LATI', 'LONG')
 	);
 	if ($FULL_SOURCES) {
-		$expected_subtags['SOUR'][]='QUAY';
-		$expected_subtags['DATA'][]='DATE';
-		$expected_subtags['SOUR'][]='OBJE';
+		$expected_subtags['SOUR'][] = 'QUAY';
+		$expected_subtags['DATA'][] = 'DATE';
 	}
 	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
-		$expected_subtags['PLAC']=array_merge($match[1], $expected_subtags['PLAC']);
+		$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 	}
 
 	$stack = array(0=>$level0type);
@@ -2394,7 +2397,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		// Keep track of our hierarchy, e.g. 1=>BIRT, 2=>PLAC, 3=>FONE
 		$stack[(int)$level]=$type;
 		// Merge them together, e.g. BIRT:PLAC:FONE
-		$label=implode(':', array_slice($stack, 1, $level));
+		$label = implode(':', array_slice($stack, 1, $level));
 
 		$text = '';
 		for ($j=2; $j<count($fields); $j++) {
@@ -2402,15 +2405,15 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			$text .= $fields[$j];
 		}
 		$text = rtrim($text);
-		while (($i+1<count($gedlines))&&(preg_match("/".($level+1)." CONT ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
-			$text.="\n".$cmatch[1];
+		while (($i+1<count($gedlines)) && (preg_match("/".($level+1) . " CONT ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
+			$text .= "\n" . $cmatch[1];
 			$i++;
 		}
 
 		if ($type == "SOUR") {
 			$inSource = true;
 			$levelSource = $level;
-		} elseif ($levelSource>=$level) {
+		} elseif ($levelSource >= $level) {
 			$inSource = false;
 		}
 
@@ -2481,7 +2484,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		if ($level<=$glevel) break;
 	}
 
-	if ($level1type!='_PRIM') {
+	if ($level1type != '_PRIM') {
 		insert_missing_subtags($level1type, $add_date);
 	}
 	return $level1type;

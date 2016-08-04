@@ -33,6 +33,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $pid         = safe_REQUEST($_REQUEST, 'pid',         WT_REGEX_XREF); // edit this media object
 $linktoid    = safe_REQUEST($_REQUEST, 'linktoid',    WT_REGEX_XREF); // create a new media object, linked to this record
 $action      = safe_REQUEST($_REQUEST, 'action');
+$type	     = safe_REQUEST($_REQUEST, 'type');
 $filename    = safe_REQUEST($_REQUEST, 'filename',    WT_REGEX_UNSAFE);
 $text        = safe_REQUEST($_REQUEST, 'text',        WT_REGEX_UNSAFE);
 $tag         = safe_REQUEST($_REQUEST, 'tag',         WT_REGEX_UNSAFE);
@@ -57,7 +58,7 @@ if ($media) {
 	$disp = $media->canDisplayDetails();
 }
 if ($action == 'update' || $action == 'create') {
-	if (!isset($linktoid) || $linktoid == 'new') $linktoid='';
+	if (!isset($linktoid) || $linktoid == 'new') $linktoid = '';
 	if (!empty($linktoid)) {
 		$disp = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 	}
@@ -390,10 +391,10 @@ case 'update': // Save the information from the “editmedia” action
 	//-- generated at import and we need to append it
 	replace_gedrec($pid, WT_GED_ID, $newrec, $update_CHAN);
 
-	if ($pid && $linktoid!='') {
+	if ($pid && $linktoid != '') {
 		$link = linkMedia($pid, $linktoid, 1);
 		if ($link) {
-			AddToLog('Media ID '.$pid." successfully added to $linktoid.", 'edit');
+			AddToLog('Media ID ' . $pid . " successfully added to $linktoid . ", 'edit');
 		}
 	}
 	$controller->pageHeader();
@@ -428,7 +429,7 @@ $controller
 			<input type="hidden" name="linktoid" value="<?php echo $linktoid; ?>">
 		<?php } ?>
 		<div id="add_facts">
-			<?php if (!$linktoid && $action == 'create') { ?>
+			<?php if (!$linktoid && $type != 'event' && $action == 'create') { ?>
 				<div id="MEDIA_factdiv">
 					<label>
 						<?php echo WT_I18N::translate('Enter a Person, Family, or Source ID'); ?>
@@ -448,7 +449,7 @@ $controller
 					</div>
 				</div>
 			<?php }
-			$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
+			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 			// 0 OBJE
 			// 1 FILE
 			if ($gedrec == '') {
