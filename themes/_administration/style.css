@@ -495,12 +495,18 @@ table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
 
 /* FAMILY TREE CONFIG */
 
-#family_tree_config h3.accordion {
+#family_tree_config h3.accordion,
+#family_tree_config .hidden {
 	display: none;
 }
 
 #family_tree_config #accordion .ui-accordion-content {
 	padding: 5px;
+}
+
+#family_tree_config a:hover .hidden{
+	display: block;
+
 }
 
 div.tree_config,
@@ -601,6 +607,11 @@ div.tree_config span.help_content a {
 	margin-bottom: 0px;
 }
 
+#privacy input[name="KEEP_ALIVE_YEARS_BIRTH"],
+#privacy input[name="KEEP_ALIVE_YEARS_DEATH"] {
+	width: 50px;
+}
+
 #privacy table {
 	width: 100%;
 	margin-top: 10px;
@@ -632,7 +643,8 @@ div.tree_config span.help_content a {
 	margin: 0
 }
 
-#layout-options h4 {
+#layout-options h4,
+#hide-show h4 {
 	font-style: normal;
 }
 
@@ -1101,7 +1113,7 @@ table#story_table {width: 99%;}
 .icon-button_family 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; } /* fa-users */
 .icon-open				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell; } /* fa-arrow-circle-down */
 .icon-close				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell; } /* fa-arrow-circle-up */
-.icon-button_find_facts {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
+.icon-button_find_facts {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin: auto 10px;} /* fa-edit */
 .icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; margin: auto 10px;} /* fa-keyboard-o */
 .icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-book */
 .icon-button_repository {font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-bank */

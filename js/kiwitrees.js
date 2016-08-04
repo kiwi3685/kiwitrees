@@ -1588,7 +1588,7 @@ jQuery(".passwd_click").click(function() {
 // common script for help text drop-down display
 jQuery(".help_content").on("click", ".more", function(e){
 	e.preventDefault();
-	jQuery(this).next(".hidden").slideToggle();
+	jQuery(this).next(".hidden").slideToggle("slow");
 	jQuery(this).parent().siblings().find(".hidden").slideUp();
 });
 

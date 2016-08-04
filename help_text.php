@@ -400,11 +400,6 @@ case '_PRIM':
 	// This section contains an entry for every configuration item
 	//////////////////////////////////////////////////////////////////////////////
 
-case 'ABBREVIATE_CHART_LABELS':
-	$title = WT_I18N::translate('Abbreviate chart labels');
-	$text = WT_I18N::translate('This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>.');
-	break;
-
 case 'ADVANCED_NAME_FACTS':
 	$title = WT_I18N::translate('Advanced name facts');
 	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets.');
@@ -415,24 +410,9 @@ case 'ADVANCED_PLAC_FACTS':
 	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets.');
 	break;
 
-case 'CHART_BOX_TAGS':
-	$title = WT_I18N::translate('Other facts to show in charts');
-	$text = WT_I18N::translate('This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the Pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 Standard.  For example, if you wanted the occupation to show up in the box, you would add "OCCU" to this field.');
-	break;
-
 case 'CHECK_MARRIAGE_RELATIONS':
 	$title = WT_I18N::translate('Check relationships by marriage');
 	$text = WT_I18N::translate('When calculating relationships, this option controls whether kiwitrees will include spouses/partners as well as blood relatives.');
-	break;
-
-case 'EXPAND_NOTES':
-	$title = WT_I18N::translate('Automatically expand notes');
-	$text = WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.');
-	break;
-
-case 'EXPAND_SOURCES':
-	$title = WT_I18N::translate('Automatically expand sources');
-	$text = WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.');
 	break;
 
 case 'FAM_FACTS_ADD':
@@ -469,11 +449,6 @@ case 'GEDCOM_MEDIA_PATH':
 		'</p>';
 	break;
 
-case 'HIDE_GEDCOM_ERRORS':
-	$title = WT_I18N::translate('GEDCOM errors');
-	$text = WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and kiwitrees understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.');
-	break;
-
 case 'INDI_FACTS_ADD':
 	$title = WT_I18N::translate('All individual facts');
 	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list.');
@@ -487,16 +462,6 @@ case 'INDI_FACTS_QUICK':
 case 'INDI_FACTS_UNIQUE':
 	$title = WT_I18N::translate('Unique individual facts');
 	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list.');
-	break;
-
-case 'PEDIGREE_FULL_DETAILS':
-	$title = /* I18N: A site configuration setting */ WT_I18N::translate('Show chart details by default');
-	$text = /* I18N: Help text for the “Show chart details by default” tree configuration setting */ WT_I18N::translate('This is the initial setting for the “show details” option on the charts.');
-	break;
-
-case 'PEDIGREE_SHOW_GENDER':
-	$title = WT_I18N::translate('Gender icon on charts');
-	$text = WT_I18N::translate('This option controls whether or not to show the individual\'s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn\'t conceal the gender. The option simply removes some duplicate information from the box.');
 	break;
 
 case 'RELATIONSHIP_PATH_LENGTH':
@@ -542,41 +507,6 @@ case 'REPO_FACTS_UNIQUE':
 case 'REQUIRE_AUTHENTICATION':
 	$title = WT_I18N::translate('Require visitor authentication');
 	$text = WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.');
-	break;
-
-case 'SHOW_COUNTER':
-	$title = WT_I18N::translate('Hit counters');
-	$text = WT_I18N::translate('Show hit counters on the Home and Individual pages.');
-	break;
-
-case 'SHOW_FACT_ICONS':
-	$title = WT_I18N::translate('Show fact icons');
-	$text = WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme.');
-	break;
-
-case 'SHOW_GEDCOM_RECORD':
-	$title = WT_I18N::translate('Allow users to see raw GEDCOM records');
-	$text = WT_I18N::translate('Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file.');
-	break;
-
-case 'SHOW_LDS_AT_GLANCE':
-	$title = WT_I18N::translate('LDS ordinance codes in chart boxes');
-	$text = WT_I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.');
-	break;
-
-case 'SHOW_LEVEL2_NOTES':
-	$title = WT_I18N::translate('Show all notes and source references on notes and sources tabs');
-	$text = WT_I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual\'s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual\'s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.');
-	break;
-
-case 'SHOW_PARENTS_AGE':
-	$title = WT_I18N::translate('Show age of parents next to child\'s birthdate');
-	$text = WT_I18N::translate('This option controls whether or not to show age of father and mother next to child\'s birthdate on charts.');
-	break;
-
-case 'SHOW_STATS':
-	$title = WT_I18N::translate('Execution statistics');
-	$text = WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.');
 	break;
 
 case 'SOUR_FACTS_ADD':
@@ -947,11 +877,6 @@ case 'role':
 		'<dt>'.WT_I18N::translate('Administrator').'</dt><dd>'.
 		WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules.').
 		'</dd>';
-	break;
-
-case 'SHOW_AGE_DIFF':
-	$title = WT_I18N::translate('Date differences');
-	$text = WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.');
 	break;
 
 case 'show_fact_sources':

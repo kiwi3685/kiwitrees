@@ -426,7 +426,7 @@ $controller
 								<?php echo WT_I18N::translate('<b>GUID</b> in this context is an acronym for «Globally Unique ID».'); ?>
 								 <a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
 								<div class="hidden" style="display: none;">
-									<?php echo WT_I18N::translate('GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same person no matter where the GEDCOM originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let kiwitrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.'); ?>
+									<?php echo WT_I18N::translate('GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same person no matter where the GEDCOM originates. The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let kiwitrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM.'); ?>
 								</div>
 							</span>
 						</div>
@@ -725,7 +725,7 @@ $controller
 								<a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
 								<div class="hidden" style="display: none;">
 									<p><?php echo WT_I18N::translate('If you select a different folder, you must also move any media files from the existing folder to the new one.'); ?></p>
-									<p><?php echo WT_I18N::translate('If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate.'); ?></p>
+									<p><?php echo WT_I18N::translate('If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate.'); ?></p>
 								</div>
 							</span>
 						</div>
@@ -760,7 +760,7 @@ $controller
 							<input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php echo $THUMBNAIL_WIDTH; ?>" maxlength="4" required>
 							<span class="input_label right"><?php echo /* I18N: the suffix to a media size */ WT_I18N::translate('pixels'); ?></span>
 							<span class="help_content">
-								<?php echo WT_I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.'); ?>
+								<?php echo WT_I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails. The default setting is 100.'); ?>
 							</span>
 						</div>
 					</div>
@@ -873,7 +873,7 @@ $controller
 						<div class="input_group">
 							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" maxlength="5" required>
 							<span class="help_content">
-							   <?php echo WT_I18N::translate('Long lists of people with the same surname can be broken into smaller sub-lists according to the first letter of the individual\'s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero.'); ?>
+							   <?php echo WT_I18N::translate('Long lists of people with the same surname can be broken into smaller sub-lists according to the first letter of the individual\'s given name.<br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero.'); ?>
 						   </span>
 					    </div>
 					</div>
@@ -993,7 +993,7 @@ $controller
 						<label><?php echo WT_I18N::translate('Abbreviate place names'); ?></label>
 						<div class="input_group">
 							<?php
-							echo /* I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name */ WT_I18N::translate(
+							echo /* I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name */ WT_I18N::translate(
 								'Show the %1$s %2$s parts of a place name.',
 								select_edit_control('NEW_SHOW_PEDIGREE_PLACES_SUFFIX',
 									array(
@@ -1021,7 +1021,7 @@ $controller
 							);
 							?>
 							<span class="help_content">
-							   <?php echo WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.'); ?>
+							   <?php echo WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.'); ?>
 						   </span>
 					    </div>
 					</div>
@@ -1029,39 +1029,168 @@ $controller
 				<!-- HIDE & SHOW -->
 				<h3 class="accordion"><?php echo WT_I18N::translate('Hide &amp; show'); ?></h3>
 				<div id="hide-show">
-							<?php echo WT_I18N::translate('Charts'); ?>
-								<?php echo WT_I18N::translate('Abbreviate chart labels'), help_link('ABBREVIATE_CHART_LABELS'); ?>
-								<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', get_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS')); ?>
-								<?php echo WT_I18N::translate('Show chart details by default'), help_link('PEDIGREE_FULL_DETAILS'); ?>
-								<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', get_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS')); ?>
-								<?php echo WT_I18N::translate('Gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?>
-								<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $PEDIGREE_SHOW_GENDER); ?>
-								<?php echo WT_I18N::translate('Age of parents next to child\'s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
-								<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE); ?>
-								<?php echo WT_I18N::translate('LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?>
-								<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LDS_AT_GLANCE); ?>
-								<?php echo WT_I18N::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?>
-								<input type="text" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php echo $CHART_BOX_TAGS; ?>" dir="ltr" size="50" maxlength="255"><?php echo print_findfact_link('NEW_CHART_BOX_TAGS'); ?>
-							<?php echo WT_I18N::translate('Individual pages'); ?>
-								<?php echo WT_I18N::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
-								<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
-								<?php echo WT_I18N::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
-								<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES')); ?>
-								<?php echo WT_I18N::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?>
-								<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', get_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES')); ?>
-								<?php echo WT_I18N::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
-								<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', get_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES')); ?>
-								<?php echo WT_I18N::translate('Date differences'), help_link('SHOW_AGE_DIFF'); ?>
-								<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
-							<?php echo WT_I18N::translate('General'); ?>
-								<?php echo WT_I18N::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?>
-								<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD')); ?>
-								<?php echo WT_I18N::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
-								<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
-								<?php echo WT_I18N::translate('Hit counters'), help_link('SHOW_COUNTER'); ?>
-								<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
-								<?php echo WT_I18N::translate('Execution statistics'), help_link('SHOW_STATS'); ?>
-								<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')); ?>
+					<h4 class="accepted"><?php echo WT_I18N::translate('Charts'); ?></h4>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('Abbreviate chart labels'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', get_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS')); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('This option controls whether or not to abbreviate labels like <b>Birth</b> on charts with just the first letter like <b>B</b>.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('Show chart details by default'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', get_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS')); ?>
+							<span class="help_content">
+							   <?php echo /* I18N: Help text for the “Show chart details by default” tree configuration setting */ WT_I18N::translate('This is the initial setting for the “show details” option on the charts.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('Gender icon on charts'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $PEDIGREE_SHOW_GENDER); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('This option controls whether or not to show the individual\'s gender icon on charts.<br>Since the gender is also indicated by the color of the box, this option doesn\'t conceal the gender. The option simply removes some duplicate information from the box.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('Age of parents next to child\'s birth date'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('This option controls whether or not to show age of father and mother next to child\'s birth date on charts.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('LDS ordinance codes in chart boxes'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LDS_AT_GLANCE); ?>
+						   <span class="help_content">
+							   <?php echo /* I18N: First part of help for LDS ordinannces show/hide option */ WT_I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.'); ?>
+								<a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
+							   <div class="hidden" style="display: none;">
+								   <?php echo /* I18N: Second part of help for LDS ordinannces show/hide option */ WT_I18N::translate('<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name. Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code. For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.'); ?>
+							   </div>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('Other facts to show in charts'); ?></label>
+						<div class="input_group">
+							<input type="text" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php echo $CHART_BOX_TAGS; ?>" dir="ltr" maxlength="255">
+							<span class="input_label right">
+								<?php echo print_findfact_edit_link('NEW_CHART_BOX_TAGS'); ?>
+							</span>
+						   <span class="help_content">
+							   <?php echo /* I18N: First part of help for Other facts to show in charts */ WT_I18N::translate('This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the Pedigree chart.'); ?>
+								<a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
+							   <div class="hidden" style="display: none;">
+								   <?php echo /* I18N: Second part of help for Other facts to show in charts */ WT_I18N::translate('This list requires you to use fact tags as defined in the GEDCOM 5.5.1 Standard. For example, if you wanted the occupation to show up in the box, you would add "OCCU" to this field. Either enter the tags manually or use the edit selector.'); ?>
+							   </div>
+						   </span>
+					    </div>
+					</div>
+					<h4 class="accepted"><?php echo WT_I18N::translate('Individual pages'); ?></h4>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('Fact icons'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page. Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('Automatically expand notes'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES')); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('Automatically expand sources'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', get_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES')); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('Show all notes and source references on notes and sources tabs'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', get_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES')); ?>
+						   <span class="help_content">
+							   <?php echo /* I18N: First part of help for Show all notes and source references */ WT_I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.'); ?>
+								<a href="#" class="more accepted"><?php echo /* I18N: Click this text to read or hide more information */ WT_I18N::translate('More / Less ....'); ?></a>
+							   <div class="hidden" style="display: none;">
+								   <?php echo /* I18N: Second part of help for Show all notes and source references */ WT_I18N::translate('Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual\'s database record. These are <i>level 1</i> Notes and Source references.<br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual\'s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.'); ?>
+							   </div>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<h4 class="accepted"><?php echo WT_I18N::translate('General'); ?></h4>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('Allow users to see raw GEDCOM records'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD')); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('Setting this to <b>Yes</b> will place links on individuals, sources, and families page menus to let users bring up another window containing the raw data in GEDCOM file format.<br>Administrators always see these links regardless of this setting.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('GEDCOM errors'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and kiwitrees understands most of them. When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config odd">
+						<label><?php echo WT_I18N::translate('Hit counters'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('Show hit counters on the Home and Individual pages.'); ?>
+						   </span>
+					    </div>
+					</div>
+					<div class="tree_config even">
+						<label><?php echo WT_I18N::translate('Execution statistics'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')); ?>
+							<span class="help_content">
+							   <?php echo WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.'); ?>
+						   </span>
+					    </div>
+					</div>						
 				</div>
 				<!-- EDIT -->
 				<h3 class="accordion"><?php echo WT_I18N::translate('Edit options'); ?></h3>

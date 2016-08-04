@@ -1326,6 +1326,13 @@ function print_findfact_link($element_id) {
 	return '<a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find a fact or event').'"></a>';
 }
 
+function print_findfact_edit_link($element_id) {
+	return '<a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" title="'.WT_I18N::translate('Find a fact or event').'">
+				<i class="fa fa-pencil"></i>' . WT_I18N::translate('edit'). '
+			</a>';
+}
+
+
 /**
 * get a quick-glance view of current LDS ordinances
 * @param string $indirec
