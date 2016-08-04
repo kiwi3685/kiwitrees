@@ -1328,7 +1328,7 @@ function print_findfact_link($element_id) {
 
 function print_findfact_edit_link($element_id) {
 	return '<a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.WT_GEDURL.'\'); return false;" title="'.WT_I18N::translate('Find a fact or event').'">
-				<i class="fa fa-pencil"></i>' . WT_I18N::translate('edit'). '
+				<i class="fa fa-pencil"></i>' . WT_I18N::translate('Edit'). '
 			</a>';
 }
 

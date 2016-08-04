@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-07-20 08:47+1200\n"
-"PO-Revision-Date: 2016-07-20 08:49+1200\n"
+"POT-Creation-Date: 2016-08-04 16:38+1200\n"
+"PO-Revision-Date: 2016-08-04 16:39+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -51,53 +51,53 @@ msgid "The changes to “%s” have been rejected."
 msgstr "The changes to “%s” have been rejected."
 
 #. I18N: A media object that is not linked to any other record
-#: addmedia.php:78 addmedia.php:407 admin_site_other.php:75
+#: addmedia.php:79 addmedia.php:408 admin_site_other.php:75
 msgid "Create a new media object"
 msgstr "Create a new media object"
 
-#: addmedia.php:98 addmedia.php:109 addmedia.php:263 addmedia.php:274
+#: addmedia.php:99 addmedia.php:110 addmedia.php:264 addmedia.php:275
 #: admin_media_upload.php:62 admin_media_upload.php:73
 #: admin_trees_config.php:214
 #, php-format
 msgid "The folder %s was created."
 msgstr "The folder %s was created."
 
-#: addmedia.php:100 addmedia.php:111 addmedia.php:123 addmedia.php:265
-#: addmedia.php:276 addmedia.php:288 admin_media_upload.php:64
+#: addmedia.php:101 addmedia.php:112 addmedia.php:124 addmedia.php:266
+#: addmedia.php:277 addmedia.php:289 admin_media_upload.php:64
 #: admin_media_upload.php:75 admin_media_upload.php:87
 #: admin_trees_config.php:216
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
 msgstr "The folder %s does not exist, and it could not be created."
 
-#: addmedia.php:137 admin_media_upload.php:101
+#: addmedia.php:138 admin_media_upload.php:101
 msgid "Thumbnails must be images."
 msgstr "Thumbnails must be images."
 
-#: addmedia.php:159 addmedia.php:301 admin_media_upload.php:115
+#: addmedia.php:160 addmedia.php:302 admin_media_upload.php:115
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
 msgstr "Filenames are not allowed to contain the character “%s”."
 
-#: addmedia.php:164 addmedia.php:306 admin_media_upload.php:120
+#: addmedia.php:165 addmedia.php:307 admin_media_upload.php:120
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
 msgstr "Filenames are not allowed to have the extension “%s”."
 
-#: addmedia.php:168 addmedia.php:310 admin_media_upload.php:124
+#: addmedia.php:169 addmedia.php:311 admin_media_upload.php:124
 msgid "No media file was provided."
 msgstr "No media file was provided."
 
-#: addmedia.php:178 admin_media_upload.php:134
+#: addmedia.php:179 admin_media_upload.php:134
 #, php-format
 msgid "The file %s already exists.  Use another filename."
 msgstr "The file %s already exists.  Use another filename."
 
-#: addmedia.php:187 admin_media_upload.php:144 edit_interface.php:1427
+#: addmedia.php:188 admin_media_upload.php:144 edit_interface.php:1427
 msgid "There was an error uploading your file."
 msgstr "There was an error uploading your file."
 
-#: addmedia.php:239 addmedia.php:401 addmedia.php:813 edit_changes.php:247
+#: addmedia.php:240 addmedia.php:402 addmedia.php:814 edit_changes.php:247
 #: edit_interface.php:173 edit_interface.php:274 edit_interface.php:350
 #: edit_interface.php:509 edit_interface.php:580 edit_interface.php:832
 #: edit_interface.php:939 edit_interface.php:1089 edit_interface.php:1165
@@ -116,16 +116,16 @@ msgstr "There was an error uploading your file."
 msgid "close"
 msgstr "close"
 
-#: addmedia.php:243 addmedia.php:411 library/WT/Controller/Media.php:86
+#: addmedia.php:244 addmedia.php:412 library/WT/Controller/Media.php:86
 msgid "Edit media object"
 msgstr "Edit media object"
 
-#: addmedia.php:321 addmedia.php:349
+#: addmedia.php:322 addmedia.php:350
 #, php-format
 msgid "Media file %1$s could not be renamed to %2$s."
 msgstr "Media file %1$s could not be renamed to %2$s."
 
-#: addmedia.php:341
+#: addmedia.php:342
 msgid ""
 "This file is linked to another genealogical database on this server.  It "
 "cannot be deleted, moved, or renamed until these links have been removed."
@@ -133,37 +133,37 @@ msgstr ""
 "This file is linked to another genealogical database on this server.  It "
 "cannot be deleted, moved, or renamed until these links have been removed."
 
-#: addmedia.php:347
+#: addmedia.php:348
 #, php-format
 msgid "Media file %1$s successfully renamed to %2$s."
 msgstr "Media file %1$s successfully renamed to %2$s."
 
-#: addmedia.php:354
+#: addmedia.php:355
 #, php-format
 msgid "Media file %s does not exist."
 msgstr "Media file %s does not exist."
 
-#: addmedia.php:361
+#: addmedia.php:362
 #, php-format
 msgid "Thumbnail file %1$s successfully renamed to %2$s."
 msgstr "Thumbnail file %1$s successfully renamed to %2$s."
 
-#: addmedia.php:363
+#: addmedia.php:364
 #, php-format
 msgid "Thumbnail file %1$s could not be renamed to %2$s."
 msgstr "Thumbnail file %1$s could not be renamed to %2$s."
 
-#: addmedia.php:368
+#: addmedia.php:369
 #, php-format
 msgid "Thumbnail file %s does not exist."
 msgstr "Thumbnail file %s does not exist."
 
-#: addmedia.php:434 modules_v3/gedcom_favorites/module.php:179
+#: addmedia.php:435 modules_v3/gedcom_favorites/module.php:179
 #: modules_v3/widget_favorites/module.php:197
 msgid "Enter a Person, Family, or Source ID"
 msgstr "Enter a Person, Family, or Source ID"
 
-#: addmedia.php:446
+#: addmedia.php:447
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:216
 msgid ""
 "Enter or search for the ID of the person, family, or source to which this "
@@ -172,68 +172,68 @@ msgstr ""
 "Enter or search for the ID of the person, family, or source to which this "
 "media item should be linked."
 
-#: addmedia.php:473 admin_media_upload.php:186 help_text.php:978
+#: addmedia.php:474 admin_media_upload.php:186 help_text.php:903
 msgid "Media file to upload"
 msgstr "Media file to upload"
 
-#: addmedia.php:479 admin_media_upload.php:179 admin_trees_manage.php:165
+#: addmedia.php:480 admin_media_upload.php:179 admin_trees_manage.php:166
 #, php-format
 msgid "Maximum file size allowed is %s"
 msgstr "Maximum file size allowed is %s"
 
-#: addmedia.php:489 admin_media_upload.php:192 help_text.php:1004
+#: addmedia.php:490 admin_media_upload.php:192 help_text.php:929
 msgid "Thumbnail to upload"
 msgstr "Thumbnail to upload"
 
-#: addmedia.php:504 addmedia.php:531 admin_media_upload.php:200
-#: help_text.php:991
+#: addmedia.php:505 addmedia.php:532 admin_media_upload.php:200
+#: help_text.php:916
 msgid "File name on server"
 msgstr "File name on server"
 
-#: addmedia.php:509 addmedia.php:548 admin_media_upload.php:204
+#: addmedia.php:510 addmedia.php:549 admin_media_upload.php:204
 msgid "Do not change to keep original file name."
 msgstr "Do not change to keep original file name."
 
-#: addmedia.php:510
+#: addmedia.php:511
 msgid "You may enter a URL, beginning with &laquo;http://&raquo;."
 msgstr "You may enter a URL, beginning with &laquo;http://&raquo;."
 
-#: addmedia.php:558 admin_media_upload.php:212 help_text.php:996
+#: addmedia.php:559 admin_media_upload.php:212 help_text.php:921
 #: modules_v3/gallery/module.php:283
 msgid "Folder name on server"
 msgstr "Folder name on server"
 
-#: addmedia.php:570 admin_media_upload.php:218
+#: addmedia.php:571 admin_media_upload.php:218
 msgid "Choose: "
 msgstr "Choose: "
 
-#: addmedia.php:574 admin_media_upload.php:219
+#: addmedia.php:575 admin_media_upload.php:219
 msgid "Other folder... please type in"
 msgstr "Other folder... please type in"
 
-#: addmedia.php:601
+#: addmedia.php:602
 msgid ""
 "This entry is ignored if you have entered a URL into the file name field."
 msgstr ""
 "This entry is ignored if you have entered a URL into the file name field."
 
-#: addmedia.php:793 admin_trees_config.php:1262 edit_interface.php:214
+#: addmedia.php:794 admin_trees_config.php:1391 edit_interface.php:214
 #: edit_interface.php:313 edit_interface.php:788 edit_interface.php:927
 #: edit_interface.php:1069 edit_interface.php:1151 edit_interface.php:1280
-#: edit_interface.php:2693 help_text.php:833
+#: edit_interface.php:2693 help_text.php:763
 #: includes/functions/functions_edit.php:990
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:610
 msgid "Do not update the “last change” record"
 msgstr "Do not update the “last change” record"
 
 #. I18N: button label
-#: addmedia.php:809 admin_module_blocks.php:101 admin_module_charts.php:101
+#: addmedia.php:810 admin_module_blocks.php:101 admin_module_charts.php:101
 #: admin_module_lists.php:101 admin_module_menus.php:127
 #: admin_module_reports.php:101 admin_module_resources.php:101
 #: admin_module_sidebar.php:127 admin_module_tabs.php:127
 #: admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:526
-#: admin_site_merge.php:163 admin_trees_config.php:1319
-#: admin_trees_manage.php:337 block_edit.php:61 edit_interface.php:169
+#: admin_site_merge.php:163 admin_trees_config.php:1448
+#: admin_trees_manage.php:342 block_edit.php:61 edit_interface.php:169
 #: edit_interface.php:270 edit_interface.php:346 edit_interface.php:505
 #: edit_interface.php:576 edit_interface.php:828 edit_interface.php:935
 #: edit_interface.php:1085 edit_interface.php:1161 edit_interface.php:1288
@@ -501,11 +501,11 @@ msgstr "The file %s was deleted."
 msgid "The file %s could not be deleted."
 msgstr "The file %s could not be deleted."
 
-#: admin_media.php:161 admin_media.php:234 admin_trees_duplicates.php:289
+#: admin_media.php:161 admin_media.php:233 admin_trees_duplicates.php:289
 #: branches.php:191 includes/functions/functions_edit.php:167
 #: includes/functions/functions_edit.php:174
-#: includes/functions/functions_edit.php:1448
-#: includes/functions/functions_edit.php:1481
+#: includes/functions/functions_edit.php:1451
+#: includes/functions/functions_edit.php:1484
 #: includes/functions/functions_print.php:914
 #: includes/functions/functions_print_facts.php:1261
 #: includes/functions/functions_print_lists.php:418
@@ -521,10 +521,10 @@ msgid "yes"
 msgstr "yes"
 
 #. I18N: 'no' is the number zero
-#: admin_media.php:164 admin_media.php:237 admin_users.php:255
+#: admin_media.php:164 admin_media.php:236 admin_users.php:255
 #: includes/functions/functions_edit.php:167
 #: includes/functions/functions_edit.php:174
-#: includes/functions/functions_edit.php:1478
+#: includes/functions/functions_edit.php:1481
 #: includes/functions/functions_print_facts.php:1264
 #: includes/functions/functions_print_lists.php:909 library/WT/Stats.php:3537
 #: medialist.php:265 modules_v3/batch_update/admin_batch_update.php:369
@@ -537,12 +537,12 @@ msgstr "yes"
 msgid "no"
 msgstr "no"
 
-#: admin_media.php:314
+#: admin_media.php:313
 msgid "Create"
 msgstr "Create"
 
-#: admin_media.php:318 admin_media.php:448 admin_site_access.php:130
-#: admin_trees_manage.php:301 admin_users.php:176 edituser.php:193
+#: admin_media.php:317 admin_media.php:454 admin_site_access.php:130
+#: admin_trees_manage.php:306 admin_users.php:176 edituser.php:193
 #: library/WT/Controller/Individual.php:400 library/WT/Controller/Media.php:131
 #: library/WT/Controller/Note.php:107 library/WT/Controller/Repository.php:107
 #: library/WT/Controller/Source.php:107
@@ -551,27 +551,27 @@ msgid "Are you sure you want to delete “%s”?"
 msgstr "Are you sure you want to delete “%s”?"
 
 #. I18N: size of file in KB
-#: admin_media.php:428 library/WT/Media.php:206
+#: admin_media.php:434 library/WT/Media.php:206
 #, php-format
 msgid "%s KB"
 msgstr "%s KB"
 
 #. I18N: image dimensions, width × height
-#: admin_media.php:432 library/WT/Media.php:287
+#: admin_media.php:438 library/WT/Media.php:287
 #, php-format
 msgid "%1$s × %2$s pixels"
 msgstr "%1$s × %2$s pixels"
 
-#: admin_media.php:436
+#: admin_media.php:442
 msgid "This media file exists, but cannot be accessed."
 msgstr "This media file exists, but cannot be accessed."
 
-#: admin_media.php:439
+#: admin_media.php:445
 msgid "This media file does not exist."
 msgstr "This media file does not exist."
 
 #. I18N: Submit button, on a form
-#: admin_media.php:454 admin_trees_duplicates.php:207
+#: admin_media.php:460 admin_trees_duplicates.php:207
 #: admin_trees_unlinked.php:69 admin_trees_unlinked.php:74 ancestry.php:108
 #: compact.php:50 descendancy.php:76 familybook.php:57 fanchart.php:64
 #: hourglass.php:74 modules_v3/googlemap/module.php:742 pedigree.php:76
@@ -579,35 +579,35 @@ msgstr "This media file does not exist."
 msgid "View"
 msgstr "View"
 
-#: admin_media.php:470 inverselink.php:176 library/WT/Controller/Media.php:96
+#: admin_media.php:476 inverselink.php:176 library/WT/Controller/Media.php:96
 #: library/WT/Controller/Media.php:183
 #: modules_v3/album/album_print_media.php:343
 msgid "Set link"
 msgstr "Set link"
 
-#: admin_media.php:472 library/WT/Controller/Media.php:97
+#: admin_media.php:478 library/WT/Controller/Media.php:97
 #: library/WT/Controller/Media.php:186
 #: modules_v3/album/album_print_media.php:346
 msgid "To individual"
 msgstr "To individual"
 
-#: admin_media.php:477 library/WT/Controller/Media.php:101
+#: admin_media.php:483 library/WT/Controller/Media.php:101
 #: library/WT/Controller/Media.php:190
 #: modules_v3/album/album_print_media.php:351
 msgid "To family"
 msgstr "To family"
 
-#: admin_media.php:482 library/WT/Controller/Media.php:105
+#: admin_media.php:488 library/WT/Controller/Media.php:105
 #: library/WT/Controller/Media.php:194
 #: modules_v3/album/album_print_media.php:356
 msgid "To source"
 msgstr "To source"
 
-#: admin_media.php:516 find.php:603
+#: admin_media.php:522 find.php:603
 msgid "This media object is not linked to any other record."
 msgstr "This media object is not linked to any other record."
 
-#: admin_media.php:534 admin_media.php:626 admin_trees_config.php:277
+#: admin_media.php:540 admin_media.php:634 admin_trees_config.php:277
 #: admin_trees_config.php:454 admin_trees_config.php:716
 #: admin_trees_sourcecheck.php:150
 #: includes/functions/functions_print_lists.php:1510 inverselink.php:73
@@ -616,63 +616,63 @@ msgstr "This media object is not linked to any other record."
 msgid "Media"
 msgstr "Media"
 
-#: admin_media.php:564
+#: admin_media.php:570
 msgid "Media files"
 msgstr "Media files"
 
-#: admin_media.php:565
+#: admin_media.php:571
 msgid "Media folders"
 msgstr "Media folders"
 
 #. I18N: “Local files” are stored on this computer
-#: admin_media.php:570
+#: admin_media.php:576
 msgid "Local files"
 msgstr "Local files"
 
 #. I18N: “External files” are stored on other computers
-#: admin_media.php:573
+#: admin_media.php:580
 msgid "External files"
 msgstr "External files"
 
-#: admin_media.php:576
+#: admin_media.php:584
 msgid "Unused files"
 msgstr "Unused files"
 
 #. I18N: Label for check-box
-#: admin_media.php:603 medialist.php:88
+#: admin_media.php:611 medialist.php:88
 msgid "Include subfolders"
 msgstr "Include subfolders"
 
-#: admin_media.php:606
+#: admin_media.php:614
 msgid "Exclude subfolders"
 msgstr "Exclude subfolders"
 
-#: admin_media.php:610
+#: admin_media.php:618
 msgid "External media files have a URL instead of a filename."
 msgstr "External media files have a URL instead of a filename."
 
-#: admin_media.php:625 admin_media_upload.php:184
+#: admin_media.php:633 admin_media_upload.php:184
 msgid "Media file"
 msgstr "Media file"
 
 #. I18N: gedcom tag OBJE
-#: admin_media.php:627 library/WT/Gedcom/Tag.php:285
+#: admin_media.php:635 library/WT/Gedcom/Tag.php:285
 #: modules_v3/album/module.php:194
 msgid "Media object"
 msgstr "Media object"
 
-#: admin_media.php:628
+#: admin_media.php:636
 msgid "Highlight"
 msgstr "Highlight"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
-#: admin_media.php:629 library/WT/Gedcom/Tag.php:266
+#: admin_media.php:637 library/WT/Gedcom/Tag.php:266
 #: library/WT/Gedcom/Tag.php:830
 msgid "Media type"
 msgstr "Media type"
 
-#: admin_media_upload.php:35 admin_media_upload.php:179 help_text.php:986
+#: admin_media_upload.php:35 admin_media_upload.php:179 help_text.php:911
 #: themes/_administration/header.php:201
 msgid "Upload media files"
 msgstr "Upload media files"
@@ -979,7 +979,7 @@ msgstr "User"
 
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237
 #: admin_site_logs.php:260 admin_trees_duplicates.php:142
-#: admin_trees_manage.php:252 admin_trees_places.php:102
+#: admin_trees_manage.php:257 admin_trees_places.php:102
 #: admin_trees_sourcecheck.php:85 admin_trees_unlinked.php:59
 #: admin_users.php:236 admin_users.php:422 edit_changes.php:169
 #: modules_v3/batch_update/admin_batch_update.php:65
@@ -1043,7 +1043,7 @@ msgid "Site configuration"
 msgstr "Site configuration"
 
 #: admin_site_config.php:38 admin_trees_config.php:493
-#: admin_trees_config.php:515 admin_trees_config.php:1249
+#: admin_trees_config.php:515 admin_trees_config.php:1378
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2085
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1189
 #: modules_v3/family_nav/module.php:488
@@ -1129,7 +1129,8 @@ msgstr ""
 #: admin_site_config.php:88 admin_site_config.php:432 admin_site_config.php:450
 #: admin_trees_config.php:391 admin_trees_config.php:427
 #: admin_trees_config.php:479 admin_trees_config.php:562
-#: admin_trees_config.php:725
+#: admin_trees_config.php:725 admin_trees_config.php:1075
+#: admin_trees_config.php:1091 admin_trees_config.php:1132
 msgid "More / Less ...."
 msgstr "More / Less ...."
 
@@ -1382,9 +1383,8 @@ msgid "Most SMTP servers require a password."
 msgstr "Most SMTP servers require a password."
 
 #: admin_site_config.php:332 admin_users.php:372 admin_users.php:561
-#: edituser.php:133 help_text.php:1035 login.php:162 login.php:226
-#: login.php:302 login.php:345 login.php:460
-#: modules_v3/login_block/module.php:69
+#: edituser.php:133 help_text.php:960 login.php:162 login.php:226 login.php:302
+#: login.php:345 login.php:460 modules_v3/login_block/module.php:69
 #: modules_v3/resource_changes/module.php:160
 #: modules_v3/resource_todo/module.php:153 modules_v3/todo/module.php:100
 #: modules_v3/widget_todo/module.php:100
@@ -1396,7 +1396,7 @@ msgid "The user name required for authentication with the SMTP server."
 msgstr "The user name required for authentication with the SMTP server."
 
 #: admin_site_config.php:346 admin_site_config.php:374 admin_users.php:213
-#: admin_users.php:384 edituser.php:164 help_text.php:843 login.php:167
+#: admin_users.php:384 edituser.php:164 help_text.php:773 login.php:167
 #: login.php:228 login.php:464 modules_v3/login_block/module.php:74
 #: setup.php:436
 msgid "Password"
@@ -1659,9 +1659,9 @@ msgstr "Logs"
 #: admin_site_logs.php:225 admin_site_logs.php:256 edit_changes.php:166
 #: includes/functions/functions_print_facts.php:602
 #: library/WT/Gedcom/Tag.php:343 medialist.php:109
-#: modules_v3/resource_fact/module.php:209
-#: modules_v3/resource_fact/module.php:253
-#: modules_v3/resource_fact/module.php:273
+#: modules_v3/resource_fact/module.php:211
+#: modules_v3/resource_fact/module.php:255
+#: modules_v3/resource_fact/module.php:275
 msgid "Type"
 msgstr "Type"
 
@@ -1670,7 +1670,7 @@ msgid "Message"
 msgstr "Message"
 
 #: admin_site_merge.php:35 admin_site_merge.php:110 admin_site_merge.php:166
-#: admin_site_merge.php:259 help_text.php:736
+#: admin_site_merge.php:259 help_text.php:666
 #: themes/_administration/header.php:173
 msgid "Merge records"
 msgstr "Merge records"
@@ -1874,7 +1874,7 @@ msgstr "Copy all the records from %1$s into %2$s"
 #. I18N: button label
 #. I18N: button label
 #: admin_trees_append.php:174 admin_trees_download.php:109
-#: admin_trees_download.php:168 admin_trees_manage.php:238
+#: admin_trees_download.php:168 admin_trees_manage.php:239
 #: admin_trees_renumber.php:280 admin_users.php:538 login.php:192 login.php:435
 #: modules_v3/login_block/module.php:100 setup.php:210 setup.php:234
 #: setup.php:306 setup.php:392 setup.php:451
@@ -1929,15 +1929,15 @@ msgstr "%1$s is a %2$s but a %3$s is expected."
 msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s does not have a link back to %2$s."
 
+#: admin_trees_check.php:215
+msgid "No errors were found."
+msgstr "No errors were found."
+
 #. I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
-#: admin_trees_check.php:216
+#: admin_trees_check.php:224
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s has a %3$s link to %4$s."
-
-#: admin_trees_check.php:245
-msgid "No errors were found."
-msgstr "No errors were found."
 
 #: admin_trees_config.php:35 admin_trees_config.php:265
 msgid "Family tree configuration"
@@ -1984,7 +1984,7 @@ msgid "Hide from everyone"
 msgstr "Hide from everyone"
 
 #: admin_trees_config.php:273 admin_trees_config.php:285
-#: admin_trees_config.php:1056 search.php:99
+#: admin_trees_config.php:1148 search.php:99
 msgid "General"
 msgstr "General"
 
@@ -2009,16 +2009,16 @@ msgstr "Layout"
 msgid "Hide &amp; show"
 msgstr "Hide &amp; Show"
 
-#: admin_trees_config.php:280 admin_trees_config.php:1067
+#: admin_trees_config.php:280 admin_trees_config.php:1196
 msgid "Edit options"
 msgstr "Edit options"
 
-#: admin_trees_config.php:281 admin_trees_config.php:1271
-#: admin_trees_config.php:1276
+#: admin_trees_config.php:281 admin_trees_config.php:1400
+#: admin_trees_config.php:1405
 msgid "Theme"
 msgstr "Theme"
 
-#: admin_trees_config.php:288 admin_trees_manage.php:354
+#: admin_trees_config.php:288 admin_trees_manage.php:359
 msgid "Family tree title"
 msgstr "Family tree title"
 
@@ -2029,7 +2029,7 @@ msgstr "Family tree subtitle"
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
-#: admin_trees_config.php:300 admin_trees_manage.php:372
+#: admin_trees_config.php:300 admin_trees_manage.php:377
 #: library/WT/Gedcom/Tag.php:344 library/WT/Gedcom/Tag.php:348
 #: library/WT/Gedcom/Tag.php:832
 msgid "URL"
@@ -2044,7 +2044,7 @@ msgstr ""
 
 #. I18N: gedcom tag LANG
 #: admin_trees_config.php:310 admin_users.php:404 admin_users.php:565
-#: edituser.php:174 library/WT/Gedcom/Tag.php:247 library/WT/MenuBar.php:195
+#: edituser.php:174 library/WT/Gedcom/Tag.php:247 library/WT/MenuBar.php:196
 msgid "Language"
 msgstr "Language"
 
@@ -2061,11 +2061,11 @@ msgstr ""
 "engines."
 
 #: admin_trees_config.php:319 admin_users.php:237 admin_users.php:423
-#: edituser.php:154 help_text.php:718 modules_v3/gedcom_block/module.php:58
+#: edituser.php:154 help_text.php:648 modules_v3/gedcom_block/module.php:58
 msgid "Default individual"
 msgstr "Default individual"
 
-#: admin_trees_config.php:333 help_text.php:719
+#: admin_trees_config.php:333 help_text.php:649
 msgid ""
 "This individual will be selected by default when viewing charts and reports."
 msgstr ""
@@ -2153,13 +2153,12 @@ msgid ""
 "repeatable, so that central organizations such as the Family History Center "
 "of the LDS Church in Salt Lake City, or even compatible programs running on "
 "your own server, can determine whether they are dealing with the same person "
-"no matter where the GEDCOM originates.  The goal of the Family History "
-"Center is to have a central repository of genealogical data and expose it "
-"through web services. This will enable any program to access the data and "
-"update their data within it.<br><br>If you do not intend to share this "
-"GEDCOM with anyone else, you do not need to let kiwitrees create these "
-"GUIDs; however, doing so will do no harm other than increasing the size of "
-"your GEDCOM."
+"no matter where the GEDCOM originates. The goal of the Family History Center "
+"is to have a central repository of genealogical data and expose it through "
+"web services. This will enable any program to access the data and update "
+"their data within it.<br><br>If you do not intend to share this GEDCOM with "
+"anyone else, you do not need to let kiwitrees create these GUIDs; however, "
+"doing so will do no harm other than increasing the size of your GEDCOM."
 msgstr ""
 "<b>GUID</b> in this context is an acronym for «Globally Unique ID»."
 "<br><br>GUIDs are intended to help identify each individual in a manner that "
@@ -2181,7 +2180,7 @@ msgstr "Prefixes"
 #. I18N: gedcom tag INDI
 #: admin_trees_config.php:438 admin_trees_sourcecheck.php:142 ancestry.php:49
 #: compact.php:43 descendancy.php:43 familybook.php:43 fanchart.php:51
-#: hourglass.php:54 includes/functions/functions_edit.php:1751
+#: hourglass.php:54 includes/functions/functions_edit.php:1754
 #: includes/functions/functions_print_lists.php:1324 inverselink.php:98
 #: library/WT/Gedcom/Tag.php:245 modules_v3/charts/module.php:219
 #: modules_v3/googlemap/module.php:722
@@ -2194,7 +2193,7 @@ msgstr "Individual"
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
 #: admin_trees_config.php:442 admin_trees_sourcecheck.php:146
-#: edit_interface.php:469 includes/functions/functions_edit.php:1782
+#: edit_interface.php:469 includes/functions/functions_edit.php:1785
 #: inverselink.php:114 library/WT/Gedcom/Tag.php:215
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1386
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:924
@@ -2457,7 +2456,7 @@ msgstr ""
 
 #: admin_trees_config.php:649 includes/functions/functions_print.php:1120
 #: includes/functions/functions_print.php:1224
-#: modules_v3/resource_fact/module.php:185
+#: modules_v3/resource_fact/module.php:187
 msgid "Fact or event"
 msgstr "Fact or event"
 
@@ -2502,7 +2501,7 @@ msgstr ""
 #: admin_trees_config.php:728
 msgid ""
 "If two family trees use the same media folder, then they will be able to "
-"share media files.  If they use different media folders, then their media "
+"share media files. If they use different media folders, then their media "
 "files will be kept separate."
 msgstr ""
 "If two family trees use the same media folder, then they will be able to "
@@ -2535,7 +2534,7 @@ msgstr ""
 "Media file to the local PC.<br><br>You may want to hide the download link "
 "for security reasons."
 
-#: admin_trees_config.php:758 help_text.php:652
+#: admin_trees_config.php:758 help_text.php:582
 msgid "Width of generated thumbnails"
 msgstr "Width of generated thumbnails"
 
@@ -2544,10 +2543,10 @@ msgstr "Width of generated thumbnails"
 msgid "pixels"
 msgstr "pixels"
 
-#: admin_trees_config.php:763 help_text.php:653
+#: admin_trees_config.php:763
 msgid ""
 "This is the width (in pixels) that the program will use when automatically "
-"generating thumbnails.  The default setting is 100."
+"generating thumbnails. The default setting is 100."
 msgstr ""
 "This is the width (in pixels) that the program will use when automatically "
 "generating thumbnails.  The default setting is 100."
@@ -2670,7 +2669,7 @@ msgstr ""
 msgid "Display surnames in all CAPS"
 msgstr "Display surnames in all CAPS"
 
-#: admin_trees_config.php:860 library/WT/MenuBar.php:120
+#: admin_trees_config.php:860 library/WT/MenuBar.php:121
 #: themes/_administration/header.php:217
 msgid "Lists"
 msgstr "Lists"
@@ -2717,9 +2716,9 @@ msgstr "Maximum number of surnames on individual list"
 #: admin_trees_config.php:876
 msgid ""
 "Long lists of people with the same surname can be broken into smaller sub-"
-"lists according to the first letter of the individual's given name."
-"<br><br>This option determines when sub-listing of surnames will occur. To "
-"disable sub-listing completely, set this option to zero."
+"lists according to the first letter of the individual's given name.<br>This "
+"option determines when sub-listing of surnames will occur. To disable sub-"
+"listing completely, set this option to zero."
 msgstr ""
 "Long lists of persons with the same surname can be broken into smaller sub-"
 "lists according to the first letter of the individual's given name."
@@ -2731,26 +2730,27 @@ msgid "Estimated dates for birth and death"
 msgstr "Estimated dates for birth and death"
 
 #: admin_trees_config.php:883 admin_trees_config.php:892
-#: admin_trees_config.php:1038 admin_trees_config.php:1040
-#: admin_trees_config.php:1042 admin_trees_config.php:1047
-#: admin_trees_config.php:1055 admin_trees_config.php:1060
-#: admin_trees_config.php:1062 admin_trees_config.php:1064
-#: modules_v3/googlemap/module.php:270
+#: admin_trees_config.php:1054 admin_trees_config.php:1063
+#: admin_trees_config.php:1072 admin_trees_config.php:1102
+#: admin_trees_config.php:1142 admin_trees_config.php:1161
+#: admin_trees_config.php:1170 admin_trees_config.php:1179
+#: admin_trees_config.php:1188 modules_v3/googlemap/module.php:270
 msgid "hide"
 msgstr "hide"
 
 #: admin_trees_config.php:883 admin_trees_config.php:892
-#: admin_trees_config.php:1038 admin_trees_config.php:1040
-#: admin_trees_config.php:1042 admin_trees_config.php:1047
-#: admin_trees_config.php:1055 admin_trees_config.php:1060
-#: admin_trees_config.php:1062 admin_trees_config.php:1064 branches.php:85
+#: admin_trees_config.php:1054 admin_trees_config.php:1063
+#: admin_trees_config.php:1072 admin_trees_config.php:1102
+#: admin_trees_config.php:1142 admin_trees_config.php:1161
+#: admin_trees_config.php:1170 admin_trees_config.php:1179
+#: admin_trees_config.php:1188 branches.php:85
 #: modules_v3/extra_menus/module.php:350
 #: modules_v3/fancy_treeview/module.php:676 modules_v3/faq/module.php:450
 #: modules_v3/gallery/module.php:534 modules_v3/googlemap/module.php:270
 #: modules_v3/no_census/module.php:189
 #: modules_v3/resource_changes/module.php:205
-#: modules_v3/resource_fact/module.php:216
 #: modules_v3/resource_fact/module.php:218
+#: modules_v3/resource_fact/module.php:220
 #: modules_v3/resource_individual/module.php:136
 #: modules_v3/resource_individual/module.php:138
 #: modules_v3/resource_todo/module.php:136
@@ -2835,7 +2835,7 @@ msgid "Set the maximum number of generations to display on Descendancy charts."
 msgstr ""
 "Set the maximum number of generations to display on Descendancy charts."
 
-#: admin_trees_config.php:935 admin_trees_config.php:1045
+#: admin_trees_config.php:935 admin_trees_config.php:1098
 msgid "Individual pages"
 msgstr "Individual pages"
 
@@ -2877,7 +2877,7 @@ msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
 msgstr "last"
 
-#. I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name
+#. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: admin_trees_config.php:997
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
@@ -2885,7 +2885,7 @@ msgstr "Show the %1$s %2$s parts of a place name."
 
 #: admin_trees_config.php:1024
 msgid ""
-"Place names are frequently too long to fit on charts, lists, etc.  They can "
+"Place names are frequently too long to fit on charts, lists, etc. They can "
 "be abbreviated by showing just the first few parts of the name, such as "
 "<i>village, county</i>, or the last few part of it, such as <i>region, "
 "country</i>."
@@ -2895,238 +2895,421 @@ msgstr ""
 "<i>village, county</i>, or the last few part of it, such as <i>region, "
 "country</i>."
 
-#: admin_trees_config.php:1033 help_text.php:404
+#: admin_trees_config.php:1034
 msgid "Abbreviate chart labels"
 msgstr "Abbreviate chart labels"
 
-#. I18N: A site configuration setting
-#: admin_trees_config.php:1035 help_text.php:493
+#: admin_trees_config.php:1038
+msgid ""
+"This option controls whether or not to abbreviate labels like <b>Birth</b> "
+"on charts with just the first letter like <b>B</b>."
+msgstr ""
+"This option controls whether or not to abbreviate labels like <b>Birth</b> "
+"on charts with just the first letter like <b>B</b>."
+
+#: admin_trees_config.php:1043
 msgid "Show chart details by default"
 msgstr "Show chart details by default"
 
-#: admin_trees_config.php:1037 help_text.php:498
+#. I18N: Help text for the “Show chart details by default” tree configuration setting
+#: admin_trees_config.php:1047
+msgid ""
+"This is the initial setting for the “show details” option on the charts."
+msgstr ""
+"This is the initial setting for the “show details” option on the charts."
+
+#: admin_trees_config.php:1052
 msgid "Gender icon on charts"
 msgstr "Gender icon on charts"
 
-#: admin_trees_config.php:1039
-msgid "Age of parents next to child's birthdate"
+#: admin_trees_config.php:1056
+msgid ""
+"This option controls whether or not to show the individual's gender icon on "
+"charts.<br>Since the gender is also indicated by the color of the box, this "
+"option doesn't conceal the gender. The option simply removes some duplicate "
+"information from the box."
+msgstr ""
+"This option controls whether or not to show the individual's gender icon on "
+"charts.<br><br>Since the gender is also indicated by the color of the box, "
+"this option doesn't conceal the gender. The option simply removes some "
+"duplicate information from the box."
+
+#: admin_trees_config.php:1061
+msgid "Age of parents next to child's birth date"
 msgstr "Age of parents next to child's birthdate"
 
-#: admin_trees_config.php:1041 help_text.php:563
+#: admin_trees_config.php:1065
+msgid ""
+"This option controls whether or not to show age of father and mother next to "
+"child's birth date on charts."
+msgstr ""
+"This option controls whether or not to show age of father and mother next to "
+"child's birthdate on charts."
+
+#: admin_trees_config.php:1070
 msgid "LDS ordinance codes in chart boxes"
 msgstr "LDS ordinance codes in chart boxes"
 
-#: admin_trees_config.php:1043 help_text.php:419
+#. I18N: First part of help for LDS ordinannces show/hide option
+#: admin_trees_config.php:1074
+msgid ""
+"Setting this option to <b>Yes</b> will show status codes for LDS ordinances "
+"in chart boxes."
+msgstr ""
+"Setting this option to <b>Yes</b> will show status codes for LDS ordinances "
+"in chart boxes."
+
+#. I18N: Second part of help for LDS ordinannces show/hide option
+#: admin_trees_config.php:1077
+msgid ""
+"<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - "
+"Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who "
+"has all of the ordinances done will have <b>BESP</b> printed after their "
+"name. Missing ordinances are indicated by <b>_</b> in place of the "
+"corresponding letter code. For example, <b>BE__</b> indicates missing <b>S</"
+"b> and <b>P</b> ordinances."
+msgstr ""
+"Setting this option to <b>Yes</b> will show status codes for LDS ordinances "
+"in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</"
+"li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</"
+"li></ul>A person who has all of the ordinances done will have <b>BESP</b> "
+"printed after their name.  Missing ordinances are indicated by <b>_</b> in "
+"place of the corresponding letter code.  For example, <b>BE__</b> indicates "
+"missing <b>S</b> and <b>P</b> ordinances."
+
+#: admin_trees_config.php:1083
 msgid "Other facts to show in charts"
 msgstr "Other facts to show in charts"
 
-#: admin_trees_config.php:1046
+#. I18N: First part of help for Other facts to show in charts
+#: admin_trees_config.php:1090
+msgid ""
+"This should be a comma or space separated list of facts, in addition to "
+"Birth and Death, that you want to appear in chart boxes such as the Pedigree "
+"chart."
+msgstr ""
+"This should be a comma or space separated list of facts, in addition to "
+"Birth and Death, that you want to appear in chart boxes such as the Pedigree "
+"chart.  This list requires you to use fact tags as defined in the GEDCOM "
+"5.5.1 Standard.  For example, if you wanted the occupation to show up in the "
+"box, you would add \"OCCU\" to this field."
+
+#. I18N: Second part of help for Other facts to show in charts
+#: admin_trees_config.php:1093
+msgid ""
+"This list requires you to use fact tags as defined in the GEDCOM 5.5.1 "
+"Standard. For example, if you wanted the occupation to show up in the box, "
+"you would add \"OCCU\" to this field. Either enter the tags manually or use "
+"the edit selector."
+msgstr ""
+"This should be a comma or space separated list of facts, in addition to "
+"Birth and Death, that you want to appear in chart boxes such as the Pedigree "
+"chart.  This list requires you to use fact tags as defined in the GEDCOM "
+"5.5.1 Standard.  For example, if you wanted the occupation to show up in the "
+"box, you would add \"OCCU\" to this field."
+
+#: admin_trees_config.php:1100
 msgid "Fact icons"
 msgstr "Fact icons"
 
-#: admin_trees_config.php:1048 help_text.php:429
+#: admin_trees_config.php:1104
+msgid ""
+"Set this to <b>Yes</b> to display icons near Fact names on the Personal "
+"Facts and Details page. Fact icons will be displayed only if they exist in "
+"the <i>images/facts</i> directory of the current theme."
+msgstr ""
+"Set this to <b>Yes</b> to display icons near Fact names on the Personal "
+"Facts and Details page.  Fact icons will be displayed only if they exist in "
+"the <i>images/facts</i> directory of the current theme."
+
+#: admin_trees_config.php:1109
 msgid "Automatically expand notes"
 msgstr "Automatically expand notes"
 
-#: admin_trees_config.php:1050 help_text.php:434
+#: admin_trees_config.php:1113
+msgid ""
+"This option controls whether or not to automatically display content of a "
+"<i>Note</i> record on the Individual page."
+msgstr ""
+"This option controls whether or not to automatically display content of a "
+"<i>Note</i> record on the Individual page."
+
+#: admin_trees_config.php:1118
 msgid "Automatically expand sources"
 msgstr "Automatically expand sources"
 
-#: admin_trees_config.php:1052 help_text.php:568
+#: admin_trees_config.php:1122
+msgid ""
+"This option controls whether or not to automatically display content of a "
+"<i>Source</i> record on the Individual page."
+msgstr ""
+"This option controls whether or not to automatically display content of a "
+"<i>Source</i> record on the Individual page."
+
+#: admin_trees_config.php:1127
 msgid "Show all notes and source references on notes and sources tabs"
 msgstr "Show all notes and source references on notes and sources tabs"
 
-#: admin_trees_config.php:1054 help_text.php:953
+#. I18N: First part of help for Show all notes and source references
+#: admin_trees_config.php:1131
+msgid ""
+"This option controls whether Notes and Source references that are attached "
+"to Facts should be shown on the Notes and Sources tabs of the Individual "
+"page."
+msgstr ""
+"This option controls whether or not to automatically display content of a "
+"<i>Source</i> record on the Individual page."
+
+#. I18N: Second part of help for Show all notes and source references
+#: admin_trees_config.php:1134
+msgid ""
+"Ordinarily, the Notes and Sources tabs show only Notes and Source references "
+"that are attached directly to the individual's database record. These are "
+"<i>level 1</i> Notes and Source references.<br>The <b>Yes</b> option causes "
+"these tabs to also show Notes and Source references that are part of the "
+"various Facts in the individual's database record. These are <i>level 2</i> "
+"Notes and Source references because the various Facts are at level 1."
+msgstr ""
+"This option controls whether Notes and Source references that are attached "
+"to Facts should be shown on the Notes and Sources tabs of the Individual "
+"page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and "
+"Source references that are attached directly to the individual's database "
+"record.  These are <i>level 1</i> Notes and Source references.<br><br>The "
+"<b>Yes</b> option causes these tabs to also show Notes and Source references "
+"that are part of the various Facts in the individual's database record.  "
+"These are <i>level 2</i> Notes and Source references because the various "
+"Facts are at level 1."
+
+#: admin_trees_config.php:1140 admin_trees_config.php:1159
 msgid "Date differences"
 msgstr "Date differences"
 
-#: admin_trees_config.php:1057 help_text.php:558
+#: admin_trees_config.php:1144 admin_trees_config.php:1163
+msgid ""
+"When this option is selected, kiwitrees will calculate the age differences "
+"between siblings, children, spouses, etc."
+msgstr ""
+"When this option is selected, kiwitrees will calculate the age differences "
+"between siblings, children, spouses, etc."
+
+#: admin_trees_config.php:1150
 msgid "Allow users to see raw GEDCOM records"
 msgstr "Allow users to see raw GEDCOM records"
 
-#: admin_trees_config.php:1059 help_text.php:473
+#: admin_trees_config.php:1154
+msgid ""
+"Setting this to <b>Yes</b> will place links on individuals, sources, and "
+"families page menus to let users bring up another window containing the raw "
+"data in GEDCOM file format.<br>Administrators always see these links "
+"regardless of this setting."
+msgstr ""
+"Setting this to <b>Yes</b> will place links on individuals, sources, and "
+"families to let users bring up another window containing the raw data taken "
+"right out of the GEDCOM file."
+
+#: admin_trees_config.php:1168
 msgid "GEDCOM errors"
 msgstr "GEDCOM errors"
 
-#: admin_trees_config.php:1061 help_text.php:548
+#: admin_trees_config.php:1172
+msgid ""
+"Many genealogy programs create GEDCOM files with custom tags, and kiwitrees "
+"understands most of them. When unrecognised tags are found, this option lets "
+"you choose whether to ignore them or display a warning message."
+msgstr ""
+"Many genealogy programs create GEDCOM files with custom tags, and kiwitrees "
+"understands most of them.  When unrecognised tags are found, this option "
+"lets you choose whether to ignore them or display a warning message."
+
+#: admin_trees_config.php:1177
 msgid "Hit counters"
 msgstr "Hit counters"
 
-#: admin_trees_config.php:1063 help_text.php:578
+#: admin_trees_config.php:1181
+msgid "Show hit counters on the Home and Individual pages."
+msgstr "Show hit counters on the Home and Individual pages."
+
+#: admin_trees_config.php:1186
 msgid "Execution statistics"
 msgstr "Execution statistics"
 
-#: admin_trees_config.php:1072
+#: admin_trees_config.php:1190
+msgid ""
+"Show runtime statistics and database queries at the bottom of every page."
+msgstr ""
+"Show runtime statistics and database queries at the bottom of every page."
+
+#: admin_trees_config.php:1201
 msgid "Facts for Individual records"
 msgstr "Facts for Individual records"
 
-#: admin_trees_config.php:1077 help_text.php:478
+#: admin_trees_config.php:1206 help_text.php:453
 msgid "All individual facts"
 msgstr "All individual facts"
 
-#: admin_trees_config.php:1085 help_text.php:488
+#: admin_trees_config.php:1214 help_text.php:463
 msgid "Unique individual facts"
 msgstr "Unique individual facts"
 
-#: admin_trees_config.php:1093 help_text.php:518
+#: admin_trees_config.php:1222 help_text.php:483
 msgid "Facts for new individuals"
 msgstr "Facts for new individuals"
 
-#: admin_trees_config.php:1101 help_text.php:483
+#: admin_trees_config.php:1230 help_text.php:458
 msgid "Quick individual facts"
 msgstr "Quick individual facts"
 
-#: admin_trees_config.php:1109
+#: admin_trees_config.php:1238
 msgid "Facts for Family records"
 msgstr "Facts for Family records"
 
-#: admin_trees_config.php:1114 help_text.php:439
+#: admin_trees_config.php:1243 help_text.php:419
 msgid "All family facts"
 msgstr "All family facts"
 
-#: admin_trees_config.php:1122 help_text.php:449
+#: admin_trees_config.php:1251 help_text.php:429
 msgid "Unique family facts"
 msgstr "Unique family facts"
 
-#: admin_trees_config.php:1130 help_text.php:523
+#: admin_trees_config.php:1259 help_text.php:488
 msgid "Facts for new families"
 msgstr "Facts for new families"
 
-#: admin_trees_config.php:1138 help_text.php:444
+#: admin_trees_config.php:1267 help_text.php:424
 msgid "Quick family facts"
 msgstr "Quick family facts"
 
-#: admin_trees_config.php:1146
+#: admin_trees_config.php:1275
 msgid "Facts for Source records"
 msgstr "Facts for Source records"
 
-#: admin_trees_config.php:1151 help_text.php:583
+#: admin_trees_config.php:1280 help_text.php:513
 msgid "All source facts"
 msgstr "All source facts"
 
-#: admin_trees_config.php:1159 help_text.php:593
+#: admin_trees_config.php:1288 help_text.php:523
 msgid "Unique source facts"
 msgstr "Unique source facts"
 
-#: admin_trees_config.php:1167 help_text.php:588
+#: admin_trees_config.php:1296 help_text.php:518
 msgid "Quick source facts"
 msgstr "Quick source facts"
 
-#: admin_trees_config.php:1175
+#: admin_trees_config.php:1304
 msgid "Facts for Repository records"
 msgstr "Facts for Repository records"
 
-#: admin_trees_config.php:1180 help_text.php:528
+#: admin_trees_config.php:1309 help_text.php:493
 msgid "All repository facts"
 msgstr "All repository facts"
 
-#: admin_trees_config.php:1188 help_text.php:538
+#: admin_trees_config.php:1317 help_text.php:503
 msgid "Unique repository facts"
 msgstr "Unique repository facts"
 
-#: admin_trees_config.php:1196 help_text.php:533
+#: admin_trees_config.php:1325 help_text.php:498
 msgid "Quick repository facts"
 msgstr "Quick repository facts"
 
-#: admin_trees_config.php:1204
+#: admin_trees_config.php:1333
 msgid "Advanced fact settings"
 msgstr "Advanced fact settings"
 
-#: admin_trees_config.php:1209 help_text.php:409
+#: admin_trees_config.php:1338 help_text.php:404
 msgid "Advanced name facts"
 msgstr "Advanced name facts"
 
-#: admin_trees_config.php:1217 help_text.php:414
+#: admin_trees_config.php:1346 help_text.php:409
 msgid "Advanced place name facts"
 msgstr "Advanced place name facts"
 
-#: admin_trees_config.php:1225
+#: admin_trees_config.php:1354
 msgid "Other settings"
 msgstr "Other settings"
 
-#: admin_trees_config.php:1230 help_text.php:598
+#: admin_trees_config.php:1359 help_text.php:528
 msgid "Surname tradition"
 msgstr "Surname tradition"
 
-#: admin_trees_config.php:1233 help_text.php:614
+#: admin_trees_config.php:1362 help_text.php:544
 msgctxt "Surname tradition"
 msgid "paternal"
 msgstr "paternal"
 
 #. I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname
-#: admin_trees_config.php:1233 help_text.php:603
+#: admin_trees_config.php:1362 help_text.php:533
 msgid "patrilineal"
 msgstr "patrilineal"
 
 #. I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname
-#: admin_trees_config.php:1233 help_text.php:609
+#: admin_trees_config.php:1362 help_text.php:539
 msgid "matrilineal"
 msgstr "matrilineal"
 
-#: admin_trees_config.php:1233 help_text.php:620
+#: admin_trees_config.php:1362 help_text.php:550
 msgctxt "Surname tradition"
 msgid "Spanish"
 msgstr "Spanish"
 
-#: admin_trees_config.php:1233 help_text.php:625
+#: admin_trees_config.php:1362 help_text.php:555
 msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "Portuguese"
 
-#: admin_trees_config.php:1233 help_text.php:630
+#: admin_trees_config.php:1362 help_text.php:560
 msgctxt "Surname tradition"
 msgid "Icelandic"
 msgstr "Icelandic"
 
-#: admin_trees_config.php:1233 help_text.php:635
+#: admin_trees_config.php:1362 help_text.php:565
 msgctxt "Surname tradition"
 msgid "Polish"
 msgstr "Polish"
 
-#: admin_trees_config.php:1233 help_text.php:642
+#: admin_trees_config.php:1362 help_text.php:572
 msgctxt "Surname tradition"
 msgid "Lithuanian"
 msgstr "Lithuanian"
 
-#: admin_trees_config.php:1233
+#: admin_trees_config.php:1362
 msgctxt "Surname tradition"
 msgid "none"
 msgstr "none"
 
-#: admin_trees_config.php:1238 help_text.php:454
+#: admin_trees_config.php:1367 help_text.php:434
 msgid "Use full source citations"
 msgstr "Use full source citations"
 
-#: admin_trees_config.php:1246 help_text.php:513
+#: admin_trees_config.php:1375 help_text.php:478
 #: modules_v3/fact_sources/report.bak:7
 msgid "Source type"
 msgstr "Source type"
 
-#: admin_trees_config.php:1249 modules_v3/fact_sources/report.bak:7
+#: admin_trees_config.php:1378 modules_v3/fact_sources/report.bak:7
 msgid "facts"
 msgstr "facts"
 
-#: admin_trees_config.php:1249 modules_v3/fact_sources/report.bak:7
+#: admin_trees_config.php:1378 modules_v3/fact_sources/report.bak:7
 msgid "records"
 msgstr "records"
 
-#: admin_trees_config.php:1254 help_text.php:657
+#: admin_trees_config.php:1383 help_text.php:587
 msgid "Use GeoNames database for autocomplete on places"
 msgstr "Use GeoNames database for autocomplete on places"
 
-#: admin_trees_config.php:1293
+#: admin_trees_config.php:1422
 msgid "Customized"
 msgstr "Customized"
 
-#: admin_trees_download.php:33 admin_trees_manage.php:295
+#: admin_trees_download.php:33 admin_trees_manage.php:300
 msgid "Export a GEDCOM file"
 msgstr "Export a GEDCOM file"
 
-#: admin_trees_download.php:106 admin_trees_manage.php:170
+#: admin_trees_download.php:106 admin_trees_manage.php:171
 msgid "A file on the server"
 msgstr "A file on the server"
 
-#: admin_trees_download.php:116 admin_trees_manage.php:158
+#: admin_trees_download.php:116 admin_trees_manage.php:159
 msgid "A file on your computer"
 msgstr "A file on your computer"
 
@@ -3143,7 +3326,7 @@ msgstr ""
 "To reduce the size of the download, you can compress the data into a .ZIP "
 "file. You will need to uncompress the .ZIP file before you can use it."
 
-#: admin_trees_download.php:129 help_text.php:703
+#: admin_trees_download.php:129 help_text.php:633
 #: modules_v3/clippings/module.php:210 modules_v3/clippings/module.php:218
 #: modules_v3/clippings/module.php:583 modules_v3/clippings/module.php:591
 msgid "Apply privacy settings?"
@@ -3159,26 +3342,26 @@ msgid "None"
 msgstr "None"
 
 #. I18N: Listbox entry; name of a role
-#: admin_trees_download.php:134 admin_users.php:44 help_text.php:943
+#: admin_trees_download.php:134 admin_users.php:44 help_text.php:873
 #: modules_v3/clippings/module.php:213 modules_v3/clippings/module.php:586
 msgid "Manager"
 msgstr "Manager"
 
 #. I18N: Listbox entry; name of a role
-#: admin_trees_download.php:136 admin_users.php:41 help_text.php:931
+#: admin_trees_download.php:136 admin_users.php:41 help_text.php:861
 #: modules_v3/clippings/module.php:214 modules_v3/clippings/module.php:220
 #: modules_v3/clippings/module.php:587 modules_v3/clippings/module.php:593
 msgid "Member"
 msgstr "Member"
 
 #. I18N: Listbox entry; name of a role
-#: admin_trees_download.php:138 admin_users.php:40 help_text.php:927
+#: admin_trees_download.php:138 admin_users.php:40 help_text.php:857
 #: modules_v3/clippings/module.php:215 modules_v3/clippings/module.php:221
 #: modules_v3/clippings/module.php:588 modules_v3/clippings/module.php:594
 msgid "Visitor"
 msgstr "Visitor"
 
-#: admin_trees_download.php:141 help_text.php:704
+#: admin_trees_download.php:141 help_text.php:634
 msgid ""
 "This option will remove private data from the downloaded GEDCOM file.  The "
 "file will be filtered according to the privacy settings that apply to each "
@@ -3195,7 +3378,7 @@ msgstr ""
 msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
 msgstr "Convert from UTF-8 to ANSI (ISO-8859-1)"
 
-#: admin_trees_download.php:150 help_text.php:1046
+#: admin_trees_download.php:150 help_text.php:971
 msgid ""
 "Kiwitrees uses UTF-8 encoding for accented letters, special characters and "
 "non-latin scripts. If you want to use this GEDCOM file with genealogy "
@@ -3222,7 +3405,7 @@ msgid "Find duplicate individuals"
 msgstr "Find duplicate individuals"
 
 #. I18N: gedcom tag SURN
-#: admin_trees_duplicates.php:154 help_text.php:808
+#: admin_trees_duplicates.php:154 help_text.php:738
 #: library/WT/Gedcom/Tag.php:334 modules_v3/fancy_treeview/module.php:462
 msgid "Surname"
 msgstr "Surname"
@@ -3253,7 +3436,7 @@ msgid "Any"
 msgstr "Any"
 
 #: admin_trees_duplicates.php:186 calendar.php:673
-#: includes/functions/functions_edit.php:1486
+#: includes/functions/functions_edit.php:1489
 #: library/WT/Controller/Individual.php:269
 #: library/WT/Controller/Individual.php:272 library/WT/Stats.php:3343
 #: statisticsplot.php:798 timeline.php:243
@@ -3261,7 +3444,7 @@ msgid "Male"
 msgstr "Male"
 
 #: admin_trees_duplicates.php:190 calendar.php:677
-#: includes/functions/functions_edit.php:1488
+#: includes/functions/functions_edit.php:1491
 #: library/WT/Controller/Individual.php:278
 #: library/WT/Controller/Individual.php:281 library/WT/Stats.php:3343
 #: statisticsplot.php:799 timeline.php:245
@@ -3269,7 +3452,7 @@ msgid "Female"
 msgstr "Female"
 
 #: admin_trees_duplicates.php:194 calendar.php:681
-#: includes/functions/functions_edit.php:1490
+#: includes/functions/functions_edit.php:1493
 #: library/WT/Controller/Individual.php:287
 #: library/WT/Controller/Individual.php:290
 #: library/WT/Controller/Individual.php:296 library/WT/Stats.php:3343
@@ -3290,7 +3473,7 @@ msgstr "Include married names: "
 #: library/WT/Gedcom/Tag.php:271 library/WT/Stats.php:3344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588
-#: modules_v3/resource_fact/module.php:269
+#: modules_v3/resource_fact/module.php:271
 #: modules_v3/simpl_research/module.php:124 modules_v3/bdm_report/report.bak:6
 #: modules_v3/bdm_report/report.bak:47 modules_v3/fact_sources/report.bak:60
 #: modules_v3/fact_sources/report.bak:153
@@ -3352,8 +3535,8 @@ msgstr "Merge selected"
 #. I18N: gedcom tag DATE
 #: admin_trees_duplicates.php:230 admin_trees_duplicates.php:232
 #: edit_changes.php:168 help_text.php:178 help_text.php:208
-#: library/WT/Gedcom/Tag.php:184 modules_v3/resource_fact/module.php:200
-#: modules_v3/resource_fact/module.php:271
+#: library/WT/Gedcom/Tag.php:184 modules_v3/resource_fact/module.php:202
+#: modules_v3/resource_fact/module.php:273
 #: modules_v3/resource_individual/module.php:174
 #: modules_v3/bdm_report/report.bak:130 modules_v3/bdm_report/report.bak:156
 #: modules_v3/bdm_report/report.bak:190
@@ -3370,9 +3553,9 @@ msgstr "Date"
 #: modules_v3/googlemap/admin_places.php:182
 #: modules_v3/googlemap/admin_places.php:183
 #: modules_v3/googlemap/admin_places.php:184
-#: modules_v3/googlemap/module.php:1599 modules_v3/resource_fact/module.php:205
-#: modules_v3/resource_fact/module.php:247
-#: modules_v3/resource_fact/module.php:272
+#: modules_v3/googlemap/module.php:1599 modules_v3/resource_fact/module.php:207
+#: modules_v3/resource_fact/module.php:249
+#: modules_v3/resource_fact/module.php:274
 #: modules_v3/resource_individual/module.php:175 search.php:176 search.php:253
 #: modules_v3/bdm_report/report.bak:7 modules_v3/bdm_report/report.bak:132
 #: modules_v3/bdm_report/report.bak:158 modules_v3/bdm_report/report.bak:192
@@ -3409,12 +3592,12 @@ msgstr "Manage family trees"
 msgid "My family tree"
 msgstr "My family tree"
 
-#: admin_trees_manage.php:148 admin_trees_manage.php:288
+#: admin_trees_manage.php:149 admin_trees_manage.php:293
 msgid "Import a GEDCOM file"
 msgstr "Import a GEDCOM file"
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:149
+#: admin_trees_manage.php:150
 #, php-format
 msgid ""
 "This will delete all the genealogy data from “%s” and replace it with data "
@@ -3423,27 +3606,27 @@ msgstr ""
 "This will delete all the genealogy data from “%s” and replace it with data "
 "from a GEDCOM file."
 
-#: admin_trees_manage.php:152
+#: admin_trees_manage.php:153
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "You have selected a GEDCOM with a different name.  Is this correct?"
 
-#: admin_trees_manage.php:156
+#: admin_trees_manage.php:157
 msgid "Select a GEDCOM file to import"
 msgstr "Select a GEDCOM file to import"
 
-#: admin_trees_manage.php:196
+#: admin_trees_manage.php:197
 msgid "No GEDCOM files found."
 msgstr "No GEDCOM files found."
 
-#: admin_trees_manage.php:203
+#: admin_trees_manage.php:204
 msgid "Import options"
 msgstr "Import options"
 
-#: admin_trees_manage.php:205
+#: admin_trees_manage.php:206
 msgid "Keep media objects"
 msgstr "Keep media objects"
 
-#: admin_trees_manage.php:209
+#: admin_trees_manage.php:210
 msgid ""
 "If you have created media objects in kiwitrees, and edited your gedcom off-"
 "line using a program that deletes media objects, then check this box to "
@@ -3453,11 +3636,11 @@ msgstr ""
 "line using a program that deletes media objects, then check this box to "
 "merge the current media objects with the new GEDCOM."
 
-#: admin_trees_manage.php:214
+#: admin_trees_manage.php:215
 msgid "Add spaces where notes were wrapped"
 msgstr "Add spaces where notes were wrapped"
 
-#: admin_trees_manage.php:218
+#: admin_trees_manage.php:219
 msgid ""
 "Some genealogy programs wrap notes at word boundaries while others wrap "
 "notes anywhere.  This can cause kiwitrees to run words together.  Setting "
@@ -3472,12 +3655,12 @@ msgstr ""
 "the file you will need to re-import it."
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_manage.php:223
+#: admin_trees_manage.php:224
 msgid "Remove the GEDCOM media path from filenames"
 msgstr "Remove the GEDCOM media path from filenames"
 
 #. I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
-#: admin_trees_manage.php:228 help_text.php:463
+#: admin_trees_manage.php:229 help_text.php:443
 msgid ""
 "Some genealogy applications create GEDCOM files that contain media filenames "
 "with full paths.  These paths will not exist on the web-server.  To allow "
@@ -3488,7 +3671,7 @@ msgstr ""
 "kiwitrees to find the file, the first part of the path must be removed."
 
 #. I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
-#: admin_trees_manage.php:230 help_text.php:466
+#: admin_trees_manage.php:231 help_text.php:446
 #, php-format
 msgid ""
 "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find "
@@ -3497,43 +3680,43 @@ msgstr ""
 "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find "
 "%2$s in the media folder, then the GEDCOM media path would be %3$s."
 
-#: admin_trees_manage.php:231 help_text.php:468
+#: admin_trees_manage.php:232 help_text.php:448
 msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "This setting is only used when you read or write GEDCOM files."
 
-#: admin_trees_manage.php:270
-msgid "Deleting old genealogy data…"
-msgstr "Deleting old genealogy data…"
-
-#: admin_trees_manage.php:302
-msgid "Delete this family tree"
-msgstr "Delete this family tree"
-
-#: admin_trees_manage.php:327
-msgid "Default family tree"
-msgstr "Default family tree"
-
-#: admin_trees_manage.php:332
-msgid ""
-"This selects the family tree shown to visitors when they first arrive at the "
-"site."
-msgstr ""
-"This selects the family tree shown to visitors when they first arrive at the "
-"site."
-
-#: admin_trees_manage.php:345
-msgid "Create a new family tree"
-msgstr "Create a new family tree"
-
-#: admin_trees_manage.php:348
+#: admin_trees_manage.php:248 admin_trees_manage.php:353
 msgid "You need to create a family tree."
 msgstr "You need to create a family tree."
 
-#: admin_trees_manage.php:368
+#: admin_trees_manage.php:275
+msgid "Deleting old genealogy data…"
+msgstr "Deleting old genealogy data…"
+
+#: admin_trees_manage.php:307
+msgid "Delete this family tree"
+msgstr "Delete this family tree"
+
+#: admin_trees_manage.php:332
+msgid "Default family tree"
+msgstr "Default family tree"
+
+#: admin_trees_manage.php:337
+msgid ""
+"This selects the family tree shown to visitors when they first arrive at the "
+"site."
+msgstr ""
+"This selects the family tree shown to visitors when they first arrive at the "
+"site."
+
+#: admin_trees_manage.php:350
+msgid "Create a new family tree"
+msgstr "Create a new family tree"
+
+#: admin_trees_manage.php:373
 msgid "This is the name used for display."
 msgstr "This is the name used for display."
 
-#: admin_trees_manage.php:388
+#: admin_trees_manage.php:393
 msgid ""
 "Keep this short and avoid spaces and punctuation. A family name might be a "
 "good choice."
@@ -3541,11 +3724,11 @@ msgstr ""
 "Keep this short and avoid spaces and punctuation. A family name might be a "
 "good choice."
 
-#: admin_trees_manage.php:393
+#: admin_trees_manage.php:398
 msgid "create"
 msgstr "create"
 
-#: admin_trees_manage.php:396
+#: admin_trees_manage.php:401
 msgid ""
 "After creating the family tree, you will be able to upload or import data "
 "from a GEDCOM file."
@@ -3768,7 +3951,7 @@ msgstr[1] ""
 "This source also appears in %s GEDCOM records without a citation attached"
 
 #: admin_trees_sourcecheck.php:124 edit_changes.php:161 edit_interface.php:146
-#: edit_interface.php:1344 help_text.php:728
+#: edit_interface.php:1344 help_text.php:658
 #: library/WT/Controller/Family.php:144
 #: library/WT/Controller/Individual.php:384 library/WT/Controller/Media.php:115
 #: library/WT/Controller/Note.php:91 library/WT/Controller/Repository.php:91
@@ -3793,19 +3976,19 @@ msgid "User administration"
 msgstr "User administration"
 
 #. I18N: Listbox entry; name of a role
-#: admin_users.php:42 help_text.php:935
+#: admin_users.php:42 help_text.php:865
 msgid "Editor"
 msgstr "Editor"
 
 #. I18N: Listbox entry; name of a role
-#: admin_users.php:43 help_text.php:939
+#: admin_users.php:43 help_text.php:869
 msgid "Moderator"
 msgstr "Moderator"
 
 #: admin_users.php:149 admin_users.php:208
-#: modules_v3/resource_fact/module.php:213
-#: modules_v3/resource_fact/module.php:259
-#: modules_v3/resource_fact/module.php:274 note.php:102 repo.php:99
+#: modules_v3/resource_fact/module.php:215
+#: modules_v3/resource_fact/module.php:261
+#: modules_v3/resource_fact/module.php:276 note.php:102 repo.php:99
 #: source.php:101
 msgid "Details"
 msgstr "Details"
@@ -3819,16 +4002,16 @@ msgstr "Never"
 msgid "Are you sure you want to masquerade as “%s”?"
 msgstr "Are you sure you want to masquerade as “%s”?"
 
-#: admin_users.php:210 admin_users.php:368 help_text.php:947
+#: admin_users.php:210 admin_users.php:368 help_text.php:877
 msgid "Administrator"
 msgstr "Administrator"
 
-#: admin_users.php:216 admin_users.php:394 edituser.php:183 help_text.php:746
-#: help_text.php:768
+#: admin_users.php:216 admin_users.php:394 edituser.php:183 help_text.php:676
+#: help_text.php:698
 msgid "Preferred contact method"
 msgstr "Preferred contact method"
 
-#: admin_users.php:219 admin_users.php:386 help_text.php:1009
+#: admin_users.php:219 admin_users.php:386 help_text.php:934
 msgid "Automatically approve changes made by this user"
 msgstr "Automatically approve changes made by this user"
 
@@ -3836,7 +4019,7 @@ msgstr "Automatically approve changes made by this user"
 msgid "Visible to other users when online"
 msgstr "Visible to other users when online"
 
-#: admin_users.php:225 help_text.php:907 login.php:305 login.php:347
+#: admin_users.php:225 help_text.php:837 login.php:305 login.php:347
 #: login.php:427
 msgid "Comments"
 msgstr "Comments"
@@ -3845,18 +4028,18 @@ msgstr "Comments"
 msgid "Family tree access and settings"
 msgstr "Family tree access and settings"
 
-#: admin_users.php:238 admin_users.php:424 edituser.php:144 help_text.php:773
-#: help_text.php:912 help_text.php:1014
+#: admin_users.php:238 admin_users.php:424 edituser.php:144 help_text.php:703
+#: help_text.php:842 help_text.php:939
 msgid "Individual record"
 msgstr "Individual record"
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:239 admin_users.php:425 help_text.php:922
+#: admin_users.php:239 admin_users.php:425 help_text.php:852
 #: library/WT/Gedcom/Tag.php:317
 msgid "Role"
 msgstr "Role"
 
-#: admin_users.php:240 admin_users.php:426 help_text.php:503
+#: admin_users.php:240 admin_users.php:426 help_text.php:468
 msgid "Restrict to immediate family"
 msgstr "Restrict to immediate family"
 
@@ -3908,7 +4091,7 @@ msgstr ""
 "You must specify an individual record before you can restrict the user to "
 "their immediate family."
 
-#: admin_users.php:366 admin_users.php:562 edituser.php:138 help_text.php:902
+#: admin_users.php:366 admin_users.php:562 edituser.php:138 help_text.php:832
 #: login.php:303 login.php:394
 msgid "Real name"
 msgstr "Real name"
@@ -3921,7 +4104,7 @@ msgstr "Approved by administrator"
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
-#: admin_users.php:378 edituser.php:178 help_text.php:778
+#: admin_users.php:378 edituser.php:178 help_text.php:708
 #: library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198
 #: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:720 login.php:399
 #: setup.php:446
@@ -3940,7 +4123,7 @@ msgid_plural "Use at least %s characters."
 msgstr[0] "Use at least %s character."
 msgstr[1] "Use at least %s characters."
 
-#: admin_users.php:389 edituser.php:169 help_text.php:848 login.php:422
+#: admin_users.php:389 edituser.php:169 help_text.php:778 login.php:422
 msgid "Confirm password"
 msgstr "Confirm password"
 
@@ -4202,7 +4385,7 @@ msgstr "All"
 
 #: calendar.php:298 includes/functions/functions_print.php:1132
 #: includes/functions/functions_print.php:1234
-#: modules_v3/resource_fact/module.php:193
+#: modules_v3/resource_fact/module.php:195
 msgid "Custom Event"
 msgstr "Custom Event"
 
@@ -4269,13 +4452,13 @@ msgstr "You do not have permission to view this page."
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: edit_changes.php:34 help_text.php:878
+#: edit_changes.php:34 help_text.php:808
 #: modules_v3/resource_changes/module.php:250
 #: modules_v3/review_changes/module.php:35
 #: modules_v3/widget_review_changes/module.php:35
 #: themes/_administration/header.php:105 themes/colors/header.php:126
-#: themes/kiwitrees/header.php:135 themes/webtrees/header.php:110
-#: themes/xenea/header.php:118
+#: themes/kiwitrees/header.php:135 themes/levy/header.php:118
+#: themes/webtrees/header.php:110 themes/xenea/header.php:118
 msgid "Pending changes"
 msgstr "Pending changes"
 
@@ -4339,6 +4522,7 @@ msgstr "Are you sure you want to undo all the changes to this family tree?"
 
 #. I18N: Name of a module/menu
 #: edit_interface.php:187 edit_interface.php:1364
+#: includes/functions/functions_print.php:1331
 #: includes/functions/functions_print_facts.php:167
 #: includes/functions/functions_print_facts.php:169
 #: includes/functions/functions_print_facts.php:709
@@ -4446,7 +4630,7 @@ msgstr "Husband"
 msgid "You must provide a source title"
 msgstr "You must provide a source title"
 
-#: edit_interface.php:796 help_text.php:741
+#: edit_interface.php:796 help_text.php:671
 msgid "Associate events with this source"
 msgstr "Associate events with this source"
 
@@ -4515,7 +4699,7 @@ msgstr "Add child"
 msgid "Add a spouse"
 msgstr "Add a spouse"
 
-#: edit_interface.php:1974 includes/functions/functions_edit.php:1510
+#: edit_interface.php:1974 includes/functions/functions_edit.php:1513
 #: library/WT/Controller/Individual.php:190
 msgid "Edit name"
 msgstr "Edit name"
@@ -4524,7 +4708,7 @@ msgstr "Edit name"
 msgid "Add new Name"
 msgstr "Add new Name"
 
-#: edit_interface.php:2018 help_text.php:674
+#: edit_interface.php:2018 help_text.php:604
 #: includes/functions/functions_print.php:1058
 #: includes/functions/functions_print.php:1162
 msgid "Add from clipboard"
@@ -4550,7 +4734,6 @@ msgstr ""
 "Either click the \"sort by date\" button or click a row then drag-and-drop "
 "to re-order."
 
-#. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #: edit_interface.php:2183 edit_interface.php:2564
@@ -4863,7 +5046,7 @@ msgstr "Family Group Information"
 msgid "The details of this family are private."
 msgstr "The details of this family are private."
 
-#: familybook.php:76 help_text.php:963 hourglass.php:95
+#: familybook.php:76 help_text.php:888 hourglass.php:95
 msgid "Show spouses"
 msgstr "Show spouses"
 
@@ -4894,7 +5077,7 @@ msgstr "Show the list of surnames"
 msgid "Individuals with surname %s"
 msgstr "Individuals with surname %s"
 
-#: fanchart.php:75 help_text.php:788
+#: fanchart.php:75 help_text.php:718
 msgid "Width"
 msgstr "Width"
 
@@ -4919,6 +5102,7 @@ msgid "Find a special character"
 msgstr "Find a special character"
 
 #: find.php:110 includes/functions/functions_print.php:1326
+#: includes/functions/functions_print.php:1330
 msgid "Find a fact or event"
 msgstr "Find a fact or event"
 
@@ -5469,26 +5653,18 @@ msgstr ""
 
 #: help_text.php:405
 msgid ""
-"This option controls whether or not to abbreviate labels like <b>Birth</b> "
-"on charts with just the first letter like <b>B</b>."
+"This is a comma separated list of GEDCOM fact tags that will be shown on the "
+"add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, "
+"Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. "
+"to allow you to store names in several different alphabets."
 msgstr ""
-"This option controls whether or not to abbreviate labels like <b>Birth</b> "
-"on charts with just the first letter like <b>B</b>."
+"This is a comma separated list of GEDCOM fact tags that will be shown on the "
+"add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, "
+"Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. "
+"to allow you to store names in several different alphabets."
 
 #: help_text.php:410
 msgid ""
-"This is a comma separated list of GEDCOM fact tags that will be shown on the "
-"add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, "
-"Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. "
-"to allow you to store names in several different alphabets."
-msgstr ""
-"This is a comma separated list of GEDCOM fact tags that will be shown on the "
-"add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, "
-"Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. "
-"to allow you to store names in several different alphabets."
-
-#: help_text.php:415
-msgid ""
 "This is a comma separated list of GEDCOM fact tags that will be shown when "
 "you add or edit place names.  If you use non-Latin alphabets such as Hebrew, "
 "Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, "
@@ -5499,82 +5675,52 @@ msgstr ""
 "Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, "
 "FONE, etc. to allow you to store place names in several different alphabets."
 
-#: help_text.php:420
-msgid ""
-"This should be a comma or space separated list of facts, in addition to "
-"Birth and Death, that you want to appear in chart boxes such as the Pedigree "
-"chart.  This list requires you to use fact tags as defined in the GEDCOM "
-"5.5.1 Standard.  For example, if you wanted the occupation to show up in the "
-"box, you would add \"OCCU\" to this field."
-msgstr ""
-"This should be a comma or space separated list of facts, in addition to "
-"Birth and Death, that you want to appear in chart boxes such as the Pedigree "
-"chart.  This list requires you to use fact tags as defined in the GEDCOM "
-"5.5.1 Standard.  For example, if you wanted the occupation to show up in the "
-"box, you would add \"OCCU\" to this field."
-
-#: help_text.php:424 relationship.php:141
+#: help_text.php:414 relationship.php:141
 msgid "Check relationships by marriage"
 msgstr "Check relationships by marriage"
 
-#: help_text.php:425
+#: help_text.php:415
 msgid ""
 "When calculating relationships, this option controls whether kiwitrees will "
 "include spouses/partners as well as blood relatives."
 msgstr ""
 "When calculating relationships, this option controls whether kiwitrees will "
 "include spouses/partners as well as blood relatives."
+
+#: help_text.php:420
+msgid ""
+"This is the list of GEDCOM facts that your users can add to families.  You "
+"can modify this list by removing or adding fact names, even custom ones, as "
+"necessary.  Fact names that appear in this list must not also appear in the "
+"<i>Unique Family Facts</i> list."
+msgstr ""
+"This is the list of GEDCOM facts that your users can add to families.  You "
+"can modify this list by removing or adding fact names, even custom ones, as "
+"necessary.  Fact names that appear in this list must not also appear in the "
+"<i>Unique Family Facts</i> list."
+
+#: help_text.php:425
+msgid ""
+"This is the short list of GEDCOM family facts that appears next to the full "
+"list and can be added with a single click."
+msgstr ""
+"This is the short list of GEDCOM family facts that appears next to the full "
+"list and can be added with a single click."
 
 #: help_text.php:430
 msgid ""
-"This option controls whether or not to automatically display content of a "
-"<i>Note</i> record on the Individual page."
+"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
+"families.  For example, if MARR is in this list, users will not be able to "
+"add more than one MARR record to a family.  Fact names that appear in this "
+"list must not also appear in the <i>Family Add Facts</i> list."
 msgstr ""
-"This option controls whether or not to automatically display content of a "
-"<i>Note</i> record on the Individual page."
+"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
+"families.  For example, if MARR is in this list, users will not be able to "
+"add more than one MARR record to a family.  Fact names that appear in this "
+"list must not also appear in the <i>Family Add Facts</i> list."
 
 #: help_text.php:435
 msgid ""
-"This option controls whether or not to automatically display content of a "
-"<i>Source</i> record on the Individual page."
-msgstr ""
-"This option controls whether or not to automatically display content of a "
-"<i>Source</i> record on the Individual page."
-
-#: help_text.php:440
-msgid ""
-"This is the list of GEDCOM facts that your users can add to families.  You "
-"can modify this list by removing or adding fact names, even custom ones, as "
-"necessary.  Fact names that appear in this list must not also appear in the "
-"<i>Unique Family Facts</i> list."
-msgstr ""
-"This is the list of GEDCOM facts that your users can add to families.  You "
-"can modify this list by removing or adding fact names, even custom ones, as "
-"necessary.  Fact names that appear in this list must not also appear in the "
-"<i>Unique Family Facts</i> list."
-
-#: help_text.php:445
-msgid ""
-"This is the short list of GEDCOM family facts that appears next to the full "
-"list and can be added with a single click."
-msgstr ""
-"This is the short list of GEDCOM family facts that appears next to the full "
-"list and can be added with a single click."
-
-#: help_text.php:450
-msgid ""
-"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
-"families.  For example, if MARR is in this list, users will not be able to "
-"add more than one MARR record to a family.  Fact names that appear in this "
-"list must not also appear in the <i>Family Add Facts</i> list."
-msgstr ""
-"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
-"families.  For example, if MARR is in this list, users will not be able to "
-"add more than one MARR record to a family.  Fact names that appear in this "
-"list must not also appear in the <i>Family Add Facts</i> list."
-
-#: help_text.php:455
-msgid ""
 "Source citations can include fields to record the quality of the data "
 "(primary, secondary, etc.) and the date the event was recorded in the "
 "source.  If you don't use these fields, you can disable them when creating "
@@ -5585,154 +5731,125 @@ msgstr ""
 "source.  If you don't use these fields, you can disable them when creating "
 "new source citations."
 
-#: help_text.php:459
+#: help_text.php:439
 msgid "GEDCOM media path"
 msgstr "GEDCOM media path"
 
+#: help_text.php:454
+msgid ""
+"This is the list of GEDCOM facts that your users can add to individuals.  "
+"You can modify this list by removing or adding fact names, even custom ones, "
+"as necessary.  Fact names that appear in this list must not also appear in "
+"the <i>Unique Individual Facts</i> list."
+msgstr ""
+"This is the list of GEDCOM facts that your users can add to individuals.  "
+"You can modify this list by removing or adding fact names, even custom ones, "
+"as necessary.  Fact names that appear in this list must not also appear in "
+"the <i>Unique Individual Facts</i> list."
+
+#: help_text.php:459
+msgid ""
+"This is the short list of GEDCOM individual facts that appears next to the "
+"full list and can be added with a single click."
+msgstr ""
+"This is the short list of GEDCOM individual facts that appears next to the "
+"full list and can be added with a single click."
+
+#: help_text.php:464
+msgid ""
+"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
+"individuals.  For example, if BIRT is in this list, users will not be able "
+"to add more than one BIRT record to an individual.  Fact names that appear "
+"in this list must not also appear in the <i>Individual Add Facts</i> list."
+msgstr ""
+"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
+"individuals.  For example, if BIRT is in this list, users will not be able "
+"to add more than one BIRT record to an individual.  Fact names that appear "
+"in this list must not also appear in the <i>Individual Add Facts</i> list."
+
+#: help_text.php:470
+msgid ""
+"Where a user is associated to an individual record in a family tree and has "
+"a role of member, editor, or moderator, you can prevent them from accessing "
+"the details of distant, living relations.  You specify the number of "
+"relationship steps that the user is allowed to see."
+msgstr ""
+"Where a user is associated to an individual record in a family tree and has "
+"a role of member, editor, or moderator, you can prevent them from accessing "
+"the details of distant, living relations.  You specify the number of "
+"relationship steps that the user is allowed to see."
+
+#: help_text.php:472
+msgid ""
+"For example, if you specify a path length of 2, the person will be able to "
+"see their grandson (child, child), their aunt (parent, sibling), their step-"
+"daughter (spouse, child), but not their first cousin (parent, sibling, "
+"child)."
+msgstr ""
+"For example, if you specify a path length of 2, the person will be able to "
+"see their grandson (child, child), their aunt (parent, sibling), their step-"
+"daughter (spouse, child), but not their first cousin (parent, sibling, "
+"child)."
+
 #: help_text.php:474
 msgid ""
-"Many genealogy programs create GEDCOM files with custom tags, and kiwitrees "
-"understands most of them.  When unrecognised tags are found, this option "
-"lets you choose whether to ignore them or display a warning message."
+"Note: longer path lengths require a lot of calculation, which can make your "
+"site run slowly for these users."
 msgstr ""
-"Many genealogy programs create GEDCOM files with custom tags, and kiwitrees "
-"understands most of them.  When unrecognised tags are found, this option "
-"lets you choose whether to ignore them or display a warning message."
+"Note: longer path lengths require a lot of calculation, which can make your "
+"site run slowly for these users."
 
 #: help_text.php:479
 msgid ""
-"This is the list of GEDCOM facts that your users can add to individuals.  "
-"You can modify this list by removing or adding fact names, even custom ones, "
-"as necessary.  Fact names that appear in this list must not also appear in "
-"the <i>Unique Individual Facts</i> list."
+"When adding new close relatives, you can add source citations to the records "
+"(e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls "
+"which checkboxes are ticked by default."
 msgstr ""
-"This is the list of GEDCOM facts that your users can add to individuals.  "
-"You can modify this list by removing or adding fact names, even custom ones, "
-"as necessary.  Fact names that appear in this list must not also appear in "
-"the <i>Unique Individual Facts</i> list."
+"When adding new close relatives, you can add source citations to the records "
+"(e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls "
+"which checkboxes are ticked by default."
 
 #: help_text.php:484
 msgid ""
-"This is the short list of GEDCOM individual facts that appears next to the "
-"full list and can be added with a single click."
+"This is a comma separated list of GEDCOM fact tags that will be shown when "
+"adding a new person.  For example, if BIRT is in the list, fields for birth "
+"date and birth place will be shown on the form."
 msgstr ""
-"This is the short list of GEDCOM individual facts that appears next to the "
-"full list and can be added with a single click."
+"This is a comma separated list of GEDCOM fact tags that will be shown when "
+"adding a new person.  For example, if BIRT is in the list, fields for birth "
+"date and birth place will be shown on the form."
 
 #: help_text.php:489
 msgid ""
-"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
-"individuals.  For example, if BIRT is in this list, users will not be able "
-"to add more than one BIRT record to an individual.  Fact names that appear "
-"in this list must not also appear in the <i>Individual Add Facts</i> list."
+"This is a comma separated list of GEDCOM fact tags that will be shown when "
+"adding a new family.  For example, if MARR is in the list, then fields for "
+"marriage date and marriage place will be shown on the form."
 msgstr ""
-"This is the list of GEDCOM facts that your users can only add <u>once</u> to "
-"individuals.  For example, if BIRT is in this list, users will not be able "
-"to add more than one BIRT record to an individual.  Fact names that appear "
-"in this list must not also appear in the <i>Individual Add Facts</i> list."
+"This is a comma separated list of GEDCOM fact tags that will be shown when "
+"adding a new family.  For example, if MARR is in the list, then fields for "
+"marriage date and marriage place will be shown on the form."
 
-#. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:494
 msgid ""
-"This is the initial setting for the “show details” option on the charts."
+"This is the list of GEDCOM facts that your users can add to repositories.  "
+"You can modify this list by removing or adding fact names, even custom ones, "
+"as necessary.  Fact names that appear in this list must not also appear in "
+"the <i>Unique Repository Facts</i> list."
 msgstr ""
-"This is the initial setting for the “show details” option on the charts."
+"This is the list of GEDCOM facts that your users can add to repositories.  "
+"You can modify this list by removing or adding fact names, even custom ones, "
+"as necessary.  Fact names that appear in this list must not also appear in "
+"the <i>Unique Repository Facts</i> list."
 
 #: help_text.php:499
 msgid ""
-"This option controls whether or not to show the individual's gender icon on "
-"charts.<br><br>Since the gender is also indicated by the color of the box, "
-"this option doesn't conceal the gender. The option simply removes some "
-"duplicate information from the box."
-msgstr ""
-"This option controls whether or not to show the individual's gender icon on "
-"charts.<br><br>Since the gender is also indicated by the color of the box, "
-"this option doesn't conceal the gender. The option simply removes some "
-"duplicate information from the box."
-
-#: help_text.php:505
-msgid ""
-"Where a user is associated to an individual record in a family tree and has "
-"a role of member, editor, or moderator, you can prevent them from accessing "
-"the details of distant, living relations.  You specify the number of "
-"relationship steps that the user is allowed to see."
-msgstr ""
-"Where a user is associated to an individual record in a family tree and has "
-"a role of member, editor, or moderator, you can prevent them from accessing "
-"the details of distant, living relations.  You specify the number of "
-"relationship steps that the user is allowed to see."
-
-#: help_text.php:507
-msgid ""
-"For example, if you specify a path length of 2, the person will be able to "
-"see their grandson (child, child), their aunt (parent, sibling), their step-"
-"daughter (spouse, child), but not their first cousin (parent, sibling, "
-"child)."
-msgstr ""
-"For example, if you specify a path length of 2, the person will be able to "
-"see their grandson (child, child), their aunt (parent, sibling), their step-"
-"daughter (spouse, child), but not their first cousin (parent, sibling, "
-"child)."
-
-#: help_text.php:509
-msgid ""
-"Note: longer path lengths require a lot of calculation, which can make your "
-"site run slowly for these users."
-msgstr ""
-"Note: longer path lengths require a lot of calculation, which can make your "
-"site run slowly for these users."
-
-#: help_text.php:514
-msgid ""
-"When adding new close relatives, you can add source citations to the records "
-"(e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls "
-"which checkboxes are ticked by default."
-msgstr ""
-"When adding new close relatives, you can add source citations to the records "
-"(e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls "
-"which checkboxes are ticked by default."
-
-#: help_text.php:519
-msgid ""
-"This is a comma separated list of GEDCOM fact tags that will be shown when "
-"adding a new person.  For example, if BIRT is in the list, fields for birth "
-"date and birth place will be shown on the form."
-msgstr ""
-"This is a comma separated list of GEDCOM fact tags that will be shown when "
-"adding a new person.  For example, if BIRT is in the list, fields for birth "
-"date and birth place will be shown on the form."
-
-#: help_text.php:524
-msgid ""
-"This is a comma separated list of GEDCOM fact tags that will be shown when "
-"adding a new family.  For example, if MARR is in the list, then fields for "
-"marriage date and marriage place will be shown on the form."
-msgstr ""
-"This is a comma separated list of GEDCOM fact tags that will be shown when "
-"adding a new family.  For example, if MARR is in the list, then fields for "
-"marriage date and marriage place will be shown on the form."
-
-#: help_text.php:529
-msgid ""
-"This is the list of GEDCOM facts that your users can add to repositories.  "
-"You can modify this list by removing or adding fact names, even custom ones, "
-"as necessary.  Fact names that appear in this list must not also appear in "
-"the <i>Unique Repository Facts</i> list."
-msgstr ""
-"This is the list of GEDCOM facts that your users can add to repositories.  "
-"You can modify this list by removing or adding fact names, even custom ones, "
-"as necessary.  Fact names that appear in this list must not also appear in "
-"the <i>Unique Repository Facts</i> list."
-
-#: help_text.php:534
-msgid ""
 "This is the short list of GEDCOM repository facts that appears next to the "
 "full list and can be added with a single click."
 msgstr ""
 "This is the short list of GEDCOM repository facts that appears next to the "
 "full list and can be added with a single click."
 
-#: help_text.php:539
+#: help_text.php:504
 msgid ""
 "This is the list of GEDCOM facts that your users can only add <u>once</u> to "
 "repositories.  For example, if NAME is in this list, users will not be able "
@@ -5744,11 +5861,11 @@ msgstr ""
 "to add more than one NAME record to a repository.  Fact names that appear in "
 "this list must not also appear in the <i>Repository Add Facts</i> list."
 
-#: help_text.php:543
+#: help_text.php:508
 msgid "Require visitor authentication"
 msgstr "Require visitor authentication"
 
-#: help_text.php:544
+#: help_text.php:509
 msgid ""
 "Enabling this option will force all visitors to login before they can view "
 "any data on the site."
@@ -5756,93 +5873,7 @@ msgstr ""
 "Enabling this option will force all visitors to login before they can view "
 "any data on the site."
 
-#: help_text.php:549
-msgid "Show hit counters on the Home and Individual pages."
-msgstr "Show hit counters on the Home and Individual pages."
-
-#: help_text.php:553
-msgid "Show fact icons"
-msgstr "Show fact icons"
-
-#: help_text.php:554
-msgid ""
-"Set this to <b>Yes</b> to display icons near Fact names on the Personal "
-"Facts and Details page.  Fact icons will be displayed only if they exist in "
-"the <i>images/facts</i> directory of the current theme."
-msgstr ""
-"Set this to <b>Yes</b> to display icons near Fact names on the Personal "
-"Facts and Details page.  Fact icons will be displayed only if they exist in "
-"the <i>images/facts</i> directory of the current theme."
-
-#: help_text.php:559
-msgid ""
-"Setting this to <b>Yes</b> will place links on individuals, sources, and "
-"families to let users bring up another window containing the raw data taken "
-"right out of the GEDCOM file."
-msgstr ""
-"Setting this to <b>Yes</b> will place links on individuals, sources, and "
-"families to let users bring up another window containing the raw data taken "
-"right out of the GEDCOM file."
-
-#: help_text.php:564
-msgid ""
-"Setting this option to <b>Yes</b> will show status codes for LDS ordinances "
-"in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</"
-"li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</"
-"li></ul>A person who has all of the ordinances done will have <b>BESP</b> "
-"printed after their name.  Missing ordinances are indicated by <b>_</b> in "
-"place of the corresponding letter code.  For example, <b>BE__</b> indicates "
-"missing <b>S</b> and <b>P</b> ordinances."
-msgstr ""
-"Setting this option to <b>Yes</b> will show status codes for LDS ordinances "
-"in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</"
-"li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</"
-"li></ul>A person who has all of the ordinances done will have <b>BESP</b> "
-"printed after their name.  Missing ordinances are indicated by <b>_</b> in "
-"place of the corresponding letter code.  For example, <b>BE__</b> indicates "
-"missing <b>S</b> and <b>P</b> ordinances."
-
-#: help_text.php:569
-msgid ""
-"This option controls whether Notes and Source references that are attached "
-"to Facts should be shown on the Notes and Sources tabs of the Individual "
-"page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and "
-"Source references that are attached directly to the individual's database "
-"record.  These are <i>level 1</i> Notes and Source references.<br><br>The "
-"<b>Yes</b> option causes these tabs to also show Notes and Source references "
-"that are part of the various Facts in the individual's database record.  "
-"These are <i>level 2</i> Notes and Source references because the various "
-"Facts are at level 1."
-msgstr ""
-"This option controls whether Notes and Source references that are attached "
-"to Facts should be shown on the Notes and Sources tabs of the Individual "
-"page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and "
-"Source references that are attached directly to the individual's database "
-"record.  These are <i>level 1</i> Notes and Source references.<br><br>The "
-"<b>Yes</b> option causes these tabs to also show Notes and Source references "
-"that are part of the various Facts in the individual's database record.  "
-"These are <i>level 2</i> Notes and Source references because the various "
-"Facts are at level 1."
-
-#: help_text.php:573
-msgid "Show age of parents next to child's birthdate"
-msgstr "Show age of parents next to child's birthdate"
-
-#: help_text.php:574
-msgid ""
-"This option controls whether or not to show age of father and mother next to "
-"child's birthdate on charts."
-msgstr ""
-"This option controls whether or not to show age of father and mother next to "
-"child's birthdate on charts."
-
-#: help_text.php:579
-msgid ""
-"Show runtime statistics and database queries at the bottom of every page."
-msgstr ""
-"Show runtime statistics and database queries at the bottom of every page."
-
-#: help_text.php:584
+#: help_text.php:514
 msgid ""
 "This is the list of GEDCOM facts that your users can add to sources.  You "
 "can modify this list by removing or adding fact names, even custom ones, as "
@@ -5854,7 +5885,7 @@ msgstr ""
 "necessary.  Fact names that appear in this list must not also appear in the "
 "<i>Unique Source Facts</i> list."
 
-#: help_text.php:589
+#: help_text.php:519
 msgid ""
 "This is the short list of GEDCOM source facts that appears next to the full "
 "list and can be added with a single click."
@@ -5862,7 +5893,7 @@ msgstr ""
 "This is the short list of GEDCOM source facts that appears next to the full "
 "list and can be added with a single click."
 
-#: help_text.php:594
+#: help_text.php:524
 msgid ""
 "This is the list of GEDCOM facts that your users can only add <u>once</u> to "
 "sources.  For example, if TITL is in this list, users will not be able to "
@@ -5874,7 +5905,7 @@ msgstr ""
 "add more than one TITL record to a source.  Fact names that appear in this "
 "list must not also appear in the <i>Source Add Facts</i> list."
 
-#: help_text.php:600
+#: help_text.php:530
 msgid ""
 "When you Add a family member, a default surname can be provided.  This "
 "surname will depend on the local tradition."
@@ -5883,52 +5914,60 @@ msgstr ""
 "surname will depend on the local tradition."
 
 #. I18N: In the patrilineal surname tradition, ...
-#: help_text.php:606 help_text.php:616 help_text.php:637 help_text.php:644
+#: help_text.php:536 help_text.php:546 help_text.php:567 help_text.php:574
 msgid "Children take their father’s surname."
 msgstr "Children take their father’s surname."
 
 #. I18N: In the matrilineal surname tradition, ...
-#: help_text.php:612
+#: help_text.php:542
 msgid "Children take their mother’s surname."
 msgstr "Children take their mother’s surname."
 
 #. I18N: In the paternal surname tradition, ...
-#: help_text.php:618 help_text.php:638 help_text.php:645
+#: help_text.php:548 help_text.php:568 help_text.php:575
 msgid "Wives take their husband’s surname."
 msgstr "Wives take their husband’s surname."
 
 #. I18N: In the Spanish surname tradition, ...
-#: help_text.php:623
+#: help_text.php:553
 msgid ""
 "Children take one surname from the father and one surname from the mother."
 msgstr ""
 "Children take one surname from the father and one surname from the mother."
 
 #. I18N: In the Portuguese surname tradition, ...
-#: help_text.php:628
+#: help_text.php:558
 msgid ""
 "Children take one surname from the mother and one surname from the father."
 msgstr ""
 "Children take one surname from the mother and one surname from the father."
 
 #. I18N: In the Icelandic surname tradition, ...
-#: help_text.php:633
+#: help_text.php:563
 msgid "Children take a patronym instead of a surname."
 msgstr "Children take a patronym instead of a surname."
 
 #. I18N: In the Polish surname tradition, ...
-#: help_text.php:640
+#: help_text.php:570
 msgid "Surnames are inflected to indicate an individual’s gender."
 msgstr "Surnames are inflected to indicate an individual’s gender."
 
 #. I18N: In the Lithuanian surname tradition, ...
-#: help_text.php:647
+#: help_text.php:577
 msgid ""
 "Surnames are inflected to indicate an individual’s gender and marital status."
 msgstr ""
 "Surnames are inflected to indicate an individual’s gender and marital status."
 
-#: help_text.php:658
+#: help_text.php:583
+msgid ""
+"This is the width (in pixels) that the program will use when automatically "
+"generating thumbnails.  The default setting is 100."
+msgstr ""
+"This is the width (in pixels) that the program will use when automatically "
+"generating thumbnails.  The default setting is 100."
+
+#: help_text.php:588
 msgid ""
 "Should the GeoNames database be used to provide more suggestions for place "
 "names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database "
@@ -5950,11 +5989,11 @@ msgstr ""
 "accessible free of charge. It currently contains over 8,000,000 geographical "
 "names."
 
-#: help_text.php:662
+#: help_text.php:592
 msgid "Use relationship privacy"
 msgstr "Use relationship privacy"
 
-#: help_text.php:663
+#: help_text.php:593
 msgid ""
 "<b>No</b> means that authenticated users can see the details of all living "
 "people.  <b>Yes</b> means that users can only see the private information of "
@@ -5970,11 +6009,11 @@ msgstr ""
 "can override this option for individual users by editing the user's account "
 "details."
 
-#: help_text.php:671
+#: help_text.php:601
 msgid "Add a fact"
 msgstr "Add a fact"
 
-#: help_text.php:672
+#: help_text.php:602
 msgid ""
 "Here you can add a fact to the record being edited.<br><br>First choose a "
 "fact from the drop-down list, then click the <b>Add</b> button.  All "
@@ -5984,7 +6023,7 @@ msgstr ""
 "fact from the drop-down list, then click the <b>Add</b> button.  All "
 "possible facts that you can add to the database are in that drop-down list."
 
-#: help_text.php:676
+#: help_text.php:606
 msgid ""
 "Kiwitrees allows you to copy up to 10 facts, with all their details, to a "
 "clipboard.  This clipboard is different from the Clippings Cart that you can "
@@ -6008,12 +6047,12 @@ msgstr ""
 "helpful when entering similar facts, such as census facts, for many "
 "individuals or families."
 
-#: help_text.php:681 includes/functions/functions_edit.php:1865
+#: help_text.php:611 includes/functions/functions_edit.php:1868
 #: library/WT/Controller/Family.php:231 modules_v3/notes/module.php:96
 msgid "Add a note"
 msgstr "Add a note"
 
-#: help_text.php:682
+#: help_text.php:612
 msgid ""
 "If you have a note to add to this record, this is the place to do so."
 "<br><br>Just click the link, a window will open, and you can type your "
@@ -6025,12 +6064,12 @@ msgstr ""
 "note.  When you are finished typing, just click the button below the box, "
 "close the window, and that's all."
 
-#: help_text.php:687 includes/functions/functions_edit.php:1875
+#: help_text.php:617 includes/functions/functions_edit.php:1878
 #: library/WT/Controller/Family.php:238 modules_v3/notes/module.php:105
 msgid "Add a shared note"
 msgstr "Add a shared note"
 
-#: help_text.php:688
+#: help_text.php:618
 msgid ""
 "When you click the <b>Add a Shared Note</b> link, a new window will open.  "
 "You can choose to link to an existing shared note, or you can create a new "
@@ -6040,12 +6079,12 @@ msgstr ""
 "You can choose to link to an existing shared note, or you can create a new "
 "shared note and at the same time create a link to it."
 
-#: help_text.php:693 includes/functions/functions_edit.php:1816
+#: help_text.php:623 includes/functions/functions_edit.php:1819
 #: library/WT/Controller/Family.php:256 modules_v3/sources_tab/module.php:87
 msgid "Add a source citation"
 msgstr "Add a source citation"
 
-#: help_text.php:694
+#: help_text.php:624
 msgid ""
 "Here you can add a source <b>Citation</b> to this record.<br><br>Just click "
 "the link, a window will open, and you can choose the source from the list "
@@ -6059,11 +6098,11 @@ msgstr ""
 "sources is an important part of genealogy because it allows other "
 "researchers to verify where you obtained your information."
 
-#: help_text.php:698
+#: help_text.php:628
 msgid "Year input box"
 msgstr "Year input box"
 
-#: help_text.php:699
+#: help_text.php:629
 msgid ""
 "This input box lets you change that year of the calendar.  Type a year into "
 "the box and press <b>Enter</b> to change the calendar to that year."
@@ -6097,11 +6136,11 @@ msgstr ""
 "<b>16??</b> for all events from 1600 to 1699.<br><br/>Selecting a range of "
 "years will change the calendar to the year view.</dd></dl>"
 
-#: help_text.php:708 help_text.php:713
+#: help_text.php:638 help_text.php:643
 msgid "Move list entries"
 msgstr "Move list entries"
 
-#: help_text.php:709
+#: help_text.php:639
 msgid ""
 "Use these buttons to move an entry from one list to another."
 "<br><br>Highlight the entry to be moved, and then click a button to move or "
@@ -6127,7 +6166,7 @@ msgstr ""
 "the same page.  The HTML block is a good example of why you might want to do "
 "this."
 
-#: help_text.php:714
+#: help_text.php:644
 msgid ""
 "Use these buttons to re-arrange the order of the entries within the list.  "
 "The blocks will be printed in the order in which they are listed."
@@ -6139,11 +6178,11 @@ msgstr ""
 "<br><br>Highlight the entry to be moved, and then click a button to move "
 "that entry up or down."
 
-#: help_text.php:723
+#: help_text.php:653
 msgid "GEDFact shared note assistant"
 msgstr "GEDFact shared note assistant"
 
-#: help_text.php:724
+#: help_text.php:654
 msgid ""
 "Clicking the \"+\" icon will open the GEDFact Shared Note Assistant window."
 "<br>Specific help will be found there.<br><br>When you click the \"Save\" "
@@ -6153,7 +6192,7 @@ msgstr ""
 "<br>Specific help will be found there.<br><br>When you click the \"Save\" "
 "button, the ID of the Shared Note will be pasted here."
 
-#: help_text.php:730
+#: help_text.php:660
 msgid ""
 "This page allows you to bypass the usual forms, and edit the underlying data "
 "directly.  It is an advanced option, and you should not use it unless you "
@@ -6166,12 +6205,12 @@ msgstr ""
 "difficult to fix."
 
 #. I18N: %s is a URL
-#: help_text.php:732
+#: help_text.php:662
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
 msgstr "You can download a copy of the GEDCOM specification from %s."
 
-#: help_text.php:737
+#: help_text.php:667
 msgid ""
 "This page will allow you to merge two GEDCOM records from the same GEDCOM "
 "file.<br><br>This is useful for people who have merged GEDCOMs and now have "
@@ -6205,7 +6244,7 @@ msgstr ""
 "ol>Someone with Accept rights will have to authorize your changes to make "
 "them permanent."
 
-#: help_text.php:742
+#: help_text.php:672
 msgid ""
 "Each source records specific events, generally for a given date range and "
 "for a place jurisdiction.  For example a Census records census events and "
@@ -6231,7 +6270,7 @@ msgstr ""
 "would be the source jurisdiction place if the events recorded took place not "
 "only in Oneida County but also in other counties in Idaho."
 
-#: help_text.php:747 help_text.php:769
+#: help_text.php:677 help_text.php:699
 msgid ""
 "Kiwitrees has several different contact methods.  The administrator "
 "determines which method will be used to contact him.  You have control over "
@@ -6243,11 +6282,11 @@ msgstr ""
 "the method to be used to contact <u>you</u>.  Depending on site "
 "configuration, some of the listed methods may not be available to you."
 
-#: help_text.php:749
+#: help_text.php:679
 msgid "Internal messaging"
 msgstr "Internal messaging"
 
-#: help_text.php:751
+#: help_text.php:681
 msgid ""
 "With this option, the kiwitrees internal messaging system will be used and "
 "no emails will be sent.<br><br>You will receive only <u>internal</u> "
@@ -6265,12 +6304,12 @@ msgstr ""
 "see any messages.  They will, however, show up as soon as you configure the "
 "widget bar to again have the Message block."
 
-#: help_text.php:753 includes/functions/functions_edit.php:258
+#: help_text.php:683 includes/functions/functions_edit.php:258
 #: includes/functions/functions_edit.php:269
 msgid "Internal messaging with emails"
 msgstr "Internal messaging with emails"
 
-#: help_text.php:755
+#: help_text.php:685
 msgid ""
 "This option is like kiwitrees internal messaging, with one addition.  As an "
 "extra, a copy of the message will also be sent to the email address you "
@@ -6280,12 +6319,12 @@ msgstr ""
 "extra, a copy of the message will also be sent to the email address you "
 "configured on your Account page.<br><br>This is the default contact method."
 
-#: help_text.php:757 includes/functions/functions_edit.php:260
+#: help_text.php:687 includes/functions/functions_edit.php:260
 #: includes/functions/functions_edit.php:271
 msgid "Mailto link"
 msgstr "Mailto link"
 
-#: help_text.php:759
+#: help_text.php:689
 msgid ""
 "With this option, you will only receive email messages at the address you "
 "configured on your Account page.  The messaging system internal to kiwitrees "
@@ -6297,11 +6336,11 @@ msgstr ""
 "will not be used at all, and there will never be any messages in the Message "
 "block on your widget bar."
 
-#: help_text.php:761
+#: help_text.php:691
 msgid "No contact method"
 msgstr "No contact method"
 
-#: help_text.php:763
+#: help_text.php:693
 msgid ""
 "With this option, you will not receive any messages.  Even the administrator "
 "will not be able to reach you."
@@ -6309,7 +6348,7 @@ msgstr ""
 "With this option, you will not receive any messages.  Even the administrator "
 "will not be able to reach you."
 
-#: help_text.php:774
+#: help_text.php:704
 msgid ""
 "This is a link to your own record in the family tree.  If this is the wrong "
 "person, contact an administrator."
@@ -6317,7 +6356,7 @@ msgstr ""
 "This is a link to your own record in the family tree.  If this is the wrong "
 "person, contact an administrator."
 
-#: help_text.php:779 setup.php:448
+#: help_text.php:709 setup.php:448
 msgid ""
 "This email address will be used to send you password reminders, site "
 "notifications, and messages from other family members who are registered on "
@@ -6327,11 +6366,11 @@ msgstr ""
 "notifications, and messages from other family members who are registered on "
 "the site."
 
-#: help_text.php:783
+#: help_text.php:713
 msgid "Descendant generations"
 msgstr "Descendant generations"
 
-#: help_text.php:784
+#: help_text.php:714
 msgid ""
 "This value determines the number of descendant generations of the root "
 "person that will be printed in Hourglass format."
@@ -6339,7 +6378,7 @@ msgstr ""
 "This value determines the number of descendant generations of the root "
 "person that will be printed in Hourglass format."
 
-#: help_text.php:789
+#: help_text.php:719
 msgid ""
 "Here you can change the diagram width from 50 percent to 300 percent.  At "
 "100 percent the output image is about 640 pixels wide."
@@ -6347,11 +6386,11 @@ msgstr ""
 "Here you can change the diagram width from 50 percent to 300 percent.  At "
 "100 percent the output image is about 640 pixels wide."
 
-#: help_text.php:793 modules_v3/gedcom_news/module.php:135
+#: help_text.php:723 modules_v3/gedcom_news/module.php:135
 msgid "View archive"
 msgstr "View archive"
 
-#: help_text.php:794
+#: help_text.php:724
 msgid ""
 "To reduce the height of the News block, the administrator has hidden some "
 "articles.  You can reveal these hidden articles by clicking the <b>View "
@@ -6361,11 +6400,11 @@ msgstr ""
 "articles.  You can reveal these hidden articles by clicking the <b>View "
 "archive</b> link."
 
-#: help_text.php:798 modules_v3/gedcom_news/module.php:181
+#: help_text.php:728 modules_v3/gedcom_news/module.php:181
 msgid "Limit:"
 msgstr "Limit:"
 
-#: help_text.php:799
+#: help_text.php:729
 msgid ""
 "Enter the limiting value here.<br><br>If you have opted to limit the News "
 "article display according to age, any article older than the number of days "
@@ -6383,11 +6422,11 @@ msgstr ""
 "view.<br><br>Zeros entered here will disable the limit, causing all News "
 "articles to be shown."
 
-#: help_text.php:803 modules_v3/gedcom_news/module.php:170
+#: help_text.php:733 modules_v3/gedcom_news/module.php:170
 msgid "Limit display by:"
 msgstr "Limit display by:"
 
-#: help_text.php:804
+#: help_text.php:734
 msgid ""
 "You can limit the number of News articles displayed, thereby reducing the "
 "height of the GEDCOM News block.<br><br>This option determines whether any "
@@ -6399,7 +6438,7 @@ msgstr ""
 "limits should be applied or whether the limit should be according to the age "
 "of the article or according to the number of articles."
 
-#: help_text.php:809
+#: help_text.php:739
 msgid ""
 "The number of occurrences of the specified name will be shown on the map. If "
 "you leave this field empty, the most common surname will be used."
@@ -6409,13 +6448,13 @@ msgstr ""
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: help_text.php:813 library/WT/MenuBar.php:234
+#: help_text.php:743 library/WT/MenuBar.php:235
 #: modules_v3/gedcom_favorites/module.php:35
 #: modules_v3/widget_favorites/module.php:35
 msgid "Favorites"
 msgstr "Favorites"
 
-#: help_text.php:814
+#: help_text.php:744
 msgid ""
 "The Favorites drop-down list shows the favorites that you have selected on "
 "your widget bar.  It also shows the favorites that the site administrator "
@@ -6431,12 +6470,12 @@ msgstr ""
 "of that person.<br><br>More help about adding Favorites is available in your "
 "widget bar."
 
-#: help_text.php:818 modules_v3/clippings/module.php:206
+#: help_text.php:748 modules_v3/clippings/module.php:206
 #: modules_v3/clippings/module.php:577
 msgid "Include media (automatically zips files)"
 msgstr "Include media (automatically zips files)"
 
-#: help_text.php:819
+#: help_text.php:749
 msgid ""
 "Select this option to include the media files associated with the records in "
 "your clippings cart.  Choosing this option will automatically zip the files "
@@ -6446,11 +6485,11 @@ msgstr ""
 "your clippings cart.  Choosing this option will automatically zip the files "
 "during download."
 
-#: help_text.php:823 library/WT/Controller/Lifespan.php:77 lifespan.php:256
+#: help_text.php:753 library/WT/Controller/Lifespan.php:77 lifespan.php:256
 msgid "Lifespans"
 msgstr "Lifespans"
 
-#: help_text.php:824
+#: help_text.php:754
 msgid ""
 "On this chart you can display one or more persons along a horizontal "
 "timeline.  This chart allows you to see how the lives of different people "
@@ -6468,11 +6507,11 @@ msgstr ""
 "Chart</b> button.<br><br>You can also add people to the chart by searching "
 "for them by date range or locality."
 
-#: help_text.php:828
+#: help_text.php:758
 msgid "Find next relationship path"
 msgstr "Find next relationship path"
 
-#: help_text.php:829
+#: help_text.php:759
 msgid ""
 "You can click this button to see whether there is another relationship path "
 "between the two people.  Previously found paths can be displayed again by "
@@ -6482,7 +6521,7 @@ msgstr ""
 "between the two people.  Previously found paths can be displayed again by "
 "clicking the link with the path number."
 
-#: help_text.php:834
+#: help_text.php:764
 msgid ""
 "Administrators sometimes need to clean up and correct the data submitted by "
 "users.  For example, they might need to correct the PLAC location to include "
@@ -6502,11 +6541,11 @@ msgstr ""
 "session.  With this option selected, Administrators also have the ability to "
 "modify or delete the information associated with the original CHAN tag."
 
-#: help_text.php:838 relationship.php:119
+#: help_text.php:768 relationship.php:119
 msgid "Show oldest top"
 msgstr "Show oldest top"
 
-#: help_text.php:839
+#: help_text.php:769
 msgid ""
 "When this check box is checked, the chart will be printed with oldest people "
 "at the top.  When it is unchecked, youngest people will appear at the top."
@@ -6514,7 +6553,7 @@ msgstr ""
 "When this check box is checked, the chart will be printed with oldest people "
 "at the top.  When it is unchecked, youngest people will appear at the top."
 
-#: help_text.php:844
+#: help_text.php:774
 msgid ""
 "Passwords must be at least 6 characters long and are case-sensitive, so that "
 "“secret” is different to “SECRET”."
@@ -6522,15 +6561,15 @@ msgstr ""
 "Passwords must be at least 6 characters long and are case-sensitive, so that "
 "“secret” is different to “SECRET”."
 
-#: help_text.php:849 setup.php:443
+#: help_text.php:779 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Type your password again, to make sure you have typed it correctly."
 
-#: help_text.php:853
+#: help_text.php:783
 msgid "PhpGedView to kiwitrees transfer wizard"
 msgstr "PhpGedView to kiwitrees transfer wizard"
 
-#: help_text.php:854
+#: help_text.php:784
 msgid ""
 "The PGV to kiwitrees wizard is an automated process to assist administrators "
 "make the move from a PGV installation to a new kiwitrees one. It will "
@@ -6542,23 +6581,23 @@ msgstr ""
 "transfer all PGV GEDCOM and other database information directly to your new "
 "kiwitrees database. The following requirements are necessary:"
 
-#: help_text.php:856
+#: help_text.php:786
 msgid "kiwitrees database must be on the same server as PGV's"
 msgstr "kiwitrees database must be on the same server as PGV's"
 
-#: help_text.php:858
+#: help_text.php:788
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
 msgstr "PGV must be version 4.2.3, or any SVN up to #6973"
 
-#: help_text.php:860
+#: help_text.php:790
 msgid "All changes in PGV must be accepted"
 msgstr "All changes in PGV must be accepted"
 
-#: help_text.php:862
+#: help_text.php:792
 msgid "You must export your latest GEDCOM data"
 msgstr "You must export your latest GEDCOM data"
 
-#: help_text.php:864
+#: help_text.php:794
 msgid ""
 "The current kiwitrees admin username must be the same as an existing PGV "
 "admin username"
@@ -6566,11 +6605,11 @@ msgstr ""
 "The current kiwitrees admin username must be the same as an existing PGV "
 "admin username"
 
-#: help_text.php:866
+#: help_text.php:796
 msgid "All existing PGV users must have distinct email addresses"
 msgstr "All existing PGV users must have distinct email addresses"
 
-#: help_text.php:868
+#: help_text.php:798
 msgid ""
 "<b>Important Note:</b> The transfer wizard is not able to assist with moving "
 "media items. You will need to set up and move or copy your media "
@@ -6580,11 +6619,11 @@ msgstr ""
 "media items. You will need to set up and move or copy your media "
 "configuration and objects separately after the transfer wizard is finished."
 
-#: help_text.php:873
+#: help_text.php:803
 msgid "PHP information"
 msgstr "PHP information"
 
-#: help_text.php:874
+#: help_text.php:804
 msgid ""
 "This page provides extensive information about the server on which kiwitrees "
 "is being hosted.  Many configuration details about the server's software, as "
@@ -6594,7 +6633,7 @@ msgstr ""
 "is being hosted.  Many configuration details about the server's software, as "
 "it relates to PHP and kiwitrees, can be viewed."
 
-#: help_text.php:881
+#: help_text.php:811
 msgid ""
 "When you add, edit, or delete information, the changes are not saved "
 "immediately.  Instead, they are kept in a “pending” area.  These pending "
@@ -6604,7 +6643,7 @@ msgstr ""
 "immediately.  Instead, they are kept in a “pending” area.  These pending "
 "changes need to be reviewed by a moderator before they are accepted."
 
-#: help_text.php:883
+#: help_text.php:813
 msgid ""
 "This process allows the site’s owner to ensure that the new information "
 "follows the site’s standards and conventions, has proper source "
@@ -6614,7 +6653,7 @@ msgstr ""
 "follows the site’s standards and conventions, has proper source "
 "attributions, etc."
 
-#: help_text.php:885
+#: help_text.php:815
 msgid ""
 "Pending changes are only shown when your account has permission to edit.  "
 "When you log out, you will no longer be able to see them.  Also, pending "
@@ -6626,7 +6665,7 @@ msgstr ""
 "changes are only shown on certain pages.  For example, they are not shown in "
 "lists, reports, or search results."
 
-#: help_text.php:890
+#: help_text.php:820
 msgid ""
 "Each user account has an option to “automatically accept changes”.  When "
 "this is enabled, any changes made by that user are saved immediately.  Many "
@@ -6636,11 +6675,11 @@ msgstr ""
 "this is enabled, any changes made by that user are saved immediately.  Many "
 "administrators enable this for their own user account."
 
-#: help_text.php:897
+#: help_text.php:827
 msgid "View all records"
 msgstr "View all records"
 
-#: help_text.php:898
+#: help_text.php:828
 msgid ""
 "Clicking on this link will show you a list of all of the individuals and "
 "families that have events occurring in this place.  When you get to the end "
@@ -6652,11 +6691,11 @@ msgstr ""
 "of a place hierarchy, which is normally a town or city, the name list will "
 "be shown automatically."
 
-#: help_text.php:903 setup.php:428
+#: help_text.php:833 setup.php:428
 msgid "This is your real name, as you would like it displayed on screen."
 msgstr "This is your real name, as you would like it displayed on screen."
 
-#: help_text.php:908
+#: help_text.php:838
 msgid ""
 "Use this field to tell the site administrator why you are requesting an "
 "account and how you are related to the genealogy displayed on this site.  "
@@ -6668,7 +6707,7 @@ msgstr ""
 "You can also use this to enter any other comments you may have for the site "
 "administrator."
 
-#: help_text.php:913
+#: help_text.php:843
 msgid ""
 "Every person in the database has a unique ID number on this site.  If you "
 "know the ID number for your own record, please enter it here.  If you don't "
@@ -6684,15 +6723,15 @@ msgstr ""
 "administrator identify who you are on this site so that he can set the ID "
 "for you."
 
-#: help_text.php:917 timeline.php:255 timeline.php:271
+#: help_text.php:847 timeline.php:255 timeline.php:271
 msgid "Remove person"
 msgstr "Remove person"
 
-#: help_text.php:918
+#: help_text.php:848
 msgid "Click this link to remove the person from the timeline."
 msgstr "Click this link to remove the person from the timeline."
 
-#: help_text.php:924
+#: help_text.php:854
 msgid ""
 "A role is a set of access rights, which give permission to view data, change "
 "configuration settings, etc.  Access rights are assigned to roles, and roles "
@@ -6704,13 +6743,13 @@ msgstr ""
 "are granted to users.  Each family tree can assign different access to each "
 "role, and users can have a different role in each family tree."
 
-#: help_text.php:928
+#: help_text.php:858
 msgid ""
 "Everybody has this role, including visitors to the site and search engines."
 msgstr ""
 "Everybody has this role, including visitors to the site and search engines."
 
-#: help_text.php:932
+#: help_text.php:862
 msgid ""
 "This role has all the permissions of the visitor role, plus any additional "
 "access granted by the family tree configuration."
@@ -6718,7 +6757,7 @@ msgstr ""
 "This role has all the permissions of the visitor role, plus any additional "
 "access granted by the family tree configuration."
 
-#: help_text.php:936
+#: help_text.php:866
 msgid ""
 "This role has all the permissions of the member role, plus permission to add/"
 "change/delete data.  Any changes will need to be approved by a moderator, "
@@ -6728,7 +6767,7 @@ msgstr ""
 "change/delete data.  Any changes will need to be approved by a moderator, "
 "unless the user has the \"automatically accept changes\" option enabled."
 
-#: help_text.php:940
+#: help_text.php:870
 msgid ""
 "This role has all the permissions of the editor role, plus permission to "
 "approve/reject changes made by other users."
@@ -6736,7 +6775,7 @@ msgstr ""
 "This role has all the permissions of the editor role, plus permission to "
 "approve/reject changes made by other users."
 
-#: help_text.php:944
+#: help_text.php:874
 msgid ""
 "This role has all the permissions of the moderator role, plus any additional "
 "access granted by the family tree configuration, plus permission to change "
@@ -6746,7 +6785,7 @@ msgstr ""
 "access granted by the family tree configuration, plus permission to change "
 "the settings/configuration of a family tree."
 
-#: help_text.php:948
+#: help_text.php:878
 msgid ""
 "This role has all the permissions of the manager role in all family trees, "
 "plus permission to change the settings/configuration of the site, users and "
@@ -6756,19 +6795,11 @@ msgstr ""
 "plus permission to change the settings/configuration of the site, users and "
 "modules."
 
-#: help_text.php:954
-msgid ""
-"When this option is selected, kiwitrees will calculate the age differences "
-"between siblings, children, spouses, etc."
-msgstr ""
-"When this option is selected, kiwitrees will calculate the age differences "
-"between siblings, children, spouses, etc."
-
-#: help_text.php:958 modules_v3/sources_tab/module.php:65
+#: help_text.php:883 modules_v3/sources_tab/module.php:65
 msgid "Show all sources"
 msgstr "Show all sources"
 
-#: help_text.php:959
+#: help_text.php:884
 msgid ""
 "When this option is checked, you can see all Source or Note records for this "
 "person.  When this option is unchecked, Source or Note records that are "
@@ -6778,7 +6809,7 @@ msgstr ""
 "person.  When this option is unchecked, Source or Note records that are "
 "associated with other facts for this person will not be shown."
 
-#: help_text.php:964
+#: help_text.php:889
 msgid ""
 "By default this chart does not show spouses for the descendants because it "
 "makes the chart harder to read and understand.  Turning this option on will "
@@ -6788,11 +6819,11 @@ msgstr ""
 "makes the chart harder to read and understand.  Turning this option on will "
 "show spouses on the chart."
 
-#: help_text.php:968
+#: help_text.php:893
 msgid "Simple search filter"
 msgstr "Simple search filter"
 
-#: help_text.php:969
+#: help_text.php:894
 msgid ""
 "Simple search filter based on the characters entered, no wildcards are "
 "accepted."
@@ -6800,11 +6831,11 @@ msgstr ""
 "Simple search filter based on the characters entered, no wildcards are "
 "accepted."
 
-#: help_text.php:973
+#: help_text.php:898
 msgid "Upload family tree"
 msgstr "Upload family tree"
 
-#: help_text.php:974
+#: help_text.php:899
 msgid ""
 "This option deletes all the genealogy data in your family tree and replaces "
 "it with data from a GEDCOM file on your computer."
@@ -6812,7 +6843,7 @@ msgstr ""
 "This option deletes all the genealogy data in your family tree and replaces "
 "it with data from a GEDCOM file on your computer."
 
-#: help_text.php:980
+#: help_text.php:905
 msgid ""
 "Select the media file that you want to upload.  If a file already exists "
 "with the same name, it will be overwritten."
@@ -6820,7 +6851,7 @@ msgstr ""
 "Select the media file that you want to upload.  If a file already exists "
 "with the same name, it will be overwritten."
 
-#: help_text.php:982
+#: help_text.php:907
 msgid ""
 "It is easier to manage your media files if you choose a consistent format "
 "for the filenames.  To organise media files into folders, you must first set "
@@ -6830,7 +6861,7 @@ msgstr ""
 "for the filenames.  To organise media files into folders, you must first set "
 "the number of levels in the GEDCOM administration page."
 
-#: help_text.php:987
+#: help_text.php:912
 msgid ""
 "Upload one or more media files from your local computer.  Media files can be "
 "pictures, video, audio, or other formats."
@@ -6838,7 +6869,7 @@ msgstr ""
 "Upload one or more media files from your local computer.  Media files can be "
 "pictures, video, audio, or other formats."
 
-#: help_text.php:992
+#: help_text.php:917
 msgid ""
 "The media file you are uploading can be, and probably should be, named "
 "differently on the server than it is on your local computer.  This is so "
@@ -6864,7 +6895,7 @@ msgstr ""
 "etc.)<br><br>Leave this field blank to keep the original name of the file "
 "you have uploaded from your local computer."
 
-#: help_text.php:999
+#: help_text.php:924
 msgid ""
 "If you have a large number of media files, you can organize them into "
 "folders and subfolders."
@@ -6872,7 +6903,7 @@ msgstr ""
 "If you have a large number of media files, you can organize them into "
 "folders and subfolders."
 
-#: help_text.php:1005
+#: help_text.php:930
 msgid ""
 "Choose the thumbnail image that you want to upload.  Although thumbnails can "
 "be generated automatically for images, you may wish to generate your own "
@@ -6886,7 +6917,7 @@ msgstr ""
 "still image from a video, or a photograph of the person who made an audio "
 "recording."
 
-#: help_text.php:1010
+#: help_text.php:935
 msgid ""
 "Normally, any changes made to a family tree need to be approved by a "
 "moderator.  This option allows a user to make changes without needing a "
@@ -6896,7 +6927,7 @@ msgstr ""
 "moderator.  This option allows a user to make changes without needing a "
 "moderator's approval."
 
-#: help_text.php:1015
+#: help_text.php:940
 msgid ""
 "The individual record identifies the user in each family tree.  Since a user "
 "can view the details of their individual record, this can only be set by an "
@@ -6908,11 +6939,11 @@ msgstr ""
 "administrator.  If the user does not have a record in a family tree, leave "
 "it empty."
 
-#: help_text.php:1019
+#: help_text.php:944
 msgid "Account approval and email verification"
 msgstr "Account approval and email verification"
 
-#: help_text.php:1020
+#: help_text.php:945
 msgid ""
 "When a user registers for an account, an email is sent to their email "
 "address with a verification link.  When they click this link, we know the "
@@ -6924,7 +6955,7 @@ msgstr ""
 "email address is correct, and the \"email verified\" option is selected "
 "automatically."
 
-#: help_text.php:1022
+#: help_text.php:947
 msgid ""
 "If an administrator creates a user account, the verification email is not "
 "sent, and the email must be verified manually."
@@ -6932,7 +6963,7 @@ msgstr ""
 "If an administrator creates a user account, the verification email is not "
 "sent, and the email must be verified manually."
 
-#: help_text.php:1024
+#: help_text.php:949
 msgid ""
 "You should not approve an account unless you know that the email address is "
 "correct."
@@ -6940,7 +6971,7 @@ msgstr ""
 "You should not approve an account unless you know that the email address is "
 "correct."
 
-#: help_text.php:1026
+#: help_text.php:951
 msgid ""
 "A user will not be able to login until both the \"email verified\" and "
 "\"approved by administrator\" options are selected."
@@ -6948,11 +6979,11 @@ msgstr ""
 "A user will not be able to login until both the \"email verified\" and "
 "\"approved by administrator\" options are selected."
 
-#: help_text.php:1030
+#: help_text.php:955
 msgid "Visible online"
 msgstr "Visible online"
 
-#: help_text.php:1031
+#: help_text.php:956
 msgid ""
 "This checkbox controls your visibility to other users while you're online.  "
 "It also controls your ability to see other online users who are configured "
@@ -6970,7 +7001,7 @@ msgstr ""
 "visible to others, and you will also be able to see others who are "
 "configured to be visible."
 
-#: help_text.php:1038
+#: help_text.php:963
 msgid ""
 "Usernames are case-insensitive and ignore accented letters, so that “chloe”, "
 "“chloë”, and “Chloe” are considered to be the same."
@@ -6978,22 +7009,22 @@ msgstr ""
 "Usernames are case-insensitive and ignore accented letters, so that “chloe”, "
 "“chloë”, and “Chloe” are considered to be the same."
 
-#: help_text.php:1040
+#: help_text.php:965
 #, php-format
 msgid ""
 "Usernames may not contain the following characters: &lt; &gt; \" %% { } ;"
 msgstr ""
 "Usernames may not contain the following characters: &lt; &gt; \" %% { } ;"
 
-#: help_text.php:1045
+#: help_text.php:970
 msgid "Convert from UTF-8 to ANSI"
 msgstr "Convert from UTF-8 to ANSI"
 
-#: help_text.php:1050
+#: help_text.php:975
 msgid "Zip clippings"
 msgstr "Zip clippings"
 
-#: help_text.php:1051
+#: help_text.php:976
 msgid ""
 "Select this option as to save your clippings in a ZIP file.  For more "
 "information about ZIP files, please visit <a href=\"http://www.winzip.com\" "
@@ -7003,11 +7034,11 @@ msgstr ""
 "information about ZIP files, please visit <a href=\"http://www.winzip.com\" "
 "target=\"_blank\">http://www.winzip.com</a>."
 
-#: help_text.php:1055
+#: help_text.php:980
 msgid "Help"
 msgstr "Help"
 
-#: help_text.php:1056
+#: help_text.php:981
 msgid "The help text has not been written for this item."
 msgstr "The help text has not been written for this item."
 
@@ -10137,8 +10168,8 @@ msgid "This record was last changed by <i>%s</i> at %s"
 msgstr "This record was last changed by <i>%s</i> at %s"
 
 #: includes/functions/functions_edit.php:397
-#: includes/functions/functions_edit.php:2339
-#: includes/functions/functions_edit.php:2348
+#: includes/functions/functions_edit.php:2343
+#: includes/functions/functions_edit.php:2352
 msgid ""
 "Please reload the previous page to make sure you are working with the most "
 "recent record."
@@ -10164,7 +10195,7 @@ msgid "Select a date"
 msgstr "Select a date"
 
 #: includes/functions/functions_edit.php:1199
-#: includes/functions/functions_edit.php:1885
+#: includes/functions/functions_edit.php:1888
 #: library/WT/Controller/Family.php:246 modules_v3/album/module.php:99
 #: source.php:135
 msgid "Add a media object"
@@ -10174,25 +10205,25 @@ msgstr "Add a media object"
 msgid "Edit shared note"
 msgstr "Edit shared note"
 
-#: includes/functions/functions_edit.php:1451
+#: includes/functions/functions_edit.php:1454
 msgid "No Temple - Living Ordinance"
 msgstr "No Temple - Living Ordinance"
 
-#: includes/functions/functions_edit.php:1735
+#: includes/functions/functions_edit.php:1738
 msgid "Link this source to these records"
 msgstr "Link this source to these records"
 
-#: includes/functions/functions_edit.php:1844
-#: includes/functions/functions_edit.php:1848
+#: includes/functions/functions_edit.php:1847
+#: includes/functions/functions_edit.php:1851
 msgid "Add an associate"
 msgstr "Add an associate"
 
-#: includes/functions/functions_edit.php:1894
+#: includes/functions/functions_edit.php:1897
 msgid "Add a restriction"
 msgstr "Add a restriction"
 
-#: includes/functions/functions_edit.php:2338
-#: includes/functions/functions_edit.php:2347
+#: includes/functions/functions_edit.php:2342
+#: includes/functions/functions_edit.php:2351
 msgid ""
 "An error occurred while creating the Edit form.  Another user may have "
 "changed this record since you previously viewed it."
@@ -10328,11 +10359,11 @@ msgstr[1] "%d logged-in users"
 msgid "If you have any questions or comments please contact"
 msgstr "If you have any questions or comments please contact"
 
-#: includes/functions/functions_print.php:444
+#: includes/functions/functions_print.php:444 themes/levy/functions.php:60
 msgid "For technical support and information contact"
 msgstr "For technical support and information contact"
 
-#: includes/functions/functions_print.php:450
+#: includes/functions/functions_print.php:450 themes/levy/functions.php:54
 msgid "For help with genealogy questions contact"
 msgstr "For help with genealogy questions contact"
 
@@ -10400,13 +10431,13 @@ msgstr "LDS Temple"
 #: includes/functions/functions_print.php:1125
 #: includes/functions/functions_print.php:1229
 #: modules_v3/googlemap/module.php:1488 modules_v3/googlemap/module.php:1504
-#: modules_v3/resource_fact/module.php:187
+#: modules_v3/resource_fact/module.php:189
 #: modules_v3/widget_messages/module.php:69
 msgid "Select"
 msgstr "Select"
 
 #: includes/functions/functions_print.php:1133
-#: modules_v3/resource_fact/module.php:194
+#: modules_v3/resource_fact/module.php:196
 msgid "Custom Fact"
 msgstr "Custom Fact"
 
@@ -10912,7 +10943,7 @@ msgstr ""
 #: library/WT/Controller/Family.php:167
 #: library/WT/Controller/Individual.php:407 library/WT/Controller/Media.php:138
 #: library/WT/Controller/Note.php:114 library/WT/Controller/Repository.php:114
-#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:258
+#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:259
 msgid "Add to favorites"
 msgstr "Add to favorites"
 
@@ -11165,13 +11196,13 @@ msgid "after %s"
 msgstr "after %s"
 
 #. I18N: Gedcom FROM dates
-#: library/WT/Date.php:247 modules_v3/resource_fact/module.php:242
+#: library/WT/Date.php:247 modules_v3/resource_fact/module.php:244
 #, php-format
 msgid "from %s"
 msgstr "from %s"
 
 #. I18N: Gedcom TO dates
-#: library/WT/Date.php:248 modules_v3/resource_fact/module.php:242
+#: library/WT/Date.php:248 modules_v3/resource_fact/module.php:244
 #, php-format
 msgid "to %s"
 msgstr "to %s"
@@ -14597,7 +14628,7 @@ msgid "Type of event"
 msgstr "Type of event"
 
 #. I18N: gedcom tag FACT
-#: library/WT/Gedcom/Tag.php:213 modules_v3/resource_fact/module.php:236
+#: library/WT/Gedcom/Tag.php:213 modules_v3/resource_fact/module.php:238
 msgid "Fact"
 msgstr "Fact"
 
@@ -16460,18 +16491,19 @@ msgstr "My individual record"
 msgid "Reports"
 msgstr "Reports"
 
-#: library/WT/MenuBar.php:166 modules_v3/simpl_pages/module.php:415
+#: library/WT/MenuBar.php:167 modules_v3/simpl_pages/module.php:415
 #: themes/_administration/header.php:215
 msgid "Resources"
 msgstr "Resources"
 
-#: library/WT/MenuBar.php:184 lifespan.php:302 medialist.php:138
+#: library/WT/MenuBar.php:185 lifespan.php:302 medialist.php:138
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:58
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:96
 #: modules_v3/descendancy/module.php:98 modules_v3/descendancy/module.php:131
 #: modules_v3/families/module.php:144 modules_v3/individuals/module.php:144
 #: search.php:34 search.php:240 search.php:521 search_advanced.php:299
 #: themes/colors/header.php:118 themes/colors/header.php:119
+#: themes/levy/header.php:110 themes/levy/header.php:111
 #: themes/webtrees/header.php:122 themes/webtrees/header.php:123
 #: themes/xenea/header.php:108
 msgid "Search"
@@ -18390,7 +18422,7 @@ msgid "Search filters"
 msgstr "Search filters"
 
 #: medialist.php:142 modules_v3/album/module.php:344
-#: modules_v3/googlemap/module.php:2022 modules_v3/resource_fact/module.php:222
+#: modules_v3/googlemap/module.php:2022 modules_v3/resource_fact/module.php:224
 msgid "Reset"
 msgstr "Reset"
 
@@ -18805,8 +18837,8 @@ msgid "These files or folders are always excluded from the backup."
 msgstr "These files or folders are always excluded from the backup."
 
 #: modules_v3/backup_to_dropbox/module.php:153
-msgid "Add more files to exclude"
-msgstr "Add more fields"
+msgid "Also exclude these files"
+msgstr "Also exclude these files"
 
 #: modules_v3/backup_to_dropbox/module.php:157
 msgid "Separate each item by a comma"
@@ -22845,7 +22877,9 @@ msgid "A list of sources"
 msgstr "A list of sources"
 
 #. I18N: Name of a module. (A list of users who are online now)
+#. I18N: Name of a module. (A list of users who are online now)
 #: modules_v3/logged_in/module.php:35 modules_v3/widget_logged_in/module.php:35
+#: themes/levy/footer.php:40
 msgid "Who is online"
 msgstr "Who is online"
 
@@ -22975,6 +23009,18 @@ msgid ""
 msgstr ""
 "A report of the information that is missing for an individual and their "
 "relatives."
+
+#: modules_v3/mysqldumper/module.php:36
+msgid "MySQL Backup"
+msgstr "MySQL Backup"
+
+#: modules_v3/mysqldumper/module.php:41
+msgid "Provides access to MySQLDumper"
+msgstr "Provides access to MySQLDumper"
+
+#: modules_v3/mysqldumper/module.php:63
+msgid "MySQLDumper"
+msgstr "MySQLDumper"
 
 #. I18N: Name of a module
 #: modules_v3/no_census/module.php:36
@@ -23321,15 +23367,15 @@ msgid ""
 msgstr ""
 "A report of individuals who have a selected fact or event in their record."
 
-#: modules_v3/resource_fact/module.php:177
+#: modules_v3/resource_fact/module.php:179
 msgid ""
 "The list of available facts and events are those set by the site "
-"administrator as \"All individual facts\" at Administration > Family trees > "
-"<u>your family tree</u> > \"Edit options\" tab and therefore only GEDCOM "
-"first-level records.<br>Date filters must be 4-digit year only. Place, type "
-"and detail filters can be any string of characters you expect to find in "
-"those data fields. The \"Type\" field is only avaiable for Custom facts and "
-"Custom events."
+"administrator as \"All individual facts\" and \"Unique individual facts\" at "
+"Administration > Family trees > <i>your family tree</i> > \"Edit options\" "
+"tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-"
+"digit year only. Place, type and detail filters can be any string of "
+"characters you expect to find in those data fields. The \"Type\" field is "
+"only avaiable for Custom facts and Custom events."
 msgstr ""
 "The list of available facts and events are those set by the site "
 "administrator as \"All individual facts\" at Administration > Family trees > "
@@ -23339,19 +23385,19 @@ msgstr ""
 "those data fields. The \"Type\" field is only avaiable for Custom facts and "
 "Custom events."
 
-#: modules_v3/resource_fact/module.php:201
+#: modules_v3/resource_fact/module.php:203
 msgid "Year from - 4 digits only"
 msgstr "Year from - 4 digits only"
 
-#: modules_v3/resource_fact/module.php:202
+#: modules_v3/resource_fact/module.php:204
 msgid "Year to - 4 digits only"
 msgstr "Year to - 4 digits only"
 
-#: modules_v3/resource_fact/module.php:233
+#: modules_v3/resource_fact/module.php:235
 msgid "Listing individuals based on these filters"
 msgstr "Listing individuals based on these filters"
 
-#: modules_v3/resource_fact/module.php:241
+#: modules_v3/resource_fact/module.php:243
 msgid "Dates"
 msgstr "Dates"
 
@@ -25532,6 +25578,8 @@ msgstr "Choose a page"
 #: themes/colors/templates/personbox_template.php:52
 #: themes/kiwitrees/templates/compactbox_template.php:54
 #: themes/kiwitrees/templates/personbox_template.php:48
+#: themes/levy/templates/compactbox_template.php:57
+#: themes/levy/templates/personbox_template.php:51
 #: themes/webtrees/templates/compactbox_template.php:57
 #: themes/webtrees/templates/personbox_template.php:51
 #: themes/xenea/templates/compactbox_template.php:57
@@ -25628,6 +25676,14 @@ msgstr "Teal Top"
 #: themes/colors/theme.php:128
 msgid "colors"
 msgstr "colors"
+
+#: themes/levy/functions.php:50
+msgid "For technical support or genealogy questions, please contact"
+msgstr "For technical support or genealogy questions, please contact"
+
+#: themes/levy/header.php:63
+msgid "Open in full browser window"
+msgstr "Open in full browser window"
 
 #. I18N: Name of a theme.
 #: themes/webtrees/theme.php:37
@@ -26018,16 +26074,22 @@ msgstr "Orientation"
 msgid "Pedigree Chart"
 msgstr "Pedigree Chart"
 
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "Show fact icons"
+#~ msgstr "Show fact icons"
+
+#~ msgid "Show age of parents next to child's birthdate"
+#~ msgstr "Show age of parents next to child's birthdate"
+
+#~ msgid "Add more files to exclude"
+#~ msgstr "Add more fields"
+
 #~ msgid ""
 #~ "Either click the \"sort by date\" button or click a row then drag-and-"
 #~ "drop to re-order media"
 #~ msgstr "Click a row, then drag-and-drop to re-order media "
-
-#~ msgid "For technical support or genealogy questions, please contact"
-#~ msgstr "For technical support or genealogy questions, please contact"
-
-#~ msgid "Open in full browser window"
-#~ msgstr "Open in full browser window"
 
 #~ msgid "Individual ID prefix"
 #~ msgstr "Individual ID prefix"
