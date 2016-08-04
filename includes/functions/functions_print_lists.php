@@ -1348,7 +1348,7 @@ function format_story_table($datalist) {
 								if (!$indi[$x]){
 									$html .= '<p style="margin:0;" class="error">'. $xref[$x]. '</p>';
 								} else {
-									$html .= '<p style="margin:0;"><a href="' . $indi[$x]->getHtmlUrl() . '" class="current">' . highlight_search_hits($indi[$x]->getFullName()) . '</a></p>';
+									$html .= '<p style="margin:0;"><a href="' . $indi[$x]->getHtmlUrl() . '#stories" class="current">' . highlight_search_hits($indi[$x]->getFullName()) . '</a></p>';
 								}
 							}
 						$html .= '</td>
