@@ -30,6 +30,7 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addExternalJavascript(WT_JQUERY_AUTOSIZE)
+	->addExternalJavascript(WT_JQUERY_SHORTEN)
 	->addInlineJavascript('
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
@@ -60,6 +61,13 @@ $this
 			active:parseInt(sessionStorage.getItem("saved_index"))
 		});
 		jQuery("#adminAccordion").css("visibility", "visible");
+
+		jQuery(".helpcontent").shorten({
+		    showChars: 250,
+			moreText: "' . WT_I18N::translate('more') . '",
+			lessText: "' . WT_I18N::translate('less') . '",
+			inlineMore: true
+		});
 	');
 
 echo

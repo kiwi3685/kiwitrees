@@ -64,6 +64,7 @@ define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/kiwitrees.js');
 define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.min.js');	    // 1.18.18  Updated 18-06-2015
 define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');		    // 1.5pre	  Updatd 2010
 define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
+define('WT_JQUERY_SHORTEN',			WT_STATIC_URL . 'js/jquery.shorten.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
