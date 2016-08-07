@@ -92,7 +92,7 @@ $controller
   
 $linked_sour = $controller->record->fetchLinkedSources();
 
-echo '<div id="repo-details">';
+echo '<div id="repo-details-page">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
 echo '<div id="repo-tabs">
 	<ul>
@@ -125,4 +125,4 @@ echo '<div id="repo-tabs">
 	}
 
 echo '</div>'; //close div "repo-tabs"
-echo '</div>'; //close div "repo-details"
+echo '</div>'; //close div "repo-details-page"

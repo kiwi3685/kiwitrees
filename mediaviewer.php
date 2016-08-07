@@ -88,14 +88,14 @@ $controller
 				}
 			});
 	');
-  
+
 $linked_indi = $controller->record->fetchLinkedIndividuals();
 $linked_fam  = $controller->record->fetchLinkedFamilies();
 $linked_sour = $controller->record->fetchLinkedSources();
 $linked_repo = $controller->record->fetchLinkedRepositories();
 $linked_note = $controller->record->fetchLinkedNotes();
 
-echo '<div id="media-details">';
+echo '<div id="media-details-page">';
 echo '<h2>', $controller->record->getFullName(), ' ', $controller->record->getAddName(), '</h2>';
 echo '<div id="media-tabs">';
 	echo '<div id="media-edit">';

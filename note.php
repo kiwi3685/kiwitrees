@@ -95,7 +95,7 @@ $linked_fam  = $controller->record->fetchLinkedFamilies();
 $linked_obje = $controller->record->fetchLinkedMedia();
 $linked_sour = $controller->record->fetchLinkedSources();
 
-echo '<div id="note-details">';
+echo '<div id="note-details-page">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';
 echo '<div id="note-tabs">
 	<ul>
@@ -178,4 +178,4 @@ echo '<div id="note-tabs">
 		echo '</div>'; //close "source-note"
 	}
 echo '</div>'; //close div "note-tabs"
-echo '</div>'; //close div "note-details"
+echo '</div>'; //close div "note-details-page"
