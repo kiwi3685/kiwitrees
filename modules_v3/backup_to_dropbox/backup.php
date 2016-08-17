@@ -84,7 +84,8 @@ class Backup {
 			'.DS_Store',
             '.htaccess',
             'config.ini.php',
-            'cache'
+            'cache',
+			'index.php'
         );
     }
 }

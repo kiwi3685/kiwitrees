@@ -38,7 +38,7 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Allows you to backup your media files to your Dropbox account');
+		return WT_I18N::translate('Allows you to backup your media and other files to a Dropbox account');
 	}
 
 	// Implement WT_Module_Config
@@ -136,7 +136,7 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 					</div>
 					<?php if ($DB_FOLDER && $DB_FOLDER) { ?>
 						<div class="tree_config odd">
-							<label><?php echo WT_I18N::translate('These files or folders are always excluded from the backup.'); ?></label>
+							<label><?php echo WT_I18N::translate('These files and folders are always excluded from the backup.'); ?></label>
 							<div class="input_group">
 								<?php
 								$html = '';
@@ -150,7 +150,7 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 						</div>
 					<?php } ?>
 					<div class="tree_config even">
-						<label><?php echo WT_I18N::translate('Also exclude these files'); ?></label>
+						<label><?php echo WT_I18N::translate('Also exclude these files and folders'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_DB_EXCLUDE" value="<?php echo $db_exclude; ?>">
 							<span class="help_content">
