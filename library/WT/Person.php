@@ -495,7 +495,7 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Get the full name plus lifespan
 	public function getLifespanName() {
-		$lifespan_name = WT_Person::getFullName() . '<span class="lifespan_name" style="font-weight:normal; font-size: 80%;">(' . $this->getLifeSpan() . ')</span>';
+		$lifespan_name = WT_Person::getFullName() . '<span class="lifespan_name" style="font-weight:normal; font-size: 80%;">&nbsp;(' . $this->getLifeSpan() . ')&nbsp;</span>';
 		return $lifespan_name;
 	}
 

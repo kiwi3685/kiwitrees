@@ -307,7 +307,7 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 .lifespan_name {
 	font-size: 80%;
 	font-weight: normal;
-	margin: 0 5px;
+	margin: 0;
 }
 
 .search_hit {background-color:#ffff00;}

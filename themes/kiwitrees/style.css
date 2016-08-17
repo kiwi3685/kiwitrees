@@ -226,11 +226,13 @@ textarea:required:invalid {
 }
 
 #flash-messages p {
-    background: #f0f8ff;
-    color: #00f;
-    margin: 0;
-    padding: 3px 10px;
+	background: #ffff00;
+	color: #00f;
+	margin: 0;
+	padding: 3px 10px;
+	text-align: center;
 }
+
 #topbar {
 	height: 1em;
 	width: 100%;
@@ -1067,7 +1069,7 @@ a:hover .nameZoom {
 .lifespan_name {
 	font-size: 80%;
 	font-weight: normal;
-	margin: 0 5px;
+	margin: 0;
 }
 
 .date {

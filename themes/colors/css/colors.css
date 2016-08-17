@@ -557,7 +557,7 @@ input, textarea {padding:5px;}
 .lifespan_name {
 	font-size: 80%;
 	font-weight: normal;
-	margin: 0 5px;
+	margin: 0;
 }
 .subbar {background:#fff;border:1pt solid #dddddd;border-radius:3px;font-size:11px;padding:3px;vertical-align:top;white-space:nowrap;}
 .topbottombar {border-radius:3px;font-weight:700;padding:4px;text-align:center;}
