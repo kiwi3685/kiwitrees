@@ -161,7 +161,7 @@ case 'loadrows':
 		// $aData[7] is the sortable registration timestamp
 		$aData[8]=$aData[8] ? format_timestamp($aData[8]) : '';
 		if (date("U") - $aData[7] > 604800 && !$aData[11]) {
-			$aData[8]='<span class="red">'.$aData[8].'</span>';
+			$aData[8]='<span class="red">'.$aData[8].'</span>'; // display in red if user does not verify within 7 days (604800 secs)
 		}
 		// $aData[9] is the sortable last-login timestamp
 		if ($aData[9]) {
