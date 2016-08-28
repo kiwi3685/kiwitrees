@@ -209,10 +209,10 @@ class WT_MenuBar {
 	}
 
 	public static function getFavoritesMenu() {
-		global $REQUIRE_AUTHENTICATION, $controller, $SEARCH_SPIDER;
+		global $controller, $SEARCH_SPIDER;
 
-		$show_user_favs =  WT_USER_ID && array_key_exists('widget_favorites',   WT_Module::getActiveModules());
-		$show_gedc_favs =! $REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
+		$show_user_favs = WT_USER_ID && array_key_exists('widget_favorites', WT_Module::getActiveModules());
+		$show_gedc_favs = array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
 
 		if ($show_user_favs && !$SEARCH_SPIDER) {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {

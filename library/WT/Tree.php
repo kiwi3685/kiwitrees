@@ -134,13 +134,12 @@ class WT_Tree {
 		if (self::$trees === null) {
 			self::$trees=array();
 			$rows=WT_DB::prepare(
-				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported, gs4.setting_value AS tree_subtitle".
+				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported, gs3.setting_value AS tree_subtitle".
 				" FROM `##gedcom` g".
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')".
 				" LEFT JOIN `##gedcom_setting`      gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='imported')".
-				" LEFT JOIN `##gedcom_setting`      gs3 ON (g.gedcom_id=gs3.gedcom_id AND gs3.setting_name='REQUIRE_AUTHENTICATION')".
 				" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.setting_name='canedit' AND ugs.user_id = ?)".
-				" LEFT JOIN `##gedcom_setting`      gs4 ON (g.gedcom_id=gs4.gedcom_id AND gs4.setting_name='subtitle')".
+				" LEFT JOIN `##gedcom_setting`      gs3 ON (g.gedcom_id=gs3.gedcom_id AND gs3.setting_name='subtitle')".
 				" WHERE ".
 				"  g.gedcom_id>0 AND (".          // exclude the "template" tree
 				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id = ? AND setting_name='canadmin' AND setting_value=1)". // Admin sees all
@@ -272,7 +271,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'REPO_FACTS_QUICK',             '');
 		set_gedcom_setting($tree_id, 'REPO_FACTS_UNIQUE',            'NAME,ADDR');
 		set_gedcom_setting($tree_id, 'REPO_ID_PREFIX',               'R');
-		set_gedcom_setting($tree_id, 'REQUIRE_AUTHENTICATION',       false);
 		set_gedcom_setting($tree_id, 'SAVE_WATERMARK_IMAGE',         false);
 		set_gedcom_setting($tree_id, 'SAVE_WATERMARK_THUMB',         false);
 		set_gedcom_setting($tree_id, 'SHOW_AGE_DIFF',                false);

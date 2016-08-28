@@ -78,7 +78,7 @@ define('WT_DEBUG_SQL',  false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 31);
+define('WT_SCHEMA_VERSION', 32);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);

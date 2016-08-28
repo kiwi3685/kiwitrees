@@ -250,7 +250,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS');
 	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS');
 	global $REPO_ID_PREFIX;               $REPO_ID_PREFIX               = get_gedcom_setting($ged_id, 'REPO_ID_PREFIX');
-	global $REQUIRE_AUTHENTICATION;       $REQUIRE_AUTHENTICATION       = get_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION');
 	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         = get_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE');
 	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         = get_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB');
 	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                = get_gedcom_setting($ged_id, 'SHOW_AGE_DIFF');
