@@ -40,6 +40,11 @@ $this
 			}
 		});
 		jQuery("textarea").autosize();
+		jQuery(".helpcontent").shorten({
+		    showChars: 250,
+			moreText: "' . WT_I18N::translate('More') . '",
+			lessText: "' . WT_I18N::translate('Less') . '"
+		});
 		jQuery("#adminAccordion").accordion({
 			active:0,
 			event: "click hoverintent",
@@ -61,13 +66,6 @@ $this
 			active:parseInt(sessionStorage.getItem("saved_index"))
 		});
 		jQuery("#adminAccordion").css("visibility", "visible");
-
-		jQuery(".helpcontent").shorten({
-		    showChars: 250,
-			moreText: "' . WT_I18N::translate('more') . '",
-			lessText: "' . WT_I18N::translate('less') . '",
-			inlineMore: true
-		});
 	');
 
 echo

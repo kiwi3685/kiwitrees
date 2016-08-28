@@ -149,14 +149,15 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 // $selected - the currently selected item (if any)
 // $extra    - extra markup for field (e.g. tab key sequence)
 function radio_buttons($name, $values, $selected, $extra='') {
-	$html='';
+	$html = '';
 	foreach ($values as $key=>$value) {
-		$uniqueID = $name.(int)(microtime() * 1000000);
-		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.htmlspecialchars($key).'"';
-		if ((string)$key === (string)$selected) { // Beware PHP array keys are cast to integers!  Cast them back
-			$html.=' checked';
+		$uniqueID = $name . (int)(microtime() * 1000000);
+
+		$html .= '<label for="' . $uniqueID . '"><input type="radio" name="' . $name . '" id="' . $uniqueID . '" value="' . htmlspecialchars($key) . '"';
+		if ((string)$key === (string)$selected) {
+			$html .= ' checked';
 		}
-		$html.='><label for="'.$uniqueID.'">'.htmlspecialchars($value).'</label>';
+		$html .= '>' . htmlspecialchars($value) . '</label>';
 	}
 	return $html;
 }
@@ -2579,4 +2580,46 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 					add_simple_tag('4 LONG');
 				}
 			}
+}
+
+/**
+ * A list of known surname traditions, with their descriptions
+ *
+ * @return string[]
+ */
+function surnameDescriptions() {
+	return array(
+		'paternal' =>
+			WT_I18N::translate_c('Surname tradition', 'paternal') .
+			' - ' . /* I18N: In the paternal surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.') .
+			' ' . /* I18N: In the paternal surname tradition, ... */ WT_I18N::translate('Wives take their husband’s surname.'),
+		/* I18N: A system where children take their father’s surname */ 'patrilineal' =>
+			WT_I18N::translate('patrilineal') .
+			' - ' . /* I18N: In the patrilineal surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.'),
+		/* I18N: A system where children take their mother’s surname */ 'matrilineal' =>
+			WT_I18N::translate('matrilineal') .
+			' - ' . /* I18N: In the matrilineal surname tradition, ... */ WT_I18N::translate('Children take their mother’s surname.'),
+		'spanish' =>
+			WT_I18N::translate_c('Surname tradition', 'Spanish') .
+			' - ' . /* I18N: In the Spanish surname tradition, ... */ WT_I18N::translate('Children take one surname from the father and one surname from the mother.'),
+		'portuguese' =>
+			WT_I18N::translate_c('Surname tradition', 'Portuguese') .
+			' - ' . /* I18N: In the Portuguese surname tradition, ... */ WT_I18N::translate('Children take one surname from the mother and one surname from the father.'),
+		'icelandic' =>
+			WT_I18N::translate_c('Surname tradition', 'Icelandic') .
+			' - ' . /* I18N: In the Icelandic surname tradition, ... */ WT_I18N::translate('Children take a patronym instead of a surname.'),
+		'polish' =>
+			WT_I18N::translate_c('Surname tradition', 'Polish') .
+			' - ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.') .
+			' ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Wives take their husband’s surname.') .
+			' ' . /* I18N: In the Polish surname tradition, ... */ WT_I18N::translate('Surnames are inflected to indicate an individual’s gender.'),
+		'lithuanian' =>
+			WT_I18N::translate_c('Surname tradition', 'Lithuanian') .
+			' - ' . /* I18N: In the Lithuanian surname tradition, ... */ WT_I18N::translate('Children take their father’s surname.') .
+			' ' . /* I18N: In the Lithuanian surname tradition, ... */ WT_I18N::translate('Wives take their husband’s surname.') .
+			' ' . /* I18N: In the Lithuanian surname tradition, ... */ WT_I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.'),
+		'none' =>
+			WT_I18N::translate_c('Surname tradition', 'none'),
+	);
+
 }

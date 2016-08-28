@@ -26,7 +26,6 @@
             ellipsesText: "...",
             moreText: "more",
             lessText: "less",
-            inlineMore: false,
             onLess: function() {},
             onMore: function() {},
             errMsg: null,
@@ -35,10 +34,6 @@
 
         if (settings) {
             $.extend(config, settings);
-        }
-
-        function moreLink(text, classText) {
-          return '<span><a href="javascript://nop/" class="morelink ' + (classText || '') + '">' + text + '</a></span>';
         }
 
         if ($(this).data('jquery.shorten') && !config.force) {
@@ -50,35 +45,21 @@
 
         $(document).on({
             click: function() {
+
                 var $this = $(this);
-                var $short;
-                var $all;
                 if ($this.hasClass('less')) {
-                    if(config.inlineMore) {
-                      $all   = $this.closest('.allcontent');
-                    } else {
-                      $all   = $this.parent().prev();
-                      $this.removeClass('less');
-                      $this.html(config.moreText);
-                    }
-                    $short = $all.prev();
-                    $all.animate({'height':'0'+'%'}, function () { $short.show(); }).hide('fast', function() {
+                    $this.removeClass('less');
+                    $this.html(config.moreText);
+                    $this.parent().prev().animate({'height':'0'+'%'}, function () { $this.parent().prev().prev().show(); }).hide('fast', function() {
                         config.onLess();
-                    });
+                      });
 
                 } else {
-                    if(config.inlineMore) {
-                      $short = $this.closest('.shortcontent');
-                      $all   = $short.next();
-                    } else {
-                      $all   = $this.parent().prev();
-                      $short = $all.prev();
-                      $this.addClass('less');
-                      $this.html(config.lessText);
-                    }
-                    $all.animate({'height':'100'+'%'}, function () { $short.hide(); }).show('fast', function() {
+                    $this.addClass('less');
+                    $this.html(config.lessText);
+                    $this.parent().prev().animate({'height':'100'+'%'}, function () { $this.parent().prev().prev().hide(); }).show('fast', function() {
                         config.onMore();
-                    });
+                      });
                 }
                 return false;
             }
@@ -87,8 +68,8 @@
         return this.each(function() {
             var $this = $(this);
 
-            var content = ($this.html() || '').trim();
-            var contentlen = $this.text().trim().length;
+            var content = $this.html();
+            var contentlen = $this.text().length;
             if (contentlen > config.showChars + config.minHideChars) {
                 var c = content.substr(0, config.showChars);
                 if (c.indexOf('<') >= 0) // If there's HTML don't want to cut it
@@ -137,7 +118,10 @@
                             {
                                 if (openTags.length > 0) // I have unclosed tags
                                 {
+                                    //console.log('They were open tags');
+                                    //console.log(openTags);
                                     for (j = 0; j < openTags.length; j++) {
+                                        //console.log('Cierro tag ' + openTags[j]);
                                         bag += '</' + openTags[j] + '>'; // Close all tags that were opened
 
                                         // You could shift the tag from the stack to check if you end with an empty stack, that means you have closed all open tags
@@ -147,14 +131,14 @@
                             }
                         }
                     }
-                    c = $('<div/>').html(bag + '<span class="ellip">' + config.ellipsesText + '</span>' + (config.inlineMore ? ' ' + moreLink(config.moreText) : '')).html();
+                    c = $('<div/>').html(bag + '<span class="ellip">' + config.ellipsesText + '</span>').html();
                 }else{
                     c+=config.ellipsesText;
                 }
 
                 var html = '<div class="shortcontent">' + c +
-                    '</div><div class="allcontent">' + content + (config.inlineMore ? ' ' + moreLink(config.lessText, 'less') : '') +
-                    '</div>' + (config.inlineMore ? '' : moreLink(config.moreText));
+                    '</div><div class="allcontent">' + content +
+                    '</div><span><a href="javascript://nop/" class="morelink">' + config.moreText + '</a></span>';
 
                 $this.html(html);
                 $this.find(".allcontent").hide(); // Hide all text

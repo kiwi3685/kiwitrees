@@ -42,12 +42,13 @@ img {border:none; vertical-align:middle;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 table {border-collapse:collapse;}
 td {line-height:25px; vertical-align:middle;}
-i.fa {margin:5px; font-size:1.25em; vertical-align:middle;}
+i.fa {margin:0 5px;}
 button {
 	cursor: pointer;
 	float: left;
 	margin: 10px;
-	min-width:100px;
+	min-width: 80px;
+	padding: 8px;
 }
 .icon {border:none; padding-left:0;padding-right:5pt;}
 .warning, .error, .red {color:#ff0000!important;}
@@ -62,12 +63,13 @@ button {
 .faq_link {float:right; padding:0 20px;}
 .clearfloat {clear:both}
 .help-text{font-size: smaller; font-style: italic;}
-.help_content {
+.help_content,
+.helpcontent {
 	border: none;
 	font-size: .85em;
 	font-style: italic;
 	font-weight: 400;
-	margin: 3px 0 10px;
+	margin: 10px 0;
 }
 .help_content a {
 	display: block;
@@ -532,7 +534,7 @@ div.tree_config .input_group {
 div.tree_config .input_group input[type="text"],
 div.tree_config .input_group input[type="password"] {
 	max-width: 90%;
-	width: 580px;
+	width: 60%;
 }
 
 div.tree_config .input_group input[type="text"][name="gedcom"],
@@ -554,7 +556,7 @@ div.tree_config .sm_input_group .input_label {
 	display: inline-block;
 	margin: 0px -5px 5px 0;
 	min-width: 130px;
-	padding: 8px 3px 7px;
+	padding: 6px 3px 5px;
 	width: 40%;
 	white-space: nowrap;
 }
@@ -568,6 +570,22 @@ div.tree_config label {
 div.tree_config input[type="radio"]+label {
 	font-weight: normal;
 	width: 30px;
+}
+
+div.tree_config label[for^="NEW_"],
+div.tree_config label[for^="SHOW"] {
+	font-weight: normal;
+	min-height: 27px;
+	width: 8%;
+}
+
+div.tree_config label[for^="NEW_SURNAME_TRADITION"] {
+	padding-left: 20px;
+	width: 100%;
+}
+
+div.tree_config label[for^="NEW_SURNAME_TRADITION"] input {
+	margin-left: -20px;
 }
 
 div.tree_config select {
@@ -584,23 +602,29 @@ div.tree_config .input_label.left{
 	border-right: 0;
 	border-radius: 5px 0 0 5px;
 	margin: 0px -5px 5px 0;
-	padding: 8px 3px 7px;
+	padding: 6px 3px 6px;
 }
 
 div.tree_config .input_label.right {
 	border-left: 0;
 	border-radius: 0 5px 5px 0;
+	font-size: 90%;
 	margin: 0px 0 5px -5px;
-	padding: 8px 8px 7px;
+	padding: 7px 8px 6px;
 }
 
 div.tree_config span.help_content {
 	display: block;
 }
 
-div.tree_config span.help_content a {
+div.tree_config span.help_content a,
+.helpcontent a.morelink {
 	color: #3383bb;
-	font-weight: 400;
+	font-weight: 800;
+}
+
+.helpcontent a.morelink:hover {
+	color: #ff0000;
 }
 
 #privacy h3 {
@@ -641,11 +665,6 @@ div.tree_config span.help_content a {
 
 #privacy td button {
 	margin: 0
-}
-
-#layout-options h4,
-#hide-show h4 {
-	font-style: normal;
 }
 
 #layout-options table#relatives {
@@ -1129,6 +1148,7 @@ table#story_table {width: 99%;}
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
 .fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000;} /* fa-times */
 .fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */
+.fa-pencil				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.0em; background: none; cursor:pointer;} /* fa-pencil */
 .icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */
 .icon-yes				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-check */
 .icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 0.9em; margin: 0 3px; } /* fa-male */

@@ -396,43 +396,9 @@ case '_PRIM':
 	$text = WT_I18N::translate('Use this field to signal that this media item is the highlighted or primary item for the person it is attached to.  The highlighted image is the one that will be used on charts and on the Individual page.');
 	break;
 
-	//////////////////////////////////////////////////////////////////////////////
-	// This section contains an entry for every configuration item
-	//////////////////////////////////////////////////////////////////////////////
-
-case 'ADVANCED_NAME_FACTS':
-	$title = WT_I18N::translate('Advanced name facts');
-	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets.');
-	break;
-
-case 'ADVANCED_PLAC_FACTS':
-	$title = WT_I18N::translate('Advanced place name facts');
-	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names.  If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets.');
-	break;
-
 case 'CHECK_MARRIAGE_RELATIONS':
 	$title = WT_I18N::translate('Check relationships by marriage');
 	$text = WT_I18N::translate('When calculating relationships, this option controls whether kiwitrees will include spouses/partners as well as blood relatives.');
-	break;
-
-case 'FAM_FACTS_ADD':
-	$title = WT_I18N::translate('All family facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Family Facts</i> list.');
-	break;
-
-case 'FAM_FACTS_QUICK':
-	$title = WT_I18N::translate('Quick family facts');
-	$text = WT_I18N::translate('This is the short list of GEDCOM family facts that appears next to the full list and can be added with a single click.');
-	break;
-
-case 'FAM_FACTS_UNIQUE':
-	$title = WT_I18N::translate('Unique family facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the <i>Family Add Facts</i> list.');
-	break;
-
-case 'FULL_SOURCES':
-	$title = WT_I18N::translate('Use full source citations');
-	$text = WT_I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don\'t use these fields, you can disable them when creating new source citations.');
 	break;
 
 case 'GEDCOM_MEDIA_PATH':
@@ -449,21 +415,6 @@ case 'GEDCOM_MEDIA_PATH':
 		'</p>';
 	break;
 
-case 'INDI_FACTS_ADD':
-	$title = WT_I18N::translate('All individual facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Individual Facts</i> list.');
-	break;
-
-case 'INDI_FACTS_QUICK':
-	$title = WT_I18N::translate('Quick individual facts');
-	$text = WT_I18N::translate('This is the short list of GEDCOM individual facts that appears next to the full list and can be added with a single click.');
-	break;
-
-case 'INDI_FACTS_UNIQUE':
-	$title = WT_I18N::translate('Unique individual facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list.');
-	break;
-
 case 'RELATIONSHIP_PATH_LENGTH':
 	$title = WT_I18N::translate('Restrict to immediate family');
 	$text =
@@ -473,129 +424,6 @@ case 'RELATIONSHIP_PATH_LENGTH':
 		'<br/><br/>'.
 		WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users.');
 	break;
-
-case 'PREFER_LEVEL2_SOURCES':
-	$title = WT_I18N::translate('Source type');
-	$text = WT_I18N::translate('When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default.');
-	break;
-
-case 'QUICK_REQUIRED_FACTS':
-	$title = WT_I18N::translate('Facts for new individuals');
-	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new person.  For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form.');
-	break;
-
-case 'QUICK_REQUIRED_FAMFACTS':
-	$title = WT_I18N::translate('Facts for new families');
-	$text = WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family.  For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form.');
-	break;
-
-case 'REPO_FACTS_ADD':
-	$title = WT_I18N::translate('All repository facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list.');
-	break;
-
-case 'REPO_FACTS_QUICK':
-	$title = WT_I18N::translate('Quick repository facts');
-	$text = WT_I18N::translate('This is the short list of GEDCOM repository facts that appears next to the full list and can be added with a single click.');
-	break;
-
-case 'REPO_FACTS_UNIQUE':
-	$title = WT_I18N::translate('Unique repository facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the <i>Repository Add Facts</i> list.');
-	break;
-
-case 'REQUIRE_AUTHENTICATION':
-	$title = WT_I18N::translate('Require visitor authentication');
-	$text = WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.');
-	break;
-
-case 'SOUR_FACTS_ADD':
-	$title = WT_I18N::translate('All source facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list.');
-	break;
-
-case 'SOUR_FACTS_QUICK':
-	$title = WT_I18N::translate('Quick source facts');
-	$text = WT_I18N::translate('This is the short list of GEDCOM source facts that appears next to the full list and can be added with a single click.');
-	break;
-
-case 'SOUR_FACTS_UNIQUE':
-	$title = WT_I18N::translate('Unique source facts');
-	$text = WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list.');
-	break;
-
-case 'SURNAME_TRADITION':
-	$title = WT_I18N::translate('Surname tradition');
-	$text =
-		WT_I18N::translate('When you Add a family member, a default surname can be provided.  This surname will depend on the local tradition.').
-		'<br><br><dl><dt>'.
-		/* I18N: https://en.wikipedia.org/wiki/Patrilineal (a system where children take their father’s surname */
-		WT_I18N::translate('patrilineal').
-		'</dt><dd>'.
-		/* I18N: In the patrilineal surname tradition, ... */
-		WT_I18N::translate('Children take their father’s surname.').
-		'</dd></dl><dl><dt>'.
-		/* I18N: https://en.wikipedia.org/wiki/Matrilineal (a system where children take their mother’s surname */
-		WT_I18N::translate('matrilineal').
-		'</dt><dd>'.
-		/* I18N: In the matrilineal surname tradition, ... */
-		WT_I18N::translate('Children take their mother’s surname.').
-		'</dd></dl><dl><dt>'.
-		WT_I18N::translate_c('Surname tradition', 'paternal').
-		'</dt><dd>'.
-		WT_I18N::translate('Children take their father’s surname.') . '<br>' .
-		/* I18N: In the paternal surname tradition, ... */
-		WT_I18N::translate('Wives take their husband’s surname.').
-		'</dd></dl><dl><dt>'.
-		WT_I18N::translate_c('Surname tradition', 'Spanish').
-		'</dt><dd>'.
-		/* I18N: In the Spanish surname tradition, ... */
-		WT_I18N::translate('Children take one surname from the father and one surname from the mother.').
-		'</dd></dl><dl><dt>'.
-		WT_I18N::translate_c('Surname tradition', 'Portuguese').
-		'</dt><dd>'.
-		/* I18N: In the Portuguese surname tradition, ... */
-		WT_I18N::translate('Children take one surname from the mother and one surname from the father.').
-		'</dd></dl><dl><dt>'.
-		WT_I18N::translate_c('Surname tradition', 'Icelandic').
-		'</dt><dd>'.
-		/* I18N: In the Icelandic surname tradition, ... */
-		WT_I18N::translate('Children take a patronym instead of a surname.').
-		'</dd></dl><dl><dt>'.
-		WT_I18N::translate_c('Surname tradition', 'Polish').
-		'</dt><dd>'.
-		WT_I18N::translate('Children take their father’s surname.') . '<br>' .
-		WT_I18N::translate('Wives take their husband’s surname.') . '<br>' .
-		/* I18N: In the Polish surname tradition, ... */
-		WT_I18N::translate('Surnames are inflected to indicate an individual’s gender.').
-		'</dd></dl><dl><dt>'.
-		WT_I18N::translate_c('Surname tradition', 'Lithuanian').
-		'</dt><dd>'.
-		WT_I18N::translate('Children take their father’s surname.') . '<br>' .
-		WT_I18N::translate('Wives take their husband’s surname.') . '<br>' .
-		/* I18N: In the Lithuanian surname tradition, ... */
-		WT_I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.').
-		'</dd></dl>';
-	break;
-
-case 'THUMBNAIL_WIDTH':
-	$title = WT_I18N::translate('Width of generated thumbnails');
-	$text = WT_I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.');
-	break;
-
-case 'USE_GEONAMES':
-	$title = WT_I18N::translate('Use GeoNames database for autocomplete on places');
-	$text = WT_I18N::translate('Should the GeoNames database be used to provide more suggestions for place names?<br><br>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br><br>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names.');
-	break;
-
-case 'USE_RELATIONSHIP_PRIVACY':
-	$title = WT_I18N::translate('Use relationship privacy');
-	$text = WT_I18N::translate('<b>No</b> means that authenticated users can see the details of all living people.  <b>Yes</b> means that users can only see the private information of living people they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user\'s account details.');
-	break;
-
-//////////////////////////////////////////////////////////////////////////////
-// This section contains all the other help items.
-//////////////////////////////////////////////////////////////////////////////
 
 case 'add_facts':
 	$title = WT_I18N::translate('Add a fact');
