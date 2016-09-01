@@ -36,7 +36,12 @@ if (!defined('WT_WEBTREES')) {
 function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	if (WT_SCRIPT_NAME == 'search.php') {
+		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	} else {
+		$table_id = 'indiTable';
+	}
+
 	$SHOW_EST_LIST_DATES = get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	if ($option == 'MARR_PLAC') return;
 	$html = '';
@@ -82,7 +87,9 @@ function format_indi_table($datalist, $option='') {
 				],
 				sorting: [['.($option == 'sosa'?'4, "asc"':'1, "asc"').']],
 				displayLength: 20,
-				pagingType: "full_numbers"
+				pagingType: "full_numbers",
+				stateSave: true,
+				stateDuration: 300
 			});
 
 			jQuery("#' . $table_id . '")
@@ -520,7 +527,13 @@ function format_indi_table($datalist, $option='') {
 // print a table of families
 function format_fam_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+
+	if (WT_SCRIPT_NAME == 'search.php') {
+		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	} else {
+		$table_id = 'famTable';
+	}
+
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 	$html = '';
 
@@ -564,6 +577,8 @@ function format_fam_table($datalist, $option='') {
 				sorting: [[1, "asc"]],
 				displayLength: 20,
 				pagingType: "full_numbers"
+				stateSave: true,
+				stateDuration: 300
 		   });
 
 			jQuery("#' . $table_id . '")
@@ -1039,7 +1054,13 @@ function format_sour_table($datalist) {
 	)->fetchAssoc();
 
 	$html = '';
-	$table_id = "ID".(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+
+	if (WT_SCRIPT_NAME == 'search.php') {
+		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	} else {
+		$table_id = 'sourTable';
+	}
+
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1048,10 +1069,11 @@ function format_sour_table($datalist) {
 			jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				'.WT_I18N::datatablesI18N().',
-				"bJQueryUI": true,
-				"bAutoWidth":false,
-				"bProcessing": true,
-				"aoColumns": [
+				jQueryUI: true,
+				autoWidth: false,
+				processing: true,
+				retrieve: true,
+				columns: [
 					/*  0 title		*/ {"iDataSort": 1},
 					/*  1 TITL		*/ {"bVisible": false, "sType": "unicode"},
 					/*  2 author 	*/ {"sType": "unicode"},
@@ -1067,8 +1089,10 @@ function format_sour_table($datalist) {
 					/* 12 CHAN_sort */ {"bVisible": false},
 					/* 13 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
 				],
-				"iDisplayLength": 20,
-				"sPaginationType": "full_numbers"
+				displayLength: 20,
+				pagingType: "full_numbers",
+				stateSave: true,
+				stateDuration: 300
 		   });
 			jQuery(".source-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -1185,7 +1209,13 @@ function format_sour_table($datalist) {
 function format_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+
+	if (WT_SCRIPT_NAME == 'search.php') {
+		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	} else {
+		$table_id = 'noteTable';
+	}
+
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1194,10 +1224,11 @@ function format_note_table($datalist) {
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"aoColumns": [
+			jQueryUI: true,
+			autoWidth: false,
+			processing: true,
+			retrieve: true,
+			columns: [
 				/*  0 title  	*/ {"sType": "unicode"},
 				/*  1 #indi  	*/ {"iDataSort": 2, "sClass": "center"},
 				/*  2 #INDI  	*/ {"sType": "numeric", "bVisible": false},
@@ -1211,8 +1242,10 @@ function format_note_table($datalist) {
 				/* 10 CHAN_sort */ {"bVisible": false},
 				/* 11 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
 			],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers"
+			displayLength: 20,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 300
 	   });
 			jQuery(".note-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -1291,7 +1324,13 @@ function format_note_table($datalist) {
 function format_story_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+
+		if (WT_SCRIPT_NAME == 'search.php') {
+			$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+		} else {
+			$table_id = 'indiTable';
+		}
+
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1300,16 +1339,18 @@ function format_story_table($datalist) {
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"aoColumns": [
+			jQueryUI: true,
+			autoWidth: false,
+			processing: true,
+			retrieve: true,
+			columns: [
                 /* 0-name */ null,
                 /* 1-NAME */ null
 			],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers"
-
+			displayLength: 20,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 300
 	   });
 			jQuery(".story-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -1373,7 +1414,13 @@ function format_repo_table($repos) {
 	)->fetchAssoc();
 
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+
+	if (WT_SCRIPT_NAME == 'search.php') {
+		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	} else {
+		$table_id = 'indiTable';
+	}
+
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1382,10 +1429,11 @@ function format_repo_table($repos) {
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"aoColumns": [
+			jQueryUI: true,
+			autoWidth: false,
+			processing: true,
+			retrieve: true,
+			columns: [
 				/* 0 name   	*/ {"sType": "unicode"},
 				/* 1 #sour  	*/ {"iDataSort": 2, "sClass": "center"},
 				/* 2 #SOUR		*/ {"sType": "numeric", "bVisible": false},
@@ -1393,8 +1441,10 @@ function format_repo_table($repos) {
 				/* 4 CHAN_sort	*/ {"bVisible": false},
 				/* 5 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
 			],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers"
+			displayLength: 20,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 300
 	   });
 		jQuery(".repo-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
@@ -1471,7 +1521,13 @@ function format_repo_table($repos) {
 function format_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+
+	if (WT_SCRIPT_NAME == 'search.php') {
+		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	} else {
+		$table_id = 'indiTable';
+	}
+
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
@@ -1480,10 +1536,11 @@ function format_media_table($datalist) {
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bProcessing": true,
-			"aoColumns": [
+			jQueryUI: true,
+			autoWidth: false,
+			processing: true,
+			retrieve: true,
+			columns: [
 				/* 0 media		*/ {"bSortable": false},
 				/* 1 title		*/ {"sType": "unicode"},
 				/* 2 #indi		*/ {"iDataSort": 3, "sClass": "center"},
@@ -1495,8 +1552,10 @@ function format_media_table($datalist) {
 				/* 8 CHAN		*/ {"iDataSort": 9, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 				/* 9 CHAN_sort	*/ {"bVisible": false},
 			],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers"
+			displayLength: 20,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 300
 	   });
 		jQuery(".media-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
@@ -1821,7 +1880,13 @@ function print_changes_table($change_ids, $sort) {
 
 	$return = '';
 	$n = 0;
-	$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
+
+	if (WT_SCRIPT_NAME == 'search.php') {
+		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	} else {
+		$table_id = 'chanTable';
+	}
+
 	switch ($sort) {
 	case 'name':        //name
 		$aaSorting = "[5,'asc'], [4,'desc']";
@@ -1840,22 +1905,23 @@ function print_changes_table($change_ids, $sort) {
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
-				"sDom": \'t\',
-				"bPaginate": false,
-				"bAutoWidth":false,
-				"bLengthChange": false,
-				"bFilter": false,
+				dom: \'t\',
 				'.WT_I18N::datatablesI18N().',
-				"bJQueryUI": true,
-				"aaSorting": ['.$aaSorting.'],
-				"aoColumns": [
+				autoWidth: false,
+				jQueryUI: true,
+				sorting: ['.$aaSorting.'],
+				columns: [
 					/* 0-Type */    {"bSortable": false, "sClass": "center"},
 					/* 1-Record */  {"iDataSort": 5},
 					/* 2-Change */  {"iDataSort": 4},
 					/* 3-By */      null,
 					/* 4-DATE */    {"bVisible": false},
 					/* 5-SORTNAME */{"sType": "unicode", "bVisible": false}
-				]
+				],
+				displayLength: 20,
+				pagingType: "full_numbers",
+				stateSave: true,
+				stateDuration: 300
 			});
 		');
 
@@ -1935,7 +2001,7 @@ function print_changes_table($change_ids, $sort) {
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $controller;
 	$html = '';
-	$table_id = "ID".(int)(microtime()*1000000); // each table requires a unique ID
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('

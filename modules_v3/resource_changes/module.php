@@ -240,7 +240,12 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
               /* 3-User */       null,
               /* 4-DATE */     {"bVisible": false},
               /* 5-SORTNAME */ {"sType": "unicode", "bVisible": false}
-            ]
+			],
+			displayLength: 20,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: 300
+
           });
           jQuery(".changes").css("visibility", "visible");
           jQuery(".loading-image").css("display", "none");
