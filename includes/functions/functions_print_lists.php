@@ -64,7 +64,7 @@ function format_indi_table($datalist, $option='') {
 					/*  1 surn      */ { dataSort: 3 },
 					/*  2 GIVN,SURN */ { type: "unicode", visible: false },
 					/*  3 SURN,GIVN */ { type: "unicode", visible: false },
-					/*  4 sosa      */ { dataSort: 5, class: "center", visible: '.($option=='sosa'?'true':'false').' },
+					/*  4 sosa      */ { dataSort: 5, class: "center", visible: ' . ($option=='sosa' ? 'true' : 'false') . ' },
 					/*  5 SOSA      */ { type: "num", visible: false },
 					/*  6 birt date */ { dataSort: 7 },
 					/*  7 BIRT:DATE */ { visible: false },
@@ -78,18 +78,17 @@ function format_indi_table($datalist, $option='') {
 					/* 15 age       */ { dataSort: 16, class: "center" },
 					/* 16 AGE       */ { type: "num", visible: false },
 					/* 17 deat plac */ { type: "unicode" },
-					/* 18 CHAN      */ { dataSort: 19, visible: '.($SHOW_LAST_CHANGE?'true':'false').' },
+					/* 18 CHAN      */ { dataSort: 19, visible: ' . ($SHOW_LAST_CHANGE ? 'true' : 'false') . ' },
 					/* 19 CHAN_sort */ { visible: false },
 					/* 20 SEX       */ { visible: false },
 					/* 21 BIRT      */ { visible: false },
 					/* 22 DEAT      */ { visible: false },
 					/* 23 TREE      */ { visible: false }
 				],
-				sorting: [['.($option == 'sosa'?'4, "asc"':'1, "asc"').']],
+				sorting: [[' . ($option == 'sosa' ? '4, "asc"' : '1, "asc"') . ']],
 				displayLength: 20,
 				pagingType: "full_numbers",
-				stateSave: true,
-				stateDuration: 300
+				stateSave: true
 			});
 
 			jQuery("#' . $table_id . '")
@@ -576,7 +575,7 @@ function format_fam_table($datalist, $option='') {
 				],
 				sorting: [[1, "asc"]],
 				displayLength: 20,
-				pagingType: "full_numbers"
+				pagingType: "full_numbers",
 				stateSave: true,
 				stateDuration: 300
 		   });
@@ -1328,7 +1327,7 @@ function format_story_table($datalist) {
 		if (WT_SCRIPT_NAME == 'search.php') {
 			$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 		} else {
-			$table_id = 'indiTable';
+			$table_id = 'storyTable';
 		}
 
 	$controller
@@ -1418,7 +1417,7 @@ function format_repo_table($repos) {
 	if (WT_SCRIPT_NAME == 'search.php') {
 		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
-		$table_id = 'indiTable';
+		$table_id = 'repoTable';
 	}
 
 	$controller
@@ -1525,7 +1524,7 @@ function format_media_table($datalist) {
 	if (WT_SCRIPT_NAME == 'search.php') {
 		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
-		$table_id = 'indiTable';
+		$table_id = 'mediaTable';
 	}
 
 	$controller
