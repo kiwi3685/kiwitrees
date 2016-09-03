@@ -104,7 +104,10 @@ button {
 .dataTables_filter {float:right;}
 .dataTables_info {float:left; margin-top:5px; font-weight:normal;}
 .dataTables_length {float:right;}
-.dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+.dataTables_length select, .dataTables_filter input {
+	padding: 4px 1px;
+	margin: 3px 5px;
+}
 .dataTables_wrapper {margin-bottom: 10px;}
 .dataTables_wrapper table {border-collapse:initial;}
 .dataTables_wrapper th {height: 30px; white-space:nowrap;}

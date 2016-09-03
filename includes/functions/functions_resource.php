@@ -450,3 +450,55 @@ function filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $t
 		return true;
 	}
 }
+
+//--- based on function add_descendancy() in functions.php
+function add_resource_descendancy($i, $person, $parents = false, $generations = -1) {
+	$families = $person->getSpouseFamilies();
+	foreach ($families as $family) {
+		$spouse = $family->getSpouse($person);
+		$marriage = $family->getMarriage();
+		$children = $family->getChildren();
+		if (!empty($spouse)) {
+			if ($parents) {
+				$i++;
+				$related_individuals[$i]['relationship']	= $marriage ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner');
+				$related_individuals[$i]['name']			= $spouse->getFullName();
+				$related_individuals[$i]['birth']			= $spouse->getBirthDate()->Display();
+				$related_individuals[$i]['bdate']			= $spouse->getBirthDate()->JD();
+				$related_individuals[$i]['bplac']			= $spouse->getBirthPlace();
+				$related_individuals[$i]['marr']			= $family->getMarriageDate()->Display();
+				$related_individuals[$i]['death']			= $spouse->getDeathDate()->Display();
+				$related_individuals[$i]['ddate']			= $spouse->getDeathDate()->JD();
+				$related_individuals[$i]['dplac']			= $spouse->getDeathPlace();
+				$related_individuals[$i]['father']			= $spouse->getPrimaryChildFamily() ? $spouse->getPrimaryChildFamily()->getHusband()->getLifespanName() : '';
+				$related_individuals[$i]['mother']			= $spouse->getPrimaryChildFamily() ? $spouse->getPrimaryChildFamily()->getWife()->getLifespanName() : '';
+			}
+			foreach ($children as $child) {
+				if (!empty($child) && $child != $person) {
+					$i++;
+					$related_individuals[$i]['relationship']	= get_relationship_name(get_relationship($person, $child));
+					$related_individuals[$i]['name']			= $child->getFullName();
+					$related_individuals[$i]['birth']			= $child->getBirthDate()->Display();
+					$related_individuals[$i]['bdate']			= $child->getBirthDate()->JD();
+					$related_individuals[$i]['bplac']			= $child->getBirthPlace();
+					$related_individuals[$i]['marr']			= '';
+					$related_individuals[$i]['death']			= $child->getDeathDate()->Display();
+					$related_individuals[$i]['ddate']			= $child->getDeathDate()->JD();
+					$related_individuals[$i]['dplac']			= $child->getDeathPlace();
+					$related_individuals[$i]['father']			= $family->getHusband()->getLifespanName();
+					$related_individuals[$i]['mother']			= $family->getWife()->getLifespanName();
+//					add_resource_descendancy($i, $child); // recurse on the childs family
+				}
+			}
+			if ($generations == -1) {
+				foreach ($children as $child) {
+					add_resource_descendancy($i, $child); // recurse on the childs family
+				}
+			}
+		}
+	}
+	print_r($related_individuals);
+
+	return array ($related_individuals, $i);
+
+}

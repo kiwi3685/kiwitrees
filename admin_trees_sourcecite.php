@@ -29,7 +29,7 @@
 //
 //$Id$
 
-define('WT_SCRIPT_NAME', 'admin_trees_sourcecheck.php');
+define('WT_SCRIPT_NAME', 'admin_trees_sourcecite.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 require WT_ROOT.'includes/functions/functions_print_facts.php';
@@ -61,7 +61,9 @@ $controller
 				/* 0-type   */ null,
 				/* 1-record */ { "className": "nowrap" },
 				/* 2-cite   */ null
-			]
+			],
+			stateSave: true,
+			stateDuration: -1
 		});
 
 		jQuery("#source_list").css("visibility", "visible");

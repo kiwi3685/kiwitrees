@@ -1545,11 +1545,12 @@ function old_paths() {
 		WT_ROOT.'modules_v3/simpl_research/plugins/register1939.php', //replaced for better sorting
 		WT_ROOT.'modules_v3/simpl_research/plugins/rhcvechtenvenen.php', //replaced for better sorting
 		// Removed in kiwitrees 3.2.3
-		WT_ROOT.'themes/_administration/images/kiwi_webtrees_logo_white.png',
-		WT_ROOT.'modules_v3/descendancy_report',
-		WT_ROOT.'modules_v3/fancy_treeview/help_text.php',
+		WT_ROOT.'themes/_administration/images/kiwi_webtrees_logo_white.png',// file name changed to remove webtrees
+		WT_ROOT.'modules_v3/descendancy_report',// report replaced by resource version of fancy_treeview
+		WT_ROOT.'modules_v3/fancy_treeview/help_text.php', // no longer used
 		WT_ROOT.'library/framework', // content moved to library/
-
+		WT_ROOT.'admin_trees_sourcecheck.php', // name changed to admin_trees_sourcecite.php
+		WT_ROOT.'modules_v3/fact_sources', // report replaced by admin tool admin_trees_source
 	);
 }
 
