@@ -88,7 +88,8 @@ function format_indi_table($datalist, $option='') {
 				sorting: [[' . ($option == 'sosa' ? '4, "asc"' : '1, "asc"') . ']],
 				displayLength: 20,
 				pagingType: "full_numbers",
-				stateSave: true
+				stateSave: true,
+				stateDuration: -1
 			});
 
 			jQuery("#' . $table_id . '")
@@ -577,7 +578,7 @@ function format_fam_table($datalist, $option='') {
 				displayLength: 20,
 				pagingType: "full_numbers",
 				stateSave: true,
-				stateDuration: 300
+				stateDuration: -1
 		   });
 
 			jQuery("#' . $table_id . '")
@@ -1091,7 +1092,7 @@ function format_sour_table($datalist) {
 				displayLength: 20,
 				pagingType: "full_numbers",
 				stateSave: true,
-				stateDuration: 300
+				stateDuration: -1
 		   });
 			jQuery(".source-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -1244,7 +1245,7 @@ function format_note_table($datalist) {
 			displayLength: 20,
 			pagingType: "full_numbers",
 			stateSave: true,
-			stateDuration: 300
+			stateDuration: -1
 	   });
 			jQuery(".note-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -1349,7 +1350,7 @@ function format_story_table($datalist) {
 			displayLength: 20,
 			pagingType: "full_numbers",
 			stateSave: true,
-			stateDuration: 300
+			stateDuration: -1
 	   });
 			jQuery(".story-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -1443,7 +1444,7 @@ function format_repo_table($repos) {
 			displayLength: 20,
 			pagingType: "full_numbers",
 			stateSave: true,
-			stateDuration: 300
+			stateDuration: -1
 	   });
 		jQuery(".repo-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
@@ -1554,7 +1555,7 @@ function format_media_table($datalist) {
 			displayLength: 20,
 			pagingType: "full_numbers",
 			stateSave: true,
-			stateDuration: 300
+			stateDuration: -1
 	   });
 		jQuery(".media-list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
@@ -1920,7 +1921,7 @@ function print_changes_table($change_ids, $sort) {
 				displayLength: 20,
 				pagingType: "full_numbers",
 				stateSave: true,
-				stateDuration: 300
+				stateDuration: -1
 			});
 		');
 
