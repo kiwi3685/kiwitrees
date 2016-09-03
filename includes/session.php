@@ -49,8 +49,8 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',			WT_STATIC_URL .'js/jquery.min.js');				    // 1.12.1	 Updated 14-05-2015
-	define('WT_JQUERYUI_URL',		WT_STATIC_URL .'js/jquery-ui.min.js');			    // 1.11.4  Updated 14-05-2015
+	define('WT_JQUERY_URL',			WT_STATIC_URL .'js/jquery.min.js');				    // 1.12.4	Updated 03-09-2016
+	define('WT_JQUERYUI_URL',		WT_STATIC_URL .'js/jquery-ui.min.js');			    // 1.12.0	Updated 03-09-2016
 }
 define('WT_JQUERY_COLORBOX_URL',	WT_STATIC_URL . 'js/jquery.colorbox-min.js');	    // 1.6.1   Updated 18-06-2015
 define('WT_JQUERY_DATATABLES_URL',	WT_STATIC_URL . 'js/jquery.dataTables.min.js');	    // 1.10.11 Updated 12-04-2016

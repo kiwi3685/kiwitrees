@@ -2999,11 +2999,8 @@ span.link_text {
 }
 
 #indi_header h3 {
-	font-size: 90%;
-	font-weight: bold;
 	margin: 0;
-	padding: 3px 10px 3px 30px;
-	text-align: left;
+	padding: 3px 10px 3px 3px;
 }
 
 #indi_header h3.name_one {
@@ -3254,10 +3251,6 @@ div[id^="caldiv"] td {
 
 .ui-tabs .ui-tabs-nav li a span {
 	display: block;
-}
-
-.ui-tabs .ui-tabs-panel {
-	padding: 1em 0;
 }
 
 .ui-widget-content #outer_pages_container a {

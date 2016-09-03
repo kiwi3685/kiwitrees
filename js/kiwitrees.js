@@ -1599,10 +1599,10 @@ jQuery(".help_content").on("click", ".more", function(e){
 */
 jQuery.event.special.hoverintent = {
 	setup: function() {
-	  jQuery( this ).bind( "mouseover", jQuery.event.special.hoverintent.handler );
+	  jQuery( this ).on( "mouseover", jQuery.event.special.hoverintent.handler );
 	},
 	teardown: function() {
-	  jQuery( this ).unbind( "mouseover", jQuery.event.special.hoverintent.handler );
+	  jQuery( this ).off( "mouseover", jQuery.event.special.hoverintent.handler );
 	},
 	handler: function( event ) {
 	  var currentX, currentY, timeout,
@@ -1618,8 +1618,8 @@ jQuery.event.special.hoverintent = {
 
 	  function clear() {
 	    target
-	      .unbind( "mousemove", track )
-	      .unbind( "mouseout", clear );
+	      .off( "mousemove", track )
+	      .off( "mouseout", clear );
 	    clearTimeout( timeout );
 	  }
 
@@ -1651,7 +1651,7 @@ jQuery.event.special.hoverintent = {
 	  }
 
 	  timeout = setTimeout( handler, 500 );
-	  target.bind({
+	  target.on({
 	    mousemove: track,
 	    mouseout: clear
 	  });
