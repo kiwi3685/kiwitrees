@@ -52,6 +52,8 @@ $controller
 		autocomplete();
 	')
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DT_HTML5)
+	->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
 	->addInlineJavascript('
 		jQuery("#source_list").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
@@ -105,8 +107,9 @@ $controller
 					$controller
 						->addInlineJavascript('
 							jQuery("#facts_table").dataTable({
-								dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+								dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
 								' . WT_I18N::datatablesI18N() . ',
+								buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 								autoWidth: false,
 								paging: true,
 								pagingType: "full_numbers",
@@ -201,10 +204,12 @@ $controller
 												<?php echo $event->getDate()->JD(); ?>
 											</td>
 											<td>
-												<?php foreach (getSourceStructure($match[0])['TEXT'] as $text_list) {
-													$text = expand_urls($text_list);
-												}
-												if (!empty($text)) {echo $text;} ?>
+												<?php if ($match){
+													foreach (getSourceStructure($match[0])['TEXT'] as $text_list) {
+														$text = expand_urls($text_list);
+													}
+													if (!empty($text)) {echo $text;}
+												} ?>
 											</td>
 										</tr>
 									<?php }
@@ -217,8 +222,9 @@ $controller
 					$controller
 						->addInlineJavascript('
 							jQuery("#records_table").dataTable({
-								dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+								dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
 								' . WT_I18N::datatablesI18N() . ',
+								buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 								autoWidth: false,
 								paging: true,
 								pagingType: "full_numbers",
@@ -315,11 +321,12 @@ $controller
 										<?php echo $record->getType() == "INDI" && $record->getDeathPlace() ? $record->getDeathPlace() : ''; ?>
 									</td>
 									<td>
-										<?php foreach (getSourceStructure($match[0])['TEXT'] as $text_list) {
-											$text = expand_urls($text_list);
-										}
-										if (!empty($text)) {echo $text;} ?>
-
+										<?php if ($match){
+											foreach (getSourceStructure($match[0])['TEXT'] as $text_list) {
+												$text = expand_urls($text_list);
+											}
+											if (!empty($text)) {echo $text;}
+										} ?>
 									</td>
 								</tr>
 							<?php } ?>

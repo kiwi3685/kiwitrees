@@ -44,10 +44,13 @@ $controller
 		autocomplete();
 	')
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DT_HTML5)
+	->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
 	->addInlineJavascript('
 		jQuery("#citation_table").dataTable({
-			dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
 			' . WT_I18N::datatablesI18N() . ',
+			buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
 			autoWidth: false,
 			paging: true,
 			pagingType: "full_numbers",

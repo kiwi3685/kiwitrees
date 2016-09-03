@@ -108,6 +108,24 @@ button {
 	padding: 4px 1px;
 	margin: 3px 5px;
 }
+div.dt-buttons {
+	float: right;
+	margin: 2px;
+}
+div.dt-buttons a.dt-button {
+	position: relative;
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px solid #999;
+	border-radius: 2px;
+	font-size: 0.88em;
+	color: initial;
+	white-space: nowrap;
+	overflow: hidden;
+	background-color: #e9e9e9;
+	background-image: -webkit-linear-gradient(top, #fff 0%, #e9e9e9 100%);	cursor: pointer;
+	padding: 5px 15px;
+}
 .dataTables_wrapper {margin-bottom: 10px;}
 .dataTables_wrapper table {border-collapse:initial;}
 .dataTables_wrapper th {height: 30px; white-space:nowrap;}
