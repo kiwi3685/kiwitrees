@@ -122,20 +122,20 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 				<h3><?php echo WT_I18N::translate('Settings'); ?></h3>
 				<form method="post">
 					<input type="hidden" name="action" value="update">
-					<div class="tree_config odd">
+					<div class="config_options odd">
 						<label><?php echo /* I18N: Dropbox secure access token */ WT_I18N::translate('Dropbox folder'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_DB_FOLDER" value="<?php echo $DB_FOLDER; ?>">
 						</div>
 					</div>
-					<div class="tree_config even">
+					<div class="config_options even">
 						<label><?php echo /* I18N: Dropbox secure access token */ WT_I18N::translate('Dropbox token'); ?></label>
 						<div class="input_group">
 							<input type="password" name="NEW_DB_TOKEN" value="<?php echo $DB_TOKEN; ?>">
 						</div>
 					</div>
 					<?php if ($DB_FOLDER && $DB_FOLDER) { ?>
-						<div class="tree_config odd">
+						<div class="config_options odd">
 							<label><?php echo WT_I18N::translate('These files and folders are always excluded from the backup.'); ?></label>
 							<div class="input_group">
 								<?php
@@ -149,7 +149,7 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 							</div>
 						</div>
 					<?php } ?>
-					<div class="tree_config even">
+					<div class="config_options even">
 						<label><?php echo WT_I18N::translate('Also exclude these files and folders'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_DB_EXCLUDE" value="<?php echo $db_exclude; ?>">

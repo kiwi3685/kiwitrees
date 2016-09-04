@@ -48,8 +48,8 @@ $controller
 			}
 		});
 		jQuery(function() {
-			jQuery("div.tree_config:odd").addClass("odd");
-			jQuery("div.tree_config:even").addClass("even");
+			jQuery("div.config_options:odd").addClass("odd");
+			jQuery("div.config_options:even").addClass("even");
 		});
 	');
 
@@ -240,8 +240,9 @@ case 'update':
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
-	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
+		autocomplete();
+
 	 	// run test on initial page load
 		 checkSize();
 		 // run test on resize of the window
@@ -262,15 +263,14 @@ $controller
 			 jQuery("#watermarks").toggle(showOrHide);
 		 })
 	');
-
 ?>
+
 <div id="family_tree_config">
 	<h2><?php echo WT_I18N::translate('Family tree configuration'); ?></h2>
 	<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<?php echo WT_Filter::getCsrf(); ?>
 		<input type="hidden" name="action" value="update">
 		<input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>">
-
 		<div id="tabs">
 			<ul>
 				<li><a href="#file-options"><span><?php echo WT_I18N::translate('General'); ?></span></a></li>
@@ -287,19 +287,19 @@ $controller
 				<!-- GENERAL -->
 				<h3 class="accordion"><?php echo WT_I18N::translate('General'); ?></h3>
 				<div id="file-options">
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Family tree title'); ?></label>
 						<div class="input_group">
 							<input type="text" name="gedcom_title" dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'title')); ?>" required maxlength="255">
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Family tree subtitle'); ?></label>
 						<div class="input_group">
 							<input type="text" name="new_subtitle"dir="ltr" value="<?php echo WT_Filter::escapeHtml(get_gedcom_setting(WT_GED_ID, 'subtitle')); ?>" maxlength="255">
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('URL'); ?></label>
 						<div class="input_group">
 							<span class="input_label left"><?php echo WT_SERVER_NAME, WT_SCRIPT_PATH ?>index.php?ged=</span>
@@ -309,7 +309,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Language'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_language('GEDCOMLANG', $LANGUAGE); ?>
@@ -318,7 +318,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label> <?php echo WT_I18N::translate('Default individual'); ?></label>
 						<div class="input_group">
 							<input data-autocomplete-type="INDI" type="text" dir="ltr" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'); ?>" maxlength="20">
@@ -337,7 +337,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Calendar conversion'); ?></label>
 						<div class="input_group">
 							<div class="sub_input_group">
@@ -405,7 +405,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Use RIN number instead of GEDCOM ID'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_USE_RIN', get_gedcom_setting(WT_GED_ID, 'USE_RIN')); ?>
@@ -414,7 +414,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Automatically create globally unique IDs'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', get_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS')); ?>
@@ -423,7 +423,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('XREF prefixes'); ?></label>
 						<div class="input_group">
 							<div class="sm_input_group">
@@ -459,7 +459,7 @@ $controller
 				<!-- CONTACT -->
 				<h3 class="accordion"><?php echo WT_I18N::translate('Contact information'); ?></h3>
 				<div id="contact">
-					<div class="tree_config">
+					<div class="config_options">
 						<?php if (empty($WEBTREES_EMAIL)) {
 							$WEBTREES_EMAIL = "kiwitrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
 						} ?>
@@ -471,7 +471,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Genealogy contact'); ?></label>
 						<div class="input_group">
 							<select name="NEW_CONTACT_USER_ID">
@@ -492,7 +492,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Technical help contact'); ?></label>
 						<div class="input_group">
 							<select name="NEW_WEBMASTER_USER_ID">
@@ -519,7 +519,7 @@ $controller
 				<!-- WEBSITE -->
 				<h3 class="accordion"><?php echo WT_I18N::translate('Website'); ?></h3>
 				<div id="website">
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Add to TITLE header tag'); ?></label>
 						<div class="input_group">
 							<input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" size="40" maxlength="255">
@@ -528,7 +528,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Description META tag'); ?></label>
 						<div class="input_group">
 							<input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" size="40" maxlength="255">
@@ -541,7 +541,7 @@ $controller
 				<!-- PRIVACY OPTIONS -->
 				<h3 class="accordion"><?php echo WT_I18N::translate('Privacy'); ?></h3>
 				<div id="privacy">
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Enable privacy'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_HIDE_LIVE_PEOPLE', $HIDE_LIVE_PEOPLE); ?>
@@ -553,7 +553,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Show dead people'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?>
@@ -562,7 +562,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Age at which to assume a person is dead'); ?></label>
 						<div class="input_group">
 							<input type="text" name="MAX_ALIVE_AGE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" maxlength="3">
@@ -572,7 +572,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php /* I18N: ... [who were] born in the last XX years or died in the last YY years */ echo WT_I18N::translate('Extend privacy of dead people'); ?></label>
 						<div class="input_group">
 							<?php echo /* I18N: ... Extend privacy to dead people [who were] ... */ WT_I18N::translate(
@@ -585,7 +585,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Names of private individuals'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?>
@@ -594,7 +594,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Show private relationships'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS')); ?>
@@ -608,7 +608,7 @@ $controller
 					<div class="helpcontent">
 						<?php echo WT_I18N::translate('You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction the following default restrictions will be used.'); ?>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<?php
 						$all_tags	= array();
 						$tags		= array_unique(array_merge(
@@ -701,7 +701,7 @@ $controller
 				<!-- MEDIA -->
 				<h3 class="accordion"><?php echo WT_I18N::translate('Media'); ?></h3>
 				<div id="config-media">
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Media folder'); ?></label>
 						<div class="input_group">
 							<span class="input_label left"><?php echo WT_DATA_DIR; ?></span>
@@ -711,7 +711,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Who can upload new media files'); ?></label>
 						<div class="input_group">
 							<?php echo select_edit_control('NEW_MEDIA_UPLOAD',
@@ -726,7 +726,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Show download link in media viewer'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD')); ?>
@@ -735,7 +735,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Width of generated thumbnails'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php echo $THUMBNAIL_WIDTH; ?>" maxlength="4" required>
@@ -745,7 +745,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Use silhouettes'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_USE_SILHOUETTE', get_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE')); ?>
@@ -754,7 +754,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Show highlight images in people boxes'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', get_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES')); ?>
@@ -765,7 +765,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Add watermarks to thumbnails'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB')); ?>
@@ -775,7 +775,7 @@ $controller
 						</div>
 					</div>
 					<div id="watermarks"> <!-- this div is hidden / displayed by js -->
-						<div class="tree_config">
+						<div class="config_options">
 							<label><?php echo WT_I18N::translate('Store watermarked full size images on server?'); ?></label>
 							<div class="input_group">
 								<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE')); ?>
@@ -784,13 +784,13 @@ $controller
 								</div>
 							</div>
 						</div>
-						<div class="tree_config">
+						<div class="config_options">
 							<label><?php echo WT_I18N::translate('Store watermarked thumbnails on server'); ?></label>
 							<div class="input_group">
 								<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
 							</div>
 						</div>
-						<div class="tree_config everyone">
+						<div class="config_options">
 							<label><?php echo WT_I18N::translate('Images without watermarks'); ?></label>
 							<div class="input_group">
 								<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
@@ -805,7 +805,7 @@ $controller
 				<h3 class="accordion"><?php echo WT_I18N::translate('Layout'); ?></h3>
 				<div id="layout-options">
 					<h4 class="accepted"><?php echo WT_I18N::translate('Names'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Min. no. of occurrences to be a "common surname"'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'); ?>" maxlength="5" required>
@@ -814,7 +814,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Names to add to common surnames'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD'); ?>" maxlength="255">
@@ -823,7 +823,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Names to remove from common surnames (comma separated)'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE'); ?>" maxlength="255">
@@ -832,14 +832,14 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Display surnames in all CAPS'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_ALL_CAPS', get_gedcom_setting(WT_GED_ID, 'ALL_CAPS')); ?>
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Lists'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Surname list style'); ?></label>
 						<div class="input_group">
 							<select name="NEW_SURNAME_LIST_STYLE">
@@ -849,7 +849,7 @@ $controller
 							</select>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Maximum number of surnames on individual list'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" maxlength="5" required>
@@ -858,7 +858,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Estimated dates for birth and death'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES')); ?>
@@ -867,14 +867,14 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('The date and time of the last update'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE); ?>
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Charts'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Default pedigree chart layout'); ?></label>
 						<div class="input_group">
 							<select name="NEW_PEDIGREE_LAYOUT">
@@ -886,7 +886,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Default pedigree generations'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php echo $DEFAULT_PEDIGREE_GENERATIONS; ?>" maxlength="3" required>
@@ -895,7 +895,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Maximum pedigree generations'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" maxlength="3">
@@ -904,7 +904,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Maximum descendancy generations'); ?></label>
 						<div class="input_group">
 							<input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php echo $MAX_DESCENDANCY_GENERATIONS; ?>" maxlength="3">
@@ -914,7 +914,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Individual pages'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Show events of close relatives on individual page'); ?></label>
 						<input type="hidden" name="NEW_SHOW_RELATIVES_EVENTS" value="<?php echo $SHOW_RELATIVES_EVENTS; ?>">
 						<div class="input_group">
@@ -952,7 +952,7 @@ $controller
 							</table>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Automatically expand list of events of close relatives'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS')); ?>
@@ -962,7 +962,7 @@ $controller
 						 </div>
 					</div>
 					<?php if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) { ?>
-						<div class="tree_config">
+						<div class="config_options">
 							<label><?php echo WT_I18N::translate('Automatically expand list of historic events'); ?></label>
 							<div class="input_group">
 								<?php echo edit_field_yes_no('NEW_EXPAND_HISTO_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_HISTO_EVENTS')); ?>
@@ -970,7 +970,7 @@ $controller
 						</div>
 					<?php } ?>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Places'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Abbreviate place names'); ?></label>
 						<div class="input_group">
 							<?php
@@ -1011,7 +1011,7 @@ $controller
 				<h3 class="accordion"><?php echo WT_I18N::translate('Hide &amp; show'); ?></h3>
 				<div id="hide-show">
 					<h4 class="accepted"><?php echo WT_I18N::translate('Charts'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Abbreviate chart labels'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', get_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS')); ?>
@@ -1020,7 +1020,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Show chart details by default'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', get_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS')); ?>
@@ -1029,7 +1029,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Gender icon on charts'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $PEDIGREE_SHOW_GENDER); ?>
@@ -1038,7 +1038,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Age of parents next to child\'s birth date'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE); ?>
@@ -1047,7 +1047,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('LDS ordinance codes in chart boxes'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LDS_AT_GLANCE); ?>
@@ -1056,7 +1056,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Other facts to show in charts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php echo $CHART_BOX_TAGS; ?>" dir="ltr" maxlength="255">
@@ -1069,7 +1069,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Individual pages'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Fact icons'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
@@ -1078,7 +1078,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Automatically expand notes'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES')); ?>
@@ -1087,7 +1087,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Automatically expand sources'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', get_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES')); ?>
@@ -1096,7 +1096,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Show all notes and source references on notes and sources tabs'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', get_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES')); ?>
@@ -1105,7 +1105,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
@@ -1115,7 +1115,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('General'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Allow users to see raw GEDCOM records'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD')); ?>
@@ -1124,7 +1124,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
@@ -1133,7 +1133,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('GEDCOM errors'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
@@ -1142,7 +1142,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Hit counters'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
@@ -1151,7 +1151,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Execution statistics'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')); ?>
@@ -1165,7 +1165,7 @@ $controller
 				<h3 class="accordion"><?php echo WT_I18N::translate('Edit options'); ?></h3>
 				<div id="edit-options">
 					<h4 class="accepted"><?php echo WT_I18N::translate('Facts for Individual records'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('All individual facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'); ?>" maxlength="255" dir="ltr">
@@ -1177,7 +1177,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Unique individual facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'); ?>" maxlength="255" dir="ltr">
@@ -1189,7 +1189,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Facts for new individuals'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php echo $QUICK_REQUIRED_FACTS; ?>" maxlength="255" dir="ltr">
@@ -1201,7 +1201,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Quick individual facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK'); ?>" maxlength="255" dir="ltr">
@@ -1214,7 +1214,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Facts for Family records'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('All family facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'); ?>" maxlength="255" dir="ltr">
@@ -1226,7 +1226,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Unique family facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'); ?>" maxlength="255" dir="ltr">
@@ -1238,7 +1238,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Facts for new families'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php echo $QUICK_REQUIRED_FAMFACTS; ?>" maxlength="255" dir="ltr">
@@ -1250,7 +1250,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Quick family facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'); ?>" maxlength="255" dir="ltr">
@@ -1263,7 +1263,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Facts for Source records'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('All source facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD'); ?>" maxlength="255" dir="ltr">
@@ -1275,7 +1275,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Unique source facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'); ?>" maxlength="255" dir="ltr">
@@ -1287,7 +1287,7 @@ $controller
 							</div>
 						</div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Quick source facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK'); ?>" maxlength="255" dir="ltr">
@@ -1300,7 +1300,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Facts for Repository records'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('All repository facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD'); ?>" maxlength="255" dir="ltr">
@@ -1312,7 +1312,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Unique repository facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE'); ?>" maxlength="255" dir="ltr">
@@ -1324,7 +1324,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Quick repository facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK'); ?>" maxlength="255" dir="ltr">
@@ -1337,7 +1337,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Advanced fact settings'); ?></h4>
-						<div class="tree_config">
+						<div class="config_options">
 							<label><?php echo WT_I18N::translate('Advanced name facts'); ?></label>
 							<div class="input_group">
 							<input type="text" id="NEW_ADVANCED_NAME_FACTS" name="NEW_ADVANCED_NAME_FACTS" value="<?php echo $ADVANCED_NAME_FACTS; ?>" size="40" maxlength="255" dir="ltr">
@@ -1349,7 +1349,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Advanced place name facts'); ?></label>
 						<div class="input_group">
 							<input type="text" id="NEW_ADVANCED_PLAC_FACTS" name="NEW_ADVANCED_PLAC_FACTS" value="<?php echo $ADVANCED_PLAC_FACTS; ?>" size="40" maxlength="255" dir="ltr">
@@ -1362,7 +1362,7 @@ $controller
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Other settings'); ?></h4>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Surname tradition'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SURNAME_TRADITION', surnameDescriptions(), get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')); ?>
@@ -1371,7 +1371,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Use full source citations'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_FULL_SOURCES', get_gedcom_setting(WT_GED_ID, 'FULL_SOURCES')); ?>
@@ -1380,7 +1380,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Source type'); ?></label>
 						<div class="input_group">
 							<?php echo select_edit_control('NEW_PREFER_LEVEL2_SOURCES', array(0=>WT_I18N::translate('none'), 1=>WT_I18N::translate('facts'), 2=>WT_I18N::translate('records')), null, get_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES')); ?>
@@ -1389,7 +1389,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Use GeoNames database for autocomplete on places'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_USE_GEONAMES', get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')); ?>
@@ -1398,7 +1398,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="tree_config">
+					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Do not update the “last change” record'); ?></label>
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN')); ?>
