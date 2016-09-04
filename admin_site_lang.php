@@ -121,7 +121,7 @@ if (WT_USER_IS_ADMIN) { ?>
 					</button>
 				</p>
 			</form>
-			<hr>
+			<hr class="clearfloat">
 			<!-- EDIT TRANSLATIONS -->
 			<form method="post" action="">
 				<input type="hidden" name="action" value="translate">
