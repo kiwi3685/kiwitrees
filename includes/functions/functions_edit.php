@@ -147,13 +147,13 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 // $name     - the ID for the form element
 // $values   - array of value=>display items
 // $selected - the currently selected item (if any)
-// $extra    - extra markup for field (e.g. tab key sequence)
+// $extra    - extra markup for field (optional class)
 function radio_buttons($name, $values, $selected, $extra='') {
 	$html = '';
 	foreach ($values as $key=>$value) {
 		$uniqueID = $name . (int)(microtime() * 1000000);
 
-		$html .= '<label for="' . $uniqueID . '"><input type="radio" name="' . $name . '" id="' . $uniqueID . '" value="' . htmlspecialchars($key) . '"';
+		$html .= '<label for="' . $uniqueID . '" ' . $extra . '><input type="radio" name="' . $name . '" id="' . $uniqueID . '" value="' . htmlspecialchars($key) . '"';
 		if ((string)$key === (string)$selected) {
 			$html .= ' checked';
 		}
@@ -163,7 +163,7 @@ function radio_buttons($name, $values, $selected, $extra='') {
 }
 
 // Print an edit control for a Yes/No field
-function edit_field_yes_no($name, $selected=false, $extra='') {
+function edit_field_yes_no($name, $selected=false, $extra='class="yesno"') {
 	return radio_buttons(
 		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected, $extra
 	);
