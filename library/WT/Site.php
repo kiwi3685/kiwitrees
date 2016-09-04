@@ -24,20 +24,20 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Site {
-	static $setting=null;
-	
+	static $setting = null;
+
 	// Get and Set the site's configuration settings
 	public static function preference($setting_name, $setting_value=null) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
-		if (self::$setting===null) {
-			self::$setting=WT_DB::prepare(
+		if (self::$setting === null) {
+			self::$setting = WT_DB::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##site_setting`"
 			)->fetchAssoc();
 		}
 
 		// If $setting_value is null, then GET the setting
-		if ($setting_value===null) {
+		if ($setting_value === null) {
 			// If parameter two is not specified, GET the setting
 			if (!array_key_exists($setting_name, self::$setting)) {
 				self::$setting[$setting_name]=null;
