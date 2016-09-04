@@ -36,8 +36,6 @@ if (WT_USER_ID && WT_GED_ID) {
 
 $controller = new WT_Controller_Page();
 
-$REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::preference('REQUIRE_ADMIN_AUTH_REGISTRATION');
-
 $action         =safe_POST('action');
 $user_realname  =safe_POST('user_realname');
 $user_name      =safe_POST('user_name',       WT_REGEX_USERNAME);
@@ -282,7 +280,7 @@ case 'register':
 
 			set_user_setting($user_id, 'language',          WT_LOCALE);
 			set_user_setting($user_id, 'verified',          0);
-			set_user_setting($user_id, 'verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION);
+			set_user_setting($user_id, 'verified_by_admin', 0);
 			set_user_setting($user_id, 'reg_timestamp',     date('U'));
 			set_user_setting($user_id, 'reg_hashcode',      md5(uniqid(rand(), true)));
 			set_user_setting($user_id, 'contactmethod',     'messaging2');
@@ -304,12 +302,9 @@ case 'register':
 				WT_I18N::translate('Email Address:').' '.$user_email   ."\r\n\r\n".
 				WT_I18N::translate('Comments')      .' '.$user_comments."\r\n\r\n".
 				WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . "\r\n\r\n";
-			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-				$mail1_body.= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
-			} else {
-				$mail1_body.= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part.') . "\r\n";
-			}
-			$mail1_body.=
+
+			$mail1_body .= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
+			$mail1_body .=
 				"\r\n".
 				"=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n".
 				"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
@@ -361,15 +356,12 @@ case 'register':
 					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
 			}
 
-			echo '<div class="confirm"><p>', WT_I18N::translate('Hello %s ...<br />Thank you for your registration.', $user_realname), '</p><p>';
-				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-					echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email);
-				} else {
-					echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password.', $user_email);
-				}
-				echo '</p>
+			echo '
+				<div class="confirm">
+					<p>', WT_I18N::translate('Hello %s ...<br />Thank you for your registration.', $user_realname), '</p>
+					<p>', WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email). '</p>
+				</div>
 			</div>';
-			echo '</div>';
 			exit;
 		}
 	}
@@ -491,7 +483,7 @@ case 'verify_hash':
 		WT_I18N::translate('Hello Administrator ...') . "\r\n\r\n".
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
 		WT_I18N::translate('A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).', getUserFullName($user_id), $user_name,  getUserEmail($user_id))."\r\n\r\n";
-	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {
+	if (!get_user_setting($user_id, 'verified_by_admin')) {
 		$mail1_body .= WT_I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.') . "\r\n";
 	} else {
 		$mail1_body .= WT_I18N::translate('You do not have to take any action; the user can now login.') . "\r\n";
@@ -541,16 +533,11 @@ case 'verify_hash':
 			set_user_setting($user_id, 'pwrequested', null);
 			set_user_setting($user_id, 'reg_timestamp', date("U"));
 			set_user_setting($user_id, 'reg_hashcode', null);
-			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
-				set_user_setting($user_id, 'verified_by_admin', 1);
-			}
 			AddToLog('User verified: '.$user_name, 'auth');
 
 			echo '<br><br>'.WT_I18N::translate('You have confirmed your request to become a registered user.').'<br><br>';
-			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !get_user_setting($user_id, 'verified_by_admin')) {
+			if (!get_user_setting($user_id, 'verified_by_admin')) {
 				echo WT_I18N::translate('The Administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
-			} else {
-				echo WT_I18N::translate('You can now login with your user name and password.');
 			}
 			echo '<br><br>';
 		} else {

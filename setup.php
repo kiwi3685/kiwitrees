@@ -897,14 +897,13 @@ try {
 		"('WT_SCHEMA_VERSION',               '-2'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
-		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1'),".
 		"('ALLOW_CHANGE_GEDCOM',             '1'),".
 		"('SESSION_TIME',                    '7200'),".
 		"('SMTP_ACTIVE',                     'internal'),".
+		"('MAIL_FORMAT',                     '0'),".
 		"('SMTP_HOST',                       'localhost'),".
 		"('SMTP_PORT',                       '25'),".
 		"('SMTP_AUTH',                       '1'),".
-		"('MAIL_FORMAT',                     ''),".
 		"('SMTP_AUTH_USER',                  ''),".
 		"('SMTP_AUTH_PASS',                  ''),".
 		"('SMTP_SSL',                        'none'),".
