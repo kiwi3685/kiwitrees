@@ -151,7 +151,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 						echo '
 						<div class="container">
 							<div class="label">', $plugin_title, '</div>
-							<div class="yesno">', edit_field_yes_no('NEW_' .$plugin_file. '"', get_module_setting($this->getName(), $plugin_file, '1')), '</div>
+							<div>', edit_field_yes_no('NEW_' .$plugin_file. '"', get_module_setting($this->getName(), $plugin_file, '1')), '</div>
 						</div>';
 					}
 					echo '

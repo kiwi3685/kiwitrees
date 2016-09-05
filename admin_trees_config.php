@@ -861,7 +861,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Estimated dates for birth and death'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES')); ?>
+							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES'), 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.'); ?>
 							</div>
@@ -870,7 +870,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('The date and time of the last update'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE); ?>
+							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE, 'class="radio_inline"'); ?>
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Charts'); ?></h4>
@@ -1032,7 +1032,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Gender icon on charts'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $PEDIGREE_SHOW_GENDER); ?>
+							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $PEDIGREE_SHOW_GENDER, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('This option controls whether or not to show the individual\'s gender icon on charts.<br>Since the gender is also indicated by the color of the box, this option doesn\'t conceal the gender. The option simply removes some duplicate information from the box.'); ?>
 							</div>
@@ -1041,7 +1041,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Age of parents next to child\'s birth date'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE); ?>
+							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('This option controls whether or not to show age of father and mother next to child\'s birth date on charts.'); ?>
 							</div>
@@ -1050,7 +1050,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('LDS ordinance codes in chart boxes'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LDS_AT_GLANCE); ?>
+							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LDS_AT_GLANCE, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo /* I18N: Help for LDS ordinances show/hide option */ WT_I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in all chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name. Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code. For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.'); ?>
 							</div>
@@ -1072,7 +1072,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Fact icons'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
+							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page. Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme.'); ?>
 							</div>
@@ -1108,7 +1108,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
+							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
 							</div>
@@ -1127,7 +1127,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
+							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
 							</div>
@@ -1136,7 +1136,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('GEDCOM errors'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
+							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(true=>WT_I18N::translate('hide'), false=>WT_I18N::translate('show')), $HIDE_GEDCOM_ERRORS, 'class="radio_inline"'); /* Note: name of object is reverse of description */ ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and kiwitrees understands most of them. When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.'); ?>
 							</div>
@@ -1145,7 +1145,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Hit counters'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
+							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('Show hit counters on the Home and Individual pages.'); ?>
 							</div>
@@ -1154,7 +1154,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Execution statistics'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')); ?>
+							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS'), 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.'); ?>
 							</div>
@@ -1365,7 +1365,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Surname tradition'); ?></label>
 						<div class="input_group">
-							<?php echo radio_buttons('NEW_SURNAME_TRADITION', surnameDescriptions(), get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')); ?>
+							<?php echo radio_buttons('NEW_SURNAME_TRADITION', surnameDescriptions(), get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION'), 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('When you Add a family member, a default surname can be provided. This surname will depend on the local tradition.'); ?>
 							</div>
