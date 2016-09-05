@@ -31,10 +31,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// remove no longer used REQUIRE_AUTHENTICATION & REQUIRE_ADMIN_AUTH_REGISTRATION settings
+// remove no longer used settings
 try {
 	self::exec("DELETE FROM `##gedcom_setting` WHERE `setting_name` LIKE 'REQUIRE_AUTHENTICATION'");
 	self::exec("DELETE FROM `##site_setting` WHERE setting_name LIKE 'REQUIRE_ADMIN_AUTH_REGISTRATION'");
+	self::exec("DELETE FROM `##site_setting` WHERE setting_name LIKE 'WELCOME_TEXT_CUST_HEAD'");
 } catch (PDOException $ex) {
 	// Perhaps we have already deleted this data?
 }

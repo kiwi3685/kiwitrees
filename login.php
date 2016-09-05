@@ -130,6 +130,7 @@ default:
 
 	echo '<div id="login-page">';
 	echo '<div id="login-text">';
+	echo '<p class="center"><strong>' . WT_I18N::translate('Welcome to this genealogy website') . '</strong></p>';
 
 	switch (WT_Site::preference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
@@ -142,10 +143,7 @@ default:
 		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
 		break;
 	case 4:
-		echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website.');
-		if (WT_Site::preference('WELCOME_TEXT_CUST_HEAD')) {
-			echo '<p>', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
-		}
+		echo '<p style="white-space: pre-wrap;">', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
 		break;
 	}
 
