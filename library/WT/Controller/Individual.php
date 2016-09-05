@@ -791,7 +791,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				jQuery("#sidebarAccordion").accordion({
 					active:' . $active . ',
 					heightStyle: "content",
-//					event: "click hoverintent",
 					collapsible: true
 				});
 			');

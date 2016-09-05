@@ -120,21 +120,21 @@ $controller
 			jQuery("div.config_options:even").addClass("even");
 		});
 
-			var selectVal = jQuery("#smtp_select option:selected").val();
-			if (selectVal == "external"){
+		var selectVal = jQuery("#smtp_select option:selected").val();
+		if (selectVal == "external"){
+			jQuery("#smtp_options").css({"display":"block"});
+		} else {
+			jQuery("#smtp_options").css({"display":"none"});
+		};
+
+		jQuery("#smtp_select").click("option", function() {
+			var clickedOption = jQuery(this).val();
+			if (clickedOption == "external") {
 				jQuery("#smtp_options").css({"display":"block"});
 			} else {
 				jQuery("#smtp_options").css({"display":"none"});
 			};
-
-			jQuery("#smtp_select").click("option", function() {
-				var clickedOption = jQuery(this).val();
-				if (clickedOption == "external") {
-					jQuery("#smtp_options").css({"display":"block"});
-				} else {
-					jQuery("#smtp_options").css({"display":"none"});
-				};
-			});
+		});
 	');
 ?>
 

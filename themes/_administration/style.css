@@ -1438,10 +1438,8 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 }
 
 @media (min-width: 351px) and (max-width: 1024px) {
-	#admin_menu h3 span.menu-name {
-		display: none;
-	}
 	#admin_menu {
+		overflow: initial;
 		width: 60px;
 	}
 	#admin_content {
@@ -1449,6 +1447,18 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 		min-width: initial;
 		padding: 5px;
 		width: 88%;
+	}
+	#admin_menu h3 span.menu-name {
+		display: none;
+	}
+	#admin_menu h3.ui-state-active {
+		width: 198px;
+	}
+	#admin_menu h3.ui-state-active span.menu-name {
+		display: inline;
+	}
+	#admin_menu .ui-accordion .ui-accordion-content-active {
+		width: 200px;
 	}
 	.help_content {
 		display: none!important;

@@ -47,7 +47,6 @@ $this
 		});
 		jQuery("#adminAccordion").accordion({
 			active:0,
-			event: "click hoverintent",
 			heightStyle: "content",
 			collapsible: true,
 			icons: false,
