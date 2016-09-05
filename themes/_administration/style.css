@@ -77,6 +77,12 @@ button {
 	margin: 5px;
 }
 .input-group {margin:20px 0;}
+.alert {
+	background-color: #d9edf7;
+	font-size: 90%;
+	font-style: italic;
+	padding: 10px;
+}
 
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
@@ -357,19 +363,7 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 }
 
 /*SITE CONFIG */
-#site-config table {width: 100%;}
-#site-config tr:nth-child(odd) td:first-child {font-weight: 600;}
-#site-config tr:nth-child(even) {border-bottom: 1px solid;}
-#site-config td {padding:0 20px;}
-#site-config td:first-child {width: 40%;}
-#site-config p {font-style: italic;}
-#site-config tr th.smtp {padding-top: 50px;}
-#site-config td .help_content {font-size: .85em;}
-#site-config td .editable input, #site-config td .editable select {height: 25px; margin: 5px; padding: 0;}
-#site-config td .editable button {height: 27px; margin: 5px 0; padding: 0;}
-#site-config th {text-align: left;}
-#site-config #lang {overflow: hidden;}
-[dir=rtl] #site-config th {text-align: right;}
+#site_config #lang {overflow: hidden;}
 
 /*SITE LOGS & CHANGE LOGS*/
 .site_logs, .site_change {margin:10px auto;}
@@ -519,61 +513,65 @@ table.gedcom_table {border-bottom:1px solid; padding:5px; width:100%;}
 /* FAMILY TREE CONFIG */
 
 #family_tree_config h3.accordion,
-#family_tree_config .hidden {
+#family_tree_config .hidden,
+#site_config h3.accordion,
+#site_config .hidden {
 	display: none;
 }
 
-#family_tree_config #accordion .ui-accordion-content {
+#family_tree_config #accordion .ui-accordion-content,
+#site_config #accordion .ui-accordion-content {
 	padding: 5px;
 }
 
-#family_tree_config a:hover .hidden{
+#family_tree_config a:hover .hidden,
+#site_config a:hover .hidden {
 	display: block;
 
 }
 
-div.tree_config,
-div.tree_config .input_group,
+div.config_options,
+div.config_options .input_group,
 #website input[name="NEW_META_TITLE"],
 #website input[name="NEW_META_DESCRIPTION"] {
 	width: 73%;
 }
 
-div.tree_config {
+div.config_options {
 	color: #555;
 	margin: 0;
-	padding: 5px 10px;
+	padding: 5px;
 	width: 99%;
 }
 
-div.tree_config,
-div.tree_config .input_group {
+div.config_options,
+div.config_options .input_group {
 	display: inline-block;
 	vertical-align: top;
 }
 
-div.tree_config .input_group input[type="text"],
-div.tree_config .input_group input[type="password"] {
+div.config_options .input_group input[type="text"],
+div.config_options .input_group input[type="password"] {
 	max-width: 90%;
 	width: 60%;
 }
 
-div.tree_config .input_group input[type="text"][name="gedcom"],
-div.tree_config .input_group input[type="text"][name="NEW_PEDIGREE_ROOT_ID"] {
+div.config_options .input_group input[type="text"][name="gedcom"],
+div.config_options .input_group input[type="text"][name="NEW_PEDIGREE_ROOT_ID"] {
 	width: 310px;
 }
 
-div.tree_config .sm_input_group input[type="text"] {
+div.config_options .sm_input_group input[type="text"] {
 	width: 30px;
 }
 
-div.tree_config .sm_input_group {
+div.config_options .sm_input_group {
 	display: inline-block;
 	vertical-align: middle;
 	width: 25%;
 }
 
-div.tree_config .sm_input_group .input_label {
+div.config_options .sm_input_group .input_label {
 	display: inline-block;
 	margin: 0px -5px 5px 0;
 	min-width: 130px;
@@ -582,51 +580,54 @@ div.tree_config .sm_input_group .input_label {
 	white-space: nowrap;
 }
 
-div.tree_config label {
+div.config_options label {
 	display: inline-block;
 	font-weight: 600;
 	width: 25%;
 }
 
-div.tree_config input[type="radio"]+label {
+div.config_options input[type="radio"]+label {
 	font-weight: normal;
 	width: 30px;
 }
 
-div.tree_config label[for^="NEW_"],
-div.tree_config label[for^="SHOW"] {
+div.config_options label.radio_inline,
+.radio_online {
 	font-weight: normal;
-	min-height: 27px;
-	width: 8%;
+	width: 5%;
 }
 
-div.tree_config label[for^="NEW_SURNAME_TRADITION"] {
+div.config_options label[for^="NEW_SURNAME_TRADITION"] {
 	padding-left: 20px;
 	width: 100%;
 }
 
-div.tree_config label[for^="NEW_SURNAME_TRADITION"] input {
+div.config_options label[for^="NEW_SURNAME_TRADITION"] input {
 	margin-left: -20px;
 }
 
-div.tree_config select {
+div.config_options select {
 	height: 32px;
 	width: 390px;
 }
 
-div.tree_config .input_label {
+div.config_options select#WELCOME_TEXT_AUTH_MODE {
+	width: auto;
+}
+
+div.config_options .input_label {
 	background-color: #ddd;
 	border: 1px solid #aaa;
 }
 
-div.tree_config .input_label.left{
+div.config_options .input_label.left{
 	border-right: 0;
 	border-radius: 5px 0 0 5px;
 	margin: 0px -5px 5px 0;
 	padding: 6px 3px 6px;
 }
 
-div.tree_config .input_label.right {
+div.config_options .input_label.right {
 	border-left: 0;
 	border-radius: 0 5px 5px 0;
 	font-size: 90%;
@@ -634,11 +635,11 @@ div.tree_config .input_label.right {
 	padding: 7px 8px 6px;
 }
 
-div.tree_config span.help_content {
+div.config_options span.help_content {
 	display: block;
 }
 
-div.tree_config span.help_content a,
+div.config_options span.help_content a,
 .helpcontent a.morelink {
 	color: #3383bb;
 	font-weight: 800;
@@ -705,13 +706,10 @@ div.tree_config span.help_content a,
 	width: 50px;
 }
 
-#hide-show table, #edit-options table {padding:5px; width:100%;}
-#hide-show tr, #edit-options tr {border-bottom:1px solid;}
-#hide-show td, #edit-options td {line-height:25px; padding:5px 0; vertical-align:middle;}
-#hide-show th, #edit-options th {border-bottom:1px solid #fff; color:#25a325; text-align:left;font-weight:normal;}
-[dir=rtl] #hide-show th,[dir=rtl] #edit-options th {text-align:right;}
+textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {
+	height:80px; width:100%;
+}
 
-textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 .current_theme, .theme_box {float:left; height: 210px; padding: 10px; text-align:center;}
 #theme table {max-width:none;}
 .theme_box p.custom_files {font-weight: normal; font-size: 90%; font-style: italic;}
@@ -1455,26 +1453,28 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 	.help_content {
 		display: none!important;
 	}
-	#family_tree_config ul {
+	#family_tree_config ul,
+	#site_config ul {
 		display: none;
 	}
-	#family_tree_config h3.accordion {
+	#family_tree_config h3.accordion,
+	#site_config h3.accordion {
 		display: block;
 	}
-	div.tree_config label {
+	div.config_options label {
 		display: block;
 		padding: 5px 0;
 	}
-	div.tree_config .input_label {
+	div.config_options .input_label {
 		display: block;
 	}
-	div.tree_config,
-	div.tree_config .input_group,
+	div.config_options,
+	div.config_options .input_group,
 	#website input[name="NEW_META_TITLE"],
 	#website input[name="NEW_META_DESCRIPTION"] {
 		width: 98%;
 	}
-	div.tree_config .input_group label {
+	div.config_options .input_group label {
 		display: inline-block;
 	}
 }

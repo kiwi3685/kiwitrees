@@ -41,7 +41,7 @@ $this
 		});
 		jQuery("textarea").autosize();
 		jQuery(".helpcontent").shorten({
-		    showChars: 250,
+		    showChars: 300,
 			moreText: "' . WT_I18N::translate('More') . '",
 			lessText: "' . WT_I18N::translate('Less') . '"
 		});
