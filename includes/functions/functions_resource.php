@@ -487,7 +487,6 @@ function add_resource_descendancy($i, $person, $parents = false, $generations = 
 					$related_individuals[$i]['dplac']			= $child->getDeathPlace();
 					$related_individuals[$i]['father']			= $family->getHusband()->getLifespanName();
 					$related_individuals[$i]['mother']			= $family->getWife()->getLifespanName();
-//					add_resource_descendancy($i, $child); // recurse on the childs family
 				}
 			}
 			if ($generations == -1) {
@@ -497,8 +496,6 @@ function add_resource_descendancy($i, $person, $parents = false, $generations = 
 			}
 		}
 	}
-	print_r($related_individuals);
-
 	return array ($related_individuals, $i);
 
 }

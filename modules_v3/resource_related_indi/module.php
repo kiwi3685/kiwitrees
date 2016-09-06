@@ -137,32 +137,30 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 						jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 						jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 						jQuery("#related_individuals").dataTable({
-						dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-						' . WT_I18N::datatablesI18N() . ',
-						buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
-						autoWidth: false,
-						paging: true,
-						pagingType: "full_numbers",
-						lengthChange: true,
-						filter: true,
-						info: true,
-						jQueryUI: true,
-						sorting: [0,"asc"],
-						displayLength: 20,
-						"aoColumns": [
-							/* 0 id */				{"bSortable": true, "sClass": "center"},
-							/* 1-relationship */	null,
-							/* 2-name */			null,
-							/* 3-birth date */		{ dataSort: 4 },
-							/* 4-BIRT:DATE */		{ visible: false },
-							/* 5-birth place */		{ type: "unicode" },
-							/* 6-marriage */		{"bSortable": false},
-							/* 7-death date */		{ dataSort: 7 },
-							/* 8-DEAT:DATE */		{ visible: false },
-							/* 9-death place */		{ type: "unicode" },
-							/* 10-father */			null,
-							/* 11-mother */			null
-						]
+							dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+							' . WT_I18N::datatablesI18N() . ',
+							buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
+							autoWidth: false,
+							paging: true,
+							pagingType: "full_numbers",
+							lengthChange: true,
+							filter: true,
+							info: true,
+							jQueryUI: true,
+							sorting: [0,"asc"],
+							displayLength: 20,
+							"aoColumns": [
+								/* 0 id */				{"bSortable": true, "sClass": "center"},
+								/* 1-name */			null,
+								/* 2-birth date */		{ dataSort: 3 },
+								/* 3-BIRT:DATE */		{ visible: false },
+								/* 4-birth place */		{ type: "unicode" },
+								/* 5-death date */		{ dataSort: 6 },
+								/* 6-DEAT:DATE */		{ visible: false },
+								/* 7-death place */		{ type: "unicode" },
+								/* 8-father */			null,
+								/* 9-mother */			null
+							]
 						});
 						jQuery("#related_individuals").css("visibility", "visible");
 						jQuery(".loading-image").css("display", "none");
@@ -174,119 +172,110 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 
 					<?php
 					// collect list of relatives
-					$related_individuals = array();
-					$i = 0;
+					$list = array();
+					$list[$rootid] = $person;
 					switch ($choose_relatives) {
-						case 'child-family':
-							$families = $person->getChildFamilies();
-							foreach ($families as $family) {
-								$husband	= $family->getHusband();
-								$wife		= $family->getWife();
-								$children	= $family->getChildren();
-								$marriage	= $family->getMarriage();
+						case "child-family":
+							foreach ($person->getChildFamilies() as $family) {
+								$husband = $family->getHusband();
+								$wife = $family->getWife();
 								if (!empty($husband)) {
-									$i++;
-									$related_individuals[$i]['relationship']	= WT_I18N::translate('Father');
-									$related_individuals[$i]['name']			= $husband->getFullName();
-									$related_individuals[$i]['birth']			= $husband->getBirthDate()->Display();
-									$related_individuals[$i]['bdate']			= $husband->getBirthDate()->JD();
-									$related_individuals[$i]['bplac']			= $husband->getBirthPlace();
-									$related_individuals[$i]['marr']			= $family->getMarriageDate()->Display();
-									$related_individuals[$i]['death']			= $husband->getDeathDate()->Display();
-									$related_individuals[$i]['ddate']			= $husband->getDeathDate()->JD();
-									$related_individuals[$i]['dplac']			= $husband->getDeathPlace();
-									$related_individuals[$i]['father']			= $husband->getPrimaryChildFamily() ? $husband->getPrimaryChildFamily()->getHusband()->getLifespanName() : '';
-									$related_individuals[$i]['mother']			= $husband->getPrimaryChildFamily() ? $husband->getPrimaryChildFamily()->getWife()->getLifespanName() : '';
+									$list[$husband->getXref()] = $husband;
 								}
 								if (!empty($wife)) {
-									$i++;
-									$related_individuals[$i]['relationship']	= WT_I18N::translate('Mother');
-									$related_individuals[$i]['name']			= $wife->getFullName();
-									$related_individuals[$i]['birth']			= $wife->getBirthDate()->Display();
-									$related_individuals[$i]['bdate']			= $wife->getBirthDate()->JD();
-									$related_individuals[$i]['bplac']			= $wife->getBirthPlace();
-									$related_individuals[$i]['marr']			= $family->getMarriageDate()->Display();
-									$related_individuals[$i]['death']			= $wife->getDeathDate()->Display();
-									$related_individuals[$i]['ddate']			= $wife->getDeathDate()->JD();
-									$related_individuals[$i]['dplac']			= $wife->getDeathPlace();
-									$related_individuals[$i]['father']			= $wife->getPrimaryChildFamily() ? $wife->getPrimaryChildFamily()->getHusband()->getLifespanName() : '';
-									$related_individuals[$i]['mother']			= $wife->getPrimaryChildFamily() ? $wife->getPrimaryChildFamily()->getWife()->getLifespanName() : '';
+									$list[$wife->getXref()] = $wife;
 								}
+								$children = $family->getChildren();
 								foreach ($children as $child) {
-									if (!empty($child) && $child != $person) {
-										$i++;
-										$related_individuals[$i]['relationship']	= get_relationship_name(get_relationship($person, $child));
-										$related_individuals[$i]['name']			= $child->getFullName();
-										$related_individuals[$i]['birth']			= $child->getBirthDate()->Display();
-										$related_individuals[$i]['bdate']			= $child->getBirthDate()->JD();
-										$related_individuals[$i]['bplac']			= $child->getBirthPlace();
-										$related_individuals[$i]['marr']			= '';
-										$related_individuals[$i]['death']			= $child->getDeathDate()->Display();
-										$related_individuals[$i]['ddate']			= $child->getDeathDate()->JD();
-										$related_individuals[$i]['dplac']			= $child->getDeathPlace();
-										$related_individuals[$i]['father']			= $husband->getLifespanName();
-										$related_individuals[$i]['mother']			= $wife->getLifespanName();
-									}
+									if (!empty($child)) $list[$child->getXref()] = $child;
 								}
 							}
 							break;
-						case 'spouse-family':
-							$return = add_resource_descendancy($i, $person, true);
-							$related_individuals	= $return[0];
-							$i						= $return[1];
-						break;
-						case 'descendants':
-							$return = add_resource_descendancy($i, $person, false);
-							$related_individuals	= $return[0];
-							$i						= $return[1];
-						break;
+						case "spouse-family":
+							foreach ($person->getSpouseFamilies() as $family) {
+							$husband = $family->getHusband();
+								$wife = $family->getWife();
+								if (!empty($husband)) {
+									$list[$husband->getXref()] = $husband;
+								}
+								if (!empty($wife)) {
+									$list[$wife->getXref()] = $wife;
+								}
+								$children = $family->getChildren();
+								foreach ($children as $child) {
+									if (!empty($child)) $list[$child->getXref()] = $child;
+								}
+							}
+							break;
+						case "direct-ancestors":
+							add_ancestors($list, $rootid, false, $MAX_DESCENDANCY_GENERATIONS);
+							break;
+						case "ancestors":
+							add_ancestors($list, $rootid, true, $MAX_DESCENDANCY_GENERATIONS);
+							break;
+						case "descendants":
+							$list[$rootid]->generation = 1;
+							add_descendancy($list, $rootid, false, $MAX_DESCENDANCY_GENERATIONS);
+							break;
+						case "all":
+							add_ancestors($list, $rootid, true, $MAX_DESCENDANCY_GENERATIONS);
+							add_descendancy($list, $rootid, true, $MAX_DESCENDANCY_GENERATIONS);
+							break;
 					}
-
-
-					// output display
-					?>
-					<div class="loading-image">&nbsp;</div>
-					<table id="related_individuals" class="width100" style="visibility:hidden;">
-						<thead>
-							<tr>
-								<th><?php echo /*I18N short abbreviation for "Number" */ WT_I18N::translate('No.'); ?></th>
-								<th><?php echo WT_I18N::translate('Relationship'); ?></th>
-								<th><?php echo WT_I18N::translate('Name'); ?></th>
-								<th><?php echo WT_I18N::translate('Birth'); ?></th>
-								<th><?php //SORT_BIRT ?></th>
-								<th><?php echo WT_I18N::translate('Place'); ?></th>
-								<th><?php echo WT_I18N::translate('Marriage'); ?></th>
-								<th><?php echo WT_I18N::translate('Death'); ?></th>
-								<th><?php //SORT_DEAT ?></th>
-								<th><?php echo WT_I18N::translate('Place'); ?></th>
-								<th><?php echo WT_I18N::translate('Father'); ?></th>
-								<th><?php echo WT_I18N::translate('Mother'); ?></th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php for ($x = 1; $x <= $i; $x++) {
-								echo '
-									<tr>
-										<td>' . $x . '</td>
-										<td>' . $related_individuals[$x]['relationship'] . '</td>
-										<td>' . $related_individuals[$x]['name'] . '</td>
-										<td>' . $related_individuals[$x]['birth'] . '</td>
-										<td>' . $related_individuals[$x]['bdate'] . '</td>
-										<td>' . $related_individuals[$x]['bplac'] . '</td>
-										<td>' . $related_individuals[$x]['marr'] . '</td>
-										<td>' . $related_individuals[$x]['death'] . '</td>
-										<td>' . $related_individuals[$x]['ddate'] . '</td>
-										<td>' . $related_individuals[$x]['dplac'] . '</td>
-										<td>' . $related_individuals[$x]['father'] . '</td>
-										<td>' . $related_individuals[$x]['mother'] . '</td>
-									</tr>
-								';
-							} ?>
-						</tbody>
-					</table>
-				<?php
 				}
-			}; ?>
-		</div>
-	<?php }
+				// output display
+				?>
+				<div class="loading-image">&nbsp;</div>
+				<table id="related_individuals" class="width100" style="visibility:hidden;">
+					<thead>
+						<tr>
+							<th><?php echo /*I18N short abbreviation for "Number" */ WT_I18N::translate('No.'); ?></th>
+							<th><?php echo WT_I18N::translate('Name'); ?></th>
+							<th><?php echo WT_I18N::translate('Birth'); ?></th>
+							<th><?php //SORT_BIRT ?></th>
+							<th><?php echo WT_I18N::translate('Place'); ?></th>
+							<th><?php echo WT_I18N::translate('Death'); ?></th>
+							<th><?php //SORT_DEAT ?></th>
+							<th><?php echo WT_I18N::translate('Place'); ?></th>
+							<th><?php echo WT_I18N::translate('Father'); ?></th>
+							<th><?php echo WT_I18N::translate('Mother'); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						$x = 0;
+						foreach ($list as $relative) {
+							$x++;
+							echo '
+								<tr>
+									<td>' . $x . '</td>
+									<td>' . $relative->getFullName() . '</td>
+									<td>' . $relative->getBirthDate()->Display() . '</td>
+									<td>' . $relative->getBirthDate()->JD() . '</td>
+									<td>' . $relative->getBirthPlace() . '</td>
+									<td>' . $relative->getDeathDate()->Display() . '</td>
+									<td>' . $relative->getDeathDate()->JD() . '</td>
+									<td>' . $relative->getDeathPlace() . '</td>
+									<td>';
+										if (is_null($relative->getPrimaryChildFamily()) || is_null($relative->getPrimaryChildFamily()->getHusband())) {
+											echo '';
+										} else {
+											echo $relative->getPrimaryChildFamily()->getHusband()->getLifespanName();
+										}
+									echo '</td>
+									<td>';
+										if (is_null($relative->getPrimaryChildFamily()) || is_null($relative->getPrimaryChildFamily()->getWife())) {
+											echo '';
+										} else {
+											echo $relative->getPrimaryChildFamily()->getWife()->getLifespanName();
+										}
+									echo '</td>
+								</tr>
+							';
+						}
+						?>
+			 		</tbody>
+				</table>
+			<?php }
+		}
 }
