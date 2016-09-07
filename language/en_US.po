@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-09-03 15:03+1200\n"
-"PO-Revision-Date: 2016-09-03 15:06+1200\n"
+"POT-Creation-Date: 2016-09-08 07:27+1200\n"
+"PO-Revision-Date: 2016-09-08 07:28+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -64,7 +64,7 @@ msgstr "The folder %s was created."
 
 #: addmedia.php:101 addmedia.php:112 addmedia.php:124 addmedia.php:266
 #: addmedia.php:277 addmedia.php:289 admin_media_upload.php:64
-#: admin_media_upload.php:75 admin_media_upload.php:87
+#: admin_media_upload.php:75 admin_media_upload.php:87 admin_site_config.php:69
 #: admin_trees_config.php:219
 #, php-format
 msgid "The folder %s does not exist, and it could not be created."
@@ -231,7 +231,7 @@ msgstr "Do not update the “last change” record"
 #: admin_module_lists.php:101 admin_module_menus.php:127
 #: admin_module_reports.php:101 admin_module_resources.php:101
 #: admin_module_sidebar.php:127 admin_module_tabs.php:127
-#: admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:526
+#: admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:433
 #: admin_site_merge.php:163 admin_trees_config.php:1453
 #: admin_trees_manage.php:342 block_edit.php:61 edit_interface.php:169
 #: edit_interface.php:270 edit_interface.php:346 edit_interface.php:505
@@ -264,7 +264,7 @@ msgstr "save"
 
 #: admin.php:32 library/WT/MenuBar.php:82
 #: modules_v3/widget_quicklinks/module.php:76
-#: themes/_administration/header.php:97
+#: themes/_administration/header.php:96
 msgid "Administration"
 msgstr "Administration"
 
@@ -316,7 +316,7 @@ msgstr "Your version of kiwitrees is the latest available."
 msgid "No upgrade information is available."
 msgstr "No upgrade information is available."
 
-#: admin.php:107 admin_site_info.php:35 themes/_administration/header.php:150
+#: admin.php:107 admin_site_info.php:35 themes/_administration/header.php:149
 msgid "Server information"
 msgstr "Server information"
 
@@ -332,7 +332,7 @@ msgstr ""
 "Files have been found from a previous version of kiwitrees.  Old files can "
 "sometimes be a security risk.  You should delete them."
 
-#: admin.php:183 themes/_administration/header.php:197
+#: admin.php:183 themes/_administration/header.php:196
 msgid "Users"
 msgstr "Users"
 
@@ -610,7 +610,7 @@ msgstr "This media object is not linked to any other record."
 #: admin_trees_sourcecite.php:155
 #: includes/functions/functions_print_lists.php:1569 inverselink.php:73
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:88
-#: themes/_administration/header.php:205
+#: themes/_administration/header.php:204
 msgid "Media"
 msgstr "Media"
 
@@ -671,7 +671,7 @@ msgid "Media type"
 msgstr "Media type"
 
 #: admin_media_upload.php:35 admin_media_upload.php:179 help_text.php:739
-#: themes/_administration/header.php:208
+#: themes/_administration/header.php:207
 msgid "Upload media files"
 msgstr "Upload media files"
 
@@ -748,7 +748,7 @@ msgid "Resource"
 msgstr "Resource"
 
 #: admin_module_sidebar.php:75 admin_modules.php:135 admin_modules.php:164
-#: themes/_administration/header.php:220
+#: themes/_administration/header.php:219
 msgid "Sidebar"
 msgstr "Sidebar"
 
@@ -769,9 +769,10 @@ msgid "Module"
 msgstr "Module"
 
 #. I18N: Name of a module
-#: admin_modules.php:158 modules_v3/gedcom_block/module.php:35
-msgid "Home page"
-msgstr "Home page"
+#: admin_modules.php:158 library/WT/MenuBar.php:37 library/WT/MenuBar.php:39
+#: modules_v3/gedcom_block/module.php:35 themes/_administration/header.php:140
+msgid "Home"
+msgstr "Home"
 
 #: admin_modules.php:158 library/WT/Gedcom/Tag.php:926
 #: library/WT/Stats.php:3235 library/WT/Stats.php:3409
@@ -792,7 +793,7 @@ msgstr "Other"
 msgid "This module cannot be found.  Delete its configuration settings."
 msgstr "This module cannot be found.  Delete its configuration settings."
 
-#: admin_site_access.php:33 themes/_administration/header.php:151
+#: admin_site_access.php:33 themes/_administration/header.php:150
 msgid "Site access rules"
 msgstr "Site access rules"
 
@@ -1021,7 +1022,7 @@ msgid "GEDCOM Data"
 msgstr "GEDCOM Data"
 
 #. I18N: The “Data folder” is a configuration setting
-#: admin_site_clean.php:31 themes/_administration/header.php:152
+#: admin_site_clean.php:31 themes/_administration/header.php:151
 msgid "Clean up data folder"
 msgstr "Clean up data folder"
 
@@ -1036,12 +1037,12 @@ msgstr ""
 msgid "Deleted files:"
 msgstr "Deleted files:"
 
-#: admin_site_config.php:32 admin_site_config.php:63
-#: themes/_administration/header.php:147
+#: admin_site_config.php:31 admin_site_config.php:142 admin_site_config.php:149
+#: admin_site_config.php:162 themes/_administration/header.php:146
 msgid "Site configuration"
 msgstr "Site configuration"
 
-#: admin_site_config.php:38 admin_trees_config.php:481
+#: admin_site_config.php:41 admin_trees_config.php:481
 #: admin_trees_config.php:503 admin_trees_config.php:1386
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2085
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1189
@@ -1050,32 +1051,32 @@ msgid "none"
 msgstr "none"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
-#: admin_site_config.php:39
+#: admin_site_config.php:42
 msgid "ssl"
 msgstr "ssl"
 
 #. I18N: Transport Layer Security - a secure communications protocol
-#: admin_site_config.php:40
+#: admin_site_config.php:43
 msgid "tls"
 msgstr "tls"
 
-#: admin_site_config.php:43
+#: admin_site_config.php:46
 msgid "Use PHP mail to send messages"
 msgstr "Use PHP mail to send messages"
 
-#: admin_site_config.php:44
+#: admin_site_config.php:47
 msgid "Use SMTP to send messages"
 msgstr "Use SMTP to send messages"
 
-#: admin_site_config.php:47
+#: admin_site_config.php:50
 msgid "No predefined text"
 msgstr "No predefined text"
 
-#: admin_site_config.php:48
+#: admin_site_config.php:51
 msgid "Predefined text that states all users can request a user account"
 msgstr "Predefined text that states all users can request a user account"
 
-#: admin_site_config.php:49
+#: admin_site_config.php:52
 msgid ""
 "Predefined text that states admin will decide on each request for a user "
 "account"
@@ -1083,160 +1084,98 @@ msgstr ""
 "Predefined text that states admin will decide on each request for a user "
 "account"
 
-#: admin_site_config.php:50
+#: admin_site_config.php:53
 msgid ""
 "Predefined text that states only family members can request a user account"
 msgstr ""
 "Predefined text that states only family members can request a user account"
 
-#: admin_site_config.php:51
+#: admin_site_config.php:54
 msgid "Choose user defined welcome text typed below"
 msgstr "Choose user defined welcome text typed below"
 
-#: admin_site_config.php:66
+#: admin_site_config.php:152 admin_site_config.php:239
 msgid "Mail configuration"
 msgstr "Mail configuration"
 
-#. I18N: Name of a module
-#: admin_site_config.php:69 includes/functions/functions_print.php:331
-#: login.php:130 login.php:172 modules_v3/login_block/module.php:35
-#: modules_v3/login_block/module.php:59 modules_v3/login_block/module.php:79
-#: themes/kiwitrees/header.php:140 themes/kiwitrees/header.php:145
-msgid "Login"
-msgstr "Login"
+#: admin_site_config.php:155 admin_site_config.php:348
+msgid "Login & registration"
+msgstr "Login & registration"
 
-#: admin_site_config.php:72
+#: admin_site_config.php:158 admin_site_config.php:396
 msgid "Languages"
 msgstr "Languages"
 
-#: admin_site_config.php:80
+#: admin_site_config.php:165
 msgid "Data folder"
 msgstr "Data folder"
 
-#. I18N: Help text for the "Data folder" site configuration setting
-#: admin_site_config.php:87
+#. I18N: Help text for the "Data folder" site configuration setting. “Apache” is a software program.
+#: admin_site_config.php:169
 msgid ""
 "This folder will be used by kiwitrees to store media files, GEDCOM files, "
-"temporary files, etc.  These files may contain private data, and should not "
-"be made available over the internet."
+"temporary files, etc. The default setting is “data/”.<br>These files may "
+"contain private data and should not be made available over the internet. To "
+"protect this private data kiwitrees uses an Apache configuration file (."
+"htaccess) which blocks all access to this folder.<br>If your web-server does "
+"not support .htaccess files and you cannot restrict access to this folder "
+"then you can select another folder away from your web documents. If you "
+"select a different folder you must also move all files (except config.ini."
+"php, index.php and .htaccess) from the existing folder to the new folder. "
+"The folder can be specified here in full (e.g. /home/user_name/"
+"kiwitrees_data/) or relative to the installation folder (e.g. ../../"
+"kiwitrees_data/)."
 msgstr ""
 "This folder will be used by kiwitrees to store media files, GEDCOM files, "
-"temporary files, etc.  These files may contain private data, and should not "
-"be made available over the internet."
+"temporary files, etc. The default setting is “data/”.<br>These files may "
+"contain private data and should not be made available over the internet. To "
+"protect this private data kiwitrees uses an Apache configuration file (."
+"htaccess) which blocks all access to this folder.<br>If your web-server does "
+"not support .htaccess files and you cannot restrict access to this folder "
+"then you can select another folder away from your web documents. If you "
+"select a different folder you must also move all files (except config.ini."
+"php, index.php and .htaccess) from the existing folder to the new folder. "
+"The folder can be specified here in full (e.g. /home/user_name/"
+"kiwitrees_data/) or relative to the installation folder (e.g. ../../"
+"kiwitrees_data/)."
 
-#. I18N: Click this text to read or hide more information
-#: admin_site_config.php:88 admin_site_config.php:432 admin_site_config.php:450
-msgid "More / Less ...."
-msgstr "More / Less ...."
-
-#. I18N: “Apache” is a software program.
-#: admin_site_config.php:90
-msgid ""
-"To protect this private data, kiwitrees uses an Apache configuration file (."
-"htaccess) which blocks all access to this folder.  If your web-server does "
-"not support .htaccess files, and you cannot restrict access to this folder, "
-"then you can select another folder, away from your web documents."
-msgstr ""
-"To protect this private data, kiwitrees uses an Apache configuration file (."
-"htaccess) which blocks all access to this folder.  If your web-server does "
-"not support .htaccess files, and you cannot restrict access to this folder, "
-"then you can select another folder, away from your web documents."
-
-#: admin_site_config.php:92
-msgid ""
-"If you select a different folder, you must also move all files (except "
-"config.ini.php, index.php and .htaccess) from the existing folder to the new "
-"folder."
-msgstr ""
-"If you select a different folder, you must also move all files (except "
-"config.ini.php, index.php and .htaccess) from the existing folder to the new "
-"folder."
-
-#: admin_site_config.php:94
-msgid ""
-"The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) "
-"or relative to the installation folder (e.g. ../../kiwitrees_data/)."
-msgstr ""
-"The folder can be specified in full (e.g. /home/user_name/kiwitrees_data/) "
-"or relative to the installation folder (e.g. ../../kiwitrees_data/)."
-
-#: admin_site_config.php:102
+#: admin_site_config.php:174
 msgid "Memory limit"
 msgstr "Memory limit"
 
 #. I18N: %s is an amount of memory, such as 32MB
-#: admin_site_config.php:112
+#: admin_site_config.php:178
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
 msgstr "By default, your server allows scripts to use %s of memory."
 
-#: admin_site_config.php:113 admin_site_config.php:136
+#: admin_site_config.php:180 admin_site_config.php:196
 msgid ""
-"You can request a higher or lower limit, although the server may ignore this "
-"request."
+"You can request a higher or lower limit here, although the server may ignore "
+"this request.<br>If you leave this setting empty the default value will be "
+"used."
 msgstr ""
-"You can request a higher or lower limit, although the server may ignore this "
-"request."
+"You can request a higher or lower limit here, although the server may ignore "
+"this request.<br>If you leave this setting empty the default value will be "
+"used."
 
-#: admin_site_config.php:114 admin_site_config.php:137
-msgid "If you leave this setting empty, the default value will be used."
-msgstr "If you leave this setting empty, the default value will be used."
-
-#: admin_site_config.php:121
+#: admin_site_config.php:186
 msgid "PHP time limit"
 msgstr "PHP time limit"
 
-#: admin_site_config.php:132
+#: admin_site_config.php:191
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
 msgstr[0] "By default, your server allows scripts to run for %s second."
 msgstr[1] "By default, your server allows scripts to run for %s seconds."
 
-#: admin_site_config.php:144
-msgid "Allow visitors to request account registration"
-msgstr "Allow visitors to request account registration"
-
-#: admin_site_config.php:151
-msgid ""
-"Gives visitors the option of registering themselves for an account on the "
-"site. The visitor will receive an email message with a code to verify his "
-"application for an account. After verification, the Administrator will have "
-"to approve the registration before it becomes active."
-msgstr ""
-"Gives visitors the option of registering themselves for an account on the "
-"site. The visitor will receive an email message with a code to verify his "
-"application for an account. After verification, the Administrator will have "
-"to approve the registration before it becomes active."
-
-#: admin_site_config.php:158
-msgid "Require an administrator to approve new user registrations"
-msgstr "Require an administrator to approve new user registrations"
-
-#: admin_site_config.php:165
-msgid ""
-"If the option <b>Allow visitors to request account registration</b> is "
-"enabled this setting controls whether the admin must approve the "
-"registration. Setting this to <b>Yes</b> will require that all new users "
-"first verify themselves and then be approved by an admin before they can "
-"login. With this setting on <b>No</b>, the <b>User approved by Admin</b> "
-"checkbox will be checked automatically when users verify their account, thus "
-"allowing an immediate login afterwards without admin intervention."
-msgstr ""
-"If the option <b>Allow visitors to request account registration</b> is "
-"enabled this setting controls whether the admin must approve the "
-"registration. Setting this to <b>Yes</b> will require that all new users "
-"first verify themselves and then be approved by an admin before they can "
-"login. With this setting on <b>No</b>, the <b>User approved by Admin</b> "
-"checkbox will be checked automatically when users verify their account, thus "
-"allowing an immediate login afterwards without admin intervention."
-
-#: admin_site_config.php:172
+#: admin_site_config.php:202
 msgid "Show list of family trees"
 msgstr "Show list of family trees"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
-#: admin_site_config.php:179
+#: admin_site_config.php:206
 msgid ""
 "For sites with more than one family tree, this option will show the list of "
 "family trees in the main menu, the search pages, etc."
@@ -1244,41 +1183,43 @@ msgstr ""
 "For sites with more than one family tree, this option will show the list of "
 "family trees in the main menu, the search pages, etc."
 
-#: admin_site_config.php:186
+#: admin_site_config.php:211
 msgid "Session timeout"
 msgstr "Session timeout"
 
 #. I18N: Help text for the “Session timeout” site configuration setting
-#: admin_site_config.php:193
+#: admin_site_config.php:215
 msgid ""
 "The time in seconds that a kiwitrees session remains active before requiring "
-"a login.  The default is 7200, which is 2 hours."
+"a login. The default is 7200, which is 2 hours."
 msgstr ""
 "The time in seconds that a kiwitrees session remains active before requiring "
-"a login.  The default is 7200, which is 2 hours."
+"a login. The default is 7200, which is 2 hours."
 
-#: admin_site_config.php:200
+#: admin_site_config.php:220
 msgid "Website URL"
 msgstr "Website URL"
 
 #. I18N: Help text for the "Website URL" site configuration setting
-#: admin_site_config.php:207
+#: admin_site_config.php:224
 msgid ""
-"If your site can be reached using more than one URL, such as <b>http://www."
-"example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can "
-"specify the preferred URL.  Requests for the other URLs will be redirected "
-"to the preferred one."
+"If your site can be reached using more than one URL such as <b>http://www."
+"example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b> you can "
+"specify the preferred URL here. Requests for the other URLs will be "
+"redirected to the preferred one. <span class=\"warning\">If not required, "
+"leave this field blank.</span>"
 msgstr ""
-"If your site can be reached using more than one URL, such as <b>http://www."
-"example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b>, you can "
-"specify the preferred URL.  Requests for the other URLs will be redirected "
-"to the preferred one."
+"If your site can be reached using more than one URL such as <b>http://www."
+"example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b> you can "
+"specify the preferred URL here. Requests for the other URLs will be "
+"redirected to the preferred one. <span class=\"warning\">If not required, "
+"leave this field blank.</span>"
 
-#: admin_site_config.php:215 site-maintenance.php:52
-msgid "Maintenance"
-msgstr "Maintenance"
+#: admin_site_config.php:229
+msgid "Site maintenance"
+msgstr "Site maintenance"
 
-#: admin_site_config.php:223
+#: admin_site_config.php:233
 msgid ""
 "Set this to <b>yes</b> to temporarily prevent anyone <u>except the site "
 "administrator</u> from accessing your site."
@@ -1287,29 +1228,31 @@ msgstr ""
 "administrator</u> from accessing your site."
 
 #. I18N: Name of a module
-#: admin_site_config.php:235 modules_v3/widget_messages/module.php:35
+#: admin_site_config.php:242 modules_v3/widget_messages/module.php:35
 msgid "Messages"
 msgstr "Messages"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:242
+#: admin_site_config.php:254
 msgid ""
-"Kiwitrees needs to send emails, such as password reminders and site "
-"notifications. To do this, it can use this server's built in PHP mail "
+"Kiwitrees needs to send emails such as password reminders and site "
+"notifications. To do this it can use this server's built in PHP mail "
 "facility (which is not always available) or an external SMTP (mail-relay) "
 "service, for which you will need to provide the connection details."
+"<br>Selecting SMTP will display additional configuration options below."
 msgstr ""
-"Kiwitrees needs to send emails, such as password reminders and site "
-"notifications. To do this, it can use this server's built in PHP mail "
+"Kiwitrees needs to send emails such as password reminders and site "
+"notifications. To do this it can use this server's built in PHP mail "
 "facility (which is not always available) or an external SMTP (mail-relay) "
 "service, for which you will need to provide the connection details."
+"<br>Selecting SMTP will display additional configuration options below."
 
-#: admin_site_config.php:249
+#: admin_site_config.php:259
 msgid "Send mail in HTML format"
 msgstr "Send mail in HTML format"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:256
+#: admin_site_config.php:263
 msgid ""
 "By default kiwitrees sends emails in plain text format. Setting this option "
 "to <b>yes</b> will change that to the multipart format. This allows the use "
@@ -1321,12 +1264,12 @@ msgstr ""
 "of HTML formatting, but also includes a plain text version for recipients "
 "that do not allow HTML formatted emails."
 
-#: admin_site_config.php:263
+#: admin_site_config.php:268
 msgid "Sender email"
 msgstr "Sender email"
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: admin_site_config.php:270
+#: admin_site_config.php:272
 msgid ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server. It must be a valid email address."
@@ -1334,24 +1277,16 @@ msgstr ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server. It must be a valid email address."
 
-#: admin_site_config.php:280
-msgid "SMTP mail server"
-msgstr "SMTP mail server"
+#: admin_site_config.php:278
+msgid "SMTP mail server settings"
+msgstr "SMTP mail server settings"
 
-#: admin_site_config.php:285
-msgid ""
-"You can ignore the options below unless you have set <b>Messages</b> above "
-"to <b>Use SMTP to send messages</b>"
-msgstr ""
-"You can ignore the options below unless you have set <b>Messages</b> above "
-"to <b>Use SMTP to send messages</b>"
-
-#: admin_site_config.php:290 setup.php:286
+#: admin_site_config.php:280 setup.php:286
 msgid "Server name"
 msgstr "Server name"
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: admin_site_config.php:297
+#: admin_site_config.php:284
 msgid ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
@@ -1359,63 +1294,62 @@ msgstr ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
 
-#: admin_site_config.php:304 setup.php:291
+#: admin_site_config.php:289 setup.php:291
 msgid "Port number"
 msgstr "Port number"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: admin_site_config.php:311
-msgid "By default, SMTP works on port 25."
-msgstr "By default, SMTP works on port 25."
+#: admin_site_config.php:293
+msgid "By default SMTP works on port 25."
+msgstr "By default SMTP works on port 25."
 
-#: admin_site_config.php:318
+#: admin_site_config.php:298
 msgid "Use password"
 msgstr "Use password"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: admin_site_config.php:325
+#: admin_site_config.php:302
 msgid "Most SMTP servers require a password."
 msgstr "Most SMTP servers require a password."
 
-#: admin_site_config.php:332 admin_users.php:372 admin_users.php:561
-#: edituser.php:133 help_text.php:788 login.php:162 login.php:226 login.php:302
-#: login.php:345 login.php:460 modules_v3/login_block/module.php:69
+#: admin_site_config.php:307 admin_users.php:372 admin_users.php:561
+#: edituser.php:133 help_text.php:788 login.php:158 login.php:222 login.php:298
+#: login.php:338 login.php:450 modules_v3/login_block/module.php:69
 #: modules_v3/resource_changes/module.php:160
 #: modules_v3/resource_todo/module.php:153 modules_v3/todo/module.php:100
 #: modules_v3/widget_todo/module.php:100
 msgid "Username"
 msgstr "Username"
 
-#: admin_site_config.php:339
+#: admin_site_config.php:311
 msgid "The user name required for authentication with the SMTP server."
 msgstr "The user name required for authentication with the SMTP server."
 
-#: admin_site_config.php:346 admin_site_config.php:374 admin_users.php:213
-#: admin_users.php:384 edituser.php:164 help_text.php:601 login.php:167
-#: login.php:228 login.php:464 modules_v3/login_block/module.php:74
-#: setup.php:436
+#: admin_site_config.php:316 admin_users.php:213 admin_users.php:384
+#: edituser.php:164 help_text.php:601 login.php:163 login.php:224 login.php:454
+#: modules_v3/login_block/module.php:74 setup.php:436
 msgid "Password"
 msgstr "Password"
 
-#: admin_site_config.php:353 admin_site_config.php:381
+#: admin_site_config.php:320
 msgid "The password required for authentication with the SMTP server."
 msgstr "The password required for authentication with the SMTP server."
 
-#: admin_site_config.php:360
+#: admin_site_config.php:325
 msgid "Secure connection"
 msgstr "Secure connection"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
-#: admin_site_config.php:367
+#: admin_site_config.php:329
 msgid "Most servers do not use secure connections."
 msgstr "Most servers do not use secure connections."
 
-#: admin_site_config.php:388
+#: admin_site_config.php:334
 msgid "Sending server name"
 msgstr "Sending server name"
 
 #. I18N: Help text for the “Sending server name” site configuration setting
-#: admin_site_config.php:395
+#: admin_site_config.php:338
 msgid ""
 "Many mail servers require that the sending server identifies itself "
 "correctly, using a valid domain name."
@@ -1423,22 +1357,26 @@ msgstr ""
 "Many mail servers require that the sending server identifies itself "
 "correctly, using a valid domain name."
 
-#: admin_site_config.php:402
+#: admin_site_config.php:343
 msgid ""
 "To use a Google mail account, use the following settings: server=smtp.gmail."
 "com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail "
-"password]"
+"password].<br>You must also enable “less secure applications” in your Google "
+"account. <a href=\"https://support.google.com/a/answer/6260879\">https://"
+"support.google.com/a/answer/6260879</a>"
 msgstr ""
 "To use a Google mail account, use the following settings: server=smtp.gmail."
 "com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail "
-"password]"
+"password].<br>You must also enable “less secure applications” in your Google "
+"account. <a href=\"https://support.google.com/a/answer/6260879\">https://"
+"support.google.com/a/answer/6260879</a>"
 
-#: admin_site_config.php:410
+#: admin_site_config.php:351
 msgid "Login URL"
 msgstr "Login URL"
 
 #. I18N: Help text for the “Login URL” site configuration setting
-#: admin_site_config.php:417
+#: admin_site_config.php:355
 msgid ""
 "You only need to enter a Login URL if you want to redirect to a different "
 "site or location when your users login. This is very useful if you need to "
@@ -1452,123 +1390,108 @@ msgstr ""
 "<i>login.php</i>. For example, https://www.yourserver.com/kiwitrees/login."
 "php ."
 
-#: admin_site_config.php:424
-msgid "Standard header for custom welcome text"
-msgstr "Standard header for custom welcome text"
-
-#: admin_site_config.php:431
-msgid ""
-"Choose to display a standard header for your custom welcome text on the "
-"login page."
-msgstr ""
-"Choose to display a standard header for your custom welcome text on the "
-"login page."
-
-#: admin_site_config.php:434
-msgid ""
-"When your users change language, this header will appear in the new "
-"language. If set to <b>Yes</b>, the header will look like this:<div class="
-"\"list_value_wrap\"><center><b>Welcome to this Genealogy website</"
-"b><br>Access is permitted to users who have an account and a password for "
-"this website.</center></div>"
-msgstr ""
-"When your users change language, this header will appear in the new "
-"language. If set to <b>Yes</b>, the header will look like this:<div class="
-"\"list_value_wrap\"><center><b>Welcome to this Genealogy website</"
-"b><br>Access is permitted to users who have an account and a password for "
-"this website.</center></div>"
-
-#: admin_site_config.php:442
+#: admin_site_config.php:360
 msgid "Welcome text on login page"
 msgstr "Welcome text on login page"
 
-#: admin_site_config.php:449
+#. I18N: Explanation for custom welcome text
+#: admin_site_config.php:364
 msgid ""
-"Here you can choose text to appear on the login screen. You must determine "
+"Here you can choose text to appear on the login page. You must determine "
 "which predefined text is most appropriate. You can also choose to enter your "
-"own custom welcome text."
-msgstr ""
-"Here you can choose text to appear on the login screen. You must determine "
-"which predefined text is most appropriate. You can also choose to enter your "
-"own custom welcome text."
-
-#: admin_site_config.php:452
-msgid ""
-"Please refer to the Help text associated with the <b>Custom Welcome text</b> "
-"field for more information.<br>The predefined texts are:"
-"<ul><li><b>Predefined text that states all users can request a user account:"
-"</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy "
-"website</b><br>Access to this site is permitted to every visitor who has a "
-"user account.<br>If you have a user account, you can login on this page.  If "
-"you don't have a user account, you can apply for one by clicking on the "
-"appropriate link below.<br>After verifying your application, the site "
-"administrator will activate your account.  You will receive an email when "
-"your application has been approved.</center></div><br/></"
+"own custom welcome text.<br><br>Please refer to the Help text associated "
+"with the <b>Custom welcome text</b> field for more information.<br>The "
+"predefined texts are:<ul><li><b>Predefined text that states all users can "
+"request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome "
+"to this Genealogy website</b><br>Access to this site is permitted to every "
+"visitor who has a user account.<br>If you have a user account, you can login "
+"on this page. If you don't have a user account, you can apply for one by "
+"clicking on the appropriate link below.<br>After verifying your application, "
+"the site administrator will activate your account. You will receive an email "
+"when your application has been approved.</center></div><br/></"
 "li><li><b>Predefined text that states admin will decide on each request for "
 "a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this "
 "Genealogy website</b><br>Access to this site is permitted to <u>authorized</"
-"u> users only.<br>If you have a user account you can login on this page.  If "
+"u> users only.<br>If you have a user account you can login on this page. If "
 "you don't have a user account, you can apply for one by clicking on the "
 "appropriate link below.<br>After verifying your information, the "
-"administrator will either approve or decline your account application.  You "
+"administrator will either approve or decline your account application. You "
 "will receive an email message when your application has been approved.</"
 "center></div><br/></li><li><b>Predefined text that states only family "
 "members can request a user account:</b><div class=\"list_value_wrap"
 "\"><center><b>Welcome to this Genealogy website</b><br>Access to this site "
 "is permitted to <u>family members only</u>.<br>If you have a user account "
-"you can login on this page.  If you don't have a user account, you can apply "
+"you can login on this page. If you don't have a user account, you can apply "
 "for one by clicking on the appropriate link below.<br>After verifying the "
 "information you provide, the administrator will either approve or decline "
-"your request for an account.  You will receive an email when your request is "
+"your request for an account. You will receive an email when your request is "
 "approved.</center></div></li></ul>"
 msgstr ""
-"Please refer to the Help text associated with the <b>Custom Welcome text</b> "
-"field for more information.<br>The predefined texts are:"
-"<ul><li><b>Predefined text that states all users can request a user account:"
-"</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy "
-"website</b><br>Access to this site is permitted to every visitor who has a "
-"user account.<br>If you have a user account, you can login on this page.  If "
-"you don't have a user account, you can apply for one by clicking on the "
-"appropriate link below.<br>After verifying your application, the site "
-"administrator will activate your account.  You will receive an email when "
-"your application has been approved.</center></div><br/></"
+"Here you can choose text to appear on the login page. You must determine "
+"which predefined text is most appropriate. You can also choose to enter your "
+"own custom welcome text.<br><br>Please refer to the Help text associated "
+"with the <b>Custom welcome text</b> field for more information.<br>The "
+"predefined texts are:<ul><li><b>Predefined text that states all users can "
+"request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome "
+"to this Genealogy website</b><br>Access to this site is permitted to every "
+"visitor who has a user account.<br>If you have a user account, you can login "
+"on this page. If you don't have a user account, you can apply for one by "
+"clicking on the appropriate link below.<br>After verifying your application, "
+"the site administrator will activate your account. You will receive an email "
+"when your application has been approved.</center></div><br/></"
 "li><li><b>Predefined text that states admin will decide on each request for "
 "a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this "
 "Genealogy website</b><br>Access to this site is permitted to <u>authorized</"
-"u> users only.<br>If you have a user account you can login on this page.  If "
+"u> users only.<br>If you have a user account you can login on this page. If "
 "you don't have a user account, you can apply for one by clicking on the "
 "appropriate link below.<br>After verifying your information, the "
-"administrator will either approve or decline your account application.  You "
+"administrator will either approve or decline your account application. You "
 "will receive an email message when your application has been approved.</"
 "center></div><br/></li><li><b>Predefined text that states only family "
 "members can request a user account:</b><div class=\"list_value_wrap"
 "\"><center><b>Welcome to this Genealogy website</b><br>Access to this site "
 "is permitted to <u>family members only</u>.<br>If you have a user account "
-"you can login on this page.  If you don't have a user account, you can apply "
+"you can login on this page. If you don't have a user account, you can apply "
 "for one by clicking on the appropriate link below.<br>After verifying the "
 "information you provide, the administrator will either approve or decline "
-"your request for an account.  You will receive an email when your request is "
+"your request for an account. You will receive an email when your request is "
 "approved.</center></div></li></ul>"
 
-#: admin_site_config.php:460
+#: admin_site_config.php:369
 msgid "Custom welcome text"
 msgstr "Custom welcome text"
 
-#: admin_site_config.php:467
+#: admin_site_config.php:373
 msgid ""
 "If you have opted for custom welcome text, you can type that text here. To "
-"set this text for other languages, you must switch to that language, and "
-"visit this page again."
+"set this text for other languages you must switch to that language and visit "
+"this page again."
 msgstr ""
 "If you have opted for custom welcome text, you can type that text here. To "
-"set this text for other languages, you must switch to that language, and "
-"visit this page again."
+"set this text for other languages you must switch to that language and visit "
+"this page again."
 
-#: admin_site_config.php:474
+#: admin_site_config.php:378
+msgid "Allow visitors to request account registration"
+msgstr "Allow visitors to request account registration"
+
+#: admin_site_config.php:382
+msgid ""
+"Gives visitors the option of registering themselves for an account on the "
+"site. The visitor will receive an email message with a code to verify their "
+"application for an account. After verification the Administrator will have "
+"to approve the registration before it becomes active."
+msgstr ""
+"Gives visitors the option of registering themselves for an account on the "
+"site. The visitor will receive an email message with a code to verify their "
+"application for an account. After verification the Administrator will have "
+"to approve the registration before it becomes active."
+
+#: admin_site_config.php:387
 msgid "Show acceptable use agreement on «Request new user account» page"
 msgstr "Show acceptable use agreement on «Request new user account» page"
 
-#: admin_site_config.php:481
+#: admin_site_config.php:391
 msgid ""
 "When set to <b>Yes</b>, the following message will appear above the input "
 "fields on the «Request new user account» page:<div class=\"list_value_wrap"
@@ -1586,11 +1509,11 @@ msgstr ""
 "whom you are related, or to provide us with information on someone who "
 "should be listed on our site.</li></ul></div></div>"
 
-#: admin_site_config.php:491
+#: admin_site_config.php:398
 msgid "Select the languages your site will use"
 msgstr "Select the languages your site will use"
 
-#: admin_site_config.php:494 modules_v3/random_media/module.php:309
+#: admin_site_config.php:400 modules_v3/random_media/module.php:309
 #: modules_v3/random_media/module.php:359
 #: modules_v3/simpl_research/module.php:118
 msgid "Select all"
@@ -1601,7 +1524,7 @@ msgid "MySQL variables"
 msgstr "MySQL variables"
 
 #: admin_site_lang.php:33 admin_site_lang.php:108 admin_site_lang.php:133
-#: themes/_administration/header.php:153
+#: themes/_administration/header.php:152
 msgid "Custom translation"
 msgstr "Custom translation"
 
@@ -1646,7 +1569,7 @@ msgstr "Last updated "
 msgid "Are you sure you want to delete this translation?"
 msgstr "Are you sure you want to delete this translation?"
 
-#: admin_site_logs.php:30 themes/_administration/header.php:148
+#: admin_site_logs.php:30 themes/_administration/header.php:147
 msgid "Logs"
 msgstr "Logs"
 
@@ -1666,7 +1589,7 @@ msgstr "Message"
 
 #: admin_site_merge.php:35 admin_site_merge.php:110 admin_site_merge.php:166
 #: admin_site_merge.php:259 help_text.php:494
-#: themes/_administration/header.php:179
+#: themes/_administration/header.php:178
 msgid "Merge records"
 msgstr "Merge records"
 
@@ -1771,7 +1694,7 @@ msgid "next"
 msgstr "next"
 
 #: admin_site_other.php:34 admin_site_other.php:39
-#: themes/_administration/header.php:177
+#: themes/_administration/header.php:176
 msgid "Add unlinked records"
 msgstr "Add unlinked records"
 
@@ -1796,11 +1719,11 @@ msgstr "Create a new source"
 msgid "Create a new repository"
 msgstr "Create a new repository"
 
-#: admin_site_readme.php:30 themes/_administration/header.php:149
+#: admin_site_readme.php:30 themes/_administration/header.php:148
 msgid "README documentation"
 msgstr "README documentation"
 
-#: admin_site_use.php:35 themes/_administration/header.php:154
+#: admin_site_use.php:35 themes/_administration/header.php:153
 msgid "Server usage"
 msgstr "Server usage"
 
@@ -1869,7 +1792,7 @@ msgstr "Copy all the records from %1$s into %2$s"
 #. I18N: button label
 #: admin_trees_append.php:174 admin_trees_download.php:109
 #: admin_trees_download.php:168 admin_trees_manage.php:239
-#: admin_trees_renumber.php:280 admin_users.php:538 login.php:192 login.php:435
+#: admin_trees_renumber.php:280 admin_users.php:538 login.php:188 login.php:425
 #: modules_v3/login_block/module.php:100 setup.php:210 setup.php:234
 #: setup.php:306 setup.php:392 setup.php:451
 msgid "continue"
@@ -1933,7 +1856,7 @@ msgstr "No errors were found."
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s has a %3$s link to %4$s."
 
-#: admin_trees_config.php:35 admin_trees_config.php:268
+#: admin_trees_config.php:35 admin_trees_config.php:269
 msgid "Family tree configuration"
 msgstr "Family tree configuration"
 
@@ -2646,7 +2569,7 @@ msgid "Display surnames in all CAPS"
 msgstr "Display surnames in all CAPS"
 
 #: admin_trees_config.php:841 library/WT/MenuBar.php:121
-#: themes/_administration/header.php:224
+#: themes/_administration/header.php:223
 msgid "Lists"
 msgstr "Lists"
 
@@ -2754,7 +2677,7 @@ msgstr "The date and time of the last update"
 #. I18N: Name of a module/block
 #: admin_trees_config.php:876 admin_trees_config.php:1013
 #: library/WT/MenuBar.php:101 modules_v3/charts/help_text.php:34
-#: modules_v3/charts/module.php:35 themes/_administration/header.php:223
+#: modules_v3/charts/module.php:35 themes/_administration/header.php:222
 msgid "Charts"
 msgstr "Charts"
 
@@ -3591,7 +3514,7 @@ msgstr "Add the GEDCOM media path to filenames"
 msgid "Media filenames will be prefixed by %s."
 msgstr "Media filenames will be prefixed by %s."
 
-#: admin_trees_duplicates.php:40 themes/_administration/header.php:182
+#: admin_trees_duplicates.php:40 themes/_administration/header.php:181
 msgid "Find duplicate individuals"
 msgstr "Find duplicate individuals"
 
@@ -3665,12 +3588,11 @@ msgstr "Include married names: "
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588
 #: modules_v3/resource_fact/module.php:271
-#: modules_v3/resource_related_indi/module.php:254
+#: modules_v3/resource_related_indi/module.php:233
 #: modules_v3/simpl_research/module.php:124 modules_v3/bdm_report/report.bak:6
 #: modules_v3/bdm_report/report.bak:47 modules_v3/marriage_report/report.bak:6
 #: modules_v3/marriage_report/report.bak:36
 #: modules_v3/missing_facts_report/report.bak:52
-#: modules_v3/relative_ext_report/report.bak:48
 msgid "Name"
 msgstr "Name"
 
@@ -3678,7 +3600,7 @@ msgstr "Name"
 #: admin_trees_duplicates.php:223 admin_trees_sanity.php:84
 #: admin_trees_source.php:141 admin_trees_source.php:257
 #: library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1202
-#: modules_v3/resource_related_indi/module.php:255
+#: modules_v3/resource_related_indi/module.php:234
 #: modules_v3/bdm_report/report.bak:56
 #: modules_v3/family_group_report/report.bak:177
 #: modules_v3/family_group_report/report.bak:528
@@ -3693,7 +3615,6 @@ msgstr "Name"
 #: modules_v3/individual_ext_report/report.bak:548
 #: modules_v3/individual_ext_report/report.bak:584
 #: modules_v3/individual_ext_report/report.bak:620
-#: modules_v3/relative_ext_report/report.bak:54
 msgid "Birth"
 msgstr "Birth"
 
@@ -3701,7 +3622,7 @@ msgstr "Birth"
 #: admin_trees_duplicates.php:224 admin_trees_sanity.php:90
 #: admin_trees_source.php:260 library/WT/Gedcom/Tag.php:185
 #: modules_v3/fancy_treeview/module.php:1205
-#: modules_v3/resource_related_indi/module.php:259
+#: modules_v3/resource_related_indi/module.php:237
 #: modules_v3/bdm_report/report.bak:85
 #: modules_v3/family_group_report/report.bak:284
 #: modules_v3/family_group_report/report.bak:635
@@ -3716,7 +3637,6 @@ msgstr "Birth"
 #: modules_v3/individual_ext_report/report.bak:548
 #: modules_v3/individual_ext_report/report.bak:584
 #: modules_v3/individual_ext_report/report.bak:620
-#: modules_v3/relative_ext_report/report.bak:60
 msgid "Death"
 msgstr "Death"
 
@@ -3750,8 +3670,8 @@ msgstr "Date"
 #: modules_v3/resource_fact/module.php:249
 #: modules_v3/resource_fact/module.php:274
 #: modules_v3/resource_individual/module.php:174
-#: modules_v3/resource_related_indi/module.php:257
-#: modules_v3/resource_related_indi/module.php:261 search.php:176
+#: modules_v3/resource_related_indi/module.php:236
+#: modules_v3/resource_related_indi/module.php:239 search.php:176
 #: search.php:253 modules_v3/bdm_report/report.bak:7
 #: modules_v3/bdm_report/report.bak:132 modules_v3/bdm_report/report.bak:158
 #: modules_v3/bdm_report/report.bak:192
@@ -3779,7 +3699,7 @@ msgstr "Family tree exported to %s."
 msgid "Unable to create %s.  Check the permissions."
 msgstr "Unable to create %s.  Check the permissions."
 
-#: admin_trees_manage.php:31 themes/_administration/header.php:161
+#: admin_trees_manage.php:31 themes/_administration/header.php:160
 msgid "Manage family trees"
 msgstr "Manage family trees"
 
@@ -3985,7 +3905,7 @@ msgstr "The following places would be changed:"
 msgid "No places were found."
 msgstr "No places were found."
 
-#: admin_trees_renumber.php:27 themes/_administration/header.php:180
+#: admin_trees_renumber.php:27 themes/_administration/header.php:179
 msgid "Renumber family tree"
 msgstr "Renumber family tree"
 
@@ -4041,7 +3961,7 @@ msgstr "Caution!  This may take a long time.  Be patient."
 msgid "If your server times out, press F5 to continue"
 msgstr "If your server times out, press F5 to continue"
 
-#: admin_trees_sanity.php:40 themes/_administration/header.php:184
+#: admin_trees_sanity.php:40 themes/_administration/header.php:183
 msgid "Sanity check"
 msgstr "Sanity check"
 
@@ -4196,7 +4116,7 @@ msgstr[1] ""
 msgid "Citation"
 msgstr "Citation"
 
-#: admin_trees_unlinked.php:40 themes/_administration/header.php:183
+#: admin_trees_unlinked.php:40 themes/_administration/header.php:182
 msgid "Find unlinked individuals"
 msgstr "Find unlinked individuals"
 
@@ -4252,8 +4172,8 @@ msgstr "Automatically approve changes made by this user"
 msgid "Visible to other users when online"
 msgstr "Visible to other users when online"
 
-#: admin_users.php:225 help_text.php:665 login.php:305 login.php:347
-#: login.php:427
+#: admin_users.php:225 help_text.php:665 login.php:301 login.php:340
+#: login.php:417
 msgid "Comments"
 msgstr "Comments"
 
@@ -4276,7 +4196,7 @@ msgstr "Role"
 msgid "Restrict to immediate family"
 msgstr "Restrict to immediate family"
 
-#: admin_users.php:265 edituser.php:49 login.php:267
+#: admin_users.php:265 edituser.php:49 login.php:263
 msgid ""
 "Duplicate user name.  A user with that user name already exists.  Please "
 "choose another user name."
@@ -4284,7 +4204,7 @@ msgstr ""
 "Duplicate user name.  A user with that user name already exists.  Please "
 "choose another user name."
 
-#: admin_users.php:268 edituser.php:51 login.php:269
+#: admin_users.php:268 edituser.php:51 login.php:265
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr "Duplicate email address.  A user with that email already exists."
 
@@ -4325,7 +4245,7 @@ msgstr ""
 "their immediate family."
 
 #: admin_users.php:366 admin_users.php:562 edituser.php:138 help_text.php:660
-#: login.php:303 login.php:394
+#: login.php:299 login.php:384
 msgid "Real name"
 msgstr "Real name"
 
@@ -4339,7 +4259,7 @@ msgstr "Approved by administrator"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:178 help_text.php:536
 #: library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198
-#: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:720 login.php:399
+#: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:720 login.php:389
 #: setup.php:446
 msgid "Email address"
 msgstr "Email address"
@@ -4349,19 +4269,19 @@ msgid "Email verified"
 msgstr "Email verified"
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:415
+#: admin_users.php:385 login.php:405
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "Use at least %s character."
 msgstr[1] "Use at least %s characters."
 
-#: admin_users.php:389 edituser.php:169 help_text.php:606 login.php:422
+#: admin_users.php:389 edituser.php:169 help_text.php:606 login.php:412
 msgid "Confirm password"
 msgstr "Confirm password"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:423
+#: admin_users.php:390 login.php:413
 msgid "Type the password again."
 msgstr "Type the password again."
 
@@ -4430,7 +4350,7 @@ msgstr "Verified"
 msgid "Approved"
 msgstr "Approved"
 
-#: admin_users_bulk.php:35 themes/_administration/header.php:201
+#: admin_users_bulk.php:35 themes/_administration/header.php:200
 msgid "Send broadcast messages"
 msgstr "Send broadcast messages"
 
@@ -4613,7 +4533,6 @@ msgstr "Vital records"
 #: modules_v3/individual_ext_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:8
-#: modules_v3/relative_ext_report/report.bak:7
 msgid "All"
 msgstr "All"
 
@@ -4690,7 +4609,7 @@ msgstr "You do not have permission to view this page."
 #: modules_v3/resource_changes/module.php:255
 #: modules_v3/review_changes/module.php:35
 #: modules_v3/widget_review_changes/module.php:35
-#: themes/_administration/header.php:111 themes/colors/header.php:126
+#: themes/_administration/header.php:110 themes/colors/header.php:126
 #: themes/kiwitrees/header.php:135 themes/levy/header.php:118
 #: themes/webtrees/header.php:110 themes/xenea/header.php:118
 msgid "Pending changes"
@@ -7009,7 +6928,7 @@ msgid "Your Name:"
 msgstr "Your Name:"
 
 #: includes/authentication.php:239 includes/authentication.php:291
-#: login.php:304 message.php:137 modules_v3/contact/module.php:197
+#: login.php:300 message.php:137 modules_v3/contact/module.php:197
 #: modules_v3/widget_messages/module.php:87
 msgid "Email Address:"
 msgstr "Email Address:"
@@ -10306,7 +10225,6 @@ msgstr "Relationship to me"
 #: modules_v3/resource_related_indi/module.php:104
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:7
-#: modules_v3/relative_ext_report/report.bak:7
 msgid "Descendants"
 msgstr "Descendants"
 
@@ -10362,6 +10280,14 @@ msgstr ""
 #: modules_v3/login_block/module.php:59 themes/kiwitrees/header.php:145
 msgid "Login or Register"
 msgstr "Login or Register"
+
+#. I18N: Name of a module
+#: includes/functions/functions_print.php:331 login.php:128 login.php:168
+#: modules_v3/login_block/module.php:35 modules_v3/login_block/module.php:59
+#: modules_v3/login_block/module.php:79 themes/kiwitrees/header.php:140
+#: themes/kiwitrees/header.php:145
+msgid "Login"
+msgstr "Login"
 
 #: includes/functions/functions_print.php:343
 #: modules_v3/login_block/module.php:50 modules_v3/login_block/module.php:55
@@ -10670,7 +10596,6 @@ msgstr "Anniversary"
 #: includes/functions/functions_print_lists.php:271
 #: includes/functions/functions_print_lists.php:762 statisticsplot.php:781
 #: modules_v3/family_group_report/report.bak:753
-#: modules_v3/relative_ext_report/report.bak:121
 msgid "Children"
 msgstr "Children"
 
@@ -14836,9 +14761,7 @@ msgid "Marriage licence"
 msgstr "Marriage licence"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:257
-#: modules_v3/resource_related_indi/module.php:258
-#: modules_v3/bdm_report/report.bak:76
+#: library/WT/Gedcom/Tag.php:257 modules_v3/bdm_report/report.bak:76
 #: modules_v3/family_group_report/report.bak:372
 msgid "Marriage"
 msgstr "Marriage"
@@ -15015,7 +14938,6 @@ msgstr "Reference number"
 #. I18N: gedcom tag RELA
 #. I18N: Name of a module
 #: library/WT/Gedcom/Tag.php:306 modules_v3/chart_relationship/module.php:36
-#: modules_v3/resource_related_indi/module.php:253
 msgid "Relationship"
 msgstr "Relationship"
 
@@ -16507,26 +16429,21 @@ msgstr "(filtered from %s total entries)"
 msgid "Loading…"
 msgstr "Loading…"
 
-#: library/WT/MenuBar.php:37 library/WT/MenuBar.php:39
-#: themes/_administration/header.php:141
-msgid "Home"
-msgstr "Home"
-
 #: library/WT/MenuBar.php:71 modules_v3/widget_quicklinks/module.php:72
 msgid "My pedigree"
 msgstr "My pedigree"
 
 #: library/WT/MenuBar.php:77 modules_v3/widget_quicklinks/module.php:73
-#: themes/_administration/header.php:101
+#: themes/_administration/header.php:100
 msgid "My individual record"
 msgstr "My individual record"
 
-#: library/WT/MenuBar.php:144 themes/_administration/header.php:221
+#: library/WT/MenuBar.php:144 themes/_administration/header.php:220
 msgid "Reports"
 msgstr "Reports"
 
 #: library/WT/MenuBar.php:167 modules_v3/simpl_pages/module.php:415
-#: themes/_administration/header.php:222
+#: themes/_administration/header.php:221
 msgid "Resources"
 msgstr "Resources"
 
@@ -18018,7 +17935,7 @@ msgid_plural "%d Individuals"
 msgstr[0] "%d Individual"
 msgstr[1] "%d Individuals"
 
-#: login.php:74
+#: login.php:72
 msgid ""
 "This account has not been verified.  Please check your email for a "
 "verification message."
@@ -18026,7 +17943,7 @@ msgstr ""
 "This account has not been verified.  Please check your email for a "
 "verification message."
 
-#: login.php:78
+#: login.php:76
 msgid ""
 "This account has not been approved.  Please wait for an administrator to "
 "approve it."
@@ -18034,15 +17951,19 @@ msgstr ""
 "This account has not been approved.  Please wait for an administrator to "
 "approve it."
 
-#: login.php:83
+#: login.php:81
 msgid "The username or password is incorrect."
 msgstr "The username or password is incorrect."
 
-#: login.php:87
+#: login.php:85
 msgid "You cannot login because your browser does not accept cookies."
 msgstr "You cannot login because your browser does not accept cookies."
 
-#: login.php:138
+#: login.php:133
+msgid "Welcome to this genealogy website"
+msgstr "Welcome to this genealogy website"
+
+#: login.php:137
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to every visitor who has a user account.<br /><br /"
@@ -18060,7 +17981,7 @@ msgstr ""
 "will activate your account.  You will receive an email when your application "
 "has been approved."
 
-#: login.php:141
+#: login.php:140
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to <u>authorized</u> users only.<br /><br />If you "
@@ -18078,7 +17999,7 @@ msgstr ""
 "approve or decline your account application.  You will receive an email "
 "message when your application has been approved."
 
-#: login.php:144
+#: login.php:143
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to <u>family members only</u>.<br /><br />If you have "
@@ -18096,46 +18017,38 @@ msgstr ""
 "will either approve or decline your request for an account.  You will "
 "receive an email when your request is approved."
 
-#: login.php:147
-msgid ""
-"<center><b>Welcome to this Genealogy website</b></center><br />Access is "
-"permitted to users who have an account and a password for this website."
-msgstr ""
-"<center><b>Welcome to this Genealogy website</b></center><br />Access is "
-"permitted to users who have an account and a password for this website."
-
-#: login.php:175 modules_v3/login_block/module.php:82
+#: login.php:171 modules_v3/login_block/module.php:82
 msgid "Request new password"
 msgstr "Request new password"
 
-#: login.php:178 login.php:260 modules_v3/gedcom_block/module.php:60
+#: login.php:174 login.php:256 modules_v3/gedcom_block/module.php:60
 #: modules_v3/login_block/module.php:85
 msgid "Request new user account"
 msgstr "Request new user account"
 
-#: login.php:186 login.php:202 login.php:240
+#: login.php:182 login.php:198 login.php:236
 #: modules_v3/login_block/module.php:94
 msgid "Lost password request"
 msgstr "Lost password request"
 
-#: login.php:188 modules_v3/login_block/module.php:96
+#: login.php:184 modules_v3/login_block/module.php:96
 msgid "Username or email address"
 msgstr "Username or email address"
 
-#: login.php:224 login.php:330
+#: login.php:220 login.php:323
 #, php-format
 msgid "Hello %s ..."
 msgstr "Hello %s ..."
 
-#: login.php:225
+#: login.php:221
 msgid "A new password was requested for your user name."
 msgstr "A new password was requested for your user name."
 
-#: login.php:229
+#: login.php:225
 msgid "Recommendation:"
 msgstr "Recommendation:"
 
-#: login.php:230
+#: login.php:226
 msgid ""
 "Please click on the link below or paste it into your browser, login with the "
 "new password, and change it immediately to keep the integrity of your data "
@@ -18145,7 +18058,7 @@ msgstr ""
 "new password, and change it immediately to keep the integrity of your data "
 "secure."
 
-#: login.php:231
+#: login.php:227
 msgid ""
 "After you have logged in, select the «My Account» link under the your name "
 "in the menu and fill in the password fields to change your password."
@@ -18154,7 +18067,7 @@ msgstr ""
 "in the menu and fill in the password fields to change your password."
 
 #. I18N: %s is a username
-#: login.php:248
+#: login.php:244
 #, php-format
 msgid ""
 "A new password has been created and emailed to %s.  You can change this "
@@ -18163,28 +18076,28 @@ msgstr ""
 "A new password has been created and emailed to %s.  You can change this "
 "password after you login."
 
-#: login.php:272 message.php:72 modules_v3/contact/module.php:148
+#: login.php:268 message.php:72 modules_v3/contact/module.php:148
 msgid "You are not allowed to send messages that contain external links."
 msgstr "You are not allowed to send messages that contain external links."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.”
-#: login.php:273 message.php:73 modules_v3/contact/module.php:149
+#: login.php:269 message.php:73 modules_v3/contact/module.php:149
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "You should delete the “%1$s” from “%2$s” and try again."
 
-#: login.php:299 login.php:491
+#: login.php:295 login.php:481
 msgid "Hello Administrator ..."
 msgstr "Hello Administrator ..."
 
 #. I18N: %s is a server name/URL
-#: login.php:301
+#: login.php:297
 #, php-format
 msgid "A prospective user has registered at %s."
 msgstr "A prospective user has registered at %s."
 
-#: login.php:306
+#: login.php:302
 msgid ""
 "The user has been sent an e-mail with the information necessary to confirm "
 "the access request"
@@ -18192,7 +18105,7 @@ msgstr ""
 "The user has been sent an e-mail with the information necessary to confirm "
 "the access request"
 
-#: login.php:308
+#: login.php:304
 msgid ""
 "You will be informed by e-mail when this prospective user has confirmed the "
 "request.  You can then complete the process by activating the user name.  "
@@ -18201,25 +18114,15 @@ msgstr ""
 "You will be informed by e-mail when this prospective user has confirmed the "
 "request.  You can then complete the process by activating the user name.  "
 "The new user will not be able to login until you activate the account."
-
-#: login.php:310
-msgid ""
-"You will be informed by e-mail when this prospective user has confirmed the "
-"request.  After this, the user will be able to login without any action on "
-"your part."
-msgstr ""
-"You will be informed by e-mail when this prospective user has confirmed the "
-"request.  After this, the user will be able to login without any action on "
-"your part."
 
 #. I18N: %s is a server name/URL
-#: login.php:318
+#: login.php:311
 #, php-format
 msgid "New registration at %s"
 msgstr "New registration at %s"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:332
+#: login.php:325
 #, php-format
 msgid ""
 "You (or someone claiming to be you) has requested an account at %1$s using "
@@ -18228,11 +18131,11 @@ msgstr ""
 "You (or someone claiming to be you) has requested an account at %1$s using "
 "the email address %2$s."
 
-#: login.php:333
+#: login.php:326
 msgid "Information about the request is shown under the link below."
 msgstr "Information about the request is shown under the link below."
 
-#: login.php:334
+#: login.php:327
 msgid ""
 "Please click on the following link and fill in the requested data to confirm "
 "your request and email address."
@@ -18240,15 +18143,15 @@ msgstr ""
 "Please click on the following link and fill in the requested data to confirm "
 "your request and email address."
 
-#: login.php:346 login.php:468
+#: login.php:339 login.php:458
 msgid "Verification code:"
 msgstr "Verification code:"
 
-#: login.php:348
+#: login.php:341
 msgid "If you didn't request an account, you can just delete this message."
 msgstr "If you didn't request an account, you can just delete this message."
 
-#: login.php:349
+#: login.php:342
 msgid ""
 "You won't get any more email from this site, because the account request "
 "will be deleted automatically after seven days."
@@ -18257,17 +18160,17 @@ msgstr ""
 "will be deleted automatically after seven days."
 
 #. I18N: %s is a server name/URL
-#: login.php:350
+#: login.php:343
 #, php-format
 msgid "Your registration at %s"
 msgstr "Your registration at %s"
 
-#: login.php:364
+#: login.php:359
 #, php-format
 msgid "Hello %s ...<br />Thank you for your registration."
 msgstr "Hello %s ...<br />Thank you for your registration."
 
-#: login.php:366
+#: login.php:360
 #, php-format
 msgid ""
 "We will now send a confirmation email to the address <b>%s</b>. You must "
@@ -18288,26 +18191,7 @@ msgstr ""
 "account can be used.<br /><br />To login to this site, you will need to know "
 "your user name and password."
 
-#: login.php:368
-#, php-format
-msgid ""
-"We will now send a confirmation email to the address <b>%s</b>. You must "
-"verify your account request by following instructions in the confirmation "
-"email. If you do not confirm your account request within seven days, your "
-"application will be rejected automatically.  You will have to apply again."
-"<br /><br />After you have followed the instructions in the confirmation "
-"email, you can login.  To login to this site, you will need to know your "
-"user name and password."
-msgstr ""
-"We will now send a confirmation email to the address <b>%s</b>. You must "
-"verify your account request by following instructions in the confirmation "
-"email. If you do not confirm your account request within seven days, your "
-"application will be rejected automatically.  You will have to apply again."
-"<br /><br />After you have followed the instructions in the confirmation "
-"email, you can login.  To login to this site, you will need to know your "
-"user name and password."
-
-#: login.php:386
+#: login.php:376
 msgid ""
 "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing "
 "and submitting this form, you agree:<ul><li>to protect the privacy of living "
@@ -18321,34 +18205,34 @@ msgstr ""
 "whom you are related, or to provide us with information on someone who "
 "should be listed on our site.</li></ul></div>"
 
-#: login.php:392
+#: login.php:382
 msgid "All fields must be completed."
 msgstr "All fields must be completed."
 
-#: login.php:404
+#: login.php:394
 msgid "Desired user name"
 msgstr "Desired user name"
 
-#: login.php:409
+#: login.php:399
 msgid "Desired password"
 msgstr "Desired password"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:428
+#: login.php:418
 msgid "Explain why you are requesting an account."
 msgstr "Explain why you are requesting an account."
 
-#: login.php:452 login.php:458 login.php:522 login.php:526
+#: login.php:442 login.php:448 login.php:512 login.php:516
 msgid "User verification"
 msgstr "User verification"
 
-#: login.php:472 message.php:164 modules_v3/contact/module.php:228
+#: login.php:462 message.php:164 modules_v3/contact/module.php:228
 #: modules_v3/widget_messages/module.php:77
 msgid "Send"
 msgstr "Send"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:493
+#: login.php:483
 #, php-format
 msgid ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
@@ -18357,7 +18241,7 @@ msgstr ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
 "address (%3$s)."
 
-#: login.php:495
+#: login.php:485
 msgid ""
 "You now need to review the account details, and set the “approved” status to "
 "“yes”."
@@ -18365,26 +18249,26 @@ msgstr ""
 "You now need to review the account details, and set the “approved” status to "
 "“yes”."
 
-#: login.php:497
+#: login.php:487
 msgid "You do not have to take any action; the user can now login."
 msgstr "You do not have to take any action; the user can now login."
 
 #. I18N: %s is a server name/URL
-#: login.php:516
+#: login.php:506
 #, php-format
 msgid "New user at %s"
 msgstr "New user at %s"
 
-#: login.php:528
+#: login.php:518
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr "The data for the user <b>%s</b> was checked."
 
-#: login.php:549
+#: login.php:536
 msgid "You have confirmed your request to become a registered user."
 msgstr "You have confirmed your request to become a registered user."
 
-#: login.php:551
+#: login.php:538
 msgid ""
 "The Administrator has been informed.  As soon as he gives you permission to "
 "login, you can login with your user name and password."
@@ -18392,15 +18276,11 @@ msgstr ""
 "The Administrator has been informed.  As soon as he gives you permission to "
 "login, you can login with your user name and password."
 
-#: login.php:553
-msgid "You can now login with your user name and password."
-msgstr "You can now login with your user name and password."
-
-#: login.php:559
+#: login.php:544
 msgid "Data was not correct, please try again"
 msgstr "Data was not correct, please try again"
 
-#: login.php:565
+#: login.php:550
 msgid ""
 "Could not verify the information you entered.  Please try again or contact "
 "the site administrator for more information."
@@ -18429,7 +18309,6 @@ msgstr "Folder"
 #: modules_v3/bdm_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:9
 #: modules_v3/marriage_report/report.bak:10
-#: modules_v3/relative_ext_report/report.bak:8
 msgid "Sort order"
 msgstr "Sort order"
 
@@ -20172,20 +20051,20 @@ msgstr "An individual's timeline chart"
 #: modules_v3/charts/help_text.php:35
 msgid ""
 "This block allows a pedigree, descendancy, or hourglass chart to appear the "
-"Home page.  Because of space limitations, the charts should be placed only "
-"on the left side of the page or at full width.<br /><br />When this block "
-"appears the root person and the type of chart to be displayed are determined "
-"by the administrator.<br /><br />The behavior of these charts is identical "
-"to their behavior when they are called up from the menus.  Click on the box "
-"of a person to see more details about them."
+"Home.  Because of space limitations, the charts should be placed only on the "
+"left side of the page or at full width.<br /><br />When this block appears "
+"the root person and the type of chart to be displayed are determined by the "
+"administrator.<br /><br />The behavior of these charts is identical to their "
+"behavior when they are called up from the menus.  Click on the box of a "
+"person to see more details about them."
 msgstr ""
 "This block allows a pedigree, descendancy, or hourglass chart to appear the "
-"Home page.  Because of space limitations, the charts should be placed only "
-"on the left side of the page or at full width.<br /><br />When this block "
-"appears the root person and the type of chart to be displayed are determined "
-"by the administrator.<br /><br />The behavior of these charts is identical "
-"to their behavior when they are called up from the menus.  Click on the box "
-"of a person to see more details about them."
+"Home.  Because of space limitations, the charts should be placed only on the "
+"left side of the page or at full width.<br /><br />When this block appears "
+"the root person and the type of chart to be displayed are determined by the "
+"administrator.<br /><br />The behavior of these charts is identical to their "
+"behavior when they are called up from the menus.  Click on the box of a "
+"person to see more details about them."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:40
@@ -20785,7 +20664,7 @@ msgstr "cancel"
 msgid "Main menu title"
 msgstr "Main menu title"
 
-#: modules_v3/extra_menus/module.php:327 themes/_administration/header.php:216
+#: modules_v3/extra_menus/module.php:327 themes/_administration/header.php:215
 msgid "Menus"
 msgstr "Menus"
 
@@ -21477,25 +21356,21 @@ msgstr "at the age of %s"
 
 #: modules_v3/fancy_treeview/module.php:1213
 #: modules_v3/resource_individual/module.php:241
-#: modules_v3/resource_related_indi/module.php:189
-#: modules_v3/resource_related_indi/module.php:262 search.php:437
+#: modules_v3/resource_related_indi/module.php:240 search.php:437
 #: search_advanced.php:212 modules_v3/bdm_report/report.bak:116
 #: modules_v3/family_group_report/report.bak:462
 #: modules_v3/family_group_report/report.bak:722
 #: modules_v3/individual_ext_report/report.bak:235
-#: modules_v3/relative_ext_report/report.bak:62
 msgid "Father"
 msgstr "Father"
 
 #: modules_v3/fancy_treeview/module.php:1216
 #: modules_v3/resource_individual/module.php:252
-#: modules_v3/resource_related_indi/module.php:203
-#: modules_v3/resource_related_indi/module.php:263 search.php:474
+#: modules_v3/resource_related_indi/module.php:241 search.php:474
 #: search_advanced.php:249 modules_v3/bdm_report/report.bak:118
 #: modules_v3/family_group_report/report.bak:469
 #: modules_v3/family_group_report/report.bak:729
 #: modules_v3/individual_ext_report/report.bak:271
-#: modules_v3/relative_ext_report/report.bak:63
 msgid "Mother"
 msgstr "Mother"
 
@@ -21971,7 +21846,7 @@ msgstr "Linked to:"
 msgid "Gallery is empty. Please choose other gallery."
 msgstr "Gallery is empty. Please choose other gallery."
 
-#. I18N: Description of the “Home page” module
+#. I18N: Description of the “Home” module
 #: modules_v3/gedcom_block/module.php:40
 msgid "A greeting message for site visitors."
 msgstr "A greeting message for site visitors."
@@ -22707,7 +22582,7 @@ msgstr ""
 "the GoogleMap tables"
 
 #: modules_v3/googlemap/placehierarchy.php:170
-#: themes/_administration/header.php:178
+#: themes/_administration/header.php:177
 msgid "Update place names"
 msgstr "Update place names"
 
@@ -22966,8 +22841,8 @@ msgstr "Home menu"
 
 #. I18N: Description of the “Edit” module
 #: modules_v3/menu_homepage/module.php:40
-msgid "The Home page menu item"
-msgstr "The Home page menu item"
+msgid "The Home menu item"
+msgstr "The Home menu item"
 
 #. I18N: Name of a module/menu
 #: modules_v3/menu_languages/module.php:35
@@ -23257,7 +23132,6 @@ msgstr "Presentation style"
 #: modules_v3/bdm_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:9
 #: modules_v3/marriage_report/report.bak:10
-#: modules_v3/relative_ext_report/report.bak:8
 msgid "sort by name"
 msgstr "sort by name"
 
@@ -23286,21 +23160,6 @@ msgid ""
 msgstr ""
 "If you hide an empty block, you will not be able to change its configuration "
 "until it becomes visible by no longer being empty."
-
-#. I18N: Name of a report
-#. I18N: Name of a module.
-#: modules_v3/relative_ext_report/module.php:36
-#: modules_v3/resource_related_indi/module.php:36
-#: modules_v3/relative_ext_report/report.bak:4
-#: modules_v3/relative_ext_report/report.bak:41
-msgid "Related individuals"
-msgstr "Related individuals"
-
-#. I18N: Description of the “Related individuals” module
-#: modules_v3/relative_ext_report/module.php:42
-#: modules_v3/relative_ext_report/report.bak:5
-msgid "A report of the individuals that are closely related to an individual."
-msgstr "A report of the individuals that are closely related to an individual."
 
 #. I18N: Description of the “Families” module
 #: modules_v3/relatives/module.php:40
@@ -23450,6 +23309,11 @@ msgstr "Information"
 msgid "Family with partner"
 msgstr "Family with partner"
 
+#. I18N: Name of a module.
+#: modules_v3/resource_related_indi/module.php:36
+msgid "Related individuals"
+msgstr "Related individuals"
+
 #. I18N: Description of “Related individuals” module
 #: modules_v3/resource_related_indi/module.php:41
 msgid "A report of individuals closely related to a selected individual."
@@ -23458,44 +23322,39 @@ msgstr "A report of individuals closely related to a selected individual."
 #: modules_v3/resource_related_indi/module.php:100
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:7
-#: modules_v3/relative_ext_report/report.bak:7
 msgid "Parents and siblings"
 msgstr "Parents and siblings"
 
 #: modules_v3/resource_related_indi/module.php:101
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:7
-#: modules_v3/relative_ext_report/report.bak:7
 msgid "Spouses and children"
 msgstr "Spouses and children"
 
 #: modules_v3/resource_related_indi/module.php:102
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:7
-#: modules_v3/relative_ext_report/report.bak:7
 msgid "Direct line ancestors"
 msgstr "Direct line ancestors"
 
 #: modules_v3/resource_related_indi/module.php:103
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:7
-#: modules_v3/relative_ext_report/report.bak:7
 msgid "Direct line ancestors and their families"
 msgstr "Direct line ancestors and their families"
 
 #: modules_v3/resource_related_indi/module.php:120
 #: modules_v3/individual_ext_report/report.bak:7
 #: modules_v3/missing_facts_report/report.bak:7
-#: modules_v3/relative_ext_report/report.bak:7
 msgid "Choose relatives"
 msgstr "Choose relatives"
 
-#: modules_v3/resource_related_indi/module.php:173
+#: modules_v3/resource_related_indi/module.php:171
 #, php-format
 msgid "%1s related to %2s "
 msgstr "%1s related to %2s "
 
-#: modules_v3/resource_related_indi/module.php:252
+#: modules_v3/resource_related_indi/module.php:232
 msgid "No."
 msgstr "No."
 
@@ -24555,7 +24414,6 @@ msgstr "Download report"
 #. I18N: An option in a list-box
 #: reportengine.php:523 modules_v3/bdm_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:9
-#: modules_v3/relative_ext_report/report.bak:8
 msgid "sort by date of birth"
 msgstr "sort by date of birth"
 
@@ -24566,16 +24424,15 @@ msgstr "sort by date of marriage"
 
 #. I18N: An option in a list-box
 #: reportengine.php:525 modules_v3/bdm_report/report.bak:12
-#: modules_v3/relative_ext_report/report.bak:8
 msgid "sort by date of death"
 msgstr "sort by date of death"
 
-#: save.php:268
+#: save.php:266
 #, php-format
 msgid "Approval of account at %s"
 msgstr "Approval of account at %s"
 
-#: save.php:269
+#: save.php:267
 #, php-format
 msgid ""
 "The administrator at %s has approved your application for an account.  You "
@@ -24664,7 +24521,7 @@ msgstr "select none"
 msgid "invert selection"
 msgstr "invert selection"
 
-#: search.php:551 themes/_administration/header.php:158
+#: search.php:551 themes/_administration/header.php:157
 msgid "Family trees"
 msgstr "Family trees"
 
@@ -24974,17 +24831,21 @@ msgstr "You will use this to login to Kiwitrees."
 msgid "This must to be at least six characters.  It is case-sensitive."
 msgstr "This must to be at least six characters.  It is case-sensitive."
 
-#: setup.php:952
+#: setup.php:951
 msgid "An unexpected database error occurred."
 msgstr "An unexpected database error occurred."
 
-#: setup.php:954
+#: setup.php:953
 msgid ""
 "The Kiwitrees developers would be very interested to learn about this "
 "error.  If you contact them, they will help you resolve the problem."
 msgstr ""
 "The Kiwitrees developers would be very interested to learn about this "
 "error.  If you contact them, they will help you resolve the problem."
+
+#: site-maintenance.php:52
+msgid "Maintenance"
+msgstr "Maintenance"
 
 #: site-maintenance.php:66 site-offline.php:73 site-php-version.php:73
 #: site-unavailable.php:65
@@ -25495,7 +25356,6 @@ msgstr "Counts "
 #: modules_v3/bdm_report/report.bak:40
 #: modules_v3/family_group_report/report.bak:87
 #: modules_v3/marriage_report/report.bak:29
-#: modules_v3/relative_ext_report/report.bak:42
 msgid "of"
 msgstr "of"
 
@@ -25525,103 +25385,103 @@ msgstr "More"
 msgid "Less"
 msgstr "Less"
 
-#: themes/_administration/header.php:117 themes/kiwitrees/header.php:128
+#: themes/_administration/header.php:116 themes/kiwitrees/header.php:128
 msgid "Search trees"
 msgstr "Search trees"
 
 #. I18N: The local time on the server
-#: themes/_administration/header.php:125
+#: themes/_administration/header.php:124
 msgid "Server time"
 msgstr "Server time"
 
 #. I18N: The local time on the client/browser
-#: themes/_administration/header.php:128
+#: themes/_administration/header.php:127
 msgid "Client time"
 msgstr "Client time"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:131
+#: themes/_administration/header.php:130
 msgid "UTC"
 msgstr "UTC"
 
-#: themes/_administration/header.php:139
+#: themes/_administration/header.php:138
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: themes/_administration/header.php:145
+#: themes/_administration/header.php:144
 msgid "Site Administration"
 msgstr "Site Administration"
 
-#: themes/_administration/header.php:171
+#: themes/_administration/header.php:170
 msgid "Family tree tools"
 msgstr "Family tree tools"
 
-#: themes/_administration/header.php:175
+#: themes/_administration/header.php:174
 msgid "Check for GEDCOM errors"
 msgstr "Check for GEDCOM errors"
 
-#: themes/_administration/header.php:176
+#: themes/_administration/header.php:175
 msgid "Changes log"
 msgstr "Changes log"
 
-#: themes/_administration/header.php:181
+#: themes/_administration/header.php:180
 msgid "Append family tree"
 msgstr "Append family tree"
 
-#: themes/_administration/header.php:185
+#: themes/_administration/header.php:184
 msgid "Sources - review"
 msgstr "Sources - review"
 
-#: themes/_administration/header.php:186
+#: themes/_administration/header.php:185
 msgid "Sources - review citations"
 msgstr "Sources - review citations"
 
-#: themes/_administration/header.php:192
+#: themes/_administration/header.php:191
 msgid "Set the default blocks for new family trees"
 msgstr "Set the default blocks for new family trees"
 
-#: themes/_administration/header.php:192
+#: themes/_administration/header.php:191
 msgid "Set the default blocks"
 msgstr "Set the default blocks"
 
-#: themes/_administration/header.php:199
+#: themes/_administration/header.php:198
 msgid "Manage users"
 msgstr "Manage users"
 
-#: themes/_administration/header.php:200
+#: themes/_administration/header.php:199
 msgid "Add a new user"
 msgstr "Add a new user"
 
-#: themes/_administration/header.php:202
+#: themes/_administration/header.php:201
 msgid "Delete inactive users"
 msgstr "Delete inactive users"
 
-#: themes/_administration/header.php:207
+#: themes/_administration/header.php:206
 msgid "Manage media"
 msgstr "Manage media"
 
-#: themes/_administration/header.php:211
+#: themes/_administration/header.php:210
 msgid "Modules"
 msgstr "Modules"
 
-#: themes/_administration/header.php:213
+#: themes/_administration/header.php:212
 msgid "Manage modules"
 msgstr "Manage modules"
 
-#: themes/_administration/header.php:217
+#: themes/_administration/header.php:216
 msgid "Tabs"
 msgstr "Tabs"
 
-#: themes/_administration/header.php:218
+#: themes/_administration/header.php:217
 msgid "Blocks"
 msgstr "Blocks"
 
-#: themes/_administration/header.php:219 themes/webtrees/header.php:129
+#: themes/_administration/header.php:218 themes/webtrees/header.php:129
 #: themes/xenea/header.php:133
 msgid "Widgets"
 msgstr "Widgets"
 
-#: themes/_administration/header.php:232
+#: themes/_administration/header.php:231
 msgid "Tools"
 msgstr "Tools"
 
@@ -25786,7 +25646,6 @@ msgstr "Show lifespans"
 #: modules_v3/individual_ext_report/report.bak:6
 #: modules_v3/missing_facts_report/report.bak:6
 #: modules_v3/pedigree_report/report.bak:6
-#: modules_v3/relative_ext_report/report.bak:6
 msgid "Enter Individual ID"
 msgstr "Enter Individual ID"
 
@@ -25821,7 +25680,6 @@ msgstr "Show children of ancestors?"
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
-#: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
 msgid "Letter"
 msgstr "Letter"
@@ -25833,7 +25691,6 @@ msgstr "Letter"
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
-#: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
 msgid "A3"
 msgstr "A3"
@@ -25845,7 +25702,6 @@ msgstr "A3"
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
-#: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
@@ -25857,7 +25713,6 @@ msgstr "A4"
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
-#: modules_v3/relative_ext_report/report.bak:9
 msgctxt "paper size"
 msgid "Legal"
 msgstr "Legal"
@@ -25869,7 +25724,6 @@ msgstr "Legal"
 #: modules_v3/marriage_report/report.bak:11
 #: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
-#: modules_v3/relative_ext_report/report.bak:9
 msgid "Page size"
 msgstr "Page size"
 
@@ -25880,7 +25734,6 @@ msgstr "Page size"
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
-#: modules_v3/relative_ext_report/report.bak:10
 msgctxt "font name"
 msgid "Arial"
 msgstr "Arial"
@@ -25892,7 +25745,6 @@ msgstr "Arial"
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
-#: modules_v3/relative_ext_report/report.bak:10
 msgctxt "font name"
 msgid "DejaVu"
 msgstr "DejaVu"
@@ -25904,7 +25756,6 @@ msgstr "DejaVu"
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
-#: modules_v3/relative_ext_report/report.bak:10
 msgctxt "font name"
 msgid "Helvetica"
 msgstr "Helvetica"
@@ -25916,7 +25767,6 @@ msgstr "Helvetica"
 #: modules_v3/marriage_report/report.bak:12
 #: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
-#: modules_v3/relative_ext_report/report.bak:10
 msgid "Font"
 msgstr "Font"
 
@@ -25930,7 +25780,6 @@ msgstr "Ancestors of "
 #: modules_v3/individual_ext_report/report.bak:90
 #: modules_v3/marriage_report/report.bak:29
 #: modules_v3/missing_facts_report/report.bak:51
-#: modules_v3/relative_ext_report/report.bak:42
 msgid "Page"
 msgstr "Page"
 
@@ -26031,7 +25880,6 @@ msgstr "Death Date range end"
 
 #: modules_v3/bdm_report/report.bak:208
 #: modules_v3/missing_facts_report/report.bak:598
-#: modules_v3/relative_ext_report/report.bak:146
 msgid "Total individuals"
 msgstr "Total individuals"
 
@@ -26102,6 +25950,153 @@ msgstr "Orientation"
 #: modules_v3/pedigree_report/report.bak:737
 msgid "Pedigree Chart"
 msgstr "Pedigree Chart"
+
+#~ msgid "Home page"
+#~ msgstr "Home page"
+
+#~ msgid ""
+#~ "This folder will be used by kiwitrees to store media files, GEDCOM files, "
+#~ "temporary files, etc.  These files may contain private data, and should "
+#~ "not be made available over the internet."
+#~ msgstr ""
+#~ "This folder will be used by kiwitrees to store media files, GEDCOM files, "
+#~ "temporary files, etc.  These files may contain private data, and should "
+#~ "not be made available over the internet."
+
+#~ msgid "More / Less ...."
+#~ msgstr "More / Less ...."
+
+#~ msgid ""
+#~ "To protect this private data, kiwitrees uses an Apache configuration file "
+#~ "(.htaccess) which blocks all access to this folder.  If your web-server "
+#~ "does not support .htaccess files, and you cannot restrict access to this "
+#~ "folder, then you can select another folder, away from your web documents."
+#~ msgstr ""
+#~ "To protect this private data, kiwitrees uses an Apache configuration file "
+#~ "(.htaccess) which blocks all access to this folder.  If your web-server "
+#~ "does not support .htaccess files, and you cannot restrict access to this "
+#~ "folder, then you can select another folder, away from your web documents."
+
+#~ msgid ""
+#~ "If you select a different folder, you must also move all files (except "
+#~ "config.ini.php, index.php and .htaccess) from the existing folder to the "
+#~ "new folder."
+#~ msgstr ""
+#~ "If you select a different folder, you must also move all files (except "
+#~ "config.ini.php, index.php and .htaccess) from the existing folder to the "
+#~ "new folder."
+
+#~ msgid ""
+#~ "The folder can be specified in full (e.g. /home/user_name/"
+#~ "kiwitrees_data/) or relative to the installation folder (e.g. ../../"
+#~ "kiwitrees_data/)."
+#~ msgstr ""
+#~ "The folder can be specified in full (e.g. /home/user_name/"
+#~ "kiwitrees_data/) or relative to the installation folder (e.g. ../../"
+#~ "kiwitrees_data/)."
+
+#~ msgid "If you leave this setting empty, the default value will be used."
+#~ msgstr "If you leave this setting empty, the default value will be used."
+
+#~ msgid "Require an administrator to approve new user registrations"
+#~ msgstr "Require an administrator to approve new user registrations"
+
+#~ msgid ""
+#~ "If the option <b>Allow visitors to request account registration</b> is "
+#~ "enabled this setting controls whether the admin must approve the "
+#~ "registration. Setting this to <b>Yes</b> will require that all new users "
+#~ "first verify themselves and then be approved by an admin before they can "
+#~ "login. With this setting on <b>No</b>, the <b>User approved by Admin</b> "
+#~ "checkbox will be checked automatically when users verify their account, "
+#~ "thus allowing an immediate login afterwards without admin intervention."
+#~ msgstr ""
+#~ "If the option <b>Allow visitors to request account registration</b> is "
+#~ "enabled this setting controls whether the admin must approve the "
+#~ "registration. Setting this to <b>Yes</b> will require that all new users "
+#~ "first verify themselves and then be approved by an admin before they can "
+#~ "login. With this setting on <b>No</b>, the <b>User approved by Admin</b> "
+#~ "checkbox will be checked automatically when users verify their account, "
+#~ "thus allowing an immediate login afterwards without admin intervention."
+
+#~ msgid ""
+#~ "You can ignore the options below unless you have set <b>Messages</b> "
+#~ "above to <b>Use SMTP to send messages</b>"
+#~ msgstr ""
+#~ "You can ignore the options below unless you have set <b>Messages</b> "
+#~ "above to <b>Use SMTP to send messages</b>"
+
+#~ msgid "Standard header for custom welcome text"
+#~ msgstr "Standard header for custom welcome text"
+
+#~ msgid ""
+#~ "Choose to display a standard header for your custom welcome text on the "
+#~ "login page."
+#~ msgstr ""
+#~ "Choose to display a standard header for your custom welcome text on the "
+#~ "login page."
+
+#~ msgid ""
+#~ "When your users change language, this header will appear in the new "
+#~ "language. If set to <b>Yes</b>, the header will look like this:<div class="
+#~ "\"list_value_wrap\"><center><b>Welcome to this Genealogy website</"
+#~ "b><br>Access is permitted to users who have an account and a password for "
+#~ "this website.</center></div>"
+#~ msgstr ""
+#~ "When your users change language, this header will appear in the new "
+#~ "language. If set to <b>Yes</b>, the header will look like this:<div class="
+#~ "\"list_value_wrap\"><center><b>Welcome to this Genealogy website</"
+#~ "b><br>Access is permitted to users who have an account and a password for "
+#~ "this website.</center></div>"
+
+#~ msgid ""
+#~ "Here you can choose text to appear on the login screen. You must "
+#~ "determine which predefined text is most appropriate. You can also choose "
+#~ "to enter your own custom welcome text."
+#~ msgstr ""
+#~ "Here you can choose text to appear on the login screen. You must "
+#~ "determine which predefined text is most appropriate. You can also choose "
+#~ "to enter your own custom welcome text."
+
+#~ msgid ""
+#~ "<center><b>Welcome to this Genealogy website</b></center><br />Access is "
+#~ "permitted to users who have an account and a password for this website."
+#~ msgstr ""
+#~ "<center><b>Welcome to this Genealogy website</b></center><br />Access is "
+#~ "permitted to users who have an account and a password for this website."
+
+#~ msgid ""
+#~ "You will be informed by e-mail when this prospective user has confirmed "
+#~ "the request.  After this, the user will be able to login without any "
+#~ "action on your part."
+#~ msgstr ""
+#~ "You will be informed by e-mail when this prospective user has confirmed "
+#~ "the request.  After this, the user will be able to login without any "
+#~ "action on your part."
+
+#~ msgid ""
+#~ "We will now send a confirmation email to the address <b>%s</b>. You must "
+#~ "verify your account request by following instructions in the confirmation "
+#~ "email. If you do not confirm your account request within seven days, your "
+#~ "application will be rejected automatically.  You will have to apply again."
+#~ "<br /><br />After you have followed the instructions in the confirmation "
+#~ "email, you can login.  To login to this site, you will need to know your "
+#~ "user name and password."
+#~ msgstr ""
+#~ "We will now send a confirmation email to the address <b>%s</b>. You must "
+#~ "verify your account request by following instructions in the confirmation "
+#~ "email. If you do not confirm your account request within seven days, your "
+#~ "application will be rejected automatically.  You will have to apply again."
+#~ "<br /><br />After you have followed the instructions in the confirmation "
+#~ "email, you can login.  To login to this site, you will need to know your "
+#~ "user name and password."
+
+#~ msgid "You can now login with your user name and password."
+#~ msgstr "You can now login with your user name and password."
+
+#~ msgid ""
+#~ "A report of the individuals that are closely related to an individual."
+#~ msgstr ""
+#~ "A report of the individuals that are closely related to an individual."
 
 #~ msgid "<b>GUID</b> in this context is an acronym for «Globally Unique ID»."
 #~ msgstr "<b>GUID</b> in this context is an acronym for «Globally Unique ID»."
