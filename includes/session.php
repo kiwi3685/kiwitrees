@@ -46,23 +46,23 @@ define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/kiwitrees-static-
 // Optionally, load major JS libraries from Google’s public CDN
 define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js');
-	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
+	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js');
+	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js');
 } else {
 	define('WT_JQUERY_URL',			WT_STATIC_URL .'js/jquery.min.js');				    // 1.12.4	Updated 03-09-2016
 	define('WT_JQUERYUI_URL',		WT_STATIC_URL .'js/jquery-ui.min.js');			    // 1.12.0	Updated 03-09-2016
 }
-define('WT_JQUERY_COLORBOX_URL',	WT_STATIC_URL . 'js/jquery.colorbox-min.js');	    // 1.6.1   Updated 18-06-2015
-define('WT_JQUERY_DATATABLES_URL',	WT_STATIC_URL . 'js/jquery.dataTables.min.js');	    // 1.10.11 Updated 12-04-2016
+define('WT_JQUERY_COLORBOX_URL',	WT_STATIC_URL . 'js/jquery.colorbox-min.js');	    // 1.6.1	Updated 18-06-2015
+define('WT_JQUERY_DATATABLES_URL',	WT_STATIC_URL . 'js/jquery.dataTables.min.js');	    // 1.10.11	Updated 12-04-2016
 define('WT_JQUERY_DT_HTML5',		WT_STATIC_URL . 'js/buttons.html5.min.js');	    	// installed 08.05.2016
 define('WT_JQUERY_DT_BUTTONS',		WT_STATIC_URL . 'js/dataTables.buttons.min.js');	// installed 08.05.2016
-define('WT_JQUERY_DT_RESPONSIVE',	WT_STATIC_URL . 'js/dataTables.responsive.min.js'); // 2.0.2   Updated 12-04-2016
+define('WT_JQUERY_DT_RESPONSIVE',	WT_STATIC_URL . 'js/dataTables.responsive.min.js'); // 2.0.2	Updated 12-04-2016
 define('WT_JQUERY_JEDITABLE_URL',	WT_STATIC_URL . 'js/jquery.jeditable.js');		    // 1.7.3
 define('WT_JQUERY_WHEELZOOM_URL',	WT_STATIC_URL . 'js/jquery.wheelzoom.js');		    // 2.0.0
 define('WT_MODERNIZR_URL',			WT_STATIC_URL . 'js/modernizr.custom.js');		    // 2.6.2
 define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/kiwitrees.js');
-define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.min.js');	    // 1.18.18  Updated 18-06-2015
-define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');		    // 1.5pre	  Updatd 2010
+define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.min.js');	    // 1.18.18	Updated 18-06-2015
+define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');		    // 1.5pre	Updatd 2010
 define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
 define('WT_JQUERY_SHORTEN',			WT_STATIC_URL . 'js/jquery.shorten.js');
 
