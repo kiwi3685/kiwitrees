@@ -23,7 +23,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 
         <!-- load Galleria -->
-        <script src="../../galleria-1.4.2.min.js"></script>
+        <script src="../../galleria-1.4.5.min.js"></script>
 
     </head>
 <body>
@@ -106,19 +106,25 @@
                     data-description="Mendocino county, California, USA."
                 >
             </a>
-        </div>
+            <a href="https://vimeo.com/25750735">
+                <span class="video">Works for vimeo too.</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=gAeYCJZ_meY">
+                <span class="video">Works for youtube too.</span>
+            </a>
 
-        <p class="cred">Made by <a href="http://galleria.aino.se">Galleria</a>.</p>
+        </div>
+        <p class="cred">Made by <a href="http://galleria.io">Galleria</a>.</p>
     </div>
 
     <script>
+    $(function() {
+        // Load the classic theme
+        Galleria.loadTheme('galleria.classic.min.js');
 
-    // Load the classic theme
-    Galleria.loadTheme('galleria.classic.min.js');
-
-    // Initialize Galleria
-    Galleria.run('#galleria');
-
+        // Initialize Galleria
+        Galleria.run('#galleria');
+    });
     </script>
     </body>
 </html>

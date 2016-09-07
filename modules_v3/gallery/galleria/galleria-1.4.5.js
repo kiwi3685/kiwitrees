@@ -1,9 +1,9 @@
 /**
- * Galleria v 1.4.2 2014-08-07
+ * Galleria v 1.4.5 2016-09-04
  * http://galleria.io
  *
  * Licensed under the MIT license
- * https://raw.github.com/aino/galleria/master/LICENSE
+ * https://raw.github.com/worseisbetter/galleria/master/LICENSE
  *
  */
 
@@ -20,13 +20,13 @@ var doc    = window.document,
     protoArray = Array.prototype,
 
 // internal constants
-    VERSION = 1.41,
+    VERSION = 1.45,
     DEBUG = true,
     TIMEOUT = 30000,
     DUMMY = false,
     NAV = navigator.userAgent.toLowerCase(),
     HASH = window.location.hash.replace(/#\//, ''),
-    PROT = window.location.protocol,
+    PROT = window.location.protocol == "file:" ? "http:" : window.location.protocol,
     M = Math,
     F = function(){},
     FALSE = function() { return false; },
@@ -117,25 +117,18 @@ var doc    = window.document,
         youtube: {
             reg: /https?:\/\/(?:[a-zA_Z]{2,3}.)?(?:youtube\.com\/watch\?)((?:[\w\d\-\_\=]+&amp;(?:amp;)?)*v(?:&lt;[A-Z]+&gt;)?=([0-9a-zA-Z\-\_]+))/i,
             embed: function() {
-                return 'http://www.youtube.com/embed/' + this.id;
+                return PROT + '//www.youtube.com/embed/' + this.id;
             },
-            getUrl: function() {
-                return PROT + '//gdata.youtube.com/feeds/api/videos/' + this.id + '?v=2&alt=json-in-script&callback=?';
+            get_thumb: function( data ) {
+                return PROT + '//img.youtube.com/vi/'+this.id+'/default.jpg';
             },
-            get_thumb: function(data) {
-                return data.entry.media$group.media$thumbnail[2].url;
-            },
-            get_image: function(data) {
-                if ( data.entry.yt$hd ) {
-                    return PROT + '//img.youtube.com/vi/'+this.id+'/maxresdefault.jpg';
-                }
-                return data.entry.media$group.media$thumbnail[3].url;
-            }
+            get_image: function( data ) {
+                return PROT + '//img.youtube.com/vi/'+this.id+'/hqdefault.jpg';            }
         },
         vimeo: {
             reg: /https?:\/\/(?:www\.)?(vimeo\.com)\/(?:hd#)?([0-9]+)/i,
             embed: function() {
-                return 'http://player.vimeo.com/video/' + this.id;
+                return PROT + '//player.vimeo.com/video/' + this.id;
             },
             getUrl: function() {
                 return PROT + '//vimeo.com/api/v2/video/' + this.id + '.json?callback=?';
@@ -182,13 +175,19 @@ var doc    = window.document,
 
         $.extend( this, _video[type] );
 
-        $.getJSON( this.getUrl(), function(data) {
+        _videoThumbs = function(data) {
             self.data = data;
             $.each( self.readys, function( i, fn ) {
                 fn( self.data );
             });
             self.readys = [];
-        });
+        };
+
+        if ( this.hasOwnProperty('getUrl') ) {
+            $.getJSON( this.getUrl(), _videoThumbs);
+        } else {
+            window.setTimeout(_videoThumbs, 400);
+        }
 
         this.getMedia = function( type, callback, fail ) {
             fail = fail || F;
@@ -1141,7 +1140,7 @@ $win.on( 'orientationchange', function() {
 
     @example var gallery = new Galleria();
 
-    @author http://aino.se
+    @author http://wib.io
 
     @requires jQuery
 
