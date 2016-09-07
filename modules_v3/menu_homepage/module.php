@@ -37,7 +37,7 @@ class menu_homepage_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('The Home page menu item');
+		return /* I18N: Description of the “Edit” module */ WT_I18N::translate('The Home menu item');
 	}
 
 	// Implement WT_Module_Menu

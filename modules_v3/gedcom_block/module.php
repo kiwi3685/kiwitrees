@@ -32,12 +32,12 @@ if (!defined('WT_WEBTREES')) {
 class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Home page');
+		return /* I18N: Name of a module */ WT_I18N::translate('Home');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Home page” module */ WT_I18N::translate('A greeting message for site visitors.');
+		return /* I18N: Description of the “Home” module */ WT_I18N::translate('A greeting message for site visitors.');
 	}
 
 	// Extend class WT_Module_Block
