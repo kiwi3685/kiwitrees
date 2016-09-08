@@ -85,7 +85,7 @@ $sid = WT_Filter::post('source');
 	</div>
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="go" value="1">
-		<div id="source_options">
+		<div id="admin_options">
 			<div class="input">
 				<label><?php echo WT_I18N::translate('Family tree'); ?></label>
 				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
@@ -94,12 +94,10 @@ $sid = WT_Filter::post('source');
 				<label><?php echo WT_I18N::translate('Source'); ?></label>
 				<input type="text" id="source" name="source" value="<?php echo $sid ? $sid : ''; ?>" dir="ltr" class="" data-autocomplete-type="SOUR" autocomplete="off">
 			</div>
-			<div class="input">
-				<button type="submit" class="btn btn-primary" style="float: none; margin: 0;">
-					<i class="fa fa-check"></i>
-					<?php echo $controller->getPageTitle(); ?>
-				</button>
-			</div>
+			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-check"></i>
+				<?php echo $controller->getPageTitle(); ?>
+			</button>
 		</div>
 	</form>
 	<hr class="clearfloat">

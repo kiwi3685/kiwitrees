@@ -1428,9 +1428,12 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
 
 /* CITATION REVIEW */
-#source_options .input {display: inline-block; margin: 20px;}
-#source_options label {display: block;}
-#source_options select {height: 33px;}
+#admin_options .input {display: inline-block; margin: 20px;}
+#admin_options label {display: block;}
+#admin_options select {height: 33px;}
+#admin_options button {float: none; margin: 0;}
+#admin_options span label {display: inline;}
+
 #source_list table a {color: #75ABFF; font-weight: 600;}
 
 /* RESPONSIVE layout adjustments */

@@ -49,7 +49,12 @@ $controller
 	</p>
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<input type="hidden" name="go" value="1">
-		<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+		<div class="admin_options">
+			<div class="input">
+				<label><?php echo WT_I18N::translate('Family tree'); ?></label>
+				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+			</div>
+		</div>
 		<div id="sanity_options">
 			<h4><?php echo WT_I18N::translate('Date discrepancies'); ?></h4>
 			<ul>

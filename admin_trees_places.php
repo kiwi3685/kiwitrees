@@ -99,16 +99,24 @@ $controller
 		<?php echo WT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
 	</p>
 	<form method="post">
-		<label for "ged"><?php echo WT_I18N::translate('Family tree'); ?></label>
-		<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, 'autofocus'); ?>
-		<label for="search"><?php echo WT_I18N::translate('Search for'); ?></label>
-		<input name="search" id="search" type="text" data-autocomplete-type="PLAC" value="<?php echo WT_Filter::escapeHtml($search); ?>" required><?php echo print_specialchar_link('search'); ?>
-		<label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label>
-		<input name="replace" id="replace" type="text" data-autocomplete-type="PLAC" value="<?php echo WT_Filter::escapeHtml($replace); ?>" required><?php echo print_specialchar_link('replace'); ?>
-		<p>
-			<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
-			<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
-		</p>
+		<div id="admin_options">
+			<div class="input">
+				<label><?php echo WT_I18N::translate('Family tree'); ?></label>
+				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+			</div>
+			<div class="input">
+				<label for="search"><?php echo WT_I18N::translate('Search for'); ?></label>
+				<input name="search" id="search" type="text" data-autocomplete-type="PLAC" value="<?php echo WT_Filter::escapeHtml($search); ?>" required><?php echo print_specialchar_link('search'); ?>
+			</div>
+			<div class="input">
+				<label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label>
+				<input name="replace" id="replace" type="text" data-autocomplete-type="PLAC" value="<?php echo WT_Filter::escapeHtml($replace); ?>" required><?php echo print_specialchar_link('replace'); ?>
+			</div>
+			<p>
+				<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
+				<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
+			</p>
+		</div>
 	</form>
 
 	<p class="error clearfloat">

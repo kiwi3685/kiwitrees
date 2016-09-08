@@ -126,7 +126,7 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 					</button>
 				</form>
 			</div>
-			<hr  class="noprint" style="clear:both;">
+			<hr class="noprint" style="clear:both;">
 			<!-- end of form -->
 			<?php if ($go == 1) {
 				$controller
