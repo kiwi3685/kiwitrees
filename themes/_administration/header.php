@@ -30,7 +30,6 @@ $this
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
 	->addExternalJavascript(WT_JQUERY_WHEELZOOM_URL)
 	->addExternalJavascript(WT_JQUERY_AUTOSIZE)
-	->addExternalJavascript(WT_JQUERY_SHORTEN)
 	->addInlineJavascript('
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
@@ -40,11 +39,6 @@ $this
 			}
 		});
 		jQuery("textarea").autosize();
-		jQuery(".helpcontent").shorten({
-		    showChars: 300,
-			moreText: "' . WT_I18N::translate('More') . '",
-			lessText: "' . WT_I18N::translate('Less') . '"
-		});
 		jQuery("#adminAccordion").accordion({
 			active:0,
 			heightStyle: "content",
@@ -183,6 +177,7 @@ echo '			<p><a ', (WT_SCRIPT_NAME == "admin_trees_manage.php" ? 'class="current"
 					"admin_trees_sanity.php"		=> WT_I18N::translate('Sanity check'),
 					"admin_trees_source.php"		=> WT_I18N::translate('Sources - review'),
 					"admin_trees_sourcecite.php"	=> WT_I18N::translate('Sources - review citations'),
+					"admin_trees_missing.php"		=> WT_I18N::translate('Missing data'),
 				);
 				asort($ft_tools);
 				foreach ($ft_tools as $file=>$title) {

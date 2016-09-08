@@ -40,6 +40,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		$this
 			->addExternalJavascript(WT_JQUERY_URL)
 			->addExternalJavascript(WT_JQUERYUI_URL)
+			->addExternalJavascript(WT_JQUERY_SHORTEN)
 			->addExternalJavascript(WT_WEBTREES_JS_URL);
 	}
 
@@ -180,6 +181,17 @@ class WT_Controller_Page extends WT_Controller_Base {
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
 		');
+
+		// Common help_content shortening script
+		$this->addInlineJavascript('
+			jQuery(".helpcontent").shorten({
+			    showChars: 300,
+				moreText: "' . WT_I18N::translate('More') . '",
+				lessText: "' . WT_I18N::translate('Less') . '"
+			});
+		');
+
+
 
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT . $headerfile;
