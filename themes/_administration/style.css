@@ -86,7 +86,7 @@ button {
 
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
-.ui-widget-content a.current {color:#75abff; font-weight:bold;}
+.ui-widget-content a.current {color:#3383bb; font-weight:bold;}
 .ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:#ff0000; cursor:pointer;}
 .ui-widget-header {padding:5px;}
 .ui-progressbar-value {height:60% !important; background:#d3d3d3 !important;}
@@ -912,7 +912,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 /* BATCH UPDATE MODULE */
 #batch_update a {
-	color: #75abff;
+	color: #3383bb;
 }
 #batch_update label {
 	display: block;
@@ -949,7 +949,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 .added_text {
 	background:#ffff00;
-	color:#75abff;
+	color:#3383bb;
 }
 .deleted_text {
 	text-decoration:line-through;
@@ -1061,7 +1061,7 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 
 #editplaces-page label a,
 #editplaces-page #flagsDiv a {
-	color: #75abff;
+	color: #3383bb;
 	font-size: initial;
 	font-weight: bold;
 }
@@ -1415,7 +1415,7 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #calendar_utilities form {width:100%; margin:auto 30px;}
 
 /* SANITY CHECK */
-#sanity_check a {color: #75ABFF;}
+#sanity_check a {color: #3383bb;}
 #sanity_check h5 {clear: both; font-size: 1.0em; margin: 0;}
 #sanity_check li {list-style-type: none;}
 #sanity_check .first  {display: inline-block; width: 300px;}
@@ -1430,11 +1430,47 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 /* CITATION REVIEW */
 #admin_options .input {display: inline-block; margin: 20px;}
 #admin_options label {display: block;}
-#admin_options select {height: 33px;}
+#admin_options select {height: 33px; min-width: 80px;}
 #admin_options button {float: none; margin: 0;}
 #admin_options span label {display: inline;}
 
-#source_list table a {color: #75ABFF; font-weight: 600;}
+#source_list table a,
+#missing_data-page table a {
+	color: #3383bb;
+	font-weight: 600;
+}
+
+#missing_data-page h3 {
+	margin-bottom: 2px;
+}
+
+/* print layout adjustments */
+@media print {
+	#admin_head,
+	#admin_footer,
+	#admin_menu,
+	.fg-toolbar,
+	.noprint {
+		display: none !important;
+	}
+	#admin_content,
+	#admin_content.ui-widget-content {
+		border: none;
+		background: none;
+		margin: 0;
+		padding: 10px;
+		min-width: auto;
+		min-height: auto;
+		overflow: auto;
+		width: 100%;
+	}
+	#admin_content table,
+	#admin_content th,
+	#admin_content td {
+		border: 1px solid;
+		border-collapse: collapse;
+	}
+}
 
 /* RESPONSIVE layout adjustments */
 @media (max-width: 350px) {

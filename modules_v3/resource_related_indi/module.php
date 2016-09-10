@@ -102,7 +102,7 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 			'direct-ancestors'	=> WT_I18N::translate('Direct line ancestors'),
 			'ancestors'			=> WT_I18N::translate('Direct line ancestors and their families'),
 			'descendants'		=> WT_I18N::translate('Descendants'),
-			'all'				=> WT_I18N::translate('All')
+			'all'				=> WT_I18N::translate('All relatives')
 		);
 
 		?>
