@@ -298,40 +298,61 @@ $controller
 				}
 			}
 			// prepare final list
-			$missing_events	= 0;
-			$total_events	= 0;
-			$result			= array();
-			$check			= array();
+			$total_individuals	= 0;
+			$total_indi_events	= 0;
+			$ind_missing_events	= 0;
+			$total_families		= 0;
+			$total_fam_events	= 0;
+			$fam_missing_events	= 0;
+			$total_matches		= 0;
+			$result				= array();
+			$check				= array();
 
 			foreach ($list as $relative) {
+				$individual	= false;
+				$fam_record = array();
+				foreach($selected_facts as $key){
+			        if(array_key_exists($key, $famfacts)) {
+						$ct = preg_match_all('/\n1 FAMS @(.+)@/', $relative->getGedcomRecord(), $matches, PREG_SET_ORDER); // collect family info for FAM records ($matches)
+						foreach ($matches as $match) {
+							if (!in_array($match[1], $check)) {
+								$total_families ++;
+								$total_matches = $total_matches + 1;
+								$check[] = $match[1]; // avoid duplicate data from both spouses
+								$fam_record[] = WT_Family::getInstance($match[1]);
+							}
+						}
+					}
+				}
 				// BIRTH
 				if (in_array('fbirt', $selected_facts)) {
 					// Can't use getBirthDate(), as this also gives BAP/CHR events
-					$total_events = $total_events + 2;
+					$total_indi_events = $total_indi_events + 2;
 					$event = $relative->getFactByType('BIRT');
 					if ($event && $event->getDate()->JD() != 0) {
 						$date = '';
 					} else {
 						$date = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					if ($event && $event->getPlace()) {
 						$place = '';
 					} else {
 						$place = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					// BIRT:SOUR
 					$source = '';
 					if (in_array('fsour', $selected_facts)) {
-						$total_events = $total_events + 1;
+						$total_indi_events = $total_indi_events + 1;
 						$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
 						if ($ct == 0) {
 							$source = 1;
-							$missing_events ++;
+							$ind_missing_events ++;
 						}
 					}
 					if ($date == 1 || $place == 1 || $source == 1) {
+						$individual = true;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$date	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BIRT:DATE') : $result[$relative->getXref()]['fact'][] = '';
 						$place	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BIRT:PLAC') : $result[$relative->getXref()]['fact'][] = '';
@@ -341,31 +362,32 @@ $controller
 				// DEATH
 				if (in_array('fdeat', $selected_facts)) {
 					// Can't use getDeathDate(), as this also gives BUR/CREM events
-					$total_events = $total_events + 2;
+					$total_indi_events = $total_indi_events + 2;
 					$event = $relative->getFactByType('DEAT');
 					if ($event && $event->getDate()->JD() != 0) {
 						$date = '';
 					} else {
 						$date = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					if ($event && $event->getPlace()) {
 						$place = '';
 					} else {
 						$place = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					//DEAT:SOUR
 					$source = '';
 					if (in_array('fsour', $selected_facts)) {
-						$total_events = $total_events + 1;
+						$total_indi_events = $total_indi_events + 1;
 						$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
 						if ($ct == 0) {
 							$source = 1;
-							$missing_events ++;
+							$ind_missing_events ++;
 						}
 					}
 					if ($date == 1 || $place == 1 || $source == 1) {
+						$individual = true;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$date	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('DEAT:DATE') : $result[$relative->getXref()]['fact'][] = '';
 						$place	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('DEAT:PLAC') : $result[$relative->getXref()]['fact'][] = '';
@@ -374,7 +396,7 @@ $controller
 				}
 				// BAPTISM / CHRISTENING
 				if (in_array('fbapm', $selected_facts)) {
-					$total_events = $total_events + 2;
+					$total_indi_events = $total_indi_events + 2;
 					$chr	= $relative->getFactByType('CHR');
 					$bapm	= $relative->getFactByType('BAPM');
 					if (!$chr) {
@@ -392,25 +414,26 @@ $controller
 						$date = '';
 					} else {
 						$date = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					if ($event && $event->getPlace()) {
 						$place = '';
 					} else {
 						$place = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					// BAPM/CHR:SOUR
 					$source = '';
 					if (in_array('fsour', $selected_facts)) {
-						$total_events = $total_events + 1;
+						$total_indi_events = $total_indi_events + 1;
 						$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
 						if ($ct == 0) {
 							$source = 1;
-							$missing_events ++;
+							$ind_missing_events ++;
 						}
 					}
 					if ($date == 1 || $place == 1|| $source == 1) {
+						$individual = true;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$date	== 1 ? $result[$relative->getXref()]['fact'][] = $date_label : $result[$relative->getXref()]['fact'][] = '';
 						$place	== 1 ? $result[$relative->getXref()]['fact'][] = $place_label : $result[$relative->getXref()]['fact'][] = '';
@@ -419,31 +442,32 @@ $controller
 				}
 				// BARM - male only
 				if (in_array('fbarm', $selected_facts) && $relative->getSex() == 'M') {
-					$total_events = $total_events + 2;
+					$total_indi_events = $total_indi_events + 2;
 					$event = $relative->getFactByType('BARM');
 					if ($event && $event->getDate()->JD() != 0) {
 						$date = '';
 					} else {
 						$date = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					if ($event && $event->getPlace()) {
 						$place = '';
 					} else {
 						$place = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					// BARM:SOUR
 					$source = '';
 					if (in_array('fsour', $selected_facts)) {
-						$total_events = $total_events + 1;
+						$total_indi_events = $total_indi_events + 1;
 						$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
 						if ($ct == 0) {
 							$source = 1;
-							$missing_events ++;
+							$ind_missing_events ++;
 						}
 					}
 					if ($date == 1 || $place == 1 || $source == 1) {
+						$individual = true;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$date	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BARM:DATE') : $result[$relative->getXref()]['fact'][] = '';
 						$place	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BARM:PLAC') : $result[$relative->getXref()]['fact'][] = '';
@@ -452,31 +476,32 @@ $controller
 				}
 				// BASM - female only
 				if (in_array('fbasm', $selected_facts) && $relative->getSex() == 'F') {
-					$total_events = $total_events + 2;
+					$total_indi_events = $total_indi_events + 2;
 					$event = $relative->getFactByType('BASM');
 					if ($event && $event->getDate()->JD() != 0) {
 						$date = '';
 					} else {
 						$date = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					if ($event && $event->getPlace()) {
 						$place = '';
 					} else {
 						$place = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					// BASM:SOUR
 					$source = '';
 					if (in_array('fsour', $selected_facts)) {
-						$total_events = $total_events + 1;
+						$total_indi_events = $total_indi_events + 1;
 						$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
 						if ($ct == 0) {
 							$source = 1;
-							$missing_events ++;
+							$ind_missing_events ++;
 						}
 					}
 					if ($date == 1 || $place == 1 || $source == 1) {
+						$individual = true;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$date	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BASM:DATE') : $result[$relative->getXref()]['fact'][] = '';
 						$place	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BASM:PLAC') : $result[$relative->getXref()]['fact'][] = '';
@@ -485,31 +510,32 @@ $controller
 				}
 				// CONFIRMATION
 				if (in_array('fconf', $selected_facts)) {
-					$total_events = $total_events + 2;
+					$total_indi_events = $total_indi_events + 2;
 					$event = $relative->getFactByType('CONF');
 					if ($event && $event->getDate()->JD() != 0) {
 						$date = '';
 					} else {
 						$date = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					if ($event && $event->getPlace()) {
 						$place = '';
 					} else {
 						$place = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					// CONF:SOUR
 					$source = '';
 					if (in_array('fsour', $selected_facts)) {
-						$total_events = $total_events + 1;
+						$total_indi_events = $total_indi_events + 1;
 						$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
 						if ($ct == 0) {
 							$source = 1;
-							$missing_events ++;
+							$ind_missing_events ++;
 						}
 					}
 					if ($date == 1 || $place == 1 || $source == 1) {
+						$individual = true;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$date	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('CONF:DATE') : $result[$relative->getXref()]['fact'][] = '';
 						$place	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('CONF:PLAC') : $result[$relative->getXref()]['fact'][] = '';
@@ -518,31 +544,32 @@ $controller
 				}
 				// FIRST COMMUNION
 				if (in_array('ffcom', $selected_facts)) {
-					$total_events = $total_events + 2;
+					$total_indi_events = $total_indi_events + 2;
 					$event = $relative->getFactByType('FCOM');
 					if ($event && $event->getDate()->JD() != 0) {
 						$date = '';
 					} else {
 						$date = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					if ($event && $event->getPlace()) {
 						$place = '';
 					} else {
 						$place = 1;
-						$missing_events ++;
+						$ind_missing_events ++;
 					}
 					// FCOM:SOUR
 					$source = '';
 					if (in_array('fsour', $selected_facts)) {
-						$total_events = $total_events + 1;
+						$total_indi_events = $total_indi_events + 1;
 						$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
 						if ($ct == 0) {
 							$source = 1;
-							$missing_events ++;
+							$ind_missing_events ++;
 						}
 					}
 					if ($date == 1 || $place == 1 || $source == 1) {
+						$individual = true;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$date	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('FCOM:DATE') : $result[$relative->getXref()]['fact'][] = '';
 						$place	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('FCOM:PLAC') : $result[$relative->getXref()]['fact'][] = '';
@@ -551,136 +578,123 @@ $controller
 				}
 				// RELIGION
 				if (in_array('freli', $selected_facts)) {
-					$total_events = $total_events + 1;
+					$total_indi_events = $total_indi_events + 1;
 					$event = $relative->getFactByType('RELI');
 					if (!$event) {
+						$individual = true;
+						$ind_missing_events++;
 						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
 						$result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('RELI');
-						$missing_events ++;
 					}
 				}
 				// ENGAGEMENT (checking FAM records openssl_encrypt)
 				if (in_array('fenga', $selected_facts)) {
-					$total_events = $total_events + 2;
-					preg_match_all('/\n1 FAMS @(.+)@/', $relative->getGedcomRecord(), $matches, PREG_SET_ORDER);
-					foreach ($matches as $match) {
-						if (!in_array($match[1], $check)) {
-							$check[] = $match[1]; // avoid duplicate data from both spouses
-							$fam_record = WT_Family::getInstance($match[1]);
-							$event = $fam_record->getFactByType('ENGA');
-							if ($event && $event->getDate()->JD() != 0) {
-								$date = '';
-							} else {
-								$date = 1;
-								$missing_events ++;
+					foreach ($fam_record as $family) {
+						$total_fam_events = $total_fam_events + 2;
+						$event = $family->getFactByType('ENGA');
+						if ($event && $event->getDate()->JD() != 0) {
+							$date = '';
+						} else {
+							$date = 1;
+							$fam_missing_events ++;
+						}
+						if ($event && $event->getPlace()) {
+							$place = '';
+						} else {
+							$place = 1;
+							$fam_missing_events ++;
+						}
+						// ENGA:SOUR
+						$source = '';
+						if (in_array('fsour', $selected_facts)) {
+							$total_fam_events = $total_fam_events + 1;
+							$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
+							if ($ct == 0) {
+								$source = 1;
+								$fam_missing_events ++;
 							}
-							if ($event && $event->getPlace()) {
-								$place = '';
-							} else {
-								$place = 1;
-								$missing_events ++;
-							}
-							// ENGA:SOUR
-							$source = '';
-							if (in_array('fsour', $selected_facts)) {
-								$total_events = $total_events + 1;
-								$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
-								if ($ct == 0) {
-									$source = 1;
-									$missing_events ++;
-								}
-							}
-							if ($date == 1 || $place == 1 || $source == 1) {
-								$result[$fam_record->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $fam_record->getHtmlUrl() . '" target="_blank;">' . $fam_record->getFullName() .'</a>';
-								($date	== 1 ) ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:DATE') : $result[$fam_record->getXref()]['fact'][] = '';
-								$place	== 1 ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:PLAC') : $result[$fam_record->getXref()]['fact'][] = '';
-								$source	== 1 ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:SOUR') : $result[$fam_record->getXref()]['fact'][] = '';
-							}
+						}
+						if ($date == 1 || $place == 1 || $source == 1) {
+							$result[$family->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() .'</a>';
+							($date	== 1 ) ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:DATE') : $result[$family->getXref()]['fact'][] = '';
+							$place	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:PLAC') : $result[$family->getXref()]['fact'][] = '';
+							$source	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:SOUR') : $result[$family->getXref()]['fact'][] = '';
 						}
 					}
 				}
 				// Marriage (checking FAM records openssl_encrypt)
 				if (in_array('fmarr', $selected_facts)) {
-					$total_events = $total_events + 2;
-					preg_match_all('/\n1 FAMS @(.+)@/', $relative->getGedcomRecord(), $matches, PREG_SET_ORDER);
-					foreach ($matches as $match) {
-						if (!in_array($match[1], $check)) {
-							$check[] = $match[1]; // avoid duplicate data from both spouses
-							$fam_record = WT_Family::getInstance($match[1]);
-							$event = $fam_record->getFactByType('MARR');
-							if ($event && $event->getDate()->JD() != 0) {
-								$date = '';
-							} else {
-								$date = 1;
-								$missing_events ++;
+					foreach ($fam_record as $family) {
+						$total_fam_events = $total_fam_events + 2;
+						$event = $family->getFactByType('MARR');
+						if ($event && $event->getDate()->JD() != 0) {
+							$date = '';
+						} else {
+							$date = 1;
+							$fam_missing_events ++;
+						}
+						if ($event && $event->getPlace()) {
+							$place = '';
+						} else {
+							$place = 1;
+							$fam_missing_events ++;
+						}
+						// MARR:SOUR
+						$source = '';
+						if (in_array('fsour', $selected_facts)) {
+							$total_fam_events = $total_fam_events + 1;
+							$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
+							if ($ct == 0) {
+								$source = 1;
+								$fam_missing_events ++;
 							}
-							if ($event && $event->getPlace()) {
-								$place = '';
-							} else {
-								$place = 1;
-								$missing_events ++;
-							}
-							// MARR:SOUR
-							$source = '';
-							if (in_array('fsour', $selected_facts)) {
-								$total_events = $total_events + 1;
-								$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
-								if ($ct == 0) {
-									$source = 1;
-									$missing_events ++;
-								}
-							}
-							if ($date == 1 || $place == 1 || $source == 1) {
-								$result[$fam_record->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $fam_record->getHtmlUrl() . '" target="_blank;">' . $fam_record->getFullName() .'</a>';
-								($date	== 1 ) ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:DATE') : $result[$fam_record->getXref()]['fact'][] = '';
-								$place	== 1 ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:PLAC') : $result[$fam_record->getXref()]['fact'][] = '';
-								$source	== 1 ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:SOUR') : $result[$fam_record->getXref()]['fact'][] = '';
-							}
+						}
+						if ($date == 1 || $place == 1 || $source == 1) {
+							$result[$family->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() .'</a>';
+							($date	== 1 ) ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:DATE') : $result[$family->getXref()]['fact'][] = '';
+							$place	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:PLAC') : $result[$family->getXref()]['fact'][] = '';
+							$source	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:SOUR') : $result[$family->getXref()]['fact'][] = '';
 						}
 					}
 				}
 				// Marriage Banns (checking FAM records openssl_encrypt)
 				if (in_array('fmarb', $selected_facts)) {
-					$total_events = $total_events + 2;
-					preg_match_all('/\n1 FAMS @(.+)@/', $relative->getGedcomRecord(), $matches, PREG_SET_ORDER);
-					foreach ($matches as $match) {
-						if (!in_array($match[1], $check)) {
-							$check[] = $match[1]; // avoid duplicate data from both spouses
-							$fam_record = WT_Family::getInstance($match[1]);
-							$event = $fam_record->getFactByType('MARB');
-							if ($event && $event->getDate()->JD() != 0) {
-								$date = '';
-							} else {
-								$date = 1;
-								$missing_events ++;
+					foreach ($fam_record as $family) {
+						$total_fam_events = $total_fam_events + 2;
+						$event = $family->getFactByType('MARB');
+						if ($event && $event->getDate()->JD() != 0) {
+							$date = '';
+						} else {
+							$date = 1;
+							$fam_missing_events ++;
+						}
+						if ($event && $event->getPlace()) {
+							$place = '';
+						} else {
+							$place = 1;
+							$fam_missing_events ++;
+						}
+						// MARB:SOUR
+						$source = '';
+						if (in_array('fsour', $selected_facts)) {
+							$total_fam_events = $total_fam_events + 1;
+							$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
+							if ($ct == 0) {
+								$source = 1;
+								$fam_missing_events ++;
 							}
-							if ($event && $event->getPlace()) {
-								$place = '';
-							} else {
-								$place = 1;
-								$missing_events ++;
-							}
-							// MARB:SOUR
-							$source = '';
-							if (in_array('fsour', $selected_facts)) {
-								$total_events = $total_events + 1;
-								$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
-								if ($ct == 0) {
-									$source = 1;
-									$missing_events ++;
-								}
-							}
-							if ($date == 1 || $place == 1 || $source == 1) {
-								$result[$fam_record->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $fam_record->getHtmlUrl() . '" target="_blank;">' . $fam_record->getFullName() .'</a>';
-								($date	== 1 ) ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:DATE') : $result[$fam_record->getXref()]['fact'][] = '';
-								$place	== 1 ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:PLAC') : $result[$fam_record->getXref()]['fact'][] = '';
-								$source	== 1 ? $result[$fam_record->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:SOUR') : $result[$fam_record->getXref()]['fact'][] = '';
-							}
+						}
+						if ($date == 1 || $place == 1 || $source == 1) {
+							$result[$family->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() .'</a>';
+							($date	== 1 ) ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:DATE') : $result[$family->getXref()]['fact'][] = '';
+							$place	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:PLAC') : $result[$family->getXref()]['fact'][] = '';
+							$source	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:SOUR') : $result[$family->getXref()]['fact'][] = '';
 						}
 					}
 				}
-
-
+				if ($individual) {
+					$total_individuals ++;
+				}
 			} // end $list loop
 
 			// output results as table
@@ -713,10 +727,41 @@ $controller
 					?>
 				</tbody>
 			</table>
-			<?php
-// 				echo '
-//				<p><span style="margin: 0 10px;">' . WT_I18N::translate('Total individuals') . '</span>' . count($result) . ' / ' . count($list) . '</p>
-//				<p><span style="margin: 0 10px;">' . WT_I18N::translate('Total events') . '</span>' . $missing_events . ' / ' . $total_events . '</p>
-//			';
-		} ?>
+			<div id="summary_missing">
+				<h3> <?php echo WT_I18N::translate('Summary'); ?></h3>
+				<?php
+				$print = 0;
+				foreach($selected_facts as $key){
+			        if(array_key_exists($key, $indifacts)) {
+						$print++;
+						?>
+						<p><?php echo WT_I18N::translate('%1s individuals out of %2s relatives.', $total_individuals, count($list)); ?></p>
+						<p><?php echo WT_I18N::translate('%1s events out of %2s events.', $ind_missing_events, $total_indi_events); ?></p>
+						<?php
+						break;
+					}
+			    }
+				foreach($selected_facts as $key){
+			        if(array_key_exists($key, $famfacts)) {
+						$print++;
+						?>
+						<p><?php echo WT_I18N::translate('%1s families out of %2s related families.', $total_families, $total_matches); ?></p>
+						<p><?php echo WT_I18N::translate('%1s family events out of %2s events.', $fam_missing_events, $total_fam_events); ?></p>
+						<?php
+						break;
+					}
+			    }
+		        if($print == 2) { ?>
+					<p><strong><?php echo WT_I18N::translate('Total'); ?></strong></p>
+					<?php
+					$a = $total_families + $total_individuals;
+					$b = $total_matches + count($list);
+					$c = $fam_missing_events + $ind_missing_events;
+					$d = $total_fam_events + $total_indi_events;
+					?>
+					<p><strong><?php echo WT_I18N::translate('%1s individuals and families out of %2s.', $a, $b); ?></strong></p>
+					<p><strong><?php echo WT_I18N::translate('%1s total events out of %2s.', $c, $d); ?></strong></p>
+				<?php } ?>
+			</div>
+		<?php } ?>
 	</div> <!-- close missing_data page div -->
