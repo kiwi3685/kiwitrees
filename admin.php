@@ -1551,8 +1551,8 @@ function old_paths() {
 		WT_ROOT.'library/framework', // content moved to library/
 		WT_ROOT.'admin_trees_sourcecheck.php', // name changed to admin_trees_sourcecite.php
 		WT_ROOT.'modules_v3/fact_sources', // report replaced by admin tool admin_trees_source
-		WT_ROOT.'modules_v3\relative_ext_report', // report replaced by resource version
-		WT_ROOT.'modules_v3\missing_facts_report', // report replaced by admin tool
+		WT_ROOT.'modules_v3/relative_ext_report', // report replaced by resource version
+		WT_ROOT.'modules_v3/missing_facts_report', // report replaced by admin tool
 	);
 }
 
