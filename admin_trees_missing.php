@@ -307,6 +307,7 @@ $controller
 			$total_matches		= 0;
 			$result				= array();
 			$check				= array();
+			$source				= '';
 
 			foreach ($list as $relative) {
 				$indi_ct	= false;
@@ -332,7 +333,7 @@ $controller
 					$check_event		= check_events($event, $ind_missing_events);
 					$ind_missing_events	= $check_event['count'];
 					// BIRT:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts);
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
 					$ind_missing_events	= $check_source['count'];
 					$total_indi_events	= $check_source['total_indi'];
 					//RESULT
@@ -353,7 +354,7 @@ $controller
 					$check_event		= check_events($event, $ind_missing_events);
 					$ind_missing_events	= $check_event['count'];
 					// DEAT:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts);
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
 					$ind_missing_events	= $check_source['count'];
 					$total_indi_events	= $check_source['total_indi'];
 					//RESULT
@@ -385,7 +386,7 @@ $controller
 					$check_event		= check_events($event, $ind_missing_events);
 					$ind_missing_events	= $check_event['count'];
 					// BAPM/CHR:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts);
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
 					$ind_missing_events	= $check_source['count'];
 					$total_indi_events	= $check_source['total_indi'];
 					//RESULT
@@ -405,7 +406,7 @@ $controller
 					$check_event		= check_events($event, $ind_missing_events);
 					$ind_missing_events	= $check_event['count'];
 					// BARM:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts);
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
 					$ind_missing_events	= $check_source['count'];
 					$total_indi_events	= $check_source['total_indi'];
 					//RESULT
@@ -425,7 +426,7 @@ $controller
 					$check_event		= check_events($event, $ind_missing_events);
 					$ind_missing_events	= $check_event['count'];
 					// BASM:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts);
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
 					$ind_missing_events	= $check_source['count'];
 					$total_indi_events	= $check_source['total_indi'];
 					//RESULT
@@ -445,7 +446,7 @@ $controller
 					$check_event		= check_events($event, $ind_missing_events);
 					$ind_missing_events	= $check_event['count'];
 					// CONF:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts);
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
 					$ind_missing_events	= $check_source['count'];
 					$total_indi_events	= $check_source['total_indi'];
 					//RESULT
@@ -465,7 +466,7 @@ $controller
 					$check_event		= check_events($event, $ind_missing_events);
 					$ind_missing_events	= $check_event['count'];
 					// FCOM:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts);
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
 					$ind_missing_events	= $check_source['count'];
 					$total_indi_events	= $check_source['total_indi'];
 					//RESULT
@@ -655,7 +656,7 @@ function check_events ($event, $ind_missing_events) {
 	return array('date' => $date, 'place' => $place, 'count' => $ind_missing_events);
 }
 
-function check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts) {
+function check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source) {
 	if (in_array('fsour', $selected_facts)) {
 		$source = '';
 		$total_indi_events = $total_indi_events + 1;
