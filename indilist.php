@@ -180,7 +180,7 @@ echo '
 		// Search spiders don't get an option to show/hide the surname sublists,
 		// nor does it make sense on the all/unknown/surname views
 		if (!$SEARCH_SPIDER) {
-			echo '<p class="center">';
+			echo '<p class="center marr_names">';
 				if ($show!='none') {
 					if ($show_marnm) {
 						echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=no">', WT_I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';

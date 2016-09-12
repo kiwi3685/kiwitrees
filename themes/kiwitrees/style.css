@@ -774,9 +774,6 @@ div[id*='-page'] {
 }
 
 /* indi and fam list pages */
-#indilist-page, #famlist-page {
-	font-size: 15px;
-}
 .alpha_index {
 	color: #aaa;
 }
@@ -6707,6 +6704,29 @@ textarea#NOTE {
 		display: none;
 	} /* buttons and input are used out of forms in sortable tables*/
 
+	/* print settings for datatables */
+	#indiTable thead tr:first-child,
+	#indiTable tfoot,
+	#famTable thead tr:first-child,
+	#famTable tfoot,
+	.alpha_index,
+	.marr_names,
+	.fg-toolbar {
+		display: none;
+	}
+
+	table.dataTable,
+	table.dataTable th,
+	table.dataTable td {
+		border: 1px solid;
+		border-collapse: collapse;
+	}
+
+	table.dataTable td {
+		font-size: 90%;
+	}
+	/* end print settings for datatables */
+
 	.lifespan_outer {
 		position: relative;
 		width: auto;
@@ -6725,11 +6745,6 @@ textarea#NOTE {
 
 	#CB_All {
 		display: none;
-	}
-
-	/* DataTables */
-	div.fg-toolbar {
-		display:none;
 	}
 
 

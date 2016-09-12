@@ -45,16 +45,21 @@ function format_indi_table($datalist, $option='') {
 	$SHOW_EST_LIST_DATES = get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	if ($option == 'MARR_PLAC') return;
 	$html = '';
-	$controller
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-		->addInlineJavascript('
+	$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+	if (WT_USER_CAN_EDIT) {
+		$controller
+			->addExternalJavascript(WT_JQUERY_DT_HTML5)
+			->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+	}
+	$controller->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc"  ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc" ]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["num-html-asc" ]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a<b) ? -1 : (a>b ? 1 : 0);};
 			jQuery.fn.dataTableExt.oSort["num-html-desc"]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			jQuery("#' . $table_id . '").dataTable( {
-				dom: \'<"H"<"filtersH_' . $table_id . '">T<"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id.'">>\',
-				'.WT_I18N::datatablesI18N().',
+				dom: \'<"H"<"filtersH_' . $table_id . '">T<"dt-clear">pBf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id.'">>\',
+				' . WT_I18N::datatablesI18N() . ',
+				buttons: [{extend: "csv", exportOptions: {columns: [0,6,9,12,15,17] }}],
 				jQueryUI: true,
 				autoWidth: false,
 				processing: true,
@@ -302,8 +307,8 @@ function format_indi_table($datalist, $option='') {
 				</tfoot>
 				<tbody>';
 
-	$d100y = new WT_Date(date('Y')-100);  // 100 years ago
-	$unique_indis=array(); // Don't double-count indis with multiple names.
+	$d100y			= new WT_Date(date('Y')-100);  // 100 years ago
+	$unique_indis	= array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
 			$person=$value;
@@ -321,8 +326,8 @@ function format_indi_table($datalist, $option='') {
 			continue;
 		}
 		//-- place filtering
-		if ($option=='BIRT_PLAC' && strstr($person->getBirthPlace(), $filter)===false) continue;
-		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
+		if ($option == 'BIRT_PLAC' && strstr($person->getBirthPlace(), $filter) === false) continue;
+		if ($option == 'DEAT_PLAC' && strstr($person->getDeathPlace(), $filter) === false) continue;
 		$html .= '<tr>';
 		//-- Indi name(s)
 		$html .= '<td colspan="2">';
@@ -332,13 +337,13 @@ function format_indi_table($datalist, $option='') {
 			} else {
 				$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $person)).'"';
 			}
-			if ($num==$person->getPrimaryName()) {
-				$class=' class="name2"';
-				$sex_image=$person->getSexImage();
+			if ($num == $person->getPrimaryName()) {
+				$class =' class="name2"';
+				$sex_image = $person->getSexImage();
 				list($surn, $givn)=explode(',', $name['sort']);
 			} else {
-				$class='';
-				$sex_image='';
+				$class = '';
+				$sex_image = '';
 			}
 			$html .= '<a '. $title. ' href="'. $person->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br>';
 		}
@@ -536,15 +541,19 @@ function format_fam_table($datalist, $option='') {
 
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 	$html = '';
-
-	$controller
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-		->addInlineJavascript('
+	$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+	if (WT_USER_CAN_EDIT) {
+		$controller
+			->addExternalJavascript(WT_JQUERY_DT_HTML5)
+			->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+	}
+	$controller->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#' . $table_id . '").dataTable( {
-				dom: \'<"H"<"filtersH_' . $table_id . '"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
-				'.WT_I18N::datatablesI18N().',
+				dom: \'<"H"<"filtersH_' . $table_id . '"><"dt-clear">pBf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_' . $table_id . '">>\',
+				' . WT_I18N::datatablesI18N() . ',
+				buttons: [{extend: "csv", exportOptions: {columns: [0,4,6,10,12,15] }}],
 				jQueryUI: true,
 				autoWidth: false,
 				processing: true,
@@ -1061,14 +1070,19 @@ function format_sour_table($datalist) {
 		$table_id = 'sourTable';
 	}
 
-	$controller
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-		->addInlineJavascript('
+	$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+	if (WT_USER_CAN_EDIT) {
+		$controller
+			->addExternalJavascript(WT_JQUERY_DT_HTML5)
+			->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+	}
+	$controller->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable( {
-				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-				'.WT_I18N::datatablesI18N().',
+				"sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+				' . WT_I18N::datatablesI18N() . ',
+				buttons: [{extend: "csv", exportOptions: {columns: [0,2,3,5,7,9] }}],
 				jQueryUI: true,
 				autoWidth: false,
 				processing: true,
@@ -1087,7 +1101,7 @@ function format_sour_table($datalist) {
 					/* 10 #NOTE		*/ {"sType": "numeric", "bVisible": false},
 					/* 11 CHAN      */ {"iDataSort": 12, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 					/* 12 CHAN_sort */ {"bVisible": false},
-					/* 13 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
+					/* 13 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', "bSortable": false, "sClass": "center"}
 				],
 				displayLength: 20,
 				pagingType: "full_numbers",
@@ -1216,14 +1230,19 @@ function format_note_table($datalist) {
 		$table_id = 'noteTable';
 	}
 
-	$controller
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-		->addInlineJavascript('
+	$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+	if (WT_USER_CAN_EDIT) {
+		$controller
+			->addExternalJavascript(WT_JQUERY_DT_HTML5)
+			->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+	}
+	$controller->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-			jQuery("#'.$table_id.'").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
+			jQuery("#' . $table_id . '").dataTable({
+			"sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+			' . WT_I18N::datatablesI18N() . ',
+			buttons: [{extend: "csv", exportOptions: {columns: [0,1,3,5,7] }}],
 			jQueryUI: true,
 			autoWidth: false,
 			processing: true,
@@ -1322,7 +1341,7 @@ function format_note_table($datalist) {
 
 // print a table of stories
 function format_story_table($datalist) {
-	global $SHOW_LAST_CHANGE, $controller;
+	global $controller;
 	$html = '';
 
 		if (WT_SCRIPT_NAME == 'search.php') {
@@ -1331,14 +1350,19 @@ function format_story_table($datalist) {
 			$table_id = 'storyTable';
 		}
 
-	$controller
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-		->addInlineJavascript('
+		$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+		if (WT_USER_CAN_EDIT) {
+			$controller
+				->addExternalJavascript(WT_JQUERY_DT_HTML5)
+				->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+		}
+		$controller->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-			jQuery("#'.$table_id.'").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
+			jQuery("#' . $table_id . '").dataTable({
+			"sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+			' . WT_I18N::datatablesI18N() . ',
+			buttons: [{extend: "csv"}],
 			jQueryUI: true,
 			autoWidth: false,
 			processing: true,
@@ -1421,14 +1445,19 @@ function format_repo_table($repos) {
 		$table_id = 'repoTable';
 	}
 
-	$controller
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-		->addInlineJavascript('
+	$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+	if (WT_USER_CAN_EDIT) {
+		$controller
+			->addExternalJavascript(WT_JQUERY_DT_HTML5)
+			->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+	}
+	$controller->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-			jQuery("#'.$table_id.'").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
+			jQuery("#' . $table_id . '").dataTable({
+			"sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+			' . WT_I18N::datatablesI18N() . ',
+			buttons: [{extend: "csv", exportOptions: {columns: [0,1] }}],
 			jQueryUI: true,
 			autoWidth: false,
 			processing: true,
@@ -1528,14 +1557,19 @@ function format_media_table($datalist) {
 		$table_id = 'mediaTable';
 	}
 
-	$controller
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-		->addInlineJavascript('
+	$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+	if (WT_USER_CAN_EDIT) {
+		$controller
+			->addExternalJavascript(WT_JQUERY_DT_HTML5)
+			->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+	}
+	$controller->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-			jQuery("#'.$table_id.'").dataTable({
-			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			'.WT_I18N::datatablesI18N().',
+			jQuery("#' . $table_id . '").dataTable({
+			"sDom": \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+			' . WT_I18N::datatablesI18N() . ',
+			buttons: [{extend: "csv", exportOptions: {columns: [1,2,3,5,7] }}],
 			jQueryUI: true,
 			autoWidth: false,
 			processing: true,
@@ -1543,14 +1577,15 @@ function format_media_table($datalist) {
 			columns: [
 				/* 0 media		*/ {"bSortable": false},
 				/* 1 title		*/ {"sType": "unicode"},
-				/* 2 #indi		*/ {"iDataSort": 3, "sClass": "center"},
-				/* 3 #INDI		*/ {"sType": "numeric", "bVisible": false},
-				/* 4 #fam		*/ {"iDataSort": 5, "sClass": "center"},
-				/* 5 #FAM		*/ {"sType": "numeric", "bVisible": false},
-				/* 6 #sour		*/ {"iDataSort": 7, "sClass": "center"},
-				/* 7 #SOUR		*/ {"sType": "numeric", "bVisible": false},
-				/* 8 CHAN		*/ {"iDataSort": 9, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 9 CHAN_sort	*/ {"bVisible": false},
+				/* 2 file		*/ {"bVisible": ' . (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT ? 'true' : 'false') . '},
+				/* 3 #indi		*/ {"iDataSort": 4, "sClass": "center"},
+				/* 4 #INDI		*/ {"sType": "numeric", "bVisible": false},
+				/* 5 #fam		*/ {"iDataSort": 6, "sClass": "center"},
+				/* 6 #FAM		*/ {"sType": "numeric", "bVisible": false},
+				/* 7 #sour		*/ {"iDataSort": 8, "sClass": "center"},
+				/* 8 #SOUR		*/ {"sType": "numeric", "bVisible": false},
+				/* 9 CHAN		*/ {"iDataSort": 10, "bVisible": ' . ($SHOW_LAST_CHANGE ? 'true' : 'false') . '},
+				/* 10 CHAN_sort	*/ {"bVisible": false},
 			],
 			displayLength: 20,
 			pagingType: "full_numbers",
@@ -1565,17 +1600,18 @@ function format_media_table($datalist) {
 	$html .= '<div class="loading-image">&nbsp;</div>';
 	$html .= '<div class="media-list">';
 	//-- table header
-	$html .= '<table id="'. $table_id. '"><thead><tr>';
-	$html .= '<th>'. WT_I18N::translate('Media'). '</th>';
-	$html .= '<th>'. WT_Gedcom_Tag::getLabel('TITL'). '</th>';
-	$html .= '<th>'. WT_I18N::translate('Individuals'). '</th>';
+	$html .= '<table id="'. $table_id . '"><thead><tr>';
+	$html .= '<th>'. WT_I18N::translate('Media') . '</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('TITL') . '</th>';
+	$html .= '<th>'. WT_I18N::translate('File name') . '</th>';
+	$html .= '<th>'. WT_I18N::translate('Individuals') . '</th>';
 	$html .= '<th>#INDI</th>';
-	$html .= '<th>'. WT_I18N::translate('Families'). '</th>';
+	$html .= '<th>'. WT_I18N::translate('Families') . '</th>';
 	$html .= '<th>#FAM</th>';
-	$html .= '<th>'. WT_I18N::translate('Sources'). '</th>';
+	$html .= '<th>'. WT_I18N::translate('Sources') . '</th>';
 	$html .= '<th>#SOUR</th>';
-	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
-	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
+	$html .= '<th' . ($SHOW_LAST_CHANGE?'':'') . '>'. WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
+	$html .= '<th' . ($SHOW_LAST_CHANGE?'':'') . '>CHAN</th>';
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
@@ -1597,28 +1633,31 @@ function format_media_table($datalist) {
 			$html .= '<td>';
 			$html .= '<a href="'. $media->getHtmlUrl(). '" class="list_item name2">';
 			$html .= highlight_search_hits($name). '</a>';
+			$html .= '</td>';
+			//-- File name
+			$html .= '<td>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT)
 				$html .= '<br><a href="'. $media->getHtmlUrl(). '">'. basename($media->getFilename()). '</a>';
 			$html .= '</td>';
 
 			//-- Linked INDIs
 			$num=count($media->fetchLinkedIndividuals());
-			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
+			$html .= '<td>' . WT_I18N::number($num). '</td><td>' . $num. '</td>';
 			//-- Linked FAMs
 			$num=count($media->fetchLinkedfamilies());
-			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
+			$html .= '<td>' . WT_I18N::number($num). '</td><td>' . $num. '</td>';
 			//-- Linked SOURces
 			$num=count($media->fetchLinkedSources());
-			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
+			$html .= '<td>' . WT_I18N::number($num). '</td><td>' . $num. '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
-				$html .= '<td>'. $media->LastChangeTimestamp(). '</td>';
+				$html .= '<td>' . $media->LastChangeTimestamp() . '</td>';
 			} else {
 				$html .= '<td>&nbsp;</td>';
 			}
 			//-- Last change hidden sort column
 			if ($SHOW_LAST_CHANGE) {
-				$html .= '<td>'. $media->LastChangeTimestamp(true). '</td>';
+				$html .= '<td>' . $media->LastChangeTimestamp(true) . '</td>';
 			} else {
 				$html .= '<td>&nbsp;</td>';
 			}
@@ -1904,9 +1943,9 @@ function print_changes_table($change_ids, $sort) {
 		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-			jQuery("#'.$table_id.'").dataTable({
+			jQuery("#' . $table_id . '").dataTable({
 				dom: \'t\',
-				'.WT_I18N::datatablesI18N().',
+				' . WT_I18N::datatablesI18N() . ',
 				autoWidth: false,
 				jQueryUI: true,
 				sorting: ['.$aaSorting.'],
@@ -2005,9 +2044,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('
-			jQuery("#'.$table_id.'").dataTable({
+			jQuery("#' . $table_id . '").dataTable({
 				"sDom": \'t\',
-				'.WT_I18N::datatablesI18N().',
+				' . WT_I18N::datatablesI18N() . ',
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,

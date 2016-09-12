@@ -540,23 +540,28 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	private function show_list() {
 		global $controller;
-
 		$controller = new WT_Controller_Page();
+		$controller->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
+		if (WT_USER_CAN_EDIT) {
+			$controller
+				->addExternalJavascript(WT_JQUERY_DT_HTML5)
+				->addExternalJavascript(WT_JQUERY_DT_BUTTONS);
+		}
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
-					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+					dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
 					' . WT_I18N::datatablesI18N() . ',
+					buttons: [{extend: "csv"}],
+					jQueryUI: true,
 					autoWidth: false,
 					paging: true,
 					pagingType: "full_numbers",
 					lengthChange: true,
 					filter: true,
 					info: true,
-					jQueryUI: true,
 					sorting: [[0,"asc"]],
 					displayLength: 20,
 					columns: [
