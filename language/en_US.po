@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-09-08 07:27+1200\n"
-"PO-Revision-Date: 2016-09-08 07:28+1200\n"
+"POT-Creation-Date: 2016-09-12 16:22+1200\n"
+"PO-Revision-Date: 2016-09-12 16:22+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -264,7 +264,7 @@ msgstr "save"
 
 #: admin.php:32 library/WT/MenuBar.php:82
 #: modules_v3/widget_quicklinks/module.php:76
-#: themes/_administration/header.php:96
+#: themes/_administration/header.php:90
 msgid "Administration"
 msgstr "Administration"
 
@@ -316,7 +316,7 @@ msgstr "Your version of kiwitrees is the latest available."
 msgid "No upgrade information is available."
 msgstr "No upgrade information is available."
 
-#: admin.php:107 admin_site_info.php:35 themes/_administration/header.php:149
+#: admin.php:107 admin_site_info.php:35 themes/_administration/header.php:143
 msgid "Server information"
 msgstr "Server information"
 
@@ -332,7 +332,7 @@ msgstr ""
 "Files have been found from a previous version of kiwitrees.  Old files can "
 "sometimes be a security risk.  You should delete them."
 
-#: admin.php:183 themes/_administration/header.php:196
+#: admin.php:183 themes/_administration/header.php:191
 msgid "Users"
 msgstr "Users"
 
@@ -371,10 +371,10 @@ msgstr "Family tree statistics"
 #. I18N: Name of a module
 #: admin.php:257 admin.php:307 ancestry.php:98 calendar.php:379
 #: calendar.php:559 descendancy.php:69
-#: includes/functions/functions_print_lists.php:1109
-#: includes/functions/functions_print_lists.php:1260
-#: includes/functions/functions_print_lists.php:1571
-#: includes/functions/functions_print_lists.php:1663 indilist.php:138
+#: includes/functions/functions_print_lists.php:1123
+#: includes/functions/functions_print_lists.php:1279
+#: includes/functions/functions_print_lists.php:1607
+#: includes/functions/functions_print_lists.php:1702 indilist.php:138
 #: indilist.php:143 library/WT/Controller/Search.php:1087 mediaviewer.php:139
 #: modules_v3/gedcom_stats/module.php:99 modules_v3/gedcom_stats/module.php:301
 #: modules_v3/googlemap/placehierarchy.php:279 modules_v3/html/module.php:167
@@ -390,9 +390,9 @@ msgstr "Individuals"
 #. I18N: Name of a module
 #: admin.php:262 admin.php:308 ancestry.php:104 calendar.php:380
 #: calendar.php:560 descendancy.php:74 famlist.php:138 famlist.php:143
-#: includes/functions/functions_print_lists.php:1111
-#: includes/functions/functions_print_lists.php:1262
-#: includes/functions/functions_print_lists.php:1573
+#: includes/functions/functions_print_lists.php:1125
+#: includes/functions/functions_print_lists.php:1281
+#: includes/functions/functions_print_lists.php:1609
 #: library/WT/Controller/Search.php:1088 mediaviewer.php:142
 #: modules_v3/gedcom_stats/module.php:107
 #: modules_v3/gedcom_stats/module.php:317
@@ -408,9 +408,9 @@ msgstr "Families"
 #. I18N: Name of a module
 #. I18N: Name of a module
 #: admin.php:267 admin.php:309
-#: includes/functions/functions_print_lists.php:1266
-#: includes/functions/functions_print_lists.php:1459
-#: includes/functions/functions_print_lists.php:1575
+#: includes/functions/functions_print_lists.php:1285
+#: includes/functions/functions_print_lists.php:1488
+#: includes/functions/functions_print_lists.php:1611
 #: library/WT/Controller/Search.php:1089 mediaviewer.php:145
 #: modules_v3/album/album_print_media.php:316
 #: modules_v3/gedcom_stats/module.php:110
@@ -439,8 +439,8 @@ msgstr "Repositories"
 
 #. I18N: Name of a module
 #: admin.php:277 admin.php:311
-#: includes/functions/functions_print_lists.php:1113
-#: includes/functions/functions_print_lists.php:1264 medialist.php:35
+#: includes/functions/functions_print_lists.php:1127
+#: includes/functions/functions_print_lists.php:1283 medialist.php:35
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:333 modules_v3/html/module.php:191
 #: modules_v3/list_media/module.php:36 modules_v3/widget_stats/module.php:137
@@ -450,7 +450,7 @@ msgid "Media objects"
 msgstr "Media objects"
 
 #. I18N: Name of a module
-#: admin.php:282 includes/functions/functions_print_lists.php:1115
+#: admin.php:282 includes/functions/functions_print_lists.php:1129
 #: modules_v3/list_shared_notes/module.php:36 notelist.php:32 notelist.php:36
 #: search.php:137
 msgid "Shared notes"
@@ -505,8 +505,8 @@ msgstr "The file %s could not be deleted."
 #: includes/functions/functions_edit.php:1485
 #: includes/functions/functions_print.php:914
 #: includes/functions/functions_print_facts.php:1261
-#: includes/functions/functions_print_lists.php:425
-#: includes/functions/functions_print_lists.php:922 library/WT/Stats.php:3536
+#: includes/functions/functions_print_lists.php:430
+#: includes/functions/functions_print_lists.php:931 library/WT/Stats.php:3536
 #: medialist.php:262 modules_v3/batch_update/admin_batch_update.php:370
 #: modules_v3/charts/module.php:214 modules_v3/relatives/module.php:203
 #: modules_v3/family_group_report/report.bak:247
@@ -523,7 +523,7 @@ msgstr "yes"
 #: includes/functions/functions_edit.php:175
 #: includes/functions/functions_edit.php:1482
 #: includes/functions/functions_print_facts.php:1264
-#: includes/functions/functions_print_lists.php:924 library/WT/Stats.php:3537
+#: includes/functions/functions_print_lists.php:933 library/WT/Stats.php:3537
 #: medialist.php:265 modules_v3/batch_update/admin_batch_update.php:369
 #: modules_v3/charts/module.php:213 modules_v3/fancy_treeview/module.php:982
 #: modules_v3/family_group_report/report.bak:250
@@ -606,11 +606,11 @@ msgstr "This media object is not linked to any other record."
 
 #: admin_media.php:540 admin_media.php:634 admin_trees_config.php:280
 #: admin_trees_config.php:446 admin_trees_config.php:702
-#: admin_trees_source.php:173 admin_trees_source.php:287
-#: admin_trees_sourcecite.php:155
-#: includes/functions/functions_print_lists.php:1569 inverselink.php:73
+#: admin_trees_source.php:171 admin_trees_source.php:285
+#: admin_trees_sourcecite.php:153
+#: includes/functions/functions_print_lists.php:1604 inverselink.php:73
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:88
-#: themes/_administration/header.php:204
+#: themes/_administration/header.php:199
 msgid "Media"
 msgstr "Media"
 
@@ -671,7 +671,7 @@ msgid "Media type"
 msgstr "Media type"
 
 #: admin_media_upload.php:35 admin_media_upload.php:179 help_text.php:739
-#: themes/_administration/header.php:207
+#: themes/_administration/header.php:202
 msgid "Upload media files"
 msgstr "Upload media files"
 
@@ -748,7 +748,7 @@ msgid "Resource"
 msgstr "Resource"
 
 #: admin_module_sidebar.php:75 admin_modules.php:135 admin_modules.php:164
-#: themes/_administration/header.php:219
+#: themes/_administration/header.php:214
 msgid "Sidebar"
 msgstr "Sidebar"
 
@@ -770,7 +770,7 @@ msgstr "Module"
 
 #. I18N: Name of a module
 #: admin_modules.php:158 library/WT/MenuBar.php:37 library/WT/MenuBar.php:39
-#: modules_v3/gedcom_block/module.php:35 themes/_administration/header.php:140
+#: modules_v3/gedcom_block/module.php:35 themes/_administration/header.php:134
 msgid "Home"
 msgstr "Home"
 
@@ -793,7 +793,7 @@ msgstr "Other"
 msgid "This module cannot be found.  Delete its configuration settings."
 msgstr "This module cannot be found.  Delete its configuration settings."
 
-#: admin_site_access.php:33 themes/_administration/header.php:150
+#: admin_site_access.php:33 themes/_administration/header.php:144
 msgid "Site access rules"
 msgstr "Site access rules"
 
@@ -865,12 +865,12 @@ msgstr "Comment"
 #: includes/functions/functions_print_facts.php:722
 #: includes/functions/functions_print_facts.php:924
 #: includes/functions/functions_print_facts.php:1212
-#: includes/functions/functions_print_lists.php:1120
-#: includes/functions/functions_print_lists.php:1196
-#: includes/functions/functions_print_lists.php:1271
-#: includes/functions/functions_print_lists.php:1311
-#: includes/functions/functions_print_lists.php:1464
-#: includes/functions/functions_print_lists.php:1508
+#: includes/functions/functions_print_lists.php:1134
+#: includes/functions/functions_print_lists.php:1210
+#: includes/functions/functions_print_lists.php:1290
+#: includes/functions/functions_print_lists.php:1330
+#: includes/functions/functions_print_lists.php:1493
+#: includes/functions/functions_print_lists.php:1537
 #: library/WT/Controller/Family.php:159
 #: library/WT/Controller/Individual.php:399 library/WT/Controller/Media.php:130
 #: library/WT/Controller/Note.php:106 library/WT/Controller/Repository.php:106
@@ -956,10 +956,10 @@ msgid "Status"
 msgstr "Status"
 
 #: admin_site_change.php:276 admin_site_change.php:306 admin_site_merge.php:140
-#: admin_trees_config.php:634 admin_trees_source.php:140
-#: admin_trees_source.php:256 admin_trees_sourcecite.php:130
-#: includes/functions/functions_print_lists.php:1932
-#: includes/functions/functions_print_lists.php:2068
+#: admin_trees_config.php:634 admin_trees_source.php:138
+#: admin_trees_source.php:254 admin_trees_sourcecite.php:128
+#: includes/functions/functions_print_lists.php:1971
+#: includes/functions/functions_print_lists.php:2107
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:126
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:586
 #: modules_v3/resource_changes/module.php:158
@@ -979,7 +979,8 @@ msgstr "User"
 
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237
 #: admin_site_logs.php:260 admin_trees_duplicates.php:142
-#: admin_trees_manage.php:257 admin_trees_places.php:102
+#: admin_trees_manage.php:257 admin_trees_missing.php:133
+#: admin_trees_places.php:104 admin_trees_sanity.php:54
 #: admin_trees_source.php:75 admin_trees_sourcecite.php:90
 #: admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:422
 #: edit_changes.php:169 modules_v3/batch_update/admin_batch_update.php:65
@@ -1005,9 +1006,9 @@ msgid "Export"
 msgstr "Export"
 
 #: admin_site_change.php:292 admin_site_logs.php:243
-#: includes/functions/functions_print_lists.php:1120
-#: includes/functions/functions_print_lists.php:1271
-#: includes/functions/functions_print_lists.php:1464
+#: includes/functions/functions_print_lists.php:1134
+#: includes/functions/functions_print_lists.php:1290
+#: includes/functions/functions_print_lists.php:1493
 #: modules_v3/googlemap/admin_places.php:637
 #: modules_v3/googlemap/admin_places.php:695
 msgid "Permanently delete these records?"
@@ -1022,7 +1023,7 @@ msgid "GEDCOM Data"
 msgstr "GEDCOM Data"
 
 #. I18N: The “Data folder” is a configuration setting
-#: admin_site_clean.php:31 themes/_administration/header.php:151
+#: admin_site_clean.php:31 themes/_administration/header.php:145
 msgid "Clean up data folder"
 msgstr "Clean up data folder"
 
@@ -1038,7 +1039,7 @@ msgid "Deleted files:"
 msgstr "Deleted files:"
 
 #: admin_site_config.php:31 admin_site_config.php:142 admin_site_config.php:149
-#: admin_site_config.php:162 themes/_administration/header.php:146
+#: admin_site_config.php:162 themes/_administration/header.php:140
 msgid "Site configuration"
 msgstr "Site configuration"
 
@@ -1513,7 +1514,8 @@ msgstr ""
 msgid "Select the languages your site will use"
 msgstr "Select the languages your site will use"
 
-#: admin_site_config.php:400 modules_v3/random_media/module.php:309
+#: admin_site_config.php:400 admin_trees_missing.php:155
+#: modules_v3/random_media/module.php:309
 #: modules_v3/random_media/module.php:359
 #: modules_v3/simpl_research/module.php:118
 msgid "Select all"
@@ -1524,7 +1526,7 @@ msgid "MySQL variables"
 msgstr "MySQL variables"
 
 #: admin_site_lang.php:33 admin_site_lang.php:108 admin_site_lang.php:133
-#: themes/_administration/header.php:152
+#: themes/_administration/header.php:146
 msgid "Custom translation"
 msgstr "Custom translation"
 
@@ -1569,7 +1571,7 @@ msgstr "Last updated "
 msgid "Are you sure you want to delete this translation?"
 msgstr "Are you sure you want to delete this translation?"
 
-#: admin_site_logs.php:30 themes/_administration/header.php:147
+#: admin_site_logs.php:30 themes/_administration/header.php:141
 msgid "Logs"
 msgstr "Logs"
 
@@ -1589,7 +1591,7 @@ msgstr "Message"
 
 #: admin_site_merge.php:35 admin_site_merge.php:110 admin_site_merge.php:166
 #: admin_site_merge.php:259 help_text.php:494
-#: themes/_administration/header.php:178
+#: themes/_administration/header.php:172
 msgid "Merge records"
 msgstr "Merge records"
 
@@ -1694,7 +1696,7 @@ msgid "next"
 msgstr "next"
 
 #: admin_site_other.php:34 admin_site_other.php:39
-#: themes/_administration/header.php:176
+#: themes/_administration/header.php:170
 msgid "Add unlinked records"
 msgstr "Add unlinked records"
 
@@ -1719,11 +1721,11 @@ msgstr "Create a new source"
 msgid "Create a new repository"
 msgstr "Create a new repository"
 
-#: admin_site_readme.php:30 themes/_administration/header.php:148
+#: admin_site_readme.php:30 themes/_administration/header.php:142
 msgid "README documentation"
 msgstr "README documentation"
 
-#: admin_site_use.php:35 themes/_administration/header.php:153
+#: admin_site_use.php:35 themes/_administration/header.php:147
 msgid "Server usage"
 msgstr "Server usage"
 
@@ -2091,26 +2093,28 @@ msgid "XREF prefixes"
 msgstr "Prefixes"
 
 #. I18N: gedcom tag INDI
-#: admin_trees_config.php:430 admin_trees_source.php:165
-#: admin_trees_source.php:279 admin_trees_sourcecite.php:147 ancestry.php:49
+#: admin_trees_config.php:430 admin_trees_missing.php:137
+#: admin_trees_missing.php:174 admin_trees_source.php:163
+#: admin_trees_source.php:277 admin_trees_sourcecite.php:145 ancestry.php:49
 #: compact.php:43 descendancy.php:43 familybook.php:43 fanchart.php:51
 #: hourglass.php:54 includes/functions/functions_edit.php:1755
-#: includes/functions/functions_print_lists.php:1365 inverselink.php:98
+#: includes/functions/functions_print_lists.php:1389 inverselink.php:98
 #: library/WT/Gedcom/Tag.php:245 modules_v3/charts/module.php:219
 #: modules_v3/googlemap/module.php:722
 #: modules_v3/resource_individual/module.php:111
 #: modules_v3/resource_related_indi/module.php:116
 #: modules_v3/stories/module.php:351 modules_v3/stories/module.php:496
-#: modules_v3/stories/module.php:582 pedigree.php:44
+#: modules_v3/stories/module.php:587 pedigree.php:44
 msgid "Individual"
 msgstr "Individual"
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
-#: admin_trees_config.php:434 admin_trees_source.php:169
-#: admin_trees_source.php:283 admin_trees_sourcecite.php:151
-#: edit_interface.php:469 includes/functions/functions_edit.php:1786
-#: inverselink.php:114 library/WT/Gedcom/Tag.php:215
+#: admin_trees_config.php:434 admin_trees_missing.php:191
+#: admin_trees_source.php:167 admin_trees_source.php:281
+#: admin_trees_sourcecite.php:149 edit_interface.php:469
+#: includes/functions/functions_edit.php:1786 inverselink.php:114
+#: library/WT/Gedcom/Tag.php:215
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1386
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:924
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:931
@@ -2124,8 +2128,8 @@ msgstr "Family"
 
 #. I18N: gedcom tag SOUR
 #: admin_trees_config.php:438 admin_trees_source.php:79
-#: admin_trees_source.php:103 admin_trees_sourcecite.php:94
-#: admin_trees_sourcecite.php:115
+#: admin_trees_source.php:101 admin_trees_sourcecite.php:94
+#: admin_trees_sourcecite.php:113
 #: includes/functions/functions_print_facts.php:488
 #: includes/functions/functions_print_facts.php:510 inverselink.php:130
 #: library/WT/Gedcom/Tag.php:326 modules_v3/gallery/module.php:263
@@ -2569,7 +2573,7 @@ msgid "Display surnames in all CAPS"
 msgstr "Display surnames in all CAPS"
 
 #: admin_trees_config.php:841 library/WT/MenuBar.php:121
-#: themes/_administration/header.php:223
+#: themes/_administration/header.php:218
 msgid "Lists"
 msgstr "Lists"
 
@@ -2642,7 +2646,7 @@ msgstr "hide"
 #: admin_trees_config.php:1053 admin_trees_config.php:1075
 #: admin_trees_config.php:1111 admin_trees_config.php:1130
 #: admin_trees_config.php:1139 admin_trees_config.php:1148
-#: admin_trees_config.php:1157 branches.php:85
+#: admin_trees_config.php:1157 admin_trees_missing.php:148 branches.php:85
 #: modules_v3/extra_menus/module.php:350
 #: modules_v3/fancy_treeview/module.php:676 modules_v3/faq/module.php:450
 #: modules_v3/gallery/module.php:534 modules_v3/googlemap/module.php:270
@@ -2677,7 +2681,7 @@ msgstr "The date and time of the last update"
 #. I18N: Name of a module/block
 #: admin_trees_config.php:876 admin_trees_config.php:1013
 #: library/WT/MenuBar.php:101 modules_v3/charts/help_text.php:34
-#: modules_v3/charts/module.php:35 themes/_administration/header.php:222
+#: modules_v3/charts/module.php:35 themes/_administration/header.php:217
 msgid "Charts"
 msgstr "Charts"
 
@@ -3514,7 +3518,7 @@ msgstr "Add the GEDCOM media path to filenames"
 msgid "Media filenames will be prefixed by %s."
 msgstr "Media filenames will be prefixed by %s."
 
-#: admin_trees_duplicates.php:40 themes/_administration/header.php:181
+#: admin_trees_duplicates.php:40 themes/_administration/header.php:175
 msgid "Find duplicate individuals"
 msgstr "Find duplicate individuals"
 
@@ -3538,7 +3542,7 @@ msgid "Given name"
 msgstr "Given name"
 
 #. I18N: gedcom tag SEX
-#: admin_trees_duplicates.php:178 admin_trees_sanity.php:96
+#: admin_trees_duplicates.php:178 admin_trees_sanity.php:101
 #: library/WT/Gedcom/Tag.php:320 modules_v3/family_group_report/report.bak:833
 #: modules_v3/individual_ext_report/report.bak:383
 #: modules_v3/individual_ext_report/report.bak:590
@@ -3582,9 +3586,10 @@ msgid "Include married names: "
 msgstr "Include married names: "
 
 #. I18N: gedcom tag NAME
-#: admin_trees_duplicates.php:222 admin_trees_sanity.php:102
-#: edit_interface.php:2632 library/WT/Controller/Individual.php:176
-#: library/WT/Gedcom/Tag.php:271 library/WT/Stats.php:3344
+#: admin_trees_duplicates.php:222 admin_trees_missing.php:575
+#: admin_trees_sanity.php:107 edit_interface.php:2632
+#: library/WT/Controller/Individual.php:176 library/WT/Gedcom/Tag.php:271
+#: library/WT/Stats.php:3344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588
 #: modules_v3/resource_fact/module.php:271
@@ -3592,13 +3597,12 @@ msgstr "Include married names: "
 #: modules_v3/simpl_research/module.php:124 modules_v3/bdm_report/report.bak:6
 #: modules_v3/bdm_report/report.bak:47 modules_v3/marriage_report/report.bak:6
 #: modules_v3/marriage_report/report.bak:36
-#: modules_v3/missing_facts_report/report.bak:52
 msgid "Name"
 msgstr "Name"
 
 #. I18N: gedcom tag BIRT
-#: admin_trees_duplicates.php:223 admin_trees_sanity.php:84
-#: admin_trees_source.php:141 admin_trees_source.php:257
+#: admin_trees_duplicates.php:223 admin_trees_sanity.php:89
+#: admin_trees_source.php:139 admin_trees_source.php:255
 #: library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1202
 #: modules_v3/resource_related_indi/module.php:234
 #: modules_v3/bdm_report/report.bak:56
@@ -3619,8 +3623,8 @@ msgid "Birth"
 msgstr "Birth"
 
 #. I18N: gedcom tag DEAT
-#: admin_trees_duplicates.php:224 admin_trees_sanity.php:90
-#: admin_trees_source.php:260 library/WT/Gedcom/Tag.php:185
+#: admin_trees_duplicates.php:224 admin_trees_sanity.php:95
+#: admin_trees_source.php:258 library/WT/Gedcom/Tag.php:185
 #: modules_v3/fancy_treeview/module.php:1205
 #: modules_v3/resource_related_indi/module.php:237
 #: modules_v3/bdm_report/report.bak:85
@@ -3658,7 +3662,7 @@ msgstr "Date"
 
 #. I18N: gedcom tag PLAC
 #: admin_trees_duplicates.php:231 admin_trees_duplicates.php:233
-#: admin_trees_source.php:259 admin_trees_source.php:262
+#: admin_trees_source.php:257 admin_trees_source.php:260
 #: library/WT/Gedcom/Tag.php:296
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1050
 #: modules_v3/googlemap/admin_places.php:180
@@ -3699,7 +3703,7 @@ msgstr "Family tree exported to %s."
 msgid "Unable to create %s.  Check the permissions."
 msgstr "Unable to create %s.  Check the permissions."
 
-#: admin_trees_manage.php:31 themes/_administration/header.php:160
+#: admin_trees_manage.php:31 themes/_administration/header.php:154
 msgid "Manage family trees"
 msgstr "Manage family trees"
 
@@ -3852,6 +3856,219 @@ msgstr ""
 "After creating the family tree, you will be able to upload or import data "
 "from a GEDCOM file."
 
+#: admin_trees_missing.php:40 admin_trees_sanity.php:74
+#: themes/_administration/header.php:180
+msgid "Missing data"
+msgstr "Missing data"
+
+#: admin_trees_missing.php:62 modules_v3/resource_related_indi/module.php:100
+#: modules_v3/individual_ext_report/report.bak:7
+msgid "Parents and siblings"
+msgstr "Parents and siblings"
+
+#: admin_trees_missing.php:63 modules_v3/resource_related_indi/module.php:101
+#: modules_v3/individual_ext_report/report.bak:7
+msgid "Spouses and children"
+msgstr "Spouses and children"
+
+#: admin_trees_missing.php:64 modules_v3/resource_related_indi/module.php:102
+#: modules_v3/individual_ext_report/report.bak:7
+msgid "Direct line ancestors"
+msgstr "Direct line ancestors"
+
+#: admin_trees_missing.php:65 modules_v3/resource_related_indi/module.php:103
+#: modules_v3/individual_ext_report/report.bak:7
+msgid "Direct line ancestors and their families"
+msgstr "Direct line ancestors and their families"
+
+#. I18N: gedcom tag DESC
+#. I18N: Name of a module/sidebar
+#. I18N: Name of the module
+#: admin_trees_missing.php:66 includes/functions/functions_print.php:99
+#: library/WT/Controller/Descendancy.php:102
+#: library/WT/Controller/Fanchart.php:308 library/WT/Gedcom/Tag.php:189
+#: modules_v3/charts/module.php:204 modules_v3/descendancy/module.php:36
+#: modules_v3/fancy_treeview/module.php:47
+#: modules_v3/fancy_treeview/module.php:1533
+#: modules_v3/resource_related_indi/module.php:104
+#: modules_v3/individual_ext_report/report.bak:7
+msgid "Descendants"
+msgstr "Descendants"
+
+#: admin_trees_missing.php:67 modules_v3/resource_related_indi/module.php:105
+msgid "All relatives"
+msgstr "All relatives"
+
+#: admin_trees_missing.php:71
+msgid "Sources to the events"
+msgstr "Sources to the events"
+
+#. I18N: listbox option, e.g. “10,25,50,100,all”
+#: admin_trees_missing.php:116 calendar.php:259 famlist.php:71 famlist.php:77
+#: famlist.php:83 famlist.php:173 famlist.php:175 famlist.php:259
+#: famlist.php:261 indilist.php:71 indilist.php:77 indilist.php:83
+#: indilist.php:173 indilist.php:175 indilist.php:259 indilist.php:261
+#: library/WT/I18N.php:658 library/WT/Stats.php:3343
+#: modules_v3/extra_menus/help_text.php:50
+#: modules_v3/extra_menus/module.php:370
+#: modules_v3/fancy_treeview/module.php:521 modules_v3/faq/module.php:222
+#: modules_v3/faq/module.php:470 modules_v3/gallery/help_text.php:37
+#: modules_v3/gallery/module.php:554 modules_v3/googlemap/admin_places.php:610
+#: modules_v3/googlemap/admin_places.php:762
+#: modules_v3/googlemap/module.php:1489 modules_v3/googlemap/module.php:1505
+#: modules_v3/no_census/module.php:212 modules_v3/random_media/module.php:299
+#: modules_v3/resource_individual/module.php:130
+#: modules_v3/simpl_pages/help_text.php:37
+#: modules_v3/simpl_pages/module.php:474 modules_v3/uk_register/module.php:174
+#: modules_v3/widget_messages/module.php:84
+#: modules_v3/ahnentafel_report/report.bak:8
+#: modules_v3/individual_ext_report/report.bak:7
+#: modules_v3/individual_ext_report/report.bak:8
+#: modules_v3/individual_ext_report/report.bak:12
+msgid "All"
+msgstr "All"
+
+#. I18N: Sub-title for missing data admin page
+#: admin_trees_missing.php:124
+msgid ""
+"A list of selected information missing from an individual and their "
+"relatives."
+msgstr ""
+"A list of selected information missing from an individual and their "
+"relatives."
+
+#. I18N: Help content for missing data admin page
+#: admin_trees_missing.php:126
+msgid ""
+"Whenever possible names are followed by the individual's lifespan dates for "
+"ease of identification. Note that these may include dates of baptism, "
+"christening, burial and cremation if birth and death dates are missing."
+"<br>The list also ignores any estimates of dates or ages, so living people "
+"will be listed as missing death dates and places.<br>Some facts such as "
+"\"Religion\" do not commonly have sub-tags like date, place or source, so "
+"here only the fact itself is checked for."
+msgstr ""
+"Whenever possible names are followed by the individual's lifespan dates for "
+"ease of identification. Note that these may include dates of baptism, "
+"christening, burial and cremation if birth and death dates are missing."
+"<br>The list also ignores any estimates of dates or ages, so living people "
+"will be listed as missing death dates and places.<br>Some facts such as "
+"\"Religion\" do not commonly have sub-tags like date, place or source, so "
+"here only the fact itself is checked for."
+
+#: admin_trees_missing.php:141 modules_v3/resource_related_indi/module.php:120
+#: modules_v3/individual_ext_report/report.bak:7
+msgid "Choose relatives"
+msgstr "Choose relatives"
+
+#: admin_trees_missing.php:145 ancestry.php:113 descendancy.php:79
+#: familybook.php:62 fanchart.php:69 hourglass.php:79
+#: modules_v3/googlemap/module.php:727 pedigree.php:49
+#: modules_v3/ahnentafel_report/report.bak:8
+#: modules_v3/individual_ext_report/report.bak:8
+msgid "Generations"
+msgstr "Generations"
+
+#: admin_trees_missing.php:345
+msgid "Birth source"
+msgstr "Birth source"
+
+#: admin_trees_missing.php:366
+msgid "Death source"
+msgstr "Death source"
+
+#: admin_trees_missing.php:378
+msgid "Baptism source"
+msgstr "Baptism source"
+
+#: admin_trees_missing.php:383
+msgid "Christening source"
+msgstr "Christening source"
+
+#: admin_trees_missing.php:418
+msgid "Bar mitzvah source"
+msgstr "Bar mitzvah source"
+
+#: admin_trees_missing.php:438
+msgid "Bat mitzvah source"
+msgstr "Bat mitzvah source"
+
+#: admin_trees_missing.php:458
+msgid "Confirmation source"
+msgstr "Confirmation source"
+
+#: admin_trees_missing.php:478
+msgid "First communion source"
+msgstr "First communion source"
+
+#: admin_trees_missing.php:510
+msgid "Engagement source"
+msgstr "Engagement source"
+
+#: admin_trees_missing.php:531
+msgid "Marriage source"
+msgstr "Marriage source"
+
+#: admin_trees_missing.php:552
+msgid "Marriage banns source"
+msgstr "Marriage banns source"
+
+#: admin_trees_missing.php:569 modules_v3/resource_related_indi/module.php:171
+#, php-format
+msgid "%1s related to %2s "
+msgstr "%1s related to %2s "
+
+#: admin_trees_missing.php:570
+#, php-format
+msgid "Mising data for <span style=\"font-weight:normal;\">%s</span>"
+msgstr "Mising data for <span style=\"font-weight:normal;\">%s</span>"
+
+#. I18N: gedcom tag EVEN
+#: admin_trees_missing.php:576 admin_trees_source.php:141
+#: library/WT/Gedcom/Tag.php:209
+msgid "Event"
+msgstr "Event"
+
+#. I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+#: admin_trees_missing.php:602 modules_v3/faq/module.php:422
+#: modules_v3/gallery/module.php:491 modules_v3/simpl_pages/module.php:443
+msgid "Summary"
+msgstr "Summary"
+
+#: admin_trees_missing.php:609
+#, php-format
+msgid "%1s individuals out of %2s relatives."
+msgstr "%1s individuals out of %2s relatives."
+
+#: admin_trees_missing.php:610
+#, php-format
+msgid "%1s events out of %2s events."
+msgstr "%1s events out of %2s events."
+
+#: admin_trees_missing.php:619
+#, php-format
+msgid "%1s families out of %2s related families."
+msgstr "%1s families out of %2s related families."
+
+#: admin_trees_missing.php:620
+#, php-format
+msgid "%1s family events out of %2s events."
+msgstr "%1s family events out of %2s events."
+
+#: admin_trees_missing.php:626
+msgid "Total"
+msgstr "Total"
+
+#: admin_trees_missing.php:633
+#, php-format
+msgid "%1s individuals and families out of %2s."
+msgstr "%1s individuals and families out of %2s."
+
+#: admin_trees_missing.php:634
+#, php-format
+msgid "%1s total events out of %2s."
+msgstr "%1s total events out of %2s."
+
 #: admin_trees_places.php:89
 msgid "Administration - place edit"
 msgstr "Administration - place edit"
@@ -3870,42 +4087,42 @@ msgstr ""
 "example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New "
 "Mexico”."
 
-#: admin_trees_places.php:104 search.php:114 search.php:216
+#: admin_trees_places.php:108 search.php:114 search.php:216
 msgid "Search for"
 msgstr "Search for"
 
-#: admin_trees_places.php:106 search.php:221
+#: admin_trees_places.php:112 search.php:221
 msgid "Replace with"
 msgstr "Replace with"
 
 #. I18N: button label
-#: admin_trees_places.php:109
+#: admin_trees_places.php:116
 #: modules_v3/GEDFact_assistant/_CENS/census_4_text.php:48
 msgid "preview"
 msgstr "preview"
 
 #. I18N: button label
-#: admin_trees_places.php:110 modules_v3/backup_to_dropbox/module.php:163
+#: admin_trees_places.php:117 modules_v3/backup_to_dropbox/module.php:163
 msgid "update"
 msgstr "update"
 
-#: admin_trees_places.php:115
+#: admin_trees_places.php:123
 msgid "Caution! This may take a long time. Be patient."
 msgstr "Caution! This may take a long time. Be patient."
 
-#: admin_trees_places.php:121
+#: admin_trees_places.php:129
 msgid "The following places were changed:"
 msgstr "The following places were changed:"
 
-#: admin_trees_places.php:121
+#: admin_trees_places.php:129
 msgid "The following places would be changed:"
 msgstr "The following places would be changed:"
 
-#: admin_trees_places.php:134
+#: admin_trees_places.php:142
 msgid "No places were found."
 msgstr "No places were found."
 
-#: admin_trees_renumber.php:27 themes/_administration/header.php:179
+#: admin_trees_renumber.php:27 themes/_administration/header.php:173
 msgid "Renumber family tree"
 msgstr "Renumber family tree"
 
@@ -3961,7 +4178,7 @@ msgstr "Caution!  This may take a long time.  Be patient."
 msgid "If your server times out, press F5 to continue"
 msgstr "If your server times out, press F5 to continue"
 
-#: admin_trees_sanity.php:40 themes/_administration/header.php:183
+#: admin_trees_sanity.php:40 themes/_administration/header.php:177
 msgid "Sanity check"
 msgstr "Sanity check"
 
@@ -3973,64 +4190,57 @@ msgstr ""
 "This process can be slow. If you have a large family tree or suspect large "
 "numbers of errors you should only select a few checks each time."
 
-#: admin_trees_sanity.php:54
+#: admin_trees_sanity.php:59
 msgid "Date discrepancies"
 msgstr "Date discrepancies"
 
-#: admin_trees_sanity.php:60
+#: admin_trees_sanity.php:65
 msgid "Birth after baptism or christening"
 msgstr "Birth after baptism or christening"
 
-#: admin_trees_sanity.php:66
+#: admin_trees_sanity.php:71
 msgid "Birth after death or burial"
 msgstr "Birth after death or burial"
 
-#. I18N: Name of a module/report
-#: admin_trees_sanity.php:69 modules_v3/missing_facts_report/module.php:36
-#: modules_v3/missing_facts_report/report.bak:4
-#: modules_v3/missing_facts_report/report.bak:50
-msgid "Missing data"
-msgstr "Missing data"
-
-#: admin_trees_sanity.php:75
+#: admin_trees_sanity.php:80
 msgid "No gender recorded"
 msgstr "No gender recorded"
 
-#: admin_trees_sanity.php:78
+#: admin_trees_sanity.php:83
 msgid "Duplicated data"
 msgstr "Duplicated data"
 
-#: admin_trees_sanity.php:124
+#: admin_trees_sanity.php:129
 #, php-format
 msgid "%s born after baptism or christening"
 msgstr "%s born after baptism or christening"
 
-#: admin_trees_sanity.php:132
+#: admin_trees_sanity.php:137
 #, php-format
 msgid "%s born after death or burial"
 msgstr "%s born after death or burial"
 
-#: admin_trees_sanity.php:140
+#: admin_trees_sanity.php:145
 #, php-format
 msgid "%s with no gender recorded"
 msgstr "%s with no gender recorded"
 
-#: admin_trees_sanity.php:148
+#: admin_trees_sanity.php:153
 #, php-format
 msgid "%s with duplicated death record"
 msgstr "%s with duplicated death record"
 
-#: admin_trees_sanity.php:156
+#: admin_trees_sanity.php:161
 #, php-format
 msgid "%s with duplicated birth record"
 msgstr "%s with duplicated birth record"
 
-#: admin_trees_sanity.php:164
+#: admin_trees_sanity.php:169
 #, php-format
 msgid "%s with duplicated gender record"
 msgstr "%s with duplicated gender record"
 
-#: admin_trees_sanity.php:172
+#: admin_trees_sanity.php:177
 #, php-format
 msgid "%s with identical name records"
 msgstr "%s with identical name records"
@@ -4057,8 +4267,8 @@ msgstr ""
 "used. Facts or events are items like birth, marriage, death. Records are "
 "items like individuals, families, media."
 
-#: admin_trees_source.php:139 admin_trees_source.php:255
-#: admin_trees_sourcecite.php:129 edit_changes.php:161 edit_interface.php:146
+#: admin_trees_source.php:137 admin_trees_source.php:253
+#: admin_trees_sourcecite.php:127 edit_changes.php:161 edit_interface.php:146
 #: edit_interface.php:1344 help_text.php:486
 #: library/WT/Controller/Family.php:144
 #: library/WT/Controller/Individual.php:384 library/WT/Controller/Media.php:115
@@ -4067,17 +4277,11 @@ msgstr ""
 msgid "Edit raw GEDCOM record"
 msgstr "Edit raw GEDCOM record"
 
-#. I18N: gedcom tag EVEN
-#: admin_trees_source.php:143 library/WT/Gedcom/Tag.php:209
-#: modules_v3/missing_facts_report/report.bak:53
-msgid "Event"
-msgstr "Event"
-
-#: admin_trees_source.php:144
+#: admin_trees_source.php:142
 msgid "Event date"
 msgstr "Event date"
 
-#: admin_trees_source.php:146 admin_trees_source.php:263
+#: admin_trees_source.php:144 admin_trees_source.php:261
 msgid "Citation text"
 msgstr "Citation text"
 
@@ -4101,7 +4305,7 @@ msgstr ""
 "the detail page of that record for further editing. If you have many similar "
 "edits you might prefer to use the <strong>Batch update</strong> tool."
 
-#: admin_trees_sourcecite.php:120
+#: admin_trees_sourcecite.php:118
 #, php-format
 msgid ""
 "This source also appears in %s GEDCOM record without a citation attached"
@@ -4112,11 +4316,11 @@ msgstr[0] ""
 msgstr[1] ""
 "This source also appears in %s GEDCOM records without a citation attached"
 
-#: admin_trees_sourcecite.php:131
+#: admin_trees_sourcecite.php:129
 msgid "Citation"
 msgstr "Citation"
 
-#: admin_trees_unlinked.php:40 themes/_administration/header.php:182
+#: admin_trees_unlinked.php:40 themes/_administration/header.php:176
 msgid "Find unlinked individuals"
 msgstr "Find unlinked individuals"
 
@@ -4350,7 +4554,7 @@ msgstr "Verified"
 msgid "Approved"
 msgstr "Approved"
 
-#: admin_users_bulk.php:35 themes/_administration/header.php:200
+#: admin_users_bulk.php:35 themes/_administration/header.php:195
 msgid "Send broadcast messages"
 msgstr "Send broadcast messages"
 
@@ -4377,14 +4581,6 @@ msgstr "Booklet"
 #: ancestry.php:92
 msgid "Show cousins"
 msgstr "Show cousins"
-
-#: ancestry.php:113 descendancy.php:79 familybook.php:62 fanchart.php:69
-#: hourglass.php:79 modules_v3/googlemap/module.php:727 pedigree.php:49
-#: modules_v3/ahnentafel_report/report.bak:8
-#: modules_v3/individual_ext_report/report.bak:8
-#: modules_v3/missing_facts_report/report.bak:8
-msgid "Generations"
-msgstr "Generations"
 
 #: ancestry.php:129 descendancy.php:89 familybook.php:50 hourglass.php:63
 #: modules_v3/charts/module.php:210 pedigree.php:67 relationship.php:104
@@ -4441,7 +4637,7 @@ msgstr "Expand all"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: branches.php:156 branches.php:182
-#: includes/functions/functions_print_lists.php:265
+#: includes/functions/functions_print_lists.php:270
 msgid "Sosa"
 msgstr "Sosa"
 
@@ -4477,7 +4673,7 @@ msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Recent Years (&lt; 100 yrs)"
 
 #: calendar.php:241 calendar.php:244 calendar.php:410 calendar.php:595
-#: includes/functions/functions_print_lists.php:2292 library/WT/Stats.php:611
+#: includes/functions/functions_print_lists.php:2331 library/WT/Stats.php:611
 #: library/WT/Stats.php:613 library/WT/Stats.php:621 library/WT/Stats.php:622
 #: library/WT/Stats.php:1659 library/WT/Stats.php:2399
 #: modules_v3/gedcom_stats/module.php:100
@@ -4490,7 +4686,7 @@ msgid "Males"
 msgstr "Males"
 
 #: calendar.php:248 calendar.php:250 calendar.php:411 calendar.php:596
-#: includes/functions/functions_print_lists.php:2292 library/WT/Stats.php:610
+#: includes/functions/functions_print_lists.php:2331 library/WT/Stats.php:610
 #: library/WT/Stats.php:614 library/WT/Stats.php:620 library/WT/Stats.php:623
 #: library/WT/Stats.php:1659 library/WT/Stats.php:2399
 #: modules_v3/gedcom_stats/module.php:101
@@ -4508,33 +4704,6 @@ msgstr "Females"
 #: modules_v3/bdm_report/report.bak:4 modules_v3/bdm_report/report.bak:32
 msgid "Vital records"
 msgstr "Vital records"
-
-#. I18N: listbox option, e.g. “10,25,50,100,all”
-#: calendar.php:259 famlist.php:71 famlist.php:77 famlist.php:83
-#: famlist.php:173 famlist.php:175 famlist.php:259 famlist.php:261
-#: indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:173
-#: indilist.php:175 indilist.php:259 indilist.php:261 library/WT/I18N.php:658
-#: library/WT/Stats.php:3343 modules_v3/extra_menus/help_text.php:50
-#: modules_v3/extra_menus/module.php:370
-#: modules_v3/fancy_treeview/module.php:521 modules_v3/faq/module.php:222
-#: modules_v3/faq/module.php:470 modules_v3/gallery/help_text.php:37
-#: modules_v3/gallery/module.php:554 modules_v3/googlemap/admin_places.php:610
-#: modules_v3/googlemap/admin_places.php:762
-#: modules_v3/googlemap/module.php:1489 modules_v3/googlemap/module.php:1505
-#: modules_v3/no_census/module.php:212 modules_v3/random_media/module.php:299
-#: modules_v3/resource_individual/module.php:130
-#: modules_v3/resource_related_indi/module.php:105
-#: modules_v3/simpl_pages/help_text.php:37
-#: modules_v3/simpl_pages/module.php:474 modules_v3/uk_register/module.php:174
-#: modules_v3/widget_messages/module.php:84
-#: modules_v3/ahnentafel_report/report.bak:8
-#: modules_v3/individual_ext_report/report.bak:7
-#: modules_v3/individual_ext_report/report.bak:8
-#: modules_v3/individual_ext_report/report.bak:12
-#: modules_v3/missing_facts_report/report.bak:7
-#: modules_v3/missing_facts_report/report.bak:8
-msgid "All"
-msgstr "All"
 
 #: calendar.php:298 includes/functions/functions_print.php:1132
 #: includes/functions/functions_print.php:1234
@@ -4578,7 +4747,7 @@ msgstr "Day not set"
 msgid "In this year"
 msgstr "In this year"
 
-#: calendar.php:655 includes/functions/functions_print_lists.php:2226
+#: calendar.php:655 includes/functions/functions_print_lists.php:2265
 #: modules_v3/widget_yahrzeit/module.php:118 modules_v3/yahrzeit/module.php:119
 #, php-format
 msgid "%s year anniversary"
@@ -4609,7 +4778,7 @@ msgstr "You do not have permission to view this page."
 #: modules_v3/resource_changes/module.php:255
 #: modules_v3/review_changes/module.php:35
 #: modules_v3/widget_review_changes/module.php:35
-#: themes/_administration/header.php:110 themes/colors/header.php:126
+#: themes/_administration/header.php:104 themes/colors/header.php:126
 #: themes/kiwitrees/header.php:135 themes/levy/header.php:118
 #: themes/webtrees/header.php:110 themes/xenea/header.php:118
 msgid "Pending changes"
@@ -4840,7 +5009,7 @@ msgstr "Create Repository"
 msgid "You must provide a repository name"
 msgstr "You must provide a repository name"
 
-#: edit_interface.php:1199 includes/functions/functions_print_lists.php:1458
+#: edit_interface.php:1199 includes/functions/functions_print_lists.php:1487
 msgid "Repository name"
 msgstr "Repository name"
 
@@ -10213,21 +10382,6 @@ msgstr "Pedigree map"
 msgid "Relationship to me"
 msgstr "Relationship to me"
 
-#. I18N: gedcom tag DESC
-#. I18N: Name of a module/sidebar
-#. I18N: Name of the module
-#: includes/functions/functions_print.php:99
-#: library/WT/Controller/Descendancy.php:102
-#: library/WT/Controller/Fanchart.php:308 library/WT/Gedcom/Tag.php:189
-#: modules_v3/charts/module.php:204 modules_v3/descendancy/module.php:36
-#: modules_v3/fancy_treeview/module.php:47
-#: modules_v3/fancy_treeview/module.php:1533
-#: modules_v3/resource_related_indi/module.php:104
-#: modules_v3/individual_ext_report/report.bak:7
-#: modules_v3/missing_facts_report/report.bak:7
-msgid "Descendants"
-msgstr "Descendants"
-
 #. I18N: Name of a module/report
 #: includes/functions/functions_print.php:100
 #: library/WT/Controller/Ancestry.php:84 library/WT/Controller/Fanchart.php:309
@@ -10334,7 +10488,7 @@ msgid "For more information contact"
 msgstr "For more information contact"
 
 #: includes/functions/functions_print.php:717
-#: includes/functions/functions_print_lists.php:358 relationship.php:74
+#: includes/functions/functions_print_lists.php:363 relationship.php:74
 #: relationship.php:89
 msgid "Relationships"
 msgstr "Relationships"
@@ -10504,59 +10658,59 @@ msgstr "Are you sure you want to delete this fact?"
 msgid "#%d"
 msgstr "#%d"
 
-#: includes/functions/functions_print_lists.php:155
+#: includes/functions/functions_print_lists.php:160
 msgid "Show only males."
 msgstr "Show only males."
 
-#: includes/functions/functions_print_lists.php:164
+#: includes/functions/functions_print_lists.php:169
 msgid "Show only females."
 msgstr "Show only females."
 
-#: includes/functions/functions_print_lists.php:173
+#: includes/functions/functions_print_lists.php:178
 msgid "Show only individuals for whom the gender is not known."
 msgstr "Show only individuals for whom the gender is not known."
 
-#: includes/functions/functions_print_lists.php:184
-#: includes/functions/functions_print_lists.php:643
+#: includes/functions/functions_print_lists.php:189
+#: includes/functions/functions_print_lists.php:652
 msgid ""
 "Show individuals who are alive or couples where both partners are alive."
 msgstr ""
 "Show individuals who are alive or couples where both partners are alive."
 
-#: includes/functions/functions_print_lists.php:187
+#: includes/functions/functions_print_lists.php:192
 msgid "Alive"
 msgstr "Alive"
 
-#: includes/functions/functions_print_lists.php:193
-#: includes/functions/functions_print_lists.php:670
+#: includes/functions/functions_print_lists.php:198
+#: includes/functions/functions_print_lists.php:679
 msgid ""
 "Show individuals who are dead or couples where both partners are deceased."
 msgstr ""
 "Show individuals who are dead or couples where both partners are deceased."
 
-#: includes/functions/functions_print_lists.php:196 library/WT/Stats.php:683
+#: includes/functions/functions_print_lists.php:201 library/WT/Stats.php:683
 #: library/WT/Stats.php:685 modules_v3/simpl_privacy/module.php:61
 msgid "Dead"
 msgstr "Dead"
 
-#: includes/functions/functions_print_lists.php:202
+#: includes/functions/functions_print_lists.php:207
 msgid "Show individuals who died more than 100 years ago."
 msgstr "Show individuals who died more than 100 years ago."
 
-#: includes/functions/functions_print_lists.php:211
+#: includes/functions/functions_print_lists.php:216
 msgid "Show individuals who died within the last 100 years."
 msgstr "Show individuals who died within the last 100 years."
 
-#: includes/functions/functions_print_lists.php:222
+#: includes/functions/functions_print_lists.php:227
 msgid "Show individuals born more than 100 years ago."
 msgstr "Show individuals born more than 100 years ago."
 
-#: includes/functions/functions_print_lists.php:231
+#: includes/functions/functions_print_lists.php:236
 msgid "Show individuals born within the last 100 years."
 msgstr "Show individuals born within the last 100 years."
 
-#: includes/functions/functions_print_lists.php:242
-#: includes/functions/functions_print_lists.php:681
+#: includes/functions/functions_print_lists.php:247
+#: includes/functions/functions_print_lists.php:690
 msgid ""
 "Show “roots” couples or individuals.  These individuals may also be called "
 "“patriarchs”.  They are individuals who have no parents recorded in the "
@@ -10566,13 +10720,13 @@ msgstr ""
 "“patriarchs”.  They are individuals who have no parents recorded in the "
 "database."
 
-#: includes/functions/functions_print_lists.php:245
-#: includes/functions/functions_print_lists.php:683
+#: includes/functions/functions_print_lists.php:250
+#: includes/functions/functions_print_lists.php:692
 msgid "Roots"
 msgstr "Roots"
 
-#: includes/functions/functions_print_lists.php:251
-#: includes/functions/functions_print_lists.php:690
+#: includes/functions/functions_print_lists.php:256
+#: includes/functions/functions_print_lists.php:699
 msgid ""
 "Show “leaves” couples or individuals.  These are individuals who are alive "
 "but have no children recorded in the database."
@@ -10580,166 +10734,170 @@ msgstr ""
 "Show “leaves” couples or individuals.  These are individuals who are alive "
 "but have no children recorded in the database."
 
-#: includes/functions/functions_print_lists.php:254
-#: includes/functions/functions_print_lists.php:692
+#: includes/functions/functions_print_lists.php:259
+#: includes/functions/functions_print_lists.php:701
 msgid "Leaves"
 msgstr "Leaves"
 
-#: includes/functions/functions_print_lists.php:269
-#: includes/functions/functions_print_lists.php:275
-#: includes/functions/functions_print_lists.php:760
-#: includes/functions/functions_print_lists.php:2072
+#: includes/functions/functions_print_lists.php:274
+#: includes/functions/functions_print_lists.php:280
+#: includes/functions/functions_print_lists.php:769
+#: includes/functions/functions_print_lists.php:2111
 #: modules_v3/widget_yahrzeit/module.php:159 modules_v3/yahrzeit/module.php:160
 msgid "Anniversary"
 msgstr "Anniversary"
 
-#: includes/functions/functions_print_lists.php:271
-#: includes/functions/functions_print_lists.php:762 statisticsplot.php:781
+#: includes/functions/functions_print_lists.php:276
+#: includes/functions/functions_print_lists.php:771 statisticsplot.php:781
 #: modules_v3/family_group_report/report.bak:753
 msgid "Children"
 msgstr "Children"
 
-#: includes/functions/functions_print_lists.php:293
-#: includes/functions/functions_print_lists.php:777
+#: includes/functions/functions_print_lists.php:298
+#: includes/functions/functions_print_lists.php:786
 msgid "Show parents"
 msgstr "Show parents"
 
-#: includes/functions/functions_print_lists.php:296
-#: includes/functions/functions_print_lists.php:780
+#: includes/functions/functions_print_lists.php:301
+#: includes/functions/functions_print_lists.php:789
 msgid "Show statistics charts"
 msgstr "Show statistics charts"
 
-#: includes/functions/functions_print_lists.php:509
-#: includes/functions/functions_print_lists.php:1018
+#: includes/functions/functions_print_lists.php:514
+#: includes/functions/functions_print_lists.php:1027
 msgid "Decade of birth"
 msgstr "Decade of birth"
 
-#: includes/functions/functions_print_lists.php:512
+#: includes/functions/functions_print_lists.php:517
 msgid "Decade of death"
 msgstr "Decade of death"
 
-#: includes/functions/functions_print_lists.php:517 statistics.php:538
+#: includes/functions/functions_print_lists.php:522 statistics.php:538
 #: statisticsplot.php:918
 msgid "Age related to death year"
 msgstr "Age related to death year"
 
-#: includes/functions/functions_print_lists.php:645
+#: includes/functions/functions_print_lists.php:654
 msgid "Both alive"
 msgstr "Both alive"
 
-#: includes/functions/functions_print_lists.php:652
+#: includes/functions/functions_print_lists.php:661
 msgid "Show couples where only the female partner is deceased."
 msgstr "Show couples where only the female partner is deceased."
 
-#: includes/functions/functions_print_lists.php:654
+#: includes/functions/functions_print_lists.php:663
 msgid "Widower"
 msgstr "Widower"
 
-#: includes/functions/functions_print_lists.php:661
+#: includes/functions/functions_print_lists.php:670
 msgid "Show couples where only the male partner is deceased."
 msgstr "Show couples where only the male partner is deceased."
 
-#: includes/functions/functions_print_lists.php:663
+#: includes/functions/functions_print_lists.php:672
 msgid "Widow"
 msgstr "Widow"
 
-#: includes/functions/functions_print_lists.php:672
+#: includes/functions/functions_print_lists.php:681
 msgid "Both dead"
 msgstr "Both dead"
 
-#: includes/functions/functions_print_lists.php:701
+#: includes/functions/functions_print_lists.php:710
 msgid "Show couples with an unknown marriage date."
 msgstr "Show couples with an unknown marriage date."
 
-#: includes/functions/functions_print_lists.php:710
+#: includes/functions/functions_print_lists.php:719
 msgid "Show couples who married more than 100 years ago."
 msgstr "Show couples who married more than 100 years ago."
 
-#: includes/functions/functions_print_lists.php:719
+#: includes/functions/functions_print_lists.php:728
 msgid "Show couples who married within the last 100 years."
 msgstr "Show couples who married within the last 100 years."
 
-#: includes/functions/functions_print_lists.php:728
+#: includes/functions/functions_print_lists.php:737
 msgid "Show divorced couples."
 msgstr "Show divorced couples."
 
-#: includes/functions/functions_print_lists.php:737
+#: includes/functions/functions_print_lists.php:746
 msgid "Show couples where either partner married more than once."
 msgstr "Show couples where either partner married more than once."
 
-#: includes/functions/functions_print_lists.php:739
+#: includes/functions/functions_print_lists.php:748
 msgid "Multiple marriages"
 msgstr "Multiple marriages"
 
-#: includes/functions/functions_print_lists.php:1021
+#: includes/functions/functions_print_lists.php:1030
 msgid "Decade of marriage"
 msgstr "Decade of marriage"
 
-#: includes/functions/functions_print_lists.php:1026 statistics.php:250
+#: includes/functions/functions_print_lists.php:1035 statistics.php:250
 #: statistics.php:542 statisticsplot.php:921
 msgid "Age in year of marriage"
 msgstr "Age in year of marriage"
 
-#: includes/functions/functions_print_lists.php:1364
+#: includes/functions/functions_print_lists.php:1388
 #: modules_v3/stories/module.php:337 modules_v3/stories/module.php:495
-#: modules_v3/stories/module.php:581
+#: modules_v3/stories/module.php:586
 msgid "Story title"
 msgstr "Story title"
 
-#: includes/functions/functions_print_lists.php:1661
+#: includes/functions/functions_print_lists.php:1606
+msgid "File name"
+msgstr "File name"
+
+#: includes/functions/functions_print_lists.php:1700
 msgid "Spouses"
 msgstr "Spouses"
 
-#: includes/functions/functions_print_lists.php:1749
+#: includes/functions/functions_print_lists.php:1788
 #, php-format
 msgid "%1$s (%2$d)"
 msgstr "%1$s (%2$d)"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
-#: includes/functions/functions_print_lists.php:1871
+#: includes/functions/functions_print_lists.php:1910
 #, php-format
 msgid "Changed on %1$s by %2$s"
 msgstr "Changed on %1$s by %2$s"
 
-#: includes/functions/functions_print_lists.php:2131
-#: includes/functions/functions_print_lists.php:2240
+#: includes/functions/functions_print_lists.php:2170
+#: includes/functions/functions_print_lists.php:2279
 msgid "No events exist for today."
 msgstr "No events exist for today."
 
-#: includes/functions/functions_print_lists.php:2133
-#: includes/functions/functions_print_lists.php:2242
+#: includes/functions/functions_print_lists.php:2172
+#: includes/functions/functions_print_lists.php:2281
 msgid "No events for living people exist for today."
 msgstr "No events for living people exist for today."
 
-#: includes/functions/functions_print_lists.php:2141
-#: includes/functions/functions_print_lists.php:2250
+#: includes/functions/functions_print_lists.php:2180
+#: includes/functions/functions_print_lists.php:2289
 msgid "No events exist for tomorrow."
 msgstr "No events exist for tomorrow."
 
 #. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
-#: includes/functions/functions_print_lists.php:2144
-#: includes/functions/functions_print_lists.php:2253
+#: includes/functions/functions_print_lists.php:2183
+#: includes/functions/functions_print_lists.php:2292
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
 msgstr[0] "No events exist for the next %s day."
 msgstr[1] "No events exist for the next %s days."
 
-#: includes/functions/functions_print_lists.php:2148
-#: includes/functions/functions_print_lists.php:2257
+#: includes/functions/functions_print_lists.php:2187
+#: includes/functions/functions_print_lists.php:2296
 msgid "No events for living people exist for tomorrow."
 msgstr "No events for living people exist for tomorrow."
 
 #. I18N: tanslation for %s==1 is unused; it is translated separately as “tomorrow”
-#: includes/functions/functions_print_lists.php:2151
-#: includes/functions/functions_print_lists.php:2260
+#: includes/functions/functions_print_lists.php:2190
+#: includes/functions/functions_print_lists.php:2299
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
 msgstr[0] "No events for living people exist for the next %s day."
 msgstr[1] "No events for living people exist for the next %s days."
 
-#: includes/functions/functions_print_lists.php:2292 library/WT/Stats.php:2399
+#: includes/functions/functions_print_lists.php:2331 library/WT/Stats.php:2399
 msgid "Average age"
 msgstr "Average age"
 
@@ -11009,6 +11167,14 @@ msgstr "Edit details"
 msgid "Edit note"
 msgstr "Edit note"
 
+#: library/WT/Controller/Page.php:189
+msgid "More"
+msgstr "More"
+
+#: library/WT/Controller/Page.php:190
+msgid "Less"
+msgstr "Less"
+
 #. I18N: %s is an individual’s name
 #: library/WT/Controller/Pedigree.php:92
 #, php-format
@@ -11096,7 +11262,7 @@ msgstr "Edit repository"
 
 #. I18N: Name of a module
 #: library/WT/Controller/Search.php:1091 modules_v3/stories/module.php:35
-#: modules_v3/stories/module.php:576 search.php:142
+#: modules_v3/stories/module.php:581 search.php:142
 msgid "Stories"
 msgstr "Stories"
 
@@ -16434,16 +16600,16 @@ msgid "My pedigree"
 msgstr "My pedigree"
 
 #: library/WT/MenuBar.php:77 modules_v3/widget_quicklinks/module.php:73
-#: themes/_administration/header.php:100
+#: themes/_administration/header.php:94
 msgid "My individual record"
 msgstr "My individual record"
 
-#: library/WT/MenuBar.php:144 themes/_administration/header.php:220
+#: library/WT/MenuBar.php:144 themes/_administration/header.php:215
 msgid "Reports"
 msgstr "Reports"
 
 #: library/WT/MenuBar.php:167 modules_v3/simpl_pages/module.php:415
-#: themes/_administration/header.php:221
+#: themes/_administration/header.php:216
 msgid "Resources"
 msgstr "Resources"
 
@@ -20664,7 +20830,7 @@ msgstr "cancel"
 msgid "Main menu title"
 msgstr "Main menu title"
 
-#: modules_v3/extra_menus/module.php:327 themes/_administration/header.php:215
+#: modules_v3/extra_menus/module.php:327 themes/_administration/header.php:210
 msgid "Menus"
 msgstr "Menus"
 
@@ -21534,12 +21700,6 @@ msgstr "Show this block for which languages?"
 msgid "Search FAQs"
 msgstr "Search FAQs"
 
-#. I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
-#: modules_v3/faq/module.php:422 modules_v3/gallery/module.php:491
-#: modules_v3/simpl_pages/module.php:443
-msgid "Summary"
-msgstr "Summary"
-
 #: modules_v3/faq/module.php:428
 msgid "Main menu and page title"
 msgstr "Main menu and page title"
@@ -21935,7 +22095,6 @@ msgstr "Total surnames"
 #: modules_v3/gedcom_stats/module.php:357 modules_v3/html/module.php:199
 #: modules_v3/widget_stats/module.php:155
 #: modules_v3/widget_stats/module.php:397 statistics.php:356
-#: modules_v3/missing_facts_report/report.bak:599
 msgid "Total events"
 msgstr "Total events"
 
@@ -22582,7 +22741,7 @@ msgstr ""
 "the GoogleMap tables"
 
 #: modules_v3/googlemap/placehierarchy.php:170
-#: themes/_administration/header.php:177
+#: themes/_administration/header.php:171
 msgid "Update place names"
 msgstr "Update place names"
 
@@ -22903,16 +23062,6 @@ msgstr "Search menu"
 #: modules_v3/menu_search/module.php:40
 msgid "The Search menu item"
 msgstr "The Search menu item"
-
-#. I18N: Description of the “Missing data”
-#: modules_v3/missing_facts_report/module.php:42
-#: modules_v3/missing_facts_report/report.bak:5
-msgid ""
-"A report of the information that is missing for an individual and their "
-"relatives."
-msgstr ""
-"A report of the information that is missing for an individual and their "
-"relatives."
 
 #. I18N: Name of a module
 #: modules_v3/no_census/module.php:36
@@ -23318,41 +23467,6 @@ msgstr "Related individuals"
 #: modules_v3/resource_related_indi/module.php:41
 msgid "A report of individuals closely related to a selected individual."
 msgstr "A report of individuals closely related to a selected individual."
-
-#: modules_v3/resource_related_indi/module.php:100
-#: modules_v3/individual_ext_report/report.bak:7
-#: modules_v3/missing_facts_report/report.bak:7
-msgid "Parents and siblings"
-msgstr "Parents and siblings"
-
-#: modules_v3/resource_related_indi/module.php:101
-#: modules_v3/individual_ext_report/report.bak:7
-#: modules_v3/missing_facts_report/report.bak:7
-msgid "Spouses and children"
-msgstr "Spouses and children"
-
-#: modules_v3/resource_related_indi/module.php:102
-#: modules_v3/individual_ext_report/report.bak:7
-#: modules_v3/missing_facts_report/report.bak:7
-msgid "Direct line ancestors"
-msgstr "Direct line ancestors"
-
-#: modules_v3/resource_related_indi/module.php:103
-#: modules_v3/individual_ext_report/report.bak:7
-#: modules_v3/missing_facts_report/report.bak:7
-msgid "Direct line ancestors and their families"
-msgstr "Direct line ancestors and their families"
-
-#: modules_v3/resource_related_indi/module.php:120
-#: modules_v3/individual_ext_report/report.bak:7
-#: modules_v3/missing_facts_report/report.bak:7
-msgid "Choose relatives"
-msgstr "Choose relatives"
-
-#: modules_v3/resource_related_indi/module.php:171
-#, php-format
-msgid "%1s related to %2s "
-msgstr "%1s related to %2s "
 
 #: modules_v3/resource_related_indi/module.php:232
 msgid "No."
@@ -24521,7 +24635,7 @@ msgstr "select none"
 msgid "invert selection"
 msgstr "invert selection"
 
-#: search.php:551 themes/_administration/header.php:157
+#: search.php:551 themes/_administration/header.php:151
 msgid "Family trees"
 msgstr "Family trees"
 
@@ -25377,111 +25491,103 @@ msgstr "Months between marriage and birth of first child"
 msgid "age"
 msgstr "age"
 
-#: themes/_administration/header.php:45
-msgid "More"
-msgstr "More"
-
-#: themes/_administration/header.php:46
-msgid "Less"
-msgstr "Less"
-
-#: themes/_administration/header.php:116 themes/kiwitrees/header.php:128
+#: themes/_administration/header.php:110 themes/kiwitrees/header.php:128
 msgid "Search trees"
 msgstr "Search trees"
 
 #. I18N: The local time on the server
-#: themes/_administration/header.php:124
+#: themes/_administration/header.php:118
 msgid "Server time"
 msgstr "Server time"
 
 #. I18N: The local time on the client/browser
-#: themes/_administration/header.php:127
+#: themes/_administration/header.php:121
 msgid "Client time"
 msgstr "Client time"
 
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
-#: themes/_administration/header.php:130
+#: themes/_administration/header.php:124
 msgid "UTC"
 msgstr "UTC"
 
-#: themes/_administration/header.php:138
+#: themes/_administration/header.php:132
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: themes/_administration/header.php:144
+#: themes/_administration/header.php:138
 msgid "Site Administration"
 msgstr "Site Administration"
 
-#: themes/_administration/header.php:170
+#: themes/_administration/header.php:164
 msgid "Family tree tools"
 msgstr "Family tree tools"
 
-#: themes/_administration/header.php:174
+#: themes/_administration/header.php:168
 msgid "Check for GEDCOM errors"
 msgstr "Check for GEDCOM errors"
 
-#: themes/_administration/header.php:175
+#: themes/_administration/header.php:169
 msgid "Changes log"
 msgstr "Changes log"
 
-#: themes/_administration/header.php:180
+#: themes/_administration/header.php:174
 msgid "Append family tree"
 msgstr "Append family tree"
 
-#: themes/_administration/header.php:184
+#: themes/_administration/header.php:178
 msgid "Sources - review"
 msgstr "Sources - review"
 
-#: themes/_administration/header.php:185
+#: themes/_administration/header.php:179
 msgid "Sources - review citations"
 msgstr "Sources - review citations"
 
-#: themes/_administration/header.php:191
+#: themes/_administration/header.php:186
 msgid "Set the default blocks for new family trees"
 msgstr "Set the default blocks for new family trees"
 
-#: themes/_administration/header.php:191
+#: themes/_administration/header.php:186
 msgid "Set the default blocks"
 msgstr "Set the default blocks"
 
-#: themes/_administration/header.php:198
+#: themes/_administration/header.php:193
 msgid "Manage users"
 msgstr "Manage users"
 
-#: themes/_administration/header.php:199
+#: themes/_administration/header.php:194
 msgid "Add a new user"
 msgstr "Add a new user"
 
-#: themes/_administration/header.php:201
+#: themes/_administration/header.php:196
 msgid "Delete inactive users"
 msgstr "Delete inactive users"
 
-#: themes/_administration/header.php:206
+#: themes/_administration/header.php:201
 msgid "Manage media"
 msgstr "Manage media"
 
-#: themes/_administration/header.php:210
+#: themes/_administration/header.php:205
 msgid "Modules"
 msgstr "Modules"
 
-#: themes/_administration/header.php:212
+#: themes/_administration/header.php:207
 msgid "Manage modules"
 msgstr "Manage modules"
 
-#: themes/_administration/header.php:216
+#: themes/_administration/header.php:211
 msgid "Tabs"
 msgstr "Tabs"
 
-#: themes/_administration/header.php:217
+#: themes/_administration/header.php:212
 msgid "Blocks"
 msgstr "Blocks"
 
-#: themes/_administration/header.php:218 themes/webtrees/header.php:129
+#: themes/_administration/header.php:213 themes/webtrees/header.php:129
 #: themes/xenea/header.php:133
 msgid "Widgets"
 msgstr "Widgets"
 
-#: themes/_administration/header.php:231
+#: themes/_administration/header.php:226
 msgid "Tools"
 msgstr "Tools"
 
@@ -25644,7 +25750,6 @@ msgstr "Show lifespans"
 
 #: modules_v3/ahnentafel_report/report.bak:7
 #: modules_v3/individual_ext_report/report.bak:6
-#: modules_v3/missing_facts_report/report.bak:6
 #: modules_v3/pedigree_report/report.bak:6
 msgid "Enter Individual ID"
 msgstr "Enter Individual ID"
@@ -25678,7 +25783,6 @@ msgstr "Show children of ancestors?"
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
-#: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
 msgctxt "paper size"
 msgid "Letter"
@@ -25689,7 +25793,6 @@ msgstr "Letter"
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
-#: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
 msgctxt "paper size"
 msgid "A3"
@@ -25700,7 +25803,6 @@ msgstr "A3"
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
-#: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
 msgctxt "paper size"
 msgid "A4"
@@ -25711,7 +25813,6 @@ msgstr "A4"
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
-#: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
 msgctxt "paper size"
 msgid "Legal"
@@ -25722,7 +25823,6 @@ msgstr "Legal"
 #: modules_v3/family_group_report/report.bak:12
 #: modules_v3/individual_ext_report/report.bak:13
 #: modules_v3/marriage_report/report.bak:11
-#: modules_v3/missing_facts_report/report.bak:9
 #: modules_v3/pedigree_report/report.bak:8
 msgid "Page size"
 msgstr "Page size"
@@ -25732,7 +25832,6 @@ msgstr "Page size"
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
-#: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
 msgctxt "font name"
 msgid "Arial"
@@ -25743,7 +25842,6 @@ msgstr "Arial"
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
-#: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
 msgctxt "font name"
 msgid "DejaVu"
@@ -25754,7 +25852,6 @@ msgstr "DejaVu"
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
-#: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
 msgctxt "font name"
 msgid "Helvetica"
@@ -25765,7 +25862,6 @@ msgstr "Helvetica"
 #: modules_v3/family_group_report/report.bak:13
 #: modules_v3/individual_ext_report/report.bak:14
 #: modules_v3/marriage_report/report.bak:12
-#: modules_v3/missing_facts_report/report.bak:10
 #: modules_v3/pedigree_report/report.bak:9
 msgid "Font"
 msgstr "Font"
@@ -25779,7 +25875,6 @@ msgstr "Ancestors of "
 #: modules_v3/family_group_report/report.bak:87
 #: modules_v3/individual_ext_report/report.bak:90
 #: modules_v3/marriage_report/report.bak:29
-#: modules_v3/missing_facts_report/report.bak:51
 msgid "Page"
 msgstr "Page"
 
@@ -25879,7 +25974,6 @@ msgid "Death Date range end"
 msgstr "Death Date range end"
 
 #: modules_v3/bdm_report/report.bak:208
-#: modules_v3/missing_facts_report/report.bak:598
 msgid "Total individuals"
 msgstr "Total individuals"
 
@@ -25938,10 +26032,6 @@ msgstr "Marriage Date range start"
 #: modules_v3/marriage_report/report.bak:9
 msgid "Marriage Date range end"
 msgstr "Marriage Date range end"
-
-#: modules_v3/missing_facts_report/report.bak:12
-msgid "Sources to the events"
-msgstr "Sources to the events"
 
 #: modules_v3/pedigree_report/report.bak:7
 msgid "Orientation"
