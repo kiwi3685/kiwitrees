@@ -226,10 +226,10 @@ textarea:required:invalid {
 }
 
 #flash-messages p {
-	background: #ffff00;
-	color: #00f;
+	background: #ffffe0;
+	color: #555;
 	margin: 0;
-	padding: 3px 10px;
+	padding: 2px 10px;
 	text-align: center;
 }
 
