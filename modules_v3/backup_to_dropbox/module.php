@@ -187,12 +187,12 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 					</ul>
 					<form method="post" action="<?php echo $this->getConfigLink(); ?>">
 						<input type="hidden" name="action" value="backup">
-						<button class="btn btn-primary delete" type="submit" style="color: #007ee5; font-weight: 600;">
-							<i class="fa fa-dropbox" style="font-size: 2em;"></i>
+						<button class="btn btn-primary delete" type="submit">
+							<i class="fa fa-dropbox"></i>
 							<?php echo WT_I18N::translate('backup'); ?>
 						</button>
 					</form>
-					<div style="clear: both; font-size: 90%; font-style: italic;"><?php echo /* I18N: Dropbox copyright statement */ WT_I18N::translate('"Dropbox and the Dropbox logo are trademarks of Dropbox, Inc."'); ?></div>
+					<div style="clear: both; font-size: 90%; font-style: italic;"><?php echo /* I18N: Dropbox copyright statement */ WT_I18N::translate('Dropbox and the Dropbox logo are trademarks of Dropbox, Inc.'); ?></div>
 				</div>
 			<?php } ?>
 		</div>

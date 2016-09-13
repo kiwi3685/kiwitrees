@@ -85,6 +85,10 @@ button {
 }
 
 /* jQuery styling over-rides */
+.ui-widget {
+	font-family: inherit;
+	font-size: inherit;
+}
 .ui-widget-content a {text-decoration:none;}
 .ui-widget-content a.current {color:#3383bb; font-weight:bold;}
 .ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:#ff0000; cursor:pointer;}
@@ -183,7 +187,19 @@ div.dt-buttons a.dt-button {
 #admin_content {min-width:750px;}
 
 /* SIDE MENU */
-#admin_menu {padding:10px 5px;top:122px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2e6e9e; white-space:nowrap; overflow:hidden;}
+#admin_menu {
+	color:#2e6e9e;
+	float:left;
+	font-size: initial;
+	left:10px;
+	overflow:hidden;
+	position:absolute;
+	padding:10px 5px;
+	right:auto;
+	top:122px;
+	white-space:nowrap;
+	width:200px;
+}
 #admin_menu .ui-accordion .ui-accordion-content-active {padding:.5em;}
 #admin_menu div p {margin:8px 5px; font-size:12px; white-space:normal;}
 #admin_menu div p span {font-style:italic; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display:block;}
@@ -958,7 +974,6 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 /* FAQ MODULE (also used in config pages of other modules) */
 #faq .label {line-height: 25px; margin-top: 20px;}
 #faq #faq_tabs, #faq #faq_items form {margin: 20px auto; overflow: hidden;}
-#faq .save{margin: 20px 0;}
 table#faq_module, table#faq_module2 {border:1px inset #d3d3d3; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:98%;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
@@ -1165,6 +1180,8 @@ table#story_table {width: 99%;}
 .icon-ldarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-backward */
 .icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-forward */
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
+.fa-dropbox				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #007ee5;} /* fa-dropbox */
+.fa-floppy-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none;} /* fa-floppy-o */
 .fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000;} /* fa-times */
 .fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */
 .fa-pencil				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.0em; background: none; cursor:pointer;} /* fa-pencil */
