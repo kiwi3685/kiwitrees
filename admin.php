@@ -1553,6 +1553,13 @@ function old_paths() {
 		WT_ROOT.'modules_v3/fact_sources', // report replaced by admin tool admin_trees_source
 		WT_ROOT.'modules_v3/relative_ext_report', // report replaced by resource version
 		WT_ROOT.'modules_v3/missing_facts_report', // report replaced by admin tool
+		WT_ROOT.'language/tt.mo', // tidying up redundant labguage files
+		WT_ROOT.'language/bs.mo', // tidying up redundant labguage files
+		WT_ROOT.'language/fa.mo', // tidying up redundant labguage files
+		WT_ROOT.'language/sl.mo', // tidying up redundant labguage files
+		WT_ROOT.'language/zh_CN.mo', // tidying up redundant labguage files
+		WT_ROOT.'language/ca@valencia.mo', // tidying up redundant labguage files
+		WT_ROOT.'language/extra', // tidying up redundant labguage files
 	);
 }
 
