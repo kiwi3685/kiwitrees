@@ -65,7 +65,7 @@ function full_rmdir($dir) {
 
 // Vars
 $ajaxdeleted		= false;
-$locked_by_context	= array('index.php', 'config.ini.php');
+$locked_by_context	= array('index.php', 'config.ini.php', 'language');
 
 // If we are storing the media in the data folder (this is the
 // default), then don’t delete it.
