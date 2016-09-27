@@ -50,7 +50,9 @@ class Backup {
 				);
 
 				$iterator = new RecursiveIteratorIterator(
-					new RecursiveCallbackFilterIterator($innerIterator, $filter)
+					new RecursiveCallbackFilterIterator($innerIterator, $filter),
+	                \RecursiveIteratorIterator::SELF_FIRST,
+	                \RecursiveIteratorIterator::CATCH_GET_CHILD // Ignore "Permission denied"
 				);
 
                 //loop through all entries
