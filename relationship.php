@@ -1,405 +1,218 @@
 <?php
-// Calculates the relationship between two individuals in the gedcom
-//
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ // Calculates the relationship between two individuals in the gedcom
+ //
+ // Kiwitrees: Web based Family History software
+ // Copyright (C) 2016 kiwitrees.net
+ //
+ // Derived from webtrees
+ // Copyright (C) 2016 webtrees development team
+ //
+ // This program is free software; you can redistribute it and/or modify
+ // it under the terms of the GNU General Public License as published by
+ // the Free Software Foundation; either version 2 of the License, or
+ // (at your option) any later version.
+ //
+ // This program is distributed in the hope that it will be useful,
+ // but WITHOUT ANY WARRANTY; without even the implied warranty of
+ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ // GNU General Public License for more details.
+ //
+ // You should have received a copy of the GNU General Public License
+ // along with this program; if not, write to the Free Software
+ // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+//if (!array_key_exists('relationship', WT_Module::getActiveMenus())) {
+//	exit;
+//}
 
-$pid1        =safe_GET_xref('pid1');
-$pid2        =safe_GET_xref('pid2');
-$show_full   =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
-$path_to_find=safe_GET('path_to_find', '[0-9]+', 0);
-$followspouse=safe_GET_bool('followspouse');
-$asc         =safe_GET_bool('asc');
+$max_recursion	= get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION');
+$ancestors_only	= get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_ANCESTORS');
 
-$asc = $asc ? -1 : 1;
-
-if (!$show_full) {
-	$bwidth  = $cbwidth;
-	$bheight = $cbheight;
-	$Dbwidth = $cbwidth;
-}
-
-$Dbheight  		= $bheight;
-$Dbxspacing		= 0;
-$Dbyspacing		= 0;
-$Dbasexoffset	= 0;
-$Dbaseyoffset	= 0;
-
-$person1=WT_Person::getInstance($pid1);
-$person2=WT_Person::getInstance($pid2);
+$controller = new WT_Controller_Relationship();
+$pid1       = WT_Filter::get('pid1', WT_REGEX_XREF);
+$pid2       = WT_Filter::get('pid2', WT_REGEX_XREF);
+$show_full  = WT_Filter::getInteger('show_full', 0, 1, get_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS'));
+$recursion  = WT_Filter::getInteger('recursion', 0, $max_recursion, 0);
+$ancestors  = WT_Filter::getInteger('ancestors', 0, 1, 0);
+$person1	= WT_Person::getInstance($pid1, $WT_TREE);
+$person2	= WT_Person::getInstance($pid2, $WT_TREE);
 
 $controller
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
 	->addInlineJavascript('autocomplete();');
 
-if ($person1 && $person1->canDisplayName() && $person2 && $person2->canDisplayName()) {	
+if ($person1 && $person2) {
 	$controller
 		->setPageTitle(WT_I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
-		->PageHeader();
-	$node=get_relationship($person1, $person2, $followspouse, 0, $path_to_find);
-	// If no blood relationship exists, look for relationship via marriage
-	if ($path_to_find==0 && $node==false && $followspouse==false) {
-		$followspouse=true;
-		$node=get_relationship($person1, $person2, $followspouse, 0, $path_to_find);
-	}
-	$disp=true;
+		->pageHeader();
+	$paths = $controller->calculateRelationships($person1, $person2, $recursion, (bool) $ancestors);
 } else {
 	$controller
 		->setPageTitle(WT_I18N::translate('Relationships'))
-		->PageHeader();
-	$node=false;
-	$disp=false;
+		->pageHeader();
+	$paths = array();
 }
 
 ?>
+
 <div id="relationship-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form name="people" method="get" action="relationship.php">
+	<h2><?php echo $controller->getPageTitle() ?></h2>
+	<form name="people" method="get" action="?">
 		<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-		<input type="hidden" name="path_to_find" value="0">
-		<table class="list_table">
-			<tr>
-				<td colspan="2" class="topbottombar center">
-					<?php echo WT_I18N::translate('Relationships'); ?>
-				</td>
-				<td colspan="2" class="topbottombar center">
-					<?php echo WT_I18N::translate('Options:'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Person 1'); ?>
-				</td>
-				<td class="optionbox vmiddle">
-					<input tabindex="1" class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
-					<?php echo print_findindi_link('pid1'); ?>
-				</td>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show Details'); ?>
-				</td>
-				<td class="optionbox vmiddle">
-					<?php echo two_state_checkbox('show_full', $show_full); ?>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Person 2'); ?>
-				</td>
-				<td class="optionbox vmiddle">
-					<input tabindex="2" class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
-					<?php echo print_findindi_link('pid2'); ?>
-				</td>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>
-				</td>
-				<td class="optionbox">
-					<input tabindex="4" type="checkbox" name="asc" value="1" <?php if ($asc==-1) echo ' checked="checked"'; ?>>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<?php
-					if ($path_to_find>0) {
-						echo WT_I18N::translate('Show path');
-					}
-					?>
-				</td>
-				<td class="optionbox">
-					<?php
-					for ($i=0; $i<$path_to_find; ++$i) {
-						echo ' <a href="relationship.php?pid1=', $pid1, '&amp;pid2=', $pid2, '&amp;path_to_find=', $i, '&amp;followspouse=', $followspouse, '&amp;show_full=', $show_full, '&amp;asc=', -$asc, '">', $i+1, '</a>';
-					}
-					?>
-				</td>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
-				</td>
-				<td class="optionbox" id="followspousebox">
-					<input tabindex="6" type="checkbox" name="followspouse" value="1" <?php if ($followspouse) { echo ' checked="checked"'; } ?> onclick="document.people.path_to_find.value='-1';" >
-				</td>
-			</tr>
-				<td class="topbottombar vmiddle center" colspan="2">
-					<?php
-					if ($node) {
-						echo '<input type="submit" value="', WT_I18N::translate('Find next path'), '" onclick="document.people.path_to_find.value=', $path_to_find+1, ';">';
-						echo help_link('next_path');
-					}
-					?>
-				</td>
-				<td class="topbottombar vmiddle center" colspan="2">
-					<input tabindex="7" type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-				</td>
-			</tr>
-		</table>
+		<div class="chart_options">
+			<label for = "pid1"><?php echo WT_I18N::translate('Individual 1') ?></label>
+			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
+		</div>
+		<div class="chart_options">
+			<label for = "pid2"><?php echo WT_I18N::translate('Individual 2') ?></label>
+			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
+		</div>
+		<div class="chart_options swap">
+			<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ WT_I18N::translate('Swap individuals') ?></a>
+		</div>
+		<div class="chart_options">
+			<label for = "show_full"><?php echo WT_I18N::translate('Show details') ?></label>
+			<?php echo two_state_checkbox('show_full', $show_full); ?>
+		</div>
+		<div class="chart_options">
+			<?php if ($ancestors_only === '1'): ?>
+				<label for = "ancestors" class="inline"><?php echo WT_I18N::translate('Find relationships via ancestors') ?></label>
+				<input type="hidden" name="ancestors" value="1">
+			<?php else: ?>
+				<input class="inline" type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
+				<label class="inline"><?php echo WT_I18N::translate('Find any relationship') ?></label>
+				<br><br>
+				<input class="inline" type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
+				<label class="inline"><?php echo WT_I18N::translate('Find relationships via ancestors') ?></label>
+			<?php endif; ?>
+		</div>
+		<div class="chart_options">
+			<?php if ($max_recursion == 0): ?>
+				<label for = "ancestors" class="inline"><?php echo WT_I18N::translate('Find the closest relationships') ?></label>
+				<input type="hidden" name="recursion" value="0">
+			<?php else: ?>
+				<label>
+					<input class="inline" type="radio" name="recursion" value="0" <?php echo $recursion == 0 ? 'checked' : '' ?>>
+					<?php echo WT_I18N::translate('Find the closest relationships') ?>
+				</label>
+				<br>
+				<input class="inline" type="radio" name="recursion" value="<?php echo $max_recursion ?>" <?php echo $recursion > 0 ? 'checked' : '' ?>>
+				<?php if ($max_recursion == 99): ?>
+					<label class="inline"><?php echo WT_I18N::translate('Find all possible relationships') ?></label>
+				<?php else: ?>
+					<label class="inline"><?php echo WT_I18N::translate('Find other relationships') ?></label>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+		<button class="btn btn-primary show" type="submit">
+			<i class="fa fa-eye"></i>
+			<?php echo /* I18N: A button label. */ WT_I18N::translate('Show'); ?>
+		</button>
 	</form>
+	<hr>
+	<?php
 
-<?php
-			
-$maxyoffset = $Dbaseyoffset;
-if ($person1 && $person2) {
-	if (!$disp) {
-		print_privacy_error();
-	} elseif (!$node) {
-		if ($path_to_find==0) {
-			echo '<p class="error">', WT_I18N::translate('No link between the two individuals could be found.'), '</p>';
+	if ($person1 && $person2) {
+		if ($TEXT_DIRECTION=='ltr') {
+			$horizontal_arrow = '<br><i class="icon-rarrow"></i>';
+			$diagonal1        = $WT_IMAGES['dline'];
+			$diagonal1        = $WT_IMAGES['dline2'];
+
 		} else {
-			echo '<p class="error">', WT_I18N::translate('No other link between the two individuals could be found.'), '</p>';
+			$horizontal_arrow = '<br><i class="icon-larrow"></i>';
+			$diagonal1        = $WT_IMAGES['dline2'];
+			$diagonal2        = $WT_IMAGES['dline'];
 		}
-	} else {
-		if ($node) {
-			echo '<h3>', WT_I18N::translate('Relationship: %s', get_relationship_name($node)), '</h3>';
+		$up_arrow   = ' <i class="icon-uarrow"></i>';
+		$down_arrow = ' <i class="icon-darrow"></i>';
 
-			// Use relative layout to position the person boxes.
-			echo '<div id="relationship_chart" style="position:relative;">';
+		$num_paths = 0;
+		foreach ($paths as $path) {
+			// Extract the relationship names between pairs of individuals
+			$relationships = $controller->oldStyleRelationshipPath($path);
+			if (empty($relationships)) {
+				// Cannot see one of the families/individuals, due to privacy;
+				continue;
+			}
+			echo '<h3>', WT_I18N::translate('Relationship: %s', get_relationship_name_from_path(implode('', $relationships), $person1, $person2)), '</h3>';
+			$num_paths++;
 
-			$yoffset = $Dbaseyoffset + 20;
-			$xoffset = $Dbasexoffset;
-			$colNum = 0;
-			$rowNum = 0;
-			$previous='';
-			$change_count=''; // shift right on alternate change of direction
-			$xs = $Dbxspacing+70;
-			$ys = $Dbyspacing+50;
-			// step1 = tree depth calculation
-			$dmin=0;
-			$dmax=0;
-			$depth=0;
-			foreach ($node['path'] as $index=>$person) {
-				if ($node['relations'][$index]=='father' || $node['relations'][$index]=='mother' || $node['relations'][$index]=='parent') {
-					$depth++;
-					if ($depth>$dmax) {
-						$dmax=$depth;
-					}
-					if ($asc==0) {
-						$asc=1; // the first link is a parent link
-					}
-				}
-				if ($node['relations'][$index]=='son' || $node['relations'][$index]=='daughter' || $node['relations'][$index]=='child') {
-					$depth--;
-					if ($depth<$dmin) {
-						$dmin=$depth;
-					}
-					if ($asc==0) {
-						$asc=-1; // the first link is a child link
-					}
-				}
-			}
-			$depth=$dmax+$dmin;
-			// need more yoffset before the first box ?
-			if ($asc==1) {
-				$yoffset -= $dmin*($Dbheight+$ys);
-			}
-			if ($asc==-1) {
-				$yoffset += $dmax*($Dbheight+$ys);
-			}
-			$rowNum = ($asc==-1) ? $depth : 0;
-			$maxxoffset = -1*$Dbwidth-20;
-			$maxyoffset = $yoffset;
-			// Left and right get reversed on RTL pages
-			if ($TEXT_DIRECTION=='ltr') {
-				$right_arrow='icon-rarrow';
-			} else {
-				$right_arrow='icon-larrow';
-			}
-			// Up and down get reversed, for the “oldest at top” option
-			if ($asc==1) {
-				$up_arrow   ='icon-uarrow';
-				$down_arrow ='icon-darrow';
-			} else {
-				$up_arrow   ='icon-darrow';
-				$down_arrow ='icon-uarrow';
-			}
-			foreach ($node['path'] as $index=>$person) {
-				$linex = $xoffset;
-				$liney = $yoffset;
-				$mfstyle = 'NN';
-				switch ($person->getSex()) {
-				case 'M': $mfstyle='';   break;
-				case 'F': $mfstyle='F';  break;
-				case 'U': $mfstyle='NN'; break;
-				}
-				switch ($node['relations'][$index]) {
-				case 'father':
-				case 'mother':
-				case 'parent':
-					$arrow_img = $down_arrow;
-					$line = $WT_IMAGES['vline'];
-					$liney += $Dbheight;
-					$linex += $Dbwidth/2;
-					$lh = 54;
-					$lw = 3;
-					$lh=$ys;
-					$linex=$xoffset+$Dbwidth/2;
-					// put the box up or down ?
-					$yoffset += $asc*($Dbheight+$lh);
-					$rowNum += $asc;
-					if ($asc==1) {
-						$liney = $yoffset-$lh;
-					}	else {
-						$liney = $yoffset+$Dbheight;
-					}
-					// need to draw a joining line ?
-					if ($previous == 'child' && ($change_count++ % 2) == 0) {
-						$joinh = 3;
-						$joinw = $xs/2+2;
-						$xoffset += $Dbwidth+$xs;
-						$colNum ++;
-						//$rowNum is inherited from the box immediately to the left
-						$linex = $xoffset-$xs/2;
-						if ($asc==-1) {
-							$liney=$yoffset+$Dbheight;
-						}	else {
-							$liney=$yoffset-$lh;
+			// Use a table/grid for layout.
+			$table = array();
+			// Current position in the grid.
+			$x     = 0;
+			$y     = 0;
+			// Extent of the grid.
+			$min_y = 0;
+			$max_y = 0;
+			$max_x = 0;
+			// For each node in the path.
+			foreach ($path as $n => $xref) {
+				if ($n % 2 === 1) {
+					switch ($relationships[$n]) {
+					case 'hus':
+					case 'wif':
+					case 'spo':
+					case 'bro':
+					case 'sis':
+					case 'sib':
+						$table[$x + 1][$y] = '<div style="background:url(' . $WT_IMAGES['hline'] . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
+						$x += 2;
+						break;
+					case 'son':
+					case 'dau':
+					case 'chi':
+						if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
+							$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
+							$x += 2;
+						} else {
+							$table[$x][$y - 1] = '<div style="background:url(' . $WT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
 						}
-						$joinx = $xoffset-$xs;
-						$joiny = $liney-2-($asc-1)/2*$lh;
-						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES['hline'], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
-						$joinw = $xs/2+2;
-						$joinx = $joinx+$xs/2;
-						$joiny = $joiny+$asc*$lh;
-						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
-					}
-					$previous='parent';
-					break;
-				case 'brother':
-				case 'sister':
-				case 'sibling':
-				case 'husband':
-				case 'wife':
-				case 'spouse':
-					$arrow_img = $right_arrow;
-					$xoffset += $Dbwidth+$Dbxspacing+70;
-					$colNum ++;
-					//$rowNum is inherited from the box immediately to the left
-					$line = $WT_IMAGES['hline'];
-					$linex += $Dbwidth;
-					$liney += $Dbheight/2;
-					$lh = 3;
-					$lw = 70;
-					$lw = $xs;
-					$linex = $xoffset-$lw;
-					$liney = $yoffset+$Dbheight/4;
-					$previous='';
-					break;
-				case 'son':
-				case 'daughter':
-				case 'child':
-					$arrow_img = $up_arrow;
-					$line = $WT_IMAGES['vline'];
-					$liney += $Dbheight;
-					$linex += $Dbwidth/2;
-					$lh = 54;
-					$lw = 3;
-					$lh=$ys;
-					$linex = $xoffset+$Dbwidth/2;
-					// put the box up or down ?
-					$yoffset -= $asc*($Dbheight+$lh);
-					$rowNum -= $asc;
-					if ($asc==-1) {
-						$liney = $yoffset-$lh;
-					}	else {
-						$liney = $yoffset+$Dbheight;
-					}
-					// need to draw a joining line ?
-					if ($previous == 'parent' && ($change_count++ % 2) == 0) {
-						$joinh = 3;
-						$joinw = $xs/2+2;
-						$xoffset += $Dbwidth+$xs;
-						$colNum ++;
-						//$rowNum is inherited from the box immediately to the left
-						$linex = $xoffset-$xs/2;
-						if ($asc==1) {
-							$liney=$yoffset+$Dbheight;
-						}	else {
-							$liney=$yoffset-($lh+$Dbyspacing);
+						$y -= 2;
+						break;
+					case 'fat':
+					case 'mot':
+					case 'par':
+						if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
+							$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
+							$x += 2;
+						} else {
+							$table[$x][$y + 1] = '<div style="background:url(' . $WT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
 						}
-						$joinx = $xoffset-$xs;
-						$joiny = $liney-2+($asc+1)/2*$lh;
-						echo '<div id="joina', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
-						$joinw = $xs/2+2;
-						$joinx = $joinx+$xs/2;
-						$joiny = $joiny-$asc*$lh;
-						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
-					} else 
-					$change_count=''; //when we change persons and hit View, path_to_find has to be set to 0
-					$previous='child';
-					break;
-				}
-				if ($yoffset > $maxyoffset) {
-					$maxyoffset = $yoffset;
-				}
-				$plinex = $linex;
-				$pxoffset = $xoffset;
-
-				// Adjust all box positions for proper placement with respect to other page elements
-				$pyoffset = $yoffset - 2;
-
-				if ($index>0) {
-					if ($TEXT_DIRECTION=='rtl' && $line!=$WT_IMAGES['hline']) {
-						echo '<div id="line', $index, '" style="background:none; position:absolute; right:', $plinex+$Dbxspacing, 'px; top:', $liney+$Dbyspacing, 'px; width:', $lw+$lh*2, 'px;" align="right">';
-						echo '<img src="', $line, '" align="right" width="', $lw, '" height="', $lh, '" alt="">';
-						echo '<br>';
-						echo WT_I18N::translate($node['relations'][$index]);
-						echo '<i class="', $arrow_img, '"></i>';
-					} else {
-						echo '<div id="line', $index, '" style="background:none; position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $plinex+$Dbxspacing, 'px; top:', $liney+$Dbyspacing, 'px; width:', $lw+$lh*2, 'px;" align="', $lh==3?'center':'left', '"><img src="', $line, '" align="left" width="', $lw, '" height="', $lh, '" alt="">';
-						echo '<br>';
-						echo '<i class="', $arrow_img, '"></i>';
-						if ($lh == 3) {
-							echo '<br>'; // note: $lh==3 means horiz arrow
-						}
-						echo WT_I18N::translate($node['relations'][$index]);
+						$y += 2;
+						break;
 					}
-					echo '</div>';
+					$max_x = max($max_x, $x);
+					$min_y = min($min_y, $y);
+					$max_y = max($max_y, $y);
+				} else {
+					$individual = WT_Person::getInstance($xref, $WT_TREE);
+					ob_start();
+					print_pedigree_person($individual, $show_full);
+					$table[$x][$y] = ob_get_clean();
 				}
-
-				// Determine the z-index for this box
-				$zIndex = 200 - ($colNum * $depth + $rowNum);
-
-				echo '<div style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';">';
-				print_pedigree_person($person, 1);
-				echo '</div>';
 			}
+			echo '<table id="relationship_chart">';
+			for ($y = $max_y; $y >= $min_y; --$y) {
+				echo '<tr>';
+				for ($x = 0; $x <= $max_x; ++$x) {
+					echo '<td style="padding: 0;">';
+					if (isset($table[$x][$y])) {
+						echo $table[$x][$y];
+					}
+					echo '</td>';
+				}
+				echo '</tr>';
+			}
+			echo '</table>';
 		}
-		echo '</div>'; // close#relationship_chart
-	}
+
+		if (!$num_paths) {
+			echo '<p>', WT_I18N::translate('No link between the two individuals could be found.'), '</p>';
+		}
+	echo '</div>'; // close page
 }
-echo '</div>'; // close #relationshippage
-
-// The contents of <div id="relationship_chart"> use relative positions.
-// Need to expand the div to include the children, or we'll overlap the footer.
-// $maxyoffset is the top edge of the lowest box.
-$controller
-	->addInlineJavascript('
-		relationship_chart_div = document.getElementById("relationship_chart");
-		if (relationship_chart_div) {
-			relationship_chart_div.style.height = "'.($maxyoffset+$Dbheight+20).'px";
-			relationship_chart_div.style.width = "100%";
-		}'
-	);

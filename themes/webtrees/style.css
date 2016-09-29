@@ -252,8 +252,13 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 #familybook_chart .line4 {width: 7px;}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {color:#000066;font-size: 16px;text-align:center;}
-#relationship-page h3 {margin:20px 0 0 20px;}
-#relationship_chart {margin:0 20px 0;}
+
+#relationship-page h3 {margin: 20px 0 0 20px;}
+#relationship-page label.inline {display: inline;}
+#relationship-page input[type="checkbox"] {width: 30px;}
+#relationship-page input.inline {clear: both; float: left; width: 30px;}
+#relationship-page table#relationship_chart {border-collapse: collapse; margin: 20px auto 30px auto;}
+#relationship-page .swap {padding: 20px 10px 5px;}
 
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}

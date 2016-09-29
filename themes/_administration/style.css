@@ -610,7 +610,7 @@ div.config_options input[type="radio"]+label {
 div.config_options label.radio_inline,
 #calendar_utilities label.radio_inline {
 	font-weight: normal;
-	width: 5%;
+	width: 10%;
 }
 
 div.config_options label[for^="NEW_SURNAME_TRADITION"] {

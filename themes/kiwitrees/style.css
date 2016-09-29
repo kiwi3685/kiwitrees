@@ -784,7 +784,7 @@ div[id*='-page'] {
 	background-color: #eee;
 	border: 1px solid #555;
 	margin: 2px auto;
-	padding: 3px;
+	padding: 5px 3px;
 }
 
 .person_box:target,
@@ -1352,8 +1352,27 @@ a:hover .nameZoom {
 	margin: 20px 0 0 20px;
 }
 
-#relationship_chart {
-	margin: 0 20px 0;
+#relationship-page label.inline {
+	display: inline;
+}
+
+#relationship-page input[type="checkbox"] {
+	width: 30px;
+}
+
+#relationship-page input.inline {
+	clear: both;
+	float: left;
+	width: 30px;
+}
+
+#relationship-page table#relationship_chart {
+	border-collapse: collapse;
+	margin: 20px auto 30px auto;
+}
+
+#relationship-page .swap {
+	padding: 20px 10px 5px;
 }
 
 .tdtop {
@@ -1535,8 +1554,9 @@ a:hover .nameZoom {
 }
 
 .compact_view {
-	cursor: url(images/zoomin.png),n-resize;
+	cursor: url(images/zoomin.png), n-resize;
 	margin: 3px;
+	min-width: 225px;
 }
 
 .compact_view p {

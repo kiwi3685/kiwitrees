@@ -388,8 +388,13 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 #familybook_chart .line4 {width: 7px}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
-#relationship-page h3 {margin:20px 0 0 20px;}
-#relationship_chart {margin:0 20px 0;}
+
+#relationship-page h3 {margin: 20px 0 0 20px;}
+#relationship-page label.inline {display: inline;}
+#relationship-page input[type="checkbox"] {width: 30px;}
+#relationship-page input.inline {clear: both; float: left; width: 30px;}
+#relationship-page table#relationship_chart {border-collapse: collapse; margin: 20px auto 30px auto;}
+#relationship-page .swap {padding: 20px 10px 5px;}
 
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}

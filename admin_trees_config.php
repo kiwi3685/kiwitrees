@@ -68,6 +68,21 @@ $custom_files = array(
 		'myfooter.php'
 	);
 
+// Possible options for the ancestors option
+$ancestorsOptions = array(
+	0 => WT_I18N::translate('Find any relationship'),
+	1 => WT_I18N::translate('Find relationships via ancestors'),
+);
+
+// Possible options for the recursion option
+$recursionOptions = array(
+	0	=> WT_I18N::translate('none'),
+	1	=> WT_I18N::number(1),
+	2	=> WT_I18N::number(2),
+	3	=> WT_I18N::number(3),
+	99	=> WT_I18N::translate('unlimited'),
+);
+
 switch (WT_Filter::post('action')) {
 case 'delete':
 	if (!WT_Filter::checkCsrf()) {
@@ -157,6 +172,8 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES',			WT_Filter::post('NEW_PREFER_LEVEL2_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS',			WT_Filter::post('NEW_QUICK_REQUIRED_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FAMFACTS',		WT_Filter::post('NEW_QUICK_REQUIRED_FAMFACTS'));
+	set_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_ANCESTORS',			WT_Filter::post('RELATIONSHIP_ANCESTORS', WT_REGEX_INTEGER, 0));
+	set_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION',			WT_Filter::post('NEW_RELATIONSHIP_RECURSION', WT_REGEX_INTEGER, 99));
 	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD',					str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK',				str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_QUICK')));
 	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE',				str_replace(' ', '', WT_Filter::post('NEW_REPO_FACTS_UNIQUE')));
@@ -871,7 +888,7 @@ $controller
 						<label><?php echo WT_I18N::translate('The date and time of the last update'); ?></label>
 						<div class="input_group">
 							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE, 'class="radio_inline"'); ?>
-						 </div>
+						</div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Charts'); ?></h4>
 					<div class="config_options">
@@ -911,6 +928,21 @@ $controller
 							<div class="helpcontent">
 								<?php echo /* I18N: Help text for the “Maximum descendancy generations” tree configuration setting */ WT_I18N::translate('Set the maximum number of generations to display on Descendancy charts.'); ?>
 							</div>
+						 </div>
+					</div>
+					<div class="helpcontent accepted">
+						<?php echo /* I18N: Configuration option for relationship chart */ WT_I18N::translate('Searching for all possible relationships can take a lot of time in complex trees, These options can help limit the extent of relationships included in the relationship chart.'); ?>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('Relationships'); ?></label>
+						<div class="input_group">
+							<?php echo select_edit_control('NEW_RELATIONSHIP_ANCESTORS', $ancestorsOptions, null, $RELATIONSHIP_ANCESTORS, null); ?>
+						 </div>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('How much recursion to use when searching for relationships'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_RELATIONSHIP_RECURSION', $recursionOptions, $RELATIONSHIP_RECURSION, 'class="radio_inline"'); ?>
 						 </div>
 					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Individual pages'); ?></h4>
