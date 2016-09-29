@@ -65,7 +65,7 @@ $controller
 	<form name="surnlist" id="surnlist" method="get" action="?">
 		<div class="chart_options">
 			<label for = "SURN"><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></label>
-				<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo WT_Filter::escapeHtml($surn); ?>" dir="auto">
+			<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo WT_Filter::escapeHtml($surn); ?>" dir="auto">
 		</div>
 		<div class="chart_options branches">
 			<label><?php echo WT_I18N::translate('Phonetic search'); ?></label>
@@ -82,7 +82,7 @@ $controller
 		</div>
 		<button class="btn btn-primary show" type="submit">
 			<i class="fa fa-eye"></i>
-			<?php echo WT_I18N::translate('show'); ?>
+			<?php echo WT_I18N::translate('Show'); ?>
 		</button>
 	</form>
 	<hr style="clear:both;">
