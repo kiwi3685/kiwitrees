@@ -25,10 +25,6 @@ define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-//if (!array_key_exists('relationship', WT_Module::getActiveMenus())) {
-//	exit;
-//}
-
 $max_recursion	= get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION');
 $ancestors_only	= get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_ANCESTORS');
 
@@ -60,7 +56,14 @@ if ($person1 && $person2) {
 ?>
 
 <div id="relationship-page">
-	<h2><?php echo $controller->getPageTitle() ?></h2>
+	<h2>
+		<?php echo $controller->getPageTitle() ?>
+		<?php if (WT_USER_IS_ADMIN) { ?>
+			<a href="<?php echo WT_STATIC_URL; ?>admin_trees_config.php?view=layout-options&amp;ged=<?php echo WT_GEDCOM; ?>#relationships_bookmark" target="_blank">
+				<i class="fa fa-cog"></i>
+			</a>
+		<?php } ?>
+	</h2>
 	<form name="people" method="get" action="?">
 		<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
 		<div class="chart_options">

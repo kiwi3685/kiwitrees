@@ -83,6 +83,20 @@ $recursionOptions = array(
 	99	=> WT_I18N::translate('unlimited'),
 );
 
+// Set active tab based on view parameter from url
+$view = WT_Filter::get('view');
+switch ($view) {
+	case 'file-options':	$active = 0; break;
+	case 'contact':			$active = 1; break;
+	case 'website':			$active = 2; break;
+	case 'privacy':			$active = 3; break;
+	case 'config-media':	$active = 4; break;
+	case 'layout-options':	$active = 5; break;
+	case 'hide-show':		$active = 6; break;
+	case 'edit-options':	$active = 7; break;
+	case 'theme':			$active = 8; break;
+	default:				$active = 0; break;
+}
 switch (WT_Filter::post('action')) {
 case 'delete':
 	if (!WT_Filter::checkCsrf()) {
@@ -269,7 +283,7 @@ $controller
 			 if (jQuery("h3.accordion").css("display") == "block" ){
 				jQuery("#accordion").accordion({event: "click", collapsible: true, heightStyle: "content"});
 			 } else {
-				jQuery("#tabs").tabs();
+				jQuery("#tabs").tabs({ active: ' . $active . ' });
 			}
 		}
 		if(jQuery("input[name=\'NEW_WATERMARK_THUMB\']:checked").val() != 1){
@@ -930,7 +944,7 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="helpcontent accepted">
+					<div class="helpcontent accepted" id="relationships_bookmark">
 						<?php echo /* I18N: Configuration option for relationship chart */ WT_I18N::translate('Searching for all possible relationships can take a lot of time in complex trees, These options can help limit the extent of relationships included in the relationship chart.'); ?>
 					</div>
 					<div class="config_options">
