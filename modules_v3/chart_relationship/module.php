@@ -66,13 +66,15 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart 
 		if ($indi_xref) {
 			// Pages focused on a specific person - from the person, to me
 			$pid1 = WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
-			if (!$pid1 && $PEDIGREE_ROOT_ID) $pid1 = $PEDIGREE_ROOT_ID;
+			if (!$pid1 && $PEDIGREE_ROOT_ID) {
+				$pid1 = $PEDIGREE_ROOT_ID;
+			};
 			$pid2 = $indi_xref;
 			if ($pid1 == $pid2) {
 				$pid2 = '';
 			}
 			$menu = new WT_Menu(
-				$this->getTitle(),
+				WT_I18N::translate('Relationship to me'),
 				'relationship.php?pid1=' . $pid1 .'&amp;pid2=' . $pid2 .'&amp;ged=' . WT_GEDURL,
 				'menu-chart-relationship'
 			);
