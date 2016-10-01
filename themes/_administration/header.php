@@ -135,7 +135,7 @@ echo '
 			</div>';
 
 if (WT_USER_IS_ADMIN) {
-echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i><span class="menu-name">', WT_I18N::translate('Site Administration'), '</h3>
+echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i><span class="menu-name">', WT_I18N::translate('Site administration'), '</h3>
 			<div>
 				<p><a ', (WT_SCRIPT_NAME == "admin_site_config.php"  ? 'class="current" ' : ''), 'href="admin_site_config.php">',  WT_I18N::translate('Site configuration'    ), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME == "admin_site_logs.php"    ? 'class="current" ' : ''), 'href="admin_site_logs.php">',    WT_I18N::translate('Logs'                  ), '</a></p>
