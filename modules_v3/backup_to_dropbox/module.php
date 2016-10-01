@@ -75,16 +75,15 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 
 		$DB_FOLDER	= get_module_setting($this->getName(), 'DB_FOLDER', '');
 		$DB_TOKEN	= get_module_setting($this->getName(), 'DB_TOKEN', '');
-		$DB_EXCLUDE	= get_module_setting($this->getName(), 'DB_EXCLUDE', '');
 		$db_exclude = get_module_setting($this->getName(), 'DB_EXCLUDE', '');
 		$DB_EXCLUDE = explode(',', $db_exclude);
 
-		if ($DB_FOLDER && $DB_FOLDER) {
+		if ($DB_TOKEN && $DB_FOLDER) {
 			$bk = new Backup($DB_TOKEN, $this->getName(), $DB_FOLDER);
 		}
 
 		// List of folders
-		if ($DB_FOLDER && $DB_FOLDER) {
+		if ($DB_TOKEN && $DB_FOLDER) {
 			$dirtocopy	= WT_DATA_DIR;
 			$exclude	= array_merge($bk->ignoreList(), $DB_EXCLUDE);
 			$filter		= function ($file, $key, $iterator) use ($exclude) {
@@ -110,7 +109,7 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 
 		?>
 		<div id="backup_to_dropbox-page">
-			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+			<a class="current faq_link" href="http://kiwitrees.net/?p=6949" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="help_text">
 				<span class="help_content">
