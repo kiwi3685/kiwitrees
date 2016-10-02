@@ -136,16 +136,21 @@ echo '
 
 if (WT_USER_IS_ADMIN) {
 echo '		<h3 id="administration"><i class="fa fa-cog fa-fw"></i><span class="menu-name">', WT_I18N::translate('Site administration'), '</h3>
-			<div>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_config.php"  ? 'class="current" ' : ''), 'href="admin_site_config.php">',  WT_I18N::translate('Site configuration'    ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_logs.php"    ? 'class="current" ' : ''), 'href="admin_site_logs.php">',    WT_I18N::translate('Logs'                  ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_readme.php"  ? 'class="current" ' : ''), 'href="admin_site_readme.php">',  WT_I18N::translate('README documentation'  ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_info.php"    ? 'class="current" ' : ''), 'href="admin_site_info.php">',    WT_I18N::translate('Server information'       ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_access.php"  ? 'class="current" ' : ''), 'href="admin_site_access.php">',  WT_I18N::translate('Site access rules'     ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_clean.php"   ? 'class="current" ' : ''), 'href="admin_site_clean.php">',   WT_I18N::translate('Clean up data folder'  ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_lang.php"    ? 'class="current" ' : ''), 'href="admin_site_lang.php">',    WT_I18N::translate('Custom translation'    ), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_site_use.php"     ? 'class="current" ' : ''), 'href="admin_site_use.php">',     WT_I18N::translate('Server usage'		    ), '</a></p>
-			</div>';
+			<div>';
+				$site_tools = array(
+					"admin_site_config.php"	=> WT_I18N::translate('Site configuration'),
+					"admin_site_logs.php"	=> WT_I18N::translate('Logs'),
+					"admin_site_info.php"	=> WT_I18N::translate('Server information'),
+					"admin_site_access.php"	=> WT_I18N::translate('Site access rules'),
+					"admin_site_clean.php"	=> WT_I18N::translate('Clean up data folder'),
+					"admin_site_lang.php"	=> WT_I18N::translate('Custom translation'),
+					"admin_site_use.php"	=> WT_I18N::translate('Server usage'),
+				);
+				arsort($site_tools);
+				foreach ($site_tools as $file=>$title) {
+					echo '<p><a ', (WT_SCRIPT_NAME == $file ? 'class="current" ' : ''), 'href="', $file, '">', $title, '</a></p>';
+				}
+echo '		</div>';
 }
 
 echo '		<h3 id="trees"><i class="fa fa-tree fa-fw"></i><span class="menu-name">', WT_I18N::translate('Family trees'), '</span></h3>
