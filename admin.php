@@ -1560,6 +1560,8 @@ function old_paths() {
 		WT_ROOT.'language/zh_CN.mo', // tidying up redundant labguage files
 		WT_ROOT.'language/ca@valencia.mo', // tidying up redundant labguage files
 		WT_ROOT.'language/extra', // tidying up redundant labguage files
+		WT_ROOT.'admin_site_readme.php', // Readme files moved to kiwitrees.net FAQs
+		WT_ROOT.'readme.html', // Readme files moved to kiwitrees.net FAQs
 	);
 }
 

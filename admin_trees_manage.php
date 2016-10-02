@@ -248,6 +248,11 @@ if (!WT_Tree::GetAll()) {
 	WT_FlashMessages::addMessage(WT_I18N::translate('You need to create a family tree.'));
 }
 
+echo '
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" title="', WT_I18N::translate('View FAQ for this page.'), '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+	<h2>', $controller->getPageTitle(), '</h2>
+	';
+
 // List the gedcoms available to this user
 foreach (WT_Tree::GetAll() as $tree) {
 	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
