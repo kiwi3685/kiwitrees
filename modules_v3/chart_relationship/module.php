@@ -74,7 +74,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart 
 				$pid2 = '';
 			}
 			$menu = new WT_Menu(
-				WT_I18N::translate('Relationship to me'),
+				WT_USER_GEDCOM_ID ? WT_I18N::translate('Relationship to me') : $this->getTitle(),
 				'relationship.php?pid1=' . $pid1 .'&amp;pid2=' . $pid2 .'&amp;ged=' . WT_GEDURL,
 				'menu-chart-relationship'
 			);
@@ -82,9 +82,9 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart 
 		} else {
 			// Regular pages - from me, to somebody
 			$pid1 = WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
-			$pid2 = '';
+			$pid2 = PEDIGREE_ROOT_ID ? PEDIGREE_ROOT_ID : '';
 			$menu = new WT_Menu(
-				$this->getTitle(),
+				WT_USER_GEDCOM_ID ? WT_I18N::translate('Relationship to me') : $this->getTitle(),
 				'relationship.php?pid1=' . $pid1 .'&amp;pid2=' . $pid2 .'&amp;ged=' . WT_GEDURL,
 				'menu-chart-relationship'
 			);
