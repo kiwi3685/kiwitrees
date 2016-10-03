@@ -68,11 +68,11 @@ if ($person1 && $person2) {
 		<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
 		<div class="chart_options">
 			<label for = "pid1"><?php echo WT_I18N::translate('Individual 1') ?></label>
-			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>">
+			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" value="<?php echo $pid1 ?>">
 		</div>
 		<div class="chart_options">
 			<label for = "pid2"><?php echo WT_I18N::translate('Individual 2') ?></label>
-			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>">
+			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" value="<?php echo $pid2 ?>">
 		</div>
 		<div class="chart_options swap">
 			<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ WT_I18N::translate('Swap individuals') ?></a>
