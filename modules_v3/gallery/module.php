@@ -484,7 +484,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		)->execute(array($this->getName()))->fetchOne();
 		?>
 		<div id="<?php echo $this->getName();?>">
-			<a class="current faq_link" href="http://kiwitrees.net/?p=2854" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules/gallery/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div id="gallery_tabs">
 				<ul>

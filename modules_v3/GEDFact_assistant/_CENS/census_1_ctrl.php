@@ -70,7 +70,7 @@ global $pid;
 
 <div id="census_assist-page">
     <h2><?php echo $controller->getPageTitle(); ?>
-        <a class="faq_link" href="http://kiwitrees.net/?p=4670" alt="' . WT_I18N::translate('View FAQ for this page.') . '" target="_blank">
+        <a class="faq_link" href="http://kiwitrees.net/faqs/modules/census-assistant/" alt="' . WT_I18N::translate('View FAQ for this page.') . '" target="_blank">
             <?php echo WT_I18N::translate('View FAQ for this page.'); ?>
             <i class="fa fa-comments-o"></i>
         </a>

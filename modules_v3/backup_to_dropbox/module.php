@@ -109,7 +109,7 @@ class backup_to_dropbox_WT_Module extends WT_Module implements WT_Module_Config 
 
 		?>
 		<div id="backup_to_dropbox-page">
-			<a class="current faq_link" href="http://kiwitrees.net/?p=6949" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules/backup-dropbox/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="help_text">
 				<span class="help_content">
