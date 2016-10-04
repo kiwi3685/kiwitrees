@@ -121,10 +121,9 @@ TreeViewHandler.prototype.getSize = function () {
 	tv.leftMax = tv.leftMin + container.innerWidth();
 	tv.topMin = offset.top;
 	tv.topMax = tv.topMin + container.innerHeight();
-	/*
-	 var frm = jQuery("#tvTreeBorder");
-	 tv.treeview.css("width", frm.width());
-	 tv.treeview.css("height", frm.height());*/
+	var frm = jQuery("#tvTreeBorder");
+	tv.treeview.css("width", frm.width());
+	tv.treeview.css("height", frm.height());
 };
 
 /**
