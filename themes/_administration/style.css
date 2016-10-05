@@ -656,11 +656,13 @@ div.config_options span.help_content {
 }
 
 div.config_options span.help_content a,
+div.config_options .helpcontent a,
 .helpcontent a.morelink {
 	color: #3383bb;
 	font-weight: 800;
 }
 
+div.config_options .helpcontent a:hover,
 .helpcontent a.morelink:hover {
 	color: #ff0000;
 }

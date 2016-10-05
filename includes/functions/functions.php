@@ -211,7 +211,7 @@ function file_upload_error_text($error_code) {
 	}
 }
 
-function load_gedcom_settings($ged_id=WT_GED_ID) {
+function load_gedcom_settings($ged_id =  WT_GED_ID) {
 	// Load the configuration settings into global scope
 	// TODO: some of these are used infrequently - just load them when we need them
 	global $ABBREVIATE_CHART_LABELS;      $ABBREVIATE_CHART_LABELS      = get_gedcom_setting($ged_id, 'ABBREVIATE_CHART_LABELS');
@@ -249,8 +249,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        = get_gedcom_setting($ged_id, 'PREFER_LEVEL2_SOURCES');
 	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS');
 	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS');
-	global $RELATIONSHIP_ANCESTORS;       $RELATIONSHIP_ANCESTORS       = get_gedcom_setting($ged_id, 'RELATIONSHIP_ANCESTORS');
-	global $RELATIONSHIP_RECURSION;       $RELATIONSHIP_RECURSION       = get_gedcom_setting($ged_id, 'RELATIONSHIP_RECURSION');
 	global $REPO_ID_PREFIX;               $REPO_ID_PREFIX               = get_gedcom_setting($ged_id, 'REPO_ID_PREFIX');
 	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         = get_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE');
 	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         = get_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB');

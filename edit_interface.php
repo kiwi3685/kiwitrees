@@ -1634,8 +1634,8 @@ case 'addchildaction':
 				if (WT_Date::Compare($newchild->getEstimatedBirthDate(), $child->getEstimatedBirthDate())<0) {
 					// new child is older : insert before
 					$gedrec = str_replace("1 CHIL @".$child->getXref()."@",
-																"1 CHIL @$xref@\n1 CHIL @".$child->getXref()."@",
-																$gedrec);
+					"1 CHIL @$xref@\n1 CHIL @".$child->getXref()."@",
+					$gedrec);
 					$done = true;
 					break;
 				}
@@ -1646,8 +1646,8 @@ case 'addchildaction':
 			} elseif (!$done) {
 				// new child is the youngest or undated : insert after
 				$gedrec = str_replace("\n1 CHIL @".$child->getXref()."@",
-															"\n1 CHIL @".$child->getXref()."@\n1 CHIL @$xref@",
-															$gedrec);
+				"\n1 CHIL @".$child->getXref()."@\n1 CHIL @$xref@",
+				$gedrec);
 			}
 			$success=replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
 		}

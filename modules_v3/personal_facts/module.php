@@ -40,7 +40,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		return /* I18N: Description of the “Facts and events” module */ WT_I18N::translate('A tab showing the facts and events of an individual.');
 	}
 
-	// Extend class WT_Module_Menu
+	// Extend class WT_Module_Tab
 	public function defaultAccessLevel() {
 		return false;
 	}

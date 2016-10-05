@@ -25,15 +25,14 @@ define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$max_recursion	= get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION');
-$ancestors_only	= get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_ANCESTORS');
+$max_recursion = intval(get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION'));
 
 $controller = new WT_Controller_Relationship();
 $pid1       = WT_Filter::get('pid1', WT_REGEX_XREF);
 $pid2       = WT_Filter::get('pid2', WT_REGEX_XREF);
 $show_full  = WT_Filter::getInteger('show_full', 0, 1, get_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS'));
 $recursion  = WT_Filter::getInteger('recursion', 0, $max_recursion, 0);
-$ancestors  = WT_Filter::getInteger('ancestors', 0, 1, 0);
+$find		= WT_Filter::getInteger('find', 1, 7, 1);
 $person1	= WT_Person::getInstance($pid1, $WT_TREE);
 $person2	= WT_Person::getInstance($pid2, $WT_TREE);
 
@@ -45,76 +44,109 @@ if ($person1 && $person2) {
 	$controller
 		->setPageTitle(WT_I18N::translate(/* I18N: %s are individual’s names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName()))
 		->pageHeader();
-	$paths = $controller->calculateRelationships($person1, $person2, $recursion, (bool) $ancestors);
+	$paths = $controller->calculateRelationships($person1, $person2, $find, $recursion);
+
 } else {
 	$controller
 		->setPageTitle(WT_I18N::translate('Relationships'))
 		->pageHeader();
 	$paths = array();
 }
-
 ?>
 
 <div id="relationship-page">
 	<h2>
 		<?php echo $controller->getPageTitle() ?>
 		<?php if (WT_USER_IS_ADMIN) { ?>
-			<a href="<?php echo WT_STATIC_URL; ?>admin_trees_config.php?view=layout-options&amp;ged=<?php echo WT_GEDCOM; ?>#relationships_bookmark" target="_blank">
+			<a href="module.php?mod=chart_relationship&amp;mod_action=admin_config" target="_blank">
 				<i class="fa fa-cog"></i>
 			</a>
 		<?php } ?>
+
 	</h2>
 	<form name="people" method="get" action="?">
 		<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-		<div class="chart_options">
-			<label for = "pid1"><?php echo WT_I18N::translate('Individual 1') ?></label>
-			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" value="<?php echo $pid1 ?>">
+		<div id="row1">
+			<div class="chart_options">
+				<label for = "pid1"><?php echo WT_I18N::translate('Individual 1') ?></label>
+				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" value="<?php echo $pid1 ?>">
+			</div>
+			<div class="chart_options">
+				<label for = "pid2"><?php echo WT_I18N::translate('Individual 2') ?></label>
+				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" value="<?php echo $pid2 ?>">
+			</div>
+			<div class="chart_options swap">
+				<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ WT_I18N::translate('Swap individuals') ?></a>
+			</div>
+			<div class="chart_options">
+				<label for = "show_full"><?php echo WT_I18N::translate('Show details') ?></label>
+				<?php echo two_state_checkbox('show_full', $show_full); ?>
+			</div>
+			<button class="btn btn-primary show" type="submit">
+				<i class="fa fa-eye"></i>
+				<?php echo /* I18N: A button label. */ WT_I18N::translate('Show'); ?>
+			</button>
 		</div>
-		<div class="chart_options">
-			<label for = "pid2"><?php echo WT_I18N::translate('Individual 2') ?></label>
-			<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" value="<?php echo $pid2 ?>">
-		</div>
-		<div class="chart_options swap">
-			<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php echo /* I18N: Reverse the order of two individuals */ WT_I18N::translate('Swap individuals') ?></a>
-		</div>
-		<div class="chart_options">
-			<label for = "show_full"><?php echo WT_I18N::translate('Show details') ?></label>
-			<?php echo two_state_checkbox('show_full', $show_full); ?>
-		</div>
-		<div class="chart_options">
-			<?php if ($ancestors_only === '1'): ?>
-				<label for = "ancestors" class="inline"><?php echo WT_I18N::translate('Find relationships via ancestors') ?></label>
-				<input type="hidden" name="ancestors" value="1">
-			<?php else: ?>
-				<input class="inline" type="radio" name="ancestors" value="0" <?php echo $ancestors == 0 ? 'checked' : '' ?>>
-				<label class="inline"><?php echo WT_I18N::translate('Find any relationship') ?></label>
-				<br><br>
-				<input class="inline" type="radio" name="ancestors" value="1" <?php echo $ancestors == 1 ? 'checked' : '' ?>>
-				<label class="inline"><?php echo WT_I18N::translate('Find relationships via ancestors') ?></label>
+		<div id="row2">
+			<?php if (boolval(get_gedcom_setting(WT_GED_ID, 'CHART_1'))): ?>
+				<div class="chart_options block">
+					<input type="radio" class="inline" id="chart1" name="find" value="1" <?php echo ($find === 1) ? 'checked' : ''; ?>>
+					<label for = "chart1" class="inline"><?php echo WT_I18N::translate('Find a closest relationship via common ancestors'); ?></label>
+				</div>
 			<?php endif; ?>
-		</div>
-		<div class="chart_options">
+			<?php if (boolval(get_gedcom_setting(WT_GED_ID, 'CHART_2'))): ?>
+				<div class="chart_options block">
+					<input type="radio" class="inline" id="chart2" name="find" value="2"<?php echo ($find === 2) ? 'checked' : ''; ?>>
+					<label for = "chart2" class="inline"><?php echo WT_I18N::translate('Find all smallest lowest common ancestors, show a closest connection for each'); ?></label>
+				</div>
+			<?php endif; ?>
+			<?php if (get_gedcom_setting(WT_GED_ID, 'CHART_3')): ?>
+				<div class="chart_options block">
+					<input type="radio" class="inline" id="chart3" name="find" value="3"<?php echo ($find === 3) ? 'checked' : ''; ?>>
+					<label for = "chart3" class="inline"><?php echo WT_I18N::translate('Find all relationships via lowest common ancestors'); ?></label>
+				</div>
+			<?php endif; ?>
+			<?php if (get_gedcom_setting(WT_GED_ID, 'CHART_4')): ?>
+				<div class="chart_options block">
+					<input type="radio" class="inline" id="chart4" name="find" value="4"<?php echo ($find === 4) ? 'checked' : ''; ?>>
+					<label for = "chart4" class="inline"><?php echo WT_I18N::translate('Find the closest overall connections (preferably via common ancestors)'); ?></label>
+				</div>
+			<?php endif; ?>
+			<?php if (get_gedcom_setting(WT_GED_ID, 'CHART_7')): ?>
+				<div class="chart_options block">
+					<input type="radio" class="inline" id="chart7" name="find" value="7"<?php echo ($find === 7) ? 'checked' : ''; ?>>
+					<label for = "chart7" class="inline"><?php echo WT_I18N::translate('Find a closest relationship via common ancestors, or fallback to the closest overall connection'); ?></label>
+				</div>
+			<?php endif; ?>
 			<?php if ($max_recursion == 0): ?>
-				<label for = "ancestors" class="inline"><?php echo WT_I18N::translate('Find the closest relationships') ?></label>
-				<input type="hidden" name="recursion" value="0">
+				<?php if (get_gedcom_setting(WT_GED_ID, 'CHART_5')): ?>
+					<div class="chart_options block">
+						<input type="radio" class="inline" id="chart5" name="find" value="5"<?php echo ($find === 5) ? 'checked' : ''; ?>>
+						<label for = "chart5" class="inline"><?php echo WT_I18N::translate('Find the closest overall connections') ?>
+					</div>
+				<?php endif; ?>
 			<?php else: ?>
-				<label>
-					<input class="inline" type="radio" name="recursion" value="0" <?php echo $recursion == 0 ? 'checked' : '' ?>>
-					<?php echo WT_I18N::translate('Find the closest relationships') ?>
-				</label>
-				<br>
-				<input class="inline" type="radio" name="recursion" value="<?php echo $max_recursion ?>" <?php echo $recursion > 0 ? 'checked' : '' ?>>
-				<?php if ($max_recursion == 99): ?>
-					<label class="inline"><?php echo WT_I18N::translate('Find all possible relationships') ?></label>
-				<?php else: ?>
-					<label class="inline"><?php echo WT_I18N::translate('Find other relationships') ?></label>
+				<?php if (get_gedcom_setting(WT_GED_ID, 'CHART_5')): ?>
+					<div class="chart_options block">
+						<input type="radio" class="inline" id="chart5" name="find" value="5"<?php echo ($find === 5) ? 'checked' : ''; ?>>
+						<label for = "chart5" class="inline"><?php echo WT_I18N::translate('Find the closest overall connections') ?></label>
+					</div>
+				<?php endif; ?>
+				<?php if (get_gedcom_setting(WT_GED_ID, 'CHART_6')): ?>
+					<div class="chart_options block">
+						<input type="radio" class="inline" id="chart6" name="find" value="6"<?php echo ($find === 6) ? 'checked' : ''; ?>>
+						<input type="hidden" name="recursion" value="<?php echo $max_recursion ?>">
+						<label for = "chart6" class="inline">
+							<?php if ($max_recursion == '99'): ?>
+								<?php echo WT_I18N::translate('Find all overall connections') ?>
+							<?php else: ?>
+								<?php echo WT_I18N::translate('Find other overall connections') ?>
+							<?php endif; ?>
+						</label>
+					</div>
 				<?php endif; ?>
 			<?php endif; ?>
 		</div>
-		<button class="btn btn-primary show" type="submit">
-			<i class="fa fa-eye"></i>
-			<?php echo /* I18N: A button label. */ WT_I18N::translate('Show'); ?>
-		</button>
 	</form>
 	<hr>
 	<?php
@@ -133,6 +165,16 @@ if ($person1 && $person2) {
 		$up_arrow   = ' <i class="icon-uarrow"></i>';
 		$down_arrow = ' <i class="icon-darrow"></i>';
 
+		if ($find == 3) {
+			$cor = $controller->getCor($paths);
+			echo '<h3>', WT_I18N::translate('Uncorrected CoR (Coefficient of Relationship): %s', WT_I18n::percentage($cor, 2)); ?>
+			<div class="helpcontent">
+				<?php echo /* I18N: Configuration option */ WT_I18N::translate('All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = "http://www.genetic-genealogy.co.uk/Toc115570135.html" target="_blank">Coefficient of Relationship</a>'); ?>
+			</div>
+			<?php
+			echo WT_I18N::translate('(Number of relationships: %s)', count($paths)), '</h3>';
+		}
+
 		$num_paths = 0;
 		foreach ($paths as $path) {
 			// Extract the relationship names between pairs of individuals
@@ -141,8 +183,15 @@ if ($person1 && $person2) {
 				// Cannot see one of the families/individuals, due to privacy;
 				continue;
 			}
-			echo '<h3>', WT_I18N::translate('Relationship: %s', get_relationship_name_from_path(implode('', $relationships), $person1, $person2)), '</h3>';
 			$num_paths++;
+			echo '<h3>';
+				if ($num_paths > 1) {
+					echo '<a href="#" onclick="return expand_layer(\'rel_'.$num_paths.'\');" class="top">
+						<i id="rel_'.$num_paths.'_img" class="icon-minus" title="', WT_I18N::translate('View Relationship'), '"></i>
+					</a> ';
+				}
+				echo WT_I18N::translate('Relationship: %s', get_relationship_name_from_path(implode('', $relationships), $person1, $person2)), '
+			</h3>';
 
 			// Use a table/grid for layout.
 			$table = array();
@@ -199,7 +248,7 @@ if ($person1 && $person2) {
 					$table[$x][$y] = ob_get_clean();
 				}
 			}
-			echo '<table id="relationship_chart">';
+			echo '<table id="rel_'.$num_paths.'">';
 			for ($y = $max_y; $y >= $min_y; --$y) {
 				echo '<tr>';
 				for ($x = 0; $x <= $max_x; ++$x) {
@@ -211,7 +260,7 @@ if ($person1 && $person2) {
 				}
 				echo '</tr>';
 			}
-			echo '</table>';
+			echo '</table><hr>';
 		}
 
 		if (!$num_paths) {

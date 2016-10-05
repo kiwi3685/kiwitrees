@@ -804,6 +804,22 @@ div[id*='-page'] {
 	min-height: 50px;
 }
 
+#relatives_content table.fam_relationship {
+	width: 100%;
+}
+
+#relatives_content table.fam_relationship tr {
+	vertical-align: middle;
+}
+
+#relatives_content table.fam_relationship td:first-child {
+	width: 30px;
+}
+
+#relatives_content table.fam_relationship td:last-child {
+	text-align: right;
+}
+
 .center {
 	text-align: center;
 }
@@ -1348,8 +1364,15 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
+#relationship-page .chart_options.block {
+	display: block;
+}
+
 #relationship-page h3 {
 	margin: 20px 0 0 20px;
+}
+[dir='rtl'] #relationship-page h3 {
+	margin: 20px 20px 0 0;
 }
 
 #relationship-page label.inline {
@@ -1365,14 +1388,22 @@ a:hover .nameZoom {
 	float: left;
 	width: 30px;
 }
+[dir='rtl'] #relationship-page input.inline {
+	float: right;
+}
 
-#relationship-page table#relationship_chart {
+#relationship-page table[id^='rel_'] {
 	border-collapse: collapse;
 	margin: 20px auto 30px auto;
 }
 
 #relationship-page .swap {
 	padding: 20px 10px 5px;
+}
+
+#relationship-page .compact_view {
+	height: 55px;
+	width: 250px;
 }
 
 .tdtop {
@@ -1556,7 +1587,6 @@ a:hover .nameZoom {
 .compact_view {
 	cursor: url(images/zoomin.png), n-resize;
 	margin: 3px;
-	min-width: 225px;
 }
 
 .compact_view p {
@@ -2040,9 +2070,9 @@ dt {
 #relatives_content .person_box,
 #relatives_content .person_boxF,
 #relatives_content .person_boxNN,
-#relationship_chart .person_box,
-#relationship_chart .person_boxF,
-#relationship_chart .person_boxNN {
+table[id^='rel_'] .person_box,
+table[id^='rel_'] .person_boxF,
+table[id^='rel_'] .person_boxNN {
 	overflow: visible !important;
 }
 
@@ -3057,6 +3087,21 @@ span.link_text {
 	line-height: 20px;
 }
 
+#indi_header #indi_relationship {
+	background: #c9c9c9;
+	border: 1px solid #aaa;
+	border-radius: 0 0 6px 6px;
+	border-top: 0;
+	color: #555;
+	font-weight: 400;
+	margin: 0;
+	text-align: right;
+}
+
+#indi_header #indi_relationship span {
+	background-image: none;
+}
+
 #main_name {
 	float: left;
 	font-size: 2em;
@@ -3074,6 +3119,7 @@ span.link_text {
 }
 
 .indi_name_details {
+	border-radius: 0;
 	margin: 0;
 	overflow: hidden !important;
 	padding: 5px;
@@ -4152,7 +4198,7 @@ a.icon-udarrow:hover {
 .icon-zoomout			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; vertical-align: inherit;} /* fa-search-minus */
 .icon-button_linknote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: inherit; margin: 0 5px;} /* fa-link */
 .icon-button_addnote	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: inherit; margin: 0 5px;} /* fa-plus */
-.icon-button_note { font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: inherit; margin: 0 5px;} /* fa-edit */
+.icon-button_note		{ font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: inherit; margin: 0 5px;} /* fa-edit */
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-edit */
 .icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-trash-o */
 .icon-copy				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-copy */
@@ -4218,8 +4264,8 @@ a.icon-udarrow:hover {
 .icon-media-next		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-forward */
 .icon-media-play		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-play */
 .icon-media-stop		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-pause */
-.icon-plus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-expand */
-.icon-minus				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-compress */
+.icon-plus				{font-family: 'FontAwesome'; font-style: normal; margin: 0 5px;} /* fa-expand */
+.icon-minus				{font-family: 'FontAwesome'; font-style: normal; margin: 0 5px;} /* fa-compress */
 .fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-envelope-o */
 .icon-warning			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; color: #ff4500; margin: 0 5px 5px; vertical-align: middle;} /* fa-warning */
 .icon-lsdnarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-down */

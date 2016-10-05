@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart {
+class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart, WT_Module_Config {
 
 	// Extend class WT_Module
 	public function getTitle() {
@@ -47,6 +47,9 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart 
 		case 'show':
 			$this->show();
 			break;
+		case 'admin_config':
+			$this->config();
+			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
 		}
@@ -55,6 +58,11 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart 
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
 		return WT_PRIV_PUBLIC;
+	}
+
+	// Implement WT_Module_Config
+	public function getConfigLink() {
+		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
 	}
 
 	// Implement WT_Module_Chart
@@ -92,5 +100,285 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart 
 		}
 		return $menus;
 	}
+
+	private function config() {
+		require WT_ROOT.'includes/functions/functions_edit.php';
+		$controller = new WT_Controller_Page();
+		$controller
+			->requireAdminLogin()
+			->setPageTitle($this->getTitle())
+			->pageHeader()
+			->addInlineJavascript('
+				jQuery(function() {
+					jQuery("div.config_options:odd").addClass("odd");
+					jQuery("div.config_options:even").addClass("even");
+				});
+			');
+
+		// Possible options for the recursion option
+		$recursionOptions = array(
+			0	=> WT_I18N::translate('none'),
+			1	=> WT_I18N::number(1),
+			2	=> WT_I18N::number(2),
+			3	=> WT_I18N::number(3),
+			99	=> WT_I18N::translate('unlimited'),
+		);
+
+		if (WT_Filter::postBool('save')) {
+			set_gedcom_setting(WT_GED_ID, 'CHART_1',							WT_Filter::postBool('NEW_CHART_1', '1'));
+			set_gedcom_setting(WT_GED_ID, 'CHART_2',							WT_Filter::postBool('NEW_CHART_2', '0'));
+			set_gedcom_setting(WT_GED_ID, 'CHART_3',							WT_Filter::postBool('NEW_CHART_3', '1'));
+			set_gedcom_setting(WT_GED_ID, 'CHART_4',							WT_Filter::postBool('NEW_CHART_4', '1'));
+			set_gedcom_setting(WT_GED_ID, 'CHART_5',							WT_Filter::postBool('NEW_CHART_5', '1'));
+			set_gedcom_setting(WT_GED_ID, 'CHART_6',							WT_Filter::postBool('NEW_CHART_6', '0'));
+			set_gedcom_setting(WT_GED_ID, 'CHART_7',							WT_Filter::postBool('NEW_CHART_7', '0'));
+			set_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION', 			WT_Filter::post('NEW_RELATIONSHIP_RECURSION', WT_REGEX_INTEGER, '99'));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI',			WT_Filter::post('NEW_TAB_REL_TO_DEFAULT_INDI', WT_REGEX_INTEGER, '7'));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS',					WT_Filter::post('NEW_TAB_REL_OF_PARENTS', WT_REGEX_INTEGER,' 1'));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE',					WT_Filter::post('NEW_TAB_REL_TO_SPOUSE', WT_REGEX_INTEGER, '1'));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA',	WT_Filter::post('NEW_TAB_REL_TO_DEFAULT_INDI_SHOW_CA', WT_REGEX_INTEGER, '1'));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA',			WT_Filter::post('NEW_TAB_REL_OF_PARENTS_SHOW_CA', WT_REGEX_INTEGER, '1'));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA',			WT_Filter::post('NEW_TAB_REL_TO_SPOUSE_SHOW_CA', WT_REGEX_INTEGER, '1'));
+
+			AddToLog($this->getTitle().' set to new values', 'config');
+		}
+
+		$chart1		 = get_gedcom_setting(WT_GED_ID, 'CHART_1'); //perhaps too technical/ too hard to understand for users
+		$chart2		 = get_gedcom_setting(WT_GED_ID, 'CHART_2');
+		$chart3		 = get_gedcom_setting(WT_GED_ID, 'CHART_3');
+		$chart4		 = get_gedcom_setting(WT_GED_ID, 'CHART_4');
+		$chart5		 = get_gedcom_setting(WT_GED_ID, 'CHART_5');
+		$chart6		 = get_gedcom_setting(WT_GED_ID, 'CHART_6'); //not a fan of this ...
+		$chart7		 = get_gedcom_setting(WT_GED_ID, 'CHART_7'); //just a combination of two other options, not really required in the chart.
+		$rec_options = get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION');
+		$rel1		 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI'); //fast and reasonable default
+		$rel2		 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS');
+		$rel3		 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE');
+		$rel1_ca	 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA');
+		$rel2_ca	 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA');
+		$rel3_ca	 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA');
+
+		?>
+
+		<div id="relations_config">
+<!--			<a class="current faq_link" href="http://127.0.0.1/kiwitrees/module.php?mod=chart_relationship&mod_action=admin_config" target="_blank" title="<?php //echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php //echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>-->
+			<h2><?php echo /* I18N: Configuration page title */ WT_I18N::translate('Relationship calculation options'); ?></h2>
+			<form method="post" name="album_form" action="<?php echo $this->getConfigLink(); ?>">
+				<input type="hidden" name="save" value="1">
+				<div id="config-chart">
+					<h3><?php echo /* I18N: Configuration option */ WT_I18N::translate('Chart settings'); ?></h3>
+					<h4 class="accepted"><?php echo /* I18N: Configuration option */ WT_I18N::translate('Options to show in the chart'); ?></h4>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('Find a closest relationship via common ancestors'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_1', $chart1); ?>
+							<div class="helpcontent">
+								<?php echo /* I18N: Configuration option */ WT_I18N::translate('Determines the shortest path between two individuals via a LCA (lowest common ancestor), i.e. a common ancestor who only appears on the path once.') ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('Find all smallest lowest common ancestors, show a closest connection for each'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_2', $chart2); ?>
+							<div class="helpcontent">
+								<?php echo /* I18N: Configuration option */ WT_I18N::translate('Each SLCA (smallest lowest common ancestor) essentially represents a part of the tree which both individuals share (as part of their ancestors). More technically, the SLCA set of two individuals is a subset of the LCA set (excluding all LCAs that are themselves ancestors of other LCAs).') ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('Find all relationships via lowest common ancestors'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_3', $chart3); ?>
+							<div class="helpcontent">
+								<?php echo /* I18N: Configuration option */ WT_I18N::translate('All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = "http://www.genetic-genealogy.co.uk/Toc115570135.html" target="_blank">Coefficient of Relationship</a>'); ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('Find the closest overall connections (preferably via common ancestors)'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_4', $chart4); ?>
+							<div class="helpcontent">
+								<?php echo /* I18N: Configuration option */ WT_I18N::translate('Prefers partial paths via common ancestors, even if there is no direct common ancestor.') ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('Find a closest relationship via common ancestors, or fallback to the closest overall connection'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_7', $chart7); ?>
+							<div class="helpcontent">
+								<?php echo /* I18N: Configuration option */ WT_I18N::translate('For close relationships similar to the previous option, but faster. Internally just a combination of two other methods.') ?>
+							</div>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('Find the closest overall connections'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_5', $chart5); ?>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ WT_I18N::translate('Find other/all overall connections'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_CHART_6', $chart6); ?>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo WT_I18N::translate('How much recursion to use when searching for relationships'); ?></label>
+						<div class="input_group">
+							<?php echo radio_buttons('NEW_RELATIONSHIP_RECURSION', $recursionOptions, $rec_options, 'class="radio_inline"'); ?>
+							<div class="helpcontent">
+								<?php echo /* I18N: Configuration option for relationship chart */ WT_I18N::translate('Searching for all possible relationships can take a lot of time in complex trees, This option can help limit the extent of relationships included in the relationship chart.'); ?>
+							</div>
+						 </div>
+					</div>
+				</div>
+				<div id="config-tab">
+					<h3><?php echo /* I18N: Configuration option */ WT_I18N::translate('Families tab settings'); ?></h3>
+					<!-- RELATIONS TO DEFAULT INDIVIDUAL -->
+					<h4 class="accepted"><?php echo /* I18N: Configuration option */ WT_I18N::translate('How to determine relationships to the default individual'); ?></h4>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ WT_I18N::translate('Do not show any relationship'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="0" <?php echo ($rel1 === '0') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<div class="helpcontent">
+							<?php echo /* I18N: Configuration option */ WT_I18N::translate('The following options refer to the same algorithms used in the relationships chart. Choose any one of these.') ?>
+						</div>
+						<label class="indent"><?php echo WT_I18N::translate('Find a closest relationship via common ancestors'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="1" <?php echo ($rel1 === '1') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find all smallest lowest common ancestors, show a closest connection for each'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="2" <?php echo ($rel1 === '2') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find all relationships via lowest common ancestors'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="3" <?php echo ($rel1 === '3') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find the closest overall connections (preferably via common ancestors)'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="4" <?php echo ($rel1 === '4') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find a closest relationship via common ancestors, or fallback to the closest overall connection'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="7" <?php echo ($rel1 === '7') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find the closest overall connections') ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="5" <?php echo ($rel1 === '5') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find other/all overall connections') ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_DEFAULT_INDI" value="6" <?php echo ($rel1 === '6') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ WT_I18N::translate('Show common ancestors'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_TAB_REL_TO_DEFAULT_INDI_SHOW_CA', $rel1_ca); ?>
+						</div>
+					</div>
+					<!-- RELATIONS BETWEEN PARENTS -->
+					<h4 class="accepted"><?php echo /* I18N: Configuration option */ WT_I18N::translate('How to determine relationships between parents'); ?></h4>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ WT_I18N::translate('Do not show any relationship'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_OF_PARENTS" value="0" <?php echo ($rel2 === '0') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<div class="helpcontent">
+							<?php echo /* I18N: Configuration option */ WT_I18N::translate('The following options refer to the same algorithms used in the relationships chart. Choose any one of these.') ?>
+						</div>
+						<label class="indent"><?php echo WT_I18N::translate('Find a closest relationship via common ancestors'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_OF_PARENTS" value="1" <?php echo ($rel2 === '1') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find all smallest lowest common ancestors, show a closest connection for each'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_OF_PARENTS" value="2" <?php echo ($rel2 === '2') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find all relationships via lowest common ancestors'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_OF_PARENTS" value="3" <?php echo ($rel2 === '3') ? 'checked' : ''; ?>>
+						</div>
+					<div class="helpcontent">
+						<?php echo /* I18N: Configuration option */ WT_I18N::translate('Searching for overall connections is not included here because there is always a trivial HUSB - WIFE connection.') ?>
+					</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ WT_I18N::translate('Show common ancestors'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_TAB_REL_OF_PARENTS_SHOW_CA', $rel2_ca); ?>
+						</div>
+					</div>
+					<!-- RELATIONS TO SPOUSES -->
+					<h4 class="accepted"><?php echo /* I18N: Configuration option */ WT_I18N::translate('How to determine relationships to spouses'); ?></h4>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ WT_I18N::translate('Do not show any relationship'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_SPOUSE" value="0" <?php echo ($rel3 === '0') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<div class="helpcontent">
+							<?php echo /* I18N: Configuration option */ WT_I18N::translate('The following options refer to the same algorithms used in the relationships chart. Choose any one of these.') ?>
+						</div>
+						<label class="indent"><?php echo WT_I18N::translate('Find a closest relationship via common ancestors'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_SPOUSE" value="1" <?php echo ($rel3 === '1') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find all smallest lowest common ancestors, show a closest connection for each'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_SPOUSE" value="2" <?php echo ($rel3 === '2') ? 'checked' : ''; ?>>
+						</div>
+					</div>
+					<div class="config_options">
+						<label class="indent"><?php echo WT_I18N::translate('Find all relationships via lowest common ancestors'); ?></label>
+						<div class="input_group">
+							<input type="radio" name="NEW_TAB_REL_TO_SPOUSE" value="3" <?php echo ($rel3 === '3') ? 'checked' : ''; ?>>
+						</div>
+					<div class="helpcontent">
+						<?php echo /* I18N: Configuration option */ WT_I18N::translate('Searching for overall connections is not included here because there is always a trivial HUSB - WIFE connection.') ?>
+					</div>
+					</div>
+					<div class="config_options">
+						<label><?php echo /* I18N: Configuration option */ WT_I18N::translate('Show common ancestors'); ?></label>
+						<div class="input_group">
+							<?php echo edit_field_yes_no('NEW_TAB_REL_TO_SPOUSE_SHOW_CA', $rel3_ca); ?>
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-primary save" type="submit">
+					<i class="fa fa-floppy-o"></i>
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+			</form>
+		</div>
+	<?php }
 
 }

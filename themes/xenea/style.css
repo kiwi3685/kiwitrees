@@ -344,7 +344,16 @@ th { font-weight:100;}
 .person_box_lifespan {display:inline;}
 
 /* families tab person box */
-#relatives_content .person_box > .person_box, #relatives_content .person_boxF > .person_boxF, #relatives_content .person_boxNN > .person_boxNN {border:none;min-height:50px;}
+#relatives_content .person_box > .person_box,
+#relatives_content .person_boxF > .person_boxF,
+#relatives_content .person_boxNN > .person_boxNN {
+	border:none;min-height:50px;
+}
+
+#relatives_content table.fam_relationship {width: 100%;}
+#relatives_content table.fam_relationship tr {vertical-align: middle;}
+#relatives_content table.fam_relationship td:first-child {width: 30px;}
+#relatives_content table.fam_relationship td:last-child {text-align: right;}
 
 .list_table { margin-left:auto; margin-right:auto;}
 
@@ -617,13 +626,51 @@ img.block { border:none; height:20px; vertical-align:middle;}
 [ID^="vline"] {width:3px;}
 #familybook_chart h3 {font-size: 16px;text-align:center;}
 
-#relationship-page h3 {margin: 20px 0 0 20px;}
-#relationship-page label.inline {display: inline;}
-#relationship-page input[type="checkbox"] {width: 30px;}
-#relationship-page input.inline {clear: both; float: left; width: 30px;}
-#relationship-page table#relationship_chart {border-collapse: collapse; margin: 20px auto 30px auto;}
-#relationship-page .swap {padding: 20px 10px 5px;}
+#relationship-page .chart_options.block {
+	background: none;
+	border: 0;
+	display: block;
+	margin-top: 0;
+	padding: 0;
+}
 
+#relationship-page h3 {
+	margin: 20px 0 0 20px;
+}
+[dir='rtl'] #relationship-page h3 {
+	margin: 20px 20px 0 0;
+}
+
+#relationship-page label.inline {
+	display: inline;
+}
+
+#relationship-page input[type="checkbox"] {
+	width: 30px;
+}
+
+#relationship-page input.inline {
+	clear: both;
+	float: left;
+	width: 30px;
+}
+[dir='rtl'] #relationship-page input.inline {
+	float: right;
+}
+
+#relationship-page table[id^='rel_'] {
+	border-collapse: collapse;
+	margin: 20px auto 30px auto;
+}
+
+#relationship-page .swap {
+	padding: 20px 10px 5px;
+}
+
+#relationship-page .compact_view {
+	height: 55px;
+	width: 250px;
+}
 .tdtop {vertical-align:top;}
 .tdmid {vertical-align:middle;}
 .tdbot, .tvertline {vertical-align:bottom;}
@@ -927,7 +974,7 @@ dt { float:left; font-weight:bold; margin-right:10px; clear:both;}
 #hourglass_chart .person_box, #hourglass_chart .person_boxF, #hourglass_chart .person_boxNN,
 #pedigree_chart .person_box, #pedigree_chart .person_boxF, #pedigree_chart .person_boxNN,
 #relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
-#relationship_chart .person_box, #relationship_chart .person_boxF, #relationship_chart .person_boxNN {
+table[id^='rel_'] .person_box, table[id^='rel_'] .person_boxF, table[id^='rel_'] .person_boxNN {
 overflow:visible !important;}
 .person_box_template .style1 {overflow:hidden;}
 .person_box_template .style0 {padding: 2px;}
@@ -1302,6 +1349,24 @@ span.link_text {display:none;}
 #indi_header h3 a {display:inline;}
 #indi_header a {color:#333377;font-size:0.75em;font-weight:normal;}
 #indi_header a:hover {color:#ff0000;}
+#indi_header #indi_relationship {
+	border: 1px solid #999;
+	border-radius: 0 0 6px 6px;
+	border-top: 0;
+	color: #555;
+	font-weight: 400;
+	margin: 0;
+	text-align: right;
+}
+[dir=rtl] #indi_header #indi_relationship {
+	border-radius: 0 6px 6px 0;
+	text-align: left;;
+}
+
+#indi_header #indi_relationship span {
+	background-image: none;
+}
+
 #main_name {color:#555555;float:left;font-size:2em;margin:10px;font-weight:bold;}
 #indi_mainimage {float:left;}
 #indi_mainimage a img {float:left;padding:0;}

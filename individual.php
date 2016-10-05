@@ -30,6 +30,10 @@
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
+if (get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0) {
+	include_once './includes/functions/functions_print_relations.php';
+}
+
 $controller = new WT_Controller_Individual();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
@@ -196,29 +200,33 @@ if ($controller->record->canDisplayDetails()) {
 	$globalfacts=$controller->getGlobalFacts();
 	echo '<div id="header_accordion1">'; // contain accordions for names
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
-	$bdate = $controller->record->getBirthDate();
-	$ddate = $controller->record->getDeathDate();
-	echo '<span class="header_age">';
-	if ($bdate->isOK() && !$controller->record->isDead()) {
-		// If living display age
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true), '', 'span');
-	} elseif ($bdate->isOK() && $ddate->isOK()) {
-		// If dead, show age at death
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false), '', 'span');
-	}
-	echo '</span>';
-	// Display summary birth/death info.
-	echo '<span id="dates">', $controller->record->getLifeSpan(), '</span>';
-	//Display gender icon
-	foreach ($globalfacts as $key=>$value) {
-		$fact = $value->getTag();
-		if ($fact=="SEX") $controller->print_sex_record($value);
-	}
+		$bdate = $controller->record->getBirthDate();
+		$ddate = $controller->record->getDeathDate();
+		echo '<span class="header_age">';
+		if ($bdate->isOK() && !$controller->record->isDead()) {
+			// If living display age
+			echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true), '', 'span');
+		} elseif ($bdate->isOK() && $ddate->isOK()) {
+			// If dead, show age at death
+			echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false), '', 'span');
+		}
+		echo '</span>';
+		// Display summary birth/death info.
+		echo '<span id="dates">', $controller->record->getLifeSpan(), '</span>';
+		//Display gender icon
+		foreach ($globalfacts as $key=>$value) {
+			$fact = $value->getTag();
+			if ($fact=="SEX") $controller->print_sex_record($value);
+		}
 	echo '</h3>'; // close first name accordion header
 	//Display name details
 	foreach ($globalfacts as $key=>$value) {
 		$fact = $value->getTag();
 		if ($fact=="NAME") $controller->print_name_record($value);
+	}
+	//Display relationship to default individual
+	if (get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0) {
+		echo '<span id="indi_relationship">', printIndiRelationship(), '</span>';
 	}
 	echo '</div>'; // close header_accordion1
 }

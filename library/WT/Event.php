@@ -103,9 +103,9 @@ class WT_Event {
 			// We are not ready for this yet.
 			// throw new Exception('Invalid GEDCOM data passed to WT_Event::_construct('.$subrecord.')');
 		}
-		$this->gedcomRecord=$subrecord;
-		$this->parentObject=$parent;
-		$this->lineNumber  =$lineNumber;
+		$this->gedcomRecord = $subrecord;
+		$this->parentObject = $parent;
+		$this->lineNumber   = $lineNumber;
 	}
 
 	function setState($s) {
@@ -436,4 +436,49 @@ class WT_Event {
 		}
 		return $ret;
 	}
+
+	/**
+	 * Get the value of level 1 data in the fact
+	 * Allow for multi-line values
+	 *
+	 * @return string|null
+	 */
+	public function getValueTarget() {
+		if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcomRecord, $match)) {
+			return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * Get the record to which this fact links
+	 *
+	 * @return Individual|Family|Source|Repository|Media|Note|null
+	 */
+	public function getTarget() {
+		$xref = trim($this->getValue($this->tag));
+		switch ($this->tag) {
+		case 'FAMC':
+		case 'FAMS':
+			return WT_Family::getInstance($xref, $this->parentObject->getGedId());
+		case 'HUSB':
+		case 'WIFE':
+		case 'CHIL':
+			return WT_Person::getInstance($xref, $this->parentObject->getGedId());
+		case 'SOUR':
+			return WT_Source::getInstance($xref, $this->parentObject->getGedId());
+		case 'OBJE':
+			return WT_Media::getInstance($xref, $this->parentObject->getGedId());
+		case 'REPO':
+			return WT_Repository::getInstance($xref, $this->parentObject->getGedId());
+		case 'NOTE':
+			return WT_Note::getInstance($xref, $this->parentObject->getGedId());
+		default:
+			return WT_GedcomRecord::getInstance($xref, $this->parentObject->getGedId());
+		}
+	}
+
+
+
 }

@@ -40,18 +40,32 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A tab showing the close relatives of an individual.');
 	}
 
+	// Extend class WT_Module_Tab
+	public function defaultAccessLevel() {
+		return false;
+	}
+
 	// Implement WT_Module_Tab
 	public function defaultTabOrder() {
 		return 20;
 	}
 
-	function printFamilyHeader($url, $label) {
-		echo '<table><tr>';
-		echo '<td><i class="icon-cfamily"></i></td>';
-		echo '<td><span class="subheaders">', $label, '</span>';
-		echo ' - <a href="', $url, '">', WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'), '</a></td>';
-		echo '</tr></table>';
-	}
+	function printFamilyHeader(WT_Family $family, $type, $label, $people) { ?>
+		<table class="fam_relationship">
+			<tr>
+				<td>
+					<i class="icon-cfamily"></i>
+				</td>
+				<td>
+					<span class="subheaders"><?php echo $label; ?></span>
+					<a href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'); ?></a>
+				</td>
+				<td>
+					<span><?php echo printFamilyRelationship($type, $people); ?></span>
+				</td>
+			</tr>
+		</table>
+	<?php }
 
 	/**
 	* print parents informations
@@ -335,7 +349,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		// parents
 		foreach ($families as $family) {
 			$people = $controller->buildFamilyList($family, "parents");
-			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getChildFamilyLabel($family));
+			$this->printFamilyHeader($family, 'FAMC', $controller->record->getChildFamilyLabel($family), $people);
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "parents");
 			$this->printChildrenRows($family, $people, "parents");
@@ -345,7 +359,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		// step-parents
 		foreach ($controller->record->getChildStepFamilies() as $family) {
 			$people = $controller->buildFamilyList($family, "step-parents");
-			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getStepFamilyLabel($family));
+			$this->printFamilyHeader($family, 'FAMC', $controller->record->getStepFamilyLabel($family), $people);
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "parents");
 			$this->printChildrenRows($family, $people, "parents");
@@ -356,7 +370,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		$families = $controller->record->getSpouseFamilies();
 		foreach ($families as $family) {
 			$people = $controller->buildFamilyList($family, "spouse");
-			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getSpouseFamilyLabel($family));
+			$this->printFamilyHeader($family, 'FAMS', $controller->record->getSpouseFamilyLabel($family), $people);
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "spouse");
 			$this->printChildrenRows($family, $people, "spouse");
@@ -366,7 +380,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		// step-children
 		foreach ($controller->record->getSpouseStepFamilies() as $family) {
 			$people = $controller->buildFamilyList($family, "step-children");
-			$this->printFamilyHeader($family->getHtmlUrl(), $family->getFullName());
+			$this->printFamilyHeader($family, 'FAMS', $family->getFullName(), $people);
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "spouse");
 			$this->printChildrenRows($family, $people, "spouse");
@@ -402,11 +416,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
-	}
-
-	// Implement WT_Module_Tab
-	public function defaultAccessLevel() {
-		return false;
 	}
 
 }
