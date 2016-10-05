@@ -1116,6 +1116,7 @@ span.link_text {display:none;}
 #indi_header h3 {color:#777777;font-size:90%;font-weight:700;margin:0;padding:0 10px 0 30px;text-align:left;}
 #indi_header h3 a {display:inline;}
 #indi_header h3.name_one {font-size:1.5em;overflow:hidden;position:relative;}
+#indi_header h3.name_two {line-height: 25px;}
 #indi_header h3.person_box,#indi_header h3.person_boxF,#indi_header h3.person_boxNN {border:1px solid #999999;}
 #indi_header #indi_relationship {
 	border: 1px solid #ddd;
@@ -1124,7 +1125,7 @@ span.link_text {display:none;}
 	color: #555;
 	font-weight: 400;
 	margin: 0;
-	padding: 0 5px;
+	padding: 5px;
 	text-align: right;
 }
 [dir=rtl] #indi_header #indi_relationship {

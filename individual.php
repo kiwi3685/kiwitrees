@@ -178,6 +178,7 @@ $controller->addInlineJavascript('
 	jQuery("#main").css("visibility", "visible");
 
 	jQuery("#header_accordion1").accordion({
+		header: "h3",
 		active: 0,
 		heightStyle: "content",
 		collapsible: true
@@ -226,7 +227,7 @@ if ($controller->record->canDisplayDetails()) {
 	}
 	//Display relationship to default individual
 	if (get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0) {
-		echo '<span id="indi_relationship">', printIndiRelationship(), '</span>';
+		echo '<div id="indi_relationship">', printIndiRelationship(), '</div>';
 	}
 	echo '</div>'; // close header_accordion1
 }
