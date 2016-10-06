@@ -34,7 +34,6 @@ if (!defined('WT_WEBTREES')) {
 function printSlcasWrtDefaultIndividual($mode, $recursion, $showCa, $type) {
 	global $controller;
 
-//	$extraController	= new WT_Controller_Page;
 	$indi_xref			= $controller->getSignificantIndividual()->getXref();
 	$PEDIGREE_ROOT_ID 	= get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
@@ -64,60 +63,6 @@ function printSlcasWrtDefaultIndividual($mode, $recursion, $showCa, $type) {
 		return;
 	}
 	printSlcasBetween($person1, $person2, $mode, $recursion, $showCa, $type);
-}
-
-function printSlcas(WT_Family $family, $mode, $recursion, $showCa) {
-	$person1 = null;
-	foreach ($family->getFacts('HUSB') as $fact) {
-		$person = $fact->getTarget();
-		if ($person instanceof WT_Person) {
-			$person1 = $person;
-		}
-	}
-
-	$person2 = null;
-	foreach ($family->getFacts('WIFE') as $fact) {
-		$person = $fact->getTarget();
-		if ($person instanceof WT_Person) {
-			$person2 = $person;
-		}
-	}
-
-	if ($person1 === null) {
-		return;
-	}
-
-	if ($person2 === null) {
-		return;
-	}
-
-	//not that great, may still go via descendants of relatives
-	//we'd have to restrict to short paths (may still not be 100% what we want)
-	//or exclude edges with date after some given date (problem: imprecise/unknown dates)
-	//this could even help wrt performance
-	//printShortestPathBetween($person1, $person2);
-
-	printSlcasBetween($person1, $person2, $mode, $recursion, $showCa);
-}
-
-function printShortestPathBetween($person1, $person2) {
-	global $WT_TREE;
-	$slcaController = new WT_Controller_Relationship;
-
-	$paths = $slcaController->calculateRelationships_withWeights($person1, $person2, false, true);
-	foreach ($paths as $path) {
-		// Extract the relationship names between pairs of individuals
-		$relationships = $slcaController->oldStyleRelationshipPath($path);
-		if (empty($relationships)) {
-			// Cannot see one of the families/individuals, due to privacy;
-			continue;
-		}
-		echo WT_I18N::translate('%1$s is %2$s of %3$s.',
-			$person2->getFullName(),
-			get_relationship_name_from_path(implode('', $relationships), $person1, $person2),
-			$person1->getFullName());
-		echo "<br/>";
-	}
 }
 
 function printSlcasBetween($person1, $person2, $mode, $recursion, $showCa, $type) {
@@ -150,18 +95,18 @@ function printSlcasBetween($person1, $person2, $mode, $recursion, $showCa, $type
 				$indi = WT_Person::getInstance($slcaKey, $WT_TREE);
 
 				if (($person1 !== $indi) && ($person2 !== $indi)) {
-					$html = "";
+					$html = '';
 					$html .= '<a href="' . $indi->getHtmlUrl() . '" title="' . strip_tags($indi->getFullName()) . '">';
 					$html .= highlight_search_hits($indi->getFullName()) . '</a>';
-					echo "(" . WT_I18N::translate('Common ancestor: ') . $html.")";
-					echo "<br />";
+					echo '(' . WT_I18N::translate('Common ancestor: ') . $html . ')';
+					echo '<br>';
 				}
 			} else {
 				$fam = WT_Family::getInstance($slcaKey, $WT_TREE);
 
 				$names = array();
 				foreach ($fam->getSpouses() as $indi) {
-					$html = "";
+					$html = '';
 					$html .= '<a href="' . $indi->getHtmlUrl() . '" title="' . strip_tags($indi->getFullName()) . '">';
 					$html .= highlight_search_hits($indi->getFullName()) . '</a>';
 
@@ -169,11 +114,11 @@ function printSlcasBetween($person1, $person2, $mode, $recursion, $showCa, $type
 				}
 				$famName = implode(' & ', $names);
 
-				$html = "";
+				$html = '';
 				$html .= '<a href="' . $fam->getHtmlUrl() . '" title="' . strip_tags($famName) . '">';
 				$html .= highlight_search_hits($famName) . '</a>';
-				echo "(" . WT_I18N::translate('Common ancestors: ').$html.")";
-				echo "<br />";
+				echo '(' . WT_I18N::translate('Common ancestor: ') . $html . ')';
+				echo '<br>';
 			}
 		}
 	}

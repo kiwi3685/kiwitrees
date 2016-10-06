@@ -1364,6 +1364,10 @@ a:hover .nameZoom {
 	text-align: center;
 }
 
+#relationship-page {
+	overflow-x: auto;
+}
+
 #relationship-page .chart_options.block {
 	display: block;
 }
@@ -3105,6 +3109,10 @@ span.link_text {
 
 #indi_header #indi_relationship span {
 	background-image: none;
+}
+
+#indi_header #indi_relationship:empty {
+	display: none;
 }
 
 #main_name {

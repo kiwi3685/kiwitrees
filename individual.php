@@ -225,10 +225,9 @@ if ($controller->record->canDisplayDetails()) {
 		$fact = $value->getTag();
 		if ($fact=="NAME") $controller->print_name_record($value);
 	}
-	//Display relationship to default individual
-	if (get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0 && printIndiRelationship() != null) {
-		echo '<div id="indi_relationship">', printIndiRelationship(), '</div>';
-	}
+	//Display relationship to default individual - hidden when empty by css
+	echo '<div id="indi_relationship">', printIndiRelationship(), '</div>';
+
 	echo '</div>'; // close header_accordion1
 }
 echo '</div>';// close #indi_header
