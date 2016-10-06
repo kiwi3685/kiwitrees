@@ -161,7 +161,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 		?>
 
 		<div id="relations_config">
-<!--			<a class="current faq_link" href="http://127.0.0.1/kiwitrees/module.php?mod=chart_relationship&mod_action=admin_config" target="_blank" title="<?php //echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php //echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>-->
+			<a class="current faq_link" href="http://kiwitrees.net/faqs/general-topics/displaying-relationships/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo /* I18N: Configuration page title */ WT_I18N::translate('Relationship calculation options'); ?></h2>
 			<form method="post" name="album_form" action="<?php echo $this->getConfigLink(); ?>">
 				<input type="hidden" name="save" value="1">

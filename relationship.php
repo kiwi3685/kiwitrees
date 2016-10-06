@@ -185,7 +185,7 @@ if ($person1 && $person2) {
 			}
 			$num_paths++;
 			echo '<h3>';
-				if ($num_paths > 1) {
+				if (count($paths) > 1) {
 					echo '<a href="#" onclick="return expand_layer(\'rel_'.$num_paths.'\');" class="top">
 						<i id="rel_'.$num_paths.'_img" class="icon-minus" title="', WT_I18N::translate('View Relationship'), '"></i>
 					</a> ';
