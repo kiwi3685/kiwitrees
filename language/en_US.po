@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-10-08 17:45+1300\n"
-"PO-Revision-Date: 2016-10-08 17:45+1300\n"
+"POT-Creation-Date: 2016-10-08 18:03+1300\n"
+"PO-Revision-Date: 2016-10-08 18:03+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -10908,8 +10908,8 @@ msgstr "Relationship:&nbsp;"
 
 #: includes/functions/functions_print_relations.php:85
 #, php-format
-msgid "<span>%1$s is %2$s of %3$s"
-msgstr "<span>%1$s is %2$s of %3$s"
+msgid "%1$s is %2$s of %3$s"
+msgstr "%1$s is %2$s of %3$s."
 
 #: includes/functions/functions_print_relations.php:101
 #: includes/functions/functions_print_relations.php:120
@@ -26270,8 +26270,8 @@ msgstr "Orientation"
 msgid "Pedigree Chart"
 msgstr "Pedigree Chart"
 
-#~ msgid "%1$s is %2$s of %3$s."
-#~ msgstr "%1$s is %2$s of %3$s."
+#~ msgid "<span>%1$s is %2$s of %3$s"
+#~ msgstr "<span>%1$s is %2$s of %3$s"
 
 #~ msgid "Common ancestors: "
 #~ msgstr "Common ancestors: "
