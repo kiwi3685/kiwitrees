@@ -808,6 +808,14 @@ div[id*='-page'] {
 	width: 100%;
 }
 
+#relatives_content table.fam_relationship a {
+	color: #3383bb;
+}
+
+#relatives_content table.fam_relationship a:hover {
+	color: #ff0000;
+}
+
 #relatives_content table.fam_relationship tr {
 	vertical-align: middle;
 }

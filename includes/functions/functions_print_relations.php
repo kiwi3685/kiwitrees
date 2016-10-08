@@ -82,7 +82,7 @@ function printSlcasBetween($person1, $person2, $mode, $recursion, $showCa, $type
 			continue;
 		}
 		echo '<a href="relationship.php?pid1=' . $person1->getXref() . '&pid2=' . $person2->getXref() . '&ged=' . WT_GEDURL . '&find=4" target="_blank">' . WT_I18N::translate('Relationship:&nbsp;') . '</a>';
-		echo WT_I18N::translate('<span>%1$s is %2$s of %3$s',
+		echo WT_I18N::translate('%1$s is %2$s of %3$s',
 			$person2->getFullName(),
 			get_relationship_name_from_path(implode('', $relationships), $person1, $person2),
 			$type == 'INDI' ? $person1->getLifespanName() : $person1->getFullName()
