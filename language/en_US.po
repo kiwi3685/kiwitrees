@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-10-06 13:54+1300\n"
-"PO-Revision-Date: 2016-10-06 13:54+1300\n"
+"POT-Creation-Date: 2016-10-08 17:45+1300\n"
+"PO-Revision-Date: 2016-10-08 17:45+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -822,6 +822,7 @@ msgstr "Restrict access to the site, using IP addresses and user-agent strings"
 #: admin_trees_renumber.php:61 admin_trees_sanity.php:45
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:74
 #: modules_v3/album/module.php:285 modules_v3/backup_to_dropbox/module.php:112
+#: modules_v3/chart_relationship/module.php:164
 #: modules_v3/gallery/module.php:487
 msgid "View FAQ for this page."
 msgstr "View FAQ for this page."
@@ -10901,27 +10902,19 @@ msgstr[1] "No events for living people exist for the next %s days."
 msgid "Average age"
 msgstr "Average age"
 
-#: includes/functions/functions_print_relations.php:115
-#, php-format
-msgid "%1$s is %2$s of %3$s."
-msgstr "%1$s is %2$s of %3$s."
-
-#: includes/functions/functions_print_relations.php:139
+#: includes/functions/functions_print_relations.php:84
 msgid "Relationship:&nbsp;"
 msgstr "Relationship:&nbsp;"
 
-#: includes/functions/functions_print_relations.php:140
+#: includes/functions/functions_print_relations.php:85
 #, php-format
 msgid "<span>%1$s is %2$s of %3$s"
 msgstr "<span>%1$s is %2$s of %3$s"
 
-#: includes/functions/functions_print_relations.php:156
+#: includes/functions/functions_print_relations.php:101
+#: includes/functions/functions_print_relations.php:120
 msgid "Common ancestor: "
 msgstr "Common ancestor: "
-
-#: includes/functions/functions_print_relations.php:175
-msgid "Common ancestors: "
-msgstr "Common ancestors: "
 
 #: includes/functions/functions_resource.php:464
 #: modules_v3/resource_individual/module.php:288
@@ -11035,7 +11028,7 @@ msgid ""
 msgstr ""
 "This individual does not exist or you do not have permission to view it."
 
-#: individual.php:288
+#: individual.php:287
 msgid "Click here to open or close the sidebar"
 msgstr "Click here to open or close the sidebar"
 
@@ -20225,8 +20218,6 @@ msgstr "An individual's relationship chart"
 msgid "unlimited"
 msgstr "unlimited"
 
-#. I18N::translate('View FAQ for this page.');
-#. I18N::translate('View FAQ for this page.');
 #. I18N: Configuration page title
 #: modules_v3/chart_relationship/module.php:165
 msgid "Relationship calculation options"
@@ -26278,6 +26269,12 @@ msgstr "Orientation"
 #: modules_v3/pedigree_report/report.bak:737
 msgid "Pedigree Chart"
 msgstr "Pedigree Chart"
+
+#~ msgid "%1$s is %2$s of %3$s."
+#~ msgstr "%1$s is %2$s of %3$s."
+
+#~ msgid "Common ancestors: "
+#~ msgstr "Common ancestors: "
 
 #~ msgid "README documentation"
 #~ msgstr "README documentation"
