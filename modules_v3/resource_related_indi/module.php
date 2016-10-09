@@ -229,7 +229,7 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 				<table id="related_individuals" class="width100" style="visibility:hidden;">
 					<thead>
 						<tr>
-							<th><?php echo /*I18N short abbreviation for "Number" */ WT_I18N::translate('No.'); ?></th>
+							<th><?php echo /* I18N: Abbreviation for "Number" */ WT_I18N::translate('No.'); ?></th>
 							<th><?php echo WT_I18N::translate('Name'); ?></th>
 							<th><?php echo WT_I18N::translate('Birth'); ?></th>
 							<th><?php //SORT_BIRT ?></th>
