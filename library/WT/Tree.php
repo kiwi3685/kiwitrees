@@ -229,7 +229,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'CONTACT_USER_ID',              WT_USER_ID);
 		set_gedcom_setting($tree_id, 'DEFAULT_PEDIGREE_GENERATIONS', '4');
 		set_gedcom_setting($tree_id, 'EXPAND_NOTES',                 false);
-		set_gedcom_setting($tree_id, 'EXPAND_RELATIVES_EVENTS',      false);
 		set_gedcom_setting($tree_id, 'EXPAND_SOURCES',               false);
 		set_gedcom_setting($tree_id, 'FAM_FACTS_ADD',                'CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS,RESN');
 		set_gedcom_setting($tree_id, 'FAM_FACTS_QUICK',              'MARR,DIV,_NMR');
@@ -273,7 +272,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'REPO_ID_PREFIX',               'R');
 		set_gedcom_setting($tree_id, 'SAVE_WATERMARK_IMAGE',         false);
 		set_gedcom_setting($tree_id, 'SAVE_WATERMARK_THUMB',         false);
-		set_gedcom_setting($tree_id, 'SHOW_AGE_DIFF',                false);
 		set_gedcom_setting($tree_id, 'SHOW_COUNTER',                 true);
 		set_gedcom_setting($tree_id, 'SHOW_DEAD_PEOPLE',             WT_PRIV_PUBLIC);
 		set_gedcom_setting($tree_id, 'SHOW_EST_LIST_DATES',          false);
@@ -281,7 +279,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'SHOW_GEDCOM_RECORD',           false);
 		set_gedcom_setting($tree_id, 'SHOW_HIGHLIGHT_IMAGES',        true);
 		set_gedcom_setting($tree_id, 'SHOW_LDS_AT_GLANCE',           false);
-		set_gedcom_setting($tree_id, 'SHOW_LEVEL2_NOTES',            true);
 		set_gedcom_setting($tree_id, 'SHOW_LIVING_NAMES',            WT_PRIV_USER);
 		set_gedcom_setting($tree_id, 'SHOW_MEDIA_DOWNLOAD',          false);
 		set_gedcom_setting($tree_id, 'SHOW_NO_WATERMARK',            WT_PRIV_USER);

@@ -1591,3 +1591,37 @@ jQuery(".help_content").on("click", ".more", function(e){
 	jQuery(this).next(".hidden").slideToggle("slow");
 	jQuery(this).parent().siblings().find(".hidden").slideUp();
 });
+
+/**
+ * Persistant checkbox options to hide/show extra data.
+
+ * @param checkbox_id
+ * @param data_selector
+ */
+function persistant_toggle(checkbox_id, data_selector) {
+	var checkbox = document.getElementById(checkbox_id);
+	var elements = document.querySelectorAll(data_selector);
+	var display  = localStorage.getItem(checkbox_id);
+
+	if (!checkbox) {
+		return;
+	}
+
+	if (display !== "") {
+		display = "none";
+	}
+
+	checkbox.checked = (display === "");
+	for (var i = 0; i < elements.length; ++i) {
+		elements[i].style.display = display;
+	}
+
+	checkbox.addEventListener("click", function () {
+		console.log(display);
+		display = (display === "" ? "none" : "");
+		localStorage.setItem(checkbox_id, display);
+		for (var i = 0; i < elements.length; ++i) {
+			elements[i].style.display = display;
+		}
+	});
+}

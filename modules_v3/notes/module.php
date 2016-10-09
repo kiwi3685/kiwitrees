@@ -49,14 +49,14 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SHOW_LEVEL2_NOTES, $NAV_NOTES, $controller;
+		global $NAV_NOTES, $controller;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo ' checked="checked"'; ?> onclick="jQuery('tr.row_note2').toggle();">
+					<input id="checkbox_note2" type="checkbox">
 					<label for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
 					<?php echo help_link('show_fact_sources'); ?>
 				</td>
@@ -112,10 +112,10 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		</table>
 		<br>
+		<script>
+			persistant_toggle("checkbox_note2", "tr.row_note2");
+		</script>
 		<?php
-		if (!$SHOW_LEVEL2_NOTES)  {
-			echo '<script>jQuery("tr.row_note2").toggle();</script>';
-		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 

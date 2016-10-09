@@ -136,8 +136,8 @@ function printIndiRelationship() {
 }
 
 function printFamilyRelationship($type, $people) {
-	$person1 = WT_Person::getInstance($people["husb"]->getXref());
-	$person2 = WT_Person::getInstance($people["wife"]->getXref());
+	$person1 = isset($people["husb"]) ? WT_Person::getInstance($people["husb"]->getXref()) : null;
+	$person2 = isset($people["wife"]) ? WT_Person::getInstance($people["wife"]->getXref()) : null;
 	if ($type === 'FAMC') {
 		$mode = intval(get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS'));
 		$recursion = intval(get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION'));
@@ -148,9 +148,9 @@ function printFamilyRelationship($type, $people) {
 		$showCa = boolval(get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA'));
 	}
 
-	if ($mode === 0) {
+	if ($mode === 0 || !$person1 || !$person2 ) {
 		return;
 	}
-//	printSlcasBetween($family, $mode, $recursion, $showCa, $person1, $person2);
+
 	printSlcasBetween($person1, $person2, $mode, $recursion, $showCa, $type);
 }

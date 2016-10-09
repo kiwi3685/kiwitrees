@@ -61,7 +61,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<a href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'); ?></a>
 				</td>
 				<td>
-					<span><?php echo printFamilyRelationship($type, $people); ?></span>
+					<div class="fam_rela"><?php echo printFamilyRelationship($type, $people); ?></div>
 				</td>
 			</tr>
 		</table>
@@ -314,7 +314,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount, $controller;
+		global $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount, $controller;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
 		$show_full = 1;
@@ -324,10 +324,16 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		ob_start();
 		?>
-		<table class="facts_table"><tr><td class="descriptionbox rela">
-		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>>
-		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
-		</td></tr></table>
+		<table class="facts_table">
+			<tr>
+				<td class="descriptionbox rela">
+					<input id="checkbox_elder" type="checkbox" checked>
+					<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
+					<input id="checkbox_rela" type="checkbox" checked>
+					<label for="checkbox_rela"><?php echo WT_I18N::translate('Show relationships'); ?></label>
+				</td>
+			</tr>
+		</table>
 		<?php
 		$personcount=0;
 		$families = $controller->record->getChildFamilies();
@@ -386,10 +392,12 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$this->printChildrenRows($family, $people, "spouse");
 			echo '</table>';
 		}
-
-		if (!$SHOW_AGE_DIFF) {
-			echo '<script>jQuery("DIV.elderdate").toggle();</script>';
-		}
+		?>
+		<script>
+			persistant_toggle("checkbox_elder", ".elderdate");
+			persistant_toggle("checkbox_rela", ".fam_rela");
+		</script>
+		<?php
 
 		$ABBREVIATE_CHART_LABELS = $saved_ABBREVIATE_CHART_LABELS; // Restore GEDCOM configuration
 		unset($show_full);

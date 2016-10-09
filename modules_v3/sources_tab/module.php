@@ -54,14 +54,14 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SHOW_LEVEL2_NOTES, $NAV_SOURCES, $controller;
+		global $NAV_SOURCES, $controller;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();">
+					<input id="checkbox_sour2" type="checkbox">
 					<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 				</td>
 			</tr>
@@ -93,10 +93,10 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		</table>
 		<br>
+		<script>
+			persistant_toggle("checkbox_sour2", "tr.row_sour2");
+		</script>
 		<?php
-		if (!$SHOW_LEVEL2_NOTES) {
-			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
-		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 

@@ -226,7 +226,7 @@ if ($controller->record->canDisplayDetails()) {
 		if ($fact=="NAME") $controller->print_name_record($value);
 	}
 	//Display relationship to default individual - hidden when empty by css
-	echo '<div id="indi_relationship">', printIndiRelationship(), '</div>';
+	echo '<div id="indi_relationship" class="fam_rela">', printIndiRelationship(), '</div>';
 
 	echo '</div>'; // close header_accordion1
 }

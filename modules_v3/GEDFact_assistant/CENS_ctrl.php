@@ -29,7 +29,7 @@
 $controller = new WT_Controller_Individual();
 
 global $tabno, $linkToID, $SEARCH_SPIDER;
-global $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS;
+global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full, $famid;
 
 $summary = $controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2);

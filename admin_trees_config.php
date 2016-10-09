@@ -136,8 +136,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',				WT_Filter::post('NEW_CONTACT_USER_ID'));
 	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS',	WT_Filter::post('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',					WT_Filter::postBool('NEW_EXPAND_NOTES'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',		WT_Filter::postBool('NEW_EXPAND_RELATIVES_EVENTS'));
-	set_gedcom_setting(WT_GED_ID, 'EXPAND_HISTO_EVENTS',			WT_Filter::postBool('NEW_EXPAND_HISTO_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',					WT_Filter::postBool('NEW_EXPAND_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD',					str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK',				str_replace(' ', '', WT_Filter::post('NEW_FAM_FACTS_QUICK')));
@@ -177,7 +175,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'REPO_ID_PREFIX',					WT_Filter::post('NEW_REPO_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE',			WT_Filter::postBool('NEW_SAVE_WATERMARK_IMAGE'));
 	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB',			WT_Filter::postBool('NEW_SAVE_WATERMARK_THUMB'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',					WT_Filter::postBool('NEW_SHOW_AGE_DIFF'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_COUNTER',					WT_Filter::postBool('NEW_SHOW_COUNTER'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE',				WT_Filter::post('SHOW_DEAD_PEOPLE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES',			WT_Filter::postBool('NEW_SHOW_EST_LIST_DATES'));
@@ -186,7 +183,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES',			WT_Filter::postBool('NEW_SHOW_HIGHLIGHT_IMAGES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LAST_CHANGE',				WT_Filter::postBool('NEW_SHOW_LAST_CHANGE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LDS_AT_GLANCE',				WT_Filter::postBool('NEW_SHOW_LDS_AT_GLANCE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES',				WT_Filter::postBool('NEW_SHOW_LEVEL2_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES',				WT_Filter::post('SHOW_LIVING_NAMES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD',			WT_Filter::postBool('NEW_SHOW_MEDIA_DOWNLOAD'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_NO_WATERMARK',				WT_Filter::post('NEW_SHOW_NO_WATERMARK'));
@@ -966,23 +962,6 @@ $controller
 							</table>
 						 </div>
 					</div>
-					<div class="config_options">
-						<label><?php echo WT_I18N::translate('Automatically expand list of events of close relatives'); ?></label>
-						<div class="input_group">
-							<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS')); ?>
-							<div class="helpcontent">
-								<?php echo WT_I18N::translate('This option controls whether or not to automatically expand the <i>Events of close relatives</i> list.'); ?>
-							</div>
-						 </div>
-					</div>
-					<?php if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) { ?>
-						<div class="config_options">
-							<label><?php echo WT_I18N::translate('Automatically expand list of historic events'); ?></label>
-							<div class="input_group">
-								<?php echo edit_field_yes_no('NEW_EXPAND_HISTO_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_HISTO_EVENTS')); ?>
-							 </div>
-						</div>
-					<?php } ?>
 					<h4 class="accepted"><?php echo WT_I18N::translate('Places'); ?></h4>
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Abbreviate place names'); ?></label>
@@ -1110,24 +1089,6 @@ $controller
 							</div>
 						 </div>
 					</div>
-					<div class="config_options">
-						<label><?php echo WT_I18N::translate('Show all notes and source references on notes and sources tabs'); ?></label>
-						<div class="input_group">
-							<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', get_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES')); ?>
-							<div class="helpcontent">
-								<?php echo /* I18N: Help for Show all notes and source references */ WT_I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page. Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual\'s database record. These are <i>level 1</i> Notes and Source references.<br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual\'s database record. These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.'); ?>
-							</div>
-						 </div>
-					</div>
-					<div class="config_options">
-						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
-						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF, 'class="radio_inline"'); ?>
-							<div class="helpcontent">
-								<?php echo WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
-							</div>
-						 </div>
-					</div>
 					<h4 class="accepted"><?php echo WT_I18N::translate('General'); ?></h4>
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Allow users to see raw GEDCOM records'); ?></label>
@@ -1135,15 +1096,6 @@ $controller
 							<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD')); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('Setting this to <b>Yes</b> will place links on individuals, sources, and families page menus to let users bring up another window containing the raw data in GEDCOM file format.<br>Administrators always see these links regardless of this setting.'); ?>
-							</div>
-						 </div>
-					</div>
-					<div class="config_options">
-						<label><?php echo WT_I18N::translate('Date differences'); ?></label>
-						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF, 'class="radio_inline"'); ?>
-							<div class="helpcontent">
-								<?php echo WT_I18N::translate('When this option is selected, kiwitrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
 							</div>
 						 </div>
 					</div>
