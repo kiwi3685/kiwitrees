@@ -19,7 +19,8 @@ class scotlands_people_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.scotlandspeople.gov.uk/people/' . $first .'_' . $surname .'_1513_2012';
+		$birth_year = $birth_year - 10;
+		return $link = 'https://www.scotlandspeople.gov.uk/js/search-results?search_type=People&surname=' . $surname . '&forename=' . $first . '&to_year=&from_year=' . $birth_year;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
