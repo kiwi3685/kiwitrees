@@ -568,7 +568,7 @@ $controller
 			// output results as table
 			?>
 			<h2><?php echo /* I18N heading for report on missing data */ WT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
-			<h3><?php echo /* I18N sub-heading for report on missing data listing selected event types */ WT_I18N::translate('Mising data for <span style="font-weight:normal;">%s</span>', $facts_list); ?></h3>
+			<h3><?php echo /* I18N sub-heading for report on missing data listing selected event types */ WT_I18N::translate('Missing data for <span style="font-weight:normal;">%s</span>', $facts_list); ?></h3>
 			<div class="loading-image">&nbsp;</div>
 			<table id="missing_data" style="width: 100%; visibility:hidden;">
 				<thead>

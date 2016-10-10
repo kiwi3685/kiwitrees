@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-10-10 11:46+1300\n"
-"PO-Revision-Date: 2016-10-10 11:47+1300\n"
+"POT-Creation-Date: 2016-10-11 07:27+1300\n"
+"PO-Revision-Date: 2016-10-11 07:28+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -231,7 +231,7 @@ msgstr "Do not update the “last change” record"
 #: admin_module_lists.php:101 admin_module_menus.php:127
 #: admin_module_reports.php:101 admin_module_resources.php:101
 #: admin_module_sidebar.php:127 admin_module_tabs.php:127
-#: admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:433
+#: admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:431
 #: admin_site_merge.php:163 admin_trees_config.php:1419
 #: admin_trees_manage.php:347 block_edit.php:61 edit_interface.php:169
 #: edit_interface.php:270 edit_interface.php:346 edit_interface.php:505
@@ -1101,11 +1101,11 @@ msgstr "Choose user defined welcome text typed below"
 msgid "Mail configuration"
 msgstr "Mail configuration"
 
-#: admin_site_config.php:155 admin_site_config.php:348
+#: admin_site_config.php:155 admin_site_config.php:346
 msgid "Login & registration"
 msgstr "Login & registration"
 
-#: admin_site_config.php:158 admin_site_config.php:396
+#: admin_site_config.php:158 admin_site_config.php:394
 msgid "Languages"
 msgstr "Languages"
 
@@ -1236,7 +1236,7 @@ msgid "Messages"
 msgstr "Messages"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:254
+#: admin_site_config.php:252
 msgid ""
 "Kiwitrees needs to send emails such as password reminders and site "
 "notifications. To do this it can use this server's built in PHP mail "
@@ -1250,12 +1250,12 @@ msgstr ""
 "service, for which you will need to provide the connection details."
 "<br>Selecting SMTP will display additional configuration options below."
 
-#: admin_site_config.php:259
+#: admin_site_config.php:257
 msgid "Send mail in HTML format"
 msgstr "Send mail in HTML format"
 
 #. I18N: Help text for the “Messages” site configuration setting
-#: admin_site_config.php:263
+#: admin_site_config.php:261
 msgid ""
 "By default kiwitrees sends emails in plain text format. Setting this option "
 "to <b>yes</b> will change that to the multipart format. This allows the use "
@@ -1267,12 +1267,12 @@ msgstr ""
 "of HTML formatting, but also includes a plain text version for recipients "
 "that do not allow HTML formatted emails."
 
-#: admin_site_config.php:268
+#: admin_site_config.php:266
 msgid "Sender email"
 msgstr "Sender email"
 
 #. I18N: Help text for the “Sender name” site configuration setting
-#: admin_site_config.php:272
+#: admin_site_config.php:270
 msgid ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server. It must be a valid email address."
@@ -1280,16 +1280,16 @@ msgstr ""
 "This name is used in the “From” field, when sending automatic emails from "
 "this server. It must be a valid email address."
 
-#: admin_site_config.php:278
+#: admin_site_config.php:276
 msgid "SMTP mail server settings"
 msgstr "SMTP mail server settings"
 
-#: admin_site_config.php:280 setup.php:286
+#: admin_site_config.php:278 setup.php:286
 msgid "Server name"
 msgstr "Server name"
 
 #. I18N: Help text for the “Server name” site configuration setting
-#: admin_site_config.php:284
+#: admin_site_config.php:282
 msgid ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
@@ -1297,25 +1297,25 @@ msgstr ""
 "This is the name of the SMTP server. 'localhost' means that the mail service "
 "is running on the same computer as your web server."
 
-#: admin_site_config.php:289 setup.php:291
+#: admin_site_config.php:287 setup.php:291
 msgid "Port number"
 msgstr "Port number"
 
 #. I18N: Help text for the "Port number" site configuration setting
-#: admin_site_config.php:293
+#: admin_site_config.php:291
 msgid "By default SMTP works on port 25."
 msgstr "By default SMTP works on port 25."
 
-#: admin_site_config.php:298
+#: admin_site_config.php:296
 msgid "Use password"
 msgstr "Use password"
 
 #. I18N: Help text for the “Use password” site configuration setting
-#: admin_site_config.php:302
+#: admin_site_config.php:300
 msgid "Most SMTP servers require a password."
 msgstr "Most SMTP servers require a password."
 
-#: admin_site_config.php:307 admin_users.php:372 admin_users.php:561
+#: admin_site_config.php:305 admin_users.php:372 admin_users.php:561
 #: edituser.php:133 help_text.php:788 login.php:158 login.php:222 login.php:298
 #: login.php:338 login.php:450 modules_v3/login_block/module.php:69
 #: modules_v3/resource_changes/module.php:160
@@ -1324,35 +1324,35 @@ msgstr "Most SMTP servers require a password."
 msgid "Username"
 msgstr "Username"
 
-#: admin_site_config.php:311
+#: admin_site_config.php:309
 msgid "The user name required for authentication with the SMTP server."
 msgstr "The user name required for authentication with the SMTP server."
 
-#: admin_site_config.php:316 admin_users.php:213 admin_users.php:384
+#: admin_site_config.php:314 admin_users.php:213 admin_users.php:384
 #: edituser.php:164 help_text.php:601 login.php:163 login.php:224 login.php:454
 #: modules_v3/login_block/module.php:74 setup.php:436
 msgid "Password"
 msgstr "Password"
 
-#: admin_site_config.php:320
+#: admin_site_config.php:318
 msgid "The password required for authentication with the SMTP server."
 msgstr "The password required for authentication with the SMTP server."
 
-#: admin_site_config.php:325
+#: admin_site_config.php:323
 msgid "Secure connection"
 msgstr "Secure connection"
 
 #. I18N: Help text for the "Secure connection" site configuration setting
-#: admin_site_config.php:329
+#: admin_site_config.php:327
 msgid "Most servers do not use secure connections."
 msgstr "Most servers do not use secure connections."
 
-#: admin_site_config.php:334
+#: admin_site_config.php:332
 msgid "Sending server name"
 msgstr "Sending server name"
 
 #. I18N: Help text for the “Sending server name” site configuration setting
-#: admin_site_config.php:338
+#: admin_site_config.php:336
 msgid ""
 "Many mail servers require that the sending server identifies itself "
 "correctly, using a valid domain name."
@@ -1360,7 +1360,7 @@ msgstr ""
 "Many mail servers require that the sending server identifies itself "
 "correctly, using a valid domain name."
 
-#: admin_site_config.php:343
+#: admin_site_config.php:341
 msgid ""
 "To use a Google mail account, use the following settings: server=smtp.gmail."
 "com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail "
@@ -1374,12 +1374,12 @@ msgstr ""
 "account. <a href=\"https://support.google.com/a/answer/6260879\">https://"
 "support.google.com/a/answer/6260879</a>"
 
-#: admin_site_config.php:351
+#: admin_site_config.php:349
 msgid "Login URL"
 msgstr "Login URL"
 
 #. I18N: Help text for the “Login URL” site configuration setting
-#: admin_site_config.php:355
+#: admin_site_config.php:353
 msgid ""
 "You only need to enter a Login URL if you want to redirect to a different "
 "site or location when your users login. This is very useful if you need to "
@@ -1393,12 +1393,12 @@ msgstr ""
 "<i>login.php</i>. For example, https://www.yourserver.com/kiwitrees/login."
 "php ."
 
-#: admin_site_config.php:360
+#: admin_site_config.php:358
 msgid "Welcome text on login page"
 msgstr "Welcome text on login page"
 
 #. I18N: Explanation for custom welcome text
-#: admin_site_config.php:364
+#: admin_site_config.php:362
 msgid ""
 "Here you can choose text to appear on the login page. You must determine "
 "which predefined text is most appropriate. You can also choose to enter your "
@@ -1460,11 +1460,11 @@ msgstr ""
 "your request for an account. You will receive an email when your request is "
 "approved.</center></div></li></ul>"
 
-#: admin_site_config.php:369
+#: admin_site_config.php:367
 msgid "Custom welcome text"
 msgstr "Custom welcome text"
 
-#: admin_site_config.php:373
+#: admin_site_config.php:371
 msgid ""
 "If you have opted for custom welcome text, you can type that text here. To "
 "set this text for other languages you must switch to that language and visit "
@@ -1474,11 +1474,11 @@ msgstr ""
 "set this text for other languages you must switch to that language and visit "
 "this page again."
 
-#: admin_site_config.php:378
+#: admin_site_config.php:376
 msgid "Allow visitors to request account registration"
 msgstr "Allow visitors to request account registration"
 
-#: admin_site_config.php:382
+#: admin_site_config.php:380
 msgid ""
 "Gives visitors the option of registering themselves for an account on the "
 "site. The visitor will receive an email message with a code to verify their "
@@ -1490,11 +1490,11 @@ msgstr ""
 "application for an account. After verification the Administrator will have "
 "to approve the registration before it becomes active."
 
-#: admin_site_config.php:387
+#: admin_site_config.php:385
 msgid "Show acceptable use agreement on «Request new user account» page"
 msgstr "Show acceptable use agreement on «Request new user account» page"
 
-#: admin_site_config.php:391
+#: admin_site_config.php:389
 msgid ""
 "When set to <b>Yes</b>, the following message will appear above the input "
 "fields on the «Request new user account» page:<div class=\"list_value_wrap"
@@ -1512,11 +1512,11 @@ msgstr ""
 "whom you are related, or to provide us with information on someone who "
 "should be listed on our site.</li></ul></div></div>"
 
-#: admin_site_config.php:398
+#: admin_site_config.php:396
 msgid "Select the languages your site will use"
 msgstr "Select the languages your site will use"
 
-#: admin_site_config.php:400 admin_trees_missing.php:155
+#: admin_site_config.php:398 admin_trees_missing.php:155
 #: modules_v3/random_media/module.php:309
 #: modules_v3/random_media/module.php:359
 #: modules_v3/simpl_research/module.php:118
@@ -3961,8 +3961,8 @@ msgstr "%1s related to %2s "
 
 #: admin_trees_missing.php:571
 #, php-format
-msgid "Mising data for <span style=\"font-weight:normal;\">%s</span>"
-msgstr "Mising data for <span style=\"font-weight:normal;\">%s</span>"
+msgid "Missing data for <span style=\"font-weight:normal;\">%s</span>"
+msgstr "Missing data for <span style=\"font-weight:normal;\">%s</span>"
 
 #. I18N: gedcom tag EVEN
 #: admin_trees_missing.php:577 admin_trees_source.php:141
@@ -20368,7 +20368,6 @@ msgid "An individual's timeline chart"
 msgstr "An individual's timeline chart"
 
 #: modules_v3/charts/help_text.php:35
-#, fuzzy
 msgid ""
 "This block allows a pedigree, descendancy, or hourglass chart to appear on "
 "the Home page.  Because of space limitations, the charts should be placed "
@@ -20378,13 +20377,13 @@ msgid ""
 "identical to their behavior when they are called up from the menus.  Click "
 "on the box of a person to see more details about them."
 msgstr ""
-"This block allows a pedigree, descendancy, or hourglass chart to appear the "
-"Home.  Because of space limitations, the charts should be placed only on the "
-"left side of the page or at full width.<br /><br />When this block appears "
-"the root person and the type of chart to be displayed are determined by the "
-"administrator.<br /><br />The behavior of these charts is identical to their "
-"behavior when they are called up from the menus.  Click on the box of a "
-"person to see more details about them."
+"This block allows a pedigree, descendancy, or hourglass chart to appear on "
+"the Home page.  Because of space limitations, the charts should be placed "
+"only on the left side of the page or at full width.<br /><br />When this "
+"block appears the root person and the type of chart to be displayed are "
+"determined by the administrator.<br /><br />The behavior of these charts is "
+"identical to their behavior when they are called up from the menus.  Click "
+"on the box of a person to see more details about them."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:40
@@ -20422,7 +20421,7 @@ msgid "Pedigree of %s"
 msgstr "Pedigree of %s"
 
 #: modules_v3/charts/module.php:108 modules_v3/tree/class_treeview.php:54
-#: modules_v3/tree/class_treeview.php:139 modules_v3/tree/module.php:134
+#: modules_v3/tree/class_treeview.php:139 modules_v3/tree/module.php:114
 #, php-format
 msgid "Interactive tree of %s"
 msgstr "Interactive tree of %s"
