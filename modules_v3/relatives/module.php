@@ -394,8 +394,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		?>
 		<script>
-			persistant_toggle("checkbox_elder", ".elderdate");
-			persistant_toggle("checkbox_rela", ".fam_rela");
+			persistent_toggle("checkbox_elder", ".elderdate");
+			persistent_toggle("checkbox_rela", ".fam_rela");
 		</script>
 		<?php
 

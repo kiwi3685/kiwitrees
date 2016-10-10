@@ -94,7 +94,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		</table>
 		<br>
 		<script>
-			persistant_toggle("checkbox_sour2", "tr.row_sour2");
+			persistent_toggle("checkbox_sour2", "tr.row_sour2");
 		</script>
 		<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';

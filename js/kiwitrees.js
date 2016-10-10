@@ -1598,7 +1598,7 @@ jQuery(".help_content").on("click", ".more", function(e){
  * @param checkbox_id
  * @param data_selector
  */
-function persistant_toggle(checkbox_id, data_selector) {
+function persistent_toggle(checkbox_id, data_selector) {
 	var checkbox = document.getElementById(checkbox_id);
 	var elements = document.querySelectorAll(data_selector);
 	var display  = localStorage.getItem(checkbox_id);

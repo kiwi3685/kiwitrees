@@ -113,7 +113,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		</table>
 		<br>
 		<script>
-			persistant_toggle("checkbox_note2", "tr.row_note2");
+			persistent_toggle("checkbox_note2", "tr.row_note2");
 		</script>
 		<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';

@@ -100,8 +100,8 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		} ?>
 		</table>
 		<script>
-			persistant_toggle("checkbox_rela_facts", "tr.row_rela");
-			persistant_toggle("checkbox_histo", "tr.row_histo");
+			persistent_toggle("checkbox_rela_facts", "tr.row_rela");
+			persistent_toggle("checkbox_histo", "tr.row_histo");
 		</script>
 		<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
