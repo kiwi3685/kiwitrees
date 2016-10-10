@@ -24,7 +24,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class tree_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Chart {
+class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
 
@@ -38,26 +38,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Chart
 		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
 
-	// Implement WT_Module_Chart
-	public function getChartMenus() {
-		global $controller;
-		$indi_xref = $controller->getSignificantIndividual()->getXref();
-		$menus	= array();
-		$menu	= new WT_Menu(
-			$this->getTitle(),
-			'module.php?mod=' . $this->getName() . '&amp;mod_action=treeview&amp;rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
-			'menu-chart-' . $this->getName()
-		);
-		$menus[] = $menu;
-
-		return $menus;
-	}
-
-/*
-$submenu = new WT_Menu($menuName, 'module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$indi_xref, 'menu-chart-tree');
-$menu->addSubmenu($submenu);
-
-*/
 	// Implement WT_Module_Tab
 	public function defaultTabOrder() {
 		return 70;

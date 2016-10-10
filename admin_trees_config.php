@@ -277,7 +277,7 @@ $controller
 
 <div id="family_tree_config">
 	<h2><?php echo WT_I18N::translate('Family tree configuration'); ?></h2>
-	<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<?php echo WT_Filter::getCsrf(); ?>
 		<input type="hidden" name="action" value="update">
 		<input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>">

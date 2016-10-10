@@ -140,7 +140,7 @@ $controller
 
 <div id="site_config">
 	<h2><?php echo WT_I18N::translate('Site configuration'); ?></h2>
-	<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<?php echo WT_Filter::getCsrf(); ?>
 		<input type="hidden" name="action" value="update">
 		<div id="tabs">
@@ -241,7 +241,6 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Messages'); ?></label>
 						<div class="input_group">
-
 							<select id="smtp_select" name="SMTP_ACTIVE">
 								<?php foreach ($SMTP_ACTIVE_OPTIONS as $key=>$value) {
 									echo '<option value="' . $key . '"';
@@ -249,7 +248,6 @@ $controller
 									echo '>' . $value . '</option>';
 								} ?>
 							</select>
-
 							<div class="helpcontent">
 								<?php echo /* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('Kiwitrees needs to send emails such as password reminders and site notifications. To do this it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.<br>Selecting SMTP will display additional configuration options below.'); ?>
 							</div>

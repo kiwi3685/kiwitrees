@@ -40,6 +40,7 @@ try {
 	self::exec("DELETE FROM `##gedcom_setting` WHERE `setting_name` LIKE 'SHOW_AGE_DIFF'");
 	self::exec("DELETE FROM `##site_setting` WHERE setting_name LIKE 'REQUIRE_ADMIN_AUTH_REGISTRATION'");
 	self::exec("DELETE FROM `##site_setting` WHERE setting_name LIKE 'WELCOME_TEXT_CUST_HEAD'");
+	self::exec("DELETE FROM `##module_privacy` WHERE module_name LIKE 'tree' AND component LIKE 'chart'");
 } catch (PDOException $ex) {
 	// Perhaps we have already deleted this data?
 }
