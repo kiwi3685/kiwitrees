@@ -32,11 +32,9 @@ class Backup {
 
             //if dealing with a file upload it
             if(is_file($dirtocopy)){
-                $dirtocopy = str_replace("\\", "/", $dirtocopy);
                 $this->uploadFile($dirtocopy);
 
             } else { //otherwise collect all files and folders
-				$dirtocopy	= str_replace("\\", "/", $dirtocopy);
 				$exclude	= array_merge($this->ignoreList(), $DB_EXCLUDE);
 				$filter		= function ($file, $key, $iterator) use ($exclude) {
 					if (!in_array($file->getFilename(), $exclude)) {
@@ -56,11 +54,12 @@ class Backup {
 				);
 
                 //loop through all entries
-                foreach ($iterator as $pathname => $fileInfo) {
+				foreach ($iterator as $pathname => $fileInfo) {
 					$file = str_replace(WT_DATA_DIR, "", $fileInfo);
-					$file = str_replace("\\", "/", $file);
-                    $this->uploadFile($file);
-                }
+					if (is_file($file)) {
+						$this->uploadFile($file);
+					}
+				}
 
             }
         }
