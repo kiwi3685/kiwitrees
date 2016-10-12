@@ -74,7 +74,7 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 		WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 	if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
-		$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
+		$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], null, null, (int) $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 	} else {
 		$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 	}
