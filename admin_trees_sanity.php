@@ -119,12 +119,13 @@ $controller
 			<?php echo $controller->getPageTitle(); ?>
 		</button>
 	</form>
+	<hr class="clearfloat">
 
 	<?php
 	if (!WT_Filter::post('go')) {
 		exit;
 	}
-		?>
+	?>
 
 	<div id="sanity_accordion">
 		<?php
