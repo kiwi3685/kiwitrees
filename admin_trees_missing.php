@@ -499,7 +499,7 @@ $controller
 						$check_event		= check_events($event, $fam_missing_events);
 						$fam_missing_events	= $check_event['count'];
 						// ENGA:SOUR
-						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts);
+						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts, $source);
 						$fam_missing_events	= $check_source['count'];
 						$total_fam_events	= $check_source['total_indi'];
 						//RESULT
@@ -520,7 +520,7 @@ $controller
 						$check_event		= check_events($event, $fam_missing_events);
 						$fam_missing_events	= $check_event['count'];
 						// MARR:SOUR
-						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts);
+						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts, $source);
 						$fam_missing_events	= $check_source['count'];
 						$total_fam_events	= $check_source['total_indi'];
 						//RESULT
@@ -541,7 +541,7 @@ $controller
 						$check_event		= check_events($event, $fam_missing_events);
 						$fam_missing_events	= $check_event['count'];
 						// MARB:SOUR
-						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts);
+						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts, $source);
 						$fam_missing_events	= $check_source['count'];
 						$total_fam_events	= $check_source['total_indi'];
 						//RESULT
