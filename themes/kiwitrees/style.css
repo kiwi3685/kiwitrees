@@ -910,18 +910,12 @@ table.center {
 	background-color: #eee;
 }
 
-.facts_value {
-	background-color: #edf7fd;
+.facts_value,
+.facts_value02 {
+	background-color: #fff;
 	border: solid #555 1px;
 	font-size: 12px;
 	padding: 4px;
-}
-
-.facts_value02 {
-	background-color: #edf7fd;
-	border: solid #555 1px;
-	font-size: 12px;
-	padding: 5px;
 }
 
 .facts_labelred,
@@ -936,7 +930,7 @@ table.center {
 
 .facts_valuered,
 .facts_valueblue {
-	background-color: #edf7fd;
+	background-color: #fff;
 	font-size: 12px;
 	padding: 4px;
 }
