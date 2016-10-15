@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-10-11 07:27+1300\n"
-"PO-Revision-Date: 2016-10-11 07:28+1300\n"
+"POT-Creation-Date: 2016-10-15 14:35+1300\n"
+"PO-Revision-Date: 2016-10-15 14:35+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -3483,7 +3483,7 @@ msgid "Given name"
 msgstr "Given name"
 
 #. I18N: gedcom tag SEX
-#: admin_trees_duplicates.php:178 admin_trees_sanity.php:101
+#: admin_trees_duplicates.php:178 admin_trees_sanity.php:107
 #: library/WT/Gedcom/Tag.php:320 modules_v3/family_group_report/report.bak:833
 #: modules_v3/individual_ext_report/report.bak:383
 #: modules_v3/individual_ext_report/report.bak:590
@@ -3528,7 +3528,7 @@ msgstr "Include married names: "
 
 #. I18N: gedcom tag NAME
 #: admin_trees_duplicates.php:222 admin_trees_missing.php:576
-#: admin_trees_sanity.php:107 edit_interface.php:2632
+#: admin_trees_sanity.php:113 edit_interface.php:2632
 #: library/WT/Controller/Individual.php:176 library/WT/Gedcom/Tag.php:271
 #: library/WT/Stats.php:3344
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128
@@ -3542,7 +3542,7 @@ msgid "Name"
 msgstr "Name"
 
 #. I18N: gedcom tag BIRT
-#: admin_trees_duplicates.php:223 admin_trees_sanity.php:89
+#: admin_trees_duplicates.php:223 admin_trees_sanity.php:95
 #: admin_trees_source.php:139 admin_trees_source.php:255
 #: library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1202
 #: modules_v3/resource_related_indi/module.php:234
@@ -3564,7 +3564,7 @@ msgid "Birth"
 msgstr "Birth"
 
 #. I18N: gedcom tag DEAT
-#: admin_trees_duplicates.php:224 admin_trees_sanity.php:95
+#: admin_trees_duplicates.php:224 admin_trees_sanity.php:101
 #: admin_trees_source.php:258 library/WT/Gedcom/Tag.php:185
 #: modules_v3/fancy_treeview/module.php:1205
 #: modules_v3/resource_related_indi/module.php:237
@@ -3797,7 +3797,7 @@ msgstr ""
 "After creating the family tree, you will be able to upload or import data "
 "from a GEDCOM file."
 
-#: admin_trees_missing.php:40 admin_trees_sanity.php:74
+#: admin_trees_missing.php:40 admin_trees_sanity.php:80
 #: themes/_administration/header.php:185
 msgid "Missing data"
 msgstr "Missing data"
@@ -4143,45 +4143,54 @@ msgstr "Birth after baptism or christening"
 msgid "Birth after death or burial"
 msgstr "Birth after death or burial"
 
-#: admin_trees_sanity.php:80
+#: admin_trees_sanity.php:77
+msgid "Burial before death"
+msgstr "Burial before death"
+
+#: admin_trees_sanity.php:86
 msgid "No gender recorded"
 msgstr "No gender recorded"
 
-#: admin_trees_sanity.php:83
+#: admin_trees_sanity.php:89
 msgid "Duplicated data"
 msgstr "Duplicated data"
 
-#: admin_trees_sanity.php:129
+#: admin_trees_sanity.php:135
 #, php-format
 msgid "%s born after baptism or christening"
 msgstr "%s born after baptism or christening"
 
-#: admin_trees_sanity.php:137
+#: admin_trees_sanity.php:143
 #, php-format
 msgid "%s born after death or burial"
 msgstr "%s born after death or burial"
 
-#: admin_trees_sanity.php:145
+#: admin_trees_sanity.php:151
+#, php-format
+msgid "%s buried before death"
+msgstr "%s buried before death"
+
+#: admin_trees_sanity.php:159
 #, php-format
 msgid "%s with no gender recorded"
 msgstr "%s with no gender recorded"
 
-#: admin_trees_sanity.php:153
+#: admin_trees_sanity.php:167
 #, php-format
 msgid "%s with duplicated death record"
 msgstr "%s with duplicated death record"
 
-#: admin_trees_sanity.php:161
+#: admin_trees_sanity.php:175
 #, php-format
 msgid "%s with duplicated birth record"
 msgstr "%s with duplicated birth record"
 
-#: admin_trees_sanity.php:169
+#: admin_trees_sanity.php:183
 #, php-format
 msgid "%s with duplicated gender record"
 msgstr "%s with duplicated gender record"
 
-#: admin_trees_sanity.php:177
+#: admin_trees_sanity.php:191
 #, php-format
 msgid "%s with identical name records"
 msgstr "%s with identical name records"

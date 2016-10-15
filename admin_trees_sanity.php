@@ -70,6 +70,12 @@ $controller
 					>
 					<?php echo WT_I18N::translate('Birth after death or burial'); ?>
 				</li>
+				<li class="facts_value" name="buri" id="buri">
+					<input type="checkbox" name="buri" value="buri"
+						<?php if (WT_Filter::post('buri')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Burial before death'); ?>
+				</li>
 			</ul>
 			<h4><?php echo WT_I18N::translate('Missing data'); ?></h4>
 			<ul>
@@ -135,6 +141,14 @@ $controller
 				echo '
 					<div class="result">
 						<h5>' . WT_I18N::translate('%s born after death or burial', $data['count']) . '</h5>
+						<div>' . $data['html'] . '</div>
+					</div>';
+			}
+			if (WT_Filter::post('buri')) {
+				$data = death_comparisons(array('BURI'));
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s buried before death', $data['count']) . '</h5>
 						<div>' . $data['html'] . '</div>
 					</div>';
 			}
@@ -206,6 +220,36 @@ function birth_comparisons($tag_array) {
 							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></div>
 							<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
 							<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
+						</p>';
+					$count ++;
+				}
+			}
+		}
+	}
+	return array('html' => $html, 'count' => $count);
+}
+
+function death_comparisons($tag_array) {
+	$html = '';
+	$count = 0;
+	$tag_count = count($tag_array);
+	for ($i = 0; $i < $tag_count; $i ++) {
+		$rows = WT_DB::prepare(
+			"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` LIKE CONCAT('%1 ', ?, '%') AND `i_gedcom` NOT LIKE CONCAT('%1 ', ?, ' Y%')"
+		)->execute(array(WT_GED_ID, $tag_array[$i], $tag_array[$i]))->fetchAll();
+		foreach ($rows as $row) {
+			$person			= WT_Person::getInstance($row->xref);
+			$death_date 	= $person->getDeathDate();
+			$event			= $person->getFactByType($tag_array[$i]);
+			if ($event) {
+				$event_date = $event->getDate();
+				$age_diff	= WT_Date::Compare($event_date, $death_date);
+				if ($event_date->MinJD() && $death_date->MinJD() && ($age_diff < 0)) {
+					$html .= '
+						<p>
+							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></div>
+							<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
+							<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel('DEAT') . '</span>' . $death_date->Display() . '</div>
 						</p>';
 					$count ++;
 				}
