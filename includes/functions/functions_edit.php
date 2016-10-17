@@ -1323,7 +1323,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	if ($fact === 'DATA' || $fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
 		echo ' style="display:none;"';
 	}
-	if ($fact == "SOUR" || ($level > 2 && ($fact == "TEXT" || $fact == "PAGE" || $fact == "OBJE" || $fact == "QUAY" || $fact == "DATE"))) {
+	if ($fact == "SOUR" || ($level > 1 && ($fact == "TEXT" || $fact == "PAGE" || $fact == "OBJE" || $fact == "QUAY" || $fact == "DATE" || $fact == "NOTE"))) {
 		echo ' class="sour_facts"';
 	}
 	echo ' >';
