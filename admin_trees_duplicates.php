@@ -203,9 +203,10 @@ echo '<div id="admin_dup">
 				}
 				echo '>
 			</div>
-			<div id="view">
-				<input type="submit" name="action" value="',WT_I18N::translate('View'),'">
-			</div>
+			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-eye"></i>' ,
+				WT_I18N::translate('show'), '
+			</button>
 		</div>
 	</form>';
 	// START OUTPUT
@@ -223,7 +224,9 @@ echo '<div id="admin_dup">
 								<th colspan="2">',WT_I18N::translate('Birth'),'</th>
 								<th colspan="2">',WT_I18N::translate('Death'),'</th>
 								<th rowspan="2">
-									<div class="col6"><input type="button" value="',WT_I18N::translate('Merge selected'),'" onclick="return checkbox_test();"></div>
+									<div class="col6">
+										<input type="button" value="',WT_I18N::translate('Merge selected'),'" onclick="return checkbox_test();">
+									</div>
 								</th>
 							</tr>
 							<tr>

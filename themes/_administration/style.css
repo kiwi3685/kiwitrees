@@ -8,7 +8,7 @@
  * Copyright (C) 2012 webtrees development team
  *
  * Derived from PhpGedView
- * Copyright (c) 2009-2010 Greg Roach
+ * Copyright (c) 2002-2010 PGV Development Team
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ input {padding:5px;}
 input[type="submit"], input[type="reset"], input[type="button"] {padding: 5px 30px; margin: 0 20px;}
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:top;}
-select {height:25px;}
+select {height:30px;}
 img {border:none; vertical-align:middle;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 table {border-collapse:collapse;}
@@ -1280,7 +1280,7 @@ table#story_table {width: 99%;}
 #admin_dup #duplicates_table a:active {color:#555;}
 #admin_dup .exact {display:inline;padding:1px;cursor:default;width:100px;}
 #admin_dup input[type="button"] {margin:0;padding:0;}
-#admin_dup .exact input[type="text"] {margin:0;padding:1px 0;}
+#admin_dup .exact input[type="text"] {margin:0;padding:5px 2;}
 
 /* Styling for simpl_pages module */
 #simpl_pages .label {
