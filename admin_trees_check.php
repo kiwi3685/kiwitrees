@@ -59,8 +59,9 @@ $controller
 		 <p class="ui-state-highlight"><?php echo WT_I18N::translate('This may cause a problem for other applications.'); ?></p>
 		 <p class="warning-bad-data"><?php echo WT_I18N::translate('This may be a mistake in your data.'); ?></p>
 	 </fieldset>
-
 	<?php
+
+	$errors = false;
 
 	if (WT_Filter::get('go')) {
 		// We need to work with raw GEDCOM data, as we are looking for errors
@@ -133,8 +134,6 @@ $controller
 			'DESI'          => 'SUBM',
 			'_WT_OBJE_SORT' => 'OBJE',
 		);
-
-		$errors = false;
 
 		$RECORD_LINKS = array(
 			'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'SUBM', 'ASSO', '_ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT', '_LOC'),
