@@ -9,7 +9,8 @@
 // We wrap the Zend_Translate gettext library, to allow us to add extra
 // functionality, such as mixed RTL and LTR text.
 //
-// Copyright (C) 2014 Greg Roach
+// Derived from webtrees
+// Copyright (C) 2014 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

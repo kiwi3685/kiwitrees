@@ -5,7 +5,7 @@
 // Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView and webtrees
-// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team
 // Copyright (C) 2010 to 2013  webtrees Development Team.  All rights reserved.
 //
 // This is free software;you can redistribute it and/or modify

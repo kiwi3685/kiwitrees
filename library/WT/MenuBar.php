@@ -8,9 +8,7 @@
 // Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
-//
-// Modifications Copyright (c) 2010 Greg Roach
+// Copyright (C) 2002 to 2010 PGV Development Team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

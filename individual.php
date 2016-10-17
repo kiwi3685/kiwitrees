@@ -10,7 +10,7 @@
 // Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team
+// Copyright (C) 2002 to 2010 PGV Development Team
 //
 // Sidebar controls courtesy of http://devheart.org/articles/jquery-collapsible-sidebar-layout/
 //

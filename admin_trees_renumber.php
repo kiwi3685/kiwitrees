@@ -2,7 +2,7 @@
 // Renumber the XREFs in a tree, so they are unique across the site.
 //
 // Derived from webtrees
-// Copyright (C) 2014 Greg Roach
+// Copyright (C) 2014 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

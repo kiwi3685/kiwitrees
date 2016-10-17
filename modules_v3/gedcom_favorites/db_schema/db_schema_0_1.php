@@ -18,7 +18,7 @@
 // Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
-// Copyright (C) 2009 Greg Roach
+// Copyright (C) 2009 PhpGedView Development eam
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

@@ -8,7 +8,7 @@
 // Copyright (C) 2012 webtrees development team
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team
+// Copyright (C) 2002 to 2010 PGV Development Team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ $controller
 	->requireManagerLogin()
 	->requireEditorLogin() /* Editing may be disabled, even for admins */
 	->setPageTitle(WT_I18N::translate('Upload media files'));
-	
+
 $action = safe_POST('action');
 
 if ($action == "upload") {

@@ -7,7 +7,7 @@
 // Copyright (C) 2014 kiwitrees.net
 //
 // Derived from PhpGedView and webtrees
-// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team
 // Copyright (C) 2010 to 2013  webtrees Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
