@@ -2316,7 +2316,7 @@ function create_add_form($fact) {
 		if ($fact == "SOUR") {
 			add_simple_tag("2 PAGE");
 			add_simple_tag("3 TEXT");
-			add_simple_tag("2 OBJ");
+			add_simple_tag("2 OBJE");
 			if ($FULL_SOURCES) {
 				add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
 				add_simple_tag("2 QUAY");
