@@ -594,7 +594,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 						<i class="fa fa-floppy-o"></i>'.
 						WT_I18N::translate('save') . '
 					</button>
-					<button class="btn btn-primary reset" type="reset"">
+					<button class="btn btn-primary reset" type="reset">
 						<i class="fa fa-refresh"></i>'.
 						WT_I18N::translate('reset') . '
 					</button>
