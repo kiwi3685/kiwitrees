@@ -1183,7 +1183,7 @@ table#story_table {width: 99%;}
 .icon-rdarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-forward */
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
 .fa-dropbox				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #007ee5;} /* fa-dropbox */
-.fa-floppy-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none;} /* fa-floppy-o */
+.fa-floppy-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; background: none;} /* fa-floppy-o */
 .fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000;} /* fa-times */
 .fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */
 .fa-pencil				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.0em; background: none; cursor:pointer;} /* fa-pencil */

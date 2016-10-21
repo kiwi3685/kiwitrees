@@ -124,34 +124,69 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 			99	=> WT_I18N::translate('unlimited'),
 		);
 
+		// defaults
+		$chart1		 = 1;
+		$chart2		 = 0;
+		$chart3		 = 1;
+		$chart4		 = 1;
+		$chart5		 = 0;
+		$chart6		 = 1;
+		$chart7		 = 0;
+		$rec_options = 99;
+		$rel1		 = '7';
+		$rel2		 = '1';
+		$rel3		 = '1';
+		$rel1_ca	 = '1';
+		$rel2_ca	 = '1';
+		$rel3_ca	 = '1';
+
+		if (WT_Filter::postBool('reset')) {
+			set_gedcom_setting(WT_GED_ID, 'CHART_1',							1);
+			set_gedcom_setting(WT_GED_ID, 'CHART_2',							0);
+			set_gedcom_setting(WT_GED_ID, 'CHART_3',							1);
+			set_gedcom_setting(WT_GED_ID, 'CHART_4',							1);
+			set_gedcom_setting(WT_GED_ID, 'CHART_5',							0);
+			set_gedcom_setting(WT_GED_ID, 'CHART_6',							1);
+			set_gedcom_setting(WT_GED_ID, 'CHART_7',							0);
+			set_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION', 			99);
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI',			'7');
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS',					'1');
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE',					'1');
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA',	'1');
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA',			'1');
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA',			'1');
+
+			AddToLog($this->getTitle().' set to default values', 'config');
+		}
+
 		if (WT_Filter::postBool('save')) {
-			set_gedcom_setting(WT_GED_ID, 'CHART_1',							WT_Filter::postBool('NEW_CHART_1', '1'));
-			set_gedcom_setting(WT_GED_ID, 'CHART_2',							WT_Filter::postBool('NEW_CHART_2', '0'));
-			set_gedcom_setting(WT_GED_ID, 'CHART_3',							WT_Filter::postBool('NEW_CHART_3', '1'));
-			set_gedcom_setting(WT_GED_ID, 'CHART_4',							WT_Filter::postBool('NEW_CHART_4', '1'));
-			set_gedcom_setting(WT_GED_ID, 'CHART_5',							WT_Filter::postBool('NEW_CHART_5', '1'));
-			set_gedcom_setting(WT_GED_ID, 'CHART_6',							WT_Filter::postBool('NEW_CHART_6', '0'));
-			set_gedcom_setting(WT_GED_ID, 'CHART_7',							WT_Filter::postBool('NEW_CHART_7', '0'));
-			set_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION', 			WT_Filter::post('NEW_RELATIONSHIP_RECURSION', WT_REGEX_INTEGER, '99'));
-			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI',			WT_Filter::post('NEW_TAB_REL_TO_DEFAULT_INDI', WT_REGEX_INTEGER, '7'));
-			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS',					WT_Filter::post('NEW_TAB_REL_OF_PARENTS', WT_REGEX_INTEGER,' 1'));
-			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE',					WT_Filter::post('NEW_TAB_REL_TO_SPOUSE', WT_REGEX_INTEGER, '1'));
-			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA',	WT_Filter::post('NEW_TAB_REL_TO_DEFAULT_INDI_SHOW_CA', WT_REGEX_INTEGER, '1'));
-			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA',			WT_Filter::post('NEW_TAB_REL_OF_PARENTS_SHOW_CA', WT_REGEX_INTEGER, '1'));
-			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA',			WT_Filter::post('NEW_TAB_REL_TO_SPOUSE_SHOW_CA', WT_REGEX_INTEGER, '1'));
+			set_gedcom_setting(WT_GED_ID, 'CHART_1',							WT_Filter::postBool('NEW_CHART_1', $chart1));
+			set_gedcom_setting(WT_GED_ID, 'CHART_2',							WT_Filter::postBool('NEW_CHART_2', $chart2));
+			set_gedcom_setting(WT_GED_ID, 'CHART_3',							WT_Filter::postBool('NEW_CHART_3', $chart3));
+			set_gedcom_setting(WT_GED_ID, 'CHART_4',							WT_Filter::postBool('NEW_CHART_4', $chart4));
+			set_gedcom_setting(WT_GED_ID, 'CHART_5',							WT_Filter::postBool('NEW_CHART_5', $chart5));
+			set_gedcom_setting(WT_GED_ID, 'CHART_6',							WT_Filter::postBool('NEW_CHART_6', $chart6));
+			set_gedcom_setting(WT_GED_ID, 'CHART_7',							WT_Filter::postBool('NEW_CHART_7', $chart7));
+			set_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION', 			WT_Filter::post('NEW_RELATIONSHIP_RECURSION', WT_REGEX_INTEGER, $rec_options));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI',			WT_Filter::post('NEW_TAB_REL_TO_DEFAULT_INDI', WT_REGEX_INTEGER, $rel1));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS',					WT_Filter::post('NEW_TAB_REL_OF_PARENTS', WT_REGEX_INTEGER, $rel2));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE',					WT_Filter::post('NEW_TAB_REL_TO_SPOUSE', WT_REGEX_INTEGER, $rel3));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA',	WT_Filter::post('NEW_TAB_REL_TO_DEFAULT_INDI_SHOW_CA', WT_REGEX_INTEGER, $rel1_ca));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS_SHOW_CA',			WT_Filter::post('NEW_TAB_REL_OF_PARENTS_SHOW_CA', WT_REGEX_INTEGER, $rel2_ca));
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE_SHOW_CA',			WT_Filter::post('NEW_TAB_REL_TO_SPOUSE_SHOW_CA', WT_REGEX_INTEGER, $rel3_ca));
 
 			AddToLog($this->getTitle().' set to new values', 'config');
 		}
 
-		$chart1		 = get_gedcom_setting(WT_GED_ID, 'CHART_1'); //perhaps too technical/ too hard to understand for users
+		$chart1		 = get_gedcom_setting(WT_GED_ID, 'CHART_1');
 		$chart2		 = get_gedcom_setting(WT_GED_ID, 'CHART_2');
 		$chart3		 = get_gedcom_setting(WT_GED_ID, 'CHART_3');
 		$chart4		 = get_gedcom_setting(WT_GED_ID, 'CHART_4');
 		$chart5		 = get_gedcom_setting(WT_GED_ID, 'CHART_5');
-		$chart6		 = get_gedcom_setting(WT_GED_ID, 'CHART_6'); //not a fan of this ...
-		$chart7		 = get_gedcom_setting(WT_GED_ID, 'CHART_7'); //just a combination of two other options, not really required in the chart.
+		$chart6		 = get_gedcom_setting(WT_GED_ID, 'CHART_6');
+		$chart7		 = get_gedcom_setting(WT_GED_ID, 'CHART_7');
 		$rec_options = get_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION');
-		$rel1		 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI'); //fast and reasonable default
+		$rel1		 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI');
 		$rel2		 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS');
 		$rel3		 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE');
 		$rel1_ca	 = get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA');
@@ -163,7 +198,13 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 		<div id="relations_config">
 			<a class="current faq_link" href="http://kiwitrees.net/faqs/general-topics/displaying-relationships/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo /* I18N: Configuration page title */ WT_I18N::translate('Relationship calculation options'); ?></h2>
-			<form method="post" name="album_form" action="<?php echo $this->getConfigLink(); ?>">
+			<form method="post" action="#" name="tree">
+				<div class="config_options">
+					<label><?php echo WT_I18N::translate('Family tree'); ?></label>
+					<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, ' onchange="tree.submit();"'); ?>
+				</div>
+			</form>
+			<form method="post" name="rela_form" action="<?php echo $this->getConfigLink(); ?>">
 				<input type="hidden" name="save" value="1">
 				<div id="config-chart">
 					<h3><?php echo /* I18N: Configuration option */ WT_I18N::translate('Chart settings'); ?></h3>
@@ -376,6 +417,13 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 				<button class="btn btn-primary save" type="submit">
 					<i class="fa fa-floppy-o"></i>
 					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+			</form>
+				<form method="post" name="rela_form" action="<?php echo $this->getConfigLink(); ?>">
+				<input type="hidden" name="reset" value="1">
+				<button class="btn btn-primary reset" type="submit">
+					<i class="fa fa-refresh"></i>
+					<?php echo WT_I18N::translate('reset'); ?>
 				</button>
 			</form>
 		</div>

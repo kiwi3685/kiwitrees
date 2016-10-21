@@ -61,7 +61,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<a href="<?php echo $family->getHtmlUrl(); ?>"> - <?php echo WT_USER_CAN_EDIT ? WT_I18N::translate('Edit family') : WT_I18N::translate('View family'); ?></a>
 				</td>
 				<td>
-					<div class="fam_rela"><?php echo printFamilyRelationship($type, $people); ?></div>
+					<?php if (array_key_exists('chart_relationship', WT_Module::getActiveModules())) {
+						if (($type == 'FAMC' && get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS') > 0) || ($type == 'FAMS' && get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_SPOUSE') > 0)) { ?>
+							<div class="fam_rela"><?php echo printFamilyRelationship($type, $people); ?></div>
+						<?php }
+					} ?>			
 				</td>
 			</tr>
 		</table>
