@@ -203,6 +203,7 @@ $controller
 											</td>
 											<td>
 												<?php if ($match){
+													$text = '';
 													foreach (getSourceStructure($match[0])['TEXT'] as $text_list) {
 														$text = expand_urls($text_list);
 													}
