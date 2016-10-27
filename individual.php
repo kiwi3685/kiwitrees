@@ -226,7 +226,11 @@ if ($controller->record->canDisplayDetails()) {
 		if ($fact=="NAME") $controller->print_name_record($value);
 	}
 	//Display relationship to default individual
-	if (array_key_exists('chart_relationship', WT_Module::getActiveModules()) && get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0) {
+	if (
+		array_key_exists('chart_relationship', WT_Module::getActiveModules()) &&
+		WT_USER_ID &&
+		get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI') > 0
+	) {
 		echo '<div id="indi_relationship" class="fam_rela">', printIndiRelationship(), '</div>';
 	}
 

@@ -133,7 +133,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 		$chart6		 = 1;
 		$chart7		 = 0;
 		$rec_options = 99;
-		$rel1		 = '7';
+		$rel1		 = '1';
 		$rel2		 = '1';
 		$rel3		 = '1';
 		$rel1_ca	 = '1';
@@ -149,7 +149,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 			set_gedcom_setting(WT_GED_ID, 'CHART_6',							1);
 			set_gedcom_setting(WT_GED_ID, 'CHART_7',							0);
 			set_gedcom_setting(WT_GED_ID, 'RELATIONSHIP_RECURSION', 			99);
-			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI',			'7');
+			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI',			'1');
 			set_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS',					'1');
 			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE',					'1');
 			set_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_DEFAULT_INDI_SHOW_CA',	'1');

@@ -62,7 +62,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td>
 					<?php if (
-						array_key_exists('chart_relationship', WT_Module::getActiveModules()) && (
+						array_key_exists('chart_relationship', WT_Module::getActiveModules()) &&
+							WT_USER_ID && (
 							($type == 'FAMC' && get_gedcom_setting(WT_GED_ID, 'TAB_REL_OF_PARENTS') > 0) ||
 							($type == 'FAMS' && get_gedcom_setting(WT_GED_ID, 'TAB_REL_TO_SPOUSE') > 0)
 						)
