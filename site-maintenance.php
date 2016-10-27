@@ -59,7 +59,7 @@ header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 			a:hover {text-decoration: none;}
 			.content {border:1px solid gray; padding:15px; border-radius:15px; text-align: center;}
 			p {text-align: center;}
-			p a {color: #ccc; font-weight:normal}
+			p a {font-weight:normal}
 		</style>
 	</head>
 	<body>
