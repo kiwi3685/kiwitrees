@@ -133,7 +133,6 @@ case 'replace_import':
 	exit;
 }
 
-$controller->pageHeader();
 
 // Process GET actions
 switch (WT_Filter::get('action')) {
@@ -244,9 +243,7 @@ case 'importform':
 	return;
 }
 
-if (!WT_Tree::GetAll()) {
-	WT_FlashMessages::addMessage(WT_I18N::translate('You need to create a family tree.'));
-}
+$controller->pageHeader();
 
 echo '
 	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" title="', WT_I18N::translate('View FAQ for this page.'), '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
