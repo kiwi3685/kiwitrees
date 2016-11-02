@@ -278,11 +278,17 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 	if (!empty($LINK_CANONICAL)) {
 		$header_links .= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
 	}
-	if (!empty($META_DESCRIPTION) && $WT_TREE->tree_title_html) {
+	if (!empty($META_DESCRIPTION)) {
 		global $controller, $ctype;
 		switch ($ctype) {
 			case '':
-				if ($view != 'simple') {$header_links .= '<meta name="description" content="' . htmlspecialchars(strip_tags($controller->getPageTitle() . ' - ' . $WT_TREE->tree_title_html)) . '">';}
+				if ($view != 'simple') {
+					if ($WT_TREE) {
+						$header_links .= '<meta name="description" content="' . htmlspecialchars(strip_tags($controller->getPageTitle() . ' - ' . $WT_TREE->tree_title_html)) . '">';
+					} else {
+						$header_links .= '<meta name="description" content="' . htmlspecialchars(strip_tags($controller->getPageTitle())) . '">';
+					}
+				}
 				break;
 			case 'gedcom':
 			default:
@@ -290,7 +296,9 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 				break;
 		}
 	}
-	$header_links .= '<meta name="robots" content="'. $META_ROBOTS. '">';
+	if (!empty($META_ROBOTS)) {
+		$header_links .= '<meta name="robots" content="'. $META_ROBOTS. '">';
+	}
 	if (!empty($META_GENERATOR)) {
 		$header_links .= '<meta name="generator" content="'. $META_GENERATOR. '">';
 	}

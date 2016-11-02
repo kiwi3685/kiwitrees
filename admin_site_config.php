@@ -277,7 +277,7 @@ $controller
 						<div class="config_options">
 							<label><?php echo WT_I18N::translate('Server name'); ?></label>
 							<div class="input_group">
-								<input type="text" name="SMTP_HOST" dir="ltr" value="<?php echo WT_Filter::escapeHtml(WT_Site::preference('SMTP_HOST')); ?>" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*" maxlength="255">
+								<input type="text" name="SMTP_HOST" dir="ltr" value="<?php echo WT_Filter::escapeHtml(WT_Site::preference('SMTP_HOST')); ?>" placeholder="smtp.example.com" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*" maxlength="255">
 								<div class="helpcontent">
 									<?php echo /* I18N: Help text for the “Server name” site configuration setting */ WT_I18N::translate('This is the name of the SMTP server. \'localhost\' means that the mail service is running on the same computer as your web server.'); ?>
 								</div>

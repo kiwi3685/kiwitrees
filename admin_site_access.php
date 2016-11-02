@@ -304,7 +304,7 @@ WT_DB::exec(
 		<i class="fa fa-undo"></i>
 		<?php echo WT_I18N::translate('reset'); ?>
 	</button>
-	<hr>
+	<hr class="clearfloat">
 	<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search engines.'); ?></p>
 	<table id="unknown_site_visitors" style="width:100%;">
 		<thead>
