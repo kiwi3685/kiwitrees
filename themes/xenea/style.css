@@ -3070,7 +3070,7 @@ div.widget {
 /* Styles for calendar_utilities module */
 
 #utilities-container {
-	margin:auto;
+	margin:0 auto 30px;
 	width:90%;
 }
 

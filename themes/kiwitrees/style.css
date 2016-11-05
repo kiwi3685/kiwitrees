@@ -6383,8 +6383,8 @@ div.widget {
 /* Styles for calendar_utilities module */
 
 #utilities-container {
-	margin:auto;
-	width:90%;
+	margin: 0 auto 30px;
+	width: 90%;
 }
 
 #utilities-container i {
