@@ -130,7 +130,6 @@ default:
 
 	echo '<div id="login-page">';
 	echo '<div id="login-text">';
-	echo '<p class="center"><strong>' . WT_I18N::translate('Welcome to this genealogy website') . '</strong></p>';
 
 	switch (WT_Site::preference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
