@@ -3445,8 +3445,9 @@ div.dt-buttons a.dt-button {
 }
 
 .DataTables_sort_wrapper {
-	position: relative;
+	cursor: pointer;
 	margin: 0 20px;
+	position: relative;
 }
 
 .DataTables_sort_wrapper span {
@@ -6174,13 +6175,14 @@ div.widget {
 }
 
 #resource-page input[name^="show_"] {
-	vertical-align:
-	top; width: 20px;
+	vertical-align: top;
+	width: auto;
 }
 #resource-page label[for^="show_"] {
 	display: inline-block;
 	font-weight: normal;
-	width: 20px;
+	margin-top: 5px;
+	width: auto;
 }
 
 /* Styles for nocensus resource */
@@ -6243,14 +6245,15 @@ div.widget {
 #resource-page.recent_changes table.changes th:first-child {
  	width: 30px;
 }
-#resource-page.recent_changes .chart_options input[name="pending"] {
-	vertical-align: top;
-	width: 20px;
-}
 #resource-page.recent_changes .chart_options label[for^="pending"] {
 	display: inline-block;
 	font-weight: normal;
-	width: 20px;
+	margin-top: 5px;
+	width: auto;
+}
+#resource-page.recent_changes .chart_options input[name="pending"] {
+	vertical-align: top;
+	width: auto;
 }
 #resource-page.recent_changes td.wrap p {
 	display: inline;

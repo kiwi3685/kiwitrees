@@ -667,7 +667,7 @@ a.showit:hover > span {background:#444444;border-bottom:2px solid #000;border-le
 
 .ui-autocomplete li:nth-child(odd) {background:#eeeeee;}
 
-.ui-autocomplete a.ui-state-focus {color:#ff0000;}
+.ui-autocomplete a.ui-state-focus {color:#ff0000; background: blue;}
 
 .ui-sortable li {list-style-type: none;}
 .ui-sortable .noprint {display:none;}
@@ -1213,7 +1213,7 @@ span.link_text {display:none;}
 .ui-state-default .ui-icon,.ui-state-active .ui-icon {background-image:url(../jquery-ui-custom/images/ui-icons_222222_256x240.png);}
 .us-state-hover a,.ui-state-hover a:hover,.ui-state-default a:link {color:#000;}
 .ui-menu .ui-menu-item a {font-size: 12px;}
-.ui-menu .ui-menu-item a.ui-state-hover,.ui-menu .ui-menu-item a.ui-state-active {color: #ff0000;}
+.ui-menu .ui-menu-item a.ui-state-hover,.ui-menu .ui-menu-item a.ui-state-active {color: #ff0000; background: none;}
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 4px 8px;}
 
 [dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
@@ -2646,13 +2646,14 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 }
 
 #resource-page input[name^="show_"] {
-	vertical-align:
-	top; width: 20px;
+	vertical-align:top;
+	width: auto;
 }
 #resource-page label[for^="show_"] {
 	display: inline-block;
 	font-weight: normal;
-	width: 20px;
+    margin-top: 5px;
+	width: auto;
 }
 
 /* Styles for nocensus resource */
@@ -2713,12 +2714,13 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 }
 #resource-page.recent_changes .chart_options input[name="pending"] {
 	vertical-align: top;
-	width: 20px;
+	width: auto;
 }
 #resource-page.recent_changes .chart_options label[for^="pending"] {
 	display: inline-block;
 	font-weight: normal;
-	width: 20px;
+    margin-top: 5px;
+	width: auto;
 }
 #resource-page.recent_changes td.wrap p {
 	display: inline;
