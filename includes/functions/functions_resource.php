@@ -70,6 +70,12 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		} else {
 			$html .= '&nbsp;';
 		}
+		// include ADDR if recorded
+		if (preg_match('/\n2 ADDR (.+)/', $fact->getGedcomRecord(), $match)) {
+			$html .= WT_Gedcom_Tag::getLabelValue('ADDR', $match[1]);
+		} else {
+			$html .= '&nbsp;';
+		}
 		break;
 	case 'EDUC':
 	case 'GRAD':
@@ -77,6 +83,12 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		// include AGNC if recorded
 		if (preg_match('/\n2 AGNC (.+)/', $fact->getGedcomRecord(), $match)) {
 			$html .= WT_Gedcom_Tag::getLabelValue('AGNC', $match[1]);
+		} else {
+			$html .= '&nbsp;';
+		}
+		// include ADDR if recorded
+		if (preg_match('/\n2 ADDR (.+)/', $fact->getGedcomRecord(), $match)) {
+			$html .= WT_Gedcom_Tag::getLabelValue('ADDR', $match[1]);
 		} else {
 			$html .= '&nbsp;';
 		}
@@ -497,5 +509,42 @@ function add_resource_descendancy($i, $person, $parents = false, $generations = 
 		}
 	}
 	return array ($related_individuals, $i);
+
+}
+
+function marriageDetails($family) {
+	$marr_type = strtoupper($family->getMarriageType());
+	if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
+		$marr_fact = 'MARR_' . $marr_type;
+	} else {
+		$marr_fact = 'MARR';
+	}
+	$place	= $family->getMarriagePlace();
+	$date	= $family->getMarriageDate();
+	if ($date && $date->isOK() || $place) {
+		if ($date) {
+			$details=$date->Display(false);
+		}
+		if ($place) {
+			if ($details) {
+				$details .= ' — ';
+			}
+			$tmp=new WT_Place($place, WT_GED_ID);
+			$details .= $tmp->getShortName();
+		}
+		echo WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
+	} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
+		$husb = $family->getHusband();
+		$wife = $family->getWife();
+		if (empty($wife) && !empty($husb)) {
+			echo WT_Gedcom_Tag::getLabel('_NMR', $husb);
+		} elseif (empty($husb) && !empty($wife)) {
+			echo WT_Gedcom_Tag::getLabel('_NMR', $wife);
+		} else {
+			echo WT_Gedcom_Tag::getLabel('_NMR');
+		}
+	} else {
+		echo WT_Gedcom_Tag::getLabelValue($marr_fact, WT_I18N::translate('yes'));
+	}
 
 }

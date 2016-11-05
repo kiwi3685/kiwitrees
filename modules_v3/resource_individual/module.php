@@ -98,7 +98,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		$ged			= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
 		$showsources	= WT_Filter::post('showsources') ? WT_Filter::post('showsources') : 'checked';
 		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 'checked';
-		$exclude_tags	= array('FAMC', 'FAMS', '_WT_OBJE_SORT');
+		$exclude_tags	= array('FAMC', 'FAMS', '_WT_OBJE_SORT', 'HUSB', 'WIFE', 'CHIL');
 
 		?>
 		<div id="resource-page" class="individual_report">
@@ -144,6 +144,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 				<?php if ($go == 1) { ?>
 					<?php
 					$person = WT_Person::getInstance($rootid);
+					$person->add_family_facts(false);
 					$indifacts = $person->getIndiFacts();
 					sort_facts($indifacts);
 					if ($person && $person->canDisplayDetails()) { ; ?>
@@ -235,7 +236,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 								<?php
 								$husband = $family->getHusband();
 								$wife = $family->getWife();
-								if (!empty($husband)) {  ?>
+								if (!empty($husband)) { ?>
 									<p>
 										<span class="label">
 											<?php echo WT_I18N::translate('Father'); ?>
@@ -246,7 +247,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 										</span>
 									</p>
 								<?php }
-								if (!empty($wife)) {  ?>
+								if (!empty($wife)) { ?>
 									<p>
 										<span class="label">
 											<?php echo WT_I18N::translate('Mother'); ?>
@@ -256,7 +257,11 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 											<?php echo $this->personDetails($wife); ?>
 										</span>
 									</p>
-								<?php } ?>
+								<?php }
+								$marriage_details = marriageDetails($family);
+								if (!empty($marriage_details)) {
+									echo $marriage_details . '&nbsp;';
+								} ?>
 							</div>
 							<div id="siblings">
 								<?php
@@ -292,6 +297,11 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 										<?php echo $this->personDetails($spouse); ?>
 									</span>
 								</p>
+								<?php
+								$marriage_details = marriageDetails($family);
+								if (!empty($marriage_details)) {
+									echo $marriage_details . '&nbsp;';
+								} ?>
 							</div>
 							<div id="spouse_children">
 								<?php

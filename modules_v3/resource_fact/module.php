@@ -285,7 +285,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 									<?php $indifacts = $person->getIndiFacts();
 									foreach ($indifacts as $item) {
 										if ($item->getTag() == $fact) {
-											$filtered_facts = filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $type);
+											$filtered_facts = filter_facts($item, $person, $year_from, $year_to, $place, $detail, $type);
 											if ($filtered_facts) {
 												$factrec = $item->getGedcomRecord();
 												if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
