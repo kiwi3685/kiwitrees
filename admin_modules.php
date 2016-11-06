@@ -79,6 +79,8 @@ case 'delete_module':
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DT_HTML5)
+	->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
 	->addInlineJavascript('
 	  function reindexMods(id) {
 			jQuery("#"+id+" input").each(
@@ -90,15 +92,19 @@ $controller
 		var oTable = jQuery("#installed_table").dataTable( {
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			'.WT_I18N::datatablesI18N().',
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"aaSorting": [[ 1, "asc" ]],
-			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers",
-			"bStateSave": true,
-			"iCookieDuration": 180,
-			"aoColumns" : [
-				{ bSortable: false, sClass: "center" },
+			buttons: [{extend: "csv", exportOptions: {columns: [0,6,9,12,15,17] }}],
+			jQueryUI: true,
+			autoWidth: false,
+			processing: true,
+			retrieve: true,
+			sorting: [[ 2, "asc" ]],
+			displayLength: 20,
+			pagingType: "full_numbers",
+			stateSave: true,
+			stateDuration: -1,
+			columns : [
+				{ dataSort: 1, sClass: "center" },
+				{ type: "unicode", visible: false },
 				{ sType: "html"},
 				null,
 				{ sClass: "center" },
@@ -123,18 +129,19 @@ $controller
 			<table id="installed_table" border="0" cellpadding="0" cellspacing="1">
 				<thead>
 					<tr>
-					<th><?php echo WT_I18N::translate('Enabled'); ?></th>
-					<th style="width: 120px;"><?php echo WT_I18N::translate('Module'); ?></th>
-					<th style="max-width: 460px;"><?php echo WT_I18N::translate('Description'); ?></th>
-					<th><?php echo WT_I18N::translate('Block'); ?></th>
-					<th><?php echo WT_I18N::translate('Chart'); ?></th>
-					<th><?php echo WT_I18N::translate('List'); ?></th>
-					<th><?php echo WT_I18N::translate('Menu'); ?></th>
-					<th><?php echo WT_I18N::translate('Report'); ?></th>
-					<th><?php echo WT_I18N::translate('Resource'); ?></th>
-					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
-					<th><?php echo WT_I18N::translate('Tab'); ?></th>
-					<th><?php echo WT_I18N::translate('Widget'); ?></th>
+						<th><?php echo WT_I18N::translate('Enabled'); ?></th>
+						<th>STATUS</th>
+						<th style="width: 120px;"><?php echo WT_I18N::translate('Module'); ?></th>
+						<th style="width: 400px;"><?php echo WT_I18N::translate('Description'); ?></th>
+						<th><?php echo WT_I18N::translate('Block'); ?></th>
+						<th><?php echo WT_I18N::translate('Chart'); ?></th>
+						<th><?php echo WT_I18N::translate('List'); ?></th>
+						<th><?php echo WT_I18N::translate('Menu'); ?></th>
+						<th><?php echo WT_I18N::translate('Report'); ?></th>
+						<th><?php echo WT_I18N::translate('Resource'); ?></th>
+						<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
+						<th><?php echo WT_I18N::translate('Tab'); ?></th>
+						<th><?php echo WT_I18N::translate('Widget'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -145,6 +152,7 @@ $controller
 							echo
 								'<tr>
 									<td>', two_state_checkbox('status-' . $module_name, $status == 'enabled'), '</td>
+									<td>', $status, '</td>
 									<td>';
 										if ( $module instanceof WT_Module_Config ) {
 											echo '<a href="', $module->getConfigLink(), '">';

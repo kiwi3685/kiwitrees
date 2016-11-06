@@ -65,7 +65,15 @@ if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 					?>
 					<tr>
 						<td>
-							<?php echo $module->getTitle(); ?>
+							<?php
+							if ( $module instanceof WT_Module_Config ) {
+								echo '<a href="', $module->getConfigLink(), '">';
+							}
+							echo $module->getTitle();
+							if ( $module instanceof WT_Module_Config && array_key_exists($module->getName(), WT_Module::getActiveModules() ) ) {
+								echo ' <i class="fa fa-cogs"></i></a>';
+							}
+							?>
 						</td>
 						<td>
 							<?php echo $module->getDescription(); ?>
