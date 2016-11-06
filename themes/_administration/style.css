@@ -118,6 +118,9 @@ button {
 	padding: 4px 1px;
 	margin: 3px 5px;
 }
+.DataTables_sort_icon {
+	margin-top: 1px;
+}
 div.dt-buttons {
 	float: right;
 	margin: 2px;
@@ -870,7 +873,8 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 /* MANAGE MODULES */
 #module-admin-page #installed_table {width:100%;}
 #module-admin-page #installed_table th {min-width:60px;}
-#module-admin-page #installed_table a {color: #000; white-space: nowrap;}
+#module-admin-page #installed_table a,
+.modules_table a {color: #3383bb; white-space: nowrap;}
 #module-admin-page .ui-widget-content a.error {color: #ff0000;}
 #module-admin-page i.fa-cogs {font-size:1em;}
 
