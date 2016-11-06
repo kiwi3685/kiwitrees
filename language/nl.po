@@ -1,14 +1,15 @@
 # Translators:
 # Translators:
 # Translators:
+# Translators:
 # Nigel Osborne <kiwi3685@me.com>, 2016
 # wim meijberg <jwmeijberg@home.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-10-15 14:35+1300\n"
-"PO-Revision-Date: 2016-10-30 14:58+1300\n"
+"POT-Creation-Date: 2016-10-30 17:12+1300\n"
+"PO-Revision-Date: 2016-11-07 10:27+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Dutch (http://www.transifex.com/kiwitrees/kiwitrees/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -190,11 +191,11 @@ msgid "Do not update the “last change” record"
 msgstr "Niet  het \"laatste wijziging\" record vernieuwen"
 
 #. I18N: button label
-#: addmedia.php:810 admin_module_blocks.php:101 admin_module_charts.php:101 admin_module_lists.php:101 admin_module_menus.php:127 admin_module_reports.php:101 admin_module_resources.php:101 admin_module_sidebar.php:127 admin_module_tabs.php:127 admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:431 admin_site_merge.php:163 admin_trees_config.php:1419 admin_trees_manage.php:347 block_edit.php:61 edit_interface.php:169 edit_interface.php:270 edit_interface.php:346 edit_interface.php:505 edit_interface.php:576 edit_interface.php:828 edit_interface.php:935 edit_interface.php:1085 edit_interface.php:1161 edit_interface.php:1288 edit_interface.php:2179 edit_interface.php:2319 edit_interface.php:2560 editnews.php:73 edituser.php:188 find.php:505 includes/functions/functions_edit.php:37 includes/functions/functions_edit.php:60 includes/functions/functions_edit.php:81 includes/functions/functions_edit.php:135 includes/functions/functions_edit.php:1002 includes/media_reorder.php:164 index_edit.php:340 modules_v3/GEDFact_assistant/_CENS/census_4_text.php:52 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:620 modules_v3/album/module.php:339 modules_v3/calendar_utilities/module.php:160 modules_v3/chart_relationship/module.php:378 modules_v3/custom_js/module.php:89 modules_v3/extra_menus/module.php:205 modules_v3/extra_menus/module.php:337 modules_v3/fancy_imagebar/module.php:322 modules_v3/fancy_treeview/module.php:595 modules_v3/faq/module.php:229 modules_v3/faq/module.php:437 modules_v3/gallery/module.php:363 modules_v3/gallery/module.php:522 modules_v3/googlemap/admin_places_edit.php:357 modules_v3/googlemap/module.php:458 modules_v3/googlemap/module.php:681 modules_v3/googlemap/placehierarchy.php:236 modules_v3/simpl_pages/module.php:455 modules_v3/simpl_research/module.php:151 modules_v3/sitemap/module.php:262 modules_v3/stories/module.php:407 modules_v3/stories/module.php:535
+#: addmedia.php:810 admin_module_blocks.php:101 admin_module_charts.php:101 admin_module_lists.php:101 admin_module_menus.php:127 admin_module_reports.php:101 admin_module_resources.php:101 admin_module_sidebar.php:127 admin_module_tabs.php:127 admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:431 admin_site_merge.php:163 admin_trees_config.php:1419 admin_trees_manage.php:347 block_edit.php:61 edit_interface.php:169 edit_interface.php:270 edit_interface.php:346 edit_interface.php:505 edit_interface.php:576 edit_interface.php:828 edit_interface.php:935 edit_interface.php:1085 edit_interface.php:1161 edit_interface.php:1288 edit_interface.php:2179 edit_interface.php:2319 edit_interface.php:2560 editnews.php:73 edituser.php:188 find.php:505 includes/functions/functions_edit.php:37 includes/functions/functions_edit.php:60 includes/functions/functions_edit.php:81 includes/functions/functions_edit.php:135 includes/functions/functions_edit.php:1002 includes/media_reorder.php:164 index_edit.php:340 modules_v3/GEDFact_assistant/_CENS/census_4_text.php:52 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:620 modules_v3/album/module.php:339 modules_v3/calendar_utilities/module.php:160 modules_v3/chart_relationship/module.php:419 modules_v3/custom_js/module.php:89 modules_v3/extra_menus/module.php:205 modules_v3/extra_menus/module.php:337 modules_v3/fancy_imagebar/module.php:322 modules_v3/fancy_treeview/module.php:595 modules_v3/faq/module.php:229 modules_v3/faq/module.php:437 modules_v3/gallery/module.php:363 modules_v3/gallery/module.php:522 modules_v3/googlemap/admin_places_edit.php:357 modules_v3/googlemap/module.php:458 modules_v3/googlemap/module.php:681 modules_v3/googlemap/placehierarchy.php:236 modules_v3/simpl_pages/module.php:455 modules_v3/simpl_research/module.php:151 modules_v3/sitemap/module.php:262 modules_v3/stories/module.php:407 modules_v3/stories/module.php:535
 msgid "save"
 msgstr "opslaan"
 
-#: admin.php:32 library/WT/MenuBar.php:82 modules_v3/widget_quicklinks/module.php:76 themes/_administration/header.php:90
+#: admin.php:32 library/WT/MenuBar.php:80 modules_v3/widget_quicklinks/module.php:76 themes/_administration/header.php:90
 msgid "Administration"
 msgstr "Beheer"
 
@@ -318,7 +319,7 @@ msgstr "Gedeelde Notities"
 msgid "Recent changes"
 msgstr "Recente wijzigingen"
 
-#: admin.php:306 calendar.php:146 calendar.php:348 modules_v3/calendar_utilities/plugins/calculators.php:81 modules_v3/calendar_utilities/plugins/regnal_years.php:70
+#: admin.php:306 calendar.php:146 calendar.php:348 modules_v3/calendar_utilities/plugins/calculators.php:79 modules_v3/calendar_utilities/plugins/regnal_years.php:68
 msgid "Day"
 msgstr "Dag"
 
@@ -326,7 +327,7 @@ msgstr "Dag"
 msgid "Week"
 msgstr "Week"
 
-#: admin.php:306 calendar.php:166 calendar.php:349 modules_v3/calendar_utilities/plugins/calculators.php:90
+#: admin.php:306 calendar.php:166 calendar.php:349 modules_v3/calendar_utilities/plugins/calculators.php:88
 msgid "Month"
 msgstr "Maand"
 
@@ -345,7 +346,7 @@ msgstr "Het bestand %s werd verwijderd"
 msgid "The file %s could not be deleted."
 msgstr "Het bestand %s kon niet worden verwijderd."
 
-#: admin_media.php:161 admin_media.php:233 admin_trees_duplicates.php:289 branches.php:191 includes/functions/functions_edit.php:168 includes/functions/functions_edit.php:175 includes/functions/functions_edit.php:1452 includes/functions/functions_edit.php:1485 includes/functions/functions_print.php:914 includes/functions/functions_print_facts.php:1261 includes/functions/functions_print_lists.php:430 includes/functions/functions_print_lists.php:931 library/WT/Stats.php:3536 medialist.php:262 modules_v3/batch_update/admin_batch_update.php:370 modules_v3/charts/module.php:214 modules_v3/relatives/module.php:217 modules_v3/family_group_report/report.bak:247 modules_v3/family_group_report/report.bak:418 modules_v3/family_group_report/report.bak:598 modules_v3/family_group_report/report.bak:939 modules_v3/individual_ext_report/report.bak:177
+#: admin_media.php:161 admin_media.php:233 admin_trees_duplicates.php:292 branches.php:191 includes/functions/functions_edit.php:168 includes/functions/functions_edit.php:175 includes/functions/functions_edit.php:1452 includes/functions/functions_edit.php:1485 includes/functions/functions_print.php:914 includes/functions/functions_print_facts.php:1261 includes/functions/functions_print_lists.php:430 includes/functions/functions_print_lists.php:931 library/WT/Stats.php:3536 medialist.php:262 modules_v3/batch_update/admin_batch_update.php:370 modules_v3/charts/module.php:214 modules_v3/relatives/module.php:225 modules_v3/family_group_report/report.bak:247 modules_v3/family_group_report/report.bak:418 modules_v3/family_group_report/report.bak:598 modules_v3/family_group_report/report.bak:939 modules_v3/individual_ext_report/report.bak:177
 msgid "yes"
 msgstr "ja"
 
@@ -384,7 +385,7 @@ msgid "This media file does not exist."
 msgstr "Dit mediabestand betaat niet."
 
 #. I18N: Submit button, on a form
-#: admin_media.php:460 admin_trees_duplicates.php:207 admin_trees_unlinked.php:69 admin_trees_unlinked.php:74 ancestry.php:108 compact.php:50 descendancy.php:76 familybook.php:57 fanchart.php:64 hourglass.php:74 modules_v3/googlemap/module.php:742 pedigree.php:76
+#: admin_media.php:460 admin_trees_unlinked.php:69 admin_trees_unlinked.php:74 ancestry.php:108 compact.php:50 descendancy.php:76 familybook.php:57 fanchart.php:64 hourglass.php:74 modules_v3/googlemap/module.php:742 pedigree.php:76
 msgid "View"
 msgstr "Bekijk"
 
@@ -408,7 +409,7 @@ msgstr "Aan een bron"
 msgid "This media object is not linked to any other record."
 msgstr "Dit media object is niet aan enig record gekoppeld."
 
-#: admin_media.php:540 admin_media.php:634 admin_trees_config.php:290 admin_trees_config.php:456 admin_trees_config.php:712 admin_trees_source.php:171 admin_trees_source.php:285 admin_trees_sourcecite.php:153 includes/functions/functions_print_lists.php:1604 inverselink.php:73 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:88 themes/_administration/header.php:204
+#: admin_media.php:540 admin_media.php:634 admin_trees_config.php:290 admin_trees_config.php:456 admin_trees_config.php:712 admin_trees_source.php:171 admin_trees_source.php:286 admin_trees_sourcecite.php:153 includes/functions/functions_print_lists.php:1604 inverselink.php:73 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:88 themes/_administration/header.php:204
 msgid "Media"
 msgstr "Media"
 
@@ -541,7 +542,7 @@ msgid "Module"
 msgstr "Module"
 
 #. I18N: Name of a module
-#: admin_modules.php:158 library/WT/MenuBar.php:37 library/WT/MenuBar.php:39 modules_v3/gedcom_block/module.php:35 themes/_administration/header.php:134
+#: admin_modules.php:158 library/WT/MenuBar.php:35 library/WT/MenuBar.php:37 modules_v3/gedcom_block/module.php:35 themes/_administration/header.php:134
 msgid "Home"
 msgstr "Home"
 
@@ -577,7 +578,7 @@ msgstr "robot"
 msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "Toegangsbeperking middels het gebruik van IP-adressen en gebruikers-tekenreeksen"
 
-#: admin_site_access.php:287 admin_site_lang.php:82 admin_trees_append.php:32 admin_trees_check.php:44 admin_trees_manage.php:252 admin_trees_renumber.php:61 admin_trees_sanity.php:45 modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:74 modules_v3/album/module.php:285 modules_v3/backup_to_dropbox/module.php:112 modules_v3/chart_relationship/module.php:164 modules_v3/gallery/module.php:487
+#: admin_site_access.php:287 admin_site_lang.php:82 admin_trees_append.php:32 admin_trees_check.php:44 admin_trees_manage.php:252 admin_trees_renumber.php:61 admin_trees_sanity.php:45 modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:74 modules_v3/album/module.php:285 modules_v3/backup_to_dropbox/module.php:112 modules_v3/chart_relationship/module.php:199 modules_v3/gallery/module.php:487
 msgid "View FAQ for this page."
 msgstr "Bekijk FAQ voor deze pagina."
 
@@ -616,7 +617,7 @@ msgstr "Verwijder"
 msgid "This will delete all your access rules and replace with basic kiwitrees defaults. Are you sure?"
 msgstr "Dit verwijderd al uw toegangsregels en vervangt dit met kiwitrees basisinstellingen. Weet u dit zeker?"
 
-#: admin_site_access.php:305 modules_v3/custom_js/module.php:93 modules_v3/fancy_imagebar/module.php:326 modules_v3/fancy_treeview/module.php:599 modules_v3/fancy_treeview/module.php:601 modules_v3/resource_changes/module.php:208 statistics.php:673
+#: admin_site_access.php:305 modules_v3/chart_relationship/module.php:426 modules_v3/custom_js/module.php:93 modules_v3/fancy_imagebar/module.php:326 modules_v3/fancy_treeview/module.php:599 modules_v3/fancy_treeview/module.php:601 modules_v3/resource_changes/module.php:208 statistics.php:673
 msgid "reset"
 msgstr "reset"
 
@@ -668,7 +669,7 @@ msgstr "Van %s tot %s"
 msgid "Status"
 msgstr "Status"
 
-#: admin_site_change.php:276 admin_site_change.php:306 admin_site_merge.php:140 admin_trees_config.php:644 admin_trees_source.php:138 admin_trees_source.php:254 admin_trees_sourcecite.php:128 includes/functions/functions_print_lists.php:1971 includes/functions/functions_print_lists.php:2107 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:126 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:586 modules_v3/resource_changes/module.php:158 modules_v3/resource_todo/module.php:150 modules_v3/todo/module.php:98 modules_v3/widget_todo/module.php:98
+#: admin_site_change.php:276 admin_site_change.php:306 admin_site_merge.php:140 admin_trees_config.php:644 admin_trees_source.php:138 admin_trees_source.php:255 admin_trees_sourcecite.php:128 includes/functions/functions_print_lists.php:1971 includes/functions/functions_print_lists.php:2107 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:126 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:586 modules_v3/resource_changes/module.php:158 modules_v3/resource_todo/module.php:150 modules_v3/todo/module.php:98 modules_v3/widget_todo/module.php:98
 msgid "Record"
 msgstr "Record"
 
@@ -680,11 +681,11 @@ msgstr "Oude gegevens"
 msgid "User"
 msgstr "Gebruiker"
 
-#: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:142 admin_trees_manage.php:262 admin_trees_missing.php:133 admin_trees_places.php:104 admin_trees_sanity.php:54 admin_trees_source.php:75 admin_trees_sourcecite.php:90 admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:422 edit_changes.php:169 modules_v3/batch_update/admin_batch_update.php:65 modules_v3/extra_menus/module.php:344 modules_v3/extra_menus/module.php:368 modules_v3/fancy_imagebar/module.php:277 modules_v3/fancy_treeview/module.php:436 modules_v3/faq/module.php:444 modules_v3/faq/module.php:468 modules_v3/gallery/module.php:528 modules_v3/gallery/module.php:552 modules_v3/googlemap/module.php:1484 modules_v3/html/module.php:291 modules_v3/simpl_pages/module.php:459 modules_v3/stories/module.php:474 modules_v3/widget_html/module.php:172
+#: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:142 admin_trees_manage.php:262 admin_trees_missing.php:133 admin_trees_places.php:104 admin_trees_sanity.php:54 admin_trees_source.php:75 admin_trees_sourcecite.php:90 admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:422 edit_changes.php:169 modules_v3/batch_update/admin_batch_update.php:65 modules_v3/chart_relationship/module.php:203 modules_v3/extra_menus/module.php:344 modules_v3/extra_menus/module.php:368 modules_v3/fancy_imagebar/module.php:277 modules_v3/fancy_treeview/module.php:436 modules_v3/faq/module.php:444 modules_v3/faq/module.php:468 modules_v3/gallery/module.php:528 modules_v3/gallery/module.php:552 modules_v3/googlemap/module.php:1484 modules_v3/html/module.php:291 modules_v3/simpl_pages/module.php:459 modules_v3/stories/module.php:474 modules_v3/widget_html/module.php:172
 msgid "Family tree"
 msgstr "Stamboom"
 
-#: admin_site_change.php:290 admin_site_logs.php:241 find.php:183 find.php:201 find.php:223 find.php:245 find.php:267 find.php:289 find.php:311 find.php:500 library/WT/I18N.php:719 modules_v3/random_media/module.php:303
+#: admin_site_change.php:290 admin_site_logs.php:241 find.php:183 find.php:201 find.php:223 find.php:245 find.php:267 find.php:289 find.php:311 find.php:500 library/WT/I18N.php:720 modules_v3/random_media/module.php:303
 msgid "Filter"
 msgstr "Filter"
 
@@ -1133,7 +1134,7 @@ msgid "Merge from ID:"
 msgstr "Voeg samen van ID:"
 
 #. I18N: button label, next page
-#: admin_site_merge.php:307 library/WT/I18N.php:707 modules_v3/batch_update/admin_batch_update.php:99 modules_v3/fancy_treeview/module.php:688
+#: admin_site_merge.php:307 library/WT/I18N.php:708 modules_v3/batch_update/admin_batch_update.php:99 modules_v3/fancy_treeview/module.php:688
 msgid "next"
 msgstr "volgende"
 
@@ -1248,41 +1249,41 @@ msgid "This may be a mistake in your data."
 msgstr "Dit kan een fout in uw gegevens zijn."
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
-#: admin_trees_check.php:171
+#: admin_trees_check.php:170
 #, php-format
 msgid "%1$s does not exist.  Did you mean %2$s?"
 msgstr "%1$s bestaat niet. Bedoelde u %2$s?"
 
 #. I18N: placeholders are GEDCOM IDs, such as R123
-#: admin_trees_check.php:177
+#: admin_trees_check.php:176
 #, php-format
 msgid "%1$s does not exist."
 msgstr "%1$s bestaat niet."
 
-#: admin_trees_check.php:186 admin_trees_check.php:191
+#: admin_trees_check.php:185 admin_trees_check.php:190
 msgid "This type of link is not allowed here."
 msgstr "Dit soort koppeling is hier niet toegestaan"
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record
 #. types, such as INDI or SOUR
-#: admin_trees_check.php:197
+#: admin_trees_check.php:196
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
 msgstr "%1$s is een %2$s maar hier wordt een %3$s verwacht."
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
-#: admin_trees_check.php:208
+#: admin_trees_check.php:207
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
 msgstr "%1$s heeft geen koppeling terug naar %2$s."
 
-#: admin_trees_check.php:215
+#: admin_trees_check.php:214
 msgid "No errors were found."
 msgstr "Geen fouten gevonden"
 
 #. I18N: The placeholders are GEDCOM identifiers and tags.  e.g. “INDI I123
 #. contains a FAMC link to F234.”
-#: admin_trees_check.php:224
+#: admin_trees_check.php:223
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr "%1$s %2$s heeft een  %3$s koppeling naar %4$s."
@@ -1360,7 +1361,7 @@ msgid "Avoid spaces and punctuation. A family name might be a good choice."
 msgstr "Houd dit kort en vermijd spaties en leestekens. Een familienaam is een goede keus."
 
 #. I18N: gedcom tag LANG
-#: admin_trees_config.php:323 admin_users.php:404 admin_users.php:565 edituser.php:174 library/WT/Gedcom/Tag.php:247 library/WT/MenuBar.php:196
+#: admin_trees_config.php:323 admin_users.php:404 admin_users.php:565 edituser.php:174 library/WT/Gedcom/Tag.php:247 library/WT/MenuBar.php:194
 msgid "Language"
 msgstr "Taal"
 
@@ -1408,7 +1409,7 @@ msgstr "Gebruik RIN nummer in plaats van GEDCOM ID"
 
 #: admin_trees_config.php:423
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for Individual IDs in configuration files, user settings, and charts. This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken, in plaats van de GEDCOM-ID, als er gevraagd word voor persoon-ID's in configuratiebestanden, gebruikersinstellingen, en diagrammen. Dit is handig voor genealogische programma's die niet consequent GEDCOM exporteren met dezelfde ID toegekend aan elke persoon, maar altijd dezelfde RIN gebruiken."
+msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken, in plaats van de GEDCOM-ID, als er gevraagd word voor persoon-IDs in configuratiebestanden, gebruikersinstellingen, en diagrammen. Dit is handig voor genealogische programmas die niet consequent GEDCOM exporteren met dezelfde ID toegekend aan elke persoon, maar altijd dezelfde RIN gebruiken."
 
 #: admin_trees_config.php:428
 msgid "Automatically create globally unique IDs"
@@ -1416,20 +1417,20 @@ msgstr "Genereer automatisch globaal unieke ID's"
 
 #: admin_trees_config.php:432
 msgid "<b>GUID</b> in this context is an acronym for «Globally Unique ID».<br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS Church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same person no matter where the GEDCOM originates. The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services. This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let kiwitrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
-msgstr "<b>GUID</b> in deze context is een acroniem voor «Globaal Unieke ID». <br>GUID's zijn bedoeld om elke persoon vaker te kunnen identificeren, zodat centrale organisaties, zoals het Family History Center van de LDS Church in Salt Lake City, of zelfs compatibele programma's welke op uw eigen server draaien, kunnen bepalen of ze met dezelfde persoon te maken hebben, ongeacht waar de GEDCOM vandaan komt. Het doel van het Family History Center is het maken van een centrale opslagplaats met genealogische gegevens en deze via webdiensten beschikbaar te stellen. Hierdoor kan elk programma die gegevens inzien en bijwerken. <br><br Als u niet van plan bent deze GEDCOM te delen met anderen, dan hoeft u kiwitrees deze GUID's niet te laten maken; echter, wel doen heeft echter geen ander nadeel dan dat uw GEDCOM groter word."
+msgstr "<b>GUID</b> in deze context is een acroniem voor «Globaal Unieke ID». <br>GUIDs zijn bedoeld om elke persoon vaker te kunnen identificeren, zodat centrale organisaties, zoals het Family History Center van de LDS Church in Salt Lake City, of zelfs compatibele programmas welke op uw eigen server draaien, kunnen bepalen of ze met dezelfde persoon te maken hebben, ongeacht waar de GEDCOM vandaan komt. Het doel van het Family History Center is het maken van een centrale opslagplaats met genealogische gegevens en deze via webdiensten beschikbaar te stellen. Hierdoor kan elk programma die gegevens inzien en bijwerken. <br><br> Als u niet van plan bent deze GEDCOM te delen met anderen, dan hoeft u kiwitrees deze GUIDs niet te laten maken; echter, wel doen heeft echter geen ander nadeel dan dat uw GEDCOM groter word."
 
 #: admin_trees_config.php:437
 msgid "XREF prefixes"
 msgstr "Voorvoegsels"
 
 #. I18N: gedcom tag INDI
-#: admin_trees_config.php:440 admin_trees_missing.php:137 admin_trees_missing.php:174 admin_trees_source.php:163 admin_trees_source.php:277 admin_trees_sourcecite.php:145 ancestry.php:49 compact.php:43 descendancy.php:43 familybook.php:43 fanchart.php:51 hourglass.php:54 includes/functions/functions_edit.php:1755 includes/functions/functions_print_lists.php:1389 inverselink.php:98 library/WT/Gedcom/Tag.php:245 modules_v3/charts/module.php:219 modules_v3/googlemap/module.php:722 modules_v3/resource_individual/module.php:111 modules_v3/resource_related_indi/module.php:116 modules_v3/stories/module.php:351 modules_v3/stories/module.php:496 modules_v3/stories/module.php:587 pedigree.php:44
+#: admin_trees_config.php:440 admin_trees_missing.php:137 admin_trees_missing.php:174 admin_trees_source.php:163 admin_trees_source.php:278 admin_trees_sourcecite.php:145 ancestry.php:49 compact.php:43 descendancy.php:43 familybook.php:43 fanchart.php:51 hourglass.php:54 includes/functions/functions_edit.php:1755 includes/functions/functions_print_lists.php:1389 inverselink.php:98 library/WT/Gedcom/Tag.php:245 modules_v3/charts/module.php:219 modules_v3/googlemap/module.php:722 modules_v3/resource_individual/module.php:111 modules_v3/resource_related_indi/module.php:116 modules_v3/stories/module.php:351 modules_v3/stories/module.php:496 modules_v3/stories/module.php:587 pedigree.php:44
 msgid "Individual"
 msgstr "Persoon"
 
 #. I18N: gedcom tag FAM
 #. I18N: Name of a module/report
-#: admin_trees_config.php:444 admin_trees_missing.php:191 admin_trees_source.php:167 admin_trees_source.php:281 admin_trees_sourcecite.php:149 edit_interface.php:469 includes/functions/functions_edit.php:1786 inverselink.php:114 library/WT/Gedcom/Tag.php:215 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1386 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:924 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:931 modules_v3/family_group_report/module.php:36 modules_v3/family_nav/module.php:385 modules_v3/family_group_report/report.bak:4 modules_v3/family_group_report/report.bak:86 modules_v3/family_group_report/report.bak:94
+#: admin_trees_config.php:444 admin_trees_missing.php:191 admin_trees_source.php:167 admin_trees_source.php:282 admin_trees_sourcecite.php:149 edit_interface.php:469 includes/functions/functions_edit.php:1786 inverselink.php:114 library/WT/Gedcom/Tag.php:215 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1386 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:924 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:931 modules_v3/family_group_report/module.php:36 modules_v3/family_nav/module.php:385 modules_v3/family_group_report/report.bak:4 modules_v3/family_group_report/report.bak:86 modules_v3/family_group_report/report.bak:94
 msgid "Family"
 msgstr "Gezin"
 
@@ -1494,7 +1495,7 @@ msgstr "Deze waarde wordt geplaatst in de omschrijving meta-tag in de header van
 
 #: admin_trees_config.php:555
 msgid "Enable privacy"
-msgstr "Tabelvoorvoegsel"
+msgstr "Schakel privacy in"
 
 #: admin_trees_config.php:559
 msgid "This option will enable all privacy settings and hide the details of living people, as defined or modified below. If privacy is not enabled kiwitrees will ignore all the other settings on this page."
@@ -1523,7 +1524,7 @@ msgstr "Stelt het privacy-toegangsniveau in voor alle overleden personen."
 msgid "Age at which to assume a person is dead"
 msgstr "Leeftijd waarvan aangenomen wordt dat men overleden is."
 
-#: admin_trees_config.php:579 modules_v3/calendar_utilities/plugins/calculators.php:399 timeline.php:125
+#: admin_trees_config.php:579 modules_v3/calendar_utilities/plugins/calculators.php:397 timeline.php:125
 msgid "years"
 msgstr "jaren"
 
@@ -1708,7 +1709,7 @@ msgstr "Als u een achternaam wilt verwijderen uit de Meest voorkomende achternam
 msgid "Display surnames in all CAPS"
 msgstr "Toon achternamen in HOOFDLETTERS"
 
-#: admin_trees_config.php:851 library/WT/MenuBar.php:121 themes/_administration/header.php:223
+#: admin_trees_config.php:851 library/WT/MenuBar.php:119 themes/_administration/header.php:223
 msgid "Lists"
 msgstr "Lijsten"
 
@@ -1744,7 +1745,7 @@ msgstr "Geschatte data voor geboorte en overlijden"
 msgid "hide"
 msgstr "verberg"
 
-#: admin_trees_config.php:874 admin_trees_config.php:883 admin_trees_config.php:1028 admin_trees_config.php:1037 admin_trees_config.php:1046 admin_trees_config.php:1068 admin_trees_config.php:1105 admin_trees_config.php:1114 admin_trees_config.php:1123 admin_trees_missing.php:148 modules_v3/extra_menus/module.php:350 modules_v3/fancy_treeview/module.php:676 modules_v3/faq/module.php:450 modules_v3/gallery/module.php:534 modules_v3/googlemap/module.php:270 modules_v3/no_census/module.php:189 modules_v3/resource_changes/module.php:205 modules_v3/resource_fact/module.php:218 modules_v3/resource_fact/module.php:220 modules_v3/resource_individual/module.php:136 modules_v3/resource_individual/module.php:138 modules_v3/resource_related_indi/module.php:123 modules_v3/resource_related_indi/module.php:125 modules_v3/resource_todo/module.php:136 modules_v3/simpl_pages/module.php:463 modules_v3/stories/module.php:480 modules_v3/uk_register/module.php:166 statistics.php:672
+#: admin_trees_config.php:874 admin_trees_config.php:883 admin_trees_config.php:1028 admin_trees_config.php:1037 admin_trees_config.php:1046 admin_trees_config.php:1068 admin_trees_config.php:1105 admin_trees_config.php:1114 admin_trees_config.php:1123 admin_trees_duplicates.php:208 admin_trees_missing.php:148 modules_v3/extra_menus/module.php:350 modules_v3/fancy_treeview/module.php:676 modules_v3/faq/module.php:450 modules_v3/gallery/module.php:534 modules_v3/googlemap/module.php:270 modules_v3/no_census/module.php:189 modules_v3/resource_changes/module.php:205 modules_v3/resource_fact/module.php:218 modules_v3/resource_fact/module.php:220 modules_v3/resource_individual/module.php:136 modules_v3/resource_individual/module.php:138 modules_v3/resource_related_indi/module.php:123 modules_v3/resource_related_indi/module.php:125 modules_v3/resource_todo/module.php:136 modules_v3/simpl_pages/module.php:463 modules_v3/stories/module.php:480 modules_v3/uk_register/module.php:166 statistics.php:672
 msgid "show"
 msgstr "toon"
 
@@ -1757,7 +1758,7 @@ msgid "The date and time of the last update"
 msgstr "Datum en tijd van de laatste wijziging"
 
 #. I18N: Name of a module/block
-#: admin_trees_config.php:886 admin_trees_config.php:1006 library/WT/MenuBar.php:101 modules_v3/charts/help_text.php:34 modules_v3/charts/module.php:35 themes/_administration/header.php:222
+#: admin_trees_config.php:886 admin_trees_config.php:1006 library/WT/MenuBar.php:99 modules_v3/charts/help_text.php:34 modules_v3/charts/module.php:35 themes/_administration/header.php:222
 msgid "Charts"
 msgstr "Diagrammen"
 
@@ -2266,39 +2267,39 @@ msgid "Include married names: "
 msgstr " Met aangenomen huwelijksnaam"
 
 #. I18N: gedcom tag NAME
-#: admin_trees_duplicates.php:222 admin_trees_missing.php:576 admin_trees_sanity.php:113 edit_interface.php:2632 library/WT/Controller/Individual.php:176 library/WT/Gedcom/Tag.php:271 library/WT/Stats.php:3344 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588 modules_v3/resource_fact/module.php:271 modules_v3/resource_related_indi/module.php:233 modules_v3/simpl_research/module.php:124 modules_v3/bdm_report/report.bak:6 modules_v3/bdm_report/report.bak:47 modules_v3/marriage_report/report.bak:6 modules_v3/marriage_report/report.bak:36
+#: admin_trees_duplicates.php:223 admin_trees_missing.php:576 admin_trees_sanity.php:113 edit_interface.php:2632 library/WT/Controller/Individual.php:176 library/WT/Gedcom/Tag.php:271 library/WT/Stats.php:3344 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:128 modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:588 modules_v3/resource_fact/module.php:271 modules_v3/resource_related_indi/module.php:233 modules_v3/simpl_research/module.php:124 modules_v3/bdm_report/report.bak:6 modules_v3/bdm_report/report.bak:47 modules_v3/marriage_report/report.bak:6 modules_v3/marriage_report/report.bak:36
 msgid "Name"
 msgstr "Naam"
 
 #. I18N: gedcom tag BIRT
-#: admin_trees_duplicates.php:223 admin_trees_sanity.php:95 admin_trees_source.php:139 admin_trees_source.php:255 library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1202 modules_v3/resource_related_indi/module.php:234 modules_v3/bdm_report/report.bak:56 modules_v3/family_group_report/report.bak:177 modules_v3/family_group_report/report.bak:528 modules_v3/family_group_report/report.bak:869 modules_v3/individual_ext_report/report.bak:265 modules_v3/individual_ext_report/report.bak:301 modules_v3/individual_ext_report/report.bak:341 modules_v3/individual_ext_report/report.bak:377 modules_v3/individual_ext_report/report.bak:413 modules_v3/individual_ext_report/report.bak:471 modules_v3/individual_ext_report/report.bak:507 modules_v3/individual_ext_report/report.bak:548 modules_v3/individual_ext_report/report.bak:584 modules_v3/individual_ext_report/report.bak:620
+#: admin_trees_duplicates.php:224 admin_trees_sanity.php:95 admin_trees_source.php:139 admin_trees_source.php:256 library/WT/Gedcom/Tag.php:141 modules_v3/fancy_treeview/module.php:1202 modules_v3/resource_related_indi/module.php:234 modules_v3/bdm_report/report.bak:56 modules_v3/family_group_report/report.bak:177 modules_v3/family_group_report/report.bak:528 modules_v3/family_group_report/report.bak:869 modules_v3/individual_ext_report/report.bak:265 modules_v3/individual_ext_report/report.bak:301 modules_v3/individual_ext_report/report.bak:341 modules_v3/individual_ext_report/report.bak:377 modules_v3/individual_ext_report/report.bak:413 modules_v3/individual_ext_report/report.bak:471 modules_v3/individual_ext_report/report.bak:507 modules_v3/individual_ext_report/report.bak:548 modules_v3/individual_ext_report/report.bak:584 modules_v3/individual_ext_report/report.bak:620
 msgid "Birth"
 msgstr "Geboorte"
 
 #. I18N: gedcom tag DEAT
-#: admin_trees_duplicates.php:224 admin_trees_sanity.php:101 admin_trees_source.php:258 library/WT/Gedcom/Tag.php:185 modules_v3/fancy_treeview/module.php:1205 modules_v3/resource_related_indi/module.php:237 modules_v3/bdm_report/report.bak:85 modules_v3/family_group_report/report.bak:284 modules_v3/family_group_report/report.bak:635 modules_v3/family_group_report/report.bak:976 modules_v3/individual_ext_report/report.bak:265 modules_v3/individual_ext_report/report.bak:301 modules_v3/individual_ext_report/report.bak:341 modules_v3/individual_ext_report/report.bak:377 modules_v3/individual_ext_report/report.bak:413 modules_v3/individual_ext_report/report.bak:471 modules_v3/individual_ext_report/report.bak:507 modules_v3/individual_ext_report/report.bak:548 modules_v3/individual_ext_report/report.bak:584 modules_v3/individual_ext_report/report.bak:620
+#: admin_trees_duplicates.php:225 admin_trees_sanity.php:101 admin_trees_source.php:259 library/WT/Gedcom/Tag.php:185 modules_v3/fancy_treeview/module.php:1205 modules_v3/resource_related_indi/module.php:237 modules_v3/bdm_report/report.bak:85 modules_v3/family_group_report/report.bak:284 modules_v3/family_group_report/report.bak:635 modules_v3/family_group_report/report.bak:976 modules_v3/individual_ext_report/report.bak:265 modules_v3/individual_ext_report/report.bak:301 modules_v3/individual_ext_report/report.bak:341 modules_v3/individual_ext_report/report.bak:377 modules_v3/individual_ext_report/report.bak:413 modules_v3/individual_ext_report/report.bak:471 modules_v3/individual_ext_report/report.bak:507 modules_v3/individual_ext_report/report.bak:548 modules_v3/individual_ext_report/report.bak:584 modules_v3/individual_ext_report/report.bak:620
 msgid "Death"
 msgstr "Overleden"
 
-#: admin_trees_duplicates.php:226
+#: admin_trees_duplicates.php:228
 msgid "Merge selected"
 msgstr "Samenvoegen geselecteerde"
 
 #. I18N: gedcom tag DATE
-#: admin_trees_duplicates.php:230 admin_trees_duplicates.php:232 edit_changes.php:168 help_text.php:178 help_text.php:208 library/WT/Gedcom/Tag.php:184 modules_v3/resource_fact/module.php:202 modules_v3/resource_fact/module.php:273 modules_v3/resource_individual/module.php:173 modules_v3/bdm_report/report.bak:130 modules_v3/bdm_report/report.bak:156 modules_v3/bdm_report/report.bak:190 modules_v3/marriage_report/report.bak:44
+#: admin_trees_duplicates.php:233 admin_trees_duplicates.php:235 edit_changes.php:168 help_text.php:178 help_text.php:208 library/WT/Gedcom/Tag.php:184 modules_v3/resource_fact/module.php:202 modules_v3/resource_fact/module.php:273 modules_v3/resource_individual/module.php:173 modules_v3/bdm_report/report.bak:130 modules_v3/bdm_report/report.bak:156 modules_v3/bdm_report/report.bak:190 modules_v3/marriage_report/report.bak:44
 msgid "Date"
 msgstr "Datum"
 
 #. I18N: gedcom tag PLAC
-#: admin_trees_duplicates.php:231 admin_trees_duplicates.php:233 admin_trees_source.php:257 admin_trees_source.php:260 library/WT/Gedcom/Tag.php:296 modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1050 modules_v3/googlemap/admin_places.php:180 modules_v3/googlemap/admin_places.php:181 modules_v3/googlemap/admin_places.php:182 modules_v3/googlemap/admin_places.php:183 modules_v3/googlemap/admin_places.php:184 modules_v3/googlemap/module.php:1599 modules_v3/resource_fact/module.php:207 modules_v3/resource_fact/module.php:249 modules_v3/resource_fact/module.php:274 modules_v3/resource_individual/module.php:174 modules_v3/resource_related_indi/module.php:236 modules_v3/resource_related_indi/module.php:239 search.php:176 search.php:253 modules_v3/bdm_report/report.bak:7 modules_v3/bdm_report/report.bak:132 modules_v3/bdm_report/report.bak:158 modules_v3/bdm_report/report.bak:192 modules_v3/marriage_report/report.bak:48
+#: admin_trees_duplicates.php:234 admin_trees_duplicates.php:236 admin_trees_source.php:258 admin_trees_source.php:261 library/WT/Gedcom/Tag.php:296 modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1050 modules_v3/googlemap/admin_places.php:180 modules_v3/googlemap/admin_places.php:181 modules_v3/googlemap/admin_places.php:182 modules_v3/googlemap/admin_places.php:183 modules_v3/googlemap/admin_places.php:184 modules_v3/googlemap/module.php:1599 modules_v3/resource_fact/module.php:207 modules_v3/resource_fact/module.php:249 modules_v3/resource_fact/module.php:274 modules_v3/resource_individual/module.php:174 modules_v3/resource_related_indi/module.php:236 modules_v3/resource_related_indi/module.php:239 search.php:176 search.php:253 modules_v3/bdm_report/report.bak:7 modules_v3/bdm_report/report.bak:132 modules_v3/bdm_report/report.bak:158 modules_v3/bdm_report/report.bak:192 modules_v3/marriage_report/report.bak:48
 msgid "Place"
 msgstr "Plaats"
 
-#: admin_trees_duplicates.php:246
+#: admin_trees_duplicates.php:249
 msgid "Married name"
 msgstr "Aangenomen huwelijksnaam"
 
-#: admin_trees_duplicates.php:332
+#: admin_trees_duplicates.php:335
 msgid "No duplicates to display"
 msgstr "Geen dubbelen om te tonen"
 
@@ -2463,7 +2464,7 @@ msgid "Sources to the events"
 msgstr "Bronnen bij de gebeurtenissen"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
-#: admin_trees_missing.php:116 calendar.php:259 famlist.php:71 famlist.php:77 famlist.php:83 famlist.php:173 famlist.php:175 famlist.php:259 famlist.php:261 indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:173 indilist.php:175 indilist.php:259 indilist.php:261 library/WT/I18N.php:658 library/WT/Stats.php:3343 modules_v3/extra_menus/help_text.php:50 modules_v3/extra_menus/module.php:370 modules_v3/fancy_treeview/module.php:521 modules_v3/faq/module.php:222 modules_v3/faq/module.php:470 modules_v3/gallery/help_text.php:37 modules_v3/gallery/module.php:554 modules_v3/googlemap/admin_places.php:610 modules_v3/googlemap/admin_places.php:762 modules_v3/googlemap/module.php:1489 modules_v3/googlemap/module.php:1505 modules_v3/no_census/module.php:212 modules_v3/random_media/module.php:299 modules_v3/resource_individual/module.php:130 modules_v3/simpl_pages/help_text.php:37 modules_v3/simpl_pages/module.php:474 modules_v3/uk_register/module.php:174 modules_v3/widget_messages/module.php:84 modules_v3/ahnentafel_report/report.bak:8 modules_v3/individual_ext_report/report.bak:7 modules_v3/individual_ext_report/report.bak:8 modules_v3/individual_ext_report/report.bak:12
+#: admin_trees_missing.php:116 calendar.php:259 famlist.php:71 famlist.php:77 famlist.php:83 famlist.php:173 famlist.php:175 famlist.php:259 famlist.php:261 indilist.php:71 indilist.php:77 indilist.php:83 indilist.php:173 indilist.php:175 indilist.php:259 indilist.php:261 library/WT/I18N.php:659 library/WT/Stats.php:3343 modules_v3/extra_menus/help_text.php:50 modules_v3/extra_menus/module.php:370 modules_v3/fancy_treeview/module.php:521 modules_v3/faq/module.php:222 modules_v3/faq/module.php:470 modules_v3/gallery/help_text.php:37 modules_v3/gallery/module.php:554 modules_v3/googlemap/admin_places.php:610 modules_v3/googlemap/admin_places.php:762 modules_v3/googlemap/module.php:1489 modules_v3/googlemap/module.php:1505 modules_v3/no_census/module.php:212 modules_v3/random_media/module.php:299 modules_v3/resource_individual/module.php:130 modules_v3/simpl_pages/help_text.php:37 modules_v3/simpl_pages/module.php:474 modules_v3/uk_register/module.php:174 modules_v3/widget_messages/module.php:84 modules_v3/ahnentafel_report/report.bak:8 modules_v3/individual_ext_report/report.bak:7 modules_v3/individual_ext_report/report.bak:8 modules_v3/individual_ext_report/report.bak:12
 msgid "All"
 msgstr "Alles"
 
@@ -2702,42 +2703,42 @@ msgstr "Geen geslacht geregistreerd"
 msgid "Duplicated data"
 msgstr "Dubbele data"
 
-#: admin_trees_sanity.php:135
+#: admin_trees_sanity.php:136
 #, php-format
 msgid "%s born after baptism or christening"
 msgstr "%s geboren na de doop"
 
-#: admin_trees_sanity.php:143
+#: admin_trees_sanity.php:144
 #, php-format
 msgid "%s born after death or burial"
 msgstr "%s geboren na overlijden of begrafenis"
 
-#: admin_trees_sanity.php:151
+#: admin_trees_sanity.php:152
 #, php-format
 msgid "%s buried before death"
 msgstr "%s begraven voor overlijden"
 
-#: admin_trees_sanity.php:159
+#: admin_trees_sanity.php:160
 #, php-format
 msgid "%s with no gender recorded"
 msgstr "%s zonder geslacht geregistreerd"
 
-#: admin_trees_sanity.php:167
+#: admin_trees_sanity.php:168
 #, php-format
 msgid "%s with duplicated death record"
 msgstr "%s met dubbele overlijdensregistratie"
 
-#: admin_trees_sanity.php:175
+#: admin_trees_sanity.php:176
 #, php-format
 msgid "%s with duplicated birth record"
 msgstr "%s met dubbele geboorteregistratie"
 
-#: admin_trees_sanity.php:183
+#: admin_trees_sanity.php:184
 #, php-format
 msgid "%s with duplicated gender record"
 msgstr "%s met dubbel geslacht geregistreerd"
 
-#: admin_trees_sanity.php:191
+#: admin_trees_sanity.php:192
 #, php-format
 msgid "%s with identical name records"
 msgstr "%s met identieke naam registratie"
@@ -2758,7 +2759,7 @@ msgstr "Review bron"
 msgid "Display a list of facts, events or records where the selected source is used. Facts or events are items like birth, marriage, death. Records are items like individuals, families, media."
 msgstr "Toont een lijst van feiten, gebeurtenissen  of records waar de geselecteerde bron word gebruikt. Feiten of gebeurtenissen zijn items als geboorte, huwelijk en overlijden. Records zijn items als personen, gezinnen en media."
 
-#: admin_trees_source.php:137 admin_trees_source.php:253 admin_trees_sourcecite.php:127 edit_changes.php:161 edit_interface.php:146 edit_interface.php:1344 help_text.php:486 library/WT/Controller/Family.php:144 library/WT/Controller/Individual.php:384 library/WT/Controller/Media.php:115 library/WT/Controller/Note.php:91 library/WT/Controller/Repository.php:91 library/WT/Controller/Source.php:91
+#: admin_trees_source.php:137 admin_trees_source.php:254 admin_trees_sourcecite.php:127 edit_changes.php:161 edit_interface.php:146 edit_interface.php:1344 help_text.php:486 library/WT/Controller/Family.php:144 library/WT/Controller/Individual.php:384 library/WT/Controller/Media.php:115 library/WT/Controller/Note.php:91 library/WT/Controller/Repository.php:91 library/WT/Controller/Source.php:91
 msgid "Edit raw GEDCOM record"
 msgstr "Wijzig ruw GEDCOM-record"
 
@@ -2766,7 +2767,7 @@ msgstr "Wijzig ruw GEDCOM-record"
 msgid "Event date"
 msgstr "Gebeurtenisdatum"
 
-#: admin_trees_source.php:144 admin_trees_source.php:261
+#: admin_trees_source.php:144 admin_trees_source.php:262
 msgid "Citation text"
 msgstr "Vermeldingstekst"
 
@@ -2998,19 +2999,19 @@ msgstr "Geverifieerd"
 msgid "Approved"
 msgstr "Goedgekeurd"
 
-#: admin_users_bulk.php:35 themes/_administration/header.php:200
+#: admin_users_bulk.php:33 themes/_administration/header.php:200
 msgid "Send broadcast messages"
 msgstr "Verstuur berichten aan groepen"
 
-#: admin_users_bulk.php:42
+#: admin_users_bulk.php:40
 msgid "Send message to all users"
 msgstr "Bericht aan alle gebruikers sturen"
 
-#: admin_users_bulk.php:47
+#: admin_users_bulk.php:45
 msgid "Send message to users who have never logged in"
 msgstr "Bericht aan nooit aangemelde gebruikers"
 
-#: admin_users_bulk.php:52
+#: admin_users_bulk.php:50
 msgid "Send message to users who have not logged in for 6 months"
 msgstr "Bericht aan langer dan 6 maanden niet aangemelde gebruikers"
 
@@ -3031,7 +3032,7 @@ msgid "Show Details"
 msgstr "Toon details"
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:72 includes/functions/functions_print.php:863 includes/functions/functions_print.php:901 library/WT/Controller/Timeline.php:226 library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:121 library/WT/Person.php:474 library/WT/Stats.php:1646 library/WT/Stats.php:2386 library/WT/Stats.php:2387 modules_v3/GEDFact_assistant/CENS_ctrl.php:42 modules_v3/calendar_utilities/plugins/calculators.php:397 modules_v3/uk_register/module.php:257 timeline.php:358
+#: autocomplete.php:72 includes/functions/functions_print.php:863 includes/functions/functions_print.php:901 library/WT/Controller/Timeline.php:226 library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:121 library/WT/Person.php:474 library/WT/Stats.php:1646 library/WT/Stats.php:2386 library/WT/Stats.php:2387 modules_v3/GEDFact_assistant/CENS_ctrl.php:42 modules_v3/calendar_utilities/plugins/calculators.php:395 modules_v3/uk_register/module.php:257 timeline.php:358
 msgid "Age"
 msgstr "Leeftijd"
 
@@ -3087,7 +3088,7 @@ msgstr "Generatie"
 msgid "Anniversary calendar"
 msgstr "Gebeurteniskalender"
 
-#: calendar.php:187 calendar.php:350 modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1027 modules_v3/calendar_utilities/plugins/calculators.php:99 search.php:180
+#: calendar.php:187 calendar.php:350 modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1027 modules_v3/calendar_utilities/plugins/calculators.php:97 search.php:180
 msgid "Year"
 msgstr "Jaar"
 
@@ -3257,11 +3258,11 @@ msgstr "Voeg een vrouw toe"
 msgid "Add a husband"
 msgstr "Voeg een man toe"
 
-#: edit_interface.php:415 modules_v3/relatives/module.php:158 modules_v3/relatives/module.php:159 modules_v3/relatives/module.php:348
+#: edit_interface.php:415 modules_v3/relatives/module.php:166 modules_v3/relatives/module.php:167 modules_v3/relatives/module.php:356
 msgid "Add a mother"
 msgstr "Voeg een moeder toe"
 
-#: edit_interface.php:417 edit_interface.php:1826 modules_v3/relatives/module.php:112 modules_v3/relatives/module.php:113 modules_v3/relatives/module.php:345
+#: edit_interface.php:417 edit_interface.php:1826 modules_v3/relatives/module.php:120 modules_v3/relatives/module.php:121 modules_v3/relatives/module.php:353
 msgid "Add a father"
 msgstr "Voeg een vader toe"
 
@@ -3373,7 +3374,7 @@ msgstr "Toevoegen vanaf klembord"
 msgid "Re-order media"
 msgstr "Wijzig volgorde media"
 
-#: edit_interface.php:2123 edit_interface.php:2500 library/WT/Controller/Family.php:136 modules_v3/relatives/module.php:300
+#: edit_interface.php:2123 edit_interface.php:2500 library/WT/Controller/Family.php:136 modules_v3/relatives/module.php:308
 msgid "Re-order children"
 msgstr "Wijzig volgorde kinderen"
 
@@ -3401,11 +3402,11 @@ msgstr "moeder"
 msgid "father"
 msgstr "vader"
 
-#: edit_interface.php:2225 includes/functions/functions.php:1203 includes/functions/functions_charts.php:273 includes/functions/functions_charts.php:834 modules_v3/googlemap/googlemap.php:297 modules_v3/googlemap/googlemap.php:337 modules_v3/relatives/module.php:289
+#: edit_interface.php:2225 includes/functions/functions.php:1203 includes/functions/functions_charts.php:273 includes/functions/functions_charts.php:834 modules_v3/googlemap/googlemap.php:297 modules_v3/googlemap/googlemap.php:337 modules_v3/relatives/module.php:297
 msgid "son"
 msgstr "zoon"
 
-#: edit_interface.php:2227 includes/functions/functions.php:1204 includes/functions/functions_charts.php:274 includes/functions/functions_charts.php:835 modules_v3/googlemap/googlemap.php:292 modules_v3/googlemap/googlemap.php:332 modules_v3/relatives/module.php:290
+#: edit_interface.php:2227 includes/functions/functions.php:1204 includes/functions/functions_charts.php:274 includes/functions/functions_charts.php:835 modules_v3/googlemap/googlemap.php:292 modules_v3/googlemap/googlemap.php:332 modules_v3/relatives/module.php:298
 msgid "daughter"
 msgstr "dochter"
 
@@ -3483,7 +3484,7 @@ msgstr "Titel:"
 msgid "Entry Text:"
 msgstr "Artikeltekst:"
 
-#: edituser.php:127 library/WT/MenuBar.php:66 modules_v3/widget_quicklinks/module.php:69
+#: edituser.php:127 library/WT/MenuBar.php:64 modules_v3/widget_quicklinks/module.php:69
 msgid "My account"
 msgstr "Mijn account"
 
@@ -3499,7 +3500,7 @@ msgstr "Laat het wachtwoord leeg als u het huidige wachtwoord wilt behouden."
 msgid "Delete your account"
 msgstr "Verwijder uw account"
 
-#: expand_view.php:35 library/WT/Controller/GedcomRecord.php:50 library/WT/GedcomRecord.php:453 library/WT/GedcomRecord.php:501 library/WT/GedcomRecord.php:615 library/WT/Note.php:54 library/WT/Person.php:122 library/WT/Person.php:337 library/WT/Person.php:360 library/WT/Person.php:383 library/WT/Person.php:420 library/WT/Person.php:443 library/WT/Person.php:1916 library/WT/Report/Base.php:1926 library/WT/Repository.php:60 library/WT/Source.php:52 library/WT/Stats.php:866 library/WT/Stats.php:1811 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:215 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:341 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:484 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:641 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:779 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:899 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1053 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1192 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1322 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1501 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1597 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1712 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1810 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1936 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2077 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:200 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:269 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:360 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:454 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:536 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:603 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:697 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:780 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:856 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:983 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1020 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1053 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1074 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1129 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1178 modules_v3/googlemap/module.php:762
+#: expand_view.php:35 library/WT/Controller/GedcomRecord.php:50 library/WT/GedcomRecord.php:453 library/WT/GedcomRecord.php:501 library/WT/GedcomRecord.php:615 library/WT/Note.php:54 library/WT/Person.php:122 library/WT/Person.php:337 library/WT/Person.php:360 library/WT/Person.php:383 library/WT/Person.php:420 library/WT/Person.php:443 library/WT/Person.php:1916 library/WT/Report/Base.php:1924 library/WT/Repository.php:60 library/WT/Source.php:52 library/WT/Stats.php:866 library/WT/Stats.php:1811 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:215 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:341 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:484 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:641 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:779 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:899 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1053 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1192 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1322 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1501 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1597 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1712 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1810 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:1936 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:2077 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:200 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:269 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:360 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:454 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:536 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:603 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:697 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:780 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:856 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:983 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1020 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1053 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1074 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1129 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:1178 modules_v3/googlemap/module.php:762
 msgid "Private"
 msgstr "Privé"
 
@@ -4086,7 +4087,7 @@ msgstr "Het aantal keer dat een specifieke naam voorkomt zal worden getoond op d
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: help_text.php:571 library/WT/MenuBar.php:235 modules_v3/gedcom_favorites/module.php:35 modules_v3/widget_favorites/module.php:35
+#: help_text.php:571 library/WT/MenuBar.php:234 modules_v3/gedcom_favorites/module.php:35 modules_v3/widget_favorites/module.php:35
 msgid "Favorites"
 msgstr "Favorieten"
 
@@ -4972,7 +4973,7 @@ msgstr "jongere broer"
 msgid "elder brother"
 msgstr "oudere broer"
 
-#: includes/functions/functions.php:1220 modules_v3/relatives/module.php:293
+#: includes/functions/functions.php:1220 modules_v3/relatives/module.php:301
 msgid "brother"
 msgstr "broer"
 
@@ -4988,7 +4989,7 @@ msgstr "jongere zuster"
 msgid "elder sister"
 msgstr "oudere zuster"
 
-#: includes/functions/functions.php:1235 modules_v3/relatives/module.php:294
+#: includes/functions/functions.php:1235 modules_v3/relatives/module.php:302
 msgid "sister"
 msgstr "zus"
 
@@ -7404,7 +7405,7 @@ msgstr "Kind"
 msgid "Stillborn"
 msgstr "Doodgeboren"
 
-#: includes/functions/functions_date.php:53 library/WT/I18N.php:380
+#: includes/functions/functions_date.php:53 library/WT/I18N.php:381
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
@@ -7412,7 +7413,7 @@ msgstr[0] "%s jaar"
 msgstr[1] "%s jaren"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: includes/functions/functions_date.php:58 library/WT/I18N.php:386
+#: includes/functions/functions_date.php:58 library/WT/I18N.php:387
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
@@ -7420,7 +7421,7 @@ msgstr[0] "%s maand"
 msgstr[1] "%s maanden"
 
 #. I18N: Part of an age string. e.g. 7 weeks and 3 days
-#: includes/functions/functions_date.php:60 library/WT/I18N.php:390
+#: includes/functions/functions_date.php:60 library/WT/I18N.php:391
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
@@ -7428,7 +7429,7 @@ msgstr[0] "%s week"
 msgstr[1] "%s weken"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: includes/functions/functions_date.php:62 library/WT/I18N.php:394
+#: includes/functions/functions_date.php:62 library/WT/I18N.php:395
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
@@ -7645,16 +7646,16 @@ msgctxt "Surname tradition"
 msgid "none"
 msgstr "geen"
 
-#: includes/functions/functions_import.php:646
+#: includes/functions/functions_import.php:644
 msgid "Invalid GEDCOM format"
 msgstr "Ongeldig GEDCOM 5.5 formaat"
 
-#: includes/functions/functions_mail.php:183 includes/functions/functions_mail.php:193 message.php:50 message.php:234
+#: includes/functions/functions_mail.php:181 includes/functions/functions_mail.php:191 message.php:50 message.php:234
 msgid "Message was not sent"
 msgstr "Bericht werd niet verstuurd"
 
 #. I18N: %s is an error message
-#: includes/functions/functions_mail.php:184 includes/functions/functions_mail.php:194
+#: includes/functions/functions_mail.php:182 includes/functions/functions_mail.php:192
 #, php-format
 msgid "Mailer error: %s"
 msgstr "Mailer fout: %s"
@@ -8211,7 +8212,7 @@ msgstr "De details van deze persoon zijn privé."
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Deze persoon bestaat niet, of u heeft geen permissie om dit te zien."
 
-#: individual.php:287
+#: individual.php:293
 msgid "Click here to open or close the sidebar"
 msgstr "Klik hier om het zijpaneel te openen of te sluiten"
 
@@ -8245,7 +8246,7 @@ msgstr "Door het verwijderen van het gezin verbreekt u de koppeling tussen alle 
 
 #. I18N: Menu option.  Add [the current page] to the list of favorites
 #. I18N: Menu option.  Add [the current page] to the list of favorites
-#: library/WT/Controller/Family.php:167 library/WT/Controller/Individual.php:407 library/WT/Controller/Media.php:138 library/WT/Controller/Note.php:114 library/WT/Controller/Repository.php:114 library/WT/Controller/Source.php:114 library/WT/MenuBar.php:259
+#: library/WT/Controller/Family.php:167 library/WT/Controller/Individual.php:407 library/WT/Controller/Media.php:138 library/WT/Controller/Note.php:114 library/WT/Controller/Repository.php:114 library/WT/Controller/Source.php:114 library/WT/MenuBar.php:258
 msgid "Add to favorites"
 msgstr "Voeg aan favorieten toe"
 
@@ -12316,7 +12317,7 @@ msgid "Text"
 msgstr "Tekst"
 
 #. I18N: gedcom tag TIME
-#: library/WT/Gedcom/Tag.php:337 modules_v3/calendar_utilities/plugins/calculators.php:110
+#: library/WT/Gedcom/Tag.php:337 modules_v3/calendar_utilities/plugins/calculators.php:108
 msgid "Time"
 msgstr "Tijd"
 
@@ -13523,124 +13524,124 @@ msgstr "Schilderij"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date
 #. for codes
-#: library/WT/I18N.php:184
+#: library/WT/I18N.php:185
 msgid "%j %F %Y"
 msgstr "%j %F %Y"
 
 #. I18N: This is the format string for the time-of-day.  See
 #. http://php.net/date for codes
-#: library/WT/I18N.php:186
+#: library/WT/I18N.php:187
 msgid "%H:%i:%s"
 msgstr "%H:%i:%s"
 
-#: library/WT/I18N.php:188
+#: library/WT/I18N.php:189
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 msgstr "ALFABET_hoofdletters=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-#: library/WT/I18N.php:191
+#: library/WT/I18N.php:192
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
 msgstr "ALFABET_kleineletters=abcdefghijklmnopqrstuvwxyz"
 
 #. I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
-#: library/WT/I18N.php:194
+#: library/WT/I18N.php:195
 msgid "WEEK_START=0"
 msgstr "WEEK_START=0"
 
 #. I18N: This punctuation is used to separate lists of items.
-#: library/WT/I18N.php:204
+#: library/WT/I18N.php:205
 msgid ", "
 msgstr ", "
 
 #. I18N: This is the name of the MySQL collation that applies to your
 #. language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en
 #. /charset-unicode-sets.html
-#: library/WT/I18N.php:207
+#: library/WT/I18N.php:208
 msgid "utf8_unicode_ci"
 msgstr "utf8_unicode_ci"
 
 #. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is
 #. the percent symbol.  Some languages require a (non-breaking) space between
 #. the two, or a different symbol.
-#: library/WT/I18N.php:314
+#: library/WT/I18N.php:315
 #, php-format
 msgid "%s%%"
 msgstr "%s%%"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (stillborn)
-#: library/WT/I18N.php:368
+#: library/WT/I18N.php:369
 msgid "(stillborn)"
 msgstr "(doodgeboren)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (in infancy)
-#: library/WT/I18N.php:371
+#: library/WT/I18N.php:372
 msgid "(in infancy)"
 msgstr "(in kindertijd)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (in childhood)
-#: library/WT/I18N.php:374
+#: library/WT/I18N.php:375
 msgid "(in childhood)"
 msgstr "(tijdens kindzijn)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (aged less than 21 years)
-#: library/WT/I18N.php:403
+#: library/WT/I18N.php:404
 #, php-format
 msgid "(aged less than %s)"
 msgstr "(ouderdom minder dan %s)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (aged more than 21 years)
-#: library/WT/I18N.php:406
+#: library/WT/I18N.php:407
 #, php-format
 msgid "(aged more than %s)"
 msgstr "(ouderdom meer dan %s)"
 
 #. I18N: Description of an individual’s age at an event.  e.g. Died 14 Jan
 #. 1900 (aged 43 years)
-#: library/WT/I18N.php:409 library/WT/I18N.php:413
+#: library/WT/I18N.php:410 library/WT/I18N.php:414
 #, php-format
 msgid "(aged %s)"
 msgstr "(ouderdom %s)"
 
-#: library/WT/I18N.php:431
+#: library/WT/I18N.php:432
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
 msgstr[0] "%s jaar geleden"
 msgstr[1] "%s jaren geleden"
 
-#: library/WT/I18N.php:434
+#: library/WT/I18N.php:435
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
 msgstr[0] "%s maand geleden"
 msgstr[1] "%s maanden geleden"
 
-#: library/WT/I18N.php:437
+#: library/WT/I18N.php:438
 #, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "%s dag geleden"
 msgstr[1] "%s dagen geleden"
 
-#: library/WT/I18N.php:440
+#: library/WT/I18N.php:441
 #, php-format
 msgid "%s hour ago"
 msgid_plural "%s hours ago"
 msgstr[0] "%s uur geleden"
 msgstr[1] "%s uren geleden"
 
-#: library/WT/I18N.php:443
+#: library/WT/I18N.php:444
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] "%s minuut geleden"
 msgstr[1] "%s minuten geleden"
 
-#: library/WT/I18N.php:445
+#: library/WT/I18N.php:446
 #, php-format
 msgid "%s second ago"
 msgid_plural "%s seconds ago"
@@ -13649,65 +13650,69 @@ msgstr[1] "%s seconden geleden"
 
 #. I18N: Display %s [records per page], %s is a placeholder for listbox
 #. containing numeric options
-#: library/WT/I18N.php:662
+#: library/WT/I18N.php:663
 #, php-format
 msgid "Display %s"
 msgstr "Toon %s"
 
 #. I18N: button label, first page
-#: library/WT/I18N.php:705 modules_v3/fancy_treeview/module.php:863
+#: library/WT/I18N.php:706 modules_v3/fancy_treeview/module.php:863
 msgid "first"
 msgstr "eerste"
 
 #. I18N: button label, last page
-#: library/WT/I18N.php:706
+#: library/WT/I18N.php:707
 msgid "last"
 msgstr "laatste"
 
 #. I18N: button label, previous page
-#: library/WT/I18N.php:708 modules_v3/batch_update/admin_batch_update.php:98
+#: library/WT/I18N.php:709 modules_v3/batch_update/admin_batch_update.php:98
 msgid "previous"
 msgstr "vorige"
 
-#: library/WT/I18N.php:710 library/WT/I18N.php:721
+#: library/WT/I18N.php:711 library/WT/I18N.php:722
 msgid "No records to display"
 msgstr "Geen records om te tonen"
 
 #. I18N: %s are placeholders for numbers
-#: library/WT/I18N.php:711 library/WT/I18N.php:712
+#: library/WT/I18N.php:712 library/WT/I18N.php:713
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
 msgstr "Toont %1$s tot %2$s van %3$s"
 
 #. I18N: %s is a placeholder for a number
-#: library/WT/I18N.php:713
+#: library/WT/I18N.php:714
 #, php-format
 msgid "(filtered from %s total entries)"
 msgstr "(Gefilterd uit %s stuks)"
 
-#: library/WT/I18N.php:717 library/WT/I18N.php:718
+#: library/WT/I18N.php:718 library/WT/I18N.php:719
 msgid "Loading…"
 msgstr "Laden...."
 
-#: library/WT/MenuBar.php:71 modules_v3/widget_quicklinks/module.php:72
+#: library/WT/MenuBar.php:69 modules_v3/widget_quicklinks/module.php:72
 msgid "My pedigree"
 msgstr "Mijn kwartierstaat"
 
-#: library/WT/MenuBar.php:77 modules_v3/widget_quicklinks/module.php:73 themes/_administration/header.php:94
+#: library/WT/MenuBar.php:75 modules_v3/widget_quicklinks/module.php:73 themes/_administration/header.php:94
 msgid "My individual record"
 msgstr "Mijn persoonsrecord"
 
-#: library/WT/MenuBar.php:144 themes/_administration/header.php:220
+#: library/WT/MenuBar.php:142 themes/_administration/header.php:220
 msgid "Reports"
 msgstr "Rapporten"
 
-#: library/WT/MenuBar.php:167 modules_v3/simpl_pages/module.php:415 themes/_administration/header.php:221
+#: library/WT/MenuBar.php:165 modules_v3/simpl_pages/module.php:415 themes/_administration/header.php:221
 msgid "Resources"
 msgstr "Resources"
 
-#: library/WT/MenuBar.php:185 lifespan.php:302 medialist.php:138 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:58 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:96 modules_v3/descendancy/module.php:98 modules_v3/descendancy/module.php:131 modules_v3/families/module.php:144 modules_v3/individuals/module.php:144 search.php:34 search.php:240 search.php:521 search_advanced.php:299 themes/colors/header.php:118 themes/colors/header.php:119 themes/levy/header.php:110 themes/levy/header.php:111 themes/webtrees/header.php:122 themes/webtrees/header.php:123 themes/xenea/header.php:108
+#: library/WT/MenuBar.php:183 lifespan.php:302 medialist.php:138 modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:58 modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:96 modules_v3/descendancy/module.php:98 modules_v3/descendancy/module.php:131 modules_v3/families/module.php:144 modules_v3/individuals/module.php:144 search.php:34 search.php:240 search.php:521 search_advanced.php:299 themes/colors/header.php:118 themes/colors/header.php:119 themes/levy/header.php:110 themes/levy/header.php:111 themes/webtrees/header.php:122 themes/webtrees/header.php:123 themes/xenea/header.php:108
 msgid "Search"
 msgstr "Zoek"
+
+#: library/WT/MenuBar.php:195
+msgid "dansk"
+msgstr "deens"
 
 #: library/WT/Note.php:85
 msgid "…"
@@ -13784,7 +13789,7 @@ msgid "“%s”"
 msgstr "“%s”"
 
 #. I18N: This is a report footer. %s is the name of the application.
-#: library/WT/Report/Base.php:217
+#: library/WT/Report/Base.php:215
 #, php-format
 msgid "Generated by %s"
 msgstr "Gegenereerd door %s"
@@ -15722,7 +15727,7 @@ msgstr "Toon media objecten zonder TYPE"
 #. I18N: The name of a module. Dropbox is a trademark.  Do not translate it.
 #: modules_v3/backup_to_dropbox/module.php:36
 msgid "Backup to Dropbox"
-msgstr "Terug naar boven"
+msgstr "Back-up naar Dropbox"
 
 #: modules_v3/backup_to_dropbox/module.php:41
 msgid "Allows you to backup your media and other files to a Dropbox account"
@@ -15946,80 +15951,80 @@ msgid "Select the utilities you want to display"
 msgstr "Selecteer de hulpprogramma's die getoond moeten worden."
 
 #. I18N: Name of a plugin.
-#: modules_v3/calendar_utilities/plugins/calculators.php:30
+#: modules_v3/calendar_utilities/plugins/calculators.php:28
 msgid "Calculators"
 msgstr "Calculators"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:74
+#: modules_v3/calendar_utilities/plugins/calculators.php:72
 msgid "Day of the Week Calculator"
 msgstr "Dag van de week calculator"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:104
+#: modules_v3/calendar_utilities/plugins/calculators.php:102
 msgid "Get Date"
 msgstr "Verkrijg datum"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:108
+#: modules_v3/calendar_utilities/plugins/calculators.php:106
 msgid "Day of the week"
 msgstr "Dag van de week"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:130
+#: modules_v3/calendar_utilities/plugins/calculators.php:128
 msgid "Past"
 msgstr "Verleden"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:130
+#: modules_v3/calendar_utilities/plugins/calculators.php:128
 msgid "Future"
 msgstr "Toekomst"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:149
+#: modules_v3/calendar_utilities/plugins/calculators.php:147
 msgid "That date is invalid"
 msgstr "Die datum is ongeldig"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:164
+#: modules_v3/calendar_utilities/plugins/calculators.php:162
 msgid "Relationship Calculator"
 msgstr "Verwantschap calculator"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:170
+#: modules_v3/calendar_utilities/plugins/calculators.php:168
 msgid "Given a common blood ancestor, <strong>X</strong>"
 msgstr "Geeft een gemeenschappelijke voorouder, <strong>X</strong>"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:173
+#: modules_v3/calendar_utilities/plugins/calculators.php:171
 msgid "The first relationship to <strong>X</strong> is"
 msgstr "De eerste relatie tot <strong>X</strong> is"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:181
+#: modules_v3/calendar_utilities/plugins/calculators.php:179
 msgid "The relationship of <strong>D</strong> to <strong>X</strong> is"
 msgstr "De relatie van <strong>D</strong> naar <strong>X</strong> is"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:390
+#: modules_v3/calendar_utilities/plugins/calculators.php:388
 msgid "Birth Date Calculator"
 msgstr "Geboortedatum calculator"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:393
+#: modules_v3/calendar_utilities/plugins/calculators.php:391
 msgid "Event Date"
 msgstr "Gebeurtenisdatum"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:401
+#: modules_v3/calendar_utilities/plugins/calculators.php:399
 msgid "months"
 msgstr "maanden"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:403
+#: modules_v3/calendar_utilities/plugins/calculators.php:401
 msgid "days"
 msgstr "dagen"
 
-#: modules_v3/calendar_utilities/plugins/calculators.php:406
+#: modules_v3/calendar_utilities/plugins/calculators.php:404
 msgid "Estimated date of birth"
 msgstr "Geschatte geboortedatum"
 
 #. I18N: Name of a plugin.
-#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:30
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:28
 msgid "Ecclesiastical Dates"
 msgstr "Kerkelijke datums"
 
-#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:259 modules_v3/calendar_utilities/plugins/regnal_years.php:33
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:257 modules_v3/calendar_utilities/plugins/regnal_years.php:31
 msgid "<div id=\"popup\"><p>There are several different areas. They operate as follows.</p><p><b>1. Calculation of major moveable feasts.</b></p><p>Since the ecclesiastical calendar is based on lunar rather than solar cycles, certain key holidays (feasts) occur on different days each year. The method of calculating these feasts has also changed since the council of Nicea (325 A.D.). The button labeled \"Calculate Holidays\" calculates the dates of seven major feasts for the year entered in the field labeled \"Year\", and displays the results below this field. The only restrictions are that the number entered in the field \"Year\" must be an integer (no fractions) greater than zero. However, the holidays generated are only valid for dates since 325 A.D. (Early Christian and Roman dating is another story). Also, for purposes of calculation, I have assumed that the ecclesiastical year begins on January first, even though this standard was only gradually accepted. If you are working with early monastic documents you might want to consider that dates from December 25th through March may be \"off\" by one year. To a Benedictine, for instance (to whom the year began on December 25th), the feast of the Innocents in 1450 would be December 28th, 1450, while to others it might be December 28th, 1449. In fact, before 1582, most calendars did not have the year begin on January 1st, even though the calculation of the moveable feasts acted as if it did. In England, the year \"began\" either on December 25th, or, more frequently on March 25th (Lady Day), until 1752. These vagaries are not something I wanted to include in the calculations, since they often varied quite a bit. The calculations for the holidays will take into account the days dropped from the calendar when the \"New style\" was adopted, since these affect the month and day of Easter. Conventions about the beginning of the year are easily corrected for.</p><p><b>2. Old and New style dating and Day of the week</b></p><p>When the Pope Gregory revised the calendar in 1582, a certain number of days were omitted from the calendar at a particular time, resulting in two separate styles of dating. England persisted in using the \"Old Style\" until 1752, because of religious differences. The Old Style also often dated the beginning of the year from March 25 rather than January 1, and this area of the site takes this difference into account. Thus March 8, 1735, Old Style is really March 19, 1736 in the New Style! Occasionally, particularly in dating material between 1582 and 1755 or so, it becomes necessary to convert back and forth.</p><p>Here is a more detailed description of the transition year (in England): 1752.</p><p>The area called \"Convert Old Style to New Style\" converts the old style date to a new style date and returns an answer. The area called \"Convert New Style to Old Style\" converts the new style date to an old style date and enters it in the \"Old style\" fields. You must enter an integer greater than zero for the year.</p><p>You can also calculate the day of the week for both old and new style dates.</p><p>Remember that these forms assume that the year begins on March 25th. If you want to plug in dates derived from the \"Ecclesiastical Holidays\" area, be aware that you will have to subtract 1 from the year for all dates between January 1st and March 24th.</p><p><b>NOTE FOR STUDENTS OF CONTINENTAL HISTORY</b></p><p>Don't try to use this site to calculate dates of documents between 1588 and 1752 because England is a special case during these years.</p></p>"
 msgstr "<Div id = \"popup\"> <p> Er zijn verschillende mogelijkheden. Ze werken als volgt. </ P> <p> <b> 1. Berekening van de belangrijke verplaatsende feesten. </b> </p> <p> Sinds de kerkelijke kalender gebaseerd is op de maan in plaats van de zonnecycli, zullen bepaalde belangrijke feestdagen (feesten) zich voordoen op verschillende dagen per jaar. De wijze van berekening van deze feesten is ook veranderd sinds het concilie van Nicea (325 A.D.). De knop \"Bereken feestdagen\" berekent de data van de zeven belangrijkste feesten van het jaar ingevoerd in het veld \"Jaar\"  en toont de resultaten hieronder dit veld. De enige beperking is dat het getal in het veld \"Jaar\"  ingevuld, een geheel getal (geen fracties) groter dan nul moet zijn. Echter, de feestdagen gegenereerd zijn enkel geldig voor de data sinds 325 A.D. (vroeg-christelijke en roomse datering is een ander verhaal). Ook ten behoeve van de berekening, heb ik aangenomen dat het kerkelijk jaar begint op de eerste januari, hoewel deze norm word niet overal geaccepteerd. Als u werkt met de oude kloosterdocumenten, zou u rekening moeten houden dat datums van 25 december tot en met maart kunnen \"verschillen\" met één jaar. Voor een ​​Benedictijner, bijvoorbeeld (voor wie het jaar begon op 25 december), zou het feest van de Onnozele Kinderen in 1450 op 28 december 1450 zijn , terwijl  het voor anderen misschien 28 december 1449 zou zijn. In feite, voor 1582, begonnen de meeste kalenders het jaar niet op 1 januari, hoewel de berekening van de verplaatsende feesten deed voorkomen alsof dit wel zo was. In Engeland, het jaar \"begon\", hetzij op 25 december, of, vaker op 25 maart (Maria-Boodschap), tot en met 1752. Deze grillen zijn niet iets wat ik in de berekeningen wilde opnemen, omdat ze vaak nogal wat varieerde. De berekeningen voor de feestdagen zal rekening houden met de dagen minder van de kalender als de \"Nieuwe Stijl\" is aangenomen, omdat deze invloed hebben op de maand en de dag van Pasen. Conventies over het begin van het jaar zijn gemakkelijk gecorrigeerd. </p> <p> <b> 2. Oude en Nieuwe Stijl datering en Dag van de week </b> </p> <p> Als de paus Gregorius de kalender herziet in 1582, wordt een bepaald aantal dagen weggelaten uit de kalender  wat resulteert in twee afzonderlijke stijlen van datering. Engeland gebruikte de \"Oude Stijl\" tot 1752, als gevolg van religieuze verschillen. De Oude Stijl begint ook vaak het jaar vanaf 25 maart in plaats van 1 januari, en dit gedeelte van de website houdt rekening met dit verschil.  Zo is 8 maart 1735, Oude Stijl echt 19 maart 1736 in de Nieuwe Stijl! Soms, in het bijzonder bij materiaal gedateerd tussen 1582 en 1755, is het nodig om dit om te zetten. </p> <p> Hier is een meer gedetailleerde beschrijving van het overgangsjaar (in Engeland): 1752 </p> <p> Het veld genaamd \"Zet Oude Stijl om naar Nieuwe Stijl\" zet de Oude Stijl-datum om naar een ​​Nieuwe Stijl- datum. Het veld genaamd \"Zet Nieuwe Stijl om naar Oude Stijl\" zet de Nieuwe Stijl-datum om in een Oude Stijl-datum en geeft het weer in de \"Oude Stijl\" velden. U moet een geheel getal groter dan nul voor het jaar in te voeren. </p> <p> U kunt ook de dag van de week te berekenen voor zowel Oude Stijl als Nieuwe Stijl-datums. </p> <p> Vergeet niet dat deze formulieren aannemen dat het jaar begint op 25 maart. Als u gebruik maakt van datums afkomstig van het \"Kerkelijke Feestdagen\" veld, let op dat je 1 jaar zal moeten aftrekken voor alle datums tussen 1 januari en 24 maart. </p> <p> <b>OPMERKING VOOR STUDENTEN VAN CONTINENTALE GESCHIEDENIS </b> </ p> <p> Probeer niet om deze site te gebruiken om datums van documenten tussen 1588 en 1752 te berekenen, omdat Engeland een speciaal geval is in die jaren. </p> </ p>"
 
-#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:287 modules_v3/calendar_utilities/plugins/old_new.php:55 modules_v3/calendar_utilities/plugins/regnal_years.php:55
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:285 modules_v3/calendar_utilities/plugins/old_new.php:55 modules_v3/calendar_utilities/plugins/regnal_years.php:53
 msgid "Help with English calendar"
 msgstr "Hulp voor de Engelse kalender"
 
@@ -16033,15 +16038,15 @@ msgid "<div id=\"popup\"><p>There are several different areas. They operate as f
 msgstr "<Div id = \"popup\"> <p> Er zijn verschillende mogelijkheden. Ze werken als volgt. </ P> <p> <b> 1. Berekening van de belangrijke verplaatsende feesten. </b> </p> <p> Sinds de kerkelijke kalender is gebaseerd op de maan in plaats van de zonnecycli, zullen bepaalde belangrijke feestdagen (feesten) zich voordoen op verschillende dagen per jaar. De wijze van berekening van deze feesten is ook veranderd sinds het concilie van Nicea (325 A.D.). De knop \"Bereken feestdagen\" berekent de data van de zeven belangrijkste feesten van het jaar ingevoerd in het veld \"Jaar\" en toont de resultaten hieronder dit veld. De enige beperking is dat het getal in het veld \"Jaar\" ingevuld, een geheel getal (geen fracties) groter dan nul moet zijn. Echter, de feestdagen gegenereerd zijn enkel geldig voor de data sinds 325 A.D. (vroeg-christelijke en roomse datering is een ander verhaal). Ook ten behoeve van de berekening, heb ik aangenomen dat het kerkelijk jaar begint op de eerste januari, hoewel deze norm word niet overal geaccepteerd. Als u werkt met de oude kloosterdocumenten, zou u rekening moeten houden dat datums van 25 december tot en met maart kunnen \"verschillen\" met één jaar. Voor een ​​Benedictijner, bijvoorbeeld (voor wie het jaar begon op 25 december), zou het feest van de Onnozele Kinderen in 1450 op 28 december 1450 zijn , terwijl het voor anderen misschien 28 december 1449 zou zijn. In feite, voor 1582, begonnen de meeste kalenders het jaar niet op 1 januari, hoewel de berekening van de verplaatsende feesten deed voorkomen alsof dit wel zo was. In Engeland, het jaar \"begon\", hetzij op 25 december, of, vaker op 25 maart (Maria-Boodschap), tot en met 1752. Deze grillen zijn niet iets wat ik in de berekeningen wilde opnemen, omdat ze vaak nogal wat varieerde. De berekeningen voor de feestdagen zal rekening houden met de dagen minder van de kalender als de \"Nieuwe Stijl\" is aangenomen, omdat deze invloed hebben op de maand en de dag van Pasen. Conventies over het begin van het jaar zijn gemakkelijk gecorrigeerd. </p> <p> <b> 2. Oude en Nieuwe Stijl datering en Dag van de week </b> </p> <p> Als de paus Gregorius de kalender herziet in 1582, wordt een bepaald aantal dagen weggelaten uit de kalender wat resulteert in twee afzonderlijke stijlen van datering. Engeland gebruikte de \"Oude Stijl\" tot 1752, als gevolg van religieuze verschillen. De Oude Stijl begint ook vaak het jaar vanaf 25 maart in plaats van 1 januari, en dit gedeelte van de website houdt rekening met dit verschil. Zo is 8 maart 1735, Oude Stijl echt 19 maart 1736 in de Nieuwe Stijl! Soms, in het bijzonder bij materiaal gedateerd tussen 1582 en 1755, is het nodig om dit om te zetten. </p> <p> Hier is een meer gedetailleerde beschrijving van het overgangsjaar (in Engeland): 1752 </p> <p> Het veld genaamd \"Zet Oude Stijl om naar Nieuwe Stijl\" zet de Oude Stijl-datum om naar een ​​Nieuwe Stijl- datum. Het veld genaamd \"Zet Nieuwe Stijl om naar Oude Stijl\" zet de Nieuwe Stijl-datum om in een Oude Stijl-datum en geeft het weer in de \"Oude Stijl\" velden. U moet een geheel getal groter dan nul voor het jaar in te voeren. </p> <p> U kunt ook de dag van de week te berekenen voor zowel Oude Stijl als Nieuwe Stijl-datums. </p> <p> Vergeet niet dat deze formulieren aannemen dat het jaar begint op 25 maart. Als u gebruik maakt van datums afkomstig van het \"Kerkelijke Feestdagen\" veld, let op dat je 1 jaar zal moeten aftrekken voor alle datums tussen 1 januari en 24 maart. </p> <p> <b>OPMERKING VOOR STUDENTEN VAN CONTINENTALE GESCHIEDENIS </b> </ p> <p> Probeer niet om deze site te gebruiken om datums van documenten tussen 1588 en 1752 te berekenen, omdat Engeland een speciaal geval is in die jaren. </p> </ p>"
 
 #. I18N: Name of a plugin.
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:30
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:28
 msgid "Regnal Years"
 msgstr "Regeringsjaren"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:50
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:48
 msgid "<p>Dates based on regnal years refer to the year of the current monarch's reign and usually have the format \"year + monarch\" (e.g. \"4 Mary\"). This page will take a date in regnal years and return an ordinary date. For instance, if you enter 6/11 Elizabeth I, Regnal year 1, you will get the year 1559 because June 1st in her first regnal year occurred in 1559.</p>"
 msgstr "<p> Data gebaseerd op regeringsjaren verwijzen naar het jaar van de huidig regerende monarch en hebben normaal gesproken het formaat \"jaar + monarch\" (bijv. \"4 Mary\"). Deze pagina zal een datum in regeringsjaren nemen en weergeven als een gewone datum.  Bijvoorbeeld, als je invoert  6/11 Elizabeth I, regeringsjaar 1, dan krijg je het jaar 1559 omdat 1 juni in haar eerste regeringsjaar voorkwam in 1559 </p>"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:52
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:50
 msgid ""
 "<p>This page is based on work done by Ian MacInnes <span class=\"note\">(imacinnes@albion.edu)</span> at his website <a href=\"http://people.albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's English Calendar</b></a></p>\n"
 "\t\t\t\t<p>\n"
@@ -16051,600 +16056,600 @@ msgstr ""
 "⇥⇥⇥⇥ <p>\n"
 "⇥⇥⇥⇥⇥Zijn site is gemaakt om boeken met datums met  te vervangen, voor diegenen die geïnteresseerd zijn in de Engelse geschiedenis, literatuur en genealogie. Ook voor accuraat Europese geschiedenis buiten Engeland, met uitzondering van de periode 1582-1752. Studenten van continentale documenten die documenten willen dateren uit deze periode kunnen deze link klikken."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:57
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:55
 msgid "The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica."
 msgstr "De formule om Pasen te bereken is ontleend aan de 11de editie van Encyclopedia Brittanica."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:61
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:59
 msgid "Enter the month and day"
 msgstr "Voer maand en dag in"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:62
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:60
 msgid "Month number"
 msgstr "Maand nummer"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:79
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:77
 msgid "Enter the Monarch and Regnal Year"
 msgstr "Voer de monarch en regeringsjaar in"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:125
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:123
 msgid "Regnal Year"
 msgstr "Regeringsjaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:132
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:130
 msgid "Double years such as &quot;1324/5&quot; reflect Old Style dating (see note below)."
 msgstr "Dubbele jaren zoals &quot;1324/5&quot;; geven Oude Stijl datering (zie onderstaande notitie)."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:135
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:133
 msgid "Keep in mind that a monarch's last regnal year is cut short by death or deposition and may not include all dates."
 msgstr "Houdt in gedachten dat het laatste regeringsjaar van een monarch korter is door overlijden of afzetting en dus niet alle datums bevat."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:136
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:134
 msgid "Also, remember that while the so-called &quot;Christian year&quot; began on January 1, the legal year began on March 25. For example, January 1 in Elizabeth I's 1st regnal year occurred in the Christian year1559, but legally the year was still 1558, and would be until March 25. From January 1 to March 24, the convention is to note both years with a slash between them, e.g. &quot;1558/9.&quot;"
 msgstr "Vergeet ook niet dat, terwijl het zogenoemde &quot;christielijke jaar&quot; begon op 1 januari, het wettelijke jaar begon op 25 maart . Bijvoorbeeld 1 januari van het 1e regeringsjaar van Elizabeth I  vond plaats in het christelijke jaar 1559, maar het wettelijke jaar was nog steeds 1558, en zou dat zijn tot 25 maart. Van 1 januari tot 24 maart wordt daarom tussen beide jaren het slash-teken geplaatst bv &quot;1558 / 9.&quot;Dubbele jaren zoals &quot;1324/5&quot;; geven Oude Stijl datering (zie onderstaande notitie)."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:137
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:135
 msgid "Remember also that from 1582 onward, English dates (Old Style) will not correspond with Continental dates."
 msgstr "Onthoud ook dat van 1582 en verder, Engelse datums (Oude Stijl) niet overeenkomen met continentale datums."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:154
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:152
 msgid "You must enter a regnal year"
 msgstr "U moet een regeringsjaar invoeren"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:161
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:159
 msgid "William I only reigned for 21 years"
 msgstr "William I regeerde 21 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:178
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:176
 msgid "William II only reigned for 13 years"
 msgstr "William II regeerde 13 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:194
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:192
 msgid "Henry I only reigned for 36 years"
 msgstr "Henry I regeerde 36 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:211
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:209
 msgid "Stephen only reigned for 19 years"
 msgstr "Stephen regeerde 19 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:226
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:224
 msgid "Henry II only reigned for 35 years"
 msgstr "Henry I regeerde 35 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:242
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:240
 msgid "Richard I only reigned for 10 years"
 msgstr "Richard I regeerde 10 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:258
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:256
 msgid "Henry III only reigned for 57 years"
 msgstr "Henry III regeerde 57 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:274
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:272
 msgid "Edward I only reigned for 35 years"
 msgstr "Edward I regeerde 35 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:290
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:288
 msgid "Edward II only reigned for 20 years"
 msgstr "Edward II regeerde 20 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:306
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:304
 msgid "Edward III only reigned for 51 years"
 msgstr "Edward III regeerde 51 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:319
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:317
 msgid "Richard II only reigned for 23 years"
 msgstr "Richard II regeerde 23 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:335
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:333
 msgid "Henry IV only reigned for 14 years"
 msgstr "Henry IV regeerde 14 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:351
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:349
 msgid "Henry V only reigned for 10 years"
 msgstr "Henry V regeerde 10 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:381
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:379
 msgid "Edward IV only reigned for 23 years"
 msgstr "Edward IV regeerde 23 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:397
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:395
 msgid "Edward V only reigned for 1 year"
 msgstr "Edward V regeerde 1 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:403 modules_v3/calendar_utilities/plugins/regnal_years.php:408 modules_v3/calendar_utilities/plugins/regnal_years.php:413 modules_v3/calendar_utilities/plugins/regnal_years.php:418
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:401 modules_v3/calendar_utilities/plugins/regnal_years.php:406 modules_v3/calendar_utilities/plugins/regnal_years.php:411 modules_v3/calendar_utilities/plugins/regnal_years.php:416
 msgid "Edward V's reign lasted from 9 April to 25 June"
 msgstr "Edward V's regeerperiode duurde van 9 april tot 25 juni"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:426
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:424
 msgid "Richard III only reigned for 3 years"
 msgstr "Richard III regeerde 3 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:442
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:440
 msgid "Henry VII only reigned for 24 years"
 msgstr "Henry VII regeerde 24 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:458
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:456
 msgid "Henry VIII only reigned for 38 years"
 msgstr "Henry VIII regeerde 38 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:474
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:472
 msgid "Edward VI only reigned for 7 years"
 msgstr "Edward VI regeerde 7 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:487
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:485
 msgid "Elizabeth I only reigned for 45 years"
 msgstr "Elizabeth I regeerde 45 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:504
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:502
 msgid "James I had only 23 regnal years as King of England"
 msgstr "James I had 23 regeringsjaren als koning van Engeland"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:520
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:518
 msgid "Charles I only reigned for 24 years"
 msgstr "Charles I regeerde 24 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:536
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:534
 msgid "Charles II only had 37 regnal years"
 msgstr "Charles II had 37 regeringsjaren"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:549
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:547
 msgid "James II only reigned for 4 years"
 msgstr "James II regeerde 4 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:564
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:562
 msgid "Mary only reigned for 4 years"
 msgstr "Mary regeerde 4 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:567
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:565
 msgid "This site calculates the regnal years for Mary, ignoring Philip and his regnal years. The calculation of regnal years between July 9, 1553 and November 17, 1558 is complicated by Mary's marriage to Philip."
 msgstr "Deze website berekent de regeerperiode voor Mary, niet rekening houdend met Philip en zijn regeringsperiode. De berekening van de regeerperiode tussen 9 juli 1553 en 17 november 1558 is lastig door Mary's huwelijk met Philip."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:581
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:579
 msgid "William only reigned for 14 years (the first six with Mary)"
 msgstr "William regeerde 14 jaar (de eerste zes met Mary)"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:596
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:594
 msgid "Anne only reigned for 13 years."
 msgstr "Anne regeerde 13 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:612
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:610
 msgid "George I only reigned for 13 years."
 msgstr "George I regeerde 13 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:623
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:621
 msgid "George II only reigned for 34 years."
 msgstr "George II regeerde 34 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:648
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:646
 msgid "George III only reigned for 60 years."
 msgstr "George III regeerde 60 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:664
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:662
 msgid "George III only reigned for 11 years."
 msgstr "George III regeerde 11 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:677
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:675
 msgid "William IV only reigned for 7 years."
 msgstr "William IV regeerde 7 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:693
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:691
 msgid "Victoria only reigned for 64 years."
 msgstr "Victoria regeerde 64 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:709
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:707
 msgid "Edward VII only reigned for 10 years."
 msgstr "Edward VII regeerde 10 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:722
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:720
 msgid "George V only reigned for 26 years."
 msgstr "George V regeerde 26 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:738
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:736
 msgid "George VI only reigned for 16 years."
 msgstr "George VI regeerde 16 jaar"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:765
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:763
 msgid "Edward VIII only reigned from Jan 20 to December 11, 1936."
 msgstr "Edward VIII regeerde van 20 januari tot 11 december 1936."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:770
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:768
 msgid "John was crowned on Ascension day in 1199. His regnal years run from one Ascension day to the next and are thus highly irregular. Use the Ecclesiastical calendar page to calculate Ascension day"
 msgstr "John werd gekroond op Hemelvaartsdag in 1199. Zijn regeringsjaren lopen van Hemelvaartsdag tot de volgende en zijn dus uiterst onregelmatig. Gebruik de kerkelijke kalender pagina om Hemelvaartsdag te berekenen."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:775
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:773
 msgid "Jane only ruled from July 6th to July 19th, 1553"
 msgstr "Jane regeerde van de 6de tot de 19de juli 1553"
 
 #. I18N: Name of a plugin.
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:30
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:28
 msgid "Yearly Calendar"
 msgstr "Jaarlijkse Kalender"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:67 modules_v3/calendar_utilities/plugins/yearly_calendar.php:128
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:65 modules_v3/calendar_utilities/plugins/yearly_calendar.php:126
 msgid "Saint Pauls Day"
 msgstr "Bekering van de Heilige Apostel Paulus"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:68
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:66
 msgid "Thanksgiving (Denmark)"
 msgstr "Thanksgiving (Deens)"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:69
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:67
 msgid "Saint Petris Chair"
 msgstr "Sint-Petrusdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:70
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:68
 msgid "40 Knights"
 msgstr "40 ridders dag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:72
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:70
 msgid "Saint Valpurgis Day"
 msgstr "Sint Walburgis"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:73
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:71
 msgid "Saint Jacobi Day"
 msgstr "Sint Jacob dag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:75
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:73
 msgid "Midsummer Day"
 msgstr "Midzomerdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:76
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:74
 msgid "7 September Day"
 msgstr "Zeven Slapers van Efese"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:78
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:76
 msgid "Halloween Day"
 msgstr "Allerheiligen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:79
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:77
 msgid "Day after Halloween"
 msgstr "Allerzielen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:80
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:78
 msgid "Saint Martin Day"
 msgstr "Sint-Maarten"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:83
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:81
 msgid "Saint Lorentz Day"
 msgstr "Sint Laurentius"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:84
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:82
 msgid "Mary Prayers Day"
 msgstr "Maria Boodschap"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:85
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:83
 msgid "Saint Bartholomeus Day"
 msgstr "Sint Bartolomeüs"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:87
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:85
 msgid "Saint Severinus Day"
 msgstr "Sint Severinus"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:91
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:89
 msgid "Sunday before Holly 3 Kings"
 msgstr "Zondag voor 3 Koningen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:94
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:92
 msgid "Holly 3 Kings"
 msgstr "Driekoningen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:95
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:93
 msgid "Birth of Christ"
 msgstr "Geboorte van Christus"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:98
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:96
 msgid "Shrove Tuesday"
 msgstr "Vastenavond"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:99
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:97
 msgid "Ash Wedensday"
 msgstr "Aswoensdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:100
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:98
 msgid "Shrove Sunday"
 msgstr "1e zondag van de vasten"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:103
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:101
 msgid "1st Shrove Sunday"
 msgstr "2e zondag van de vasten"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:104
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:102
 msgid "2nd Shrove Sunday"
 msgstr "3e zondag van de vasten"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:105
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:103
 msgid "3rd Shrove Sunday"
 msgstr "4e zondag van de vasten"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:106
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:104
 msgid "4th Shrove Sunday"
 msgstr "5e zondag van de vasten"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:107
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:105
 msgid "5th Shrove Sunday"
 msgstr "Palmzondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:110
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:108
 msgid "9th Sunday before Easter"
 msgstr "9e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:111
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:109
 msgid "8th Sunday before Easter"
 msgstr "8e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:112
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:110
 msgid "7th Sunday before Easter"
 msgstr "7e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:113
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:111
 msgid "6th Sunday before Easter"
 msgstr "6e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:114
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:112
 msgid "5th Sunday before Easter"
 msgstr "5e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:115
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:113
 msgid "4th Sunday before Easter"
 msgstr "4e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:116
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:114
 msgid "3rd Sunday before Easter"
 msgstr "3e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:117
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:115
 msgid "2nd Sunday before Easter"
 msgstr "2e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:118
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:116
 msgid "1st Sunday before Easter"
 msgstr "1e zondag voor Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:121
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:119
 msgid "Tamper Day"
 msgstr "Quatertemperdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:122 modules_v3/calendar_utilities/plugins/yearly_calendar.php:123 modules_v3/calendar_utilities/plugins/yearly_calendar.php:124
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:120 modules_v3/calendar_utilities/plugins/yearly_calendar.php:121 modules_v3/calendar_utilities/plugins/yearly_calendar.php:122
 msgid "Restdays/week"
 msgstr "Rustdagen/week"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:129
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:127
 msgid "Good Friday"
 msgstr "Goede Vrijdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:130
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:128
 msgid "Maundy Thursday"
 msgstr "Witte Donderdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:132
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:130
 msgid "Easter Monday"
 msgstr "paasmaandag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:135 modules_v3/calendar_utilities/plugins/yearly_calendar.php:136 modules_v3/calendar_utilities/plugins/yearly_calendar.php:137 modules_v3/calendar_utilities/plugins/yearly_calendar.php:139 modules_v3/calendar_utilities/plugins/yearly_calendar.php:140 modules_v3/calendar_utilities/plugins/yearly_calendar.php:141
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:133 modules_v3/calendar_utilities/plugins/yearly_calendar.php:134 modules_v3/calendar_utilities/plugins/yearly_calendar.php:135 modules_v3/calendar_utilities/plugins/yearly_calendar.php:137 modules_v3/calendar_utilities/plugins/yearly_calendar.php:138 modules_v3/calendar_utilities/plugins/yearly_calendar.php:139
 msgid "Easter Sunday"
 msgstr "paaszondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:144
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:142
 msgid "1st Sunday after Easter"
 msgstr "1e zondag na Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:145
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:143
 msgid "2nd Sunday after Easter"
 msgstr "2e zondag na Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:146
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:144
 msgid "3rd Sunday after Easter"
 msgstr "3e zondag na Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:147
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:145
 msgid "4th Sunday after Easter"
 msgstr "4e zondag na Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:148
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:146
 msgid "5th Sunday after Easter"
 msgstr "5e zondag na Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:149
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:147
 msgid "6th Sunday after Easter"
 msgstr "6e zondag na Pasen"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:152
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:150
 msgid "Ascension Day"
 msgstr "Hemelvaartsdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:153
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:151
 msgid "Prior Day (Denmark)"
 msgstr "Gebedsdag voor het gewas (Deens)"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:156
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:154
 msgid "Pentecost"
 msgstr "Pinksterzondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:157 modules_v3/calendar_utilities/plugins/yearly_calendar.php:223
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:155 modules_v3/calendar_utilities/plugins/yearly_calendar.php:221
 msgid "2 Pentecost"
 msgstr "2e Pinksterdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:160
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:158
 msgid "Trinity Sunday"
 msgstr "Trinitatis zondag of Drievuldigheidszondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:161
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:159
 msgid "1st Sunday after Trinity Sunday"
 msgstr "1e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:162
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:160
 msgid "2nd Sunday after Trinity Sunday"
 msgstr "2e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:163
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:161
 msgid "3rd Sunday after Trinity Sunday"
 msgstr "3e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:164
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:162
 msgid "4th Sunday after Trinity Sunday"
 msgstr "4e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:165
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:163
 msgid "5th Sunday after Trinity Sunday"
 msgstr "5e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:166
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:164
 msgid "6th Sunday after Trinity Sunday"
 msgstr "6e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:167
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:165
 msgid "7th Sunday after Trinity Sunday"
 msgstr "7e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:168
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:166
 msgid "8th Sunday after Trinity Sunday"
 msgstr "8e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:169
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:167
 msgid "9th Sunday after Trinity Sunday"
 msgstr "9e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:170
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:168
 msgid "10th Sunday after Trinity Sunday"
 msgstr "10e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:171
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:169
 msgid "11th Sunday after Trinity Sunday"
 msgstr "11e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:172
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:170
 msgid "12th Sunday after Trinity Sunday"
 msgstr "12e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:173
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:171
 msgid "13th Sunday after Trinity Sunday"
 msgstr "13e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:174
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:172
 msgid "14th Sunday after Trinity Sunday"
 msgstr "14e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:175
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:173
 msgid "15th Sunday after Trinity Sunday"
 msgstr "15e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:176
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:174
 msgid "16th Sunday after Trinity Sunday"
 msgstr "16e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:177
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:175
 msgid "17th Sunday after Trinity Sunday"
 msgstr "17e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:178
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:176
 msgid "18th Sunday after Trinity Sunday"
 msgstr "18e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:179
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:177
 msgid "19th Sunday after Trinity Sunday"
 msgstr "19e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:180
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:178
 msgid "20th Sunday after Trinity Sunday"
 msgstr "20e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:181
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:179
 msgid "21st Sunday after Trinity Sunday"
 msgstr "21e zondag na Trinitatis zondag"
 
 #. I18N::translate('22nd Sunday after Trinity Sunday
 #. Advent or Benedicta - HOW TO CALCULATE????
 #. If 23 Benedicta is Adventus 1 then stop calculate Benedicta
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:187
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:185
 msgid "23rd Sunday after Trinity Sunday"
 msgstr "23e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:188 modules_v3/calendar_utilities/plugins/yearly_calendar.php:191 modules_v3/calendar_utilities/plugins/yearly_calendar.php:194 modules_v3/calendar_utilities/plugins/yearly_calendar.php:197 modules_v3/calendar_utilities/plugins/yearly_calendar.php:200
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:186 modules_v3/calendar_utilities/plugins/yearly_calendar.php:189 modules_v3/calendar_utilities/plugins/yearly_calendar.php:192 modules_v3/calendar_utilities/plugins/yearly_calendar.php:195 modules_v3/calendar_utilities/plugins/yearly_calendar.php:198
 msgid "Advent Sunday"
 msgstr "Adventszondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:190
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:188
 msgid "24th Sunday after Trinity Sunday"
 msgstr "24e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:193
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:191
 msgid "25th Sunday after Trinity Sunday"
 msgstr "25e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:196
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:194
 msgid "26th Sunday after Trinity Sunday"
 msgstr "26e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:199
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:197
 msgid "27th Sunday after Trinity Sunday"
 msgstr "27e zondag na Trinitatis zondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:203
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:201
 msgid "2nd Advent Sunday"
 msgstr "2e adventszondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:204
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:202
 msgid "3rd Advent Sunday"
 msgstr "3e adventszondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:207
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:205
 msgid "4th Advent Sunday"
 msgstr "4e adventszondag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:211
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:209
 msgid "Christmas Day"
 msgstr "Kerstdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:212
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:210
 msgid "1st Day after Christmas"
 msgstr "2e Kerstdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:213
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:211
 msgid "2nd Day after Christmas"
 msgstr "2e dag na Kerst"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:216
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:214
 msgid "Jubilee year"
 msgstr "Jubileumjaar"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:219
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:217
 msgid "Leap Day"
 msgstr "Schrikkeldag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:220
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:218
 msgid "Leap Year"
 msgstr "Schrikkeljaar"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:224
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:222
 msgid "Easter Tuesday"
 msgstr "Paasdinsdag"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:225
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:223
 msgid "Visitatio Assumption"
 msgstr "Maria-Visitatie"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:226
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:224
 msgid "Annunciation of the Virgin Mary"
 msgstr "Aankondiging van de Heer/Maria Boodschap"
 
 #. I18N::translate('Annuntatio Assumption Virginis')
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:227
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:225
 msgid "Saint Michaelmas"
 msgstr "Sint Michaël"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:230
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:228
 msgid "New Year"
 msgstr "Nieuwjaar"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:300
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:298
 msgid "Choose Year"
 msgstr "Kies Jaar"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:311
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:309
 msgid "First part of year"
 msgstr "Eerste helft van het jaar"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:313
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:311
 msgid "Second part of year"
 msgstr "Tweede helft van het jaar"
 
@@ -16723,120 +16728,120 @@ msgid "unlimited"
 msgstr "onbeperkt"
 
 #. I18N: Configuration page title
-#: modules_v3/chart_relationship/module.php:165
+#: modules_v3/chart_relationship/module.php:200
 msgid "Relationship calculation options"
 msgstr "Verwantschapsberekening opties"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:169
+#: modules_v3/chart_relationship/module.php:210
 msgid "Chart settings"
 msgstr "Diagram instellingen"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:170
+#: modules_v3/chart_relationship/module.php:211
 msgid "Options to show in the chart"
 msgstr "Optie om te tonen in het diagram"
 
-#: modules_v3/chart_relationship/module.php:172 modules_v3/chart_relationship/module.php:252 modules_v3/chart_relationship/module.php:311 modules_v3/chart_relationship/module.php:349 relationship.php:94
+#: modules_v3/chart_relationship/module.php:213 modules_v3/chart_relationship/module.php:293 modules_v3/chart_relationship/module.php:352 modules_v3/chart_relationship/module.php:390 relationship.php:94
 msgid "Find a closest relationship via common ancestors"
 msgstr "Vind de dichtstbijzijnde verwantschap via gemeenschappelijke voorouders"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:176
+#: modules_v3/chart_relationship/module.php:217
 msgid "Determines the shortest path between two individuals via a LCA (lowest common ancestor), i.e. a common ancestor who only appears on the path once."
 msgstr "Bepaalt de kortste weg tussen twee personen via een LCA (laagste gemeenschappelijke voorouder), b.v. een gemeenschappelijke voorouder, die maar eenmaal voorkomt op het pad."
 
-#: modules_v3/chart_relationship/module.php:181 modules_v3/chart_relationship/module.php:258 modules_v3/chart_relationship/module.php:317 modules_v3/chart_relationship/module.php:355 relationship.php:100
+#: modules_v3/chart_relationship/module.php:222 modules_v3/chart_relationship/module.php:299 modules_v3/chart_relationship/module.php:358 modules_v3/chart_relationship/module.php:396 relationship.php:100
 msgid "Find all smallest lowest common ancestors, show a closest connection for each"
 msgstr "Vind alle kleinste laagste gemeenschappelijke voorouders, toon de kortste verbinding voor elk."
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:185
+#: modules_v3/chart_relationship/module.php:226
 msgid "Each SLCA (smallest lowest common ancestor) essentially represents a part of the tree which both individuals share (as part of their ancestors). More technically, the SLCA set of two individuals is a subset of the LCA set (excluding all LCAs that are themselves ancestors of other LCAs)."
 msgstr "Elke SLCA (kleinste laagste gemeenschappelijke voorouder) is in wezen een gedeelte va de stamboom welke personen delen (als deel van hun voorouders). Meer technisch, de SLCA instelling van 2 personen is een subinstelling van de LCA instelling (exclusief alle LCAs die zelf voorouders van ander LCAs zijn)."
 
-#: modules_v3/chart_relationship/module.php:190 modules_v3/chart_relationship/module.php:264 modules_v3/chart_relationship/module.php:323 modules_v3/chart_relationship/module.php:361 relationship.php:106
+#: modules_v3/chart_relationship/module.php:231 modules_v3/chart_relationship/module.php:305 modules_v3/chart_relationship/module.php:364 modules_v3/chart_relationship/module.php:402 relationship.php:106
 msgid "Find all relationships via lowest common ancestors"
 msgstr "Vind alle verwantschappen via laagste gemeenschappelijke voorouders."
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:194 relationship.php:172
+#: modules_v3/chart_relationship/module.php:235 relationship.php:172
 msgid "All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\">Coefficient of Relationship</a>"
 msgstr "Alle paden tussen de twee personen die bijdragen aan de CoR (Coëfficiënt van verwantschap), zoals hier gedefiniëerd: <a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\">Coefficient of Relationship</a>"
 
-#: modules_v3/chart_relationship/module.php:199 modules_v3/chart_relationship/module.php:270 relationship.php:112
+#: modules_v3/chart_relationship/module.php:240 modules_v3/chart_relationship/module.php:311 relationship.php:112
 msgid "Find the closest overall connections (preferably via common ancestors)"
 msgstr "Vind de dichtstbijzijnde algemene verbinding (bij voorkeur via gemeenschappelijke voorouders)"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:203
+#: modules_v3/chart_relationship/module.php:244
 msgid "Prefers partial paths via common ancestors, even if there is no direct common ancestor."
 msgstr "Geeft de voorkeur aan een gedeeltelijke paden via gemeenschappelijke voorouders, zelfs als er geen directe gemeenschappelijke voorouder is."
 
-#: modules_v3/chart_relationship/module.php:208 modules_v3/chart_relationship/module.php:276 relationship.php:118
+#: modules_v3/chart_relationship/module.php:249 modules_v3/chart_relationship/module.php:317 relationship.php:118
 msgid "Find a closest relationship via common ancestors, or fallback to the closest overall connection"
 msgstr "Vind de dichtsbijzijnde verwantschap via gemeenschappelijke voorouders of val terug naar de dichtstbijzijnde algemene verbinding"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:212
+#: modules_v3/chart_relationship/module.php:253
 msgid "For close relationships similar to the previous option, but faster. Internally just a combination of two other methods."
 msgstr "Voor dichtstbijzijnde verwantschappen vergelijkbaar aan de vorige optie, maar sneller. Eigenlijk een combinatie van twee andere methoden."
 
-#: modules_v3/chart_relationship/module.php:217 modules_v3/chart_relationship/module.php:282 relationship.php:125 relationship.php:132
+#: modules_v3/chart_relationship/module.php:258 modules_v3/chart_relationship/module.php:323 relationship.php:125 relationship.php:132
 msgid "Find the closest overall connections"
 msgstr "Vind de dichtstbijzijnde algemene verbinding"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:223 modules_v3/chart_relationship/module.php:288
+#: modules_v3/chart_relationship/module.php:264 modules_v3/chart_relationship/module.php:329
 msgid "Find other/all overall connections"
 msgstr "Vind andere/alle algemene verbindingen"
 
-#: modules_v3/chart_relationship/module.php:229
+#: modules_v3/chart_relationship/module.php:270
 msgid "How much recursion to use when searching for relationships"
 msgstr "Hoeveel recursie te gebruiken bij het zoeken naar verwantschappen"
 
 #. I18N: Configuration option for relationship chart
-#: modules_v3/chart_relationship/module.php:233
+#: modules_v3/chart_relationship/module.php:274
 msgid "Searching for all possible relationships can take a lot of time in complex trees, This option can help limit the extent of relationships included in the relationship chart."
 msgstr "Zoeken naar alle mogelijke verwantschappen kan veel tijd in beslag nemen in complexe stambomen. Deze optie kan helpen de omvang van de verwantschappen te beperken in de verwantschapsgrafiek."
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:239
+#: modules_v3/chart_relationship/module.php:280
 msgid "Families tab settings"
 msgstr "Gezinstabblad instellingen"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:241
+#: modules_v3/chart_relationship/module.php:282
 msgid "How to determine relationships to the default individual"
 msgstr "Hoe de verwantschappen naar de standaard persoon te bepalen"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:243 modules_v3/chart_relationship/module.php:302 modules_v3/chart_relationship/module.php:340
+#: modules_v3/chart_relationship/module.php:284 modules_v3/chart_relationship/module.php:343 modules_v3/chart_relationship/module.php:381
 msgid "Do not show any relationship"
 msgstr "Toon geen enkele verwantschap"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:250 modules_v3/chart_relationship/module.php:309 modules_v3/chart_relationship/module.php:347
+#: modules_v3/chart_relationship/module.php:291 modules_v3/chart_relationship/module.php:350 modules_v3/chart_relationship/module.php:388
 msgid "The following options refer to the same algorithms used in the relationships chart. Choose any one of these."
 msgstr "De volgende opties verwijzen naar dezelfde algoritmen die gebruikt worden in het verwantschapsdiagram. Kies een van deze."
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:294 modules_v3/chart_relationship/module.php:332 modules_v3/chart_relationship/module.php:370
+#: modules_v3/chart_relationship/module.php:335 modules_v3/chart_relationship/module.php:373 modules_v3/chart_relationship/module.php:411
 msgid "Show common ancestors"
 msgstr "Toon gemeenschappelijke voorouders"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:300
+#: modules_v3/chart_relationship/module.php:341
 msgid "How to determine relationships between parents"
 msgstr "Hoe verwantschappen tussen ouders te bepalen"
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:328 modules_v3/chart_relationship/module.php:366
+#: modules_v3/chart_relationship/module.php:369 modules_v3/chart_relationship/module.php:407
 msgid "Searching for overall connections is not included here because there is always a trivial HUSB - WIFE connection."
 msgstr "Zoeken naar algemene verbindingen is hier niet ingesloten omdat er altijd een gewone HUSB - WIFE verbinding is."
 
 #. I18N: Configuration option
-#: modules_v3/chart_relationship/module.php:338
+#: modules_v3/chart_relationship/module.php:379
 msgid "How to determine relationships to spouses"
 msgstr "Hoe verwantschappen tussen echtgenoten te bepalen"
 
@@ -17121,7 +17126,7 @@ msgstr[1] "%2$s heeft %1$d neven en nichten in de eerste graad"
 msgid "%1$d is on both sides of the family"
 msgid_plural "%1$d are on both sides of the family"
 msgstr[0] "%1$d is er aan beide kanten van de familie"
-msgstr[1] "%1$d zijn er aan beide kanten van de fmilie"
+msgstr[1] "%1$d zijn er aan beide kanten van de familie"
 
 #: modules_v3/cousins_tab/module.php:148
 #, php-format
@@ -19215,39 +19220,39 @@ msgstr "Als u een leeg blok verbergt, kunt u de configuratie ervan niet wijzigen
 msgid "A tab showing the close relatives of an individual."
 msgstr "Een tabblad dat de naaste familie van een persoon toont."
 
-#: modules_v3/relatives/module.php:123
+#: modules_v3/relatives/module.php:131
 msgid "Add husband"
 msgstr "Voeg echtgenoot toe"
 
-#: modules_v3/relatives/module.php:124
+#: modules_v3/relatives/module.php:132
 msgid "Add a husband to this family"
 msgstr "Voeg een echtgenoot toe aan dit gezin."
 
-#: modules_v3/relatives/module.php:169
+#: modules_v3/relatives/module.php:177
 msgid "Add wife"
 msgstr "Voeg echtgenote toe"
 
-#: modules_v3/relatives/module.php:170
+#: modules_v3/relatives/module.php:178
 msgid "Add a wife to this family"
 msgstr "Voeg echtgenote toe aan dit gezin."
 
-#: modules_v3/relatives/module.php:215
+#: modules_v3/relatives/module.php:223
 msgid "Add marriage details"
 msgstr "Voeg huwelijksdetails toe"
 
-#: modules_v3/relatives/module.php:288
+#: modules_v3/relatives/module.php:296
 msgid "Add a son or daughter"
 msgstr "Voeg een zoon of dochter toe"
 
-#: modules_v3/relatives/module.php:292
+#: modules_v3/relatives/module.php:300
 msgid "Add a brother or sister"
 msgstr "Voeg een broer of zus toe"
 
-#: modules_v3/relatives/module.php:331
+#: modules_v3/relatives/module.php:339
 msgid "Show date differences"
 msgstr "Toon datum verschillen"
 
-#: modules_v3/relatives/module.php:333
+#: modules_v3/relatives/module.php:341
 msgid "Show relationships"
 msgstr "Toon verwantschappen"
 
