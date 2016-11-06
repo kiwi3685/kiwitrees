@@ -30,226 +30,226 @@ $plugin_name = "Ecclesiastical Dates"; /* I18N: Name of a plugin. */ WT_I18N::tr
 // DATA
 /* List of non-movable feasts */
 $non_movable = array (
-	'Lent'																=>'40 week days between Ash Wednesday and Easter',
-	'Advent'															=>'Period from Advent Sunday to December 25',
-	'Sexagesima Sunday'													=>'Sunday after Septuagesima Sunday.',
-	'Quinquagesima Sunday'												=>'2nd Sunday after Septuagesima Sunday',
-	'Shrove Tuesday'													=>'day before Ash Wednesday.',
-	'Passion Sunday'													=>'2nd Sunday before Easter',
-	'Palm Sunday'														=>'Sunday before Easter',
-	'Quasimodo (Low) Sunday'											=>'Sunday after Easter',
-	'Good Friday'														=>'Friday before Easter',
-	'Maundy Thursday'													=>'Thursday before Easter',
-	'Adorate dominum'													=>'3rd Sunday after January 6',
-	'Adrian (Canterbury)'												=>'January 9',
-	'Ad te levavi'														=>'Advent Sunday',
-	'Agatha'															=>'February 5',
-	'Agnes'																=>'January 21',
-	'Alban'																=>'June 22 (or June in 1662 Prayer Book)',
-	'Aldhelm'															=>'May 25',
-	'All Hallows'														=>'November 1',
-	'All Saints'														=>'November 1',
-	'All Souls'															=>'November 2',
-	'Alphege'															=>'April 19',
-	'Ambrose'															=>'April 4',
-	'Andrew'															=>'November 30',
-	'Anne'																=>'July 26',
-	'Annunciation'														=>'March 25',
-	'Ante Portram Latinam'												=>'May 6',
-	'Aspiciens a longe'													=>'Advent Sunday',
-	'Audoenus (Ouen)'													=>'August 24 or 25',
-	'Audrey (Ethelreda)'												=>'October 17',
-	'Augustine (Canterbury)'											=>'May 26',
-	'Augustine (Hippo)'													=>'August 28',
-	'Barnabas'															=>'June 11',
-	'Bartholomew'														=>'August 24',
-	'Bede, Venerable'													=>'May 27',
-	'Benedict'															=>'March 21',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Translation of Benedict'				=>'July 11',
-	'Birinus'															=>'December 3',
-	'Blasius'															=>'February 3',
-	'Boniface'															=>'June 5',
-	'Botolph'															=>'June 17',
-	'Bricius'															=>'November 13',
-	'Candlemas'															=>'February 2',
-	'Canite Tuba'														=>'4th Sunday in Advent',
-	'Cantate domino'													=>'4th Sunday after Easter',
-	'Cathedra Petri'													=>'February 22',
-	'Catherine'															=>'November 25',
-	'Cecilia'															=>'November 22',
-	'Cena domini'														=>'Thursday before Easter',
-	'Chad (Cedde)'														=>'March 2',
-	'Christmas (Natale Domini)'											=>'December 25',
-	'Christopher'														=>'July 25',
-	'Circumcision'														=>'January 1',
-	'Clausum Pasche'													=>'1st Sunday after Easter',
-	'Clement'															=>'November 23',
-	'Cornelius+Cyprian'													=>'September 14',
-	'Corpus Christi'													=>'Thursday after Trinity*',
-	'Crispin and Crispinian'											=>'October 25',
-	'Cuthbert'															=>'March 20',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translation of Cuthbert'				=>'September 4',
-	'Cyprian and Justina'												=>'September 26',
-	'Daemon mutus'														=>'3rd Sunday in Lent (after Ash Wednesday)',
-	'Da pacem'															=>'18th Sunday after Trinity*',
-	'David'																=>'March 1',
-	'Deus in adiutorium'												=>'12th Sunday after Trinity*',
-	'Deus in loco sancto'												=>'11th Sunday after Trinity*',
-	'Deus qui errantibus'												=>'3rd Sunday after Easter',
-	'Dicit dominus'														=>'23rd and 24th Sunday after Trinity*',
-	'Dies cinerum'														=>'Ash Wednesday',
-	'Dies crucis adorande'												=>'Good Friday',
-	'Dies Mandati'														=>'Maundy Thursday',
-	'Dionysius, Rusticus, and Eleutherius'								=>'October 9',
-	'Domine, in tua misericordia'										=>'1st Sunday after Trinity*',
-	'Domine, ne longe'													=>'Palm Sunday',
-	'Dominus fortitudo'													=>'6th Sunday after Trinity*',
-	'Dominus illuminatio mea'											=>'4th Sunday after Trinity*',
-	'Dum, clamarem'														=>'10th Sunday after Trinity*',
-	'Epiphany'															=>'January 6',
-	'Dum medium silentium'												=>' Sunday in octave of Christmas or Sunday after January 1 when this falls on eve of Epiphany (Jan. 6)',
-	'Dunstan'															=>'May 19',
-	'Eadburga (Winchester)'												=>'June 15',
-	'Ecce deus adiuvat'													=>'9th Sunday after Trinity*',
-	'Editha'															=>'September 16',
-	'Edmund (archbishop)'												=>'November 16',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'June 9',
-	'Edmund (king)'														=>'November 20',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'April 29',
-	'Edward the Confessor'												=>'January 5',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'October 13 often called the feast of St. Edward in the quidene of Michaelmas',
-	'Edward (king of Saxons)'											=>'March 18',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation I'					=>'February 18',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation II'					=>'June 20',
-	'Egidius (Giles)'													=>'September 1',
-	'Enurchus (Evurcius)'												=>'September 7',
-	'Esto mihi'															=>'Sunday before Ash Wednesday (Quinquagesima)',
-	'Ethelbert (king)'													=>'May 20',
-	'Ethelreda'															=>'October 17',
-	'Euphemia'															=>'September 16',
-	'Eustachius'														=>'November 2',
-	'Exaltation of the Cross'											=>'September 14',
-	'Exaudi domine'														=>'Sunday in octave of Ascension or 5th Sunday after octave of Pentecost (Trinity)*',
-	'Exsurge domine'													=>'2nd Sunday before Ash Wednesday (Sexagesima)',
-	'Fabian and Sebastian'												=>'January 20',
-	'Factus est dominus'												=>'2nd Sunday after Trinity*',
-	'Faith'																=>'October 6',
-	'Felicitas'															=>'November 23',
-	'Fransiscus'														=>'October 4',
-	'Gaudete in domino'													=>'3rd Sunday in Advent',
-	'George'															=>'April 23',
-	'Gregory'															=>'March 12',
-	'Grimbold'															=>'July 8',
-	'Gule of August'													=>'August 1',
-	'Guthlac'															=>'April 11',
-	'Hieronymous (Jerome)'												=>'September 30',
-	'Hilary'															=>'January 13',
-	'Hugh (bishop of Lincoln)'											=>'November 17',
-	'Inclina auram tuam'												=>'15th Sunday after Trinity*',
-	'In excelso throno'													=>'1st Sunday after Epiphany',
-	'In Monte tumba'													=>'October 16',
-	'Innocents'															=>'December 28',
-	'Invention of the Cross'											=>'May 3',
-	'Invocavit me'														=>'1st Sunday in Lent',
-	'In voluntate tua'													=>'21st Sunday afterTrinity*',
-	'Isti sunt dies'													=>'Passion Sunday',
-	'James'																=>'July 25',
-	'Jerome (Hieronymus)'												=>'September 30',
-	'John the Baptist'													=>'June 24',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his beheading'						=>'August 29',
-	'John the Evangelist'												=>'December 27',
-	'Jubilate omnis terra'												=>'3rd Sunday after Easter',
-	'Judica me'															=>'Passion Sunday',
-	'Judoc'																=>'December 13',
-	'Justus es domine'													=>'17th Sunday after the octave of Pentecost (Trinity)*',
-	'Lady day (annunciation)'											=>'March 25',
-	'Laetare Jerusalem'													=>'4th Sunday in Lent',
-	'Lambert'															=>'September 17',
-	'Lammas'															=>'August 1',
-	'Laudus'															=>'September 21',
-	'Laurence'															=>'August 10',
-	'Leonard'															=>'November 6',
-	'Lucianus and Geminianus'											=>'September 16',
-	'Lucian'															=>'January 8',
-	'Lucy'																=>'December 13',
-	'Luke'																=>'October 18',
-	'Machutus'															=>'November 15',
-	'Margaret (queen of Scotland)'										=>'July 8',
-	'Margaret (virgin and martyr)'										=>'July 20',
-	'Mark'																=>'April 25',
-	'Martin'															=>'November 11',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'July 4',
-	'Mary, Blessed Virgin'												=>'&nbsp;',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annunciation (Lady day)'				=>'March 25',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assumption'							=>'August 15',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conception'							=>'December 8',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nativity'							=>'September 8',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purification'						=>'February 2',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visitation'							=>'July 2',
-	'Mary Magdalene'													=>'July 22',
-	'Mathias'															=>'February 24 (25 on leap years)',
-	'Matthew'															=>'September 21',
-	'Maurice'															=>'September 22',
-	'Meliorus'															=>'October 1',
-	'Memento mei'														=>'4th Sunday in Advent',
-	'Michael'															=>'September 29',
-	'Mildred'															=>'July 13',
-	'Miserere mihi'														=>'16th Sunday after Trinity*',
-	'Misericordia domini'												=>'2nd Sunday after Easter',
-	'Name of Jesus'														=>'August 7',
-	'Nicholas'															=>'December 6',
-	'Nicomedes'															=>'June 1',
-	'Oculi'																=>'3rd Sunday in Lent',
-	'Omnes gentes'														=>'7th Sunday after Trinity*',
-	'Omnia quae fecisti'												=>'20th Sunday after Trinity*',
-	'Omnis terra'														=>'2nd Sunday after Epiphany',
-	'Osanna'															=>'Palm Sunday',
-	'O Sapientia'														=>'December 16',
-	'Osmund'															=>'December 4',
-	'Oswald (bishop)'													=>'February 28',
-	'Oswald (king)'														=>'August 5',
-	'Patrick'															=>'March 17',
-	'Paul, Conversion of'												=>'January 25',
-	'Perpetua'															=>'March 7',
-	'Peter and Paul'													=>'June 29',
-	'Peter and Vincula'													=>'August 1',
-	'Philip and James'													=>'May 1',
-	'Populus Sion'														=>'2nd Sunday in Advent',
-	'Prisca'															=>'January 18',
-	'Priscus'															=>'September 1',
-	'Protector noster'													=>'14th Sunday after Trinity*',
-	'Quasimodo'															=>'1st Sunday after Easter',
-	'Reddite quae sunt'													=>'23rd Sunday after*',
-	'Remigius, Germanus, and Vedastus Reminiscere'						=>'2nd Sunday in Lent',
-	'Reminiscere'														=>'2nd Sunday in Lent',
-	'Respice domine'													=>'13th Sunday after Pentecost',
-	'Respice in me'														=>'3rd Sunday after Trinity*',
-	'Richard'															=>'April 3',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'July 15',
-	'Rorate celi'														=>'4th Sunday in Advent',
-	'Salus populi'														=>'19th Sunday after Pentecost',
-	'Scholastica'														=>'February 10',
-	'Si iniquitates'													=>'22nd Sunday after Trinity*',
-	'Silvester'															=>'December 31',
-	'Simon and Jude'													=>'October 28',
-	'Sitientes'															=>'Saturday before Passion Sunday',
-	'Stephen'															=>'December 26',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his invention'						=>'August 3',
-	'Suscepius deus'													=>'8th Sunday after Trinity*',
-	'Swithun'															=>'July 2',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'July 3',
-	'Thomas the Apostle'												=>'December 21',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'July 3',
-	'Thomas Becket'														=>'December 29',
-	'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation'						=>'July 7',
-	'Timotheus and Symphorianus'										=>'August 22',
-	'Transfiguration'													=>'August 6',
-	'Urban'																=>'May 25',
-	'Valentine'															=>'February 14',
-	'Vincent'															=>'January 22',
-	'Viri Galilei'														=>'Ascension Day',
-	'Vocem jucunditatis'												=>'5th Sunday after Easter',
-	'Wilfrid'															=>'January 19'
+	WT_I18N::translate('Lent')													=> WT_I18N::translate('40 week days between Ash Wednesday and Easter'),
+	WT_I18N::translate('Advent')												=> WT_I18N::translate('Period from Advent Sunday to December 25'),
+	WT_I18N::translate('Sexagesima Sunday')										=> WT_I18N::translate('Sunday after Septuagesima Sunday.'),
+	WT_I18N::translate('Quinquagesima Sunday')									=> WT_I18N::translate('2nd Sunday after Septuagesima Sunday'),
+	WT_I18N::translate('Shrove Tuesday')										=> WT_I18N::translate('day before Ash Wednesday.'),
+	WT_I18N::translate('Passion Sunday')										=> WT_I18N::translate('2nd Sunday before Easter'),
+	WT_I18N::translate('Palm Sunday')											=> WT_I18N::translate('Sunday before Easter'),
+	WT_I18N::translate('Quasimodo (Low) Sunday')								=> WT_I18N::translate('Sunday after Easter'),
+	WT_I18N::translate('Good Friday')											=> WT_I18N::translate('Friday before Easter'),
+	WT_I18N::translate('Maundy Thursday')										=> WT_I18N::translate('Thursday before Easter'),
+	WT_I18N::translate('Adorate dominum')										=> WT_I18N::translate('3rd Sunday after January 6'),
+	WT_I18N::translate('Adrian (Canterbury)')									=> WT_I18N::translate('January 9'),
+	WT_I18N::translate('Ad te levavi')											=> WT_I18N::translate('Advent Sunday'),
+	WT_I18N::translate('Agatha')												=> WT_I18N::translate('February 5'),
+	WT_I18N::translate('Agnes')													=> WT_I18N::translate('January 21'),
+	WT_I18N::translate('Alban')													=> WT_I18N::translate('June 22 (or June in 1662 Prayer Book)'),
+	WT_I18N::translate('Aldhelm')												=> WT_I18N::translate('May 25'),
+	WT_I18N::translate('All Hallows')											=> WT_I18N::translate('November 1'),
+	WT_I18N::translate('All Saints')											=> WT_I18N::translate('November 1'),
+	WT_I18N::translate('All Souls')												=> WT_I18N::translate('November 2'),
+	WT_I18N::translate('Alphege')												=> WT_I18N::translate('April 19'),
+	WT_I18N::translate('Ambrose')												=> WT_I18N::translate('April 4'),
+	WT_I18N::translate('Andrew')												=> WT_I18N::translate('November 30'),
+	WT_I18N::translate('Anne')													=> WT_I18N::translate('July 26'),
+	WT_I18N::translate('Annunciation')											=> WT_I18N::translate('March 25'),
+	WT_I18N::translate('Ante Portram Latinam')									=> WT_I18N::translate('May 6'),
+	WT_I18N::translate('Aspiciens a longe')										=> WT_I18N::translate('Advent Sunday'),
+	WT_I18N::translate('Audoenus (Ouen)')										=> WT_I18N::translate('August 24 or 25'),
+	WT_I18N::translate('Audrey (Ethelreda)')									=> WT_I18N::translate('October 17'),
+	WT_I18N::translate('Augustine (Canterbury)')								=> WT_I18N::translate('May 26'),
+	WT_I18N::translate('Augustine (Hippo)')										=> WT_I18N::translate('August 28'),
+	WT_I18N::translate('Barnabas')												=> WT_I18N::translate('June 11'),
+	WT_I18N::translate('Bartholomew')											=> WT_I18N::translate('August 24'),
+	WT_I18N::translate('Bede, Venerable')										=> WT_I18N::translate('May 27'),
+	WT_I18N::translate('Benedict')												=> WT_I18N::translate('March 21'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Translation of Benedict')	=> WT_I18N::translate('July 11'),
+	WT_I18N::translate('Birinus')												=> WT_I18N::translate('December 3'),
+	WT_I18N::translate('Blasius')												=> WT_I18N::translate('February 3'),
+	WT_I18N::translate('Boniface')												=> WT_I18N::translate('June 5'),
+	WT_I18N::translate('Botolph')												=> WT_I18N::translate('June 17'),
+	WT_I18N::translate('Bricius')												=> WT_I18N::translate('November 13'),
+	WT_I18N::translate('Candlemas')												=> WT_I18N::translate('February 2'),
+	WT_I18N::translate('Canite Tuba')											=> WT_I18N::translate('4th Sunday in Advent'),
+	WT_I18N::translate('Cantate domino')										=> WT_I18N::translate('4th Sunday after Easter'),
+	WT_I18N::translate('Cathedra Petri')										=> WT_I18N::translate('February 22'),
+	WT_I18N::translate('Catherine')												=> WT_I18N::translate('November 25'),
+	WT_I18N::translate('Cecilia')												=> WT_I18N::translate('November 22'),
+	WT_I18N::translate('Cena domini')											=> WT_I18N::translate('Thursday before Easter'),
+	WT_I18N::translate('Chad (Cedde)')											=> WT_I18N::translate('March 2'),
+	WT_I18N::translate('Christmas (Natale Domini)')								=> WT_I18N::translate('December 25'),
+	WT_I18N::translate('Christopher')											=> WT_I18N::translate('July 25'),
+	WT_I18N::translate('Circumcision')											=> WT_I18N::translate('January 1'),
+	WT_I18N::translate('Clausum Pasche')										=> WT_I18N::translate('1st Sunday after Easter'),
+	WT_I18N::translate('Clement')												=> WT_I18N::translate('November 23'),
+	WT_I18N::translate('Cornelius+Cyprian')										=> WT_I18N::translate('September 14'),
+	WT_I18N::translate('Corpus Christi')										=> WT_I18N::translate('Thursday after Trinity*'),
+	WT_I18N::translate('Crispin and Crispinian')								=> WT_I18N::translate('October 25'),
+	WT_I18N::translate('Cuthbert')												=> WT_I18N::translate('March 20'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translation of Cuthbert')	=> WT_I18N::translate('September 4'),
+	WT_I18N::translate('Cyprian and Justina')									=> WT_I18N::translate('September 26'),
+	WT_I18N::translate('Daemon mutus')											=> WT_I18N::translate('3rd Sunday in Lent (after Ash Wednesday)'),
+	WT_I18N::translate('Da pacem')												=> WT_I18N::translate('18th Sunday after Trinity*'),
+	WT_I18N::translate('David')													=> WT_I18N::translate('March 1'),
+	WT_I18N::translate('Deus in adiutorium')									=> WT_I18N::translate('12th Sunday after Trinity*'),
+	WT_I18N::translate('Deus in loco sancto')									=> WT_I18N::translate('11th Sunday after Trinity*'),
+	WT_I18N::translate('Deus qui errantibus')									=> WT_I18N::translate('3rd Sunday after Easter'),
+	WT_I18N::translate('Dicit dominus')											=> WT_I18N::translate('23rd and 24th Sunday after Trinity*'),
+	WT_I18N::translate('Dies cinerum')											=> WT_I18N::translate('Ash Wednesday'),
+	WT_I18N::translate('Dies crucis adorande')									=> WT_I18N::translate('Good Friday'),
+	WT_I18N::translate('Dies Mandati')											=> WT_I18N::translate('Maundy Thursday'),
+	WT_I18N::translate('Dionysius, Rusticus, and Eleutherius')					=> WT_I18N::translate('October 9'),
+	WT_I18N::translate('Domine, in tua misericordia')							=> WT_I18N::translate('1st Sunday after Trinity*'),
+	WT_I18N::translate('Domine, ne longe')										=> WT_I18N::translate('Palm Sunday'),
+	WT_I18N::translate('Dominus fortitudo')										=> WT_I18N::translate('6th Sunday after Trinity*'),
+	WT_I18N::translate('Dominus illuminatio mea')								=> WT_I18N::translate('4th Sunday after Trinity*'),
+	WT_I18N::translate('Dum, clamarem')											=> WT_I18N::translate('10th Sunday after Trinity*'),
+	WT_I18N::translate('Epiphany')												=> WT_I18N::translate('January 6'),
+	WT_I18N::translate('Dum medium silentium')									=> WT_I18N::translate(' Sunday in octave of Christmas or Sunday after January 1 when this falls on eve of Epiphany (Jan. 6)'),
+	WT_I18N::translate('Dunstan')												=> WT_I18N::translate('May 19'),
+	WT_I18N::translate('Eadburga (Winchester)')									=> WT_I18N::translate('June 15'),
+	WT_I18N::translate('Ecce deus adiuvat')										=> WT_I18N::translate('9th Sunday after Trinity*'),
+	WT_I18N::translate('Editha')												=> WT_I18N::translate('September 16'),
+	WT_I18N::translate('Edmund (archbishop)')									=> WT_I18N::translate('November 16'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('June 9'),
+	WT_I18N::translate('Edmund (king)')											=> WT_I18N::translate('November 20'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('April 29'),
+	WT_I18N::translate('Edward the Confessor')									=> WT_I18N::translate('January 5'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('October 13 often called the feast of St. Edward in the quidene of Michaelmas'),
+	WT_I18N::translate('Edward (king of Saxons)')								=> WT_I18N::translate('March 18'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation I')		=> WT_I18N::translate('February 18'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation II')		=> WT_I18N::translate('June 20'),
+	WT_I18N::translate('Egidius (Giles)')										=> WT_I18N::translate('September 1'),
+	WT_I18N::translate('Enurchus (Evurcius)')									=> WT_I18N::translate('September 7'),
+	WT_I18N::translate('Esto mihi')												=> WT_I18N::translate('Sunday before Ash Wednesday (Quinquagesima)'),
+	WT_I18N::translate('Ethelbert (king)')										=> WT_I18N::translate('May 20'),
+	WT_I18N::translate('Ethelreda')												=> WT_I18N::translate('October 17'),
+	WT_I18N::translate('Euphemia')												=> WT_I18N::translate('September 16'),
+	WT_I18N::translate('Eustachius')											=> WT_I18N::translate('November 2'),
+	WT_I18N::translate('Exaltation of the Cross')								=> WT_I18N::translate('September 14'),
+	WT_I18N::translate('Exaudi domine')											=> WT_I18N::translate('Sunday in octave of Ascension or 5th Sunday after octave of Pentecost (Trinity)*'),
+	WT_I18N::translate('Exsurge domine')										=> WT_I18N::translate('2nd Sunday before Ash Wednesday (Sexagesima)'),
+	WT_I18N::translate('Fabian and Sebastian')									=> WT_I18N::translate('January 20'),
+	WT_I18N::translate('Factus est dominus')									=> WT_I18N::translate('2nd Sunday after Trinity*'),
+	WT_I18N::translate('Faith')													=> WT_I18N::translate('October 6'),
+	WT_I18N::translate('Felicitas')												=> WT_I18N::translate('November 23'),
+	WT_I18N::translate('Fransiscus')											=> WT_I18N::translate('October 4'),
+	WT_I18N::translate('Gaudete in domino')										=> WT_I18N::translate('3rd Sunday in Advent'),
+	WT_I18N::translate('George')												=> WT_I18N::translate('April 23'),
+	WT_I18N::translate('Gregory')												=> WT_I18N::translate('March 12'),
+	WT_I18N::translate('Grimbold')												=> WT_I18N::translate('July 8'),
+	WT_I18N::translate('Gule of August')										=> WT_I18N::translate('August 1'),
+	WT_I18N::translate('Guthlac')												=> WT_I18N::translate('April 11'),
+	WT_I18N::translate('Hieronymous (Jerome)')									=> WT_I18N::translate('September 30'),
+	WT_I18N::translate('Hilary')												=> WT_I18N::translate('January 13'),
+	WT_I18N::translate('Hugh (bishop of Lincoln)')								=> WT_I18N::translate('November 17'),
+	WT_I18N::translate('Inclina auram tuam')									=> WT_I18N::translate('15th Sunday after Trinity*'),
+	WT_I18N::translate('In excelso throno')										=> WT_I18N::translate('1st Sunday after Epiphany'),
+	WT_I18N::translate('In Monte tumba')										=> WT_I18N::translate('October 16'),
+	WT_I18N::translate('Innocents')												=> WT_I18N::translate('December 28'),
+	WT_I18N::translate('Invention of the Cross')								=> WT_I18N::translate('May 3'),
+	WT_I18N::translate('Invocavit me')											=> WT_I18N::translate('1st Sunday in Lent'),
+	WT_I18N::translate('In voluntate tua')										=> WT_I18N::translate('21st Sunday afterTrinity*'),
+	WT_I18N::translate('Isti sunt dies')										=> WT_I18N::translate('Passion Sunday'),
+	WT_I18N::translate('James')													=> WT_I18N::translate('July 25'),
+	WT_I18N::translate('Jerome (Hieronymus)')									=> WT_I18N::translate('September 30'),
+	WT_I18N::translate('John the Baptist')										=> WT_I18N::translate('June 24'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his beheading')			=> WT_I18N::translate('August 29'),
+	WT_I18N::translate('John the Evangelist')									=> WT_I18N::translate('December 27'),
+	WT_I18N::translate('Jubilate omnis terra')									=> WT_I18N::translate('3rd Sunday after Easter'),
+	WT_I18N::translate('Judica me')												=> WT_I18N::translate('Passion Sunday'),
+	WT_I18N::translate('Judoc')													=> WT_I18N::translate('December 13'),
+	WT_I18N::translate('Justus es domine')										=> WT_I18N::translate('17th Sunday after the octave of Pentecost (Trinity)*'),
+	WT_I18N::translate('Lady day (annunciation)')								=> WT_I18N::translate('March 25'),
+	WT_I18N::translate('Laetare Jerusalem')										=> WT_I18N::translate('4th Sunday in Lent'),
+	WT_I18N::translate('Lambert')												=> WT_I18N::translate('September 17'),
+	WT_I18N::translate('Lammas')												=> WT_I18N::translate('August 1'),
+	WT_I18N::translate('Laudus')												=> WT_I18N::translate('September 21'),
+	WT_I18N::translate('Laurence')												=> WT_I18N::translate('August 10'),
+	WT_I18N::translate('Leonard')												=> WT_I18N::translate('November 6'),
+	WT_I18N::translate('Lucianus and Geminianus')								=> WT_I18N::translate('September 16'),
+	WT_I18N::translate('Lucian')												=> WT_I18N::translate('January 8'),
+	WT_I18N::translate('Lucy')													=> WT_I18N::translate('December 13'),
+	WT_I18N::translate('Luke')													=> WT_I18N::translate('October 18'),
+	WT_I18N::translate('Machutus')												=> WT_I18N::translate('November 15'),
+	WT_I18N::translate('Margaret (queen of Scotland)')							=> WT_I18N::translate('July 8'),
+	WT_I18N::translate('Margaret (virgin and martyr)')							=> WT_I18N::translate('July 20'),
+	WT_I18N::translate('Mark')													=> WT_I18N::translate('April 25'),
+	WT_I18N::translate('Martin')												=> WT_I18N::translate('November 11'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('July 4'),
+	WT_I18N::translate('Mary, Blessed Virgin')									=> WT_I18N::translate('&nbsp;'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annunciation (Lady day)')	=> WT_I18N::translate('March 25'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assumption')				=> WT_I18N::translate('August 15'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conception')				=> WT_I18N::translate('December 8'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nativity')				=> WT_I18N::translate('September 8'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purification')			=> WT_I18N::translate('February 2'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visitation')				=> WT_I18N::translate('July 2'),
+	WT_I18N::translate('Mary Magdalene')										=> WT_I18N::translate('July 22'),
+	WT_I18N::translate('Mathias')												=> WT_I18N::translate('February 24 (25 on leap years)'),
+	WT_I18N::translate('Matthew')												=> WT_I18N::translate('September 21'),
+	WT_I18N::translate('Maurice')												=> WT_I18N::translate('September 22'),
+	WT_I18N::translate('Meliorus')												=> WT_I18N::translate('October 1'),
+	WT_I18N::translate('Memento mei')											=> WT_I18N::translate('4th Sunday in Advent'),
+	WT_I18N::translate('Michael')												=> WT_I18N::translate('September 29'),
+	WT_I18N::translate('Mildred')												=> WT_I18N::translate('July 13'),
+	WT_I18N::translate('Miserere mihi')											=> WT_I18N::translate('16th Sunday after Trinity*'),
+	WT_I18N::translate('Misericordia domini')									=> WT_I18N::translate('2nd Sunday after Easter'),
+	WT_I18N::translate('Name of Jesus')											=> WT_I18N::translate('August 7'),
+	WT_I18N::translate('Nicholas')												=> WT_I18N::translate('December 6'),
+	WT_I18N::translate('Nicomedes')												=> WT_I18N::translate('June 1'),
+	WT_I18N::translate('Oculi')													=> WT_I18N::translate('3rd Sunday in Lent'),
+	WT_I18N::translate('Omnes gentes')											=> WT_I18N::translate('7th Sunday after Trinity*'),
+	WT_I18N::translate('Omnia quae fecisti')									=> WT_I18N::translate('20th Sunday after Trinity*'),
+	WT_I18N::translate('Omnis terra')											=> WT_I18N::translate('2nd Sunday after Epiphany'),
+	WT_I18N::translate('Osanna')												=> WT_I18N::translate('Palm Sunday'),
+	WT_I18N::translate('O Sapientia')											=> WT_I18N::translate('December 16'),
+	WT_I18N::translate('Osmund')												=> WT_I18N::translate('December 4'),
+	WT_I18N::translate('Oswald (bishop)')										=> WT_I18N::translate('February 28'),
+	WT_I18N::translate('Oswald (king)')											=> WT_I18N::translate('August 5'),
+	WT_I18N::translate('Patrick')												=> WT_I18N::translate('March 17'),
+	WT_I18N::translate('Paul, Conversion of')									=> WT_I18N::translate('January 25'),
+	WT_I18N::translate('Perpetua')												=> WT_I18N::translate('March 7'),
+	WT_I18N::translate('Peter and Paul')										=> WT_I18N::translate('June 29'),
+	WT_I18N::translate('Peter and Vincula')										=> WT_I18N::translate('August 1'),
+	WT_I18N::translate('Philip and James')										=> WT_I18N::translate('May 1'),
+	WT_I18N::translate('Populus Sion')											=> WT_I18N::translate('2nd Sunday in Advent'),
+	WT_I18N::translate('Prisca')												=> WT_I18N::translate('January 18'),
+	WT_I18N::translate('Priscus')												=> WT_I18N::translate('September 1'),
+	WT_I18N::translate('Protector noster')										=> WT_I18N::translate('14th Sunday after Trinity*'),
+	WT_I18N::translate('Quasimodo')												=> WT_I18N::translate('1st Sunday after Easter'),
+	WT_I18N::translate('Reddite quae sunt')										=> WT_I18N::translate('23rd Sunday after*'),
+	WT_I18N::translate('Remigius, Germanus, and Vedastus Reminiscere')			=> WT_I18N::translate('2nd Sunday in Lent'),
+	WT_I18N::translate('Reminiscere')											=> WT_I18N::translate('2nd Sunday in Lent'),
+	WT_I18N::translate('Respice domine')										=> WT_I18N::translate('13th Sunday after Pentecost'),
+	WT_I18N::translate('Respice in me')											=> WT_I18N::translate('3rd Sunday after Trinity*'),
+	WT_I18N::translate('Richard')												=> WT_I18N::translate('April 3'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('July 15'),
+	WT_I18N::translate('Rorate celi')											=> WT_I18N::translate('4th Sunday in Advent'),
+	WT_I18N::translate('Salus populi')											=> WT_I18N::translate('19th Sunday after Pentecost'),
+	WT_I18N::translate('Scholastica')											=> WT_I18N::translate('February 10'),
+	WT_I18N::translate('Si iniquitates')										=> WT_I18N::translate('22nd Sunday after Trinity*'),
+	WT_I18N::translate('Silvester')												=> WT_I18N::translate('December 31'),
+	WT_I18N::translate('Simon and Jude')										=> WT_I18N::translate('October 28'),
+	WT_I18N::translate('Sitientes')												=> WT_I18N::translate('Saturday before Passion Sunday'),
+	WT_I18N::translate('Stephen')												=> WT_I18N::translate('December 26'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his invention')			=> WT_I18N::translate('August 3'),
+	WT_I18N::translate('Suscepius deus')										=> WT_I18N::translate('8th Sunday after Trinity*'),
+	WT_I18N::translate('Swithun')												=> WT_I18N::translate('July 2'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('July 3'),
+	WT_I18N::translate('Thomas the Apostle')									=> WT_I18N::translate('December 21'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('July 3'),
+	WT_I18N::translate('Thomas Becket')											=> WT_I18N::translate('December 29'),
+	WT_I18N::translate('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation')			=> WT_I18N::translate('July 7'),
+	WT_I18N::translate('Timotheus and Symphorianus')							=> WT_I18N::translate('August 22'),
+	WT_I18N::translate('Transfiguration')										=> WT_I18N::translate('August 6'),
+	WT_I18N::translate('Urban')													=> WT_I18N::translate('May 25'),
+	WT_I18N::translate('Valentine')												=> WT_I18N::translate('February 14'),
+	WT_I18N::translate('Vincent')												=> WT_I18N::translate('January 22'),
+	WT_I18N::translate('Viri Galilei')											=> WT_I18N::translate('Ascension Day'),
+	WT_I18N::translate('Vocem jucunditatis')									=> WT_I18N::translate('5th Sunday after Easter'),
+	WT_I18N::translate('Wilfrid')												=> WT_I18N::translate('January 19'),
 );
 
 // HELP //
@@ -268,7 +268,7 @@ $html.= '
 		#acknowledgement{background:#fff; border:1px solid #c0c0c0; border-radius:8px; float:right; font-size:12px; width:250px; margin:0 30px; padding:10px;}
 		#acknowledgement p{padding:5px;}
 		#acknowledgement i{cursor:pointer; color:blue; margin:0; vertical-align:baseline;}
-		#ecclesiastic .label_ec{clear:left; float:left; font-size:14px; padding:5px; width:320px;}
+		#ecclesiastic .label_ec{clear:left; float:left; font-size:14px; padding:5px; width:480px;}
 		#ecclesiastic .year{width:234px;}
 		#ecclesiastic .label_ec input{color:#555; float:right; font-size:13px;}
 		#ecclesiastic .note{clear: both; font-size:11px; font-style:italic; padding:5px; white-space:nowrap;}
@@ -278,49 +278,57 @@ $html.= '
 		#popup p{padding:5px;}
 	</style>
 	<div id="ecclesiastic">
-		<div id="acknowledgement">
-			<p>This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
-			<p>
-				His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents will need to follow
-				<i title="Help with English calendar" onclick="modalNotes(\''.$help1.'\', \''.WT_I18N::translate('Help with English calendar').'\')">this link </i>
-				if they wish to date documents from this period.
-			<p>
-				<a title="Easter Formulae" href="'.$help2.'" target="_blank"><i>The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica.</i></a>
-			</p>
+		<div id="acknowledgement">' .
+			/* I18N Acknowledgement of origin for a calendar utility */
+			WT_I18N::translate('
+				<p>
+					This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
+				<p>
+					His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents who wish to date documents from this period will need to follow this link
+				</p>
+				<p>
+					<i title="Help with English calendar" onclick="modalNotes(\'%1s\', \'Help with English calendar\')">Help with English calendar</i>
+				</p>
+				<p>
+					<a title="Easter Formulae" href="%2s" target="_blank">
+						<i>The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica</i>
+					</a>
+				</p>
+			', $help1, $help2) . '
 		</div>
-		<h1>Enter the year in question:</h1>
+		<h1>' . WT_I18N::translate('Enter the year in question') . '</h1>
 		<form name="EasterCalculator">
-			<label class="label_ec year">Christian Year*
+			<label class="label_ec year">' . WT_I18N::translate('Christian Year') . '*
 				<input type="text" name="input" value="1492" size="7">
-				<p class="note">* The Ecclesiastical year begins on January 1.</p>
+				<p class="note">* ' . WT_I18N::translate('The Ecclesiastical year begins on January 1.') . '</p>
 			</label>
-			<input class="button_ec" type="button" name="CalculateHolidays" value="Calculate Holidays" onclick="CalculateEaster()">
-			<label class="label_ec">Easter:
+			<input class="button_ec" type="button" name="CalculateHolidays" value="' . WT_I18N::translate('Calculate Holidays') . '" onclick="CalculateEaster()">
+			<label class="label_ec">' . WT_I18N::translate('Easter') . '
 				<input type="text" size="23" name="Easter" maxlength="150">
 			</label>
-			<label class="label_ec">Septuagesima:
+			<label class="label_ec">' . WT_I18N::translate('Septuagesima') . '
 				<input type="text" size="23" name="Septuagesima" maxlength="150">
 			</label>
-			<label class="label_ec">Ash Wednesday:
+			<label class="label_ec">' . WT_I18N::translate('Ash Wednesday') . ':
 				<input type="text" size="23" name="Ash" maxlength="150">
 			</label>
-			<label class="label_ec">Ascension
+			<label class="label_ec">' . WT_I18N::translate('Ascension') . '
 				<input type="text" size="23" name="Ascension" maxlength="150">
 			</label>
-			<label class="label_ec">Pentecost
+			<label class="label_ec">' . WT_I18N::translate('Pentecost') . '
 				<input type="text" size="23" name="Pentecost" maxlength="150">
 			</label>
-			<label class="label_ec">Trinity Sunday
+			<label class="label_ec">' . WT_I18N::translate('Trinity Sunday') . '
 				<input type="text" size="23" name="Trinity" maxlength="150">
 			</label>
-			<label class="label_ec">Advent Sunday
+			<label class="label_ec">' . WT_I18N::translate('Advent Sunday') . '
 				<input type="text" size="23" name="Advent" maxlength="150">
 			</label>
 		</form>
 		<div class="non_movable">
-			<h1>Full list of moveable and fixed holidays</h1>
+			<h1>' . WT_I18N::translate('Full list of moveable and fixed holidays') . '</h1>
 			<div class="non_movable_list">
-				<p class="note">The "octave" of any holiday = eight days after the holiday- counting the holiday itself. Thus the octave of a Sunday is the following Sunday.</p>';
+				<p class="note">' . WT_I18N::translate('The "octave" of any holiday = eight days after the holiday- counting the holiday itself. Thus the octave of a Sunday is the following Sunday.') . '</p>';
 				foreach ($non_movable as $e_event => $e_date) {
 					$html.= '
 						<div style="border-bottom: 1px solid #ccc;float:left;white-space:nowrap;padding:5px 0;width:30%;clear:left;;">'. $e_event. '</div>
@@ -329,7 +337,7 @@ $html.= '
 
 			$html.= '
 				</div>
-				<p class="note">* After 1570, subtract one week.</p>
+				<p class="note">* ' . WT_I18N::translate('After 1570, subtract one week.') . '</p>
 			</div>
 		</div>
 ';
@@ -404,14 +412,14 @@ $html.= '
 		Marchdate = p
 		if (p>31) {
 			p = p - 31
-			p = "April " + p
+			p = "<?php echo WT_I18N::translate('April'); ?> " + p
 			//   + " E=" + E + " P=" +P + " L=" + L + " l=" + l + " C=" + C
 		} else {
-			p = "March " + p
+			p = "<?php echo WT_I18N::translate('March'); ?> " + p
 			// + " E=" + E + " P=" +P + " L=" + L + " l=" + l
 		}
 		H = Marchdate - 46
-		if (H>0) {H = "March " + H}
+		if (H>0) {H = "<?php echo WT_I18N::translate('March'); ?> " + H}
 		else {
 			if (Leapyear<0.1) {
 				if (Year>1752) {
@@ -427,7 +435,7 @@ $html.= '
 				else {H = H + 29}
 			}
 			else {H = H + 28}
-			H = "February " + H
+			H = "<?php echo WT_I18N::translate('February'); ?> " + H
 		}
 		S = Marchdate - 63
 		if (Leapyear<0.1) {
@@ -442,43 +450,43 @@ $html.= '
 				S = S + 29}
 		} else {
 			S = S + 28}
-			if (S > 0) {S = "February " + S}
+			if (S > 0) {S = "<?php echo WT_I18N::translate('February'); ?> " + S}
 		else {
 			S = S + 31
-			S = "January " + S}
+			S = "<?php echo WT_I18N::translate('January'); ?> " + S}
 			A = Marchdate + 39
 		if (A<62) {	A=A-31
-			A = "April " + A
+			A = "<?php echo WT_I18N::translate('April'); ?> " + A
 		} else {
 			A=A-61
 			if (A>31)
 			{A=A-31
-			A = "June " + A}
+			A = "<?php echo WT_I18N::translate('June'); ?> " + A}
 			else
-			{A="May " + A}
+			{A="<?php echo WT_I18N::translate('May'); ?> " + A}
 		}
 		Pent = Marchdate + 49
 		if (Pent<92.5) {
 			Pent = Pent - 61
-			Pent = "May " + Pent
+			Pent = "<?php echo WT_I18N::translate('May'); ?> " + Pent
 		} else {	Pent = Pent - 92
-			Pent = "June " + Pent
+			Pent = "<?php echo WT_I18N::translate('June'); ?> " + Pent
 		}
 		T = Marchdate + 56
 		if (T<93) {
 			T = T-61
-			T = "May " + T
+			T = "<?php echo WT_I18N::translate('May'); ?> " + T
 		} else {	T = T - 92
-			T = "June " + T
+			T = "<?php echo WT_I18N::translate('June'); ?> " + T
 		}
 
 		Advent = Marchdate + 1
 		Advent = Advent % 7
 		Advent = Advent + 27
 		if (Advent<31) {
-			Advent = "November " + Advent
+			Advent = "<?php echo WT_I18N::translate('November'); ?> " + Advent
 		} else {		Advent = Advent - 30
-			Advent = "December " + Advent
+			Advent = "<?php echo WT_I18N::translate('December'); ?> " + Advent
 		}
 		document.EasterCalculator.Easter.value = p
 		document.EasterCalculator.Septuagesima.value = S

@@ -30,7 +30,7 @@ $help2 = 'http://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Calend
 // DISPLAY
 $month_name= array();
 for ($i=0; $i<12; ++$i) {
-	$month_name[$i]=WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false);
+	$month_name[$i] = WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false);
 }
 
 $html.='
@@ -47,24 +47,34 @@ $html.='
 		#oldnew	.note{font-size:11px; font-style:italic; padding:5px; white-space:normal; font-weight:normal;}
 	</style>
 	<div id="oldnew">
-		<p>There are two parts to this page. The first converts from Old Style dates, typically found in English documents before 1752, to New Style dates.  The second converts New Style into Old Style.  To avoid confusion, the year is assumed to begin on January 1st. If you are dealing with a old style document dated before March 25th, be aware that the legal year did not change until then.</p>
-		<div id="acknowledgement">
-			<p>This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
-			<p>
-				His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents will need to follow
-				<i title="Help with English calendar" onclick="modalNotes(\''.$help1.'\', \''.WT_I18N::translate('Help with English calendar').'\')">this link </i>
-				if they wish to date documents from this period.
-			<p>
-				<a title="Easter Formulae" href="'.$help2.'" target="_blank"><i>The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica.</i></a>
-			</p>
+		<p>' .
+			WT_I18N::translate('There are two parts to this page. The first converts from Old Style dates, typically found in English documents before 1752, to New Style dates.  The second converts New Style into Old Style.  To avoid confusion, the year is assumed to begin on January 1st. If you are dealing with a old style document dated before March 25th, be aware that the legal year did not change until then.') . '
+		</p>
+		<div id="acknowledgement"> ' .
+			/* I18N Acknowledgement of origin for a calendar utility */
+			WT_I18N::translate('
+				<p>
+					This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
+				<p>
+					His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents who wish to date documents from this period will need to follow this link
+				</p>
+				<p>
+					<i title="Help with English calendar" onclick="modalNotes(\'%1s\', \'Help with English calendar\')">Help with English calendar</i>
+				</p>
+				<p>
+					<a title="Easter Formulae" href="%2s" target="_blank">
+						<i>The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica</i>
+					</a>
+				</p>
+			', $help1, $help2) . '
 		</div>
 ';
 // Part one - Old to New
 $html.='
 	<form name="Olddayofweek">
-		<h1>Convert Old Style Dates to New Style Dates</h1>
-		<div class="main">Enter the Old Style date in question:
-			<div class="secondary">Month:
+		<h1>' . WT_I18N::translate('Convert Old Style Dates to New Style Dates') . '</h1>
+		<div class="main">' . WT_I18N::translate('Enter the Old Style date in question') . ':
+			<div class="secondary">' . WT_I18N::translate('Month') . ':
 				<select name="Month" size="1">';
 					for ($i=1; $i<13; ++$i) {
 						$html.='<option value="'. $i. '"';
@@ -73,7 +83,7 @@ $html.='
 					}
 				$html.='</select>
 			</div>
-			<div class="secondary">Day:
+			<div class="secondary">' . WT_I18N::translate('Day') . ':
 				<select name="Day" size="1">';
 					for ($i=1; $i<32; $i++) {
 						$html.='<option value="' .$i. '"';
@@ -82,12 +92,13 @@ $html.='
 					}
 				$html.='</select>
 			</div>
-			<div class="secondary">Year:
+			<div class="secondary">' . WT_I18N::translate('Year') . ':
 				<input type="text" name="year" size="7" maxlength="4">
 			</div>
 		</div>
 		<p>
-			<input class="button_ec" type="button" name="Caculatedayofweek" value="Convert Old style to New Style" onclick="OldDayOfWeek()">
+			<input class="button_ec" type="button" name="Caculatedayofweek" value="' . WT_I18N::translate('Convert Old style to New Style') . '" onclick="OldDayOfWeek()">
+			<br><br>
 			<input type="text" name="Weekdayoldstyle" readonly size="56">
 		</p>
 	</form>
@@ -95,9 +106,9 @@ $html.='
 // Part 2 - New to old
 $html.='
 	<form name="Newdayofweek">
-		<h1>Convert New Style Dates to Old Style Dates</h1>
-		<div class="main">Enter the New Style date in question:
-			<div class="secondary">Month:
+		<h1>' . WT_I18N::translate('Convert New Style Dates to Old Style Dates') . '</h1>
+		<div class="main">' . WT_I18N::translate('Enter the New Style date in question') . ':
+			<div class="secondary">' . WT_I18N::translate('Month') . ':
 				<select name="Month" size="1">';
 					for ($i=1; $i<13; ++$i) {
 						$html.='<option value="'. $i. '"';
@@ -106,7 +117,7 @@ $html.='
 					}
 				$html.='</select>
 			</div>
-			<div class="secondary">Day:
+			<div class="secondary">' . WT_I18N::translate('Day') . ':
 				<select name="Day" size="1">';
 					for ($i=1; $i<32; $i++) {
 						$html.='<option value="' .$i. '"';
@@ -115,13 +126,14 @@ $html.='
 					}
 				$html.='</select>
 			</div>
-			<div class="secondary">Year:
+			<div class="secondary">' . WT_I18N::translate('Year') . ':
 				<input type="text" name="year" size="7" maxlength="4">
 			</div>
 		</div>
 		<p>
-			<input class="button_ec" type="button" name="Caculatedayofweek" value="Convert New style to Old Style" onclick="NewDayOfWeek()">
-			<input type="text" name="Weekdayoldstyle" readonly size="56">
+			<input class="button_ec" type="button" name="Caculatedayofweek" value="' . WT_I18N::translate('Convert New style to Old Style') . '" onclick="NewDayOfWeek()">
+			<br><br>
+		<input type="text" name="Weekdayoldstyle" readonly size="56">
 		</p>
 	</form>
 ';
@@ -131,30 +143,30 @@ $html.='</div>';
  <script><!--
 
 	function OldDayOfWeek() {
-		var Month=parseInt(document.Olddayofweek.Month.value)
-		var Day=parseInt(document.Olddayofweek.Day.value)
-		var Year=parseInt(document.Olddayofweek.year.value)
+		var Month	= parseInt(document . Olddayofweek.Month.value)
+		var Day		= parseInt(document . Olddayofweek.Day.value)
+		var Year	= parseInt(document . Olddayofweek.year.value)
 
 		if (isNaN(Year)) {
-				alert("You must enter a year.")
+				alert("<?php echo WT_I18N::translate('You must enter a year.'); ?>")
 				return
 		} else {
-			if (Year < 325) {alert("This site is valid only for dates later than 325 A.D."); return}
-			   if (Year > 1752) {alert(" Nobody used Old Style dates after 1752."); return;}
+			if (Year < 325) {alert("<?php echo WT_I18N::translate('This site is valid only for dates later than 325 A.D.'); ?>"); return}
+			   if (Year > 1752) {alert("<?php echo WT_I18N::translate('Nobody used Old Style dates after 1752'); ?>"); return;}
 		}
 
-		if (Month ==4) {if (Day>30) {alert("April has only 30 days. I'll proceed, assuming April 31st to be the same as May 1st.");}}
-		if (Month ==6) {if (Day>30) {alert("June has only 30 days. I'll proceed, assuming June 31st to be the same as July 1st.")}}
-		if (Month ==9) {if (Day>30) {alert("September has only 30 days. I'll proceed, assuming September 31st to be the same as August 1st.")}}
-		if (Month ==11) {if (Day>30) {alert("November has only 30 days. I'll proceed, assuming November 31st to be the same as December 1st.")}}
-		if (Month ==2) {
-			if (Day>28){
-				if (Day==29){
-					if (Year%4 !=0) {
-						alert(Year + " was not a leap year. I'll proceed, assuming February 29th to mean March 1st.")
+		if (Month == 4)  {if (Day > 30) {alert("<?php echo WT_I18N::translate('April has only 30 days. Proceed assuming April 31st is the same as May 1st?'); ?>");}}
+		if (Month == 6)  {if (Day > 30) {alert("<?php echo WT_I18N::translate('June has only 30 days. Proceed assuming June 31st is the same as July 1st?'); ?>");}}
+		if (Month == 9)  {if (Day > 30) {alert("<?php echo WT_I18N::translate('September has only 30 days. Proceed assuming September 31st is the same as August 1st?'); ?>");}}
+		if (Month == 11) {if (Day > 30) {alert("<?php echo WT_I18N::translate('November has only 30 days. Proceed assuming November 31st is the same as December 1st?'); ?>");}}
+		if (Month == 2)  {
+			if (Day > 28) {
+				if (Day == 29) {
+					if (Year%4 != 0) {
+						alert(Year + "<?php echo WT_I18N::translate(' was not a leap year. Proceed assuming February 29th to mean March 1st?'); ?>");
 					}
 				}
-				else {alert("February never has more than 29 days. I'll proceed, assuming you mean early March.")}
+				else {alert("<?php echo WT_I18N::translate('February never has more than 29 days. Proceed, assuming you mean early March?'); ?>");}
 			}
 		}
 
@@ -238,42 +250,42 @@ $html.='</div>';
 			Year = (Year + 1)
 		}
 
-		document.Olddayofweek.Weekdayoldstyle.value = OldMonth + "/" + OldDay + "/" + OldYear + " Old Style corresponds to " + Month + "/" + Day + "/" + Year + " New Style"
+		document . Olddayofweek . Weekdayoldstyle . value = OldMonth + "/" + OldDay + "/" + OldYear + " <?php echo WT_I18N::translate('Old Style corresponds to '); ?>" + Month + "/" + Day + "/" + Year + " <?php echo WT_I18N::translate('New Style'); ?>"
+
 	}
 
 	function NewDayOfWeek() {
-		var Month=parseInt(document.Newdayofweek.Month.value)
-		var Day=parseInt(document.Newdayofweek.Day.value)
-		var Year=parseInt(document.Newdayofweek.year.value)
+		var Month	=parseInt(document . Newdayofweek . Month.value)
+		var Day		=parseInt(document . Newdayofweek . Day.value)
+		var Year	=parseInt(document . Newdayofweek . year.value)
 
 		if (isNaN(Year)) {
-				alert("You must enter a year.")
-				document.Olddayofweek.Weekdayoldstyle.value = " "
+				alert("<?php echo WT_I18N::translate('You must enter a year.'); ?>")
+				document . Olddayofweek . Weekdayoldstyle . value = " "
 				return
 		}
 		else {
-			if (Year < 325) {alert("This site is valid only for dates later than 325 A.D.");
-			document.Olddayofweek.Weekdayoldstyle.value = " "
+			if (Year < 325) {alert("<?php echo WT_I18N::translate('This site is valid only for dates later than 325 A.D.'); ?>");
+			document . Olddayofweek . Weekdayoldstyle . value = " "
 			return}
-			   if (Year < 1582 ) {alert(" Nobody used New Style dates before 1582.");
-			document.Olddayofweek.Weekdayoldstyle.value = " "
+			   if (Year < 1582 ) {alert("<?php echo WT_I18N::translate('Nobody used New Style dates before 1582.'); ?>");
+			document . Olddayofweek . Weekdayoldstyle . value = " "
 			return;}
 
 		}
 
-
-		if (Month ==4) {if (Day>30) {alert("April has only 30 days. I'll proceed, assuming April 31st to be the same as May 1st.");}}
-		if (Month ==6) {if (Day>30) {alert("June has only 30 days. I'll proceed, assuming June 31st to be the same as July 1st.")}}
-		if (Month ==9) {if (Day>30) {alert("September has only 30 days. I'll proceed, assuming September 31st to be the same as August 1st.")}}
-		if (Month ==11) {if (Day>30) {alert("November has only 30 days. I'll proceed, assuming November 31st to be the same as December 1st.")}}
-		if (Month ==2) {
-			if (Day>28){
-				if (Day==29){
-					if (Year%4 !=0) {
-								alert(Year + " was not a leap year. I'll proceed, assuming February 29th to mean March 1st.")
+		if (Month == 4)  {if (Day > 30) {alert("<?php echo WT_I18N::translate('April has only 30 days. Proceed assuming April 31st is the same as May 1st?'); ?>");}}
+		if (Month == 6)  {if (Day > 30) {alert("<?php echo WT_I18N::translate('June has only 30 days. Proceed assuming June 31st is the same as July 1st?'); ?>");}}
+		if (Month == 9)  {if (Day > 30) {alert("<?php echo WT_I18N::translate('September has only 30 days. Proceed assuming September 31st is the same as August 1st?'); ?>");}}
+		if (Month == 11) {if (Day > 30) {alert("<?php echo WT_I18N::translate('November has only 30 days. Proceed assuming November 31st is the same as December 1st?'); ?>");}}
+		if (Month == 2)  {
+			if (Day > 28) {
+				if (Day == 29) {
+					if (Year%4 != 0) {
+						alert(Year + "<?php echo WT_I18N::translate(' was not a leap year. Proceed assuming February 29th to mean March 1st?'); ?>");
 					}
 				}
-				else {alert("February never has more than 29 days. I'll proceed, assuming you mean early March.")}
+				else {alert("<?php echo WT_I18N::translate('February never has more than 29 days. Proceed, assuming you mean early March?'); ?>");}
 			}
 		}
 
@@ -281,12 +293,10 @@ $html.='</div>';
 		var OldMonth = Month
 		var OldDay = Day
 
-
 		Day = Day - 10
 		var COR = parseInt((OldYear/100) - 16)
 		if (COR > 0) {COR = COR - parseInt((OldYear/400) -4)}
 		if (COR > 0) {Day = Day - COR}
-
 
 		if (Day < 1) {
 		Month = Month - 1
@@ -314,6 +324,6 @@ $html.='</div>';
 
 		}
 
-		document.Newdayofweek.Weekdayoldstyle.value = OldMonth + "/" + OldDay + "/" + OldYear + " New Style corresponds to " + Month + "/" + Day + "/" + Year + " Old Style"
+		document.Newdayofweek . Weekdayoldstyle . value = OldMonth + "/" + OldDay + "/" + OldYear + " <?php echo WT_I18N::translate('New Style corresponds to '); ?>" + Month + "/" + Day + "/" + Year + " <?php echo WT_I18N::translate('Old Style'); ?>"
 	}
 // --></script>

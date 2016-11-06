@@ -53,7 +53,7 @@ $html .= '
 	.utility label{margin:0 10px;}
 	.bold {font-weight: 900;}
 	#days .button {cursor: pointer;font-size: 80%;}
-	#relationships .result{margin:0 20px;padding:2px 5px;width:250px;}
+	#relationships .result{margin:0 20px;padding:5px;width:250px;}
 	#relationships td{padding:5px;}
 	#dob_calc p.main {margin:20px auto;}
 	#dob_calc p.main span {margin-right:20px;}
@@ -170,22 +170,22 @@ $html .= '
 			<tr>
 				<td>' . WT_I18N::translate('The first relationship to <strong>X</strong> is') . '</td>
 				<td>
-					<input name="yores" type="text" value="" />
-					<input onclick="incGen(1)" type="button" value="+" />
-					<input onclick="decGen(1)" type="button" value="-" />
+					<input name="yores" type="text" value="" >
+					<input onclick="incGen(1)" type="button" value="+" >
+					<input onclick="decGen(1)" type="button" value="-" >
 				</td>
 			</tr>
 			<tr>
 				<td>' . WT_I18N::translate('The relationship of <strong>D</strong> to <strong>X</strong> is') . '</td>
 				<td>
-					<input name="thares" type="text" value="" />
-					<input onclick="incGen(2)" type="button" value="+" />
-					<input onclick="decGen(2)" type="button" value="-" />
+					<input name="thares" type="text" value="" >
+					<input onclick="incGen(2)" type="button" value="+" >
+					<input onclick="decGen(2)" type="button" value="-" >
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input class="result" name="therelation" type="text" value="" />
+					<input class="result" name="therelation" type="text" value="" >
 				</td>
 			</tr>
 		</tbody>
@@ -198,9 +198,9 @@ $html .= '
   generationsData.genYou = 0;
   generationsData.genD = 0;
   generationsData.genArray = new Array(3);
-  generationsData.genArray[0] = "Child";
-  generationsData.genArray[1] = "Grandchild";
-  generationsData.genArray[2] = "Great grandchild";
+  generationsData.genArray[0] = "<?php echo WT_I18N::translate('Child'); ?>";
+  generationsData.genArray[1] = "<?php echo WT_I18N::translate('Grandchild'); ?>";
+  generationsData.genArray[2] = "<?php echo WT_I18N::translate('Great grandchild'); ?>";
 
   function initialBuild()
   {
@@ -248,9 +248,9 @@ $html .= '
 
   function relationshipDisplay(genAsker, genComp)
   {
-    var theirrelation = "You and D are siblings";
-    var t1=genAsker; // your generation
-    var t2=genComp;  // generation to compare
+    var theirrelation	= "<?php echo WT_I18N::translate('You and D are siblings'); ?>";
+    var t1				= genAsker; // your generation
+    var t2				= genComp;  // generation to compare
     ///
     //  return the relationship display for the two generations
     ///
@@ -258,12 +258,12 @@ $html .= '
         {
                 if( t1 == 0 ) // both 1st gen
                 {
-		            theirrelation="You and D are Siblings";
+		            theirrelation="<?php echo WT_I18N::translate('You and D are siblings'); ?>";
 		}
                 else
                 {
-                    theirrelation = "You and D are "
-                           + numSuffix(t1) + " Cousins";
+                    theirrelation = "<?php echo WT_I18N::translate('You and D are '); ?>"
+                           + numSuffix(t1) + "<?php echo WT_I18N::translate(' Cousins'); ?>";
                 }
         }
         else if( t1 == 0 && t2 > 0 )
@@ -271,18 +271,18 @@ $html .= '
                 var grandind="";
                 if( t2 == 2 )
                 {
-                    grandind="Grand";
+                    grandind="<?php echo WT_I18N::translate('Grand'); ?>";
                 }
                 else if( t2 == 3 )
                 {
-                    grandind="Great Grand";
+                    grandind="<?php echo WT_I18N::translate('Great Grand'); ?>";
                 }
                 else if( t2 > 3 )
                 {
-                    grandind=  numSuffix(t2 - 2) + " Great Grand";
+                    grandind=  numSuffix(t2 - 2) + "<?php echo WT_I18N::translate(' Great Grand'); ?>";
                 }
 
-                theirrelation="D is your " + grandind + " niece/nephew";
+                theirrelation="<?php echo WT_I18N::translate('D is your '); ?>'" + grandind + "<?php echo WT_I18N::translate(' niece/nephew'); ?>";
 
         }
         else if( t1 > 0 && t2 == 0 )
@@ -290,18 +290,18 @@ $html .= '
                 var grandind="";
                 if( t1 == 2 )
                 {
-                    grandind="Grand";
+                    grandind="<?php echo WT_I18N::translate('Grand'); ?>";
                 }
                 else if( t1 == 3 )
                 {
-                    grandind="Great Grand";
+                    grandind="<?php echo WT_I18N::translate('Great Grand'); ?>";
                 }
                 else if( t1 > 3 )
                 {
-                    grandind = numSuffix(t1 - 2) + " Great Grand";
+                    grandind = numSuffix(t1 - 2) + "<?php echo WT_I18N::translate(' Great Grand'); ?>";
                 }
 
-                theirrelation="You are the " + grandind + " niece/nephew of D";
+                theirrelation="<?php echo WT_I18N::translate('You are the '); ?>" + grandind + "<?php echo WT_I18N::translate(' niece/nephew of D'); ?>";
         }
         else
         {
@@ -320,17 +320,17 @@ $html .= '
 
             if( removed > 0 )
             {
-                theirrelation = "You and D are "
-                     + numSuffix(lesser) + " cousins " + removed;
+                theirrelation = "<?php echo WT_I18N::translate('You and D are '); ?>"
+                     + numSuffix(lesser) + "<?php echo WT_I18N::translate(' cousins '); ?>" + removed;
 
                 if( removed == 1 )
-                    theirrelation += " time removed";
+                    theirrelation += "<?php echo WT_I18N::translate(' time removed'); ?>";
                 else
-                    theirrelation += " times removed";
+                    theirrelation += "<?php echo WT_I18N::translate(' times removed'); ?>";
             }
             else
-                theirrelation="You and D are " + numSuffix(lesser)
-                    + " cousins";
+                theirrelation="<?php echo WT_I18N::translate('You and D are '); ?>" + numSuffix(lesser)
+                    + "<?php echo WT_I18N::translate(' cousins'); ?>";
         }
      return theirrelation;
   }
@@ -457,7 +457,7 @@ $html .= '
 			}
 		}
 		if (i != 3) {
-			Alert ("Please enter a valid date.");
+			alert ("<?php echo WT_I18N::translate('Please enter a valid date.'); ?>");
 		} else {
 			eventDate = newDate(dateFields[0], dateFields[1]-1, dateFields[2]);
 			theForm.eventDate.value = dateToStr(eventDate);

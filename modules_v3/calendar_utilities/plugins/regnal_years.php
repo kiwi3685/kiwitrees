@@ -45,19 +45,29 @@ $html.='
 		#regnal	.note{font-style:italic; padding:5px; white-space:normal; font-weight:normal;}
 	</style>
 	<div id="regnal">' .
+		/* I18N Help comments for a calendar utility */
 		WT_I18N::translate('<p>Dates based on regnal years refer to the year of the current monarch\'s reign and usually have the format "year + monarch" (e.g. "4 Mary"). This page will take a date in regnal years and return an ordinary date. For instance, if you enter 6/11 Elizabeth I, Regnal year 1, you will get the year 1559 because June 1st in her first regnal year occurred in 1559.</p>') . '
 		<div id="acknowledgement">' .
-			WT_I18N::translate('<p>This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
+			/* I18N Acknowledgement of origin for a calendar utility */
+			WT_I18N::translate('
 				<p>
-					His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents who wish to date documents from this period will need to follow this link') . '</p>
-				<p><i title="Help with English calendar" onclick="modalNotes(\''.$help1.'\', \'' . WT_I18N::translate('Help with English calendar') . '\')">' . WT_I18N::translate('Help with English calendar') . '</i></p>
+					This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
 				<p>
-					<a title="Easter Formulae" href="'.$help2.'" target="_blank"><i>' . WT_I18N::translate('The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica.') . '</i></a>
+					His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents who wish to date documents from this period will need to follow this link
 				</p>
+				<p>
+					<i title="Help with English calendar" onclick="modalNotes(\'%1s\', \'Help with English calendar\')">Help with English calendar</i>
+				</p>
+				<p>
+					<a title="Easter Formulae" href="%2s" target="_blank">
+						<i>The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica</i>
+					</a>
+				</p>
+			', $help1, $help2) . '
 		</div>
 		<form name="RegnalYear">
 			<label class="main">' . WT_I18N::translate('Enter the month and day') . '</label>
-				<label class="secondary">' . WT_I18N::translate('Month number') . '</label> 
+				<label class="secondary">' . WT_I18N::translate('Month number') . '</label>
 				<select name="Month" size="1">';
 					for ($i=1; $i<13; ++$i) {
 						$html .= '<option value="' . $i . '"';
@@ -75,64 +85,66 @@ $html.='
 				$html .= '</select>
 			</label>
 			<label class="main">' . WT_I18N::translate('Enter the Monarch and Regnal Year') . '
-				<label class="secondary">Monarch:</label> 
+				<label class="secondary">' . WT_I18N::translate('Monarch') . ':</label>
 				<select name="Monarch" size="1">
-					<option selected value="William I">William I
-					<option value="WilliamII">William II
-					<option value="HenryI">Henry I
-					<option value="Stephen">Stephen
-					<option value="HenryII">Henry II
-					<option value="RichardI">Richard I
-					<option value="John">John
-					<option value="HenryIII">Henry III
-					<option value="EdwardI">Edward I
-					<option value="EdwardII">Edward II
-					<option value="EdwardIII">Edward III
-					<option value="RichardII">Richard II
-					<option value="HenryIV">Henry IV
-					<option value="HenryV">Henry V
-					<option value="HenryVI">Henry VI
-					<option value="EdwardIV">Edward IV
-					<option value="EdwardV">Edward V
-					<option value="RichardIII">Richard III
-					<option value="HenryVII">Henry VII
-					<option value="HenryVIII">Henry VIII
-					<option value="EdwardVI">Edward VI
-					<option value="Jane">Jane
-					<option value="Mary">Mary
-					<option value="ElizabethI">Elizabeth I
-					<option value="JamesI">James I
-					<option value="CharlesI">Charles I
-					<option value="CharlesII">Charles II
-					<option value="JamesII">James II
-					<option value="WilliamandMary">William and Mary (William III)
-					<option value="Anne">Anne
-					<option value="GeorgeI">George I
-					<option value="GeorgeII">George II
-					<option value="GeorgeIII">George III
-					<option value="GeorgeIV">George IV
-					<option value="William IV">William IV
-					<option value="Victoria">Victoria
-					<option value="EdwardVII">Edward VII
-					<option value="GeorgeV">George V
-					<option value="EdwardVIII">Edward VIII
-					<option value="GeorgeVI">George VI
-					<option value="ElizabethII">Elizabeth II
+					<option selected value="William I">' . WT_I18N::translate('William I') . '
+					<option value="WilliamII">' . WT_I18N::translate('William II') . '
+					<option value="HenryI">' . WT_I18N::translate('Henry I') . '
+					<option value="Stephen">' . WT_I18N::translate('Stephen') . '
+					<option value="HenryII">' . WT_I18N::translate('Henry II') . '
+					<option value="RichardI">' . WT_I18N::translate('Richard I') . '
+					<option value="John">' . WT_I18N::translate('John') . '
+					<option value="HenryIII">' . WT_I18N::translate('Henry III') . '
+					<option value="EdwardI">' . WT_I18N::translate('Edward I') . '
+					<option value="EdwardII">' . WT_I18N::translate('Edward II') . '
+					<option value="EdwardIII">' . WT_I18N::translate('Edward III') . '
+					<option value="RichardII">' . WT_I18N::translate('Richard II') . '
+					<option value="HenryIV">' . WT_I18N::translate('Henry IV') . '
+					<option value="HenryV">' . WT_I18N::translate('Henry V') . '
+					<option value="HenryVI">' . WT_I18N::translate('Henry VI') . '
+					<option value="EdwardIV">' . WT_I18N::translate('Edward IV') . '
+					<option value="EdwardV">' . WT_I18N::translate('Edward V') . '
+					<option value="RichardIII">' . WT_I18N::translate('Richard III') . '
+					<option value="HenryVII">' . WT_I18N::translate('Henry VII') . '
+					<option value="HenryVIII">' . WT_I18N::translate('Henry VIII') . '
+					<option value="EdwardVI">' . WT_I18N::translate('Edward VI') . '
+					<option value="Jane">' . WT_I18N::translate('Jane') . '
+					<option value="Mary">' . WT_I18N::translate('Mary') . '
+					<option value="ElizabethI">' . WT_I18N::translate('Elizabeth I') . '
+					<option value="JamesI">' . WT_I18N::translate('James I') . '
+					<option value="CharlesI">' . WT_I18N::translate('Charles I') . '
+					<option value="CharlesII">' . WT_I18N::translate('Charles II') . '
+					<option value="JamesII">' . WT_I18N::translate('James II') . '
+					<option value="WilliamandMary">' . WT_I18N::translate('William and Mary (William III)') . '
+					<option value="Anne">' . WT_I18N::translate('Anne') . '
+					<option value="GeorgeI">' . WT_I18N::translate('George I') . '
+					<option value="GeorgeII">' . WT_I18N::translate('George II') . '
+					<option value="GeorgeIII">' . WT_I18N::translate('George III') . '
+					<option value="GeorgeIV">' . WT_I18N::translate('George IV') . '
+					<option value="William IV">' . WT_I18N::translate('William IV') . '
+					<option value="Victoria">' . WT_I18N::translate('Victoria') . '
+					<option value="EdwardVII">' . WT_I18N::translate('Edward VII') . '
+					<option value="GeorgeV">' . WT_I18N::translate('George V') . '
+					<option value="EdwardVIII">' . WT_I18N::translate('Edward VIII') . '
+					<option value="GeorgeVI">' . WT_I18N::translate('George VI') . '
+					<option value="ElizabethII">' . WT_I18N::translate('Elizabeth II') . '
 				</select>
 			</label>
 			<label class="main">' . WT_I18N::translate('Regnal Year') . '
-				<label class="secondary"><input type="text" name="regnalyear" size="2" maxlength="2"></label>
+				<label class="secondary">
+					<input type="text" name="regnalyear" size="2" maxlength="2">
+				</label>
 			</label>
 			<p>
-				<input class="button_ec" type="button" value="Calculate Year" name="CalculateChristianYear" onclick="Calculate()">
+				<input class="button_ec" type="button" value="' . WT_I18N::translate('Calculate Year') . '" name="CalculateChristianYear" onclick="Calculate()">
 				<input type="text" name="Answer" size="10" maxlength="10" readonly>
 			</p>
 			<p class="note">' . WT_I18N::translate('Double years such as &quot;1324/5&quot; reflect Old Style dating (see note below).') . '</p>
-			<label class="main">Notes
+			<label class="main">' . WT_I18N::translate('Notes') . '
 				<ol>
-				<li class="note">' . WT_I18N::translate('Keep in mind that a monarch\'s last regnal year is cut short by death or deposition and may not include all dates.') . '</li>
-				<li class="note">' . WT_I18N::translate('Also, remember that while the so-called &quot;Christian year&quot; began on January 1, the legal year began on March 25. For example, January 1 in Elizabeth I\'s 1st regnal year occurred in the Christian year1559, but legally the year was still 1558, and would be until March 25. From January 1 to March 24, the convention is to note both years with a slash between them, e.g. &quot;1558/9.&quot;') . '</li>
-				<li class="note">' . WT_I18N::translate('Remember also that from 1582 onward, English dates (Old Style) will not correspond with Continental dates.') . '</li>
+					<li class="note">' . WT_I18N::translate('Keep in mind that a monarch\'s last regnal year is cut short by death or deposition and may not include all dates.') . '</li>
+					<li class="note">' . WT_I18N::translate('Also, remember that while the so-called &quot;Christian year&quot; began on January 1, the legal year began on March 25. For example, January 1 in Elizabeth I\'s 1st regnal year occurred in the Christian year1559, but legally the year was still 1558, and would be until March 25. From January 1 to March 24, the convention is to note both years with a slash between them, e.g. &quot;1558/9.&quot;') . '</li>
+					<li class="note">' . WT_I18N::translate('Remember also that from 1582 onward, English dates (Old Style) will not correspond with Continental dates.') . '</li>
 				</ol>
 			</label>
 		</form>
@@ -630,7 +642,7 @@ $html.='
 			if (Month < 6) {
 				regnalyear = regnalyear + 1}
 			}
-			
+
 			if (regnalyear < 27){
 				regnalyear = regnalyear + 1726
 			if (Month == 6){
@@ -656,7 +668,7 @@ $html.='
 				regnalyear = regnalyear + 1
 			}
 		}
-		
+
 		if (Monarch == "GeorgeIV"){
 			if (regnalyear > 11){
 				alert("<?php echo WT_I18N::translate('George III only reigned for 11 years.'); ?>")
@@ -669,7 +681,7 @@ $html.='
 				}
 			}
 		}
-		
+
 		if (Monarch == "William IV"){
 			if (regnalyear > 7){
 				alert("<?php echo WT_I18N::translate('William IV only reigned for 7 years.'); ?>")
@@ -685,7 +697,7 @@ $html.='
 				regnalyear = regnalyear + 1
 			}
 		}
-		
+
 		if (Monarch == "Victoria"){
 			if (regnalyear > 64){
 				alert("<?php echo WT_I18N::translate('Victoria only reigned for 64 years.'); ?>")
@@ -797,4 +809,3 @@ $html.='
 		document.RegnalYear.Answer.value = regnalyear
 	}
 // --></script>
-
