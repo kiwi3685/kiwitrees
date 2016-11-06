@@ -29,8 +29,10 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller = new WT_Controller_Page();
-$controller->setPageTitle(WT_I18N::translate('Sources'));
-$controller->pageHeader();
+$controller
+	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_sources', WT_USER_ACCESS_LEVEL))
+	->setPageTitle(WT_I18N::translate('Sources'))
+	->pageHeader();
 
 echo '<div id="sourcelist-page">',
 	'<h2>', WT_I18N::translate('Sources'), '</h2>';

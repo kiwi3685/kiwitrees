@@ -264,14 +264,14 @@ $html.= '
 	<style>
 		#ecclesiastic h1 {font-size:15px; font-weight:bold;}
 		#ecclesiastic {color:#555; font-size:13px;}
-		#ecclesiastic form{overflow:hidden;}		
+		#ecclesiastic form{overflow:hidden;}
 		#acknowledgement{background:#fff; border:1px solid #c0c0c0; border-radius:8px; float:right; font-size:12px; width:250px; margin:0 30px; padding:10px;}
 		#acknowledgement p{padding:5px;}
 		#acknowledgement i{cursor:pointer; color:blue; margin:0; vertical-align:baseline;}
 		#ecclesiastic .label_ec{clear:left; float:left; font-size:14px; padding:5px; width:320px;}
 		#ecclesiastic .year{width:234px;}
 		#ecclesiastic .label_ec input{color:#555; float:right; font-size:13px;}
-		#ecclesiastic .note{font-size:11px; font-style:italic; padding:5px; white-space:nowrap;}
+		#ecclesiastic .note{clear: both; font-size:11px; font-style:italic; padding:5px; white-space:nowrap;}
 		#ecclesiastic .non_movable{clear:both;margin-top:40px;}
 		#ecclesiastic .non_movable_list{border:1px solid black; max-width:95%; height:200px; overflow:auto; padding:10px;}
 		#popup{font-size:12px;}
@@ -281,7 +281,7 @@ $html.= '
 		<div id="acknowledgement">
 			<p>This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>
 			<p>
-				His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents will need to follow 
+				His site is intended to replace quick reference handbooks of dates for those interested in English history, literature, and genealogy. It is also accurate for European history outside of England, with the exception of the period 1582-1752. Students of Continental documents will need to follow
 				<i title="Help with English calendar" onclick="modalNotes(\''.$help1.'\', \''.WT_I18N::translate('Help with English calendar').'\')">this link </i>
 				if they wish to date documents from this period.
 			<p>
@@ -350,12 +350,12 @@ $html.= '
 		var E
 		var Marchdate
 		var H
-		var Leapyear 
+		var Leapyear
 		var Leapyearcentury
 		var Leapyearfourcentury
 		var S
 		var Advent
-		var Pent 
+		var Pent
 		var T
 		var A
 		var Temp
@@ -404,10 +404,10 @@ $html.= '
 		Marchdate = p
 		if (p>31) {
 			p = p - 31
-			p = "April " + p 
+			p = "April " + p
 			//   + " E=" + E + " P=" +P + " L=" + L + " l=" + l + " C=" + C
 		} else {
-			p = "March " + p 
+			p = "March " + p
 			// + " E=" + E + " P=" +P + " L=" + L + " l=" + l
 		}
 		H = Marchdate - 46
@@ -451,10 +451,10 @@ $html.= '
 			A = "April " + A
 		} else {
 			A=A-61
-			if (A>31) 
+			if (A>31)
 			{A=A-31
 			A = "June " + A}
-			else 
+			else
 			{A="May " + A}
 		}
 		Pent = Marchdate + 49

@@ -32,6 +32,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 $controller = new WT_Controller_Page();
 $controller
+	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_media', WT_USER_ACCESS_LEVEL))
 	->setPageTitle(WT_I18N::translate('Media objects'))
 	->pageHeader();
 

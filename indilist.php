@@ -31,8 +31,6 @@ define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Page();
-
 // We show three different lists: initials, surnames and individuals
 // Note that the data may contain special chars, such as surname="<unknown>",
 $alpha   =safe_GET('alpha', WT_REGEX_UNSAFE); // All surnames beginning with this letter where "@"=unknown and ","=none
@@ -134,7 +132,9 @@ if ($show_all=='yes') {
 }
 $legend='<span dir="auto">'.$legend.'</span>';
 
+$controller = new WT_Controller_Page();
 $controller
+	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_individuals', WT_USER_ACCESS_LEVEL))
 	->setPageTitle(WT_I18N::translate('Individuals').' : '.$legend)
 	->pageHeader();
 

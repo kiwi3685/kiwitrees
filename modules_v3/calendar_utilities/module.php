@@ -79,6 +79,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 		global $controller;
 		$controller = new WT_Controller_Page();
 		$controller
+			->restrictAccess(WT_Module::isActiveList(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addInlineJavascript('jQuery("#calendar_tabs").tabs();');

@@ -116,6 +116,7 @@ if ($view == 'year')  {$active = 2;}
 
 $controller = new WT_Controller_Page();
 $controller
+	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_calendar', WT_USER_ACCESS_LEVEL))
 	->setPageTitle(WT_I18N::translate('Anniversary calendar'))
 	->pageHeader()
 	->addInlineJavascript('

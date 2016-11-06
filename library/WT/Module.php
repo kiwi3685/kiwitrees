@@ -203,6 +203,10 @@ abstract class WT_Module {
 		}
 		return $lists;
 	}
+	// Get a list of modules which (a) provide a chart and (b) we have permission to see.
+	public static function isActiveList($ged_id = WT_GED_ID, $module, $access_level) {
+		return array_key_exists($module, self::getActiveModulesByComponent('list', $ged_id, $access_level));
+	}
 
 	// Get a list of all the active, authorised menus
 	static public function getActiveMenus($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {

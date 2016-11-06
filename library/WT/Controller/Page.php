@@ -74,11 +74,27 @@ class WT_Controller_Page extends WT_Controller_Base {
 		return $this;
 	}
 
+	/**
+	 * Restrict access
+	 *
+	 * @param bool $condition
+	 *
+	 * @return $this
+	 */
+	public function restrictAccess($condition) {
+		if ($condition !== true) {
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
+			exit;
+		}
+
+		return $this;
+	}
+
 	// Restrict access
 	public function requireAdminLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_IS_ADMIN) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;

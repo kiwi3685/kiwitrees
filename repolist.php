@@ -29,8 +29,10 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller = new WT_Controller_Page();
-$controller->setPageTitle(WT_I18N::translate('Repositories'));
-$controller->pageHeader();
+$controller
+	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_repositories', WT_USER_ACCESS_LEVEL))
+	->setPageTitle(WT_I18N::translate('Repositories'))
+	->pageHeader();
 
 echo '<div id="repolist-page">',
 	'<h2>', WT_I18N::translate('Repositories'), '</h2>';

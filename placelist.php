@@ -28,17 +28,16 @@ define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Page();
-
-$action =safe_GET('action',  array('find', 'show'), 'find');
-$display=safe_GET('display', array('hierarchy', 'list'), 'hierarchy');
-$parent =safe_GET('parent', WT_REGEX_UNSAFE); // Place names may include HTML chars.  "Sunny View Cemetery", Smallville, <unknown>, Texas, USA"
+$action		= safe_GET('action',  array('find', 'show'), 'find');
+$display	= safe_GET('display', array('hierarchy', 'list'), 'hierarchy');
+$parent		= safe_GET('parent', WT_REGEX_UNSAFE); // Place names may include HTML chars.  "Sunny View Cemetery", Smallville, <unknown>, Texas, USA"
 if (!is_array($parent)) {
 	$parent = array();
 }
-$level=count($parent);
+$level = count($parent);
 
-if ($display=='hierarchy') {
+$controller = new WT_Controller_Page();
+if ($display == 'hierarchy') {
 	if ($level) {
 		$controller->setPageTitle(WT_I18N::translate('Place hierarchy') . ' - <span dir="auto">' . htmlspecialchars(end($parent)) . '</span>');
 	} else {
@@ -47,15 +46,16 @@ if ($display=='hierarchy') {
 } else {
 	$controller->setPageTitle(WT_I18N::translate('Place List'));
 }
-
-$controller->pageHeader();
+$controller
+	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_places', WT_USER_ACCESS_LEVEL))
+	->pageHeader();
 
 echo '<div id="place-hierarchy">';
 	switch ($display) {
 		case 'list':
 			$list_places	= WT_Place::allPlaces(WT_GED_ID);
 			$num_places		= count($list_places);
-			
+
 			echo '
 				<h2>', $controller->getPageTitle(), '</h2>
 				<h4><a href="placelist.php?display=hierarchy">', WT_I18N::translate('Switch to Place hierarchy'), '</a></h4>';
@@ -152,12 +152,12 @@ echo '<div id="place-hierarchy">';
 				// -- array of names
 				$myindilist = array();
 				$myfamlist = array();
-			
+
 				$positions=
 					WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 					->execute(array($place_id, WT_GED_ID))
 					->fetchOneColumn();
-			
+
 				foreach ($positions as $position) {
 					$record=WT_GedcomRecord::getInstance($position);
 					if ($record && $record->canDisplayDetails()) {
@@ -171,13 +171,13 @@ echo '<div id="place-hierarchy">';
 						}
 					}
 				}
-			
+
 				//-- display results
 				$controller
 					->addInlineJavascript('jQuery("#places-tabs").tabs();')
 					->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
 					->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
-			
+
 				echo '<div class="loading-image">&nbsp;</div>';
 				echo '<div id="places-tabs"><ul>';
 				if ($myindilist) {
