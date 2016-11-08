@@ -390,7 +390,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 	}
 
 	function getLabel($tag) {
-		return WT_Gedcom_Tag::getLabel(str_replace(':SDX', '', $tag));
+		return WT_Gedcom_Tag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
+
 	}
 
 	function reorderFields() {
