@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(WT_USER_IS_ADMIN)
 	->setPageTitle(WT_I18N::translate('Site configuration'))
 	->addInlineJavascript('
 		jQuery(function() {
@@ -417,7 +417,7 @@ $controller
 											echo 'checked="checked"';
 										}
 									echo ' value="' . $code . '">
-									<label for="lang_' . $code . '"> '.$name.'</label>
+									<label for="lang_' . $code . '"> '. WT_I18N::translate($name) . '</label>
 								</span>
 							';
 						}

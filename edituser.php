@@ -162,17 +162,23 @@ function checkform(frm) {
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Password'); ?></label>
-				<input type="password" name="form_pass1"> <?php echo WT_I18N::translate('Leave password blank if you want to keep the current password.'); ?>
+				<input type="password" name="form_pass1">
 				<span id="password" class="help_text"></span>
-			</div>
-			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Confirm password'); ?></label>
 				<input type="password" name="form_pass2">
 				<span id="password_confirm" class="help_text"></span>
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Language'); ?></label>
-				<div class="label"><?php echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language')); ?></div>
+				<div class="label">
+					<select id="form_language" name="form_language">
+						<?php foreach (WT_I18N::used_languages() as $code=>$name) { ?>
+							<option value="<?php echo $code; ?>" dir="auto" <?php echo get_user_setting(WT_USER_ID, 'language') === $code ? 'selected' : ''; ?>>
+								<?php echo WT_I18N::translate($name); ?>
+							</option>
+						<?php } ?>
+					</select>
+				</div>
 			</div>
 			<div class="chart_options">
 				<label><?php echo WT_I18N::translate('Email address'); ?></label>

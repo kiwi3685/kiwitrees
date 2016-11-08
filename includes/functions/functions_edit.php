@@ -198,11 +198,11 @@ function edit_language_checkboxes($field_prefix, $languages) {
 	echo '<table>';
 	$i=0;
 	foreach (WT_I18N::used_languages() as $code=>$name) {
-		$content = '<input type="checkbox" name="'.$field_prefix.$code.'" id="'.$field_prefix.$code.'"';
+		$content = '<input type="checkbox" name="' . $field_prefix . $code . '" id="' . $field_prefix . $code . '"';
 		if (strpos(",{$languages},", ",{$code},") !== false) {
 			$content .= 'checked="checked"';
 		}
-		$content .= '><label for="'.$field_prefix.$code.'"> '.$name.'</label>';
+		$content .= '><label for="' . $field_prefix . $code . '"> ' . WT_I18N::translate($name) . '</label>';
 		// print in two columns
 		switch ($i % 3) {
 		case 0: echo '<tr><td>', $content, '</td>'; break;

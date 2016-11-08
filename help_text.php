@@ -599,7 +599,7 @@ case 'oldest_top':
 
 case 'password':
 	$title = WT_I18N::translate('Password');
-	$text = WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.');
+	$text = WT_I18N::translate('Leave password blank if you want to keep the current password.<br>Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.');
 	break;
 
 case 'password_confirm':

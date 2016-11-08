@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(WT_USER_IS_ADMIN)
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->setPageTitle(WT_I18N::translate('Custom translation'))
@@ -90,7 +90,7 @@ if (WT_USER_IS_ADMIN) { ?>
 				foreach (WT_I18N::installed_languages() as $code=>$name) {
 					$style = ($code == $language ? ' selected=selected ' : '');
 					if (in_array($code, $languages)) {
-						echo '<option' . $style . ' value="' . $code . '">' . $name . '</option>';
+						echo '<option' . $style . ' value="' . $code . '">' . WT_I18N::translate($name) . '</option>';
 					}
 				}
 				?>
