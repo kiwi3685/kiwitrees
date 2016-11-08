@@ -51,7 +51,7 @@ $html.='
 			WT_I18N::translate('There are two parts to this page. The first converts from Old Style dates, typically found in English documents before 1752, to New Style dates.  The second converts New Style into Old Style.  To avoid confusion, the year is assumed to begin on January 1st. If you are dealing with a old style document dated before March 25th, be aware that the legal year did not change until then.') . '
 		</p>
 		<div id="acknowledgement"> ' .
-			/* I18N Acknowledgement of origin for a calendar utility */
+			/* I18N: Acknowledgement of origin for a calendar utility */
 			WT_I18N::translate('
 				<p>
 					This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>

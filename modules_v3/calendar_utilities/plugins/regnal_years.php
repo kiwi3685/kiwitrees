@@ -45,10 +45,10 @@ $html.='
 		#regnal	.note{font-style:italic; padding:5px; white-space:normal; font-weight:normal;}
 	</style>
 	<div id="regnal">' .
-		/* I18N Help comments for a calendar utility */
+		/* I18N: Help comments for a calendar utility */
 		WT_I18N::translate('<p>Dates based on regnal years refer to the year of the current monarch\'s reign and usually have the format "year + monarch" (e.g. "4 Mary"). This page will take a date in regnal years and return an ordinary date. For instance, if you enter 6/11 Elizabeth I, Regnal year 1, you will get the year 1559 because June 1st in her first regnal year occurred in 1559.</p>') . '
 		<div id="acknowledgement">' .
-			/* I18N Acknowledgement of origin for a calendar utility */
+			/* I18N: Acknowledgement of origin for a calendar utility */
 			WT_I18N::translate('
 				<p>
 					This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>

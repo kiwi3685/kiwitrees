@@ -176,7 +176,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 					<h5><?php echo $this->getDescription(); ?></h5>
 					<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 					<div class="hidden">
-						<?php echo /* I18N help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
+						<?php echo /* I18N: help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
 					</div>
 				</div>
 			</div>

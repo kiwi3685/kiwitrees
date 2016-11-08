@@ -178,7 +178,7 @@ class resource_changes_WT_Module extends WT_Module implements WT_Module_Resource
                 <h5>' . $this->getDescription() . '</h5>
                 <a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
                 <div class="hidden">
-                    ' . /* I18N help for resource facts and events module */ WT_I18N::translate('View a list of data changes to the current family tree  based on <b>either</b> a range of dates <b>or</b> a number of days up to and including today. If you enter one or more dates plus a number of days, the dates will be ignored.<br>If <b>Show pending changes</b> is selected these will <u>all</u> be shown regardless of date or day settings.') . '
+                    ' . /* I18N: help for resource facts and events module */ WT_I18N::translate('View a list of data changes to the current family tree  based on <b>either</b> a range of dates <b>or</b> a number of days up to and including today. If you enter one or more dates plus a number of days, the dates will be ignored.<br>If <b>Show pending changes</b> is selected these will <u>all</u> be shown regardless of date or day settings.') . '
                 </div>
             </div>
         </div>

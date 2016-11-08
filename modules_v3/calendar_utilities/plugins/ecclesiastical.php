@@ -279,7 +279,7 @@ $html.= '
 	</style>
 	<div id="ecclesiastic">
 		<div id="acknowledgement">' .
-			/* I18N Acknowledgement of origin for a calendar utility */
+			/* I18N: Acknowledgement of origin for a calendar utility */
 			WT_I18N::translate('
 				<p>
 					This page is based on work done by Ian MacInnes <span class="note">(imacinnes@albion.edu)</span> at his website <a href="http://people.albion.edu/imacinnes/calendar/Welcome.html" target="blank"><b>Ian\'s English Calendar</b></a></p>

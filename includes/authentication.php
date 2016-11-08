@@ -226,7 +226,7 @@ function addMessage($message) {
 
 	$user_id_from = get_user_id($message['from']);
 	$user_id_to   = get_user_id($message['to']);
-	$original_email = /* I18N Start of message from a kiwitrees site */ WT_I18N::translate('The following message has been sent to your %1$s user account from ', strip_tags(WT_TREE_TITLE));
+	$original_email = /* I18N: Start of message from a kiwitrees site */ WT_I18N::translate('The following message has been sent to your %1$s user account from ', strip_tags(WT_TREE_TITLE));
 
 	require_once WT_ROOT.'includes/functions/functions_mail.php';
 
@@ -246,7 +246,7 @@ function addMessage($message) {
 	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: " . $WT_REQUEST->getClientIp() . "\r\n";
 	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp()) . "\r\n";
 	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
-	$copy_subject = "[" . /* I18N subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
+	$copy_subject = "[" . /* I18N: subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
 	$from ='';
 	if (!$user_id_from) {
 		$from = $message['from'];
@@ -260,7 +260,7 @@ function addMessage($message) {
 
 	}
 	if ($message['method'] != 'messaging') {
-		$original_subject = "[" . /* I18N Subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
+		$original_subject = "[" . /* I18N: Subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
 		if (!$user_id_from) {
 			if (!empty($message['from_name'])) {
 				$original_email .= $message['from_name']."\r\n\r\n".$message['body'];
