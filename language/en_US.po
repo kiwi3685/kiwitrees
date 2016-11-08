@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2016-10-30 17:12+1300\n"
-"PO-Revision-Date: 2016-11-02 12:25+1300\n"
+"POT-Creation-Date: 2016-11-07 11:33+1300\n"
+"PO-Revision-Date: 2016-11-07 14:11+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Media file to upload"
 msgstr "Media file to upload"
 
-#: addmedia.php:480 admin_media_upload.php:179 admin_trees_manage.php:166
+#: addmedia.php:480 admin_media_upload.php:179 admin_trees_manage.php:165
 #, php-format
 msgid "Maximum file size allowed is %s"
 msgstr "Maximum file size allowed is %s"
@@ -228,13 +228,13 @@ msgid "Do not update the “last change” record"
 msgstr "Do not update the “last change” record"
 
 #. I18N: button label
-#: addmedia.php:810 admin_module_blocks.php:101 admin_module_charts.php:101
-#: admin_module_lists.php:101 admin_module_menus.php:127
-#: admin_module_reports.php:101 admin_module_resources.php:101
-#: admin_module_sidebar.php:127 admin_module_tabs.php:127
-#: admin_module_widgets.php:127 admin_modules.php:198 admin_site_config.php:431
+#: addmedia.php:810 admin_module_blocks.php:109 admin_module_charts.php:109
+#: admin_module_lists.php:109 admin_module_menus.php:135
+#: admin_module_reports.php:109 admin_module_resources.php:109
+#: admin_module_sidebar.php:135 admin_module_tabs.php:135
+#: admin_module_widgets.php:135 admin_modules.php:206 admin_site_config.php:431
 #: admin_site_merge.php:163 admin_trees_config.php:1419
-#: admin_trees_manage.php:347 block_edit.php:61 edit_interface.php:169
+#: admin_trees_manage.php:344 block_edit.php:61 edit_interface.php:169
 #: edit_interface.php:270 edit_interface.php:346 edit_interface.php:505
 #: edit_interface.php:576 edit_interface.php:828 edit_interface.php:935
 #: edit_interface.php:1085 edit_interface.php:1161 edit_interface.php:1288
@@ -247,7 +247,7 @@ msgstr "Do not update the “last change” record"
 #: includes/functions/functions_edit.php:1002 includes/media_reorder.php:164
 #: index_edit.php:340 modules_v3/GEDFact_assistant/_CENS/census_4_text.php:52
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:620
-#: modules_v3/album/module.php:339 modules_v3/calendar_utilities/module.php:160
+#: modules_v3/album/module.php:339 modules_v3/calendar_utilities/module.php:161
 #: modules_v3/chart_relationship/module.php:419
 #: modules_v3/custom_js/module.php:89 modules_v3/extra_menus/module.php:205
 #: modules_v3/extra_menus/module.php:337
@@ -371,8 +371,8 @@ msgid "Family tree statistics"
 msgstr "Family tree statistics"
 
 #. I18N: Name of a module
-#: admin.php:257 admin.php:307 ancestry.php:98 calendar.php:379
-#: calendar.php:559 descendancy.php:69
+#: admin.php:257 admin.php:307 ancestry.php:98 calendar.php:380
+#: calendar.php:560 descendancy.php:69
 #: includes/functions/functions_print_lists.php:1123
 #: includes/functions/functions_print_lists.php:1279
 #: includes/functions/functions_print_lists.php:1607
@@ -390,8 +390,8 @@ msgstr "Individuals"
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: admin.php:262 admin.php:308 ancestry.php:104 calendar.php:380
-#: calendar.php:560 descendancy.php:74 famlist.php:138 famlist.php:143
+#: admin.php:262 admin.php:308 ancestry.php:104 calendar.php:381
+#: calendar.php:561 descendancy.php:74 famlist.php:140 famlist.php:145
 #: includes/functions/functions_print_lists.php:1125
 #: includes/functions/functions_print_lists.php:1281
 #: includes/functions/functions_print_lists.php:1609
@@ -400,7 +400,7 @@ msgstr "Individuals"
 #: modules_v3/gedcom_stats/module.php:317
 #: modules_v3/googlemap/placehierarchy.php:279 modules_v3/html/module.php:183
 #: modules_v3/list_families/module.php:36 modules_v3/relatives/module.php:35
-#: modules_v3/resource_individual/module.php:228
+#: modules_v3/resource_individual/module.php:229
 #: modules_v3/widget_stats/module.php:119
 #: modules_v3/widget_stats/module.php:357 note.php:107 placelist.php:187
 #: search.php:129 source.php:106 statistics.php:58 statisticsplot.php:779
@@ -418,10 +418,10 @@ msgstr "Families"
 #: modules_v3/gedcom_stats/module.php:110
 #: modules_v3/gedcom_stats/module.php:325 modules_v3/html/module.php:187
 #: modules_v3/list_sources/module.php:36
-#: modules_v3/resource_individual/module.php:316
+#: modules_v3/resource_individual/module.php:326
 #: modules_v3/sources_tab/module.php:35 modules_v3/widget_stats/module.php:128
 #: modules_v3/widget_stats/module.php:365 note.php:113 repo.php:101
-#: search.php:133 sourcelist.php:32 sourcelist.php:36 statistics.php:343
+#: search.php:133 sourcelist.php:34 sourcelist.php:38 statistics.php:343
 #: statistics.php:380 modules_v3/ahnentafel_report/report.bak:480
 #: modules_v3/family_group_report/report.bak:1107
 #: modules_v3/individual_ext_report/report.bak:636
@@ -434,7 +434,7 @@ msgstr "Sources"
 #: modules_v3/gedcom_stats/module.php:341 modules_v3/html/module.php:195
 #: modules_v3/list_repositories/module.php:36
 #: modules_v3/widget_stats/module.php:146
-#: modules_v3/widget_stats/module.php:381 repolist.php:32 repolist.php:36
+#: modules_v3/widget_stats/module.php:381 repolist.php:34 repolist.php:38
 #: statistics.php:345
 msgid "Repositories"
 msgstr "Repositories"
@@ -442,7 +442,7 @@ msgstr "Repositories"
 #. I18N: Name of a module
 #: admin.php:277 admin.php:311
 #: includes/functions/functions_print_lists.php:1127
-#: includes/functions/functions_print_lists.php:1283 medialist.php:35
+#: includes/functions/functions_print_lists.php:1283 medialist.php:36
 #: modules_v3/gedcom_stats/module.php:113
 #: modules_v3/gedcom_stats/module.php:333 modules_v3/html/module.php:191
 #: modules_v3/list_media/module.php:36 modules_v3/widget_stats/module.php:137
@@ -453,7 +453,7 @@ msgstr "Media objects"
 
 #. I18N: Name of a module
 #: admin.php:282 includes/functions/functions_print_lists.php:1129
-#: modules_v3/list_shared_notes/module.php:36 notelist.php:32 notelist.php:36
+#: modules_v3/list_shared_notes/module.php:36 notelist.php:34 notelist.php:38
 #: search.php:137
 msgid "Shared notes"
 msgstr "Shared notes"
@@ -466,9 +466,11 @@ msgstr "Shared notes"
 msgid "Recent changes"
 msgstr "Recent changes"
 
-#: admin.php:306 calendar.php:146 calendar.php:348
+#: admin.php:306 calendar.php:147 calendar.php:349
 #: modules_v3/calendar_utilities/plugins/calculators.php:79
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:68
+#: modules_v3/calendar_utilities/plugins/old_new.php:86
+#: modules_v3/calendar_utilities/plugins/old_new.php:120
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:78
 msgid "Day"
 msgstr "Day"
 
@@ -476,15 +478,18 @@ msgstr "Day"
 msgid "Week"
 msgstr "Week"
 
-#: admin.php:306 calendar.php:166 calendar.php:349
+#: admin.php:306 calendar.php:167 calendar.php:350
 #: modules_v3/calendar_utilities/plugins/calculators.php:88
+#: modules_v3/calendar_utilities/plugins/old_new.php:77
+#: modules_v3/calendar_utilities/plugins/old_new.php:111
 msgid "Month"
 msgstr "Month"
 
 #. I18N: Name of a module
 #: admin.php:312 library/WT/Controller/Search.php:1090 mediaviewer.php:151
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1054
-#: modules_v3/notes/module.php:35 modules_v3/resource_individual/module.php:218
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:143
+#: modules_v3/notes/module.php:35 modules_v3/resource_individual/module.php:219
 #: modules_v3/uk_register/module.php:192 source.php:112 statistics.php:344
 #: modules_v3/individual_ext_report/report.bak:221
 msgid "Notes"
@@ -501,15 +506,16 @@ msgid "The file %s could not be deleted."
 msgstr "The file %s could not be deleted."
 
 #: admin_media.php:161 admin_media.php:233 admin_trees_duplicates.php:292
-#: branches.php:191 includes/functions/functions_edit.php:168
+#: branches.php:192 includes/functions/functions_edit.php:168
 #: includes/functions/functions_edit.php:175
 #: includes/functions/functions_edit.php:1452
 #: includes/functions/functions_edit.php:1485
-#: includes/functions/functions_print.php:914
+#: includes/functions/functions_print.php:922
 #: includes/functions/functions_print_facts.php:1261
 #: includes/functions/functions_print_lists.php:430
-#: includes/functions/functions_print_lists.php:931 library/WT/Stats.php:3536
-#: medialist.php:262 modules_v3/batch_update/admin_batch_update.php:370
+#: includes/functions/functions_print_lists.php:931
+#: includes/functions/functions_resource.php:547 library/WT/Stats.php:3536
+#: medialist.php:263 modules_v3/batch_update/admin_batch_update.php:370
 #: modules_v3/charts/module.php:214 modules_v3/relatives/module.php:225
 #: modules_v3/family_group_report/report.bak:247
 #: modules_v3/family_group_report/report.bak:418
@@ -526,7 +532,7 @@ msgstr "yes"
 #: includes/functions/functions_edit.php:1482
 #: includes/functions/functions_print_facts.php:1264
 #: includes/functions/functions_print_lists.php:933 library/WT/Stats.php:3537
-#: medialist.php:265 modules_v3/batch_update/admin_batch_update.php:369
+#: medialist.php:266 modules_v3/batch_update/admin_batch_update.php:369
 #: modules_v3/charts/module.php:213 modules_v3/fancy_treeview/module.php:982
 #: modules_v3/family_group_report/report.bak:250
 #: modules_v3/family_group_report/report.bak:421
@@ -541,7 +547,7 @@ msgid "Create"
 msgstr "Create"
 
 #: admin_media.php:317 admin_media.php:454 admin_site_access.php:130
-#: admin_trees_manage.php:311 admin_users.php:176 edituser.php:193
+#: admin_trees_manage.php:308 admin_users.php:176 edituser.php:193
 #: library/WT/Controller/Individual.php:400 library/WT/Controller/Media.php:131
 #: library/WT/Controller/Note.php:107 library/WT/Controller/Repository.php:107
 #: library/WT/Controller/Source.php:107
@@ -638,7 +644,7 @@ msgid "Unused files"
 msgstr "Unused files"
 
 #. I18N: Label for check-box
-#: admin_media.php:611 medialist.php:88
+#: admin_media.php:611 medialist.php:89
 msgid "Include subfolders"
 msgstr "Include subfolders"
 
@@ -694,7 +700,7 @@ msgstr "Upload"
 msgid "Module administration"
 msgstr "Module administration"
 
-#: admin_module_blocks.php:57 admin_modules.php:129
+#: admin_module_blocks.php:57 admin_modules.php:136
 msgid "Block"
 msgstr "Block"
 
@@ -703,7 +709,7 @@ msgstr "Block"
 #: admin_module_lists.php:58 admin_module_menus.php:76
 #: admin_module_reports.php:58 admin_module_resources.php:58
 #: admin_module_sidebar.php:76 admin_module_tabs.php:76
-#: admin_module_widgets.php:76 admin_modules.php:128 find.php:488
+#: admin_module_widgets.php:76 admin_modules.php:135 find.php:488
 #: library/WT/Gedcom/Tag.php:194 modules_v3/gallery/module.php:259
 msgid "Description"
 msgstr "Description"
@@ -719,16 +725,16 @@ msgstr "Description"
 msgid "Access level"
 msgstr "Access level"
 
-#: admin_module_charts.php:57 admin_modules.php:130 admin_modules.php:159
+#: admin_module_charts.php:57 admin_modules.php:137 admin_modules.php:167
 msgid "Chart"
 msgstr "Chart"
 
-#: admin_module_lists.php:57 admin_modules.php:131 admin_modules.php:160
+#: admin_module_lists.php:57 admin_modules.php:138 admin_modules.php:168
 #: ancestry.php:71 descendancy.php:59 modules_v3/googlemap/admin_places.php:574
 msgid "List"
 msgstr "List"
 
-#: admin_module_menus.php:75 admin_modules.php:132 admin_modules.php:161
+#: admin_module_menus.php:75 admin_modules.php:139 admin_modules.php:169
 #: modules_v3/extra_menus/module.php:109
 #: modules_v3/fancy_treeview/module.php:464
 msgid "Menu"
@@ -740,42 +746,42 @@ msgstr "Menu"
 msgid "Order"
 msgstr "Order"
 
-#: admin_module_reports.php:57 admin_modules.php:133 admin_modules.php:162
+#: admin_module_reports.php:57 admin_modules.php:140 admin_modules.php:170
 msgid "Report"
 msgstr "Report"
 
-#: admin_module_resources.php:57 admin_modules.php:134 admin_modules.php:163
+#: admin_module_resources.php:57 admin_modules.php:141 admin_modules.php:171
 msgid "Resource"
 msgstr "Resource"
 
-#: admin_module_sidebar.php:75 admin_modules.php:135 admin_modules.php:164
+#: admin_module_sidebar.php:75 admin_modules.php:142 admin_modules.php:172
 #: themes/_administration/header.php:219
 msgid "Sidebar"
 msgstr "Sidebar"
 
-#: admin_module_tabs.php:75 admin_modules.php:136 admin_modules.php:165
+#: admin_module_tabs.php:75 admin_modules.php:143 admin_modules.php:173
 msgid "Tab"
 msgstr "Tab"
 
-#: admin_module_widgets.php:75 admin_modules.php:137 admin_modules.php:166
+#: admin_module_widgets.php:75 admin_modules.php:144 admin_modules.php:174
 msgid "Widget"
 msgstr "Widget"
 
-#: admin_modules.php:126 modules_v3/simpl_research/module.php:123
+#: admin_modules.php:132 modules_v3/simpl_research/module.php:123
 msgid "Enabled"
 msgstr "Enabled"
 
-#: admin_modules.php:127
+#: admin_modules.php:134
 msgid "Module"
 msgstr "Module"
 
 #. I18N: Name of a module
-#: admin_modules.php:158 library/WT/MenuBar.php:35 library/WT/MenuBar.php:37
+#: admin_modules.php:166 library/WT/MenuBar.php:35 library/WT/MenuBar.php:37
 #: modules_v3/gedcom_block/module.php:35 themes/_administration/header.php:134
 msgid "Home"
 msgstr "Home"
 
-#: admin_modules.php:158 library/WT/Gedcom/Tag.php:926
+#: admin_modules.php:166 library/WT/Gedcom/Tag.php:926
 #: library/WT/Stats.php:3235 library/WT/Stats.php:3409
 #: modules_v3/album/album_print_media.php:55
 #: modules_v3/album/album_print_media.php:60
@@ -790,7 +796,7 @@ msgstr "Home"
 msgid "Other"
 msgstr "Other"
 
-#: admin_modules.php:178
+#: admin_modules.php:186
 msgid "This module cannot be found.  Delete its configuration settings."
 msgstr "This module cannot be found.  Delete its configuration settings."
 
@@ -819,7 +825,7 @@ msgid "Restrict access to the site, using IP addresses and user-agent strings"
 msgstr "Restrict access to the site, using IP addresses and user-agent strings"
 
 #: admin_site_access.php:287 admin_site_lang.php:82 admin_trees_append.php:32
-#: admin_trees_check.php:44 admin_trees_manage.php:252
+#: admin_trees_check.php:44 admin_trees_manage.php:249
 #: admin_trees_renumber.php:61 admin_trees_sanity.php:45
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:74
 #: modules_v3/album/module.php:285 modules_v3/backup_to_dropbox/module.php:112
@@ -838,10 +844,12 @@ msgstr ""
 "(allow full access), a search-engine robot (allow restricted access) or an "
 "unwanted crawler (deny all access)."
 
+#. I18N: [...] of a range of addresses
 #: admin_site_access.php:292
 msgid "Start IP address"
 msgstr "Start IP address"
 
+#. I18N: [...] of a range of addresses
 #: admin_site_access.php:294
 msgid "End IP address"
 msgstr "End IP address"
@@ -953,7 +961,7 @@ msgstr "From %s to %s"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:273 admin_site_change.php:305
-#: includes/functions/functions_print.php:1003 library/WT/Gedcom/Tag.php:330
+#: includes/functions/functions_print.php:1011 library/WT/Gedcom/Tag.php:330
 msgid "Status"
 msgstr "Status"
 
@@ -981,7 +989,7 @@ msgstr "User"
 
 #: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237
 #: admin_site_logs.php:260 admin_trees_duplicates.php:142
-#: admin_trees_manage.php:262 admin_trees_missing.php:133
+#: admin_trees_manage.php:259 admin_trees_missing.php:133
 #: admin_trees_places.php:104 admin_trees_sanity.php:54
 #: admin_trees_source.php:75 admin_trees_sourcecite.php:90
 #: admin_trees_unlinked.php:59 admin_users.php:236 admin_users.php:422
@@ -1318,8 +1326,8 @@ msgid "Most SMTP servers require a password."
 msgstr "Most SMTP servers require a password."
 
 #: admin_site_config.php:305 admin_users.php:372 admin_users.php:561
-#: edituser.php:133 help_text.php:788 login.php:158 login.php:222 login.php:298
-#: login.php:338 login.php:450 modules_v3/login_block/module.php:69
+#: edituser.php:133 help_text.php:788 login.php:157 login.php:221 login.php:297
+#: login.php:337 login.php:449 modules_v3/login_block/module.php:69
 #: modules_v3/resource_changes/module.php:160
 #: modules_v3/resource_todo/module.php:153 modules_v3/todo/module.php:100
 #: modules_v3/widget_todo/module.php:100
@@ -1331,7 +1339,7 @@ msgid "The user name required for authentication with the SMTP server."
 msgstr "The user name required for authentication with the SMTP server."
 
 #: admin_site_config.php:314 admin_users.php:213 admin_users.php:384
-#: edituser.php:164 help_text.php:601 login.php:163 login.php:224 login.php:454
+#: edituser.php:164 help_text.php:601 login.php:162 login.php:223 login.php:453
 #: modules_v3/login_block/module.php:74 setup.php:436
 msgid "Password"
 msgstr "Password"
@@ -1582,7 +1590,7 @@ msgstr "Logs"
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:225 admin_site_logs.php:256 edit_changes.php:166
 #: includes/functions/functions_print_facts.php:602
-#: library/WT/Gedcom/Tag.php:343 medialist.php:109
+#: library/WT/Gedcom/Tag.php:343 medialist.php:110
 #: modules_v3/resource_fact/module.php:211
 #: modules_v3/resource_fact/module.php:255
 #: modules_v3/resource_fact/module.php:275
@@ -1671,7 +1679,7 @@ msgid "Merge To ID:"
 msgstr "Merge To ID:"
 
 #: admin_site_merge.php:282 admin_site_merge.php:303 find.php:74
-#: includes/functions/functions_print.php:1284
+#: includes/functions/functions_print.php:1292
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:35
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:78
 #: modules_v3/GEDFact_assistant/module.php:81
@@ -1679,12 +1687,12 @@ msgid "Find an individual"
 msgstr "Find an individual"
 
 #: admin_site_merge.php:283 admin_site_merge.php:304 find.php:77
-#: includes/functions/functions_print.php:1292
+#: includes/functions/functions_print.php:1300
 msgid "Find a family"
 msgstr "Find a family"
 
 #: admin_site_merge.php:284 admin_site_merge.php:305 find.php:92
-#: includes/functions/functions_print.php:1310
+#: includes/functions/functions_print.php:1318
 msgid "Find a source"
 msgstr "Find a source"
 
@@ -1793,8 +1801,8 @@ msgstr "Copy all the records from %1$s into %2$s"
 #. I18N: button label
 #. I18N: button label
 #: admin_trees_append.php:174 admin_trees_download.php:109
-#: admin_trees_download.php:168 admin_trees_manage.php:239
-#: admin_trees_renumber.php:280 admin_users.php:538 login.php:188 login.php:425
+#: admin_trees_download.php:168 admin_trees_manage.php:238
+#: admin_trees_renumber.php:280 admin_users.php:538 login.php:187 login.php:424
 #: modules_v3/login_block/module.php:100 setup.php:210 setup.php:234
 #: setup.php:306 setup.php:392 setup.php:451
 msgid "continue"
@@ -1868,7 +1876,7 @@ msgstr "Family tree configuration"
 #: includes/functions/functions_print_facts.php:390
 #: includes/functions/functions_print_facts.php:751
 #: includes/functions/functions_print_facts.php:998
-#: includes/functions/functions_resource.php:100
+#: includes/functions/functions_resource.php:112
 msgid "Show to visitors"
 msgstr "Show to visitors"
 
@@ -1880,7 +1888,7 @@ msgstr "Show to visitors"
 #: includes/functions/functions_print_facts.php:393
 #: includes/functions/functions_print_facts.php:754
 #: includes/functions/functions_print_facts.php:1001
-#: includes/functions/functions_resource.php:103
+#: includes/functions/functions_resource.php:115
 msgid "Show to members"
 msgstr "Show to members"
 
@@ -1892,7 +1900,7 @@ msgstr "Show to members"
 #: includes/functions/functions_print_facts.php:396
 #: includes/functions/functions_print_facts.php:757
 #: includes/functions/functions_print_facts.php:1004
-#: includes/functions/functions_resource.php:106
+#: includes/functions/functions_resource.php:118
 msgid "Show to managers"
 msgstr "Show to managers"
 
@@ -1937,7 +1945,7 @@ msgstr "Edit options"
 msgid "Theme"
 msgstr "Theme"
 
-#: admin_trees_config.php:301 admin_trees_manage.php:364
+#: admin_trees_config.php:301 admin_trees_manage.php:361
 msgid "Family tree title"
 msgstr "Family tree title"
 
@@ -1948,7 +1956,7 @@ msgstr "Family tree subtitle"
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
-#: admin_trees_config.php:313 admin_trees_manage.php:382
+#: admin_trees_config.php:313 admin_trees_manage.php:379
 #: library/WT/Gedcom/Tag.php:344 library/WT/Gedcom/Tag.php:348
 #: library/WT/Gedcom/Tag.php:832
 msgid "URL"
@@ -2145,9 +2153,9 @@ msgid "Repository"
 msgstr "Repository"
 
 #. I18N: gedcom tag NOTE
-#: admin_trees_config.php:460 includes/functions/functions_print.php:524
-#: includes/functions/functions_print.php:608
-#: includes/functions/functions_resource.php:333 library/WT/Gedcom/Tag.php:282
+#: admin_trees_config.php:460 includes/functions/functions_print.php:532
+#: includes/functions/functions_print.php:616
+#: includes/functions/functions_resource.php:345 library/WT/Gedcom/Tag.php:282
 #: modules_v3/family_group_report/report.bak:480
 #: modules_v3/family_group_report/report.bak:741
 #: modules_v3/family_group_report/report.bak:1090
@@ -2366,8 +2374,8 @@ msgstr ""
 "restriction to it. If a record, fact, or event does not have a restriction "
 "the following default restrictions will be used."
 
-#: admin_trees_config.php:645 includes/functions/functions_print.php:1120
-#: includes/functions/functions_print.php:1224
+#: admin_trees_config.php:645 includes/functions/functions_print.php:1128
+#: includes/functions/functions_print.php:1232
 #: modules_v3/resource_fact/module.php:187
 msgid "Fact or event"
 msgstr "Fact or event"
@@ -3362,15 +3370,15 @@ msgstr ""
 msgid "Customized"
 msgstr "Customized"
 
-#: admin_trees_download.php:33 admin_trees_manage.php:305
+#: admin_trees_download.php:33 admin_trees_manage.php:302
 msgid "Export a GEDCOM file"
 msgstr "Export a GEDCOM file"
 
-#: admin_trees_download.php:106 admin_trees_manage.php:171
+#: admin_trees_download.php:106 admin_trees_manage.php:170
 msgid "A file on the server"
 msgstr "A file on the server"
 
-#: admin_trees_download.php:116 admin_trees_manage.php:159
+#: admin_trees_download.php:116 admin_trees_manage.php:158
 msgid "A file on your computer"
 msgstr "A file on your computer"
 
@@ -3393,8 +3401,8 @@ msgstr ""
 msgid "Apply privacy settings?"
 msgstr "Apply privacy settings?"
 
-#: admin_trees_download.php:132 admin_users.php:445 famlist.php:121
-#: famlist.php:153 indilist.php:121 indilist.php:153 library/WT/Stats.php:761
+#: admin_trees_download.php:132 admin_users.php:445 famlist.php:119
+#: famlist.php:155 indilist.php:119 indilist.php:153 library/WT/Stats.php:761
 #: modules_v3/clippings/module.php:212 modules_v3/clippings/module.php:585
 #: modules_v3/families/module.php:152 modules_v3/individuals/module.php:151
 #: modules_v3/resource_individual/module.php:129
@@ -3496,7 +3504,7 @@ msgstr "Gender"
 msgid "Any"
 msgstr "Any"
 
-#: admin_trees_duplicates.php:186 calendar.php:673
+#: admin_trees_duplicates.php:186 calendar.php:674
 #: includes/functions/functions_edit.php:1490
 #: library/WT/Controller/Individual.php:269
 #: library/WT/Controller/Individual.php:272 library/WT/Stats.php:3343
@@ -3504,7 +3512,7 @@ msgstr "Any"
 msgid "Male"
 msgstr "Male"
 
-#: admin_trees_duplicates.php:190 calendar.php:677
+#: admin_trees_duplicates.php:190 calendar.php:678
 #: includes/functions/functions_edit.php:1492
 #: library/WT/Controller/Individual.php:278
 #: library/WT/Controller/Individual.php:281 library/WT/Stats.php:3343
@@ -3512,7 +3520,7 @@ msgstr "Male"
 msgid "Female"
 msgstr "Female"
 
-#: admin_trees_duplicates.php:194 calendar.php:681
+#: admin_trees_duplicates.php:194 calendar.php:682
 #: includes/functions/functions_edit.php:1494
 #: library/WT/Controller/Individual.php:287
 #: library/WT/Controller/Individual.php:290
@@ -3596,7 +3604,7 @@ msgstr "Merge selected"
 #: edit_changes.php:168 help_text.php:178 help_text.php:208
 #: library/WT/Gedcom/Tag.php:184 modules_v3/resource_fact/module.php:202
 #: modules_v3/resource_fact/module.php:273
-#: modules_v3/resource_individual/module.php:173
+#: modules_v3/resource_individual/module.php:174
 #: modules_v3/bdm_report/report.bak:130 modules_v3/bdm_report/report.bak:156
 #: modules_v3/bdm_report/report.bak:190
 #: modules_v3/marriage_report/report.bak:44
@@ -3616,7 +3624,7 @@ msgstr "Date"
 #: modules_v3/googlemap/module.php:1599 modules_v3/resource_fact/module.php:207
 #: modules_v3/resource_fact/module.php:249
 #: modules_v3/resource_fact/module.php:274
-#: modules_v3/resource_individual/module.php:174
+#: modules_v3/resource_individual/module.php:175
 #: modules_v3/resource_related_indi/module.php:236
 #: modules_v3/resource_related_indi/module.php:239 search.php:176
 #: search.php:253 modules_v3/bdm_report/report.bak:7
@@ -3655,12 +3663,12 @@ msgstr "Manage family trees"
 msgid "My family tree"
 msgstr "My family tree"
 
-#: admin_trees_manage.php:149 admin_trees_manage.php:298
+#: admin_trees_manage.php:148 admin_trees_manage.php:295
 msgid "Import a GEDCOM file"
 msgstr "Import a GEDCOM file"
 
 #. I18N: %s is the name of a family tree
-#: admin_trees_manage.php:150
+#: admin_trees_manage.php:149
 #, php-format
 msgid ""
 "This will delete all the genealogy data from “%s” and replace it with data "
@@ -3669,27 +3677,27 @@ msgstr ""
 "This will delete all the genealogy data from “%s” and replace it with data "
 "from a GEDCOM file."
 
-#: admin_trees_manage.php:153
+#: admin_trees_manage.php:152
 msgid "You have selected a GEDCOM with a different name.  Is this correct?"
 msgstr "You have selected a GEDCOM with a different name.  Is this correct?"
 
-#: admin_trees_manage.php:157
+#: admin_trees_manage.php:156
 msgid "Select a GEDCOM file to import"
 msgstr "Select a GEDCOM file to import"
 
-#: admin_trees_manage.php:197
+#: admin_trees_manage.php:196
 msgid "No GEDCOM files found."
 msgstr "No GEDCOM files found."
 
-#: admin_trees_manage.php:204
+#: admin_trees_manage.php:203
 msgid "Import options"
 msgstr "Import options"
 
-#: admin_trees_manage.php:206
+#: admin_trees_manage.php:205
 msgid "Keep media objects"
 msgstr "Keep media objects"
 
-#: admin_trees_manage.php:210
+#: admin_trees_manage.php:209
 msgid ""
 "If you have created media objects in kiwitrees, and edited your gedcom off-"
 "line using a program that deletes media objects, then check this box to "
@@ -3699,11 +3707,11 @@ msgstr ""
 "line using a program that deletes media objects, then check this box to "
 "merge the current media objects with the new GEDCOM."
 
-#: admin_trees_manage.php:215
+#: admin_trees_manage.php:214
 msgid "Add spaces where notes were wrapped"
 msgstr "Add spaces where notes were wrapped"
 
-#: admin_trees_manage.php:219
+#: admin_trees_manage.php:218
 msgid ""
 "Some genealogy programs wrap notes at word boundaries while others wrap "
 "notes anywhere.  This can cause kiwitrees to run words together.  Setting "
@@ -3718,12 +3726,12 @@ msgstr ""
 "the file you will need to re-import it."
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
-#: admin_trees_manage.php:224
+#: admin_trees_manage.php:223
 msgid "Remove the GEDCOM media path from filenames"
 msgstr "Remove the GEDCOM media path from filenames"
 
 #. I18N: A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg”
-#: admin_trees_manage.php:229 help_text.php:409
+#: admin_trees_manage.php:228 help_text.php:409
 msgid ""
 "Some genealogy applications create GEDCOM files that contain media filenames "
 "with full paths.  These paths will not exist on the web-server.  To allow "
@@ -3734,7 +3742,7 @@ msgstr ""
 "kiwitrees to find the file, the first part of the path must be removed."
 
 #. I18N: %s are all folder names; “GEDCOM media path” is a configuration setting
-#: admin_trees_manage.php:231 help_text.php:412
+#: admin_trees_manage.php:230 help_text.php:412
 #, php-format
 msgid ""
 "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find "
@@ -3743,27 +3751,23 @@ msgstr ""
 "For example, if the GEDCOM file contains %1$s and kiwitrees expects to find "
 "%2$s in the media folder, then the GEDCOM media path would be %3$s."
 
-#: admin_trees_manage.php:232 help_text.php:414
+#: admin_trees_manage.php:231 help_text.php:414
 msgid "This setting is only used when you read or write GEDCOM files."
 msgstr "This setting is only used when you read or write GEDCOM files."
 
-#: admin_trees_manage.php:248 admin_trees_manage.php:358
-msgid "You need to create a family tree."
-msgstr "You need to create a family tree."
-
-#: admin_trees_manage.php:280
+#: admin_trees_manage.php:277
 msgid "Deleting old genealogy data…"
 msgstr "Deleting old genealogy data…"
 
-#: admin_trees_manage.php:312
+#: admin_trees_manage.php:309
 msgid "Delete this family tree"
 msgstr "Delete this family tree"
 
-#: admin_trees_manage.php:337
+#: admin_trees_manage.php:334
 msgid "Default family tree"
 msgstr "Default family tree"
 
-#: admin_trees_manage.php:342
+#: admin_trees_manage.php:339
 msgid ""
 "This selects the family tree shown to visitors when they first arrive at the "
 "site."
@@ -3771,15 +3775,19 @@ msgstr ""
 "This selects the family tree shown to visitors when they first arrive at the "
 "site."
 
-#: admin_trees_manage.php:355
+#: admin_trees_manage.php:352
 msgid "Create a new family tree"
 msgstr "Create a new family tree"
 
-#: admin_trees_manage.php:378
+#: admin_trees_manage.php:355
+msgid "You need to create a family tree."
+msgstr "You need to create a family tree."
+
+#: admin_trees_manage.php:375
 msgid "This is the name used for display."
 msgstr "This is the name used for display."
 
-#: admin_trees_manage.php:398
+#: admin_trees_manage.php:395
 msgid ""
 "Keep this short and avoid spaces and punctuation. A family name might be a "
 "good choice."
@@ -3787,11 +3795,11 @@ msgstr ""
 "Keep this short and avoid spaces and punctuation. A family name might be a "
 "good choice."
 
-#: admin_trees_manage.php:403
+#: admin_trees_manage.php:400
 msgid "create"
 msgstr "create"
 
-#: admin_trees_manage.php:406
+#: admin_trees_manage.php:403
 msgid ""
 "After creating the family tree, you will be able to upload or import data "
 "from a GEDCOM file."
@@ -3847,9 +3855,9 @@ msgid "Sources to the events"
 msgstr "Sources to the events"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
-#: admin_trees_missing.php:116 calendar.php:259 famlist.php:71 famlist.php:77
-#: famlist.php:83 famlist.php:173 famlist.php:175 famlist.php:259
-#: famlist.php:261 indilist.php:71 indilist.php:77 indilist.php:83
+#: admin_trees_missing.php:116 calendar.php:260 famlist.php:69 famlist.php:75
+#: famlist.php:81 famlist.php:175 famlist.php:177 famlist.php:261
+#: famlist.php:263 indilist.php:69 indilist.php:75 indilist.php:81
 #: indilist.php:173 indilist.php:175 indilist.php:259 indilist.php:261
 #: library/WT/I18N.php:659 library/WT/Stats.php:3343
 #: modules_v3/extra_menus/help_text.php:50
@@ -3956,11 +3964,14 @@ msgstr "Marriage source"
 msgid "Marriage banns source"
 msgstr "Marriage banns source"
 
+#. I18N: heading for report on missing data
+#. I18N: heading for report on related individuals
 #: admin_trees_missing.php:570 modules_v3/resource_related_indi/module.php:171
 #, php-format
 msgid "%1s related to %2s "
 msgstr "%1s related to %2s "
 
+#. I18N: sub-heading for report on missing data listing selected event types
 #: admin_trees_missing.php:571
 #, php-format
 msgid "Missing data for <span style=\"font-weight:normal;\">%s</span>"
@@ -4328,8 +4339,8 @@ msgstr "Automatically approve changes made by this user"
 msgid "Visible to other users when online"
 msgstr "Visible to other users when online"
 
-#: admin_users.php:225 help_text.php:665 login.php:301 login.php:340
-#: login.php:417
+#: admin_users.php:225 help_text.php:665 login.php:300 login.php:339
+#: login.php:416
 msgid "Comments"
 msgstr "Comments"
 
@@ -4352,7 +4363,7 @@ msgstr "Role"
 msgid "Restrict to immediate family"
 msgstr "Restrict to immediate family"
 
-#: admin_users.php:265 edituser.php:49 login.php:263
+#: admin_users.php:265 edituser.php:49 login.php:262
 msgid ""
 "Duplicate user name.  A user with that user name already exists.  Please "
 "choose another user name."
@@ -4360,7 +4371,7 @@ msgstr ""
 "Duplicate user name.  A user with that user name already exists.  Please "
 "choose another user name."
 
-#: admin_users.php:268 edituser.php:51 login.php:265
+#: admin_users.php:268 edituser.php:51 login.php:264
 msgid "Duplicate email address.  A user with that email already exists."
 msgstr "Duplicate email address.  A user with that email already exists."
 
@@ -4401,7 +4412,7 @@ msgstr ""
 "their immediate family."
 
 #: admin_users.php:366 admin_users.php:562 edituser.php:138 help_text.php:660
-#: login.php:299 login.php:384
+#: login.php:298 login.php:383
 msgid "Real name"
 msgstr "Real name"
 
@@ -4415,7 +4426,7 @@ msgstr "Approved by administrator"
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:378 edituser.php:178 help_text.php:536
 #: library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198
-#: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:720 login.php:389
+#: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:720 login.php:388
 #: setup.php:446
 msgid "Email address"
 msgstr "Email address"
@@ -4425,19 +4436,19 @@ msgid "Email verified"
 msgstr "Email verified"
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:385 login.php:405
+#: admin_users.php:385 login.php:404
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
 msgstr[0] "Use at least %s character."
 msgstr[1] "Use at least %s characters."
 
-#: admin_users.php:389 edituser.php:169 help_text.php:606 login.php:412
+#: admin_users.php:389 edituser.php:169 help_text.php:606 login.php:411
 msgid "Confirm password"
 msgstr "Confirm password"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:390 login.php:413
+#: admin_users.php:390 login.php:412
 msgid "Type the password again."
 msgstr "Type the password again."
 
@@ -4446,7 +4457,7 @@ msgid "Admin comments on user"
 msgstr "Admin comments on user"
 
 #: admin_users.php:459 includes/functions/functions_print_facts.php:270
-#: includes/functions/functions_resource.php:145
+#: includes/functions/functions_resource.php:157
 msgid "No"
 msgstr "No"
 
@@ -4540,8 +4551,8 @@ msgid "Show Details"
 msgstr "Show Details"
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:72 includes/functions/functions_print.php:863
-#: includes/functions/functions_print.php:901
+#: autocomplete.php:72 includes/functions/functions_print.php:871
+#: includes/functions/functions_print.php:909
 #: library/WT/Controller/Timeline.php:226
 #: library/WT/Controller/Timeline.php:228 library/WT/Gedcom/Tag.php:121
 #: library/WT/Person.php:474 library/WT/Stats.php:1646
@@ -4563,69 +4574,71 @@ msgstr "Branches of the %s family"
 msgid "Branches"
 msgstr "Branches"
 
-#: branches.php:71
+#: branches.php:72
 msgid "Phonetic search"
 msgstr "Phonetic search"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
-#: branches.php:74 library/WT/Soundex.php:32
+#: branches.php:75 library/WT/Soundex.php:32
 #: modules_v3/fancy_treeview/module.php:449 search.php:189
 msgid "Russell"
 msgstr "Russell"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
-#: branches.php:77 library/WT/Soundex.php:33
+#: branches.php:78 library/WT/Soundex.php:33
 #: modules_v3/fancy_treeview/module.php:450 search.php:193
 msgid "Daitch-Mokotoff"
 msgstr "Daitch-Mokotoff"
 
 #. I18N: A button label.
-#: branches.php:85 calendar.php:205 relationship.php:87
+#: branches.php:86 calendar.php:206 relationship.php:87
 msgid "Show"
 msgstr "Show"
 
-#: branches.php:96 branches.php:124
+#: branches.php:97 branches.php:125
 msgid "Collapse all"
 msgstr "Collapse all"
 
-#: branches.php:96 branches.php:125
+#: branches.php:97 branches.php:126
 msgid "Expand all"
 msgstr "Expand all"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets.
-#: branches.php:156 branches.php:182
+#: branches.php:157 branches.php:183
 #: includes/functions/functions_print_lists.php:270
 msgid "Sosa"
 msgstr "Sosa"
 
-#: branches.php:254 modules_v3/fancy_treeview/module.php:758
+#: branches.php:255 modules_v3/fancy_treeview/module.php:758
 msgid "Generation"
 msgstr "Generation"
 
-#: calendar.php:119
+#: calendar.php:120
 msgid "Anniversary calendar"
 msgstr "Anniversary calendar"
 
-#: calendar.php:187 calendar.php:350
+#: calendar.php:188 calendar.php:351
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1027
-#: modules_v3/calendar_utilities/plugins/calculators.php:97 search.php:180
+#: modules_v3/calendar_utilities/plugins/calculators.php:97
+#: modules_v3/calendar_utilities/plugins/old_new.php:95
+#: modules_v3/calendar_utilities/plugins/old_new.php:129 search.php:180
 msgid "Year"
 msgstr "Year"
 
-#: calendar.php:212 calendar.php:231 calendar.php:232 calendar.php:236
-#: calendar.php:237 calendar.php:413 calendar.php:598
+#: calendar.php:213 calendar.php:232 calendar.php:233 calendar.php:237
+#: calendar.php:238 calendar.php:414 calendar.php:599
 msgid "All People"
 msgstr "All People"
 
-#: calendar.php:219
+#: calendar.php:220
 msgid "Living People"
 msgstr "Living People"
 
-#: calendar.php:226
+#: calendar.php:227
 msgid "Recent Years (&lt; 100 yrs)"
 msgstr "Recent Years (&lt; 100 yrs)"
 
-#: calendar.php:241 calendar.php:244 calendar.php:410 calendar.php:595
+#: calendar.php:242 calendar.php:245 calendar.php:411 calendar.php:596
 #: includes/functions/functions_print_lists.php:2331 library/WT/Stats.php:611
 #: library/WT/Stats.php:613 library/WT/Stats.php:621 library/WT/Stats.php:622
 #: library/WT/Stats.php:1659 library/WT/Stats.php:2399
@@ -4638,7 +4651,7 @@ msgstr "Recent Years (&lt; 100 yrs)"
 msgid "Males"
 msgstr "Males"
 
-#: calendar.php:248 calendar.php:250 calendar.php:411 calendar.php:596
+#: calendar.php:249 calendar.php:251 calendar.php:412 calendar.php:597
 #: includes/functions/functions_print_lists.php:2331 library/WT/Stats.php:610
 #: library/WT/Stats.php:614 library/WT/Stats.php:620 library/WT/Stats.php:623
 #: library/WT/Stats.php:1659 library/WT/Stats.php:2399
@@ -4653,54 +4666,54 @@ msgid "Females"
 msgstr "Females"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
-#: calendar.php:256 modules_v3/bdm_report/module.php:36
+#: calendar.php:257 modules_v3/bdm_report/module.php:36
 #: modules_v3/bdm_report/report.bak:4 modules_v3/bdm_report/report.bak:32
 msgid "Vital records"
 msgstr "Vital records"
 
-#: calendar.php:298 includes/functions/functions_print.php:1132
-#: includes/functions/functions_print.php:1234
+#: calendar.php:299 includes/functions/functions_print.php:1140
+#: includes/functions/functions_print.php:1242
 #: modules_v3/resource_fact/module.php:195
 msgid "Custom Event"
 msgstr "Custom Event"
 
 #. I18N: Name of a module
-#: calendar.php:305 modules_v3/list_calendar/module.php:36
+#: calendar.php:306 modules_v3/list_calendar/module.php:36
 #: modules_v3/widget_yahrzeit/module.php:260 modules_v3/yahrzeit/module.php:261
 msgid "Calendar"
 msgstr "Calendar"
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: calendar.php:353 modules_v3/todays_events/module.php:32
+#: calendar.php:354 modules_v3/todays_events/module.php:32
 #: modules_v3/widget_todays_events/module.php:35
 msgid "On this day"
 msgstr "On this day"
 
-#: calendar.php:408 calendar.php:593 find.php:526
+#: calendar.php:409 calendar.php:594 find.php:526
 #: modules_v3/GEDFact_assistant/module.php:162 statistics.php:80
 #, php-format
 msgid "Total individuals: %s"
 msgstr "Total individuals: %s"
 
-#: calendar.php:416 calendar.php:601 find.php:551 statistics.php:201
+#: calendar.php:417 calendar.php:602 find.php:551 statistics.php:201
 #, php-format
 msgid "Total families: %s"
 msgstr "Total families: %s"
 
-#: calendar.php:421
+#: calendar.php:422
 msgid "In this month"
 msgstr "In this month"
 
-#: calendar.php:484
+#: calendar.php:485
 msgid "Day not set"
 msgstr "Day not set"
 
-#: calendar.php:523
+#: calendar.php:524
 msgid "In this year"
 msgstr "In this year"
 
-#: calendar.php:655 includes/functions/functions_print_lists.php:2265
+#: calendar.php:656 includes/functions/functions_print_lists.php:2265
 #: modules_v3/widget_yahrzeit/module.php:118 modules_v3/yahrzeit/module.php:119
 #, php-format
 msgid "%s year anniversary"
@@ -4777,7 +4790,7 @@ msgstr "Replace record"
 msgid "Moderate pending changes"
 msgstr "Moderate pending changes"
 
-#: edit_changes.php:189 includes/functions/functions_print.php:386
+#: edit_changes.php:189 includes/functions/functions_print.php:394
 #: library/WT/Stats.php:3464 library/WT/Stats.php:3466 message.php:123
 #: modules_v3/widget_messages/module.php:68
 msgid "Send Message"
@@ -4797,7 +4810,7 @@ msgstr "Are you sure you want to undo all the changes to this family tree?"
 
 #. I18N: Name of a module/menu
 #: edit_interface.php:187 edit_interface.php:1364
-#: includes/functions/functions_print.php:1331
+#: includes/functions/functions_print.php:1339
 #: includes/functions/functions_print_facts.php:167
 #: includes/functions/functions_print_facts.php:169
 #: includes/functions/functions_print_facts.php:709
@@ -4929,7 +4942,7 @@ msgstr ""
 "family, source, or event."
 
 #: edit_interface.php:909 edit_interface.php:1135
-#: includes/functions/functions_print.php:522 inverselink.php:161
+#: includes/functions/functions_print.php:530 inverselink.php:161
 #: library/WT/Gedcom/Tag.php:321 note.php:128 note.php:134
 msgid "Shared note"
 msgstr "Shared note"
@@ -4984,8 +4997,8 @@ msgid "Add new Name"
 msgstr "Add new Name"
 
 #: edit_interface.php:2018 help_text.php:432
-#: includes/functions/functions_print.php:1058
-#: includes/functions/functions_print.php:1162
+#: includes/functions/functions_print.php:1066
+#: includes/functions/functions_print.php:1170
 msgid "Add from clipboard"
 msgstr "Add from clipboard"
 
@@ -5104,10 +5117,10 @@ msgstr "Remove"
 msgid "Change"
 msgstr "Change"
 
-#: edit_interface.php:2312 includes/functions/functions_print.php:1077
-#: includes/functions/functions_print.php:1136
-#: includes/functions/functions_print.php:1181
-#: includes/functions/functions_print.php:1237 index_edit.php:289
+#: edit_interface.php:2312 includes/functions/functions_print.php:1085
+#: includes/functions/functions_print.php:1144
+#: includes/functions/functions_print.php:1189
+#: includes/functions/functions_print.php:1245 index_edit.php:289
 #: index_edit.php:307 library/WT/Controller/Individual.php:296 lifespan.php:272
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:104
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:204
@@ -5248,7 +5261,7 @@ msgstr "Edit family"
 #: library/WT/Controller/Ancestry.php:144
 #: library/WT/Controller/Descendancy.php:210 library/WT/Stats.php:2635
 #: library/WT/Stats.php:2661 library/WT/Stats.php:2672
-#: library/WT/Stats.php:2681 medialist.php:289
+#: library/WT/Stats.php:2681 medialist.php:290
 #: modules_v3/relatives/module.php:61
 msgid "View family"
 msgstr "View family"
@@ -5331,25 +5344,25 @@ msgstr "Show spouses"
 msgid "Descent Steps"
 msgstr "Descent Steps"
 
-#: famlist.php:186 indilist.php:186
+#: famlist.php:188 indilist.php:186
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
 msgstr "Exclude individuals with “%s” as a married name"
 
-#: famlist.php:188 indilist.php:188
+#: famlist.php:190 indilist.php:188
 #, php-format
 msgid "Include individuals with “%s” as a married name"
 msgstr "Include individuals with “%s” as a married name"
 
-#: famlist.php:193 indilist.php:193
+#: famlist.php:195 indilist.php:193
 msgid "Show the list of individuals"
 msgstr "Show the list of individuals"
 
-#: famlist.php:195 indilist.php:195
+#: famlist.php:197 indilist.php:195
 msgid "Show the list of surnames"
 msgstr "Show the list of surnames"
 
-#: famlist.php:265 indilist.php:265
+#: famlist.php:267 indilist.php:265
 #, php-format
 msgid "Individuals with surname %s"
 msgstr "Individuals with surname %s"
@@ -5358,28 +5371,28 @@ msgstr "Individuals with surname %s"
 msgid "Width"
 msgstr "Width"
 
-#: find.php:80 includes/functions/functions_print.php:1322
+#: find.php:80 includes/functions/functions_print.php:1330
 msgid "Find a media object"
 msgstr "Find a media object"
 
-#: find.php:83 includes/functions/functions_print.php:1288
+#: find.php:83 includes/functions/functions_print.php:1296
 msgid "Find a place"
 msgstr "Find a place"
 
-#: find.php:86 includes/functions/functions_print.php:1318
+#: find.php:86 includes/functions/functions_print.php:1326
 msgid "Find a repository"
 msgstr "Find a repository"
 
-#: find.php:89 includes/functions/functions_print.php:1314
+#: find.php:89 includes/functions/functions_print.php:1322
 msgid "Find a note"
 msgstr "Find a note"
 
-#: find.php:95 includes/functions/functions_print.php:1296
+#: find.php:95 includes/functions/functions_print.php:1304
 msgid "Find a special character"
 msgstr "Find a special character"
 
-#: find.php:110 includes/functions/functions_print.php:1326
-#: includes/functions/functions_print.php:1330
+#: find.php:110 includes/functions/functions_print.php:1334
+#: includes/functions/functions_print.php:1338
 msgid "Find a fact or event"
 msgstr "Find a fact or event"
 
@@ -6415,7 +6428,7 @@ msgstr ""
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: help_text.php:571 library/WT/MenuBar.php:234
+#: help_text.php:571 library/WT/MenuBar.php:232
 #: modules_v3/gedcom_favorites/module.php:35
 #: modules_v3/widget_favorites/module.php:35
 msgid "Favorites"
@@ -7040,6 +7053,7 @@ msgstr ""
 "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not "
 "currently supported."
 
+#. I18N: Start of message from a kiwitrees site
 #: includes/authentication.php:229
 #, php-format
 msgid "The following message has been sent to your %1$s user account from "
@@ -7051,7 +7065,7 @@ msgid "Your Name:"
 msgstr "Your Name:"
 
 #: includes/authentication.php:239 includes/authentication.php:291
-#: login.php:300 message.php:137 modules_v3/contact/module.php:197
+#: login.php:299 message.php:137 modules_v3/contact/module.php:197
 #: modules_v3/widget_messages/module.php:87
 msgid "Email Address:"
 msgstr "Email Address:"
@@ -7060,6 +7074,8 @@ msgstr "Email Address:"
 msgid "This message was sent while viewing the following URL: "
 msgstr "This message was sent while viewing the following URL: "
 
+#. I18N: subject line for messages from a kiwitrees site
+#. I18N: Subject line for messages from a kiwitrees site
 #: includes/authentication.php:249 includes/authentication.php:263
 #, php-format
 msgid "%1$s message"
@@ -7086,6 +7102,316 @@ msgstr "…"
 msgctxt "Unknown given name"
 msgid "…"
 msgstr "…"
+
+#. I18N: language name - Afrikaans
+#: includes/config_data.php:445
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#. I18N: language name - Arabic
+#: includes/config_data.php:446
+msgid "العربية"
+msgstr "Arabic"
+
+#. I18N: language name - Bulgarian
+#: includes/config_data.php:447
+msgid "български"
+msgstr "Bulgarian"
+
+#. I18N: language name - Bosnian
+#: includes/config_data.php:448
+msgid "bosanski"
+msgstr "Bosnian"
+
+#. I18N: language name - Catalan
+#: includes/config_data.php:449
+msgid "català"
+msgstr "Catalan"
+
+#. I18N: language name - Czech
+#: includes/config_data.php:450
+msgid "čeština"
+msgstr "Czech"
+
+#. I18N: language name - Danish
+#: includes/config_data.php:451
+msgid "dansk"
+msgstr "Danish"
+
+#. I18N: language name - German
+#: includes/config_data.php:452
+msgid "Deutsch"
+msgstr "German"
+
+#. I18N: language name - Maldivian
+#: includes/config_data.php:453
+msgid "ދިވެހިބަސް"
+msgstr "Maldavian"
+
+#. I18N: language name - Greek
+#: includes/config_data.php:454
+msgid "Ελληνικά"
+msgstr "Greek"
+
+#. I18N: language name - English
+#: includes/config_data.php:455
+msgid "English"
+msgstr "English"
+
+#. I18N: language name - Australian English
+#: includes/config_data.php:456
+msgid "Australian English"
+msgstr "Australian English"
+
+#. I18N: language name - British English
+#: includes/config_data.php:457
+msgid "British English"
+msgstr "British English"
+
+#. I18N: language name - U.S. English
+#: includes/config_data.php:458
+msgid "U.S. English"
+msgstr "U.S. English"
+
+#. I18N: language name - Spanish
+#: includes/config_data.php:459
+msgid "español"
+msgstr "Spanish"
+
+#. I18N: language name - Estonian
+#: includes/config_data.php:460
+msgid "eesti"
+msgstr "Estonian"
+
+#. I18N: language name - Farsi
+#: includes/config_data.php:461
+msgid "فارسی"
+msgstr "Farsi"
+
+#. I18N: language name - Finnish
+#: includes/config_data.php:462
+msgid "suomi"
+msgstr "Finnish"
+
+#. I18N: language name - Faroese
+#: includes/config_data.php:463
+msgid "føroyskt"
+msgstr "Faroese"
+
+#. I18N: language name - French
+#: includes/config_data.php:464
+msgid "français"
+msgstr "French"
+
+#. I18N: language name - French Canadian
+#: includes/config_data.php:465
+msgid "français canadien"
+msgstr "French Canadian"
+
+#. I18N: language name - Galician
+#: includes/config_data.php:466
+msgid "galego"
+msgstr "Galician"
+
+#. I18N: language name - Hawaiian
+#: includes/config_data.php:467
+msgid "ʻŌlelo Hawaiʻi"
+msgstr "Hawaiian"
+
+#. I18N: language name - Hebrew
+#: includes/config_data.php:468
+msgid "עברית"
+msgstr "Hebrew"
+
+#. I18N: language name - Croatian
+#: includes/config_data.php:469
+msgid "hrvatski"
+msgstr "Croatian"
+
+#. I18N: language name - Hungarian
+#: includes/config_data.php:470
+msgid "magyar"
+msgstr "Hungarian"
+
+#. I18N: language name - Indonesian
+#: includes/config_data.php:471
+msgid "Bahasa Indonesia"
+msgstr "Indonesian"
+
+#. I18N: language name - Icelandic
+#: includes/config_data.php:472
+msgid "íslenska"
+msgstr "Icelandic"
+
+#. I18N: language name - Italian
+#: includes/config_data.php:473
+msgid "italiano"
+msgstr "Italian"
+
+#. I18N: language name - Japanese
+#: includes/config_data.php:474
+msgid "日本語"
+msgstr "Japanese"
+
+#. I18N: language name - Georgian
+#: includes/config_data.php:475
+msgid "ქართული"
+msgstr "Georgian"
+
+#. I18N: language name - Korean
+#: includes/config_data.php:476
+msgid "한국어"
+msgstr "Korean"
+
+#. I18N: language name - Lithuanian
+#: includes/config_data.php:477
+msgid "lietuvių"
+msgstr "Lithuanian"
+
+#. I18N: language name - Latvian
+#: includes/config_data.php:478
+msgid "latviešu"
+msgstr "Latvian"
+
+#. I18N: language name - Maori
+#: includes/config_data.php:479
+msgid "Māori"
+msgstr "Māori"
+
+#. I18N: language name - Marathi
+#: includes/config_data.php:480
+msgid "मराठी"
+msgstr "Marathi"
+
+#. I18N: language name - Malay
+#: includes/config_data.php:481
+msgid "Bahasa Melayu"
+msgstr "Malay"
+
+#. I18N: language name - Norwegian Bokmal
+#: includes/config_data.php:482
+msgid "norsk bokmål"
+msgstr "Norwegian Bokmal"
+
+#. I18N: language name - Nepali
+#: includes/config_data.php:483
+msgid "नेपाली"
+msgstr "Nepali"
+
+#. I18N: language name - Dutch
+#: includes/config_data.php:484
+msgid "Nederlands"
+msgstr "Dutch"
+
+#. I18N: language name - Norwegian Nynorsk
+#: includes/config_data.php:485
+msgid "nynorsk"
+msgstr "Norwegian Nynorsk"
+
+#. I18N: language name - Occitan
+#: includes/config_data.php:486
+msgid "occitan"
+msgstr "Occitan"
+
+#. I18N: language name - Polish
+#: includes/config_data.php:487
+msgid "polski"
+msgstr "Polish"
+
+#. I18N: language name - Portuguese
+#: includes/config_data.php:488
+msgid "português"
+msgstr "Portuguese"
+
+#. I18N: language name - Portugese Brazilian
+#: includes/config_data.php:489
+msgid "português do Brasil"
+msgstr "Portuguese Brazilian"
+
+#. I18N: language name - Romanian
+#: includes/config_data.php:490
+msgid "română"
+msgstr "Romanian"
+
+#. I18N: language name - Russian
+#: includes/config_data.php:491
+msgid "русский"
+msgstr "Russian"
+
+#. I18N: language name - Slovak
+#: includes/config_data.php:492
+msgid "slovenčina"
+msgstr "Slovak"
+
+#. I18N: language name - Slovenian
+#: includes/config_data.php:493
+msgid "slovenščina"
+msgstr "Slovenian"
+
+#. I18N: language name - Serbian
+#: includes/config_data.php:494
+msgid "Српски"
+msgstr "Serbian"
+
+#. I18N: language name - Serbian
+#: includes/config_data.php:495
+msgid "srpski"
+msgstr "Serbian"
+
+#. I18N: language name - Swedish
+#: includes/config_data.php:496
+msgid "svenska"
+msgstr "Swedish"
+
+#. I18N: language name - Tamil
+#: includes/config_data.php:497
+msgid "தமிழ்"
+msgstr "Tamil"
+
+#. I18N: language name - Tatar
+#: includes/config_data.php:498
+msgid "Татар"
+msgstr "Tatar"
+
+#. I18N: language name - Thai
+#: includes/config_data.php:499
+msgid "تايلند"
+msgstr "Thai"
+
+#. I18N: language name - Turkish
+#: includes/config_data.php:500
+msgid "Türkçe"
+msgstr "Turkish"
+
+#. I18N: language name - Ukrainian
+#: includes/config_data.php:501
+msgid "українська"
+msgstr "Ukranian"
+
+#. I18N: language name - Vietnamese
+#: includes/config_data.php:502
+msgid "Tiếng Việt"
+msgstr "Vietnamese"
+
+#. I18N: language name - Yiddish
+#: includes/config_data.php:503
+msgid "ייִדיש"
+msgstr "Yiddish"
+
+#. I18N: language name - Chinese
+#: includes/config_data.php:504
+msgid "中文"
+msgstr "Chinese"
+
+#. I18N: language name - Chinese (Simplified)
+#: includes/config_data.php:505
+msgid "简体中文"
+msgstr "Chinese (simplified)"
+
+#. I18N: language name - Chinese (Traditional)
+#: includes/config_data.php:506
+msgid "繁體中文"
+msgstr "Chinese (traditional)"
 
 #: includes/functions/functions.php:191
 msgid "File successfully uploaded"
@@ -10006,6 +10332,7 @@ msgstr "Add new"
 
 #. I18N: gedcom tag CHIL
 #: includes/functions/functions_date.php:35 library/WT/Gedcom/Tag.php:162
+#: modules_v3/calendar_utilities/plugins/calculators.php:201
 msgid "Child"
 msgstr "Child"
 
@@ -10102,7 +10429,7 @@ msgstr "click to edit"
 #: includes/functions/functions_print_facts.php:399
 #: includes/functions/functions_print_facts.php:760
 #: includes/functions/functions_print_facts.php:1007
-#: includes/functions/functions_resource.php:109
+#: includes/functions/functions_resource.php:121
 msgid "Only managers can edit"
 msgstr "Only managers can edit"
 
@@ -10369,7 +10696,7 @@ msgid "Interactive tree"
 msgstr "Interactive tree"
 
 #: includes/functions/functions_print.php:115
-#: modules_v3/resource_individual/module.php:284
+#: modules_v3/resource_individual/module.php:289
 msgid "Family with spouse"
 msgstr "Family with spouse"
 
@@ -10377,7 +10704,7 @@ msgstr "Family with spouse"
 msgid "Zoom in/out on this box."
 msgstr "Zoom in/out on this box."
 
-#: includes/functions/functions_print.php:313
+#: includes/functions/functions_print.php:321
 #, php-format
 msgid ""
 "Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. "
@@ -10386,51 +10713,51 @@ msgstr ""
 "Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. "
 "Memory usage: %4$s KB."
 
-#: includes/functions/functions_print.php:331
+#: includes/functions/functions_print.php:339
 #: modules_v3/login_block/module.php:59 themes/kiwitrees/header.php:145
 msgid "Login or Register"
 msgstr "Login or Register"
 
 #. I18N: Name of a module
-#: includes/functions/functions_print.php:331 login.php:128 login.php:168
+#: includes/functions/functions_print.php:339 login.php:128 login.php:167
 #: modules_v3/login_block/module.php:35 modules_v3/login_block/module.php:59
 #: modules_v3/login_block/module.php:79 themes/kiwitrees/header.php:140
 #: themes/kiwitrees/header.php:145
 msgid "Login"
 msgstr "Login"
 
-#: includes/functions/functions_print.php:343
+#: includes/functions/functions_print.php:351
 #: modules_v3/login_block/module.php:50 modules_v3/login_block/module.php:55
 msgid "Logout"
 msgstr "Logout"
 
-#: includes/functions/functions_print.php:362 library/WT/Stats.php:3438
+#: includes/functions/functions_print.php:370 library/WT/Stats.php:3438
 #, php-format
 msgid "%d anonymous logged-in user"
 msgid_plural "%d anonymous logged-in users"
 msgstr[0] "%d anonymous logged-in user"
 msgstr[1] "%d anonymous logged-in users"
 
-#: includes/functions/functions_print.php:368 library/WT/Stats.php:3448
+#: includes/functions/functions_print.php:376 library/WT/Stats.php:3448
 #, php-format
 msgid "%d logged-in user"
 msgid_plural "%d logged-in users"
 msgstr[0] "%d logged-in user"
 msgstr[1] "%d logged-in users"
 
-#: includes/functions/functions_print.php:439
+#: includes/functions/functions_print.php:447
 msgid "If you have any questions or comments please contact"
 msgstr "If you have any questions or comments please contact"
 
-#: includes/functions/functions_print.php:444 themes/levy/functions.php:60
+#: includes/functions/functions_print.php:452 themes/levy/functions.php:60
 msgid "For technical support and information contact"
 msgstr "For technical support and information contact"
 
-#: includes/functions/functions_print.php:450 themes/levy/functions.php:54
+#: includes/functions/functions_print.php:458 themes/levy/functions.php:54
 msgid "For help with genealogy questions contact"
 msgstr "For help with genealogy questions contact"
 
-#: includes/functions/functions_print.php:629 library/WT/Stats.php:851
+#: includes/functions/functions_print.php:637 library/WT/Stats.php:851
 #: library/WT/Stats.php:1392 library/WT/Stats.php:1478
 #: library/WT/Stats.php:1789 library/WT/Stats.php:1888
 #: library/WT/Stats.php:2119 library/WT/Stats.php:2536
@@ -10438,156 +10765,156 @@ msgstr "For help with genealogy questions contact"
 msgid "This information is private and cannot be shown."
 msgstr "This information is private and cannot be shown."
 
-#: includes/functions/functions_print.php:635
-#: includes/functions/functions_print.php:638
+#: includes/functions/functions_print.php:643
+#: includes/functions/functions_print.php:646
 msgid "For more information contact"
 msgstr "For more information contact"
 
-#: includes/functions/functions_print.php:717
+#: includes/functions/functions_print.php:725
 #: includes/functions/functions_print_lists.php:363 relationship.php:51
 msgid "Relationships"
 msgstr "Relationships"
 
-#: includes/functions/functions_print.php:773
+#: includes/functions/functions_print.php:781
 msgid "Mother's age"
 msgstr "Mother's age"
 
-#: includes/functions/functions_print.php:781
+#: includes/functions/functions_print.php:789
 msgid "Father's age"
 msgstr "Father's age"
 
-#: includes/functions/functions_print.php:785
+#: includes/functions/functions_print.php:793
 msgid "Parent's age"
 msgstr "Parent's age"
 
-#: includes/functions/functions_print.php:873
+#: includes/functions/functions_print.php:881
 msgid "on the date of death"
 msgstr "on the date of death"
 
-#: includes/functions/functions_print.php:875
+#: includes/functions/functions_print.php:883
 msgid "after death"
 msgstr "after death"
 
 #. I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps
-#: includes/functions/functions_print.php:985
+#: includes/functions/functions_print.php:993
 #: modules_v3/googlemap/admin_places.php:192 modules_v3/googlemap/module.php:54
 #: modules_v3/googlemap/module.php:194 modules_v3/googlemap/module.php:1456
 #: modules_v3/googlemap/module.php:1982 modules_v3/googlemap/module.php:2021
 msgid "Google Maps™"
 msgstr "Google Maps™"
 
-#: includes/functions/functions_print.php:986
+#: includes/functions/functions_print.php:994
 msgid "Bing Maps™"
 msgstr "Bing Maps™"
 
-#: includes/functions/functions_print.php:987
+#: includes/functions/functions_print.php:995
 msgid "OpenStreetMap™"
 msgstr "OpenStreetMap™"
 
-#: includes/functions/functions_print.php:1000
+#: includes/functions/functions_print.php:1008
 msgid "LDS Temple"
 msgstr "LDS Temple"
 
 #. I18N: first/default option in a drop-down listbox
 #. I18N: first/default option in a drop-down listbox
-#: includes/functions/functions_print.php:1125
-#: includes/functions/functions_print.php:1229
+#: includes/functions/functions_print.php:1133
+#: includes/functions/functions_print.php:1237
 #: modules_v3/googlemap/module.php:1488 modules_v3/googlemap/module.php:1504
 #: modules_v3/resource_fact/module.php:189
 #: modules_v3/widget_messages/module.php:69
 msgid "Select"
 msgstr "Select"
 
-#: includes/functions/functions_print.php:1133
+#: includes/functions/functions_print.php:1141
 #: modules_v3/resource_fact/module.php:196
 msgid "Custom Fact"
 msgstr "Custom Fact"
 
-#: includes/functions/functions_print.php:1257 library/WT/Date/Calendar.php:134
+#: includes/functions/functions_print.php:1265 library/WT/Date/Calendar.php:134
 msgctxt "NOMINATIVE"
 msgid "January"
 msgstr "January"
 
-#: includes/functions/functions_print.php:1258 library/WT/Date/Calendar.php:135
+#: includes/functions/functions_print.php:1266 library/WT/Date/Calendar.php:135
 msgctxt "NOMINATIVE"
 msgid "February"
 msgstr "February"
 
-#: includes/functions/functions_print.php:1259 library/WT/Date/Calendar.php:136
+#: includes/functions/functions_print.php:1267 library/WT/Date/Calendar.php:136
 msgctxt "NOMINATIVE"
 msgid "March"
 msgstr "March"
 
-#: includes/functions/functions_print.php:1260 library/WT/Date/Calendar.php:137
+#: includes/functions/functions_print.php:1268 library/WT/Date/Calendar.php:137
 msgctxt "NOMINATIVE"
 msgid "April"
 msgstr "April"
 
-#: includes/functions/functions_print.php:1261 library/WT/Date/Calendar.php:138
+#: includes/functions/functions_print.php:1269 library/WT/Date/Calendar.php:138
 msgctxt "NOMINATIVE"
 msgid "May"
 msgstr "May"
 
-#: includes/functions/functions_print.php:1262 library/WT/Date/Calendar.php:139
+#: includes/functions/functions_print.php:1270 library/WT/Date/Calendar.php:139
 msgctxt "NOMINATIVE"
 msgid "June"
 msgstr "June"
 
-#: includes/functions/functions_print.php:1263 library/WT/Date/Calendar.php:140
+#: includes/functions/functions_print.php:1271 library/WT/Date/Calendar.php:140
 msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "July"
 
-#: includes/functions/functions_print.php:1264 library/WT/Date/Calendar.php:141
+#: includes/functions/functions_print.php:1272 library/WT/Date/Calendar.php:141
 msgctxt "NOMINATIVE"
 msgid "August"
 msgstr "August"
 
-#: includes/functions/functions_print.php:1265 library/WT/Date/Calendar.php:142
+#: includes/functions/functions_print.php:1273 library/WT/Date/Calendar.php:142
 msgctxt "NOMINATIVE"
 msgid "September"
 msgstr "September"
 
-#: includes/functions/functions_print.php:1266 library/WT/Date/Calendar.php:143
+#: includes/functions/functions_print.php:1274 library/WT/Date/Calendar.php:143
 msgctxt "NOMINATIVE"
 msgid "October"
 msgstr "October"
 
-#: includes/functions/functions_print.php:1267 library/WT/Date/Calendar.php:144
+#: includes/functions/functions_print.php:1275 library/WT/Date/Calendar.php:144
 msgctxt "NOMINATIVE"
 msgid "November"
 msgstr "November"
 
-#: includes/functions/functions_print.php:1268 library/WT/Date/Calendar.php:145
+#: includes/functions/functions_print.php:1276 library/WT/Date/Calendar.php:145
 msgctxt "NOMINATIVE"
 msgid "December"
 msgstr "December"
 
-#: includes/functions/functions_print.php:1271 library/WT/Date/Calendar.php:262
+#: includes/functions/functions_print.php:1279 library/WT/Date/Calendar.php:262
 msgid "Sun"
 msgstr "Sun"
 
-#: includes/functions/functions_print.php:1272 library/WT/Date/Calendar.php:256
+#: includes/functions/functions_print.php:1280 library/WT/Date/Calendar.php:256
 msgid "Mon"
 msgstr "Mon"
 
-#: includes/functions/functions_print.php:1273 library/WT/Date/Calendar.php:257
+#: includes/functions/functions_print.php:1281 library/WT/Date/Calendar.php:257
 msgid "Tue"
 msgstr "Tue"
 
-#: includes/functions/functions_print.php:1274 library/WT/Date/Calendar.php:258
+#: includes/functions/functions_print.php:1282 library/WT/Date/Calendar.php:258
 msgid "Wed"
 msgstr "Wed"
 
-#: includes/functions/functions_print.php:1275 library/WT/Date/Calendar.php:259
+#: includes/functions/functions_print.php:1283 library/WT/Date/Calendar.php:259
 msgid "Thu"
 msgstr "Thu"
 
-#: includes/functions/functions_print.php:1276 library/WT/Date/Calendar.php:260
+#: includes/functions/functions_print.php:1284 library/WT/Date/Calendar.php:260
 msgid "Fri"
 msgstr "Fri"
 
-#: includes/functions/functions_print.php:1277 library/WT/Date/Calendar.php:261
+#: includes/functions/functions_print.php:1285 library/WT/Date/Calendar.php:261
 msgid "Sat"
 msgstr "Sat"
 
@@ -10870,14 +11197,14 @@ msgstr "%1$s is %2$s of %3$s."
 msgid "Common ancestor: "
 msgstr "Common ancestor: "
 
-#: includes/functions/functions_resource.php:464
-#: modules_v3/resource_individual/module.php:288
+#: includes/functions/functions_resource.php:476
+#: modules_v3/resource_individual/module.php:293
 #: modules_v3/bdm_report/report.bak:167
 msgid "Spouse"
 msgstr "Spouse"
 
-#: includes/functions/functions_resource.php:464
-#: modules_v3/resource_individual/module.php:288
+#: includes/functions/functions_resource.php:476
+#: modules_v3/resource_individual/module.php:293
 msgid "Partner"
 msgstr "Partner"
 
@@ -10969,14 +11296,14 @@ msgstr ""
 "This individual has been edited.  The changes need to be reviewed by a "
 "moderator."
 
-#: individual.php:90 modules_v3/resource_individual/module.php:330
+#: individual.php:90 modules_v3/resource_individual/module.php:340
 msgid "The details of this individual are private."
 msgstr "The details of this individual are private."
 
 #: individual.php:95 library/WT/Controller/Chart.php:48
 #: modules_v3/fancy_treeview/module.php:652
 #: modules_v3/fancy_treeview/module.php:695
-#: modules_v3/resource_individual/module.php:334
+#: modules_v3/resource_individual/module.php:344
 msgid ""
 "This individual does not exist or you do not have permission to view it."
 msgstr ""
@@ -11033,7 +11360,7 @@ msgstr ""
 #: library/WT/Controller/Family.php:167
 #: library/WT/Controller/Individual.php:407 library/WT/Controller/Media.php:138
 #: library/WT/Controller/Note.php:114 library/WT/Controller/Repository.php:114
-#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:258
+#: library/WT/Controller/Source.php:114 library/WT/MenuBar.php:256
 msgid "Add to favorites"
 msgstr "Add to favorites"
 
@@ -11136,11 +11463,11 @@ msgstr "Edit details"
 msgid "Edit note"
 msgstr "Edit note"
 
-#: library/WT/Controller/Page.php:189
+#: library/WT/Controller/Page.php:205
 msgid "More"
 msgstr "More"
 
-#: library/WT/Controller/Page.php:190
+#: library/WT/Controller/Page.php:206
 msgid "Less"
 msgstr "Less"
 
@@ -16582,7 +16909,7 @@ msgstr "Reports"
 msgid "Resources"
 msgstr "Resources"
 
-#: library/WT/MenuBar.php:183 lifespan.php:302 medialist.php:138
+#: library/WT/MenuBar.php:183 lifespan.php:302 medialist.php:139
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:58
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:96
 #: modules_v3/descendancy/module.php:98 modules_v3/descendancy/module.php:131
@@ -16594,10 +16921,6 @@ msgstr "Resources"
 #: themes/xenea/header.php:108
 msgid "Search"
 msgstr "Search"
-
-#: library/WT/MenuBar.php:195
-msgid "dansk"
-msgstr "danish"
 
 #: library/WT/Note.php:85
 msgid "…"
@@ -18102,11 +18425,7 @@ msgstr "The username or password is incorrect."
 msgid "You cannot login because your browser does not accept cookies."
 msgstr "You cannot login because your browser does not accept cookies."
 
-#: login.php:133
-msgid "Welcome to this genealogy website"
-msgstr "Welcome to this genealogy website"
-
-#: login.php:137
+#: login.php:136
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to every visitor who has a user account.<br /><br /"
@@ -18124,7 +18443,7 @@ msgstr ""
 "will activate your account.  You will receive an email when your application "
 "has been approved."
 
-#: login.php:140
+#: login.php:139
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to <u>authorized</u> users only.<br /><br />If you "
@@ -18142,7 +18461,7 @@ msgstr ""
 "approve or decline your account application.  You will receive an email "
 "message when your application has been approved."
 
-#: login.php:143
+#: login.php:142
 msgid ""
 "<center><b>Welcome to this Genealogy website</b></center><br />Access to "
 "this site is permitted to <u>family members only</u>.<br /><br />If you have "
@@ -18160,38 +18479,38 @@ msgstr ""
 "will either approve or decline your request for an account.  You will "
 "receive an email when your request is approved."
 
-#: login.php:171 modules_v3/login_block/module.php:82
+#: login.php:170 modules_v3/login_block/module.php:82
 msgid "Request new password"
 msgstr "Request new password"
 
-#: login.php:174 login.php:256 modules_v3/gedcom_block/module.php:60
+#: login.php:173 login.php:255 modules_v3/gedcom_block/module.php:60
 #: modules_v3/login_block/module.php:85
 msgid "Request new user account"
 msgstr "Request new user account"
 
-#: login.php:182 login.php:198 login.php:236
+#: login.php:181 login.php:197 login.php:235
 #: modules_v3/login_block/module.php:94
 msgid "Lost password request"
 msgstr "Lost password request"
 
-#: login.php:184 modules_v3/login_block/module.php:96
+#: login.php:183 modules_v3/login_block/module.php:96
 msgid "Username or email address"
 msgstr "Username or email address"
 
-#: login.php:220 login.php:323
+#: login.php:219 login.php:322
 #, php-format
 msgid "Hello %s ..."
 msgstr "Hello %s ..."
 
-#: login.php:221
+#: login.php:220
 msgid "A new password was requested for your user name."
 msgstr "A new password was requested for your user name."
 
-#: login.php:225
+#: login.php:224
 msgid "Recommendation:"
 msgstr "Recommendation:"
 
-#: login.php:226
+#: login.php:225
 msgid ""
 "Please click on the link below or paste it into your browser, login with the "
 "new password, and change it immediately to keep the integrity of your data "
@@ -18201,7 +18520,7 @@ msgstr ""
 "new password, and change it immediately to keep the integrity of your data "
 "secure."
 
-#: login.php:227
+#: login.php:226
 msgid ""
 "After you have logged in, select the «My Account» link under the your name "
 "in the menu and fill in the password fields to change your password."
@@ -18210,7 +18529,7 @@ msgstr ""
 "in the menu and fill in the password fields to change your password."
 
 #. I18N: %s is a username
-#: login.php:244
+#: login.php:243
 #, php-format
 msgid ""
 "A new password has been created and emailed to %s.  You can change this "
@@ -18219,28 +18538,28 @@ msgstr ""
 "A new password has been created and emailed to %s.  You can change this "
 "password after you login."
 
-#: login.php:268 message.php:72 modules_v3/contact/module.php:148
+#: login.php:267 message.php:72 modules_v3/contact/module.php:148
 msgid "You are not allowed to send messages that contain external links."
 msgstr "You are not allowed to send messages that contain external links."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.”
-#: login.php:269 message.php:73 modules_v3/contact/module.php:149
+#: login.php:268 message.php:73 modules_v3/contact/module.php:149
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
 msgstr "You should delete the “%1$s” from “%2$s” and try again."
 
-#: login.php:295 login.php:481
+#: login.php:294 login.php:480
 msgid "Hello Administrator ..."
 msgstr "Hello Administrator ..."
 
 #. I18N: %s is a server name/URL
-#: login.php:297
+#: login.php:296
 #, php-format
 msgid "A prospective user has registered at %s."
 msgstr "A prospective user has registered at %s."
 
-#: login.php:302
+#: login.php:301
 msgid ""
 "The user has been sent an e-mail with the information necessary to confirm "
 "the access request"
@@ -18248,7 +18567,7 @@ msgstr ""
 "The user has been sent an e-mail with the information necessary to confirm "
 "the access request"
 
-#: login.php:304
+#: login.php:303
 msgid ""
 "You will be informed by e-mail when this prospective user has confirmed the "
 "request.  You can then complete the process by activating the user name.  "
@@ -18259,13 +18578,13 @@ msgstr ""
 "The new user will not be able to login until you activate the account."
 
 #. I18N: %s is a server name/URL
-#: login.php:311
+#: login.php:310
 #, php-format
 msgid "New registration at %s"
 msgstr "New registration at %s"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
-#: login.php:325
+#: login.php:324
 #, php-format
 msgid ""
 "You (or someone claiming to be you) has requested an account at %1$s using "
@@ -18274,11 +18593,11 @@ msgstr ""
 "You (or someone claiming to be you) has requested an account at %1$s using "
 "the email address %2$s."
 
-#: login.php:326
+#: login.php:325
 msgid "Information about the request is shown under the link below."
 msgstr "Information about the request is shown under the link below."
 
-#: login.php:327
+#: login.php:326
 msgid ""
 "Please click on the following link and fill in the requested data to confirm "
 "your request and email address."
@@ -18286,15 +18605,15 @@ msgstr ""
 "Please click on the following link and fill in the requested data to confirm "
 "your request and email address."
 
-#: login.php:339 login.php:458
+#: login.php:338 login.php:457
 msgid "Verification code:"
 msgstr "Verification code:"
 
-#: login.php:341
+#: login.php:340
 msgid "If you didn't request an account, you can just delete this message."
 msgstr "If you didn't request an account, you can just delete this message."
 
-#: login.php:342
+#: login.php:341
 msgid ""
 "You won't get any more email from this site, because the account request "
 "will be deleted automatically after seven days."
@@ -18303,17 +18622,17 @@ msgstr ""
 "will be deleted automatically after seven days."
 
 #. I18N: %s is a server name/URL
-#: login.php:343
+#: login.php:342
 #, php-format
 msgid "Your registration at %s"
 msgstr "Your registration at %s"
 
-#: login.php:359
+#: login.php:358
 #, php-format
 msgid "Hello %s ...<br />Thank you for your registration."
 msgstr "Hello %s ...<br />Thank you for your registration."
 
-#: login.php:360
+#: login.php:359
 #, php-format
 msgid ""
 "We will now send a confirmation email to the address <b>%s</b>. You must "
@@ -18334,7 +18653,7 @@ msgstr ""
 "account can be used.<br /><br />To login to this site, you will need to know "
 "your user name and password."
 
-#: login.php:376
+#: login.php:375
 msgid ""
 "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing "
 "and submitting this form, you agree:<ul><li>to protect the privacy of living "
@@ -18348,34 +18667,34 @@ msgstr ""
 "whom you are related, or to provide us with information on someone who "
 "should be listed on our site.</li></ul></div>"
 
-#: login.php:382
+#: login.php:381
 msgid "All fields must be completed."
 msgstr "All fields must be completed."
 
-#: login.php:394
+#: login.php:393
 msgid "Desired user name"
 msgstr "Desired user name"
 
-#: login.php:399
+#: login.php:398
 msgid "Desired password"
 msgstr "Desired password"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:418
+#: login.php:417
 msgid "Explain why you are requesting an account."
 msgstr "Explain why you are requesting an account."
 
-#: login.php:442 login.php:448 login.php:512 login.php:516
+#: login.php:441 login.php:447 login.php:511 login.php:515
 msgid "User verification"
 msgstr "User verification"
 
-#: login.php:462 message.php:164 modules_v3/contact/module.php:228
+#: login.php:461 message.php:164 modules_v3/contact/module.php:228
 #: modules_v3/widget_messages/module.php:77
 msgid "Send"
 msgstr "Send"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:483
+#: login.php:482
 #, php-format
 msgid ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
@@ -18384,7 +18703,7 @@ msgstr ""
 "A new user (%1$s) has requested an account (%2$s) and verified an email "
 "address (%3$s)."
 
-#: login.php:485
+#: login.php:484
 msgid ""
 "You now need to review the account details, and set the “approved” status to "
 "“yes”."
@@ -18392,26 +18711,26 @@ msgstr ""
 "You now need to review the account details, and set the “approved” status to "
 "“yes”."
 
-#: login.php:487
+#: login.php:486
 msgid "You do not have to take any action; the user can now login."
 msgstr "You do not have to take any action; the user can now login."
 
 #. I18N: %s is a server name/URL
-#: login.php:506
+#: login.php:505
 #, php-format
 msgid "New user at %s"
 msgstr "New user at %s"
 
-#: login.php:518
+#: login.php:517
 #, php-format
 msgid "The data for the user <b>%s</b> was checked."
 msgstr "The data for the user <b>%s</b> was checked."
 
-#: login.php:536
+#: login.php:535
 msgid "You have confirmed your request to become a registered user."
 msgstr "You have confirmed your request to become a registered user."
 
-#: login.php:538
+#: login.php:537
 msgid ""
 "The Administrator has been informed.  As soon as he gives you permission to "
 "login, you can login with your user name and password."
@@ -18419,11 +18738,11 @@ msgstr ""
 "The Administrator has been informed.  As soon as he gives you permission to "
 "login, you can login with your user name and password."
 
-#: login.php:544
+#: login.php:543
 msgid "Data was not correct, please try again"
 msgstr "Data was not correct, please try again"
 
-#: login.php:550
+#: login.php:549
 msgid ""
 "Could not verify the information you entered.  Please try again or contact "
 "the site administrator for more information."
@@ -18439,11 +18758,11 @@ msgstr "The media file was not found in this family tree"
 msgid "This media file is broken and cannot be watermarked"
 msgstr "This media file is broken and cannot be watermarked"
 
-#: medialist.php:84
+#: medialist.php:85
 msgid "Folder"
 msgstr "Folder"
 
-#: medialist.php:95 modules_v3/recent_changes/module.php:149
+#: medialist.php:96 modules_v3/recent_changes/module.php:149
 #: modules_v3/todays_events/module.php:151
 #: modules_v3/upcoming_events/module.php:153
 #: modules_v3/widget_recent_changes/module.php:150
@@ -18456,49 +18775,49 @@ msgid "Sort order"
 msgstr "Sort order"
 
 #. I18N: An option in a list-box
-#: medialist.php:98
+#: medialist.php:99
 msgid "sort by title"
 msgstr "sort by title"
 
 #. I18N: An option in a list-box
-#: medialist.php:101
+#: medialist.php:102
 msgid "sort by filename"
 msgstr "sort by filename"
 
-#: medialist.php:120
+#: medialist.php:121
 msgid "Media objects per page"
 msgstr "Media objects per page"
 
-#: medialist.php:132
+#: medialist.php:133
 msgid "Search filters"
 msgstr "Search filters"
 
-#: medialist.php:142 modules_v3/album/module.php:344
+#: medialist.php:143 modules_v3/album/module.php:344
 #: modules_v3/googlemap/module.php:2022 modules_v3/resource_fact/module.php:224
 msgid "Reset"
 msgstr "Reset"
 
-#: medialist.php:194
+#: medialist.php:195
 #, php-format
 msgid "Page %s of %s"
 msgstr "Page %s of %s"
 
-#: medialist.php:224
+#: medialist.php:225
 #, php-format
 msgid "%s media objects found"
 msgstr "%s media objects found"
 
 #. I18N: %s is a filename
-#: medialist.php:274 mediaviewer.php:116
+#: medialist.php:275 mediaviewer.php:116
 #, php-format
 msgid "The file “%s” does not exist."
 msgstr "The file “%s” does not exist."
 
-#: medialist.php:286
+#: medialist.php:287
 msgid "View person"
 msgstr "View person"
 
-#: medialist.php:292
+#: medialist.php:293
 msgid "View source"
 msgstr "View source"
 
@@ -18877,7 +19196,7 @@ msgstr "ID settings"
 #. I18N: Dropbox secure access token
 #: modules_v3/backup_to_dropbox/module.php:125
 msgid "Dropbox folder"
-msgstr "Data folder"
+msgstr "Dropbox folder"
 
 #. I18N: Dropbox secure access token
 #: modules_v3/backup_to_dropbox/module.php:131
@@ -19116,7 +19435,7 @@ msgstr "Calendar utilities"
 msgid "A selection of calendar utility tools"
 msgstr "A selection of calendar utility tools"
 
-#: modules_v3/calendar_utilities/module.php:143
+#: modules_v3/calendar_utilities/module.php:144
 msgid "Select the utilities you want to display"
 msgstr "Select the utilities you want to display"
 
@@ -19165,6 +19484,76 @@ msgstr "The first relationship to <strong>X</strong> is"
 msgid "The relationship of <strong>D</strong> to <strong>X</strong> is"
 msgstr "The relationship of <strong>D</strong> to <strong>X</strong> is"
 
+#: modules_v3/calendar_utilities/plugins/calculators.php:202
+msgid "Grandchild"
+msgstr "Grandchild"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:203
+msgid "Great grandchild"
+msgstr "Great grandchild"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:251
+#: modules_v3/calendar_utilities/plugins/calculators.php:261
+msgid "You and D are siblings"
+msgstr "You and D are siblings"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:265
+#: modules_v3/calendar_utilities/plugins/calculators.php:323
+#: modules_v3/calendar_utilities/plugins/calculators.php:332
+msgid "You and D are "
+msgstr "You and D are "
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:266
+msgid " Cousins"
+msgstr " Cousins"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:274
+#: modules_v3/calendar_utilities/plugins/calculators.php:293
+msgid "Grand"
+msgstr "Grand"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:278
+#: modules_v3/calendar_utilities/plugins/calculators.php:297
+msgid "Great Grand"
+msgstr "Great Grand"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:282
+#: modules_v3/calendar_utilities/plugins/calculators.php:301
+msgid " Great Grand"
+msgstr " Great Grand"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:285
+msgid "D is your "
+msgstr "D is your "
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:285
+msgid " niece/nephew"
+msgstr " niece/nephew"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:304
+msgid "You are the "
+msgstr "You are the "
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:304
+msgid " niece/nephew of D"
+msgstr " niece/nephew of D"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:324
+msgid " cousins "
+msgstr " cousins "
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:327
+msgid " time removed"
+msgstr " time removed"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:329
+msgid " times removed"
+msgstr " times removed"
+
+#: modules_v3/calendar_utilities/plugins/calculators.php:333
+msgid " cousins"
+msgstr " cousins"
+
 #: modules_v3/calendar_utilities/plugins/calculators.php:388
 msgid "Birth Date Calculator"
 msgstr "Birth Date Calculator"
@@ -19185,10 +19574,1680 @@ msgstr "days"
 msgid "Estimated date of birth"
 msgstr "Estimated date of birth"
 
+#: modules_v3/calendar_utilities/plugins/calculators.php:460
+msgid "Please enter a valid date."
+msgstr "Please enter a valid date."
+
 #. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/ecclesiastical.php:28
 msgid "Ecclesiastical Dates"
 msgstr "Ecclesiastical Dates"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:33
+msgid "Lent"
+msgstr "Lent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:33
+msgid "40 week days between Ash Wednesday and Easter"
+msgstr "40 week days between Ash Wednesday and Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:34
+msgid "Advent"
+msgstr "Advent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:34
+msgid "Period from Advent Sunday to December 25"
+msgstr "Period from Advent Sunday to December 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:35
+msgid "Sexagesima Sunday"
+msgstr "Sexagesima Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:35
+msgid "Sunday after Septuagesima Sunday."
+msgstr "Sunday after Septuagesima Sunday."
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:36
+msgid "Quinquagesima Sunday"
+msgstr "Quinquagesima Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:36
+msgid "2nd Sunday after Septuagesima Sunday"
+msgstr "2nd Sunday after Septuagesima Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:37
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:96
+msgid "Shrove Tuesday"
+msgstr "Shrove Tuesday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:37
+msgid "day before Ash Wednesday."
+msgstr "day before Ash Wednesday."
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:38
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:155
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:162
+msgid "Passion Sunday"
+msgstr "Passion Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:38
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:115
+msgid "2nd Sunday before Easter"
+msgstr "2nd Sunday before Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:39
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:105
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:206
+msgid "Palm Sunday"
+msgstr "Palm Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:39
+msgid "Sunday before Easter"
+msgstr "Sunday before Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:40
+msgid "Quasimodo (Low) Sunday"
+msgstr "Quasimodo (Low) Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:40
+msgid "Sunday after Easter"
+msgstr "Sunday after Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:41
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:101
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:127
+msgid "Good Friday"
+msgstr "Good Friday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:41
+msgid "Friday before Easter"
+msgstr "Friday before Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:42
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:102
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:128
+msgid "Maundy Thursday"
+msgstr "Maundy Thursday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:42
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:80
+msgid "Thursday before Easter"
+msgstr "Thursday before Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:43
+msgid "Adorate dominum"
+msgstr "Adorate dominum"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:43
+msgid "3rd Sunday after January 6"
+msgstr "3rd Sunday after January 6"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:44
+msgid "Adrian (Canterbury)"
+msgstr "Adrian (Canterbury)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:44
+msgid "January 9"
+msgstr "January 9"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:45
+msgid "Ad te levavi"
+msgstr "Ad te levavi"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:45
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:59
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:324
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:186
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:189
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:192
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:195
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:198
+msgid "Advent Sunday"
+msgstr "Advent Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:46
+msgid "Agatha"
+msgstr "Agatha"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:46
+msgid "February 5"
+msgstr "February 5"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:47
+msgid "Agnes"
+msgstr "Agnes"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:47
+msgid "January 21"
+msgstr "January 21"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:48
+msgid "Alban"
+msgstr "Alban"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:48
+msgid "June 22 (or June in 1662 Prayer Book)"
+msgstr "June 22 (or June in 1662 Prayer Book)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:49
+msgid "Aldhelm"
+msgstr "Aldhelm"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:49
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:247
+msgid "May 25"
+msgstr "May 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:50
+msgid "All Hallows"
+msgstr "All Hallows"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:50
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:51
+msgid "November 1"
+msgstr "November 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:51
+msgid "All Saints"
+msgstr "All Saints"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:52
+msgid "All Souls"
+msgstr "All Souls"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:52
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:130
+msgid "November 2"
+msgstr "November 2"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:53
+msgid "Alphege"
+msgstr "Alphege"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:53
+msgid "April 19"
+msgstr "April 19"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:54
+msgid "Ambrose"
+msgstr "Ambrose"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:54
+msgid "April 4"
+msgstr "April 4"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:55
+msgid "Andrew"
+msgstr "Andrew"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:55
+msgid "November 30"
+msgstr "November 30"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:56
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:119
+msgid "Anne"
+msgstr "Anne"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:56
+msgid "July 26"
+msgstr "July 26"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:57
+msgid "Annunciation"
+msgstr "Annunciation"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:57
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:165
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:183
+msgid "March 25"
+msgstr "March 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:58
+msgid "Ante Portram Latinam"
+msgstr "Ante Portram Latinam"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:58
+msgid "May 6"
+msgstr "May 6"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:59
+msgid "Aspiciens a longe"
+msgstr "Aspiciens a longe"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:60
+msgid "Audoenus (Ouen)"
+msgstr "Audoenus (Ouen)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:60
+msgid "August 24 or 25"
+msgstr "August 24 or 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:61
+msgid "Audrey (Ethelreda)"
+msgstr "Audrey (Ethelreda)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:61
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:128
+msgid "October 17"
+msgstr "October 17"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:62
+msgid "Augustine (Canterbury)"
+msgstr "Augustine (Canterbury)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:62
+msgid "May 26"
+msgstr "May 26"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:63
+msgid "Augustine (Hippo)"
+msgstr "Augustine (Hippo)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:63
+msgid "August 28"
+msgstr "August 28"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:64
+msgid "Barnabas"
+msgstr "Barnabas"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:64
+msgid "June 11"
+msgstr "June 11"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:65
+msgid "Bartholomew"
+msgstr "Bartholomew"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:65
+msgid "August 24"
+msgstr "August 24"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:66
+msgid "Bede, Venerable"
+msgstr "Bede, Venerable"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:66
+msgid "May 27"
+msgstr "May 27"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:67
+msgid "Benedict"
+msgstr "Benedict"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:67
+msgid "March 21"
+msgstr "March 21"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:68
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Translation of Benedict"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Translation of Benedict"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:68
+msgid "July 11"
+msgstr "July 11"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:69
+msgid "Birinus"
+msgstr "Birinus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:69
+msgid "December 3"
+msgstr "December 3"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:70
+msgid "Blasius"
+msgstr "Blasius"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:70
+msgid "February 3"
+msgstr "February 3"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:71
+msgid "Boniface"
+msgstr "Boniface"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:71
+msgid "June 5"
+msgstr "June 5"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:72
+msgid "Botolph"
+msgstr "Botolph"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:72
+msgid "June 17"
+msgstr "June 17"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:73
+msgid "Bricius"
+msgstr "Bricius"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:73
+msgid "November 13"
+msgstr "November 13"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:74
+msgid "Candlemas"
+msgstr "Candlemas"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:74
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:187
+msgid "February 2"
+msgstr "February 2"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:75
+msgid "Canite Tuba"
+msgstr "Canite Tuba"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:75
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:194
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:229
+msgid "4th Sunday in Advent"
+msgstr "4th Sunday in Advent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:76
+msgid "Cantate domino"
+msgstr "Cantate domino"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:76
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:145
+msgid "4th Sunday after Easter"
+msgstr "4th Sunday after Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:77
+msgid "Cathedra Petri"
+msgstr "Cathedra Petri"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:77
+msgid "February 22"
+msgstr "February 22"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:78
+msgid "Catherine"
+msgstr "Catherine"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:78
+msgid "November 25"
+msgstr "November 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:79
+msgid "Cecilia"
+msgstr "Cecilia"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:79
+msgid "November 22"
+msgstr "November 22"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:80
+msgid "Cena domini"
+msgstr "Cena domini"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:81
+msgid "Chad (Cedde)"
+msgstr "Chad (Cedde)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:81
+msgid "March 2"
+msgstr "March 2"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:82
+msgid "Christmas (Natale Domini)"
+msgstr "Christmas (Natale Domini)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:82
+msgid "December 25"
+msgstr "December 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:83
+msgid "Christopher"
+msgstr "Christopher"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:83
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:156
+msgid "July 25"
+msgstr "July 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:84
+msgid "Circumcision"
+msgstr "Circumcision"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:84
+msgid "January 1"
+msgstr "January 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:85
+msgid "Clausum Pasche"
+msgstr "Clausum Pasche"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:85
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:221
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:142
+msgid "1st Sunday after Easter"
+msgstr "1st Sunday after Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:86
+msgid "Clement"
+msgstr "Clement"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:86
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:137
+msgid "November 23"
+msgstr "November 23"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:87
+msgid "Cornelius+Cyprian"
+msgstr "Cornelius+Cyprian"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:87
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:131
+msgid "September 14"
+msgstr "September 14"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:88
+msgid "Corpus Christi"
+msgstr "Corpus Christi"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:88
+msgid "Thursday after Trinity*"
+msgstr "Thursday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:89
+msgid "Crispin and Crispinian"
+msgstr "Crispin and Crispinian"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:89
+msgid "October 25"
+msgstr "October 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:90
+msgid "Cuthbert"
+msgstr "Cuthbert"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:90
+msgid "March 20"
+msgstr "March 20"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:91
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translation of Cuthbert"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translation of Cuthbert"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:91
+msgid "September 4"
+msgstr "September 4"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:92
+msgid "Cyprian and Justina"
+msgstr "Cyprian and Justina"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:92
+msgid "September 26"
+msgstr "September 26"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:93
+msgid "Daemon mutus"
+msgstr "Daemon mutus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:93
+msgid "3rd Sunday in Lent (after Ash Wednesday)"
+msgstr "3rd Sunday in Lent (after Ash Wednesday)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:94
+msgid "Da pacem"
+msgstr "Da pacem"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:94
+msgid "18th Sunday after Trinity*"
+msgstr "18th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:95
+msgid "David"
+msgstr "David"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:95
+msgid "March 1"
+msgstr "March 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:96
+msgid "Deus in adiutorium"
+msgstr "Deus in adiutorium"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:96
+msgid "12th Sunday after Trinity*"
+msgstr "12th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:97
+msgid "Deus in loco sancto"
+msgstr "Deus in loco sancto"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:97
+msgid "11th Sunday after Trinity*"
+msgstr "11th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:98
+msgid "Deus qui errantibus"
+msgstr "Deus qui errantibus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:98
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:161
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:144
+msgid "3rd Sunday after Easter"
+msgstr "3rd Sunday after Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:99
+msgid "Dicit dominus"
+msgstr "Dicit dominus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:99
+msgid "23rd and 24th Sunday after Trinity*"
+msgstr "23rd and 24th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:100
+msgid "Dies cinerum"
+msgstr "Dies cinerum"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:100
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:312
+msgid "Ash Wednesday"
+msgstr "Ash Wednesday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:101
+msgid "Dies crucis adorande"
+msgstr "Dies crucis adorande"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:102
+msgid "Dies Mandati"
+msgstr "Dies Mandati"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:103
+msgid "Dionysius, Rusticus, and Eleutherius"
+msgstr "Dionysius, Rusticus, and Eleutherius"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:103
+msgid "October 9"
+msgstr "October 9"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:104
+msgid "Domine, in tua misericordia"
+msgstr "Domine, in tua misericordia"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:104
+msgid "1st Sunday after Trinity*"
+msgstr "1st Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:105
+msgid "Domine, ne longe"
+msgstr "Domine, ne longe"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:106
+msgid "Dominus fortitudo"
+msgstr "Dominus fortitudo"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:106
+msgid "6th Sunday after Trinity*"
+msgstr "6th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:107
+msgid "Dominus illuminatio mea"
+msgstr "Dominus illuminatio mea"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:107
+msgid "4th Sunday after Trinity*"
+msgstr "4th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:108
+msgid "Dum, clamarem"
+msgstr "Dum, clamarem"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:108
+msgid "10th Sunday after Trinity*"
+msgstr "10th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:109
+msgid "Epiphany"
+msgstr "Epiphany"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:109
+msgid "January 6"
+msgstr "January 6"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:110
+msgid "Dum medium silentium"
+msgstr "Dum medium silentium"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:110
+msgid ""
+" Sunday in octave of Christmas or Sunday after January 1 when this falls on "
+"eve of Epiphany (Jan. 6)"
+msgstr ""
+" Sunday in octave of Christmas or Sunday after January 1 when this falls on "
+"eve of Epiphany (Jan. 6)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:111
+msgid "Dunstan"
+msgstr "Dunstan"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:111
+msgid "May 19"
+msgstr "May 19"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:112
+msgid "Eadburga (Winchester)"
+msgstr "Eadburga (Winchester)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:112
+msgid "June 15"
+msgstr "June 15"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:113
+msgid "Ecce deus adiuvat"
+msgstr "Ecce deus adiuvat"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:113
+msgid "9th Sunday after Trinity*"
+msgstr "9th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:114
+msgid "Editha"
+msgstr "Editha"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:114
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:129
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:172
+msgid "September 16"
+msgstr "September 16"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:115
+msgid "Edmund (archbishop)"
+msgstr "Edmund (archbishop)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:115
+msgid "November 16"
+msgstr "November 16"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:116
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:118
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:120
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:181
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:228
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:240
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:242
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:244
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:116
+msgid "June 9"
+msgstr "June 9"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:117
+msgid "Edmund (king)"
+msgstr "Edmund (king)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:117
+msgid "November 20"
+msgstr "November 20"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:118
+msgid "April 29"
+msgstr "April 29"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:119
+msgid "Edward the Confessor"
+msgstr "Edward the Confessor"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:119
+msgid "January 5"
+msgstr "January 5"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:120
+msgid ""
+"October 13 often called the feast of St. Edward in the quidene of Michaelmas"
+msgstr ""
+"October 13 often called the feast of St. Edward in the quidene of Michaelmas"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:121
+msgid "Edward (king of Saxons)"
+msgstr "Edward (king of Saxons)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:121
+msgid "March 18"
+msgstr "March 18"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:122
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation I"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation I"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:122
+msgid "February 18"
+msgstr "February 18"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:123
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation II"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his translation II"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:123
+msgid "June 20"
+msgstr "June 20"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:124
+msgid "Egidius (Giles)"
+msgstr "Egidius (Giles)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:124
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:219
+msgid "September 1"
+msgstr "September 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:125
+msgid "Enurchus (Evurcius)"
+msgstr "Enurchus (Evurcius)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:125
+msgid "September 7"
+msgstr "September 7"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:126
+msgid "Esto mihi"
+msgstr "Esto mihi"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:126
+msgid "Sunday before Ash Wednesday (Quinquagesima)"
+msgstr "Sunday before Ash Wednesday (Quinquagesima)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:127
+msgid "Ethelbert (king)"
+msgstr "Ethelbert (king)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:127
+msgid "May 20"
+msgstr "May 20"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:128
+msgid "Ethelreda"
+msgstr "Ethelreda"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:129
+msgid "Euphemia"
+msgstr "Euphemia"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:130
+msgid "Eustachius"
+msgstr "Eustachius"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:131
+msgid "Exaltation of the Cross"
+msgstr "Exaltation of the Cross"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:132
+msgid "Exaudi domine"
+msgstr "Exaudi domine"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:132
+msgid ""
+"Sunday in octave of Ascension or 5th Sunday after octave of Pentecost "
+"(Trinity)*"
+msgstr ""
+"Sunday in octave of Ascension or 5th Sunday after octave of Pentecost "
+"(Trinity)*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:133
+msgid "Exsurge domine"
+msgstr "Exsurge domine"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:133
+msgid "2nd Sunday before Ash Wednesday (Sexagesima)"
+msgstr "2nd Sunday before Ash Wednesday (Sexagesima)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:134
+msgid "Fabian and Sebastian"
+msgstr "Fabian and Sebastian"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:134
+msgid "January 20"
+msgstr "January 20"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:135
+msgid "Factus est dominus"
+msgstr "Factus est dominus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:135
+msgid "2nd Sunday after Trinity*"
+msgstr "2nd Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:136
+msgid "Faith"
+msgstr "Faith"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:136
+msgid "October 6"
+msgstr "October 6"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:137
+msgid "Felicitas"
+msgstr "Felicitas"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:138
+msgid "Fransiscus"
+msgstr "Fransiscus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:138
+msgid "October 4"
+msgstr "October 4"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:139
+msgid "Gaudete in domino"
+msgstr "Gaudete in domino"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:139
+msgid "3rd Sunday in Advent"
+msgstr "3rd Sunday in Advent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:140
+msgid "George"
+msgstr "George"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:140
+msgid "April 23"
+msgstr "April 23"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:141
+msgid "Gregory"
+msgstr "Gregory"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:141
+msgid "March 12"
+msgstr "March 12"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:142
+msgid "Grimbold"
+msgstr "Grimbold"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:142
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:177
+msgid "July 8"
+msgstr "July 8"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:143
+msgid "Gule of August"
+msgstr "Gule of August"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:143
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:168
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:215
+msgid "August 1"
+msgstr "August 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:144
+msgid "Guthlac"
+msgstr "Guthlac"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:144
+msgid "April 11"
+msgstr "April 11"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:145
+msgid "Hieronymous (Jerome)"
+msgstr "Hieronymous (Jerome)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:145
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:157
+msgid "September 30"
+msgstr "September 30"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:146
+msgid "Hilary"
+msgstr "Hilary"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:146
+msgid "January 13"
+msgstr "January 13"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:147
+msgid "Hugh (bishop of Lincoln)"
+msgstr "Hugh (bishop of Lincoln)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:147
+msgid "November 17"
+msgstr "November 17"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:148
+msgid "Inclina auram tuam"
+msgstr "Inclina auram tuam"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:148
+msgid "15th Sunday after Trinity*"
+msgstr "15th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:149
+msgid "In excelso throno"
+msgstr "In excelso throno"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:149
+msgid "1st Sunday after Epiphany"
+msgstr "1st Sunday after Epiphany"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:150
+msgid "In Monte tumba"
+msgstr "In Monte tumba"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:150
+msgid "October 16"
+msgstr "October 16"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:151
+msgid "Innocents"
+msgstr "Innocents"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:151
+msgid "December 28"
+msgstr "December 28"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:152
+msgid "Invention of the Cross"
+msgstr "Invention of the Cross"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:152
+msgid "May 3"
+msgstr "May 3"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:153
+msgid "Invocavit me"
+msgstr "Invocavit me"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:153
+msgid "1st Sunday in Lent"
+msgstr "1st Sunday in Lent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:154
+msgid "In voluntate tua"
+msgstr "In voluntate tua"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:154
+msgid "21st Sunday afterTrinity*"
+msgstr "21st Sunday afterTrinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:155
+msgid "Isti sunt dies"
+msgstr "Isti sunt dies"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:156
+msgid "James"
+msgstr "James"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:157
+msgid "Jerome (Hieronymus)"
+msgstr "Jerome (Hieronymus)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:158
+msgid "John the Baptist"
+msgstr "John the Baptist"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:158
+msgid "June 24"
+msgstr "June 24"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:159
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his beheading"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his beheading"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:159
+msgid "August 29"
+msgstr "August 29"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:160
+msgid "John the Evangelist"
+msgstr "John the Evangelist"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:160
+msgid "December 27"
+msgstr "December 27"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:161
+msgid "Jubilate omnis terra"
+msgstr "Jubilate omnis terra"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:162
+msgid "Judica me"
+msgstr "Judica me"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:163
+msgid "Judoc"
+msgstr "Judoc"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:163
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:174
+msgid "December 13"
+msgstr "December 13"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:164
+msgid "Justus es domine"
+msgstr "Justus es domine"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:164
+msgid "17th Sunday after the octave of Pentecost (Trinity)*"
+msgstr "17th Sunday after the octave of Pentecost (Trinity)*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:165
+msgid "Lady day (annunciation)"
+msgstr "Lady day (annunciation)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:166
+msgid "Laetare Jerusalem"
+msgstr "Laetare Jerusalem"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:166
+msgid "4th Sunday in Lent"
+msgstr "4th Sunday in Lent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:167
+msgid "Lambert"
+msgstr "Lambert"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:167
+msgid "September 17"
+msgstr "September 17"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:168
+msgid "Lammas"
+msgstr "Lammas"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:169
+msgid "Laudus"
+msgstr "Laudus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:169
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:191
+msgid "September 21"
+msgstr "September 21"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:170
+msgid "Laurence"
+msgstr "Laurence"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:170
+msgid "August 10"
+msgstr "August 10"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:171
+msgid "Leonard"
+msgstr "Leonard"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:171
+msgid "November 6"
+msgstr "November 6"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:172
+msgid "Lucianus and Geminianus"
+msgstr "Lucianus and Geminianus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:173
+msgid "Lucian"
+msgstr "Lucian"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:173
+msgid "January 8"
+msgstr "January 8"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:174
+msgid "Lucy"
+msgstr "Lucy"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:175
+msgid "Luke"
+msgstr "Luke"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:175
+msgid "October 18"
+msgstr "October 18"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:176
+msgid "Machutus"
+msgstr "Machutus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:176
+msgid "November 15"
+msgstr "November 15"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:177
+msgid "Margaret (queen of Scotland)"
+msgstr "Margaret (queen of Scotland)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:178
+msgid "Margaret (virgin and martyr)"
+msgstr "Margaret (virgin and martyr)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:178
+msgid "July 20"
+msgstr "July 20"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:179
+msgid "Mark"
+msgstr "Mark"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:179
+msgid "April 25"
+msgstr "April 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:180
+msgid "Martin"
+msgstr "Martin"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:180
+msgid "November 11"
+msgstr "November 11"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:181
+msgid "July 4"
+msgstr "July 4"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:182
+msgid "Mary, Blessed Virgin"
+msgstr "Mary, Blessed Virgin"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:182
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:183
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annunciation (Lady day)"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annunciation (Lady day)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:184
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assumption"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assumption"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:184
+msgid "August 15"
+msgstr "August 15"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:185
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conception"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conception"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:185
+msgid "December 8"
+msgstr "December 8"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:186
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nativity"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nativity"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:186
+msgid "September 8"
+msgstr "September 8"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:187
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purification"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purification"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:188
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visitation"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visitation"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:188
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:239
+msgid "July 2"
+msgstr "July 2"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:189
+msgid "Mary Magdalene"
+msgstr "Mary Magdalene"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:189
+msgid "July 22"
+msgstr "July 22"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:190
+msgid "Mathias"
+msgstr "Mathias"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:190
+msgid "February 24 (25 on leap years)"
+msgstr "February 24 (25 on leap years)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:191
+msgid "Matthew"
+msgstr "Matthew"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:192
+msgid "Maurice"
+msgstr "Maurice"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:192
+msgid "September 22"
+msgstr "September 22"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:193
+msgid "Meliorus"
+msgstr "Meliorus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:193
+msgid "October 1"
+msgstr "October 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:194
+msgid "Memento mei"
+msgstr "Memento mei"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:195
+msgid "Michael"
+msgstr "Michael"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:195
+msgid "September 29"
+msgstr "September 29"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:196
+msgid "Mildred"
+msgstr "Mildred"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:196
+msgid "July 13"
+msgstr "July 13"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:197
+msgid "Miserere mihi"
+msgstr "Miserere mihi"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:197
+msgid "16th Sunday after Trinity*"
+msgstr "16th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:198
+msgid "Misericordia domini"
+msgstr "Misericordia domini"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:198
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:143
+msgid "2nd Sunday after Easter"
+msgstr "2nd Sunday after Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:199
+msgid "Name of Jesus"
+msgstr "Name of Jesus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:199
+msgid "August 7"
+msgstr "August 7"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:200
+msgid "Nicholas"
+msgstr "Nicholas"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:200
+msgid "December 6"
+msgstr "December 6"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:201
+msgid "Nicomedes"
+msgstr "Nicomedes"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:201
+msgid "June 1"
+msgstr "June 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:202
+msgid "Oculi"
+msgstr "Oculi"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:202
+msgid "3rd Sunday in Lent"
+msgstr "3rd Sunday in Lent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:203
+msgid "Omnes gentes"
+msgstr "Omnes gentes"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:203
+msgid "7th Sunday after Trinity*"
+msgstr "7th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:204
+msgid "Omnia quae fecisti"
+msgstr "Omnia quae fecisti"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:204
+msgid "20th Sunday after Trinity*"
+msgstr "20th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:205
+msgid "Omnis terra"
+msgstr "Omnis terra"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:205
+msgid "2nd Sunday after Epiphany"
+msgstr "2nd Sunday after Epiphany"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:206
+msgid "Osanna"
+msgstr "Osanna"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:207
+msgid "O Sapientia"
+msgstr "O Sapientia"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:207
+msgid "December 16"
+msgstr "December 16"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:208
+msgid "Osmund"
+msgstr "Osmund"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:208
+msgid "December 4"
+msgstr "December 4"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:209
+msgid "Oswald (bishop)"
+msgstr "Oswald (bishop)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:209
+msgid "February 28"
+msgstr "February 28"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:210
+msgid "Oswald (king)"
+msgstr "Oswald (king)"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:210
+msgid "August 5"
+msgstr "August 5"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:211
+msgid "Patrick"
+msgstr "Patrick"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:211
+msgid "March 17"
+msgstr "March 17"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:212
+msgid "Paul, Conversion of"
+msgstr "Paul, Conversion of"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:212
+msgid "January 25"
+msgstr "January 25"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:213
+msgid "Perpetua"
+msgstr "Perpetua"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:213
+msgid "March 7"
+msgstr "March 7"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:214
+msgid "Peter and Paul"
+msgstr "Peter and Paul"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:214
+msgid "June 29"
+msgstr "June 29"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:215
+msgid "Peter and Vincula"
+msgstr "Peter and Vincula"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:216
+msgid "Philip and James"
+msgstr "Philip and James"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:216
+msgid "May 1"
+msgstr "May 1"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:217
+msgid "Populus Sion"
+msgstr "Populus Sion"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:217
+msgid "2nd Sunday in Advent"
+msgstr "2nd Sunday in Advent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:218
+msgid "Prisca"
+msgstr "Prisca"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:218
+msgid "January 18"
+msgstr "January 18"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:219
+msgid "Priscus"
+msgstr "Priscus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:220
+msgid "Protector noster"
+msgstr "Protector noster"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:220
+msgid "14th Sunday after Trinity*"
+msgstr "14th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:221
+msgid "Quasimodo"
+msgstr "Quasimodo"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:222
+msgid "Reddite quae sunt"
+msgstr "Reddite quae sunt"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:222
+msgid "23rd Sunday after*"
+msgstr "23rd Sunday after*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:223
+msgid "Remigius, Germanus, and Vedastus Reminiscere"
+msgstr "Remigius, Germanus, and Vedastus Reminiscere"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:223
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:224
+msgid "2nd Sunday in Lent"
+msgstr "2nd Sunday in Lent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:224
+msgid "Reminiscere"
+msgstr "Reminiscere"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:225
+msgid "Respice domine"
+msgstr "Respice domine"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:225
+msgid "13th Sunday after Pentecost"
+msgstr "13th Sunday after Pentecost"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:226
+msgid "Respice in me"
+msgstr "Respice in me"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:226
+msgid "3rd Sunday after Trinity*"
+msgstr "3rd Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:227
+msgid "Richard"
+msgstr "Richard"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:227
+msgid "April 3"
+msgstr "April 3"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:228
+msgid "July 15"
+msgstr "July 15"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:229
+msgid "Rorate celi"
+msgstr "Rorate celi"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:230
+msgid "Salus populi"
+msgstr "Salus populi"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:230
+msgid "19th Sunday after Pentecost"
+msgstr "19th Sunday after Pentecost"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:231
+msgid "Scholastica"
+msgstr "Scholastica"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:231
+msgid "February 10"
+msgstr "February 10"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:232
+msgid "Si iniquitates"
+msgstr "Si iniquitates"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:232
+msgid "22nd Sunday after Trinity*"
+msgstr "22nd Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:233
+msgid "Silvester"
+msgstr "Silvester"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:233
+msgid "December 31"
+msgstr "December 31"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:234
+msgid "Simon and Jude"
+msgstr "Simon and Jude"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:234
+msgid "October 28"
+msgstr "October 28"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:235
+msgid "Sitientes"
+msgstr "Sitientes"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:235
+msgid "Saturday before Passion Sunday"
+msgstr "Saturday before Passion Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:236
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:93
+msgid "Stephen"
+msgstr "Stephen"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:236
+msgid "December 26"
+msgstr "December 26"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:237
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his invention"
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his invention"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:237
+msgid "August 3"
+msgstr "August 3"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:238
+msgid "Suscepius deus"
+msgstr "Suscepius deus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:238
+msgid "8th Sunday after Trinity*"
+msgstr "8th Sunday after Trinity*"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:239
+msgid "Swithun"
+msgstr "Swithun"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:240
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:242
+msgid "July 3"
+msgstr "July 3"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:241
+msgid "Thomas the Apostle"
+msgstr "Thomas the Apostle"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:241
+msgid "December 21"
+msgstr "December 21"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:243
+msgid "Thomas Becket"
+msgstr "Thomas Becket"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:243
+msgid "December 29"
+msgstr "December 29"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:244
+msgid "July 7"
+msgstr "July 7"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:245
+msgid "Timotheus and Symphorianus"
+msgstr "Timotheus and Symphorianus"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:245
+msgid "August 22"
+msgstr "August 22"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:246
+msgid "Transfiguration"
+msgstr "Transfiguration"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:246
+msgid "August 6"
+msgstr "August 6"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:247
+msgid "Urban"
+msgstr "Urban"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:248
+msgid "Valentine"
+msgstr "Valentine"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:248
+msgid "February 14"
+msgstr "February 14"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:249
+msgid "Vincent"
+msgstr "Vincent"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:249
+msgid "January 22"
+msgstr "January 22"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:250
+msgid "Viri Galilei"
+msgstr "Viri Galilei"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:250
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:150
+msgid "Ascension Day"
+msgstr "Ascension Day"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:251
+msgid "Vocem jucunditatis"
+msgstr "Vocem jucunditatis"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:251
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:146
+msgid "5th Sunday after Easter"
+msgstr "5th Sunday after Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:252
+msgid "Wilfrid"
+msgstr "Wilfrid"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:252
+msgid "January 19"
+msgstr "January 19"
 
 #: modules_v3/calendar_utilities/plugins/ecclesiastical.php:257
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:31
@@ -19293,11 +21352,156 @@ msgstr ""
 "of documents between 1588 and 1752 because England is a special case during "
 "these years.</p></p>"
 
-#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:285
+#. I18N: Acknowledgement of origin for a calendar utility
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:283
 #: modules_v3/calendar_utilities/plugins/old_new.php:55
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:53
-msgid "Help with English calendar"
-msgstr "Help with English calendar"
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:52
+#, php-format
+msgid ""
+"\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\tThis page is based on work done by Ian MacInnes <span class=\"note"
+"\">(imacinnes@albion.edu)</span> at his website <a href=\"http://people."
+"albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's "
+"English Calendar</b></a></p>\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\tHis site is intended to replace quick reference handbooks of dates "
+"for those interested in English history, literature, and genealogy. It is "
+"also accurate for European history outside of England, with the exception of "
+"the period 1582-1752. Students of Continental documents who wish to date "
+"documents from this period will need to follow this link\n"
+"\t\t\t\t</p>\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\t<i title=\"Help with English calendar\" onclick="
+"\"modalNotes('%1s', 'Help with English calendar')\">Help with English "
+"calendar</i>\n"
+"\t\t\t\t</p>\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\t<a title=\"Easter Formulae\" href=\"%2s\" target=\"_blank\">\n"
+"\t\t\t\t\t\t<i>The formulae for calculating Easter are derived from the 11th "
+"edition Encyclopedia Brittanica</i>\n"
+"\t\t\t\t\t</a>\n"
+"\t\t\t\t</p>\n"
+"\t\t\t"
+msgstr ""
+"\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\tThis page is based on work done by Ian MacInnes <span class=\"note"
+"\">(imacinnes@albion.edu)</span> at his website <a href=\"http://people."
+"albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's "
+"English Calendar</b></a></p>\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\tHis site is intended to replace quick reference handbooks of dates "
+"for those interested in English history, literature, and genealogy. It is "
+"also accurate for European history outside of England, with the exception of "
+"the period 1582-1752. Students of Continental documents who wish to date "
+"documents from this period will need to follow this link\n"
+"\t\t\t\t</p>\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\t<i title=\"Help with English calendar\" onclick="
+"\"modalNotes('%1s', 'Help with English calendar')\">Help with English "
+"calendar</i>\n"
+"\t\t\t\t</p>\n"
+"\t\t\t\t<p>\n"
+"\t\t\t\t\t<a title=\"Easter Formulae\" href=\"%2s\" target=\"_blank\">\n"
+"\t\t\t\t\t\t<i>The formulae for calculating Easter are derived from the 11th "
+"edition Encyclopedia Brittanica</i>\n"
+"\t\t\t\t\t</a>\n"
+"\t\t\t\t</p>\n"
+"\t\t\t"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:299
+msgid "Enter the year in question"
+msgstr "Enter the year in question"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:301
+msgid "Christian Year"
+msgstr "Christian Year"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:303
+msgid "The Ecclesiastical year begins on January 1."
+msgstr "The Ecclesiastical year begins on January 1."
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:305
+msgid "Calculate Holidays"
+msgstr "Calculate Holidays"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:306
+msgid "Easter"
+msgstr "Easter"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:309
+msgid "Septuagesima"
+msgstr "Septuagesima"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:315
+msgid "Ascension"
+msgstr "Ascension"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:318
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:154
+msgid "Pentecost"
+msgstr "Pentecost"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:321
+#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:158
+msgid "Trinity Sunday"
+msgstr "Trinity Sunday"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:329
+msgid "Full list of moveable and fixed holidays"
+msgstr "Full list of moveable and fixed holidays"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:331
+msgid ""
+"The \"octave\" of any holiday = eight days after the holiday- counting the "
+"holiday itself. Thus the octave of a Sunday is the following Sunday."
+msgstr ""
+"The \"octave\" of any holiday = eight days after the holiday- counting the "
+"holiday itself. Thus the octave of a Sunday is the following Sunday."
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:340
+msgid "After 1570, subtract one week."
+msgstr "After 1570, subtract one week."
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:415
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:459
+msgid "April"
+msgstr "April"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:418
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:422
+msgid "March"
+msgstr "March"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:438
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:453
+msgid "February"
+msgstr "February"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:456
+msgid "January"
+msgstr "January"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:464
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:473
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:480
+msgid "June"
+msgstr "June"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:466
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:471
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:478
+msgid "May"
+msgstr "May"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:487
+msgid "November"
+msgstr "November"
+
+#: modules_v3/calendar_utilities/plugins/ecclesiastical.php:489
+msgid "December"
+msgstr "December"
 
 #. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/old_new.php:23
@@ -19406,12 +21610,132 @@ msgstr ""
 "of documents between 1588 and 1752 because England is a special case during "
 "these years.</p></p>"
 
+#: modules_v3/calendar_utilities/plugins/old_new.php:51
+msgid ""
+"There are two parts to this page. The first converts from Old Style dates, "
+"typically found in English documents before 1752, to New Style dates.  The "
+"second converts New Style into Old Style.  To avoid confusion, the year is "
+"assumed to begin on January 1st. If you are dealing with a old style "
+"document dated before March 25th, be aware that the legal year did not "
+"change until then."
+msgstr ""
+"There are two parts to this page. The first converts from Old Style dates, "
+"typically found in English documents before 1752, to New Style dates.  The "
+"second converts New Style into Old Style.  To avoid confusion, the year is "
+"assumed to begin on January 1st. If you are dealing with a old style "
+"document dated before March 25th, be aware that the legal year did not "
+"change until then."
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:75
+msgid "Convert Old Style Dates to New Style Dates"
+msgstr "Convert Old Style Dates to New Style Dates"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:76
+msgid "Enter the Old Style date in question"
+msgstr "Enter the Old Style date in question"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:100
+msgid "Convert Old style to New Style"
+msgstr "Convert Old style to New Style"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:109
+msgid "Convert New Style Dates to Old Style Dates"
+msgstr "Convert New Style Dates to Old Style Dates"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:110
+msgid "Enter the New Style date in question"
+msgstr "Enter the New Style date in question"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:134
+msgid "Convert New style to Old Style"
+msgstr "Convert New style to Old Style"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:151
+#: modules_v3/calendar_utilities/plugins/old_new.php:263
+msgid "You must enter a year."
+msgstr "You must enter a year."
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:154
+#: modules_v3/calendar_utilities/plugins/old_new.php:268
+msgid "This site is valid only for dates later than 325 A.D."
+msgstr "This site is valid only for dates later than 325 A.D."
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:155
+msgid "Nobody used Old Style dates after 1752"
+msgstr "Nobody used Old Style dates after 1752"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:158
+#: modules_v3/calendar_utilities/plugins/old_new.php:277
+msgid ""
+"April has only 30 days. Proceed assuming April 31st is the same as May 1st?"
+msgstr ""
+"April has only 30 days. Proceed assuming April 31st is the same as May 1st?"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:159
+#: modules_v3/calendar_utilities/plugins/old_new.php:278
+msgid ""
+"June has only 30 days. Proceed assuming June 31st is the same as July 1st?"
+msgstr ""
+"June has only 30 days. Proceed assuming June 31st is the same as July 1st?"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:160
+#: modules_v3/calendar_utilities/plugins/old_new.php:279
+msgid ""
+"September has only 30 days. Proceed assuming September 31st is the same as "
+"August 1st?"
+msgstr ""
+"September has only 30 days. Proceed assuming September 31st is the same as "
+"August 1st?"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:161
+#: modules_v3/calendar_utilities/plugins/old_new.php:280
+msgid ""
+"November has only 30 days. Proceed assuming November 31st is the same as "
+"December 1st?"
+msgstr ""
+"November has only 30 days. Proceed assuming November 31st is the same as "
+"December 1st?"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:166
+#: modules_v3/calendar_utilities/plugins/old_new.php:285
+msgid " was not a leap year. Proceed assuming February 29th to mean March 1st?"
+msgstr ""
+" was not a leap year. Proceed assuming February 29th to mean March 1st?"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:169
+#: modules_v3/calendar_utilities/plugins/old_new.php:288
+msgid ""
+"February never has more than 29 days. Proceed, assuming you mean early March?"
+msgstr ""
+"February never has more than 29 days. Proceed, assuming you mean early March?"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:253
+msgid "Old Style corresponds to "
+msgstr "Old Style corresponds to "
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:253
+msgid "New Style"
+msgstr "New Style"
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:271
+msgid "Nobody used New Style dates before 1582."
+msgstr "Nobody used New Style dates before 1582."
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:327
+msgid "New Style corresponds to "
+msgstr "New Style corresponds to "
+
+#: modules_v3/calendar_utilities/plugins/old_new.php:327
+msgid "Old Style"
+msgstr "Old Style"
+
 #. I18N: Name of a plugin.
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:28
 msgid "Regnal Years"
 msgstr "Regnal Years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:48
+#. I18N: Help comments for a calendar utility
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:49
 msgid ""
 "<p>Dates based on regnal years refer to the year of the current monarch's "
 "reign and usually have the format \"year + monarch\" (e.g. \"4 Mary\"). This "
@@ -19425,55 +21749,187 @@ msgstr ""
 "instance, if you enter 6/11 Elizabeth I, Regnal year 1, you will get the "
 "year 1559 because June 1st in her first regnal year occurred in 1559.</p>"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:50
-msgid ""
-"<p>This page is based on work done by Ian MacInnes <span class=\"note"
-"\">(imacinnes@albion.edu)</span> at his website <a href=\"http://people."
-"albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's "
-"English Calendar</b></a></p>\n"
-"\t\t\t\t<p>\n"
-"\t\t\t\t\tHis site is intended to replace quick reference handbooks of dates "
-"for those interested in English history, literature, and genealogy. It is "
-"also accurate for European history outside of England, with the exception of "
-"the period 1582-1752. Students of Continental documents who wish to date "
-"documents from this period will need to follow this link"
-msgstr ""
-"<p>This page is based on work done by Ian MacInnes <span class=\"note"
-"\">(imacinnes@albion.edu)</span> at his website <a href=\"http://people."
-"albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's "
-"English Calendar</b></a></p>\n"
-"\t\t\t\t<p>\n"
-"\t\t\t\t\tHis site is intended to replace quick reference handbooks of dates "
-"for those interested in English history, literature, and genealogy. It is "
-"also accurate for European history outside of England, with the exception of "
-"the period 1582-1752. Students of Continental documents who wish to date "
-"documents from this period will need to follow this link"
-
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:55
-msgid ""
-"The formulae for calculating Easter are derived from the 11th edition "
-"Encyclopedia Brittanica."
-msgstr ""
-"The formulae for calculating Easter are derived from the 11th edition "
-"Encyclopedia Brittanica."
-
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:59
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:69
 msgid "Enter the month and day"
 msgstr "Enter the month and day"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:60
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:70
 msgid "Month number"
 msgstr "Month number"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:77
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:87
 msgid "Enter the Monarch and Regnal Year"
 msgstr "Enter the Monarch and Regnal Year"
 
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:88
+msgid "Monarch"
+msgstr "Monarch"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:90
+msgid "William I"
+msgstr "William I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:91
+msgid "William II"
+msgstr "William II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:92
+msgid "Henry I"
+msgstr "Henry I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:94
+msgid "Henry II"
+msgstr "Henry II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:95
+msgid "Richard I"
+msgstr "Richard I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:96
+msgid "John"
+msgstr "John"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:97
+msgid "Henry III"
+msgstr "Henry III"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:98
+msgid "Edward I"
+msgstr "Edward I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:99
+msgid "Edward II"
+msgstr "Edward II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:100
+msgid "Edward III"
+msgstr "Edward III"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:101
+msgid "Richard II"
+msgstr "Richard II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:102
+msgid "Henry IV"
+msgstr "Henry IV"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:103
+msgid "Henry V"
+msgstr "Henry V"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:104
+msgid "Henry VI"
+msgstr "Henry VI"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:105
+msgid "Edward IV"
+msgstr "Edward IV"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:106
+msgid "Edward V"
+msgstr "Edward V"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:107
+msgid "Richard III"
+msgstr "Richard III"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:108
+msgid "Henry VII"
+msgstr "Henry VII"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:109
+msgid "Henry VIII"
+msgstr "Henry VIII"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:110
+msgid "Edward VI"
+msgstr "Edward VI"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:111
+msgid "Jane"
+msgstr "Jane"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:112
+msgid "Mary"
+msgstr "Mary"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:113
+msgid "Elizabeth I"
+msgstr "Elizabeth I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:114
+msgid "James I"
+msgstr "James I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:115
+msgid "Charles I"
+msgstr "Charles I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:116
+msgid "Charles II"
+msgstr "Charles II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:117
+msgid "James II"
+msgstr "James II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:118
+msgid "William and Mary (William III)"
+msgstr "William and Mary (William III)"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:120
+msgid "George I"
+msgstr "George I"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:121
+msgid "George II"
+msgstr "George II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:122
+msgid "George III"
+msgstr "George III"
+
 #: modules_v3/calendar_utilities/plugins/regnal_years.php:123
+msgid "George IV"
+msgstr "George IV"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:124
+msgid "William IV"
+msgstr "William IV"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:125
+msgid "Victoria"
+msgstr "Victoria"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:126
+msgid "Edward VII"
+msgstr "Edward VII"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:127
+msgid "George V"
+msgstr "George V"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:128
+msgid "Edward VIII"
+msgstr "Edward VIII"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:129
+msgid "George VI"
+msgstr "George VI"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:130
+msgid "Elizabeth II"
+msgstr "Elizabeth II"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:133
 msgid "Regnal Year"
 msgstr "Regnal Year"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:130
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:139
+msgid "Calculate Year"
+msgstr "Calculate Year"
+
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:142
 msgid ""
 "Double years such as &quot;1324/5&quot; reflect Old Style dating (see note "
 "below)."
@@ -19481,7 +21937,7 @@ msgstr ""
 "Double years such as &quot;1324/5&quot; reflect Old Style dating (see note "
 "below)."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:133
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:145
 msgid ""
 "Keep in mind that a monarch's last regnal year is cut short by death or "
 "deposition and may not include all dates."
@@ -19489,7 +21945,7 @@ msgstr ""
 "Keep in mind that a monarch's last regnal year is cut short by death or "
 "deposition and may not include all dates."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:134
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:146
 msgid ""
 "Also, remember that while the so-called &quot;Christian year&quot; began on "
 "January 1, the legal year began on March 25. For example, January 1 in "
@@ -19505,7 +21961,7 @@ msgstr ""
 "to March 24, the convention is to note both years with a slash between them, "
 "e.g. &quot;1558/9.&quot;"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:135
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:147
 msgid ""
 "Remember also that from 1582 onward, English dates (Old Style) will not "
 "correspond with Continental dates."
@@ -19513,118 +21969,118 @@ msgstr ""
 "Remember also that from 1582 onward, English dates (Old Style) will not "
 "correspond with Continental dates."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:152
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:164
 msgid "You must enter a regnal year"
 msgstr "You must enter a regnal year"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:159
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:171
 msgid "William I only reigned for 21 years"
 msgstr "William I only reigned for 21 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:176
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:188
 msgid "William II only reigned for 13 years"
 msgstr "William II only reigned for 13 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:192
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:204
 msgid "Henry I only reigned for 36 years"
 msgstr "Henry I only reigned for 36 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:209
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:221
 msgid "Stephen only reigned for 19 years"
 msgstr "Stephen only reigned for 19 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:224
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:236
 msgid "Henry II only reigned for 35 years"
 msgstr "Henry II only reigned for 35 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:240
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:252
 msgid "Richard I only reigned for 10 years"
 msgstr "Richard I only reigned for 10 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:256
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:268
 msgid "Henry III only reigned for 57 years"
 msgstr "Henry III only reigned for 57 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:272
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:284
 msgid "Edward I only reigned for 35 years"
 msgstr "Edward I only reigned for 35 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:288
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:300
 msgid "Edward II only reigned for 20 years"
 msgstr "Edward II only reigned for 20 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:304
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:316
 msgid "Edward III only reigned for 51 years"
 msgstr "Edward III only reigned for 51 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:317
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:329
 msgid "Richard II only reigned for 23 years"
 msgstr "Richard II only reigned for 23 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:333
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:345
 msgid "Henry IV only reigned for 14 years"
 msgstr "Henry IV only reigned for 14 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:349
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:361
 msgid "Henry V only reigned for 10 years"
 msgstr "Henry V only reigned for 10 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:379
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:391
 msgid "Edward IV only reigned for 23 years"
 msgstr "Edward IV only reigned for 23 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:395
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:407
 msgid "Edward V only reigned for 1 year"
 msgstr "Edward V only reigned for 1 year"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:401
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:406
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:411
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:416
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:413
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:418
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:423
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:428
 msgid "Edward V's reign lasted from 9 April to 25 June"
 msgstr "Edward V's reign lasted from 9 April to 25 June"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:424
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:436
 msgid "Richard III only reigned for 3 years"
 msgstr "Richard III only reigned for 3 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:440
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:452
 msgid "Henry VII only reigned for 24 years"
 msgstr "Henry VII only reigned for 24 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:456
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:468
 msgid "Henry VIII only reigned for 38 years"
 msgstr "Henry VIII only reigned for 38 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:472
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:484
 msgid "Edward VI only reigned for 7 years"
 msgstr "Edward VI only reigned for 7 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:485
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:497
 msgid "Elizabeth I only reigned for 45 years"
 msgstr "Elizabeth I only reigned for 45 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:502
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:514
 msgid "James I had only 23 regnal years as King of England"
 msgstr "James I had only 23 regnal years as King of England"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:518
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:530
 msgid "Charles I only reigned for 24 years"
 msgstr "Charles I only reigned for 24 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:534
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:546
 msgid "Charles II only had 37 regnal years"
 msgstr "Charles II only had 37 regnal years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:547
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:559
 msgid "James II only reigned for 4 years"
 msgstr "James II only reigned for 4 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:562
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:574
 msgid "Mary only reigned for 4 years"
 msgstr "Mary only reigned for 4 years"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:565
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:577
 msgid ""
 "This site calculates the regnal years for Mary, ignoring Philip and his "
 "regnal years. The calculation of regnal years between July 9, 1553 and "
@@ -19634,55 +22090,55 @@ msgstr ""
 "regnal years. The calculation of regnal years between July 9, 1553 and "
 "November 17, 1558 is complicated by Mary's marriage to Philip."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:579
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:591
 msgid "William only reigned for 14 years (the first six with Mary)"
 msgstr "William only reigned for 14 years (the first six with Mary)"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:594
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:606
 msgid "Anne only reigned for 13 years."
 msgstr "Anne only reigned for 13 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:610
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:622
 msgid "George I only reigned for 13 years."
 msgstr "George I only reigned for 13 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:621
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:633
 msgid "George II only reigned for 34 years."
 msgstr "George II only reigned for 34 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:646
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:658
 msgid "George III only reigned for 60 years."
 msgstr "George III only reigned for 60 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:662
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:674
 msgid "George III only reigned for 11 years."
 msgstr "George III only reigned for 11 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:675
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:687
 msgid "William IV only reigned for 7 years."
 msgstr "William IV only reigned for 7 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:691
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:703
 msgid "Victoria only reigned for 64 years."
 msgstr "Victoria only reigned for 64 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:707
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:719
 msgid "Edward VII only reigned for 10 years."
 msgstr "Edward VII only reigned for 10 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:720
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:732
 msgid "George V only reigned for 26 years."
 msgstr "George V only reigned for 26 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:736
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:748
 msgid "George VI only reigned for 16 years."
 msgstr "George VI only reigned for 16 years."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:763
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:775
 msgid "Edward VIII only reigned from Jan 20 to December 11, 1936."
 msgstr "Edward VIII only reigned from Jan 20 to December 11, 1936."
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:768
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:780
 msgid ""
 "John was crowned on Ascension day in 1199. His regnal years run from one "
 "Ascension day to the next and are thus highly irregular. Use the "
@@ -19692,7 +22148,7 @@ msgstr ""
 "Ascension day to the next and are thus highly irregular. Use the "
 "Ecclesiastical calendar page to calculate Ascension day"
 
-#: modules_v3/calendar_utilities/plugins/regnal_years.php:773
+#: modules_v3/calendar_utilities/plugins/regnal_years.php:785
 msgid "Jane only ruled from July 6th to July 19th, 1553"
 msgstr "Jane only ruled from July 6th to July 19th, 1553"
 
@@ -19774,10 +22230,6 @@ msgstr "Holly 3 Kings"
 msgid "Birth of Christ"
 msgstr "Birth of Christ"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:96
-msgid "Shrove Tuesday"
-msgstr "Shrove Tuesday"
-
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:97
 msgid "Ash Wedensday"
 msgstr "Ash Wedensday"
@@ -19834,10 +22286,6 @@ msgstr "4th Sunday before Easter"
 msgid "3rd Sunday before Easter"
 msgstr "3rd Sunday before Easter"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:115
-msgid "2nd Sunday before Easter"
-msgstr "2nd Sunday before Easter"
-
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:116
 msgid "1st Sunday before Easter"
 msgstr "1st Sunday before Easter"
@@ -19852,14 +22300,6 @@ msgstr "Tamper Day"
 msgid "Restdays/week"
 msgstr "Restdays/week"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:127
-msgid "Good Friday"
-msgstr "Good Friday"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:128
-msgid "Maundy Thursday"
-msgstr "Maundy Thursday"
-
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:130
 msgid "Easter Monday"
 msgstr "Easter Monday"
@@ -19873,50 +22313,18 @@ msgstr "Easter Monday"
 msgid "Easter Sunday"
 msgstr "Easter Sunday"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:142
-msgid "1st Sunday after Easter"
-msgstr "1st Sunday after Easter"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:143
-msgid "2nd Sunday after Easter"
-msgstr "2nd Sunday after Easter"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:144
-msgid "3rd Sunday after Easter"
-msgstr "3rd Sunday after Easter"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:145
-msgid "4th Sunday after Easter"
-msgstr "4th Sunday after Easter"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:146
-msgid "5th Sunday after Easter"
-msgstr "5th Sunday after Easter"
-
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:147
 msgid "6th Sunday after Easter"
 msgstr "6th Sunday after Easter"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:150
-msgid "Ascension Day"
-msgstr "Ascension Day"
 
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:151
 msgid "Prior Day (Denmark)"
 msgstr "Prior Day (Denmark)"
 
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:154
-msgid "Pentecost"
-msgstr "Pentecost"
-
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:155
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:221
 msgid "2 Pentecost"
 msgstr "2 Pentecost"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:158
-msgid "Trinity Sunday"
-msgstr "Trinity Sunday"
 
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:159
 msgid "1st Sunday after Trinity Sunday"
@@ -20008,14 +22416,6 @@ msgstr "21st Sunday after Trinity Sunday"
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:185
 msgid "23rd Sunday after Trinity Sunday"
 msgstr "23rd Sunday after Trinity Sunday"
-
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:186
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:189
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:192
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:195
-#: modules_v3/calendar_utilities/plugins/yearly_calendar.php:198
-msgid "Advent Sunday"
-msgstr "Advent Sunday"
 
 #: modules_v3/calendar_utilities/plugins/yearly_calendar.php:188
 msgid "24th Sunday after Trinity Sunday"
@@ -21689,7 +24089,7 @@ msgid "at the age of %s"
 msgstr "at the age of %s"
 
 #: modules_v3/fancy_treeview/module.php:1213
-#: modules_v3/resource_individual/module.php:241
+#: modules_v3/resource_individual/module.php:242
 #: modules_v3/resource_related_indi/module.php:240 search.php:437
 #: search_advanced.php:212 modules_v3/bdm_report/report.bak:116
 #: modules_v3/family_group_report/report.bak:462
@@ -21699,7 +24099,7 @@ msgid "Father"
 msgstr "Father"
 
 #: modules_v3/fancy_treeview/module.php:1216
-#: modules_v3/resource_individual/module.php:252
+#: modules_v3/resource_individual/module.php:253
 #: modules_v3/resource_related_indi/module.php:241 search.php:474
 #: search_advanced.php:249 modules_v3/bdm_report/report.bak:118
 #: modules_v3/family_group_report/report.bak:469
@@ -22608,7 +25008,7 @@ msgstr "Advanced"
 
 #. I18N: Name of a module
 #: modules_v3/googlemap/module.php:253 modules_v3/list_places/module.php:36
-#: placelist.php:43 placelist.php:45
+#: placelist.php:42 placelist.php:44
 msgid "Place hierarchy"
 msgstr "Place hierarchy"
 
@@ -23316,7 +25716,7 @@ msgstr "A report of an individual’s ancestors, formatted as a tree."
 #: modules_v3/personal_facts/module.php:35
 #: modules_v3/random_media/module.php:299
 #: modules_v3/resource_fact/module.php:36
-#: modules_v3/resource_individual/module.php:168
+#: modules_v3/resource_individual/module.php:169
 #: modules_v3/individual_ext_report/report.bak:151
 msgid "Facts and events"
 msgstr "Facts and events"
@@ -23525,6 +25925,7 @@ msgstr "Show relationships"
 msgid "A report of recent and pending changes."
 msgstr "A report of recent and pending changes."
 
+#. I18N: help for resource facts and events module
 #: modules_v3/resource_changes/module.php:181
 msgid ""
 "View a list of data changes to the current family tree  based on <b>either</"
@@ -23567,6 +25968,7 @@ msgid ""
 msgstr ""
 "A report of individuals who have a selected fact or event in their record."
 
+#. I18N: help for resource facts and events module
 #: modules_v3/resource_fact/module.php:179
 msgid ""
 "The list of available facts and events are those set by the site "
@@ -23623,11 +26025,11 @@ msgstr "Show notes"
 msgid "Show media"
 msgstr "Show media"
 
-#: modules_v3/resource_individual/module.php:175
+#: modules_v3/resource_individual/module.php:176
 msgid "Information"
 msgstr "Information"
 
-#: modules_v3/resource_individual/module.php:284
+#: modules_v3/resource_individual/module.php:289
 msgid "Family with partner"
 msgstr "Family with partner"
 
@@ -24570,7 +26972,7 @@ msgstr "Oldest at top"
 msgid "Oldest at bottom"
 msgstr "Oldest at bottom"
 
-#: placelist.php:48
+#: placelist.php:47
 msgid "Place List"
 msgstr "Place List"
 
@@ -26233,6 +28635,19 @@ msgstr "Orientation"
 msgid "Pedigree Chart"
 msgstr "Pedigree Chart"
 
+#~ msgid "Welcome to this genealogy website"
+#~ msgstr "Welcome to this genealogy website"
+
+#~ msgid "Help with English calendar"
+#~ msgstr "Help with English calendar"
+
+#~ msgid ""
+#~ "The formulae for calculating Easter are derived from the 11th edition "
+#~ "Encyclopedia Brittanica."
+#~ msgstr ""
+#~ "The formulae for calculating Easter are derived from the 11th edition "
+#~ "Encyclopedia Brittanica."
+
 #~ msgid "Automatically expand list of events of close relatives"
 #~ msgstr "Automatically expand list of events of close relatives"
 
@@ -26743,9 +29158,6 @@ msgstr "Pedigree Chart"
 
 #~ msgid "Birth:"
 #~ msgstr "Birth:"
-
-#~ msgid "show the plot"
-#~ msgstr "show the plot"
 
 #~ msgid "Descendants of "
 #~ msgstr "Descendants of "
