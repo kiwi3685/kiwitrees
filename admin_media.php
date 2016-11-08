@@ -536,7 +536,7 @@ $table_id  = md5($files . $media_folder . $media_path . $subfolders);
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(WT_USER_IS_ADMIN)
 	->setPageTitle(WT_I18N::translate('Media'))
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->pageHeader()

@@ -162,7 +162,7 @@ function findFiles($path) {
 }
 
 $controller = new WT_Controller_Page();
-$controller->requireAdminLogin();
+$controller->restrictAccess(WT_USER_IS_ADMIN);
 
 if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 	Zend_Session::writeClose();

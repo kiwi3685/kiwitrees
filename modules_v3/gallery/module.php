@@ -442,7 +442,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Page;
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(WT_USER_IS_ADMIN)
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addInlineJavascript('jQuery("#gallery_tabs").tabs();');

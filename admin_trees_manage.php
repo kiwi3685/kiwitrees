@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(WT_USER_IS_ADMIN)
 	->setPageTitle(WT_I18N::translate('Manage family trees'));
 
 // Don’t allow the user to cancel the request.  We do not want to be left

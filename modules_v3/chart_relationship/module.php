@@ -105,7 +105,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 		require WT_ROOT.'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Page();
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(WT_USER_IS_ADMIN)
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addInlineJavascript('

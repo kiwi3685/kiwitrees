@@ -266,7 +266,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		$controller = new WT_Controller_Page;
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(WT_USER_IS_ADMIN)
 			->setPageTitle('Fancy Tree View')
 			->pageHeader()
 			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js');

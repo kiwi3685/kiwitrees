@@ -82,11 +82,11 @@ class WT_Controller_Page extends WT_Controller_Base {
 	 * @return $this
 	 */
 	public function restrictAccess($condition) {
-		if ($condition !== true) {
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if ($condition === false) {
 			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
 		}
-
 		return $this;
 	}
 

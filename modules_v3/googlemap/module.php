@@ -190,7 +190,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller = new WT_Controller_Page();
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(WT_USER_IS_ADMIN)
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
 			->pageHeader()
 			->addInlineJavascript('jQuery("#tabs").tabs();');
@@ -1452,7 +1452,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		$controller = new WT_Controller_Page();
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(WT_USER_IS_ADMIN)
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
 			->pageHeader();
 

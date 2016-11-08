@@ -37,7 +37,7 @@ if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
 $controller = new WT_Controller_Page();
 $controller
-		->requireAdminLogin()
+		->restrictAccess(WT_USER_IS_ADMIN)
 		->setPageTitle(WT_I18N::translate('Geographic data'))
 		->pageHeader();
 

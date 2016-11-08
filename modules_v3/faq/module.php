@@ -376,7 +376,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 
 		$controller = new WT_Controller_Page();
 		$controller
-			->requireAdminLogin()
+			->restrictAccess(WT_USER_IS_ADMIN)
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addInlineJavascript('jQuery("#faq_tabs").tabs();');

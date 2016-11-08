@@ -27,7 +27,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(WT_USER_IS_ADMIN)
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addExternalJavascript(WT_JQUERY_JEDITABLE_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));
@@ -289,9 +289,9 @@ WT_DB::exec(
 	<table id="site_access_rules" style="width:100%;">
 		<thead>
 			<tr>
-				<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('Start IP address'); ?></th>
+				<th><?php echo /* I18N: [...] of a range of addresses */ WT_I18N::translate('Start IP address'); ?></th>
 				<th>-</th>
-				<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('End IP address'); ?></th>
+				<th><?php echo /* I18N: [...] of a range of addresses */ WT_I18N::translate('End IP address'); ?></th>
 				<th>-</th>
 				<th><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent_string */ WT_I18N::translate('User-agent string'); ?></th>
 				<th><?php echo /* I18N: noun */ WT_I18N::translate('Rule'); ?></th>

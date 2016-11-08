@@ -61,7 +61,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		case 'admin_config':
 			$controller = new WT_Controller_Page;
 			$controller
-				->requireAdminLogin()
+				->restrictAccess(WT_USER_IS_ADMIN)
 				->setPageTitle($this->getTitle())
 				->pageHeader()
 				->addInlineJavascript('

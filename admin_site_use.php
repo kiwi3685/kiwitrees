@@ -31,7 +31,7 @@ require './includes/session.php';
 
 $controller = new WT_Controller_Page();
 $controller
-	->requireAdminLogin()
+	->restrictAccess(WT_USER_IS_ADMIN)
 	->setPageTitle(WT_I18N::translate('Server usage'))
 	->pageHeader();
 
