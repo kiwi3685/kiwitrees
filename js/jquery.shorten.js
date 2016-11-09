@@ -138,7 +138,7 @@
 
                 var html = '<div class="shortcontent">' + c +
                     '</div><div class="allcontent">' + content +
-                    '</div><span><a href="javascript://nop/" class="morelink">' + config.moreText + '</a></span>';
+                    '</div><span><a href="javascript://nop/" class="morelink" tabindex="-1">' + config.moreText + '</a></span>';
 
                 $this.html(html);
                 $this.find(".allcontent").hide(); // Hide all text
