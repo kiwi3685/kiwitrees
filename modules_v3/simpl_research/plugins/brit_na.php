@@ -18,11 +18,11 @@ class brit_na_plugin extends research_base_plugin {
 		return 'GBR';
 	}
 
-	static function create_link($fullname, $givn, $first, $prefix, $surn, $surname) {
-		return $link = 'http://www.britishnewspaperarchive.co.uk/search/results?basicsearch=%22' . $first . '%20' . $surname				. '%22';
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return $link = 'http://www.britishnewspaperarchive.co.uk/search/results/' . $birth_year . '-01-01/' . $death_year . '-12-31?basicsearch=%22' . $givn . '%20' . $surn . '%22&phrasesearch=' . $givn . '%20' . $surn . '&sortorder=score';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 

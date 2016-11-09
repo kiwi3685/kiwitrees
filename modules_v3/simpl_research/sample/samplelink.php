@@ -18,11 +18,11 @@ class sampllink_plugin extends research_base_plugin { // THIS NAME MUST MATCH EX
 		return 'NLD'; //3-LETTER INTERNATIONAL CODE FOR LOCATION THE LINK RELATES TO. USE 'INT' FOR INTERNATIONAL OR MULTI-COUNTRY DATA
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) { // SEE FAQ FOR EXPLANATION OF EACH PART
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) { // SEE FAQ FOR EXPLANATION OF EACH PART
 		return $link = 'http://militieregisters.nl/zoek#?focus%3Dd00%26p04%3D' . $givn . '%26p05%3D' . $prefix . '%26p06%3D' . $surname;
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false; // NOT NORMALLY USED. LEAVE AS false FOR SIMPLE LINKS
 	}
 

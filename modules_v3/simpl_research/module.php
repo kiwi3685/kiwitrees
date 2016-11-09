@@ -228,8 +228,13 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 													} else {
 														$birth_year = '';
 													}
-													$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year);
-													$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year);
+													if ($controller->record->getDeathYear()) {
+														$death_year	= $controller->record->getDeathYear();
+													} else {
+														$death_year = '';
+													}
+													$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year);
+													$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year);
 												}
 											}
 										}
