@@ -30,7 +30,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 // If we are already logged in, then go to the home page
 if (WT_USER_ID && WT_GED_ID) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;
 }
 
@@ -116,7 +116,7 @@ default:
 			}
 
 			// Redirect to the target URL
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$url);
 			// Explicitly write the session data before we exit,
 			// as it doesn’t always happen when using APC.
 			Zend_Session::writeClose();
@@ -226,7 +226,7 @@ case 'requestpw':
 		$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password.') . "\r\n\r\n";
 
 		if ($TEXT_DIRECTION == 'rtl') {
-			$mail_body .= "<a href=\"".WT_SERVER_NAME.WT_SCRIPT_PATH."\">".WT_SERVER_NAME.WT_SCRIPT_PATH."</a>";
+			$mail_body .= "<a href=\"". WT_SERVER_NAME . WT_SCRIPT_PATH."\">". WT_SERVER_NAME . WT_SCRIPT_PATH."</a>";
 		} else {
 			$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH;
 		}
@@ -248,7 +248,7 @@ case 'requestpw':
 
 case 'register':
 	if (!WT_Site::preference('USE_REGISTRATION_MODULE')) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 		exit;
 	}
 
@@ -430,7 +430,7 @@ case 'register':
 
 case 'userverify':
 	if (!WT_Site::preference('USE_REGISTRATION_MODULE')) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 		exit;
 	}
 
@@ -466,7 +466,7 @@ case 'userverify':
 
 case 'verify_hash':
 	if (!WT_Site::preference('USE_REGISTRATION_MODULE')) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 		exit;
 	}
 	AddToLog('User attempted to verify hashcode: '.$user_name, 'auth');

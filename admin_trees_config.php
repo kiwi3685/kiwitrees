@@ -91,7 +91,7 @@ case 'delete':
 		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
 	)->execute(array(WT_Filter::post('default_resn_id')));
 	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '#privacy');
 	exit;
 case 'add':
 	if (!WT_Filter::checkCsrf()) {
@@ -113,7 +113,7 @@ case 'add':
 		)->execute(array(WT_GED_ID, WT_Filter::post('xref'), WT_Filter::post('tag_type'), WT_Filter::post('resn')));
 	}
 	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '#privacy');
 	exit;
 case 'update':
 	if (!WT_Filter::checkCsrf()) {

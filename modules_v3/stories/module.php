@@ -414,7 +414,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				exit;
 			}
 		} else {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 			exit;
 		}
 	}
@@ -641,7 +641,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			)->execute(array($block_id));
 
 		} else {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 			exit;
 		}
 	}
@@ -654,9 +654,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$xref = explode(",", get_block_setting($block_id, 'xref'));
 			$xref[] = $new_xref;
 			set_block_setting($block_id, 'xref', implode(',', $xref));
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH. 'individual.php?pid='. $new_xref);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH. 'individual.php?pid='. $new_xref);
 		} else {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 			exit;
 		}
 	}
@@ -666,7 +666,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		$xref = explode(",", get_block_setting($block_id, 'xref'));
 		$xref = array_diff($xref, array($indi));
 		set_block_setting($block_id, 'xref', implode(',', $xref));
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH. 'module.php?mod='. $this->getName(). '&mod_action=admin_edit&block_id='. $block_id);
+		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH. 'module.php?mod='. $this->getName(). '&mod_action=admin_edit&block_id='. $block_id);
 	}
 
 	// Implement WT_Module_Menu

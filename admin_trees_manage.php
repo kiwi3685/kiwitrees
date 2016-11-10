@@ -90,7 +90,7 @@ case 'delete':
 	if (WT_Filter::checkCsrf() && $gedcom_id) {
 		WT_Tree::delete($gedcom_id);
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 	break;
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
@@ -114,7 +114,7 @@ case 'replace_upload':
 			}
 		}
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
 	exit;
 case 'replace_import':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
@@ -129,7 +129,7 @@ case 'replace_import':
 		set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES', WT_Filter::postBool('NEW_WORD_WRAPPED_NOTES'));
 
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
 	exit;
 }
 

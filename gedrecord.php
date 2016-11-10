@@ -37,7 +37,7 @@ if (
 	$obj instanceof WT_Note ||
 	$obj instanceof WT_Media
 ) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$obj->getRawUrl());
+	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$obj->getRawUrl());
 	exit;
 } elseif (!$obj || !$obj->canDisplayDetails()) {
 	$controller->pageHeader();

@@ -150,7 +150,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		// Maintenance mode
 		// Note: $maintenance is 'true' on login.php so admin can always log in.
 		if (WT_Site::preference('MAINTENANCE') == 1 && !WT_USER_IS_ADMIN && $maintenance != true) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-maintenance.php');
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-maintenance.php');
 			exit;
 		}
 

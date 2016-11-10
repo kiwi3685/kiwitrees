@@ -65,6 +65,7 @@ define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.min.js');	    
 define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');		    // 1.5pre	Updatd 2010
 define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
 define('WT_JQUERY_SHORTEN',			WT_STATIC_URL . 'js/jquery.shorten.js');
+define('PASSWORDSCHECK',			WT_STATIC_URL . 'js/passwordscheck.js');			// Installed 09-11-2016
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -232,17 +233,17 @@ if (file_exists(WT_ROOT.'data/config.ini.php')) {
 	$dbconfig = parse_ini_file(WT_ROOT.'data/config.ini.php');
 	// Invalid/unreadable config file?
 	if (!is_array($dbconfig)) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-unavailable.php');
+		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-unavailable.php');
 		exit;
 	}
 	// Down for maintenance?
 	if (file_exists(WT_ROOT.'data/offline.txt')) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-offline.php');
+		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-offline.php');
 		exit;
 	}
 } else {
 	// No config file. Set one up.
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'setup.php');
+	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'setup.php');
 	exit;
 }
 
@@ -264,7 +265,7 @@ try {
 		die($ex);
 	}
 } catch (PDOException $ex) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-unavailable.php');
+	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-unavailable.php');
 	exit;
 }
 
@@ -506,7 +507,7 @@ require WT_ROOT.'includes/functions/functions_privacy.php';
 // If we were logged in, but our account has been deleted, log out.
 if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 	userLogout(WT_USER_ID);
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 	exit;
 }
 
@@ -521,7 +522,7 @@ if (WT_Site::preference('LOGIN_URL')) {
 if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php') {
 	if (!$WT_TREE || !WT_IMPORTED) {
 		if (WT_USER_IS_ADMIN) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'admin_trees_manage.php');
 		} else {
 			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(WT_SCRIPT_NAME.'?'.$QUERY_STRING));
 		}

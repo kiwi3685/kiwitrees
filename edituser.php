@@ -69,7 +69,7 @@ if ($form_action && WT_Filter::checkCsrf()) {
 				set_user_setting(WT_USER_ID, 'visibleonline',  $form_visible_online);
 				$WT_TREE->userPreference(WT_USER_ID, 'rootid', $form_rootid);
 			}
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 		break;
 
 		case 'delete':
@@ -78,7 +78,7 @@ if ($form_action && WT_Filter::checkCsrf()) {
 				userLogout(WT_USER_ID);
 				delete_user(WT_USER_ID);
 			}
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH);
 		break;
 	}
 

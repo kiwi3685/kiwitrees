@@ -216,16 +216,16 @@ class WT_Controller_Clippings {
 					case 'INDI':
 						$filetext .= $record."\n";
 						$filetext .= "1 SOUR @KIWITREES@\n";
-						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
+						$filetext .= "2 PAGE ". WT_SERVER_NAME . WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
 					case 'FAM':
 						$filetext .= $record."\n";
 						$filetext .= "1 SOUR @KIWITREES@\n";
-						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
+						$filetext .= "2 PAGE ". WT_SERVER_NAME . WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
 					case 'SOUR':
 						$filetext .= $record."\n";
-						$filetext .= "1 NOTE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
+						$filetext .= "1 NOTE ". WT_SERVER_NAME . WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
 					default:
 						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
@@ -248,7 +248,7 @@ class WT_Controller_Clippings {
 			if ($this->IncludeMedia == "yes") {
 				$this->media_list = $media;
 			}
-			$filetext .= "0 @KIWITREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
+			$filetext .= "0 @KIWITREES@ SOUR\n1 TITL ". WT_SERVER_NAME . WT_SCRIPT_PATH."\n";
 			if ($user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
 				$filetext .= "1 AUTH " . getUserFullName($user_id) . "\n";
 			}

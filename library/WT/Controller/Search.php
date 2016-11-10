@@ -436,7 +436,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		if (isset ($this->query)) {
 			$record = WT_GedcomRecord::getInstance($this->query);
 			if ($record && $record->canDisplayDetails()) {
-				header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$record->getRawUrl());
+				header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$record->getRawUrl());
 				exit;
 			}
 		}
@@ -514,7 +514,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$indi = $this->myindilist[0];
 				if ($indi->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
+					header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$indi->getRawUrl());
 					exit;
 				}
 			}
@@ -522,7 +522,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$fam = $this->myfamlist[0];
 				if ($fam->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$fam->getRawUrl());
+					header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$fam->getRawUrl());
 					exit;
 				}
 			}
@@ -530,7 +530,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$sour = $this->mysourcelist[0];
 				if ($sour->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$sour->getRawUrl());
+					header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$sour->getRawUrl());
 					exit;
 				}
 			}
@@ -538,7 +538,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$note = $this->mynotelist[0];
 				if ($note->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$note->getRawUrl());
+					header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$note->getRawUrl());
 					exit;
 				}
 			}
@@ -547,7 +547,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$person = WT_Person::getInstance($story['xref']);
 				if ($person->canDisplayName()) {
 					Zend_Session::writeClose();
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH. $person->getRawUrl() . '#stories');
+					header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH. $person->getRawUrl() . '#stories');
 					exit;
 				}
 			}
@@ -726,7 +726,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist) == 1 && $this->action!="replace") {
 			reset($this->myindilist);
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$indi->getRawUrl());
 			exit;
 		}
 		usort($this->myindilist, array('WT_GedcomRecord', 'Compare'));

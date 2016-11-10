@@ -222,7 +222,7 @@ $controller
 		jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 		jQuery("#site_access_rules").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_rules",
+			"sAjaxSource": "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_rules",
 			"bServerSide":true,
 			'.WT_I18N::datatablesI18N().',
 			"bJQueryUI": true,
@@ -251,7 +251,7 @@ $controller
 		});
 		jQuery("#unknown_site_visitors").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_unknown",
+			"sAjaxSource": "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_unknown",
 			"bServerSide":true,
 			'.WT_I18N::datatablesI18N().',
 			"bJQueryUI": true,
