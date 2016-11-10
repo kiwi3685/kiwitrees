@@ -570,7 +570,8 @@ div.config_options .input_group {
 }
 
 div.config_options .input_group input[type="text"],
-div.config_options .input_group input[type="password"] {
+div.config_options .input_group input[type="password"],
+div.config_options .input_group input[type="email"] {
 	max-width: 90%;
 	width: 60%;
 }
@@ -785,31 +786,77 @@ textarea[name="WELCOME_TEXT_AUTH_MODE_4"] {
 
 /* USER LIST */
 #list { width:100%}
-#list .editable {background:none;border:none;}
-#list .editable form button {margin: auto 10px;}
+#list a,
+#list div {
+	color: #3383bb;
+}
+#list a:hover,
+#list div:hover {
+	color: #ff0000;
+}
 #list img {padding-left:15px; width:25px; vertical-align:middle;}
 [dir=rtl] #list img {padding-right:15px;}
-#access img {width:11px;}
 #list h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
 #list hr {width: 100%;}
-#list dl {float:left;margin:0 0 70px 20px;line-height:21px;}
-#list dt {clear:left; float:left; min-width:350px; margin:0; padding:5px; font-weight:bold;}
-#list dd {margin-left:350px; min-width:460px; padding:5px;}
 #list span[id$="-comment"] {display: block; min-width: 100%;}
-
-[dir=rtl] #list dl {float:right;margin:0 20px 0 0;}
-[dir=rtl] #list dt {clear:right; float:right;}
-[dir=rtl] #list dd {margin-right:350px;}
-#access {float:left; margin-left:20px;}
-[dir=rtl] #access {float:right; margin-right:20px;}
-#access table {border-collapse: initial; margin-bottom:20px;}
-#access th {background-color:#dcdcdc; text-align:center; padding:0; font-size:100%; min-width:150px;}
-#access td {background-color:#eceadf; padding:0 5px;width:auto;}
+#access {padding: 8px;}
+#access table {border-collapse: initial; margin:20px;}
+#access th {text-align:center; padding:5px 8px; font-size:100%;}
+#access td {padding:5px 8px;}
+#access td:first-child {white-space: nowrap;}
 #access td+td+td+td {text-align:center;}
 td.details {padding: 10px;}
 td.details:hover {color:#000;}
 tr.odd  + tr td.details {background-color:#fff;}
 tr.even + tr td.details {background-color:#ddd;}
+
+#access h4 {
+	font-size: 14px;
+	font-weight: 900;
+}
+#access div.help_label {
+	display: inline-block;
+	padding: 5px;
+	width: 99%;
+}
+#access div.help_label label {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 900;
+	width: 15%;
+	vertical-align: top;
+}
+#access div.help_label label + span {
+	display: inline-block;
+	width: 80%;
+}
+#access .access_table {
+	display: block;
+	padding: 0;
+}
+#result {
+	color: #FFF;
+	display: inline-block;
+	font-weight: bold;
+	padding: 6px 8px 7px;
+	text-align: center;
+	width: 60px;
+}
+
+#result.short {
+	background-color: #FF0000;
+	padding: 8px 8px 7px;}
+#result.weak {
+	background-color: #FFA500;
+	color: #FFF;
+	padding: 8px 8px 7px;}
+#result.good {
+	background-color: #2D98F3;
+	padding: 8px 8px 7px;}
+#result.strong {
+	background-color: #008000;
+	padding: 8px 8px 7px;
+}
 
 #main_select,#available_select,#right_select {min-width:150px; min-height:128px;}
 #change_blocks .topbottombar {text-align:center;}
@@ -820,6 +867,14 @@ tr.even + tr td.details {background-color:#ddd;}
 
 
 /* USER ADD & EDIT */
+#user_details .checkbox label {
+	width: 100%;
+	max-width: 50%;
+}
+#user_details textarea {
+	width: 100%;
+}
+
 table#adduser {width:100%;}
 #adduser th {text-align:left; padding:30px 0 1px 3px;font-size:105%;}
 [dir=rtl] #adduser th {text-align:right; padding:30px 3px 1px 0;}
@@ -1165,9 +1220,9 @@ table#story_table {width: 99%;}
 .ui-autocomplete a.ui-state-focus {color:#ff0000;}
 
 /* font-awesome icons */
-.icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; } /* fa-trash-o */
+.icon-delete			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-trash-o */
 .icon-help				{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color: #000; cursor:help; margin:0 5px; } /* fa-question-circle */
-.icon-mask				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.3em; cursor:help;} /* fa-reddit-square */
+.icon-mask				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-reddit-square */
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.5em; } /* fa-male */
 .icon-button_family 	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; } /* fa-users */
 .icon-open				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; display: table-cell; } /* fa-arrow-circle-down */

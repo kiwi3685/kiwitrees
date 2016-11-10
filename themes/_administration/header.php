@@ -195,8 +195,8 @@ if (WT_USER_IS_ADMIN) {
 echo '
 			<h3 id="user-admin"><i class="fa fa-users fa-fw"></i><span class="menu-name">', WT_I18N::translate('Users'), '</span></h3>
 			<div>
-				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')!="cleanup"&& safe_GET('action')!="createform" ? 'class="current" ' : ''), 'href="admin_users.php">', WT_I18N::translate('Manage users'), '</a></p>
-				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')=="createform" ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')!="cleanup"&& safe_GET('action')!="edit" ? 'class="current" ' : ''), 'href="admin_users.php">', WT_I18N::translate('Manage users'), '</a></p>
+				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')=="edit" && safe_GET('user_id')==0  ? 'class="current" ' : ''), 'href="admin_users.php?action=edit">', WT_I18N::translate('Add a new user'), '</a></p>
 				<p><a ', (WT_SCRIPT_NAME == "admin_users_bulk.php" ? 'class="current" ' : ''), 'href="admin_users_bulk.php">', WT_I18N::translate('Send broadcast messages'), '</a>
 				<p><a ', (WT_SCRIPT_NAME == "admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">', WT_I18N::translate('Delete inactive users'), '</a></p>
 			</div>

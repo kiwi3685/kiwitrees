@@ -31,41 +31,12 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
+
 // Create an edit control for inline editing using jeditable
 function edit_field_inline($name, $value, $controller=null) {
 	$html='<span class="editable" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
 	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {tooltip: " ' . WT_I18N::translate('click to edit') . '", submitdata: {csrf: WT_CSRF_TOKEN}, submit:"&nbsp;&nbsp;' . /* I18N: button label */ WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'"});';
 
-	if ($controller) {
-		$controller->addInlineJavascript($js);
-		return $html;
-	} else {
-		// For AJAX callbacks
-		return $html . '<script>' . $js . '</script>';
-	}
-}
-
-function edit_field_inline_autocomplete($name, $value, $parameters = null, $controller=null) {
-	$html='<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>';
-	$url = 'autocomplete.php?';
-	foreach($parameters as $key => $value){
-		$url .= $key.'='.$value.'&';
-	}
-	$js='jQuery("#' . $name . '")
-		.editable(
-			"' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php",
-			{
-				tooltip: " ' . WT_I18N::translate('click to edit') . '",
-				submitdata: {csrf: WT_CSRF_TOKEN},
-				submit:	"&nbsp;&nbsp;' . /* I18N: button label */ WT_I18N::translate('save') . '&nbsp;&nbsp;",
-				style:"inherit",
-				placeholder: "'.WT_I18N::translate('click to edit').'",
-				type: "autocomplete",
-				autocomplete : {
-           			url : "'.$url.'"
-        		}
-			}
-		);';
 	if ($controller) {
 		$controller->addInlineJavascript($js);
 		return $html;

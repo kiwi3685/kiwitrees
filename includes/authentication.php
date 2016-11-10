@@ -187,9 +187,12 @@ function setUserEmail($user_id, $email) {
 	return WT_DB::prepare("UPDATE `##user` SET email=? WHERE user_id=?")->execute(array($email, $user_id));
 }
 
+// set user_name for a user
+function SetUserName($user_id, $username) {
+	return WT_DB::prepare("UPDATE `##user` SET user_name = ? WHERE user_id = ?")->execute(array($username, $user_id));
+}
+
 // add a message into the log-file
-// Note that while transfering data from PhpGedView to WT, we delete the WT users and
-// replace with PhpGedView users.  Hence the current user_id is not always available.
 function AddToLog($log_message, $log_type = 'error') {
 	global $WT_REQUEST;
 	WT_DB::prepare(
