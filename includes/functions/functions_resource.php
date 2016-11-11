@@ -533,7 +533,7 @@ function marriageDetails($family) {
 			$details .= $tmp->getShortName();
 		}
 		echo WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
-	} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
+	} else if (get_sub_record(1, "1 _NMR", find_family_record($family, WT_GED_ID))) {
 		$husb = $family->getHusband();
 		$wife = $family->getWife();
 		if (empty($wife) && !empty($husb)) {
