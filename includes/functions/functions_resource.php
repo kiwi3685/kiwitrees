@@ -214,9 +214,14 @@ function resource_sources(WT_Event $fact, $level, $source_num) {
 		$source	= WT_Source::getInstance($sid);
 		if ($source) {
 			// AUTH
-			$auth = get_gedcom_value('AUTH', '1', $source->getGedcomRecord());
+			$auth = htmlspecialchars($source->getAuth());
 			if (!empty($auth)) {
-				$details .= $auth . ', ';
+				if (stripos($auth, "@") == 0 && substr($auth, -1) == '@') {
+					$pid = str_replace('@', '', $auth);
+					$details .= '<i>' . WT_Person::getInstance($pid)->getFullName() . '</i>, ';
+				} else {
+					$details .= $auth . ', ';
+				}
 			}
 			// TITLE
 			$details .= '<u>' . $source->getFullName() . '</u>';
