@@ -91,19 +91,19 @@ case 'delete':
 		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
 	)->execute(array(WT_Filter::post('default_resn_id')));
 	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '#privacy');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?view=privacy');
 	exit;
 case 'add':
 	if (!WT_Filter::checkCsrf()) {
 		break;
 	}
 	if ((WT_Filter::post('xref') || WT_Filter::post('tag_type')) && WT_Filter::post('resn')) {
-		if (WT_Filter::post('xref')=='') {
+		if (WT_Filter::post('xref') === '') {
 			WT_DB::prepare(
 				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
 			)->execute(array(WT_GED_ID, WT_Filter::post('tag_type')));
 		}
-		if (WT_Filter::post('tag_type')=='') {
+		if (WT_Filter::post('tag_type') === '') {
 			WT_DB::prepare(
 				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
 			)->execute(array(WT_GED_ID, WT_Filter::post('xref')));
@@ -113,7 +113,7 @@ case 'add':
 		)->execute(array(WT_GED_ID, WT_Filter::post('xref'), WT_Filter::post('tag_type'), WT_Filter::post('resn')));
 	}
 	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '#privacy');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?view=privacy');
 	exit;
 case 'update':
 	if (!WT_Filter::checkCsrf()) {
@@ -653,7 +653,7 @@ $controller
 									<td><?php echo select_edit_control('tag_type', $all_tags, '', null, null); ?></td>
 									<td><?php echo select_edit_control('resn', $PRIVACY_CONSTANTS, null, 'privacy', null); ?></td>
 									<td>
-										<button class="btn btn-primary" type="submit" onClick="document.configform.elements[\'action\'].value=\'add\';document.configform.submit();">
+										<button class="btn btn-primary" type="submit" onClick="document.configform.elements['action'].value='add';document.configform.submit();">
 											<i class="fa fa-plus"></i>
 											<?php echo WT_I18N::translate('add'); ?>
 										</button>
@@ -697,7 +697,7 @@ $controller
 											<?php echo $PRIVACY_CONSTANTS[$row->resn]; ?>
 										</td>
 										<td>
-											<button class="btn btn-primary" type="submit" onClick="document.configform.elements[\'action\'].value=\'delete\';document.configform.elements[\'default_resn_id\'].value=\''.$row->default_resn_id.'\';document.configform.submit();">
+											<button class="btn btn-primary" type="submit" onClick="document.configform.elements['action'].value='delete';if (confirm('<?php echo htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Gedcom_Tag::getLabel($row->tag_type))); ?>')) { document.configform.elements['default_resn_id'].value='<?php echo $row->default_resn_id; ?>';document.configform.submit();}">
 												<i class="fa fa-trash-o"></i>
 												<?php echo WT_I18N::translate('delete'); ?>
 											</button>
