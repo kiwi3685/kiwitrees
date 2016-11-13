@@ -393,7 +393,7 @@ $controller
 				</div>
 				<h3 class="accordion"><?php echo WT_I18N::translate('Languages'); ?></h3>
 				<div id="lang">
-					<h4><?php echo WT_I18N::translate('Select the languages your site will use'); ?></h3>
+					<h4><?php echo WT_I18N::translate('Select the languages your site will use'); ?></h4>
 					<h5>
 						<?php echo WT_I18N::translate('Select all'); ?>
 						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
