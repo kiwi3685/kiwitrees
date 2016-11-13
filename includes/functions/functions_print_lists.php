@@ -1048,7 +1048,7 @@ function format_sour_table($datalist) {
 
 	// Count the number of linked records.  These numbers include private records.
 	// It is not good to bypass privacy, but many servers do not have the resources
-	// to process privacy for every record in the tree code courtesy Greg Roach, webtrees.net
+	// to process privacy for every record in the tree, code courtesy Greg Roach, webtrees.net
 	$count_individuals = WT_DB::prepare(
 		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'SOUR' GROUP BY l_to"
 	)->fetchAssoc();
@@ -1088,20 +1088,20 @@ function format_sour_table($datalist) {
 				processing: true,
 				retrieve: true,
 				columns: [
-					/*  0 title		*/ {"iDataSort": 1},
-					/*  1 TITL		*/ {"bVisible": false, "sType": "unicode"},
-					/*  2 author 	*/ {"sType": "unicode"},
-					/*  3 #indi  	*/ {"iDataSort": 4, "sClass": "center"},
-					/*  4 #INDI  	*/ {"sType": "numeric", "bVisible": false},
-					/*  5 #fam   	*/ {"iDataSort": 6, "sClass": "center"},
-					/*  6 #FAM   	*/ {"sType": "numeric", "bVisible": false},
-					/*  7 #obje  	*/ {"iDataSort": 8, "sClass": "center"},
-					/*  8 #OBJE		*/ {"sType": "numeric", "bVisible": false},
-					/*  9 #note		*/ {"iDataSort": 10, "sClass": "center"},
-					/* 10 #NOTE		*/ {"sType": "numeric", "bVisible": false},
-					/* 11 CHAN      */ {"iDataSort": 12, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 12 CHAN_sort */ {"bVisible": false},
-					/* 13 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', "bSortable": false, "sClass": "center"}
+					/*  0 title     */ { dataSort: 1 },
+					/*  1 TITL      */ { visible: false, type: "unicode" },
+					/*  2 author    */ { type: "unicode" },
+					/*  3 #indi     */ { dataSort: 4, class: "center" },
+					/*  4 #INDI     */ { type: "num", visible: false },
+					/*  5 #fam      */ { dataSort: 6, class: "center" },
+					/*  6 #FAM      */ { type: "num", visible: false },
+					/*  7 #obje     */ { dataSort: 8, class: "center" },
+					/*  8 #OBJE     */ { type: "num", visible: false },
+					/*  9 #note     */ { dataSort: 10, class: "center" },
+					/* 10 #NOTE     */ { type: "num", visible: false },
+					/* 11 CHAN      */ { dataSort: 12, visible: ' . ($SHOW_LAST_CHANGE?'true':'false') . ' },
+					/* 12 CHAN_sort */ { visible: false },
+					/* 13 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers",
@@ -1222,6 +1222,23 @@ function format_sour_table($datalist) {
 // print a table of shared notes
 function format_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
+
+	// Count the number of linked records.  These numbers include private records.
+	// It is not good to bypass privacy, but many servers do not have the resources
+	// to process privacy for every record in the tree, code courtesy Greg Roach, webtrees.net
+	$count_individuals = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'NOTE' GROUP BY l_to"
+	)->fetchAssoc();
+	$count_families = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'NOTE' GROUP BY l_to"
+	)->fetchAssoc();
+	$count_media = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'NOTE' GROUP BY l_to"
+	)->fetchAssoc();
+	$count_sources = WT_DB::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'NOTE' GROUP BY l_to"
+	)->fetchAssoc();
+
 	$html = '';
 
 	if (WT_SCRIPT_NAME == 'search.php') {
@@ -1248,18 +1265,18 @@ function format_note_table($datalist) {
 			processing: true,
 			retrieve: true,
 			columns: [
-				/*  0 title  	*/ {"sType": "unicode"},
-				/*  1 #indi  	*/ {"iDataSort": 2, "sClass": "center"},
-				/*  2 #INDI  	*/ {"sType": "numeric", "bVisible": false},
-				/*  3 #fam   	*/ {"iDataSort": 4, "sClass": "center"},
-				/*  4 #FAM   	*/ {"sType": "numeric", "bVisible": false},
-				/*  5 #obje  	*/ {"iDataSort": 6, "sClass": "center"},
-				/*  6 #OBJE  	*/ {"sType": "numeric", "bVisible": false},
-				/*  7 #sour  	*/ {"iDataSort": 8, "sClass": "center"},
-				/*  8 #SOUR  	*/ {"sType": "numeric", "bVisible": false},
-				/*  9 CHAN      */ {"iDataSort": 10, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 10 CHAN_sort */ {"bVisible": false},
-				/* 11 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
+				/*  0 title     */ { type: "unicode" },
+				/*  1 #indi     */ { dataSort: 2, class: "center" },
+				/*  2 #INDI     */ { type: "num", visible: false },
+				/*  3 #fam      */ { dataSort: 4, class: "center" },
+				/*  4 #FAM      */ { type: "num", visible: false },
+				/*  5 #obje     */ { dataSort: 6, class: "center" },
+				/*  6 #OBJE     */ { type: "num", visible: false },
+				/*  7 #sour     */ { dataSort: 8, class: "center" },
+				/*  8 #SOUR     */ { type: "num", visible: false },
+				/*  9 CHAN      */ { dataSort: 10, visible: ' . ($SHOW_LAST_CHANGE?'true':'false') . ' },
+				/* 10 CHAN_sort */ { visible: false },
+				/* 11 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN?'true':'false') . ', sortable: false }
 			],
 			displayLength: 20,
 			pagingType: "full_numbers",
@@ -1293,24 +1310,45 @@ function format_note_table($datalist) {
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
-	foreach ($datalist as $note) {
-		if (!$note->canDisplayDetails()) {
+	$n=0;
+	foreach ($datalist as $key=>$value) {
+		if (is_object($value)) { // Array of objects
+			$note=$value;
+		} elseif (!is_array($value)) { // Array of IDs
+			$note=WT_Note::getInstance($key); // from placelist
+			if (is_null($note)) {
+				$note=WT_Note::getInstance($value);
+			}
+			unset($value);
+		} else { // Array of search results
+			$gid='';
+			if (isset($value['gid'])) {
+				$gid=$value['gid'];
+			}
+			if (isset($value['gedcom'])) {
+				$note=new WT_Note($value['gedcom']);
+			} else {
+				$note=WT_Note::getInstance($gid);
+			}
+		}
+		if (!$note || !$note->canDisplayDetails()) {
 			continue;
 		}
 		$html .= '<tr>';
 		//-- Shared Note name
 		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>';
+		$key = $note->getXref() . '@' . WT_GED_ID;
 		//-- Linked INDIs
-		$num = count($note->fetchLinkedIndividuals());
+		$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
-		$num = count($note->fetchLinkedfamilies());
+		$num = array_key_exists($key, $count_families) ? $count_families[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
-		$num = count($note->fetchLinkedMedia());
+		$num = array_key_exists($key, $count_media) ? $count_media[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked SOURs
-		$num = count($note->fetchLinkedSources());
+		$num = array_key_exists($key, $count_sources) ? $count_sources[$key] : 0;
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
