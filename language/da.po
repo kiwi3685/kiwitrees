@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2016-10-30 17:12+1300\n"
-"PO-Revision-Date: 2016-11-07 10:27+1300\n"
+"PO-Revision-Date: 2016-11-14 09:57+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Danish (http://www.transifex.com/kiwitrees/kiwitrees/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -991,7 +991,7 @@ msgstr "Vis aftalen om acceptabel brug på siden «Ansøg om brugerkonto»"
 
 #: admin_site_config.php:389
 msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>"
-msgstr "Når indstillet til <b>Ja</b> så vil den følgende besked vise sig når der ansøges om en ny brugerkonto. page:<div class=\"list_value_wrap\"><div class=\"largeError\">Bemærk:</div><div class=\"error\">Ved at udfylde og sende denne formular, accepterer du:<ul><li>at beskytte privatlivets fred for de nulevende personer, der findes på vores hjemmeside;</li><li>og i det nederste tekstfelt, forklare hvem du er i familie med, eller give os oplysninger om nogen, der bør tilføjes på vores hjemmeside."
+msgstr "Når indstillet til <b>Ja</b> så vil den følgende besked vise sig når der ansøges om en ny brugerkonto. page:<div class=\"list_value_wrap\"><div class=\"largeError\">Bemærk:</div><div class=\"error\">Ved at udfylde og sende denne formular, accepterer du:<ul><li>at beskytte privatlivets fred for de nulevende personer, der findes på vores hjemmeside;</li><li>og i det nederste tekstfelt, forklare hvem du er i familie med, eller give os oplysninger om nogen, der bør tilføjes på vores hjemmeside.</li></ul></div></div>"
 
 #: admin_site_config.php:396
 msgid "Select the languages your site will use"
