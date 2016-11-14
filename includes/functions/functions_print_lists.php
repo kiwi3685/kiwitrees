@@ -1501,12 +1501,12 @@ function format_repo_table($repos) {
 			processing: true,
 			retrieve: true,
 			columns: [
-				/* 0 name   	*/ {"sType": "unicode"},
-				/* 1 #sour  	*/ {"iDataSort": 2, "sClass": "center"},
-				/* 2 #SOUR		*/ {"sType": "numeric", "bVisible": false},
-				/* 3 CHAN		*/ {"iDataSort": 4, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 4 CHAN_sort	*/ {"bVisible": false},
-				/* 5 SELECT 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false, "sClass": "center"}
+				/* 0 name      */ { type: "unicode" },
+				/* 1 #sour     */ { dataSort: 2, class: "center" },
+				/* 2 #SOUR     */ { type: "num", visible: false },
+				/* 3 CHAN      */ { dataSort: 4, visible: ' . ($SHOW_LAST_CHANGE?'true':'false') . ' },
+				/* 4 CHAN_sort */ { visible: false },
+				/* 5 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN?'true':'false') . ', sortable: false }
 			],
 			displayLength: 20,
 			pagingType: "full_numbers",
@@ -1613,17 +1613,17 @@ function format_media_table($datalist) {
 			processing: true,
 			retrieve: true,
 			columns: [
-				/* 0 media		*/ {"bSortable": false},
-				/* 1 title		*/ {"sType": "unicode"},
-				/* 2 file		*/ {"bVisible": ' . (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT ? 'true' : 'false') . '},
-				/* 3 #indi		*/ {"iDataSort": 4, "sClass": "center"},
-				/* 4 #INDI		*/ {"sType": "numeric", "bVisible": false},
-				/* 5 #fam		*/ {"iDataSort": 6, "sClass": "center"},
-				/* 6 #FAM		*/ {"sType": "numeric", "bVisible": false},
-				/* 7 #sour		*/ {"iDataSort": 8, "sClass": "center"},
-				/* 8 #SOUR		*/ {"sType": "numeric", "bVisible": false},
-				/* 9 CHAN		*/ {"iDataSort": 10, "bVisible": ' . ($SHOW_LAST_CHANGE ? 'true' : 'false') . '},
-				/* 10 CHAN_sort	*/ {"bVisible": false},
+				/* 0 media		*/ { sortable: false },
+				/* 1 title		*/ { type: "unicode"},
+				/* 2 file		*/ { visible: ' . (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT ? 'true' : 'false') . '},
+				/* 3 #indi		*/ { dataSort: 4, class: "center" },
+				/* 4 #INDI		*/ { type: "num", visible: false },
+				/* 5 #fam		*/ { dataSort: 6, class: "center" },
+				/* 6 #FAM		*/ { type: "num", visible: false },
+				/* 7 #sour		*/ { dataSort: 8, class: "center" },
+				/* 8 #SOUR		*/ { type: "num", visible: false },
+				/* 9 CHAN		*/ { dataSort: 10, visible: ' . ($SHOW_LAST_CHANGE ? 'true' : 'false') . '},
+				/* 10 CHAN_sort	*/ { visible: false },
 			],
 			displayLength: 20,
 			pagingType: "full_numbers",
@@ -1719,19 +1719,18 @@ function format_surname_table($surnames, $script) {
 			jQuery.fn.dataTableExt.oSort["num-asc" ]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a<b) ? -1 : (a>b ? 1 : 0);};
 			jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			jQuery(".surname-list").dataTable( {
-			"sDom": \'t\',
-			"destroy": true,
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"bPaginate": false,
-			"aaSorting": [],
-			"aoColumns": [
-				/*  0 name  */ {iDataSort:1},
-				/*  1 NAME  */ {bVisible:false},
-				/*  2 count */ {iDataSort:3, sClass:"center"},
-				/*  3 COUNT */ {bVisible:false}
-			],
-			});
+			dom: \'t\',
+			destroy: true,
+			jQueryUI: true,
+			autoWidth:false,
+			paging: false,
+			sorting: [[1, "asc"]],
+			columns: [
+				/*  0 name  */ { dataSort:1 },
+				/*  1 NAME  */ { visible:false },
+				/*  2 count */ { dataSort:3, class: "center" },
+				/*  3 COUNT */ { visible:false}
+			]
 		');
 
 	if ($script=='famlist.php') {
@@ -1988,12 +1987,12 @@ function print_changes_table($change_ids, $sort) {
 				jQueryUI: true,
 				sorting: ['.$aaSorting.'],
 				columns: [
-					/* 0-Type */    {"bSortable": false, "sClass": "center"},
-					/* 1-Record */  {"iDataSort": 5},
-					/* 2-Change */  {"iDataSort": 4},
+					/* 0-Type */    { sortable: false, class: "center" },
+					/* 1-Record */  { dataSort: 5 },
+					/* 2-Change */  { dataSort: 4 },
 					/* 3-By */      null,
-					/* 4-DATE */    {"bVisible": false},
-					/* 5-SORTNAME */{"sType": "unicode", "bVisible": false}
+					/* 4-DATE */    { visible: false },
+					/* 5-SORTNAME */{ type: "unicode", visible: false}
 				],
 				displayLength: 20,
 				pagingType: "full_numbers",
@@ -2085,21 +2084,21 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			jQuery("#' . $table_id . '").dataTable({
 				"sDom": \'t\',
 				' . WT_I18N::datatablesI18N() . ',
-				"bAutoWidth":false,
-				"bPaginate": false,
-				"bLengthChange": false,
-				"bFilter": false,
-				"bInfo": true,
-				"bJQueryUI": true,
-				"aaSorting": [[ '.($sort_by=='alpha' ? 1 : 3).', "asc"]],
-				"aoColumns": [
-					/* 0-Record */ { "iDataSort": 1},
-					/* 1-NAME */   { "bVisible": false },
-					/* 2-Date */   { "iDataSort": 3 },
-					/* 3-DATE */   { "bVisible": false },
-					/* 4-Anniv. */ { "iDataSort": 5, "sClass": "center"},
-					/* 5-ANNIV  */ { "sType": "numeric", "bVisible": false},
-					/* 6-Event */  { "sClass": "center" }
+				jQueryUI: true,
+				autoWidth: false,
+				filter: false,
+				lengthChange: false,
+				info: true,
+				paging: false,
+				sorting: [[ '.($sort_by=='alpha' ? 1 : 3).', "asc" ]],
+				columns: [
+					/* 0-Record */ { dataSort: 1,
+					/* 1-NAME */   { visible: false },
+					/* 2-Date */   { dataSort: 3 },
+					/* 3-DATE */   { visible: false },
+					/* 4-Anniv. */ { dataSort: 5, class: "center" },
+					/* 5-ANNIV  */ { type: "numeric", visible: false },
+					/* 6-Event */  { class: "center" }
 				]
 			});
 		');
