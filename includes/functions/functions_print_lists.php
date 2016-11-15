@@ -1731,6 +1731,7 @@ function format_surname_table($surnames, $script) {
 				/*  2 count */ { dataSort:3, class: "center" },
 				/*  3 COUNT */ { visible:false}
 			]
+			});
 		');
 
 	if ($script=='famlist.php') {
@@ -2092,7 +2093,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				paging: false,
 				sorting: [[ '.($sort_by=='alpha' ? 1 : 3).', "asc" ]],
 				columns: [
-					/* 0-Record */ { dataSort: 1,
+					/* 0-Record */ { dataSort: 1 },
 					/* 1-NAME */   { visible: false },
 					/* 2-Date */   { dataSort: 3 },
 					/* 3-DATE */   { visible: false },
