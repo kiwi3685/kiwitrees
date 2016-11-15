@@ -104,7 +104,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (isset($people["husb"])) {
 			?>
 			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["husb"]->getLabel(); ?></td>
+				<td class="facts_label<?php echo $styleadd; ?>">
+					<?php echo $people["husb"]->getLabel();
+					echo get_relationship_name(get_relationship($controller->record, $people["husb"])); ?>
+				</td>
 				<td class="<?php echo $controller->getPersonStyle($people["husb"]); ?>">
 					<?php print_pedigree_person($people["husb"], 2, 0, $personcount++); ?>
 				</td>
@@ -151,7 +154,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (isset($people["wife"])) {
 			?>
 			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["wife"]->getLabel($elderdate); ?></td>
+				<td class="facts_label<?php echo $styleadd; ?>">
+					<?php echo $people["wife"]->getLabel($elderdate);
+					echo get_relationship_name(get_relationship($controller->record, $people["wife"])); ?>
+				</td>
 				<td class="<?php echo $controller->getPersonStyle($people["wife"]); ?>">
 					<?php print_pedigree_person($people["wife"], 2, 0, $personcount++); ?>
 				</td>
@@ -248,7 +254,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$styleadd = "";
 			?>
 			<tr>
-				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
+				<td class="facts_label<?php echo $styleadd; ?>">
+					<?php if ($styleadd=="red") {
+						echo $child->getLabel();
+					} else {
+						echo $child->getLabel($elderdate, $key+1);
+					}
+					echo get_relationship_name(get_relationship($controller->record, $child)); ?>
+				</td>
 				<td class="<?php echo $controller->getPersonStyle($child); ?>">
 				<?php
 				print_pedigree_person($child, 2, 0, $personcount++);

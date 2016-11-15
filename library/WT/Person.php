@@ -714,17 +714,15 @@ class WT_Person extends WT_GedcomRecord {
 			$p2 = $this->getBirthDate();
 			if ($p2->isOK()) {
 				$gap = $p2->MinJD()-$elderdate->MinJD(); // days
-				$label .= "<div class=\"elderdate age\">";
+				$label .= '<div class="elderdate age">';
 				// warning if negative gap : wrong order
-				if ($gap<0 && $counter>0) $label .= '<i class="icon-warning"></i> ';
+					if ($gap < 0 && $counter > 0){
+						$label .= '<i class="icon-warning"></i> ';
+					}
 				// warning if gap<6 months
-				if ($gap>1 && $gap<180 && $counter>0) $label .= '<i class="icon-warning"></i> ';
-				// children with same date means twin
-				/**if ($gap==0 && $counter>1) {
-					if ($this->getSex()=='M') $label .= WT_I18N::translate('Twin brother');
-					else if ($this->getSex()=='F') $label .= WT_I18N::translate('Twin sister');
-					else $label .= WT_I18N::translate('Twin');
-					}**/
+					if ($gap > 1 && $gap < 180 && $counter > 0){
+						$label .= '<i class="icon-warning"></i> ';
+					}
 				// gap in years or months
 				$gap = round($gap*12/365.25); // months
 				if (($gap==12)||($gap==-12)) {
@@ -737,10 +735,15 @@ class WT_Person extends WT_GedcomRecord {
 				$label .= '</div>';
 			}
 		}
-		// I18N: This is an abbreviation for a number.  i.e. #7 means number 7
-		if ($counter) $label .= '<div>'.WT_I18N::translate('#%d', $counter).'</div>';
-		$label .= $this->label;
-		if ($gap!=0 && $counter<1) $label .= '<br>&nbsp;';
+		
+		if ($counter > 0){
+			$label .= '<span>' . /* I18N: This is an abbreviation for a number.  i.e. #7 means number 7 */ WT_I18N::translate('#%d', $counter).'&nbsp;</span>';
+		}
+
+		if ($gap != 0 && $counter < 1){
+			$label .= '<br>&nbsp;';
+		}
+
 		return $label;
 	}
 
