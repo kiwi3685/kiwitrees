@@ -713,7 +713,7 @@ class WT_Person extends WT_GedcomRecord {
 		if (is_object($elderdate) && $elderdate->isOK()) {
 			$p2 = $this->getBirthDate();
 			if ($p2->isOK()) {
-				$gap = $p2->MinJD()-$elderdate->MinJD(); // days
+				$gap = $p2->MinJD() - $elderdate->MinJD(); // days
 				$label .= '<div class="elderdate age">';
 				// warning if negative gap : wrong order
 					if ($gap < 0 && $counter > 0){
@@ -724,24 +724,20 @@ class WT_Person extends WT_GedcomRecord {
 						$label .= '<i class="icon-warning"></i> ';
 					}
 				// gap in years or months
-				$gap = round($gap*12/365.25); // months
-				if (($gap==12)||($gap==-12)) {
-					$label .= WT_I18N::plural('%d year', '%d years', round($gap/12), round($gap/12));
-				} elseif ($gap>23 or $gap<-23) {
-					$label .= WT_I18N::plural('%d year', '%d years', round($gap/12), round($gap/12));
-				} elseif ($gap!=0) {
+				$gap = round($gap * 12 / 365.25); // months
+				if (($gap == 12) || ($gap == -12)) {
+					$label .= WT_I18N::plural('%d year', '%d years', round($gap / 12), round($gap / 12));
+				} elseif ($gap > 23 || $gap < -23) {
+					$label .= WT_I18N::plural('%d year', '%d years', round($gap / 12), round($gap / 12));
+				} elseif ($gap != 0) {
 					$label .= WT_I18N::plural('%d month', '%d months', $gap, $gap);
 				}
 				$label .= '</div>';
 			}
 		}
-		
+
 		if ($counter > 0){
 			$label .= '<span>' . /* I18N: This is an abbreviation for a number.  i.e. #7 means number 7 */ WT_I18N::translate('#%d', $counter).'&nbsp;</span>';
-		}
-
-		if ($gap != 0 && $counter < 1){
-			$label .= '<br>&nbsp;';
 		}
 
 		return $label;

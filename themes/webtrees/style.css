@@ -186,6 +186,10 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 .subheaders {font-weight:bold;font-size:15px;margin-top:15px;vertical-align:bottom;}
 
 .age {font-size:9px;}
+.elderdate {
+	font-style: italic;
+}
+
 .parentdeath {border:thin solid #888888;padding:1px;}
 .source_citations {display:none;}
 .source_links, .source_links p {

@@ -1000,6 +1000,24 @@ function get_relationship_name($nodes) {
 	return get_relationship_name_from_path($combined_path, $person1, $person2);
 }
 
+/**
+ * Generate a reflexive pronoun for an individual
+ *
+ * @param Individual $individual
+ *
+ * @return string
+ */
+function reflexivePronoun(WT_Person $individual) {
+	switch ($individual->getSex()) {
+	case 'M':
+		return /* I18N: reflexive pronoun */ WT_I18N::translate('himself');
+	case 'F':
+		return /* I18N: reflexive pronoun */ WT_I18N::translate('herself');
+	default:
+		return /* I18N: reflexive pronoun - gender neutral version of himself/herself */ WT_I18N::translate('themself');
+	}
+}
+
 function cousin_name($n, $sex) {
 	switch ($sex) {
 	case 'M':

@@ -106,7 +106,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>">
 					<?php echo $people["husb"]->getLabel();
-					echo get_relationship_name(get_relationship($controller->record, $people["husb"])); ?>
+					if ($controller->record->equals($people["husb"])) {
+						echo '<i class="icon-selected"></i>' . reflexivePronoun($controller->record);
+					} else {
+						echo get_relationship_name(get_relationship($controller->record, $people["husb"], true, 3));
+					} ?>
 				</td>
 				<td class="<?php echo $controller->getPersonStyle($people["husb"]); ?>">
 					<?php print_pedigree_person($people["husb"], 2, 0, $personcount++); ?>
@@ -156,7 +160,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>">
 					<?php echo $people["wife"]->getLabel($elderdate);
-					echo get_relationship_name(get_relationship($controller->record, $people["wife"])); ?>
+					if ($controller->record->equals($people["wife"])) {
+						echo '<i class="icon-selected"></i>' . reflexivePronoun($controller->record);
+					} else {
+						echo get_relationship_name(get_relationship($controller->record, $people["wife"], true, 3));
+					} ?>
 				</td>
 				<td class="<?php echo $controller->getPersonStyle($people["wife"]); ?>">
 					<?php print_pedigree_person($people["wife"], 2, 0, $personcount++); ?>
@@ -260,7 +268,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					} else {
 						echo $child->getLabel($elderdate, $key+1);
 					}
-					echo get_relationship_name(get_relationship($controller->record, $child)); ?>
+					if ($controller->record->equals($child)) {
+						echo '<i class="icon-selected"></i>' . reflexivePronoun($controller->record);
+					} else {
+						echo get_relationship_name(get_relationship($controller->record, $child, true, 3));
+					} ?>
 				</td>
 				<td class="<?php echo $controller->getPersonStyle($child); ?>">
 				<?php

@@ -528,6 +528,10 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .detailsZoom {font-size:13px;text-decoration:none;}
 
 .age {font-size:9px;}
+.elderdate {
+	font-style: italic;
+}
+
 .cal_day {float:left;font-weight:700;}
 .contact_links {text-align:center;}
 .current_day {font-size:16px;font-weight:700;}

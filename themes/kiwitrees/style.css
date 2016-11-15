@@ -783,8 +783,8 @@ div[id*='-page'] {
 .person_boxNN {
 	background-color: #eee;
 	border: 1px solid #555;
-	margin: 2px auto;
-	padding: 5px 3px;
+	margin: auto;
+	padding: 2px;
 }
 
 .person_box:target,
@@ -1193,6 +1193,10 @@ a:hover .nameZoom {
 }
 
 .age {
+}
+
+.elderdate {
+	font-style: italic;
 }
 
 .parentdeath {
@@ -4241,7 +4245,7 @@ a.icon-udarrow:hover {
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-male */
 .icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */
-.icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-tick */
+.icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 2px;} /* fa-tick */
 .fa-plus,
 .icon-button_addsource,
 .icon-button_addmedia,
