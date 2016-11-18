@@ -56,21 +56,21 @@ $controller
 						}
 					?>
 				</select>
-			</div>	
-			<div class="chart_options">				
+			</div>
+			<div class="chart_options">
 				<label for = "talloffset" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Layout'); ?></label>
 				<?php
 					echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset);
 				?>
 			</div>
-			<div class="chart_options">				
+			<div class="chart_options">
 				<label for = "showfull" style="display:block; font-weight:900;"><?php echo WT_I18N::translate('Show Details'); ?></label>
 					<?php
 						echo '<input type="checkbox" id="showfull" value="';
 							if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
 							else echo '0" onclick="document.people.show_full.value=\'1\';';
 						echo '">';
-					?>			
+					?>
 			</div>
  			<div class="btn btn-primary" style="display: inline-block;">
  				<button type="submit" value="<?php echo WT_I18N::translate('View'); ?>"><?php echo WT_I18N::translate('View'); ?></button>
@@ -83,10 +83,12 @@ if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
 	exit;
 }
-echo '<div id="pedigree_chart">';
+?>
+<div id="pedigree_chart"<?php echo $controller->PEDIGREE_GENERATIONS <6 ? 'style="left:' . 50 / $controller->PEDIGREE_GENERATIONS . '%"' : ''; ?>>
+<?php
 //-- echo the boxes
 $curgen = 1;
-$xoffset = 0;	
+$xoffset = 0;
 $yoffset = 0;     // -- used to offset the position of each box as it is generated
 $prevxoffset = 0; // -- used to track the horizontal x position of the previous box
 $prevyoffset = 0; // -- used to track the vertical y position of the previous box
@@ -104,7 +106,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	}
 	$prevxoffset = $xoffset;
 	$prevyoffset = $yoffset;
-	if ($talloffset < 2) { // Portrate 0 Landscape 1 top 2 bottom 3 
+	if ($talloffset < 2) { // Portrate 0 Landscape 1 top 2 bottom 3
 		$xoffset = $controller->offsetarray[$i]["x"];
 		$yoffset = $controller->offsetarray[$i]["y"];
 	} else {
@@ -121,7 +123,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		$iref = $i;
 	}
 	// Can we go back to an earlier generation?
-	$can_go_back=$curgen==1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
+	$can_go_back = $curgen == 1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
 
 	if ($talloffset == 2) { // oldest at top
 		echo '<div id="uparrow" dir="';
@@ -147,12 +149,12 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	echo '.1'.$iref;
 	if ($TEXT_DIRECTION=="rtl") {echo '" style="right:';} else {echo '" style="left:';}
 	//Correct box spacing for different layouts
-	if ($talloffset == 2) {$zindex = $PEDIGREE_GENERATIONS-$curgen;} else {$zindex = 0;}	
+	if ($talloffset == 2) {$zindex = $PEDIGREE_GENERATIONS-$curgen;} else {$zindex = 0;}
 	if (($talloffset == 3) && ($curgen ==1)) {$yoffset +=25;}
 	if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
-	echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";		
-	if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}	
-	print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);		
+	echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";
+	if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}
+	print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);
 	if ($can_go_back) {
 		$did = 1;
 		if ($i > (int)($controller->treesize/2) + (int)($controller->treesize/4)) {
@@ -281,7 +283,7 @@ $controller->addInlineJavascript('
 			strValue = oElm.currentStyle[strCssRule];
 		}
 		return strValue;
-	}	
+	}
 	// Set variables
 		var c=document.getElementById("pedigree_canvas");
 		var ctx=c.getContext("2d");
@@ -296,7 +298,7 @@ $controller->addInlineJavascript('
 		var offset_y2 = '.$controller->pbheight.'*2;
 		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
 		var lineDrawy2 = new Array("'. join($lineDrawy,'","'). '");
-		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');		
+		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
 	//Draw the lines
 		if (talloffset < 2) { // landscape and portrait styles
 			for (var i = 0; i <= maxjoins-3; i++) {
@@ -314,7 +316,7 @@ $controller->addInlineJavascript('
 					}
 				}
 			}
-		}	
+		}
 		if (talloffset == 2) { // oldest at top
 			for (var i = 0; i <= maxjoins; i++) {
 				if(i%2!=0){
