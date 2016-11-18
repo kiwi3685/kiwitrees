@@ -223,7 +223,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$people = $controller->buildFamilyList($family, 'spouse');
 			if (isset($people['husb'])) {
 				if ($controller->record->equals($people['husb'])) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>' . reflexivePronoun($child));
+					$menu = new WT_Menu('<i class="icon-selected"></i>' . reflexivePronoun($people['husb']));
 				} else {
 					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'], true, 3)));
 				}
@@ -247,7 +247,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 			if (isset($people['wife'])) {
 				if ($controller->record->equals($people['wife'])) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>' . reflexivePronoun($child));
+					$menu = new WT_Menu('<i class="icon-selected"></i>' . reflexivePronoun($people['wife']));
 				} else {
 					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'], true, 3)));
 				}
