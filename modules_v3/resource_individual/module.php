@@ -154,11 +154,22 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 							case 'highlighted':
 								$image = $person->displayImage(true);
 								if ($image) {
-									echo '<div id="indi_mainimage">', $person->displayImage(), '</div>';
+									echo '<div id="indi_mainimage">', $person->displayImage(true), '</div>';
 								}
 								break;
 							case 'all':
-							//show all level 1 images
+								//show all level 1 images ?>
+								<div id="images">
+									<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
+									$allMedia =  $match[1];
+									foreach ($allMedia as $media) {
+										$image = WT_Media::getInstance($media);
+										if ($image && $image->canDisplayDetails()) { ?>
+											<span><?php echo $image->displayImage(); ?></span>
+										<?php }
+									} ?>
+								</div>
+								<?php
 							break;
 							case 'none':
 							default:
@@ -167,49 +178,51 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 						} ?>
 					<div id="facts_events">
 						<h3><?php echo WT_I18N::translate('Facts and events'); ?></h3>
-						<table>
-							<thead>
-								<tr>
-									<th></th>
-									<th><?php echo WT_I18N::translate('Date'); ?></th>
-									<th><?php echo WT_I18N::translate('Place'); ?></th>
-									<th><?php echo WT_I18N::translate('Information'); ?></th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$source_num = 1;
-								$source_list = array();
-								foreach ($indifacts as $fact) {
-									if (
-										(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
-										&& !in_array($fact->getTag(), $exclude_tags)
-									) { ?>
-										<tr class="individual_report_fact">
-											<td>
-												<?php echo print_fact_label($fact, $person);
-												// -- count source(s) for this fact/event as footnote reference
-												$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
-												if ($ct > 0) {
-													$sup = '<sup>';
-														$sources = resource_sources($fact, 2, $source_num);
-														for ($i = 0; $i < $ct; $i++) {
-															$sup .= $source_num . ',&nbsp;';
-															$source_num = $source_num + 1;
-														}
-														$sup = rtrim($sup,',&nbsp;');
-														$source_list = array_merge($source_list, $sources);
-													echo $sup . '</sup>';
-												} ?>
-											</td>
-											<td><?php echo format_fact_date($fact, $person, false, true, false); ?></td>
-											<td><?php echo format_fact_place($fact, true); ?></td>
-											<td class="field"><?php echo print_resourcefactDetails($fact, $person); ?></td>
-										</tr>
-									<?php }
-								} ?>
-							</tbody>
-						</table>
+						<?php
+						$source_num = 1;
+						$source_list = array();
+						foreach ($indifacts as $fact) {
+							if (
+								(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
+								&& !in_array($fact->getTag(), $exclude_tags)
+							) { ?>
+								<p class="individual_report_fact">
+									<!-- fact label -->
+									<span class="label">
+										<?php echo print_fact_label($fact, $person);
+										// -- count source(s) for this fact/event as footnote reference
+										$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+										if ($ct > 0) {
+											$sup = '<sup>';
+												$sources = resource_sources($fact, 2, $source_num);
+												for ($i = 0; $i < $ct; $i++) {
+													$sup .= $source_num . ',&nbsp;';
+													$source_num = $source_num + 1;
+												}
+												$sup = rtrim($sup,',&nbsp;');
+												$source_list = array_merge($source_list, $sources);
+											echo $sup . '</sup>';
+										} ?>
+									</span>
+									<!-- DETAILS -->
+									<span class="details">
+										<!-- fact date -->
+										<?php echo $fact->getDate()->JD() != 0 ?  format_fact_date($fact, $person, false, false, false) : ""; ?>
+										<!-- fact place -->
+										<?php  if ($fact->getPlace()) { ?>
+											<span class="place"><?php echo format_fact_place($fact, true); ?>
+												<?php $address = print_address_structure($fact->getGedcomRecord(), 2, 'inline');
+												echo $address != "" ?  '<span class="addr">' . $address . '</span>' : ""; ?>
+											</span>
+										<?php  } ?>
+										<!-- fact details -->
+										<?php
+										$detail	= print_resourcefactDetails($fact, $person);
+										echo $detail !== "&nbsp;" ?  '<span class="field">' . $detail . '</span>' : ""; ?>
+									</span>
+								</p>
+							<?php }
+						} ?>
 					</div>
 					<?php
 					$otherfacts = $person->getOtherFacts();

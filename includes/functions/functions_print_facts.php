@@ -200,7 +200,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	// Print the value of this fact/event
 	switch ($fact->getTag()) {
 	case 'ADDR':
-		print_address_structure($fact->getGedcomRecord(), 1);
+		echo print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
 		echo '<div class="field"><a href="https://familysearch.org/search/tree/results#count=20&query=afn:', rawurlencode($fact->getDetail()), '" target="new">', htmlspecialchars($fact->getDetail()), '</a></div>';
@@ -309,7 +309,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';
 	// A blank line between the primary attributes (value, date, place) and the secondary ones
 	echo '<br>';
-	print_address_structure($fact->getGedcomRecord(), 2);
+	echo print_address_structure($fact->getGedcomRecord(), 2);
 
 	// Print the associates of this fact/event
 	print_asso_rela_record($fact, $record);
@@ -457,7 +457,7 @@ function print_repository_record($xref) {
 	$repository=WT_Repository::getInstance($xref);
 	if ($repository && $repository->canDisplayDetails()) {
 		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br>';
-		print_address_structure($repository->getGedcomRecord(), 1);
+		echo print_address_structure($repository->getGedcomRecord(), 1);
 		echo '<br>';
 		print_fact_notes($repository->getGedcomRecord(), 1);
 	}
@@ -640,16 +640,21 @@ function print_media_links($factrec, $level, $pid='') {
  * takes a gedcom ADDR structure and prints out a human readable version of it.
  * @param string $factrec The ADDR subrecord
  * @param int $level The gedcom line level of the main ADDR record
+ * @param str $format 'inline' produces simple one line display
  */
-function print_address_structure($factrec, $level) {
+function print_address_structure($factrec, $level, $format='') {
 	if (preg_match("/$level ADDR (.*)/", $factrec, $omatch)) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, 1);
 		$cont = get_cont($level+1, $arec);
 		$resultText = $omatch[1] . get_cont($level+1, $arec);
-		if ($level>1) {
-			$resultText = '<span class="label">'.WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">' . $resultText . '</div>';
+		if ($level > 1) {
+			if ($format == 'inline') {
+				$resultText;
+			} else {
+				$resultText = '<span class="label">'.WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">' . $resultText . '</div>';
+			}
 		}
-		echo $resultText;
+		return $resultText;
 	}
 }
 

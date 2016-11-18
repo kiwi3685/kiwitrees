@@ -55,7 +55,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 	// Print the value of this fact/event
 	switch ($fact->getTag()) {
 	case 'ADDR':
-		print_address_structure($fact->getGedcomRecord(), 1);
+		echo print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
 		$html .= '<a href="https://familysearch.org/search/tree/results#count=20&query=afn:' . rawurlencode($fact->getDetail()) . '" target="new">' . htmlspecialchars($fact->getDetail()) . '</a>';

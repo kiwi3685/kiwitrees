@@ -2737,6 +2737,10 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 	margin: auto;
 	width: 90%;
 }
+#resource-page.individual_report .chart_options label {
+	display:block;
+	font-weight:900;
+}
 #resource-page.individual_report h3 {
 	margin: 20px 0 5px 0;
 	text-decoration: underline;
@@ -2744,6 +2748,17 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 #resource-page.individual_report h4 {
 	font-size: 100%;
 	margin: 0;
+}
+#resource-page.individual_report #images {
+	display: table;
+}
+#resource-page.individual_report #images span {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 10px;
+}
+#resource-page.individual_report #images span::first {
+	padding: 0;
 }
 #resource-page.individual_report #facts_events {
 	clear: both;
@@ -2772,33 +2787,30 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 	display: inline-block;
 	font-weight: 700;
 	text-transform: capitalize;
-	width: 200px;
-}
-#resource-page.individual_report #facts_sources {
-	margin: 30px 0;
-}
-#resource-page.individual_report .chart_options label {
-	display:block; font-weight:900;
-}
-#resource-page.individual_report .individual_report_fact {
-	border-bottom: 1px solid;
-}
-#resource-page.individual_report .individual_report_fact label {
-    display: inline-block;
-	font-weight: 700;
-	padding: 5px;
+	min-width: 150px;
 	width: 15%;
+	vertical-align: top;
 }
-#resource-page.individual_report .individual_report_fact .date {
-    display: inline-block;
-	min-width: 15%;
+#resource-page.individual_report .details {
+	display: inline-block;
 }
-#resource-page.individual_report .individual_report_fact .place {
-	min-width: 20%;
+#resource-page.individual_report .individual_report_fact .date,
+#resource-page.individual_report .individual_report_fact .place,
+#resource-page.individual_report .individual_report_fact .field {
+	padding: 0 5px;
 }
-#resource-page.individual_report .individual_report_fact .field,
-#resource-page.individual_report .individual_report_fact .field span {
-	padding: 0 10px;
+#resource-page.individual_report .individual_report_fact .addr {
+	font-style: italic;
+	font-size: 90%;
+}
+#resource-page.individual_report .individual_report_fact .addr br {
+	display: none;
+}
+#resource-page.individual_report .individual_report_fact .addr::before {
+	content: '(';
+}
+#resource-page.individual_report .individual_report_fact .addr::after {
+	content: ')';
 }
 #resource-page.individual_report .individual_report_fact sup {
 	color: #ff0000;
@@ -2806,14 +2818,8 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 	font-size: 70%;
 	padding: 0 5px;
 }
-#resource-page.individual_report .individual_report_fact div span,
-#resource-page.individual_report .individual_report_fact div div {
-	padding: 5px;
-	width: 300px;
-}
-#resource-page.individual_report .individual_report_fact .place span {
-	display: initial;
-	padding: 0px;
+#resource-page.individual_report #facts_sources {
+	margin: 30px 0;
 }
 
 /* Styles for facts & events resource */
