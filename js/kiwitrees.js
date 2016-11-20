@@ -1382,6 +1382,22 @@ function findPosY(obj) {
 	return curtop;
 }
 
+// function to create notes display on colorbox
+function notes(obj) {
+	var note = obj.data("obje-note");
+	jQuery(".cboxPhoto").each(function(){
+		jQuery(this).attr("title", note);
+		jQuery(this).tooltip({
+			tooltipClass: "cboxTooltip",
+			position: {
+				my: "center",
+				at: "bottom-60"
+			},
+			hide: {duration: 3000 }
+		}).mouseenter();
+	});
+}
+
 // This is the default way to show image galleries.
 // Custom themes may use a different viewer.
 function activate_colorbox(config) {
@@ -1410,19 +1426,35 @@ function activate_colorbox(config) {
 
 		// Enable colorbox for images
 		jQuery('a[type^=image].gallery').colorbox({
-			photo:         true,
-			maxWidth:      '95%',
-			maxHeight:     '95%',
-			rel:           'gallery', // Turn all images on the page into a slideshow
-			slideshow:     true,
-			slideshowAuto: false,
-			// Add wheelzoom to the displayed image
+			rel:			'gallery', // Turn all images on the page into a slideshow
+			photo:			true,
+			fixed:			false,
+			maxWidth:		'95%',
+			maxHeight:		'95%',
+			minWidth:		"250",
+			slideshowSpeed:	5000,
+			slideshow:		true,
+			slideshowAuto:	false,
+			speed:			2000,
+			title:			function(){
+								var title = jQuery(this).data("title");
+								return title;
+							},
 			onComplete:    function() {
+				// Display notes
+				notes(jQuery(this));
+				// Add wheelzoom to the displayed image
 				jQuery('.cboxPhoto').wheelzoom();
 				// Drag events cause the slideshow to advance.  Prevent this.
 				// TODO - only when the click was the end of a drag..
 				jQuery('.cboxPhoto img').on('click', function(e) {e.preventDefault();});
 			}
+		});
+		// Add colorbox to pdf-files
+		jQuery("a[type^=application].gallery").colorbox({
+			innerWidth	:"60%",
+			innerHeight	:"90%",
+			iframe		:true
 		});
 
 		// Enable colorbox for audio using <audio></audio>, where supported

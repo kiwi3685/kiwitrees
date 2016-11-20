@@ -4770,6 +4770,14 @@ div [id$="_factdiv"] {
 	position: absolute;
 }
 
+.cboxTooltip .ui-tooltip-content {
+	font-size: 12px;
+}
+
+.cboxTooltip.ui-widget-shadow {
+	box-shadow: none;
+}
+
 [dir='rtl'] #cboxPrevious {
 	right: 27px;
 	left: auto;

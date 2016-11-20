@@ -44,29 +44,18 @@ $this
 		display_help();
 		activate_colorbox();
 		jQuery.extend(jQuery.colorbox.settings, {
-			maxWidth		:"95%",
-			maxHeight		:"95%",
-			minWidth		:"250",
-			fixed			:false,
-			slideshow		:true,
-			slideshowAuto	:false,
-			slideshowSpeed	:5000,
 			slideshowStart	:"'.WT_I18N::translate('Play').'",
 			slideshowStop	:"'.WT_I18N::translate('Stop').'",
-			speed			:2000,
-			title			:function(){
-								var img_title = jQuery(this).data("title");
-								return img_title;
-							}
 		});
+		// Add colorbox to pdf-files
 		jQuery("body").on("click", "a.gallery", function(event) {
-			// Add colorbox to pdf-files
 			jQuery("a[type^=application].gallery").colorbox({
-				rel			:"gallery",
-				innerWidth	:"60%",
-				innerHeight	:"90%",
-				iframe		:true,
-				photo		:false
+				title: function(){
+							var url = jQuery(this).attr("href");
+							var img_title = jQuery(this).data("title");
+							return "<a href=\"" + url + "\" target=\"_blank\">" + img_title + " - '.
+							WT_I18N::translate('Open in full browser window').'</a>";
+						}
 			});
 		});
 

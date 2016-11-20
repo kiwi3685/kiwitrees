@@ -2143,6 +2143,13 @@ div [id$="_factdiv"] {
 #cboxClose {position:absolute; bottom:0; right:0; background:url(images/controls.png) no-repeat -25px 0; width:25px; height:25px; text-indent:-9999px;margin:10px; border:0;}
 #cboxClose:hover {background-position:-25px -25px;}
 #cboxCurrent {bottom: 4px;color: #949494;left: 58px;position: absolute;}
+.cboxTooltip .ui-tooltip-content {
+	font-size: 12px;
+}
+
+.cboxTooltip.ui-widget-shadow {
+	box-shadow: none;
+}
 
 [dir=rtl] #cboxPrevious {right:27px;left:auto}
 [dir=rtl] #cboxNext {right:0;left:auto}
