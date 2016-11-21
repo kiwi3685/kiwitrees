@@ -740,11 +740,6 @@ case 'upload_media':
 	$text = WT_I18N::translate('Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats.');
 	break;
 
-case 'upload_server_file':
-	$title = WT_I18N::translate('File name on server');
-	$text = WT_I18N::translate('The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local file name has meaning to you but is much less meaningful to others visiting this site.  Consider also the possibility that you and someone else both try to upload different files called "granny.jpg".<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer.');
-	break;
-
 case 'upload_server_folder':
 	$title = WT_I18N::translate('Folder name on server');
 	$text =

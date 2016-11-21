@@ -529,7 +529,7 @@ $controller
 				} ?>
 				<div id="SERVER_factdiv">
 					<label>
-						<?php echo WT_I18N::translate('File name on server'), help_link('upload_server_file'); ?>
+						<?php echo WT_I18N::translate('File name on server'); ?>
 					</label>
 					<div class="input">
 						<?php if (WT_USER_GEDCOM_ADMIN) { ?>
@@ -545,8 +545,8 @@ $controller
 						<?php } ?>
 					</div>
 					<div class="help_text">
-						<span class="help_content">
-							<?php echo WT_I18N::translate('Do not change to keep original file name.'); ?>
+						<span class="helpcontent">
+							<?php echo /* I18N: Help text for add media screens*/WT_I18N::translate('Leave this field blank to keep the original name of the file you have uploaded from your local computer.<br><br>Media files can and perhaps should be named differently on the server than on your local computer. This is because often the local file name has meaning to you but is less meaningful to others visiting this site. Consider also the possibility that you and someone else both try to upload different files called "granny.jpg".<br>In this field you specify the new name of the file. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)'); ?>
 						</span>
 					</div>
 				</div>
@@ -809,7 +809,7 @@ $controller
 				<i class="fa fa-save"></i>
 				<?php echo WT_I18N::translate('save'); ?>
 			</button>
-			<button class="btn btn-primary" type="button"  onclick="window.close();">
+			<button class="btn btn-primary" type="button" onclick="window.close();">
 				<i class="fa fa-times"></i>
 				<?php echo WT_I18N::translate('close'); ?>
 			</button>

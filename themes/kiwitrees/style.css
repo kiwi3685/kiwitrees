@@ -1307,6 +1307,13 @@ a:hover .nameZoom {
 	font-weight: bold;
 }
 
+.helpcontent {
+	border: none;
+	font-size: .85em;
+	font-style: italic;
+	font-weight: 400;
+	margin: 10px 5px;
+}
 .help_content {
 	font-size: .9em;
 	font-style: italic;
@@ -1314,7 +1321,6 @@ a:hover .nameZoom {
 	margin-right: 10px;
 	max-height: 600px;
 }
-
 .help_content dt {
 	clear: both;
 }
@@ -4620,7 +4626,6 @@ div [id$="_factdiv"] {
 }
 
 #addmedia-page textarea {
-	margin: 0 5px;
 	width: 440px;
 }
 

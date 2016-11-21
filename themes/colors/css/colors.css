@@ -540,7 +540,13 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .footer {direction:ltr;text-align:center;width:99%;}
 .gender_image {border:none;padding-left:3px;padding-right:3px;vertical-align:middle;}
 
-.helpheader {}
+.help_content {
+	font-size: .9em;
+	font-style: italic;
+	margin-left: 10px;
+	margin-right: 10px;
+	max-height: 600px;
+}
 .help_content {
 	font-size: .9em;
 	margin-left: 10px;

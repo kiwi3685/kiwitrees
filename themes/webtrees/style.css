@@ -217,7 +217,13 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 .cal_day {float:left;font-weight:bold;}
 .rtl_cal_day {direction:rtl;float:right;color:#0000ff;font-weight:bold;}
 
-.helpheader {}
+.help_content {
+	font-size: .9em;
+	font-style: italic;
+	margin-left: 10px;
+	margin-right: 10px;
+	max-height: 600px;
+}
 .help_content {
 	font-size: .9em;
 	margin-left: 10px;
