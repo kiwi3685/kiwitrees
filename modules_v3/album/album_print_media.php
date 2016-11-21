@@ -328,16 +328,16 @@ function album_print_media_row($rtype, $rowm, $pid) {
 
 		if (WT_USER_CAN_EDIT) {
 			// Edit Media
-			$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
-			$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid={$rowm['m_id']}', '_blank', edit_window_specs);");
-			$submenu->addClass("submenuitem");
+			$submenu = new WT_Menu(WT_I18N::translate('Edit media'), 'addmedia.php?action=editmedia&amp;pid=' . $rowm['m_id']);
+			$submenu->addTarget('_blank');
+			$submenu->addClass('submenuitem');
 			$menu->addSubMenu($submenu);
+			// Manage Links
 			if (WT_USER_IS_ADMIN) {
-				// Manage Links
 				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
-					$submenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_id']}&amp;linkto=manage', '_blank', find_window_specs);");
-					$submenu->addClass("submenuitem");
+					$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=manage');
+					$submenu->addTarget('_blank');
+					$submenu->addClass('submenuitem');
 					$menu->addSubMenu($submenu);
 				} else {
 					$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
