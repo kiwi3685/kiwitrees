@@ -89,21 +89,19 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 			// main link displayed on page
 			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), '#', 'menu-obje-link');
-				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $this->record->getXref() . '&linkto=manage&ged=' . WT_GEDCOM, 'menu-obje-edit');
+				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $this->record->getXref() . '&linkto=manage&ged=' . WT_GEDCOM, 'menu-obje-link');
 				$submenu->addTarget('_blank');
 			} else {
-				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'menu-obje-link');
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'), '#', 'menu-obje-link-indi');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','person');");
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '&linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
+				$submenu->addTarget('_blank');
 				$submenu->addSubMenu($ssubmenu);
 
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To family'), '#', 'menu-obje-link-fam');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','family');");
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To family'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '&linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
+				$submenu->addTarget('_blank');
 				$submenu->addSubMenu($ssubmenu);
 
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To source'), '#', 'menu-obje-link-sour');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','source');");
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To source'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '&linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
+				$submenu->addTarget('_blank');
 				$submenu->addSubMenu($ssubmenu);
 			}
 
