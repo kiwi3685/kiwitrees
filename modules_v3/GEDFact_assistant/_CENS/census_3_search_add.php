@@ -30,6 +30,9 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+$xref   = WT_Filter::get('pid', WT_REGEX_XREF);
+$head   = WT_Person::getInstance($xref, WT_GED_ID);
+
 ?>
 	<table id="navenclose">
 		<!-- Search Function  -->
@@ -81,7 +84,7 @@ if (!defined('WT_WEBTREES')) {
 			//-- Parents Family ---------------------------------------------------
 
 			//-- Build Parents Family --------------------------------------
-			$personcount=0;
+			$personcount = 0;
 			$families = $this->record->getChildFamilies();
 			foreach ($families as $famid=>$family) {
 				$label = $this->record->getChildFamilyLabel($family);
@@ -108,7 +111,7 @@ if (!defined('WT_WEBTREES')) {
 				if (isset($people["husb"])) {
 
 					//-- Parents Husbands Parents --------------------------------------
-					$gparent=WT_Person::getInstance($people["husb"]->getXref());
+					$gparent = WT_Person::getInstance($people["husb"]->getXref());
 					$fams = $gparent->getChildFamilies();
 					foreach ($fams as $famid=>$family) {
 						if (!is_null($family)) {
@@ -132,8 +135,8 @@ if (!defined('WT_WEBTREES')) {
 							$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
 						}
 					}
-					$menu = new WT_Menu($people["husb"]->getLabel());
-					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censdate);
+					$menu = new WT_Menu(getCloseRelationshipName($head, $people["husb"]));
+					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $people["husb"]), $censdate);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -165,7 +168,7 @@ if (!defined('WT_WEBTREES')) {
 										echo addslashes($fulln); // mnam = Full Name
 									}
 								?>", "<?php
-									echo $people["husb"]->getLabel(); // label = Relationship
+									echo getCloseRelationshipName($head, $people["husb"]); // label = Relationship
 								?>", "<?php
 									echo $people["husb"]->getSex(); // gend = Gender
 								?>", "<?php
@@ -259,8 +262,9 @@ if (!defined('WT_WEBTREES')) {
 							$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
 						}
 					}
-					$menu = new WT_Menu($people["wife"]->getLabel());
-					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
+					$menu = new WT_Menu(getCloseRelationshipName($head, $people['wife']));
+					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $people["wife"]), $censyear);
+
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -291,7 +295,8 @@ if (!defined('WT_WEBTREES')) {
 										echo addslashes($fulln); // mnam = Full Name
 									}
 								?>", "<?php
-									echo $people["wife"]->getLabel(); // label = Relationship
+									echo getCloseRelationshipName($head, $people["wife"]) // label = Relationship
+
 								?>", "<?php
 									echo $people["wife"]->getSex(); // gend = Gender
 								?>", "<?php
@@ -391,8 +396,8 @@ if (!defined('WT_WEBTREES')) {
 							}
 						}
 
-						$menu = new WT_Menu($child->getLabel());
-						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
+						$menu = new WT_Menu(getCloseRelationshipName($head, $child));
+						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $child), $censyear);
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
 						$menu->addSubMenu($submenu);
@@ -401,8 +406,8 @@ if (!defined('WT_WEBTREES')) {
 						<tr>
 							<td class="linkcell">
 								<?php
-								if ($child->getXref()==$pid) {
-									echo $child->getLabel();
+								if ($child->getXref() == $pid) {
+									echo getCloseRelationshipName($head, $child);
 								} else {
 									echo $menu->getMenu();
 								}
@@ -431,9 +436,9 @@ if (!defined('WT_WEBTREES')) {
 											}
 										?>", "<?php
 											if ($child->getXref()==$pid) {
-												echo "Head"; // label = Head
+												echo /* title for head of household, used on census transcriptions */ WT_I18N::translate('head'); // label = Head
 											} else {
-												echo $child->getLabel(); // label = Relationship
+												echo getCloseRelationshipName($head, $child); // label = Relationship
 											}
 										?>", "<?php
 											echo $child->getSex(); // gend = Gender
@@ -549,12 +554,12 @@ if (!defined('WT_WEBTREES')) {
 						}
 					}
 					$menu = new WT_Menu();
-					if ($people["husb"]->getLabel() == ".") {
+					if (getCloseRelationshipName($head, $people["husb"]) == ".") {
 						$menu->addLabel(WT_I18N::translate_c('mother\'s husband', 'step-father'));
 					} else {
-						$menu->addLabel($people["husb"]->getLabel());
+						$menu->addLabel(getCloseRelationshipName($head, $people["husb"]));
 					}
-					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censyear);
+					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $people["husb"]), $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -587,10 +592,10 @@ if (!defined('WT_WEBTREES')) {
 										echo addslashes($fulln); // mnam = Full Name
 									}
 								?>", "<?php
-								if ($people["husb"]->getLabel() == ".") {
+								if (getCloseRelationshipName($head, $people["husb"]) == ".") {
 									echo WT_I18N::translate_c('mother\'s husband', 'step-father'); // label = Relationship
 								} else {
-									echo $people["husb"]->getLabel(); // label = Relationship
+									echo getCloseRelationshipName($head, $people["husb"]); // label = Relationship
 								}
 								?>", "<?php
 									echo $people["husb"]->getSex(); // gend = Gender
@@ -687,12 +692,12 @@ if (!defined('WT_WEBTREES')) {
 						}
 					}
 					$menu = new WT_Menu();
-					if ($people["wife"]->getLabel() == ".") {
+					if (getCloseRelationshipName($head, $people["wife"]) == ".") {
 						$menu->addLabel(WT_I18N::translate_c('father\'s wife', 'step-mother'));
 					} else {
-						$menu->addLabel($people["wife"]->getLabel());
+						$menu->addLabel(getCloseRelationshipName($head, $people["wife"]));
 					}
-					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
+					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $people["wife"]), $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -725,10 +730,10 @@ if (!defined('WT_WEBTREES')) {
 										echo addslashes($fulln); // mnam = Full Name
 									}
 								?>", "<?php
-								if ($people["wife"]->getLabel() == ".") {
+								if (getCloseRelationshipName($head, $people["wife"]) == ".") {
 									echo WT_I18N::translate_c('father\'s wife', 'step-mother'); // label = Relationship
 								} else {
-									echo $people["wife"]->getLabel(); // label = Relationship
+									echo getCloseRelationshipName($head, $people["wife"]); // label = Relationship
 								}
 								?>", "<?php
 									echo $people["wife"]->getSex(); // gend = Gender
@@ -819,8 +824,8 @@ if (!defined('WT_WEBTREES')) {
 								$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$chnam[$i]['surname'];
 							}
 						}
-						$menu = new WT_Menu($child->getLabel());
-						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
+						$menu = new WT_Menu(getCloseRelationshipName($head, $child));
+						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $child), $censyear);
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
 						$menu->addSubMenu($submenu);
@@ -853,7 +858,7 @@ if (!defined('WT_WEBTREES')) {
 											echo addslashes($fulln); // mnam = Full Name
 										}
 									?>", "<?php
-										echo $child->getLabel(); // label = Relationship
+										echo getCloseRelationshipName($head, $child); // label = Relationship
 									?>", "<?php
 										echo $child->getSex(); // gend = Gender
 									?>", "<?php
@@ -959,8 +964,8 @@ if (!defined('WT_WEBTREES')) {
 							$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
 						}
 					}
-					$menu = new WT_Menu($people["husb"]->getLabel());
-					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censyear);
+					$menu = new WT_Menu(getCloseRelationshipName($head, $people["husb"]));
+					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $people["husb"]), $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -971,7 +976,7 @@ if (!defined('WT_WEBTREES')) {
 						<td class="linkcell">
 							<?php
 							if ($people["husb"]->getXref()==$pid) {
-								echo "&nbsp" .($people["husb"]->getLabel());
+								echo "&nbsp" .(getCloseRelationshipName($head, $people["husb"]));
 							} else {
 								echo $menu->getMenu();
 							}
@@ -1000,9 +1005,9 @@ if (!defined('WT_WEBTREES')) {
 									}
 								?>", "<?php
 									if ($people["husb"]->getXref()==$pid) {
-										echo "Head"; // label = Relationship
+										echo /* title for head of household, used on census transcriptions */ WT_I18N::translate('head'); // label = Head
 									} else {
-										echo $people["husb"]->getLabel(); // label = Relationship
+										echo getCloseRelationshipName($head, $people["husb"]); // label = Relationship
 									}
 								?>", "<?php
 									echo $people["husb"]->getSex(); // gend = Gender
@@ -1098,8 +1103,8 @@ if (!defined('WT_WEBTREES')) {
 							$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
 						}
 					}
-					$menu = new WT_Menu($people["wife"]->getLabel());
-					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
+					$menu = new WT_Menu(getCloseRelationshipName($head, $people["wife"]));
+					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $people["wife"]), $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -1110,7 +1115,7 @@ if (!defined('WT_WEBTREES')) {
 						<td class="linkcell">
 							<?php
 							if ($people["wife"]->getXref()==$pid) {
-								echo "&nbsp" .($people["wife"]->getLabel());
+								echo "&nbsp" .(getCloseRelationshipName($head, $people["wife"]));
 							} else {
 								echo $menu->getMenu();
 							}
@@ -1139,9 +1144,9 @@ if (!defined('WT_WEBTREES')) {
 									}
 								?>", "<?php
 									if ($people["wife"]->getXref()==$pid) {
-										echo "Head"; // label = Head
+										echo /* title for head of household, used on census transcriptions */ WT_I18N::translate('head'); // label = Head
 									} else {
-										echo $people["wife"]->getLabel(); // label = Relationship
+										echo getCloseRelationshipName($head, $people["wife"]); // label = Relationship
 									}
 								?>", "<?php
 									echo $people["wife"]->getSex(); // gend = Gender
@@ -1238,8 +1243,8 @@ if (!defined('WT_WEBTREES')) {
 							$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$chnam[$i]['surname'];
 						}
 					}
-					$menu = new WT_Menu($child->getLabel());
-					$slabel = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
+					$menu = new WT_Menu(getCloseRelationshipName($head, $child));
+					$slabel = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, getCloseRelationshipName($head, $child), $censyear);
 					$slabel .= $spouselinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubmenu($submenu);
@@ -1270,7 +1275,7 @@ if (!defined('WT_WEBTREES')) {
 										echo addslashes($fulln); // mnam = Full Name
 									}
 								?>", "<?php
-									echo $child->getLabel(); // label = Relationship
+									echo getCloseRelationshipName($head, $child); // label = Relationship
 								?>", "<?php
 									echo $child->getSex(); // gend = Gender
 								?>", "<?php
@@ -1633,7 +1638,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				//-- Step Husband --------------------------------------
 				if ($natdad == "yes") {
 				} else {
-					if (($husb || $num>0) && $husb->getLabel() != ".") {
+					if (($husb || $num>0) && getCloseRelationshipName($head, $husb) != ".") {
 						if ($husb) {
 							//-- Step Husbands Parents -----------------------------
 							$gparent=WT_Person::getInstance($husb->getXref());

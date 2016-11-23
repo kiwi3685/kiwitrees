@@ -972,9 +972,9 @@ function get_relationship_name($nodes) {
 	if (!is_array($nodes)) {
 		return '';
 	}
-	$person1=$nodes['path'][0];
-	$person2=$nodes['path'][count($nodes['path'])-1];
-	$path=array_slice($nodes['relations'], 1);
+	$person1	= $nodes['path'][0];
+	$person2	= $nodes['path'][count($nodes['path'])-1];
+	$path		= array_slice($nodes['relations'], 1);
 	// Look for paths with *specific* names first.
 	// Note that every combination must be listed separately, as the same English
 	// name can be used for many different relationships.  e.g.
@@ -992,12 +992,31 @@ function get_relationship_name($nodes) {
 	// complexities of other languages.
 
 	// Make each relationship parts the same length, for simpler matching.
-	$combined_path='';
+	$combined_path = '';
 	foreach ($path as $rel) {
-		$combined_path.=substr($rel, 0, 3);
+		$combined_path .= substr($rel, 0, 3);
 	}
 
 	return get_relationship_name_from_path($combined_path, $person1, $person2);
+}
+
+/**
+ * For close family relationships, such as the families tab and the family navigator
+ * Display a tick if both individuals are the same.
+ *
+ * @param Individual $individual1
+ * @param Individual $individual2
+ *
+ * @return string
+ */
+function getCloseRelationshipName(WT_Person $individual1, WT_Person $individual2) {
+	if ($individual1->getXref() === $individual2->getXref()) {
+		$label = '<i class="icon-selected"></i>' . reflexivePronoun($individual1);
+	} else {
+		$label = get_relationship_name(get_relationship($individual1, $individual2));
+	}
+
+	return $label;
 }
 
 /**

@@ -55,315 +55,207 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
 		global $controller, $spouselinks, $parentlinks;
+		$controller->addInlineJavascript('
+			jQuery("#sb_family_nav_content")
+				.on("click", ".flyout a", function() {
+					return false;
+				})
+				.on("click", ".flyout3", function() {
+					window.location.href = jQuery(this).data("href");
+					return false;
+				});
+		');
+		$person = WT_Person::getInstance($controller->record->getXref());
 
 		ob_start();
+		?>
 
-		echo '
-			<div id="sb_family_nav_content">
-				<table class="nav_content">';
-
-		//-- parent families -------------------------------------------------------------
-		foreach ($controller->record->getChildFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, 'parents');
-			echo '
-				<tr>
-					<td class="center" colspan="2">
-						<a class="famnav_link" href="' . $family->getHtmlUrl() . '">'.
-							$controller->record->getChildFamilyLabel($family) . '
-						</a>
-					</td>
-				</tr>';
-			if (isset($people['husb'])) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'], true, 3)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people['husb']), ' nam">
-							<a class="famnav_link" href="' . $people["husb"]->getHtmlUrl() . '">'.
-								$people['husb']->getFullName().'
-							</a>
-							<div class="font9">' . $people['husb']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-
-			if (isset($people['wife'])) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'], true, 3)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people['wife']), ' nam">
-							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">'.
-								$people['wife']->getFullName(). '
-							</a>
-							<div class="font9">' . $people['wife']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-
-			foreach ($people['children'] as $child) {
-				if ($controller->record->equals($child)) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>' . reflexivePronoun($child));
-				} else {
-					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child, true, 3)));
+		<div id="sb_family_nav_content">
+			<table class="nav_content">
+				<?php
+				//-- parent families -------------------------------------------------------------
+				foreach ($controller->record->getChildFamilies() as $family) {
+					$this->drawFamily($family, $person->getChildFamilyLabel($family));
 				}
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">'.
-							$menu->getMenu(). '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($child), ' nam">
-							<a class="famnav_link" href="' . $child->getHtmlUrl() . '">',
-								$child->getFullName(), '
-							</a>
-							<div class="font9">' . $child->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-		}
-
-		//-- step parents ----------------------------------------------------------------
-		foreach ($controller->record->getChildStepFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, 'step-parents');
-			echo '
-				<tr>
-					<td class="center" colspan="2">
-						<a class="famnav_link" href="' . $family->getHtmlUrl() . '">' .
-							$controller->record->getStepFamilyLabel($family) . '
-						</a>
-					</td>
-				</tr>';
-
-			if (isset($people['husb']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people["husb"]), ' nam">
-							<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">' .
-								$people['husb']->getFullName(). '
-							</a>
-							<div class="font9">' . $people['husb']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-
-			if (isset($people['wife']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'], true, 3)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people['wife']), ' nam">
-							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">' .
-								$people['wife']->getFullName(). '
-							</a>
-							<div class="font9">' . $people['wife']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-			foreach ($people['children'] as $child) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child, true, 3)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($child), ' nam">
-							<a class="famnav_link" href="' . $child->getHtmlUrl() . '">' .
-								$child->getFullName(). '
-							</a>
-							<div class="font9">' . $child->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-		}
-
-		//-- spouse and children --------------------------------------------------
-		foreach ($controller->record->getSpouseFamilies() as $family) {
-			echo '
-				<tr>
-					<td class="center" colspan="2">
-						<a class="famnav_link" href="' . $family->getHtmlUrl() . '">' .
-							WT_I18N::translate('Immediate Family') . '
-						</a>
-					</td>
-				</tr>';
-			$people = $controller->buildFamilyList($family, 'spouse');
-			if (isset($people['husb'])) {
-				if ($controller->record->equals($people['husb'])) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>' . reflexivePronoun($people['husb']));
-				} else {
-					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'], true, 3)));
+				//-- step parents ----------------------------------------------------------------
+				foreach ($controller->record->getChildStepFamilies() as $family) {
+					$this->drawFamily($family, $person->getStepFamilyLabel($family));
 				}
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people['husb']), ' nam">
-							<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">'.
-								$people['husb']->getFullName(). '
-							</a>
-							<div class="font9">' . $people['husb']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-
-			if (isset($people['wife'])) {
-				if ($controller->record->equals($people['wife'])) {
-					$menu = new WT_Menu('<i class="icon-selected"></i>' . reflexivePronoun($people['wife']));
-				} else {
-					$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'], true, 3)));
+				//-- spouse and children --------------------------------------------------
+				foreach ($controller->record->getSpouseFamilies() as $family) {
+					$this->drawFamily($family, $person->getSpouseFamilyLabel($family, $controller->record));
 				}
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people['wife']), ' nam">
-							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">' .
-								$people['wife']->getFullName(). '
-							</a>
-							<div class="font9">' . $people['wife']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-
-			foreach ($people['children'] as $child) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child, true, 3)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubmenu($submenu);
-				echo '<tr><td class="facts_label">', $menu->getMenu(), '</td><td class="center ', $controller->getPersonStyle($child), ' nam">';
-				echo '<a class="famnav_link" href="' . $child->getHtmlUrl() . '">';
-				echo $child->getFullName();
-				echo '</a>';
-				echo '<div class="font9">' . $child->getLifeSpan() . '</div>';
-				echo '</td></tr>';
-			}
-		}
-		//-- step children ----------------------------------------------------------------
-		foreach ($controller->record->getSpouseStepFamilies() as $family) {
-			$people = $controller->buildFamilyList($family, 'step-children');
-			echo '
-				<tr>
-					<td class="center" colspan="2">
-						<a class="famnav_link" href="' . $family->getHtmlUrl() . '">' .
-							$family->getFullName() . '
-						</a>
-					</td>
-				</tr>';
-
-			if (isset($people['husb']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['husb'])));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['husb']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people['husb']), ' nam">
-							<a class="famnav_link" href="' . $people['husb']->getHtmlUrl() . '">'.
-								$people['husb']->getFullName(). '
-							</a>
-							<div class="font9">' . $people['husb']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-
-			if (isset($people['wife']) ) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $people['wife'], true, 3)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($people['wife']) . $parentlinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($people['wife']), ' nam">
-							<a class="famnav_link" href="' . $people['wife']->getHtmlUrl() . '">'.
-								$people['wife']->getFullName(). '
-							</a>
-							<div class="font9">' . $people['wife']->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-			foreach ($people['children'] as $child) {
-				$menu = new WT_Menu(get_relationship_name(get_relationship($controller->record, $child, true, 3)));
-				$menu->addClass('', 'submenu flyout2');
-				$submenu = new WT_Menu($this->print_pedigree_person_nav($child) . $spouselinks);
-				$menu->addSubMenu($submenu);
-				echo '
-					<tr>
-						<td class="facts_label">',
-							$menu->getMenu(), '
-						</td>
-						<td class="center ',
-							$controller->getPersonStyle($child), ' nam">
-							<a class="famnav_link" href="' . $child->getHtmlUrl() . '">' .
-								$child->getFullName(). '
-							</a>
-							<div class="font9">' . $child->getLifeSpan() . '</div>
-						</td>
-					</tr>';
-			}
-		}
-
-		echo '
+				//-- step children ----------------------------------------------------------------
+				foreach ($controller->record->getSpouseStepFamilies() as $family) {
+					$this->drawFamily($family, $family->getFullName());
+				}
+				?>
 			</table>
-		</div>';
-
+		</div>
+		<?php
 		return ob_get_clean();
 	}
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
+	}
+
+	/**
+	 * Format a family.
+	 *
+	 * @param Family $family
+	 * @param string $title
+	 */
+	private function drawFamily(WT_Family $family, $title) {
+		global $controller;
+		?>
+		<tr>
+			<td class="center" colspan="2">
+				<a class="famnav_title" href="<?php echo $family->getHtmlUrl(); ?>">
+					<?php echo $title; ?>
+				</a>
+			</td>
+		</tr>
+		<?php
+		foreach ($family->getSpouses() as $spouse) {
+			$menu = new WT_Menu(getCloseRelationshipName($controller->record, $spouse));
+			$menu->addClass('', 'submenu flyout');
+			$menu->addSubmenu(new WT_Menu($this->getParents($spouse)));
+			?>
+			<tr>
+				<td class="facts_label">
+					<?php echo $menu->getMenu(); ?>
+				</td>
+				<td class="center <?php echo $controller->getPersonStyle($spouse); ?> nam">
+					<?php if ($spouse->canDisplayName()): ?>
+						<a class="famnav_link" href="<?php echo $spouse->getHtmlUrl(); ?>">
+							<?php echo $spouse->getFullName(); ?>
+						</a>
+						<div class="font9">
+							<?php echo $spouse->getLifeSpan(); ?>
+						</div>
+					<?php else: ?>
+						<?php echo $spouse->getFullName(); ?>
+					<?php endif; ?>
+				</td>
+			</tr>
+			<?php
+		}
+		foreach ($family->getChildren() as $child) {
+			$menu = new WT_Menu(getCloseRelationshipName($controller->record, $child));
+			$menu->addClass('', 'submenu flyout');
+			$menu->addSubmenu(new WT_Menu($this->getFamily($child)));
+			?>
+			<tr>
+				<td class="facts_label">
+					<?php echo $menu->getMenu(); ?>
+				</td>
+				<td class="center <?php echo $controller->getPersonStyle($child); ?> nam">
+					<?php if ($child->canDisplayName()): ?>
+					<a class="famnav_link" href="<?php echo $child->getHtmlUrl(); ?>">
+						<?php echo $child->getFullName(); ?>
+					</a>
+					<div class="font9">
+						<?php echo $child->getLifeSpan(); ?>
+					</div>
+					<?php else: ?>
+						<?php echo $child->getFullName(); ?>
+					<?php endif; ?>
+				</td>
+			</tr>
+		<?php
+		}
+	}
+
+	/**
+	 * Forat the parents of an individual.
+	 *
+	 * @param WT_Person $person
+	 *
+	 * @return string
+	 */
+	private function getParents(WT_Person $person) {
+		$father = null;
+		$mother = null;
+		$html   = '<div class="flyout2">' . WT_I18N::translate('Parents') . '</div>';
+		$family = $person->getPrimaryChildFamily();
+		if ($person->canDisplayName() && $family !== null) {
+			$father = $family->getHusband();
+			$mother = $family->getWife();
+			$html .= $this->getHTML($father) .
+					 $this->getHTML($mother);
+
+			// Can only have a step parent if one & only one parent found at this point
+			if ($father instanceof WT_Person xor $mother instanceof WT_Person) {
+				$stepParents = '';
+				foreach ($person->getChildStepFamilies() as $family) {
+					if (!$father instanceof WT_Person) {
+						$stepParents .= $this->getHTML($family->getHusband());
+					} else {
+						$stepParents .= $this->getHTML($family->getWife());
+					}
+				}
+				if ($stepParents) {
+					$relationship = $father instanceof WT_Person ?
+						WT_I18N::translate_c("father’s wife", "step-mother") : WT_I18N::translate_c("mother’s husband", "step-father");
+					$html .= '<div class="flyout2">' . $relationship . '</div>' . $stepParents;
+				}
+			}
+		}
+		if (!($father instanceof WT_Person || $mother instanceof WT_Person)) {
+			$html .= '<div class="flyout4">(' . WT_I18N::translate_c('unknown family', 'unknown') . ')</div>';
+		}
+		return $html;
+	}
+
+	/**
+	 * Format a family.
+	 *
+	 * @param Individual $person
+	 *
+	 * @return string
+	 */
+	private function getFamily(WT_Person $person) {
+		$html = '';
+		if ($person->canDisplayName()) {
+			foreach ($person->getSpouseFamilies() as $family) {
+				$spouse = $family->getSpouse($person);
+				$html .= $this->getHTML($spouse, true);
+				$children = $family->getChildren();
+				if (count($children) > 0) {
+					$html .= "<ul class='clist'>";
+					foreach ($children as $child) {
+						$html .= '<li>' . $this->getHTML($child) . '</li>';
+					}
+					$html .= '</ul>';
+				}
+			}
+		}
+		if (!$html) {
+			$html = '<div class="flyout4">(' . WT_I18N::translate('none') . ')</div>';;
+		}
+
+		return '<div class="flyout2">' . WT_I18N::translate('Family') . '</div>' . $html;
+
+	}
+
+	/**
+	 * Format an individual.
+	 *
+	 * @param      $person
+	 * @param bool $showUnknown
+	 *
+	 * @return string
+	 */
+	private function getHTML($person, $showUnknown = false) {
+		if ($person instanceof WT_Person) {
+			return '<div class="flyout3" data-href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</div>';
+		} elseif ($showUnknown) {
+			return '<div class="flyout4">(' . WT_I18N::translate('unknown') . ')</div>';
+		} else {
+			return '';
+		}
 	}
 
 	function print_pedigree_person_nav($person) {
