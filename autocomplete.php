@@ -511,7 +511,7 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$person = WT_Person::getInstance($row);
 			if ($person->canDispLayname()) {
-				$data[] = array('value'=>$row['xref'],       'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
+				$data[] = array('value'=>$row['xref'], 'label'=>'<i class="icon-button_indi"></i>'. str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']).', <i>'.$person->getLifeSpan().'</i>');
 			}
 		}
 		// Fetch all data, regardless of privacy
@@ -520,7 +520,7 @@ switch ($type) {
 		foreach ($rows as $row) {
 			$source = WT_Source::getInstance($row);
 			if ($source->canDispLayname()) {
-				$data[] = array('value'=>$row['xref'], 'label'=>$row['n_full']);
+				$data[] = array('value'=>$row['xref'], 'label'=>'<i class="icon-button_source"></i>'. $row['n_full']);
 			}
 		}
 		// Fetch all data, regardless of privacy
@@ -531,9 +531,9 @@ switch ($type) {
 			if ($family->canDispLayname()) {
 				$marriage_year = $family->getMarriageYear();
 				if ($marriage_year) {
-					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+					$data[] = array('value'=>$family->getXref(), 'label'=>'<i class="icon-button_family"></i>'. $family->getFullName().', <i>'.$marriage_year.'</i>');
 				} else {
-					$data[] = array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+					$data[] = array('value'=>$family->getXref(), 'label'=>'<i class="icon-button_family"></i>'. $family->getFullName());
 				}
 			}
 		}
