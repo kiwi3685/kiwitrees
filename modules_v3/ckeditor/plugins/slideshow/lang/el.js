@@ -13,6 +13,7 @@ CKEDITOR.plugins.setLang( 'slideshow', 'el', {
 	imgTitle : 'Τίτλος',
 	imgDelete : 'Διαγραφή',
 	imgEdit : 'Επεξεργασία',
+    validModif : 'Muudatuste salvestamiseks',
 	previewMode : 'Προεπισκόπηση',
 	imgDesc : 'Μικρή περιγραφή',
 	editSlideShow : 'Επεξεργασία SlideShow',
@@ -21,10 +22,15 @@ CKEDITOR.plugins.setLang( 'slideshow', 'el', {
 	showThumbs : 'Προβολή μικρογραφιών',
 	showTitle : 'Προβολή Τίτλου',
 	showControls : "Προβολή Start / Stop",
+	labelStart : "Start",
+	labelStop : "Stop",
+	arrowUp : "\u2191",
+	arrowDown : "\u2193",
 	displayTime : 'Χρόνος (Sec.)',
 	transitionTime : 'Χρόνος εφέ (mSec.)',
 	autoStart : 'Αυτόματη έναρξη',
 	pictHeight : 'Ύψος (px)',
+	pictWidth : 'ευρύτητα (px)',
 	openOnClick : 'Popup με το κλικ',
 	transition : 'Τύπος εφέ μετάβασης',
 	tr1 : 'Χωρίς',
@@ -33,5 +39,3 @@ CKEDITOR.plugins.setLang( 'slideshow', 'el', {
 	tr4 : 'Οριζόντια κύλιση',
 	tr5 : 'Σβήσιμο',
 });
-
-

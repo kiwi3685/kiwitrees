@@ -55,11 +55,27 @@ class ckeditor_WT_Module extends WT_Module {
 					allowedContent: true,
 					width: "100%",
 					height: "400px",
-					extraPlugins: "slideshow",
 					filebrowserImageBrowseUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
 					filebrowserImageUploadUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
-					extraPlugins: "footnotes",
-					footnotesPrefix: "a"
+					extraPlugins: "slideshow,footnotes",
+					footnotesPrefix: "a",
+					toolbarGroups: [
+						{ name: "document", groups: [ "mode", "document", "doctools" ] },
+						{ name: "clipboard", groups: [ "clipboard", "undo" ] },
+						{ name: "editing", groups: [ "find", "selection", "spellchecker", "editing" ] },
+						{ name: "forms", groups: [ "forms" ] },
+						"/",
+						{ name: "basicstyles", groups: [ "basicstyles", "cleanup" ] },
+						{ name: "paragraph", groups: [ "list", "indent", "blocks", "align", "bidi", "paragraph" ] },
+						{ name: "links", groups: [ "links" ] },
+						"/",
+						{ name: "styles", groups: [ "styles" ] },
+						{ name: "colors", groups: [ "colors" ] },
+						{ name: "tools", groups: [ "tools" ] },
+						{ name: "insert", groups: [ "insert" ] },
+						{ name: "others", groups: [ "others" ] },
+						{ name: "about", groups: [ "about" ] }
+					]
 				});
 			');
 	}
@@ -73,7 +89,7 @@ class ckeditor_WT_Module extends WT_Module {
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
-					skin : "moono",
+					skin : "moono-lisa",
 					width: "100%",
 					height: "150px",
 					toolbar: [["Bold", "Italic", "Underline", "-", "Subscript", "Superscript", "-", "NumberedList", "BulletedList", "Outdent", "Indent", "Font", "FontSize", "TextColor"]]

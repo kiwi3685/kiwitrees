@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright (c) 2012 Anders Ekdahl (http://coffeescripter.com/)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
@@ -7,7 +7,16 @@
  *
  * Demo and documentation: http://coffeescripter.com/code/ad-gallery/
  */
+
 (function($) {
+	function showWidth( ele, w ) {
+		  //console.log( "The width for the " + ele + " is " + w + "px." );
+		  image_wrapper_width = w;
+		};
+	$( window ).resize(function() {
+		  if (($( '.ad-gallery' )[0]) && ($( '.ad-gallery' )[0].width)) showWidth( "gallery", $( '.ad-gallery' )[0].width() );
+		});
+
   $.fn.adGallery = function(options) {
     var defaults = { loader_image: './ckeditor/plugins/slideshow/3rdParty/ad-gallery/loader.gif',
                      start_at_index: 0,
@@ -43,8 +52,11 @@
                        init: false,
                        afterImageVisible: false,
                        beforeImageVisible: false
-                     }
+                     },
+                     galRunCnt:0
     };
+	  //console.log( $( document.getElementsByClassName('ad-gallery')));
+
     var settings = $.extend(false, defaults, options);
     if(options && options.slideshow) {
       settings.slideshow = $.extend(false, defaults.slideshow, options.slideshow);
@@ -163,6 +175,7 @@
     images: false,
     in_transition: false,
     animations: false,
+    galOnPageCnt: 0,
     init: function(wrapper, settings) {
       var context = this;
       this.wrapper = $(wrapper);
@@ -226,16 +239,28 @@
         }
       );
       this.fireCallback(this.settings.callbacks.init);
+  	$( window ).resize(function() {
+  		//console.log("zzzzzzzzzzzz", $( document.getElementsByClassName('ad-gallery')[0] ).width());
+  		this.image_wrapper_width = $('.ad-gallery').first().width();
+	});
     },
     setupAnimations: function() {
-      this.animations = {
-        'slide-vert': VerticalSlideAnimation,
-        'slide-hori': HorizontalSlideAnimation,
-        'resize': ResizeAnimation,
-        'fade': FadeAnimation,
-        'none': NoneAnimation
-      };
-    },
+        this.animations = {
+          'slide-vert': VerticalSlideAnimation,
+          'slide-hori': HorizontalSlideAnimation,
+          'resize': ResizeAnimation,
+          'fade': FadeAnimation,
+          'none': NoneAnimation
+        };
+      },
+      adjustSize: function() {
+    	  //console.log(this.wrapper[0].clientWidth);
+    	  if (this.wrapper[0].clientWidth >  $('.ad-gallery').first().width()) {
+    		  this.image_wrapper_width = $('.ad-gallery').first().width();
+    	  } else {
+        		this.image_wrapper_width = this.wrapper[0].clientWidth;
+    	  }
+        },
     setupElements: function() {
       this.controls = this.wrapper.find('.ad-controls');
       this.gallery_info = $('<p class="ad-info"></p>');
@@ -432,11 +457,11 @@
                  '</a></li>');
       var context = this;
       this.thumbs_wrapper.find("ul").append(li);
-      
+
       var link = li.find("a");
       var thumb = link.find("img");
       thumb.css('opacity', this.settings.thumb_opacity);
-      
+
       this.whenImageLoaded(thumb[0], function() {
         var thumb_width = thumb[0].parentNode.parentNode.offsetWidth;
         if(thumb[0].width == 0) {
@@ -445,7 +470,7 @@
           // It's not very nice, but it's better than 0.
           thumb_width = 100;
         };
-        
+
         context.thumbs_wrapper_width += thumb_width;
         context._setThumbListWidth(context.thumbs_wrapper_width);
       });
@@ -591,6 +616,7 @@
      * If it's not, shrink it proportionally
      */
     _getContainedImageSize: function(image_width, image_height) {
+	this.adjustSize();
       if(image_height > this.image_wrapper_height) {
         var ratio = image_width / image_height;
         image_height = this.image_wrapper_height;
@@ -608,36 +634,67 @@
      * it in the middle anyway
      */
     _centerImage: function(img_container, image_width, image_height) {
-        //console.log(' Image width :' +  image_width);
-        //console.log(' Image height :' +  image_height);
-        //console.log(' Image wrapper width :' +  this.image_wrapper_width);
-        //console.log(' Image wrapper height:' +  this.image_wrapper_height);
+//        console.log(' Image width :' +  image_width);
+//        console.log(' Image height :' +  image_height);
+//        console.log(' Image wrapper width :' +  this.image_wrapper_width);
+//        console.log(' Image wrapper height:' +  this.image_wrapper_height);
       img_container.css('top', '0px');
       if(image_height < this.image_wrapper_height) {
         var dif = this.image_wrapper_height - image_height;
         img_container.css('top', (dif / 2) +'px');
       };
-      img_container.css('left', '0px');
-      if(image_width < this.image_wrapper_width) {
-        var dif = this.image_wrapper_width - image_width;
-        img_container.css('left', (dif / 2) +'px');
-     };
+//      img_container.css('left', '0px');
+//      if(image_width < this.image_wrapper_width) {
+//        var dif = this.image_wrapper_width - image_width;
+//        img_container.css('left', (dif / 2) +'px');
+//     };
+      img_container.css('width', '100%');
+      img_container.css('text-align', 'center');
     },
+//    _getDescription: function(image) {
+//      var desc = '';
+//      if(image.desc.length || image.title.length) {
+//        var title = '';
+//        if(image.title.length) {
+//          title = '<strong class="ad-description-title">'+ image.title +'</strong>';
+//        };
+//        desc = '';
+//        if(image.desc.length) {
+//          desc = '<span>'+ image.desc +'</span>';
+//        };
+//        desc = $('<p class="ad-image-description">'+ title + desc +'</p>');
+//      };
+//      return desc;
+//    },
     _getDescription: function(image) {
-      var desc = '';
-      if(image.desc.length || image.title.length) {
-        var title = '';
-        if(image.title.length) {
-          title = '<strong class="ad-description-title">'+ image.title +'</strong>';
+        var desc = '';
+        var classDesc = '<p class="ad-image-description">';
+        if(image.desc.length || image.title.length) {
+          var title = '';
+          if(image.title.length) {
+            title = '<strong class="ad-description-title">'+ image.title +'</strong>';
+          } else {
+        	  classDesc = '';        	
+          }
+          desc = '';
+          if(image.desc.length) {
+            if (image.desc.indexOf('IMAGE_LINK_') >= 0) {
+          	  desc = '<span style="display:none;">'+ image.desc +'</span>'; 	
+                var url=window.location.href.trim();
+                var idesc = image.desc.substring(12).trim();
+                if (url == idesc) {
+              	  classDesc = '';
+              	  title = '';
+                }
+            } else {
+          	  desc = '<span>'+ image.desc +'</span>'; 	  
+            }
+          };
+          desc = $(classDesc + title + desc +'</p>');
         };
-        desc = '';
-        if(image.desc.length) {
-          desc = '<span>'+ image.desc +'</span>';
-        };
-        desc = $('<p class="ad-image-description">'+ title + desc +'</p>');
-      };
-      return desc;
-    },
+        return desc;
+      },
+
     /**
      * @param function callback Gets fired when the image has loaded, is displaying
      *                          and it's animation has finished
@@ -663,6 +720,7 @@
      *                          and it's animation has finished
      */
     _showWhenLoaded: function(index, callback) {
+    	//console.log("_showWhenLoaded");
       if(this.images[index]) {
         var context = this;
         var image = this.images[index];
@@ -679,8 +737,6 @@
         var size = this._getContainedImageSize(image.size.width, image.size.height);
         img.attr('width', size.width);
         img.attr('height', size.height);
-        //console.log(' Image width :' +  size.width);
-        //console.log(' Image height :' +  size.height);
         img_container.css({width: size.width +'px', height: size.height +'px'});
         this._centerImage(img_container, size.width, size.height);
         var desc = this._getDescription(image);
@@ -688,7 +744,7 @@
           if(!this.settings.description_wrapper && !this.settings.hooks.displayDescription) {
             img_container.append(desc);
             var width = size.width - parseInt(desc.css('padding-left'), 10) - parseInt(desc.css('padding-right'), 10);
-            desc.css('width', width +'px');
+            //desc.css('width', width +'px');
           } else if(this.settings.hooks.displayDescription) {
             this.settings.hooks.displayDescription.call(this, image);
           } else {
@@ -697,7 +753,7 @@
           };
         };
         this.highLightThumb(this.images[index].thumb_link);
-        
+
         var direction = 'right';
         if(this.current_index < index) {
           direction = 'left';
@@ -860,13 +916,14 @@
 
   function AdGallerySlideshow(nextimage_callback, settings) {
     this.init(nextimage_callback, settings);
+	  //console.log("xxx -> ", $( document.getElementsByClassName('ad-gallery')).length);
+	  this.galOnPageCnt = $('.ad-gallery').length;
   };
   AdGallerySlideshow.prototype = {
     start_link: false,
     stop_link: false,
     countdown: false,
     controls: false,
-
     settings: false,
     nextimage_callback: false,
     enabled: false,
@@ -926,6 +983,7 @@
       };
     },
     start: function() {
+      this.settings.galRunCnt = 0;
       if(this.running || !this.enabled) return false;
       this.running = true;
       this.controls.addClass('ad-slideshow-running');
@@ -943,12 +1001,22 @@
       return true;
     },
     _next: function() {
+      this.settings.galRunCnt++;
+  	  //console.log("next -> this.settings.galRunCnt: ", this.settings.galRunCnt);
+  	  //console.log("next -> galOnPageCnt : ", this.galOnPageCnt);
+  	  var interVal = 1000;
+  	  if (this.settings.galRunCnt <= this.galOnPageCnt) {
+  		 // interVal = 0;
+  	  }
       var  context = this;
       var pre = this.settings.countdown_prefix;
       var su = this.settings.countdown_sufix;
       clearInterval(context.countdown_interval);
       this.countdown.show().html(pre + (this.settings.speed / 1000) + su);
       var slide_timer = 0;
+//  	  if (this.settings.galRunCnt <= 1) {
+//  		  interVal = 0;
+//  	  }
       this.countdown_interval = setInterval(
         function() {
           slide_timer += 1000;
@@ -972,7 +1040,7 @@
             context.countdown.html(pre + sec + su);
           };
         },
-        1000
+        interVal
       );
     },
     fireCallback: function(fn) {
