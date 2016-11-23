@@ -965,6 +965,10 @@ table.center {
 	padding: 10px 0;
 }
 
+.sour_facts[id^="BIRT"] {
+	background-color: #eee;
+}
+
 .tabs_table {
 	width: 99%;
 }
@@ -1904,15 +1908,16 @@ a.showit:hover > span {
 }
 
 .ui-autocomplete {
-	padding: 0;
-	border: 1px solid #000;
 	background-color: #fff;
-	z-index: 99999;
-	list-style-position: outside;
+	border: 1px solid #000;
 	list-style: none;
+	list-style-position: outside;
 	margin: 0;
 	max-height: 200px;
 	overflow-y: auto;
+	padding: 0;
+	white-space: nowrap;
+	z-index: 99999;
 }
 
 .ui-autocomplete li {
@@ -1934,7 +1939,7 @@ a.showit:hover > span {
 	background-color: #ddd;
 }
 
-ul.ui-autocomplete li.ui-state-focus a {
+ul.ui-autocomplete li a:hover {
 	color: #ff0000;
 	font-weight: normal;
 }
@@ -4249,15 +4254,17 @@ a.icon-udarrow:hover {
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
 .icon-sidebar-open		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-right */
 .icon-clippings			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; vertical-align: middle;} /* fa-scissors */
+
 .icon-button_indi		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-male */
-.icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em;} /* fa-users */
+.icon-button_family		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-users */
+.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-book */
+
 .icon-selected			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 2px;} /* fa-tick */
 .fa-plus,
 .icon-button_addsource,
 .icon-button_addmedia,
 .icon-button_addrepository
 						{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-plus */
-.icon-button_source		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-book */
 .icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-icon-keyboard-o */
 .icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-globe */
 .icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-calendar */
