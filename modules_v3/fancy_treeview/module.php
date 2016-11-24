@@ -542,20 +542,21 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 								/* I18N: Help text for the “Show single persons” configuration setting */ WT_I18N::translate('Turn this option on to show people who have no partner or children. With this option turned on every child of a family will be shown in a detailed way in the next generation block.') . '
 							</span>
 						</div>
-					</div>
-					<div id="ftv_places" class="field">
-						<label class="label">' . WT_I18N::translate('Show places') . '</label>' .
-						edit_field_yes_no('NEW_FTV_OPTIONS[SHOW_PLACES]', $this->options('show_places')) . '
-					</div>
-					<div id="gedcom_places" class="field">
-						<label class="label">' . WT_I18N::translate('Use default family tree settings to abbreviate place names') . '</label>' . edit_field_yes_no('NEW_FTV_OPTIONS[USE_GEDCOM_PLACES]', $this->options('use_gedcom_places')) . '
-						<div class="help_text">
-							<span class="help_content">' .
-								/* I18N: Help text for the “Use default Gedcom settings to abbreviate place names” configuration setting */ WT_I18N::translate('If you have ticked the “Show places” option you can choose to use the default family tree settings to abbreviate placenames. If you don’t set this option full place names will be shown.') . '
-							</span>
+						</div>';
+					if ($this->getCountryList()) {
+	$html .= '			<div id="ftv_places" class="field">
+							<label class="label">' . WT_I18N::translate('Show places') . '</label>' .
+							edit_field_yes_no('NEW_FTV_OPTIONS[SHOW_PLACES]', $this->options('show_places')) . '
 						</div>
-					</div>
-					<div id="country_list" class="field">
+						<div id="gedcom_places" class="field">
+							<label class="label">' . WT_I18N::translate('Use default family tree settings to abbreviate place names') . '</label>' . edit_field_yes_no('NEW_FTV_OPTIONS[USE_GEDCOM_PLACES]', $this->options('use_gedcom_places')) . '
+							<div class="help_text">
+								<span class="help_content">' .
+									/* I18N: Help text for the “Use default Gedcom settings to abbreviate place names” configuration setting */ WT_I18N::translate('If you have ticked the “Show places” option you can choose to use the default family tree settings to abbreviate placenames. If you don’t set this option full place names will be shown.') . '
+								</span>
+							</div>
+						</div>
+						<div id="country_list" class="field">
 							<label class="label">' . WT_I18N::translate('Select your country') . '</label>' .
 							select_edit_control('NEW_FTV_OPTIONS[COUNTRY]', $this->getCountryList(), '', $this->options('country')) . '
 							<div class="help_text">
@@ -563,8 +564,9 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 									/* I18N: Help text for the “Select your country” configuration setting */ WT_I18N::translate('If you have ticked the “Show places” option but NOT the option to abbreviate placenames, you can set your own country here. Full places will be listed on the Descendancy pages, but when a place includes the name of your own country, this name will be left out. If you don’t select a country then all countries will be shown, including your own.') . '
 								</span>
 							</div>
-						</div>
-					<div class="field">
+						</div>';
+					}
+	$html .= '		<div class="field">
 						<label class="label">' . WT_I18N::translate('Show occupations') . '</label>' .
 						edit_field_yes_no('NEW_FTV_OPTIONS[SHOW_OCCU]', $this->options('show_occu')) . '
 					</div>
@@ -680,12 +682,22 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				<div id="error"></div>
 				<hr class="noprint">
 				<div id="page-header">
-					<h2><?php echo $controller->getPageTitle(); ?></h2>
+					<h2>
+						<?php echo $controller->getPageTitle() ?>
+						<?php if (WT_USER_IS_ADMIN) { ?>
+							<a href="module.php?mod=fancy_treeview&amp;mod_action=admin_config" target="_blank" class="noprint">
+								<i class="fa fa-cog"></i>
+							</a>
+						<?php } ?>
+					</h2>
 				</div>
 				<div id="page-body">
 					<ol id="fancy_treeview"><?php echo $this->print_page(); ?></ol>
 					<div id="btn_next">
-						<input type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>"/>
+						<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
+							<i class="fa fa-arrow-down"></i>
+							<?php echo WT_I18N::translate('next'); ?>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -752,12 +764,12 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 	}
 
 	private function print_generation($generation, $i) {
-		// added data attributes to retrieve values easily with jquery (for scroll reference en next generations).
+		// added data attributes to retrieve values easily with jquery (for scroll reference to next generations).
 		$html = '<li class="block generation-block" data-gen="' . $i . '" data-pids="' . implode('|', $generation) . '">
 					<div class="blockheader ui-state-default">
 						<span class="header-title">' . WT_I18N::translate('Generation') . ' ' . $i . '</span>';
 			if($i > 1) {
-				$html .= '<a href="#body" class="header-link scroll">' . WT_I18N::translate('back to top') . '</a>';
+				$html .= '<a href="#body" class="header-link scroll noprint">' . WT_I18N::translate('back to top') . '</a>';
 			}
 		$html .= '	</div>';
 

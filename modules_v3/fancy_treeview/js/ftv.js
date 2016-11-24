@@ -239,7 +239,7 @@
     });
 
     //button or link to retrieve next generations
-    jQuery("#fancy_treeview-page").on("click", "#btn_next input, .link_next", function(){
+    jQuery("#fancy_treeview-page").on("click", "#btn_next button, .link_next", function(){
         if(jQuery(this).hasClass("link_next")) { // prepare for scrolling after new blocks are loaded
             var id = jQuery(this).attr("href");
             scroll = true;

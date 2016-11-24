@@ -2414,7 +2414,6 @@ div.widget {
 	margin-left: auto;
 	margin-right: auto;
 	width: 80%;
-	max-width: 960px;
 }
 
 #fancy_treeview-page #page-header {
@@ -2491,6 +2490,7 @@ div.widget {
 /* List */
 #fancy_treeview-page ol#fancy_treeview {
 	counter-reset: first-level;
+	-webkit-padding-start: 0;
 }
 
 #fancy_treeview-page li.generation-block {

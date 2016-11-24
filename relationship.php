@@ -62,7 +62,6 @@ if ($person1 && $person2) {
 				<i class="fa fa-cog"></i>
 			</a>
 		<?php } ?>
-
 	</h2>
 	<form name="people" method="get" action="?">
 		<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
