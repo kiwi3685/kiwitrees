@@ -969,7 +969,8 @@ table.center {
 	padding: 10px 0;
 }
 
-.sour_facts[id^="BIRT"] {
+.sour_facts[id^="BIRT"],
+.sour_facts[id^="MARR"] {
 	background-color: #eee;
 }
 
@@ -6036,6 +6037,7 @@ div.widget {
 /* List */
 #fancy_treeview-page ol#fancy_treeview {
 	counter-reset: first-level;
+	overflow: hidden;
 	-webkit-padding-start: 0;
 }
 
