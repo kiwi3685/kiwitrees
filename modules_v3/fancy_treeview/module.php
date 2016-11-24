@@ -871,48 +871,39 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$html = ' ';
 
 		// we assume no one married more then 15 times.
-		$wordcount = array(
-		    WT_I18N::translate('first'),
-		    WT_I18N::translate('second'),
-		    WT_I18N::translate('third'),
-		    WT_I18N::translate('fourth'),
-		    WT_I18N::translate('fifth'),
-		    WT_I18N::translate('sixth'),
-		    WT_I18N::translate('seventh'),
-		    WT_I18N::translate('eighth'),
-		    WT_I18N::translate('ninth'),
-		    WT_I18N::translate('tenth'),
-		    WT_I18N::translate('11th'),
-		    WT_I18N::translate('12th'),
-		    WT_I18N::translate('13th'),
-		    WT_I18N::translate('14th'),
-		    WT_I18N::translate('15th')
+		// these need to be male/female for some languages
+		$wordcountM = array(
 		);
 
-		$wordcount2 = array(
-		    WT_I18N::translate('once'),
-		    WT_I18N::translate('twice'),
-		    WT_I18N::translate('three times'),
-		    WT_I18N::translate('four times'),
-		    WT_I18N::translate('five times'),
-		    WT_I18N::translate('six times'),
-		    WT_I18N::translate('seven times'),
-		    WT_I18N::translate('eight times'),
-		    WT_I18N::translate('nine times'),
-		    WT_I18N::translate('ten times'),
-		    WT_I18N::translate('11 times'),
-		    WT_I18N::translate('12 times'),
-		    WT_I18N::translate('13 times'),
-		    WT_I18N::translate('14 times'),
-		    WT_I18N::translate('15 times')
+		$wordcountM = array(
+		);
+
+		$wordcount2M = array(
+		);
+
+			WT_I18N::translate_c('FEMALE', 'once'),
+			WT_I18N::translate_c('FEMALE', 'twice'),
+			WT_I18N::translate_c('FEMALE', 'three times'),
+			WT_I18N::translate_c('FEMALE', 'four times'),
+			WT_I18N::translate_c('FEMALE', 'five times'),
+			WT_I18N::translate_c('FEMALE', 'six times'),
+			WT_I18N::translate_c('FEMALE', 'seven times'),
+			WT_I18N::translate_c('FEMALE', 'eight times'),
+			WT_I18N::translate_c('FEMALE', 'nine times'),
+			WT_I18N::translate_c('FEMALE', 'ten times'),
+			WT_I18N::translate_c('FEMALE', '11 times'),
+			WT_I18N::translate_c('FEMALE', '12 times'),
+			WT_I18N::translate_c('FEMALE', '13 times'),
+			WT_I18N::translate_c('FEMALE', '14 times'),
+			WT_I18N::translate_c('FEMALE', '15 times')
 		);
 
 		if($count > 1) {
 			if($i == 0) {
-				$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s', $wordcount2[$count-1]);
+				$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2M[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s', $wordcount2F[$count-1]);
 				$html .= '. ';
 			}
-			$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcount[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcount[$i]);
+			$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcountM[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcountF[$i]);
 		}
 		else {
 			$person->getSex() == 'M' ? $html .= '<br>' . WT_I18N::translate('He married') : $html .= '<br>' . WT_I18N::translate('She married');
