@@ -108,19 +108,19 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Get Indis from surname input
 	private function indis_array($surname, $soundex_std, $soundex_dm) {
-		$sql=
+		$sql =
 			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
 			" WHERE n_file=?".
 			" AND n_type!=?".
 			" AND (n_surn=? OR n_surname=?";
-		$args=array(WT_GED_ID, '_MARNM', $surname, $surname);
+		$args = array(WT_GED_ID, '_MARNM', $surname, $surname);
 		if ($soundex_std) { // works only with latin letters. For other letters it outputs the code '0000'.
 			foreach (explode(':', WT_Soundex::soundex_std($surname)) as $value) {
 				if ($value != '0000') {
 					$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-					$args[]=$value;
+					$args[] = $value;
 				}
 			}
 		}
@@ -128,18 +128,18 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			foreach (explode(':', WT_Soundex::soundex_dm($surname)) as $value) {
 				if ($value != '000000') {
 					$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-					$args[]=$value;
+					$args[] = $value;
 				}
 			}
 		}
 		$sql .= ')';
-		$rows=
+		$rows =
 			WT_DB::prepare($sql)
 			->execute($args)
 			->fetchAll();
-		$data=array();
+		$data = array();
 		foreach ($rows as $row) {
-			$data[]=WT_Person::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$data[] = WT_Person::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		return $data;
 	}
@@ -203,8 +203,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
     }
 
 	private function getCountryList() {
-		$list='';
-		$countries=
+		$list = '';
+		$countries =
 			WT_DB::prepare("SELECT SQL_CACHE p_place as country FROM `##places` WHERE p_parent_id=? AND p_file=?")
 			->execute(array('0', WT_GED_ID))->fetchAll(PDO::FETCH_ASSOC);
 
@@ -873,14 +873,60 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		// we assume no one married more then 15 times.
 		// these need to be male/female for some languages
 		$wordcountM = array(
+			WT_I18N::translate_c('MALE', 'first'),
+			WT_I18N::translate_c('MALE', 'second'),
+			WT_I18N::translate_c('MALE', 'third'),
+			WT_I18N::translate_c('MALE', 'fourth'),
+			WT_I18N::translate_c('MALE', 'fifth'),
+			WT_I18N::translate_c('MALE', 'sixth'),
+			WT_I18N::translate_c('MALE', 'seventh'),
+			WT_I18N::translate_c('MALE', 'eighth'),
+			WT_I18N::translate_c('MALE', 'ninth'),
+			WT_I18N::translate_c('MALE', 'tenth'),
+			WT_I18N::translate_c('MALE', '11th'),
+			WT_I18N::translate_c('MALE', '12th'),
+			WT_I18N::translate_c('MALE', '13th'),
+			WT_I18N::translate_c('MALE', '14th'),
+			WT_I18N::translate_c('MALE', '15th')
 		);
 
-		$wordcountM = array(
+		$wordcountF = array(
+			WT_I18N::translate_c('FEMALE', 'first'),
+			WT_I18N::translate_c('FEMALE', 'second'),
+			WT_I18N::translate_c('FEMALE', 'third'),
+			WT_I18N::translate_c('FEMALE', 'fourth'),
+			WT_I18N::translate_c('FEMALE', 'fifth'),
+			WT_I18N::translate_c('FEMALE', 'sixth'),
+			WT_I18N::translate_c('FEMALE', 'seventh'),
+			WT_I18N::translate_c('FEMALE', 'eighth'),
+			WT_I18N::translate_c('FEMALE', 'ninth'),
+			WT_I18N::translate_c('FEMALE', 'tenth'),
+			WT_I18N::translate_c('FEMALE', '11th'),
+			WT_I18N::translate_c('FEMALE', '12th'),
+			WT_I18N::translate_c('FEMALE', '13th'),
+			WT_I18N::translate_c('FEMALE', '14th'),
+			WT_I18N::translate_c('FEMALE', '15th')
 		);
 
 		$wordcount2M = array(
+			WT_I18N::translate_c('MALE', 'once'),
+			WT_I18N::translate_c('MALE', 'twice'),
+			WT_I18N::translate_c('MALE', 'three times'),
+			WT_I18N::translate_c('MALE', 'four times'),
+			WT_I18N::translate_c('MALE', 'five times'),
+			WT_I18N::translate_c('MALE', 'six times'),
+			WT_I18N::translate_c('MALE', 'seven times'),
+			WT_I18N::translate_c('MALE', 'eight times'),
+			WT_I18N::translate_c('MALE', 'nine times'),
+			WT_I18N::translate_c('MALE', 'ten times'),
+			WT_I18N::translate_c('MALE', '11 times'),
+			WT_I18N::translate_c('MALE', '12 times'),
+			WT_I18N::translate_c('MALE', '13 times'),
+			WT_I18N::translate_c('MALE', '14 times'),
+			WT_I18N::translate_c('MALE', '15 times')
 		);
 
+		$wordcount2F = array(
 			WT_I18N::translate_c('FEMALE', 'once'),
 			WT_I18N::translate_c('FEMALE', 'twice'),
 			WT_I18N::translate_c('FEMALE', 'three times'),
@@ -926,9 +972,6 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		}
 		else {
 			// use the facts below only on none private records.
-			if ($this->printParents($spouse)) {
-				$html .= ',';
-			}
 			$marrdate = $family->getMarriageDate();
 			$marrplace = $family->getMarriagePlace();
 			if ($marrdate && $marrdate->isOK()) {
@@ -1083,29 +1126,29 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			switch($person->getSex()) {
 				case 'M':
 					if ($pedi === 'foster') {
-						$html .= ', ' . WT_I18N::translate('foster son of') . ' ';
+						$html .= ' ' . WT_I18N::translate('foster son of') . ' ';
 					} elseif ($pedi === 'adopted') {
-						$html .= ', ' . WT_I18N::translate('adopted son of') . ' ';
+						$html .= ' ' . WT_I18N::translate('adopted son of') . ' ';
 					} else {
-						$html .= ', ' . WT_I18N::translate('son of') . ' ';
+						$html .= ' ' . WT_I18N::translate('son of') . ' ';
 					}
 					break;
 				case 'F':
 					if ($pedi === 'foster') {
-						$html .= ', ' . WT_I18N::translate('foster daughter of') . ' ';
+						$html .= ' ' . WT_I18N::translate('foster daughter of') . ' ';
 					} elseif ($pedi === 'adopted') {
-						$html .= ', ' . WT_I18N::translate('adopted daughter of') . ' ';
+						$html .= ' ' . WT_I18N::translate('adopted daughter of') . ' ';
 					} else {
-						$html .= ', ' . WT_I18N::translate('daughter of') . ' ';
+						$html .= ' ' . WT_I18N::translate('daughter of') . ' ';
 					}
 					break;
 				default:
 					if ($pedi === 'foster') {
-						$html .= ', ' . WT_I18N::translate_c('MALE', 'foster child of') . ' ';
+						$html .= ' ' . WT_I18N::translate_c('MALE', 'foster child of') . ' ';
 					} elseif ($pedi === 'adopted') {
-						$html .= ', ' . WT_I18N::translate('adopted child of') . ' ';
+						$html .= ' ' . WT_I18N::translate('adopted child of') . ' ';
 					} else {
-						$html .= ', ' . WT_I18N::translate('child of') . ' ';
+						$html .= ' ' . WT_I18N::translate('child of') . ' ';
 					}
 			}
 
@@ -1163,7 +1206,6 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$deathdata = false;
 		if($deathdate->isOK() || $person->getDeathPlace() != ''){
 			$deathdata = true;
-
 			if($birthdata) {
 				$html .= ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 				$person->getSex() == 'F' ? $html .= WT_I18N::translate_c('FEMALE', 'died') : $html .= WT_I18N::translate_c('MALE', 'died');
@@ -1234,7 +1276,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 	}
 
 	private function print_thumbnail($person, $thumbsize, $resize_format, $square, $resize) {
-		$mediaobject=$person->findHighlightedMedia();
+		$mediaobject = $person->findHighlightedMedia();
 		if ($mediaobject) {
 			$html = '';
 			if($resize == true) {
@@ -1392,7 +1434,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Other functions
 	private function get_person($pid) {
-		$person=WT_Person::getInstance($pid);
+		$person = WT_Person::getInstance($pid);
 		return $person;
 	}
 
@@ -1448,9 +1490,9 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				return '';
 			}
 
-			$path=array_slice($nodes['relations'], 1);
+			$path = array_slice($nodes['relations'], 1);
 
-			$combined_path='';
+			$combined_path = '';
 			$display = false;
 			foreach ($path as $key => $rel) {
 				$rel_to_exclude = array('son', 'daughter', 'child'); // don't return the relationship path through the children
@@ -1467,7 +1509,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			if($display == true) {
 				foreach ($path as $rel) {
-					$combined_path.=substr($rel, 0, 3);
+					$combined_path .= substr($rel, 0, 3);
 				}
 				return get_relationship_name_from_path($combined_path, $person, $spouse);
 			}
