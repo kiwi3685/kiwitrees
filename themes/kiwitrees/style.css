@@ -44,14 +44,9 @@ body {
 	margin: 0;
 	width: 100%;
 	/* flex box settings */
-	height: 100vh;
-	min-height: 100vh;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
     flex-direction: column;
+	height: 100vh;
 }
 
 #body_simple {
@@ -223,6 +218,8 @@ textarea:required:invalid {
 	right: 0;
 	top: 0;
 	z-index: 1030;
+	/* flex box settings */
+	flex-shrink: 0;
 }
 #flash-messages {
 	clear: both;
@@ -511,6 +508,8 @@ textarea:required:invalid {
 	margin-top: 120px;
 	min-height: 60px;
 	text-align: center;
+	/* flex box settings */
+	flex-shrink: 0;
 }
 
 #footer,
@@ -552,9 +551,8 @@ textarea:required:invalid {
 	z-index: 0;
 	overflow: hidden;
 	padding: 0;
+	/* flex box settings */
 	flex: 1 0 auto;
-    -ms-flex: 1;
-    -webkit-flex: 1 0 auto;
 }
 
 #body_simple #content {
