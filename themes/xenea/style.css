@@ -1850,8 +1850,8 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/r
 .icon-sex_f_9x9            {width:9px;height:9px;background-image:url(images/sex_f_9x9.png);}
 .icon-sex_m_15x15          {width:15px;height:15px;background-image:url(images/sex_m_15x15.png);}
 .icon-sex_m_9x9            {width:9px;height:9px;background-image:url(images/sex_m_9x9.png);}
-.fa-user          {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
-.fa-user            {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
+.icon-sex_u_15x15          {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
+.icon-sex_u_9x9            {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
 .icon-sfamily              {width:25px;height:25px;background-image:url(images/sfamily.png);}
 .icon-source               {width:25px;height:25px;background-image:url(images/source.png);}
 .icon-source-list          {width:25px;height:25px;background-image:url(images/source.png);}
@@ -1860,7 +1860,7 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/r
 .icon-uarrow               {width:20px;height:20px;background-image:url(images/uarrow.png);}
 a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(images/uarrow2.png);}
 .icon-udarrow              {width:20px;height:20px;background-image:url(images/udarrow.png);}
-.fa-user             {width:25px;height:25px;background-image:url(images/user_add.png);}
+.fa-user          	 	   {width:25px;height:25px;background-image:url(images/user_add.png);}
 .icon-warning              {width:17px;height:17px;background-image:url(images/warning.png);}
 .icon-wiki                 {width:16px;height:16px;background-image:url(images/w_button.png);}
 .icon-zoomin               {width:25px;height:25px;background-image:url(images/zoomin.png);}
