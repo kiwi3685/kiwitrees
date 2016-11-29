@@ -484,7 +484,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		)->execute(array($this->getName()))->fetchOne();
 		?>
 		<div id="<?php echo $this->getName();?>">
-			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules/gallery/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+			<a class="current faq_link" href="http://kiwitrees.net/faqs/modules/gallery/" target="_blank" rel="noopener noreferrer" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div id="gallery_tabs">
 				<ul>
@@ -821,7 +821,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 							$gallery_links .='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.WT_THEME_URL.'images/edit.png" title="'.WT_I18N::translate('Edit').'"></a></div>';
 							if (WT_USER_GEDCOM_ADMIN) {
 								if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-									$gallery_links.='<div class="image_option"><a href="inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . WT_GEDCOM . '" target="_blank"><img src="' . WT_THEME_URL . 'images/link.png" title="' . WT_I18N::translate('Manage links') . '"></a></div>';
+									$gallery_links.='<div class="image_option"><a href="inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . WT_GEDCOM . '" target="_blank" rel="noopener noreferrer"><img src="' . WT_THEME_URL . 'images/link.png" title="' . WT_I18N::translate('Manage links') . '"></a></div>';
 								}
 							}
 						$gallery_links.='</div><hr>';// close .edit_links
@@ -857,7 +857,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		if ($images) {
 			$html .= $images.
 				'</div>'.// close #galleria
-				'<a id="copy" href="http://galleria.io/" target="_blank">Display by Galleria</a>'.// gallery.io attribution
+				'<a id="copy" href="http://galleria.io/" target="_blank" rel="noopener noreferrer">Display by Galleria</a>'.// gallery.io attribution
 				'</div>'.// close #page
 				'<div style="clear: both;"></div>';
 		} else {

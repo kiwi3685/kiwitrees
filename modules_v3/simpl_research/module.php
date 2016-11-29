@@ -248,7 +248,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 													foreach ($sublinks as $sublink) {
 														$html .= '
 															<li>
-																<a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank">
+																<a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank" rel="noopener noreferrer">
 																	<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 																	$sublink['title'].'
 																</a>
@@ -259,7 +259,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 											</li>';
 										} else { // default
 											$html .= '<li>
-												<a class="research_link" href="'.htmlspecialchars($link).'" target="_blank">
+												<a class="research_link" href="'.htmlspecialchars($link).'" target="_blank" rel="noopener noreferrer">
 													<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 													$plugin->getName() . $this->getCurrency($plugin) . '
 												</a>

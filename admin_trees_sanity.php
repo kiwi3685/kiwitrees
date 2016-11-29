@@ -42,7 +42,7 @@ $controller
 ?>
 
 <div id="sanity_check">
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/sanity-check/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/general/sanity-check/" target="_blank" rel="noopener noreferrer" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<p class="warning">
 		<?php echo WT_I18N::translate('This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.'); ?>
@@ -218,7 +218,7 @@ function birth_comparisons($tag_array) {
 				if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
 					$html .= '
 						<p>
-							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></div>
+							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
 							<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
 							<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
 						</p>';
@@ -248,7 +248,7 @@ function death_comparisons($tag_array) {
 				if ($event_date->MinJD() && $death_date->MinJD() && ($age_diff < 0)) {
 					$html .= '
 						<p>
-							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></div>
+							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
 							<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
 							<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel('DEAT') . '</span>' . $death_date->Display() . '</div>
 						</p>';
@@ -268,7 +268,7 @@ function missing_tag($tag) {
 	)->execute(array(WT_GED_ID, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
-		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></li>';
+		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></li>';
 		$count ++;
 	}
 	return array('html' => $html, 'count' => $count);
@@ -282,7 +282,7 @@ function duplicate_tag($tag) {
  	)->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
-		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></li>';
+		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></li>';
 		$count ++;
 	}
 	return array('html' => $html, 'count' => $count);
@@ -296,7 +296,7 @@ function identical_name() {
  	)->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
-		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $person->getFullName(). '</a></li>';
+		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></li>';
 		$count ++;
 	}
 	return array('html' => $html, 'count' => $count);

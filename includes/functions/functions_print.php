@@ -990,9 +990,9 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 				} else {
 					$place = '';
 				}
-				$html .= ' <a target="_BLANK" rel="nofollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . WT_I18N::translate('Google Maps™') . '"></a>';
-				$html .= ' <a target="_BLANK" rel="nofollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . WT_I18N::translate('Bing Maps™') . '"></a>';
-				$html .= ' <a target="_BLANK" rel="nofollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . WT_I18N::translate('OpenStreetMap™') . '"></a>';
+				$html .= ' <a target="_blank" rel="noopener noreferrer" rel="nofollow" href="https://maps.google.com/maps?q=' . $map_lati . ',' . $map_long . '" class="icon-googlemaps" title="' . WT_I18N::translate('Google Maps™') . '"></a>';
+				$html .= ' <a target="_blank" rel="noopener noreferrer" rel="nofollow" href="https://www.bing.com/maps/?lvl=15&cp=' . $map_lati . '~' . $map_long . '" class="icon-bing" title="' . WT_I18N::translate('Bing Maps™') . '"></a>';
+				$html .= ' <a target="_blank" rel="noopener noreferrer" rel="nofollow" href="https://www.openstreetmap.org/#map=15/' . $map_lati . '/' . $map_long . '" class="icon-osm" title="' . WT_I18N::translate('OpenStreetMap™') . '"></a>';
 			}
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
 				ob_start();
@@ -1144,7 +1144,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';
 	echo '<span class="quickfacts">';
 		foreach ($quickfacts as $fact) {
-			echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . WT_TIMESTAMP . '&ged=' . WT_GEDCOM . '" target="_blank">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+			echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . WT_TIMESTAMP . '&ged=' . WT_GEDCOM . '" target="_blank" rel="noopener noreferrer">', WT_Gedcom_Tag::getLabel($fact), '</a>';
 		}
 	echo '</span></form>';
 	echo '</td></tr>';
@@ -1245,7 +1245,7 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\');">';
 	echo '<span class="quickfacts">';
 	foreach ($quickfacts as $fact) {
-		echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . WT_TIMESTAMP . '&ged=' . WT_GEDCOM . '" target="_blank">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+		echo '<a href="edit_interface.php?action=add&pid=' . $id . '&fact=' . $fact . '&accesstime=' . WT_TIMESTAMP . '&ged=' . WT_GEDCOM . '" target="_blank" rel="noopener noreferrer">', WT_Gedcom_Tag::getLabel($fact), '</a>';
 	}
 	echo '</span></form>';
 	echo '</td></tr>';

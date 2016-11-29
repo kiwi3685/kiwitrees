@@ -58,7 +58,7 @@ if ($person1 && $person2) {
 	<h2>
 		<?php echo $controller->getPageTitle() ?>
 		<?php if (WT_USER_IS_ADMIN) { ?>
-			<a href="module.php?mod=chart_relationship&amp;mod_action=admin_config" target="_blank">
+			<a href="module.php?mod=chart_relationship&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer">
 				<i class="fa fa-cog"></i>
 			</a>
 		<?php } ?>
@@ -168,7 +168,7 @@ if ($person1 && $person2) {
 			$cor = $controller->getCor($paths);
 			echo '<h3>', WT_I18N::translate('Uncorrected CoR (Coefficient of Relationship): %s', WT_I18n::percentage($cor, 2)); ?>
 			<div class="helpcontent">
-				<?php echo /* I18N: Configuration option */ WT_I18N::translate('All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = "http://www.genetic-genealogy.co.uk/Toc115570135.html" target="_blank">Coefficient of Relationship</a>'); ?>
+				<?php echo /* I18N: Configuration option */ WT_I18N::translate('All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = "http://www.genetic-genealogy.co.uk/Toc115570135.html" target="_blank" rel="noopener noreferrer">Coefficient of Relationship</a>'); ?>
 			</div>
 			<?php
 			echo WT_I18N::translate('(Number of relationships: %s)', count($paths)), '</h3>';

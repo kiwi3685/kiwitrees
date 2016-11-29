@@ -96,9 +96,9 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 				$html.='<div class="descriptionbox rela">';
 				// Add a media object
 				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-					$html.='<span><a href="addmedia.php?action=showmediaform&amp;linktoid=' . $controller->record->getXref() . '" target="_blank"><i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>' .WT_I18N::translate('Add a media object'). '</a></span>';
+					$html.='<span><a href="addmedia.php?action=showmediaform&amp;linktoid=' . $controller->record->getXref() . '" target="_blank" rel="noopener noreferrer"><i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>' .WT_I18N::translate('Add a media object'). '</a></span>';
 					// Link to an existing item
-					$html.='<span><a href="inverselink.php?linktoid=' . $controller->record->getXref() . '&amp;linkto=person" target="_blank"><i style="margin: 0 3px 0 10px;" class="icon-image_link">&nbsp;</i>' .WT_I18N::translate('Link to an existing media object'). '</a></span>';
+					$html.='<span><a href="inverselink.php?linktoid=' . $controller->record->getXref() . '&amp;linkto=person" target="_blank" rel="noopener noreferrer"><i style="margin: 0 3px 0 10px;" class="icon-image_link">&nbsp;</i>' .WT_I18N::translate('Link to an existing media object'). '</a></span>';
 				}
 				if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
 					// Popup Reorder Media
@@ -282,7 +282,7 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		}
 
 		$html = '<div id="album_config">';
-			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+			$html .= '<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/album/" target="_blank" rel="noopener noreferrer" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 			<h2>' .$controller->getPageTitle(). '</h2>
 			<h3>' . WT_I18N::translate('Configure display of grouped media items using GEDCOM media tag TYPE.').  '</h3>';
 

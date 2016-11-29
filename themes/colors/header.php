@@ -112,7 +112,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		<ul class="makeMenu">';
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 				echo '<li>
-					<a href="edit_changes.php" target="_blank" style="color:red;">',
+					<a href="edit_changes.php" target="_blank" rel="noopener noreferrer" style="color:red;">',
 						WT_I18N::translate('Pending changes'), '
 					</a>
 				</li>';

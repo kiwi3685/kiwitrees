@@ -40,7 +40,7 @@ if ($view!='simple') {
 	echo '
 			<p class="logo">',
 				WT_I18N::translate('Powered by '), '
-				<a href="', WT_WEBTREES_URL, '" target="_blank" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>
+				<a href="', WT_WEBTREES_URL, '" target="_blank" rel="noopener noreferrer" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>
 			</p>';
 			if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 				echo execution_stats();

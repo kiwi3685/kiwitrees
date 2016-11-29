@@ -796,7 +796,7 @@ case 'utf8_ansi':
 
 case 'zip':
 	$title = WT_I18N::translate('Zip clippings');
-	$text = WT_I18N::translate('Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href="http://www.winzip.com" target="_blank">http://www.winzip.com</a>.');
+	$text = WT_I18N::translate('Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href="http://www.winzip.com" target="_blank" rel="noopener noreferrer">http://www.winzip.com</a>.');
 	break;
 
 default:

@@ -2642,7 +2642,7 @@ case 'checkduplicates':
 
 					$html .= '
 							<tr>
-								<td><a href="'. $person->getHtmlUrl() . '" target="_blank">' . $name . '</a></td>
+								<td><a href="'. $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $name . '</a></td>
 								<td>' . $lifespan .'</td>
 								<td>' . $birthplace .'</td>
 							</tr>';

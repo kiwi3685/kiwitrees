@@ -41,7 +41,7 @@ $controller
 ?>
 
 <div id="check_errors">
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/check-for-errors/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/check-for-errors/" target="_blank" rel="noopener noreferrer" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?>
 		<i class="fa fa-comments-o"></i>
 	</a>
 	<h2><?php echo $controller->getPageTitle(); ?></h2>

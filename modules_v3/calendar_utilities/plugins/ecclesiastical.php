@@ -290,7 +290,7 @@ $html.= '
 					<i title="Help with English calendar" onclick="modalNotes(\'%1s\', \'Help with English calendar\')">Help with English calendar</i>
 				</p>
 				<p>
-					<a title="Easter Formulae" href="%2s" target="_blank">
+					<a title="Easter Formulae" href="%2s" target="_blank" rel="noopener noreferrer">
 						<i>The formulae for calculating Easter are derived from the 11th edition Encyclopedia Brittanica</i>
 					</a>
 				</p>

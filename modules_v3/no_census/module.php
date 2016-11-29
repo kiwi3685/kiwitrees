@@ -299,7 +299,7 @@ class no_census_WT_Module extends WT_Module implements WT_Module_Resources {
 					}
 					echo '
 						<li>
-							<a target="_blank" href="', $indi->getHtmlUrl(), '">', $indi->getFullName(), '
+							<a target="_blank" rel="noopener noreferrer" href="', $indi->getHtmlUrl(), '">', $indi->getFullName(), '
 								<span> (', $birth_year, '-', $death_year, ') </span>
 							</a>
 							<ul>', $missing_text, '</ul>

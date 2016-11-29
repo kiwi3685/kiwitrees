@@ -306,7 +306,7 @@ echo '<div id="admin_dup">
 									//output result rows, grouping exact matches (on full name)
 									if ($name2 == $name1) {
 										echo '<tr>
-											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name1. ' '. $marr. '</a></td>
+											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $name1. ' '. $marr. '</a></td>
 											<td><div class="col2">' . $bdate . '</div></td>
 											<td><div class="col3">'. $bplace. '</div></td>
 											<td><div class="col4">' . $ddate . '</div></td>
@@ -317,7 +317,7 @@ echo '<div id="admin_dup">
 										$name2 = $row['n_full'];
 										echo '<tr><td colspan="5" style="border:0;">&nbsp;</td></tr>
 											<tr>
-											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank">'. $name2. ' '. $marr. '</a></div></td>
+											<td><div class="col1"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $name2. ' '. $marr. '</a></div></td>
 											<td><div class="col2">' . $bdate . '</div></td>
 											<td><div class="col3">'. $bplace. '</div></td>
 											<td><div class="col4">' . $ddate . '</div></td>

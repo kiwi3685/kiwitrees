@@ -78,7 +78,7 @@ echo '<div id="admin_unlinked">
 				$id = $row['i_id'];
 				$person = WT_Person::getInstance($id);
 				$fullname =  $person->getFullName();
-				echo '<p><a href="', $person->getHtmlUrl(), '" target="_blank">', $fullname, ' (', $id, ')</p>';
+				echo '<p><a href="', $person->getHtmlUrl(), '" target="_blank" rel="noopener noreferrer">', $fullname, ' (', $id, ')</p>';
 			}
 		} else {
 			echo '<h4>', WT_I18N::translate('No unlinked individuals to display'), '</h4></div>';

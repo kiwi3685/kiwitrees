@@ -184,7 +184,7 @@ $controller
 												</a>
 											</td>
 											<td>
-												<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank"><?php echo $record->getFullName(); ?></a>
+												<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $record->getFullName(); ?></a>
 											</td>
 											<td>
 												<?php echo $record->getType() == "INDI" ? $record->getBirthDate()->Display() : ''; ?>
@@ -299,7 +299,7 @@ $controller
 										</a>
 									</td>
 									<td>
-										<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank"><?php echo $record->getFullName(); ?></a>
+										<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $record->getFullName(); ?></a>
 									</td>
 									<td>
 										<?php echo $record->getType() == "INDI" ? $record->getBirthDate()->Display() : ''; ?>

@@ -81,7 +81,7 @@ function printSlcasBetween($person1, $person2, $mode, $recursion, $showCa, $type
 			// Cannot see one of the families/individuals, due to privacy;
 			continue;
 		}
-		echo '<a href="relationship.php?pid1=' . $person1->getXref() . '&pid2=' . $person2->getXref() . '&ged=' . WT_GEDURL . '&find=4" target="_blank">' . WT_I18N::translate('Relationship:&nbsp;') . '</a>';
+		echo '<a href="relationship.php?pid1=' . $person1->getXref() . '&pid2=' . $person2->getXref() . '&ged=' . WT_GEDURL . '&find=4" target="_blank" rel="noopener noreferrer">' . WT_I18N::translate('Relationship:&nbsp;') . '</a>';
 		echo WT_I18N::translate('%1$s is %2$s of %3$s',
 			$person2->getFullName(),
 			get_relationship_name_from_path(implode('', $relationships), $person1, $person2),

@@ -415,7 +415,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		?>
 
 		<div id="<?php echo $this->getName(); ?>">
-<!--		<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a> -->
+<!--		<a class="current faq_link" href="http://kiwitrees.net/faqs/modules-faqs/pages/" target="_blank" rel="noopener noreferrer" title="'. WT_I18N::translate('View FAQ for this page.'). '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a> -->
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 			<div id="faq_tabs">
 				<ul>

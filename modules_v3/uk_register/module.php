@@ -278,7 +278,7 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 				}
 				?>
 					<li>
-						<a target="_blank" href="<?php echo $indi->getHtmlUrl(); ?>"><?php echo $indi->getFullName(); ?>
+						<a target="_blank" rel="noopener noreferrer" href="<?php echo $indi->getHtmlUrl(); ?>"><?php echo $indi->getFullName(); ?>
 							<span> (<?php echo $birth_year . '-' . $death_year; ?>) </span>
 						</a>
 						<ul><?php echo $missing_text; ?></ul>

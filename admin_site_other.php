@@ -71,7 +71,7 @@ $controller
 		</tr>
 		<tr>
 			<td>
-				<a href="addmedia.php?action=showmediaform&amp;linktoid=new" target="_blank">
+				<a href="addmedia.php?action=showmediaform&amp;linktoid=new" target="_blank" rel="noopener noreferrer">
 					<?php echo /* I18N: A media object that is not linked to any other record */ WT_I18N::translate('Create a new media object'); ?>
 				</a>
 			</td>

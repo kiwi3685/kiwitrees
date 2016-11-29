@@ -62,7 +62,7 @@ if (
 	$server_warnings[] = '
 		<span class="warning">' .
 			WT_I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should ask your web service provider to upgrade to a later version as soon as possible.', PHP_VERSION) . '
-			<a href="http://php.net/supported-versions.php" target="_blank"><i class="icon-php"></i></a>
+			<a href="http://php.net/supported-versions.php" target="_blank" rel="noopener noreferrer"><i class="icon-php"></i></a>
 		<span>';
 } elseif (
 	PHP_VERSION_ID < 50600 ||
@@ -71,7 +71,7 @@ if (
 ) {
 	$server_warnings[] = '
 		<span class="accepted">' . WT_I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should should ask your web service provider to upgrade to a later version.', PHP_VERSION) . '
-		<a href="http://php.net/supported-versions.php" target="_blank"><i class="icon-php"></i></a>
+		<a href="http://php.net/supported-versions.php" target="_blank" rel="noopener noreferrer"><i class="icon-php"></i></a>
 		<span>';
 }
 

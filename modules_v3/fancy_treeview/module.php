@@ -476,7 +476,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 									</td>
 									<td>' . WT_Person::getInstance($FTV_ITEM['PID'])->getFullName() . ' (' . $FTV_ITEM['PID'].')</td>
 									<td>
-										<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;ged=' . $WT_TREE->tree_name.'&amp;rootid='.($FTV_ITEM['PID']) . '" target="_blank">';
+										<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;ged=' . $WT_TREE->tree_name.'&amp;rootid='.($FTV_ITEM['PID']) . '" target="_blank" rel="noopener noreferrer">';
 										if($this->options('use_fullname') == true) {
 											$html .= WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName());
 										}
@@ -685,7 +685,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					<h2>
 						<?php echo $controller->getPageTitle() ?>
 						<?php if (WT_USER_IS_ADMIN) { ?>
-							<a href="module.php?mod=fancy_treeview&amp;mod_action=admin_config" target="_blank" class="noprint">
+							<a href="module.php?mod=fancy_treeview&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer" class="noprint">
 								<i class="fa fa-cog"></i>
 							</a>
 						<?php } ?>

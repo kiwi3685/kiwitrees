@@ -245,7 +245,7 @@ case 'importform':
 }
 
 echo '
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" title="', WT_I18N::translate('View FAQ for this page.'), '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" rel="noopener noreferrer" title="', WT_I18N::translate('View FAQ for this page.'), '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
 	<h2>', $controller->getPageTitle(), '</h2>
 	';
 

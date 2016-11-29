@@ -154,10 +154,10 @@ function print_fams($person, $famid=null) {
 	$sosa = array_search($person->getXref(), $user_ancestors, true);
 	if ($sosa) {
 		$class = 'search_hit';
-		$sosa = '<a target="_blank" dir="ltr" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
+		$sosa = '<a target="_blank" rel="noopener noreferrer" dir="ltr" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
-		'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.$person_name.'</a> '.
+		'<a target="_blank" rel="noopener noreferrer" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.$person_name.'</a> '.
 		$person->getLifeSpan().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
@@ -180,7 +180,7 @@ function print_fams($person, $famid=null) {
 			$sosa2 = array_search($spouse->getXref(), $user_ancestors, true);
 			if ($sosa2) {
 				$class = 'search_hit';
-				$sosa2 = '<a target="_blank" dir="ltr" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
+				$sosa2 = '<a target="_blank" rel="noopener noreferrer" dir="ltr" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
 			}
 			$marriage_year=$family->getMarriageYear();
 			if ($marriage_year) {

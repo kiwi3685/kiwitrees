@@ -301,7 +301,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 														<?php echo $date->JD(); ?>
 													</td>
 													<td>
-														<a href="<?php echo $person->getHtmlUrl(); ?>" target="_blank"><?php echo $person->getFullName(); ?></a>
+														<a href="<?php echo $person->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $person->getFullName(); ?></a>
 													</td>
 													<td>
 														<?php echo $person->getBirthDate()->Display(); ?>

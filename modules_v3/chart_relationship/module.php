@@ -196,7 +196,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 		?>
 
 		<div id="relations_config">
-			<a class="current faq_link" href="http://kiwitrees.net/faqs/general-topics/displaying-relationships/" target="_blank" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
+			<a class="current faq_link" href="http://kiwitrees.net/faqs/general-topics/displaying-relationships/" target="_blank" rel="noopener noreferrer" title="<?php echo WT_I18N::translate('View FAQ for this page.'); ?>"><?php echo WT_I18N::translate('View FAQ for this page.'); ?><i class="fa fa-comments-o"></i></a>
 			<h2><?php echo /* I18N: Configuration page title */ WT_I18N::translate('Relationship calculation options'); ?></h2>
 			<form method="post" action="#" name="tree">
 				<div class="config_options">
@@ -232,7 +232,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_CHART_3', $chart3); ?>
 							<div class="helpcontent">
-								<?php echo /* I18N: Configuration option */ WT_I18N::translate('All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = "http://www.genetic-genealogy.co.uk/Toc115570135.html" target="_blank">Coefficient of Relationship</a>'); ?>
+								<?php echo /* I18N: Configuration option */ WT_I18N::translate('All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = "http://www.genetic-genealogy.co.uk/Toc115570135.html" target="_blank" rel="noopener noreferrer">Coefficient of Relationship</a>'); ?>
 							</div>
 						</div>
 					</div>

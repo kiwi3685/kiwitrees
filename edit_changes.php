@@ -157,7 +157,7 @@ if ($changed_gedcoms) {
 					$output .= '
 						<h3>' . $record->getFullName() . '</h3>
 						<a href="#" onclick="return show_diff(\'' . $record->getHtmlUrl() . '\');">' . WT_I18N::translate('View the changes') . '</a> |
-						<a href="gedrecord.php?fromfile=1&pid=' . $change->xref . '" target="_blank"> ' . WT_I18N::translate('View GEDCOM Record') . '</a> |
+						<a href="gedrecord.php?fromfile=1&pid=' . $change->xref . '" target="_blank" rel="noopener noreferrer"> ' . WT_I18N::translate('View GEDCOM Record') . '</a> |
 						<a href="#" onclick="return edit_raw(\'' . $change->xref . '\');"> ' . WT_I18N::translate('Edit raw GEDCOM record') . '</a><br>' .
 						WT_I18N::translate('The following changes were made to this record:') . '<br>
 						<table>

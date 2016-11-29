@@ -200,7 +200,7 @@ case 'load_json':
 		$diff = new Diff($a, $b, $options);
 
 		$row[1]=WT_I18N::translate($row[1]);
-		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$row[6].'" target="_blank">'.$row[2].'</a>';
+		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$row[6].'" target="_blank" rel="noopener noreferrer">'.$row[2].'</a>';
 		$row[3]=$diff->Render($renderer);
 		$row[4]='';
 	}

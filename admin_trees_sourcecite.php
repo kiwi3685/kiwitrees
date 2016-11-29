@@ -165,7 +165,7 @@ $sid = WT_Filter::post('source');
 								</a>
 							</td>
 							<td>
-								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank"><?php echo $record->getFullName(); ?></a>
+								<a href="<?php echo $record->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $record->getFullName(); ?></a>
 							<td>
 								<?php echo $match[1]; ?>
 							</td>

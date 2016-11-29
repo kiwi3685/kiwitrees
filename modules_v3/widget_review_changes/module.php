@@ -104,7 +104,7 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 
 				$content = '';
 				if (WT_USER_CAN_ACCEPT) {
-					$content .= '<a href="edit_changes.php" target="_blank">' . WT_I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
+					$content .= '<a href="edit_changes.php" target="_blank" rel="noopener noreferrer">' . WT_I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
 				}
 				if ($sendmail == "yes") {
 					$content .= WT_I18N::translate('Last email reminder was sent ').format_timestamp($LAST_CHANGE_EMAIL)."<br>";

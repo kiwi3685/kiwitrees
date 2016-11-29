@@ -165,12 +165,12 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			if ($cousinParentFamily != $prev_fam_id) {
  				$prev_fam_id = $cousinParentFamily;
-				$html .= '<h5>'.WT_I18N::translate('Parents').'<a target="_blank" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
+				$html .= '<h5>'.WT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
 				$i = 1;
 			}
 			$html .= '<div class="person_box'.$isF.'">';
 			$html .= '<span class="cousins_counter">'.$i.'</span>';
-			$html .= '<span class="cousins_name"><a target="_blank" href="'. $record->getHtmlUrl(). '">'. $record->getFullName().'</a></span>';
+			$html .= '<span class="cousins_name"><a target="_blank" rel="noopener noreferrer" href="'. $record->getHtmlUrl(). '">'. $record->getFullName().'</a></span>';
 			$html .= '<span class="cousins_lifespan">'. $record->getLifeSpan(). '</span>';
 			$html .= '<span class="cousins_pedi">'.$label.'</span>';
 			$html .= '</div>';
@@ -201,12 +201,12 @@ class cousins_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
  			if ($cousinParentFamily != $prev_fam_id) {
  				$prev_fam_id = $cousinParentFamily;
-				$html .= '<h5>'.WT_I18N::translate('Parents').'<a target="_blank" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
+				$html .= '<h5>'.WT_I18N::translate('Parents').'<a target="_blank" rel="noopener noreferrer" href="'. $family->getHtmlUrl(). '">&nbsp;'.$family->getFullName().'</a></h5>';
 				$i = 1;
 			}
 			$html .= '<div class="person_box'.$isF.'">';
 			$html .= '<span class="cousins_counter">'.$i.'</span>';
-			$html .= '<span class="cousins_name"><a target="_blank" href="'. $record->getHtmlUrl(). '">'. $record->getFullName().'</a></span>';
+			$html .= '<span class="cousins_name"><a target="_blank" rel="noopener noreferrer" href="'. $record->getHtmlUrl(). '">'. $record->getFullName().'</a></span>';
 			$html .= '<span class="cousins_lifespan">'. $record->getLifeSpan(). '</span>';
 			$html .= '<span class="cousins_pedi">'.$label.'</span>';
 			$html .= '</div>';
