@@ -85,17 +85,17 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						$message["to"]		= $user_name;
 						$message["from"]	= $WEBTREES_EMAIL;
 						$message["subject"]	= WT_I18N::translate('kiwitrees - Review changes');
-						$message["body"]	= WT_I18N::translate('Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that kiwitrees site and login to review the changes.');
+						$message["body"]	= WT_I18N::translate('Online changes have been made to a genealogical database. These changes need to be reviewed and accepted before they will appear to all users. Please use the URL below to enter that kiwitrees site and login to review the changes.');
 						$message["method"]	= get_user_setting($user_id, 'contactmethod');
-						$message["url"]		= WT_SERVER_NAME.WT_SCRIPT_PATH;
+						$message["url"]		= WT_SERVER_NAME . WT_SCRIPT_PATH;
 						$message["no_from"] = true;
 						addMessage($message);
 					}
 				}
 			}
 			if (WT_USER_CAN_EDIT) {
-				$id		=$this->getName().$block_id;
-				$class	= $this->getName().'_block';
+				$id		=$this->getName() . $block_id;
+				$class	= $this->getName() . '_block';
 				if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
 					$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
 				} else {

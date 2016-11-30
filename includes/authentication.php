@@ -241,8 +241,8 @@ function addMessage($message) {
 	if (isset($message['from_name']))
 		$copy_email = WT_I18N::translate('Your Name:') . " " . $message['from_name'] . "\r\n" . WT_I18N::translate('Email Address:') . " " . $message['from_email'] . "\r\n\r\n" . $copy_email;
 	if (!empty($message['url'])) {
-		if (strpos($message['url'],WT_SERVER_NAME.WT_SCRIPT_PATH)!==0) {
-			$message['url'] = WT_SERVER_NAME.WT_SCRIPT_PATH.$message['url'];
+		if (strpos($message['url'], WT_SERVER_NAME . WT_SCRIPT_PATH) !==0 ) {
+			$message['url'] = WT_SERVER_NAME.WT_SCRIPT_PATH . $message['url'];
 		}
 		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n" . WT_I18N::translate('This message was sent while viewing the following URL: ') . "\r\n" . $message['url'] . "\r\n";
 	}
@@ -250,7 +250,7 @@ function addMessage($message) {
 	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp()) . "\r\n";
 	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
 	$copy_subject = "[" . /* I18N: subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
-	$from ='';
+	$from = '';
 	if (!$user_id_from) {
 		$from = $message['from'];
 		$copy_email = WT_I18N::translate('You sent the following message to an administrator:') . "\r\n\r\n" . $copy_email;
@@ -266,9 +266,9 @@ function addMessage($message) {
 		$original_subject = "[" . /* I18N: Subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
 		if (!$user_id_from) {
 			if (!empty($message['from_name'])) {
-				$original_email .= $message['from_name']."\r\n\r\n".$message['body'];
+				$original_email .= $message['from_name']."\r\n\r\n" . $message['body'];
 			} else {
-				$original_email .= $from."\r\n\r\n".$message['body'];
+				$original_email .= $from . "\r\n\r\n" . $message['body'];
 			}
 		} else {
 			$original_email .= $fromFullName . "\r\n\r\n" . $message['body'];
@@ -291,13 +291,13 @@ function addMessage($message) {
 	//-- Load the "to" users language
 	WT_I18N::init(get_user_setting($user_id_to, 'language'));
 	if (isset($message['from_name']))
-		$message['body'] = WT_I18N::translate('Your Name:')." ".$message['from_name']."\r\n".WT_I18N::translate('Email Address:')." ".$message['from_email']."\r\n\r\n".$message['body'];
+		$message['body'] = WT_I18N::translate('Your Name:') . " " . $message['from_name'] . "\r\n" . WT_I18N::translate('Email Address:') . " ".$message['from_email'] . "\r\n\r\n" . $message['body'];
 	if (!userIsAdmin($user_id_from)) {
 		if (!empty($message['url']))
-			$message['body'] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message['url']."\r\n";
-		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$WT_REQUEST->getClientIp()."\r\n";
-		$message['body'] .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n";
-		$message['body'] .= "LANGUAGE: ".WT_LOCALE."\r\n";
+			$message['body'] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ') . "\r\n" . $message['url'] . "\r\n";
+		$message['body'] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: " . $WT_REQUEST->getClientIp()."\r\n";
+		$message['body'] .= "DNS LOOKUP: " . gethostbyaddr($WT_REQUEST->getClientIp()) . "\r\n";
+		$message['body'] .= "LANGUAGE: " . WT_LOCALE."\r\n";
 	}
 	if (empty($message['created']))
 		$message['created'] = gmdate ("D, d M Y H:i:s T");
@@ -306,18 +306,18 @@ function addMessage($message) {
 			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}
 	if ($message['method'] != 'messaging') {
-		$original_subject = "[".WT_I18N::translate('Kiwitrees Message').($TEXT_DIRECTION == 'ltr'?"] ":" [").$message['subject'];
+		$original_subject = "[".WT_I18N::translate('Kiwitrees Message') . ($TEXT_DIRECTION == 'ltr'?"] ":" [") . $message['subject'];
 		if (!$user_id_from) {
 			if (!empty($message['from_name'])) {
-				$original_email .= $message['from_name']."\r\n\r\n".$message['body'];
+				$original_email .= $message['from_name'] . "\r\n\r\n" . $message['body'];
 			} else {
-				$original_email .= $from."\r\n\r\n".$message['body'];
+				$original_email .= $from . "\r\n\r\n" . $message['body'];
 			}
 		} else {
-			$original_email .= $fromFullName."\r\n\r\n".$message['body'];
+			$original_email .= $fromFullName . "\r\n\r\n" . $message['body'];
 		}
 		$toFullName = getUserFullName($user_id_to);
-		$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
+		$to = hex4email($toFullName, 'UTF-8') . " <" . getUserEmail($user_id_to) . ">";
 		if (getUserEmail($user_id_to)) {
 			// send the original message
 			if (!kiwiMail($to, $from, $original_subject, $original_email)) {
