@@ -1341,6 +1341,47 @@ table#story_table {width: 99%;}
 #admin_dup input[type="button"] {margin:0;padding:0;}
 #admin_dup .exact input[type="text"] {margin:0;padding:5px 2;}
 
+/* Styling for Find unconnected records */
+#admin_unlinked #unlinked_config,
+#admin_unlinked p {
+	display: inline-block;;
+}
+#admin_unlinked button {
+	float: none;
+	padding: 6px;
+}
+#unlinked_accordion {
+	margin: 20px 0;
+}
+#unlinked_accordion .ui-accordion-header.ui-state-default {
+	border: none;
+	background: none;
+	outline: none;
+}
+#unlinked_accordion .ui-accordion-header.ui-state-active {
+	color: #555;
+}
+#unlinked_accordion div {
+	background: #ddd;
+	margin: auto 30px;
+	padding: 0;
+}
+#unlinked_accordion a {
+	display: block;
+	font-size: 12px;
+	padding: 3px 10px;
+}
+#unlinked_accordion a span {
+	color: #3383bb;
+	font-size: 14px;
+}
+#unlinked_accordion h3.empty {
+	font-size: 100%;
+	font-weight: normal;
+	margin: 2px 0 0 0;
+	padding: .5em .5em .5em 2.0em;
+}
+
 /* Styling for simpl_pages module */
 #simpl_pages .label {
     line-height: 25px;

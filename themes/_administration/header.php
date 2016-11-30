@@ -178,7 +178,7 @@ echo '			<p><a ', (WT_SCRIPT_NAME == "admin_trees_manage.php" ? 'class="current"
 					"admin_trees_renumber.php"		=> WT_I18N::translate('Renumber family tree'),
 					"admin_trees_append.php"		=> WT_I18N::translate('Append family tree'),
 					"admin_trees_duplicates.php"	=> WT_I18N::translate('Find duplicate individuals'),
-					"admin_trees_unlinked.php"		=> WT_I18N::translate('Find unlinked individuals'),
+					"admin_trees_unlinked.php"		=> WT_I18N::translate('Find unlinked records'),
 					"admin_trees_sanity.php"		=> WT_I18N::translate('Sanity check'),
 					"admin_trees_source.php"		=> WT_I18N::translate('Sources - review'),
 					"admin_trees_sourcecite.php"	=> WT_I18N::translate('Sources - review citations'),
