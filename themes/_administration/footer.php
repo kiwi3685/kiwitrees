@@ -18,21 +18,20 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 //
-// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+?>
+</div><!-- close the content div -->
 
-echo '</div>'; // id="admin_content"
-if ($view!='simple') {
-	echo '<div id="admin_footer">';
-		echo '<p class="logo">';
-		echo '<a href="', WT_WEBTREES_URL, '" target="_blank" rel="noopener noreferrer" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'</a>';
-		echo '</p>';
-		if (WT_DEBUG) {
-			echo execution_stats();
-		}
-	echo '</div>'; // id="admin_footer"
-}
+<?php if ($view != 'simple') { ?>
+	<div id="admin_footer">
+		<p class="logo">
+			<a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_WEBTREES_URL; ?>">
+				<?php echo /*I18N: kiwitrees logo on page footer */ WT_I18N::translate('Powered by %s', WT_WEBTREES); ?><span>&trade;</span>
+			</a>
+		</p>
+	</div>
+<?php }

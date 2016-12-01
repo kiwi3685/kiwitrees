@@ -28,19 +28,16 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+?>
+</div><!-- close the content div -->
 
-echo '</div>'; // <div id="content">
-if ($view!='simple') {
-	echo '
-		<div id="footer">';
-			if (contact_links() != '' && !array_key_exists('contact', WT_Module::getActiveModules())) echo contact_links();
-	echo '
-			<p class="logo">',
-				WT_I18N::translate('Powered by '), '
-				<a href="', WT_WEBTREES_URL, '" target="_blank" rel="noopener noreferrer" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '">', WT_WEBTREES,'<span>&trade;</span></a>
-			</p>';
-			if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
-				echo execution_stats();
-			}
-	echo '</div>'; // <div id="footer">
-}
+<?php if ($view != 'simple') { ?>
+	<div id="footer">
+		<?php if (contact_links() != '' && !array_key_exists('contact', WT_Module::getActiveModules())) echo contact_links(); ?>
+		<p class="logo">
+			<a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_WEBTREES_URL; ?>">
+				<?php echo /*I18N: kiwitrees logo on page footer */ WT_I18N::translate('Powered by %s', WT_WEBTREES); ?><span>&trade;</span>
+			</a>
+		</p>
+	</div>
+<?php }

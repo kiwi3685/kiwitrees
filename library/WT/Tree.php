@@ -287,7 +287,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'SHOW_PEDIGREE_PLACES_SUFFIX',  false);
 		set_gedcom_setting($tree_id, 'SHOW_PRIVATE_RELATIONSHIPS',   true);
 		set_gedcom_setting($tree_id, 'SHOW_RELATIVES_EVENTS',        '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU');
-		set_gedcom_setting($tree_id, 'SHOW_STATS',                   false);
 		set_gedcom_setting($tree_id, 'SOURCE_ID_PREFIX',             'S');
 		set_gedcom_setting($tree_id, 'SOUR_FACTS_ADD',               'NOTE,REPO,SHARED_NOTE,RESN');
 		set_gedcom_setting($tree_id, 'SOUR_FACTS_QUICK',             'TEXT,NOTE,REPO');

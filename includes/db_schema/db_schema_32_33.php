@@ -1,14 +1,16 @@
 <?php
-// Footer for Xenea theme
+// Update the database schema from version 29 to 30
+// - add widgets to module system
 //
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
+// The script should assume that it can be interrupted at
+// any point, and be able to continue by re-running the script.
+// Fatal errors, however, should be allowed to throw exceptions,
+// which will be caught by the framework.
+// It shouldn't do anything that might take more than a few
+// seconds, for systems with low timeout values.
 //
 // Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team
+// Copyright (C) 2014 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,16 +30,13 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-?>
-</div><!-- close the content div -->
 
-<?php if ($view != 'simple') { ?>
-	<div id="footer">
-		<?php if (contact_links() != '' && !array_key_exists('contact', WT_Module::getActiveModules())) echo contact_links(); ?>
-		<p class="logo">
-			<a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_WEBTREES_URL; ?>">
-				<?php echo /*I18N: kiwitrees logo on page footer */ WT_I18N::translate('Powered by %s', WT_WEBTREES); ?><span>&trade;</span>
-			</a>
-		</p>
-	</div>
-<?php }
+// remove no longer used settings
+try {
+	self::exec("DELETE FROM `##gedcom_setting` WHERE `setting_name` LIKE 'SHOW_STATS'");
+} catch (PDOException $ex) {
+	// Perhaps we have already deleted this data?
+}
+
+// Update the version to indicate success
+WT_Site::preference($schema_name, $next_version);

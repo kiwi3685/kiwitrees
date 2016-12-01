@@ -307,26 +307,6 @@ function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CA
 	return $header_links;
 }
 
-/**
-* Prints Exection Statistics
-*
-* prints out the execution time and the databse queries
-*/
-function execution_stats() {
-	global $start_time, $PRIVACY_CHECKS;
-
-	return
-		'<p class="execution_stats">'.
-		WT_I18N::translate(
-			'Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB.',
-			WT_I18N::number(microtime(true)-$start_time, 3),
-			WT_I18N::number(WT_DB::getQueryCount()),
-			WT_I18N::number($PRIVACY_CHECKS),
-			WT_I18N::number(version_compare(PHP_VERSION, '5.2.1', '>=') ? (memory_get_peak_usage(true)/1024) : (memory_get_usage()/1024))
-		).
-		'</p>';
-}
-
 // Generate a login link
 function login_link() {
 	global $SEARCH_SPIDER;

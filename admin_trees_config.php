@@ -191,7 +191,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',	WT_Filter::postBool('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',		WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',			WT_Filter::post('NEW_SHOW_RELATIVES_EVENTS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_STATS',						WT_Filter::postBool('NEW_SHOW_STATS'));
 	set_gedcom_setting(WT_GED_ID, 'SOURCE_ID_PREFIX',				WT_Filter::post('NEW_SOURCE_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD',					str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK',				str_replace(' ', '', WT_Filter::post('NEW_SOUR_FACTS_QUICK')));
@@ -1114,15 +1113,6 @@ $controller
 							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), $SHOW_COUNTER, 'class="radio_inline"'); ?>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('Show hit counters on the Home and Individual pages.'); ?>
-							</div>
-						 </div>
-					</div>
-					<div class="config_options">
-						<label><?php echo WT_I18N::translate('Execution statistics'); ?></label>
-						<div class="input_group">
-							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'), true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS'), 'class="radio_inline"'); ?>
-							<div class="helpcontent">
-								<?php echo WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.'); ?>
 							</div>
 						 </div>
 					</div>
