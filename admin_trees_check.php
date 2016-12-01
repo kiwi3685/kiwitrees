@@ -209,9 +209,9 @@ $controller
 				}
 			}
 		}
-	}
-	if (!$errors) {
-		echo '<p class="ui-state-highlight noresult">', WT_I18N::translate('No errors were found.'), '</p>';
+		if (!$errors) {
+			echo '<p class="ui-state-highlight noresult">', WT_I18N::translate('No errors were found.'), '</p>';
+		}
 	}
 	?>
 </div>
