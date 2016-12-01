@@ -71,11 +71,15 @@ button {
 	font-weight: 400;
 	margin: 10px 0;
 }
+.helpcontent li {
+	padding: 2px;
+}
 .help_content a {
 	display: block;
 	font-weight: 600;
 	margin: 5px;
 }
+
 .input-group {margin:20px 0;}
 .alert {
 	background-color: #d9edf7;
@@ -383,6 +387,16 @@ fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size:
 
 /*SITE CONFIG */
 #site_config #lang {overflow: hidden;}
+#site_config #lang span {
+	display:inline-block;
+	width: 200px;
+}
+#site_config #lang h5 {
+	font-size: .9em;
+}
+#site_config #lang h5 input {
+	vertical-align: middle;
+}
 
 /*SITE LOGS & CHANGE LOGS*/
 .site_logs, .site_change {margin:10px auto;}
@@ -1346,12 +1360,25 @@ table#story_table {width: 99%;}
 #admin_unlinked p {
 	display: inline-block;;
 }
+#admin_unlinked .unlinked_type {
+	display: inline-block;
+	margin: auto 20px;
+}
+#admin_unlinked .unlinked_type h5 {
+	display: inline-block;
+	font-size: 1em;
+}
+#admin_unlinked label.bold {
+	font-weight: 900;
+}
+
 #admin_unlinked button {
 	float: none;
 	padding: 6px;
 }
 #unlinked_accordion {
 	margin: 20px 0;
+	width: 95%;
 }
 #unlinked_accordion .ui-accordion-header.ui-state-default {
 	border: none;
@@ -1367,13 +1394,20 @@ table#story_table {width: 99%;}
 	padding: 0;
 }
 #unlinked_accordion a {
+	color: #3383bb;
 	display: block;
-	font-size: 12px;
+	font-size: 1em;
 	padding: 3px 10px;
 }
-#unlinked_accordion a span {
-	color: #3383bb;
-	font-size: 14px;
+#unlinked_accordion a:hover {
+	color: #ff0000;
+}
+#unlinked_accordion span.lifespan_name {
+	font-size: 1em;
+}
+#unlinked_accordion span.id {
+	font-size: .8em;
+	margin: auto 10px;
 }
 #unlinked_accordion h3.empty {
 	font-size: 100%;
@@ -1593,6 +1627,9 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 
 /* RESPONSIVE layout adjustments */
 @media (max-width: 350px) {
+	#unlinked_accordion {
+		max-width: 300px;
+	}
 }
 
 @media (min-width: 351px) and (max-width: 1024px) {
@@ -1618,7 +1655,8 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 	#admin_menu .ui-accordion .ui-accordion-content-active {
 		width: 200px;
 	}
-	.help_content {
+	.help_content,
+	.helpcontent {
 		display: none!important;
 	}
 	#family_tree_config ul,
@@ -1645,6 +1683,10 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 	div.config_options .input_group label {
 		display: inline-block;
 	}
+	#admin_unlinked #unlinked_config,
+	#admin_unlinked .unlinked_type span,
+	#admin_unlinked .unlinked_type {
+		display: block;
 }
 
 @media (min-width: 1025px) and (max-width: 1681px) {

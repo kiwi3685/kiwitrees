@@ -396,7 +396,7 @@ $controller
 					<h4><?php echo WT_I18N::translate('Select the languages your site will use'); ?></h4>
 					<h5>
 						<?php echo WT_I18N::translate('Select all'); ?>
-						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
+						<input type="checkbox" onclick="toggle_select(this)" >
 					</h5>
 					<?php
 						$code_list = WT_Site::preference('LANGUAGES');
@@ -411,7 +411,7 @@ $controller
 						}
 						foreach (WT_I18N::installed_languages() as $code=>$name) {
 							echo '
-								<span style="display:inline-block;width: 200px;">
+								<span>
 									<input class="check" type="checkbox" name="LANGUAGES[]" id="lang_' . $code . '"';
 										if (in_array($code, $languages)) {
 											echo 'checked="checked"';
