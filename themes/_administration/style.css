@@ -1363,11 +1363,17 @@ table#story_table {width: 99%;}
 #admin_unlinked .unlinked_type {
 	display: inline-block;
 	margin: auto 20px;
+	vertical-align: middle;
 }
 #admin_unlinked .unlinked_type h5 {
 	display: inline-block;
 	font-size: 1em;
 }
+#admin_unlinked .unlinked_type span:first-child {
+	display: block;
+	padding: 0 0 10px;
+}
+
 #admin_unlinked label.bold {
 	font-weight: 900;
 }

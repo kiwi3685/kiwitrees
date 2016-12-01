@@ -105,7 +105,7 @@ $sql_REPO = "
 <div id="admin_unlinked">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<div class="helpcontent">
-		<?php echo /* I18N: Help text for the Find unlinked records tool. */ WT_I18N::translate('Produces lists of records that are not linked to any other records. It does not include Families as a family record cannot exist without at least one family member.<br>
+		<?php echo /* I18N: Help text for the Find unlinked records tool. */ WT_I18N::translate('List records that are not linked to any other records. It does not include Families as a family record cannot exist without at least one family member.<br>
 		The definition of unlinked for each type of record is:
 		<ul><li>Individuals: a person who is not linked to any family, as a child or a spouse.</li>
 		<li>Sources: a source record that is not used as a source for any record, fact, or event in the family tree.</li>
