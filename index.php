@@ -65,7 +65,7 @@ $controller = new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_TREE_TITLE)
 	->setMetaRobots('index,follow')
-	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype = ' . $ctype . '&amp;ged = ' . WT_GEDCOM)
+	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . WT_GEDCOM)
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');
