@@ -273,7 +273,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 								"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=1 LIMIT 1"
 							)->execute(array($tree->tree_id))->fetchOne();
 							if (!$in_progress) {
-								echo '<div id="import', $tree->tree_id, '"><div id="progressbar', $tree->tree_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
+								echo '<div id="import', $tree->tree_id, '"><div id="progressbar', $tree->tree_id, '"><div style="position:absolute;" class="error">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
 							$controller->addInlineJavascript(
 								'jQuery("#progressbar'.$tree->tree_id.'").progressbar({value: 0});'
 							);

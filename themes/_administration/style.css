@@ -97,7 +97,8 @@ button {
 .ui-widget-content a.current {color:#3383bb; font-weight:bold;}
 .ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:#ff0000; cursor:pointer;}
 .ui-widget-header {padding:5px;}
-.ui-progressbar-value {height:60% !important; background:#d3d3d3 !important;}
+.ui-progressbar .ui-widget-content {background: #d3d3d3;}
+.ui-progressbar .ui-widget-header {background: #cefdce;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 0.25em 1em;}
 .css_right {float:right;}
