@@ -76,8 +76,8 @@ if ($row->import_offset==$row->import_total) {
 }
 
 // Calculate progress so far
-$percent=100*(($row->import_offset) / $row->import_total);
-$status=WT_I18N::translate('Loading data from GEDCOM: %.1f%%', $percent);
+$percent = 100*(($row->import_offset) / $row->import_total);
+$status = '<span class="error indent">' . WT_I18N::translate('Loading data from GEDCOM: %.1f%%', $percent) . '</span>';
 
 echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>';
 $controller->addInlineJavascript(
@@ -196,7 +196,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			exit;
 		}
 		$first_time=false;
-		
+
 		// Re-fetch the data, now that we have performed character set conversion.
 		$data=WT_DB::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".

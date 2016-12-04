@@ -56,6 +56,10 @@ class batch_update {
 			self::getJavascript(). '
 			<div id="batch_update">
 				<h2>' .  WT_I18N::translate('Batch update') . '</h2>
+				<div class="helpcontent">' .
+					/* I18N: Help text for Batch update tools. */ WT_I18N::translate('These tools can help fix common issues in GEDCOM data.<br><br>When you select a tool it will immediately search for the first record needing correction. This may take a minute or two so wait for it to complete before proceeding.') . '
+				</div>
+				<hr>
 				<form id="batch_update_form" action="module.php" method="get">
 					<input type="hidden" name="mod" value="batch_update">
 					<input type="hidden" name="mod_action" value="admin_batch_update">
@@ -71,12 +75,12 @@ class batch_update {
 								$html.='<option value="" selected="selected"></option>';
 							}
 							foreach ($this->plugins as $class=>$plugin) {
-								$html.='<option value="'.$class.'"'.($this->plugin==$class ? ' selected="selected"' : '').'>'.$plugin->getName().'</option>';
+								$html .= '<option value="'.$class.'"'.($this->plugin == $class ? ' selected="selected"' : '').'>'.$plugin->getName().'</option>';
 							}
 						$html.='</select>
 					</label>';
 					if ($this->PLUGIN) {
-						$html.='<p><em>'.$this->PLUGIN->getDescription().'</em></p>';
+						$html .= '<p><em>'.$this->PLUGIN->getDescription().'</em></p>';
 					}
 					if (!get_user_setting(WT_USER_ID, 'auto_accept')){
 						$html.='<p class="warning">'.WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.').'</p>';
@@ -134,7 +138,7 @@ class batch_update {
 
 		// Don't do any processing until a plugin is chosen.
 		if ($this->plugin) {
-			$this->PLUGIN=new $this->plugin;
+			$this->PLUGIN = new $this->plugin;
 			$this->PLUGIN->getOptions();
 			$this->getAllXrefs();
 
@@ -264,14 +268,14 @@ class batch_update {
 				$vars[]=WT_GED_ID;
 				break;
 			default:
-				$sql[]="SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
-				$vars[]=$type;
-				$vars[]=$type;
-				$vars[]=WT_GED_ID;
+				$sql[]	= "SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
+				$vars[]	= $type;
+				$vars[]	= $type;
+				$vars[]	= WT_GED_ID;
 				break;
 			}
 		}
-		$this->all_xrefs=
+		$this->all_xrefs =
 			WT_DB::prepare(implode(' UNION ', $sql).' ORDER BY 1 ASC')
 			->execute($vars)
 			->fetchAssoc();
@@ -279,9 +283,9 @@ class batch_update {
 
 	// Scan the plugin folder for a list of plugins
 	static function getPluginList() {
-		$array=array();
-		$dir=dirname(__FILE__).'/plugins/';
-		$dir_handle=opendir($dir);
+		$array		= array();
+		$dir		= dirname(__FILE__).'/plugins/';
+		$dir_handle	= opendir($dir);
 		while ($file=readdir($dir_handle)) {
 			if (substr($file, -4)=='.php') {
 				require dirname(__FILE__).'/plugins/'.$file;
@@ -349,7 +353,7 @@ class batch_update {
 //  string updateRecord($xref, $gedrec)
 //
 class base_plugin {
-	var $chan=false; // User option; update change record
+	var $chan = false; // User option; update change record
 
 	// Default is to operate on INDI records
 	function getRecordTypesToUpdate() {
@@ -358,7 +362,7 @@ class base_plugin {
 
 	// Default option is just the "don't update CHAN record"
 	function getOptions() {
-		$this->chan=safe_GET_bool('chan');
+		$this->chan = safe_GET_bool('chan');
 	}
 
 	// Default option is just the "don't update CHAN record"
@@ -366,8 +370,8 @@ class base_plugin {
 		return
 			'<label><span>'.WT_I18N::translate('Update the CHAN record').'</span>
 				<select name="chan" onchange="this.form.submit();">
-					<option value="no"' .($this->chan ? '' : ' selected="selected"').'>'.WT_I18N::translate('no') .'</option>
-					<option value="yes"'.($this->chan ? ' selected="selected"' : '').'>'.WT_I18N::translate('yes').'</option>
+					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>'.WT_I18N::translate('no') .'</option>
+					<option value="yes"'. ($this->chan ? ' selected="selected"' : '') . '>'.WT_I18N::translate('yes').'</option>
 				</select>
 			</label>';
 	}
@@ -388,53 +392,53 @@ class base_plugin {
 
 	// Default previewer for plugins with no custom preview.
 	function getActionPreview($xref, $gedrec) {
-		$old_lines=preg_split('/[\n]+/', $gedrec);
-		$new_lines=preg_split('/[\n]+/', $this->updateRecord($xref, $gedrec));
+		$old_lines	= preg_split('/[\n]+/', $gedrec);
+		$new_lines	= preg_split('/[\n]+/', $this->updateRecord($xref, $gedrec));
 		// Find matching lines using longest-common-subsequence algorithm.
-		$lcs=self::LCS($old_lines, $new_lines, 0, count($old_lines)-1, 0, count($new_lines)-1);
+		$lcs = self::LCS($old_lines, $new_lines, 0, count($old_lines)-1, 0, count($new_lines)-1);
 
-		$diff_lines=array();
-		$last_old=-1;
-		$last_new=-1;
+		$diff_lines	= array();
+		$last_old	= -1;
+		$last_new	= -1;
 		while ($lcs) {
-			list($old, $new)=array_shift($lcs);
-			while ($last_old<$old-1) {
+			list($old, $new) = array_shift($lcs);
+			while ($last_old < $old-1) {
 				$diff_lines[]=self::decorateDeletedText($old_lines[++$last_old]);
 			}
-			while ($last_new<$new-1) {
-				$diff_lines[]=self::decorateInsertedText($new_lines[++$last_new]);
+			while ($last_new < $new-1) {
+				$diff_lines[] = self::decorateInsertedText($new_lines[++$last_new]);
 			}
-			$diff_lines[]=$new_lines[$new];
-			$last_old=$old;
-			$last_new=$new;
+			$diff_lines[] = $new_lines[$new];
+			$last_old = $old;
+			$last_new = $new;
 		}
-		while ($last_old<count($old_lines)-1) {
-			$diff_lines[]=self::decorateDeletedText($old_lines[++$last_old]);
+		while ($last_old < count($old_lines) -1) {
+			$diff_lines[] = self::decorateDeletedText($old_lines[++$last_old]);
 		}
-		while ($last_new<count($new_lines)-1) {
-			$diff_lines[]=self::decorateInsertedText($new_lines[++$last_new]);
+		while ($last_new < count($new_lines)-1) {
+			$diff_lines[] = self::decorateInsertedText($new_lines[++$last_new]);
 		}
 
-		return '<pre>'.self::createEditLinks(implode("\n", $diff_lines)).'</pre>';
+		return '<pre>' . self::createEditLinks(implode("\n", $diff_lines)) . '</pre>';
 	}
 
 	// Longest Common Subsequence.
 	static function LCS($X, $Y, $x1, $x2, $y1, $y2) {
-		if ($x2-$x1>=0 && $y2-$y1>=0) {
-			if ($X[$x1]==$Y[$y1]) {
+		if ($x2 - $x1 >= 0 && $y2 - $y1 >= 0) {
+			if ($X[$x1] == $Y[$y1]) {
 				// Match at start of sequence
-				$tmp=self::LCS($X, $Y, $x1+1, $x2, $y1+1, $y2);
+				$tmp = self::LCS($X, $Y, $x1+1, $x2, $y1+1, $y2);
 				array_unshift($tmp, array($x1, $y1));
 				return $tmp;
-			} elseif ($X[$x2]==$Y[$y2]) {
+			} elseif ($X[$x2] == $Y[$y2]) {
 				// Match at end of sequence
-				$tmp=self::LCS($X, $Y, $x1, $x2-1, $y1, $y2-1);
+				$tmp = self::LCS($X, $Y, $x1, $x2-1, $y1, $y2-1);
 				array_push($tmp, array($x2, $y2));
 				return $tmp;
 			} else {
 				// No match.  Look for subsequences
-				$tmp1=self::LCS($X, $Y, $x1, $x2, $y1, $y2-1);
-				$tmp2=self::LCS($X, $Y, $x1, $x2-1, $y1, $y2);
+				$tmp1 = self::LCS($X, $Y, $x1, $x2, $y1, $y2-1);
+				$tmp2 = self::LCS($X, $Y, $x1, $x2-1, $y1, $y2);
 				return count($tmp1) > count($tmp2) ? $tmp1 : $tmp2;
 			}
 		} else {
@@ -449,10 +453,10 @@ class base_plugin {
 
 	// Decorate inserted/deleted text
 	static function decorateInsertedText($text) {
-		return '<span class="added_text">'.$text.'</span>';
+		return '<span class="added_text">' . $text . '</span>';
 	}
 	static function decorateDeletedText($text) {
-		return '<span class="deleted_text">'.$text.'</span>';
+		return '<span class="deleted_text">' . $text . '</span>';
 	}
 
 	// Converted gedcom links into editable links

@@ -61,9 +61,9 @@ $sql_INDI = "
 	SELECT i_id
 	FROM `##individuals`
 	LEFT OUTER JOIN ##link
-	 ON (##individuals.i_id = ##link.l_to AND ##individuals.i_file = ##link.l_file)
+	 ON (##individuals.i_id = ##link.l_from AND ##individuals.i_file = ##link.l_file)
 	 WHERE ##individuals.i_file = " . $gedcom_id . "
-	 AND ##link.l_from IS NULL
+	 AND ##link.l_to IS NULL
 ";
 $sql_SOUR = "
 	SELECT s_id

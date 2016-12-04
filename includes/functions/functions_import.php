@@ -864,17 +864,17 @@ function update_dates($xref, $ged_id, $gedrec) {
 
 // extract all the links from the given record and insert them into the database
 function update_links($xref, $ged_id, $gedrec) {
-	static $sql_insert_link=null;
+	static $sql_insert_link = null;
 	if (!$sql_insert_link) {
-		$sql_insert_link=WT_DB::prepare("INSERT INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
+		$sql_insert_link = WT_DB::prepare("INSERT INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
 	}
 
 	if (preg_match_all('/^\d+ ('.WT_REGEX_TAG.') @('.WT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
-		$data=array();
+		$data = array();
 		foreach ($matches as $match) {
 			// Include each link once only.
 			if (!in_array($match[1].$match[2], $data)) {
-				$data[]=$match[1].$match[2];
+				$data[] = $match[1].$match[2];
 				// Ignore any errors, which may be caused by "duplicates" that differ on case/collation, e.g. "S1" and "s1"
 				try {
 					$sql_insert_link->execute(array($xref, $match[2], $match[1], $ged_id));
