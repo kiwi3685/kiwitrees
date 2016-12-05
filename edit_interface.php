@@ -254,8 +254,8 @@ case 'edit':
 							if ($level1type != 'ASSO' && $level1type != 'REPO' && $level1type != 'NOTE') {
 								echo '<p>' . print_add_layer('ASSO') . '</p>';
 							}
-							// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-							if ($level1type=='CHR' || $level1type=='MARR') {
+							// allow to add godfather and godmother for CHR fact or best man and bridesmaid for MARR fact in one window
+							if ($level1type=='BAPM' || $level1type=='CHR' || $level1type=='MARR') {
 								echo '<p>' . print_add_layer('ASSO2') . '</p>';
 							}
 							// RESN can be added to all level 1 tags
@@ -333,7 +333,7 @@ case 'add':
 						}
 						echo '<p>' . print_add_layer('ASSO') . '</p>';
 						// allow to add godfather and godmother for CHR fact or best man and bridesmaid for MARR fact in one window
-						if ($fact === 'CHR' || $fact === 'MARR') {
+						if ($fact === 'BAPM' || $fact === 'CHR' || $fact === 'MARR') {
 							echo '<p>' . print_add_layer('ASSO2') . '</p>';
 						}
 						echo '<p>' . print_add_layer('RESN') . '</p>';
@@ -548,7 +548,7 @@ case 'linkspouse':
 				<div class="input">
 					<div class="input-group">
 						<input data-autocomplete-type="INDI" id="spouseid" type="text" name="spid" size="8">
-						<?php echo  print_findindi_link('spouseid'); ?>
+						<?php echo print_findindi_link('spouseid'); ?>
 					</div>
 				</div>
 				<?php
@@ -565,7 +565,7 @@ case 'linkspouse':
 					print_add_layer("NOTE");
 					print_add_layer("SHARED_NOTE");
 					print_add_layer("ASSO");
-					// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+					// allow to add godfather and godmother for CHR fact or best man and bridesmaid for MARR fact in one window
 					print_add_layer("ASSO2");
 					print_add_layer("RESN");
 				?>
@@ -731,7 +731,7 @@ case 'addnewsource':
 								<?php echo WT_Gedcom_Tag::getLabel('_HEB'); ?>
 							</label>
 							<div class="input">
-								<input  type="text" name="ROMN" id="ROMN" value="">
+								<input type="text" name="ROMN" id="ROMN" value="">
 								<?php echo print_specialchar_link('ROMN'); ?>
 							</div>
 						</div>
