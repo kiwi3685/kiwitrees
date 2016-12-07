@@ -180,6 +180,7 @@ $controller
 							echo
 								'<tr>
 									<td>&nbsp;</td>
+									<td>&nbsp;</td>
 									<td class="error">', $module_name, '</td>
 									<td>
 										<a class="error" href="'.WT_SCRIPT_NAME.'?action=delete_module&amp;module_name='.$module_name.'">',
