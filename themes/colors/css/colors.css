@@ -298,6 +298,7 @@ div.error {color:#dd0000;font-weight:600;}
     border-top: 1px solid #999;
     clear:both;
 	margin-top: 20px;
+	overflow: hidden;
     width:99%;
 }
 
@@ -2870,6 +2871,28 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 #resource-page.research_tasks {
 	margin: auto;
 	width: 90%;
+}
+
+/* Styles for vital records resource */
+#resource-page.vital_records table td {
+	vertical-align: top;
+}
+#resource-page.vital_records table td div {
+	border-top: 1px dashed;
+	padding-top: 5px;
+}
+#resource-page.vital_records table td div:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+#resource-page.vital_records table td div p.first {
+	font-size: 100%;
+	padding: 1px 0;
+}
+#resource-page.vital_records table td div p {
+	font-size: 85%;
+	padding: 1px 15px;
+	margin: 0;
 }
 
 /* ------------------ */

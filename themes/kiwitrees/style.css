@@ -92,9 +92,6 @@ th {
 	font-weight: 100;
 }
 
-td {
-}
-
 ul {
 	padding: 0 15px;
 	margin: 8px;
@@ -6259,10 +6256,6 @@ div.widget {
 	margin: auto;
 	width: 90%;
 }
-#resource-page.recent_changes table th,
-#resource-page table td {
-	padding:8px;
-}
 #resource-page.recent_changes table.changes th:first-child {
  	width: 30px;
 }
@@ -6281,6 +6274,7 @@ div.widget {
 	font-size: 80%;
 	padding: 0 10px;
 }
+
 /* Styles for individual report resource */
 #resource-page.individual_report {
 	margin: auto;
@@ -6371,7 +6365,6 @@ div.widget {
 	margin: 30px 0;
 }
 
-
 /* Styles for facts & events resource */
 #resource-page.fact_report select {
 	min-width: 200px;
@@ -6404,6 +6397,28 @@ div.widget {
 #resource-page.research_tasks {
 	margin: auto;
 	width: 90%;
+}
+
+/* Styles for vital records resource */
+#resource-page.vital_records table td {
+	vertical-align: top;
+}
+#resource-page.vital_records table td div {
+	border-top: 1px dashed;
+	padding-top: 5px;
+}
+#resource-page.vital_records table td div:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+#resource-page.vital_records table td div p.first {
+	font-size: 100%;
+	padding: 1px 0;
+}
+#resource-page.vital_records table td div p {
+	font-size: 85%;
+	padding: 1px 15px;
+	margin: 0;
 }
 
 /* ------------------ */

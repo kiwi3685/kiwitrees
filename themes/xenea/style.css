@@ -3086,6 +3086,28 @@ div.widget {
 	width: 90%;
 }
 
+/* Styles for vital records resource */
+#resource-page.vital_records table td {
+	vertical-align: top;
+}
+#resource-page.vital_records table td div {
+	border-top: 1px dashed;
+	padding-top: 5px;
+}
+#resource-page.vital_records table td div:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+#resource-page.vital_records table td div p.first {
+	font-size: 100%;
+	padding: 1px 0;
+}
+#resource-page.vital_records table td div p {
+	font-size: 85%;
+	padding: 1px 15px;
+	margin: 0;
+}
+
 /* ------------------ */
 
 /* Styles for calendar_utilities module */

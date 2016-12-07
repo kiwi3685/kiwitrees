@@ -19,7 +19,7 @@
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
@@ -34,9 +34,9 @@ if (!defined('WT_WEBTREES')) {
 // Print a fact record, for the individual/family/source/repository/etc. pages.
 //
 // Although a WT_Event has a parent object, we also need to know
-// the WT_GedcomRecord for which we are printing it.  For example,
+// the WT_GedcomRecord for which we are printing it. For example,
 // we can show the death of X on the page of Y, or the marriage
-// of X+Y on the page of Z.  We need to know both records to
+// of X+Y on the page of Z. We need to know both records to
 // calculate ages, relationships, etc.
 //
 // This is a copy of function print_fact() (functions_print_facts.php) without date and place for different formatting purposes
@@ -256,7 +256,7 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 		return;
 	}
 
-	// Who is this fact about?  Need it to translate fact label correctly
+	// Who is this fact about? Need it to translate fact label correctly
 	if ($fact->getSpouse()) {
 		// Event of close relative
 		$label_person = $fact->getSpouse();
@@ -267,8 +267,8 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 		// Family event
 		$husb = $fact->getParentObject()->getHusband();
 		$wife = $fact->getParentObject()->getWife();
-		if (empty($wife) && !empty($husb)) $label_person=$husb;
-		else if (empty($husb) && !empty($wife)) $label_person=$wife;
+		if (empty($wife) && !empty($husb)) $label_person = $husb;
+		else if (empty($husb) && !empty($wife)) $label_person = $wife;
 		else $label_person = $fact->getParentObject();
 	} else {
 		// The actual person
@@ -286,7 +286,7 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 	case 'EVEN':
 	case 'FACT':
 		if (WT_Gedcom_Tag::isTag($type)) {
-			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT".  Translate the TYPE.
+			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT". Translate the TYPE.
 			$label = WT_Gedcom_Tag::getLabel($type, $label_person);
 			$type=''; // Do not print this again
 		} elseif ($type) {
@@ -519,7 +519,7 @@ function add_resource_descendancy($i, $person, $parents = false, $generations = 
 
 function marriageDetails($family) {
 	$marr_type = strtoupper($family->getMarriageType());
-	if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
+	if ($marr_type == 'CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
 		$marr_fact = 'MARR_' . $marr_type;
 	} else {
 		$marr_fact = 'MARR';
@@ -528,13 +528,13 @@ function marriageDetails($family) {
 	$date	= $family->getMarriageDate();
 	if ($date && $date->isOK() || $place) {
 		if ($date) {
-			$details=$date->Display(false);
+			$details = $date->Display(false);
 		}
 		if ($place) {
 			if ($details) {
 				$details .= ' — ';
 			}
-			$tmp=new WT_Place($place, WT_GED_ID);
+			$tmp = new WT_Place($place, WT_GED_ID);
 			$details .= $tmp->getShortName();
 		}
 		echo WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
@@ -552,4 +552,55 @@ function marriageDetails($family) {
 		echo WT_Gedcom_Tag::getLabelValue($marr_fact, WT_I18N::translate('yes'));
 	}
 
+}
+
+// list vital records for individuals
+function resource_vital_records ($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $d_toJD, $ged){
+	$sql_select   = "SELECT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
+	$sql_join     = "";
+	$sql_where    = " WHERE i_file = " . $ged;
+
+	// Name filter
+	if ($name) {
+		$sql_join .= " JOIN `##name` ON (n_file=i_file AND n_id=i_id)";
+		$names = explode(" ", $name);
+		foreach ($names as $name) {
+			$sql_where .= " AND n_full LIKE CONCAT('%', '" . $name . "', '%')";
+		}
+	}
+	// Place filter
+	if ($place) {
+		$sql_where .= " AND i_gedcom LIKE CONCAT('%', '" . $place . "', '%')";
+	}
+	// Date filters
+	if ($b_fromJD || $b_toJD || $d_fromJD || $d_toJD) {
+		if ($b_fromJD || $b_toJD) {
+			$sql_join	.= " JOIN `##dates` AS B ON (B.d_file=i_file AND B.d_gid=i_id)";
+			$sql_where	.= " AND B.d_fact = 'BIRT'";
+			if ($b_fromJD) {
+				$sql_where .= " AND B.d_julianday1 >= $b_fromJD";
+			}
+			if ($b_toJD) {
+				$sql_where .= " AND B.d_julianday2 <= $b_toJD";
+			}
+		}
+		if ($d_fromJD || $d_toJD) {
+			$sql_join	.= " JOIN `##dates` AS D ON (D.d_file=i_file AND D.d_gid=i_id)";
+			$sql_where	.= " AND D.d_fact = 'DEAT'";
+			if ($d_fromJD) {
+				$sql_where .= " AND D.d_julianday1 >= $d_fromJD";
+			}
+			if ($d_toJD) {
+				$sql_where .= " AND D.d_julianday2 <= $d_toJD";
+			}
+		}
+	}
+
+	$list = array();
+	$rows = WT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
+	foreach ($rows as $row) {
+		$list[$row->xref] = WT_Person::getInstance($row->xref);
+	}
+
+	return $list;
 }
