@@ -151,15 +151,16 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 							displayLength: 20,
 							"aoColumns": [
 								/* 0 id */				{"bSortable": true, "sClass": "center"},
-								/* 1-name */			null,
-								/* 2-birth date */		{ dataSort: 3 },
-								/* 3-BIRT:DATE */		{ visible: false },
-								/* 4-birth place */		{ type: "unicode" },
-								/* 5-death date */		{ dataSort: 6 },
-								/* 6-DEAT:DATE */		{ visible: false },
-								/* 7-death place */		{ type: "unicode" },
-								/* 8-father */			null,
-								/* 9-mother */			null
+								/* 1-rela */			null,
+								/* 2-name */			null,
+								/* 3-birth date */		{ dataSort: 4 },
+								/* 4-BIRT:DATE */		{ visible: false },
+								/* 5-birth place */		{ type: "unicode" },
+								/* 6-death date */		{ dataSort: 7 },
+								/* 7-DEAT:DATE */		{ visible: false },
+								/* 8-death place */		{ type: "unicode" },
+								/* 9-father */			null,
+								/* 10-mother */			null
 							]
 						});
 						jQuery("#related_individuals").css("visibility", "visible");
@@ -230,6 +231,7 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 					<thead>
 						<tr>
 							<th><?php echo /* I18N: Abbreviation for "Number" */ WT_I18N::translate('No.'); ?></th>
+							<th><?php echo WT_I18N::translate('Relationship'); ?></th>
 							<th><?php echo WT_I18N::translate('Name'); ?></th>
 							<th><?php echo WT_I18N::translate('Birth'); ?></th>
 							<th><?php //SORT_BIRT ?></th>
@@ -245,35 +247,39 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 						<?php
 						$x = 0;
 						foreach ($list as $relative) {
-							$x++;
-							echo '
-								<tr>
-									<td>' . $x . '</td>
-									<td>' . $relative->getFullName() . '</td>
-									<td>' . $relative->getBirthDate()->Display() . '</td>
-									<td>' . $relative->getBirthDate()->JD() . '</td>
-									<td>' . $relative->getBirthPlace() . '</td>
-									<td>' . $relative->getDeathDate()->Display() . '</td>
-									<td>' . $relative->getDeathDate()->JD() . '</td>
-									<td>' . $relative->getDeathPlace() . '</td>
-									<td>';
-										if (is_null($relative->getPrimaryChildFamily()) || is_null($relative->getPrimaryChildFamily()->getHusband())) {
-											echo '';
-										} else {
-											echo $relative->getPrimaryChildFamily()->getHusband()->getLifespanName();
-										}
-									echo '</td>
-									<td>';
-										if (is_null($relative->getPrimaryChildFamily()) || is_null($relative->getPrimaryChildFamily()->getWife())) {
-											echo '';
-										} else {
-											echo $relative->getPrimaryChildFamily()->getWife()->getLifespanName();
-										}
-									echo '</td>
-								</tr>
-							';
-						}
-						?>
+							$x++; ?>
+							<tr>
+								<td><?php echo $x; ?></td>
+								<td>
+									<?php if ($person->equals($relative)) { ?>
+										<i class="icon-selected"></i><?php echo reflexivePronoun($person);
+									} else {
+										echo get_relationship_name(get_relationship($person, $relative, true, $MAX_DESCENDANCY_GENERATIONS));
+									} ?>
+								</td>
+								<td><a href="<?php echo $relative->getHtmlUrl(); ?>"><?php echo $relative->getFullName(); ?></a></td>
+								<td><?php echo $relative->getBirthDate()->Display(); ?></td>
+								<td><?php echo $relative->getBirthDate()->JD(); ?></td>
+								<td><?php echo $relative->getBirthPlace(); ?></td>
+								<td><?php echo $relative->getDeathDate()->Display(); ?></td>
+								<td><?php echo $relative->getDeathDate()->JD(); ?></td>
+								<td><?php echo $relative->getDeathPlace(); ?></td>
+								<td>
+									<?php if (is_null($relative->getPrimaryChildFamily()) || is_null($relative->getPrimaryChildFamily()->getHusband())) {
+										echo '';
+									} else {
+										echo $relative->getPrimaryChildFamily()->getHusband()->getLifespanName();
+									} ?>
+								</td>
+								<td>
+									<?php if (is_null($relative->getPrimaryChildFamily()) || is_null($relative->getPrimaryChildFamily()->getWife())) {
+										echo '';
+									} else {
+										echo $relative->getPrimaryChildFamily()->getWife()->getLifespanName();
+									} ?>
+								</td>
+							</tr>
+						<?php } ?>
 			 		</tbody>
 				</table>
 			<?php }
