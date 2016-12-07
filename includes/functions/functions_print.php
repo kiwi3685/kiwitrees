@@ -925,7 +925,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 
 	$wt_place = new WT_Place($event->getPlace(), WT_GED_ID);
 
-	$name_parts=explode(', ', $event->getPlace());
+	$name_parts = explode(', ', $event->getPlace());
 	$ct=count($name_parts);
 
 	if ($anchor) {
@@ -946,11 +946,11 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 		if (!empty($placerec)) {
 			if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
 				foreach ($matches[1] as $match) {
-					$wt_place=new WT_Place($match, WT_GED_ID);
-					$html.=' - ' . $wt_place->getFullName();
+					$wt_place = new WT_Place($match, WT_GED_ID);
+					$html .= ' - ' . $wt_place->getFullName();
 				}
 			}
-			$map_lati="";
+			$map_lati = "";
 			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);
 			if ($cts>0) {
 				$map_lati = $match[1];
@@ -959,7 +959,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 			$map_long = "";
 			$cts = preg_match('/\d LONG (.*)/', $placerec, $match);
 			if ($cts>0) {
-				$map_long=$match[1];
+				$map_long = $match[1];
 				$html .= ' <span class="label">'.WT_Gedcom_Tag::getLabel('LONG').': </span>'.$map_long;
 			}
 			if ($map_lati && $map_long && empty($SEARCH_SPIDER)) {
@@ -977,7 +977,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
 				ob_start();
 				print_fact_notes($placerec, 3);
-				$html.='<br>'.ob_get_contents();
+				$html .= '<br>'.ob_get_contents();
 				ob_end_clean();
 			}
 		}

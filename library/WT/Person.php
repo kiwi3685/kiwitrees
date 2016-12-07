@@ -326,15 +326,15 @@ class WT_Person extends WT_GedcomRecord {
 			if ($this->canDisplayDetails()) {
 				foreach ($this->getAllBirthDates() as $date) {
 					if ($date->isOK()) {
-						$this->_getBirthDate=$date;
+						$this->_getBirthDate = $date;
 						break;
 					}
 				}
 				if (is_null($this->_getBirthDate)) {
-					$this->_getBirthDate=new WT_Date('');
+					$this->_getBirthDate = new WT_Date('');
 				}
 			} else {
-				$this->_getBirthDate=new WT_Date("(".WT_I18N::translate('Private').")");
+				$this->_getBirthDate = new WT_Date("(".WT_I18N::translate('Private').")");
 			}
 		}
 		return $this->_getBirthDate;
@@ -349,15 +349,15 @@ class WT_Person extends WT_GedcomRecord {
 			if ($this->canDisplayDetails()) {
 				foreach ($this->getAllBirthPlaces() as $place) {
 					if ($place) {
-						$this->_getBirthPlace=$place;
+						$this->_getBirthPlace = $place;
 						break;
 					}
 				}
 				if (is_null($this->_getBirthPlace)) {
-					$this->_getBirthPlace='';
+					$this->_getBirthPlace = '';
 				}
 			} else {
-				$this->_getBirthPlace=WT_I18N::translate('Private');
+				$this->_getBirthPlace = WT_I18N::translate('Private');
 			}
 		}
 		return $this->_getBirthPlace;
@@ -377,10 +377,10 @@ class WT_Person extends WT_GedcomRecord {
 					}
 				}
 				if (is_null($this->_getBirthPlace)) {
-					$this->_getBirthPlace='';
+					$this->_getBirthPlace = '';
 				}
 			} else {
-				$this->_getBirthPlace=WT_I18N::translate('Private');
+				$this->_getBirthPlace = WT_I18N::translate('Private');
 			}
 		}
 		$censbirthplace = $this->_getBirthPlace;
@@ -414,10 +414,10 @@ class WT_Person extends WT_GedcomRecord {
 					}
 				}
 				if (is_null($this->_getDeathDate)) {
-					$this->_getDeathDate=new WT_Date('');
+					$this->_getDeathDate = new WT_Date('');
 				}
 			} else {
-				$this->_getDeathDate=new WT_Date("(".WT_I18N::translate('Private').")");
+				$this->_getDeathDate = new WT_Date("(".WT_I18N::translate('Private').")");
 			}
 		}
 		return $this->_getDeathDate;
