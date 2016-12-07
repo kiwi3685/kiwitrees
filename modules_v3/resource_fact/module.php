@@ -120,53 +120,24 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-			->addExternalJavascript(WT_JQUERY_DT_HTML5)
-			->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
 			->addInlineJavascript('
 				autocomplete();
-				jQuery("#' .$table_id. '").dataTable( {
-					dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-					' . WT_I18N::datatablesI18N() . ',
-					buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
-					autoWidth: true,
-					paging: true,
-					pagingType: "full_numbers",
-					lengthChange: true,
-					filter: true,
-					info: true,
-					jQueryUI: true,
-					sorting: [[0,"asc"]],
-					displayLength: 20,
-					"aoColumns": [
-						/* 0-BIRT_DATE */  	{"bVisible": false},
-						/* 1-OTHER_DATE */ 	{"bVisible": false},
-						/* 2-Name */		{"sClass": "nowrap"},
-						/* 3-DoB */			{"iDataSort": 0, "sClass": "nowrap"},
-						/* 4-Date */ 		{"iDataSort": 1, "sClass": "nowrap"},
-						/* 5-Place */ 		{},
-						/* 6-Type */ 		{},
-						/* 7-Details */ 	{}
-					]
-				});
-			jQuery("#output").css("visibility", "visible");
-			jQuery(".loading-image").css("display", "none");
 
-			var form = document.getElementById("resource"),
-			fact = form.elements.fact;
-			var typefacts = ' . json_encode($typefacts) . ';
-			fact.onchange = function () {
-			    var form = this.form;
-				if (jQuery.inArray(this.value, typefacts) !== -1) {
-			        form.elements.type.disabled = false;
-					jQuery("#disable_type").css("opacity", "initial");
-			    } else {
-			        form.elements.type.disabled = true;
-					jQuery("#disable_type").css("opacity", "0.4");
-			    }
-			};
-			fact.onchange();
-		');
+				var form = document.getElementById("resource"),
+				fact = form.elements.fact;
+				var typefacts = ' . json_encode($typefacts) . ';
+				fact.onchange = function () {
+				    var form = this.form;
+					if (jQuery.inArray(this.value, typefacts) !== -1) {
+				        form.elements.type.disabled = false;
+						jQuery("#disable_type").css("opacity", "initial");
+				    } else {
+				        form.elements.type.disabled = true;
+						jQuery("#disable_type").css("opacity", "0.4");
+				    }
+				};
+				fact.onchange();
+			');
 		?>
 
 		<div id="resource-page" class="fact_report">
@@ -183,6 +154,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 			<!-- options form -->
 			<div class="noprint">
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo WT_GEDURL; ?>">
+					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
 						<label for = "fact"><?php echo WT_I18N::translate('Fact or event'); ?></label>
 						<select name="fact" id="fact">
@@ -197,7 +169,6 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 							?>
 						</select>
 					</div>
-						<input type="hidden" name="go" value="1">
 						<div class="chart_options">
 							<label for="year_from"><?php echo WT_I18N::translate('Date'); ?></label>
 							<input type="text" id="year_from" name="year_from" placeholder="<?php echo WT_I18N::translate('Year from - 4 digits only'); ?>" value="<?php echo $year_from; ?>" pattern="\d{4}">
@@ -227,7 +198,40 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 				<hr style="clear:both;">
 			</div>
 			<!-- end of form -->
-			<?php if ($go == 1) { ?>
+			<?php if ($go == 1) {
+				$controller
+					->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+					->addExternalJavascript(WT_JQUERY_DT_HTML5)
+					->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+					->addInlineJavascript('
+						jQuery("#' .$table_id. '").dataTable( {
+							dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+							' . WT_I18N::datatablesI18N() . ',
+							buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
+							autoWidth: true,
+							paging: true,
+							pagingType: "full_numbers",
+							lengthChange: true,
+							filter: true,
+							info: true,
+							jQueryUI: true,
+							sorting: [[0,"asc"]],
+							displayLength: 20,
+							"aoColumns": [
+								/* 0-BIRT_DATE */  	{"bVisible": false},
+								/* 1-OTHER_DATE */ 	{"bVisible": false},
+								/* 2-Name */		{"sClass": "nowrap"},
+								/* 3-DoB */			{"iDataSort": 0, "sClass": "nowrap"},
+								/* 4-Date */ 		{"iDataSort": 1, "sClass": "nowrap"},
+								/* 5-Place */ 		{},
+								/* 6-Type */ 		{},
+								/* 7-Details */ 	{}
+							]
+						});
+					jQuery("#output").css("visibility", "visible");
+					jQuery(".loading-image").css("display", "none");
+				');
+				 ?>
 				<div class="loading-image">&nbsp;</div>
 				<div id="output" style="visibility:hidden;">
 					<table id="report_header">
