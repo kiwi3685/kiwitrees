@@ -69,7 +69,7 @@ function format_indi_table($datalist, $option='') {
 					/*  1 surn      */ { dataSort: 3 },
 					/*  2 GIVN,SURN */ { type: "unicode", visible: false },
 					/*  3 SURN,GIVN */ { type: "unicode", visible: false },
-					/*  4 sosa      */ { dataSort: 5, class: "center", visible: ' . ($option=='sosa' ? 'true' : 'false') . ' },
+					/*  4 sosa      */ { dataSort: 5, class: "center", visible: ' . ($option === 'sosa' ? 'true' : 'false') . ' },
 					/*  5 SOSA      */ { type: "num", visible: false },
 					/*  6 birt date */ { dataSort: 7 },
 					/*  7 BIRT:DATE */ { visible: false },
@@ -90,7 +90,7 @@ function format_indi_table($datalist, $option='') {
 					/* 22 DEAT      */ { visible: false },
 					/* 23 TREE      */ { visible: false }
 				],
-				sorting: [[' . ($option == 'sosa' ? '4, "asc"' : '1, "asc"') . ']],
+				sorting: [[' . ($option === 'sosa' ? '4, "asc"' : '1, "asc"') . ']],
 				displayLength: 20,
 				pagingType: "full_numbers",
 				stateSave: true,
@@ -359,7 +359,7 @@ function format_indi_table($datalist, $option='') {
 		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
 		$html .= '<td>'. WT_Filter::escapeHtml(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. WT_Filter::escapeHtml(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		//-- SOSA
-		if ($option=='sosa') {
+		if ($option === 'sosa') {
 			$html .= '<td><a href="relationship.php?pid1='. $datalist[1]. '&amp;pid2='. $person->getXref(). '" title="'. WT_I18N::translate('Relationships'). '">'. WT_I18N::number($key). '</a></td><td>'. $key. '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td><td>0</td>';
@@ -377,13 +377,13 @@ function format_indi_table($datalist, $option='') {
 				$birt_by_decade[(int)($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
-			$birth_date=$person->getEstimatedBirthDate();
+			$birth_date = $person->getEstimatedBirthDate();
 			if ($SHOW_EST_LIST_DATES) {
 				$html .= $birth_date->Display(!$SEARCH_SPIDER);
 			} else {
 				$html .= '&nbsp;';
 			}
-			$birth_dates[0]=new WT_Date('');
+			$birth_dates[0] = new WT_Date('');
 		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
@@ -393,7 +393,7 @@ function format_indi_table($datalist, $option='') {
 		//-- Birth place
 		$html .= '<td>';
 		foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
-			$tmp=new WT_Place($birth_place, WT_GED_ID);
+			$tmp = new WT_Place($birth_place, WT_GED_ID);
 			if ($n) {
 				$html .= '<br>';
 			}
@@ -406,11 +406,11 @@ function format_indi_table($datalist, $option='') {
 		}
 		$html .= '</td>';
 		//-- Number of children
-		$nchi=$person->getNumberOfChildren();
+		$nchi = $person->getNumberOfChildren();
 		$html .= '<td>'. WT_I18N::number($nchi). '</td><td>'. $nchi. '</td>';
 		//-- Death date
 		$html .= '<td>';
-		if ($death_dates=$person->getAllDeathDates()) {
+		if ($death_dates = $person->getAllDeathDates()) {
 			foreach ($death_dates as $num=>$death_date) {
 				if ($num) {
 					$html .= '<br>';
@@ -421,7 +421,7 @@ function format_indi_table($datalist, $option='') {
 				$deat_by_decade[(int)($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
-			$death_date=$person->getEstimatedDeathDate();
+			$death_date = $person->getEstimatedDeathDate();
 			// Estimated death dates are a fixed number of years after the birth date.
 			// Don't show estimates in the future.
 			if ($SHOW_EST_LIST_DATES && $death_date->MinJD() < WT_CLIENT_JD) {
@@ -431,7 +431,7 @@ function format_indi_table($datalist, $option='') {
 			} else {
 				$html .= '&nbsp;';
 			}
-			$death_dates[0]=new WT_Date('');
+			$death_dates[0] = new WT_Date('');
 		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
@@ -439,16 +439,16 @@ function format_indi_table($datalist, $option='') {
 		//-- Death anniversary
 		$html .= '<td>'.WT_Date::getAge($death_dates[0], null, 2).'</td>';
 		//-- Age at death
-		$age=WT_Date::getAge($birth_dates[0], $death_dates[0], 0);
+		$age = WT_Date::getAge($birth_dates[0], $death_dates[0], 0);
 		if (!isset($unique_indis[$person->getXref()]) && $age>=0 && $age<=$max_age) {
-			$deat_by_age[$age].=$person->getSex();
+			$deat_by_age[$age] .= $person->getSex();
 		}
 		// Need both display and sortable age
 		$html .= '<td>' . WT_Date::getAge($birth_dates[0], $death_dates[0], 2) . '</td><td>' . WT_Date::getAge($birth_dates[0], $death_dates[0], 1) . '</td>';
 		//-- Death place
 		$html .= '<td>';
 		foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
-			$tmp=new WT_Place($death_place, WT_GED_ID);
+			$tmp = new WT_Place($death_place, WT_GED_ID);
 			if ($n) {
 				$html .= '<br>';
 			}
@@ -502,7 +502,7 @@ function format_indi_table($datalist, $option='') {
 		else { $html .= '&nbsp;'; }
 		$html .= '</td>';
 		$html .= '</tr>';
-		$unique_indis[$person->getXref()]=true;
+		$unique_indis[$person->getXref()] = true;
 	}
 	$html .= '
 				</tbody>
@@ -530,7 +530,7 @@ function format_indi_table($datalist, $option='') {
 }
 
 // print a table of families
-function format_fam_table($datalist, $option='') {
+function format_fam_table($datalist, $option = '') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
 
 	if (WT_SCRIPT_NAME == 'search.php') {
@@ -630,7 +630,7 @@ function format_fam_table($datalist, $option='') {
 	for ($age=0; $age<=$max_age; $age++) {
 		$marr_by_age[$age] = '';
 	}
-	for ($year=1550; $year<2030; $year+=10) {
+	for ($year = 1550; $year<2030; $year+=10) {
 		$birt_by_decade[$year] = '';
 		$marr_by_decade[$year] = '';
 	}
