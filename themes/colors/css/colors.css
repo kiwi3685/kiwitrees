@@ -2672,6 +2672,22 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
     margin-top: 5px;
 	width: auto;
 }
+#resource-page #report_header {
+	border: 1px solid;
+	display: inline-block;
+	margin: 0 0 10px;
+	padding: 5px 10px;
+}
+#resource-page #report_header h4 {
+	margin: 0;
+}
+#resource-page #report_header p {
+	margin: 5px 0;
+	padding: 0
+}
+#resource-page #report_header p span {
+	font-weight: 600;
+}
 
 /* Styles for nocensus resource */
 #resource-page.nocensus {
@@ -2853,13 +2869,6 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 #resource-page.fact_report table.details td,
 #resource-page.fact_report table.details th {
 	width: 20%;
-}
-#resource-page.fact_report table#report_header {
-	border: 1px solid;
-	margin: 20px 0;
-}
-#resource-page.fact_report table#report_header th {
-	font-weight: 900;
 }
 
 /* Styles for UK Register resource */

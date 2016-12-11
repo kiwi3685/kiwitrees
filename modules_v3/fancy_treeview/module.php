@@ -49,7 +49,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ WT_I18N::translate('A Fancy overview of the descendants of one family(branch) in a narrative way');
+		return /* I18N: Description of the module */ WT_I18N::translate('A narrative report of the descendants of one family or individual');
 	}
 
 	// Implement WT_Module_Resources
@@ -667,37 +667,51 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			// Start page content
 			?>
-			<div id="fancy_treeview-page">
+			<div id="resource-page">
+				<h2><?php echo $this->getTitle(); ?></h2>
 				<div class="chart_options noprint">
+					<div class="help_text">
+						<div class="help_content">
+							<h5><?php echo $this->getDescription(); ?></h5>
+							<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+							<div class="hidden">
+								<?php echo /* I18N: help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
+							</div>
+						</div>
 					<form id="change_root">
-						<label class="label"><?php echo WT_I18N::translate('Change root person'); ?></label>
-						<input type="text" name="new_rootid" id="new_rootid" data-autocomplete-type="INDI">
-						<?php echo print_findindi_link('new_rootid'); ?>
+						<div class="chart_options">
+							<label for = "new_rootid" class="label"><?php echo WT_I18N::translate('Change root person'); ?></label>
+							<input type="text" data-autocomplete-type="INDI" name="new_rootid" id="new_rootid" value="<?php echo $root; ?>">
+						</div>
+
+
 						<button class="btn btn-primary show" type="submit">
 							<i class="fa fa-eye"></i>
 							<?php echo WT_I18N::translate('show'); ?>
 						</button>
 					</form>
 				</div>
-				<div id="error"></div>
 				<hr class="noprint">
-				<div id="page-header">
-					<h2>
-						<?php echo $controller->getPageTitle() ?>
-						<?php if (WT_USER_IS_ADMIN) { ?>
-							<a href="module.php?mod=fancy_treeview&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer" class="noprint">
-								<i class="fa fa-cog"></i>
-							</a>
-						<?php } ?>
-					</h2>
-				</div>
-				<div id="page-body">
-					<ol id="fancy_treeview"><?php echo $this->print_page(); ?></ol>
-					<div id="btn_next">
-						<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
-							<i class="fa fa-arrow-down"></i>
-							<?php echo WT_I18N::translate('next'); ?>
-						</button>
+				<div id="fancy_treeview-page">
+					<div id="error"></div>
+					<div id="page-header">
+						<h2>
+							<?php echo $controller->getPageTitle() ?>
+							<?php if (WT_USER_IS_ADMIN) { ?>
+								<a href="module.php?mod=fancy_treeview&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer" class="noprint">
+									<i class="fa fa-cog"></i>
+								</a>
+							<?php } ?>
+						</h2>
+					</div>
+					<div id="page-body">
+						<ol id="fancy_treeview"><?php echo $this->print_page(); ?></ol>
+						<div id="btn_next">
+							<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
+								<i class="fa fa-arrow-down"></i>
+								<?php echo WT_I18N::translate('next'); ?>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>

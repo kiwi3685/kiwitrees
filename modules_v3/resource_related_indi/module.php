@@ -170,7 +170,6 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 				$person = WT_Person::getInstance($rootid);
 				if ($person && $person->canDisplayDetails()) { ; ?>
 					<h2><?php echo /* I18N: heading for report on related individuals */ WT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
-
 					<?php
 					// collect list of relatives
 					$list = array();

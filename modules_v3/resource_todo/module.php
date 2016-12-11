@@ -116,8 +116,8 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 		$content = '
 			<div id="resource-page" class="research_tasks">
 				<h2>' . $this->getTitle() . '</h2>
-				<h5>' . $this->getDescription() . '</h5>
 				<div class="noprint">
+					<h5>' . $this->getDescription() . '</h5>
 					<form name="changes" id="changes" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show">
 						<input type="hidden" name="action" value="?">
 						<div class="chart_options">
@@ -139,9 +139,19 @@ class resource_todo_WT_Module extends WT_Module implements WT_Module_Resources {
 				</div>
 				<hr style="clear:both;">
 		';
+			($show_unassigned) ? $filter1 = '<p>' . /* I18N: A filter on the research tasks report page */ WT_I18N::translate('Show tasks not assigned to any user') . '</p>' : $filter1 = '';
+			($show_other) ? $filter2 = '<p>' . /* I18N: A filter on the research tasks report page */ WT_I18N::translate('Show tasks assigned to other users') . '</p>' : $filter2 = '';
+			($show_other) ? $filter3 = '<p>' . /* I18N: A filter on the research tasks report page */ WT_I18N::translate('Show tasks that have a date in the future') . '</p>' : $filter3 = '';
+
+			$filter_list = $filter1 . $filter2 . $filter3;
+
 			// Display results
 			if ($action){
-				$content .= '<div class="loading-image">&nbsp;</div>
+				$content .= '<div id="report_header">
+					<h4>' . WT_I18N::translate('Listing research tasks based on these filters') . '</h4>
+					<p>' .  $filter_list . '</p>
+				</div>
+				<div class="loading-image">&nbsp;</div>
 				<table id="' .$table_id. '" style="visibility:hidden; width:100%;">
 					<thead>
 						<tr>

@@ -142,17 +142,17 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 
 		<div id="resource-page" class="fact_report">
 			<h2><?php echo $this->getTitle(); ?></h2>
-			<div class="help_text">
-				<div class="help_content">
-					<h5><?php echo $this->getDescription(); ?></h5>
-					<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
-					<div class="hidden">
-						<?php echo /* I18N: help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
+			<div class="noprint">
+				<div class="help_text">
+					<div class="help_content">
+						<h5><?php echo $this->getDescription(); ?></h5>
+						<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
+						<div class="hidden">
+							<?php echo /* I18N: help for resource facts and events module */ WT_I18N::translate('The list of available facts and events are those set by the site administrator as "All individual facts" and "Unique individual facts" at Administration > Family trees > <i>your family tree</i> > "Edit options" tab and therefore only GEDCOM first-level records.<br>Date filters must be 4-digit year only. Place, type and detail filters can be any string of characters you expect to find in those data fields. The "Type" field is only avaiable for Custom facts and Custom events.'); ?>
+						</div>
 					</div>
 				</div>
-			</div>
-			<!-- options form -->
-			<div class="noprint">
+				<!-- options form -->
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo WT_GEDURL; ?>">
 					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
@@ -199,6 +199,53 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 			</div>
 			<!-- end of form -->
 			<?php if ($go == 1) {
+				// prepare data.
+				$rows = resource_findfact($fact);
+				$data = array();
+				$x = 0;
+				$count_type = false;
+				$count_details = false;
+				foreach ($rows as $row) {
+					$person = WT_Person::getInstance($row->xref);
+					if ($person->canDisplayDetails()) { ?>
+						<?php $indifacts = $person->getIndiFacts();
+						foreach ($indifacts as $item) {
+							if ($item->getTag() == $fact) {
+								$filtered_facts = filter_facts($item, $person, $year_from, $year_to, $place, $detail, $type);
+								if ($filtered_facts) {
+									$factrec = $item->getGedcomRecord();
+									if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
+										$date = new WT_Date($match[1]);
+									} else {
+										$date = new WT_Date('');
+									}
+									$data[$x]['B_DATE'] = $person->getBirthDate()->JD();
+									$data[$x]['O_DATE'] = $date->JD();
+									$data[$x]['NAME'] = '<a href="' . $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>';
+									$data[$x]['BIRTH'] = $person->getBirthDate()->Display();
+									$data[$x]['FACT_DATE'] = format_fact_date($item, $person, false, true, false);
+									$data[$x]['FACT_PLACE'] = format_fact_place($item, true);
+									$ct = preg_match("/2 TYPE (.*)/", $item->getGedcomRecord(), $ematch);
+									if ($ct>0) {
+										$factname = trim($ematch[1]);
+										$data[$x]['TYPE'] = $factname;
+										$count_type = true;
+									} else {
+										$data[$x]['TYPE'] = '';
+									}
+									if (print_resourcefactDetails($item, $person)){
+										$data[$x]['DETAILS'] = print_resourcefactDetails($item, $person);
+										$count_details = true;
+									} else {
+										$data[$x]['DETAILS'] = '';
+									}
+								}
+							}
+						}
+					}
+					$x++;
+				}
+//print_r($data);
 				$controller
 					->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 					->addExternalJavascript(WT_JQUERY_DT_HTML5)
@@ -218,55 +265,37 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 							sorting: [[0,"asc"]],
 							displayLength: 20,
 							"aoColumns": [
-								/* 0-BIRT_DATE */  	{"bVisible": false},
-								/* 1-OTHER_DATE */ 	{"bVisible": false},
-								/* 2-Name */		{"sClass": "nowrap"},
-								/* 3-DoB */			{"iDataSort": 0, "sClass": "nowrap"},
-								/* 4-Date */ 		{"iDataSort": 1, "sClass": "nowrap"},
-								/* 5-Place */ 		{},
-								/* 6-Type */ 		{},
-								/* 7-Details */ 	{}
+								/* 0-BIRT_DATE */  	{ "bVisible": false },
+								/* 1-OTHER_DATE */ 	{ "bVisible": false },
+								/* 2-Name */		{ "sClass": "nowrap" },
+								/* 3-DoB */			{ "iDataSort": 0, "sClass": "nowrap" },
+								/* 4-Date */ 		{ "iDataSort": 1, "sClass": "nowrap" },
+								/* 5-Place */ 		null,
+								/* 6-Type */ 		' . ($count_type ? 'null' : '{ "bVisible": false }') . ',
+								/* 7-Details */ 	' . ($count_details ? 'null' : '{ "bVisible": false }') . ',
 							]
 						});
 					jQuery("#output").css("visibility", "visible");
 					jQuery(".loading-image").css("display", "none");
 				');
+
+				($fact) ? $filter1 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Fact or event: <span>%1s</span>', WT_Gedcom_Tag::getLabel($fact)) . '</p>' : $filter1 = '';
+				($year_from && !$year_to) ? $filter2 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Date from: <span>%1s</span>', $year_from) . '</p>' : $filter2 = '';
+				(!$year_from && $year_to) ? $filter3 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Date to <span>%1s</span>', $year_to) . '</p>' : $filter3 = '';
+				($year_from && $year_to) ? $filter4 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Dates between <span>%1s</span> and <span>%2s</span> ', $year_from, $year_to) . '</p>' : $filter4 = '';
+				($place) ? $filter5 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Place: <span>%1s</span>', $place) . '</p>' : $filter5 = '';
+				($type) ? $filter6 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Type: <span>%1s</span>', $type) . '</p>' : $filter6 = '';
+				($detail) ? $filter7 = '<p>' . /* I18N: A filter on the facts and events report page */ WT_I18N::translate('Details: <span>%1s</span>', $detail) . '</p>' : $filter7 = '';
+
+				$filter_list = $filter1 . $filter2 . $filter3 . $filter4 . $filter5 . $filter6 . $filter7;
+
 				 ?>
+				 <div id="report_header">
+ 					<h4><?php echo WT_I18N::translate('Listing individuals based on these filters'); ?></h4>
+ 					<p><?php echo $filter_list; ?></p>
+ 				</div>
 				<div class="loading-image">&nbsp;</div>
 				<div id="output" style="visibility:hidden;">
-					<table id="report_header">
-						<tr>
-							<th colspan="2"><?php echo WT_I18N::translate('Listing individuals based on these filters'); ?></th>
-						</tr>
-						<tr>
-							<th><?php echo WT_I18N::translate('Fact'); ?></th>
-							<td><?php echo WT_Gedcom_Tag::getLabel($fact); ?></td>
-						</tr>
-						<?php if ($year_from || $year_to) { ?>
-							<tr>
-								<th><?php echo WT_I18N::translate('Dates'); ?></th>
-								<td><?php echo ($year_from ? WT_I18N::translate('from %s', $year_from) : '') . ' ' . ($year_to ? WT_I18N::translate('to %s', $year_to) : ''); ?></td>
-							</tr>
-						<?php }
-						if ($place) { ?>
-							<tr>
-								<th><?php echo WT_I18N::translate('Place'); ?></th>
-								<td><?php echo $place; ?></td>
-							</tr>
-						<?php }
-						if ($type) { ?>
-							<tr>
-								<th><?php echo WT_I18N::translate('Type'); ?></th>
-								<td><?php echo $type; ?></td>
-							</tr>
-						<?php }
-						if ($detail) { ?>
-							<tr>
-								<th><?php echo WT_I18N::translate('Details'); ?></th>
-								<td><?php echo $detail; ?></td>
-							</tr>
-							<?php } ?>
-					</table>
 					<table id="<?php echo $table_id; ?>"style="width:100%;">
 						<thead>
 							<tr>
@@ -282,60 +311,18 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 						</thead>
 						<tbody>
 							<?php
-							$rows = resource_findfact($fact);
-							foreach ($rows as $row) {
-								$person = WT_Person::getInstance($row->xref);
-								if ($person->canDisplayDetails()) { ?>
-									<?php $indifacts = $person->getIndiFacts();
-									foreach ($indifacts as $item) {
-										if ($item->getTag() == $fact) {
-											$filtered_facts = filter_facts($item, $person, $year_from, $year_to, $place, $detail, $type);
-											if ($filtered_facts) {
-												$factrec = $item->getGedcomRecord();
-												if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
-													$date = new WT_Date($match[1]);
-												} else {
-													$date = new WT_Date('');
-												} ?>
-												<tr>
-													<td><!-- hidden cell 1 - birth date -->
-														<?php echo $person->getBirthDate()->JD(); ?>
-													</td>
-													<td><!-- hidden cell 2 - other date -->
-														<?php echo $date->JD(); ?>
-													</td>
-													<td>
-														<a href="<?php echo $person->getHtmlUrl(); ?>" target="_blank" rel="noopener noreferrer"><?php echo $person->getFullName(); ?></a>
-													</td>
-													<td>
-														<?php echo $person->getBirthDate()->Display(); ?>
-													</td>
-													<td>
-														<?php echo format_fact_date($item, $person, false, true, false); ?>
-													</td>
-													<td>
-														<?php echo format_fact_place($item, true); ?>
-													</td>
-													<td class="field">
-														<?php
-															$ct = preg_match("/2 TYPE (.*)/", $item->getGedcomRecord(), $ematch);
-															if ($ct>0) {
-																$factname = trim($ematch[1]);
-																echo $factname;
-															} else {
-																echo '';
-															}
-														?>
-													</td>
-													<td class="field">
-														<?php echo print_resourcefactDetails($item, $person); ?>
-													</td>
-												</tr>
-											<?php }
-										}
-									}
-								}
-							} ?>
+							foreach ($data as $row) { ?>
+								<tr>
+									<td><?php echo $row['B_DATE']; ?></td><!-- hidden cell 1 - birth date -->
+									<td><?php echo $row['O_DATE']; ?></td><!-- hidden cell 2 - other date -->
+									<td><?php echo $row['NAME']; ?></td>
+									<td><?php echo $row['BIRTH']; ?></td>
+									<td><?php echo $row['FACT_DATE']; ?></td>
+									<td><?php echo $row['FACT_PLACE']; ?></td>
+									<td class="field"><?php echo $row['TYPE']; ?></td>
+									<td class="field"><?php echo $row['DETAILS']; ?></td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>

@@ -80,6 +80,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 	case 'EDUC':
 	case 'GRAD':
 	case 'OCCU':
+		$html .= '<span dir="auto">' . htmlspecialchars($fact->getDetail()) . '</span>';
 		// include AGNC if recorded
 		if (preg_match('/\n2 AGNC (.+)/', $fact->getGedcomRecord(), $match)) {
 			$html .= WT_Gedcom_Tag::getLabelValue('AGNC', $match[1]);

@@ -85,9 +85,26 @@ class resource_vital_records_WT_Module extends WT_Module implements WT_Module_Re
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
-			->addInlineJavascript('autocomplete();');
-
-//		session_write_close();
+			->addInlineJavascript('
+				autocomplete();
+				// check that at least one filter has been used
+				function checkform() {
+				    if (
+						document.resource.name.value == "" &&
+						document.resource.place.value == "" &&
+						document.resource.b_from.value == "" &&
+						document.resource.b_to.value == "" &&
+						document.resource.d_from.value == "" &&
+						document.resource.d_to.value == ""
+					) {
+						if (confirm("' . WT_I18N::translate('You have not set any filters. Kiwitrees will try to list vital records for every individual in your tree. Is this what you want to do?') . '")){
+						    document.resource.submit(); // OK
+						} else {
+						    return false; // Cancel
+						}
+				    }
+				}
+			');
 
 		//Configuration settings ===== //
 	    $action	= WT_Filter::post('action');
@@ -118,8 +135,8 @@ class resource_vital_records_WT_Module extends WT_Module implements WT_Module_Re
 
 		?>
 		<div id="resource-page" class="vital_records">
+			<h2><?php echo $this->getTitle(); ?></h2>
 			<div class="noprint">
-				<h2><?php echo $this->getTitle(); ?></h2>
 				<h5><?php echo $this->getDescription(); ?></h5>
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;ged=<?php echo WT_GEDURL; ?>">
 					<input type="hidden" name="action" value="go">
@@ -147,7 +164,7 @@ class resource_vital_records_WT_Module extends WT_Module implements WT_Module_Re
 		              <label for = "DATE4"><?php echo WT_I18N::translate('Death date - to'); ?></label>
 		              <input type="text" name="d_to" id="DATE4" value="<?php echo $d_to; ?>" onblur="valid_date(this);" onmouseout="valid_date(this);"><?php echo print_calendar_popup("DATE4"); ?>
 		            </div>
-	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
+	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>" onclick="return checkform()">
 						<i class="fa fa-eye"></i>
 						<?php echo WT_I18N::translate('show'); ?>
 					</button>
@@ -193,9 +210,25 @@ class resource_vital_records_WT_Module extends WT_Module implements WT_Module_Re
 						jQuery(".loading-image").css("display", "none");
 					');
 
-				// output display
+				($name) ? $filter1 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Names containing <span>%1s</span>', $name) . '</p>' : $filter1 = '';
+				($place) ? $filter2 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Place names containing <span>%1s</span>', $place) . '</p>' : $filter2 = '';
+				($b_from && !$b_to) ? $filter3 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Births from <span>%1s</span>', $b_from) . '</p>' : $filter3 = '';
+				(!$b_from && $b_to) ? $filter4 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Births to <span>%1s</span>', $b_to) . '</p>' : $filter4 = '';
+				($b_from && $b_to) ? $filter5 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Births between <span>%1s</span> and <span>%2s</span> ', $b_from, $b_to) . '</p>' : $filter5 = '';
+				($d_from && !$d_to) ? $filter6 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Deaths from <span>%1s</span>', $d_from) . '</p>' : $filter6 = '';
+				(!$d_from && $d_to) ? $filter7 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Deaths to <span>%1s</span>', $d_to) . '</p>' : $filter7 = '';
+				($d_from && $d_to) ? $filter8 = '<p>' . /* I18N: A filter on the Vital records report page */ WT_I18N::translate('Deaths between <span>%1s</span> and <span>%2s</span> ', $d_from, $d_to) . '</p>' : $filter8 = '';
+
+				$filter_list = $filter1 . $filter2 . $filter3 . $filter4 . $filter5 . $filter6 . $filter7 . $filter8;
+
 				$list = resource_vital_records($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $d_toJD, WT_GED_ID);
+
+				// output display
 				?>
+				<div id="report_header">
+					<h4><?php echo WT_I18N::translate('Listing individuals based on these filters'); ?></h4>
+					<p><?php echo $filter_list; ?></p>
+				</div>
 				<div class="loading-image">&nbsp;</div>
 				<table id="vital_records" class="width100" style="visibility:hidden;">
 					<thead>
@@ -256,7 +289,7 @@ class resource_vital_records_WT_Module extends WT_Module implements WT_Module_Re
 									</td>
 									<td><?php echo $person->getBirthDate()->JD(); ?></td><!-- used for sorting only -->
 									<td>
-
+										<div>
 											<?php foreach ($indifacts as $fact) {
 												if ($fact->getParentObject() instanceof WT_Family && ($fact->getTag() == 'MARR' || $fact->getTag() == '_NMR')) {
 													foreach ($fact->getParentObject() as $family_fact) {
