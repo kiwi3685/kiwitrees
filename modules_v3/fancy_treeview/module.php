@@ -1299,7 +1299,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$mediatitle = strip_tags($person->getFullName());
 
 				$type = $mediaobject->mimeType();
-				if($type == 'image/jpeg' || $type == 'image/png') {
+				if($type == 'image/jpeg' || $type == 'image/png' || $mimetype === 'image/gif') {
 
 					if (!list($width_orig, $height_orig) = @getimagesize($mediasrc)) {
 						return null;
@@ -1312,7 +1312,10 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 						case 'image/png':
 							$image = @imagecreatefrompng($mediasrc);
 							break;
-					}
+						case 'image/gif':
+							$image	 = imagecreatefromgif($mediasrc);
+							break;
+						}
 
 					// fallback if image is in the database but not on the server
 					if(isset($width_orig) && isset($height_orig)) {
@@ -1371,7 +1374,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 					$width = $square == true ? round($thumbwidth) : round($new_width);
 					$height = $square == true ? round($thumbheight) : round($new_height);
-					ob_start();$type = 'image/png' ? imagepng($thumb,null,9) : imagejpeg($thumb,null,100);$newThumb = ob_get_clean();
+					ob_start(); $type = 'image/png' ? imagepng($thumb,null,9) : imagejpeg($thumb,null,100); $newThumb = ob_get_clean();
 					$html = '<a' .
 							' class="'          	. 'gallery'                         			 	. '"' .
 							' href="'           	. $mediaobject->getHtmlUrlDirect('main')    		. '"' .
