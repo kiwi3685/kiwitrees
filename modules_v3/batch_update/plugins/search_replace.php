@@ -89,15 +89,15 @@ class search_replace_bu_plugin extends base_plugin {
 
 	function getOptionsForm() {
 		$descriptions=array(
-			'exact'=>WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
-			'words'=>WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
-			'wildcards'=>WT_I18N::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
-			'regex'=>WT_I18N::translate('Regular expressions are an advanced pattern matching technique.  See <a href="http://php.net/manual/en/regexp.reference.php" target="_new">php.net/manual/en/regexp.reference.php</a> for futher details.'),
+			'exact'		=> WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
+			'words'		=> WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
+			'wildcards'	=> WT_I18N::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
+			'regex'		=> WT_I18N::translate('Regular expressions are an advanced pattern matching technique.  See <a href="http://php.net/manual/en/regexp.reference.php" target="_new">php.net/manual/en/regexp.reference.php</a> for futher details.'),
 		);
 
 		return
 			'<label>
-				<span>'.WT_I18N::translate('Search text/pattern') . '</span>
+				<span>' . WT_I18N::translate('Search text/pattern') . '</span>
 				<input id="search" name="search" value="' . WT_Filter::escapeHtml($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
 			</label>
 			<label>

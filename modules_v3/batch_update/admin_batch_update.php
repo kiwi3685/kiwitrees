@@ -66,10 +66,12 @@ class batch_update {
 					<input type="hidden" name="xref"   value="' . $this->xref . '">
 					<input type="hidden" name="action" value="">
 					<input type="hidden" name="data"   value="">
-					<label><span>' . WT_I18N::translate('Family tree') . '</span>' .
+					<label>
+						<span>' . WT_I18N::translate('Family tree') . '</span>' .
 						select_edit_control('ged', WT_Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"') . '
 					</label>
-					<label><span>' . WT_I18N::translate('Batch update tool') . '</span>
+					<label>
+						<span>' . WT_I18N::translate('Batch update tool') . '</span>
 						<select name="plugin" onchange="reset_reload();">';
 							if (!$this->plugin) {
 								$html.='<option value="" selected="selected"></option>';
@@ -88,7 +90,7 @@ class batch_update {
 					// If a plugin is selected, display the details
 					if ($this->PLUGIN) {
 						$html .= $this->PLUGIN->getOptionsForm();
-						if (substr($this->action, -4)=='_all') {
+						if (substr($this->action, -4) == '_all') {
 							// Reset - otherwise we might "undo all changes", which refreshes the
 							// page, which makes them all again!
 							$html .= '<script>reset_reload();</script>';
