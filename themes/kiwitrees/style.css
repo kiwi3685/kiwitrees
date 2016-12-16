@@ -4272,7 +4272,7 @@ a.icon-udarrow:hover {
 .icon-sex_f_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; color:#800000 !important;} /* fa-female */
 .icon-sex_m_15x15		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; color:#00008b !important;} /* fa-male */
 .icon-sex_u_15x15,
-.fa-user		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-user */
+.fa-user				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px;} /* fa-user */
 .icon-sex_f_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#800000 !important; margin: 0 5px; vertical-align: middle;} /* fa-female */
 .icon-sex_m_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; color:#00008b !important; margin: 0 5px; vertical-align: middle;} /* fa-male */
 .icon-sex_u_9x9			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; margin: 0 5px; vertical-align: middle;} /* fa-user */
@@ -6287,37 +6287,52 @@ div.widget {
 	padding: 0 10px;
 }
 
-/* Styles for individual report resource */
-#resource-page.individual_report .chart_options label {
-	display:block;
-	font-weight:900;
+/* Styles for individual and family reports resource */
+#resource-page.family_report #accordion {
+	margin-bottom: 50px;
 }
-#resource-page.individual_report h3 {
-	margin: 20px 0 5px 0;
-	text-decoration: underline;
+#resource-page.family_report h3 span.relationship {
+	text-transform: capitalize;
 }
-#resource-page.individual_report h4 {
-	font-size: 100%;
-	margin: 0;
+#resource-page.individual_report .indi_mainimage,
+#resource-page.family_report .indi_mainimage {
+	margin-bottom: 10px;
 }
-#resource-page.individual_report #images {
+#resource-page.family_report .indi_mainimage {
+	display: inline-block;
+	vertical-align: top;
+}
+#resource-page.individual_report .images {
 	display: table;
 }
-#resource-page.individual_report #images span {
+#resource-page.individual_report .images span {
 	display: table-cell;
 	vertical-align: middle;
 	padding: 0 10px;
 }
-#resource-page.individual_report #images span::first {
+#resource-page.individual_report .images span::first {
 	padding: 0;
 }
-#resource-page.individual_report #facts_events {
+#resource-page.individual_report .facts_events,
+#resource-page.family_report .facts_events {
 	clear: both;
 }
-#resource-page.individual_report #notes {
+#resource-page.family_report .facts_events {
+	display: inline-block;
+	margin: 0 20px;
+	vertical-align: top;
+}
+#resource-page.individual_report h4,
+#resource-page.family_report h4 {
+	font-size: 100%;
+	margin: 0;
+}
+#resource-page.individual_report .notes,
+#resource-page.family_report .notes {
 	margin: 30px 0;
 }
-#resource-page.individual_report #notes ol {
+#resource-page.individual_report .notes ol,
+#resource-page.family_report .notes ol {
 	margin-top: 0;
 }
 #resource-page.individual_report #families {
@@ -6334,43 +6349,68 @@ div.widget {
 #resource-page.individual_report #spouse_children {
 	text-indent: 20px;
 }
-#resource-page.individual_report span.label {
+#resource-page.individual_report span.label,
+#resource-page.family_report span.label {
 	display: inline-block;
-	font-weight: 700;
 	text-transform: capitalize;
 	min-width: 150px;
 	width: 15%;
 	vertical-align: top;
 }
-#resource-page.individual_report .details {
+#resource-page.individual_report .details,
+#resource-page.family_report .details {
 	display: inline-block;
 }
-#resource-page.individual_report .individual_report_fact .date,
-#resource-page.individual_report .individual_report_fact .place,
-#resource-page.individual_report .individual_report_fact .field {
+#resource-page.individual_report p.report_fact,
+#resource-page.family_report p.report_fact {
+	border-bottom: 1px solid #ccc;
+	display: inline-block;
+	margin: 6px 0;
+	width: 100%;
+}
+#resource-page.individual_report .report_fact .date,
+#resource-page.individual_report .report_fact .place,
+#resource-page.individual_report .report_fact .field,
+#resource-page.family_report .report_fact .date,
+#resource-page.family_report .report_fact .place,
+#resource-page.family_report .report_fact .field {
 	padding: 0 5px;
 }
-#resource-page.individual_report .individual_report_fact .addr {
+#resource-page.individual_report .report_fact .addr,
+#resource-page.family_report .report_fact .addr {
 	font-style: italic;
-	font-size: 90%;
+	font-size: 85%;
 }
-#resource-page.individual_report .individual_report_fact .addr br {
+#resource-page.individual_report .report_fact .addr br,
+#resource-page.family_report .report_fact .addr br {
 	display: none;
 }
-#resource-page.individual_report .individual_report_fact .addr::before {
+#resource-page.individual_report .report_fact .addr::before,
+#resource-page.family_report .report_fact .addr::before {
 	content: '(';
 }
-#resource-page.individual_report .individual_report_fact .addr::after {
+#resource-page.individual_report .report_fact .addr::after,
+#resource-page.family_report .report_fact .addr::after {
 	content: ')';
 }
-#resource-page.individual_report .individual_report_fact sup {
+#resource-page.individual_report .report_fact sup,
+#resource-page.family_report .report_fact sup {
 	color: #ff0000;
 	display: inline-block;
 	font-size: 70%;
 	padding: 0 5px;
 }
-#resource-page.individual_report #facts_sources {
+#resource-page.individual_report #facts_sources,
+#resource-page.family_report #facts_sources {
 	margin: 30px 0;
+}
+#resource-page.individual_report #facts_sources p,
+#resource-page.family_report #facts_sources p {
+	font-size: 90%;
+	margin: 10px 0;
+}
+#resource-page.family_report .ui-widget-content {
+	background: none;
 }
 
 /* Styles for facts & events resource */
@@ -6887,15 +6927,44 @@ textarea#NOTE {
 	}
 
 	/* Resource pages pagination */
-	#resource-page.individual_report #facts_events,
-	#resource-page.individual_report #notes,
-	#resource-page.individual_report #families {
+	#resource-page.individual_report .facts_events,
+	#resource-page.individual_report .indi_mainimage,
+	#resource-page.family_report .indi_mainimage,
+	#resource-page.family_report .facts_events {
+		border: none;
+		display: block;
 		font-size: 90%;
+		margin: 0;
 		page-break-after: auto;
+	}
+	#resource-page.family_report p.report_fact {
+		border-bottom: 1px solid #ccc;
+	}
+	#resource-page.family_report #accordion h3,
+	#resource-page.family_report #accordion h3 a {
+		color: #555;
+		margin: 0;
+		padding: 0;
+	}
+	#resource-page.family_report #accordion h3.ui-accordion-header {
+		border: none;
+	}
+	#resource-page.family_report #accordion h3.ui-accordion-header span.ui-accordion-header-icon {
+		display: none;
+	}
+	#resource-page.family_report #accordion h3.ui-active {
+		background-color: none;
+	}
+	#resource-page.family_report #accordion h3 + div {
+		border: none;
+		display: block !important;
+		page-break-after: always;
+	}
+	#resource-page.family_report .indi_mainimage a img {
+		max-height: 80px;
 	}
 
 	#resource-page.fact_report table td {
 		white-space: normal;
 	}
-
 }

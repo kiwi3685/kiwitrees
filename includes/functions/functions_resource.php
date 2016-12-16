@@ -198,8 +198,8 @@ function resource_images($person) {
 	}
 }
 
-// Print a row for the sources tab on the individual page
-function resource_sources(WT_Event $fact, $level, $source_num) {
+// Print a row for the sources for an event or fact
+function resource_sources(WT_Event $fact, $level) {
 	$fact	= $fact->getGedcomRecord();
 	$data 		= array();
 	// -- find sources for each fact
@@ -245,7 +245,7 @@ function resource_sources(WT_Event $fact, $level, $source_num) {
 			}
 		}
 
-		$data[$source_num + $j] = $details;
+		$data[] = $details;
 	}
 
 	return $data;
@@ -604,4 +604,44 @@ function resource_vital_records ($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $
 	}
 
 	return $list;
+}
+
+// fact details for family report
+function getResourcefact($fact, $family, $sup, $source_list, $number) {
+	$resourcefact			= array();
+	$resourcefact['date']	= $fact->getDate()->isOK() ?  format_fact_date($fact, $family, false, false, false) : '';
+	$resourcefact['place']	= $fact->getPlace();
+	$address				= $fact->getPlace() != '' ? print_address_structure($fact->getGedcomRecord(), 2, 'inline') : '';
+	$resourcefact['addr']	= $address ? '<span class="addr">' . $address . '</span>' : '';
+	if (!in_array($fact->getTag(), array('BURI'))) {
+		$detail	= print_resourcefactDetails($fact, $family);
+		$resourcefact['detail'] = $detail !== "&nbsp;" ?  '<span class="field">' . $detail . '</span>' : '';
+	} else $resourcefact['detail'] = '';
+
+	// -- count source(s) for this fact/event as footnote reference
+	$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+	if ($ct > 0) {
+		$sources = resource_sources($fact, 2);
+		$sup = '<sup>';
+		foreach ($sources as $source) {
+			$duplicate = false;
+			foreach($source_list as $src) {
+				if ($source == $src['value']) {
+					$sup .= $src['key'] . ',&nbsp;';
+					$duplicate = true;
+					break;
+				}
+			}
+			if (!$duplicate) {
+			   $number ++;
+			   $source_list[] = array('key' => $number, 'value' => $source);
+			   $sup .= $number . ',&nbsp;';
+			}
+		}
+		$sup = rtrim($sup,',&nbsp;') . '</sup>';
+	} else {
+		$sup = '';
+	}
+
+	return array($sup, $source_list, $number, $resourcefact);
 }

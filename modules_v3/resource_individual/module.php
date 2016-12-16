@@ -33,7 +33,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 
 	// Extend class WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Individual report');
+		return /* I18N: Name of a module. Tasks that need further research. */ WT_I18N::translate('Individual');
 	}
 
 	// Extend class WT_Module
@@ -96,15 +96,15 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		$rootid			= empty($root_id) ? $rootid : $root_id;
 		$photos			= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
 		$ged			= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
-		$showsources	= WT_Filter::post('showsources') ? WT_Filter::post('showsources') : 'checked';
-		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 'checked';
+		$showsources	= WT_Filter::post('showsources') ? WT_Filter::post('showsources') : 0;
+		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 0;
 		$exclude_tags	= array('FAMC', 'FAMS', '_WT_OBJE_SORT', 'HUSB', 'WIFE', 'CHIL');
 
 		?>
 		<div id="resource-page" class="individual_report">
 			<h2><?php echo $this->getTitle(); ?></h2>
-			<h5><?php echo $this->getDescription(); ?></h5>
 			<div class="noprint">
+				<h5><?php echo $this->getDescription(); ?></h5>
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;rootid=<?php echo $rootid; ?>&amp;ged=<?php echo WT_GEDURL; ?>">
 					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
@@ -120,7 +120,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 					<div class="chart_options">
 						<label for = "shownotes"><?php echo WT_I18N::translate('Show notes'); ?></label>
 						<input type="checkbox" id="shownotes" name="shownotes" value="1"
-							<?php if ($showsources) echo ' checked="checked"'; ?>
+							<?php if ($shownotes) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
@@ -154,12 +154,12 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 							case 'highlighted':
 								$image = $person->displayImage(true);
 								if ($image) {
-									echo '<div id="indi_mainimage">', $person->displayImage(true), '</div>';
+									echo '<div class="indi_mainimage">', $person->displayImage(true), '</div>';
 								}
 								break;
 							case 'all':
 								//show all level 1 images ?>
-								<div id="images">
+								<div class="images">
 									<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
 									$allMedia =  $match[1];
 									foreach ($allMedia as $media) {
@@ -176,7 +176,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 							// show nothing
 							break;
 						} ?>
-					<div id="facts_events">
+					<div class="facts_events">
 						<h3><?php echo WT_I18N::translate('Facts and events'); ?></h3>
 						<?php
 						$source_num = 1;
@@ -186,22 +186,24 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 								(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
 								&& !in_array($fact->getTag(), $exclude_tags)
 							) { ?>
-								<p class="individual_report_fact">
+								<p class="report_fact">
 									<!-- fact label -->
 									<span class="label">
 										<?php echo print_fact_label($fact, $person);
-										// -- count source(s) for this fact/event as footnote reference
-										$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
-										if ($ct > 0) {
-											$sup = '<sup>';
-												$sources = resource_sources($fact, 2, $source_num);
-												for ($i = 0; $i < $ct; $i++) {
-													$sup .= $source_num . ',&nbsp;';
-													$source_num = $source_num + 1;
-												}
-												$sup = rtrim($sup,',&nbsp;');
-												$source_list = array_merge($source_list, $sources);
-											echo $sup . '</sup>';
+										if ($showsources) {
+											// -- count source(s) for this fact/event as footnote reference
+											$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
+											if ($ct > 0) {
+												$sup = '<sup>';
+													$sources = resource_sources($fact, 2, $source_num);
+													for ($i = 0; $i < $ct; $i++) {
+														$sup .= $source_num . ',&nbsp;';
+														$source_num = $source_num + 1;
+													}
+													$sup = rtrim($sup,',&nbsp;');
+													$source_list = array_merge($source_list, $sources);
+												echo $sup . '</sup>';
+											}
 										} ?>
 									</span>
 									<!-- DETAILS -->
@@ -217,26 +219,29 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 										<?php  } ?>
 										<!-- fact details -->
 										<?php
-										$detail	= print_resourcefactDetails($fact, $person);
-										echo $detail !== "&nbsp;" ?  '<span class="field">' . $detail . '</span>' : ""; ?>
+										if (!in_array($fact->getTag(), array('BURI'))) {
+											$detail	= print_resourcefactDetails($fact, $person);
+											echo $detail !== "&nbsp;" ?  '<span class="field">' . $detail . '</span>' : "";
+										} ?>
 									</span>
 								</p>
 							<?php }
 						} ?>
 					</div>
-					<?php
-					$otherfacts = $person->getOtherFacts();
-					foreach ($otherfacts as $fact) {
-						if ($fact->getTag() == 'NOTE') { ?>
-							<div id="notes">
-								<h3><?php echo WT_I18N::translate('Notes'); ?></h3>
-								<ol>
-									<li>
-										<?php echo print_resourcenotes($fact, 1, true, true); ?>
-									</li>
-								</ol>
-							</div>
-						<?php }
+					<?php if ($shownotes) {
+						$otherfacts = $person->getOtherFacts();
+						foreach ($otherfacts as $fact) {
+							if ($fact->getTag() == 'NOTE') { ?>
+								<div class="notes">
+									<h3><?php echo WT_I18N::translate('Notes'); ?></h3>
+									<ol>
+										<li>
+											<?php echo print_resourcenotes($fact, 1, true, true); ?>
+										</li>
+									</ol>
+								</div>
+							<?php }
+						}
 					} ?>
 					<div id="families">
 						<h3><?php echo WT_I18N::translate('Families'); ?></h3>
@@ -335,20 +340,22 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 							</div>
 						<?php } ?>
 					</div>
-					<div id="facts_sources">
-						<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
-						<?php
-							foreach ($source_list as $key => $value) {
-								echo '
-									<p>
-										<span>' . ($key + 1) . '</span>
-										<span>' . $value . '</span>
-									</p>
-								';
-							}
-						?>
-					</div>
-					<?php } elseif ($person && $person->canDisplayName()) { ?>
+					<?php if ($showsources) {?>
+						<div id="facts_sources">
+							<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
+							<?php
+								foreach ($source_list as $key => $value) {
+									echo '
+										<p>
+											<span>' . ($key + 1) . '</span>
+											<span>' . $value . '</span>
+										</p>
+									';
+								}
+							?>
+						</div>
+					<?php }
+					} elseif ($person && $person->canDisplayName()) { ?>
 						<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $person->getFullName(); ?></h2>
 						<p class="ui-state-highlight"><?php echo WT_I18N::translate('The details of this individual are private.'); ?></p>
 						<?php exit;
