@@ -2264,10 +2264,25 @@ case 'changefamily':
 			<table>
 				<tr>
 				<?php if ($father) { ?>
-					<td class="descriptionbox"><b><?php echo $father->getLabel(); ?></b><input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
+					<td class="descriptionbox">
+						<b>
+							<?php
+							switch ($father->getSex()) {
+							case 'M': echo WT_I18N::translate('husband'); break;
+							case 'F': echo WT_I18N::translate('wife'); break;
+							default:  echo WT_I18N::translate('spouse'); break;
+							}
+							?>
+						</b>
+						<input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
 					<td id="HUSBName" class="optionbox"><?php echo $father->getFullName(); ?></td>
 				<?php } else { ?>
-					<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="HUSB" value=""></td>
+					<td class="descriptionbox">
+						<b>
+							<?php echo WT_I18N::translate('spouse'); ?>
+						</b>
+						<input type="hidden" name="HUSB" value="">
+					</td>
 					<td id="HUSBName" class="optionbox"></td>
 				<?php } ?>
 					<td class="optionbox">
@@ -2279,10 +2294,26 @@ case 'changefamily':
 				</tr>
 				<tr>
 				<?php if ($mother) { ?>
-					<td class="descriptionbox"><b><?php echo $mother->getLabel(); ?></b><input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>"></td>
+					<td class="descriptionbox">
+						<b>
+							<?php
+							switch ($mother->getSex()) {
+							case 'M': echo WT_I18N::translate('husband'); break;
+							case 'F': echo WT_I18N::translate('wife'); break;
+							default:  echo WT_I18N::translate('spouse'); break;
+							}
+							?>
+						</b>
+						<input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>">
+					</td>
 					<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
 				<?php } else { ?>
-					<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="WIFE" value=""></td>
+					<td class="descriptionbox">
+						<b>
+							<?php echo WT_I18N::translate('spouse'); ?>
+						</b>
+						<input type="hidden" name="WIFE" value="">
+					</td>
 					<td id="WIFEName" class="optionbox"></td>
 				<?php } ?>
 					<td class="optionbox">
@@ -2294,7 +2325,18 @@ case 'changefamily':
 				</tr>
 				<?php $i=0; foreach ($children as $child) { ?>
 					<tr>
-						<td class="descriptionbox"><b><?php echo $child->getLabel(); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>"></td>
+						<td class="descriptionbox">
+							<b>
+								<?php
+								switch ($child->getSex()) {
+								case 'M': echo WT_I18N::translate('son'); break;
+								case 'F': echo WT_I18N::translate('daughter'); break;
+								default:  echo WT_I18N::translate('child'); break;
+								}
+								?>
+							</b>
+							<input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>">
+						</td>
 						<td id="CHILName<?php echo $i; ?>" class="optionbox"><?php echo $child->getFullName(); ?></td>
 						<td class="optionbox">
 							<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
