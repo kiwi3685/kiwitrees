@@ -100,6 +100,12 @@ $controller
 					>
 					<?php echo WT_I18N::translate('Death'); ?>
 				</li>
+				<li class="facts_value" name="dupe_buri" id="dupe_buri" >
+					<input type="checkbox" name="dupe_buri" value="dupe_buri"
+						<?php if (WT_Filter::post('dupe_buri')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Burial'); ?>
+				</li>
 				<li class="facts_value" name="dupe_sex" id="dupe_sex" >
 					<input type="checkbox" name="dupe_sex" value="dupe_sex"
 						<?php if (WT_Filter::post('dupe_sex')) echo ' checked="checked"'?>
@@ -182,6 +188,14 @@ $controller
 				echo '
 					<div class="result">
 						<h5>' . WT_I18N::translate('%s with duplicated gender record', $data['count']) . '</h5>
+						<ul>' . $data['html'] . '</ul>
+					</div>';
+			}
+			if (WT_Filter::post('dupe_buri')) {
+				$data = duplicate_tag('BURI');;
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s with duplicated burial record', $data['count']) . '</h5>
 						<ul>' . $data['html'] . '</ul>
 					</div>';
 			}
