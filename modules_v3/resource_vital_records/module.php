@@ -97,7 +97,7 @@ class resource_vital_records_WT_Module extends WT_Module implements WT_Module_Re
 						document.resource.d_from.value == "" &&
 						document.resource.d_to.value == ""
 					) {
-						if (confirm("' . WT_I18N::translate('You have not set any filters. Kiwitrees will try to list vital records for every individual in your tree. Is this what you want to do?') . '")){
+						if (confirm("' . WT_I18N::translate('You have not set any filters. Kiwitrees will try to list records for every individual in your tree. Is this what you want to do?') . '")){
 						    document.resource.submit(); // OK
 						} else {
 						    return false; // Cancel

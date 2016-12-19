@@ -199,7 +199,7 @@ function resource_images($person) {
 }
 
 // Print a row for the sources for an event or fact
-function resource_sources(WT_Event $fact, $level) {
+function resource_sources(WT_Event $fact, $level, $short=false) {
 	$fact	= $fact->getGedcomRecord();
 	$data 		= array();
 	// -- find sources for each fact
@@ -237,11 +237,13 @@ function resource_sources(WT_Event $fact, $level) {
 				$details .= ': ' . $page;
 			}
 			// TEXT
-			foreach (getSourceStructure($srec)['TEXT'] as $text_list) {
+			if(!$short){
+				foreach (getSourceStructure($srec)['TEXT'] as $text_list) {
 				$text = expand_urls($text_list);
-			}
-			if (!empty($text)) {
-				$details .= ': ' . $text;
+				}
+				if (!empty($text)) {
+					$details .= ': ' . $text;
+				}
 			}
 		}
 
@@ -644,4 +646,42 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 	}
 
 	return array($sup, $source_list, $number, $resourcefact);
+}
+
+// list marraige records
+function resource_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
+	$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families` ";
+	$sql_join     = "";
+	$sql_where    = " WHERE f_file = " . $ged . " AND f_gedcom LIKE '%1 MARR%'";
+
+	// Place filter
+	if ($place) {
+		$sql_where .= " AND f_gedcom LIKE CONCAT('%', '" . $place . "', '%')";
+	}
+
+	// Date filters
+	if ($m_fromJD || $m_toJD) {
+		if ($m_fromJD || $m_toJD) {
+			$sql_join	.= " JOIN `##dates` AS B ON (B.d_file=f_file AND B.d_gid=f_id)";
+			$sql_where	.= " AND B.d_fact = 'MARR'";
+			if ($m_fromJD) {
+				$sql_where .= " AND B.d_julianday1 >= $m_fromJD";
+			}
+			if ($m_toJD) {
+				$sql_where .= " AND B.d_julianday2 <= $m_toJD";
+			}
+		}
+	}
+
+	$list = array();
+	$rows = WT_DB::prepare($sql_select . $sql_join . $sql_where)->execute()->fetchAll();
+	foreach ($rows as $row) {
+		// Name filter - must be done here becasue family number not available earlier.
+		$family = WT_Family::getInstance($row->xref);
+		if (stristr($family->getFullName(), $name)) {
+			$list[] = $family;
+		}
+	}
+
+	return $list;
 }
