@@ -178,35 +178,24 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 	}
 
 	private function find_no_type() {
-		$sqlmm =
-			"SELECT DISTINCT m_id, m_titl" .
-			" FROM `##media`" .
-			" JOIN `##link` ON (m_id=l_to AND m_file=l_file AND l_type='OBJE')" .
-			" WHERE m_gedcom NOT LIKE '%TYPE %'";
-
-		$rows = WT_DB::prepare($sqlmm)->fetchAll(PDO::FETCH_ASSOC);
-
-		if ($rows) {
+		$medialist = WT_Query_Media::medialist('', 'include', 'title', '', 'blank');
+		$ct = count($medialist);
+		if ($medialist) {
 			$html = '
-				<p>' .WT_I18N::translate('%s media objects', count($rows)). '</p>
+				<p>' .WT_I18N::translate('%s media objects', $ct). '</p>
 				<table>
 					<tr>
-						<th>' .WT_I18N::translate('Media object'). '</th>
-						<th>' .WT_I18N::translate('Media title'). '</th>
+						<th>' . WT_I18N::translate('Media object') . '</th>
+						<th>' . WT_I18N::translate('Media title') . '</th>
 					</tr>';
-					foreach ($rows as $key => $value) {
-						$media=WT_Media::getInstance($value['m_id']);
-						//  Get the title of the media
-						if ($media) {
-							$mediaTitle = $media->getFullName();
-						} else {
-							$mediaTitle = $rowm['m_id'];
-						}
-
+					for ($i=0; $i<$ct; ++$i) {
+						$mediaobject = $medialist[$i];
 						$html .= '<tr>
-							<td>' .$media->displayImage(). '</td>
-							<td><a href="#" onclick="return window.open(\'addmedia.php?action=editmedia&amp;pid=' .$value['m_id']. '\', \'_blank\', edit_window_specs);")>' .$mediaTitle. '</a></td>
-					</tr>';
+							<td>' . $mediaobject->displayImage() . '</td>
+							<td>
+								<a href="addmedia.php?action=editmedia&pid=' . $mediaobject->getXref() . '" target="_blank">' . $mediaobject->getFullName() . '</a>
+							</td>
+						</tr>';
 					}
 				$html .= '</table>';
 		} else {
@@ -356,8 +345,8 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 		</div>';
 		// output
 		ob_start();
-		$html .= ob_get_clean();
+		$html .= ob_get_contents();
+		ob_end_clean();
 		echo $html;
 	}
-
 }

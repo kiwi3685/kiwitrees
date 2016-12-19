@@ -37,30 +37,30 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	public function __construct() {
 		$xref = safe_GET_xref('mid');
 
-		$gedrec=find_media_record($xref, WT_GED_ID);
+		$gedrec = find_media_record($xref, WT_GED_ID);
 		if (WT_USER_CAN_EDIT) {
-			$newrec=find_updated_record($xref, WT_GED_ID);
+			$newrec = find_updated_record($xref, WT_GED_ID);
 		} else {
-			$newrec=null;
+			$newrec = null;
 		}
 
-		if ($gedrec===null) {
-			if ($newrec===null) {
+		if ($gedrec === null) {
+			if ($newrec === null) {
 				// Nothing to see here.
 				parent::__construct();
 				return;
 			} else {
 				// Create a dummy record from the first line of the new record.
 				// We need it for diffMerge(), getXref(), etc.
-				list($gedrec)=explode("\n", $newrec);
+				list($gedrec) = explode("\n", $newrec);
 			}
 		}
 
 		$this->record = new WT_Media($gedrec);
 
 		// If there are pending changes, merge them in.
-		if ($newrec!==null) {
-			$diff_record=new WT_Media($newrec);
+		if ($newrec !== null) {
+			$diff_record = new WT_Media($newrec);
 			$diff_record->setChanged(true);
 			$this->record->diffMerge($diff_record);
 		}

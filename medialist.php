@@ -48,7 +48,7 @@ $reset          = WT_Filter::get('reset');
 $apply_filter   = WT_Filter::get('apply_filter');
 $filter         = WT_Filter::get('filter' , null, ''); // MySQL needs an empty string, not NULL
 $subdirs        = WT_Filter::get('subdirs' , 'on');
-$form_type      = WT_Filter::get('form_type' , implode('|' , array_keys(WT_Gedcom_Tag::getFileFormTypes())));
+$form_type      = WT_Filter::get('form_type');
 $currentdironly = ($subdirs=='on') ? false : true;
 
 // reset all variables
@@ -110,6 +110,9 @@ $medialist = WT_Query_Media::mediaList(
 			<label for="form-type"><?php echo WT_I18N::translate('Type'); ?></label>
 			<select name="form_type" id="form-type">
 				<option value=""></option>
+				<option value="blank" <?php echo $form_type == 'blank' ? 'selected' : ''; ?>>
+					<?php echo /* I18N: A filter on the media list for items with no TYPE tag set */ WT_I18N::translate('No type'); ?>
+				</option>
 				<?php foreach (WT_Gedcom_Tag::getFileFormTypes() as $value => $label): ?>
 					<option value="<?php echo $value; ?>" <?php echo $value === $form_type ? 'selected' : ''; ?>>
 						<?php echo $label; ?>

@@ -923,7 +923,8 @@ class WT_Gedcom_Tag {
 		case 'tombstone':   return WT_I18N::translate('Tombstone');
 		case 'video':       return WT_I18N::translate('Video');
 		case 'painting':    return WT_I18N::translate('Painting');
-		default:            return WT_I18N::translate('Other');
+		case 'other':    	return WT_I18N::translate('Other');
+		default:            return '';
 		}
 	}
 
