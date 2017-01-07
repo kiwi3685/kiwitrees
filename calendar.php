@@ -35,7 +35,7 @@ $day      = WT_Filter::get('day', '\d\d?');
 $month    = WT_Filter::get('month', '[A-Z]{3,5}');
 $year     = WT_Filter::get('year', '\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d|\d+(-\d+|[?]+)?');
 $view     = WT_Filter::get('view', 'day|month|year', 'day');
-$filterev = WT_Filter::get('filterev', '[_A-Z-]+', 'BIRT-MARR-DEAT');
+$filterev = WT_Filter::get('filterev', '[_A-Z-]*', 'BIRT-MARR-DEAT');
 $filterof = WT_Filter::get('filterof', 'all|living|recent', 'all');
 $filtersx = WT_Filter::get('filtersx', '[MF]', '');
 
@@ -99,10 +99,10 @@ if ($cal_date->d > $days_in_month && $view == 'today'){
 }
 
 // Convert event filter option to a list of gedcom event codes
-if ($filterev == 'all') {
+if ($filterev == 'ALL') {
 	$events = '';
 } else {
-	if ($filterev == 'bdm') {
+	if ($filterev == 'BDM') {
 		$events = 'BIRT MARR DEAT';
 	} else {
 		$events = $filterev;
@@ -253,10 +253,10 @@ $controller
 				&nbsp;&nbsp;&nbsp;
 				<input type="hidden" name="filterev" value="<?php echo $filterev; ?>">
 				<select class="list_value" name="filterev" onchange="document.dateform.submit();">
-					<option value="bdm" <?php echo $filterev === 'bdm' ? 'selected' : ''; ?>>
+					<option value="BDM" <?php echo $filterev === 'BDM' ? 'selected' : ''; ?>>
 						<?php echo WT_I18N::translate('Vital records'); ?>
 					</option>
-					<option value="all" <?php echo $filterev === 'all' ? 'selected' : ''; ?>>
+					<option value="ALL" <?php echo $filterev === 'ALL' ? 'selected' : ''; ?>>
 						<?php echo WT_I18N::translate('All'); ?>
 					</option>
 					<option value="BIRT" <?php echo $filterev === 'BIRT' ? 'selected' : ''; ?>>
