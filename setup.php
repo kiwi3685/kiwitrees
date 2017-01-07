@@ -81,6 +81,9 @@ define('WT_PRIV_USER',   1);
 define('WT_PRIV_NONE',   0);
 define('WT_PRIV_HIDE',  -1);
 
+// PHP requires a time zone to be set.
+date_default_timezone_set('UTC');
+
 if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 	header('Location: index.php');
 	exit;
