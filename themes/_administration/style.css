@@ -1580,7 +1580,8 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_check li {list-style-type: none;}
 #sanity_check .first  {display: inline-block; width: 300px;}
 #sanity_check .second {display: inline-block; width: 300px;}
-#sanity_check .third  {display: inline-block; width: 300px;}
+#sanity_check .third  {display: inline-block;}
+#sanity_check .third a {padding: 0 20px;}
 #sanity_check span.label {font-weight: 900; padding: 0 20px;}
 #sanity_accordion {width: 98%;}
 #sanity_accordion .result {border: 1px inset #D3D3D3;   margin: 20px 10px; padding: 5px;}

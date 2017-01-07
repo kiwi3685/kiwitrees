@@ -27,7 +27,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 //
-//$Id$
 
 define('WT_SCRIPT_NAME', 'admin_trees_sanity.php');
 require './includes/session.php';
@@ -69,6 +68,18 @@ $controller
 						<?php if (WT_Filter::post('died')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Birth after death or burial'); ?>
+				</li>
+				<li class="facts_value" name="birt_marr" id="birt_marr">
+					<input type="checkbox" name="birt_marr" value="birt_marr"
+						<?php if (WT_Filter::post('birt_marr')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Birth after marriage'); ?>
+				</li>
+				<li class="facts_value" name="birt_chil" id="birt_chil">
+					<input type="checkbox" name="birt_chil" value="birt_chil"
+						<?php if (WT_Filter::post('birt_chil')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Birth after their children'); ?>
 				</li>
 				<li class="facts_value" name="buri" id="buri">
 					<input type="checkbox" name="buri" value="buri"
@@ -151,6 +162,22 @@ $controller
 						<div>' . $data['html'] . '</div>
 					</div>';
 			}
+			if (WT_Filter::post('birt_marr')) {
+				$data = birth_comparisons(array('FAMS'), 'MARR');
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s born after marriage', $data['count']) . '</h5>
+						<div>' . $data['html'] . '</div>
+					</div>';
+			}
+			if (WT_Filter::post('birt_chil')) {
+				$data = birth_comparisons(array('FAMS'), 'CHIL');
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%s born after their children', $data['count']) . '</h5>
+						<div>' . $data['html'] . '</div>
+					</div>';
+			}
 			if (WT_Filter::post('buri')) {
 				$data = death_comparisons(array('BURI'));
 				echo '
@@ -214,7 +241,7 @@ $controller
 <?php
 
 // sanity functions
-function birth_comparisons($tag_array) {
+function birth_comparisons($tag_array, $tag2 = '') {
 	$html = '';
 	$count = 0;
 	$tag_count = count($tag_array);
@@ -223,21 +250,64 @@ function birth_comparisons($tag_array) {
 			"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` LIKE CONCAT('%1 ', ?, '%') AND `i_gedcom` NOT LIKE CONCAT('%1 ', ?, ' Y%')"
 		)->execute(array(WT_GED_ID, $tag_array[$i], $tag_array[$i]))->fetchAll();
 		foreach ($rows as $row) {
-			$person			= WT_Person::getInstance($row->xref);
-			$birth_date 	= $person->getBirthDate();
-			$event			= $person->getFactByType($tag_array[$i]);
-			if ($event) {
-				$event_date = $event->getDate();
-				$age_diff	= WT_Date::Compare($event_date, $birth_date);
-				if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
-					$html .= '
-						<p>
-							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
-							<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
-							<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
-						</p>';
-					$count ++;
-				}
+			$person		= WT_Person::getInstance($row->xref);
+			$birth_date = $person->getBirthDate();
+			switch ($tag_array[$i]) {
+				case ('FAMS'):
+					switch ($tag2) {
+						case 'MARR':
+							foreach ($person->getSpouseFamilies() as $family) {
+								$event_date	= $family->getMarriageDate();
+								$age_diff	= WT_Date::Compare($event_date, $birth_date);
+								if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
+									$html .= '
+										<p>
+											<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
+											<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
+											<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag2) . '</span>' . $event_date->Display() . '</div>
+										</p>';
+									$count ++;
+								}
+							}
+						break;
+						case 'CHIL':
+							foreach ($person->getSpouseFamilies() as $family) {
+								$children = $family->getChildren();
+								foreach ($children as $child) {
+									$event_date	= $child->getBirthDate();
+									$age_diff	= WT_Date::Compare($event_date, $birth_date);
+									if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
+										$html .= '
+											<p>
+												<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
+												<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
+												<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag2) . '<a href="'. $child->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $child->getFullName(). '</a>' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $event_date->Display() . '</div>
+											</p>';
+										$count ++;
+									}
+								}
+							}
+						break;
+					}
+				break;
+				case 'FAMC':
+				break;
+				default:
+					$event = $person->getFactByType($tag_array[$i]);
+					if ($event) {
+						$event_date = $person->getFactByType($tag_array[$i])->getDate();
+						$age_diff	= WT_Date::Compare($event_date, $birth_date);
+						if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
+							$html .= '
+								<p>
+									<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
+									<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
+									<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
+								</p>';
+							$count ++;
+						}
+					}
+				break;
 			}
 		}
 	}
