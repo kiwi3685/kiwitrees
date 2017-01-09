@@ -1166,7 +1166,7 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 
 #changeflags-page .flags_item {
 	float: left;
-	height: 25px;
+	height: 40px;
 	padding: 5px;
 	width: 200px;
 }
@@ -1177,6 +1177,7 @@ div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 
 #changeflags-page .flags_item span {
 	 float:left;
+	 height: 50px;
 	 width: 60px;
 }
 
@@ -1258,7 +1259,7 @@ table#story_table {width: 99%;}
 .icon-edit				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; } /* fa-edit */
 .fa-dropbox				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #007ee5;} /* fa-dropbox */
 .fa-floppy-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1em; background: none;} /* fa-floppy-o */
-.fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; background: none; color: #ff0000;} /* fa-times */
+.fa-times				{font-family: 'FontAwesome'; font-style: normal; background: none; color: #ff0000;} /* fa-times */
 .fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none; cursor:pointer; vertical-align: top;} /* fa-times */
 .fa-pencil				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.0em; background: none; cursor:pointer;} /* fa-pencil */
 .icon-link				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; background: none;} /* fa-link */
@@ -1577,7 +1578,9 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 /* SANITY CHECK */
 #sanity_check a {color: #3383bb;}
 #sanity_check h5 {clear: both; font-size: 1.0em; margin: 0;}
+#sanity_check ul {float: left; min-height: 150px; width: 30%;}
 #sanity_check li {list-style-type: none;}
+#sanity_check li input[type="text"] {max-width: 40px; text-align: center;}
 #sanity_check .first  {display: inline-block; width: 300px;}
 #sanity_check .second {display: inline-block; width: 300px;}
 #sanity_check .third  {display: inline-block;}

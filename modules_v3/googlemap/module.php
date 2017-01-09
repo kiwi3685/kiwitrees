@@ -504,6 +504,15 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				sort($flags);
 			}
 		}
+		// Sort flags into alpha list after transaltion
+		$flag_list = array();
+		foreach ($flags as $flag) {
+			if (array_key_exists($flag, $countries)) {
+				$flag_list[$flag] = $countries[$flag];
+			}
+		}
+		uasort($flag_list, "utf8_strcasecmp");
+
 		$flags_s = array();
 		if ($stateSelected != 'States' && is_dir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected)) {
 			$rep = opendir(WT_ROOT . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected);
@@ -516,18 +525,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			sort($flags_s);
 		}
 
-		if ($action == 'ChangeFlag' && isset($_POST['FLAGS'])) {
+		if ($action == 'ChangeFlag' && WT_Filter::post('FLAGS')) {
 		?>
 			<script>
-		<?php if ($_POST['selcountry'] == 'Countries') { ?>
-					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[$_POST['FLAGS']]; ?>.png';
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/flags/<?php echo $country[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
-		<?php } elseif ($_POST['selstate'] != "States"){ ?>
+		<?php if (WT_Filter::post('selcountry') == 'Countries') { ?>
+					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo WT_Filter::post('FLAGS'); ?>.png';
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/flags/<?php echo WT_Filter::post('FLAGS'); ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+		<?php } elseif (WT_Filter::post('selstate') != "States"){ ?>
 					window.opener.document.editplaces.icon.value = 'places/<?php echo $countrySelected, '/flags/', $_POST['selstate'], '/', $flags_s[$_POST['FLAGS']]; ?>.png';
 					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", $_POST['selstate'], "/", $flags_s[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 		<?php } else { ?>
-					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $flags[$_POST['FLAGS']]; ?>.png";
-					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", WT_Filter::post('FLAGS'); ?>.png";
+					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", WT_Filter::post('FLAGS'); ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 		<?php } ?>
 					window.opener.updateMap();
 					window.close();
@@ -569,10 +578,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		asort($countryList);
 		$stateList = array();
 		if ($countrySelected != 'Countries') {
-			$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/');
+			$placesDir = scandir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/');
 			for ($i = 0; $i < count($flags); $i++) {
 				if (in_array($flags[$i], $placesDir)) {
-					$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$flags[$i].'/');
+					$rep = opendir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $flags[$i] . '/');
 					while ($file = readdir($rep)) {
 						$stateList[$flags[$i]] = $flags[$i];
 					}
@@ -603,51 +612,43 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</p>
 				<hr>
 				<div class="flags_wrapper">
-					<?php
-					$j=1;
-					for ($i=0; $i<count($flags); $i++) {
-						if ($countrySelected == 'Countries') {
-							$tempstr = '
-								<div class="flags_item">
-									<span>
-										<input type="radio" dir="ltr" name="FLAGS" value="' . $i . '">
-										<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/flags/' . $flags[$i] . '.png" alt="' . $flags[$i] . '"  title="';
-											if ($flags[$i] != 'blank') {
-												if (isset($countries[$flags[$i]])) {
-													$tempstr .= $countries[$flags[$i]];
-												} else {
-													$tempstr .= $flags[$i];
-												}
-											} else {
-												$tempstr .= $countries['???'];
-											}
-										echo $tempstr, '">
-									</span>
-									<label>', $flags[$i] != 'blank' ? $countries[$flags[$i]] : $flags[$i], '</label>
-								</div>
-							';
-						} else { ?>
-							<div class="flags_item">
-								<span>
-									<input type="radio" dir="ltr" name="FLAGS" value="<?php echo $i; ?>">
-									<img src="<?php echo WT_STATIC_URL . WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected; ?>/flags/<?php echo $flags[$i]; ?>.png">
-								</span>
-								<label style=""><?php echo $flags[$i]; ?></label>
-							</div>
+					<?php if ($countrySelected == 'Countries' || count($stateList) == 0) {
+						if (count($flag_list) > 50) { // Add second set of save/close buttons ?>
+							<p id="save-cancel">
+								<button class="btn btn-primary" type="submit">
+									<i class="fa fa-save"></i>
+									<?php echo WT_I18N::translate('save'); ?>
+								</button>
+								<button class="btn btn-primary" type="button" onclick="window.close();">
+									<i class="fa fa-times"></i>
+									<?php echo WT_I18N::translate('close'); ?>
+								</button>
+							</p>
 						<?php }
-						$j++;
+					} ?>
+					<div class="clearfloat"></div>
+					<?php
+					foreach ($flag_list as $iso=>$name) {
+						if ($countrySelected == 'Countries') {
+							echo '<div class="flags_item">
+								<span>
+									<input type="radio" dir="ltr" name="FLAGS" value="' . $iso . '">
+									<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/flags/' . $iso . '.png" alt="' . $name . '"  title="' . $iso . '">
+								</span>
+								<label>' . $name . '</label>
+							</div>';
+						} else {
+							echo '<div class="flags_item">
+								<span>
+									<input type="radio" dir="ltr" name="FLAGS" value="' . $iso . '">
+									<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $iso . '.png">
+								</span>
+								<label>' . $iso . '</label>
+							</div>';
+						}
 					} ?>
 				</div>
-				<div
-					<?php if ($countrySelected == 'Countries' || count($stateList) == 0) { ?>
-						 style=" visibility: hidden"
-					<?php } ?>
-					>
-					<div class="help_text">
-						<span class="help_content">
-							<?php echo WT_I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country.'); ?>
-						</span>
-					</div>
+				<div <?php echo ($countrySelected == 'Countries' || count($stateList) == 0)  ? 'style=" visibility: hidden"' : ''; ?>>
 					<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
 						<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
 						<?php foreach ($stateList as $state_key=>$state_name) {
@@ -656,6 +657,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							echo '>', $state_name, '</option>';
 						} ?>
 					</select>
+					<p class="help_text">
+						<span class="help_content">
+							<?php echo WT_I18N::translate('Using the pull down menu it is possible to select a state for this country, for which a flag can be selected. If no flags are shown, then there are no flags defined for this state.'); ?>
+						</span>
+					</p>
+					<hr>
 				</div>
 				<div class="flags_wrapper">
 					<?php
@@ -674,7 +681,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						}
 						$j++;
 					} ?>
-					</div>
+				</div>
 				<p id="save-cancel">
 					<button class="btn btn-primary" type="submit">
 						<i class="fa fa-save"></i>
