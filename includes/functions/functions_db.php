@@ -195,10 +195,10 @@ function find_other_record($xref, $ged_id) {
 * @param string $rid the record id
 */
 function find_media_record($xref, $ged_id) {
-	static $statement=null;
+	static $statement = null;
 
 	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT m_gedcom FROM `##media` WHERE m_id=? AND m_file=?"
 		);
 	}
