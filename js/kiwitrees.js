@@ -395,7 +395,6 @@ function add_new_record(pid, fact) {
     "pid": pid,
     "fact": fact
   });
-  return false;
 }
 
 function addnewchild(famid, gender) {
