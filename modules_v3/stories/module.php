@@ -89,7 +89,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
 	// Implement class WT_Module_Block
@@ -98,7 +98,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
-		return true;
+		return false;
 	}
 
 	// Implement class WT_Module_Block
@@ -108,6 +108,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
+		return false;
 	}
 
 	// Implement class WT_Module_Tab
@@ -118,22 +119,15 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	// Implement class WT_Module_Tab
 	public function getTabContent() {
 		global  $controller;
-		$controller->addInlineJavascript('
-			jQuery("#contents_list a").click(function(){
-				var id = jQuery(this).attr("id");
-				id = id.split("_");
-				jQuery("#story_contents div.story").hide();
-				jQuery("#story_contents #stories_"+id[1]).show();
-			});
-		');
-		$block_ids=
+
+		$block_ids =
 			WT_DB::prepare(
-				"SELECT DISTINCT ##block.block_id".
-				" FROM ##block, ##block_setting".
-				" WHERE ##block.module_name=?".
-				" AND ##block.block_id = ##block_setting.block_id".
-				" AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')".
-				" AND ##block.gedcom_id=?".
+				"SELECT DISTINCT ##block.block_id" .
+				" FROM ##block, ##block_setting" .
+				" WHERE ##block.module_name=?" .
+				" AND ##block.block_id = ##block_setting.block_id" .
+				" AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')" .
+				" AND ##block.gedcom_id=?" .
 				" ORDER BY ##block.block_order"
 			)->execute(array(
 				$this->getName(),
@@ -141,7 +135,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				WT_GED_ID
 			))->fetchOneColumn();
 
-		$html='';
+		$html	= '';
+		$class	= '';
 		$count_stories = 0;
 		foreach ($block_ids as $block_id) {
 			// check how many stories can be shown in a language
@@ -150,72 +145,76 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$count_stories ++;
 			}
 		}
-		if (WT_USER_GEDCOM_ADMIN) { // change to WT_USER_CAN_EDIT to allow editors to create first story.
-			$html .= '
-				<div style="border-bottom:thin solid #aaa; margin:-10px; padding-bottom:2px;">
-					<span><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'"><i style="margin: 0 3px 0 10px;" class="icon-button_addnote">&nbsp;</i>'. WT_I18N::translate('Add story').'</a></span>
-					<span><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_config&amp;xref='.$controller->record->getXref().'"><i style="margin: 0 3px 0 10px;" class="icon-button_linknote">&nbsp;</i>'. WT_I18N::translate('Link this individual to an existing story ').'</a></span>
-				</div>
-			';
-		}
+
+		ob_start();
+
+		if (WT_USER_GEDCOM_ADMIN) { // change to WT_USER_CAN_EDIT to allow editors to create first story. ?>
+			<div style="border-bottom:thin solid #aaa; margin:-10px; padding-bottom:2px;">
+				<span>
+					<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;xref=<?php echo $controller->record->getXref(); ?>">
+						<i style="margin: 0 3px 0 10px;" class="icon-button_addnote">&nbsp;</i>
+						<?php echo WT_I18N::translate('Add story'); ?>
+					</a>
+				</span>
+				<span>
+					<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_config&amp;xref=<?php echo $controller->record->getXref(); ?>">
+						<i style="margin: 0 3px 0 10px;" class="icon-button_linknote">&nbsp;</i>
+						<?php echo WT_I18N::translate('Link this individual to an existing story '); ?>
+					</a>
+				</span>
+			</div>
+		<?php }
+
 		if ($count_stories > 1) {
-			$html.='<h3 class="center">'.WT_I18N::translate('List of stories').'</h3>';
-			$html.='<ol id="contents_list">';
-				foreach ($block_ids as $block_id) {
-					$languages=get_block_setting($block_id, 'languages');
-					if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-						$html .= '
-							<li style="padding:2px 8px;">
-								<a href="#" id="title_'.$block_id.'">'.get_block_setting($block_id, 'title').'</a>
-							</li>
-						';
-					}
-				}
-			$html .= '
-				</ol>
-				<hr class="stories_divider">
-				<div id="story_contents">';
-					foreach ($block_ids as $block_id) {
-						$languages=get_block_setting($block_id, 'languages');
-						if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-							if (WT_USER_CAN_EDIT) {
-								$html .= '
-									<div style="margin:16px 0 0 0;">
-										<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
-									</div>';
-							}
-							$html .= '
-								<div id="stories_'.$block_id.'" class="story">
-									<h1>'.get_block_setting($block_id, 'title').'</h1>';
-									$html .= '
-										<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>
-										<hr class="stories_divider">
-								</div>
-							';
-						}
-					}
-				$html.='</div>';
-		} else {
-			foreach ($block_ids as $block_id) {
-				$languages=get_block_setting($block_id, 'languages');
-				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-					if (WT_USER_CAN_EDIT) {
-						$html .= '
+			$class = 'story';
+			$controller->addInlineJavascript('
+				jQuery("#contents_list a").click(function(){
+					var id = jQuery(this).attr("id");
+					id = id.split("_");
+					jQuery("#story_contents div.story").hide();
+					jQuery("#story_contents #stories_"+id[1]).show();
+				});
+			'); ?>
+
+			<h3 class="center"><?php echo WT_I18N::translate('List of stories'); ?></h3>
+			<ol id="contents_list">
+				<?php foreach ($block_ids as $block_id) {
+					$languages = get_block_setting($block_id, 'languages');
+					if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) { ?>
+						<li style="padding:2px 8px;">
+							<a href="#" id="title_<?php echo $block_id; ?>"><?php echo get_block_setting($block_id, 'title'); ?></a>
+						</li>
+					<?php }
+				} ?>
+			</ol>
+			<hr class="stories_divider">
+		<?php } ?>
+		<div id="story_contents">
+			<?php foreach ($block_ids as $block_id) {
+				$languages = get_block_setting($block_id, 'languages');
+				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) { ?>
+					<div id="stories_<?php echo $block_id; ?>" class="<?php echo $class; ?>">
+						<?php if (WT_USER_CAN_EDIT) { ?>
 							<div style="margin:16px 0 0 0;">
-								<a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'"><i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i>'. WT_I18N::translate('Edit story').'</a>
+								<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $block_id; ?>">
+									<i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i><?php echo WT_I18N::translate('Edit story'); ?>
+								</a>
 							</div>
-						';
-					}
-					$html .= '
-						<div id="stories_'.$block_id.'" class="story">
-							<h1>'.get_block_setting($block_id, 'title').'</h1>';
-							$html .= '
-								<div style="white-space: normal;">'.get_block_setting($block_id, 'story_body').'</div>
-						</div>';
-				}
-			}
-		}
-		return $html;
+						<?php } ?>
+						<h1><?php echo get_block_setting($block_id, 'title'); ?></h1>
+						<div style="white-space: normal;">
+							<?php echo get_block_setting($block_id, 'story_body'); ?>
+						</div>
+						<?php if ($count_stories > 1) { ?>
+							<hr class="stories_divider">
+						<?php } ?>
+					</div>
+				<?php }
+			} ?>
+		</div>
+
+		<?php return '<div id="stories_tab_content">' . ob_get_clean() . '</div>';
+
 	}
 
 	// Implement class WT_Module_Tab
@@ -226,16 +225,16 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
 		global $controller;
-		$count_of_stories=
+		$count_of_stories =
 			WT_DB::prepare(
-				"SELECT COUNT(##block.block_id)".
-				" FROM ##block, ##block_setting".
-				" WHERE ##block.module_name=?".
-				" AND ##block_setting.setting_value LIKE CONCAT('%', ?, '%')".
+				"SELECT COUNT(##block.block_id)" .
+				" FROM ##block, ##block_setting" .
+				" WHERE ##block.module_name=?" .
+				" AND ##block_setting.setting_value LIKE CONCAT('%', ?, '%')" .
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
-				$xref=$controller->record->getXref(),
+				$xref = $controller->record->getXref(),
 				WT_GED_ID
 			))->fetchOne();
 		return $count_of_stories == 0;
@@ -243,7 +242,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Tab
 	public function canLoadAjax() {
-		return true;
+		return false;
 	}
 
 	// Implement class WT_Module_Tab
@@ -253,7 +252,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Action from the configuration page
 	private function edit() {
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
 			if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 				$block_id = WT_Filter::postInteger('block_id');
@@ -280,7 +279,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				set_block_setting($block_id, 'story_body',  safe_POST('story_body', WT_REGEX_UNSAFE)); // allow html
 				$languages = array();
 				foreach (WT_I18N::used_languages() as $code => $name) {
-					if (safe_POST_bool('lang_'.$code)) {
+					if (safe_POST_bool('lang_' . $code)) {
 						$languages[] = $code;
 					}
 				}
@@ -356,7 +355,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 									if (!$block_id) {
 										echo '<div class="indi_find">
 											<p class="add_indi">
-												<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid" value="'.$xref.'">',
+												<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid" value="' . $xref . '">',
 												print_findindi_link('pid'),'
 											</p>';
 											if ($xref) {
@@ -365,7 +364,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 													echo $person->format_list('span');
 													echo '
 														<p>
-															<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref. '&amp;block_id='.$block_id. '" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?').'\');">'.WT_I18N::translate('Remove').'</a>
+															<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref. '&amp;block_id=' . $block_id. '" class="current" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?') . '\');">' . WT_I18N::translate('Remove') . '</a>
 														</p>
 														<hr style="margin-top: 0;"">
 													';
@@ -376,8 +375,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 										for ($x = 0; $x < $count_xref; $x++) {
 											echo '<div class="indi_find">
 												<p class="add_indi">
-													<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid', $x, '" value="'.$xref[$x].'">',
-													print_findindi_link('pid'.$x),'
+													<input data-autocomplete-type="INDI" type="text" name="xref[]" id="pid', $x, '" value="' . $xref[$x] . '">',
+													print_findindi_link('pid' . $x),'
 												</p>';
 												if ($xref) {
 													$person = WT_Person::getInstance($xref[$x]);
@@ -385,7 +384,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 														echo $person->format_list('span');
 														echo '
 															<p>
-																<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref[$x]. '&amp;block_id='. $block_id. '" class="current" onclick="return confirm(\''.WT_I18N::translate('Are you sure you want to remove this link?').'\');">'.WT_I18N::translate('Remove').'</a>
+																<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref[$x]. '&amp;block_id='. $block_id. '" class="current" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to remove this link?') . '\');">' . WT_I18N::translate('Remove') . '</a>
 															</p>
 															<hr style="margin-top: 0;"">
 														';
@@ -420,7 +419,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function config() {
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Page();
 		$controller
 			->restrictAccess(WT_USER_IS_ADMIN)
@@ -438,10 +437,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				});
 			');
 
-		$stories=WT_DB::prepare(
-			"SELECT block_id, xref, block_order".
-			" FROM ##block".
-			" WHERE module_name=?".
+		$stories = WT_DB::prepare(
+			"SELECT block_id, xref, block_order" .
+			" FROM ##block" .
+			" WHERE module_name=?" .
 			" AND gedcom_id=?"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
@@ -515,7 +514,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 											for ($x = 0; $x < $count_xref; $x++) {
 												$indi[$x] = WT_Person::getInstance($xref[$x]);
 												if ($indi[$x]) {
-														  echo '<p><a href="', $indi[$x]->getHtmlUrl().'#stories" class="current">'.$indi[$x]->getFullName(), '</a></p>';
+														  echo '<p><a href="', $indi[$x]->getHtmlUrl() . '#stories" class="current">' . $indi[$x]->getFullName(), '</a></p>';
 												} else {
 													echo '<p class="error">', $xref[$x], '</p>';
 												}
@@ -572,9 +571,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			');
 
 		$stories = WT_DB::prepare(
-			"SELECT block_id".
-			" FROM `##block`".
-			" WHERE module_name=?".
+			"SELECT block_id" .
+			" FROM `##block`" .
+			" WHERE module_name=?" .
 			" AND gedcom_id=?"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
@@ -611,7 +610,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 										if (!$indi[$x]){
 											echo '<p class="error">', $xref[$x], '</p>';
 										} else {
-											echo '<p><a href="', $indi[$x]->getHtmlUrl().'#stories" class="current">'.$indi[$x]->getFullName(), '</a></p>';
+											echo '<p><a href="', $indi[$x]->getHtmlUrl() . '#stories" class="current">' . $indi[$x]->getFullName(), '</a></p>';
 										}
 									}
 								echo '</td>
@@ -676,7 +675,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			return null;
 		}
 		//-- Stories menu item
-		$menu = new WT_Menu($this->getTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show_list', 'menu-story');
+		$menu = new WT_Menu($this->getTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show_list', 'menu-story');
 		return $menu;
 	}
 
