@@ -2199,7 +2199,13 @@ case 'changefamily':
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Change Family Members'))
-		->pageHeader();
+		->pageHeader()
+		->addInlineJavascript('
+			function change_family(){
+				var id = jQuery("#HUSBinput").val();
+				jQuery("#HUSBName").html(id)
+			};
+	');
 
 	$father = $family->getHusband();
 	$mother = $family->getWife();
@@ -2254,8 +2260,8 @@ case 'changefamily':
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<div class="help_text">
-			<p class="help_content">
-				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
+			<p class="helpcontent">
+				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the "Select new person" field to choose a different person from your tree to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
 			</p>
 		</div>
 		<form id="changefamform" name="changefamform" method="post" action="edit_interface.php">
@@ -2263,64 +2269,66 @@ case 'changefamily':
 			<input type="hidden" name="famid" value="<?php echo $famid; ?>">
 			<table>
 				<tr>
-				<?php if ($father) { ?>
-					<td class="descriptionbox">
-						<b>
-							<?php
-							switch ($father->getSex()) {
-							case 'M': echo WT_I18N::translate('husband'); break;
-							case 'F': echo WT_I18N::translate('wife'); break;
-							default:  echo WT_I18N::translate('spouse'); break;
-							}
-							?>
-						</b>
-						<input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
-					<td id="HUSBName" class="optionbox"><?php echo $father->getFullName(); ?></td>
-				<?php } else { ?>
-					<td class="descriptionbox">
-						<b>
-							<?php echo WT_I18N::translate('spouse'); ?>
-						</b>
-						<input type="hidden" name="HUSB" value="">
-					</td>
-					<td id="HUSBName" class="optionbox"></td>
-				<?php } ?>
+					<?php if ($father) { ?>
+						<td class="descriptionbox">
+							<b>
+								<?php
+								switch ($father->getSex()) {
+								case 'M': echo WT_I18N::translate('husband'); break;
+								case 'F': echo WT_I18N::translate('wife'); break;
+								default:  echo WT_I18N::translate('spouse'); break;
+								}
+								?>
+							</b>
+							<input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
+						<td id="HUSBName" class="optionbox"><?php echo $father->getFullName(); ?></td>
+					<?php } else { ?>
+						<td class="descriptionbox">
+							<b>
+								<?php echo WT_I18N::translate('spouse'); ?>
+							</b>
+							<input type="hidden" name="HUSB" value="">
+						</td>
+						<td id="HUSBName" class="optionbox"></td>
+					<?php } ?>
 					<td class="optionbox">
 						<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none':'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
 					</td>
 					<td class="optionbox">
-						<a href="#" onclick="return findIndi(document.changefamform.HUSB, document.getElementById('HUSBName'));"><?php echo WT_I18N::translate('Change'); ?></a>
+						<input data-autocomplete-type="INDI" type="text" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+						<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
 					</td>
 				</tr>
 				<tr>
-				<?php if ($mother) { ?>
-					<td class="descriptionbox">
-						<b>
-							<?php
-							switch ($mother->getSex()) {
-							case 'M': echo WT_I18N::translate('husband'); break;
-							case 'F': echo WT_I18N::translate('wife'); break;
-							default:  echo WT_I18N::translate('spouse'); break;
-							}
-							?>
-						</b>
-						<input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>">
-					</td>
-					<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
-				<?php } else { ?>
-					<td class="descriptionbox">
-						<b>
-							<?php echo WT_I18N::translate('spouse'); ?>
-						</b>
-						<input type="hidden" name="WIFE" value="">
-					</td>
-					<td id="WIFEName" class="optionbox"></td>
-				<?php } ?>
+					<?php if ($mother) { ?>
+						<td class="descriptionbox">
+							<b>
+								<?php
+								switch ($mother->getSex()) {
+								case 'M': echo WT_I18N::translate('husband'); break;
+								case 'F': echo WT_I18N::translate('wife'); break;
+								default:  echo WT_I18N::translate('spouse'); break;
+								}
+								?>
+							</b>
+							<input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>">
+						</td>
+						<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
+					<?php } else { ?>
+						<td class="descriptionbox">
+							<b>
+								<?php echo WT_I18N::translate('spouse'); ?>
+							</b>
+							<input type="hidden" name="WIFE" value="">
+						</td>
+						<td id="WIFEName" class="optionbox"></td>
+					<?php } ?>
 					<td class="optionbox">
 						<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
 					</td>
 					<td class="optionbox">
-						<a href="#" onclick="return findIndi(document.changefamform.WIFE, document.getElementById('WIFEName'));"><?php echo WT_I18N::translate('Change'); ?></a>
+						<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEName" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+						<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
 					</td>
 				</tr>
 				<?php $i=0; foreach ($children as $child) { ?>
@@ -2342,7 +2350,8 @@ case 'changefamily':
 							<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
 						</td>
 						<td class="optionbox">
-							<a href="#" onclick="return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Change'); ?></a>
+							<input data-autocomplete-type="INDI" type="text" name="CHIL" id="CHILName" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+							<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
 						</td>
 					</tr>
 				<?php $i++; } ?>
