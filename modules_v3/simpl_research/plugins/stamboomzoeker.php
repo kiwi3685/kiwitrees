@@ -11,7 +11,7 @@ class stamboomzoeker_plugin extends research_base_plugin {
 	}
 
 	static function getPaySymbol() {
-		return true;
+		return false;
 	}
 
 	static function getSearchArea() {
