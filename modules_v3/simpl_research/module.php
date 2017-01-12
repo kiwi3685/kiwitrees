@@ -90,14 +90,16 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 					'.WT_I18N::datatablesI18N().',
 					"bJQueryUI" 		: true,
 					"bAutoWidth" 		: true,
-					"aaSorting" 		: [[ 1, "asc" ]],
+					"aaSorting" 		: [[ 2, "asc" ]],
 					"bStateSave" 		: true,
 					"bPaginate"			: false,
 					"iCookieDuration" 	: 180,
 					"aoColumns" : [
-						{ bSortable: false, sClass: "center" },
+						{ dataSort: 1, sClass: "center" },
+						{ type: "unicode", visible: false },
 						null,
 						null,
+						{ sClass: "center" },
 						{ sClass: "center" },
 					]
 				});
@@ -105,28 +107,49 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		if (WT_Filter::postBool('save')) {
 			set_module_setting($this->getName(), 'RESEARCH_PLUGINS', serialize(WT_Filter::post('NEW_RESEARCH_PLUGINS')));
+			set_module_setting($this->getName(), 'RESEARCH_PLUGINS_DEFAULT_AREA', WT_Filter::post('NEW_RESEARCH_PLUGINS_DEFAULT_AREA'));
 			AddToLog($this->getTitle().' config updated', 'config');
 		}
 
-		$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
+		$all_plugins = $this->getPluginList(); // all plugins with area names
+		$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS')); // enabled plugins
 		$html = '
 			<div id="' . $this->getName() . '">
-				<h2>'.$controller->getPageTitle().'</h2>
-				<h3>' . WT_I18N::translate('Select the links you want to use in the sidebar') . '</h3>
+				<h2>' . $controller->getPageTitle() . '</h2>
 				<form method="post" name="configform" action="' . $this->getConfigLink() . '">
 					<input type="hidden" name="save" value="1">
+					<h3>' . WT_I18N::translate('Select the research area to set as default. This area will open first in the sidebar.') . '</h3>';
+					foreach ($all_plugins as $area => $plugins) {
+						// reset returns the first value in an array
+						// we take the area code from the first plugin in this area
+						$area_code = reset($plugins)->getSearchArea();
+						$html .= '<input type="radio" name="NEW_RESEARCH_PLUGINS_DEFAULT_AREA" value="' . $area . '"';
+							if (get_module_setting($this->getName(), 'RESEARCH_PLUGINS_DEFAULT_AREA') === $area) {
+								$html .= ' checked="checked"';
+							}
+						$html .= '>
+						<span>' . $area . '</span>';
+					}
+					$html .= '<h3>' . WT_I18N::translate('Select the links you want to use in the sidebar') . '</h3>
 					<h3>' . WT_I18N::translate('Select all') .'
 						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
 					</h3>
+					<button class="btn btn-primary save" type="submit">
+						<i class="fa fa-floppy-o"></i>'.
+						WT_I18N::translate('save').'
+					</button>
+					<div class="clearfloat"></div>
 					<table id="simpl_research_links" style="width: 100%;">
 						<thead>
 							<th> ' . WT_I18N::translate('Enabled') . '</th>
+							<th></th>
 							<th> ' . WT_I18N::translate('Name') . '</th>
 							<th> ' . WT_I18N::translate('Area') . '</th>
 							<th> ' . WT_I18N::translate('Pay to view') . '</th>
+							<th> ' . WT_I18N::translate('Links only') . '</th>
 						</thead>
 						<tbody>';
-							foreach ($this->getPluginList() as $area => $plugins) {
+							foreach ($all_plugins as $area => $plugins) {
 								foreach ($plugins as $label => $plugin) {
 									if (is_array($RESEARCH_PLUGINS) && array_key_exists($label, $RESEARCH_PLUGINS)) {
 										$enabled = $RESEARCH_PLUGINS[$label];
@@ -137,9 +160,15 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 									$html .= '
 										<tr>
 											<td>' . checkbox('NEW_RESEARCH_PLUGINS['  .$label . ']', $enabled, ' class="check"') .' </td>
+											<td>' . $enabled . '</td>
 											<td>' . $plugin->getName() .' </td>
 											<td>' . $area .' </td>
 											<td>' . $this->getCurrency($plugin) .' </td>
+											<td>';
+											 	if ($plugin->createLinkOnly()) {
+													$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;"></i>) ';
+												}
+											$html .= '</td>
 										</tr>
 									';
 								}
@@ -166,17 +195,54 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			return false;
 		} else {
 			$controller->addInlineJavascript('
-				jQuery("#'.$this->getName().' a").text("'.$this->getSidebarTitle().'");
+				jQuery("#' . $this->getName() . ' a").text("' . $this->getSidebarTitle() . '");
+
+				// expand the default search area
+				jQuery(".research-area").each(function(){
+					if (jQuery(this).data("area") === "' . get_module_setting($this->getName(), 'RESEARCH_PLUGINS_DEFAULT_AREA') . '") {
+						jQuery(this).find(".research-list").css("display", "block");
+					}
+				});
+
 				jQuery("#research_status").on("click", ".research-area-title", function(e){
 					e.preventDefault();
 					jQuery(this).next(".research-list").slideToggle()
 					jQuery(this).parent().siblings().find(".research-list").slideUp();
 				});
+
 				jQuery("#research_status a.mainlink").click(function(e){
 					e.preventDefault();
 					jQuery(this).parent().find(".sublinks").toggle();
 				});
+
+				// function for use by research links which need a javascript form submit
+				// source: see http://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
+				// thanks: JustCarmen (http://www.justcarmen.nl/fancy-modules/fancy-research-links/)
+				// usage: see freebmd, onlinebegraafplaatsen, or metagenealogy plugin for examples
+				function postresearchform(url, params) {
+					var form = document.createElement("form");
+
+					for (var key in params) {
+						if(params.hasOwnProperty(key)) {
+							var hiddenField = document.createElement("input");
+							hiddenField.setAttribute("type", "hidden");
+							hiddenField.setAttribute("name", key);
+							hiddenField.setAttribute("value", params[key]);
+							form.appendChild(hiddenField);
+						 }
+					}
+
+					form.setAttribute("method", "post");
+					form.setAttribute("action", url);
+					form.setAttribute("target", "_blank");
+
+					document.body.appendChild(form);
+					form.submit();
+				};
 			');
+
+
+
 			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
 				if (WT_USER_GEDCOM_ADMIN) {
@@ -185,20 +251,18 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$i = 0;
 				$total_enabled_plugins = 0;
 				$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
-				$link = '';
-				$sublinks = '';
 				foreach ($this->getPluginList() as $area => $plugins) {
 					$enabled_plugins		 = $this->countEnabledPlugins($plugins, $RESEARCH_PLUGINS);
 					$total_enabled_plugins	 = $total_enabled_plugins + $enabled_plugins;
 					ksort($plugins);
 					if ($enabled_plugins > 0) {
 						$html .= '
-						<li class="research-area">
+						<li class="research-area" data-area="' . $area . '">
 							<a href="#" class="research-area-title">
 								<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
 								' . $area . ' (' . $enabled_plugins . ')' . '
 							</a>
-							<ul class="research-list'; $html .= ($i == 0 ? ' first' : ''); $html .= '">';
+							<ul class="research-list">';
 								$i++;
 								foreach ($plugins as $label => $plugin) {
 									if (is_array($RESEARCH_PLUGINS) && array_key_exists($label, $RESEARCH_PLUGINS)) {
@@ -223,45 +287,47 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 													$surname	= $this->encode($primary['surname'], $plugin->encode_plus()); // full surname (with prefix)
 													$fullname 	= $plugin->encode_plus() ? $givn.'+'.$surname : $givn.'%20'.$surname; // full name
 													$prefix		= $surn != $surname ? substr($surname, 0, strpos($surname, $surn) - 1) : ""; // prefix
-													if ($controller->record->getBirthYear()) {
-														$birth_year	= $controller->record->getBirthYear();
-													} else {
-														$birth_year = '';
-													}
-													if ($controller->record->getDeathYear()) {
-														$death_year	= $controller->record->getDeathYear();
-													} else {
-														$death_year = '';
-													}
+													$controller->record->getBirthYear() ? $birth_year	= $controller->record->getBirthYear() : $birth_year = '';
+													$controller->record->getDeathYear() ? $death_year	= $controller->record->getDeathYear() : $death_year = '';
 													$link 		= $plugin->create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year);
 													$sublinks 	= $plugin->create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year);
+													$links_only = $plugin->createLinkOnly();
 												}
 											}
 										}
-										if ($sublinks) {
+										if ($sublinks || $links_only) {
+											$links_only ? $sublinks = $links_only : $sublinks = $sublinks;
 											$html .= '<li>
 												<a class="mainlink" href="'.htmlspecialchars($link).'">
 													<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
-													$plugin->getName() . $this->getCurrency($plugin) . '
-												</a>
+													$plugin->getName() . '
+													<span title="' . WT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>';
+													if ($links_only) {
+														$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;" title="' . WT_I18N::translate('Links only') . '"></i>) ';
+													}
+												$html .= '</a>
 												<ul class="sublinks">';
 													foreach ($sublinks as $sublink) {
-														$html .= '
-															<li>
+														$html .= '<li>
 																<a class="research_link" href="'.htmlspecialchars($sublink['link']).'" target="_blank" rel="noopener noreferrer">
 																	<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 																	$sublink['title'].'
 																</a>
-															</li>
-														';
+														</li>';
 													}
 												$html .= '</ul>
 											</li>';
 										} else { // default
+											if (stripos($link, "postresearchform") === false){
+												$alink = 'href="' . htmlspecialchars($link) . '"';
+											} else {
+												$alink = 'href="javascript:void(0);" onclick="' . htmlspecialchars($link) . '; return false;"';
+											}
 											$html .= '<li>
-												<a class="research_link" href="'.htmlspecialchars($link).'" target="_blank" rel="noopener noreferrer">
+												<a class="research_link" ' . $alink . ' target="_blank" rel="noopener noreferrer">
 													<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
-													$plugin->getName() . $this->getCurrency($plugin) . '
+													$plugin->getName() . '
+													<span  title="' . WT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>
 												</a>
 											</li>';
 										}

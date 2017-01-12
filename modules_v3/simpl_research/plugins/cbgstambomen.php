@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class heraldischedatabank_plugin extends research_base_plugin {
+class cbgstambomen_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Heraldische databank';
+		return 'CBG Stambomen';
 	}
 
 	static function getPaySymbol() {
@@ -19,10 +19,14 @@ class heraldischedatabank_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.heraldischedatabank.nl/databank/indeling/gallery?q_searchfield=' . $surname;
+		return $link = 'https://www.stamboomnederland.nl/start';
 	}
 
 	static function create_sublink() {
+		return false;
+	}
+
+	static function createLinkOnly() {
 		return false;
 	}
 

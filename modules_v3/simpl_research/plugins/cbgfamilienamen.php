@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class wiewaswie_plugin extends research_base_plugin {
+class cbgfamilienamen_plugin extends research_base_plugin {
 	static function getName() {
-		return 'WieWasWie';
+		return 'CBG Familienamen';
 	}
 
 	static function getPaySymbol() {
@@ -19,10 +19,14 @@ class wiewaswie_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'https://www.wiewaswie.nl/personen-zoeken/zoeken/q/' . $fullname . '/type/documenten';
+		return $link = 'http://www.cbgfamilienamen.nl/nfb/detail_naam.php?gba_lcnaam=' . $surname . '&gba_naam=' . $surname . '&nfd_naam=' . $surname . '%20(y)&operator=eq&taal=';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink() {
+		return false;
+	}
+
+	static function createLinkOnly() {
 		return false;
 	}
 

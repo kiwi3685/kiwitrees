@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class cbg_plugin extends research_base_plugin {
+class cbgwiewaswie_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Centraal Bureau Genealogie';
+		return 'CBG WieWasWie';
 	}
 
 	static function getPaySymbol() {
@@ -19,10 +19,14 @@ class cbg_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.cbg.nl/index.php?zoekterm=' . $surname . '%252C+' . $first . '&status=T';
+		return $link = 'https://www.wiewaswie.nl/personen-zoeken/zoeken/q/' . $fullname . '/type/documenten';
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+		return false;
+	}
+
+	static function createLinkOnly() {
 		return false;
 	}
 

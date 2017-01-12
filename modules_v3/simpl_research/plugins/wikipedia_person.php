@@ -26,6 +26,10 @@ class wikipedia_person_plugin extends research_base_plugin {
 		return false;
 	}
 
+	static function createLinkOnly() {
+		return false;
+	}
+
 	static function encode_plus() {
 		return false;
 	}

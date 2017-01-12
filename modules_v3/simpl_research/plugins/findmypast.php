@@ -43,6 +43,10 @@ class findmypast_plugin extends research_base_plugin {
 			return $link;
 	}
 
+	static function createLinkOnly() {
+		return false;
+	}
+
 	static function encode_plus() {
 		return false;
 	}

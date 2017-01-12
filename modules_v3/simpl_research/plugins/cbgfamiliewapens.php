@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class graftombe_plugin extends research_base_plugin {
+class cbgfamiliewapens_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Graftombe';
+		return 'CBG Familiewapens';
 	}
 
 	static function getPaySymbol() {
@@ -19,10 +19,10 @@ class graftombe_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.graftombe.nl/names/search?forename=' . $givn . '&surname=' . $surname.'&submit=Zoeken&r=names-search';
+		return $link = 'http://cbgfamiliewapens.nl/databank/indeling/gallery?q_searchfield=' . $surname;
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink() {
 		return false;
 	}
 

@@ -11,7 +11,7 @@ class amsterdamarchief_plugin extends research_base_plugin {
 	}
 
 	static function getPaySymbol() {
-		return true;
+		return false;
 	}
 
 	static function getSearchArea() {
@@ -66,6 +66,10 @@ class amsterdamarchief_plugin extends research_base_plugin {
 				);
 			}
 			return $link;
+	}
+
+	static function createLinkOnly() {
+		return false;
 	}
 
 	static function encode_plus() {

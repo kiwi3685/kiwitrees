@@ -35,6 +35,10 @@ class rijksarchiefbelgie_plugin extends research_base_plugin {
 		);
 	}
 
+	static function createLinkOnly() {
+		return false;
+	}
+
 	static function encode_plus() {
 		return false;
 	}

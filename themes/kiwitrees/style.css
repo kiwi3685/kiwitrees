@@ -4520,6 +4520,8 @@ a.icon-udarrow:hover {
 
 #edit_interface-page #changefamform td {
 	padding: 8px;
+	line-height: 26px;
+	vertical-align: middle;
 	white-space: normal;
 }
 
@@ -5152,10 +5154,6 @@ ul#research_status li.research-area {
 
 ul#research_status li ul {
 	display:none;
-}
-
-ul#research_status li ul.first {
-	display:block;
 }
 
 ul#research_status li.research-area li {

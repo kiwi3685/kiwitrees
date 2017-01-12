@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class online_begraafplaatsen_plugin extends research_base_plugin {
+class metagenealogy_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Online Begraafplaatsen';
+		return 'Genealogy.net Meta Search';
 	}
 
 	static function getPaySymbol() {
@@ -15,7 +15,7 @@ class online_begraafplaatsen_plugin extends research_base_plugin {
 	}
 
 	static function getSearchArea() {
-		return 'NLD';
+		return 'DEU';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
@@ -23,12 +23,16 @@ class online_begraafplaatsen_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		// This is a post form, so it will be sent with Javascript
-		$url	 = 'http://www.online-begraafplaatsen.nl/zoeken.asp?command=zoekform';
-		$params	 = array(
-			'achternaam' => $surn,
-			'voornaam'	 => $first . '*'
+		// Often it's better to run the search just with the surname.
+		// It's a post form, so it will be send by javascript in a new window.
+		$url = 'http://meta.genealogy.net/search/index';
+		$params = array(
+			'lastname'	 => $surn,
+			'placename'	 => ''
 		);
+		for ($i = 1; $i <= 19; $i++) {
+			$params['partner' . $i] = 'on';
+		}
 		return "postresearchform('" . $url . "'," . json_encode($params) . ")";
 	}
 
