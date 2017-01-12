@@ -32,12 +32,45 @@ define('WT_SCRIPT_NAME', 'admin_trees_sanity.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 require WT_ROOT.'includes/functions/functions_print_facts.php';
+global $MAX_ALIVE_AGE;
 
 $controller = new WT_Controller_Page();
 $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Sanity check'))
 	->pageHeader();
+
+
+	// default ages
+	$bap_age	= 5;
+	$marr_age	= 14;
+	$oldage		= $MAX_ALIVE_AGE;
+	$spouseage	= 30;
+	$child_y	= 15;
+	$child_o	= 50;
+
+	if (WT_Filter::postBool('reset')) {
+		set_gedcom_setting(WT_GED_ID, 'bap_age', $bap_age);
+		set_gedcom_setting(WT_GED_ID, 'marr_age', $marr_age);
+		set_gedcom_setting(WT_GED_ID, 'oldage', $oldage);
+		set_gedcom_setting(WT_GED_ID, 'spouseage', $spouseage);
+		set_gedcom_setting(WT_GED_ID, 'child_y', $child_y);
+		set_gedcom_setting(WT_GED_ID, 'child_o', $child_o);
+
+		AddToLog($controller->getPageTitle() .' set to default values', 'config');
+	}
+
+	// save new values
+	if (WT_Filter::postBool('save')) {
+		set_gedcom_setting(WT_GED_ID, 'bap_age',	WT_Filter::post('bap_age', WT_REGEX_INTEGER, $bap_age));
+		set_gedcom_setting(WT_GED_ID, 'marr_age',	WT_Filter::post('marr_age', WT_REGEX_INTEGER, $marr_age));
+		set_gedcom_setting(WT_GED_ID, 'marr_age',	WT_Filter::post('marr_age', WT_REGEX_INTEGER, $oldage));
+		set_gedcom_setting(WT_GED_ID, 'spouseage',	WT_Filter::post('spouseage', WT_REGEX_INTEGER, $spouseage));
+		set_gedcom_setting(WT_GED_ID, 'child_y',	WT_Filter::post('child_y', WT_REGEX_INTEGER, $child_y));
+		set_gedcom_setting(WT_GED_ID, 'child_o',	WT_Filter::post('child_o', WT_REGEX_INTEGER, $child_o));
+
+		AddToLog($controller->getPageTitle() .' set to new values', 'config');
+	}
 ?>
 
 <div id="sanity_check">
@@ -47,7 +80,7 @@ $controller
 		<?php echo WT_I18N::translate('This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.'); ?>
 	</p>
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
-		<input type="hidden" name="go" value="1">
+		<input type="hidden" name="save" value="1">
 		<div class="admin_options">
 			<div class="input">
 				<label><?php echo WT_I18N::translate('Family tree'); ?></label>
@@ -55,8 +88,8 @@ $controller
 			</div>
 		</div>
 		<div id="sanity_options">
-			<h4><?php echo WT_I18N::translate('Date discrepancies'); ?></h4>
 			<ul>
+				<h3><?php echo WT_I18N::translate('Date discrepancies'); ?></h3>
 				<li class="facts_value" name="baptised" id="baptised">
 					<input type="checkbox" name="baptised" value="baptised"
 						<?php if (WT_Filter::post('baptised')) echo ' checked="checked"'?>
@@ -88,8 +121,57 @@ $controller
 					<?php echo WT_I18N::translate('Burial before death'); ?>
 				</li>
 			</ul>
-			<h4><?php echo WT_I18N::translate('Missing data'); ?></h4>
+<!-- NEW -->
 			<ul>
+				<h3><?php echo WT_I18N::translate('Age related queries'); ?></h3>
+				<li class="facts_value" name="bap_late" id="bap_late">
+					<input type="checkbox" name="bap_late" value="bap_late"
+						<?php if (WT_Filter::post('')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Baptised after a certain age'); ?>
+					<input name="bap_age" id="bap_age" type="text" value="<?php echo WT_Filter::post('bap_age', WT_REGEX_INTEGER, '5'); ?>" >
+				</li>
+<div style="opacity: 0.5;">COMING SOON !
+				<li class="facts_value" name="marr_yng" id="marr_yng">
+					<input type="checkbox" name="marr_yng" value="marr_yng"
+						<?php if (WT_Filter::post('')) echo ' checked="checked"'?>
+					disabled>
+					<?php echo WT_I18N::translate('Married before a certain age'); ?>
+					<input name="marr_age" id="marr_age" type="text" value="<?php echo WT_Filter::post('marr_age', WT_REGEX_INTEGER, '14'); ?>" disabled>
+				</li>
+				<li class="facts_value" name="old_age" id="old_age">
+					<input type="checkbox" name="old_age" value="old_age"
+						<?php if (WT_Filter::post('')) echo ' checked="checked"'?>
+					disabled>
+					<?php echo WT_I18N::translate('Alive after a certain age'); ?>
+					<input name="oldage" id="oldage" type="text" value="<?php echo WT_Filter::post('oldage', WT_REGEX_INTEGER, $MAX_ALIVE_AGE); ?>"disabled>
+				</li>
+				<li class="facts_value" name="spouse_age" id="spouse_age">
+					<input type="checkbox" name="spouse_age" value="spouse_age"
+						<?php if (WT_Filter::post('')) echo ' checked="checked"'?>
+					disabled>
+					<?php echo WT_I18N::translate('Being much older than spouse'); ?>
+					<input name="spouseage" id="spouseage" type="text" value="<?php echo WT_Filter::post('spouseage', WT_REGEX_INTEGER, '30'); ?>"disabled>
+				</li>
+				<li class="facts_value" name="child_yng" id="child_yng">
+					<input type="checkbox" name="child_yng" value="child_yng"
+						<?php if (WT_Filter::post('')) echo ' checked="checked"'?>
+					disabled>
+					<?php echo WT_I18N::translate('Having children before a certain age'); ?>
+					<input name="child_y" id="child_y" type="text" value="<?php echo WT_Filter::post('child_y', WT_REGEX_INTEGER, '15'); ?>"disabled>
+				</li>
+				<li class="facts_value" name="child_old" id="child_old">
+					<input type="checkbox" name="child_old" value="child_old"
+						<?php if (WT_Filter::post('')) echo ' checked="checked"'?>
+					disabled>
+					<?php echo WT_I18N::translate('Mothers having children past a certain age'); ?>
+					<input name="child_o" id="child_o" type="text" value="<?php echo WT_Filter::post('child_o', WT_REGEX_INTEGER, '50'); ?>"disabled>
+				</li>
+</div>
+			</ul>
+<!-- END NEW -->
+			<ul>
+				<h3><?php echo WT_I18N::translate('Missing data'); ?></h3>
 				<li class="facts_value" name="sex" id="sex" >
 					<input type="checkbox" name="sex" value="sex"
 						<?php if (WT_Filter::post('sex')) echo ' checked="checked"'?>
@@ -97,8 +179,8 @@ $controller
 					<?php echo WT_I18N::translate('No gender recorded'); ?>
 				</li>
 			</ul>
-			<h4><?php echo WT_I18N::translate('Duplicated data'); ?></h4>
 			<ul>
+				<h3><?php echo WT_I18N::translate('Duplicated data'); ?></h3>
 				<li class="facts_value" name="dupe_birt" id="dupe_birt" >
 					<input type="checkbox" name="dupe_birt" value="dupe_birt"
 						<?php if (WT_Filter::post('dupe_birt')) echo ' checked="checked"'?>
@@ -131,15 +213,22 @@ $controller
 				</li>
 			</ul>
 		</div>
-		<button type="submit" class="btn btn-primary" >
+		<button type="submit" class="btn btn-primary clearfloat" >
 			<i class="fa fa-check"></i>
 			<?php echo $controller->getPageTitle(); ?>
+		</button>
+	</form>
+	<form method="post" name="rela_form" action="#">
+		<input type="hidden" name="reset" value="1">
+		<button class="btn btn-primary reset" type="submit">
+			<i class="fa fa-refresh"></i>
+			<?php echo WT_I18N::translate('reset'); ?>
 		</button>
 	</form>
 	<hr class="clearfloat">
 
 	<?php
-	if (!WT_Filter::post('go')) {
+	if (!WT_Filter::post('save')) {
 		exit;
 	}
 	?>
@@ -183,6 +272,14 @@ $controller
 				echo '
 					<div class="result">
 						<h5>' . WT_I18N::translate('%s buried before death', $data['count']) . '</h5>
+						<div>' . $data['html'] . '</div>
+					</div>';
+			}
+			if (WT_Filter::post('bap_age')) {
+				$data = query_age(array('BAPM', 'CHR'), $bap_age);
+				echo '
+					<div class="result">
+						<h5>' . WT_I18N::translate('%1s baptised more than %2s years after birth', $data['count'], $bap_age) . '</h5>
 						<div>' . $data['html'] . '</div>
 					</div>';
 			}
@@ -315,9 +412,9 @@ function birth_comparisons($tag_array, $tag2 = '') {
 }
 
 function death_comparisons($tag_array) {
-	$html = '';
-	$count = 0;
-	$tag_count = count($tag_array);
+	$html		= '';
+	$count		= 0;
+	$tag_count	= count($tag_array);
 	for ($i = 0; $i < $tag_count; $i ++) {
 		$rows = WT_DB::prepare(
 			"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` LIKE CONCAT('%1 ', ?, '%') AND `i_gedcom` NOT LIKE CONCAT('%1 ', ?, ' Y%')"
@@ -345,9 +442,9 @@ function death_comparisons($tag_array) {
 }
 
 function missing_tag($tag) {
-	$html = '';
-	$count = 0;
-	$rows = WT_DB::prepare(
+	$html	= '';
+	$count	= 0;
+	$rows	= WT_DB::prepare(
 		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` NOT REGEXP CONCAT('\n[0-9] ' , ?)"
 	)->execute(array(WT_GED_ID, $tag))->fetchAll();
 	foreach ($rows as $row) {
@@ -359,9 +456,9 @@ function missing_tag($tag) {
 }
 
 function duplicate_tag($tag) {
-	$html = '';
-	$count = 0;
-	$rows = WT_DB::prepare(
+	$html	= '';
+	$count	= 0;
+	$rows	= WT_DB::prepare(
 		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` REGEXP '(\n1 " . $tag . ")((.*\n.*)*)(\n1 " . $tag . ")(.*)'"
  	)->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
@@ -373,15 +470,57 @@ function duplicate_tag($tag) {
 }
 
 function identical_name() {
-	$html = '';
-	$count = 0;
-	$rows = WT_DB::prepare(
+	$html	= '';
+	$count	= 0;
+	$rows	= WT_DB::prepare(
 		"SELECT n_id AS xref, COUNT(*) as count  FROM `##name` WHERE `n_file`= ? AND `n_type`= 'NAME' GROUP BY `n_id`, `n_sort` HAVING COUNT(*) > 1 "
  	)->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
 		$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></li>';
 		$count ++;
+	}
+	return array('html' => $html, 'count' => $count);
+}
+
+function query_age($tag_array, $age) {
+	$html		= '';
+	$count		= 0;
+	$tag_count	= count($tag_array);
+	$sql		= "
+		SELECT
+		 tag.d_gid AS xref,
+		 tag.d_year - birth.d_year AS age
+		 FROM
+			 `##dates` AS tag,
+			 `##dates` AS birth,
+			 `##individuals` AS indi
+		 WHERE
+			 indi.i_id = birth.d_gid AND
+			 birth.d_gid = tag.d_gid AND
+			 tag.d_file = ? AND
+			 birth.d_file = tag.d_file AND
+			 birth.d_file = indi.i_file AND
+			 birth.d_fact = 'BIRT' AND
+			 tag.d_fact = ? AND
+			 birth.d_julianday1 <> 0 AND
+			 tag.d_julianday1 > birth.d_julianday2 AND
+			 tag.d_year-birth.d_year > ?
+		 GROUP BY xref
+		 ORDER BY age DESC
+	";
+
+	for ($i = 0; $i < $tag_count; $i ++) {
+		$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID, $tag_array[$i], $age))->fetchAll();
+		foreach ($rows as $row) {
+			$person = WT_Person::getInstance($row->xref);
+			$html .= '
+				<li>
+					<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+					<span> (' . WT_I18N::translate('age %1s', $row->age) . ')</span>
+				</li>';
+			$count ++;
+		}
 	}
 	return array('html' => $html, 'count' => $count);
 }
