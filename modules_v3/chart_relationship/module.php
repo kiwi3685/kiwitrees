@@ -419,7 +419,7 @@ class chart_relationship_WT_Module extends WT_Module implements WT_Module_Chart,
 					<?php echo WT_I18N::translate('save'); ?>
 				</button>
 			</form>
-				<form method="post" name="rela_form" action="<?php echo $this->getConfigLink(); ?>">
+			<form method="post" name="rela_form" action="<?php echo $this->getConfigLink(); ?>">
 				<input type="hidden" name="reset" value="1">
 				<button class="btn btn-primary reset" type="submit">
 					<i class="fa fa-refresh"></i>
