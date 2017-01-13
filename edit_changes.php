@@ -141,6 +141,9 @@ if ($changed_gedcoms) {
 			$prev_gedcom_id = null;
 			foreach ($changes as $change) {
 				if ($change->xref != $prev_xref || $change->gedcom_id != $prev_gedcom_id) {
+					if ($prev_xref) {
+						$output .= '</table></td></tr>';
+					}
 					$prev_xref	     = $change->xref;
 					$prev_gedcom_id	 = $change->gedcom_id;
 					$output .= '<tr><td>';
@@ -170,8 +173,7 @@ if ($changed_gedcoms) {
 								<th>' . WT_I18N::translate('Undo') . '</th>
 							</tr>';
 				}
-							$output .= '<tr>
-								<td>
+				$output .= '<td>
 									<a href="edit_changes.php?action=accept&amp;ged=' . rawurlencode($change->gedcom_name) . '&amp;change_id=' . $change->change_id . '">' .
 										WT_I18N::translate('Accept') . '
 									</a>
@@ -200,12 +202,9 @@ if ($changed_gedcoms) {
 										WT_I18N::translate('Undo') . '
 									</a>
 								</td>
-							</tr>
-						</table>
-					</td>
 				</tr>';
 			}
-		$output .= '</td></tr></table>';
+		$output .= '</table></td></tr></td></tr></table>';
 
 		//-- Now for the global Action bar:
 		$output2 = '
