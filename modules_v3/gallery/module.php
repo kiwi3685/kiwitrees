@@ -734,12 +734,13 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	// Start to show the gallery display with the parts common to all galleries
 	private function show() {
 		global $MEDIA_DIRECTORY, $controller;
-		$item_id=safe_GET('gallery_id');
+		$item_id	= WT_Filter::get('gallery_id');
+		$version	= '1.5.1';
 		$controller = new WT_Controller_Page();
 		$controller
 			->setPageTitle($this->getMenuTitle())
 			->pageHeader()
-			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/galleria-1.4.5.min.js')
+			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/galleria-' . $version . '.min.js')
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/flickr/galleria.flickr.min.js')
 			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/plugins/picasa/galleria.picasa.min.js')
 			->addInlineJavaScript($this->getJavaScript($item_id));
@@ -772,12 +773,12 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 							if ((!$languages || in_array(WT_LOCALE, explode(',', $languages))) && $item_id==$item->block_id && $item->gallery_access>=WT_USER_ACCESS_LEVEL) {
 								$item_gallery = '
 									<h4>' . WT_I18N::translate($item->gallery_description) . '</h4>' .
-									$this->mediaDisplay($item->gallery_folder_w, $item_id);
+									$this->mediaDisplay($item->gallery_folder_w, $item_id, $version);
 							}
 						}
 						if (!isset($item_gallery)) {
 							echo '<h4>' . WT_I18N::translate('Image collections related to our family') . '</h4>' .
-								$this->mediaDisplay('//', $item_id);
+								$this->mediaDisplay('//', $item_id, $version);
 						} else {
 							echo $item_gallery;
 						} ?>
@@ -788,7 +789,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	<?php }
 
 	// Print the gallery display
-	private function mediaDisplay($sub_folder, $item_id) {
+	private function mediaDisplay($sub_folder, $item_id, $version) {
 		global $MEDIA_DIRECTORY;
 		$plugin = get_block_setting($item_id, 'plugin');
 		$images = '';
@@ -857,7 +858,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 		if ($images) {
 			$html .= $images.
 				'</div>'.// close #galleria
-				'<a id="copy" href="http://galleria.io/" target="_blank" rel="noopener noreferrer">Display by Galleria</a>'.// gallery.io attribution
+				'<a id="copy" href="http://galleria.io/" target="_blank" rel="noopener noreferrer">' . /* I18N: Copyright statement in gallery module */ WT_I18N::translate('Display by Galleria (%1s)', $version) . '</a>'.// gallery.io attribution
 				'</div>'.// close #page
 				'<div style="clear: both;"></div>';
 		} else {

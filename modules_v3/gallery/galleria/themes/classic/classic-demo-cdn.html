@@ -18,14 +18,6 @@
             #galleria{height:320px}
 
         </style>
-
-        <!-- load jQuery -->
-        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script> -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
-
-        <!-- load Galleria -->
-        <script src="../../galleria-1.5.1.min.js"></script>
-
     </head>
 <body>
     <div class="content">
@@ -118,14 +110,16 @@
         <p class="cred">Made by <a href="http://galleria.io">Galleria</a>.</p>
     </div>
 
+    <!-- load jQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+    <!-- load Galleria -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.1/galleria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.1/themes/classic/galleria.classic.min.js"></script>
     <script>
-    $(function() {
-        // Load the classic theme
-        Galleria.loadTheme('galleria.classic.min.js');
-
-        // Initialize Galleria
-        Galleria.run('#galleria');
-    });
+        $(function() {
+            Galleria.run('#galleria');
+        });
     </script>
     </body>
 </html>
