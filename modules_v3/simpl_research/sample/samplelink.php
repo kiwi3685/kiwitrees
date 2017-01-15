@@ -5,7 +5,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class sampllink_plugin extends research_base_plugin { // THIS NAME MUST MATCH EXACTLY TO THE FILE NAME AND SHOULD BE SIMILAR TO THE DISPLAY NAME FOR BEST SORTING
+class samplelink_plugin extends research_base_plugin { // THIS NAME MUST MATCH EXACTLY TO THE FILE NAME AND SHOULD BE SIMILAR TO THE DISPLAY NAME FOR BEST SORTING
 	static function getName() {
 		return 'Sample Link'; // THIS IS THE DISPLAY NAME
 	}
