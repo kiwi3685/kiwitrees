@@ -777,7 +777,13 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$n		= 0;
 		foreach (WT_Module::getActiveSidebars() as $module) {
 			if ($module->hasSidebarContent()) {
-				$html .= '<h3 id="' . $module->getName() . '"><a href="#">' . $module->getTitle() . '</a></h3>';
+				$html .= '
+					<h3 id="' . $module->getName() . '">
+						<a href="#">' . $module->getTitle() . '</a>';
+						if (WT_USER_GEDCOM_ADMIN && method_exists($module, 'getConfigLink') && $module->getConfigLink()) {
+							$html .= '<a class="config_link fa fa-cog icon-admin" href="' . $module->getConfigLink() . '" title="' . WT_I18N::translate('Configure') .'">&nbsp;</a>';
+						}
+					$html .= '</h3>';
 				$html .= '<div id="sb_content_'.$module->getName().'">'.$module->getSidebarContent().'</div>';
 				// The family navigator should be opened by default
 				if ($module->getName() == 'family_nav') {

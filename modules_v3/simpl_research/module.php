@@ -131,9 +131,9 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 						<span>' . $area . '</span>';
 					}
 					$html .= '<h3>' . WT_I18N::translate('Select the links you want to use in the sidebar') . '</h3>
-					<h3>' . WT_I18N::translate('Select all') .'
+					<h4>' . WT_I18N::translate('Select all') .'
 						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
-					</h3>
+					</h4>
 					<button class="btn btn-primary save" type="submit">
 						<i class="fa fa-floppy-o"></i>'.
 						WT_I18N::translate('save').'
@@ -195,7 +195,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			return false;
 		} else {
 			$controller->addInlineJavascript('
-				jQuery("#' . $this->getName() . ' a").text("' . $this->getSidebarTitle() . '");
+				jQuery("#' . $this->getName() . ' a:first").text("' . $this->getSidebarTitle() . '");
 
 				// expand the default search area
 				jQuery(".research-area").each(function(){
@@ -241,15 +241,11 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 				};
 			');
 
-
-
 			$globalfacts = $controller->getGlobalFacts();
 			$html = '<ul id="research_status">';
-				if (WT_USER_GEDCOM_ADMIN) {
-					$html .= '<a class="config_link fa fa-cog icon-admin" href="' . $this->getConfigLink() . '" title="' . WT_I18N::translate('Configure') .'">&nbsp;</a>';
-				}
 				$i = 0;
 				$total_enabled_plugins = 0;
+				$other_surname = WT_Filter::post('other_surname');
 				$RESEARCH_PLUGINS = unserialize(get_module_setting($this->getName(), 'RESEARCH_PLUGINS'));
 				foreach ($this->getPluginList() as $area => $plugins) {
 					$enabled_plugins		 = $this->countEnabledPlugins($plugins, $RESEARCH_PLUGINS);
