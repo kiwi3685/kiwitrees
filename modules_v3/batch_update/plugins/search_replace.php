@@ -97,14 +97,6 @@ class search_replace_bu_plugin extends base_plugin {
 
 		return
 			'<label>
-				<span>' . WT_I18N::translate('Search text/pattern') . '</span>
-				<input id="search" name="search" value="' . WT_Filter::escapeHtml($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
-			</label>
-			<label>
-				<span>' . WT_I18N::translate('Replacement text') . '</span>
-				<input id="replace" name="replace" value="' . WT_Filter::escapeHtml($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
-			</label>
-			<label>
 				<span>' . WT_I18N::translate('Search method') . '</span>
 				<select name="method" onchange="this.form.submit();">
 					<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>
@@ -118,6 +110,15 @@ class search_replace_bu_plugin extends base_plugin {
 				<span>' . WT_I18N::translate('Case insensitive') . '</span>
 				<input type="checkbox" name="case" value="i" ' . ($this->case=='i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">
 				<p><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></p>
+			</label>
+			<hr>
+			<label>
+				<span>' . WT_I18N::translate('Search text/pattern') . '</span>
+				<input id="search" name="search" value="' . WT_Filter::escapeHtml($this->search) . '" onchange="this.form.submit();">' . print_specialchar_link('search') . '
+			</label>
+			<label>
+				<span>' . WT_I18N::translate('Replacement text') . '</span>
+				<input id="replace" name="replace" value="' . WT_Filter::escapeHtml($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
 			</label>' .
 			parent::getOptionsForm();
 	}
