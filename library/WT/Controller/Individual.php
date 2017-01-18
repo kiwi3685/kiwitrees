@@ -799,6 +799,11 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					heightStyle: "content",
 					collapsible: true
 				});
+
+				// allow config link to be clicked
+				jQuery( ".config_link" ).click(function(e){
+				    e.stopPropagation();
+				});
 			');
 
 		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
