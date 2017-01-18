@@ -27979,7 +27979,7 @@ msgstr "Europe"
 
 #: statistics.php:621
 msgid "United States"
-msgstr "United Arab Emirates"
+msgstr "United States"
 
 #: statistics.php:622
 msgid "South America"
