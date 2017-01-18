@@ -1579,12 +1579,13 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_check a {color: #3383bb;}
 #sanity_check h3 {margin: 0;}
 #sanity_check h5 {clear: both; font-size: 1.0em; margin: 0;}
-#sanity_check ul {float: left; min-height: 180px; width: 30%;}
+#sanity_check h5 span {float:right; font: italic normal 12px arial;}
+#sanity_check ul {float: left; 	margin: 0 10px; min-height: 180px;}
 #sanity_check li {line-height: 23px; list-style-type: none;}
-#sanity_check li input[type="text"] {clear: both; float: right; max-width: 40px; padding: 2px; text-align: center;}
-#sanity_check .first  {display: inline-block; width: 300px;}
-#sanity_check .second {display: inline-block; width: 300px;}
-#sanity_check .third  {display: inline-block;}
+#sanity_check li input[type="text"] {clear: both; float: right; margin: 0 10px; max-width: 40px; padding: 2px; text-align: center;}
+#sanity_check li span.details {font-size: 90%; font-style: italic;}
+#sanity_check .first, #sanity_check .second {display: inline-block; width: 300px;}
+#sanity_check .third  {display: inline-block; width: auto;}
 #sanity_check .third a {padding: 0 20px;}
 #sanity_check span.label {font-weight: 900; padding: 0 20px;}
 #sanity_accordion {width: 98%;}
