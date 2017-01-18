@@ -83,7 +83,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		$html .= '<span dir="auto">' . htmlspecialchars($fact->getDetail()) . '</span>';
 		// include AGNC if recorded
 		if (preg_match('/\n2 AGNC (.+)/', $fact->getGedcomRecord(), $match)) {
-			$html .= WT_Gedcom_Tag::getLabelValue('AGNC', $match[1]);
+			$html .= WT_Gedcom_Tag::getLabelValue($fact->getTag() . ':AGNC', $match[1]);
 		} else {
 			$html .= '&nbsp;';
 		}
