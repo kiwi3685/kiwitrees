@@ -18,15 +18,19 @@ class alkmaararchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return $link = 'https://www.regionaalarchiefalkmaar.nl/collecties/genealogie/aktes/q/persoon_achternaam_t_0/' . strtolower($surname) . '/q/persoon_voornaam_t_0/' . strtolower($first) . '/q/zoekwijze/s';
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

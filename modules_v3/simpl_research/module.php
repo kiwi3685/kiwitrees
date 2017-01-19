@@ -250,22 +250,23 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 											if ($fact == "NAME" && !$name) {
 												$primary = $this->getPrimaryName($value);
 												if ($primary) {
-													$name		= true;
-													$data		= $this->setPluginVariables($plugin, $primary, true);
-													$link 		= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
-													$sublinks 	= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
-													$links_only = $plugin->createLinkOnly();
+													$name			= true;
+													$data			= $this->setPluginVariables($plugin, $primary, true);
+													$link 			= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
+													$sublinks 		= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
+													$link_only		= $plugin->createLinkOnly();
+													$sublinks_only	= $plugin->createSubLinksOnly();
 												}
 											}
 										}
-										if ($sublinks || $links_only) {
-											$links_only ? $sublinks = $links_only : $sublinks = $sublinks;
+										if ($sublinks || $sublinks_only) {
+											$sublinks_only ? $sublinks = $sublinks_only : $sublinks = $sublinks;
 											$html .= '<li>
 												<a class="mainlink" href="'.htmlspecialchars($link).'">
 													<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 													$plugin->getName() . '
 													<span title="' . WT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>';
-													if ($links_only) {
+													if ($sublinks_only) {
 														$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;" title="' . WT_I18N::translate('Links only') . '"></i>) ';
 													}
 												$html .= '</a>
@@ -281,6 +282,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 												$html .= '</ul>
 											</li>';
 										} else { // default
+											$link_only ? $link = $link_only : $link = $link;
 											if (stripos($link, "postresearchform") === false){
 												$alink = 'href="' . htmlspecialchars($link) . '"';
 											} else {
@@ -290,8 +292,11 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 												<a class="research_link" ' . $alink . ' target="_blank" rel="noopener noreferrer">
 													<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 													$plugin->getName() . '
-													<span  title="' . WT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>
-												</a>
+													<span  title="' . WT_I18N::translate('Pay to view') . '">' . $this->getCurrency($plugin) . '</span>';
+													if ($link_only) {
+														$html .= ' (<i class="fa fa-link" style="font-size: 1em; margin:0;" title="' . WT_I18N::translate('Links only') . '"></i>) ';
+													}
+												$html .= '</a>
 											</li>';
 										}
 									}
@@ -500,7 +505,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 																<?php } ?>
 															</ul> <!-- sublinks -->
 														</li>
-													<?php } elseif (!$plugin->createLinkOnly()) { // default, excluding 'links_only'
+													<?php } elseif (!$plugin->createLinkOnly() && !$plugin->createSubLinksOnly()) { // default, excluding 'links_only'
 														if (stripos($link, "postresearchform") === false) {
 															$alink = 'href="' . htmlspecialchars($link) . '"';
 														} else {
@@ -597,6 +602,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		if (!$indi) {
 			foreach($plugins as $area => $plugin) {
 				$plugin->createLinkOnly() ? $count = $count - 1 : $count = $count;
+				$plugin->createSubLinksOnly() ? $count = $count - 1 : $count = $count;
 			}
 		}
 		return $count;

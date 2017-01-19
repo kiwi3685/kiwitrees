@@ -5,21 +5,21 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class paperspast_plugin extends research_base_plugin {
+class sample_link_only_sublinks_plugin extends research_base_plugin {
 	static function getName() {
-		return 'PapersPast';
+		return 'Sample link only (sublinks)';
 	}
 
 	static function getPaySymbol() {
-		return false;
+		return true;
 	}
 
 	static function getSearchArea() {
-		return 'NZL';
+		return 'NLD';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return $link = 'https://paperspast.natlib.govt.nz/newspapers?phrase=2&query=+' . $first  . '+' . $surname . '&start_date=' . $birth_year . '-01-01&end_date=' . $death_year . '-12-31';
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
@@ -31,10 +31,26 @@ class paperspast_plugin extends research_base_plugin {
 	}
 
 	static function createSubLinksOnly() {
-		return false;
+		$base_url = 'http://zoekakten.nl/';
+
+		$collection = array(
+		    "Groningen"	=> "prov.php?id=GR",
+		    "Friesland"	=> "prov.php?id=FR",
+		    "Drenthe"	=> "prov.php?id=DR",
+		);
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url. $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

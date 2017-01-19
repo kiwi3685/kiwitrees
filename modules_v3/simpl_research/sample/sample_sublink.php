@@ -5,13 +5,13 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class delpher_plugin extends research_base_plugin {
+class sample_sublink_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Delpher';
+		return 'Sample sublink';
 	}
 
 	static function getPaySymbol() {
-		return false;
+		return true;
 	}
 
 	static function getSearchArea() {
@@ -33,10 +33,10 @@ class delpher_plugin extends research_base_plugin {
 			"Radiobulletins"	=> 'nl/radiobulletins/results?query=' . urlencode('"') . $fullname . urlencode('"') . '&page=1&coll=anp',
 		);
 
-		foreach($collection as $x => $x_value) {
+		foreach($collection as $key => $value) {
 			$link[] = array(
-				'title' => WT_I18N::translate($x),
-				'link'  => $base_url. $x_value
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
 			);
 		}
 
@@ -54,4 +54,5 @@ class delpher_plugin extends research_base_plugin {
 	static function encode_plus() {
 		return false;
 	}
+
 }

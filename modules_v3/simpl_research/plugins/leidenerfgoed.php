@@ -22,11 +22,15 @@ class leidenerfgoed_plugin extends research_base_plugin {
 		return $link = 'https://www.erfgoedleiden.nl/collecties/personen/zoek-op-personen/q/text/' . strtolower($first) . '%20' . strtolower($surname);
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

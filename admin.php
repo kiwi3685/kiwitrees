@@ -1571,6 +1571,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/simpl_research/plugins/delpher_kranten.php', // replaced with different versions
 		WT_ROOT.'modules_v3/simpl_research/plugins/heraldischedatabank.php', // replaced with different version
 		WT_ROOT.'modules_v3/simpl_research/plugins/wiewaswie.php', // replaced with different version
+		WT_ROOT.'modules_v3/simpl_research/sample/samplelink.php', // replaced with different versions
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/DR/Aa_en_Hunze.png', // replace underscore with space in file names
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/DR/De_Wolden.png', // replace underscore with space in file names
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/FR/het_Bildt.png', // replace underscore with space in file names

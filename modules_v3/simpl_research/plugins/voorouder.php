@@ -22,11 +22,15 @@ class voorouder_plugin extends research_base_plugin {
 		return $link = 'http://genealogie.voorouder.nl/search.php?mylastname=' . $surname .'&myfirstname=' . $givn .'&mybool=AND&Search=Zoek';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

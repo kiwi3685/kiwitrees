@@ -47,6 +47,10 @@ class google_plugin extends research_base_plugin {
 		return false;
 	}
 
+	static function createSubLinksOnly() {
+		return false;
+	}
+
 	static function encode_plus() {
 		return true;
 	}

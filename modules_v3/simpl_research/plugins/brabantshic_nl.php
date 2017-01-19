@@ -22,11 +22,15 @@ class brabantshic_nl_plugin extends research_base_plugin {
 		return $link = 'https://www.bhic.nl/memorix/genealogy/search?serviceUrl=%2Fgenealogie%2F%3Fq_text%3D' . $givn . '%2B' . $surn;
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

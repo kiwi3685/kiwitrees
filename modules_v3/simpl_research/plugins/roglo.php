@@ -22,11 +22,15 @@ class roglo_plugin extends research_base_plugin {
 		return $link = 'http://roglo.eu/roglo?lang=' . WT_LOCALE . '&m=NG&n=' . $fullname . '&t=PN';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

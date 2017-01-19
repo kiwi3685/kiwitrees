@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class paperspast_plugin extends research_base_plugin {
+class sample_js_link_plugin extends research_base_plugin {
 	static function getName() {
-		return 'PapersPast';
+		return 'Sample JavaScript link';
 	}
 
 	static function getPaySymbol() {
@@ -15,11 +15,21 @@ class paperspast_plugin extends research_base_plugin {
 	}
 
 	static function getSearchArea() {
-		return 'NZL';
+		return 'GBR';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return $link = 'https://paperspast.natlib.govt.nz/newspapers?phrase=2&query=+' . $first  . '+' . $surname . '&start_date=' . $birth_year . '-01-01&end_date=' . $death_year . '-12-31';
+		$url	 	= 'http://www.freebmd.org.uk/cgi/search.pl';
+		$params	 	= array(
+			'type'		=> 'All Types',
+			'surname'	=> $surn,
+			'given'		=> $first,
+			'sq'		=> '1',
+			'start'		=> $birth_year,
+			'eq'		=> '4',
+			'end'		=> $death_year,
+		);
+		return "postresearchform('" . $url . "'," . json_encode($params) . ")";
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
@@ -35,6 +45,7 @@ class paperspast_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

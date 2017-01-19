@@ -22,11 +22,15 @@ class noordwestveluwestreekarchivariaat_plugin extends research_base_plugin {
 		return $link = 'http://www.streekarchivariaat.nl/nl/alle-personen?mivast=434&miadt=434&mizig=100&miview=ldt&milang=nl&micols=1&mires=0&mip1=' . $surname . '&mip3=' . $first;
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

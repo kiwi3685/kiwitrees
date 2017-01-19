@@ -22,11 +22,15 @@ class hengeloarchief_plugin extends research_base_plugin {
 		return $link = 'http://archief.hengelo.nl/genealogie/zoek.php?type=advanced&achternaam=' . $surname . '&voornaam=' . $first . '&gezinsbladen=1&geboortedatum_dag=&geboortedatum_maand=&geboortedatum_jaar=&gezinskaarten=1&kostgangerskaarten=1&geboorten=1&aktenummer=&aktejaar=&huwelijken=1&overlijden=1';
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

@@ -22,11 +22,15 @@ class zaanstadarchief_plugin extends research_base_plugin {
 		return $link = 'http://archief.zaanstad.nl/voorouders?mivast=137&miadt=137&mizig=309&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=' . strtolower($first) . '+' . strtolower($surname);
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

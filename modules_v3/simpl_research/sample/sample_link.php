@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class wikipedia_person_plugin extends research_base_plugin {
+class sample_link_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Wikipedia-Personensuche';  // uses German wikipedia
+		return 'Sample link';
 	}
 
 	static function getPaySymbol() {
@@ -15,11 +15,11 @@ class wikipedia_person_plugin extends research_base_plugin {
 	}
 
 	static function getSearchArea() {
-		return 'DEU';
+		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'https://toolserver.org/~apper/pd/person/' . $givn . '_' . $surname;
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return 'http://militieregisters.nl/zoek#?focus%3Dd00%26p04%3D' . $givn . '%26p05%3D' . $prefix . '%26p06%3D' . $surname;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
@@ -37,4 +37,5 @@ class wikipedia_person_plugin extends research_base_plugin {
 	static function encode_plus() {
 		return false;
 	}
+
 }

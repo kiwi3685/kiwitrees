@@ -22,11 +22,15 @@ class groningerarchieven_plugin extends research_base_plugin {
 		return $link = 'https://www.groningerarchieven.nl/zoeken/mais/archief/?q=' . strtolower($first) . '+' . strtolower($surname);
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

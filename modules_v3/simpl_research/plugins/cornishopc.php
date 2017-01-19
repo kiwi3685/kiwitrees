@@ -22,11 +22,15 @@ class cornishopc_plugin extends research_base_plugin {
 		return $link = 'http://www.cornwall-opc-database.org/search-database/person-search/index.php?year_from=&year_to=&parish=&forename1=' . $first . '&surname1=' . $surname . '&t=person&soundex=1&nearby=1&bf=Search';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

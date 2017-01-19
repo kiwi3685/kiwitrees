@@ -22,11 +22,15 @@ class zoekaktenlandverhuizers_plugin extends research_base_plugin {
 		return $link = 'http://zoekakten.nl/zoeklv2.php?soort=0&naam=' .$surname . '&submit=Zoek';
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

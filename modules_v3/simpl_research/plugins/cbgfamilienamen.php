@@ -19,14 +19,18 @@ class cbgfamilienamen_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.cbgfamilienamen.nl/nfb/detail_naam.php?gba_lcnaam=' . $surname . '&gba_naam=' . $surname . '&nfd_naam=' . $surname . '%20(y)&operator=eq&taal=';
+		return 'http://www.cbgfamilienamen.nl/nfb/lijst_namen.php?operator=eq&naam=' . $surname;
 	}
 
-	static function create_sublink() {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

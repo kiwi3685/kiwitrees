@@ -19,7 +19,7 @@ class cbgbibliotheek_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = '#';
+		return false;
 	}
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
 		$base_url = 'http://cbgbibliotheek.nl/';
@@ -31,15 +31,19 @@ class cbgbibliotheek_plugin extends research_base_plugin {
 
 			);
 		foreach($collection as $x => $x_value) {
-				$link[] = array(
-					'title' => WT_I18N::translate($x),
-					'link'  => $base_url. $x_value
-				);
-			}
-			return $link;
+			$link[] = array(
+				'title' => WT_I18N::translate($x),
+				'link'  => $base_url. $x_value
+			);
+		}
+		return $link;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

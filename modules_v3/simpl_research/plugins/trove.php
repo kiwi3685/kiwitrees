@@ -22,11 +22,15 @@ class trove_plugin extends research_base_plugin {
 		return $link = 'http://trove.nla.gov.au/result?q=+%22'. $fullname .'%22&l-australian=y';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 

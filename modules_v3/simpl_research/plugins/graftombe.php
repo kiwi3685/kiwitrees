@@ -22,11 +22,15 @@ class graftombe_plugin extends research_base_plugin {
 		return $link = 'http://www.graftombe.nl/names/search?forename=' . $givn . '&surname=' . $surname.'&submit=Zoeken&r=names-search';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 
 	static function createLinkOnly() {
+		return false;
+	}
+
+	static function createSubLinksOnly() {
 		return false;
 	}
 
