@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class stamboomzoeker_plugin extends research_base_plugin {
+class youtube_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Stamboomzoeker';
+		return 'Youtube';
 	}
 
 	static function getPaySymbol() {
@@ -15,29 +15,15 @@ class stamboomzoeker_plugin extends research_base_plugin {
 	}
 
 	static function getSearchArea() {
-		return 'NLD';
+		return 'INT';
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		return 'https://www.youtube.com/results?search_query=' . $surname . '';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		$base_url = 'http://www.stamboomzoeker.nl/';
-
-		$collection = array(
-			"Personen"	=> 'search.php?l=nl&fn=' . $givn . '&sn=' . $surname . '&m=1&bd1=&bd2=&bp=&t=1&submit=Zoeken',
-			"Stambomen"	=> 'search.php?l=nl&fn=' . $givn . '&sn=' . $surname . '&m=1&bd1=&bd2=&bp=&t=2&submit=Zoeken',		
-			);
-
-		foreach($collection as $key => $value) {
-			$link[] = array(
-				'title' => WT_I18N::translate($key),
-				'link'  => $base_url . $value
-			);
-		}
-
-		return $link;
+		return false;
 	}
 
 	static function createLinkOnly() {

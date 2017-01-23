@@ -19,11 +19,26 @@ class alkmaararchief_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return $link = 'https://www.regionaalarchiefalkmaar.nl/collecties/genealogie/aktes/q/persoon_achternaam_t_0/' . strtolower($surname) . '/q/persoon_voornaam_t_0/' . strtolower($first) . '/q/zoekwijze/s';
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		$base_url = 'https://www.regionaalarchiefalkmaar.nl/';
+
+		$collection = array(
+			"Bevolkingsregister"=> "collecties/genealogie/aktes/trefwoord/register_type/bevolkingsregister/q/persoon_achternaam_t_0/' . $surn . 'q/persoon_voornaam_t_0/' . $givn . '/q/zoekwijze/s",
+        "Burgelijke stand"  => "collecties/genealogie/aktes/trefwoord/register_type/burgerlijke%20standregister/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/zoekwijze/s",
+        "DTB"               => "collecties/genealogie/aktes/trefwoord/register_type/doop%28~%29%2C%20trouw%28~%29%20en%20begraafregister/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/zoekwijze/s",
+		);
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {
@@ -35,6 +50,7 @@ class alkmaararchief_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

@@ -7,7 +7,7 @@ if (!defined('WT_WEBTREES')) {
 
 class deventerstadsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Deventer Stadsarchief';
+		return 'Sample sublink';
 	}
 
 	static function getPaySymbol() {
@@ -18,12 +18,29 @@ class deventerstadsarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.stadsarchiefdeventer.nl/zoeken-in-de-collecties/archieven?mivast=45&miadt=45&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $first . '%20' . $surname;
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		$base_url = 'http://www.stadsarchiefdeventer.nl/';
+
+		$collection = array(
+			"Bevolkingsregister"   => "zoeken-in-de-collecties/archieven?mivast=45&mizig=100&miadt=45&miq=1&milang=nl&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mif1=112&miview=tbl",
+            "Persoonbeschrijving"  => "zoeken-in-de-collecties/archieven?mivast=45&mizig=100&miadt=45&miq=1&milang=nl&misort=last_mod%7Cdesc&mip1=$surn&mip3=$givn&mif1=211&miview=tbl",
+            "Kranten"              => "zoeken-in-de-collecties/archieven?mivast=45&miadt=45&mizig=91&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=$surn&mibj=$birth_year&miej=$death_year",
+            "Beeldbank"            => "zoeken-in-de-collecties/archieven?mivast=45&miadt=45&mizig=101&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=$surn",
+            "Archieftoegang"       => "zoeken-in-de-collecties/archieven?mivast=45&miadt=45&mizig=0&miview=lst&milang=nl&micols=1&misort=last_mod%7Cdesc&mires=0&mif3=4&mizk_alle=$surn",
+		);
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {
@@ -35,6 +52,7 @@ class deventerstadsarchief_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

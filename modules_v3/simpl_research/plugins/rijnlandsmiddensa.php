@@ -18,12 +18,28 @@ class rijnlandsmiddensa_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.streekarchiefrijnlandsmidden.nl/collecties/archiefbank?mivast=105&miadt=105&mizig=100&miview=tbl&milang=nl&micols=1&mires=0&mip1=' . $surname . '&mip3=' . $givn . '';
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return false;
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname) {
-		return false; // NOT NORMALLY USED. LEAVE AS false FOR SIMPLE LINKS
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		$base_url = 'http://www.streekarchiefrijnlandsmidden.nl/';
+
+		$collection = array(
+			"Bevolkingsregister"	=> "collecties/archiefbank?mivast=105&mizig=100&miadt=105&miq=1&milang=nl&misort=last_mod%7Cdesc&mip1=' . $surn . '&mip3=' . $givn . '&mif1=112&miview=tbl",
+			"Geboorteakten"			=> "collecties/archiefbank?mivast=105&mizig=100&miadt=105&miq=1&milang=nl&misort=last_mod%7Cdesc&mip1=' . $surn . '&mip3=' . $givn . '&mif1=113&miview=tbl",
+			"Huwelijksakten"		=> "collecties/archiefbank?mivast=105&mizig=100&miadt=105&miq=1&milang=nl&misort=last_mod%7Cdesc&mip1=' . $surn . '&mip3=' . $givn . '&mif1=109&miview=tbl",
+			"Overlijdensakten"		=> "collecties/archiefbank?mivast=105&mizig=100&miadt=105&miq=1&milang=nl&misort=last_mod%7Cdesc&mip1=' . $surn . '&mip3=' . $givn . '&mif1=114&miview=tbl",
+			);
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {

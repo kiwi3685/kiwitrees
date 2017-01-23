@@ -18,12 +18,31 @@ class delftarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://collectie-delft.nl/zoeken?trefwoord=' . $first . '+' . $surname . '&search-source=bronnen';
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		$base_url = 'http://collectie-delft.nl/';
+
+		$collection = array(
+		"Burgelijke stand"   => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/Burgerlijke%20standregister/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
+	    "DTB register"       => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/Doop%2C%20Trouw%20en%20Begraaf%20Registers/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
+	    "Bevolkingsregister" => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/Bevolkingsregister/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
+	    "Onroerend goed  "   => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/onroerend%20goed/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
+	    "Bevolking  "        => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/bevolking/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
+	    "Vergunningen  "     => "nadere-toegangen/trefwoord/persoon_custom_s_facet_bron/vergunningen/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn",
+	    "Zorg personen  "    => "nadere-toegangen/sjabloon/index/facet_xml/personen/objecttype/personen/trefwoord/persoon_custom_s_facet_bron/zorg_personen/q/persoon_voornaam_t_0/$givn/q/persoon_achternaam_t_0/$surn/start/0",
+		);
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {
@@ -35,6 +54,7 @@ class delftarchief_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

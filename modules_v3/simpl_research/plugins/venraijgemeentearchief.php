@@ -18,12 +18,33 @@ class venraijgemeentearchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://gemeentearchiefvenray.nl/genealogie/zoeken-door-personen/q/persoon_achternaam_t_0/' . $surname . '/q/persoon_voornaam_t_0/' . strtolower($first);
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		$base_url = 'http://gemeentearchiefvenray.nl/';
+
+		$collection = array(
+		"Geboorteakten"				=> "genealogie/zoeken-door-personen/trefwoord/akte_type/geboorteakte/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+		"Huwelijksakten"			=> "/genealogie/zoeken-door-personen/trefwoord/akte_type/huwelijksakte/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+		"Overlijdensakten"			=> "genealogie/zoeken-door-personen/trefwoord/akte_type/overlijdensakte/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+		"Dopen voor 1798"			=> "genealogie/zoeken-door-personen/trefwoord/akte_type/doopakte/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+		"Trouwen voor 1798"			=> "genealogie/zoeken-door-personen/trefwoord/akte_type/trouwakte/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+		"Begraven voor 1798"		=> "genealogie/zoeken-door-personen/trefwoord/akte_type/begraafakte/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+		"Bevolkingsregistraties"	=> "genealogie/zoeken-door-personen/trefwoord/akte_type/inschrijving%20register/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+		"Notariele Akten"			=> "genealogie/zoeken-door-personen/trefwoord/akte_type/akte/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn .'/q/zoekwijze/s",
+
+		);
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {
@@ -35,6 +56,7 @@ class venraijgemeentearchief_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }
