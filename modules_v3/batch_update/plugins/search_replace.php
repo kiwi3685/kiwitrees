@@ -88,7 +88,7 @@ class search_replace_bu_plugin extends base_plugin {
 	}
 
 	function getOptionsForm() {
-		$descriptions=array(
+		$descriptions = array(
 			'exact'		=> WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
 			'words'		=> WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
 			'wildcards'	=> WT_I18N::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
@@ -110,7 +110,8 @@ class search_replace_bu_plugin extends base_plugin {
 				<span>' . WT_I18N::translate('Case insensitive') . '</span>
 				<input type="checkbox" name="case" value="i" ' . ($this->case=='i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">
 				<p><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></p>
-			</label>
+			</label>' .
+			parent::getOptionsForm() . '
 			<hr>
 			<label>
 				<span>' . WT_I18N::translate('Search text/pattern') . '</span>
@@ -119,7 +120,6 @@ class search_replace_bu_plugin extends base_plugin {
 			<label>
 				<span>' . WT_I18N::translate('Replacement text') . '</span>
 				<input id="replace" name="replace" value="' . WT_Filter::escapeHtml($this->replace) . '" onchange="this.form.submit();">' . print_specialchar_link('replace') . '
-			</label>' .
-			parent::getOptionsForm();
+			</label>';
 	}
 }

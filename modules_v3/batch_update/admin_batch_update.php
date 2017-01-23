@@ -370,7 +370,7 @@ class base_plugin {
 	// Default option is just the "don't update CHAN record"
 	function getOptionsForm() {
 		return
-			'<label><span>'.WT_I18N::translate('Update the CHAN record').'</span>
+			'<label><span>' . WT_I18N::translate('Update the CHAN record') . '</span>
 				<select name="chan" onchange="this.form.submit();">
 					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>'.WT_I18N::translate('no') .'</option>
 					<option value="yes"'. ($this->chan ? ' selected="selected"' : '') . '>'.WT_I18N::translate('yes').'</option>
