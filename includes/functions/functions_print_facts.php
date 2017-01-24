@@ -648,10 +648,17 @@ function print_address_structure($factrec, $level, $format='') {
 		$cont = get_cont($level+1, $arec);
 		$resultText = $omatch[1] . get_cont($level+1, $arec);
 		if ($level > 1) {
-			if ($format == 'inline') {
-				$resultText;
-			} else {
+			switch ($format) {
+				case 'inline' :
+					$resultText;
+				break;
+				case 'simple' :
+					$resultText = str_replace("<br>", "", $resultText);
+					$resultText = '<span class="label">'.WT_Gedcom_Tag::getLabel('ADDR').': </span><span>' . $resultText . '</span>';
+				break;
+				default :
 				$resultText = '<span class="label">'.WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">' . $resultText . '</div>';
+				break;
 			}
 		}
 		return $resultText;
