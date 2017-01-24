@@ -351,7 +351,7 @@ function format_indi_table($datalist, $option='') {
 		$html .= $person->getPrimaryParentsNames('parents details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
-		$html .= '<td style="display:none;"></td>';
+		$html .= '<td hidden></td>';
 		//-- GIVN/SURN
 		// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
