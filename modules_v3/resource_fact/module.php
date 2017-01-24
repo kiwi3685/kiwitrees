@@ -70,6 +70,33 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 		return $menus;
 	}
 
+	/**
+	 * Generate a SURN,GIVN and GIVN,SURN sortable name for an individual.
+	 * This allows table data to sort by surname or given names.
+	 *
+	 * Use AAAA as a separator (instead of ","), as Javascript localeCompare()
+	 * ignores punctuation and "ANN,ROACH" would sort after "ANNE,ROACH",
+	 * instead of before it.
+	 *
+	 * @param WT_Person $person
+	 *
+	 * @return string[]
+	 */
+	public function sortableNames(WT_Person $person) {
+		$names   = $person->getAllNames();
+		$primary = $person->getPrimaryName();
+
+		list($surn, $givn) = explode(',', $names[$primary]['sort']);
+
+		$givn = str_replace('@P.N.', 'AAAA', $givn);
+		$surn = str_replace('@N.N.', 'AAAA', $surn);
+
+		return [
+			$surn . 'AAAA' . $givn,
+			$givn . 'AAAA' . $surn,
+		];
+	}
+
 	// Implement class WT_Module_Resources
 	public function show() {
 		global $controller, $level2_tags;
@@ -219,9 +246,33 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 									} else {
 										$date = new WT_Date('');
 									}
+									// Extract Given names and Surnames for sorting
+									list($surn_givn, $givn_surn) = $this->sortableNames($person);
+									$data[$x]['GIVN'] = WT_Filter::escapeHtml($givn_surn);
+									$data[$x]['SURN'] = WT_Filter::escapeHtml($surn_givn);
+									$data[$x]['NAME'] = '';
+									foreach ($person->getAllNames() as $num => $name) {
+										if ($name['type'] == 'NAME') {
+											$title='';
+										} else {
+											$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $person)).'"';
+										}
+										if ($num == $person->getPrimaryName()) {
+											$class =' class="name2"';
+											$sex_image = $person->getSexImage();
+											list($surn, $givn) = explode(',', $name['sort']);
+										} else {
+											$class = '';
+											$sex_image = '';
+										}
+										$data[$x]['NAME'] .= '<a '. $title. ' href="'. $person->getHtmlUrl(). '"'. $class. '>'. $name['full'] . '</a>'. $sex_image. '<br>';
+//										$data[$x]['NAME'] = '<a href="' . $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>';
+									}
+
+
+//									$data[$x]['NAME'] = '<a href="' . $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>';
 									$data[$x]['B_DATE'] = $person->getBirthDate()->JD();
 									$data[$x]['O_DATE'] = $date->JD();
-									$data[$x]['NAME'] = '<a href="' . $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>';
 									$data[$x]['BIRTH'] = $person->getBirthDate()->Display();
 									$data[$x]['FACT_DATE'] = format_fact_date($item, $person, false, true, false);
 									$data[$x]['FACT_PLACE'] = format_fact_place($item, true);
@@ -245,7 +296,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 					}
 					$x++;
 				}
-//print_r($data);
+
 				$controller
 					->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 					->addExternalJavascript(WT_JQUERY_DT_HTML5)
@@ -262,17 +313,20 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 							filter: true,
 							info: true,
 							jQueryUI: true,
-							sorting: [[0,"asc"]],
+							sorting: [[1,"asc"], [0,"asc"]],
 							displayLength: 20,
 							"aoColumns": [
-								/* 0-BIRT_DATE */  	{ "bVisible": false },
-								/* 1-OTHER_DATE */ 	{ "bVisible": false },
-								/* 2-Name */		{ "sClass": "nowrap" },
-								/* 3-DoB */			{ "iDataSort": 0, "sClass": "nowrap" },
-								/* 4-Date */ 		{ "iDataSort": 1, "sClass": "nowrap" },
-								/* 5-Place */ 		null,
-								/* 6-Type */ 		' . ($count_type ? 'null' : '{ "bVisible": false }') . ',
-								/* 7-Details */ 	' . ($count_details ? 'null' : '{ "bVisible": false }') . ',
+								/*  0-GIVN */  		{ type: "unicode", visible: false },
+								/*  1-SURN */ 		{ type: "unicode", visible: false },
+								/*  2-BIRT_DATE */ 	{ visible: false },
+								/*  3-OTHER_DATE */ { visible: false },
+								/*  4-Given name */	{ dataSort: 0, class: "nowrap" },
+								/*  5-Surname */	{ dataSort: 1, class: "nowrap" },
+								/*  6-DoB */		{ dataSort: 2, class: "nowrap" },
+								/*  7-Date */ 		{ dataSort: 3, class: "nowrap" },
+								/*  8-Place */ 		null,
+								/*  9-Type */ 		' . ($count_type ? 'null' : '{ visible: false }') . ',
+								/* 10-Details */ 	' . ($count_details ? 'null' : '{ visible: false }') . ',
 							]
 						});
 					jQuery("#output").css("visibility", "visible");
@@ -299,9 +353,12 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 					<table id="<?php echo $table_id; ?>"style="width:100%;">
 						<thead>
 							<tr>
-								<th>BIRT_DATE</th><!-- hidden cell -->
-								<th>OTHER_DATE</th><!-- hidden cell -->
-								<th><?php echo WT_I18N::translate('Name'); ?></th>
+								<th>BIRT_DATE</th><!-- hidden cell for sorting -->
+								<th>OTHER_DATE</th><!-- hidden cell for sorting -->
+								<th>GIVN</th><!-- hidden cell for sorting -->
+								<th>SURN</th><!-- hidden cell for sorting -->
+								<th><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></th>
+								<th><?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></th>
 								<th><?php echo WT_Gedcom_Tag::getLabel('BIRT:DATE'); ?></th>
 								<th><?php echo WT_I18N::translate('Date'); ?></th>
 								<th><?php echo WT_I18N::translate('Place'); ?></th>
@@ -313,9 +370,12 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 							<?php
 							foreach ($data as $row) { ?>
 								<tr>
-									<td><?php echo $row['B_DATE']; ?></td><!-- hidden cell 1 - birth date -->
-									<td><?php echo $row['O_DATE']; ?></td><!-- hidden cell 2 - other date -->
-									<td><?php echo $row['NAME']; ?></td>
+									<td hidden><?php echo $row['GIVN']; ?></td><!-- hidden cell - birth date -->
+									<td hidden><?php echo $row['SURN']; ?></td><!-- hidden cell - other date -->
+									<td hidden><?php echo $row['B_DATE']; ?></td><!-- hidden cell - birth date -->
+									<td hidden><?php echo $row['O_DATE']; ?></td><!-- hidden cell- other date -->
+									<td colspan="2"><?php echo $row['NAME']; ?></td>
+									<td hidden></td>
 									<td><?php echo $row['BIRTH']; ?></td>
 									<td><?php echo $row['FACT_DATE']; ?></td>
 									<td><?php echo $row['FACT_PLACE']; ?></td>
@@ -329,4 +389,5 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 			<?php } ?>
 		</div>
 	<?php }
+
 }

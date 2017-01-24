@@ -55,7 +55,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 	// Print the value of this fact/event
 	switch ($fact->getTag()) {
 	case 'ADDR':
-		echo print_address_structure($fact->getGedcomRecord(), 1);
+		$html .= print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
 		$html .= '<a href="https://familysearch.org/search/tree/results#count=20&query=afn:' . rawurlencode($fact->getDetail()) . '" target="new">' . htmlspecialchars($fact->getDetail()) . '</a>';
@@ -71,11 +71,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 			$html .= '&nbsp;';
 		}
 		// include ADDR if recorded
-		if (preg_match('/\n2 ADDR (.+)/', $fact->getGedcomRecord(), $match)) {
-			$html .= WT_Gedcom_Tag::getLabelValue('ADDR', $match[1]);
-		} else {
-			$html .= '&nbsp;';
-		}
+		$html .= print_address_structure($fact->getGedcomRecord(), 2, 'simple');
 		break;
 	case 'EDUC':
 	case 'GRAD':
