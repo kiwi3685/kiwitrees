@@ -42,14 +42,14 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 	// multi-byte characters, as well as simplifying the code to import
 	// each block.
 
-	$file_data='';
-	$fp=fopen($path, 'rb');
+	$file_data	= '';
+	$fp			= fopen($path, 'rb');
 
 	WT_DB::exec("START TRANSACTION");
 	WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
 
 	while (!feof($fp)) {
-		$file_data.=fread($fp, 65536);
+		$file_data .= fread($fp, 65536);
 		// There is no strrpos() function that searches for substrings :-(
 		for ($pos=strlen($file_data)-1; $pos>0; --$pos) {
 			if ($file_data[$pos]=='0' && ($file_data[$pos-1]=="\n" || $file_data[$pos-1]=="\r")) {
@@ -382,13 +382,14 @@ if (WT_USER_IS_ADMIN) {
 				</span>
 				<input type="hidden" id="new_tree" name="action" value="new_tree">
 				<input
+					type="text"
 					id="ged_name"
-					maxlength="31"
 					name="ged_name"
 					pattern="[^&lt;&gt;&amp;&quot;#^$*?{}()\[\]/\\]*"
+					maxlength="31"
+					value=""
+					placeholder="<?php echo $default_tree_name; ?>"
 					required
-					type="text"
-					value="<?php echo $default_tree_name; ?>"
 				>
 				<span class="help-text">
 					<?php echo WT_I18N::translate('Keep this short and avoid spaces and punctuation. A family name might be a good choice.'); ?>
