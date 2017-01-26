@@ -47,8 +47,8 @@ $controller
 
 	// default ages
 	$bap_age	= 5;
-	$marr_age	= 14;
 	$oldage		= $MAX_ALIVE_AGE;
+	$marr_age	= 14;
 	$spouseage	= 30;
 	$child_y	= 15;
 	$child_o	= 50;
@@ -158,24 +158,24 @@ $controller
 					<?php echo WT_I18N::translate('Married before a certain age'); ?><span class="error">**</span>
 					<input name="NEW_SANITY_MARRIAGE" id="marr_age" type="text" value="<?php echo $marr_age; ?>">
 				</li>
-<div style="opacity: 0.5;">COMING SOON !
 				<li class="facts_value" name="spouse_age" id="spouse_age">
 					<input type="checkbox" name="spouse_age" value="spouse_age"
-						<?php if (WT_Filter::post('SANITY_SPOUSE_AGE')) echo ' checked="checked"'?>
-					disabled>
+						<?php if (WT_Filter::post('spouse_age')) echo ' checked="checked"'?>
+					>
 					<?php echo WT_I18N::translate('Being much older than spouse'); ?>
-					<input name="NEW_SANITY_SPOUSE_AGE" id="spouseage" type="text" value="<?php echo $spouseage; ?>" disabled>
+					<input name="NEW_SANITY_SPOUSE_AGE" id="spouseage" type="text" value="<?php echo $spouseage; ?>">
 				</li>
+<div style="opacity: 0.5;">COMING SOON !
 				<li class="facts_value" name="child_yng" id="child_yng">
 					<input type="checkbox" name="child_yng" value="child_yng"
-						<?php if (WT_Filter::post('SANITY_CHILD_Y')) echo ' checked="checked"'?>
+						<?php if (WT_Filter::post('child_yng')) echo ' checked="checked"'?>
 					disabled>
 					<?php echo WT_I18N::translate('Having children before a certain age'); ?>
 					<input name="NEW_SANITY_CHILD_Y" id="child_y" type="text" value="<?php echo $child_y; ?>" disabled>
 				</li>
 				<li class="facts_value" name="child_old" id="child_old">
 					<input type="checkbox" name="child_old" value="child_old"
-						<?php if (WT_Filter::post('SANITY_CHILD_O')) echo ' checked="checked"'?>
+						<?php if (WT_Filter::post('child_old')) echo ' checked="checked"'?>
 					disabled>
 					<?php echo WT_I18N::translate('Mothers having children past a certain age'); ?>
 					<input name="NEW_SANITY_CHILD_O" id="child_o" type="text" value="<?php echo $child_o; ?>" disabled>
@@ -244,7 +244,7 @@ $controller
 		//exit;
 	//} ?>
 
-	<div id="sanity_accordion" style="visibility: hidden;">
+	<div id="sanity_accordion" style="/*visibility: hidden;*/">
 		<h3><?php echo WT_I18N::translate('Results'); ?></h3>
 		<div class="loading-image"></div>
 		<?php
@@ -300,6 +300,13 @@ $controller
 			if (WT_Filter::post('marr_yng')) {
 				$data = query_age(array('MARR'), $marr_age);
 				echo '<h5>' . WT_I18N::translate('%1s married younger than %2s years', $data['count'], $marr_age) . '
+					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
+			if (WT_Filter::post('spouse_age')) {
+				$data = query_age(array('FAMS'), $spouseage);
+				echo '<h5>' . WT_I18N::translate('%1s spouses with more than %2s years age difference', $data['count'], $spouseage) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
@@ -558,6 +565,25 @@ function query_age($tag_array, $age) {
 					ORDER BY age DESC
 				";
 				$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, $age))->fetchAll();
+			break;
+			case ('FAMS'):
+				$query1 = 'MIN(wifebirth.d_year-husbbirth.d_year)';
+				$sql = "
+					SELECT fam.f_id AS xref, " . $query1 . " AS age
+					 FROM `##families` AS fam
+					 LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = ?
+					 LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = ?
+					 WHERE
+						fam.f_file = ? AND
+						husbbirth.d_gid = fam.f_husb AND
+						husbbirth.d_fact = 'BIRT' AND
+						wifebirth.d_gid = fam.f_wife AND
+						wifebirth.d_fact = 'BIRT' AND
+						husbbirth.d_julianday1 <> 0
+					 GROUP BY xref
+					 ORDER BY age DESC
+				";
+				$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
 			break;
 			default:
 				$sql = "
