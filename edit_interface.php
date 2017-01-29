@@ -2659,11 +2659,11 @@ case 'checkduplicates':
 
 	// the sql query used to identify simple duplicates
 	$sql = '
-		SELECT n_id, n_full, n_surn, n_givn, n_type, n_sort
+		SELECT n_id, n_full, n_surn, n_givn
 		FROM `##name`
 		 WHERE n_surn LIKE "%' . $surn . '%"
 		 AND n_givn LIKE "%' . $givn . '%"
-		 AND n_file = '. $gedcom_id. ' ';
+		 AND n_file = '. $gedcom_id;
 	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 	$controller
@@ -2710,7 +2710,6 @@ case 'checkduplicates':
 				$html .= '</table>';
 			} else {
 				$html .= '<p>' . WT_I18N::translate('No duplicates found') . '</p>';
-				return;
 			}
 
 	$html .= '
