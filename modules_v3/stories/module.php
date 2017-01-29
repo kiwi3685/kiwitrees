@@ -364,7 +364,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 													echo $person->format_list('span');
 													echo '
 														<p>
-															<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref. '&amp;block_id=' . $block_id. '" class="current" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?') . '\');">' . WT_I18N::translate('Remove') . '</a>
+															<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref. '&amp;block_id=' . $block_id. '" class="current" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to remove this?') . '\');">' . WT_I18N::translate('Remove') . '</a>
 														</p>
 														<hr style="margin-top: 0;"">
 													';
@@ -384,7 +384,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 														echo $person->format_list('span');
 														echo '
 															<p>
-																<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref[$x]. '&amp;block_id='. $block_id. '" class="current" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to remove this link?') . '\');">' . WT_I18N::translate('Remove') . '</a>
+																<a href="module.php?mod=', $this->getName(), '&amp;mod_action=remove_indi&amp;indi_ref='. $xref[$x]. '&amp;block_id='. $block_id. '" class="current" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to remove this?') . '\');">' . WT_I18N::translate('Remove') . '</a>
 															</p>
 															<hr style="margin-top: 0;"">
 														';
