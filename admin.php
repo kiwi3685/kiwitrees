@@ -1574,7 +1574,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/simpl_research/sample/samplelink.php', // replaced with different versions
 		WT_ROOT.'modules_v3/simpl_research/plugins/sittardgeleenrhc.php', // Link is not working, because the moved the files to another website
 		WT_ROOT.'modules_v3/simpl_research/plugins/zoekaktenmilitairen.php', // See new zoekakten file
-		WT_ROOT.'modules_v3/simpl_research/plugins/zoekaktenlandverhuizers.php', // See new zoekakten file 
+		WT_ROOT.'modules_v3/simpl_research/plugins/zoekaktenlandverhuizers.php', // See new zoekakten file
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/DR/Aa_en_Hunze.png', // replace underscore with space in file names
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/DR/De_Wolden.png', // replace underscore with space in file names
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/FR/het_Bildt.png', // replace underscore with space in file names
@@ -1607,9 +1607,10 @@ function old_paths() {
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Loon_op_Zand.png', // replace underscore with space in file names
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Made_en_Drimmelen.png', // replace underscore with space in file names
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Megen_Haren_en_Macharen.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.4.5.js',
-		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.4.5.min.js',
-		WT_ROOT.'modules_v3/gallery/galleria/LICENSE',
+		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.4.5.js', // updated module
+		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.4.5.min.js', // updated module
+		WT_ROOT.'modules_v3/gallery/galleria/LICENSE', // updated module
+		WT_ROOT.'modules_v3/stories/help_text.php', // old unused file
 
 	);
 }
