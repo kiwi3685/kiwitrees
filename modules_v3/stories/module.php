@@ -168,12 +168,14 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		if ($count_stories > 1) {
 			$class = 'story';
 			$controller->addInlineJavascript('
-				jQuery("#contents_list a").click(function(){
-					var id = jQuery(this).attr("id");
-					id = id.split("_");
-					jQuery("#story_contents div.story").hide();
-					jQuery("#story_contents #stories_"+id[1]).show();
-				});
+			jQuery("#contents_list a").click(function(){
+				event.preventDefault();
+				var id = jQuery(this).attr("id");
+				id = id.split("_");
+				jQuery("#story_contents div.story").hide();
+				jQuery("#story_contents #stories_"+id[1]).show();
+				jQuery("html, body").animate({scrollTop: jQuery("#stories").offset().top}, 2000);
+			});
 			'); ?>
 
 			<h3 class="center"><?php echo WT_I18N::translate('List of stories'); ?></h3>
