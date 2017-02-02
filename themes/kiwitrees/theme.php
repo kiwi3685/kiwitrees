@@ -99,6 +99,13 @@ $WT_STATS_CHART_COLOR1 = "ffffff";
 $WT_STATS_CHART_COLOR2 = "9ca3d4";
 $WT_STATS_CHART_COLOR3 = "e5e6ef";
 
+// -- fanchart variables
+$fanChart = array(
+	'bgColor' =>'#eee9e9',
+	'bgMColor'=>'#b1cff0',
+	'bgFColor'=>'#e9daf1'
+);
+
 if (file_exists(WT_THEME_URL . 'mytheme.php')) {
 	include 'mytheme.php';
 }

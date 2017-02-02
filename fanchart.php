@@ -46,7 +46,7 @@ $controller
 			jQuery(function () {
 				" use strict" ;
 
-				var fanChart = jQuery("#fan-chart" );
+				var fanChart = jQuery("#fan_chart" );
 
 				if (typeof jQuery().ancestralFanChart === "function" ) {
 					fanChart.ancestralFanChart({
@@ -84,6 +84,6 @@ $controller
 		</form>
 		<hr style="clear:both;">
 		<!-- end of form -->
-		<div id="fan-chart"></div>
+		<div id="fan_chart"></div>
 	</div>
 	<?php

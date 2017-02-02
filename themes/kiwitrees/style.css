@@ -6650,11 +6650,11 @@ textarea#NOTE {
 }
 
 #fanchart-page svg g.arc path {
-    stroke: #ebebeb;
+    stroke: #eee;
     stroke-width: 3px;
 }
 
-#fanchart-page svg g.label .date {
+#fanchart-page svg g.label .chart-date {
     font-weight: normal;
 }
 

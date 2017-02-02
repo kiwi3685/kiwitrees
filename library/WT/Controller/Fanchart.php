@@ -63,7 +63,7 @@
         // Extract the request parameters
         $this->fanDegree   = WT_Filter::getInteger('fanDegree', 180, 360, 210);
         $this->generations = WT_Filter::getInteger('generations', 2, 9, $defaultGenerations);
-        $this->fontScale   = WT_Filter::getInteger('fontScale', 0, 100, 100);
+        $this->fontScale   = WT_Filter::getInteger('fontScale', 0, 200, 100);
 
         if ($this->root && $this->root->canDisplayName()) {
             $this->setPageTitle(
@@ -87,17 +87,21 @@
      * @return string HTML color code
      */
     public function getColor(WT_Person $person = null) {
+
+		global $fanChart;
+
         if (!($person instanceof WT_Person)) {
-            return '#fff';
+            return $fanChart['bgColor'];
         }
 
         if ($person->getSex() === 'M') {
-            return '#b1cff0';
+            return $fanChart['bgMColor'];
         } elseif ($person->getSex() === 'F') {
-            return '#e9daf1';
+            return $fanChart['bgFColor'];
         }
 
-        return '#fff';
+        return $fanChart['bgFColor'];
+
     }
 
     /**
@@ -122,7 +126,7 @@
 
         return array(
             'id'       => $person->getXref(),
-            'name'     => WT_Filter::unescapeHtml($person->getFullName()),
+            'name'     => WT_Filter::unescapeHtml($person->getShortName()),
             'born'     => $person->getBirthYear(),
             'died'     => $person->getDeathYear(),
             'color'    => $this->getColor($person),

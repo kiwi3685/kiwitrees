@@ -100,6 +100,13 @@ $WT_STATS_CHART_COLOR1 = "ffffff";
 $WT_STATS_CHART_COLOR2 = "84beff";
 $WT_STATS_CHART_COLOR3 = "c3dfff";
 
+//-- Variables for the Fan chart
+$fanChart = array(
+	'bgColor' => '#eeeeee',
+	'bgMColor' => '#b1cff0',
+	'bgFColor' => '#e9daf1'
+);
+
 if (file_exists(WT_THEME_URL . 'mytheme.php')) {
 	include 'mytheme.php';
 }
