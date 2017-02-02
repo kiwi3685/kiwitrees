@@ -51,9 +51,9 @@ class fancy_treeview_pedigree_class_WT_Module extends fancy_treeview_WT_Module {
 		require_once WT_MODULES_DIR . 'fancy_treeview/fancy_treeview_class.php';
 		$ftv = new fancy_treeview_class_WT_Module();
 
-		$root 		= WT_Filter::get('rootid', WT_REGEX_XREF);
-		$gen  		= WT_Filter::get('gen', WT_REGEX_INTEGER);
-		$pids 		= WT_Filter::get('pids');
+		$root	= WT_Filter::get('rootid', WT_REGEX_XREF);
+		$gen	= WT_Filter::get('gen', WT_REGEX_INTEGER);
+		$pids	= WT_Filter::get('pids');
 
 		if ($numblocks == 0) {
 			$numblocks = 99;
@@ -99,8 +99,8 @@ class fancy_treeview_pedigree_class_WT_Module extends fancy_treeview_WT_Module {
 
 	/** {@inheritdoc} */
 	protected function printBlockHeader($i) {
-		$gentotal	 = pow(2, $i - 1);
-		$genperc	 = number_format($this->gencount / $gentotal * 100, 2) . '%';
+		$gentotal	= pow(2, $i - 1);
+		$genperc	= number_format($this->gencount / $gentotal * 100, 2) . '%';
 		$html = '
 			<div class="blockheader ui-state-default">
 			<span class="header-title">' . WT_I18N::translate('Generation') . ' ' . $i . ' (' . $this->gencount . ' ' . WT_I18N::translate('of') . ' ' . pow(2, $i - 1) . ' - ' . $genperc . ' ' . WT_I18N::translate('complete') . ')</span>';
