@@ -56,7 +56,7 @@ function color_theme_dropdown() {
 	foreach ($COLOR_THEME_LIST as $colorChoice =>$colorName) {
 		$submenu = new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice), '&amp;'), 'menu-color-'.$colorChoice);
 		if (isset($WT_SESSION->subColor)) {
-			if ($WT_SESSION->subColor == $colorChoice) {  
+			if ($WT_SESSION->subColor == $colorChoice) {
 				$submenu->addClass('','','theme-active');
 			}
 		} elseif  (WT_Site::preference('DEFAULT_COLOR_PALETTE') == $colorChoice) { /* here when visitor changes palette from default */
@@ -152,16 +152,6 @@ $WT_IMAGES = array(
 	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
 );
 
-//-- Variables for the Fan chart
-$fanChart = array(
-	'font' => WT_ROOT.'includes/fonts/DejaVuSans.ttf',
-	'size' => '7px',
-	'color' => '#000000',
-	'bgColor' => '#eeeeee',
-	'bgMColor' => '#b1cff0',
-	'bgFColor' => '#e9daf1'
-);
-
 //-- This section defines variables for the charts
 $bwidth = 250; // -- width of boxes on all person-box based charts
 $bheight = 80; // -- height of boxes on all person-box based chart
@@ -169,7 +159,7 @@ $baseyoffset = 10; // -- position the timeline chart relative to the top of the 
 $basexoffset = 10; // -- position the pedigree and timeline charts relative to the left of the page
 $bxspacing = 4; // -- horizontal spacing between boxes on the pedigree chart
 $byspacing = 5; // -- vertical spacing between boxes on the pedigree chart
-$brborder = 1; // -- pedigree chart box right border thickness 
+$brborder = 1; // -- pedigree chart box right border thickness
 $linewidth = 1.5;			// width of joining lines
 $shadowcolor = "";		// shadow color for joining lines
 $shadowblur = 0;			// shadow blur for joining lines

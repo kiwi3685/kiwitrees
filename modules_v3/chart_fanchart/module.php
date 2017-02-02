@@ -5,10 +5,9 @@
 // Copyright (C) 2016 kiwitrees.net
 //
 // Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team
+// Copyright (C) 2017  Rico Sonntag
+// Rico Sonntag <mail@ricosonntag.de>
+// https://github.com/magicsunday/ancestral-fan-chart/
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -62,18 +61,13 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 		global $controller;
 		$indi_xref	= $controller->getSignificantIndividual()->getXref();
 		$menus		= array();
-		if (function_exists('imagettftext')) {
-			$menu = new WT_Menu(
-				$this->getTitle(),
-				'fanchart.php?rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
-				'menu-chart-fanchart'
-			);
-			$menus[] = $menu;
-			return $menus;
-		} else {
-			return false;
-		}
-
+		$menu = new WT_Menu(
+			$this->getTitle(),
+			'fanchart.php?rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
+			'menu-chart-fanchart'
+		);
+		$menus[] = $menu;
+		return $menus;
 	}
 
 }

@@ -1611,6 +1611,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.4.5.min.js', // updated module
 		WT_ROOT.'modules_v3/gallery/galleria/LICENSE', // updated module
 		WT_ROOT.'modules_v3/stories/help_text.php', // old unused file
+		WT_ROOT.'includes/fonts', // no longer needed in fanchart code
 
 	);
 }

@@ -1561,7 +1561,6 @@ a:hover .nameZoom {
 }
 
 #compact_chart,
-#fan_chart,
 #ancestry_chart,
 #familybook_chart,
 #hourglass_chart {
@@ -6636,6 +6635,29 @@ textarea#NOTE {
 	min-width: 0;
 	padding: 3px;
 }
+/* ------------------ */
+
+/* Styles for Fan Chart */
+#fanchart-page button {
+	display: inline-block;
+	margin-top: 15px;
+	vertical-align: top;
+}
+
+#fanchart-page svg {
+    display: block;
+    margin: auto;
+}
+
+#fanchart-page svg g.arc path {
+    stroke: #ebebeb;
+    stroke-width: 3px;
+}
+
+#fanchart-page svg g.label .date {
+    font-weight: normal;
+}
+
 /* ------------------ */
 
 /* FOR FUTURE USE

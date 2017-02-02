@@ -62,16 +62,6 @@ $WT_IMAGES=array(
 	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
 );
 
-//-- variables for the fan chart
-$fanChart = array(
-	'font'    =>WT_ROOT.'includes/fonts/DejaVuSans.ttf',
-	'size'    =>'7px',
-	'color'   =>'#000000',
-	'bgColor' =>'#eeeeee',
-	'bgMColor'=>'#b1cff0',
-	'bgFColor'=>'#e9daf1'
-);
-
 //-- pedigree chart variables
 $bwidth = 250;			// width of boxes on pedigree chart
 $bheight = 80;			// height of boxes on pedigree chart

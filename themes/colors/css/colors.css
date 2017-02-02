@@ -457,7 +457,7 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 
 #timeline_chart {position:relative;top:0;left:0;}
 
-#compact_chart, #fan_chart, #ancestry_chart, #familybook_chart, #hourglass_chart {margin:20px;}
+#compact_chart, #ancestry_chart, #familybook_chart, #hourglass_chart {margin:20px;}
 
 .button {width:60px;}
 .center {text-align:center;}
@@ -3130,6 +3130,29 @@ textarea#NOTE {
 	min-width: 0;
 	padding: 3px;
 }
+/* ------------------ */
+
+/* Styles for Fan Chart */
+#fanchart-page button {
+	display: inline-block;
+	margin-top: 15px;
+	vertical-align: top;
+}
+
+#fanchart-page svg {
+    display: block;
+    margin: auto;
+}
+
+#fanchart-page svg g.arc path {
+    stroke: #ebebeb;
+    stroke-width: 3px;
+}
+
+#fanchart-page svg g.label .date {
+    font-weight: normal;
+}
+
 /* ------------------ */
 
 /* RESPOSIVE layout adjustments */

@@ -3337,6 +3337,27 @@ textarea#NOTE {
 }
 /* ------------------ */
 
+/* Styles for Fan Chart */
+#fanchart-page button {
+	display: inline-block;
+	margin-top: 15px;
+	vertical-align: top;
+}
+
+#fanchart-page svg {
+    display: block;
+    margin: auto;
+}
+
+#fanchart-page svg g.arc path {
+    stroke: #ebebeb;
+    stroke-width: 3px;
+}
+
+#fanchart-page svg g.label .date {
+    font-weight: normal;
+}
+
 /* RESPOSIVE layout adjustments */
 @media (min-width: 320px) and (max-width: 900px) {
    #topMenu #main-menu {

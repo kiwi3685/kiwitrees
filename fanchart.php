@@ -29,65 +29,61 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Fanchart();
-
-if (safe_GET_bool('img')) {
-	Zend_Session::writeClose();
-	$controller->generate_fan_chart('png');
-	exit;
-}
-
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
-	->addInlineJavascript('autocomplete();');
+	->addExternalJavascript(WT_D3_JS)
+	->addExternalJavascript(WT_STATIC_URL . WT_MODULES_DIR . 'chart_fanchart/js/ancestral-fan-chart.js');
 
-?>
-<div id="page-fan">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
-	<form name="people" method="get" action="#">
-		<table class="list_table">
-			<tr>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Individual'); ?>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
-					<?php echo print_findindi_link('rootid'); ?>
-				</td>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Layout'); ?>
-				</td>
-				<td class="optionbox">
-					<?php echo select_edit_control('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
-				</td>
-				<td rowspan="2" class="topbottombar vmiddle">
-					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Generations'); ?>
-				</td>
-				<td class="optionbox">
-					<?php echo edit_field_integers('generations', $controller->generations, 2, 9); ?>
-				</td>
-				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Width'), help_link('fan_width'); ?>
-				</td>
-				<td class="optionbox">
-					<input type="text" size="3" name="fan_width" value="<?php echo $controller->fan_width; ?>"> %
-				</td>
-			</tr>
-		</table>
-	</form>
-<?php
+	// Encode data to json string
+	$json = json_encode(
+		$controller->buildJsonTree($controller->root)
+	);
 
-if ($controller->error_message) {
-	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
-}
+	$controller
+		->addInlineJavascript('autocomplete();')
+		->addInlineJavascript('
+			jQuery(function () {
+				" use strict" ;
 
-if ($controller->root) {
-	echo '<div id="fan_chart">', $controller->generate_fan_chart('html'), '</div>';
-}
-echo '</div>'; // close #page-chart
+				var fanChart = jQuery("#fan-chart" );
+
+				if (typeof jQuery().ancestralFanChart === "function" ) {
+					fanChart.ancestralFanChart({
+						fanDegree	: ' . $controller->fanDegree . ',
+						fontScale	: ' . $controller->fontScale . ',
+						data		: ' . $json . '
+					});
+				}
+			});
+		');
+	?>
+	<div id="fanchart-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<form name="people" id="people" method="get" action="?">
+			<div class="chart_options">
+				<label for="rootid"><?php echo WT_I18N::translate('Individual'); ?></label>
+				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" value="<?php echo $controller->root->getXref(); ?>">
+			</div>
+			<div class="chart_options">
+				<label for="generations"><?php echo WT_I18N::translate('Generations'); ?></label>
+				<?php echo edit_field_integers('generations', $controller->generations, 2, 9); ?>
+			</div>
+			<div class="chart_options">
+				<label for="fanDegree"><?php echo WT_I18N::translate('Degrees'); ?></label>
+				<?php echo select_edit_control('fanDegree', $controller->getFanStyles(), null, $controller->fanDegree); ?>
+			</div>
+			<div class="chart_options">
+				<label for="fontScale"><?php echo WT_I18N::translate('Font size'); ?></label>
+				<input class="fontScale" type="text" name="fontScale" id="fontScale" value="<?php echo $controller->fontScale; ?>"> %
+			</div>
+			<button class="btn btn-primary show" type="submit">
+				<i class="fa fa-eye"></i>
+				<?php echo WT_I18N::translate('Show'); ?>
+			</button>
+		</form>
+		<hr style="clear:both;">
+		<!-- end of form -->
+		<div id="fan-chart"></div>
+	</div>
+	<?php

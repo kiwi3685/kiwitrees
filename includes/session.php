@@ -66,6 +66,7 @@ define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');		    // 
 define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
 define('WT_JQUERY_SHORTEN',			WT_STATIC_URL . 'js/jquery.shorten.js');
 define('PASSWORDSCHECK',			WT_STATIC_URL . 'js/passwordscheck.js');			// Installed 09-11-2016
+define('WT_D3_JS',					WT_STATIC_URL . 'js/d3.min.js');					// 3.5.17 Installed 02-02-2017 - https://github.com/d3/d3/releases
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
