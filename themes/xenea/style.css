@@ -3349,12 +3349,12 @@ textarea#NOTE {
     margin: auto;
 }
 
-#fanchart-page svg g.arc path {
+#fanchart-page svg .arc path {
     stroke: #ebebeb;
     stroke-width: 3px;
 }
 
-#fanchart-page svg g.label .date {
+#fanchart-page svg .label .date {
     font-weight: normal;
 }
 

@@ -35,9 +35,14 @@ $controller
 	->addExternalJavascript(WT_D3_JS)
 	->addExternalJavascript(WT_STATIC_URL . WT_MODULES_DIR . 'chart_fanchart/js/ancestral-fan-chart.js');
 
-	// Encode data to json string
-	$json = json_encode(
-		$controller->buildJsonTree($controller->root)
+	// Encode chart parameters to json string
+	$chartParams = json_encode(
+		array(
+			'fanDegree' => $controller->fanDegree,
+			'fontScale' => $controller->fontScale,
+			'fontColor' => $controller->getChartFontColor(),
+			'data'      => $controller->buildJsonTree($controller->root),
+		)
 	);
 
 	$controller
@@ -45,15 +50,9 @@ $controller
 		->addInlineJavascript('
 			jQuery(function () {
 				" use strict" ;
-
 				var fanChart = jQuery("#fan_chart" );
-
 				if (typeof jQuery().ancestralFanChart === "function" ) {
-					fanChart.ancestralFanChart({
-						fanDegree	: ' . $controller->fanDegree . ',
-						fontScale	: ' . $controller->fontScale . ',
-						data		: ' . $json . '
-					});
+					fanChart.ancestralFanChart(' . $chartParams . ');
 				}
 			});
 		');

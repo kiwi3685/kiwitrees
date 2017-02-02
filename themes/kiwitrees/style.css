@@ -6649,12 +6649,12 @@ textarea#NOTE {
     margin: auto;
 }
 
-#fanchart-page svg g.arc path {
+#fanchart-page svg .arc path {
     stroke: #eee;
     stroke-width: 3px;
 }
 
-#fanchart-page svg g.label .chart-date {
+#fanchart-page svg .label .chart-date {
     font-weight: normal;
 }
 

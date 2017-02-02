@@ -2,31 +2,25 @@
     window, console, Math, d3, jQuery, $
 */
 
-
-//	Controller for the fan chart
-//
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2017  Rico Sonntag
-// Rico Sonntag <mail@ricosonntag.de>
-// https://github.com/magicsunday/ancestral-fan-chart/
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-//
+/**
+ * Webtrees module.
+ *
+ * Copyright (C) 2017  Rico Sonntag
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+ */
 
 /**
  * jQuery widget "rso.ancestralFanChart"
@@ -36,7 +30,7 @@
 
     $.widget('rso.ancestralFanChart', {
         options: {
-            nameSwitchTreshold: 5,
+            nameSwitchThreshold: 5,
 
             // Default font size
             fontSize: 13,
@@ -88,12 +82,12 @@
             this.placeArcs();
 
             // Adjust size of svg
-            var bbox = this.config.visual.node().getBBox();
-            var radius = bbox.width >> 1;
+            var boundingBox = this.config.visual.node().getBBox();
+            var radius      = boundingBox.width >> 1;
 
             d3.select(this.config.visual.node().parentNode)
-                .attr('width', bbox.width + (this.options.padding << 1))
-                .attr('height', bbox.height + (this.options.padding << 1));
+                .attr('width', boundingBox.width + (this.options.padding << 1))
+                .attr('height', boundingBox.height + (this.options.padding << 1));
 
             this.config.visual.attr(
                 'transform',
@@ -175,7 +169,10 @@
          * @returns {number}
          */
         startAngle: function (d) {
-            return Math.max(this.options.startPi, Math.min(2 * this.options.endPi, this.options.x(d.x)));
+            return Math.max(
+                this.options.startPi,
+                Math.min(2 * this.options.endPi, this.options.x(d.x))
+            );
         },
 
         /**
@@ -186,7 +183,10 @@
          * @returns {number}
          */
         endAngle: function (d) {
-            return Math.max(this.options.startPi, Math.min(2 * this.options.endPi, this.options.x(d.x + d.dx)));
+            return Math.max(
+                this.options.startPi,
+                Math.min(2 * this.options.endPi, this.options.x(d.x + d.dx))
+            );
         },
 
         /**
@@ -236,6 +236,20 @@
         },
 
         /**
+         * Add title element containing the full name of the individual.
+         *
+         * @param {object} parent D3 parent element to append the title to
+         */
+        appendTitle: function (parent) {
+            // Add title element containing the full name of the individual
+            parent.append('title')
+                .text(function (d) {
+                    // Return name or remove empty element
+                    return (d.id !== '') ? d.name : this.remove();
+                });
+        },
+
+        /**
          * Draws the center circle of the fan chart.
          */
         drawBorderCenterCircle: function () {
@@ -263,6 +277,7 @@
                 .append('g')
                 .attr('class', 'arc');
 
+            this.appendTitle(borderArcs);
             this.drawBorders(borderArcs, arcGenerator);
         },
 
@@ -299,13 +314,7 @@
                 .append('g')
                 .attr('class', 'arc');
 
-            // Add title element containing the full name of the individual
-            borderArcs.append('title')
-                .text(function (d) {
-                    // Return name or remove empty element
-                    return (d.id !== '') ? d.name : this.remove();
-                });
-
+            this.appendTitle(borderArcs);
             this.drawBorders(borderArcs, arcGenerator);
         },
 
@@ -397,32 +406,32 @@
         },
 
         /**
-         * Get the last name of an person.
+         * Get the time span label of an person. Returns null if label
+         * should not be displayed due empty data.
          *
          * @param {object} d D3 data object
          *
          * @return {string}
          */
-        getTimespan: function (d) {
+        getTimeSpan: function (d) {
             if (d.born || d.died) {
                 return d.born + '-' + d.died;
             }
 
-            // Remove empty element
             return null;
         },
 
         /**
          * Get the scaled font size.
          *
-         * @param {number} fontSize Base font size used to calculate scaled one
+         * @param {object} d D3 data object
          *
          * @return {string}
          */
         getFontSize: function (d) {
             var fontSize = this.options.fontSize;
 
-            if (d.depth >= (this.options.nameSwitchTreshold + 1)) {
+            if (d.depth >= (this.options.nameSwitchThreshold + 1)) {
                 fontSize += 1;
             }
 
@@ -446,13 +455,8 @@
             var eAngle = this.endAngle(d);
 
             // Flip names for better readability depending on position in chart
-            if (((sAngle >= (90 * Math.PI / 180)) && (eAngle <= (180 * Math.PI / 180))) ||
-                ((sAngle >= (-180 * Math.PI / 180)) && (eAngle <= (-90 * Math.PI / 180)))
-            ) {
-                return true;
-            }
-
-            return false;
+            return ((sAngle >= (90 * Math.PI / 180)) && (eAngle <= (180 * Math.PI / 180)))
+                || ((sAngle >= (-180 * Math.PI / 180)) && (eAngle <= (-90 * Math.PI / 180)));
         },
 
         /**
@@ -468,7 +472,7 @@
             var that = this;
 
             // Create arc generator for path segments
-            var arcGen = d3.svg
+            var arcGenerator = d3.svg
                 .arc()
                 .startAngle(function (d) {
                     return that.isPositionFlipped(d)
@@ -495,7 +499,7 @@
 
             // Append a path so we could use it to write the label along it
             parent.append('path')
-                .attr('d', arcGen)
+                .attr('d', arcGenerator)
                 .attr('id', function (d) {
                     return 'label-' + d.id + '-' + index;
                 });
@@ -526,7 +530,7 @@
         createInnerArcLabels: function () {
             var that = this;
 
-            var entry = this.config.visual
+            var group = this.config.visual
                 .append('g')
                 .attr('class', 'labels')
                 .selectAll('g.label')
@@ -535,7 +539,7 @@
                     this.config.nodes.filter(function (d) {
                         return (d.id !== '')
                             && (d.depth > 0)
-                            && (d.depth < that.options.nameSwitchTreshold);
+                            && (d.depth < that.options.nameSwitchThreshold);
                     })
                 )
                 .enter()
@@ -543,19 +547,15 @@
                 .attr('class', 'label');
 
             // Add title element containing the full name of the individual
-            entry.append('title')
-                .text(function (d) {
-                    // Return name or remove empty element
-                    return (d.id !== '') ? d.name : this.remove();
-                });
+            this.appendTitle(group);
 
             // Create a path for each line of text as mobile devices
             // won't display <tspan> elements in the right position
-            entry.each(function (d) {
+            group.each(function (d) {
                 var parent   = d3.select(this);
-                var timespan = that.getTimespan(d);
+                var timeSpan = that.getTimeSpan(d);
 
-                // Relative positon offsets in percent (0 = inner radius, 100 = outer radius)
+                // Relative position offsets in percent (0 = inner radius, 100 = outer radius)
                 var positions = [70, 52, 25];
 
                 // Flip label positions for 360 degree chart
@@ -566,7 +566,7 @@
                 that.appendArcPath(parent, 0, positions[0]);
                 that.appendArcPath(parent, 1, positions[1]);
 
-                if (timespan) {
+                if (timeSpan) {
                     that.appendArcPath(parent, 2, positions[2]);
                 }
 
@@ -581,8 +581,8 @@
                 that.appendTextPath(text, 0, that.getFirstNames(d));
                 that.appendTextPath(text, 1, that.getLastName(d));
 
-                if (timespan) {
-                    that.appendTextPath(text, 2, timespan, 'chart-date');
+                if (timeSpan) {
+                    that.appendTextPath(text, 2, timeSpan, 'chart-date');
                 }
             });
         },
@@ -647,14 +647,12 @@
                         text.attr('dy', (mapIndexToOffset(i) * offsetRotate) + 'em');
                     } else {
                         text.attr('transform', function (d) {
-                            var multangle = d.depth === 1 ? 90 : 180;
-                            var angle = that.options.x(d.x + d.dx / 2) * multangle / Math.PI - 90;
-                            var rotate = angle - (mapIndexToOffset(i) * offsetRotate * (angle > -90 ? -1 : 1));
-                            var transX = (that.innerRadius(d) + that.outerRadius(d)) / 2;
+                            var angle  = (that.options.x(d.x + d.dx / 2) * 180 / Math.PI);
+                            var rotate = angle - (mapIndexToOffset(i) * offsetRotate * (angle > 0 ? -1 : 1)) - 90;
 
                             return 'rotate(' + rotate + ') '
-                                + 'translate(' + transX + ') '
-                                + 'rotate(' + (angle > -90 ? 0 : -180) + ')';
+                                + 'translate(' + that.centerRadius(d) + ') '
+                                + 'rotate(' + (angle > 0 ? 0 : 180) + ')';
                         });
                     }
                 });
@@ -679,7 +677,6 @@
                 .style('font-size', function (d) {
                     return that.getFontSize(d);
                 })
-                .style('fill', that.options.fontColor)
                 .text(label)
                 .each(that.truncate(5));
         },
@@ -699,26 +696,23 @@
                     this.config.nodes.filter(function (d) {
                         return (d.id !== '')
                             && ((d.depth === 0)
-                            || (d.depth >= that.options.nameSwitchTreshold));
+                            || (d.depth >= that.options.nameSwitchThreshold));
                     })
                 )
                 .enter()
                 .append('g')
-                .attr('class', 'label');
+                .attr('class', 'label')
+                .style('fill', that.options.fontColor);
 
             // Add title element containing the full name of the individual
-            group.append('title')
-                .text(function (d) {
-                    // Return name or remove empty element
-                    return (d.id !== '') ? d.name : this.remove();
-                });
+            this.appendTitle(group);
 
             // Create the text elements for first name, last name and
             // the birth/death dates
             group.each(function (d) {
                 var parent   = d3.select(this);
                 var name     = d.name;
-                var timespan = that.getTimespan(d);
+                var timeSpan = that.getTimeSpan(d);
 
                 // Return first name for inner circles
                 if (d.depth < 7) {
@@ -733,8 +727,8 @@
                     that.appendOuterArcText(parent, that.getLastName(d));
 
                     // Add dates
-                    if ((d.depth < 6) && timespan) {
-                        that.appendOuterArcText(parent, timespan, 'chart-date');
+                    if ((d.depth < 6) && timeSpan) {
+                        that.appendOuterArcText(parent, timeSpan, 'chart-date');
                     }
                 }
             });

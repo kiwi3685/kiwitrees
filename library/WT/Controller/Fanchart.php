@@ -65,18 +65,14 @@
         $this->generations = WT_Filter::getInteger('generations', 2, 9, $defaultGenerations);
         $this->fontScale   = WT_Filter::getInteger('fontScale', 0, 200, 100);
 
+		// Create page title
+        $title = WT_I18N::translate('Fan chart');
         if ($this->root && $this->root->canDisplayName()) {
-            $this->setPageTitle(
-                WT_I18N::translate(
-                    'Fan chart of %s',
-                    $this->root->getFullName()
-                )
-            );
-        } else {
-            $this->setPageTitle(
-                WT_I18N::translate('Fan chart')
-            );
-        }
+            $title = WT_I18N::translate('Fan chart of %s', $this->root->getFullName());
+		}
+
+		$this->setPageTitle($title);
+
     }
 
     /**
@@ -87,21 +83,25 @@
      * @return string HTML color code
      */
     public function getColor(WT_Person $person = null) {
-
 		global $fanChart;
-
-        if (!($person instanceof WT_Person)) {
-            return $fanChart['bgColor'];
-        }
-
-        if ($person->getSex() === 'M') {
-            return $fanChart['bgMColor'];
-        } elseif ($person->getSex() === 'F') {
-            return $fanChart['bgFColor'];
-        }
-
+        if ($person instanceof WT_Person) {
+	        if ($person->getSex() === 'M') {
+	            return $fanChart['bgMColor'];
+	        } elseif ($person->getSex() === 'F') {
+	            return $fanChart['bgFColor'];
+	        }
+		}
         return $fanChart['bgFColor'];
+    }
 
+	/**
+     * Get the theme defined chart font color.
+     *
+     * @return string HTML color code
+     */
+    public function getChartFontColor() {
+		global $fanChart;
+        return $fanChart['color'];
     }
 
     /**
@@ -115,22 +115,20 @@
         // We need always two individuals, so we fake the missing ones
         if (!($person instanceof WT_Person)) {
             return array(
-                'id'       => '',
-                'name'     => '',
-                'born'     => '',
-                'died'     => '',
-                'color'    => $this->getColor(),
-                'children' => array(),
+                'id'    => '',
+                'name'  => '',
+                'born'  => '',
+                'died'  => '',
+                'color' => $this->getColor(),
             );
         }
 
         return array(
-            'id'       => $person->getXref(),
-            'name'     => WT_Filter::unescapeHtml($person->getShortName()),
-            'born'     => $person->getBirthYear(),
-            'died'     => $person->getDeathYear(),
-            'color'    => $this->getColor($person),
-            'children' => array(),
+            'id'    => $person->getXref(),
+            'name'  => html_entity_decode(strip_tags($person->getShortName())),
+            'born'  => $person->getBirthYear(),
+            'died'  => $person->getDeathYear(),
+            'color' => $this->getColor($person),
         );
     }
 
@@ -145,24 +143,22 @@
      * @todo Rebuild this to a iterative method
      */
     public function buildJsonTree( WT_Person $person = null, $generation = 1 ) {
-        // Maximum generation reached
+		// Maximum generation reached
         if ($generation > $this->generations) {
             return array();
         }
 
-        $json   = $this->getIndividualData($person);
-        $family = null;
-
-        if ($person instanceof WT_Person) {
-            $family = $person->getPrimaryChildFamily();
-        }
-
+        $data   = $this->getIndividualData($person);
         $father = null;
         $mother = null;
 
-        if ($family instanceof WT_Family) {
-            $father = $family->getHusband();
-            $mother = $family->getWife();
+        if ($person instanceof WT_Person) {
+            $family = $person->getPrimaryChildFamily();
+
+            if ($family instanceof WT_Family) {
+                $father = $family->getHusband();
+                $mother = $family->getWife();
+            }
         }
 
         // Recursively call the method for the parents of the individual
@@ -172,14 +168,14 @@
         // Add array of child nodes, or empty array for leaf nodes
         // @see D3 partition layout
         if ($fatherTree) {
-            $json['children'][] = $fatherTree;
+            $data['children'][] = $fatherTree;
         }
 
         if ($motherTree) {
-            $json['children'][] = $motherTree;
+            $data['children'][] = $motherTree;
         }
 
-        return $json;
+        return $data;
     }
 
     /**

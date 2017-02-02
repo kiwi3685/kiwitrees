@@ -101,6 +101,7 @@ $WT_STATS_CHART_COLOR3 = "e5e6ef";
 
 // -- fanchart variables
 $fanChart = array(
+	'color'   =>'#555',
 	'bgColor' =>'#eee9e9',
 	'bgMColor'=>'#b1cff0',
 	'bgFColor'=>'#e9daf1'
