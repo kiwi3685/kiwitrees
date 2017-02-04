@@ -379,6 +379,31 @@ $controller
 						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Death media') : null;
 					}
 				}
+				// BURIAL
+				if (in_array('fburi', $selected_facts)) {
+					$total_indi_events = $total_indi_events + 2;
+					$event = $relative->getFactByType('BURI');
+					$check_event		= check_events($event, $ind_missing_events);
+					$ind_missing_events	= $check_event['count'];
+					// BURI:SOUR
+					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
+					$ind_missing_events	= $check_source['count'];
+					$total_indi_events	= $check_source['total_indi'];
+					// BURI:OBJE
+					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
+					$ind_missing_events	= $check_obje['count'];
+					$total_indi_events	= $check_obje['total_indi'];
+					//RESULT
+					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
+						$indi_ct = true;
+						$result[$relative->getXref()]['count'] = 0;
+						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
+						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BURI:DATE') : null;
+						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BURI:PLAC') : null;
+						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Burial source') : null;
+						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Burial media') : null;
+					}
+				}
 				// BAPTISM / CHRISTENING
 				if (in_array('fbapm', $selected_facts)) {
 					$total_indi_events = $total_indi_events + 2;
