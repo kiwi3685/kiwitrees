@@ -183,7 +183,7 @@
      *
      * @return string[]
      */
-    public function getFanStyles() {
+    public function getFanDegrees() {
         return [
             180 => /* I18N: configuration option for fan chart */ WT_I18N::translate('180 degree'),
             210 => /* I18N: configuration option for fan chart */ WT_I18N::translate('210 degree'),

@@ -70,7 +70,7 @@ $controller
 			</div>
 			<div class="chart_options">
 				<label for="fanDegree"><?php echo WT_I18N::translate('Degrees'); ?></label>
-				<?php echo select_edit_control('fanDegree', $controller->getFanStyles(), null, $controller->fanDegree); ?>
+				<?php echo select_edit_control('fanDegree', $controller->getFanDegrees(), null, $controller->fanDegree); ?>
 			</div>
 			<div class="chart_options">
 				<label for="fontScale"><?php echo WT_I18N::translate('Font size'); ?></label>
