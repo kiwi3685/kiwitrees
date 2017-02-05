@@ -140,11 +140,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		$count_stories = 0;
 		foreach ($block_ids as $block_id) {
 			// check how many stories can be shown in a language
-			$languages=get_block_setting($block_id, 'languages');
+			$languages = get_block_setting($block_id, 'languages');
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				$count_stories ++;
+				$ids[] = $block_id;
 			}
 		}
+		$first_story = min($ids);
 
 		ob_start();
 
@@ -168,14 +170,24 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		if ($count_stories > 1) {
 			$class = 'story';
 			$controller->addInlineJavascript('
-			jQuery("#contents_list a").click(function(){
-				event.preventDefault();
-				var id = jQuery(this).attr("id");
-				id = id.split("_");
+				// Start with all stories hidden except the first
 				jQuery("#story_contents div.story").hide();
-				jQuery("#story_contents #stories_"+id[1]).show();
-				jQuery("html, body").animate({scrollTop: jQuery("#stories").offset().top}, 2000);
-			});
+				jQuery("#story_contents #stories_" + ' . $first_story . ').show();
+
+				// Calculate scroll value
+				var posn = jQuery("#navbar").height() - jQuery("#indi_header").height() + jQuery(".ui-tabs-nav").height() + 25;
+				if (jQuery("#navbar").css("position") == "fixed") {
+					var posn = jQuery("#indi_header").height() + jQuery(".ui-tabs-nav").height() - 20;
+				}
+
+				// On clicking a title hide all stories except the chosen one
+				jQuery("#contents_list a").click(function(e){
+					e.preventDefault();
+					var id = jQuery(this).attr("id").split("_");
+					jQuery("#story_contents .story").hide();
+					jQuery("#story_contents #stories_" + id[1]).show();
+					jQuery("html, body").stop().animate({scrollTop: jQuery("#stories").offset().top - posn}, 2000);
+				});
 			'); ?>
 
 			<h3 class="center"><?php echo WT_I18N::translate('List of stories'); ?></h3>
@@ -197,7 +209,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) { ?>
 					<div id="stories_<?php echo $block_id; ?>" class="<?php echo $class; ?>">
 						<?php if (WT_USER_CAN_EDIT) { ?>
-							<div style="margin:16px 0 0 0;">
+							<div>
 								<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $block_id; ?>">
 									<i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i><?php echo WT_I18N::translate('Edit story'); ?>
 								</a>

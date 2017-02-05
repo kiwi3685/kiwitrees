@@ -5004,10 +5004,6 @@ body .ui-tooltip {
 	list-style: disc;
 }
 
-#story_contents div.story {
-	display: none;
-}
-
 #stories {
 	padding: 20px;
 }

@@ -88,8 +88,8 @@ echo '
 	<body id="body">';
 
 if ($view!='simple') { // Use "simple" headers for popup windows
-	echo
-	'<div id="header">' ,
+	echo '<div id="navbar">
+	<div id="header">' ,
 		WT_TREE_TITLE , WT_TREE_SUBTITLE, '
 		<div class="hsearch">
 			<form action="search.php" method="post">
@@ -137,7 +137,7 @@ echo	'</select>
 		</div>', // <div id="topMenu">
 		WT_FlashMessages::getHtmlMessages(); // Feedback from asynchronous actions
 }
-echo $javascript, '<div id="content">';
+echo '</div>', $javascript, '<div id="content">';
 
 // add widget bar inside content div for all pages except Home, and only for logged in users with role 'member' or above
 if ($show_widgetbar) {

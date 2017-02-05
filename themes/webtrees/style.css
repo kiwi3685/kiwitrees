@@ -1943,7 +1943,6 @@ html[dir=\'rtl\'] #privacy_status dt span{float: left;}
 /* Styling for stories module */
 #contents_list {margin:auto auto 20px auto; width:60%;}
 #contents_list ol {font-size:100%; list-style: disc;}
-#story_contents div.story {display:none;}
 #stories {padding:20px;}
 hr.stories_divider {border:none; border-top:medium double; margin:auto; padding:0; text-align:center; width:80%;}
 hr.stories_divider:after {content:"§"; display:inline-block;position:relative; top:-0.7em; font-size:1.5em; padding:0 0.25em; background:white;}

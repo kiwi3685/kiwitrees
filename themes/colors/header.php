@@ -96,9 +96,9 @@ echo
 
 if  ($view!='simple') { // Use "simple" headers for popup windows
 	global $WT_IMAGES;
-	echo
-	// Top row left
-	'<div id="header">',
+	echo '<div id="navbar">
+
+	<div id="header">', // Top row left
 		WT_TREE_TITLE . WT_TREE_SUBTITLE;
 		// Top row right
 		echo '<div class="header_search">
@@ -148,7 +148,7 @@ $this->addInlineJavaScript(
 	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul li:last-child").remove();'
 );
 
-echo
+echo '</div>',// close navbar
 	$javascript,
 	WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 	'<div id="content">';

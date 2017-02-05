@@ -88,8 +88,8 @@ echo '
 // begin header section
 if ($view!='simple') {
 	global $WT_IMAGES;
-	echo
-		'<div id="header">',
+	echo '<div id="navbar">
+		<div id="header">',
 			'<div class="title" dir="auto">',
 				WT_TREE_TITLE . WT_TREE_SUBTITLE,'
 			</div>',
@@ -132,7 +132,8 @@ echo			'</select>
 			</div>', // <div id="topMenu">
 		'</div>'; // <div id="header">
 }
-echo 	$javascript,
+echo 	'</div>', // close navbar
+		$javascript,
 		WT_FlashMessages::getHtmlMessages(), // Feedback from asynchronous actions
 	'<div id="content">';
 
