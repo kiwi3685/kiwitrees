@@ -158,7 +158,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 				<div class="chart_options noprint">
 					<form id="change_root">
 						<div class="chart_options">
-							<label for = "new_rootid" class="label"><?php echo WT_I18N::translate('Change root person'); ?></label>
+							<label for = "new_rootid" class="label"><?php echo WT_I18N::translate('Individual'); ?></label>
 							<input type="text" data-autocomplete-type="INDI" name="new_rootid" id="new_rootid" value="<?php echo $root; ?>">
 						</div>
 						<button class="btn btn-primary show" type="submit">
