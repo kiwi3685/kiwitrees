@@ -18,7 +18,7 @@ class graftombe_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return $link = 'http://www.graftombe.nl/names/search?forename=' . $givn . '&surname=' . $surname.'&submit=Zoeken&r=names-search';
 	}
 

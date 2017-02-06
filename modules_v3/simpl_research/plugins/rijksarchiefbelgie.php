@@ -18,7 +18,7 @@ class rijksarchiefbelgie_plugin extends research_base_plugin {
 		return 'BEL';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return false;
 	}
 

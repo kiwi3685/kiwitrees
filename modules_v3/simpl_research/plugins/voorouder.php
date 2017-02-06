@@ -18,7 +18,7 @@ class voorouder_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		return $link = 'http://genealogie.voorouder.nl/search.php?mylastname=' . $surname .'&myfirstname=' . $givn .'&mybool=AND&Search=Zoek';
 	}
 

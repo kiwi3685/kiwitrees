@@ -19,7 +19,7 @@ class denkmalprojekt1_plugin extends research_base_plugin {
 		return 'DEU';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
 		$values	 = array(strtoupper($surname), ucfirst($first));
 		$query	 = implode('+', array_filter($values, function($v) { return $v !== null && $v !== ''; }));
 
