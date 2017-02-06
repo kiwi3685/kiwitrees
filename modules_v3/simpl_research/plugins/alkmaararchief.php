@@ -26,9 +26,9 @@ class alkmaararchief_plugin extends research_base_plugin {
 		$base_url = 'https://www.regionaalarchiefalkmaar.nl/';
 
 		$collection = array(
-			"Bevolkingsregister"=> "collecties/genealogie/aktes/trefwoord/register_type/bevolkingsregister/q/persoon_achternaam_t_0/' . $surn . 'q/persoon_voornaam_t_0/' . $givn . '/q/zoekwijze/s",
-        "Burgelijke stand"  => "collecties/genealogie/aktes/trefwoord/register_type/burgerlijke%20standregister/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/zoekwijze/s",
-        "DTB"               => "collecties/genealogie/aktes/trefwoord/register_type/doop%28~%29%2C%20trouw%28~%29%20en%20begraafregister/q/persoon_achternaam_t_0/' . $surn . '/q/persoon_voornaam_t_0/' . $givn . '/q/zoekwijze/s",
+			"Bevolkingsregister"=> "collecties/genealogie/aktes/trefwoord/register_type/bevolkingsregister/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
+        "Burgelijke stand"      => "collecties/genealogie/aktes/trefwoord/register_type/burgerlijke%20standregister/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
+        "DTB"                   => "collecties/genealogie/aktes/trefwoord/register_type/doop%28~%29%2C%20trouw%28~%29%20en%20begraafregister/q/persoon_achternaam_t_0/$surn/q/persoon_voornaam_t_0/$givn/q/zoekwijze/s",
 		);
 
 		foreach($collection as $key => $value) {

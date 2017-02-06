@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class overijsselmsmd_plugin extends research_base_plugin {
+class avereesthistorie_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Overijssel MSMD';
+		return 'Avereest Hist. Database';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class overijsselmsmd_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return "https://www.onderzoekoverijssel.nl/resultaten.php?nav_id=3-0&Globaal=' . $givn . '%20' . $surname . '&Datum%20of%20periode_van=' . $birth_year . '&Datum%20of%20periode_tot=' . $death_year . '";
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
@@ -27,7 +27,7 @@ class overijsselmsmd_plugin extends research_base_plugin {
 	}
 
 	static function createLinkOnly() {
-		return false;
+		return 'http://www.bonmama.nl/';
 	}
 
 	static function createSubLinksOnly() {

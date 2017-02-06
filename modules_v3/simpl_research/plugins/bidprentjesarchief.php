@@ -18,8 +18,8 @@ class bidprentjesarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.bidprentjes-archief.nl/bidprentjes/achternaam/' . $surname . '';
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
@@ -27,7 +27,7 @@ class bidprentjesarchief_plugin extends research_base_plugin {
 	}
 
 	static function createLinkOnly() {
-		return false;
+		return 'http://www.bidprentjes-archief.nl/bidprentjes/zoeken';
 	}
 
 	static function createSubLinksOnly() {
@@ -35,6 +35,7 @@ class bidprentjesarchief_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

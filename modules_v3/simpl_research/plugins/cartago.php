@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class overijsselmsmd_plugin extends research_base_plugin {
+class cartago_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Overijssel MSMD';
+		return 'Cartago';
 	}
 
 	static function getPaySymbol() {
@@ -19,11 +19,25 @@ class overijsselmsmd_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return "https://www.onderzoekoverijssel.nl/resultaten.php?nav_id=3-0&Globaal=' . $givn . '%20' . $surname . '&Datum%20of%20periode_van=' . $birth_year . '&Datum%20of%20periode_tot=' . $death_year . '";
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		$base_url = 'http://www.cartago.nl/';
+
+		$collection = array(
+		    "Achternaam"               => "nl/zoeken/index.php?option=com_cartago&from=zoekscherm&veld=arn&waarde=$surn&action=Zoeken",
+		    "Voornaam"                 => "nl/zoeken/index.php?option=com_cartago&from=zoekscherm&veld=vrn&waarde=$givn&action=Zoeken",
+		    );
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {

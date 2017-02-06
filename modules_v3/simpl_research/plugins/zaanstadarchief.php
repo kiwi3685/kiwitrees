@@ -18,12 +18,31 @@ class zaanstadarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://archief.zaanstad.nl/voorouders?mivast=137&miadt=137&mizig=309&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=' . strtolower($first) . '+' . strtolower($surname);
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		$base_url = 'http://archief.zaanstad.nl/';
+
+		$collection = array(
+		    
+		    "Bevolkingsregister"       => "archieven?mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&mires=0&mip1=$surn&mip3=$givn&mib1=388",
+		    "Bidprentje"               => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mip1=$surn&mip3=$givn&mib1=111",
+			"Geboorteakte"             => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=113&mip1=$surn&mip3=$givn",
+		    "Huwelijksakte"            => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=109&mip1=$surn&mip3=$givn",
+		    "Overlijdensakte"          => "archieven?option=com_maisinternet&view=maisinternet&Itemid=141&mivast=137&miadt=137&mizig=100&miview=tbl&milang=nl&micols=1&misort=ach%7Casc&mires=0&mif1=114&mip1=$surn&mip3=$givn",		    
+		    "Transcripties"            => "voorouders?mivast=137&miadt=137&mizig=309&miview=ldt&milang=nl&micols=1&mires=0&mizk_alle=$givn%20$surn",
+		    );
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {
@@ -35,6 +54,7 @@ class zaanstadarchief_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

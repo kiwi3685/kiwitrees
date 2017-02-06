@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class overijsselmsmd_plugin extends research_base_plugin {
+class stenenarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Overijssel MSMD';
+		return 'Stenen Archief';
 	}
 
 	static function getPaySymbol() {
@@ -19,7 +19,7 @@ class overijsselmsmd_plugin extends research_base_plugin {
 	}
 
 	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return "https://www.onderzoekoverijssel.nl/resultaten.php?nav_id=3-0&Globaal=' . $givn . '%20' . $surname . '&Datum%20of%20periode_van=' . $birth_year . '&Datum%20of%20periode_tot=' . $death_year . '";
+		return 'http://www.stenenarchief.nl/phpr/nik/stenen_archief/nik_list.php?a=integrated&ctlSearchFor=' . $surn . '&simpleSrchFieldsComboOpt=achternaam&simpleSrchTypeComboNot=&simpleSrchTypeComboOpt=Contains';
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {

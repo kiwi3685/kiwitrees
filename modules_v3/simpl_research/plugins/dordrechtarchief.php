@@ -18,12 +18,31 @@ class dordrechtarchief_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year) {
-		return $link = 'http://www.regionaalarchiefdordrecht.nl/archief/zoeken/?mizk_alle=' . $first . '+' . $surname;
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+		return false;
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		return false;
+		$base_url = 'http://www.regionaalarchiefdordrecht.nl/';
+
+		$collection = array(
+		    "DTB"                         => "archief/zoeken/?mivast=46&mizig=334&miadt=46&milang=nl&mizk_alle=$givn%20$surn&miview=ldt",
+		    "Geboorteakten"               => "archief/zoeken/?mivast=46&mizig=133&miadt=46&milang=nl&mizk_alle=$givn%20$surn&miview=ldt",
+		    "Huwelijksakten"              => "archief/zoeken/?mivast=46&mizig=53&miadt=46&milang=nl&mizk_alle=$givn%20$surn&miview=ldt",
+		    "Overlijdensakten"            => "archief/zoeken/?mivast=46&mizig=782&miadt=46&milang=nl&mizk_alle=$givn%20$surn&miview=ldt",
+		    "Bevolkingsregisters"         => "archief/zoeken/?mivast=46&mizig=106&miadt=46&milang=nl&mizk_alle=$givn%20$surn&miview=tbl",
+		    "Eigendomsoverdracht"         => "archief/zoeken/?mivast=46&mizig=132&miadt=46&milang=nl&mizk_alle=$givn%20$surn&miview=ldt",
+		    "Notariele Akten"             => "archief/zoeken/?mivast=46&mizig=232&miadt=46&milang=nl&mizk_alle=$givn%20$surn&miview=ldt",
+		    );
+
+		foreach($collection as $key => $value) {
+			$link[] = array(
+				'title' => WT_I18N::translate($key),
+				'link'  => $base_url . $value
+			);
+		}
+
+		return $link;
 	}
 
 	static function createLinkOnly() {
@@ -35,6 +54,7 @@ class dordrechtarchief_plugin extends research_base_plugin {
 	}
 
 	static function encode_plus() {
-		return true;
+		return false;
 	}
+
 }

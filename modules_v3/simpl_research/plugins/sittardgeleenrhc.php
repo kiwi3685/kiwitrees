@@ -5,9 +5,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class westbrabantra_plugin extends research_base_plugin {
+class sittardgeleenrhc_plugin extends research_base_plugin {
 	static function getName() {
-		return 'West Brabant Regionaal Archief';
+		return 'Sittard-Geleen Domijnen';
 	}
 
 	static function getPaySymbol() {
@@ -23,15 +23,13 @@ class westbrabantra_plugin extends research_base_plugin {
 	}
 
 	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
-		$base_url = 'http://westbrabantsarchief.nl/';
+		$base_url = 'https://www.dedomijnen.nl/';
 
 		$collection = array(
+		"Bidprentjes"          => "collecties/archieven/personen/?mivast=111&mizig=100&miadt=111&miq=1&milang=nl&misort=last_mod%7Cdesc&mizk_alle=$givn%20$surname&mif1=111&miview=tbl",
+		"Bevolkingsregister"   => "collecties/archieven/personen/?mivast=111&mizig=100&miadt=111&miq=1&milang=nl&misort=last_mod%7Cdesc&mizk_alle=$givn%20$surname&mif1=112&miview=tbl",
 		    
-		    "Archieven"                 => "collectie/archieven/search/context/keywords/%5E$givn%20$surn",
-			"Beeldbank"                 => "collectie/beeldbank/?mode=gallery&view=horizontal&q=$givn%20$surn&page=1&reverse=0",
-			"Notariele bronnen"         => "collectie/bladeren-in-bronnen/registers?ss=%7B%22q%22:%22$givn%20$surn%22%7D&sa=%7B%22search_s_type_title%22:%5B%22notari%C3%ABle%20archieven%22%5D%7D",
-			"Voorouders"                => "collectie/voorouders/persons?ss=%7B%22q%22:%22%5E$givn%20$surn%22%7D",	    
-			);
+		);
 
 		foreach($collection as $key => $value) {
 			$link[] = array(
