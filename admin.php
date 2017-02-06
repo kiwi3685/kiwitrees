@@ -1567,6 +1567,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/bdm_report', // report replaced by resource version
 		WT_ROOT.'modules_v3/family_group_report', // report replaced by resource version
 		WT_ROOT.'modules_v3/marriage_report', // report replaced by resource version
+		WT_ROOT.'modules_v3/ahnentafel_report', // report replaced by resource version
 		WT_ROOT.'modules_v3/simpl_research/plugins/cbg.php', // replaced with different versions
 		WT_ROOT.'modules_v3/simpl_research/plugins/delpher_kranten.php', // replaced with different versions
 		WT_ROOT.'modules_v3/simpl_research/plugins/heraldischedatabank.php', // replaced with different version
