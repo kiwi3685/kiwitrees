@@ -264,7 +264,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$FTV_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
 
 		$controller
-			->addExternalJavascript(WT_MODULES_DIR . $this->getName() . '/js/ftv.js')
+			->addExternalJavascript(WT_STATIC_URL . 'js/fancytreeview.js')
 			->addInlineJavascript('autocomplete();')
 			->addInlineJavascript('
 				var OptionsNumBlocks = ' . $ftv->options('numblocks') . ';
@@ -475,7 +475,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 				->setPageTitle(/* I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of %s', $root_person->getFullName()))
 				->pageHeader()
 				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
-				->addExternalJavascript(WT_MODULES_DIR . $this->getName() . '/js/ftv.js')
+				->addExternalJavascript(WT_STATIC_URL . 'js/fancytreeview.js')
 				->addInlineJavascript('
 					var RootID				= "' . $root . '";
 					var ModuleName			= "' . $this->getName() . '";
