@@ -63,26 +63,25 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 	// Extend WT_Module_Config
 	public function modAction($mod_action) {
-		require_once WT_MODULES_DIR . $this->getName() . '/fancy_treeview_pedigree_class.php';
-		$ftvp = new fancy_treeview_pedigree_class_WT_Module();
+		$ftv = new WT_Controller_FancyTreeView();
 
 		switch($mod_action) {
-//		case 'admin_config':
-//			$this->config();
-//			break;
+		case 'admin_config':
+			$this->config();
+			break;
 		case 'admin_reset':
-			$ftvp->ftv_reset();
+			$ftv->ftv_reset();
 			$this->config();
 			break;
 		case 'admin_delete':
-			$ftvp->delete();
+			$ftv->delete();
 			$this->config();
 			break;
 		case 'show':
 			$this->show();
 			break;
 		case 'image_data':
-			$ftvp->getImageData();
+			$ftv->getImageData();
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -91,7 +90,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
+		return 'module.php?mod=fancy_treeview&amp;mod_action=admin_config';
 	}
 
 	// Actions from the configuration page
@@ -102,15 +101,11 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 	// Show
 	private function show() {
-		require_once WT_MODULES_DIR . $this->getName() . '/fancy_treeview_pedigree_class.php';
-		$ftvp = new fancy_treeview_pedigree_class_WT_Module();
-
-		require_once WT_MODULES_DIR . 'fancy_treeview/fancy_treeview_class.php';
-		$ftv = new fancy_treeview_class_WT_Module();
+		$ftv = new WT_Controller_FancyTreeView();
 
 		global $controller;
 		$root			= WT_Filter::get('rootid', WT_REGEX_XREF); // the first pid
-		$root_person	= $ftvp->get_person($root);
+		$root_person	= $ftv->get_person($root);
 		$controller		= new WT_Controller_Page;
 
 		if($root_person && $root_person->canDisplayName()) {
@@ -174,8 +169,6 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 							<label for = "new_rootid" class="label"><?php echo WT_I18N::translate('Change root person'); ?></label>
 							<input type="text" data-autocomplete-type="INDI" name="new_rootid" id="new_rootid" value="<?php echo $root; ?>">
 						</div>
-
-
 						<button class="btn btn-primary show" type="submit">
 							<i class="fa fa-eye"></i>
 							<?php echo WT_I18N::translate('show'); ?>
@@ -196,7 +189,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 						</h2>
 					</div>
 					<div id="page-body">
-						<ol id="fancy_treeview"><?php echo $ftvp->printPage($ftv->options('numblocks')); ?></ol>
+						<ol id="fancy_treeview"><?php echo $ftv->printPage('ancestors'); ?></ol>
 						<div id="btn_next">
 							<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
 								<i class="fa fa-arrow-down"></i>
@@ -233,33 +226,32 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		require_once WT_MODULES_DIR . $this->getName() . '/fancy_treeview_pedigree_class.php';
-		$ftvp = new fancy_treeview_pedigree_class_WT_Module();
+		$ftv = new WT_Controller_FancyTreeView();
 
 		global $SEARCH_SPIDER;
 
-		$ftvp_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
+		$ftv_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
 
-		if(!empty($ftvp_SETTINGS)) {
+		if(!empty($ftv_SETTINGS)) {
 			if ($SEARCH_SPIDER) {
 				return null;
 			}
 
-			foreach ($ftvp_SETTINGS as $ftvp_ITEM) {
-				if($ftvp_ITEM['TREE'] == WT_GED_ID && $ftvp_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
-					$ftvp_GED_SETTINGS[] = $ftvp_ITEM;
+			foreach ($ftv_SETTINGS as $ftv_ITEM) {
+				if($ftv_ITEM['TREE'] == WT_GED_ID && $ftv_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
+					$ftv_GED_SETTINGS[] = $ftv_ITEM;
 				}
 			}
-			if (!empty($ftvp_GED_SETTINGS)) {
+			if (!empty($ftv_GED_SETTINGS)) {
 				$menu = new WT_Menu(WT_I18N::translate('Descendants'), '#', 'menu-fancy_treeview');
 
-				foreach($ftvp_GED_SETTINGS as $ftvp_ITEM) {
-					if(WT_Person::getInstance($ftvp_ITEM['PID'])) {
+				foreach($ftv_GED_SETTINGS as $ftv_ITEM) {
+					if(WT_Person::getInstance($ftv_ITEM['PID'])) {
 						if($ftv->options('use_fullname') == true) {
-							$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($ftvp_ITEM['PID'])->getFullName()), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $ftvp_ITEM['PID'], 'menu-fancy_treeview-' . $ftvp_ITEM['PID']);
+							$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($ftv_ITEM['PID'])->getFullName()), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $ftv_ITEM['PID'], 'menu-fancy_treeview-' . $ftv_ITEM['PID']);
 						}
 						else {
-							$submenu = new WT_Menu(WT_I18N::translate('%s family', $ftvp_ITEM['DISPLAY_NAME']), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $ftvp_ITEM['PID'], 'menu-fancy_treeview-' . $ftvp_ITEM['PID']);
+							$submenu = new WT_Menu(WT_I18N::translate('%s family', $ftv_ITEM['DISPLAY_NAME']), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $ftv_ITEM['PID'], 'menu-fancy_treeview-' . $ftv_ITEM['PID']);
 						}
 						$menu->addSubmenu($submenu);
 					}

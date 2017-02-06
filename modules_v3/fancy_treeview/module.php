@@ -71,26 +71,26 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module_Config
 	public function modAction($mod_action) {
-		require_once WT_MODULES_DIR . $this->getName() . '/fancy_treeview_class.php';
-		$ftv = new fancy_treeview_class_WT_Module();
+
+		$ftv = new WT_Controller_FancyTreeView();
 
 		switch($mod_action) {
 		case 'admin_config':
 			$this->config();
 			break;
 		case 'admin_reset':
-			$ftv->ftv_reset();
+			$controller->ftv_reset();
 			$this->config();
 			break;
 		case 'admin_delete':
-			$ftv->delete();
+			$controller->delete();
 			$this->config();
 			break;
 		case 'show':
 			$this->show();
 			break;
 		case 'image_data':
-			$ftv->getImageData();
+			$controller->getImageData();
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -106,8 +106,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 	private function config() {
 
 		require WT_ROOT.'includes/functions/functions_edit.php';
-		require_once WT_MODULES_DIR . $this->getName() . '/fancy_treeview_class.php';
-		$ftv = new fancy_treeview_class_WT_Module();
+
+		$ftv = new WT_Controller_FancyTreeView();
 
 		$controller = new WT_Controller_Page;
 		$controller
@@ -124,35 +124,35 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					$soundex_std = WT_Filter::postBool('soundex_std');
 					$soundex_dm = WT_Filter::postBool('soundex_dm');
 
-					$indis = $ftv->indis_array($surname, $soundex_std, $soundex_dm);
+					$indis = $controller->indis_array($surname, $soundex_std, $soundex_dm);
 					usort($indis, array('WT_Person', 'CompareBirtDate'));
 
 					if (isset($indis) && count($indis) > 0) {
 						$pid = $indis[0]->getXref();
 					}
 					else {
-						$ftv->addMessage($controller, 'error', WT_I18N::translate('Error: The surname you entered doesn’t exist in this tree.'));
+						$controller->addMessage($controller, 'error', WT_I18N::translate('Error: The surname you entered doesn’t exist in this tree.'));
 					}
 				}
 
 				if($root_id) {
-					if ($ftv->getSurname($root_id)) {
+					if ($controller->getSurname($root_id)) {
 						// check if this person has a spouse and/or children
-						$person = $ftv->get_person($root_id);
+						$person = $controller->get_person($root_id);
 						if(!$person->getSpouseFamilies()) {
-							$ftv->addMessage($controller, 'error', WT_I18N::translate('Error: The root person you are trying to add has no partner and/or children. It is not possible to set this individual as root person.'));
+							$controller->addMessage($controller, 'error', WT_I18N::translate('Error: The root person you are trying to add has no partner and/or children. It is not possible to set this individual as root person.'));
 						}
 						else {
 							$pid = $root_id;
 						}
 					}
 					else {
-						$ftv->addMessage($controller, 'error', WT_I18N::translate('Error: An individual with ID %s doesn’t exist in this tree.', $root_id));
+						$controller->addMessage($controller, 'error', WT_I18N::translate('Error: An individual with ID %s doesn’t exist in this tree.', $root_id));
 					}
 				}
 
 				if(isset($pid)) {
-					$FTV_SETTINGS = unserialize(get_module_setting($ftv->getName(), 'FTV_SETTINGS'));
+					$FTV_SETTINGS = unserialize(get_module_setting($controller->getName(), 'FTV_SETTINGS'));
 
 					if(!empty($FTV_SETTINGS)) {
 						$i = 0;
@@ -174,10 +174,10 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					}
 					if(isset($error) && $error == true) {
 						if($surname) {
-							$ftv->addMessage($controller, 'error', WT_I18N::translate('Error: The root person belonging to this surname already exists'));
+							$controller->addMessage($controller, 'error', WT_I18N::translate('Error: The root person belonging to this surname already exists'));
 						}
 						if($root_id) {
-							$ftv->addMessage($controller, 'error', WT_I18N::translate('Error: The root person you are trying to add already exists'));
+							$controller->addMessage($controller, 'error', WT_I18N::translate('Error: The root person you are trying to add already exists'));
 						}
 					}
 					else {
@@ -462,8 +462,9 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Show
 	private function show() {
-		require_once WT_MODULES_DIR . $this->getName() . '/fancy_treeview_class.php';
-		$ftv = new fancy_treeview_class_WT_Module();
+
+		$ftv = new WT_Controller_FancyTreeView();
+
 		global $controller;
 		$root			= WT_Filter::get('rootid', WT_REGEX_XREF); // the first pid
 		$root_person	= $ftv->get_person($root);
@@ -530,8 +531,6 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 							<label for = "new_rootid" class="label"><?php echo WT_I18N::translate('Change root person'); ?></label>
 							<input type="text" data-autocomplete-type="INDI" name="new_rootid" id="new_rootid" value="<?php echo $root; ?>">
 						</div>
-
-
 						<button class="btn btn-primary show" type="submit">
 							<i class="fa fa-eye"></i>
 							<?php echo WT_I18N::translate('show'); ?>
@@ -552,7 +551,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 						</h2>
 					</div>
 					<div id="page-body">
-						<ol id="fancy_treeview"><?php echo $ftv->print_page(); ?></ol>
+						<ol id="fancy_treeview"><?php echo $ftv->printPage('descendants'); ?></ol>
 						<div id="btn_next">
 							<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
 								<i class="fa fa-arrow-down"></i>
@@ -589,8 +588,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		require_once WT_MODULES_DIR . $this->getName() . '/fancy_treeview_class.php';
-		$ftv = new fancy_treeview_class_WT_Module();
+
+		$ftv = new WT_Controller_FancyTreeView();
 
 		global $SEARCH_SPIDER;
 

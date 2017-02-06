@@ -32,7 +32,8 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class fancy_treeview_class_WT_Module extends fancy_treeview_WT_Module {
+class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
+
 
 	// Get module options
 	public function options($value = '') {
