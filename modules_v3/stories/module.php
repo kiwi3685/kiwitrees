@@ -137,6 +137,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 		$html	= '';
 		$class	= '';
+		$ids	= array();
 		$count_stories = 0;
 		foreach ($block_ids as $block_id) {
 			// check how many stories can be shown in a language
@@ -146,7 +147,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$ids[] = $block_id;
 			}
 		}
-		$first_story = min($ids);
 
 		ob_start();
 
@@ -169,6 +169,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 		if ($count_stories > 1) {
 			$class = 'story';
+			$first_story = min($ids);
 			$controller->addInlineJavascript('
 				// Start with all stories hidden except the first
 				jQuery("#story_contents div.story").hide();
@@ -231,27 +232,33 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	}
 
-	// Implement class WT_Module_Tab
-	public function hasTabContent() {
-		return $this->getTabContent() <> '';
-	}
-
-	// Implement WT_Module_Tab
-	public function isGrayedOut() {
+	function getStoriesCount() {
 		global $controller;
+
 		$count_of_stories =
 			WT_DB::prepare(
 				"SELECT COUNT(##block.block_id)" .
 				" FROM ##block, ##block_setting" .
 				" WHERE ##block.module_name=?" .
-				" AND ##block_setting.setting_value LIKE CONCAT('%', ?, '%')" .
+				" AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')" .
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
 				$xref = $controller->record->getXref(),
 				WT_GED_ID
 			))->fetchOne();
-		return $count_of_stories == 0;
+
+		return $count_of_stories;
+	}
+
+	// Implement class WT_Module_Tab
+	public function hasTabContent() {
+		return WT_USER_CAN_EDIT || $this->getStoriesCount() > 0;
+	}
+
+	// Implement WT_Module_Tab
+	public function isGrayedOut() {
+		return $this->getStoriesCount() == 0;
 	}
 
 	// Implement class WT_Module_Tab
