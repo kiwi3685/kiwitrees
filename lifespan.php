@@ -34,7 +34,7 @@ $zoomfactor=10;
 $controller = new WT_Controller_Lifespan();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		var timer;

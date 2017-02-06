@@ -49,7 +49,7 @@ $controller
 	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_branches', WT_USER_ACCESS_LEVEL))
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_TREEVIEW)
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		jQuery("#branch-list").treeview({

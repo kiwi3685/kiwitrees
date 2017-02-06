@@ -130,7 +130,7 @@ class widget_favorites_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		if (WT_USER_ID) {
 			$controller
-				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 				->addInlineJavascript('autocomplete();');
 		}
 

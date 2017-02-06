@@ -88,7 +88,7 @@ $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Administration - place edit'))
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 ?>
 <div id="places">

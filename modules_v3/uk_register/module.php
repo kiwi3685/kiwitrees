@@ -77,7 +77,7 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 		$controller
 			->setPageTitle(WT_I18N::translate(WT_I18N::translate('Missing Register Data')))
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 
 		session_write_close();

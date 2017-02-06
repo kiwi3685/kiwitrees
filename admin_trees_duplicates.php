@@ -39,7 +39,7 @@ $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Find duplicate individuals'))
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 

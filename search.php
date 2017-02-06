@@ -32,7 +32,7 @@ $controller = new WT_Controller_Search();
 $controller
 	->pageHeader()
 	->setPageTitle(WT_I18N::translate('Search'))
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		jQuery("#search-tabs").tabs();

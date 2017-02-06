@@ -146,7 +146,7 @@ class resource_fact_WT_Module extends WT_Module implements WT_Module_Resources {
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
 

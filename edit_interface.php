@@ -30,7 +30,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller = new WT_Controller_Page();
 $controller
 	->requireMemberLogin()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('j', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";

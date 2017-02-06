@@ -161,7 +161,7 @@ elseif ($action=='setup') {
 	$controller
 		->setPageTitle($report_array['title'])
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('autocomplete();');
 
 	init_calendar_popup();

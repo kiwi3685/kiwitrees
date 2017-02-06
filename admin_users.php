@@ -301,7 +301,7 @@ switch (WT_Filter::get('action')) {
 
 		$controller
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addExternalJavascript(PASSWORDSCHECK)
 			->addInlineJavascript('
 				autocomplete();

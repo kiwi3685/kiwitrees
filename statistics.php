@@ -38,7 +38,7 @@ if (!$ajax) {
 	$controller = new WT_Controller_Page();
 	$controller
 		->setPageTitle(WT_I18N::translate('Statistics'))
-		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('
 			jQuery("#statistics_chart").css("visibility", "visible");
 			jQuery("#statistics_chart").tabs({
@@ -69,7 +69,7 @@ if (!$ajax) {
 	$controller = new WT_Controller_Ajax();
 	$controller
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('
 			autocomplete();
 			jQuery("#loading-indicator").removeClass("loading-image");

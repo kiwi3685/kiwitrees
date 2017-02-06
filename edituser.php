@@ -89,7 +89,7 @@ $controller = new WT_Controller_Page();
 $controller
 	->setPageTitle(WT_I18N::translate('User administration'))
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		display_help();

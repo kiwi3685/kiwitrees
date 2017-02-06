@@ -84,7 +84,7 @@ class resource_marriages_WT_Module extends WT_Module implements WT_Module_Resour
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
 				// check that at least one filter has been used

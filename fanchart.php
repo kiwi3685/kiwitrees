@@ -31,7 +31,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller = new WT_Controller_Fanchart();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addExternalJavascript(WT_D3_JS)
 	->addExternalJavascript(WT_STATIC_URL . WT_MODULES_DIR . 'chart_fanchart/js/ancestral-fan-chart.js');
 

@@ -84,7 +84,7 @@ class resource_vital_records_WT_Module extends WT_Module implements WT_Module_Re
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
 				// check that at least one filter has been used

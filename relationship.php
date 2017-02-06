@@ -37,7 +37,7 @@ $person1	= WT_Person::getInstance($pid1, $WT_TREE);
 $person2	= WT_Person::getInstance($pid2, $WT_TREE);
 
 $controller
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 if ($person1 && $person2) {

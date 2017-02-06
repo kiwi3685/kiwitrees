@@ -330,7 +330,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 //			->restrictAccess(WT_Module::isActiveList(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript(
 				$this->getJavaScript('inline-block') . '
 				autocomplete();

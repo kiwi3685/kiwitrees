@@ -31,7 +31,7 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller = new WT_Controller_Descendancy();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 echo '<div id="descendancy-page"><h2>', $controller->getPageTitle(), '</h2>';

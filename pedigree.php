@@ -31,7 +31,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller = new WT_Controller_Pedigree();
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>

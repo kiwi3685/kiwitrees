@@ -39,7 +39,7 @@ $controller
 	->requireManagerLogin()
 	->setPageTitle(WT_I18N::translate('Missing data'))
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 	->addExternalJavascript(WT_JQUERY_DT_HTML5)
 	->addExternalJavascript(WT_JQUERY_DT_BUTTONS)

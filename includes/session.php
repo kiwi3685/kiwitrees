@@ -60,13 +60,16 @@ define('WT_JQUERY_DT_RESPONSIVE',	WT_STATIC_URL . 'js/dataTables.responsive.min.
 define('WT_JQUERY_JEDITABLE_URL',	WT_STATIC_URL . 'js/jquery.jeditable.js');		    // 1.7.3
 define('WT_JQUERY_WHEELZOOM_URL',	WT_STATIC_URL . 'js/jquery.wheelzoom.js');		    // 2.0.0
 define('WT_MODERNIZR_URL',			WT_STATIC_URL . 'js/modernizr.custom.js');		    // 2.6.2
-define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/kiwitrees.js');
 define('WT_JQUERY_AUTOSIZE',		WT_STATIC_URL . 'js/jquery.autosize.min.js');	    // 1.18.18	Updated 18-06-2015
-define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');		    // 1.5pre	Updatd 2010
 define('WT_JQUERYUI_TOUCH_PUNCH',	WT_STATIC_URL . 'js/jquery.ui.touch-punch.min.js');
 define('WT_JQUERY_SHORTEN',			WT_STATIC_URL . 'js/jquery.shorten.js');
 define('PASSWORDSCHECK',			WT_STATIC_URL . 'js/passwordscheck.js');			// Installed 09-11-2016
 define('WT_D3_JS',					WT_STATIC_URL . 'js/d3.min.js');					// 3.5.17 Installed 02-02-2017 - https://github.com/d3/d3/releases
+
+// Loation of our own javascript libraries
+define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/kiwitrees.js');
+define('WT_AUTOCOMPLETE_JS_URL',	WT_STATIC_URL . 'js/autocomplete.js');
+define('WT_JQUERY_TREEVIEW',		WT_STATIC_URL . 'js/jquery.treeview.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
