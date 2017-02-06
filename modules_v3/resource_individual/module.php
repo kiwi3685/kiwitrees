@@ -92,7 +92,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 		//-- args
 		$go 			= WT_Filter::post('go');
 		$rootid 		= WT_Filter::get('rootid');
-		$root_id		= WT_Filter::post('root_id');
+		$rootid			= WT_Filter::post('root_id');
 		$rootid			= empty($root_id) ? $rootid : $root_id;
 		$photos			= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
 		$ged			= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
@@ -108,7 +108,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;rootid=<?php echo $rootid; ?>&amp;ged=<?php echo WT_GEDURL; ?>">
 					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
-						<label for = "rootid"><?php echo WT_I18N::translate('Individual'); ?></label>
+						<label for = "root_id"><?php echo WT_I18N::translate('Individual'); ?></label>
 						<input data-autocomplete-type="INDI" type="text" id="root_id" name="root_id" value="<?php echo $rootid; ?>">
 					</div>
 					<div class="chart_options">
