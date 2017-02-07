@@ -48,7 +48,7 @@ if ($surn) {
 $controller
 	->restrictAccess(WT_Module::isActiveList(WT_GED_ID, 'list_branches', WT_USER_ACCESS_LEVEL))
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_TREEVIEW)
+	->addExternalJavascript(WT_JQUERY_TREEVIEW_JS_URL)
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();

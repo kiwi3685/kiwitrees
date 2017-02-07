@@ -113,7 +113,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 				->setPageTitle(/* I18N: %s is the surname of the root individual */ WT_I18N::translate('Ancestors of %s', $root_person->getFullName()))
 				->pageHeader()
 				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-				->addExternalJavascript(WT_STATIC_URL . 'js/fancytreeview.js')
+				->addExternalJavascript(WT_FANCY_TREEVIEW_JS_URL)
 				->addInlineJavascript('
 					var RootID				= "' . $root . '";
 					var ModuleName			= "' . $this->getName() . '";
