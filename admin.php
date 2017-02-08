@@ -1573,7 +1573,6 @@ function old_paths() {
 		WT_ROOT.'modules_v3/simpl_research/plugins/heraldischedatabank.php', // replaced with different version
 		WT_ROOT.'modules_v3/simpl_research/plugins/wiewaswie.php', // replaced with different version
 		WT_ROOT.'modules_v3/simpl_research/sample/samplelink.php', // replaced with different versions
-		WT_ROOT.'modules_v3/simpl_research/plugins/sittardgeleenrhc.php', // Link is not working, because the moved the files to another website
 		WT_ROOT.'modules_v3/simpl_research/plugins/zoekaktenmilitairen.php', // See new zoekakten file
 		WT_ROOT.'modules_v3/simpl_research/plugins/zoekaktenlandverhuizers.php', // See new zoekakten file
 		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/DR/Aa_en_Hunze.png', // replace underscore with space in file names
