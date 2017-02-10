@@ -5951,12 +5951,6 @@ div.widget {
 	padding-bottom: 10px;
 }
 
-#fancy_treeview-page #pdf {
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
 #fancy_treeview-page #page-body {
 	line-height: 1.5em;
 	margin-top: 2em;
@@ -6002,6 +5996,13 @@ div.widget {
 	border: none;
 	margin: 0;
 	padding: 8px;
+}
+
+#fancy_treeview-page .blockheader .header-subtitle {
+	font-weight: 400;
+	font-size: 85%;
+	font-style: italic;
+	margin: 0 10px;
 }
 
 #fancy_treeview-page .blockheader .header-link {
@@ -6067,7 +6068,11 @@ div.widget {
 
 /* family-block */
 #fancy_treeview-page .blockcontent {
+	background: #f8f8f8;
+	border: 1px inset #ccc;
+	border-radius: 4px;
 	font-size: 13px;
+	overflow: hidden;
 	padding: 20px 0 20px 40px;
 }
 
@@ -6076,8 +6081,8 @@ div.widget {
 }
 
 #fancy_treeview-page li.family {
-	clear: both;
 	padding: 10px 20px;
+	clear: both;
 }
 
 #fancy_treeview-page li.family.private {
@@ -6087,6 +6092,11 @@ div.widget {
 #fancy_treeview-page .parents p {
 	margin: 0;
 	text-align: justify;
+}
+
+#fancy_treeview-page .parents sup {
+	font-size: 70%;
+	padding: 0 5px;
 }
 
 #fancy_treeview-page .children {

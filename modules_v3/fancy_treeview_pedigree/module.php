@@ -36,7 +36,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of the module */ WT_I18N::translate('Ancestors');
+		return /* I18N: Name of the module */ WT_I18N::translate('Ancestors report');
 	}
 
 	// Extend WT_Module
@@ -67,45 +67,100 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 		switch($mod_action) {
 		case 'admin_config':
-			$this->config();
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_pedigree.php';
 			break;
 		case 'admin_reset':
-			$ftv->ftv_reset();
-			$this->config();
+			$ftv->ftv_reset($this->getName());
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_pedigree.php';
 			break;
 		case 'admin_delete':
-			$ftv->delete();
-			$this->config();
+			$ftv->delete($this->getName());
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_pedigree.php';
 			break;
 		case 'show':
 			$this->show();
 			break;
-		case 'image_data':
-			$ftv->getImageData();
+		// See mediafirewall.php
+		case 'thumbnail':
+			$tree = WT_TREE::getIdFromName(WT_Filter::get('ged'));
+			if(empty($tree)) $tree = WT_GED_ID;
+
+			$mid			 = WT_Filter::get('mid', WT_REGEX_XREF);
+			$media			 = WT_Media::getInstance($mid, $tree);
+			$mimetype		 = $media->mimeType();
+			$cache_filename	 = $ftv->cacheFileName($media, $this->getName());
+			$filetime		 = filemtime($cache_filename);
+			$filetimeHeader	 = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
+			$expireOffset	 = 3600 * 24 * 7; // tell browser to cache this image for 7 days
+			$expireHeader	 = gmdate('D, d M Y H:i:s', WT_TIMESTAMP + $expireOffset) . ' GMT';
+			$etag			 = $media->getEtag();
+			$filesize		 = filesize($cache_filename);
+
+			// parse IF_MODIFIED_SINCE header from client
+			$if_modified_since = 'x';
+			if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+				$if_modified_since = preg_replace('/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE']);
+			}
+
+			// parse IF_NONE_MATCH header from client
+			$if_none_match = 'x';
+			if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
+				$if_none_match = str_replace('"', '', $_SERVER['HTTP_IF_NONE_MATCH']);
+			}
+
+			// add caching headers.  allow browser to cache file, but not proxy
+			header('Last-Modified: ' . $filetimeHeader);
+			header('ETag: "' . $etag . '"');
+			header('Expires: ' . $expireHeader);
+			header('Cache-Control: max-age=' . $expireOffset . ', s-maxage=0, proxy-revalidate');
+
+			// if this file is already in the user’s cache, don’t resend it
+			// first check if the if_modified_since param matches
+			if ($if_modified_since === $filetimeHeader) {
+				// then check if the etag matches
+				if ($if_none_match === $etag) {
+					http_response_code(304);
+					return;
+				}
+			}
+
+			// send headers for the image
+			header('Content-Type: ' . $mimetype);
+			header('Content-Disposition: filename="' . basename($cache_filename) . '"');
+			header('Content-Length: ' . $filesize);
+
+			// Some servers disable fpassthru() and readfile()
+			if (function_exists('readfile')) {
+				readfile($cache_filename);
+			} else {
+				$fp = fopen($cache_filename, 'rb');
+				if (function_exists('fpassthru')) {
+					fpassthru($fp);
+				} else {
+					while (!feof($fp)) {
+						echo fread($fp, 65536);
+					}
+				}
+				fclose($fp);
+			}
 			break;
-		default:
+			default:
 			header('HTTP/1.0 404 Not Found');
 		}
 	}
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=fancy_treeview&amp;mod_action=admin_config';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_config';
 	}
 
-	// Actions from the configuration page
-	private function config() {
-		return false;
-	}
 	// ************************************************* START OF FRONT PAGE ********************************* //
-
-	// Show
 	private function show() {
 		$ftv = new WT_Controller_FancyTreeView();
 
 		global $controller;
 		$root			= WT_Filter::get('rootid', WT_REGEX_XREF); // the first pid
-		$root_person	= $ftv->get_person($root);
+		$root_person	= $ftv->getPerson($root);
 		$controller		= new WT_Controller_Page;
 
 		if($root_person && $root_person->canDisplayName()) {
@@ -117,7 +172,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 				->addInlineJavascript('
 					var RootID				= "' . $root . '";
 					var ModuleName			= "' . $this->getName() . '";
-					var OptionsNumBlocks	= ' . $ftv->options('numblocks') . ';
+					var OptionsNumBlocks	= ' . $ftv->options($this->getName(), 'numblocks') . ';
 					var TextFollow			= "' . WT_I18N::translate('follow') . '";
 					', WT_Controller_Base::JS_PRIORITY_HIGH
 				)
@@ -174,14 +229,14 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 						<h2>
 							<?php echo $controller->getPageTitle() ?>
 							<?php if (WT_USER_IS_ADMIN) { ?>
-								<a href="module.php?mod=fancy_treeview&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer" class="noprint">
+								<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_config" target="_blank" rel="noopener noreferrer" class="noprint">
 									<i class="fa fa-cog"></i>
 								</a>
 							<?php } ?>
 						</h2>
 					</div>
 					<div id="page-body">
-						<ol id="fancy_treeview"><?php echo $ftv->printPage('ancestors'); ?></ol>
+						<ol id="fancy_treeview"><?php echo $ftv->printPage($this->getName(), 'numblocks'); ?></ol>
 						<div id="btn_next">
 							<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
 								<i class="fa fa-arrow-down"></i>
@@ -218,40 +273,18 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		$ftv = new WT_Controller_FancyTreeView();
+		$controller = new WT_Controller_FancyTreeView();
 
-		global $SEARCH_SPIDER;
-
-		$ftv_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
-
-		if(!empty($ftv_SETTINGS)) {
-			if ($SEARCH_SPIDER) {
-				return null;
-			}
-
-			foreach ($ftv_SETTINGS as $ftv_ITEM) {
-				if($ftv_ITEM['TREE'] == WT_GED_ID && $ftv_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
-					$ftv_GED_SETTINGS[] = $ftv_ITEM;
-				}
-			}
-			if (!empty($ftv_GED_SETTINGS)) {
-				$menu = new WT_Menu(WT_I18N::translate('Descendants'), '#', 'menu-fancy_treeview');
-
-				foreach($ftv_GED_SETTINGS as $ftv_ITEM) {
-					if(WT_Person::getInstance($ftv_ITEM['PID'])) {
-						if($ftv->options('use_fullname') == true) {
-							$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($ftv_ITEM['PID'])->getFullName()), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $ftv_ITEM['PID'], 'menu-fancy_treeview-' . $ftv_ITEM['PID']);
-						}
-						else {
-							$submenu = new WT_Menu(WT_I18N::translate('%s family', $ftv_ITEM['DISPLAY_NAME']), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $ftv_ITEM['PID'], 'menu-fancy_treeview-' . $ftv_ITEM['PID']);
-						}
-						$menu->addSubmenu($submenu);
-					}
-				}
-
-				return $menu;
-			}
+		$menu = null;
+		if (empty($controller) || array_key_exists('fancy_treeview', WT_Module::getActiveModules())) {
+			return null;
 		}
+
+		if (method_exists($controller, 'getFTVMenu')) {
+			$menu = $controller->getFTVMenu();
+		}
+
+		return $menu;
 	}
 
 }

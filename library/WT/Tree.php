@@ -165,6 +165,15 @@ class WT_Tree {
 		return $trees[$tree_id];
 	}
 
+	/**
+	 * The ID of this tree
+	 *
+	 * @return int
+	 */
+	public function getTreeId() {
+		return $this->tree_id;
+	}
+
 	// Create arguments to select_edit_control()
 	// Note - these will be escaped later
 	public static function getIdList() {
@@ -185,12 +194,20 @@ class WT_Tree {
 		return $list;
 	}
 
+	/**
+	 * Find the tree with a specific name.
+	 *
+	 * @param string $tree_name
+	 *
+	 * @return Tree|null
+	 */
 	public static function getIdFromName($tree_name) {
-		foreach (self::getAll() as $tree_id=>$tree) {
-			if ($tree->tree_name == $tree_name) {
-				return $tree_id;
+		foreach (self::getAll() as $tree) {
+			if ($tree->tree_name === $tree_name) {
+				return $tree;
 			}
 		}
+
 		return null;
 	}
 

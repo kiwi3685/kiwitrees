@@ -32,42 +32,63 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
+class WT_Controller_FancyTreeView {
 
-	// Get module options
-	public function options($value = '') {
-		$FTV_OPTIONS = unserialize(get_module_setting($this->getName(), 'FTV_OPTIONS'));
+	/** @var Individual[] Ancestors of the root person - for SOSA numbers */
+	private $ancestors = array();
 
-		$key = WT_TREE::getIdFromName(WT_Filter::get('ged'));
-		if (empty($key)) {
-			$key = WT_GED_ID;
-		}
+	/** @var integer count number of individuals in generation */
+	private $gencount;
 
-		if (empty($FTV_OPTIONS) || (is_array($FTV_OPTIONS) && !array_key_exists($key, $FTV_OPTIONS))) {
-			$FTV_OPTIONS[0] = array(
-				'USE_FULLNAME' 			=> '0',
-				'NUMBLOCKS'				=> '0',
-				'CHECK_RELATIONSHIP' 	=> '0',
-				'SHOW_SINGLES'			=> '0',
-				'SHOW_PLACES' 			=> '1',
-				'USE_GEDCOM_PLACES'		=> '0',
-				'COUNTRY' 				=> '',
-				'SHOW_OCCU' 			=> '1',
-				'RESIZE_THUMBS'			=> '1',
-				'THUMB_SIZE'			=> '60',
-				'THUMB_RESIZE_FORMAT'	=> '2',
-				'USE_SQUARE_THUMBS'		=> '1'
-			);
-			$key = 0;
-		}
+	protected function tree() {
+		global $WT_TREE;
 
-		// country could be disabled and thus not set
-		if ($value == 'country' && !array_key_exists(strtoupper($value), $FTV_OPTIONS[$key])) {
-			return '';
-		} elseif ($value) {
-			return($FTV_OPTIONS[$key][strtoupper($value)]);
+		$tree = WT_Tree::getIdFromName(WT_Filter::get('ged'));
+		if ($tree) {
+			return $tree;
 		} else {
-			return $FTV_OPTIONS[$key];
+			return $WT_TREE;
+		}
+	}
+
+	/**
+	 * Set the default module options
+	 *
+	 * @param type $key
+	 * @return string
+	 */
+	private function setDefault($key) {
+		$FTV_DEFAULT = array(
+			'USE_FULLNAME'			 => '0',
+			'NUMBLOCKS'				 => '0',
+			'CHECK_RELATIONSHIP'	 => '0',
+			'SHOW_SINGLES'			 => '0',
+			'SHOW_PLACES'			 => '1',
+			'USE_GEDCOM_PLACES'		 => '0',
+			'COUNTRY'				 => '',
+			'SHOW_OCCU'				 => '1',
+			'SHOW_IMGS'				 => '1',
+			'RESIZE_THUMBS'			 => '1',
+			'THUMB_SIZE'			 => '60',
+			'THUMB_RESIZE_FORMAT'	 => '2',
+			'USE_SQUARE_THUMBS'		 => '1',
+		);
+		return $FTV_DEFAULT[$key];
+	}
+
+	/**
+	 * Get module options
+	 * @param type $k
+	 * @return type
+	 */
+	public function options($module, $k) {
+		$FTV_OPTIONS = unserialize(get_module_setting($module, 'FTV_OPTIONS'));
+		$key		 = strtoupper($k);
+
+		if (empty($FTV_OPTIONS[$this->tree()->getTreeId()]) || (is_array($FTV_OPTIONS[$this->tree()->getTreeId()]) && !array_key_exists($key, $FTV_OPTIONS[$this->tree()->getTreeId()]))) {
+			return $this->setDefault($key);
+		} else {
+			return($FTV_OPTIONS[$this->tree()->getTreeId()][$key]);
 		}
 	}
 
@@ -180,39 +201,37 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 	}
 
 	// Reset all settings to default
-	public function ftv_reset() {
-		WT_DB::prepare("DELETE FROM `##module_setting` WHERE setting_name LIKE 'FTV%'")->execute();
-		AddToLog($this->getTitle() . ' reset to default values', 'auth');
+	public function ftv_reset($module) {
+		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name LIKE " . $module . " AND setting_name LIKE 'FTV%'")->execute();
+		AddToLog($module . ' reset to default values', 'auth');
 	}
 
 	// Delete item
-	public function delete() {
-		$FTV_SETTINGS = unserialize(get_module_setting($this->getName(), 'FTV_SETTINGS'));
+	public function delete($module) {
+		$FTV_SETTINGS = unserialize(get_module_setting($module, 'FTV_SETTINGS'));
 		unset($FTV_SETTINGS[WT_Filter::getInteger('key')]);
 		$NEW_FTV_SETTINGS = array_merge($FTV_SETTINGS);
-		set_module_setting($this->getName(), 'FTV_SETTINGS',  serialize($NEW_FTV_SETTINGS));
-		AddToLog($this->getTitle() . ' item deleted', 'auth');
+		set_module_setting($module, 'FTV_SETTINGS',  serialize($NEW_FTV_SETTINGS));
+		AddToLog($module . ' item deleted', 'auth');
 	}
 
 	// Print functions
-	public function printPage($direction) {
+	public function printPage($module, $numblocks) {
 		$root 		= WT_Filter::get('rootid', WT_REGEX_XREF);
 		$gen  		= WT_Filter::get('gen', WT_REGEX_INTEGER);
 		$pids 		= WT_Filter::get('pids');
-		$numblocks  = $this->options('numblocks');
 
 		if ($numblocks == 0) {
 			$numblocks = 99;
 		}
 
 		$html = '';
-		if (!isset($gen) && !isset($pids)) {
-			$gen			  = 1;
-			$numblocks		  = $numblocks - 1;
-			$this->generation = array($root);
-			$this->gencount	  = 1;
-			$direction == 'ancestors' ? $this->loadAncestors($this->get_person($root), 1) : '';
-			$html .= $this->printGeneration($gen, $direction);
+		if(!isset($gen) && !isset($pids)) {
+			$gen				= 1;
+			$numblocks			= $numblocks - 1;
+			$this->generation	= array($root);
+			$html .= $this->printGeneration($gen, $module);
+			$module == 'fancy_treeview_pedigree' ? $this->loadAncestors($this->getPerson($root), 1) : '';
 		} else {
 			$this->generation = explode('|', $pids);
 		}
@@ -222,73 +241,86 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 			$pids = $this->generation;
 			unset($this->generation);
 
-			switch ($direction) {
-				case  'descendants':
-					foreach ($pids as $pid) {
-						$next_gen[] = $this->getNextGen($pid);
-					}
-					foreach ($next_gen as $descendants) {
-						if (count($descendants) > 0) {
-							foreach ($descendants as $descendant) {
-								if ($this->options('show_singles') == true || $descendant['desc'] == 1) {
-									$this->generation[] = $descendant['pid'];
-								}
-							}
-						}
-					}
-					break;
-				case 'ancestors':
-					foreach ($pids as $pid) {
-						$parents = $this->getParents($pid);
-						if (count($parents) > 0) {
-							foreach ($parents as $parent) {
-								$this->generation[] = $parent;
-							}
-						}
-					}
-					break;
+			foreach ($pids as $pid) {
+				$next_gen[] = $this->getNextGen($pid);
 			}
 
+			switch ($module) {
+			case 'fancy_treeview':
+				foreach ($pids as $pid) {
+					$next_gen[] = $this->getNextGen($pid);
+				}
+				foreach ($next_gen as $descendants) {
+					if (count($descendants) > 0) {
+						foreach ($descendants as $descendant) {
+							if ($this->options($module, 'show_singles') == true || $descendant['desc'] == 1) {
+								$this->generation[] = $descendant['pid'];
+							}
+						}
+					}
+				}
+				break;
+			case 'fancy_treeview_pedigree':
+				foreach ($pids as $pid) {
+					$parents = $this->getParents($pid);
+					if (count($parents) > 0) {
+						foreach ($parents as $parent) {
+							$this->generation[] = $parent;
+						}
+					}
+				}
+				break;
+			}
 			if (!empty($this->generation)) {
 				$gen++;
-				$direction == 'ancestors' ? $this->gencount = count($this->generation) : '';
-				$html .= $this->printGeneration($gen, $direction);
+				$module == 'fancy_treeview_pedigree' ? $this->gencount = count($this->generation) : '';
+				$html .= $this->printGeneration($gen, $module);
 				unset($next_gen, $descendants, $pids);
 			} else {
 				return $html;
 			}
-
 		}
 		return $html;
 	}
 
-	public function printGeneration($i, $direction) {
-		// added data attributes to retrieve values easily with jquery (for scroll reference to next generations).
-		$html = '<li class="block generation-block" data-gen="' . $i . '" data-pids="' . implode('|', $this->generation) . '">' . $this->printBlockHeader($i, $direction);
+	/**
+	 * Print a generation
+	 *
+	 * @param type $i
+	 * @param type $module
+	 * @return string
+	 */
+	protected function printGeneration($i, $module) {
+		// added data attributes to retrieve values easily with jquery (for scroll reference en next generations).
+		$html = '<li class="block generation-block" data-gen="' . $i . '" data-pids="' . implode('|', $this->generation) . '">' .
+			$this->printBlockHeader($i, $module);
 
-		if ($this->check_privacy($this->generation, true)) {
-			$html .= '<div class="blockcontent generation private">' . WT_I18N::translate('The details of this generation are private.') . '</div>';
+		if ($this->checkPrivacy($this->generation, true)) {
+			$html .= $this->printPrivateBlock();
 		} else {
-			$html .= $this->printBlockContent();
+			$html .= $this->printBlockContent($module);
 		}
 
 		$html .= '</li>';
 
 		return $html;
-
 	}
 
-	/** {@inheritdoc} */
-	protected function printBlockHeader($i, $direction) {
-		switch ($direction) {
-			case 'descendants':
-				$title = '<span class="header-title">' . WT_I18N::translate('Generation') . ' ' . $i . '</span>';
-				break;
-			case 'ancestors':
-				$gentotal	= pow(2, $i - 1);
-				$genperc	= number_format($this->gencount / $gentotal * 100, 2) . '%';
-				$title = '<span class="header-title">' . WT_I18N::translate('Generation') . ' ' . $i . ' (' . $this->gencount . ' ' . WT_I18N::translate('of') . ' ' . pow(2, $i - 1) . ' - ' . $genperc . ' ' . WT_I18N::translate('complete') . ')</span>';
-				break;
+	/**
+	 * Print the header for each generation
+	 *
+	 * @param type $i
+	 * @param type $module
+	 * @return string
+	 */
+	protected function printBlockHeader($i, $module) {
+
+		$title = '<span class="header-title">' . WT_I18N::translate('Generation') . ' ' . $i . '</span>';
+		if ($module == 'fancy_treeview_pedigree' && $i > 1 ) {
+			$gentotal	= pow(2, $i - 1);
+			$genperc	= number_format($this->gencount / $gentotal * 100, 2) . '%';
+			$title		.= '<span class="header-subtitle">' . /* I18N: display calculation of inviduals recorded per generation on ancestors report */ WT_I18N::translate('(%1s of %2s - %3s complete)', $this->gencount, $gentotal, $genperc) . '</span>
+			';
 		}
 
 		return
@@ -298,98 +330,130 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 			'</div>';
 	}
 
-
 	/**
 	 *
 	 * @return string
 	 */
-	protected function printBlockContent() {
+	protected function printBlockContent($module) {
 		$html = '<ol class="blockcontent generation">';
-			foreach (array_unique($this->generation) as $pid) {
-				$person = $this->get_person($pid);
-				// only list persons without parents in the same generation - if they have they will be listed in the next generation anyway.
-				// This prevents double listings
-				if(!$this->has_parents_in_same_generation($person, $this->generation)) {
-					$family = $this->get_family($person);
-					if(!empty($family)) {
-						$id = $family->getXref();
-					}
-					else {
-						if ($this->options('show_singles') == true || !$person->getSpouseFamilies()) {
-							$id = 'S' . $pid;
-						} // Added prefix (S = Single) to prevent double id's.
-					}
-					$class = $person->canDisplayDetails() ? 'family' : 'family private';
-					$html .= '<li id="' . $id . '" class="' . $class . '">' . $this->print_person($person) . '</li>';
+		foreach (array_unique($this->generation) as $pid) {
+			$person = $this->getPerson($pid);
+			if (!$this->hasParentsInSameGeneration($person)) {
+				$family = $this->getFamily($person);
+				if (!empty($family)) {
+					$id = $family->getXref();
+				} else {
+					if ($this->options($module, 'show_singles') == true || !$person->getSpouseFamilies()) {
+						$id = 'S' . $pid;
+					} // Added prefix (S = Single) to prevent double id's.
 				}
+				$class = $person->canDisplayDetails() ? 'family' : 'family private';
+				$html .= '<li id="' . $id . '" class="' . $class . '">' . $this->printPerson($person, $module) . '</li>';
 			}
+		}
 		$html .= '</ol>';
-
 		return $html;
 	}
 
-	public function print_person($person) {
+	/**
+	 * Print back-to-top link
+	 *
+	 * @param type $i
+	 * @return string
+	 */
+	protected function printBackToTopLink($i) {
+		if ($i > 1) {
+			return '<a href="#fancy_treeview-page" class="header-link scroll">' . WT_I18N::translate('back to top') . '</a>';
+		}
+	}
+
+	/**
+	 * Print private block content
+	 *
+	 * @return string
+	 */
+	protected function printPrivateBlock() {
+		return
+			'<div class="blockcontent generation private">' .
+				WT_I18N::translate('The details of this generation are private.') .
+			'</div>';
+	}
+
+	/**
+	 * Print the content for one person
+	 *
+	 * @param type $person
+	 * @param type $module
+	 * @return string (html)
+	 */
+	public function printPerson($person, $module) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		if($person->canDisplayDetails()) {
-			$resize = $this->options('resize_thumbs') === 1 ? true : false;
-			$html = '<div class="parents">' . $this->print_thumbnail($person, $this->options('thumb_size'), $this->options('thumb_resize_format'), $this->options('use_square_thumbs'), $resize) . '<a id="' . $person->getXref() . '" href="' . $person->getHtmlUrl() . '"><p class="desc">' . $person->getFullName() . '</a>';
-			if ($this->options('show_occu') == true) {
-				$html .= $this->printFact($person, 'OCCU');
-			}
-
-			$html .= $this->printParents($person).$this->printLifespan($person);
-
-			// get a list of all the spouses
-			// First, determine the true number of spouses by checking the family gedcom
-			$spousecount = 0;
-			foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
-				$spouse = $family->getSpouse($person);
-				if ($spouse && $spouse->canDisplayDetails() && ($family->getMarriage() || $family->isNotMarried())) {
-					$spousecount++;
+			$html = '<div class="parents">';
+				$this->options($module, 'show_imgs') ? $html .= $this->printThumbnail($person, $module) : $html .= '';
+				$html .=  '<a id="' . $person->getXref() . '" href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
+				if ($module == 'fancy_treeview_pedigree') {
+					$sosa = array_search($person, $this->ancestors, true);
+					$html .= '<sup>' . $sosa . '</sup>';
 				}
-			}
-      /*
-       * Now iterate thru spouses
-       * $spouseindex is used for ordinal rather than array index
-       * as not all families have a spouse
-       * $spousecount is passed rather than doing each time inside function get_spouse
-      */
-			if($spousecount > 0) {
-				$spouseindex = 0;
+				if ($this->options($module, 'show_occu')) {
+					$html .= $this->printOccupations($person) . ', ';
+				}
+
+				$html .= $this->printParents($person) . $this->printLifespan($module, $person);
+
+				// get a list of all the spouses
+				// First, determine the true number of spouses by checking the family gedcom
+				$spousecount = 0;
 				foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
 					$spouse = $family->getSpouse($person);
-					if ($spouse && $spouse->canDisplayDetails()) {
-						$marriage = $family->getMarriage();
-						if ($marriage && $marriage->canShow()) {
-							$html .= $this->printSpouse($family, $person, $spouse, $spouseindex, $spousecount);
-							$spouseindex++;
-						} else {
-							$html .= $this->printPartner($family, $person, $spouse);
-						}
-
+					if ($spouse && $spouse->canDisplayDetails() && ($family->getMarriage() || $family->isNotMarried())) {
+						$spousecount++;
 					}
 				}
-			}
+		      /*
+		       * Now iterate thru spouses
+		       * $spouseindex is used for ordinal rather than array index
+		       * as not all families have a spouse
+		       * $spousecount is passed rather than doing each time inside function get_spouse
+		      */
+				if($spousecount > 0) {
+					$spouseindex = 0;
+					foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $i => $family) {
+						$spouse = $family->getSpouse($person);
+						if ($spouse && $spouse->canDisplayDetails()) {
+							$marriage = $family->getMarriage();
+							if ($marriage && $marriage->canShow()) {
+								$html .= $this->printSpouse($family, $person, $spouse, $spouseindex, $spousecount, $module);
+								$spouseindex ++;
+							} else {
+								$html .= $this->printPartner($family, $person, $spouse, $module);
+							}
 
-			$html .= '</p></div>';
+						}
+					}
+				}
 
-			// get children for each couple (could be none or just one, $spouse could be empty, includes children of non-married couples)
-			foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
-				$spouse = $family->getSpouse($person);
-				$html .= $this->printChildren($family, $person, $spouse);
-			}
+				if ($module == 'fancy_treeview') {
+					// get children for each couple (could be none or just one, $spouse could be empty, includes children of non-married couples)
+					foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
+						$spouse = $family->getSpouse($person);
+						$html .= $this->printChildren($family, $person, $spouse, $module);
+					}
+				}
+
+			$html .= '</div>';
 
 			return $html;
-		}
-		else {
+		} else {
 			if ($SHOW_PRIVATE_RELATIONSHIPS) {
 				return WT_I18N::translate('The details of this family are private.');
 			}
 		}
 	}
 
-	public function printSpouse($family, $person, $spouse, $i, $count) {
+	public function printSpouse($family, $person, $spouse, $i, $count, $module) {
 
 		$html = ' ';
 
@@ -473,16 +537,15 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 				$html .= '. ';
 			}
 			$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcountM[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcountF[$i]);
-		}
-		else {
+		} else {
 			$person->getSex() == 'M' ? $html .= '<br>' . WT_I18N::translate('He married') : $html .= '<br>' . WT_I18N::translate('She married');
 		}
 
 		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
 
 		// Add relationship note
-		if($this->options('check_relationship')) {
-			$relationship = $this->check_relationship($person, $spouse, $family);
+		if($this->options($module, 'check_relationship')) {
+			$relationship = $this->checkRelationship($person, $spouse, $family);
 			if ($relationship) {
 				$html .= ' (' . $relationship . ')';
 			}
@@ -492,27 +555,26 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 
 		if(!$family->getMarriage()) { // use the default privatized function to determine if marriage details can be shown.
 			$html .= '.';
-		}
-		else {
+		} else {
 			// use the facts below only on none private records.
 			$marrdate = $family->getMarriageDate();
 			$marrplace = $family->getMarriagePlace();
 			if ($marrdate && $marrdate->isOK()) {
-				$html .= $this->print_date($marrdate);
+				$html .= $this->printDate($marrdate);
 			}
 			if (!is_null($family->getMarriagePlace())) {
-				$html .= $this->printPlace($family->getMarriagePlace());
+				$html .= $this->printPlace($family->getMarriagePlace(), $module);
 			}
-			$html .= $this->printLifespan($spouse, true);
+			$html .= $this->printLifespan($module, $spouse, true);
 
 			if($family->isDivorced()) {
-				$html .= $person->getFullName() . ' ' . WT_I18N::translate('and') . ' ' . $spouse->getFullName() .  ' ' . WT_I18N::translate('divorced') . $this->print_divorce_date($family) . '.';
+				$html .= /* I18N: details of a couple divorce */WT_I18N::translate('They divorced %s.', $this->printDivorceDate($family));
 			}
 		}
 		return $html;
 	}
 
-	public function printPartner($family, $person, $spouse) {
+	public function printPartner($family, $person, $spouse, $module) {
 		$html = ' ';
 		switch ($person->getSex()) {
 			case 'M':
@@ -526,34 +588,31 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 				break;
 		}
 		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
-		$html .= $this->printRelationship($person, $spouse, $family);
+		$html .= $this->printRelationship($person, $spouse, $family, $module);
 		$html .= $this->printParents($spouse);
-		if ($family->getFacts('_NMR') && $this->printLifespan($spouse, true)) {
-			$html .= $this->printLifespan($spouse, true);
+		if ($family->getFacts('_NMR') && $this->printLifespan($module, $spouse, true)) {
+			$html .= $this->printLifespan($module, $spouse, true);
 		}
 
 		return $html;
 	}
 
-	public function printChildren($family, $person, $spouse) {
+	public function printChildren($family, $person, $spouse, $module) {
 		$html = '';
-
 		$match = null;
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
 			$html .= '<div class="children"><p>' . $person->getFullName() . ' ';
 					if($spouse && $spouse->canDisplayDetails()) {
 						$html .= /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ').$spouse->getFullName() . ' ';
 						$html .= WT_I18N::translate_c('Two parents/one child', 'had');
-					}
-					else {
+					} else {
 						$html .= WT_I18N::translate_c('One parent/one child', 'had');
 					}
 					$html .= ' ' . /* I18N: 'no' is the number zero  */ WT_I18N::translate('no') . ' ' . WT_I18N::translate('children') . '.</p></div>';
-		}
-		else {
+		} else {
 			$children = $family->getChildren();
 			if($children) {
-				if ($this->check_privacy($children)) {
+				if ($this->checkPrivacy($children)) {
 					$html .= '<div class="children"><p>' . $person->getFullName() . ' ';
 					// needs multiple translations for the word 'had' to serve different languages.
 					if($spouse && $spouse->canDisplayDetails()) {
@@ -563,8 +622,7 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 						} else {
 							$html .= WT_I18N::translate_c('Two parents/one child', 'had');
 						}
-					}
-					else {
+					} else {
 						if (count($children) > 1) {
 							$html .= WT_I18N::translate_c('One parent/multiple children', 'had');
 						} else {
@@ -572,31 +630,28 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 						}
 					}
 					$html .= ' './* I18N: %s is a number */ WT_I18N::plural('%s child', '%s children', count($children), count($children)) . '.</p></div>';
-				}
-				else {
-					$html .= '<div class="children"><p>'. /* I18N: Note the space at the end of the string */ WT_I18N::translate('Children of ').$person->getFullName();
+				} else {
+					$html .= '<div class="children"><p>'. /* I18N: Note the space at the end of the string */ WT_I18N::translate('Children of ') . $person->getFullName();
 					if($spouse && $spouse->canDisplayDetails()) {
 						$html .= ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 						if (!$family->getMarriage()) {
 							// check relationship first (If a relationship is found the information of this parent is printed elsewhere on the page.)
-							if ($this->options('check_relationship')) {
-								$relationship = $this->check_relationship($person, $spouse, $family);
+							if ($this->options($module, 'check_relationship')) {
+								$relationship = $this->checkRelationship($person, $spouse, $family);
 							}
 							if(isset($relationship) && $relationship) {
 								$html .= $spouse->getFullName() . ' (' . $relationship.')';
-							}
-							else {
+							} else {
 								// the non-married spouse is not mentioned in the parents div text or elsewhere on the page. So put a link behind the name.
 								$html .= '<a class="tooltip" title="" href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
 								// Print info of the non-married spouse in a tooltip
-								$html .= '<span class="tooltip-text">' . $this->print_tooltip($spouse) . '</span>';
+								$html .= '<span class="tooltip-text">' . $this->printTooltip($spouse) . '</span>';
 							}
-						}
-						else {
+						} else {
 							$html .= $spouse->getFullName();
 						}
 					}
-					$html .= ':<ol>';
+					$html .= '<ol>';
 
 					foreach ($children as $child) {
 						if ($child->canDisplayDetails()) {
@@ -621,19 +676,19 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 								$html .= '<span class="lifespan"> (' . $child->getLifeSpan() . ')</span>';
 							}
 
-							$child_family = $this->get_family($child);
+							$child_family = $this->getFamily($child);
+							$module == 'fancy_treeview' ? $class = 'scroll' : $class = '';
 							if ($child->canDisplayDetails() && $child_family) {
-									$html .= ' - <a class="scroll" href="#' . $child_family->getXref() . '"></a>';
-							}
-							else { // just go to the person details in the next generation (added prefix 'S'for Single Individual, to prevent double ID's.)
-								if ($this->options('show_singles') == true) {
-									$html .= ' - <a class="scroll" href="#S' . $child->getXref() . '"></a>';
+								$html .= ' <a class="' . $class . '" href="#' . $child_family->getXref() . '"></a>';
+							} else { // just go to the person details in the next generation (added prefix 'S'for Single Individual, to prevent double ID's.)
+								if ($this->options($module, 'show_singles') == true) {
+									$html .= ' <a class="' . $class . '" href="#S' . $child->getXref() . '"></a>';
 								}
 							}
 							$html .= '</li>';
 						}
 					}
-					$html .= '</ol></div>';
+					$html .= '</ol></p></div>';
 				}
 			}
 		}
@@ -692,7 +747,49 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 		}
 	}
 
-	public function printLifespan($person, $is_spouse = false){
+	/**
+	 * Print occupations
+	 *
+	 * @param type $person
+	 * @param type $tag
+	 * @return string
+	 */
+	protected function printOccupations(WT_Person $person) {
+		$html		 = '';
+		$occupations = $person->getAllFactsByType('OCCU', true);
+		$count		 = count($occupations);
+		foreach ($occupations as $num => $fact) {
+			$str = $fact->getDetail();
+			$str = rtrim($str, ".");
+
+			if ($num > 0 && $num === $count - 1) {
+				$html .= ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
+			} else {
+				$html .= ', ';
+			}
+
+			// In the Gedcom file most occupations are probably written with a capital (as a single word)
+			// but use lcase/ucase to be sure the occupation is spelled the right way since we are using
+			// it in the middle of a sentence.
+			// In German all occupations are written with a capital.
+			// Are there any other languages where this is the case?
+			if (in_array(WT_LOCALE, array('de'))) {
+				$html .= rtrim(ucfirst($fact->getValue('OCCU')), ".");
+			} else {
+				$html .= rtrim(lcfirst($str), ".");
+			}
+
+			$date = $this->printDate($fact->getDate('OCCU'));
+			if ($date) {
+				$html .= ' (' . trim($date) . ')';
+			}
+		}
+		return $html;
+	}
+
+
+
+	public function printLifespan($module, $person, $is_spouse = false){
 		$html = '';
 		$birthdate = $person->getBirthDate();
 		$deathdate = $person->getDeathdate();
@@ -719,10 +816,10 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 				}
 			}
 			if ($birthdate->isOK()) {
-				$html .= $this->print_date($birthdate);
+				$html .= $this->printDate($birthdate);
 			}
 			if ($person->getBirthPlace() != '') {
-				$html .= $this->printPlace($person->getBirthPlace());
+				$html .= $this->printPlace($person->getBirthPlace(), $module);
 			}
 		}
 
@@ -738,10 +835,10 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 			}
 
 			if ($deathdate->isOK()) {
-				$html .= $this->print_date($deathdate);
+				$html .= $this->printDate($deathdate);
 			}
 			if ($person->getDeathPlace() != '') {
-				$html .= $this->printPlace($person->getDeathPlace());
+				$html .= $this->printPlace($person->getDeathPlace(), $module);
 			}
 
 			if ($birthdate->isOK() && $deathdate->isOK()) {
@@ -762,7 +859,7 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 	}
 
 	// some couples are known as not married but have children together. Print the info of the "spouse" parent in a tooltip.
-	public function print_tooltip($person) {
+	public function printTooltip($person) {
 		$birthdate = $person->getBirthDate();
 		$deathdate = $person->getDeathdate();
 		$html = '';
@@ -787,10 +884,10 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 		return $html;
 	}
 
-	public function printRelationship($person, $spouse, $family) {
+	public function printRelationship($person, $spouse, $family, $module) {
 		$html = '';
-		if ($this->options('check_relationship')) {
-			$relationship = $this->check_relationship($person, $spouse, $family);
+		if ($this->options($module, 'check_relationship')) {
+			$relationship = $this->checkRelationship($person, $spouse, $family);
 			if ($relationship) {
 				$html .= ' (' . $relationship . ')';
 			}
@@ -798,130 +895,69 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 		return $html;
 	}
 
-	public function print_thumbnail($person, $thumbsize, $resize_format, $square, $resize) {
+	/**
+	 * Print the Fancy thumbnail for this individual
+	 *
+	 * @param type $person
+	 * @return thumbnail
+	 */
+	protected function printThumbnail(WT_Person $person, $module) {
 		$mediaobject = $person->findHighlightedMedia();
 		if ($mediaobject) {
-			$html = '';
-			if($resize == true) {
-				$mediasrc = $resize_format == 1 ? $mediaobject->getServerFilename('thumb') : $mediaobject->getServerFilename('main');
-				$thumbwidth = $thumbsize; $thumbheight = $thumbsize;
-				$mediatitle = strip_tags($person->getFullName());
-
-				$type = $mediaobject->mimeType();
-				if($type == 'image/jpeg' || $type == 'image/png' || $mimetype === 'image/gif') {
-
-					if (!list($width_orig, $height_orig) = @getimagesize($mediasrc)) {
-						return null;
-					}
-
-					switch ($type) {
-						case 'image/jpeg':
-							$image = @imagecreatefromjpeg($mediasrc);
-							break;
-						case 'image/png':
-							$image = @imagecreatefrompng($mediasrc);
-							break;
-						case 'image/gif':
-							$image	 = imagecreatefromgif($mediasrc);
-							break;
-						}
-
-					// fallback if image is in the database but not on the server
-					if(isset($width_orig) && isset($height_orig)) {
-						$ratio_orig = $width_orig/$height_orig;
-					}
-					else {
-						$ratio_orig = 1;
-					}
-
-					if($resize_format == 1) {
-						$thumbwidth = $thumbwidth/100 * $width_orig;
-						$thumbheight = $thumbheight/100 * $height_orig;
-					}
-
-					if($square == true) {
-						$thumbheight = $thumbwidth;
-						if ($ratio_orig < 1) {
-						   $new_height = $thumbwidth/$ratio_orig;
-						   $new_width = $thumbwidth;
-						} else {
-						   $new_width = $thumbheight*$ratio_orig;
-						   $new_height = $thumbheight;
-						}
-					}
-					else {
-						if($resize_format == 1) {
-							$new_width = $thumbwidth;
-							$new_height = $thumbheight;
-						} elseif ($width_orig > $height_orig) {
-							$new_height = $thumbheight/$ratio_orig;
-							$new_width 	= $thumbwidth;
-						} elseif ($height_orig > $width_orig) {
-						   $new_width 	= $thumbheight*$ratio_orig;
-						   $new_height 	= $thumbheight;
-						} else {
-							$new_width 	= $thumbwidth;
-							$new_height = $thumbheight;
-						}
-					}
-					$process = @imagecreatetruecolor(round($new_width), round($new_height));
-					if($type == 'image/png') { // keep transparancy for png files.
-						imagealphablending($process, false);
-						imagesavealpha($process, true);
-					}
-					@imagecopyresampled($process, $image, 0, 0, 0, 0, $new_width, $new_height, $width_orig, $height_orig);
-
-					$thumb = $square == true ? imagecreatetruecolor($thumbwidth, $thumbheight) : imagecreatetruecolor($new_width, $new_height);
-					if($type == 'image/png') {
-						imagealphablending($thumb, false);
-						imagesavealpha($thumb, true);
-					}
-					@imagecopyresampled($thumb, $process, 0, 0, 0, 0, $thumbwidth, $thumbheight, $thumbwidth, $thumbheight);
-
-					@imagedestroy($process);
-					@imagedestroy($image);
-
-					$width = $square == true ? round($thumbwidth) : round($new_width);
-					$height = $square == true ? round($thumbheight) : round($new_height);
-					ob_start(); $type = 'image/png' ? imagepng($thumb,null,9) : imagejpeg($thumb,null,100); $newThumb = ob_get_clean();
-					$html = '<a' .
-							' class="'          	. 'gallery'                         			 	. '"' .
-							' href="'           	. $mediaobject->getHtmlUrlDirect('main')    		. '"' .
-							' type="'           	. $mediaobject->mimeType()                  		. '"' .
-							' data-obje-url="'  	. $mediaobject->getHtmlUrl()                		. '"' .
-							' data-obje-note="' 	. htmlspecialchars($mediaobject->getNote())			. '"' .
-							' data-obje-xref="'		. $mediaobject->getXref()							. '"' .
-							' data-title="'     	. WT_Filter::escapeHtml($mediaobject->getFullName()). '"' .
-							'><img class="ftv-thumb" src="data:' . $mediaobject->mimeType() . ';base64,'.base64_encode($newThumb) . '" dir="auto" title="' . $mediatitle . '" alt="' . $mediatitle . '" width="' . $width . '" height="' . $height . '"/></a>';
-				}
+			$cache_filename = $this->getThumbnail($mediaobject, $module);
+			if (is_file($cache_filename)) {
+				$imgsize = getimagesize($cache_filename);
+				$image	 = '<img' .
+					' dir="' . 'auto' . '"' . // For the tool-tip
+					' src="module.php?mod=' . $module . '&amp;mod_action=thumbnail&amp;mid=' . $mediaobject->getXref() . '&amp;thumb=2&amp;cb=' . $mediaobject->getEtag() . '"' .
+					' alt="' . strip_tags($person->getFullName()) . '"' .
+					' title="' . strip_tags($person->getFullName()) . '"' .
+					' data-cachefilename="' . basename($cache_filename) . '"' .
+					' ' . $imgsize[3] . // height="yyy" width="xxx"
+					'>';
+				return
+					'<a' .
+					' class="' . 'gallery' . '"' .
+					' href="' . $mediaobject->getHtmlUrlDirect() . '"' .
+					' type="' . $mediaobject->mimeType() . '"' .
+					' data-obje-url="' . $mediaobject->getHtmlUrl() . '"' .
+					' data-obje-note="' . WT_Filter::escapeHtml($mediaobject->getNote()) . '"' .
+					' data-title="' . strip_tags($person->getFullName()) . '"' .
+					'>' . $image . '</a>';
+			} else {
+				return $mediaobject->displayImage();
 			}
-			else {
-				$html = $mediaobject->displayImage();
-			}
-			return $html;
 		}
 	}
 
-	public function print_date($date) {
-		if($date->qual1 || $date->qual2) {
-			return ' ' . $date->Display();
-		}
-		if($date->MinDate()->d > 0) {
-			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat dd-mm-yyyy', 'on ').$date->Display();
-		}
-		if($date->MinDate()->m > 0) {
-			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat mmm yyyy', 'in ').$date->Display();
-		}
-		if($date->MinDate()->y > 0) {
-			return ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat yyyy', 'in ').$date->Display();
+	/**
+	 * Function to print dates with the right syntax
+	 *
+	 * @param type $fact
+	 * @return type
+	 */
+	protected function printDate($date) {
+		if ($date && $date->isOK()) {
+			if($date->qual1 || $date->qual2) {
+				return ' ' . $date->Display();
+			}
+			if ($date->MinDate()->d > 0) {
+				return ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat dd-mm-yyyy', 'on ') . $date->Display();
+			}
+			if ($date->MinDate()->m > 0) {
+				return ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat mmm yyyy', 'in ') . $date->Display();
+			}
+			if ($date->MinDate()->y > 0) {
+				return ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat yyyy', 'in ') . $date->Display();
+			}
 		}
 	}
 
-	public function print_divorce_date($family) {
+	public function printDivorceDate($family) {
 		foreach ($family->getAllFactsByType(explode('|', WT_EVENTS_DIV)) as $event) {
 			// Only display if it has a date
 			if ($event->getDate()->isOK() && $event->canShow()) {
-				return $this->print_date($event->getDate());
+				return $this->printDate($event->getDate());
 			}
 		}
 	}
@@ -938,14 +974,14 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 		}
 	}
 
-	public function printPlace($place) {
-		if($this->options('show_places') == true) {
+	public function printPlace($place, $module) {
+		if($this->options($module, 'show_places') == true) {
 			$place = new WT_Place($place, WT_GED_ID);
 			$html = ' '. /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before placesnames', 'in ');
-			if	($this->options('use_gedcom_places') == true) {
+			if	($this->options($module, 'use_gedcom_places') == true) {
 				$html .= $place->getShortName();
 			} else {
-				$country = $this->options('country');
+				$country = $this->options($module, 'country');
 				$new_place = array_reverse(explode(", ", $place->getGedcomName()));
 				if (!empty($country) && $new_place[0] == $country) {
 					unset($new_place[0]);
@@ -959,26 +995,19 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 	}
 
 	// Other functions
-
-	/** @var Individual[] Ancestors of the root person - for SOSA numbers */
-	private $ancestors = array();
-
-	/** @var integer count number of individuals in generation */
-	private $gencount;
-
-	public function get_person($pid) {
+	public function getPerson($pid) {
 		$person = WT_Person::getInstance($pid);
 		return $person;
 	}
 
-	public function get_family($person) {
+	public function getFamily($person) {
 		foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
 			return $family;
 		}
 	}
 
 	public function getNextGen($pid) {
-		$person = $this->get_person($pid);
+		$person = $this->getPerson($pid);
 		foreach($person->getSpouseFamilies() as $family) {
 			$children = $family->getChildren();
 			if($children) {
@@ -995,7 +1024,7 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 	}
 
 	// check if a person has parents in the same generation
-	public function has_parents_in_same_generation($person, $generation) {
+	public function hasParentsInSameGeneration($person) {
 		$parents = $person->getPrimaryChildFamily();
 		if ($parents) {
 			$father = $parents->getHusband();
@@ -1006,14 +1035,14 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 			if ($mother) {
 				$mother = $mother->getXref();
 			}
-			if(in_array($father, $generation) || in_array($mother, $generation)) {
+			if(in_array($father, $this->generation) || in_array($mother, $this->generation)) {
 				return true;
 			}
 		}
 	}
 
 	// check (blood) relationship between partners
-	public function check_relationship($person, $spouse, $family) {
+	public function checkRelationship($person, $spouse, $family) {
 		$count = count($family->getChildren());
 		for($i = 0; $i <= $count; $i++) { // the number of paths is equal to the number of children, because every relationship is checked through each child.
 										  // and we need the relationship from the next path.
@@ -1049,11 +1078,11 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 		}
 	}
 
-	public function check_privacy($record, $xrefs = false) {
+	public function checkPrivacy($record, $xrefs = false) {
 		$count = 0;
 		foreach ($record as $person) {
 			if ($xrefs) {
-				$person = $this->get_person($person);
+				$person = $this->getPerson($person);
 			}
 			if($person->canDisplayDetails()) {
 				$count++;
@@ -1064,25 +1093,16 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 		}
 	}
 
-	public function getImageData() {
-		Zend_Session::writeClose();
-		header('Content-type: text/html; charset=UTF-8');
-		$xref = WT_Filter::get('mid');
-		$mediaobject = WT_Media::getInstance($xref);
-		if ($mediaobject) {
-			echo $mediaobject->getServerFilename();
-		}
-	}
-
 	/**
 	 * Get the parents of this person
 	 *
 	 * @param type $pid
 	 * @return array of xrefs
+	 * @return filename
 	 */
 	private function getParents($pid) {
-		$this->individual	 = $this->get_person($pid);
-		$family	 = $this->individual->getPrimaryChildFamily();
+		$this->individual	= $this->getPerson($pid);
+		$family				= $this->individual->getPrimaryChildFamily();
 
 		if ($family) {
 			foreach ($family->getSpouses() as $parent) {
@@ -1111,15 +1131,229 @@ class WT_Controller_FancyTreeView extends fancy_treeview_WT_Module {
 	}
 
 	/**
-	 * Print back-to-top link
+	 * Get the ftv_cache directory
 	 *
-	 * @param type $i
-	 * @return string
+	 * @return directory name
 	 */
-	protected function printBackToTopLink($i) {
-		if ($i > 1) {
-			return '<a href="#body" class="header-link scroll noprint">' . WT_I18N::translate('back to top') . '</a>';
+	public function cacheDir($module) {
+		return WT_DATA_DIR . $module . '_cache/';
+	}
+
+	/**
+	 * Get the filename of the cached image
+	 *
+	 * @param Media $mediaobject
+	 * @return filename
+	 */
+	public function cacheFileName(WT_Media $mediaobject, $module) {
+		return $this->cacheDir($module) . $this->tree()->getTreeId() . '-' . $mediaobject->getXref() . '-' . filemtime($mediaobject->getServerFilename()) . '.' . $mediaobject->extension();
+	}
+
+	/**
+	 * remove all old cached files
+	 */
+	public function emptyCache($module) {
+		foreach (glob($this->cacheDir($module) . '*') as $cache_file) {
+			if (is_file($cache_file)) {
+				unlink($cache_file);
+			}
 		}
 	}
+
+	/**
+	 * Check if thumbnails from cache should be recreated
+	 *
+	 * @param type $mediaobject
+	 * @return string filename
+	 */
+	private function getThumbnail(WT_Media $mediaobject, $module) {
+		$cache_dir = $this->cacheDir($module);
+
+		if (!file_exists($cache_dir)) {
+			WT_File::mkdir($cache_dir);
+		}
+
+		if (file_exists($mediaobject->getServerFilename())) {
+			$cache_filename = $this->cacheFileName($mediaobject, $module);
+
+			if (!is_file($cache_filename)) {
+				if ($this->options($module, 'resize_thumbs')) {
+					$thumbnail	 = $this->fancyThumb($mediaobject, $module);
+					$mimetype	 = $mediaobject->mimeType();
+					if ($mimetype === 'image/jpeg') {
+						imagejpeg($thumbnail, $cache_filename);
+					} elseif ($mimetype === 'image/png') {
+						imagepng($thumbnail, $cache_filename);
+					} elseif ($mimetype === 'image/gif') {
+						imagegif($thumbnail, $cache_filename);
+					} else {
+						return;
+					}
+				} else {
+					// if we are using the original thumbnails, copy them to the ftv_cache folder
+					// so we can cache them either and output them in the same way we would output the fancy thumbnail.
+					try {
+						copy($mediaobject->getServerFilename('thumb'), $cache_filename);
+					} catch (Exception $ex) {
+						// something went wrong while copying the default webtrees image to the ftv cache folder
+						// there is a fallback in the function printThumbnail(): output $mediaobject->displayImage();
+					}
+				}
+			}
+
+			return $cache_filename;
+		}
+	}
+
+	/**
+	 * Get the Fancy thumbnail (highlighted image)
+	 *
+	 * @param type $mediaobject
+	 * @return image
+	 */
+	private function fancyThumb($mediaobject, $module) {
+		// option 1 = percentage of original thumbnail
+		// option 2 = size in pixels
+		$resize_format = $this->options($module, 'thumb_resize_format');
+		if ($resize_format === '1') {
+			$mediasrc = $mediaobject->getServerFilename('thumb');
+		} else {
+			$mediasrc = $mediaobject->getServerFilename('main');
+		}
+
+		if (is_file($mediasrc)) {
+			$thumbsize	 = $this->options($module, 'thumb_size');
+			$thumbwidth	 = $thumbheight = $thumbsize;
+
+			$mimetype = $mediaobject->mimeType();
+			if ($mimetype === 'image/jpeg' || $mimetype === 'image/png' || $mimetype === 'image/gif') {
+
+				if (!list($imagewidth, $imageheight) = getimagesize($mediasrc)) {
+					return null;
+				}
+
+				switch ($mimetype) {
+					case 'image/jpeg':
+						$image	 = imagecreatefromjpeg($mediasrc);
+						break;
+					case 'image/png':
+						$image	 = imagecreatefrompng($mediasrc);
+						break;
+					case 'image/gif':
+						$image	 = imagecreatefromgif($mediasrc);
+						break;
+				}
+
+				// fallback if image is in the database but not on the server
+				if (isset($imagewidth) && isset($imageheight)) {
+					$ratio = $imagewidth / $imageheight;
+				} else {
+					$ratio = 1;
+				}
+
+				if ($resize_format === '1') {
+					$thumbwidth	 = $thumbwidth / 100 * $imagewidth;
+					$thumbheight = $thumbheight / 100 * $imageheight;
+				}
+
+				$square = $this->options($module, 'use_square_thumbs');
+				if ($square == true) {
+					$thumbheight = $thumbwidth;
+					if ($ratio < 1) {
+						$new_height	 = $thumbwidth / $ratio;
+						$new_width	 = $thumbwidth;
+					} else {
+						$new_width	 = $thumbheight * $ratio;
+						$new_height	 = $thumbheight;
+					}
+				} else {
+					if ($resize_format === '1') {
+						$new_width	 = $thumbwidth;
+						$new_height	 = $thumbheight;
+					} elseif ($imagewidth > $imageheight) {
+						$new_height	 = $thumbheight / $ratio;
+						$new_width	 = $thumbwidth;
+					} elseif ($imageheight > $imagewidth) {
+						$new_width	 = $thumbheight * $ratio;
+						$new_height	 = $thumbheight;
+					} else {
+						$new_width	 = $thumbwidth;
+						$new_height	 = $thumbheight;
+					}
+				}
+				$process = imagecreatetruecolor(round($new_width), round($new_height));
+				if ($mimetype == 'image/png') { // keep transparancy for png files.
+					imagealphablending($process, false);
+					imagesavealpha($process, true);
+				}
+				imagecopyresampled($process, $image, 0, 0, 0, 0, $new_width, $new_height, $imagewidth, $imageheight);
+
+				if ($square) {
+					$thumb = imagecreatetruecolor($thumbwidth, $thumbheight);
+				} else {
+					$thumb = imagecreatetruecolor($new_width, $new_height);
+				}
+
+				if ($mimetype == 'image/png') {
+					imagealphablending($thumb, false);
+					imagesavealpha($thumb, true);
+				}
+				imagecopyresampled($thumb, $process, 0, 0, 0, 0, $thumbwidth, $thumbheight, $thumbwidth, $thumbheight);
+
+				imagedestroy($process);
+				imagedestroy($image);
+
+				return $thumb;
+			}
+		}
+	}
+
+	// Implement WT_Module_Menu
+	public function getFTVMenu() {
+
+		global $SEARCH_SPIDER;
+
+		$FTV_SETTINGS_D = unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
+		$FTV_SETTINGS_A = unserialize(get_module_setting('fancy_treeview_pedigree', 'FTV_SETTINGS'));
+		$FTV_SETTINGS	= array_replace($FTV_SETTINGS_D, $FTV_SETTINGS_A);
+
+		if (!empty($FTV_SETTINGS)) {
+			if ($SEARCH_SPIDER) {
+				return null;
+			}
+
+			foreach ($FTV_SETTINGS_D as $FTV_ITEM) {
+				if ($FTV_ITEM['TREE'] == WT_GED_ID && $FTV_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
+					$FTV_GED_SETTINGS_D[] = $FTV_ITEM;
+				}
+			}
+			foreach ($FTV_SETTINGS_A as $FTV_ITEM) {
+				if ($FTV_ITEM['TREE'] == WT_GED_ID && $FTV_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
+					$FTV_GED_SETTINGS_A[] = $FTV_ITEM;
+				}
+			}
+			if (!empty($FTV_GED_SETTINGS_D) && !empty($FTV_GED_SETTINGS_A)) {
+				$menu = new WT_Menu(WT_I18N::translate('Family tree overview'), '#', 'menu-fancy_treeview');
+				foreach($FTV_GED_SETTINGS_A as $FTV_ITEM) {
+					if (WT_Person::getInstance($FTV_ITEM['PID']) && WT_Person::getInstance($FTV_ITEM['PID'])->canDisplayDetails() ) {
+						$submenu = new WT_Menu(WT_I18N::translate('Ancestors of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_pedigree&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+						$menu->addSubmenu($submenu);
+					}
+				}
+				foreach ($FTV_GED_SETTINGS_D as $FTV_ITEM) {
+					if (WT_Person::getInstance($FTV_ITEM['PID'])) {
+						if ($this->options('fancy_treeview', 'use_fullname') == true) {
+							$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+						} else {
+							$submenu = new WT_Menu(WT_I18N::translate('%s family descendants', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+						}
+						$menu->addSubmenu($submenu);
+					}
+				}
+				return $menu;
+			}
+		}
+	}
+
 
 }

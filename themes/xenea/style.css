@@ -2643,12 +2643,6 @@ div.widget {
 	padding-bottom: 10px;
 }
 
-#fancy_treeview-page #pdf {
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
 #fancy_treeview-page #page-body {
 	line-height: 1.5em;
 	margin-top: 2em;
@@ -2694,6 +2688,13 @@ div.widget {
 	border-bottom: 1px solid #84BEFF;
 	margin: 0;
 	padding: 5px 20px;
+}
+
+#fancy_treeview-page .blockheader .header-subtitle {
+	font-weight: 400;
+	font-size: 85%;
+	font-style: italic;
+	margin: 0 10px;
 }
 
 #fancy_treeview-page .blockheader .header-link {
@@ -2766,6 +2767,7 @@ div.widget {
 
 #fancy_treeview-page li.family {
 	padding: 10px 20px;
+	clear: both;
 }
 
 #fancy_treeview-page li.family.private {
@@ -2775,6 +2777,11 @@ div.widget {
 #fancy_treeview-page .parents p {
 	margin: 0;
 	text-align: justify;
+}
+
+#fancy_treeview-page .parents sup {
+	font-size: 70%;
+	padding: 0 5px;
 }
 
 #fancy_treeview-page .children {

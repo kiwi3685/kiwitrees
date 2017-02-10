@@ -23560,7 +23560,7 @@ msgstr "Error: The root person you are trying to add already exists"
 
 #: modules_v3/fancy_treeview/module.php:426
 msgid "ok"
-msgstr "Book"
+msgstr "ok"
 
 #: modules_v3/fancy_treeview/module.php:447
 msgid "Add a surname"

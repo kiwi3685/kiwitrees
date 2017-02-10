@@ -28,17 +28,21 @@
 
 /* global TextFollow, OptionsNumBlocks, RootID, ModuleName */
 
-// GENERAL JS
-    var pastefield; function paste_id(value) { pastefield.value=value; } // For the \'find indi\' link
-
 // ADMIN JS
-    jQuery(".tree").change(function(){
+	// descendants version
+    jQuery(".ftv_tree").change(function(){
         // get the config page for the selected tree
         var ged = jQuery(this).find("option:selected").data("ged");
-        window.location = "module.php?mod=' . $this->getName() . '&mod_action=admin_config&ged=" + ged;
+        window.location = "module.php?mod=fancy_treeview&mod_action=admin_config&ged=" + ged;
+    });
+	// ancestors version
+	jQuery(".ftvp_tree").change(function(){
+        // get the config page for the selected tree
+        var ged = jQuery(this).find("option:selected").data("ged");
+        window.location = "module.php?mod=fancy_treeview_pedigree&mod_action=admin_config&ged=" + ged;
     });
 
-    // make sure not both the surname and the root_id can be set at the same time.
+    // make sure not both the surname and the root_id can not be set at the same time.
     jQuery("input.root_id").prop("disabled", true);
     var find_indi = jQuery(".icon-button_indi:first").attr("onclick");
     jQuery(".icon-button_indi:first").removeAttr("onclick").css("cursor", "default");
@@ -86,7 +90,12 @@
         );
     });
 
-    jQuery("#ftv-options-form").on("click", "#resize_thumbs input[type=radio]", function () {
+    jQuery("#ftv-options-form").on("click", "#show_imgs input[type=radio]", function () {
+        var field = jQuery("#ftv-options-form").find("#images");
+        jQuery(this).val() === "1" ? field.fadeIn() : field.fadeOut();
+    });
+
+	jQuery("#ftv-options-form").on("click", "#resize_thumbs input[type=radio]", function () {
         var field = jQuery("#ftv-options-form").find("#thumb_size, #square_thumbs");
         jQuery(this).val() === "1" ? field.fadeIn() : field.fadeOut();
     });
@@ -115,14 +124,33 @@
         else jQuery("#country_list select").prop("disabled", false);
     });
 
-    jQuery("button[type=reset]").click(function(e){
+	// descendants version
+    jQuery("button.ftv_reset").click(function(e){
         jQuery("#dialog-confirm").dialog({
             resizable: false,
             width: 400,
             modal: true,
             buttons : {
                 [TextOk] : function() {
-                    window.location.href= "module.php?mod=' . $this->getName() . '&mod_action=admin_reset";
+                    window.location.href= "module.php?mod=fancy_treeview&mod_action=admin_reset";
+                    jQuery(this).dialog("close");
+                },
+                [TextCancel] : function() {
+                    jQuery(this).dialog("close");
+                }
+            }
+        });
+    });
+
+	// descendants version
+    jQuery("button.ftvp_reset").click(function(e){
+        jQuery("#dialog-confirm").dialog({
+            resizable: false,
+            width: 400,
+            modal: true,
+            buttons : {
+                [TextOk] : function() {
+                    window.location.href= "module.php?mod=fancy_treeview_pedigree&mod_action=admin_reset";
                     jQuery(this).dialog("close");
                 },
                 [TextCancel] : function() {
