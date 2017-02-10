@@ -48,7 +48,7 @@ if (WT_Filter::postBool('save')) {
 			$soundex_std = WT_Filter::postBool('soundex_std');
 			$soundex_dm = WT_Filter::postBool('soundex_dm');
 
-			$indis = $ftv->indis_array($surname, $soundex_std, $soundex_dm);
+			$indis = $ftv->indisArray($surname, $soundex_std, $soundex_dm);
 			usort($indis, array('WT_Person', 'CompareBirtDate'));
 
 			if (isset($indis) && count($indis) > 0) {

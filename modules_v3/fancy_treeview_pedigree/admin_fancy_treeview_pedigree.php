@@ -49,7 +49,7 @@ if (WT_Filter::postBool('save')) {
 			$soundex_std = WT_Filter::postBool('soundex_std');
 			$soundex_dm = WT_Filter::postBool('soundex_dm');
 
-			$indis = $ftv->indis_array($surname, $soundex_std, $soundex_dm);
+			$indis = $ftv->indisArray($surname, $soundex_std, $soundex_dm);
 			usort($indis, array('WT_Person', 'CompareBirtDate'));
 
 			if (isset($indis) && count($indis) > 0) {
@@ -330,9 +330,28 @@ $html = '<div id="fancy_treeview-config">
 					</div>
 				</div>';
 			}
-			$html .= '<div class="field">
+			$html .= '
+			<div class="field">
 				<label class="label">' . WT_I18N::translate('Show occupations') . '</label>' .
 				edit_field_yes_no('NEW_FTV_OPTIONS[SHOW_OCCU]', $ftv->options($this->getName(), 'show_occu')) . '
+			</div>
+			<div class="field">
+				<label class="label">' . WT_I18N::translate('Show sosa numbering') . '</label>' .
+				edit_field_yes_no('NEW_FTV_OPTIONS[SHOW_SOSA]', $ftv->options($this->getName(), 'show_sosa')) . '
+				<div class="help_text">
+					<span class="helpcontent">' .
+						/* I18N: Help text for the “Show sosa numbering” configuration setting */ WT_I18N::translate('if selected, the Sosa-Stradonitz or Ahnentafel number for each ancestor will be displayed after their name.') . '
+					</span>
+				</div>
+			</div>
+			<div class="field">
+				<label class="label">' . WT_I18N::translate('Show children') . '</label>' .
+				edit_field_yes_no('NEW_FTV_OPTIONS[SHOW_CHIL]', $ftv->options($this->getName(), 'show_chil')) . '
+				<div class="help_text">
+					<span class="helpcontent">' .
+						/* I18N: Help text for the “Show children” configuration setting */ WT_I18N::translate('if selected, a list of the children of each ancestral family will be displayed after each couple.') . '
+					</span>
+				</div>
 			</div>
 			<div id="show_imgs" class="field">
 				<label class="label">' . WT_I18N::translate('Show images') . '</label>' .

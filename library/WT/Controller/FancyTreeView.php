@@ -67,6 +67,8 @@ class WT_Controller_FancyTreeView {
 			'USE_GEDCOM_PLACES'		 => '0',
 			'COUNTRY'				 => '',
 			'SHOW_OCCU'				 => '1',
+			'SHOW_SOSA'				 => '1',
+			'SHOW_CHIL'				 => '1',
 			'SHOW_IMGS'				 => '1',
 			'RESIZE_THUMBS'			 => '1',
 			'THUMB_SIZE'			 => '60',
@@ -93,7 +95,7 @@ class WT_Controller_FancyTreeView {
 	}
 
 	// Get Indis from surname input
-	public function indis_array($surname, $soundex_std, $soundex_dm) {
+	public function indisArray($surname, $soundex_std, $soundex_dm) {
 		$sql =
 			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
 			" FROM `##individuals`".
@@ -392,13 +394,14 @@ class WT_Controller_FancyTreeView {
 		if ($person->canDisplayDetails()) {
 			$html = '<div class="parents">';
 				$this->options($module, 'show_imgs') ? $html .= $this->printThumbnail($person, $module) : $html .= '';
-				$html .=  '<a id="' . $person->getXref() . '" href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
-				if ($module == 'fancy_treeview_pedigree') {
+				$html .=  $this->printNameUrl($person, $person->getXref());
+				if ($module == 'fancy_treeview_pedigree' && $this->options($module, 'show_sosa')) {
 					$sosa = array_search($person, $this->ancestors, true);
 					$html .= '<sup>' . $sosa . '</sup>';
 				}
 				if ($this->options($module, 'show_occu')) {
-					$html .= $this->printOccupations($person) . ', ';
+					$html .= $this->printOccupations($person);
+					$this->printOccupations($person) ? $html .= ', ' : $html .= '';
 				}
 
 				$html .= $this->printParents($person) . $this->printLifespan($module, $person);
@@ -435,8 +438,9 @@ class WT_Controller_FancyTreeView {
 					}
 				}
 
-				if ($module == 'fancy_treeview') {
-					// get children for each couple (could be none or just one, $spouse could be empty, includes children of non-married couples)
+				// get children for each couple (could be none or just one, $spouse could be empty, includes children of non-married couples)
+				// print only print children once per couple on the ancestors version, if the "show children" option is selected.
+				if ($module == 'fancy_treeview' || ($module == 'fancy_treeview_pedigree' && $person->getSex() === 'F' && $this->options($module, 'show_chil'))) {
 					foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
 						$spouse = $family->getSpouse($person);
 						$html .= $this->printChildren($family, $person, $spouse, $module);
@@ -457,100 +461,116 @@ class WT_Controller_FancyTreeView {
 
 		$html = ' ';
 
-		// we assume no one married more then 15 times.
-		// these need to be male/female for some languages
-		$wordcountM = array(
-			WT_I18N::translate_c('MALE', 'first'),
-			WT_I18N::translate_c('MALE', 'second'),
-			WT_I18N::translate_c('MALE', 'third'),
-			WT_I18N::translate_c('MALE', 'fourth'),
-			WT_I18N::translate_c('MALE', 'fifth'),
-			WT_I18N::translate_c('MALE', 'sixth'),
-			WT_I18N::translate_c('MALE', 'seventh'),
-			WT_I18N::translate_c('MALE', 'eighth'),
-			WT_I18N::translate_c('MALE', 'ninth'),
-			WT_I18N::translate_c('MALE', 'tenth'),
-			WT_I18N::translate_c('MALE', '11th'),
-			WT_I18N::translate_c('MALE', '12th'),
-			WT_I18N::translate_c('MALE', '13th'),
-			WT_I18N::translate_c('MALE', '14th'),
-			WT_I18N::translate_c('MALE', '15th')
-		);
-
-		$wordcountF = array(
-			WT_I18N::translate_c('FEMALE', 'first'),
-			WT_I18N::translate_c('FEMALE', 'second'),
-			WT_I18N::translate_c('FEMALE', 'third'),
-			WT_I18N::translate_c('FEMALE', 'fourth'),
-			WT_I18N::translate_c('FEMALE', 'fifth'),
-			WT_I18N::translate_c('FEMALE', 'sixth'),
-			WT_I18N::translate_c('FEMALE', 'seventh'),
-			WT_I18N::translate_c('FEMALE', 'eighth'),
-			WT_I18N::translate_c('FEMALE', 'ninth'),
-			WT_I18N::translate_c('FEMALE', 'tenth'),
-			WT_I18N::translate_c('FEMALE', '11th'),
-			WT_I18N::translate_c('FEMALE', '12th'),
-			WT_I18N::translate_c('FEMALE', '13th'),
-			WT_I18N::translate_c('FEMALE', '14th'),
-			WT_I18N::translate_c('FEMALE', '15th')
-		);
-
-		$wordcount2M = array(
-			WT_I18N::translate_c('MALE', 'once'),
-			WT_I18N::translate_c('MALE', 'twice'),
-			WT_I18N::translate_c('MALE', 'three times'),
-			WT_I18N::translate_c('MALE', 'four times'),
-			WT_I18N::translate_c('MALE', 'five times'),
-			WT_I18N::translate_c('MALE', 'six times'),
-			WT_I18N::translate_c('MALE', 'seven times'),
-			WT_I18N::translate_c('MALE', 'eight times'),
-			WT_I18N::translate_c('MALE', 'nine times'),
-			WT_I18N::translate_c('MALE', 'ten times'),
-			WT_I18N::translate_c('MALE', '11 times'),
-			WT_I18N::translate_c('MALE', '12 times'),
-			WT_I18N::translate_c('MALE', '13 times'),
-			WT_I18N::translate_c('MALE', '14 times'),
-			WT_I18N::translate_c('MALE', '15 times')
-		);
-
-		$wordcount2F = array(
-			WT_I18N::translate_c('FEMALE', 'once'),
-			WT_I18N::translate_c('FEMALE', 'twice'),
-			WT_I18N::translate_c('FEMALE', 'three times'),
-			WT_I18N::translate_c('FEMALE', 'four times'),
-			WT_I18N::translate_c('FEMALE', 'five times'),
-			WT_I18N::translate_c('FEMALE', 'six times'),
-			WT_I18N::translate_c('FEMALE', 'seven times'),
-			WT_I18N::translate_c('FEMALE', 'eight times'),
-			WT_I18N::translate_c('FEMALE', 'nine times'),
-			WT_I18N::translate_c('FEMALE', 'ten times'),
-			WT_I18N::translate_c('FEMALE', '11 times'),
-			WT_I18N::translate_c('FEMALE', '12 times'),
-			WT_I18N::translate_c('FEMALE', '13 times'),
-			WT_I18N::translate_c('FEMALE', '14 times'),
-			WT_I18N::translate_c('FEMALE', '15 times')
-		);
-
 		if ($count > 1) {
-			if ($i == 0) {
-				$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2M[$count-1]) : $html .= '<br>' . WT_I18N::translate('She married %s', $wordcount2F[$count-1]);
-				$html .= '. ';
+			// we assume no one married more then 15 times.
+			// these need to be male/female for some languages
+			$wordcountM = array(
+				WT_I18N::translate_c('MALE', 'first'),
+				WT_I18N::translate_c('MALE', 'second'),
+				WT_I18N::translate_c('MALE', 'third'),
+				WT_I18N::translate_c('MALE', 'fourth'),
+				WT_I18N::translate_c('MALE', 'fifth'),
+				WT_I18N::translate_c('MALE', 'sixth'),
+				WT_I18N::translate_c('MALE', 'seventh'),
+				WT_I18N::translate_c('MALE', 'eighth'),
+				WT_I18N::translate_c('MALE', 'ninth'),
+				WT_I18N::translate_c('MALE', 'tenth'),
+				WT_I18N::translate_c('MALE', '11th'),
+				WT_I18N::translate_c('MALE', '12th'),
+				WT_I18N::translate_c('MALE', '13th'),
+				WT_I18N::translate_c('MALE', '14th'),
+				WT_I18N::translate_c('MALE', '15th')
+			);
+
+			$wordcountF = array(
+				WT_I18N::translate_c('FEMALE', 'first'),
+				WT_I18N::translate_c('FEMALE', 'second'),
+				WT_I18N::translate_c('FEMALE', 'third'),
+				WT_I18N::translate_c('FEMALE', 'fourth'),
+				WT_I18N::translate_c('FEMALE', 'fifth'),
+				WT_I18N::translate_c('FEMALE', 'sixth'),
+				WT_I18N::translate_c('FEMALE', 'seventh'),
+				WT_I18N::translate_c('FEMALE', 'eighth'),
+				WT_I18N::translate_c('FEMALE', 'ninth'),
+				WT_I18N::translate_c('FEMALE', 'tenth'),
+				WT_I18N::translate_c('FEMALE', '11th'),
+				WT_I18N::translate_c('FEMALE', '12th'),
+				WT_I18N::translate_c('FEMALE', '13th'),
+				WT_I18N::translate_c('FEMALE', '14th'),
+				WT_I18N::translate_c('FEMALE', '15th')
+			);
+
+			$wordcount2M = array(
+				WT_I18N::translate_c('MALE', 'once'),
+				WT_I18N::translate_c('MALE', 'twice'),
+				WT_I18N::translate_c('MALE', 'three times'),
+				WT_I18N::translate_c('MALE', 'four times'),
+				WT_I18N::translate_c('MALE', 'five times'),
+				WT_I18N::translate_c('MALE', 'six times'),
+				WT_I18N::translate_c('MALE', 'seven times'),
+				WT_I18N::translate_c('MALE', 'eight times'),
+				WT_I18N::translate_c('MALE', 'nine times'),
+				WT_I18N::translate_c('MALE', 'ten times'),
+				WT_I18N::translate_c('MALE', '11 times'),
+				WT_I18N::translate_c('MALE', '12 times'),
+				WT_I18N::translate_c('MALE', '13 times'),
+				WT_I18N::translate_c('MALE', '14 times'),
+				WT_I18N::translate_c('MALE', '15 times')
+			);
+
+			$wordcount2F = array(
+				WT_I18N::translate_c('FEMALE', 'once'),
+				WT_I18N::translate_c('FEMALE', 'twice'),
+				WT_I18N::translate_c('FEMALE', 'three times'),
+				WT_I18N::translate_c('FEMALE', 'four times'),
+				WT_I18N::translate_c('FEMALE', 'five times'),
+				WT_I18N::translate_c('FEMALE', 'six times'),
+				WT_I18N::translate_c('FEMALE', 'seven times'),
+				WT_I18N::translate_c('FEMALE', 'eight times'),
+				WT_I18N::translate_c('FEMALE', 'nine times'),
+				WT_I18N::translate_c('FEMALE', 'ten times'),
+				WT_I18N::translate_c('FEMALE', '11 times'),
+				WT_I18N::translate_c('FEMALE', '12 times'),
+				WT_I18N::translate_c('FEMALE', '13 times'),
+				WT_I18N::translate_c('FEMALE', '14 times'),
+				WT_I18N::translate_c('FEMALE', '15 times')
+			);
+			switch ($person->getSex()) {
+				case 'M':
+					if ($i == 0) {
+						$html .= '<br>' . /* I18N: %s is a number  */ WT_I18N::translate('He married %s times', $wordcount2M[$count-1]) . '. ';
+					}
+					$html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcountM[$i]);
+					break;
+				case 'F':
+					if ($i == 0) {
+						$html .= /* I18N: %s is a number  */ WT_I18N::translate('She married %s times', $wordcount2F[$count-1]) . '. ';
+					}
+					$html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time she married', $wordcountF[$i]);
+					break;
+				default:
+					if ($i == 0) {
+						$html .= /* I18N: %s is a number  */ WT_I18N::translate('This individual married %s times', $wordcount2M[$count-1]) . '. ';
+					}
+					$html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time this individual married', $wordcountM[$i]);
+					break;
 			}
-			$person->getSex() == 'M' ? $html .= '<br>' . /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcountM[$i]) : $html .= '<br>' . WT_I18N::translate('The %s time she married', $wordcountF[$i]);
 		} else {
-			$person->getSex() == 'M' ? $html .= '<br>' . WT_I18N::translate('He married') : $html .= '<br>' . WT_I18N::translate('She married');
+			switch ($person->getSex()) {
+				case 'M':
+					$html .= WT_I18N::translate('He married');
+					break;
+				case 'F':
+					$html .= WT_I18N::translate('She married');
+					break;
+				default:
+					$html .= WT_I18N::translate('This individual married');
+					break;
+			}
 		}
 
 		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
-
-		// Add relationship note
-		if ($this->options($module, 'check_relationship')) {
-			$relationship = $this->checkRelationship($person, $spouse, $family);
-			if ($relationship) {
-				$html .= ' (' . $relationship . ')';
-			}
-		}
-
+		$html .= $this->printRelationship($person, $spouse, $module);
 		$html .= $this->printParents($spouse);
 
 		if (!$family->getMarriage()) { // use the default privatized function to determine if marriage details can be shown.
@@ -641,7 +661,7 @@ class WT_Controller_FancyTreeView {
 								if (!$family->getMarriage()) {
 									// check relationship first (If a relationship is found the information of this parent is printed elsewhere on the page.)
 									if ($this->options($module, 'check_relationship')) {
-										$relationship = $this->checkRelationship($person, $spouse, $family);
+										$relationship = $this->checkRelationship($person, $spouse);
 									}
 									if (isset($relationship) && $relationship) {
 										$html .= $spouse->getFullName() . ' (' . $relationship.')';
@@ -661,27 +681,40 @@ class WT_Controller_FancyTreeView {
 										$html .= '<li class="child"><a href="' . $child->getHtmlUrl() . '">' . $child->getFullName() . '</a>';
 										$pedi = $child->getChildFamilyPedigree($family->getXref());
 
-										if ($pedi === 'foster') {
-											if ($child->getSex() == 'F') {
-												$html .= ' <span class="pedi"> - ' . WT_I18N::translate_c('FEMALE', 'foster child') . '</span>';
-											} else {
-												$html .= ' <span class="pedi"> - ' . WT_I18N::translate_c('MALE', 'foster child') . '</span>';
+										if ($pedi) {
+											$html .= ' <span class="pedi">';
+											switch ($pedi) {
+												case 'foster':
+													switch ($child->getSex()) {
+														case 'F':
+															$html .= WT_I18N::translateContext('FEMALE', 'foster child');
+															break;
+														default:
+															$html .= WT_I18N::translateContext('MALE', 'foster child');
+															break;
+													}
+													break;
+												case 'adopted':
+													switch ($child->getSex()) {
+														case 'F':
+															$html .= WT_I18N::translateContext('FEMALE', 'adopted child');
+															break;
+														default:
+															$html .= WT_I18N::translateContext('MALE', 'adopted child');
+															break;
+													}
+													break;
 											}
+											$html .= '</span>';
 										}
-										if ($pedi === 'adopted') {
-											if ($child->getSex() == 'F') {
-												$html .= ' <span class="pedi"> - ' . WT_I18N::translate_c('FEMALE', 'adopted') . '</span>';
-											} else {
-												$html .= ' <span class="pedi"> - ' . WT_I18N::translate_c('MALE', 'adopted') . '</span>';
-											}
-										}
+
 										if ($child->getBirthDate()->isOK() || $child->getDeathdate()->isOK()) {
 											$html .= '<span class="lifespan"> (' . $child->getLifeSpan() . ')</span>';
 										}
 
 										$child_family = $this->getFamily($child);
 										$module == 'fancy_treeview' ? $class = 'scroll' : $class = '';
-										if ($child->canDisplayDetails() && $child_family) {
+										if ($child_family) {
 											$html .= ' <a class="' . $class . '" href="#' . $child_family->getXref() . '"></a>';
 										} else { // just go to the person details in the next generation (added prefix 'S'for Single Individual, to prevent double ID's.)
 											if ($this->options($module, 'show_singles') == true) {
@@ -689,6 +722,8 @@ class WT_Controller_FancyTreeView {
 											}
 										}
 										$html .= '</li>';
+									} else {
+										$html .= '<li class="child private">' . WT_I18N::translate('Private') . '</li>';
 									}
 								}
 							$html .= '</ol>
@@ -750,6 +785,25 @@ class WT_Controller_FancyTreeView {
 
 			return $html;
 		}
+	}
+
+	/**
+	 * Print the name of a person with the link to the individual page
+	 *
+	 * @param type $person
+	 * @param type $xref
+	 * @return string
+	 */
+	protected function printNameUrl($person, $xref = '') {
+		if ($xref) {
+			$name = ' name="' . $xref . '"';
+		} else {
+			$name = '';
+		}
+
+		$url = '<a' . $name . ' href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>';
+
+		return $url;
 	}
 
 	/**
@@ -889,10 +943,17 @@ class WT_Controller_FancyTreeView {
 		return $html;
 	}
 
-	public function printRelationship($person, $spouse, $family, $module) {
+	/**
+	 * Print the relationship between spouses (optional)
+	 *
+	 * @param type $person
+	 * @param type $spouse
+	 * @return string
+	 */
+	protected function printRelationship($person, $spouse, $module) {
 		$html = '';
 		if ($this->options($module, 'check_relationship')) {
-			$relationship = $this->checkRelationship($person, $spouse, $family);
+			$relationship = $this->checkRelationship($person, $spouse);
 			if ($relationship) {
 				$html .= ' (' . $relationship . ')';
 			}
@@ -1047,38 +1108,25 @@ class WT_Controller_FancyTreeView {
 	}
 
 	// check (blood) relationship between partners
-	public function checkRelationship($person, $spouse, $family) {
-		$count = count($family->getChildren());
-		for($i = 0; $i <= $count; $i++) { // the number of paths is equal to the number of children, because every relationship is checked through each child.
-										  // and we need the relationship from the next path.
-			$nodes = get_relationship($person, $spouse, false, 0, $i);
-
-			if (!is_array($nodes)) {
-				return '';
+	public function checkRelationship($person, $spouse) {
+		$controller	 = new WT_Controller_Relationship();
+		$paths		 = $controller->calculateRelationships($person, $spouse, 1, 0);
+		foreach ($paths as $path) {
+			$relationships = $controller->oldStyleRelationshipPath($path);
+			if (empty($relationships)) {
+				// Cannot see one of the families/individuals, due to privacy;
+				continue;
 			}
+			foreach (array_keys($path) as $n) {
+				if ($n % 2 === 1) {
+					switch ($relationships[$n]) {
+						case 'sis':
+						case 'bro':
+						case 'sib':
+							return get_relationship_name_from_path(implode('', $relationships), $person, $spouse);
 
-			$path = array_slice($nodes['relations'], 1);
-
-			$combined_path = '';
-			$display = false;
-			foreach ($path as $key => $rel) {
-				$rel_to_exclude = array('son', 'daughter', 'child'); // don't return the relationship path through the children
-				if ($key == 0 && in_array($rel, $rel_to_exclude)) {
-					$display = false;
-					break;
+					}
 				}
-				$rel_to_find = array('sister', 'brother', 'sibling'); // one of these relationships must be in the path
-				if (in_array($rel, $rel_to_find)) {
-					$display = true;
-					break;
-				}
-			}
-
-			if ($display == true) {
-				foreach ($path as $rel) {
-					$combined_path .= substr($rel, 0, 3);
-				}
-				return get_relationship_name_from_path($combined_path, $person, $spouse);
 			}
 		}
 	}
