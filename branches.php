@@ -99,7 +99,7 @@ if ($surn) {
 		<div class="loading-image"></div>
 	';
 
-	$indis = indis_array($surn, $soundex_std, $soundex_dm);
+	$indis = indisArray($surn, $soundex_std, $soundex_dm);
 	usort($indis, array('WT_Person', 'CompareBirtDate'));
 	echo '<ul id="branch-list">';
 	foreach ($indis as $person) {
@@ -217,7 +217,7 @@ function load_ancestors_array($person, $sosa=1) {
 	}
 }
 
-function indis_array($surn, $soundex_std, $soundex_dm) {
+function indisArray($surn, $soundex_std, $soundex_dm) {
 	$sql=
 		"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 		" FROM `##individuals`".
