@@ -687,20 +687,20 @@ class WT_Controller_FancyTreeView {
 												case 'foster':
 													switch ($child->getSex()) {
 														case 'F':
-															$html .= WT_I18N::translateContext('FEMALE', 'foster child');
+															$html .= WT_I18N::translate_c('FEMALE', 'foster child');
 															break;
 														default:
-															$html .= WT_I18N::translateContext('MALE', 'foster child');
+															$html .= WT_I18N::translate_c('MALE', 'foster child');
 															break;
 													}
 													break;
 												case 'adopted':
 													switch ($child->getSex()) {
 														case 'F':
-															$html .= WT_I18N::translateContext('FEMALE', 'adopted child');
+															$html .= WT_I18N::translate_c('FEMALE', 'adopted child');
 															break;
 														default:
-															$html .= WT_I18N::translateContext('MALE', 'adopted child');
+															$html .= WT_I18N::translate_c('MALE', 'adopted child');
 															break;
 													}
 													break;
