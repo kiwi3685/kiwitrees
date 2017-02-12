@@ -142,6 +142,7 @@
 		$data   = $this->getIndividualData($person, $generation);
         $family = $person->getPrimaryChildFamily();
 
+		if (!($family instanceof WT_Family)) {
             return $data;
         }
 
