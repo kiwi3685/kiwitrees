@@ -38,10 +38,12 @@ $controller
 	// Encode chart parameters to json string
 	$chartParams = json_encode(
 		array(
-			'fanDegree' => $controller->fanDegree,
-			'fontScale' => $controller->fontScale,
-			'fontColor' => $controller->getChartFontColor(),
-			'data'      => $controller->buildJsonTree($controller->root),
+			'fanDegree'    => $controller->fanDegree,
+			'generations'  => $controller->generations,
+			'defaultColor' => $controller->getColor(),
+			'fontScale'    => $controller->fontScale,
+			'fontColor'    => $controller->getChartFontColor(),
+			'data'         => $controller->buildJsonTree($controller->root),
 		)
 	);
 

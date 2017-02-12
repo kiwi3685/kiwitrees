@@ -108,28 +108,19 @@
      * Get the individual data required for display the chart.
      *
      * @param Individual $person Start person
+     * @param int        $generation Generation the person belongs to
      *
      * @return array
      */
-    public function getIndividualData(WT_Person $person = null) {
-        // We need always two individuals, so we fake the missing ones
-        if (!($person instanceof WT_Person)) {
-            return array(
-                'id'    => '',
-                'name'  => '',
-                'born'  => '',
-                'died'  => '',
-                'color' => $this->getColor(),
-            );
-        }
-
+    public function getIndividualData(WT_Person $person, $generation) {
         return array(
-            'id'    => $person->getXref(),
-            'name'  => html_entity_decode(strip_tags($person->getShortName())),
-            'born'  => $person->getBirthYear(),
-            'died'  => $person->getDeathYear(),
-            'color' => $this->getColor($person),
-        );
+			'id'         => $person->getXref(),
+            'generation' => $generation,
+            'name'       => html_entity_decode(strip_tags($person->getShortName())),
+            'sex'        => $person->getSex(),
+            'born'       => $person->getBirthYear(),
+            'died'       => $person->getDeathYear(),
+            'color'      => $this->getColor($person),        );
     }
 
     /**
@@ -144,29 +135,21 @@
      */
     public function buildJsonTree( WT_Person $person = null, $generation = 1 ) {
 		// Maximum generation reached
-        if ($generation > $this->generations) {
+		if (($generation > $this->generations) || !($person instanceof WT_Person)) {
             return array();
         }
 
-        $data   = $this->getIndividualData($person);
-        $father = null;
-        $mother = null;
+		$data   = $this->getIndividualData($person, $generation);
+        $family = $person->getPrimaryChildFamily();
 
-        if ($person instanceof WT_Person) {
-            $family = $person->getPrimaryChildFamily();
-
-            if ($family instanceof WT_Family) {
-                $father = $family->getHusband();
-                $mother = $family->getWife();
-            }
+            return $data;
         }
 
         // Recursively call the method for the parents of the individual
-        $fatherTree = $this->buildJsonTree($father, $generation + 1);
-        $motherTree = $this->buildJsonTree($mother, $generation + 1);
+		$fatherTree = $this->buildJsonTree($family->getHusband(), $generation + 1);
+        $motherTree = $this->buildJsonTree($family->getWife(), $generation + 1);
 
-        // Add array of child nodes, or empty array for leaf nodes
-        // @see D3 partition layout
+		// Add array of child nodes
         if ($fatherTree) {
             $data['children'][] = $fatherTree;
         }
