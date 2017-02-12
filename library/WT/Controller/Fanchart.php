@@ -116,7 +116,7 @@
         return array(
 			'id'         => $person->getXref(),
             'generation' => $generation,
-            'name'       => html_entity_decode(strip_tags($person->getShortName())),
+            'name'       => WT_Filter::unescapeHtml(strip_tags($person->getShortName())),
             'sex'        => $person->getSex(),
             'born'       => $person->getBirthYear(),
             'died'       => $person->getDeathYear(),
