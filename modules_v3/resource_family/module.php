@@ -65,7 +65,8 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 	}
 	// Implement class WT_Module_Resources
 	public function show() {
-		global $controller, $GEDCOM;
+		global $controller, $GEDCOM, $linkToID;
+
 		require WT_ROOT.'includes/functions/functions_resource.php';
 		require WT_ROOT.'includes/functions/functions_edit.php';
 		$controller = new WT_Controller_Family();
@@ -145,7 +146,31 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 					$family		= WT_Family::getInstance($rootid);
 					$sections	= array('husband', 'wife', 'children');
 					if ($family && $family->canDisplayDetails()) { ; ?>
-						<h2><?php echo $family->getFullName(); ?></h2>
+						<h2>
+							<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo $family->getFullName(); ?></a>
+						</h2>
+
+						<?php
+						//- Image display
+//						$linkToID = $family->getXref(); // -- Tell addmedia.php what to link to
+						$indifacts = $family->getFacts();
+						if ($indifacts) {
+							echo '
+								<div style="display:inline-block;">
+									<table style="width:100%;">';
+									sort_facts($indifacts);
+									foreach ($indifacts as $fact) {
+										print_fact($fact, $family);
+								}
+								print_main_media($family->getXref(), 2);
+								echo '</table>
+								</div>';
+						}
+
+
+						 ?>
+
+
 						<div id="accordion">
 							<?php
 							$number			= 0;
@@ -164,8 +189,8 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 								if ($section == 'children') {
 									$children = $family->getChildren();
 								}
-								foreach ($children as $title) {
-									$person	= WT_Person::getInstance($title->getXref());
+								foreach ($children as $child) {
+									$person	= WT_Person::getInstance($child->getXref());
 									$person->add_family_facts(false);
 									$indifacts = $person->getIndiFacts();
 									switch ($section) {
@@ -176,7 +201,7 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 											$header = WT_I18N::translate('Wife');
 											break;
 										case 'children' :
-											$header = getCloseRelationshipName($husb ? $husb : $wife, $title);
+											$header = getCloseRelationshipName($husb ? $husb : $wife, $child);
 											break;
 									}
 									sort_facts($indifacts);
@@ -189,15 +214,15 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 										$crem			= false;
 										?>
 										<h3>
-											<a href="<?php echo $title->getHtmlUrl(); ?>">
+											<a href="<?php echo $child->getHtmlUrl(); ?>">
 												<span class="relationship"><?php echo $header; ?></span>
 												&nbsp;-&nbsp;
-												<?php echo $title->getLifespanName(); ?>
+												<?php echo $child->getLifespanName(); ?>
 											</a>
 										</h3>
 										<div class="<?php echo $section; ?>">
 											<!-- Image display -->
-											<?php $image = $title->displayImage(true);
+											<?php $image = $child->displayImage(true);
 											if ($showmedia && $image) { ?>
 												<div class="indi_mainimage"><?php echo $image; ?></div>
 											<?php } ?>
@@ -206,7 +231,7 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 												<!-- Birth fact -->
 												<?php
 												foreach ($indifacts as $fact) {
-													if ($fact->getTag() === 'BIRT' && ($title->getBirthDate()->isOK() || $title->getBirthPlace())) {
+													if ($fact->getTag() === 'BIRT' && ($child->getBirthDate()->isOK() || $child->getBirthPlace())) {
 														$birth		 = true;
 														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
 														$sup		 = $data[0];
@@ -296,7 +321,7 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 												<!-- Death fact -->
 												<?php
 												foreach ($indifacts as $fact) {
-													if ($fact->getTag() === 'DEAT' && ($title->getDeathDate()->isOK() || $title->getDeathPlace())) {
+													if ($fact->getTag() === 'DEAT' && ($child->getDeathDate()->isOK() || $child->getDeathPlace())) {
 														$death = true;
 														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
 														$sup		 = $data[0];
