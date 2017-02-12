@@ -34,7 +34,7 @@ class WT_Gedcom_Code_Rela {
 		'foster_father', 'foster_mother', 'friend', 'godfather', 'godmother',
 		'godparent', 'godson', 'goddaughter', 'godchild', 'guardian',
 		'informant', 'lodger', 'nanny', 'nurse', 'owner',
-		'priest', 'rabbi', 'registry_officer', 'seller', 'servant',
+		'priest', 'rabbi', 'registry_officer', 'religious_witness', 'seller', 'servant',
 		'slave', 'ward', 'witness',
 	);
 
@@ -187,6 +187,13 @@ class WT_Gedcom_Code_Rela {
 			case 'M': return WT_I18N::translate_c('MALE',   'Registry Officer');
 			case 'F': return WT_I18N::translate_c('FEMALE', 'Registry Officer');
 			default:  return WT_I18N::translate  (          'Registry Officer');
+			}
+		case 'religious_witness':
+		// Special form of witness used in some countries - notably Denmark`s `fadder`
+			switch ($sex) {
+			case 'M': return WT_I18N::translate_c('MALE',   'Religious witness');
+			case 'F': return WT_I18N::translate_c('FEMALE', 'Religious witness');
+			default:  return WT_I18N::translate  (          'Religious witness');
 			}
 		case 'seller':
 			switch ($sex) {
