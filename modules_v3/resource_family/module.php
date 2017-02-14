@@ -65,7 +65,7 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 	}
 	// Implement class WT_Module_Resources
 	public function show() {
-		global $controller, $GEDCOM, $linkToID;
+		global $controller, $GEDCOM;
 
 		require WT_ROOT.'includes/functions/functions_resource.php';
 		require WT_ROOT.'includes/functions/functions_edit.php';
@@ -94,7 +94,8 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 		$showsources	= WT_Filter::post('showsources') ? WT_Filter::post('showsources') : 0;
 		$shownotes		= WT_Filter::post('shownotes') ? WT_Filter::post('shownotes') : 0;
 		$missing		= WT_Filter::post('missing') ? WT_Filter::post('missing') : 0;
-		$showmedia		= WT_Filter::post('showmedia') ? WT_Filter::post('showmedia') : 0;
+		$showmedia		= WT_Filter::post('showmedia') ? WT_Filter::post('showmedia') : 'main';
+		$photos			= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
 		$exclude_tags	= array('CHAN','NAME','SEX','SOUR','NOTE','OBJE','RESN','FAMC','FAMS','TITL','CHIL','HUSB','WIFE','BIRT','CHR','BAPM','DEAT','CREM','BURI','_UID','_WT_OBJE_SORT');
 		?>
 		<div id="resource-page" class="family_report">
@@ -126,10 +127,24 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 						>
 					</div>
 					<div class="chart_options">
-						<label for = "showmedia"><?php echo WT_I18N::translate('Show media'); ?></label>
-						<input type="checkbox" id="showmedia" name="showmedia" value="1"
-							<?php if ($showmedia == 1) echo ' checked="checked"'; ?>
-						>
+						<label for = "showmedia"><?php echo WT_I18N::translate('Show family media'); ?></label>
+						<?php echo select_edit_control('showmedia', array(
+							'none'=>WT_I18N::translate('None'),
+							'main'=>WT_I18N::translate('Main'),
+							'all'=>WT_I18N::translate('All')),
+							null,
+							$showmedia);
+						?>
+					</div>
+					<div class="chart_options">
+						<label for = "photos"><?php echo WT_I18N::translate('Show individual media'); ?></label>
+						<?php echo select_edit_control('photos', array(
+							'none'=>WT_I18N::translate('None'),
+							'all'=>WT_I18N::translate('All'),
+							'highlighted'=>WT_I18N::translate('Highlighted image')),
+							null,
+							$photos);
+						?>
 					</div>
 	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
 						<i class="fa fa-eye"></i>
@@ -149,28 +164,35 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 						<h2>
 							<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo $family->getFullName(); ?></a>
 						</h2>
-
-						<?php
-						//- Image display
-//						$linkToID = $family->getXref(); // -- Tell addmedia.php what to link to
-						$indifacts = $family->getFacts();
-						if ($indifacts) {
-							echo '
-								<div style="display:inline-block;">
-									<table style="width:100%;">';
-									sort_facts($indifacts);
-									foreach ($indifacts as $fact) {
-										print_fact($fact, $family);
+						<div class="images">
+						<?php // Image displays
+							// Iterate over all of the media items for the person
+							preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $family->getGedcomRecord(), $matches, PREG_SET_ORDER);
+							foreach ($matches as $match) {
+								$level = $matches[1];
+								$media = WT_Media::getInstance($match[2]);
+								if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
+									continue;
 								}
-								print_main_media($family->getXref(), 2);
-								echo '</table>
-								</div>';
-						}
-
-
-						 ?>
-
-
+								switch ($showmedia) {
+									case 'all':
+										//show all level images ?>
+										<span><?php echo $media->displayImage(); ?></span>
+										<?php
+										break;
+									case 'main':
+										//show only level 1 images
+										if ($level == 1) { ?>
+											<span><?php echo $media->displayImage(); ?></span>
+										<?php }
+										break;
+									case 'none':
+									default:
+									// show nothing
+									break;
+								}
+							} ?>
+						</div>
 						<div id="accordion">
 							<?php
 							$number			= 0;
@@ -221,11 +243,33 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 											</a>
 										</h3>
 										<div class="<?php echo $section; ?>">
-											<!-- Image display -->
-											<?php $image = $child->displayImage(true);
-											if ($showmedia && $image) { ?>
-												<div class="indi_mainimage"><?php echo $image; ?></div>
-											<?php } ?>
+											<?php // Image displays
+											switch ($photos) {
+												case 'highlighted':
+													$image = $person->displayImage(true);
+													if ($image) {
+														echo '<div class="indi_mainimage">', $person->displayImage(true), '</div>';
+													}
+													break;
+												case 'all':
+													//show all level 1 images ?>
+													<div class="images">
+														<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
+														$allMedia =  $match[1];
+														foreach ($allMedia as $media) {
+															$image = WT_Media::getInstance($media);
+															if ($image && $image->canDisplayDetails()) { ?>
+																<span><?php echo $image->displayImage(); ?></span>
+															<?php }
+														} ?>
+													</div>
+													<?php
+												break;
+												case 'none':
+												default:
+												// show nothing
+												break;
+											} ?>
 											<!-- facts and events for this individual -->
 											<div class="facts_events">
 												<!-- Birth fact -->

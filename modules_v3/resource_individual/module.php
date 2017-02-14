@@ -148,7 +148,9 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 					$indifacts = $person->getIndiFacts();
 					sort_facts($indifacts);
 					if ($person && $person->canDisplayDetails()) { ; ?>
-						<h2><?php echo $person->getFullName(); ?></h2>
+						<h2>
+							<a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getLifespanName(); ?></a>
+						</h2>
 						<?php // Image displays
 						switch ($photos) {
 							case 'highlighted':

@@ -2784,15 +2784,18 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
 	display: inline-block;
 	vertical-align: top;
 }
-#resource-page.individual_report .images {
-	display: table;
+#resource-page.individual_report .images,
+#resource-page.family_report .images {
+	display: inline-block;
 }
-#resource-page.individual_report .images span {
-	display: table-cell;
+#resource-page.individual_report .images span,
+#resource-page.family_report .images span {
+	display: inline-block;
 	vertical-align: middle;
 	padding: 0 10px;
 }
-#resource-page.individual_report .images span::first {
+#resource-page.individual_report .images span::first,
+#resource-page.family_report .images  span::first {
 	padding: 0;
 }
 #resource-page.individual_report .facts_events,
