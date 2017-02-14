@@ -62,7 +62,7 @@
 
         // Extract the request parameters
         $this->fanDegree   = WT_Filter::getInteger('fanDegree', 180, 360, 210);
-        $this->generations = WT_Filter::getInteger('generations', 2, 9, $defaultGenerations);
+        $this->generations = WT_Filter::getInteger('generations', 2, 10, $defaultGenerations);
         $this->fontScale   = WT_Filter::getInteger('fontScale', 0, 200, 100);
 
 		// Create page title
