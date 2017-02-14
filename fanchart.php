@@ -68,7 +68,7 @@ $controller
 			</div>
 			<div class="chart_options">
 				<label for="generations"><?php echo WT_I18N::translate('Generations'); ?></label>
-				<?php echo edit_field_integers('generations', $controller->generations, 2, 9); ?>
+				<?php echo edit_field_integers('generations', $controller->generations, 2, 10); ?>
 			</div>
 			<div class="chart_options">
 				<label for="fanDegree"><?php echo WT_I18N::translate('Degrees'); ?></label>
