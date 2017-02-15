@@ -6094,13 +6094,6 @@ div.widget {
 	text-align: justify;
 }
 
-#fancy_treeview-page .parents sup {
-	color: #008000;
-	font-size: 85%;
-	font-weight: 700;
-	padding: 0 5px;
-}
-
 #fancy_treeview-page .children {
 	clear: both;
 	padding-top: 10px;
@@ -6219,10 +6212,29 @@ div.widget {
 }
 #resource-page #report_header p {
 	margin: 5px 0;
-	padding: 0
+	padding: 0;
 }
 #resource-page #report_header p span {
 	font-weight: 600;
+}
+#resource-page sup {
+	display: inline-block;
+	font-size: 75%;
+	font-weight: 700;
+	padding: 1px;
+}
+#resource-page sup.sosa {
+	border: 1px solid #008000;
+	color: #008000;
+	cursor: pointer;
+	line-height: 75%;
+	margin: 0 0 0 3px;
+}
+[dir='rtl'] #resource-page sup.sosa {
+	margin: 0 3px 0 0;
+}
+#resource-page sup.source {
+	color: #ff0000;
 }
 
 /* Styles for nocensus resource */
@@ -6401,13 +6413,6 @@ div.widget {
 #resource-page.individual_report .report_fact .addr::after,
 #resource-page.family_report .report_fact .addr::after {
 	content: ')';
-}
-#resource-page.individual_report .report_fact sup,
-#resource-page.family_report .report_fact sup {
-	color: #ff0000;
-	display: inline-block;
-	font-size: 70%;
-	padding: 0 5px;
 }
 #resource-page.individual_report #facts_sources,
 #resource-page.family_report #facts_sources {

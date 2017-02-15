@@ -397,7 +397,7 @@ class WT_Controller_FancyTreeView {
 				$html .=  $this->printNameUrl($person, $person->getXref());
 				if ($module == 'fancy_treeview_pedigree' && $this->options($module, 'show_sosa')) {
 					$sosa = array_search($person, $this->ancestors, true);
-					$html .= '<sup>' . $sosa . '</sup>';
+					$sosa ? $html .= '<sup class="sosa" title="' . WT_I18N::translate('Sosa number') . '">' . $sosa . '</sup>' : $html;
 				}
 				if ($this->options($module, 'show_occu')) {
 					$html .= $this->printOccupations($person);
@@ -610,10 +610,10 @@ class WT_Controller_FancyTreeView {
 		$html .= ' <a href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a>';
 		$html .= $this->printRelationship($person, $spouse, $family, $module);
 		$html .= $this->printParents($spouse);
-		if ($family->getFacts('_NMR') && $this->printLifespan($module, $spouse, true)) {
-			$html .= $this->printLifespan($module, $spouse, true);
+		$life = $this->printLifespan($module, $spouse, true);
+		if ($family->getFacts('_NMR') && $life) {
+			$html .= $life;
 		}
-
 		return $html;
 	}
 

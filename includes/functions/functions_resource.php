@@ -620,7 +620,7 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 	$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
 	if ($ct > 0) {
 		$sources = resource_sources($fact, 2);
-		$sup = '<sup>';
+		$sup = '<sup class="source">';
 		foreach ($sources as $source) {
 			$duplicate = false;
 			foreach($source_list as $src) {

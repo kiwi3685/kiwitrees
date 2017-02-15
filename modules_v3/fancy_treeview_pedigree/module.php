@@ -36,7 +36,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of the module */ WT_I18N::translate('Ancestors report');
+		return /* I18N: Name of the module */ WT_I18N::translate('Ancestors');
 	}
 
 	// Extend WT_Module

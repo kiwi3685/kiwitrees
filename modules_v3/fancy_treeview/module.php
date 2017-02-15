@@ -44,7 +44,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of the module */ WT_I18N::translate('Descendants report');
+		return /* I18N: Name of the module */ WT_I18N::translate('Descendants');
 	}
 
 	// Extend WT_Module

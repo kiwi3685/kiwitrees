@@ -196,7 +196,7 @@ class resource_individual_WT_Module extends WT_Module implements WT_Module_Resou
 											// -- count source(s) for this fact/event as footnote reference
 											$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
 											if ($ct > 0) {
-												$sup = '<sup>';
+												$sup = '<sup class="source">';
 													$sources = resource_sources($fact, 2, $source_num);
 													for ($i = 0; $i < $ct; $i++) {
 														$sup .= $source_num . ',&nbsp;';
