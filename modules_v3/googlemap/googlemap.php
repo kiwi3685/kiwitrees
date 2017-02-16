@@ -277,7 +277,7 @@ function build_indiv_map($indifacts, $famids) {
 							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
 							$birthrec = '';
 							$placerec = '';
-							foreach ($person->getAllFactsByType('BIRT') as $sEvent) {
+							foreach ($person->getAllFactsByType(explode('|', WT_EVENTS_BIRT)) as $sEvent) {
 								$birthrec = $sEvent->getGedcomRecord();
 								$placerec = get_sub_record(2, '2 PLAC', $birthrec);
 								if (!empty($placerec)) {
