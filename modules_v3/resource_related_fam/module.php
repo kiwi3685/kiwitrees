@@ -90,7 +90,7 @@ class resource_related_fam_WT_Module extends WT_Module implements WT_Module_Reso
 
 				jQuery("#accordion")
 					.accordion({event: "click", collapsible: true, heightStyle: "content"})
-					.find("h2 a").click(function(ev){
+					.find("h3 a").click(function(ev){
 						ev.stopPropagation();
 					});
 				jQuery("#container").css("visibility", "visible");
