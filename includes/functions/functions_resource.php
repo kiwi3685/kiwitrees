@@ -608,7 +608,8 @@ function resource_vital_records ($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $
 function getResourcefact($fact, $family, $sup, $source_list, $number) {
 	$resourcefact			= array();
 	$resourcefact['date']	= $fact->getDate()->isOK() ?  format_fact_date($fact, $family, false, false, false) : '';
-	$resourcefact['place']	= $fact->getPlace();
+	$place					= format_fact_place($fact, true, true, true);
+	$resourcefact['place']	= $place ? '<span class="place">' . $place . '</span>' : '';
 	$address				= $fact->getPlace() != '' ? print_address_structure($fact->getGedcomRecord(), 2, 'inline') : '';
 	$resourcefact['addr']	= $address ? '<span class="addr">' . $address . '</span>' : '';
 	if (!in_array($fact->getTag(), array('BURI'))) {
@@ -680,4 +681,28 @@ function resource_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
 	}
 
 	return $list;
+}
+
+function personDetails($person) {
+	$birth_date = $person->getBirthDate();
+	$birth_plac = $person->getBirthPlace();
+	$death_date = $person->getDeathDate();
+	$death_plac = $person->getDeathPlace();
+	$birth = '';
+	$death = '';
+
+	if ($birth_date->isOK() || $birth_plac != '') {
+		$birth = WT_Gedcom_Tag::getLabel('BIRT') . ':&nbsp;' .
+			$birth_date->Display() . '&nbsp;' .
+			$birth_plac;
+	}
+
+	if ($death_date->isOK() || $death_plac != '') {
+		$death = ($birth == '' ? '' : '&nbsp;-&nbsp;') .
+			WT_Gedcom_Tag::getLabel('DEAT') . ':&nbsp;' .
+			$death_date->Display() . '&nbsp;' .
+			$death_plac;
+	}
+
+	return $birth . $death;
 }

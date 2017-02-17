@@ -79,7 +79,7 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 				jQuery("#accordion")
 					.accordion({event: "click", collapsible: true, heightStyle: "content"})
 					.find("h3 a").click(function(ev){
-					    ev.stopPropagation();
+						ev.stopPropagation();
 					});
 				jQuery("#container").css("visibility", "visible");
 				jQuery(".loading-image").css("display", "none");
@@ -255,7 +255,7 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 													//show all level 1 images ?>
 													<div class="images">
 														<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
-														$allMedia =  $match[1];
+														$allMedia = $match[1];
 														foreach ($allMedia as $media) {
 															$image = WT_Media::getInstance($media);
 															if ($image && $image->canDisplayDetails()) { ?>
@@ -483,16 +483,12 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 						<?php if ($showsources) {?>
 							<div id="facts_sources">
 								<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
-								<?php
-								foreach ($source_list as $source) {
-									echo '
-										<p>
-											<span>' . ($source['key']) . '</span>
-											<span>' . $source['value'] . '</span>
-										</p>
-									';
-								}
-								?>
+								<?php foreach ($source_list as $source) { ?>
+									<p>
+										<span><?php echo ($source['key']); ?></span>
+										<span><?php echo $source['value']; ?></span>
+									</p>
+								<?php } ?>
 							</div>
 						<?php }
 					} elseif ($family && $family->canDisplayName()) { ?>

@@ -3000,7 +3000,10 @@ div.widget {
 	padding: 0 10px;
 }
 
-/* Styles for individual and family reports resource */
+/* Styles for individual, family and related families reports */
+#resource-page.families_report h3 {
+	margin: 0;
+}
 #resource-page.family_report #accordion {
 	margin-bottom: 50px;
 }
@@ -3008,6 +3011,7 @@ div.widget {
 	text-transform: capitalize;
 }
 #resource-page.individual_report .indi_mainimage,
+#resource-page.families_report .indi_mainimage,
 #resource-page.family_report .indi_mainimage {
 	margin-bottom: 10px;
 }
@@ -3016,38 +3020,46 @@ div.widget {
 	vertical-align: top;
 }
 #resource-page.individual_report .images,
+#resource-page.families_report .images,
 #resource-page.family_report .images {
 	display: inline-block;
 }
 #resource-page.individual_report .images span,
+#resource-page.families_report .images span,
 #resource-page.family_report .images span {
 	display: inline-block;
 	vertical-align: middle;
 	padding: 0 10px;
 }
 #resource-page.individual_report .images span::first,
+#resource-page.families_report .images span::first,
 #resource-page.family_report .images  span::first {
 	padding: 0;
 }
 #resource-page.individual_report .facts_events,
+#resource-page.families_report .facts_events,
 #resource-page.family_report .facts_events {
 	clear: both;
 }
+#resource-page.families_report .facts_events,
 #resource-page.family_report .facts_events {
 	display: inline-block;
 	margin: 0 20px;
 	vertical-align: top;
 }
 #resource-page.individual_report h4,
+#resource-page.families_report h4,
 #resource-page.family_report h4 {
 	font-size: 100%;
 	margin: 0;
 }
 #resource-page.individual_report .notes,
+#resource-page.families_report .notes,
 #resource-page.family_report .notes {
 	margin: 30px 0;
 }
 #resource-page.individual_report .notes ol,
+#resource-page.families_report .notes ol,
 #resource-page.family_report .notes ol {
 	margin-top: 0;
 }
@@ -3066,18 +3078,20 @@ div.widget {
 	text-indent: 20px;
 }
 #resource-page.individual_report span.label,
+#resource-page.families_report span.label,
 #resource-page.family_report span.label {
 	display: inline-block;
-	text-transform: capitalize;
 	min-width: 150px;
 	width: 15%;
 	vertical-align: top;
 }
 #resource-page.individual_report .details,
+#resource-page.families_report .details,
 #resource-page.family_report .details {
 	display: inline-block;
 }
 #resource-page.individual_report p.report_fact,
+#resource-page.families_report p.report_fact,
 #resource-page.family_report p.report_fact {
 	border-bottom: 1px solid #ccc;
 	display: inline-block;
@@ -3087,38 +3101,47 @@ div.widget {
 #resource-page.individual_report .report_fact .date,
 #resource-page.individual_report .report_fact .place,
 #resource-page.individual_report .report_fact .field,
+#resource-page.families_report .report_fact .date,
+#resource-page.families_report .report_fact .place,
+#resource-page.families_report .report_fact .field,
 #resource-page.family_report .report_fact .date,
 #resource-page.family_report .report_fact .place,
 #resource-page.family_report .report_fact .field {
 	padding: 0 5px;
 }
 #resource-page.individual_report .report_fact .addr,
+#resource-page.families_report .report_fact .addr,
 #resource-page.family_report .report_fact .addr {
 	font-style: italic;
 	font-size: 85%;
 }
 #resource-page.individual_report .report_fact .addr br,
+#resource-page.families_report .report_fact .addr br,
 #resource-page.family_report .report_fact .addr br {
 	display: none;
 }
 #resource-page.individual_report .report_fact .addr::before,
+#resource-page.families_report .report_fact .addr::before,
 #resource-page.family_report .report_fact .addr::before {
 	content: '(';
 }
 #resource-page.individual_report .report_fact .addr::after,
+#resource-page.families_report .report_fact .addr::after,
 #resource-page.family_report .report_fact .addr::after {
 	content: ')';
 }
 #resource-page.individual_report #facts_sources,
+#resource-page.families_report #facts_sources,
 #resource-page.family_report #facts_sources {
 	margin: 30px 0;
 }
 #resource-page.individual_report #facts_sources p,
+#resource-page.families_report #facts_sources p,
 #resource-page.family_report #facts_sources p {
 	font-size: 90%;
 	margin: 10px 0;
 }
-#resource-page.family_report .ui-widget-content {
+#resource-page .ui-widget-content {
 	background: none;
 }
 
@@ -3592,9 +3615,11 @@ textarea#NOTE {
        page-break-after: avoid;
    }
 
-   /* Resource pages pagination */
+   /* Resource pages print & pagination */
    #resource-page.individual_report .facts_events,
    #resource-page.individual_report .indi_mainimage,
+   #resource-page.families_report .facts_events,
+   #resource-page.families_report .indi_mainimage,
    #resource-page.family_report .indi_mainimage,
    #resource-page.family_report .facts_events {
 	   border: none;
@@ -3603,35 +3628,43 @@ textarea#NOTE {
 	   margin: 0;
 	   page-break-after: auto;
    }
-   #resource-page.family_report p.report_fact {
+   #resource-page.family_report p.report_fact,
+   #resource-page.families_report p.report_fact {
 	   border-bottom: 1px solid #ccc;
    }
-   #resource-page.family_report #accordion h3 {
+   #resource-page.family_report #accordion h3,
+   #resource-page.family_report #accordion h3 a,
+   #resource-page.families_report #accordion h3,
+   #resource-page.families_report #accordion h3 a {
 	   color: #555;
-	   font-weight: 700;
 	   margin: 0;
 	   padding: 0;
    }
-   #resource-page.family_report #accordion h3.ui-accordion-header {
+   #resource-page.family_report #accordion h3.ui-accordion-header,
+   #resource-page.families_report #accordion h3.ui-accordion-header {
 	   border: none;
    }
-   #resource-page.family_report #accordion h3.ui-accordion-header span.ui-accordion-header-icon {
+   #resource-page.family_report #accordion h3.ui-accordion-header span.ui-accordion-header-icon,
+   #resource-page.families_report #accordion h3.ui-accordion-header span.ui-accordion-header-icon {
 	   display: none;
    }
-   #resource-page.family_report #accordion h3.ui-active {
+   #resource-page.family_report #accordion h3.ui-active,
+   #resource-page.families_report #accordion h3.ui-active {
 	   background-color: none;
    }
-   #resource-page.family_report #accordion h3 + div {
+   #resource-page.family_report #accordion h3 + div,
+   #resource-page.families_report #accordion h3 + div {
 	   border: none;
 	   display: block !important;
 	   page-break-after: always;
    }
-   #resource-page.family_report .indi_mainimage a img {
+   #resource-page.family_report .indi_mainimage a img,
+   #resource-page.families_report .indi_mainimage a img {
 	   max-height: 80px;
    }
 
    #resource-page.fact_report table td {
 	   white-space: normal;
    }
-
+   
 }
