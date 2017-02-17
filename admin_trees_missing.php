@@ -33,6 +33,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_missing.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 require WT_ROOT.'includes/functions/functions_print_facts.php';
+global $DEFAULT_PEDIGREE_GENERATIONS;
 
 $controller = new WT_Controller_Page();
 $controller
@@ -56,7 +57,7 @@ $controller
 	$choose_relatives	= WT_Filter::post('choose_relatives') ? WT_Filter::post('choose_relatives') : 'child-family';
 	$ged				= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
 	$selected_facts		= WT_Filter::postArray('selected_facts');
-	$maxgen				= WT_Filter::post('generations');
+	$maxgen				= WT_Filter::post('generations', WT_REGEX_INTEGER, $DEFAULT_PEDIGREE_GENERATIONS);
 
 	$select = array(
 		'child-family'		=> WT_I18N::translate('Parents and siblings'),
