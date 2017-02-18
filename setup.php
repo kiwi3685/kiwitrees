@@ -890,7 +890,8 @@ try {
 		" (1, 'verified',          ?),".
 		" (1, 'verified_by_admin', ?),".
 		" (1, 'auto_accept',       ?),".
-		" (1, 'visibleonline',     ?)"
+		" (1, 'visibleonline',     ?),".
+		" (1, 'notify_clipping',   ?)"
 	)->execute(array(
 		1, WT_LOCALE, 1, 1, 0, 1
 	));

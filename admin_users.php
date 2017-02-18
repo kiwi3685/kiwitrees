@@ -62,6 +62,7 @@ switch (WT_Filter::post('action')) {
 			$visible_online		= WT_Filter::postBool('visible_online');
 			$verified			= WT_Filter::postBool('verified');
 			$verified_by_admin	= WT_Filter::postBool('verified_by_admin');
+			$notify_clipping	= WT_Filter::postBool('notify_clipping');
 
 			if ($user_id === 0) {
 				// Create a new user
@@ -108,6 +109,7 @@ switch (WT_Filter::post('action')) {
 				set_user_setting($user_id, 'visibleonline', $visible_online);
 				set_user_setting($user_id, 'verified', $verified);
 				set_user_setting($user_id, 'verified_by_admin',	$verified_by_admin);
+				set_user_setting($user_id, 'notify_clipping', $notify_clipping);
 
 				// We cannot change our own admin status. Another admin will need to do it.
 				if ($user_id !== WT_USER_ID) {
@@ -493,6 +495,25 @@ switch (WT_Filter::get('action')) {
 						<textarea id="comment" name="comment" rows="5" maxlength="255"><?php echo WT_Filter::escapeHtml(get_user_setting($user_id, 'comment')); ?></textarea>
 					</div>
 				</div>
+				<!-- ADMIN NOTIFICATION OPTIONS -->
+				<?php if (WT_USER_IS_ADMIN) { ?>
+					<div class="config_options">
+						<label for="verified">
+							<?php echo WT_I18N::translate('Notification options'); ?>
+						</label>
+						<div class="input_group">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="notify_clipping" value="1" <?php echo get_user_setting($user_id, 'notify_clipping', 1) ? 'checked' : ''; ?>>
+									<?php echo WT_I18N::translate('Clippings cart downloads'); ?>
+								</label>
+								<div class="helpcontent">
+									<?php echo WT_I18N::translate('When a user downloads a GEDCOM file created in the Clippings cart the site administrator will be notified by mail if this option is selected.'); ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
 				<!-- FAMILY TREEs - ACCESS and SETTINGS -->
 				<div id="access">
 					<h3><?php echo WT_I18N::translate('Family tree access and settings'); ?></h3>
