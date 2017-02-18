@@ -1424,6 +1424,10 @@ div.dt-buttons a.dt-button {
 .name_tree_div li, .name_tree_div_visible li {list-style:none;margin:0;padding:0;}
 
 /* Clippings */
+#clippingscart-page td.helpcontent {
+	width: 90%;
+	max-width: 500px;
+}
 #sb_content_clippings {margin-top:5px;}
 #sb_clippings_content ul {padding:0;margin:0;}
 #sb_clippings_content li {list-style:none;margin:0;padding:0;white-space:nowrap;}
@@ -3424,5 +3428,5 @@ textarea#NOTE {
    #resource-page.fact_report table td {
 	   white-space: normal;
    }
-  
+
 }

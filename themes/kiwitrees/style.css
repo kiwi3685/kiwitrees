@@ -3748,6 +3748,10 @@ div.dt-buttons a.dt-button {
 }
 
 /* Clippings */
+#clippingscart-page td.helpcontent {
+	width: 90%;
+	max-width: 500px;
+}
 #sb_content_clippings {
 	margin-top: 5px;
 }
@@ -4228,8 +4232,10 @@ a.icon-udarrow:hover {
 
 .fa-bars				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #fff;} /* fa-bars */
 .fa-bars:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-bars */
+.fa-cart-arrow-down		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;}
+.fa-cart-arrow-down:hover {font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px; opacity: .6;}
 .fa-times				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color:#ff0000; vertical-align: middle;} /* fa-times */
-.fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-times */
+.fa-times:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-times */sb
 .fa-save				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-save */
 .fa-save:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-save */
 .fa-search				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-search */
@@ -4256,7 +4262,7 @@ a.icon-udarrow:hover {
 .icon-button_addsource,
 .icon-button_addmedia,
 .icon-button_addrepository
-						{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em;} /* fa-plus */
+						{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px; vertical-align: top;} /* fa-plus */
 .icon-button_keyboard	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-icon-keyboard-o */
 .icon-button_place		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-globe */
 .icon-button_calendar	{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: top;} /* fa-calendar */

@@ -306,6 +306,22 @@ class WT_Controller_Clippings {
 
 		header('Content-length: ' . strlen($this->download_data));
 		echo $this->download_data;
+
+		// Notify admin of download and add to log
+		global $WEBTREES_EMAIL;
+		$adminId	= get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+		$userName	= get_user_name(WT_USER_ID);
+
+		require_once WT_ROOT.'includes/functions/functions_mail.php';
+		WT_I18N::init(get_user_setting($adminId, 'language'));
+		kiwiMail(
+			getUserEmail($adminId),
+			$WEBTREES_EMAIL,
+			WT_I18N::translate(strip_tags(WT_TREE_TITLE) . ' Clippings cart'),
+			WT_I18N::translate('User %s has just downloaded a clippings cart file', WT_USER_NAME)
+		);
+		AddToLog("Clippings cart downloaded by user " .  WT_USER_NAME, 'edit');
+
 		exit;
 	}
 

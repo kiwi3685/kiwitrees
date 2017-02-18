@@ -1475,7 +1475,13 @@ div.dt-buttons a.dt-button {
 .search-page-table .value {background-color:#ecf5ff;border-top:1px solid #999999;color:#333333;margin:0 0 0 170px;padding:5px;white-space:nowrap;}
 .search-page-table div:nth-of-type(2) {border:0;}
 .search-page-table label,.search-page-table .value input {margin:0 3px;}
+
+/* Clippings */
 #sb_content_descendancy,#sb_content_individuals,#sb_content_families,#sb_content_clippings {margin-top:5px;}
+#clippingscart-page td.helpcontent {
+	width: 90%;
+	max-width: 500px;
+}
 
 .desc_tree_div,.name_tree_div {display:none;}
 .name_tree_div li,.name_tree_div_visible li,#sb_clippings_content li {list-style:none;margin:0;padding:0;}
