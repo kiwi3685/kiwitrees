@@ -63,7 +63,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 		$menus = array();
 		$menu  = new WT_Menu(
 			$this->getTitle(),
-			'module.php?mod=calendar_utilities&amp;mod_action=show',
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=show',
 			'menu-calendar_utilities'
 		);
 		$menus[] = $menu;
