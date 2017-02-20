@@ -1564,6 +1564,7 @@ function old_paths() {
 		WT_ROOT.'readme.html', // Readme files moved to kiwitrees.net FAQs
 		// Removed in kiwitrees 3.2.4
 		WT_ROOT.'search-advanced.php', // old file no longer used
+		WT_ROOT.'fanchart.php', // file no longer used
 		WT_ROOT.'modules_v3/bdm_report', // report replaced by resource version
 		WT_ROOT.'modules_v3/family_group_report', // report replaced by resource version
 		WT_ROOT.'modules_v3/marriage_report', // report replaced by resource version

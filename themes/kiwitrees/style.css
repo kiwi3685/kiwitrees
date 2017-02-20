@@ -4246,7 +4246,7 @@ a.icon-udarrow:hover {
 .fa-link:hover			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-link */
 .fa-arrows				{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-arrows */
 .fa-arrows:hover		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; color: #3383bb;} /* fa-arrows */
-.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 5px; vertical-align: middle;} /* fa-eye */
+.fa-eye					{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 5px;} /* fa-eye */
 .fa-mail-forward		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-mail-forward */
 
 .icon-sidebar-close		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.25em; margin: 2px 5px;} /* fa-chevron-left */
@@ -6690,6 +6690,14 @@ textarea#NOTE {
 	display: inline-block;
 	margin-top: 15px;
 	vertical-align: top;
+}
+
+#fanchart-page .chart_options input.fontScale {
+	width: 75px;
+}
+
+#fanchart-page .chart_options select#generations {
+	width: 100px;
 }
 
 #fanchart-page svg {

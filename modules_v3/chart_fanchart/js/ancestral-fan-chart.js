@@ -53,7 +53,9 @@
             height: 1200,
             padding: 5,
 
-            x: null
+            x: null,
+
+            updateUrl : ''
         },
 
         config: {
@@ -75,21 +77,10 @@
             this.options.x = d3.scaleLinear().range([this.options.startPi, this.options.endPi]);
 
             // Start bootstrapping
-            this.initChart(this.options.data);
-            this.placeArcs();
-
-            // Adjust size of svg
-            var boundingBox = this.config.visual.node().getBBox();
-            var radius      = boundingBox.width / 2;
-
-            d3.select(this.config.visual.node().parentNode)
-                .attr('width', boundingBox.width + (this.options.padding << 1))
-                .attr('height', boundingBox.height + (this.options.padding << 1));
-
-            this.config.visual.attr(
-                'transform',
-                'translate(' + [radius + this.options.padding, radius + this.options.padding] + ')'
-            );
+            this.initChart();
+            this.initData(this.options.data);
+            this.createArcElements();
+            this.updateViewBox();
         },
 
         /**
@@ -130,18 +121,27 @@
          *
          * @private
          */
-        initChart: function (data) {
-            var that = this;
-
+        initChart: function () {
             this.config.visual = d3
                 .select('#fan_chart')
                 .append('svg')
-                .attr('width', this.options.width + (this.options.padding << 1))
-                .attr('height', this.options.height + (this.options.padding << 1))
+                .attr('width', '100%')
+                .attr('height', '100%')
                 .attr('text-rendering', 'geometricPrecision')
                 .attr('text-anchor', 'middle')
                 .append('g')
                 .attr('class', 'group');
+        },
+
+        /**
+         * Initialize the chart data.
+         *
+         * @param {object} data JSON encoded data
+         *
+         * @private
+         */
+        initData: function (data) {
+            var that = this;
 
             // Construct root node
             var root = d3.hierarchy(
@@ -178,13 +178,39 @@
         },
 
         /**
-         * Call all the methods required to draw the arcs and labels.
+         * Update the viewBox attribute of the SVG element.
          */
-        placeArcs: function () {
-            this.drawBorderCenterCircle();
-            this.drawBorderArcs();
-            this.createInnerArcLabels();
-            this.createOuterArcLabels();
+        updateViewBox: function () {
+            // Adjust size of svg
+            var boundingBox = this.config.visual.node().getBBox();
+            var width       = boundingBox.width;
+            var height      = boundingBox.height;
+            var transX      = Math.round(width + (this.options.padding * 2));
+            var transY      = Math.round(height + (this.options.padding * 2));
+
+            // Set view box to actual width and height of svg
+            d3.select('#fan_chart svg')
+                .attr('viewBox', [
+                    boundingBox.x - this.options.padding,
+                    boundingBox.y - this.options.padding,
+                    transX,
+                    transY
+                ])
+                .style('max-width', transX + 'px');
+        },
+
+        /**
+         * Calculate the angle.
+         *
+         * @param {number} value Value
+         *
+         * @returns {number}
+         */
+        calcAngle: function (value) {
+            return Math.max(
+                this.options.startPi,
+                Math.min(this.options.endPi, this.options.x(value))
+            );
         },
 
         /**
@@ -195,10 +221,7 @@
          * @returns {number}
          */
         startAngle: function (d) {
-            return Math.max(
-                this.options.startPi,
-                Math.min(this.options.endPi, this.options.x(d.x0))
-            );
+            return this.calcAngle(d.x0);
         },
 
         /**
@@ -209,10 +232,7 @@
          * @returns {number}
          */
         endAngle: function (d) {
-            return Math.max(
-                this.options.startPi,
-                Math.min(this.options.endPi, this.options.x(d.x1))
-            );
+            return this.calcAngle(d.x1);
         },
 
         /**
@@ -265,13 +285,42 @@
         },
 
         /**
-         * Add title element containing the full name of the individual.
+         * Draws the borders of the single arcs.
+         */
+        createArcElements: function () {
+            var personGroup = this.config.visual
+                .selectAll('g.person')
+                .data(this.config.nodes)
+                .enter()
+                .append('g')
+                .attr('class', 'person');
+
+            // Append click event only to existing elements
+            personGroup.filter(function (d) {
+                    return (d.data.id !== '') && (d.depth !== 0);
+                })
+                .style('cursor', 'pointer')
+                .on('click', $.proxy(this.update, this));
+
+            this.appendTitle(personGroup);
+            this.appendArc(personGroup);
+            this.appendLabels(personGroup);
+
+            // Show labels
+            personGroup.selectAll('g.label')
+                .attr('opacity', 1);
+        },
+
+        /**
+         * Append a title element containing the full name of the individual
+         * to the person group.
          *
-         * @param {object} parent D3 parent element to append the title to
+         * @param {object} parent Parent element used to append the title
          */
         appendTitle: function (parent) {
             // Add title element containing the full name of the individual
-            parent.append('title')
+            parent.insert('title', ':first-child')
+                .data(this.config.nodes)
                 .text(function (d) {
                     // Return name or remove empty element
                     return (d.data.id !== '') ? d.data.name : this.remove();
@@ -279,71 +328,247 @@
         },
 
         /**
-         * Draws the center circle of the fan chart.
+         * Create an arc generator.
+         *
+         * @return {object}
          */
-        drawBorderCenterCircle: function () {
-            var arcGenerator = d3.arc()
-                .startAngle(0)
-                .endAngle(Math.PI * 2)
-                .innerRadius(this.innerRadius)
-                .outerRadius(this.outerRadius);
-
-            var borderArcs = this.config.visual
-                .append('g')
-                .attr('class', 'arcs')
-                .data(
-                    // Remove all not required data
-                    this.config.nodes.filter(function (d) {
-                        return d.depth === 0;
-                    })
-                )
-                .append('g')
-                .attr('class', 'arc');
-
-            this.appendTitle(borderArcs);
-            this.drawBorders(borderArcs, arcGenerator);
-        },
-
-        /**
-         * Draws the borders of the single arcs.
-         */
-        drawBorderArcs: function () {
+        createArcGenerator: function () {
             var that = this;
 
-            var arcGenerator = d3.arc()
+            return d3.arc()
                 .startAngle(function (d) {
-                    return that.startAngle(d);
+                    return (d.depth === 0) ? 0 : that.startAngle(d);
                 })
                 .endAngle(function (d) {
-                    return that.endAngle(d);
+                    return (d.depth === 0) ? (Math.PI * 2) : that.endAngle(d);
                 })
                 .innerRadius(this.innerRadius)
                 .outerRadius(this.outerRadius);
-
-            var borderArcs = this.config.visual
-                .select('g.arcs')
-                .selectAll('g.arc')
-                .data(this.config.nodes)
-                .enter()
-                .append('g')
-                .attr('class', 'arc');
-
-            this.appendTitle(borderArcs);
-            this.drawBorders(borderArcs, arcGenerator);
         },
 
         /**
-         * Draws the borders using the given arc generator.
+         * Append a path element using the given arc generator.
          *
-         * @param {object}   borderArcs   Elements selected
-         * @param {function} arcGenerator Arc generator
+         * @param {object} parent Parent element used to append the new path
          */
-        drawBorders: function (borderArcs, arcGenerator) {
-            borderArcs.append('path')
+        appendArc: function (parent) {
+            parent.append('g')
+                .attr('class', 'arc')
+                .append('path')
                 .attr('fill', function (d) {
                     return d.data.color;
                 })
-                .attr('d', arcGenerator);
+                .attr('d', this.createArcGenerator());
+        },
+
+        /**
+         * Returns TRUE if the depth of the element is in the inner range. So labels should
+         * be rendered along an arc path. Otherwise returns FALSE to indicate the element
+         * is either the center one or on the outer arcs.
+         *
+         * @param {object} d D3 data object
+         *
+         * @return {bool}
+         */
+        isInnerLabel: function (d) {
+            return ((d.depth > 0)
+                && (d.depth < this.options.nameSwitchThreshold));
+        },
+
+        /**
+         * Append the labels for an arc.
+         *
+         * @param {object} parent Parent element used to append the labels
+         */
+        appendLabels: function (parent) {
+            var that = this;
+
+            var group = parent
+                .data(this.config.nodes)
+                .filter(function (d) {
+                    // Do not add emtpy elements
+                    return (d.data.id !== '');
+                })
+                .append('g')
+                .style('fill', this.options.fontColor)
+                .attr('class', 'label');
+
+            // Inner labels (initial hidden)
+            var innerLabels = group
+                .filter(function (d) {
+                    return that.isInnerLabel(d);
+                })
+                .attr('opacity', 0);
+
+            innerLabels.each(function (d) {
+                var parent   = d3.select(this);
+                var timeSpan = that.getTimeSpan(d);
+
+                // Relative position offsets in percent (0 = inner radius, 100 = outer radius)
+                var positions = [70, 52, 25];
+
+                // Flip label positions for 360 degree chart
+                if (that.isPositionFlipped(d)) {
+                    positions = [30, 48, 75];
+                }
+
+                // Create a path for each line of text as mobile devices
+                // won't display <tspan> elements in the right position
+                that.appendArcPath(parent, 0, positions[0]);
+                that.appendArcPath(parent, 1, positions[1]);
+
+                if (timeSpan) {
+                    that.appendArcPath(parent, 2, positions[2]);
+                }
+
+                // Append text element
+                var text = parent
+                    .append('text')
+                    .attr('dominant-baseline', 'middle')
+                    .style('font-size', function (d) {
+                        return that.getFontSize(d);
+                    })
+                    .style('fill', that.options.fontColor);
+
+                // Append textPath elements along to create paths
+                that.appendInnerArcTextPath(text, 0, that.getFirstNames(d));
+                that.appendInnerArcTextPath(text, 1, that.getLastName(d));
+
+                if (timeSpan) {
+                    that.appendInnerArcTextPath(text, 2, timeSpan, 'chart-date');
+                }
+            });
+
+            // Outer labels (initial hidden)
+            var outerLabels = group
+                .filter(function (d) {
+                    return !that.isInnerLabel(d);
+                })
+                .attr('opacity', 0);
+
+            outerLabels.each(function (d) {
+                var parent   = d3.select(this);
+                var name     = d.data.name;
+                var timeSpan = that.getTimeSpan(d);
+
+                // Return first name for inner circles
+                if (d.depth < 7) {
+                    name = that.getFirstNames(d);
+                }
+
+                // Create the text elements for first name, last name and
+                // the birth/death dates
+                that.appendOuterArcText(parent, name);
+
+                // Outer circles only show the names
+                if (d.depth < 7) {
+                    // Add last name
+                    that.appendOuterArcText(parent, that.getLastName(d));
+
+                    // Add dates
+                    if ((d.depth < 6) && timeSpan) {
+                        that.appendOuterArcText(parent, timeSpan, 'chart-date');
+                    }
+                }
+            });
+
+            this.transformText(outerLabels);
+        },
+
+        /**
+         * Update the chart with data loaded from AJAX.
+         *
+         * @param {object} d D3 data object
+         */
+        update: function (d) {
+            var that = this;
+
+            d3.json(
+                this.options.updateUrl + d.data.id,
+                function (data) {
+                    // Initialize the new loaded data
+                    that.initData(data);
+
+                    // Update the click event listeners
+                    d3.selectAll('g.person')
+                        .style('cursor', 'default')
+                        .on('click', null);
+
+                    d3.selectAll('g.person')
+                        .data(that.config.nodes)
+                        .filter(function (d) {
+                            return (d.data.id !== '') && (d.depth !== 0);
+                        })
+                        .style('cursor', 'pointer')
+                        .on('click', $.proxy(that.update, that));
+
+                    // Update the title
+                    d3.selectAll('g.person')
+                        .select('title').remove();
+
+                    that.appendTitle(d3.selectAll('g.person'));
+
+                    // Update arc and labels
+                    that.updateArcPath();
+                    that.updateArcLabel();
+                }
+            );
+        },
+
+        /**
+         * Method performs and update of the path values with an
+         * animated transition.
+         */
+        updateArcPath: function () {
+            // Select all path elements and assign the data
+            var path = d3.selectAll('g.arc')
+                .select('path')
+                .data(this.config.nodes);
+
+            // Create path transition
+            path.transition()
+                .attr('fill', function (d) {
+                    return d.data.color;
+                })
+                .duration(1000);
+        },
+
+        /**
+         * Method performs and update of the path values with an
+         * animated transition.
+         */
+        updateArcLabel: function () {
+            var that = this;
+
+            // Active transition counter
+            var count = 0;
+
+            // Fade out existing labels
+            d3.selectAll('g.label')
+                .transition()
+                .duration(500)
+                .attr('opacity', 0)
+                .on('start', function () {
+                    ++count;
+                })
+                .on('end', function () {
+                    --count;
+
+                    // Wait till all transitions finished
+                    if (count === 0) {
+                        // Remove all label groups once they are faded out
+                        d3.selectAll('g.label').remove();
+
+                        // Append new labels
+                        that.appendLabels(d3.selectAll('g.person'));
+
+                        // Fade in
+                        d3.selectAll('g.label')
+                            .transition()
+                            .duration(500)
+                            .attr('opacity', 1);
+                    }
+                });
         },
 
         /**
@@ -474,25 +699,6 @@
         },
 
         /**
-         * Create the group element for the labels.
-         *
-         * @param {string}   groupClass CSS class to assign to the group
-         * @param {function} filterFunc Filter function to apply to the data nodes
-         *
-         * @return {object} D3 group element
-         */
-        createLabelGroup: function (groupClass, filterFunc) {
-            return this.config.visual
-                .append('g')
-                .attr('class', groupClass)
-                .selectAll('g.label')
-                .data(this.config.nodes.filter(filterFunc))
-                .enter()
-                .append('g')
-                .attr('class', 'label');
-        },
-
-        /**
          * Append a path element to the given parent group element.
          *
          * @param {object} parent   Parent container element, D3 group element
@@ -539,7 +745,7 @@
          * @param {string} label         Label to display
          * @param {string} textPathClass Optional class to set to the D3 textPath element
          */
-        appendTextPath: function (parent, index, label, textPathClass) {
+        appendInnerArcTextPath: function (parent, index, label, textPathClass) {
             parent.append('textPath')
                 .attr('class', textPathClass || null)
                 .attr('startOffset', '25%')
@@ -551,61 +757,25 @@
         },
 
         /**
-         * Create the labels of the inner arcs of the chart.
+         * Append text element to the given group element.
+         *
+         * @param {object} group     D3 group (g) object
+         * @param {string} label     Label to display
+         * @param {string} textClass Optional class to set to the D3 text element
+         *
+         * @return {object} D3 text object
          */
-        createInnerArcLabels: function () {
+        appendOuterArcText: function (group, label, textClass) {
             var that = this;
 
-            var group = this.createLabelGroup(
-                'inner-labels',
-                function (d) {
-                    // Remove all not required or empty data records
-                    return (d.data.id !== '')
-                        && (d.depth > 0)
-                        && (d.depth < that.options.nameSwitchThreshold);
-                });
-
-            // Add title element containing the full name of the individual
-            this.appendTitle(group);
-
-            // Create a path for each line of text as mobile devices
-            // won't display <tspan> elements in the right position
-            group.each(function (d) {
-                var parent   = d3.select(this);
-                var timeSpan = that.getTimeSpan(d);
-
-                // Relative position offsets in percent (0 = inner radius, 100 = outer radius)
-                var positions = [70, 52, 25];
-
-                // Flip label positions for 360 degree chart
-                if (that.isPositionFlipped(d)) {
-                    positions = [30, 48, 75];
-                }
-
-                that.appendArcPath(parent, 0, positions[0]);
-                that.appendArcPath(parent, 1, positions[1]);
-
-                if (timeSpan) {
-                    that.appendArcPath(parent, 2, positions[2]);
-                }
-
-                // Append text element
-                var text = parent
-                    .append('text')
-                    .attr('dominant-baseline', 'middle')
-                    .style('font-size', function (d) {
-                        return that.getFontSize(d);
-                    })
-                    .style('fill', that.options.fontColor);
-
-                // Append textPath elements along to create paths
-                that.appendTextPath(text, 0, that.getFirstNames(d));
-                that.appendTextPath(text, 1, that.getLastName(d));
-
-                if (timeSpan) {
-                    that.appendTextPath(text, 2, timeSpan, 'chart-date');
-                }
-            });
+            group.append('text')
+                .attr('class', textClass || null)
+                .attr('dominant-baseline', 'middle')
+                .style('font-size', function (d) {
+                    return that.getFontSize(d);
+                })
+                .text(label)
+                .each(this.truncate(5));
         },
 
         /**
@@ -618,7 +788,7 @@
         transformText: function (group) {
             var that = this;
 
-            group.each(function () {
+            group.each(function (d) {
                 var textElements = d3.select(this).selectAll('text');
                 var countElements = textElements.size();
                 var offset = 0;
@@ -678,76 +848,6 @@
                     }
                 });
             });
-        },
-
-        /**
-         * Append text element to the given group element.
-         *
-         * @param {object} group     D3 group (g) object
-         * @param {string} label     Label to display
-         * @param {string} textClass Optional class to set to the D3 text element
-         *
-         * @return {object} D3 text object
-         */
-        appendOuterArcText: function (group, label, textClass) {
-            var that = this;
-
-            group.append('text')
-                .attr('class', textClass || null)
-                .attr('dominant-baseline', 'middle')
-                .style('font-size', function (d) {
-                    return that.getFontSize(d);
-                })
-                .text(label)
-                .each(this.truncate(5));
-        },
-
-        /**
-         * Create the labels of the outer arcs of the chart.
-         */
-        createOuterArcLabels: function () {
-            var that = this;
-
-            var group = this.createLabelGroup(
-                'outer-labels',
-                function (d) {
-                    // Remove all not required or empty data records
-                    return (d.data.id !== '')
-                        && ((d.depth === 0)
-                        || (d.depth >= that.options.nameSwitchThreshold));
-                })
-                .style('fill', this.options.fontColor);
-
-            // Add title element containing the full name of the individual
-            this.appendTitle(group);
-
-            // Create the text elements for first name, last name and
-            // the birth/death dates
-            group.each(function (d) {
-                var parent   = d3.select(this);
-                var name     = d.data.name;
-                var timeSpan = that.getTimeSpan(d);
-
-                // Return first name for inner circles
-                if (d.depth < 7) {
-                    name = that.getFirstNames(d);
-                }
-
-                that.appendOuterArcText(parent, name);
-
-                // Outer circles only show the names
-                if (d.depth < 7) {
-                    // Add last name
-                    that.appendOuterArcText(parent, that.getLastName(d));
-
-                    // Add dates
-                    if ((d.depth < 6) && timeSpan) {
-                        that.appendOuterArcText(parent, timeSpan, 'chart-date');
-                    }
-                }
-            });
-
-            this.transformText(group);
         }
     });
 }(jQuery));
