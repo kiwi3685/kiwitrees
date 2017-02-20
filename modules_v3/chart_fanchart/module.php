@@ -41,28 +41,32 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 	}
 
 	// Extend WT_Module
-	public function modAction($modAction) {
-		if ($modAction === 'update') {
+	public function modAction($mod_action) {
+		switch ($mod_action) {
+		case 'update':
 			$rootId	= WT_Filter::get('rootid', WT_REGEX_XREF);
 			$person	= WT_Person::getInstance($rootId, WT_GED_ID);
-			$chart	= new WT_Controller_Fanchart();
+			$controller	= new WT_Controller_Fanchart();
 
 			header('Content-Type: application/json;charset=UTF-8');
 
-			echo json_encode($chart->buildJsonTree($person));
-			exit;
+			echo json_encode($controller->buildJsonTree($person));
+			break;
+		case 'show':
+			global $controller;
+			$controller = new WT_Controller_Fanchart();
+	        $controller
+				->restrictAccess(WT_Module::isActiveChart(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
+	            ->pageHeader()
+				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
+				->addExternalJavascript(WT_D3_JS)
+				->addExternalJavascript(WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/ancestral-fan-chart.js');
+
+	        echo $controller->render();
+			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
 		}
-
-		global $controller;
-		$controller = new WT_Controller_Fanchart();
-        $controller
-			->restrictAccess(WT_Module::isActiveChart(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
-            ->pageHeader()
-			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-			->addExternalJavascript(WT_D3_JS)
-			->addExternalJavascript(WT_STATIC_URL . WT_MODULES_DIR . $this->getName() . '/js/ancestral-fan-chart.js');
-
-        echo $controller->render();
 	}
 
 	// Extend class WT_Module
@@ -77,7 +81,7 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 		$menus	= array();
 		$menu	= new WT_Menu(
 			$this->getTitle(),
-			'module.php?mod=' . $this->getName() . '&amp;rootid=' . $person->getXref() . '&amp;ged=' . WT_GEDURL,
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $person->getXref() . '&amp;ged=' . WT_GEDURL,
 			'menu-chart-fanchart'
 		);
 		$menus[] = $menu;
