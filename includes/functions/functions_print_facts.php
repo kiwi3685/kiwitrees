@@ -981,7 +981,7 @@ function print_main_notes(WT_Event $fact, $level) {
 					$centitl  = str_replace('~~', '', $line1);
 					$centitl  = str_replace('<br>', '', $centitl);
 					$centitl  = "<a href=\"note.php?nid=$nid\">" . $centitl . '</a>';
-					require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
+					require WT_ROOT.WT_MODULES_DIR.'census_assistant/census_note_decode.php';
 				} else {
 					$text = expand_urls($line1 . $text);
 				}

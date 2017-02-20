@@ -972,7 +972,7 @@ case 'addnoteaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote_assisted':
-	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/CENS_ctrl.php';
+	require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_asst_ctrl.php';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -984,7 +984,7 @@ case 'addnoteaction_assisted':
 
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
-		<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php'; ?>
+		<?php require WT_ROOT . WT_MODULES_DIR . 'census_assistant/addnoteaction_assisted.php'; ?>
 	</div> <!-- id="edit_interface-page" -->
 
 	<?php

@@ -61,8 +61,8 @@ if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 global $pid;
 ?>
 
-<script src="<?php echo WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js'; ?>"></script>
-<script src="<?php echo WT_STATIC_URL . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/js/date.js'; ?>"></script>
+<script src="<?php echo WT_STATIC_URL . WT_MODULES_DIR . 'census_assistant/js/dynamicoptionlist.js'; ?>"></script>
+<script src="<?php echo WT_STATIC_URL . WT_MODULES_DIR . 'census_assistant/js/date.js'; ?>"></script>
 <script>
     var TheCenYear = opener.document.getElementById("setyear").value;
     var TheCenCtry = opener.document.getElementById("setctry").value;
@@ -93,7 +93,7 @@ global $pid;
             <div class="cens_left">
                 <!-- Census & Source Information Area =============================================== -->
                 <div class="cens_container">
-                    <?php require WT_ROOT . WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_2_source_input.php'; ?>
+                    <?php require WT_ROOT . WT_MODULES_DIR.'census_assistant/census_2_source_input.php'; ?>
                 </div>
                 <!-- Census Text Input Area ========================================================= -->
                 <div class="cens_textinput">
@@ -106,20 +106,20 @@ global $pid;
                 	</div>
                 	<!--  Census Add Rows Area ================================================== -->
                     <div class="cens_addrows">
-                    	<?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_5_input.php'; ?>
+                    	<?php require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_5_input.php'; ?>
                     </div>
                 </div>
                 <!-- Proposed Census Text Area ============================================== -->
                 <div class="cens_result">
                     <span>
-                        <?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_4_text.php'; ?>
+                        <?php require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_4_text.php'; ?>
                     </span>
                 </div>
             </div>
             <div class="cens_right">
                 <!-- Search  and Add Family Members Area ============================================ -->
                 <div class="cens_search">
-                        <?php require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_3_search_add.php'; ?>
+                        <?php require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_3_search_add.php'; ?>
                 </div>
             </div>
 		</form>

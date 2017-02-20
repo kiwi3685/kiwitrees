@@ -1624,10 +1624,10 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		switch ($fact) {
 		case 'DATE':
 			echo '<div class="input-group-addon">' . print_calendar_popup($element_id) . '</div>';
-			// If GEDFact_assistant/_CENS/ module is installed -------------------------------------------------
-			if ($action == 'add' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+			// If census_assistant module is installed -------------------------------------------------
+			if ($action == 'add' && array_key_exists('census_assistant', WT_Module::getActiveModules())) {
 				if (isset($CensDate) && $CensDate == 'yes') {
-					require_once WT_ROOT.WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_asst_date.php';
+					require_once WT_ROOT.WT_MODULES_DIR . 'census_assistant/census_asst_date.php';
 				}
 			}
 			// -------------------------------------------------------------------------------------------------
@@ -1657,9 +1657,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 				if ($value) {
 					echo ' ', print_editnote_link($value);
 				}
-				// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
+				// If census_assistant module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
 				// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
-				if (($action == 'add' || $action == 'edit') && $pid && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				if (($action == 'add' || $action == 'edit') && $pid && array_key_exists('census_assistant', WT_Module::getActiveModules())) {
 					// Check if a CENS event ---------------------------
 					if ($event_add == 'census_add') {
 						$type_pid=WT_GedcomRecord::getInstance($pid);

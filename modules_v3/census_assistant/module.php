@@ -29,20 +29,24 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class GEDFact_assistant_WT_Module extends WT_Module {
+class census_assistant_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Media assistant');
+		return /* I18N: Name of a module */ WT_I18N::translate('Census assistant');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Census assistant” module */ WT_I18N::translate('An alternative way to link media to individuals.');
+		return /* I18N: Description of the “Census assistant” module */ WT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
 	}
 
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
+		case '_CENS/census_3_find':
+			// TODO: this file should be a method in this class
+			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/_CENS/census_3_find.php';
+			break;
 		case 'media_3_find':
 			self::media_3_find();
 			break;
