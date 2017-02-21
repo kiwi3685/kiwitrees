@@ -87,8 +87,6 @@ class resource_related_indi_WT_Module extends WT_Module implements WT_Module_Res
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 
-		session_write_close();
-
 		//-- args
 		$go 				= WT_Filter::post('go');
 		$rootid 			= WT_Filter::get('rootid');

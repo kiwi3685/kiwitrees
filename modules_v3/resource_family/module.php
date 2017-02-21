@@ -84,7 +84,7 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 				jQuery("#container").css("visibility", "visible");
 				jQuery(".loading-image").css("display", "none");
 			');
-		session_write_close();
+
 		//-- args
 		$go 			= WT_Filter::post('go');
 		$rootid 		= WT_Filter::get('rootid');
@@ -168,30 +168,32 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 						<?php // Image displays
 							// Iterate over all of the media items for the person
 							preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $family->getGedcomRecord(), $matches, PREG_SET_ORDER);
-							foreach ($matches as $match) {
-								$level = $matches[1];
-								$media = WT_Media::getInstance($match[2]);
-								if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
-									continue;
-								}
-								switch ($showmedia) {
-									case 'all':
-										//show all level images ?>
-										<span><?php echo $media->displayImage(); ?></span>
-										<?php
-										break;
-									case 'main':
-										//show only level 1 images
-										if ($level == 1) { ?>
+							if ($matches) {
+								foreach ($matches as $match) {
+									$level = $match[1];
+									$media = WT_Media::getInstance($match[2]);
+									if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
+										continue;
+									}
+									switch ($showmedia) {
+										case 'all':
+											//show all level images ?>
 											<span><?php echo $media->displayImage(); ?></span>
-										<?php }
+											<?php
+											break;
+										case 'main':
+											//show only level 1 images
+											if ($level == 1) { ?>
+												<span><?php echo $media->displayImage(); ?></span>
+											<?php }
+											break;
+										case 'none':
+										default:
+										// show nothing
 										break;
-									case 'none':
-									default:
-									// show nothing
-									break;
+									}
 								}
-							} ?>
+							}?>
 						</div>
 						<div id="accordion">
 							<?php
