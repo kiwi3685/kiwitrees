@@ -29,7 +29,7 @@ if (!defined('WT_WEBTREES')) {
 class WT_Controller_Chart extends WT_Controller_Page {
 	public $root;
 	public $rootid;
-	public $error_message=null;
+	public $error_message = null;
 
 	public function __construct() {
 		parent::__construct();
@@ -42,7 +42,7 @@ class WT_Controller_Chart extends WT_Controller_Page {
 			$this->root   = $this->getSignificantIndividual();
 			$this->rootid = $this->root->getXref();
 		}
-		
+
 		if (!$this->root || !$this->root->canDisplayName()) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
 			$this->error_message=WT_I18N::translate('This individual does not exist or you do not have permission to view it.');

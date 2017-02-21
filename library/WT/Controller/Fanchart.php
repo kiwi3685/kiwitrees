@@ -66,9 +66,9 @@
         $this->fontScale   = WT_Filter::getInteger('fontScale', 0, 200, 100);
 
 		// Create page title
-        $title = WT_I18N::translate('Fan chart');
+        $title = WT_I18N::translate('Fanchart');
         if ($this->root && $this->root->canDisplayName()) {
-            $title = WT_I18N::translate('Fan chart of %s', $this->root->getFullName());
+            $title = WT_I18N::translate('Fanchart of %s', $this->root->getFullName());
 		}
 
 		$this->setPageTitle($title);

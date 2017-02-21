@@ -44,6 +44,7 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'update':
+			Zend_Session::writeClose();
 			$rootId	= WT_Filter::get('rootid', WT_REGEX_XREF);
 			$person	= WT_Person::getInstance($rootId, WT_GED_ID);
 			$controller	= new WT_Controller_Fanchart();
