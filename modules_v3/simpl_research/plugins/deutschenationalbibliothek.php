@@ -19,14 +19,14 @@ class deutschenationalbibliothek_plugin extends research_base_plugin {
 		return 'DEU';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		$values	 = array($surname, $first);
 		$query	 = implode('+', array_filter($values, function($v) { return $v !== null && $v !== ''; }));
 
 		return $link = 'https://portal.dnb.de/opac.htm?query=' . $query . '&method=simpleSearch';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return false;
 	}
 

@@ -18,11 +18,11 @@ class ancestry_plugin extends research_base_plugin {
 		return 'INT';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return false;
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		$domain = array(
 			// these are all the languages supported by ancestry. See: http://corporate.ancestry.com/about-ancestry/international/
 			'de'		=> 'de',		// German

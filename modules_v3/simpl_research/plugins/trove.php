@@ -18,11 +18,11 @@ class trove_plugin extends research_base_plugin {
 		return 'AUS';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return $link = 'http://trove.nla.gov.au/result?q=+%22'. $fullname .'%22&l-australian=y';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return false;
 	}
 

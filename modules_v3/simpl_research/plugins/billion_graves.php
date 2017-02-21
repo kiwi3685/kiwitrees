@@ -19,7 +19,7 @@ class billion_graves_plugin extends research_base_plugin {
 		return 'INT';
 	}
 
-    static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+    static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
         return $link = 'https://billiongraves.com/search/results?given_names=' . $givn . '&family_names=' . $surname . '&birth_year=' . $birth_year . '&death_year=' . $death_year . '&year_range=5&action=search&exact=true#/';
     }
 

@@ -18,7 +18,7 @@ class freebmd_plugin extends research_base_plugin {
 		return 'GBR';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		// This is a post form, so it will be sent with Javascript
 		$birth_year == '' ? $birth_year = '' : $birth_year = $birth_year - 5;
 		$death_year == '' ? $death_year = '' : $death_year = $death_year + 5;
@@ -35,7 +35,7 @@ class freebmd_plugin extends research_base_plugin {
 		return "postresearchform('" . $url . "'," . json_encode($params) . ")";
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return false;
 	}
 

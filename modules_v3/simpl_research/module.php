@@ -252,8 +252,8 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 												if ($primary) {
 													$name			= true;
 													$data			= $this->setPluginVariables($plugin, $primary, true);
-													$link 			= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
-													$sublinks 		= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
+													$link 			= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]);
+													$sublinks 		= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]);
 													$link_only		= $plugin->createLinkOnly();
 													$sublinks_only	= $plugin->createSubLinksOnly();
 												}
@@ -272,8 +272,13 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 												$html .= '</a>
 												<ul class="sublinks">';
 													foreach ($sublinks as $sublink) {
+														if (stripos($sublink['link'], "postresearchform") === false){
+															$alink = 'href="' . htmlspecialchars($sublink['link']) . '"';
+														} else {
+															$alink = 'href="javascript:void(0);" onclick="' . htmlspecialchars($sublink['link']) . '; return false;"';
+														}
 														$html .= '<li>
-															<a class="research_link" href="' . htmlspecialchars($sublink['link']) . '" target="_blank" rel="noopener noreferrer">
+															<a class="research_link" ' . $alink . ' target="_blank" rel="noopener noreferrer">
 																<span class="ui-icon ui-icon-triangle-1-e left"></span>'.
 																$sublink['title'].'
 															</a>
@@ -327,7 +332,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 		global $controller;
 		$controller = new WT_Controller_Page();
 		$controller
-//			->restrictAccess(WT_Module::isActiveList(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
+			->restrictAccess(WT_Module::isActiveList(WT_GED_ID, $this->getName(), WT_USER_ACCESS_LEVEL))
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
@@ -477,15 +482,15 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 																if ($primary) {
 																	$name		= true;
 																	$data		= $this->setPluginVariables($plugin, $primary, $indi);
-																	$link 		= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
-																	$sublinks 	= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
+																	$link 		= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]);
+																	$sublinks 	= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]);
 																}
 															}
 														}
 													} else {
 														$data		= $this->setPluginVariables($plugin, null, false, $surn, $givn, $sdate, $edate);
-														$link 		= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
-														$sublinks 	= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8]);
+														$link 		= $plugin->create_link($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]);
+														$sublinks 	= $plugin->create_sublink($data[0], $data[1], $data[2], $data[3], $data[4], $data[5], $data[6], $data[7], $data[8], $data[9]);
 													}
 													if ($sublinks) { // 'links_only' excluded ?>
 														<li>
@@ -625,9 +630,11 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 				$record		= WT_Person::getInstance($indi, WT_GED_ID);
 				$record->getBirthYear() ? $birth_year = $record->getBirthYear() : $birth_year = '';
 				$record->getDeathYear() ? $death_year = $record->getDeathYear() : $death_year = '';
+				$record->getSex() 		? $gender	  = $record->getSex() : $gender = '';
 			} else {
 				$controller->record->getBirthYear() ? $birth_year = $controller->record->getBirthYear() : $birth_year = '';
 				$controller->record->getDeathYear() ? $death_year = $controller->record->getDeathYear() : $death_year = '';
+				$controller->record->getSex() 		? $gender	  = $controller->record->getSex() : $gender = '';
 			}
 		} else {
 			$givn 		= $givn; // all given names
@@ -639,9 +646,10 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			$prefix		= ''; // not used
 			$birth_year = $sdate;
 			$death_year = $edate;
+			$gender		= ''; // not used
 		}
 
-		return array($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year);
+		return array($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender);
 
 	}
 

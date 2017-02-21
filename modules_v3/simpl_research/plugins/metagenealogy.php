@@ -18,11 +18,11 @@ class metagenealogy_plugin extends research_base_plugin {
 		return 'DEU';
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return false;
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		// Often it's better to run the search just with the surname.
 		// It's a post form, so it will be send by javascript in a new window.
 		$url = 'http://meta.genealogy.net/search/index';

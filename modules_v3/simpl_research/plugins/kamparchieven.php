@@ -18,7 +18,7 @@ class kamparchieven_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return $link = 'https://www.kamparchieven.nl/zoeken?mivast=959&miadt=959&mizig=0&miview=lst&milang=nl&micols=1&mires=0&mizk_alle=' . $surname . '';
 	}
 

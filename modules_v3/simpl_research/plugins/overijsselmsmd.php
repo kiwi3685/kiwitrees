@@ -18,11 +18,11 @@ class overijsselmsmd_plugin extends research_base_plugin {
 		return 'NLD';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return "https://www.onderzoekoverijssel.nl/resultaten.php?nav_id=3-0&Globaal=' . $givn . '%20' . $surname . '&Datum%20of%20periode_van=' . $birth_year . '&Datum%20of%20periode_tot=' . $death_year . '";
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return false;
 	}
 

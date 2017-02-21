@@ -18,7 +18,7 @@ class sample_js_link_plugin extends research_base_plugin {
 		return 'GBR';
 	}
 
-	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_link($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		$url	 	= 'http://www.freebmd.org.uk/cgi/search.pl';
 		$params	 	= array(
 			'type'		=> 'All Types',
@@ -32,7 +32,7 @@ class sample_js_link_plugin extends research_base_plugin {
 		return "postresearchform('" . $url . "'," . json_encode($params) . ")";
 	}
 
-	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year) {
+	static function create_sublink($fullname, $givn, $first, $middle, $prefix, $surn, $surname, $birth_year, $death_year, $gender) {
 		return false;
 	}
 
