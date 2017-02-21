@@ -460,8 +460,8 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			AddToLog($this->getName() . 'config updated', 'config');
 		}
 
-		$current_themedir	= get_module_setting($this->getName(), 'THEME_DIR', WT_I18N::translate('azur'));
-		$themename			= $this->galleria_theme_names();
+		$current_themedir	= get_module_setting($this->getName(), 'THEME_DIR', WT_I18N::translate('classic'));
+		$themenames			= $this->galleria_theme_names();
 
 		$items = WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS gallery_title, bs2.setting_value AS gallery_description".
@@ -503,7 +503,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						<div id="gallery_theme">
 							<div class="label"><?php echo WT_I18N::translate('Select gallery theme'); ?></div>
 							<?php
-							foreach ($themename as $themedir) {
+							foreach ($themenames as $themedir) {
 								echo
 									'<div ', ($current_themedir == $themedir ? 'class = "current_theme"' : 'class = "theme_box"'), '>
 											<img src="', WT_MODULES_DIR , $this->getName(), '/images/' , $themedir, '.png" alt="', $themedir, ' title="' ,$themedir, '">
@@ -611,8 +611,9 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	}
 
 	private function getJavaScript($item_id) {
-		$theme = "azur";// alternatives: "classic", "simpl_galleria"
+		$theme	= get_module_setting($this->getName(), 'THEME_DIR', WT_I18N::translate('classic'));
 		$plugin=get_block_setting($item_id, 'plugin');
+
 		$js='Galleria.loadTheme("'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/themes/'.$theme.'/galleria.'.$theme.'.min.js");';
 			switch ($plugin) {
 			case 'flickr':
