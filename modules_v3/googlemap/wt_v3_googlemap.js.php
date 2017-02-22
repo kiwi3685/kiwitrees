@@ -1,25 +1,25 @@
 <?php
-// Google map
-//
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+/**
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2012 to 2017 kiwitrees.net
+ *
+ * Derived from webtrees (www.webtrees.net)
+ * Copyright (C) 2010 to 2012 webtrees development team
+ *
+ * Derived from PhpGedView (phpgedview.sourceforge.net)
+ * Copyright (C) 2002 to 2010 PGV Development Team
+ *
+ * Kiwitrees is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -93,7 +93,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 	// A function to create the marker and set up the event window
 	function createMarker(i, latlng, event, html, placed, index, tab, address, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
-	
+
 		var contentString = '<div id="iwcontent">'+html+'<\/div>';
 
 		// Use flag icon (if defined) instead of regular marker icon

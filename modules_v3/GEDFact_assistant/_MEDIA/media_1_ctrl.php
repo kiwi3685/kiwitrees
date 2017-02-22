@@ -1,30 +1,25 @@
 <?php
-// Media Link Assistant Control
-//
-// Media Link information about an individual
-//
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2008 PGV Development Team  All rights reserved.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+/**
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2012 to 2017 kiwitrees.net
+ *
+ * Derived from webtrees (www.webtrees.net)
+ * Copyright (C) 2010 to 2012 webtrees development team
+ *
+ * Derived from PhpGedView (phpgedview.sourceforge.net)
+ * Copyright (C) 2002 to 2010 PGV Development Team
+ *
+ * Kiwitrees is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -66,7 +61,7 @@ if ($pid=="") {
 	?>
 	<table class="outer_nav center">
 		<?php
-	
+
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
@@ -98,7 +93,7 @@ if ($pid=="") {
 				?>
 			</td>
 		</tr>
-	
+
 		<?php
 		//-- Add Family Members to Census  -------------------------------------------
 		global $spouselinks, $parentlinks, $DeathYr, $BirthYr, $censyear, $censdate;
@@ -118,13 +113,13 @@ if ($pid=="") {
 					<?php echo WT_I18N::translate('Click Name to add person to Add Links List.'); ?>
 				</td>
 			</tr>
-	
+
 			<tr>
 				<td class="font9">
 					<br>
 				</td>
 			</tr>
-	
+
 			<?php
 			//-- Build Parent Family ---------------------------------------------------
 			$personcount=0;
@@ -133,7 +128,7 @@ if ($pid=="") {
 				$label = $this->record->getChildFamilyLabel($family);
 				$people = $this->buildFamilyList($family, "parents");
 				$marrdate = $family->getMarriageDate();
-	
+
 				// Husband -------------------
 				if (isset($people["husb"])) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
@@ -143,8 +138,8 @@ if ($pid=="") {
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
-	
-	
+
+
 					echo '<tr>';
 						// Define width of Left (Label) column -------
 						?>
@@ -205,7 +200,7 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-	
+
 				if (isset($people["wife"])) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
 					$fulln =strip_tags($people['wife']->getFullName());
@@ -274,7 +269,7 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-	
+
 				if (isset($people["children"])) {
 					$elderdate = $family->getMarriageDate();
 					foreach ($people["children"] as $key=>$child) {
@@ -290,7 +285,7 @@ if ($pid=="") {
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
 						$menu->addSubMenu($submenu);
-	
+
 						if ($child->getXref()==$pid) {
 							//Only print Head of Family in Immediate Family Block
 						} else {
@@ -369,7 +364,7 @@ if ($pid=="") {
 					$elderdate = $child->getBirthDate(false);
 				}
 			}
-	
+
 			//-- Build step families ----------------------------------------------------------------
 			foreach ($this->record->getChildStepFamilies() as $family) {
 				$label = $this->record->getStepFamilyLabel($family);
@@ -378,7 +373,7 @@ if ($pid=="") {
 					echo "<tr><td><br></td><td></td></tr>";
 				}
 				$marrdate = $family->getMarriageDate();
-	
+
 				// Husband -----------------------------
 				$elderdate = "";
 				if (isset($people["husb"]) ) {
@@ -460,7 +455,7 @@ if ($pid=="") {
 					<?php
 					$elderdate = $people["husb"]->getBirthDate(false);
 				}
-	
+
 				// Wife -------------------
 				if (isset($people["wife"]) ) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
@@ -541,7 +536,7 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-	
+
 				// Children ---------------------
 				if (isset($people["children"])) {
 					$elderdate = $family->getMarriageDate();
@@ -611,16 +606,16 @@ if ($pid=="") {
 					}
 				}
 			}
-	
+
 			echo "<tr><td><font size=1><br></font></td></tr>";
-	
+
 			//-- Build Spouse Family ---------------------------------------------------
 			$families = $this->record->getSpouseFamilies();
 			//$personcount = 0;
 			foreach ($families as $family) {
 				$people = $this->buildFamilyList($family, "spouse");
 				$marrdate = $family->getMarriageDate();
-	
+
 				// Husband -------------------
 				if (isset($people["husb"])) {
 					$married   = WT_Date::Compare($censdate, $marrdate);
@@ -702,8 +697,8 @@ if ($pid=="") {
 					<tr>
 					<?php
 				}
-	
-	
+
+
 				// Wife -------------------
 				if (isset($people["wife"])) {
 					$married = WT_Date::Compare($censdate, $marrdate);
@@ -784,7 +779,7 @@ if ($pid=="") {
 						</td>
 					<tr> <?php
 				}
-	
+
 				// Children
 				foreach ($people["children"] as $key=>$child) {
 						// Get child's marriage status
@@ -863,7 +858,7 @@ if ($pid=="") {
 				}
 			}
 			?>
-	
+
 			</table>
 		</td>
 	  </tr>

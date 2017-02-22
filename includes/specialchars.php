@@ -1,46 +1,47 @@
 <?php
-// Special Character tables, for use by Javascript to input characters
-// that aren't on your keyboard
-//
-// THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost)
-//
-// When updating, be sure to add the language into the array $specialchar_languages,
-// add a case for that language into the switch, and add any new special characters
-// into the default case of the switch near the bottom.
-//
-// Languages alpha by name in original language.
-// Special characters by language from European Commision, Research in Official Statistics:
-// http://europa.eu.int/comm/eurostat/research/index.htm?http://europa.eu.int/en/comm/eurostat/research/isi/special/&1
-// Other sources:
-// Czech: http://webdesign.about.com/library/blhtmlcodes-cz.htm
-// Irish: offline sources
-// Hawaiian: http://www.olelo.hawaii.edu/eng/resources/unicode.html
-// Lithuanian: http://www.eki.ee/letter/chardata.cgi?lang=lt+Lithuanian&script=latin
-//
-// Other special characters are all listed at the bottom.
-//
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2007 PGV Development Team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+/**
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2012 to 2017 kiwitrees.net
+ *
+ * Derived from webtrees (www.webtrees.net)
+ * Copyright (C) 2010 to 2012 webtrees development team
+ *
+ * Derived from PhpGedView (phpgedview.sourceforge.net)
+ * Copyright (C) 2002 to 2010 PGV Development Team
+ *
+ * Kiwitrees is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ *  Special Character tables, for use by Javascript to input characters
+ * that aren't on your keyboard
+ *
+ * THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost)
+ *
+ * When updating, be sure to add the language into the array $specialchar_languages,
+ * add a case for that language into the switch, and add any new special characters
+ * into the default case of the switch near the bottom.
+ *
+ * Languages alpha by name in original language.
+ * Special characters by language from European Commision, Research in Official Statistics:
+ * http://europa.eu.int/comm/eurostat/research/index.htm?http://europa.eu.int/en/comm/eurostat/research/isi/special/&1
+ * Other sources:
+ * Czech: http://webdesign.about.com/library/blhtmlcodes-cz.htm
+ * Irish: offline sources
+ * Hawaiian: http://www.olelo.hawaii.edu/eng/resources/unicode.html
+ * Lithuanian: http://www.eki.ee/letter/chardata.cgi?lang=lt+Lithuanian&script=latin
+ *
+ * Other special characters are all listed at the bottom.
+ */
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');

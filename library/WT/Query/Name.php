@@ -1,24 +1,25 @@
 <?php
-// MySQL queries on individual names
-//
-// Derived from webtrees
-// Copyright (C) 2011 webtrees development team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-//
-// @version $Id$
+/**
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2012 to 2017 kiwitrees.net
+ *
+ * Derived from webtrees (www.webtrees.net)
+ * Copyright (C) 2010 to 2012 webtrees development team
+ *
+ * Derived from PhpGedView (phpgedview.sourceforge.net)
+ * Copyright (C) 2002 to 2010 PGV Development Team
+ *
+ * Kiwitrees is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -350,7 +351,7 @@ class WT_Query_Name {
 			" JOIN (SELECT n_surn, n_file FROM `##name`".
 			" WHERE n_file={$ged_id}".
 			($marnm ? "" : " AND n_type!='_MARNM'");
-			
+
 		if ($surn) {
 			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."' =".WT_DB::quote($surn);
 		} elseif ($salpha==',') {
@@ -367,7 +368,7 @@ class WT_Query_Name {
 		if (!$marnm) {
 			$sql.=" AND n_type!='_MARNM'";
 		}
-	
+
 		$list=array();
 		foreach (WT_DB::prepare($sql)->fetchAll() as $row) {
 			$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
@@ -396,7 +397,7 @@ class WT_Query_Name {
 			($fams ? "JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			"WHERE n_file={$ged_id} ".
 			($marnm ? "" : "AND n_type!='_MARNM'");
-	
+
 		if ($surn) {
 			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."'=".WT_DB::quote($surn);
 		} elseif ($salpha==',') {
@@ -412,9 +413,9 @@ class WT_Query_Name {
 		if ($galpha) {
 			$sql.=" AND ".self::_getInitialSql('n_givn', $galpha);
 		}
-	
+
 		$sql.=" ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '".WT_I18N::$collation."', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '".WT_I18N::$collation."'";
-	
+
 		$list=array();
 		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {

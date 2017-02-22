@@ -1,28 +1,25 @@
 <?php
-// PHP version error
-//
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-//
-// NOTE - THIS FILE NOT CURRENTLY IN USE BY KIWITREES
-//
+/**
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2012 to 2017 kiwitrees.net
+ *
+ * Derived from webtrees (www.webtrees.net)
+ * Copyright (C) 2010 to 2012 webtrees development team
+ *
+ * Derived from PhpGedView (phpgedview.sourceforge.net)
+ * Copyright (C) 2002 to 2010 PGV Development Team
+ *
+ * Kiwitrees is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'site-php-version.php');
 
@@ -34,7 +31,7 @@ define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
 define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
-$WT_SESSION=new stdClass();
+$WT_SESSION = new stdClass();
 $WT_SESSION->locale='';
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
