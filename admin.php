@@ -1616,6 +1616,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/fancy_treeview/js', // moved and renamed
 		WT_ROOT.'modules_v3/stories/help_text.php', // old unused file
 		WT_ROOT.'includes/fonts', // no longer needed in fanchart code
+		WT_ROOT.'GPL.txt', // replaced by LICENSE.md
 
 	);
 }
