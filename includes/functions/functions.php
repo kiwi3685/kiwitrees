@@ -2159,10 +2159,10 @@ function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Pers
 			case 3:
 				if ($up>$down) {
 					/* I18N: %s=“fifth cousin”, etc. */
-					return WT_I18N::translate('%s thrice removed ascending', cousin_name($cousin, $sex2));
+					return WT_I18N::translate('%s three times removed ascending', cousin_name($cousin, $sex2));
 				} else {
 					/* I18N: %s=“fifth cousin”, etc. */
-					return WT_I18N::translate('%s thrice removed descending', cousin_name($cousin, $sex2));
+					return WT_I18N::translate('%s three times removed descending', cousin_name($cousin, $sex2));
 				}
 			default:
 				if ($up>$down) {
