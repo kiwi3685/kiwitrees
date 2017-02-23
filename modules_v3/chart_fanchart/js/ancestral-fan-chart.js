@@ -3,25 +3,23 @@
 */
 
 /**
- * Kiwitrees: Web based Family History software
- * Copyright (C) 2012 to 2017 kiwitrees.net
+ * Webtrees module.
  *
- * Derived from webtrees (www.webtrees.net)
- * Copyright (C) 2010 to 2012 webtrees development team
+ * Copyright (C) 2017  Rico Sonntag
  *
- * Derived from PhpGedView (phpgedview.sourceforge.net)
- * Copyright (C) 2002 to 2010 PGV Development Team
- *
- * Kiwitrees is free software: you can redistribute it and/or modify
+ * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * the Free Software Foundation; either version 3 of the License, or
+ * any later version.
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
+ *
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
  */
 
 /**
@@ -57,7 +55,8 @@
 
             x: null,
 
-            updateUrl : ''
+            updateUrl: '',
+            individualUrl: ''
         },
 
         config: {
@@ -115,7 +114,7 @@
                 name: '',
                 generation: generation,
                 color: this.options.defaultColor
-            }
+            };
         },
 
         /**
@@ -297,13 +296,7 @@
                 .append('g')
                 .attr('class', 'person');
 
-            // Append click event only to existing elements
-            personGroup.filter(function (d) {
-                    return (d.data.id !== '') && (d.depth !== 0);
-                })
-                .style('cursor', 'pointer')
-                .on('click', $.proxy(this.update, this));
-
+            this.bindClickEventListener();
             this.appendTitle(personGroup);
             this.appendArc(personGroup);
             this.appendLabels(personGroup);
@@ -311,6 +304,29 @@
             // Show labels
             personGroup.selectAll('g.label')
                 .attr('opacity', 1);
+        },
+
+        /**
+         * This method bind the "click" event listeners to a "person" element.
+         */
+        bindClickEventListener: function () {
+            // Remove any existing listener
+            this.config.visual
+                .selectAll('g.person')
+                .style('cursor', 'default')
+                .on('click', null);
+
+            var personGroup = this.config.visual
+                .selectAll('g.person')
+                .data(this.config.nodes)
+                .filter(function (d) {
+                    return (d.data.id !== '');
+                })
+                .style('cursor', 'pointer');
+
+            // Trigger method on click
+            personGroup
+                .on('click', $.proxy(this.personClick, this));
         },
 
         /**
@@ -403,7 +419,7 @@
                 .attr('opacity', 0);
 
             innerLabels.each(function (d) {
-                var parent   = d3.select(this);
+                var label    = d3.select(this);
                 var timeSpan = that.getTimeSpan(d);
 
                 // Relative position offsets in percent (0 = inner radius, 100 = outer radius)
@@ -416,15 +432,15 @@
 
                 // Create a path for each line of text as mobile devices
                 // won't display <tspan> elements in the right position
-                that.appendArcPath(parent, 0, positions[0]);
-                that.appendArcPath(parent, 1, positions[1]);
+                that.appendArcPath(label, 0, positions[0]);
+                that.appendArcPath(label, 1, positions[1]);
 
                 if (timeSpan) {
-                    that.appendArcPath(parent, 2, positions[2]);
+                    that.appendArcPath(label, 2, positions[2]);
                 }
 
                 // Append text element
-                var text = parent
+                var text = label
                     .append('text')
                     .attr('dominant-baseline', 'middle')
                     .style('font-size', function (d) {
@@ -449,7 +465,7 @@
                 .attr('opacity', 0);
 
             outerLabels.each(function (d) {
-                var parent   = d3.select(this);
+                var label    = d3.select(this);
                 var name     = d.data.name;
                 var timeSpan = that.getTimeSpan(d);
 
@@ -460,21 +476,31 @@
 
                 // Create the text elements for first name, last name and
                 // the birth/death dates
-                that.appendOuterArcText(parent, name);
+                that.appendOuterArcText(label, name);
 
                 // Outer circles only show the names
                 if (d.depth < 7) {
                     // Add last name
-                    that.appendOuterArcText(parent, that.getLastName(d));
+                    that.appendOuterArcText(label, that.getLastName(d));
 
                     // Add dates
                     if ((d.depth < 6) && timeSpan) {
-                        that.appendOuterArcText(parent, timeSpan, 'chart-date');
+                        that.appendOuterArcText(label, timeSpan, 'chart-date');
                     }
                 }
             });
 
             this.transformText(outerLabels);
+        },
+
+        /**
+         * Method triggers either the "update" or "individual" method on the click on an person.
+         *
+         * @param {object} d D3 data object
+         */
+        personClick: function (d) {
+            // Trigger either "update" or "individual" method on click depending on person in chart
+            (d.depth === 0) ? this.individual(d) : this.update(d);
         },
 
         /**
@@ -492,23 +518,16 @@
                     that.initData(data);
 
                     // Update the click event listeners
-                    d3.selectAll('g.person')
-                        .style('cursor', 'default')
-                        .on('click', null);
+                    that.bindClickEventListener();
 
-                    d3.selectAll('g.person')
-                        .data(that.config.nodes)
-                        .filter(function (d) {
-                            return (d.data.id !== '') && (d.depth !== 0);
-                        })
-                        .style('cursor', 'pointer')
-                        .on('click', $.proxy(that.update, that));
+                    var personGroup = that.config.visual
+                        .selectAll('g.person');
 
                     // Update the title
-                    d3.selectAll('g.person')
-                        .select('title').remove();
+                    personGroup.select('title')
+                        .remove();
 
-                    that.appendTitle(d3.selectAll('g.person'));
+                    that.appendTitle(personGroup);
 
                     // Update arc and labels
                     that.updateArcPath();
@@ -551,10 +570,10 @@
                 .duration(500)
                 .attr('opacity', 0)
                 .on('start', function () {
-                    ++count;
+                    count += 1;
                 })
                 .on('end', function () {
-                    --count;
+                    count -= 1;
 
                     // Wait till all transitions finished
                     if (count === 0) {
@@ -571,6 +590,15 @@
                             .attr('opacity', 1);
                     }
                 });
+        },
+
+        /**
+         * Redirect the current page the the individual page.
+         *
+         * @param {object} d D3 data object
+         */
+        individual: function (d) {
+            window.location = this.options.individualUrl + d.data.id;
         },
 
         /**
@@ -611,7 +639,7 @@
                     textLength = self.node().getComputedTextLength(),
                     text = self.text();
 
-                while ((textLength > (availableWidth - (padding << 1))) && (text.length > 0)) {
+                while ((textLength > (availableWidth - (padding * 2))) && (text.length > 0)) {
                     // Remove last char
                     text = text.slice(0, -1);
 
@@ -790,7 +818,7 @@
         transformText: function (group) {
             var that = this;
 
-            group.each(function (d) {
+            group.each(function () {
                 var textElements = d3.select(this).selectAll('text');
                 var countElements = textElements.size();
                 var offset = 0;

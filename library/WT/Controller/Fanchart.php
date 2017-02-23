@@ -21,10 +21,10 @@
   * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
   */
 
- if (!defined('WT_WEBTREES')) {
- 	header('HTTP/1.0 403 Forbidden');
- 	exit;
- }
+if (!defined('WT_WEBTREES')) {
+	header('HTTP/1.0 403 Forbidden');
+	exit;
+}
 
  class WT_Controller_Fanchart extends WT_Controller_Chart {
 
@@ -88,7 +88,7 @@
 	            return $fanChart['bgFColor'];
 	        }
 		}
-        return $fanChart['bgFColor'];
+        return $fanChart['bgColor'];
     }
 
     /**
@@ -178,46 +178,12 @@
     }
 
 	/**
-     * Returns the content HTML, including form and chart placeholder.
+     * Get the raw update url. The "rootid" parameter must be the last one as
+     * the url gets appended with the clicked individual id in order to load
+     * the required chart data.
      *
      * @return string
      */
-    public function getContentHtml() {
-		require WT_ROOT . 'includes/functions/functions_edit.php';
-        return '
-			<div id="fanchart-page">
-				<h2>' . $this->getPageTitle() . '</h2>
-				<form name="people" id="people" method="get" action="?">
-					<input type="hidden" name="ged" value="'. WT_GEDURL . '">
-					<input type="hidden" name="mod" value="chart_fanchart">
-					<div class="chart_options">
-						<label for="rootid">' . WT_I18N::translate('Individual') . '</label>
-						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" value="' . $this->root->getXref() . '">
-					</div>
-					<div class="chart_options">
-						<label for="generations">' . WT_I18N::translate('Generations') . '</label>
-						' . edit_field_integers('generations', $this->generations, 2, 10) . '
-					</div>
-					<div class="chart_options">
-						<label for="fanDegree">' . WT_I18N::translate('Degrees') . '</label>
-						' . select_edit_control('fanDegree', $this->getFanDegrees(), null, $this->fanDegree) . '
-					</div>
-					<div class="chart_options">
-						<label for="fontScale">' . WT_I18N::translate('Font size') . '</label>
-						<input class="fontScale" type="text" name="fontScale" id="fontScale" value="' . $this->fontScale . '"> %
-					</div>
-					<button class="btn btn-primary show" type="submit">
-						<i class="fa fa-eye"></i>
-						' . WT_I18N::translate('Show') . '
-					</button>
-				</form>
-				<hr style="clear:both;">
-				<!-- end of form -->
-				<div id="fan_chart"></div>
-			</div>
-		';
-    }
-
     public function getUpdateUrl() {
         $queryData = array(
             'mod'         => 'chart_fanchart',
@@ -231,34 +197,19 @@
     }
 
 	/**
-     * Render the fan chart form HTML and JSON data.
+     * Get the raw individual url. The "pid" parameter must be the last one as
+     * the url gets appended with the clicked individual id in order to link
+     * to the right individual page.
      *
-     * @return string HTML snippet to include in page HTML
+     * @return string
      */
-    public function render() {
-        // Encode chart parameters to json string
-        $chartParams = json_encode(
-            array(
-				'fanDegree'    => $this->fanDegree,
-				'generations'  => $this->generations,
-				'defaultColor' => $this->getColor(),
-				'fontScale'    => $this->fontScale,
-				'fontColor'    => $this->getChartFontColor(),
-				'data'         => $this->buildJsonTree($this->root),
-				'updateUrl'    => $this->getUpdateUrl(),
-            )
-        );
+    public function getIndividualUrl() {
+		$queryData = array(
+			'ged' => WT_GEDURL,
+			'pid' => '',
+		);
 
-        $this->addInlineJavascript('
-			autocomplete();
-
-			// Init widget
-			if (typeof jQuery().ancestralFanChart === "function") {
-			    jQuery("#fan_chart").ancestralFanChart(' . $chartParams . ');
-			}
-        ');
-
-        return $this->getContentHtml();
+		return 'individual.php?' . http_build_query($queryData);
     }
 
 }

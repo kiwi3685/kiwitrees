@@ -6706,7 +6706,7 @@ textarea#NOTE {
 }
 
 #fanchart-page svg .arc path {
-    stroke: #eee;
+    stroke: #e1e1e1; /* slightly darker than the background */
     stroke-width: 3px;
 }
 

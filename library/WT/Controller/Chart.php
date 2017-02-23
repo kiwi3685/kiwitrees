@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ class WT_Controller_Chart extends WT_Controller_Page {
 	public function __construct() {
 		parent::__construct();
 
-		$this->rootid = safe_GET_xref('rootid');
+		$this->rootid = WT_Filter::get('rootid', WT_REGEX_XREF);
 		if ($this->rootid) {
 			$this->root = WT_Person::getInstance($this->rootid);
 		} else {
@@ -46,7 +46,7 @@ class WT_Controller_Chart extends WT_Controller_Page {
 		if (!$this->root || !$this->root->canDisplayName()) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
 			$this->error_message=WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
-			$this->rootid=null;
+			$this->rootid = null;
 		}
 	}
 
