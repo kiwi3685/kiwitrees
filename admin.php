@@ -1617,6 +1617,14 @@ function old_paths() {
 		WT_ROOT.'modules_v3/stories/help_text.php', // old unused file
 		WT_ROOT.'includes/fonts', // no longer needed in fanchart code
 		WT_ROOT.'GPL.txt', // replaced by LICENSE.md
+		WT_ROOT.'reportengine.php', // old report system removed
+		WT_ROOT.'includes/reportheader.php', // old report system removed
+		WT_ROOT.'reportengine.php', // old report system removed
+		WT_ROOT.'library/tcpdf', // old report system removed
+		WT_ROOT.'library/WT/Report', // old report system removed
+		WT_ROOT.'modules_v3/pedigree_report', // old report system removed
+		WT_ROOT.'modules_v3/menu_resources', // old report system removed
+		WT_ROOT.'admin_module_resources', // old report system removed, this file renamed to admin_module_reports
 
 	);
 }

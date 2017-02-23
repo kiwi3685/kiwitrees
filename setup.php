@@ -743,7 +743,6 @@ try {
 		" menu_order    	INTEGER                         NULL, ".
 		" sidebar_order 	INTEGER                         NULL,".
 		" widget_order  	INTEGER                         NULL,".
-		" resource_order	INTEGER            	            NULL,".
 		" PRIMARY KEY (module_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
@@ -760,7 +759,7 @@ try {
 		"CREATE TABLE IF NOT EXISTS `##module_privacy` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" gedcom_id     INTEGER     NOT NULL,".
-		" component     ENUM('block', 'chart', 'list', 'menu', 'report', 'sidebar', 'tab', 'widget', 'resource') NOT NULL,".
+		" component     ENUM('block', 'chart', 'list', 'menu', 'report', 'sidebar', 'tab', 'widget') NOT NULL,".
 		" access_level  TINYINT     NOT NULL,".
 		" PRIMARY KEY                        (module_name, gedcom_id, component),".
 		" FOREIGN KEY `##module_privacy_fk1` (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */,".

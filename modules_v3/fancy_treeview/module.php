@@ -34,7 +34,7 @@ try {
 	die($ex);
 }
 
-class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Resources {
+class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Report {
 
 	// Extend WT_Module
 	public function getTitle() {
@@ -46,8 +46,8 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return /* I18N: Description of the module */ WT_I18N::translate('A narrative report of the descendants of one family or individual');
 	}
 
-	// Implement WT_Module_Resources
-	public function getResourceMenus() {
+	// Implement WT_Module_Report
+	public function getReportMenus() {
 		global $controller;
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
@@ -56,7 +56,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$menu	= new WT_Menu(
 			$this->getTitle(),
 			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
-			'menu-resources-' . $this->getName()
+			'menu-report-' . $this->getName()
 		);
 		$menus[] = $menu;
 
@@ -210,7 +210,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 			// Start page content
 			?>
-			<div id="resource-page">
+			<div id="page">
 				<h2><?php echo $this->getTitle(); ?></h2>
 				<div class="chart_options noprint">
 					<form id="change_root">

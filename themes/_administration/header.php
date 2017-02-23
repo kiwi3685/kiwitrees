@@ -219,7 +219,6 @@ echo '
 					"admin_module_widgets.php"		=> WT_I18N::translate('Widgets'),
 					"admin_module_sidebar.php"		=> WT_I18N::translate('Sidebar'),
 					"admin_module_reports.php"		=> WT_I18N::translate('Reports'),
-					"admin_module_resources.php"	=> WT_I18N::translate('Resources'),
 					"admin_module_charts.php"		=> WT_I18N::translate('Charts'),
 					"admin_module_lists.php"		=> WT_I18N::translate('Lists'),
 				);

@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -132,6 +132,7 @@ class WT_MenuBar {
 		global $SEARCH_SPIDER;
 
 		$active_reports = WT_Module::getActiveReports();
+
 		if ($SEARCH_SPIDER || !$active_reports) {
 			return null;
 		}
@@ -145,30 +146,6 @@ class WT_MenuBar {
 		}
 		return $menu;
 	}
-
-	/**
-	* get the resources menu
-	* @return WT_Menu the menu item
-	*/
-	public static function getResourcesMenu($pid='', $famid='') {
-		global $SEARCH_SPIDER;
-
-		$active_resources = WT_Module::getActiveResources();
-
-		if ($SEARCH_SPIDER || !$active_resources) {
-			return null;
-		}
-
-		$menu = new WT_Menu(WT_I18N::translate('Resources'), '#', 'menu-resources');
-
-		foreach ($active_resources as $resources) {
-			foreach ($resources->getResourceMenus() as $submenu) {
-				$menu->addSubmenu($submenu);
-			}
-		}
-		return $menu;
-	}
-
 
 	public static function getSearchMenu() {
 		global $SEARCH_SPIDER;

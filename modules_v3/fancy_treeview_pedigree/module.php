@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Resources {
+class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Report {
 
 	// Extend WT_Module
 	public function getTitle() {
@@ -38,8 +38,8 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 		return /* I18N: Description of the module */ WT_I18N::translate('A narrative report of the ancestors of one individual');
 	}
 
-	// Implement WT_Module_Resources
-	public function getResourceMenus() {
+	// Implement WT_Module_Report
+	public function getReportMenus() {
 		global $controller;
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
@@ -48,7 +48,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 		$menu	= new WT_Menu(
 			$this->getTitle(),
 			'module.php?mod=' . $this->getName() . '&amp;mod_action=show&amp;rootid=' . $indi_xref . '&amp;ged=' . WT_GEDURL,
-			'menu-resources-' . $this->getName()
+			'menu-report-' . $this->getName()
 		);
 		$menus[] = $menu;
 
@@ -202,7 +202,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 			// Start page content
 			?>
-			<div id="resource-page">
+			<div id="page">
 				<h2><?php echo $this->getTitle(); ?></h2>
 				<div class="chart_options noprint">
 					<form id="change_root">

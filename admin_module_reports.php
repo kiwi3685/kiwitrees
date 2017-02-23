@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -31,16 +31,16 @@ $controller
 	->setPageTitle(WT_I18N::translate('Module administration'))
 	->pageHeader();
 
-$modules=WT_Module::getActiveReports(WT_GED_ID, WT_PRIV_HIDE);
+$modules = WT_Module::getActiveReports(WT_GED_ID, WT_PRIV_HIDE);
 
 $action = safe_POST('action');
 
-if ($action=='update_mods' && WT_Filter::checkCsrf()) {
+if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module_name=>$module) {
 		foreach (WT_Tree::getAll() as $tree) {
 			$value = safe_POST("access-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
-				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
+				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'resource', ?)"
 			)->execute(array($module_name, $tree->tree_id, $value));
 		}
 	}
@@ -54,7 +54,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 		<table id="reports_table" class="modules_table">
 			<thead>
 				<tr>
-					<th><?php echo WT_I18N::translate('Report'); ?></th>
+					<th><?php echo WT_I18N::translate('Resource'); ?></th>
 					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Access level'); ?></th>
 				</tr>
@@ -88,7 +88,7 @@ if ($action=='update_mods' && WT_Filter::checkCsrf()) {
 										<td>
 											<?php
 												$access_level = WT_DB::prepare(
-													"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='report'"
+													"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='resource'"
 												)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
 												if ($access_level === null) {
 													$access_level = $module->defaultAccessLevel();

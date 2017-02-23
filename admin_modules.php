@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -114,7 +114,6 @@ $controller
 				{ sClass: "center" },
 				{ sClass: "center" },
 				{ sClass: "center" },
-				{ sClass: "center" },
 				{ sClass: "center" }
 			]
 		});
@@ -138,7 +137,6 @@ $controller
 						<th><?php echo WT_I18N::translate('List'); ?></th>
 						<th><?php echo WT_I18N::translate('Menu'); ?></th>
 						<th><?php echo WT_I18N::translate('Report'); ?></th>
-						<th><?php echo WT_I18N::translate('Resource'); ?></th>
 						<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
 						<th><?php echo WT_I18N::translate('Tab'); ?></th>
 						<th><?php echo WT_I18N::translate('Widget'); ?></th>
@@ -168,7 +166,6 @@ $controller
 									<td>', $module instanceof WT_Module_List   		? WT_I18N::translate('List') : '-', '</td>
 									<td>', $module instanceof WT_Module_Menu    	? WT_I18N::translate('Menu') : '-', '</td>
 									<td>', $module instanceof WT_Module_Report  	? WT_I18N::translate('Report') : '-', '</td>
-									<td>', $module instanceof WT_Module_Resources   ? WT_I18N::translate('Resource') : '-', '</td>
 									<td>', $module instanceof WT_Module_Sidebar 	? WT_I18N::translate('Sidebar') : '-', '</td>
 									<td>', $module instanceof WT_Module_Tab     	? WT_I18N::translate('Tab') : '-', '</td>
 									<td>', $module instanceof WT_Module_Widget  	? WT_I18N::translate('Widget') : '-', '</td>
@@ -187,7 +184,6 @@ $controller
 											WT_I18N::translate('This module cannot be found.  Delete its configuration settings.'),
 										'</a>
 									</td>
-									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>

@@ -172,7 +172,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 }
 //end print resource fact function
 
-function resource_images($person) {
+function report_images($person) {
 	$level = 1;
 	$regexp = '/\n' . $level . ' OBJE @(.*)@/';
 
@@ -190,7 +190,7 @@ function resource_images($person) {
 }
 
 // Print a row for the sources for an event or fact
-function resource_sources(WT_Event $fact, $level, $short=false) {
+function report_sources(WT_Event $fact, $level, $short=false) {
 	$fact	= $fact->getGedcomRecord();
 	$data 		= array();
 	// -- find sources for each fact
@@ -356,7 +356,7 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 	else return $data;
 }
 
-function resource_findfact($fact, $type='') {
+function report_findfact($fact, $type='') {
 	$list = array();
 	// Fetch all data, regardless of privacy
 	if ($fact == 'EVEN' || $fact == 'FACT'){
@@ -463,7 +463,7 @@ function filter_facts ($item, $person, $year_from, $year_to, $place, $detail, $t
 }
 
 //--- based on function add_descendancy() in functions.php
-function add_resource_descendancy($i, $person, $parents = false, $generations = -1) {
+function add_report_descendancy($i, $person, $parents = false, $generations = -1) {
 	$families = $person->getSpouseFamilies();
 	foreach ($families as $family) {
 		$spouse = $family->getSpouse($person);
@@ -502,7 +502,7 @@ function add_resource_descendancy($i, $person, $parents = false, $generations = 
 			}
 			if ($generations == -1) {
 				foreach ($children as $child) {
-					add_resource_descendancy($i, $child); // recurse on the childs family
+					add_report_descendancy($i, $child); // recurse on the childs family
 				}
 			}
 		}
@@ -549,7 +549,7 @@ function marriageDetails($family) {
 }
 
 // list vital records for individuals
-function resource_vital_records ($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $d_toJD, $ged){
+function report_vital_records ($name, $place, $b_fromJD, $b_toJD, $d_fromJD, $d_toJD, $ged){
 	$sql_select   = "SELECT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
 	$sql_join     = "";
 	$sql_where    = " WHERE i_file = " . $ged;
@@ -615,7 +615,7 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 	// -- count source(s) for this fact/event as footnote reference
 	$ct = preg_match_all("/\d SOUR @(.*)@/", $fact->getGedcomRecord(), $match, PREG_SET_ORDER);
 	if ($ct > 0) {
-		$sources = resource_sources($fact, 2);
+		$sources = report_sources($fact, 2);
 		$sup = '<sup class="source">';
 		foreach ($sources as $source) {
 			$duplicate = false;
@@ -641,7 +641,7 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 }
 
 // list marraige records
-function resource_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
+function report_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
 	$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families` ";
 	$sql_join     = "";
 	$sql_where    = " WHERE f_file = " . $ged . " AND f_gedcom LIKE '%1 MARR%'";

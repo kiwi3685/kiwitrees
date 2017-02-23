@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -54,10 +54,6 @@ interface WT_Module_Menu {
 
 interface WT_Module_Report {
 	public function getReportMenus();
-}
-
-interface WT_Module_Resources {
-	public function getResourceMenus();
 }
 
 interface WT_Module_Sidebar {
@@ -231,15 +227,6 @@ abstract class WT_Module {
 		return $reports;
 	}
 
-	// Get a list of all the active, authorised reports
-	static public function getActiveResources($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $resources = null;
-		if ($resources === null) {
-			$resources = self::getActiveModulesByComponent('resource', $ged_id, $access_level);
-		}
-		return $resources;
-	}
-
 	// Get a list of all the active, authorised sidebars
 	static public function getActiveSidebars($ged_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $sidebars = null;
@@ -325,13 +312,6 @@ abstract class WT_Module {
 						" FROM `##gedcom`"
 					)->execute(array($module->getName(), $module->defaultAccessLevel()));
 				}
-				if ($module instanceof WT_Module_Resources) {
-					WT_DB::prepare(
-						"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)".
-						" SELECT ?, gedcom_id, 'resource', ?".
-						" FROM `##gedcom`"
-					)->execute(array($module->getName(), $module->defaultAccessLevel()));
-				}
 				if ($module instanceof WT_Module_Sidebar) {
 					WT_DB::prepare(
 						"INSERT IGNORE INTO `##module_privacy` (module_name, gedcom_id, component, access_level)".
@@ -385,11 +365,6 @@ abstract class WT_Module {
 			if ($module instanceof WT_Module_Report) {
 				WT_DB::prepare(
 					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
-				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-			}
-			if ($module instanceof WT_Module_Resources) {
-				WT_DB::prepare(
-					"INSERT IGNORE `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'resource', ?)"
 				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 			}
 			if ($module instanceof WT_Module_Sidebar) {
