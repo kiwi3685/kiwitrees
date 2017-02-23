@@ -77,7 +77,7 @@ class uk_register_WT_Module extends WT_Module implements WT_Module_Resources {
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 
-		session_write_close();
+		Zend_Session::writeClose();
 
 		function life_sort($a, $b) {
 			if ($a->getDate()->minJD() < $b->getDate()->minJD()) return -1;

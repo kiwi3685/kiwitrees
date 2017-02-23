@@ -84,7 +84,6 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 			');
 
 		//-- args
-		$go 			= WT_Filter::post('go');
 		$rootid 		= WT_Filter::get('rootid');
 		$root_id		= WT_Filter::post('root_id');
 		$rootid			= empty($root_id) ? $rootid : $root_id;
@@ -101,7 +100,6 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 			<div class="noprint">
 				<h5><?php echo $this->getDescription(); ?></h5>
 				<form name="resource" id="resource" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=show&amp;rootid=<?php echo $rootid; ?>&amp;ged=<?php echo WT_GEDURL; ?>">
-					<input type="hidden" name="go" value="1">
 					<div class="chart_options">
 						<label for = "rootid"><?php echo WT_I18N::translate('Family'); ?></label>
 						<input data-autocomplete-type="FAM" type="text" id="root_id" name="root_id" value="<?php echo $rootid; ?>">
@@ -152,66 +150,66 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 			</div>
 			<hr style="clear:both;">
 			<!-- end of form -->
-			<?php if ($go == 1) { ?>
-				<div class="loading-image">&nbsp;</div>
-				<div id="container" style="visibility:hidden;">
-					<?php
-					$family		= WT_Family::getInstance($rootid);
-					$sections	= array('husband', 'wife', 'children');
-					if ($family && $family->canDisplayDetails()) { ; ?>
-						<h2>
-							<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo $family->getFullName(); ?></a>
-						</h2>
-						<div class="images">
-						<?php // Image displays
-							// Iterate over all of the media items for the person
-							preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $family->getGedcomRecord(), $matches, PREG_SET_ORDER);
-							if ($matches) {
-								foreach ($matches as $match) {
-									$level = $match[1];
-									$media = WT_Media::getInstance($match[2]);
-									if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
-										continue;
-									}
-									switch ($showmedia) {
-										case 'all':
-											//show all level images ?>
-											<span><?php echo $media->displayImage(); ?></span>
-											<?php
-											break;
-										case 'main':
-											//show only level 1 images
-											if ($level == 1) { ?>
-												<span><?php echo $media->displayImage(); ?></span>
-											<?php }
-											break;
-										case 'none':
-										default:
-										// show nothing
+			<div class="loading-image">&nbsp;</div>
+			<div id="container" style="visibility:hidden;">
+				<?php
+				$family		= WT_Family::getInstance($rootid);
+				$sections	= array('husband', 'wife', 'children');
+				if ($family && $family->canDisplayDetails()) { ; ?>
+					<h2>
+						<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo $family->getFullName(); ?></a>
+					</h2>
+					<div class="images">
+					<?php // Image displays
+						// Iterate over all of the media items for the person
+						preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $family->getGedcomRecord(), $matches, PREG_SET_ORDER);
+						if ($matches) {
+							foreach ($matches as $match) {
+								$level = $match[1];
+								$media = WT_Media::getInstance($match[2]);
+								if (!$media || !$media->canDisplayDetails() || $media->isExternal()) {
+									continue;
+								}
+								switch ($showmedia) {
+									case 'all':
+										//show all level images ?>
+										<span><?php echo $media->displayImage(); ?></span>
+										<?php
 										break;
-									}
+									case 'main':
+										//show only level 1 images
+										if ($level == 1) { ?>
+											<span><?php echo $media->displayImage(); ?></span>
+										<?php }
+										break;
+									case 'none':
+									default:
+									// show nothing
+									break;
 								}
-							}?>
-						</div>
-						<div id="accordion">
-							<?php
-							$number			= 0;
-							$sup			= '';
-							$source_list	= array();
-							$data			= array();
-							$husb = $family->getHusband();
-							$wife = $family->getWife();
-							foreach($sections as $section) {
-								if ($section == 'husband') {
-									$children = array($husb);
-								}
-								if ($section == 'wife') {
-									$children = array($wife);
-								}
-								if ($section == 'children') {
-									$children = $family->getChildren();
-								}
-								foreach ($children as $child) {
+							}
+						} ?>
+					</div>
+					<div id="accordion">
+						<?php
+						$number			= 0;
+						$sup			= '';
+						$source_list	= array();
+						$data			= array();
+						$husb = $family->getHusband();
+						$wife = $family->getWife();
+						foreach($sections as $section) {
+							if ($section == 'husband') {
+								$children = array($husb);
+							}
+							if ($section == 'wife') {
+								$children = array($wife);
+							}
+							if ($section == 'children') {
+								$children = $family->getChildren();
+							}
+							foreach ($children as $child) {
+								if ($child) {
 									$person	= WT_Person::getInstance($child->getXref());
 									$person->add_family_facts(false);
 									$indifacts = $person->getIndiFacts();
@@ -478,28 +476,28 @@ class resource_family_WT_Module extends WT_Module implements WT_Module_Resources
 										</div>
 									<?php }
 								}
-							} ?>
+							}
+						} ?>
+					</div>
+					<?php if ($showsources) {?>
+						<div id="facts_sources">
+							<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
+							<?php foreach ($source_list as $source) { ?>
+								<p>
+									<span><?php echo ($source['key']); ?></span>
+									<span><?php echo $source['value']; ?></span>
+								</p>
+							<?php } ?>
 						</div>
-						<?php if ($showsources) {?>
-							<div id="facts_sources">
-								<h3><?php echo WT_I18N::translate('Sources'); ?></h3>
-								<?php foreach ($source_list as $source) { ?>
-									<p>
-										<span><?php echo ($source['key']); ?></span>
-										<span><?php echo $source['value']; ?></span>
-									</p>
-								<?php } ?>
-							</div>
-						<?php }
-					} elseif ($family && $family->canDisplayName()) { ?>
-						<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $family->getFullName(); ?></h2>
-						<p class="ui-state-highlight"><?php echo WT_I18N::translate('The details of this family are private.'); ?></p>
-						<?php exit;
-					} else { ?>
-						<h2><?php echo $this->getTitle(); ?></h2>
-						<p class="ui-state-error"><?php echo WT_I18N::translate('This family does not exist or you do not have permission to view it.'); ?></p>
-						<?php exit;
-					}
+					<?php }
+				} elseif ($family && $family->canDisplayName()) { ?>
+					<h2><?php echo $this->getTitle() . '&nbsp;-&nbsp;' . $family->getFullName(); ?></h2>
+					<p class="ui-state-highlight"><?php echo WT_I18N::translate('The details of this family are private.'); ?></p>
+					<?php exit;
+				} else { ?>
+					<h2><?php echo $this->getTitle(); ?></h2>
+					<p class="ui-state-error"><?php echo WT_I18N::translate('This family does not exist or you do not have permission to view it.'); ?></p>
+					<?php exit;
 				} ?>
 			</div>
 		</div>
