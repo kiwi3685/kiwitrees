@@ -372,7 +372,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 					<h5><?php echo $this->getDescription(); ?></h5>
 					<a href="#" class="more noprint"><i class="fa fa-question-circle-o icon-help"></i></a>
 					<div class="hidden">
-						<?php echo /* I18N: help for resource links page */ WT_I18N::translate('You can use this page to search external databses for either an existing person in the family tree, or the names of any person you have not yet recorded.'); ?>
+						<?php echo /* I18N: help for resource links page */ WT_I18N::translate('You can use this page to search external databases for either an existing person in the family tree, or the names of any person you have not yet recorded.'); ?>
 					</div>
 				</div>
 			</div>

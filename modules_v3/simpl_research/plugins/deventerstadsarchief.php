@@ -7,7 +7,7 @@ if (!defined('WT_WEBTREES')) {
 
 class deventerstadsarchief_plugin extends research_base_plugin {
 	static function getName() {
-		return 'Sample sublink';
+		return 'Deventer Stadsarchief';
 	}
 
 	static function getPaySymbol() {

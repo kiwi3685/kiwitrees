@@ -26,7 +26,7 @@ class gro_uk_plugin extends research_base_plugin {
 		// This is a post form, so it will be sent with Javascript
 		$url = 'https://www.gro.gov.uk/gro/content/certificates/indexes_search.asp';
 
-		$params_birth	 	= array(
+		$params_birth = array(
 			'index'					=> 'EW_Birth',
 			'Surname'				=> $surn,
 			'SurnameMatches'		=> '4', // "Similar sounding variations"
@@ -39,7 +39,7 @@ class gro_uk_plugin extends research_base_plugin {
 			'SearchIndexes'			=> 'Search',
 		);
 
-		$params_death	 	= array(
+		$params_death = array(
 			'index'					=> 'EW_Death',
 			'Surname'				=> $surn,
 			'SurnameMatches'		=> '4', // "Similar sounding variations"
