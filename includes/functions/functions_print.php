@@ -481,8 +481,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 
 	if (!empty($text) || !empty($centitl)) {
 		// Check if Formatted Shared Note (using pipe "|" as delimiter ) --------------------
-		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			require WT_ROOT.WT_MODULES_DIR.'census_assistant/census_note_decode.php';
+		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && array_key_exists('census_assistant', WT_Module::getActiveModules())) {
+			$text = include WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_note_decode.php';
 		// Else if unformatted Shared Note --------------------------------------------------
 		} else if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
 			$text = $centitl.$text;
@@ -501,7 +501,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			$data .= '<div class="fact_NOTE"><span class="label">';
 
 			// Check if Shared Note -----------------------------
-			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
+			if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE/', $nrec)) {
 				$data .= WT_I18N::translate('Shared note').': </span> ';
 			} else {
 				$data .= WT_I18N::translate('Note').': </span>';
@@ -661,10 +661,10 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 	// To whom is this record an assocate?
 	if ($record instanceof WT_Person) {
 		// On an individual page, we just show links to the person
-		$associates=array($record);
+		$associates = array($record);
 	} elseif ($record instanceof WT_Family) {
 		// On a family page, we show links to both spouses
-		$associates=$record->getSpouses();
+		$associates = $record->getSpouses();
 	} else {
 		// On other pages, it does not make sense to show associates
 		return;
@@ -674,52 +674,87 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 	preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
-		$person=WT_Person::getInstance($amatch[1]);
+		$person = WT_Person::getInstance($amatch[1]);
 		if (!$person) {
 			// If the target of the ASSO does not exist, create a dummy person, so
 			// the user can see that something is present.
-			$person=new WT_Person('');
+			$person = new WT_Person('');
 		}
 		if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
-			$rela=$rmatch[1];
+			$rela = $rmatch[1];
 		} else {
-			$rela='';
+			$rela = '';
 		}
-		$html=array();
+		if (preg_match('/\n[23] NOTE (.+)/', $amatch[2], $nmatch)) {
+			$label_3 = WT_I18N::translate('Note');
+			$note = $nmatch[1];
+			if (strpos($note, '@') !== false && strrpos($note, '@') !== false) {
+				$label_3 = WT_I18N::translate('Shared note');
+				$nid = substr($note, 1, -1);
+				$snote	= WT_Note::getInstance($nid);
+				if ($snote) {
+					$noterec = $snote->getGedcomRecord();
+					$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
+					$line1 = $n1match[1];
+					$text  = get_cont(1, $noterec);
+					// If Census assistant installed,
+					if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
+						$centitl  = str_replace('~~', '', $line1);
+						$centitl  = str_replace('<br>', '', $centitl);
+						$centitl  = '<a href="note.php?nid=' . $nid . '">' . $centitl . '</a>';
+						$note = include WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_note_decode.php';
+					} else {
+						$note = expand_urls($line1 . $text);
+					}
+				} else {
+					$note = '<span class="error">' . htmlspecialchars($nid) . '</span>';
+				}
+			}
+		} else {
+			$note = '';
+		}
+		$html = array();
 		foreach ($associates as $associate) {
 			if ($associate) {
 				if ($rela) {
-					$label='<span class="rela_type">'.WT_Gedcom_Code_Rela::getValue($rela, $person).':&nbsp;</span>';
-					$label_2='<span class="rela_name">'.get_relationship_name(get_relationship($associate, $person, true, 4)).'</span>';
+					$label		= '<span class="rela_type">' . WT_Gedcom_Code_Rela::getValue($rela, $person) . ':&nbsp;</span>';
+					$label_2	= '<span class="rela_name">' . get_relationship_name(get_relationship($associate, $person, true, 4)) . '</span>';
 				} else {
 					// Generate an automatic RELA
-					$label='';
-					$label_2='<span class="rela_name">'.get_relationship_name(get_relationship($associate, $person, true, 4)).'</span>';
+					$label		= '';
+					$label_2	= '<span class="rela_name">' . get_relationship_name(get_relationship($associate, $person, true, 4)) . '</span>';
 				}
 				if (!$label && !$label_2) {
-					$label=WT_I18N::translate('Relationships');
-					$label_2='';
+					$label		= WT_I18N::translate('Relationships');
+					$label_2	= '';
 				}
 				// For family records (e.g. MARR), identify the spouse with a sex icon
 				if ($record instanceof WT_Family) {
-					$label_2=$associate->getSexImage().$label_2;
+					$label_2 = $associate->getSexImage() . $label_2;
 				}
 
 				if ($SEARCH_SPIDER) {
-					$html[]=$label_2; // Search engines cannot use the relationship chart.
+					$html[] = $label_2; // Search engines cannot use the relationship chart.
 				} else {
-					$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label_2.'</a>';
+					$html[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . WT_GEDURL . '">' . $label_2 . '</a>';
 				}
 			}
 		}
-		$html=array_unique($html);
-		echo
-			'<div class="fact_ASSO">',$label,
-			implode(WT_I18N::$list_separator, $html),
-			' - ',
-			'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>';
-			echo '</div>';
-	}
+		$html = array_unique($html);
+		?>
+		<div class="fact_ASSO">
+			<?php echo $label . implode(WT_I18N::$list_separator, $html); ?>
+			 -
+			<a href="<?php echo $person->getHtmlUrl(); ?>">
+				<?php echo $person->getFullName(); ?>
+			</a>
+			<!-- find notes for each fact -->
+			<div class="indent">
+				<span class="label"><?php echo $label_3; ?>:</span>
+				<span><?php echo $note; ?></span>
+			</div>
+		</div>
+	<?php }
 }
 
 /**

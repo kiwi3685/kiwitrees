@@ -964,6 +964,7 @@ table.center {
 	padding: 10px 0;
 }
 
+div[id*="_RELA"] + .sour_facts[id*="_NOTE"],
 .sour_facts[id^="BIRT"],
 .sour_facts[id^="MARR"] {
 	background-color: #eee;
@@ -1699,6 +1700,9 @@ a:hover .nameZoom {
 .rela,
 .histo {
 	opacity: 0.67;
+}
+.rela_type {
+	font-weight: 600;
 }
 /* Width settings */
 .width10 {

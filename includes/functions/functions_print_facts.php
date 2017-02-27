@@ -964,19 +964,19 @@ function print_main_notes(WT_Event $fact, $level) {
 		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
 			//-- print linked/shared note records
-			$nid = $nmatch[1];
-			$note=WT_Note::getInstance($nid);
+			$nid	= $nmatch[1];
+			$note	= WT_Note::getInstance($nid);
 			if ($note) {
-				$noterec=$note->getGedcomRecord();
-				$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
-				$line1 = $n1match[1];
-				$text  = get_cont(1, $noterec);
+				$noterec = $note->getGedcomRecord();
+				$nt		 = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
+				$line1	 = $n1match[1];
+				$text	 = get_cont(1, $noterec);
 				// If Census assistant installed,
-				if (/*$fact->getTag()=='CENS' && */array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
 					$centitl  = str_replace('~~', '', $line1);
 					$centitl  = str_replace('<br>', '', $centitl);
-					$centitl  = "<a href=\"note.php?nid=$nid\">" . $centitl . '</a>';
-					require WT_ROOT.WT_MODULES_DIR.'census_assistant/census_note_decode.php';
+					$centitl  = '<a href="note.php?nid=' . $nid . '">' . $centitl . '</a>';
+					$note = include WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_note_decode.php';
 				} else {
 					$text = expand_urls($line1 . $text);
 				}

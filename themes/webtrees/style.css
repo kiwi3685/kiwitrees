@@ -402,6 +402,9 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 /* Colors */
 .red {color:#ff0000;}
 .rela, .histo {opacity:0.67;}
+.rela_type {
+	font-weight: 600;
+}
 /* Width settings */
 .width10 {width:10%;}
 .width20 {width:20%;}
