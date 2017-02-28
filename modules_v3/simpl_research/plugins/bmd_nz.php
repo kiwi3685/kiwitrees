@@ -27,8 +27,8 @@ class bmd_nz_plugin extends research_base_plugin {
 		$url_1 	= 'https://www.bdmhistoricalrecords.dia.govt.nz/Search/Search?Path=querySubmit.m%3fReportName%3d';
 		$url_2	= 'Search%26recordsPP%3d30#SearchResults';
 
-		$birth_year == '' ? $birth_year = '' : $birth_date = DateTime::createFromFormat('d/m/Y', '01/01/' . ($birth_year - 5))->format('d/m/Y');
-		$death_year == '' ? $death_year = '' : $death_date = DateTime::createFromFormat('d/m/Y', '31/12/' . ($death_year + 5))->format('d/m/Y');
+		$birth_year == '' ? $birth_date = '' : $birth_date = DateTime::createFromFormat('d/m/Y', '01/01/' . ($birth_year - 5))->format('d/m/Y');
+		$death_year == '' ? $death_date = '' : $death_date = DateTime::createFromFormat('d/m/Y', '31/12/' . ($death_year + 5))->format('d/m/Y');
 
 		// Earliest date possible
 		$earliest		= '1/1/1840';
@@ -49,6 +49,7 @@ class bmd_nz_plugin extends research_base_plugin {
 		*/
 		$current_date	= new DateTime('now');
 		$marr_limit		= $current_date->modify('-80 year');
+		$earliest_marr	= max($earliest_date, $marr_limit->format('d/m/Y'));
 		$latest_marr	= min($death_date, $marr_limit->format('d/m/Y'));
 
 		/**
@@ -82,7 +83,7 @@ class bmd_nz_plugin extends research_base_plugin {
 			'brfirst'		=> $gender == 'F' ? $first : '',
 			'bgsur'			=> $gender == 'M' ? $surn : '',
 			'bgfirst'		=> $gender == 'M' ? $first : '',
-			'wdate_lower'	=> $earliest_date,
+			'wdate_lower'	=> $earliest_marr,
 			'wdate_upper'	=> $latest_marr,
 			'natno'			=> '',
 			'current_tab'	=> 'tab1',
