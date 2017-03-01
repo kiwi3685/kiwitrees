@@ -21,6 +21,24 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+ if (!defined('WT_WEBTREES')) {
+ 	header('HTTP/1.0 403 Forbidden');
+ 	exit;
+ }
+
+ global $controller;
+ $controller->addInlineJavascript('
+	 jQuery("#widget-bar").accordion({
+		 heightStyle: "content",
+		 collapsible: true
+	 });
+
+	 // allow config link to be clicked
+	 jQuery( ".config_link" ).click(function(e){
+		 e.stopPropagation();
+	 });
+');
+
 //get the widgets list
 $widgets = WT_Module::getActiveWidgets();
 
@@ -38,6 +56,6 @@ echo '<div id="widget-bar">';
 				->execute(array($module_name))->fetchOneRow();
 		}
 
-		echo '<div class="widget">' , $module->getWidget($widget->block_id) , '</div>';
+		echo $module->getWidget($widget->block_id);
 	}
 echo '</div>';

@@ -50,12 +50,12 @@ color: #fff;
 }
 .ui-state-active, .ui-widget-content .ui-state-active {
     background: none repeat scroll 0 0 #51B389;
+	color: #fff;
 }
 
 /* Top Menu  */
 #topMenu {
-background:#52bf90;
-
+	background:#52bf90;
 }
 
 /* Base */

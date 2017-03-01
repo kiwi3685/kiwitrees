@@ -2171,47 +2171,46 @@ div.widget {
 }
 
 #widget-bar {
-	z-index: 999;
-	position: absolute;
-	display: none;
-	margin: -12px 0 0 -12px;
-	width: 450px;
-	min-height: 200px;
 	background-color: #ddd;
+	border-radius: 0 5px 0 0;
 	box-shadow: 5px 5px 8px 0 #888;
+	display: none;
+	margin: -10px 0 0 -12px;
 	padding-bottom: 10px;
+	position: absolute;
+	width: 450px;
+	z-index: 999;
 }
 
 [dir='rtl'] #widget-bar {
-	margin: -12px -12px 0 0 ;
 	box-shadow: -5px 8px 8px -3px #888;
+	margin: -10px -12px 0 0 ;
 }
 
-#widget-bar .widget .block {
+#widget-bar .block {
 	margin: 0;
 }
 
-#widget-bar .widget .blockheader {
-	background: #a9adbc;
+#widget-bar .blockheader {
 	font-size: 1em;
-	font-weight: 900;
-	line-height: 16px;
-	border-bottom: 2px solid #555;
-	overflow: hidden;
-	padding: 2px 5px;
-	color: #555;
+	padding: 2px 30px;
 	text-transform: uppercase;
+	text-align: left;
+	width: 390px;
+}
+[dir='rtl'] #widget-bar .blockheader {
+	text-align: right;
 }
 
-#widget-bar .widget .blockheader span {
+#widget-bar .blockheader span {
 	font-size: 1em;
 }
 
-#widget-bar .widget .small_inner_block {
+#widget-bar .small_inner_block {
 	max-height: 100%;
 }
 
-#widget-bar .widget .blockcontent {
+#widget-bar .blockcontent {
 	border:0;
 	margin:0;
 	overflow:auto;
