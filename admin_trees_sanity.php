@@ -210,18 +210,12 @@ $controller
 				</li>
 			</ul>
 			<ul>
-				<h3><?php echo WT_I18N::translate('Missing or invalid data'); ?></h3>
+				<h3><?php echo WT_I18N::translate('Missing data'); ?></h3>
 				<li class="facts_value" name="sex" id="sex" >
 					<input type="checkbox" name="sex" value="sex"
 						<?php if (WT_Filter::post('sex')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('No gender recorded'); ?>
-				</li>
-				<li class="facts_value" name="age" id="age" >
-					<input type="checkbox" name="age" value="age"
-						<?php if (WT_Filter::post('age')) echo ' checked="checked"'?>
-					>
-					<?php echo WT_I18N::translate('Invalid age recorded'); ?>
 				</li>
 			</ul>
 		</div>
@@ -344,20 +338,13 @@ $controller
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
-			}
-			if (WT_Filter::post('sex')) {
-				$data = missing_tag('SEX');
-				echo '<h5>' . WT_I18N::translate('%s have no gender recorded', $data['count']) . '
-					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
-				</h5>
-				<div>' . $data['html'] . '</div>';
-			}
-			if (WT_Filter::post('age')) {
-				$data = invalid_tag('AGE');
-				echo '<h5>' . WT_I18N::translate('%s individuals or families have age incorrectly recorded', $data['count']) . '
-					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
-				</h5>
-				<div>' . $data['html'] . '</div>';
+				if (WT_Filter::post('sex')) {
+					$data = missing_tag('SEX');
+					echo '<h5>' . WT_I18N::translate('%s have no gender recorded', $data['count']) . '
+						<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+					</h5>
+					<div>' . $data['html'] . '</div>';
+				}
 			}
 		?>
 	</div>
@@ -489,40 +476,6 @@ function missing_tag($tag) {
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
 
-function invalid_tag($tag) {
-	$html	= '<ul>';
-	$count	= 0;
-	$start	= microtime(true);
-	// Individuals
-	$rows	= WT_DB::prepare(
-		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n')"
-	)->execute(array(WT_GED_ID, $tag))->fetchAll();
-	foreach ($rows as $row) {
-		$person = WT_Person::getInstance($row->xref);
-		$html 	.= '
-			<li>
-				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
-			</li>';
-		$count	++;
-	}
-	// Families (HUSB, WIFE)
- 	$rows	= WT_DB::prepare(
-		"SELECT f_id AS xref, f_gedcom AS gedrec FROM `##families` WHERE `f_file` = ? AND BINARY `f_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n')"
-	)->execute(array(WT_GED_ID, $tag))->fetchAll();
-	foreach ($rows as $row) {
-		$family = WT_Family::getInstance($row->xref);
-		$html 	.= '
-			<li>
-				<a href="'. $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $family->getFullName(). '</a>
-			</li>';
-		$count	++;
-	}
-
-	$html .= '</ul>';
-	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
-	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
-}
-
 function duplicate_tag($tag) {
 	$html	= '';
 	$count	= 0;
@@ -556,7 +509,7 @@ function identical_name() {
 }
 
 function query_age($tag_array, $age) {
-	$html		= '<ul>';
+	$html		= '';
 	$count		= 0;
 	$tag_count	= count($tag_array);
 	$start		= microtime(true);
@@ -650,16 +603,13 @@ function query_age($tag_array, $age) {
 		}
 		foreach ($rows as $row) {
 			$person = WT_Person::getInstance($row->xref);
-			if ($person) {
-				$html .= '
-					<li>
-						<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
-						<span class="details"> ' . WT_I18N::translate('married in %1s at age %2s years', $row->date, $row->age) . '</span>
-					</li>';
-				$count ++;
-			}
+			$html .= '
+				<li>
+					<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+					<span class="details"> ' . WT_I18N::translate('married in %1s at age %2s years', $row->date, $row->age) . '</span>
+				</li>';
+			$count ++;
 		}
-		$html .= '</ul>';
 		$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	}
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);

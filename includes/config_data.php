@@ -299,7 +299,6 @@ $level2_tags = array(
 	'AGE' => array(
 		'CENS',
 		'DEAT',
-		'EDUC',
 	),
 	'TEMP' => array(
 		'BAPL',
