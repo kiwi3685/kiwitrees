@@ -1591,6 +1591,9 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_accordion {width: 98%;}
 #sanity_accordion .result {border: 1px inset #D3D3D3; margin: 20px 10px; padding: 5px;}
 #sanity_check #sanity_options {margin:10px 30px;}
+#sanity_check h5 span.ui-icon-triangle-1-e,
+#sanity_check h5 span.ui-icon-triangle-1-s {background-position: -32px -12px; float: left;}
+#sanity_accordion .ui-accordion-content ul {margin: 0; min-height: auto; padding: 0;}
 #sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
 
 /* CITATION REVIEW */
