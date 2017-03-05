@@ -1694,20 +1694,37 @@ function db_size () {
 	$sql = 'SHOW TABLE STATUS';
 	$size = 0;
 	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
+
 	foreach ($rows as $row) {
 		$size += $row['data_length'] + $row['index_length'];
 	}
-	$decimals = 0;
-	$mbytes = number_format($size/(1024*1024), $decimals);
-	return $mbytes;
+
+	return $size;
 }
 
 function directory_size() {
-    $total_size = 0;
+    $size = 0;
+
     foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator(WT_ROOT)) as $file){
-        $total_size += $file->getSize();
+        $size += $file->getSize();
     }
-   	$decimals = 0;
-	$files = number_format($total_size/(1024*1024), $decimals);
-	return $files;
+
+	return $size;
+}
+
+function format_size($size) {
+	switch ($size) {
+		case $size < 1024:
+			return WT_I18N::number($size) . ' Bytes';
+			break;
+		case $size < 1024000:
+			return WT_I18N::number(($size / 1024 ), 0) . 'KB';
+			break;
+		case $size < 1024000000:
+			return WT_I18N::number(($size / 1024000), 1) . ' MB';
+			break;
+		default:
+			return WT_I18N::number(($size / 1024000000), 2) . ' GB';
+			break;
+	}
 }

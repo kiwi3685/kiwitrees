@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,9 +44,10 @@ function siteMedia() {
 	return	WT_I18N::number($count);
 }
 
-$db_size = WT_I18N::number(db_size());
-$dir_size = WT_I18N::number(directory_size());
-$total_size = WT_I18N::number(db_Size() + directory_size());
+// functions_db.php
+$db_size		= format_size(db_size());
+$directory_size	= format_size(directory_size());
+$total_size		= format_size(db_size() + directory_size());
 
 ?>
 
@@ -60,13 +61,13 @@ $total_size = WT_I18N::number(db_Size() + directory_size());
 			<?php echo WT_I18N::translate('%s Media objects', siteMedia()); ?>
 		</li>
 		<li>
-			<?php echo WT_I18N::translate('Your database size is currently %s MB', $db_size); ?>
+			<?php echo WT_I18N::translate('Your database size is currently %s', $db_size); ?>
 		</li>
 		<li>
-			<?php echo WT_I18N::translate('Your files including media items are currently using %s MB', $dir_size); ?>
+			<?php echo WT_I18N::translate('Your files including media items are currently using %s', $directory_size); ?>
 		</li>
 		<li>
-			<?php echo WT_I18N::translate('Total server space used is therefore %s MB', $total_size); ?>
+			<?php echo WT_I18N::translate('Total server space used is therefore %s', $total_size); ?>
 		</li>
 	</ul>
 </div>
