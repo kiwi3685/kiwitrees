@@ -495,7 +495,7 @@ function invalid_tag($tag) {
 	$start	= microtime(true);
 	// Individuals
 	$rows	= WT_DB::prepare(
-		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n')"
+		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file` = ? AND `i_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n') COLLATE utf8_bin"
 	)->execute(array(WT_GED_ID, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
@@ -507,7 +507,7 @@ function invalid_tag($tag) {
 	}
 	// Families (HUSB, WIFE)
  	$rows	= WT_DB::prepare(
-		"SELECT f_id AS xref, f_gedcom AS gedrec FROM `##families` WHERE `f_file` = ? AND BINARY `f_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n')"
+		"SELECT f_id AS xref, f_gedcom AS gedrec FROM `##families` WHERE `f_file` = ? AND BINARY `f_gedcom` REGEXP CONCAT('[0-9] ', ?, ' [0-9]*\n') COLLATE utf8_bin"
 	)->execute(array(WT_GED_ID, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$family = WT_Family::getInstance($row->xref);
@@ -566,7 +566,8 @@ function query_age($tag_array, $age) {
 				$sql = "
 					SELECT
 					 birth.d_gid AS xref,
-					 YEAR(NOW()) - birth.d_year AS age
+					 YEAR(NOW()) - birth.d_year AS age,
+					 birth.d_year AS birthyear
 					FROM
 					 `##dates` AS birth,
 					 `##individuals` AS indi
@@ -581,13 +582,14 @@ function query_age($tag_array, $age) {
 					GROUP BY xref
 					ORDER BY age DESC
 				";
-				$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID, $age))->fetchAll();
+				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, $age))->fetchAll();
+				$result_tag	= $tag_array[$i];
 			break;
 			case ('MARR'):
 				$sql = "
 					SELECT
 					 birth.d_gid AS xref,
-					 married.d_year AS date,
+					 married.d_year AS marryear,
 					 married.d_year - birth.d_year AS age
 					 FROM `##families` AS fam
 					 INNER JOIN `##dates` AS birth ON birth.d_file = ?
@@ -604,12 +606,12 @@ function query_age($tag_array, $age) {
 					GROUP BY xref
 					ORDER BY age DESC
 				";
-				$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, $age))->fetchAll();
+				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, $age))->fetchAll();
+				$result_tag	= $tag_array[$i];
 			break;
 			case ('FAMS'):
-				$query1 = 'MIN(wifebirth.d_year-husbbirth.d_year)';
 				$sql = "
-					SELECT fam.f_id AS xref, " . $query1 . " AS age
+					SELECT fam.f_id AS xref, MIN(wifebirth.d_year-husbbirth.d_year) AS age
 					 FROM `##families` AS fam
 					 LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = ?
 					 LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = ?
@@ -619,20 +621,23 @@ function query_age($tag_array, $age) {
 						husbbirth.d_fact = 'BIRT' AND
 						wifebirth.d_gid = fam.f_wife AND
 						wifebirth.d_fact = 'BIRT' AND
-						husbbirth.d_julianday1 <> 0
+						husbbirth.d_julianday1 <> 0 AND
+						wifebirth.d_year-husbbirth.d_year > ?
 					 GROUP BY xref
 					 ORDER BY age DESC
 				";
-				$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
+				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, $age))->fetchAll();
+				$result_tag	= $tag_array[$i];
 			break;
 			default:
 				$sql = "
 					SELECT
 					 tag.d_gid AS xref,
+					 birth.d_year AS birtyear,
 					 tag.d_year - birth.d_year AS age
 					 FROM
 						 `##dates` AS tag,
-						 `##dates` AS birth,
+						 `##dates` AS birth
 					 WHERE
 						 birth.d_gid = tag.d_gid AND
 						 tag.d_file = ? AND
@@ -645,19 +650,59 @@ function query_age($tag_array, $age) {
 					 GROUP BY xref
 					 ORDER BY age DESC
 				";
-				$rows = WT_DB::prepare($sql)->execute(array(WT_GED_ID, $tag_array[$i], $age))->fetchAll();
+				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, $tag_array[$i], $age))->fetchAll();
+				$result_tag	= $tag_array[$i];
 			break;
 		}
 		foreach ($rows as $row) {
-			$person = WT_Person::getInstance($row->xref);
-			if ($person) {
+			switch ($result_tag) {
+				case 'DEAT';
+					$person = WT_Person::getInstance($row->xref);
+					if ($person) {
+						$link_url	= $person->getHtmlUrl();
+						$link_name	= $person->getFullName();
+						$result 	= WT_I18N::translate('born in %1s, now aged %2s years', $row->birthyear, $row->age);
+					}
+					break;
+				case 'MARR';
+					$person = WT_Person::getInstance($row->xref);
+					if ($person) {
+						$link_url	= $person->getHtmlUrl();
+						$link_name	= $person->getFullName();
+						$result 	= WT_I18N::translate('married in %1s at age %2s years', $row->marryear, $row->age);
+					}
+					break;
+				case 'FAMS';
+					$family = WT_Family::getInstance($row->xref);
+					if ($family) {
+						$link_url	= $family->getHtmlUrl();
+						$link_name	= $family->getFullName();
+						$result 	= WT_I18N::translate('Age difference =  %1s years', $row->age);
+					}
+					break;
+				case 'BAPM';
+					$person = WT_Person::getInstance($row->xref);
+					if ($person) {
+						$link_url	= $person->getHtmlUrl();
+						$link_name	= $person->getFullName();
+						$result 	= WT_I18N::translate('born in %1s, baptised at age %2s years', $row->birtyear, $row->age);
+					}
+					break;
+				case 'CHR';
+					$person = WT_Person::getInstance($row->xref);
+					if ($person) {
+						$link_url	= $person->getHtmlUrl();
+						$link_name	= $person->getFullName();
+						$result 	= WT_I18N::translate('born in %1s, christened at age %2s years', $row->birtyear, $row->age);
+					}
+					break;
+			}
 				$html .= '
 					<li>
-						<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
-						<span class="details"> ' . WT_I18N::translate('married in %1s at age %2s years', $row->date, $row->age) . '</span>
+						<a href="'. $link_url. '" target="_blank" rel="noopener noreferrer">'. $link_name. '</a>
+						<span class="details"> ' . $result . '</span>
 					</li>';
 				$count ++;
-			}
 		}
 		$html .= '</ul>';
 		$time_elapsed_secs = number_format((microtime(true) - $start), 2);
