@@ -110,14 +110,14 @@ case "facts":
 }
 $controller->pageHeader();
 
-echo '<script>';
 ?>
+<script>
 	function pasteid(id, name, thumb) {
 		if (thumb) {
 			window.opener.<?php echo $callback; ?>(id, name, thumb);
 			<?php echo "window.close();"; ?>
 		} else {
-			// GEDFact_assistant ========================
+			// census_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
 				window.opener.insertRowToTable(id, name);
 			}

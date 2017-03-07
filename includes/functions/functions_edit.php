@@ -2253,7 +2253,7 @@ function create_add_form($fact) {
 
 	$tags = array();
 
-	// GEDFact_assistant ================================================
+	// Census assistant ================================================
 	if ($fact == "CENS") {
 		global $TEXT_DIRECTION, $CensDate;
 		$CensDate="yes";
@@ -2325,7 +2325,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 	$type = trim($fields[1]);
 	$level1type = $type;
 
-	// GEDFact_assistant ================================================
+	// cemsus_assistant ================================================
 	if ($type == "CENS") {
 		global $TEXT_DIRECTION, $CensDate;
 		$CensDate="yes";

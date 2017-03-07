@@ -46,7 +46,7 @@ $head   = WT_Person::getInstance($xref, WT_GED_ID);
 							alert("<?php echo WT_I18N::translate('You must enter a name'); ?>");
 						} else {
 							var win02 = window.open(
-								"module.php?mod=GEDFact_assistant&mod_action=_CENS/census_3_find&callback=paste_id&action=filter&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=400, WIDTH=450 ");
+								"module.php?mod=census_assistant&mod_action=census_3_find&callback=paste_id&action=filter&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=400, WIDTH=450 ");
 							if (window.focus) {win02.focus();}
 						}
 					}
