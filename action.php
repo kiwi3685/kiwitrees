@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,7 +36,7 @@ case 'accept-changes':
 		accept_all_changes($record->getXref(), $record->getGedId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
-	}	
+	}
 	break;
 
 case 'copy-fact':
@@ -105,7 +105,7 @@ case 'delete-source':
 		delete_gedrec($record->getXref(), $record->getGedId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
-	}	
+	}
 	break;
 
 case 'delete-user':
@@ -120,24 +120,39 @@ case 'delete-user':
 case 'reject-changes':
 	// Reject all the pending changes for a record
 	require WT_ROOT.'includes/functions/functions_edit.php';
-	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+	$record = WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canDisplayDetails() && $record->canEdit()) {
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 		reject_all_changes($record->getXref(), $record->getGedId());
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
-	}	
+	}
 	break;
 
 case 'theme':
 	// Change the current theme
-	$theme_dir=safe_POST('theme');
+	$theme_dir = safe_POST('theme');
 	if (in_array($theme_dir, get_theme_names())) {
 		$WT_SESSION->theme_dir=$theme_dir;
 	} else {
 		// Request for a non-existant theme.
 		header('HTTP/1.0 406 Not Acceptable');
 	}
+	break;
+
+case 'lookup_name':
+	// look up record name from id for media linking
+	$iid	= WT_Filter::post('iid');
+	if ($iid instanceof WT_Person) {
+		$iname	= strip_tags(WT_Person::getInstance($iid)->getFullName());
+	} elseif ($iid instanceof WT_Family) {
+		$iname	= strip_tags(WT_Family::getInstance($iid)->getFullName());
+	} else {
+		$iname	= strip_tags(WT_GedcomRecord::getInstance($iid)->getFullName());
+	}
+
+	header('Content-Type: application/json');
+	echo json_encode($iname);
 	break;
 }
 Zend_Session::writeClose();

@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -76,39 +76,23 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		}
 
 		// edit menu
-		$menu = new WT_Menu(WT_I18N::translate('Edit'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref(), 'menu-obje');
+		$menu = new WT_Menu(WT_I18N::translate('Edit'), 'addmedia.php?action=editmedia&amp;pid=' . $this->record->getXref(), 'menu-obje');
 		$menu->addTarget('_blank');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref(), 'menu-obje-edit');
+			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), 'addmedia.php?action=editmedia&amp;pid=' . $this->record->getXref(), 'menu-obje-edit');
 			$submenu->addTarget('_blank');
 			$menu->addSubmenu($submenu);
 
-			// main link displayed on page
-			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $this->record->getXref() . '&linkto=manage&ged=' . WT_GEDCOM, 'menu-obje-link');
-				$submenu->addTarget('_blank');
-			} else {
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '&linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
-				$submenu->addTarget('_blank');
-				$submenu->addSubMenu($ssubmenu);
-
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To family'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '&linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
-				$submenu->addTarget('_blank');
-				$submenu->addSubMenu($ssubmenu);
-
-				$ssubmenu = new WT_Menu(WT_I18N::translate('To source'), 'addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '&linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
-				$submenu->addTarget('_blank');
-				$submenu->addSubMenu($ssubmenu);
-			}
-
+			$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $this->record->getXref() . '&linkto=manage&ged=' . WT_GEDCOM, 'menu-obje-link');
+			$submenu->addTarget('_blank');
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-obje-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
+			$submenu->addOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-obje-viewraw');
@@ -169,33 +153,23 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 	}
 
 	/**
-	* edit menu items used in album tab and media list
+	* edit menu items used in media list
 	*/
 	static function getMediaListMenu($mediaobject) {
 		$html = '
 			<div class="lightbox-menu">
 				<ul class="makeMenu lb-menu">';
-					$menu = new WT_Menu(WT_I18N::translate('Set link'));
+
+					$menu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&linkto=manage&ged=' . WT_GEDCOM);
 					$menu->addClass('', '', 'lb-image_link');
-
-					$submenu = new WT_Menu(WT_I18N::translate('To individual'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
-					$submenu->addTarget('_blank');
-					$menu->addSubMenu($submenu);
-
-					$submenu = new WT_Menu(WT_I18N::translate('To family'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
-					$submenu->addTarget('_blank');
-					$menu->addSubMenu($submenu);
-
-					$submenu = new WT_Menu(WT_I18N::translate('To source'), 'inverselink.php?mediaid=' . $mediaobject->getXref() . '&amp;linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
-					$submenu->addTarget('_blank');
-					$menu->addSubMenu($submenu);
+					$menu->addTarget('_blank');
 					$html .= $menu->getMenuAsList();
 
 					$menu = new WT_Menu(WT_I18N::translate('View details'), $mediaobject->getHtmlUrl());
 					$menu->addClass('', '', 'lb-image_view');
 					$html .= $menu->getMenuAsList();
 
-					$menu = new WT_Menu(WT_I18N::translate('Edit details'), 'addmedia.php?action=editmedia&pid=' . $mediaobject->getXref(), 'menu-obje-edit');
+					$menu = new WT_Menu(WT_I18N::translate('Edit details'), 'addmedia.php?action=editmedia&amp;pid=' . $mediaobject->getXref(), 'menu-obje-edit');
 					$menu->addClass('', '', 'lb-image_edit');
 					$menu->addTarget('_blank');
 					$html .= $menu->getMenuAsList();

@@ -1625,6 +1625,7 @@ function old_paths() {
 		WT_ROOT.'modules_v3/pedigree_report', // old report system removed
 		WT_ROOT.'modules_v3/menu_resources', // old report system removed
 		WT_ROOT.'admin_module_resources', // old report system removed, this file renamed to admin_module_reports
+		WT_ROOT.'modules_v3/GEDFact_assistant', // no longer required
 
 	);
 }

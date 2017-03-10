@@ -2591,3 +2591,33 @@ function surnameDescriptions() {
 	);
 
 }
+
+// Keep the existing CHAN record when editing
+function no_update_chan(WT_GedcomRecord $record) {
+	global $NO_UPDATE_CHAN;
+	$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
+	if (WT_USER_IS_ADMIN) { ?>
+		<div class="last_change">
+			<label>
+				<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+			</label>
+			<div class="input">
+				<?php if ($NO_UPDATE_CHAN) { ?>
+					<input type="checkbox" checked="checked" name="preserve_last_changed">
+				<?php } else { ?>
+					<input type="checkbox" name="preserve_last_changed">
+				<?php }
+				echo WT_I18N::translate('Do not update the “last change” record'); ?>
+				<p class="helpcontent">
+					<?php echo WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.<br>When Administrators make such corrections information about the original change is replaced.<br>When this option is selected kiwitrees will retain the original change information instead of replacing it.'); ?>
+				</p>
+				<?php echo
+					WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
+					WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
+				?>
+			</div>
+		</div>
+	<?php } else {
+		return '';
+	}
+}

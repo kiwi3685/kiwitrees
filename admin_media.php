@@ -1,23 +1,25 @@
 <?php
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+/**
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2012 to 2017 kiwitrees.net
+ *
+ * Derived from webtrees (www.webtrees.net)
+ * Copyright (C) 2010 to 2012 webtrees development team
+ *
+ * Derived from PhpGedView (phpgedview.sourceforge.net)
+ * Copyright (C) 2002 to 2010 PGV Development Team
+ *
+ * Kiwitrees is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
@@ -198,7 +200,6 @@ case 'load_json':
 			$LIMIT = "";
 		}
 		$iSortingCols = safe_GET('iSortingCols');
-		echo $iSortingCols;
 		if ($iSortingCols) {
 			$ORDER_BY = " ORDER BY ";
 			for ($i=0; $i<$iSortingCols; ++$i) {
@@ -309,14 +310,26 @@ case 'load_json':
 			$create_form='';
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
-					$create_form .=
-						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\'); return false;">' .  WT_I18N::translate('Create') . '</a> — ' . WT_Filter::escapeHtml($media_tree) . '<p>';
+					$create_form .= '
+						<p>
+							<a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\'); return false;">' .
+								WT_I18N::translate('Create') . '
+							</a>
+							 — ' .
+							WT_Filter::escapeHtml($media_tree) . '
+						<p>
+					';
 				}
 			}
 
 			$conf        = WT_Filter::escapeJS(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($unused_file)));
-			$delete_link =
-				'<p><a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .addslashes($media_path . $unused_file) . '\',media_folder:\'' . addslashes($media_folder) . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a></p>';
+			$delete_link = '
+				<p>
+					<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'admin_media.php\',{delete:\'' .addslashes($media_path . $unused_file) . '\',media_folder:\'' . addslashes($media_folder) . '\'},function(){location.reload();})" href="#">' .
+						WT_I18N::Translate('Delete') . '
+					</a>
+				</p>
+			';
 
 			$aaData[] = array(
 				media_file_info($media_folder, $media_path, $unused_file) . $delete_link,
@@ -459,38 +472,15 @@ function media_object_info(WT_Media $media) {
 		'<br>' .
 		'<a href="' . $media->getHtmlUrl() . '">' . WT_I18N::translate('View') . '</a>';
 
-		$html .=
-			' - ' .
-			'<a onclick="window.open(\'addmedia.php?action=editmedia&pid=' . $xref . '&ged=' . $gedcom . '\', \'_blank\', edit_window_specs)" href="#">' . WT_I18N::Translate('Edit') . '</a>' .
-			' - ' .
-			'<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
-			' - ';
+	$html .=
+		' - ' .
+		'<a href="addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . $gedcom . '" target="_blank" >' . WT_I18N::Translate('Edit') . '</a>' .
+		' - ' .
+		'<a onclick="if (confirm(\'' . $conf . '\')) jQuery.post(\'action.php\',{action:\'delete-media\',xref:\'' . $xref . '\',ged:\'' . $gedcom . '\'},function(){location.reload();})" href="#">' . WT_I18N::Translate('Delete') . '</a>' .
+		' - ';
 
-	if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . WT_I18N::Translate('Manage links') . '</a>';
-	} else {
-		global $TEXT_DIRECTION;
-		$classSuffix = $TEXT_DIRECTION=='rtl' ? '_rtl' : '';
 
-		$menu = new WT_Menu();
-		$menu->addLabel(WT_I18N::translate('Set link'));
-		$menu->addClass('', 'submenu');
-		$submenu = new WT_Menu(WT_I18N::translate('To individual'));
-		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'person', '$gedcom')");
-		$menu->addSubMenu($submenu);
-
-		$submenu = new WT_Menu(WT_I18N::translate('To family'));
-		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'family', '$gedcom')");
-		$menu->addSubMenu($submenu);
-
-		$submenu = new WT_Menu(WT_I18N::translate('To source'));
-		$submenu->addClass("submenuitem".$classSuffix);
-		$submenu->addOnClick("return ilinkitem('$xref', 'source', '$gedcom')");
-		$menu->addSubMenu($submenu);
-		$html .= '<div style="display:inline-block;">' . $menu->getMenu() . '</div>';
-	}
+	$html .= '<a href="inverselink.php?mediaid=' . $xref . '&amp;linkto=manage" target="_blank">' . WT_I18N::Translate('Manage links') . '</a>';
 	$html .= '<br><br>';
 
 	$linked = array();

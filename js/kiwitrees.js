@@ -30,11 +30,9 @@ var find_window_specs	= 'width=550,height=600,left=250,top=150,resizable=1,scrol
 var mesg_window_specs	= 'width=800,height=650,left=250,top=100,resizable=1,scrollbars=1'; // message.php
 var chan_window_specs	= 'width=600,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var mord_window_specs	= 'width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
-//var assist_window_specs	= 'width=900,height=800,left=70,top=70,  resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
+var link_window_specs	= 'width=950,height=750,left=70,top=70,  resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 var assist_window_specs	= ''; // edit_interface.php, used for census assistant
 var gmap_window_specs	= 'width=580,height=600,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
-var fam_nav_specs		= 'width=300,height=600,left=1000,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
-
 var pastefield, nameElement, remElement; // Elements to paste to
 
 //Add help texts to page
@@ -1310,13 +1308,13 @@ function paste_char(value) {
 		updatewholename();
 	}
 }
-
+/*
 function ilinkitem(mediaid, type, ged) {
 	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&ged='+ged, '_blank', find_window_specs);
+	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&ged='+ged, '_blank', link_window_specs);
 	return false;
 }
-
+*/
 function message(username, method, url, subject = '') {
 	window.open('message.php?to=' + username + '&method=' + method + '&url=' + url + '&subject=' + subject, '_blank', mesg_window_specs);
 	return false;

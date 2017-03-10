@@ -369,10 +369,10 @@ case 'update': // Save the information from the “editmedia” action
 	}
 
 	// Insert the 1 FILE xxx record into the arrays used by function handle_updates()
-	$glevels = array_merge(array('1'), $glevels);
-	$tag = array_merge(array('FILE'), $tag);
-	$islink = array_merge(array(0), $islink);
-	$text = array_merge(array($newFilename), $text);
+	$glevels	= array_merge(array('1'), $glevels);
+	$tag		= array_merge(array('FILE'), $tag);
+	$islink		= array_merge(array(0), $islink);
+	$text		= array_merge(array($newFilename), $text);
 
 	if (!empty($pid)) {
 		$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
@@ -394,10 +394,13 @@ case 'update': // Save the information from the “editmedia” action
 		}
 	}
 	$controller->pageHeader();
-	if ($messages) {
-		echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
-	} else {
+	if ($messages) { ?>
+		<button onclick="closePopupAndReloadParent();">
+			<?php echo WT_I18N::translate('close'); ?>
+		</button>
+	<?php } else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
+
 	}
 	exit;
 case 'showmediaform':
@@ -432,11 +435,6 @@ $controller
 					</label>
 					<div class="input">
 						<input type="text" data-autocomplete-type="IFS" name="linktoid" id="linktoid" value="">
-						<?php echo
-							' ', print_findindi_link('gid'),
-							' ', print_findfamily_link('gid'),
-							' ', print_findsource_link('gid');
-						?>
 					</div>
 					<div class="help_text">
 						<span class="help_content">

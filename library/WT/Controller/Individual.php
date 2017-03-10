@@ -484,7 +484,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @param Family $family the family we are building for
 	* @return array an array of Person that will be used to iterate through on the individual.php page
 	*/
-	function buildFamilyList($family, $type, $include_pedi=true) {
+	function buildFamilyList($family, $type, $include_pedi=true, $icon=false) {
 		$labels = array();
 		switch ($type) {
 		case 'parents':
@@ -580,7 +580,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			if ($sex=="M") {
 				$label = $labels["father"];
 			}
-			if ($husb->getXref()==$this->record->getXref()) {
+			if ($icon && $husb->getXref() == $this->record->getXref()) {
 				$label = '<i class="icon-selected"></i>';
 			}
 			$husb->setLabel($label);
@@ -595,7 +595,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			if ($sex=="M") {
 				$label = $labels["father"];
 			}
-			if ($wife->getXref()==$this->record->getXref()) {
+			if ($icon && $wife->getXref()==$this->record->getXref()) {
 				$label = '<i class="icon-selected"></i>';
 			}
 			$wife->setLabel($label);
@@ -686,7 +686,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				if ($sex=="M") {
 					$label = $labels["brother"];
 				}
-				if ($children[$i]->getXref()==$this->record->getXref()) {
+				if ($icon && $children[$i]->getXref() == $this->record->getXref()) {
 					$label = '<i class="icon-selected"></i>';
 				}
 				if ($include_pedi==true) {
@@ -806,19 +806,11 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
 	}
 
-// -----------------------------------------------------------------------------
-// Functions for GedFact Assistant
-// -----------------------------------------------------------------------------
 	/**
-	* include GedFact controller
+	* include census controller
 	*/
 	function census_assistant() {
 		require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_1_ctrl.php';
 	}
-	function medialink_assistant() {
-		require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_MEDIA/media_1_ctrl.php';
-	}
-// -----------------------------------------------------------------------------
-// End GedFact Assistant Functions
-// -----------------------------------------------------------------------------
+
 }

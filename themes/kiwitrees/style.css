@@ -34,7 +34,7 @@ html {
 }
 
 html, body {
-    height:100%;/* needed for flexbox in IE11 */
+	height:100%;/* needed for flexbox in IE11 */
 }
 
 body {
@@ -1314,7 +1314,6 @@ a:hover .nameZoom {
 
 .helpcontent {
 	border: none;
-	font-size: .85em;
 	font-style: italic;
 	font-weight: 400;
 	margin: 10px 5px;
@@ -4576,7 +4575,8 @@ a.icon-udarrow:hover {
 	border: 1px solid;
 }
 
-div [id$="_factdiv"] {
+div [id$="_factdiv"],
+div [class$="_factdiv"] {
 	margin: 10px auto 15px;
 }
 
@@ -5833,16 +5833,16 @@ div.widget {
 	padding: 0 5px;
 }
 
-.widget .theme_form div {
+.widget_theme_select .theme_form div {
 	float:left;
 	margin: 5px;
 }
 
-.widget .theme_form div img {
+.widget_theme_select .theme_form div img {
 	width:95px;
 }
 
-.widget .theme_form div p {
+.widget_theme_select .theme_form div p {
 	margin: 2px;
 }
 /* ------------------ */
@@ -6686,6 +6686,73 @@ textarea#NOTE {
 	border: 0;
 	min-width: 0;
 	padding: 3px;
+}
+/* ------------------ */
+
+/* Styles for media link page */
+#inverselink-page {
+	margin-bottom: 50px;
+	overflow: hidden;
+}
+
+#inverselink-page .inverselink-page-left {
+	float: left;width: 60%;
+}
+
+#inverselink-page .inverselink-page-right {
+	float: left;
+}
+
+#inverselink-page .bold {
+	font-weight: 600;
+}
+
+#inverselink-page #existLinkTbl,
+#inverselink-page #addlinkQueue {
+	border-collapse: separate;
+	border-spacing: 1px;
+	max-width: 450px;
+	table-layout: fixed;
+}
+
+#inverselink-page #existLinkTbl th,
+#inverselink-page #addlinkQueue th,
+#media-links th {
+	background: #ddd;
+	border: 1px solid;
+	padding: 8px;
+	text-align: center;
+}
+
+#inverselink-page #existLinkTbl th:nth-child(3) {
+	min-width: 300px;
+	width: 60%;
+}
+
+#inverselink-page .preserve {
+	padding-top: 20px;
+}
+
+#media-links {
+	font-size: 95%;
+	max-height: 520px;
+	overflow: auto;
+}
+
+#media-links table {
+	border-collapse: collapse;
+	margin: 0 0 10px
+}
+
+#media-links table,
+#media-links td {
+	border: 1px solid;
+	padding: 5px;
+	white-space: nowrap;
+}
+
+#media-links td {
+	font-size: 95%;
 }
 /* ------------------ */
 

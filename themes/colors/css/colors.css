@@ -164,7 +164,7 @@ font-size:14px;text-align:center;height:22px;line-height: 1.5;border-bottom:soli
 #menu-my_gallery        {background-position:center -820px;}
 #menu-extra-menu        {background-position:center -862px;}
 #menu-contact           {background-position:center -903px;}
-#menu-report         {background-position:center -943px;}
+#menu-report            {background-position:center -943px;}
 
 /* Submenu Icons */
 #menu-chart-ancestry        {background-position:left -208px;} [dir=rtl] #menu-chart-ancestry        {background-position:right -208px;}
@@ -541,15 +541,16 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .footer {direction:ltr;text-align:center;width:99%;}
 .gender_image {border:none;padding-left:3px;padding-right:3px;vertical-align:middle;}
 
+.helpcontent {
+	border: none;
+	font-style: italic;
+	font-weight: 400;
+	margin: 10px 5px;
+}
+
 .help_content {
 	font-size: .9em;
 	font-style: italic;
-	margin-left: 10px;
-	margin-right: 10px;
-	max-height: 600px;
-}
-.help_content {
-	font-size: .9em;
 	margin-left: 10px;
 	margin-right: 10px;
 	max-height: 600px;
@@ -1615,7 +1616,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(../image
 a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(../images/rarrow2.png);}
 .icon-rdarrow              {width:20px;height:20px;background-image:url(../images/rdarrow.png);}
 .icon-reminder             {width:15px;height:12px;background-image:url(../images/reminder.png);}
-.fa-times               {width:16px;height:16px;background-image:url(../images/delete.png);}
+.fa-times              	   {width:16px;height:16px;background-image:url(../images/delete.png);display: inline-block;}
 .icon-repo-list            {width:22px;height:22px;background-image:url(../images/repository.png);}
 .icon-repository           {width:22px;height:22px;background-image:url(../images/repository.png);}
 .icon-resn-confidential    {width:16px;height:16px;background-image:url(../images/resn_confidential.png);}
@@ -1629,8 +1630,8 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-sex_f_9x9            {width:9px;height:9px;background-image:url(../images/sex_f_9x9.png);}
 .icon-sex_m_15x15          {width:15px;height:15px;background-image:url(../images/sex_m_15x15.png);}
 .icon-sex_m_9x9            {width:9px;height:9px;background-image:url(../images/sex_m_9x9.png);}
-.fa-user          {width:15px;height:15px;background-image:url(../images/sex_u_15x15.png);}
-.fa-user            {width:9px;height:9px;background-image:url(../images/sex_u_9x9.png);}
+.fa-user                   {width:15px;height:15px;background-image:url(../images/sex_u_15x15.png);display: inline-block;}
+.fa-user                   {width:9px;height:9px;background-image:url(../images/sex_u_9x9.png);display: inline-block;}
 .icon-sfamily              {width:22px;height:22px;background-image:url(../images/icon-sfamily.png);}
 .icon-source               {width:32px;height:32px;background-image:url(../images/source.png);}
 .icon-source-list          {width:32px;height:32px;background-image:url(../images/source.png);}
@@ -1640,7 +1641,7 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-uarrow               {width:20px;height:20px;background-image:url(../images/uarrow.png);}
 a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../images/uarrow2.png);}
 .icon-udarrow              {width:20px;height:20px;background-image:url(../images/udarrow.png);}
-.fa-user             {width:22px;height:25px;background-image:url(../images/user_add.png);}
+.fa-user                   {width:22px;height:25px;background-image:url(../images/user_add.png);display: inline-block;}
 .icon-warning              {width:17px;height:17px;background-image:url(../images/warning.png);}
 .icon-wiki                 {width:16px;height:16px;background-image:url(../images/w_button.png);}
 .icon-zoomin               {width:25px;height:25px;background-image:url(../images/zoomin.png);}
@@ -1863,7 +1864,8 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 	border: 1px solid;
 }
 
-div [id$="_factdiv"] {
+div [id$="_factdiv"],
+div [class$="_factdiv"] {
 	margin: 10px auto 15px;
 }
 
@@ -2297,16 +2299,16 @@ div.widget {
 	padding: 0 5px;
 }
 
-.widget .theme_form div {
+.widget_theme_select .theme_form div {
 	float:left;
 	margin: 5px;
 }
 
-.widget .theme_form div img {
+.widget_theme_select .theme_form div img {
 	width:95px;
 }
 
-.widget .theme_form div p {
+.widget_theme_select .theme_form div p {
 	margin: 2px;
 }
 /* ------------------ */
@@ -3182,6 +3184,74 @@ textarea#NOTE {
 	min-width: 0;
 	padding: 3px;
 }
+/* ------------------ */
+
+/* Styles for media link page */
+#inverselink-page {
+	margin-bottom: 50px;
+	overflow: hidden;
+}
+
+#inverselink-page .inverselink-page-left {
+	float: left;width: 60%;
+}
+
+#inverselink-page .inverselink-page-right {
+	float: left;
+}
+
+#inverselink-page .bold {
+	font-weight: 600;
+}
+
+#inverselink-page #existLinkTbl,
+#inverselink-page #addlinkQueue {
+	border-collapse: separate;
+	border-spacing: 1px;
+	max-width: 450px;
+	table-layout: fixed;
+}
+
+#inverselink-page #existLinkTbl th,
+#inverselink-page #addlinkQueue th,
+#media-links th {
+	background: #ddd;
+	border: 1px solid;
+	padding: 8px;
+	text-align: center;
+}
+
+#inverselink-page #existLinkTbl th:nth-child(3) {
+	min-width: 300px;
+	width: 60%;
+}
+
+#inverselink-page .preserve {
+	padding-top: 20px;
+}
+
+#media-links {
+	font-size: 95%;
+	max-height: 520px;
+	overflow: auto;
+}
+
+#media-links table {
+	border-collapse: collapse;
+	margin: 0 0 10px
+}
+
+#media-links table,
+#media-links td {
+	border: 1px solid;
+	padding: 5px;
+	white-space: nowrap;
+}
+
+#media-links td {
+	font-size: 95%;
+}
+
 /* ------------------ */
 
 /* Styles for Fan Chart */

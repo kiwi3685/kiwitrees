@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -331,35 +331,13 @@ function album_print_media_row($rtype, $rowm, $pid) {
 			$menu->addSubMenu($submenu);
 			// Manage Links
 			if (WT_USER_IS_ADMIN) {
-				if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=manage');
-					$submenu->addTarget('_blank');
-					$submenu->addClass('submenuitem');
-					$menu->addSubMenu($submenu);
-				} else {
-					$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', null, 'right', 'right');
-					$submenu->addClass('submenuitem', 'submenu');
-
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To individual'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=person&ged=' . WT_GEDCOM, 'menu-obje-link-indi');
-					$ssubmenu->addTarget('_blank');
-					$ssubmenu->addClass('submenuitem', 'submenu');
-					$submenu->addSubMenu($ssubmenu);
-
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To family'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=family&ged=' . WT_GEDCOM, 'menu-obje-link-fam');
-					$ssubmenu->addTarget('_blank');
-					$ssubmenu->addClass('submenuitem', 'submenu');
-					$submenu->addSubMenu($ssubmenu);
-
-					$ssubmenu = new WT_Menu(WT_I18N::translate('To source'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&amp;linkto=source&ged=' . WT_GEDCOM, 'menu-obje-link-sour');
-					$ssubmenu->addTarget('_blank');
-					$ssubmenu->addClass('submenuitem', 'submenu');
-					$submenu->addSubMenu($ssubmenu);
-
-					$menu->addSubMenu($submenu);
-				}
+				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), 'inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . WT_GEDCOM);
+				$submenu->addClass('submenuitem');
+				$submenu->addTarget('_blank');
+				$menu->addSubmenu($submenu);
 				// Unlink Media
 				$submenu = new WT_Menu(WT_I18N::translate('Unlink Media'));
-				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '".$rowm['m_id']."', '".WT_I18N::translate('Are you sure you want to delete this link?')."');");
+				$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '" . $rowm['m_id'] . "', '".WT_I18N::translate('Are you sure you want to delete this link?')."');");
 				$submenu->addClass("submenuitem");
 				$menu->addSubMenu($submenu);
 			}

@@ -93,8 +93,7 @@ if (!empty($pid)) {
 if (!WT_USER_CAN_EDIT || !$edit) {
 	$controller
 		->pageHeader()
-		->addInlineJavascript('
-		closePopupAndReloadParent();');
+		->addInlineJavascript('closePopupAndReloadParent();');
 	exit;
 }
 
@@ -990,17 +989,14 @@ case 'addnoteaction_assisted':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addmedia_links':
-	$controller = new WT_Controller_Simple();
-	$controller
-		->setPageTitle(WT_I18N::translate('Family navigator'))
-		->pageHeader();
 	?>
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
 		<input type="hidden" name="action" value="addmedia_links">
 		<input type="hidden" name="noteid" value="newnote">
-		<?php require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php'; ?>
+		<?php require WT_ROOT . 'media_links.php'; ?>
 	</form>
 	<?php
+	Zend_Session::writeClose();
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2721,31 +2717,4 @@ case 'checkduplicates':
 
 	echo $html;
 	break;
-}
-
-// Keep the existing CHAN record when editing
-function no_update_chan(WT_GedcomRecord $record) {
-	global $NO_UPDATE_CHAN;
-	$checked = $NO_UPDATE_CHAN ? ' checked="checked"' : '';
-	if (WT_USER_IS_ADMIN) { ?>
-		<div class="last_change">
-			<label>
-				<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
-			</label>
-			<div class="input">
-				<?php if ($NO_UPDATE_CHAN) { ?>
-					<input type="checkbox" checked="checked" name="preserve_last_changed">
-				<?php } else { ?>
-					<input type="checkbox" name="preserve_last_changed">
-				<?php }
-				echo WT_I18N::translate('Do not update the “last change” record') .
-				help_link('no_update_CHAN') .
-				WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
-				WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
-				?>
-			</div>
-		</div>
-	<?php } else {
-		return '';
-	}
 }
