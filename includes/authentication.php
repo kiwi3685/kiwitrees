@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -231,14 +231,14 @@ function addMessage($message) {
 	if (isset($message['from_name']))
 		$copy_email = WT_I18N::translate('Your Name:') . " " . $message['from_name'] . "\r\n" . WT_I18N::translate('Email Address:') . " " . $message['from_email'] . "\r\n\r\n" . $copy_email;
 	if (!empty($message['url'])) {
-		if (strpos($message['url'], WT_SERVER_NAME . WT_SCRIPT_PATH) !==0 ) {
-			$message['url'] = WT_SERVER_NAME.WT_SCRIPT_PATH . $message['url'];
+		if (strpos($message['url'], WT_SERVER_NAME . WT_SCRIPT_PATH) !== 0 ) {
+			$message['url'] = WT_SERVER_NAME . WT_SCRIPT_PATH . $message['url'];
 		}
 		$copy_email .= "\r\n\r\n--------------------------------------\r\n\r\n" . WT_I18N::translate('This message was sent while viewing the following URL: ') . "\r\n" . $message['url'] . "\r\n";
 	}
 	$copy_email .= "\r\n=--------------------------------------=\r\nIP ADDRESS: " . $WT_REQUEST->getClientIp() . "\r\n";
 	$copy_email .= "DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp()) . "\r\n";
-	$copy_email .= "LANGUAGE: ".WT_LOCALE."\r\n";
+	$copy_email .= "LANGUAGE: " . WT_LOCALE."\r\n";
 	$copy_subject = "[" . /* I18N: subject line for messages from a kiwitrees site */ WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ($TEXT_DIRECTION == 'ltr' ?"] ":" [") . $message['subject'];
 	$from = '';
 	if (!$user_id_from) {

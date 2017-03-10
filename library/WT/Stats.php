@@ -3270,32 +3270,42 @@ class WT_Stats {
 
 		switch ($sex) {
 		case 'M':
-			$sex_sql="i_sex='M'";
+			$sex_sql = "i_sex='M'";
 			break;
 		case 'F':
-			$sex_sql="i_sex='F'";
+			$sex_sql = "i_sex='F'";
 			break;
 		case 'U':
-			$sex_sql="i_sex='U'";
+			$sex_sql = "i_sex='U'";
 			break;
 		case 'B':
-			$sex_sql="i_sex<>'U'";
+			$sex_sql = "i_sex<>'U'";
 			break;
 		}
-		$ged_id=get_id_from_gedcom($GEDCOM);
+		$ged_id = get_id_from_gedcom($GEDCOM);
 
-		$rows=WT_DB::prepare("SELECT SQL_CACHE n_givn, COUNT(*) AS num FROM `##name` JOIN `##individuals` ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
-			->fetchAll();
-		$nameList=array();
+		$rows = WT_DB::prepare("
+			SELECT SQL_CACHE n_givn, COUNT(*) AS num
+			 FROM `##name`
+			  JOIN `##individuals` ON (n_id = i_id AND n_file = i_file)
+			 WHERE n_file = {$ged_id}
+			  AND n_type <> '_MARNM'
+			  AND n_givn NOT IN ('@P.N.', '')
+			  AND LENGTH(n_givn) > 1
+			  AND {$sex_sql} GROUP BY n_id, n_givn
+			")->fetchAll();
+
+		$nameList = array();
+		
 		foreach ($rows as $row) {
 			// Split “John Thomas” into “John” and “Thomas” and count against both totals
 			foreach (explode(' ', $row->n_givn) as $given) {
 				// Exclude initials and particles.
 				if (!preg_match('/^([A-Z]|[a-z]{1,3})$/', $given)) {
 					if (array_key_exists($given, $nameList)) {
-						$nameList[$given]+=$row->num;
+						$nameList[$given] += $row->num;
 					} else {
-						$nameList[$given]=$row->num;
+						$nameList[$given] = $row->num;
 					}
 				}
 			}
