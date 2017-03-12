@@ -94,7 +94,7 @@ $true	= '<i class="accepted fa fa-check"></i>';
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<div class="help_text">
 			<p class="helpcontent">
-				<?php echo /* I18N: Sub-title for missing data admin page */ WT_I18N::translate('A list of selected information missing from an individual and their relatives.'); ?>
+				<?php echo /* I18N: Sub-title for missing data admin page */ WT_I18N::translate('A list of information missing from an individual and their relatives.'); ?>
 				<br>
 				<?php echo /* I18N: Help content for missing data admin page */ WT_I18N::translate('Whenever possible names are followed by the individual\'s lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as "Religion" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for.'); ?>
 			</p>
