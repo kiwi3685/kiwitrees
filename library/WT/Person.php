@@ -1913,4 +1913,14 @@ class WT_Person extends WT_GedcomRecord {
 		}
 	}
 
+	/**
+	* get the generation
+	* @return integer
+	*/
+	// Use the un-privatised gedcom record.  We call this function during
+	// the privatize-gedcom function, and we are allowed to know this.
+	function getGeneration() {
+		return $this->generation;
+	}
+
 }

@@ -205,7 +205,7 @@ $nondatefacts = array(
 );
 
 // Tags that require a DATE:TIME as well as a DATE
-$date_and_time=array(
+$date_and_time = array(
 	'BIRT',
 	'DEAT',
 );
@@ -428,6 +428,15 @@ $level2_tags = array(
 		'MARR',
 		'BURI',
 	),
+);
+
+// Tags that are only relevant after death
+$after_death = array(
+	'BURI',
+	'CREM',
+	'DEAT',
+	'PROB',
+	'WILL',
 );
 
 // The order of name parts, when generating names

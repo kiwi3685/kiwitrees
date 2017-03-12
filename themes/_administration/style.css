@@ -1613,6 +1613,19 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 	margin-bottom: 2px;
 }
 
+#missing_data-page table#missing_data {
+	visibility:hidden;
+	width: 100%;
+}
+
+#missing_data-page th:first-child {
+	max-width: 20px;
+}
+
+#missing_data-page td:first-child {
+	white-space:nowrap;
+}
+
 /* print layout adjustments */
 @media print {
 	#admin_head,

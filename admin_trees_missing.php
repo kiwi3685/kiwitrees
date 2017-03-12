@@ -33,718 +33,333 @@ $controller
 	->setPageTitle(WT_I18N::translate('Missing data'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-	->addExternalJavascript(WT_JQUERY_DT_HTML5)
-	->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
-	->addInlineJavascript('
-		autocomplete();
-		jQuery("#source_list").css("visibility", "visible");
-		jQuery(".loading-image").css("display", "none");
-	');
+	->addInlineJavascript('autocomplete();');
 
-	$go 				= WT_Filter::post('go');
-	$rootid 			= WT_Filter::get('rootid');
-	$root_id			= WT_Filter::post('root_id');
-	$rootid				= empty($root_id) ? $rootid : $root_id;
-	$choose_relatives	= WT_Filter::post('choose_relatives') ? WT_Filter::post('choose_relatives') : 'child-family';
-	$ged				= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
-	$selected_facts		= WT_Filter::postArray('selected_facts');
-	$maxgen				= WT_Filter::post('generations', WT_REGEX_INTEGER, $DEFAULT_PEDIGREE_GENERATIONS);
+//-- set list of all configured individual tags (level 1)
+$indifacts		= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+$uniqueIndfacts	= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+$indifacts		= array_merge($indifacts, $uniqueIndfacts);
 
-	$select = array(
-		'child-family'		=> WT_I18N::translate('Parents and siblings'),
-		'spouse-family'		=> WT_I18N::translate('Spouses and children'),
-		'direct-ancestors'	=> WT_I18N::translate('Direct line ancestors'),
-		'ancestors'			=> WT_I18N::translate('Direct line ancestors and their families'),
-		'descendants'		=> WT_I18N::translate('Descendants'),
-		'all'				=> WT_I18N::translate('All relatives')
-	);
+$famfacts   	= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'),     -1, PREG_SPLIT_NO_EMPTY);
+$uniqueFamfacts	= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'),  -1, PREG_SPLIT_NO_EMPTY);
+$famfacts		= array_merge($famfacts, $uniqueFamfacts);
 
-	$sourcefacts = array(
-		'fsour' => WT_I18N::translate('Sources for the events'),
-		'fobje' => WT_I18N::translate('Media linked to events'),
-	);
+$facts =  array_merge($indifacts, $famfacts);
 
-	$indifacts = array(
-		'fbirt' => WT_Gedcom_Tag::getLabel('BIRT'),
-		'fbapm' => WT_Gedcom_Tag::getLabel('BAPM') . '/' . WT_Gedcom_Tag::getLabel('CHR'),
-		'fdeat' => WT_Gedcom_Tag::getLabel('DEAT'),
-		'fburi' => WT_Gedcom_Tag::getLabel('BURI'),
-		'fconf' => WT_Gedcom_Tag::getLabel('CONF'),
-		'ffcom' => WT_Gedcom_Tag::getLabel('FCOM'),
-		'freli' => WT_Gedcom_Tag::getLabel('RELI'),
-		'fbarm' => WT_Gedcom_Tag::getLabel('BARM'),
-		'fbasm' => WT_Gedcom_Tag::getLabel('BASM'),
-	);
+$translated_facts	= array();
+foreach ($facts as $addfact) {
+	$translated_facts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
+}
+uasort($translated_facts, 'factsort');
 
-	$famfacts = array(
-		'fenga' => WT_Gedcom_Tag::getLabel('ENGA'),
-		'fmarb' => WT_Gedcom_Tag::getLabel('MARB'),
-		'fmarr' => WT_Gedcom_Tag::getLabel('MARR'),
-	);
+//-- variables
+$fact				= WT_Filter::post('fact');
+$go 				= WT_Filter::post('go');
+$rootid 			= WT_Filter::get('rootid');
+$root_id			= WT_Filter::post('root_id');
+$rootid				= empty($root_id) ? $rootid : $root_id;
+$choose_relatives	= WT_Filter::post('choose_relatives') ? WT_Filter::post('choose_relatives') : 'child-family';
+$ged				= WT_Filter::post('ged') ? WT_Filter::post('ged') : $GEDCOM;
+$maxgen				= WT_Filter::post('generations', WT_REGEX_INTEGER, $DEFAULT_PEDIGREE_GENERATIONS);
 
-	$facts =  array_merge($sourcefacts, $indifacts, $famfacts);
+$select = array(
+	'child-family'		=> WT_I18N::translate('Parents and siblings'),
+	'spouse-family'		=> WT_I18N::translate('Spouses and children'),
+	'direct-ancestors'	=> WT_I18N::translate('Direct line ancestors'),
+	'ancestors'			=> WT_I18N::translate('Direct line ancestors and their families'),
+	'descendants'		=> WT_I18N::translate('Descendants'),
+	'all'				=> WT_I18N::translate('All relatives')
+);
 
-	$facts_list = '';
-	foreach ($selected_facts as $key) {
-		$facts_list .= isset($facts[$key]) ? $facts[$key] . ', ' : null;
-	}
-	$facts_list = rtrim($facts_list, ', ');
+$generations = array(
+	1	=> WT_I18N::number(1),
+	2	=> WT_I18N::number(2),
+	3	=> WT_I18N::number(3),
+	4	=> WT_I18N::number(4),
+	5	=> WT_I18N::number(5),
+	6	=> WT_I18N::number(6),
+	7	=> WT_I18N::number(7),
+	8	=> WT_I18N::number(8),
+	9	=> WT_I18N::number(9),
+	10	=> WT_I18N::number(10),
+	-1	=> WT_I18N::translate('All')
+);
 
-	$defaults = array(
-		'fbirt',
-		'fdeat',
-	);
+$false	= '<i class="error fa fa-times"></i>';
+$true	= '<i class="accepted fa fa-check"></i>';
 
-	$generations = array(
-		1	=> WT_I18N::number(1),
-		2	=> WT_I18N::number(2),
-		3	=> WT_I18N::number(3),
-		4	=> WT_I18N::number(4),
-		5	=> WT_I18N::number(5),
-		6	=> WT_I18N::number(6),
-		7	=> WT_I18N::number(7),
-		8	=> WT_I18N::number(8),
-		9	=> WT_I18N::number(9),
-		10	=> WT_I18N::number(10),
-		-1	=> WT_I18N::translate('All')
-	);
-	?>
-	<div id="missing_data-page">
-		<div class="noprint">
-			<h2><?php echo $controller->getPageTitle(); ?></h2>
-			<div class="help_text">
-				<p class="helpcontent">
-					<?php echo /* I18N: Sub-title for missing data admin page */ WT_I18N::translate('A list of selected information missing from an individual and their relatives.'); ?>
-					<br>
-					<?php echo /* I18N: Help content for missing data admin page */ WT_I18N::translate('Whenever possible names are followed by the individual\'s lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as "Religion" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for.'); ?>
-				</p>
-			</div>
-			<form name="resource" id="resource" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
-				<input type="hidden" name="go" value="1">
-				<div id="admin_options">
-					<div class="input">
-						<label><?php echo WT_I18N::translate('Family tree'); ?></label>
-						<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
-					</div>
-					<div class="input">
-						<label for = "rootid"><?php echo WT_I18N::translate('Individual'); ?></label>
-						<input data-autocomplete-type="INDI" type="text" id="root_id" name="root_id" value="<?php echo $rootid; ?>" required>
-					</div>
-					<div class="input">
-						<label for = "choose_relatives"><?php echo WT_I18N::translate('Choose relatives'); ?></label>
-						<?php echo select_edit_control('choose_relatives', $select,	null, $choose_relatives); ?>
-					</div>
-					<div class="input">
-						<label for = "generations"><?php echo WT_I18N::translate('Generations'); ?></label>
-						<?php echo select_edit_control('generations', $generations, null, $maxgen); ?>
-					</div>
-					<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
-						<i class="fa fa-check"></i>
-						<?php echo $controller->getPageTitle(); ?>
-					</button>
-
-					<hr class="noprint" style="clear:both;">
-					<h3>
-						<?php echo WT_I18N::translate('Select all'); ?>
-						<input type="checkbox" onclick="toggle_select(this)" style="vertical-align:middle;">
-					</h3>
-					<?php
-						foreach ($sourcefacts as $code=>$name) {
-							echo '
-								<span style="display:inline-block;width: 200px;">
-									<input class="check" type="checkbox" name="selected_facts[]" id="fact_' . $code . '"';
-										if ($selected_facts && in_array($code, $selected_facts)) {
-											echo 'checked="checked"';
-										} elseif (!$selected_facts && in_array($code, $defaults)) {
-											echo 'checked="checked"';
-										}
-									echo ' value="' . $code . '">
-									<label for="fact_' . $code . '"> '.$name.'</label>
-								</span>
-							';
-						}
-					?>
-					<h3><?php echo WT_I18N::translate('Individual'); ?></h3>
-					<?php
-						foreach ($indifacts as $code=>$name) {
-							echo '
-								<span style="display:inline-block;width: 200px;">
-									<input class="check" type="checkbox" name="selected_facts[]" id="fact_' . $code . '"';
-										if ($selected_facts && in_array($code, $selected_facts)) {
-											echo 'checked="checked"';
-										} elseif (!$selected_facts && in_array($code, $defaults)) {
-											echo 'checked="checked"';
-										}
-									echo ' value="' . $code . '">
-									<label for="fact_' . $code . '"> '.$name.'</label>
-								</span>
-							';
-						}
-					?>
-					<h3><?php echo WT_I18N::translate('Family'); ?></h3>
-					<?php
-						foreach ($famfacts as $code=>$name) {
-							echo '
-								<span style="display:inline-block;width: 200px;">
-									<input class="check" type="checkbox" name="selected_facts[]" id="fact_' . $code . '"';
-										if ($selected_facts && in_array($code, $selected_facts)) {
-											echo 'checked="checked"';
-										} elseif (!$selected_facts && in_array($code, $defaults)) {
-											echo 'checked="checked"';
-										}
-									echo ' value="' . $code . '">
-									<label for="fact_' . $code . '"> '.$name.'</label>
-								</span>
-							';
-						}
-					?>
-
-				</div>
-			</form>
+?>
+<div id="missing_data-page">
+	<div class="noprint">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<div class="help_text">
+			<p class="helpcontent">
+				<?php echo /* I18N: Sub-title for missing data admin page */ WT_I18N::translate('A list of selected information missing from an individual and their relatives.'); ?>
+				<br>
+				<?php echo /* I18N: Help content for missing data admin page */ WT_I18N::translate('Whenever possible names are followed by the individual\'s lifespan dates for ease of identification. Note that these may include dates of baptism, christening, burial and cremation if birth and death dates are missing.<br>The list also ignores any estimates of dates or ages, so living people will be listed as missing death dates and places.<br>Some facts such as "Religion" do not commonly have sub-tags like date, place or source, so here only the fact itself is checked for.'); ?>
+			</p>
 		</div>
-		<hr class="noprint" style="clear:both;">
-		<!-- end of form -->
-		<?php if ($go == 1) {
-			$controller
-				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-				->addExternalJavascript(WT_JQUERY_DT_HTML5)
-				->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
-				->addInlineJavascript('
-					jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-					jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
-					jQuery("#missing_data").dataTable({
-						dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
-						' . WT_I18N::datatablesI18N() . ',
-						buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
-						autoWidth: false,
-						paging: true,
-						pagingType: "full_numbers",
-						lengthChange: true,
-						filter: true,
-						info: true,
-						jQueryUI: true,
-						sorting: [0,"asc"],
-						displayLength: 20,
-						columns: [
-							/* 0-name  */	null,
-							/* 1-event */	{"bSortable": false}
-						],
-						stateSave: true,
-						stateDuration: -1
-					});
-					jQuery("#missing_data").css("visibility", "visible");
-					jQuery(".loading-image").css("display", "none");
-				');
+		<form name="resource" id="resource" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+			<input type="hidden" name="go" value="1">
+			<div id="admin_options">
+				<div class="input">
+					<label><?php echo WT_I18N::translate('Family tree'); ?></label>
+					<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
+				</div>
+				<div class="input">
+					<label for = "fact"><?php echo WT_I18N::translate('Fact or event'); ?></label>
+					<select name="fact" id="fact">
+						<option value="fact" disabled selected ><?php echo /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('Select'); ?></option>
+						<?php foreach ($translated_facts as $key=>$fact_name) {
+							if ($key !== 'EVEN' && $key !== 'FACT') {
+								echo '<option value="' . $key . '"' . ($key == $fact ? ' selected ' : '') . '>' . $fact_name . '</option>';
+							}
+						}
+						echo '<option value="EVEN"' . ($fact == 'EVEN'? ' selected ' : '') . '>' . WT_I18N::translate('Custom Event') . '</option>';
+						echo '<option value="FACT"' . ($fact == 'FACT'? ' selected ' : '') . '>' . WT_I18N::translate('Custom Fact') . '</option>';
+						?>
+					</select>
+				</div>
+				<div class="input">
+					<label for = "rootid"><?php echo WT_I18N::translate('Individual'); ?></label>
+					<input data-autocomplete-type="INDI" type="text" id="root_id" name="root_id" value="<?php echo $rootid; ?>" required>
+				</div>
+				<div class="input">
+					<label for = "choose_relatives"><?php echo WT_I18N::translate('Choose relatives'); ?></label>
+					<?php echo select_edit_control('choose_relatives', $select,	null, $choose_relatives); ?>
+				</div>
+				<div class="input">
+					<label for = "generations"><?php echo WT_I18N::translate('Generations'); ?></label>
+					<?php echo select_edit_control('generations', $generations, null, $maxgen); ?>
+				</div>
+				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
+					<i class="fa fa-check"></i>
+					<?php echo $controller->getPageTitle(); ?>
+				</button>
+			</div>
+		</form>
+	</div>
+	<hr class="noprint" style="clear:both;">
+	<!-- end of form -->
+	<?php if ($go == 1) {
+		$controller
+			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_DT_HTML5)
+			->addExternalJavascript(WT_JQUERY_DT_BUTTONS)
+			->addInlineJavascript('
+				jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+				jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
+				jQuery("#missing_data").dataTable({
+					dom: \'<"H"pBf<"dt-clear">irl>t<"F"pl>\',
+					' . WT_I18N::datatablesI18N() . ',
+					buttons: [{extend: "csv", exportOptions: {columns: ":visible"}}],
+					autoWidth: false,
+					paging: true,
+					pagingType: "full_numbers",
+					lengthChange: true,
+					filter: true,
+					info: true,
+					jQueryUI: true,
+					sorting: [0,"asc"],
+					displayLength: 20,
+					stateSave: true,
+					stateDuration: -1
+				});
+				jQuery("#missing_data").css("visibility", "visible");
+				jQuery(".loading-image").css("display", "none");
+			');
 
-			$person = WT_Person::getInstance($rootid);
-			if ($person && $person->canDisplayDetails()) {
-				// collect list of relatives
-				$list = array();
-				$list[$rootid] = $person;
-				switch ($choose_relatives) {
-					case "child-family":
-						foreach ($person->getChildFamilies() as $family) {
-							$husband = $family->getHusband();
-							$wife = $family->getWife();
-							if (!empty($husband)) {
-								$list[$husband->getXref()] = $husband;
-							}
-							if (!empty($wife)) {
-								$list[$wife->getXref()] = $wife;
-							}
-							$children = $family->getChildren();
-							foreach ($children as $child) {
-								if (!empty($child)) $list[$child->getXref()] = $child;
-							}
-						}
-						break;
-					case "spouse-family":
-						foreach ($person->getSpouseFamilies() as $family) {
-						$husband = $family->getHusband();
-							$wife = $family->getWife();
-							if (!empty($husband)) {
-								$list[$husband->getXref()] = $husband;
-							}
-							if (!empty($wife)) {
-								$list[$wife->getXref()] = $wife;
-							}
-							$children = $family->getChildren();
-							foreach ($children as $child) {
-								if (!empty($child)) $list[$child->getXref()] = $child;
-							}
-						}
-						break;
-					case "direct-ancestors":
-						add_ancestors($list, $rootid, false, $maxgen);
-						break;
-					case "ancestors":
-						add_ancestors($list, $rootid, true, $maxgen);
-						break;
-					case "descendants":
-						$list[$rootid]->generation = 1;
-						add_descendancy($list, $rootid, false, $maxgen);
-						break;
-					case "all":
-						add_ancestors($list, $rootid, true, $maxgen);
-						add_descendancy($list, $rootid, true, $maxgen);
-						break;
-				}
+		$person = WT_Person::getInstance($rootid);
+		if ($person && $person->canDisplayDetails()) {
+			$list = getRelatives($rootid, $person, $choose_relatives, $maxgen);
+		}
+
+		// prepare final list
+		$result	= array();
+		$check	= array();
+		$note	= '';
+		$n		= 0;
+
+		foreach ($list as $relative) {
+			if (in_array($fact, $after_death) && !$relative->isDead()) {
+				$n ++;
+				continue;
 			}
-			// prepare final list
-			$total_individuals	= 0;
-			$total_indi_events	= 0;
-			$ind_missing_events	= 0;
-			$total_families		= 0;
-			$total_fam_events	= 0;
-			$fam_missing_events	= 0;
-			$total_matches		= 0;
-			$result				= array();
-			$check				= array();
-			$source				= '';
-			$obje				= '';
-
-			foreach ($list as $relative) {
-				$indi_ct	= false;
+			if (in_array($fact, $famfacts)) {
 				$fam_record	= array();
 				// collect FAMS records for this person
-				foreach($selected_facts as $key){
-			        if(array_key_exists($key, $famfacts)) {
-						$ct = preg_match_all('/\n1 FAMS @(.+)@/', $relative->getGedcomRecord(), $matches, PREG_SET_ORDER); // collect family info for FAM records ($matches)
-						foreach ($matches as $match) {
-							if (!in_array($match[1], $check)) {
-								$total_matches = $total_matches + 1;
-								$check[] = $match[1]; // avoid duplicate data from both spouses
-								$fam_record[] = WT_Family::getInstance($match[1]);
-							}
+				$ct = preg_match_all('/\n1 FAMS @(.+)@/', $relative->getGedcomRecord(), $matches, PREG_SET_ORDER); // collect family info for FAM records ($matches)
+				foreach ($matches as $match) {
+					if (!in_array($match[1], $check)) {
+						$check[] = $match[1]; // avoid duplicate data from both spouses
+						$fam_record[] = WT_Family::getInstance($match[1]);
+					}
+				}
+				foreach ($fam_record as $family) {
+					$event = $family->getFactByType($fact);
+					if ($event) {
+						$check_event = check_events($event);
+						if ($check_event['date'] && $check_event['place'] && $check_event['source'] && $check_event['obje']) {
+							continue;
+						} else {
+							$result[$family->getXref()]['gen']	= $relative->getGeneration();
+							$result[$family->getXref()]['name']	= '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() . '</a>';
+							$result[$family->getXref()]['fact']	= 1;
+							$check_event['date']	? $result[$family->getXref()]['date']	= 1 : $result[$family->getXref()]['date']	= 0;
+							$check_event['place']	? $result[$family->getXref()]['place']	= 1 : $result[$family->getXref()]['place']	= 0;
+							$check_event['source']	? $result[$family->getXref()]['source']	= 1 : $result[$family->getXref()]['source']	= 0;
+							$check_event['obje']	? $result[$family->getXref()]['obje']	= 1 : $result[$family->getXref()]['obje']	= 0;
 						}
-					}
-				}
-				// BIRTH
-				if (in_array('fbirt', $selected_facts)) {
-					// Can't use getBirthDate(), as this also gives BAP/CHR events
-					$total_indi_events	= $total_indi_events + 2;
-					$event				= $relative->getFactByType('BIRT');
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// BIRT:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// BIRT:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BIRT:DATE') : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BIRT:PLAC') : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Birth source') : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Birth media') : null;
-					}
-				}
-				// DEATH
-				if (in_array('fdeat', $selected_facts)) {
-					// Can't use getDeathDate(), as this also gives BUR/CREM events
-					$total_indi_events = $total_indi_events + 2;
-					$event = $relative->getFactByType('DEAT');
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// DEAT:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// DEAT:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('DEAT:DATE') : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('DEAT:PLAC') : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Death source') : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Death media') : null;
-					}
-				}
-				// BURIAL
-				if (in_array('fburi', $selected_facts)) {
-					$total_indi_events = $total_indi_events + 2;
-					$event = $relative->getFactByType('BURI');
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// BURI:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// BURI:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BURI:DATE') : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BURI:PLAC') : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Burial source') : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Burial media') : null;
-					}
-				}
-				// BAPTISM / CHRISTENING
-				if (in_array('fbapm', $selected_facts)) {
-					$total_indi_events = $total_indi_events + 2;
-					$chr	= $relative->getFactByType('CHR');
-					$bapm	= $relative->getFactByType('BAPM');
-					if (!$chr) {
-						$event			= $relative->getFactByType('BAPM');
-						$date_label		= WT_Gedcom_Tag::getLabel('BAPM:DATE');
-						$place_label	= WT_Gedcom_Tag::getLabel('BAPM:PLAC');
-						$source_label	= WT_I18N::translate('Baptism source');
-						$obje_label		= WT_I18N::translate('Baptism media');
 					} else {
-						$event			= $relative->getFactByType('CHR');
-						$date_label		= WT_Gedcom_Tag::getLabel('CHR:DATE');
-						$place_label	= WT_Gedcom_Tag::getLabel('CHR:PLAC');
-						$source_label	= WT_I18N::translate('Christening source');
-						$obje_label		= WT_I18N::translate('Christening media');
-					}
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// BAPM/CHR:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// BAPM/CHR:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = $date_label : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = $place_label : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = $source_label : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = $obje_label : null;
+						$result[$family->getXref()]['gen']		= $relative->getGeneration();
+						$result[$family->getXref()]['name']		= '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() . '</a>';
+						$result[$family->getXref()]['fact']		= 0;
+						$result[$family->getXref()]['date']		= 0;
+						$result[$family->getXref()]['place']	= 0;
+						$result[$family->getXref()]['source']	= 0;
+						$result[$family->getXref()]['obje']		= 0;
 					}
 				}
-				// BARM - male only
-				if (in_array('fbarm', $selected_facts) && $relative->getSex() == 'M') {
-					$total_indi_events = $total_indi_events + 2;
-					$event = $relative->getFactByType('BARM');
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// BARM:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// BARM:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BARM:DATE') : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BARM:PLAC') : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Bar mitzvah source') : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Bar mitzvah media') : null;
+			} else {
+				$event = $relative->getFactByType($fact);
+				if ($event) {
+					$check_event = check_events($event);
+					if ($check_event['date'] && $check_event['place'] && $check_event['source'] && $check_event['obje']) {
+						continue;
+					} else {
+						$result[$relative->getXref()]['gen']	= $relative->getGeneration();
+						$result[$relative->getXref()]['name']	= '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
+						$result[$relative->getXref()]['fact']	= 1;
+						$check_event['date']	? $result[$relative->getXref()]['date']		= 1 : $result[$relative->getXref()]['date']		= 0;
+						$check_event['place']	? $result[$relative->getXref()]['place']	= 1 : $result[$relative->getXref()]['place']	= 0;
+						$check_event['source']	? $result[$relative->getXref()]['source']	= 1 : $result[$relative->getXref()]['source']	= 0;
+						$check_event['obje']	? $result[$relative->getXref()]['obje']		= 1 : $result[$relative->getXref()]['obje']		= 0;
 					}
+				} else {
+					$result[$relative->getXref()]['gen']	= $relative->getGeneration();
+					$result[$relative->getXref()]['name']	= '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
+					$result[$relative->getXref()]['fact']	= 0;
+					$result[$relative->getXref()]['date']	= 0;
+					$result[$relative->getXref()]['place']	= 0;
+					$result[$relative->getXref()]['source']	= 0;
+					$result[$relative->getXref()]['obje']	= 0;
 				}
-				// BASM - female only
-				if (in_array('fbasm', $selected_facts) && $relative->getSex() == 'F') {
-					$total_indi_events = $total_indi_events + 2;
-					$event = $relative->getFactByType('BASM');
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// BASM:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// BASM:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BASM:DATE') : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('BASM:PLAC') : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Bat mitzvah source') : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Bat mitzvah media') : null;
-					}
-				}
-				// CONFIRMATION
-				if (in_array('fconf', $selected_facts)) {
-					$total_indi_events = $total_indi_events + 2;
-					$event = $relative->getFactByType('CONF');
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// CONF:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// CONF:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('CONF:DATE') : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('CONF:PLAC') : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Confirmation source') : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('Confirmation media') : null;
-					}
-				}
-				// FIRST COMMUNION
-				if (in_array('ffcom', $selected_facts)) {
-					$total_indi_events = $total_indi_events + 2;
-					$event = $relative->getFactByType('FCOM');
-					$check_event		= check_events($event, $ind_missing_events);
-					$ind_missing_events	= $check_event['count'];
-					// FCOM:SOUR
-					$check_source		= check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source);
-					$ind_missing_events	= $check_source['count'];
-					$total_indi_events	= $check_source['total_indi'];
-					// FCOM:OBJE
-					$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-					$ind_missing_events	= $check_obje['count'];
-					$total_indi_events	= $check_obje['total_indi'];
-					//RESULT
-					if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-						$indi_ct = true;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$check_event['date']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('FCOM:DATE') : null;
-						$check_event['place']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('FCOM:PLAC') : null;
-						$check_source['source']	== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('First communion source') : null;
-						$check_obje['obje']		== 1 ? $result[$relative->getXref()]['fact'][] = WT_I18N::translate('First communion media') : null;
-					}
-				}
-				// RELIGION
-				if (in_array('freli', $selected_facts)) {
-					$total_indi_events = $total_indi_events + 1;
-					$event = $relative->getFactByType('RELI');
-					if (!$event) {
-						$indi_ct = true;
-						$ind_missing_events++;
-						$result[$relative->getXref()]['count'] = 0;
-						$result[$relative->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $relative->getHtmlUrl() . '" target="_blank;">' . $relative->getLifespanName() . '</a>';
-						$result[$relative->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('RELI');
-					}
-				}
-				// ENGAGEMENT (checking FAM records openssl_encrypt)
-				if (in_array('fenga', $selected_facts)) {
-					foreach ($fam_record as $family) {
-						$total_fam_events = $total_fam_events + 2;
-						$event = $family->getFactByType('ENGA');
-						$check_event		= check_events($event, $fam_missing_events);
-						$fam_missing_events	= $check_event['count'];
-						// ENGA:SOUR
-						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts, $source);
-						$fam_missing_events	= $check_source['count'];
-						$total_fam_events	= $check_source['total_indi'];
-						// ENGA:OBJE
-						$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-						$ind_missing_events	= $check_obje['count'];
-						$total_indi_events	= $check_obje['total_indi'];
-						//RESULT
-						if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-							$result[$family->getXref()]['count'] = 1;
-							$result[$family->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() . '</a>';
-							$check_event['date']	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:DATE') : null;
-							$check_event['place']	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('ENGA:PLAC') : null;
-							$check_source['source']	== 1 ? $result[$family->getXref()]['fact'][] = WT_I18N::translate('Engagement source') : null;
-							$check_obje['obje']		== 1 ? $result[$family->getXref()]['fact'][] = WT_I18N::translate('Engagement media') : null;
-						}
-					}
-				}
-				// Marriage (checking FAM records openssl_encrypt)
-				if (in_array('fmarr', $selected_facts)) {
-					foreach ($fam_record as $family) {
-						$total_fam_events = $total_fam_events + 2;
-						$event = $family->getFactByType('MARR');
-						$check_event		= check_events($event, $fam_missing_events);
-						$fam_missing_events	= $check_event['count'];
-						// MARR:SOUR
-						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts, $source);
-						$fam_missing_events	= $check_source['count'];
-						$total_fam_events	= $check_source['total_indi'];
-						// MARR:OBJE
-						$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-						$ind_missing_events	= $check_obje['count'];
-						$total_indi_events	= $check_obje['total_indi'];
-						//RESULT
-						if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-							$result[$family->getXref()]['count'] = 1;
-							$result[$family->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() . '</a>';
-							$check_event['date']	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:DATE') : null;
-							$check_event['place']	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARR:PLAC') : null;
-							$check_source['source']	== 1 ? $result[$family->getXref()]['fact'][] = WT_I18N::translate('Marriage source') : null;
-							$check_obje['obje']		== 1 ? $result[$family->getXref()]['fact'][] = WT_I18N::translate('Marriage media') : null;
-						}
-					}
-				}
-				// Marriage Banns (checking FAM records openssl_encrypt)
-				if (in_array('fmarb', $selected_facts)) {
-					foreach ($fam_record as $family) {
-						$total_fam_events = $total_fam_events + 2;
-						$event = $family->getFactByType('MARB');
-						$check_event		= check_events($event, $fam_missing_events);
-						$fam_missing_events	= $check_event['count'];
-						// MARB:SOUR
-						$check_source		= check_source ($total_fam_events, $event, $fam_missing_events, $selected_facts, $source);
-						$fam_missing_events	= $check_source['count'];
-						$total_fam_events	= $check_source['total_indi'];
-						// MARB:OBJE
-						$check_obje			= check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje);
-						$ind_missing_events	= $check_obje['count'];
-						$total_indi_events	= $check_obje['total_indi'];
-						//RESULT
-						if ($check_event['date'] == 1 || $check_event['place'] == 1 || $check_source['source'] == 1 || $check_obje['obje'] == 1) {
-							$result[$family->getXref()]['count'] = 1;
-							$result[$family->getXref()]['name'] = '<a style="cursor:pointer;" href="' . $family->getHtmlUrl() . '" target="_blank;">' . $family->getFullName() . '</a>';
-							$check_event['date']	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:DATE') : null;
-							$check_event['place']	== 1 ? $result[$family->getXref()]['fact'][] = WT_Gedcom_Tag::getLabel('MARB:PLAC') : null;
-							$check_source['source']	== 1 ? $result[$family->getXref()]['fact'][] = WT_I18N::translate('Marriage banns source') : null;
-							$check_obje['obje']		== 1 ? $result[$family->getXref()]['fact'][] = WT_I18N::translate('Marriage banns media') : null;
-						}
-					}
-				}
-				// count listed individual records
-				if ($indi_ct) {
-					$total_individuals ++;
-				}
-			} // end $list loop
-
-			// count listed family records
-			foreach ($result as $relative) {
-				$total_families = $total_families + $relative['count'];
 			}
+		}
+		// output results as table
+		?>
+		<h2><?php echo /* I18N: heading for report on missing data */ WT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
+		<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ WT_I18N::translate('Missing <u>%s</u> data', strtolower(WT_Gedcom_Tag::getLabel($fact))); ?></h3>
+		<?php echo ($n > 0) ? '<p>' . WT_I18N::plural('<b>Note: </b>%s person excluded as they are, or are believed to be, still living', '%s people excluded as they are, or are believed to be, still living', $n, $n) . '</p>' : ''; ?>
 
-			// output results as table
-			?>
-			<h2><?php echo /* I18N: heading for report on missing data */ WT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
-			<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ WT_I18N::translate('Missing data for <span style="font-weight:normal;">%s</span>', $facts_list); ?></h3>
-			<div class="loading-image">&nbsp;</div>
-			<table id="missing_data" style="width: 100%; visibility:hidden;">
-				<thead>
+		<div class="loading-image">&nbsp;</div>
+		<table id="missing_data">
+			<thead>
+				<tr>
+					<th><?php echo /* I18N: Short abbrevisation for "Generation" */ WT_I18N::translate('Gen'); ?></th>
+					<th><?php echo WT_I18N::translate('Name'); ?></th>
+					<th><?php echo WT_Gedcom_Tag::getLabel($fact); ?></th>
+					<th><?php echo WT_I18N::translate('Date'); ?></th>
+					<th><?php echo WT_I18N::translate('Place'); ?></th>
+					<th><?php echo WT_I18N::translate('Source'); ?></th>
+					<th><?php echo WT_I18N::translate('Media'); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($result as $relative) { ?>
 					<tr>
-						<th><?php echo WT_I18N::translate('Name'); ?></th>
-						<th><?php echo WT_I18N::translate('Event'); ?></th>
+						<td><?php  echo $relative['gen']; ?></td>
+						<td><?php  echo $relative['name']; ?></td>
+						<td><span style="visibility:hidden;"><?php  echo $relative['fact']; ?></span><?php  echo $relative['fact'] == 1 ? $true : $false; ?></td>
+						<td><span style="visibility:hidden;"><?php  echo $relative['date']; ?></span><?php  echo $relative['date'] == 1 ? $true : $false; ?></td>
+						<td><span style="visibility:hidden;"><?php  echo $relative['place']; ?></span><?php  echo $relative['place'] == 1 ? $true : $false; ?></td>
+						<td><span style="visibility:hidden;"><?php  echo $relative['source']; ?></span><?php  echo $relative['source'] == 1 ? $true : $false; ?></td>
+						<td><span style="visibility:hidden;"><?php  echo $relative['obje']; ?></span><?php  echo $relative['obje'] == 1 ? $true : $false; ?></td>
 					</tr>
-				</thead>
-				<tbody>
-					<?php
-					foreach ($result as $relative) { ?>
-						<tr>
-							<td style="white-space:nowrap;"><?php  echo $relative['name']; ?></td>
-							<td>
-								<?php $fact_list = '';
-								foreach ($relative['fact'] as $fact) {
-									$fact_list .= $fact . ', ';
-								}
-								$fact_list = trim($fact_list, ', ');
-								echo $fact_list; ?>
-							</td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-			<div id="summary_missing">
-				<h3> <?php echo WT_I18N::translate('Summary'); ?></h3>
-				<?php
-				$print = 0;
-				foreach($selected_facts as $key){
-			        if(array_key_exists($key, $indifacts)) {
-						$print++;
-						?>
-						<p><?php echo WT_I18N::translate('%1s individuals out of %2s relatives.', $total_individuals, count($list)); ?></p>
-						<p><?php echo WT_I18N::translate('%1s events out of %2s events.', $ind_missing_events, $total_indi_events); ?></p>
-						<?php
-						break;
-					}
-			    }
-				foreach($selected_facts as $key){
-			        if(array_key_exists($key, $famfacts)) {
-						$print++;
-						?>
-						<p><?php echo WT_I18N::translate('%1s families out of %2s related families.', $total_families, $total_matches); ?></p>
-						<p><?php echo WT_I18N::translate('%1s family events out of %2s events.', $fam_missing_events, $total_fam_events); ?></p>
-						<?php
-						break;
-					}
-			    }
-		        if($print == 2) { ?>
-					<p><strong><?php echo WT_I18N::translate('Total'); ?></strong></p>
-					<?php
-					$a = $total_families + $total_individuals;
-					$b = $total_matches + count($list);
-					$c = $fam_missing_events + $ind_missing_events;
-					$d = $total_fam_events + $total_indi_events;
-					?>
-					<p><strong><?php echo WT_I18N::translate('%1s individuals and families out of %2s.', $a, $b); ?></strong></p>
-					<p><strong><?php echo WT_I18N::translate('%1s total events out of %2s.', $c, $d); ?></strong></p>
 				<?php } ?>
-			</div>
-		<?php } ?>
-	</div> <!-- close missing_data page div -->
+			</tbody>
+		</table>
+	<?php } ?>
+</div> <!-- close missing_data page div -->
 
 <?php
+function getRelatives($rootid, $person, $choose_relatives, $maxgen) {
+	// collect list of relatives
+	$list = array();
+	$list[$rootid] = $person;
+	switch ($choose_relatives) {
+		case "child-family":
+			foreach ($person->getChildFamilies() as $family) {
+				$husband = $family->getHusband();
+				$wife = $family->getWife();
+				if (!empty($husband)) {
+					$list[$husband->getXref()] = $husband;
+				}
+				if (!empty($wife)) {
+					$list[$wife->getXref()] = $wife;
+				}
+				$children = $family->getChildren();
+				foreach ($children as $child) {
+					if (!empty($child)) $list[$child->getXref()] = $child;
+				}
+			}
+			break;
+		case "spouse-family":
+			foreach ($person->getSpouseFamilies() as $family) {
+			$husband = $family->getHusband();
+				$wife = $family->getWife();
+				if (!empty($husband)) {
+					$list[$husband->getXref()] = $husband;
+				}
+				if (!empty($wife)) {
+					$list[$wife->getXref()] = $wife;
+				}
+				$children = $family->getChildren();
+				foreach ($children as $child) {
+					if (!empty($child)) $list[$child->getXref()] = $child;
+				}
+			}
+			break;
+		case "direct-ancestors":
+			add_ancestors($list, $rootid, false, $maxgen);
+			break;
+		case "ancestors":
+			add_ancestors($list, $rootid, true, $maxgen);
+			break;
+		case "descendants":
+			$list[$rootid]->generation = 1;
+			add_descendancy($list, $rootid, false, $maxgen);
+			break;
+		case "all":
+			add_ancestors($list, $rootid, true, $maxgen);
+			add_descendancy($list, $rootid, true, $maxgen);
+			break;
+	}
 
-function check_events ($event, $ind_missing_events) {
+	return $list;
+
+}
+
+function check_events ($event) {
+	$date = $place = $source = $obje = false;
+
 	if ($event && $event->getDate()->JD() != 0) {
-		$date = '';
-	} else {
-		$date = 1;
-		$ind_missing_events ++;
+		$date = true;
 	}
+
 	if ($event && $event->getPlace()) {
-		$place = '';
-	} else {
-		$place = 1;
-		$ind_missing_events ++;
+		$place = true;
 	}
-	return array('date' => $date, 'place' => $place, 'count' => $ind_missing_events);
-}
 
-function check_source ($total_indi_events, $event, $ind_missing_events, $selected_facts, $source) {
-	if (in_array('fsour', $selected_facts)) {
-		$source = '';
-		$total_indi_events = $total_indi_events + 1;
-		$event ? $ct = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
-		if ($ct == 0) {
-			$source = 1;
-			$ind_missing_events ++;
-		}
+	$event ? $ct_s = preg_match_all("/\d SOUR @(.*)@/", $event->getGedcomRecord(), $match) : $ct_s = 0;
+	if ($ct_s != 0) {
+		$source = true;
 	}
-	return array('total_indi' => $total_indi_events, 'source' => $source, 'count' => $ind_missing_events);
-}
 
-function check_obje ($total_indi_events, $event, $ind_missing_events, $selected_facts, $obje) {
-	if (in_array('fobje', $selected_facts)) {
-		$obje = '';
-		$total_indi_events = $total_indi_events + 1;
-		$event ? $ct = preg_match_all("/\d OBJE @(.*)@/", $event->getGedcomRecord(), $match) : $ct = 0;
-		if ($ct == 0) {
-			$obje = 1;
-			$ind_missing_events ++;
-		}
+	$event ? $ct_o = preg_match_all("/\d OBJE @(.*)@/", $event->getGedcomRecord(), $match) : $ct_o = 0;
+	if ($ct_o != 0) {
+		$obje = true;
 	}
-	return array('total_indi' => $total_indi_events, 'obje' => $obje, 'count' => $ind_missing_events);
+
+	return array('date' => $date, 'place' => $place, 'source' => $source, 'obje' => $obje);
 }
