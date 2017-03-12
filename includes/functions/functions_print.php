@@ -749,10 +749,12 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 				<?php echo $person->getFullName(); ?>
 			</a>
 			<!-- find notes for each fact -->
-			<div class="indent">
-				<span class="label"><?php echo $label_3; ?>:</span>
-				<span><?php echo $note; ?></span>
-			</div>
+			<?php if ($note) { ?>
+				<div class="indent">
+					<span class="label"><?php echo $label_3; ?>:</span>
+					<span><?php echo $note; ?></span>
+				</div>
+			<?php } ?>
 		</div>
 	<?php }
 }
