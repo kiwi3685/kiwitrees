@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -198,9 +198,9 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 							$html .= '<div class="message_note">
 								<p>' . WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'). '</p>
 								<label for "from_name" style="display: block; font-weight: 900;">'. WT_I18N::translate('Your Name:'). '</label>
-								<input type="text" name="from_name" id="from_name" size="40" value="'. htmlspecialchars($from_name). '">
+								<input type="text" name="from_name" id="from_name" size="40" value="'. htmlspecialchars($from_name). '" required>
 								<label for "from_email" style="display: block; font-weight: 900;">'. WT_I18N::translate('Email Address:'). '</label>
-								<input type="email" name="from_email" id="from_email" size="40" value="'. htmlspecialchars($from_email). '">
+								<input type="email" name="from_email" id="from_email" size="40" value="'. htmlspecialchars($from_email). '" required>
 								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.	If you do not provide your email address we will not be able to respond to your inquiry.	Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>
 								<hr>
 							</div>';
