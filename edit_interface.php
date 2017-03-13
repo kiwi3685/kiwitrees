@@ -771,6 +771,15 @@ case 'addnewsource':
 						<?php echo print_specialchar_link('CALN'); ?>
 					</div>
 				</div>
+				<div id="WWW_factdiv">
+					<label>
+						<?php echo WT_Gedcom_Tag::getLabel('WWW'); ?>
+					</label>
+					<div class="input">
+						<input type="text" name="WWW" id="WWW" value="">
+						<?php echo print_specialchar_link('WWW'); ?>
+					</div>
+				</div>
 				<?php if (WT_USER_IS_ADMIN) { ?>
 					<div class="last_change">
 						<label>
@@ -857,6 +866,7 @@ case 'addsourceaction':
 	if (isset($_REQUEST['PUBL'])) $PUBL = $_REQUEST['PUBL'];
 	if (isset($_REQUEST['REPO'])) $REPO = $_REQUEST['REPO'];
 	if (isset($_REQUEST['CALN'])) $CALN = $_REQUEST['CALN'];
+	if (isset($_REQUEST['WWW']))  $CALN = $_REQUEST['WWW'];
 	if (!empty($ABBR)) $newgedrec .= "\n1 ABBR $ABBR";
 	if (!empty($TITL)) {
 		$newgedrec .= "\n1 TITL $TITL";
