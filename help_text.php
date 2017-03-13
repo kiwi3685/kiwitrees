@@ -581,7 +581,7 @@ case 'next_path':
 
 case 'no_update_CHAN':
 	$title = WT_I18N::translate('Do not update the “last change” record');
-	$text = WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users. When Administrators make such corrections information about the original change is replaced. This may not be desirable.<br><br>When this option is selected kiwitrees will retain the original change information instead of replacing it.');
+	$text = WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.<br>When Administrators make such corrections information about the original change is replaced.<br>When this option is selected kiwitrees will retain the original change information instead of replacing it.');
 	break;
 
 case 'oldest_top':

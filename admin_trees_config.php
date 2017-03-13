@@ -1356,7 +1356,7 @@ $controller
 						<div class="input_group">
 							<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN')); ?>
 							<div class="helpcontent">
-								<?php echo WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users. For example, they might need to correct the PLAC location to include the country. When Administrators make such corrections, information about the original change is normally replaced. This may not be desirable.<p>When this option is selected, kiwitrees will retain the original Change information instead of replacing it with that of the current session. With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag.</p>'); ?>
+								<?php echo WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.<br>When Administrators make such corrections information about the original change is replaced.<br>When this option is selected kiwitrees will retain the original change information instead of replacing it.'); ?>
 							</div>
 						 </div>
 					</div>
