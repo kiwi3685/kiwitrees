@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -154,7 +154,7 @@ if ($person1 && $person2) {
 		if ($TEXT_DIRECTION=='ltr') {
 			$horizontal_arrow = '<br><i class="icon-rarrow"></i>';
 			$diagonal1        = $WT_IMAGES['dline'];
-			$diagonal1        = $WT_IMAGES['dline2'];
+			$diagonal2        = $WT_IMAGES['dline2'];
 
 		} else {
 			$horizontal_arrow = '<br><i class="icon-larrow"></i>';
@@ -218,7 +218,7 @@ if ($person1 && $person2) {
 					case 'dau':
 					case 'chi':
 						if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-							$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
+							$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . ') center; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
 							$x += 2;
 						} else {
 							$table[$x][$y - 1] = '<div style="background:url(' . $WT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
@@ -229,7 +229,7 @@ if ($person1 && $person2) {
 					case 'mot':
 					case 'par':
 						if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-							$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
+							$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . ') center; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
 							$x += 2;
 						} else {
 							$table[$x][$y + 1] = '<div style="background:url(' . $WT_IMAGES['vline'] . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 32px;">' . get_relationship_name_from_path($relationships[$n], WT_Person::getInstance($path[$n - 1], $WT_TREE), WT_Person::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
