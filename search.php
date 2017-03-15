@@ -293,10 +293,10 @@ $controller
 
 						// all of the field options
 						<?php foreach ($controller->getOtherFields() as $field=>$label) { ?>
-						opt = document.createElement('option');
-						opt.value='<?php echo $field; ?>';
-						opt.text='<?php echo addslashes($label); ?>';
-						sel.options.add(opt);
+							opt = document.createElement('option');
+							opt.value='<?php echo $field; ?>';
+							opt.text='<?php echo addslashes($label); ?>';
+							sel.options.add(opt);
 						<?php } ?>
 						label.appendChild(sel);
 						trow.appendChild(label);
@@ -340,7 +340,7 @@ $controller
 						opt.text='<?php echo WT_I18N::translate('Exact date'); ?>';
 						sel.appendChild(opt);
 						opt = document.createElement('option');
-						opt.value='';
+						opt.value='2';
 						/* The translation strings use HTML entities, but javascript does not.  See bug 687980 */
 						opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 2, 2), ENT_COMPAT, 'UTF-8'); ?>';
 						sel.appendChild(opt);
@@ -351,6 +351,14 @@ $controller
 						opt = document.createElement('option');
 						opt.value='10';
 						opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 10, 10), ENT_COMPAT, 'UTF-8'); ?>';
+						sel.appendChild(opt);
+						opt = document.createElement('option');
+						opt.value='BEF';
+						opt.text='<?php echo WT_I18N::translate('Before'); ?>';
+						sel.appendChild(opt);
+						opt = document.createElement('option');
+						opt.value='AFT';
+						opt.text='<?php echo WT_I18N::translate('After'); ?>';
 						sel.appendChild(opt);
 						var spc = document.createTextNode(' ');
 						elm.appendChild(spc);
@@ -395,6 +403,8 @@ $controller
 										<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) echo " selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?></option>
 										<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?></option>
 										<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?></option>
+										<option value="BEF" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]=='BEF') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Before'); ?></option>
+										<option value="AFT" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]=='AFT') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('After'); ?></option>
 									</select>
 								<?php } ?>
 							</td>
@@ -525,7 +535,8 @@ $controller
 				</form>
 			</div>
 		<?php }
-		echo $somethingPrinted = $controller->printResults(); ?>
+		echo $somethingPrinted = $controller->printResults();
+		?>
 	</div> <!-- close div id "search-tabs" -->
 </div> <!-- close div id "search-page" -->
 

@@ -261,18 +261,18 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 		// If we want to show associated persons, build the list
 		switch ($this->action) {
-		case 'general':
-			$this->GeneralSearch();
-			break;
-		case 'soundex':
-			$this->SoundexSearch();
-			break;
-		case 'replace':
-			$this->SearchAndReplace();
-			return;
-		case 'advanced':
-			$this->AdvancedSearch();
-			return;
+			case 'general':
+				$this->GeneralSearch();
+				break;
+			case 'soundex':
+				$this->SoundexSearch();
+				break;
+			case 'replace':
+				$this->SearchAndReplace();
+				return;
+			case 'advanced':
+				$this->AdvancedSearch();
+				return;
 		}
 	}
 
@@ -730,7 +730,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		usort($this->myfamlist, array('WT_GedcomRecord', 'Compare'));
 	}
 
-	function AdvancedSearch ($justSql = false, $table = "individuals", $prefix = "i") {
+	function AdvancedSearch ($justSql = false, $table = "individuals") {
 		$this->myindilist = array ();
 		$fct = count($this->fields);
 		if ($fct == 0) {
@@ -742,14 +742,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$bind	= array();
 
 		// Join the following tables
-		$father_name     =false;
-		$mother_name     =false;
-		$spouse_family   =false;
-		$indi_name       =false;
-		$indi_date       =false;
-		$fam_date        =false;
-		$indi_plac       =false;
-		$fam_plac        =false;
+		$father_name     = false;
+		$mother_name     = false;
+		$spouse_family   = false;
+		$indi_name       = false;
+		$indi_date       = false;
+		$fam_date        = false;
+		$indi_plac       = false;
+		$fam_plac        = false;
+
 		foreach ($this->fields as $n=>$field) {
 			if ($this->values[$n]) {
 				if (substr($field, 0, 14) == 'FAMC:HUSB:NAME') {
@@ -779,32 +780,32 @@ class WT_Controller_Search extends WT_Controller_Page {
 		}
 
 		if ($father_name || $mother_name) {
-			$sql.=" JOIN `##link`   l_1 ON (l_1.l_file=ind.i_file AND l_1.l_from=ind.i_id AND l_1.l_type='FAMC')";
+			$sql .= " JOIN `##link`   l_1 ON (l_1.l_file=ind.i_file AND l_1.l_from=ind.i_id AND l_1.l_type='FAMC')";
 		}
 		if ($father_name) {
-			$sql.=" JOIN `##link`   l_2 ON (l_2.l_file=ind.i_file AND l_2.l_from=l_1.l_to AND l_2.l_type='HUSB')";
-			$sql.=" JOIN `##name`   f_n ON (f_n.n_file=ind.i_file AND f_n.n_id  =l_2.l_to)";
+			$sql .= " JOIN `##link`   l_2 ON (l_2.l_file=ind.i_file AND l_2.l_from=l_1.l_to AND l_2.l_type='HUSB')";
+			$sql .= " JOIN `##name`   f_n ON (f_n.n_file=ind.i_file AND f_n.n_id  =l_2.l_to)";
 		}
 		if ($mother_name) {
-			$sql.=" JOIN `##link`   l_3 ON (l_3.l_file=ind.i_file AND l_3.l_from=l_1.l_to AND l_3.l_type='WIFE')";
-			$sql.=" JOIN `##name`   m_n ON (m_n.n_file=ind.i_file AND m_n.n_id  =l_3.l_to)";
+			$sql .= " JOIN `##link`   l_3 ON (l_3.l_file=ind.i_file AND l_3.l_from=l_1.l_to AND l_3.l_type='WIFE')";
+			$sql .= " JOIN `##name`   m_n ON (m_n.n_file=ind.i_file AND m_n.n_id  =l_3.l_to)";
 		}
 		if ($spouse_family) {
-			$sql.=" JOIN `##link`     l_4 ON (l_4.l_file=ind.i_file AND l_4.l_from=ind.i_id AND l_4.l_type='FAMS')";
-			$sql.=" JOIN `##families` fam ON (fam.f_file=ind.i_file AND fam.f_id  =l_4.l_to)";
+			$sql .= " JOIN `##link`     l_4 ON (l_4.l_file=ind.i_file AND l_4.l_from=ind.i_id AND l_4.l_type='FAMS')";
+			$sql .= " JOIN `##families` fam ON (fam.f_file=ind.i_file AND fam.f_id  =l_4.l_to)";
 		}
 		if ($indi_name) {
-			$sql.=" JOIN `##name`   i_n ON (i_n.n_file=ind.i_file AND i_n.n_id=ind.i_id)";
+			$sql .= " JOIN `##name`   i_n ON (i_n.n_file=ind.i_file AND i_n.n_id=ind.i_id)";
 		}
 		if ($indi_date) {
-			$sql.=" JOIN `##dates`  i_d ON (i_d.d_file=ind.i_file AND i_d.d_gid=ind.i_id)";
+			$sql .= " JOIN `##dates`  i_d ON (i_d.d_file=ind.i_file AND i_d.d_gid=ind.i_id)";
 		}
 		if ($fam_date) {
-			$sql.=" JOIN `##dates`  f_d ON (f_d.d_file=ind.i_file AND f_d.d_gid=fam.f_id)";
+			$sql .= " JOIN `##dates`  f_d ON (f_d.d_file=ind.i_file AND f_d.d_gid=fam.f_id)";
 		}
 		if ($indi_plac) {
-			$sql.=" JOIN `##placelinks`   i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid =ind.i_id)";
-			$sql.=" JOIN (".
+			$sql .= " JOIN `##placelinks`   i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid =ind.i_id)";
+			$sql .= " JOIN (".
 					"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file".
 					" FROM      `##places` AS p1".
 					" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)".
@@ -818,8 +819,8 @@ class WT_Controller_Search extends WT_Controller_Page {
 					") AS i_p ON (i_p.file  =ind.i_file AND i_pl.pl_p_id= i_p.id)";
 		}
 		if ($fam_plac) {
-			$sql.=" JOIN `##placelinks`   f_pl ON (f_pl.pl_file=ind.i_file AND f_pl.pl_gid =fam.f_id)";
-			$sql.=" JOIN (".
+			$sql .= " JOIN `##placelinks`   f_pl ON (f_pl.pl_file=ind.i_file AND f_pl.pl_gid =fam.f_id)";
+			$sql .= " JOIN (".
 					"SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file".
 					" FROM      `##places` AS p1".
 					" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)".
@@ -833,28 +834,61 @@ class WT_Controller_Search extends WT_Controller_Page {
 					") AS f_p ON (f_p.file  =ind.i_file AND f_pl.pl_p_id= f_p.id)";
 		}
 		// Add the where clause
-		$sql.=" WHERE ind.i_file=?";
+		$sql	.= " WHERE ind.i_file=?";
 		$bind[] = WT_GED_ID;
+		$dfct = 0; // count date values entered
+		$pfct = 0; // count place values entered
+
 		for ($i = 0; $i<$fct; $i++) {
 			$field = $this->fields[$i];
 			$value = $this->values[$i];
 			if ($value === '') continue;
-			$parts = preg_split("/:/", $field.'::::');
+			$parts = preg_split("/:/", $field . '::::');
+			if ($dfct > 0 && $parts[1] == 'DATE' && $value != '') {
+				$sql .= " AND i_d.d_gid IN (
+				   SELECT i_d.d_gid
+				   FROM `##individuals` ind
+				   JOIN `##dates` i_d ON (i_d.d_file=ind.i_file AND i_d.d_gid=ind.i_id)
+				   WHERE ind.i_file=?";
+				   $bind[] = WT_GED_ID;
+			}
+
+			if ($pfct > 0 && $parts[1] == 'PLAC' && $value != '') {
+				$sql .= " AND i_pl.pl_gid IN (
+					SELECT i_pl.pl_gid
+					FROM `kt_individuals` ind
+					JOIN `kt_placelinks` i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid=ind.i_id)
+					JOIN (
+						SELECT CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) AS place, p1.p_id AS id, p1.p_file AS file
+						FROM `kt_places` AS p1
+						LEFT JOIN `kt_places` AS p2 ON (p1.p_parent_id=p2.p_id)
+						LEFT JOIN `kt_places` AS p3 ON (p2.p_parent_id=p3.p_id)
+						LEFT JOIN `kt_places` AS p4 ON (p3.p_parent_id=p4.p_id)
+						LEFT JOIN `kt_places` AS p5 ON (p4.p_parent_id=p5.p_id)
+						LEFT JOIN `kt_places` AS p6 ON (p5.p_parent_id=p6.p_id)
+						LEFT JOIN `kt_places` AS p7 ON (p6.p_parent_id=p7.p_id)
+						LEFT JOIN `kt_places` AS p8 ON (p7.p_parent_id=p8.p_id)
+						LEFT JOIN `kt_places` AS p9 ON (p8.p_parent_id=p9.p_id)
+					) AS i_p ON (i_p.file =ind.i_file AND i_pl.pl_p_id= i_p.id)
+					WHERE ind.i_file=?";
+				   $bind[] = WT_GED_ID;
+			}
+
 			if ($parts[0] == 'NAME') {
 				// NAME:*
 				switch ($parts[1]) {
 				case 'GIVN':
 					switch ($parts[2]) {
 					case 'EXACT':
-						$sql.=" AND i_n.n_givn=?";
+						$sql .= " AND i_n.n_givn=?";
 						$bind[]=$value;
 						break;
 					case 'BEGINS':
-						$sql.=" AND i_n.n_givn LIKE CONCAT(?, '%')";
+						$sql .= " AND i_n.n_givn LIKE CONCAT(?, '%')";
 						$bind[]=$value;
 						break;
 					case 'CONTAINS':
-						$sql.=" AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
+						$sql .= " AND i_n.n_givn LIKE CONCAT('%', ?, '%')";
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
@@ -879,15 +913,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 				case 'SURN':
 					switch ($parts[2]) {
 					case 'EXACT':
-						$sql.=" AND i_n.n_surname=?";
+						$sql .= " AND i_n.n_surname=?";
 						$bind[]=$value;
 						break;
 					case 'BEGINS':
-						$sql.=" AND i_n.n_surname LIKE CONCAT(?, '%')";
+						$sql .= " AND i_n.n_surname LIKE CONCAT(?, '%')";
 						$bind[]=$value;
 						break;
 					case 'CONTAINS':
-						$sql.=" AND i_n.n_surname LIKE CONCAT('%', ?, '%')";
+						$sql .= " AND i_n.n_surname LIKE CONCAT('%', ?, '%')";
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
@@ -896,7 +930,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 							$sdx[$k]="i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
 						}
-						$sql.=" AND (".implode(' OR ', $sdx).")";
+						$sql .= " AND (".implode(' OR ', $sdx).")";
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
@@ -905,7 +939,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 							$sdx[$k]="i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
 						}
-						$sql.=" AND (".implode(' OR ', $sdx).")";
+						$sql .= " AND (".implode(' OR ', $sdx).")";
 						break;
 					}
 					break;
@@ -913,30 +947,40 @@ class WT_Controller_Search extends WT_Controller_Page {
 				case '_MARNM':
 				case '_HEB':
 				case '_AKA':
-					$sql.=" AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
+					$sql .= " AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
 					$bind[]=$parts[1];
 					$bind[]=$value;
 					break;
 				}
 			} elseif ($parts[1] == 'DATE') {
+				$dfct ++;
 				// *:DATE
 				$date = new WT_Date($value);
 				if ($date->isOK()) {
 					$jd1 = $date->date1->minJD;
-					if ($date->date2) $jd2 = $date->date2->maxJD;
-					else $jd2 = $date->date1->maxJD;
-					if (!empty($this->plusminus[$i])) {
-						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
+					if ($date->date2) {
+						$jd2 = $date->date2->maxJD;
+					} else {
+						$jd2 = $date->date1->maxJD;
+					}
+					if (!empty($this->plusminus[$i]) && $this->plusminus[$i] != 'BEF' && $this->plusminus[$i] != 'AFT') {
+						$adjd = $this->plusminus[$i] * 365;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
-					$sql.=" AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
+					if ($this->plusminus[$i] == 'BEF') {
+						$sql .= " AND i_d.d_fact=? AND i_d.d_julianday1<? AND i_d.d_julianday2<?";
+					} elseif ($this->plusminus[$i] == 'AFT') {
+						$sql .= " AND i_d.d_fact=? AND i_d.d_julianday1>? AND i_d.d_julianday2>?";
+					} else {
+						$sql .= " AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
+					}
 					$bind[]=$parts[0];
 					$bind[]=$jd1;
 					$bind[]=$jd2;
 				}
 			} elseif ($parts[0] == 'FAMS' && $parts[2] == 'DATE') {
+				$dfct ++;
 				// FAMS:*:DATE
 				$date = new WT_Date($value);
 				if ($date->isOK()) {
@@ -945,24 +989,25 @@ class WT_Controller_Search extends WT_Controller_Page {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
-					$sql.=" AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
+					$sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
 					$bind[]=$parts[1];
 					$bind[]=$jd1;
 					$bind[]=$jd2;
 				}
 			} elseif ($parts[1] == 'PLAC') {
+				$pfct ++;
 				// *:PLAC
 				// SQL can only link a place to a person/family, not to an event.
-				$sql.=" AND i_p.place LIKE CONCAT('%', ?, '%')";
+				$sql .= " AND i_p.place LIKE CONCAT('%', ?, '%')";
 				$bind[]=$value;
 			} elseif ($parts[0] == 'FAMS' && $parts[2] == 'PLAC') {
+				$pfct ++;
 				// FAMS:*:PLAC
 				// SQL can only link a place to a person/family, not to an event.
-				$sql.=" AND f_p.place LIKE CONCAT('%', ?, '%')";
+				$sql .= " AND f_p.place LIKE CONCAT('%', ?, '%')";
 				$bind[]=$value;
 			} elseif ($parts[0] == 'FAMC' && $parts[2] == 'NAME') {
 				$table=$parts[1] == 'HUSB' ? 'f_n' : 'm_n';
@@ -971,15 +1016,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 				case 'GIVN':
 					switch ($parts[4]) {
 					case 'EXACT':
-						$sql.=" AND {$table}.n_givn=?";
+						$sql .= " AND {$table}.n_givn=?";
 						$bind[]=$value;
 						break;
 					case 'BEGINS':
-						$sql.=" AND {$table}.n_givn LIKE CONCAT(?, '%')";
+						$sql .= " AND {$table}.n_givn LIKE CONCAT(?, '%')";
 						$bind[]=$value;
 						break;
 					case 'CONTAINS':
-						$sql.=" AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
+						$sql .= " AND {$table}.n_givn LIKE CONCAT('%', ?, '%')";
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
@@ -1004,15 +1049,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 				case 'SURN':
 					switch ($parts[4]) {
 					case 'EXACT':
-						$sql.=" AND {$table}.n_surname=?";
+						$sql .= " AND {$table}.n_surname=?";
 						$bind[]=$value;
 						break;
 					case 'BEGINS':
-						$sql.=" AND {$table}.n_surname LIKE CONCAT(?, '%')";
+						$sql .= " AND {$table}.n_surname LIKE CONCAT(?, '%')";
 						$bind[]=$value;
 						break;
 					case 'CONTAINS':
-						$sql.=" AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
+						$sql .= " AND {$table}.n_surname LIKE CONCAT('%', ?, '%')";
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
@@ -1037,7 +1082,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				}
 			} elseif ($parts[0] === 'FAMS') {
 				// e.g. searches for occupation, religion, note, etc.
-				$sql.=" AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$sql .= " AND fam.f_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
 				$bind[]=$parts[1];
 				$bind[]=$value;
 			} elseif ($parts[1] === 'TYPE') {
@@ -1047,11 +1092,16 @@ class WT_Controller_Search extends WT_Controller_Page {
  				$bind[] = $value;
   			} else {
 				// e.g. searches for occupation, religion, note, etc.
-				$sql.=" AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
+				$sql .= " AND ind.i_gedcom REGEXP CONCAT('\n[0-9] ', ?, '(.*\n[0-9] CONT)* [^\n]*', ?)";
 				$bind[]=$parts[0];
 				$bind[]=$value;
 			}
+
+			if ($dfct > 1 || $pfct > 1) {
+				$sql .= " )";
+			}
 		}
+
 		$rows = WT_DB::prepare($sql)->execute($bind)->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			$person = WT_Person::getInstance($row);
