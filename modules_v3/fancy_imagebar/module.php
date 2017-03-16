@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,7 +60,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$key = WT_TREE::getIdFromName(WT_Filter::get('ged'));
 		if(empty($key)) $key = WT_GED_ID;
 
-		if (empty($FIB_OPTIONS) || (is_array($FIB_OPTIONS) && !array_key_exists($key, $FIB_OPTIONS))) {
+		if ($FIB_OPTIONS || (is_array($FIB_OPTIONS) && !array_key_exists($key, $FIB_OPTIONS))) {
 			$FIB_OPTIONS[$key] = array(
 				'IMAGES' 				=> '1', // All images
 				'RANDOM' 				=> '1',
@@ -70,8 +70,11 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 			);
 		};
 
-		if($value) return($FIB_OPTIONS[$key][strtoupper($value)]);
-		else return $FIB_OPTIONS[$key];
+		if ($value) {
+			return($FIB_OPTIONS[$key][strtoupper($value)]);
+		} else {
+			return $FIB_OPTIONS[$key];
+		}
 	}
 
 	private function load_json() {
@@ -502,7 +505,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller, $ctype, $SEARCH_SPIDER;
 
-		if ($this->options('images') !== 0 && WT_SCRIPT_NAME === 'index.php') {
+		if ($this->options() && $this->options('IMAGES') !== 0 && WT_SCRIPT_NAME === 'index.php') {
 			if ($SEARCH_SPIDER) return null;
 			if ($ctype=='gedcom') {
 

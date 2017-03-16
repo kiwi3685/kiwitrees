@@ -1362,7 +1362,11 @@ class WT_Controller_FancyTreeView {
 
 		$FTV_SETTINGS_D = unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
 		$FTV_SETTINGS_A = unserialize(get_module_setting('fancy_treeview_pedigree', 'FTV_SETTINGS'));
-		$FTV_SETTINGS	= array_replace($FTV_SETTINGS_D, $FTV_SETTINGS_A);
+		if ($FTV_SETTINGS_D) {
+			$FTV_SETTINGS	= array_replace($FTV_SETTINGS_D, $FTV_SETTINGS_A);
+		} else {
+			$FTV_SETTINGS	= $FTV_SETTINGS_A;			
+		}
 
 		if (!empty($FTV_SETTINGS)) {
 			if ($SEARCH_SPIDER) {
