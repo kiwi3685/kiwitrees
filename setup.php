@@ -892,7 +892,7 @@ try {
 		" (1, 'visibleonline',     ?),".
 		" (1, 'notify_clipping',   ?)"
 	)->execute(array(
-		1, WT_LOCALE, 1, 1, 0, 1
+		1, WT_LOCALE, 1, 1, 0, 1, 1
 	));
 
 	WT_DB::prepare(
