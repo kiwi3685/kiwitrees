@@ -174,8 +174,8 @@ div.dt-buttons a.dt-button {
 
 /* HEADER */
 #admin_head {position:relative; height:100px; margin-bottom:10px; min-width:970px;}
-#title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
-#info {position:absolute; right:10px; bottom:10px; text-align:right;}
+#title {margin: 20px 12px;}
+#info {position:absolute; right:240px; top:30px;}
 [dir=rtl] #info {right:auto; left:10px; text-align:left;}
 #links {position:absolute; left:10px; bottom:10px; display:inline; white-space:nowrap;}
 [dir=rtl] #links {left:auto; right:10px;}
@@ -188,7 +188,7 @@ div.dt-buttons a.dt-button {
 #links li:hover > ul {display:block;}
 #links .header_search {display:inline-block;}
 .ui-widget-content a.lang-active {color:#25a325;}
-.icon-kiwitrees {background:url('images/kiwi_logo_white.png') no-repeat; vertical-align:middle; width:220px; height:45px; margin:10px; position: absolute;}
+.icon-kiwitrees {background:url('images/kiwi_logo_white.png') no-repeat; width:220px; height:45px; position: absolute;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content, #content_container {min-height:700px; overflow: hidden;}

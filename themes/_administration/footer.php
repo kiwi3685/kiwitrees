@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 ?>
-</div><!-- close the content div -->
+</div><!-- close the admin_content div -->
 
 <?php if ($view != 'simple') { ?>
 	<div id="admin_footer">
