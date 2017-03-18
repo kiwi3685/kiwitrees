@@ -315,15 +315,15 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 	private function show() {
 
 		$all_plugins 	= $this->getPluginList();
-		$action 		= WT_FILTER::post('action');
-		$indi			= WT_FILTER::post('indi', WT_REGEX_XREF, '');
-		$surn			= WT_FILTER::post('surn', null, '');
-		$givn			= WT_FILTER::post('givn', null, '');
-		$sdate			= WT_FILTER::post('sdate', null, '');
-		$edate			= WT_FILTER::post('edate', null, '');
+		$action 		= WT_Filter::post('action');
+		$indi			= WT_Filter::post('indi', WT_REGEX_XREF, '');
+		$surn			= WT_Filter::post('surn', null, '');
+		$givn			= WT_Filter::post('givn', null, '');
+		$sdate			= WT_Filter::post('sdate', null, '');
+		$edate			= WT_Filter::post('edate', null, '');
 		$sel_area		= WT_Filter::postArray('area');
 		$links_array	= implode(",", WT_Filter::postArray('links_array'));
-		$reset 			= WT_FILTER::post('reset');
+		$reset 			= WT_Filter::post('reset');
 		if ($reset) {unset($_POST);}
 
 		global $controller;
