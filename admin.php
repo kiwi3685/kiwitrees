@@ -1573,6 +1573,8 @@ function old_paths() {
 		WT_ROOT.'library/tcpdf', // old report system removed
 		WT_ROOT.'library/WT/Report', // old report system removed
 		WT_ROOT.'admin_module_resources', // old report system removed, this file renamed to admin_module_reports
+		// TO BE Removed in kiwitrees 3.2.5
+		// WT_ROOT.'modules_v3'
 
 	);
 }
