@@ -1565,56 +1565,6 @@ function old_paths() {
 		// Removed in kiwitrees 3.2.4
 		WT_ROOT.'search-advanced.php', // old file no longer used
 		WT_ROOT.'fanchart.php', // file no longer used
-		WT_ROOT.'modules_v3/bdm_report', // report replaced by resource version
-		WT_ROOT.'modules_v3/family_group_report', // report replaced by resource version
-		WT_ROOT.'modules_v3/marriage_report', // report replaced by resource version
-		WT_ROOT.'modules_v3/ahnentafel_report', // report replaced by resource version
-		WT_ROOT.'modules_v3/individual_ext_report', // report replaced by resource version
-		WT_ROOT.'modules_v3/simpl_research/plugins/cbg.php', // replaced with different versions
-		WT_ROOT.'modules_v3/simpl_research/plugins/delpher_kranten.php', // replaced with different versions
-		WT_ROOT.'modules_v3/simpl_research/plugins/heraldischedatabank.php', // replaced with different version
-		WT_ROOT.'modules_v3/simpl_research/plugins/wiewaswie.php', // replaced with different version
-		WT_ROOT.'modules_v3/simpl_research/sample/samplelink.php', // replaced with different versions
-		WT_ROOT.'modules_v3/simpl_research/plugins/zoekaktenmilitairen.php', // See new zoekakten file
-		WT_ROOT.'modules_v3/simpl_research/plugins/zoekaktenlandverhuizers.php', // See new zoekakten file
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/DR/Aa_en_Hunze.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/DR/De_Wolden.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/FR/het_Bildt.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/GE/Hoevelaken..png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/GE/Hummelo_en_Keppel.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/GE/Millingen_aan_de_Rijn.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/GE/Scherpenzeel_gld.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/GE/West_Maas_en_Waal.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/GR/De_Marne.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/GR/Ten_Boer.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/LI/Ambt_Montfoort.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/LI/Arcen_en_Velden.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/LI/Horst_aan_de_Maas.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/LI/Mook_en_Middelaar.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/LI/Roggel_en_Neer.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/LI/Valkenburg_aan_de_Geul.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Alphen_en_Riel.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Bakel_en_Milheeze.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Beek_en_Donk.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Bergen_op_Zoom.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Bladel_en_Netersel.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Cuijk-en_Sint_Agatha.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Den_Dungen.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Dinteloord-en_Prinsenland.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Fijnaart_en_Heijningen.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Gilze_en_Rijen.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Hooge_en_Lage_Mierde.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Hooge_en_Lage_Zwaluwe.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Hoogeloon_Hapert_en_Casteren.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Loon_op_Zand.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Made_en_Drimmelen.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/googlemap/places/NLD/flags/NB/Megen_Haren_en_Macharen.png', // replace underscore with space in file names
-		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.4.5.js', // updated module
-		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.4.5.min.js', // updated module
-		WT_ROOT.'modules_v3/gallery/galleria/LICENSE', // updated module
-		WT_ROOT.'modules_v3/fancy_treeview/fancy_treeview_class.php', // moved and renamed
-		WT_ROOT.'modules_v3/fancy_treeview/js', // moved and renamed
-		WT_ROOT.'modules_v3/stories/help_text.php', // old unused file
 		WT_ROOT.'includes/fonts', // no longer needed in fanchart code
 		WT_ROOT.'GPL.txt', // replaced by LICENSE.md
 		WT_ROOT.'reportengine.php', // old report system removed
@@ -1622,10 +1572,7 @@ function old_paths() {
 		WT_ROOT.'reportengine.php', // old report system removed
 		WT_ROOT.'library/tcpdf', // old report system removed
 		WT_ROOT.'library/WT/Report', // old report system removed
-		WT_ROOT.'modules_v3/pedigree_report', // old report system removed
-		WT_ROOT.'modules_v3/menu_resources', // old report system removed
 		WT_ROOT.'admin_module_resources', // old report system removed, this file renamed to admin_module_reports
-		WT_ROOT.'modules_v3/GEDFact_assistant', // no longer required
 
 	);
 }

@@ -69,7 +69,7 @@ define('WT_JQUERY_TREEVIEW_JS_URL',	WT_STATIC_URL . 'js/jquery.treeview.js');			
 define('WT_FANCY_TREEVIEW_JS_URL',	WT_STATIC_URL . 'js/fancytreeview.js');				// used in fancy_treeview & fancy_treeview_pedigree
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
-define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
+define('WT_MODULES_DIR', 'modules_v4/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR',  'themes/' );
 
 // Enable debugging output?

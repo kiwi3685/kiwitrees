@@ -72,7 +72,7 @@ require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR',    'data/');
 define('WT_DEBUG_SQL',   false);
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
-define('WT_MODULES_DIR', 'modules_v3/');
+define('WT_MODULES_DIR', 'modules_v4/');
 define('WT_ROOT', '');
 define('WT_GED_ID', null);
 define('WT_USER_ID', 0);
