@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -225,16 +225,16 @@ class WT_Date {
 		// Localise the date
 		switch ($q1 . $q2) {
 		case '':       $tmp = $d1 . $conv1; break;
-		case 'ABT':    /* I18N: Gedcom ABT dates     */ $tmp = WT_I18N::translate('about %s',            $d1 . $conv1); break;
-		case 'CAL':    /* I18N: Gedcom CAL dates     */ $tmp = WT_I18N::translate('calculated %s',       $d1 . $conv1); break;
-		case 'EST':    /* I18N: Gedcom EST dates     */ $tmp = WT_I18N::translate('estimated %s',        $d1 . $conv1); break;
-		case 'INT':    /* I18N: Gedcom INT dates     */ $tmp = WT_I18N::translate('interpreted %s (%s)', $d1 . $conv1, $this->text); break;
-		case 'BEF':    /* I18N: Gedcom BEF dates     */ $tmp = WT_I18N::translate('before %s',           $d1 . $conv1); break;
-		case 'AFT':    /* I18N: Gedcom AFT dates     */ $tmp = WT_I18N::translate('after %s',            $d1 . $conv1); break;
-		case 'FROM':   /* I18N: Gedcom FROM dates    */ $tmp = WT_I18N::translate('from %s',             $d1 . $conv1); break;
-		case 'TO':     /* I18N: Gedcom TO dates      */ $tmp = WT_I18N::translate('to %s',               $d1 . $conv1); break;
-		case 'BETAND': /* I18N: Gedcom BET-AND dates */ $tmp = WT_I18N::translate('between %s and %s',   $d1 . $conv1, $d2.$conv2); break;
-		case 'FROMTO': /* I18N: Gedcom FROM-TO dates */ $tmp = WT_I18N::translate('from %s to %s',       $d1 . $conv1, $d2.$conv2); break;
+		case 'ABT':    /* I18N: Gedcom ABT dates     */ $tmp = WT_I18N::translate('about %s',				$d1 . $conv1); break;
+		case 'CAL':    /* I18N: Gedcom CAL dates     */ $tmp = WT_I18N::translate('%s (calculated)',		$d1 . $conv1); break;
+		case 'EST':    /* I18N: Gedcom EST dates     */ $tmp = WT_I18N::translate('%s (estimated)',			$d1 . $conv1); break;
+		case 'INT':    /* I18N: Gedcom INT dates     */ $tmp = WT_I18N::translate('interpreted %s (%s)',	$d1 . $conv1, $this->text); break;
+		case 'BEF':    /* I18N: Gedcom BEF dates     */ $tmp = WT_I18N::translate('before %s',				$d1 . $conv1); break;
+		case 'AFT':    /* I18N: Gedcom AFT dates     */ $tmp = WT_I18N::translate('after %s',				$d1 . $conv1); break;
+		case 'FROM':   /* I18N: Gedcom FROM dates    */ $tmp = WT_I18N::translate('from %s',				$d1 . $conv1); break;
+		case 'TO':     /* I18N: Gedcom TO dates      */ $tmp = WT_I18N::translate('to %s',					$d1 . $conv1); break;
+		case 'BETAND': /* I18N: Gedcom BET-AND dates */ $tmp = WT_I18N::translate('between %s and %s',		$d1 . $conv1, $d2.$conv2); break;
+		case 'FROMTO': /* I18N: Gedcom FROM-TO dates */ $tmp = WT_I18N::translate('from %s to %s',			$d1 . $conv1, $d2.$conv2); break;
 		default: $tmp = '<span class="error">' . WT_I18N::translate('Invalid date') . '</span>'; break; // e.g. BET without AND
 		}
 		if ($this->text && !$q1) {

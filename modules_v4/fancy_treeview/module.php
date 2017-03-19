@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -211,20 +211,22 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			// Start page content
 			?>
 			<div id="page">
-				<h2><?php echo $this->getTitle(); ?></h2>
-				<div class="chart_options noprint">
-					<form id="change_root">
-						<div class="chart_options">
-							<label for = "new_rootid" class="label"><?php echo WT_I18N::translate('Individual'); ?></label>
-							<input type="text" data-autocomplete-type="INDI" name="new_rootid" id="new_rootid" value="<?php echo $root; ?>">
-						</div>
-						<button class="btn btn-primary show" type="submit">
-							<i class="fa fa-eye"></i>
-							<?php echo WT_I18N::translate('show'); ?>
-						</button>
-					</form>
-				</div>
-				<hr class="noprint">
+				<?php if (WT_USER_ID) { ?>
+					<h2><?php echo $this->getTitle(); ?></h2>
+					<div class="chart_options noprint">
+						<form id="change_root">
+							<div class="chart_options">
+								<label for = "new_rootid" class="label"><?php echo WT_I18N::translate('Individual'); ?></label>
+								<input type="text" data-autocomplete-type="INDI" name="new_rootid" id="new_rootid" value="<?php echo $root; ?>">
+							</div>
+							<button class="btn btn-primary show" type="submit">
+								<i class="fa fa-eye"></i>
+								<?php echo WT_I18N::translate('show'); ?>
+							</button>
+						</form>
+					</div>
+					<hr class="noprint">
+				<?php } ?>
 				<div id="fancy_treeview-page">
 					<div id="error"></div>
 					<div id="page-header">
@@ -236,6 +238,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 								</a>
 							<?php } ?>
 						</h2>
+						<h5><?php echo $root_person->getLifeSpan(); ?></h5>
 					</div>
 					<div id="page-body">
 						<ol id="fancy_treeview"><?php echo $ftv->printPage($this->getName(), 'numblocks'); ?></ol>

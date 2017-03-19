@@ -999,8 +999,13 @@ class WT_Controller_FancyTreeView {
 	protected function printDate($date) {
 		if ($date && $date->isOK()) {
 			if ($date->qual1 || $date->qual2) {
-				return ' ' . $date->Display();
+				$dq = $date->qual1 . $date->qual2;
+				if (in_array($dq, array('ABT', 'BEF', 'AFT', 'FROM', 'TO', 'BETAND', 'FROMTO'))) {
+					return ' ' . $date->Display();
+				}
+				// other qualifiers ('CAL', 'EST', 'INT') do not need special narrative forms
 			}
+
 			if ($date->MinDate()->d > 0) {
 				return ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate_c('before dateformat dd-mm-yyyy', 'on ') . $date->Display();
 			}
@@ -1360,12 +1365,20 @@ class WT_Controller_FancyTreeView {
 
 		global $SEARCH_SPIDER;
 
-		$FTV_SETTINGS_D = unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
-		$FTV_SETTINGS_A = unserialize(get_module_setting('fancy_treeview_pedigree', 'FTV_SETTINGS'));
-		if ($FTV_SETTINGS_D) {
+		$FTV_SETTINGS		= array();
+		$FTV_SETTINGS_D		= unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
+		$FTV_SETTINGS_A		= unserialize(get_module_setting('fancy_treeview_pedigree', 'FTV_SETTINGS'));
+		$FTV_GED_SETTINGS_D = array();
+		$FTV_GED_SETTINGS_A = array();
+
+		if ($FTV_SETTINGS_D && $FTV_SETTINGS_A) {
 			$FTV_SETTINGS	= array_replace($FTV_SETTINGS_D, $FTV_SETTINGS_A);
-		} else {
-			$FTV_SETTINGS	= $FTV_SETTINGS_A;			
+		}
+		if ($FTV_SETTINGS_D && !$FTV_SETTINGS_A) {
+			$FTV_SETTINGS	= $FTV_SETTINGS_D;
+		}
+		if ($FTV_SETTINGS_A && !$FTV_SETTINGS_D) {
+			$FTV_SETTINGS	= $FTV_SETTINGS_A;
 		}
 
 		if (!empty($FTV_SETTINGS)) {
@@ -1373,32 +1386,41 @@ class WT_Controller_FancyTreeView {
 				return null;
 			}
 
-			foreach ($FTV_SETTINGS_D as $FTV_ITEM) {
-				if ($FTV_ITEM['TREE'] == WT_GED_ID && $FTV_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
-					$FTV_GED_SETTINGS_D[] = $FTV_ITEM;
-				}
-			}
-			foreach ($FTV_SETTINGS_A as $FTV_ITEM) {
-				if ($FTV_ITEM['TREE'] == WT_GED_ID && $FTV_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
-					$FTV_GED_SETTINGS_A[] = $FTV_ITEM;
-				}
-			}
-			if (!empty($FTV_GED_SETTINGS_D) && !empty($FTV_GED_SETTINGS_A)) {
-				$menu = new WT_Menu(WT_I18N::translate('Family tree overview'), '#', 'menu-fancy_treeview');
-				foreach($FTV_GED_SETTINGS_A as $FTV_ITEM) {
-					if (WT_Person::getInstance($FTV_ITEM['PID']) && WT_Person::getInstance($FTV_ITEM['PID'])->canDisplayDetails() ) {
-						$submenu = new WT_Menu(WT_I18N::translate('Ancestors of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_pedigree&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
-						$menu->addSubmenu($submenu);
+			if ($FTV_SETTINGS_D) {
+				foreach ($FTV_SETTINGS_D as $FTV_ITEM) {
+					if ($FTV_ITEM['TREE'] == WT_GED_ID && $FTV_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
+						$FTV_GED_SETTINGS_D[] = $FTV_ITEM;
 					}
 				}
-				foreach ($FTV_GED_SETTINGS_D as $FTV_ITEM) {
-					if (WT_Person::getInstance($FTV_ITEM['PID'])) {
-						if ($this->options('fancy_treeview', 'use_fullname') == true) {
-							$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
-						} else {
-							$submenu = new WT_Menu(WT_I18N::translate('%s family descendants', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+			}
+			if ($FTV_SETTINGS_A) {
+				foreach ($FTV_SETTINGS_A as $FTV_ITEM) {
+					if ($FTV_ITEM['TREE'] == WT_GED_ID && $FTV_ITEM['ACCESS_LEVEL'] >= WT_USER_ACCESS_LEVEL) {
+						$FTV_GED_SETTINGS_A[] = $FTV_ITEM;
+					}
+				}
+			}
+
+			if ($FTV_SETTINGS) {
+				$menu = new WT_Menu(WT_I18N::translate('Family tree overview'), '#', 'menu-fancy_treeview');
+				if ($FTV_GED_SETTINGS_A) {
+					foreach($FTV_GED_SETTINGS_A as $FTV_ITEM) {
+						if (WT_Person::getInstance($FTV_ITEM['PID']) && WT_Person::getInstance($FTV_ITEM['PID'])->canDisplayDetails() ) {
+							$submenu = new WT_Menu(WT_I18N::translate('Ancestors of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_pedigree&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+							$menu->addSubmenu($submenu);
 						}
-						$menu->addSubmenu($submenu);
+					}
+				}
+				if ($FTV_GED_SETTINGS_D) {
+					foreach ($FTV_GED_SETTINGS_D as $FTV_ITEM) {
+						if (WT_Person::getInstance($FTV_ITEM['PID'])) {
+							if ($this->options('fancy_treeview', 'use_fullname') == true) {
+								$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+							} else {
+								$submenu = new WT_Menu(WT_I18N::translate('%s family descendants', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+							}
+							$menu->addSubmenu($submenu);
+						}
 					}
 				}
 				return $menu;
