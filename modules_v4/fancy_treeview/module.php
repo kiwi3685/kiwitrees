@@ -162,6 +162,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		global $controller;
 		$root			= WT_Filter::get('rootid', WT_REGEX_XREF); // the first pid
+		$type			= WT_Filter::get('type'); // menu type "overview" or blank
 		$root_person	= $ftv->getPerson($root);
 		$controller		= new WT_Controller_Page;
 
@@ -211,7 +212,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 			// Start page content
 			?>
 			<div id="page">
-				<?php if (WT_USER_ID) { ?>
+				<?php if (WT_USER_ID || !$type) { ?>
 					<h2><?php echo $this->getTitle(); ?></h2>
 					<div class="chart_options noprint">
 						<form id="change_root">

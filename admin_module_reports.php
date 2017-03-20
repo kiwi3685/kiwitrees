@@ -40,7 +40,7 @@ if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 		foreach (WT_Tree::getAll() as $tree) {
 			$value = safe_POST("access-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
-				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'resource', ?)"
+				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
 			)->execute(array($module_name, $tree->tree_id, $value));
 		}
 	}
@@ -54,7 +54,7 @@ if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 		<table id="reports_table" class="modules_table">
 			<thead>
 				<tr>
-					<th><?php echo WT_I18N::translate('Resource'); ?></th>
+					<th><?php echo WT_I18N::translate('Report'); ?></th>
 					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Access level'); ?></th>
 				</tr>
@@ -88,7 +88,7 @@ if ($action == 'update_mods' && WT_Filter::checkCsrf()) {
 										<td>
 											<?php
 												$access_level = WT_DB::prepare(
-													"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='resource'"
+													"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='report'"
 												)->execute(array($tree->tree_id, $module->getName()))->fetchOne();
 												if ($access_level === null) {
 													$access_level = $module->defaultAccessLevel();

@@ -1402,11 +1402,11 @@ class WT_Controller_FancyTreeView {
 			}
 
 			if ($FTV_SETTINGS) {
-				$menu = new WT_Menu(WT_I18N::translate('Family tree overview'), '#', 'menu-fancy_treeview');
+				$menu = new WT_Menu(WT_I18N::translate('Overview'), '#', 'menu-fancy_treeview');
 				if ($FTV_GED_SETTINGS_A) {
 					foreach($FTV_GED_SETTINGS_A as $FTV_ITEM) {
 						if (WT_Person::getInstance($FTV_ITEM['PID']) && WT_Person::getInstance($FTV_ITEM['PID'])->canDisplayDetails() ) {
-							$submenu = new WT_Menu(WT_I18N::translate('Ancestors of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_pedigree&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+							$submenu = new WT_Menu(WT_I18N::translate('Ancestors of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_pedigree&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
 							$menu->addSubmenu($submenu);
 						}
 					}
@@ -1415,9 +1415,9 @@ class WT_Controller_FancyTreeView {
 					foreach ($FTV_GED_SETTINGS_D as $FTV_ITEM) {
 						if (WT_Person::getInstance($FTV_ITEM['PID'])) {
 							if ($this->options('fancy_treeview', 'use_fullname') == true) {
-								$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+								$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
 							} else {
-								$submenu = new WT_Menu(WT_I18N::translate('%s family descendants', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+								$submenu = new WT_Menu(WT_I18N::translate('%s family descendants', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
 							}
 							$menu->addSubmenu($submenu);
 						}

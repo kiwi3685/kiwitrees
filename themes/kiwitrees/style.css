@@ -5956,8 +5956,8 @@ div.widget {
 	text-align: center;
 }
 
-#fancy_treeview-page h2 {
-	padding-bottom: 10px;
+#fancy_treeview-page h5 {
+	margin: 0;
 }
 
 #fancy_treeview-page #page-body {
