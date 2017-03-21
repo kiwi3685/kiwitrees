@@ -117,10 +117,12 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 					<label for="fanDegree"><?php echo WT_I18N::translate('Degrees'); ?></label>
 					<?php echo select_edit_control('fanDegree', $controller->getFanDegrees(), null, $controller->fanDegree); ?>
 				</div>
+<!-- NOT USING THIS OPTION
 				<div class="chart_options">
-					<label for="fontScale"><?php echo WT_I18N::translate('Font size'); ?></label>
-					<input class="fontScale" type="text" name="fontScale" id="fontScale" value="<?php echo $controller->fontScale; ?>"> %
+					<label for="fontScale"><?php //echo WT_I18N::translate('Font size'); ?></label>
+					<input class="fontScale" type="text" name="fontScale" id="fontScale" value="<?php //echo $controller->fontScale; ?>"> %
 				</div>
+-->
 				<button class="btn btn-primary show" type="submit">
 					<i class="fa fa-eye"></i>
 					<?php echo WT_I18N::translate('Show'); ?>
