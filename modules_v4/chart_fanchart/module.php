@@ -130,7 +130,14 @@ class chart_fanchart_WT_Module extends WT_Module implements WT_Module_Chart {
 			</form>
 			<hr style="clear:both;">
 			<!-- end of form -->
-			<div id="fan_chart"></div>
+
+			<?php if ($controller->error_message) { ?>
+				<p class="ui-state-error"><?php echo $controller->error_message; ?></p>
+				<?php exit;
+			} else { ?>
+				<div id="fan_chart"></div>
+			<?php } ?>
+
 		</div>
 		<?php
 
