@@ -1952,11 +1952,7 @@ function print_changes_table($change_ids, $sort) {
 	$return = '';
 	$n = 0;
 
-	if (WT_SCRIPT_NAME == 'search.php') {
-		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
-	} else {
-		$table_id = 'chanTable';
-	}
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 
 	switch ($sort) {
 	case 'name':        //name
@@ -1984,8 +1980,8 @@ function print_changes_table($change_ids, $sort) {
 				columns: [
 					/* 0-Type */    { sortable: false, class: "center" },
 					/* 1-Record */  { dataSort: 5 },
-					/* 2-Change */  { dataSort: 4 },
-					/* 3-By */      null,
+					/* 2-Change */  ' . (WT_USER_ID ? '{ dataSort: 4 }' : '{ visible: false }') . ',
+					/* 3-By */      ' . (WT_USER_ID ? 'null' : '{ visible: false }') . ',
 					/* 4-DATE */    { visible: false },
 					/* 5-SORTNAME */{ type: "unicode", visible: false}
 				],
@@ -1997,23 +1993,27 @@ function print_changes_table($change_ids, $sort) {
 		');
 
 		//-- table header
-		$html .= '<table id="' . $table_id . '" class="width100">';
-		$html .= '<thead><tr>';
-		$html .= '<th>&nbsp;</th>';
-		$html .= '<th>' . WT_I18N::translate('Record') . '</th>';
-		$html .= '<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
-		$html .= '<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>';
-		$html .= '<th>DATE</th>';     //hidden by datatables code
-		$html .= '<th>SORTNAME</th>'; //hidden by datatables code
-		$html .= '</tr></thead><tbody>';
+		$html .= '
+			<table id="' . $table_id . '" class="width100">
+				<thead>
+					<tr>
+						<th>&nbsp;</th>
+						<th>' . WT_I18N::translate('Record') . '</th>
+						<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
+						<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>
+						<th>DATE</th>
+						<th>SORTNAME</th>
+					</tr>
+				</thead>
+				<tbody>
+		';
 
-		//-- table body
-		foreach ($change_ids as $change_id) {
+	//-- table body
+	foreach ($change_ids as $change_id) {
 		$record = WT_GedcomRecord::getInstance($change_id);
 		if (!$record || !$record->canDisplayDetails()) {
 			continue;
 		}
-		$html .= '<tr><td>';
 		$indi = false;
 		switch ($record->getType()) {
 			case "INDI":
@@ -2039,34 +2039,30 @@ function print_changes_table($change_ids, $sort) {
 				$icon = '&nbsp;';
 				break;
 		}
-		$html .= '<a href="'. $record->getHtmlUrl() .'">'. $icon . '</a>';
-		$html .= '</td>';
-		++$n;
-		//-- Record name(s)
 		$name = $record->getFullName();
-		$html .= '<td class="wrap">';
-		$html .= '<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
-		if ($indi) {
-			$addname = $record->getAddName();
-			if ($addname) {
-				$html .= '<div class="indent"><a href="'. $record->getHtmlUrl() .'">'. $addname . '</a></div>';
-			}
-		}
-		$html .= "</td>";
-		//-- Last change date/time
-		$html .= "<td class='wrap'>" . $record->LastChangeTimestamp() . "</td>";
-		//-- Last change user
-		$html .= "<td class='wrap'>" . $record->LastChangeUser() . "</td>";
-		//-- change date (sortable) hidden by datatables code
-		$html .= "<td>" . $record->LastChangeTimestamp(true) . "</td>";
-		//-- names (sortable) hidden by datatables code
-		$html .= "<td>" . $record->getSortName() . "</td></tr>";
+		++$n;
+		$html .= '
+				<tr>
+					<td><a href="'. $record->getHtmlUrl() .'">'. $icon . '</a></td>
+					<td class="wrap">
+						<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
+						if ($indi) {
+							$addname = $record->getAddName();
+							if ($addname) {
+								$html .= '<div class="indent"><a href="'. $record->getHtmlUrl() .'">'. $addname . '</a></div>';
+							}
+						}
+					$html .= '</td>
+					<td class="wrap">' . $record->LastChangeTimestamp() . '</td>
+					<td class="wrap">' . $record->LastChangeUser() . '</td>
+					<td>' . $record->LastChangeTimestamp(true) . '</td>
+					<td>' . $record->getSortName() . '</td>
+				</tr>';
 	}
 
 	$html .= '</tbody></table>';
 	return $html;
 }
-
 
 // print a table of events
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
