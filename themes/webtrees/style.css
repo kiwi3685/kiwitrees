@@ -1052,17 +1052,17 @@ p.branches {display:inline;}
 #main-menu > li#widget-button.fa-bars {background-image:url(images/icon-widget.png);}
 #main-menu > li#widget-button.fa-times {background-image:url(images/icon-widget-close.png);}
 
-#main-menu li#menu-fancy_treeview {
+#main-menu li#menu-fancy_treeview_descendants {
 	background: url(images/menu-ftv.png) no-repeat 50% 25%;
 	background-size: 50px;
 }
 
-#main-menu li#menu-fancy_treeview ul li {
+#main-menu li#menu-fancy_treeview_descendants ul li {
 	background: url(images/menu-ftv-small.png) no-repeat 1% 0;
 	background-size: 20px;
 }
 
-[dir=rtl] #main-menu li#menu-fancy_treeview ul li {
+[dir=rtl] #main-menu li#menu-fancy_treeview_descendants ul li {
 	background-position: 99% 0;
 }
 
@@ -2401,218 +2401,218 @@ div.widget {
 }
 
 
-/* Styling for Fancy_treeview module */
+/* Styling for fancy_treeview_descendants module */
 
 /* Page */
-#fancy_treeview-page {
+#fancy_treeview_descendants-page {
 	margin-left: auto;
 	margin-right: auto;
 	width: 80%;
 }
 
-#fancy_treeview-page #page-header {
+#fancy_treeview_descendants-page #page-header {
 	position: relative;
 	text-align: center;
 }
 
-#fancy_treeview-page h2 {
+#fancy_treeview_descendants-page h2 {
 	padding-bottom: 10px;
 }
 
-#fancy_treeview-page #page-body {
+#fancy_treeview_descendants-page #page-body {
 	line-height: 1.5em;
 	margin-top: 2em;
 }
 
-#fancy_treeview-page #page-body form {
+#fancy_treeview_descendants-page #page-body form {
 	text-align: right;
 }
 
-#fancy_treeview-page #page-body form label {
+#fancy_treeview_descendants-page #page-body form label {
 	font-weight: normal;
 }
 
-#fancy_treeview-page #page-body form .ui-autocomplete-input {
+#fancy_treeview_descendants-page #page-body form .ui-autocomplete-input {
 	padding: 5px;
 }
 
-#fancy_treeview-page #error {
+#fancy_treeview_descendants-page #error {
 	margin: 10px 0 10px 40px;
 	padding: 0 10px;
 }
 
-#fancy_treeview-page .generation-block {
+#fancy_treeview_descendants-page .generation-block {
 	margin-bottom: 20px;
 	padding: 0;
 }
 
-#fancy_treeview-page .generation-block.hidden {
+#fancy_treeview_descendants-page .generation-block.hidden {
 	display: none;
 }
 
-[dir=rtl] #fancy_treeview-page #page-body form {
+[dir=rtl] #fancy_treeview_descendants-page #page-body form {
 	text-align: left;
 }
 
-[dir=rtl] #fancy_treeview-page #error {
+[dir=rtl] #fancy_treeview_descendants-page #error {
 	margin: 10px 40px 10px 0;
 }
 
 /* Blockheaders */
-#fancy_treeview-page .blockheader {
+#fancy_treeview_descendants-page .blockheader {
 	border: none;
 	border-bottom: 1px solid #81A9CB;
 	margin: 0;
 	padding: 8px;
 }
 
-#fancy_treeview-page .blockheader .header-subtitle {
+#fancy_treeview_descendants-page .blockheader .header-subtitle {
 	font-weight: 400;
 	font-size: 85%;
 	font-style: italic;
 	margin: 0 10px;
 }
 
-#fancy_treeview-page .blockheader .header-link {
+#fancy_treeview_descendants-page .blockheader .header-link {
 	font-size: 11px;
 	position: absolute;
 	left: auto;
 	right: 10px;
 }
 
-[dir=rtl] #fancy_treeview-page .blockheader .header-link {
+[dir=rtl] #fancy_treeview_descendants-page .blockheader .header-link {
 	right: auto;
 	left: 10px;
 }
 
 /* List */
-#fancy_treeview-page ol#fancy_treeview {
+#fancy_treeview_descendants-page ol#fancy_treeview_descendants {
 	counter-reset: first-level;
 	-webkit-padding-start: 0;
 }
 
-#fancy_treeview-page li.generation-block {
+#fancy_treeview_descendants-page li.generation-block {
 	counter-reset: second-level;
 }
 
-#fancy_treeview-page li.family {
+#fancy_treeview_descendants-page li.family {
 	counter-reset: third-level;
 }
 
-#fancy_treeview-page li {
+#fancy_treeview_descendants-page li {
 	position: relative;
 	display: block;
 }
 
-#fancy_treeview-page li.generation-block:before {
+#fancy_treeview_descendants-page li.generation-block:before {
 	counter-increment: first-level;
 	content: "";
 }
 
-#fancy_treeview-page li.family:before {
+#fancy_treeview_descendants-page li.family:before {
 	counter-increment: second-level;
 	content: counter(first-level) "." counter(second-level);
 	margin-left: -4em;
 	float: left;
 }
 
-#fancy_treeview-page li.child:before {
+#fancy_treeview_descendants-page li.child:before {
 	counter-increment: third-level;
 	content: counter(first-level) "." counter(second-level) "." counter(third-level);
 	display: inline-block;
 	width: 4.75em;
 }
 
-[dir=rtl] #fancy_treeview-page li.family:before {
+[dir=rtl] #fancy_treeview_descendants-page li.family:before {
 	counter(first-level) "." counter(second-level);margin-right: -4em;
 	float: right;
 }
 
-[dir=rtl] #fancy_treeview-page li.child:before {
+[dir=rtl] #fancy_treeview_descendants-page li.child:before {
 	counter(first-level) "." counter(second-level) "." counter(third-level);
 }
 
 /* family-block */
-#fancy_treeview-page .blockcontent {
+#fancy_treeview_descendants-page .blockcontent {
 	padding: 20px 0 20px 40px;
 }
 
-#fancy_treeview-page .generation.private {
+#fancy_treeview_descendants-page .generation.private {
 	padding: 10px;
 }
 
-#fancy_treeview-page li.family {
+#fancy_treeview_descendants-page li.family {
 	padding: 10px 20px;
 	clear: both;
 }
 
-#fancy_treeview-page li.family.private {
+#fancy_treeview_descendants-page li.family.private {
 	padding: 5px 20px;
 }
 
-#fancy_treeview-page .parents p {
+#fancy_treeview_descendants-page .parents p {
 	margin: 0;
 	text-align: justify;
 }
 
-#fancy_treeview-page .parents sup {
+#fancy_treeview_descendants-page .parents sup {
 	color: #008000;
 	font-size: 85%;
 	font-weight: 700;
 	padding: 0 5px;
 }
 
-#fancy_treeview-page .children {
+#fancy_treeview_descendants-page .children {
 	clear: both;
 	padding-top: 10px;
 }
 
-#fancy_treeview-page .children p {
+#fancy_treeview_descendants-page .children p {
 	margin: 5px 0;
 }
 
-#fancy_treeview-page .date {
+#fancy_treeview_descendants-page .date {
 	font-size: 13px;
 	font-weight: normal;
 }
 
-#fancy_treeview-page img {
+#fancy_treeview_descendants-page img {
 	float: left;
 	margin: 5px 10px 5px 0;
 }
 
-#fancy_treeview-page li.child .pedi {
+#fancy_treeview_descendants-page li.child .pedi {
 	font-size: 11px;
 }
 
-#fancy_treeview-page li.child .lifespan {
+#fancy_treeview_descendants-page li.child .lifespan {
 	font-size: 9px;
 }
 
-#fancy_treeview-page .tooltip-text {
+#fancy_treeview_descendants-page .tooltip-text {
 	display: none;
 }
 
-[dir=rtl] #fancy_treeview-page .blockcontent {
+[dir=rtl] #fancy_treeview_descendants-page .blockcontent {
 	padding: 20px 40px 20px 0;
 }
 
-[dir=rtl] #fancy_treeview-page img {
+[dir=rtl] #fancy_treeview_descendants-page img {
 	float: right;
 	margin: 5px 0 5px 10px;
 }
 
 /* buttons */
-#fancy_treeview-page #btn_go {
+#fancy_treeview_descendants-page #btn_go {
 	cursor: pointer;
 	padding: 5px 8px;
 }
 
-#fancy_treeview-page #btn_next {
+#fancy_treeview_descendants-page #btn_next {
 	text-align: right;
 }
 
-[dir=rtl] #fancy_treeview-page #btn_next {
+[dir=rtl] #fancy_treeview_descendants-page #btn_next {
 	text-align: left;
 }
 /* ------------------ */
@@ -3451,11 +3451,11 @@ textarea#NOTE {
    }
 
    /* Family tree view pagination */
-   #fancy_treeview .generation-block {
+   #fancy_treeview_descendants .generation-block {
 	   page-break-after: always;
    }
 
-   #fancy_treeview .generation-block:last-child {
+   #fancy_treeview_descendants .generation-block:last-child {
 	   page-break-after: avoid;
    }
 

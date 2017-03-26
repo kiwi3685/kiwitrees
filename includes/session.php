@@ -66,7 +66,7 @@ define('WT_D3_JS',					WT_STATIC_URL . 'js/d3.min.js');					// 3.5.17 Installed 
 define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/kiwitrees.js');					// used system wide, via Pages WT class
 define('WT_AUTOCOMPLETE_JS_URL',	WT_STATIC_URL . 'js/autocomplete.js');				// used system wide
 define('WT_JQUERY_TREEVIEW_JS_URL',	WT_STATIC_URL . 'js/jquery.treeview.js');			// used in branches.php
-define('WT_FANCY_TREEVIEW_JS_URL',	WT_STATIC_URL . 'js/fancytreeview.js');				// used in fancy_treeview & fancy_treeview_pedigree
+define('WT_FANCY_TREEVIEW_JS_URL',	WT_STATIC_URL . 'js/fancytreeview.js');				// used in fancy_treeview_descendants & fancy_treeview_ancestors
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v4/'); // Update setup.php and build/Makefile when this changes

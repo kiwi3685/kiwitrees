@@ -28,13 +28,13 @@ if (!defined('WT_WEBTREES')) {
 
 // Update database for version 1.5
 try {
-	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'fancy_treeview/db_schema/', 'FTV_SCHEMA_VERSION', 8);
+	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'fancy_treeview_descendants/db_schema/', 'FTV_SCHEMA_VERSION', 8);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
 }
 
-class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Report {
+class fancy_treeview_descendants_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Report {
 
 	// Extend WT_Module
 	public function getTitle() {
@@ -69,15 +69,15 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		switch($mod_action) {
 		case 'admin_config':
-			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_descendants.php';
 			break;
 		case 'admin_reset':
 			$ftv->ftv_reset($this->getName());
-			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_descendants.php';
 			break;
 		case 'admin_delete':
 			$ftv->delete($this->getName());
-			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_descendants.php';
 			break;
 		case 'show':
 			$this->show();
@@ -228,7 +228,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 					</div>
 					<hr class="noprint">
 				<?php } ?>
-				<div id="fancy_treeview-page">
+				<div id="fancy_treeview_descendants-page">
 					<div id="error"></div>
 					<div id="page-header">
 						<h2>
@@ -242,7 +242,7 @@ class fancy_treeview_WT_Module extends WT_Module implements WT_Module_Config, WT
 						<h5><?php echo $root_person->getLifeSpan(); ?></h5>
 					</div>
 					<div id="page-body">
-						<ol id="fancy_treeview"><?php echo $ftv->printPage($this->getName(), 'numblocks'); ?></ol>
+						<ol id="fancy_treeview_descendants"><?php echo $ftv->printPage($this->getName(), 'numblocks'); ?></ol>
 						<div id="btn_next">
 							<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
 								<i class="fa fa-arrow-down"></i>

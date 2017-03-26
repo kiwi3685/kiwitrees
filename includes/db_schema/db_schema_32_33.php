@@ -28,10 +28,14 @@ if (!defined('WT_WEBTREES')) {
 
 // change module anmes
 $names_array = array (
-	'resource_'		=> 'report_',
-	'no_census'		=> 'report_ukcensus',
-	'uk_register'	=> 'report_ukregister',
-
+	'resource_'					=> 'report_',
+	'no_census'					=> 'report_ukcensus',
+	'uk_register'				=> 'report_ukregister',
+	'simpl_research'			=> 'research_links',
+	'simpl_pages'				=> 'pages',
+	'simpl_privacy'				=> 'privacy',
+	'fancy_treeview'			=> 'fancy_treeview_descendants'
+	'fancy_treeview_pedigree'	=> 'fancy_treeview_ancestors'
 	)
 
 foreach ($names_array as $key => $value) {

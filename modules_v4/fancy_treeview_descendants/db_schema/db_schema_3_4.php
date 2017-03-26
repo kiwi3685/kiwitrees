@@ -26,14 +26,14 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$options = unserialize(get_module_setting('fancy_treeview', 'FTV_OPTIONS'));
+$options = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
 if(!empty($options)) {
 	foreach($options as $option) {
 		$option['NUMBLOCKS'] = '0';
 		$option['CHECK_RELATIONSHIP'] = '0';
 		$new_options[] = $option;
 	}
-	set_module_setting('fancy_treeview', 'FTV_OPTIONS',  serialize($new_options));
+	set_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS',  serialize($new_options));
 	unset($new_options);
 }
 // Update the version to indicate success

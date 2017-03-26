@@ -27,13 +27,13 @@
     jQuery(".ftv_tree").change(function(){
         // get the config page for the selected tree
         var ged = jQuery(this).find("option:selected").data("ged");
-        window.location = "module.php?mod=fancy_treeview&mod_action=admin_config&ged=" + ged;
+        window.location = "module.php?mod=fancy_treeview_descendants&mod_action=admin_config&ged=" + ged;
     });
 	// ancestors version
 	jQuery(".ftvp_tree").change(function(){
         // get the config page for the selected tree
         var ged = jQuery(this).find("option:selected").data("ged");
-        window.location = "module.php?mod=fancy_treeview_pedigree&mod_action=admin_config&ged=" + ged;
+        window.location = "module.php?mod=fancy_treeview_ancestors&mod_action=admin_config&ged=" + ged;
     });
 
     // make sure not both the surname and the root_id can not be set at the same time.
@@ -73,10 +73,10 @@
     });
 
     // make the table sortable
-    jQuery("#fancy_treeview-table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
+    jQuery("#fancy_treeview_descendants-table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
 
     //-- update the order numbers after drag-n-drop sorting is complete
-    jQuery("#fancy_treeview-table").bind("sortupdate", function(event, ui) {
+    jQuery("#fancy_treeview_descendants-table").bind("sortupdate", function(event, ui) {
         jQuery("#"+jQuery(this).attr("id")+" input[type=hidden]").each(
             function (index, value) {
                 value.value = index+1;
@@ -126,7 +126,7 @@
             modal: true,
             buttons : {
                 [TextOk] : function() {
-                    window.location.href= "module.php?mod=fancy_treeview&mod_action=admin_reset";
+                    window.location.href= "module.php?mod=fancy_treeview_descendants&mod_action=admin_reset";
                     jQuery(this).dialog("close");
                 },
                 [TextCancel] : function() {
@@ -144,7 +144,7 @@
             modal: true,
             buttons : {
                 [TextOk] : function() {
-                    window.location.href= "module.php?mod=fancy_treeview_pedigree&mod_action=admin_reset";
+                    window.location.href= "module.php?mod=fancy_treeview_ancestors&mod_action=admin_reset";
                     jQuery(this).dialog("close");
                 },
                 [TextCancel] : function() {
@@ -230,7 +230,7 @@
             i = 1;
             family.each(function(){
                 famID = jQuery(this).attr("id");
-                anchor = jQuery("#fancy_treeview a.scroll[href$="+this.id+"]:first");
+                anchor = jQuery("#fancy_treeview_descendants a.scroll[href$="+this.id+"]:first");
                 anchor.attr("href", "#" + famID + "_" + i);
                 jQuery(this).attr("id", famID + "_" + i);
                 i++;
@@ -250,7 +250,7 @@
     });
 
     // scroll to anchors
-    jQuery("#fancy_treeview-page").on("click", ".scroll", function (event) {
+    jQuery("#fancy_treeview_descendants-page").on("click", ".scroll", function (event) {
     	var id = jQuery(this).attr("href");
     	if (jQuery(id).is(":hidden") || jQuery(id).length === 0) {
     		jQuery(this).addClass("link_next").trigger("click");
@@ -260,7 +260,7 @@
     });
 
     //button or link to retrieve next generations
-    jQuery("#fancy_treeview-page").on("click", "#btn_next button, .link_next", function(){
+    jQuery("#fancy_treeview_descendants-page").on("click", "#btn_next button, .link_next", function(){
         if(jQuery(this).hasClass("link_next")) { // prepare for scrolling after new blocks are loaded
             var id = jQuery(this).attr("href");
             scroll = true;

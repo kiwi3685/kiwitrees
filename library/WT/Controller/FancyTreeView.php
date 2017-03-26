@@ -227,7 +227,7 @@ class WT_Controller_FancyTreeView {
 			$numblocks			= $numblocks - 1;
 			$this->generation	= array($root);
 			$html .= $this->printGeneration($gen, $module);
-			$module == 'fancy_treeview_pedigree' ? $this->loadAncestors($this->getPerson($root), 1) : '';
+			$module == 'fancy_treeview_ancestors' ? $this->loadAncestors($this->getPerson($root), 1) : '';
 		} else {
 			$this->generation = explode('|', $pids);
 		}
@@ -242,7 +242,7 @@ class WT_Controller_FancyTreeView {
 			}
 
 			switch ($module) {
-			case 'fancy_treeview':
+			case 'fancy_treeview_descendants':
 				foreach ($pids as $pid) {
 					$next_gen[] = $this->getNextGen($pid);
 				}
@@ -256,7 +256,7 @@ class WT_Controller_FancyTreeView {
 					}
 				}
 				break;
-			case 'fancy_treeview_pedigree':
+			case 'fancy_treeview_ancestors':
 				foreach ($pids as $pid) {
 					$parents = $this->getParents($pid);
 					if (count($parents) > 0) {
@@ -269,7 +269,7 @@ class WT_Controller_FancyTreeView {
 			}
 			if (!empty($this->generation)) {
 				$gen++;
-				$module == 'fancy_treeview_pedigree' ? $this->gencount = count($this->generation) : '';
+				$module == 'fancy_treeview_ancestors' ? $this->gencount = count($this->generation) : '';
 				$html .= $this->printGeneration($gen, $module);
 				unset($next_gen, $descendants, $pids);
 			} else {
@@ -312,7 +312,7 @@ class WT_Controller_FancyTreeView {
 	protected function printBlockHeader($i, $module) {
 
 		$title = '<span class="header-title">' . WT_I18N::translate('Generation') . ' ' . $i . '</span>';
-		if ($module == 'fancy_treeview_pedigree' && $i > 1 ) {
+		if ($module == 'fancy_treeview_ancestors' && $i > 1 ) {
 			$gentotal	= pow(2, $i - 1);
 			$genperc	= number_format($this->gencount / $gentotal * 100, 2) . '%';
 			$title		.= '<span class="header-subtitle">' . /* I18N: display calculation of inviduals recorded per generation on ancestors report */ WT_I18N::translate('(%1s of %2s - %3s complete)', $this->gencount, $gentotal, $genperc) . '</span>
@@ -359,7 +359,7 @@ class WT_Controller_FancyTreeView {
 	 */
 	protected function printBackToTopLink($i) {
 		if ($i > 1) {
-			return '<a href="#fancy_treeview-page" class="header-link scroll">' . WT_I18N::translate('back to top') . '</a>';
+			return '<a href="#fancy_treeview_descendants-page" class="header-link scroll">' . WT_I18N::translate('back to top') . '</a>';
 		}
 	}
 
@@ -389,7 +389,7 @@ class WT_Controller_FancyTreeView {
 			$html = '<div class="parents">';
 				$this->options($module, 'show_imgs') ? $html .= $this->printThumbnail($person, $module) : $html .= '';
 				$html .=  $this->printNameUrl($person, $person->getXref());
-				if ($module == 'fancy_treeview_pedigree' && $this->options($module, 'show_sosa')) {
+				if ($module == 'fancy_treeview_ancestors' && $this->options($module, 'show_sosa')) {
 					$sosa = array_search($person, $this->ancestors, true);
 					$sosa ? $html .= '<sup class="sosa" title="' . WT_I18N::translate('Sosa number') . '">' . $sosa . '</sup>' : $html;
 				}
@@ -434,7 +434,7 @@ class WT_Controller_FancyTreeView {
 
 				// get children for each couple (could be none or just one, $spouse could be empty, includes children of non-married couples)
 				// print only print children once per couple on the ancestors version, if the "show children" option is selected.
-				if ($module == 'fancy_treeview' || ($module == 'fancy_treeview_pedigree' && $person->getSex() === 'F' && $this->options($module, 'show_chil'))) {
+				if ($module == 'fancy_treeview_descendants' || ($module == 'fancy_treeview_ancestors' && $person->getSex() === 'F' && $this->options($module, 'show_chil'))) {
 					foreach ($person->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
 						$spouse = $family->getSpouse($person);
 						$html .= $this->printChildren($family, $person, $spouse, $module);
@@ -707,7 +707,7 @@ class WT_Controller_FancyTreeView {
 										}
 
 										$child_family = $this->getFamily($child);
-										$module == 'fancy_treeview' ? $class = 'scroll' : $class = '';
+										$module == 'fancy_treeview_descendants' ? $class = 'scroll' : $class = '';
 										if ($child_family) {
 											$html .= ' <a class="' . $class . '" href="#' . $child_family->getXref() . '"></a>';
 										} else { // just go to the person details in the next generation (added prefix 'S'for Single Individual, to prevent double ID's.)
@@ -1366,8 +1366,8 @@ class WT_Controller_FancyTreeView {
 		global $SEARCH_SPIDER;
 
 		$FTV_SETTINGS		= array();
-		$FTV_SETTINGS_D		= unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
-		$FTV_SETTINGS_A		= unserialize(get_module_setting('fancy_treeview_pedigree', 'FTV_SETTINGS'));
+		$FTV_SETTINGS_D		= unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_SETTINGS'));
+		$FTV_SETTINGS_A		= unserialize(get_module_setting('fancy_treeview_ancestors', 'FTV_SETTINGS'));
 		$FTV_GED_SETTINGS_D = array();
 		$FTV_GED_SETTINGS_A = array();
 
@@ -1402,11 +1402,11 @@ class WT_Controller_FancyTreeView {
 			}
 
 			if ($FTV_SETTINGS) {
-				$menu = new WT_Menu(WT_I18N::translate('Overview'), '#', 'menu-fancy_treeview');
+				$menu = new WT_Menu(WT_I18N::translate('Overview'), '#', 'menu-fancy_treeview_descendants');
 				if ($FTV_GED_SETTINGS_A) {
 					foreach($FTV_GED_SETTINGS_A as $FTV_ITEM) {
 						if (WT_Person::getInstance($FTV_ITEM['PID']) && WT_Person::getInstance($FTV_ITEM['PID'])->canDisplayDetails() ) {
-							$submenu = new WT_Menu(WT_I18N::translate('Ancestors of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_pedigree&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+							$submenu = new WT_Menu(WT_I18N::translate('Ancestors of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_ancestors&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview_descendants-' . $FTV_ITEM['PID']);
 							$menu->addSubmenu($submenu);
 						}
 					}
@@ -1414,10 +1414,10 @@ class WT_Controller_FancyTreeView {
 				if ($FTV_GED_SETTINGS_D) {
 					foreach ($FTV_GED_SETTINGS_D as $FTV_ITEM) {
 						if (WT_Person::getInstance($FTV_ITEM['PID'])) {
-							if ($this->options('fancy_treeview', 'use_fullname') == true) {
-								$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+							if ($this->options('fancy_treeview_descendants', 'use_fullname') == true) {
+								$submenu = new WT_Menu(WT_I18N::translate('Descendants of %s', WT_Person::getInstance($FTV_ITEM['PID'])->getFullName()), 'module.php?mod=fancy_treeview_descendants&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview_descendants-' . $FTV_ITEM['PID']);
 							} else {
-								$submenu = new WT_Menu(WT_I18N::translate('%s family descendants', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod=fancy_treeview&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview-' . $FTV_ITEM['PID']);
+								$submenu = new WT_Menu(WT_I18N::translate('%s family descendants', $FTV_ITEM['DISPLAY_NAME']), 'module.php?mod=fancy_treeview_descendants&amp;mod_action=show&amp;type=overview&amp;rootid=' . $FTV_ITEM['PID'], 'menu-fancy_treeview_descendants-' . $FTV_ITEM['PID']);
 							}
 							$menu->addSubmenu($submenu);
 						}

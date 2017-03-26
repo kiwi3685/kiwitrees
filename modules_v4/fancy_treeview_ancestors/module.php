@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Report {
+class fancy_treeview_ancestors_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu, WT_Module_Report {
 
 	// Extend WT_Module
 	public function getTitle() {
@@ -61,15 +61,15 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 
 		switch($mod_action) {
 		case 'admin_config':
-			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_pedigree.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_ancestors.php';
 			break;
 		case 'admin_reset':
 			$ftv->ftv_reset($this->getName());
-			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_pedigree.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_ancestors.php';
 			break;
 		case 'admin_delete':
 			$ftv->delete($this->getName());
-			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_pedigree.php';
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/admin_fancy_treeview_ancestors.php';
 			break;
 		case 'show':
 			$this->show();
@@ -217,7 +217,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 					</form>
 				</div>
 				<hr class="noprint">
-				<div id="fancy_treeview-page">
+				<div id="fancy_treeview_descendants-page">
 					<div id="error"></div>
 					<div id="page-header">
 						<h2>
@@ -230,7 +230,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 						</h2>
 					</div>
 					<div id="page-body">
-						<ol id="fancy_treeview"><?php echo $ftv->printPage($this->getName(), 'numblocks'); ?></ol>
+						<ol id="fancy_treeview_descendants"><?php echo $ftv->printPage($this->getName(), 'numblocks'); ?></ol>
 						<div id="btn_next">
 							<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
 								<i class="fa fa-arrow-down"></i>
@@ -270,7 +270,7 @@ class fancy_treeview_pedigree_WT_Module extends WT_Module implements WT_Module_C
 		$controller = new WT_Controller_FancyTreeView();
 
 		$menu = null;
-		if (empty($controller) || array_key_exists('fancy_treeview', WT_Module::getActiveModules())) {
+		if (empty($controller) || array_key_exists('fancy_treeview_descendants', WT_Module::getActiveModules())) {
 			return null;
 		}
 

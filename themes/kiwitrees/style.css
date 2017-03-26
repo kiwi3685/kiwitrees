@@ -5942,141 +5942,141 @@ div.widget {
 }
 
 /* ------------------ */
-/* Styling for Fancy_treeview module */
+/* Styling for fancy_treeview_descendants module */
 
 /* Page */
-#fancy_treeview-page {
+#fancy_treeview_descendants-page {
 	margin-left: auto;
 	margin-right: auto;
 	width: 80%;
 }
 
-#fancy_treeview-page #page-header {
+#fancy_treeview_descendants-page #page-header {
 	position: relative;
 	text-align: center;
 }
 
-#fancy_treeview-page h5 {
+#fancy_treeview_descendants-page h5 {
 	margin: 0;
 }
 
-#fancy_treeview-page #page-body {
+#fancy_treeview_descendants-page #page-body {
 	line-height: 1.5em;
 	margin-top: 2em;
 }
 
-#fancy_treeview-page #page-body form {
+#fancy_treeview_descendants-page #page-body form {
 	text-align: right;
 }
 
-#fancy_treeview-page #page-body form label {
+#fancy_treeview_descendants-page #page-body form label {
 	font-size: 11px;
 	font-weight: normal;
 }
 
-#fancy_treeview-page #page-body form input#btn_go {
+#fancy_treeview_descendants-page #page-body form input#btn_go {
 	cursor: pointer;
 }
 
-#fancy_treeview-page #error {
+#fancy_treeview_descendants-page #error {
 	margin: 10px 0 10px 40px;
 	padding: 0 10px;
 }
 
-#fancy_treeview-page .generation-block {
+#fancy_treeview_descendants-page .generation-block {
 	margin-bottom: 20px;
 	padding: 0;
 }
 
-#fancy_treeview-page .generation-block.hidden {
+#fancy_treeview_descendants-page .generation-block.hidden {
 	display: none;
 }
 
-[dir=rtl] #fancy_treeview-page #page-body form {
+[dir=rtl] #fancy_treeview_descendants-page #page-body form {
 	text-align: left;
 }
 
-[dir=rtl] #fancy_treeview-page #error {
+[dir=rtl] #fancy_treeview_descendants-page #error {
 	margin: 10px 40px 10px 0;
 }
 
 /* Blockheaders */
-#fancy_treeview-page .blockheader {
+#fancy_treeview_descendants-page .blockheader {
 	border: none;
 	margin: 0;
 	padding: 8px;
 }
 
-#fancy_treeview-page .blockheader .header-subtitle {
+#fancy_treeview_descendants-page .blockheader .header-subtitle {
 	font-weight: 400;
 	font-size: 85%;
 	font-style: italic;
 	margin: 0 10px;
 }
 
-#fancy_treeview-page .blockheader .header-link {
+#fancy_treeview_descendants-page .blockheader .header-link {
 	font-size: 11px;
 	position: absolute;
 	left: auto;
 	right: 10px;
 }
 
-[dir=rtl] #fancy_treeview-page .blockheader .header-link {
+[dir=rtl] #fancy_treeview_descendants-page .blockheader .header-link {
 	right: auto;
 	left: 10px;
 }
 
 /* List */
-#fancy_treeview-page ol#fancy_treeview {
+#fancy_treeview_descendants-page ol#fancy_treeview_descendants {
 	counter-reset: first-level;
 	overflow: hidden;
 	-webkit-padding-start: 0;
 }
 
-#fancy_treeview-page li.generation-block {
+#fancy_treeview_descendants-page li.generation-block {
 	counter-reset: second-level;
 }
 
-#fancy_treeview-page li.family {
+#fancy_treeview_descendants-page li.family {
 	counter-reset: third-level;
 }
 
-#fancy_treeview-page li {
+#fancy_treeview_descendants-page li {
 	position: relative;
 	display: block;
 }
 
-#fancy_treeview-page li.generation-block::before {
+#fancy_treeview_descendants-page li.generation-block::before {
 	counter-increment: first-level;
 	content: "";
 }
 
-#fancy_treeview-page li.family::before {
+#fancy_treeview_descendants-page li.family::before {
 	counter-increment: second-level;
 	content: counter(first-level) "." counter(second-level);
 	margin-left: -4em;
 	float: left;
 }
 
-#fancy_treeview-page li.child::before {
+#fancy_treeview_descendants-page li.child::before {
 	counter-increment: third-level;
 	content: counter(first-level) "." counter(second-level) "." counter(third-level);
 	display: inline-block;
 	width: 4.75em;
 }
 
-[dir=rtl] #fancy_treeview-page li.family::before {
+[dir=rtl] #fancy_treeview_descendants-page li.family::before {
 	content: counter(first-level) "." counter(second-level);
 	margin-right: -4em;
 	float: right;
 }
 
-[dir=rtl] #fancy_treeview-page li.child::before {
+[dir=rtl] #fancy_treeview_descendants-page li.child::before {
 	counter(first-level) "." counter(second-level) "." counter(third-level);
 }
 
 /* family-block */
-#fancy_treeview-page .blockcontent {
+#fancy_treeview_descendants-page .blockcontent {
 	background: #f8f8f8;
 	border: 1px inset #ccc;
 	border-radius: 4px;
@@ -6085,75 +6085,75 @@ div.widget {
 	padding: 20px 0 20px 40px;
 }
 
-#fancy_treeview-page .generation.private {
+#fancy_treeview_descendants-page .generation.private {
 	padding: 10px;
 }
 
-#fancy_treeview-page li.family {
+#fancy_treeview_descendants-page li.family {
 	padding: 10px 20px;
 	clear: both;
 }
 
-#fancy_treeview-page li.family.private {
+#fancy_treeview_descendants-page li.family.private {
 	padding: 5px 20px;
 }
 
-#fancy_treeview-page .parents p {
+#fancy_treeview_descendants-page .parents p {
 	margin: 0;
 	text-align: justify;
 }
 
-#fancy_treeview-page .children {
+#fancy_treeview_descendants-page .children {
 	clear: both;
 	padding-top: 10px;
 }
 
-#fancy_treeview-page .children p {
+#fancy_treeview_descendants-page .children p {
 	margin: 5px 0;
 }
 
-#fancy_treeview-page .date {
+#fancy_treeview_descendants-page .date {
 	color: inherit;
 	font-weight: normal;
 }
 
-#fancy_treeview-page img {
+#fancy_treeview_descendants-page img {
 	float: left;
 	margin: 5px 10px 5px 0;
 }
 
-#fancy_treeview-page li.child .pedi {
+#fancy_treeview_descendants-page li.child .pedi {
 	font-size: 11px;
 }
 
-#fancy_treeview-page li.child .lifespan {
+#fancy_treeview_descendants-page li.child .lifespan {
 	font-size: 9px;
 }
 
-#fancy_treeview-page .tooltip-text {
+#fancy_treeview_descendants-page .tooltip-text {
 	display: none;
 }
 
-[dir=rtl] #fancy_treeview-page .blockcontent {
+[dir=rtl] #fancy_treeview_descendants-page .blockcontent {
 	padding: 20px 40px 20px 0;
 }
 
-[dir=rtl] #fancy_treeview-page img {
+[dir=rtl] #fancy_treeview_descendants-page img {
 	float: right;
 	margin: 5px 0 5px 10px;
 }
 
 /* button */
-#fancy_treeview-page #btn_go {
+#fancy_treeview_descendants-page #btn_go {
 	cursor: pointer;
 	padding: 5px 8px;
 }
 
-#fancy_treeview-page #btn_next {
+#fancy_treeview_descendants-page #btn_next {
 	text-align: right;
 }
 
-[dir=rtl] #fancy_treeview-page #btn_next {
+[dir=rtl] #fancy_treeview_descendants-page #btn_next {
 	text-align: left;
 }
 /* ------------------ */
@@ -7083,14 +7083,14 @@ textarea#NOTE {
 
 
 	/* Family tree view print & pagination */
-	#fancy_treeview-page {
+	#fancy_treeview_descendants-page {
 		width: 100%;
 	}
-	#fancy_treeview .generation-block {
+	#fancy_treeview_descendants .generation-block {
 		page-break-after: always;
 	}
-	#fancy_treeview,
-	#fancy_treeview .generation-block:last {
+	#fancy_treeview_descendants,
+	#fancy_treeview_descendants .generation-block:last {
 		page-break-after: avoid;
 	}
 

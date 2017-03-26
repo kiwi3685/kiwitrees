@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$settings = unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
+$settings = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_SETTINGS'));
 if(!empty($settings)) {
 	foreach ($settings as $setting) {
 		if(array_key_exists('LINK', $setting)) {
@@ -34,11 +34,11 @@ if(!empty($settings)) {
 			$new_settings[] = $setting;
 		}
 	}
-	if(isset($new_settings)) set_module_setting('fancy_treeview', 'FTV_SETTINGS',  serialize($new_settings));
+	if(isset($new_settings)) set_module_setting('fancy_treeview_descendants', 'FTV_SETTINGS',  serialize($new_settings));
 	unset($new_settings);
 }
 
-$settings = unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
+$settings = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_SETTINGS'));
 if(!empty($settings)) {
 	foreach ($settings as $setting) {
 		if(!array_key_exists('DISPLAY_NAME', $setting)) {
@@ -46,18 +46,18 @@ if(!empty($settings)) {
 			$new_settings[] = $setting;
 		}
 	}
-	if(isset($new_settings)) set_module_setting('fancy_treeview', 'FTV_SETTINGS',  serialize($new_settings));
+	if(isset($new_settings)) set_module_setting('fancy_treeview_descendants', 'FTV_SETTINGS',  serialize($new_settings));
 	unset($new_settings);
 }
 
 
-$options = unserialize(get_module_setting('fancy_treeview', 'FTV_OPTIONS'));
+$options = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
 if(!empty($options)) {
 	foreach($options as $option) {
 		$option['USE_FULLNAME'] = '0';
 		$new_options[] = $option;
 	}
-	set_module_setting('fancy_treeview', 'FTV_OPTIONS',  serialize($new_options));
+	set_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS',  serialize($new_options));
 	unset($new_options);
 }
 // Update the version to indicate success

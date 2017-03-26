@@ -26,30 +26,16 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$settings = unserialize(get_module_setting('fancy_treeview', 'FTV_SETTINGS'));
-if(!empty($settings)) {
-	foreach ($settings as $setting) {
-		if(!array_key_exists('LINK', $setting)) {
-			$setting['LINK'] = /* I18N: %s is the surname of the root individual */ WT_I18N::translate('Descendants of the %s family', $setting['SURNAME']);
-			$new_settings[] = $setting;
-		}
-	}
-	if(isset($new_settings)) set_module_setting('fancy_treeview', 'FTV_SETTINGS',  serialize($new_settings));
-	unset($new_settings);
-}
-
-$options = unserialize(get_module_setting('fancy_treeview', 'FTV_OPTIONS'));
+$options = unserialize(get_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS'));
 if(!empty($options)) {
-	foreach (WT_Tree::getAll() as $tree) {
-		$new_options[$tree->tree_id] = array(
-			'SHOW_PLACES' 	=> $options['SHOW_PLACES'],
-			'COUNTRY' 		=> $options['COUNTRY'],
-			'SHOW_OCCU'		=> $options['SHOW_OCCU']
-		);
+	foreach($options as $option) {
+		$option['THUMB_SIZE'] = '60';
+		$option['USE_SQUARE_THUMBS'] = '1';
+		$option['SHOW_USERFORM'] = '2';
+		$new_options[] = $option;
 	}
-	if(isset($new_options)) set_module_setting('fancy_treeview', 'FTV_OPTIONS',  serialize($new_options));
+	set_module_setting('fancy_treeview_descendants', 'FTV_OPTIONS',  serialize($new_options));
 	unset($new_options);
 }
-
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);

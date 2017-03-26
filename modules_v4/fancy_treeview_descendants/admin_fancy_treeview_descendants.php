@@ -197,7 +197,7 @@ $controller
 		', WT_Controller_Base::JS_PRIORITY_HIGH);
 
 // Admin page content
-$html = '<div id="fancy_treeview-config">
+$html = '<div id="fancy_treeview_descendants-config">
 	<div id="error"></div>
 	<h2>' . $this->getTitle() . '</h2>
 	<form method="post" id="ftv-options-form" name="configform" action="' . $this->getConfigLink() . '">
@@ -229,7 +229,7 @@ $html = '<div id="fancy_treeview-config">
 		</div>';
 		if (!empty($FTV_SETTINGS) && $ftv->searchArray($FTV_SETTINGS, 'TREE', WT_GED_ID)):
 			global $WT_IMAGES, $WT_TREE;
-			$html .= '<table id="fancy_treeview-table" class="modules_table ui-sortable">
+			$html .= '<table id="fancy_treeview_descendants-table" class="modules_table ui-sortable">
 				<tr>
 					<th>' . WT_I18N::translate('Surname') . '</th>
 					<th>' . WT_I18N::translate('Root person') . '</th>
