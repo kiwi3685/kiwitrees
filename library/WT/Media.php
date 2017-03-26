@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -313,9 +313,19 @@ class WT_Media extends WT_GedcomRecord {
 			$pathinfo = pathinfo($exp[0]);
 			$imgsize['ext'] = @strtoupper($pathinfo['extension']);
 			// all mimetypes we wish to serve with the media firewall must be added to this array.
-			$mime=array('DOC'=>'application/msword', 'MOV'=>'video/quicktime', 'MP3'=>'audio/mpeg', 'PDF'=>'application/pdf',
-			'PPT'=>'application/vnd.ms-powerpoint', 'RTF'=>'text/rtf', 'SID'=>'image/x-mrsid', 'TXT'=>'text/plain', 'XLS'=>'application/vnd.ms-excel',
-			'WMV'=>'video/x-ms-wmv');
+			$mime = array(
+				'DOC'=>'application/msword',
+				'MOV'=>'video/quicktime',
+				'MP3'=>'audio/mpeg',
+				'MP4'=>'video/mp4',
+				'PDF'=>'application/pdf',
+				'PPT'=>'application/vnd.ms-powerpoint',
+				'RTF'=>'text/rtf',
+				'SID'=>'image/x-mrsid',
+				'TXT'=>'text/plain',
+				'XLS'=>'application/vnd.ms-excel',
+				'WMV'=>'video/x-ms-wmv'
+			);
 			if (empty($mime[$imgsize['ext']])) {
 				// if we don’t know what the mimetype is, use something ambiguous
 				$imgsize['mime'] = 'application/octet-stream';
@@ -378,6 +388,7 @@ class WT_Media extends WT_GedcomRecord {
 		case 'jpg':  return 'image/jpeg';
 		case 'mov':  return 'video/quicktime';
 		case 'mp3':  return 'audio/mpeg';
+		case 'mp4':  return 'video/mp4';
 		case 'ogv':  return 'video/ogg';
 		case 'pdf':  return 'application/pdf';
 		case 'png':  return 'image/png';
@@ -411,7 +422,7 @@ class WT_Media extends WT_GedcomRecord {
 			$imgsize = getimagesize($this->getServerFilename('thumb'));
 			// Use a thumbnail image
 			$image =
-				'<img' . 
+				'<img' .
 				' dir="'   . 'auto'                           . '"' . // For the tool-tip
 				' src="'   . $this->getHtmlUrlDirect('thumb') . '"' .
 				' alt="'   . strip_tags($this->getFullName()) . '"' .
