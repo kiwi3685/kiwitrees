@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class simpl_privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
+class privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Privacy status');
@@ -65,14 +65,14 @@ class simpl_privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		} else {
 			$death_date=$controller->record->getEstimatedDeathDate();
 			if (!$death_date && $SHOW_EST_LIST_DATES) {
-				$html .= '<dt>' .WT_I18N::translate('Presumed dead').help_link('privacy_status',$this->getName()). '</dt>';
-				$html .= '<dd>' .WT_I18N::translate('An estimated death date has been calculated as %s', $death_date->Display(!$SEARCH_SPIDER)). '</dd>';
+				$html .= '<dt>' . WT_I18N::translate('Presumed dead') . help_link('privacy_status', $this->getName()) . '</dt>';
+				$html .= '<dd>' . WT_I18N::translate('An estimated death date has been calculated as %s', $death_date->Display(!$SEARCH_SPIDER)) . '</dd>';
 			} else if ($controller->record->isDead()) {
-				$html .= '<dt>' .WT_I18N::translate('Presumed dead').help_link('privacy_status',$this->getName()). '</dt>';
-				$html .= '<dd>' .$this->simpl_isDead(). '</dd>';
+				$html .= '<dt>' . WT_I18N::translate('Presumed dead') . help_link('privacy_status', $this->getName()) . '</dt>';
+				$html .= '<dd>' . $this->isDead() . '</dd>';
 			} else {
-				$html .= '<dt>' .WT_I18N::translate('Living').help_link('privacy_status',$this->getName()). '</dt>';
-				$html .= '<dd>' .$this->simpl_isDead(). '</dd>';
+				$html .= '<dt>' . WT_I18N::translate('Living') . help_link('privacy_status', $this->getName()) . '</dt>';
+				$html .= '<dd>' . $this->isDead() . '</dd>';
 			}
 			$death_dates[0]=new WT_Date('');
 		}
@@ -87,7 +87,7 @@ class simpl_privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// This is a copy, with modifications, of the function isDead() in /library/WT/Person.php (w1.4.2)
 	// It is VERY important that the parameters used in both are identical.
-	private function simpl_isDead() {
+	private function isDead() {
 		global $MAX_ALIVE_AGE, $SEARCH_SPIDER, $controller;
 
 		// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"

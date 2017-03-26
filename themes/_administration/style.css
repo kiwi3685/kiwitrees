@@ -1467,9 +1467,9 @@ html[dir='rtl'] #pages_module th, html[dir='rtl'] #pages_module td {text-align:r
 #fib_config input[type="radio"] {vertical-align:top}
 
 /* Styling for simpl_research module */
-#simpl_research_links {margin-bottom:20px; overflow:hidden;}
-#simpl_research_links .field {float:left; line-height:30px; width:25%;}
-#simpl_research_links .buttons {clear:both;}
+#research_links {margin-bottom:20px; overflow:hidden;}
+#research_links .field {float:left; line-height:30px; width:25%;}
+#research_links .buttons {clear:both;}
 
 /* Styling for gallery module */
 #gallery .label {line-height: 25px; margin-top: 20px;}

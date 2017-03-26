@@ -26,7 +26,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Sidebar, WT_Module_List {
+class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Sidebar, WT_Module_List {
 	// Extend WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Research links');
@@ -103,7 +103,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
-				var oTable = jQuery("#simpl_research_links").dataTable( {
+				var oTable = jQuery("#research_links").dataTable( {
 					"sDom": \'<"H"firl>t\',
 					'.WT_I18N::datatablesI18N().',
 					"bJQueryUI" 		: true,
@@ -157,7 +157,7 @@ class simpl_research_WT_Module extends WT_Module implements WT_Module_Config, WT
 						WT_I18N::translate('save').'
 					</button>
 					<div class="clearfloat"></div>
-					<table id="simpl_research_links" style="width: 100%;">
+					<table id="research_links" style="width: 100%;">
 						<thead>
 							<th> ' . WT_I18N::translate('Enabled') . '</th>
 							<th></th>
