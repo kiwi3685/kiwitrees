@@ -7,17 +7,17 @@
 /themes/levy
 /themes/uti-family
 /themes/kiwitrees/icon_html.txt
-/modules_v3/openstreetmap
+/modules_v4/openstreetmap
 /tx.exe
 /.tx
 /js/colorbox
-/modules_v3/advent
+/modules_v4/advent
 /language/unused languages
-/modules_v3/backup_to_dropbox/dropbox-sdk/examples
-/modules_v3/backup_to_dropbox/dropbox-sdk/support
-/modules_v3/backup_to_dropbox/dropbox-sdk/test
-/data/fancy_treeview_cache
-/data/fancy_treeview_pedigree_cache
+/modules_v4/backup_to_dropbox/dropbox-sdk/examples
+/modules_v4/backup_to_dropbox/dropbox-sdk/support
+/modules_v4/backup_to_dropbox/dropbox-sdk/test
+data\fancy_treeview_descendants_cache
+/data/fancy_treeview_ancestors_cache
 /library.tcpdf/examples
 /library.tcpdf/tools
-/modules_v3/gallery/galleria/themes/azur
+/modules_v4/gallery/galleria/themes/azur
