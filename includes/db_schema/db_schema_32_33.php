@@ -34,18 +34,18 @@ $names_array = array (
 	'simpl_research'			=> 'research_links',
 	'simpl_pages'				=> 'pages',
 	'simpl_privacy'				=> 'privacy',
-	'fancy_treeview'			=> 'fancy_treeview_descendants'
-	'fancy_treeview_pedigree'	=> 'fancy_treeview_ancestors'
-	)
+	'fancy_treeview'			=> 'fancy_treeview_descendants',
+	'fancy_treeview_pedigree'	=> 'fancy_treeview_ancestors',
+);
 
 foreach ($names_array as $key => $value) {
 	try {
-		self::exec("UPDATE `##module` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ') WHERE field LIKE '%' . $key . '%'");
+		self::exec("UPDATE `##module` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
 	} catch (PDOException $ex) {
 		// Perhaps we have already deleted this data?
 	}
 	try {
-		self::exec("UPDATE `##module_privacy` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ') WHERE field LIKE '%' . $key . '%'");
+		self::exec("UPDATE `##module_privacy` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
 	} catch (PDOException $ex) {
 		// Perhaps we have already deleted this data?
 	}
@@ -53,18 +53,13 @@ foreach ($names_array as $key => $value) {
 
 // change module component 'resource' to 'report'
 try {
-	self::exec("UPDATE `##module_privacy` SET `component` = REPLACE(`component`, 'resource', 'report') WHERE field LIKE '%resource%'");
+	self::exec("UPDATE `##module_privacy` SET `component` = REPLACE(`component`, 'resource', 'report') WHERE `module_name` LIKE '%report%'");
 } catch (PDOException $ex) {
 	// Perhaps we have already deleted this data?
 }
 
 // remove resource to module_privacy components
 self::exec("ALTER TABLE `##module_privacy` CHANGE component component ENUM('block', 'chart', 'list', 'menu', 'report', 'sidebar', 'tab', 'widget')");
-// remove old resource settings
-self::exec("DELETE FROM `##module_privacy` WHERE `module_name` like '%resource_%'");
-self::exec("DELETE FROM `##module` WHERE `module_name` like '%resource_%'");
-// enable all reports
-self::exec("UPDATE `##module` SET `status` = 'enabled' WHERE `module_name` like '%report_%'");
 
 // remove no longer used gedcom settings
 try {

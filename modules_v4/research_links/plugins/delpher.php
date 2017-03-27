@@ -27,6 +27,7 @@ class delpher_plugin extends research_base_plugin {
 
 		$collection = array(
 			"Kranten"			=> 'nl/kranten/results?query=' . urlencode('"') . $fullname . urlencode('"') . '&coll=ddd',
+			"Externe kranten"   => 'nl/regio/results?query=' . urlencode('"') . $fullname . urlencode('"') . '&page=1&coll=regio',
 			"Boeken Basis"		=> 'nl/boeken/results?query=' . urlencode('"') . $fullname . urlencode('"') . '&page=1&coll=boeken',
 			"Boeken Google"		=> 'nl/boeken1/results?query=' . urlencode('"') . $fullname . urlencode('"') . '&page=1&coll=boeken1',
 			"Tijdschriften"		=> 'nl/tijdschriften/results?query=' . urlencode('"') . $fullname . urlencode('"') . '&page=1&coll=dts',
