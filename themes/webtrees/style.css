@@ -3225,6 +3225,97 @@ textarea#NOTE {
 }
 /* ------------------ */
 
+/* Styles for Research links page */
+#research_links-page .help_content .hidden {
+	display: none;
+	margin: 0 10px;
+}
+
+#research_links-page h4 {
+	font-weight:700;
+	margin: 10px 12px;
+}
+
+#research_links-page h5 {
+	display: inline-block;
+	margin: 0 10px 10px;
+	font-size: 12px;
+	font-style: normal;
+}
+
+#research_links-page ul#research_status li.research-area {
+	border: 1px solid #aaa;
+	display: inline-block;
+	float: left;
+	margin: 0 5px;
+	padding: 10px;
+	width: 270px;
+}
+
+#research_links-page ul#research_status span.ui-icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#research_links-page button {
+	margin: 12px;
+	padding: 5px 10px;
+}
+
+#research_links-page form {
+	display: inline;
+}
+
+#research_links {
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.chart_options.check-boxes {
+	margin:0 20px 12px 20px;
+}
+
+.chart_options.check-boxes .select-all {
+	margin: 0 40px 12px 40px;
+}
+
+.chart_options.check-boxes span {
+	margin: 0 20px;
+}
+
+.chart_options.check-boxes input {
+	width: auto;
+}
+
+.chart_options.check-boxes label {
+	display: inline-block;
+	vertical-align: top;
+}
+/* ------------------ */
+
+/* Styles for Fan Chart */
+#fanchart-page button {
+	display: inline-block;
+	margin-top: 15px;
+	vertical-align: top;
+}
+
+#fanchart-page svg {
+    display: block;
+    margin: auto;
+}
+
+#fanchart-page svg .arc path {
+    stroke: #ebebeb;
+    stroke-width: 3px;
+}
+
+#fanchart-page svg .label .date {
+    font-weight: normal;
+}
+
+/* ------------------ */
+
 /* Styles for Fan Chart */
 #fanchart-page button {
 	display: inline-block;

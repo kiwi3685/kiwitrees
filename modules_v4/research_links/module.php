@@ -103,7 +103,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('
-				var oTable = jQuery("#research_links").dataTable( {
+				var oTable = jQuery("#research_links_table").dataTable( {
 					"sDom": \'<"H"firl>t\',
 					'.WT_I18N::datatablesI18N().',
 					"bJQueryUI" 		: true,
@@ -157,7 +157,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 						WT_I18N::translate('save').'
 					</button>
 					<div class="clearfloat"></div>
-					<table id="research_links" style="width: 100%;">
+					<table id="research_links_table" style="width: 100%;">
 						<thead>
 							<th> ' . WT_I18N::translate('Enabled') . '</th>
 							<th></th>
@@ -343,21 +343,6 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 			');
 		?>
 
-		<style>
-			#research_links-page .help_content .hidden {display: none;	margin: 0 10px;}
-			#research_links-page h4 {font-weight:700; margin: 10px 12px;}
-			#research_links-page h5 {display: inline-block; margin: 0 10px 10px; font-size: 12px; font-style: normal;}
-			#research_links-page ul#research_status li.research-area {border: 1px solid #aaa; display: inline-block; float: left;  margin: 0 5px; padding: 10px; width: 270px;}
-			#research_links-page ul#research_status span.ui-icon {display: inline-block; vertical-align: middle;}
-			#research_links-page button {margin: 12px; padding: 5px 10px;}
-			#research_links-page form {display: inline;}
-			#research_links {overflow: hidden; margin-bottom: 20px;}
-			.chart_options.check-boxes {margin:0 20px 12px 20px;}
-			.chart_options.check-boxes .select-all {margin: 0 40px 12px 40px;}
-			.chart_options.check-boxes span {margin: 0 20px;}
-			.chart_options.check-boxes input {width: auto;}
-			.chart_options.check-boxes label {display: inline-block; vertical-align: top;}
-		</style>
 		<div id="research_links-page">
 			<h2>
 				<?php echo $controller->getPageTitle(); ?>
@@ -437,7 +422,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 			<hr style="clear:both;">
 
 			<?php if ($action) { ?>
-				<div id="research_links">
+				<div id="research_links_config">
 					<h3><?php echo WT_I18N::translate('Links'); ?></h3>
 					<ul id="research_status">
 						<?php
