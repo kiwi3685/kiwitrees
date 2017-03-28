@@ -1278,7 +1278,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$datamid   = "<a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
 				$datamid .= '<br>' . WT_I18N::translate('View Person') . '<br>';
 				$datamid  .= '</a>';
-				$dataright = '<span class=\"event\">' . WT_I18N::translate('Birth&nbsp;') . '</span>' .
+				$dataright = '<span class="event">' . WT_I18N::translate('Birth') . ' </span>' .
 						addslashes($person->getBirthDate()->Display(false)) . '<br>' . $person->getBirthPlace();
 
 				$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
