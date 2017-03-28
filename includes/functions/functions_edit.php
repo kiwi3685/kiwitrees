@@ -1332,7 +1332,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	// help text
 	if ($action == "addnewnote_assisted") {
-		// Do not print on GEDFact Assistant window
+		// Do not print on census_assistant window
 	} else {
 		// Not all facts have help text.
 		switch ($fact) {
@@ -1486,7 +1486,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", htmlspecialchars($value), "</textarea>";
 		} else {
 			// text
-			// If using GEDFact-assistant window
+			// If using census_assistant window
 			if ($action == "addnewnote_assisted") {
 				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" style=\"width:4.1em;\" dir=\"ltr\"";
 			} else {
