@@ -165,7 +165,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		if (!$META_DESCRIPTION) {
 			$META_DESCRIPTION = strip_tags(WT_TREE_TITLE);
 		}
-		$META_GENERATOR		= WT_KIWITREES . '-' . WT_VERSION_TEXT . ' - ' . WT_WEBTREES_URL;
+		$META_GENERATOR		= WT_KIWITREES . '-' . WT_VERSION_TEXT . ' - ' . WT_KIWITREES_URL;
 		$META_TITLE			= WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_TITLE') : '';
 		if ($META_TITLE) {
 			$title .= ' - ' . $META_TITLE;
