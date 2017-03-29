@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -273,7 +273,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'MEDIA_ID_PREFIX',              'M');
 		set_gedcom_setting($tree_id, 'MEDIA_UPLOAD',                 WT_PRIV_USER);
 		set_gedcom_setting($tree_id, 'META_DESCRIPTION',             '');
-		set_gedcom_setting($tree_id, 'META_TITLE',                   WT_WEBTREES);
+		set_gedcom_setting($tree_id, 'META_TITLE',                   WT_KIWITREES);
 		set_gedcom_setting($tree_id, 'NOTE_FACTS_ADD',               'SOUR,RESN');
 		set_gedcom_setting($tree_id, 'NOTE_FACTS_QUICK',             '');
 		set_gedcom_setting($tree_id, 'NOTE_FACTS_UNIQUE',            '');

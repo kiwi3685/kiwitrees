@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'site-php-version.php');
 // This script does not load session.php.
 // It may well invoke code that won’t run on PHP5.2…
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES', 'kiwitrees');
+define('WT_KIWITREES', 'kiwitrees');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
@@ -52,7 +52,7 @@ header('Content-Type: text/html; charset=UTF-8');
 <html <?php echo WT_I18N::html_markup(); ?>>
 	<head>
 		<meta charset="UTF-8">
-		<title><?php echo WT_WEBTREES; ?></title>
+		<title><?php echo WT_KIWITREES; ?></title>
 		<meta name="robots" content="noindex,follow">
 		<style type="text/css">
 			body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }

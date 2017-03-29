@@ -27,7 +27,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 }
 
 // Identify ourself
-define('WT_WEBTREES',        'Kiwitrees');
+define('WT_KIWITREES',        'Kiwitrees');
 define('WT_VERSION',         '3.3.0');
 define('WT_VERSION_TEXT',    trim(WT_VERSION));
 
@@ -455,7 +455,7 @@ if ($WT_TREE) {
 	define('WT_GEDCOM',            '');
 	define('WT_GED_ID',            null);
 	define('WT_GEDURL',            '');
-	define('WT_TREE_TITLE',        WT_WEBTREES);
+	define('WT_TREE_TITLE',        WT_KIWITREES);
 	define('WT_TREE_SUBTITLE',     '');
 	define('WT_IMPORTED',          false);
 	define('WT_USER_GEDCOM_ADMIN', false);

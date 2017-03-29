@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'site-maintenance.php');
 // This script does not load session.php.
 // session.php won't run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES', 'kiwitrees');
+define('WT_KIWITREES', 'kiwitrees');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
@@ -49,7 +49,7 @@ header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 <html <?php echo WT_I18N::html_markup(); ?> >
 	<head>
 		<meta charset="UTF-8">
-		<title><?php echo WT_WEBTREES . ' - ' . WT_I18N::translate('Maintenance'); ?></title>
+		<title><?php echo WT_KIWITREES . ' - ' . WT_I18N::translate('Maintenance'); ?></title>
 		<meta name="robots" content="noindex,follow">
 		<style type="text/css">
 			body {color: gray; background-color: white; font: 16px tahoma, arial, helvetica, sans-serif; padding:10px; width: 90%;}

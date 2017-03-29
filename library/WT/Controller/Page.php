@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -31,7 +31,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	const     DOCTYPE       = '<!DOCTYPE html>';  // HTML5
 	private   $canonical_url= '';
 	private   $meta_robots  = 'noindex,nofollow'; // Most pages are not intended for robots
-	private   $page_title   = WT_WEBTREES;        // <head><title> $page_title </title></head>
+	private   $page_title   = WT_KIWITREES;        // <head><title> $page_title </title></head>
 
 	// Startup activity
 	public function __construct() {
@@ -165,7 +165,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		if (!$META_DESCRIPTION) {
 			$META_DESCRIPTION = strip_tags(WT_TREE_TITLE);
 		}
-		$META_GENERATOR		= WT_WEBTREES . '-' . WT_VERSION_TEXT . ' - ' . WT_WEBTREES_URL;
+		$META_GENERATOR		= WT_KIWITREES . '-' . WT_VERSION_TEXT . ' - ' . WT_WEBTREES_URL;
 		$META_TITLE			= WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_TITLE') : '';
 		if ($META_TITLE) {
 			$title .= ' - ' . $META_TITLE;

@@ -43,7 +43,7 @@
  * Other special characters are all listed at the bottom.
  */
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

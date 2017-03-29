@@ -19,7 +19,7 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
- */ if (!defined('WT_WEBTREES')) {
+ */ if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }

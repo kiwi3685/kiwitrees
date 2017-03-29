@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (!defined('WT_WEBTREES')) {
+if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	<div id="admin_footer">
 		<p class="logo">
 			<a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_WEBTREES_URL; ?>">
-				<?php echo /*I18N: kiwitrees logo on page footer */ WT_I18N::translate('Powered by %s', WT_WEBTREES); ?><span>&trade;</span>
+				<?php echo /*I18N: kiwitrees logo on page footer */ WT_I18N::translate('Powered by %s', WT_KIWITREES); ?><span>&trade;</span>
 			</a>
 		</p>
 	</div>
