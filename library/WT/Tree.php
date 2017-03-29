@@ -265,6 +265,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'INDI_FACTS_UNIQUE',            '');
 		set_gedcom_setting($tree_id, 'KEEP_ALIVE_YEARS_BIRTH',       '');
 		set_gedcom_setting($tree_id, 'KEEP_ALIVE_YEARS_DEATH',       '');
+		set_gedcom_setting($tree_id, 'KIWITREES_EMAIL',              '');
 		set_gedcom_setting($tree_id, 'LANGUAGE',                     WT_LOCALE); // Defualt to the current admin's language`
 		set_gedcom_setting($tree_id, 'MAX_ALIVE_AGE',                120);
 		set_gedcom_setting($tree_id, 'MAX_DESCENDANCY_GENERATIONS',  '15');
@@ -329,7 +330,6 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'USE_SILHOUETTE',               true);
 		set_gedcom_setting($tree_id, 'WATERMARK_THUMB',              false);
 		set_gedcom_setting($tree_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
-		set_gedcom_setting($tree_id, 'KIWITREES_EMAIL',               '');
 		set_gedcom_setting($tree_id, 'WORD_WRAPPED_NOTES',           false);
 		set_gedcom_setting($tree_id, 'imported',                     0);
 		set_gedcom_setting($tree_id, 'title',                        $tree_title);

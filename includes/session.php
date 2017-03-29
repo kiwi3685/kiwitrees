@@ -266,7 +266,7 @@ try {
 		die($ex);
 	}
 } catch (PDOException $ex) {
-	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
 	exit;
 }
 

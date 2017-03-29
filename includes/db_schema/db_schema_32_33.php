@@ -72,7 +72,7 @@ try {
 try {
 	self::exec("UPDATE`##gedcom_setting` SET `setting_name` = REPLACE(`setting_name`, 'WEBTREES_EMAIL', 'KIWITREES_EMAIL')");
 } catch (PDOException $ex) {
-	// Perhaps we have already deleted this data?
+// Perhaps we have already deleted this data?
 }
 
 // Update the version to indicate success
