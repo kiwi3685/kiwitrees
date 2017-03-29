@@ -22,8 +22,9 @@ class cwgc_plugin extends research_base_plugin {
 		// This is a post form, so it will be sent with Javascript
 		$url	 	= 'http://www.cwgc.org/find-war-dead.aspx?cpage=1';
 		$params	 	= array(
-			'ctl00$ctl00$ctl00$ContentPlaceHolderDefault$cpMain$ctlHomepageCasualtySearch$txtName'				=> $fullname,
-			'ctl00$ctl00$ctl00$ContentPlaceHolderDefault$cpMain$ctlHomepageCasualtySearch$btnCasualtySearch'	=> 'Search',
+			'ctl00$ctl00$ctl00$ContentPlaceHolderDefault$cpMain$ctlCasualtySearch$txtSurname'		=> $surn,
+			'ctl00$ctl00$ctl00$ContentPlaceHolderDefault$cpMain$ctlCasualtySearch$txtForename'		=> $first,
+			'ctl00$ctl00$ctl00$ContentPlaceHolderDefault$cpMain$ctlCasualtySearch$btnSearch'		=> 'Search',
 		);
 		return "postresearchform('" . $url . "'," . json_encode($params) . ")";
 	}

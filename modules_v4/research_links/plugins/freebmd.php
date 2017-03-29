@@ -22,7 +22,7 @@ class freebmd_plugin extends research_base_plugin {
 		// This is a post form, so it will be sent with Javascript
 		$birth_year == '' ? $birth_year = '' : $birth_year = $birth_year - 5;
 		$death_year == '' ? $death_year = '' : $death_year = $death_year + 5;
-		$url	 	= 'http://www.freebmd.org.uk/cgi/search.pl';
+		$url	 	= 'https://www.freebmd.org.uk/cgi/search.pl';
 		$params	 	= array(
 			'type'		=> 'All Types',
 			'surname'	=> $surn,
