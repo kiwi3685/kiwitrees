@@ -28,7 +28,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'Kiwitrees');
-define('WT_VERSION',         '3.2.4');
+define('WT_VERSION',         '3.3.0');
 define('WT_VERSION_TEXT',    trim(WT_VERSION));
 
 // External URLs
@@ -63,13 +63,13 @@ define('PASSWORDSCHECK',			WT_STATIC_URL . 'js/passwordscheck.js');			// Install
 define('WT_D3_JS',					WT_STATIC_URL . 'js/d3.min.js');					// 3.5.17 Installed 02-02-2017 - https://github.com/d3/d3/releases
 
 // Loation of our own javascript libraries
-define('WT_WEBTREES_JS_URL',		WT_STATIC_URL . 'js/kiwitrees.js');					// used system wide, via Pages WT class
+define('WT_KIWITREES_JS_URL',		WT_STATIC_URL . 'js/kiwitrees.js');					// used system wide, via Pages WT class
 define('WT_AUTOCOMPLETE_JS_URL',	WT_STATIC_URL . 'js/autocomplete.js');				// used system wide
 define('WT_JQUERY_TREEVIEW_JS_URL',	WT_STATIC_URL . 'js/jquery.treeview.js');			// used in branches.php
 define('WT_FANCY_TREEVIEW_JS_URL',	WT_STATIC_URL . 'js/fancytreeview.js');				// used in fancy_treeview_descendants & fancy_treeview_ancestors
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
-define('WT_MODULES_DIR', 'modules_v4/'); // Update setup.php and build/Makefile when this changes
+define('WT_MODULES_DIR', 'modules_v4/'); // Update setup.php when this changes
 define('WT_THEMES_DIR',  'themes/' );
 
 // Enable debugging output?
@@ -142,7 +142,7 @@ $PRIVACY_CHECKS = 0;
 error_reporting(E_ALL | E_STRICT);
 
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
+set_include_path(WT_ROOT . 'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 
@@ -207,7 +207,7 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 	}
 }
 
-if (version_compare(PHP_VERSION, '5.3.3', '<')) {
+if (version_compare(PHP_VERSION, '5.4.0', '<')) {
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-php-version.php');
 }
 
@@ -217,28 +217,28 @@ if (!isset($_SERVER['HTTP_USER_AGENT'])) {
 }
 
 // Common functions
-require WT_ROOT.'includes/functions/functions.php';
-require WT_ROOT.'includes/functions/functions_db.php';
+require WT_ROOT . 'includes/functions/functions.php';
+require WT_ROOT . 'includes/functions/functions_db.php';
 // TODO: Not all pages require all of these.  Only load them in scripts that need them?
-require WT_ROOT.'includes/functions/functions_print.php';
-require WT_ROOT.'includes/functions/functions_rtl.php';
-require WT_ROOT.'includes/functions/functions_mediadb.php';
-require WT_ROOT.'includes/functions/functions_date.php';
-require WT_ROOT.'includes/functions/functions_charts.php';
-require WT_ROOT.'includes/functions/functions_utf-8.php';
+require WT_ROOT . 'includes/functions/functions_print.php';
+require WT_ROOT . 'includes/functions/functions_rtl.php';
+require WT_ROOT . 'includes/functions/functions_mediadb.php';
+require WT_ROOT . 'includes/functions/functions_date.php';
+require WT_ROOT . 'includes/functions/functions_charts.php';
+require WT_ROOT . 'includes/functions/functions_utf-8.php';
 
 set_error_handler('wt_error_handler');
 
 // Load our configuration file, so we can connect to the database
-if (file_exists(WT_ROOT.'data/config.ini.php')) {
-	$dbconfig = parse_ini_file(WT_ROOT.'data/config.ini.php');
+if (file_exists(WT_ROOT . 'data/config.ini.php')) {
+	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 	// Invalid/unreadable config file?
 	if (!is_array($dbconfig)) {
 		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-unavailable.php');
 		exit;
 	}
 	// Down for maintenance?
-	if (file_exists(WT_ROOT.'data/offline.txt')) {
+	if (file_exists(WT_ROOT . 'data/offline.txt')) {
 		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-offline.php');
 		exit;
 	}
@@ -250,7 +250,7 @@ if (file_exists(WT_ROOT.'data/config.ini.php')) {
 
 $WT_REQUEST = new Zend_Controller_Request_Http();
 
-require WT_ROOT.'includes/authentication.php';
+require WT_ROOT . 'includes/authentication.php';
 
 // Connect to the database
 try {
@@ -260,7 +260,7 @@ try {
 	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
 	WT_DB::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
 	try {
-		WT_DB::updateSchema(WT_ROOT.'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+		WT_DB::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 	} catch (PDOException $ex) {
 		// The schema update scripts should never fail.  If they do, there is no clean recovery.
 		die($ex);
@@ -499,10 +499,10 @@ if (WT_USER_ID) {
 define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 
 // Application configuration data - things that aren’t (yet?) user-editable
-require WT_ROOT.'includes/config_data.php';
+require WT_ROOT . 'includes/config_data.php';
 
 //-- load the privacy functions
-require WT_ROOT.'includes/functions/functions_privacy.php';
+require WT_ROOT . 'includes/functions/functions_privacy.php';
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
@@ -571,7 +571,7 @@ require WT_ROOT.WT_THEME_DIR.'theme.php';
 
 // Page hit counter - load after theme, as we need theme formatting
 if ($WT_TREE && $WT_TREE->preference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
-	require WT_ROOT.'includes/hitcount.php';
+	require WT_ROOT . 'includes/hitcount.php';
 } else {
 	$hitCount = '';
 }

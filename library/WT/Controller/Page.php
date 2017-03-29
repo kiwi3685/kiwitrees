@@ -41,7 +41,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 			->addExternalJavascript(WT_JQUERY_URL)
 			->addExternalJavascript(WT_JQUERYUI_URL)
 			->addExternalJavascript(WT_JQUERY_SHORTEN)
-			->addExternalJavascript(WT_WEBTREES_JS_URL);
+			->addExternalJavascript(WT_KIWITREES_JS_URL);
 	}
 
 	// Shutdown activity
