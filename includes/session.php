@@ -234,17 +234,17 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 	// Invalid/unreadable config file?
 	if (!is_array($dbconfig)) {
-		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-unavailable.php');
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
 		exit;
 	}
 	// Down for maintenance?
 	if (file_exists(WT_ROOT . 'data/offline.txt')) {
-		header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-offline.php');
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-offline.php');
 		exit;
 	}
 } else {
 	// No config file. Set one up.
-	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'setup.php');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'setup.php');
 	exit;
 }
 
@@ -266,7 +266,7 @@ try {
 		die($ex);
 	}
 } catch (PDOException $ex) {
-	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-unavailable.php');
+	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
 	exit;
 }
 
