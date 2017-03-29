@@ -392,7 +392,7 @@ Zend_Session::start($cfg);
 // Register a session “namespace” to store session data.  This is better than
 // using $_SESSION, as we can avoid clashes with other modules or applications,
 // and problems with servers that have enabled “register_globals”.
-$WT_SESSION = new Zend_Session_Namespace('WEBTREES');
+$WT_SESSION = new Zend_Session_Namespace('KIWITREES');
 
 if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
