@@ -480,8 +480,8 @@ define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnu
 // Set our gedcom selection as a default for the next page
 $WT_SESSION->GEDCOM = WT_GEDCOM;
 
-if (empty($WEBTREES_EMAIL)) {
-	$WEBTREES_EMAIL = 'kiwitrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
+if (empty($KIWITREES_EMAIL)) {
+	$KIWITREES_EMAIL = 'kiwitrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.

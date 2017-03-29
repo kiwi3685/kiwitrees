@@ -93,7 +93,7 @@ switch (WT_Filter::post('action')) {
 					WT_I18N::init(get_user_setting($user_id, 'language'));
 					kiwiMail(
 						getUserEmail($user_id),
-						$WEBTREES_EMAIL,
+						$KIWITREES_EMAIL,
 						WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME . WT_SCRIPT_PATH),
 						WT_I18N::translate('The administrator at %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME . WT_SCRIPT_PATH, WT_SERVER_NAME . WT_SCRIPT_PATH)
 					);

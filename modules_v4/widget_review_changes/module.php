@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 
 	// Implement class WT_Module_Block
 	public function getWidget($widget_id, $template = true, $cfg = null) {
-		global $WEBTREES_EMAIL;
+		global $KIWITREES_EMAIL;
 
 		$changes = WT_DB::prepare(
 			"SELECT 1".
@@ -79,7 +79,7 @@ class widget_review_changes_WT_Module extends WT_Module implements WT_Module_Wid
 						//-- send message
 						$message = array();
 						$message["to"]=$user_name;
-						$message["from"] = $WEBTREES_EMAIL;
+						$message["from"] = $KIWITREES_EMAIL;
 						$message["subject"] = WT_I18N::translate('kiwitrees - Review changes');
 						$message["body"] = WT_I18N::translate('Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that kiwitrees site and login to review the changes.');
 						$message["method"] = get_user_setting($user_id, 'contactmethod');

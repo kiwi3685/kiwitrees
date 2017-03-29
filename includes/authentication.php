@@ -215,7 +215,7 @@ function AddToSearchLog($log_message, $geds) {
 //----------------------------------- addMessage
 //-- stores a new message in the database
 function addMessage($message) {
-	global $TEXT_DIRECTION, $WEBTREES_EMAIL, $WT_REQUEST;
+	global $TEXT_DIRECTION, $KIWITREES_EMAIL, $WT_REQUEST;
 
 	$user_id_from = get_user_id($message['from']);
 	$user_id_to   = get_user_id($message['to']);
@@ -264,11 +264,11 @@ function addMessage($message) {
 			$original_email .= $fromFullName . "\r\n\r\n" . $message['body'];
 		}
 		if (!isset($message['no_from'])) {
-			if (stristr($from, $WEBTREES_EMAIL)) {
+			if (stristr($from, $KIWITREES_EMAIL)) {
 				$from = getUserEmail(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
 			}
-			// copy messages should be from: $WEBTREES_EMAIL
-			$copy_from = $WEBTREES_EMAIL;
+			// copy messages should be from: $KIWITREES_EMAIL
+			$copy_from = $KIWITREES_EMAIL;
 			if (!empty($copy_from)) {
 				// send the copy message to sender
 				if (!kiwiMail($from, $copy_from, $copy_subject, $copy_email)) {

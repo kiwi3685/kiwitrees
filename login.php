@@ -229,7 +229,7 @@ case 'requestpw':
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_mail.php';
-		kiwiMail(getUserEmail($user_id), $WEBTREES_EMAIL, WT_I18N::translate('Lost password request'), $mail_body);
+		kiwiMail(getUserEmail($user_id), $KIWITREES_EMAIL, WT_I18N::translate('Lost password request'), $mail_body);
 	}
 	// Show a success message, even if the user account does not exist.
 	// Otherwise this page can be used to guess/test usernames.
@@ -305,7 +305,7 @@ case 'register':
 				"LANGUAGE: ".WT_LOCALE."\r\n";
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
-			$mail1_to      = $WEBTREES_EMAIL;
+			$mail1_to      = $KIWITREES_EMAIL;
 			$mail1_from    = $user_email;
 			$mail1_method  = get_user_setting($webmaster_user_id, 'contact_method');
 			WT_I18N::init(WT_LOCALE);
@@ -338,7 +338,7 @@ case 'register':
 				WT_I18N::translate('You won\'t get any more email from this site, because the account request will be deleted automatically after seven days.') . "\r\n";
 			$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 			$mail2_to      = $user_email;
-			$mail2_from    = $WEBTREES_EMAIL;
+			$mail2_from    = $KIWITREES_EMAIL;
 
 			// Send user message by email only
 			kiwiMail($mail2_to, $mail2_from, $mail2_subject, $mail2_body);
@@ -497,7 +497,7 @@ case 'verify_hash':
 		"DNS LOOKUP: ".gethostbyaddr($WT_REQUEST->getClientIp())."\r\n".
 		"LANGUAGE: ".WT_LOCALE."\r\n";
 
-	$mail1_to = $WEBTREES_EMAIL;
+	$mail1_to = $KIWITREES_EMAIL;
 	$mail1_from = getUserEmail($user_id);
 	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
 	$mail1_method = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');

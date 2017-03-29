@@ -149,6 +149,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',				str_replace(' ', '', WT_Filter::post('NEW_INDI_FACTS_UNIQUE')));
 	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH',			WT_Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
 	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH',			WT_Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
+	set_gedcom_setting(WT_GED_ID, 'KIWITREES_EMAIL',				WT_Filter::post('NEW_KIWITREES_EMAIL'));
 	set_gedcom_setting(WT_GED_ID, 'LANGUAGE',						WT_Filter::post('GEDCOMLANG'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',					WT_Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
 	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',	WT_Filter::post('NEW_MAX_DESCENDANCY_GENERATIONS'));
@@ -203,7 +204,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',					WT_Filter::postBool('NEW_USE_SILHOUETTE'));
 	set_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB',				WT_Filter::postBool('NEW_WATERMARK_THUMB'));
 	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID',				WT_Filter::post('NEW_WEBMASTER_USER_ID'));
-	set_gedcom_setting(WT_GED_ID, 'WEBTREES_EMAIL',					WT_Filter::post('NEW_WEBTREES_EMAIL'));
 	set_gedcom_setting(WT_GED_ID, 'subtitle',						WT_Filter::post('new_subtitle', WT_REGEX_UNSAFE));
 	if (WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE)) {
 		set_gedcom_setting(WT_GED_ID, 'title', WT_Filter::post('gedcom_title', WT_REGEX_UNSAFE));
@@ -466,12 +466,12 @@ $controller
 				<h3 class="accordion"><?php echo WT_I18N::translate('Contact information'); ?></h3>
 				<div id="contact">
 					<div class="config_options">
-						<?php if (empty($WEBTREES_EMAIL)) {
-							$WEBTREES_EMAIL = "kiwitrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
+						<?php if (empty($KIWITREES_EMAIL)) {
+							$KIWITREES_EMAIL = "kiwitrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
 						} ?>
 						<label><?php echo WT_I18N::translate('Kiwitrees reply address'); ?></label>
 						<div class="input_group">
-							<input type="text" name="NEW_WEBTREES_EMAIL" required value="<?php echo $WEBTREES_EMAIL; ?>" size="50" maxlength="255" dir="ltr">
+							<input type="text" name="NEW_KIWITREES_EMAIL" required value="<?php echo $KIWITREES_EMAIL; ?>" size="50" maxlength="255" dir="ltr">
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('Email address to be used in the “From:” field of emails that kiwitrees creates automatically.<br>Kiwitrees can automatically create emails to notify administrators of changes that need to be reviewed. Kiwitrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like From: kiwitrees-noreply@yoursite to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account kiwitrees-noreply.'); ?>
 							</div>

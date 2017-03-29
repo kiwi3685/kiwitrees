@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -306,12 +306,12 @@ class WT_Controller_Clippings {
 		$adminId	= get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
 		$userName	= get_user_name(WT_USER_ID);
 		if (get_user_setting($adminId, 'notify_clipping')) {
-			global $WEBTREES_EMAIL;
+			global $KIWITREES_EMAIL;
 			require_once WT_ROOT.'includes/functions/functions_mail.php';
 			WT_I18N::init(get_user_setting($adminId, 'language'));
 			kiwiMail(
 				getUserEmail($adminId),
-				$WEBTREES_EMAIL,
+				$KIWITREES_EMAIL,
 				WT_I18N::translate(strip_tags(WT_TREE_TITLE) . ' Clippings cart'),
 				WT_I18N::translate('User %s has just downloaded a clippings cart file', WT_USER_NAME)
 			);

@@ -230,6 +230,7 @@ function load_gedcom_settings($ged_id =  WT_GED_ID) {
 	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             = get_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE');
 	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       = get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_BIRTH');
 	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       = get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_DEATH');
+	global $KIWITREES_EMAIL;              $KIWITREES_EMAIL              = get_gedcom_setting($ged_id, 'KIWITREES_EMAIL');
 	global $LANGUAGE;                     $LANGUAGE                     = get_gedcom_setting($ged_id, 'LANGUAGE');
 	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                = get_gedcom_setting($ged_id, 'MAX_ALIVE_AGE');
 	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  = get_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS');
@@ -269,7 +270,6 @@ function load_gedcom_settings($ged_id =  WT_GED_ID) {
 	global $USE_SILHOUETTE;               $USE_SILHOUETTE               = get_gedcom_setting($ged_id, 'USE_SILHOUETTE');
 	global $WATERMARK_THUMB;              $WATERMARK_THUMB              = get_gedcom_setting($ged_id, 'WATERMARK_THUMB');
 	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            = get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               = get_gedcom_setting($ged_id, 'WEBTREES_EMAIL');
 	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           = get_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES');
 
 	global $person_privacy; $person_privacy=array();
