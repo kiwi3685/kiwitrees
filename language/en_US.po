@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2017-03-29 08:12+1300\n"
-"PO-Revision-Date: 2017-03-29 08:20+1300\n"
+"POT-Creation-Date: 2017-03-30 15:16+1300\n"
+"PO-Revision-Date: 2017-03-30 15:16+1300\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -3389,7 +3389,7 @@ msgstr ""
 msgid "Apply privacy settings?"
 msgstr "Apply privacy settings?"
 
-#: admin_trees_download.php:129 famlist.php:113 famlist.php:149 givnlist.php:50
+#: admin_trees_download.php:129 famlist.php:113 famlist.php:149
 #: indilist.php:113 indilist.php:147 library/WT/Stats.php:760
 #: modules_v4/clippings/module.php:255 modules_v4/clippings/module.php:662
 #: modules_v4/families/module.php:149 modules_v4/individuals/module.php:148
@@ -3813,10 +3813,10 @@ msgstr "All relatives"
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: admin_trees_missing.php:85 calendar.php:255 famlist.php:63 famlist.php:69
 #: famlist.php:75 famlist.php:169 famlist.php:171 famlist.php:255
-#: famlist.php:257 givnlist.php:70 givnlist.php:72 indilist.php:63
-#: indilist.php:69 indilist.php:75 indilist.php:167 indilist.php:169
-#: indilist.php:253 indilist.php:255 library/WT/I18N.php:665
-#: library/WT/Stats.php:3364 modules_v4/extra_menus/help_text.php:45
+#: famlist.php:257 indilist.php:63 indilist.php:69 indilist.php:75
+#: indilist.php:167 indilist.php:169 indilist.php:253 indilist.php:255
+#: library/WT/I18N.php:665 library/WT/Stats.php:3364
+#: modules_v4/extra_menus/help_text.php:45
 #: modules_v4/extra_menus/module.php:367
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:282
 #: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:296
@@ -5808,11 +5808,6 @@ msgstr "Shared Notes found"
 msgid "Total sources: %s"
 msgstr "Total sources: %s"
 
-#. I18N: gedcom tag GIVN
-#: givnlist.php:35 givnlist.php:40 library/WT/Gedcom/Tag.php:235
-msgid "Given names"
-msgstr "Given names"
-
 #: help_text.php:45
 msgid ""
 "Enter the address into the field just as you would write it on an envelope."
@@ -7490,7 +7485,7 @@ msgstr "Hebrew"
 
 #. I18N: language name - Croatian
 #: includes/config_data.php:470
-msgid "hrvatski"
+msgid "Hrvatski"
 msgstr "Croatian"
 
 #. I18N: language name - Hungarian
@@ -16093,6 +16088,11 @@ msgstr "Phonetic"
 #: library/WT/Gedcom/Tag.php:234 library/WT/Gedcom/Tag.php:737
 msgid "GEDCOM file"
 msgstr "GEDCOM file"
+
+#. I18N: gedcom tag GIVN
+#: library/WT/Gedcom/Tag.php:235
+msgid "Given names"
+msgstr "Given names"
 
 #. I18N: gedcom tag GRAD
 #: library/WT/Gedcom/Tag.php:236
