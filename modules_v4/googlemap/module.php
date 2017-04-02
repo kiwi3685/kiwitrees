@@ -2043,7 +2043,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Tab
 	public function defaultAccessLevel() {
-		return false;
+		return WT_PRIV_PUBLIC;
 	}
 
 }

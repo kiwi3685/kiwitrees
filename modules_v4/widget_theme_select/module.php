@@ -81,7 +81,7 @@ class widget_theme_select_WT_Module extends WT_Module implements WT_Module_Widge
 
 	// Implement WT_Module_Menu
 	public function defaultAccessLevel() {
-		return false;
+		return WT_PRIV_USER;
 	}
 
 	// Implement class WT_Module_Block

@@ -149,7 +149,7 @@ class widget_todo_WT_Module extends WT_Module implements WT_Module_Widget {
 
 	// Implement WT_Module_Menu
 	public function defaultAccessLevel() {
-		return false;
+		return WT_PRIV_USER;
 	}
 
 	// Implement class WT_Module_Widget

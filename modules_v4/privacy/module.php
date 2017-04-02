@@ -43,6 +43,11 @@ class privacy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	// Implement WT_Module_Sidebar
+	public function defaultAccessLevel() {
+		return WT_PRIV_USER;
+	}
+
+	// Implement WT_Module_Sidebar
 	public function hasSidebarContent() {
 		return true;
 	}

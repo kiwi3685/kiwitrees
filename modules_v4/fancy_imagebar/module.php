@@ -45,7 +45,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Implement WT_Module_Menu
 	public function defaultAccessLevel() {
-		return false;
+		return WT_PRIV_USER;
 	}
 
 	// Implement WT_Module_Menu

@@ -93,7 +93,8 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 		$missing		= WT_Filter::post('missing') ? WT_Filter::post('missing') : 0;
 		$showmedia		= WT_Filter::post('showmedia') ? WT_Filter::post('showmedia') : 'main';
 		$photos			= WT_Filter::post('photos') ? WT_Filter::post('photos') : 'highlighted';
-		$exclude_tags	= array('CHAN','NAME','SEX','SOUR','NOTE','OBJE','RESN','FAMC','FAMS','TITL','CHIL','HUSB','WIFE','BIRT','CHR','BAPM','DEAT','CREM','BURI','_UID','_WT_OBJE_SORT');
+		$exclude_tags	= array('CHAN','NAME','SEX','SOUR','NOTE','OBJE','RESN','FAMC','FAMS','TITL','CHIL','HUSB','WIFE','_UID','_WT_OBJE_SORT');
+		$basic_tags		= array('BIRT','BAPM_CHR','DEAT','BURI_CREM');
 		?>
 		<div id="page" class="family_report">
 			<h2><?php echo $this->getTitle(); ?></h2>
@@ -224,15 +225,23 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 											$header = getCloseRelationshipName($husb ? $husb : $wife, $child);
 											break;
 									}
-									sort_facts($indifacts);
 									if ($person && $person->canDisplayDetails()) {
-										$birth			= false;
-										$death			= false;
-										$marr			= false;
-										$chr			= false;
-										$buri			= false;
-										$crem			= false;
-										?>
+										if ($missing) {
+											// set missing tag variables
+											$indifact_list = array();
+											$missing_facts = array();
+											foreach ($indifacts as $fact) {
+												if ($fact == 'BAPM' || $fact == 'CHR') {$fact = 'BAPM_CHR';}
+												if ($fact == 'BURI' || $fact == 'CREM') {$fact = 'BURI_CREM';}
+												$indifact_list[] = $fact->getTag();
+											}
+											foreach ($basic_tags as $var) {
+												if (!in_array($var, $indifact_list)) {
+													$missing_facts[] = new WT_Event('1 ' . $var, null, -1);
+												}
+											}
+											$indifacts = array_merge($indifacts, $missing_facts);
+										}?>
 										<h3>
 											<a href="<?php echo $child->getHtmlUrl(); ?>">
 												<span class="relationship"><?php echo $header; ?></span>
@@ -270,60 +279,8 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 											} ?>
 											<!-- facts and events for this individual -->
 											<div class="facts_events">
-												<!-- Birth fact -->
 												<?php
-												foreach ($indifacts as $fact) {
-													if ($fact->getTag() === 'BIRT' && ($child->getBirthDate()->isOK() || $child->getBirthPlace())) {
-														$birth		 = true;
-														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
-														$sup		 = $data[0];
-														$source_list = $data[1];
-														$number		 = $data[2]; ?>
-														<p class="report_fact">
-															<span class="label"><?php echo print_fact_label($fact, $family) . $showsources ? $sup : ''; ?></span>
-															<span class="details">
-																<?php echo $data[3]['date']; ?>
-																<?php echo $data[3]['place']; ?>
-																<?php echo $data[3]['addr']; ?>
-																<?php echo $data[3]['detail']; ?>
-															</span>
-														</p>
-													<?php }
-												}
-												if ($missing && !$birth) { ?>
-													<p class="report_fact">
-														<span class="label"><?php echo WT_I18N::translate('Birth'); ?></span>
-														<span class="details"></span>
-													</p>
-												<?php } ?>
-												<!-- Christening fact -->
-												<?php
-												foreach ($indifacts as $fact) {
-													if ($fact->getTag() === 'CHR' || $fact->getTag() === 'BAPM') {
-														$chr = true;
-														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
-														$sup		 = $data[0];
-														$source_list = $data[1];
-														$number		 = $data[2]; ?>
-														<p class="report_fact">
-															<span class="label"><?php echo print_fact_label($fact, $family) . $showsources ? $sup : ''; ?></span>
-															<span class="details">
-																<?php echo $data[3]['date']; ?>
-																<?php echo $data[3]['place']; ?>
-																<?php echo $data[3]['addr']; ?>
-																<?php echo $data[3]['detail']; ?>
-															</span>
-														</p>
-													<?php }
-												}
-												if ($missing && !$chr) { ?>
-													<p class="report_fact">
-														<span class="label"><?php echo WT_I18N::translate('Christening'); ?></span>
-														<span class="details"></span>
-													</p>
-												<?php } ?>
-												<!-- Other facts -->
-												<?php
+												sort_facts($indifacts);
 												foreach ($indifacts as $fact) {
 													if (!in_array($fact->getTag(), $exclude_tags)) {
 														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
@@ -340,105 +297,17 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 															</span>
 														</p>
 														<?php
-														// Add spouse details
+														// Add spouse details to marriage events
 														if (in_array($fact->getTag(), array('MARR', '_NMR')) && $fact->getSpouse()) { ?>
 															<p class="report_fact">
-																<span class="label"><?php echo $fact->getDate()->isOK() ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner'); ?></span>
+																<span class="label indent"><?php echo $fact->getDate()->isOK() ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner'); ?></span>
 																<span class="details"><span class="field"><?php echo $fact->getSpouse()->getLifespanName(); ?></span></span>
 															</p>
 														<?php }
-														if ($fact->getTag() === 'MARR' || $fact->getTag() === '_NMR') {
-															$marr = true;
-														}
 													}
 												} ?>
-												<!-- Marriage fact -->
-												<?php
-												if ($missing && !$marr) { ?>
-													<p class="report_fact">
-														<span class="label"><?php echo WT_I18N::translate('Marriage') ; ?></span>
-														<span class="details"> <span class="field"></span> </span>
-													</p>
-												<?php } ?>
-												<!-- Death fact -->
-												<?php
-												foreach ($indifacts as $fact) {
-													if ($fact->getTag() === 'DEAT' && ($child->getDeathDate()->isOK() || $child->getDeathPlace())) {
-														$death = true;
-														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
-														$sup		 = $data[0];
-														$source_list = $data[1];
-														$number		 = $data[2]; ?>
-														<p class="report_fact">
-															<span class="label"><?php echo print_fact_label($fact, $family) . $showsources ? $sup : ''; ?></span>
-															<span class="details">
-																<?php echo $data[3]['date']; ?>
-																<?php echo $data[3]['place']; ?>
-																<?php echo $data[3]['addr']; ?>
-																<?php echo $data[3]['detail']; ?>
-															</span>
-														</p>
-													<?php }
-												}
-												if ($missing && !$death) { ?>
-													<p class="report_fact">
-														<span class="label"><?php echo WT_I18N::translate('Death'); ?></span>
-														<span class="details"></span>
-													</p>
-												<?php } ?>
-												<!-- Cremation fact -->
-												<?php
-												foreach ($indifacts as $fact) {
-													if ($fact->getTag() === 'CREM') {
-														$crem = true;
-														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
-														$sup		 = $data[0];
-														$source_list = $data[1];
-														$number		 = $data[2]; ?>
-														<p class="report_fact">
-															<span class="label"><?php echo print_fact_label($fact, $family) . $showsources ? $sup : ''; ?></span>
-															<span class="details">
-																<?php echo $data[3]['date']; ?>
-																<?php echo $data[3]['place']; ?>
-																<?php echo $data[3]['addr']; ?>
-																<?php echo $data[3]['detail']; ?>
-															</span>
-														</p>
-													<?php }
-												}
-												if ($missing && !$crem) { ?>
-													<p class="report_fact">
-														<span class="label"><?php echo WT_I18N::translate('Cremation'); ?></span>
-														<span class="details"></span>
-													</p>
-												<?php } ?>
-												<!-- Burial fact -->
-												<?php
-												foreach ($indifacts as $fact) {
-													if ($fact->getTag() === 'BURI') {
-														$buri = true;
-														$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
-														$sup		 = $data[0];
-														$source_list = $data[1];
-														$number		 = $data[2]; ?>
-														<p class="report_fact">
-															<span class="label"><?php echo print_fact_label($fact, $family) . $showsources ? $sup : ''; ?></span>
-															<span class="details">
-																<?php echo $data[3]['date']; ?>
-																<?php echo $data[3]['place']; ?>
-																<?php echo $data[3]['addr']; ?>
-																<?php echo $data[3]['detail']; ?>
-															</span>
-														</p>
-													<?php }
-												}
-												if ($missing && !$buri) { ?>
-													<p class="report_fact">
-														<span class="label"><?php echo WT_I18N::translate('Burial'); ?></span>
-														<span class="details"></span>
-													</p>
-												<?php }
-												// parents
+												<hr>
+												<?php // parents
 												if ($section !== 'children') {
 													$parent_families = $person->getChildFamilies();
 													foreach ($parent_families as $parent_family) {
@@ -446,13 +315,13 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 														$p_wife	= $parent_family->getWife();
 														if (!empty($p_husb)) { ?>
 															<p class="report_fact">
-																<span class="label"><?php echo WT_I18N::translate('Father'); ?></span>
+																<span class="label indent"><?php echo WT_I18N::translate('Father'); ?></span>
 																<span class="field"><?php echo $p_husb->getLifeSpanName(); ?></span>
 															</p>
 														<?php }
 														if (!empty($p_wife)) { ?>
 															<p class="report_fact">
-																<span class="label"><?php echo WT_I18N::translate('Mother'); ?></span>
+																<span class="label indent"><?php echo WT_I18N::translate('Mother'); ?></span>
 																<span class="field"><?php echo $p_wife->getLifeSpanName(); ?></span>
 															</p>
 														<?php }

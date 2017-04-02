@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -104,12 +104,13 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 		//-- set list of all configured individual tags (level 1)
 		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
 		$uniquefacts			= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$indifacts				=array_merge($indifacts, $uniquefacts);
+		$indifacts				= array_merge($indifacts, $uniquefacts);
 		$translated_indifacts	= array();
 		foreach ($indifacts as $addfact) {
 			$translated_indifacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
 		}
 		uasort($translated_indifacts, 'factsort');
+		var_dump($uniquefacts);
 
 		// set list of facts that have level 2 TYPE subtag
 		$typefacts = array();

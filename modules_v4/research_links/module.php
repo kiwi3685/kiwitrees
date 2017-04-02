@@ -56,7 +56,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return '';
 	}
 
-	// Extend class WT_Module_List
+	// Implement WT_Module_List & WT_Module_Sidebar
 	public function defaultAccessLevel() {
 		return WT_PRIV_USER;
 	}

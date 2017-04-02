@@ -34,12 +34,12 @@ class album_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Conf
 
 	// Extend WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the “Album” module */ WT_I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
+		return /* I18N: Description of the “Album” module */ WT_I18N::translate('A tab showing the media objects linked to an individual.');
 	}
 
 	// Implement WT_Module_Tab
 	public function defaultAccessLevel() {
-		return false;
+		return WT_PRIV_PUBLIC;
 	}
 
 	// Implement WT_Module_Tab

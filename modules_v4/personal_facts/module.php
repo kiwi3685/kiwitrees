@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend class WT_Module_Tab
 	public function defaultAccessLevel() {
-		return false;
+		return WT_PRIV_PUBLIC;
 	}
 
 	// Implement WT_Module_Tab
@@ -56,16 +56,16 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getTabContent() {
 		global $SHOW_RELATIVES_EVENTS, $controller;
 
-		if ($SHOW_RELATIVES_EVENTS) :
+		if ($SHOW_RELATIVES_EVENTS) {
 			$controller->record->add_family_facts();
-		endif;
+		}
 
 		ob_start();
 		echo '<table class="facts_table">';
 		$indifacts = $controller->getIndiFacts();
 		if (count($indifacts) == 0) {
 			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no Facts for this individual.'), '</td></tr>';
-		}?>
+		} ?>
 			<tr id="row_top">
 				<td colspan="2" class="descriptionbox rela">
 					<?php if ($SHOW_RELATIVES_EVENTS) : ?>

@@ -44,7 +44,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function defaultAccessLevel() {
-		return false;
+		return WT_PRIV_PUBLIC;
 	}
 
 	protected $sourceCount = null;
