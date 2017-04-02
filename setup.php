@@ -84,13 +84,13 @@ define('WT_PRIV_HIDE',  -1);
 // PHP requires a time zone to be set.
 date_default_timezone_set('UTC');
 
-if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
+if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
 	exit;
 }
 
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
-set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
+set_include_path(WT_ROOT.'library' . PATH_SEPARATOR . get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
@@ -98,7 +98,7 @@ require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
 $WT_REQUEST = new Zend_Controller_Request_Http();
 $WT_SESSION = new \stdClass;
-$WT_SESSION->locale=null; // Can't use Zend_Session until we've checked ini_set
+$WT_SESSION->locale = null; // Can't use Zend_Session until we've checked ini_set
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -916,10 +916,10 @@ try {
 		$_SERVER['SERVER_NAME'], $_SERVER['SERVER_NAME']
 	));
 
-	// Search for all installed modules, and enable them.
-	WT_Module::getInstalledModules('enabled');
+	// Create the default modules for new family trees
+	WT_Module::setDefaultModules();
 
-	// Create the default settings for new family trees
+	// Create the default block settings for new family trees
 	WT_DB::prepare(
 		"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES
 			(-1, 'main', 1, 'gedcom_stats'),
@@ -927,9 +927,9 @@ try {
 			(-1, 'side', 2, 'todays_events'),
 			(-1, 'side', 3, 'logged_in'),
 			(NULL, NULL, 0, 'widget_quicklinks'),
-			(NULL, NULL, 0, 'widget_quicklinks'),
+			(NULL, NULL, 0, 'widget_todays_events'),
 			(NULL, NULL, 0, 'widget_upcoming'),
-			(NULL, NULL, 0, 'widget_todays_events')"
+			(NULL, NULL, 0, 'widget_recent_changes')"
 	)->execute();
 
 	// Write the config file.  We already checked that this would work.

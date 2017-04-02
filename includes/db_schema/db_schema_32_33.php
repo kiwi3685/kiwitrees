@@ -38,6 +38,8 @@ $names_array = array (
 	'fancy_treeview_pedigree'	=> 'fancy_treeview_ancestors',
 );
 
+self::exec("SET FOREIGN_KEY_CHECKS=0;");
+
 foreach ($names_array as $key => $value) {
 	try {
 		self::exec("UPDATE `##module` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
@@ -46,6 +48,11 @@ foreach ($names_array as $key => $value) {
 	}
 	try {
 		self::exec("UPDATE `##module_privacy` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
+	} catch (PDOException $ex) {
+		// Perhaps we have already deleted this data?
+	}
+	try {
+		self::exec("UPDATE `##module_setting` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
 	} catch (PDOException $ex) {
 		// Perhaps we have already deleted this data?
 	}
@@ -74,6 +81,8 @@ try {
 } catch (PDOException $ex) {
 // Perhaps we have already deleted this data?
 }
+
+self::exec("SET FOREIGN_KEY_CHECKS=1;");
 
 // Update the version to indicate success
 WT_Site::preference($schema_name, $next_version);

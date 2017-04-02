@@ -58,6 +58,7 @@ interface WT_Module_Report {
 
 interface WT_Module_Sidebar {
 	public function defaultSidebarOrder();
+	public function defaultAccessLevel();
 	public function getSidebarContent();
 	public function getSidebarAjaxContent();
 	public function hasSidebarContent();
@@ -255,13 +256,13 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all installed modules.
-	// During setup, new modules need status of 'enabled'
-	// In admin->modules, new modules need status of 'disabled'
+	// During setup, new modules need status of 'enabled' (setup.php)
+	// In admin->modules, new modules need status of 'disabled' (admin_modules.php)
 	static public function getInstalledModules($status) {
 		$modules	= array();
 		$dir		= opendir(WT_ROOT . WT_MODULES_DIR);
 		while (($file = readdir($dir)) !== false) {
-			if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.WT_MODULES_DIR . $file . '/module.php')) {
+			if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT . WT_MODULES_DIR . $file . '/module.php')) {
 				require_once WT_ROOT . WT_MODULES_DIR . $file . '/module.php';
 				$class	= $file . '_WT_Module';
 				$module	= new $class();
@@ -384,4 +385,113 @@ abstract class WT_Module {
 			}
 		}
 	}
+
+	// Create the default module settings for new family trees
+	static public function setDefaultModules() {
+
+		/**
+		 *  An array listing modules to be enabled during setup processing
+		 * @param module name
+		 * @param status
+		 * @param display order for tabs, menus, sidebar, widgets, resources
+		 */
+		$default_modules = array(
+			// tabs
+			'personal_facts'		=> array('enabled', 1, NULL, NULL, NULL),
+			'relatives'				=> array('enabled', 2, NULL, NULL, NULL),
+			'sources_tab'			=> array('enabled', 3, NULL, NULL, NULL),
+			'notes'					=> array('enabled', 4, NULL, NULL, NULL),
+			'googlemap'				=> array('enabled', 6, NULL, NULL, NULL),
+			'tree'					=> array('enabled', 7, NULL, NULL, NULL),
+			'album'					=> array('enabled', 9, NULL, NULL, NULL),
+			// menus - main menu
+			'menu_homepage'			=> array('enabled', NULL, 1, NULL, NULL),
+			'page_menu'				=> array('enabled', NULL, 2, NULL, NULL),
+			'menu_charts'			=> array('enabled', NULL, 3, NULL, NULL),
+			'menu_lists'			=> array('enabled', NULL, 4, NULL, NULL),
+			'menu_reports'			=> array('enabled', NULL, 6, NULL, NULL),
+			'faq'					=> array('enabled', NULL, 8, NULL, NULL),
+			'menu_search'			=> array('enabled', NULL, 9, NULL, NULL),
+			'clippings'				=> array('enabled', NULL, 10, 8, NULL),
+			'contact'				=> array('enabled', NULL, 11, NULL, NULL),
+			// menus - extra menu
+			'menu_login'			=> array('enabled', NULL, 13, NULL, NULL),
+			'menu_favorites'		=> array('enabled', NULL, 14, NULL, NULL),
+			'menu_languages'		=> array('enabled', NULL, 15, NULL, NULL),
+			// sidebar
+			'extra_info'			=> array('enabled', NULL, NULL, 1, NULL),
+			'family_nav'			=> array('enabled', NULL, NULL, 4, NULL),
+			'descendancy'			=> array('enabled', NULL, NULL, 5, NULL),
+			'individuals'			=> array('enabled', NULL, NULL, 6, NULL),
+			'families'				=> array('enabled', NULL, NULL, 7, NULL),
+			// widgets
+			'widget_quicklinks'		=> array('enabled', NULL, NULL, NULL, 10),
+			'widget_todays_events'	=> array('enabled', NULL, NULL, NULL, 20),
+			'widget_upcoming'		=> array('enabled', NULL, NULL, NULL, 30),
+			'widget_recent_changes'	=> array('enabled', NULL, NULL, NULL, 70),
+			// not ordered
+			//  charts (sorted alphabetically)
+			'chart_ancestry'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_compact'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_descendancy'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_familybook'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_fanchart'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_hourglass'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_lifespan'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_pedigree'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_relationship'	=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_statistics'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'chart_timeline'		=> array('enabled', NULL, NULL, NULL, NULL),
+			// lists (sorted alphabetically)
+			'list_branches'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_calendar'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'calendar_utilities'	=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_families'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_individuals'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_media'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_places'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_repositories'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_shared_notes'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'list_sources'			=> array('enabled', NULL, NULL, NULL, NULL),
+			// reports (sorted alphabetically)
+			'report_changes'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_fact'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_family'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_individual'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_marriages'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_related_fam'	=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_related_indi'	=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_todo'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'report_vital_records'	=> array('enabled', NULL, NULL, NULL, NULL),
+			// blocks (manually positioned and sorted)
+			'charts'				=> array('enabled', NULL, NULL, NULL, NULL),
+			'gedcom_block'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'gedcom_favorites'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'gedcom_news'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'gedcom_stats'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'html'					=> array('enabled', NULL, NULL, NULL, NULL),
+			'login_block'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'logged_in'				=> array('enabled', NULL, NULL, NULL, NULL),
+			'random_media'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'recent_changes'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'review_changes'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'todays_events'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'todo'					=> array('enabled', NULL, NULL, NULL, NULL),
+			'top10_givnnames'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'top10_pageviews'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'top10_surnames'		=> array('enabled', NULL, NULL, NULL, NULL),
+			'upcoming_events'		=> array('enabled', NULL, NULL, NULL, NULL),
+			// other
+			'batch_update'			=> array('enabled', NULL, NULL, NULL, NULL),
+			'ckeditor'				=> array('enabled', NULL, NULL, NULL, NULL),
+			'sitemap'				=> array('enabled', NULL, NULL, NULL, NULL),
+		);
+
+		foreach($default_modules as $module => $order) {
+			WT_DB::prepare(
+				"INSERT INTO `##module` (module_name, status, tab_order, menu_order, sidebar_order, widget_order) VALUES (?, ?, ?, ?, ?, ?)"
+			)->execute(array($module, $order[0], $order[1], $order[2], $order[3], $order[4]));
+		}
+	}
+
 }
