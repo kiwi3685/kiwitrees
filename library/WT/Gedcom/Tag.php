@@ -132,6 +132,7 @@ class WT_Gedcom_Tag {
 		case 'BAPM': return /* I18N: gedcom tag BAPM */ WT_I18N::translate('Baptism');
 		case 'BAPM:DATE': return WT_I18N::translate('Date of baptism');
 		case 'BAPM:PLAC': return WT_I18N::translate('Place of baptism');
+		case 'BAPM_CHR': return /* I18N: Used where either gedcom tag BAPM or CHR might be used*/ WT_I18N::translate('Baptism or christening');
 		case 'BARM': return /* I18N: gedcom tag BARM */ WT_I18N::translate('Bar mitzvah');
 		case 'BARM:DATE': return WT_I18N::translate('Date of bar mitzvah');
 		case 'BARM:PLAC': return WT_I18N::translate('Place of bar mitzvah');
@@ -148,6 +149,7 @@ class WT_Gedcom_Tag {
 		case 'BURI': return /* I18N: gedcom tag BURI */ WT_I18N::translate('Burial');
 		case 'BURI:DATE': return WT_I18N::translate('Date of burial');
 		case 'BURI:PLAC': return WT_I18N::translate('Place of burial');
+		case 'BURI_CREM': return /* I18N: Used where either gedcom tag BURI or CREM might be used*/ WT_I18N::translate('Burial or cremation');
 		case 'CALN': return /* I18N: gedcom tag CALN */ WT_I18N::translate('Call number');
 		case 'CAST': return /* I18N: gedcom tag CAST */ WT_I18N::translate('Caste');
 		case 'CAUS': return /* I18N: gedcom tag CAUS */ WT_I18N::translate('Cause');

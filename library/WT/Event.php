@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -336,61 +336,61 @@ class WT_Event {
 
 		if (empty($factsort))
 			$factsort=array_flip(array(
-				"BIRT",
-				"_HNM",
-				"ALIA", "_AKA", "_AKAN",
-				"ADOP", "_ADPF", "_ADPF",
-				"_BRTM",
-				"CHR", "BAPM",
-				"FCOM",
-				"CONF",
-				"BARM", "BASM",
-				"EDUC",
-				"GRAD",
-				"_DEG",
-				"EMIG", "IMMI",
-				"NATU",
-				"_MILI", "_MILT",
-				"ENGA",
-				"MARB", "MARC", "MARL", "_MARI", "_MBON",
-				"MARR", "MARR_CIVIL", "MARR_RELIGIOUS", "MARR_PARTNERS", "MARR_UNKNOWN", "_COML",
-				"_STAT",
-				"_SEPR",
-				"DIVF",
-				"MARS",
-				"_BIRT_CHIL",
-				"DIV", "ANUL",
-				"_BIRT_", "_MARR_", "_DEAT_","_BURI_", // other events of close relatives
-				"CENS",
-				"OCCU",
-				"RESI",
-				"PROP",
-				"CHRA",
-				"RETI",
-				"FACT", "EVEN",
-				"_NMR", "_NMAR", "NMR",
-				"NCHI",
-				"WILL",
-				"_HOL",
-				"_????_",
-				"DEAT",
-				"_FNRL", "BURI", "CREM", "_INTE",
-				"_YART",
-				"_NLIV",
-				"PROB",
-				"TITL",
-				"COMM",
-				"NATI",
-				"CITN",
-				"CAST",
-				"RELI",
-				"SSN", "IDNO",
-				"TEMP",
-				"SLGC", "BAPL", "CONL", "ENDL", "SLGS",
-				"ADDR", "PHON", "EMAIL", "_EMAIL", "EMAL", "FAX", "WWW", "URL", "_URL",
-				"AFN", "REFN", "_PRMN", "REF", "RIN", "_UID",
-				"CHAN", "_TODO",
-				"NOTE", "SOUR", "OBJE"
+				'BIRT',
+				'_HNM',
+				'ALIA', '_AKA', '_AKAN',
+				'ADOP', '_ADPF', '_ADPF',
+				'_BRTM',
+				'CHR', 'BAPM', 'BAPM_CHR',
+				'FCOM',
+				'CONF',
+				'BARM', 'BASM',
+				'EDUC',
+				'GRAD',
+				'_DEG',
+				'EMIG', 'IMMI',
+				'NATU',
+				'_MILI', '_MILT',
+				'ENGA',
+				'MARB', 'MARC', 'MARL', '_MARI', '_MBON',
+				'MARR', 'MARR_CIVIL', 'MARR_RELIGIOUS', 'MARR_PARTNERS', 'MARR_UNKNOWN', '_COML',
+				'_STAT',
+				'_SEPR',
+				'DIVF',
+				'MARS',
+				'_BIRT_CHIL',
+				'DIV', 'ANUL',
+				'_BIRT_', '_MARR_', '_DEAT_','_BURI_', // other events of close relatives
+				'CENS',
+				'OCCU',
+				'RESI',
+				'PROP',
+				'CHRA',
+				'RETI',
+				'FACT', 'EVEN',
+				'_NMR', '_NMAR', 'NMR',
+				'NCHI',
+				'WILL',
+				'_HOL',
+				'_????_',
+				'DEAT',
+				'_FNRL', 'BURI', 'CREM', '_INTE', 'BURI_CREM',
+				'_YART',
+				'_NLIV',
+				'PROB',
+				'TITL',
+				'COMM',
+				'NATI',
+				'CITN',
+				'CAST',
+				'RELI',
+				'SSN', 'IDNO',
+				'TEMP',
+				'SLGC', 'BAPL', 'CONL', 'ENDL', 'SLGS',
+				'ADDR', 'PHON', 'EMAIL', '_EMAIL', 'EMAL', 'FAX', 'WWW', 'URL', '_URL',
+				'AFN', 'REFN', '_PRMN', 'REF', 'RIN', '_UID',
+				'CHAN', '_TODO',
+				'NOTE', 'SOUR', 'OBJE'
 			));
 
 		// Facts from same families stay grouped together
