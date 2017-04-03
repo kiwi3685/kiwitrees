@@ -47,6 +47,28 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		return 20;
 	}
 
+	// Implement WT_Module_Tab
+	public function hasTabContent() {
+		return true;
+	}
+
+	// Implement WT_Module_Tab
+	public function isGrayedOut() {
+		return false;
+	}
+
+	// Implement WT_Module_Tab
+	public function canLoadAjax() {
+		global $SEARCH_SPIDER;
+
+		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
+	}
+
+	// Implement WT_Module_Tab
+	public function getPreLoadContent() {
+		return '';
+	}
+
 	function printFamilyHeader(WT_Family $family, $type, $label, $people) { ?>
 		<table class="fam_relationship">
 			<tr>
@@ -435,25 +457,4 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
-
-	// Implement WT_Module_Tab
-	public function hasTabContent() {
-		return true;
-	}
-	// Implement WT_Module_Tab
-	public function isGrayedOut() {
-		return false;
-	}
-	// Implement WT_Module_Tab
-	public function canLoadAjax() {
-		global $SEARCH_SPIDER;
-
-		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
-	}
-
-	// Implement WT_Module_Tab
-	public function getPreLoadContent() {
-		return '';
-	}
-
 }

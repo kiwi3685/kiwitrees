@@ -39,7 +39,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Extend class WT_Module_Tab
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return false;
 	}
 
 	// Implement WT_Module_Tab
@@ -50,6 +50,23 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
 		return false;
+	}
+
+	// Implement WT_Module_Tab
+	public function hasTabContent() {
+		return true;
+	}
+
+	// Implement WT_Module_Tab
+	public function canLoadAjax() {
+		global $SEARCH_SPIDER;
+
+		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
+	}
+
+	// Implement WT_Module_Tab
+	public function getPreLoadContent() {
+		return '';
 	}
 
 	// Implement WT_Module_Tab
@@ -103,22 +120,4 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
-
-	// Implement WT_Module_Tab
-	public function hasTabContent() {
-		return true;
-	}
-
-	// Implement WT_Module_Tab
-	public function canLoadAjax() {
-		global $SEARCH_SPIDER;
-
-		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
-	}
-
-	// Implement WT_Module_Tab
-	public function getPreLoadContent() {
-		return '';
-	}
-
 }
