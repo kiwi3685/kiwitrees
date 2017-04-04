@@ -6757,6 +6757,11 @@ textarea#NOTE {
 /* ------------------ */
 
 /* Styles for Research links page */
+#research_links-page {
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
 #research_links-page .help_content .hidden {
 	display: none;
 	margin: 0 10px;
@@ -6795,11 +6800,6 @@ textarea#NOTE {
 
 #research_links-page form {
 	display: inline;
-}
-
-#research_links {
-	margin-bottom: 20px;
-	overflow: hidden;
 }
 
 .chart_options.check-boxes {

@@ -67,7 +67,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 		$menus = array();
 		$menu  = new WT_Menu(
 			$this->getTitle(),
-			'module.php?mod=simpl_research&amp;mod_action=show',
+			'module.php?mod=' . $this->getName() . '&amp;mod_action=show',
 			'menu-research_links'
 		);
 		$menus[] = $menu;
