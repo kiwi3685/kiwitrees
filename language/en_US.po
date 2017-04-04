@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2017-03-30 15:16+1300\n"
-"PO-Revision-Date: 2017-03-30 15:16+1300\n"
+"POT-Creation-Date: 2017-04-05 10:43+1200\n"
+"PO-Revision-Date: 2017-04-05 10:44+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -441,7 +441,7 @@ msgstr "Families"
 #: modules_v4/gedcom_stats/module.php:107
 #: modules_v4/gedcom_stats/module.php:322 modules_v4/html/module.php:184
 #: modules_v4/list_sources/module.php:33
-#: modules_v4/report_family/module.php:484
+#: modules_v4/report_family/module.php:353
 #: modules_v4/report_individual/module.php:342
 #: modules_v4/report_related_fam/module.php:432
 #: modules_v4/sources_tab/module.php:32 modules_v4/widget_stats/module.php:125
@@ -512,7 +512,7 @@ msgstr "Month"
 #: admin.php:312 library/WT/Controller/Search.php:1138 mediaviewer.php:146
 #: modules_v4/calendar_utilities/plugins/regnal_years.php:140
 #: modules_v4/census_assistant/census_2_source_input.php:1049
-#: modules_v4/notes/module.php:32 modules_v4/report_family/module.php:465
+#: modules_v4/notes/module.php:32 modules_v4/report_family/module.php:334
 #: modules_v4/report_individual/module.php:232
 #: modules_v4/report_related_fam/module.php:312
 #: modules_v4/report_ukregister/module.php:189 source.php:108
@@ -542,7 +542,7 @@ msgstr "The file %s could not be deleted."
 #: includes/functions/functions_print_lists.php:925
 #: includes/functions/functions_resource.php:546 library/WT/Stats.php:3558
 #: medialist.php:263 modules_v4/batch_update/admin_batch_update.php:373
-#: modules_v4/charts/module.php:211 modules_v4/relatives/module.php:236
+#: modules_v4/charts/module.php:211 modules_v4/relatives/module.php:258
 msgid "yes"
 msgstr "yes"
 
@@ -653,7 +653,7 @@ msgid "Media file"
 msgstr "Media file"
 
 #. I18N: gedcom tag OBJE
-#: admin_media.php:625 library/WT/Gedcom/Tag.php:285
+#: admin_media.php:625 library/WT/Gedcom/Tag.php:287
 #: modules_v4/album/module.php:185
 msgid "Media object"
 msgstr "Media object"
@@ -664,8 +664,8 @@ msgstr "Highlight"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
-#: admin_media.php:627 library/WT/Gedcom/Tag.php:266
-#: library/WT/Gedcom/Tag.php:830
+#: admin_media.php:627 library/WT/Gedcom/Tag.php:268
+#: library/WT/Gedcom/Tag.php:832
 msgid "Media type"
 msgstr "Media type"
 
@@ -700,7 +700,7 @@ msgstr "Block"
 #: admin_module_lists.php:58 admin_module_menus.php:76
 #: admin_module_reports.php:58 admin_module_sidebar.php:76
 #: admin_module_tabs.php:76 admin_module_widgets.php:76 admin_modules.php:134
-#: find.php:485 library/WT/Gedcom/Tag.php:194 modules_v4/gallery/module.php:256
+#: find.php:485 library/WT/Gedcom/Tag.php:196 modules_v4/gallery/module.php:256
 msgid "Description"
 msgstr "Description"
 
@@ -768,7 +768,7 @@ msgstr "Module"
 msgid "Home"
 msgstr "Home"
 
-#: admin_modules.php:164 library/WT/Gedcom/Tag.php:926
+#: admin_modules.php:164 library/WT/Gedcom/Tag.php:928
 #: library/WT/Stats.php:3245 library/WT/Stats.php:3430
 #: modules_v4/album/album_print_media.php:52
 #: modules_v4/album/album_print_media.php:57
@@ -852,7 +852,7 @@ msgid "Rule"
 msgstr "Rule"
 
 #. I18N: gedcom tag COMM
-#: admin_site_access.php:298 library/WT/Gedcom/Tag.php:169
+#: admin_site_access.php:298 library/WT/Gedcom/Tag.php:171
 msgid "Comment"
 msgstr "Comment"
 
@@ -954,7 +954,7 @@ msgstr "From %s to %s"
 
 #. I18N: gedcom tag STAT
 #: admin_site_change.php:273 admin_site_change.php:305
-#: includes/functions/functions_print.php:1023 library/WT/Gedcom/Tag.php:330
+#: includes/functions/functions_print.php:1023 library/WT/Gedcom/Tag.php:332
 msgid "Status"
 msgstr "Status"
 
@@ -1052,7 +1052,7 @@ msgstr "Site configuration"
 #: admin_trees_config.php:509 admin_trees_config.php:1339 media_links.php:644
 #: modules_v4/census_assistant/census_3_search_add.php:2085
 #: modules_v4/chart_relationship/module.php:117
-#: modules_v4/family_nav/module.php:233 modules_v4/family_nav/module.php:377
+#: modules_v4/family_nav/module.php:238 modules_v4/family_nav/module.php:382
 msgid "none"
 msgstr "none"
 
@@ -1584,8 +1584,8 @@ msgstr "Logs"
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:225 admin_site_logs.php:256 edit_changes.php:166
 #: includes/functions/functions_print_facts.php:597
-#: library/WT/Gedcom/Tag.php:343 medialist.php:107
-#: modules_v4/report_fact/module.php:206 modules_v4/report_fact/module.php:362
+#: library/WT/Gedcom/Tag.php:345 medialist.php:107
+#: modules_v4/report_fact/module.php:207 modules_v4/report_fact/module.php:363
 msgid "Type"
 msgstr "Type"
 
@@ -1952,8 +1952,8 @@ msgstr "Family tree subtitle"
 #. I18N: gedcom tag WWW (A web address / URL)
 #. I18N: gedcom tag _URL
 #: admin_trees_config.php:309 admin_trees_manage.php:378
-#: library/WT/Gedcom/Tag.php:344 library/WT/Gedcom/Tag.php:348
-#: library/WT/Gedcom/Tag.php:832
+#: library/WT/Gedcom/Tag.php:346 library/WT/Gedcom/Tag.php:350
+#: library/WT/Gedcom/Tag.php:834
 msgid "URL"
 msgstr "URL"
 
@@ -1967,7 +1967,7 @@ msgstr ""
 #. I18N: A configuration setting
 #. I18N: gedcom tag LANG
 #: admin_trees_config.php:319 admin_users.php:427 admin_users.php:794
-#: edituser.php:169 library/WT/Gedcom/Tag.php:247 library/WT/MenuBar.php:168
+#: edituser.php:169 library/WT/Gedcom/Tag.php:249 library/WT/MenuBar.php:168
 msgid "Language"
 msgstr "Language"
 
@@ -2104,7 +2104,7 @@ msgstr "Prefixes"
 #: descendancy.php:40 familybook.php:40 hourglass.php:49
 #: includes/functions/functions_edit.php:1723
 #: includes/functions/functions_print_lists.php:1421 inverselink.php:222
-#: library/WT/Gedcom/Tag.php:245 modules_v4/chart_fanchart/module.php:109
+#: library/WT/Gedcom/Tag.php:247 modules_v4/chart_fanchart/module.php:109
 #: modules_v4/charts/module.php:216
 #: modules_v4/fancy_treeview_ancestors/module.php:210
 #: modules_v4/fancy_treeview_descendants/module.php:220
@@ -2123,11 +2123,11 @@ msgstr "Individual"
 #: admin_trees_config.php:440 admin_trees_source.php:159
 #: admin_trees_source.php:274 admin_trees_sourcecite.php:141
 #: edit_interface.php:466 includes/functions/functions_edit.php:1754
-#: library/WT/Gedcom/Tag.php:215 media_links.php:382 media_links.php:389
+#: library/WT/Gedcom/Tag.php:217 media_links.php:382 media_links.php:389
 #: modules_v4/census_assistant/census_3_search_add.php:1386
-#: modules_v4/family_nav/module.php:236 modules_v4/family_nav/module.php:274
+#: modules_v4/family_nav/module.php:241 modules_v4/family_nav/module.php:279
 #: modules_v4/report_family/module.php:31
-#: modules_v4/report_family/module.php:104
+#: modules_v4/report_family/module.php:105
 msgid "Family"
 msgstr "Family"
 
@@ -2137,7 +2137,7 @@ msgstr "Family"
 #: admin_trees_sourcecite.php:86 admin_trees_sourcecite.php:105
 #: includes/functions/functions_print_facts.php:483
 #: includes/functions/functions_print_facts.php:505
-#: library/WT/Gedcom/Tag.php:326 modules_v4/gallery/module.php:260
+#: library/WT/Gedcom/Tag.php:328 modules_v4/gallery/module.php:260
 #: modules_v4/report_marriages/module.php:217
 #: modules_v4/report_vital_records/module.php:279
 #: modules_v4/report_vital_records/module.php:320
@@ -2146,7 +2146,7 @@ msgid "Source"
 msgstr "Source"
 
 #. I18N: gedcom tag REPO
-#: admin_trees_config.php:448 library/WT/Gedcom/Tag.php:308
+#: admin_trees_config.php:448 library/WT/Gedcom/Tag.php:310
 msgid "Repository"
 msgstr "Repository"
 
@@ -2154,7 +2154,7 @@ msgstr "Repository"
 #: admin_trees_config.php:456 includes/functions/functions_print.php:507
 #: includes/functions/functions_print.php:591
 #: includes/functions/functions_print.php:689
-#: includes/functions/functions_resource.php:344 library/WT/Gedcom/Tag.php:282
+#: includes/functions/functions_resource.php:344 library/WT/Gedcom/Tag.php:284
 msgid "Note"
 msgstr "Note"
 
@@ -2373,7 +2373,7 @@ msgstr ""
 #: admin_trees_config.php:641 admin_trees_missing.php:110
 #: includes/functions/functions_print.php:1140
 #: includes/functions/functions_print.php:1244
-#: modules_v4/report_fact/module.php:183
+#: modules_v4/report_fact/module.php:184
 msgid "Fact or event"
 msgstr "Fact or event"
 
@@ -2657,9 +2657,9 @@ msgstr "hide"
 #: modules_v4/faq/module.php:447 modules_v4/gallery/module.php:531
 #: modules_v4/googlemap/module.php:267 modules_v4/pages/module.php:460
 #: modules_v4/report_changes/module.php:202
-#: modules_v4/report_fact/module.php:213 modules_v4/report_fact/module.php:215
-#: modules_v4/report_family/module.php:145
-#: modules_v4/report_family/module.php:147
+#: modules_v4/report_fact/module.php:214 modules_v4/report_fact/module.php:216
+#: modules_v4/report_family/module.php:146
+#: modules_v4/report_family/module.php:148
 #: modules_v4/report_individual/module.php:131
 #: modules_v4/report_individual/module.php:133
 #: modules_v4/report_marriages/module.php:148
@@ -3392,9 +3392,9 @@ msgstr "Apply privacy settings?"
 #: admin_trees_download.php:129 famlist.php:113 famlist.php:149
 #: indilist.php:113 indilist.php:147 library/WT/Stats.php:760
 #: modules_v4/clippings/module.php:255 modules_v4/clippings/module.php:662
-#: modules_v4/families/module.php:149 modules_v4/individuals/module.php:148
-#: modules_v4/report_family/module.php:128
-#: modules_v4/report_family/module.php:138
+#: modules_v4/families/module.php:154 modules_v4/individuals/module.php:153
+#: modules_v4/report_family/module.php:129
+#: modules_v4/report_family/module.php:139
 #: modules_v4/report_individual/module.php:124
 #: modules_v4/report_related_fam/module.php:157
 msgid "None"
@@ -3468,7 +3468,7 @@ msgstr "Find duplicate individuals"
 
 #. I18N: gedcom tag SURN
 #: admin_trees_duplicates.php:146 help_text.php:558
-#: library/WT/Gedcom/Tag.php:334
+#: library/WT/Gedcom/Tag.php:336
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:229
 #: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:234
 #: modules_v4/research_links/module.php:377
@@ -3490,7 +3490,7 @@ msgstr "Given name"
 
 #. I18N: gedcom tag SEX
 #: admin_trees_duplicates.php:170 admin_trees_sanity.php:203
-#: library/WT/Gedcom/Tag.php:320
+#: library/WT/Gedcom/Tag.php:322
 msgid "Gender"
 msgstr "Gender"
 
@@ -3532,7 +3532,7 @@ msgstr "Include married names: "
 #: admin_trees_duplicates.php:215 admin_trees_missing.php:260
 #: admin_trees_sanity.php:209 edit_interface.php:2687 inverselink.php:113
 #: inverselink.php:187 library/WT/Controller/Individual.php:173
-#: library/WT/Gedcom/Tag.php:271 library/WT/Stats.php:3365
+#: library/WT/Gedcom/Tag.php:273 library/WT/Stats.php:3365
 #: modules_v4/report_marriages/module.php:213
 #: modules_v4/report_related_indi/module.php:227
 #: modules_v4/report_vital_records/module.php:233
@@ -3543,8 +3543,8 @@ msgstr "Name"
 #. I18N: gedcom tag BIRT
 #: admin_trees_duplicates.php:216 admin_trees_sanity.php:185
 #: admin_trees_source.php:131 admin_trees_source.php:248
-#: library/WT/Controller/FancyTreeView.php:920 library/WT/Gedcom/Tag.php:141
-#: modules_v4/googlemap/module.php:1281 modules_v4/report_family/module.php:295
+#: library/WT/Controller/FancyTreeView.php:920 library/WT/Gedcom/Tag.php:142
+#: modules_v4/googlemap/module.php:1281
 #: modules_v4/report_related_indi/module.php:228
 #: modules_v4/report_vital_records/module.php:234
 msgid "Birth"
@@ -3553,8 +3553,7 @@ msgstr "Birth"
 #. I18N: gedcom tag DEAT
 #: admin_trees_duplicates.php:217 admin_trees_sanity.php:191
 #: admin_trees_source.php:251 library/WT/Controller/FancyTreeView.php:923
-#: library/WT/Gedcom/Tag.php:185 modules_v4/report_family/module.php:385
-#: modules_v4/report_related_indi/module.php:231
+#: library/WT/Gedcom/Tag.php:187 modules_v4/report_related_indi/module.php:231
 #: modules_v4/report_vital_records/module.php:237
 msgid "Death"
 msgstr "Death"
@@ -3566,8 +3565,8 @@ msgstr "Merge selected"
 #. I18N: gedcom tag DATE
 #: admin_trees_duplicates.php:225 admin_trees_duplicates.php:227
 #: admin_trees_missing.php:262 edit_changes.php:168 help_text.php:170
-#: help_text.php:200 library/WT/Gedcom/Tag.php:184
-#: modules_v4/report_fact/module.php:197 modules_v4/report_fact/module.php:360
+#: help_text.php:200 library/WT/Gedcom/Tag.php:186
+#: modules_v4/report_fact/module.php:198 modules_v4/report_fact/module.php:361
 #: modules_v4/report_marriages/module.php:214
 #: modules_v4/report_vital_records/module.php:271
 #: modules_v4/report_vital_records/module.php:312
@@ -3578,15 +3577,15 @@ msgstr "Date"
 #. I18N: gedcom tag PLAC
 #: admin_trees_duplicates.php:226 admin_trees_duplicates.php:228
 #: admin_trees_missing.php:263 admin_trees_source.php:250
-#: admin_trees_source.php:253 library/WT/Gedcom/Tag.php:296
+#: admin_trees_source.php:253 library/WT/Gedcom/Tag.php:298
 #: modules_v4/census_assistant/census_2_source_input.php:1045
 #: modules_v4/googlemap/admin_places.php:177
 #: modules_v4/googlemap/admin_places.php:178
 #: modules_v4/googlemap/admin_places.php:179
 #: modules_v4/googlemap/admin_places.php:180
 #: modules_v4/googlemap/admin_places.php:181
-#: modules_v4/googlemap/module.php:1603 modules_v4/report_fact/module.php:202
-#: modules_v4/report_fact/module.php:361
+#: modules_v4/googlemap/module.php:1603 modules_v4/report_fact/module.php:203
+#: modules_v4/report_fact/module.php:362
 #: modules_v4/report_marriages/module.php:216
 #: modules_v4/report_related_indi/module.php:230
 #: modules_v4/report_related_indi/module.php:233
@@ -3797,7 +3796,7 @@ msgstr "Direct line ancestors and their families"
 #. I18N: Name of a module/sidebar
 #. I18N: Name of the module
 #: admin_trees_missing.php:70 includes/functions/functions_print.php:94
-#: library/WT/Controller/Descendancy.php:99 library/WT/Gedcom/Tag.php:189
+#: library/WT/Controller/Descendancy.php:99 library/WT/Gedcom/Tag.php:191
 #: modules_v4/charts/module.php:201 modules_v4/descendancy/module.php:33
 #: modules_v4/fancy_treeview_descendants/module.php:41
 #: modules_v4/report_related_fam/module.php:114
@@ -3827,8 +3826,8 @@ msgstr "All relatives"
 #: modules_v4/googlemap/module.php:1493 modules_v4/googlemap/module.php:1509
 #: modules_v4/pages/help_text.php:38 modules_v4/pages/module.php:471
 #: modules_v4/random_media/module.php:296
-#: modules_v4/report_family/module.php:130
-#: modules_v4/report_family/module.php:139
+#: modules_v4/report_family/module.php:131
+#: modules_v4/report_family/module.php:140
 #: modules_v4/report_individual/module.php:125
 #: modules_v4/report_related_fam/module.php:129
 #: modules_v4/report_related_fam/module.php:158
@@ -3868,7 +3867,7 @@ msgstr ""
 #: admin_trees_missing.php:112 includes/functions/functions_print.php:1145
 #: includes/functions/functions_print.php:1249
 #: modules_v4/googlemap/module.php:1492 modules_v4/googlemap/module.php:1508
-#: modules_v4/report_fact/module.php:185
+#: modules_v4/report_fact/module.php:186
 #: modules_v4/widget_messages/module.php:66
 msgid "Select"
 msgstr "Select"
@@ -3876,12 +3875,12 @@ msgstr "Select"
 #: admin_trees_missing.php:118 calendar.php:294
 #: includes/functions/functions_print.php:1152
 #: includes/functions/functions_print.php:1254
-#: modules_v4/report_fact/module.php:191
+#: modules_v4/report_fact/module.php:192
 msgid "Custom Event"
 msgstr "Custom Event"
 
 #: admin_trees_missing.php:119 includes/functions/functions_print.php:1153
-#: modules_v4/report_fact/module.php:192
+#: modules_v4/report_fact/module.php:193
 msgid "Custom Fact"
 msgstr "Custom Fact"
 
@@ -4107,8 +4106,7 @@ msgid "Duplicated data"
 msgstr "Duplicated data"
 
 #. I18N: gedcom tag BURI
-#: admin_trees_sanity.php:197 library/WT/Gedcom/Tag.php:148
-#: modules_v4/report_family/module.php:437
+#: admin_trees_sanity.php:197 library/WT/Gedcom/Tag.php:149
 msgid "Burial"
 msgstr "Burial"
 
@@ -4125,7 +4123,7 @@ msgid "Invalid age recorded"
 msgstr "Invalid age recorded"
 
 #: admin_trees_sanity.php:237 medialist.php:143 modules_v4/album/module.php:330
-#: modules_v4/googlemap/module.php:2026 modules_v4/report_fact/module.php:219
+#: modules_v4/googlemap/module.php:2026 modules_v4/report_fact/module.php:220
 #: modules_v4/research_links/module.php:419
 msgid "Reset"
 msgstr "Reset"
@@ -4261,7 +4259,7 @@ msgid "Edit raw GEDCOM record"
 msgstr "Edit raw GEDCOM record"
 
 #. I18N: gedcom tag EVEN
-#: admin_trees_source.php:133 library/WT/Gedcom/Tag.php:209
+#: admin_trees_source.php:133 library/WT/Gedcom/Tag.php:211
 msgid "Event"
 msgstr "Event"
 
@@ -4537,8 +4535,8 @@ msgstr "Type the password again."
 #. I18N: gedcom tag EMAL
 #. I18N: gedcom tag _EMAIL
 #: admin_users.php:388 edituser.php:181 help_text.php:528
-#: library/WT/Gedcom/Tag.php:197 library/WT/Gedcom/Tag.php:198
-#: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:720 login.php:385
+#: library/WT/Gedcom/Tag.php:199 library/WT/Gedcom/Tag.php:200
+#: library/WT/Gedcom/Tag.php:201 library/WT/Gedcom/Tag.php:722 login.php:385
 #: setup.php:449
 msgid "Email address"
 msgstr "Email address"
@@ -4793,7 +4791,7 @@ msgid "Administration role"
 msgstr "Administration role"
 
 #. I18N: gedcom tag ROLE
-#: admin_users.php:610 help_text.php:672 library/WT/Gedcom/Tag.php:317
+#: admin_users.php:610 help_text.php:672 library/WT/Gedcom/Tag.php:319
 msgid "Role"
 msgstr "Role"
 
@@ -5193,14 +5191,14 @@ msgstr "Add a wife"
 msgid "Add a husband"
 msgstr "Add a husband"
 
-#: edit_interface.php:412 modules_v4/relatives/module.php:177
-#: modules_v4/relatives/module.php:178 modules_v4/relatives/module.php:378
+#: edit_interface.php:412 modules_v4/relatives/module.php:199
+#: modules_v4/relatives/module.php:200 modules_v4/relatives/module.php:400
 msgid "Add a mother"
 msgstr "Add a mother"
 
 #: edit_interface.php:414 edit_interface.php:1830
-#: modules_v4/relatives/module.php:124 modules_v4/relatives/module.php:125
-#: modules_v4/relatives/module.php:375
+#: modules_v4/relatives/module.php:146 modules_v4/relatives/module.php:147
+#: modules_v4/relatives/module.php:397
 msgid "Add a father"
 msgstr "Add a father"
 
@@ -5232,14 +5230,14 @@ msgid "Add a wife using an existing person"
 msgstr "Add a wife using an existing person"
 
 #. I18N: gedcom tag WIFE
-#: edit_interface.php:539 library/WT/Gedcom/Tag.php:346
-#: modules_v4/report_family/module.php:221
+#: edit_interface.php:539 library/WT/Gedcom/Tag.php:348
+#: modules_v4/report_family/module.php:222
 msgid "Wife"
 msgstr "Wife"
 
 #. I18N: gedcom tag HUSB
-#: edit_interface.php:541 library/WT/Gedcom/Tag.php:240
-#: modules_v4/report_family/module.php:218
+#: edit_interface.php:541 library/WT/Gedcom/Tag.php:242
+#: modules_v4/report_family/module.php:219
 msgid "Husband"
 msgstr "Husband"
 
@@ -5272,7 +5270,7 @@ msgstr ""
 
 #: edit_interface.php:916 edit_interface.php:1139
 #: includes/functions/functions_print.php:505
-#: includes/functions/functions_print.php:692 library/WT/Gedcom/Tag.php:321
+#: includes/functions/functions_print.php:692 library/WT/Gedcom/Tag.php:323
 #: note.php:124 note.php:130
 msgid "Shared note"
 msgstr "Shared note"
@@ -5325,12 +5323,12 @@ msgstr "Add from clipboard"
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: edit_interface.php:2036 edit_interface.php:2047 edit_interface.php:2071
 #: edit_interface.php:2091 includes/media_reorder.php:64
-#: library/WT/Gedcom/Tag.php:835 modules_v4/album/module.php:102
+#: library/WT/Gedcom/Tag.php:837 modules_v4/album/module.php:102
 msgid "Re-order media"
 msgstr "Re-order media"
 
 #: edit_interface.php:2127 edit_interface.php:2555
-#: library/WT/Controller/Family.php:133 modules_v4/relatives/module.php:330
+#: library/WT/Controller/Family.php:133 modules_v4/relatives/module.php:352
 msgid "Re-order children"
 msgstr "Re-order children"
 
@@ -5342,6 +5340,7 @@ msgstr ""
 "Either click the \"sort by date\" button or click a row then drag-and-drop "
 "to re-order."
 
+#. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
@@ -5373,7 +5372,7 @@ msgstr "father"
 #: includes/functions/functions_charts.php:270
 #: includes/functions/functions_charts.php:831
 #: modules_v4/googlemap/googlemap.php:294
-#: modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:319
+#: modules_v4/googlemap/googlemap.php:334 modules_v4/relatives/module.php:341
 msgid "son"
 msgstr "son"
 
@@ -5382,7 +5381,7 @@ msgstr "son"
 #: includes/functions/functions_charts.php:271
 #: includes/functions/functions_charts.php:832
 #: modules_v4/googlemap/googlemap.php:289
-#: modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:320
+#: modules_v4/googlemap/googlemap.php:329 modules_v4/relatives/module.php:342
 msgid "daughter"
 msgstr "daughter"
 
@@ -5589,7 +5588,7 @@ msgstr "Private"
 #: library/WT/Controller/Ancestry.php:141
 #: library/WT/Controller/Descendancy.php:207 library/WT/Stats.php:2641
 #: library/WT/Stats.php:2667 library/WT/Stats.php:2678
-#: library/WT/Stats.php:2687 modules_v4/relatives/module.php:58
+#: library/WT/Stats.php:2687 modules_v4/relatives/module.php:80
 msgid "Edit family"
 msgstr "Edit family"
 
@@ -5600,7 +5599,7 @@ msgstr "Edit family"
 #: library/WT/Controller/Descendancy.php:207 library/WT/Stats.php:2641
 #: library/WT/Stats.php:2667 library/WT/Stats.php:2678
 #: library/WT/Stats.php:2687 medialist.php:290
-#: modules_v4/relatives/module.php:58
+#: modules_v4/relatives/module.php:80
 msgid "View family"
 msgstr "View family"
 
@@ -5662,7 +5661,7 @@ msgid ""
 msgstr ""
 "This family has been edited.  The changes need to be reviewed by a moderator."
 
-#: family.php:76 modules_v4/report_family/module.php:499
+#: family.php:76 modules_v4/report_family/module.php:368
 msgid "This family does not exist or you do not have permission to view it."
 msgstr "This family does not exist or you do not have permission to view it."
 
@@ -5671,7 +5670,7 @@ msgid "Family Group Information"
 msgstr "Family Group Information"
 
 #: family.php:111 library/WT/Controller/FancyTreeView.php:449
-#: modules_v4/report_family/module.php:495
+#: modules_v4/report_family/module.php:364
 msgid "The details of this family are private."
 msgstr "The details of this family are private."
 
@@ -5862,7 +5861,7 @@ msgstr ""
 
 #. I18N: gedcom tag FORM
 #: help_text.php:170 help_text.php:182 help_text.php:193 help_text.php:200
-#: library/WT/Gedcom/Tag.php:233
+#: library/WT/Gedcom/Tag.php:235
 msgid "Format"
 msgstr "Format"
 
@@ -8157,7 +8156,7 @@ msgstr "younger brother"
 msgid "elder brother"
 msgstr "elder brother"
 
-#: includes/functions/functions.php:1254 modules_v4/relatives/module.php:323
+#: includes/functions/functions.php:1254 modules_v4/relatives/module.php:345
 msgid "brother"
 msgstr "brother"
 
@@ -8173,7 +8172,7 @@ msgstr "younger sister"
 msgid "elder sister"
 msgstr "elder sister"
 
-#: includes/functions/functions.php:1269 modules_v4/relatives/module.php:324
+#: includes/functions/functions.php:1269 modules_v4/relatives/module.php:346
 msgid "sister"
 msgstr "sister"
 
@@ -10563,7 +10562,7 @@ msgstr "%1$s's %2$s"
 #: includes/functions/functions_charts.php:261
 #: includes/functions/functions_charts.php:823
 #: library/WT/Controller/Descendancy.php:248
-#: modules_v4/descendancy/module.php:200 modules_v4/descendancy/module.php:219
+#: modules_v4/descendancy/module.php:205 modules_v4/descendancy/module.php:224
 msgid "No children"
 msgstr "No children"
 
@@ -10602,13 +10601,13 @@ msgid "Add new"
 msgstr "Add new"
 
 #. I18N: gedcom tag CHIL
-#: includes/functions/functions_date.php:32 library/WT/Gedcom/Tag.php:162
+#: includes/functions/functions_date.php:32 library/WT/Gedcom/Tag.php:164
 #: modules_v4/calendar_utilities/plugins/calculators.php:196
 msgid "Child"
 msgstr "Child"
 
 #. I18N: gedcom tag INFL
-#: includes/functions/functions_date.php:34 library/WT/Gedcom/Tag.php:246
+#: includes/functions/functions_date.php:34 library/WT/Gedcom/Tag.php:248
 msgid "Infant"
 msgstr "Infant"
 
@@ -11211,7 +11210,7 @@ msgstr ""
 "Show individuals who are dead or couples where both partners are deceased."
 
 #: includes/functions/functions_print_lists.php:195 library/WT/Stats.php:681
-#: library/WT/Stats.php:683 modules_v4/privacy/module.php:58
+#: library/WT/Stats.php:683 modules_v4/privacy/module.php:63
 msgid "Dead"
 msgstr "Dead"
 
@@ -11437,7 +11436,7 @@ msgid "Common ancestor: "
 msgstr "Common ancestor: "
 
 #: includes/functions/functions_resource.php:475
-#: modules_v4/report_family/module.php:346
+#: modules_v4/report_family/module.php:303
 #: modules_v4/report_individual/module.php:308
 #: modules_v4/report_related_fam/module.php:388
 #: modules_v4/report_vital_records/module.php:309
@@ -11445,7 +11444,7 @@ msgid "Spouse"
 msgstr "Spouse"
 
 #: includes/functions/functions_resource.php:475
-#: modules_v4/report_family/module.php:346
+#: modules_v4/report_family/module.php:303
 #: modules_v4/report_individual/module.php:308
 #: modules_v4/report_related_fam/module.php:388
 msgid "Partner"
@@ -11463,7 +11462,7 @@ msgstr "Search engine"
 msgid "Change the blocks on this page"
 msgstr "Change the blocks on this page"
 
-#: index.php:130 modules_v4/extra_info/module.php:77
+#: index.php:130 modules_v4/extra_info/module.php:82
 msgid "Hit Count:"
 msgstr "Hit Count:"
 
@@ -12280,7 +12279,7 @@ msgid "at the age of %s"
 msgstr "at the age of %s"
 
 #: library/WT/Controller/FancyTreeView.php:931
-#: modules_v4/report_family/module.php:449
+#: modules_v4/report_family/module.php:318
 #: modules_v4/report_individual/module.php:256
 #: modules_v4/report_related_fam/module.php:336
 #: modules_v4/report_related_indi/module.php:234
@@ -12289,7 +12288,7 @@ msgid "Father"
 msgstr "Father"
 
 #: library/WT/Controller/FancyTreeView.php:934
-#: modules_v4/report_family/module.php:455
+#: modules_v4/report_family/module.php:324
 #: modules_v4/report_individual/module.php:267
 #: modules_v4/report_related_fam/module.php:347
 #: modules_v4/report_related_indi/module.php:235
@@ -12335,8 +12334,8 @@ msgstr "%s family descendants"
 #: modules_v4/census_assistant/census_3_search_add.php:1388
 #: modules_v4/census_assistant/census_3_search_add.php:1390
 #: modules_v4/cousins_tab/module.php:167 modules_v4/cousins_tab/module.php:203
-#: modules_v4/family_nav/module.php:178 modules_v4/family_nav/module.php:272
-#: modules_v4/family_nav/module.php:273
+#: modules_v4/family_nav/module.php:183 modules_v4/family_nav/module.php:277
+#: modules_v4/family_nav/module.php:278
 msgid "Parents"
 msgstr "Parents"
 
@@ -12484,7 +12483,7 @@ msgstr "Pedigree tree of %s"
 #: modules_v4/census_assistant/census_3_search_add.php:1974
 #: modules_v4/census_assistant/census_3_search_add.php:1998
 #: modules_v4/census_assistant/census_3_search_add.php:1999
-#: modules_v4/family_nav/module.php:252
+#: modules_v4/family_nav/module.php:257
 #: modules_v4/googlemap/admin_places.php:587
 #: modules_v4/googlemap/admin_places.php:594
 #: modules_v4/googlemap/admin_places.php:649
@@ -14122,36 +14121,36 @@ msgid "Adopted by both parents"
 msgstr "Adopted by both parents"
 
 #. I18N: gedcom tag _ADPF
-#: library/WT/Gedcom/Code/Adop.php:50 library/WT/Gedcom/Tag.php:387
+#: library/WT/Gedcom/Code/Adop.php:50 library/WT/Gedcom/Tag.php:389
 msgctxt "MALE"
 msgid "Adopted by father"
 msgstr "Adopted by father"
 
 #. I18N: gedcom tag _ADPF
-#: library/WT/Gedcom/Code/Adop.php:51 library/WT/Gedcom/Tag.php:388
+#: library/WT/Gedcom/Code/Adop.php:51 library/WT/Gedcom/Tag.php:390
 msgctxt "FEMALE"
 msgid "Adopted by father"
 msgstr "Adopted by father"
 
 #. I18N: gedcom tag _ADPF
-#: library/WT/Gedcom/Code/Adop.php:52 library/WT/Gedcom/Tag.php:389
+#: library/WT/Gedcom/Code/Adop.php:52 library/WT/Gedcom/Tag.php:391
 msgid "Adopted by father"
 msgstr "Adopted by father"
 
 #. I18N: gedcom tag _ADPM
-#: library/WT/Gedcom/Code/Adop.php:56 library/WT/Gedcom/Tag.php:393
+#: library/WT/Gedcom/Code/Adop.php:56 library/WT/Gedcom/Tag.php:395
 msgctxt "MALE"
 msgid "Adopted by mother"
 msgstr "Adopted by mother"
 
 #. I18N: gedcom tag _ADPM
-#: library/WT/Gedcom/Code/Adop.php:57 library/WT/Gedcom/Tag.php:394
+#: library/WT/Gedcom/Code/Adop.php:57 library/WT/Gedcom/Tag.php:396
 msgctxt "FEMALE"
 msgid "Adopted by mother"
 msgstr "Adopted by mother"
 
 #. I18N: gedcom tag _ADPM
-#: library/WT/Gedcom/Code/Adop.php:58 library/WT/Gedcom/Tag.php:395
+#: library/WT/Gedcom/Code/Adop.php:58 library/WT/Gedcom/Tag.php:397
 msgid "Adopted by mother"
 msgstr "Adopted by mother"
 
@@ -14496,8 +14495,8 @@ msgctxt "FEMALE"
 msgid "Employer"
 msgstr "Employer"
 
-#: library/WT/Gedcom/Code/Rela.php:99 library/WT/Gedcom/Tag.php:287
-#: library/WT/Gedcom/Tag.php:314
+#: library/WT/Gedcom/Code/Rela.php:99 library/WT/Gedcom/Tag.php:289
+#: library/WT/Gedcom/Tag.php:316
 msgid "Employer"
 msgstr "Employer"
 
@@ -14536,7 +14535,7 @@ msgid "Godmother"
 msgstr "Godmother"
 
 #. I18N: gedcom tag _GODP
-#: library/WT/Gedcom/Code/Rela.php:129 library/WT/Gedcom/Tag.php:738
+#: library/WT/Gedcom/Code/Rela.php:129 library/WT/Gedcom/Tag.php:740
 msgid "Godparent"
 msgstr "Godparent"
 
@@ -14719,7 +14718,7 @@ msgid "Ward"
 msgstr "Ward"
 
 #. I18N: gedcom tag _WITN
-#: library/WT/Gedcom/Code/Rela.php:224 library/WT/Gedcom/Tag.php:834
+#: library/WT/Gedcom/Code/Rela.php:224 library/WT/Gedcom/Tag.php:836
 msgid "Witness"
 msgstr "Witness"
 
@@ -15651,7 +15650,7 @@ msgstr "Annulment"
 
 #. I18N: gedcom tag ASSO
 #. I18N: gedcom tag _ASSO
-#: library/WT/Gedcom/Tag.php:127 library/WT/Gedcom/Tag.php:404
+#: library/WT/Gedcom/Tag.php:127 library/WT/Gedcom/Tag.php:406
 msgid "Associate"
 msgstr "Associate"
 
@@ -15686,88 +15685,100 @@ msgstr "Date of baptism"
 msgid "Place of baptism"
 msgstr "Place of baptism"
 
-#. I18N: gedcom tag BARM
+#. I18N: Used where either gedcom tag BAPM or CHR might be used
 #: library/WT/Gedcom/Tag.php:135
+#| msgid "Birth after baptism or christening"
+msgid "Baptism or christening"
+msgstr "Baptism or christening"
+
+#. I18N: gedcom tag BARM
+#: library/WT/Gedcom/Tag.php:136
 msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
 
-#: library/WT/Gedcom/Tag.php:136
+#: library/WT/Gedcom/Tag.php:137
 msgid "Date of bar mitzvah"
 msgstr "Date of bar mitzvah"
 
-#: library/WT/Gedcom/Tag.php:137
+#: library/WT/Gedcom/Tag.php:138
 msgid "Place of bar mitzvah"
 msgstr "Place of bar mitzvah"
 
 #. I18N: gedcom tag BASM
-#: library/WT/Gedcom/Tag.php:138
+#: library/WT/Gedcom/Tag.php:139
 msgid "Bat mitzvah"
 msgstr "Bat mitzvah"
 
-#: library/WT/Gedcom/Tag.php:139
+#: library/WT/Gedcom/Tag.php:140
 msgid "Date of bat mitzvah"
 msgstr "Date of bat mitzvah"
 
-#: library/WT/Gedcom/Tag.php:140
+#: library/WT/Gedcom/Tag.php:141
 msgid "Place of bat mitzvah"
 msgstr "Place of bat mitzvah"
 
-#: library/WT/Gedcom/Tag.php:142
+#: library/WT/Gedcom/Tag.php:143
 msgid "Date of birth"
 msgstr "Date of birth"
 
-#: library/WT/Gedcom/Tag.php:143
+#: library/WT/Gedcom/Tag.php:144
 msgid "Place of birth"
 msgstr "Place of birth"
 
 #. I18N: gedcom tag BLES
-#: library/WT/Gedcom/Tag.php:144
+#: library/WT/Gedcom/Tag.php:145
 msgid "Blessing"
 msgstr "Blessing"
 
-#: library/WT/Gedcom/Tag.php:145
+#: library/WT/Gedcom/Tag.php:146
 msgid "Date of blessing"
 msgstr "Date of blessing"
 
-#: library/WT/Gedcom/Tag.php:146
+#: library/WT/Gedcom/Tag.php:147
 msgid "Place of blessing"
 msgstr "Place of blessing"
 
 #. I18N: gedcom tag BLOB
-#: library/WT/Gedcom/Tag.php:147
+#: library/WT/Gedcom/Tag.php:148
 msgid "Binary Data Object"
 msgstr "Binary Data Object"
 
-#: library/WT/Gedcom/Tag.php:149
+#: library/WT/Gedcom/Tag.php:150
 msgid "Date of burial"
 msgstr "Date of burial"
 
-#: library/WT/Gedcom/Tag.php:150
+#: library/WT/Gedcom/Tag.php:151
 msgid "Place of burial"
 msgstr "Place of burial"
 
+#. I18N: Used where either gedcom tag BURI or CREM might be used
+#: library/WT/Gedcom/Tag.php:152
+#| msgid "Date of cremation"
+msgid "Burial or cremation"
+msgstr "Burial or cremation"
+
 #. I18N: gedcom tag CALN
-#: library/WT/Gedcom/Tag.php:151
+#: library/WT/Gedcom/Tag.php:153
 msgid "Call number"
 msgstr "Call number"
 
 #. I18N: gedcom tag CAST
-#: library/WT/Gedcom/Tag.php:152
+#: library/WT/Gedcom/Tag.php:154
 msgid "Caste"
 msgstr "Caste"
 
 #. I18N: gedcom tag CAUS
-#: library/WT/Gedcom/Tag.php:153
+#: library/WT/Gedcom/Tag.php:155
 msgid "Cause"
 msgstr "Cause"
 
 #. I18N: gedcom tag CEME
-#: library/WT/Gedcom/Tag.php:154
+#: library/WT/Gedcom/Tag.php:156
 msgid "Cemetery"
 msgstr "Cemetery"
 
 #. I18N: gedcom tag CENS
-#: library/WT/Gedcom/Tag.php:155 modules_v4/album/album_print_media.php:51
+#: library/WT/Gedcom/Tag.php:157 modules_v4/album/album_print_media.php:51
 #: modules_v4/album/album_print_media.php:63
 #: modules_v4/album/album_print_media.php:67
 #: modules_v4/album/album_print_media.php:68 modules_v4/album/module.php:240
@@ -15776,119 +15787,119 @@ msgstr "Cemetery"
 msgid "Census"
 msgstr "Census"
 
-#: library/WT/Gedcom/Tag.php:156
+#: library/WT/Gedcom/Tag.php:158
 #: modules_v4/census_assistant/census_asst_date.php:40
 #: modules_v4/report_ukcensus/module.php:162
 msgid "Census date"
 msgstr "Census date"
 
-#: library/WT/Gedcom/Tag.php:157
+#: library/WT/Gedcom/Tag.php:159
 msgid "Census place"
 msgstr "Census place"
 
 #. I18N: gedcom tag CHAN
-#: library/WT/Gedcom/Tag.php:158
+#: library/WT/Gedcom/Tag.php:160
 msgid "Last change"
 msgstr "Last change"
 
 #. I18N: gedcom tag CHAN:DATE
-#: library/WT/Gedcom/Tag.php:159
+#: library/WT/Gedcom/Tag.php:161
 msgid "Date of last change"
 msgstr "Date of last change"
 
 #. I18N: gedcom tag CHAN:_WT_USER
-#: library/WT/Gedcom/Tag.php:160
+#: library/WT/Gedcom/Tag.php:162
 msgid "Author of last change"
 msgstr "Author of last change"
 
 #. I18N: gedcom tag CHAR
-#: library/WT/Gedcom/Tag.php:161
+#: library/WT/Gedcom/Tag.php:163
 msgid "Character set"
 msgstr "Character set"
 
 #. I18N: gedcom tag CHR
-#: library/WT/Gedcom/Tag.php:163 modules_v4/report_family/module.php:321
+#: library/WT/Gedcom/Tag.php:165
 msgid "Christening"
 msgstr "Christening"
 
-#: library/WT/Gedcom/Tag.php:164
+#: library/WT/Gedcom/Tag.php:166
 msgid "Date of christening"
 msgstr "Date of christening"
 
-#: library/WT/Gedcom/Tag.php:165
+#: library/WT/Gedcom/Tag.php:167
 msgid "Place of christening"
 msgstr "Place of christening"
 
 #. I18N: gedcom tag CHRA
-#: library/WT/Gedcom/Tag.php:166
+#: library/WT/Gedcom/Tag.php:168
 msgid "Adult christening"
 msgstr "Adult christening"
 
 #. I18N: gedcom tag CITN
-#: library/WT/Gedcom/Tag.php:167
+#: library/WT/Gedcom/Tag.php:169
 msgid "Citizenship"
 msgstr "Citizenship"
 
 #. I18N: gedcom tag CITY
-#: library/WT/Gedcom/Tag.php:168 modules_v4/googlemap/admin_places.php:176
+#: library/WT/Gedcom/Tag.php:170 modules_v4/googlemap/admin_places.php:176
 #: modules_v4/googlemap/admin_places_edit.php:286
 #: modules_v4/googlemap/module.php:326
 msgid "City"
 msgstr "City"
 
 #. I18N: gedcom tag CONC
-#: library/WT/Gedcom/Tag.php:170
+#: library/WT/Gedcom/Tag.php:172
 msgid "Concatenation"
 msgstr "Concatenation"
 
 #. I18N: gedcom tag CONT
-#: library/WT/Gedcom/Tag.php:171
+#: library/WT/Gedcom/Tag.php:173
 msgid "Continued"
 msgstr "Continued"
 
 #. I18N: gedcom tag CONF
-#: library/WT/Gedcom/Tag.php:172
+#: library/WT/Gedcom/Tag.php:174
 msgid "Confirmation"
 msgstr "Confirmation"
 
-#: library/WT/Gedcom/Tag.php:173
+#: library/WT/Gedcom/Tag.php:175
 msgid "Date of confirmation"
 msgstr "Date of confirmation"
 
-#: library/WT/Gedcom/Tag.php:174
+#: library/WT/Gedcom/Tag.php:176
 msgid "Place of confirmation"
 msgstr "Place of confirmation"
 
 #. I18N: gedcom tag CONL
-#: library/WT/Gedcom/Tag.php:175
+#: library/WT/Gedcom/Tag.php:177
 msgid "LDS confirmation"
 msgstr "LDS confirmation"
 
 #. I18N: gedcom tag COPR
-#: library/WT/Gedcom/Tag.php:176
+#: library/WT/Gedcom/Tag.php:178
 msgid "Copyright"
 msgstr "Copyright"
 
 #. I18N: gedcom tag CORP
-#: library/WT/Gedcom/Tag.php:177
+#: library/WT/Gedcom/Tag.php:179
 msgid "Corporation"
 msgstr "Corporation"
 
 #. I18N: gedcom tag CREM
-#: library/WT/Gedcom/Tag.php:178 modules_v4/report_family/module.php:411
+#: library/WT/Gedcom/Tag.php:180
 msgid "Cremation"
 msgstr "Cremation"
 
-#: library/WT/Gedcom/Tag.php:179
+#: library/WT/Gedcom/Tag.php:181
 msgid "Date of cremation"
 msgstr "Date of cremation"
 
-#: library/WT/Gedcom/Tag.php:180
+#: library/WT/Gedcom/Tag.php:182
 msgid "Place of cremation"
 msgstr "Place of cremation"
 
 #. I18N: gedcom tag CTRY
-#: library/WT/Gedcom/Tag.php:181
+#: library/WT/Gedcom/Tag.php:183
 #: modules_v4/census_assistant/census_2_source_input.php:960
 #: modules_v4/googlemap/admin_places.php:173
 #: modules_v4/googlemap/admin_places_edit.php:282
@@ -15899,580 +15910,579 @@ msgid "Country"
 msgstr "Country"
 
 #. I18N: gedcom tag DATA
-#: library/WT/Gedcom/Tag.php:182
+#: library/WT/Gedcom/Tag.php:184
 msgid "Data"
 msgstr "Data"
 
-#: library/WT/Gedcom/Tag.php:183
+#: library/WT/Gedcom/Tag.php:185
 msgid "Date of entry in original source"
 msgstr "Date of entry in original source"
 
-#: library/WT/Gedcom/Tag.php:186
+#: library/WT/Gedcom/Tag.php:188
 msgid "Cause of death"
 msgstr "Cause of death"
 
-#: library/WT/Gedcom/Tag.php:187
+#: library/WT/Gedcom/Tag.php:189
 msgid "Date of death"
 msgstr "Date of death"
 
-#: library/WT/Gedcom/Tag.php:188
+#: library/WT/Gedcom/Tag.php:190
 msgid "Place of death"
 msgstr "Place of death"
 
 #. I18N: gedcom tag DESI
-#: library/WT/Gedcom/Tag.php:190
+#: library/WT/Gedcom/Tag.php:192
 msgid "Descendants interest"
 msgstr "Descendants interest"
 
 #. I18N: gedcom tag DEST
-#: library/WT/Gedcom/Tag.php:191
+#: library/WT/Gedcom/Tag.php:193
 msgid "Destination"
 msgstr "Destination"
 
 #. I18N: gedcom tag DIV
-#: library/WT/Gedcom/Tag.php:192
+#: library/WT/Gedcom/Tag.php:194
 msgid "Divorce"
 msgstr "Divorce"
 
 #. I18N: gedcom tag DIVF
-#: library/WT/Gedcom/Tag.php:193
+#: library/WT/Gedcom/Tag.php:195
 msgid "Divorce filed"
 msgstr "Divorce filed"
 
 #. I18N: gedcom tag EDUC
-#: library/WT/Gedcom/Tag.php:195
+#: library/WT/Gedcom/Tag.php:197
 msgid "Education"
 msgstr "Education"
 
-#: library/WT/Gedcom/Tag.php:196
+#: library/WT/Gedcom/Tag.php:198
 msgid "School or college"
 msgstr "School or college"
 
 #. I18N: gedcom tag EMIG
-#: library/WT/Gedcom/Tag.php:200
+#: library/WT/Gedcom/Tag.php:202
 msgid "Emigration"
 msgstr "Emigration"
 
-#: library/WT/Gedcom/Tag.php:201
+#: library/WT/Gedcom/Tag.php:203
 msgid "Date of emigration"
 msgstr "Date of emigration"
 
-#: library/WT/Gedcom/Tag.php:202
+#: library/WT/Gedcom/Tag.php:204
 msgid "Place of emigration"
 msgstr "Place of emigration"
 
 #. I18N: gedcom tag ENDL
-#: library/WT/Gedcom/Tag.php:203
+#: library/WT/Gedcom/Tag.php:205
 msgid "LDS endowment"
 msgstr "LDS endowment"
 
-#: library/WT/Gedcom/Tag.php:204
+#: library/WT/Gedcom/Tag.php:206
 msgid "Date of LDS Endowment"
 msgstr "Date of LDS Endowment"
 
-#: library/WT/Gedcom/Tag.php:205
+#: library/WT/Gedcom/Tag.php:207
 msgid "Place of LDS Endowment"
 msgstr "Place of LDS Endowment"
 
 #. I18N: gedcom tag ENGA
-#: library/WT/Gedcom/Tag.php:206
+#: library/WT/Gedcom/Tag.php:208
 msgid "Engagement"
 msgstr "Engagement"
 
-#: library/WT/Gedcom/Tag.php:207
+#: library/WT/Gedcom/Tag.php:209
 msgid "Date of engagement"
 msgstr "Date of engagement"
 
-#: library/WT/Gedcom/Tag.php:208
+#: library/WT/Gedcom/Tag.php:210
 msgid "Place of engagement"
 msgstr "Place of engagement"
 
-#: library/WT/Gedcom/Tag.php:210
+#: library/WT/Gedcom/Tag.php:212
 msgid "Date of event"
 msgstr "Date of event"
 
-#: library/WT/Gedcom/Tag.php:211
+#: library/WT/Gedcom/Tag.php:213
 msgid "Place of event"
 msgstr "Place of event"
 
-#: library/WT/Gedcom/Tag.php:212
+#: library/WT/Gedcom/Tag.php:214
 msgid "Type of event"
 msgstr "Type of event"
 
 #. I18N: gedcom tag FACT
-#: library/WT/Gedcom/Tag.php:213
+#: library/WT/Gedcom/Tag.php:215
 msgid "Fact"
 msgstr "Fact"
 
-#: library/WT/Gedcom/Tag.php:214
+#: library/WT/Gedcom/Tag.php:216
 msgid "Type of fact"
 msgstr "Type of fact"
 
 #. I18N: gedcom tag FAMC
-#: library/WT/Gedcom/Tag.php:216
+#: library/WT/Gedcom/Tag.php:218
 msgid "Family as a child"
 msgstr "Family as a child"
 
 #. I18N: gedcom tag FAMF
-#: library/WT/Gedcom/Tag.php:217
+#: library/WT/Gedcom/Tag.php:219
 msgid "Family file"
 msgstr "Family file"
 
 #. I18N: gedcom tag FAMS
-#: library/WT/Gedcom/Tag.php:218
+#: library/WT/Gedcom/Tag.php:220
 msgid "Family as a spouse"
 msgstr "Family as a spouse"
 
-#: library/WT/Gedcom/Tag.php:219
+#: library/WT/Gedcom/Tag.php:221
 msgid "Spouse census date"
 msgstr "Spouse census date"
 
-#: library/WT/Gedcom/Tag.php:220
+#: library/WT/Gedcom/Tag.php:222
 msgid "Spouse census place"
 msgstr "Spouse census place"
 
-#: library/WT/Gedcom/Tag.php:221
+#: library/WT/Gedcom/Tag.php:223
 msgid "Date of divorce"
 msgstr "Date of divorce"
 
-#: library/WT/Gedcom/Tag.php:222 library/WT/Gedcom/Tag.php:258
+#: library/WT/Gedcom/Tag.php:224 library/WT/Gedcom/Tag.php:260
 msgid "Date of marriage"
 msgstr "Date of marriage"
 
-#: library/WT/Gedcom/Tag.php:223 library/WT/Gedcom/Tag.php:259
+#: library/WT/Gedcom/Tag.php:225 library/WT/Gedcom/Tag.php:261
 msgid "Place of marriage"
 msgstr "Place of marriage"
 
-#: library/WT/Gedcom/Tag.php:224
+#: library/WT/Gedcom/Tag.php:226
 msgid "Spouse note"
 msgstr "Spouse note"
 
-#: library/WT/Gedcom/Tag.php:225
+#: library/WT/Gedcom/Tag.php:227
 msgid "Date of LDS Spouse Sealing"
 msgstr "Date of LDS Spouse Sealing"
 
-#: library/WT/Gedcom/Tag.php:226
+#: library/WT/Gedcom/Tag.php:228
 msgid "Place of LDS Spouse Sealing"
 msgstr "Place of LDS Spouse Sealing"
 
 #. I18N: gedcom tag FAX
-#: library/WT/Gedcom/Tag.php:227
+#: library/WT/Gedcom/Tag.php:229
 msgid "Fax"
 msgstr "Fax"
 
 #. I18N: gedcom tag FCOM
-#: library/WT/Gedcom/Tag.php:228
+#: library/WT/Gedcom/Tag.php:230
 msgid "First communion"
 msgstr "First communion"
 
-#: library/WT/Gedcom/Tag.php:229
+#: library/WT/Gedcom/Tag.php:231
 msgid "Date of first communion"
 msgstr "Date of first communion"
 
-#: library/WT/Gedcom/Tag.php:230
+#: library/WT/Gedcom/Tag.php:232
 msgid "Place of first communion"
 msgstr "Place of first communion"
 
 #. I18N: gedcom tag FILE
-#: library/WT/Gedcom/Tag.php:231
+#: library/WT/Gedcom/Tag.php:233
 msgid "Filename"
 msgstr "Filename"
 
 #. I18N: gedcom tag FONE
-#: library/WT/Gedcom/Tag.php:232 search.php:97
+#: library/WT/Gedcom/Tag.php:234 search.php:97
 msgid "Phonetic"
 msgstr "Phonetic"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
-#: library/WT/Gedcom/Tag.php:234 library/WT/Gedcom/Tag.php:737
+#: library/WT/Gedcom/Tag.php:236 library/WT/Gedcom/Tag.php:739
 msgid "GEDCOM file"
 msgstr "GEDCOM file"
 
 #. I18N: gedcom tag GIVN
-#: library/WT/Gedcom/Tag.php:235
+#: library/WT/Gedcom/Tag.php:237
 msgid "Given names"
 msgstr "Given names"
 
 #. I18N: gedcom tag GRAD
-#: library/WT/Gedcom/Tag.php:236
+#: library/WT/Gedcom/Tag.php:238
 msgid "Graduation"
 msgstr "Graduation"
 
-#: library/WT/Gedcom/Tag.php:237
+#: library/WT/Gedcom/Tag.php:239
 msgid "Date of graduation"
 msgstr "Date of graduation"
 
-#: library/WT/Gedcom/Tag.php:238
+#: library/WT/Gedcom/Tag.php:240
 msgid "Place of graduation"
 msgstr "Place of graduation"
 
 #. I18N: gedcom tag HEAD
-#: library/WT/Gedcom/Tag.php:239
+#: library/WT/Gedcom/Tag.php:241
 msgid "Header"
 msgstr "Header"
 
 #. I18N: gedcom tag IDNO
-#: library/WT/Gedcom/Tag.php:241
+#: library/WT/Gedcom/Tag.php:243
 msgid "Identification number"
 msgstr "Identification number"
 
 #. I18N: gedcom tag IMMI
-#: library/WT/Gedcom/Tag.php:242
+#: library/WT/Gedcom/Tag.php:244
 msgid "Immigration"
 msgstr "Immigration"
 
-#: library/WT/Gedcom/Tag.php:243
+#: library/WT/Gedcom/Tag.php:245
 msgid "Date of immigration"
 msgstr "Date of immigration"
 
-#: library/WT/Gedcom/Tag.php:244
+#: library/WT/Gedcom/Tag.php:246
 msgid "Place of immigration"
 msgstr "Place of immigration"
 
 #. I18N: gedcom tag LATI
-#: library/WT/Gedcom/Tag.php:248 modules_v4/googlemap/admin_places.php:182
+#: library/WT/Gedcom/Tag.php:250 modules_v4/googlemap/admin_places.php:182
 #: modules_v4/googlemap/module.php:1617
 msgid "Latitude"
 msgstr "Latitude"
 
 #. I18N: gedcom tag LEGA
-#: library/WT/Gedcom/Tag.php:249
+#: library/WT/Gedcom/Tag.php:251
 msgid "Legatee"
 msgstr "Legatee"
 
 #. I18N: gedcom tag LONG
-#: library/WT/Gedcom/Tag.php:250 modules_v4/googlemap/admin_places.php:182
+#: library/WT/Gedcom/Tag.php:252 modules_v4/googlemap/admin_places.php:182
 #: modules_v4/googlemap/module.php:1617
 msgid "Longitude"
 msgstr "Longitude"
 
 #. I18N: gedcom tag MAP
-#: library/WT/Gedcom/Tag.php:251 library/WT/Gedcom/Tag.php:920
+#: library/WT/Gedcom/Tag.php:253 library/WT/Gedcom/Tag.php:922
 #: modules_v4/googlemap/module.php:258
 msgid "Map"
 msgstr "Map"
 
 #. I18N: gedcom tag MARB
-#: library/WT/Gedcom/Tag.php:252
+#: library/WT/Gedcom/Tag.php:254
 msgid "Marriage banns"
 msgstr "Marriage banns"
 
-#: library/WT/Gedcom/Tag.php:253
+#: library/WT/Gedcom/Tag.php:255
 msgid "Date of marriage banns"
 msgstr "Date of marriage banns"
 
-#: library/WT/Gedcom/Tag.php:254
+#: library/WT/Gedcom/Tag.php:256
 msgid "Place of marriage banns"
 msgstr "Place of marriage banns"
 
 #. I18N: gedcom tag MARC
-#: library/WT/Gedcom/Tag.php:255
+#: library/WT/Gedcom/Tag.php:257
 msgid "Marriage contract"
 msgstr "Marriage contract"
 
 #. I18N: gedcom tag MARL
-#: library/WT/Gedcom/Tag.php:256
+#: library/WT/Gedcom/Tag.php:258
 msgid "Marriage licence"
 msgstr "Marriage licence"
 
 #. I18N: gedcom tag MARR
-#: library/WT/Gedcom/Tag.php:257 modules_v4/report_family/module.php:359
-#: modules_v4/report_vital_records/module.php:236
+#: library/WT/Gedcom/Tag.php:259 modules_v4/report_vital_records/module.php:236
 msgid "Marriage"
 msgstr "Marriage"
 
-#: library/WT/Gedcom/Tag.php:260
+#: library/WT/Gedcom/Tag.php:262
 msgid "Civil marriage"
 msgstr "Civil marriage"
 
-#: library/WT/Gedcom/Tag.php:261
+#: library/WT/Gedcom/Tag.php:263
 msgid "Registered partnership"
 msgstr "Registered partnership"
 
-#: library/WT/Gedcom/Tag.php:262
+#: library/WT/Gedcom/Tag.php:264
 msgid "Religious marriage"
 msgstr "Religious marriage"
 
-#: library/WT/Gedcom/Tag.php:263
+#: library/WT/Gedcom/Tag.php:265
 msgid "Marriage type unknown"
 msgstr "Marriage type unknown"
 
 #. I18N: gedcom tag _COML
-#: library/WT/Gedcom/Tag.php:264 library/WT/Gedcom/Tag.php:583
+#: library/WT/Gedcom/Tag.php:266 library/WT/Gedcom/Tag.php:585
 msgid "Common-law marriage"
 msgstr "Common law marriage"
 
 #. I18N: gedcom tag MARS
-#: library/WT/Gedcom/Tag.php:265
+#: library/WT/Gedcom/Tag.php:267
 msgid "Marriage settlement"
 msgstr "Marriage settlement"
 
 #. I18N: gedcom tag REPO:NAME
-#: library/WT/Gedcom/Tag.php:269
+#: library/WT/Gedcom/Tag.php:271
 msgctxt "Repository"
 msgid "Name"
 msgstr "Name"
 
-#: library/WT/Gedcom/Tag.php:273
+#: library/WT/Gedcom/Tag.php:275
 msgid "Phonetic name"
 msgstr "Phonetic name"
 
-#: library/WT/Gedcom/Tag.php:274
+#: library/WT/Gedcom/Tag.php:276
 msgid "Name in Hebrew"
 msgstr "Name in Hebrew"
 
 #. I18N: gedcom tag NATI
-#: library/WT/Gedcom/Tag.php:275
+#: library/WT/Gedcom/Tag.php:277
 msgid "Nationality"
 msgstr "Nationality"
 
 #. I18N: gedcom tag NATU
-#: library/WT/Gedcom/Tag.php:276
+#: library/WT/Gedcom/Tag.php:278
 msgid "Naturalization"
 msgstr "Naturalization"
 
-#: library/WT/Gedcom/Tag.php:277
+#: library/WT/Gedcom/Tag.php:279
 msgid "Date of naturalization"
 msgstr "Date of naturalization"
 
-#: library/WT/Gedcom/Tag.php:278
+#: library/WT/Gedcom/Tag.php:280
 msgid "Place of naturalization"
 msgstr "Place of naturalization"
 
 #. I18N: gedcom tag NCHI
-#: library/WT/Gedcom/Tag.php:279 library/WT/Stats.php:2916
+#: library/WT/Gedcom/Tag.php:281 library/WT/Stats.php:2916
 #: library/WT/Stats.php:2918 library/WT/Stats.php:2920 statistics.php:544
 #: statisticsplot.php:921
 msgid "Number of children"
 msgstr "Number of children"
 
 #. I18N: gedcom tag NICK
-#: library/WT/Gedcom/Tag.php:280
+#: library/WT/Gedcom/Tag.php:282
 msgid "Nickname"
 msgstr "Nickname"
 
 #. I18N: gedcom tag NMR
-#: library/WT/Gedcom/Tag.php:281
+#: library/WT/Gedcom/Tag.php:283
 msgid "Number of marriages"
 msgstr "Number of marriages"
 
 #. I18N: gedcom tag NPFX
-#: library/WT/Gedcom/Tag.php:283
+#: library/WT/Gedcom/Tag.php:285
 msgid "Name prefix"
 msgstr "Name prefix"
 
 #. I18N: gedcom tag NSFX
-#: library/WT/Gedcom/Tag.php:284
+#: library/WT/Gedcom/Tag.php:286
 msgid "Name suffix"
 msgstr "Name suffix"
 
 #. I18N: gedcom tag OCCU
-#: library/WT/Gedcom/Tag.php:286
+#: library/WT/Gedcom/Tag.php:288
 msgid "Occupation"
 msgstr "Occupation"
 
 #. I18N: gedcom tag ORDI
-#: library/WT/Gedcom/Tag.php:288
+#: library/WT/Gedcom/Tag.php:290
 msgid "Ordinance"
 msgstr "Ordinance"
 
 #. I18N: gedcom tag ORDN
-#: library/WT/Gedcom/Tag.php:289
+#: library/WT/Gedcom/Tag.php:291
 msgid "Ordination"
 msgstr "Ordination"
 
-#: library/WT/Gedcom/Tag.php:290
+#: library/WT/Gedcom/Tag.php:292
 msgid "Religious institution"
 msgstr "Religious institution"
 
-#: library/WT/Gedcom/Tag.php:291
+#: library/WT/Gedcom/Tag.php:293
 msgid "Date of ordination"
 msgstr "Date of ordination"
 
-#: library/WT/Gedcom/Tag.php:292
+#: library/WT/Gedcom/Tag.php:294
 msgid "Place of ordination"
 msgstr "Place of ordination"
 
 #. I18N: gedcom tag PAGE
-#: library/WT/Gedcom/Tag.php:293
+#: library/WT/Gedcom/Tag.php:295
 msgid "Citation details"
 msgstr "Citation details"
 
 #. I18N: gedcom tag PEDI
-#: library/WT/Gedcom/Tag.php:294
+#: library/WT/Gedcom/Tag.php:296
 msgid "Relationship to parents"
 msgstr "Relationship to parents"
 
 #. I18N: gedcom tag PHON
-#: library/WT/Gedcom/Tag.php:295
+#: library/WT/Gedcom/Tag.php:297
 msgid "Phone"
 msgstr "Phone"
 
-#: library/WT/Gedcom/Tag.php:297
+#: library/WT/Gedcom/Tag.php:299
 msgid "Phonetic place"
 msgstr "Phonetic place"
 
-#: library/WT/Gedcom/Tag.php:298
+#: library/WT/Gedcom/Tag.php:300
 msgid "Romanized place"
 msgstr "Romanized place"
 
-#: library/WT/Gedcom/Tag.php:299
+#: library/WT/Gedcom/Tag.php:301
 msgid "Place in Hebrew"
 msgstr "Place in Hebrew"
 
 #. I18N: gedcom tag POST
-#: library/WT/Gedcom/Tag.php:300
+#: library/WT/Gedcom/Tag.php:302
 msgid "Postal code"
 msgstr "Postal code"
 
 #. I18N: gedcom tag PROB
-#: library/WT/Gedcom/Tag.php:301
+#: library/WT/Gedcom/Tag.php:303
 msgid "Probate"
 msgstr "Probate"
 
 #. I18N: gedcom tag PROP
-#: library/WT/Gedcom/Tag.php:302
+#: library/WT/Gedcom/Tag.php:304
 msgid "Property"
 msgstr "Property"
 
 #. I18N: gedcom tag PUBL
-#: library/WT/Gedcom/Tag.php:303
+#: library/WT/Gedcom/Tag.php:305
 msgid "Publication"
 msgstr "Publication"
 
 #. I18N: gedcom tag QUAY
-#: library/WT/Gedcom/Tag.php:304
+#: library/WT/Gedcom/Tag.php:306
 msgid "Quality of data"
 msgstr "Quality of data"
 
 #. I18N: gedcom tag REFN
-#: library/WT/Gedcom/Tag.php:305
+#: library/WT/Gedcom/Tag.php:307
 msgid "Reference number"
 msgstr "Reference number"
 
 #. I18N: gedcom tag RELA
 #. I18N: Name of a module
-#: library/WT/Gedcom/Tag.php:306 modules_v4/chart_relationship/module.php:33
+#: library/WT/Gedcom/Tag.php:308 modules_v4/chart_relationship/module.php:33
 #: modules_v4/report_related_indi/module.php:226
 msgid "Relationship"
 msgstr "Relationship"
 
 #. I18N: gedcom tag RELI
-#: library/WT/Gedcom/Tag.php:307
+#: library/WT/Gedcom/Tag.php:309
 msgid "Religion"
 msgstr "Religion"
 
 #. I18N: gedcom tag RESI
-#: library/WT/Gedcom/Tag.php:309
+#: library/WT/Gedcom/Tag.php:311
 msgid "Residence"
 msgstr "Residence"
 
-#: library/WT/Gedcom/Tag.php:310
+#: library/WT/Gedcom/Tag.php:312
 msgid "Date of residence"
 msgstr "Date of residence"
 
-#: library/WT/Gedcom/Tag.php:311
+#: library/WT/Gedcom/Tag.php:313
 msgid "Place of residence"
 msgstr "Place of residence"
 
 #. I18N: gedcom tag RESN
-#: library/WT/Gedcom/Tag.php:312
+#: library/WT/Gedcom/Tag.php:314
 msgid "Restriction"
 msgstr "Restriction"
 
 #. I18N: gedcom tag RETI
-#: library/WT/Gedcom/Tag.php:313
+#: library/WT/Gedcom/Tag.php:315
 msgid "Retirement"
 msgstr "Retirement"
 
 #. I18N: gedcom tag RFN
-#: library/WT/Gedcom/Tag.php:315
+#: library/WT/Gedcom/Tag.php:317
 msgid "Record file number"
 msgstr "Record file number"
 
 #. I18N: gedcom tag RIN
-#: library/WT/Gedcom/Tag.php:316
+#: library/WT/Gedcom/Tag.php:318
 msgid "Record ID number"
 msgstr "Record ID number"
 
 #. I18N: gedcom tag ROMN
-#: library/WT/Gedcom/Tag.php:318
+#: library/WT/Gedcom/Tag.php:320
 msgid "Romanized"
 msgstr "Romanized"
 
 #. I18N: gedcom tag SERV
-#: library/WT/Gedcom/Tag.php:319
+#: library/WT/Gedcom/Tag.php:321
 msgid "Remote server"
 msgstr "Remote server"
 
 #. I18N: gedcom tag SLGC
-#: library/WT/Gedcom/Tag.php:322
+#: library/WT/Gedcom/Tag.php:324
 msgid "LDS child sealing"
 msgstr "LDS child sealing"
 
-#: library/WT/Gedcom/Tag.php:323
+#: library/WT/Gedcom/Tag.php:325
 msgid "Date of LDS Child Sealing"
 msgstr "Date of LDS Child Sealing"
 
-#: library/WT/Gedcom/Tag.php:324
+#: library/WT/Gedcom/Tag.php:326
 msgid "Place of LDS Child Sealing"
 msgstr "Place of LDS Child Sealing"
 
 #. I18N: gedcom tag SLGS
-#: library/WT/Gedcom/Tag.php:325
+#: library/WT/Gedcom/Tag.php:327
 msgid "LDS spouse sealing"
 msgstr "LDS spouse sealing"
 
 #. I18N: gedcom tag SPFX
-#: library/WT/Gedcom/Tag.php:327
+#: library/WT/Gedcom/Tag.php:329
 msgid "Surname prefix"
 msgstr "Surname prefix"
 
 #. I18N: gedcom tag SSN
-#: library/WT/Gedcom/Tag.php:328
+#: library/WT/Gedcom/Tag.php:330
 msgid "Social Security Number"
 msgstr "Social Security Number"
 
 #. I18N: gedcom tag STAE
-#: library/WT/Gedcom/Tag.php:329 modules_v4/googlemap/admin_places.php:174
+#: library/WT/Gedcom/Tag.php:331 modules_v4/googlemap/admin_places.php:174
 #: modules_v4/googlemap/admin_places_edit.php:284
 #: modules_v4/googlemap/module.php:317
 msgid "State"
 msgstr "State"
 
-#: library/WT/Gedcom/Tag.php:331
+#: library/WT/Gedcom/Tag.php:333
 msgid "Status change date"
 msgstr "Status change date"
 
 #. I18N: gedcom tag SUBM
-#: library/WT/Gedcom/Tag.php:332
+#: library/WT/Gedcom/Tag.php:334
 msgid "Submitter"
 msgstr "Submitter"
 
 #. I18N: gedcom tag SUBN
-#: library/WT/Gedcom/Tag.php:333
+#: library/WT/Gedcom/Tag.php:335
 msgid "Submission"
 msgstr "Submission"
 
 #. I18N: gedcom tag TEMP
-#: library/WT/Gedcom/Tag.php:335
+#: library/WT/Gedcom/Tag.php:337
 msgid "Temple"
 msgstr "Temple"
 
 #. I18N: gedcom tag TEXT
-#: library/WT/Gedcom/Tag.php:336
+#: library/WT/Gedcom/Tag.php:338
 msgid "Text"
 msgstr "Text"
 
 #. I18N: gedcom tag TIME
-#: library/WT/Gedcom/Tag.php:337
+#: library/WT/Gedcom/Tag.php:339
 #: modules_v4/calendar_utilities/plugins/calculators.php:103
 msgid "Time"
 msgstr "Time"
 
 #. I18N: gedcom tag TITL
-#: library/WT/Gedcom/Tag.php:338
+#: library/WT/Gedcom/Tag.php:340
 #: modules_v4/census_assistant/census_2_source_input.php:1035
 #: modules_v4/extra_menus/module.php:181 modules_v4/gallery/module.php:254
 #: modules_v4/gedcom_favorites/module.php:188 modules_v4/pages/module.php:227
@@ -16480,1145 +16490,1145 @@ msgstr "Time"
 msgid "Title"
 msgstr "Title"
 
-#: library/WT/Gedcom/Tag.php:339
+#: library/WT/Gedcom/Tag.php:341
 msgid "Phonetic title"
 msgstr "Phonetic title"
 
-#: library/WT/Gedcom/Tag.php:340
+#: library/WT/Gedcom/Tag.php:342
 msgid "Romanized title"
 msgstr "Romanized title"
 
-#: library/WT/Gedcom/Tag.php:341
+#: library/WT/Gedcom/Tag.php:343
 msgid "Title in Hebrew"
 msgstr "Title in Hebrew"
 
 #. I18N: gedcom tag TRLR
-#: library/WT/Gedcom/Tag.php:342
+#: library/WT/Gedcom/Tag.php:344
 msgid "Trailer"
 msgstr "Trailer"
 
 #. I18N: gedcom tag VERS
-#: library/WT/Gedcom/Tag.php:345
+#: library/WT/Gedcom/Tag.php:347
 msgid "Version"
 msgstr "Version"
 
 #. I18N: gedcom tag WILL
-#: library/WT/Gedcom/Tag.php:347
+#: library/WT/Gedcom/Tag.php:349
 msgid "Will"
 msgstr "Will"
 
-#: library/WT/Gedcom/Tag.php:351
+#: library/WT/Gedcom/Tag.php:353
 msgid "Adoption of a son"
 msgstr "Adoption of a son"
 
-#: library/WT/Gedcom/Tag.php:352
+#: library/WT/Gedcom/Tag.php:354
 msgid "Adoption of a daughter"
 msgstr "Adoption of a daughter"
 
-#: library/WT/Gedcom/Tag.php:353
+#: library/WT/Gedcom/Tag.php:355
 msgid "Adoption of a child"
 msgstr "Adoption of a child"
 
-#: library/WT/Gedcom/Tag.php:357
+#: library/WT/Gedcom/Tag.php:359
 msgid "Adoption of a grandson"
 msgstr "Adoption of a grandson"
 
-#: library/WT/Gedcom/Tag.php:358
+#: library/WT/Gedcom/Tag.php:360
 msgid "Adoption of a granddaughter"
 msgstr "Adoption of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:359 library/WT/Gedcom/Tag.php:365
-#: library/WT/Gedcom/Tag.php:371
+#: library/WT/Gedcom/Tag.php:361 library/WT/Gedcom/Tag.php:367
+#: library/WT/Gedcom/Tag.php:373
 msgid "Adoption of a grandchild"
 msgstr "Adoption of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:363
+#: library/WT/Gedcom/Tag.php:365
 msgctxt "daughter's son"
 msgid "Adoption of a grandson"
 msgstr "Adoption of a grandson"
 
-#: library/WT/Gedcom/Tag.php:364
+#: library/WT/Gedcom/Tag.php:366
 msgctxt "daughter's daughter"
 msgid "Adoption of a granddaughter"
 msgstr "Adoption of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:369
+#: library/WT/Gedcom/Tag.php:371
 msgctxt "son's son"
 msgid "Adoption of a grandson"
 msgstr "Adoption of a grandson"
 
-#: library/WT/Gedcom/Tag.php:370
+#: library/WT/Gedcom/Tag.php:372
 msgctxt "son's daughter"
 msgid "Adoption of a granddaughter"
 msgstr "Adoption of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:375
+#: library/WT/Gedcom/Tag.php:377
 msgid "Adoption of a half-brother"
 msgstr "Adoption of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:376
+#: library/WT/Gedcom/Tag.php:378
 msgid "Adoption of a half-sister"
 msgstr "Adoption of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:377
+#: library/WT/Gedcom/Tag.php:379
 msgid "Adoption of a half-sibling"
 msgstr "Adoption of a half-sibling"
 
-#: library/WT/Gedcom/Tag.php:381
+#: library/WT/Gedcom/Tag.php:383
 msgid "Adoption of a brother"
 msgstr "Adoption of a brother"
 
-#: library/WT/Gedcom/Tag.php:382
+#: library/WT/Gedcom/Tag.php:384
 msgid "Adoption of a sister"
 msgstr "Adoption of a sister"
 
-#: library/WT/Gedcom/Tag.php:383
+#: library/WT/Gedcom/Tag.php:385
 msgid "Adoption of a sibling"
 msgstr "Adoption of a sibling"
 
 #. I18N: gedcom tag _AKA
-#: library/WT/Gedcom/Tag.php:400
+#: library/WT/Gedcom/Tag.php:402
 msgctxt "MALE"
 msgid "Also known as"
 msgstr "Also known as"
 
 #. I18N: gedcom tag _AKA
-#: library/WT/Gedcom/Tag.php:401
+#: library/WT/Gedcom/Tag.php:403
 msgctxt "FEMALE"
 msgid "Also known as"
 msgstr "Also known as"
 
 #. I18N: gedcom tag _AKA
-#: library/WT/Gedcom/Tag.php:402
+#: library/WT/Gedcom/Tag.php:404
 msgid "Also known as"
 msgstr "Also known as"
 
-#: library/WT/Gedcom/Tag.php:407
+#: library/WT/Gedcom/Tag.php:409
 msgid "Baptism of a son"
 msgstr "Baptism of a son"
 
-#: library/WT/Gedcom/Tag.php:408
+#: library/WT/Gedcom/Tag.php:410
 msgid "Baptism of a daughter"
 msgstr "Baptism of a daughter"
 
-#: library/WT/Gedcom/Tag.php:409
+#: library/WT/Gedcom/Tag.php:411
 msgid "Baptism of a child"
 msgstr "Baptism of a child"
 
-#: library/WT/Gedcom/Tag.php:413
+#: library/WT/Gedcom/Tag.php:415
 msgid "Baptism of a grandson"
 msgstr "Baptism of a grandson"
 
-#: library/WT/Gedcom/Tag.php:414
+#: library/WT/Gedcom/Tag.php:416
 msgid "Baptism of a granddaughter"
 msgstr "Baptism of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:415 library/WT/Gedcom/Tag.php:421
-#: library/WT/Gedcom/Tag.php:427
+#: library/WT/Gedcom/Tag.php:417 library/WT/Gedcom/Tag.php:423
+#: library/WT/Gedcom/Tag.php:429
 msgid "Baptism of a grandchild"
 msgstr "Baptism of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:419
+#: library/WT/Gedcom/Tag.php:421
 msgctxt "daughter's son"
 msgid "Baptism of a grandson"
 msgstr "Baptism of a grandson"
 
-#: library/WT/Gedcom/Tag.php:420
+#: library/WT/Gedcom/Tag.php:422
 msgctxt "daughter's daughter"
 msgid "Baptism of a granddaughter"
 msgstr "Baptism of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:425
+#: library/WT/Gedcom/Tag.php:427
 msgctxt "son's son"
 msgid "Baptism of a grandson"
 msgstr "Baptism of a grandson"
 
-#: library/WT/Gedcom/Tag.php:426
+#: library/WT/Gedcom/Tag.php:428
 msgctxt "son's daughter"
 msgid "Baptism of a granddaughter"
 msgstr "Baptism of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:431
+#: library/WT/Gedcom/Tag.php:433
 msgid "Baptism of a half-brother"
 msgstr "Baptism of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:432
+#: library/WT/Gedcom/Tag.php:434
 msgid "Baptism of a half-sister"
 msgstr "Baptism of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:433
+#: library/WT/Gedcom/Tag.php:435
 msgid "Baptism of a half-sibling"
 msgstr "Baptism of a half-sibling"
 
-#: library/WT/Gedcom/Tag.php:437
+#: library/WT/Gedcom/Tag.php:439
 msgid "Baptism of a brother"
 msgstr "Baptism of a brother"
 
-#: library/WT/Gedcom/Tag.php:438
+#: library/WT/Gedcom/Tag.php:440
 msgid "Baptism of a sister"
 msgstr "Baptism of a sister"
 
-#: library/WT/Gedcom/Tag.php:439
+#: library/WT/Gedcom/Tag.php:441
 msgid "Baptism of a sibling"
 msgstr "Baptism of a sibling"
 
 #. I18N: gedcom tag _BIBL
-#: library/WT/Gedcom/Tag.php:441
+#: library/WT/Gedcom/Tag.php:443
 msgid "Bibliography"
 msgstr "Bibliography"
 
-#: library/WT/Gedcom/Tag.php:444
+#: library/WT/Gedcom/Tag.php:446
 msgid "Birth of a son"
 msgstr "Birth of a son"
 
-#: library/WT/Gedcom/Tag.php:445
+#: library/WT/Gedcom/Tag.php:447
 msgid "Birth of a daughter"
 msgstr "Birth of a daughter"
 
-#: library/WT/Gedcom/Tag.php:446
+#: library/WT/Gedcom/Tag.php:448
 msgid "Birth of a child"
 msgstr "Birth of a child"
 
-#: library/WT/Gedcom/Tag.php:450
+#: library/WT/Gedcom/Tag.php:452
 msgid "Birth of a grandson"
 msgstr "Birth of a grandson"
 
-#: library/WT/Gedcom/Tag.php:451
+#: library/WT/Gedcom/Tag.php:453
 msgid "Birth of a granddaughter"
 msgstr "Birth of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:452 library/WT/Gedcom/Tag.php:458
-#: library/WT/Gedcom/Tag.php:464
+#: library/WT/Gedcom/Tag.php:454 library/WT/Gedcom/Tag.php:460
+#: library/WT/Gedcom/Tag.php:466
 msgid "Birth of a grandchild"
 msgstr "Birth of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:456
+#: library/WT/Gedcom/Tag.php:458
 msgctxt "daughter's son"
 msgid "Birth of a grandson"
 msgstr "Birth of a grandson"
 
-#: library/WT/Gedcom/Tag.php:457
+#: library/WT/Gedcom/Tag.php:459
 msgctxt "daughter's daughter"
 msgid "Birth of a granddaughter"
 msgstr "Birth of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:462
+#: library/WT/Gedcom/Tag.php:464
 msgctxt "son's son"
 msgid "Birth of a grandson"
 msgstr "Birth of a grandson"
 
-#: library/WT/Gedcom/Tag.php:463
+#: library/WT/Gedcom/Tag.php:465
 msgctxt "son's daughter"
 msgid "Birth of a granddaughter"
 msgstr "Birth of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:468
+#: library/WT/Gedcom/Tag.php:470
 msgid "Birth of a half-brother"
 msgstr "Birth of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:469
+#: library/WT/Gedcom/Tag.php:471
 msgid "Birth of a half-sister"
 msgstr "Birth of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:470
+#: library/WT/Gedcom/Tag.php:472
 msgid "Birth of a half-sibling"
 msgstr "Birth of a half-sibling"
 
-#: library/WT/Gedcom/Tag.php:474
+#: library/WT/Gedcom/Tag.php:476
 msgid "Birth of a brother"
 msgstr "Birth of a brother"
 
-#: library/WT/Gedcom/Tag.php:475
+#: library/WT/Gedcom/Tag.php:477
 msgid "Birth of a sister"
 msgstr "Birth of a sister"
 
-#: library/WT/Gedcom/Tag.php:476
+#: library/WT/Gedcom/Tag.php:478
 msgid "Birth of a sibling"
 msgstr "Birth of a sibling"
 
 #. I18N: gedcom tag _BRTM
-#: library/WT/Gedcom/Tag.php:478
+#: library/WT/Gedcom/Tag.php:480
 msgid "Brit milah"
 msgstr "Brit milah"
 
-#: library/WT/Gedcom/Tag.php:479
+#: library/WT/Gedcom/Tag.php:481
 msgid "Date of brit milah"
 msgstr "Date of brit milah"
 
-#: library/WT/Gedcom/Tag.php:480
+#: library/WT/Gedcom/Tag.php:482
 msgid "Place of brit milah"
 msgstr "Place of brit milah"
 
-#: library/WT/Gedcom/Tag.php:483
+#: library/WT/Gedcom/Tag.php:485
 msgid "Burial of a son"
 msgstr "Burial of a son"
 
-#: library/WT/Gedcom/Tag.php:484
+#: library/WT/Gedcom/Tag.php:486
 msgid "Burial of a daughter"
 msgstr "Burial of a daughter"
 
-#: library/WT/Gedcom/Tag.php:485
+#: library/WT/Gedcom/Tag.php:487
 msgid "Burial of a child"
 msgstr "Burial of a child"
 
-#: library/WT/Gedcom/Tag.php:489
+#: library/WT/Gedcom/Tag.php:491
 msgid "Burial of a grandson"
 msgstr "Burial of a grandson"
 
-#: library/WT/Gedcom/Tag.php:490
+#: library/WT/Gedcom/Tag.php:492
 msgid "Burial of a granddaughter"
 msgstr "Burial of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:491 library/WT/Gedcom/Tag.php:497
-#: library/WT/Gedcom/Tag.php:503
+#: library/WT/Gedcom/Tag.php:493 library/WT/Gedcom/Tag.php:499
+#: library/WT/Gedcom/Tag.php:505
 msgid "Burial of a grandchild"
 msgstr "Burial of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:495
+#: library/WT/Gedcom/Tag.php:497
 msgctxt "daughter's son"
 msgid "Burial of a grandson"
 msgstr "Burial of a grandson"
 
-#: library/WT/Gedcom/Tag.php:496
+#: library/WT/Gedcom/Tag.php:498
 msgctxt "daughter's daughter"
 msgid "Burial of a granddaughter"
 msgstr "Burial of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:501
+#: library/WT/Gedcom/Tag.php:503
 msgctxt "son's son"
 msgid "Burial of a grandson"
 msgstr "Burial of a grandson"
 
-#: library/WT/Gedcom/Tag.php:502
+#: library/WT/Gedcom/Tag.php:504
 msgctxt "son's daughter"
 msgid "Burial of a granddaughter"
 msgstr "Burial of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:507
+#: library/WT/Gedcom/Tag.php:509
 msgid "Burial of a grandfather"
 msgstr "Burial of a grandfather"
 
-#: library/WT/Gedcom/Tag.php:508
+#: library/WT/Gedcom/Tag.php:510
 msgid "Burial of a grandmother"
 msgstr "Burial of a grandmother"
 
-#: library/WT/Gedcom/Tag.php:509
+#: library/WT/Gedcom/Tag.php:511
 msgid "Burial of a grandparent"
 msgstr "Burial of a grandparent"
 
-#: library/WT/Gedcom/Tag.php:513
+#: library/WT/Gedcom/Tag.php:515
 msgid "Burial of a paternal grandfather"
 msgstr "Burial of a paternal grandfather"
 
-#: library/WT/Gedcom/Tag.php:514
+#: library/WT/Gedcom/Tag.php:516
 msgid "Burial of a paternal grandmother"
 msgstr "Burial of a paternal grandmother"
 
-#: library/WT/Gedcom/Tag.php:515
+#: library/WT/Gedcom/Tag.php:517
 msgid "Burial of a paternal grandparent"
 msgstr "Burial of a paternal grandparent"
 
-#: library/WT/Gedcom/Tag.php:519
+#: library/WT/Gedcom/Tag.php:521
 msgid "Burial of a maternal grandfather"
 msgstr "Burial of a maternal grandfather"
 
-#: library/WT/Gedcom/Tag.php:520
+#: library/WT/Gedcom/Tag.php:522
 msgid "Burial of a maternal grandmother"
 msgstr "Burial of a maternal grandmother"
 
-#: library/WT/Gedcom/Tag.php:521
+#: library/WT/Gedcom/Tag.php:523
 msgid "Burial of a maternal grandparent"
 msgstr "Burial of a maternal grandparent"
 
-#: library/WT/Gedcom/Tag.php:525
+#: library/WT/Gedcom/Tag.php:527
 msgid "Burial of a half-brother"
 msgstr "Burial of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:526
+#: library/WT/Gedcom/Tag.php:528
 msgid "Burial of a half-sister"
 msgstr "Burial of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:527
+#: library/WT/Gedcom/Tag.php:529
 msgid "Burial of a half-sibling"
 msgstr "Burial of a half-sibling"
 
-#: library/WT/Gedcom/Tag.php:531
+#: library/WT/Gedcom/Tag.php:533
 msgid "Burial of a father"
 msgstr "Burial of a father"
 
-#: library/WT/Gedcom/Tag.php:532
+#: library/WT/Gedcom/Tag.php:534
 msgid "Burial of a mother"
 msgstr "Burial of a mother"
 
-#: library/WT/Gedcom/Tag.php:533
+#: library/WT/Gedcom/Tag.php:535
 msgid "Burial of a parent"
 msgstr "Burial of a parent"
 
-#: library/WT/Gedcom/Tag.php:537
+#: library/WT/Gedcom/Tag.php:539
 msgid "Burial of a brother"
 msgstr "Burial of a brother"
 
-#: library/WT/Gedcom/Tag.php:538
+#: library/WT/Gedcom/Tag.php:540
 msgid "Burial of a sister"
 msgstr "Burial of a sister"
 
-#: library/WT/Gedcom/Tag.php:539
+#: library/WT/Gedcom/Tag.php:541
 msgid "Burial of a sibling"
 msgstr "Burial of a sibling"
 
-#: library/WT/Gedcom/Tag.php:543
+#: library/WT/Gedcom/Tag.php:545
 msgid "Burial of a husband"
 msgstr "Burial of a husband"
 
-#: library/WT/Gedcom/Tag.php:544
+#: library/WT/Gedcom/Tag.php:546
 msgid "Burial of a wife"
 msgstr "Burial of a wife"
 
-#: library/WT/Gedcom/Tag.php:545
+#: library/WT/Gedcom/Tag.php:547
 msgid "Burial of a spouse"
 msgstr "Burial of a spouse"
 
-#: library/WT/Gedcom/Tag.php:549
+#: library/WT/Gedcom/Tag.php:551
 msgid "Christening of a son"
 msgstr "Christening of a son"
 
-#: library/WT/Gedcom/Tag.php:550
+#: library/WT/Gedcom/Tag.php:552
 msgid "Christening of a daughter"
 msgstr "Christening of a daughter"
 
-#: library/WT/Gedcom/Tag.php:551
+#: library/WT/Gedcom/Tag.php:553
 msgid "Christening of a child"
 msgstr "Christening of a child"
 
-#: library/WT/Gedcom/Tag.php:555
+#: library/WT/Gedcom/Tag.php:557
 msgid "Christening of a grandson"
 msgstr "Christening of a grandson"
 
-#: library/WT/Gedcom/Tag.php:556
+#: library/WT/Gedcom/Tag.php:558
 msgid "Christening of a granddaughter"
 msgstr "Christening of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:557 library/WT/Gedcom/Tag.php:563
-#: library/WT/Gedcom/Tag.php:569
+#: library/WT/Gedcom/Tag.php:559 library/WT/Gedcom/Tag.php:565
+#: library/WT/Gedcom/Tag.php:571
 msgid "Christening of a grandchild"
 msgstr "Christening of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:561
+#: library/WT/Gedcom/Tag.php:563
 msgctxt "daughter's son"
 msgid "Christening of a grandson"
 msgstr "Christening of a grandson"
 
-#: library/WT/Gedcom/Tag.php:562
+#: library/WT/Gedcom/Tag.php:564
 msgctxt "daughter's daughter"
 msgid "Christening of a granddaughter"
 msgstr "Christening of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:567
+#: library/WT/Gedcom/Tag.php:569
 msgctxt "son's son"
 msgid "Christening of a grandson"
 msgstr "Christening of a grandson"
 
-#: library/WT/Gedcom/Tag.php:568
+#: library/WT/Gedcom/Tag.php:570
 msgctxt "son's daughter"
 msgid "Christening of a granddaughter"
 msgstr "Christening of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:573
+#: library/WT/Gedcom/Tag.php:575
 msgid "Christening of a half-brother"
 msgstr "Christening of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:574
+#: library/WT/Gedcom/Tag.php:576
 msgid "Christening of a half-sister"
 msgstr "Christening of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:575
+#: library/WT/Gedcom/Tag.php:577
 msgid "Christening of a half-sibling"
 msgstr "Christening of a half-sibling"
 
-#: library/WT/Gedcom/Tag.php:579
+#: library/WT/Gedcom/Tag.php:581
 msgid "Christening of a brother"
 msgstr "Christening of a brother"
 
-#: library/WT/Gedcom/Tag.php:580
+#: library/WT/Gedcom/Tag.php:582
 msgid "Christening of a sister"
 msgstr "Christening of a sister"
 
-#: library/WT/Gedcom/Tag.php:581
+#: library/WT/Gedcom/Tag.php:583
 msgid "Christening of a sibling"
 msgstr "Christening of a sibling"
 
-#: library/WT/Gedcom/Tag.php:586
+#: library/WT/Gedcom/Tag.php:588
 msgid "Cremation of a son"
 msgstr "Cremation of a son"
 
-#: library/WT/Gedcom/Tag.php:587
+#: library/WT/Gedcom/Tag.php:589
 msgid "Cremation of a daughter"
 msgstr "Cremation of a daughter"
 
-#: library/WT/Gedcom/Tag.php:588
+#: library/WT/Gedcom/Tag.php:590
 msgid "Cremation of a child"
 msgstr "Cremation of a child"
 
-#: library/WT/Gedcom/Tag.php:592
+#: library/WT/Gedcom/Tag.php:594
 msgid "Cremation of a grandson"
 msgstr "Cremation of a grandson"
 
-#: library/WT/Gedcom/Tag.php:593
+#: library/WT/Gedcom/Tag.php:595
 msgid "Cremation of a granddaughter"
 msgstr "Cremation of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:594 library/WT/Gedcom/Tag.php:600
-#: library/WT/Gedcom/Tag.php:606
+#: library/WT/Gedcom/Tag.php:596 library/WT/Gedcom/Tag.php:602
+#: library/WT/Gedcom/Tag.php:608
 msgid "Cremation of a grandchild"
 msgstr "Cremation of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:598
+#: library/WT/Gedcom/Tag.php:600
 msgctxt "daughter's son"
 msgid "Cremation of a grandson"
 msgstr "Cremation of a grandson"
 
-#: library/WT/Gedcom/Tag.php:599
+#: library/WT/Gedcom/Tag.php:601
 msgctxt "daughter's daughter"
 msgid "Cremation of a granddaughter"
 msgstr "Cremation of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:604
+#: library/WT/Gedcom/Tag.php:606
 msgctxt "son's son"
 msgid "Cremation of a grandson"
 msgstr "Cremation of a grandson"
 
-#: library/WT/Gedcom/Tag.php:605
+#: library/WT/Gedcom/Tag.php:607
 msgctxt "son's daughter"
 msgid "Cremation of a granddaughter"
 msgstr "Cremation of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:610
+#: library/WT/Gedcom/Tag.php:612
 msgid "Cremation of a grandfather"
 msgstr "Cremation of a grandfather"
 
-#: library/WT/Gedcom/Tag.php:611
+#: library/WT/Gedcom/Tag.php:613
 msgid "Cremation of a grandmother"
 msgstr "Cremation of a grandmother"
 
-#: library/WT/Gedcom/Tag.php:612 library/WT/Gedcom/Tag.php:618
-#: library/WT/Gedcom/Tag.php:624
+#: library/WT/Gedcom/Tag.php:614 library/WT/Gedcom/Tag.php:620
+#: library/WT/Gedcom/Tag.php:626
 msgid "Cremation of a grand-parent"
 msgstr "Cremation of a grand-parent"
 
-#: library/WT/Gedcom/Tag.php:616
+#: library/WT/Gedcom/Tag.php:618
 msgid "Cremation of a paternal grandfather"
 msgstr "Cremation of a paternal grandfather"
 
-#: library/WT/Gedcom/Tag.php:617
+#: library/WT/Gedcom/Tag.php:619
 msgid "Cremation of a paternal grandmother"
 msgstr "Cremation of a paternal grandmother"
 
-#: library/WT/Gedcom/Tag.php:622
+#: library/WT/Gedcom/Tag.php:624
 msgid "Cremation of a maternal grandfather"
 msgstr "Cremation of a maternal grandfather"
 
-#: library/WT/Gedcom/Tag.php:623
+#: library/WT/Gedcom/Tag.php:625
 msgid "Cremation of a maternal grandmother"
 msgstr "Cremation of a maternal grandmother"
 
-#: library/WT/Gedcom/Tag.php:628
+#: library/WT/Gedcom/Tag.php:630
 msgid "Cremation of a half-brother"
 msgstr "Cremation of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:629
+#: library/WT/Gedcom/Tag.php:631
 msgid "Cremation of a half-sister"
 msgstr "Cremation of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:630
+#: library/WT/Gedcom/Tag.php:632
 msgid "Cremation of a half-sibling"
 msgstr "Cremation of a half-sibling"
 
-#: library/WT/Gedcom/Tag.php:634
+#: library/WT/Gedcom/Tag.php:636
 msgid "Cremation of a father"
 msgstr "Cremation of a father"
 
-#: library/WT/Gedcom/Tag.php:635
+#: library/WT/Gedcom/Tag.php:637
 msgid "Cremation of a mother"
 msgstr "Cremation of a mother"
 
-#: library/WT/Gedcom/Tag.php:636
+#: library/WT/Gedcom/Tag.php:638
 msgid "Cremation of a parent"
 msgstr "Cremation of a parent"
 
-#: library/WT/Gedcom/Tag.php:640
+#: library/WT/Gedcom/Tag.php:642
 msgid "Cremation of a brother"
 msgstr "Cremation of a brother"
 
-#: library/WT/Gedcom/Tag.php:641
+#: library/WT/Gedcom/Tag.php:643
 msgid "Cremation of a sister"
 msgstr "Cremation of a sister"
 
-#: library/WT/Gedcom/Tag.php:642
+#: library/WT/Gedcom/Tag.php:644
 msgid "Cremation of a sibling"
 msgstr "Cremation of a sibling"
 
-#: library/WT/Gedcom/Tag.php:646
+#: library/WT/Gedcom/Tag.php:648
 msgid "Cremation of a husband"
 msgstr "Cremation of a husband"
 
-#: library/WT/Gedcom/Tag.php:647
+#: library/WT/Gedcom/Tag.php:649
 msgid "Cremation of a wife"
 msgstr "Cremation of a wife"
 
-#: library/WT/Gedcom/Tag.php:648
+#: library/WT/Gedcom/Tag.php:650
 msgid "Cremation of a spouse"
 msgstr "Cremation of a spouse"
 
 #. I18N: gedcom tag _DBID
-#: library/WT/Gedcom/Tag.php:650
+#: library/WT/Gedcom/Tag.php:652
 msgid "Linked database ID"
 msgstr "Linked database ID"
 
-#: library/WT/Gedcom/Tag.php:653
+#: library/WT/Gedcom/Tag.php:655
 msgid "Death of a son"
 msgstr "Death of a son"
 
-#: library/WT/Gedcom/Tag.php:654
+#: library/WT/Gedcom/Tag.php:656
 msgid "Death of a daughter"
 msgstr "Death of a daughter"
 
-#: library/WT/Gedcom/Tag.php:655
+#: library/WT/Gedcom/Tag.php:657
 msgid "Death of a child"
 msgstr "Death of a child"
 
-#: library/WT/Gedcom/Tag.php:659
+#: library/WT/Gedcom/Tag.php:661
 msgid "Death of a grandson"
 msgstr "Death of a grandson"
 
-#: library/WT/Gedcom/Tag.php:660
+#: library/WT/Gedcom/Tag.php:662
 msgid "Death of a granddaughter"
 msgstr "Death of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:661 library/WT/Gedcom/Tag.php:667
-#: library/WT/Gedcom/Tag.php:673
+#: library/WT/Gedcom/Tag.php:663 library/WT/Gedcom/Tag.php:669
+#: library/WT/Gedcom/Tag.php:675
 msgid "Death of a grandchild"
 msgstr "Death of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:665
+#: library/WT/Gedcom/Tag.php:667
 msgctxt "daughter's son"
 msgid "Death of a grandson"
 msgstr "Death of a grandson"
 
-#: library/WT/Gedcom/Tag.php:666
+#: library/WT/Gedcom/Tag.php:668
 msgctxt "daughter's daughter"
 msgid "Death of a granddaughter"
 msgstr "Death of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:671
+#: library/WT/Gedcom/Tag.php:673
 msgctxt "son's son"
 msgid "Death of a grandson"
 msgstr "Death of a grandson"
 
-#: library/WT/Gedcom/Tag.php:672
+#: library/WT/Gedcom/Tag.php:674
 msgctxt "son's daughter"
 msgid "Death of a granddaughter"
 msgstr "Death of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:677
+#: library/WT/Gedcom/Tag.php:679
 msgid "Death of a grandfather"
 msgstr "Death of a grandfather"
 
-#: library/WT/Gedcom/Tag.php:678
+#: library/WT/Gedcom/Tag.php:680
 msgid "Death of a grandmother"
 msgstr "Death of a grandmother"
 
-#: library/WT/Gedcom/Tag.php:679 library/WT/Gedcom/Tag.php:685
-#: library/WT/Gedcom/Tag.php:691
+#: library/WT/Gedcom/Tag.php:681 library/WT/Gedcom/Tag.php:687
+#: library/WT/Gedcom/Tag.php:693
 msgid "Death of a grand-parent"
 msgstr "Death of a grand-parent"
 
-#: library/WT/Gedcom/Tag.php:683
+#: library/WT/Gedcom/Tag.php:685
 msgid "Death of a paternal grandfather"
 msgstr "Death of a paternal grandfather"
 
-#: library/WT/Gedcom/Tag.php:684
+#: library/WT/Gedcom/Tag.php:686
 msgid "Death of a paternal grandmother"
 msgstr "Death of a paternal grandmother"
 
-#: library/WT/Gedcom/Tag.php:689
+#: library/WT/Gedcom/Tag.php:691
 msgid "Death of a maternal grandfather"
 msgstr "Death of a maternal grandfather"
 
-#: library/WT/Gedcom/Tag.php:690
+#: library/WT/Gedcom/Tag.php:692
 msgid "Death of a maternal grandmother"
 msgstr "Death of a maternal grandmother"
 
-#: library/WT/Gedcom/Tag.php:695
+#: library/WT/Gedcom/Tag.php:697
 msgid "Death of a half-brother"
 msgstr "Death of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:696
+#: library/WT/Gedcom/Tag.php:698
 msgid "Death of a half-sister"
 msgstr "Death of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:697
+#: library/WT/Gedcom/Tag.php:699
 msgid "Death of a half-sibling"
 msgstr "Death of a half-sibling"
 
-#: library/WT/Gedcom/Tag.php:701
+#: library/WT/Gedcom/Tag.php:703
 msgid "Death of a father"
 msgstr "Death of a father"
 
-#: library/WT/Gedcom/Tag.php:702
+#: library/WT/Gedcom/Tag.php:704
 msgid "Death of a mother"
 msgstr "Death of a mother"
 
-#: library/WT/Gedcom/Tag.php:703
+#: library/WT/Gedcom/Tag.php:705
 msgid "Death of a parent"
 msgstr "Death of a parent"
 
-#: library/WT/Gedcom/Tag.php:707
+#: library/WT/Gedcom/Tag.php:709
 msgid "Death of a brother"
 msgstr "Death of a brother"
 
-#: library/WT/Gedcom/Tag.php:708
+#: library/WT/Gedcom/Tag.php:710
 msgid "Death of a sister"
 msgstr "Death of a sister"
 
-#: library/WT/Gedcom/Tag.php:709
+#: library/WT/Gedcom/Tag.php:711
 msgid "Death of a sibling"
 msgstr "Death of a sibling"
 
-#: library/WT/Gedcom/Tag.php:713
+#: library/WT/Gedcom/Tag.php:715
 msgid "Death of a husband"
 msgstr "Death of a husband"
 
-#: library/WT/Gedcom/Tag.php:714
+#: library/WT/Gedcom/Tag.php:716
 msgid "Death of a wife"
 msgstr "Death of a wife"
 
-#: library/WT/Gedcom/Tag.php:715
+#: library/WT/Gedcom/Tag.php:717
 msgid "Death of a spouse"
 msgstr "Death of a spouse"
 
 #. I18N: gedcom tag _DEG
-#: library/WT/Gedcom/Tag.php:717
+#: library/WT/Gedcom/Tag.php:719
 msgid "Degree"
 msgstr "Degree"
 
 #. I18N: gedcom tag _DETS
-#: library/WT/Gedcom/Tag.php:718
+#: library/WT/Gedcom/Tag.php:720
 msgid "Death of one spouse"
 msgstr "Death of one spouse"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
-#: library/WT/Gedcom/Tag.php:719
+#: library/WT/Gedcom/Tag.php:721
 msgid "DNA markers"
 msgstr "DNA markers"
 
 #. I18N: gedcom tag _EYEC
-#: library/WT/Gedcom/Tag.php:721
+#: library/WT/Gedcom/Tag.php:723
 msgid "Eye color"
 msgstr "Eye color"
 
-#: library/WT/Gedcom/Tag.php:722
+#: library/WT/Gedcom/Tag.php:724
 msgid "Fact 1"
 msgstr "Fact 1"
 
-#: library/WT/Gedcom/Tag.php:723
+#: library/WT/Gedcom/Tag.php:725
 msgid "Fact 2"
 msgstr "Fact 2"
 
-#: library/WT/Gedcom/Tag.php:724
+#: library/WT/Gedcom/Tag.php:726
 msgid "Fact 3"
 msgstr "Fact 3"
 
-#: library/WT/Gedcom/Tag.php:725
+#: library/WT/Gedcom/Tag.php:727
 msgid "Fact 4"
 msgstr "Fact 4"
 
-#: library/WT/Gedcom/Tag.php:726
+#: library/WT/Gedcom/Tag.php:728
 msgid "Fact 5"
 msgstr "Fact 5"
 
-#: library/WT/Gedcom/Tag.php:727
+#: library/WT/Gedcom/Tag.php:729
 msgid "Fact 6"
 msgstr "Fact 6"
 
-#: library/WT/Gedcom/Tag.php:728
+#: library/WT/Gedcom/Tag.php:730
 msgid "Fact 7"
 msgstr "Fact 7"
 
-#: library/WT/Gedcom/Tag.php:729
+#: library/WT/Gedcom/Tag.php:731
 msgid "Fact 8"
 msgstr "Fact 8"
 
-#: library/WT/Gedcom/Tag.php:730
+#: library/WT/Gedcom/Tag.php:732
 msgid "Fact 9"
 msgstr "Fact 9"
 
-#: library/WT/Gedcom/Tag.php:731
+#: library/WT/Gedcom/Tag.php:733
 msgid "Fact 10"
 msgstr "Fact 10"
 
-#: library/WT/Gedcom/Tag.php:732
+#: library/WT/Gedcom/Tag.php:734
 msgid "Fact 11"
 msgstr "Fact 11"
 
-#: library/WT/Gedcom/Tag.php:733
+#: library/WT/Gedcom/Tag.php:735
 msgid "Fact 12"
 msgstr "Fact 12"
 
-#: library/WT/Gedcom/Tag.php:734
+#: library/WT/Gedcom/Tag.php:736
 msgid "Fact 13"
 msgstr "Fact 13"
 
 #. I18N: gedcom tag _FNRL
-#: library/WT/Gedcom/Tag.php:735
+#: library/WT/Gedcom/Tag.php:737
 msgid "Funeral"
 msgstr "Funeral"
 
 #. I18N: gedcom tag _FREL
-#: library/WT/Gedcom/Tag.php:736
+#: library/WT/Gedcom/Tag.php:738
 msgid "Relationship to father"
 msgstr "Relationship to father"
 
 #. I18N: gedcom tag _HAIR
-#: library/WT/Gedcom/Tag.php:739
+#: library/WT/Gedcom/Tag.php:741
 msgid "Hair color"
 msgstr "Hair color"
 
 #. I18N: gedcom tag _HEB
-#: library/WT/Gedcom/Tag.php:740
+#: library/WT/Gedcom/Tag.php:742
 msgid "Hebrew"
 msgstr "Hebrew"
 
 #. I18N: gedcom tag _HEIG
-#: library/WT/Gedcom/Tag.php:741
+#: library/WT/Gedcom/Tag.php:743
 msgid "Height"
 msgstr "Height"
 
 #. I18N: gedcom tag _HNM
-#: library/WT/Gedcom/Tag.php:742
+#: library/WT/Gedcom/Tag.php:744
 msgid "Hebrew name"
 msgstr "Hebrew name"
 
 #. I18N: gedcom tag _HOL
-#: library/WT/Gedcom/Tag.php:743
+#: library/WT/Gedcom/Tag.php:745
 msgid "Holocaust"
 msgstr "Holocaust"
 
 #. I18N: gedcom tag _INTE
-#: library/WT/Gedcom/Tag.php:746
+#: library/WT/Gedcom/Tag.php:748
 msgctxt "MALE"
 msgid "Interred"
 msgstr "Interred"
 
 #. I18N: gedcom tag _INTE
-#: library/WT/Gedcom/Tag.php:747
+#: library/WT/Gedcom/Tag.php:749
 msgctxt "FEMALE"
 msgid "Interred"
 msgstr "Interred"
 
 #. I18N: gedcom tag _INTE
-#: library/WT/Gedcom/Tag.php:748
+#: library/WT/Gedcom/Tag.php:750
 msgid "Interred"
 msgstr "Interred"
 
 #. I18N: gedcom tag _LOC
-#: library/WT/Gedcom/Tag.php:750
+#: library/WT/Gedcom/Tag.php:752
 msgid "Location"
 msgstr "Location"
 
 #. I18N: gedcom tag _MARI
-#: library/WT/Gedcom/Tag.php:751
+#: library/WT/Gedcom/Tag.php:753
 msgid "Marriage Intention"
 msgstr "Marriage Intention"
 
 #. I18N: gedcom tag _MARNM
-#: library/WT/Gedcom/Tag.php:752
+#: library/WT/Gedcom/Tag.php:754
 msgid "Married Name"
 msgstr "Married Name"
 
 #. I18N: gedcom tag _PRIM
-#: library/WT/Gedcom/Tag.php:753 modules_v4/report_family/module.php:140
+#: library/WT/Gedcom/Tag.php:755 modules_v4/report_family/module.php:141
 #: modules_v4/report_individual/module.php:126
 #: modules_v4/report_related_fam/module.php:159
 msgid "Highlighted image"
 msgstr "Highlighted image"
 
-#: library/WT/Gedcom/Tag.php:754
+#: library/WT/Gedcom/Tag.php:756
 msgid "Married Surname"
 msgstr "Married Surname"
 
-#: library/WT/Gedcom/Tag.php:757
+#: library/WT/Gedcom/Tag.php:759
 msgid "Marriage of a son"
 msgstr "Marriage of a son"
 
-#: library/WT/Gedcom/Tag.php:758
+#: library/WT/Gedcom/Tag.php:760
 msgid "Marriage of a daughter"
 msgstr "Marriage of a daughter"
 
-#: library/WT/Gedcom/Tag.php:759
+#: library/WT/Gedcom/Tag.php:761
 msgid "Marriage of a child"
 msgstr "Marriage of a child"
 
 #. I18N: ...to each other
-#: library/WT/Gedcom/Tag.php:762
+#: library/WT/Gedcom/Tag.php:764
 msgid "Marriage of parents"
 msgstr "Marriage of parents"
 
-#: library/WT/Gedcom/Tag.php:765
+#: library/WT/Gedcom/Tag.php:767
 msgid "Marriage of a grandson"
 msgstr "Marriage of a grandson"
 
-#: library/WT/Gedcom/Tag.php:766
+#: library/WT/Gedcom/Tag.php:768
 msgid "Marriage of a granddaughter"
 msgstr "Marriage of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:767 library/WT/Gedcom/Tag.php:773
-#: library/WT/Gedcom/Tag.php:779
+#: library/WT/Gedcom/Tag.php:769 library/WT/Gedcom/Tag.php:775
+#: library/WT/Gedcom/Tag.php:781
 msgid "Marriage of a grandchild"
 msgstr "Marriage of a grandchild"
 
-#: library/WT/Gedcom/Tag.php:771
+#: library/WT/Gedcom/Tag.php:773
 msgctxt "daughter's son"
 msgid "Marriage of a grandson"
 msgstr "Marriage of a grandson"
 
-#: library/WT/Gedcom/Tag.php:772
+#: library/WT/Gedcom/Tag.php:774
 msgctxt "daughter's daughter"
 msgid "Marriage of a granddaughter"
 msgstr "Marriage of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:777
+#: library/WT/Gedcom/Tag.php:779
 msgctxt "son's son"
 msgid "Marriage of a grandson"
 msgstr "Marriage of a grandson"
 
-#: library/WT/Gedcom/Tag.php:778
+#: library/WT/Gedcom/Tag.php:780
 msgctxt "son's daughter"
 msgid "Marriage of a granddaughter"
 msgstr "Marriage of a granddaughter"
 
-#: library/WT/Gedcom/Tag.php:783
+#: library/WT/Gedcom/Tag.php:785
 msgid "Marriage of a half-brother"
 msgstr "Marriage of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:784
+#: library/WT/Gedcom/Tag.php:786
 msgid "Marriage of a half-sister"
 msgstr "Marriage of a half-sister"
 
-#: library/WT/Gedcom/Tag.php:785
+#: library/WT/Gedcom/Tag.php:787
 msgid "Marriage of a half-sibling"
 msgstr "Marriage of a half-sibling"
 
 #. I18N: ...to another spouse
-#: library/WT/Gedcom/Tag.php:789
+#: library/WT/Gedcom/Tag.php:791
 msgid "Marriage of a father"
 msgstr "Marriage of a father"
 
 #. I18N: ...to another spouse
-#: library/WT/Gedcom/Tag.php:790
+#: library/WT/Gedcom/Tag.php:792
 msgid "Marriage of a mother"
 msgstr "Marriage of a mother"
 
 #. I18N: ...to another spouse
-#: library/WT/Gedcom/Tag.php:791
+#: library/WT/Gedcom/Tag.php:793
 msgid "Marriage of a parent"
 msgstr "Marriage of a parent"
 
-#: library/WT/Gedcom/Tag.php:795
+#: library/WT/Gedcom/Tag.php:797
 msgid "Marriage of a brother"
 msgstr "Marriage of a brother"
 
-#: library/WT/Gedcom/Tag.php:796
+#: library/WT/Gedcom/Tag.php:798
 msgid "Marriage of a sister"
 msgstr "Marriage of a sister"
 
-#: library/WT/Gedcom/Tag.php:797
+#: library/WT/Gedcom/Tag.php:799
 msgid "Marriage of a sibling"
 msgstr "Marriage of a sibling"
 
 #. I18N: gedcom tag _MBON
-#: library/WT/Gedcom/Tag.php:799
+#: library/WT/Gedcom/Tag.php:801
 msgid "Marriage bond"
 msgstr "Marriage bond"
 
 #. I18N: gedcom tag _MDCL
-#: library/WT/Gedcom/Tag.php:800
+#: library/WT/Gedcom/Tag.php:802
 msgid "Medical"
 msgstr "Medical"
 
 #. I18N: gedcom tag _MEDC
-#: library/WT/Gedcom/Tag.php:801
+#: library/WT/Gedcom/Tag.php:803
 msgid "Medical condition"
 msgstr "Medical condition"
 
 #. I18N: gedcom tag _MEND
-#: library/WT/Gedcom/Tag.php:802
+#: library/WT/Gedcom/Tag.php:804
 msgid "Marriage ending status"
 msgstr "Marriage ending status"
 
 #. I18N: gedcom tag _MILI
-#: library/WT/Gedcom/Tag.php:803
+#: library/WT/Gedcom/Tag.php:805
 msgid "Military"
 msgstr "Military"
 
 #. I18N: gedcom tag _MILT
-#: library/WT/Gedcom/Tag.php:804
+#: library/WT/Gedcom/Tag.php:806
 msgid "Military service"
 msgstr "Military service"
 
 #. I18N: gedcom tag _MREL
-#: library/WT/Gedcom/Tag.php:805
+#: library/WT/Gedcom/Tag.php:807
 msgid "Relationship to mother"
 msgstr "Relationship to mother"
 
 #. I18N: gedcom tag _MSTAT
-#: library/WT/Gedcom/Tag.php:806
+#: library/WT/Gedcom/Tag.php:808
 msgid "Marriage beginning status"
 msgstr "Marriage beginning status"
 
 #. I18N: gedcom tag _NAME
-#: library/WT/Gedcom/Tag.php:807
+#: library/WT/Gedcom/Tag.php:809
 msgid "Mailing name"
 msgstr "Mailing name"
 
 #. I18N: gedcom tag _NAMS
-#: library/WT/Gedcom/Tag.php:808
+#: library/WT/Gedcom/Tag.php:810
 msgid "Namesake"
 msgstr "Namesake"
 
 #. I18N: gedcom tag _NLIV
-#: library/WT/Gedcom/Tag.php:809
+#: library/WT/Gedcom/Tag.php:811
 msgid "Not living"
 msgstr "Not living"
 
 #. I18N: gedcom tag _NMAR
-#: library/WT/Gedcom/Tag.php:812
-msgctxt "MALE"
-msgid "Never married"
-msgstr "Never married"
-
-#. I18N: gedcom tag _NMAR
-#: library/WT/Gedcom/Tag.php:813
-msgctxt "FEMALE"
-msgid "Never married"
-msgstr "Never married"
-
-#. I18N: gedcom tag _NMAR
 #: library/WT/Gedcom/Tag.php:814
+msgctxt "MALE"
 msgid "Never married"
 msgstr "Never married"
 
-#. I18N: gedcom tag _NMR
-#: library/WT/Gedcom/Tag.php:818
-msgctxt "MALE"
-msgid "Not married"
-msgstr "Not married"
-
-#. I18N: gedcom tag _NMR
-#: library/WT/Gedcom/Tag.php:819
+#. I18N: gedcom tag _NMAR
+#: library/WT/Gedcom/Tag.php:815
 msgctxt "FEMALE"
-msgid "Not married"
-msgstr "Not married"
+msgid "Never married"
+msgstr "Never married"
+
+#. I18N: gedcom tag _NMAR
+#: library/WT/Gedcom/Tag.php:816
+msgid "Never married"
+msgstr "Never married"
 
 #. I18N: gedcom tag _NMR
 #: library/WT/Gedcom/Tag.php:820
+msgctxt "MALE"
 msgid "Not married"
 msgstr "Not married"
 
+#. I18N: gedcom tag _NMR
+#: library/WT/Gedcom/Tag.php:821
+msgctxt "FEMALE"
+msgid "Not married"
+msgstr "Not married"
+
+#. I18N: gedcom tag _NMR
 #: library/WT/Gedcom/Tag.php:822
+msgid "Not married"
+msgstr "Not married"
+
+#: library/WT/Gedcom/Tag.php:824
 msgid "by"
 msgstr "by"
 
 #. I18N: gedcom tag _PRMN
-#: library/WT/Gedcom/Tag.php:823
+#: library/WT/Gedcom/Tag.php:825
 msgid "Permanent number"
 msgstr "Permanent number"
 
 #. I18N: gedcom tag _SCBK
-#: library/WT/Gedcom/Tag.php:824
+#: library/WT/Gedcom/Tag.php:826
 msgid "Scrapbook"
 msgstr "Scrapbook"
 
 #. I18N: gedcom tag _SEPR
-#: library/WT/Gedcom/Tag.php:825
+#: library/WT/Gedcom/Tag.php:827
 msgid "Separated"
 msgstr "Separated"
 
 #. I18N: gedcom tag _SSHOW
 #. I18N: Name of a module
-#: library/WT/Gedcom/Tag.php:826 modules_v4/random_media/module.php:32
+#: library/WT/Gedcom/Tag.php:828 modules_v4/random_media/module.php:32
 msgid "Slide show"
 msgstr "Slide show"
 
 #. I18N: gedcom tag _STAT
-#: library/WT/Gedcom/Tag.php:827
+#: library/WT/Gedcom/Tag.php:829
 msgid "Marriage status"
 msgstr "Marriage status"
 
 #. I18N: gedcom tag _SUBQ
-#: library/WT/Gedcom/Tag.php:828
+#: library/WT/Gedcom/Tag.php:830
 msgid "Short version"
 msgstr "Short version"
 
 #. I18N: gedcom tag _TODO
-#: library/WT/Gedcom/Tag.php:829
+#: library/WT/Gedcom/Tag.php:831
 msgid "Research task"
 msgstr "Research task"
 
 #. I18N: gedcom tag _UID
-#: library/WT/Gedcom/Tag.php:831
+#: library/WT/Gedcom/Tag.php:833
 msgid "Globally unique identifier"
 msgstr "Globally unique identifier"
 
 #. I18N: gedcom tag _WEIG
-#: library/WT/Gedcom/Tag.php:833
+#: library/WT/Gedcom/Tag.php:835
 msgid "Weight"
 msgstr "Weight"
 
 #. I18N: gedcom tag _YART
-#: library/WT/Gedcom/Tag.php:836
+#: library/WT/Gedcom/Tag.php:838
 msgid "Yahrzeit"
 msgstr "Yahrzeit"
 
-#: library/WT/Gedcom/Tag.php:838
+#: library/WT/Gedcom/Tag.php:840
 msgid "Brit milah of a son"
 msgstr "Brit milah of a son"
 
-#: library/WT/Gedcom/Tag.php:839
-msgid "Brit milah of a grandson"
-msgstr "Brit milah of a grandson"
-
-#: library/WT/Gedcom/Tag.php:840
-msgctxt "daughter's son"
-msgid "Brit milah of a grandson"
-msgstr "Brit milah of a grandson"
-
 #: library/WT/Gedcom/Tag.php:841
-msgctxt "son's son"
 msgid "Brit milah of a grandson"
 msgstr "Brit milah of a grandson"
 
 #: library/WT/Gedcom/Tag.php:842
+msgctxt "daughter's son"
+msgid "Brit milah of a grandson"
+msgstr "Brit milah of a grandson"
+
+#: library/WT/Gedcom/Tag.php:843
+msgctxt "son's son"
+msgid "Brit milah of a grandson"
+msgstr "Brit milah of a grandson"
+
+#: library/WT/Gedcom/Tag.php:844
 msgid "Brit milah of a half-brother"
 msgstr "Brit milah of a half-brother"
 
-#: library/WT/Gedcom/Tag.php:843
+#: library/WT/Gedcom/Tag.php:845
 msgid "Brit milah of a brother"
 msgstr "Brit milah of a brother"
 
-#: library/WT/Gedcom/Tag.php:845
+#: library/WT/Gedcom/Tag.php:847
 msgid "File size"
 msgstr "File size"
 
-#: library/WT/Gedcom/Tag.php:846
+#: library/WT/Gedcom/Tag.php:848
 msgid "Image dimensions"
 msgstr "Image dimensions"
 
-#: library/WT/Gedcom/Tag.php:854
+#: library/WT/Gedcom/Tag.php:856
 msgid "Unrecognized GEDCOM Code"
 msgstr "Unrecognized GEDCOM Code"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
-#: library/WT/Gedcom/Tag.php:863
+#: library/WT/Gedcom/Tag.php:865
 #, php-format
 msgid ""
 "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</"
@@ -17627,67 +17637,67 @@ msgstr ""
 "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</"
 "span>"
 
-#: library/WT/Gedcom/Tag.php:909
+#: library/WT/Gedcom/Tag.php:911
 msgid "Audio"
 msgstr "Audio"
 
-#: library/WT/Gedcom/Tag.php:910
+#: library/WT/Gedcom/Tag.php:912
 msgid "Book"
 msgstr "Book"
 
-#: library/WT/Gedcom/Tag.php:911
+#: library/WT/Gedcom/Tag.php:913
 msgid "Card"
 msgstr "Card"
 
-#: library/WT/Gedcom/Tag.php:912
+#: library/WT/Gedcom/Tag.php:914
 msgid "Certificate"
 msgstr "Certificate"
 
-#: library/WT/Gedcom/Tag.php:913
+#: library/WT/Gedcom/Tag.php:915
 msgid "Coat of Arms"
 msgstr "Coat of Arms"
 
-#: library/WT/Gedcom/Tag.php:914
+#: library/WT/Gedcom/Tag.php:916
 msgid "Document"
 msgstr "Document"
 
-#: library/WT/Gedcom/Tag.php:915
+#: library/WT/Gedcom/Tag.php:917
 msgid "Electronic"
 msgstr "Electronic"
 
-#: library/WT/Gedcom/Tag.php:916
+#: library/WT/Gedcom/Tag.php:918
 msgid "Microfiche"
 msgstr "Microfiche"
 
-#: library/WT/Gedcom/Tag.php:917
+#: library/WT/Gedcom/Tag.php:919
 msgid "Microfilm"
 msgstr "Microfilm"
 
-#: library/WT/Gedcom/Tag.php:918
+#: library/WT/Gedcom/Tag.php:920
 msgid "Magazine"
 msgstr "Magazine"
 
-#: library/WT/Gedcom/Tag.php:919
+#: library/WT/Gedcom/Tag.php:921
 msgid "Manuscript"
 msgstr "Manuscript"
 
-#: library/WT/Gedcom/Tag.php:921
+#: library/WT/Gedcom/Tag.php:923
 msgid "Newspaper"
 msgstr "Newspaper"
 
-#: library/WT/Gedcom/Tag.php:922
+#: library/WT/Gedcom/Tag.php:924
 msgid "Photo"
 msgstr "Photo"
 
-#: library/WT/Gedcom/Tag.php:923
+#: library/WT/Gedcom/Tag.php:925
 msgid "Tombstone"
 msgstr "Tombstone"
 
-#: library/WT/Gedcom/Tag.php:924
+#: library/WT/Gedcom/Tag.php:926
 msgid "Video"
 msgstr "Video"
 
-#: library/WT/Gedcom/Tag.php:925
+#: library/WT/Gedcom/Tag.php:927
 msgid "Painting"
 msgstr "Painting"
 
@@ -17861,8 +17871,8 @@ msgstr "Reports"
 
 #: library/WT/MenuBar.php:157 lifespan.php:297 medialist.php:139
 #: modules_v4/census_assistant/census_3_search_add.php:56
-#: modules_v4/descendancy/module.php:95 modules_v4/descendancy/module.php:128
-#: modules_v4/families/module.php:141 modules_v4/individuals/module.php:141
+#: modules_v4/descendancy/module.php:100 modules_v4/descendancy/module.php:133
+#: modules_v4/families/module.php:146 modules_v4/individuals/module.php:146
 #: search.php:31 search.php:237 search.php:528 themes/colors/header.php:105
 #: themes/colors/header.php:106 themes/levy/header.php:97
 #: themes/levy/header.php:98 themes/webtrees/header.php:110
@@ -17980,7 +17990,7 @@ msgid "Unknown"
 msgstr "Unknown"
 
 #: library/WT/Stats.php:680 library/WT/Stats.php:682
-#: modules_v4/privacy/module.php:74
+#: modules_v4/privacy/module.php:79
 msgid "Living"
 msgstr "Living"
 
@@ -19700,8 +19710,8 @@ msgstr "Close"
 #: media_links.php:650 media_links.php:656
 #: modules_v4/census_assistant/census_3_search_add.php:2091
 #: modules_v4/census_assistant/census_3_search_add.php:2097
-#: modules_v4/family_nav/module.php:204 modules_v4/family_nav/module.php:380
-#: modules_v4/family_nav/module.php:383
+#: modules_v4/family_nav/module.php:209 modules_v4/family_nav/module.php:385
+#: modules_v4/family_nav/module.php:388
 msgctxt "unknown family"
 msgid "unknown"
 msgstr "unknown"
@@ -19947,8 +19957,9 @@ msgstr "Album"
 
 #. I18N: Description of the “Album” module
 #: modules_v4/album/module.php:37
-msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "An alternative to the “media” tab, and an enhanced image viewer."
+#| msgid "A tab showing the sources linked to an individual."
+msgid "A tab showing the media objects linked to an individual."
+msgstr "A tab showing the media objects linked to an individual."
 
 #: modules_v4/album/module.php:182
 #, php-format
@@ -24245,11 +24256,11 @@ msgstr "Extra information"
 msgid "A sidebar showing non-genealogical information about an individual."
 msgstr "A sidebar showing non-genealogical information about an individual."
 
-#: modules_v4/extra_info/module.php:64
+#: modules_v4/extra_info/module.php:69
 msgid "Internal reference "
 msgstr "Internal reference "
 
-#: modules_v4/extra_info/module.php:68
+#: modules_v4/extra_info/module.php:73
 msgid "There are no facts for this individual."
 msgstr "There are no facts for this individual."
 
@@ -24463,12 +24474,12 @@ msgstr ""
 msgid "A sidebar showing an individual’s close families and relatives."
 msgstr "A sidebar showing an individual’s close families and relatives."
 
-#: modules_v4/family_nav/module.php:198
+#: modules_v4/family_nav/module.php:203
 msgctxt "father’s wife"
 msgid "step-mother"
 msgstr "step-mother"
 
-#: modules_v4/family_nav/module.php:198
+#: modules_v4/family_nav/module.php:203
 msgctxt "mother’s husband"
 msgid "step-father"
 msgstr "step-father"
@@ -26494,15 +26505,15 @@ msgstr "Facts and events"
 msgid "A tab showing the facts and events of an individual."
 msgstr "A tab showing the facts and events of an individual."
 
-#: modules_v4/personal_facts/module.php:67
+#: modules_v4/personal_facts/module.php:84
 msgid "There are no Facts for this individual."
 msgstr "There are no Facts for this individual."
 
-#: modules_v4/personal_facts/module.php:73
+#: modules_v4/personal_facts/module.php:90
 msgid "Events of close relatives"
 msgstr "Events of close relatives"
 
-#: modules_v4/personal_facts/module.php:77
+#: modules_v4/personal_facts/module.php:94
 msgid "Historical facts"
 msgstr "Historical facts"
 
@@ -26559,41 +26570,41 @@ msgstr ""
 msgid "A sidebar tool to show privacy status of an individual."
 msgstr "A sidebar tool to show privacy status of an individual."
 
-#: modules_v4/privacy/module.php:63
+#: modules_v4/privacy/module.php:68
 #, php-format
 msgid "Death recorded as %s"
 msgstr "Death recorded as %s"
 
-#: modules_v4/privacy/module.php:68 modules_v4/privacy/module.php:71
+#: modules_v4/privacy/module.php:73 modules_v4/privacy/module.php:76
 msgid "Presumed dead"
 msgstr "Presumed dead"
 
-#: modules_v4/privacy/module.php:69
+#: modules_v4/privacy/module.php:74
 #, php-format
 msgid "An estimated death date has been calculated as %s"
 msgstr "An estimated death date has been calculated as %s"
 
-#: modules_v4/privacy/module.php:95
+#: modules_v4/privacy/module.php:100
 msgid "Death is recorded with an unknown date."
 msgstr "Death is recorded with an unknown date."
 
-#: modules_v4/privacy/module.php:103
+#: modules_v4/privacy/module.php:108
 #, php-format
 msgid "An event occurred in this person's life more than %s years ago<br> %s"
 msgstr "An event occurred in this person's life more than %s years ago<br> %s"
 
-#: modules_v4/privacy/module.php:110
+#: modules_v4/privacy/module.php:115
 #, php-format
 msgid "This person's birth was less %s years ago<br> %s"
 msgstr "This person's birth was less %s years ago<br> %s"
 
-#: modules_v4/privacy/module.php:123
+#: modules_v4/privacy/module.php:128
 #, php-format
 msgid "A parent with a date of %s is more than 45 years older than this person"
 msgstr ""
 "A parent with a date of %s is more than 45 years older than this person"
 
-#: modules_v4/privacy/module.php:136
+#: modules_v4/privacy/module.php:141
 #, php-format
 msgid ""
 "A marriage with a date of %s suggests they were born at least 10 years "
@@ -26602,13 +26613,13 @@ msgstr ""
 "A marriage with a date of %s suggests they were born at least 10 years "
 "earlier than that."
 
-#: modules_v4/privacy/module.php:147
+#: modules_v4/privacy/module.php:152
 #, php-format
 msgid "A spouse with a date of %s is more than 40 years older than this person"
 msgstr ""
 "A spouse with a date of %s is more than 40 years older than this person"
 
-#: modules_v4/privacy/module.php:158
+#: modules_v4/privacy/module.php:163
 #, php-format
 msgid ""
 "A child with a date of %s suggests this person was born at least 15 years "
@@ -26617,7 +26628,7 @@ msgstr ""
 "A child with a date of %s suggests this person was born at least 15 years "
 "earlier than that."
 
-#: modules_v4/privacy/module.php:169
+#: modules_v4/privacy/module.php:174
 #, php-format
 msgid ""
 "A grandchild with a date of %s suggests this person was born at least 30 "
@@ -26626,7 +26637,7 @@ msgstr ""
 "A grandchild with a date of %s suggests this person was born at least 30 "
 "years earlier than that."
 
-#: modules_v4/privacy/module.php:176
+#: modules_v4/privacy/module.php:181
 msgid ""
 "There are no records to suggest this person is dead, so they are displayed "
 "as living."
@@ -26773,39 +26784,39 @@ msgstr ""
 msgid "A tab showing the close relatives of an individual."
 msgstr "A tab showing the close relatives of an individual."
 
-#: modules_v4/relatives/module.php:135
+#: modules_v4/relatives/module.php:157
 msgid "Add husband"
 msgstr "Add husband"
 
-#: modules_v4/relatives/module.php:136
+#: modules_v4/relatives/module.php:158
 msgid "Add a husband to this family"
 msgstr "Add a husband to this family"
 
-#: modules_v4/relatives/module.php:188
+#: modules_v4/relatives/module.php:210
 msgid "Add wife"
 msgstr "Add wife"
 
-#: modules_v4/relatives/module.php:189
+#: modules_v4/relatives/module.php:211
 msgid "Add a wife to this family"
 msgstr "Add a wife to this family"
 
-#: modules_v4/relatives/module.php:234
+#: modules_v4/relatives/module.php:256
 msgid "Add marriage details"
 msgstr "Add marriage details"
 
-#: modules_v4/relatives/module.php:318
+#: modules_v4/relatives/module.php:340
 msgid "Add a son or daughter"
 msgstr "Add a son or daughter"
 
-#: modules_v4/relatives/module.php:322
+#: modules_v4/relatives/module.php:344
 msgid "Add a brother or sister"
 msgstr "Add a brother or sister"
 
-#: modules_v4/relatives/module.php:361
+#: modules_v4/relatives/module.php:383
 msgid "Show date differences"
 msgstr "Show date differences"
 
-#: modules_v4/relatives/module.php:363
+#: modules_v4/relatives/module.php:385
 msgid "Show relationships"
 msgstr "Show relationships"
 
@@ -26858,7 +26869,7 @@ msgstr ""
 "A report of individuals who have a selected fact or event in their record."
 
 #. I18N: help for resource facts and events module
-#: modules_v4/report_fact/module.php:175
+#: modules_v4/report_fact/module.php:176
 msgid ""
 "The list of available facts and events are those set by the site "
 "administrator as \"All individual facts\" and \"Unique individual facts\" at "
@@ -26876,62 +26887,62 @@ msgstr ""
 "those data fields. The \"Type\" field is only avaiable for Custom facts and "
 "Custom events."
 
-#: modules_v4/report_fact/module.php:198
+#: modules_v4/report_fact/module.php:199
 msgid "Year from - 4 digits only"
 msgstr "Year from - 4 digits only"
 
-#: modules_v4/report_fact/module.php:199
+#: modules_v4/report_fact/module.php:200
 msgid "Year to - 4 digits only"
 msgstr "Year to - 4 digits only"
 
-#: modules_v4/report_fact/module.php:210 modules_v4/report_fact/module.php:363
+#: modules_v4/report_fact/module.php:211 modules_v4/report_fact/module.php:364
 #: note.php:98 repo.php:95 source.php:97
 msgid "Details"
 msgstr "Details"
 
 #. I18N: A filter on the facts and events report page
-#: modules_v4/report_fact/module.php:333
+#: modules_v4/report_fact/module.php:334
 #, php-format
 msgid "Fact or event: <span>%1s</span>"
 msgstr "Fact or event: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
-#: modules_v4/report_fact/module.php:334
+#: modules_v4/report_fact/module.php:335
 #, php-format
 msgid "Date from: <span>%1s</span>"
 msgstr "Date from: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
-#: modules_v4/report_fact/module.php:335
+#: modules_v4/report_fact/module.php:336
 #, php-format
 msgid "Date to <span>%1s</span>"
 msgstr "Date to <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
-#: modules_v4/report_fact/module.php:336
+#: modules_v4/report_fact/module.php:337
 #, php-format
 msgid "Dates between <span>%1s</span> and <span>%2s</span> "
 msgstr "Dates between <span>%1s</span> and <span>%2s</span> "
 
 #. I18N: A filter on the facts and events report page
-#: modules_v4/report_fact/module.php:337
+#: modules_v4/report_fact/module.php:338
 #, php-format
 msgid "Place: <span>%1s</span>"
 msgstr "Place: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
-#: modules_v4/report_fact/module.php:338
+#: modules_v4/report_fact/module.php:339
 #, php-format
 msgid "Type: <span>%1s</span>"
 msgstr "Type: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
-#: modules_v4/report_fact/module.php:339
+#: modules_v4/report_fact/module.php:340
 #, php-format
 msgid "Details: <span>%1s</span>"
 msgstr "Details: <span>%1s</span>"
 
-#: modules_v4/report_fact/module.php:345
+#: modules_v4/report_fact/module.php:346
 #: modules_v4/report_marriages/module.php:206
 #: modules_v4/report_vital_records/module.php:226
 msgid "Listing individuals based on these filters"
@@ -26942,31 +26953,31 @@ msgstr "Listing individuals based on these filters"
 msgid "A report of family members and their details."
 msgstr "A report of family members and their details."
 
-#: modules_v4/report_family/module.php:108
+#: modules_v4/report_family/module.php:109
 #: modules_v4/report_individual/module.php:110
 #: modules_v4/report_related_fam/module.php:143
 msgid "Show sources"
 msgstr "Show sources"
 
-#: modules_v4/report_family/module.php:114
+#: modules_v4/report_family/module.php:115
 #: modules_v4/report_individual/module.php:116
 #: modules_v4/report_related_fam/module.php:149
 msgid "Show notes"
 msgstr "Show notes"
 
-#: modules_v4/report_family/module.php:120
+#: modules_v4/report_family/module.php:121
 msgid "Show basic events when blank"
 msgstr "Show basic events when blank"
 
-#: modules_v4/report_family/module.php:126
+#: modules_v4/report_family/module.php:127
 msgid "Show family media"
 msgstr "Show family media"
 
-#: modules_v4/report_family/module.php:129
+#: modules_v4/report_family/module.php:130
 msgid "Main"
 msgstr "Main"
 
-#: modules_v4/report_family/module.php:136
+#: modules_v4/report_family/module.php:137
 msgid "Show individual media"
 msgstr "Show individual media"
 
@@ -29208,3 +29219,6 @@ msgstr "Show an age cursor?"
 #: timeline.php:293
 msgid "Show lifespans"
 msgstr "Show lifespans"
+
+#~ msgid "An alternative to the “media” tab, and an enhanced image viewer."
+#~ msgstr "An alternative to the “media” tab, and an enhanced image viewer."
