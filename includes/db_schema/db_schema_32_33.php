@@ -38,26 +38,15 @@ $names_array = array (
 	'fancy_treeview_pedigree'	=> 'fancy_treeview_ancestors',
 );
 
-
+// change module and block settings to new module names
 foreach ($names_array as $key => $value) {
 	try {
-		self::exec("SET FOREIGN_KEY_CHECKS=0;");
-		self::exec("UPDATE `##module_privacy` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
-		self::exec("SET FOREIGN_KEY_CHECKS=1;");
-	} catch (PDOException $ex) {
-		// Perhaps we have already deleted this data?
-	}
-	try {
-		self::exec("SET FOREIGN_KEY_CHECKS=0;");
 		self::exec("UPDATE `##module_setting` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
-		self::exec("SET FOREIGN_KEY_CHECKS=1;");
 	} catch (PDOException $ex) {
 		// Perhaps we have already deleted this data?
 	}
 	try {
-		self::exec("SET FOREIGN_KEY_CHECKS=0;");
-		self::exec("UPDATE `##module` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
-		self::exec("SET FOREIGN_KEY_CHECKS=1;");
+		self::exec("UPDATE `##block` SET `module_name` = REPLACE(`module_name`, ' . $key . ', ' . $value . ')");
 	} catch (PDOException $ex) {
 		// Perhaps we have already deleted this data?
 	}
