@@ -5180,11 +5180,11 @@ ul#research_status ul.sublinks {
 	font-size: 90%;
 }
 
-#simpl_research a.config_link {
+#research_links a.config_link {
 	float: right;
 	font-size: 1em;
 }
-[dir='rtl'] #simpl_research a.config_link {
+[dir='rtl'] #research_links a.config_link {
 	float: left;
 }
 
