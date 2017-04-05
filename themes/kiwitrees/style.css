@@ -4948,7 +4948,7 @@ body .ui-tooltip {
 /* Styling for simpl_pages module */
 #pages-container {
 	font-size: 110%;
-	margin: 0 auto;
+	margin: 0 auto 20px;
 	width: 96%;
 }
 
