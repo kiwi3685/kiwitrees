@@ -250,7 +250,7 @@ $true	= '<i class="accepted fa fa-check"></i>';
 		?>
 		<h2><?php echo /* I18N: heading for report on missing data */ WT_I18N::translate('%1s related to %2s ', $select[$choose_relatives], $person->getLifespanName()); ?></h2>
 		<h3><?php echo /* I18N: sub-heading for report on missing data listing selected event types */ WT_I18N::translate('Missing <u>%s</u> data', strtolower(WT_Gedcom_Tag::getLabel($fact))); ?></h3>
-		<?php echo ($n > 0) ? '<p>' . WT_I18N::plural('<b>Note: </b>%s person excluded as they are, or are believed to be, still living', '%s people excluded as they are, or are believed to be, still living', $n, $n) . '</p>' : ''; ?>
+		<?php echo ($n > 0) ? '<p>' . WT_I18N::plural('<b>Note: </b>%s person excluded as they are, or are believed to be, still living', '<b>Note: </b>%s people excluded as they are, or are believed to be, still living', $n, $n) . '</p>' : ''; ?>
 
 		<div class="loading-image">&nbsp;</div>
 		<table id="missing_data">

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2017-04-05 10:43+1200\n"
-"PO-Revision-Date: 2017-04-05 10:44+1200\n"
+"POT-Creation-Date: 2017-04-05 11:23+1200\n"
+"PO-Revision-Date: 2017-04-05 11:23+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -3912,15 +3912,23 @@ msgstr "Missing <u>%s</u> data"
 
 #: admin_trees_missing.php:253
 #, php-format
+#| msgid ""
+#| "<b>Note: </b>%s person excluded as they are, or are believed to be, still "
+#| "living"
+#| msgid_plural ""
+#| "%s people excluded as they are, or are believed to be, still living"
 msgid ""
 "<b>Note: </b>%s person excluded as they are, or are believed to be, still "
 "living"
 msgid_plural ""
-"%s people excluded as they are, or are believed to be, still living"
+"<b>Note: </b>%s people excluded as they are, or are believed to be, still "
+"living"
 msgstr[0] ""
 "<b>Note: </b>%s person excluded as they are, or are believed to be, still "
 "living"
-msgstr[1] "%s people excluded as they are, or are believed to be, still living"
+msgstr[1] ""
+"<b>Note: </b>%s people excluded as they are, or are believed to be, still "
+"living"
 
 #. I18N: Short abbrevisation for "Generation"
 #: admin_trees_missing.php:259
@@ -15687,7 +15695,6 @@ msgstr "Place of baptism"
 
 #. I18N: Used where either gedcom tag BAPM or CHR might be used
 #: library/WT/Gedcom/Tag.php:135
-#| msgid "Birth after baptism or christening"
 msgid "Baptism or christening"
 msgstr "Baptism or christening"
 
@@ -15753,7 +15760,6 @@ msgstr "Place of burial"
 
 #. I18N: Used where either gedcom tag BURI or CREM might be used
 #: library/WT/Gedcom/Tag.php:152
-#| msgid "Date of cremation"
 msgid "Burial or cremation"
 msgstr "Burial or cremation"
 
@@ -19957,7 +19963,6 @@ msgstr "Album"
 
 #. I18N: Description of the “Album” module
 #: modules_v4/album/module.php:37
-#| msgid "A tab showing the sources linked to an individual."
 msgid "A tab showing the media objects linked to an individual."
 msgstr "A tab showing the media objects linked to an individual."
 
