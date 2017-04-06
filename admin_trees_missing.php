@@ -256,7 +256,7 @@ $true	= '<i class="accepted fa fa-check"></i>';
 		<table id="missing_data">
 			<thead>
 				<tr>
-					<th><?php echo /* I18N: Short abbrevisation for "Generation" */ WT_I18N::translate('Gen'); ?></th>
+					<th><span title="<?php echo WT_I18N::translate('Generation'); ?>"><?php echo /* I18N: Short abbrevisation for "Generation" */ WT_I18N::translate('Gen'); ?></span></th>
 					<th><?php echo WT_I18N::translate('Name'); ?></th>
 					<th><?php echo WT_Gedcom_Tag::getLabel($fact); ?></th>
 					<th><?php echo WT_I18N::translate('Date'); ?></th>
