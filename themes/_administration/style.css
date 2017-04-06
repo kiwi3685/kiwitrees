@@ -1619,7 +1619,7 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 }
 
 #missing_data-page th:first-child {
-	max-width: 20px;
+	max-width: 35px;
 }
 
 #missing_data-page td:first-child {
