@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2017-04-06 16:35+1200\n"
-"PO-Revision-Date: 2017-04-06 16:35+1200\n"
+"POT-Creation-Date: 2017-04-07 07:18+1200\n"
+"PO-Revision-Date: 2017-04-07 07:19+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -3925,6 +3925,11 @@ msgstr[1] ""
 "<b>Note: </b>%s people excluded as they are, or are believed to be, still "
 "living"
 
+#: admin_trees_missing.php:259 branches.php:254
+#: library/WT/Controller/FancyTreeView.php:314
+msgid "Generation"
+msgstr "Generation"
+
 #. I18N: Short abbrevisation for "Generation"
 #: admin_trees_missing.php:259
 msgid "Gen"
@@ -4984,10 +4989,6 @@ msgstr "Expand all"
 #: includes/functions/functions_print_lists.php:264
 msgid "Sosa"
 msgstr "Sosa"
-
-#: branches.php:254 library/WT/Controller/FancyTreeView.php:314
-msgid "Generation"
-msgstr "Generation"
 
 #: calendar.php:115
 msgid "Anniversary calendar"
@@ -20288,14 +20289,18 @@ msgid "Update missing links"
 msgstr "Update missing links"
 
 #: modules_v4/batch_update/plugins/update_links.php:35
+#| msgid ""
+#| "Occasionally the table of links between needs to be synchronised with the "
+#| "GEDCOM data. This tools checks for missing links and inserts them into "
+#| "the table."
 msgid ""
-"Occasionally the table of links between needs to be synchronised with the "
-"GEDCOM data. This tools checks for missing links and inserts them into the "
-"table."
+"Occasionally the table of links between records needs to be synchronised "
+"with the GEDCOM data. This tools checks for missing links and inserts them "
+"into the table."
 msgstr ""
-"Occasionally the table of links between needs to be synchronised with the "
-"GEDCOM data. This tools checks for missing links and inserts them into the "
-"table."
+"Occasionally the table of links between records needs to be synchronised "
+"with the GEDCOM data. This tools checks for missing links and inserts them "
+"into the table."
 
 #. I18N: Name of a module
 #: modules_v4/calendar_utilities/module.php:33
