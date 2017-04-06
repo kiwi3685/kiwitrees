@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2017-04-05 11:23+1200\n"
-"PO-Revision-Date: 2017-04-05 11:23+1200\n"
+"POT-Creation-Date: 2017-04-06 16:35+1200\n"
+"PO-Revision-Date: 2017-04-06 16:35+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -3912,11 +3912,6 @@ msgstr "Missing <u>%s</u> data"
 
 #: admin_trees_missing.php:253
 #, php-format
-#| msgid ""
-#| "<b>Note: </b>%s person excluded as they are, or are believed to be, still "
-#| "living"
-#| msgid_plural ""
-#| "%s people excluded as they are, or are believed to be, still living"
 msgid ""
 "<b>Note: </b>%s person excluded as they are, or are believed to be, still "
 "living"
@@ -7377,7 +7372,7 @@ msgstr "…"
 
 #. I18N: language name - Afrikaans
 #: includes/config_data.php:447
-msgid "Afrikaans"
+msgid "afrikaans"
 msgstr "Afrikaans"
 
 #. I18N: language name - Arabic
@@ -7392,291 +7387,296 @@ msgstr "Bulgarian"
 
 #. I18N: language name - Bosnian
 #: includes/config_data.php:450
-msgid "Bosanski"
+msgid "bosanski"
 msgstr "Bosnian"
 
-#. I18N: language name - Czech
+#. I18N: language name - Catalan
 #: includes/config_data.php:451
-msgid "Čeština"
+msgid "català"
+msgstr "Catalan"
+
+#. I18N: language name - Czech
+#: includes/config_data.php:452
+msgid "čeština"
 msgstr "Czech"
 
 #. I18N: language name - Danish
-#: includes/config_data.php:452
-msgid "Dansk"
+#: includes/config_data.php:453
+msgid "dansk"
 msgstr "Danish"
 
 #. I18N: language name - German
-#: includes/config_data.php:453
+#: includes/config_data.php:454
 msgid "Deutsch"
 msgstr "German"
 
 #. I18N: language name - Maldivian
-#: includes/config_data.php:454
+#: includes/config_data.php:455
 msgid "ދިވެހިބަސް"
 msgstr "Maldavian"
 
 #. I18N: language name - Greek
-#: includes/config_data.php:455
+#: includes/config_data.php:456
 msgid "Ελληνικά"
 msgstr "Greek"
 
 #. I18N: language name - English
-#: includes/config_data.php:456
+#: includes/config_data.php:457
 msgid "English"
 msgstr "English"
 
 #. I18N: language name - Australian English
-#: includes/config_data.php:457
+#: includes/config_data.php:458
 msgid "Australian English"
 msgstr "Australian English"
 
 #. I18N: language name - British English
-#: includes/config_data.php:458
+#: includes/config_data.php:459
 msgid "British English"
 msgstr "British English"
 
 #. I18N: language name - U.S. English
-#: includes/config_data.php:459
+#: includes/config_data.php:460
 msgid "U.S. English"
 msgstr "U.S. English"
 
 #. I18N: language name - Spanish
-#: includes/config_data.php:460
-msgid "Español"
+#: includes/config_data.php:461
+msgid "español"
 msgstr "Spanish"
 
 #. I18N: language name - Estonian
-#: includes/config_data.php:461
-msgid "Eesti"
+#: includes/config_data.php:462
+msgid "eesti"
 msgstr "Estonian"
 
 #. I18N: language name - Farsi
-#: includes/config_data.php:462
+#: includes/config_data.php:463
 msgid "فارسی"
 msgstr "Farsi"
 
 #. I18N: language name - Finnish
-#: includes/config_data.php:463
-msgid "Suomi"
+#: includes/config_data.php:464
+msgid "suomi"
 msgstr "Finnish"
 
 #. I18N: language name - Faroese
-#: includes/config_data.php:464
-msgid "Føroyskt"
+#: includes/config_data.php:465
+msgid "føroyskt"
 msgstr "Faroese"
 
 #. I18N: language name - French
-#: includes/config_data.php:465
-msgid "Français"
+#: includes/config_data.php:466
+msgid "français"
 msgstr "French"
 
 #. I18N: language name - French Canadian
-#: includes/config_data.php:466
-msgid "Français Canadien"
+#: includes/config_data.php:467
+msgid "français Canadien"
 msgstr "French Canadian"
 
 #. I18N: language name - Galician
-#: includes/config_data.php:467
-msgid "Galego"
+#: includes/config_data.php:468
+msgid "galego"
 msgstr "Galician"
 
 #. I18N: language name - Hawaiian
-#: includes/config_data.php:468
+#: includes/config_data.php:469
 msgid "ʻŌlelo Hawaiʻi"
 msgstr "Hawaiian"
 
 #. I18N: language name - Hebrew
-#: includes/config_data.php:469
+#: includes/config_data.php:470
 msgid "עברית"
 msgstr "Hebrew"
 
 #. I18N: language name - Croatian
-#: includes/config_data.php:470
-msgid "Hrvatski"
+#: includes/config_data.php:471
+msgid "hrvatski"
 msgstr "Croatian"
 
 #. I18N: language name - Hungarian
-#: includes/config_data.php:471
-msgid "Magyar"
+#: includes/config_data.php:472
+msgid "magyar"
 msgstr "Hungarian"
 
 #. I18N: language name - Indonesian
-#: includes/config_data.php:472
+#: includes/config_data.php:473
 msgid "Bahasa Indonesia"
 msgstr "Indonesian"
 
 #. I18N: language name - Icelandic
-#: includes/config_data.php:473
-msgid "Islenska"
+#: includes/config_data.php:474
+msgid "íslenska"
 msgstr "Icelandic"
 
 #. I18N: language name - Italian
-#: includes/config_data.php:474
-msgid "Italiano"
+#: includes/config_data.php:475
+msgid "italiano"
 msgstr "Italian"
 
 #. I18N: language name - Japanese
-#: includes/config_data.php:475
+#: includes/config_data.php:476
 msgid "日本語"
 msgstr "Japanese"
 
 #. I18N: language name - Georgian
-#: includes/config_data.php:476
+#: includes/config_data.php:477
 msgid "ქართული"
 msgstr "Georgian"
 
 #. I18N: language name - Korean
-#: includes/config_data.php:477
+#: includes/config_data.php:478
 msgid "한국어"
 msgstr "Korean"
 
 #. I18N: language name - Lithuanian
-#: includes/config_data.php:478
-msgid "Lietuvių"
+#: includes/config_data.php:479
+msgid "lietuvių"
 msgstr "Lithuanian"
 
 #. I18N: language name - Latvian
-#: includes/config_data.php:479
-msgid "Latviešu"
+#: includes/config_data.php:480
+msgid "latviešu"
 msgstr "Latvian"
 
 #. I18N: language name - Maori
-#: includes/config_data.php:480
+#: includes/config_data.php:481
 msgid "Māori"
 msgstr "Māori"
 
 #. I18N: language name - Marathi
-#: includes/config_data.php:481
+#: includes/config_data.php:482
 msgid "मराठी"
 msgstr "Marathi"
 
 #. I18N: language name - Malay
-#: includes/config_data.php:482
+#: includes/config_data.php:483
 msgid "Bahasa Melayu"
 msgstr "Malay"
 
 #. I18N: language name - Norwegian Bokmal
-#: includes/config_data.php:483
-msgid "Norsk Bokmål"
+#: includes/config_data.php:484
+msgid "norsk bokmål"
 msgstr "Norwegian Bokmal"
 
 #. I18N: language name - Nepali
-#: includes/config_data.php:484
+#: includes/config_data.php:485
 msgid "नेपाली"
 msgstr "Nepali"
 
 #. I18N: language name - Dutch
-#: includes/config_data.php:485
+#: includes/config_data.php:486
 msgid "Nederlands"
 msgstr "Dutch"
 
 #. I18N: language name - Norwegian Nynorsk
-#: includes/config_data.php:486
-msgid "Nynorsk"
+#: includes/config_data.php:487
+msgid "nynorsk"
 msgstr "Norwegian Nynorsk"
 
 #. I18N: language name - Occitan
-#: includes/config_data.php:487
-msgid "Occitan"
+#: includes/config_data.php:488
+msgid "occitan"
 msgstr "Occitan"
 
 #. I18N: language name - Polish
-#: includes/config_data.php:488
-msgid "Polski"
+#: includes/config_data.php:489
+msgid "polski"
 msgstr "Polish"
 
 #. I18N: language name - Portuguese
-#: includes/config_data.php:489
-msgid "Português"
+#: includes/config_data.php:490
+msgid "português"
 msgstr "Portuguese"
 
 #. I18N: language name - Portugese Brazilian
-#: includes/config_data.php:490
-msgid "Português do Brasil"
+#: includes/config_data.php:491
+msgid "português do Brasil"
 msgstr "Portuguese Brazilian"
 
 #. I18N: language name - Romanian
-#: includes/config_data.php:491
-msgid "Română"
+#: includes/config_data.php:492
+msgid "română"
 msgstr "Romanian"
 
 #. I18N: language name - Russian
-#: includes/config_data.php:492
-msgid "Pусский"
+#: includes/config_data.php:493
+msgid "русский"
 msgstr "Russian"
 
 #. I18N: language name - Slovak
-#: includes/config_data.php:493
-msgid "Slovenčina"
+#: includes/config_data.php:494
+msgid "slovenčina"
 msgstr "Slovak"
 
 #. I18N: language name - Slovenian
-#: includes/config_data.php:494
-msgid "Slovenščina"
+#: includes/config_data.php:495
+msgid "slovenščina"
 msgstr "Slovenian"
 
 #. I18N: language name - Serbian
-#: includes/config_data.php:495
+#: includes/config_data.php:496
 msgid "Српски"
 msgstr "Serbian"
 
 #. I18N: language name - Serbian
-#: includes/config_data.php:496
-msgid "Srpski"
+#: includes/config_data.php:497
+msgid "srpski"
 msgstr "Serbian"
 
 #. I18N: language name - Swedish
-#: includes/config_data.php:497
-msgid "Svenska"
+#: includes/config_data.php:498
+msgid "svenska"
 msgstr "Swedish"
 
 #. I18N: language name - Tamil
-#: includes/config_data.php:498
+#: includes/config_data.php:499
 msgid "தமிழ்"
 msgstr "Tamil"
 
 #. I18N: language name - Tatar
-#: includes/config_data.php:499
+#: includes/config_data.php:500
 msgid "Татар"
 msgstr "Tatar"
 
 #. I18N: language name - Thai
-#: includes/config_data.php:500
+#: includes/config_data.php:501
 msgid "تايلند"
 msgstr "Thai"
 
 #. I18N: language name - Turkish
-#: includes/config_data.php:501
+#: includes/config_data.php:502
 msgid "Türkçe"
 msgstr "Turkish"
 
 #. I18N: language name - Ukrainian
-#: includes/config_data.php:502
-msgid "Yкраїнська"
+#: includes/config_data.php:503
+msgid "українська"
 msgstr "Ukranian"
 
 #. I18N: language name - Vietnamese
-#: includes/config_data.php:503
+#: includes/config_data.php:504
 msgid "Tiếng Việt"
 msgstr "Vietnamese"
 
 #. I18N: language name - Yiddish
-#: includes/config_data.php:504
+#: includes/config_data.php:505
 msgid "ייִדיש"
 msgstr "Yiddish"
 
 #. I18N: language name - Chinese
-#: includes/config_data.php:505
+#: includes/config_data.php:506
 msgid "中文"
 msgstr "Chinese"
 
 #. I18N: language name - Chinese (Simplified)
-#: includes/config_data.php:506
+#: includes/config_data.php:507
 msgid "简体中文"
 msgstr "Chinese (simplified)"
 
 #. I18N: language name - Chinese (Traditional)
-#: includes/config_data.php:507
+#: includes/config_data.php:508
 msgid "繁體中文"
 msgstr "Chinese (traditional)"
 
