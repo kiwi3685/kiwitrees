@@ -207,7 +207,7 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 	}
 }
 
-if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+if (version_compare(PHP_VERSION, '5.6.0', '<')) {
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-php-version.php');
 }
 
