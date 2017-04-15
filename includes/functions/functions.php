@@ -2273,24 +2273,24 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 	$num_skipped = 0;
 	$genlist = array($pid);
 	$list[$pid]->generation = 1;
-	while (count($genlist)>0) {
+	while (count($genlist) > 0) {
 		$id = array_shift($genlist);
-		if (strpos($id, "empty")===0) continue; // id can be something like “empty7”
+		if (strpos($id, "empty") === 0) continue; // id can be something like “empty7”
 		$person = WT_Person::getInstance($id);
 		$famids = $person->getChildFamilies();
-		if (count($famids)>0) {
+		if (count($famids) > 0) {
 			if ($show_empty) {
 				for ($i=0;$i<$num_skipped;$i++) {
 					$list["empty" . $total_num_skipped] = new WT_Person('');
-					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
+					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation + 1;
 					array_push($genlist, "empty" . $total_num_skipped);
 					$total_num_skipped++;
 				}
 			}
 			$num_skipped = 0;
 			foreach ($famids as $famid => $family) {
-				$husband = $family->getHusband();
-				$wife = $family->getWife();
+				$husband	= $family->getHusband();
+				$wife		= $family->getWife();
 				if ($husband) {
 					$list[$husband->getXref()] = $husband;
 					$list[$husband->getXref()]->generation = $list[$id]->generation+1;
