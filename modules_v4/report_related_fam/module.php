@@ -218,18 +218,21 @@ class report_related_fam_WT_Module extends WT_Module implements WT_Module_Report
 						}
 						break;
 					case "direct-ancestors":
-						add_ancestors($list, $rootid, false, $MAX_DESCENDANCY_GENERATIONS);
+						$list[$rootid] = $person;
+						add_ancestors($list, $rootid, false, $maxgen);
 						break;
 					case "ancestors":
-						add_ancestors($list, $rootid, true, $MAX_DESCENDANCY_GENERATIONS);
+						$list[$rootid] = $person;
+						add_ancestors($list, $rootid, true, $maxgen);
 						break;
 					case "descendants":
-						$list[$rootid]->generation = 1;
-						add_descendancy($list, $rootid, false, $MAX_DESCENDANCY_GENERATIONS);
+						$list[$rootid] = $person;
+						add_descendancy($list, $rootid, false, $maxgen);
 						break;
 					case "all":
-						add_ancestors($list, $rootid, true, $MAX_DESCENDANCY_GENERATIONS);
-						add_descendancy($list, $rootid, true, $MAX_DESCENDANCY_GENERATIONS);
+						$list[$rootid] = $person;
+						add_ancestors($list, $rootid, true, $maxgen);
+						add_descendancy($list, $rootid, true, $maxgen);
 						break;
 				}
 			}
@@ -249,37 +252,39 @@ class report_related_fam_WT_Module extends WT_Module implements WT_Module_Report
 						$indifacts = $person->getIndiFacts();
 						sort_facts($indifacts);
 						if ($person && $person->canDisplayDetails()) { ?>
-							<h3>
-								<a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getLifespanName(); ?></a>
-							</h3>
+							<h3><?php echo $person->getLifespanName(); ?></a></h3>
 							<div class="accordion-container">
-								<?php // Image displays
-								switch ($photos) {
-									case 'highlighted':
-										$image = $person->displayImage(true);
-										if ($image) { ?>
-											<div class="indi_mainimage"><?php echo $person->displayImage(true); ?></div>
-										<?php }
+									<?php // Image displays
+									switch ($photos) {
+										case 'highlighted': ?>
+											<div style="vertical-align: top;">
+												<?php $image = $person->displayImage(true);
+												if ($image) { ?>
+													<div class="indi_mainimage" style="display: inline-block;"><?php echo $person->displayImage(true); ?></div>
+												<?php } ?>
+												<h3 style="display: inline-block;vertical-align: top;margin: 10px;"><a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getLifespanName(); ?></a></h3>
+											</div>
+											<?php break;
+										case 'all':
+											//show all level 1 images ?>
+											<div class="images" style="display: inline-block;">
+												<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
+												$allMedia =  $match[1];
+												foreach ($allMedia as $media) {
+													$image = WT_Media::getInstance($media);
+													if ($image && $image->canDisplayDetails()) { ?>
+														<span><?php echo $image->displayImage(); ?></span>
+													<?php }
+												} ?>
+											</div>
+											<h3 style="margin: 10px;"><a href="<?php echo $person->getHtmlUrl(); ?>"><?php echo $person->getLifespanName(); ?></a></h3>
+											<?php
 										break;
-									case 'all':
-										//show all level 1 images ?>
-										<div class="images">
-											<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
-											$allMedia =  $match[1];
-											foreach ($allMedia as $media) {
-												$image = WT_Media::getInstance($media);
-												if ($image && $image->canDisplayDetails()) { ?>
-													<span><?php echo $image->displayImage(); ?></span>
-												<?php }
-											} ?>
-										</div>
-										<?php
-									break;
-									case 'none':
-									default:
-									// show nothing
-									break;
-								} ?>
+										case 'none':
+										default:
+										// show nothing
+										break;
+									} ?>
 								<div class="facts_events">
 									<h3><?php echo WT_I18N::translate('Facts and events'); ?></h3>
 									<?php
@@ -288,12 +293,12 @@ class report_related_fam_WT_Module extends WT_Module implements WT_Module_Report
 											(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
 											&& !in_array($fact->getTag(), $exclude_tags)
 										) {
-											$data		 = getResourcefact($fact, $family, $sup, $source_list, $number);
+											$data		 = getResourcefact($fact, $person, $sup, $source_list, $number);
 											$sup		 = $data[0];
 											$source_list = $data[1];
 											$number		 = $data[2]; ?>
 											<p class="report_fact">
-												<span class="label"><?php echo print_fact_label($fact, $family) . $showsources ? $sup : ''; ?></span>
+												<span class="label"><?php echo print_fact_label($fact, $person) . $showsources ? $sup : ''; ?></span>
 												<span class="details">
 													<?php echo $data[3]['date']; ?>
 													<?php echo $data[3]['place']; ?>
