@@ -532,19 +532,19 @@ class WT_Controller_FancyTreeView {
 			switch ($person->getSex()) {
 				case 'M':
 					if ($i == 0) {
-						$html .= '<br>' . /* I18N: %s is a number  */ WT_I18N::translate('He married %s times', $wordcount2M[$count-1]) . '. ';
+						$html .= '<br>' . /* I18N: %s is a number  */ WT_I18N::translate('He married %s', $wordcount2M[$count-1]) . '. ';
 					}
 					$html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time he married', $wordcountM[$i]);
 					break;
 				case 'F':
 					if ($i == 0) {
-						$html .= /* I18N: %s is a number  */ WT_I18N::translate('She married %s times', $wordcount2F[$count-1]) . '. ';
+						$html .= /* I18N: %s is a number  */ WT_I18N::translate('She married %s', $wordcount2F[$count-1]) . '. ';
 					}
 					$html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time she married', $wordcountF[$i]);
 					break;
 				default:
 					if ($i == 0) {
-						$html .= /* I18N: %s is a number  */ WT_I18N::translate('This individual married %s times', $wordcount2M[$count-1]) . '. ';
+						$html .= /* I18N: %s is a number  */ WT_I18N::translate('This individual married %s', $wordcount2M[$count-1]) . '. ';
 					}
 					$html .= /* I18N: %s is an ordinal */ WT_I18N::translate('The %s time this individual married', $wordcountM[$i]);
 					break;
