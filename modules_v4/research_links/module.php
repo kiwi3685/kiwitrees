@@ -481,10 +481,16 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 																<?php echo $plugin->getName(); ?>
 																<span title="<?php echo WT_I18N::translate('Pay to view'); ?>"><?php echo $this->getCurrency($plugin); ?></span>
 															</a>
+
 															<ul class="sublinks">
-																<?php foreach ($sublinks as $sublink) { ?>
+																<?php foreach ($sublinks as $sublink) {
+																	if (stripos($sublink['link'], "postresearchform") === false){
+																		$alink = 'href="' . htmlspecialchars($sublink['link']) . '"';
+																	} else {
+																		$alink = 'href="javascript:void(0);" onclick="' . htmlspecialchars($sublink['link']) . '; return false;"';
+																	} ?>
 																	<li>
-																		<a class="research_link" href="<?php echo htmlspecialchars($sublink['link']); ?>" target="_blank" rel="noopener noreferrer">
+																		<a class="research_link" <?php echo $alink; ?> target="_blank" rel="noopener noreferrer">
 																			<span class="ui-icon ui-icon-triangle-1-e left"></span>
 																			<?php echo $sublink['title']; ?>
 																		</a>
