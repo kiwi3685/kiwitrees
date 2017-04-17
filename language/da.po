@@ -2,6 +2,7 @@
 # Translators:
 # Translators:
 # Translators:
+# Translators:
 # jacolineDK, 2014-2017
 # Nigel Osborne <kiwi3685@me.com>, 2014
 # Nigel Osborne <kiwi3685@me.com>, 2014,2016
@@ -11,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2017-04-07 07:18+1200\n"
-"PO-Revision-Date: 2017-04-12 09:11+1200\n"
+"PO-Revision-Date: 2017-04-17 11:53+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Danish (http://www.transifex.com/kiwitrees/kiwitrees/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -175,7 +176,7 @@ msgstr "Du kan indtaste en URL der starter med &laquo;http://&raquo;."
 #. I18N: Help text for add media screens
 #: addmedia.php:543
 msgid "Leave this field blank to keep the original name of the file you have uploaded from your local computer.<br><br>Media files can and perhaps should be named differently on the server than on your local computer. This is because often the local file name has meaning to you but is less meaningful to others visiting this site. Consider also the possibility that you and someone else both try to upload different files called \"granny.jpg\".<br>In this field you specify the new name of the file. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)"
-msgstr ""
+msgstr "Efterlad dette felt blankt for at bruge det originale navn på filen som du oploadede fra din pc. <br><br>Medie filer kan måske være navnegivet anderledes end de er på din pc. Det er fordi ofte giver det lokale navn mening på pc men giver ingen mening for besøgende på din side. Overvej altid muligheden at du eller en anden kunne oploade en navnegivet fil som \"bedstemor.jpg\".<br>I feltet her kan du specificere det nye navn på filen. Navnet vil også blive brugt til miniaturen, som kan oploades seperat eller dannet automatisk. Du behøver dog ikke indtaste filtypen (jpg, gif, pdf, doc, etc.)"
 
 #: addmedia.php:553 admin_media_upload.php:209 help_text.php:736 modules_v4/gallery/module.php:280
 msgid "Folder name on server"
@@ -1176,17 +1177,17 @@ msgstr "%s Medieobjekter"
 #: admin_site_use.php:64
 #, php-format
 msgid "Your database size is currently %s"
-msgstr ""
+msgstr "Størrelsen på din database er for øjeblikket på %s"
 
 #: admin_site_use.php:67
 #, php-format
 msgid "Your files including media items are currently using %s"
-msgstr ""
+msgstr "Dine filer inkluderet medieobjekter bruger for øjeblikket %s"
 
 #: admin_site_use.php:70
 #, php-format
 msgid "Total server space used is therefore %s"
-msgstr ""
+msgstr "Total anvendt serverplads  er derfor %s"
 
 #: admin_trees_append.php:31
 msgid "Append family trees"
@@ -1577,11 +1578,11 @@ msgstr "Adoption"
 #. I18N: a placeholder for input of all or any record type
 #: admin_trees_config.php:648
 msgid "All records"
-msgstr ""
+msgstr "Alle poster"
 
 #: admin_trees_config.php:654
 msgid "add"
-msgstr ""
+msgstr "tilføj"
 
 #: admin_trees_config.php:678
 msgid "this record does not exist"
@@ -1589,7 +1590,7 @@ msgstr "denne post eksisterer ikke"
 
 #: admin_trees_config.php:698
 msgid "delete"
-msgstr ""
+msgstr "slet"
 
 #: admin_trees_config.php:711
 msgid "Media folder"
@@ -1601,7 +1602,7 @@ msgstr "Denne mappe vil blive brugt til at gemme mediefiler for det aktuelle fam
 
 #: admin_trees_config.php:721
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "Hvem kan uploade nye medie-filer"
 
 #: admin_trees_config.php:731
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
@@ -1634,7 +1635,7 @@ msgstr "Brug silhouetter"
 
 #: admin_trees_config.php:759
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question and may also vary according to the theme you use."
-msgstr ""
+msgstr "Brug billeder i silhuet når der ikke er specificeret et hovedbillede for personen. De anvendte billeder er specifikke for den pågældende persons køn men varierer ud fra hvilket tema du bruger"
 
 #: admin_trees_config.php:764 compact.php:53
 msgid "Show highlight images in people boxes"
@@ -1646,7 +1647,7 @@ msgstr "Klik her for at se mere information omkring fremhævede billeder i FAQ p
 
 #: admin_trees_config.php:775
 msgid "Add watermarks to thumbnails"
-msgstr ""
+msgstr "Tilføj vandmærke på miniaturer"
 
 #: admin_trees_config.php:779
 msgid "A watermark is text that is added to an image to discourage others from copying it without permission. If you select yes further options will be available."
@@ -1662,7 +1663,7 @@ msgstr "Vandmærker kan være længe om at blive dannet på store billeder. Mege
 
 #: admin_trees_config.php:794
 msgid "Store watermarked thumbnails on server"
-msgstr ""
+msgstr "Gem miniaturer med vandmærke på server"
 
 #: admin_trees_config.php:800
 msgid "Images without watermarks"
@@ -1686,7 +1687,7 @@ msgstr "Dette er antallet af de mest forekommende efternavne vist på Hoved Side
 
 #: admin_trees_config.php:824
 msgid "Names to add to common surnames"
-msgstr ""
+msgstr "Tilføjelse af almindelige forekommende efternavne"
 
 #: admin_trees_config.php:828
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
@@ -2136,7 +2137,7 @@ msgstr "Skal GeoNames databasen (http://www.geonames.org/) bruges til at give fl
 
 #: admin_trees_config.php:1359 help_text.php:584 includes/functions/functions_edit.php:2612
 msgid "Administrators sometimes need to clean up and correct the data submitted by users.<br>When Administrators make such corrections information about the original change is replaced.<br>When this option is selected kiwitrees will retain the original change information instead of replacing it."
-msgstr ""
+msgstr "Administratorer er af og til nødt til at rense og korrigere i de data som brugerne kommer med. <br>Når administratorer foretager sådanne korrektioner bliver de oprindelige data erstattet. <br> Ved valg af dette vil kiwitrees bevare de originale data i stedet for at erstatte dem."
 
 #: admin_trees_config.php:1381
 msgid "Customized"
@@ -2454,7 +2455,7 @@ msgstr "Alle"
 #. I18N: Sub-title for missing data admin page
 #: admin_trees_missing.php:97
 msgid "A list of information missing from an individual and their relatives."
-msgstr ""
+msgstr "En liste over manglende data for et individ og deres pårørende"
 
 #. I18N: Help content for missing data admin page
 #: admin_trees_missing.php:99
@@ -2495,14 +2496,14 @@ msgstr "%1s er relateret til %2s "
 #: admin_trees_missing.php:252
 #, php-format
 msgid "Missing <u>%s</u> data"
-msgstr ""
+msgstr "Manglende <u>%s</u> data"
 
 #: admin_trees_missing.php:253
 #, php-format
 msgid "<b>Note: </b>%s person excluded as they are, or are believed to be, still living"
 msgid_plural "<b>Note: </b>%s people excluded as they are, or are believed to be, still living"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "<b>Bemærk: </b>%s individet som formodes at være i live, vil blive udeladt"
+msgstr[1] "<b>Bemærk: </b>%s individer som formodes at være i live, vil blive udeladt"
 
 #: admin_trees_missing.php:259 branches.php:254 library/WT/Controller/FancyTreeView.php:314
 msgid "Generation"
@@ -2511,7 +2512,7 @@ msgstr "Generation"
 #. I18N: Short abbrevisation for "Generation"
 #: admin_trees_missing.php:259
 msgid "Gen"
-msgstr ""
+msgstr "Led"
 
 #: admin_trees_places.php:89
 msgid "Administration - place edit"
@@ -2605,7 +2606,7 @@ msgstr "Saneringskontrol "
 
 #: admin_trees_sanity.php:86
 msgid "This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.<br>Options marked <span color\"#ff0000\">**</span> are often very slow."
-msgstr ""
+msgstr "Denne proces kan være langsom. Hvis du har et stor familie træ eller mistænker der et stort antal fejl, bør du kun afkrydse et par enkelte ad gangen.<br>Markeringer <span color\"#ff0000\">**</span> gør ofte søgningen sløv."
 
 #: admin_trees_sanity.php:98
 msgid "Date discrepancies"
@@ -2621,11 +2622,11 @@ msgstr "Fødsel efter død eller begravelse"
 
 #: admin_trees_sanity.php:115
 msgid "Birth after marriage"
-msgstr ""
+msgstr "Fødsel efter vielse"
 
 #: admin_trees_sanity.php:121
 msgid "Birth after their children"
-msgstr ""
+msgstr "Fødsel efter børnefødsel"
 
 #: admin_trees_sanity.php:127
 msgid "Burial before death"
@@ -2633,31 +2634,31 @@ msgstr "Begravelse før død"
 
 #: admin_trees_sanity.php:132
 msgid "Age related queries"
-msgstr ""
+msgstr "Alders relateret forespørgsler"
 
 #: admin_trees_sanity.php:137
 msgid "Baptised after a certain age"
-msgstr ""
+msgstr "Dåb efter en hvis alder"
 
 #: admin_trees_sanity.php:144
 msgid "Alive after a certain age"
-msgstr ""
+msgstr "I live efter en hvis alder"
 
 #: admin_trees_sanity.php:151
 msgid "Married before a certain age"
-msgstr ""
+msgstr "Viet før en hvis alder"
 
 #: admin_trees_sanity.php:158
 msgid "Being much older than spouse"
-msgstr ""
+msgstr "Er væsentlig ældre end ægtefællen"
 
 #: admin_trees_sanity.php:166
 msgid "Having children before a certain age"
-msgstr ""
+msgstr "Fået børn før en hvis alder"
 
 #: admin_trees_sanity.php:173
 msgid "Mothers having children past a certain age"
-msgstr ""
+msgstr "Mødre fået børn efter en hvis alder"
 
 #: admin_trees_sanity.php:180
 msgid "Duplicated data"
@@ -2670,7 +2671,7 @@ msgstr "Begravelse"
 
 #: admin_trees_sanity.php:213
 msgid "Missing or invalid data"
-msgstr ""
+msgstr "Manglende eller forkerte data"
 
 #: admin_trees_sanity.php:218
 msgid "No gender recorded"
@@ -2678,7 +2679,7 @@ msgstr "Køn ikke valgt"
 
 #: admin_trees_sanity.php:224
 msgid "Invalid age recorded"
-msgstr ""
+msgstr "Forkert alders post"
 
 #: admin_trees_sanity.php:237 medialist.php:143 modules_v4/album/module.php:330 modules_v4/googlemap/module.php:2026 modules_v4/report_fact/module.php:220 modules_v4/research_links/module.php:419
 msgid "Reset"
@@ -2686,7 +2687,7 @@ msgstr "Nulstil"
 
 #: admin_trees_sanity.php:247
 msgid "Results"
-msgstr ""
+msgstr "Resultater"
 
 #: admin_trees_sanity.php:252
 #, php-format
@@ -2696,7 +2697,7 @@ msgstr "%s er født efter dåb"
 #: admin_trees_sanity.php:253 admin_trees_sanity.php:260 admin_trees_sanity.php:267 admin_trees_sanity.php:274 admin_trees_sanity.php:281 admin_trees_sanity.php:288 admin_trees_sanity.php:295 admin_trees_sanity.php:302 admin_trees_sanity.php:309 admin_trees_sanity.php:316 admin_trees_sanity.php:323 admin_trees_sanity.php:330 admin_trees_sanity.php:337 admin_trees_sanity.php:344 admin_trees_sanity.php:351 admin_trees_sanity.php:358
 #, php-format
 msgid "query time: %1s secs"
-msgstr ""
+msgstr "forespørgselstid: %1s sek"
 
 #: admin_trees_sanity.php:259
 #, php-format
@@ -2706,12 +2707,12 @@ msgstr "%s er født efter død eller begravelse"
 #: admin_trees_sanity.php:266
 #, php-format
 msgid "%s born after marriage"
-msgstr ""
+msgstr "%s født efter vielse"
 
 #: admin_trees_sanity.php:273
 #, php-format
 msgid "%s born after their children"
-msgstr ""
+msgstr "%s født efter børnefødsel"
 
 #: admin_trees_sanity.php:280 admin_trees_sanity.php:315 admin_trees_sanity.php:322 admin_trees_sanity.php:329 admin_trees_sanity.php:336 admin_trees_sanity.php:343
 #, php-format
@@ -2721,57 +2722,57 @@ msgstr "%s begravelse før død"
 #: admin_trees_sanity.php:287
 #, php-format
 msgid "%1s baptised more than %2s years after birth"
-msgstr ""
+msgstr "%1s er døbt senere end %2s efter fødsel"
 
 #: admin_trees_sanity.php:294
 #, php-format
 msgid "%1s living and older than %2s years"
-msgstr ""
+msgstr "%1s er i live og ældre end %2s år"
 
 #: admin_trees_sanity.php:301
 #, php-format
 msgid "%1s married younger than %2s years"
-msgstr ""
+msgstr "%1s blev gift yngre end %2s år"
 
 #: admin_trees_sanity.php:308
 #, php-format
 msgid "%1s spouses with more than %2s years age difference"
-msgstr ""
+msgstr "%1s ægtefælle som er mere end %2s års til forskel"
 
 #: admin_trees_sanity.php:350
 #, php-format
 msgid "%s have no gender recorded"
-msgstr ""
+msgstr "%s er ikke kønsbestemt"
 
 #: admin_trees_sanity.php:357
 #, php-format
 msgid "%s individuals or families have age incorrectly recorded"
-msgstr ""
+msgstr "%s individer eller familier er ikke angivet med korrekt alder"
 
 #: admin_trees_sanity.php:664
 #, php-format
 msgid "born in %1s, now aged %2s years"
-msgstr ""
+msgstr "født i %1s, nu %2s år gammel"
 
 #: admin_trees_sanity.php:672
 #, php-format
 msgid "married in %1s at age %2s years"
-msgstr ""
+msgstr "gift i %1s, i en alder af %2s år"
 
 #: admin_trees_sanity.php:680
 #, php-format
 msgid "Age difference =  %1s years"
-msgstr ""
+msgstr "Aldersforskel =  %1s år"
 
 #: admin_trees_sanity.php:688
 #, php-format
 msgid "born in %1s, baptised at age %2s years"
-msgstr ""
+msgstr "født i %1s, døbt i en alder af %2s år"
 
 #: admin_trees_sanity.php:696
 #, php-format
 msgid "born in %1s, christened at age %2s years"
-msgstr ""
+msgstr "født i %1s, døbt i en alder af %2s år"
 
 #: admin_trees_source.php:33
 msgid "Facts or events"
@@ -2827,7 +2828,7 @@ msgstr "Markering"
 
 #: admin_trees_unlinked.php:33 themes/_administration/header.php:175
 msgid "Find unlinked records"
-msgstr ""
+msgstr "Find ikke linkede poster"
 
 #. I18N: Help text for the Find unlinked records tool.
 #: admin_trees_unlinked.php:100
@@ -2840,65 +2841,73 @@ msgid ""
 "\t\t<li>Notes: a shared note record that is not used as a note to any record, fact, or event in the family tree.</li>\n"
 "\t\t<li>Media: a media object that is registered in the family tree but not attached to any record, fact, or event.</li><ul>"
 msgstr ""
+"Liste af poster, der ikke er tilknyttet andre poster. Den omfatter ikke Familier som en familiepost og kan ikke dannes uden mindst et medlem.<br>\n"
+"\t\tDefinitionen af en ikke sammenkædning for hver posttype er:\n"
+"\t\t<ul><li>Individuals: en person som ikke er linket til en familie, enten som et barn eller ægtefælle.</li>\n"
+"\t\t<li>Kilder: en kildepost som ikke brugt med et opbevaringssted eller som en kilde i familietræet.</li>\n"
+"\t\t<li>Opbevaringssteder: en post som ikke er tilknyttet nogle kilder i familie træet.</li>\n"
+"\t\t<li>Noter: en delt note som ikke er tilknyttet nogle andre poster, hændelser eller begivenheder i familietræet</li>\n"
+"\t\t<li>Medier: Et medie objekt som er registreret i familietræet, men ikke tilknyttet en post, hændelse eller en begivenhed.\n"
+"</li><ul>"
 
 #: admin_trees_unlinked.php:158
 #, php-format
 msgid "%s unlinked individual"
 msgid_plural "%s unlinked individuals"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s person er uden relationer"
+msgstr[1] "%s personer er uden relationer"
 
 #: admin_trees_unlinked.php:168
 msgid "No unlinked individuals"
-msgstr ""
+msgstr "Ingen er uden relationer"
 
 #: admin_trees_unlinked.php:175
 #, php-format
 msgid "%s unlinked source"
 msgid_plural "%s unlinked sources"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s kilde uden relationer"
+msgstr[1] "%s kilder uden relationer"
 
 #: admin_trees_unlinked.php:185
 msgid "No unlinked sources"
-msgstr ""
+msgstr "Ingen er uden relationer"
 
 #: admin_trees_unlinked.php:192
 #, php-format
 msgid "%s unlinked note"
 msgid_plural "%s unlinked notes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s note uden relationer"
+msgstr[1] "%s noter uden relationer"
 
 #: admin_trees_unlinked.php:202
 msgid "No unlinked notes"
-msgstr ""
+msgstr "Ingen er uden relationer"
 
 #: admin_trees_unlinked.php:209
 #, php-format
 msgid "%s unlinked repository"
 msgid_plural "%s unlinked repositories"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s obevaringssted uden relationer"
+msgstr[1] "%s obevaringssteder uden relationer"
 
 #: admin_trees_unlinked.php:219
 msgid "No unlinked repositories"
-msgstr ""
+msgstr "Ingen er uden relationer"
 
 #: admin_trees_unlinked.php:226
 #, php-format
 msgid "%s unlinked media object"
 msgid_plural "%s unlinked media objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s medie uden relationer"
+msgstr[1] "%s medier uden relationer"
 
 #: admin_trees_unlinked.php:236
 msgid "No unlinked media objects"
-msgstr ""
+msgstr "Ingen er uden relationer"
 
 #: admin_trees_unlinked.php:240
 msgid "You must select at least one record type"
-msgstr ""
+msgstr "Du skal vælge mindst en type"
 
 #: admin_users.php:30 edituser.php:87
 msgid "User administration"
@@ -2916,11 +2925,11 @@ msgstr "Moderator"
 
 #: admin_users.php:67
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr ""
+msgstr "Brugernavnet eksisterer allerede. Vælg venligst et andet brugernavn."
 
 #: admin_users.php:69
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "En bruger med denne email-adresse eksisterer allerede."
 
 #: admin_users.php:71 setup.php:418
 msgid "The passwords do not match."
@@ -2938,7 +2947,7 @@ msgstr "Administratoren på %s har godkendt din anmodning om en konto. Du kan nu
 
 #: admin_users.php:227 admin_users.php:230 admin_users.php:232 admin_users.php:297
 msgid "Edit user"
-msgstr ""
+msgstr "Rediger bruger"
 
 #: admin_users.php:250
 msgid "Never"
@@ -2989,6 +2998,12 @@ msgid ""
 "\t\t\t\t\t\t\t\tAnything with 6 characters or more is acceptable, but mixed lower and uppercase characters, numbers, and special characters will increase the security of the password.\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
+"\n"
+"⇥⇥⇥⇥⇥⇥⇥⇥Passwords skal indeholde mindst 6 karakterer og der skelnes imellem store og små bogstaver, altså  “password” er anderledes “PASSWORD”.\n"
+"⇥⇥⇥⇥⇥⇥⇥⇥<br>\n"
+"⇥⇥⇥⇥⇥⇥⇥⇥Alt med mindst 6 karakterer er acceptable, men et mix af både store og små bogstaver, tal og specialtegn, vil øge sikkerheden for brugerkoden.\n"
+"⇥⇥⇥⇥⇥⇥⇥\n"
+"\t\t\t\t\t\t\t"
 
 #: admin_users.php:379 edituser.php:164 help_text.php:598 login.php:408
 msgid "Confirm password"
@@ -3009,7 +3024,7 @@ msgstr "E-mail-adresse"
 
 #: admin_users.php:393
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "Denne email adresse vil blive brugt til at sende dine adgangskode påmindelser, websteds-beskeder og beskeder fra andre familiemedlemmer der er registreret på dette websted."
 
 #: admin_users.php:400 help_text.php:759
 msgid "Account approval and email verification"
@@ -3033,14 +3048,19 @@ msgid ""
 "\t\t\t\t\t\t\t\t<br>\n"
 "\t\t\t\t\t\t\t\tA user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"Når en bruger opretter en konto, vil en email blive sendt til brugerens mail adresse med et bekræftelses link. Når de klikker på dette link, ved vi at email adressen er korrekt og \"email bekræftet\" vil automatisk blive aktivt.\n"
+"⇥⇥⇥⇥⇥⇥⇥⇥<br>\n"
+"⇥⇥⇥⇥⇥⇥⇥⇥Hvis en administrator opretter en brugerkonto, vil en bekræftelses mail ikke blive sendt og skal derfor bekræftes manuelt.\n"
+"⇥⇥⇥⇥⇥⇥⇥⇥<br>\n"
+"⇥⇥⇥⇥⇥⇥⇥⇥En bruger vil ikke kunne logge sig på før både \"email bekræftet\" og \"godkendt af administrator\" er aktive."
 
 #: admin_users.php:448
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "Godkend automatisk ændringer lavet af denne bruger"
 
 #: admin_users.php:451
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr ""
+msgstr "Normalt skal alle ændringer i familietræet godkendes af en moderator/administrator. Med denne indstilling er det ikke nødvendigt med denne godkendelse."
 
 #. I18N: A configuration setting
 #: admin_users.php:459 help_text.php:770
@@ -3054,7 +3074,7 @@ msgstr "Synlig for andre brugere der er logget ind"
 
 #: admin_users.php:468
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "Du kan vælge at vise alle brugere som er logget på."
 
 #. I18N: A configuration setting
 #: admin_users.php:476 edituser.php:186 help_text.php:496 help_text.php:518
@@ -3064,23 +3084,23 @@ msgstr "Foretrukket kontaktmetode"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:482
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Sidens medlemmer kan sende beskeder til hinanden. Du kan vælge hvordan disse meddelelser skal sendes til dig eller helt fravælge at modtage dem."
 
 #: admin_users.php:489
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Administratorens kommentarer om brugeren"
 
 #: admin_users.php:499
 msgid "Notification options"
-msgstr ""
+msgstr "Notifikation indstillinger"
 
 #: admin_users.php:505
 msgid "Clippings cart downloads"
-msgstr ""
+msgstr "Udklipsholder til download"
 
 #: admin_users.php:508
 msgid "When a user downloads a GEDCOM file created in the Clippings cart the site administrator will be notified by mail if this option is selected."
-msgstr ""
+msgstr "Når en bruger downloader en GEDCOM fil dannet med Udklipsholder kan administrator blive notificeret med en mail hvis denne indstilling er valgt."
 
 #: admin_users.php:516
 msgid "Family tree access and settings"
@@ -3088,7 +3108,7 @@ msgstr "Adgang og indstillinger for stamtræ"
 
 #: admin_users.php:518
 msgid "Help for family tree access settings"
-msgstr ""
+msgstr "Hjælp til familietræets adgangsregler"
 
 #: admin_users.php:526 admin_users.php:609 edituser.php:141 help_text.php:523 help_text.php:662 help_text.php:754
 msgid "Individual record"
@@ -3096,19 +3116,19 @@ msgstr "Individuel post"
 
 #: admin_users.php:528
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Knyt denne bruger til et individ i familietræet."
 
 #: admin_users.php:532
 msgid "Roles"
-msgstr ""
+msgstr "Roller"
 
 #: admin_users.php:534
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "En rolle er ensbetydende med rettigheder som kan give adgang til se informationer, ændre konfigurationer, osv. Adgangsrettigheder er tilknyttet roller og roller gives til brugere. Hvert familietræ kan tildele forskellige rettigheder til hver rolle, og brugere kan have forskellige roller i hvert familietræ."
 
 #: admin_users.php:541
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr ""
+msgstr "Alle har denne rolle, herunder gæster på webstedet og søgemaskiner."
 
 #: admin_users.php:547 help_text.php:682
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
@@ -3116,11 +3136,11 @@ msgstr "Denne rolle har alle tilladelser som gæsten har, samt eventuelle yderli
 
 #: admin_users.php:553
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr ""
+msgstr "Denne rolle har alle tilladelser som brugeren har, plus rettigheder til tilføje, ændre og slette data. Enhver ændring skal godkendes af en moderator med mindre brugeren har fået aktiveret rettigheden hvor ændringer accepteres automatisk."
 
 #: admin_users.php:559
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr ""
+msgstr "Denne rolle har alle tilladelser som redaktøren har, plus tilladelse til at acceptere eller afvise ændringer udført af andre brugere."
 
 #: admin_users.php:565 help_text.php:694
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -3132,7 +3152,7 @@ msgstr "Administrator"
 
 #: admin_users.php:571
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr ""
+msgstr "Denne rolle har rettighed til at bestemme hvilke rettigheder brugerne skal have samt rettighed til at ændre konfiguration og indstillinger for webstedets moduler."
 
 #: admin_users.php:576 admin_users.php:611 help_text.php:411
 msgid "Restrict to immediate family"
@@ -3140,19 +3160,19 @@ msgstr "Begræns til nærmeste familie"
 
 #: admin_users.php:578
 msgid "Where a user is associated with an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr ""
+msgstr "Hvor en bruger er tilknyttet en person i familietræet og brugeren enten er medlem, redaktør eller moderator, kan du forhindre dem i at få adgang til fjerne slægtninge der stadig er levende. Du skal angive hvor mange slægtled brugeren skal have tilladelse til at se."
 
 #: admin_users.php:579
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr ""
+msgstr "For eksempel, hvis du tillader en længde på 2, vil brugeren have mulighed for at se deres børnebørn (barnets barn), faster, moster, farbror, morbror (forældres søskende), steddatter (partners barn), men ikke fætter og kusiner (forældres søskendes barn)"
 
 #: admin_users.php:580
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr ""
+msgstr "Note: længere stier kræver en masse beregninger, som kan forårsage at din hjemmeside virker langsommere for disse brugere."
 
 #: admin_users.php:587
 msgid "Administration role"
-msgstr ""
+msgstr "Administrator rolle"
 
 #. I18N: gedcom tag ROLE
 #: admin_users.php:610 help_text.php:672 library/WT/Gedcom/Tag.php:319
@@ -3632,7 +3652,7 @@ msgstr "ægtefælle"
 
 #: edit_interface.php:2268
 msgid "Use this page to change or remove family members.<br /><br />For each member in the family, you can use the \"Select new person\" field to choose a different person from your tree to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes."
-msgstr ""
+msgstr "Brug denne side til at redigere eller fjerne familiemedlemmer.<br /><br />For hver medlem af familien kan du bruge linket: Rediger for at udskifte en person med en anden.  Du kan også bruge linket: Fjern til at fjerne personen fra familien.<br /><br />Klik på knappen: Gem, når du er færdig med at redigere familiemedlemmerne."
 
 #: edit_interface.php:2299 edit_interface.php:2331 edit_interface.php:2354 edit_interface.php:2366 index_edit.php:284 index_edit.php:302 inverselink.php:115 inverselink.php:189 inverselink.php:292 modules_v4/clippings/module.php:344 modules_v4/clippings/module.php:364 modules_v4/clippings/module.php:526 modules_v4/gedcom_favorites/module.php:122 modules_v4/googlemap/admin_places.php:675 modules_v4/stories/module.php:385 modules_v4/stories/module.php:405 modules_v4/widget_favorites/module.php:139
 msgid "Remove"
@@ -3640,7 +3660,7 @@ msgstr "Fjern"
 
 #: edit_interface.php:2302 edit_interface.php:2334 edit_interface.php:2357
 msgid "Select new person"
-msgstr ""
+msgstr "Vælg ny person"
 
 #: edit_interface.php:2303 edit_interface.php:2335 edit_interface.php:2358
 msgid "Change"
@@ -4357,7 +4377,7 @@ msgstr "Når dette afkrydsningsfelt er markeret, vil diagrammet blive udskrevet 
 
 #: help_text.php:594
 msgid "Leave password blank if you want to keep the current password.<br>Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr ""
+msgstr "Adgangskoden skal være mindst 6 tegn lang, og er versal-følsom, såsom \"hemmeligt\" er forskelligt fra \"HEMMELIGT\"."
 
 #: help_text.php:599 setup.php:446
 msgid "Type your password again, to make sure you have typed it correctly."
@@ -4566,7 +4586,7 @@ msgstr "Pak klip med ZIP"
 
 #: help_text.php:791
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.winzip.com</a>."
-msgstr ""
+msgstr "Vælg denne for at gemme dine udklip i en ZIP-fil. For mere information omkring ZIP-filer, besøg <a href=\"http://www.winzip.com\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.winzip.com</a>."
 
 #: help_text.php:795
 msgid "Help"
@@ -4653,7 +4673,7 @@ msgstr ".... [ukendt navn]"
 #. I18N: language name - Afrikaans
 #: includes/config_data.php:447
 msgid "afrikaans"
-msgstr ""
+msgstr "Afrikansk"
 
 #. I18N: language name - Arabic
 #: includes/config_data.php:448
@@ -4668,22 +4688,22 @@ msgstr "Bulgarisk"
 #. I18N: language name - Bosnian
 #: includes/config_data.php:450
 msgid "bosanski"
-msgstr ""
+msgstr "Bosnisk"
 
 #. I18N: language name - Catalan
 #: includes/config_data.php:451
 msgid "català"
-msgstr ""
+msgstr "Catalansk"
 
 #. I18N: language name - Czech
 #: includes/config_data.php:452
 msgid "čeština"
-msgstr ""
+msgstr "Tjekkisk"
 
 #. I18N: language name - Danish
 #: includes/config_data.php:453
 msgid "dansk"
-msgstr ""
+msgstr "Dansk"
 
 #. I18N: language name - German
 #: includes/config_data.php:454
@@ -4723,12 +4743,12 @@ msgstr "Amerikansk"
 #. I18N: language name - Spanish
 #: includes/config_data.php:461
 msgid "español"
-msgstr ""
+msgstr "Spansk"
 
 #. I18N: language name - Estonian
 #: includes/config_data.php:462
 msgid "eesti"
-msgstr ""
+msgstr "Estisk"
 
 #. I18N: language name - Farsi
 #: includes/config_data.php:463
@@ -4738,27 +4758,27 @@ msgstr "Farsi"
 #. I18N: language name - Finnish
 #: includes/config_data.php:464
 msgid "suomi"
-msgstr ""
+msgstr "Finsk"
 
 #. I18N: language name - Faroese
 #: includes/config_data.php:465
 msgid "føroyskt"
-msgstr ""
+msgstr "Færøsk"
 
 #. I18N: language name - French
 #: includes/config_data.php:466
 msgid "français"
-msgstr ""
+msgstr "Fransk"
 
 #. I18N: language name - French Canadian
 #: includes/config_data.php:467
 msgid "français Canadien"
-msgstr ""
+msgstr "Canadisk Fransk"
 
 #. I18N: language name - Galician
 #: includes/config_data.php:468
 msgid "galego"
-msgstr ""
+msgstr "Galicisk"
 
 #. I18N: language name - Hawaiian
 #: includes/config_data.php:469
@@ -4773,12 +4793,12 @@ msgstr "Hebrew"
 #. I18N: language name - Croatian
 #: includes/config_data.php:471
 msgid "hrvatski"
-msgstr ""
+msgstr "Kroatisk"
 
 #. I18N: language name - Hungarian
 #: includes/config_data.php:472
 msgid "magyar"
-msgstr ""
+msgstr "Ungarsk"
 
 #. I18N: language name - Indonesian
 #: includes/config_data.php:473
@@ -4788,12 +4808,12 @@ msgstr "Indonesisk"
 #. I18N: language name - Icelandic
 #: includes/config_data.php:474
 msgid "íslenska"
-msgstr ""
+msgstr "Islandsk"
 
 #. I18N: language name - Italian
 #: includes/config_data.php:475
 msgid "italiano"
-msgstr ""
+msgstr "Italiensk"
 
 #. I18N: language name - Japanese
 #: includes/config_data.php:476
@@ -4813,12 +4833,12 @@ msgstr "Koransk"
 #. I18N: language name - Lithuanian
 #: includes/config_data.php:479
 msgid "lietuvių"
-msgstr ""
+msgstr "Litauisk"
 
 #. I18N: language name - Latvian
 #: includes/config_data.php:480
 msgid "latviešu"
-msgstr ""
+msgstr "Lettisk"
 
 #. I18N: language name - Maori
 #: includes/config_data.php:481
@@ -4838,7 +4858,7 @@ msgstr "Malay"
 #. I18N: language name - Norwegian Bokmal
 #: includes/config_data.php:484
 msgid "norsk bokmål"
-msgstr ""
+msgstr "Norsk"
 
 #. I18N: language name - Nepali
 #: includes/config_data.php:485
@@ -4853,47 +4873,47 @@ msgstr "Hollandsk"
 #. I18N: language name - Norwegian Nynorsk
 #: includes/config_data.php:487
 msgid "nynorsk"
-msgstr ""
+msgstr "Nynorsk"
 
 #. I18N: language name - Occitan
 #: includes/config_data.php:488
 msgid "occitan"
-msgstr ""
+msgstr "Occitansk"
 
 #. I18N: language name - Polish
 #: includes/config_data.php:489
 msgid "polski"
-msgstr ""
+msgstr "Polsk"
 
 #. I18N: language name - Portuguese
 #: includes/config_data.php:490
 msgid "português"
-msgstr ""
+msgstr "Portugisisk"
 
 #. I18N: language name - Portugese Brazilian
 #: includes/config_data.php:491
 msgid "português do Brasil"
-msgstr ""
+msgstr "Brasiliansk"
 
 #. I18N: language name - Romanian
 #: includes/config_data.php:492
 msgid "română"
-msgstr ""
+msgstr "Rumænsk"
 
 #. I18N: language name - Russian
 #: includes/config_data.php:493
 msgid "русский"
-msgstr ""
+msgstr "Russisk"
 
 #. I18N: language name - Slovak
 #: includes/config_data.php:494
 msgid "slovenčina"
-msgstr ""
+msgstr "Slovakisk"
 
 #. I18N: language name - Slovenian
 #: includes/config_data.php:495
 msgid "slovenščina"
-msgstr ""
+msgstr "Slovensk"
 
 #. I18N: language name - Serbian
 #: includes/config_data.php:496
@@ -4903,12 +4923,12 @@ msgstr "Serbisk"
 #. I18N: language name - Serbian
 #: includes/config_data.php:497
 msgid "srpski"
-msgstr ""
+msgstr "Serbisk"
 
 #. I18N: language name - Swedish
 #: includes/config_data.php:498
 msgid "svenska"
-msgstr ""
+msgstr "Svensk"
 
 #. I18N: language name - Tamil
 #: includes/config_data.php:499
@@ -4933,7 +4953,7 @@ msgstr "Tyrkisk"
 #. I18N: language name - Ukrainian
 #: includes/config_data.php:503
 msgid "українська"
-msgstr ""
+msgstr "Ukrainsk"
 
 #. I18N: language name - Vietnamese
 #: includes/config_data.php:504
@@ -5003,17 +5023,17 @@ msgstr "PHP blokerede filen ud fra filtypen"
 #. I18N: reflexive pronoun
 #: includes/functions/functions.php:1029
 msgid "himself"
-msgstr ""
+msgstr "ham selv"
 
 #. I18N: reflexive pronoun
 #: includes/functions/functions.php:1031
 msgid "herself"
-msgstr ""
+msgstr "hende selv"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: includes/functions/functions.php:1033
 msgid "themself"
-msgstr ""
+msgstr "dem selv"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from
 #. English “N’th cousins”, and the software has already generated the correct
@@ -7873,13 +7893,13 @@ msgstr "%s "
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s barn i tredje led"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2165
 #, php-format
 msgid "%s three times removed descending"
-msgstr ""
+msgstr "%s slægtning i tredje led"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:2170
@@ -8639,7 +8659,7 @@ msgstr "Relation:&nbsp;"
 #: includes/functions/functions_print_relations.php:80
 #, php-format
 msgid "%1$s is %2$s of %3$s"
-msgstr ""
+msgstr "%1$s er %2$s til %3$s"
 
 #: includes/functions/functions_print_relations.php:96 includes/functions/functions_print_relations.php:115
 msgid "Common ancestor: "
@@ -8655,7 +8675,7 @@ msgstr "Partner"
 
 #: includes/media_reorder.php:66
 msgid "Click a row then drag-and-drop to re-order media."
-msgstr ""
+msgstr "Klik på en række og træk-og-slip for at gensortere medier "
 
 #: includes/session.php:598
 msgid "Search engine"
@@ -8833,49 +8853,49 @@ msgstr "%s's familie"
 #: library/WT/Controller/Fanchart.php:69
 #, php-format
 msgid "Fanchart of %s"
-msgstr ""
+msgstr "Viftediagram for %s"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:160
 msgid "180 degree"
-msgstr ""
+msgstr "180 grader"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:161
 msgid "210 degree"
-msgstr ""
+msgstr "210 grader"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:162
 msgid "240 degree"
-msgstr ""
+msgstr "240 grader"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:163
 msgid "270 degree"
-msgstr ""
+msgstr "270 grader"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:164
 msgid "300 degree"
-msgstr ""
+msgstr "300 grader"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:165
 msgid "330 degree"
-msgstr ""
+msgstr "330 grader"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:166
 msgid "360 degree"
-msgstr ""
+msgstr "360 grader"
 
 #. I18N: display calculation of inviduals recorded per generation on ancestors
 #. report
 #: library/WT/Controller/FancyTreeView.php:318
 #, php-format
 msgid "(%1s of %2s - %3s complete)"
-msgstr ""
+msgstr "(%1s af %2s - %3s færdig)"
 
 #: library/WT/Controller/FancyTreeView.php:362
 msgid "back to top"
@@ -8887,7 +8907,7 @@ msgstr "Detaljerne for denne generation er private."
 
 #: library/WT/Controller/FancyTreeView.php:394
 msgid "Sosa number"
-msgstr ""
+msgstr "Sosa nummer"
 
 #: library/WT/Controller/FancyTreeView.php:462
 msgctxt "MALE"
@@ -9217,13 +9237,13 @@ msgstr "Den %s gang hun giftede sig, var det med"
 #: library/WT/Controller/FancyTreeView.php:547
 #, php-format
 msgid "This individual married %s times"
-msgstr ""
+msgstr "Denne person var gift %s gange"
 
 #. I18N: %s is an ordinal
 #: library/WT/Controller/FancyTreeView.php:549
 #, php-format
 msgid "The %s time this individual married"
-msgstr ""
+msgstr "Den %s gang personen giftede sig"
 
 #: library/WT/Controller/FancyTreeView.php:555
 msgid "He married"
@@ -9235,13 +9255,13 @@ msgstr "Hun blev gift med "
 
 #: library/WT/Controller/FancyTreeView.php:561
 msgid "This individual married"
-msgstr ""
+msgstr "Denne person giftede sig"
 
 #. I18N: details of a couple divorce
 #: library/WT/Controller/FancyTreeView.php:585
 #, php-format
 msgid "They divorced %s."
-msgstr ""
+msgstr "De blev skilt %s."
 
 #: library/WT/Controller/FancyTreeView.php:595
 msgid "He had a relationship with"
@@ -9462,12 +9482,12 @@ msgstr "i "
 
 #: library/WT/Controller/FancyTreeView.php:1405
 msgid "Overview"
-msgstr ""
+msgstr "Oversigt"
 
 #: library/WT/Controller/FancyTreeView.php:1420
 #, php-format
 msgid "%s family descendants"
-msgstr ""
+msgstr "%s familiens efterkommere"
 
 #: library/WT/Controller/Hourglass.php:409 media_links.php:384 media_links.php:386 media_links.php:391 media_links.php:393 modules_v4/census_assistant/census_3_search_add.php:1388 modules_v4/census_assistant/census_3_search_add.php:1390 modules_v4/cousins_tab/module.php:167 modules_v4/cousins_tab/module.php:203 modules_v4/family_nav/module.php:183 modules_v4/family_nav/module.php:277 modules_v4/family_nav/module.php:278
 msgid "Parents"
@@ -9578,13 +9598,13 @@ msgstr "omkring %s"
 #: library/WT/Date.php:229
 #, php-format
 msgid "%s (calculated)"
-msgstr ""
+msgstr "%s (beregnet)"
 
 #. I18N: Gedcom EST dates
 #: library/WT/Date.php:230
 #, php-format
 msgid "%s (estimated)"
-msgstr ""
+msgstr "%s (estimeret)"
 
 #. I18N: Gedcom INT dates
 #: library/WT/Date.php:231
@@ -11701,16 +11721,16 @@ msgstr "Registerfører"
 #: library/WT/Gedcom/Code/Rela.php:194
 msgctxt "MALE"
 msgid "Religious witness"
-msgstr ""
+msgstr "Religiøst vidne"
 
 #: library/WT/Gedcom/Code/Rela.php:195
 msgctxt "FEMALE"
 msgid "Religious witness"
-msgstr ""
+msgstr "Religiøst vidne"
 
 #: library/WT/Gedcom/Code/Rela.php:196
 msgid "Religious witness"
-msgstr ""
+msgstr "Religiøst vidne"
 
 #: library/WT/Gedcom/Code/Rela.php:200
 msgctxt "MALE"
@@ -12754,7 +12774,7 @@ msgstr "Sted for dåb"
 #. I18N: Used where either gedcom tag BAPM or CHR might be used
 #: library/WT/Gedcom/Tag.php:135
 msgid "Baptism or christening"
-msgstr ""
+msgstr "Dåb eller kristen dåb"
 
 #. I18N: gedcom tag BARM
 #: library/WT/Gedcom/Tag.php:136
@@ -12819,7 +12839,7 @@ msgstr "Begravelsessted"
 #. I18N: Used where either gedcom tag BURI or CREM might be used
 #: library/WT/Gedcom/Tag.php:152
 msgid "Burial or cremation"
-msgstr ""
+msgstr "Begravet eller kremeret"
 
 #. I18N: gedcom tag CALN
 #: library/WT/Gedcom/Tag.php:153
@@ -14913,7 +14933,7 @@ msgstr "…"
 #. I18N:symbol used to show an unknown date of death
 #: library/WT/Person.php:491 library/WT/Person.php:492 library/WT/Person.php:495 library/WT/Person.php:496
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: library/WT/Person.php:502
@@ -16585,11 +16605,11 @@ msgstr "Kunne ikke genkende dig ud fra de oplysninger, du gav. Vær venlig at pr
 
 #: media_links.php:57
 msgid "Click name to add person to list of links."
-msgstr ""
+msgstr "Klik på navn for at tilføje personen til listen"
 
 #: media_links.php:331
 msgid "Close"
-msgstr ""
+msgstr "Luk"
 
 #: media_links.php:650 media_links.php:656 modules_v4/census_assistant/census_3_search_add.php:2091 modules_v4/census_assistant/census_3_search_add.php:2097 modules_v4/family_nav/module.php:209 modules_v4/family_nav/module.php:385 modules_v4/family_nav/module.php:388
 msgctxt "unknown family"
@@ -16625,7 +16645,7 @@ msgstr "sorter efter filnavn"
 #. I18N: A filter on the media list for items with no TYPE tag set
 #: medialist.php:111
 msgid "No type"
-msgstr ""
+msgstr "Ingen medie type"
 
 #: medialist.php:121
 msgid "Media objects per page"
@@ -16706,7 +16726,7 @@ msgstr "<b>Bemærk venligst:</b> Private informationer for nulevende personer ud
 #: message.php:130
 #, php-format
 msgid "This message will be sent to <b>%s</b>"
-msgstr ""
+msgstr "Beskeden bliver sendt til %s"
 
 #: message.php:134
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
@@ -16765,7 +16785,7 @@ msgstr "Album"
 #. I18N: Description of the “Album” module
 #: modules_v4/album/module.php:37
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "En fane der viser de medier der er tilknyttet en person."
 
 #: modules_v4/album/module.php:182
 #, php-format
@@ -16878,7 +16898,7 @@ msgstr "Baggrundskørsel"
 #. I18N: Help text for Batch update tools.
 #: modules_v4/batch_update/admin_batch_update.php:57
 msgid "These tools can help fix common issues in GEDCOM data.<br><br>When you select a tool it will immediately search for the first record needing correction. This may take a minute or two so wait for it to complete before proceeding."
-msgstr ""
+msgstr "Dette værktøj kan hjælp med at rette almindelige kendte problemer i GEDCOM data..<br><br>Når du har valgt et værktøj vil den straks søge efter den første post som skal rettes. Dette vil tage et minut eller 2 så vent venligst et øjeblik."
 
 #: modules_v4/batch_update/admin_batch_update.php:71
 msgid "Batch update tool"
@@ -17025,12 +17045,12 @@ msgstr "Erstatningstekst"
 
 #: modules_v4/batch_update/plugins/update_links.php:31
 msgid "Update missing links"
-msgstr ""
+msgstr "Opdater manglende links"
 
 #: modules_v4/batch_update/plugins/update_links.php:35
-#| msgid "onally the table of links between needs to be synchronised with the COM a. This tools checks for missing links and inserts them into  table."
+#| msgid "lly the table of links between needs to be synchronised with the COM a. s tools checks for missing links and inserts them into  table."
 msgid "Occasionally the table of links between records needs to be synchronised with the GEDCOM data. This tools checks for missing links and inserts them into the table."
-msgstr ""
+msgstr "Indimellem skal links mellem tabelposter og GEDCOM data synkroniseres. Dette værktøj søger efter manglende links og lægger dem i tabellen."
 
 #. I18N: Name of a module
 #: modules_v4/calendar_utilities/module.php:33
@@ -17145,11 +17165,11 @@ msgstr "fætre/kusiner"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:322
 msgid " time removed"
-msgstr ""
+msgstr "tid flyttet"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:324
 msgid " times removed"
-msgstr ""
+msgstr "tider flyttet"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:328
 msgid " cousins"
@@ -17272,7 +17292,7 @@ msgstr "Skærtorsdag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:40
 msgid "Adorate dominum"
-msgstr ""
+msgstr " Epiphania"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:40
 msgid "3rd Sunday after January 6"
@@ -17280,7 +17300,7 @@ msgstr "3. søndag efter Hellig 3 Konger"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:41
 msgid "Adrian (Canterbury)"
-msgstr ""
+msgstr "Skt. Andreas (Canterbury)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:41
 msgid "January 9"
@@ -17288,7 +17308,7 @@ msgstr "9. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:42
 msgid "Ad te levavi"
-msgstr ""
+msgstr "Første søndag i advent"
 
 #. I18N: Translation of Latin religious festival name <<Adventus 1 Domini>>
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:42 modules_v4/calendar_utilities/plugins/ecclesiastical.php:56 modules_v4/calendar_utilities/plugins/ecclesiastical.php:321 modules_v4/calendar_utilities/plugins/yearly_calendar.php:183 modules_v4/calendar_utilities/plugins/yearly_calendar.php:186 modules_v4/calendar_utilities/plugins/yearly_calendar.php:189 modules_v4/calendar_utilities/plugins/yearly_calendar.php:192 modules_v4/calendar_utilities/plugins/yearly_calendar.php:195
@@ -17297,7 +17317,7 @@ msgstr "Advent Søndag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:43
 msgid "Agatha"
-msgstr ""
+msgstr "Agathe"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:43
 msgid "February 5"
@@ -17305,7 +17325,7 @@ msgstr "5. februar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:44
 msgid "Agnes"
-msgstr ""
+msgstr "Agnes"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:44
 msgid "January 21"
@@ -17313,15 +17333,15 @@ msgstr "21. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:45
 msgid "Alban"
-msgstr ""
+msgstr "Alban"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:45
 msgid "June 22 (or June in 1662 Prayer Book)"
-msgstr ""
+msgstr "22 Juni (eller Juni i 1662 Bebudelser)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:46
 msgid "Aldhelm"
-msgstr ""
+msgstr "Sankt Aldhelm"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:46 modules_v4/calendar_utilities/plugins/ecclesiastical.php:244
 msgid "May 25"
@@ -17349,7 +17369,7 @@ msgstr "2. November"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:50
 msgid "Alphege"
-msgstr ""
+msgstr "Helgen Ælfheah af Canterbury"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:50
 msgid "April 19"
@@ -17357,7 +17377,7 @@ msgstr "19. april"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:51
 msgid "Ambrose"
-msgstr ""
+msgstr "Sankt Ambrosius"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:51
 msgid "April 4"
@@ -17389,7 +17409,7 @@ msgstr "25. marts"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:55
 msgid "Ante Portram Latinam"
-msgstr ""
+msgstr "Tredje juledag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:55
 msgid "May 6"
@@ -17397,11 +17417,11 @@ msgstr "6. maj"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:56
 msgid "Aspiciens a longe"
-msgstr ""
+msgstr "Første advent"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:57
 msgid "Audoenus (Ouen)"
-msgstr ""
+msgstr "Skt Oen (Katolsk)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:57
 msgid "August 24 or 25"
@@ -17409,7 +17429,7 @@ msgstr "24. eller 25. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:58
 msgid "Audrey (Ethelreda)"
-msgstr ""
+msgstr "Sankt (Æthelthryth)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:58 modules_v4/calendar_utilities/plugins/ecclesiastical.php:125
 msgid "October 17"
@@ -17417,7 +17437,7 @@ msgstr "17. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:59
 msgid "Augustine (Canterbury)"
-msgstr ""
+msgstr "Sankt Augustin (Canterbury)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:59
 msgid "May 26"
@@ -17425,7 +17445,7 @@ msgstr "26. maj"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:60
 msgid "Augustine (Hippo)"
-msgstr ""
+msgstr "Augustin (Filosof)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:60
 msgid "August 28"
@@ -17433,7 +17453,7 @@ msgstr "28. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:61
 msgid "Barnabas"
-msgstr ""
+msgstr "Sankt Barnabas"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:61
 msgid "June 11"
@@ -17449,7 +17469,7 @@ msgstr "24. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:63
 msgid "Bede, Venerable"
-msgstr ""
+msgstr "Beda, den Ærværdige"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:63
 msgid "May 27"
@@ -17473,7 +17493,7 @@ msgstr "11. juli"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:66
 msgid "Birinus"
-msgstr ""
+msgstr "Sankt Birinus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:66
 msgid "December 3"
@@ -17481,7 +17501,7 @@ msgstr "3. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:67
 msgid "Blasius"
-msgstr ""
+msgstr "Lennart Blasius"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:67
 msgid "February 3"
@@ -17489,7 +17509,7 @@ msgstr "3. februar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:68
 msgid "Boniface"
-msgstr ""
+msgstr "Sankt Bonifatius"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:68
 msgid "June 5"
@@ -17497,7 +17517,7 @@ msgstr "5. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:69
 msgid "Botolph"
-msgstr ""
+msgstr "Sankt Budolf"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:69
 msgid "June 17"
@@ -17505,7 +17525,7 @@ msgstr "17. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:70
 msgid "Bricius"
-msgstr ""
+msgstr "Bricius de Douglas"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:70
 msgid "November 13"
@@ -17521,7 +17541,7 @@ msgstr "2. februar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:72
 msgid "Canite Tuba"
-msgstr ""
+msgstr "Canite Tuba"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:72 modules_v4/calendar_utilities/plugins/ecclesiastical.php:191 modules_v4/calendar_utilities/plugins/ecclesiastical.php:226
 msgid "4th Sunday in Advent"
@@ -17538,7 +17558,7 @@ msgstr "4. Søndag efter påske (Dom. Cantate)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:74
 msgid "Cathedra Petri"
-msgstr ""
+msgstr "Sankt Peters stol"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:74
 msgid "February 22"
@@ -17554,7 +17574,7 @@ msgstr "25. november"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:76
 msgid "Cecilia"
-msgstr ""
+msgstr "Sankt Cæcilia"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:76
 msgid "November 22"
@@ -17562,11 +17582,11 @@ msgstr "22. november"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:77
 msgid "Cena domini"
-msgstr ""
+msgstr "Skærtorsdag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:78
 msgid "Chad (Cedde)"
-msgstr ""
+msgstr "Biskop Chad (Cedde)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:78
 msgid "March 2"
@@ -17607,7 +17627,7 @@ msgstr "Søndag efter Påske (Quasimodogeniti)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:83
 msgid "Clement"
-msgstr ""
+msgstr "Sankt Clements dag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:83 modules_v4/calendar_utilities/plugins/ecclesiastical.php:134
 msgid "November 23"
@@ -17615,7 +17635,7 @@ msgstr "23. november"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:84
 msgid "Cornelius+Cyprian"
-msgstr ""
+msgstr "Sankt Cornelius+Cyprian"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:84 modules_v4/calendar_utilities/plugins/ecclesiastical.php:128
 msgid "September 14"
@@ -17623,7 +17643,7 @@ msgstr "14. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:85
 msgid "Corpus Christi"
-msgstr ""
+msgstr "Kristus Opstandelse"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:85
 msgid "Thursday after Trinity*"
@@ -17631,7 +17651,7 @@ msgstr "Torsdag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:86
 msgid "Crispin and Crispinian"
-msgstr ""
+msgstr "Sankt Crispin og Crispinian"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:86
 msgid "October 25"
@@ -17639,7 +17659,7 @@ msgstr "25. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:87
 msgid "Cuthbert"
-msgstr ""
+msgstr "Sankt Cuthbert"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:87
 msgid "March 20"
@@ -17655,7 +17675,7 @@ msgstr "4. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:89
 msgid "Cyprian and Justina"
-msgstr ""
+msgstr "Sankt Cyprian og Justina"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:89
 msgid "September 26"
@@ -17663,7 +17683,7 @@ msgstr "26. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:90
 msgid "Daemon mutus"
-msgstr ""
+msgstr "Forsagelse af djævelen"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:90
 msgid "3rd Sunday in Lent (after Ash Wednesday)"
@@ -17671,7 +17691,7 @@ msgstr "3. søndag i fasten (Oculi)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:91
 msgid "Da pacem"
-msgstr ""
+msgstr "Da pacem"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:91
 msgid "18th Sunday after Trinity*"
@@ -17679,7 +17699,7 @@ msgstr "18. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:92
 msgid "David"
-msgstr ""
+msgstr "Sankt David"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:92
 msgid "March 1"
@@ -17687,7 +17707,7 @@ msgstr "1. marts"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:93
 msgid "Deus in adiutorium"
-msgstr ""
+msgstr "Deus in adiutorium"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:93
 msgid "12th Sunday after Trinity*"
@@ -17695,7 +17715,7 @@ msgstr "12. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:94
 msgid "Deus in loco sancto"
-msgstr ""
+msgstr "Deus in loco sancto"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:94
 msgid "11th Sunday after Trinity*"
@@ -17703,7 +17723,7 @@ msgstr "11. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:95
 msgid "Deus qui errantibus"
-msgstr ""
+msgstr "Deus qui errantibus"
 
 #. I18N: Translation of Latin religious festival name <<Jubilate>>
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:95 modules_v4/calendar_utilities/plugins/ecclesiastical.php:158 modules_v4/calendar_utilities/plugins/yearly_calendar.php:141
@@ -17712,7 +17732,7 @@ msgstr "3. Søndag efter påske (Jubilate)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:96
 msgid "Dicit dominus"
-msgstr ""
+msgstr "Dicit dominus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:96
 msgid "23rd and 24th Sunday after Trinity*"
@@ -17720,7 +17740,7 @@ msgstr "23. og 24. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:97
 msgid "Dies cinerum"
-msgstr ""
+msgstr "Dies cinerum"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:97 modules_v4/calendar_utilities/plugins/ecclesiastical.php:309
 msgid "Ash Wednesday"
@@ -17728,15 +17748,15 @@ msgstr "Aske Onsdag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:98
 msgid "Dies crucis adorande"
-msgstr ""
+msgstr "Bevægelige helligdage"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:99
 msgid "Dies Mandati"
-msgstr ""
+msgstr "Dies Mandati"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:100
 msgid "Dionysius, Rusticus, and Eleutherius"
-msgstr ""
+msgstr "Sankt Dennis, Rustikus og Eleutherius"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:100
 msgid "October 9"
@@ -17744,7 +17764,7 @@ msgstr "9. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:101
 msgid "Domine, in tua misericordia"
-msgstr ""
+msgstr "Dom Misericordia"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:101
 msgid "1st Sunday after Trinity*"
@@ -17752,11 +17772,11 @@ msgstr "1. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:102
 msgid "Domine, ne longe"
-msgstr ""
+msgstr "Salmernes dag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:103
 msgid "Dominus fortitudo"
-msgstr ""
+msgstr "Moralens dag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:103
 msgid "6th Sunday after Trinity*"
@@ -17764,7 +17784,7 @@ msgstr "6. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:104
 msgid "Dominus illuminatio mea"
-msgstr ""
+msgstr "Lysets dag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:104
 msgid "4th Sunday after Trinity*"
@@ -17772,7 +17792,7 @@ msgstr "4. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:105
 msgid "Dum, clamarem"
-msgstr ""
+msgstr "Håbets dag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:105
 msgid "10th Sunday after Trinity*"
@@ -17788,7 +17808,7 @@ msgstr "6. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:107
 msgid "Dum medium silentium"
-msgstr ""
+msgstr "Hviledag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:107
 msgid " Sunday in octave of Christmas or Sunday after January 1 when this falls on eve of Epiphany (Jan. 6)"
@@ -17796,7 +17816,7 @@ msgstr "Søndag før jul eller søndagen efter 1. januar, når den falder umidde
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:108
 msgid "Dunstan"
-msgstr ""
+msgstr "Dunstan"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:108
 msgid "May 19"
@@ -17804,7 +17824,7 @@ msgstr "19. maj"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:109
 msgid "Eadburga (Winchester)"
-msgstr ""
+msgstr "Eadburh (Winchester)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:109
 msgid "June 15"
@@ -17812,7 +17832,7 @@ msgstr "15. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:110
 msgid "Ecce deus adiuvat"
-msgstr ""
+msgstr "Ecce deus adiuvat"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:110
 msgid "9th Sunday after Trinity*"
@@ -17820,7 +17840,7 @@ msgstr "9. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:111
 msgid "Editha"
-msgstr ""
+msgstr "Editha"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:111 modules_v4/calendar_utilities/plugins/ecclesiastical.php:126 modules_v4/calendar_utilities/plugins/ecclesiastical.php:169
 msgid "September 16"
@@ -17844,7 +17864,7 @@ msgstr "9. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:114
 msgid "Edmund (king)"
-msgstr ""
+msgstr "Edmund (konge)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:114
 msgid "November 20"
@@ -17856,7 +17876,7 @@ msgstr "29. april"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:116
 msgid "Edward the Confessor"
-msgstr ""
+msgstr "Edvard Bekenderen"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:116
 msgid "January 5"
@@ -17868,7 +17888,7 @@ msgstr "13. oktober ofte kaldt fejringen af St. Edward i Guidenim af Michaelmas"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:118
 msgid "Edward (king of Saxons)"
-msgstr ""
+msgstr "Edward den ældre (konge af Saxen)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:118
 msgid "March 18"
@@ -17892,7 +17912,7 @@ msgstr "20. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:121
 msgid "Egidius (Giles)"
-msgstr ""
+msgstr "Sankt Egidius (Giles)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:121 modules_v4/calendar_utilities/plugins/ecclesiastical.php:216
 msgid "September 1"
@@ -17900,7 +17920,7 @@ msgstr "1. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:122
 msgid "Enurchus (Evurcius)"
-msgstr ""
+msgstr "Enurchus (Evurcius)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:122
 msgid "September 7"
@@ -17916,7 +17936,7 @@ msgstr "Søndagen før Aske Onsdag (Quinquagesima)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:124
 msgid "Ethelbert (king)"
-msgstr ""
+msgstr "Æthelberht af Kent (Konge)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:124
 msgid "May 20"
@@ -17924,31 +17944,31 @@ msgstr "20. maj"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:125
 msgid "Ethelreda"
-msgstr ""
+msgstr "Sankt Æthelthryth"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:126
 msgid "Euphemia"
-msgstr ""
+msgstr "Sankt Euphemia"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:127
 msgid "Eustachius"
-msgstr ""
+msgstr "Sankt Eustacius"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:128
 msgid "Exaltation of the Cross"
-msgstr ""
+msgstr "Ophøjelse af korset"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:129
 msgid "Exaudi domine"
-msgstr ""
+msgstr "Exaudi domine"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:129
 msgid "Sunday in octave of Ascension or 5th Sunday after octave of Pentecost (Trinity)*"
-msgstr ""
+msgstr "Søndag i Ascension eller 5de Søndag efter pinse (Trinitatis)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:130
 msgid "Exsurge domine"
-msgstr ""
+msgstr "Exsurge domine"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:130
 msgid "2nd Sunday before Ash Wednesday (Sexagesima)"
@@ -17956,7 +17976,7 @@ msgstr "2. søndag før Aske Onsdag (Quinquagesima)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:131
 msgid "Fabian and Sebastian"
-msgstr ""
+msgstr "Sankt Fabian og Sebastian"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:131
 msgid "January 20"
@@ -17964,7 +17984,7 @@ msgstr "20. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:132
 msgid "Factus est dominus"
-msgstr ""
+msgstr "Factus est dominus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:132
 msgid "2nd Sunday after Trinity*"
@@ -17972,7 +17992,7 @@ msgstr "2. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:133
 msgid "Faith"
-msgstr ""
+msgstr "Tro"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:133
 msgid "October 6"
@@ -17980,11 +18000,11 @@ msgstr "6. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:134
 msgid "Felicitas"
-msgstr ""
+msgstr "Sankt Felicitas"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:135
 msgid "Fransiscus"
-msgstr ""
+msgstr "Pave Frans"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:135
 msgid "October 4"
@@ -17992,7 +18012,7 @@ msgstr "4. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:136
 msgid "Gaudete in domino"
-msgstr ""
+msgstr "Gaudete in domino"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:136
 msgid "3rd Sunday in Advent"
@@ -18000,7 +18020,7 @@ msgstr "3. søndag i advent"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:137
 msgid "George"
-msgstr ""
+msgstr "Georg"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:137
 msgid "April 23"
@@ -18008,7 +18028,7 @@ msgstr "23. april"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:138
 msgid "Gregory"
-msgstr ""
+msgstr "Gregory"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:138
 msgid "March 12"
@@ -18016,7 +18036,7 @@ msgstr "12. marts"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:139
 msgid "Grimbold"
-msgstr ""
+msgstr "Grimbold"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:139 modules_v4/calendar_utilities/plugins/ecclesiastical.php:174
 msgid "July 8"
@@ -18024,7 +18044,7 @@ msgstr "8. juli"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:140
 msgid "Gule of August"
-msgstr ""
+msgstr "Gule August"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:140 modules_v4/calendar_utilities/plugins/ecclesiastical.php:165 modules_v4/calendar_utilities/plugins/ecclesiastical.php:212
 msgid "August 1"
@@ -18032,7 +18052,7 @@ msgstr "1. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:141
 msgid "Guthlac"
-msgstr ""
+msgstr "Guthlac"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:141
 msgid "April 11"
@@ -18040,7 +18060,7 @@ msgstr "11. april"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:142
 msgid "Hieronymous (Jerome)"
-msgstr ""
+msgstr "Sankt Hieronymous (Jerome)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:142 modules_v4/calendar_utilities/plugins/ecclesiastical.php:154
 msgid "September 30"
@@ -18048,7 +18068,7 @@ msgstr "30. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:143
 msgid "Hilary"
-msgstr ""
+msgstr "Hilary"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:143
 msgid "January 13"
@@ -18056,7 +18076,7 @@ msgstr "13. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:144
 msgid "Hugh (bishop of Lincoln)"
-msgstr ""
+msgstr "Hugh (biskop af Lincoln)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:144
 msgid "November 17"
@@ -18064,7 +18084,7 @@ msgstr "17. november"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:145
 msgid "Inclina auram tuam"
-msgstr ""
+msgstr "Pinse nadveren"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:145
 msgid "15th Sunday after Trinity*"
@@ -18072,7 +18092,7 @@ msgstr "15. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:146
 msgid "In excelso throno"
-msgstr ""
+msgstr "In excelso throno"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:146
 msgid "1st Sunday after Epiphany"
@@ -18080,7 +18100,7 @@ msgstr "1. søndag efter Hellig 3 Konger"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:147
 msgid "In Monte tumba"
-msgstr ""
+msgstr "In Monte tumba"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:147
 msgid "October 16"
@@ -18088,7 +18108,7 @@ msgstr "16. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:148
 msgid "Innocents"
-msgstr ""
+msgstr "Uskyldige"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:148
 msgid "December 28"
@@ -18096,7 +18116,7 @@ msgstr "28. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:149
 msgid "Invention of the Cross"
-msgstr ""
+msgstr "Opfindelse af korset"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:149
 msgid "May 3"
@@ -18104,7 +18124,7 @@ msgstr "3. maj"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:150
 msgid "Invocavit me"
-msgstr ""
+msgstr "Invocavit"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:150
 msgid "1st Sunday in Lent"
@@ -18112,7 +18132,7 @@ msgstr "1. søndag i fasten (Invocavit)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:151
 msgid "In voluntate tua"
-msgstr ""
+msgstr "In voluntate tua"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:151
 msgid "21st Sunday afterTrinity*"
@@ -18120,15 +18140,15 @@ msgstr "21. Søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:152
 msgid "Isti sunt dies"
-msgstr ""
+msgstr "disse dage"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:153
 msgid "James"
-msgstr ""
+msgstr "Jacob"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:154
 msgid "Jerome (Hieronymus)"
-msgstr ""
+msgstr "Sankt Jerome (Hieronymus)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:155
 msgid "John the Baptist"
@@ -18140,7 +18160,7 @@ msgstr "24. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:156
 msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;his beheading"
-msgstr ""
+msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hans benådning"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:156
 msgid "August 29"
@@ -18156,15 +18176,15 @@ msgstr "27. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:158
 msgid "Jubilate omnis terra"
-msgstr ""
+msgstr "Jubilate alle lande"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:159
 msgid "Judica me"
-msgstr ""
+msgstr "Judica"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:160
 msgid "Judoc"
-msgstr ""
+msgstr "Sankt Josse"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:160 modules_v4/calendar_utilities/plugins/ecclesiastical.php:171
 msgid "December 13"
@@ -18172,7 +18192,7 @@ msgstr "13. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:161
 msgid "Justus es domine"
-msgstr ""
+msgstr "Retfærdighedsdag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:161
 msgid "17th Sunday after the octave of Pentecost (Trinity)*"
@@ -18180,11 +18200,11 @@ msgstr "17. søndag efter Pinse (Trinitatis)*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:162
 msgid "Lady day (annunciation)"
-msgstr ""
+msgstr "Kvinde dag (Maria Bebudelsesdag)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:163
 msgid "Laetare Jerusalem"
-msgstr ""
+msgstr "4 Søndag i fasten"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:163
 msgid "4th Sunday in Lent"
@@ -18192,7 +18212,7 @@ msgstr "4. søndag i fasten (Lætare)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:164
 msgid "Lambert"
-msgstr ""
+msgstr "Lambert"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:164
 msgid "September 17"
@@ -18200,11 +18220,11 @@ msgstr "17. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:165
 msgid "Lammas"
-msgstr ""
+msgstr "Lammas dag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:166
 msgid "Laudus"
-msgstr ""
+msgstr "Laudus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:166 modules_v4/calendar_utilities/plugins/ecclesiastical.php:188
 msgid "September 21"
@@ -18212,7 +18232,7 @@ msgstr "21. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:167
 msgid "Laurence"
-msgstr ""
+msgstr "Laurence"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:167
 msgid "August 10"
@@ -18220,7 +18240,7 @@ msgstr "10. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:168
 msgid "Leonard"
-msgstr ""
+msgstr "Leonard"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:168
 msgid "November 6"
@@ -18228,11 +18248,11 @@ msgstr "6. november"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:169
 msgid "Lucianus and Geminianus"
-msgstr ""
+msgstr "Lucianus og Geminianus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:170
 msgid "Lucian"
-msgstr ""
+msgstr "Lucian"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:170
 msgid "January 8"
@@ -18240,11 +18260,11 @@ msgstr "8. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:171
 msgid "Lucy"
-msgstr ""
+msgstr "Lucy"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:172
 msgid "Luke"
-msgstr ""
+msgstr "Luke"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:172
 msgid "October 18"
@@ -18252,7 +18272,7 @@ msgstr "18. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:173
 msgid "Machutus"
-msgstr ""
+msgstr "Sankt Machutus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:173
 msgid "November 15"
@@ -18272,7 +18292,7 @@ msgstr "20. juli"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:176
 msgid "Mark"
-msgstr ""
+msgstr "Mark"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:176
 msgid "April 25"
@@ -18348,7 +18368,7 @@ msgstr "22. juli"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:187
 msgid "Mathias"
-msgstr ""
+msgstr "Matthias"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:187
 msgid "February 24 (25 on leap years)"
@@ -18356,11 +18376,11 @@ msgstr "24. februar (25. ved skudår)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:188
 msgid "Matthew"
-msgstr ""
+msgstr "Matthew"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:189
 msgid "Maurice"
-msgstr ""
+msgstr "Maurice"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:189
 msgid "September 22"
@@ -18368,7 +18388,7 @@ msgstr "22. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:190
 msgid "Meliorus"
-msgstr ""
+msgstr "Meliorus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:190
 msgid "October 1"
@@ -18376,7 +18396,7 @@ msgstr "1. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:191
 msgid "Memento mei"
-msgstr ""
+msgstr "Jeg husker"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:192
 msgid "Michael"
@@ -18388,7 +18408,7 @@ msgstr "29. september"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:193
 msgid "Mildred"
-msgstr ""
+msgstr "Mildred"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:193
 msgid "July 13"
@@ -18421,7 +18441,7 @@ msgstr "7. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:197
 msgid "Nicholas"
-msgstr ""
+msgstr "Nicholas"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:197
 msgid "December 6"
@@ -18429,7 +18449,7 @@ msgstr "6. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:198
 msgid "Nicomedes"
-msgstr ""
+msgstr "Konge Nikomedes"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:198
 msgid "June 1"
@@ -18437,7 +18457,7 @@ msgstr "1. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:199
 msgid "Oculi"
-msgstr ""
+msgstr "Oculi"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:199
 msgid "3rd Sunday in Lent"
@@ -18445,7 +18465,7 @@ msgstr "3. søndag i fasten (Oculi)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:200
 msgid "Omnes gentes"
-msgstr ""
+msgstr "Salme til folket"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:200
 msgid "7th Sunday after Trinity*"
@@ -18453,7 +18473,7 @@ msgstr "7. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:201
 msgid "Omnia quae fecisti"
-msgstr ""
+msgstr "Hele verdenen"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:201
 msgid "20th Sunday after Trinity*"
@@ -18461,7 +18481,7 @@ msgstr "20. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:202
 msgid "Omnis terra"
-msgstr ""
+msgstr "Alle lande"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:202
 msgid "2nd Sunday after Epiphany"
@@ -18469,11 +18489,11 @@ msgstr "2. Søndag efter Hellig 3 konger"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:203
 msgid "Osanna"
-msgstr ""
+msgstr "Osanna"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:204
 msgid "O Sapientia"
-msgstr ""
+msgstr "O Sapientia"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:204
 msgid "December 16"
@@ -18481,7 +18501,7 @@ msgstr "16. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:205
 msgid "Osmund"
-msgstr ""
+msgstr "Osmund"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:205
 msgid "December 4"
@@ -18489,7 +18509,7 @@ msgstr "4. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:206
 msgid "Oswald (bishop)"
-msgstr ""
+msgstr "Osvald (biskop)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:206
 msgid "February 28"
@@ -18497,7 +18517,7 @@ msgstr "28. februar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:207
 msgid "Oswald (king)"
-msgstr ""
+msgstr "Osvald (konge)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:207
 msgid "August 5"
@@ -18521,7 +18541,7 @@ msgstr "25. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:210
 msgid "Perpetua"
-msgstr ""
+msgstr "Sankt Perpetua"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:210
 msgid "March 7"
@@ -18537,11 +18557,11 @@ msgstr "29. juni"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:212
 msgid "Peter and Vincula"
-msgstr ""
+msgstr "Sankt Peter og Vincula"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:213
 msgid "Philip and James"
-msgstr ""
+msgstr "Sankt Philip og James"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:213
 msgid "May 1"
@@ -18549,7 +18569,7 @@ msgstr "1. maj"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:214
 msgid "Populus Sion"
-msgstr ""
+msgstr "Populus Sion"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:214
 msgid "2nd Sunday in Advent"
@@ -18557,7 +18577,7 @@ msgstr "2. søndag i advent"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:215
 msgid "Prisca"
-msgstr ""
+msgstr "Sankt Prisca"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:215
 msgid "January 18"
@@ -18565,11 +18585,11 @@ msgstr "18. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:216
 msgid "Priscus"
-msgstr ""
+msgstr "Priscus"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:217
 msgid "Protector noster"
-msgstr ""
+msgstr "Vores Beskytter"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:217
 msgid "14th Sunday after Trinity*"
@@ -18581,7 +18601,7 @@ msgstr "Quasimodogeniti (1. søndag efter påske)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:219
 msgid "Reddite quae sunt"
-msgstr ""
+msgstr "Genskabelsesdag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:219
 msgid "23rd Sunday after*"
@@ -18589,7 +18609,7 @@ msgstr "23. søndag efter*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:220
 msgid "Remigius, Germanus, and Vedastus Reminiscere"
-msgstr ""
+msgstr "Saint Remigius, broder- og troskab"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:220 modules_v4/calendar_utilities/plugins/ecclesiastical.php:221
 msgid "2nd Sunday in Lent"
@@ -18601,7 +18621,7 @@ msgstr "2. søndag i fasten"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:222
 msgid "Respice domine"
-msgstr ""
+msgstr "Respice domine"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:222
 msgid "13th Sunday after Pentecost"
@@ -18609,7 +18629,7 @@ msgstr "13. søndag efter pinse"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:223
 msgid "Respice in me"
-msgstr ""
+msgstr "Tro på mig"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:223
 msgid "3rd Sunday after Trinity*"
@@ -18629,11 +18649,11 @@ msgstr "15. juli"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:226
 msgid "Rorate celi"
-msgstr ""
+msgstr "Rorate celi"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:227
 msgid "Salus populi"
-msgstr ""
+msgstr "Salus populi"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:227
 msgid "19th Sunday after Pentecost"
@@ -18641,7 +18661,7 @@ msgstr "19. søndag efter Pinse"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:228
 msgid "Scholastica"
-msgstr ""
+msgstr "Sankt Scholastica"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:228
 msgid "February 10"
@@ -18649,7 +18669,7 @@ msgstr "10. februar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:229
 msgid "Si iniquitates"
-msgstr ""
+msgstr "Si iniquitates"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:229
 msgid "22nd Sunday after Trinity*"
@@ -18657,7 +18677,7 @@ msgstr "22. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:230
 msgid "Silvester"
-msgstr ""
+msgstr "Sylvester"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:230
 msgid "December 31"
@@ -18665,7 +18685,7 @@ msgstr "31. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:231
 msgid "Simon and Jude"
-msgstr ""
+msgstr "Sankt Simon og Jude"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:231
 msgid "October 28"
@@ -18673,7 +18693,7 @@ msgstr "28. oktober"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:232
 msgid "Sitientes"
-msgstr ""
+msgstr "Sitientes"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:232
 msgid "Saturday before Passion Sunday"
@@ -18697,7 +18717,7 @@ msgstr "3. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:235
 msgid "Suscepius deus"
-msgstr ""
+msgstr "Modtagelsesdag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:235
 msgid "8th Sunday after Trinity*"
@@ -18705,7 +18725,7 @@ msgstr "8. søndag efter Trinitatis*"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:236
 msgid "Swithun"
-msgstr ""
+msgstr "Sankt Svithun af Winchester"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:237 modules_v4/calendar_utilities/plugins/ecclesiastical.php:239
 msgid "July 3"
@@ -18721,7 +18741,7 @@ msgstr "21. december"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:240
 msgid "Thomas Becket"
-msgstr ""
+msgstr "Thomas Becket"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:240
 msgid "December 29"
@@ -18733,7 +18753,7 @@ msgstr "7. juli"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:242
 msgid "Timotheus and Symphorianus"
-msgstr ""
+msgstr "Symphorians dag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:242
 msgid "August 22"
@@ -18741,7 +18761,7 @@ msgstr "22. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:243
 msgid "Transfiguration"
-msgstr ""
+msgstr "Forvandling"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:243
 msgid "August 6"
@@ -18749,7 +18769,7 @@ msgstr "6. august"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:244
 msgid "Urban"
-msgstr ""
+msgstr "Urban"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:245
 msgid "Valentine"
@@ -18761,7 +18781,7 @@ msgstr "14. februar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:246
 msgid "Vincent"
-msgstr ""
+msgstr "Sankt Vincent"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:246
 msgid "January 22"
@@ -18769,7 +18789,7 @@ msgstr "22. januar"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:247
 msgid "Viri Galilei"
-msgstr ""
+msgstr "Viri Galilei"
 
 #. I18N: Translation of Latin religious festival name <<Festo communi
 #. Praecum>>
@@ -18779,7 +18799,7 @@ msgstr "Kristi Himmelfartsdag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:248
 msgid "Vocem jucunditatis"
-msgstr ""
+msgstr "Intonations mønster"
 
 #. I18N: Translation of Latin religious festival name <<Rogate>>
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:248 modules_v4/calendar_utilities/plugins/yearly_calendar.php:143
@@ -18788,7 +18808,7 @@ msgstr "5. Søndag efter påske (Dom. Rogate)"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:249
 msgid "Wilfrid"
-msgstr ""
+msgstr "Sankt Wilfrid"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:249
 msgid "January 19"
@@ -18825,6 +18845,22 @@ msgid ""
 "\t\t\t\t</p>\n"
 "\t\t\t"
 msgstr ""
+"\n"
+"⇥⇥⇥⇥<p>\n"
+"⇥⇥⇥⇥⇥Denne side er udarbejdet ud fra udvikling af Ian MacInnes <span class=\"note\">(imacinnes@albion.edu)</span> og brug på hans side <a href=\"http://people.albion.edu/imacinnes/calendar/Welcome.html\" target=\"blank\"><b>Ian's Engelske Kalender</b></a></p>\n"
+"⇥⇥⇥⇥<p>\n"
+"⇥⇥⇥⇥⇥Hans side har intentioner om at erstatte reference håndbøger for datoer, for de som interesserer sig for historie, litteratur og slægtsforskning. Den er også interessant for Europæisk historie uden for England, med fokus for perioden 1582-1752. \n"
+"⇥⇥⇥⇥</p>\n"
+"⇥⇥⇥⇥<p>\n"
+"⇥⇥⇥⇥⇥<i title=\"Hjælp til kalenderen\" onclick=\"modalNotes('%1s', 'Hjælp til kalenderen')\">Hjælp til kalenderen</i>\n"
+"⇥⇥⇥⇥</p>\n"
+"⇥⇥⇥⇥<p>\n"
+"⇥⇥⇥⇥⇥<a title=\"Helligdagsberegner\" href=\"%2s\" target=\"_blank\" rel=\"noopener noreferrer\">\n"
+"⇥⇥⇥⇥⇥⇥<i>Formlen til beregning af påske er afledt af 11. udgave Encyclopedia Britannica</i>\n"
+"⇥⇥⇥⇥⇥</a>\n"
+"⇥⇥⇥⇥</p>\n"
+"\n"
+"⇥⇥⇥"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:296
 msgid "Enter the year in question"
@@ -18872,7 +18908,7 @@ msgstr "Liste over forskudte helligdage"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:328
 msgid "The \"octave\" of any holiday = eight days after the holiday- counting the holiday itself. Thus the octave of a Sunday is the following Sunday."
-msgstr ""
+msgstr "\"Oktaven\" af enhver helligdag=otte dage efter helligdagen- iberegnet selve helligdagen. Oktaven løber  fra Søndag til den efterfølgende Søndag"
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:337
 msgid "After 1570, subtract one week."
@@ -18928,7 +18964,7 @@ msgstr ""
 
 #: modules_v4/calendar_utilities/plugins/old_new.php:51
 msgid "There are two parts to this page. The first converts from Old Style dates, typically found in English documents before 1752, to New Style dates.  The second converts New Style into Old Style.  To avoid confusion, the year is assumed to begin on January 1st. If you are dealing with a old style document dated before March 25th, be aware that the legal year did not change until then."
-msgstr ""
+msgstr "Der er to dele af denne side. Den første konverterer fra gammel dato stil, typisk fundet i gamle dokumenter før 1752, til ny dato stil. Den anden konverterer ny stil til gammel stil. For at undgå forvirring, er start af året sat til 1. januar. Hvis du arbejder med datoer før 25. marts skal du være opmærksom på, der mangler 2 uger af året."
 
 #: modules_v4/calendar_utilities/plugins/old_new.php:75
 msgid "Convert Old Style Dates to New Style Dates"
@@ -19034,7 +19070,7 @@ msgstr "Indtast Monarken og regeringsåret "
 
 #: modules_v4/calendar_utilities/plugins/regnal_years.php:85
 msgid "Monarch"
-msgstr ""
+msgstr "Monark"
 
 #: modules_v4/calendar_utilities/plugins/regnal_years.php:87
 msgid "William I"
@@ -19480,7 +19516,7 @@ msgstr "Hellig 3 Konger"
 #. I18N: Translation of Latin religious festival name <<Baptismus Christi>>
 #: modules_v4/calendar_utilities/plugins/yearly_calendar.php:90
 msgid "Baptism of Christ"
-msgstr ""
+msgstr "Kristen Dåb"
 
 #. I18N: Translation of Latin religious festival name <<Dies Cinerum>>
 #: modules_v4/calendar_utilities/plugins/yearly_calendar.php:94
@@ -19735,7 +19771,7 @@ msgstr "21. Søndag efter Trinitatis"
 #. (Trinitatem)>>
 #: modules_v4/calendar_utilities/plugins/yearly_calendar.php:177
 msgid "22nd Sunday after Trinity Sunday"
-msgstr ""
+msgstr "22. Søndag efter Trinitatis"
 
 #. I18N: Translation of Latin religious festival name <<23 Benedicta
 #. (Trinitatem)>>
@@ -19888,7 +19924,7 @@ msgstr "Klik for at vælge personen som familiens overhoved."
 
 #: modules_v4/census_assistant/census_3_search_add.php:434 modules_v4/census_assistant/census_3_search_add.php:1003 modules_v4/census_assistant/census_3_search_add.php:1142
 msgid "head"
-msgstr ""
+msgstr "hoved"
 
 #: modules_v4/census_assistant/census_4_text.php:33
 msgid "Proposed Census Text"
@@ -19958,7 +19994,7 @@ msgstr "En persons fanchart"
 
 #: modules_v4/chart_fanchart/module.php:117
 msgid "Degrees"
-msgstr ""
+msgstr "Grader"
 
 #. I18N: Name of a module
 #: modules_v4/chart_hourglass/module.php:33
@@ -20029,7 +20065,7 @@ msgstr "Find alle relationer som er mindst beslægtet til en fælles forfader"
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:232 relationship.php:171
 msgid "All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\" rel=\"noopener noreferrer\">Coefficient of Relationship</a>"
-msgstr ""
+msgstr "Alle linjer mellem de to personer, der bidrager til udvælgelsen (slægtskabs- og indavls- koefficient), som defineret her:<a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\" rel=\"noopener noreferrer\">Beregning af slægtskabs- og indavls- koefficient </a>"
 
 #: modules_v4/chart_relationship/module.php:237 modules_v4/chart_relationship/module.php:308 relationship.php:111
 msgid "Find the closest overall connections (preferably via common ancestors)"
@@ -20178,12 +20214,12 @@ msgstr "Kontrollér adgangsrettighederne til denne mappe."
 
 #: modules_v4/clippings/clippings_ctrl.php:315
 msgid " Clippings cart"
-msgstr ""
+msgstr "Udklipsholder"
 
 #: modules_v4/clippings/clippings_ctrl.php:316
 #, php-format
 msgid "User %s has just downloaded a clippings cart file"
-msgstr ""
+msgstr "Brugeren %s har downloadet en fil fra udklipsholderen"
 
 #: modules_v4/clippings/help_text.php:31
 msgid "Add by ID"
@@ -20237,7 +20273,7 @@ msgstr "Tilføj forældre og alle efterkommere."
 
 #: modules_v4/clippings/module.php:109 modules_v4/clippings/module.php:140 modules_v4/clippings/module.php:164 modules_v4/clippings/module.php:577 modules_v4/clippings/module.php:604 modules_v4/clippings/module.php:624
 msgid "Continue adding"
-msgstr ""
+msgstr "Fortsæt med at tilføje"
 
 #: modules_v4/clippings/module.php:122 modules_v4/clippings/module.php:588
 msgid "Which links from this person would you also like to add?"
@@ -20290,7 +20326,7 @@ msgstr "Nogle emner kunne ikke tilføjes på grund af privatlivs-begrænsninger"
 #. I18N: Description of the Clippingscart tool
 #: modules_v4/clippings/module.php:182
 msgid "This allows you to take extracts (\"clippings\") from this family tree and collect them into a single file to download in GEDCOM format.<ul><li class=\"warning\">By definition a \"clipping\" is a very small part of a family tree. This tool cannot provide a complete download of a large tree. If you require a substantial part of the dataplease please contact the site administrator.</li><li><b>How to take clippings?</b><br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to Clippings Cart</b> option. When you click that link you will be offered several options to download.</li><li><b>How to download?</b><br />Once you have items in your cart you can download them just by clicking the <b>Download Now</b> link. Follow the instructions and links.</li></ul>"
-msgstr ""
+msgstr "Dette giver dig mulighed for at lave særlige (\"udklip\") af familie træet og samle dem i en særlig fil og downloade den i GEDCOM format.<ul><li class=\"warning\">Per defination er \"udklip\" en lille del af et familietræ. Dette værktøj giver ikke mulighed for at downloade hele gedcomfilen. Hvis det er hele filen du ønsker at downloade, bør du kontakte administratoren af siden.</li><li><b>Hvordan bruges den?</b><br>Det er faktisk meget simpelt. Når du ser et klikbart navn (individ, familie eller kilde) kan du klikke dig frem til dets detalje side. Her vil du så se <b>Tilføj til udklipsholder\"</b> funktionen. Når du klikker på det link vil du blive tilbudt flere muligheder for download.</li><li><b>Download hvordan?</b><br />Så snart du har tilføjet til udklipsholderen kan du downloade ved at klikke på <b>Download Nu</b> linket. Følg instrukserne og links.</li></ul>"
 
 #: modules_v4/clippings/module.php:190 modules_v4/clippings/module.php:309
 msgid "Enter an individual, family, or source ID"
@@ -20299,7 +20335,7 @@ msgstr "Angiv en person, familie eller kilde ID"
 #. I18N: Description of the Clippingscart tool
 #: modules_v4/clippings/module.php:195 modules_v4/clippings/module.php:314
 msgid "This input box lets you enter an individual, family, or source to be added to the Clippings Cart. Once that item is added you will be offered options to add further related items."
-msgstr ""
+msgstr "Denne input boks tillader dig at vælge et individ, en familie eller en kilde blive tilføjet til Udklipningsholderen.  Efter tilføjelse vil du blive tilbudt flere muligheder for at tilføje andre relationer."
 
 #: modules_v4/clippings/module.php:213 modules_v4/clippings/module.php:500
 msgid "Your Clippings Cart is empty."
@@ -20311,7 +20347,7 @@ msgstr "Filinformation"
 
 #: modules_v4/clippings/module.php:293 modules_v4/clippings/module.php:540 modules_v4/clippings/module.php:693
 msgid "Download now"
-msgstr ""
+msgstr "Hent nu"
 
 #: modules_v4/clippings/module.php:343
 msgid "Name / Description"
@@ -20692,11 +20728,11 @@ msgstr "Fejl: Denne \"rod\" person som du har tilføjet findes allerede"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:196 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:195
 msgid "ok"
-msgstr ""
+msgstr "ok"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:221
 msgid "Add a root person"
-msgstr ""
+msgstr "Tilføj en \"rod\" person"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:230 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:235
 msgid "Root person"
@@ -20723,7 +20759,7 @@ msgstr "Antal generationer der skal vises"
 #. setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:285 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:299
 msgid "This option is useful for large trees. Set the number of generation blocks to a low level to avoid slow page loading. Below the last generation block a button will appear to add the next set of generation blocks. The new blocks will be added to the blocks already loaded. Click on a “follow” link in the last visible generation block to load the next set of generation blocks."
-msgstr ""
+msgstr "<p> Denne indstilling er især nyttigt for store træer. Hvis du oplever en langsom side-opdatering, kan du her indstille antallet af generationerne til at blive indlæst på et lavere niveau. </p> Under den sidste generation blok vil der blive vist en knap til at vælge det næste sæt generationer . Disse nye vil så bare blive tilføjet til de allerede indlæste data. </p> Klik evt. på \"følg\" linket i sidste synlige generation blok, for at få vist den næste blok </p>"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:290 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:304
 msgid "Check relationship between partners"
@@ -20733,7 +20769,7 @@ msgstr "Check relationer mellem partnere"
 #. setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:294 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:308
 msgid "With this option turned on, the script checks if a married couple has the same ancestors. If a relationship between the partners is found a text will appear between brackets after the spouses’ name to indicate the blood relationship. <br><b>Note:</b> this option can be time and/or memory consuming on large trees. It can cause very slow page loading or an ’execution time out error’ on your server. If you notice such a behavior reduce the number of generation blocks to load at once or don’t use it in combination with the option to show singles (see the previous options). If you still experience any problems, don’t use this option at all."
-msgstr ""
+msgstr "<p> Med denne indstilling aktiveret, scriptet tjekker, om et (gift) par har de samme forfædre. </p> Hvis et forhold mellem partnerne er fundet, vil en tekst blive vist i parentes efter ægtefællernes navn for at indikere forholdet </p> Bemærk: Denne indstilling kan forårsage langsommere indlæsning af siden, især på store træer. Hvis du bemærker en sådan adfærd, bør du reducere antallet af generationsblokke til at blive indlæs på én gang (se den forrige indstilling). </p>"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:299 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:313
 msgid "Show single persons"
@@ -20742,21 +20778,21 @@ msgstr "Vis enkelte personer"
 #. I18N: Help text for the “Show single persons” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:303 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:317
 msgid "Turn this option on to show people who have no partner or children. With this option turned on every child of a family will be shown in a detailed way in the next generation block."
-msgstr ""
+msgstr "Ved dette valg, vil samtlige børn blive vist. Derved også personer uden partner og børn"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:309 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:323
 msgid "Show places"
-msgstr ""
+msgstr "Vis stednavne"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:313 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:327
 msgid "Use default family tree settings to abbreviate place names"
-msgstr ""
+msgstr "Brug standard instillingerne til at generere stednavne"
 
 #. I18N: Help text for the “Use default Gedcom settings to abbreviate place
 #. names” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:316 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:330
 msgid "If you have ticked the “Show places” option you can choose to use the default family tree settings to abbreviate placenames. If you don’t set this option full place names will be shown."
-msgstr ""
+msgstr "Hvis du har sat kryds i \"Vis steder\", kan du vælge at bruge standard-indstillingerne til at forkorte stednavne. Hvis du ikke vælger denne mulighed, vil fulde stednavne blive vist."
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:321 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:335
 msgid "Select your country"
@@ -20765,7 +20801,7 @@ msgstr "Vælg dit land"
 #. I18N: Help text for the “Select your country” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:325 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:339
 msgid "If you have ticked the “Show places” option but NOT the option to abbreviate placenames, you can set your own country here. Full places will be listed on the Descendancy pages, but when a place includes the name of your own country, this name will be left out. If you don’t select a country then all countries will be shown, including your own."
-msgstr ""
+msgstr "<p> Hvis du har sat kryds i \"Vis steder\", men ikke i mulighed for at forkorte stednavne, kan du vælge dit eget land her. Fulde stednavne vil blive vist på Smart Træ siderne, men når et sted omfatter navnet på dit eget land, vil dette landenavn blive udeladt. </p> Hvis du ikke vælger et land så vil alle landenavne blive vist, herunder dit egen. </p>"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:332 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:345
 msgid "Show occupations"
@@ -20773,25 +20809,25 @@ msgstr "Vis erhverv"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:336
 msgid "Show sosa numbering"
-msgstr ""
+msgstr "Vis sosa nummerering"
 
 #. I18N: Help text for the “Show sosa numbering” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:340
 msgid "if selected, the Sosa-Stradonitz or Ahnentafel number for each ancestor will be displayed after their name."
-msgstr ""
+msgstr "Hvis valgt, vil SOSA nummereringen blive brugt for hver slægtning og vist efter deres navn"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:345
 msgid "Show children"
-msgstr ""
+msgstr "Vis børn"
 
 #. I18N: Help text for the “Show children” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:349
 msgid "if selected, a list of the children of each ancestral family will be displayed after each couple."
-msgstr ""
+msgstr "hvis valgt, en liste over børn fra hver familie vil blive vist under hver par"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:354 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:349
 msgid "Show images"
-msgstr ""
+msgstr "Vis billeder"
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:359 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:354
 msgid "Resize thumbnails"
@@ -20800,7 +20836,7 @@ msgstr "Gendan miniaturer"
 #. I18N: Help text for the “Resize thumbnails
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:363 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:358
 msgid "Choose “yes” to resize the default thumbnails for the Descendency pages. You can set a custom size in percentage or in pixels.<dl><dt>Size in percentage</dt><dd>The original thumbnails will be proportionally resized. This may result in a different width and height for each thumbnail.</dd><dt>Size in pixels</dt><dd>The longest side of the image will be resized to match the size in pixels. The other side will be resized proportionally.</dd><dt>Square thumbs</dt><dd>When you use a square thumbnail, all thumbnails will have the same width and height and the thumbnails will be cropped.</dd></dl>If you choose “no” the default thumbnails will be used with the formats you have set on the family tree configuration page."
-msgstr ""
+msgstr "Vælg \"ja\" for at ændre størrelser på miniaturer vist på lodrette sider. Du kan sætte en brugerdefineret størrelse i procent eller i pixel størrelse.<dl><dt>Størrelse i procent</dt><dd>Den originale miniature vil forholdsmæssigt ændre sig. Dette kan resultere sig i en forskellighed i højde og bredde for hver miniature.</dd><dt>Størrelse i pixels</dt><dd>Den længste side af billede vil blive tilpasset til antallet af pixels. Den anden side til tilpasse sig forholdsvis.</dd><dt>Lodrette miniturer</dt><dd>Når du bruger lodrette miniature, alle miniaturer vil have samme højde og bredde og miniaturen vil blive formindsket.</dd></dl>Hvis du vælger \"nej\" vil  standardinstillinger fra opsætningen i dit familie træ blive brugt."
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:368 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:363
 msgid "Thumbnail size"
@@ -20817,7 +20853,7 @@ msgstr "Brug kantet miniaturer"
 #. I18N: Description of the module
 #: modules_v4/fancy_treeview_ancestors/module.php:38
 msgid "A narrative report of the ancestors of one individual"
-msgstr ""
+msgstr "En rapport over forfædre for een person på en beskrivende måde"
 
 #: modules_v4/fancy_treeview_ancestors/module.php:170 modules_v4/fancy_treeview_descendants/module.php:179
 msgid "follow"
@@ -20825,7 +20861,7 @@ msgstr "følg"
 
 #: modules_v4/fancy_treeview_ancestors/module.php:235 modules_v4/fancy_treeview_descendants/module.php:247
 msgid "Show more generations"
-msgstr ""
+msgstr "Vis flere generationer"
 
 #: modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:220
 msgid "Add a surname"
@@ -20848,7 +20884,7 @@ msgstr "Brug det fulde navn i menu"
 #. I18N: Description of the module
 #: modules_v4/fancy_treeview_descendants/module.php:46
 msgid "A narrative report of the descendants of one family or individual"
-msgstr ""
+msgstr "En rapport over efterkommere for een familie eller en person på en beskrivende måde"
 
 #: modules_v4/faq/help_text.php:31 modules_v4/faq/module.php:341
 msgid "Frequently asked questions"
@@ -21024,7 +21060,7 @@ msgstr "Galleri tema"
 
 #: modules_v4/gallery/help_text.php:71
 msgid "There are TWO types of theme in operation for this module.<br><br>The first is the standard kiwitrees theme (kiwitrees, clouds, colors, xenea etc). This controls the overall container for the gallery and the menu images in each of the kiwitrees themes. These are switched automatically when you change the main kiwitrees theme.<br><br>In addition, there is the Galleria theme that controls the actual image display area. This module includes three default themes for this, two supplied by Galleria (called \"classic\" and \"azur\"), and an alternative \"simpl_galleria\" one designed to compliment the colors of the blue-based themes such as clouds and xenea. There are also other themes available <u>for purchase</u> from the Galleria website. Switch between the \"Azur\", \"Classic\" and \"Simpl_galleria\" by selecting them on the configuration page.<br><br>To add other Galleria themes, download them from their website (www.galleria.io/), and copy them to the kiwitrees /modules_vX/gallery/galleria/themes/ folder.<br>You should then add a 250px x 140px thumbnail image to suit in the kiwitrees /modules_vX/gallery/images folder, named to match the theme and of type png (like azur.png)."
-msgstr ""
+msgstr "Der er TO typer temaer til dette modul. <br><br>Det første er standard for kiwitrees (kiwitrees, clouds, colors osv). Disse styrer det overordnet design for galleriet og menu billederne. Disse skiftes automatisk udfra valg af kiwitrees temaerne. <br><br>Derudover er der galleri tema. (klassisk og azur) Disse styrer billedvisningen i galleriet. Findes også det alternative simpl_galleria som er designet til at komplimentere farverne på de blå-baserede temaer som clouds og xenea. Der er også andre temaer til rådighed <u> som købes </ u> fra Galleria hjemmeside. Skift mellem \"Azur\", \"Classic\" og \"Simpl_galleria\" ved at vælge dem på konfigurationssiden. <br> For at tilføje andre Galleria temaer, hentes de fra deres hjemmeside (www.galleria.io/), og kopier dem til / modules_v3 / galleri / Galleria / temaer / mappe. <br> Du skal derefter tilføje et 250px x 140px miniaturebillede, der passer i / modules_v3 / galleri / billede mappe, navngivet til at matche temaet og af typen png (ligesom azur.png)."
 
 #: modules_v4/gallery/module.php:33 modules_v4/gallery/module.php:37
 msgid "Gallery"
@@ -21069,7 +21105,7 @@ msgstr "Angiv hvilke sprog?"
 
 #: modules_v4/gallery/module.php:460 modules_v4/gallery/module.php:611
 msgid "classic"
-msgstr ""
+msgstr "Klassisk"
 
 #: modules_v4/gallery/module.php:489
 msgid "Galleries"
@@ -21139,7 +21175,7 @@ msgstr "Linket til:"
 #: modules_v4/gallery/module.php:859
 #, php-format
 msgid "Display by Galleria (%1s)"
-msgstr ""
+msgstr "Vis med Galleria (%1s)"
 
 #: modules_v4/gallery/module.php:863
 msgid "Gallery is empty. Please choose other gallery."
@@ -21161,7 +21197,7 @@ msgstr "Vis og administrer familietræets favoritsider."
 
 #: modules_v4/gedcom_favorites/module.php:122 modules_v4/stories/module.php:385 modules_v4/stories/module.php:405 modules_v4/widget_favorites/module.php:139
 msgid "Are you sure you want to remove this?"
-msgstr ""
+msgstr "Er du sikker på at du vil slette dette?"
 
 #: modules_v4/gedcom_favorites/module.php:167 modules_v4/widget_favorites/module.php:185
 msgid "Add a favorite"
@@ -21612,7 +21648,7 @@ msgstr "Område"
 
 #: modules_v4/googlemap/module.php:659
 msgid "Using the pull down menu it is possible to select a state for this country, for which a flag can be selected. If no flags are shown, then there are no flags defined for this state."
-msgstr ""
+msgstr "Ved at bruge nedrulningsmenuen er det muligt at vælge et land for hvilket et flag kan vælges. Hvis der ikke vises nogen flag, er der ikke defineret nogen flag for dette land."
 
 #. I18N: %s is an individual’s name
 #: modules_v4/googlemap/module.php:711
@@ -22364,43 +22400,43 @@ msgstr "Detaljer"
 #: modules_v4/report_fact/module.php:334
 #, php-format
 msgid "Fact or event: <span>%1s</span>"
-msgstr ""
+msgstr "Hændelser eller begivenheder: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
 #: modules_v4/report_fact/module.php:335
 #, php-format
 msgid "Date from: <span>%1s</span>"
-msgstr ""
+msgstr "Dato fra: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
 #: modules_v4/report_fact/module.php:336
 #, php-format
 msgid "Date to <span>%1s</span>"
-msgstr ""
+msgstr "Dato til: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
 #: modules_v4/report_fact/module.php:337
 #, php-format
 msgid "Dates between <span>%1s</span> and <span>%2s</span> "
-msgstr ""
+msgstr "Datoer mellem <span>%1s</span> og <span>%2s</span> "
 
 #. I18N: A filter on the facts and events report page
 #: modules_v4/report_fact/module.php:338
 #, php-format
 msgid "Place: <span>%1s</span>"
-msgstr ""
+msgstr "Sted: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
 #: modules_v4/report_fact/module.php:339
 #, php-format
 msgid "Type: <span>%1s</span>"
-msgstr ""
+msgstr "Type: <span>%1s</span>"
 
 #. I18N: A filter on the facts and events report page
 #: modules_v4/report_fact/module.php:340
 #, php-format
 msgid "Details: <span>%1s</span>"
-msgstr ""
+msgstr "Detaljer: <span>%1s</span>"
 
 #: modules_v4/report_fact/module.php:346 modules_v4/report_marriages/module.php:206 modules_v4/report_vital_records/module.php:226
 msgid "Listing individuals based on these filters"
@@ -22421,19 +22457,19 @@ msgstr "Vis noter"
 
 #: modules_v4/report_family/module.php:121
 msgid "Show basic events when blank"
-msgstr ""
+msgstr "Vis basale begivenheder ved tomt resultatat"
 
 #: modules_v4/report_family/module.php:127
 msgid "Show family media"
-msgstr ""
+msgstr "Vis medier for familie"
 
 #: modules_v4/report_family/module.php:130
 msgid "Main"
-msgstr ""
+msgstr "Hjem"
 
 #: modules_v4/report_family/module.php:137
 msgid "Show individual media"
-msgstr ""
+msgstr "Vis individuelle medier"
 
 #. I18N: Description of “Research tasks” module
 #: modules_v4/report_individual/module.php:38
@@ -22460,47 +22496,47 @@ msgstr "En rapport over individer som er blevet gift på en given tid eller sted
 
 #: modules_v4/report_marriages/module.php:95 modules_v4/report_vital_records/module.php:97
 msgid "You have not set any filters. Kiwitrees will try to list records for every individual in your tree. Is this what you want to do?"
-msgstr ""
+msgstr "Du har ikke opsat nogle filtre. Kiwitrees vil for søge at vise poster for hver individ i dit træ. Er du sikker på du ønsker dette?"
 
 #: modules_v4/report_marriages/module.php:141
 msgid "Marriage date - from"
-msgstr ""
+msgstr "Vielsesdato - fra"
 
 #: modules_v4/report_marriages/module.php:145
 msgid "Marriage date - to"
-msgstr ""
+msgstr "Vielsesdato - til"
 
 #. I18N: A filter on the Marriages report page
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_marriages/module.php:193 modules_v4/report_vital_records/module.php:210
 #, php-format
 msgid "Names containing <span>%1s</span>"
-msgstr ""
+msgstr "Navne indhold  <span>%1s</span>"
 
 #. I18N: A filter on the Marriages report page
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_marriages/module.php:194 modules_v4/report_vital_records/module.php:211
 #, php-format
 msgid "Place names containing <span>%1s</span>"
-msgstr ""
+msgstr "Stednavne indhold  <span>%1s</span>"
 
 #. I18N: A filter on the Marriages report page
 #: modules_v4/report_marriages/module.php:195
 #, php-format
 msgid "Marriages from <span>%1s</span>"
-msgstr ""
+msgstr "Vielser fra: <span>%1s</span>"
 
 #. I18N: A filter on the Marriages report page
 #: modules_v4/report_marriages/module.php:196
 #, php-format
 msgid "Marriages to <span>%1s</span>"
-msgstr ""
+msgstr "Vielser til <span>%1s</span>"
 
 #. I18N: A filter on the Marriages report page
 #: modules_v4/report_marriages/module.php:197
 #, php-format
 msgid "Marriages between <span>%1s</span> and <span>%2s</span> "
-msgstr ""
+msgstr "Vielser mellem <span>%1s</span> og <span>%2s</span> "
 
 #. I18N: Name of a module.
 #: modules_v4/report_related_fam/module.php:33
@@ -22510,7 +22546,7 @@ msgstr "Relaterede familier"
 #. I18N: Description of “Related individuals” module
 #: modules_v4/report_related_fam/module.php:38
 msgid "A report of families closely related to a selected individual."
-msgstr ""
+msgstr "En rapport visende familier i tættest slægtskab til den valgte person"
 
 #. I18N: Name of a module.
 #: modules_v4/report_related_indi/module.php:33
@@ -22556,7 +22592,7 @@ msgstr "Vis opgaver der har en fremtidig deadline"
 
 #: modules_v4/report_todo/module.php:148
 msgid "Listing research tasks based on these filters"
-msgstr ""
+msgstr "Liste med forskningsopgaver baseret på disse filtre"
 
 #: modules_v4/report_todo/module.php:195 modules_v4/todo/module.php:130 modules_v4/widget_todo/module.php:129
 msgid "There are no research tasks in this family tree."
@@ -22655,59 +22691,59 @@ msgstr "Sandsynligvis udelukket - militærtjeneste"
 #. I18N: Description of “Vital records” module
 #: modules_v4/report_vital_records/module.php:38
 msgid "A report of individuals' births, marriages and deaths for a selected name, place or date range."
-msgstr ""
+msgstr "En rapport med individers fødselsdato, vielsesdato og dødsdato ud fra et valgt navn, sted eller dato interval"
 
 #: modules_v4/report_vital_records/module.php:149
 msgid "Birth date - from"
-msgstr ""
+msgstr "Fødselsdato - fra"
 
 #: modules_v4/report_vital_records/module.php:153
 msgid "Birth date - to"
-msgstr ""
+msgstr "Fødselsdato - til"
 
 #: modules_v4/report_vital_records/module.php:157
 msgid "Death date - from"
-msgstr ""
+msgstr "Dødsdato - fra"
 
 #: modules_v4/report_vital_records/module.php:161
 msgid "Death date - to"
-msgstr ""
+msgstr "Dødsdato - til"
 
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_vital_records/module.php:212
 #, php-format
 msgid "Births from <span>%1s</span>"
-msgstr ""
+msgstr "Fødte fra: <span>%1s</span>"
 
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_vital_records/module.php:213
 #, php-format
 msgid "Births to <span>%1s</span>"
-msgstr ""
+msgstr "Fødte til: <span>%1s</span>"
 
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_vital_records/module.php:214
 #, php-format
 msgid "Births between <span>%1s</span> and <span>%2s</span> "
-msgstr ""
+msgstr "Fødsler mellem <span>%1s</span> og <span>%2s</span> "
 
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_vital_records/module.php:215
 #, php-format
 msgid "Deaths from <span>%1s</span>"
-msgstr ""
+msgstr "Afdøde fra: <span>%1s</span>"
 
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_vital_records/module.php:216
 #, php-format
 msgid "Deaths to <span>%1s</span>"
-msgstr ""
+msgstr "Afdøde til: <span>%1s</span>"
 
 #. I18N: A filter on the Vital records report page
 #: modules_v4/report_vital_records/module.php:217
 #, php-format
 msgid "Deaths between <span>%1s</span> and <span>%2s</span> "
-msgstr ""
+msgstr "Dødsfald mellem <span>%1s</span> og <span>%2s</span> "
 
 #. I18N: Name of a module/sidebar
 #: modules_v4/research_links/module.php:32 modules_v4/research_links/module.php:36
@@ -22717,11 +22753,11 @@ msgstr "Forskningslinks"
 #. I18N: Description of the module
 #: modules_v4/research_links/module.php:41
 msgid "A collection of links to popular research web sites."
-msgstr ""
+msgstr "En samling links af populære slægtsforsknings sider."
 
 #: modules_v4/research_links/module.php:139
 msgid "Select the research area to set as default. This area will open first in the sidebar."
-msgstr ""
+msgstr "Vælg et forskningsområde som standard. Dette område vil åbne først i rammen i siden."
 
 #: modules_v4/research_links/module.php:151
 msgid "Select the links you want to use in the sidebar"
@@ -22737,40 +22773,40 @@ msgstr "Betalingsside"
 
 #: modules_v4/research_links/module.php:167 modules_v4/research_links/module.php:267 modules_v4/research_links/module.php:299
 msgid "Links only"
-msgstr ""
+msgstr "Kun links"
 
 #. I18N: help for resource links page
 #: modules_v4/research_links/module.php:360
 msgid "You can use this page to search external databases for either an existing person in the family tree, or the names of any person you have not yet recorded."
-msgstr ""
+msgstr "Du kan bruge denne side til at søge eksterne databaser enten ud fra et eksisterende individ i familietræet, eller efter navne som endnu ikke er lagt ind."
 
 #: modules_v4/research_links/module.php:367
 msgid "Existing person"
-msgstr ""
+msgstr "Eksisterende person"
 
 #: modules_v4/research_links/module.php:371
 msgid "A person not already added to this family tree"
-msgstr ""
+msgstr "Et individ som ikke allerede er tilføjet i familie træet"
 
 #: modules_v4/research_links/module.php:373
 msgid "Given name or names"
-msgstr ""
+msgstr "Fødenavn eller navne"
 
 #: modules_v4/research_links/module.php:381
 msgid "Start date"
-msgstr ""
+msgstr "Start dato"
 
 #: modules_v4/research_links/module.php:385
 msgid "End date"
-msgstr ""
+msgstr "Slut dato"
 
 #: modules_v4/research_links/module.php:389
 msgid "Select research areas to use"
-msgstr ""
+msgstr "Udvælg undersøgelses områder"
 
 #: modules_v4/research_links/module.php:412
 msgid "Show links"
-msgstr ""
+msgstr "Vis links"
 
 #: modules_v4/research_links/module.php:543 modules_v4/research_links/module.php:567
 msgid "International"
@@ -22782,11 +22818,11 @@ msgstr "&#36;"
 
 #: modules_v4/research_links/module.php:649
 msgid "You must enter details of a person to search for."
-msgstr ""
+msgstr "Vælg detaljer eller en person der søges efter."
 
 #: modules_v4/research_links/module.php:653
 msgid "You must select at least one research area to use."
-msgstr ""
+msgstr "Der skal udvælges mindst et undersøgelsesområde."
 
 #: modules_v4/review_changes/help_text.php:31 modules_v4/widget_review_changes/help_text.php:31
 msgid "Pending Changes block"
@@ -22807,7 +22843,7 @@ msgstr "kiwitrees - gennemse ændringer"
 
 #: modules_v4/review_changes/module.php:85
 msgid "Online changes have been made to a genealogical database. These changes need to be reviewed and accepted before they will appear to all users. Please use the URL below to enter that kiwitrees site and login to review the changes."
-msgstr ""
+msgstr "Der er blevet foretaget ændringer i slægtsdatabasen på hjemmesiden. Disse ændringer skal gennemses og godkendes før de vil blive vist for alle brugere. Brug venligst nedenstående URL for at åbne hjemmesiden, og log på for at gennemse ændringerne"
 
 #: modules_v4/review_changes/module.php:105 modules_v4/widget_review_changes/module.php:104
 msgid "There are pending changes for you to moderate."
@@ -23348,11 +23384,11 @@ msgstr[1] "&plusmn;%d år"
 
 #: search.php:357 search.php:406
 msgid "Before"
-msgstr ""
+msgstr "Før"
 
 #: search.php:361 search.php:407
 msgid "After"
-msgstr ""
+msgstr "Efter"
 
 #: search.php:391 search.php:454 search.php:469 search.php:491 search.php:506
 msgid "Exact"
@@ -24092,7 +24128,7 @@ msgstr "alder"
 #: themes/_administration/footer.php:35 themes/colors/footer.php:36 themes/kiwitrees/footer.php:36 themes/levy/footer.php:43 themes/webtrees/footer.php:36 themes/xenea/footer.php:36
 #, php-format
 msgid "Powered by %s"
-msgstr ""
+msgstr "Udviklet af %s"
 
 #: themes/_administration/header.php:116 themes/kiwitrees/header.php:112
 msgid "Search trees"
