@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,7 +51,7 @@ class widget_quicklinks_WT_Module extends WT_Module implements WT_Module_Widget 
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		$id		= $this->getName();
 		$class	= $this->getName();
-		$title = '';
+		$title	= '';
 
 //		if (WT_USER_GEDCOM_ADMIN) { - FOR FUTURE DEVELOPMENT
 //			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$widget_id.'\', \''.$this->getTitle().'\');"></i>';
@@ -63,21 +63,21 @@ class widget_quicklinks_WT_Module extends WT_Module implements WT_Module_Widget 
 		$content= '
 			<table>
 				<tr>
-					<td><a href="edituser.php"><i class="icon-myaccount"></i><br>'.WT_I18N::translate('My account').'</a></td>';
+					<td><a href="edituser.php"><i class="icon-myaccount"></i><br>' . WT_I18N::translate('My account') . '</a></td>';
 					if (WT_USER_GEDCOM_ID) {
 						$content .= '
-							<td><a href="pedigree.php?rootid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('My pedigree').'</a></td>
-							<td><a href="individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('My individual record').'</a></td>';
+							<td><a href="pedigree.php?rootid=' . WT_USER_GEDCOM_ID.'&amp;ged=' . WT_GEDURL . '"><i class="icon-pedigree"></i><br>' . WT_I18N::translate('My pedigree') . '</a></td>
+							<td><a href="individual.php?pid=' . WT_USER_GEDCOM_ID.'&amp;ged=' . WT_GEDURL . '"><i class="icon-indis"></i><br>' . WT_I18N::translate('My individual record') . '</a></td>';
 					}
 					if (WT_USER_IS_ADMIN) {
-						$content .= '<td><a href="admin.php"><i class="icon-admin"></i><br>'.WT_I18N::translate('Administration').'</a></td>';
+						$content .= '<td><a href="admin.php"><i class="icon-admin"></i><br>' . WT_I18N::translate('Administration') . '</a></td>';
 					}
 		$content .= '
 				</tr>
 			</table>';
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/widget_template.php';
+			require WT_THEME_DIR . 'templates/widget_template.php';
 		} else {
 			return $content;
 		}
