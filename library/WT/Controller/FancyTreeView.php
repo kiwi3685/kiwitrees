@@ -213,33 +213,26 @@ class WT_Controller_FancyTreeView {
 
 	// Print functions
 	public function printPage($module, $numblocks) {
-		$root 		= WT_Filter::get('rootid', WT_REGEX_XREF);
-		$gen  		= WT_Filter::get('gen', WT_REGEX_INTEGER);
-		$pids 		= WT_Filter::get('pids');
+		$root 				= WT_Filter::get('rootid', WT_REGEX_XREF);
+		$this->generation	= WT_Filter::get('gen', WT_REGEX_INTEGER);
+		$pids 				= explode('|', WT_Filter::get('pids'));
 
 		if ($numblocks == 0) {
 			$numblocks = 99;
 		}
 
 		$html = '';
-		if (!isset($gen) && !isset($pids)) {
-			$gen				= 1;
+		if (!$this->generation && !array_filter($this->pids)) {
+			$this->generation	= 1;
 			$numblocks			= $numblocks - 1;
-			$this->generation	= array($root);
-			$html .= $this->printGeneration($gen, $module);
+			$this->pids			= [$this->rootId()];
+			$html .= $this->printGeneration($this->generation, $module);
 			$module == 'fancy_treeview_ancestors' ? $this->loadAncestors($this->getPerson($root), 1) : '';
-		} else {
-			$this->generation = explode('|', $pids);
-		}
 
-		$lastblock = $gen + $numblocks + 1;// + 1 to get one hidden block.
-		while (count($this->generation) > 0 && $gen < $lastblock) {
-			$pids = $this->generation;
-			unset($this->generation);
-
-			foreach ($pids as $pid) {
-				$next_gen[] = $this->getNextGen($pid);
-			}
+		$lastblock = $this->generation + $numblocks + 1;// + 1 to get one hidden block.
+		while (count($this->pids) > 0 && $this->generation < $lastblock) {
+			$pids = $this->pids;
+			unset($this->pids); // empty the array (will be filled with the next generation)
 
 			switch ($module) {
 			case 'fancy_treeview_descendants':
@@ -250,7 +243,7 @@ class WT_Controller_FancyTreeView {
 					if (count($descendants) > 0) {
 						foreach ($descendants as $descendant) {
 							if ($this->options($module, 'show_singles') == true || $descendant['desc'] == 1) {
-								$this->generation[] = $descendant['pid'];
+								$this->pids[] = $descendant['pid'];
 							}
 						}
 					}
@@ -267,10 +260,10 @@ class WT_Controller_FancyTreeView {
 				}
 				break;
 			}
-			if (!empty($this->generation)) {
-				$gen++;
+			if (!empty($this->pids)) {
+				$this->generation++;
 				$module == 'fancy_treeview_ancestors' ? $this->gencount = count($this->generation) : '';
-				$html .= $this->printGeneration($gen, $module);
+				$html .= $this->printGeneration($this->generation, $module);
 				unset($next_gen, $descendants, $pids);
 			} else {
 				return $html;
@@ -1071,8 +1064,15 @@ class WT_Controller_FancyTreeView {
 		}
 	}
 
+	/**
+	 * Get an array of xrefs for the next descendant generation of this person
+	 *
+	 * @param type $pid
+	 * @return array of xrefs
+	 */
 	public function getNextGen($pid) {
 		$person = $this->getPerson($pid);
+		$ng		= [];
 		foreach($person->getSpouseFamilies() as $family) {
 			$children = $family->getChildren();
 			if ($children) {
@@ -1083,10 +1083,9 @@ class WT_Controller_FancyTreeView {
 				}
 			}
 		}
-		if (isset($ng)) {
-			return $ng;
-		}
+		return $ng;
 	}
+
 
 	// check if a person has parents in the same generation
 	public function hasParentsInSameGeneration($person) {
