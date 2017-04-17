@@ -89,14 +89,14 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 					<ul>';
 						foreach ($this->list_plugins() as $plugin_file) {
 							if ( get_module_setting($this->getName(), $plugin_file) == '1'){
-								$pluginfile = implode('', file(WT_MODULES_DIR.$this->getName().'/plugins/'.$plugin_file.'.php'));
+								$pluginfile = implode('', file(WT_MODULES_DIR.$this->getName() . '/plugins/' . $plugin_file . '.php'));
 								if (preg_match('/plugin_name\s*=\s*"(.*)";/', $pluginfile, $match)) {
 									$plugin_title = WT_I18N::translate($match[1]);
 								}
 								$html .=
 									'<li>'.
-										'<a href="#'.$plugin_file.'">'.
-											'<span title="'.$plugin_title.'">'.$plugin_title.'</span>
+										'<a href="#' . $plugin_file . '">'.
+											'<span title="' . $plugin_title . '">' . $plugin_title.'</span>
 										</a>
 									</li>';
 							}
@@ -129,7 +129,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 
 		$action = WT_Filter::post('action');
 
-		if ($action=='update') {
+		if ($action == 'update') {
 			foreach ($this->list_plugins() as $plugin_file) {
 				set_module_setting($this->getName(), $plugin_file, WT_Filter::post('NEW_'.$plugin_file));
 			}
@@ -140,12 +140,12 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 			<div id="calendar_utilities">
 				<h2>', $controller->getPageTitle(), '</h2>
 				<h3>', WT_I18N::translate('Select the utilities you want to display'), '</h3>
-				<form method="post" name="utilities" action="module.php?mod='.$this->getName().'&mod_action=admin_config">
+				<form method="post" name="utilities" action="module.php?mod=' . $this->getName() . '&mod_action=admin_config">
 					<input type="hidden" name="action" value="update">';
 					foreach ($this->list_plugins() as $plugin_file) {
-						$pluginfile = implode('', file(WT_MODULES_DIR.$this->getName().'/plugins/'.$plugin_file.'.php'));
+						$pluginfile = implode('', file(WT_MODULES_DIR . $this->getName() . '/plugins/' . $plugin_file.'.php'));
 						if (preg_match('/plugin_name\s*=\s*"(.*)";/', $pluginfile, $match)) {
-							$plugin_title = $match[1];
+							$plugin_title = WT_I18N::translate($match[1]);
 						}
 						echo '
 						<div class="container">
@@ -156,7 +156,7 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 					echo '
 						<button class="btn btn-primary save" type="submit">
 							<i class="fa fa-floppy-o"></i>'.
-							WT_I18N::translate('save').'
+							WT_I18N::translate('Save').'
 						</button>
 				</form>
 			</div >';
@@ -164,13 +164,13 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 
 	// Scan the plugin folder for a list of plugins
 	static function list_plugins() {
-		$results = array();
-		$dir = dirname(__FILE__).'/plugins/';
-		$dir_handle=opendir($dir);
+		$results	= array();
+		$dir		= dirname(__FILE__).'/plugins/';
+		$dir_handle	= opendir($dir);
 		while ($file = readdir($dir_handle)) {
-			if (substr($file, -4)=='.php') {
-				$file = basename($file, '.php');
-				$results[] = $file;
+			if (substr($file, -4) == '.php') {
+				$file		= basename($file, '.php');
+				$results[]	= $file;
 			}
 		}
 		closedir($dir_handle);
