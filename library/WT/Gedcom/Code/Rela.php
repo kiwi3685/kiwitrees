@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,7 @@ class WT_Gedcom_Code_Rela {
 		'godparent', 'godson', 'goddaughter', 'godchild', 'guardian',
 		'informant', 'lodger', 'nanny', 'nurse', 'owner',
 		'priest', 'rabbi', 'registry_officer', 'religious_witness', 'seller', 'servant',
-		'slave', 'ward', 'witness',
+		'slave', 'twin', 'ward', 'witness',
 	);
 
 	// Translate a code, for an (optional) record
@@ -136,12 +136,9 @@ class WT_Gedcom_Code_Rela {
 			return WT_I18N::translate('Goddaughter');
 		case 'godchild':
 			switch ($sex) {
-			case 'M':
-				return WT_I18N::translate('Godson');
-			case 'F':
-				return WT_I18N::translate('Goddaughter');
-			default:
-				return WT_I18N::translate('Godchild');
+			case 'M': return WT_I18N::translate('Godson');
+			case 'F': return WT_I18N::translate('Goddaughter');
+			default:  return WT_I18N::translate('Godchild');
 			}
 		case 'guardian':
 			switch ($sex) {
@@ -212,6 +209,12 @@ class WT_Gedcom_Code_Rela {
 			case 'M': return WT_I18N::translate_c('MALE',   'Slave');
 			case 'F': return WT_I18N::translate_c('FEMALE', 'Slave');
 			default:  return WT_I18N::translate  (          'Slave');
+			}
+		case 'twin':
+			switch ($sex) {
+			case 'M': return WT_I18N::translate('Twin brother');
+			case 'F': return WT_I18N::translate('Twin sister');
+			default:  return WT_I18N::translate('Twin');
 			}
 		case 'ward':
 			switch ($sex) {
