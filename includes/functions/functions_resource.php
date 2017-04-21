@@ -56,7 +56,23 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		$html .= '<a href="https://familysearch.org/search/tree/results#count=20&query=afn:' . rawurlencode($fact->getDetail()) . '" target="new">' . htmlspecialchars($fact->getDetail()) . '</a>';
 		break;
 	case 'ASSO':
-		// we handle this later, in print_asso_rela_record()
+		// include RELA if recorded
+		preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $fact->getGedcomRecord(), $amatches1, PREG_SET_ORDER);
+		preg_match_all('/\n2 _?ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $fact->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
+		// For each ASSO record
+		foreach (array_merge($amatches1, $amatches2) as $amatch) {
+			$person = WT_Person::getInstance($amatch[1]);
+			if (!$person) {
+				// If the target of the ASSO does not exist, create a dummy person, so
+				// the user can see that something is present.
+				$person = new WT_Person('');
+			}
+			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
+				$html .= '<span dir="auto">' . WT_Gedcom_Tag::getLabel('RELA') . ':&nbsp;' . WT_Gedcom_Code_Rela::getValue($rmatch[1], $person) . ':&nbsp;' . $person->getFullName() . '</span>';
+			} else {
+				$html .= '&nbsp;';
+			}
+		}
 		break;
 	case 'BURI':
 		// include CEME if recorded
