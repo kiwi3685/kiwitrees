@@ -88,7 +88,7 @@ switch (WT_Filter::post('action')) {
 
 			if ($user_id > 0) {
 				// Approving for the first time? Send a confirmation email
-				if ($verified_by_admin && !get_user_setting('verified_by_admin') && get_user_setting('sessiontime') == 0) {
+				if ($verified_by_admin && !get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'sessiontime') == 0) {
 					require_once WT_ROOT.'includes/functions/functions_mail.php';
 					WT_I18N::init(get_user_setting($user_id, 'language'));
 					kiwiMail(
