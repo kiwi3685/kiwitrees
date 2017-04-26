@@ -595,8 +595,9 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 }
 .subheaders {font-size:16px;font-weight:700;margin:15px 0 0 15px;padding:10px;vertical-align:bottom;}
 .sublinks_cell {background:#99bbee;}
-.submenu {font-size:11px;white-space:nowrap;}
-.submenuitem,.submenuitem_hover {background-color:#fff;border:1px solid #cccccc;height:20px;padding:3px 3px 0;white-space:nowrap;}
+.submenu {text-decoration: none;font-size: 11px;background-color: #fff;border: 1px solid #888888;white-space: nowrap;visibility: hidden;position: absolute;padding: 5px;}
+.submenuitem,.submenuitem_hover {vertical-align: middle;height: 20px;text-decoration: none;font-size: 11px;background-color: #fff;white-space: nowrap;padding: 1px;}
+
 .theme_form {font-size:14px;margin:3px;margin-top:0;}
 .thumbnail {height:auto;padding:5px;}
 
@@ -1421,7 +1422,7 @@ div.dt-buttons a.dt-button {
 #sb_family_nav_content {margin-top:8px;}
 .nav_content .facts_label {width:75px;}
 .famnav_title{font-weight: bold;display: block;padding: 5px 0;}
-.flyout {color:#000;margin-top:-20px;padding:3px;right:210px;text-align:left;}
+.flyout {color:#000;margin-top:-20px;padding:3px;text-align:left;}
 .flyout2 {background:#fff;border:1px solid #cccccc;color:#000;left:40px;margin-top:-2px;padding:3px;text-align:left;}
 .flyout2 a:hover {color:#2f416f;text-decoration:underline !important;}
 .flyout3 {display:block;background:none;border:none;left:0;margin-top:0;padding:0;text-align:left;text-decoration:none;}
