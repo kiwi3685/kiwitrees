@@ -55,7 +55,8 @@ $controller
 		autocomplete();
 	');
 
-if ($action == 'choose' && $paramok) { ?>
+if ($action == 'choose' && $paramok) {
+	$record = ''; ?>
 	<script>
 		// Javascript variables
 		var id_empty = "<?php echo WT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
@@ -196,7 +197,8 @@ if ($action == 'choose' && $paramok) { ?>
 						</div>
 					</div>
 					<?php // Admin Option CHAN log update override =======================
-					echo no_update_chan($record); ?>
+						echo $record ? no_update_chan($record) : '';
+					?>
 					<input type="hidden" name="more_links" value="No_Values">
 					<input type="hidden" name="exist_links" value="No_Values">
 					<p id="save-cancel">
@@ -227,7 +229,8 @@ if ($action == 'choose' && $paramok) { ?>
 						</div>
 					</div>
 					<?php // Admin Option CHAN log update override =======================
-					echo no_update_chan($record); ?>
+						echo $record ? no_update_chan($record) : '';
+					?>
 					<p id="save-cancel">
 						<button class="btn btn-primary" type="submit">
 							<i class="fa fa-link"></i>
