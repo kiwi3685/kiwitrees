@@ -1044,16 +1044,16 @@ function format_sour_table($datalist) {
 	// It is not good to bypass privacy, but many servers do not have the resources
 	// to process privacy for every record in the tree, code courtesy Greg Roach, webtrees.net
 	$count_individuals = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'SOUR' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'SOUR' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 	$count_families = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'SOUR' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'SOUR' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 	$count_media = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'SOUR' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'SOUR' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 	$count_notes = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##other` JOIN `##link` ON l_from = o_id AND l_file = o_file AND o_type = 'NOTE' AND l_type = 'SOUR' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##other` JOIN `##link` ON l_from = o_id AND l_file = o_file AND o_type = 'NOTE' AND l_type = 'SOUR' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 
 	$html = '';
@@ -1221,16 +1221,16 @@ function format_note_table($datalist) {
 	// It is not good to bypass privacy, but many servers do not have the resources
 	// to process privacy for every record in the tree, code courtesy Greg Roach, webtrees.net
 	$count_individuals = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'NOTE' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 	$count_families = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'NOTE' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 	$count_media = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'NOTE' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 	$count_sources = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'NOTE' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'NOTE' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 
 	$html = '';
@@ -1466,7 +1466,7 @@ function format_repo_table($repos) {
 	// It is not good to bypass privacy, but many servers do not have the resources
 	// to process privacy for every record in the tree code courtesy Greg Roach, webtrees.net
 	$count_sources = WT_DB::prepare(
-		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'REPO' GROUP BY l_to"
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'REPO' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 
 	$html = '';

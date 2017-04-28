@@ -234,32 +234,32 @@ class WT_Query_Name {
 
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
-		$sql=
+		$sql =
 			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)".
 			" FROM `##name` ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" WHERE n_file={$ged_id} AND n_surn<>''".
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
-		foreach (self::_getAlphabet() as $n=>$letter) {
-			$sql.=" AND n_surn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
+		foreach (self::_getAlphabet() as $n => $letter) {
+			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
-		$sql.=" GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
-		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
-			$alphas[$alpha]=WT_I18N::number($count);
+		$sql .= " GROUP BY UPPER(LEFT(n_surn, 1)) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
+		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha => $count) {
+			$alphas[$alpha] = WT_I18N::number($count);
 		}
 
 		// Names with no surname
-		$sql=
+		$sql =
 			"SELECT SQL_CACHE COUNT(n_id)".
 			" FROM `##name` ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" WHERE n_file={$ged_id} AND n_surn=''".
 			($marnm ? "" : " AND n_type!='_MARNM'");
-		$num_none=WT_DB::prepare($sql)->fetchOne();
+		$num_none = WT_DB::prepare($sql)->fetchOne();
 		if ($num_none) {
 			// Special code to indicate "no surname"
-			$alphas[',']=$num_none;
+			$alphas[','] = $num_none;
 		}
 
 		return $alphas;
