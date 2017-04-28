@@ -669,15 +669,13 @@ function report_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
 
 	// Date filters
 	if ($m_fromJD || $m_toJD) {
-		if ($m_fromJD || $m_toJD) {
-			$sql_join	.= " JOIN `##dates` AS B ON (B.d_file=f_file AND B.d_gid=f_id)";
-			$sql_where	.= " AND B.d_fact = 'MARR'";
-			if ($m_fromJD) {
-				$sql_where .= " AND B.d_julianday1 >= $m_fromJD";
-			}
-			if ($m_toJD) {
-				$sql_where .= " AND B.d_julianday2 <= $m_toJD";
-			}
+		$sql_join	.= " JOIN `##dates` AS B ON (B.d_file=f_file AND B.d_gid=f_id)";
+		$sql_where	.= " AND B.d_fact = 'MARR'";
+		if ($m_fromJD) {
+			$sql_where .= " AND B.d_julianday1 >= $m_fromJD";
+		}
+		if ($m_toJD) {
+			$sql_where .= " AND B.d_julianday2 <= $m_toJD";
 		}
 	}
 
