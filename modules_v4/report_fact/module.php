@@ -97,9 +97,9 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 	// Implement class WT_Module_Report
 	public function show() {
 		global $controller, $level2_tags;
-		require WT_ROOT.'includes/functions/functions_resource.php';
+		require WT_ROOT . 'includes/functions/functions_resource.php';
 
-		$table_id = 'ID'.(int)(microtime()*1000000); // create a unique ID
+		$table_id = 'ID' . (int)(microtime()*1000000); // create a unique ID
 
 		//-- set list of all configured individual tags (level 1)
 		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
@@ -110,7 +110,6 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 			$translated_indifacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
 		}
 		uasort($translated_indifacts, 'factsort');
-		var_dump($uniquefacts);
 
 		// set list of facts that have level 2 TYPE subtag
 		$typefacts = array();
@@ -264,11 +263,7 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 											$sex_image = '';
 										}
 										$data[$x]['NAME'] .= '<a '. $title. ' href="'. $person->getHtmlUrl(). '"'. $class. '>'. $name['full'] . '</a>'. $sex_image. '<br>';
-//										$data[$x]['NAME'] = '<a href="' . $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>';
 									}
-
-
-//									$data[$x]['NAME'] = '<a href="' . $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>';
 									$data[$x]['B_DATE'] = $person->getBirthDate()->JD();
 									$data[$x]['O_DATE'] = $date->JD();
 									$data[$x]['BIRTH'] = $person->getBirthDate()->Display();
