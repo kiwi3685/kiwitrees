@@ -117,7 +117,6 @@ class WT_MenuBar {
 		uasort($active_lists, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 		foreach ($active_lists as $list) {
 			foreach ($list->getListMenus() as $submenu) {
-
 				$menu->addSubmenu($submenu);
 			}
 		}
