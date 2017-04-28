@@ -59,12 +59,20 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 	public function getListMenus() {
 		global $controller;
 		$menus = array();
-		$menu  = new WT_Menu(
-			$this->getTitle(),
-			'module.php?mod=' . $this->getName() . '&amp;mod_action=show',
-			'menu-calendar_utilities'
-		);
-		$menus[] = $menu;
+		$i = 0;
+		foreach ($this->list_plugins() as $plugin_file) {
+			if (get_module_setting($this->getName(), $plugin_file) == '1') {
+				$i++;
+			}
+		}
+		if ($i > 0) {
+			$menu  = new WT_Menu(
+				$this->getTitle(),
+				'module.php?mod=' . $this->getName() . '&amp;mod_action=show',
+				'menu-calendar_utilities'
+			);
+			$menus[] = $menu;
+		}
 		return $menus;
 	}
 
@@ -106,8 +114,8 @@ class calendar_utilities_WT_Module extends WT_Module implements WT_Module_Config
 					<div id="plugin_container">';
 						foreach ($this->list_plugins() as $plugin_file) {
 							if (get_module_setting($this->getName(), $plugin_file) == '1') {
-								$html .= '<div id="'.$plugin_file.'">';
-									include_once WT_MODULES_DIR.$this->getName().'/plugins/'.$plugin_file.'.php';
+								$html .= '<div id="' . $plugin_file . '">';
+									include_once WT_MODULES_DIR . $this->getName() . '/plugins/' . $plugin_file . '.php';
 								$html .= '</div>';
 							}
 						}
