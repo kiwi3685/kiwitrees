@@ -2600,6 +2600,8 @@ function no_update_chan(WT_GedcomRecord $record) {
 		<div class="last_change">
 			<label>
 				<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
+				<span style="font-weight:400; font-size:90%;"><?php echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()); ?></span>
+				<span style="font-weight:400; font-size:90%;"><?php echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser()); ?></span>
 			</label>
 			<div class="input">
 				<?php if ($NO_UPDATE_CHAN) { ?>
@@ -2611,10 +2613,6 @@ function no_update_chan(WT_GedcomRecord $record) {
 				<p class="helpcontent">
 					<?php echo WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.<br>When Administrators make such corrections information about the original change is replaced.<br>When this option is selected kiwitrees will retain the original change information instead of replacing it.'); ?>
 				</p>
-				<?php echo
-					WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()) .
-					WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser());
-				?>
 			</div>
 		</div>
 	<?php } else {
