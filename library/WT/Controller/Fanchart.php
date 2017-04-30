@@ -1,4 +1,4 @@
- <?php
+<?php
  /**
   * Kiwitrees: Web based Family History software
   * Copyright (C) 2012 to 2017 kiwitrees.net
