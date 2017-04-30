@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -126,7 +126,7 @@ echo '<div id="home-page">';
 	// link for changing blocks
 	if (WT_USER_ID || $SHOW_COUNTER) {
 		echo '<div id="link_change_blocks">';
-			if (WT_USER_GEDCOM_ADMIN) echo '<a href="index_edit.php?gedcom_id='.WT_GED_ID.'" onclick="return modalDialog(\'index_edit.php?gedcom_id='.WT_GED_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+			if (WT_USER_GEDCOM_ADMIN) echo '<a href="index_edit.php?gedcom_id=' . WT_GED_ID . '" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . WT_GED_ID . '\', \'' . WT_I18N::translate('Change the blocks on this page') . '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 			if ($SHOW_COUNTER) {echo '<span>'.WT_I18N::translate('Hit Count:').' '.$hitCount.'</span>';}
 		echo '</div>'; // <div id="link_change_blocks">
 	} else {

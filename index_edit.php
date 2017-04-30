@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ if ($user_id) {
 // Only an admin can edit the "default" page
 // Only managers can edit the "home page"
 if (
-	$gedcom_id<0 && !WT_USER_IS_ADMIN ||
-	$gedcom_id>0 && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||
+	$gedcom_id < 0 && !WT_USER_IS_ADMIN ||
+	$gedcom_id > 0 && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||
 	$user_id && WT_USER_ID!= $user_id && !WT_USER_IS_ADMIN
 ) {
 	$controller->pageHeader();
@@ -60,18 +60,18 @@ if (isset($_REQUEST['right'])) {
 }
 
 // Define all the icons we're going to use
-$IconUarrow = 'icon-uarrow';
-$IconDarrow = 'icon-darrow';
+$IconUarrow			= 'icon-uarrow';
+$IconDarrow			= 'icon-darrow';
 if($TEXT_DIRECTION == 'ltr') {
-	$IconRarrow = 'icon-rarrow';
-	$IconLarrow = 'icon-larrow';
-	$IconRDarrow = 'icon-rdarrow';
-	$IconLDarrow = 'icon-ldarrow';
+	$IconRarrow		= 'icon-rarrow';
+	$IconLarrow		= 'icon-larrow';
+	$IconRDarrow	= 'icon-rdarrow';
+	$IconLDarrow	= 'icon-ldarrow';
 } else {
-	$IconRarrow = 'icon-larrow';
-	$IconLarrow = 'icon-rarrow';
-	$IconRDarrow = 'icon-ldarrow';
-	$IconLDarrow = 'icon-rdarrow';
+	$IconRarrow		= 'icon-larrow';
+	$IconLarrow		= 'icon-rarrow';
+	$IconRDarrow	= 'icon-ldarrow';
+	$IconLDarrow	= 'icon-rdarrow';
 }
 
 $all_blocks = array();
@@ -234,13 +234,13 @@ $controller
 
 
 	// Load Block Description array for use by javascript
-	foreach ($all_blocks as $block_name=>$block) {
+	foreach ($all_blocks as $block_name => $block) {
 		$controller->addInlineJavascript(
-			'block_descr["'.$block_name.'"] = "'.addslashes($block->getDescription()).'";'
+			'block_descr["' . $block_name . '"] = "' . addslashes($block->getDescription()) . '";'
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "'.WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.').'";'
+		'block_descr["advice1"] = "' . WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
 	);
 
 ?>
@@ -272,7 +272,7 @@ $controller
 			<!-- NOTE: Row 2 column 2: Left (Main) block list -->
 			<td class="optionbox center">
 				<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">
-					<?php foreach ($blocks['main'] as $block_id=>$block_name) { ?>
+					<?php foreach ($blocks['main'] as $block_id => $block_name) { ?>
 						<option value="<?php echo $block_id; ?>"><?php echo $all_blocks[$block_name]->getTitle(); ?></option>
 					<?php } ?>
 				</select>
@@ -326,7 +326,7 @@ $controller
 		<tr>
 			<td class="descriptionbox wrap" colspan="7">
 				<div id="instructions">
-					<?php echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'); ?>
+					<?php echo WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'); ?>
 				</div>
 			</td>
 		</tr>

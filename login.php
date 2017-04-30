@@ -89,7 +89,6 @@ default:
 				$WT_SESSION->timediff = 0;
 			}
 			$WT_SESSION->locale   	= get_user_setting($user_id, 'language');
-			$WT_SESSION->theme_dir	= get_user_setting($user_id, 'theme');
 			$WT_SESSION->gedcomid	= get_gedcomid($user_id, WT_GED_ID);
 			if (WT_GED_ID == "") {
 				$WT_SESSION->rootid	= $WT_SESSION->gedcomid;
@@ -113,7 +112,7 @@ default:
 			}
 
 			// Redirect to the target URL
-			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$url);
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH . $url);
 			// Explicitly write the session data before we exit,
 			// as it doesn’t always happen when using APC.
 			Zend_Session::writeClose();
