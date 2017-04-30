@@ -182,7 +182,7 @@ if ($view != 'simple') {
 				foreach ($ft_tools as $file=>$title) { ?>
 					<p><a <?php echo (WT_SCRIPT_NAME==$file ? 'class="current" ' : ''); ?>href="<?php echo $file; ?>"><?php echo $title; ?></a></p>
 				<?php } ?>
-				<p><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog('index_edit.php?gedcom_id=-1, <?php echo  WT_I18N::translate('Set the default blocks for new family trees'); ?>');"><?php echo WT_I18N::translate('Set the default blocks'); ?></a></p>
+				<p><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog('index_edit.php?gedcom_id=-1', '<?php echo  WT_I18N::translate('Set the default blocks for new family trees'); ?>');"><?php echo WT_I18N::translate('Set the default blocks'); ?></a></p>
 			</div>
 			<?php if (WT_USER_IS_ADMIN) { ?>
 				<h3 id="user-admin"><i class="fa fa-users fa-fw"></i><span class="menu-name"><?php echo WT_I18N::translate('Users'); ?></span></h3>
