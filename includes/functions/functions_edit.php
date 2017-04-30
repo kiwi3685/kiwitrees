@@ -84,7 +84,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 			$html.='<option value="'.htmlspecialchars($key).'" dir="auto">'.htmlspecialchars($value).'</option>';
 		}
 	}
-	return '<select id="'.$name.'" name="'.$name.'" '.$extra.'>'.$html.'</select>';
+	return '<select id="' . $name.'" name="' . $name.'" ' . $extra.'>' . $html.'</select>';
 }
 
 // An inline-editing version of select_edit_control()
@@ -1222,31 +1222,31 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	if (substr($tag, 0, strpos($tag, "PLAC"))) {
 		?>
-	<script>
-		function valid_lati_long(field, pos, neg) {
-			// valid LATI or LONG according to Gedcom standard
-			// pos (+) : N or E
-			// neg (-) : S or W
-			var txt=field.value.toUpperCase();
-			txt=txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
-			txt=txt.replace(/ /g, ':'); // N12 34  ==> N12.34
-			txt=txt.replace(/\+/g, ''); // +17.1234  ==> 17.1234
-			txt=txt.replace(/-/g, neg); // -0.5698  ==> W0.5698
-			txt=txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
-			// 0�34'11 ==> 0:34:11
-			txt=txt.replace(/\uB0/g, ':'); // �
-			txt=txt.replace(/\u27/g, ':'); // '
-			// 0:34:11.2W ==> W0.5698
-			txt=txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function($0, $1, $2, $3, $4) { var n=parseFloat($1); n+=($2/60); n+=($3/3600); n=Math.round(n*1E4)/1E4; return $4+n; });
-			// 0:34W ==> W0.5667
-			txt=txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function($0, $1, $2, $3) { var n=parseFloat($1); n+=($2/60); n=Math.round(n*1E4)/1E4; return $3+n; });
-			// 0.5698W ==> W0.5698
-			txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
-			// 17.1234 ==> N17.1234
-			if (txt && txt.charAt(0)!=neg && txt.charAt(0)!=pos)
-				txt=pos+txt;
-			field.value = txt;
-		}
+		<script>
+			function valid_lati_long(field, pos, neg) {
+				// valid LATI or LONG according to Gedcom standard
+				// pos (+) : N or E
+				// neg (-) : S or W
+				var txt=field.value.toUpperCase();
+				txt=txt.replace(/(^\s*)|(\s*$)/g, ''); // trim
+				txt=txt.replace(/ /g, ':'); // N12 34  ==> N12.34
+				txt=txt.replace(/\+/g, ''); // +17.1234  ==> 17.1234
+				txt=txt.replace(/-/g, neg); // -0.5698  ==> W0.5698
+				txt=txt.replace(/,/g, '.'); // 0,5698 ==> 0.5698
+				// 0�34'11 ==> 0:34:11
+				txt=txt.replace(/\uB0/g, ':'); // �
+				txt=txt.replace(/\u27/g, ':'); // '
+				// 0:34:11.2W ==> W0.5698
+				txt=txt.replace(/^([0-9]+):([0-9]+):([0-9.]+)(.*)/g, function($0, $1, $2, $3, $4) { var n=parseFloat($1); n+=($2/60); n+=($3/3600); n=Math.round(n*1E4)/1E4; return $4+n; });
+				// 0:34W ==> W0.5667
+				txt=txt.replace(/^([0-9]+):([0-9]+)(.*)/g, function($0, $1, $2, $3) { var n=parseFloat($1); n+=($2/60); n=Math.round(n*1E4)/1E4; return $3+n; });
+				// 0.5698W ==> W0.5698
+				txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
+				// 17.1234 ==> N17.1234
+				if (txt && txt.charAt(0)!=neg && txt.charAt(0)!=pos)
+					txt=pos+txt;
+				field.value = txt;
+			}
 		</script>
 		<?php
 	}
@@ -2256,7 +2256,7 @@ function create_add_form($fact) {
 	// Census assistant ================================================
 	if ($fact == "CENS") {
 		global $TEXT_DIRECTION, $CensDate;
-		$CensDate="yes";
+		$CensDate = "yes";
 	}
 	// ==================================================================
 
@@ -2268,16 +2268,16 @@ function create_add_form($fact) {
 	} else {
 		$tags[0] = $fact;
 		if ($fact == '_UID') {
-			$fact.=' '.uuid();
+			$fact.= ' ' . uuid();
 		}
 		// These new level 1 tags need to be turned into links
 		if (in_array($fact, array('ASSO'))) {
-			$fact.=' @';
+			$fact .= ' @';
 		}
 		if (in_array($fact, $emptyfacts)) {
-			add_simple_tag('1 '.$fact.' Y');
+			add_simple_tag('1 ' . $fact . ' Y');
 		} else {
-			add_simple_tag('1 '.$fact);
+			add_simple_tag('1 ' . $fact);
 		}
 		insert_missing_subtags($tags[0]);
 		//-- handle the special SOURce case for level 1 sources [ 1759246 ]
@@ -2450,7 +2450,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		} else {
 			$level = 0;
 		}
-		if ($level<=$glevel) break;
+		if ($level <= $glevel) break;
 	}
 
 	if ($level1type != '_PRIM') {
@@ -2463,7 +2463,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 * Populates the global $tags array with any missing sub-tags.
 * @param string $level1tag the type of the level 1 gedcom record
 */
-function insert_missing_subtags($level1tag, $add_date=false) {
+function insert_missing_subtags($level1tag, $add_date = false) {
 	global $tags, $date_and_time, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;
 	global $nondatefacts, $nonplacfacts;
 
@@ -2474,23 +2474,23 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 		$level1tag = 'MARR';
 	}
 
-	foreach ($level2_tags as $key=>$value) {
+	foreach ($level2_tags as $key => $value) {
 		if ($key == 'DATE' && in_array($level1tag, $nondatefacts) || $key == 'PLAC' && in_array($level1tag, $nonplacfacts)) {
 			continue;
 		}
 		if (in_array($level1tag, $value) && !in_array($key, $tags)) {
 			if ($key == 'TYPE') {
-				add_simple_tag('2 TYPE '.$type_val, $level1tag);
+				add_simple_tag('2 TYPE ' . $type_val, $level1tag);
 			} elseif ($level1tag === '_TODO' && $key === 'DATE') {
-				add_simple_tag('2 '.$key.' '.strtoupper(date('d M Y')), $level1tag);
+				add_simple_tag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
-				add_simple_tag('2 '.$key.' '.WT_USER_NAME, $level1tag);
+				add_simple_tag('2 ' . $key . ' ' . WT_USER_NAME, $level1tag);
 			} elseif ($level1tag === 'TITL' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
-				add_simple_tag('2 '.$key, $level1tag);
+				add_simple_tag('2 ' . $key, $level1tag);
 			} elseif ($level1tag === 'NAME' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
-				add_simple_tag('2 '.$key, $level1tag);
+				add_simple_tag('2 ' . $key, $level1tag);
 			} elseif ($level1tag !== 'NAME') {
-				add_simple_tag('2 '.$key, $level1tag);
+				add_simple_tag('2 ' . $key, $level1tag);
 			}
 			switch ($key) { // Add level 3/4 tags as appropriate
 				case 'PLAC':
@@ -2533,7 +2533,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 		}
 	}
 	// Do something (anything!) with unrecognised custom tags
-	if (substr($level1tag, 0, 1) == '_' && $level1tag!='_UID' && $level1tag!='_TODO')
+	if (substr($level1tag, 0, 1) == '_' && $level1tag != '_UID' && $level1tag != '_TODO')
 		foreach (array('DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE') as $tag)
 			if (!in_array($tag, $tags)) {
 				add_simple_tag("2 {$tag}");
