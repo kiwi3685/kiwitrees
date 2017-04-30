@@ -317,7 +317,7 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 	echo $label;
 }
 
-function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=false) {
+function print_resourcenotes(WT_Event $fact, $level, $textOnly = false, $return = false) {
 	global $GEDCOM;
 	$ged_id = get_id_from_gedcom($GEDCOM);
 	$fact	= $fact->getGedcomRecord();
@@ -350,21 +350,19 @@ function print_resourcenotes(WT_Event $fact, $level, $textOnly=false, $return=fa
 					$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
 					$data .= $closeSpan;
 					if (!$textOnly) {
-						if (stripos($noterec, "1 SOUR")!==false) {
+						if (stripos($noterec, "1 SOUR") !== false) {
 							require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 							$data .= print_fact_sources($noterec, 1, true);
 						}
 					}
 				}
 			} else {
-				$data='<div class="fact_NOTE"><span class="label">'.WT_I18N::translate('Note').'</span>: <span class="field error">'.$nid.'</span></div>';
+				$data = '<div class="fact_NOTE"><span class="label">' . WT_I18N::translate('Note') . '</span>: <span class="field error">' . $nid . '</span></div>';
 			}
 		}
 		if (!$textOnly) {
-			if (stripos($fact, "$nlevel SOUR")!==false) {
-				$data .= "<div class=\"indent\">";
-				$data .= print_fact_sources($nrec, $nlevel, true);
-				$data .= "</div>";
+			if (stripos($fact, "$nlevel SOUR") !== false) {
+				$data .= '<div class="indent">' . print_fact_sources($nrec, $nlevel, true) . '</div>';
 			}
 		}
 	}

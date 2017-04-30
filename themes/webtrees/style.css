@@ -2867,9 +2867,9 @@ div.widget {
 #page.family_report .details {
 	display: inline-block;
 }
-#page.individual_report p.report_fact,
-#page.families_report p.report_fact,
-#page.family_report p.report_fact {
+#page.individual_report .report_fact,
+#page.families_report .report_fact,
+#page.family_report .report_fact {
 	border-bottom: 1px solid #ccc;
 	display: inline-block;
 	margin: 6px 0;

@@ -182,7 +182,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 							(!array_key_exists('extra_info', WT_Module::getActiveSidebars()) || !extra_info_WT_Module::showFact($fact))
 							&& !in_array($fact->getTag(), $exclude_tags)
 						) { ?>
-							<p class="report_fact">
+							<div class="report_fact">
 								<!-- fact label -->
 								<span class="label">
 									<?php echo print_fact_label($fact, $person);
@@ -215,12 +215,20 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 									<?php  } ?>
 									<!-- fact details -->
 									<?php
-									if (!in_array($fact->getTag(), array('BURI'))) {
+									if (!in_array($fact->getTag(), array('BURI'))) { // avoid printing address details twice
 										$detail	= print_resourcefactDetails($fact, $person);
 										echo $detail !== "&nbsp;" ?  '<span class="field">' . $detail . '</span>' : "";
 									} ?>
+									<!-- fact or event notes (level 2) -->
+									<?php if ($shownotes) {
+										$fe_notes = print_resourcenotes($fact, 2, true, true);
+										echo $fe_notes ? '
+											<div class="indent" style="font-size: 90%;">
+												<span class="label">' . WT_I18N::translate('Note') . ': <br></span><br><span class="">' . $fe_notes . '</span>
+											</div>' : "";
+									} ?>
 								</span>
-							</p>
+							</div>
 						<?php }
 					} ?>
 				</div>
@@ -251,7 +259,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 							$husband = $family->getHusband();
 							$wife = $family->getWife();
 							if (!empty($husband)) { ?>
-								<p>
+								<div>
 									<span class="label">
 										<?php echo WT_I18N::translate('Father'); ?>
 									</span>
@@ -259,7 +267,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 									<span class="details">
 										<?php echo personDetails($husband); ?>
 									</span>
-								</p>
+								</div>
 							<?php }
 							if (!empty($wife)) { ?>
 								<p>
@@ -270,7 +278,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 									<span class="details">
 										<?php echo personDetails($wife); ?>
 									</span>
-								</p>
+								</div>
 							<?php }
 							$marriage_details = marriageDetails($family);
 							if (!empty($marriage_details)) {
@@ -282,7 +290,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 							$children = $family->getChildren();
 							foreach ($children as $child) {
 								if (!empty($child) && $child != $person) {  ?>
-									<p>
+									<div>
 										<span class="label">
 											<?php echo get_relationship_name(get_relationship($person, $child)); ?>
 										</span>
@@ -290,7 +298,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 										<span class="details">
 											<?php echo personDetails($child); ?>
 										</span>
-									</p>
+									</div>
 								<?php }
 							} ?>
 						</div>
