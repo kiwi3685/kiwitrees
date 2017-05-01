@@ -187,11 +187,11 @@ case 'importform':
 							sort($files);
 							echo '<select name="ged_name">';
 								foreach ($files as $file) {
-									echo '<option value="', htmlspecialchars($file), '"';
+									echo '<option value="' . htmlspecialchars($file) . '"';
 									if ($file == $previous_gedcom_filename) {
 										echo ' selected="selected"';
 									}
-									echo'>', htmlspecialchars($file), '</option>';
+									echo'>' . htmlspecialchars($file) . '</option>';
 								}
 								if (!$files) {
 									echo '<option disabled selected>' . WT_I18N::translate('No GEDCOM files found.') . '</option>';
@@ -245,8 +245,8 @@ case 'importform':
 }
 
 echo '
-	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" rel="noopener noreferrer" title="', WT_I18N::translate('View FAQ for this page.'), '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
-	<h2>', $controller->getPageTitle(), '</h2>
+	<a class="current faq_link" href="http://kiwitrees.net/faqs/introduction/" target="_blank" rel="noopener noreferrer" title="' . WT_I18N::translate('View FAQ for this page.') . '">'. WT_I18N::translate('View FAQ for this page.'). '<i class="fa fa-comments-o"></i></a>
+	<h2>' . $controller->getPageTitle() . '</h2>
 	';
 
 // List the gedcoms available to this user
@@ -255,14 +255,14 @@ foreach (WT_Tree::GetAll() as $tree) {
 		echo '
 			<table class="gedcom_table">
 				<tr>
-					<th>', WT_I18N::translate('Family tree'), '</th>
+					<th>' . WT_I18N::translate('Family tree') . '</th>
 					<th>
-						<a class="accepted" href="index.php?ctype=gedcom&amp;ged=', $tree->tree_name_url, '" dir="auto">', $tree->tree_title_html, '</a>
-						<a href="admin_trees_config.php?ged=', $tree->tree_name_html, '"><i class="fa fa-cog"></i></a>
+						<a class="accepted" href="index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url . '" dir="auto">' . $tree->tree_title_html . '</a>
+						<a href="admin_trees_config.php?ged=' . $tree->tree_name_html . '"><i class="fa fa-cog"></i></a>
 					</th>
 				</tr>
 				<tr>
-					<th class="accepted">', $tree->tree_name_html, '</th>
+					<th class="accepted">' . $tree->tree_name_html . '</th>
 					<td>';
 						// The third row shows an optional progress bar and a list of maintenance options
 						$importing = WT_DB::prepare(
@@ -273,45 +273,45 @@ foreach (WT_Tree::GetAll() as $tree) {
 								"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=1 LIMIT 1"
 							)->execute(array($tree->tree_id))->fetchOne();
 							if (!$in_progress) {
-								echo '<div id="import', $tree->tree_id, '"><div id="progressbar', $tree->tree_id, '"><div style="position:absolute;" class="error">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
+								echo '<div id="import' . $tree->tree_id . '"><div id="progressbar' . $tree->tree_id . '"><div style="position:absolute;" class="error">' . WT_I18N::translate('Deleting old genealogy data…') . '</div></div></div>';
 							$controller->addInlineJavascript(
 								'jQuery("#progressbar'.$tree->tree_id.'").progressbar({value: 0});'
 							);
 							} else {
-								echo '<div id="import', $tree->tree_id, '"></div>';
+								echo '<div id="import' . $tree->tree_id . '"></div>';
 							}
 							$controller->addInlineJavascript(
 								'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id='.$tree->tree_id.'&keep_media'.$tree->tree_id.'='.safe_GET('keep_media'.$tree->tree_id).'");'
 							);
-							echo '<table border="0" width="100%" id="actions', $tree->tree_id, '" style="display:none">';
+							echo '<table border="0" width="100%" id="actions' . $tree->tree_id . '" style="display:none">';
 						} else {
-							echo '<table border="0" width="100%" id="actions', $tree->tree_id, '">';
+							echo '<table border="0" width="100%" id="actions' . $tree->tree_id . '">';
 						}
 							echo '<tr align="center">',
 								// import
 								'<td>
-									<a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">',
-										WT_I18N::translate('Import a GEDCOM file'), '
+									<a href="' . WT_SCRIPT_NAME . '?action=importform&amp;gedcom_id=' . $tree->tree_id . '">',
+										WT_I18N::translate('Import a GEDCOM file') . '
 										<i class="fa fa-upload"></i>
 									</a>
 								</td>',
 								// download
 								'<td>
-									<a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">',
-										WT_I18N::translate('Export a GEDCOM file'), '
+									<a href="admin_trees_download.php?ged=' . $tree->tree_name_url,'">',
+										WT_I18N::translate('Export a GEDCOM file') . '
 										<i class="fa fa-download"></i>
 									</a>
 								</td>',
 								// delete
 								'<td>
-									<a href="#" onclick="if (confirm(\''.WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)),'\')) document.delete_form', $tree->tree_id, '.submit(); return false;">',
-										WT_I18N::translate('Delete this family tree'), '
+									<a href="#" onclick="if (confirm(\'' . WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)) . '\')) document.delete_form' . $tree->tree_id . '.submit(); return false;">',
+										WT_I18N::translate('Delete this family tree') . '
 										<i class="fa fa-trash"></i>
 									</a>
-									<form name="delete_form', $tree->tree_id ,'" method="post" action="', WT_SCRIPT_NAME ,'">
+									<form name="delete_form' . $tree->tree_id ,'" method="post" action="' . WT_SCRIPT_NAME . '">
 										<input type="hidden" name="action" value="delete">
-										<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">',
-										WT_Filter::getCsrf(), '
+										<input type="hidden" name="gedcom_id" value="' . $tree->tree_id . '">',
+										WT_Filter::getCsrf() . '
 									</form>',
 								'</td>
 							</tr>
@@ -333,7 +333,7 @@ if (WT_USER_IS_ADMIN) {
 					<?php echo WT_I18N::translate('Default family tree'); ?>
 				</label>
 				<input type="hidden" name="action" value="setdefault">
-				<?php echo select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'); ?>
+				<?php echo select_edit_control('default_ged' . WT_Tree::getNameList() . '' . WT_Site::preference('DEFAULT_GEDCOM') . 'onchange="document.defaultform.submit();"'); ?>
 				<span class="help-text">
 					<?php echo WT_I18N::translate('This selects the family tree shown to visitors when they first arrive at the site.'); ?>
 				</span>
@@ -400,7 +400,7 @@ if (WT_USER_IS_ADMIN) {
 				<?php echo WT_I18N::translate('create'); ?>
 			</button>
 			<p class="warning help-text clearfloat">
-				<?php echo WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'); ?>
+				<?php echo WT_I18N::translate('After creating the family tree you will be able to upload or import data from a GEDCOM file.'); ?>
 			</p>
 		</form>
 	</div>

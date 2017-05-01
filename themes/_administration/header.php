@@ -156,7 +156,13 @@ if ($view != 'simple') {
 				foreach (WT_Tree::getAll() as $tree) {
 					if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
 						// Add a title="" element, since long tree titles are cropped ?>
-						<p><span><a <?php echo (WT_SCRIPT_NAME == "admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''); ?>href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="<?php echo htmlspecialchars($tree->tree_title); ?>" dir="auto"><?php echo $tree->tree_title_html; ?></a></span></p>
+						<p>
+							<span>
+								<a <?php echo (WT_SCRIPT_NAME == "admin_trees_config.php" && WT_GED_ID == $tree->tree_id ? 'class="current" ' : ''); ?>href="admin_trees_config.php?ged=<?php echo $tree->tree_name_url; ?>" title="<?php echo htmlspecialchars($tree->tree_title); ?>" dir="auto">
+									<?php echo $tree->tree_title_html; ?>
+								</a>
+							</span>
+						</p>
 					<?php }
 				} ?>
 			</div>
