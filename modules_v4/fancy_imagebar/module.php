@@ -53,27 +53,54 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		return 'other';
 	}
 
-	// Get module options
-	private function options($value = '') {
-		$FIB_OPTIONS = unserialize(get_module_setting($this->getName(), 'FIB_OPTIONS'));
+	/**
+	 * Get the current tree id
+	 *
+	 * @global type $WT_TREE
+	 * @return type
+	 */
+	protected function getTreeId() {
+		global $WT_TREE;
 
-		$key = WT_TREE::getIdFromName(WT_Filter::get('ged'));
-		if(empty($key)) $key = WT_GED_ID;
-
-		if ($FIB_OPTIONS || (is_array($FIB_OPTIONS) && !array_key_exists($key, $FIB_OPTIONS))) {
-			$FIB_OPTIONS[$key] = array(
-				'IMAGES' 				=> '1', // All images
-				'RANDOM' 				=> '1',
-				'TONE'					=> '0',
-				'SEPIA' 				=> '30',
-				'SIZE' 					=> '60'
-			);
-		};
-
-		if ($value) {
-			return($FIB_OPTIONS[$key][strtoupper($value)]);
+		$tree = WT_TREE::getIdFromName(WT_Filter::get('ged'));
+		if ($tree) {
+			return $tree->getTreeId();
 		} else {
-			return $FIB_OPTIONS[$key];
+			return $WT_TREE->getTreeId();
+		}
+	}
+
+	/**
+	 * Set the default module options
+	 *
+	 * @param type $key
+	 * @return string
+	 */
+	private function setDefault($key) {
+		$FIB_DEFAULT = [
+			'IMAGES'		 => [], // All images
+			'RANDOM'		 => '1',
+			'TONE'			 => '2', // Colors
+			'SEPIA'			 => '30', // Example
+			'SIZE'		 	=> '60'
+		];
+		return $FIB_DEFAULT[$key];
+	}
+
+	/**
+	 * Get module options
+	 *
+	 * @param type $k
+	 * @return type
+	 */
+	protected function options($k) {
+		$FIB_OPTIONS = unserialize(get_module_setting($this->getName(), 'FIB_OPTIONS'));
+		$key		 = strtoupper($k);
+
+		if (empty($FIB_OPTIONS[$this->getTreeId()]) || (is_array($FIB_OPTIONS[$this->getTreeId()]) && !array_key_exists($key, $FIB_OPTIONS[$this->getTreeId()]))) {
+			return $this->setDefault($key);
+		} else {
+			return($FIB_OPTIONS[$this->getTreeId()][$key]);
 		}
 	}
 
@@ -220,22 +247,24 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 			jQuery(oTable).on("change", "input[type=checkbox]",function() {
 				var images = jQuery("#imagelist").val().split("|")
 				if(this.checked){
-					if(jQuery.inArray(jQuery(this).val(), images) == -1) {
-						images.push(jQuery(this).val());
-					}
+					images.push(jQuery(this).val());
 				 } else {
-					 if(jQuery.inArray(jQuery(this).val(), images) > -1){
-						var index = images.indexOf(jQuery(this).val());
-					 	images.splice(index, 1 );
-					 }
+					var index = images.indexOf(jQuery(this).val());
+					images.splice(index, 1 );
 				 }
+
+				 // remove empty values from array
+				 images = images.filter(function(e){return e});
+
+				 // turn array into a string
 				 jQuery("#imagelist").val(images.join("|"));
+
 				 formChanged = true;
 			});
 
-			jQuery("#select_all").click(function(){
+			jQuery("input[name=select-all]").click(function(){
 				if (jQuery(this).is(":checked") == true) {
-					jQuery("#imagelist").val("'.implode("|", $this->getXrefs()).'");
+					jQuery("#imagelist").val("' . implode("|", $this->getXrefs()) . '");
 					oTable.find(":checkbox").prop("checked", true);
 				} else {
 					jQuery("#imagelist").val("");
@@ -269,17 +298,17 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 		$html =
 			'<div id="fib_config"><h2>'.$this->getTitle().'</h2>
-			<form method="post" name="configform" action="'.$this->getConfigLink().'">
+			<form method="post" name="configform" action="' . $this->getConfigLink() . '">
 				<input type="hidden" name="save" value="1">
 				<div id="selectbar">
 					<div class="left">
-						<label for="NEW_FIB_TREE" class="label">'.WT_I18N::translate('Family tree').'</label>
+						<label for="NEW_FIB_TREE" class="label">' . WT_I18N::translate('Family tree') . '</label>
 						<select name="NEW_FIB_TREE" id="NEW_FIB_TREE" class="tree">';
 							foreach (WT_Tree::getAll() as $tree):
 								if($tree->tree_id == WT_GED_ID) {
-									$html .= '<option value="'.$tree->tree_id.'" data-ged="'.$tree->tree_name.'" selected="selected">'.$tree->tree_title.'</option>';
+									$html .= '<option value="' . $tree->tree_id . '" data-ged="' . $tree->tree_name . '" selected="selected">' . $tree->tree_title . '</option>';
 								} else {
-									$html .= '<option value="'.$tree->tree_id.'" data-ged="'.$tree->tree_name.'">'.$tree->tree_title.'</option>';
+									$html .= '<option value="' . $tree->tree_id . '" data-ged="' . $tree->tree_name . '">' . $tree->tree_title . '</option>';
 								}
 							endforeach;
 			$html .= '	</select>
@@ -287,16 +316,26 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 			</div>
 			<div class="clearfloat"></div>
 			<div id="block_left" class="left">
-				<div class="left">'.WT_I18N::translate('Choose which images you want to show in the Fancy Imagebar').':'.help_link('choose_images', $this->getName()).'</div>
-				<div class="selectbox"><span class="nowrap">'.WT_I18N::translate('select all').'</span>';
-					$this->options('images') == 1 ? $html .= '<input id="select_all" type="checkbox" checked="checked"/>' :  $html .= '<input id="select_all" type="checkbox"/>';
+				<div class="left">' . WT_I18N::translate('Choose which images you want to show in the Fancy Imagebar') . ':' . help_link('choose_images', $this->getName()) . '</div>
+				<div class="selectbox">' .
+					checkbox('select-all') . WT_I18N::translate('select all');
+					// The datatable will be dynamically filled with images from the database.
+					// IMAGE LIST -->
+					if (empty($this->options('images'))) {
+						// we have not used the configuration page yet so use the default (list all images)
+						$imagelist = implode("|", $this->getXrefs());
+					} else {
+						$imagelist = implode("|", $this->options('images'));
+					}
 		// The datatable will be dynamically filled with images from the database.
 		$html .= '</div>
 					<div class="clearfloat"></div>
 					<h3 class="no_images">'.WT_I18N::translate('No images to display for this tree').'</h3>';
-					$this->options('images') == 1 ? $imagelist = $this->getXrefs() : $imagelist = $this->options('images');
-		$html .= '	<input id="imagelist" type="hidden" name="NEW_FIB_IMAGES" value = "'.implode("|", $imagelist).'">
-					<table id="image_block"><thead><th>&nbsp;</th></thead><tbody></tbody></table>
+		$html .= '	<input id="imagelist" type="hidden" name="NEW_FIB_IMAGES" value = "' . $imagelist .'">
+					<table id="image_block" class="table">
+						<thead></thead>
+						<tbody></tbody>
+					</table>
 				</div>
 				<div id="block_right" class="right">
 					<h3>'.WT_I18N::translate('Options').':</h3>
@@ -341,7 +380,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Get the medialist from the database
 	private function FancyImageBarMedia() {
-		$sql =	"SELECT SQL_CACHE m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file='".WT_GED_ID."'";
+		$sql =	"SELECT SQL_CACHE m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file='" . WT_GED_ID . "'";
 				if($this->options('images') == 1) {
 					$sql .= " AND m_type='photo'";
 				} else {
@@ -505,7 +544,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller, $ctype, $SEARCH_SPIDER;
 
-		if ($this->options() && $this->options('IMAGES') !== 0 && WT_SCRIPT_NAME === 'index.php') {
+		if ($this->options('IMAGES') !== 0 && WT_SCRIPT_NAME === 'index.php') {
 			if ($SEARCH_SPIDER) return null;
 			if ($ctype=='gedcom') {
 

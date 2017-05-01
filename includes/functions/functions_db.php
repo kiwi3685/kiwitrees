@@ -1670,7 +1670,7 @@ function get_module_setting($module_name, $setting_name, $default_value=null) {
 }
 
 function set_module_setting($module_name, $setting_name, $setting_value) {
-	if ($setting_value===null) {
+	if ($setting_value === null) {
 		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=? AND setting_name=?")
 			->execute(array($module_name, $setting_name));
 	} else {
