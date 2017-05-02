@@ -375,23 +375,24 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
+		return 'module.php?mod=' . $this->getName().'&amp;mod_action=admin_config';
 	}
 
 	// Get the medialist from the database
 	private function FancyImageBarMedia() {
+		$images_sql = array();
 		$sql =	"SELECT SQL_CACHE m_id AS xref, m_file AS gedcom_id FROM `##media` WHERE m_file='" . WT_GED_ID . "'";
 				if($this->options('images') == 1) {
 					$sql .= " AND m_type='photo'";
 				} else {
 					// single quotes needed around id's for sql statement.
 					foreach ($this->options('images') as $image) {
-						$images_sql[] = '\''.$image.'\'';
+						$images_sql[] = '\'' . $image . '\'';
 					}
-					$sql .= " AND m_id IN (".implode(',', $images_sql).")";
+					$sql .= " AND m_id IN (" . implode(',', $images_sql) . ")";
 				}
 		$sql .=	$this->options('random') == 1 ? " ORDER BY RAND()" : " ORDER BY m_id DESC";
-		$sql .= " LIMIT ".ceil(2400/$this->options('size'));
+		$sql .= " LIMIT " . ceil(2400/$this->options('size'));
 
 		$rows = WT_DB::prepare($sql)->execute()->fetchAll();
 		$list = array();
@@ -544,7 +545,7 @@ class fancy_imagebar_WT_Module extends WT_Module implements WT_Module_Config, WT
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller, $ctype, $SEARCH_SPIDER;
 
-		if ($this->options('IMAGES') !== 0 && WT_SCRIPT_NAME === 'index.php') {
+		if (!empty($this->options('IMAGES')) && WT_SCRIPT_NAME === 'index.php') {
 			if ($SEARCH_SPIDER) return null;
 			if ($ctype=='gedcom') {
 
