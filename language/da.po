@@ -5,14 +5,14 @@
 # Translators:
 # jacolineDK, 2014-2017
 # Nigel Osborne <kiwi3685@me.com>, 2014
-# Nigel Osborne <kiwi3685@me.com>, 2014,2016
+# Nigel Osborne <kiwi3685@me.com>, 2014,2016-2017
 # ohmadsen <ole@vends-herred.dk>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
-"POT-Creation-Date: 2017-04-07 07:18+1200\n"
-"PO-Revision-Date: 2017-04-17 11:53+1200\n"
+"POT-Creation-Date: 2017-04-17 10:48+1200\n"
+"PO-Revision-Date: 2017-05-03 09:20+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: Danish (http://www.transifex.com/kiwitrees/kiwitrees/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -199,7 +199,7 @@ msgid "Do not update the “last change” record"
 msgstr "Opdatér ikke den sidst ændret post"
 
 #. I18N: button label
-#: addmedia.php:804 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:135 admin_module_reports.php:109 admin_module_sidebar.php:135 admin_module_tabs.php:135 admin_module_widgets.php:135 admin_modules.php:203 admin_site_config.php:431 admin_site_merge.php:196 admin_trees_config.php:1406 admin_trees_manage.php:343 admin_users.php:657 block_edit.php:61 edit_interface.php:166 edit_interface.php:267 edit_interface.php:343 edit_interface.php:502 edit_interface.php:573 edit_interface.php:834 edit_interface.php:942 edit_interface.php:1089 edit_interface.php:1165 edit_interface.php:1292 edit_interface.php:2183 edit_interface.php:2374 edit_interface.php:2615 editnews.php:68 edituser.php:191 find.php:502 includes/functions/functions_edit.php:35 includes/functions/functions_edit.php:49 includes/functions/functions_edit.php:103 includes/functions/functions_edit.php:970 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/album/module.php:325 modules_v4/calendar_utilities/module.php:159 modules_v4/census_assistant/census_4_text.php:47 modules_v4/chart_relationship/module.php:416 modules_v4/custom_js/module.php:86 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/fancy_imagebar/module.php:321 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:383 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:378 modules_v4/faq/module.php:226 modules_v4/faq/module.php:434 modules_v4/gallery/module.php:360 modules_v4/gallery/module.php:519 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:455 modules_v4/googlemap/module.php:617 modules_v4/googlemap/module.php:685 modules_v4/googlemap/placehierarchy.php:233 modules_v4/pages/module.php:452 modules_v4/research_links/module.php:157 modules_v4/research_links/module.php:197 modules_v4/sitemap/module.php:259 modules_v4/stories/module.php:424 modules_v4/stories/module.php:552
+#: addmedia.php:804 admin_module_blocks.php:109 admin_module_charts.php:109 admin_module_lists.php:109 admin_module_menus.php:135 admin_module_reports.php:109 admin_module_sidebar.php:135 admin_module_tabs.php:135 admin_module_widgets.php:135 admin_modules.php:203 admin_site_config.php:431 admin_site_merge.php:196 admin_trees_config.php:1406 admin_trees_manage.php:343 admin_users.php:657 block_edit.php:61 edit_interface.php:166 edit_interface.php:267 edit_interface.php:343 edit_interface.php:502 edit_interface.php:573 edit_interface.php:834 edit_interface.php:942 edit_interface.php:1089 edit_interface.php:1165 edit_interface.php:1292 edit_interface.php:2183 edit_interface.php:2374 edit_interface.php:2615 editnews.php:68 edituser.php:191 find.php:502 includes/functions/functions_edit.php:35 includes/functions/functions_edit.php:49 includes/functions/functions_edit.php:103 includes/functions/functions_edit.php:970 includes/media_reorder.php:161 index_edit.php:337 inverselink.php:205 modules_v4/album/module.php:325 modules_v4/census_assistant/census_4_text.php:47 modules_v4/chart_relationship/module.php:416 modules_v4/custom_js/module.php:86 modules_v4/extra_menus/module.php:202 modules_v4/extra_menus/module.php:334 modules_v4/fancy_imagebar/module.php:321 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:383 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:378 modules_v4/faq/module.php:226 modules_v4/faq/module.php:434 modules_v4/gallery/module.php:360 modules_v4/gallery/module.php:519 modules_v4/googlemap/admin_places_edit.php:354 modules_v4/googlemap/module.php:455 modules_v4/googlemap/module.php:617 modules_v4/googlemap/module.php:685 modules_v4/googlemap/placehierarchy.php:233 modules_v4/pages/module.php:452 modules_v4/research_links/module.php:157 modules_v4/research_links/module.php:197 modules_v4/sitemap/module.php:259 modules_v4/stories/module.php:424 modules_v4/stories/module.php:552
 msgid "save"
 msgstr "gem"
 
@@ -296,13 +296,13 @@ msgstr "Individer"
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: admin.php:262 admin.php:308 ancestry.php:99 calendar.php:376 calendar.php:556 descendancy.php:71 famlist.php:134 famlist.php:139 includes/functions/functions_print_lists.php:1119 includes/functions/functions_print_lists.php:1292 includes/functions/functions_print_lists.php:1641 library/WT/Controller/Search.php:1136 mediaviewer.php:137 modules_v4/gedcom_stats/module.php:104 modules_v4/gedcom_stats/module.php:314 modules_v4/googlemap/placehierarchy.php:276 modules_v4/html/module.php:180 modules_v4/list_families/module.php:33 modules_v4/relatives/module.php:32 modules_v4/report_individual/module.php:243 modules_v4/report_related_fam/module.php:323 modules_v4/widget_stats/module.php:116 modules_v4/widget_stats/module.php:354 note.php:103 placelist.php:184 search.php:126 source.php:102 statistics.php:52 statisticsplot.php:773
+#: admin.php:262 admin.php:308 ancestry.php:99 calendar.php:376 calendar.php:556 descendancy.php:71 famlist.php:134 famlist.php:139 includes/functions/functions_print_lists.php:1119 includes/functions/functions_print_lists.php:1292 includes/functions/functions_print_lists.php:1641 library/WT/Controller/Search.php:1136 mediaviewer.php:137 modules_v4/gedcom_stats/module.php:104 modules_v4/gedcom_stats/module.php:314 modules_v4/googlemap/placehierarchy.php:276 modules_v4/html/module.php:180 modules_v4/list_families/module.php:33 modules_v4/relatives/module.php:32 modules_v4/report_individual/module.php:243 modules_v4/report_related_fam/module.php:328 modules_v4/widget_stats/module.php:116 modules_v4/widget_stats/module.php:354 note.php:103 placelist.php:184 search.php:126 source.php:102 statistics.php:52 statisticsplot.php:773
 msgid "Families"
 msgstr "Familier"
 
 #. I18N: Name of a module
 #. I18N: Name of a module
-#: admin.php:267 admin.php:309 includes/functions/functions_print_lists.php:1296 includes/functions/functions_print_lists.php:1520 includes/functions/functions_print_lists.php:1643 library/WT/Controller/Search.php:1137 mediaviewer.php:140 modules_v4/album/album_print_media.php:313 modules_v4/gedcom_stats/module.php:107 modules_v4/gedcom_stats/module.php:322 modules_v4/html/module.php:184 modules_v4/list_sources/module.php:33 modules_v4/report_family/module.php:353 modules_v4/report_individual/module.php:342 modules_v4/report_related_fam/module.php:432 modules_v4/sources_tab/module.php:32 modules_v4/widget_stats/module.php:125 modules_v4/widget_stats/module.php:362 note.php:109 repo.php:97 search.php:130 sourcelist.php:31 sourcelist.php:35 statistics.php:337 statistics.php:374
+#: admin.php:267 admin.php:309 includes/functions/functions_print_lists.php:1296 includes/functions/functions_print_lists.php:1520 includes/functions/functions_print_lists.php:1643 library/WT/Controller/Search.php:1137 mediaviewer.php:140 modules_v4/album/album_print_media.php:313 modules_v4/gedcom_stats/module.php:107 modules_v4/gedcom_stats/module.php:322 modules_v4/html/module.php:184 modules_v4/list_sources/module.php:33 modules_v4/report_family/module.php:353 modules_v4/report_individual/module.php:342 modules_v4/report_related_fam/module.php:437 modules_v4/sources_tab/module.php:32 modules_v4/widget_stats/module.php:125 modules_v4/widget_stats/module.php:362 note.php:109 repo.php:97 search.php:130 sourcelist.php:31 sourcelist.php:35 statistics.php:337 statistics.php:374
 msgid "Sources"
 msgstr "Kilder"
 
@@ -327,7 +327,7 @@ msgstr "Delte noter"
 msgid "Recent changes"
 msgstr "Seneste Ændringer"
 
-#: admin.php:306 calendar.php:142 calendar.php:344 modules_v4/calendar_utilities/plugins/calculators.php:74 modules_v4/calendar_utilities/plugins/old_new.php:86 modules_v4/calendar_utilities/plugins/old_new.php:120 modules_v4/calendar_utilities/plugins/regnal_years.php:75
+#: admin.php:306 calendar.php:142 calendar.php:344 modules_v4/calendar_utilities/plugins/calculators.php:76 modules_v4/calendar_utilities/plugins/old_new.php:86 modules_v4/calendar_utilities/plugins/old_new.php:120 modules_v4/calendar_utilities/plugins/regnal_years.php:75
 msgid "Day"
 msgstr "Dag"
 
@@ -335,12 +335,12 @@ msgstr "Dag"
 msgid "Week"
 msgstr "Uge"
 
-#: admin.php:306 calendar.php:162 calendar.php:345 modules_v4/calendar_utilities/plugins/calculators.php:83 modules_v4/calendar_utilities/plugins/old_new.php:77 modules_v4/calendar_utilities/plugins/old_new.php:111
+#: admin.php:306 calendar.php:162 calendar.php:345 modules_v4/calendar_utilities/plugins/calculators.php:85 modules_v4/calendar_utilities/plugins/old_new.php:77 modules_v4/calendar_utilities/plugins/old_new.php:111
 msgid "Month"
 msgstr "Måned"
 
 #. I18N: Name of a module
-#: admin.php:312 library/WT/Controller/Search.php:1138 mediaviewer.php:146 modules_v4/calendar_utilities/plugins/regnal_years.php:140 modules_v4/census_assistant/census_2_source_input.php:1049 modules_v4/notes/module.php:32 modules_v4/report_family/module.php:334 modules_v4/report_individual/module.php:232 modules_v4/report_related_fam/module.php:312 modules_v4/report_ukregister/module.php:189 source.php:108 statistics.php:338
+#: admin.php:312 library/WT/Controller/Search.php:1138 mediaviewer.php:146 modules_v4/calendar_utilities/plugins/regnal_years.php:140 modules_v4/census_assistant/census_2_source_input.php:1049 modules_v4/notes/module.php:32 modules_v4/report_family/module.php:334 modules_v4/report_individual/module.php:232 modules_v4/report_related_fam/module.php:317 modules_v4/report_ukregister/module.php:189 source.php:108 statistics.php:338
 msgid "Notes"
 msgstr "Noter"
 
@@ -671,7 +671,7 @@ msgstr "tidligere data"
 msgid "User"
 msgstr "Bruger"
 
-#: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:134 admin_trees_manage.php:258 admin_trees_missing.php:106 admin_trees_places.php:104 admin_trees_sanity.php:92 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_trees_unlinked.php:112 admin_users.php:607 edit_changes.php:169 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:200 modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:276 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:441 modules_v4/faq/module.php:465 modules_v4/gallery/module.php:525 modules_v4/gallery/module.php:549 modules_v4/googlemap/module.php:1488 modules_v4/html/module.php:288 modules_v4/pages/module.php:456 modules_v4/stories/module.php:491 modules_v4/widget_html/module.php:169
+#: admin_site_change.php:286 admin_site_change.php:310 admin_site_logs.php:237 admin_site_logs.php:260 admin_trees_duplicates.php:134 admin_trees_manage.php:258 admin_trees_missing.php:106 admin_trees_places.php:104 admin_trees_sanity.php:92 admin_trees_source.php:67 admin_trees_sourcecite.php:82 admin_trees_unlinked.php:112 admin_users.php:607 edit_changes.php:169 modules_v4/batch_update/admin_batch_update.php:67 modules_v4/chart_relationship/module.php:200 modules_v4/extra_menus/module.php:341 modules_v4/extra_menus/module.php:365 modules_v4/fancy_imagebar/module.php:276 modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:207 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:206 modules_v4/faq/module.php:441 modules_v4/faq/module.php:465 modules_v4/gallery/module.php:525 modules_v4/gallery/module.php:549 modules_v4/googlemap/module.php:1488 modules_v4/html/module.php:288 modules_v4/pages/module.php:456 modules_v4/stories/module.php:491 modules_v4/widget_html/module.php:171
 msgid "Family tree"
 msgstr "Anetræ"
 
@@ -1021,7 +1021,7 @@ msgstr "Indsæt standard teksten (US Engelsk) her"
 msgid "Add your custom translation here"
 msgstr "Tilføj din brugerdefineret oversættelse her"
 
-#: admin_site_lang.php:120 admin_site_lang.php:148 modules_v4/pages/module.php:258
+#: admin_site_lang.php:120 admin_site_lang.php:148 modules_v4/calendar_utilities/module.php:159 modules_v4/pages/module.php:258
 msgid "Save"
 msgstr "Gem"
 
@@ -1520,7 +1520,7 @@ msgstr "Sætter niveauet mht. beskyttelse af privatlivet for alle døde personer
 msgid "Age at which to assume a person is dead"
 msgstr "Antaget maksimal levetid for en person"
 
-#: admin_trees_config.php:575 modules_v4/calendar_utilities/plugins/calculators.php:392 timeline.php:120
+#: admin_trees_config.php:575 modules_v4/calendar_utilities/plugins/calculators.php:394 timeline.php:120
 msgid "years"
 msgstr "år"
 
@@ -3273,7 +3273,7 @@ msgid "Show Details"
 msgstr "Vis detaljer"
 
 #. I18N: gedcom tag AGE
-#: autocomplete.php:72 includes/functions/functions_print.php:883 includes/functions/functions_print.php:921 library/WT/Controller/Timeline.php:223 library/WT/Controller/Timeline.php:225 library/WT/Gedcom/Tag.php:121 library/WT/Person.php:471 library/WT/Stats.php:1648 library/WT/Stats.php:2391 library/WT/Stats.php:2392 modules_v4/calendar_utilities/plugins/calculators.php:390 modules_v4/census_assistant/census_asst_ctrl.php:37 modules_v4/report_ukregister/module.php:254 timeline.php:353
+#: autocomplete.php:72 includes/functions/functions_print.php:883 includes/functions/functions_print.php:921 library/WT/Controller/Timeline.php:223 library/WT/Controller/Timeline.php:225 library/WT/Gedcom/Tag.php:121 library/WT/Person.php:471 library/WT/Stats.php:1648 library/WT/Stats.php:2391 library/WT/Stats.php:2392 modules_v4/calendar_utilities/plugins/calculators.php:392 modules_v4/census_assistant/census_asst_ctrl.php:37 modules_v4/report_ukregister/module.php:254 timeline.php:353
 msgid "Age"
 msgstr "Alder"
 
@@ -3327,7 +3327,7 @@ msgstr "Sosa"
 msgid "Anniversary calendar"
 msgstr "Årsdagskalender"
 
-#: calendar.php:183 calendar.php:346 modules_v4/calendar_utilities/plugins/calculators.php:92 modules_v4/calendar_utilities/plugins/old_new.php:95 modules_v4/calendar_utilities/plugins/old_new.php:129 modules_v4/census_assistant/census_2_source_input.php:1022 search.php:177
+#: calendar.php:183 calendar.php:346 modules_v4/calendar_utilities/plugins/calculators.php:94 modules_v4/calendar_utilities/plugins/old_new.php:95 modules_v4/calendar_utilities/plugins/old_new.php:129 modules_v4/census_assistant/census_2_source_input.php:1022 search.php:177
 msgid "Year"
 msgstr "År"
 
@@ -3606,7 +3606,6 @@ msgstr "Vis børn i anden rækkefølge"
 msgid "Either click the \"sort by date\" button or click a row then drag-and-drop to re-order."
 msgstr "Klik enten på \"sorter efter dato\" knappen eller klik på en række til at gensortere"
 
-#. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
 #. I18N: An option in a list-box
@@ -7944,7 +7943,7 @@ msgid "Add new"
 msgstr "Tilføj"
 
 #. I18N: gedcom tag CHIL
-#: includes/functions/functions_date.php:32 library/WT/Gedcom/Tag.php:164 modules_v4/calendar_utilities/plugins/calculators.php:196
+#: includes/functions/functions_date.php:32 library/WT/Gedcom/Tag.php:164 modules_v4/calendar_utilities/plugins/calculators.php:198
 msgid "Child"
 msgstr "Barn"
 
@@ -8248,7 +8247,7 @@ msgstr "Timeglas-diagram"
 msgid "Interactive tree"
 msgstr "Interaktivt træ"
 
-#: includes/functions/functions_print.php:110 modules_v4/report_individual/module.php:303 modules_v4/report_related_fam/module.php:383
+#: includes/functions/functions_print.php:110 modules_v4/report_individual/module.php:303 modules_v4/report_related_fam/module.php:388
 msgid "Family with spouse"
 msgstr "Familie med ægtefælle"
 
@@ -8665,11 +8664,11 @@ msgstr "%1$s er %2$s til %3$s"
 msgid "Common ancestor: "
 msgstr "Fælles forfader:"
 
-#: includes/functions/functions_resource.php:475 modules_v4/report_family/module.php:303 modules_v4/report_individual/module.php:308 modules_v4/report_related_fam/module.php:388 modules_v4/report_vital_records/module.php:309
+#: includes/functions/functions_resource.php:475 modules_v4/report_family/module.php:303 modules_v4/report_individual/module.php:308 modules_v4/report_related_fam/module.php:393 modules_v4/report_vital_records/module.php:309
 msgid "Spouse"
 msgstr "Ægtefælle"
 
-#: includes/functions/functions_resource.php:475 modules_v4/report_family/module.php:303 modules_v4/report_individual/module.php:308 modules_v4/report_related_fam/module.php:388
+#: includes/functions/functions_resource.php:475 modules_v4/report_family/module.php:303 modules_v4/report_individual/module.php:308 modules_v4/report_related_fam/module.php:393
 msgid "Partner"
 msgstr "Partner"
 
@@ -8741,11 +8740,11 @@ msgstr "Denne person er blevet redigeret. Du bør kontrollere ændringen og dere
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
 msgstr "Denne person er blevet redigeret. Ændringen skal først kontrolleres af en moderator/administrator."
 
-#: individual.php:83 modules_v4/report_individual/module.php:357 modules_v4/report_related_fam/module.php:423
+#: individual.php:83 modules_v4/report_individual/module.php:357 modules_v4/report_related_fam/module.php:428
 msgid "The details of this individual are private."
 msgstr "Denne persons oplysninger er private."
 
-#: individual.php:88 library/WT/Controller/Chart.php:48 modules_v4/fancy_treeview_ancestors/module.php:189 modules_v4/fancy_treeview_ancestors/module.php:246 modules_v4/fancy_treeview_descendants/module.php:198 modules_v4/fancy_treeview_descendants/module.php:258 modules_v4/report_individual/module.php:361 modules_v4/report_related_fam/module.php:427
+#: individual.php:88 library/WT/Controller/Chart.php:48 modules_v4/fancy_treeview_ancestors/module.php:189 modules_v4/fancy_treeview_ancestors/module.php:246 modules_v4/fancy_treeview_descendants/module.php:198 modules_v4/fancy_treeview_descendants/module.php:258 modules_v4/report_individual/module.php:361 modules_v4/report_related_fam/module.php:432
 msgid "This individual does not exist or you do not have permission to view it."
 msgstr "Dette individ eksisterer ikke, eller også har du ikke rettigheder til at se det."
 
@@ -9212,8 +9211,8 @@ msgstr "15 gange"
 #. I18N: %s is a number
 #: library/WT/Controller/FancyTreeView.php:535
 #, php-format
-msgid "He married %s times"
-msgstr "Han var gift %s gange"
+msgid "He married %s"
+msgstr ""
 
 #. I18N: %s is an ordinal
 #: library/WT/Controller/FancyTreeView.php:537
@@ -9224,8 +9223,8 @@ msgstr "Den %s gang han giftede sig, var det med"
 #. I18N: %s is a number
 #: library/WT/Controller/FancyTreeView.php:541
 #, php-format
-msgid "She married %s times"
-msgstr "Hun var gift %s gange"
+msgid "She married %s"
+msgstr ""
 
 #. I18N: %s is an ordinal
 #: library/WT/Controller/FancyTreeView.php:543
@@ -9236,8 +9235,8 @@ msgstr "Den %s gang hun giftede sig, var det med"
 #. I18N: %s is a number
 #: library/WT/Controller/FancyTreeView.php:547
 #, php-format
-msgid "This individual married %s times"
-msgstr "Denne person var gift %s gange"
+msgid "This individual married %s"
+msgstr ""
 
 #. I18N: %s is an ordinal
 #: library/WT/Controller/FancyTreeView.php:549
@@ -9448,11 +9447,11 @@ msgctxt "age in years"
 msgid "at the age of %s"
 msgstr "i alderen af %s år"
 
-#: library/WT/Controller/FancyTreeView.php:931 modules_v4/report_family/module.php:318 modules_v4/report_individual/module.php:256 modules_v4/report_related_fam/module.php:336 modules_v4/report_related_indi/module.php:234 modules_v4/report_vital_records/module.php:256 search.php:444
+#: library/WT/Controller/FancyTreeView.php:931 modules_v4/report_family/module.php:318 modules_v4/report_individual/module.php:256 modules_v4/report_related_fam/module.php:341 modules_v4/report_related_indi/module.php:234 modules_v4/report_vital_records/module.php:256 search.php:444
 msgid "Father"
 msgstr "Far"
 
-#: library/WT/Controller/FancyTreeView.php:934 modules_v4/report_family/module.php:324 modules_v4/report_individual/module.php:267 modules_v4/report_related_fam/module.php:347 modules_v4/report_related_indi/module.php:235 modules_v4/report_vital_records/module.php:261 search.php:481
+#: library/WT/Controller/FancyTreeView.php:934 modules_v4/report_family/module.php:324 modules_v4/report_individual/module.php:267 modules_v4/report_related_fam/module.php:352 modules_v4/report_related_indi/module.php:235 modules_v4/report_vital_records/module.php:261 search.php:481
 msgid "Mother"
 msgstr "Mor"
 
@@ -9514,7 +9513,7 @@ msgstr "%1$s (%2$s)"
 msgid "Edit gender"
 msgstr "Rediger køn"
 
-#: library/WT/Controller/Individual.php:781 modules_v4/charts/module.php:88 modules_v4/gedcom_news/module.php:85 modules_v4/gedcom_stats/module.php:80 modules_v4/html/module.php:96 modules_v4/random_media/module.php:142 modules_v4/recent_changes/module.php:70 modules_v4/review_changes/module.php:97 modules_v4/todays_events/module.php:69 modules_v4/todo/module.php:59 modules_v4/top10_givnnames/module.php:60 modules_v4/top10_pageviews/module.php:58 modules_v4/top10_surnames/module.php:81 modules_v4/upcoming_events/module.php:67 modules_v4/widget_givnnames/module.php:59 modules_v4/widget_html/module.php:98 modules_v4/widget_pageviews/module.php:56 modules_v4/widget_recent_changes/module.php:70 modules_v4/widget_review_changes/module.php:96 modules_v4/widget_stats/module.php:73 modules_v4/widget_surnames/module.php:80 modules_v4/widget_todays_events/module.php:62 modules_v4/widget_todo/module.php:59 modules_v4/widget_upcoming/module.php:69 modules_v4/widget_yahrzeit/module.php:62 modules_v4/yahrzeit/module.php:63
+#: library/WT/Controller/Individual.php:781 modules_v4/charts/module.php:88 modules_v4/gedcom_news/module.php:85 modules_v4/gedcom_stats/module.php:80 modules_v4/html/module.php:96 modules_v4/random_media/module.php:142 modules_v4/recent_changes/module.php:70 modules_v4/review_changes/module.php:97 modules_v4/todays_events/module.php:69 modules_v4/todo/module.php:59 modules_v4/top10_givnnames/module.php:60 modules_v4/top10_pageviews/module.php:58 modules_v4/top10_surnames/module.php:81 modules_v4/upcoming_events/module.php:67 modules_v4/widget_givnnames/module.php:59 modules_v4/widget_html/module.php:100 modules_v4/widget_pageviews/module.php:56 modules_v4/widget_recent_changes/module.php:70 modules_v4/widget_review_changes/module.php:96 modules_v4/widget_stats/module.php:73 modules_v4/widget_surnames/module.php:80 modules_v4/widget_todays_events/module.php:62 modules_v4/widget_todo/module.php:59 modules_v4/widget_upcoming/module.php:69 modules_v4/widget_yahrzeit/module.php:62 modules_v4/yahrzeit/module.php:63
 msgid "Configure"
 msgstr "Konfigurér rammen"
 
@@ -13537,7 +13536,7 @@ msgid "Text"
 msgstr "Tekst"
 
 #. I18N: gedcom tag TIME
-#: library/WT/Gedcom/Tag.php:339 modules_v4/calendar_utilities/plugins/calculators.php:103
+#: library/WT/Gedcom/Tag.php:339 modules_v4/calendar_utilities/plugins/calculators.php:105
 msgid "Time"
 msgstr "Klokkeslæt"
 
@@ -17048,7 +17047,6 @@ msgid "Update missing links"
 msgstr "Opdater manglende links"
 
 #: modules_v4/batch_update/plugins/update_links.php:35
-#| msgid "lly the table of links between needs to be synchronised with the COM a. s tools checks for missing links and inserts them into  table."
 msgid "Occasionally the table of links between records needs to be synchronised with the GEDCOM data. This tools checks for missing links and inserts them into the table."
 msgstr "Indimellem skal links mellem tabelposter og GEDCOM data synkroniseres. Dette værktøj søger efter manglende links og lægger dem i tabellen."
 
@@ -17067,135 +17065,135 @@ msgid "Select the utilities you want to display"
 msgstr "Udvælg de værktøjer du ønsker at få vist "
 
 #. I18N: Name of a plugin.
-#: modules_v4/calendar_utilities/plugins/calculators.php:23
+#: modules_v4/calendar_utilities/plugins/calculators.php:25
 msgid "Calculators"
 msgstr "Beregninger "
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:67
+#: modules_v4/calendar_utilities/plugins/calculators.php:69
 msgid "Day of the Week Calculator"
 msgstr "Ugentlig beregning "
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:97
+#: modules_v4/calendar_utilities/plugins/calculators.php:99
 msgid "Get Date"
 msgstr "Få dato"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:101
+#: modules_v4/calendar_utilities/plugins/calculators.php:103
 msgid "Day of the week"
 msgstr "Dag i ugen "
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:123
+#: modules_v4/calendar_utilities/plugins/calculators.php:125
 msgid "Past"
 msgstr "Forrige "
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:123
+#: modules_v4/calendar_utilities/plugins/calculators.php:125
 msgid "Future"
 msgstr "Fremtidige "
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:142
+#: modules_v4/calendar_utilities/plugins/calculators.php:144
 msgid "That date is invalid"
 msgstr "Forkert dato format"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:157
+#: modules_v4/calendar_utilities/plugins/calculators.php:159
 msgid "Relationship Calculator"
 msgstr "Relationsberegning "
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:163
+#: modules_v4/calendar_utilities/plugins/calculators.php:165
 msgid "Given a common blood ancestor, <strong>X</strong>"
 msgstr "Angivelig en fælles forfader, <strong>X</strong>"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:166
+#: modules_v4/calendar_utilities/plugins/calculators.php:168
 msgid "The first relationship to <strong>X</strong> is"
 msgstr "Den første relation til <strong>X</strong> er"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:174
+#: modules_v4/calendar_utilities/plugins/calculators.php:176
 msgid "The relationship of <strong>D</strong> to <strong>X</strong> is"
 msgstr "Relationen af <strong>D</strong> til <strong>X</strong> er"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:197
+#: modules_v4/calendar_utilities/plugins/calculators.php:199
 msgid "Grandchild"
 msgstr "Barnebarn"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:198
+#: modules_v4/calendar_utilities/plugins/calculators.php:200
 msgid "Great grandchild"
 msgstr "Oldebarn"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:246 modules_v4/calendar_utilities/plugins/calculators.php:256
+#: modules_v4/calendar_utilities/plugins/calculators.php:248 modules_v4/calendar_utilities/plugins/calculators.php:258
 msgid "You and D are siblings"
 msgstr "Du og D er søskende"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:260 modules_v4/calendar_utilities/plugins/calculators.php:318 modules_v4/calendar_utilities/plugins/calculators.php:327
+#: modules_v4/calendar_utilities/plugins/calculators.php:262 modules_v4/calendar_utilities/plugins/calculators.php:320 modules_v4/calendar_utilities/plugins/calculators.php:329
 msgid "You and D are "
 msgstr "Du og D er"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:261
+#: modules_v4/calendar_utilities/plugins/calculators.php:263
 msgid " Cousins"
 msgstr "Fætre & kusiner"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:269 modules_v4/calendar_utilities/plugins/calculators.php:288
+#: modules_v4/calendar_utilities/plugins/calculators.php:271 modules_v4/calendar_utilities/plugins/calculators.php:290
 msgid "Grand"
 msgstr "Bedste-"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:273 modules_v4/calendar_utilities/plugins/calculators.php:292
+#: modules_v4/calendar_utilities/plugins/calculators.php:275 modules_v4/calendar_utilities/plugins/calculators.php:294
 msgid "Great Grand"
 msgstr "Olde-"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:277 modules_v4/calendar_utilities/plugins/calculators.php:296
+#: modules_v4/calendar_utilities/plugins/calculators.php:279 modules_v4/calendar_utilities/plugins/calculators.php:298
 msgid " Great Grand"
 msgstr "Olde-"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:280
+#: modules_v4/calendar_utilities/plugins/calculators.php:282
 msgid "D is your "
 msgstr "D er din"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:280
+#: modules_v4/calendar_utilities/plugins/calculators.php:282
 msgid " niece/nephew"
 msgstr "niece/nevø"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:299
+#: modules_v4/calendar_utilities/plugins/calculators.php:301
 msgid "You are the "
 msgstr "Du er den "
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:299
+#: modules_v4/calendar_utilities/plugins/calculators.php:301
 msgid " niece/nephew of D"
 msgstr "niece/nevø til D"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:319
+#: modules_v4/calendar_utilities/plugins/calculators.php:321
 msgid " cousins "
 msgstr "fætre/kusiner"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:322
+#: modules_v4/calendar_utilities/plugins/calculators.php:324
 msgid " time removed"
 msgstr "tid flyttet"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:324
+#: modules_v4/calendar_utilities/plugins/calculators.php:326
 msgid " times removed"
 msgstr "tider flyttet"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:328
+#: modules_v4/calendar_utilities/plugins/calculators.php:330
 msgid " cousins"
 msgstr "fætre/kusiner"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:383
+#: modules_v4/calendar_utilities/plugins/calculators.php:385
 msgid "Birth Date Calculator"
 msgstr "Fødselsdagsberegner"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:386
+#: modules_v4/calendar_utilities/plugins/calculators.php:388
 msgid "Event Date"
 msgstr "Begivenhedsdato"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:394
+#: modules_v4/calendar_utilities/plugins/calculators.php:396
 msgid "months"
 msgstr "måneder"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:396
+#: modules_v4/calendar_utilities/plugins/calculators.php:398
 msgid "days"
 msgstr "dage"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:399
+#: modules_v4/calendar_utilities/plugins/calculators.php:401
 msgid "Estimated date of birth"
 msgstr "Anslået fødselsdato"
 
-#: modules_v4/calendar_utilities/plugins/calculators.php:455
+#: modules_v4/calendar_utilities/plugins/calculators.php:457
 msgid "Please enter a valid date."
 msgstr "Indtast en gyldig dato"
 
@@ -20956,7 +20954,7 @@ msgstr "Spørgsmål"
 msgid "Answer"
 msgstr "Besvar"
 
-#: modules_v4/faq/module.php:204 modules_v4/html/module.php:319 modules_v4/stories/module.php:369 modules_v4/widget_html/module.php:204
+#: modules_v4/faq/module.php:204 modules_v4/html/module.php:319 modules_v4/stories/module.php:369 modules_v4/widget_html/module.php:206
 msgid "Show this block for which languages?"
 msgstr "Vis denne ramme for hvilke sprog?"
 
@@ -21770,7 +21768,7 @@ msgstr "Begivenheder"
 msgid "Use this value"
 msgstr "Brug denne værdi"
 
-#: modules_v4/html/help_text.php:31 modules_v4/html/module.php:302 modules_v4/pages/module.php:233 modules_v4/widget_html/help_text.php:31 modules_v4/widget_html/module.php:189
+#: modules_v4/html/help_text.php:31 modules_v4/html/module.php:302 modules_v4/pages/module.php:233 modules_v4/widget_html/help_text.php:31 modules_v4/widget_html/module.php:191
 msgid "Content"
 msgstr "Indhold"
 
@@ -21813,15 +21811,15 @@ msgstr "Dette familietræ (GEDCOM) var senest opdateret den #gedcomUpdated#. Der
 msgid "Custom"
 msgstr "Brugertilpasset"
 
-#: modules_v4/html/module.php:291 modules_v4/widget_html/module.php:172
+#: modules_v4/html/module.php:291 modules_v4/widget_html/module.php:174
 msgid "Current"
 msgstr "Nuværende"
 
-#: modules_v4/html/module.php:292 modules_v4/widget_html/module.php:173
+#: modules_v4/html/module.php:292 modules_v4/widget_html/module.php:175
 msgid "Default"
 msgstr "Standard"
 
-#: modules_v4/html/module.php:311 modules_v4/widget_html/module.php:197
+#: modules_v4/html/module.php:311 modules_v4/widget_html/module.php:199
 msgid "Show the date and time of update"
 msgstr "Vis dato og tid for opdatering"
 
@@ -22100,7 +22098,7 @@ msgstr "Er du sikker på du vil slette?"
 
 #. I18N: Name of a module/tab on the individual page.
 #. I18N: Name of a module. Tasks that need further research.
-#: modules_v4/personal_facts/module.php:32 modules_v4/random_media/module.php:296 modules_v4/report_fact/module.php:33 modules_v4/report_individual/module.php:176 modules_v4/report_related_fam/module.php:284
+#: modules_v4/personal_facts/module.php:32 modules_v4/random_media/module.php:296 modules_v4/report_fact/module.php:33 modules_v4/report_individual/module.php:176 modules_v4/report_related_fam/module.php:289
 msgid "Facts and events"
 msgstr "Fakta & begivenheder"
 
@@ -22480,7 +22478,7 @@ msgstr "En rapport af den enkeltes oplysninger."
 msgid "Show media"
 msgstr "Vis medier"
 
-#: modules_v4/report_individual/module.php:303 modules_v4/report_related_fam/module.php:383
+#: modules_v4/report_individual/module.php:303 modules_v4/report_related_fam/module.php:388
 msgid "Family with partner"
 msgstr "Familie med partner"
 
@@ -22767,7 +22765,7 @@ msgstr "Udvælg de links du ønsker at bruge fra sidepanelet"
 msgid "Area"
 msgstr "Område"
 
-#: modules_v4/research_links/module.php:166 modules_v4/research_links/module.php:265 modules_v4/research_links/module.php:297 modules_v4/research_links/module.php:482 modules_v4/research_links/module.php:505
+#: modules_v4/research_links/module.php:166 modules_v4/research_links/module.php:265 modules_v4/research_links/module.php:297 modules_v4/research_links/module.php:482 modules_v4/research_links/module.php:511
 msgid "Pay to view"
 msgstr "Betalingsside"
 
@@ -22808,19 +22806,19 @@ msgstr "Udvælg undersøgelses områder"
 msgid "Show links"
 msgstr "Vis links"
 
-#: modules_v4/research_links/module.php:543 modules_v4/research_links/module.php:567
+#: modules_v4/research_links/module.php:549 modules_v4/research_links/module.php:573
 msgid "International"
 msgstr "International"
 
-#: modules_v4/research_links/module.php:574
+#: modules_v4/research_links/module.php:580
 msgid "&#36;"
 msgstr "&#36;"
 
-#: modules_v4/research_links/module.php:649
+#: modules_v4/research_links/module.php:655
 msgid "You must enter details of a person to search for."
 msgstr "Vælg detaljer eller en person der søges efter."
 
-#: modules_v4/research_links/module.php:653
+#: modules_v4/research_links/module.php:659
 msgid "You must select at least one research area to use."
 msgstr "Der skal udvælges mindst et undersøgelsesområde."
 
@@ -23136,6 +23134,10 @@ msgstr "Vis og administrer en brugers favoritsider."
 #, php-format
 msgid "“%s” has been added to your favorites."
 msgstr "\"%s\" er blevet tilføjet til dine favoritter."
+
+#: modules_v4/widget_html/module.php:78
+msgid "Default HTML block title"
+msgstr ""
 
 #. I18N: Description of the “Messages” module
 #: modules_v4/widget_messages/module.php:37
@@ -23649,7 +23651,7 @@ msgstr "Der opstod en uforudset databasefejl."
 
 #: setup.php:956
 msgid "The Kiwitrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
-msgstr "Udviklerne af webtrees vil meget gerne høre om denne fejl. Hvis du kontakter dem, kan de evt. hjælpe dig med at løse fejlen."
+msgstr "Udviklerne af kiwitrees vil meget gerne høre om denne fejl. Hvis du kontakter dem, kan de evt. hjælpe dig med at løse fejlen."
 
 #: site-maintenance.php:52
 msgid "Maintenance"
@@ -24351,6 +24353,15 @@ msgstr "Vis en aldersmarkør?"
 #: timeline.php:293
 msgid "Show lifespans"
 msgstr "Vis livscyklus"
+
+#~ msgid "He married %s times"
+#~ msgstr "He married %s times"
+
+#~ msgid "She married %s times"
+#~ msgstr "She married %s times"
+
+#~ msgid "This individual married %s times"
+#~ msgstr "This individual married %s times"
 
 #~ msgid "An alternative to the “media” tab, and an enhanced image viewer."
 #~ msgstr "An alternative to the “media” tab, and an enhanced image viewer."
