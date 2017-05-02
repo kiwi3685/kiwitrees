@@ -953,7 +953,7 @@ try {
 	echo
 		'<p class="bad">', WT_I18N::translate('An unexpected database error occurred.'), '</p>',
 		'<pre>', $ex->getMessage(), '</pre>',
-		'<p class="info">', WT_I18N::translate('The Kiwitrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
+		'<p class="info">', WT_I18N::translate('The kiwitrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
 echo '</form>';
 echo '</body>';
