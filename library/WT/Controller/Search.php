@@ -430,10 +430,11 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$_REQUEST["$str"] = "yes";
 
 		// Then see if an ID is typed in. If so, we might want to jump there.
-		if (isset ($this->query)) {
+		if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
 			$record = WT_GedcomRecord::getInstance($this->query);
 			if ($record && $record->canDisplayDetails()) {
-				header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.$record->getRawUrl());
+				Zend_Session::writeClose();
+				header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH . $record->getRawUrl());
 				exit;
 			}
 		}
@@ -448,13 +449,13 @@ class WT_Controller_Search extends WT_Controller_Page {
 		$query=$this->query;
 		// Words in double quotes stay together
 		while (preg_match('/"([^"]+)"/', $query, $match)) {
-			$query_terms[]=trim($match[1]);
-			$query = str_replace($match[0], '', $query);
+			$query_terms[]	= trim($match[1]);
+			$query			= str_replace($match[0], '', $query);
 		}
 		// Other words get treated separately
 		while (preg_match('/[\S]+/', $query, $match)) {
-			$query_terms[]=trim($match[0]);
-			$query = str_replace($match[0], '', $query);
+			$query_terms[]	= trim($match[0]);
+			$query			= str_replace($match[0], '', $query);
 		}
 
 		//-- perform the search
