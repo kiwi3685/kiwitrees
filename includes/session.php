@@ -28,7 +28,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_KIWITREES',		'Kiwitrees');
-define('WT_VERSION',		'3.3.0');
+define('WT_VERSION',		'3.3.1');
 define('WT_VERSION_TEXT',	trim(WT_VERSION));
 
 // External URLs
@@ -80,7 +80,7 @@ define('WT_DEBUG_SQL',  false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 33);
+define('WT_SCHEMA_VERSION', 34);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -92,7 +92,7 @@ define('WT_REGEX_ALPHA',    '[a-zA-Z]+');
 define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
 define('WT_REGEX_BYTES',    '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
-define('WT_REGEX_PASSWORD', '.{'.WT_MINIMUM_PASSWORD_LENGTH.',}');
+define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 define('WT_REGEX_NOSCRIPT', '[^<>"&%{};]*');
 define('WT_REGEX_URL',      '[\/0-9A-Za-z_!~*\'().;?:@&=+$,%#-]+'); // Simple list of valid chars
 define('WT_REGEX_EMAIL',    '[^\s<>"&%{};@]+@[^\s<>"&%{};@]+');
@@ -135,7 +135,7 @@ define('WT_PRIV_HIDE',   -1); // Hide the item to all users
 define ('WT_ROOT', realpath(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR);
 
 // Keep track of time statistics, for the summary in the footer
-$start_time = microtime(true);
+$start_time		= microtime(true);
 $PRIVACY_CHECKS = 0;
 
 // We want to know about all PHP errors
@@ -203,7 +203,7 @@ if (!empty($_SERVER['SCRIPT_NAME'])) {
 if (!isset($_SERVER['REQUEST_URI']))  {
 	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
 	if (isset($_SERVER['QUERY_STRING'])) {
-		$_SERVER['REQUEST_URI'].='?'.$_SERVER['QUERY_STRING'];
+		$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
 	}
 }
 
@@ -276,8 +276,8 @@ define('WT_DATA_DIR', realpath(WT_Site::preference('INDEX_DIRECTORY') ? WT_Site:
 
 // If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
 $SERVER_URL = WT_Site::preference('SERVER_URL');
-if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
-	header('Location: '.$SERVER_URL.WT_SCRIPT_NAME.($QUERY_STRING ? '?'.$QUERY_STRING : ''), true, 301);
+if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME . WT_SCRIPT_PATH) {
+	header('Location: ' . $SERVER_URL.WT_SCRIPT_NAME . ($QUERY_STRING ? '?'.$QUERY_STRING : ''), true, 301);
 	exit;
 }
 
