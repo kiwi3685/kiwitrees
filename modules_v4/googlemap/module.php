@@ -506,6 +506,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		foreach ($flags as $flag) {
 			if (array_key_exists($flag, $countries)) {
 				$flag_list[$flag] = $countries[$flag];
+			} else {
+				$flag_list[$flag] = $flag;
 			}
 		}
 		uasort($flag_list, "utf8_strcasecmp");
@@ -558,7 +560,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$countryList = array();
 		$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/');
 		for ($i = 0; $i < count($country); $i++) {
-			if (count(preg_grep('/'.$country[$i].'/', $placesDir)) != 0) {
+			if (count(preg_grep('/' . $country[$i] . '/', $placesDir)) != 0) {
 				$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$country[$i].'/');
 				while ($file = readdir($rep)) {
 					if (stristr($file, 'flags')) {
@@ -573,6 +575,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 		}
 		asort($countryList);
+
 		$stateList = array();
 		if ($countrySelected != 'Countries') {
 			$placesDir = scandir(WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/');
@@ -625,7 +628,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					} ?>
 					<div class="clearfloat"></div>
 					<?php
-					foreach ($flag_list as $iso=>$name) {
+					foreach ($flag_list as $iso => $name) {
 						if ($countrySelected == 'Countries') {
 							echo '<div class="flags_item">
 								<span>
@@ -670,7 +673,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								<div class="flags_item">
 									<span>
 										<input type="radio" dir="ltr" name="FLAGS" value="', $i, '">
-										<img src="', WT_STATIC_URL.WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flags_s[$i], '.png">
+										<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/places/' . $countrySelected . '/flags/' . $stateSelected . '/' . $flags_s[$i], '.png">
 									</span>
 									<label>', $flags_s[$i], '</label>
 								</div>
