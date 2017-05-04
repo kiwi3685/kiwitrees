@@ -1704,7 +1704,7 @@ function format_media_table($datalist) {
 // Print a table of surnames, for the top surnames block, the indi/fam lists, etc.
 // $surnames - array (of SURN, of array of SPFX_SURN, of array of PID)
 // $type     - "indilist.php" (counts of individuals) or "famlist.php" (counts of spouses)
-function format_surname_table($surnames, $script) {
+function format_surname_table($surnames, $script = '') {
 	global $controller;
 	$html = '';
 	$controller
@@ -1718,7 +1718,7 @@ function format_surname_table($surnames, $script) {
 			jQueryUI: true,
 			autoWidth:false,
 			paging: false,
-			sorting: [[1, "asc"]],
+			sorting: [[' . ($script ? '1, "asc"' : '2, "desc"') . ']],
 			columns: [
 				/*  0 name  */ { dataSort:1 },
 				/*  1 NAME  */ { visible:false },
@@ -1728,60 +1728,63 @@ function format_surname_table($surnames, $script) {
 			});
 		');
 
-	if ($script=='famlist.php') {
-		$col_heading=WT_I18N::translate('Spouses');
+	if ($script == 'famlist.php') {
+		$col_heading = WT_I18N::translate('Spouses');
 	} else {
-		$col_heading=WT_I18N::translate('Individuals');
+		$col_heading = WT_I18N::translate('Individuals');
 	}
 
-	$html .= '<table class="surname-list">'.
-		'<thead><tr>'.
-		'<th>'.WT_Gedcom_Tag::getLabel('SURN').'</th>'.
-		'<th>&nbsp;</th>'.
-		'<th>'.$col_heading.'</th>'.
-		'<th>&nbsp;</th>'.
-		'</tr></thead>';
-
-	$html .= '<tbody>';
-	foreach ($surnames as $surn=>$surns) {
-		// Each surname links back to the indi/fam surname list
-		if ($surn) {
-			$url=$script.'?surname='.rawurlencode($surn).'&amp;ged='.WT_GEDURL;
-		} else {
-			$url=$script.'?alpha=,&amp;ged='.WT_GEDURL;
-		}
-		// Row counter
-		$html.='<tr>';
-		// Surname
-		$html.='<td>';
-		// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
-		foreach ($surns as $spfxsurn=>$indis) {
-			if ($spfxsurn) {
-				$html.='<a href="'.$url.'" dir="auto">'.htmlspecialchars($spfxsurn).'</a><br>';
-			} else {
-				// No surname, but a value from "2 SURN"?  A common workaround for toponyms, etc.
-				$html.='<a href="'.$url.'" dir="auto">'.htmlspecialchars($surn).'</a><br>';
-			}
-		}
-		$html.='</td>';
-		// Sort column for name
-		$html.='<td>'.$surn.'</td>';
-		// Surname count
-		$html.='<td>';
-		$subtotal=0;
-		foreach ($surns as $spfxsurn=>$indis) {
-			$subtotal+=count($indis);
-			$html.=WT_I18N::number(count($indis)).'<br>';
-		}
-		// More than one surname variant? Show a subtotal
-		if (count($surns)>1) {
-			$html.=WT_I18N::number($subtotal);
-		}
-		$html.='</td>';
-		// add hidden numeric sort column
-		$html.='<td>'. $subtotal. '</td></tr>';
-	}
-	$html .= '</tbody></table>';
+	$html .= '
+		<table class="surname-list">
+			<thead>
+				<tr>
+					<th>' . WT_Gedcom_Tag::getLabel('SURN') . '</th>
+					<th>&nbsp;</th>
+					<th>' . $col_heading . '</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>';
+				foreach ($surnames as $surn=>$surns) {
+					// Each surname links back to the indi/fam surname list
+					if ($surn) {
+						$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' .WT_GEDURL;
+					} else {
+						$url = $script . '?alpha=,&amp;ged=' . WT_GEDURL;
+					}
+					$html .= '<tr>
+						<td>';
+							// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
+							foreach ($surns as $spfxsurn=>$indis) {
+								if ($spfxsurn) {
+									$html .= '<a href="' . $url . '" dir="auto">' . htmlspecialchars($spfxsurn) . '</a><br>';
+								} else {
+									// No surname, but a value from "2 SURN"?  A common workaround for toponyms, etc.
+									$html .= '<a href="' . $url . '" dir="auto">' . htmlspecialchars($surn) . '</a><br>';
+								}
+							}
+						$html .= '</td>';
+						// Sort column for name
+						$html .= '<td>' . $surn . '</td>';
+						// Surname count
+						$html .= '<td>';
+							$subtotal = 0;
+							foreach ($surns as $spfxsurn => $indis) {
+								$subtotal += count($indis);
+								$html .= WT_I18N::number(count($indis)) . '<br>';
+							}
+							// More than one surname variant? Show a subtotal
+							if (count($surns) > 1) {
+								$html .= WT_I18N::number($subtotal);
+							}
+						$html .= '</td>';
+						// add hidden numeric sort column
+						$html .= '<td>' . $subtotal . '</td>
+					</tr>';
+				}
+			$html .= '</tbody>
+		</table>
+	';
 
 	return $html;
 }
