@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,27 +38,27 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $SURNAME_LIST_STYLE;
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-		$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
-		$COMMON_NAMES_THRESHOLD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
+		$COMMON_NAMES_REMOVE	= get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
+		$COMMON_NAMES_THRESHOLD = get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
 
-		$num=get_block_setting($block_id, 'num', 10);
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
-		$block=get_block_setting($block_id, 'block', false);
+		$num		= get_block_setting($block_id, 'num', 10);
+		$infoStyle	= get_block_setting($block_id, 'infoStyle', 'table');
+		$block		= get_block_setting($block_id, 'block', false);
 		if ($cfg) {
 			foreach (array('num', 'infoStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames=get_top_surnames(WT_GED_ID, $COMMON_NAMES_THRESHOLD, $num);
+		$top_surnames = get_top_surnames(WT_GED_ID, $COMMON_NAMES_THRESHOLD, $num);
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
@@ -68,54 +68,54 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		$all_surnames=array();
-		$i=0;
+		$all_surnames = array();
+		$i = 0;
 		foreach (array_keys($top_surnames) as $top_surname) {
-			$all_surnames=array_merge($all_surnames, WT_Query_Name::surnames($top_surname, '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames($top_surname, '', false, false, WT_GED_ID));
 			if (++$i == $num) break;
 		}
-		if ($i < $num) $num=$i;
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		if ($i < $num) $num = $i;
+		$id		= $this->getName() . $block_id;
+		$class	= $this->getName() . '_block';
+		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype == 'user' && WT_USER_ID) {
+			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
 
-		if ($num==1) {
+		if ($num == 1) {
 			// I18N: i.e. most popular surname.
-			$title.=WT_I18N::translate('Top surname');
+			$title .= WT_I18N::translate('Top surname');
 		} else {
 			// I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
-			$title.=WT_I18N::plural('Top %s surname', 'Top %s surnames', $num, WT_I18N::number($num));
+			$title .= WT_I18N::plural('Top %s surname', 'Top %s surnames', $num, WT_I18N::number($num));
 		}
 
 		switch ($infoStyle) {
 		case 'tagcloud':
 			uksort($all_surnames,'utf8_strcasecmp');
-			$content=format_surname_tagcloud($all_surnames, 'indilist.php', true);
+			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':
 			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_list($all_surnames, '1', true, 'indilist.php');
+			$content = format_surname_list($all_surnames, '1', true, 'indilist.php');
 			break;
 		case 'array':
 			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_list($all_surnames, '2', true, 'indilist.php');
+			$content = format_surname_list($all_surnames, '2', true, 'indilist.php');
 			break;
 		case 'table':
 		default:
 			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_table($all_surnames, 'indilist.php');
+			$content = format_surname_table($all_surnames);
 			break;
 		}
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
+				require WT_THEME_DIR . 'templates/block_small_temp.php';
 			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				require WT_THEME_DIR . 'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;
@@ -146,38 +146,49 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			exit;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$num=get_block_setting($block_id, 'num', 10);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Number of items to show');
-		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
-
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Presentation style');
-		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('bullet list'), 'array'=>WT_I18N::translate('compact list'), 'table'=>WT_I18N::translate('table'), 'tagcloud'=>WT_I18N::translate('tag cloud')), null, $infoStyle, '');
-		echo '</td></tr>';
-
-		$block=get_block_setting($block_id, 'block', false);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
-		echo '</td></tr>';
+		echo '
+			<tr>
+				<td class="descriptionbox wrap width33">' . WT_I18N::translate('Number of items to show') . '</td>
+				<td class="optionbox">
+					<input type="text" name="num" size="2" value="' . get_block_setting($block_id, 'num', 10) . '">
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width33">' . WT_I18N::translate('Presentation style') . '</td>
+				<td class="optionbox">' .
+					select_edit_control(
+						'infoStyle',
+						array('list' => WT_I18N::translate('bullet list'),
+						'array' => WT_I18N::translate('compact list'),
+						'table' => WT_I18N::translate('table'),
+						'tagcloud' => WT_I18N::translate('tag cloud')),
+						null,
+						get_block_setting($block_id, 'infoStyle', 'table'),
+						''
+					) . '
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width33">' .
+					/* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow') . '
+				</td>
+				<td class="optionbox">' .
+					edit_field_yes_no('block', get_block_setting($block_id, 'block', false)) . '
+				</td>
+			</tr>
+		';
 	}
 
 	public static function top_surname_sort($a, $b) {
-		$counta=0;
+		$counta = 0;
 		foreach ($a as $x) {
-			$counta+=count($x);
+			$counta += count($x);
 		}
-		$countb=0;
+		$countb = 0;
 		foreach ($b as $x) {
-			$countb+=count($x);
+			$countb += count($x);
 		}
 		return $countb - $counta;
 	}

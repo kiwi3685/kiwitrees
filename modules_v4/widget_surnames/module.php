@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -106,7 +106,7 @@ class widget_surnames_WT_Module extends WT_Module implements WT_Module_Widget {
 		case 'table':
 		default:
 			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content = format_surname_table($all_surnames, 'indilist.php');
+			$content = format_surname_table($all_surnames);
 			break;
 		}
 
@@ -142,19 +142,29 @@ class widget_surnames_WT_Module extends WT_Module implements WT_Module_Widget {
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$num = get_block_setting($widget_id, 'num', 10);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Number of items to show');
-		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="num" size="2" value="', $num, '">';
-		echo '</td></tr>';
-
-		$infoStyle = get_block_setting($widget_id, 'infoStyle', 'table');
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Presentation style');
-		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('bullet list'), 'array'=>WT_I18N::translate('compact list'), 'table'=>WT_I18N::translate('table'), 'tagcloud'=>WT_I18N::translate('tag cloud')), null, $infoStyle, '');
-		echo '</td></tr>';
+		echo '
+			<tr>
+				<td class="descriptionbox wrap width33">' . WT_I18N::translate('Number of items to show') . '</td>
+				<td class="optionbox">
+					<input type="text" name="num" size="2" value="' . get_block_setting($block_id, 'num', 10) . '">
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap width33">' . WT_I18N::translate('Presentation style') . '</td>
+				<td class="optionbox">' .
+					select_edit_control(
+						'infoStyle',
+						array('list' => WT_I18N::translate('bullet list'),
+						'array' => WT_I18N::translate('compact list'),
+						'table' => WT_I18N::translate('table'),
+						'tagcloud' => WT_I18N::translate('tag cloud')),
+						null,
+						get_block_setting($block_id, 'infoStyle', 'table'),
+						''
+					) . '
+				</td>
+			</tr>
+		';
 	}
 
 	public static function top_surname_sort($a, $b) {
