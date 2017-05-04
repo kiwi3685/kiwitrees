@@ -579,7 +579,7 @@ function query_age($tag_array, $age) {
 					 birth.d_file = indi.i_file AND
 					 birth.d_julianday1 <> 0 AND
 					 YEAR(NOW()) - birth.d_year > ?
-					GROUP BY xref
+					GROUP BY xref, birthyear
 					ORDER BY age DESC
 				";
 				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, $age))->fetchAll();
@@ -603,7 +603,7 @@ function query_age($tag_array, $age) {
 						birth.d_julianday1 <> 0 AND
 						married.d_julianday2 > birth.d_julianday1 AND
 						married.d_year - birth.d_year < ?
-					GROUP BY xref
+					GROUP BY xref, marryear, birth.d_year
 					ORDER BY age DESC
 				";
 				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, $age))->fetchAll();
@@ -611,7 +611,9 @@ function query_age($tag_array, $age) {
 			break;
 			case ('FAMS'):
 				$sql = "
-					SELECT fam.f_id AS xref, MIN(wifebirth.d_year-husbbirth.d_year) AS age
+					SELECT
+					 fam.f_id AS xref,
+					 MIN(wifebirth.d_year-husbbirth.d_year) AS age
 					 FROM `##families` AS fam
 					 LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = ?
 					 LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = ?
@@ -647,7 +649,7 @@ function query_age($tag_array, $age) {
 						 birth.d_julianday1 <> 0 AND
 						 tag.d_julianday1 > birth.d_julianday2 AND
 						 tag.d_year-birth.d_year > ?
-					 GROUP BY xref
+					 GROUP BY xref, birtyear, tag.d_year
 					 ORDER BY age DESC
 				";
 				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, $tag_array[$i], $age))->fetchAll();

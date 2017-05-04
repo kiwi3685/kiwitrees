@@ -344,35 +344,42 @@ class WT_Query_Name {
 	// $ged_id - only consider individuals from this gedcom
 	////////////////////////////////////////////////////////////////////////////////
 	public static function surnames($surn, $salpha, $marnm, $fams, $ged_id) {
-		$sql=
-			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id".
-			" FROM `##name` n1 ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" JOIN (SELECT n_surn, n_file FROM `##name`".
-			" WHERE n_file={$ged_id}".
-			($marnm ? "" : " AND n_type!='_MARNM'");
+		$sql =
+			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id" .
+			" FROM `##name` n1 " .
+			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
+			" JOIN (SELECT n_surn COLLATE :collate_0 AS n_surn, n_file FROM `##name`" .
+			" WHERE n_file = :tree_id" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
+
+		$args = array(
+			'tree_id'   => $ged_id,
+			'collate_0' => WT_I18N::$collation,
+		);
 
 		if ($surn) {
-			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."' =".WT_DB::quote($surn);
-		} elseif ($salpha==',') {
-			$sql.=" AND n_surn=''";
-		} elseif ($salpha=='@') {
-			$sql.=" AND n_surn='@N.N.'";
+			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
+			$args['collate_1'] = WT_I18N::$collation;
+			$args['surn']      = $surn;
+		} elseif ($salpha === ',') {
+			$sql .= " AND n_surn = ''";
+		} elseif ($salpha === '@') {
+			$sql .= " AND n_surn = '@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::_getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::_getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
-			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
+			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
-		$sql.=" GROUP BY n_surn COLLATE '".WT_I18N::$collation."', n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE '".WT_I18N::$collation."' AND n1.n_file=n2.n_file)";
-		if (!$marnm) {
-			$sql.=" AND n_type!='_MARNM'";
+		$sql .= " GROUP BY n_surn COLLATE :collate_2, n_file, n_surn) AS n2 ON (n1.n_surn = n2.n_surn COLLATE :collate_3 AND n1.n_file = n2.n_file)";
+		$args['collate_2'] = WT_I18N::$collation;
+		$args['collate_3'] = WT_I18N::$collation;
+
+		$list = array();
+		foreach (WT_DB::prepare($sql)->execute($args)->fetchAll() as $row) {
+			$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id] = true;
 		}
 
-		$list=array();
-		foreach (WT_DB::prepare($sql)->fetchAll() as $row) {
-			$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
-		}
 		return $list;
 	}
 
