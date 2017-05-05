@@ -1127,7 +1127,7 @@ div.scrollingArea{background-color:#fff;height:608px;overflow-x:auto;overflow-y:
 
 /* Place check */
 .gm_check {border:1px inset #d3d3d3; padding:5px;}
-.gm_check a, .gm_check_top a:hover, .gm_check_details a, .details:hover {color:#0000ff;}
+.gm_check a, .gm_check_top a:hover, .gm_check_details a {color:#0000ff;}
 .gm_check label {margin-left:20px; margin-right:0; white-space:nowrap;}
 [dir=rtl] .gm_check label {margin-right:20px;margin-left:0;}
 .gm_check input[type="checkbox"] {vertical-align:middle;}
