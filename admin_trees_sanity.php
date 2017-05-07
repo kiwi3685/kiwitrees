@@ -126,7 +126,6 @@ $controller
 					<?php echo WT_I18N::translate('Burial before death'); ?>
 				</li>
 			</ul>
-<!-- NEW -->
 			<ul>
 				<h3><?php echo WT_I18N::translate('Age related queries'); ?></h3>
 				<li class="facts_value" name="bap_late" id="bap_late">
@@ -161,20 +160,19 @@ $controller
 					<input type="checkbox" name="child_yng" value="child_yng"
 						<?php if (WT_Filter::post('child_yng')) echo ' checked="checked"'?>
 					>
-					<?php echo WT_I18N::translate('Having children before a certain age'); ?>
+					<?php echo WT_I18N::translate('Mothers having children before a certain age'); ?>
 					<input name="NEW_SANITY_CHILD_Y" id="child_y" type="text" value="<?php echo $child_y; ?>">
 				</li>
-<div style="opacity: 0.5;">COMING SOON !
 				<li class="facts_value" name="child_old" id="child_old">
 					<input type="checkbox" name="child_old" value="child_old"
 						<?php if (WT_Filter::post('child_old')) echo ' checked="checked"'?>
-					disabled>
+					>
 					<?php echo WT_I18N::translate('Mothers having children past a certain age'); ?>
-					<input name="NEW_SANITY_CHILD_O" id="child_o" type="text" value="<?php echo $child_o; ?>" disabled>
+					<input name="NEW_SANITY_CHILD_O" id="child_o" type="text" value="<?php echo $child_o; ?>">
 				</li>
+<div style="opacity: 0.5; display:none;">COMING SOON !
 </div>
 			</ul>
-<!-- END NEW -->
 			<ul>
 				<h3><?php echo WT_I18N::translate('Duplicated data'); ?></h3>
 				<li class="facts_value" name="dupe_birt" id="dupe_birt" >
@@ -312,6 +310,13 @@ $controller
 			if (WT_Filter::post('child_yng')) {
 				$data = query_age(array('CHIL_1'), $child_y);
 				echo '<h5>' . WT_I18N::translate('%1s women having children before age %2s years', $data['count'], $child_y) . '
+					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
+			if (WT_Filter::post('child_old')) {
+				$data = query_age(array('CHIL_2'), $child_o);
+				echo '<h5>' . WT_I18N::translate('%1s women having children after age %2s years', $data['count'], $child_o) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
@@ -665,6 +670,34 @@ function query_age($tag_array, $age) {
 				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, ($age * 365.25)))->fetchAll();
 				$result_tag	= $tag_array[$i];
 			break;
+			case ('CHIL_2'):
+				$sql = "
+					SELECT SQL_CACHE
+					 parentfamily.l_to AS xref,
+					 childfamily.l_to AS xref2,
+					 MIN(childbirth.d_julianday2)-MIN(birth.d_julianday1) AS age,
+					 MIN(birth.d_year) as dob
+					 FROM `##link` AS parentfamily
+					 JOIN `##link` AS childfamily ON childfamily.l_file = ?
+					 JOIN `##dates` AS birth ON birth.d_file = ?
+					 JOIN `##dates` AS childbirth ON childbirth.d_file = ?
+					 WHERE
+						birth.d_gid = parentfamily.l_to AND
+						childfamily.l_to = childbirth.d_gid AND
+						childfamily.l_type = 'CHIL' AND
+						parentfamily.l_type = 'WIFE' AND
+						childfamily.l_from = parentfamily.l_from AND
+						parentfamily.l_file = ? AND
+						birth.d_fact = 'BIRT' AND
+						childbirth.d_fact = 'BIRT' AND
+						birth.d_julianday1 <> 0 AND
+						childbirth.d_julianday2-birth.d_julianday1 > ?
+					GROUP BY xref, xref2
+					ORDER BY age ASC
+				";
+				$rows		= WT_DB::prepare($sql)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, ($age * 365.25)))->fetchAll();
+				$result_tag	= $tag_array[$i];
+			break;
 			default:
 				$sql = "
 					SELECT SQL_CACHE
@@ -728,6 +761,18 @@ function query_age($tag_array, $age) {
 						$result 	= WT_I18N::translate('gave birth before age %1s years to %2s in %3s', (int)($row->age / 365.25), $child, $row->dob);
 					}
 					break;
+					case 'CHIL_2';
+						$person = WT_Person::getInstance($row->xref);
+						$person2 = WT_Person::getInstance($row->xref2);
+						if ($person && $person2) {
+							$link_url	= $person->getHtmlUrl();
+							$link_url2	= $person2->getHtmlUrl();
+							$link_name	= $person->getFullName();
+							$link_name2	= $person2->getFullName();
+							$child		= '<a href="'. $link_url2. '" target="_blank" rel="noopener noreferrer">'. $link_name2 . '</a>';
+							$result 	= WT_I18N::translate('gave birth after age %1s years to %2s in %3s', (int)($row->age / 365.25), $child, $row->dob);
+						}
+						break;
 				case 'BAPM';
 					$person = WT_Person::getInstance($row->xref);
 					if ($person) {
