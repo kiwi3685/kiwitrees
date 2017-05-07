@@ -81,7 +81,7 @@ switch (WT_Filter::post('action')) {
 					setUserEmail    ($user_id, $email);
 					setUserName	($user_id, $username);
 					if ($pass1 !== null && $pass1 === $pass2) {
-						set_user_password($user_id, 'password');
+						set_user_password($user_id, $pass1);
 					}
 				}
 			}
