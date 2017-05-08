@@ -333,7 +333,7 @@ if (WT_USER_IS_ADMIN) {
 					<?php echo WT_I18N::translate('Default family tree'); ?>
 				</label>
 				<input type="hidden" name="action" value="setdefault">
-				<?php echo select_edit_control('default_ged' . WT_Tree::getNameList() . '' . WT_Site::preference('DEFAULT_GEDCOM') . 'onchange="document.defaultform.submit();"'); ?>
+				<?php echo select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'); ?>
 				<span class="help-text">
 					<?php echo WT_I18N::translate('This selects the family tree shown to visitors when they first arrive at the site.'); ?>
 				</span>
