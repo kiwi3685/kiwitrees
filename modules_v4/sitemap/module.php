@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -120,14 +120,14 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	// A separate file for each family tree and each record type.
 	// These files depend on access levels, so only cache for visitors.
 	private function generate_file($ged_id, $rec_type, $volume) {
+		$tree = WT_Tree::get($ged_id);
 		// Check the cache
-		$timestamp=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp');
+		$timestamp = get_module_setting($this->getName(), 'sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !WT_USER_ID) {
-			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
+			$data = get_module_setting($this->getName(), 'sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
-			$tree=WT_Tree::get($ged_id);
-			$data='<url><loc>'. WT_SERVER_NAME . WT_SCRIPT_PATH.'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url.'</loc></url>'.PHP_EOL;
-			$records=array();
+			$data = '<url><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url . '</loc></url>' . PHP_EOL;
+			$records = array();
 			switch ($rec_type) {
 			case 'i':
 				$rows=WT_DB::prepare(
@@ -135,85 +135,85 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 					" FROM `##individuals`".
 					" WHERE i_file=?".
 					" ORDER BY i_id".
-					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
+					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {
-					$records[]=WT_Person::getInstance($row);
+					$records[] = WT_Person::getInstance($row);
 				}
 				break;
 			case 's':
-				$rows=WT_DB::prepare(
+				$rows = WT_DB::prepare(
 					"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
 					" FROM `##sources`".
 					" WHERE s_file=?".
 					" ORDER BY s_id".
-					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
+					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {
-					$records[]=WT_Source::getInstance($row);
+					$records[] = WT_Source::getInstance($row);
 				}
 				break;
 			case 'r':
-				$rows=WT_DB::prepare(
+				$rows = WT_DB::prepare(
 					"SELECT 'REPO' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
 					" FROM `##other`".
 					" WHERE o_file=? AND o_type='REPO'".
 					" ORDER BY o_id".
-					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
+					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {
-					$records[]=WT_Repository::getInstance($row);
+					$records[] = WT_Repository::getInstance($row);
 				}
 				break;
 			case 'n':
-				$rows=WT_DB::prepare(
+				$rows = WT_DB::prepare(
 					"SELECT 'NOTE' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
 					" FROM `##other`".
 					" WHERE o_file=? AND o_type='NOTE'".
 					" ORDER BY o_id".
-					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
+					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {
-					$records[]=WT_Note::getInstance($row);
+					$records[] = WT_Note::getInstance($row);
 				}
 				break;
 			case 'm':
-				$rows=WT_DB::prepare(
+				$rows = WT_DB::prepare(
 					"SELECT 'OBJE' AS type, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_titl, m_filename".
 					" FROM `##media`".
 					" WHERE m_file=?".
 					" ORDER BY m_id".
-					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
+					" LIMIT " . self::RECORDS_PER_VOLUME . " OFFSET " . ($volume * self::RECORDS_PER_VOLUME)
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {
-					$records[]=WT_Media::getInstance($row);
+					$records[] = WT_Media::getInstance($row);
 				}
 				break;
 			}
 			foreach ($records as $record) {
 				if ($record->canDisplayName()) {
-					$data.='<url>';
-					$data.='<loc>'. WT_SERVER_NAME . WT_SCRIPT_PATH.$record->getHtmlUrl().'</loc>';
+					$data .= '<url>';
+					$data .= '<loc>'. WT_SERVER_NAME . WT_SCRIPT_PATH.$record->getHtmlUrl() . '</loc>';
 					$chan=$record->getChangeEvent();
 					if ($chan) {
-						$date=$chan->getDate();
+						$date = $chan->getDate();
 						if ($date->isOK()) {
-							$data.='<lastmod>'.$date->minDate()->Format('%Y-%m-%d').'</lastmod>';
+							$data .= '<lastmod>' . $date->minDate()->Format('%Y-%m-%d') . '</lastmod>';
 						}
 					}
-					$data.='</url>'.PHP_EOL;
+					$data .= '</url>' . PHP_EOL;
 				}
 			}
-			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'>'.PHP_EOL.'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">'.PHP_EOL.$data.'</urlset>'.PHP_EOL;
+			$data='<' . '?xml version="1.0" encoding="UTF-8" ?' . '>' . PHP_EOL . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . PHP_EOL . $data . '</urlset>' . PHP_EOL;
 			// Cache this data - but only for visitors, as we don’t want
 			// visitors to see data created by logged-in users.
 			if (!WT_USER_ID) {
-				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml', $data);
-				set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', WT_TIMESTAMP);
+				set_module_setting($this->getName(), 'sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml', $data);
+				set_module_setting($this->getName(), 'sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp', WT_TIMESTAMP);
 			}
 		 }
 		header('Content-Type: application/xml');
-		header('Content-Length: '.strlen($data));
+		header('Content-Length: ' . strlen($data));
 		echo $data;
 	}
 
