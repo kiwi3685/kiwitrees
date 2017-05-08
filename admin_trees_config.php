@@ -268,6 +268,8 @@ $controller
 			 var showOrHide = (jQuery(this).val() == 1) ? true : false;
 			 jQuery("#watermarks").toggle(showOrHide);
 		 })
+
+		 jQuery("#tabs").css("visibility", "visible");
 	');
 ?>
 
@@ -277,7 +279,7 @@ $controller
 		<?php echo WT_Filter::getCsrf(); ?>
 		<input type="hidden" name="action" value="update">
 		<input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>">
-		<div id="tabs">
+		<div id="tabs" style="visibility: hidden;">
 			<ul>
 				<li><a href="#file-options"><span><?php echo WT_I18N::translate('General'); ?></span></a></li>
 				<li><a href="#contact"><span><?php echo WT_I18N::translate('Contact information'); ?></span></a></li>
