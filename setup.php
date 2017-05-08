@@ -389,7 +389,7 @@ if (!$dbname_ok) {
 			<div class="label_set">
 				<label for "tblpfx">', WT_I18N::translate('Table prefix'), '</label>
 				<input type="text" id="tblpfx" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '">
-				<span>', WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "wt_" is suggested, but can be anything you want.'), '</span>
+				<span>', WT_I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. "kt_" is suggested, but can be anything you want.'), '</span>
 			</div>
 		</fieldset>
 		<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">
