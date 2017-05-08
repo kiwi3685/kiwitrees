@@ -57,7 +57,7 @@ if ($ALL_CAPS) $this->addInlineJavascript('all_caps();');
 $ctype = safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
 $show_widgetbar = false;
-if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple') {
+if (WT_USER_ID && WT_SCRIPT_NAME != 'index.php' && $view != 'simple' && WT_Module::getActiveWidgets()) {
 	$show_widgetbar = true;
 }
 
