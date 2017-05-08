@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -220,6 +220,22 @@ switch ($type) {
 			}
 		}
 		echo json_encode($data);
+	exit;
+
+	case 'SPFX': // Name prefixes, that start with the search term
+	case 'NPFX':
+	case 'NSFX':
+		// Do not filter by privacy.  Surnames on their own do not identify individuals.
+		echo json_encode(
+			WT_DB::prepare(
+				"SELECT SQL_CACHE DISTINCT SUBSTRING_INDEX(SUBSTRING_INDEX(i_gedcom, CONCAT('\n2 ', ?, ' '), -1), '\n', 1)".
+				" FROM `##individuals`".
+				" WHERE i_gedcom LIKE CONCAT('%\n2 ', ?, ' ', ?, '%') AND i_file=?".
+				" ORDER BY 1"
+			)
+			->execute(array($type, $type, $term, WT_GED_ID))
+			->fetchOneColumn()
+		);
 	exit;
 
 	case 'OBJE':

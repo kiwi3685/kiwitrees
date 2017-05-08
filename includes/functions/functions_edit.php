@@ -1551,7 +1551,16 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 						echo ' data-autocomplete-type="EVEN_TYPE"';
 					}
 					break;
-			}
+				case 'NPFX':
+					echo ' data-autocomplete-type="NPFX"';
+					break;
+				case 'NSFX':
+					echo ' data-autocomplete-type="NSFX"';
+					break;
+				case 'SPFX':
+					echo ' data-autocomplete-type="SPFX"';
+					break;
+		}
 			echo '>';
 		}
 
