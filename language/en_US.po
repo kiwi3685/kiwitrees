@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2017-04-17 10:48+1200\n"
-"PO-Revision-Date: 2017-04-17 10:49+1200\n"
+"PO-Revision-Date: 2017-05-10 07:32+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: English (United States) (http://www.transifex.com/kiwitrees/"
 "kiwitrees/language/en_US/)\n"
@@ -2379,7 +2379,7 @@ msgstr "Fact or event"
 
 #: admin_trees_config.php:643
 msgid "Action"
-msgstr "Adoption"
+msgstr "Action"
 
 #. I18N: a placeholder for input of all or any record type
 #: admin_trees_config.php:648
