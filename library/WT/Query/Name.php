@@ -160,20 +160,31 @@ class WT_Query_Name {
 		return utf8_substr($name, 0, 1);
 	}
 
-	// Generate SQL to match a given letter, taking care of cases that
-	// are not covered by the collation setting.  We must consider:
-	// potential substrings, such as Czech "CH" and "C"
-	// equivalent letters, such as Danish "AA" and "Å"
-	// We COULD write something that handles all languages generically,
-	// but its performance would most likely be poor.
-	// For languages that don't appear in this list, we could write
-	// simpler versions of the surnameAlpha() and givenAlpha() functions,
-	// but it gives no noticable improvement in performance.
-	static private function _getInitialSql($field, $letter) {
+	/**
+	 * Generate SQL to match a given letter, taking care of cases that
+	 * are not covered by the collation setting.
+	 *
+	 * We must consider:
+	 * potential substrings, such as Czech "CH" and "C"
+	 * equivalent letters, such as Danish "AA" and "Å"
+	 *
+	 * We COULD write something that handles all languages generically,
+	 * but its performance would most likely be poor.
+	 *
+	 * For languages that don't appear in this list, we could write
+	 * simpler versions of the surnameAlpha() and givenAlpha() functions,
+	 * but it gives no noticable improvement in performance.
+	 *
+	 * @param string $field
+	 * @param string $letter
+	 *
+	 * @return string
+	 */
+	private static function getInitialSql($field, $letter) {
 		switch (WT_LOCALE) {
 		case 'cs':
 			switch ($letter) {
-			case 'C': return $field." LIKE 'C%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'CH%' COLLATE ".WT_I18N::$collation;
+			case 'C': return $field . " LIKE 'C%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'CH%' COLLATE " . WT_I18N::$collation;
 			}
 			break;
 		case 'da':
@@ -181,82 +192,101 @@ class WT_Query_Name {
 		case 'nn':
 			switch ($letter) {
 			// AA gets listed under Å
-			case 'A': return $field." LIKE 'A%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'AA%' COLLATE ".WT_I18N::$collation;
-			case 'Å': return "(".$field." LIKE 'Å%' COLLATE ".WT_I18N::$collation." OR ".$field." LIKE 'AA%' COLLATE ".WT_I18N::$collation.")";
+			case 'A': return $field . " LIKE 'A%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'AA%' COLLATE " . WT_I18N::$collation;
+			case 'Å': return "(" . $field . " LIKE 'Å%' COLLATE " . WT_I18N::$collation . " OR " . $field . " LIKE 'AA%' COLLATE " . WT_I18N::$collation . ")";
 			}
 			break;
 		case 'hu':
 			switch ($letter) {
-			case 'C':  return $field." LIKE 'C%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'CS%' COLLATE ". WT_I18N::$collation;
-			case 'D':  return $field." LIKE 'D%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'DZ%' COLLATE ". WT_I18N::$collation;
-			case 'DZ': return $field." LIKE 'DZ%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'DZS%' COLLATE ".WT_I18N::$collation;
-			case 'G':  return $field." LIKE 'G%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'GY%' COLLATE ". WT_I18N::$collation;
-			case 'L':  return $field." LIKE 'L%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'LY%' COLLATE ". WT_I18N::$collation;
-			case 'N':  return $field." LIKE 'N%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'NY%' COLLATE ". WT_I18N::$collation;
-			case 'S':  return $field." LIKE 'S%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'SZ%' COLLATE ". WT_I18N::$collation;
-			case 'T':  return $field." LIKE 'T%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'TY%' COLLATE ". WT_I18N::$collation;
-			case 'Z':  return $field." LIKE 'Z%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'ZS%' COLLATE ". WT_I18N::$collation;
+			case 'C':  return $field . " LIKE 'C%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'CS%' COLLATE " . WT_I18N::$collation;
+			case 'D':  return $field . " LIKE 'D%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'DZ%' COLLATE " . WT_I18N::$collation;
+			case 'DZ': return $field . " LIKE 'DZ%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'DZS%' COLLATE " . WT_I18N::$collation;
+			case 'G':  return $field . " LIKE 'G%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'GY%' COLLATE " . WT_I18N::$collation;
+			case 'L':  return $field . " LIKE 'L%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'LY%' COLLATE " . WT_I18N::$collation;
+			case 'N':  return $field . " LIKE 'N%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'NY%' COLLATE " . WT_I18N::$collation;
+			case 'S':  return $field . " LIKE 'S%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'SZ%' COLLATE " . WT_I18N::$collation;
+			case 'T':  return $field . " LIKE 'T%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'TY%' COLLATE " . WT_I18N::$collation;
+			case 'Z':  return $field . " LIKE 'Z%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'ZS%' COLLATE " . WT_I18N::$collation;
 			}
 			break;
 		case 'nl':
 			switch ($letter) {
-			case 'I': return $field." LIKE 'I%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'IJ%' COLLATE ".WT_I18N::$collation;
+			case 'I': return $field . " LIKE 'I%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'IJ%' COLLATE " . WT_I18N::$collation;
 			}
 			break;
 		}
+
 		// Easy cases: the MySQL collation rules take care of it
-		return "$field LIKE CONCAT('@',".WT_DB::quote($letter).",'%') COLLATE ".WT_I18N::$collation." ESCAPE '@'";
+		return "$field LIKE CONCAT('@'," . WT_DB::quote($letter) . ",'%') COLLATE " . WT_I18N::$collation . " ESCAPE '@'";
 	}
 
-	// Get a list of initial surname letters for indilist.php and famlist.php
-	// $marnm - if set, include married names
-	// $fams - if set, only consider individuals with FAMS records
-	static public function surnameAlpha($marnm, $fams, $ged_id, $countRecords = true) {
-		$alphas=array();
+	/**
+	 * Get a list of initial surname letters for indilist.php and famlist.php
+	 *
+	 * @param Tree $tree   Find surnames from this tree
+	 * @param bool $marnm  if set, include married names
+	 * @param bool $fams   if set, only consider individuals with FAMS records
+	 * @param bool $totals if set, count the number of names beginning with each letter
+	 *
+	 * @return int[]
+	 */
+	public static function surnameAlpha($marnm, $fams, $ged_id, $totals = true) {
+		$alphas = array();
 
-		$sql=
-			"SELECT SQL_CACHE COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id}".
+		$sql =
+			"SELECT SQL_CACHE COUNT(n_id)" .
+			" FROM `##name` " .
+			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			" WHERE n_file=" . $ged_id .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		// Fetch all the letters in our alphabet, whether or not there
-		// are any names beginning with that letter.  It looks better to
+		// are any names beginning with that letter. It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
-		foreach (self::_getAlphabet() as $letter) {
+		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
 			$count = 1;
-			if ($countRecords) {
-				$count = WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+			if ($totals) {
+				$count = WT_DB::prepare($sql . " AND " . self::getInitialSql('n_surn', $letter))->fetchOne();
 			}
-			$alphas[$letter] = WT_I18N::number($count);
+			$alphas[$letter] = $count;
 		}
 
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
 		$sql =
-			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} AND n_surn<>''".
-			($marnm ? "" : " AND n_type!='_MARNM'");
+			"SELECT SQL_CACHE initial, count FROM (SELECT UPPER(LEFT(n_surn, 1)) AS initial, COUNT(n_id) AS count" .
+			" FROM `##name` " .
+			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
+			" WHERE n_file = :tree_id AND n_surn <> ''" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
 
-		foreach (self::_getAlphabet() as $n => $letter) {
-			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
+		$args = array(
+			'tree_id' => $ged_id,
+		);
+
+		foreach (self::_getAlphabet(WT_LOCALE) as $n => $letter) {
+			$sql .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
+			$args['collate_' . $n] = WT_I18N::$collation;
+			$args['letter_' . $n]  = $letter . '%';
 		}
-		$sql .= " GROUP BY UPPER(LEFT(n_surn, 1)) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
-		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha => $count) {
-			$alphas[$alpha] = WT_I18N::number($count);
+		$sql .= " GROUP BY UPPER(LEFT(n_surn, 1))) AS subquery ORDER BY initial = '', initial = '@', initial";
+		foreach (WT_DB::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
+			$alphas[$alpha] = $count;
 		}
 
 		// Names with no surname
 		$sql =
-			"SELECT SQL_CACHE COUNT(n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} AND n_surn=''".
-			($marnm ? "" : " AND n_type!='_MARNM'");
-		$num_none = WT_DB::prepare($sql)->fetchOne();
+			"SELECT SQL_CACHE COUNT(n_id)" .
+			" FROM `##name` " .
+			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
+			" WHERE n_file = :tree_id AND n_surn = ''" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
+
+		$args = array(
+			'tree_id' => $ged_id,
+		);
+
+		$num_none = WT_DB::prepare($sql)->execute($args)->fetchOne();
 		if ($num_none) {
 			// Special code to indicate "no surname"
 			$alphas[','] = $num_none;
@@ -288,7 +318,7 @@ class WT_Query_Name {
 		} elseif ($salpha=='@') {
 			$sql.=" AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::_getInitialSql('n_surn', $salpha);
+			$sql.=" AND ".self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
@@ -298,7 +328,7 @@ class WT_Query_Name {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::_getAlphabet() as $letter) {
-			$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_givn', $letter))->fetchOne();
+			$count=WT_DB::prepare($sql." AND ".self::getInitialSql('n_givn', $letter))->fetchOne();
 			$alphas[$letter]=WT_I18N::number($count);
 		}
 
@@ -318,7 +348,7 @@ class WT_Query_Name {
 		} elseif ($salpha=='@') {
 			$sql.=" AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::_getInitialSql('n_surn', $salpha);
+			$sql.=" AND ".self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
@@ -366,7 +396,7 @@ class WT_Query_Name {
 		} elseif ($salpha === '@') {
 			$sql .= " AND n_surn = '@N.N.'";
 		} elseif ($salpha) {
-			$sql .= " AND " . self::_getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
@@ -412,13 +442,13 @@ class WT_Query_Name {
 		} elseif ($salpha=='@') {
 			$sql.=" AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::_getInitialSql('n_surn', $salpha);
+			$sql.=" AND ".self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
 		}
 		if ($galpha) {
-			$sql.=" AND ".self::_getInitialSql('n_givn', $galpha);
+			$sql.=" AND ".self::getInitialSql('n_givn', $galpha);
 		}
 
 		$sql.=" ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '".WT_I18N::$collation."', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '".WT_I18N::$collation."'";
