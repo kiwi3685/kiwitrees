@@ -207,7 +207,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) { ?>
 					<div id="stories_<?php echo $block_id; ?>" class="<?php echo $class; ?>">
 						<?php if (WT_USER_CAN_EDIT) { ?>
-							<div>
+							<div style="margin-top:15px;">
 								<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $block_id; ?>">
 									<i style="margin: 0 3px 0 0;" class="icon-button_note">&nbsp;</i><?php echo WT_I18N::translate('Edit story'); ?>
 								</a>
