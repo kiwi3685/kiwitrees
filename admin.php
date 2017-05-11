@@ -1562,7 +1562,7 @@ function old_paths() {
 		WT_ROOT.'language/extra', // tidying up redundant language files
 		WT_ROOT.'admin_site_readme.php', // Readme files moved to kiwitrees.net FAQs
 		WT_ROOT.'readme.html', // Readme files moved to kiwitrees.net FAQs
-		// Removed in kiwitrees 3.2.4
+		// Removed in kiwitrees 3.3.0
 		WT_ROOT.'search-advanced.php', // old file no longer used
 		WT_ROOT.'fanchart.php', // file no longer used
 		WT_ROOT.'includes/fonts', // no longer needed in fanchart code
@@ -1573,8 +1573,11 @@ function old_paths() {
 		WT_ROOT.'library/tcpdf', // old report system removed
 		WT_ROOT.'library/WT/Report', // old report system removed
 		WT_ROOT.'admin_module_resources.php', // old report system removed, this file renamed to admin_module_reports
-		// TO BE Removed in kiwitrees 3.2.5
-		// WT_ROOT.'modules_v3'
+		// Removed in kiwitrees 3.3.1
+		WT_ROOT.'modules_v3',
+		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.5.1.js',
+		WT_ROOT.'modules_v3/gallery/galleria/galleria-1.5.1.min.js',
+
 
 	);
 }
