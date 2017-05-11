@@ -1252,12 +1252,6 @@ p.branches {display:inline;}
 	font-weight: 600;
 }
 
-/* ============== reportengine.php ======================= */
-#reportengine-page table {margin:20px auto;}
-#reportengine-page .report-type {overflow:hidden;margin:auto;width:180px;}
-#reportengine-page .report-type div {float:left;margin:0 20px;}
-#reportengine-page .report-type p {margin:0;text-align:center;}
-
 .itr { position:absolute; line-height:1.5;}
 
 .block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr { position:relative; top:0;}

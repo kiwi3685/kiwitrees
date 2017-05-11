@@ -31,7 +31,6 @@ Disallow: /pedigree.php
 Disallow: /placelist.php
 Disallow: /relationship.php
 Disallow: /repolist.php
-Disallow: /reportengine.php
 Disallow: /search.php
 Disallow: /search_advanced.php
 Disallow: /sourcelist.php
