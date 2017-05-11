@@ -118,17 +118,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		global  $controller;
 
 		$block_ids =
-			WT_DB::prepare(
-				"SELECT DISTINCT ##block.block_id" .
-				" FROM ##block, ##block_setting" .
-				" WHERE ##block.module_name=?" .
-				" AND ##block.block_id = ##block_setting.block_id" .
-				" AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')" .
-				" AND ##block.gedcom_id=?" .
-				" ORDER BY ##block.block_order"
-			)->execute(array(
+			WT_DB::prepare("
+				SELECT ##block.block_id
+				 FROM ##block, ##block_setting
+				 WHERE ##block.module_name=?
+				 AND ##block.block_id = ##block_setting.block_id
+				 AND ##block_setting.setting_value REGEXP CONCAT('[[:<:]]', ?, '[[:>:]]')
+				 AND ##block.gedcom_id=?
+				 ORDER BY ##block.block_order
+			")->execute(array(
 				$this->getName(),
-				$xref=$controller->record->getXref(),
+				$xref = $controller->record->getXref(),
 				WT_GED_ID
 			))->fetchOneColumn();
 
