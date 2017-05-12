@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,13 +51,13 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 		switch (safe_GET('action')) {
 		case 'deletenews':
-			$news_id=safe_GET('news_id');
+			$news_id = safe_GET('news_id');
 			if ($news_id) {
-				deleteNews($news_id);
+				WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
 			}
 			break;
 		}
-		$block=get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', true);
 
 		if (isset($_REQUEST['gedcom_news_archive'])) {
 			$limit='nolimit';

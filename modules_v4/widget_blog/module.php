@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,23 +45,16 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 		return /* I18N: Description of the “Journal” module */ WT_I18N::translate('A private area to record notes or keep a journal.');
 	}
 
+	private function deleteNews($news_id) {
+		return WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
+	}
+
 	// Implement class WT_Module_Block
 	public function getWidget($widget_id, $template=true, $cfg=null) {
 		global $ctype, $controller;
 
 		$url = $_SERVER['REQUEST_URI'];
-
-		switch (safe_GET('action')) {
-		case 'deletenews':
-			$news_id = safe_GET('news_id');
-			if ($news_id) {
-				deleteNews($news_id);
-			}
-			break;
-		}
-
 		$usernews = getUserNews(WT_USER_ID);
-
 		$id=$this->getName();
 		$class=$this->getName();
 		$title='';
@@ -72,7 +65,7 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 			$content .= WT_I18N::translate('You have not created any Journal items.');
 		}
 
-		foreach ($usernews as $key=>$news) {
+		foreach ($usernews as $news) {
 			$day	= date('j', $news['date']);
 			$mon	= date('M', $news['date']);
 			$year	= date('Y', $news['date']);
@@ -86,8 +79,10 @@ class widget_blog_WT_Module extends WT_Module implements WT_Module_Widget {
 						$news["text"]=nl2br($news["text"], false);
 					}
 			$content .= $news["text"] . '<br><br>
-					<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $key . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> |
-					<a href="' . $url . '?action=deletenews&amp;news_id=' . $key . '\'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this Journal entry?') . '\');">' . WT_I18N::translate('Delete') . '</a>
+					<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news['id'] . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a>
+					<a href="#" onclick="if (confirm(\'' . WT_I18N::translate('Are you sure you want to delete this Journal entry?') . '\')) {
+						jQuery.post(\'action.php\',{action:\'deleteNews\',newsId:\''. $news['id'] .'\'},function(){location.reload();})
+					}">' . WT_I18N::translate('Delete') . '</a>
 				</div>';
 		}
 		if (WT_USER_ID) {

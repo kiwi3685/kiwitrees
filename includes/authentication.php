@@ -354,16 +354,6 @@ function addNews($news) {
 	}
 }
 
-/**
- * Deletes a news item from the database
- *
- * @author John Finlay
- * @param int $news_id the id number of the news item to delete
- */
-function deleteNews($news_id) {
-	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
-}
-
 // Gets the news items for the given user or gedcom
 function getUserNews($user_id) {
 	$rows=

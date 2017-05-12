@@ -154,5 +154,12 @@ case 'lookup_name':
 	header('Content-Type: application/json');
 	echo json_encode($iname);
 	break;
+
+case 'deleteNews':
+	// delete news item from widget_journal
+	$news_id	= WT_Filter::post('newsId');
+	WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
+	break;
+
 }
 Zend_Session::writeClose();
