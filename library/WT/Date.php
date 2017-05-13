@@ -413,4 +413,33 @@ class WT_Date {
 			return 0;
 		}
 	}
+
+	/**
+	 * Get the earliest calendar date from this GEDCOM date.
+	 *
+	 * In the date “FROM 1900 TO 1910”, this would be 1900.
+	 *
+	 * @return CalendarDate
+	 */
+	public function minimumDate() {
+		return $this->date1;
+	}
+
+	/**
+	 * Get the latest calendar date from this GEDCOM date.
+	 *
+	 * In the date “FROM 1900 TO 1910”, this would be 1910.
+	 *
+	 * @return CalendarDate
+	 */
+	public function maximumDate() {
+		if (is_null($this->date2)) {
+			return $this->date1;
+		} else {
+			return $this->date2;
+		}
+	}
+
+
+
 }
