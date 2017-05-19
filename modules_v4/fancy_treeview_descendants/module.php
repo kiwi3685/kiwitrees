@@ -242,7 +242,7 @@ class fancy_treeview_descendants_WT_Module extends WT_Module implements WT_Modul
 						<h5><?php echo $root_person->getLifeSpan(); ?></h5>
 					</div>
 					<div id="page-body">
-						<ol id="fancy_treeview_descendants"><?php echo $ftv->printPage($this->getName(), 'numblocks'); ?></ol>
+						<ol id="fancy_treeview_descendants"><?php echo $ftv->printPage($this->getName(), $ftv->options($this->getName(), 'numblocks')); ?></ol>
 						<div id="btn_next">
 							<button class="btn btn-next" type="button" name="next" value="<?php echo WT_I18N::translate('next'); ?>" title="<?php echo WT_I18N::translate('Show more generations'); ?>">
 								<i class="fa fa-arrow-down"></i>

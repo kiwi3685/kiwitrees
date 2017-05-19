@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -284,13 +284,14 @@ $html = '<div id="fancy_treeview_descendants-config">
 				endforeach;
 			$html .='</table>';
 		endif;
-		$html .= '<div class="field fullname">
-			<label class="label">' . WT_I18N::translate('Use fullname in menu') . '</label>' .
-			edit_field_yes_no('NEW_FTV_OPTIONS[USE_FULLNAME]', $ftv->options($this->getName(), 'use_fullname')) . '
-		</div>
+		$html .= '
 		<hr/>
 		<h3>' . WT_I18N::translate('General Options') . '</h3>
 		<div id="bottom">
+			<div class="field fullname">
+				<label class="label">' . WT_I18N::translate('Use fullname in menu') . '</label>' .
+				edit_field_yes_no('NEW_FTV_OPTIONS[USE_FULLNAME]', $ftv->options($this->getName(), 'use_fullname')) . '
+			</div>
 			<div class="field">
 				<label class="label">' . WT_I18N::translate('Number of generation blocks to show') . '</label>'.
 				select_edit_control('NEW_FTV_OPTIONS[NUMBLOCKS]', array(WT_I18N::translate('All'), '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'), null, $ftv->options($this->getName(), 'numblocks')) . '

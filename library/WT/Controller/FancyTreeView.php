@@ -213,7 +213,7 @@ class WT_Controller_FancyTreeView {
 
 	// Print functions
 	public function printPage($module, $numblocks) {
-		$root 				= WT_Filter::get('rootid', WT_REGEX_XREF);
+		$root 		= WT_Filter::get('rootid', WT_REGEX_XREF);
 		$gen  		= WT_Filter::get('gen', WT_REGEX_INTEGER);
 		$pids 		= WT_Filter::get('pids');
 
@@ -236,10 +236,6 @@ class WT_Controller_FancyTreeView {
 		while (count($this->generation) > 0 && $gen < $lastblock) {
 			$pids = $this->generation;
 			unset($this->generation);
-
-			foreach ($pids as $pid) {
-				$next_gen[] = $this->getNextGen($pid);
-			}
 
 			switch ($module) {
 			case 'fancy_treeview_descendants':
