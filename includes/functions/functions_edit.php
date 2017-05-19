@@ -1632,9 +1632,11 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 			echo '<div class="input-group-addon">' . print_calendar_popup($element_id) . '</div>';
 			// If census_assistant module is installed -------------------------------------------------
 			if ($action == 'add' && array_key_exists('census_assistant', WT_Module::getActiveModules())) {
-				if (isset($CensDate) && $CensDate == 'yes') {
-					require_once WT_ROOT.WT_MODULES_DIR . 'census_assistant/census_asst_date.php';
-				}
+				echo censusDateSelector(WT_LOCALE, $pid);
+				echo
+					'<div></div><a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
+					WT_I18N::translate('Create a shared note using the census assistant') .
+					'</a>';
 			}
 			// -------------------------------------------------------------------------------------------------
 			break;
@@ -1663,14 +1665,18 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 				if ($value) {
 					echo ' ', print_editnote_link($value);
 				}
-				// If census_assistant module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
+				// If census_assistant module exists && we are on the INDI page and the action is a census assistant addition.
 				// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
 				if (($action == 'add' || $action == 'edit') && $pid && array_key_exists('census_assistant', WT_Module::getActiveModules())) {
 					// Check if a CENS event ---------------------------
 					if ($event_add == 'census_add') {
-						$type_pid=WT_GedcomRecord::getInstance($pid);
+						$type_pid = WT_GedcomRecord::getInstance($pid);
 						if ($type_pid->getType() == 'INDI' ) {
-							echo '<br>', print_addnewnote_assisted_link($element_id, $pid);
+//							echo '<br>', print_addnewnote_assisted_link($element_id, $pid);
+							echo
+								'<div><a href="#" id="assistant-link" onclick="return activateCensusAssistant();">' .
+								WT_I18N::translate('Create a shared note using the census assistant') .
+								'</a></div>';
 						}
 					}
 				}
@@ -1779,6 +1785,93 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 
 	return $element_id;
 }
+
+/**
+ * Genearate a <select> element, with the dates/places of all known censuses
+ *
+ *
+ * @param string $locale - Sort the censuses for this locale
+ * @param string $xref   - The individual for whom we are adding a census
+ */
+function censusDateSelector($locale, $xref) {
+	global $controller;
+
+	// Show more likely census details at the top of the list.
+	switch (WT_LOCALE) {
+		case 'cs':
+			$census_places = array(new WT_Census_CensusOfCzechRepublic);
+			break;
+		case 'en-AU':
+		case 'en-GB':
+			$census_places = array(new WT_Census_CensusOfEngland, new WT_Census_CensusOfWales, new WT_Census_CensusOfScotland);
+			break;
+		case 'en-US':
+			$census_places = array(new WT_Census_CensusOfUnitedStates);
+			break;
+		case 'fr':
+		case 'fr-CA':
+			$census_places = array(new WT_Census_CensusOfFrance);
+			break;
+		case 'da':
+			$census_places = array(new WT_Census_CensusOfDenmark);
+			break;
+		case 'de':
+			$census_places = array(new WT_Census_CensusOfDeutschland);
+			break;
+		default:
+			$census_places = array();
+			break;
+	}
+	foreach (WT_Census_Census::allCensusPlaces() as $census_place) {
+		if (!in_array($census_place, $census_places)) {
+			$census_places[] = $census_place;
+		}
+	}
+
+	$controller->addInlineJavascript('
+			function selectCensus(el) {
+				var option = jQuery(":selected", el);
+				jQuery("input.DATE", jQuery(el).closest("div.input")).val(option.val());
+				jQuery("div.input input.PLAC").val(option.data("place"));
+				jQuery("input.census-class", jQuery(el).closest("div.input")).val(option.data("census"));
+				if (option.data("place")) {
+					jQuery("#assistant-link").show();
+				} else {
+					jQuery("#assistant-link").hide();
+				}
+			}
+			function set_pid_array(pa) {
+				jQuery("#pid_array").val(pa);
+			}
+			function activateCensusAssistant() {
+				if (jQuery("#newshared_note_img").hasClass("icon-plus")) {
+					expand_layer("newshared_note");
+				}
+				var field  = jQuery("#newshared_note input.NOTE")[0];
+				var xref   = jQuery("input[name=pid]").val();
+				var census = jQuery(".census-assistant-selector :selected").data("census");
+				alert(census);
+				return addnewnote_assisted(field, xref, census);
+			}
+		');
+
+	$options = '<option value="">' . WT_I18N::translate('Census date') . '</option>';
+
+	foreach ($census_places as $census_place) {
+		$options .= '<option value=""></option>';
+		foreach ($census_place->allCensusDates() as $census) {
+			$date            = new WT_Date($census->censusDate());
+			$year            = $date->minimumDate()->format('%Y');
+			$place_hierarchy = explode(', ', $census->censusPlace());
+			$options .= '<option value="' . $census->censusDate() . '" data-place="' . $census->censusPlace() . '" data-census="' . get_class($census) . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
+		}
+	}
+
+	return
+		'<input type="hidden" id="pid_array" name="pid_array" value="">' .
+		'<select class="census-assistant-selector" onchange="selectCensus(this);">' . $options . '</select>';
+}
+
 
 /**
 * prints collapsable fields to add ASSO/RELA, SOUR, OBJE ...

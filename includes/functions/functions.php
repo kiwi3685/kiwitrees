@@ -1167,7 +1167,6 @@ function cousin_name2($n, $sex, $relation) {
 	}
 }
 
-
 function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Person $person2=null) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the “3 RELA ” values in class_person
@@ -2178,23 +2177,32 @@ function get_relationship_name_from_path($path, WT_Person $person1=null, WT_Pers
 
 	// Split the relationship into sub-relationships, e.g., third-cousin’s great-uncle.
 	// Try splitting at every point, and choose the path with the shorted translated name.
+	// But before starting to recursively go through all combinations, do a cache look-up
+	if (isset($relationshipsCache) && array_key_exists($path, $relationshipsCache)) {
+		return $relationshipsCache[$path];
+	} else {
+		$relationshipsCache = array();
+	}
 
-	$relationship=null;
-	$path1=substr($path, 0, 3);
-	$path2=substr($path, 3);
+	$relationship = null;
+	$path1 = substr($path, 0, 3);
+	$path2 = substr($path, 3);
 	while ($path2) {
-		$tmp=WT_I18N::translate(
+		$tmp = WT_I18N::translate(
 			// I18N: A complex relationship, such as “third-cousin’s great-uncle”
 			'%1$s\'s %2$s',
 			get_relationship_name_from_path($path1, null, null), // TODO: need the actual people
 			get_relationship_name_from_path($path2, null, null)
 		);
-		if (!$relationship || strlen($tmp)<strlen($relationship)) {
-			$relationship=$tmp;
+		if (!$relationship || strlen($tmp) < strlen($relationship)) {
+			$relationship = $tmp;
 		}
-		$path1.=substr($path2, 0, 3);
-		$path2=substr($path2, 3);
+		$path1 .= substr($path2, 0, 3);
+		$path2 = substr($path2, 3);
 	}
+	// and store the result in the cache
+	$relationshipsCache[$path] = $relationship;
+
 	return $relationship;
 }
 
