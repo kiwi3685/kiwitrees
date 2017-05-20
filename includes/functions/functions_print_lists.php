@@ -1706,7 +1706,7 @@ function format_media_table($datalist) {
  *
  * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
  * @param string $script "indilist.php" (counts of individuals) or "famlist.php" (counts of spouses)
- * @param string $sort "1" for ascending order, "2" for descending order
+ * @param string $sort "1" for ascending order by name, "2" for descending order by count
  *
  * @return string
  */
@@ -1724,7 +1724,7 @@ function format_surname_table($surnames, $script = '', $sort = '2') {
 			jQueryUI: true,
 			autoWidth:false,
 			paging: false,
-			sorting: [[' . ($sort == '1' ? '2, "asc"' : '2, "desc"') . ']],
+			sorting: [[' . ($sort == '1' ? '1, "asc"' : '3, "desc"') . ']],
 			columns: [
 				/*  0 name  */ { dataSort:1 },
 				/*  1 NAME  */ { visible:false },
