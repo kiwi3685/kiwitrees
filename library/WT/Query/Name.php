@@ -295,71 +295,84 @@ class WT_Query_Name {
 		return $alphas;
 	}
 
-	// Get a list of initial given name letters for indilist.php and famlist.php
-	// $surn - if set, only consider people with this surname
-	// $salpha - if set, only consider surnames starting with this letter
-	// $marnm - if set, include married names
-	// $fams - if set, only consider individuals with FAMS records
-	// $ged_id - only consider individuals from this gedcom
-	static public function givenAlpha($surn, $salpha, $marnm, $fams, $ged_id) {
-		$alphas=array();
+	/**
+	 * Get a list of initial given name letters for indilist.php and famlist.php
+	 *
+	 * @param Tree   $tree   Find names in this tree
+	 * @param string $surn   if set, only consider people with this surname
+	 * @param string $salpha if set, only consider surnames starting with this letter
+	 * @param bool   $marnm  if set, include married names
+	 * @param bool   $fams   if set, only consider individuals with FAMS records
+	 *
+	 * @return int[]
+	 */
+//	public static function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams) {
+	public static function givenAlpha($surn, $salpha, $marnm, $fams, $ged_id) {
+		$alphas = array();
 
-		$sql=
-			"SELECT SQL_CACHE COUNT(DISTINCT n_id)".
-			" FROM `##name`".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} ".
+		$sql =
+			"SELECT SQL_CACHE COUNT(DISTINCT n_id)" .
+			" FROM `##name`" .
+			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			" WHERE n_file=" . $ged_id . " " .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		if ($surn) {
-			$sql.=" AND n_surn=".WT_DB::quote($surn)." COLLATE '".WT_I18N::$collation."'";
-		} elseif ($salpha==',') {
-			$sql.=" AND n_surn=''";
-		} elseif ($salpha=='@') {
-			$sql.=" AND n_surn='@N.N.'";
+			$sql .= " AND n_surn=" . WT_DB::quote($surn) . " COLLATE '" . WT_I18N::$collation . "'";
+		} elseif ($salpha == ',') {
+			$sql .= " AND n_surn=''";
+		} elseif ($salpha == '@') {
+			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
-			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
+			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
 
 		// Fetch all the letters in our alphabet, whether or not there
-		// are any names beginning with that letter.  It looks better to
+		// are any names beginning with that letter. It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
-		foreach (self::_getAlphabet() as $letter) {
-			$count=WT_DB::prepare($sql." AND ".self::getInitialSql('n_givn', $letter))->fetchOne();
-			$alphas[$letter]=WT_I18N::number($count);
+		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
+			$count           = WT_DB::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();
+			$alphas[$letter] = $count;
 		}
 
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname
-		$sql=
-			"SELECT SQL_CACHE UPPER(LEFT(n_givn, 1)), COUNT(DISTINCT n_id)".
-			" FROM `##name` ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} ".
-			($marnm ? "" : " AND n_type!='_MARNM'");
+		$sql =
+			"SELECT SQL_CACHE initial, total FROM (SELECT UPPER(LEFT(n_givn, 1)) AS initial, COUNT(DISTINCT n_id) AS total" .
+			" FROM `##name` " .
+			($fams ? " JOIN `##link` ON (n_id = l_from AND n_file = l_file AND l_type = 'FAMS') " : "") .
+			" WHERE n_file = :tree_id" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
+
+		$args = array(
+			'tree_id' => $ged_id,
+		);
 
 		if ($surn) {
-			$sql.=" AND n_surn=".WT_DB::quote($surn)." COLLATE '".WT_I18N::$collation."'";
-		} elseif ($salpha==',') {
-			$sql.=" AND n_surn=''";
-		} elseif ($salpha=='@') {
-			$sql.=" AND n_surn='@N.N.'";
+			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
+			$args['collate_1'] = WT_I18N::$collation;
+			$args['surn']      = $surn;
+		} elseif ($salpha === ',') {
+			$sql .= " AND n_surn = ''";
+		} elseif ($salpha === '@') {
+			$sql .= " AND n_surn = '@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
-			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
+			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
 
-		foreach (self::_getAlphabet() as $n=>$letter) {
-			$sql.=" AND n_givn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
+		foreach (self::_getAlphabet(WT_LOCALE) as $letter) {
+			$sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . WT_I18N::$collation;
 		}
-		$sql.=" GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)='@', LEFT(n_givn, 1)='', LEFT(n_givn, 1)";
-		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
-			$alphas[$alpha]=WT_I18N::number($count);
+		$sql .= " GROUP BY UPPER(LEFT(n_givn, 1))) AS subquery ORDER BY initial = '@', initial = '', initial";
+
+		foreach (WT_DB::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
+			$alphas[$alpha] = $count;
 		}
 
 		return $alphas;

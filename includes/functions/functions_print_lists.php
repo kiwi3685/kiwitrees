@@ -1701,10 +1701,16 @@ function format_media_table($datalist) {
 	return $html;
 }
 
-// Print a table of surnames, for the top surnames block, the indi/fam lists, etc.
-// $surnames - array (of SURN, of array of SPFX_SURN, of array of PID)
-// $type     - "indilist.php" (counts of individuals) or "famlist.php" (counts of spouses)
-function format_surname_table($surnames, $script = '') {
+/**
+ * Print a table of surnames, for the top surnames block, the indi/fam lists, etc.
+ *
+ * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
+ * @param string $script "indilist.php" (counts of individuals) or "famlist.php" (counts of spouses)
+ * @param string $sort "1" for ascending order, "2" for descending order
+ *
+ * @return string
+ */
+function format_surname_table($surnames, $script = '', $sort = '2') {
 	global $controller;
 	$html = '';
 	$controller
@@ -1718,7 +1724,7 @@ function format_surname_table($surnames, $script = '') {
 			jQueryUI: true,
 			autoWidth:false,
 			paging: false,
-			sorting: [[' . ($script ? '1, "asc"' : '2, "desc"') . ']],
+			sorting: [[' . ($sort == '1' ? '2, "asc"' : '2, "desc"') . ']],
 			columns: [
 				/*  0 name  */ { dataSort:1 },
 				/*  1 NAME  */ { visible:false },
@@ -1745,17 +1751,17 @@ function format_surname_table($surnames, $script = '') {
 				</tr>
 			</thead>
 			<tbody>';
-				foreach ($surnames as $surn=>$surns) {
+				foreach ($surnames as $surn => $surns) {
 					// Each surname links back to the indi/fam surname list
 					if ($surn) {
-						$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' .WT_GEDURL;
+						$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . WT_GEDURL . '&show_all_firstnames=yes';
 					} else {
 						$url = $script . '?alpha=,&amp;ged=' . WT_GEDURL;
 					}
 					$html .= '<tr>
 						<td>';
 							// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
-							foreach ($surns as $spfxsurn=>$indis) {
+							foreach ($surns as $spfxsurn => $indis) {
 								if ($spfxsurn) {
 									$html .= '<a href="' . $url . '" dir="auto">' . htmlspecialchars($spfxsurn) . '</a><br>';
 								} else {

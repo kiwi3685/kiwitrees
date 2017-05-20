@@ -107,7 +107,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		case 'table':
 		default:
 			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content = format_surname_table($all_surnames);
+			$content = format_surname_table($all_surnames, 'indilist.php', '2');
 			break;
 		}
 
