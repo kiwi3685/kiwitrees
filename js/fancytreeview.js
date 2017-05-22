@@ -120,6 +120,8 @@
 
 	// descendants version
     jQuery("button.ftv_reset").click(function(e){
+		var TextOK;
+		var TextCancel;
         jQuery("#dialog-confirm").dialog({
             resizable: false,
             width: 400,
