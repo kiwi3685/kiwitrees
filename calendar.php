@@ -496,8 +496,7 @@ $controller
 			          // Show a converted date
 								foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
 			            $alt_date = $cal_date->convert_to_cal($convcal);
-			            if (get_class($alt_date) != get_class($cal_date)) {
-			              list($alt_date->y, $alt_date->m, $alt_date->d) = $alt_date->JDtoYMD($cal_date->minJD + $d - 1);
+						if (get_class($alt_date) !== get_class($cal_date) && $alt_date->inValidRange()) {			              list($alt_date->y, $alt_date->m, $alt_date->d) = $alt_date->JDtoYMD($cal_date->minJD + $d - 1);
 			              $alt_date->SetJDfromYMD(); ?>
 			              <span class="rtl_cal_day"><?php echo $alt_date->Format("%j %M"); ?></span>
 			              <?php break;
