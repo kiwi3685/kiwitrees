@@ -32,8 +32,8 @@ define('WT_VERSION',		'3.3.0');
 define('WT_VERSION_TEXT',	trim(WT_VERSION));
 
 // External URLs
-define('WT_KIWITREES_URL',    'http://kiwitrees.net/');
-define('WT_TRANSLATORS_URL', 'http://kiwitrees.net/forums/forum/support-forum/translation/');
+define('WT_KIWITREES_URL',    'https://kiwitrees.net/');
+define('WT_TRANSLATORS_URL', 'https://kiwitrees.net/forums/forum/support-forum/translation/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
 // For example, http://my.cdn.com/kiwitrees-static-1.3.1/
@@ -181,12 +181,22 @@ if (!ini_get('date.timezone')) {
 // TODO: we ought to generate this dynamically, but lots of code currently relies on this global
 $QUERY_STRING = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
-$https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off';
-define('WT_SERVER_NAME',
-        ($https ?  'https://' : 'http://').
-        (empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME']).
-        (empty($_SERVER['SERVER_PORT']) || (!$https && $_SERVER['SERVER_PORT'] == 80) || ($https && $_SERVER['SERVER_PORT'] == 443) ? '' : ':'.$_SERVER['SERVER_PORT'])
-);
+// Calculate the base URL, so we can generate absolute URLs.
+$https    	= strtolower(WT_Filter::server('HTTPS'));
+$protocol	= ($https === '' || $https === 'off') ? 'http' : 'https';
+$protocol	= WT_Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', $protocol);
+$host		= WT_Filter::server('SERVER_ADDR', null, '127.0.0.1');
+$host		= WT_Filter::server('SERVER_NAME', null, $host);
+$port		= WT_Filter::server('SERVER_PORT', null, '80');
+$port		= WT_Filter::server('HTTP_X_FORWARDED_PORT', '80|443', $port);
+// Ignore the default port.
+if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
+	$port = '';
+} else {
+	$port = ':' . $port;
+}
+
+define('WT_SERVER_NAME', $protocol . '://' . $host . $port);
 
 // SCRIPT_NAME should always be correct, but is not always present.
 // PHP_SELF should always be present, but may have trailing path: /path/to/script.php/FOO/BAR
