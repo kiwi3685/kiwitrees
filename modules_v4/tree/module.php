@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -126,10 +126,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 					}
 				');
 
-			if (WT_USE_LIGHTBOX) {
-				$album = new lightbox_WT_Module();
-				$album->getPreLoadContent();
-			}
 			echo $html;
 			break;
 
