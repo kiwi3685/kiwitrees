@@ -34,6 +34,7 @@ $controller
 	->pageHeader()
 	->addInlineJavascript('
 		jQuery("#sanity_accordion").accordion({heightStyle: "content", collapsible: true, active: false, header: "h5"});
+		jQuery("#sanity_accordion").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
 	');
 
@@ -170,8 +171,6 @@ $controller
 					<?php echo WT_I18N::translate('Mothers having children past a certain age'); ?>
 					<input name="NEW_SANITY_CHILD_O" id="child_o" type="text" value="<?php echo $child_o; ?>">
 				</li>
-<div style="opacity: 0.5; display:none;">COMING SOON !
-</div>
 			</ul>
 			<ul>
 				<h3><?php echo WT_I18N::translate('Duplicated data'); ?></h3>
@@ -236,14 +235,13 @@ $controller
 	</form>
 	<hr class="clearfloat">
 
-	<?php if (!WT_Filter::post('save')) {
-		exit;
-	} ?>
+	<?php if (WT_Filter::post('save')) { ?>
 
-	<div id="sanity_accordion">
-		<h3><?php echo WT_I18N::translate('Results'); ?></h3>
 		<div class="loading-image"></div>
-		<?php
+
+		<div id="sanity_accordion" style="visibility: hidden;">
+			<h3><?php echo WT_I18N::translate('Results'); ?></h3>
+			<?php
 			if (WT_Filter::post('baptised')) {
 				$data = birth_comparisons(array('BAPM', 'CHR'));
 				echo '<h5>' . WT_I18N::translate('%s born after baptism or christening', $data['count']) . '
@@ -321,37 +319,37 @@ $controller
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
-			if (WT_Filter::post('dupe_deat')) {
-				$data = duplicate_tag('DEAT');
-				echo '<h5>' . WT_I18N::translate('%s buried before death', $data['count']) . '
+			if (WT_Filter::post('dupe_birt')) {
+				$data = duplicate_tag('BIRT');
+				echo '<h5>' . WT_I18N::translate('%s with duplicate births recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
-			if (WT_Filter::post('dupe_birt')) {
-				$data = duplicate_tag('BIRT');
-				echo '<h5>' . WT_I18N::translate('%s buried before death', $data['count']) . '
+			if (WT_Filter::post('dupe_deat')) {
+				$data = duplicate_tag('DEAT');
+				echo '<h5>' . WT_I18N::translate('%s with duplicate deaths recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
 			if (WT_Filter::post('dupe_sex')) {
 				$data = duplicate_tag('SEX');
-				echo '<h5>' . WT_I18N::translate('%s buried before death', $data['count']) . '
+				echo '<h5>' . WT_I18N::translate('%s with duplicate genders recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
 			if (WT_Filter::post('dupe_buri')) {
 				$data = duplicate_tag('BURI');
-				echo '<h5>' . WT_I18N::translate('%s buried before death', $data['count']) . '
+				echo '<h5>' . WT_I18N::translate('%s with duplicate burials recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
 			if (WT_Filter::post('dupe_name')) {
 				$data = identical_name();
-				echo '<h5>' . WT_I18N::translate('%s buried before death', $data['count']) . '
+				echo '<h5>' . WT_I18N::translate('%s with duplicate names recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
@@ -372,6 +370,7 @@ $controller
 			}
 		?>
 	</div>
+	<?php } ?>
 </div> <!-- close sanity_check page div -->
 
 <?php
@@ -535,23 +534,29 @@ function invalid_tag($tag) {
 }
 
 function duplicate_tag($tag) {
-	$html	= '';
+	$html	= 'ul';
 	$count	= 0;
 	$start	= microtime(true);
 	$rows	= WT_DB::prepare(
-		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` REGEXP '(\n1 " . $tag . ")((.*\n.*)*)(\n1 " . $tag . ")(.*)'"
- 	)->execute(array(WT_GED_ID))->fetchAll();
+		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` LIKE '%1 '?'%1 '?'%'"
+ 	)->execute(array(WT_GED_ID, $tag, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$person	= WT_Person::getInstance($row->xref);
-		$html	.= '<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>';
+		$html	.= '
+			<li>
+				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+			</li>
+		';
 		$count	++;
 	}
+
+	$html .= '</ul>';
 	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
 
 function identical_name() {
-	$html	= '';
+	$html	= '<ul>';
 	$count	= 0;
 	$start	= microtime(true);
 	$rows	= WT_DB::prepare(
@@ -559,9 +564,15 @@ function identical_name() {
  	)->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
 		$person	= WT_Person::getInstance($row->xref);
-		$html	.= '<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>';
+		$html	.= '
+			<li>
+				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+			</li>
+		';
 		$count	++;
 	}
+
+	$html .= '</ul>';
 	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
@@ -723,11 +734,13 @@ function query_age($tag_array, $age) {
 				$result_tag	= $tag_array[$i];
 			break;
 		}
+		$link_url = $link_name = $result = false;
+
 		foreach ($rows as $row) {
 			switch ($result_tag) {
 				case 'DEAT';
 					$person = WT_Person::getInstance($row->xref);
-					if ($person) {
+					if ($person && !$person->getAllDeathDates()) {
 						$link_url	= $person->getHtmlUrl();
 						$link_name	= $person->getFullName();
 						$result 	= WT_I18N::translate('born in %1s, now aged %2s years', $row->birthyear, $row->age);
@@ -790,12 +803,14 @@ function query_age($tag_array, $age) {
 					}
 					break;
 			}
-				$html .= '
-					<li>
-						<a href="'. $link_url. '" target="_blank" rel="noopener noreferrer">'. $link_name. '</a>
-						<span class="details"> ' . $result . '</span>
-					</li>';
-				$count ++;
+				if ($link_url && $link_name && $result) {
+					$html .= '
+						<li>
+							<a href="'. $link_url. '" target="_blank" rel="noopener noreferrer">'. $link_name. '</a>
+							<span class="details"> ' . $result . '</span>
+						</li>';
+					$count ++;
+				}
 		}
 		$html .= '</ul>';
 		$time_elapsed_secs = number_format((microtime(true) - $start), 2);
