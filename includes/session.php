@@ -287,7 +287,7 @@ define('WT_DATA_DIR', realpath(WT_Site::preference('INDEX_DIRECTORY') ? WT_Site:
 // If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
 $SERVER_URL = WT_Site::preference('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME . WT_SCRIPT_PATH) {
-	header('Location: ' . $SERVER_URL.WT_SCRIPT_NAME . ($QUERY_STRING ? '?'.$QUERY_STRING : ''), true, 301);
+	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . ($QUERY_STRING ? '?' . $QUERY_STRING : ''), true, 301);
 	exit;
 }
 
@@ -526,16 +526,16 @@ if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 if (WT_Site::preference('LOGIN_URL')) {
 	define('WT_LOGIN_URL', WT_Site::preference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php');
+	define('WT_LOGIN_URL', WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere
 if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php') {
 	if (!$WT_TREE || !WT_IMPORTED) {
 		if (WT_USER_IS_ADMIN) {
-			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'admin_trees_manage.php');
+			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
 		} else {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(WT_SCRIPT_NAME.'?'.$QUERY_STRING));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . '?' . $QUERY_STRING));
 		}
 		exit;
 	}
