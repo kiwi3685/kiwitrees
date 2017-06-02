@@ -150,7 +150,20 @@ case 'importform':
 		<h4 class="accepted">' . /* I18N: %s is the name of a family tree */ WT_I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', $tree->tree_title_html) . '</h4>';
 		// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 		$previous_gedcom_filename = get_gedcom_setting($gedcom_id, 'gedcom_filename');
-		echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="' . WT_SCRIPT_NAME . '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'' . htmlspecialchars($previous_gedcom_filename) . '\' && \'\' != \'' . htmlspecialchars($previous_gedcom_filename) . '\') return confirm(\'' . htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')) . '\'); else return true;">
+		$old_file = WT_Filter::escapeHtml($previous_gedcom_filename);
+		echo '
+		<form
+			name="replaceform"
+			method="post"
+			enctype="multipart/form-data"
+			action="' . WT_SCRIPT_NAME . '"
+			onsubmit="
+				var newfile = document.replaceform.ged_name.value;
+				newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1);
+				if (newfile!=\'' . $old_file . '\' && \'' . $old_file . '\' != \'\')
+				return confirm(newfile\'' . WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')) . '\');
+				else return true;"
+		>
 			<input type="hidden" name="gedcom_id" value="' . $gedcom_id . '">' .
 			WT_Filter::getCsrf() . '
 			<input type="hidden" name="action" value="replace_upload">
