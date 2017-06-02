@@ -29,8 +29,8 @@ if (!defined('WT_KIWITREES')) {
 // Theme name - this needs double quotes, as file is scanned/parsed by script
 $theme_name = "_administration"; /* I18N: Name of a theme. */ WT_I18N::translate('_administration');
 
-$headerfile = WT_THEME_DIR.'header.php';
-$footerfile = WT_THEME_DIR.'footer.php';
+$headerfile = WT_THEME_DIR . 'header.php';
+$footerfile = WT_THEME_DIR . 'footer.php';
 
 //- main icons
 $WT_IMAGES = array(
