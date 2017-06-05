@@ -232,6 +232,7 @@ $level2_tags = array(
 	),
 	'AGNC' => array(
 		'EDUC',
+		'EVEN',
 		'GRAD',
 		'OCCU',
 		'ORDN',
