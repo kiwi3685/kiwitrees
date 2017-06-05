@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,26 +24,29 @@
 define('WT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
-$block_id=safe_GET('block_id');
-$block=WT_DB::prepare(
-	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
-)->execute(array($block_id))->fetchOneRow();
-
-// Check access.  (1) the block must exist, (2) gedcom blocks require
-// managers, (3) user blocks require the user or an admin
-if (!$block || $block->gedcom_id && !userGedcomAdmin(WT_USER_ID, $block->gedcom_id) || $block->user_id && $block->user_id!=WT_USER_ID && !WT_USER_IS_ADMIN) {
-	exit;
-}
-
-$class_name=$block->module_name.'_WT_Module';
-$block=new $class_name;
-
 $controller = new WT_Controller_Ajax();
 $controller->pageHeader();
 
 if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 	ckeditor_WT_Module::enableEditor($controller);
 }
+
+$block_id	= WT_Filter::getInteger('block_id');
+$block		= WT_DB::prepare("SELECT SQL_CACHE * FROM `##block` WHERE block_id=?")->execute(array($block_id))->fetchOneRow();
+
+// Check access.  (1) the block must exist, (2) gedcom blocks require
+// managers, (3) user blocks require the user or an admin
+$blocks = WT_Module::getActiveBlocks(WT_GED_ID);
+if (
+	!$block ||
+	!array_key_exists($block->module_name, $blocks) ||
+	$block->gedcom_id && !userGedcomAdmin(WT_USER_ID, $block->gedcom_id) ||
+	$block->user_id && $block->user_id != WT_USER_ID && !WT_USER_IS_ADMIN
+) {
+	exit;
+}
+
+$block = $blocks[$block->module_name];
 
 ?>
 <form name="block" method="post" action="block_edit.php?block_id=<?php echo $block_id; ?>" onsubmit="return modalDialogSubmitAjax(this);" >
