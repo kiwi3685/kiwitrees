@@ -219,7 +219,7 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Website URL'); ?></label>
 						<div class="input_group">
-							<?php echo select_edit_control('SERVER_URL', array(WT_SERVER_NAME.WT_SCRIPT_PATH=>WT_SERVER_NAME.WT_SCRIPT_PATH), '', null, WT_Site::preference('SERVER_URL')); ?>
+							<?php echo select_edit_control('SERVER_URL', array(WT_SERVER_NAME.WT_SCRIPT_PATH=>WT_SERVER_NAME.WT_SCRIPT_PATH), '', WT_Site::preference('SERVER_URL')); ?>
 							<div class="helpcontent">
 								<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b> you can specify the preferred URL here. Requests for the other URLs will be redirected to the preferred one. <span class="warning">If not required, leave this field blank.</span>'); ?>
 							</div>
