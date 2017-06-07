@@ -1593,6 +1593,8 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_check #sanity_options {margin:10px 30px;}
 #sanity_check h5 span.ui-icon-triangle-1-e,
 #sanity_check h5 span.ui-icon-triangle-1-s {background-position: -32px -12px; float: left;}
+#sanity_accordion ul {float: none;}
+#sanity_accordion ul ul.indent {margin:0 30px;}
 #sanity_accordion .ui-accordion-content ul {margin: 0; min-height: auto; padding: 0;}
 #sanity_accordion .result ul li {display: inline-block; font-weight: 900; padding: 5px; vertical-align: top; width: 250px;}
 

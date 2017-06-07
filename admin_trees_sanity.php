@@ -219,6 +219,12 @@ $controller
 					>
 					<?php echo WT_I18N::translate('Invalid age recorded'); ?>
 				</li>
+				<li class="facts_value" name="empty_tag" id="empty_tag" >
+					<input type="checkbox" name="empty_tag" value="empty_tag"
+						<?php if (WT_Filter::post('empty_tag')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Empty individual fact or event'); ?>
+				</li>
 			</ul>
 		</div>
 		<button type="submit" class="btn btn-primary clearfloat" >
@@ -368,6 +374,13 @@ $controller
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
+			if (WT_Filter::post('empty_tag')) {
+				$data = empty_tag();
+				echo '<h5>' . WT_I18N::translate('%s individuals with empty fact or event tags', $data['count']) . '
+					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
 		?>
 	</div>
 	<?php } ?>
@@ -484,7 +497,7 @@ function death_comparisons($tag_array) {
 }
 
 function missing_tag($tag) {
-	$html	= '';
+	$html	= '<ul>';
 	$count	= 0;
 	$start	= microtime(true);
 	$rows	= WT_DB::prepare(
@@ -492,9 +505,13 @@ function missing_tag($tag) {
 	)->execute(array(WT_GED_ID, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$person = WT_Person::getInstance($row->xref);
-		$html 	.= '<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>';
+		$html 	.= '
+			<li>
+				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+			</li>';
 		$count	++;
 	}
+	$html .= '</ul>';
 	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
@@ -527,7 +544,6 @@ function invalid_tag($tag) {
 			</li>';
 		$count	++;
 	}
-
 	$html .= '</ul>';
 	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
@@ -549,7 +565,45 @@ function duplicate_tag($tag) {
 		';
 		$count	++;
 	}
+	$html .= '</ul>';
+	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
+	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
+}
 
+function empty_tag() {
+	global $emptyfacts;
+	$html	= '<ul>';
+	$count	= 0;
+	$start	= microtime(true);
+	$person_list	= array();
+	$rows	= WT_DB::prepare(
+		"SELECT i_id AS xref FROM `##individuals` WHERE `i_file` = ?"
+	)->execute(array(WT_GED_ID))->fetchAll();
+	foreach ($rows as $row) {
+		$person		= WT_Person::getInstance($row->xref);
+		$indifacts	= $person->getIndiFacts();
+		$tag_list	= array();
+		foreach ($indifacts as $key=>$value) {
+			$fact	= $value->getDetail();
+			$tag	= $value->getTag();
+			if (!in_array($tag, $emptyfacts) && $fact == '') {
+				$tag_list[] = $tag;
+				$tag_count = array_count_values($tag_list)[$tag];
+				if (!in_array($person->getXref(), $person_list)) {
+					$count	++;
+					$person_list[] = $person->getXref();
+					$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>';
+				}
+					$html .= '<ul class="indent">';
+						if ($tag_count == 1) {
+							$html .= '<li><span>' . WT_I18N::translate('One or more empty %s tags ', $tag) . '</span></li>';
+						}
+					$html .= '</ul>';
+				$html .= '</li>';
+
+			}
+		}
+	}
 	$html .= '</ul>';
 	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
