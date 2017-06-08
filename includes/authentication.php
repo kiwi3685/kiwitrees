@@ -296,7 +296,7 @@ function addMessage($message) {
 			->execute(array($message['from'], $WT_REQUEST->getClientIp(), get_user_id($message['to']), $message['subject'], $message['body']));
 	}
 	if ($message['method'] != 'messaging') {
-		$original_subject = "[".WT_I18N::translate('Kiwitrees Message') . ($TEXT_DIRECTION == 'ltr'?"] ":" [") . $message['subject'];
+		$original_subject = "[" . WT_I18N::translate('Message from: %s', WT_TREE_TITLE) . ($TEXT_DIRECTION == 'ltr'?"] ":" [") . $message['subject'];
 		if (!$user_id_from) {
 			if (!empty($message['from_name'])) {
 				$original_email .= $message['from_name'] . "\r\n\r\n" . $message['body'];
