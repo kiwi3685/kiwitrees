@@ -172,7 +172,7 @@ default:
 
 	// hidden New Password block
 	echo '<div class="new_passwd">
-		<form class="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
+		<form class="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
@@ -222,9 +222,9 @@ case 'requestpw':
 		$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password.') . "\r\n\r\n";
 
 		if ($TEXT_DIRECTION == 'rtl') {
-			$mail_body .= "<a href=\"". WT_SERVER_NAME . WT_SCRIPT_PATH."\">". WT_SERVER_NAME . WT_SCRIPT_PATH."</a>";
+			$mail_body .= '<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . '</a>';
 		} else {
-			$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH;
+			$mail_body .= WT_SERVER_NAME . WT_SCRIPT_PATH;
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_mail.php';
@@ -238,7 +238,7 @@ case 'requestpw':
 		/* I18N: %s is a username */
 		WT_I18N::translate('A new password has been created and emailed to %s.  You can change this password after you login.', $user_name),
 		'</p></div>';
-	AddToLog('Password request was sent to user: '.$user_name, 'auth');
+	AddToLog('Password request was sent to user: ' . $user_name, 'auth');
 	echo '</div>';
 	break;
 
