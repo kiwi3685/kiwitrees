@@ -1580,7 +1580,7 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_check h3 {margin: 0;}
 #sanity_check h5 {clear: both; font-size: 1.0em; margin: 0;}
 #sanity_check h5 span {float:right; font: italic normal 12px arial;}
-#sanity_check ul {float: left; 	margin: 0 10px; min-height: 180px;}
+#sanity_check ul {float: left; 	margin: 0 10px; min-height: 180px; padding: 0;}
 #sanity_check li {line-height: 23px; list-style-type: none;}
 #sanity_check li input[type="text"] {clear: both; float: right; margin: 0 10px; max-width: 40px; padding: 2px; text-align: center;}
 #sanity_check li span.details {font-size: 90%; font-style: italic;}
@@ -1590,7 +1590,7 @@ html[dir=rtl] #module_admin, html[dir=rtl] #module_lang, html[dir=rtl] #module_a
 #sanity_check span.label {font-weight: 900; padding: 0 20px;}
 #sanity_accordion {width: 98%;}
 #sanity_accordion .result {border: 1px inset #D3D3D3; margin: 20px 10px; padding: 5px;}
-#sanity_check #sanity_options {margin:10px 30px;}
+#sanity_check #sanity_options {margin:10px 0;}
 #sanity_check h5 span.ui-icon-triangle-1-e,
 #sanity_check h5 span.ui-icon-triangle-1-s {background-position: -32px -12px; float: left;}
 #sanity_accordion ul {float: none;}

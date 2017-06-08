@@ -204,6 +204,12 @@ $controller
 					>
 					<?php echo WT_I18N::translate('Name'); ?>
 				</li>
+				<li class="facts_value" name="dupe_child" id="dupe_child" >
+					<input type="checkbox" name="dupe_child" value="dupe_child"
+						<?php if (WT_Filter::post('dupe_child')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Families with duplicately named children'); ?>
+				</li>
 			</ul>
 			<ul>
 				<h3><?php echo WT_I18N::translate('Missing or invalid data'); ?></h3>
@@ -223,7 +229,7 @@ $controller
 					<input type="checkbox" name="empty_tag" value="empty_tag"
 						<?php if (WT_Filter::post('empty_tag')) echo ' checked="checked"'?>
 					>
-					<?php echo WT_I18N::translate('Empty individual fact or event'); ?>
+					<?php echo WT_I18N::translate('Empty individual fact or event'); ?><span class="error">**</span>
 				</li>
 			</ul>
 		</div>
@@ -360,6 +366,13 @@ $controller
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
+			if (WT_Filter::post('dupe_child')) {
+				$data = duplicate_child();
+				echo '<h5>' . WT_I18N::translate('%s with duplicately named children', $data['count']) . '
+					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
 			if (WT_Filter::post('sex')) {
 				$data = missing_tag('SEX');
 				echo '<h5>' . WT_I18N::translate('%s have no gender recorded', $data['count']) . '
@@ -411,7 +424,7 @@ function birth_comparisons($tag_array, $tag2 = '') {
 								if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
 									$html .= '
 										<p>
-											<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
+											<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
 											<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
 											<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag2) . '</span>' . $event_date->Display() . '</div>
 										</p>';
@@ -428,9 +441,9 @@ function birth_comparisons($tag_array, $tag2 = '') {
 									if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
 										$html .= '
 											<p>
-												<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
+												<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
 												<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
-												<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag2) . '<a href="'. $child->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $child->getFullName(). '</a>' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $event_date->Display() . '</div>
+												<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag2) . '<a href="' . $child->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $child->getFullName(). '</a>' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $event_date->Display() . '</div>
 											</p>';
 										$count ++;
 									}
@@ -449,7 +462,7 @@ function birth_comparisons($tag_array, $tag2 = '') {
 						if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
 							$html .= '
 								<p>
-									<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
+									<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
 									<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
 									<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
 								</p>';
@@ -483,7 +496,7 @@ function death_comparisons($tag_array) {
 				if ($event_date->MinJD() && $death_date->MinJD() && ($age_diff < 0)) {
 					$html .= '
 						<p>
-							<div class="first"><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a></div>
+							<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
 							<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
 							<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel('DEAT') . '</span>' . $death_date->Display() . '</div>
 						</p>';
@@ -507,7 +520,7 @@ function missing_tag($tag) {
 		$person = WT_Person::getInstance($row->xref);
 		$html 	.= '
 			<li>
-				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
 			</li>';
 		$count	++;
 	}
@@ -528,7 +541,7 @@ function invalid_tag($tag) {
 		$person = WT_Person::getInstance($row->xref);
 		$html 	.= '
 			<li>
-				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
 			</li>';
 		$count	++;
 	}
@@ -540,7 +553,7 @@ function invalid_tag($tag) {
 		$family = WT_Family::getInstance($row->xref);
 		$html 	.= '
 			<li>
-				<a href="'. $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $family->getFullName(). '</a>
+				<a href="' . $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $family->getFullName(). '</a>
 			</li>';
 		$count	++;
 	}
@@ -550,20 +563,56 @@ function invalid_tag($tag) {
 }
 
 function duplicate_tag($tag) {
-	$html	= 'ul';
+	$html	= '<ul>';
 	$count	= 0;
 	$start	= microtime(true);
 	$rows	= WT_DB::prepare(
-		"SELECT i_id AS xref, i_gedcom AS gedrec FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` LIKE '%1 '?'%1 '?'%'"
+		"SELECT i_id AS xref
+		AS gedrec FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` LIKE '%1 '?'%1 '?'%'"
  	)->execute(array(WT_GED_ID, $tag, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$person	= WT_Person::getInstance($row->xref);
 		$html	.= '
 			<li>
-				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
 			</li>
 		';
 		$count	++;
+	}
+	$html .= '</ul>';
+	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
+	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
+}
+
+function duplicate_child() {
+	$html	= '<ul>';
+	$count	= 0;
+	$start	= microtime(true);
+	$rows	= WT_DB::prepare(
+		"SELECT f_id AS xref FROM `##families` WHERE `f_file`= ? AND ROUND((LENGTH(`f_gedcom`) - LENGTH(REPLACE(`f_gedcom`, '1 CHIL @', '')))/LENGTH('1 CHIL @')) > 1"
+	)->execute(array(WT_GED_ID))->fetchAll();
+	foreach ($rows as $row) {
+		$names = array();
+		$new_children = array();
+		$family	= WT_Family::getInstance($row->xref);
+		$children = $family->getChildren();
+		foreach ($children as $child) {
+			$names[]							= $child->getFullName();
+			$new_children[$child->getXref()]	= $child->getFullName();
+		}
+		asort($new_children);
+		if (count(array_unique($names)) < count($names)) {
+			$single_names = array_diff($names, array_diff_assoc($names, array_unique($names)));
+			$html .= '<li><a href="' . $family->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $family->getFullName(). '</a>';
+			foreach ($new_children as $xref => $name) {
+			    if (!in_array($name, $single_names)) {
+					$person	= WT_Person::getInstance($xref);
+					$html	.= '<ul class="indent"><li>' . $person->getSexImage('small') . ' - ' . $person->getLifespanName() . '</li></ul>';
+				}
+			}
+			$html	.= '</li>';
+			$count	++;
+		}
 	}
 	$html .= '</ul>';
 	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
@@ -592,13 +641,13 @@ function empty_tag() {
 				if (!in_array($person->getXref(), $person_list)) {
 					$count	++;
 					$person_list[] = $person->getXref();
-					$html .= '<li><a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>';
+					$html .= '<li><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>';
 				}
-					$html .= '<ul class="indent">';
-						if ($tag_count == 1) {
-							$html .= '<li><span>' . WT_I18N::translate('One or more empty %s tags ', $tag) . '</span></li>';
-						}
-					$html .= '</ul>';
+				$html .= '<ul class="indent">';
+					if ($tag_count == 1) {
+						$html .= '<li><span>' . WT_I18N::translate('One or more empty %s tags ', $tag) . '</span></li>';
+					}
+				$html .= '</ul>';
 				$html .= '</li>';
 
 			}
@@ -620,7 +669,7 @@ function identical_name() {
 		$person	= WT_Person::getInstance($row->xref);
 		$html	.= '
 			<li>
-				<a href="'. $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">'. $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
 			</li>
 		';
 		$count	++;
@@ -824,7 +873,7 @@ function query_age($tag_array, $age) {
 						$link_url2	= $person2->getHtmlUrl();
 						$link_name	= $person->getFullName();
 						$link_name2	= $person2->getFullName();
-						$child		= '<a href="'. $link_url2. '" target="_blank" rel="noopener noreferrer">'. $link_name2 . '</a>';
+						$child		= '<a href="' . $link_url2. '" target="_blank" rel="noopener noreferrer">' . $link_name2 . '</a>';
 						$result 	= WT_I18N::translate('gave birth before age %1s years to %2s in %3s', (int)($row->age / 365.25), $child, $row->dob);
 					}
 					break;
@@ -836,7 +885,7 @@ function query_age($tag_array, $age) {
 							$link_url2	= $person2->getHtmlUrl();
 							$link_name	= $person->getFullName();
 							$link_name2	= $person2->getFullName();
-							$child		= '<a href="'. $link_url2. '" target="_blank" rel="noopener noreferrer">'. $link_name2 . '</a>';
+							$child		= '<a href="' . $link_url2. '" target="_blank" rel="noopener noreferrer">' . $link_name2 . '</a>';
 							$result 	= WT_I18N::translate('gave birth after age %1s years to %2s in %3s', (int)($row->age / 365.25), $child, $row->dob);
 						}
 						break;
@@ -860,7 +909,7 @@ function query_age($tag_array, $age) {
 				if ($link_url && $link_name && $result) {
 					$html .= '
 						<li>
-							<a href="'. $link_url. '" target="_blank" rel="noopener noreferrer">'. $link_name. '</a>
+							<a href="' . $link_url. '" target="_blank" rel="noopener noreferrer">' . $link_name. '</a>
 							<span class="details"> ' . $result . '</span>
 						</li>';
 					$count ++;
