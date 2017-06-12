@@ -198,7 +198,7 @@ class WT_Controller_FancyTreeView {
 
 	// Reset all settings to default
 	public function ftv_reset($module) {
-		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name LIKE " . $module . " AND setting_name LIKE 'FTV%'")->execute();
+		WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name LIKE '" . $module . "' AND setting_name LIKE 'FTV%'")->execute();
 		AddToLog($module . ' reset to default values', 'auth');
 	}
 
@@ -808,9 +808,6 @@ class WT_Controller_FancyTreeView {
 		$occupations = $person->getAllFactsByType('OCCU', true);
 		$count		 = count($occupations);
 		foreach ($occupations as $num => $fact) {
-			$str = $fact->getDetail();
-			$str = rtrim($str, ".");
-
 			if ($num > 0 && $num === $count - 1) {
 				$html .= ' ' . /* I18N: Note the space at the end of the string */ WT_I18N::translate('and ');
 			} else {
@@ -823,9 +820,9 @@ class WT_Controller_FancyTreeView {
 			// In German all occupations are written with a capital.
 			// Are there any other languages where this is the case?
 			if (in_array(WT_LOCALE, array('de'))) {
-				$html .= rtrim(ucfirst($fact->getValue('OCCU')), ".");
+				$html .= rtrim(ucfirst($fact->getDetail()), ".");
 			} else {
-				$html .= rtrim(lcfirst($str), ".");
+				$html .= rtrim(lcfirst($fact->getDetail()), ".");
 			}
 
 			$date = $this->printDate($fact->getDate('OCCU'));
@@ -1148,17 +1145,17 @@ class WT_Controller_FancyTreeView {
 	 * @return array of xrefs
 	 * @return filename
 	 */
-	private function getParents($pid) {
-		$this->individual	= $this->getPerson($pid);
-		$family				= $this->individual->getPrimaryChildFamily();
-
-		if ($family) {
-			foreach ($family->getSpouses() as $parent) {
-				$parents[] = $parent->getXref();
-			}
-			return $parents;
-		}
-	}
+	 private function getParents($pid) {
+ 		$parents = array();
+ 		$this->individual	= $this->getPerson($pid);
+ 		$family				= $this->individual->getPrimaryChildFamily();
+ 		if ($family) {
+ 			foreach ($family->getSpouses() as $parent) {
+ 				$parents[] = $parent->getXref();
+ 			}
+ 		}
+ 		return $parents;
+ 	}
 
 	/**
 	 * Load the ancestors of an individual to retrieve the sosa numbers

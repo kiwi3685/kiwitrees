@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -354,7 +354,7 @@ $html = '<div id="fancy_treeview_descendants-config">
 				<label class="label">' . WT_I18N::translate('Show images') . '</label>' .
 				edit_field_yes_no('NEW_FTV_OPTIONS[SHOW_IMGS]', $ftv->options($this->getName(), 'show_imgs')) . '
 			</div>
-			<div id="images" style="display: none;">
+			<div id="images">
 				<div id="resize_thumbs" class="field">
 					<label class="label">' . WT_I18N::translate('Resize thumbnails') . '</label>' .
 					edit_field_yes_no('NEW_FTV_OPTIONS[RESIZE_THUMBS]', $ftv->options($this->getName(), 'resize_thumbs')) . '
@@ -364,13 +364,13 @@ $html = '<div id="fancy_treeview_descendants-config">
 						</span>
 					</div>
 				</div>
-				<div id="thumb_size" class="field" style="display: none;">
+				<div id="thumb_size" class="field">
 					<label class="label">' . WT_I18N::translate('Thumbnail size') . '</label>
 					<input type="text" size="3" id="NEW_FTV_OPTIONS[THUMB_SIZE]" name="NEW_FTV_OPTIONS[THUMB_SIZE]" value="' . $ftv->options($this->getName(), 'thumb_size') . '" />
 					&nbsp;' .
 					select_edit_control('NEW_FTV_OPTIONS[THUMB_RESIZE_FORMAT]', array('1' => WT_I18N::translate('percent'), '2' => WT_I18N::translate('pixels')), null, $ftv->options($this->getName(), 'thumb_resize_format')) . '
 				</div>
-				<div id="square_thumbs" class="field" style="display: none;">
+				<div id="square_thumbs" class="field">
 					<label class="label">' . WT_I18N::translate('Use square thumbnails') . '</label>' .
 					edit_field_yes_no('NEW_FTV_OPTIONS[USE_SQUARE_THUMBS]', $ftv->options($this->getName(), 'use_square_thumbs')) . '
 				</div>
