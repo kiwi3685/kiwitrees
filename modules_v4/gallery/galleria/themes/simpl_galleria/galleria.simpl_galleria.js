@@ -9,6 +9,7 @@
  (function ($) {
     Galleria.addTheme({
         name: "Simpl_galleria",
+		version:1.5,
         author: "Kiwitrees",
         css: "galleria.simpl_galleria.css",
         defaults: {

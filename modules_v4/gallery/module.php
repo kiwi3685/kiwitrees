@@ -819,7 +819,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 						$gallery_links.='<div class="edit_links">';
 							$gallery_links .='<div class="image_option"><a href="'. $media->getHtmlUrl(). '"><img src="'.WT_THEME_URL.'images/edit.png" title="'.WT_I18N::translate('Edit').'"></a></div>';
 							if (WT_USER_GEDCOM_ADMIN) {
-								if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+								if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
 									$gallery_links.='<div class="image_option"><a href="inverselink.php?mediaid=' . $rowm['m_id'] . '&linkto=manage&ged=' . WT_GEDCOM . '" target="_blank" rel="noopener noreferrer"><img src="' . WT_THEME_URL . 'images/link.png" title="' . WT_I18N::translate('Manage links') . '"></a></div>';
 								}
 							}
