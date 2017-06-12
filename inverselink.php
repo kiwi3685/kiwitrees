@@ -40,11 +40,11 @@ $update_CHAN = WT_Filter::get('preserve_last_changed');
 $paramok =  true;
 if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 
-if ($linkto == "manage") {
+//if ($linkto == "manage") {
 	$controller = new WT_Controller_Page();
-} elseif ($linkto == "person") {
-	$controller = new WT_Controller_Page();
-}
+//} elseif ($linkto == "person") {
+//	$controller = new WT_Controller_Page();
+//}
 
 $controller
 	->requireEditorLogin()
@@ -211,8 +211,7 @@ if ($action == 'choose' && $paramok) {
 							<?php echo WT_I18N::translate('close'); ?>
 						</button>
 					</p>
-				<?php }
-				if ($linkto == "person") { ?>
+				<?php } else { ?>
 					<div class="LINK_factdiv">
 						<label><?php echo WT_I18N::translate('Media'); ?></label>
 						<div class="input">
@@ -263,7 +262,7 @@ if ($action == 'choose' && $paramok) {
 				linkMedia($mediaid, $addLinkId, 1, $update_CHAN != 'no_change');
 			}
 		}
-	} elseif ($linkto == "person") {
+	} else {
 		linkMedia($mediaid, $linktoid, 1, $update_CHAN != 'no_change');
 	}
 	$controller->addInlineJavascript('closePopupAndReloadParent();');

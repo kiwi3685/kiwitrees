@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -73,7 +73,7 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	exit;
 }
 
-$linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
+$linkToID = $controller->record->getXref(); // Tell addmedia.php what to link to
 
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
@@ -131,7 +131,7 @@ echo '<div id="source-tabs">
 				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', WT_I18N::translate('Add a media object'), '</a>';
 				echo help_link('OBJE');
 				echo '<br>';
-				echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=source\', \'_blank\', find_window_specs); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
+				echo '<a href="inverselink.php?linktoid=' . $controller->record->getXref() . '&amp;linkto=source" target="_blank">' . WT_I18N::translate('Link to an existing media object') . '</a>';
 				echo '</td></tr>';
 			}
 		}
