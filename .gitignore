@@ -22,3 +22,6 @@
 /library.tcpdf/tools
 /modules_v4/gallery/galleria/themes/azur
 /modules_v4/gallery/galleria/themes/fullscreen
+/library/uuid/
+/library/uuid/*
+!/library/uuid/src
