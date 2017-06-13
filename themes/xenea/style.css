@@ -586,6 +586,7 @@ font-size:10px;}
 .blockcontent .list_value, .blockcontent .list_value_wrap { border:0; border-top:solid #84beff 1px; border-right:solid #84beff 1px;}
 
 .blockheader {font-weight:bold;}
+.blockheader i {float: right;}
 
 img.block { border:none; height:20px; vertical-align:middle;}
 
@@ -1463,7 +1464,6 @@ dd .editlink, dd .deletelink {float:right;}
 .ui-accordion .ui-accordion-header .ui-icon {position:absolute;left:.5em;top:50%;margin-top:-8px;}
 .ui-accordion .ui-accordion-content {padding:0 0.5em;border-top:0;margin-top:1px;position:relative;top:1px;padding:0 5px;overflow:visible;display:none;}
 .ui-accordion .ui-accordion-content-active {display:block;}
-.ui-accordion .ui-accordion-header a {padding:0.5em;}
 .ui-helper-reset {line-height:1.6;}
 .ui-state-highlight a {color:#ff0000;}
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {padding: 4px 8px;}
@@ -1647,11 +1647,11 @@ div.dt-buttons a.dt-button {
 .nav_content {width:100%;padding:10px 0;}
 .nav_content .facts_label {width:75px;}
 .famnav_title{font-weight: bold;display: block;padding: 5px 0;}
-.flyout {color:#000;text-align:left;margin-top:-20px;right:210px;padding:3px;}
-.flyout2 {color:#000;text-align:left;margin-top:-2px;left:40px;padding:3px;}
+.flyout {color:#000;text-align:left;margin-top:-20px;right:210px;padding:3px;min-width: 120px;white-space: normal;}
+.flyout2 {color:#000;text-align:left;margin-top:-2px;padding:3px;}
 .flyout2 a:hover {color:#ff0000;}
-.flyout4 {font-weight: bold;color:#000000;text-align:left;margin-top:0;margin-left:0;padding:3px;}
 .flyout3 {display:block;background:none;border:none;text-decoration:none;text-align:left;margin-top:0;left:0;padding:0;}
+.flyout4 {font-weight: bold;color:#000000;text-align:left;margin-top:0;margin-left:0;padding:3px;}
 .famnav_link {font-size:12px;padding:0;width:100%;}
 
 [dir=rtl] .flyout {text-align:right;left:210px;}
@@ -3507,7 +3507,6 @@ textarea#NOTE {
 }
 
 #research_links {
-	margin-bottom: 20px;
 	overflow: hidden;
 }
 
