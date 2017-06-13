@@ -30,12 +30,8 @@ $controller
 	->pageHeader()
 	->setPageTitle(WT_I18N::translate('Search'))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('
-		autocomplete();
-		jQuery("#search-tabs").tabs();
-		jQuery("#search-page").css("visibility", "visible");
-		jQuery(".loading-image").css("display", "none");
-	');
+	->addInlineJavascript('autocomplete();');
+
 ?>
 
 <script>
@@ -88,6 +84,24 @@ $controller
 		return true;
 	}
 </script>
+
+<?php
+$action = WT_Filter::get('action');
+// Set active tab based on view parameter from url
+$action == 'general'	? $active = '#general' : $active = '#general';
+$action == 'soundex'	? $active = '#soundex' : $active = '#general';
+$action == 'replace'	? $active = '#replace' : $active = '#general';
+$action == 'advanced'	? $active = '#advanced' : $active = '#general';
+
+$controller ->addInlineJavascript('
+		jQuery("#search-tabs").tabs();
+		var index = jQuery("#search-tabs a[href=\"' . $active . '\"]").parent().index();
+		jQuery("#search-tabs").tabs("option", "active", index);
+		jQuery("#search-page").css("visibility", "visible");
+		jQuery(".loading-image").css("display", "none");
+	');
+?>
+
 <div class="loading-image">&nbsp;</div>
 <div id="search-page" style="visibility: hidden;">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -104,7 +118,7 @@ $controller
 		</ul>
 		<!-- General search form -->
 		<div id="general">
-			<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php#general">
+			<form name="searchform" onsubmit="return checknames(this);">
 				<input type="hidden" name="action" value="general">
 				<input type="hidden" name="isPostBack" value="true">
 				<div class="search-page-table">
@@ -158,7 +172,7 @@ $controller
 		</div>
 		<!-- soundex search form -->
 		<div id="soundex">
-			<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php#soundex">
+			<form name="searchform" onsubmit="return checknames(this);">
 				<input type="hidden" name="action" value="soundex">
 				<input type="hidden" name="isPostBack" value="true">
 				<div class="search-page-table">
@@ -206,7 +220,7 @@ $controller
 		<!-- Search and replace Search form -->
 		<?php if (WT_USER_GEDCOM_ADMIN) { ?>
 			<div id="replace">
-				<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php">
+				<form name="searchform" onsubmit="return checknames(this);">
 					<input type="hidden" name="action" value="replace">
 					<input type="hidden" name="isPostBack" value="true">
 					<div class="search-page-table">
@@ -365,7 +379,7 @@ $controller
 						elm.appendChild(sel);
 					}
 				</script>
-				<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php#advanced">
+				<form name="searchform" onsubmit="return checknames(this);">
 					<input type="hidden" name="action" value="advanced">
 					<input type="hidden" name="isPostBack" value="true">
 					<table id="field_table">

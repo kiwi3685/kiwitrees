@@ -105,9 +105,9 @@ if ($filterev == 'ALL') {
 }
 
 // Set active tab based on view parameter from url
-$active = 0;
-if ($view == 'month') {$active = 1;}
-if ($view == 'year')  {$active = 2;}
+$active = '#cal_day';
+if ($view == 'month') {$active = '#cal_month';}
+if ($view == 'year')  {$active = '#cal_year';}
 
 $controller = new WT_Controller_Page();
 $controller
@@ -115,7 +115,9 @@ $controller
 	->setPageTitle(WT_I18N::translate('Anniversary calendar'))
 	->pageHeader()
 	->addInlineJavascript('
-		jQuery("#cal-tabs").tabs({ active: ' . $active . ' });
+		jQuery("#cal-tabs").tabs();
+		var index = jQuery("#cal-tabs a[href=\"' . $active . '\"]").parent().index();
+		jQuery("#cal-tabs").tabs("option", "active", index);
 		jQuery("#cal-tabs").css("visibility", "visible");
 		jQuery(".loading-image").css("display", "none");
 	');
