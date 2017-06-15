@@ -62,6 +62,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				.on("click", ".flyout a", function() {
 					return false;
 				})
+				.on("click", ".flyout3", function() {
+					window.location.href = jQuery(this).data("href");
+					return false;
+				});
 		');
 		$person = WT_Person::getInstance($controller->record->getXref());
 
@@ -248,10 +252,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 */
 	private function getHTML($person, $showUnknown = false) {
 		if ($person instanceof WT_Person) {
-			return '
-				<div class="flyout3">
-				 	<a href="' . $person->getHtmlUrl() . '" rel="noopener noreferrer">' . $person->getFullName() . '</a>
-				</div>';
+			return '<div class="flyout3" data-href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</div>';
 		} elseif ($showUnknown) {
 			return '<div class="flyout4">(' . WT_I18N::translate('unknown') . ')</div>';
 		} else {
@@ -290,10 +291,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					if ($husb || $children) {
 						if ($husb) {
 							$person_parent = true;
-							$parentlinks .= '
-								<a class="flyout3" href="' . $husb->getHtmlUrl() . '" rel="noopener noreferrer">'.
-									$husb->getFullName(). '
-								</a>';
+							$parentlinks .= '<div class="flyout3" data-href="' . $husb->getHtmlUrl() . '">' . $husb->getFullName() . '</div>';
 							$natdad = true;
 						}
 					}
@@ -302,10 +300,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					if ($wife || $children) {
 						if ($wife) {
 							$person_parent = true;
-							$parentlinks .= '
-								<a class="flyout3" href="' . $wife->getHtmlUrl() . '" rel="noopener noreferrer">'.
-									$wife->getFullName().
-								'</a>';
+							$parentlinks .= '<div class="flyout3" data-href="' . $wife->getHtmlUrl() . '">' . $wife->getFullName() . '</div>';
 							$natmom = true;
 						}
 					}
@@ -325,10 +320,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						if ($husb || $children) {
 							if ($husb) {
 								$person_step = true;
-								$parentlinks .= '
-									<a class="flyout3" href="' . $husb->getHtmlUrl() . '" rel="noopener noreferrer">'.
-										$husb->getFullName().
-									'</a>';
+								$parentlinks .= '<div class="flyout3" data-href="' . $husb->getHtmlUrl() . '">' . $husb->getFullName() . '</div>';
 							}
 						}
 					}
@@ -338,10 +330,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						if ($wife || $children) {
 							if ($wife) {
 								$person_step = true;
-								$parentlinks .= '
-									<a class="flyout3" href="' . $wife->getHtmlUrl() . '" rel="noopener noreferrer">'.
-										$wife->getFullName().'
-									</a>';
+								$parentlinks .= '<div class="flyout3" data-href="' . $wife->getHtmlUrl() . '">' . $wife->getFullName() . '</div>';
 							}
 						}
 					}
@@ -356,10 +345,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				// Spouse ------------------------------
 				if ($spouse || $children) {
 					if ($spouse) {
-						$spouselinks .= '
-							<a class="flyout3" href="' . $spouse->getHtmlUrl() . '" rel="noopener noreferrer">'.
-								$spouse->getFullName().'
-							</a>';
+						$spouselinks .= '<div class="flyout3" data-href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</div>';
 						$persons = true;
 					}
 				}
@@ -369,11 +355,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$persons = true;
 					$spouselinks .= '
 						<ul class="clist">
-							<li class="flyout3">
-								<a href="' . $child->getHtmlUrl() . '" rel="noopener noreferrer">'.
-									$child->getFullName(). '
-								</a>
-							</li>
+							<li class="flyout3" data-href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</li>
 						</ul>';
 				}
 			}
