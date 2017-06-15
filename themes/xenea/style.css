@@ -1845,6 +1845,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(images/l
 a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/rarrow2.png);}
 .icon-rdarrow              {width:20px;height:20px;background-image:url(images/rdarrow.png);}
 .icon-reminder             {width:15px;height:12px;background-image:url(images/reminder.png);}
+.fa-save				   {width:16px;height:16px;background-image:url(images/buttons/save-icon.png);display: inline-block;}
 .fa-times                  {width:16px;height:16px;background-image:url(images/delete.png);display: inline-block;}
 .icon-repo-list            {width:25px;height:25px;background-image:url(images/repository.png);}
 .icon-repository           {width:25px;height:25px;background-image:url(images/repository.png);}
@@ -3625,12 +3626,14 @@ textarea#NOTE {
        display:none;
    }
    #header {
-       height: auto;
        text-align: center;
    }
    #header .title {
        position: relative;
        text-align: center;
+   }
+   #header .subtitle {
+	   display: none;
    }
    #header #extra-menu, #header .header_search {
        float:none;
