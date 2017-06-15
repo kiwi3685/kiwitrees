@@ -3291,7 +3291,7 @@ div.widget {
 	width: 100%;
 }
 
-.cens_sour input {
+.cens_container input {
 	font-weight:normal;
 	width: 99%;
 }
@@ -3840,4 +3840,36 @@ textarea#NOTE {
 	   white-space: normal;
    }
 
+}
+
+/* For warning message about missing javascript in \library\WT\Controller\Base.php */
+.noscript_modal {
+	background-color: #d7ecfa;
+	border: 1px solid #1779ba;
+	border-radius: 4px;
+	padding: 1em;
+	position: fixed;
+	top: 50px;
+	left: 35%;
+	width: 30%;
+	z-index: 1050;
+}
+.noscript_modal h2 {
+	margin: 0;
+}
+
+.noscript_modal .button {
+	background-color: #1779ba;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #fefefe;
+	cursor: pointer;
+	margin: 0 auto;
+	width: 200px;
+	padding: 0.85em 1em;
+	display: block;
+	text-align: center;
+}
+input.modal-closing-trick:checked ~ div {
+display: none !important;
 }

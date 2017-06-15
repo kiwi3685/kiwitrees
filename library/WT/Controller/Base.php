@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -77,6 +77,18 @@ class WT_Controller_Base {
 	// We've collected up Javascript fragments while rendering the page.
 	// Now display them in order.
 	public function getJavascript() {
+		$noscript = '
+		<noscript>
+			<input type="checkbox" class="modal-closing-trick" id="modal-closing-trick">
+		    <div class="noscript-overlay"></div>
+		    <div class="noscript_modal">' .
+				/* I18N: Warning about missing JavaScript. Note capitalisation of JavaScript */ WT_I18N::translate('<h2>Kiwitrees doesn\'t work well without JavaScript, and in your browser it is missing, broken, or disabled.</h2>
+				<p>If you want to know how to enable it click <a href="http://www.enable-javascript.com/" target="_blank">here</a></p>') . '
+				<label class="button" for="modal-closing-trick">' .
+					WT_I18N::translate('Close this message') . '
+				</label>
+			</div>
+		</noscript>';
 		$javascript1 = '';
 		$javascript2 = '';
 		$javascript3 = '';
@@ -110,7 +122,7 @@ class WT_Controller_Base {
 		);
 		$this->external_javascript = array();
 
-		return '<script>' . $javascript1 . '</script>' . $javascript2 . '<script>' . $javascript3 . '</script>';
+		return $noscript . '<script>' . $javascript1 . '</script>' . $javascript2 . '<script>' . $javascript3 . '</script>';
 	}
 
 	// Print the page header, using the theme
