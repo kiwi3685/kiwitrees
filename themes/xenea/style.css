@@ -3397,6 +3397,18 @@ textarea#NOTE {
 	min-width: 0;
 	padding: 3px;
 }
+.note_details table,
+.note_details table td {
+	border: none
+}
+table.ca {
+	border-collapse: collapse
+}
+table.ca td {
+	border: 1px solid #aaa;
+	font-size: 90%;
+	padding: 3px;
+}
 /* ------------------ */
 
 /* Styles for media link page */

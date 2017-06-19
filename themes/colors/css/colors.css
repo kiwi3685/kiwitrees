@@ -459,7 +459,10 @@ ul {margin:8px;padding-left:15px;padding-right:15px;}
 
 #compact_chart, #ancestry_chart, #familybook_chart, #hourglass_chart {margin:20px;}
 
-.button {width:60px;}
+.button {
+	padding: 5px 8px;
+	min-width: 80px;
+}
 .center {text-align:center;}
 .compact_view {cursor:url(../images/zoomin.png),n-resize;}
 .compact_view p {font-size:90%;margin:0;}
@@ -1611,6 +1614,7 @@ a.icon-larrow:hover        {width:20px;height:20px;background-image:url(../image
 a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(../images/rarrow2.png);}
 .icon-rdarrow              {width:20px;height:20px;background-image:url(../images/rdarrow.png);}
 .icon-reminder             {width:15px;height:12px;background-image:url(../images/reminder.png);}
+.fa-save				   {width:16px;height:16px;background-image:url(../images/buttons/save-icon.png);display: inline-block;}
 .fa-times              	   {width:16px;height:16px;background-image:url(../images/delete.png);display: inline-block;}
 .icon-repo-list            {width:22px;height:22px;background-image:url(../images/repository.png);}
 .icon-repository           {width:22px;height:22px;background-image:url(../images/repository.png);}
@@ -3177,6 +3181,18 @@ textarea#NOTE {
 	background-color: #ddd;
 	border: 0;
 	min-width: 0;
+	padding: 3px;
+}
+.note_details table,
+.note_details table td {
+	border: none
+}
+table.ca {
+	border-collapse: collapse
+}
+table.ca td {
+	border: 1px solid #aaa;
+	font-size: 90%;
 	padding: 3px;
 }
 /* ------------------ */

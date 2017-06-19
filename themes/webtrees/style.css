@@ -100,6 +100,11 @@ input:required:invalid, textarea:required:invalid {background-image:url(data:ima
 
 .optionbox a img {}
 .button {width:60px;}
+button.btn {
+	padding: 5px 8px;
+	min-width: 80px;
+}
+
 .gedcom_table {border:1px solid #81a9cb;margin:0;width:99%;}
 .alpha_index {color:#999999;}
 .person_box   {background-color:#edf7fd;border:solid #81a9cb 1px;padding:3px;}
@@ -1598,6 +1603,7 @@ a.icon-rarrow:hover {width:20px;height:20px;background-image:url(images/rarrow2.
 .icon-rdarrow {width:20px;height:20px;background-image:url(images/rdarrow.png);}
 a.icon-rdarrow:hover {width:20px;height:20px;background-image:url(images/rdarrow2.png);}
 .icon-reminder {width:15px;height:12px;background-image:url(images/reminder.png);}
+.fa-save {width:20px;height:20px;background-image:url(images/buttons/save-icon.png);display: inline-block;background-repeat:no-repeat;}
 .fa-times {width:20px;height:20px;background-image:url(images/remove.png);display: inline-block;}
 .icon-repo-list {width:20px;height:20px;background-image:url(images/repository.png);}
 .icon-repository {width:20px;height:20px;background-image:url(images/repository.png);}
@@ -3148,6 +3154,18 @@ textarea#NOTE {
 	background-color: #ddd;
 	border: 0;
 	min-width: 0;
+	padding: 3px;
+}
+.note_details table,
+.note_details table td {
+	border: none
+}
+table.ca {
+	border-collapse: collapse
+}
+table.ca td {
+	border: 1px solid #aaa;
+	font-size: 90%;
 	padding: 3px;
 }
 /* ------------------ */
