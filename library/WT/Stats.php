@@ -94,26 +94,30 @@ class WT_Stats {
 		return implode('<br>', $examples);
 	}
 
-	/*
-	* Get tags and their parsed results.
-	*/
-	function getTags($text) {
+	/**
+	 * Get tags and their parsed results.
+	 *
+	 * @param string $text
+	 *
+	 * @return string[][]
+	 */
+	private function getTags($text) {
 		static $funcs;
 
 		// Retrive all class methods
-		isset($funcs) || $funcs = get_class_methods($this);
+		isset($funcs) or $funcs = get_class_methods($this);
 
 		// Extract all tags from the provided text
-		$ct = preg_match_all("/#([^#]+)(?=#)/", (string)$text, $match);
-		$tags = $match[1];
-		$c = count($tags);
-		$new_tags = array(); // tag to replace
+		preg_match_all("/#([^#]+)(?=#)/", (string) $text, $match);
+		$tags       = $match[1];
+		$c          = count($tags);
+		$new_tags   = array(); // tag to replace
 		$new_values = array(); // value to replace it with
 
 		/*
-		* Parse block tags.
-		*/
-		for ($i=0; $i < $c; $i++) {
+		 * Parse block tags.
+		 */
+		for ($i = 0; $i < $c; $i++) {
 			$full_tag = $tags[$i];
 			// Added for new parameter support
 			$params = explode(':', $tags[$i]);
@@ -123,32 +127,29 @@ class WT_Stats {
 				$params = array();
 			}
 
-			// Skip non-tags and non-allowed tags
-			if ($tags[$i][0] == '_' || in_array($tags[$i], self::$_not_allowed)) {
-				continue;
-			}
-
 			// Generate the replacement value for the tag
 			if (method_exists($this, $tags[$i])) {
-				$new_tags[] = "#{$full_tag}#";
-				$new_values[]=call_user_func_array(array($this, $tags[$i]), array($params));
-			} elseif ($tags[$i] == 'help') {
-				// re-merge, just in case
-				$new_tags[] = "#{$full_tag}#";
-				$new_values[] = help_link(join(':', $params));
+				$new_tags[]   = '#' . $full_tag . '#';
+				$new_values[] = call_user_func_array(array($this, $tags[$i]), array($params));
 			}
 		}
+
 		return array($new_tags, $new_values);
 	}
 
-	/*
-	* Embed tags in text
-	*/
-	function embedTags($text) {
-		if (strpos($text, '#')!==false) {
+	/**
+	 * Embed tags in text
+	 *
+	 * @param string $text
+	 *
+	 * @return string
+	 */
+	public function embedTags($text) {
+		if (strpos($text, '#') !== false) {
 			list($new_tags, $new_values) = $this->getTags($text);
-			$text = str_replace($new_tags, $new_values, $text);
+			$text                        = str_replace($new_tags, $new_values, $text);
 		}
+
 		return $text;
 	}
 
@@ -3296,7 +3297,7 @@ class WT_Stats {
 			")->fetchAll();
 
 		$nameList = array();
-		
+
 		foreach ($rows as $row) {
 			// Split “John Thomas” into “John” and “Thomas” and count against both totals
 			foreach (explode(' ', $row->n_givn) as $given) {
@@ -3340,7 +3341,7 @@ class WT_Stats {
 			switch ($type) {
 			case 'table':
 			global $controller;
-				$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+				$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 				$controller
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
@@ -3691,31 +3692,61 @@ class WT_Stats {
 		return $rows;
 	}
 
-	// These functions provide access to additional non-stats features
-	// for use in the HTML block.
+	/**
+	 * Find the favorites for the tree.
+	 *
+	 * @return string
+	 */
+	public function gedcomFavorites() {
+		if (WT_Module::getModuleByName('gedcom_favorites')) {
+			$block = new gedcom_favorites_WT_Module;
 
-	static function _getFavorites($isged=true) {
-		global $GEDCOM;
-
-		ob_start();
-		if ($isged) {
-			$class_name = 'gedcom_favorites_WT_Module';
-			$block = new $class_name;
-			$content = $block->getBlock($GEDCOM);
+			return $block->getBlock(0, false);
+		} else {
+			return '';
 		}
-		else if (WT_USER_ID) {
-			$class_name = 'widget_favorites_WT_Module';
-			$block = new $class_name;
-			$content = $block->getWidget($GEDCOM);
-		}
-		return ob_get_clean();
 	}
 
-	static function gedcomFavorites() {return self::_getFavorites(true);}
-	static function userFavorites() {return self::_getFavorites(false);}
+	/**
+	 * Find the favorites for the user.
+	 *
+	 * @return string
+	 */
+	public function userFavorites() {
+		if (WT_USER_ID && WT_Module::getModuleByName('user_favorites')) {
+			$block = new widget_favorites_WT_Module;
 
-	static function totalGedcomFavorites() {return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));}
-	static function totalUserFavorites() {return count(widget_favorites_WT_Module::getFavorites(WT_USER_ID));}
+			return $block->getBlock(0, false);
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Find the number of favorites for the tree.
+	 *
+	 * @return int
+	 */
+	public function totalGedcomFavorites() {
+		if (WT_Module::getModuleByName('gedcom_favorites')) {
+			return count(gedcom_favorites_WT_Module::getFavorites($this->tree->getTreeId()));
+		} else {
+			return 0;
+		}
+	}
+
+	/**
+	 * Find the number of favorites for the user.
+	 *
+	 * @return int
+	 */
+	public function totalUserFavorites() {
+		if (WT_Module::getModuleByName('user_favorites')) {
+			return count(widget_favorites_WT_Module::getFavorites(Auth::id()));
+		} else {
+			return 0;
+		}
+	}
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Other blocks                                                              //

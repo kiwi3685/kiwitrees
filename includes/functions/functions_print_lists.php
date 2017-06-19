@@ -31,7 +31,7 @@ function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
 	if (WT_SCRIPT_NAME == 'search.php') {
-		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
 		$table_id = 'indiTable';
 	}
@@ -528,7 +528,7 @@ function format_fam_table($datalist, $option = '') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
 
 	if (WT_SCRIPT_NAME == 'search.php') {
-		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
 		$table_id = 'famTable';
 	}
@@ -1059,7 +1059,7 @@ function format_sour_table($datalist) {
 	$html = '';
 
 	if (WT_SCRIPT_NAME == 'search.php') {
-		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
 		$table_id = 'sourTable';
 	}
@@ -1236,7 +1236,7 @@ function format_note_table($datalist) {
 	$html = '';
 
 	if (WT_SCRIPT_NAME == 'search.php') {
-		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
 		$table_id = 'noteTable';
 	}
@@ -1377,7 +1377,7 @@ function format_story_table($datalist) {
 	$html = '';
 
 		if (WT_SCRIPT_NAME == 'search.php') {
-			$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+			$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 		} else {
 			$table_id = 'storyTable';
 		}
@@ -1472,7 +1472,7 @@ function format_repo_table($repos) {
 	$html = '';
 
 	if (WT_SCRIPT_NAME == 'search.php') {
-		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
 		$table_id = 'repoTable';
 	}
@@ -1584,7 +1584,7 @@ function format_media_table($datalist) {
 	$html = '';
 
 	if (WT_SCRIPT_NAME == 'search.php') {
-		$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 	} else {
 		$table_id = 'mediaTable';
 	}
@@ -1961,7 +1961,7 @@ function print_changes_table($change_ids, $sort) {
 	$return = '';
 	$n = 0;
 
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 
 	switch ($sort) {
 	case 'name':        //name
@@ -2077,7 +2077,7 @@ function print_changes_table($change_ids, $sort) {
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $controller;
 	$html = '';
-	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.(int)(microtime(true)*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addInlineJavascript('

@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,7 +38,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $GEDCOM;
 
 		// Only show this block for certain languages
@@ -50,8 +50,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 		* Select GEDCOM
 		*/
-		$gedcom=get_block_setting($block_id, 'gedcom');
-		switch($gedcom) {
+		$gedcom = get_block_setting($block_id, 'gedcom');
+		switch ($gedcom) {
 		case '__current__':
 			break;
 		case '':
@@ -60,7 +60,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			$GEDCOM=WT_Site::preference('DEFAULT_GEDCOM');
 			if (!$GEDCOM) {
 				foreach (WT_Tree::getAll() as $tree) {
-					$GEDCOM=$tree->tree_name;
+					$GEDCOM = $tree->tree_name;
 					break;
 				}
 			}
@@ -73,13 +73,13 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 		* Retrieve text, process embedded variables
 		*/
-		$title_tmp = get_block_setting($block_id, 'title');
-		$html = get_block_setting($block_id, 'html');
+		$title_tmp	= get_block_setting($block_id, 'title');
+		$html		= get_block_setting($block_id, 'html');
 
-		if ( (strpos($title_tmp, '#')!==false) || (strpos($html, '#')!==false) ) {
-			$stats = new WT_Stats($GEDCOM);
-			$title_tmp = $stats->embedTags($title_tmp);
-			$html = $stats->embedTags($html);
+		if ( (strpos($title_tmp, '#') !== false) || (strpos($html, '#') !== false) ) {
+			$stats		= new WT_Stats($GEDCOM);
+			$title_tmp	= $stats->embedTags($title_tmp);
+			$html		= $stats->embedTags($html);
 		}
 
 		/*
@@ -90,10 +90,10 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 		* Start Of Output
 		*/
-		$id = $this->getName().$block_id;
-		$class = $this->getName().'_block';
-		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title = '<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id		= $this->getName() . $block_id;
+		$class	= $this->getName() . '_block';
+		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype ==='user' && WT_USER_ID) {
+			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
 		}
@@ -107,9 +107,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if (get_block_setting($block_id, 'block', false)) {
-				require WT_THEME_DIR.'templates/block_small_temp.php';
+				require WT_THEME_DIR . 'templates/block_small_temp.php';
 			} else {
-				require WT_THEME_DIR.'templates/block_main_temp.php';
+				require WT_THEME_DIR . 'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;

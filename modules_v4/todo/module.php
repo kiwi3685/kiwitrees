@@ -62,7 +62,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$title.=$this->getTitle().help_link('todo', $this->getName());
 
-		$table_id = 'ID'.(int)(microtime()*1000000); // create a unique ID
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // create a unique ID
 		$controller
 			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 			->addInlineJavascript('

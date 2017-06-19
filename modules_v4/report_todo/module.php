@@ -81,7 +81,7 @@ class report_todo_WT_Module extends WT_Module implements WT_Module_Report {
 		$show_other			= WT_Filter::post('show_other', '', 1);
 		$show_future		= WT_Filter::post('show_future', '', 1);
 
-		$table_id = 'ID'.(int)(microtime()*1000000); // create a unique ID
+		$table_id = 'ID'.(int)(microtime(true)*1000000); // create a unique ID
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()

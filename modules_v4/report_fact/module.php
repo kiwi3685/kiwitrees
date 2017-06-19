@@ -99,7 +99,7 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 		global $controller, $level2_tags;
 		require WT_ROOT . 'includes/functions/functions_resource.php';
 
-		$table_id = 'ID' . (int)(microtime()*1000000); // create a unique ID
+		$table_id = 'ID' . (int)(microtime(true)*1000000); // create a unique ID
 
 		//-- set list of all configured individual tags (level 1)
 		$indifacts				= preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);

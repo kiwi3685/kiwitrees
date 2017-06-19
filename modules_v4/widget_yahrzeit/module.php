@@ -118,7 +118,7 @@ class widget_yahrzeit_WT_Module extends WT_Module implements WT_Module_Widget {
 			break;
 		case 'table':
 		default:
-			$table_id = "ID".(int)(microtime()*1000000); // table requires a unique ID
+			$table_id = "ID".(int)(microtime(true)*1000000); // table requires a unique ID
 			$controller
 				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 				->addInlineJavascript('
