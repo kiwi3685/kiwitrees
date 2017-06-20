@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,7 +46,7 @@ function return_bytes($val) {
 // attempts to determine whether there is enough memory to load a particular image
 function hasMemoryForImage($serverFilename) {
 	// find out how much total memory this script can access
-	$memoryAvailable = return_bytes(@ini_get('memory_limit'));
+	$memoryAvailable = return_bytes(ini_get('memory_limit'));
 	// if memory is unlimited, it will return -1 and we don’t need to worry about it
 	if ($memoryAvailable == -1) return true;
 

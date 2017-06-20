@@ -90,7 +90,7 @@ class WT_GedcomRecord {
 		if (!is_array($data)) {
 			if (version_compare(PHP_VERSION, '5.3', '>')) {
 				// PHP 5.3 supports late static binding, but the syntax breaks PHP 5.2,
-				// so wrap it in eval() to hide it from PHP 5.2	
+				// so wrap it in eval() to hide it from PHP 5.2
 				eval('$data = static::fetchGedcomRecord($pid, $ged_id);');
 			} else {
 				// PHP 5.2 does not - use a (slower) fallback.
@@ -475,8 +475,8 @@ class WT_GedcomRecord {
 		if (is_null($this->_getAllNames)) {
 			$this->_getAllNames = array();
 			if ($this->canDisplayName()) {
-				$sublevel = $level+1;
-				$subsublevel = $sublevel+1;
+				$fact == 'NOTE' ? $sublevel = 1 : $sublevel	= $level + 1;
+				$subsublevel	= $sublevel + 1;
 				if (preg_match_all("/^{$level} ({$fact}) (.+)((\n[{$sublevel}-9].+)*)/m", $this->getGedcomRecord(), $matches, PREG_SET_ORDER)) {
 					foreach ($matches as $match) {
 						// Treat 1 NAME / 2 TYPE married the same as _MARNM
