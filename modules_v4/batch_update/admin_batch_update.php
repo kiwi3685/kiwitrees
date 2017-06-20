@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,11 +27,11 @@ if (!defined('WT_KIWITREES')) {
 }
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'module.php?mod=batch_update');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=batch_update');
 	exit;
 }
 
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
 class batch_update {
 	var $plugin    = null; // Form parameter: chosen plugin
@@ -54,7 +54,7 @@ class batch_update {
 			<div id="batch_update">
 				<h2>' .  WT_I18N::translate('Batch update') . '</h2>
 				<div class="helpcontent">' .
-					/* I18N: Help text for Batch update tools. */ WT_I18N::translate('These tools can help fix common issues in GEDCOM data.<br><br>When you select a tool it will immediately search for the first record needing correction. This may take a minute or two so wait for it to complete before proceeding.') . '
+					/* I18N: Help text for Batch update tools. */ WT_I18N::translate('These tools can help fix common issues in GEDCOM data.<p  class="accepted">When you select a tool it will immediately search for the first record needing correction. This may take a minute or two so wait for it to complete before proceeding.</p>') . '
 				</div>
 				<hr>
 				<form id="batch_update_form" action="module.php" method="get">
@@ -73,16 +73,16 @@ class batch_update {
 							if (!$this->plugin) {
 								$html.='<option value="" selected="selected"></option>';
 							}
-							foreach ($this->plugins as $class=>$plugin) {
-								$html .= '<option value="'.$class.'"'.($this->plugin == $class ? ' selected="selected"' : '').'>'.$plugin->getName().'</option>';
+							foreach ($this->plugins as $class => $plugin) {
+								$html .= '<option value="' . $class . '"' . ($this->plugin == $class ? ' selected="selected"' : '') . '>' . $plugin->getName() . '</option>';
 							}
 						$html.='</select>
 					</label>';
 					if ($this->PLUGIN) {
-						$html .= '<p><em>'.$this->PLUGIN->getDescription().'</em></p>';
+						$html .= '<p><em>' . $this->PLUGIN->getDescription() . '</em></p>';
 					}
 					if (!get_user_setting(WT_USER_ID, 'auto_accept')){
-						$html.='<p class="warning">'.WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.').'</p>';
+						$html.='<p class="warning">' . WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.') . '</p>';
 					}
 					// If a plugin is selected, display the details
 					if ($this->PLUGIN) {
@@ -116,7 +116,7 @@ class batch_update {
 							} else {
 								$html .= '
 									<div id="batch_update2" class="accepted">' .
-										WT_I18N::translate('Nothing found.') . '
+										WT_I18N::translate('Nothing found') . '
 									</div>
 								';
 							}
@@ -199,8 +199,9 @@ class batch_update {
 			// Make sure that our requested record really does need updating.
 			// It may have been updated in another session, or may not have
 			// been specified at all.
-			if (array_key_exists($this->xref, $this->all_xrefs) &&
-				$this->PLUGIN->doesRecordNeedUpdate($this->xref, self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]))) {
+			if (array_key_exists($this->xref, $this->all_xrefs)
+				&& $this->PLUGIN->doesRecordNeedUpdate($this->xref, self::getLatestRecord($this->xref, $this->all_xrefs[$this->xref]))
+			) {
 				$this->curr_xref = $this->xref;
 			}
 			// The requested record doesn't need updating - find one that does
@@ -275,7 +276,7 @@ class batch_update {
 			}
 		}
 		$this->all_xrefs =
-			WT_DB::prepare(implode(' UNION ', $sql).' ORDER BY 1 ASC')
+			WT_DB::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
 			->execute($vars)
 			->fetchAssoc();
 	}
@@ -283,12 +284,12 @@ class batch_update {
 	// Scan the plugin folder for a list of plugins
 	static function getPluginList() {
 		$array		= array();
-		$dir		= dirname(__FILE__).'/plugins/';
+		$dir		= dirname(__FILE__) . '/plugins/';
 		$dir_handle	= opendir($dir);
 		while ($file=readdir($dir_handle)) {
 			if (substr($file, -4)=='.php') {
-				require dirname(__FILE__).'/plugins/'.$file;
-				$class=basename($file, '.php').'_bu_plugin';
+				require dirname(__FILE__) . '/plugins/' . $file;
+				$class=basename($file, '.php') . '_bu_plugin';
 				$array[$class]=new $class;
 			}
 		}
@@ -328,14 +329,14 @@ class batch_update {
 				break;
 		}
 		return
-			'<button type="submit" onclick="'.
-				'this.form.xref.value=\''.WT_Filter::escapeHtml($xref).'\';'.
-				'this.form.action.value=\''.WT_Filter::escapeHtml($action).'\';'.
-				'this.form.data.value=\''.WT_Filter::escapeHtml($data).'\';'.
-				'return true;"'.
-				($xref ? '' : ' disabled').'>
-				<i class="fa ' . $button_icon . '"></i>'.
-				$text .'
+			'<button type="submit" onclick="' .
+				'this.form.xref.value=\'' . WT_Filter::escapeHtml($xref) . '\';' .
+				'this.form.action.value=\'' . WT_Filter::escapeHtml($action) . '\';' .
+				'this.form.data.value=\'' . WT_Filter::escapeHtml($data) . '\';' .
+				'return true;"' .
+				($xref ? '' : ' disabled') . '>
+				<i class="fa ' . $button_icon . '"></i>' .
+				$text . '
 			</button>';
 	}
 
@@ -369,8 +370,8 @@ class base_plugin {
 		return
 			'<label><span>' . WT_I18N::translate('Update the CHAN record') . '</span>
 				<select name="chan" onchange="this.form.submit();">
-					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>'.WT_I18N::translate('no') .'</option>
-					<option value="yes"'. ($this->chan ? ' selected="selected"' : '') . '>'.WT_I18N::translate('yes').'</option>
+					<option value="no"' . ($this->chan ? '' : ' selected="selected"') . '>' .WT_I18N::translate('no') . '</option>
+					<option value="yes"' . ($this->chan ? ' selected="selected"' : '') . '>' .WT_I18N::translate('yes'). '</option>
 				</select>
 			</label>';
 	}
