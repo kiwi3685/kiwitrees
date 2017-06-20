@@ -457,7 +457,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 			AddToLog($this->getName() . 'config updated', 'config');
 		}
 
-		$current_themedir	= get_module_setting($this->getName(), 'THEME_DIR', WT_I18N::translate('classic'));
+		$current_themedir	= get_module_setting($this->getName(), 'THEME_DIR', 'classic');
 		$themenames			= $this->galleria_theme_names();
 
 		$items = WT_DB::prepare(
@@ -608,7 +608,7 @@ class gallery_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_B
 	}
 
 	private function getJavaScript($item_id) {
-		$theme	= get_module_setting($this->getName(), 'THEME_DIR', WT_I18N::translate('classic'));
+		$theme	= get_module_setting($this->getName(), 'THEME_DIR', 'classic');
 		$plugin=get_block_setting($item_id, 'plugin');
 
 		$js='Galleria.loadTheme("'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/galleria/themes/'.$theme.'/galleria.'.$theme.'.min.js");';
