@@ -40,7 +40,7 @@ class bmd_nz_plugin extends research_base_plugin {
 		 * 	Stillbirths if registered at least 50 years ago.
 		*/
 		$current_date	= new DateTime('now');
-		$birt_limit		= $current_date->modify('-50 year');
+		$birt_limit		= $current_date->modify('-100 year');
 		$latest_birt	= min($death_date, $birt_limit->format('d/m/Y'));
 
 		/**
