@@ -567,8 +567,7 @@ function duplicate_tag($tag) {
 	$count	= 0;
 	$start	= microtime(true);
 	$rows	= WT_DB::prepare(
-		"SELECT i_id AS xref
-		AS gedrec FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` LIKE '%1 '?'%1 '?'%'"
+		"SELECT i_id AS xref FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` LIKE CONCAT('%1 ', ?,'%1 ', ?, '%')"
  	)->execute(array(WT_GED_ID, $tag, $tag))->fetchAll();
 	foreach ($rows as $row) {
 		$person	= WT_Person::getInstance($row->xref);
