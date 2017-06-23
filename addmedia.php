@@ -604,45 +604,8 @@ $controller
 					</div>
 				<?php } ?>
 			</div>
-			<?php // 2 FORM
-			if ($gedrec == '')
-				$gedform = 'FORM';
-			else {
-				$gedform = get_first_tag(2, 'FORM', $gedrec);
-				if (empty($gedform))
-					$gedform = 'FORM';
-			}
-			$formid = add_simple_tag("2 $gedform");
-
-			// automatically set the format field from the filename
-			$controller->addInlineJavascript('
-				function updateFormat(filename) {
-					var extsearch=/\.([a-zA-Z]{3,4})$/;
-					if (extsearch.exec(filename)) {
-						ext = RegExp.$1.toLowerCase();
-						if (ext=="jpg") ext="jpeg";
-						if (ext=="tif") ext="tiff";
-					} else {
-						ext = "";
-					}
-					formfield = document.getElementById("' . $formid . '");
-					formfield.value = ext;
-				}
-			');
-
-			// 3 TYPE
-			if ($gedrec == '')
-				$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
-			else {
-				$temp = str_replace("\r\n", "\n", $gedrec) . "\n";
-				$types = preg_match("/3 TYPE(.*)\n/", $temp, $matches);
-				if (empty($matches[0]))
-					$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
-				else
-					$gedtype = 'TYPE ' . trim($matches[1]);
-			}
-			add_simple_tag("3 $gedtype");
-
+			<hr>
+			<?php
 			// 2 TITL
 			if ($gedrec == '') {
 				$gedtitl = 'TITL';
@@ -682,6 +645,45 @@ $controller
 				}
 				add_simple_tag("3 $gedtitl");
 			}
+			// 2 FORM
+			if ($gedrec == '')
+				$gedform = 'FORM';
+			else {
+				$gedform = get_first_tag(2, 'FORM', $gedrec);
+				if (empty($gedform))
+					$gedform = 'FORM';
+			}
+			$formid = add_simple_tag("2 $gedform");
+
+			// automatically set the format field from the filename
+			$controller->addInlineJavascript('
+				function updateFormat(filename) {
+					var extsearch=/\.([a-zA-Z]{3,4})$/;
+					if (extsearch.exec(filename)) {
+						ext = RegExp.$1.toLowerCase();
+						if (ext=="jpg") ext="jpeg";
+						if (ext=="tif") ext="tiff";
+					} else {
+						ext = "";
+					}
+					formfield = document.getElementById("' . $formid . '");
+					formfield.value = ext;
+				}
+			');
+
+			// 3 TYPE
+			if ($gedrec == '')
+				$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
+			else {
+				$temp = str_replace("\r\n", "\n", $gedrec) . "\n";
+				$types = preg_match("/3 TYPE(.*)\n/", $temp, $matches);
+				if (empty($matches[0]))
+					$gedtype = 'TYPE photo'; // default to ‘Photo’ unless told otherwise
+				else
+					$gedtype = 'TYPE ' . trim($matches[1]);
+			}
+			add_simple_tag("3 $gedtype");
+
 
 			// 2 _PRIM
 			if ($gedrec == '') {
