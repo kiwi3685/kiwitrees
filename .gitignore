@@ -18,6 +18,7 @@
 /modules_v4/backup_to_dropbox/dropbox-sdk/test
 /data/fancy_treeview_descendants_cache
 /data/fancy_treeview_ancestors_cache
+/data/media_watermarks_cache*
 /library.tcpdf/examples
 /library.tcpdf/tools
 /modules_v4/gallery/galleria/themes/azur

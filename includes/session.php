@@ -45,8 +45,8 @@ if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',			WT_STATIC_URL .'js/jquery.min.js');				    // 1.12.4	Updated 03-09-2016
-	define('WT_JQUERYUI_URL',		WT_STATIC_URL .'js/jquery-ui.min.js');			    // 1.12.0	Updated 03-09-2016
+	define('WT_JQUERY_URL',			WT_STATIC_URL . 'js/jquery.min.js');				    // 1.12.4	Updated 03-09-2016
+	define('WT_JQUERYUI_URL',		WT_STATIC_URL . 'js/jquery-ui.min.js');			    // 1.12.0	Updated 03-09-2016
 }
 define('WT_JQUERY_COLORBOX_URL',	WT_STATIC_URL . 'js/jquery.colorbox-min.js');	    // 1.6.1	Updated 18-06-2015
 define('WT_JQUERY_DATATABLES_URL',	WT_STATIC_URL . 'js/jquery.dataTables.min.js');	    // 1.10.13	Updated 12-03-2017
@@ -75,6 +75,9 @@ define('WT_THEMES_DIR',  'themes/' );
 // Enable debugging output?
 define('WT_DEBUG',      false);
 define('WT_DEBUG_SQL',  false);
+
+//Font used to watermark images
+define('WT_FONT_DEJAVU_SANS_TTF',	WT_STATIC_URL . 'library/WT/Fonts/DejaVuSans.ttf');
 
 // Error reporting
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
