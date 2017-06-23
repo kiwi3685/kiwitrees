@@ -131,7 +131,7 @@ class report_marriages_WT_Module extends WT_Module implements WT_Module_Report {
 					<input type="hidden" name="action" value="go">
 					<div class="chart_options">
 						<label for = "NAME"><?php echo WT_Gedcom_Tag::getLabel('NAME'); ?></label>
-						<input type="text" name="name" id="NAME" value="<?php echo WT_Filter::escapeHtml($name); ?>" dir="auto">
+						<input type="text" name="name" id="NAME" value="<?php echo WT_Filter::escapeHtml($name); ?>" dir="auto" required>
 					</div>
 					<div class="chart_options">
 						<label for = "PLAC"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></label>
