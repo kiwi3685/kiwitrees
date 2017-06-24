@@ -76,7 +76,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if ($TEXT_DIRECTION=='rtl') $iconsStyleAdd='float:left;';
 
 	$disp=$person->canDisplayDetails();
-	$uniqueID = (int)(microtime() * 1000000);
+	$uniqueID = (int)(microtime(true) * 1000000);
 	$boxID = $pid.'.'.$personcount.'.'.$count.'.'.$uniqueID;
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
 	if ($person->canDisplayName()) {
@@ -441,105 +441,62 @@ function contact_links($ged_id=WT_GED_ID) {
 }
 
 /**
-* print a note record
-* @param string $text
-* @param int $nlevel the level of the note record
-* @param string $nrec the note record to print
-* @param bool $textOnly Don't print the "Note: " introduction
-* @param boolean $return Print the data or return the data
-* @param boolean $npage the data is on note page or not
-* @return boolean
-*/
-function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false, $npage=false) {
-	global $EXPAND_SOURCES, $EXPAND_NOTES;
+ * print a note record
+ *
+ * @param string $text
+ * @param int $nlevel the level of the note record
+ * @param string $nrec the note record to print
+ * @param bool $textOnly Don't print the "Note: " introduction
+ *
+ * @return string
+ */
+function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
+	global $WT_TREE, $EXPAND_NOTES;
 
-	$elementID = 'N-'.(int)(microtime()*1000000);
-	$text = trim($text);
+	$text .= get_cont($nlevel, $nrec);
 
-	// Check if Shared Note and if so enable url link on title -------------------
-	if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
-		$centitl  = str_replace('~~', '', $text);
-		$centitl  = str_replace('<br>', '', $centitl);
-		if (preg_match('/@N([0-9])+@/', $nrec, $match_nid)) {
-			$nid = str_replace('@', '', $match_nid[0]);
-			if (!$npage) {
-				$centitl = '<a href="note.php?nid='.$nid.'" dir="auto">'.$centitl.'</a>';
-			}
-		}
-		if ($textOnly) {
-			$text = $centitl;
-			return $text;
+	// Check if shared note (we have already checked that it exists)
+	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
+		$note  = WT_Note::getInstance($match[1], $WT_TREE);
+		$label = 'SHARED_NOTE';
+		// If Census assistant installed, allow it to format the note
+		if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
+			$html = census_assistant_WT_Module::formatCensusNote($note);
 		} else {
-			$text = get_cont($nlevel, $nrec);
+//			$html = WT_Filter::formatText($note->getNote(), $WT_TREE);
 		}
 	} else {
-		$text .= get_cont($nlevel, $nrec);
+		$note  = null;
+		$label = 'NOTE';
+//		$html  = WT_Filter::formatText($text, $WT_TREE);
 	}
-	$text = str_replace('~~', '<br>', $text);
-	$text = expand_urls($text);
-	$data = '';
 
-	if (!empty($text) || !empty($centitl)) {
-		// Check if Formatted Shared Note (using pipe "|" as delimiter ) --------------------
-		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && array_key_exists('census_assistant', WT_Module::getActiveModules())) {
-			$text = include WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_note_decode.php';
-		// Else if unformatted Shared Note --------------------------------------------------
-		} else if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
-			$text = $centitl.$text;
-		}
-		if ($textOnly) {
-			if (!$return) {
-				echo $text;
-				return true;
-			} else {
-				return $text;
-			}
-		}
-
-		$brpos = strpos($text, '<br>');
-		if (!$npage) {
-			$data .= '<div class="fact_NOTE"><span class="label">';
-
-			// Check if Shared Note -----------------------------
-			if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE/', $nrec)) {
-				$data .= WT_I18N::translate('Shared note').': </span> ';
-			} else {
-				$data .= WT_I18N::translate('Note').': </span>';
-			}
-		}
-
-		if ($brpos !== false) {
-			$data .= '<span class="field" dir="auto">'.substr($text, 0, $brpos).'</span>';
-			if ($brpos !== false) {
-				if ($EXPAND_NOTES) {
-					$plusminus = 'minus';
-				} else {
-					$plusminus = 'plus';
-				}
-				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-'.$plusminus.'"></i></a> ';
-			}
-			if ($npage) {
-				$data .= substr($text, $brpos + 4) . "</div>";
-			} else {
-				$data .= '<div id="'.$elementID.'"';
-				if ($EXPAND_NOTES) $data .= ' style="display:block"';
-				$data .= ' class="note_details" dir="auto">';
-				$data .= substr($text, $brpos + 4);
-				$data .= '</div>';
-			}
-		} else {
-			$data .= '<span class="field" dir="auto">'.$text. '</span>';
-		}
-			$data .= "</div>";
-
-		if (!$return) {
-			echo $data;
-			return true;
-		} else {
-			return $data;
-		}
+	if ($textOnly) {
+		return strip_tags($text);
 	}
-	return false;
+
+	if (strpos($text, "\n") === false) {
+		// A one-line note? strip the block-level tags, so it displays inline
+//		return WT_GedcomTag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
+	} elseif ($EXPAND_NOTES) {
+		// A multi-line note, and we're expanding notes by default
+//		return WT_GedcomTag::getLabelValue($label, $html);
+	} else {
+		// A multi-line note, with an expand/collapse option
+		$element_id = 'N-'.(int)(microtime(true)*1000000);
+		if ($note) {
+			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
+		} else {
+			list($text) = explode("\n", strip_tags($html));
+			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text;
+		}
+
+		return
+			'<div class="fact_NOTE"><span class="label">' .
+			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
+			'</div>' .
+			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
+	}
 }
 
 /**

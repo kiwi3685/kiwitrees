@@ -106,7 +106,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	if ($fact->getLineNumber()==-1) $styleadd='histo'; // historical facts
 
 	if ($styleadd=='') {
-		$rowID = 'row_'.(int)(microtime()*1000000);
+		$rowID = 'row_'.(int)(microtime(true)*1000000);
 	} else {
 		$rowID = 'row_'.$styleadd;
 	}
@@ -500,7 +500,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
-				$elementID = $sid."-".(int)(microtime()*1000000);
+				$elementID = $sid."-".(int)(microtime(true)*1000000);
 				$src_media = trim(get_gedcom_value('OBJE', '1', $source->getGedcomRecord()), '@');
 				$data .= WT_I18N::translate('Source').':</span> <span class="field">';
 				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';
@@ -973,12 +973,10 @@ function print_main_notes(WT_Event $fact, $level) {
 				$text	 = get_cont(1, $noterec);
 				// If Census assistant installed,
 				if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
-					$centitl  = str_replace('~~', '', $line1);
-					$centitl  = str_replace('<br>', '', $centitl);
-					$centitl  = '<a href="note.php?nid=' . $nid . '">' . $centitl . '</a>';
-					$note = include WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_note_decode.php';
+					$text = WT_Census_CensusAssistantModule::formatCensusNote($note);
 				} else {
-					$text = expand_urls($line1 . $text);
+//					$text = expand_urls($line1 . $text);
+//					$text = WT_Filter::formatText($note->getNote(), $fact->getParent()->getTree());
 				}
 			} else {
 				$text = '<span class="error">' . htmlspecialchars($nid) . '</span>';

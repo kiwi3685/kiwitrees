@@ -314,7 +314,7 @@ class WT_Stats {
 		return WT_I18N::number(self::_totalIndisWithSources());
 	}
 
-	function chartIndisWithSources($params=null) {
+	function chartIndisWithSources($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -359,7 +359,7 @@ class WT_Stats {
 		return WT_I18N::number(self::_totalFamsWithSources());
 	}
 
-	function chartFamsWithSources($params=null) {
+	function chartFamsWithSources($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -429,48 +429,54 @@ class WT_Stats {
 		return $this->_getPercentage($this->_totalRepositories(), 'all');
 	}
 
-	function totalSurnames($params = null) {
+	/**
+	 * Count the surnames.
+	 *
+	 * @param string[] $params
+	 *
+	 * @return string
+	 */
+	public function totalSurnames($params = array()) {
 		if ($params) {
-			$qs=implode(',', array_fill(0, count($params), '?'));
-			$opt="IN ({$qs})";
-			$vars=$params;
-			$distinct='';
+			$opt      = 'IN (' . implode(',', array_fill(0, count($params), '?')) . ')';
+			$distinct = '';
 		} else {
-			$opt ="IS NOT NULL";
-			$vars='';
-			$distinct='DISTINCT';
+			$opt      = "IS NOT NULL";
+			$distinct = 'DISTINCT';
 		}
-		$vars[]=$this->_ged_id;
-		$total=
+		$params[] = $this->_ged_id;
+		$total =
 			WT_DB::prepare(
-				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '".WT_I18N::$collation."')".
-				" FROM `##name`".
-				" WHERE n_surn COLLATE '".WT_I18N::$collation."' {$opt} AND n_file=?")
-			->execute($vars)
-			->fetchOne();
+				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . WT_I18N::$collation . "')" .
+				" FROM `##name`" .
+				" WHERE n_surn COLLATE '" . WT_I18N::$collation . "' {$opt} AND n_file=?"
+			)->execute(
+				$params
+			)->fetchOne();
+
 		return WT_I18N::number($total);
 	}
 
-	function totalGivennames($params = null) {
+	function totalGivennames($params = array()) {
 		if ($params) {
-			$qs=implode(',', array_fill(0, count($params), '?'));
-			$opt="IN ({$qs})";
-			$vars=$params;
-			$distinct='';
+			$qs       = implode(',', array_fill(0, count($params), '?'));
+			$params[] = $this->_ged_id;
+			$total    =
+				WT_DB::prepare("SELECT SQL_CACHE COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?")
+					->execute($params)
+					->fetchOne();
 		} else {
-			$opt ="IS NOT NULL";
-			$vars='';
-			$distinct='DISTINCT';
+			$total =
+				WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?")
+					->execute(array($this->_ged_id))
+					->fetchOne();
 		}
-		$vars[]=$this->_ged_id;
-		$total=
-			WT_DB::prepare("SELECT SQL_CACHE COUNT({$distinct} n_givn) FROM `##name` WHERE n_givn {$opt} AND n_file=?")
-			->execute($vars)
-			->fetchOne();
+
 		return WT_I18N::number($total);
+
 	}
 
-	function totalEvents($params = null) {
+	function totalEvents($params = array()) {
 		$sql="SELECT SQL_CACHE COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
 		$vars=array($this->_ged_id);
 
@@ -581,7 +587,7 @@ class WT_Stats {
 		return $this->_getPercentage($this->_totalSexUnknown(), 'individual');
 	}
 
-	function chartSex($params=null) {
+	function chartSex($params = array()) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -659,7 +665,7 @@ class WT_Stats {
 		return $this->_getPercentage($this->_totalDeceased(), 'individual');
 	}
 
-	function chartMortality($params=null) {
+	function chartMortality($params = array()) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -687,7 +693,7 @@ class WT_Stats {
 		}
 	}
 
-	static function totalUsers($params=null) {
+	static function totalUsers($params = array()) {
 		if (!empty($params[0])) {
 			$total=get_user_count() + (int)$params[0];
 		} else {
@@ -749,7 +755,7 @@ class WT_Stats {
 	function totalMediaOther()       {return WT_I18N::number($this->_totalMediaType('other'));}
 	function totalMediaUnknown()     {return WT_I18N::number($this->_totalMediaType('unknown'));}
 
-	function chartMedia($params=null) {
+	function chartMedia($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -972,7 +978,7 @@ class WT_Stats {
 		return WT_I18n::number($this->_totalPlaces());
 	}
 
-	function chartDistribution($params = null) {
+	function chartDistribution($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
 		if ($params !== null && isset($params[0])) {$chart_shows = $params[0];} else {$chart_shows='world';}
 		if ($params !== null && isset($params[1])) {$chart_type = $params[1];} else {$chart_type='';}
@@ -1191,7 +1197,7 @@ class WT_Stats {
 		return '<ul>' . $top10 . '</ul>';
 	}
 
-	function _statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -1253,7 +1259,7 @@ class WT_Stats {
 		return $rows;
 	}
 
-	function _statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -1329,7 +1335,7 @@ class WT_Stats {
 	function lastBirthName()   { return $this->_mortalityQuery('name',  'DESC', 'BIRT'); }
 	function lastBirthPlace()  { return $this->_mortalityQuery('place', 'DESC', 'BIRT'); }
 
-	function statsBirth($params=null) {return $this->_statsBirth(true, false, -1, -1, $params);}
+	function statsBirth($params = array()) {return $this->_statsBirth(true, false, -1, -1, $params);}
 
 	//
 	// Death
@@ -1345,7 +1351,7 @@ class WT_Stats {
 	function lastDeathName()   { return $this->_mortalityQuery('name',  'DESC', 'DEAT'); }
 	function lastDeathPlace()  { return $this->_mortalityQuery('place', 'DESC', 'DEAT'); }
 
-	function statsDeath($params=null) { return $this->_statsDeath(true, false, -1, -1, $params); }
+	function statsDeath($params = array()) { return $this->_statsDeath(true, false, -1, -1, $params); }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Lifespan                                                                  //
@@ -1405,7 +1411,7 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _topTenOldest($type='list', $sex='BOTH', $params=null) {
+	function _topTenOldest($type='list', $sex='BOTH', $params = array()) {
 		global $TEXT_DIRECTION;
 
 		if ($sex == 'F') {
@@ -1475,7 +1481,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _topTenOldestAlive($type='list', $sex='BOTH', $params=null) {
+	function _topTenOldestAlive($type='list', $sex='BOTH', $params = array()) {
 		global $TEXT_DIRECTION;
 
 		if (!WT_USER_CAN_ACCESS) return WT_I18N::translate('This information is private and cannot be shown.');
@@ -1584,7 +1590,7 @@ class WT_Stats {
 		}
 	}
 
-	function _statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
+	function _statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params = array()) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '230x250';}
 			$sizes = explode('x', $size);
@@ -1705,17 +1711,17 @@ class WT_Stats {
 	}
 
 	// Both Sexes
-	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}
+	function statsAge($params = array()) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}
 
 	function longestLife()     { return $this->_longlifeQuery('full', 'BOTH'); }
 	function longestLifeAge()  { return $this->_longlifeQuery('age',  'BOTH'); }
 	function longestLifeName() { return $this->_longlifeQuery('name', 'BOTH'); }
 
-	function topTenOldest($params=null)          { return $this->_topTenOldest('nolist', 'BOTH', $params); }
-	function topTenOldestList($params=null)      { return $this->_topTenOldest('list',   'BOTH', $params); }
+	function topTenOldest($params = array())          { return $this->_topTenOldest('nolist', 'BOTH', $params); }
+	function topTenOldestList($params = array())      { return $this->_topTenOldest('list',   'BOTH', $params); }
 
-	function topTenOldestAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'BOTH', $params); }
-	function topTenOldestListAlive($params=null) { return $this->_topTenOldestAlive('list',   'BOTH', $params); }
+	function topTenOldestAlive($params = array())     { return $this->_topTenOldestAlive('nolist', 'BOTH', $params); }
+	function topTenOldestListAlive($params = array()) { return $this->_topTenOldestAlive('list',   'BOTH', $params); }
 
 	function averageLifespan($show_years=false)  { return $this->_averageLifespanQuery('BOTH', $show_years); }
 
@@ -1725,11 +1731,11 @@ class WT_Stats {
 	function longestLifeFemaleAge()  { return $this->_longlifeQuery('age',  'F'); }
 	function longestLifeFemaleName() { return $this->_longlifeQuery('name', 'F'); }
 
-	function topTenOldestFemale($params=null)     { return $this->_topTenOldest('nolist', 'F', $params); }
-	function topTenOldestFemaleList($params=null) { return $this->_topTenOldest('list',   'F', $params); }
+	function topTenOldestFemale($params = array())     { return $this->_topTenOldest('nolist', 'F', $params); }
+	function topTenOldestFemaleList($params = array()) { return $this->_topTenOldest('list',   'F', $params); }
 
-	function topTenOldestFemaleAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'F', $params); }
-	function topTenOldestFemaleListAlive($params=null) { return $this->_topTenOldestAlive('list',   'F', $params); }
+	function topTenOldestFemaleAlive($params = array())     { return $this->_topTenOldestAlive('nolist', 'F', $params); }
+	function topTenOldestFemaleListAlive($params = array()) { return $this->_topTenOldestAlive('list',   'F', $params); }
 
 	function averageLifespanFemale($show_years=false) { return $this->_averageLifespanQuery('F', $show_years); }
 
@@ -1739,11 +1745,11 @@ class WT_Stats {
 	function longestLifeMaleAge()  { return $this->_longlifeQuery('age',  'M'); }
 	function longestLifeMaleName() { return $this->_longlifeQuery('name', 'M'); }
 
-	function topTenOldestMale($params=null)     { return $this->_topTenOldest('nolist', 'M', $params); }
-	function topTenOldestMaleList($params=null) { return $this->_topTenOldest('list',   'M', $params); }
+	function topTenOldestMale($params = array())     { return $this->_topTenOldest('nolist', 'M', $params); }
+	function topTenOldestMaleList($params = array()) { return $this->_topTenOldest('list',   'M', $params); }
 
-	function topTenOldestMaleAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'M', $params); }
-	function topTenOldestMaleListAlive($params=null) { return $this->_topTenOldestAlive('list',   'M', $params); }
+	function topTenOldestMaleAlive($params = array())     { return $this->_topTenOldestAlive('nolist', 'M', $params); }
+	function topTenOldestMaleListAlive($params = array()) { return $this->_topTenOldestAlive('list',   'M', $params); }
 
 	function averageLifespanMale($show_years=false) {return $this->_averageLifespanQuery('M', $show_years);}
 
@@ -1855,7 +1861,7 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	/*
-	* Query the database for marriage tags.
+	* Query the WT_DB for marriage tags.
 	*/
 	function _marriageQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
 		if ($sex == 'F') {$sex_field = 'f_wife';} else {$sex_field = 'f_husb';}
@@ -1914,7 +1920,7 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _ageOfMarriageQuery($type='list', $age_dir='ASC', $params=null) {
+	function _ageOfMarriageQuery($type='list', $age_dir='ASC', $params = array()) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
@@ -2025,7 +2031,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params=null) {
+	function _ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params = array()) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir=='DESC') {
@@ -2145,7 +2151,7 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -2212,7 +2218,7 @@ class WT_Stats {
 		return $rows;
 	}
 
-	function _statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -2291,7 +2297,7 @@ class WT_Stats {
 	function lastMarriageName()  { return $this->_mortalityQuery('name',  'DESC', 'MARR'); }
 	function lastMarriagePlace() { return $this->_mortalityQuery('place', 'DESC', 'MARR'); }
 
-	function statsMarr($params=null) {return $this->_statsMarr(true, false, -1, -1, $params);}
+	function statsMarr($params = array()) {return $this->_statsMarr(true, false, -1, -1, $params);}
 	//
 	// Divorce
 	//
@@ -2305,9 +2311,9 @@ class WT_Stats {
 	function lastDivorceName()  { return $this->_mortalityQuery('name',  'DESC', 'DIV'); }
 	function lastDivorcePlace() { return $this->_mortalityQuery('place', 'DESC', 'DIV'); }
 
-	function statsDiv($params=null) {return $this->_statsDiv(true, false, -1, -1, $params);}
+	function statsDiv($params = array()) {return $this->_statsDiv(true, false, -1, -1, $params);}
 
-	function _statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
+	function _statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params = array()) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '200x250';}
 			$sizes = explode('x', $size);
@@ -2463,22 +2469,22 @@ class WT_Stats {
 	function oldestMarriageMaleName()                 { return $this->_marriageQuery('name', 'DESC', 'M'); }
 	function oldestMarriageMaleAge($show_years=false) { return $this->_marriageQuery('age',  'DESC', 'M', $show_years); }
 
-	function statsMarrAge($params=null) { return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params); }
+	function statsMarrAge($params = array()) { return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params); }
 
-	function ageBetweenSpousesMF    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params=null); }
-	function ageBetweenSpousesMFList($params=null) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='DESC', $params=null); }
-	function ageBetweenSpousesFM    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='ASC',  $params=null); }
-	function ageBetweenSpousesFMList($params=null) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='ASC',  $params=null); }
+	function ageBetweenSpousesMF    ($params = array()) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params = array()); }
+	function ageBetweenSpousesMFList($params = array()) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='DESC', $params = array()); }
+	function ageBetweenSpousesFM    ($params = array()) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='ASC',  $params = array()); }
+	function ageBetweenSpousesFMList($params = array()) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='ASC',  $params = array()); }
 
 	function topAgeOfMarriageFamily()                   { return $this->_ageOfMarriageQuery('name',   'DESC', array('1')); }
 	function topAgeOfMarriage()                         { return $this->_ageOfMarriageQuery('age',    'DESC', array('1')); }
-	function topAgeOfMarriageFamilies($params=null)     { return $this->_ageOfMarriageQuery('nolist', 'DESC', $params);    }
-	function topAgeOfMarriageFamiliesList($params=null) { return $this->_ageOfMarriageQuery('list',   'DESC', $params);    }
+	function topAgeOfMarriageFamilies($params = array())     { return $this->_ageOfMarriageQuery('nolist', 'DESC', $params);    }
+	function topAgeOfMarriageFamiliesList($params = array()) { return $this->_ageOfMarriageQuery('list',   'DESC', $params);    }
 
 	function minAgeOfMarriageFamily()                   { return $this->_ageOfMarriageQuery('name',   'ASC', array('1')); }
 	function minAgeOfMarriage()                         { return $this->_ageOfMarriageQuery('age',    'ASC', array('1')); }
-	function minAgeOfMarriageFamilies    ($params=null) { return $this->_ageOfMarriageQuery('nolist', 'ASC', $params); }
-	function minAgeOfMarriageFamiliesList($params=null) { return $this->_ageOfMarriageQuery('list',   'ASC', $params); }
+	function minAgeOfMarriageFamilies    ($params = array()) { return $this->_ageOfMarriageQuery('nolist', 'ASC', $params); }
+	function minAgeOfMarriageFamiliesList($params = array()) { return $this->_ageOfMarriageQuery('list',   'ASC', $params); }
 
 	//
 	// Mother only
@@ -2553,7 +2559,7 @@ class WT_Stats {
 		return $result;
 	}
 
-	function _topTenFamilyQuery($type='list', $params=null) {
+	function _topTenFamilyQuery($type='list', $params = array()) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
@@ -2596,7 +2602,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _ageBetweenSiblingsQuery($type='list', $params=null) {
+	function _ageBetweenSiblingsQuery($type='list', $params = array()) {
 		global $TEXT_DIRECTION;
 		if ($params === null) {$params = array();}
 		if (isset($params[0])) {$total = $params[0];} else {$total = 10;}
@@ -2704,7 +2710,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function _monthFirstChildQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	function _monthFirstChildQuery($simple=true, $sex=false, $year1=-1, $year2=-1, $params = array()) {
 		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2;
 		if ($params === null) {$params = array();}
 		if (isset($params[0])) {$total = $params[0];} else {$total = 10;}
@@ -2819,10 +2825,10 @@ class WT_Stats {
 	function largestFamilySize() { return $this->_familyQuery('size'); }
 	function largestFamilyName() { return $this->_familyQuery('name'); }
 
-	function topTenLargestFamily    ($params=null) { return $this->_topTenFamilyQuery('nolist', $params); }
-	function topTenLargestFamilyList($params=null) { return $this->_topTenFamilyQuery('list',   $params); }
+	function topTenLargestFamily    ($params = array()) { return $this->_topTenFamilyQuery('nolist', $params); }
+	function topTenLargestFamilyList($params = array()) { return $this->_topTenFamilyQuery('list',   $params); }
 
-	function chartLargestFamilies($params=null) {
+	function chartLargestFamilies($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_L_CHART_X.'x'.$WT_STATS_S_CHART_Y;}
@@ -2873,7 +2879,7 @@ class WT_Stats {
 		return WT_I18N::number($row['tot'], 2);
 	}
 
-	function _statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
+	function _statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params = array()) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 			$sizes = explode('x', $size);
@@ -2965,12 +2971,12 @@ class WT_Stats {
 		}
 	}
 
-	function statsChildren($params=null) {return $this->_statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null);}
+	function statsChildren($params = array()) {return $this->_statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params = array());}
 
-	function topAgeBetweenSiblingsName    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='name',   $params=null); }
-	function topAgeBetweenSiblings        ($params=null) { return $this->_ageBetweenSiblingsQuery($type='age',    $params=null); }
-	function topAgeBetweenSiblingsFullName($params=null) { return $this->_ageBetweenSiblingsQuery($type='nolist', $params=null); }
-	function topAgeBetweenSiblingsList    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='list',   $params=null); }
+	function topAgeBetweenSiblingsName    ($params = array()) { return $this->_ageBetweenSiblingsQuery($type='name',   $params = array()); }
+	function topAgeBetweenSiblings        ($params = array()) { return $this->_ageBetweenSiblingsQuery($type='age',    $params = array()); }
+	function topAgeBetweenSiblingsFullName($params = array()) { return $this->_ageBetweenSiblingsQuery($type='nolist', $params = array()); }
+	function topAgeBetweenSiblingsList    ($params = array()) { return $this->_ageBetweenSiblingsQuery($type='list',   $params = array()); }
 
 	function noChildrenFamilies() {
 		$rows=self::_runSQL(
@@ -2986,7 +2992,7 @@ class WT_Stats {
 	}
 
 
-	function noChildrenFamiliesList($params = null) {
+	function noChildrenFamiliesList($params = array()) {
 		global $TEXT_DIRECTION;
 		if (isset($params[0]) && $params[0] != '') {$type = strtolower($params[0]);} else {$type = 'list';}
 		$rows=self::_runSQL(
@@ -3019,7 +3025,7 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function chartNoChildrenFamilies($params=null) {
+	function chartNoChildrenFamilies($params = array()) {
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 		if (isset($params[1]) && $params[1] != '') {$year1 = $params[1];} else {$year1 = -1;}
 		if (isset($params[2]) && $params[2] != '') {$year2 = $params[2];} else {$year2 = -1;}
@@ -3089,7 +3095,7 @@ class WT_Stats {
 		return str_replace("|", "%7C", $img);
 	}
 
-	function _topTenGrandFamilyQuery($type='list', $params=null) {
+	function _topTenGrandFamilyQuery($type='list', $params = array()) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
@@ -3141,14 +3147,14 @@ class WT_Stats {
 		return $top10;
 	}
 
-	function topTenLargestGrandFamily($params=null) {return $this->_topTenGrandFamilyQuery('nolist', $params);}
-	function topTenLargestGrandFamilyList($params=null) {return $this->_topTenGrandFamilyQuery('list', $params);}
+	function topTenLargestGrandFamily($params = array()) {return $this->_topTenGrandFamilyQuery('nolist', $params);}
+	function topTenLargestGrandFamilyList($params = array()) {return $this->_topTenGrandFamilyQuery('list', $params);}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Surnames                                                                  //
 ///////////////////////////////////////////////////////////////////////////////
 
-	static function _commonSurnamesQuery($type='list', $show_tot=false, $params=null) {
+	static function _commonSurnamesQuery($type='list', $show_tot=false, $params = array()) {
 		global $SURNAME_LIST_STYLE, $GEDCOM;
 
 		$ged_id=get_id_from_gedcom($GEDCOM);
@@ -3191,7 +3197,7 @@ class WT_Stats {
 	static function commonSurnamesList      ($params=array('','','alpha' )) { return self::_commonSurnamesQuery('list',   false, $params); }
 	static function commonSurnamesListTotals($params=array('','','rcount')) { return self::_commonSurnamesQuery('list',   true,  $params); }
 
-	function chartCommonSurnames($params=null) {
+	function chartCommonSurnames($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -3260,7 +3266,7 @@ class WT_Stats {
 	* Most Common Given Names Block
 	* Original block created by kiwi
 	*/
-	static function _commonGivenQuery($sex='B', $type='list', $show_tot=false, $params=null) {
+	static function _commonGivenQuery($sex='B', $type='list', $show_tot=false, $params = array()) {
 		global $TEXT_DIRECTION, $GEDCOM;
 		static $sort_types = array('count'=>'asort', 'rcount'=>'arsort', 'alpha'=>'ksort', 'ralpha'=>'krsort');
 		static $sort_flags = array('count'=>SORT_NUMERIC, 'rcount'=>SORT_NUMERIC, 'alpha'=>SORT_STRING, 'ralpha'=>SORT_STRING);
@@ -3398,7 +3404,7 @@ class WT_Stats {
 	static function commonGivenUnknownListTotals($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'list',   true,  $params); }
 	static function commonGivenUnknownTable     ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'table',  false, $params); }
 
-	function chartCommonGiven($params=null) {
+	function chartCommonGiven($params = array()) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
@@ -3520,7 +3526,7 @@ class WT_Stats {
 	static function usersLoggedInTotalVisible() { return self::_usersLoggedInTotal('visible'); }
 
 	static function userID() {return getUserId();}
-	static function userName($params=null) {
+	static function userName($params = array()) {
 		if (getUserID()) {
 			return getUserName();
 		} else {
@@ -3533,7 +3539,7 @@ class WT_Stats {
 	}
 	static function userFullName() {return getUserFullName(getUserId());}
 
-	static function _getLatestUserData($type='userid', $params=null) {
+	static function _getLatestUserData($type='userid', $params = array()) {
 		global $DATE_FORMAT, $TIME_FORMAT;
 		static $user_id = null;
 
@@ -3565,9 +3571,9 @@ class WT_Stats {
 	static function latestUserId      ()             { return self::_getLatestUserData('userid'           ); }
 	static function latestUserName    ()             { return self::_getLatestUserData('username'         ); }
 	static function latestUserFullName()             { return self::_getLatestUserData('fullname'         ); }
-	static function latestUserRegDate ($params=null) { return self::_getLatestUserData('regdate',  $params); }
-	static function latestUserRegTime ($params=null) { return self::_getLatestUserData('regtime',  $params); }
-	static function latestUserLoggedin($params=null) { return self::_getLatestUserData('loggedin', $params); }
+	static function latestUserRegDate ($params = array()) { return self::_getLatestUserData('regdate',  $params); }
+	static function latestUserRegTime ($params = array()) { return self::_getLatestUserData('regtime',  $params); }
+	static function latestUserLoggedin($params = array()) { return self::_getLatestUserData('loggedin', $params); }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Contact                                                                   //
@@ -3629,14 +3635,14 @@ class WT_Stats {
 		return '<span class="hit-counter">'.WT_I18N::number($count).'</span>';
 	}
 
-	static function hitCount    ($params=null) {return self::_getHitCount(null,             $params);}
-	static function hitCountUser($params=null) {return self::_getHitCount('index.php',      $params);}
-	static function hitCountIndi($params=null) {return self::_getHitCount('individual.php', $params);}
-	static function hitCountFam ($params=null) {return self::_getHitCount('family.php',     $params);}
-	static function hitCountSour($params=null) {return self::_getHitCount('source.php',     $params);}
-	static function hitCountRepo($params=null) {return self::_getHitCount('repo.php',       $params);}
-	static function hitCountNote($params=null) {return self::_getHitCount('note.php',       $params);}
-	static function hitCountObje($params=null) {return self::_getHitCount('mediaviewer.php',$params);}
+	static function hitCount    ($params = array()) {return self::_getHitCount(null,             $params);}
+	static function hitCountUser($params = array()) {return self::_getHitCount('index.php',      $params);}
+	static function hitCountIndi($params = array()) {return self::_getHitCount('individual.php', $params);}
+	static function hitCountFam ($params = array()) {return self::_getHitCount('family.php',     $params);}
+	static function hitCountSour($params = array()) {return self::_getHitCount('source.php',     $params);}
+	static function hitCountRepo($params = array()) {return self::_getHitCount('repo.php',       $params);}
+	static function hitCountNote($params = array()) {return self::_getHitCount('note.php',       $params);}
+	static function hitCountObje($params = array()) {return self::_getHitCount('mediaviewer.php',$params);}
 
 	/*
 	* Leave for backwards compatability? Anybody using this?
@@ -3753,7 +3759,7 @@ class WT_Stats {
 	// example of use: #callBlock:block_name#                                    //
 	///////////////////////////////////////////////////////////////////////////////
 
-	static function callBlock($params=null) {
+	static function callBlock($params = array()) {
 		global $ctype;
 		if ($params === null) {return '';}
 		if (isset($params[0]) && $params[0] != '') {$block = $params[0];} else {return '';}
