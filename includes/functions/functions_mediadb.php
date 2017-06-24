@@ -26,46 +26,71 @@ if (!defined('WT_KIWITREES')) {
 	exit;
 }
 
-// converts raw values from php.ini file into bytes
-// from http://www.php.net/manual/en/function.ini-get.php
+/**
+ * Convert raw values from php.ini file into bytes
+ *
+ * @param string $val
+ *
+ * @return int
+ */
 function return_bytes($val) {
 	if (!$val) {
 		// no value was passed in, assume no limit and return -1
 		$val = -1;
 	}
-	$val = trim($val);
-	$last = strtolower($val{strlen($val)-1});
-	switch($last) {
-		case 'g': $val *= 1024;  // fallthrough
-		case 'm': $val *= 1024;  // fallthrough
-		case 'k': $val *= 1024;
+	switch (substr($val, -1)) {
+	case 'g':
+	case 'G':
+		return (int) $val * 1024 * 1024 * 1024;
+	case 'm':
+	case 'M':
+		return (int) $val * 1024 * 1024;
+	case 'k':
+	case 'K':
+		return (int) $val * 1024;
+	default:
+		return (int) $val;
 	}
-	return $val;
 }
 
-// attempts to determine whether there is enough memory to load a particular image
+/**
+ * Determine whether there is enough memory to load a particular image.
+ *
+ * @param string $serverFilename
+ *
+ * @return bool
+ */
 function hasMemoryForImage($serverFilename) {
 	// find out how much total memory this script can access
 	$memoryAvailable = return_bytes(ini_get('memory_limit'));
 	// if memory is unlimited, it will return -1 and we don’t need to worry about it
-	if ($memoryAvailable == -1) return true;
+	if ($memoryAvailable == -1) {
+		return true;
+	}
 
 	// find out how much memory we are already using
-	$memoryUsed=memory_get_usage();
+	$memoryUsed = memory_get_usage();
 
-	$imgsize = @getimagesize($serverFilename);
+	try {
+		$imgsize = getimagesize($serverFilename);
+	} catch (\ErrorException $ex) {
+		// Not an image, or not a valid image?
+		$imgsize = false;
+	}
+
 	// find out how much memory this image needs for processing, probably only works for jpegs
 	// from comments on http://www.php.net/imagecreatefromjpeg
-	if (is_array($imgsize) && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
-		$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + Pow(2, 16)) * 1.65);
-		$memorySpare = $memoryAvailable - $memoryUsed - $memoryNeeded;
+	if ($imgsize && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
+		$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + pow(2, 16)) * 1.65);
+		$memorySpare  = $memoryAvailable - $memoryUsed - $memoryNeeded;
+
 		if ($memorySpare > 0) {
 			// we have enough memory to load this file
 			return true;
 		} else {
 			// not enough memory to load this file
-			$image_info =  sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename)/1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
-			AddToLog('Cannot create thumbnail '.$serverFilename.' ('.$image_info.') memory avail: '.$memoryAvailable.' used: '.$memoryUsed.' needed: '.$memoryNeeded.' spare: '.$memorySpare, 'media');
+			$image_info = sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename) / 1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
+			AddToLog('Cannot create thumbnail ' . $serverFilename . ' (' . $image_info . ') memory avail: ' . $memoryAvailable . ' used: ' . $memoryUsed . ' needed: ' . $memoryNeeded . ' spare: ' . $memorySpare, 'media');
 			return false;
 		}
 	} else {
