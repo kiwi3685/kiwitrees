@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_site_merge.php');
+define('WT_SCRIPT_NAME', 'admin_trees_merge.php');
 require './includes/session.php';
 
 $controller = new WT_Controller_Page;
@@ -105,7 +105,7 @@ if ($action != 'choose') {
 				if ($action == 'select') { ?>
 					<div id="merge2">
 						<h3><?php echo WT_I18N::translate('Merge records'); ?></h3>
-						<form method="post" action="admin_site_merge.php">
+						<form method="post" action="admin_trees_merge.php">
 							<?php echo WT_I18N::translate('The following facts were exactly the same in both records and will be merged automatically.'); ?>
 							<br>
 							<input type="hidden" name="gid1" value="<?php echo $gid1; ?>">
@@ -291,7 +291,7 @@ if ($action == 'choose') {
 
 	<div id="merge">
 		<h3><?php echo WT_I18N::translate('Merge records'); ?></h3>
-		<form method="post" name="merge" action="admin_site_merge.php">
+		<form method="post" name="merge" action="admin_trees_merge.php">
 			<input type="hidden" name="action" value="select">
 			<p>
 				<?php echo WT_I18N::translate('Select two GEDCOM records to merge.  The records must be of the same type.'); ?>

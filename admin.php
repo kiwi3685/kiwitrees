@@ -1575,8 +1575,12 @@ function old_paths() {
 		WT_ROOT . 'admin_module_resources.php', // old report system removed, this file renamed to admin_module_reports
 		// Removed in kiwitrees 3.3.1
 		WT_ROOT . 'modules_v3',
-		WT_ROOT . 'modules_v3/gallery/galleria/galleria-1.5.1.js',
-		WT_ROOT . 'modules_v3/gallery/galleria/galleria-1.5.1.min.js',
+		WT_ROOT . 'modules_v4/gallery/galleria/galleria-1.5.1.js',
+		WT_ROOT . 'modules_v4/gallery/galleria/galleria-1.5.1.min.js',
+		WT_ROOT . 'admin_site_change.php',
+		WT_ROOT . 'admin_site_other.php',
+		WT_ROOT . 'admin_site_merge.php',
+
 	);
 }
 

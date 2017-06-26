@@ -21,7 +21,7 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-define('WT_SCRIPT_NAME', 'admin_trees_unlinked.php');
+define('WT_SCRIPT_NAME', 'admin_trees_findunlinked.php');
 
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';

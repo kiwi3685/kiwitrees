@@ -57,7 +57,7 @@ $controller
 			var counter = 0, i = 0, myvar = new Array();
 			form = document.createElement("form");
 			form.setAttribute("method", "POST");
-			form.setAttribute("action", "admin_site_merge.php");
+			form.setAttribute("action", "admin_trees_merge.php");
 			form.setAttribute("target", "_blank");
 			// get a collection of objects with the specified class "check"
 			input_obj = document.getElementsByClassName("check"); // this might fail on some old browsers (see http://caniuse.com/getelementsbyclassname)
