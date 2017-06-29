@@ -256,7 +256,7 @@ case 'load_json':
 			"SELECT gedcom_name, gedcom_name" .
 			" FROM `##gedcom`" .
 			" JOIN `##gedcom_setting` USING (gedcom_id)" .
-			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value=?"
+			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value=? AND gedcom_id > 0"
 		)->execute(array($media_folder))->fetchAssoc();
 
 		$disk_files = all_disk_files ($media_folder, $media_path, $subfolders, $sSearch);
@@ -268,10 +268,7 @@ case 'load_json':
 
 		// Filter unused files
 		if ($sSearch) {
-			// Lambda functions can't be used until PHP5.3
-			//$unused_files = array_filter($unused_files, function($x) use ($sSearch) {return strpos($x, $sSearch)!==false;});
-			function substr_search($x) {global $sSearch; return strpos($x, $sSearch)!==false;}
-			$unused_files = array_filter($unused_files, 'substr_search');
+			$unused_files = array_filter($unused_files, function($x) use ($sSearch) {return strpos($x, $sSearch)!==false;});
 		}
 		$iTotalDisplayRecords = count($unused_files);
 
@@ -286,13 +283,13 @@ case 'load_json':
 
 		$aaData = array();
 		foreach ($unused_files as $unused_file) {
-			$full_path  = WT_DATA_DIR . $media_folder .             $media_path . $unused_file;
+			$full_path  = WT_DATA_DIR . $media_folder . $media_path . $unused_file;
 			$thumb_path = WT_DATA_DIR . $media_folder . 'thumbs/' . $media_path . $unused_file;
 			if (!file_exists($thumb_path)) {
 				$thumb_path = $full_path;
 			}
 
-			$imgsize=@getimagesize($thumb_path);
+			$imgsize = getimagesize($thumb_path);
 			if ($imgsize && $imgsize[0] && $imgsize[1]) {
 				// We can’t create a URL (not in public_html) or use the media firewall (no such object)
 				// so just the base64-encoded image inline.
