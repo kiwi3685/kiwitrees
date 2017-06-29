@@ -44,7 +44,7 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
-		return false;
+		return $this->getCensFacts() == null;
 	}
 
 	// Extend class WT_Module
@@ -56,11 +56,8 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getTabContent() {
 		global $controller;
 		$person		= $controller->getSignificantIndividual();
-		$fullname	= $controller->record->getFullName();
 		$xref		= $controller->record->getXref();
-		$person->add_family_facts(false);
-		$indifacts = $person->getIndiFacts();
-		sort_facts($indifacts);
+		$facts		= $this->getCensFacts();
 		?>
 		<style>
 			#tab_census_content div.descriptionbox {border: 1px solid #555; border-radius: 5px; margin: 2px 0;}
@@ -93,7 +90,7 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($indifacts as $fact) {
+						<?php foreach ($facts as $fact) {
 							if ($fact->getTag() === 'CENS') {
 								$styleadd = "";
 								if ($fact->getIsNew()) $styleadd = "change_new";
@@ -139,7 +136,7 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
-		return true;
+		return WT_USER_CAN_EDIT || $this->getCensFacts();
 	}
 
 	// Implement WT_Module_Tab
@@ -150,6 +147,24 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
+	}
+
+	private function getCensFacts() {
+		global $controller;
+		$person			= $controller->getSignificantIndividual();
+		$fullname		= $controller->record->getFullName();
+		$xref			= $controller->record->getXref();
+		$indifacts		= $person->getIndiFacts();
+		$censusFacts	= array();
+
+		foreach ($indifacts as $fact) {
+			if ($fact->getTag() === 'CENS') {
+				$censusFacts[] = $fact;
+			}
+		}
+		sort_facts($censusFacts);
+
+		return $censusFacts;
 	}
 
 }
