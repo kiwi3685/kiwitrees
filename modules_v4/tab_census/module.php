@@ -71,7 +71,12 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 			<!-- Show header Links -->
 			<?php if (WT_USER_CAN_EDIT) { ?>
 				<div class="descriptionbox rela">
-					<span><a href="edit_interface.php?action=add&pid=<?php echo $xref; ?>&fact=CENS&ged=<?php echo WT_GED_ID; ?>" target="_blank" rel="noopener noreferrer"><i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i><?php echo WT_I18N::translate('Add census'); ?></a></span>
+					<span>
+						<a href="edit_interface.php?action=add&pid=<?php echo $xref; ?>&fact=CENS&accesstime=<?php echo WT_TIMESTAMP; ?>&ged=<?php echo WT_GEDCOM; ?>" target="_blank">
+							<i style="margin: 0 3px 0 10px;" class="icon-image_add">&nbsp;</i>
+							<?php echo WT_I18N::translate('Add census'); ?>
+						</a>
+					</span>
 				</div>
 			<?php } ?>
 			<?php if ($person && $person->canDisplayDetails()) { ?>
