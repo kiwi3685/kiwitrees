@@ -270,7 +270,7 @@ class report_fact_WT_Module extends WT_Module implements WT_Module_Report {
 									$data[$x]['FACT_DATE'] = format_fact_date($item, $person, false, true, false);
 									$data[$x]['FACT_PLACE'] = format_fact_place($item, true);
 									$ct = preg_match("/2 TYPE (.*)/", $item->getGedcomRecord(), $ematch);
-									if ($ct>0) {
+									if ($ct > 0) {
 										$factname = trim($ematch[1]);
 										$data[$x]['TYPE'] = $factname;
 										$count_type = true;
