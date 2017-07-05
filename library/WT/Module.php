@@ -255,6 +255,22 @@ abstract class WT_Module {
 		return $widgets;
 	}
 
+	/**
+	 * Find a specified module, if it is currently active.
+	 *
+	 * @param string $module_name
+	 *
+	 * @return Module|null
+	 */
+	public static function getModuleByName($module_name) {
+		$modules = self::getActiveModules();
+		if (array_key_exists($module_name, $modules)) {
+			return $modules[$module_name];
+		} else {
+			return null;
+		}
+	}
+
 	// Get a list of all installed modules.
 	// During setup, new modules need status of 'enabled' (setup.php)
 	// In admin->modules, new modules need status of 'disabled' (admin_modules.php)
@@ -401,34 +417,30 @@ abstract class WT_Module {
 			'relatives'				=> array('enabled', 2, NULL, NULL, NULL),
 			'sources_tab'			=> array('enabled', 3, NULL, NULL, NULL),
 			'notes'					=> array('enabled', 4, NULL, NULL, NULL),
-			'googlemap'				=> array('enabled', 6, NULL, NULL, NULL),
-			'tree'					=> array('enabled', 7, NULL, NULL, NULL),
-			'album'					=> array('enabled', 9, NULL, NULL, NULL),
+			'tree'					=> array('enabled', 5, NULL, NULL, NULL),
+			'album'					=> array('enabled', 6, NULL, NULL, NULL),
 			// menus - main menu
 			'menu_homepage'			=> array('enabled', NULL, 1, NULL, NULL),
 			'page_menu'				=> array('enabled', NULL, 2, NULL, NULL),
 			'menu_charts'			=> array('enabled', NULL, 3, NULL, NULL),
 			'menu_lists'			=> array('enabled', NULL, 4, NULL, NULL),
-			'menu_reports'			=> array('enabled', NULL, 6, NULL, NULL),
-			'faq'					=> array('enabled', NULL, 8, NULL, NULL),
-			'menu_search'			=> array('enabled', NULL, 9, NULL, NULL),
-			'clippings'				=> array('enabled', NULL, 10, 8, NULL),
-			'contact'				=> array('enabled', NULL, 11, NULL, NULL),
+			'menu_reports'			=> array('enabled', NULL, 5, NULL, NULL),
+			'menu_search'			=> array('enabled', NULL, 6, NULL, NULL),
 			// menus - extra menu
 			'menu_login'			=> array('enabled', NULL, 13, NULL, NULL),
 			'menu_favorites'		=> array('enabled', NULL, 14, NULL, NULL),
 			'menu_languages'		=> array('enabled', NULL, 15, NULL, NULL),
 			// sidebar
 			'extra_info'			=> array('enabled', NULL, NULL, 1, NULL),
-			'family_nav'			=> array('enabled', NULL, NULL, 4, NULL),
-			'descendancy'			=> array('enabled', NULL, NULL, 5, NULL),
-			'individuals'			=> array('enabled', NULL, NULL, 6, NULL),
-			'families'				=> array('enabled', NULL, NULL, 7, NULL),
+			'family_nav'			=> array('enabled', NULL, NULL, 2, NULL),
+			'descendancy'			=> array('enabled', NULL, NULL, 3, NULL),
+			'individuals'			=> array('enabled', NULL, NULL, 4, NULL),
+			'families'				=> array('enabled', NULL, NULL, 5, NULL),
 			// widgets
 			'widget_quicklinks'		=> array('enabled', NULL, NULL, NULL, 10),
 			'widget_todays_events'	=> array('enabled', NULL, NULL, NULL, 20),
 			'widget_upcoming'		=> array('enabled', NULL, NULL, NULL, 30),
-			'widget_recent_changes'	=> array('enabled', NULL, NULL, NULL, 70),
+			'widget_recent_changes'	=> array('enabled', NULL, NULL, NULL, 40),
 			// not ordered
 			//  charts (sorted alphabetically)
 			'chart_ancestry'		=> array('enabled', NULL, NULL, NULL, NULL),
