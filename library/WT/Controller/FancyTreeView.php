@@ -185,13 +185,15 @@ class WT_Controller_FancyTreeView {
     }
 
 	public function getCountryList() {
-		$list = '';
+		$list = array();
 		$countries =
 			WT_DB::prepare("SELECT SQL_CACHE p_place as country FROM `##places` WHERE p_parent_id=? AND p_file=?")
 			->execute(array('0', WT_GED_ID))->fetchAll(PDO::FETCH_ASSOC);
 
-		foreach ($countries as $country) {
-			$list[$country['country']] = $country['country']; // set the country as key to display as option value.
+		if ($countries) {
+			foreach ($countries as $country) {
+				$list[$country['country']] = $country['country']; // set the country as key to display as option value.
+			}
 		}
 		return $list;
 	}
