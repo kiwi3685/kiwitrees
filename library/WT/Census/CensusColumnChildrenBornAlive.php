@@ -43,7 +43,7 @@ class WT_Census_CensusColumnChildrenBornAlive extends WT_Census_AbstractCensusCo
 			foreach ($family->getChildren() as $child) {
 				if (
 					$child->getBirthDate()->isOK() &&
-					WT_Date::compare($child->getBirthDate(), $this->date()) < 0 &&
+					WT_Date::Compare($child->getBirthDate(), $this->date()) < 0 &&
 					$child->getBirthDate() != $child->getDeathDate()
 				) {
 					$count++;

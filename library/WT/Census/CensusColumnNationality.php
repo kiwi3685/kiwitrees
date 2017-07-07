@@ -51,7 +51,7 @@ class WT_Census_CensusColumnNationality extends WT_Census_AbstractCensusColumn i
 
 		// Did we emigrate or naturalise?
 		foreach ($individual->getFacts('IMMI|EMIG|NATU', true) as $fact) {
-			if (WT_Date::compare($fact->getDate(), $this->date()) <= 0) {
+			if (WT_Date::Compare($fact->getDate(), $this->date()) <= 0) {
 //				$place = $fact->getPlace()->getGedcomName();
 				$place = $fact->getPlace();			}
 		}

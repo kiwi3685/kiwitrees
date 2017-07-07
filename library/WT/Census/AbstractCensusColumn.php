@@ -154,7 +154,7 @@ class WT_Census_AbstractCensusColumn {
 		// Exclude families that were created after this census date
 		$families = array();
 		foreach ($individual->getSpouseFamilies() as $family) {
-			if (WT_Date::compare($family->getMarriageDate(), $this->date()) <= 0) {
+			if (WT_Date::Compare($family->getMarriageDate(), $this->date()) <= 0) {
 				$families[] = $family;
 			}
 		}
@@ -162,7 +162,7 @@ class WT_Census_AbstractCensusColumn {
 		if (empty($families)) {
 			return null;
 		} else {
-			usort($families, function (WT_Family $x, WT_Family $y) { return WT_Date::compare($x->getMarriageDate(), $y->getMarriageDate()); });
+			usort($families, function (WT_Family $x, WT_Family $y) { return WT_Date::Compare($x->getMarriageDate(), $y->getMarriageDate()); });
 
 			return end($families);
 		}

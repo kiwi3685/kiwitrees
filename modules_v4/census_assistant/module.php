@@ -183,7 +183,6 @@ class census_assistant_WT_Module extends WT_Module {
 		foreach ($census->columns() as $column) {
 			$html .= '<td><input type="text" value="' . $column->generate($individual, $head) . '"></td>';
 		}
-
 		return '<tr><td style="display:none;">' . $individual->getXref() . '</td>' . $html . '<td class="delete"><a class="icon-delete" href="#" title="' . WT_I18N::translate('Remove') . '"></a></td></tr>';
 	}
 

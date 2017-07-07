@@ -43,9 +43,9 @@ class WT_Census_CensusColumnChildrenLiving extends WT_Census_AbstractCensusColum
 			foreach ($family->getChildren() as $child) {
 				if (
 					$child->getBirthDate()->isOK() &&
-					WT_Date::compare($child->getBirthDate(), $this->date()) < 0 &&
+					WT_Date::Compare($child->getBirthDate(), $this->date()) < 0 &&
 					$child->getBirthDate() != $child->getDeathDate() &&
-					(!$child->getDeathDate()->isOK() || WT_Date::compare($child->getDeathDate(), $this->date()) > 0)
+					(!$child->getDeathDate()->isOK() || WT_Date::Compare($child->getDeathDate(), $this->date()) > 0)
 				) {
 					$count++;
 				}

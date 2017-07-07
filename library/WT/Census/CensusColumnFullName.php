@@ -54,7 +54,7 @@ class WT_Census_CensusColumnFullName extends WT_Census_AbstractCensusColumn impl
 
 		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getFacts('MARR') as $marriage) {
-				if ($marriage->getDate()->isOK() && WT_Date::compare($marriage->getDate(), $census_date) < 0) {
+				if ($marriage->getDate()->isOK() && WT_Date::Compare($marriage->getDate(), $census_date) < 0) {
 					$spouse = $family->getSpouse($individual);
 					foreach ($names as $individual_name) {
 						foreach ($spouse->getAllNames() as $spouse_name) {

@@ -38,7 +38,7 @@ class WT_Census_CensusColumnYearsMarried extends WT_Census_AbstractCensusColumn 
 
 		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getFacts('MARR', true) as $fact) {
-				if ($fact->getDate()->isOK() && WT_Date::compare($fact->getDate(), $this->date()) <= 0) {
+				if ($fact->getDate()->isOK() && WT_Date::Compare($fact->getDate(), $this->date()) <= 0) {
 					$marriage_date = $fact->getDate();
 				}
 			}

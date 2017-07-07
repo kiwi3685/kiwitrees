@@ -82,7 +82,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 	 * @return $this
 	 */
 	public function restrictAccess($condition) {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		require_once WT_ROOT . 'includes/functions/functions.php'; // for get_query_url
 		if ($condition === false) {
 			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
@@ -102,12 +102,12 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// Restrict access
 	public function requireManagerLogin($ged_id=WT_GED_ID) {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		require_once WT_ROOT.  'includes/functions/functions.php'; // for get_query_url
 		if (
 			$ged_id == WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
 			$ged_id != WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
 		) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -115,9 +115,9 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// Restrict access
 	public function requireAcceptLogin() {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		require_once WT_ROOT . 'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_CAN_ACCEPT) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -125,9 +125,9 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// Restrict access
 	public function requireEditorLogin() {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		require_once WT_ROOT . 'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_CAN_EDIT) {
-			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -135,7 +135,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 
 	// Restrict access
 	public function requireMemberLogin() {
-		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		require_once WT_ROOT . 'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_ID) {
 			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 			exit;
@@ -150,7 +150,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 		// Maintenance mode
 		// Note: $maintenance is 'true' on login.php so admin can always log in.
 		if (WT_Site::preference('MAINTENANCE') == 1 && !WT_USER_IS_ADMIN && $maintenance != true) {
-			header('Location: '. WT_SERVER_NAME . WT_SCRIPT_PATH.'site-maintenance.php');
+			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH.'site-maintenance.php');
 			exit;
 		}
 

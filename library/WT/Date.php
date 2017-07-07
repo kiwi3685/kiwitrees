@@ -353,41 +353,41 @@ class WT_Date {
 		// Get min/max JD for each date.
 		switch ($a->qual1) {
 		case 'BEF':
-			$amin=$a->MinJD()-1;
-			$amax=$amin;
+			$amin = $a->MinJD() - 1;
+			$amax = $amin;
 			break;
 		case 'AFT':
-			$amax=$a->MaxJD()+1;
-			$amin=$amax;
+			$amax = $a->MaxJD() + 1;
+			$amin = $amax;
 			break;
 		default:
-			$amin=$a->MinJD();
-			$amax=$a->MaxJD();
+			$amin = $a->MinJD();
+			$amax = $a->MaxJD();
 			break;
 		}
 		switch ($b->qual1) {
 		case 'BEF':
-			$bmin=$b->MinJD()-1;
-			$bmax=$bmin;
+			$bmin = $b->MinJD() - 1;
+			$bmax = $bmin;
 			break;
 		case 'AFT':
-			$bmax=$b->MaxJD()+1;
-			$bmin=$bmax;
+			$bmax = $b->MaxJD() + 1;
+			$bmin = $bmax;
 			break;
 		default:
-			$bmin=$b->MinJD();
-			$bmax=$b->MaxJD();
+			$bmin = $b->MinJD();
+			$bmax = $b->MaxJD();
 			break;
 		}
 		if ($amax<$bmin) {
 			return -1;
 		} else {
-			if ($amin>$bmax && $bmax>0) {
+			if ($amin > $bmax && $bmax > 0) {
 				return 1;
 			} else {
-				if ($amin<$bmin && $amax<=$bmax) {
+				if ($amin < $bmin && $amax<=$bmax) {
 					return -1;
-				} elseif ($amin>$bmin && $amax>=$bmax && $bmax>0) {
+				} elseif ($amin > $bmin && $amax >= $bmax && $bmax > 0) {
 					return 1;
 				} else {
 					return 0;

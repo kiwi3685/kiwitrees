@@ -31,11 +31,11 @@ $xref	= WT_Filter::get('xref', WT_REGEX_XREF);
 $census = WT_Filter::get('census');
 $head	= WT_Person::getInstance($xref, $WT_TREE);
 //check_record_access($head);
-//$controller->restrictAccess(class_exists($census));
+$controller->restrictAccess(class_exists($census));
 
-/** @var CensusInterface */
+/** @var WT_Census_CensusInterface */
 $census = new $census;
-//$controller->restrictAccess($census instanceof CensusInterface);
+$controller->restrictAccess($census instanceof WT_Census_CensusInterface);
 $date = new WT_Date($census->censusDate());
 $year = $date->minimumDate()->format('%Y');
 
@@ -79,7 +79,7 @@ $controller
 							<?php }
 						}
 						echo $head->format_first_major_fact(WT_EVENTS_DEAT, 2);
-						$date  = new WT_Date($census->censusDate()); ?>
+//						$date  = new WT_Date($census->censusDate()); ?>
 						<dl>
 							<dt class="label"><?php echo WT_I18N::translate('Census date'); ?></dt>
 							<dd class="field"><span class="date"><?php echo $date->display(); ?></span></dd>
