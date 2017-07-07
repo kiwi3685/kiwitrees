@@ -29,7 +29,7 @@ if (!defined('WT_KIWITREES')) {
 class WT_Gedcom_Tag {
 	// All tags that kiwitrees knows how to translate - including special/internal tags
 	private static $ALL_TAGS = array(
-		'ABBR', 'ADDR', 'ADR1', 'ADR2', 'ADOP', 'ADOP:DATE', 'ADOP:PLAC',
+		'ABBR', 'ADDR', 'ADR1', 'ADR2', 'ADR3', 'ADOP', 'ADOP:DATE', 'ADOP:PLAC',
 		'AFN', 'AGE', 'AGNC', 'ALIA', 'ANCE', 'ANCI', 'ANUL', 'ASSO', 'AUTH', 'BAPL',
 		'BAPL:DATE', 'BAPL:PLAC', 'BAPM', 'BAPM:DATE', 'BAPM:PLAC', 'BARM',
 		'BARM:DATE', 'BARM:PLAC', 'BASM', 'BASM:DATE', 'BASM:PLAC',
@@ -114,6 +114,7 @@ class WT_Gedcom_Tag {
 		case 'ADDR': return /* I18N: gedcom tag ADDR */ WT_I18N::translate('Address');
 		case 'ADR1': return WT_I18N::translate('Address line 1');
 		case 'ADR2': return WT_I18N::translate('Address line 2');
+		case 'ADR3': return WT_I18N::translate('Address line 3');
 		case 'ADOP': return /* I18N: gedcom tag ADOP */ WT_I18N::translate('Adoption');
 		case 'ADOP:DATE': return WT_I18N::translate('Date of adoption');
 		case 'ADOP:PLAC': return WT_I18N::translate('Place of adoption');
@@ -858,7 +859,7 @@ class WT_Gedcom_Tag {
 	}
 
 	// Translate a label/value pair, such as “Occupation: Farmer”
-	public static function getLabelValue($tag, $value, $record=null, $element='div') {
+	public static function getLabelValue($tag, $value, $record = null, $element = 'div') {
 			return
 			'<'.$element.' class="fact_'.preg_replace('/[^_A-Za-z0-9]/', '', $tag).'">'.
 			/* I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation. */
