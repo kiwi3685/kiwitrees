@@ -497,7 +497,6 @@ class WT_Person extends WT_GedcomRecord {
 		}
 
 		return
-//		print_r($this->getDeathDate());
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ WT_I18N::translate(
 				'%1$s–%2$s',
 				'<span title="' . $birth_date_title . '">' . $birth_date_display . '</span>',
