@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -73,13 +73,13 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		$Dbheight=($box_width*$bheight)/100;
 		$bwidth=$Dbwidth;
 		$bheight=$Dbheight;
-		
+
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
 			$bwidth = $cbwidth;
 			$bheight = $cbheight;
 		}
-		
+
 		$pbwidth = $bwidth+12;
 		$pbheight = $bheight+14;
 
@@ -129,9 +129,8 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 */
 	function print_child_descendancy($person, $depth) {
 		global $WT_IMAGES, $Dindent, $personcount;
-	
+
 		if (is_null($person)) return;
-		//print_r($person);
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
 		if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" alt=\"\"></td><td>";
@@ -141,7 +140,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		}
 		print_pedigree_person($person, 1, 0, $personcount);
 		echo '</td>';
-	
+
 		// check if child has parents and add an arrow
 		echo '<td>&nbsp;</td>';
 		echo '<td>';
@@ -153,7 +152,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 				break;
 			}
 		}
-	
+
 		// d'Aboville child number
 		$level =$this->generations-$depth;
 		if ($this->show_full) echo '<br><br>&nbsp;';
@@ -173,14 +172,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo "</td></tr>";
 		echo "</table>";
 		echo "</li>";
-	
+
 		// loop for each spouse
 		foreach ($person->getSpouseFamilies() as $family) {
 			$personcount++;
 			$this->print_family_descendancy($person, $family, $depth);
 		}
 	}
-	
+
 	/**
 	 * print a family descendancy
 	 *
@@ -190,16 +189,16 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 */
 	function print_family_descendancy($person, $family, $depth) {
 		global $WT_IMAGES, $Dindent, $personcount;
-	
+
 		if (is_null($family)) return;
 		if (is_null($person)) return;
-	
+
 		$spouse=$family->getSpouse($person);
 		if (!$spouse) {
 			// One parent families have no spouse
 			$spouse=new WT_Person('');
 		}
-	
+
 		// print marriage info
 		echo '<li>';
 		echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', ($Dindent+4), '" alt="">';
@@ -212,14 +211,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			echo '</a>';
 		}
 		echo '</span>';
-	
+
 		// print spouse
 		echo '<ul style="list-style:none; display:block;" id="'.$family->getXref().$personcount.'">';
 		echo '<li>';
 		echo '<table border="0" cellpadding="0" cellspacing="0"><tr><td>';
 		print_pedigree_person($spouse, 1, 0, $personcount);
 		echo '</td>';
-	
+
 		// check if spouse has parents and add an arrow
 		echo '<td>&nbsp;</td>';
 		echo '<td>';
@@ -233,7 +232,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		}
 		if ($this->show_full) echo '<br><br>&nbsp;';
 		echo '</td></tr>';
-	
+
 		// children
 		$children = $family->getChildren();
 		echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';
