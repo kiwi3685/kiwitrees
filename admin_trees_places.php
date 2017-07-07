@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,7 +45,6 @@ if ($search && $replace) {
 		$record = WT_Person::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($record) {
 			foreach ($record->getFacts() as $fact) {
-			//	print_r($fact);exit;
 				$old_place = $fact->getPlace();
 				if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
 					$new_place = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
