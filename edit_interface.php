@@ -295,26 +295,10 @@ case 'add':
 			<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 			<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array">
 			<div id="add_facts">
-				<?php echo create_add_form($fact);
-				if (WT_USER_IS_ADMIN) { ?>
-					<div class="last_change">
-						<label class="width25">
-							<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
-						</label>
-						<div class="input">
-							<?php if ($NO_UPDATE_CHAN) { ?>
-								<input type="checkbox" checked="checked" name="preserve_last_changed">
-							<?php } else { ?>
-								<input type="checkbox" name="preserve_last_changed">
-							<?php }
-							echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-							if (isset($famrec)) {
-								$event = new WT_Event(get_sub_record(1, "1 CHAN", $famrec), null, 0);
-								echo format_fact_date($event, new WT_Person(''), false, true);
-							} ?>
-						</div>
-					</div>
-				<?php } ?>
+				<?php
+				echo create_add_form($fact);
+				echo no_update_chan($record);
+				?>
 			</div>
 			<?php // Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
 			if ($level0type === 'INDI' || $level0type === 'FAM') { ?>
@@ -979,11 +963,16 @@ case 'addnoteaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote_assisted':
-	require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_asst_ctrl.php';
+	require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census-edit.php';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnoteaction_assisted':
+	require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census-save.php';
+	break;
+
+////////////////////////////////////////////////////////////////////////////////
+/*case 'addnoteaction_assisted':
 	$controller
 		->setPageTitle(WT_I18N::translate('Create a new Shared Note using Assistant'))
 		->pageHeader();
@@ -991,13 +980,93 @@ case 'addnoteaction_assisted':
 
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
-		<?php require WT_ROOT . WT_MODULES_DIR . 'census_assistant/addnoteaction_assisted.php'; ?>
+		<?php
+		$newgedrec  = "0 @XREF@ NOTE\n";
+
+		if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];
+		if (!empty($EVEN) && count($EVEN)>0) {
+			$newgedrec .= "1 DATA\n";
+			$newgedrec .= "2 EVEN ".implode(",", $EVEN)."\n";
+			if (!empty($EVEN_DATE)) $newgedrec .= "3 DATE ".$EVEN_DATE."\n";
+			if (!empty($EVEN_PLAC)) $newgedrec .= "3 PLAC ".$EVEN_PLAC."\n";
+			if (!empty($AGNC))      $newgedrec .= "2 AGNC ".$AGNC."\n";
+		}
+		if (isset($_REQUEST['ABBR'])) $ABBR = $_REQUEST['ABBR'];
+		if (isset($_REQUEST['TITL'])) $TITL = $_REQUEST['TITL'];
+		if (isset($_REQUEST['DATE'])) $DATE = $_REQUEST['DATE'];
+		if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
+		if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
+		if (isset($_REQUEST['ROMN'])) $ROMN = $_REQUEST['ROMN'];
+		if (isset($_REQUEST['AUTH'])) $AUTH = $_REQUEST['AUTH'];
+		if (isset($_REQUEST['PUBL'])) $PUBL = $_REQUEST['PUBL'];
+		if (isset($_REQUEST['REPO'])) $REPO = $_REQUEST['REPO'];
+		if (isset($_REQUEST['CALN'])) $CALN = $_REQUEST['CALN'];
+
+		if (isset($_REQUEST['pid_array'])) $pid_array = $_REQUEST['pid_array'];
+		if (isset($_REQUEST['pid']))  $pid = $_REQUEST['pid'];
+
+		global $pid;
+
+		if (!empty($NOTE)) {
+			$newlines = preg_split("/\r?\n/", $NOTE, -1);
+			for ($k = 0; $k < count($newlines); $k++) {
+				if ($k == 0 && count($newlines) > 1) {
+					$newgedrec = '0 @XREF@ NOTE ' . $newlines[$k] . '\n';
+				} else if ($k==0) {
+					$newgedrec = '0 @XREF@ NOTE ' . $newlines[$k] . '\n1 CONT\n';
+				} else {
+					$newgedrec .= '1 CONT ' . $newlines[$k] . '\n';
+				}
+			}
+		}
+
+		if (!empty($ABBR)) $newgedrec .= '1 ABBR ' . $ABBR . '\n';
+		if (!empty($TITL)) {
+			if (!empty($_HEB)) $newgedrec .= '2 _HEB ' . $_HEB . '\n';
+			if (!empty($ROMN)) $newgedrec .= '2 ROMN ' . $ROMN . '\n';
+		}
+		if (!empty($AUTH)) $newgedrec .= '1 AUTH ' . $AUTH . '\n';
+		if (!empty($PUBL)) {
+			$newlines = preg_split("/\r?\n/", $PUBL, -1, PREG_SPLIT_NO_EMPTY);
+			foreach ($newlines as $k => $line) {
+				if ($k == 0) {
+					$newgedrec .= '1 PUBL ' . $line . '\n';
+				} else {
+					$newgedrec .= '2 CONT ' . $line . '\n';
+				}
+			}
+		}
+		if (!empty($NOTE)) {
+			if (!empty($CALN)) $newgedrec .= '2 CALN ' . $CALN . '\n';
+		}
+
+		if ($pid_array != '') {
+			$xref = append_gedrec($newgedrec, WT_GED_ID);
+		} else {
+			$xref = '';
+			echo '<div class="indent">' . WT_I18N::translate('No individuals entered, close and try again') . '</div>';
+		}
+
+		if ($xref) {
+			$controller->addInlineJavascript('
+				if (parent.opener.document.getElementById("pids_array_edit") == null || parent.opener.document.getElementById("pids_array_edit") == "undefined") {
+				} else {
+					parent.opener.document.editform.pids_array_edit.value="' . $pid_array .'";
+				}
+				if (parent.opener.document.getElementById("pids_array_add") == null || parent.opener.document.getElementById("pids_array_add") == "undefined") {
+				} else {
+					parent.opener.document.addform.pids_array_add.value="' . $pid_array . '";
+				}
+				openerpasteid("' . $xref . '")
+			');
+		}
+		?>
 	</div> <!-- id="edit_interface-page" -->
 
 	<?php
 	break;
 
-////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////*/
 case 'addmedia_links':
 	?>
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
@@ -1352,10 +1421,10 @@ case 'updateraw':
 	$record = WT_GedcomRecord::getInstance($pid);
 
 	// Retrieve the private data
-	list(, $private_gedrec)=$record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	list(, $private_gedrec) = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
-	$newgedrec = $_POST['newgedrec1'] . "\n" . $_POST['newgedrec2'] . $private_gedrec;
-	$success = replace_gedrec($pid, WT_GED_ID, $newgedrec, !safe_POST_bool('preserve_last_changed'));
+	$newgedrec	= $_POST['newgedrec1'] . "\n" . $_POST['newgedrec2'] . $private_gedrec;
+	$success	= replace_gedrec($pid, WT_GED_ID, $newgedrec, !safe_POST_bool('preserve_last_changed'));
 
 	if ($success && !WT_DEBUG) {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -1369,7 +1438,7 @@ case 'update':
 		->pageHeader();
 
 	/* -----------------------------------------------------------------------------
-	 * $pids_array is a text file passed via js from the CENS GEDFact Assistant
+	 * $pids_array is a text file passed via js from the Census Assistant
 	 * to the hidden field id=\"pids_array\" in the case 'add'.
 	 * The subsequent array ($cens_pids), after exploding this text file,
 	 * is an array of indi id's within the Census Transcription
@@ -1378,11 +1447,17 @@ case 'update':
 	 * If $cens_pids is not set, then the array created is just the current $pid.
 	 * -----------------------------------------------------------------------------
 	 */
-	if (isset($_REQUEST['pids_array_add'])) $pids_array = $_REQUEST['pids_array_add'];
-	if (isset($_REQUEST['pids_array_edit'])) $pids_array = $_REQUEST['pids_array_edit'];
-	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
-echo $pid;
-	if (isset($pids_array) && $pids_array != "no_array") {
+	if (isset($_REQUEST['pids_array_add'])) {
+		$pids_array = $_REQUEST['pids_array_add'];
+	}
+	if (isset($_REQUEST['pids_array_edit'])) {
+		$pids_array = $_REQUEST['pids_array_edit'];
+	}
+	if (isset($_REQUEST['num_note_lines'])) {
+		$num_note_lines = $_REQUEST['num_note_lines'];
+	}
+
+	if (isset($pids_array) && $pids_array !== "no_array") {
 		$cens_pids = explode(', ', $pids_array);
 		$cens_pids = array_diff($cens_pids, array("add"));
 	}
@@ -1410,25 +1485,25 @@ echo $pid;
 		list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
 		// If the fact has a DATE or PLAC, then delete any value of Y
-		if ($text[0]=='Y') {
+		if ($text[0] == 'Y') {
 			for ($n=1; $n<count($tag); ++$n) {
-				if ($glevels[$n]==2 && ($tag[$n]=='DATE' || $tag[$n]=='PLAC') && $text[$n]) {
-					$text[0]='';
+				if ($glevels[$n] == 2 && ($tag[$n] == 'DATE' || $tag[$n] == 'PLAC') && $text[$n]) {
+					$text[0] = '';
 					break;
 				}
 			}
 		}
 
 		//-- check for photo update
-		if (count($_FILES)>0) {
+		if (count($_FILES) > 0) {
 			if (isset($_REQUEST['folder'])) $folder = $_REQUEST['folder'];
 			$uploaded_files = array();
 			if (substr($folder, 0, 1) == "/") $folder = substr($folder, 1);
 			if (substr($folder, -1, 1) != "/") $folder .= "/";
 			foreach ($_FILES as $upload) {
 				if (!empty($upload['tmp_name'])) {
-					if (!move_uploaded_file($upload['tmp_name'], $MEDIA_DIRECTORY.$folder.basename($upload['name']))) {
-						$error .= "<br>".WT_I18N::translate('There was an error uploading your file.')."<br>".file_upload_error_text($upload['error']);
+					if (!move_uploaded_file($upload['tmp_name'], $MEDIA_DIRECTORY.$folder . basename($upload['name']))) {
+						$error .= "<br>" . WT_I18N::translate('There was an error uploading your file.') . "<br>" . file_upload_error_text($upload['error']);
 						$uploaded_files[] = "";
 					} else {
 						$filename = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
@@ -1558,7 +1633,7 @@ echo $pid;
 				if (!empty($NSFX)) $newged .= "\n2 NSFX $NSFX";
 
 				if (!empty($NOTE)) {
-					$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
+					$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !== 0;');
 					$gedlines = array_filter($gedlines, $cmpfunc);
 					$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 					$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
@@ -2205,9 +2280,22 @@ case 'changefamily':
 		->setPageTitle(WT_I18N::translate('Change Family Members'))
 		->pageHeader()
 		->addInlineJavascript('
-			function change_family(){
-				var id = jQuery("#HUSBinput").val();
-				jQuery("#HUSBName").html(id)
+			// Add new child row
+			jQuery("#newField").click(function(){
+				jQuery("tr.add_child").clone().insertAfter(".add_child:last");
+				jQuery("tr.add_child:last>input").attr("value", "");
+				jQuery("tr.add_child:last>input").removeAttr("id").autocomplete({
+					source: "autocomplete.php?field=INDI",
+					html: !0
+				});
+			})
+		')
+
+		->addInlineJavascript('
+			function change_family(id_input){
+				var id = jQuery("#" + id_input).val();
+				if (id_input = "HUSBInput") jQuery("#HUSBName").html(id);
+				if (id_input = "WIFEInput") jQuery("#WIFEName").html(id);
 			};
 	');
 
@@ -2271,103 +2359,144 @@ case 'changefamily':
 		<form id="changefamform" name="changefamform" method="post" action="edit_interface.php">
 			<input type="hidden" name="action" value="changefamily_update">
 			<input type="hidden" name="famid" value="<?php echo $famid; ?>">
+			<?php echo WT_Filter::getCsrf(); ?>
 			<table>
-				<tr>
-					<?php if ($father) { ?>
-						<td class="descriptionbox">
-							<b>
-								<?php
-								switch ($father->getSex()) {
-								case 'M': echo WT_I18N::translate('husband'); break;
-								case 'F': echo WT_I18N::translate('wife'); break;
-								default:  echo WT_I18N::translate('spouse'); break;
-								}
-								?>
-							</b>
-							<input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
-						<td id="HUSBName" class="optionbox"><?php echo $father->getFullName(); ?></td>
-					<?php } else { ?>
-						<td class="descriptionbox">
-							<b>
-								<?php echo WT_I18N::translate('spouse'); ?>
-							</b>
-							<input type="hidden" name="HUSB" value="">
-						</td>
-						<td id="HUSBName" class="optionbox"></td>
-					<?php } ?>
-					<td class="optionbox">
-						<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none':'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-					</td>
-					<td class="optionbox">
-						<input data-autocomplete-type="INDI" type="text" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-						<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
-					</td>
-				</tr>
-				<tr>
-					<?php if ($mother) { ?>
-						<td class="descriptionbox">
-							<b>
-								<?php
-								switch ($mother->getSex()) {
-								case 'M': echo WT_I18N::translate('husband'); break;
-								case 'F': echo WT_I18N::translate('wife'); break;
-								default:  echo WT_I18N::translate('spouse'); break;
-								}
-								?>
-							</b>
-							<input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>">
-						</td>
-						<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
-					<?php } else { ?>
-						<td class="descriptionbox">
-							<b>
-								<?php echo WT_I18N::translate('spouse'); ?>
-							</b>
-							<input type="hidden" name="WIFE" value="">
-						</td>
-						<td id="WIFEName" class="optionbox"></td>
-					<?php } ?>
-					<td class="optionbox">
-						<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-					</td>
-					<td class="optionbox">
-						<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEName" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-						<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
-					</td>
-				</tr>
-				<?php $i=0; foreach ($children as $child) { ?>
+				<thead>
 					<tr>
-						<td class="descriptionbox">
-							<b>
-								<?php
-								switch ($child->getSex()) {
-								case 'M': echo WT_I18N::translate('son'); break;
-								case 'F': echo WT_I18N::translate('daughter'); break;
-								default:  echo WT_I18N::translate('child'); break;
-								}
-								?>
-							</b>
-							<input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>">
-						</td>
-						<td id="CHILName<?php echo $i; ?>" class="optionbox"><?php echo $child->getFullName(); ?></td>
+						<th class="descriptionbox" style="font-weight: 600;" colspan="2"><?php echo WT_I18N::translate('Existing'); ?> </th>
+						<th class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Remove'); ?> </th>
+						<th class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Change'); ?> </th>
+						<th class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Add'); ?> </th>
+					</tr>
+				</thead>
+				</tbody>
+					<tr>
+						<?php if ($father) { ?>
+							<td class="descriptionbox" style="font-weight: 600;">
+								<?php switch ($father->getSex()) {
+									case 'M': echo WT_I18N::translate('husband'); break;
+									case 'F': echo WT_I18N::translate('wife'); break;
+									default:  echo WT_I18N::translate('spouse'); break;
+								} ?>
+								<input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>">
+							</td>
+							<td id="HUSBName" class="optionbox">
+								<?php echo $father->getFullName(); ?>
+							</td>
+						<?php } else { ?>
+							<td class="descriptionbox" style="font-weight: 600;">
+								<?php echo WT_I18N::translate('spouse'); ?>
+								<input type="hidden" name="HUSB" value="">
+							</td>
+							<td id="HUSBName" class="optionbox"></td>
+						<?php } ?>
 						<td class="optionbox">
-							<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+							<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none' : 'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+							<?php if ($father) { ?>
+								<?php echo checkbox('husbrem', false); ?>
+							<?php } ?>
 						</td>
 						<td class="optionbox">
-							<input data-autocomplete-type="INDI" type="text" name="CHIL" id="CHILName" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-							<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
+							<?php if ($father) { ?>
+								<input data-autocomplete-type="INDI" type="text" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+								<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
+							<?php } ?>
+						</td>
+						<td class="optionbox">
+							<?php if (!$father) { ?>
+								<input type="text" data-autocomplete-type="INDI" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+								<input type="hidden" class="autocomplete" value="">
+							<?php } ?>
 						</td>
 					</tr>
-				<?php $i++; } ?>
-				<tr>
-					<td class="descriptionbox"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value=""></td>
-					<td id="CHILName<?php echo $i; ?>" class="optionbox"></td>
-					<td colspan="2" class="optionbox child">
-						<a href="#" id="childrem<?php echo $i; ?>" style="display: none;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-						<a href="#" onclick="remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Add'); ?></a>
-					</td>
-				</tr>
+					<tr>
+						<?php if ($mother) { ?>
+							<td class="descriptionbox" style="font-weight: 600;">
+								<b>
+									<?php
+									switch ($mother->getSex()) {
+										case 'M': echo WT_I18N::translate('husband'); break;
+										case 'F': echo WT_I18N::translate('wife'); break;
+										default:  echo WT_I18N::translate('spouse'); break;
+									}
+									?>
+								</b>
+								<input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>">
+							</td>
+							<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
+						<?php } else { ?>
+							<td class="descriptionbox" style="font-weight: 600;">
+								<b>
+									<?php echo WT_I18N::translate('spouse'); ?>
+								</b>
+								<input type="hidden" name="WIFE" value="">
+							</td>
+							<td id="WIFEName" class="optionbox"></td>
+						<?php } ?>
+						<td class="optionbox">
+							<?php if ($mother) { ?>
+								<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+								<?php echo checkbox('wiferem', false); ?>
+							<?php } ?>
+						</td>
+						<td class="optionbox">
+							<?php if ($mother) { ?>
+								<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEInput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+								<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
+							<?php } ?>
+						</td>
+						<td class="optionbox">
+							<?php if (!$mother) { ?>
+								<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+								<div class="autocomplete_label" style="font-size:85%;white-space:nowrap;line-height:1.5;"></div>
+							<?php } ?>
+						</td>
+					</tr>
+					<?php
+					$i = 0;
+					foreach ($children as $child) { ?>
+						<tr>
+							<td class="descriptionbox" style="font-weight: 600;">
+								<b>
+									<?php
+									switch ($child->getSex()) {
+										case 'M': echo WT_I18N::translate('son'); break;
+										case 'F': echo WT_I18N::translate('daughter'); break;
+										default:  echo WT_I18N::translate('child'); break;
+									}
+									?>
+								</b>
+								<input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>">
+							</td>
+							<td id="CHILName<?php echo $i; ?>" class="optionbox"><?php echo $child->getFullName(); ?></td>
+							<td class="optionbox">
+								<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+							</td>
+							<td class="optionbox">
+								<input data-autocomplete-type="INDI" type="text" name="CHIL" id="CHILName" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+								<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
+							</td>
+						</tr>
+						<?php $i++;
+					} ?>
+					<tr class="add_child">
+						<td class="descriptionbox" style="font-weight: 600;"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value=""></td>
+						<td id="CHILName<?php echo $i; ?>" class="optionbox"></td>
+						<td colspan="2" class="optionbox child">
+							<a href="#" id="childrem<?php echo $i; ?>" style="display: none;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+							<a href="#" onclick="remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Add'); ?></a>
+						</td>
+						<td class="optionbox">
+							<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
+							<div class="autocomplete_label" style="font-size:85%;white-space:nowrap;line-height:1.5;"></div>
+						</td>
+					</tr>
+				</tbody>
 			</table>
+			<label>
+				<p><a href="#" id="newField" class="current"><?php echo WT_I18N::translate('Add another child'); ?></a></p>
+			</label>
+			<?php echo no_update_chan($family); ?>
 			<p id="save-cancel">
 				<button class="btn btn-primary" type="submit">
 					<i class="fa fa-save"></i>
@@ -2384,6 +2513,135 @@ case 'changefamily':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
+case 'changefamily_update-NEW':
+	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
+	$HUSB      = WT_Filter::post('HUSB', WT_REGEX_XREF);
+	$WIFE      = WT_Filter::post('WIFE', WT_REGEX_XREF);
+
+	if (!WT_Filter::checkCsrf()) {
+		break;
+	}
+
+	$CHIL = array();
+	for ($i = 0; isset($_POST['CHIL' . $i]); ++$i) {
+		$CHIL[] = WT_Filter::post('CHIL' . $i, WT_REGEX_XREF);
+	}
+
+	$family = WT_Family::getInstance($xref, $WT_TREE);
+	check_record_access($family);
+
+	$controller
+		->setPageTitle(WT_I18N::translate('Change family members') . ' – ' . $family->getFullName())
+		->pageHeader();
+
+	// Current family members
+	$old_father   = $family->getHusband();
+	$old_mother   = $family->getWife();
+	$old_children = $family->getChildren();
+
+	// New family members
+	$new_father   = WT_Person::getInstance($HUSB, $WT_TREE);
+	$new_mother   = WT_Person::getInstance($WIFE, $WT_TREE);
+	$new_children = array();
+	foreach ($CHIL as $child) {
+		$new_children[] = WT_Person::getInstance($child, $WT_TREE);
+	}
+
+	if ($old_father !== $new_father) {
+		if ($old_father) {
+			// Remove old FAMS link
+			$indirec = find_gedcom_record($old_father->getXref(), WT_GED_ID, true);
+			$pos1 = strpos($indirec, "1 FAMS @$famid@");
+			if ($pos1 !== false) {
+				$pos2 = strpos($indirec, "\n1", $pos1+5);
+				if ($pos2 === false) {
+					$pos2 = strlen($indirec);
+				} else {
+					$pos2++;
+				}
+				$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
+				replace_gedrec($old_father->getXref(), WT_GED_ID, $indirec, $update_CHAN);
+			}
+			// Remove old HUSB link
+			$pos1 = strpos($gedrec, "1 HUSB @");
+			if ($pos1 !== false) {
+				$pos2 = strpos($gedrec, "\n1", $pos1 + 5);
+				if ($pos2 === false) {
+					$pos2 = strlen($gedrec);
+				} else {
+					$pos2++;
+				}
+				$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
+			}
+		}
+		if ($new_father) {
+			// Add new FAMS link
+			if (strstr($gedrec, "1 HUSB") !== false) {
+				$gedrec = preg_replace("/1 HUSB @.*@/", "1 HUSB @' . $new_father->getXref() . '@", $gedrec);
+			} else {
+				$gedrec .= "\n1 HUSB 1 HUSB @' . $new_father->getXref() . '@";
+			}
+			// Add new HUSB link
+			$indirec = find_gedcom_record($HUSB, WT_GED_ID, true);
+			if (!empty($indirec) && (strpos($indirec, "1 FAMS @' . $family->getXref() . '@")===false)) {
+				$indirec .= "\n1 FAMS @' . $family->getXref() . '@";
+				replace_gedrec($HUSB, WT_GED_ID, $indirec, $update_CHAN);
+			}
+		}
+	}
+
+	if ($old_mother !== $new_mother) {
+		if ($old_mother) {
+			// Remove old FAMS link
+			foreach ($old_mother->getFacts('FAMS') as $fact) {
+				if ($fact->getTarget() === $family) {
+					$old_mother->deleteFact($fact->getFactId(), !$keep_chan);
+				}
+			}
+			// Remove old WIFE link
+			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
+				if ($fact->getTarget() === $old_mother) {
+					$family->deleteFact($fact->getFactId(), !$keep_chan);
+				}
+			}
+		}
+		if ($new_mother) {
+			// Add new FAMS link
+			$new_mother->createFact('1 FAMS @' . $family->getXref() . '@', !$keep_chan);
+			// Add new WIFE link
+			$family->createFact('1 WIFE @' . $new_mother->getXref() . '@', !$keep_chan);
+		}
+	}
+
+	foreach ($old_children as $old_child) {
+		if ($old_child && !in_array($old_child, $new_children)) {
+			// Remove old FAMC link
+			foreach ($old_child->getFacts('FAMC') as $fact) {
+				if ($fact->getTarget() === $family) {
+					$old_child->deleteFact($fact->getFactId(), !$keep_chan);
+				}
+			}
+			// Remove old CHIL link
+			foreach ($family->getFacts('CHIL') as $fact) {
+				if ($fact->getTarget() === $old_child) {
+					$family->deleteFact($fact->getFactId(), !$keep_chan);
+				}
+			}
+		}
+	}
+
+	foreach ($new_children as $new_child) {
+		if ($new_child && !in_array($new_child, $old_children)) {
+			// Add new FAMC link
+			$new_child->createFact('1 FAMC @' . $family->getXref() . '@', !$keep_chan);
+			// Add new CHIL link
+			$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
+		}
+	}
+
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	break;
+
 case 'changefamily_update':
 	$controller
 		->setPageTitle(WT_I18N::translate('Change Family Members'))
@@ -2394,6 +2652,7 @@ case 'changefamily_update':
 	$mother = $family->getWife();
 	$children = $family->getChildren();
 	$updated = false;
+
 	//-- add the new father link
 	if (isset($_REQUEST['HUSB'])) $HUSB = $_REQUEST['HUSB'];
 	if (!empty($HUSB) && (is_null($father) || $father->getXref()!=$HUSB)) {
@@ -2656,62 +2915,63 @@ case 'reorder_fams_update':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'checkduplicates':
-	$gedcom_id	= safe_GET('ged', array_keys(WT_Tree::getAll()), WT_GED_ID);
 	$surn		= WT_Filter::get('surname', '[^<>&%{};]*');
 	$givn		= WT_Filter::get('given', '[^<>&%{};]*');
 	$html		= '';
 
 	// the sql query used to identify simple duplicates
 	$sql = '
-		SELECT n_id, n_full, n_surn, n_givn
+		SELECT n_id, n_full, n_surn, n_givn, d_year
 		FROM `##name`
+		 INNER JOIN `##dates` ON d_gid = n_id
 		 WHERE n_surn LIKE "%' . $surn . '%"
+		 AND n_type NOT LIKE "_MARNM"
 		 AND n_givn LIKE "%' . $givn . '%"
-		 AND n_file = '. $gedcom_id;
+		 AND n_file = '. WT_GED_ID . '
+		 AND d_file = '. WT_GED_ID . '
+		 AND d_fact = "BIRT"
+		 ORDER BY d_year ASC
+	';
 	$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Possible duplicates'))
-		->pageHeader();
+		->pageHeader()
+		->addExternalJavascript(WT_JQUERY_DATATABLES_URL);
 
 	$html = '
 		<div id="edit_interface-page" class="duplicates">
 			<h2>'. $controller->getPageTitle() . '</h2>';
 
 			if ($rows) {
-				$i = 1;
 				$html .= '
 					<p>' . WT_I18N::translate('These individuals might be duplicates of your new entry. Click on a name to open a new tab at their page to view more details. <br><br>Close this window and the <strong>Add new individual</strong> window if you do not want to complete this addition.') . '</p>
-					<table>
+					<h4>' . WT_I18N::translate('Found %s possible duplicates', count($rows)) . '</h4>
+					<table id="duplicates">
+					<thead>
 						<tr>
 							<th>' . WT_I18N::translate('Name') . '</th>
-							<th>' . WT_I18N::translate('Lifespan') . '</th>
-							<th>' . WT_I18N::translate('Birthplace') . '</th>
-						</tr>';
-				foreach ($rows as $row) {
-					$id = $row['n_id'];
-					$name = $row['n_full'];
-					$person = WT_Person::getInstance($id);
-					$lifespan	= $person->canDisplayDetails() ? '<span>' . $person->getLifeSpan()	. '</span>' : '';
-					$birthplace	= $person->getBirthPlace() ? '<span>' . $person->getBirthPlace() . '</span>' : '';
+							<th>' . WT_I18N::translate('Birth year') . '</th>
+							<th>' . WT_I18N::translate('Birth place') . '</th>
+						</tr>
+					</thead>
+					<tbody>';
+						foreach ($rows as $row) {
+							$id = $row['n_id'];
+							$name = $row['n_full'];
+							$person = WT_Person::getInstance($id);
+							$birthplace	= $person->getBirthPlace() ? '<span>' . $person->getBirthPlace() . '</span>' : '';
+							$birthyear	= $row['d_year'];
+							$html .= '
+									<tr>
+										<td><a href="'. $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $name . '</a></td>
+										<td>' . $birthyear . '</td>
+										<td>' . $birthplace .'</td>
+									</tr>';
 
-					$html .= '
-							<tr>
-								<td><a href="'. $person->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $name . '</a></td>
-								<td>' . $lifespan .'</td>
-								<td>' . $birthplace .'</td>
-							</tr>';
-
-					if ($i == 10 ) {
-					$html .= '
-							<tr>
-								<td colspan="3"><span class="warning">' . WT_I18N::translate('More than %s possible duplicates found.', $i) . '</span></td>
-							</tr>';
-						break;
-					}
-					$i++;
-				}
-				$html .= '</table>';
+						}
+					$html .= '</tbody>
+				</table>';
 			} else {
 				$html .= '<p>' . WT_I18N::translate('No duplicates found') . '</p>';
 			}
@@ -2727,4 +2987,20 @@ case 'checkduplicates':
 
 	echo $html;
 	break;
+}
+
+/**
+ * Can we edit a GedcomRecord object
+ *
+ * @param WT_GedcomRecord $object
+ */
+function check_record_access(WT_GedcomRecord $object = null) {
+	global $controller;
+
+	if (!$object || !$object->canShow() || !$object->canEdit() || $object->canDisplayName()) {
+		$controller
+			->pageHeader()
+			->addInlineJavascript('closePopupAndReloadParent();');
+		exit;
+	}
 }

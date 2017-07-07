@@ -543,37 +543,27 @@ function breakConts($newline) {
  * get CONT lines
  *
  * get the N+1 CONT or CONC lines of a gedcom subrecord
+ *
  * @param int $nlevel the level of the CONT lines to get
  * @param string $nrec the gedcom subrecord to search in
- * @return string a string with all CONT or CONC lines merged
+ *
+ * @return string a string with all CONT lines merged
  */
-function get_cont($nlevel, $nrec, $tobr=true) {
-	global $WORD_WRAPPED_NOTES;
-	$text = "";
-	if ($tobr) {
-		$newline = "<br>";
-	} else {
-		$newline = "\n";
-	}
+function get_cont($nlevel, $nrec) {
+	$text = '';
 
 	$subrecords = explode("\n", $nrec);
 	foreach ($subrecords as $thisSubrecord) {
-		if (substr($thisSubrecord, 0, 2)!=$nlevel." ") {
+		if (substr($thisSubrecord, 0, 2) !== $nlevel . ' ') {
 			continue;
 		}
 		$subrecordType = substr($thisSubrecord, 2, 4);
-		if ($subrecordType=="CONT") {
-			$text .= $newline;
-		}
-		if ($subrecordType=="CONC" && $WORD_WRAPPED_NOTES) {
-			$text .= " ";
-		}
-		if ($subrecordType=="CONT" || $subrecordType=="CONC") {
-			$text .= rtrim(substr($thisSubrecord, 7));
+		if ($subrecordType === 'CONT') {
+			$text .= "\n" . substr($thisSubrecord, 7);
 		}
 	}
 
-	return rtrim($text, " ");
+	return $text;
 }
 
 /**
@@ -2590,4 +2580,313 @@ function detectMaxUploadFileSize(){
 
 	return $display_maxsize;
 
+}
+
+// family navigator
+function FamilyNavigator($pid){
+	$controller = new WT_Controller_Individual();
+	global $spouselinks, $parentlinks, $DeathYr, $BirthYr, $censyear, $censdate;
+
+//	if (WT_Family::getInstance($pid)) {
+//		$record	= WT_Family::getInstance($pid);
+//		if ($record->getHusband()->getXref()) {
+//			$pid = $record->getHusband()->getXref();
+//		} elseif ($record->getWife()->getXref()) {
+//			$pid = $record->getWife()->getXref();
+//		}
+//	}
+
+	$person		= WT_Person::getInstance($pid);
+	$currpid	= $pid;
+	$person->getDeathYear() == 0 ? $DeathYr = "" : $DeathYr = $person->getDeathYear();
+	$person->getBirthYear() == 0 ? $BirthYr = "" : $BirthYr = $person->getBirthYear();
+	?>
+	<div id="media-links">
+	<table>
+		<tr>
+			<th colspan="2">
+				<?php echo WT_I18N::translate('Family navigator'); ?>
+			</th>
+		<tr>
+			<td colspan="2" class="descriptionbox wrap center">
+				<?php echo WT_I18N::translate('Click name to add person to list of links.'); ?>
+			</td>
+		</tr>
+		<?php
+		//-- Build Parent Family -------------
+		$personcount	= 0;
+		$families		= $person->getChildFamilies();
+		foreach ($families as $family) {
+			$label		= $person->getChildFamilyLabel($family);
+			$people		= $controller->buildFamilyList($family, "parents");
+			$marrdate	= $family->getMarriageDate();
+			// Parents - husband
+			if (isset($people["husb"])) {
+				$fulln		= strip_tags($people['husb']->getFullName());
+				$menu		= new WT_Menu(getCloseRelationshipName($person, $people["husb"]));
+				$slabel		= print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+				$slabel		.= $parentlinks;
+				$submenu	= new WT_Menu($slabel);
+				$menu->addSubMenu($submenu); ?>
+				<tr>
+					<td>
+						<?php echo $menu->getMenu(); ?>
+					</td>
+					<td align="left">
+						<?php if (($people["husb"]->canDisplayDetails())) { ?>
+							<a href="#" onclick="insertRowToTable('<?php echo $people["husb"]->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+								<?php echo $people["husb"]->getFullName(); ?>
+							</a>
+						<?php } else {
+							echo WT_I18N::translate('Private');
+						} ?>
+					</td>
+				</tr>
+			<?php }
+			// Parents - wife
+			if (isset($people["wife"])) {
+				$fulln		= strip_tags($people['wife']->getFullName());
+				$menu		= new WT_Menu(getCloseRelationshipName($person, $people["wife"]));
+				$slabel		= print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+				$slabel		.= $parentlinks;
+				$submenu	= new WT_Menu($slabel);
+				$menu->addSubMenu($submenu); ?>
+				<tr>
+					<td>
+						<?php echo $menu->getMenu(); ?>
+					</td>
+					<td align="left">
+						<?php if (($people["wife"]->canDisplayDetails())) { ?>
+							<a href="#" onclick="insertRowToTable('<?php echo $people["wife"]->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+								<?php echo $people["wife"]->getFullName(); ?>
+							</a>
+						<?php } else {
+							echo WT_I18N::translate('Private');
+						} ?>
+					</td>
+				</tr>
+			<?php }
+			// Parents - siblings
+			if (isset($people["children"])) {
+				$elderdate = $family->getMarriageDate();
+				foreach ($people["children"] as $key=>$child) {
+					$fulln		= strip_tags($child->getFullName());
+					$menu		= new WT_Menu(getCloseRelationshipName($person, $child));
+					$slabel		= print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+					$slabel		.= $spouselinks;
+					$submenu	= new WT_Menu($slabel);
+					$menu->addSubMenu($submenu);
+					// Only print current person in immediate family group
+					if ($child->getXref() != $pid) { ?>
+						<tr>
+							<td>
+								<?php if ($child->getXref() == $pid) {
+									echo $child->getLabel();
+								} else {
+									echo $menu->getMenu();
+								} ?>
+							</td>
+							<td align="left">
+								<?php if ($child->canDisplayDetails()) { ?>
+									<a href="#" onclick="insertRowToTable('<?php echo $child->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+										<?php echo $child->getFullName(); ?>
+									</a>
+									<?php
+								} else {
+									echo WT_I18N::translate('Private');
+								} ?>
+							</td>
+						</tr>
+					<?php }
+				}
+				$elderdate = $child->getBirthDate(false);
+			}
+		}
+		//-- Build step families -------
+		foreach ($person->getChildStepFamilies() as $family) {
+			$label = $person->getStepFamilyLabel($family);
+			$people = $controller->buildFamilyList($family, "step-parents");
+			if ($people) { ?>
+				<!-- blank row 1-->
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			<?php }
+			$marrdate = $family->getMarriageDate();
+			// Husband ----------
+			$elderdate = "";
+			if (isset($people["husb"]) ) {
+				$fulln 		= strip_tags($people['husb']->getFullName());
+				$menu		= new WT_Menu();
+				$menu->addLabel(getCloseRelationshipName($person, $people["husb"]));
+				$slabel		= print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+				$slabel		.= $parentlinks;
+				$submenu	= new WT_Menu($slabel);
+				$menu->addSubMenu($submenu);
+				$people["husb"]->getDeathYear() == 0 ? $DeathYr = "" : $DeathYr = $people["husb"]->getDeathYear();
+				$people["husb"]->getBirthYear() == 0 ? $BirthYr = "" : $BirthYr = $people["husb"]->getBirthYear(); ?>
+				<tr>
+					<td>
+						<?php echo $menu->getMenu(); ?>
+					</td>
+					<td align="left">
+						<?php if ($people["husb"]->canDisplayDetails()) { ?>
+							<a href="#" onclick="insertRowToTable('<?php echo $people["husb"]->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+								<?php echo $people["husb"]->getFullName(); ?>
+							</a>
+						<?php } else {
+							echo WT_I18N::translate('Private');
+						} ?>
+					</td>
+				</tr>
+				<?php $elderdate = $people["husb"]->getBirthDate(false);
+			}
+			// Wife
+			if (isset($people["wife"]) ) {
+				$fulln		= strip_tags($people['wife']->getFullName());
+				$menu		= new WT_Menu();
+				$menu->addLabel(getCloseRelationshipName($person, $people["wife"]));
+				$slabel		= print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+				$slabel		.= $parentlinks;
+				$submenu	= new WT_Menu($slabel);
+				$menu->addSubMenu($submenu);
+				$people["wife"]->getDeathYear() == 0 ? $DeathYr = "" : $DeathYr = $people["wife"]->getDeathYear();
+				$people["wife"]->getBirthYear() == 0 ? $BirthYr = "" : $BirthYr = $people["wife"]->getBirthYear(); ?>
+				<tr>
+					<td>
+						<?php echo $menu->getMenu(); ?>
+					</td>
+					<td align="left">
+						<?php if ($people["wife"]->canDisplayDetails()) { ?>
+						<a href="#" onclick="insertRowToTable('<?php echo $people["wife"]->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+							<?php echo $people["wife"]->getFullName(); ?>
+						</a>
+						<?php } else {
+							echo WT_I18N::translate('Private');
+						} ?>
+					</td>
+				</tr>
+			<?php }
+			// Children --
+			if (isset($people["children"])) {
+				$elderdate = $family->getMarriageDate();
+				foreach ($people["children"] as $key=>$child) {
+					$fulln		= strip_tags($child->getFullName());
+					$menu		= new WT_Menu(getCloseRelationshipName($person, $child));
+					$slabel		= print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+					$slabel		.= $spouselinks;
+					$submenu	= new WT_Menu($slabel);
+					$menu->addSubMenu($submenu);
+					$child->getDeathYear() == 0 ? $DeathYr = "" : $DeathYr = $child->getDeathYear();
+					$child->getBirthYear() == 0 ? $BirthYr = "" : $BirthYr = $child->getBirthYear(); ?>
+					<tr>
+						<td>
+							<?php echo $menu->getMenu(); ?>
+						</td>
+						<td align="left">
+							<?php if ($child->canDisplayDetails()) { ?>
+							<a href="#" onclick="insertRowToTable('<?php echo $child->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+								<?php echo $child->getFullName(); ?>
+							</a>
+							<?php } else {
+								echo WT_I18N::translate('Private');
+							} ?>
+						</td>
+					</tr>
+				<?php }
+			}
+		} ?>
+		<?php //-- Build Spouse Family -------------
+		$families = $person->getSpouseFamilies();
+		foreach ($families as $family) {
+			$people = $controller->buildFamilyList($family, "spouse");
+			if ($people) { ?>
+				<!-- blank row 2-->
+				<tr>
+					<td colspan="2">&nbsp;</td>
+				</tr>
+			<?php }
+			$marrdate = $family->getMarriageDate();
+			// Husband
+			if (isset($people["husb"])) {
+				$fulln		= strip_tags($people['husb']->getFullName());
+				$menu		= new WT_Menu(getCloseRelationshipName($person, $people["husb"]));
+				$slabel		= print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+				$slabel		.= $parentlinks;
+				$submenu	= new WT_Menu($slabel);
+				$menu->addSubMenu($submenu);
+				$people["husb"]->getDeathYear() == 0 ? $DeathYr = "" : $DeathYr = $people["husb"]->getDeathYear();
+				$people["husb"]->getBirthYear() == 0 ? $BirthYr = "" : $BirthYr = $people["husb"]->getBirthYear(); ?>
+				<tr class="fact_value">
+					<td>
+						<?php echo $menu->getMenu();?>
+					</td>
+					<td align="left" >
+						<?php if ($people["husb"]->canDisplayDetails()) { ?>
+							<a href="#" onclick="insertRowToTable('<?php echo $people["husb"]->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+								<?php echo $people["husb"]->getFullName(); ?>
+							</a>
+						<?php } else {
+							echo WT_I18N::translate('Private');
+						} ?>
+					</td>
+				<tr>
+			<?php }
+			// Wife
+			if (isset($people["wife"])) {
+				$fulln		= strip_tags($people['wife']->getFullName());
+				$menu		= new WT_Menu(getCloseRelationshipName($person, $people["wife"]));
+				$slabel		= print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
+				$slabel		.= $parentlinks;
+				$submenu	= new WT_Menu($slabel);
+				$menu->addSubMenu($submenu);
+				$people["wife"]->getDeathYear() == 0 ? $DeathYr = "" : $DeathYr = $people["wife"]->getDeathYear();
+				$people["wife"]->getBirthYear() == 0 ? $BirthYr = "" : $BirthYr = $people["wife"]->getBirthYear(); ?>
+				<tr>
+					<td>
+						<?php echo $menu->getMenu();?>
+					</td>
+					<td align="left">
+						<?php if ($people["wife"]->canDisplayDetails()) { ?>
+							<a href="#" onclick="insertRowToTable('<?php echo $people["wife"]->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+								<?php echo $people["wife"]->getFullName(); ?>
+							</a>
+						<?php } else {
+							echo WT_I18N::translate('Private');
+						} ?>
+					</td>
+				<tr>
+			<?php }
+			// Children
+			foreach ($people["children"] as $key=>$child) {
+				$fulln		= strip_tags($child->getFullName());
+				$menu		= new WT_Menu(getCloseRelationshipName($person, $child));
+				$slabel		= print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
+				$slabel		.= $spouselinks;
+				$submenu	= new WT_Menu($slabel);
+				$menu->addSubmenu($submenu); ?>
+				<tr>
+					<td >
+						<?php echo $menu->getMenu(); ?>
+					</td>
+					<td align="left">
+						<?php if (($child->canDisplayDetails())) { ?>
+							<a href="#" onclick="insertRowToTable('<?php echo $child->getXref(); ?>','<?php echo WT_Filter::escapeHtml($fulln); ?>');">
+								<?php echo $child->getFullName(); ?>
+							</a>
+						<?php } else {
+							echo WT_I18N::translate('Private');
+						} ?>
+					</td>
+				</tr>
+			<?php }
+		} ?>
+		<tr>
+			<td colspan="2">
+				<a class="error" href="#" onclick="fam_nav_close();"><?php echo WT_I18N::translate('Close'); ?></a>
+			</td>
+		<tr>
+	</table>
+</div> <!-- close "media-links" -->
+	<?php
 }

@@ -40,165 +40,251 @@ class census_assistant_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
-		case '_CENS/census_3_find':
-			// TODO: this file should be a method in this class
-			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/_CENS/census_3_find.php';
-			break;
-		case 'media_3_find':
-			self::media_3_find();
-			break;
-		case 'media_query_3a':
-			self::media_query_3a();
-			break;
 		default:
 			echo $mod_action;
 			header('HTTP/1.0 404 Not Found');
 		}
 	}
 
-	private static function media_3_find() {
-		global $MEDIA_DIRECTORY, $ABBREVIATE_CHART_LABELS;
+	/**
+	 * Convert custom markup into HTML
+	 *
+	 * @param Note $note
+	 *
+	 * @return string
+	 */
+	public static function formatCensusNote(WT_Note $note) {
+		global $WT_TREE;
 
-		$controller = new WT_Controller_Simple();
+		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.+)\n(.+(?:\n.+)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
+			// This looks like a census-assistant shared note
+			$title     = WT_Filter::escapeHtml($match[1]);
+			$preamble  = WT_Filter::escapeHtml($match[2]);
+			$header    = WT_Filter::escapeHtml($match[3]);
+			$data      = WT_Filter::escapeHtml($match[4]);
+			$postamble = WT_Filter::escapeHtml($match[5]);
 
-		$type           ='indi';
-		$filter         =safe_GET('filter');
-		$action         =safe_GET('action');
-		$callback       ='paste_id';
-		$media          =safe_GET('media');
-		$external_links =safe_GET('external_links');
-		$directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
-		$multiple       =safe_GET_bool('multiple');
-		$showthumb      =safe_GET_bool('showthumb');
-		$all            =safe_GET_bool('all');
-		$subclick       =safe_GET('subclick');
-		$choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
+			// Get the column headers for the census to which this note refers
+			// requires the fact place & date to match the specific census
+			// censusPlace() (Soundex match) and censusDate() functions
+			$fmt_headers   = array();
 
-		$controller
-			->setPageTitle(WT_I18N::translate('Find an individual'))
-			->pageHeader();
-		?>
+			$linkedRecords = array_merge($note->fetchLinkedIndividuals(), $note->fetchLinkedFamilies());
 
-		<script>
-			function pasterow(id, name, gend, yob, age, bpl) {
-				window.opener.opener.insertRowToTable(id, name, '', gend, '', yob, age, 'Y', '', bpl);
-			}
-
-			function pasteid(id, name, thumb) {
-				if (thumb) {
-					window.opener.<?php echo $callback; ?>(id, name, thumb);
-					<?php if (!$multiple) echo "window.close();"; ?>
-				} else {
-					// census_assistant ========================
-					if (window.opener.document.getElementById('addlinkQueue')) {
-						window.opener.insertRowToTable(id, name);
+			$firstRecord   = array_shift($linkedRecords);
+			if ($firstRecord) {
+				$countryCode	= '';
+				$date			= '';
+				foreach ($firstRecord->getFacts('CENS') as $fact) {
+					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
+						$wt_place	 = new WT_Place($fact->getPlace(), WT_GED_ID);
+						$date        = $fact->getAttribute('DATE');
+						$place       = explode(',', strip_tags($wt_place->getFullName()));
+						$countryCode = WT_Soundex::soundex_dm(array_pop($place));
+						break;
 					}
-					window.opener.<?php echo $callback; ?>(id);
-					if (window.opener.pastename) window.opener.pastename(name);
-					<?php if (!$multiple) echo "window.close();"; ?>
+				}
+
+				foreach (WT_Census_Census::allCensusPlaces() as $censusPlace) {
+					if (WT_Soundex::compare($countryCode, WT_Soundex::soundex_dm($censusPlace->censusPlace()))) {
+						foreach ($censusPlace->allCensusDates() as $census) {
+							if ($census->censusDate() == $date) {
+								foreach ($census->columns() as $column) {
+									$abbrev = $column->abbreviation();
+									if ($abbrev) {
+										$description          = $column->title() ? $column->title() : WT_I18N::translate('Description unavailable');
+										$fmt_headers[$abbrev] = '<span title="' . $description . '">' . $abbrev . '</span>';
+									}
+								}
+								break 2;
+							}
+						}
+					}
 				}
 			}
-			function checknames(frm) {
-				if (document.forms[0].subclick) button = document.forms[0].subclick.value;
-				else button = "";
-				if (frm.filter.value.length<2&button!="all") {
-					alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
-					frm.filter.focus();
-					return false;
+			// Substitute header labels and format as HTML
+			$thead = '<tr><th>' . strtr(str_replace('|', '</th><th>', $header), $fmt_headers) . '</th></tr>';
+			$thead = str_replace('.b.', '', $thead);
+
+			// Format data as HTML
+			$tbody = '';
+			foreach (explode("\n", $data) as $row) {
+				$tbody .= '<tr>';
+				foreach (explode('|', $row) as $column) {
+					$tbody .= '<td>' . $column . '</td>';
 				}
-				if (button=="all") {
-					frm.filter.value = "";
-				}
-				return true;
+				$tbody .= '</tr>';
 			}
-		</script>
 
-		<?php
-		echo "<div align=\"center\">";
-		echo "<table class=\"list_table width90\" border=\"0\">";
-		echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
-		echo $controller->getPageTitle();
-		echo "</td>";
-		echo "</tr>";
-		echo "</table>";
-		echo "<br>";
-		echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
-		echo "<br>";
-
-		$filter = trim($filter);
-		$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));
-		echo "<table class=\"tabs_table width90\"><tr>";
-		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
-		if ($myindilist) {
-			echo "<td class=\"list_value_wrap\"><ul>";
-			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
-			foreach ($myindilist as $indi) {
-				$nam = htmlspecialchars($indi->getFullName());
-				echo "<li><a href=\"#\" onclick=\"pasterow(
-					'".$indi->getXref()."' ,
-					'".$nam."' ,
-					'".$indi->getSex()."' ,
-					'".$indi->getbirthyear()."' ,
-					'".(1901-$indi->getbirthyear())."' ,
-					'".$indi->getbirthplace()."'); return false;\">
-					<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";
-
-				$born=WT_Gedcom_Tag::getLabel('BIRT');
-				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
-			echo "<hr>";
-			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
+			return
+//				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
+				'<div class="census_text">
+					<p>' . $preamble . '</p>
+					<table class="ca">
+						<thead>' . $thead . '</thead>
+						<tbody>' . $tbody . '</tbody>
+					</table>
+					<p>' . $postamble . '</p>
+				</div>';
 		} else {
-			echo "<td class=\"list_value_wrap\">";
-			echo WT_I18N::translate('No results found.');
-			echo "</td></tr>";
+			// Not a census-assistant shared note - apply default formatting
+			return WT_Filter::formatText($note->getNote(), $WT_TREE);
 		}
-		echo "</table>";
-		echo '</div>';
 	}
 
-	private static function media_query_3a() {
-		$iid2 = safe_GET('iid');
+	/*++++++++++++++++++++++++++++++*/
+	/**
+	 * Generate an HTML row of data for the census header
+	 *
+	 * Add prefix cell (store XREF and drag/drop)
+	 * Add suffix cell (delete button)
+	 *
+	 * @param CensusInterface $census
+	 *
+	 * @return string
+	 */
+	public static function censusTableHeader($census) {
+		$html = '';
+		foreach ($census->columns() as $column) {
+			$html .= '<th title="' . $column->title() . '" style="' . $column->style() . '">' . $column->abbreviation() . '</th>';
+		}
 
-		$controller = new WT_Controller_Simple();
-		$controller
-			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
-			->pageHeader();
+		return '<tr><th style="display:none;"></th>' . $html . '<th class="delete"></th></tr>';
+	}
 
-		$record=WT_GedcomRecord::getInstance($iid2);
-		if ($record) {
-			$headjs='';
-			if ($record->getType()=='FAM') {
-				if ($record->getHusband()) {
-					$headjs=$record->getHusband()->getXref();
-				} elseif ($record->getWife()) {
-					$headjs=$record->getWife()->getXref();
+	/**
+	 * Generate an HTML row of data for the census
+	 *
+	 * Add prefix cell (store XREF and drag/drop)
+	 * Add suffix cell (delete button)
+	 *
+	 * @param CensusInterface $census
+	 *
+	 * @return string
+	 */
+	public static function censusTableEmptyRow(WT_Census_CensusInterface $census) {
+		return '<tr><td style="display:none;"></td>' . str_repeat('<td><input type="text"></td>', count($census->columns())) . '<td class="delete"><a class="icon-delete" href="#" title="' . WT_I18N::translate('Remove') . '"></a></td></tr>';
+	}
+
+	/**
+	 * Generate an HTML row of data for the census
+	 *
+	 * Add prefix cell (store XREF and drag/drop)
+	 * Add suffix cell (delete button)
+	 *
+	 * @param CensusInterface $census
+	 * @param Individual      $individual
+	 * @param Individual|null $head
+	 *
+	 * @return string
+	 */
+	public static function censusTableRow($census, WT_Person $individual, WT_Person $head = null) {
+		$html = '';
+		foreach ($census->columns() as $column) {
+			$html .= '<td><input type="text" value="' . $column->generate($individual, $head) . '"></td>';
+		}
+
+		return '<tr><td style="display:none;">' . $individual->getXref() . '</td>' . $html . '<td class="delete"><a class="icon-delete" href="#" title="' . WT_I18N::translate('Remove') . '"></a></td></tr>';
+	}
+
+	/**
+	 * Create a family on the census navigator.
+	 *
+	 * @param CensusInterface $census
+	 * @param Family          $family
+	 * @param Individual      $head
+	 *
+	 * @return string
+	 */
+	public static function censusNavigatorFamily(WT_Census_CensusInterface $census, WT_Family $family, WT_Person $head) {
+		$headImg2 = '<i class="icon-button_head" title="' . WT_I18N::translate('Head of household') . '"></i>';
+
+		foreach ($family->getSpouses() as $spouse) {
+			$menu = new WT_Menu(getCloseRelationshipName($head, $spouse));
+			foreach ($spouse->getChildFamilies() as $grandparents) {
+				foreach ($grandparents->getSpouses() as $grandparent) {
+					$submenu = new WT_Menu(
+						getCloseRelationshipName($head, $grandparent) . ' - ' . $grandparent->getFullName(),
+						'#',
+						'',
+						array('onclick' => 'return appendCensusRow("' . WT_Filter::escapeJs(self::censusTableRow($census, $grandparent, $head)) . '");')
+					);
+					$submenu->addClass('submenuitem', '');
+					$menu->addSubmenu($submenu);
+					$menu->addClass('', 'submenu');
 				}
 			}
-			?>
-			<script>
-			function insertId() {
-				if (window.opener.document.getElementById('addlinkQueue')) {
-					// alert('Please move this alert window and examine the contents of the pop-up window, then click OK')
-					window.opener.insertRowToTable('<?php echo $record->getXref(); ?>', '<?php echo htmlSpecialChars($record->getFullName()); ?>', '<?php echo $headjs; ?>');
-					window.close();
-				}
-			}
-			</script>
-			<?php
 
-		} else {
 			?>
-			<script>
-			function insertId() {
-				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid Individual, Family or Source ID'); ?>');
-				window.close();
-			}
-			</script>
+			<tr>
+				<td>
+					<?php echo $menu->getMenu(); ?>
+				</td>
+				<td class="nowrap">
+					<a href="#" onclick="return appendCensusRow('<?php echo WT_Filter::escapeJs(self::censusTableRow($census, $spouse, $head)); ?>');">
+						<?php echo $spouse->getFullName(); ?>
+					</a>
+				</td>
+				<td>
+					<?php if ($head !== $spouse): ?>
+						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $spouse->getXref(); ?>&amp;gedcom=<?php echo WT_GEDURL; ?>&amp;census=<?php echo get_class($census); ?>">
+							<?php echo $headImg2; ?>
+						</a>
+					<?php endif; ?>
+				</td>
+			</tr>
 			<?php
 		}
-		?>
-		<script>window.onLoad = insertId();</script>
-		<?php
+
+		foreach ($family->getChildren() as $child) {
+			$menu = new WT_Menu(getCloseRelationshipName($head, $child));
+			foreach ($child->getSpouseFamilies() as $spouse_family) {
+				foreach ($spouse_family->getSpouses() as $spouse_family_spouse) {
+					if ($spouse_family_spouse != $child) {
+						$submenu = new WT_Menu(
+							getCloseRelationshipName($head, $spouse_family_spouse) . ' - ' . $spouse_family_spouse->getFullName(),
+							'#',
+							'',
+							array('onclick' => 'return appendCensusRow("' . WT_Filter::escapeJs(self::censusTableRow($census, $spouse_family_spouse, $head)) . '");')
+						);
+						$submenu->addClass('submenuitem', '');
+						$menu->addSubmenu($submenu);
+						$menu->addClass('', 'submenu');
+					}
+				}
+				foreach ($spouse_family->getChildren() as $spouse_family_child) {
+					$submenu = new WT_Menu(
+						getCloseRelationshipName($head, $spouse_family_child) . ' - ' . $spouse_family_child->getFullName(),
+						'#',
+						'',
+						array('onclick' => 'return appendCensusRow("' . WT_Filter::escapeJs(self::censusTableRow($census, $spouse_family_child, $head)) . '");')
+					);
+					$submenu->addClass('submenuitem', '');
+					$menu->addSubmenu($submenu);
+					$menu->addClass('', 'submenu');
+				}
+			}
+
+			?>
+			<tr>
+				<td>
+					<?php echo $menu->getMenu(); ?>
+				</td>
+				<td>
+					<a href="#" onclick="return appendCensusRow('<?php echo WT_Filter::escapeJs(self::censusTableRow($census, $child, $head)); ?>');">
+						<?php echo $child->getFullName(); ?>
+					</a>
+				</td>
+				<td>
+					<?php if ($head !== $child): ?>
+						<a href="edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=<?php echo $child->getXref(); ?>&amp;gedcom=<?php echo WT_GEDURL; ?>&amp;census=<?php echo get_class($census); ?>">
+							<?php echo $headImg2; ?>
+						</a>
+					<?php endif; ?>
+				</td>
+			</tr>
+			<?php
+		}
+		echo '<tr><td colspan="3">&nbsp;</td></tr>';
 	}
 }

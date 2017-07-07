@@ -435,7 +435,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	// -- find source for each fact
 	print_fact_sources($fact->getGedcomRecord(), 2);
 	// -- find notes for each fact
-	print_fact_notes($fact->getGedcomRecord(), 2);
+	echo print_fact_notes($fact->getGedcomRecord(), 2);
 	//-- find media objects
 	print_media_links($fact->getGedcomRecord(), 2, $pid);
 	echo '</td></tr>';
@@ -534,7 +534,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				ob_start();
 				print_media_links($srec, $nlevel);
 				$data .= ob_get_clean();
-				$data .= print_fact_notes($srec, $nlevel, false, true);
+				$data .= print_fact_notes($srec, $nlevel, false);
 				$data .= '</div>';
 				$data .= '</div>';
 			} else {
@@ -973,10 +973,9 @@ function print_main_notes(WT_Event $fact, $level) {
 				$text	 = get_cont(1, $noterec);
 				// If Census assistant installed,
 				if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
-					$text = WT_Census_CensusAssistantModule::formatCensusNote($note);
+					$text = census_assistant_WT_Module::formatCensusNote($note);
 				} else {
-//					$text = expand_urls($line1 . $text);
-//					$text = WT_Filter::formatText($note->getNote(), $fact->getParent()->getTree());
+					$text = WT_Filter::formatText($note->getNote(), $fact->getParent()->getTree());
 				}
 			} else {
 				$text = '<span class="error">' . htmlspecialchars($nid) . '</span>';

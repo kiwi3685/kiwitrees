@@ -450,7 +450,6 @@ function contact_links($ged_id=WT_GED_ID) {
  */
 function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 	global $WT_TREE, $EXPAND_NOTES;
-
 	$text .= get_cont($nlevel, $nrec);
 
 	// Check if shared note (we have already checked that it exists)
@@ -461,27 +460,25 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
 			$html = census_assistant_WT_Module::formatCensusNote($note);
 		} else {
-//			$html = WT_Filter::formatText($note->getNote(), $WT_TREE);
+			$html = WT_Filter::formatText($note->getNote(), $WT_TREE);
 		}
 	} else {
-		$note  = null;
-		$label = 'NOTE';
-//		$html  = WT_Filter::formatText($text, $WT_TREE);
+		$note	= null;
+		$label	= 'NOTE';
+		$html	= WT_Filter::formatText($text, $WT_TREE);
 	}
-
 	if ($textOnly) {
 		return strip_tags($text);
 	}
-
 	if (strpos($text, "\n") === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
-//		return WT_GedcomTag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
+		return WT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
 	} elseif ($EXPAND_NOTES) {
 		// A multi-line note, and we're expanding notes by default
-//		return WT_GedcomTag::getLabelValue($label, $html);
+		return WT_Gedcom_Tag::getLabelValue($label, $html);
 	} else {
 		// A multi-line note, with an expand/collapse option
-		$element_id = 'N-'.(int)(microtime(true)*1000000);
+		$element_id = 'N-' . (int)(microtime(true)*1000000);
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
 		} else {
@@ -490,10 +487,18 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		}
 
 		return
-			'<div class="fact_NOTE"><span class="label">' .
-			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
-			'</div>' .
-			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
+			'<div class="fact_NOTE">
+				<span class="label">
+					' . WT_Gedcom_Tag::getLabel($label) . ':&nbsp;
+				</span>
+				<span id="' . $element_id . '-alt">' . $first_line . '
+					<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;">
+						<i id="' . $element_id . '_img" class="icon-plus"></i>
+					</a>
+				</span>
+			</div>
+			<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>
+		';
 	}
 }
 
@@ -502,60 +507,58 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 * @param string $factrec the factrecord to print the notes from
 * @param int $level The level of the factrecord
 * @param bool $textOnly Don't print the "Note: " introduction
-* @param boolean $return whether to return text or print the data
 */
-function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
-	global $GEDCOM;
-	$ged_id = get_id_from_gedcom($GEDCOM);
+function print_fact_notes($factrec, $level, $textOnly = false) {
+	global $WT_TREE;
 
-	$data = "";
+	$data          = '';
 	$previous_spos = 0;
-	$nlevel = $level + 1;
-	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
-	for ($j=0; $j<$ct; $j++) {
-		$nid = str_replace("@","",$match[$j][1]);
+	$nlevel        = $level + 1;
+	$ct            = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
+	for ($j = 0; $j < $ct; $j++) {
 		$spos1 = strpos($factrec, $match[$j][0], $previous_spos);
-		$spos2 = strpos($factrec."\n$level", "\n$level", $spos1+1);
-		if (!$spos2) $spos2 = strlen($factrec);
-		$nrec = substr($factrec, $spos1, $spos2-$spos1);
-		if (!isset($match[$j][1])) $match[$j][1]="";
+		$spos2 = strpos($factrec . "\n$level", "\n$level", $spos1 + 1);
+		if (!$spos2) {
+			$spos2 = strlen($factrec);
+		}
 		$previous_spos = $spos2;
-		$nt = preg_match("/@(.*)@/", $match[$j][1], $nmatch);
-		$closeSpan = false;
-		if ($nt == 0) {
-			//-- print embedded note records
-			$closeSpan = print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
-			$data .= $closeSpan;
+		$nrec          = substr($factrec, $spos1, $spos2 - $spos1);
+		if (!isset($match[$j][1])) {
+			$match[$j][1] = '';
+		}
+		if (!preg_match('/@(.*)@/', $match[$j][1], $nmatch)) {
+			$data .= print_note_record($match[$j][1], $nlevel, $nrec, $textOnly);
 		} else {
-			$note = WT_Note::getInstance($nmatch[1]);
+			$note = WT_Note::getInstance($nmatch[1], $WT_TREE);
 			if ($note) {
 				if ($note->canDisplayDetails()) {
 					$noterec = $note->getGedcomRecord();
-					//-- print linked note records
-					$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-					$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
-					$data .= $closeSpan;
+					$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
+					$data	 .= print_note_record(($nt > 0) ? $n1match[1] : "", 1, $noterec, $textOnly);
 					if (!$textOnly) {
-						if (strpos($noterec, "1 SOUR")!==false) {
-							require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-							$data .= print_fact_sources($noterec, 1, true);
+						if (strpos($noterec, '1 SOUR') !== false) {
+							$data .= print_fact_sources($noterec, 1);
 						}
 					}
 				}
 			} else {
-				$data='<div class="fact_NOTE"><span class="label">'.WT_I18N::translate('Note').'</span>: <span class="field error">'.$nid.'</span></div>';
+				$data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
 			}
 		}
+
 		if (!$textOnly) {
-			if (strpos($factrec, "$nlevel SOUR")!==false) {
-				$data .= "<div class=\"indent\">";
-				$data .= print_fact_sources($nrec, $nlevel, true);
-				$data .= "</div>";
+			if (strpos($factrec, "$nlevel SOUR") !== false) {
+				$data .= '
+					<div class="indent">' .
+						print_fact_sources($nrec, $nlevel, true) . '
+					</div>
+				';
 			}
 		}
 	}
-	if (!$return) echo $data;
-	else return $data;
+
+	return $data;
+
 }
 
 //-- function to print a privacy error with contact method
@@ -654,12 +657,9 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 					$text  = get_cont(1, $noterec);
 					// If Census assistant installed,
 					if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
-						$centitl  = str_replace('~~', '', $line1);
-						$centitl  = str_replace('<br>', '', $centitl);
-						$centitl  = '<a href="note.php?nid=' . $nid . '">' . $centitl . '</a>';
-						$note = include WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_note_decode.php';
+						$note = census_assistant_WT_Module::formatCensusNote($note);
 					} else {
-						$note = expand_urls($line1 . $text);
+						$note = WT_Filter::formatText($note->getNote(), $WT_TREE);
 					}
 				} else {
 					$note = '<span class="error">' . htmlspecialchars($nid) . '</span>';

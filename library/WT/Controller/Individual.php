@@ -806,11 +806,4 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
 	}
 
-	/**
-	* include census controller
-	*/
-	function census_assistant() {
-		require WT_ROOT . WT_MODULES_DIR . 'census_assistant/census_1_ctrl.php';
-	}
-
 }

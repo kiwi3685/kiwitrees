@@ -6524,7 +6524,7 @@ div.widget {
 .cens_header .label {
 	display: inline-block;
 	margin: 0;
-	width: 50px;
+	width: 100px;
 }
 .cens_container {
 	border: 1px solid;
@@ -6601,10 +6601,19 @@ div.widget {
 table.ca {
 	border-collapse: collapse
 }
+table.ca th,
 table.ca td {
 	border: 1px solid #aaa;
 	font-size: 90%;
 	padding: 3px;
+}
+table.ca th {
+	cursor: help;
+	font-weight: 600;
+}
+div.census_text p {
+	margin: 0 0 0.5em;
+	white-space: pre-wrap;
 }
 /* ------------------ */
 

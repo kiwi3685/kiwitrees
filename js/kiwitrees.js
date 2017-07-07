@@ -547,11 +547,12 @@ function addnewnote(field) {
 	}, null, field);
 }
 
-function addnewnote_assisted(field, iid) {
+function addnewnote_assisted(field, xref, census) {
 	return edit_interface({
 		"action": "addnewnote_assisted",
 		"noteid": "newnote",
-		"pid": iid
+		"xref": xref,
+		"census": census
 	}, assist_window_specs, field);
 }
 
@@ -656,6 +657,18 @@ function valid_date(datefield) {
 
 	// Apply leading zero to day numbers
 	datestr = datestr.replace(/(^| )(\d [A-Z]{3,5} \d{4})/, "$10$2");
+
+	// Catch years with than 4 digits
+	var yearcheck = /([\d]{5,})$/i;
+	if (yearcheck.exec(datestr)) {
+		var alerted = localStorage.getItem('alerted') || '';
+		if (alerted != 'yes') {
+			alert('Date error: ' + RegExp.$1);
+			localStorage.setItem('alerted','yes');
+		}
+	} else {
+		localStorage.setItem('alerted','');
+	}
 
 	if (datephrase) {
 		datestr = datestr+" ("+datephrase;
@@ -1502,6 +1515,9 @@ function autocomplete(selector) {
 					extra: extra,
 					term:  request.term
 				}, response);
+			},
+			select: function( event, ui ) {
+				jQuery(self).nextAll('div.autocomplete_label').first().html(ui.item.label);
 			},
 			html: true
 		});

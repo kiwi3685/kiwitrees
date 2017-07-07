@@ -119,7 +119,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 function radio_buttons($name, $values, $selected, $extra='') {
 	$html = '';
 	foreach ($values as $key=>$value) {
-		$uniqueID = $name . (int)(microtime() * 1000000);
+		$uniqueID = $name . (int)(microtime(true) * 1000000);
 
 		$html .= '<label for="' . $uniqueID . '" ' . $extra . '><input type="radio" name="' . $name . '" id="' . $uniqueID . '" value="' . htmlspecialchars($key) . '"';
 		if ((string)$key === (string)$selected) {
@@ -907,7 +907,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 						add_simple_tag("0 SEX");
 					}
 					$bdm = "BD";
-					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
+					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
 						foreach ($matches[1] as $match) {
 							if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 								addSimpleTags($match);
@@ -915,15 +915,15 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 						}
 					}
 					//-- if adding a spouse add the option to add a marriage fact to the new family
-					if ($nextaction == 'addspouseaction' || ($nextaction == 'addnewparentaction' && $famid!='new')) {
+					if ($nextaction == 'addspouseaction' || ($nextaction == 'addnewparentaction' && $famid != 'new')) {
 						$bdm .= "M";
-						if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
+						if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 							foreach ($matches[1] as $match) {
 								addSimpleTags($match);
 							}
 						}
 					}
-					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FACTS, $matches)) {
+					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
 						foreach ($matches[1] as $match) {
 							if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 								addSimpleTags($match);
@@ -1149,8 +1149,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			return edit_interface({
 				"action": "checkduplicates",
 				"surname": surn,
-				"given": givn,
-				"ged": ' . WT_GED_ID . '
+				"given": givn
 			});
 		}
 
@@ -1270,9 +1269,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 	if ($level == 0)
 		$element_id = $fact; // ex: NPFX | GIVN ...
 	else
-		$element_id = $fact . (int)(microtime()*1000000); // ex: SOUR56402
+		$element_id = $fact . (int)(microtime(true)*1000000); // ex: SOUR56402
 	if ($upperlevel)
-		$element_id = $upperlevel . "_" . $fact . (int)(microtime()*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
+		$element_id = $upperlevel . "_" . $fact . (int)(microtime(true)*1000000); // ex: BIRT_DATE56402 | DEAT_DATE56402 ...
 
 	// field value
 	$islink = (substr($value, 0, 1)=="@" && substr($value, 0, 2)!="@#");
@@ -1801,15 +1800,15 @@ function censusDateSelector($locale, $xref) {
 		case 'cs':
 			$census_places = array(new WT_Census_CensusOfCzechRepublic);
 			break;
-		case 'en-AU':
-		case 'en-GB':
+		case 'en_AU':
+		case 'en_GB':
 			$census_places = array(new WT_Census_CensusOfEngland, new WT_Census_CensusOfWales, new WT_Census_CensusOfScotland);
 			break;
-		case 'en-US':
+		case 'en_US':
 			$census_places = array(new WT_Census_CensusOfUnitedStates);
 			break;
 		case 'fr':
-		case 'fr-CA':
+		case 'fr_CA':
 			$census_places = array(new WT_Census_CensusOfFrance);
 			break;
 		case 'da':
@@ -1822,6 +1821,7 @@ function censusDateSelector($locale, $xref) {
 			$census_places = array();
 			break;
 	}
+
 	foreach (WT_Census_Census::allCensusPlaces() as $census_place) {
 		if (!in_array($census_place, $census_places)) {
 			$census_places[] = $census_place;
@@ -1850,7 +1850,6 @@ function censusDateSelector($locale, $xref) {
 				var field  = jQuery("#newshared_note input.NOTE")[0];
 				var xref   = jQuery("input[name=pid]").val();
 				var census = jQuery(".census-assistant-selector :selected").data("census");
-				alert(census);
 				return addnewnote_assisted(field, xref, census);
 			}
 		');
@@ -2604,6 +2603,15 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 					add_simple_tag('3 MAP');
 					add_simple_tag('4 LATI');
 					add_simple_tag('4 LONG');
+					break;
+				case 'ADDR':
+					add_simple_tag('3 ADR1');
+					add_simple_tag('3 ADR2');
+					add_simple_tag('3 ADR3');
+					add_simple_tag('3 CITY');
+					add_simple_tag('3 STAE');
+					add_simple_tag('3 POST');
+					add_simple_tag('3 CTRY');
 					break;
 				case 'FILE':
 					add_simple_tag('3 FORM');

@@ -67,14 +67,14 @@ class WT_Event {
 	 */
 	function getValue($code) {
 		if (is_null($this->values)) {
-			$this->values=array();
-			preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $this->gedcomRecord, $matches, PREG_SET_ORDER);
+			$this->values = array();
+			preg_match_all('/\n2 (' . WT_REGEX_TAG . ') (.+)/', $this->gedcomRecord, $matches, PREG_SET_ORDER);
 			foreach ($matches as $match) {
 				// If this is a link, remove the "@"
-				if (preg_match('/^@'.WT_REGEX_XREF.'@$/', $match[2])) {
-					$this->values[$match[1]]=trim($match[2], "@");
+				if (preg_match('/^@' . WT_REGEX_XREF . '@$/', $match[2])) {
+					$this->values[$match[1]] = trim($match[2], "@");
 				} else {
-					$this->values[$match[1]]=$match[2];
+					$this->values[$match[1]] = $match[2];
 				}
 			}
 		}
@@ -111,6 +111,21 @@ class WT_Event {
 
 	function getState() {
 		return $this->state;
+	}
+
+	/**
+	 * Get the value of level 2 data in the fact
+	 *
+	 * @param string $tag
+	 *
+	 * @return string|null
+	 */
+	public function getAttribute($tag) {
+		if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcomRecord, $match)) {
+			return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
+		} else {
+			return null;
+		}
 	}
 
 	/**

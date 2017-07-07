@@ -453,4 +453,58 @@ class WT_Tree {
 
 		return @rename($tmp_file, $gedcom_file);
 	}
+
+	/**
+	 * Create a new record from GEDCOM data.
+	 *
+	 * @param string $gedcom
+	 *
+	 * @throws \Exception
+	 *
+	 * @return GedcomRecord
+	 */
+	public function createRecord($gedcom) {
+		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
+			$xref = $match[1];
+			$type = $match[2];
+		} else {
+			throw new \Exception('Invalid argument to GedcomRecord::createRecord(' . $gedcom . ')');
+		}
+
+		if (strpos("\r", $gedcom) !== false) {
+			// MSDOS line endings will break things in horrible ways
+			throw new \Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
+		}
+
+		// kiwitrees creates XREFs containing digits. Anything else (e.g. “new”) is just a placeholder.
+		if (!preg_match('/\d/', $xref)) {
+			$xref	= get_new_xref($type, WT_GED_ID);
+			$gedcom = preg_replace('/^0 @(' . WT_REGEX_XREF . ')@/', '0 @' . $xref . '@', $gedcom);
+		}
+
+		// Create a change record, if not already present
+		if (!preg_match('/\n1 CHAN/', $gedcom)) {
+			$gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . getUserName(WT_USER_ID);
+		}
+
+		// Create a pending change
+		WT_DB::prepare(
+			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
+		)->execute(array(
+			$this->tree_id,
+			$xref,
+			$gedcom,
+			WT_USER_ID,
+		));
+
+		AddToLog('Create: ' . $type . ' ' . $xref, 'edit');
+
+		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+			accept_all_changes($xref, WT_GED_ID);
+		}
+		// Return the newly created record. Note that since GedcomRecord
+		// has a cache of pending changes, we cannot use it to create a
+		// record with a newly created pending change.
+		return WT_GedcomRecord::getInstance($xref, $this, $gedcom);
+	}
 }

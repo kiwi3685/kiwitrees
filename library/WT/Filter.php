@@ -85,18 +85,36 @@ class WT_Filter {
 		);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Unescape an HTML string, giving just the literal text
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Unescape an HTML string, giving just the literal text
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
 	public static function unescapeHtml($string) {
 		return html_entity_decode(strip_tags($string), ENT_QUOTES, 'UTF-8');
 	}
 
-	//////////////////////////////////////////////////////////////////////////////
-	// Escape a string for use in HTML, and additionally:
-	// Convert URLs to links, inserting soft-hyphens at word boundaries so that
-	// the browser can word-wrap.
-	//////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Format block-level text such as notes or transcripts, etc.
+	 *
+	 * @param string  $text
+	 * @param Tree $WT_TREE
+	 *
+	 * @return string
+	 */
+	public static function formatText($text) {
+		return '<div style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text) . '</div>';
+	}
+
+	/**
+	 * Escape a string for use in HTML, and additionally convert URLs to links.
+	 *
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	public static function expandUrls($text) {
 		return preg_replace_callback(
 			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',

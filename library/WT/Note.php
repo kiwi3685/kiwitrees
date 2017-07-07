@@ -27,6 +27,20 @@ if (!defined('WT_KIWITREES')) {
 }
 
 class WT_Note extends WT_GedcomRecord {
+
+	/**
+	 * Get the text contents of the note
+	 *
+	 * @return string|null
+	 */
+	public function getNote() {
+		if (preg_match('/^0 @' . WT_REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->getGedcomRecord(), $match)) {
+			return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
+		} else {
+			return null;
+		}
+	}
+
 	// Implement note-specific privacy logic
 	protected function _canDisplayDetailsByType($access_level) {
 		// Hide notes if they are attached to private records
