@@ -41,7 +41,7 @@ class WT_Census_CensusColumnConditionFrenchHomme extends WT_Census_AbstractCensu
 	protected $divorce  = '1';
 	protected $divorcee = '';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = '';
 	protected $widow   = '';
 }

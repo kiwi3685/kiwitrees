@@ -6521,7 +6521,7 @@ div.widget {
 .cens_header {
 	margin: 10px 0;
 }
-.cens_header .label {
+.cens_header dt {
 	display: inline-block;
 	margin: 0;
 	width: 100px;

@@ -43,7 +43,7 @@ class WT_Census_CensusOfWales1871 extends WT_Census_CensusOfWales implements WT_
 		return array(
 			new WT_Census_CensusColumnFullName($this, 'Name', 'Name and surname'),
 			new WT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Condition as to marriage'),
+			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Marital status'),
 			new WT_Census_CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new WT_Census_CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
 			new WT_Census_CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),

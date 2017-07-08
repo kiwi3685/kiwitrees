@@ -2997,10 +2997,11 @@ case 'checkduplicates':
 function check_record_access(WT_GedcomRecord $object = null) {
 	global $controller;
 
-	if (!$object || !$object->canShow() || !$object->canEdit() || $object->canDisplayName()) {
-		$controller
-			->pageHeader()
-			->addInlineJavascript('closePopupAndReloadParent();');
-		exit;
+	if (!$object || !$object->canDisplayDetails() || !$object->canEdit() || $object->canDisplayName()) {
+		print_r($object->canDisplayDetails());
+//		$controller
+//			->pageHeader()
+//			->addInlineJavascript('closePopupAndReloadParent();');
+//		exit;
 	}
 }

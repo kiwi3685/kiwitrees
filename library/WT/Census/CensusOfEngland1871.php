@@ -43,7 +43,7 @@ class WT_Census_CensusOfEngland1871 extends WT_Census_CensusOfEngland implements
 		return array(
 			new WT_Census_CensusColumnFullName($this, 'Name', 'Name and surname', 'width: 250px;'),
 			new WT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Condition as to marriage'),
+			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Marital status'),
 			new WT_Census_CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new WT_Census_CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
 			new WT_Census_CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),

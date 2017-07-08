@@ -70,13 +70,21 @@ abstract class WT_Census_AbstractCensusColumnCondition extends WT_Census_Abstrac
 		$family = $this->spouseFamily($individual);
 		$sex    = $individual->getSex();
 
-		if ($family === null || count($family->getFacts('_NMR')) > 0) {
+		if ($family) {
+			$facts = $family->getFacts();
+			foreach ($facts as $fact) {
+				$fact->getTag() === '_NMR' ? $nmr = true : $nmr = false;
+				$fact->getTag() === 'DIV'  ? $div = true : $div = false;
+			}
+		}
+
+		if ($family === null || $nmr === true) {
 			if ($this->isChild($individual)) {
 				return $this->conditionChild($sex);
 			} else {
 				return $this->conditionSingle($sex);
 			}
-		} elseif (count($family->getFacts('DIV')) > 0) {
+		} elseif ($div === true) {
 			return $this->conditionDivorced($sex);
 		} else {
 			$spouse = $family->getSpouse($individual);
@@ -86,6 +94,7 @@ abstract class WT_Census_AbstractCensusColumnCondition extends WT_Census_Abstrac
 				return $this->conditionMarried($sex);
 			}
 		}
+
 	}
 
 	/**

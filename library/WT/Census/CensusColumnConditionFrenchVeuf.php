@@ -41,7 +41,7 @@ class WT_Census_CensusColumnConditionFrenchVeuf extends WT_Census_AbstractCensus
 	protected $divorce  = '';
 	protected $divorcee = '';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = '1';
 	protected $widow   = '';
 }

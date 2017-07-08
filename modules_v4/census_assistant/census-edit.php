@@ -78,8 +78,7 @@ $controller
 								<span class="field"><?php echo get_age_at_event($age, true); ?></span>
 							<?php }
 						}
-						echo $head->format_first_major_fact(WT_EVENTS_DEAT, 2);
-//						$date  = new WT_Date($census->censusDate()); ?>
+						echo $head->format_first_major_fact(WT_EVENTS_DEAT, 2); ?>
 						<dl>
 							<dt class="label"><?php echo WT_I18N::translate('Census date'); ?></dt>
 							<dd class="field"><span class="date"><?php echo $date->display(); ?></span></dd>
@@ -133,6 +132,18 @@ $controller
 
 				<div class="census-assistant-search">
 					<table>
+						<tr>
+							<td colspan="3">
+								<input type="text" data-autocomplete-type="INDI" name="gid" id="personid" placeholder="<?php echo WT_I18N::translate('Search for another person'); ?>" value="">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<button type="button" onclick="return appendCensusRow('<?php echo WT_Filter::escapeHtml(census_assistant_WT_Module::censusTableEmptyRow($census)); ?>');">
+									<?php echo WT_I18N::translate('Add a blank row'); ?>
+								</button>
+							</td>
+						</tr>
 						<?php
 						foreach ($head->getChildFamilies() as $family) {
 							census_assistant_WT_Module::censusNavigatorFamily($census, $family, $head);
@@ -146,18 +157,6 @@ $controller
 							census_assistant_WT_Module::censusNavigatorFamily($census, $family, $head);
 						}
 						?>
-						<tr>
-							<td colspan="3">
-								<input type="text" data-autocomplete-type="INDI" name="gid" id="personid" placeholder="<?php echo WT_I18N::translate('Search for another person'); ?>" value="">
-							</td>
-						</tr>
-						<tr>
-							<td colspan="3">
-								<button type="button" onclick="return appendCensusRow('<?php echo WT_Filter::escapeHtml(census_assistant_WT_Module::censusTableEmptyRow($census)); ?>');">
-									<?php echo WT_I18N::translate('Add a blank row'); ?>
-								</button>
-							</td>
-						</tr>
 					</table>
 				</div>
 			</div>

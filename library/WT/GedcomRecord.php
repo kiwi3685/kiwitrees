@@ -40,9 +40,9 @@ class WT_GedcomRecord {
 	private   $changed     = false; // Is this a new record, pending approval
 
 	// Cached results from various functions.
-	protected $_getAllNames     =null;
-	protected $_getPrimaryName  =null;
-	protected $_getSecondaryName=null;
+	protected $_getAllNames      = null;
+	protected $_getPrimaryName   = null;
+	protected $_getSecondaryName = null;
 
 	// Create a GedcomRecord object from either raw GEDCOM data or a database row
 	public function __construct($data) {
@@ -790,13 +790,13 @@ class WT_GedcomRecord {
 				$line = ' ';
 			}
 			if ($i == $lct||$line{0} == 1) {
-				if ($i>1) {
+				if ($i > 1) {
 					$this->facts[] = new WT_Event($factrec, $this, $linenum);
 				}
 				$factrec = $line;
 				$linenum = $i;
 			}
-			else $factrec .= "\n".$line;
+			else $factrec .= "\n" . $line;
 		}
 	}
 

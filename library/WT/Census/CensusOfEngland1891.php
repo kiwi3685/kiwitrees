@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,7 +43,7 @@ class WT_Census_CensusOfEngland1891 extends WT_Census_CensusOfEngland implements
 		return array(
 			new WT_Census_CensusColumnFullName($this, 'Name', 'Name and surname', 'width: 250px;'),
 			new WT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
-			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Condition as to marriage'),
+			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Marital status'),
 			new WT_Census_CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new WT_Census_CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
 			new WT_Census_CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),

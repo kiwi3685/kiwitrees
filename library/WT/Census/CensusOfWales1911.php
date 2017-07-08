@@ -45,7 +45,7 @@ class WT_Census_CensusOfWales1911 extends WT_Census_CensusOfWales implements WT_
 			new WT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),
 			new WT_Census_CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new WT_Census_CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
-			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Condition as to marriage'),
+			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Marital status'),
 			new WT_Census_CensusColumnYearsMarried($this, 'YrM', 'Years married'),
 			new WT_Census_CensusColumnChildrenBornAlive($this, 'ChA', 'Children born alive'),
 			new WT_Census_CensusColumnChildrenLiving($this, 'ChL', 'Children who are still alive'),

@@ -41,7 +41,7 @@ class WT_Census_CensusColumnConditionFrenchGarcon extends WT_Census_AbstractCens
 	protected $divorce  = '';
 	protected $divorcee = '';
 
-	/* Text to display for widowed individuals (not yet implemented) */
+	/* Text to display for widowed individuals */
 	protected $widower = '';
 	protected $widow   = '';
 }

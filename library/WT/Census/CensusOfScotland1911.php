@@ -46,7 +46,7 @@ class WT_Census_CensusOfScotland1911 extends WT_Census_CensusOfScotland implemen
 			new WT_Census_CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
 			new WT_Census_CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
 			new WT_Census_CensusColumnNull($this, 'Lang', 'Language spoken'),
-			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Condition as to marriage'),
+			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Marital status'),
 			new WT_Census_CensusColumnYearsMarried($this, 'YrM', 'Years married'),
 			new WT_Census_CensusColumnChildrenBornAlive($this, 'ChA', 'Children born alive'),
 			new WT_Census_CensusColumnChildrenLiving($this, 'ChL', 'Children who are still alive'),
