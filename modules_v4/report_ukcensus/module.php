@@ -79,10 +79,10 @@ class report_ukcensus_WT_Module extends WT_Module implements WT_Module_Report {
 
 		//-- args
 		$go 	= WT_Filter::post('go');
-		$surn	= safe_POST('surn', '[^<>&%{};]*');
-		$plac	= safe_POST('plac', '[^<>&%{};]*');
-		$dat	= safe_POST('dat', '[^<>&%{};]*');
-		$ged	= safe_POST('ged');
+		$surn	= WT_Filter::post('surn', '[^<>&%{};]*');
+		$plac	= WT_Filter::post('plac', '[^<>&%{};]*');
+		$dat	= WT_Filter::post('dat', '[^<>&%{};]*');
+		$ged	= WT_Filter::post('ged');
 		if (empty($ged)) {
 			$ged = $GEDCOM;
 		}
@@ -207,9 +207,9 @@ class report_ukcensus_WT_Module extends WT_Module implements WT_Module_Report {
 		}
 
 		if ($surn == WT_I18N::translate('All') || $surn == WT_I18N::translate('all')) {
-			$indis = WT_Query_Name::individuals('', '', '', false, false, WT_GED_ID);
+			$indis = array_unique(WT_Query_Name::individuals('', '', '', false, false, WT_GED_ID));
 		} elseif ($surn) {
-			$indis = WT_Query_Name::individuals($surn, '', '', false, false, WT_GED_ID);
+			$indis = array_unique(WT_Query_Name::individuals($surn, '', '', false, false, WT_GED_ID));
 		} else {
 			$id = WT_Tree::get(WT_GED_ID)->userPreference(WT_USER_ID, 'gedcomid');
 			if (!$id) {
@@ -222,8 +222,18 @@ class report_ukcensus_WT_Module extends WT_Module implements WT_Module_Report {
 			add_parents($indis, WT_Person::getInstance($id));
 		}
 
+
 		// Show sources to user
 		if ($go == 1) {
+			// Notes about the register
+			if (substr($dat,7,4) === '1939' || $dat === WT_I18N::translate('all')) { ?>
+				<h4><?php echo WT_I18N::translate('Notes'); ?></h4>
+				<ol id="register_notes">
+					<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('This list assumes entries relating to the 1939 Register are recorded using the <b>census</b> GEDCOM tag (CENS))'); ?></li>
+					<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('In general anyone who died after 1991, or is still alive, will be redacted (hidden) on the Register. They are listed here, but with a note indicating they are likely to be redacted. However, the Register is incomplete in this regard, so many people who died <u>before</u> 1991 are still redacted.'); ?></li>
+					<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('Anyone serving in the military on 29 September 1939 is excluded from the Register. They are included in these lists but with a note that they may be in the military. This list assumes their military service is recorded with either the _MILI or _MILT GEDCOM tags'); ?></li>
+				</ol>
+			<?php }
 			echo '<ul id="nocensus_result">';
 				// Check each INDI against each SOUR
 				$n = 0;
@@ -247,8 +257,8 @@ class report_ukcensus_WT_Module extends WT_Module implements WT_Module_Report {
 					// Now check for missing sources
 					$missing_text = '';
 					foreach ($data_sources as $data_source) {
-					$check1 = "{$data_source['place']}";
-					$check2 = "{$data_source['date']}";
+					$check1 = $data_source['place'];
+					$check2 = $data_source['date'];
 						if($check1 == $plac || $plac == WT_I18N::translate('all')) {
 							if($check2 == $dat || $dat == WT_I18N::translate('all')) {
 								// Person not alive - skip
@@ -280,7 +290,20 @@ class report_ukcensus_WT_Module extends WT_Module implements WT_Module_Report {
 								if (stripos($bef_plac, $data_source['place']) !== false || stripos($aft_plac, $data_source['place']) !== false) {
 									$age_at_census = substr($data_source['date'],7,4) - $indi->getBirthDate()->gregorianYear();
 									$desc_event = WT_Gedcom_Tag::getLabel($data_source['event']);
-									$missing_text .= "<li>{$data_source['place']} {$desc_event} for {$data_source['date']} <i><font size='-2'>({$age_at_census})</font></i></li>";
+									$missing_text .= '
+										<li>' . $data_source['place'] . '&nbsp;' . $desc_event . ' for ' . $data_source['date'] . '</li>
+										<li><i>' . WT_I18N::translate('Age') . ' - ' . $age_at_census . '</i></li>
+									';
+									if (substr($check2,7,4) === '1939') {
+										// Person died after 1991 - make note
+										if ($indi->getEstimatedDeathDate()->gregorianYear() > '1991') {
+											$missing_text .= '<li><i>' . WT_I18N::translate('Probably redacted - living or died after 1991') . '</i></li>';
+										}
+										// Check if person in military
+										if ($bef_fact == '_MILI' || $bef_fact == '_MILT') {
+											$missing_text .= '<li><i>' . WT_I18N::translate('Probably excluded - military service') . '</i></li>';
+										}
+									}
 								}
 							}
 						}
