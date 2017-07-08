@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,8 +37,8 @@ class WT_Census_CensusColumnMonthIfMarriedWithinYear extends WT_Census_AbstractC
 	public function generate(WT_Person $individual, WT_Person $head = null) {
 		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getFacts('MARR') as $fact) {
-				$marriage_jd = $fact->getDate()->julianDay();
-				$census_jd   = $this->date()->julianDay();
+				$marriage_jd = $fact->getDate()->JD();
+				$census_jd   = $this->date()->JD();
 				if ($marriage_jd <= $census_jd && $marriage_jd >= $census_jd - 365) {
 					// Use the GEDCOM month, as we need this in English - for the US census
 					return ucfirst(strtolower($fact->getDate()->minimumDate()->format('%O')));

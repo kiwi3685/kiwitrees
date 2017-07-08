@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -47,7 +47,7 @@ class WT_Census_RegisterOfEngland1939 extends WT_Census_CensusOfEngland implemen
 			new WT_Census_CensusColumnNull($this, 'Role', 'For institutions only – for example, Officer, Visitor, Servant, Patient, Inmate'),
 			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Male or Female'),
 			new WT_Census_CensusColumnBirthDayMonthSlashYear($this, 'DOB', 'Date of birth', 'width: 90px;'),
-			new WT_Census_CensusColumnConditionEnglish($this, 'MC', 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced'),
+			new WT_Census_CensusColumnConditionEnglish($this, 'Condition', 'Marital Condition - Married, Single, Unmarried, Widowed or Divorced'),
 			new WT_Census_CensusColumnOccupation($this, 'Occupation', 'Occupation', 'width: 200px;'),
 			new WT_Census_CensusColumnOccupation($this, 'Other', 'Instructions', 'width: 200px;'),
 		);

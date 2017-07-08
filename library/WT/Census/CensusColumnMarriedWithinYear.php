@@ -37,8 +37,8 @@ class WT_Census_CensusColumnMarriedWithinYear extends WT_Census_AbstractCensusCo
 	public function generate(WT_Person $individual, WT_Person $head = null) {
 		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getFacts('MARR') as $fact) {
-				$marriage_jd = $fact->getDate()->julianDay();
-				$census_jd   = $this->date()->julianDay();
+				$marriage_jd = $fact->getDate()->JD();
+				$census_jd   = $this->date()->JD();
 				if ($marriage_jd <= $census_jd && $marriage_jd >= $census_jd - 365) {
 					return 'Y';
 				}

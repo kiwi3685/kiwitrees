@@ -67,23 +67,38 @@ abstract class WT_Census_AbstractCensusColumnCondition extends WT_Census_Abstrac
 	 * @return string
 	 */
 	public function generate(WT_Person $individual, WT_Person $head = null) {
-		$family = $this->spouseFamily($individual);
-		$sex    = $individual->getSex();
+		$family 	= $this->spouseFamily($individual);
+		$sex    	= $individual->getSex();
+		$nmr		= $div = $marr = false;
+		$census_jd	= $this->date()->JD();
 
 		if ($family) {
-			$facts = $family->getFacts();
-			foreach ($facts as $fact) {
-				$fact->getTag() === '_NMR' ? $nmr = true : $nmr = false;
-				$fact->getTag() === 'DIV'  ? $div = true : $div = false;
+			foreach ($family->getFacts() as $fact) {
+				switch ($fact->getTag()) {
+					case '_NMR':
+						$nmr = true;
+						break;
+					case 'DIV':
+						$div = true;
+						break;
+					case 'MARR':
+						$fact->getDate() ? $marriage_jd = $fact->getDate()->JD() : $marriage_jd = 0;
+						if ($marriage_jd <= $census_jd) {
+							$marr	= true;
+						}
+						break;
+					default:
+						break;
+				}
 			}
 		}
 
-		if ($family === null || $nmr === true) {
+		if ($family === null || $nmr === true || $marr === false) {
 			if ($this->isChild($individual)) {
 				return $this->conditionChild($sex);
 			} else {
 				return $this->conditionSingle($sex);
-			}
+		}
 		} elseif ($div === true) {
 			return $this->conditionDivorced($sex);
 		} else {

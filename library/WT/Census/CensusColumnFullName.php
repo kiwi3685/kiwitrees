@@ -57,9 +57,11 @@ class WT_Census_CensusColumnFullName extends WT_Census_AbstractCensusColumn impl
 				if ($marriage->getDate()->isOK() && WT_Date::Compare($marriage->getDate(), $census_date) < 0) {
 					$spouse = $family->getSpouse($individual);
 					foreach ($names as $individual_name) {
-						foreach ($spouse->getAllNames() as $spouse_name) {
-							if ($individual_name['type'] === '_MARNM' && $individual_name['surn'] === $spouse_name['surn']) {
-								return $individual_name;
+						if ($spouse) {
+							foreach ($spouse->getAllNames() as $spouse_name) {
+								if ($individual_name['type'] === '_MARNM' && $individual_name['surn'] === $spouse_name['surn']) {
+									return $individual_name;
+								}
 							}
 						}
 					}

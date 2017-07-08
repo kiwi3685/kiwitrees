@@ -35,8 +35,8 @@ class WT_Census_CensusColumnMonthIfBornWithinYear extends WT_Census_AbstractCens
 	 * @return string
 	 */
 	public function generate(WT_Person $individual, WT_Person $head = null) {
-		$birth_jd  = $individual->getBirthDate()->julianDay();
-		$census_jd = $this->date()->julianDay();
+		$birth_jd  = $individual->getBirthDate()->JD();
+		$census_jd = $this->date()->JD();
 		if ($birth_jd <= $census_jd && $birth_jd >= $census_jd - 365) {
 			// Use the GEDCOM month, as we need this in English - for the US census
 			return ucfirst(strtolower($individual->getBirthDate()->minimumDate()->format('%O')));
