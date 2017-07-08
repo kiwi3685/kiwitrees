@@ -99,7 +99,8 @@ class report_ukcensus_WT_Module extends WT_Module implements WT_Module_Report {
 			'03 APR 1881',
 			'05 APR 1891',
 			'31 MAR 1901',
-			'02 APR 1911'
+			'02 APR 1911',
+			'29 SEP 1939'
 		);
 
 		// Generate a list of combined censuses or other facts
@@ -111,7 +112,8 @@ class report_ukcensus_WT_Module extends WT_Module implements WT_Module_Report {
 			'03 APR 1881'=>GregorianToJD(4,3,1881),
 			'05 APR 1891'=>GregorianToJD(4,5,1891),
 			'31 MAR 1901'=>GregorianToJD(3,31,1901),
-			'02 APR 1911'=>GregorianToJD(4,02,1911)
+			'02 APR 1911'=>GregorianToJD(4,02,1911),
+			'29 SEP 1939'=>GregorianToJD(9,29,1939)
 		) as $date=>$jd) {
 			foreach ($places as $place) {
 				$data_sources[]=array('event'=>'CENS', 'date'=>$date, 'place'=>$place, 'jd'=>$jd);
