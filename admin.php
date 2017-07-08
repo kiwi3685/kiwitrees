@@ -1580,6 +1580,18 @@ function old_paths() {
 		WT_ROOT . 'admin_site_change.php',
 		WT_ROOT . 'admin_site_other.php',
 		WT_ROOT . 'admin_site_merge.php',
+		WT_ROOT . 'modules_v4/census_assistant/addnoteaction_assisted.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_1_ctrl.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_2_source_input.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_3_find.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_3_search_add.php'
+		WT_ROOT . 'modules_v4/census_assistant/census_4_text.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_5_input.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_asst_ctrl.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_asst_date.php',
+		WT_ROOT . 'modules_v4/census_assistant/census_note_decode',
+		WT_ROOT . 'modules_v4/census_assistant/js',
+		WT_ROOT . 'modules_v4/report_ukregister',
 
 	);
 }
