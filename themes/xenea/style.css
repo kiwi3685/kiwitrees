@@ -1855,6 +1855,7 @@ a.icon-rarrow:hover        {width:20px;height:20px;background-image:url(images/r
 .icon-resn-privacy         {width:16px;height:16px;background-image:url(images/resn_privacy.png);}
 .icon-rings                {width:9px;height:9px;background-image:url(images/rings.png);}
 .icon-search               {width:25px;height:25px;background-image:url(images/search.png);}
+.fa-search                 {width:25px;height:25px;background-image:url(images/search.png);display: inline-block; margin: -7px;}
 .icon-selected             {width:12px;height:12px;background-image:url(images/selected.png);}
 .icon-sex_f_15x15          {width:15px;height:15px;background-image:url(images/sex_f_15x15.png);}
 .icon-sex_f_9x9            {width:9px;height:9px;background-image:url(images/sex_f_9x9.png);}
@@ -3252,150 +3253,100 @@ div.widget {
 .cens_header {
 	margin: 10px 0;
 }
+.cens_header dt {
+	display: inline-block;
+	margin: 0;
+	width: 100px;
+}
 .cens_container {
 	border: 1px solid;
 	padding: 8px;
 }
 .cens_left {
 	float: left;
-	width: 75%;
+	width: 80%;
 }
 .cens_right {
 	float: right;
+	width: 18%;
+}
+.cens_container div.input_group {
+	margin-bottom: 5px;
+}
+.cens_container label {
+	display: inline-block;
+	width: 10%;
+}
+.cens_container input {
+	display: inline-block;
+	font-weight:normal;
+	width: 87%;
 }
 .cens_sour {
-	font-weight: bold;
-	overflow: hidden;
-	white-space: nowrap;
-}
-.cens_ctry-yr {
-	display:inline-block;
-}
-.cens_sour_country,
-.cens_sour_year {
-	display: inline;
-	float: left;
-}
-.cens_sour_year {
-	margin: 0 30px;
-}
-
-.cens_sour_year div,
-.cens_sour_country div {
-	display: inline-block;
-}
-.cens_sour_year select,
-.cens_sour_country select {
-	margin: 0 20px;
-}
-.cens_sour_scs {
-	width: 100%;
-}
-
-.cens_container input {
-	font-weight:normal;
-	width: 99%;
-}
-.cens_sour_1 {
-}
-.cens_sour_2 {
 	margin: 10px 0 0 0;
 }
-.cens_text_header button {
-	margin: 5px 0 0;
-}
-.cens_text_header button:nth-of-type(1) {
-	float:left;
-}
-.cens_text_header button:nth-of-type(2) {
-	float:right;
-}
-.cens_text h3 {
-	margin: 0;
-}
-textarea#NOTE {
-	font-size: inherit;
-	min-height: 200px;
-	width: 99%;
-}
-.cens_search {
-	border: 1px solid;
-	float: right;
-	margin: 0 10px;
-	overflow-x: hidden;
-	padding: 8px;
-}
-.cens_search .cens_table {
-	font-size: 12px;
-}
-.cens_search h4 {
-	font-size: 1em;
-	margin: 0;
-}
-.cens_result {
-	border: 1px solid;
-	padding: 8px;
-}
-.cens_text {
-	overflow: hidden;
-}
-.cens_textinput {
+.cens_data {
 	border: 1px solid;
 	margin: 10px 0;
 	padding: 8px;
-}
-.cens_textinput_left  {
-	float: left;
-	width: 90%;
-	text-align: center;
-}
-.cens_textinput_right  {
-	float: right;
-	margin: 5px;
-}
-.cens_table td {
-	border: 1px solid;
-	min-width: 15px;
-	padding: 3px;
-	white-space: nowrap;
-}
-.cens_table td p {
-	font-weight: 700;
-	margin: 0;
-}
-.cens_table td.divider {
-	border: none;
-	height: 15px;
-}
-.cens_table .linkcell td {
-	border: 0;
-	font-weight: normal;
-	text-align: left;
-}
-.cens_table .linkcell .ltrnav {
-	background-color: #eee;
-	border: 1px solid;
-	font-size: 90%;
-	left:40px;
-	position: absolute;
-	right: auto;
-	top: -15px;
-}
-.cens_addrows {
-	clear: both;
-}
-.cens_data {
 	min-height: 170px;
 	overflow-x: auto;
 }
 .cens_data table {
-	width: 100%;
+	table-layout: fixed;
+	max-width: 1980px;
+	min-width: 1200px;
+	width: auto;
 }
-.cens_data table .header {
+.cens_data table thead {
 	background-color: #ddd;
 	border: 0;
-	min-width: 0;
-	padding: 3px;
+	line-height: 25px;
+}
+.cens_data table th {
+	cursor: help;
+}
+.cens_data table th.delete {
+	width: 30px;
+}
+.cens_data table td {
+	border: 1px solid #aaa;
+	display: table-cell;
+}
+.cens_data table td input {
+	border: none;
+	font-size: 90%;
+	padding: 5px 2px;
+	width: 90%;
+}
+.cens_data table td.delete,
+.census-assistant-search table td[colspan] {
+	text-align: center;
+}
+.census-assistant-search table {
+	border-collapse: collapse;
+	font-size: 95%;
+}
+.census-assistant-search table td {
+	border: 1px solid #aaa;
+	padding: 5px;
+}
+.census-assistant-search input {
+	min-width: 75%;
+}
+.census-assistant-search button {
+	font-size: 12px;
+	min-width: initial;
+	vertical-align: bottom;
+}
+#census-search {
+	margin: 10px;
+}
+#census-search h2 {
+	text-align: center;
+}
+#census-search div {
+	font-size: 85%;
 }
 .note_details table,
 .note_details table td {

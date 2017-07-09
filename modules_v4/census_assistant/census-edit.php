@@ -74,8 +74,10 @@ $controller
 							$bdate = $head->getBirthDate();
 							$age = WT_Date::GetAgeGedcom($bdate);
 							if ($age != '') { ?>
-								<span class="label"><?php echo WT_I18N::translate('Age'); ?></span>
-								<span class="field"><?php echo get_age_at_event($age, true); ?></span>
+								<dl>
+									<dt class="label"><?php echo WT_I18N::translate('Age'); ?></dt>
+									<dd class="field"><?php echo get_age_at_event($age, true); ?></dd>
+								</dl>
 							<?php }
 						}
 						echo $head->format_first_major_fact(WT_EVENTS_DEAT, 2); ?>
@@ -87,22 +89,22 @@ $controller
 				</div>
 				<!-- Census source -->
 				<div class="cens_container">
-					<label for="Titl">
-						<?php echo WT_I18N::translate('Title'); ?>
+					<div class="input_group">
+						<label for="Titl"><?php echo WT_I18N::translate('Title'); ?></label>
 						<input id="Titl" type="text" value="<?php echo $year . ' ' . $census->censusPlace() . ' - ' . WT_I18N::translate('Census transcript') . ' - ' . strip_tags($head->getFullName()) . ' - ' . WT_I18N::translate('Household'); ?>">
-					</label>
-					<label for="citation">
-						<?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?>
+					</div>
+					<div class="input_group">
+						<label for="citation"><?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?></label>
 						<input id="citation" type="text">
-					</label>
-					<label for="locality">
-						<?php echo WT_I18N::translate('Place'); ?>
+					</div>
+					<div class="input_group">
+						<label for="locality"><?php echo WT_I18N::translate('Place'); ?></label>
 						<input id="locality" type="text">
-					</label>
-					<label for="notes">
-						<?php echo WT_I18N::translate('Notes'); ?>
+					</div>
+					<div class="input_group">
+						<label for="notes"><?php echo WT_I18N::translate('Notes'); ?></label>
 						<input id="notes" type="text">
-					</label>
+					</div>
 				</div>
 				<!--  Census data -->
 				<div class="cens_data">
@@ -134,7 +136,10 @@ $controller
 					<table>
 						<tr>
 							<td colspan="3">
-								<input type="text" data-autocomplete-type="INDI" name="gid" id="personid" placeholder="<?php echo WT_I18N::translate('Search for another person'); ?>" value="">
+								<input id="personid" type="text" placeholder="<?php echo /* I18N: Placeholder for census assistant search field */ WT_I18N::translate('Search for other people'); ?>">
+								<button type="button" onclick="findindi()">
+									<i class="fa fa-search" title="<?php echo /* I18N: A button label. */ WT_I18N::translate('search'); ?>"></i>
+								</button>
 							</td>
 						</tr>
 						<tr>
@@ -144,8 +149,13 @@ $controller
 								</button>
 							</td>
 						</tr>
-						<?php
-						foreach ($head->getChildFamilies() as $family) {
+						<tr>
+							<td colspan="3">
+								<?php $headImg  = '<i class="icon-button_head"></i>';
+								echo WT_I18N::translate('Click %s to choose person as Head of family.', $headImg); ?>
+							</td>
+						</tr>
+						<?php foreach ($head->getChildFamilies() as $family) {
 							census_assistant_WT_Module::censusNavigatorFamily($census, $family, $head);
 						}
 
@@ -164,6 +174,20 @@ $controller
 	</div>
 </div>
 <script>
+
+	function findindi() {
+		var findInput = document.getElementById('personid');
+		var txt = findInput.value;
+		if (txt === "") {
+			alert("<?php echo WT_I18N::translate('You must enter a name'); ?>");
+		} else {
+			var win02 = window.open(
+				"module.php?mod=census_assistant&mod_action=census_find&callback=paste_id&census=<?php echo WT_Filter::escapeJs(get_class($census)); ?>&action=filter&filter=" + txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, height=500, width=450 ");
+			if (window.focus) {
+				win02.focus();
+			}
+		}
+	}
 
 	/* Add an HTML row to the table */
 	function appendCensusRow(row) {

@@ -40,10 +40,69 @@ class census_assistant_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
-		default:
-			echo $mod_action;
-			header('HTTP/1.0 404 Not Found');
+			case 'census_find':
+				$this->censusFind();
+				break;
+			default:
+				echo $mod_action;
+				header('HTTP/1.0 404 Not Found');
 		}
+	}
+
+	/**
+	 * Find an individual.
+	 */
+	function censusFind() {
+		global $WT_TREE;
+
+		$controller = new WT_Controller_Simple();
+		$filter     = WT_Filter::get('filter');
+		$action     = WT_Filter::get('action');
+		$census     = WT_Filter::get('census');
+		$census     = new $census;
+
+		$controller
+			->restrictAccess($census instanceof WT_Census_CensusInterface)
+			->setPageTitle(WT_I18N::translate('Find an individual'))
+			->pageHeader();
+		?>
+
+		<div id="census-search">
+			<h2><?php echo WT_I18N::translate('Find an individual'); ?></h2>
+			<hr>
+
+			<?php if ($action == 'filter') {
+				$filter       = trim($filter);
+				$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
+
+				// Output Individual for census assistant search ====================== ?>
+				<div>
+					<?php $myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+					if ($myindilist) { ?>
+						<ul>
+							<?php usort($myindilist, array('WT_GedcomRecord', 'Compare'));
+							foreach ($myindilist as $indi) { ?>
+								<li>
+									<a href="#" onclick="window.opener.appendCensusRow('<?php echo WT_Filter::escapeJs(census_assistant_WT_Module::censusTableRow($census, $indi, null)); ?>'); window.close();" >
+										<b><?php echo $indi->getFullName(); ?></b>
+									</a>
+									<?php echo $indi->format_first_major_fact(WT_EVENTS_BIRT, 1);
+									echo $indi->format_first_major_fact(WT_EVENTS_DEAT, 1); ?>
+									<hr>
+								</li>
+							<?php } ?>
+						</ul>
+					<?php } else { ?>
+						<p> <?php echo WT_I18N::translate('No results found.'); ?> </p>
+					<?php } ?>
+					<button onclick="window.close();">
+						<i class="fa fa-close"></i>
+						<?php echo WT_I18N::translate('close'); ?>
+					</button>
+				</div>
+			<?php } ?>
+		</div>
+		<?php
 	}
 
 	/**
@@ -196,7 +255,7 @@ class census_assistant_WT_Module extends WT_Module {
 	 * @return string
 	 */
 	public static function censusNavigatorFamily(WT_Census_CensusInterface $census, WT_Family $family, WT_Person $head) {
-		$headImg2 = '<i class="icon-button_head" title="' . WT_I18N::translate('Head of household') . '"></i>';
+		$headImg2 = '<i class="icon-button_head" title="' . WT_I18N::translate('Click to choose person as Head of family.') . '"></i>';
 
 		foreach ($family->getSpouses() as $spouse) {
 			$menu = new WT_Menu(getCloseRelationshipName($head, $spouse));
