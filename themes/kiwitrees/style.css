@@ -6538,9 +6538,17 @@ div.widget {
 	float: right;
 	width: 18%;
 }
+.cens_container div.input_group {
+	margin-bottom: 5px;
+}
+.cens_container label {
+	display: inline-block;
+	width: 10%;
+}
 .cens_container input {
+	display: inline-block;
 	font-weight:normal;
-	width: 99%;
+	width: 87%;
 }
 .cens_sour {
 	margin: 10px 0 0 0;
@@ -6592,7 +6600,21 @@ div.widget {
 	padding: 5px;
 }
 .census-assistant-search input {
-	width: 95%;
+	min-width: 75%;
+}
+.census-assistant-search button {
+	font-size: 12px;
+	min-width: initial;
+	vertical-align: bottom;
+}
+#census-search {
+	margin: 10px;
+}
+#census-search h2 {
+	text-align: center;
+}
+#census-search div {
+	font-size: 85%;
 }
 .note_details table,
 .note_details table td {
