@@ -1499,7 +1499,7 @@ function autocomplete(selector) {
 			jQuery(this).data("autocomplete-ged", WT_GEDCOM);
 		}
 
-		var self=jQuery(this);
+		var self = jQuery(this);
 		self.autocomplete({
 			// Cannot use a simple URL, as the data-autocomplete-xxxx parameters may change.
 			source: function(request, response) {

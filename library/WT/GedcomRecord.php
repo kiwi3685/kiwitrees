@@ -658,10 +658,15 @@ class WT_GedcomRecord {
 			// Only display if it has a date or place (or both)
 			if (($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
 				switch ($style) {
-				case 1:
-					return '<br><em>'.$event->getLabel().' '.format_fact_date($event, $this, false, false).' '.format_fact_place($event).'</em>';
-				case 2:
-					return '<dl><dt class="label">'.$event->getLabel().'</dt><dd class="field">'.format_fact_date($event, $this, false, false).' '.format_fact_place($event).'</dd></dl>';
+					case 1:
+						return '<br><em>' . $event->getLabel() . ' ' . format_fact_date($event, $this, false, false) . ' ' . format_fact_place($event) . '</em>';
+					case 2:
+						return '
+							<dl>
+								<dt class="label">' . $event->getLabel() . '</dt>
+								<dd class="field">' . format_fact_date($event, $this, false, false) . ' ' . format_fact_place($event) . '</dd>
+							</dl>
+						';
 				}
 			}
 		}
