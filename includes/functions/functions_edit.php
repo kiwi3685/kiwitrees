@@ -1864,13 +1864,14 @@ function censusDateSelector($locale, $xref) {
 	$options = '<option value="">' . WT_I18N::translate('Census date') . '</option>';
 
 	foreach ($census_places as $census_place) {
-		$options .= '<option value=""></option>';
+		$options .= '<optgroup label="' . $census_place->censusPlace() . '">';
 		foreach ($census_place->allCensusDates() as $census) {
 			$date            = new WT_Date($census->censusDate());
 			$year            = $date->minimumDate()->format('%Y');
 			$place_hierarchy = explode(', ', $census->censusPlace());
 			$options .= '<option value="' . $census->censusDate() . '" data-place="' . $census->censusPlace() . '" data-census="' . get_class($census) . '">' . $place_hierarchy[0] . ' ' . $year . '</option>';
 		}
+		$options .= '</optgroup>';
 	}
 
 	return
