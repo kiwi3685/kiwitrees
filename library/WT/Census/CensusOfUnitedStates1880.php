@@ -42,7 +42,7 @@ class WT_Census_CensusOfUnitedStates1880 extends WT_Census_CensusOfUnitedStates 
 	public function columns() {
 		return array(
 			new WT_Census_CensusColumnFullName($this, 'Name', 'Name'),
-			new WT_Census_CensusColumn($this, 'Age', 'Age'),
+			new WT_Census_CensusColumnAge($this, 'Age', 'Age'),
 			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Sex'),
 			new WT_Census_CensusColumnMonthIfBornWithinYear($this, 'Mon', 'If born within the year, state month'),
 			new WT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of household'),

@@ -47,7 +47,7 @@ class WT_Census_CensusOfUnitedStates1900 extends WT_Census_CensusOfUnitedStates 
 			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Sex'),
 			new WT_Census_CensusColumnBirthMonth($this, 'Month', 'Month of birth'),
 			new WT_Census_CensusColumnBirthYear($this, 'Year', 'Year of birth'),
-			new WT_Census_CensusColumn($this, 'Age', 'Age at last birthday'),
+			new WT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new WT_Census_CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
 			new WT_Census_CensusColumnYearsMarried($this, 'Marr', 'Number of years married'),
 			new WT_Census_CensusColumnChildrenBornAlive($this, 'Chil', 'Mother of how many children'),

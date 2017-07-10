@@ -47,7 +47,7 @@ class WT_Census_CensusOfUnitedStates1920 extends WT_Census_CensusOfUnitedStates 
 			new WT_Census_CensusColumnNull($this, 'Mort', 'If owned, free or mortgaged'),
 			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Sex'),
 			new WT_Census_CensusColumnNull($this, 'Race', 'Color or race'),
-			new WT_Census_CensusColumn($this, 'Age', 'Age at last birthday'),
+			new WT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new WT_Census_CensusColumnConditionUs($this, 'Condition', 'Whether single, married, widowed, or divorced'),
 			new WT_Census_CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
 			new WT_Census_CensusColumnNull($this, 'Nat', 'Naturalized or alien'),

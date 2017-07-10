@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,7 +51,7 @@ class WT_Census_CensusOfDenmark1940 extends WT_Census_CensusOfDenmark implements
 			new WT_Census_CensusColumnNull($this, 'Statsbergerferhold', ''),
 			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
 			new WT_Census_CensusColumnNull($this, 'Indgaaelse', 'Date for det nuværende Ægteskabs Indgaaelse. NB." RUbrikken udfyldes ikke al Enkemaend, Enker, Separerede eller Fraskilte.'),
-			new WT_Census_CensusColumnRelationToHead($this, 'Stilling i familien', ''),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i familien', ''),
 			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
 			new WT_Census_CensusColumnNull($this, 'Virksomhedens', 'Virksomhedens (Branchens) Art'),
 			new WT_Census_CensusColumnNull($this, 'Hustruen', 'Besvares kun af Hustruen og hjemmeboende Børn over 14 Aar'),

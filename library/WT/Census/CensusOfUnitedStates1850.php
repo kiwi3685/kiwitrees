@@ -42,7 +42,7 @@ class WT_Census_CensusOfUnitedStates1850 extends WT_Census_CensusOfUnitedStates 
 	public function columns() {
 		return array(
 			new WT_Census_CensusColumnFullName($this, 'Name', 'Name'),
-			new WT_Census_CensusColumn($this, 'Age', 'Age'),
+			new WT_Census_CensusColumnAge($this, 'Age', 'Age'),
 			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Sex'),
 			new WT_Census_CensusColumnNull($this, 'Color', 'White, black, or mulatto'),
 			new WT_Census_CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),

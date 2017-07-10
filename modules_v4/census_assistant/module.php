@@ -176,7 +176,6 @@ class census_assistant_WT_Module extends WT_Module {
 			}
 
 			return
-//				$title . "\n" . // The newline allows the framework to expand the details and turn the first line into a link
 				'<div class="census_text">
 					<p>' . $preamble . '</p>
 					<table class="ca">
@@ -205,7 +204,8 @@ class census_assistant_WT_Module extends WT_Module {
 	public static function censusTableHeader($census) {
 		$html = '';
 		foreach ($census->columns() as $column) {
-			$html .= '<th title="' . $column->title() . '" style="' . $column->style() . '">' . $column->abbreviation() . '</th>';
+			$column->title() ? $title = ' title="' . $column->title() . '"' : $title = ' title="' . WT_I18N::translate('Description unavailable') . '"';
+			$html .= '<th' . $title . ' style="' . $column->style() . '">' . $column->abbreviation() . '</th>';
 		}
 
 		return '<tr><th style="display:none;"></th>' . $html . '<th class="delete"></th></tr>';

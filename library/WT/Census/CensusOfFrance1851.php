@@ -50,7 +50,7 @@ class WT_Census_CensusOfFrance1851 extends WT_Census_CensusOfFrance implements W
 			new WT_Census_CensusColumnConditionFrenchFille($this, 'Filles', ''),
 			new WT_Census_CensusColumnConditionFrenchFemme($this, 'Femmes', 'Femmes mariées'),
 			new WT_Census_CensusColumnConditionFrenchVeuve($this, 'Veuves', ''),
-			new WT_Census_CensusColumn($this, 'Âge', 'Âge'),
+			new WT_Census_CensusColumnAge($this, 'Âge', 'Âge'),
 			new WT_Census_CensusColumnNull($this, 'Fr', 'Français d’origine'),
 			new WT_Census_CensusColumnNull($this, 'Nat', 'Naturalisés français'),
 			new WT_Census_CensusColumnNull($this, 'Etr', 'Étrangers (indiquer leur pays d’origine)'),

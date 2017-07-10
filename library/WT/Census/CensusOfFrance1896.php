@@ -43,7 +43,7 @@ class WT_Census_CensusOfFrance1896 extends WT_Census_CensusOfFrance implements W
 		return array(
 			new WT_Census_CensusColumnSurname($this, 'Noms', 'Noms de famille'),
 			new WT_Census_CensusColumnGivenNames($this, 'Prénoms', ''),
-			new WT_Census_CensusColumn($this, 'Âge', ''),
+			new WT_Census_CensusColumnAge($this, 'Âge', ''),
 			new WT_Census_CensusColumnNationality($this, 'Nationalité', ''),
 			new WT_Census_CensusColumnOccupation($this, 'Profession', ''),
 			new WT_Census_CensusColumnRelationToHead($this, 'Position', 'Position dans le ménage'),

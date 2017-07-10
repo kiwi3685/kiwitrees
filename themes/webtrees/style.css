@@ -191,6 +191,11 @@ a:hover .nameZoom {color:#ff0000;font-weight:bold;font-size:14px;}
 .subheaders {font-weight:bold;font-size:15px;margin-top:15px;vertical-align:bottom;}
 
 .age {font-size:9px;}
+.age span {
+	font-size: 80%;
+	vertical-align: super;
+}
+
 .elderdate {
 	font-style: italic;
 }

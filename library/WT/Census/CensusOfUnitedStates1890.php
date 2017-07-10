@@ -47,7 +47,7 @@ class WT_Census_CensusOfUnitedStates1890 extends WT_Census_CensusOfUnitedStates 
 			new WT_Census_CensusColumnRelationToHead($this, 'Relation', 'Relation to head of family'),
 			new WT_Census_CensusColumnNull($this, 'Race', 'Whether white, black, mulatto, quadroon, octoroon, Chinese, Japanese, or Indian'),
 			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Sex'),
-			new WT_Census_CensusColumn($this, 'Age', 'Age at nearest birthday. If under one year, give age in months'),
+			new WT_Census_CensusColumnAge($this, 'Age', 'Age at nearest birthday. If under one year, give age in months'),
 			new WT_Census_CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
 			new WT_Census_CensusColumnMonthIfMarriedWithinYear($this, 'Mar', 'Whether married duirng the census year (June 1, 1889, to May 31, 1890)'),
 			new WT_Census_CensusColumnNull($this, 'Chil', 'Mother of how many children, and number of these children living'),

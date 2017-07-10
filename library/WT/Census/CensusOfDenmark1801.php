@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -42,8 +42,8 @@ class WT_Census_CensusOfDenmark1801 extends WT_Census_CensusOfDenmark implements
 	public function columns() {
 		return array(
 			new WT_Census_CensusColumnFullName($this, 'Navn', '', 'width: 200px;'),
-			new WT_Census_CensusColumnRelationToHead($this, 'Stilling i familien', ''),
-			new WT_Census_CensusColumn($this, 'Alder', ''),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i familien', ''),
+			new WT_Census_CensusColumnAge($this, 'Alder', ''),
 			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', ''),
 			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
 		);

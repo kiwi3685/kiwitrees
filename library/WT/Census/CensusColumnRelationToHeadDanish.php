@@ -22,30 +22,24 @@
  */
 
 /**
- * Definitions for a census
+ * Relationshiop to head of household.
  */
-class WT_Census_CensusOfDenmark1855 extends WT_Census_CensusOfDenmark implements WT_Census_CensusInterface {
+class WT_Census_CensusColumnRelationToHeadDanish extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
 	/**
-	 * When did this census occur.
+	 * Generate the likely value of this census column, based on available information.
+	 *
+	 * @param WT_Person     $individual
+	 * @param Individual|null $head
 	 *
 	 * @return string
 	 */
-	public function censusDate() {
-		return '01 FEB 1855';
-	}
-
-	/**
-	 * The columns of the census.
-	 *
-	 * @return CensusColumnInterface[]
-	 */
-	public function columns() {
-		return array(
-			new WT_Census_CensusColumnFullName($this, 'Navn', '', 'width: 200px;'),
-			new WT_Census_CensusColumnAge($this, 'Alder', ''),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', ''),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
-			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i familien', ''),
-		);
+	public function generate(WT_Person $individual, WT_Person $head = null) {
+		if ($head === null) {
+			return '';
+		} elseif ($individual == $head) {
+			return 'Husstandens';
+		} else {
+			return getCloseRelationshipName($head, $individual);
+		}
 	}
 }

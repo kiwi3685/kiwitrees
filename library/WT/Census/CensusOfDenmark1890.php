@@ -43,7 +43,7 @@ class WT_Census_CensusOfDenmark1890 extends WT_Census_CensusOfDenmark implements
 		return array(
 			new WT_Census_CensusColumnFullName($this, 'Navn', 'Samtlige Personers fulde Navn.', 'width: 200px;'),
 			new WT_Census_CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M.) eller Kvindekøn (Kv.).'),
-			new WT_Census_CensusColumn($this, 'Alder', 'Alder. Alderen anføres med det fyldte Aar, men for Børn, der ikke have fyldt 1 Aar, anføres „Under 1 Aar“ of Fødselsdagen.'),
+			new WT_Census_CensusColumnAge($this, 'Alder', 'Alder. Alderen anføres med det fyldte Aar, men for Børn, der ikke have fyldt 1 Aar, anføres „Under 1 Aar“ of Fødselsdagen.'),
 			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U.), Gift (G.), Enkemand eller Enke (E.), Separeret (S.), Fraskilt (F.).'),
 			new WT_Census_CensusColumnReligion($this, 'Trossamfund', 'Trossamfund („Folkekirken“ eller andetSamfund, saasom „det frilutheranske“, „det romersk katholske“, det „mosaiske“ o.s.v.).'),
 			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødested, nemlig Sognets og Amtets eller Kjøbstadens (eller Handelpladsens) Navn, og for de i Bilandene Fødte samt for Udlændinge Landet, hvori de ere fødte.'),

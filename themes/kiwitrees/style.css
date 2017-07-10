@@ -1199,6 +1199,11 @@ a:hover .nameZoom {
 .age {
 }
 
+.age span {
+	font-size: 80%;
+	vertical-align: super;
+}
+
 .elderdate {
 	font-style: italic;
 }

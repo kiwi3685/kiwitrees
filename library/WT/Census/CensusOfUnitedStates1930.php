@@ -49,7 +49,7 @@ class WT_Census_CensusOfUnitedStates1930 extends WT_Census_CensusOfUnitedStates 
 			new WT_Census_CensusColumnNull($this, 'Farm', 'Does this family live on a farm'),
 			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Sex'),
 			new WT_Census_CensusColumnNull($this, 'Race', 'Color or race'),
-			new WT_Census_CensusColumn($this, 'Age', 'Age at last birthday'),
+			new WT_Census_CensusColumnAge($this, 'Age', 'Age at last birthday'),
 			new WT_Census_CensusColumnConditionUs($this, 'Cond', 'Whether single, married, widowed, or divorced'),
 			new WT_Census_CensusColumnMarried($this, 'AM', 'Age at first marriage'),
 			new WT_Census_CensusColumnNull($this, 'School', 'Attended school since Sept. 1, 1929'),
