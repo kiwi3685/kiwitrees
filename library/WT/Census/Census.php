@@ -24,6 +24,7 @@ class WT_Census_Census {
 	public static function allCensusPlaces() {
 		return array(
 			new WT_Census_CensusOfCzechRepublic,
+			new WT_Census_CensusOfCanada,
 			new WT_Census_CensusOfDenmark,
 			new WT_Census_CensusOfDeutschland,
 			new WT_Census_CensusOfEngland,

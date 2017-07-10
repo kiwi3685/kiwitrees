@@ -21,33 +21,38 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 /**
- * The individual's religion.
+ * Definitions for a census
  */
-class WT_Census_CensusColumnReligion extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
+class WT_Census_CensusOfCanada extends WT_Census_Census implements WT_Census_CensusPlaceInterface {
 	/**
-	 * Generate the likely value of this census column, based on available information.
+	 * All available censuses for this census place. (English Canadian)
 	 *
-	 * @todo Look for RELI tags (or subtags?)
-	 *
-	 * @param WT_Person     $individual
-	 * @param Individual|null $head
+	 * @return(),Interface[]
+	 */
+	public function allCensusDates() {
+		return array(
+//			new WT_Census_CensusOfCanada1825(),
+//			new WT_Census_CensusOfCanada1842(),
+//			new WT_Census_CensusOfCanada1851(),
+//			new WT_Census_CensusOfCanada1861(),
+			new WT_Census_CensusOfCanada1871(),
+//			new WT_Census_CensusOfCanada1881(),
+//			new WT_Census_CensusOfCanada1891(),
+//			new WT_Census_CensusOfCanada1901(),
+//			new WT_Census_CensusOfCanada1906(),
+//			new WT_Census_CensusOfCanada1911(),
+//			new WT_Census_CensusOfCanada1916(),
+//			new WT_Census_CensusOfCanada1921(),
+		);
+	}
+
+	/**
+	 * Where did this census occur, in GEDCOM format.
 	 *
 	 * @return string
 	 */
-	public function generate(WT_Person $individual, WT_Person $head = null) {
-		$detail = '';
-		$census_jd	= $this->date()->JD();
-
-		foreach ($individual->getAllFactsByType('RELI') as $fact) {
-			$fact->getDate('RELI') ? $fact_jd = $fact->getDate('RELI')->JD() : $fact_jd = 0;
-			if ($fact_jd <= $census_jd) {
-				$detail	= $fact->getDetail('RELI');
-			}
-		}
-
-		return $detail;
-
+	public function censusPlace() {
+		return 'Canada';
 	}
 }

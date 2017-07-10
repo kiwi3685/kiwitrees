@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,10 +35,17 @@ class WT_Census_CensusColumnOccupation extends WT_Census_AbstractCensusColumn im
 	 * @return string
 	 */
 	public function generate(WT_Person $individual, WT_Person $head = null) {
-		foreach ($individual->getFacts('OCCU') as $fact) {
-			return $fact->getValue('OCCU');
+		$detail = '';
+		$census_jd	= $this->date()->JD();
+
+		foreach ($individual->getAllFactsByType('OCCU') as $fact) {
+			$fact->getDate('OCCU') ? $fact_jd = $fact->getDate('OCCU')->JD() : $fact_jd = 0;
+			if ($fact_jd <= $census_jd) {
+				$detail	= $fact->getDetail('OCCU');
+			}
 		}
 
-		return '';
+		return $detail;
+
 	}
 }

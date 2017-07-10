@@ -21,33 +21,27 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 /**
- * The individual's religion.
+ * Marital status.
  */
-class WT_Census_CensusColumnReligion extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @todo Look for RELI tags (or subtags?)
-	 *
-	 * @param WT_Person     $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(WT_Person $individual, WT_Person $head = null) {
-		$detail = '';
-		$census_jd	= $this->date()->JD();
+class WT_Census_CensusColumnConditionCan extends WT_Census_CensusColumnConditionEnglish {
+	/* Text to display for married individuals */
+	protected $husband = 'M';
+	protected $wife    = 'M';
 
-		foreach ($individual->getAllFactsByType('RELI') as $fact) {
-			$fact->getDate('RELI') ? $fact_jd = $fact->getDate('RELI')->JD() : $fact_jd = 0;
-			if ($fact_jd <= $census_jd) {
-				$detail	= $fact->getDetail('RELI');
-			}
-		}
+	/* Text to display for unmarried individuals */
+	protected $bachelor = '-';
+	protected $spinster = '-';
 
-		return $detail;
+	/* Text to display for children */
+	protected $boy  = '-';
+	protected $girl = '-';
 
-	}
+	/* Text to display for divorced individuals */
+	protected $divorce  = '-';
+	protected $divorcee = '-';
+
+	/* Text to display for widowed individuals */
+	protected $widower = 'W';
+	protected $widow   = 'W';
 }

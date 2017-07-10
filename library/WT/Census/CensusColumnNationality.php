@@ -27,10 +27,11 @@
 class WT_Census_CensusColumnNationality extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
 	/** @var array Convert a country name to a nationality */
 	private $nationalities = array(
-		'England'     => 'British',
-		'Scotland'    => 'British',
-		'Wales'       => 'British',
-		'Deutschland' => 'Deutsch',
+		'England'     	=> 'English',
+		'Scotland'    	=> 'Scottish',
+		'Wales'       	=> 'Welshsh',
+		'Ireland'		=> 'Irish',
+		'Deutschland'	=> 'Deutsch',
 	);
 
 	/**
