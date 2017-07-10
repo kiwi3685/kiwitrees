@@ -1209,7 +1209,7 @@ function print_addnewsource_link($element_id) {
 function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $rowDisplay = true) {
 	global $MEDIA_DIRECTORY, $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $pid, $gender, $linkToID, $bdm, $action, $event_add, $CensDate;
+	global $pid, $gender, $linkToID, $bdm, $action, $event_add;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 
 	// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
@@ -1408,7 +1408,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		echo $wife->getFullName();
 	}
 
-	if (in_array($fact, $emptyfacts) && ($value == '' || $value == 'Y' || $value == 'y')) {
+	if (in_array($fact, $emptyfacts) && ($value === '' || $value === 'Y' || $value === 'y')) {
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\">";
 		if ($level <= 1) {
 			echo '<input type="checkbox" ';
@@ -1418,6 +1418,20 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value=''; \">";
 			echo WT_I18N::translate('yes');
 		}
+
+		if ($fact === 'CENS' && $value === 'Y') {
+			echo censusDateSelector(WT_LOCALE, $pid);
+			if (WT_Module::getModuleByName('census_assistant') && WT_GedcomRecord::getInstance($pid) instanceof WT_Person) {
+				echo '
+					<div>
+						<a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
+							WT_I18N::translate('Create a shared note using the census assistant') . '
+						</a>
+					</div>
+				';
+			}
+		}
+
 	} else if ($fact == "TEMP") {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
 	} else if ($fact == "ADOP") {
@@ -1629,15 +1643,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 		switch ($fact) {
 		case 'DATE':
 			echo '<div class="input-group-addon">' . print_calendar_popup($element_id) . '</div>';
-			// If census_assistant module is installed -------------------------------------------------
-			if ($action == 'add' && array_key_exists('census_assistant', WT_Module::getActiveModules())) {
-				echo censusDateSelector(WT_LOCALE, $pid);
-				echo
-					'<div></div><a href="#" style="display: none;" id="assistant-link" onclick="return activateCensusAssistant();">' .
-					WT_I18N::translate('Create a shared note using the census assistant') .
-					'</a>';
-			}
-			// -------------------------------------------------------------------------------------------------
 			break;
 		case 'FAMC':
 		case 'FAMS':
@@ -1671,11 +1676,13 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 					if ($event_add == 'census_add') {
 						$type_pid = WT_GedcomRecord::getInstance($pid);
 						if ($type_pid->getType() == 'INDI' ) {
-//							echo '<br>', print_addnewnote_assisted_link($element_id, $pid);
-							echo
-								'<div><a href="#" id="assistant-link" onclick="return activateCensusAssistant();">' .
-								WT_I18N::translate('Create a shared note using the census assistant') .
-								'</a></div>';
+							echo '
+								<div>
+									<a href="#" id="assistant-link" onclick="return activateCensusAssistant();">' .
+										WT_I18N::translate('Create a shared note using the census assistant') . '
+									</a>
+								</div>
+							';
 						}
 					}
 				}
@@ -1831,7 +1838,7 @@ function censusDateSelector($locale, $xref) {
 	$controller->addInlineJavascript('
 			function selectCensus(el) {
 				var option = jQuery(":selected", el);
-				jQuery("input.DATE", jQuery(el).closest("div.input")).val(option.val());
+				jQuery("div.input input.DATE").val(option.val());
 				jQuery("div.input input.PLAC").val(option.data("place"));
 				jQuery("input.census-class", jQuery(el).closest("div.input")).val(option.data("census"));
 				if (option.data("place")) {
@@ -2354,13 +2361,6 @@ function create_add_form($fact) {
 
 	$tags = array();
 
-	// Census assistant ================================================
-	if ($fact == "CENS") {
-		global $TEXT_DIRECTION, $CensDate;
-		$CensDate = "yes";
-	}
-	// ==================================================================
-
 	// handle  MARRiage TYPE
 	if (substr($fact, 0, 5) == "MARR_") {
 		$tags[0] = "MARR";
@@ -2425,13 +2425,6 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 
 	$type = trim($fields[1]);
 	$level1type = $type;
-
-	// cemsus_assistant ================================================
-	if ($type == "CENS") {
-		global $TEXT_DIRECTION, $CensDate;
-		$CensDate="yes";
-	}
-	// ==================================================================
 
 	if (count($fields)>2) {
 		$ct = preg_match("/@.*@/", $fields[2]);

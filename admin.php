@@ -1589,7 +1589,7 @@ function old_paths() {
 		WT_ROOT . 'modules_v4/census_assistant/census_5_input.php',
 		WT_ROOT . 'modules_v4/census_assistant/census_asst_ctrl.php',
 		WT_ROOT . 'modules_v4/census_assistant/census_asst_date.php',
-		WT_ROOT . 'modules_v4/census_assistant/census_note_decode',
+		WT_ROOT . 'modules_v4/census_assistant/census_note_decode.php',
 		WT_ROOT . 'modules_v4/census_assistant/js',
 		WT_ROOT . 'modules_v4/report_ukregister',
 
