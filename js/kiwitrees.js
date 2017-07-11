@@ -1321,14 +1321,8 @@ function paste_char(value) {
 		updatewholename();
 	}
 }
-/*
-function ilinkitem(mediaid, type, ged) {
-	ged = (typeof ged === 'undefined') ? WT_GEDCOM : ged;
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&ged='+ged, '_blank', link_window_specs);
-	return false;
-}
-*/
-function message(username, method, url, subject = '') {
+
+function message(username, method, url, subject) {
 	window.open('message.php?to=' + username + '&method=' + method + '&url=' + url + '&subject=' + subject, '_blank', mesg_window_specs);
 	return false;
 }
