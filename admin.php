@@ -1592,6 +1592,11 @@ function old_paths() {
 		WT_ROOT . 'modules_v4/census_assistant/census_note_decode.php',
 		WT_ROOT . 'modules_v4/census_assistant/js',
 		WT_ROOT . 'modules_v4/report_ukregister',
+		WT_ROOT . 'js/jquery.cookie-1.3.1.js',
+		WT_ROOT . 'js/jquery-1.9.1.js',
+		WT_ROOT . 'js/jquery-ui.js',
+		WT_ROOT . 'js/modernizr.custom-2.6.1.js',
+		WT_ROOT . 'js/jquery.autosize.js',
 
 	);
 }
