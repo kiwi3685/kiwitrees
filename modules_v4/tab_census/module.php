@@ -54,18 +54,38 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $controller;
+		global $EXPAND_SOURCES, $EXPAND_NOTES, $controller;
 		$person		= $controller->getSignificantIndividual();
 		$xref		= $controller->record->getXref();
 		$facts		= $this->getCensFacts();
+
+		$controller->addInlineJavascript('
+			jQuery("input:checkbox[id=checkbox_sour]").click(function(){
+				if(jQuery(this).is(":checked")){
+					jQuery(".source_citations").css("display", "block");
+	            } else {
+					jQuery(".source_citations").css("display", "none");
+				}
+			});
+			jQuery("input:checkbox[id=checkbox_note]").click(function(){
+				if(jQuery(this).is(":checked")){
+					jQuery(".note_details").css("display", "block");
+	            } else {
+					jQuery(".note_details").css("display", "none");
+				}
+			});
+		');
 		?>
 		<style>
-			#tab_census_content div.descriptionbox {border: 1px solid #555; border-radius: 5px; margin: 2px 0;}
+			#tab_census_content div.descriptionbox {border: 1px solid #555; border-radius: 5px; line-height: 18px; margin-bottom: 2px;}
+			#tab_census_content div.descriptionbox span {display: inline-block;}
 			#tab_census_content table {border-collapse: collapse; width: 100%;}
 			#tab_census_content th {background: #ddd; border: 1px solid; font-weight: 700; padding: 8px;}
 			#tab_census_content td {border: 1px solid; padding: 3px 8px;}
 			#tab_census_content td.small {font-size: 90%;}
 			#tab_census_content td.nowrap {white-space: nowrap;}
+			#tab_census_content div.editfacts {text-align: center; 	padding: 0;}
+			#tab_census_content div [class $="link"] {float: none;}
 		</style>
 		<div id="tab_census_content">
 			<!-- Show header Links -->
@@ -77,6 +97,18 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 							<?php echo WT_I18N::translate('Add census'); ?>
 						</a>
 					</span>
+					<?php if (!$EXPAND_SOURCES) { ?>
+						<span>
+							<input id="checkbox_sour" type="checkbox">
+							<label for="checkbox_sour"><?php echo WT_I18N::translate('Expand all sources'); ?></label>
+						</span>
+					<?php } ?>
+					<?php if (!$EXPAND_NOTES) { ?>
+						<span>
+							<input id="checkbox_note" type="checkbox">
+							<label for="checkbox_note"><?php echo WT_I18N::translate('Expand all notes'); ?></label>
+						</span>
+					<?php } ?>
 				</div>
 			<?php } ?>
 			<?php if ($person && $person->canDisplayDetails()) { ?>
@@ -90,7 +122,7 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 							<th><?php echo WT_I18N::translate('Sources'); ?></th>
 							<th><?php echo WT_I18N::translate('Media'); ?></th>
 							<?php if (WT_USER_CAN_EDIT) { ?>
-								<th></th>
+								<th><?php echo WT_I18N::translate('Edit'); ?></th>
 							<?php } ?>
 						</tr>
 					</thead>
@@ -146,7 +178,7 @@ class tab_census_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
-		return true;
+		return false;
 	}
 
 	// Implement WT_Module_Tab
