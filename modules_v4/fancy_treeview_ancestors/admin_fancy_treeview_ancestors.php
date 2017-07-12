@@ -274,7 +274,13 @@ $html = '<div id="fancy_treeview_descendants-config">
 				endforeach;
 			$html .='</table>';
 		endif;
-		$html .= '<hr/>
+		$html .= '<div class="buttons">
+			<button class="btn btn-primary save" type="submit" ">
+				<i class="fa fa-floppy-o"></i>'.
+				WT_I18N::translate('save') . '
+			</button>
+		</div>
+		<hr class="clearfloat">
 		<h3>' . WT_I18N::translate('General Options') . '</h3>
 		<div id="bottom">
 			<div class="field">
