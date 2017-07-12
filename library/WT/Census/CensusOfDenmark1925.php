@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,17 +41,13 @@ class WT_Census_CensusOfDenmark1925 extends WT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new WT_Census_CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)', 'width: 200px;'),
-			new WT_Census_CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
-			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
-			new WT_Census_CensusColumnBirthYear($this, 'Fødselsaar', ''),
-			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', ''),
-			new WT_Census_CensusColumnNull($this, 'Statsbergerferhold', ''),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
-			new WT_Census_CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Erhverv eller Livsstilling'),
-			new WT_Census_CensusColumnNull($this, 'Bopæl', 'Bopæl den 5. Novbr. 1924'),
-			new WT_Census_CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger'),
+			new WT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn'),
+			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', 'Dato og måned'),
+			new WT_Census_CensusColumnBirthYear($this, 'Fødselsår', 'Fødselsåret'),
+			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),
+			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Hentes hvis data er indtastet'),
+			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødselsstedet'),
 		);
 	}
 }

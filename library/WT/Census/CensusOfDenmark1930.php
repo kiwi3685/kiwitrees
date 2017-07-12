@@ -41,19 +41,13 @@ class WT_Census_CensusOfDenmark1930 extends WT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new WT_Census_CensusColumnSurnameGivenNames($this, 'Navn', '', 'width: 200px;'),
-			new WT_Census_CensusColumnNull($this, 'Bopæl', ''),
-			new WT_Census_CensusColumnNull($this, 'Andetsteds', 'Hvis den i Rubrik 3 opførte Person har fast Bopæl andetsteds, anføres her den faste Bopæl'),
-			new WT_Census_CensusColumnNull($this, 'Stede', 'Hvis den i Rubrik 3 opførte Person paa Tællingsdagen til Stede paa Tællingsstedet? Ja eller Nej.'),
-			new WT_Census_CensusColumnNull($this, 'Bopæl', 'Bopæl den 5. Novbr. 1929'),
-			new WT_Census_CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
-			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
-			new WT_Census_CensusColumnBirthYear($this, 'Fødselsaar', ''),
-			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', ''),
-			new WT_Census_CensusColumnNull($this, 'Statsbergerferhold', ''),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
-			new WT_Census_CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
+			new WT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn'),
+			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', 'Dato og måned'),
+			new WT_Census_CensusColumnBirthYear($this, 'Fødselsår', 'Fødselsåret'),
+			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),
+			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Hentes hvis data er indtastet'),
+			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødselsstedet'),
 		);
 	}
 }

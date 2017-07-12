@@ -41,13 +41,12 @@ class WT_Census_CensusOfDenmark1870 extends WT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new WT_Census_CensusColumnFullName($this, 'Navn', '', 'width: 200px;'),
-			new WT_Census_CensusColumnSexMK($this, 'Køn', ''),
-			new WT_Census_CensusColumnAge($this, 'Alder', ''),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', ''),
-			new WT_Census_CensusColumnReligion($this, 'Religion', ''),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
-			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i familien', ''),
+			new WT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn'),
+			new WT_Census_CensusColumnAge($this, 'Alder', 'Beregnet alder fra fødselsåret ved folketællingen'),
+			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),
+			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Hentes hvis data er indtastet'),
+			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødselsstedet'),
 		);
 	}
 }

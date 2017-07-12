@@ -41,17 +41,13 @@ class WT_Census_CensusOfDenmark1901 extends WT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new WT_Census_CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“.', 'width: 200px;'),
-			new WT_Census_CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M.) eller Kvindekøn (Kv.).'),
-			new WT_Census_CensusColumnBirthDaySlashMonthYear($this, 'Fødselsdag', 'Føderlsaar og Føderladag.'),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U.), Gift (G.), Enkemand eller Enke (E.), Separeret (S.), Fraskilt (F.).'),
-			new WT_Census_CensusColumnReligion($this, 'Trossamfund', 'Trossamfund (Folkekirken eller Navnet paa det Trossamfund, man tilhører, eller „uden for Trossamfund“).'),
-			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødested 1) Indenlandsk Fødested: Kebstadens, Handelspladsens eller Sogneta og Amtets Navn (kan Amtet ikke angives, sættes vedkommende Landsdel, f. Eks. Fyn, Jlland osv.), 2) Fedt i Bilandene eller Udlandet: Landets Navn.'),
-			new WT_Census_CensusColumnNull($this, '', ''),
-			new WT_Census_CensusColumnNull($this, '', ''),
-			new WT_Census_CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien (Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende (naar vedkommende har Skudsmaalsbog), Pensioner, logerende.'),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
-			new WT_Census_CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger.'),
+			new WT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn'),
+			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', 'Dato og måned'),
+			new WT_Census_CensusColumnBirthYear($this, 'Fødselsår', 'Fødselsåret'),
+			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),
+			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Hentes hvis data er indtastet'),
+			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødselsstedet'),
 		);
 	}
 }

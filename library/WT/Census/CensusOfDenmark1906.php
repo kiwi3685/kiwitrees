@@ -41,15 +41,12 @@ class WT_Census_CensusOfDenmark1906 extends WT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new WT_Census_CensusColumnFullName($this, 'Navn', 'Samtlige Personers Navn (ogsaa Fornavn). Ved Børn, endnu uden Navn, sættes „Dreng“ eller „Pige“. Midlertidig fraværerade Personer anføres ikke her, men paa Skemaeta Bagside)', 'width: 200px;'),
-			new WT_Census_CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M) eller Kvindekøn (K).'),
-			new WT_Census_CensusColumnBirthDaySlashMonthYear($this, 'Fødselsdag', 'Føderlsaar og Føderladag.'),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
-			new WT_Census_CensusColumnReligion($this, 'Trossamfund', 'Trossamfund (Folkekirken eller Navnet paa det Trossamfund, man tilhører, eller „udenfor Trossamfund“).'),
-			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', ''),
-			new WT_Census_CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien: Husfader, Husmoder, Barn, Slangtning o.l., Tjenestetyende, Logerende, Pensioner'),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
-			new WT_Census_CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger.'),
+			new WT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn'),
+			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', 'Dato og måned'),
+			new WT_Census_CensusColumnBirthYear($this, 'Fødselsår', 'Fødselsåret'),
+			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),
+			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Hentes hvis data er indtastet'),
 		);
 	}
 }

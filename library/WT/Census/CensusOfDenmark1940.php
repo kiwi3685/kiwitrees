@@ -41,21 +41,13 @@ class WT_Census_CensusOfDenmark1940 extends WT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new WT_Census_CensusColumnSurnameGivenNames($this, 'Navn', '', 'width: 200px;'),
-			new WT_Census_CensusColumnNull($this, 'Nærværende', 'Hvis den i Rubrik 1 opførte Person er midleritidg nærværende d.v.s. har fast Bopæl ????? (er optaget under en anden Address i Folkeregistret), anføres her den faste Bopæls Adresse (Kommunens Navn og den fuldstændige Adresse i denne; for Udlændinge dog kun Landets Navn).'),
-			new WT_Census_CensusColumnNull($this, 'Fraværende', 'Hvis den i Rubrik 1 opførte Person er midleritidg fraværende d.v.s. har fast Bopæl paa Tællingsstedet (er optaget underdenne Address i Folkeregistret), men den 5. Novemer ikke er til Stede paa Tællingsstedet, anføres her „fraværende“ og Adressen paa det midlertidige Opholdssted (ved Ophold i Udlandet anføres jun Landets Navn).'),
-			new WT_Census_CensusColumnSexMK($this, 'Køn', 'Køn Mand (M) Kvinde (K)'),
-			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
-			new WT_Census_CensusColumnBirthYear($this, 'Fødselsaar', ''),
-			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', ''),
-			new WT_Census_CensusColumnNull($this, 'Statsbergerferhold', ''),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
-			new WT_Census_CensusColumnNull($this, 'Indgaaelse', 'Date for det nuværende Ægteskabs Indgaaelse. NB." RUbrikken udfyldes ikke al Enkemaend, Enker, Separerede eller Fraskilte.'),
-			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i familien', ''),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', ''),
-			new WT_Census_CensusColumnNull($this, 'Virksomhedens', 'Virksomhedens (Branchens) Art'),
-			new WT_Census_CensusColumnNull($this, 'Hustruen', 'Besvares kun af Hustruen og hjemmeboende Børn over 14 Aar'),
-			new WT_Census_CensusColumnNull($this, 'Døtre', 'Besvares kun af hjemmeboende Døtre over 14 Aar'),
+			new WT_Census_CensusColumnFullName($this, 'Navn', ''),
+			new WT_Census_CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', 'Dato og måned'),
+			new WT_Census_CensusColumnBirthYear($this, 'Fødselsår', 'Fødselsåret'),
+			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),
+			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Hentes hvis data er indtastet'),
+			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødselsstedet'),
 		);
 	}
 }

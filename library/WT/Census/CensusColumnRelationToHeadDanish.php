@@ -37,7 +37,11 @@ class WT_Census_CensusColumnRelationToHeadDanish extends WT_Census_AbstractCensu
 		if ($head === null) {
 			return '';
 		} elseif ($individual == $head) {
-			return 'Husstandens';
+			if ($individual->getSex() === 'F') {
+				return 'Husmoder';
+			} else {
+				return 'Husfader';
+			}
 		} else {
 			return getCloseRelationshipName($head, $individual);
 		}

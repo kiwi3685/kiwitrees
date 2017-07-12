@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,21 +41,12 @@ class WT_Census_CensusOfDenmark1890 extends WT_Census_CensusOfDenmark implements
 	 */
 	public function columns() {
 		return array(
-			new WT_Census_CensusColumnFullName($this, 'Navn', 'Samtlige Personers fulde Navn.', 'width: 200px;'),
-			new WT_Census_CensusColumnSexMK($this, 'Køn', 'Kjønnet. Mandkøn (M.) eller Kvindekøn (Kv.).'),
-			new WT_Census_CensusColumnAge($this, 'Alder', 'Alder. Alderen anføres med det fyldte Aar, men for Børn, der ikke have fyldt 1 Aar, anføres „Under 1 Aar“ of Fødselsdagen.'),
-			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U.), Gift (G.), Enkemand eller Enke (E.), Separeret (S.), Fraskilt (F.).'),
-			new WT_Census_CensusColumnReligion($this, 'Trossamfund', 'Trossamfund („Folkekirken“ eller andetSamfund, saasom „det frilutheranske“, „det romersk katholske“, det „mosaiske“ o.s.v.).'),
-			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødested, nemlig Sognets og Amtets eller Kjøbstadens (eller Handelpladsens) Navn, og for de i Bilandene Fødte samt for Udlændinge Landet, hvori de ere fødte.'),
-			new WT_Census_CensusColumnRelationToHead($this, 'Stilling i familien', 'Stilling i Familien (Husfader, Husmoder, Barn, Tjenestetyende, Logerende o.s.v.).'),
-			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Erhverv (Embede, Forretning, Næringsvej og Titel, samt Vedkommendes Stilling som Hovedperson eller Medhjælper, Forvalter, Svend eller Dreng o.s.v.). - Arten af Erhvervet (Gaardejer, Husmand, Grovsmed, Vognfabrikant, Høker o.s.v.). - Under Fattigforsørgelse.'),
-			new WT_Census_CensusColumnNull($this, 'Erhvervsstedet', 'Erhvervsstedet (Beboelseskommunen eller hvilken anden Kommune).'),
-			new WT_Census_CensusColumnNull($this, 'Døvstumme', 'Døvstumme.'),
-			new WT_Census_CensusColumnNull($this, 'Døve', 'Døve (Hørelson aldeles berøvet).'),
-			new WT_Census_CensusColumnNull($this, 'Blinde', 'Blinde (Synet aldeles borsvet).'),
-			new WT_Census_CensusColumnNull($this, 'Idioter', 'Uden Forstandsovner (Idioter).'),
-			new WT_Census_CensusColumnNull($this, 'Sindssyge', 'Sindssyge.'),
-			new WT_Census_CensusColumnNull($this, 'Anmærkninger', 'Anmærkninger.'),
+			new WT_Census_CensusColumnFullName($this, 'Navn', 'Fornavn og efternavn'),
+			new WT_Census_CensusColumnAge($this, 'Alder', 'Beregnet alder fra fødselsåret ved folketællingen'),
+			new WT_Census_CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stilling. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
+			new WT_Census_CensusColumnRelationToHeadDanish($this, 'Stilling i hustanden', ''),
+			new WT_Census_CensusColumnOccupation($this, 'Erhverv', 'Hentes hvis data er indtastet'),
+			new WT_Census_CensusColumnBirthPlace($this, 'Fødested', 'Fødselsstedet'),
 		);
 	}
 }
