@@ -142,12 +142,13 @@ class WT_Controller_FancyTreeView {
 		if ($type == "error") {
 			$class = "ui-state-error";
 		}
-		$controller->addInlineJavaScript('
+/*		$controller->addInlineJavaScript('
 			jQuery("#error").text("' . $msg . '").addClass("' . $class . '").show("normal");
 			setTimeout(function() {
 				jQuery("#error").hide("normal");
 			}, 10000);
 		');
+*/
 	}
 
 	// Search within a multiple dimensional array
