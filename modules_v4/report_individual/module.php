@@ -156,9 +156,17 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 						case 'all':
 							//show all level 1 images ?>
 							<div class="images">
-								<?php preg_match_all("/\d OBJE @(.+)@/", $person->getGedcomRecord(), $match);
-								$allMedia =  $match[1];
-								foreach ($allMedia as $media) {
+								<?php $sort_current_objes = array();
+								$sort_ct = preg_match_all('/\n1 _WT_OBJE_SORT @(.*)@/', $person->getGedcomRecord(), $sort_match, PREG_SET_ORDER);
+								for ($i = 0; $i < $sort_ct; $i++) {
+									if (!isset($sort_current_objes[$sort_match[$i][1]])) {
+										$sort_current_objes[$sort_match[$i][1]] = 1;
+									} else {
+										$sort_current_objes[$sort_match[$i][1]]++;
+									}
+									$sort_obje_links[] = $sort_match[$i][1];
+								}
+								foreach ($sort_obje_links as $media) {
 									$image = WT_Media::getInstance($media);
 									if ($image && $image->canDisplayDetails()) { ?>
 										<span><?php echo $image->displayImage(); ?></span>
