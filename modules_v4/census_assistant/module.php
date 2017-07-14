@@ -136,8 +136,12 @@ class census_assistant_WT_Module extends WT_Module {
 				$date			= '';
 				foreach ($firstRecord->getFacts('CENS') as $fact) {
 					if (trim($fact->getAttribute('NOTE'), '@') === $note->getXref()) {
+						// make sure date is in correct format dd mmm yyy
+						$date_exp = explode(" ", $fact->getAttribute('DATE'));
+						$date_exp[0] = sprintf("%02d", explode(" ", $fact->getAttribute('DATE'))[0]);
+						$date = implode(" ", $date_exp);
+						// get country code from census place
 						$wt_place	 = new WT_Place($fact->getPlace(), WT_GED_ID);
-						$date        = $fact->getAttribute('DATE');
 						$place       = explode(',', strip_tags($wt_place->getFullName()));
 						$countryCode = WT_Soundex::soundex_dm(array_pop($place));
 						break;

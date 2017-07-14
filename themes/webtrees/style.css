@@ -3122,12 +3122,15 @@ table.ca {
 table.ca th,
 table.ca td {
 	border: 1px solid #aaa;
-	font-size: 90%;
 	padding: 3px;
 }
 table.ca th {
-	cursor: help;
+	background: #ddd;
 	font-weight: 600;
+	padding: 5px;
+}
+table.ca th span[title] {
+	cursor: help;
 }
 div.census_text p {
 	margin: 0 0 0.5em;

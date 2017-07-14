@@ -457,7 +457,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		$note  = WT_Note::getInstance($match[1], $WT_TREE);
 		$label = 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
-		if (array_key_exists('census_assistant', WT_Module::getActiveModules())) {
+		if (WT_Module::getModuleByName('census_assistant')) {
 			$html = census_assistant_WT_Module::formatCensusNote($note);
 		} else {
 			$html = WT_Filter::formatText($note->getNote(), $WT_TREE);
@@ -485,19 +485,24 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			list($text) = explode("\n", strip_tags($html));
 			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . WT_I18N::translate('…') : $text;
 		}
-
+		if (WT_SCRIPT_NAME === 'note.php') {
+			$expand1 = $expand2 = '';
+		} else {
+			$expand1 = '
+				<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;">
+					<i id="' . $element_id . '_img" class="icon-plus"></i>
+				</a>
+			';
+			$expand2 = '" style="display:none"';
+		}
 		return
 			'<div class="fact_NOTE">
 				<span class="label">
 					' . WT_Gedcom_Tag::getLabel($label) . ':&nbsp;
 				</span>
-				<span id="' . $element_id . '-alt">' . $first_line . '
-					<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;">
-						<i id="' . $element_id . '_img" class="icon-plus"></i>
-					</a>
-				</span>
+				<span id="' . $element_id . '-alt">' . $first_line . $expand1 . '</span>
 			</div>
-			<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>
+			<div class="note_details" id="' . $element_id . '"' . $expand2 . '>' . $html . '</div>
 		';
 	}
 }

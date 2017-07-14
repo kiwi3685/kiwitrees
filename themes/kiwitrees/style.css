@@ -1788,10 +1788,6 @@ a:hover .nameZoom {
 }
 /* ====== */
 
-.note_details {
-	display: none;
-}
-
 a.showit {
 	position: relative;
 	z-index: 24;
@@ -6632,12 +6628,16 @@ table.ca th,
 table.ca td {
 	border: 1px solid #aaa;
 	font-size: 90%;
-	padding: 3px;
+	padding: 4px 8px;
 }
 table.ca th {
-	cursor: help;
+	background: #ddd;
 	font-weight: 600;
 }
+table.ca th span[title] {
+	cursor: help;
+}
+
 div.census_text p {
 	margin: 0 0 0.5em;
 	white-space: pre-wrap;
