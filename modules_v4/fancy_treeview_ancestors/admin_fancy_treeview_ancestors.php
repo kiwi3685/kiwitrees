@@ -59,10 +59,10 @@ if (WT_Filter::postBool('save')) {
 
 		if($root_id) {
 			if ($ftv->getSurname($root_id)) {
-				// check if this person has a spouse and/or children
+				// check if this person has parents
 				$person = $ftv->getPerson($root_id);
-				if(!$person->getSpouseFamilies()) {
-					$ftv->addMessage($ftv, 'error', WT_I18N::translate('Error: The root person you are trying to add has no partner and/or children. It is not possible to set this individual as root person.'));
+				if(!$person->getChildFamilies()) {
+					$ftv->addMessage($ftv, 'error', WT_I18N::translate('Error: The root person you are trying to add has no parents. It is not possible to set this individual as root person.'));
 				}
 				else {
 					$pid = $root_id;
@@ -128,9 +128,9 @@ if (WT_Filter::postBool('save')) {
 				if($FTV_SETTINGS[$key]['PID'] != $new_pid) {
 					if (!$ftv->searchArray($FTV_SETTINGS, 'PID', $new_pid)) {
 						if($ftv->getSurname($new_pid)) {
-							// check if this person has a spouse and/or children
+							// check if this person has parents
 							$person = $ftv->getPerson($new_pid);
-							if(!$person->getSpouseFamilies()) {
+							if(!$person->getChildFamilies()) {
 								$ftv->addMessage($controller, 'error', WT_I18N::translate('Error: The root person you are trying to add has no partner and/or children. It is not possible to set this individual as root person.'));
 							}
 							else {
