@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2017-04-17 10:48+1200\n"
-"PO-Revision-Date: 2017-07-16 15:26+1200\n"
+"PO-Revision-Date: 2017-07-17 09:01+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -178,7 +178,7 @@ msgstr "Bitte geben Sie eine gültige URL ein ( beginnend mit http://)"
 #. I18N: Help text for add media screens
 #: addmedia.php:543
 msgid "Leave this field blank to keep the original name of the file you have uploaded from your local computer.<br><br>Media files can and perhaps should be named differently on the server than on your local computer. This is because often the local file name has meaning to you but is less meaningful to others visiting this site. Consider also the possibility that you and someone else both try to upload different files called \"granny.jpg\".<br>In this field you specify the new name of the file. The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically. You do not need to enter the file name extension (jpg, gif, pdf, doc, etc.)"
-msgstr " "
+msgstr "Lassen Sie dieses Feld leer, um den ursprünglichen Namen der Datei, die Sie hochgeladen haben von Ihrem lokalen Computer zu halten. <br><br>Media Dateien können und sollte vielleicht auf dem Server als auf Ihrem lokalen Computer anders benannt werden. Und zwar deshalb, weil oft die lokale Datei-Name hat eine Bedeutung für Sie aber ist weniger sinnvoll für andere Besucher dieser Website. Betrachten Sie auch die Möglichkeit, dass Sie und jemand anderes beide versuchen, verschiedene Dateien namens \"granny.jpg\" hochladen. <br>In diesem Bereich haben Sie den neuen Namen der Datei angeben. Der hier eingegebene Name wird auch verwendet werden, um die Miniaturansicht zu benennen, die separat hochgeladen oder automatisch generiert werden können. Sie müssen keine die Dateinamenerweiterung (Jpg, Gif, PDF, Doc, etc.) angeben"
 
 #: addmedia.php:553 admin_media_upload.php:209 help_text.php:736 modules_v4/gallery/module.php:280
 msgid "Folder name on server"
@@ -777,7 +777,7 @@ msgstr "Datenverzeichnis"
 #. is a software program.
 #: admin_site_config.php:169
 msgid "This folder will be used by kiwitrees to store media files, GEDCOM files, temporary files, etc. The default setting is “data/”.<br>These files may contain private data and should not be made available over the internet. To protect this private data kiwitrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.<br>If your web-server does not support .htaccess files and you cannot restrict access to this folder then you can select another folder away from your web documents. If you select a different folder you must also move all files (except config.ini.php, index.php and .htaccess) from the existing folder to the new folder. The folder can be specified here in full (e.g. /home/user_name/kiwitrees_data/) or relative to the installation folder (e.g. ../../kiwitrees_data/)."
-msgstr ""
+msgstr "Dieser Ordner wird von Kiwitrees verwendet werden, um Mediendateien, GEDCOM-Dateien, temporäre Dateien usw. zu speichern. Die Standardeinstellung ist \"Daten /\". <br>Diese Dateien können private Daten enthalten und sollten nicht zur Verfügung gestellt werden über das Internet. Zum Schutz der privaten Daten nutzt Kiwitrees eine Apache-Konfigurationsdatei (.htaccess), die blockiert alle Zugriff auf diesen Ordner. <br>Wenn Ihr Webserver nicht .htaccess Dateien und Sie unterstützt können nicht einschränken des Zugriffs auf diesen Ordner, dann wählen Sie einen anderen Ordner Weg für Ihrer Webdokumente. Wenn Sie einen anderen Ordner auswählen müssen Sie auch alle Dateien (außer config.ini.php, index.php und .htaccess) aus den vorhandenen Ordner in den neuen Ordner verschieben. Die Ordner kann hier in vollem Umfang (z.B./Home/User_name/Kiwitrees_data /) oder im Verhältnis zu den Installationsordner (z.B.... angegeben werden /.. /kiwitrees_data/)."
 
 #: admin_site_config.php:174
 msgid "Memory limit"
@@ -830,7 +830,7 @@ msgstr "Adresse der Webseite"
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:224
 msgid "If your site can be reached using more than one URL such as <b>http://www.example.com/kiwitrees/</b> and <b>http://kiwitrees.example.com/</b> you can specify the preferred URL here. Requests for the other URLs will be redirected to the preferred one. <span class=\"warning\">If not required, leave this field blank.</span>"
-msgstr ""
+msgstr "Wenn Ihre Website über mehr als eine URL, z. B. <b>http://www.example.com/kiwitrees/</b> und <b>http://kiwitrees.example.com/</b> erreichbar ist, können Sie die bevorzugte URL angeben. Anfragen für die alternativen URLs werden auf die bevorzugte umgeleitet werden.<span class=\"warning\">Wenn nicht benötigt, bitte leer lassen. "
 
 #: admin_site_config.php:229
 msgid "Site maintenance"
@@ -838,7 +838,7 @@ msgstr "Verwaltung "
 
 #: admin_site_config.php:233
 msgid "Set this to <b>yes</b> to temporarily prevent anyone <u>except the site administrator</u> from accessing your site."
-msgstr ""
+msgstr "Setzen Sie hier auf <b>Ja</b>, um vorübergehend zu verhindern, dass jemand <u>außer den Site-Administrator</u> den Zugriff auf Ihre Website."
 
 #. I18N: Name of a module
 #: admin_site_config.php:242 modules_v4/widget_messages/module.php:32
@@ -848,7 +848,7 @@ msgstr "Nachrichten"
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:252
 msgid "Kiwitrees needs to send emails such as password reminders and site notifications. To do this it can use this server's built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.<br>Selecting SMTP will display additional configuration options below."
-msgstr ""
+msgstr "Kiwitrees muss E-Mails wie Passwort-Erinnerungen und Website-Benachrichtigungen zu senden. Um dies zu tun kann es diesen Server verwenden, gebaut in PHP Mail-Anlage (die nicht immer verfügbar ist) oder einem externen SMTP (Mail-Relay) Dienst, wofür Sie die Verbindungsdetails bereitstellen müssen. <br>Auswahl SMTP werden zusätzliche Konfigurationsoptionen unten angezeigt."
 
 #: admin_site_config.php:257
 msgid "Send mail in HTML format"
@@ -857,7 +857,7 @@ msgstr "Mail im HTML-Format senden "
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:261
 msgid "By default kiwitrees sends emails in plain text format. Setting this option to <b>yes</b> will change that to the multipart format. This allows the use of HTML formatting, but also includes a plain text version for recipients that do not allow HTML formatted emails."
-msgstr ""
+msgstr "Standardmäßig sendet Kiwitrees E-Mails im nur-Text-Format. Wenn diese Option auf <b>Ja</b> wird das multipart-Format ändern. Dies ermöglicht die Verwendung von HTML-Formatierung, sondern beinhaltet auch eine reine Textversion für Empfänger, die keine HTML-formatierte Mails zulassen."
 
 #: admin_site_config.php:266
 msgid "Sender email"
@@ -935,7 +935,7 @@ msgstr "Viele Mailserver verlangen, dass sich der sendende Server richtig auswei
 
 #: admin_site_config.php:341
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password].<br>You must also enable “less secure applications” in your Google account. <a href=\"https://support.google.com/a/answer/6260879\">https://support.google.com/a/answer/6260879</a>"
-msgstr ""
+msgstr "Um ein Google Mail-Konto zu verwenden, verwenden Sie die folgenden Einstellungen: server=smtp.gmail.com, Port 587, Sicherheit = = Tls, username=xxxxx@gmail.com, Passwort = [Ihr Google Mail-Passwort]. <br>Sie müssen auch \"weniger sichere Anwendungen\" in Ihrem Google-Konto aktivieren. <a href=\"https://support.google.com/a/answer/6260879\"> https://Support.Google.com/a/answer/6260879</a>"
 
 #: admin_site_config.php:349
 msgid "Login URL"
@@ -953,7 +953,7 @@ msgstr "Begrüßungstext auf der Login-Seite"
 #. I18N: Explanation for custom welcome text
 #: admin_site_config.php:362
 msgid "Here you can choose text to appear on the login page. You must determine which predefined text is most appropriate. You can also choose to enter your own custom welcome text.<br><br>Please refer to the Help text associated with the <b>Custom welcome text</b> field for more information.<br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b><br>Access to this site is permitted to every visitor who has a user account.<br>If you have a user account, you can login on this page. If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br>After verifying your application, the site administrator will activate your account. You will receive an email when your application has been approved.</center></div><br/></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b><br>Access to this site is permitted to <u>authorized</u> users only.<br>If you have a user account you can login on this page. If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br>After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved.</center></div><br/></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this Genealogy website</b><br>Access to this site is permitted to <u>family members only</u>.<br>If you have a user account you can login on this page. If you don't have a user account, you can apply for one by clicking on the appropriate link below.<br>After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved.</center></div></li></ul>"
-msgstr ""
+msgstr "Hier können Sie den auf den Login-Bildschirm erscheinenden Text definieren. Sie müssen bestimmen, welcher vordefinierte Text am besten zur Beschreibung Ihrer Zugangsregelung/ -beschränkung geeignet ist. <br /> <br /> Sie können aber auch Ihren eigenen, individulisierten Begrüßungstext eingeben. <b> Bitte beachten Sie hierzu die Hilfetexte, die mit dem individualisiertem Begrüßungstext verbunden sind</ b> Feld für weitere Informationen <br /> <br /> Die vordefinierten Standardtexte sind: <ul><li><b>Textbausteine die mitteilen, dass alle Nutzer, unabhängig vom Bezug zur Ihrer Genealogie, ein Benutzerkonto beantragen können: </ b> <div class=\"list_value_wrap\"> <center> <b> Herzlich Willkommen auf dieser Genealogie Webseite </ b> </ center> <br /> Der Zugang zu dieser Website ist jedem Besucher möglich, der ein Benutzerkonto besitzt. <br /> <br /> Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch nicht über ein Benutzerkonto verfügen, können Sie es hier beantragen, indem Sie auf den entsprechenden Link klicken. <br /> <br /> Sobald Ihre Angaben überprüft sind, wird der Web-Seiten-Administrator Ihr Konto zu aktivieren. Sie erhalten eine Benachrichtigung per E-Mail, sobald Ihr Antrag genehmigt wurde </ div> <br/> </ li> <li> <b> Standardtext, der besagt, dass bei jeder Anfrage für ein Benutzerkonto der Adminsitrator entscheidet :. </ B> < div class = \"list_value_wrap\"> <center> <b> Willkommen auf dieser Genealogie-Webseite </ b> </ center> <br /> Der Zugang zu dieser Website ist nur <u> autorisierten </ u> Benutzern gestattet. <br /> <br /> Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch nicht über ein Benutzerkonto verfügen, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken. <br /> <br /> Sobald Ihre Angaben überprüft sind, wird der Web-Seiten-Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail-Nachricht, wenn Ihr Antrag genehmigt wurde </ div> <br/> </ li> <li> <b> Standardtext, dass nur Familienmitglieder ein Benutzerkonto beantragen können:</u>. </ B> <div class = \"list_value_wrap\"> <center> <b> Willkommen auf dieser Genealogie-Webseite </ b> </ center> <br /> Der Zugang zu dieser Website ist, <u> nur Familienmitgliedern </ u> möglich. <br / > <br /> Wenn Sie bereits ein Benutzerkonto besitzen, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto haben, können Sie es beantragen, indem Sie auf den entsprechenden Link klicken. <br /> <br /> Nach Überprüfung Ihrer Informationen, insbesondere in Bezug auf Ihre Familienzugehörigkeit, wird der Web-Seiten-Administrator Ihren Antrag entweder genehmigen oder ablehnen. Sie erhalten eine E-Mail, sobald Ihr Antrag genehmigt wurde. </ Div> </ li> </ ul>"
 
 #: admin_site_config.php:367
 msgid "Custom welcome text"
@@ -1175,17 +1175,17 @@ msgstr "%s Medienobjekte"
 #: admin_site_use.php:64
 #, php-format
 msgid "Your database size is currently %s"
-msgstr ""
+msgstr "Ihre Datenbank ist im Moment %s MB groß"
 
 #: admin_site_use.php:67
 #, php-format
 msgid "Your files including media items are currently using %s"
-msgstr ""
+msgstr "Ihre Dateien inclusive Medien sind derzeit %s MB groß"
 
 #: admin_site_use.php:70
 #, php-format
 msgid "Total server space used is therefore %s"
-msgstr ""
+msgstr "Der gesamte dafür benutzte Speicherplatz beträgt %s MB."
 
 #: admin_trees_append.php:31
 msgid "Append family trees"
@@ -1453,7 +1453,7 @@ msgstr "Kiwitrees Antwort-Mailadresse"
 
 #: admin_trees_config.php:476
 msgid "Email address to be used in the “From:” field of emails that kiwitrees creates automatically.<br>Kiwitrees can automatically create emails to notify administrators of changes that need to be reviewed. Kiwitrees also sends notification emails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created emails is something like From: kiwitrees-noreply@yoursite to show that no response to the email is required. To guard against spam or other email abuse, some email systems require each message’s “From:” field to reflect a valid email account and will not accept messages that are apparently from account kiwitrees-noreply."
-msgstr ""
+msgstr "Die Mail-Adresse, die für das «Absender:» Feld von automatisch erstellten Mails benutzt werden soll.<br /><br /><b>webtrees</b> erstellt automatische Mails, die den Verwalter darauf aufmerksam machen, dass Änderungen gemacht wurden, und dass diese noch kontrolliert werden müssen. Automatische Mails werden auch erstellt, wenn neue Benutzer einen Zugriffsantrag gemacht haben.<br /><br />Das «Absender:» Feld dieser automatischen Mails ähnelt gewöhnlich <i>Abs: kiwitrees-noreply@yoursite</i> und das bedeutet dass keine Antwort erwartet ist. Um gültige Mails zu erkennen, erfordern manche Mail-Systeme dass jede Mail-Nachricht eine gültige Absender-Adresse hat. Diese Mail-Systeme erkennen also keine Mails vom Absender <i>kiwitrees-noreply</i> als gültig."
 
 #: admin_trees_config.php:481
 msgid "Genealogy contact"
@@ -1633,7 +1633,7 @@ msgstr "Silhouetten verwenden"
 
 #: admin_trees_config.php:759
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question and may also vary according to the theme you use."
-msgstr ""
+msgstr "Verwenden Sie Silhouette Bilder, wenn keine hervorgehobene Bild für das Individuum angegeben wurde. Die verwendeten Bilder sind spezifisch für das Geschlecht des betreffenden Individuums und variieren auch je nach Thema, die, das Sie verwenden."
 
 #: admin_trees_config.php:764 compact.php:53
 msgid "Show highlight images in people boxes"
@@ -1645,7 +1645,7 @@ msgstr "Klicken Sie hier für weitere Informationen über Highlight-Bilder auf d
 
 #: admin_trees_config.php:775
 msgid "Add watermarks to thumbnails"
-msgstr ""
+msgstr "Miniaturbilder mit Wasserzeichen versehen"
 
 #: admin_trees_config.php:779
 msgid "A watermark is text that is added to an image to discourage others from copying it without permission. If you select yes further options will be available."
@@ -1661,7 +1661,7 @@ msgstr "Das Erstellen der Wasserzeichen kann bei großen Bildern zeitraubend sei
 
 #: admin_trees_config.php:794
 msgid "Store watermarked thumbnails on server"
-msgstr ""
+msgstr "Mit Wasserzeichen versehene Miniaturbilder auf dem Server speichern"
 
 #: admin_trees_config.php:800
 msgid "Images without watermarks"
@@ -1685,7 +1685,7 @@ msgstr "Dies ist die Anzahl, wie oft ein Nachname vorkommen muss, damit er in de
 
 #: admin_trees_config.php:824
 msgid "Names to add to common surnames"
-msgstr ""
+msgstr "Namen hinzufügen zum gemeinsamen Familiennamen"
 
 #: admin_trees_config.php:828
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive.</b>"
@@ -1882,7 +1882,7 @@ msgstr "HLT Ordinanz-Codes in Boxen zeigen"
 #. I18N: Help for LDS ordinances show/hide option
 #: admin_trees_config.php:1044
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in all chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name. Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code. For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr ""
+msgstr "Wenn diese Option auf <b>Ja</b> gestellt ist, wird der Stand der HLT-Ordinanzen als Codes gezeigt.<ul><li><b>B</b> - Taufe</li><li><b>E</b> - Stiftung</li><li><b>S</b> - Ehepartner-Siegelung</li><li><b>P</b> - Kindes-Siegelung</li></ul>Das Code <b>BESP</b> bedeutet, dass diese Person alle vier HLT Ordinanzen durchgeführt hat.  Fehlende Ordinanzen werden durch <b>_</b> angedeutet.  Zm Beispiel, das Code <b>BE__</b> deutet an, dass die <b>S</b> und <b>P</b> Ordinanzen noch nicht durchgeführt sind."
 
 #: admin_trees_config.php:1049
 msgid "Other facts to show in charts"
@@ -1951,7 +1951,7 @@ msgstr "Alle Personendaten"
 
 #: admin_trees_config.php:1129
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. <span style=\"color: #ff0000;\">Fact names that appear in this list must not also appear in the <b>Unique individual facts</b> list.</span> Either enter the tags manually here or use the edit selector."
-msgstr ""
+msgstr "Dies ist die Liste der GEDCOM-Fakten, die Individuen Ihre Benutzer hinzufügen können. Sie ändern diese Liste durch das entfernen oder Hinzufügen von Namen der Ereignisse, auch benutzerdefinierte, wenn nötig. <span style=\"color: #ff0000;\"> Ereignis Namen, die in dieser Liste erscheinen müssen nicht auch in der <b>einzigartigen individuellen Fakten</b>-Liste erscheinen.</span> Die Stichworte hier manuell eingeben oder bearbeiten-Selektor verwenden."
 
 #: admin_trees_config.php:1134
 msgid "Unique individual facts"
@@ -2107,7 +2107,7 @@ msgstr "Vollständige Quellen-Zitate benutzen"
 
 #: admin_trees_config.php:1332
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don't use these fields, you can disable them when creating new source citations."
-msgstr ""
+msgstr "Quellen-Zitate können Felder enthalten, die die Qualität der Daten und das Datum des Eintrages in der Quelle festhalten. Wenn Sie solche Felder nicht benutzen, können Sie diese beim Erstellen von neuen Quellen-Zitaten ausblenden."
 
 #: admin_trees_config.php:1337 admin_trees_source.php:75
 msgid "Source type"
@@ -2131,7 +2131,7 @@ msgstr "Verwendung der GeoNamen-Datenbank für AutoVervollständigen von Orten"
 
 #: admin_trees_config.php:1350
 msgid "Should the GeoNames database (http://www.geonames.org/) be used to provide more suggestions for place names?<p>When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered. When set to <b>No</b>, only existing places in the current family tree database will be searched. As you enter more of the place name, the suggestion will become more precise. This option can slow down data entry, particularly if your Internet connection is slow.</p><p>The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names.</p>"
-msgstr ""
+msgstr "Sollte die GeoNames-Datenbank (http://www.geonames.org/) werden verwendet, um weitere Anregungen für Ortsnamen geben? <p>Wenn diese Option auf <b>Ja</b>, die GeoNames festgelegt ist, die Datenbank abgefragt werden wird, um Vorschläge für den eingegebenen Ortsnamen zu liefern. Wenn auf <b>No</b> gesetzt, werden nur vorhandene Plätze in den aktuellen Stammbaum-Datenbank durchsucht. Wie Sie mehr von den Ortsnamen eingeben, wird der Vorschlag genauer geworden. Diese Option kann sich verlangsamen, Dateneingabe, insbesondere dann, wenn Ihre Internetverbindung langsam ist.</p> <p>The GeoNames geografische Datenbank steht kostenlos zur Verfügung. Es enthält derzeit mehr als 8.000.000 Flurnamen.</p>"
 
 #: admin_trees_config.php:1359 help_text.php:584 includes/functions/functions_edit.php:2612
 msgid "Administrators sometimes need to clean up and correct the data submitted by users.<br>When Administrators make such corrections information about the original change is replaced.<br>When this option is selected kiwitrees will retain the original change information instead of replacing it."
@@ -2877,8 +2877,8 @@ msgstr "Keine unverknüpften Anmerkungen"
 #, php-format
 msgid "%s unlinked repository"
 msgid_plural "%s unlinked repositories"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s unverknüpfte repository"
+msgstr[1] "%s unverknüpfte Archive "
 
 #: admin_trees_unlinked.php:219
 msgid "No unlinked repositories"
@@ -2888,8 +2888,8 @@ msgstr "Keine unverknüpften Archive"
 #, php-format
 msgid "%s unlinked media object"
 msgid_plural "%s unlinked media objects"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s unverknüpfte Medienobjekt"
+msgstr[1] "%s unverknüpfte Medienobjekte"
 
 #: admin_trees_unlinked.php:236
 msgid "No unlinked media objects"
@@ -2897,7 +2897,7 @@ msgstr "Keine unverknüpften Medien Objekte"
 
 #: admin_trees_unlinked.php:240
 msgid "You must select at least one record type"
-msgstr ""
+msgstr "Sie müssen mindestens einen Record-Typ auswählen."
 
 #: admin_users.php:30 edituser.php:87
 msgid "User administration"
@@ -3063,7 +3063,7 @@ msgstr "Bevorzugte Kontaktaufnahme"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:482
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Site-Mitglieder können gegenseitig Nachrichten senden. Sie können wählen, wie diese Nachrichten an Sie gesendet werden, oder wählen um sie überhaupt nicht zu erhalten."
 
 #: admin_users.php:489
 msgid "Administrator comments on user"
@@ -3071,15 +3071,15 @@ msgstr ""
 
 #: admin_users.php:499
 msgid "Notification options"
-msgstr ""
+msgstr "Benachrichtigungsoptionen"
 
 #: admin_users.php:505
 msgid "Clippings cart downloads"
-msgstr ""
+msgstr "Sammelbehälter downloads"
 
 #: admin_users.php:508
 msgid "When a user downloads a GEDCOM file created in the Clippings cart the site administrator will be notified by mail if this option is selected."
-msgstr ""
+msgstr "Wenn ein Benutzer eine GEDCOM-Datei in den Sammelbehälter erstellt, wird der Site-Administrator per E-Mail benachrichtigt, wenn diese Option ausgewählt ist."
 
 #: admin_users.php:516
 msgid "Family tree access and settings"
@@ -3115,7 +3115,7 @@ msgstr "Diese Rolle hat alle Berechtigungen der Rolle \"Besucher\", zuzüglich z
 
 #: admin_users.php:553
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr ""
+msgstr "Diese Rolle hat die Berechtigungen der Mitgliedsrolle, sowie die Berechtigung zum hinzufügen/ändern/löschen Daten. Alle Änderungen müssen von einem Moderator überprüft werden, es sei denn, der Nutzer die hat \"automatisch Änderungen annehmen\" Option aktiviert."
 
 #: admin_users.php:559
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -3638,7 +3638,7 @@ msgstr "löschen"
 
 #: edit_interface.php:2302 edit_interface.php:2334 edit_interface.php:2357
 msgid "Select new person"
-msgstr ""
+msgstr "Wählen Sie neue Person "
 
 #: edit_interface.php:2303 edit_interface.php:2335 edit_interface.php:2358
 msgid "Change"
@@ -4083,7 +4083,7 @@ msgstr "In vielen Kulturkreisen ist es üblich, den traditionellen Namen in land
 
 #: help_text.php:348
 msgid "Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown."
-msgstr ""
+msgstr "Wählen Sie das entsprechende Geschlecht aus der Dropdown-Liste.  Die <b>unbekannte</b> Option gibt an, dass das Geschlecht unbekannt ist."
 
 #: help_text.php:353
 msgid "This field allows you to change the source record that this fact's source citation links to.  This field takes a Source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source's ID number.  To remove the entire citation, make this field blank."
@@ -4407,7 +4407,7 @@ msgstr "Auf dieser Seite erhalten Sie eine ausführliche Auskunft über den Serv
 
 #: help_text.php:631
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr ""
+msgstr "Wenn Sie hinzufügen, bearbeiten oder Löschen von Informationen, werden die Änderungen nicht sofort gespeichert.  Stattdessen werden sie in einem \"Ausstehend\" Bereich gehalten.  Diese ausstehenden Änderungen müssen von einem Moderator überprüft werden, bevor sie angenommen werden."
 
 #: help_text.php:633
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -4459,7 +4459,7 @@ msgstr "Jeder Besucher besitzt diese Rolle und die damit verbundenen Berechtigun
 
 #: help_text.php:686
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the \"automatically accept changes\" option enabled."
-msgstr ""
+msgstr "Diese Rolle hat die Berechtigungen der Mitgliedsrolle, sowie die Berechtigung zum hinzufügen/ändern/löschen Daten. Alle Änderungen müssen von einem Moderator überprüft werden, es sei denn, der Nutzer die hat \"automatisch Änderungen annehmen\" Option aktiviert."
 
 #: help_text.php:690
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
@@ -4475,7 +4475,7 @@ msgstr "Zeige alle Quellen"
 
 #: help_text.php:704
 msgid "When this option is checked, you can see all Source or Note records for this person.  When this option is unchecked, Source or Note records that are associated with other facts for this person will not be shown."
-msgstr ""
+msgstr "Wenn diese Option aktiviert ist, sehen Sie alle Quelle oder Hinweis Datensätze für diese Person.  Wenn diese Option nicht aktiviert ist, werden Quelle oder Hinweis Datensätze, die mit anderen Fakten für diese Person sind, nicht angezeigt."
 
 #: help_text.php:709
 msgid "By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart."
@@ -4523,7 +4523,7 @@ msgstr "Durch diesen Benutzer vorgenommene Änderungen automatisch genehmigen"
 
 #: help_text.php:750
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator's approval."
-msgstr ""
+msgstr "Normalerweise müssen alle Änderungen an einen Stammbaum von einem Moderator genehmigt werden.  Diese Option ermöglicht einem Benutzer Änderungen vornehmen, ohne dass ein Moderator die Genehmigung erteilt."
 
 #: help_text.php:755
 msgid "The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty."
@@ -4531,7 +4531,7 @@ msgstr "Der persönliche Datensatz kennzeichnet den Benutzer in jedem Familien-S
 
 #: help_text.php:760
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the \"email verified\" option is selected automatically."
-msgstr ""
+msgstr "Wenn ein Benutzer ein Konto registriert, wird eine E-Mail an ihre E-Mail-Adresse mit einem Bestätigungslink gesendet.  Wenn sie auf diesen Link klicken, wissen wir das die E-Mail-Adresse korrekt ist, und die Option \"E-Mail bestätigt\" wird automatisch ausgewählt."
 
 #: help_text.php:762
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -4543,7 +4543,7 @@ msgstr "Sie sollten keinen Zugang genehmigen, solange Sie nicht wissen, dass die
 
 #: help_text.php:766
 msgid "A user will not be able to login until both the \"email verified\" and \"approved by administrator\" options are selected."
-msgstr ""
+msgstr "Benutzer werden nicht in der Lage sein sich anzumelden bis \"E-Mail bestätigt\" und \"vom Administrator genehmigt\" Optionen ausgewählt sind."
 
 #: help_text.php:771
 msgid "This checkbox controls your visibility to other users while you're online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible."
@@ -4564,7 +4564,7 @@ msgstr "Zwischenablage komprimieren"
 
 #: help_text.php:791
 msgid "Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href=\"http://www.winzip.com\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.winzip.com</a>."
-msgstr ""
+msgstr "Wählen diese Option um ihre Ausschnitte in einer ZIP-Datei zu speichern. Für Informationen über ZIP-Dateien besuchen sie bitte folgende Seite:<a href=\"http://www.winzip.com\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.winzip.com</a>."
 
 #: help_text.php:795
 msgid "Help"
@@ -8072,7 +8072,7 @@ msgstr "Kein Tempel - Ordinanz zu Lebzeiten"
 
 #: includes/functions/functions_edit.php:1707
 msgid "Link this source to these records"
-msgstr ""
+msgstr "Verknüpfen Sie diese Quelle mit diesen Datensätzen"
 
 #: includes/functions/functions_edit.php:1816 includes/functions/functions_edit.php:1820
 msgid "Add an associate"
@@ -8653,7 +8653,7 @@ msgstr "Partner/in"
 
 #: includes/media_reorder.php:66
 msgid "Click a row then drag-and-drop to re-order media."
-msgstr ""
+msgstr "Zeile klicken und verschieben um Medien-Objekte neu zu ordnen "
 
 #: includes/session.php:598
 msgid "Search engine"
@@ -9531,8 +9531,8 @@ msgstr "Ausführungszeit: %1$s Sekunden. Datenbankabfragen: %2$s. Datenschutzpr�
 msgid "Pedigree tree of %s"
 msgstr "Stammbaum von %s"
 
-#: library/WT/Controller/Pedigree.php:240 library/WT/Place.php:94 modules_v4/census_assistant/census_1_ctrl.php:43 modules_v4/census_assistant/census_1_ctrl.php:44 modules_v4/census_assistant/census_3_find.php:95 modules_v4/census_assistant/census_3_find.php:96 modules_v4/census_assistant/census_3_find.php:102 modules_v4/census_assistant/census_3_find.php:103 modules_v4/census_assistant/census_3_find.php:138 modules_v4/census_assistant/census_3_find.php:139 modules_v4/census_assistant/census_3_search_add.php:95 modules_v4/census_assistant/census_3_search_add.php:96 modules_v4/census_assistant/census_3_search_add.php:124 modules_v4/census_assistant/census_3_search_add.php:125 modules_v4/census_assistant/census_3_search_add.php:240 modules_v4/census_assistant/census_3_search_add.php:241 modules_v4/census_assistant/census_3_search_add.php:363 modules_v4/census_assistant/census_3_search_add.php:364 modules_v4/census_assistant/census_3_search_add.php:382 modules_v4/census_assistant/census_3_search_add.php:383 modules_v4/census_assistant/census_3_search_add.php:512 modules_v4/census_assistant/census_3_search_add.php:513 modules_v4/census_assistant/census_3_search_add.php:542 modules_v4/census_assistant/census_3_search_add.php:543 modules_v4/census_assistant/census_3_search_add.php:669 modules_v4/census_assistant/census_3_search_add.php:670 modules_v4/census_assistant/census_3_search_add.php:799 modules_v4/census_assistant/census_3_search_add.php:800 modules_v4/census_assistant/census_3_search_add.php:811 modules_v4/census_assistant/census_3_search_add.php:812 modules_v4/census_assistant/census_3_search_add.php:924 modules_v4/census_assistant/census_3_search_add.php:925 modules_v4/census_assistant/census_3_search_add.php:953 modules_v4/census_assistant/census_3_search_add.php:954 modules_v4/census_assistant/census_3_search_add.php:1081 modules_v4/census_assistant/census_3_search_add.php:1082 modules_v4/census_assistant/census_3_search_add.php:1217 modules_v4/census_assistant/census_3_search_add.php:1218 modules_v4/census_assistant/census_3_search_add.php:1230 modules_v4/census_assistant/census_3_search_add.php:1231 modules_v4/census_assistant/census_3_search_add.php:1416
-#: modules_v4/census_assistant/census_3_search_add.php:1417 modules_v4/census_assistant/census_3_search_add.php:1445 modules_v4/census_assistant/census_3_search_add.php:1446 modules_v4/census_assistant/census_3_search_add.php:1529 modules_v4/census_assistant/census_3_search_add.php:1530 modules_v4/census_assistant/census_3_search_add.php:1624 modules_v4/census_assistant/census_3_search_add.php:1625 modules_v4/census_assistant/census_3_search_add.php:1655 modules_v4/census_assistant/census_3_search_add.php:1656 modules_v4/census_assistant/census_3_search_add.php:1741 modules_v4/census_assistant/census_3_search_add.php:1742 modules_v4/census_assistant/census_3_search_add.php:1836 modules_v4/census_assistant/census_3_search_add.php:1837 modules_v4/census_assistant/census_3_search_add.php:1867 modules_v4/census_assistant/census_3_search_add.php:1868 modules_v4/census_assistant/census_3_search_add.php:1973 modules_v4/census_assistant/census_3_search_add.php:1974 modules_v4/census_assistant/census_3_search_add.php:1998 modules_v4/census_assistant/census_3_search_add.php:1999 modules_v4/family_nav/module.php:257 modules_v4/googlemap/admin_places.php:587 modules_v4/googlemap/admin_places.php:594 modules_v4/googlemap/admin_places.php:649 modules_v4/googlemap/admin_places_edit.php:173 modules_v4/googlemap/admin_places_edit.php:220 modules_v4/googlemap/admin_places_edit.php:224 modules_v4/googlemap/module.php:1673 modules_v4/googlemap/placehierarchy.php:305 modules_v4/googlemap/placehierarchy.php:318 modules_v4/googlemap/placehierarchy.php:320 modules_v4/googlemap/placehierarchy.php:386 modules_v4/googlemap/placehierarchy.php:399 modules_v4/googlemap/placehierarchy.php:401 placelist.php:114
+#: library/WT/Controller/Pedigree.php:240 library/WT/Place.php:94 modules_v4/census_assistant/census_1_ctrl.php:43 modules_v4/census_assistant/census_1_ctrl.php:44 modules_v4/census_assistant/census_3_find.php:95 modules_v4/census_assistant/census_3_find.php:96 modules_v4/census_assistant/census_3_find.php:102 modules_v4/census_assistant/census_3_find.php:103 modules_v4/census_assistant/census_3_find.php:138 modules_v4/census_assistant/census_3_find.php:139 modules_v4/census_assistant/census_3_search_add.php:95 modules_v4/census_assistant/census_3_search_add.php:96 modules_v4/census_assistant/census_3_search_add.php:124 modules_v4/census_assistant/census_3_search_add.php:125 modules_v4/census_assistant/census_3_search_add.php:240 modules_v4/census_assistant/census_3_search_add.php:241 modules_v4/census_assistant/census_3_search_add.php:363 modules_v4/census_assistant/census_3_search_add.php:364 modules_v4/census_assistant/census_3_search_add.php:382 modules_v4/census_assistant/census_3_search_add.php:383 modules_v4/census_assistant/census_3_search_add.php:512 modules_v4/census_assistant/census_3_search_add.php:513 modules_v4/census_assistant/census_3_search_add.php:542 modules_v4/census_assistant/census_3_search_add.php:543 modules_v4/census_assistant/census_3_search_add.php:669 modules_v4/census_assistant/census_3_search_add.php:670 modules_v4/census_assistant/census_3_search_add.php:799 modules_v4/census_assistant/census_3_search_add.php:800 modules_v4/census_assistant/census_3_search_add.php:811 modules_v4/census_assistant/census_3_search_add.php:812 modules_v4/census_assistant/census_3_search_add.php:924 modules_v4/census_assistant/census_3_search_add.php:925 modules_v4/census_assistant/census_3_search_add.php:953 modules_v4/census_assistant/census_3_search_add.php:954 modules_v4/census_assistant/census_3_search_add.php:1081 modules_v4/census_assistant/census_3_search_add.php:1082 modules_v4/census_assistant/census_3_search_add.php:1217 modules_v4/census_assistant/census_3_search_add.php:1218 modules_v4/census_assistant/census_3_search_add.php:1230 modules_v4/census_assistant/census_3_search_add.php:1231 modules_v4/census_assistant/census_3_search_add.php:1416 modules_v4/census_assistant/census_3_search_add.php:1417 modules_v4/census_assistant/census_3_search_add.php:1445 modules_v4/census_assistant/census_3_search_add.php:1446 modules_v4/census_assistant/census_3_search_add.php:1529 modules_v4/census_assistant/census_3_search_add.php:1530 modules_v4/census_assistant/census_3_search_add.php:1624 modules_v4/census_assistant/census_3_search_add.php:1625 modules_v4/census_assistant/census_3_search_add.php:1655 modules_v4/census_assistant/census_3_search_add.php:1656 modules_v4/census_assistant/census_3_search_add.php:1741 modules_v4/census_assistant/census_3_search_add.php:1742
+#: modules_v4/census_assistant/census_3_search_add.php:1836 modules_v4/census_assistant/census_3_search_add.php:1837 modules_v4/census_assistant/census_3_search_add.php:1867 modules_v4/census_assistant/census_3_search_add.php:1868 modules_v4/census_assistant/census_3_search_add.php:1973 modules_v4/census_assistant/census_3_search_add.php:1974 modules_v4/census_assistant/census_3_search_add.php:1998 modules_v4/census_assistant/census_3_search_add.php:1999 modules_v4/family_nav/module.php:257 modules_v4/googlemap/admin_places.php:587 modules_v4/googlemap/admin_places.php:594 modules_v4/googlemap/admin_places.php:649 modules_v4/googlemap/admin_places_edit.php:173 modules_v4/googlemap/admin_places_edit.php:220 modules_v4/googlemap/admin_places_edit.php:224 modules_v4/googlemap/module.php:1673 modules_v4/googlemap/placehierarchy.php:305 modules_v4/googlemap/placehierarchy.php:318 modules_v4/googlemap/placehierarchy.php:320 modules_v4/googlemap/placehierarchy.php:386 modules_v4/googlemap/placehierarchy.php:399 modules_v4/googlemap/placehierarchy.php:401 placelist.php:114
 msgid "unknown"
 msgstr "unbekannt"
 
@@ -16780,7 +16780,7 @@ msgstr "Keine Medienobjekte gefunden"
 
 #: modules_v4/album/module.php:273
 msgid "Configure display of grouped media items using GEDCOM media tag TYPE."
-msgstr ""
+msgstr "Konfigurieren Sie Anzeige der gruppierten Medienelemente mit GEDCOM Medien Tag TYPW"
 
 #: modules_v4/album/module.php:277
 msgid "You can not have any empty group."
@@ -16796,7 +16796,7 @@ msgstr ""
 
 #: modules_v4/album/module.php:300
 msgid "Groups (These must always be English titles)"
-msgstr ""
+msgstr "Gruppen (diese müssen immer englische Titel haben)"
 
 #: modules_v4/album/module.php:305
 msgid "Types"
@@ -16808,21 +16808,21 @@ msgstr "Die Einstellungen aller Stammbäume werden auf die voreingestellten Wert
 
 #: modules_v4/album/module.php:335
 msgid "Show media objects with no TYPE"
-msgstr ""
+msgstr "Medienobjekte ohne TYPE zeigen"
 
 #. I18N: The name of a module. Dropbox is a trademark.  Do not translate it.
 #: modules_v4/backup_to_dropbox/module.php:36
 msgid "Backup to Dropbox"
-msgstr ""
+msgstr "Sicherung auf die Dropbox"
 
 #: modules_v4/backup_to_dropbox/module.php:41
 msgid "Allows you to backup your media and other files to a Dropbox account"
-msgstr ""
+msgstr "Ermöglicht es Ihnen, Ihre Medien und andere Dateien auf ein Dropbox-Konto sichern "
 
 #. I18N: Help text for the “Backup to Dropbox” configuration setting
 #: modules_v4/backup_to_dropbox/module.php:116
 msgid "If you have a Dropbox account you can use this tool to copy the content of your kiwitrees data folder to Dropbox. The data folder includes any GEDCOM files you have created and your media files. More details on setting this up are available at the kiwitrees.net FAQ page."
-msgstr ""
+msgstr "Wenn Sie ein Dropbox-Konto haben können Sie dieses Tool benutzen. Kopieren Sie den Inhalt des Ordners Kiwitrees Daten zu Dropbox. Der Data-Ordner enthält alle GEDCOM-Dateien, die Sie erstellt haben und Ihre Medien-Dateien. Weitere Informationen zu dieser Einrichtung stehen auf der kiwitrees.net FAQ-Seite zur Verfügung. "
 
 #: modules_v4/backup_to_dropbox/module.php:121
 msgid "Settings"
@@ -16831,20 +16831,20 @@ msgstr "ID Einstellungen"
 #. I18N: Dropbox secure access token
 #: modules_v4/backup_to_dropbox/module.php:125
 msgid "Dropbox folder"
-msgstr ""
+msgstr "Dropbox-Ordner"
 
 #. I18N: Dropbox secure access token
 #: modules_v4/backup_to_dropbox/module.php:131
 msgid "Dropbox token"
-msgstr ""
+msgstr "Dropbox-token"
 
 #: modules_v4/backup_to_dropbox/module.php:138
 msgid "These files and folders are always excluded from the backup."
-msgstr ""
+msgstr "Diese Dateien und Ordner sind immer von der Sicherung ausgeschlossen."
 
 #: modules_v4/backup_to_dropbox/module.php:152
 msgid "Also exclude these files and folders"
-msgstr ""
+msgstr "Auch diese Dateien und Ordner ausschließen. "
 
 #: modules_v4/backup_to_dropbox/module.php:156
 msgid "Separate each item by a comma"
@@ -16852,7 +16852,7 @@ msgstr ""
 
 #: modules_v4/backup_to_dropbox/module.php:169
 msgid "These are the files and folders that will be sent to Dropbox."
-msgstr ""
+msgstr "Dies sind die Dateien und Ordner, die zur Dropbox zugeschickt werden."
 
 #. I18N: Explanation of files included in backup to Dropbox
 #: modules_v4/backup_to_dropbox/module.php:170
@@ -16866,7 +16866,7 @@ msgstr ""
 #. I18N: Dropbox copyright statement
 #: modules_v4/backup_to_dropbox/module.php:194
 msgid "Dropbox and the Dropbox logo are trademarks of Dropbox, Inc."
-msgstr ""
+msgstr "Dropbox und das Dropbox-Logo sind Marken von Dropbox, Inc."
 
 #. I18N: Name of a module
 #: modules_v4/batch_update/admin_batch_update.php:55 modules_v4/batch_update/module.php:32 modules_v4/batch_update/module.php:46
@@ -16876,7 +16876,7 @@ msgstr "Aktualisierung per Stapelverarbeitung"
 #. I18N: Help text for Batch update tools.
 #: modules_v4/batch_update/admin_batch_update.php:57
 msgid "These tools can help fix common issues in GEDCOM data.<br><br>When you select a tool it will immediately search for the first record needing correction. This may take a minute or two so wait for it to complete before proceeding."
-msgstr ""
+msgstr "Diese Tools helfen in GEDCOM-Daten häufig auftretende Probleme zu beheben. <br><br>, Wenn Sie ein Werkzeug auswählen, wird es sofort auf der Suche nach dem ersten Datensatz korrigiert. Dies kann eine oder zwei Minute dauern unds so warten sie bis es abgeschlossen ist, bevor Sie fortfahren."
 
 #: modules_v4/batch_update/admin_batch_update.php:71
 msgid "Batch update tool"
@@ -16888,7 +16888,7 @@ msgstr ""
 
 #: modules_v4/batch_update/admin_batch_update.php:109
 msgid "You should create a backup GEDCOM file before using the Update all option."
-msgstr ""
+msgstr "Sie sollten eine Backup GEDCOM-Datei erstellen, bevor mit dem Update Option \"alle\" arbeiten. "
 
 #: modules_v4/batch_update/admin_batch_update.php:119
 msgid "Nothing found."
@@ -17027,7 +17027,7 @@ msgstr ""
 
 #: modules_v4/batch_update/plugins/update_links.php:35
 msgid "Occasionally the table of links between records needs to be synchronised with the GEDCOM data. This tools checks for missing links and inserts them into the table."
-msgstr ""
+msgstr "Gelegentlich muss das Inhaltsverzeichnis der Links zwischen den Datensätzen mit den GEDCOM-Daten synchronisiert werden. Diese Tool sucht nach fehlenden Verknüpfungen und fügt sie in die Tabelle."
 
 #. I18N: Name of a module
 #: modules_v4/calendar_utilities/module.php:33
@@ -18793,8 +18793,8 @@ msgstr ""
 
 #: modules_v4/calendar_utilities/plugins/ecclesiastical.php:254 modules_v4/calendar_utilities/plugins/regnal_years.php:28
 msgid ""
-"<div id=\"popup\"><p>There are several different areas. They operate as follows.</p><p><b>1. Calculation of major moveable feasts.</b></p><p>Since the ecclesiastical calendar is based on lunar rather than solar cycles, certain key holidays (feasts) occur on different days each year. The method of calculating these feasts has also changed since the council of Nicea (325 A.D.). The button labeled \"Calculate Holidays\" calculates the dates of seven major feasts for the year entered in the field labeled \"Year\", and displays the results below this field. The only restrictions are that the number entered in the field \"Year\" must be an integer (no fractions) greater than zero. However, the holidays generated are only valid for dates since 325 A.D. (Early Christian and Roman dating is another story). Also, for purposes of calculation, I have assumed that the ecclesiastical year begins on January first, even though this standard was only gradually accepted. If you are working with early monastic documents you might want to consider that dates from December 25th through March may be \"off\" by one year. To a Benedictine, for instance (to whom the year began on December 25th), the feast of the Innocents in 1450 would be December 28th, 1450, while to others it might be December 28th, 1449. In fact, before 1582, most calendars did not have the year begin on January 1st, even though the calculation of the moveable feasts acted as if it did. In England, the year \"began\" either on December 25th, or, more frequently on March 25th (Lady Day), until 1752. These vagaries are not something I wanted to include in the calculations, since they often varied quite a bit. The calculations for the holidays will take into account the days dropped from the calendar when the \"New style\" was adopted, since these affect the month and day of Easter. Conventions about the beginning of the year are easily corrected for.</p><p><b>2. Old and New style dating and Day of the week</b></p><p>When the Pope Gregory revised the calendar in 1582, a certain number of days were omitted from the calendar at a particular time, resulting in two separate styles of dating. England persisted in using the \"Old Style\" until 1752, because of "
-"religious differences. The Old Style also often dated the beginning of the year from March 25 rather than January 1, and this area of the site takes this difference into account. Thus March 8, 1735, Old Style is really March 19, 1736 in the New Style! Occasionally, particularly in dating material between 1582 and 1755 or so, it becomes necessary to convert back and forth.</p><p>Here is a more detailed description of the transition year (in England): 1752.</p><p>The area called \"Convert Old Style to New Style\" converts the old style date to a new style date and returns an answer. The area called \"Convert New Style to Old Style\" converts the new style date to an old style date and enters it in the \"Old style\" fields. You must enter an integer greater than zero for the year.</p><p>You can also calculate the day of the week for both old and new style dates.</p><p>Remember that these forms assume that the year begins on March 25th. If you want to plug in dates derived from the \"Ecclesiastical Holidays\" area, be aware that you will have to subtract 1 from the year for all dates between January 1st and March 24th.</p><p><b>NOTE FOR STUDENTS OF CONTINENTAL HISTORY</b></p><p>Don't try to use this site to calculate dates of documents between 1588 and 1752 because England is a special case during these years.</p></p>"
+"<div id=\"popup\"><p>There are several different areas. They operate as follows.</p><p><b>1. Calculation of major moveable feasts.</b></p><p>Since the ecclesiastical calendar is based on lunar rather than solar cycles, certain key holidays (feasts) occur on different days each year. The method of calculating these feasts has also changed since the council of Nicea (325 A.D.). The button labeled \"Calculate Holidays\" calculates the dates of seven major feasts for the year entered in the field labeled \"Year\", and displays the results below this field. The only restrictions are that the number entered in the field \"Year\" must be an integer (no fractions) greater than zero. However, the holidays generated are only valid for dates since 325 A.D. (Early Christian and Roman dating is another story). Also, for purposes of calculation, I have assumed that the ecclesiastical year begins on January first, even though this standard was only gradually accepted. If you are working with early monastic documents you might want to consider that dates from December 25th through March may be \"off\" by one year. To a Benedictine, for instance (to whom the year began on December 25th), the feast of the Innocents in 1450 would be December 28th, 1450, while to others it might be December 28th, 1449. In fact, before 1582, most calendars did not have the year begin on January 1st, even though the calculation of the moveable feasts acted as if it did. In England, the year \"began\" either on December 25th, or, more frequently on March 25th (Lady Day), until 1752. These vagaries are not something I wanted to include in the calculations, since they often varied quite a bit. The calculations for the holidays will take into account the days dropped from the calendar when the \"New style\" was adopted, since these affect the month and day of Easter. Conventions about the beginning of the year are easily corrected for.</p><p><b>2. Old and New style dating and Day of the week</b></p><p>When the Pope Gregory revised the calendar in 1582, a certain number of days were omitted from the calendar at a particular time, resulting in two separate styles of dating. England persisted in using the \"Old Style\" until 1752, because of religious differences. The Old Style also often dated the beginning of the year from March 25 rather than January 1, and this area of the site takes this difference into account. Thus March 8, 1735, Old Style is really March 19, 1736 in the New Style! Occasionally, particularly in dating material between 1582 and 1755 or so, it becomes necessary to convert back and forth.</p><p>Here is a more detailed description of the transition year (in England): 1752.</p><p>The area called \"Convert Old Style to New Style\" converts the old style date to a new style date and returns an answer. The "
+"area called \"Convert New Style to Old Style\" converts the new style date to an old style date and enters it in the \"Old style\" fields. You must enter an integer greater than zero for the year.</p><p>You can also calculate the day of the week for both old and new style dates.</p><p>Remember that these forms assume that the year begins on March 25th. If you want to plug in dates derived from the \"Ecclesiastical Holidays\" area, be aware that you will have to subtract 1 from the year for all dates between January 1st and March 24th.</p><p><b>NOTE FOR STUDENTS OF CONTINENTAL HISTORY</b></p><p>Don't try to use this site to calculate dates of documents between 1588 and 1752 because England is a special case during these years.</p></p>"
 msgstr ""
 
 #. I18N: Acknowledgement of origin for a calendar utility
@@ -18909,8 +18909,8 @@ msgstr "Altes und neues Datumsformat"
 
 #: modules_v4/calendar_utilities/plugins/old_new.php:26
 msgid ""
-"<div id=\"popup\"><p>There are several different areas. They operate as follows.</p><p><b>1. Calculation of major moveable feasts.</b></p><p>Since the ecclesiastical calendar is based on lunar rather than solar cycles, certain key holidays (feasts) occur on different days each year. The method of calculating these feasts has also changed since the council of Nicea (325 A.D.). The button dived \"Calculate Holidays\" calculates the dates of seven major feasts for the year entered in the field dived \"Year\", and displays the results below this field. The only restrictions are that the number entered in the field \"Year\" must be an integer (no fractions) greater than zero. However, the holidays generated are only valid for dates since 325 A.D. (Early Christian and Roman dating is another story). Also, for purposes of calculation, I have assumed that the ecclesiastical year begins on January first, even though this standard was only gradually accepted. If you are working with early monastic documents you might want to consider that dates from December 25th through March may be \"off\" by one year. To a Benedictine, for instance (to whom the year began on December 25th), the feast of the Innocents in 1450 would be December 28th, 1450, while to others it might be December 28th, 1449. In fact, before 1582, most calendars did not have the year begin on January 1st, even though the calculation of the moveable feasts acted as if it did. In England, the year \"began\" either on December 25th, or, more frequently on March 25th (Lady Day), until 1752. These vagaries are not something I wanted to include in the calculations, since they often varied quite a bit. The calculations for the holidays will take into account the days dropped from the calendar when the \"New style\" was adopted, since these affect the month and day of Easter. Conventions about the beginning of the year are easily corrected for.</p><p><b>2. Old and New style dating and Day of the week</b></p><p>When the Pope Gregory revised the calendar in 1582, a certain number of days were omitted from the calendar at a particular time, resulting in two separate styles of dating. England persisted in using the \"Old Style\" until 1752, because of "
-"religious differences. The Old Style also often dated the beginning of the year from March 25 rather than January 1, and this area of the site takes this difference into account. Thus March 8, 1735, Old Style is really March 19, 1736 in the New Style! Occasionally, particularly in dating material between 1582 and 1755 or so, it becomes necessary to convert back and forth.</p><p>Here is a more detailed description of the transition year (in England): 1752.</p><p>The area called \"Convert Old Style to New Style\" converts the old style date to a new style date and returns an answer. The area called \"Convert New Style to Old Style\" converts the new style date to an old style date and enters it in the \"Old style\" fields. You must enter an integer greater than zero for the year.</p><p>You can also calculate the day of the week for both old and new style dates.</p><p>Remember that these forms assume that the year begins on March 25th. If you want to plug in dates derived from the \"Ecclesiastical Holidays\" area, be aware that you will have to subtract 1 from the year for all dates between January 1st and March 24th.</p><p><b>NOTE FOR STUDENTS OF CONTINENTAL HISTORY</b></p><p>Don't try to use this site to calculate dates of documents between 1588 and 1752 because England is a special case during these years.</p></p>"
+"<div id=\"popup\"><p>There are several different areas. They operate as follows.</p><p><b>1. Calculation of major moveable feasts.</b></p><p>Since the ecclesiastical calendar is based on lunar rather than solar cycles, certain key holidays (feasts) occur on different days each year. The method of calculating these feasts has also changed since the council of Nicea (325 A.D.). The button dived \"Calculate Holidays\" calculates the dates of seven major feasts for the year entered in the field dived \"Year\", and displays the results below this field. The only restrictions are that the number entered in the field \"Year\" must be an integer (no fractions) greater than zero. However, the holidays generated are only valid for dates since 325 A.D. (Early Christian and Roman dating is another story). Also, for purposes of calculation, I have assumed that the ecclesiastical year begins on January first, even though this standard was only gradually accepted. If you are working with early monastic documents you might want to consider that dates from December 25th through March may be \"off\" by one year. To a Benedictine, for instance (to whom the year began on December 25th), the feast of the Innocents in 1450 would be December 28th, 1450, while to others it might be December 28th, 1449. In fact, before 1582, most calendars did not have the year begin on January 1st, even though the calculation of the moveable feasts acted as if it did. In England, the year \"began\" either on December 25th, or, more frequently on March 25th (Lady Day), until 1752. These vagaries are not something I wanted to include in the calculations, since they often varied quite a bit. The calculations for the holidays will take into account the days dropped from the calendar when the \"New style\" was adopted, since these affect the month and day of Easter. Conventions about the beginning of the year are easily corrected for.</p><p><b>2. Old and New style dating and Day of the week</b></p><p>When the Pope Gregory revised the calendar in 1582, a certain number of days were omitted from the calendar at a particular time, resulting in two separate styles of dating. England persisted in using the \"Old Style\" until 1752, because of religious differences. The Old Style also often dated the beginning of the year from March 25 rather than January 1, and this area of the site takes this difference into account. Thus March 8, 1735, Old Style is really March 19, 1736 in the New Style! Occasionally, particularly in dating material between 1582 and 1755 or so, it becomes necessary to convert back and forth.</p><p>Here is a more detailed description of the transition year (in England): 1752.</p><p>The area called \"Convert Old Style to New Style\" converts the old style date to a new style date and returns an answer. The area "
+"called \"Convert New Style to Old Style\" converts the new style date to an old style date and enters it in the \"Old style\" fields. You must enter an integer greater than zero for the year.</p><p>You can also calculate the day of the week for both old and new style dates.</p><p>Remember that these forms assume that the year begins on March 25th. If you want to plug in dates derived from the \"Ecclesiastical Holidays\" area, be aware that you will have to subtract 1 from the year for all dates between January 1st and March 24th.</p><p><b>NOTE FOR STUDENTS OF CONTINENTAL HISTORY</b></p><p>Don't try to use this site to calculate dates of documents between 1588 and 1752 because England is a special case during these years.</p></p>"
 msgstr ""
 
 #: modules_v4/calendar_utilities/plugins/old_new.php:51
@@ -19970,7 +19970,7 @@ msgstr ""
 #. I18N: Description of “Relationship chart” module
 #: modules_v4/chart_relationship/module.php:38
 msgid "An individual's relationship chart"
-msgstr ""
+msgstr "Eine individuelles Beziehungs Diagramm"
 
 #: modules_v4/chart_relationship/module.php:121
 msgid "unlimited"
@@ -19979,7 +19979,7 @@ msgstr ""
 #. I18N: Configuration page title
 #: modules_v4/chart_relationship/module.php:197
 msgid "Relationship calculation options"
-msgstr ""
+msgstr "Optionen zur Berechnung des Verwandtschaftsgrades"
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:207
@@ -19989,11 +19989,11 @@ msgstr ""
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:208
 msgid "Options to show in the chart"
-msgstr ""
+msgstr "Optionen, die im Chart gezeigt werden "
 
 #: modules_v4/chart_relationship/module.php:210 modules_v4/chart_relationship/module.php:290 modules_v4/chart_relationship/module.php:349 modules_v4/chart_relationship/module.php:387 relationship.php:93
 msgid "Find a closest relationship via common ancestors"
-msgstr ""
+msgstr "Eine engste Beziehung über gemeinsame Vorfahren finden"
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:214
@@ -20011,12 +20011,12 @@ msgstr ""
 
 #: modules_v4/chart_relationship/module.php:228 modules_v4/chart_relationship/module.php:302 modules_v4/chart_relationship/module.php:361 modules_v4/chart_relationship/module.php:399 relationship.php:105
 msgid "Find all relationships via lowest common ancestors"
-msgstr ""
+msgstr "Finden Sie alle Beziehungen über niedrigste gemeinsame Vorfahren"
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:232 relationship.php:171
 msgid "All paths between the two individuals that contribute to the CoR (Coefficient of Relationship), as defined here: <a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\" rel=\"noopener noreferrer\">Coefficient of Relationship</a>"
-msgstr ""
+msgstr "Alle Pfade zwischen zwei Individuen, die dem CoR (Koeffizient der Beziehung), beitragen, wie hier definiert: <a href = \"http://www.genetic-genealogy.co.uk/Toc115570135.html\" target=\"_blank\" rel=\"noopener noreferrer\"> Koeffizient der Beziehung</a>"
 
 #: modules_v4/chart_relationship/module.php:237 modules_v4/chart_relationship/module.php:308 relationship.php:111
 msgid "Find the closest overall connections (preferably via common ancestors)"
@@ -20029,12 +20029,12 @@ msgstr ""
 
 #: modules_v4/chart_relationship/module.php:246 modules_v4/chart_relationship/module.php:314 relationship.php:117
 msgid "Find a closest relationship via common ancestors, or fallback to the closest overall connection"
-msgstr ""
+msgstr "Finden Sie eine engste Beziehung über gemeinsame Vorfahren oder gehen sie zurück auf die nächste allgemeine Verbindung"
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:250
 msgid "For close relationships similar to the previous option, but faster. Internally just a combination of two other methods."
-msgstr ""
+msgstr "Für enge Beziehungen ähnlich wie die vorherige Option, aber schneller. Intern nur eine Kombination der beiden anderen Methoden."
 
 #: modules_v4/chart_relationship/module.php:255 modules_v4/chart_relationship/module.php:320 relationship.php:124 relationship.php:131
 msgid "Find the closest overall connections"
@@ -20047,12 +20047,12 @@ msgstr ""
 
 #: modules_v4/chart_relationship/module.php:267
 msgid "How much recursion to use when searching for relationships"
-msgstr ""
+msgstr "Wie viele Rekursion zu verwenden sind auf der Suche nach Beziehungen"
 
 #. I18N: Configuration option for relationship chart
 #: modules_v4/chart_relationship/module.php:271
 msgid "Searching for all possible relationships can take a lot of time in complex trees, This option can help limit the extent of relationships included in the relationship chart."
-msgstr ""
+msgstr "Die Suche nach allen möglichen Beziehungen kann in komplexen Bäumen viel Zeit beanspruchen. Diese Option kann helfen, den Umfang der Beziehungen im Verwandtschafts-Diagramm zu begrenzen."
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:277
@@ -20062,7 +20062,7 @@ msgstr ""
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:279
 msgid "How to determine relationships to the default individual"
-msgstr ""
+msgstr "So ermitteln Sie die Beziehungen zur Standardperson "
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:281 modules_v4/chart_relationship/module.php:340 modules_v4/chart_relationship/module.php:378
@@ -20072,7 +20072,7 @@ msgstr "Keine Verwandtschaft zu privaten Personen zeigen"
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:288 modules_v4/chart_relationship/module.php:347 modules_v4/chart_relationship/module.php:385
 msgid "The following options refer to the same algorithms used in the relationships chart. Choose any one of these."
-msgstr ""
+msgstr "Die folgenden Optionen beziehen sich auf die gleichen Algorithmen, die in den Beziehungen-Diagramm verwendet. Wählen Sie eine davon."
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:332 modules_v4/chart_relationship/module.php:370 modules_v4/chart_relationship/module.php:408
@@ -20082,7 +20082,7 @@ msgstr "Häufig vorkommende Vorfahren zeigen?"
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:338
 msgid "How to determine relationships between parents"
-msgstr ""
+msgstr "Wie man die Beziehungen zwischen den Eltern bestimmt "
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:366 modules_v4/chart_relationship/module.php:404
@@ -20092,7 +20092,7 @@ msgstr ""
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:376
 msgid "How to determine relationships to spouses"
-msgstr ""
+msgstr "Wie man die Beziehungen zwischen den Ehegatten bestimmt "
 
 #. I18N: Name of a module
 #. I18N: Name of a module
@@ -20165,12 +20165,12 @@ msgstr "Prüfen Sie die Zugriffsrechte für dieses Verzeichnis."
 
 #: modules_v4/clippings/clippings_ctrl.php:315
 msgid " Clippings cart"
-msgstr ""
+msgstr "Sammelbehälter"
 
 #: modules_v4/clippings/clippings_ctrl.php:316
 #, php-format
 msgid "User %s has just downloaded a clippings cart file"
-msgstr ""
+msgstr "Benutzer %s hat soeben eine Sammelbehälter-Datei heruntergeladen."
 
 #: modules_v4/clippings/help_text.php:31
 msgid "Add by ID"
@@ -20178,7 +20178,7 @@ msgstr "Hinzufügen per ID"
 
 #: modules_v4/clippings/help_text.php:32
 msgid "This input box lets you enter an individual's ID number so he can be added to the Clippings Cart.  Once added you'll be offered options to link that individual's relations to your Clippings Cart.<br /><br />If you do not know an individual's ID number, you can perform a search by name by pressing the Person icon next to the Add button."
-msgstr ""
+msgstr "Über dieses Eingabefeld können Sie eine individuelle ID-Nummer eingeben, damit sie in die Clippings Warenkorb hinzugefügt werden kann.  Sobald sie hinzugefügt ist,  werden Optionen angeboten, diese Person zu verknüpfen ist Beziehungen zu Ihrer Clippings Cart. < Br / > < Br / > Wenn Sie eine individuelle ID-Nummer nicht kennen, können führen Sie eine Suche nach Namen durch das Person-Symbol neben der Schaltfläche \"hinzufügen\" drücken."
 
 #: modules_v4/clippings/help_text.php:36 modules_v4/clippings/module.php:332 modules_v4/clippings/module.php:536
 msgid "Empty Cart"
@@ -20186,7 +20186,7 @@ msgstr "Sammelbehälter leeren"
 
 #: modules_v4/clippings/help_text.php:37
 msgid "When you click this link your Clippings Cart will be totally emptied.<br /><br />If you don't want to remove all persons, families, etc. from the Clippings Cart, you can remove items individually by clicking the <b>Remove</b> link in the Name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-msgstr ""
+msgstr "Wenn Sie auf diesen Link klicken Sammelbehälter werden völlig entleert. < Br / > < Br / > Wenn Sie nicht alle Personen, Familien, etc. aus dem Schnittgut Warenkorb entfernen möchten, können Sie Elemente individuell über den Link <b>entfernen. Entfernen Sie</b> in den Feldern Name.  Wenn Sie eines dieser Links klicken, gibt es <u>kein</u> Bestätigungsdialogfeld;  die gewünschte Löschung erfolgt sofort."
 
 #. I18N: Name of a module
 #: modules_v4/clippings/module.php:32
@@ -20286,7 +20286,7 @@ msgstr "Personen, Familien oder Quellen Id eingeben"
 #. I18N: Description of the Clippingscart tool
 #: modules_v4/clippings/module.php:195 modules_v4/clippings/module.php:314
 msgid "This input box lets you enter an individual, family, or source to be added to the Clippings Cart. Once that item is added you will be offered options to add further related items."
-msgstr ""
+msgstr "Dieses Eingabefeld ermöglicht die Eingabe einer Person, Familie oder Quelle die dem Sammelbehälter hinzugefügt werden. Nachdem Sie das Element hinzugefügt haben, werden  Ihnen Optionen zum Hinzufügen von weiteren verwandten Elemente angeboten."
 
 #: modules_v4/clippings/module.php:213 modules_v4/clippings/module.php:500
 msgid "Your Clippings Cart is empty."
@@ -20448,7 +20448,7 @@ msgstr "Menu hinzufügen"
 
 #: modules_v4/extra_menus/help_text.php:32
 msgid "The menu should contains menu items. Using this option you can add menu details.."
-msgstr ""
+msgstr "Das Menü sollte Menüelemente enthalten. Mit dieser Option können Sie Menü Details hinzufügen..."
 
 #: modules_v4/extra_menus/help_text.php:38 modules_v4/extra_menus/module.php:187 modules_v4/extra_menus/module.php:364
 msgid "Menu position"
@@ -20464,7 +20464,7 @@ msgstr "Die Nummerierung muss nicht unbedingt fortlaufend sein. Wenn Sie gezielt
 
 #: modules_v4/extra_menus/help_text.php:39 modules_v4/extra_menus/help_text.php:60 modules_v4/extra_menus/help_text.php:65
 msgid "When more than one menu item has the same position number, only one of these menu items will be visible."
-msgstr ""
+msgstr "Wenn mehr als ein Menüelement über die gleichen Positionsnummer verfügt, ist nur einer dieser Menüpunkte sichtbar."
 
 #: modules_v4/extra_menus/help_text.php:43 modules_v4/extra_menus/module.php:189
 msgid "Menu visibility"
@@ -20508,7 +20508,7 @@ msgstr "Mit dieser Option können Sie einen bereits bestehenden Menü-Eintrag na
 
 #: modules_v4/extra_menus/help_text.php:60
 msgid "Each time you use this option, the position number of this menu item is increased by one. You can achieve the same effect by editing the menu item and changing the menu position field."
-msgstr ""
+msgstr "Bei Verwendung dieser Option wird die Positionsnummer dieses Menüelement jedes Mal um eins erhöht. Sie können den gleichen Effekt erzielen, indem Sie den Menüpunkt bearbeiten und das Menü-Feld \"Position\" ändern."
 
 #: modules_v4/extra_menus/help_text.php:64
 msgid "Move menu up"
@@ -20520,7 +20520,7 @@ msgstr "Mit dieser Option können Sie einen bereits bestehenden Menü-Eintrag na
 
 #: modules_v4/extra_menus/help_text.php:65
 msgid "Each time you use this option, the position number of this menu item is reduced by one. You can achieve the same effect by editing the menu item and changing the menu position field."
-msgstr ""
+msgstr "Bei Verwendung dieser Option wird die Positionsnummer dieses Menüelement jedes Mal um eins erhöht. Sie können den gleichen Effekt erzielen, indem Sie den Menüpunkt bearbeiten und das Menü-Feld \"Position\" ändern."
 
 #: modules_v4/extra_menus/help_text.php:69 modules_v4/extra_menus/module.php:191
 msgid "Open menu in new tab or window"
@@ -20528,7 +20528,7 @@ msgstr "Öffnet das Menü in einem neuen Tab oder Fenster"
 
 #: modules_v4/extra_menus/help_text.php:70
 msgid "Normally you would expect clicking on a menu item to open that page in the existing browser window or tab. But if you need it to open in a new window or tab you can tick this option."
-msgstr ""
+msgstr "Normalerweise würden Sie erwarten wenn Sie auf einen Menüpunkt zu dieser Seite klicken dass sich in die vorhandene Browser-Fenster oder Tab öffnen. Aber wenn Sie es in einem neuen Fenster oder Tab öffnen brauchen können, aktivieren Sie diese Option."
 
 #. I18N: Name of a module.
 #: modules_v4/extra_menus/module.php:33
@@ -20710,7 +20710,7 @@ msgstr "Anzahl der anzuzeigenden Generationen-Blöcke"
 #. setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:285 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:299
 msgid "This option is useful for large trees. Set the number of generation blocks to a low level to avoid slow page loading. Below the last generation block a button will appear to add the next set of generation blocks. The new blocks will be added to the blocks already loaded. Click on a “follow” link in the last visible generation block to load the next set of generation blocks."
-msgstr ""
+msgstr "Diese Option ist nützlich für große Bäume. Legen Sie die Anzahl der Generation Blöcke auf ein niedriges Niveau um langsame Seitenladezeiten zu vermeiden. Unter dem letzten Generation Block wird eine Schaltfläche angezeigt, auf die nächste Generation Blöcke hinzufügen. Die Blöcke, die bereits geladen werden die neuen Blöcke hinzukommen. Klicken Sie auf den Link \"folgen\" in der letzten sichtbaren Generation Block der nächsten Generation Blöcke laden."
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:290 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:304
 msgid "Check relationship between partners"
@@ -20720,7 +20720,7 @@ msgstr "Verwandtschaftsverhältnis zwischen den Partnern prüfen"
 #. setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:294 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:308
 msgid "With this option turned on, the script checks if a married couple has the same ancestors. If a relationship between the partners is found a text will appear between brackets after the spouses’ name to indicate the blood relationship. <br><b>Note:</b> this option can be time and/or memory consuming on large trees. It can cause very slow page loading or an ’execution time out error’ on your server. If you notice such a behavior reduce the number of generation blocks to load at once or don’t use it in combination with the option to show singles (see the previous options). If you still experience any problems, don’t use this option at all."
-msgstr ""
+msgstr "Mit dieser Option aktiviert überprüft das Skript, wenn ein verheiratetes Paar die gleichen Vorfahren hat. Wenn eine Beziehung zwischen den Partnern, dass ein Text zwischen Klammern nach Namen der Ehegatten gefunden wird an die Blutsverwandtschaft angezeigt wird. <br><b>Hinweis:</b> diese Option kann sein Zeit und/oder Speicher verbrauchen auf großen Bäumen. Es kann sehr langsame Seite laden oder eine Ausführungszeit, die Fehler auf dem Server verursachen. Wenn Sie bemerken, dass solches Verhalten reduzieren die Anzahl der Generation Blöcke auf einmal geladen oder nicht verwenden, die es in Kombination mit der Option zeigen singles (siehe die vorherigen Optionen). Wenn Sie noch irgendwelche Probleme auftreten, nicht diese Option überhaupt."
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:299 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:313
 msgid "Show single persons"
@@ -20765,7 +20765,7 @@ msgstr ""
 #. I18N: Help text for the “Show sosa numbering” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:340
 msgid "if selected, the Sosa-Stradonitz or Ahnentafel number for each ancestor will be displayed after their name."
-msgstr ""
+msgstr "Wenn ausgewählt, wird die Sosa-Stradonitz oder Ahnentafel Nummer für jeden Vorfahren nach ihrem Namen angezeigt."
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:345
 msgid "Show children"
@@ -20774,7 +20774,7 @@ msgstr "Kinder zeigen "
 #. I18N: Help text for the “Show children” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:349
 msgid "if selected, a list of the children of each ancestral family will be displayed after each couple."
-msgstr ""
+msgstr "Wenn ausgewählt, wird eine Liste der Kinder jeder angestammten Familie nach jedem Paar angezeigt. "
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:354 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:349
 msgid "Show images"
@@ -20955,7 +20955,7 @@ msgstr "Die Nummerierung muss nicht unbedingt fortlaufend sein. Wenn Sie gezielt
 
 #: modules_v4/gallery/help_text.php:32
 msgid "When more than one gallery has the same position number, only one of these albums will be visible."
-msgstr ""
+msgstr "Wenn mehr als eine Galerie über die gleichen Positionsnummer verfügt, ist nur eines dieser Albums sichtbar."
 
 #: modules_v4/gallery/help_text.php:36 modules_v4/gallery/module.php:336
 msgid "Gallery visibility"
@@ -21735,7 +21735,7 @@ msgstr "Vorlagen"
 
 #: modules_v4/html/help_text.php:37 modules_v4/widget_html/help_text.php:37
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site's requirements."
-msgstr ""
+msgstr "Um Ihnen zu helfen bei den ersten Schritten mit diesem Block, haben wir mehrere Standard-Vorlagen erstellt.  Wenn Sie eine dieser Vorlagen auswählen, enthält der Textbereich eine Kopie, die Sie dann nach Ihrer Website wünschen verändern können."
 
 #. I18N: Name of a module
 #: modules_v4/html/module.php:32 modules_v4/widget_html/module.php:32
@@ -21809,7 +21809,7 @@ msgstr ""
 #. I18N: Description of the media list module
 #: modules_v4/list_media/module.php:38
 msgid "A list of media objects"
-msgstr ""
+msgstr "Eine Liste von Medienobjekten"
 
 #. I18N: Description of the places list module
 #: modules_v4/list_places/module.php:38
@@ -21963,7 +21963,7 @@ msgstr "Die Nummerierung muss nicht unbedingt fortlaufend sein. Wenn Sie gezielt
 
 #: modules_v4/pages/help_text.php:32
 msgid "When more than one page has the same position number, only one of these pages will be visible."
-msgstr ""
+msgstr "Wenn mehr als eine Seite über die gleichen Positionsnummer verfügt, ist nur eine dieser Seiten sichtbar."
 
 #: modules_v4/pages/help_text.php:36
 msgid "Page visibility"
@@ -22328,7 +22328,7 @@ msgstr "%1$s - %2$s (%3$s days)"
 #. I18N: Description of Fact report module
 #: modules_v4/report_fact/module.php:38
 msgid "A report of individuals who have a selected fact or event in their record."
-msgstr ""
+msgstr "Ein Bericht von Personen, die eine ausgewählte Tatsache oder ein Ereignis in ihrem Datensatz haben."
 
 #. I18N: help for resource facts and events module
 #: modules_v4/report_fact/module.php:176
@@ -22391,7 +22391,7 @@ msgstr ""
 
 #: modules_v4/report_fact/module.php:346 modules_v4/report_marriages/module.php:206 modules_v4/report_vital_records/module.php:226
 msgid "Listing individuals based on these filters"
-msgstr ""
+msgstr "Personen, die auf der Grundlage dieser Filter aufgelistet werden "
 
 #. I18N: Description of “Research tasks” module
 #: modules_v4/report_family/module.php:35
@@ -22420,7 +22420,7 @@ msgstr ""
 
 #: modules_v4/report_family/module.php:137
 msgid "Show individual media"
-msgstr ""
+msgstr "Einzelne Medien anzeigen"
 
 #. I18N: Description of “Research tasks” module
 #: modules_v4/report_individual/module.php:38
@@ -22497,7 +22497,7 @@ msgstr "Verwandte Familien"
 #. I18N: Description of “Related individuals” module
 #: modules_v4/report_related_fam/module.php:38
 msgid "A report of families closely related to a selected individual."
-msgstr ""
+msgstr "Ein Bericht von Familien, die eng mit einer ausgewählten Person verbunden sind."
 
 #. I18N: Name of a module.
 #: modules_v4/report_related_indi/module.php:33
@@ -22507,7 +22507,7 @@ msgstr "Verwandte Personen "
 #. I18N: Description of “Related individuals” module
 #: modules_v4/report_related_indi/module.php:38
 msgid "A report of individuals closely related to a selected individual."
-msgstr ""
+msgstr "Ein Bericht von Personen, die eng mit einer ausgewählten Person verbunden sind. "
 
 #. I18N: Abbreviation for "Number"
 #: modules_v4/report_related_indi/module.php:225
@@ -22543,7 +22543,7 @@ msgstr "Zeige Forschungsaufgaben mit einem Datum in der Zukunft. "
 
 #: modules_v4/report_todo/module.php:148
 msgid "Listing research tasks based on these filters"
-msgstr ""
+msgstr "Liste der Forschungs-Aufgaben auf der Grundlage dieser Filter"
 
 #: modules_v4/report_todo/module.php:195 modules_v4/todo/module.php:130 modules_v4/widget_todo/module.php:129
 msgid "There are no research tasks in this family tree."
@@ -22573,7 +22573,7 @@ msgstr "Eingabe des  Nachnamens und dann die Kombination der beiden Optionen: Or
 
 #: modules_v4/report_ukcensus/module.php:136 modules_v4/report_ukregister/module.php:136
 msgid "Select <b>All</b> for everyone, or leave blank for your own ancestors"
-msgstr ""
+msgstr "Wählen Sie <b>Alle</b> für Alle oder lassen Sie es frei für Ihre eigenen Vorfahren. "
 
 #: modules_v4/report_ukcensus/module.php:141
 msgid "Census Place"
@@ -22597,7 +22597,7 @@ msgstr[1] "%s Datensätze gefunden. "
 #. I18N: Name of a module
 #: modules_v4/report_ukregister/module.php:32
 msgid "UK 1939 Register"
-msgstr "UK 1939 Register"
+msgstr "UK 1939 Register "
 
 #. I18N: Description of the “UK 1939 Register” module
 #: modules_v4/report_ukregister/module.php:37
@@ -22642,7 +22642,7 @@ msgstr ""
 #. I18N: Description of “Vital records” module
 #: modules_v4/report_vital_records/module.php:38
 msgid "A report of individuals' births, marriages and deaths for a selected name, place or date range."
-msgstr ""
+msgstr "Ein Bericht von einzelnen Geburten, Eheschließungen und Todesfällen für einen ausgewählten Name oder Ort oder Datumsbereich. "
 
 #: modules_v4/report_vital_records/module.php:149
 msgid "Birth date - from"
@@ -22708,11 +22708,11 @@ msgstr ""
 
 #: modules_v4/research_links/module.php:139
 msgid "Select the research area to set as default. This area will open first in the sidebar."
-msgstr ""
+msgstr "Wählen Sie den Forschungsbereich als Standard. Dieser Bereich öffnet sich zuerst in der Seitenleiste."
 
 #: modules_v4/research_links/module.php:151
 msgid "Select the links you want to use in the sidebar"
-msgstr ""
+msgstr "Wählen Sie die Links die Sie in der Seitenleiste verwenden möchten. "
 
 #: modules_v4/research_links/module.php:165
 msgid "Area"
@@ -22753,7 +22753,7 @@ msgstr ""
 
 #: modules_v4/research_links/module.php:389
 msgid "Select research areas to use"
-msgstr ""
+msgstr "Wählen Sie den Forschungsbereich"
 
 #: modules_v4/research_links/module.php:412
 msgid "Show links"
@@ -22773,7 +22773,7 @@ msgstr ""
 
 #: modules_v4/research_links/module.php:659
 msgid "You must select at least one research area to use."
-msgstr ""
+msgstr "Sie müssen mindestens einen Forschungsbereich auswählen."
 
 #: modules_v4/review_changes/help_text.php:31 modules_v4/widget_review_changes/help_text.php:31
 msgid "Pending Changes block"
@@ -22794,7 +22794,7 @@ msgstr "kiwitrees  - Änderungen kontrollieren"
 
 #: modules_v4/review_changes/module.php:85
 msgid "Online changes have been made to a genealogical database. These changes need to be reviewed and accepted before they will appear to all users. Please use the URL below to enter that kiwitrees site and login to review the changes."
-msgstr ""
+msgstr "An einer genealogischen Datenbank wurden Änderungen vorgenommen. Diese Änderungen müssen kontrolliert und übernommen werden, bevor sie für alle Nutzer sichtbar werden. Bitte klicken Sie auf die angegebene URL, um auf die kiwitrees-Seite zu gelangen um die Änderungen zu überprüfen und zu genehmigen."
 
 #: modules_v4/review_changes/module.php:105 modules_v4/widget_review_changes/module.php:104
 msgid "There are pending changes for you to moderate."
@@ -23003,7 +23003,7 @@ msgstr "Häufigster Nachname"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "Häufigster Nachname"
+msgstr[0] "häufigster Nachname"
 msgstr[1] "%s häufigsten Nachnamen"
 
 #: modules_v4/top10_surnames/module.php:162 modules_v4/widget_surnames/module.php:156
@@ -23254,12 +23254,12 @@ msgstr ""
 #: relationship.php:169
 #, php-format
 msgid "Uncorrected CoR (Coefficient of Relationship): %s"
-msgstr ""
+msgstr "Unkorrekter CoR (Koeffizient der Beziehung): %s"
 
 #: relationship.php:174
 #, php-format
 msgid "(Number of relationships: %s)"
-msgstr ""
+msgstr "(Anzahl der Beziehungen: %s)"
 
 #: relationship.php:189
 msgid "View Relationship"
@@ -23544,7 +23544,7 @@ msgstr "4 - Eingabe der Datenbank- und Tabellennamen"
 
 #: setup.php:381
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server's administrator) or create a new one (if your database user account has sufficient privileges)."
-msgstr ""
+msgstr "Ein Datenbank-Server kann viele separate Datenbanken speichern.  Sie müssen wählen eine vorhandene Datenbank (erstellt von Ihrem Server-Administrator) oder eine neue erstellen (wenn Ihre Datenbank-Benutzerkonto über die erforderlichen Berechtigungen hat)."
 
 #: setup.php:383 setup.php:385
 msgid "Database name"
