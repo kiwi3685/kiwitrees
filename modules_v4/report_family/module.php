@@ -231,13 +231,9 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 											$indifact_list = array();
 											$missing_facts = array();
 											foreach ($indifacts as $fact) {
-												if ($fact->getTag() === 'BAPM' || $fact->getTag() === 'CHR') {
-													$indifact_list[] = 'BAPM_CHR';
-												} elseif ($fact->getTag() === 'BURI' || $fact->getTag() === 'CREM') {
-													$indifact_list[] = 'BURI_CREM';
-												} else {
-													$indifact_list[] = $fact->getTag();
-												}
+												if ($fact == 'BAPM' || $fact == 'CHR') {$fact = 'BAPM_CHR';}
+												if ($fact == 'BURI' || $fact == 'CREM') {$fact = 'BURI_CREM';}
+												$indifact_list[] = $fact->getTag();
 											}
 											foreach ($basic_tags as $var) {
 												if (!in_array($var, $indifact_list)) {
