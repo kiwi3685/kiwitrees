@@ -308,6 +308,15 @@ function print_fact_label(WT_Event $fact, WT_GedcomRecord $record) {
 			$label = WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		}
 		break;
+	case 'MARR':
+		$marr_type = strtoupper($type);
+		if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='COML' || $marr_type=='UNKNOWN') {
+			$marr_fact = 'MARR_' . $marr_type;
+		} else {
+			$marr_fact = 'MARR';
+		}
+		$label = WT_Gedcom_Tag::getLabel($marr_fact, $label_person);
+		break;
 	default:
 		// Normal fact/event
 		$label = WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
@@ -654,7 +663,7 @@ function getResourcefact($fact, $family, $sup, $source_list, $number) {
 	return array($sup, $source_list, $number, $resourcefact);
 }
 
-// list marraige records
+// list marrge records
 function report_marriages ($name, $place, $m_fromJD, $m_toJD, $ged){
 	$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families` ";
 	$sql_join     = "";
