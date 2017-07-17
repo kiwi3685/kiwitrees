@@ -1116,7 +1116,12 @@ a:hover .nameZoom {
 }
 
 .indent {
-	padding-left: 20px;
+	margin-left: 20px;
+}
+.outdent,
+.indent + span,
+.indent [class^="fact_MARR"] .field {
+	margin-left: -20px;
 }
 
 .image {
@@ -6349,7 +6354,6 @@ div.widget {
 #page.families_report h4,
 #page.family_report h4 {
 	font-size: 100%;
-	margin: 0;
 }
 #page.individual_report .notes,
 #page.families_report .notes,
@@ -6366,14 +6370,6 @@ div.widget {
 }
 #page.individual_report #families .details {
 	font-style: italic;
-}
-#page.individual_report #parents,
-#page.individual_report #spouses {
-	text-indent: 10px;
-}
-#page.individual_report #siblings,
-#page.individual_report #spouse_children {
-	text-indent: 20px;
 }
 #page.individual_report span.label,
 #page.families_report span.label,
@@ -6404,9 +6400,15 @@ div.widget {
 #page.families_report .report_fact .field,
 #page.family_report .report_fact .date,
 #page.family_report .report_fact .place,
-#page.family_report .report_fact .field {
+#page.family_report .report_fact .field,
+#page span[class^="fact_"] {
 	padding: 0 5px;
 }
+#page span[class^="fact_"] .label {
+	width: auto;
+	min-width: auto;
+}
+
 #page.individual_report .report_fact .addr,
 #page.families_report .report_fact .addr,
 #page.family_report .report_fact .addr {
