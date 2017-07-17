@@ -239,7 +239,7 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 										$fe_notes = print_resourcenotes($fact, 2, true, true);
 										echo $fe_notes ? '
 											<div class="indent" style="font-size: 90%;">
-												<span class="label">' . WT_I18N::translate('Note') . ': <br></span><br><span class="">' . $fe_notes . '</span>
+												<span class="label">' . WT_I18N::translate('Note') . ': <br></span><br><span style="white-space: pre-wrap;">' . $fe_notes . '</span>
 											</div>' : "";
 									} ?>
 								</span>
