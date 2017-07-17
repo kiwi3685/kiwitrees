@@ -238,8 +238,12 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 									<?php if ($shownotes) {
 										$fe_notes = print_resourcenotes($fact, 2, true, true);
 										echo $fe_notes ? '
-											<div class="indent" style="font-size: 90%;">
-												<span class="label">' . WT_I18N::translate('Note') . ': <br></span><br><span style="white-space: pre-wrap;">' . $fe_notes . '</span>
+											<div style="font-size: 90%;">
+												<span class="label indent">' .
+													WT_I18N::translate('Note') . ': <br>
+												</span>
+												<br>
+												<span style="white-space: pre-wrap;">' . $fe_notes . '</span>
 											</div>' : "";
 									} ?>
 								</span>
@@ -271,49 +275,52 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 						<h4><?php echo $person->getChildFamilyLabel($family); ?></h4>
 						<div id="parents">
 							<?php
-							$husband = $family->getHusband();
-							$wife = $family->getWife();
+							$husband	= $family->getHusband();
+							$wife		= $family->getWife();
+							$marriage	= marriageDetails($family);
 							if (!empty($husband)) { ?>
-								<div>
-									<span class="label">
+								<p>
+									<span class="label indent">
 										<?php echo WT_I18N::translate('Father'); ?>
 									</span>
 									<?php echo $husband->getFullName(); ?>&nbsp;
 									<span class="details">
 										<?php echo personDetails($husband); ?>
 									</span>
-								</div>
+								</p>
 							<?php }
 							if (!empty($wife)) { ?>
 								<p>
-									<span class="label">
+									<span class="label indent">
 										<?php echo WT_I18N::translate('Mother'); ?>
 									</span>
 									<?php echo $wife->getFullName(); ?>&nbsp;
 									<span class="details">
 										<?php echo personDetails($wife); ?>
 									</span>
-								</div>
+								</p>
 							<?php }
-							$marriage_details = marriageDetails($family);
-							if (!empty($marriage_details)) {
-								echo $marriage_details . '&nbsp;';
-							} ?>
+							// marriage details
+							if (!empty($marriage)) { ?>
+								<div class="indent" style="margin-bottom: 30px;">
+									<?php echo $marriage; ?>
+								</div>
+							<?php } ?>
 						</div>
 						<div id="siblings">
 							<?php
 							$children = $family->getChildren();
 							foreach ($children as $child) {
-								if (!empty($child) && $child != $person) {  ?>
-									<div>
-										<span class="label">
+								if (!empty($child) && $child != $person  && $child->canDisplayDetails()) {  ?>
+									<p>
+										<span class="label indent">
 											<?php echo get_relationship_name(get_relationship($person, $child)); ?>
 										</span>
 										<?php echo $child->getFullName(); ?>&nbsp;
 										<span class="details">
 											<?php echo personDetails($child); ?>
 										</span>
-									</div>
+									</p>
 								<?php }
 							} ?>
 						</div>
@@ -321,14 +328,15 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 					// spouses
 					$families = $person->getSpouseFamilies();
 					foreach ($families as $family) {
-						$spouse = $family->getSpouse($person);
-						$marriage = $family->getMarriage(); ?>
-						<h4><?php echo ($marriage ? WT_I18N::translate('Family with spouse') : WT_I18N::translate('Family with partner')); ?></h4>
+						$spouse		= $family->getSpouse($person);
+						$married	= $family->getMarriage();
+						$marriage	= marriageDetails($family); ?>
+						<h4><?php echo ($married ? WT_I18N::translate('Family with spouse') : WT_I18N::translate('Family with partner')); ?></h4>
 						<div id="spouses">
 							<?php if (!empty($spouse)) { ?>
 								<p>
-									<span class="label">
-										<?php echo ($marriage ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner')); ?>
+									<span class="label indent">
+										<?php echo ($married ? WT_I18N::translate('Spouse') : WT_I18N::translate('Partner')); ?>
 									</span>
 									<?php echo $spouse->getFullName(); ?>&nbsp;
 									<span class="details">
@@ -336,18 +344,20 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 									</span>
 								</p>
 							<?php }
-							$marriage_details = marriageDetails($family);
-							if (!empty($marriage_details)) {
-								echo $marriage_details . '&nbsp;';
-							} ?>
+							// marriage details
+							if (!empty($marriage)) { ?>
+								<div class="indent" style="margin-bottom: 30px;">
+									<?php echo $marriage; ?>
+								</div>
+							<?php } ?>
 						</div>
 						<div id="spouse_children">
 							<?php
 							$children = $family->getChildren();
 							foreach ($children as $child) {
-								if (!empty($child)) { ?>
+								if (!empty($child) && $child->canDisplayDetails()) { ?>
 									<p>
-										<span class="label">
+										<span class="label indent">
 											<?php echo get_relationship_name(get_relationship($person, $child)); ?>
 										</span>
 										<?php echo $child->getFullName(); ?> &nbsp;

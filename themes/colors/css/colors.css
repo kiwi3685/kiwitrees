@@ -582,7 +582,13 @@ a:hover .nameZoom {font-size:14px;color:#ff0000;font-weight:700;}
 .hit-counter {background:#000;color:#fff;font-weight:700;}
 
 .image {height:150px;margin-right:15px;padding:5px;}
-.indent {padding-left:7px;}
+.indent {margin-left:7px;}
+.outdent,
+.indent + span,
+.indent [class^="fact_MARR"] .field {
+	margin-left: -7px;
+}
+
 .journal_box {border:thin solid #aaaaaa;overflow:visible;padding:3pt;}
 .largeError {color:#dd0000;font-size:24px;font-weight:700;}
 .link {font-size:11px;text-align:center;}
@@ -2851,7 +2857,6 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview_descendants ul li {
 #page.families_report h4,
 #page.family_report h4 {
 	font-size: 100%;
-	margin: 0;
 }
 #page.individual_report .notes,
 #page.families_report .notes,
@@ -2868,14 +2873,6 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview_descendants ul li {
 }
 #page.individual_report #families .details {
 	font-style: italic;
-}
-#page.individual_report #parents,
-#page.individual_report #spouses {
-	text-indent: 10px;
-}
-#page.individual_report #siblings,
-#page.individual_report #spouse_children {
-	text-indent: 20px;
 }
 #page.individual_report span.label,
 #page.families_report span.label,
@@ -2906,8 +2903,13 @@ html[dir=rtl] #main-menu li#menu-fancy_treeview_descendants ul li {
 #page.families_report .report_fact .field,
 #page.family_report .report_fact .date,
 #page.family_report .report_fact .place,
-#page.family_report .report_fact .field {
+#page.family_report .report_fact .field,
+#page span[class^="fact_"] {
 	padding: 0 5px;
+}
+#page span[class^="fact_"] .label {
+	width: auto;
+	min-width: auto;
 }
 #page.individual_report .report_fact .addr,
 #page.families_report .report_fact .addr,

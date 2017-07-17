@@ -90,7 +90,7 @@ function print_resourcefactDetails(WT_Event $fact, WT_GedcomRecord $record) {
 		$html .= '<span dir="auto">' . htmlspecialchars($fact->getDetail()) . '</span>';
 		// include AGNC if recorded
 		if (preg_match('/\n2 AGNC (.+)/', $fact->getGedcomRecord(), $match)) {
-			$html .= WT_Gedcom_Tag::getLabelValue($fact->getTag() . ':AGNC', $match[1]);
+			$html .= WT_Gedcom_Tag::getLabelValue($fact->getTag() . ':AGNC', $match[1], null, 'span');
 		} else {
 			$html .= '&nbsp;';
 		}
@@ -554,19 +554,19 @@ function marriageDetails($family) {
 			$tmp = new WT_Place($place, WT_GED_ID);
 			$details .= $tmp->getShortName();
 		}
-		echo WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
+		return WT_Gedcom_Tag::getLabelValue($marr_fact, $details);
 	} else if (get_sub_record(1, "1 _NMR", find_family_record($family, WT_GED_ID))) {
 		$husb = $family->getHusband();
 		$wife = $family->getWife();
 		if (empty($wife) && !empty($husb)) {
-			echo WT_Gedcom_Tag::getLabel('_NMR', $husb);
+			return WT_Gedcom_Tag::getLabel('_NMR', $husb);
 		} elseif (empty($husb) && !empty($wife)) {
-			echo WT_Gedcom_Tag::getLabel('_NMR', $wife);
+			return WT_Gedcom_Tag::getLabel('_NMR', $wife);
 		} else {
-			echo WT_Gedcom_Tag::getLabel('_NMR');
+			return WT_Gedcom_Tag::getLabel('_NMR');
 		}
 	} else {
-		echo WT_Gedcom_Tag::getLabelValue($marr_fact, WT_I18N::translate('yes'));
+		return WT_Gedcom_Tag::getLabelValue($marr_fact, WT_I18N::translate('yes'));
 	}
 
 }
