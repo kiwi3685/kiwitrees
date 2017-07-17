@@ -84,6 +84,7 @@ class report_related_fam_WT_Module extends WT_Module implements WT_Module_Report
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
+				savestate(\'' . $this->getName() . '\');
 
 				jQuery("#accordion")
 					.accordion({event: "click", collapsible: true, heightStyle: "content"})
@@ -141,33 +142,49 @@ class report_related_fam_WT_Module extends WT_Module implements WT_Module_Report
 					</div>
 					<div class="chart_options">
 						<label for = "showsources"><?php echo WT_I18N::translate('Show sources'); ?></label>
-						<input type="checkbox" id="showsources" name="showsources" value="1"
+						<input class="savestate" type="checkbox" id="showsources" name="showsources" value="1"
 							<?php if ($showsources) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
 						<label for = "shownotes"><?php echo WT_I18N::translate('Show notes'); ?></label>
-						<input type="checkbox" id="shownotes" name="shownotes" value="1"
+						<input class="savestate" type="checkbox" id="shownotes" name="shownotes" value="1"
 							<?php if ($shownotes) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
 						<label for = "photos"><?php echo WT_I18N::translate('Show media'); ?></label>
-						<?php echo select_edit_control('photos', array(
-							'none'=>WT_I18N::translate('None'),
-							'all'=>WT_I18N::translate('All'),
-							'highlighted'=>WT_I18N::translate('Highlighted image')),
+						<?php echo select_edit_control(
+							'photos',
+							array(
+								'none'=>WT_I18N::translate('None'),
+								'all'=>WT_I18N::translate('All'),
+								'highlighted'=>WT_I18N::translate('Highlighted image')
+							),
 							null,
-							$photos);
-						?>
+							$photos,
+							'class="savestate"'
+						); ?>
 					</div>
 					<div class="chart_options">
 						<label for = "choose_relatives"><?php echo WT_I18N::translate('Choose relatives'); ?></label>
-						<?php echo select_edit_control('choose_relatives', $select,	null, $choose_relatives); ?>
+						<?php echo select_edit_control(
+							'choose_relatives',
+							$select,
+							null,
+							$choose_relatives,
+							'class="savestate"'
+						); ?>
 					</div>
 					<div class="chart_options">
 						<label for = "generations"><?php echo WT_I18N::translate('Generations'); ?></label>
-						<?php echo select_edit_control('generations', $generations, null, $maxgen); ?>
+						<?php echo select_edit_control(
+							'generations',
+							$generations,
+							null,
+							$maxgen,
+							'class="savestate"'
+						); ?>
 					</div>
 	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
 						<i class="fa fa-eye"></i>

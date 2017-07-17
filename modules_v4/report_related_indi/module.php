@@ -82,7 +82,10 @@ class report_related_indi_WT_Module extends WT_Module implements WT_Module_Repor
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-			->addInlineJavascript('autocomplete();');
+			->addInlineJavascript('
+				autocomplete();
+				savestate(\'' . $this->getName() . '\');
+			');
 
 		//-- args
 		$rootid 			= WT_Filter::get('rootid');
@@ -111,7 +114,13 @@ class report_related_indi_WT_Module extends WT_Module implements WT_Module_Repor
 					</div>
 					<div class="chart_options">
 						<label for = "choose_relatives"><?php echo WT_I18N::translate('Choose relatives'); ?></label>
-						<?php echo select_edit_control('choose_relatives', $select,	null, $choose_relatives); ?>
+						<?php echo select_edit_control(
+							'choose_relatives',
+							$select,
+							null,
+							$choose_relatives,
+							'class="savestate"'
+						); ?>
 					</div>
 	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
 						<i class="fa fa-eye"></i>

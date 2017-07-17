@@ -1664,3 +1664,33 @@ function persistent_toggle(checkbox_id, data_selector) {
 		}
 	});
 }
+
+/**
+ * Save state of checkboxes in local storeage
+ * Works for checkboxes and select drop-downs on a per page basis
+ * Requires  class="statesave" on each element
+ */
+function savestate(page){
+	jQuery(".savestate").on("change", function() {
+		var fav, favs = [];
+		jQuery(".savestate").each(function() {
+			if (jQuery(this).is(":checkbox")) {
+				fav = {id: jQuery(this).attr("id"), value: jQuery(this).prop("checked")};
+				favs.push(fav);
+			}
+			if (jQuery(this).is("select")) {
+				fav = {id: jQuery(this).attr("id"), value: jQuery(this).val()};
+				favs.push(fav);
+			}
+		});
+		localStorage.setItem("savestate-" + page, JSON.stringify(favs));
+	});
+
+	var savestate = JSON.parse(localStorage.getItem("savestate-" + page));
+	if (savestate && savestate.length) {
+		for (var i=0; i<savestate.length; i++) {
+			jQuery("#" + savestate[i].id ).prop("checked", savestate[i].value);
+			jQuery("#" + savestate[i].id ).val(savestate[i].value);
+		}
+	}
+}

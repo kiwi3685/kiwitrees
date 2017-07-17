@@ -74,6 +74,7 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('
 				autocomplete();
+				savestate(\'' . $this->getName() . '\');
 				jQuery("#accordion")
 					.accordion({event: "click", collapsible: true, heightStyle: "content"})
 					.find("h3 a").click(function(ev){
@@ -107,31 +108,35 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 					</div>
 					<div class="chart_options">
 						<label for = "showsources"><?php echo WT_I18N::translate('Show sources'); ?></label>
-						<input type="checkbox" id="showsources" name="showsources" value="1"
+						<input class="savestate" type="checkbox" id="showsources" name="showsources" value="1"
 							<?php if ($showsources) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
 						<label for = "shownotes"><?php echo WT_I18N::translate('Show notes'); ?></label>
-						<input type="checkbox" id="shownotes" name="shownotes" value="1"
+						<input class="savestate" type="checkbox" id="shownotes" name="shownotes" value="1"
 							<?php if ($shownotes) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
 						<label for = "missing"><?php echo WT_I18N::translate('Show basic events when blank'); ?></label>
-						<input type="checkbox" id="missing" name="missing" value="1"
+						<input class="savestate" type="checkbox" id="missing" name="missing" value="1"
 							<?php if ($missing) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
 						<label for = "showmedia"><?php echo WT_I18N::translate('Show family media'); ?></label>
-						<?php echo select_edit_control('showmedia', array(
-							'none'=>WT_I18N::translate('None'),
-							'main'=>WT_I18N::translate('Main'),
-							'all'=>WT_I18N::translate('All')),
+						<?php echo select_edit_control(
+							'showmedia',
+							array(
+								'none'=>WT_I18N::translate('None'),
+								'main'=>WT_I18N::translate('Main'),
+								'all'=>WT_I18N::translate('All')
+							),
 							null,
-							$showmedia);
-						?>
+							$showmedia,
+							'class="savestate"'
+						); ?>
 					</div>
 					<div class="chart_options">
 						<label for = "photos"><?php echo WT_I18N::translate('Show individual media'); ?></label>
@@ -140,7 +145,9 @@ class report_family_WT_Module extends WT_Module implements WT_Module_Report {
 							'all'=>WT_I18N::translate('All'),
 							'highlighted'=>WT_I18N::translate('Highlighted image')),
 							null,
-							$photos);
+							$photos,
+							'class="savestate"'
+						);
 						?>
 					</div>
 	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">

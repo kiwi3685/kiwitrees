@@ -82,7 +82,10 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-			->addInlineJavascript('autocomplete();');
+			->addInlineJavascript('
+				autocomplete();
+				savestate(\'' . $this->getName() . '\');
+			');
 
 		//-- args
 		$go 			= WT_Filter::post('go');
@@ -108,25 +111,29 @@ class report_individual_WT_Module extends WT_Module implements WT_Module_Report 
 					</div>
 					<div class="chart_options">
 						<label for = "showsources"><?php echo WT_I18N::translate('Show sources'); ?></label>
-						<input type="checkbox" id="showsources" name="showsources" value="1"
+						<input class="savestate" type="checkbox" id="showsources" name="showsources" value="1"
 							<?php if ($showsources) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
 						<label for = "shownotes"><?php echo WT_I18N::translate('Show notes'); ?></label>
-						<input type="checkbox" id="shownotes" name="shownotes" value="1"
+						<input class="savestate" type="checkbox" id="shownotes" name="shownotes" value="1"
 							<?php if ($shownotes) echo ' checked="checked"'; ?>
 						>
 					</div>
 					<div class="chart_options">
 						<label for = "photos"><?php echo WT_I18N::translate('Show media'); ?></label>
-						<?php echo select_edit_control('photos', array(
-							'none'=>WT_I18N::translate('None'),
-							'all'=>WT_I18N::translate('All'),
-							'highlighted'=>WT_I18N::translate('Highlighted image')),
+						<?php echo select_edit_control(
+							'photos',
+							array(
+								'none'=>WT_I18N::translate('None'),
+								'all'=>WT_I18N::translate('All'),
+								'highlighted'=>WT_I18N::translate('Highlighted image')
+							),
 							null,
-							$photos);
-						?>
+							$photos,
+						 	'class="savestate"'
+						); ?>
 					</div>
 	 				<button class="btn btn-primary" type="submit" value="<?php echo WT_I18N::translate('show'); ?>">
 						<i class="fa fa-eye"></i>
