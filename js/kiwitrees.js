@@ -1666,7 +1666,7 @@ function persistent_toggle(checkbox_id, data_selector) {
 }
 
 /**
- * Save state of checkboxes in local storeage
+ * Save state of report settings in local storage
  * Works for checkboxes and select drop-downs on a per page basis
  * Requires  class="statesave" on each element
  */
