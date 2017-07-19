@@ -106,7 +106,6 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 				var plac = "' . $opt . '";
 				jQuery("optgroup").css("display", "none");
 				jQuery("optgroup#" + plac).css("display", "block");
-					alert(plac);
 
 				jQuery("#cens_plac").on("change", function() {
 					sel = jQuery("select#cens_plac").val();
