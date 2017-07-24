@@ -2106,7 +2106,7 @@ case 'paste':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-case 'reorder_media': // Sort page using Popup
+case 'reorder_media':
 	$controller
 		->setPageTitle(WT_I18N::translate('Re-order media'))
 		->pageHeader();
