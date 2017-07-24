@@ -1597,6 +1597,7 @@ function old_paths() {
 		WT_ROOT . 'js/jquery-ui.js',
 		WT_ROOT . 'js/modernizr.custom-2.6.1.js',
 		WT_ROOT . 'js/jquery.autosize.js',
+		WT_ROOT . 'includes/old_messages.php',
 
 	);
 }
