@@ -180,11 +180,23 @@ $controller
 					>
 					<?php echo WT_I18N::translate('Birth'); ?>
 				</li>
+				<li class="facts_value" name="dupe_bapm" id="dupe_bapm" >
+					<input type="checkbox" name="dupe_bapm" value="dupe_bapm"
+						<?php if (WT_Filter::post('dupe_bapm')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Baptism or christening'); ?>
+				</li>
 				<li class="facts_value" name="dupe_deat" id="dupe_deat" >
 					<input type="checkbox" name="dupe_deat" value="dupe_deat"
 						<?php if (WT_Filter::post('dupe_deat')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Death'); ?>
+				</li>
+				<li class="facts_value" name="dupe_crem" id="dupe_crem" >
+					<input type="checkbox" name="dupe_crem" value="dupe_crem"
+						<?php if (WT_Filter::post('dupe_crem')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Cremation'); ?>
 				</li>
 				<li class="facts_value" name="dupe_buri" id="dupe_buri" >
 					<input type="checkbox" name="dupe_buri" value="dupe_buri"
@@ -338,6 +350,13 @@ $controller
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
+			if (WT_Filter::post('dupe_bapm')) {
+				$data = duplicate_tag('BAPM');
+				echo '<h5>' . WT_I18N::translate('%s with duplicate baptism or christenings recorded', $data['count']) . '
+					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
 			if (WT_Filter::post('dupe_deat')) {
 				$data = duplicate_tag('DEAT');
 				echo '<h5>' . WT_I18N::translate('%s with duplicate deaths recorded', $data['count']) . '
@@ -345,16 +364,23 @@ $controller
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
-			if (WT_Filter::post('dupe_sex')) {
-				$data = duplicate_tag('SEX');
-				echo '<h5>' . WT_I18N::translate('%s with duplicate genders recorded', $data['count']) . '
+			if (WT_Filter::post('dupe_crem')) {
+				$data = duplicate_tag('CREM');
+				echo '<h5>' . WT_I18N::translate('%s with duplicate cremations recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
 			}
 			if (WT_Filter::post('dupe_buri')) {
 				$data = duplicate_tag('BURI');
-				echo '<h5>' . WT_I18N::translate('%s with duplicate burials recorded', $data['count']) . '
+				echo '<h5>' . WT_I18N::translate('%s with duplicate burial or cremations recorded', $data['count']) . '
+					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
+			if (WT_Filter::post('dupe_sex')) {
+				$data = duplicate_tag('SEX');
+				echo '<h5>' . WT_I18N::translate('%s with duplicate genders recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
@@ -424,7 +450,7 @@ function birth_comparisons($tag_array, $tag2 = '') {
 								if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
 									$html .= '
 										<p>
-											<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
+											<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a></div>
 											<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
 											<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag2) . '</span>' . $event_date->Display() . '</div>
 										</p>';
@@ -441,7 +467,7 @@ function birth_comparisons($tag_array, $tag2 = '') {
 									if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
 										$html .= '
 											<p>
-												<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
+												<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a></div>
 												<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
 												<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag2) . '<a href="' . $child->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $child->getFullName(). '</a>' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $event_date->Display() . '</div>
 											</p>';
@@ -462,7 +488,7 @@ function birth_comparisons($tag_array, $tag2 = '') {
 						if ($event_date->MinJD() && $birth_date->MinJD() && ($age_diff < 0)) {
 							$html .= '
 								<p>
-									<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
+									<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a></div>
 									<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel('BIRT') . '</span>' . $birth_date->Display() . '</div>
 									<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
 								</p>';
@@ -496,7 +522,7 @@ function death_comparisons($tag_array) {
 				if ($event_date->MinJD() && $death_date->MinJD() && ($age_diff < 0)) {
 					$html .= '
 						<p>
-							<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a></div>
+							<div class="first"><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a></div>
 							<div class="second"><span class="label">' . WT_Gedcom_Tag::getLabel($tag_array[$i]) . '</span>' . $event_date->Display() . '</div>
 							<div class="third"><span class="label">' . WT_Gedcom_Tag::getLabel('DEAT') . '</span>' . $death_date->Display() . '</div>
 						</p>';
@@ -520,7 +546,7 @@ function missing_tag($tag) {
 		$person = WT_Person::getInstance($row->xref);
 		$html 	.= '
 			<li>
-				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>
 			</li>';
 		$count	++;
 	}
@@ -541,7 +567,7 @@ function invalid_tag($tag) {
 		$person = WT_Person::getInstance($row->xref);
 		$html 	.= '
 			<li>
-				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>
 			</li>';
 		$count	++;
 	}
@@ -553,7 +579,7 @@ function invalid_tag($tag) {
 		$family = WT_Family::getInstance($row->xref);
 		$html 	.= '
 			<li>
-				<a href="' . $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $family->getFullName(). '</a>
+				<a href="' . $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $family->getFullName() . '</a>
 			</li>';
 		$count	++;
 	}
@@ -566,14 +592,27 @@ function duplicate_tag($tag) {
 	$html	= '<ul>';
 	$count	= 0;
 	$start	= microtime(true);
-	$rows	= WT_DB::prepare(
-		"SELECT i_id AS xref FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` LIKE CONCAT('%1 ', ?,'%1 ', ?, '%')"
- 	)->execute(array(WT_GED_ID, $tag, $tag))->fetchAll();
+	switch ($tag) {
+		case 'BAPM' :
+		case 'CHR' :
+			$rows = WT_DB::prepare(
+				"SELECT i_id AS xref FROM `##individuals` WHERE `i_file`= ? AND (
+					(`i_gedcom` LIKE BINARY CONCAT('%1 ', 'BAPM','%1 ', 'BAPM', '%')) OR
+					(`i_gedcom` LIKE BINARY CONCAT('%1 ', 'BAPM','%1 ', 'CHR', '%')) OR
+					(`i_gedcom` LIKE BINARY CONCAT('%1 ', 'CHR','%1 ', 'CHR', '%')) OR
+					(`i_gedcom` LIKE BINARY CONCAT('%1 ', 'CHR','%1 ', 'BAPM', '%'))
+				)"
+			)->execute(array(WT_GED_ID))->fetchAll();
+		break;
+		default :
+			$rows = WT_DB::prepare("SELECT i_id AS xref FROM `##individuals` WHERE `i_file`= ? AND `i_gedcom` LIKE BINARY CONCAT('%1 ', ?,'%1 ', ?, '%')"
+			)->execute(array(WT_GED_ID, $tag, $tag))->fetchAll();
+	}
 	foreach ($rows as $row) {
 		$person	= WT_Person::getInstance($row->xref);
 		$html	.= '
 			<li>
-				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>
 			</li>
 		';
 		$count	++;
@@ -602,7 +641,7 @@ function duplicate_child() {
 		asort($new_children);
 		if (count(array_unique($names)) < count($names)) {
 			$single_names = array_diff($names, array_diff_assoc($names, array_unique($names)));
-			$html .= '<li><a href="' . $family->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $family->getFullName(). '</a>';
+			$html .= '<li><a href="' . $family->getHtmlUrl() . '" target="_blank" rel="noopener noreferrer">' . $family->getFullName() . '</a>';
 			foreach ($new_children as $xref => $name) {
 			    if (!in_array($name, $single_names)) {
 					$person	= WT_Person::getInstance($xref);
@@ -640,7 +679,7 @@ function empty_tag() {
 				if (!in_array($person->getXref(), $person_list)) {
 					$count	++;
 					$person_list[] = $person->getXref();
-					$html .= '<li><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>';
+					$html .= '<li><a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>';
 				}
 				$html .= '<ul class="indent">';
 					if ($tag_count == 1) {
@@ -668,7 +707,7 @@ function identical_name() {
 		$person	= WT_Person::getInstance($row->xref);
 		$html	.= '
 			<li>
-				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName(). '</a>
+				<a href="' . $person->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $person->getFullName() . '</a>
 			</li>
 		';
 		$count	++;
