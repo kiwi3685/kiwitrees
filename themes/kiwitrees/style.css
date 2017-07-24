@@ -5595,10 +5595,11 @@ a#copy {
 }
 
 .vertical_box_template .exp_thumb a img {
-	width: auto;
-	max-height: 60px;
 	height: auto;
 	margin: auto;
+	max-height: 60px;
+	max-width: 50px;
+	width: auto;
 }
 
 #family-page [id^="out-"]:hover > [id^="fontdef-"] {
