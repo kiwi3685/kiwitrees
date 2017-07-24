@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2017-04-17 10:48+1200\n"
-"PO-Revision-Date: 2017-07-17 09:01+1200\n"
+"PO-Revision-Date: 2017-07-24 09:10+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:01+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;translate_c:1c,2;noop;plural:1,2;number\n"
@@ -1967,7 +1967,7 @@ msgstr "Ereignisse für neu angelegte Personen"
 
 #: admin_trees_config.php:1153
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new person. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form. Either enter the tags manually here or use the edit selector."
-msgstr ""
+msgstr "Dies ist eine durch Kommas getrennte Liste der GEDCOM-Tatsache-Tags, die angezeigt wird, wenn eine neue Person hinzufügen. Beispielsweise wenn BIRT in der Liste befindet, Felder für Geburtsdatum und Geburtsort wird auf dem Formular angezeigt werden. Die Stichworte hier manuell eingeben oder bearbeiten-Selektor verwenden."
 
 #: admin_trees_config.php:1158
 msgid "Quick individual facts"
@@ -1987,7 +1987,7 @@ msgstr "Alle Familiendaten"
 
 #: admin_trees_config.php:1178
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. <span style=\"color: #ff0000;\">Fact names that appear in this list must not also appear in the <b>Unique Family Facts</b> list</span>. Either enter the tags manually here or use the edit selector."
-msgstr ""
+msgstr "Dies ist die Liste der GEDCOM-Fakten, die Individuen Ihre Benutzer hinzufügen können. Sie ändern diese Liste durch das entfernen oder Hinzufügen von Namen der Ereignisse, auch benutzerdefinierte, wenn nötig. <span style=\"color: #ff0000;\"> Ereignis Namen, die in dieser Liste erscheinen müssen nicht auch in der <b>einzigartigen individuellen Fakten</b>-Liste erscheinen.</span> Die Stichworte hier manuell eingeben oder bearbeiten-Selektor verwenden."
 
 #: admin_trees_config.php:1183
 msgid "Unique family facts"
@@ -2003,7 +2003,7 @@ msgstr "Ereignisse für neu angelegte Familien"
 
 #: admin_trees_config.php:1202
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form. Either enter the tags manually here or use the edit selector."
-msgstr ""
+msgstr "Dies ist eine kommagetrennte Liste von GEDCOM-Tatsache-Tags, die angezeigt wird, wenn Sie eine neue Familie hinzufügen. Beispielsweise wenn MARR in der Liste ist, werden dann Felder für Hochzeit Datum und Ort der Eheschließung auf dem Formular angezeigt werden. Die Stichworte hier manuell eingeben oder bearbeiten-Selektor verwenden."
 
 #: admin_trees_config.php:1207
 msgid "Quick family facts"
@@ -2023,7 +2023,7 @@ msgstr "Alle Quellendaten"
 
 #: admin_trees_config.php:1227
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. <span style=\"color: #ff0000;\">Fact names that appear in this list must not also appear in the <i>Unique Source Facts</i> list.</span> Either enter the tags manually here or use the edit selector."
-msgstr ""
+msgstr "Dies ist die Liste der GEDCOM-Fakten, die Ihre Benutzer Quellen hinzufügen können. Sie ändern diese Liste durch das entfernen oder Hinzufügen von Namen der Tatsache, auch benutzerdefinierte, wie nötig. <span style=\"color: #ff0000;\"> Tatsache Namen, die in dieser Liste erscheinen müssen nicht auch in der <i>Einzigartigen Quelle Fakten</i>-Liste erscheinen.</span> Die Stichworte hier manuell eingeben oder bearbeiten-Selektor verwenden."
 
 #: admin_trees_config.php:1232
 msgid "Unique source facts"
@@ -2051,7 +2051,7 @@ msgstr "Alle Archivdaten"
 
 #: admin_trees_config.php:1264
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. <span style=\"color: #ff0000;\">Fact names that appear in this list must not also appear in the <i>Unique Repository Facts</i> list.</span> Either enter the tags manually here or use the edit selector."
-msgstr ""
+msgstr "Dies ist die Liste der GEDCOM-Fakten, die Ihre Benutzer Repositories hinzufügen können. Sie ändern diese Liste durch das entfernen oder Hinzufügen von Namen der Tatsache, auch benutzerdefinierte, wie nötig. <span style=\"color: #ff0000;\"> Tatsache Namen, die in dieser Liste erscheinen darf nicht auch in der <i>Einzigartigen Repository Fakten</i>-Liste erscheinen.</span> Die Stichworte hier manuell eingeben oder bearbeiten-Selektor verwenden."
 
 #: admin_trees_config.php:1269
 msgid "Unique repository facts"
@@ -2099,7 +2099,7 @@ msgstr "Nachnamens-Tradition"
 
 #: admin_trees_config.php:1323
 msgid "When you Add a family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr ""
+msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein entsprechender Familienname automatisch eingefügt werden. Dieser Familienname folgt den in den Voreinstellungen definierten regionalen Namenskonventionen."
 
 #: admin_trees_config.php:1328
 msgid "Use full source citations"
@@ -2604,7 +2604,7 @@ msgstr "Plausibilitätsprüfung"
 
 #: admin_trees_sanity.php:86
 msgid "This process can be slow. If you have a large family tree or suspect large numbers of errors you should only select a few checks each time.<br>Options marked <span color\"#ff0000\">**</span> are often very slow."
-msgstr ""
+msgstr "Dieser Prozess kann langsam sein. Wenn Sie einen großen Stammbaum haben oder viele Fehler vermuten sollten Sie nur ein paar Kontrollen jedes Mal auswählen. <br>Optionen markiert <span color\"#ff0000\"> *</span> sind oft sehr langsam."
 
 #: admin_trees_sanity.php:98
 msgid "Date discrepancies"
@@ -2817,8 +2817,8 @@ msgstr ""
 #, php-format
 msgid "This source also appears in %s GEDCOM record without a citation attached"
 msgid_plural "This source also appears in %s GEDCOM records without a citation attached"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dieser Quelle erscheint auch in %s GEDCOM Datensatz ohne ein Zitat angebracht"
+msgstr[1] "Diese Quelle erscheint auch in %s GEDCOM Datensätze ohne das ein Zitat definiert ist"
 
 #: admin_trees_sourcecite.php:121
 msgid "Citation"
@@ -2915,11 +2915,11 @@ msgstr "Moderator"
 
 #: admin_users.php:67
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr ""
+msgstr "Doppelter Benutzername. Ein Benutzer mit dem gewählten Namen existiert bereits. Bitte wählen Sie einen anderen Benutzernamen."
 
 #: admin_users.php:69
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "Doppelter Benutzername. Ein Benutzer mit dem gewählten Namen existiert bereits."
 
 #: admin_users.php:71 setup.php:418
 msgid "The passwords do not match."
@@ -2988,6 +2988,10 @@ msgid ""
 "\t\t\t\t\t\t\t\tAnything with 6 characters or more is acceptable, but mixed lower and uppercase characters, numbers, and special characters will increase the security of the password.\n"
 "\t\t\t\t\t\t\t"
 msgstr ""
+"\n"
+"\t\t\t\t\t\t\t\tPasswörter müssen mindestens 6 Zeichen lang sein und sind Groß-/Kleinschreibung, so dass \"secret\" anders als \"SECRET\" ist.\n"
+"\t\t\t\t\t\t\t\t<br>Alles mit mindestens 6 Zeichen ist akzeptabel, aber gemischte Groß- und Kleinbuchstaben Zeichen, Zahlen und Sonderzeichen erhöhen die Sicherheit des Kennworts.\n"
+"\t\t\t\t\t\t\t"
 
 #: admin_users.php:379 edituser.php:164 help_text.php:598 login.php:408
 msgid "Confirm password"
@@ -3008,7 +3012,7 @@ msgstr "E-Mail-Adresse"
 
 #: admin_users.php:393
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "Diese E-Mailadresse dient dem Versand von Passworterinnerungen, website-Benachrichtigungen und Nachrichten von anderen Familienmitgliedern, die auf der Seite registriert sind."
 
 #: admin_users.php:400 help_text.php:759
 msgid "Account approval and email verification"
@@ -3032,14 +3036,18 @@ msgid ""
 "\t\t\t\t\t\t\t\t<br>\n"
 "\t\t\t\t\t\t\t\tA user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"Wenn ein Benutzer ein Konto registriert, wird eine E-Mail an ihre E-Mail-Adresse mit einem Bestätigungslink gesendet. Wenn sie diesem Link folgen, wissen wir die E-Mail-Adresse korrekt ist, und die Option \"e-Mail bestätigt\" wird automatisch ausgewählt.\n"
+"\t\t\t\t\t\t\t\t<br>, Wenn ein Administrator einen Benutzer-Account erstellt, die Bestätigungs-Email wird nicht gesendet, und die e-Mail manuell überprüft werden muss.\n"
+"\t\t\t\t\t\t\t\t<br>Sie ein Konto nicht genehmigen sollte, es sei denn, Sie wissen, dass die e-Mail-Adresse korrekt ist.\n"
+"\t\t\t\t\t\t\t\t<br>Eines Benutzers werden nicht anmelden bis \"E-Mail überprüft\" und \"vom Administrator genehmigt\" ausgewählt sind."
 
 #: admin_users.php:448
 msgid "Automatically accept changes made by this user"
-msgstr ""
+msgstr "Akzeptieren Sie automatisch von diesem Benutzer vorgenommene Änderungen"
 
 #: admin_users.php:451
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr ""
+msgstr "Normalerweise müssen alle Änderungen am Stammbaum von einem Moderator bestätigt werden. Diese Option erlaubt es einem Nutzer Änderungen ohne die Bestätigung eines Moderators vorzunehmen."
 
 #. I18N: A configuration setting
 #: admin_users.php:459 help_text.php:770
@@ -3053,7 +3061,7 @@ msgstr "Für andere Benutzer sichtbar, wenn angemeldet"
 
 #: admin_users.php:468
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "Sie können wählen, ob Sie in der Liste der Benutzer angezeigt, die aktuell eingeloggt sind."
 
 #. I18N: A configuration setting
 #: admin_users.php:476 edituser.php:186 help_text.php:496 help_text.php:518
@@ -3067,7 +3075,7 @@ msgstr "Site-Mitglieder können gegenseitig Nachrichten senden. Sie können wäh
 
 #: admin_users.php:489
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "Bemerkungen des Verwalters zu diesem Benutzer"
 
 #: admin_users.php:499
 msgid "Notification options"
@@ -3095,7 +3103,7 @@ msgstr "Personendatensatz"
 
 #: admin_users.php:528
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Verknüpfen Sie dieser Benutzer mit einer Person im Stammbaum."
 
 #: admin_users.php:532
 msgid "Roles"
@@ -3103,11 +3111,11 @@ msgstr ""
 
 #: admin_users.php:534
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "Eine Rolle ist eine Gruppe von Zugriffsrechten, die Erlaubnis geben, Daten anzeigen, ändern Einstellungen, etc.. Zugriffsrechte werden Rollen zugewiesen und Rollen werden an Benutzer vergeben. Jeder Stammbaum können unterschiedlichen Zugang zu jeder Rolle zuweisen, und Benutzer können eine andere Rolle in jedem Stammbaum haben."
 
 #: admin_users.php:541
 msgid "Everybody has this role, including visitors to the website and search engines."
-msgstr ""
+msgstr "Jeder Besucher besitzt diese Rolle und die damit verbundenen Berechtigungen, auch nicht angemeldete Besucher und Suchmaschinen."
 
 #: admin_users.php:547 help_text.php:682
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
@@ -3119,7 +3127,7 @@ msgstr "Diese Rolle hat die Berechtigungen der Mitgliedsrolle, sowie die Berecht
 
 #: admin_users.php:559
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr ""
+msgstr "Diese Rolle verfügt über alle Berechtigungen der Bearbeiter-Rolle, zuzüglich der Erlaubnis, Änderungen anderer Benutzer zu genehmigen oder ablehnen."
 
 #: admin_users.php:565 help_text.php:694
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -3131,7 +3139,7 @@ msgstr "Administrator"
 
 #: admin_users.php:571
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
-msgstr ""
+msgstr "Diese Rolle verfügt über alle Berechtigungen der Manager-Rolle in allen Stammbäumen, plus die Erlaubnis, die Einstellungen/Konfiguration die ganze Webseite, alle Benutzer und die funktionalen Module betreffend zu ändern."
 
 #: admin_users.php:576 admin_users.php:611 help_text.php:411
 msgid "Restrict to immediate family"
@@ -3151,7 +3159,7 @@ msgstr ""
 
 #: admin_users.php:587
 msgid "Administration role"
-msgstr ""
+msgstr "Administrator Rolle"
 
 #. I18N: gedcom tag ROLE
 #: admin_users.php:610 help_text.php:672 library/WT/Gedcom/Tag.php:319
@@ -3630,7 +3638,7 @@ msgstr "Ehepartner"
 
 #: edit_interface.php:2268
 msgid "Use this page to change or remove family members.<br /><br />For each member in the family, you can use the \"Select new person\" field to choose a different person from your tree to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes."
-msgstr ""
+msgstr "Verwenden Sie diese Seite zum Ändern oder Entfernen von Familie Mitglieder. < Br / > < Br / > für jedes Mitglied in der Familie, können Sie das Feld \"Neue Person auswählen\" wählen eine andere Person aus Ihrem Stammbaum, diese Rolle in der Familie zu füllen.  Sie können auch den Link entfernen diese Person aus der Familie entfernen < Br / > < Br / > Wenn Sie die Änderung der Familienmitglieder abgeschlossen haben, klicken Sie auf die Schaltfläche \"Speichern\" um die Änderungen zu speichern."
 
 #: edit_interface.php:2299 edit_interface.php:2331 edit_interface.php:2354 edit_interface.php:2366 index_edit.php:284 index_edit.php:302 inverselink.php:115 inverselink.php:189 inverselink.php:292 modules_v4/clippings/module.php:344 modules_v4/clippings/module.php:364 modules_v4/clippings/module.php:526 modules_v4/gedcom_favorites/module.php:122 modules_v4/googlemap/admin_places.php:675 modules_v4/stories/module.php:385 modules_v4/stories/module.php:405 modules_v4/widget_favorites/module.php:139
 msgid "Remove"
@@ -4265,7 +4273,7 @@ msgstr "Dies ist ein Link zu Ihrem eigenen Datensatz im Stammbaum. Ist dies eine
 
 #: help_text.php:529 setup.php:451
 msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
-msgstr ""
+msgstr "Diese E-Mailadresse dient dem Versand von Passworterinnerungen, website-Benachrichtigungen und Nachrichten von anderen Familienmitgliedern, die auf der Seite registriert sind."
 
 #: help_text.php:533
 msgid "Descendant generations"
@@ -8637,7 +8645,7 @@ msgstr "Beziehung: &nbsp;"
 #: includes/functions/functions_print_relations.php:80
 #, php-format
 msgid "%1$s is %2$s of %3$s"
-msgstr ""
+msgstr "%1$s ist %2$s von %3$s"
 
 #: includes/functions/functions_print_relations.php:96 includes/functions/functions_print_relations.php:115
 msgid "Common ancestor: "
@@ -8831,7 +8839,7 @@ msgstr "Familie von %s"
 #: library/WT/Controller/Fanchart.php:69
 #, php-format
 msgid "Fanchart of %s"
-msgstr ""
+msgstr "Fächer-Diagramm von %s"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:160
@@ -8873,7 +8881,7 @@ msgstr ""
 #: library/WT/Controller/FancyTreeView.php:318
 #, php-format
 msgid "(%1s of %2s - %3s complete)"
-msgstr ""
+msgstr "(%1s von %2s - %3s komplett)"
 
 #: library/WT/Controller/FancyTreeView.php:362
 msgid "back to top"
@@ -17134,7 +17142,7 @@ msgstr ""
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:301
 msgid " niece/nephew of D"
-msgstr ""
+msgstr " Nichte/Neffe von D"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:321
 msgid " cousins "
@@ -20002,12 +20010,12 @@ msgstr ""
 
 #: modules_v4/chart_relationship/module.php:219 modules_v4/chart_relationship/module.php:296 modules_v4/chart_relationship/module.php:355 modules_v4/chart_relationship/module.php:393 relationship.php:99
 msgid "Find all smallest lowest common ancestors, show a closest connection for each"
-msgstr ""
+msgstr "Finden Sie alle kleinsten niedrigsten gemeinsamen Vorfahren, zeigen Sie die engste Verbindung."
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:223
 msgid "Each SLCA (smallest lowest common ancestor) essentially represents a part of the tree which both individuals share (as part of their ancestors). More technically, the SLCA set of two individuals is a subset of the LCA set (excluding all LCAs that are themselves ancestors of other LCAs)."
-msgstr ""
+msgstr "Jede SLCA (kleinste niedrigsten gemeinsamen Vorfahren) stellt im Wesentlichen einen Teil des Baumes die beiden Individuen (als Teil ihrer Vorfahren) teilen. Mehr technisch, ist die SLCA Gruppe von zwei Personen eine Teilmenge der LC-a gesetzt (mit Ausnahme von allen Ökobilanzen, die selbst Vorfahren der anderen LCAs)."
 
 #: modules_v4/chart_relationship/module.php:228 modules_v4/chart_relationship/module.php:302 modules_v4/chart_relationship/module.php:361 modules_v4/chart_relationship/module.php:399 relationship.php:105
 msgid "Find all relationships via lowest common ancestors"
@@ -20020,7 +20028,7 @@ msgstr "Alle Pfade zwischen zwei Individuen, die dem CoR (Koeffizient der Bezieh
 
 #: modules_v4/chart_relationship/module.php:237 modules_v4/chart_relationship/module.php:308 relationship.php:111
 msgid "Find the closest overall connections (preferably via common ancestors)"
-msgstr ""
+msgstr "Finden Sie die nächstgelegene allgemeine Verbindungen (am liebsten über gemeinsame Vorfahren)"
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:241
@@ -20038,12 +20046,12 @@ msgstr "Für enge Beziehungen ähnlich wie die vorherige Option, aber schneller.
 
 #: modules_v4/chart_relationship/module.php:255 modules_v4/chart_relationship/module.php:320 relationship.php:124 relationship.php:131
 msgid "Find the closest overall connections"
-msgstr ""
+msgstr "Finden Sie die nächstgelegene allgemeine Verbindungen"
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:261 modules_v4/chart_relationship/module.php:326
 msgid "Find other/all overall connections"
-msgstr ""
+msgstr "Finde andere/alle allgemeine Verbindungen"
 
 #: modules_v4/chart_relationship/module.php:267
 msgid "How much recursion to use when searching for relationships"
@@ -20087,7 +20095,7 @@ msgstr "Wie man die Beziehungen zwischen den Eltern bestimmt "
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:366 modules_v4/chart_relationship/module.php:404
 msgid "Searching for overall connections is not included here because there is always a trivial HUSB - WIFE connection."
-msgstr ""
+msgstr "Auf der Suche nach allgemeinen Verbindungen ist hier nicht enthalten da gibt es immer eine triviale HUSB - WIFE-Verbindung."
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:376
@@ -20224,7 +20232,7 @@ msgstr ""
 
 #: modules_v4/clippings/module.php:109 modules_v4/clippings/module.php:140 modules_v4/clippings/module.php:164 modules_v4/clippings/module.php:577 modules_v4/clippings/module.php:604 modules_v4/clippings/module.php:624
 msgid "Continue adding"
-msgstr ""
+msgstr "Weitere hinzufügen "
 
 #: modules_v4/clippings/module.php:122 modules_v4/clippings/module.php:588
 msgid "Which links from this person would you also like to add?"
@@ -20277,7 +20285,7 @@ msgstr "Einige Daten konnten wegen Datenschutz nicht hinzugefügt werden"
 #. I18N: Description of the Clippingscart tool
 #: modules_v4/clippings/module.php:182
 msgid "This allows you to take extracts (\"clippings\") from this family tree and collect them into a single file to download in GEDCOM format.<ul><li class=\"warning\">By definition a \"clipping\" is a very small part of a family tree. This tool cannot provide a complete download of a large tree. If you require a substantial part of the dataplease please contact the site administrator.</li><li><b>How to take clippings?</b><br>This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to Clippings Cart</b> option. When you click that link you will be offered several options to download.</li><li><b>How to download?</b><br />Once you have items in your cart you can download them just by clicking the <b>Download Now</b> link. Follow the instructions and links.</li></ul>"
-msgstr ""
+msgstr "Dadurch können Sie Auszüge (\"Clippings\") aus diesem Stammbaum zu nehmen und sammeln sie in einer einzigen Datei im GEDCOM-Format herunterladen. <ul><li class=\"warning\"> per Definition eine \"Clipping\" ist ein sehr kleiner Teil des Stammbaums. Dieses Tool kann keinen kompletten Download eines großen Baumes bereit. Benötigen Sie einen wesentlichen Bestandteil der Dataplease kontaktieren Sie bitte den Site-Administrator.</li> <li><b>Wie Zeitungsausschnitte nehmen?</b> <br>Ist wirklich einfach. Immer, wenn Sie einen anklickbaren Namen (Einzelperson, Familie oder Quelle) gelangen Sie zur Detailseite dieses Namens. Dort sehen Sie die Option <b>in den Clippings Warenkorb</b>. Wenn Sie auf diesen Link klicken werden Ihnen mehrere Optionen zum herunterladen.</li> <li><b>Herunterladen von?</b> < Br / > sobald Sie Artikel in Ihrem Warenkorb haben Sie können sie einfach über den Link <b>Download Now</b> herunterladen. Folgen Sie den Anweisungen und Links.</li></ul>"
 
 #: modules_v4/clippings/module.php:190 modules_v4/clippings/module.php:309
 msgid "Enter an individual, family, or source ID"
@@ -20298,7 +20306,7 @@ msgstr "Datei-Informationen"
 
 #: modules_v4/clippings/module.php:293 modules_v4/clippings/module.php:540 modules_v4/clippings/module.php:693
 msgid "Download now"
-msgstr ""
+msgstr "Jetzt herunterladen"
 
 #: modules_v4/clippings/module.php:343
 msgid "Name / Description"
@@ -20390,8 +20398,8 @@ msgstr[1] "%2$s sind %1$d Cousins/Cousinen ersten Grades zugeordnet"
 #, php-format
 msgid "%1$d is on both sides of the family"
 msgid_plural "%1$d are on both sides of the family"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$d ist auf beiden Seiten der Familie"
+msgstr[1] "%1$d sind auf beiden Seiten der Familie"
 
 #: modules_v4/cousins_tab/module.php:147
 #, php-format
@@ -20729,7 +20737,7 @@ msgstr "Einzelpersonen anzeigen"
 #. I18N: Help text for the “Show single persons” configuration setting
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:303 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:317
 msgid "Turn this option on to show people who have no partner or children. With this option turned on every child of a family will be shown in a detailed way in the next generation block."
-msgstr ""
+msgstr "Aktivieren Sie diese Option um aufzuzeigen Menschen, die keinen Partner oder Kinder haben. Mit dieser Option aktiviert jedes Kind einer Familie wird in einer detaillierten Weise in der nächsten Generation-Block angezeigt."
 
 #: modules_v4/fancy_treeview_ancestors/admin_fancy_treeview_ancestors.php:309 modules_v4/fancy_treeview_descendants/admin_fancy_treeview_descendants.php:323
 msgid "Show places"
@@ -23245,11 +23253,11 @@ msgstr "Details anzeigen"
 
 #: relationship.php:140
 msgid "Find all overall connections"
-msgstr ""
+msgstr "Finde alle allgemeinen Verbindungen "
 
 #: relationship.php:142
 msgid "Find other overall connections"
-msgstr ""
+msgstr "Finden Sie weitere allgemeine Verbindungen"
 
 #: relationship.php:169
 #, php-format
