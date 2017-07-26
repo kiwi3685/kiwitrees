@@ -294,13 +294,13 @@ function load_gedcom_settings($ged_id =  WT_GED_ID) {
 }
 
 /**
- * Webtrees Error Handling function
+ * Kiwitrees Error Handling function
  *
  * This function will be called by PHP whenever an error occurs.  The error handling
  * is set in the session.php
  * @see http://us2.php.net/manual/en/function.set-error-handler.php
  */
-function wt_error_handler($errno, $errstr, $errfile, $errline) {
+function kt_error_handler($errno, $errstr, $errfile, $errline) {
 	if ((error_reporting() > 0)&&($errno<2048)) {
 		if (WT_ERROR_LEVEL==0) {
 			return;

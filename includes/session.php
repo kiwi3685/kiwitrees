@@ -240,7 +240,7 @@ require WT_ROOT . 'includes/functions/functions_date.php';
 require WT_ROOT . 'includes/functions/functions_charts.php';
 require WT_ROOT . 'includes/functions/functions_utf-8.php';
 
-set_error_handler('wt_error_handler');
+set_error_handler('kt_error_handler');
 
 // Load our configuration file, so we can connect to the database
 if (file_exists(WT_ROOT . 'data/config.ini.php')) {
