@@ -227,7 +227,7 @@ case 'requestpw':
 			$mail_body .= WT_SERVER_NAME . WT_SCRIPT_PATH;
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_mail.php';
+//		require_once WT_ROOT.'includes/functions/functions_mail.php';
 		kiwiMail(getUserEmail($user_id), $KIWITREES_EMAIL, WT_I18N::translate('Lost password request'), $mail_body);
 	}
 	// Show a success message, even if the user account does not exist.
@@ -276,7 +276,7 @@ case 'register':
 			set_user_setting($user_id, 'verified_by_admin', 0);
 			set_user_setting($user_id, 'reg_timestamp',     date('U'));
 			set_user_setting($user_id, 'reg_hashcode',      md5(uniqid(rand(), true)));
-			set_user_setting($user_id, 'contactmethod',     'messaging2');
+			set_user_setting($user_id, 'contactmethod',     'messaging');
 			set_user_setting($user_id, 'visibleonline',     1);
 			set_user_setting($user_id, 'auto_accept',       0);
 			set_user_setting($user_id, 'canadmin',          0);
@@ -342,12 +342,8 @@ case 'register':
 			// Send user message by email only
 			kiwiMail($mail2_to, $mail2_from, $mail2_subject, $mail2_body);
 
-			// Send admin message by email and/or internal messaging
+			// Send admin message by internal messaging
 			kiwiMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
-			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
-				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_email, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
-			}
 
 			echo '
 				<div class="confirm">
@@ -515,12 +511,8 @@ case 'verify_hash':
 		$pw_ok = check_user_password($user_id, $user_password);
 		$hc_ok = get_user_setting($user_id, 'reg_hashcode') == $user_hashcode;
 		if ($pw_ok && $hc_ok) {
-			require_once WT_ROOT.'includes/functions/functions_mail.php';
+//			require_once WT_ROOT.'includes/functions/functions_mail.php';
 			kiwiMail($mail1_to, $mail1_from, $mail1_subject, $mail1_body);
-			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
-				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster_user_id, $mail1_subject, $mail1_body));
-			}
 
 			set_user_setting($user_id, 'verified', 1);
 			set_user_setting($user_id, 'pwrequested', null);

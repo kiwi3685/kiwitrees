@@ -222,10 +222,8 @@ function edit_field_resn($name, $selected='', $extra='') {
 // Print an edit control for a contact method field
 function edit_field_contact($name, $selected='', $extra='') {
 	// Different ways to contact the users
-	$CONTACT_METHODS=array(
-		'messaging' =>WT_I18N::translate('Kiwitrees internal messaging'),
-		'messaging2'=>WT_I18N::translate('Internal messaging with emails'),
-		'messaging3'=>WT_I18N::translate('Kiwitrees sends emails with no storage'),
+	$CONTACT_METHODS = array(
+		'messaging'=>WT_I18N::translate('Kiwitrees sends emails'),
 		'mailto'    =>WT_I18N::translate('Mailto link'),
 		'none'      =>WT_I18N::translate('No contact'),
 	);
@@ -234,9 +232,7 @@ function edit_field_contact($name, $selected='', $extra='') {
 function edit_field_contact_inline($name, $selected='', $controller=null) {
 	// Different ways to contact the users
 	$CONTACT_METHODS=array(
-		'messaging' =>WT_I18N::translate('Kiwitrees internal messaging'),
-		'messaging2'=>WT_I18N::translate('Internal messaging with emails'),
-		'messaging3'=>WT_I18N::translate('Kiwitrees sends emails with no storage'),
+		'messaging'=>WT_I18N::translate('Kiwitrees sends emails'),
 		'mailto'    =>WT_I18N::translate('Mailto link'),
 		'none'      =>WT_I18N::translate('No contact'),
 	);

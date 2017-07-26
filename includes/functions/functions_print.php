@@ -396,7 +396,7 @@ function user_contact_link($user_id) {
 //
 // this function will print appropriate links based on the preferred contact methods for the genealogy
 // contact user and the technical support contact user
-function contact_links($ged_id=WT_GED_ID) {
+function contact_links($ged_id = WT_GED_ID) {
 	$contact_user_id	=  get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
 	$webmaster_user_id	= get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
 	$supportLink		= user_contact_link($webmaster_user_id);
@@ -414,7 +414,7 @@ function contact_links($ged_id=WT_GED_ID) {
 		return '';
 	}
 
-	if ($supportLink==$contactLink) {
+	if ($supportLink == $contactLink) {
 		return '<div class="contact_links">'.WT_I18N::translate('If you have any questions or comments please contact').' '.$supportLink.'</div>';
 	} else {
 		if ($webmaster_user_id || $contact_user_id) {

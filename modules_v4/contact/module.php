@@ -99,7 +99,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		$from_email = WT_Filter::post('from_email');
 		$action     = WT_Filter::post('action', 'compose|send', 'compose');
 		$to         = WT_Filter::post('to', null, WT_Filter::get('to'));
-		$method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
+		$method     = WT_Filter::post('method', 'messaging|mailto|none', WT_Filter::get('method', 'messaging|mailto|none', 'messaging'));
 		$url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 		$ged_id		= WT_GED_ID;
 		$errors		= '';
@@ -234,7 +234,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 									</div>
 								</div>';
 						}
-						if ($method == 'messaging2') {
+						if ($method == 'messaging') {
 							$html .= '
 							<p class="message_form" style="clear:both; width: 600px; margin:auto;" >' .
 								WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.') . '

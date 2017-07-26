@@ -33,7 +33,7 @@ $from_name  = WT_Filter::post('from_name');
 $from_email = WT_Filter::post('from_email');
 $action     = WT_Filter::post('action', 'compose|send', 'compose');
 $to         = WT_Filter::post('to', null, WT_Filter::get('to'));
-$method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
+$method     = WT_Filter::post('method', 'messaging|mailto|none', WT_Filter::get('method', 'messaging|mailto|none', 'messaging'));
 $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
 $to_user = get_user_id($to);
@@ -151,7 +151,7 @@ case 'compose':
 				<label for="body"><?php echo WT_I18N::translate('Body'); ?></label>
 				<textarea class="html-edit" name="body" id="body"><?php echo WT_Filter::escapeHtml($body); ?></textarea>
 			</div>
-			<?php if ($method == 'messaging2') { ?>
+			<?php if ($method == 'messaging') { ?>
 				<p>
 					<?php echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.'); ?>
 				</p>
@@ -259,41 +259,39 @@ function addMessage($message) {
 	}
 
 	// Send a copy of the copy message back to the sender.
-	if ($message['method'] !== 'messaging') {
-		// Switch to the sender’s language.
-		if ($sender) {
-			WT_I18N::init(get_user_setting($sender, 'language'));
-		}
-
-		$copy_email = $message['body'];
-		if (!empty($message['url'])) {
-			$copy_email .=
-				WT_Mail::EOL . WT_Mail::EOL . '--------------------------------------' . WT_Mail::EOL .
-				WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
-		}
-
-		if ($sender) {
-			// Message from a signed-in user
-			$copy_email = WT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(WT_TREE_TITLE)) . ' ' . getUserFullName($recipient) . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
-		} else {
-			// Message from a visitor
-			$copy_email  = WT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
-		}
-
-		$success = $success && WT_Mail::send(
-			// “From:” header
-			$WT_TREE,
-			// “To:” header
-			$sender_email,
-			$sender_real_name,
-			// “Reply-To:” header
-			WT_Site::preference('SMTP_FROM_NAME'),
-			$WT_TREE->tree_title,
-			// Message body
-			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
-			$copy_email
-		);
+	// Switch to the sender’s language.
+	if ($sender) {
+		WT_I18N::init(get_user_setting($sender, 'language'));
 	}
+
+	$copy_email = $message['body'];
+	if (!empty($message['url'])) {
+		$copy_email .=
+			WT_Mail::EOL . WT_Mail::EOL . '--------------------------------------' . WT_Mail::EOL .
+			WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
+	}
+
+	if ($sender) {
+		// Message from a signed-in user
+		$copy_email = WT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(WT_TREE_TITLE)) . ' ' . getUserFullName($recipient) . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+	} else {
+		// Message from a visitor
+		$copy_email  = WT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+	}
+
+	$success = $success && WT_Mail::send(
+		// “From:” header
+		$WT_TREE,
+		// “To:” header
+		$sender_email,
+		$sender_real_name,
+		// “Reply-To:” header
+		WT_Site::preference('SMTP_FROM_NAME'),
+		$WT_TREE->tree_title,
+		// Message body
+		WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
+		$copy_email
+	);
 
 	// Switch to the recipient’s language.
 	WT_I18N::init(get_user_setting($recipient, 'language'));
@@ -318,42 +316,30 @@ function addMessage($message) {
 		$message['created'] = gmdate('D, d M Y H:i:s T');
 	}
 
-	if ($message['method'] !== 'messaging3' && $message['method'] !== 'mailto' && $message['method'] !== 'none') {
-		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-			->execute([
-				$message['from'],
-				WT_CLIENT_IP,
-				$recipient->getUserId(),
-				$message['subject'],
-				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email. Perhaps create different messages
-			]);
-	}
-	if ($message['method'] !== 'messaging') {
-		if ($sender) {
-			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', getUserFullName($sender));
+	if ($sender) {
+		$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', getUserFullName($sender));
+	} else {
+		if (!empty($message['from_name'])) {
+			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from_name']);
 		} else {
-			if (!empty($message['from_name'])) {
-				$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from_name']);
-			} else {
-				$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from']);
-			}
+			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from']);
 		}
-		$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
-
-		$success = $success && WT_Mail::send(
-			// “From:” header
-				$WT_TREE,
-				// “To:” header
-				getUserEmail($recipient),
-				getUserFullName($recipient),
-				// “Reply-To:” header
-				$sender_email,
-				$sender_real_name,
-				// Message body
-				WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
-				$original_email
-			);
 	}
+	$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
+
+	$success = $success && WT_Mail::send(
+		// “From:” header
+			$WT_TREE,
+			// “To:” header
+			getUserEmail($recipient),
+			getUserFullName($recipient),
+			// “Reply-To:” header
+			$sender_email,
+			$sender_real_name,
+			// Message body
+			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
+			$original_email
+		);
 
 	WT_I18N::init(WT_LOCALE); // restore language settings if needed
 

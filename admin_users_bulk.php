@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,17 +33,17 @@ $controller
 ?>
 <div id="users_bulk">
 	<p>
-		<a href="#" onclick="message('all', 'messaging2', '', ''); return false;">
+		<a href="#" onclick="message('all', 'messaging', '', ''); return false;">
 			<?php echo WT_I18N::translate('Send message to all users'); ?>
 		</a>
 	</p>
 	<p>
-		<a href="#" onclick="message('never_logged', 'messaging2', '', ''); return false;">
+		<a href="#" onclick="message('never_logged', 'messaging', '', ''); return false;">
 			<?php echo WT_I18N::translate('Send message to users who have never logged in'); ?>
 		</a>
 	</p>
 	<p>
-		<a href="#" onclick="message('last_6mo', 'messaging2', '', ''); return false;">
+		<a href="#" onclick="message('last_6mo', 'messaging', '', ''); return false;">
 			<?php echo WT_I18N::translate('Send message to users who have not logged in for 6 months'); ?>
 		</a>
 	</p>

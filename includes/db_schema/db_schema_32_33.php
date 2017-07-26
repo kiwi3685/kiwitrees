@@ -26,7 +26,7 @@ if (!defined('WT_KIWITREES')) {
 	exit;
 }
 
-// change module anmes
+// change module names
 $names_array = array (
 	'resource_'					=> 'report_',
 	'no_census'					=> 'report_ukcensus',
@@ -59,7 +59,7 @@ try {
 	// Perhaps we have already deleted this data?
 }
 
-// remove resource to module_privacy components
+// remove resource from module_privacy components
 self::exec("ALTER TABLE `##module_privacy` CHANGE component component ENUM('block', 'chart', 'list', 'menu', 'report', 'sidebar', 'tab', 'widget')");
 
 // remove no longer used gedcom settings
