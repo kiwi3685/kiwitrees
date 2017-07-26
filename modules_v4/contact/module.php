@@ -257,7 +257,6 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 				}
 				$message['subject'] = $subject;
 				$message['body'] = $body;
-				$message['created'] = WT_TIMESTAMP;
 				$message['method'] = $method;
 				$message['url'] = $url;
 				if (!addMessage($message)) {

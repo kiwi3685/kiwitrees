@@ -214,7 +214,6 @@ case 'send':
 		}
 		$message['subject'] = $subject;
 		$message['body']    = nl2br($body, false);
-		$message['created'] = WT_TIMESTAMP;
 		$message['method']  = $method;
 		$message['url']     = $url;
 		if ($i > 0) {
@@ -310,10 +309,6 @@ function addMessage($message) {
 				'--------------------------------------' . WT_Mail::EOL .
 				WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
 		}
-	}
-
-	if (empty($message['created'])) {
-		$message['created'] = gmdate('D, d M Y H:i:s T');
 	}
 
 	if ($sender) {
