@@ -32,4 +32,16 @@ class Swift_SpoolTransport extends Swift_Transport_SpoolTransport
             $arguments
         );
     }
+
+    /**
+     * Create a new SpoolTransport instance.
+     *
+     * @param Swift_Spool $spool
+     *
+     * @return Swift_SpoolTransport
+     */
+    public static function newInstance(Swift_Spool $spool)
+    {
+        return new self($spool);
+    }
 }

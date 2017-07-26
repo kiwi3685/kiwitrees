@@ -34,7 +34,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
     protected $replacementFactory;
 
     /**
-     * @var Swift_Mime_SimpleHeaderFactory
+     * @var Swift_Mime_HeaderFactory
      */
     protected $headerFactory;
 
@@ -59,20 +59,39 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
             ->lookup('transport.replacementfactory');
 
         $this->signOptions = PKCS7_DETACHED;
-        $this->encryptCipher = OPENSSL_CIPHER_AES_128_CBC;
+
+        // Supported since php5.4
+        if (defined('OPENSSL_CIPHER_AES_128_CBC')) {
+            $this->encryptCipher = OPENSSL_CIPHER_AES_128_CBC;
+        } else {
+            $this->encryptCipher = OPENSSL_CIPHER_RC2_128;
+        }
+    }
+
+    /**
+     * Returns an new Swift_Signers_SMimeSigner instance.
+     *
+     * @param string $certificate
+     * @param string $privateKey
+     *
+     * @return Swift_Signers_SMimeSigner
+     */
+    public static function newInstance($certificate = null, $privateKey = null)
+    {
+        return new self($certificate, $privateKey);
     }
 
     /**
      * Set the certificate location to use for signing.
      *
-     * @see http://www.php.net/manual/en/openssl.pkcs7.flags.php
+     * @link http://www.php.net/manual/en/openssl.pkcs7.flags.php
      *
      * @param string       $certificate
      * @param string|array $privateKey  If the key needs an passphrase use array('file-location', 'passphrase') instead
      * @param int          $signOptions Bitwise operator options for openssl_pkcs7_sign()
      * @param string       $extraCerts  A file containing intermediate certificates needed by the signing certificate
      *
-     * @return $this
+     * @return Swift_Signers_SMimeSigner
      */
     public function setSignCertificate($certificate, $privateKey = null, $signOptions = PKCS7_DETACHED, $extraCerts = null)
     {
@@ -98,13 +117,13 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
     /**
      * Set the certificate location to use for encryption.
      *
-     * @see http://www.php.net/manual/en/openssl.pkcs7.flags.php
-     * @see http://nl3.php.net/manual/en/openssl.ciphers.php
+     * @link http://www.php.net/manual/en/openssl.pkcs7.flags.php
+     * @link http://nl3.php.net/manual/en/openssl.ciphers.php
      *
      * @param string|array $recipientCerts Either an single X.509 certificate, or an assoc array of X.509 certificates.
      * @param int          $cipher
      *
-     * @return $this
+     * @return Swift_Signers_SMimeSigner
      */
     public function setEncryptCertificate($recipientCerts, $cipher = null)
     {
@@ -150,7 +169,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
      *
      * @param bool $signThenEncrypt
      *
-     * @return $this
+     * @return Swift_Signers_SMimeSigner
      */
     public function setSignThenEncrypt($signThenEncrypt = true)
     {
@@ -170,7 +189,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
     /**
      * Resets internal states.
      *
-     * @return $this
+     * @return Swift_Signers_SMimeSigner
      */
     public function reset()
     {
@@ -182,7 +201,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
      *
      * @param Swift_Message $message
      *
-     * @return $this
+     * @return Swift_Signers_SMimeSigner
      */
     public function signMessage(Swift_Message $message)
     {

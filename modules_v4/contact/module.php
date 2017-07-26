@@ -18,7 +18,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
 if (!defined('WT_KIWITREES')) {
@@ -93,14 +93,14 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	private function show() {
 		global $controller;
-		$subject	= safe_REQUEST($_REQUEST, 'subject',	WT_REGEX_UNSAFE); // Messages may legitimately contain "<", etc.
-		$body		= safe_REQUEST($_REQUEST, 'body',		WT_REGEX_UNSAFE);
-		$from_name	= safe_REQUEST($_REQUEST, 'from_name',	WT_REGEX_UNSAFE);
-		$from_email	= safe_REQUEST($_REQUEST, 'from_email', WT_REGEX_EMAIL);
-		$url		= safe_REQUEST($_REQUEST, 'url',		WT_REGEX_URL);
-		$method		= safe_REQUEST($_REQUEST, 'method', array('messaging', 'messaging2', 'messaging3', 'mailto', 'none'), 'messaging2');
-		$to			= safe_REQUEST($_REQUEST, 'to');
-		$action		= safe_REQUEST($_REQUEST, 'action', array('compose', 'send'), 'compose');
+		$subject    = WT_Filter::post('subject', null, WT_Filter::get('subject'));
+		$body       = WT_Filter::post('body');
+		$from_name  = WT_Filter::post('from_name');
+		$from_email = WT_Filter::post('from_email');
+		$action     = WT_Filter::post('action', 'compose|send', 'compose');
+		$to         = WT_Filter::post('to', null, WT_Filter::get('to'));
+		$method     = WT_Filter::post('method', 'messaging|messaging2|messaging3|mailto|none', WT_Filter::get('method', 'messaging|messaging2|messaging3|mailto|none', 'messaging2'));
+		$url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 		$ged_id		= WT_GED_ID;
 		$errors		= '';
 		$html		= '';
@@ -143,16 +143,16 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		} else {
 			// Visitors must provide a valid email address
 			if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2])===false)) {
-				$errors.='<p class="ui-state-error">'.WT_I18N::translate('Please enter a valid email address.').'</p>';
+				$errors.='<p class="ui-state-error">' . WT_I18N::translate('Please enter a valid email address.') . ' </p>';
 				$action='compose';
 			}
 
 			// Do not allow anonymous visitors to include links to external sites
-			if (preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject.$body, $match)) {
+			if (preg_match('/(?!' . preg_quote(WT_SERVER_NAME, '/') . ' )(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject.$body, $match)) {
 				$errors.=
-					'<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links.').'</p>'.
-					'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.” */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.'. $match[2], $match[1]).'</p>'.
-				AddToLog('Possible spam message from "' . $from_name . '"/"' . $from_email . '", IP="'.$WT_REQUEST->getClientIp().'" subject="' . $subject . '", body="' . $body . '"', 'error');
+					'<p class="ui-state-error">' . WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' </p>' .
+					'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.” */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.' . $match[2], $match[1]).'</p>' .
+				AddToLog('Possible spam message from "' . $from_name . '"/"' . $from_email . '", IP="' . $WT_REQUEST->getClientIp() . ' " subject="' . $subject . '", body="' . $body . '"', 'error');
 				$action='compose';
 			}
 			$from = $from_email;
@@ -174,12 +174,12 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 						->addInlineJavascript('
 						function checkForm(frm) {
 							if (frm.subject.value=="") {
-								alert("'.WT_I18N::translate('Please enter a message subject.').'");
+								alert("' . WT_I18N::translate('Please enter a message subject.') . ' ");
 								document.messageform.subject.focus();
 								return false;
 							}
 							if (frm.body.value=="") {
-								alert("'.WT_I18N::translate('Please enter some message text before sending.').'");
+								alert("' . WT_I18N::translate('Please enter some message text before sending.') . ' ");
 								document.messageform.body.focus();
 								return false;
 							}
@@ -196,11 +196,11 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 					$html .= '<form class="message_form" name="messageform" method="post" action="module.php?mod=' . $this->getName() . '&mod_action=show" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
 						if (!WT_USER_ID) {
 							$html .= '<div class="message_note">
-								<p>' . WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'). '</p>
-								<label for "from_name" style="display: block; font-weight: 900;">'. WT_I18N::translate('Your Name:'). '</label>
-								<input type="text" name="from_name" id="from_name" size="40" value="'. htmlspecialchars($from_name). '" required>
-								<label for "from_email" style="display: block; font-weight: 900;">'. WT_I18N::translate('Email Address:'). '</label>
-								<input type="email" name="from_email" id="from_email" size="40" value="'. htmlspecialchars($from_email). '" required>
+								<p>' . WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead persons may also be private. If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives. If you are submitting changes to the genealogical data, please include the sources where you obtained the data.') . '</p>
+								<label for "from_name" style="display: block; font-weight: 900;">' . WT_I18N::translate('Your Name:'). '</label>
+								<input type="text" name="from_name" id="from_name" size="40" value="' . WT_Filter::escapeHtml($from_name). '" required>
+								<label for "from_email" style="display: block; font-weight: 900;">' . WT_I18N::translate('Email Address:'). '</label>
+								<input type="email" name="from_email" id="from_email" size="40" value="' . WT_Filter::escapeHtml($from_email). '" required>
 								<p>' . WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.	If you do not provide your email address we will not be able to respond to your inquiry.	Your email address will not be stored or used in any other way than responding to this inquiry.') . '</p>
 								<hr>
 							</div>';
@@ -220,23 +220,23 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 								$html .= $form_title;
 								$html .= '<p>' . WT_I18N::translate('This message will be sent to %s', '<b>' . $to_name . '</b>') . '</p>';
 								$html .= '
-									<label for "subject' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Subject:'). '</label>
-									<input type="hidden" name="action" value="send">
-									<input type="hidden" name="to" value="'. htmlspecialchars($to). '">
-									<input type="hidden" name="time" value="">
-									<input type="hidden" name="method" value="'. $method. '">
-									<input type="hidden" name="url" value="'. htmlspecialchars($url). '">
-									<input type="text" name="subject" id="subject' . $i . '" value="'. htmlspecialchars($subject). '" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">
-									<label for "body' . $i . '" style="display: block; font-weight: 900;">'. WT_I18N::translate('Body:'). '</label>
-									<textarea class="html-edit" name="body" id="body' . $i . '" rows="7" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">'. htmlspecialchars($body). '</textarea>
+									<label for "subject' . $i . '" style="display: block; font-weight: 900;">' . WT_I18N::translate('Subject:'). '</label>
+										<input type="hidden" name="action" value="send">
+										<input type="hidden" name="to" value="' . WT_Filter::escapeHtml($to). '">
+										<input type="hidden" name="time" value="">
+										<input type="hidden" name="method" value="' . $method. '">
+										<input type="hidden" name="url" value="' . WT_Filter::escapeHtml($url). '">
+										<input type="text" name="subject" id="subject' . $i . '" value="' . WT_Filter::escapeHtml($subject). '" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">
+									<label for "body' . $i . '" style="display: block; font-weight: 900;">' . WT_I18N::translate('Body:'). '</label>
+										<textarea class="html-edit" name="body" id="body' . $i . '" rows="7" style="padding: 5px 3px; font-size: 1.2em; width: 100%;">' . WT_Filter::escapeHtml($body). '</textarea>
 									<div class="btn btn-primary" style="display: inline-block;margin:10px auto;">
-										<button type="submit" value="value="'. WT_I18N::translate('Send'). '">'. WT_I18N::translate('Send'). '</button>
+										<button type="submit" value="value="' . WT_I18N::translate('Send'). '">' . WT_I18N::translate('Send'). '</button>
 									</div>
 								</div>';
 						}
 						if ($method == 'messaging2') {
 							$html .= '
-							<p class="message_form" style="clear:both; width: 600px; margin:auto;" >'.
+							<p class="message_form" style="clear:both; width: 600px; margin:auto;" >' .
 								WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.') . '
 							</p>';
 						}
@@ -261,14 +261,14 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 				$message['method'] = $method;
 				$message['url'] = $url;
 				if (!addMessage($message)) {
-					AddToLog('Unable to send message.  FROM:' . $from . ' TO:' . $to .' (failed to send)', 'error');
+					AddToLog('Unable to send message. FROM:' . $from . ' TO:' . $to . ' (failed to send)', 'error');
 				}
 				if ($url) {
 					$return_to = $url;
 				} else {
-					$return_to = 'module.php?mod='. $this->getName().'&mod_action=show';
+					$return_to = 'module.php?mod=' . $this->getName() . ' &mod_action=show';
 				}
-				$controller->addInlineJavascript('window.location.href="'. $return_to.'";');
+				$controller->addInlineJavascript('window.location.href="' . $return_to . ' ";');
 			break;
 		}
 

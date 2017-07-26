@@ -2637,7 +2637,43 @@ div.widget {
 
 /* ------------------ */
 
-/* Styling for Contacts module */
+/* Styling for Contacts module and messaging popup*/
+#message {
+		margin: 20px;
+}
+
+#message h3 {
+	margin-top: 0;
+}
+
+#message  div.option {
+	display: inline-block;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+#message label {
+	display: inline-block;
+	font-weight: 600;
+	vertical-align: top;
+	width: 15%;
+}
+
+#message input,
+#message textarea {
+	width: 60%;
+}
+
+#message textarea,
+#message #cke_1_contents {
+	height: 100px!important;
+}
+
+#message #cke_body {
+	display: inline-block;
+	width: 80%!important;
+}
+
 .message_form {
 	margin: auto;
 	width:80%;

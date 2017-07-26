@@ -26,20 +26,8 @@ if (!defined('WT_KIWITREES')) {
 	exit;
 }
 
-require_once WT_ROOT . 'library/swiftmailer/lib/classes/Swift.php';
-/*
-namespace FisharebestWebtrees;
+require_once WT_ROOT . 'library/swiftmailer/lib/swift_required.php';
 
-use Exception;
-use Swift_Mailer;
-use Swift_MailTransport;
-use Swift_Message;
-use Swift_NullTransport;
-use Swift_Preferences;
-use Swift_SendmailTransport;
-use Swift_SmtpTransport;
-use Swift_Transport;
-*/
 /**
  * Send mail messages.
  */
@@ -70,16 +58,16 @@ class WT_Mail {
 
 			$mail = Swift_Message::newInstance()
 				->setSubject($subject)
-				->setFrom(WT_Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'))
+				->setFrom(WT_Site::preference('SMTP_FROM_NAME'), $tree->tree_title)
 				->setTo($to_email, $to_name)
 				->setReplyTo($replyto_email, $replyto_name)
 				->setBody($message, 'text/html')
-				->addPart(Filter::unescapeHtml($message), 'text/plain');
+				->addPart(WT_Filter::unescapeHtml($message), 'text/plain');
 
 			Swift_Mailer::newInstance(self::transport())->send($mail);
 		} catch (Exception $ex) {
 			//Log::addErrorLog('Mail: ' . $ex->getMessage());
-			AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');, 'auth');
+			AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
 
 			return false;
 		}
@@ -101,7 +89,7 @@ class WT_Mail {
 		return self::send(
 			$tree,
 			$user->getEmail(), $user->getRealName(),
-			WT_Site::getPreference('SMTP_FROM_NAME'), $tree->getPreference('title'),
+			WT_Site::preference('SMTP_FROM_NAME'), $tree->getPreference('title'),
 			$subject,
 			$message
 		);
@@ -113,25 +101,25 @@ class WT_Mail {
 	 * @return Swift_Transport
 	 */
 	public static function transport() {
-		switch (WT_Site::getPreference('SMTP_ACTIVE')) {
+		switch (WT_Site::preference('SMTP_ACTIVE')) {
 		case 'internal':
 			return Swift_MailTransport::newInstance();
 		case 'sendmail':
 			return Swift_SendmailTransport::newInstance();
 		case 'external':
             $transport = Swift_SmtpTransport::newInstance()
-                ->setHost(WT_Site::getPreference('SMTP_HOST'))
-                ->setPort(WT_Site::getPreference('SMTP_PORT'))
-                ->setLocalDomain(WT_Site::getPreference('SMTP_HELO'));
+                ->setHost(WT_Site::preference('SMTP_HOST'))
+                ->setPort(WT_Site::preference('SMTP_PORT'))
+                ->setLocalDomain(WT_Site::preference('SMTP_HELO'));
 
-            if (WT_Site::getPreference('SMTP_AUTH')) {
+            if (WT_Site::preference('SMTP_AUTH')) {
                 $transport
-                    ->setUsername(WT_Site::getPreference('SMTP_AUTH_USER'))
-                    ->setPassword(WT_Site::getPreference('SMTP_AUTH_PASS'));
+                    ->setUsername(WT_Site::preference('SMTP_AUTH_USER'))
+                    ->setPassword(WT_Site::preference('SMTP_AUTH_PASS'));
             }
 
-            if (WT_Site::getPreference('SMTP_SSL') !== 'none') {
-                $transport->setEncryption(WT_Site::getPreference('SMTP_SSL'));
+            if (WT_Site::preference('SMTP_SSL') !== 'none') {
+                $transport->setEncryption(WT_Site::preference('SMTP_SSL'));
             }
 
 			return $transport;

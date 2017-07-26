@@ -4284,7 +4284,7 @@ a.icon-udarrow:hover {
 .icon-media-stop		{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; margin: 0 1px;} /* fa-pause */
 .icon-plus				{font-family: 'FontAwesome'; font-style: normal; margin: 0 1px;} /* fa-expand */
 .icon-minus				{font-family: 'FontAwesome'; font-style: normal; margin: 0 1px;} /* fa-compress */
-.fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; margin: 0 1px;} /* fa-envelope-o */
+.fa-envelope-o			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.4em; vertical-align: middle;} /* fa-envelope-o */
 .icon-warning			{font-family: 'FontAwesome'; font-style: normal; font-size: 1.2em; color: #ff4500; margin: 0 5px 5px; vertical-align: middle;} /* fa-warning */
 .icon-lsdnarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-down */
 .icon-lsltarrow			{font-family: 'FontAwesome'; font-style: normal; font-size: 4em;} /* fa-arrow-left */
@@ -5912,7 +5912,43 @@ div.widget {
 
 /* ------------------ */
 
-/* Styling for Contacts module */
+/* Styling for Contacts module and messaging popup*/
+#message {
+		margin: 20px;
+}
+
+#message h3 {
+	margin-top: 0;
+}
+
+#message  div.option {
+	display: inline-block;
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+#message label {
+	display: inline-block;
+	font-weight: 600;
+	vertical-align: top;
+	width: 15%;
+}
+
+#message input,
+#message textarea {
+	width: 60%;
+}
+
+#message textarea,
+#message #cke_1_contents {
+	height: 100px!important;
+}
+
+#message #cke_body {
+	display: inline-block;
+	width: 80%!important;
+}
+
 .message_form {
 	margin: auto;
 	width:80%;

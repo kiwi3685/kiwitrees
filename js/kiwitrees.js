@@ -1322,9 +1322,9 @@ function paste_char(value) {
 	}
 }
 
-function message(username, method, url, subject) {
-	window.open('message.php?to=' + username + '&method=' + method + '&url=' + url + '&subject=' + subject, '_blank', mesg_window_specs);
-	return false;
+function message (username, method, url) {
+  window.open('message.php?to=' + encodeURIComponent(username) + '&method=' + encodeURIComponent(method) + '&url=' + encodeURIComponent(url), '_blank', mesg_window_specs);
+  return false;
 }
 
 /**

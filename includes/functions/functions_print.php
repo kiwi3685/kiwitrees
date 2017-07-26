@@ -381,16 +381,14 @@ function whoisonline() {
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
 	$method		= get_user_setting($user_id, 'contactmethod');
-	$fullname	= getUserFullName($user_id);
 
 	switch ($method) {
 	case 'none':
 		return '';
 	case 'mailto':
-		$email=getUserEmail($user_id);
-		return '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>';
+		return '<a href="mailto:' . WT_Filter::escapeHtml(getUserEmail($user_id)) . '">' . getUserFullName($user_id) . '</a>';
 	default:
-		return "<a href='#' onclick='message(\"".get_user_name($user_id)."\", \"".$method."\", \"".addslashes(urlencode(get_query_url()))."\", \"\");return false;'>".$fullname."</a>";
+		return "<a href='#' onclick='message(\"" . WT_Filter::escapeHtml(get_user_name($user_id)) . '", "' . $method . '", "' . WT_SERVER_NAME . WT_Filter::escapeHtml(get_query_url()) . "\", \"\");return false;'>" . getUserFullName($user_id) . '</a>';
 	}
 }
 
@@ -399,9 +397,9 @@ function user_contact_link($user_id) {
 // this function will print appropriate links based on the preferred contact methods for the genealogy
 // contact user and the technical support contact user
 function contact_links($ged_id=WT_GED_ID) {
-	$contact_user_id  =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
-	$webmaster_user_id=get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-	$supportLink = user_contact_link($webmaster_user_id);
+	$contact_user_id	=  get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
+	$webmaster_user_id	= get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
+	$supportLink		= user_contact_link($webmaster_user_id);
 	if ($webmaster_user_id==$contact_user_id) {
 		$contactLink = $supportLink;
 	} else {

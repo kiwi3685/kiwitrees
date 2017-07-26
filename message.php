@@ -38,7 +38,7 @@ $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
 $to_user = get_user_id($to);
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Simple();
 $controller
 	->restrictAccess($to_user || WT_USER_IS_ADMIN && ($to === 'all' || $to === 'last_6mo' || $to === 'never_logged'))
 	->setPageTitle(WT_I18N::translate('Kiwitrees message'));
@@ -56,7 +56,7 @@ if (WT_USER_ID) {
 	}
 
 	// Do not allow anonymous visitors to include links to external sites
-	if (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
+	if (preg_match('/(?!' . preg_quote(WT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
 		$errors .=
 			'<p class="ui-state-error">' . WT_I18N::translate('You are not allowed to send messages that contain external links.') . '</p>' .
 			'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]) . '</p>' .
@@ -91,12 +91,13 @@ case 'compose':
 		->pageHeader()
 		->addInlineJavascript('
 		function checkForm(frm) {
+			var content = CKEDITOR.instances["comment"].getData();
 			if (frm.subject.value === "") {
 				alert("' . WT_I18N::translate('Please enter a message subject.') . '");
 				document.messageform.subject.focus();
 				return false;
 			}
-			if (frm.body.value === "") {
+			if (frm.body.value === "" && content === "") {
 				alert("' . WT_I18N::translate('Please enter some message text before sending.') . '");
 				document.messageform.body.focus();
 				return false;
@@ -104,42 +105,70 @@ case 'compose':
 			return true;
 		}
 	');
-	echo '<span class="subheaders">', WT_I18N::translate('Send a message'), '</span>';
-	echo $errors;
 
-	if (!WT_USER_ID) {
-		echo '<br><br>', WT_I18N::translate('<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends. You will be asked to verify your relationship before you will receive any private data. Sometimes information of dead individuals may also be private. If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives. If you are submitting changes to the genealogy data, please include the sources where you obtained the data.');
-	}
-	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">';
-	echo WT_Filter::getCsrf();
-	echo '<table>';
-	if ($to !== 'all' && $to !== 'last_6mo' && $to !== 'never_logged') {
-		echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>' . getUserFullName($to_user) . '</b>'), '</td></tr>';
-	}
-	if (!WT_USER_ID) {
-		echo '<tr style="vertical-align:top;"><td width="15%">', WT_I18N::translate('Your name'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', WT_Filter::escapeHtml($from_name), '"></td></tr><tr style="vertical-align:top;"><td>', WT_I18N::translate('Email address'), '</td><td><input type="email" name="from_email" size="40" value="', WT_Filter::escapeHtml($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
-	}
-	echo '<tr style="vertical-align:top;"><td>', WT_I18N::translate('Subject'), '</td>';
-	echo '<td>';
-	echo '<input type="hidden" name="action" value="send">';
-	echo '<input type="hidden" name="to" value="', WT_Filter::escapeHtml($to), '">';
-	echo '<input type="hidden" name="time" value="">';
-	echo '<input type="hidden" name="method" value="', $method, '">';
-	echo '<input type="hidden" name="url" value="', WT_Filter::escapeHtml($url), '">';
-	echo '<input type="text" name="subject" size="50" value="', WT_Filter::escapeHtml($subject), '"><br></td></tr>';
-	echo '<tr style="vertical-align:top;"><td>', WT_I18N::translate('Body'), '<br></td><td><textarea name="body" cols="50" rows="7">', WT_Filter::escapeHtml($body), '</textarea><br></td></tr>';
-	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '"></td></tr>';
-	echo '</table>';
-	echo '</form>';
-	if ($method === 'messaging2') {
-		echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
-	}
-	echo
-		'<br><br><br><br>',
-		'<p id="save-cancel">',
-		'<input type="button" class="cancel" value="', WT_I18N::translate('close'), '" onclick="window.close();">',
-		'</p>';
+	if (array_key_exists('ckeditor', WT_Module::getActiveModules()) && WT_Site::preference('MAIL_FORMAT') == "1") {
+		ckeditor_WT_Module::enableBasicEditor($controller);
+	} ?>
+
+	<div id="message">
+		<h3><?php echo WT_I18N::translate('Send a message'); ?></h3>
+		<?php echo $errors;
+
+		if (!WT_USER_ID) { ?>
+			<p>
+				<?php echo WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead persons may also be private.  If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.'); ?>
+			</p>
+		<?php }
+		if ($to !== 'all' && $to !== 'last_6mo' && $to !== 'never_logged') { ?>
+			<h5><?php echo WT_I18N::translate('This message will be sent to %s', '<em>' . getUserFullName($to_user) . '</em>'); ?></h5>
+		<?php } ?>
+
+		<form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); return checkForm(this);">
+			<?php echo WT_Filter::getCsrf();
+			if (!WT_USER_ID) { ?>
+				<div class="option">
+					<label for="from_name"><?php echo WT_I18N::translate('Your name'); ?></label>
+					<input type="text" name="from_name" id="from_name" value="<?php echo WT_Filter::escapeHtml($from_name); ?>" required>
+				</div>
+				<div class="option">
+					<small>
+						<?php echo WT_I18N::translate('Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry.'); ?>
+					</small>
+					<label for="from_name"><?php echo WT_I18N::translate('Email address'); ?></label>
+					<input type="email" name="from_email" id="from_email" value="<?php echo WT_Filter::escapeHtml($from_email); ?>" required>
+				</div>
+			<?php } ?>
+			<div class="option">
+				<label for="from_name"><?php echo WT_I18N::translate('Subject'); ?></label>
+				<input type="hidden" name="action" value="send">
+				<input type="hidden" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>">
+				<input type="hidden" name="time" value="">
+				<input type="hidden" name="method" value="<?php echo $method; ?>">
+				<input type="hidden" name="url" value="<?php echo WT_Filter::escapeHtml($url); ?>">
+				<input type="text" name="subject" size="50" value="<?php echo WT_Filter::escapeHtml($subject); ?>">
+			</div>
+			<div class="option">
+				<label for="body"><?php echo WT_I18N::translate('Body'); ?></label>
+				<textarea class="html-edit" name="body" id="body"><?php echo WT_Filter::escapeHtml($body); ?></textarea>
+			</div>
+			<?php if ($method == 'messaging2') { ?>
+				<p>
+					<?php echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.'); ?>
+				</p>
+			<?php } ?>
+			<p id="save-cancel">
+				<button class="btn btn-primary" type="submit">
+					<i class="fa fa-envelope-o"></i>
+					<?php echo WT_I18N::translate('Send'); ?>
+				</button>
+				<button class="btn btn-primary" type="button" onclick="window.close();">
+					<i class="fa fa-times"></i>
+					<?php echo WT_I18N::translate('Close'); ?>
+				</button>
+			</p>
+		</form>
+	</div>
+	<?php
 	break;
 
 case 'send':
@@ -157,7 +186,7 @@ case 'send':
 	if ($to === 'never_logged') {
 		$toarray = [];
 		foreach (WT_User::all() as $user) {
-			if ($user->getPreference('verified_by_admin') && $user->getPreference('reg_timestamp') > $user->getPreference('sessiontime')) {
+			if (get_user_setting($user_id,'verified_by_admin') && get_user_setting($user_id,'reg_timestamp') > get_user_setting($user_id,'sessiontime')) {
 				$toarray[$user->getUserId()] = $user->getUserName();
 			}
 		}
@@ -166,9 +195,9 @@ case 'send':
 		$toarray = [];
 		$sixmos  = 60 * 60 * 24 * 30 * 6; //-- timestamp for six months
 		foreach (WT_User::all() as $user) {
-			if ($user->getPreference('sessiontime') > 0 && (WT_TIMESTAMP - $user->getPreference('sessiontime') > $sixmos)) {
+			if (get_user_setting($user_id,'sessiontime') > 0 && (WT_TIMESTAMP - get_user_setting($user_id,'sessiontime') > $sixmos)) {
 				$toarray[$user->getUserId()] = $user->getUserName();
-			} elseif (!$user->getPreference('verified_by_admin') && (WT_TIMESTAMP - $user->getPreference('reg_timestamp') > $sixmos)) {
+			} elseif (!get_user_setting($user_id,'verified_by_admin') && (WT_TIMESTAMP - get_user_setting($user_id,'reg_timestamp') > $sixmos)) {
 				//-- not verified by registration past 6 months
 				$toarray[$user->getUserId()] = $user->getUserName();
 			}
@@ -220,10 +249,10 @@ function addMessage($message) {
 	$sender    = get_user_id($message['from']);
 	$recipient = get_user_id($message['to']);
 
-	// Sender may not be a webtrees user
+	// Sender may not be a Kiwitrees user
 	if ($sender) {
-		$sender_email     = $sender->getEmail();
-		$sender_real_name = $sender->getRealName();
+		$sender_email     = getUserEmail($sender);
+		$sender_real_name = getUserFullName($sender);
 	} else {
 		$sender_email     = $message['from'];
 		$sender_real_name = $message['from_name'];
@@ -233,7 +262,7 @@ function addMessage($message) {
 	if ($message['method'] !== 'messaging') {
 		// Switch to the sender’s language.
 		if ($sender) {
-			WT_I18N::init($sender->getPreference('language'));
+			WT_I18N::init(get_user_setting($sender, 'language'));
 		}
 
 		$copy_email = $message['body'];
@@ -245,10 +274,10 @@ function addMessage($message) {
 
 		if ($sender) {
 			// Message from a signed-in user
-			$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+			$copy_email = WT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(WT_TREE_TITLE)) . ' ' . getUserFullName($recipient) . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 		} else {
 			// Message from a visitor
-			$copy_email = WT_I18N::translate('You sent the following message to a webtrees administrator:') . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
+			$copy_email  = WT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
 		}
 
 		$success = $success && WT_Mail::send(
@@ -258,21 +287,21 @@ function addMessage($message) {
 			$sender_email,
 			$sender_real_name,
 			// “Reply-To:” header
-			WT_Site::getPreference('SMTP_FROM_NAME'),
-			$WT_TREE->getPreference('title'),
+			WT_Site::preference('SMTP_FROM_NAME'),
+			$WT_TREE->tree_title,
 			// Message body
-			WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
+			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
 			$copy_email
 		);
 	}
 
 	// Switch to the recipient’s language.
-	WT_I18N::init($recipient->getPreference('language'));
+	WT_I18N::init(get_user_setting($recipient, 'language'));
 	if (isset($message['from_name'])) {
 		$message['body'] =
-			WT_I18N::translate('Your name') . ' ' . $message['from_name'] . WT_Mail::EOL .
-			WT_I18N::translate('Email address') . ' ' . $message['from_email'] . WT_Mail::EOL . WT_Mail::EOL .
-			$message['body'];
+			WT_I18N::translate('From') . ':  ' . $message['from_name'] . WT_Mail::EOL .
+			WT_I18N::translate('Email address') . ':  ' . $message['from_email'] . WT_Mail::EOL .
+			WT_I18N::translate('Content') . ':  ' . $message['body'];
 	}
 
 	// Add another footer - unless we are an admin
@@ -301,7 +330,7 @@ function addMessage($message) {
 	}
 	if ($message['method'] !== 'messaging') {
 		if ($sender) {
-			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $sender->getRealNameHtml());
+			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', getUserFullName($sender));
 		} else {
 			if (!empty($message['from_name'])) {
 				$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from_name']);
@@ -315,13 +344,13 @@ function addMessage($message) {
 			// “From:” header
 				$WT_TREE,
 				// “To:” header
-				$recipient->getEmail(),
-				$recipient->getRealName(),
+				getUserEmail($recipient),
+				getUserFullName($recipient),
 				// “Reply-To:” header
 				$sender_email,
 				$sender_real_name,
 				// Message body
-				WT_I18N::translate('webtrees message') . ' - ' . $message['subject'],
+				WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
 				$original_email
 			);
 	}
