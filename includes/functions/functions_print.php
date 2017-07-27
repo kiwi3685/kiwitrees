@@ -64,7 +64,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$tmp=array('M'=>'', 'F'=>'F', 'U'=>'NN');
 	$isF=$tmp[$person->getSex()];
 
-	$personlinks = '';
 	$icons = '';
 	$classfacts = '';
 	$genderImage = '';
@@ -81,47 +80,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
 	if ($person->canDisplayName()) {
 		if (empty($SEARCH_SPIDER)) {
-			//-- draw a box for the family popup
-			// NOTE: Start div I.$pid.$personcount.$count.links
-			$personlinks .= '<ul class="person_box'.$isF.'">';
-			$personlinks .= '<li><a href="pedigree.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;talloffset='.$talloffset.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Pedigree').'</b></a></li>';
-			if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-				$personlinks .= '<li><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$pid.'&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Pedigree map').'</b></a></li>';
-			}
-			if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-				$personlinks .= '<li><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Relationship to me').'</b></a></li>';
-			}
-			$personlinks .= '<li><a href="descendancy.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;generations='.$generations.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Descendants').'</b></a></li>';
-			$personlinks .= '<li><a href="ancestry.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Ancestors').'</b></a></li>';
-			$personlinks .= '<li><a href="compact.php?rootid='.$pid.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Compact tree').'</b></a></li>';
-			$personlinks .= '<li><a href="module.php?mod=chart_fanchart&mod_action=show&rootid='.$pid.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Fanchart').'</b></a></li>';
-			$personlinks .= '<li><a href="hourglass.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'&amp;show_spouse='.$show_spouse.'"><b>'.WT_I18N::translate('Hourglass chart').'</b></a></li>';
-			if (array_key_exists('tree', WT_Module::getActiveModules())) {
-				$personlinks .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'"><b>'.WT_I18N::translate('Interactive tree').'</b></a></li>';
-			}
-			foreach ($person->getSpouseFamilies() as $family) {
-				$spouse = $family->getSpouse($person);
-				$children = $family->getChildren();
-				$num = count($children);
-				$personlinks .= '<li>';
-				if ((!empty($spouse))||($num>0)) {
-					$personlinks .= '<a href="'.$family->getHtmlUrl().'"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br>';
-					if (!empty($spouse)) {
-						$personlinks .= '<a href="'.$spouse->getHtmlUrl().'">';
-						$personlinks .= $spouse->getFullName();
-						$personlinks .= '</a>';
-					}
-				}
-				$personlinks .= '</li><li><ul>';
-				foreach ($children as $child) {
-					$personlinks .= '<li><a href="'.$child->getHtmlUrl().'">';
-					$personlinks .= $child->getFullName();
-					$personlinks .= '</a></li>';
-				}
-				$personlinks .= '</ul></li>';
-			}
-			$personlinks .= '</ul>';
-			// NOTE: Start div out-$pid.$personcount.$count
+			$personlinks = getPersonLinks($person);
 			if ($style == 1) {
 				$outBoxAdd .= " class=\"person_box$isF person_box_template style1\" style=\"width: ".$bwidth."px; height: ".$bheight."px; z-index:-1;\"";
 			} elseif ($style == 3) {
@@ -177,7 +136,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$cssfacts = array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
 	"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
 	foreach ($cssfacts as $indexval => $fact) {
-		if (strpos($indirec, "1 $fact")!==false) $classfacts .= " $fact";
+		if (strpos($indirec, "1 $fact") !== false) $classfacts .= " $fact";
 	}
 
 	if ($PEDIGREE_SHOW_GENDER && $show_full) {
@@ -400,7 +359,7 @@ function contact_links($ged_id = WT_GED_ID) {
 	$contact_user_id	=  get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
 	$webmaster_user_id	= get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
 	$supportLink		= user_contact_link($webmaster_user_id);
-	if ($webmaster_user_id==$contact_user_id) {
+	if ($webmaster_user_id == $contact_user_id) {
 		$contactLink = $supportLink;
 	} else {
 		$contactLink = user_contact_link($contact_user_id);
@@ -1345,4 +1304,111 @@ function get_lds_glance($indirec) {
 	if ($ord) $text .= "P";
 	else $text .= "_";
 	return $text;
+}
+
+function getPersonLinks ($person){
+	global $PEDIGREE_FULL_DETAILS, $OLD_PGENS, $GEDCOM;
+	global $box_width, $chart_style, $generations, $show_spouse, $talloffset;
+
+	$pid = $person->getXref();
+	$tmp = array('M'=>'', 'F'=>'F', 'U'=>'NN');
+	$isF = $tmp[$person->getSex()];
+
+	$personlinks = '<ul class="person_box' . $isF . '">
+		<li>
+			<a href="pedigree.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;talloffset=' . $talloffset . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+				<b>' . WT_I18N::translate('Pedigree') . '</b>
+			</a>
+		</li>';
+		if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
+			$personlinks .= '
+				<li>
+					<a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">
+						<b>' . WT_I18N::translate('Pedigree map') . '</b>
+					</a>
+				</li>
+			';
+		}
+		if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID != $pid) {
+			$personlinks .= '
+				<li>
+					<a href="relationship.php?show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;pid1=' . WT_USER_GEDCOM_ID . '&amp;pid2=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;pretty=2&amp;followspouse=1&amp;ged=' . WT_GEDURL . '">
+						<b>' . WT_I18N::translate('Relationship to me') . '</b>
+					</a>
+				</li>
+			';
+		}
+		$personlinks .= '<li>
+			<a href="descendancy.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;generations=' . $generations . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+				<b>' . WT_I18N::translate('Descendants') . '</b>
+			</a>
+		</li>
+		<li>
+			<a href="ancestry.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;chart_style=' . $chart_style . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+				<b>' . WT_I18N::translate('Ancestors') . '</b>
+			</a>
+		</li>
+		<li>
+			<a href="compact.php?rootid=' . $pid . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+				<b>' . WT_I18N::translate('Compact tree') . '</b>
+			</a>
+			</li>
+		<li>
+			<a href="module.php?mod=chart_fanchart&mod_action=show&rootid=' . $pid . '&amp;ged=' . rawurlencode($GEDCOM) . '">
+				<b>' . WT_I18N::translate('Fanchart') . '</b>
+			</a>
+		</li>
+		<li>
+			<a href="hourglass.php?rootid=' . $pid . '&amp;show_full=' . $PEDIGREE_FULL_DETAILS . '&amp;chart_style=' . $chart_style . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;box_width=' . $box_width . '&amp;ged=' . rawurlencode($GEDCOM) . '&amp;show_spouse=' . $show_spouse . '">
+				<b>' . WT_I18N::translate('Hourglass chart') . '</b>
+			</a>
+		</li>';
+		if (array_key_exists('tree', WT_Module::getActiveModules())) {
+			$personlinks .= '
+				<li>
+					<a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . WT_GEDURL . '&amp;rootid=' . $pid . '">
+						<b>' . WT_I18N::translate('Interactive tree') . '</b>
+					</a>
+				</li>
+			';
+		}
+		foreach ($person->getSpouseFamilies() as $family) {
+			$spouse		= $family->getSpouse($person);
+			$children	= $family->getChildren();
+			$num		= count($children);
+			$personlinks .= '<li>';
+				if ((!empty($spouse))||($num>0)) {
+					$personlinks .= '
+						<a href="' . $family->getHtmlUrl() . '">
+							<b>' . WT_I18N::translate('Family with spouse') . '</b>
+						</a>
+						<br>
+					';
+					if (!empty($spouse)) {
+						$personlinks .= '
+							<a href="' . $spouse->getHtmlUrl() . '">' .
+								$spouse->getFullName() . '
+							</a>
+						';
+					}
+				}
+			$personlinks .= '</li>
+			<li>
+				<ul>';
+					foreach ($children as $child) {
+						$personlinks .= '
+							<li>
+								<a href="' . $child->getHtmlUrl() . '">' .
+									$child->getFullName() . '
+								</a>
+							</li>
+						';
+					}
+				$personlinks .= '</ul>
+			</li>';
+		}
+	$personlinks .= '</ul>';
+
+	return $personlinks;
+
 }
