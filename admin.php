@@ -1599,7 +1599,6 @@ function old_paths() {
 		WT_ROOT . 'js/jquery.autosize.js',
 		WT_ROOT . 'includes/old_messages.php',
 		WT_ROOT . 'library/phpmailer',
-		WT_ROOT . 'includes/functions/functions_mail.php',
 		WT_ROOT . 'modules_v4/widget_messages',
 	);
 }

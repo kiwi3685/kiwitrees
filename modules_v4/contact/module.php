@@ -93,6 +93,8 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	private function show() {
 		global $controller;
+		require_once WT_ROOT . 'includes/functions/functions_mail.php';
+
 		$subject    = WT_Filter::post('subject', null, WT_Filter::get('subject'));
 		$body       = WT_Filter::post('body');
 		$from_name  = WT_Filter::post('from_name');
@@ -143,8 +145,8 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		} else {
 			// Visitors must provide a valid email address
 			if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2])===false)) {
-				$errors.='<p class="ui-state-error">' . WT_I18N::translate('Please enter a valid email address.') . ' </p>';
-				$action='compose';
+				$errors	.= '<p class="ui-state-error">' . WT_I18N::translate('Please enter a valid email address.') . ' </p>';
+				$action	 = 'compose';
 			}
 
 			// Do not allow anonymous visitors to include links to external sites
@@ -153,7 +155,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 					'<p class="ui-state-error">' . WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' </p>' .
 					'<p class="ui-state-highlight">' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.” */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.' . $match[2], $match[1]).'</p>' .
 				AddToLog('Possible spam message from "' . $from_name . '"/"' . $from_email . '", IP="' . $WT_REQUEST->getClientIp() . ' " subject="' . $subject . '", body="' . $body . '"', 'error');
-				$action='compose';
+				$action	= 'compose';
 			}
 			$from = $from_email;
 		}
@@ -168,17 +170,37 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 			// Ensure the user always visits this page twice - once to compose it and again to send it.
 			// This makes it harder for spammers.
+/*
+			switch ($action) {
+
+				case 'compose':
+					$WT_SESSION->good_to_send = true;
+					break;
+				case 'send':
+					// Only send messages if we've come straight from the compose page.
+					if (!$WT_SESSION->good_to_send) {
+						AddToLog('Attempt to send message without visiting the compose page.  Spam attack?', 'auth');
+						$action = 'compose';
+					}
+					if (!WT_Filter::checkCsrf()) {
+						$action = 'compose';
+					}
+					unset($WT_SESSION->good_to_send);
+					break;
+			}
+*/
 			switch ($action) {
 				case 'compose':
 					$controller
 						->addInlineJavascript('
 						function checkForm(frm) {
+							var content = CKEDITOR.instances["comment"].getData();
 							if (frm.subject.value=="") {
 								alert("' . WT_I18N::translate('Please enter a message subject.') . ' ");
 								document.messageform.subject.focus();
 								return false;
 							}
-							if (frm.body.value=="") {
+							if (frm.body.value === "" && content === "") {
 								alert("' . WT_I18N::translate('Please enter some message text before sending.') . ' ");
 								document.messageform.body.focus();
 								return false;
@@ -259,9 +281,14 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 				$message['body'] = $body;
 				$message['method'] = $method;
 				$message['url'] = $url;
-				if (!addMessage($message)) {
-					AddToLog('Unable to send message. FROM:' . $from . ' TO:' . $to . ' (failed to send)', 'error');
+
+				if (addMessage($message)) {
+					WT_FlashMessages::addMessage(WT_I18N::translate('The message was successfully sent to %s', WT_Filter::escapeHtml($to)));
+				} else {
+					WT_FlashMessages::addMessage(WT_I18N::translate('The message was not sent.'));
+					AddToLog('Unable to send a message. FROM:' . $from . ' TO:' . $to . ' (failed to send)', 'error');
 				}
+
 				if ($url) {
 					$return_to = $url;
 				} else {
@@ -273,6 +300,6 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	$html .= '</div>';
 
-		echo $html;
+	echo $html;
 	}
 }

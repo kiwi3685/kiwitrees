@@ -65,9 +65,8 @@ class WT_Mail {
 				->addPart(WT_Filter::unescapeHtml($message), 'text/plain');
 
 			Swift_Mailer::newInstance(self::transport())->send($mail);
-		} catch (Exception $ex) {
-			//Log::addErrorLog('Mail: ' . $ex->getMessage());
-			AddToLog('deleted user ->' . get_user_name($user_id) . '<-', 'auth');
+		} catch (\ErrorException $ex) {
+			AddToLog('Mail ->' . $message . '<-', 'error');
 
 			return false;
 		}
@@ -78,18 +77,18 @@ class WT_Mail {
 	/**
 	 * Send an automated system message (such as a password reminder) from a tree to a user.
 	 *
-	 * @param WT_Tree   $tree
-	 * @param User   $user
-	 * @param string $subject
-	 * @param string $message
+	 * @param WT_Tree $tree
+	 * @param string  $user
+	 * @param string  $subject
+	 * @param string  $message
 	 *
 	 * @return bool
 	 */
-	public static function systemMessage(WT_Tree $tree, User $user, $subject, $message) {
+	public static function systemMessage(WT_Tree $tree, $user, $subject, $message) {
 		return self::send(
 			$tree,
-			$user->getEmail(), $user->getRealName(),
-			WT_Site::preference('SMTP_FROM_NAME'), $tree->getPreference('title'),
+			getUserEmail($user), getUserFullName($user),
+			WT_Site::preference('SMTP_FROM_NAME'), $tree->tree_title,
 			$subject,
 			$message
 		);

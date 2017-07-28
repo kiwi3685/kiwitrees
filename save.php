@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -251,20 +251,19 @@ case 'user_setting':
 	switch ($id2) {
 	case 'canadmin':
 		// Cannot change our own admin status - either to add it or remove it
-		if (WT_USER_ID==$id1) {
+		if (WT_USER_ID == $id1) {
 			fail();
 		}
 		break;
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
-		if ($value && get_user_setting($id1, $id2)!=$value && get_user_setting($id1, 'sessiontime')==0) {
-			require_once WT_ROOT.'includes/functions/functions_mail.php';
+		if ($value && get_user_setting($id1, $id2) != $value && get_user_setting($id1, 'sessiontime') == 0) {
 			WT_I18N::init(get_user_setting($id1, 'language'));
-			kiwiMail(
-				getUserEmail($id1),
-				$KIWITREES_EMAIL,
-				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
-				WT_I18N::translate('The administrator at %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH)
+			WT_Mail::systemMessage(
+				WT_TREE,
+				$id1,
+				WT_I18N::translate(strip_tags(WT_TREE_TITLE) . ' Clippings cart'),
+				WT_I18N::translate('User %s has just downloaded a clippings cart file', WT_USER_NAME)
 			);
 		}
 		break;
