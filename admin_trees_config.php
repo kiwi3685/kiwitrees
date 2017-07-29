@@ -53,8 +53,8 @@ $controller
 $PRIVACY_CONSTANTS = array(
 	'none'			=> WT_I18N::translate('Show to visitors'),
 	'privacy'		=> WT_I18N::translate('Show to members'),
-	'confidential' => WT_I18N::translate('Show to managers'),
-	'hidden'		 => WT_I18N::translate('Hide from everyone')
+	'confidential'	=> WT_I18N::translate('Show to managers'),
+	'hidden'		=> WT_I18N::translate('Hide from everyone')
 );
 
 // List custom theme files that might exist
@@ -1147,9 +1147,9 @@ $controller
 					<div class="config_options">
 						<label><?php echo WT_I18N::translate('Facts for new individuals'); ?></label>
 						<div class="input_group">
-							<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php echo $QUICK_REQUIRED_FACTS; ?>" maxlength="255" dir="ltr">
+							<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php echo get_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS'); ?>" maxlength="255" dir="ltr">
 							<span class="input_label right">
-								<?php echo print_findfact_edit_link('QUICK_REQUIRED_FACTS'); ?>
+								<?php echo print_findfact_edit_link('NEW_QUICK_REQUIRED_FACTS'); ?>
 							</span>
 							<div class="helpcontent">
 								<?php echo WT_I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new person. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form. Either enter the tags manually here or use the edit selector.'); ?>
