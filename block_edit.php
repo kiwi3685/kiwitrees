@@ -36,7 +36,7 @@ $block		= WT_DB::prepare("SELECT SQL_CACHE * FROM `##block` WHERE block_id=?")->
 
 // Check access.  (1) the block must exist, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
-$blocks = WT_Module::getActiveBlocks(WT_GED_ID);
+$blocks = array_merge(WT_Module::getActiveBlocks(WT_GED_ID), WT_Module::getActiveWidgets(WT_GED_ID));
 if (
 	!$block ||
 	!array_key_exists($block->module_name, $blocks) ||
