@@ -137,10 +137,10 @@ function fetch_all_links($xref, $ged_id) {
 
 // find the gedcom record for a family
 function find_family_record($xref, $ged_id) {
-	static $statement=null;
+	static $statement = null;
 
 	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT f_gedcom FROM `##families` WHERE f_id=? AND f_file=?"
 		);
 	}
@@ -149,10 +149,10 @@ function find_family_record($xref, $ged_id) {
 
 // find the gedcom record for an individual
 function find_person_record($xref, $ged_id) {
-	static $statement=null;
+	static $statement = null;
 
 	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?"
 		);
 	}
@@ -161,10 +161,10 @@ function find_person_record($xref, $ged_id) {
 
 // find the gedcom record for a source
 function find_source_record($xref, $ged_id) {
-	static $statement=null;
+	static $statement = null;
 
 	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?"
 		);
 	}
@@ -177,10 +177,10 @@ function find_source_record($xref, $ged_id) {
 * @param string $gedfile the gedcom file id
 */
 function find_other_record($xref, $ged_id) {
-	static $statement=null;
+	static $statement = null;
 
 	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?"
 		);
 	}
@@ -206,25 +206,25 @@ function find_media_record($xref, $ged_id) {
 function find_gedcom_record($xref, $ged_id, $pending=false) {
 	if ($pending) {
 		// This will return NULL if no record exists, or an empty string if the record has been deleted.
-		$gedcom=find_updated_record($xref, $ged_id);
+		$gedcom = find_updated_record($xref, $ged_id);
 	} else {
-		$gedcom=null;
+		$gedcom = null;
 	}
 
 	if (is_null($gedcom)) {
-		$gedcom=find_person_record($xref, $ged_id);
+		$gedcom = find_person_record($xref, $ged_id);
 	}
 	if (is_null($gedcom)) {
-		$gedcom=find_family_record($xref, $ged_id);
+		$gedcom = find_family_record($xref, $ged_id);
 	}
 	if (is_null($gedcom)) {
-		$gedcom=find_source_record($xref, $ged_id);
+		$gedcom = find_source_record($xref, $ged_id);
 	}
 	if (is_null($gedcom)) {
-		$gedcom=find_media_record($xref, $ged_id);
+		$gedcom = find_media_record($xref, $ged_id);
 	}
 	if (is_null($gedcom)) {
-		$gedcom=find_other_record($xref, $ged_id);
+		$gedcom = find_other_record($xref, $ged_id);
 	}
 	return $gedcom;
 }
@@ -235,10 +235,10 @@ function find_gedcom_record($xref, $ged_id, $pending=false) {
  * @param string $gedfile the gedcom file to get the record from.. defaults to currently active gedcom
  */
 function find_updated_record($xref, $ged_id) {
-	static $statement=null;
+	static $statement = null;
 
 	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT new_gedcom FROM `##change` WHERE gedcom_id=? AND xref=? AND status='pending' ".
 			"ORDER BY change_id DESC LIMIT 1"
 		);
@@ -252,10 +252,10 @@ function find_updated_record($xref, $ged_id) {
 // Returns 'INDI', 'FAM', etc., or null if the record does not exist.
 function gedcom_record_type($xref, $ged_id) {
 	global $gedcom_record_cache;
-	static $statement=null;
+	static $statement = null;
 
 	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT 'INDI' FROM `##individuals` WHERE i_id=? AND i_file=? UNION ALL ".
 			"SELECT 'FAM'  FROM `##families`    WHERE f_id=? AND f_file=? UNION ALL ".
 			"SELECT 'SOUR' FROM `##sources`     WHERE s_id=? AND s_file=? UNION ALL ".
@@ -1494,9 +1494,9 @@ function check_user_password($user_id, $password) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function get_user_setting($user_id, $setting_name, $default_value=null) {
-	static $statement=null;
+	static $statement = null;
 	if ($statement===null) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT SQL_CACHE setting_value FROM `##user_setting` WHERE user_id=? AND setting_name=?"
 		);
 	}
@@ -1585,7 +1585,7 @@ function get_gedcom_blocks($gedcom_id) {
 function get_block_setting($block_id, $setting_name, $default_value=null) {
 	static $statement;
 	if ($statement===null) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 		);
 	}
@@ -1606,7 +1606,7 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 function get_module_setting($module_name, $setting_name, $default_value=null) {
 	static $statement;
 	if ($statement===null) {
-		$statement=WT_DB::prepare(
+		$statement = WT_DB::prepare(
 			"SELECT SQL_CACHE setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?"
 		);
 	}

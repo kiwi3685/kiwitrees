@@ -30,7 +30,6 @@ global $WT_TREE;
 $xref	= WT_Filter::get('xref', WT_REGEX_XREF);
 $census = WT_Filter::get('census');
 $head	= WT_Person::getInstance($xref, $WT_TREE);
-//check_record_access($head);
 $controller->restrictAccess(class_exists($census));
 
 /** @var WT_Census_CensusInterface */

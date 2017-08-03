@@ -50,9 +50,9 @@ $fact				= safe_REQUEST($_REQUEST, 'fact',    WT_REGEX_UNSAFE);
 $option				= safe_REQUEST($_REQUEST, 'option',  WT_REGEX_UNSAFE);
 $assist				= safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
 $noteid				= safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
-$pid_array			= safe_REQUEST($_REQUEST, 'pid_array',		 WT_REGEX_XREF);
-$pids_array_add		= safe_REQUEST($_REQUEST, 'pids_array_add',  WT_REGEX_XREF);
-$pids_array_edit	= safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
+//$pid_array			= safe_REQUEST($_REQUEST, 'pid_array',		 WT_REGEX_XREF);
+//$pid_array_add		= safe_REQUEST($_REQUEST, 'pids_array_add',  WT_REGEX_XREF);
+//$pid_array_edit	= safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
 $update_CHAN		= !safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
@@ -1438,7 +1438,7 @@ case 'update':
 		->pageHeader();
 
 	/* -----------------------------------------------------------------------------
-	 * $pids_array is a text file passed via js from the Census Assistant
+	 * $pid_array is a text file passed via js from the Census Assistant
 	 * to the hidden field id=\"pids_array\" in the case 'add'.
 	 * The subsequent array ($cens_pids), after exploding this text file,
 	 * is an array of indi id's within the Census Transcription
@@ -1447,18 +1447,10 @@ case 'update':
 	 * If $cens_pids is not set, then the array created is just the current $pid.
 	 * -----------------------------------------------------------------------------
 	 */
-	if (isset($_REQUEST['pids_array_add'])) {
-		$pids_array = $_REQUEST['pids_array_add'];
-	}
-	if (isset($_REQUEST['pids_array_edit'])) {
-		$pids_array = $_REQUEST['pids_array_edit'];
-	}
-	if (isset($_REQUEST['num_note_lines'])) {
-		$num_note_lines = $_REQUEST['num_note_lines'];
-	}
 
-	if (isset($pids_array) && $pids_array !== "no_array") {
-		$cens_pids = explode(', ', $pids_array);
+	$pid_array = WT_Filter::post('pid_array');
+	if (isset($pid_array) && $pid_array !== "no_array") {
+		$cens_pids = explode(',', $pid_array);
 		$cens_pids = array_diff($cens_pids, array("add"));
 	}
 
@@ -1470,10 +1462,15 @@ case 'update':
 		$idnums = "multi";
 	}
 
+	if (isset($_REQUEST['num_note_lines'])) {
+		$num_note_lines = $_REQUEST['num_note_lines'];
+	}
+
 	$success = true;
 
 	// Cycle through each individual concerned defined by $cens_pids array.
 	foreach ($cens_pids as $pid) {
+
 		if (isset($pid)) {
 			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 		} elseif (isset($famid)) {
@@ -2528,7 +2525,7 @@ case 'changefamily_update-NEW':
 	}
 
 	$family = WT_Family::getInstance($xref, $WT_TREE);
-	check_record_access($family);
+//	check_record_access($family);
 
 	$controller
 		->setPageTitle(WT_I18N::translate('Change family members') . ' – ' . $family->getFullName())
@@ -2994,14 +2991,14 @@ case 'checkduplicates':
  *
  * @param WT_GedcomRecord $object
  */
-function check_record_access(WT_GedcomRecord $object = null) {
-	global $controller;
+//function check_record_access(WT_GedcomRecord $object = null) {
+//	global $controller;
 
-	if (!$object || !$object->canDisplayDetails() || !$object->canEdit() || $object->canDisplayName()) {
-		print_r($object->canDisplayDetails());
+//	if (!$object || !$object->canDisplayDetails() || !$object->canEdit() || $object->canDisplayName()) {
+//		print_r($object->canDisplayDetails());
 //		$controller
 //			->pageHeader()
 //			->addInlineJavascript('closePopupAndReloadParent();');
 //		exit;
-	}
-}
+//	}
+//}

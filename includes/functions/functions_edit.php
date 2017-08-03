@@ -448,15 +448,20 @@ function delete_gedrec($xref, $ged_id) {
 //-- this function will check a GEDCOM record for valid gedcom format
 function check_gedcom($gedrec, $chan=true) {
 	$ct = preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
+
 	if ($ct == 0) {
 		echo "ERROR 20: Invalid GEDCOM format";
-		AddToLog("ERROR 20: Invalid GEDCOM format:\n".$gedrec, 'edit');
+		AddToLog("ERROR 20: Invalid GEDCOM format:\n" . $gedrec, 'edit');
 		if (WT_DEBUG) {
 			echo "<pre>$gedrec</pre>";
 			echo debug_print_backtrace();
 		}
 		return false;
 	}
+
+	// MSDOS line endings will break things in horrible ways
+	$gedrec = preg_replace('/[\r\n]+/', "\n", $gedrec);
+
 	$gedrec = trim($gedrec);
 	if ($chan) {
 		$pos1 = strpos($gedrec, "1 CHAN");
@@ -2595,13 +2600,18 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 					add_simple_tag('4 LONG');
 					break;
 				case 'ADDR':
-					add_simple_tag('3 ADR1');
-					add_simple_tag('3 ADR2');
-					add_simple_tag('3 ADR3');
-					add_simple_tag('3 CITY');
-					add_simple_tag('3 STAE');
-					add_simple_tag('3 POST');
-					add_simple_tag('3 CTRY');
+					$addr_levels = false;
+					if ($addr_levels){
+						add_simple_tag('3 ADR1');
+						add_simple_tag('3 ADR2');
+						add_simple_tag('3 ADR3');
+						add_simple_tag('3 CITY');
+						add_simple_tag('3 STAE');
+						add_simple_tag('3 POST');
+						add_simple_tag('3 CTRY');
+					} else {
+						add_simple_tag('3 ADDR');
+					}
 					break;
 				case 'FILE':
 					add_simple_tag('3 FORM');
