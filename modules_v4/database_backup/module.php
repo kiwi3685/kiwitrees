@@ -43,7 +43,7 @@ class database_backup_WT_Module extends WT_Module implements WT_Module_Config {
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_databasebackup';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_databasebackup';
 	}
 
 	// Extend WT_Module
