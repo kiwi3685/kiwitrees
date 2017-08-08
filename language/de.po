@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Kiwitrees\n"
 "Report-Msgid-Bugs-To: admin@kiwitrees.net\n"
 "POT-Creation-Date: 2017-04-17 10:48+1200\n"
-"PO-Revision-Date: 2017-07-24 09:10+1200\n"
+"PO-Revision-Date: 2017-08-09 08:26+1200\n"
 "Last-Translator: Nigel Osborne <admin@kiwitrees.net>\n"
 "Language-Team: German (http://www.transifex.com/kiwitrees/kiwitrees/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -3107,7 +3107,7 @@ msgstr "Verknüpfen Sie dieser Benutzer mit einer Person im Stammbaum."
 
 #: admin_users.php:532
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 #: admin_users.php:534
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -5009,17 +5009,17 @@ msgstr "Das PHP-System erteilte keine Erlaubnis, Ihre Datei mit diesem Namen zu 
 #. I18N: reflexive pronoun
 #: includes/functions/functions.php:1029
 msgid "himself"
-msgstr ""
+msgstr "selbst"
 
 #. I18N: reflexive pronoun
 #: includes/functions/functions.php:1031
 msgid "herself"
-msgstr ""
+msgstr "selbst"
 
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: includes/functions/functions.php:1033
 msgid "themself"
-msgstr ""
+msgstr "selbst"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from
 #. English “N’th cousins”, and the software has already generated the correct
@@ -7879,7 +7879,7 @@ msgstr "%s 2. Grades in absteigender Folge"
 #: includes/functions/functions.php:2162
 #, php-format
 msgid "%s three times removed ascending"
-msgstr ""
+msgstr "%s 3. Grades in aufsteigender Folge"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2165
@@ -8583,7 +8583,7 @@ msgstr "Titel der Geschichte"
 
 #: includes/functions/functions_print_lists.php:1638
 msgid "File name"
-msgstr ""
+msgstr "Dateiname"
 
 #: includes/functions/functions_print_lists.php:1732
 msgid "Spouses"
@@ -8649,7 +8649,7 @@ msgstr "%1$s ist %2$s von %3$s"
 
 #: includes/functions/functions_print_relations.php:96 includes/functions/functions_print_relations.php:115
 msgid "Common ancestor: "
-msgstr ""
+msgstr "Gemeinsamen Vorfahren: "
 
 #: includes/functions/functions_resource.php:475 modules_v4/report_family/module.php:303 modules_v4/report_individual/module.php:308 modules_v4/report_related_fam/module.php:393 modules_v4/report_vital_records/module.php:309
 msgid "Spouse"
@@ -8844,37 +8844,37 @@ msgstr "Fächer-Diagramm von %s"
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:160
 msgid "180 degree"
-msgstr ""
+msgstr "180 Grad"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:161
 msgid "210 degree"
-msgstr ""
+msgstr "210 Grad"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:162
 msgid "240 degree"
-msgstr ""
+msgstr "240 Grad"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:163
 msgid "270 degree"
-msgstr ""
+msgstr "270 Grad"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:164
 msgid "300 degree"
-msgstr ""
+msgstr "300 Grad"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:165
 msgid "330 degree"
-msgstr ""
+msgstr "330 Grad"
 
 #. I18N: configuration option for fan chart
 #: library/WT/Controller/Fanchart.php:166
 msgid "360 degree"
-msgstr ""
+msgstr "360-Grad"
 
 #. I18N: display calculation of inviduals recorded per generation on ancestors
 #. report
@@ -16501,7 +16501,7 @@ msgstr "Wenn du den Account nicht angelegt hast, kannst du diese Nachricht einfa
 
 #: login.php:338
 msgid "You won't get any more email from this site, because the account request will be deleted automatically after seven days."
-msgstr ""
+msgstr "Du wirst keine weitere E-Mail von dieser Seite bekommen, da der Konto-Antrag nach sieben Tagen automatisch gelöscht wird."
 
 #. I18N: %s is a server name/URL
 #: login.php:339
@@ -16712,7 +16712,7 @@ msgstr "<b>Bitte beachten:</b> Private Informationen von lebenden Personen werde
 #: message.php:130
 #, php-format
 msgid "This message will be sent to <b>%s</b>"
-msgstr ""
+msgstr "Diese Nachricht wird an <b>%s</b> gesendet werden"
 
 #: message.php:134
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
@@ -16856,7 +16856,7 @@ msgstr "Auch diese Dateien und Ordner ausschließen. "
 
 #: modules_v4/backup_to_dropbox/module.php:156
 msgid "Separate each item by a comma"
-msgstr ""
+msgstr "Jedes Element durch ein Komma trennen"
 
 #: modules_v4/backup_to_dropbox/module.php:169
 msgid "These are the files and folders that will be sent to Dropbox."
@@ -16865,11 +16865,11 @@ msgstr "Dies sind die Dateien und Ordner, die zur Dropbox zugeschickt werden."
 #. I18N: Explanation of files included in backup to Dropbox
 #: modules_v4/backup_to_dropbox/module.php:170
 msgid "Where a folder is shown, the entire contents will be sent."
-msgstr ""
+msgstr "Wo ein Ordner angezeigt wird, werden der gesamte Inhalt gesendet."
 
 #: modules_v4/backup_to_dropbox/module.php:191
 msgid "backup"
-msgstr ""
+msgstr "Sicherung"
 
 #. I18N: Dropbox copyright statement
 #: modules_v4/backup_to_dropbox/module.php:194
@@ -16892,7 +16892,7 @@ msgstr "Aktualisierung per Stapelverarbeitung "
 
 #: modules_v4/batch_update/admin_batch_update.php:85
 msgid "Your user account does not have \"automatically approve changes\" enabled.  You will only be able to change one record at a time."
-msgstr ""
+msgstr "Ihr Benutzerkonto hat keine \"automatisch Änderungen genehmigen\" aktiviert.  Sie werden nur in der Lage sein, einen Datensatz zu einem Zeitpunkt zu ändern."
 
 #: modules_v4/batch_update/admin_batch_update.php:109
 msgid "You should create a backup GEDCOM file before using the Update all option."
@@ -17031,7 +17031,7 @@ msgstr "Ersatz-Text"
 
 #: modules_v4/batch_update/plugins/update_links.php:31
 msgid "Update missing links"
-msgstr ""
+msgstr "Fehlende Verknüpfungen aktualisieren"
 
 #: modules_v4/batch_update/plugins/update_links.php:35
 msgid "Occasionally the table of links between records needs to be synchronised with the GEDCOM data. This tools checks for missing links and inserts them into the table."
@@ -17102,15 +17102,15 @@ msgstr "Enkelkind "
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:200
 msgid "Great grandchild"
-msgstr ""
+msgstr "Urenkel"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:248 modules_v4/calendar_utilities/plugins/calculators.php:258
 msgid "You and D are siblings"
-msgstr ""
+msgstr "Sie und D sind Geschwister"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:262 modules_v4/calendar_utilities/plugins/calculators.php:320 modules_v4/calendar_utilities/plugins/calculators.php:329
 msgid "You and D are "
-msgstr ""
+msgstr "Sie und D sind "
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:263
 msgid " Cousins"
@@ -17118,27 +17118,27 @@ msgstr "Cousins/Cousinen "
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:271 modules_v4/calendar_utilities/plugins/calculators.php:290
 msgid "Grand"
-msgstr ""
+msgstr "Groß"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:275 modules_v4/calendar_utilities/plugins/calculators.php:294
 msgid "Great Grand"
-msgstr ""
+msgstr "Urgroß"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:279 modules_v4/calendar_utilities/plugins/calculators.php:298
 msgid " Great Grand"
-msgstr ""
+msgstr "Urgroß"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:282
 msgid "D is your "
-msgstr ""
+msgstr "D ist Ihre "
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:282
 msgid " niece/nephew"
-msgstr ""
+msgstr " Nichte/Neffe"
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:301
 msgid "You are the "
-msgstr ""
+msgstr "Sie sind der "
 
 #: modules_v4/calendar_utilities/plugins/calculators.php:301
 msgid " niece/nephew of D"
@@ -20065,7 +20065,7 @@ msgstr "Die Suche nach allen möglichen Beziehungen kann in komplexen Bäumen vi
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:277
 msgid "Families tab settings"
-msgstr ""
+msgstr "Familien-Tabulatoreinstellungen"
 
 #. I18N: Configuration option
 #: modules_v4/chart_relationship/module.php:279
@@ -21807,7 +21807,7 @@ msgstr ""
 #. I18N: Description of the families list module
 #: modules_v4/list_families/module.php:38
 msgid "A list of families by surname"
-msgstr ""
+msgstr "Eine Liste der Familien nach Nachnamen"
 
 #. I18N: Description of the individuals list module
 #: modules_v4/list_individuals/module.php:38
