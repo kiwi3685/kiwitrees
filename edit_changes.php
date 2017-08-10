@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -185,7 +185,7 @@ if ($changed_gedcoms) {
 									}
 								$output .= '</b></td>
 								<td>
-									<a href="#" onclick="return reply(\'' . $change->user_name . '\', \'' . WT_I18N::translate('Moderate pending changes') . '\')" alt="' . WT_I18N::translate('Send Message') . '">' .
+									<a href="message.php?to=' . $change->user_name . '&amp;subject=' . WT_I18N::translate('Moderate pending changes') . '&amp;ged=' . WT_GEDCOM . '" target="_blank" rel="noopener noreferrer" title="' . WT_I18N::translate('Send Message') . '">' .
 										'<span>' . htmlspecialchars($change->real_name) . '</span>
 										&nbsp;-&nbsp;
 										<span>' . htmlspecialchars($change->user_name) . '</span>

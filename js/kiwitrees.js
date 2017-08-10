@@ -27,7 +27,6 @@ var indx_window_specs	= 'width=600,height=500,left=200,top=150,resizable=1,scrol
 var news_window_specs	= 'width=900,height=750,left=70, top=70, resizable=1,scrollbars=1'; // edit_news.php
 var help_window_specs	= 'width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
 var find_window_specs	= 'width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
-var mesg_window_specs	= 'width=800,height=650,left=250,top=100,resizable=1,scrollbars=1'; // message.php
 var chan_window_specs	= 'width=600,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var mord_window_specs	= 'width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
 var link_window_specs	= 'width=950,height=750,left=70,top=70,  resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
@@ -507,16 +506,6 @@ function reorder_families(pid) {
     "action": "reorder_fams",
     "pid": pid
   });
-}
-
-function reply(username, subject) {
-	window.open('message.php?to='+username+'&subject='+subject+'&ged='+WT_GEDCOM, '_blank', mesg_window_specs);
-	return false;
-}
-
-function delete_message(id) {
-	window.open('message.php?action=delete&id='+id, '_blank'+'&ged='+WT_GEDCOM, mesg_window_specs);
-	return false;
 }
 
 function change_family_members(famid) {
@@ -1320,11 +1309,6 @@ function paste_char(value) {
 	if (pastefield.id=="NPFX" || pastefield.id=="GIVN" || pastefield.id=="SPFX" || pastefield.id=="SURN" || pastefield.id=="NSFX") {
 		updatewholename();
 	}
-}
-
-function message (username, method, url) {
-  window.open('message.php?to=' + encodeURIComponent(username) + '&method=' + encodeURIComponent(method) + '&url=' + encodeURIComponent(url), '_blank', mesg_window_specs);
-  return false;
 }
 
 /**

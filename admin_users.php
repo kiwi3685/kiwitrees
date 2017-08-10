@@ -231,7 +231,7 @@ switch (WT_Filter::get('action')) {
 			$aData[3] = '<a href="?action=edit&amp;user_id=' . $user_id . '" title="'.WT_I18N::translate('Edit user').'"><span dir="auto">' . WT_Filter::escapeHtml($aData[3]) . '</span></a>';
 			// $aData[4] is the email address
 			if ($user_id != WT_USER_ID) {
-				$aData[4] = '<a href="#" onclick="return message(\'' . $username . '\', \'\', \'\');">' . WT_Filter::escapeHtml($aData[4]) . '&nbsp;<i class="fa-envelope-o"></i></a>';
+				$aData[4] = '<a href="message.php?to=' . $username . '"  title="' . WT_I18N::translate('Send Message') . '" target="_blank">' . WT_Filter::escapeHtml($aData[4]) . '&nbsp;<i class="fa-envelope-o"></i></a>';
 			}
 			// $aData[5] is the langauge
 			if (array_key_exists($aData[5], $installed_languages)) {

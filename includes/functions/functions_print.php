@@ -323,7 +323,7 @@ function whoisonline() {
 				$content .= ' - ' . htmlspecialchars($user_name);
 
 				if (WT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-					$content .= ' <a class="fa-envelope-o" href="#" onclick="return message(\''.$user_name . '\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="' . WT_I18N::translate('Send Message').'"></a>';
+					$content .= '<a class="fa-envelope-o" href="message.php?to=' . $user_name . '&amp;url=' . addslashes(urlencode(get_query_url())) . '"  title="' . WT_I18N::translate('Send Message') . '"></a>';
 				}
 
 				$i++;
@@ -347,7 +347,7 @@ function user_contact_link($user_id) {
 	case 'mailto':
 		return '<a href="mailto:' . WT_Filter::escapeHtml(getUserEmail($user_id)) . '">' . getUserFullName($user_id) . '</a>';
 	default:
-		return "<a href='#' onclick='message(\"" . WT_Filter::escapeHtml(get_user_name($user_id)) . '", "' . $method . '", "' . WT_SERVER_NAME . WT_Filter::escapeHtml(get_query_url()) . "\", \"\");return false;'>" . getUserFullName($user_id) . '</a>';
+		return '<a href="message.php?to=' . WT_Filter::escapeHtml(get_user_name($user_id)) . '&amp;url=' . addslashes(urlencode(get_query_url())) . '" target="_blank" rel="noopener noreferrer" title="' . WT_I18N::translate('Send Message') . '">' . getUserFullName($user_id) . '</a>';
 	}
 }
 
@@ -525,20 +525,20 @@ function print_fact_notes($factrec, $level, $textOnly = false) {
 
 //-- function to print a privacy error with contact method
 function print_privacy_error() {
-	$user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
-	$method=get_user_setting($user_id, 'contactmethod');
-	$fullname=getUserFullName($user_id);
+	$user_id	= get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+	$method		= get_user_setting($user_id, 'contactmethod');
+	$fullname	= getUserFullName($user_id);
 
-	echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
+	echo '<div class="error">' . WT_I18N::translate('This information is private and cannot be shown.') . '</div>';
 	switch ($method) {
 	case 'none':
 		break;
 	case 'mailto':
-		$email=getUserEmail($user_id);
-		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>', '</div>';
+		$email = getUserEmail($user_id);
+		echo '<div class="error">' . WT_I18N::translate('For more information contact') . ' ' . '<a href="mailto:' . htmlspecialchars($email) . '">' . htmlspecialchars($fullname) . '</a></div>';
 		break;
 	default:
-		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"", get_user_name($user_id), "\", \"", $method, "\", \"", addslashes(urlencode(get_query_url())), "\", \"\");return false;'>", $fullname, '</a>', '</div>';
+		echo '<div class="error">' . WT_I18N::translate('For more information contact') . ' ' . '<a class="fa-envelope-o" href="message.php?to=' . $user_id . '&amp;url=' . addslashes(urlencode(get_query_url())) . '"  title="' . WT_I18N::translate('Send Message') . '">' . $fullname . '</a></div>';
 		break;
 	}
 }

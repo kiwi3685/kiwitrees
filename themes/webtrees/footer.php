@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,14 @@ if (!defined('WT_KIWITREES')) {
 
 <?php if ($view != 'simple') { ?>
 	<div id="footer">
-		<?php if (contact_links() != '' && !array_key_exists('contact', WT_Module::getActiveModules())) echo contact_links(); ?>
+		<?php if (!array_key_exists('contact', WT_Module::getActiveModules())){ ?>
+			<div class="contact_links">
+				<a href="message.php?url=<?php echo addslashes(urlencode(get_query_url())); ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_I18N::translate('Send Message'); ?>">
+					<?php echo WT_I18N::translate('If you have any questions or comments please contact us'); ?>
+					<i class="fa-envelope-o"></i>
+				</a>
+			</div>
+		<?php } ?>
 		<p class="logo">
 			<a href="<?php echo WT_KIWITREES_URL; ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_KIWITREES_URL; ?>">
 				<?php echo /*I18N: kiwitrees logo on page footer */ WT_I18N::translate('Powered by %s', WT_KIWITREES); ?><span>&trade;</span>

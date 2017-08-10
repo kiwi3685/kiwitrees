@@ -1656,6 +1656,7 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 .icon-wiki                 {width:16px;height:16px;background-image:url(../images/w_button.png);}
 .icon-zoomin               {width:25px;height:25px;background-image:url(../images/zoomin.png);}
 .icon-zoomout              {width:25px;height:25px;background-image:url(../images/zoomout.png);}
+.fa-envelope-o             {width:16px;height:16px;background-image:url(../images/email.png);display: inline-block; margin-top: 2px; vertical-align: text-bottom;}
 
 [class^="icon-mime-"], [class*=" icon-mime-"] {display:inline-block;background-image:url(../images/icon-mime-sprite.png);background-color:transparent;background-repeat:no-repeat;width:48px;height:48px;}
 /* Generic MIME types */
@@ -2398,68 +2399,52 @@ div.widget {
 
 /* ------------------ */
 
-/* Styling for Contacts module and messaging popup*/
-#message {
-		margin: 20px;
+/* Styling for Contacts module */
+#contact_page {
+	margin: 20px;
 }
 
-#message h3 {
+#contact_page h3 {
 	margin-top: 0;
 }
 
-#message  div.option {
+#contact_page #contact_header,
+#contact_page .contact_form {
+	max-width: 700px;
+	padding: 0 30px;
+}
+
+#contact_page  div.option {
 	display: inline-block;
 	margin-bottom: 15px;
 	width: 100%;
 }
 
-#message label {
+#contact_page label {
 	display: inline-block;
 	font-weight: 600;
 	vertical-align: top;
 	width: 15%;
 }
 
-#message input,
-#message textarea {
+#contact_page input,
+#contact_page textarea {
 	width: 60%;
 }
 
-#message textarea,
-#message #cke_1_contents {
-	height: 100px!important;
+#contact_page #contact_forms {
+	overflow: hidden;
 }
 
-#message #cke_body {
+#contact_page .contact_form {
+	float: left;
+}
+
+#contact_page #cke_body {
 	display: inline-block;
 	width: 80%!important;
 }
-
-.message_form {
-	margin: auto;
-	width:80%;
-}
-
-#contact_forms,
-.message_note {
-    border: 1px solid #999 ;
-    padding: 20px;
-}
-
-.contact_form {
-	float: left;
-	margin: auto 20px;
-	max-width: 600px;
-  	min-width: 45%;
-}
-
-.message_note {
-    margin-bottom: 20px;
-}
-
-.message_note hr {
-    display: none;
-}
+/* ------------------ */
 
 /* Styling for fancy_treeview_descendants module */
 

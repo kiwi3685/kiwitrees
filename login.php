@@ -143,7 +143,7 @@ switch ($action) {
 
 			</div>
 			<div id="login-box">
-				<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
+				<form id="login-form" name="login-form" method="post" action="<?php echo WT_LOGIN_URL; ?>" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
 					<input type="hidden" name="action" value="login">
 					<input type="hidden" name="url" value="<?php echo htmlspecialchars($url); ?>">
 					<input type="hidden" name="usertime" value="">
@@ -321,7 +321,7 @@ switch ($action) {
 					$mail2_from    = $KIWITREES_EMAIL;
 
 					// Send user message by email only
-					Mail::send(
+					WT_Mail::send(
 						// “From:” header
 						$WT_TREE,
 						// “To:” header
@@ -336,7 +336,7 @@ switch ($action) {
 					);
 
 					// Send admin message by internal messaging
-					Mail::send(
+					WT_Mail::send(
 						// “From:” header
 						$WT_TREE,
 						// “To:” header

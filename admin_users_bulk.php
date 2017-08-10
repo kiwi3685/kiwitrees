@@ -33,17 +33,17 @@ $controller
 ?>
 <div id="users_bulk">
 	<p>
-		<a href="#" onclick="message('all', 'messaging', '', ''); return false;">
+		<a href="message.php?to=all&amp;method=messaging" target="_blank">
 			<?php echo WT_I18N::translate('Send message to all users'); ?>
 		</a>
 	</p>
 	<p>
-		<a href="#" onclick="message('never_logged', 'messaging', '', ''); return false;">
+		<a href="message.php?to=never_logged&amp;method=messaging" target="_blank">
 			<?php echo WT_I18N::translate('Send message to users who have never logged in'); ?>
 		</a>
 	</p>
 	<p>
-		<a href="#" onclick="message('last_6mo', 'messaging', '', ''); return false;">
+		<a href="message.php?to=last_6mo&amp;method=messaging" target="_blank">
 			<?php echo WT_I18N::translate('Send message to users who have not logged in for 6 months'); ?>
 		</a>
 	</p>
