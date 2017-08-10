@@ -2599,7 +2599,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 					add_simple_tag('4 LATI');
 					add_simple_tag('4 LONG');
 					break;
-				case 'ADDR':
+/*				case 'ADDR':
 					$addr_levels = false;
 					if ($addr_levels){
 						add_simple_tag('3 ADR1');
@@ -2613,7 +2613,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 						add_simple_tag('3 ADDR');
 					}
 					break;
-				case 'FILE':
+*/				case 'FILE':
 					add_simple_tag('3 FORM');
 					break;
 				case 'EVEN':
