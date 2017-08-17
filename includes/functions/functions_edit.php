@@ -1563,6 +1563,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 				case 'TYPE':
 					if ($level == 2 && $tags[0] == 'EVEN') {
 						echo ' data-autocomplete-type="EVEN_TYPE"';
+					} elseif ($level == 2 && $tags[0] == 'FACT') {
+						echo ' data-autocomplete-type="FACT_TYPE"';						
 					}
 					break;
 				case 'NPFX':
