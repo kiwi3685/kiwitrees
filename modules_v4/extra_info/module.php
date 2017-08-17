@@ -65,24 +65,27 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		ob_start();
-		echo '<div>',
-			WT_I18N::translate('Internal reference '),
-			'<span>' .$controller->record->getXref(), '</span>
-		</div>';
+		echo '
+			<div>' .
+				WT_I18N::translate('Internal reference ') . '
+				<span>' . $controller->record->getXref() . '</span>
+				<hr>
+			</div>
+		';
 		if (!$indifacts) {
 			echo WT_I18N::translate('There are no facts for this individual.');
 		} else {
 			foreach ($indifacts as $fact) {
-				print_fact($fact, $controller->record);
+				echo '<hr>' . print_fact($fact, $controller->record);
 			}
 		}
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
-			require WT_ROOT.'includes/hitcount.php';
+			require WT_ROOT . 'includes/hitcount.php';
 			echo '<div id="hitcounter">';
-				echo WT_I18N::translate('Hit Count:'). ' '. $hitCount;
+				echo WT_I18N::translate('Hit Count:') .  ' ' . $hitCount;
 			echo '</div>';// close #hitcounter
 		}
-		return strip_tags(ob_get_clean(), '<a><div><span>');
+		return strip_tags(ob_get_clean(), '<a><div><span><hr>');
 	}
 
 	// Implement WT_Module_Sidebar
@@ -94,8 +97,9 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public static function showFact(WT_EVENT $fact) {
 		switch ($fact->getTag()) {
 		case 'AFN':
-		case 'CHAN':
 		case 'IDNO':
+		case 'CHAN':
+		case 'FACT':
 		case 'REFN':
 		case 'RFN':
 		case 'RIN':
