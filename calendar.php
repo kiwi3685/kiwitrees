@@ -293,7 +293,7 @@ $controller
 						<?php echo WT_Gedcom_Tag::getLabel('EMIG'); ?>
 					</option>
 					<option value="EVEN" <?php echo $filterev === 'EVEN' ? 'selected' : ''; ?>>
-						<?php echo WT_I18N::translate('Custom Event'); ?>
+						<?php echo WT_I18N::translate('Custom event'); ?>
 					</option>
 				</select>
 			</div>

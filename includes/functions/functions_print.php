@@ -1066,7 +1066,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		}
 	}
 	if ($type == 'INDI' || $type == 'FAM') {
-		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
+		echo '<option value="EVEN">', WT_I18N::translate('Custom event'), '</option>';
 		echo '<option value="FACT">', WT_I18N::translate('Custom Fact'), '</option>';
 	}
 	echo '</select>';
@@ -1168,7 +1168,7 @@ function print_add_new_fact2($id, $usedfacts, $type) {
 		echo '<option value="', $fact, '">', $fact_name, '</option>';
 	}
 	if ($type == 'INDI' || $type == 'FAM') {
-		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
+		echo '<option value="EVEN">', WT_I18N::translate('Custom event'), '</option>';
 	}
 	echo '</select>';
 	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact2\');">';

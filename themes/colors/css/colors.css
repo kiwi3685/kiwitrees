@@ -1451,7 +1451,7 @@ div.dt-buttons a.dt-button {
 
 /* Extra Info  */
 #sb_content_extra_info {font-size:80%;font-weight:700;margin-top:1px;overflow:hidden;padding:5px;}
-#sb_content_extra_info .editfacts {float:right;margin-top:-30px;}
+#sb_content_extra_info .editfacts {float:right;margin-top:-20px;}
 #sb_content_extra_info #hitcounter {border-top:1px solid #bbccdd;font-weight:700;padding-top:5px;}
 #sb_content_extra_info a {display:block;}
 #sb_content_extra_info span {font-weight:400;}
