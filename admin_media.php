@@ -309,7 +309,7 @@ case 'load_json':
 				foreach ($media_trees as $media_tree) {
 					$create_form .= '
 						<p>
-							<a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\'); return false;">' .
+							<a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\'); return false;">' .
 								WT_I18N::translate('Create') . '
 							</a>
 							 — ' .

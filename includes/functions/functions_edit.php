@@ -1564,7 +1564,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, $row
 					if ($level == 2 && $tags[0] == 'EVEN') {
 						echo ' data-autocomplete-type="EVEN_TYPE"';
 					} elseif ($level == 2 && $tags[0] == 'FACT') {
-						echo ' data-autocomplete-type="FACT_TYPE"';						
+						echo ' data-autocomplete-type="FACT_TYPE"';
 					}
 					break;
 				case 'NPFX':
@@ -2711,9 +2711,11 @@ function no_update_chan(WT_GedcomRecord $record) {
 	if (WT_USER_IS_ADMIN) { ?>
 		<div class="last_change">
 			<label>
-				<?php echo WT_Gedcom_Tag::getLabel('CHAN'); ?>
-				<span style="font-weight:400; font-size:90%;"><?php echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()); ?></span>
-				<span style="font-weight:400; font-size:90%;"><?php echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser()); ?></span>
+				<?php echo WT_Gedcom_Tag::getLabel('CHAN');
+				if ($record) { ?>
+					<span style="font-weight:400; font-size:90%;"><?php echo WT_Gedcom_Tag::getLabelValue('DATE', $record->LastChangeTimestamp()); ?></span>
+					<span style="font-weight:400; font-size:90%;"><?php echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $record->LastChangeUser()); ?></span>
+				<?php } ?>
 			</label>
 			<div class="input">
 				<?php if ($NO_UPDATE_CHAN) { ?>
