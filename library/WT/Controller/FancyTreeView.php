@@ -135,22 +135,22 @@ class WT_Controller_FancyTreeView {
 	}
 
 	// Add error or success message
-	public function addMessage($controller, $type, $msg) {
-		if ($type == "success") {
-			$class = "ui-state-highlight";
-		}
-		if ($type == "error") {
-			$class = "ui-state-error";
-		}
+//	public function addMessage($controller, $type, $msg) {
+//		if ($type == "success") {
+//			$class = "ui-state-highlight";
+//		}
+//		if ($type == "error") {
+//			$class = "ui-state-error";
+//		}
 /*		$controller->addInlineJavaScript('
 			jQuery("#error").text("' . $msg . '").addClass("' . $class . '").show("normal");
 			setTimeout(function() {
 				jQuery("#error").hide("normal");
 			}, 10000);
 		');
-*/
-	}
 
+	}
+*/
 	// Search within a multiple dimensional array
 	public function searchArray($array, $key, $value) {
 		$results = array();
