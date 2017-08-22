@@ -1837,8 +1837,9 @@ a.icon-uarrow:hover        {width:20px;height:20px;background-image:url(../image
 	white-space: normal;
 }
 
-#edit_interface-page #changefam td.child {
-	text-align: center;
+#edit_interface-page #changefamform td input[type="checkbox"] {
+	display: block;
+	margin: 0 auto;
 }
 
 #edit_interface-page .reorder {

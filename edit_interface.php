@@ -32,7 +32,7 @@ $controller
 	->addInlineJavascript('
 		autocomplete();
 		var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('j', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))). '";
-');
+	');
 
 // TODO work out whether to use GET/POST for these
 // TODO decide what (if any) validation is required on these parameters
@@ -2268,87 +2268,32 @@ case 'reorder_children':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'changefamily':
-	$famid  = safe_GET('famid', WT_REGEX_XREF);
+	$famid  = WT_Filter::get('famid', WT_REGEX_XREF);
 	$family = WT_Family::getInstance($famid);
 
 	$controller
-		->setPageTitle(WT_I18N::translate('Change Family Members'))
+		->setPageTitle(WT_I18N::translate('Change Family Members') . ' – ' . $family->getFullName())
 		->pageHeader()
 		->addInlineJavascript('
 			// Add new child row
-			jQuery("#newField").click(function(){
-				jQuery("tr.add_child").clone().insertAfter(".add_child:last");
-				jQuery("tr.add_child:last>input").attr("value", "");
-				jQuery("tr.add_child:last>input").removeAttr("id").autocomplete({
-					source: "autocomplete.php?field=INDI",
-					html: !0
-				});
+			jQuery("#addNewField").click(function(){
+				var i	= jQuery("#changefamform table tr.children").length;
+				var row	= "<tr class=\"children\"><td colspan=\"3\" class=\"descriptionbox\" style=\"font-weight: 600;\"><b>' . WT_I18N::translate('child') . '</b></td><td class=\"optionbox\"><input data-autocomplete-type=\"INDI\" type=\"text\" name=\"CHIL" + i + "\" id=\"CHIL" + i + "\" value=\"\" dir=\"auto\" placeholder=\"' . WT_I18N::translate('Select person') . '\"><div class=\"autocomplete_label\"></div></td></tr>";
+				jQuery("#changefamform table tr:last").after(row);
+				autocomplete("#CHIL" + i);
 			})
-		')
+		');
 
-		->addInlineJavascript('
-			function change_family(id_input){
-				var id = jQuery("#" + id_input).val();
-				if (id_input = "HUSBInput") jQuery("#HUSBName").html(id);
-				if (id_input = "WIFEInput") jQuery("#WIFEName").html(id);
-			};
-	');
-
-	$father = $family->getHusband();
-	$mother = $family->getWife();
-	$children = $family->getChildren();
-	if (count($children)>0) {
-		if (!is_null($father)) {
-			if ($father->getSex()=="F") {
-				$father->setLabel(WT_I18N::translate('mother'));
-			} else {
-				$father->setLabel(WT_I18N::translate('father'));
-			}
-		}
-		if (!is_null($mother)) {
-			if ($mother->getSex()=="M") {
-				$mother->setLabel(WT_I18N::translate('father'));
-			} else {
-				$mother->setLabel(WT_I18N::translate('mother'));
-			}
-		}
-		for ($i=0; $i<count($children); $i++) {
-			if (!is_null($children[$i])) {
-				if ($children[$i]->getSex()=="M") {
-					$children[$i]->setLabel(WT_I18N::translate('son'));
-				} elseif ($children[$i]->getSex()=="F") {
-					$children[$i]->setLabel(WT_I18N::translate('daughter'));
-				} else {
-					$children[$i]->setLabel(WT_I18N::translate('child'));
-				}
-			}
-		}
-	} else {
-		if (!is_null($father)) {
-			if ($father->getSex()=="F") {
-				$father->setLabel(WT_I18N::translate('wife'));
-			} elseif ($father->getSex()=="M") {
-				$father->setLabel(WT_I18N::translate('husband'));
-			} else {
-				$father->setLabel(WT_I18N::translate('spouse'));
-			}
-		}
-		if (!is_null($mother)) {
-			if ($mother->getSex()=="F") {
-				$mother->setLabel(WT_I18N::translate('wife'));
-			} elseif ($mother->getSex()=="M") {
-				$mother->setLabel(WT_I18N::translate('husband'));
-			} else {
-				$father->setLabel(WT_I18N::translate('spouse'));
-			}
-		}
-	}
+	$father		= $family->getHusband();
+	$mother		= $family->getWife();
+	$children	= $family->getChildren();
 	?>
+
 	<div id="edit_interface-page">
 		<h2><?php echo $controller->getPageTitle(); ?></h2>
 		<div class="help_text">
 			<p class="helpcontent">
-				<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the "Select new person" field to choose a different person from your tree to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
+				<?php echo WT_I18N::translate('For family member you can use the "Select person" field to choose a different person from your tree to fill that role or add someone if the role is empty. Tick the Remove option to delete that person from the family. Click "Add a child" to create fields for more children.'); ?>
 			</p>
 		</div>
 		<form id="changefamform" name="changefamform" method="post" action="edit_interface.php">
@@ -2358,10 +2303,9 @@ case 'changefamily':
 			<table>
 				<thead>
 					<tr>
-						<th class="descriptionbox" style="font-weight: 600;" colspan="2"><?php echo WT_I18N::translate('Existing'); ?> </th>
+						<th colspan="2" class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Existing'); ?> </th>
 						<th class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Remove'); ?> </th>
-						<th class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Change'); ?> </th>
-						<th class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Add'); ?> </th>
+						<th class="descriptionbox" style="font-weight: 600;"><?php echo WT_I18N::translate('Change or add'); ?> </th>
 					</tr>
 				</thead>
 				</tbody>
@@ -2373,7 +2317,6 @@ case 'changefamily':
 									case 'F': echo WT_I18N::translate('wife'); break;
 									default:  echo WT_I18N::translate('spouse'); break;
 								} ?>
-								<input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>">
 							</td>
 							<td id="HUSBName" class="optionbox">
 								<?php echo $father->getFullName(); ?>
@@ -2381,27 +2324,17 @@ case 'changefamily':
 						<?php } else { ?>
 							<td class="descriptionbox" style="font-weight: 600;">
 								<?php echo WT_I18N::translate('spouse'); ?>
-								<input type="hidden" name="HUSB" value="">
 							</td>
 							<td id="HUSBName" class="optionbox"></td>
 						<?php } ?>
 						<td class="optionbox">
-							<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none' : 'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
 							<?php if ($father) { ?>
-								<?php echo checkbox('husbrem', false); ?>
+								<?php echo checkbox('remHusb', false); ?>
 							<?php } ?>
 						</td>
 						<td class="optionbox">
-							<?php if ($father) { ?>
-								<input data-autocomplete-type="INDI" type="text" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-								<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
-							<?php } ?>
-						</td>
-						<td class="optionbox">
-							<?php if (!$father) { ?>
-								<input type="text" data-autocomplete-type="INDI" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-								<input type="hidden" class="autocomplete" value="">
-							<?php } ?>
+							<input data-autocomplete-type="INDI" type="text" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select person'); ?>">
+							<div class="autocomplete_label"></div>
 						</td>
 					</tr>
 					<tr>
@@ -2416,7 +2349,6 @@ case 'changefamily':
 									}
 									?>
 								</b>
-								<input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>">
 							</td>
 							<td id="WIFEName" class="optionbox"><?php echo $mother->getFullName(); ?></td>
 						<?php } else { ?>
@@ -2424,33 +2356,23 @@ case 'changefamily':
 								<b>
 									<?php echo WT_I18N::translate('spouse'); ?>
 								</b>
-								<input type="hidden" name="WIFE" value="">
 							</td>
 							<td id="WIFEName" class="optionbox"></td>
 						<?php } ?>
 						<td class="optionbox">
 							<?php if ($mother) { ?>
-								<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-								<?php echo checkbox('wiferem', false); ?>
+								<?php echo checkbox('remWife', false); ?>
 							<?php } ?>
 						</td>
 						<td class="optionbox">
-							<?php if ($mother) { ?>
-								<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEInput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-								<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
-							<?php } ?>
-						</td>
-						<td class="optionbox">
-							<?php if (!$mother) { ?>
-								<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-								<div class="autocomplete_label" style="font-size:85%;white-space:nowrap;line-height:1.5;"></div>
-							<?php } ?>
+							<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEInput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select person'); ?>">
+							<div class="autocomplete_label"></div>
 						</td>
 					</tr>
 					<?php
 					$i = 0;
 					foreach ($children as $child) { ?>
-						<tr>
+						<tr class="children">
 							<td class="descriptionbox" style="font-weight: 600;">
 								<b>
 									<?php
@@ -2461,35 +2383,24 @@ case 'changefamily':
 									}
 									?>
 								</b>
-								<input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>">
 							</td>
-							<td id="CHILName<?php echo $i; ?>" class="optionbox"><?php echo $child->getFullName(); ?></td>
-							<td class="optionbox">
-								<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
+							<td id="CHILName<?php echo $i; ?>" class="optionbox">
+								<?php echo $child->getFullName(); ?>
 							</td>
 							<td class="optionbox">
-								<input data-autocomplete-type="INDI" type="text" name="CHIL" id="CHILName" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-								<a href="#" onclick="change_family()"><?php echo WT_I18N::translate('Change'); ?></a>
+								<?php echo checkbox('remChil' . $i, false); ?>
+							</td>
+							<td class="optionbox">
+								<input data-autocomplete-type="INDI" type="text" name="CHIL<?php echo $i; ?>" id="CHIL<?php echo $i; ?>" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select person'); ?>">
+								<div class="autocomplete_label"></div>
 							</td>
 						</tr>
 						<?php $i++;
 					} ?>
-					<tr class="add_child">
-						<td class="descriptionbox" style="font-weight: 600;"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value=""></td>
-						<td id="CHILName<?php echo $i; ?>" class="optionbox"></td>
-						<td colspan="2" class="optionbox child">
-							<a href="#" id="childrem<?php echo $i; ?>" style="display: none;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-							<a href="#" onclick="remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>, document.getElementById('CHILName<?php echo $i; ?>'));"><?php echo WT_I18N::translate('Add'); ?></a>
-						</td>
-						<td class="optionbox">
-							<input data-autocomplete-type="INDI" type="text" name="WIFE" id="WIFEinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select new person'); ?>">
-							<div class="autocomplete_label" style="font-size:85%;white-space:nowrap;line-height:1.5;"></div>
-						</td>
-					</tr>
 				</tbody>
 			</table>
 			<label>
-				<p><a href="#" id="newField" class="current"><?php echo WT_I18N::translate('Add another child'); ?></a></p>
+				<p><a href="#" id="addNewField" class="current"><?php echo WT_I18N::translate('Add a child'); ?></a></p>
 			</label>
 			<?php echo no_update_chan($family); ?>
 			<p id="save-cancel">
@@ -2508,26 +2419,31 @@ case 'changefamily':
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
-case 'changefamily_update-NEW':
-	$xref      = WT_Filter::post('xref', WT_REGEX_XREF);
-	$HUSB      = WT_Filter::post('HUSB', WT_REGEX_XREF);
-	$WIFE      = WT_Filter::post('WIFE', WT_REGEX_XREF);
+case 'changefamily_update':
+	$controller
+		->setPageTitle(WT_I18N::translate('Edit raw GEDCOM record'))
+		->pageHeader();
+
+	$famid				= WT_Filter::post('famid', WT_REGEX_XREF);
+	$HUSB				= WT_Filter::post('HUSB', WT_REGEX_XREF);
+	$WIFE				= WT_Filter::post('WIFE', WT_REGEX_XREF);
+	$remHusb			= WT_Filter::post('remHusb');
+	$remWife			= WT_Filter::post('remWife');
+	$updateFamRecord	= false;
 
 	if (!WT_Filter::checkCsrf()) {
+		header('Location: edit_interface.php?action=changefamily&famid=' . $famid);
 		break;
 	}
 
-	$CHIL = array();
+	$CHIL		= [];
+	$remChil	= [];
 	for ($i = 0; isset($_POST['CHIL' . $i]); ++$i) {
-		$CHIL[] = WT_Filter::post('CHIL' . $i, WT_REGEX_XREF);
+		$CHIL[] 	= WT_Filter::post('CHIL' . $i, WT_REGEX_XREF);
+		$remChil[]	= WT_Filter::post('remChil' . $i);
 	}
 
-	$family = WT_Family::getInstance($xref, $WT_TREE);
-//	check_record_access($family);
-
-	$controller
-		->setPageTitle(WT_I18N::translate('Change family members') . ' – ' . $family->getFullName())
-		->pageHeader();
+	$family = WT_Family::getInstance($famid, $WT_TREE);
 
 	// Current family members
 	$old_father   = $family->getHusband();
@@ -2535,20 +2451,20 @@ case 'changefamily_update-NEW':
 	$old_children = $family->getChildren();
 
 	// New family members
-	$new_father   = WT_Person::getInstance($HUSB, $WT_TREE);
-	$new_mother   = WT_Person::getInstance($WIFE, $WT_TREE);
-	$new_children = array();
+	$new_father   = WT_Person::getInstance($HUSB, WT_GED_ID);
+	$new_mother   = WT_Person::getInstance($WIFE, WT_GED_ID);
+	$new_children = [];
 	foreach ($CHIL as $child) {
-		$new_children[] = WT_Person::getInstance($child, $WT_TREE);
+		$new_children[] = WT_Person::getInstance($child, WT_GED_ID);
 	}
 
 	if ($old_father !== $new_father) {
-		if ($old_father) {
+		if ($new_father || $remHusb) {
 			// Remove old FAMS link
 			$indirec = find_gedcom_record($old_father->getXref(), WT_GED_ID, true);
-			$pos1 = strpos($indirec, "1 FAMS @$famid@");
+			$pos1 = strpos($indirec, "1 FAMS @" . $famid . "@");
 			if ($pos1 !== false) {
-				$pos2 = strpos($indirec, "\n1", $pos1+5);
+				$pos2 = strpos($indirec, "\n1", $pos1 + 5);
 				if ($pos2 === false) {
 					$pos2 = strlen($indirec);
 				} else {
@@ -2567,232 +2483,119 @@ case 'changefamily_update-NEW':
 					$pos2++;
 				}
 				$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
+				$updateFamRecord = true;
 			}
 		}
 		if ($new_father) {
 			// Add new FAMS link
-			if (strstr($gedrec, "1 HUSB") !== false) {
-				$gedrec = preg_replace("/1 HUSB @.*@/", "1 HUSB @' . $new_father->getXref() . '@", $gedrec);
-			} else {
-				$gedrec .= "\n1 HUSB 1 HUSB @' . $new_father->getXref() . '@";
+			$indirec = find_gedcom_record($new_father->getXref(), WT_GED_ID, true);
+			if (!empty($indirec) && (strpos($indirec, "1 FAMS @" . $famid . "@") === false)) {
+				$indirec .= "\n1 FAMS @" . $famid . "@";
+				replace_gedrec($new_father->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 			}
 			// Add new HUSB link
-			$indirec = find_gedcom_record($HUSB, WT_GED_ID, true);
-			if (!empty($indirec) && (strpos($indirec, "1 FAMS @' . $family->getXref() . '@")===false)) {
-				$indirec .= "\n1 FAMS @' . $family->getXref() . '@";
-				replace_gedrec($HUSB, WT_GED_ID, $indirec, $update_CHAN);
+			if (strstr($gedrec, "1 HUSB") !== false) {
+				$gedrec = preg_replace("/1 HUSB @.*@/", "1 HUSB @" . $new_father->getXref() . "@", $gedrec);
+			} else {
+				$gedrec .= "\n1 HUSB @" . $new_father->getXref() . "@";
 			}
+			$updateFamRecord = true;
 		}
 	}
 
 	if ($old_mother !== $new_mother) {
-		if ($old_mother) {
+		if ($new_mother || $remWife) {
 			// Remove old FAMS link
-			foreach ($old_mother->getFacts('FAMS') as $fact) {
-				if ($fact->getTarget() === $family) {
-					$old_mother->deleteFact($fact->getFactId(), !$keep_chan);
+			$indirec = find_gedcom_record($old_mother->getXref(), WT_GED_ID, true);
+			$pos1 = strpos($indirec, "1 FAMS @" . $famid . "@");
+			if ($pos1 !== false) {
+				$pos2 = strpos($indirec, "\n1", $pos1 + 5);
+				if ($pos2 === false) {
+					$pos2 = strlen($indirec);
+				} else {
+					$pos2++;
 				}
+				$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
+				replace_gedrec($old_mother->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 			}
 			// Remove old WIFE link
-			foreach ($family->getFacts('HUSB|WIFE') as $fact) {
-				if ($fact->getTarget() === $old_mother) {
-					$family->deleteFact($fact->getFactId(), !$keep_chan);
+			$pos1 = strpos($gedrec, "1 WIFE @");
+			if ($pos1 !== false) {
+				$pos2 = strpos($gedrec, "\n1", $pos1 + 5);
+				if ($pos2 === false) {
+					$pos2 = strlen($gedrec);
+				} else {
+					$pos2++;
 				}
+				$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
+				$updateFamRecord = true;
 			}
 		}
 		if ($new_mother) {
-			// Add new FAMS link
-			$new_mother->createFact('1 FAMS @' . $family->getXref() . '@', !$keep_chan);
 			// Add new WIFE link
-			$family->createFact('1 WIFE @' . $new_mother->getXref() . '@', !$keep_chan);
+			if (strstr($gedrec, "1 WIFE") !== false) {
+				$gedrec = preg_replace("/1 WIFE @.*@/", "1 WIFE @" . $new_mother->getXref() . "@", $gedrec);
+			} else {
+				$gedrec .= "\n1 WIFE @" . $new_mother->getXref() . "@";
+			}
+			$updateFamRecord = true;
+			// Add new FAMS link
+			$indirec = find_gedcom_record($WIFE, WT_GED_ID, true);
+			if (!empty($indirec) && (strpos($indirec, "1 FAMS @" . $famid . "@") === false)) {
+				$indirec .= "\n1 FAMS @" . $famid . "@";
+				replace_gedrec($new_mother->getXref(), WT_GED_ID, $indirec, $update_CHAN);
+			}
 		}
 	}
 
+	$i = 0;
 	foreach ($old_children as $old_child) {
-		if ($old_child && !in_array($old_child, $new_children)) {
+		if (($new_children[$i] && !in_array($old_child, $new_children)) || $remChil[$i]) {
 			// Remove old FAMC link
-			foreach ($old_child->getFacts('FAMC') as $fact) {
-				if ($fact->getTarget() === $family) {
-					$old_child->deleteFact($fact->getFactId(), !$keep_chan);
+			$indirec = find_gedcom_record($old_child->getXref(), WT_GED_ID, true);
+			$pos1 = strpos($indirec, "1 FAMC @" . $famid . "@");
+			if ($pos1 !== false) {
+				$pos2 = strpos($indirec, "\n1", $pos1 + 5);
+				if ($pos2 === false) {
+					$pos2 = strlen($indirec);
+				} else {
+					$pos2++;
 				}
+				$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
+				replace_gedrec($old_child->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 			}
 			// Remove old CHIL link
-			foreach ($family->getFacts('CHIL') as $fact) {
-				if ($fact->getTarget() === $old_child) {
-					$family->deleteFact($fact->getFactId(), !$keep_chan);
+			$pos1 = strpos($gedrec, "1 CHIL @" . $old_child->getXref() . "@");
+			if ($pos1 !== false) {
+				$pos2 = strpos($gedrec, "\n1", $pos1 + 5);
+				if ($pos2 === false) {
+					$pos2 = strlen($gedrec);
+				} else {
+					$pos2++;
 				}
-			}
-		}
-	}
-
-	foreach ($new_children as $new_child) {
-		if ($new_child && !in_array($new_child, $old_children)) {
-			// Add new FAMC link
-			$new_child->createFact('1 FAMC @' . $family->getXref() . '@', !$keep_chan);
-			// Add new CHIL link
-			$family->createFact('1 CHIL @' . $new_child->getXref() . '@', !$keep_chan);
-		}
-	}
-
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
-	break;
-
-case 'changefamily_update':
-	$controller
-		->setPageTitle(WT_I18N::translate('Change Family Members'))
-		->pageHeader();
-
-	$family = new WT_Family($gedrec);
-	$father = $family->getHusband();
-	$mother = $family->getWife();
-	$children = $family->getChildren();
-	$updated = false;
-
-	//-- add the new father link
-	if (isset($_REQUEST['HUSB'])) $HUSB = $_REQUEST['HUSB'];
-	if (!empty($HUSB) && (is_null($father) || $father->getXref()!=$HUSB)) {
-		if (strstr($gedrec, "1 HUSB")!==false) {
-			$gedrec = preg_replace("/1 HUSB @.*@/", "1 HUSB @$HUSB@", $gedrec);
-		} else {
-			$gedrec .= "\n1 HUSB @$HUSB@";
-		}
-		$indirec = find_gedcom_record($HUSB, WT_GED_ID, true);
-		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$famid@")===false)) {
-			$indirec .= "\n1 FAMS @$famid@";
-			replace_gedrec($HUSB, WT_GED_ID, $indirec, $update_CHAN);
-		}
-		$updated = true;
-	}
-	//-- remove the father link
-	if (empty($HUSB)) {
-		$pos1 = strpos($gedrec, "1 HUSB @");
-		if ($pos1!==false) {
-			$pos2 = strpos($gedrec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($gedrec);
-			} else {
-				$pos2++;
-			}
-			$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
-		}
-		$updated = true;
-	}
-	//-- remove the FAMS link from the old father
-	if (!is_null($father) && $father->getXref()!=$HUSB) {
-		$indirec = find_gedcom_record($father->getXref(), WT_GED_ID, true);
-		$pos1 = strpos($indirec, "1 FAMS @$famid@");
-		if ($pos1!==false) {
-			$pos2 = strpos($indirec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($indirec);
-			} else {
-				$pos2++;
-			}
-			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-			replace_gedrec($father->getXref(), WT_GED_ID, $indirec, $update_CHAN);
-		}
-	}
-	//-- add the new mother link
-	if (isset($_REQUEST['WIFE'])) $WIFE = $_REQUEST['WIFE'];
-	if (!empty($WIFE) && (is_null($mother) || $mother->getXref()!=$WIFE)) {
-		if (strstr($gedrec, "1 WIFE")!==false) {
-			$gedrec = preg_replace("/1 WIFE @.*@/", "1 WIFE @$WIFE@", $gedrec);
-		} else {
-			$gedrec .= "\n1 WIFE @$WIFE@";
-		}
-		$indirec = find_gedcom_record($WIFE, WT_GED_ID, true);
-		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$famid@")===false)) {
-			$indirec .= "\n1 FAMS @$famid@";
-			replace_gedrec($WIFE, WT_GED_ID, $indirec, $update_CHAN);
-		}
-		$updated = true;
-	}
-	//-- remove the father link
-	if (empty($WIFE)) {
-		$pos1 = strpos($gedrec, "1 WIFE @");
-		if ($pos1!==false) {
-			$pos2 = strpos($gedrec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($gedrec);
-			} else {
-				$pos2++;
-			}
-			$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
-		}
-		$updated = true;
-	}
-	//-- remove the FAMS link from the old father
-	if (!is_null($mother) && $mother->getXref()!=$WIFE) {
-		$indirec = find_gedcom_record($mother->getXref(), WT_GED_ID, true);
-		$pos1 = strpos($indirec, "1 FAMS @$famid@");
-		if ($pos1!==false) {
-			$pos2 = strpos($indirec, "\n1", $pos1+5);
-			if ($pos2===false) {
-				$pos2 = strlen($indirec);
-			} else {
-				$pos2++;
-			}
-			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-			replace_gedrec($mother->getXref(), WT_GED_ID, $indirec, $update_CHAN);
-		}
-	}
-
-	//-- update the children
-	$i=0;
-	$var = "CHIL".$i;
-	$newchildren = array();
-	while (isset($_REQUEST[$var])) {
-		$CHIL = $_REQUEST[$var];
-		if (!empty($CHIL)) {
-			$newchildren[] = $CHIL;
-			if (strpos($gedrec, "1 CHIL @$CHIL@")===false) {
-				$gedrec .= "\n1 CHIL @$CHIL@";
-				$updated = true;
-				$indirec = find_gedcom_record($CHIL, WT_GED_ID, true);
-				if (!empty($indirec) && (strpos($indirec, "1 FAMC @$famid@")===false)) {
-					$indirec .= "\n1 FAMC @$famid@";
-					replace_gedrec($CHIL, WT_GED_ID, $indirec, $update_CHAN);
-				}
+				$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
+				$updateFamRecord = true;
 			}
 		}
 		$i++;
-		$var = "CHIL".$i;
 	}
 
-	//-- remove the old children
-	foreach ($children as $key=>$child) {
-		if (!is_null($child)) {
-			if (!in_array($child->getXref(), $newchildren)) {
-				//-- remove the CHIL link from the family record
-				$pos1 = strpos($gedrec, "1 CHIL @".$child->getXref()."@");
-				if ($pos1!==false) {
-					$pos2 = strpos($gedrec, "\n1", $pos1+5);
-					if ($pos2===false) {
-						$pos2 = strlen($gedrec);
-					} else {
-						$pos2++;
-					}
-					$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
-					$updated = true;
-				}
-				//-- remove the FAMC link from the child record
-				$indirec = find_gedcom_record($child->getXref(), WT_GED_ID, true);
-				$pos1 = strpos($indirec, "1 FAMC @$famid@");
-				if ($pos1!==false) {
-					$pos2 = strpos($indirec, "\n1", $pos1+5);
-					if ($pos2===false) {
-						$pos2 = strlen($indirec);
-					} else {
-						$pos2++;
-					}
-					$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-					replace_gedrec($child->getXref(), WT_GED_ID, $indirec, $update_CHAN);
+	// Add or change children
+	foreach ($new_children as $new_child) {
+		if ($new_child && !in_array($new_child, $old_children)) {
+			if (strpos($gedrec, "1 CHIL @" . $new_child->getXref() . "@") === false) {
+				$gedrec .= "\n1 CHIL @" . $new_child->getXref() . "@";
+				$updateFamRecord = true;
+				$indirec = find_gedcom_record($new_child->getXref(), WT_GED_ID, true);
+				if (!empty($indirec) && (strpos($indirec, "1 FAMC @" . $famid . "@") === false)) {
+					$indirec .= "\n1 FAMC @" . $famid . "@";
+					replace_gedrec($new_child->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 				}
 			}
 		}
 	}
 
-	if ($updated) {
+	if ($updateFamRecord) {
 		$success = replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
 	} else {
 		$success = false;
