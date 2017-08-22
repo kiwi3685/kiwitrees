@@ -85,35 +85,35 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		$label_person = $fact->getSpouse();
 	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
 		// Event of close relative
-		$label_person=WT_Person::getInstance($match[1]);
+		$label_person = WT_Person::getInstance($match[1]);
 	} else if ($fact->getParentObject() instanceof WT_Family) {
 		// Family event
 		$husb = $fact->getParentObject()->getHusband();
 		$wife = $fact->getParentObject()->getWife();
-		if (empty($wife) && !empty($husb)) $label_person=$husb;
-		else if (empty($husb) && !empty($wife)) $label_person=$wife;
-		else $label_person=$fact->getParentObject();
+		if (empty($wife) && !empty($husb)) $label_person = $husb;
+		else if (empty($husb) && !empty($wife)) $label_person = $wife;
+		else $label_person = $fact->getParentObject();
 	} else {
 		// The actual person
-		$label_person=$fact->getParentObject();
+		$label_person = $fact->getParentObject();
 	}
 
-	$styleadd="";
-	if ($fact->getIsNew()) $styleadd="change_new";
-	if ($fact->getIsOld()) $styleadd="change_old";
+	$styleadd = "";
+	if ($fact->getIsNew()) $styleadd = "change_new";
+	if ($fact->getIsOld()) $styleadd = "change_old";
 
-	if ($fact->getLineNumber()<1) $styleadd='rela'; // not editable
-	if ($fact->getLineNumber()==-1) $styleadd='histo'; // historical facts
+	if ($fact->getLineNumber() < 1) $styleadd='rela'; // not editable
+	if ($fact->getLineNumber() == -1) $styleadd='histo'; // historical facts
 
-	if ($styleadd=='') {
-		$rowID = 'row_'.(int)(microtime(true)*1000000);
+	if ($styleadd == '') {
+		$rowID = 'row_' . (int)(microtime(true) * 1000000);
 	} else {
-		$rowID = 'row_'.$styleadd;
+		$rowID = 'row_' . $styleadd;
 	}
 
 	// Does this fact have a type?
 	if (preg_match('/\n2 TYPE (.+)/', $fact->getGedcomRecord(), $match)) {
-		$type=$match[1];
+		$type = $match[1];
 	} else {
 		$type='';
 	}
@@ -123,30 +123,30 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	case 'FACT':
 		if (WT_Gedcom_Tag::isTag($type)) {
 			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT".  Translate the TYPE.
-			$label=WT_Gedcom_Tag::getLabel($type, $label_person);
-			$type=''; // Do not print this again
+			$label	= WT_Gedcom_Tag::getLabel($type, $label_person);
+			$type	= ''; // Do not print this again
 		} elseif ($type) {
 			// We don't have a translation for $type - but a custom translation might exist.
-			$label=WT_I18N::translate(htmlspecialchars($type));
-			$type=''; // Do not print this again
+			$label	= WT_I18N::translate(htmlspecialchars($type));
+			$type	= ''; // Do not print this again
 		} else {
 			// An unspecified fact/event
-			$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+			$label = WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		}
 		break;
 	case 'MARR':
 		// This is a hack for a proprietory extension.  Is it still used/needed?
 		$utype = strtoupper($type);
-		if ($utype=='CIVIL' || $utype=='PARTNERS' || $utype=='RELIGIOUS' || $utype=='COMMON') {
-			$label=WT_Gedcom_Tag::getLabel('MARR_'.$utype, $label_person);
-			$type=''; // Do not print this again
+		if ($utype	== 'CIVIL' || $utype == 'PARTNERS' || $utype == 'RELIGIOUS' || $utype == 'COMMON') {
+			$label	= WT_Gedcom_Tag::getLabel('MARR_' . $utype, $label_person);
+			$type	= ''; // Do not print this again
 		} else {
-			$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+			$label	= WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		}
 		break;
 	default:
 		// Normal fact/event
-		$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
+		$label = WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		break;
 	}
 
