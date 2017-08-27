@@ -1095,7 +1095,7 @@ function format_sour_table($datalist) {
 					/* 10 #NOTE     */ { type: "num", visible: false },
 					/* 11 CHAN      */ { dataSort: 12, visible: ' . ($SHOW_LAST_CHANGE?'true':'false') . ' },
 					/* 12 CHAN_sort */ { visible: false },
-					/* 13 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
+					/* 13 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false, class: "center" }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers",
@@ -1270,7 +1270,7 @@ function format_note_table($datalist) {
 				/*  8 #SOUR     */ { type: "num", visible: false },
 				/*  9 CHAN      */ { dataSort: 10, visible: ' . ($SHOW_LAST_CHANGE?'true':'false') . ' },
 				/* 10 CHAN_sort */ { visible: false },
-				/* 11 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN?'true':'false') . ', sortable: false }
+				/* 11 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN?'true':'false') . ', sortable: false, class: "center"  }
 			],
 			displayLength: 20,
 			pagingType: "full_numbers",
@@ -1500,7 +1500,7 @@ function format_repo_table($repos) {
 				/* 2 #SOUR     */ { type: "num", visible: false },
 				/* 3 CHAN      */ { dataSort: 4, visible: ' . ($SHOW_LAST_CHANGE?'true':'false') . ' },
 				/* 4 CHAN_sort */ { visible: false },
-				/* 5 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN?'true':'false') . ', sortable: false }
+				/* 5 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN?'true':'false') . ', sortable: false, class: "center" }
 			],
 			displayLength: 20,
 			pagingType: "full_numbers",
