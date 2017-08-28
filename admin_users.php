@@ -65,7 +65,7 @@ switch (WT_Filter::post('action')) {
 				// Create a new user
 				if (get_user_id($username)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'));
-				} elseif (get_user_by_email($email)) {
+				} elseif (findByEmail($email)) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address. A user with that email already exists.'));
 				} elseif ($pass1 !== $pass2) {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The passwords do not match.'));

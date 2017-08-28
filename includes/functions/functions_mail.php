@@ -171,6 +171,8 @@ function recipients($to) {
 				$recipients[$user_id] = $user_name;
 			}
 		}
+	} else {
+		$recipients = array_filter([findByUserName($to)]);
 	}
 
 	return $recipients;
@@ -270,7 +272,6 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 		$form_title_2 = '<h3>' . WT_I18N::translate('For help with genealogy questions') . '</h3>';
 		$to_user_id_2 = WT_I18N::translate('Genealogy help');
 	}
-//print_r($form_count);
 	switch ($form_count) {
 		case 0:
 			$form_title	= $form_title_1;
@@ -298,7 +299,6 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 					</small>
 				</p>
 			<?php } ?>
-			<?php WT_Filter::getCsrf(); ?>
 			<input type="hidden" name="url" value="<?php echo WT_Filter::escapeHtml($url); ?>">
 			<?php if (!WT_USER_ID) { ?>
 				<div class="option">

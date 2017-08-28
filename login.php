@@ -259,7 +259,7 @@ switch ($action) {
 			// These validation errors cannot be shown in the client.
 			if (get_user_id($user_name)) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
-			} elseif (get_user_by_email($user_email)) {
+			} elseif (findByEmail($user_email)) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 			} elseif (preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
 				WT_FlashMessages::addMessage(

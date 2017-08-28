@@ -44,7 +44,7 @@ if ($form_action && WT_Filter::checkCsrf()) {
 		case 'update':
 			if ($form_username != WT_USER_NAME && get_user_id($form_username)) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
-			} elseif ($form_email!=getUserEmail(WT_USER_ID) && get_user_by_email($form_email)) {
+			} elseif ($form_email!=getUserEmail(WT_USER_ID) && findByEmail($form_email)) {
 				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
 			} else {
 				// Change username

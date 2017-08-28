@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$recipients = recipients($to);
 
 	// Different validation for admin/user/visitor.
-	$errors = !WT_Filter::checkCsrf();
+	$errors = false;
 	if (WT_USER_ID) {
 		$from_name  = getUserFullName(WT_USER_ID);
 		$from_email = getUserEmail(WT_USER_ID);

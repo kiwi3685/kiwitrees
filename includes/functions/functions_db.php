@@ -1168,7 +1168,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 // $facts     - restrict the search to just these facts or leave blank for all
 // $ged_id    - the id of the gedcom to search
 ////////////////////////////////////////////////////////////////////////////////
-function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
+function get_calendar_events($jd1, $jd2, $facts = '', $ged_id = WT_GED_ID) {
 	// If no facts specified, get all except these
 	$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
 	if ($facts != '_TODO') {
@@ -1185,18 +1185,19 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 
 	// Restrict to certain types of fact
 	if (empty($facts)) {
-		$excl_facts = "'".preg_replace('/\W+/', "','", $skipfacts)."'";
+		$excl_facts = "'" . preg_replace('/\W+/', "','", $skipfacts) . "'";
 		$where .= " AND d_fact NOT IN ({$excl_facts})";
 	} else {
-		$incl_facts = "'".preg_replace('/\W+/', "','", $facts)."'";
+		$incl_facts = "'" . preg_replace('/\W+/', "','", $facts) . "'";
 		$where .= " AND d_fact IN ({$incl_facts})";
 	}
 	// Only get events from the current gedcom
-	$where.=" AND d_file=".$ged_id;
+	$where .= " AND d_file=" . $ged_id;
 
 	// Now fetch these events
-	$ind_sql = "SELECT d_gid, i_gedcom, 'INDI', d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid = i_id AND d_file=i_file ORDER BY d_julianday1";
-	$fam_sql = "SELECT d_gid, f_gedcom, 'FAM',  d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid = f_id AND d_file=f_file ORDER BY d_julianday1";
+	// Using "DISTINCT" allows multiple _TODO events in a single INDI or FAM record without duplicating the output.
+	$ind_sql = "SELECT DISTINCT d_gid, i_gedcom, 'INDI', d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid = i_id AND d_file=i_file ORDER BY d_julianday1";
+	$fam_sql = "SELECT DISTINCT d_gid, f_gedcom, 'FAM',  d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid = f_id AND d_file=f_file ORDER BY d_julianday1";
 	foreach (array($ind_sql, $fam_sql) as $sql) {
 		$rows = WT_DB::prepare($sql)->fetchAll(PDO::FETCH_NUM);
 		foreach ($rows as $row) {
@@ -1212,26 +1213,27 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 			} else {
 				$year_regex = "0*" . $row[6];
 			}
-			$ged_date_regex = "/2 DATE.*(".($row[4]>0 ? "0?{$row[4]}\s*" : "").$row[5]."\s*".($row[6] != 0 ? $year_regex : "").")/i";
-			preg_match_all('/\n(1 ('.WT_REGEX_TAG.').*(\n[2-9] .*)*)/', $row[1], $matches);
+			$ged_date_regex = "/2 DATE.*(".($row[4] >
+			0 ? "0?{$row[4]}\s*" : "") . $row[5] . "\s*" . ($row[6] != 0 ? $year_regex : "") . ")/i";
+			preg_match_all('/\n(1 (' . WT_REGEX_TAG . ').*(\n[2-9] .*)*)/', $row[1], $matches);
 			foreach ($matches[1] as $factrec) {
-				if (preg_match('/^1 '.$row[7].'[ \n]/', $factrec) && preg_match($ged_date_regex, $factrec, $match)) {
+				if (preg_match('/^1 ' . $row[7] . '[ \n]/', $factrec) && preg_match($ged_date_regex, $factrec, $match)) {
 					$date = new WT_Date($match[1]);
 					if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
-						$plac=$match[1];
+						$plac = $match[1];
 					} else {
 						$plac = '';
 					}
 					if (canDisplayFact($row[0], $ged_id, $factrec)) {
 						$found_facts[] = array(
-							'id'=>$row[0],
-							'objtype'=>$row[2],
-							'fact'=>$row[7],
-							'factrec'=>$factrec,
-							'jd'=>$jd1,
-							'anniv'=>0,
-							'date'=>$date,
-							'plac'=>$plac
+							'id'		=> $row[0],
+							'objtype'	=> $row[2],
+							'fact'		=> $row[7],
+							'factrec'	=> $factrec,
+							'jd'		=> $jd1,
+							'anniv'		=> 0,
+							'date'		=> $date,
+							'plac'		=> $plac
 						);
 					}
 				}
@@ -1390,16 +1392,46 @@ function get_all_users($order='ASC', $key='realname') {
 }
 
 function get_user_count() {
-	return
-			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")
-			->fetchOne();
+	return WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 }
 
-function get_user_by_email($email) {
-	return
-		WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE email=?")
-		->execute(array($email))
-		->fetchOne();
+/**
+ * Find the user with a specified user_id.
+ *
+ * @param int|null $user_id
+ *
+ * @return User|null
+ */
+function find($user_id) {
+	return WT_DB::prepare("SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?")->execute([$user_id])->fetchOneRow();
+}
+
+/**
+ * Find the user with a specified user_name.
+ *
+ * @param string $user_name
+ *
+ * @return User|null
+ */
+function findByUserName($user_name) {
+	$user_id = WT_DB::prepare(
+		"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
+	)->execute([
+		'user_name' => $user_name,
+	])->fetchOne();
+
+	return find($user_id);
+}
+
+/**
+ * Find the user with a specified email address.
+ *
+ * @param string $email
+ *
+ * @return User|null
+ */
+function findByEmail($email) {
+	return WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE email=?")->execute(array($email))->fetchOne();
 }
 
 function get_admin_user_count() {
