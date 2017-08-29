@@ -173,7 +173,7 @@ $controller
 				</li>
 			</ul>
 			<ul>
-				<h3><?php echo WT_I18N::translate('Duplicated data'); ?></h3>
+				<h3><?php echo WT_I18N::translate('Duplicated individual data'); ?></h3>
 				<li class="facts_value" name="dupe_birt" id="dupe_birt" >
 					<input type="checkbox" name="dupe_birt" value="dupe_birt"
 						<?php if (WT_Filter::post('dupe_birt')) echo ' checked="checked"'?>
@@ -215,6 +215,15 @@ $controller
 						<?php if (WT_Filter::post('dupe_name')) echo ' checked="checked"'?>
 					>
 					<?php echo WT_I18N::translate('Name'); ?>
+				</li>
+			</ul>
+			<ul>
+				<h3><?php echo WT_I18N::translate('Duplicated family data'); ?></h3>
+				<li class="facts_value" name="dupe_marr" id="dupe_marr" >
+					<input type="checkbox" name="dupe_marr" value="dupe_marr"
+						<?php if (WT_Filter::post('dupe_marr')) echo ' checked="checked"'?>
+					>
+					<?php echo WT_I18N::translate('Marriage'); ?>
 				</li>
 				<li class="facts_value" name="dupe_child" id="dupe_child" >
 					<input type="checkbox" name="dupe_child" value="dupe_child"
@@ -388,6 +397,13 @@ $controller
 			if (WT_Filter::post('dupe_name')) {
 				$data = identical_name();
 				echo '<h5>' . WT_I18N::translate('%s with duplicate names recorded', $data['count']) . '
+					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
+				</h5>
+				<div>' . $data['html'] . '</div>';
+			}
+			if (WT_Filter::post('dupe_marr')) {
+				$data = duplicate_famtag('MARR');
+				echo '<h5>' . WT_I18N::translate('%s with duplicate marriages recorded', $data['count']) . '
 					<span>' . WT_I18N::translate('query time: %1s secs', $data['time']) . '</span>
 				</h5>
 				<div>' . $data['html'] . '</div>';
@@ -622,6 +638,27 @@ function duplicate_tag($tag) {
 	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
 }
 
+function duplicate_famtag($tag) {
+	$html	= '<ul>';
+	$count	= 0;
+	$start	= microtime(true);
+	$rows	= WT_DB::prepare("SELECT f_id AS xref FROM `##families` WHERE `f_file`= ? AND `f_gedcom` LIKE BINARY CONCAT('%1 ', ?,'%1 ', ?, '%')")->execute(array(WT_GED_ID, $tag, $tag))->fetchAll();
+
+	foreach ($rows as $row) {
+		$family	= WT_Family::getInstance($row->xref);
+		$html	.= '
+			<li>
+				<a href="' . $family->getHtmlUrl(). '" target="_blank" rel="noopener noreferrer">' . $family->getFullName() . '</a>
+			</li>
+		';
+		$count	++;
+	}
+	$html .= '</ul>';
+	$time_elapsed_secs = number_format((microtime(true) - $start), 2);
+	return array('html' => $html, 'count' => $count, 'time' => $time_elapsed_secs);
+}
+
+
 function duplicate_child() {
 	$html	= '<ul>';
 	$count	= 0;
@@ -659,13 +696,11 @@ function duplicate_child() {
 
 function empty_tag() {
 	global $emptyfacts;
-	$html	= '<ul>';
-	$count	= 0;
-	$start	= microtime(true);
+	$html			= '<ul>';
+	$count			= 0;
+	$start			= microtime(true);
 	$person_list	= array();
-	$rows	= WT_DB::prepare(
-		"SELECT i_id AS xref FROM `##individuals` WHERE `i_file` = ?"
-	)->execute(array(WT_GED_ID))->fetchAll();
+	$rows			= WT_DB::prepare( "SELECT i_id AS xref FROM `##individuals` WHERE `i_file` = ?" )->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($rows as $row) {
 		$person		= WT_Person::getInstance($row->xref);
 		$indifacts	= $person->getIndiFacts();
