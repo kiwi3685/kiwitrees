@@ -786,7 +786,7 @@ function print_main_sources(WT_Event $fact, $level) {
 					print_media_links($source->getGedcomRecord(), 1);
 				}
 				print_fact_notes($srec, $nlevel);
-				if ($nlevel==2) {
+				if ($nlevel == 2) {
 					print_fact_notes($source->getGedcomRecord(), 1);
 				}
 				echo '</div>';

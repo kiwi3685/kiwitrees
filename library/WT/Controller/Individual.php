@@ -228,9 +228,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				}
 			echo '</div>';
 		}
-		if (preg_match("/\d (NOTE)|(SOUR)/", $factrec)>0) {
-			// -- find sources for this name
+		if (preg_match("/\d (NOTE)|(SOUR)/", $factrec) > 0) {
 			echo '<div id="indi_note" class="clearfloat">';
+				// -- find sources for this name
 				print_fact_sources($factrec, 2);
 				//-- find the notes for this name
 				print_fact_notes($factrec, 2);

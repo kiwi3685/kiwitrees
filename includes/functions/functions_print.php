@@ -470,7 +470,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 * @param int $level The level of the factrecord
 * @param bool $textOnly Don't print the "Note: " introduction
 */
-function print_fact_notes($factrec, $level, $textOnly = false) {
+function print_fact_notes($factrec, $level, $textOnly = false, $return = false) {
 	global $WT_TREE;
 
 	$data          = '';
@@ -504,7 +504,7 @@ function print_fact_notes($factrec, $level, $textOnly = false) {
 					}
 				}
 			} else {
-				$data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
+				$data = '<div class="fact_NOTE"><span class="label">' . WT_I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
 			}
 		}
 
@@ -519,7 +519,11 @@ function print_fact_notes($factrec, $level, $textOnly = false) {
 		}
 	}
 
-	return $data;
+	if ($return) {
+		return $data;
+	} else {
+		echo $data;
+	}
 
 }
 
