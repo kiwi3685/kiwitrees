@@ -60,9 +60,8 @@ if ($action == 'ajax') {
 }
 
 $controller = new WT_Controller_Page();
-
 $controller
-	->setPageTitle(WT_TREE_TITLE)
+	->setPageTitle(WT_I18N::translate('Home'))
 	->setMetaRobots('index,follow')
 	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . WT_GEDCOM)
 	->pageHeader()
