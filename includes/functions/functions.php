@@ -2231,7 +2231,7 @@ function get_theme_names() {
 
 // Function to build an URL querystring from GET variables
 // Optionally, add/replace specified values
-function get_query_url($overwrite=null, $separator='&') {
+function get_query_url($overwrite = null, $separator = '&') {
 	if (empty($_GET)) {
 		$get = array();
 	} else {

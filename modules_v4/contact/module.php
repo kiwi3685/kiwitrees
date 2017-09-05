@@ -96,9 +96,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 		require_once WT_ROOT . 'includes/functions/functions_mail.php';
 
 		$controller = new WT_Controller_Page();
-		$controller
-			->setPageTitle($this->getTitle())
-			->pageHeader();
+		$controller->setPageTitle($this->getTitle());
 
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules()) && WT_Site::preference('MAIL_FORMAT') == "1") {
 			ckeditor_WT_Module::enableBasicEditor($controller);
@@ -119,7 +117,7 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 			$recipients = recipients($to);
 
 			// Different validation for admin/user/visitor.
-			$errors = !WT_Filter::checkCsrf();
+			$errors = false;
 			if (WT_USER_ID) {
 				$from_name  = getUserFullName(WT_USER_ID);
 				$from_email = getUserEmail(WT_USER_ID);
@@ -150,7 +148,17 @@ class contact_WT_Module extends WT_Module implements WT_Module_Menu {
 			} else {
 				// No errors.  Send the message.
 				foreach ($recipients as $recipient) {
-					if (deliverMessage($WT_TREE, $from_email, $from_name, $recipient, $subject, $body, $url)) {
+					$message         = array();
+					$message['to']   = $to;
+					$message['from'] = $from_email;
+					if (!empty($from_name)) {
+						$message['from_name']  = $from_name;
+						$message['from_email'] = $from_email;
+					}
+					$message['subject'] = $subject;
+					$message['body']    = nl2br($body, false);
+					$message['url']     = $url;
+					if (addMessage($message)) {
 						WT_FlashMessages::addMessage(WT_I18N::translate('The message was successfully sent to %s.', WT_Filter::escapeHtml($to)), 'info');
 					} else {
 						WT_FlashMessages::addMessage(WT_I18N::translate('The message was not sent.'), 'danger');

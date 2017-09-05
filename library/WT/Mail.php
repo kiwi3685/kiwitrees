@@ -38,13 +38,13 @@ class WT_Mail {
 	 * Send an external email message
 	 * Caution! gmail may rewrite the "From" header unless you have added the address to your account.
 	 *
-	 * @param WT_Tree   $tree
-	 * @param string $to_email
-	 * @param string $to_name
-	 * @param string $replyto_email
-	 * @param string $replyto_name
-	 * @param string $subject
-	 * @param string $message
+	 * @param WT_Tree	$tree
+	 * @param string	$to_email
+	 * @param string	$to_name
+	 * @param string	$replyto_email
+	 * @param string	$replyto_name
+	 * @param string	$subject
+	 * @param string	$message
 	 *
 	 * @return bool
 	 */
@@ -52,9 +52,9 @@ class WT_Mail {
 		try {
 			// Swiftmailer uses the PHP default tmp directory.  On some servers, this
 			// is outside the open_basedir list.  Therefore we must set one explicitly.
-			WT_File::mkdir(WT_DATA_DIR . 'tmp');
+			WT_File::mkdir(WT_DATA_DIR . 'mail_tmp');
 
-			Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'tmp');
+			Swift_Preferences::getInstance()->setTempDir(WT_DATA_DIR . 'mail_tmp');
 
 			$mail = Swift_Message::newInstance()
 				->setSubject($subject)

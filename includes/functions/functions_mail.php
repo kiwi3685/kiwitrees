@@ -1,142 +1,29 @@
 <?php
-// Mail specific functions
-//
-// Kiwitrees: Web based Family History software
-// Copyright (C) 2016 kiwitrees.net
-//
-// Derived from webtrees
-// Copyright (C) 2012 webtrees development team
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team
-//
-// Modifications Copyright (c) 2010 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+/**
+ * Kiwitrees: Web based Family History software
+ * Copyright (C) 2012 to 2017 kiwitrees.net
+ *
+ * Derived from webtrees (www.webtrees.net)
+ * Copyright (C) 2010 to 2012 webtrees development team
+ *
+ * Derived from PhpGedView (phpgedview.sourceforge.net)
+ * Copyright (C) 2002 to 2010 PGV Development Team
+ *
+ * Kiwitrees is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 if (!defined('WT_KIWITREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
-}
-
-/**
- * Add a message to a user's inbox
- *
- * @param string[] $message
- *
- * @return bool
- */
-function addMessage($message) {
-	global $WT_TREE;
-
-	$success = true;
-
-	$sender    = get_user_id($message['from']);
-	$recipient = get_user_id($message['to']);
-
-	// Sender may not be a Kiwitrees user
-	if ($sender) {
-		$sender_email     = getUserEmail($sender);
-		$sender_real_name = getUserFullName($sender);
-	} else {
-		$sender_email     = $message['from'];
-		$sender_real_name = $message['from_name'];
-	}
-
-	// Send a copy of the copy message back to the sender.
-	// Switch to the sender’s language.
-	if ($sender) {
-		WT_I18N::init(get_user_setting($sender, 'language'));
-	}
-
-	$copy_email = $message['body'];
-	if (!empty($message['url'])) {
-		$copy_email .=
-			WT_Mail::EOL . WT_Mail::EOL . '--------------------------------------' . WT_Mail::EOL .
-			WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
-	}
-
-	if ($sender) {
-		// Message from a signed-in user
-		$copy_email = WT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(WT_TREE_TITLE)) . ' ' . getUserFullName($recipient) . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
-	} else {
-		// Message from a visitor
-		$copy_email  = WT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL . WT_Mail::EOL . $copy_email;
-	}
-
-	$success = $success && WT_Mail::send(
-		// “From:” header
-		$WT_TREE,
-		// “To:” header
-		$sender_email,
-		$sender_real_name,
-		// “Reply-To:” header
-		WT_Site::preference('SMTP_FROM_NAME'),
-		$WT_TREE->tree_title,
-		// Message body
-		WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
-		$copy_email
-	);
-
-	// Switch to the recipient’s language.
-	WT_I18N::init(get_user_setting($recipient, 'language'));
-	if (isset($message['from_name'])) {
-		$message['body'] =
-			WT_I18N::translate('From') . ':  ' . $message['from_name'] . WT_Mail::EOL .
-			WT_I18N::translate('Email address') . ':  ' . $message['from_email'] . WT_Mail::EOL .
-			WT_I18N::translate('Content') . ':  ' . $message['body'];
-	}
-
-	// Add another footer - unless we are an admin
-	if (!WT_USER_IS_ADMIN) {
-		if (!empty($message['url'])) {
-			$message['body'] .=
-			WT_Mail::EOL . WT_Mail::EOL .
-				'--------------------------------------' . WT_Mail::EOL .
-				WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
-		}
-	}
-
-	if ($sender) {
-		$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', getUserFullName($sender));
-	} else {
-		if (!empty($message['from_name'])) {
-			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from_name']);
-		} else {
-			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from']);
-		}
-	}
-	$original_email .= WT_Mail::EOL . WT_Mail::EOL . $message['body'];
-
-	$success = $success && WT_Mail::send(
-		// “From:” header
-			$WT_TREE,
-			// “To:” header
-			getUserEmail($recipient),
-			getUserFullName($recipient),
-			// “Reply-To:” header
-			$sender_email,
-			$sender_real_name,
-			// Message body
-			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
-			$original_email
-		);
-
-	WT_I18N::init(WT_LOCALE); // restore language settings if needed
-
-	return $success;
 }
 
 /**
@@ -179,51 +66,133 @@ function recipients($to) {
 }
 
 /**
- * Add a message to a user's inbox, send it to them via email, or both.
+ * Send a message to a user's inbox via email.
  *
- * @param Tree   $tree
- * @param string $sender_name
- * @param string $sender_email
- * @param User   $recipient
- * @param string $subject
- * @param string $body
- * @param string $url
+ * @param string[] $message
  *
  * @return bool
  */
-function deliverMessage(WT_Tree $tree, $sender_email, $sender_name, $recipient, $subject, $body, $url) {
+function addMessage($message) {
+	global $WT_TREE;
+
 	$success = true;
-	$hr      = '--------------------------------------------------';
-	$body    = nl2br($body, false);
-	$body_cc = WT_I18N::translate('You sent the following message to a kiwitrees user:') . ' ' . getUserFullName($recipient) . WT_Mail::EOL . $hr . WT_Mail::EOL . $body;
 
-	WT_I18N::init(get_user_setting($recipient, 'language', WT_LOCALE));
+	$sender    = get_user_id($message['from']);
+	$recipient = get_user_id($message['to']);
 
-	$body = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $sender_email) . WT_Mail::EOL . WT_Mail::EOL . $body;
-
-	if ($url !== 'index.php') {
-		$body .= WT_Mail::EOL . $hr . WT_Mail::EOL . WT_I18N::translate('This message was sent while viewing the following URL: ') . $url . WT_Mail::EOL;
-
+	// Sender may not be a Kiwitrees user
+	if ($sender) {
+		$sender_email     = getUserEmail($sender);
+		$sender_real_name = getUserFullName($sender);
+	} else {
+		$sender_email     = $message['from'];
+		$sender_real_name = $message['from_name'];
 	}
 
-	// Send via email
-	if (in_array(get_user_setting($recipient, 'contactmethod'), ['messaging', 'mailto', 'none'])) {
+	// Send a copy of the message back to the sender.
+		// Switch to the sender’s language.
+		if ($sender) {
+			WT_I18N::init(get_user_setting($sender, 'language'));
+		}
+
+		$copy_email = $message['body'];
+		if (!empty($message['url'])) {
+			$copy_email .=
+				WT_Mail::EOL .
+				WT_Mail::EOL .
+				'--------------------------------' .
+				WT_Mail::EOL .
+				WT_I18N::translate('This message was sent while viewing the following URL: ') .
+				$message['url'] .
+				WT_Mail::EOL;
+		}
+
+		if ($sender) {
+			// Message from a signed-in user
+			$copy_email =
+				WT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(WT_TREE_TITLE)) .
+				' ' .
+				getUserFullName($recipient) .
+				WT_Mail::EOL .
+				WT_Mail::EOL .
+				$copy_email;
+		} else {
+			// Message from a visitor
+			$copy_email  =
+				WT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(WT_TREE_TITLE)) .
+				WT_Mail::EOL .
+				WT_Mail::EOL .
+				WT_Mail::EOL .
+				$copy_email;
+		}
+
 		$success = $success && WT_Mail::send(
 			// “From:” header
-			$tree,
+			$WT_TREE,
 			// “To:” header
 			$sender_email,
-			$sender_name,
+			$sender_real_name,
 			// “Reply-To:” header
-			Site::getPreference('SMTP_FROM_NAME'),
-			$tree->tree_title,
+			WT_Site::preference('SMTP_FROM_NAME'),
+			$WT_TREE->tree_title,
 			// Message body
-			WT_I18N::translate('Kiwitrees message') . ' - ' . $subject,
-			$body
+			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
+			$copy_email
 		);
-	}
 
-	WT_I18N::init(WT_LOCALE);
+	// Send the message to the recipient.
+		// Switch to the recipient’s language.
+		WT_I18N::init(get_user_setting($recipient, 'language'));
+		if (isset($message['from_name'])) {
+			$message['body'] =
+				WT_I18N::translate('From') . ':  ' . $message['from_name'] . WT_Mail::EOL .
+				WT_I18N::translate('Email address') . ':  ' . $message['from_email'] . WT_Mail::EOL .
+				WT_I18N::translate('Content') . ':  ' . $message['body'];
+		}
+
+		// Add another footer - unless we are an admin
+		if (!WT_USER_IS_ADMIN) {
+			if (!empty($message['url'])) {
+				$message['body'] .=
+					WT_Mail::EOL .
+					WT_Mail::EOL .
+					'--------------------------------' .
+					WT_Mail::EOL .
+					WT_I18N::translate('This message was sent while viewing the following URL: ') .
+					$message['url'] .
+					WT_Mail::EOL;
+			}
+		}
+
+		if ($sender) {
+			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', getUserFullName($sender));
+		} else {
+			if (!empty($message['from_name'])) {
+				$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from_name']);
+			} else {
+				$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from']);
+			}
+		}
+		$original_email .=
+			WT_Mail::EOL .
+			WT_Mail::EOL .
+			$message['body'];
+
+		$success = $success && WT_Mail::send(
+			// “From:” header
+			$WT_TREE,
+			// “To:” header
+			getUserEmail($recipient),
+			getUserFullName($recipient),
+			// “Reply-To:” header
+			$sender_email,
+			$sender_real_name,
+			// Message body
+			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
+			$original_email
+		);
+
+	WT_I18N::init(WT_LOCALE); // restore language settings if needed
 
 	return $success;
 }
@@ -291,6 +260,7 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 	} ?>
 
 	<form name="messageform" method="post">
+		<input type="hidden" name="url" value="<?php echo WT_Filter::escapeHtml($url); ?>">
 		<div id="contact_header">
 			<?php if (!WT_USER_ID) { ?>
 				<p>
@@ -299,7 +269,6 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 					</small>
 				</p>
 			<?php } ?>
-			<input type="hidden" name="url" value="<?php echo WT_Filter::escapeHtml($url); ?>">
 			<?php if (!WT_USER_ID) { ?>
 				<div class="option">
 					<label for="from_name"><?php echo WT_I18N::translate('Your name'); ?></label>
@@ -311,8 +280,8 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 							<?php echo WT_I18N::translate('Please provide your email address so that we may contact you in response to this message. If you do not provide your email address we will not be able to respond to your inquiry. Your email address will not be used in any other way besides responding to this inquiry.'); ?>
 						</small>
 					</p>
-					<label for="from_name"><?php echo WT_I18N::translate('Email address'); ?></label>
-					<input type="email" name="from_email" id="from_email" value="<?php echo WT_Filter::escapeHtml($from_email); ?>" required>
+					<label for="from_email"><?php echo WT_I18N::translate('Email address'); ?></label>
+					<input type="email" name="from_email" id="from_email" value="<?php echo $from_email; ?>" required >
 				</div>
 			<?php } ?>
 		</div>
@@ -322,9 +291,9 @@ function messageForm ($to, $from_name, $from_email, $subject, $body, $url, $to_n
 				<div class="contact_form">
 					<?php echo $form_title; ?>
 					<div class="option">
-						<input type="hidden" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>">
 						<label for="to_name"><?php echo WT_I18N::translate('To'); ?></label>
 						<input type="text" name="to_name" id="to_name" value="<?php echo $to_name; ?>">
+						<input type="hidden" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>">
 					</div>
 					<div class="option">
 						<label for="from_name"><?php echo WT_I18N::translate('Subject'); ?></label>

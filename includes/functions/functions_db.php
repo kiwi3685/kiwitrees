@@ -1415,10 +1415,8 @@ function find($user_id) {
  */
 function findByUserName($user_name) {
 	$user_id = WT_DB::prepare(
-		"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = :user_name"
-	)->execute([
-		'user_name' => $user_name,
-	])->fetchOne();
+		"SELECT SQL_CACHE user_id FROM `##user` WHERE user_name = ?"
+	)->execute([$user_name])->fetchOne();
 
 	return find($user_id);
 }

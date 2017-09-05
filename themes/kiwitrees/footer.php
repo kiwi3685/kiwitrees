@@ -32,7 +32,7 @@ if (!defined('WT_KIWITREES')) {
 	<div id="footer">
 		<?php if (!array_key_exists('contact', WT_Module::getActiveModules())){ ?>
 			<div class="contact_links">
-				<a href="message.php?url=<?php echo addslashes(urlencode(get_query_url())); ?>" target="_blank" rel="noopener noreferrer" title="<?php echo WT_I18N::translate('Send Message'); ?>">
+				<a href="message.php?url=<?php echo addslashes(urlencode(get_query_url())); ?>" target="_blank" title="<?php echo WT_I18N::translate('Send Message'); ?>">
 					<?php echo WT_I18N::translate('If you have any questions or comments please contact us'); ?>
 					<i class="fa-envelope-o"></i>
 				</a>

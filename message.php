@@ -18,7 +18,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
 define('WT_SCRIPT_NAME', 'message.php');
@@ -26,7 +26,7 @@ require './includes/session.php';
 require_once WT_ROOT . 'includes/functions/functions_mail.php';
 
 $controller = new WT_Controller_Page();
-$controller->setPageTitle(WT_I18N::translate('Kiwitrees message'));
+$controller->setPageTitle(WT_I18N::translate('Contact us'));
 
 if (array_key_exists('ckeditor', WT_Module::getActiveModules()) && WT_Site::preference('MAIL_FORMAT') == "1") {
 	ckeditor_WT_Module::enableBasicEditor($controller);
@@ -54,10 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	} elseif ($from_name === '' || $from_email === '') {
 		$errors = true;
 	} elseif (!preg_match('/@(.+)/', $from_email, $match) || function_exists('checkdnsrr') && !checkdnsrr($match[1])) {
-		WT_FlashMessages::addMessage(I18N::translate('Please enter a valid email address.'), 'danger');
+		WT_FlashMessages::addMessage(WT_I18N::translate('Please enter a valid email address.'), 'danger');
 		$errors = true;
 	} elseif (preg_match('/(?!' . preg_quote(WT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $subject . $body, $match)) {
-		WT_FlashMessages::addMessage(I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]), 'danger');
+		WT_FlashMessages::addMessage(WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' . /* I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’ */ WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1]), 'danger');
 		$errors = true;
 	} elseif (empty($recipients)) {
 		$errors = true;
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			'Location: message.php' .
 			'?to=' . rawurlencode($to) .
 			'&from_name=' . rawurlencode($from_name) .
-			'&from_email=' . rawurlencode($from_email) .
+			'&from_email=' . rawurlencode($from_name) .
 			'&subject=' . rawurlencode($subject) .
 			'&body=' . rawurlencode($body) .
 			'&url=' . rawurlencode($url) .
@@ -78,15 +78,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	} else {
 		// No errors.  Send the message.
 		foreach ($recipients as $recipient) {
-			if (deliverMessage($WT_TREE, $from_email, $from_name, $recipient, $subject, $body, $url)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The message was successfully sent to %s.', WT_Filter::escapeHtml($to)), 'info');
+			$message         = array();
+			$message['to']   = $to;
+			$message['from'] = $from_email;
+			if (!empty($from_name)) {
+				$message['from_name']  = $from_name;
+				$message['from_email'] = $from_email;
+			}
+			$message['subject'] = $subject;
+			$message['body']    = nl2br($body, false);
+			$message['url']     = $url;
+			if (addMessage($message)) {
+				WT_FlashMessages::addMessage(WT_I18N::translate('The message was successfully sent to %s.', WT_Filter::escapeHtml($to)));
 			} else {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The message was not sent.'), 'danger');
+				WT_FlashMessages::addMessage(WT_I18N::translate('The message was not sent.'));
 				AddToLog('Unable to send a message. FROM:' . $from_email . ' TO:' . getUserEmail($recipient), 'error');
 			}
 		}
 
 		header('Location: ' . $url);
+
 	}
 
 	return;
