@@ -494,7 +494,7 @@ case 'edit_SOUR_EVEN':
 
 case 'edituser_contact_meth':
 	$title = WT_I18N::translate('Preferred contact method');
-	$text = WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you.');
+	$text = WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.');
 	$text.='<br/><br/><dl><dt>';
 	$text.=WT_I18N::translate('Kiwitrees sends emails');
 	$text.='</dt><dd>';
@@ -512,7 +512,7 @@ case 'edituser_contact_meth':
 
 case 'edituser_contact_meth_short':
 	$title = WT_I18N::translate('Preferred contact method');
-	$text = WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you.');
+	$text = WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.');
 	break;
 
 case 'edituser_gedcomid':

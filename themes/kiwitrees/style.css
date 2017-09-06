@@ -2332,6 +2332,8 @@ table[id^='rel_'] .person_boxNN {
 }
 
 #login-register-page .warning {
+	background-color: #f7e4e1;
+	border: 1px solid rgba(10, 10, 10, 0.25);
 	margin: 20px auto;
 	text-align: center;
 }
@@ -2343,9 +2345,11 @@ table[id^='rel_'] .person_boxNN {
 }
 
 #login-register-page .confirm {
+	background-color: #d7ecfa;
+	border: 1px solid rgba(10, 10, 10, 0.25);
 	margin: 20px auto;
-	text-align: justify;
-	width: 500px;
+	padding: 10px;
+	width: 98%;
 }
 
 #login-register-page .confirm p {
@@ -2367,7 +2371,8 @@ table[id^='rel_'] .person_boxNN {
 }
 
 #login-box,
-#register-box {
+#register-box,
+#verify-box {
 	text-align: center;
 }
 
@@ -2395,8 +2400,7 @@ table[id^='rel_'] .person_boxNN {
 }
 
 #login-form label,
-.new_passwd_form label,
-#verify-form label {
+.new_passwd_form label {
 	display: block;
 	text-align: right;
 }

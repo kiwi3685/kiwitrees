@@ -18,7 +18,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Kiwitrees. If not, see <http://www.gnu.org/licenses/>.
  */
 
 define('WT_SCRIPT_NAME', 'login.php');
@@ -66,11 +66,11 @@ switch ($action) {
 			$user_id = authenticateUser($username, $password);
 			switch ($user_id) {
 			case -1: // not validated
-				$message = WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
+				$message = WT_I18N::translate('This account has not been verified. Please check your email for a verification message.');
 				break;
 
 			case -2: // not approved
-				$message = WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
+				$message = WT_I18N::translate('This account has not been approved. Please wait for an administrator to approve it.');
 				break;
 
 			case -3: // bad password
@@ -124,17 +124,17 @@ switch ($action) {
 			->setPageTitle(WT_I18N::translate('Login'))
 			->pageHeader(true); ?>
 
-		<div id="login-page">
+		<div id="login-register-page">
 			<div id="login-text">
 				<?php switch (WT_Site::preference('WELCOME_TEXT_AUTH_MODE')) {
 				case 1:
-					echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
+					echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page. If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account. You will receive an email when your application has been approved.');
 					break;
 				case 2:
-					echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
+					echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page. If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application. You will receive an email message when your application has been approved.');
 					break;
 				case 3:
-					echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
+					echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page. If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account. You will receive an email when your request is approved.');
 					break;
 				case 4:
 					echo '<p style="white-space: pre-wrap;">', WT_Site::preference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
@@ -195,7 +195,7 @@ switch ($action) {
 		$controller
 			->setPageTitle(WT_I18N::translate('Lost password request'))
 			->pageHeader(); ?>
-		<div id="login-page">
+		<div id="login-register-page">
 			<?php $user_name = WT_Filter::post('new_passwd_username');
 
 			$user_id = WT_DB::prepare(
@@ -218,19 +218,19 @@ switch ($action) {
 				WT_Mail::systemMessage(
 					$WT_TREE,
 					$user_id,
-					WT_I18N::translate('Lost password request'),
+					WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . WT_I18N::translate('Lost password request'),
 					WT_I18N::translate('Hello %s…', getUserFullName($user_id)) . WT_Mail::EOL . WT_Mail::EOL .
 					WT_I18N::translate('A new password has been requested for your username.') . WT_Mail::EOL . WT_Mail::EOL .
 					WT_I18N::translate('Username') . ': ' . $user_name . WT_Mail::EOL .
 					WT_I18N::translate('Password') . ': ' . $user_new_pw . WT_Mail::EOL . WT_Mail::EOL .
 					WT_I18N::translate('After you have logged in, select the «My Account» link under the your name in the menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
-					'<a href="' . WT_SERVER_NAME . 'login.php?ged=' . strip_tags(WT_TREE_TITLE) . '">' . WT_SERVER_NAME . 'login.php?ged=' . strip_tags(WT_TREE_TITLE) . '</a>'
+					'<a href="' . WT_SERVER_NAME . '/login.php?ged=' . strip_tags(WT_TREE_TITLE) . '">' . WT_SERVER_NAME . '/login.php?ged=' . strip_tags(WT_TREE_TITLE) . '</a>'
 				);
 
 				?>
 				<div class="confirm">
 					<p>
-						<?php echo /* I18N: %s is a username */WT_I18N::translate('A new password has been created and emailed to %s.  You can change this password after you login.', $user_name); ?>
+						<?php echo /* I18N: %s is a username */WT_I18N::translate('A new password has been created and emailed to %s. You can change this password after you login.', $user_name); ?>
 					</p>
 				</div>
 			<?php } else { ?>
@@ -241,8 +241,7 @@ switch ($action) {
 				</div>
 			<?php } ?>
 		</div>
-		<?php header('Location: login.php');
-		return;
+		<?php
 		break;
 
 	case 'register':
@@ -258,9 +257,9 @@ switch ($action) {
 
 			// These validation errors cannot be shown in the client.
 			if (get_user_id($user_name)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name. A user with that user name already exists. Please choose another user name.'));
 			} elseif (findByEmail($user_email)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address. A user with that email already exists.'));
 			} elseif (preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
 				WT_FlashMessages::addMessage(
 					WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
@@ -286,37 +285,40 @@ switch ($action) {
 				set_user_setting($user_id, 'sessiontime',       0);
 
 				// Generate an email in the admin’s language
-				$webmaster_user_id = get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+				$webmaster_user_id	= get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+				$tree_link			= '<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . '?ged=' . WT_GED_ID . '"><strong>' . strip_tags(WT_TREE_TITLE) . '</strong></a>';
+
 				WT_I18N::init(get_user_setting($webmaster_user_id, 'language'));
 
 				$mail1_body =
 					WT_I18N::translate('Hello Administrator ...') . WT_Mail::EOL . WT_Mail::EOL .
 					/* I18N: %s is a server name/URL */
-					WT_I18N::translate('A prospective user has registered at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE)) . WT_Mail::EOL . WT_Mail::EOL .
-					WT_I18N::translate('Username') .' '. $user_name . WT_Mail::EOL .
-					WT_I18N::translate('Real name') .' '. $user_realname . WT_Mail::EOL .
-					WT_I18N::translate('Email Address:').' '. $user_email . WT_Mail::EOL . WT_Mail::EOL .
-					WT_I18N::translate('Comments') .' '. $user_comments . WT_Mail::EOL . WT_Mail::EOL .
+					WT_I18N::translate('A prospective user has registered at %s.', $tree_link) . WT_Mail::EOL . WT_Mail::EOL .
+					WT_I18N::translate('Username') .': '. $user_name . WT_Mail::EOL .
+					WT_I18N::translate('Real name') .': '. $user_realname . WT_Mail::EOL .
+					WT_I18N::translate('Email Address') .': '. $user_email . WT_Mail::EOL . WT_Mail::EOL .
+					WT_I18N::translate('Comments') . ': '. $user_comments . WT_Mail::EOL . WT_Mail::EOL .
 					WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . WT_Mail::EOL . WT_Mail::EOL .
-					WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
+					WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request. You can then complete the process by activating the user name. The new user will not be able to login until you activate the account.') . "\r\n";
 
-				$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
+				$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', strip_tags(WT_TREE_TITLE));
 				WT_I18N::init(WT_LOCALE); ?>
 
 				<div id="login-register-page">
-					<?php // Generate an email in the user’s language
+					<?php
+					// Generate an email in the user’s language
 					$mail2_body =
 						WT_I18N::translate('Hello %s ...', $user_realname) . WT_Mail::EOL . WT_Mail::EOL .
 						/* I18N: %1$s is the site URL and %2$s is an email address */
-						WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE), $user_email) . WT_Mail::EOL . WT_Mail::EOL .
+						WT_I18N::translate('You (or someone claiming to be you) registered an account at %1$s using the email address %2$s.', $tree_link, $user_email) . WT_Mail::EOL . WT_Mail::EOL .
 						WT_I18N::translate('Follow this link to verify your email address.') . WT_Mail::EOL . WT_Mail::EOL .
 						'<a href="' . WT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&action=userverify">' .
 							WT_LOGIN_URL . '?user_name=' . urlencode($user_name) . '&user_hashcode=' . urlencode(get_user_setting($user_id, 'reg_hashcode')) . '&action=userverify"' .
 						'</a>' . WT_Mail::EOL . WT_Mail::EOL .
-						WT_I18N::translate('Username') . " " . $user_name . WT_Mail::EOL .
-						WT_I18N::translate('Comments').": " . $user_comments . WT_Mail::EOL .
+						WT_I18N::translate('Username') . ': ' . $user_name . WT_Mail::EOL .
+						WT_I18N::translate('Comments') . ': ' . $user_comments . WT_Mail::EOL . WT_Mail::EOL .
 						WT_I18N::translate('If you didn\'t request an account, you can just delete this message.') . WT_Mail::EOL;
-					$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
+					$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', strip_tags(WT_TREE_TITLE));
 					$mail2_to      = $user_email;
 					$mail2_from    = $KIWITREES_EMAIL;
 
@@ -332,27 +334,30 @@ switch ($action) {
 						$mail2_from,
 						// Message body
 						$mail2_subject,
+						// Message content
 						$mail2_body
 					);
 
-					// Send admin message by internal messaging
+					// Send admin message
 					WT_Mail::send(
 						// “From:” header
 						$WT_TREE,
 						// “To:” header
-						$webmaster->getEmail(),
-						$webmaster->getRealName(),
+						getUserEmail($webmaster_user_id),
+						getUserFullName($webmaster_user_id),
 						// “Reply-To:” header
-						$user->getEmail(),
-						$user->getRealName(),
-						// Message body
+						$KIWITREES_EMAIL,
+						$KIWITREES_EMAIL,
+						// Message subject
 						$mail1_subject,
+						// Message content
 						$mail1_body
-					); ?>
+					);
+					?>
 
 					<div class="confirm">
 						<p><?php echo WT_I18N::translate('Hello %s ...<br />Thank you for your registration.', $user_realname); ?></p>
-						<p><?php echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email); ?></p>
+						<p><?php echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email); ?></p>
 					</div>
 				</div>
 				<?php
@@ -442,25 +447,27 @@ switch ($action) {
 		$controller->pageHeader(); ?>
 
 		<div id="login-register-page">
-			<form id="verify-form" name="verify-form" method="post" action="<?php echo WT_LOGIN_URL; ?>">
-				<input type="hidden" name="action" value="verify_hash">
-				<h4><?php echo WT_I18N::translate('User verification'); ?></h4>
-				<div>
-					<label for="username"><?php echo WT_I18N::translate('Username'); ?></label>
-					<input type="text" id="username" name="user_name" value="<?php echo $user_name; ?>">
-				</div>
-				<div>
-					<label for="user_password"><?php echo WT_I18N::translate('Password'); ?></label>
-					<input type="password" id="user_password" name="user_password" value="" autofocus>
-				</div>
-				<div>
-					<label for="user_hashcode"><?php echo WT_I18N::translate('Verification code:'); ?></label>
-					<input type="text" id="user_hashcode" name="user_hashcode" value="<?php echo $user_hashcode; ?>">
-				</div>
-				<div>
-					<input type="submit" value="<?php echo WT_I18N::translate('Send'); ?>">
-				</div>
-			</form>
+			<h2><?php echo WT_I18N::translate('User verification'); ?></h2>
+			<div id="verify-box">
+				<form id="verify-form" name="verify-form" method="post" action="<?php echo WT_LOGIN_URL; ?>">
+					<input type="hidden" name="action" value="verify_hash">
+					<div>
+						<label for="username"><?php echo WT_I18N::translate('Username'); ?></label>
+						<input type="text" id="username" name="user_name" value="<?php echo $user_name; ?>">
+					</div>
+					<div>
+						<label for="user_password"><?php echo WT_I18N::translate('Password'); ?></label>
+						<input type="password" id="user_password" name="user_password" value="" autofocus>
+					</div>
+					<div>
+						<label for="user_hashcode"><?php echo WT_I18N::translate('Verification code:'); ?></label>
+						<input type="text" id="user_hashcode" name="user_hashcode" value="<?php echo $user_hashcode; ?>">
+					</div>
+					<div>
+						<input type="submit" value="<?php echo WT_I18N::translate('Send'); ?>">
+					</div>
+				</form>
+			</div>
 		</div>
 		<?php
 		break;
@@ -480,7 +487,7 @@ switch ($action) {
 		$edit_user_url	= WT_SERVER_NAME . 'admin_users.php?action=edit&amp;user_id=' . $user_id;
 		$mail1_body		=
 			WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
-			/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */ I18N::translate(
+			/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */ WT_I18N::translate(
 				'A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).',
 				getUserFullName($user_id),
 				$user_name,
@@ -490,9 +497,10 @@ switch ($action) {
 			'<a href="' . $edit_user_url . '">' . $edit_user_url . '</a>' . WT_Mail::EOL . WT_Mail::EOL .
 			/* I18N: You need to: */ WT_I18N::translate('Set the status to “approved”.') . WT_Mail::EOL .
 			/* I18N: You need to: */ WT_I18N::translate('Set the access level for each tree.') . WT_Mail::EOL .
+			/* I18N: You need to: */ WT_I18N::translate('Set a role for this user.') . WT_Mail::EOL .
 			/* I18N: You need to: */ WT_I18N::translate('Link the user account to an individual.');
 
-		$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . strip_tags(WT_TREE_TITLE));
+		$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', strip_tags(WT_TREE_TITLE));
 
 		// Change to the new user’s language
 		WT_I18N::init(get_user_setting($user_id, 'language'));
@@ -503,14 +511,13 @@ switch ($action) {
 		<div id="login-register-page">
 			<h2><?php echo WT_I18N::translate('User verification'); ?></h2>
 			<div id="user-verify">
-				<?php echo WT_I18N::translate('The data for the user <b>%s</b> was checked.', $user_name);
-				if ($user_id && check_user_password($user_id, $user_password) && get_user_setting($user_id, 'reg_hashcode') === $user_hashcode) {
+				<?php if ($user_id && check_user_password($user_id, $user_password) && get_user_setting($user_id, 'reg_hashcode') === $user_hashcode) {
 					WT_Mail::send(
 					// “From:” header
 						$WT_TREE,
 						// “To:” header
-						getUserEmail($webmaster),
-						getUserFullName($webmaster),
+						getUserEmail($webmaster_user_id),
+						getUserFullName($webmaster_user_id),
 						// “Reply-To:” header
 						$KIWITREES_EMAIL,
 						$KIWITREES_EMAIL,
@@ -522,14 +529,18 @@ switch ($action) {
 					set_user_setting($user_id, 'verified', 1);
 					set_user_setting($user_id, 'reg_timestamp', date("U"));
 					set_user_setting($user_id, 'reg_hashcode', null);
-					AddToLog('User verified: ' . $user_name, 'auth'); ?>
+					AddToLog('User ' . $user_name . ' verified their email address' , 'auth'); ?>
 
-					<p><?php echo WT_I18N::translate('You have confirmed your request to become a registered user.'); ?></p>
-					<p><?php echo WT_I18N::translate('The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password.'); ?></p>
+					<div class="confirm">
+						<p><?php echo WT_I18N::translate('You have confirmed your request to become a registered user.'); ?></p>
+						<p><?php echo WT_I18N::translate('The administrator has been informed. As soon as they give you permission to login, you can login with your user name and password.'); ?></p>
+					</div>
 				<?php } else { ?>
-					<p class="warning">';
-						<?php echo WT_I18N::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.'); ?>
-					</p>
+					<div class="warning ">
+						<p>
+							<?php echo WT_I18N::translate('Could not verify the information you entered. Please try again or contact the site administrator for more information.'); ?>
+						</p>
+					</div>
 				<?php } ?>
 			</div>
 		</div>
