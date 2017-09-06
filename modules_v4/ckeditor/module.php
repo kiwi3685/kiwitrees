@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,20 +40,20 @@ class ckeditor_WT_Module extends WT_Module {
 	// Convert <textarea class="html-edit"> fields to CKEditor fields
 	public static function enableEditor($controller) {
 		$controller
-			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
-			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
+			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/ckeditor.js')
+			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
 			// Need to specify the path before we load the libary
-			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
+			->addInlineJavascript('var CKEDITOR_BASEPATH="' . WT_MODULES_DIR . 'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
-					contentsCss: "'.WT_MODULES_DIR.'ckeditor/kt_ckeditor.css",
+					contentsCss: "' . WT_MODULES_DIR . 'ckeditor/kt_ckeditor.css",
 					skin : "moono-lisa",
 					allowedContent: true,
 					width: "100%",
 					height: "400px",
-					filebrowserImageBrowseUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
-					filebrowserImageUploadUrl:	"'.WT_MODULES_DIR.'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
+					filebrowserImageBrowseUrl:	"' . WT_MODULES_DIR . 'ckeditor/kcfinder/browse.php?opener=ckeditor&type=images",
+					filebrowserImageUploadUrl:	"' . WT_MODULES_DIR . 'ckeditor/kcfinder/upload.php?opener=ckeditor&type=images",
 					extraPlugins: "slideshow,footnotes",
 					footnotesPrefix: "a",
 					toolbarGroups: [
@@ -79,16 +79,18 @@ class ckeditor_WT_Module extends WT_Module {
 	// Convert <textarea class="html-edit"> fields to CKEditor fields with basic settings only for messsaging
 	public static function enableBasicEditor($controller) {
 		$controller
-			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
-			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
+			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/ckeditor.js')
+			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/adapters/jquery.js')
 			// Need to specify the path before we load the libary
-			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
+			->addInlineJavascript('var CKEDITOR_BASEPATH="' . WT_MODULES_DIR . 'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
 			// Activate the editor
 			->addInlineJavascript('
 				jQuery(".html-edit").ckeditor(function(){}, {
 					skin : "moono-lisa",
 					width: "100%",
 					height: "150px",
+					enterMode: CKEDITOR.ENTER_BR,
+					autoParagraph: false,
 					toolbar: [["Bold", "Italic", "Underline", "-", "Subscript", "Superscript", "-", "NumberedList", "BulletedList", "Outdent", "Indent", "Font", "FontSize", "TextColor"]]
 				});
 			');

@@ -75,6 +75,17 @@ function recipients($to) {
 function addMessage($message) {
 	global $WT_TREE;
 
+	//Set html formatting
+	if (WT_Site::preference('MAIL_FORMAT')) {
+		$bold_on	= '<strong>';
+		$bold_off	= '</strong>';
+		$line		= '<hr>';
+	} else {
+		$bold_on 	= '';
+		$bold_off 	= '';
+		$line		= '--------------------------------';
+	}
+
 	$success = true;
 
 	$sender    = get_user_id($message['from']);
@@ -90,40 +101,27 @@ function addMessage($message) {
 	}
 
 	// Send a copy of the message back to the sender.
-		// Switch to the sender’s language.
 		if ($sender) {
+			// Switch to the sender’s language.
 			WT_I18N::init(get_user_setting($sender, 'language'));
-		}
-
-		$copy_email = $message['body'];
-		if (!empty($message['url'])) {
-			$copy_email .=
-				WT_Mail::EOL .
-				WT_Mail::EOL .
-				'--------------------------------' .
-				WT_Mail::EOL .
-				WT_I18N::translate('This message was sent while viewing the following URL: ') .
-				$message['url'] .
-				WT_Mail::EOL;
-		}
-
-		if ($sender) {
 			// Message from a signed-in user
-			$copy_email =
-				WT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(WT_TREE_TITLE)) .
-				' ' .
-				getUserFullName($recipient) .
-				WT_Mail::EOL .
-				WT_Mail::EOL .
-				$copy_email;
+			$copy_email = WT_I18N::translate('You sent the following message to a user at %1$s:', strip_tags(WT_TREE_TITLE)) . ' ' . getUserFullName($recipient);
 		} else {
 			// Message from a visitor
-			$copy_email  =
-				WT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(WT_TREE_TITLE)) .
-				WT_Mail::EOL .
-				WT_Mail::EOL .
-				WT_Mail::EOL .
-				$copy_email;
+			$copy_email = WT_I18N::translate('You sent the following message to an administrator at %1$s:', strip_tags(WT_TREE_TITLE));
+		}
+
+		$copy_email .=
+			WT_Mail::EOL .
+			WT_Mail::EOL .
+			$bold_on . WT_I18N::translate('From') . ':  ' . $bold_off . $message['from_name'] . WT_Mail::EOL .
+			$bold_on . WT_I18N::translate('Subject') . ':  ' . $bold_off . $message['subject'] . WT_Mail::EOL .
+			$bold_on . WT_I18N::translate('Content') . ':  ' . $bold_off . WT_Mail::EOL .
+			$message['body'] . WT_Mail::EOL .
+			$line . WT_Mail::EOL;
+
+		if (!empty($message['url'])) {
+			$copy_email .=  WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . WT_Mail::EOL;
 		}
 
 		$success = $success && WT_Mail::send(
@@ -135,35 +133,15 @@ function addMessage($message) {
 			// “Reply-To:” header
 			WT_Site::preference('SMTP_FROM_NAME'),
 			$WT_TREE->tree_title,
-			// Message body
+			// Message subject
 			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
+			// Message content
 			$copy_email
 		);
 
 	// Send the message to the recipient.
 		// Switch to the recipient’s language.
 		WT_I18N::init(get_user_setting($recipient, 'language'));
-		if (isset($message['from_name'])) {
-			$message['body'] =
-				WT_I18N::translate('From') . ':  ' . $message['from_name'] . WT_Mail::EOL .
-				WT_I18N::translate('Email address') . ':  ' . $message['from_email'] . WT_Mail::EOL .
-				WT_I18N::translate('Content') . ':  ' . $message['body'];
-		}
-
-		// Add another footer - unless we are an admin
-		if (!WT_USER_IS_ADMIN) {
-			if (!empty($message['url'])) {
-				$message['body'] .=
-					WT_Mail::EOL .
-					WT_Mail::EOL .
-					'--------------------------------' .
-					WT_Mail::EOL .
-					WT_I18N::translate('This message was sent while viewing the following URL: ') .
-					$message['url'] .
-					WT_Mail::EOL;
-			}
-		}
-
 		if ($sender) {
 			$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', getUserFullName($sender));
 		} else {
@@ -173,10 +151,20 @@ function addMessage($message) {
 				$original_email = /* I18N: %s is a person's name */ WT_I18N::translate('%s sent you the following message.', $message['from']);
 			}
 		}
+
 		$original_email .=
 			WT_Mail::EOL .
 			WT_Mail::EOL .
-			$message['body'];
+			$bold_on . WT_I18N::translate('From') . ':  ' . $bold_off . $message['from_email'] . WT_Mail::EOL .
+			$bold_on . WT_I18N::translate('Subject') . ':  ' . $bold_off . $message['subject'] . WT_Mail::EOL .
+			$bold_on . WT_I18N::translate('Content') . ':  ' . $bold_off . WT_Mail::EOL .
+			$message['body'] . WT_Mail::EOL .
+			$line . WT_Mail::EOL;
+
+		// Add another footer - unless we are an admin
+		if (!WT_USER_IS_ADMIN && !empty($message['url'])) {
+			$original_email .= $bold_on . WT_I18N::translate('This message was sent while viewing the following URL: ') . $message['url'] . $bold_off . WT_Mail::EOL;
+		}
 
 		$success = $success && WT_Mail::send(
 			// “From:” header
@@ -187,8 +175,9 @@ function addMessage($message) {
 			// “Reply-To:” header
 			$sender_email,
 			$sender_real_name,
-			// Message body
+			// Message subject
 			WT_I18N::translate('%1$s message', strip_tags(WT_TREE_TITLE)) . ' - ' . $message['subject'],
+			// Message content
 			$original_email
 		);
 
