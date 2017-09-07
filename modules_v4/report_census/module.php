@@ -224,11 +224,15 @@ class report_census_WT_Module extends WT_Module implements WT_Module_Report {
 		if ($go == 1) {
 			// Notes about the register
 			if (in_array($plac, array('England', 'Wales')) && ($dat === '29 SEP 1939' || $dat === WT_I18N::translate('all'))) { ?>
-				<h4><?php echo WT_I18N::translate('Notes'); ?></h4>
-				<ol id="register_notes">
-					<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('This list assumes entries relating to the 1939 Register are recorded using the <b>census</b> GEDCOM tag (CENS))'); ?></li>
-					<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('In general anyone who died after 1991, or is still alive, will be redacted (hidden) on the Register. They are listed here, but with a note indicating they are likely to be redacted. However, the Register is incomplete in this regard, so many people who died <u>before</u> 1991 are still redacted.'); ?></li>
-					<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('Anyone serving in the military on 29 September 1939 is excluded from the Register. They are included in these lists but with a note that they may be in the military. This list assumes their military service is recorded with either the _MILI or _MILT GEDCOM tags'); ?></li>
+				<h4 style="margin: 0 auto;"><?php echo WT_I18N::translate('Notes:'); ?></h4>
+				<ol id="register_notes" style="margin: 0 -20px;">
+					<li><strong>1939 Register (England & Wales)</strong>
+						<ol>
+							<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('This list assumes entries relating to the 1939 Register are recorded using the <b>census</b> GEDCOM tag (CENS))'); ?></li>
+							<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('In general anyone who died after 1991, or is still alive, will be redacted (hidden) on the Register. They are listed here, but with a note indicating they are likely to be redacted. However, the Register is incomplete in this regard, so many people who died <u>before</u> 1991 are still redacted.'); ?></li>
+							<li><?php echo /* I18N: Note about UK 1939 Register check */ WT_I18N::translate('Anyone serving in the military on 29 September 1939 is excluded from the Register. They are included in these lists but with a note that they may be in the military. This list assumes their military service is recorded with either the _MILI or _MILT GEDCOM tags'); ?></li>
+						</ol>
+					</li>
 				</ol>
 			<?php }
 			echo '<ul id="nocensus_result">';

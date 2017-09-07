@@ -1592,6 +1592,8 @@ function old_paths() {
 		WT_ROOT . 'modules_v4/census_assistant/census_note_decode.php',
 		WT_ROOT . 'modules_v4/census_assistant/js',
 		WT_ROOT . 'modules_v4/report_ukregister',
+		WT_ROOT . 'modules_v4/widget_messages',
+		WT_ROOT . 'modules_v4/report_ukcensus',
 		WT_ROOT . 'js/jquery.cookie-1.3.1.js',
 		WT_ROOT . 'js/jquery-1.9.1.js',
 		WT_ROOT . 'js/jquery-ui.js',
@@ -1599,7 +1601,6 @@ function old_paths() {
 		WT_ROOT . 'js/jquery.autosize.js',
 		WT_ROOT . 'includes/old_messages.php',
 		WT_ROOT . 'library/phpmailer',
-		WT_ROOT . 'modules_v4/widget_messages',
 	);
 }
 
