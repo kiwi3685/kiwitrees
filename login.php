@@ -533,7 +533,7 @@ switch ($action) {
 
 					<div class="confirm">
 						<p><?php echo WT_I18N::translate('You have confirmed your request to become a registered user.'); ?></p>
-						<p><?php echo WT_I18N::translate('The administrator has been informed. As soon as they give you permission to login, you can login with your user name and password.'); ?></p>
+						<p><?php echo WT_I18N::translate('The administrator has been informed. As soon as they give you permission you can login with your user name and password.'); ?></p>
 					</div>
 				<?php } else { ?>
 					<div class="warning ">
