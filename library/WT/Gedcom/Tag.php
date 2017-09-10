@@ -93,6 +93,7 @@ class WT_Gedcom_Tag {
 		switch ($tag) {
 		case 'BIRT':  return WT_I18N::translate_c('Abbreviation for birth',            'b.');
 		case 'MARR':  return WT_I18N::translate_c('Abbreviation for marriage',         'm.');
+		case 'DIV':  return WT_I18N::translate_c('Abbreviation for divorce',           'dv.');
 		case 'DEAT':  return WT_I18N::translate_c('Abbreviation for death',            'd.');
 		case 'PHON':  return WT_I18N::translate_c('Abbreviation for telephone number', 't.');
 		case 'FAX':   return WT_I18N::translate_c('Abbreviation for fax number',       'f.');

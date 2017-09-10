@@ -667,6 +667,8 @@ class WT_GedcomRecord {
 								<dd class="field">' . format_fact_date($event, $this, false, false) . ' ' . format_fact_place($event) . '</dd>
 							</dl>
 						';
+					case 3:
+						return ' (<em>' . WT_Gedcom_Tag::getAbbreviation($event->getTag()) . ' ' . format_fact_date($event, $this, false, false) . '</em>)';
 				}
 			}
 		}

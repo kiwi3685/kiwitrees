@@ -2,13 +2,13 @@
 /**
  * Kiwitrees: Web based Family History software
  * Copyright (C) 2012 to 2017 kiwitrees.net
- * 
+ *
  * Derived from webtrees (www.webtrees.net)
  * Copyright (C) 2010 to 2012 webtrees development team
- * 
+ *
  * Derived from PhpGedView (phpgedview.sourceforge.net)
  * Copyright (C) 2002 to 2010 PGV Development Team
- * 
+ *
  * Kiwitrees is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -136,14 +136,24 @@ class TreeView {
 	 */
 	private function getPersonDetails($individual, $family = null) {
 		$html = $this->getThumbnail($individual);
-		$html .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
-		$html .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$individual->getBirthDate()->Display().' '.$individual->getBirthPlace();
-		if ($family) {
-			$html .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'" class="icon-button_family tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a>'.$family->getMarriagePlace();
-		}
-		if ($individual->isDead()) {
-			$html .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$individual->getDeathDate()->Display().' '.$individual->getDeathPlace();
-		}
+		$html .= '
+			<div style="margin-left:40px;">
+				<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a>
+				<a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>
+				<br>
+				<b>' . WT_Gedcom_Tag::getAbbreviation('BIRT') . '</b> ' . $individual->getBirthDate()->Display() . ' ' . $individual->getBirthPlace();
+				if ($family) {
+					$html .= '
+						<br><b>' . WT_Gedcom_Tag::getAbbreviation('MARR') . '</b> ' . $family->getMarriageDate()->Display() . '
+						<a href="' . $family->getHtmlUrl() . '" class="icon-button_family tv_link tv_treelink" title="' . strip_tags($family->getFullName()) . '"></a>' . $family->getMarriagePlace() .
+						$family->format_first_major_fact(WT_EVENTS_DIV, 3);
+				}
+				if ($individual->isDead()) {
+					$html .= '
+						<br><b>' . WT_Gedcom_Tag::getAbbreviation('DEAT') . '</b> ' . $individual->getDeathDate()->Display() . ' ' . $individual->getDeathPlace();
+				}
+		$html .= '</div>';
+		
 		return '<div class="tv' . $individual->getSex() . ' tv_person_expanded">' . $html . '</div>';
 	}
 
