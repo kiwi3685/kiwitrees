@@ -58,9 +58,9 @@ if ($subclick=='all') {
 	$all=true;
 }
 
-$embed = substr($choose, 0, 1)=="1";
+$embed = substr($choose, 0, 1) == "1";
 $chooseType = substr($choose, 1);
-if ($chooseType!="media" && $chooseType!="0file") {
+if ($chooseType != "media" && $chooseType!="0file") {
 	$chooseType = "all";
 }
 
@@ -90,7 +90,7 @@ case "source":
 	break;
 case "specialchar":
 	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
-	$language_filter=safe_GET('language_filter');
+	$language_filter = safe_GET('language_filter');
 	if (WT_USER_ID) {
 		// Users will probably always want the same language, so remember their setting
 		if (!$language_filter) {
@@ -100,7 +100,7 @@ case "specialchar":
 		}
 	}
 	require WT_ROOT.'includes/specialchars.php';
-	$action="filter";
+	$action = "filter";
 	break;
 case "facts":
 	$controller
@@ -143,23 +143,23 @@ $controller->pageHeader();
 echo '</script>';
 
 $options = array();
-$options["option"][]= "findindi";
-$options["option"][]= "findfam";
-$options["option"][]= "findmedia";
-$options["option"][]= "findplace";
-$options["option"][]= "findrepo";
-$options["option"][]= "findnote";
-$options["option"][]= "findsource";
-$options["option"][]= "findspecialchar";
-$options["option"][]= "findfact";
-$options["form"][]= "formindi";
-$options["form"][]= "formfam";
-$options["form"][]= "formmedia";
-$options["form"][]= "formplace";
-$options["form"][]= "formrepo";
-$options["form"][]= "formnote";
-$options["form"][]= "formsource";
-$options["form"][]= "formspecialchar";
+$options["option"][]	= "findindi";
+$options["option"][]	= "findfam";
+$options["option"][]	= "findmedia";
+$options["option"][]	= "findplace";
+$options["option"][]	= "findrepo";
+$options["option"][]	= "findnote";
+$options["option"][]	= "findsource";
+$options["option"][]	= "findspecialchar";
+$options["option"][]	= "findfact";
+$options["form"][]		= "formindi";
+$options["form"][]		= "formfam";
+$options["form"][]		= "formmedia";
+$options["form"][]		= "formplace";
+$options["form"][]		= "formrepo";
+$options["form"][]		= "formnote";
+$options["form"][]		= "formsource";
+$options["form"][]		= "formspecialchar";
 
 echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 
@@ -505,7 +505,7 @@ if ($type == "facts") {
 	</form></div>';
 }
 
-if ($action=="filter") {
+if ($action == "filter") {
 	$filter = trim($filter);
 	$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 
@@ -727,5 +727,9 @@ if ($action=="filter") {
 		echo '</p></div>';
 	}
 }
-echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
-echo "</div>"; // Close div="find-page"
+echo '<button class="btn btn-primary show" onclick="window.close();">
+		<i class="fa fa-times"></i>' .
+		WT_I18N::translate('close') . '
+	</button>';
+
+echo '</div>'; // Close div="find-page"

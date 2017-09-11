@@ -448,7 +448,7 @@ case 'addfamlink':
 					<div class="input">
 						<div class="input-group">
 							<input data-autocomplete-type="FAM" type="text" id="famid" name="famid" size="8">
-							<?php echo print_findfamily_link('famid'); ?>
+							<?php echo print_specialchar_link('famid'); ?>
 						</div>
 					</div>
 				</div>
