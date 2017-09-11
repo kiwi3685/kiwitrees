@@ -24,33 +24,30 @@
 /**
  * Definitions for a census
  */
-class WT_Census_CensusOfCanada extends WT_Census_Census implements WT_Census_CensusPlaceInterface {
+class WT_Census_CensusOfCanada1851 extends WT_Census_CensusOfCanada implements WT_Census_CensusInterface {
 	/**
-	 * All available censuses for this census place. (English Canadian)
-	 *
-	 * @return(),Interface[]
-	 */
-	public function allCensusDates() {
-		return array(
-			new WT_Census_CensusOfCanada1851(),
-			new WT_Census_CensusOfCanada1861(),
-			new WT_Census_CensusOfCanada1871(),
-			new WT_Census_CensusOfCanada1881(),
-			new WT_Census_CensusOfCanada1891(),
-			new WT_Census_CensusOfCanada1901(),
-			new WT_Census_CensusOfCanada1906(),
-			new WT_Census_CensusOfCanada1911(),
-//			new WT_Census_CensusOfCanada1916(),
-//			new WT_Census_CensusOfCanada1921(),
-		);
-	}
-
-	/**
-	 * Where did this census occur, in GEDCOM format.
+	 * When did this census occur.
 	 *
 	 * @return string
 	 */
-	public function censusPlace() {
-		return 'Canada';
+	public function censusDate() {
+		return '11 JAN 1851';
+	}
+
+	/**
+	 * The columns of the census.
+	 *
+	 * @return CensusColumnInterface[]
+	 */
+	public function columns() {
+		return array(
+			new WT_Census_CensusColumnFullName($this, 'Name', 'Name of each person in family or household', 'width: 200px;'),
+			new WT_Census_CensusColumnOccupation($this, 'Occupation', 'Profession, trade, or occupation'),
+			new WT_Census_CensusColumnBirthPlaceSimple($this, 'Place of Birth', 'Country or province of birth'),
+			new WT_Census_CensusColumnReligion($this, 'Religion', 'Religion'),
+			new WT_Census_CensusColumnNull($this, 'Residence', 'Address if not at usual place of abode'),
+			new WT_Census_CensusColumnAgeNext($this, 'Age', 'Age at next birthday'),
+			new WT_Census_CensusColumnSexMF($this, 'Sex', 'Sex (M = Male; F = Female)'),
+		);
 	}
 }

@@ -22,20 +22,11 @@
  */
 
 /**
- * The nationality of the individual.
+ * The individual's age.
  */
-class WT_Census_CensusColumnNationality extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
-	/** @var array Convert a country name to a nationality */
-	private $nationalities = array(
-		'England'     	=> 'English',
-		'Scotland'    	=> 'Scottish',
-		'Wales'       	=> 'Welshsh',
-		'Ireland'		=> 'Irish',
-		'Deutschland'	=> 'Deutsch',
-		'Canada'		-> 'Canadian',
-	);
-
+class WT_Census_CensusColumnAgeNext extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
 	/**
+	 * Age at NEXT birthday
 	 * Generate the likely value of this census column, based on available information.
 	 *
 	 * @param WT_Person     $individual
@@ -44,28 +35,8 @@ class WT_Census_CensusColumnNationality extends WT_Census_AbstractCensusColumn i
 	 * @return string
 	 */
 	public function generate(WT_Person $individual, WT_Person $head = null) {
-		$place = $individual->getBirthPlace();
-
-		// No birthplace?  Assume born in the same country.
-		if ($place === '') {
-			$place = $this->place();
-		}
-
-		// Did we emigrate or naturalise?
-		$indifacts = $individual->getIndiFacts();
-		foreach ($indifacts as $fact) {
-			if (in_array($fact, array('IMMI|EMIG|NATU')) && WT_Date::Compare($fact->getDate(), $this->date()) <= 0) {
-				$place = $fact->getPlace()->getGedcomName();
-				$place = $fact->getPlace();
-			}
-		}
-
-		$place = $this->lastPartOfPlace($place);
-
-		if (array_key_exists($place, $this->nationalities)) {
-			return $this->nationalities[$place];
-		} else {
-			return $place;
-		}
+		$age = WT_Date::getAge($individual->getEstimatedBirthDate(), $this->date(), 2);
+		$next_age = (int) $age  + 1; // age at next birthday
+		return (string) $next_age;
 	}
 }
