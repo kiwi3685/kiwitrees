@@ -234,6 +234,7 @@ class research_links_WT_Module extends WT_Module implements WT_Module_Config, WT
 							</a>
 							<ul class="research-list">';
 								$i++;
+								$name = $data = $link = $sublinks = $link_only = $sublinks_only = '';
 								foreach ($plugins as $label => $plugin) {
 									if (is_array($RESEARCH_PLUGINS) && array_key_exists($label, $RESEARCH_PLUGINS)) {
 										$value = $RESEARCH_PLUGINS[$label];
