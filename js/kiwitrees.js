@@ -1495,7 +1495,7 @@ function autocomplete(selector) {
 				}, response);
 			},
 			select: function( event, ui ) {
-				jQuery(self).nextAll('div.autocomplete_label').first().html(ui.item.label);
+				jQuery(self).nextAll('.autocomplete_label').first().html(ui.item.label);
 			},
 			html: true
 		});

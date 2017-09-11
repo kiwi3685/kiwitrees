@@ -2333,8 +2333,10 @@ case 'changefamily':
 							<?php } ?>
 						</td>
 						<td class="optionbox">
-							<input data-autocomplete-type="INDI" type="text" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select person'); ?>">
-							<div class="autocomplete_label"></div>
+							<div>
+								<input data-autocomplete-type="INDI" type="text" name="HUSB" id="HUSBinput" value="" dir="auto" placeholder="<?php echo WT_I18N::translate('Select person'); ?>">
+								<span class="autocomplete_label"></span>
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -2459,7 +2461,7 @@ case 'changefamily_update':
 	}
 
 	if ($old_father !== $new_father) {
-		if ($new_father || $remHusb) {
+		if (($new_father || $remHusb) && $old_father) {
 			// Remove old FAMS link
 			$indirec = find_gedcom_record($old_father->getXref(), WT_GED_ID, true);
 			$pos1 = strpos($indirec, "1 FAMS @" . $famid . "@");
@@ -2504,7 +2506,7 @@ case 'changefamily_update':
 	}
 
 	if ($old_mother !== $new_mother) {
-		if ($new_mother || $remWife) {
+		if (($new_mother || $remWife) && $old_mother) {
 			// Remove old FAMS link
 			$indirec = find_gedcom_record($old_mother->getXref(), WT_GED_ID, true);
 			$pos1 = strpos($indirec, "1 FAMS @" . $famid . "@");
