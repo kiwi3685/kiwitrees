@@ -29,6 +29,7 @@ class WT_Census_Census {
 			new WT_Census_CensusOfDeutschland,
 			new WT_Census_CensusOfEngland,
 			new WT_Census_CensusOfFrance,
+			new WT_Census_CensusOfIreland,
 			new WT_Census_CensusOfScotland,
 			new WT_Census_CensusOfUnitedStates,
 			new WT_Census_CensusOfWales,

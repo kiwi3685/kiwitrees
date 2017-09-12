@@ -21,29 +21,28 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 /**
- * The individual's full name.
+ * Definitions for a census
  */
-class WT_Census_CensusColumnGivenNameInitial extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
+class WT_Census_CensusOfIreland extends WT_Census_Census implements WT_Census_CensusPlaceInterface {
 	/**
-	 * Generate the likely value of this census column, based on available information.
+	 * All available censuses for this census place.
 	 *
-	 * @param WT_Person     $individual
-	 * @param Individual|null $head
+	 * @return(),Interface[]
+	 */
+	public function allCensusDates() {
+		return array(
+			new WT_Census_CensusOfIreland1901(),
+			new WT_Census_CensusOfIreland1911(),
+		);
+	}
+
+	/**
+	 * Where did this census occur, in GEDCOM format.
 	 *
 	 * @return string
 	 */
-	public function generate(WT_Person $individual, WT_Person $head = null) {
-		foreach ($individual->getAllNames() as $name) {
-			$given = $name['givn'];
-			if (strpos($given, ' ') === false) {
-				return $given;
-			} else {
-				return substr($given, 0, strpos($given, ' ') + 2);
-			}
-		}
-
-		return '';
+	public function censusPlace() {
+		return 'Ireland';
 	}
 }

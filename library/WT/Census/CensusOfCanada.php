@@ -40,8 +40,8 @@ class WT_Census_CensusOfCanada extends WT_Census_Census implements WT_Census_Cen
 			new WT_Census_CensusOfCanada1901(),
 			new WT_Census_CensusOfCanada1906(),
 			new WT_Census_CensusOfCanada1911(),
-//			new WT_Census_CensusOfCanada1916(),
-//			new WT_Census_CensusOfCanada1921(),
+			new WT_Census_CensusOfCanada1916(),
+			new WT_Census_CensusOfCanada1921(),
 		);
 	}
 

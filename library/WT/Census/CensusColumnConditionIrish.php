@@ -21,29 +21,27 @@
  * along with Kiwitrees.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 /**
- * The individual's full name.
+ * Marital status.
  */
-class WT_Census_CensusColumnGivenNameInitial extends WT_Census_AbstractCensusColumn implements WT_Census_CensusColumnInterface {
-	/**
-	 * Generate the likely value of this census column, based on available information.
-	 *
-	 * @param WT_Person     $individual
-	 * @param Individual|null $head
-	 *
-	 * @return string
-	 */
-	public function generate(WT_Person $individual, WT_Person $head = null) {
-		foreach ($individual->getAllNames() as $name) {
-			$given = $name['givn'];
-			if (strpos($given, ' ') === false) {
-				return $given;
-			} else {
-				return substr($given, 0, strpos($given, ' ') + 2);
-			}
-		}
+class WT_Census_CensusColumnConditionIrish extends WT_Census_AbstractCensusColumnCondition {
+	/* Text to display for married individuals */
+	protected $husband = 'Married';
+	protected $wife    = 'Married';
 
-		return '';
-	}
+	/* Text to display for unmarried individuals */
+	protected $bachelor = 'Single';
+	protected $spinster = 'Single';
+
+	/* Text to display for children */
+	protected $boy  = 'Single';
+	protected $girl = 'Single';
+
+	/* Text to display for divorced individuals */
+	protected $divorce  = '';
+	protected $divorcee = '';
+
+	/* Text to display for widowed individuals */
+	protected $widower = 'Widower';
+	protected $widow   = 'Widow';
 }
