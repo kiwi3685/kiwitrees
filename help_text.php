@@ -492,24 +492,6 @@ case 'edit_SOUR_EVEN':
 	$text = WT_I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, "Oneida, Idaho, USA" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. "Idaho, USA" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
 	break;
 
-case 'edituser_contact_meth':
-	$title = WT_I18N::translate('Preferred contact method');
-	$text = WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.');
-	$text.='<br/><br/><dl><dt>';
-	$text.=WT_I18N::translate('Kiwitrees sends emails');
-	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, the kiwitrees internal messaging system will be used to send emails.<br><br>You will receive only <u>internal</u> messages from the other users.  Your email address will not be shown to anyone.');
-	$text.='</dd><dt>';
-	$text.=WT_I18N::translate('Mailto link');
-	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, you will receive email messages directly to the address you configured on your Account page.  The sender will see your email address.');
-	$text.='</dd><dt>';
-	$text.=WT_I18N::translate('No contact method');
-	$text.='</dt><dd>';
-	$text.=WT_I18N::translate('With this option, you will not receive any messages.  Even the administrator will not be able to reach you.');
-	$text.='</dd></dl>';
-	break;
-
 case 'edituser_contact_meth_short':
 	$title = WT_I18N::translate('Preferred contact method');
 	$text = WT_I18N::translate('Kiwitrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.');
