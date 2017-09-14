@@ -256,7 +256,7 @@ div.dt-buttons a.dt-button {
 #admin_footer .logo a:hover {color:#ff0000;}
 
 /* DASHBOARD BLOCKS */
-fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; width:30%;}
+fieldset#users, fieldset#trees, fieldset#recent {border-radius:10px; height:400px; float:left; overflow-y:auto; width:30%;}
 fieldset#users legend, fieldset#trees legend, fieldset#recent legend {font-size: 1.25em; font-weight: 900;}
 #users div#logged_in_users ul {list-style: none; margin: 3px 0;}
 #users div#logged_in_users .inset a {margin: 0 10px;}
